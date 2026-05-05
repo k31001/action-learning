@@ -3,7 +3,7 @@
 > 수집된 모든 데이터의 중앙 인덱스. 데이터 추가/수정 시 반드시 이 파일도 업데이트.
 
 **마지막 업데이트**: 2026-05-05  
-**총 데이터 항목**: 16개
+**총 데이터 항목**: 16개 (2026-05-05 경쟁사 투자 전략 섹션 대폭 업데이트)
 
 ---
 
@@ -70,24 +70,24 @@
 ## 경쟁사 분석 (`data/competitors/`)
 
 ### sk-hynix.md
-- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #SKhynix #HBM #competitor #market-leader
-- **요약**: 2025년 매출 97조원(영업이익률 49%). HBM4 세계 최초 개발 완료(2025년 9월). Q2 2025 HBM 점유 62%. 2025 Q1에 33년 만에 삼성 DRAM 매출 추월.
-- **출처**: SK하이닉스 IR, TrendForce, Counterpoint
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #SKhynix #HBM #competitor #market-leader #CapEx #investment
+- **요약**: 2025년 매출 97조원(영업이익률 49%). HBM4 세계 최초 개발 완료(2025년 9월). Q2 2025 HBM 점유 62%. 2025 Q1에 33년 만에 삼성 DRAM 매출 추월. [2026-05-05 추가] M15X·청주 패키징 팹·용인 클러스터 투자 전략, NVIDIA co-design 파트너십 심화, CapEx 2026E 30조원 이상, 장기 선불계약 구조 상세 분석 추가.
+- **출처**: SK하이닉스 IR, TrendForce, KED Global, UBS, Nikkei Asia
 
 ### micron.md
-- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #Micron #HBM #CHIPS-Act #US
-- **요약**: FY2025 매출 $374억(역대 최고). HBM3E 점유율 21%(Q2 2025). CHIPS Act $61.65억 확정. NY/Idaho 팹 $1,000억+ 장기 투자.
-- **출처**: Micron IR, NIST, S&P Global
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #Micron #HBM #CHIPS-Act #US #CapEx #investment
+- **요약**: FY2025 매출 $374억(역대 최고). HBM3E 점유율 21%(Q2 2025). CHIPS Act $61.65억 확정. NY/Idaho 팹 $1,000억+ 장기 투자. [2026-05-05 추가] CHIPS Act 보조금 활용 구조(보조금+세액공제 이중 수혜), Idaho ID2 우선 집행, 고객 선불계약 구조, CapEx FY2025 $140억, 팹 JV 미채택 이유 분석 추가.
+- **출처**: Micron IR, NIST, Bloomberg, Tom's Hardware
 
 ### market-share.md
-- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #market-share #DRAM #HBM #삼성 #역전
-- **요약**: 2025년 SK하이닉스가 33년 만에 DRAM 매출에서 삼성 추월. 삼성 HBM 점유율 17~22%로 3위. DRAM 전체 점유율은 삼성 42%로 여전히 1위.
-- **출처**: TrendForce, Counterpoint Research
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #market-share #DRAM #HBM #삼성 #역전 #CapEx #투자비교
+- **요약**: 2025년 SK하이닉스가 33년 만에 DRAM 매출에서 삼성 추월. 삼성 HBM 점유율 17~22%로 3위. DRAM 전체 점유율은 삼성 42%로 여전히 1위. [2026-05-05 추가] 경쟁사 CapEx·R&D·보조금 비교 테이블, SanDisk+Kioxia JV 모델 분석, 삼성 대응 3축 전략 추가.
+- **출처**: TrendForce, Counterpoint Research, 각사 IR 종합
 
 ### china-competitors.md
-- **수집일**: 2026-05-05 | **신뢰도**: Medium | **태그**: #China #CXMT #YMTC #risk
-- **요약**: CXMT DRAM 글로벌 점유율 8%(Q3 2025), DDR5-8000 기술 시연. YMTC NAND 13% 출하 점유, 294층 기술. 미국 수출 규제에도 불구 급성장 중.
-- **출처**: TrendForce, S&P Global, NAND Research
+- **수집일**: 2026-05-05 | **신뢰도**: Medium | **태그**: #China #CXMT #YMTC #risk #BigFund #investment
+- **요약**: CXMT DRAM 글로벌 점유율 8%(Q3 2025), DDR5-8000 기술 시연. YMTC NAND 13% 출하 점유, 294층 기술. 미국 수출 규제에도 불구 급성장 중. [2026-05-05 추가] 빅펀드 III ($470억) 구조, 지방정부 국유 VC 모델(허페이 모델), CXMT·YMTC 팹 투자 규모, 기술 자립 3단계 로드맵, 15차 5개년 계획 반도체 자급률 40% 목표 상세 추가.
+- **출처**: Bloomberg, Reuters, Yole Group, Morgan Stanley, TechInsights
 
 ---
 

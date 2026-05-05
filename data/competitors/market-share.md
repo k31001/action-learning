@@ -100,3 +100,113 @@
 - [SK hynix holds 62% of HBM, Micron overtakes Samsung, 2026 battle pivots to HBM4 - Astute Group](https://www.astutegroup.com/news/general/sk-hynix-holds-62-of-hbm-micron-overtakes-samsung-2026-battle-pivots-to-hbm4/)
 - [The HBM Wars: SK Hynix Dominance, Samsung Roadmap - Patsnap Eureka](https://eureka.patsnap.com/insight/the-hbm-wars-sk-hynixs-dominance-samsungs-roadmap-and-the-looming-threat-of-cyclicality)
 - [Samsung and SK Hynix to scale up memory production in 2026 - Data Center Dynamics](https://www.datacenterdynamics.com/en/news/samsung-and-sk-hynix-to-scale-up-memory-production-capacity-in-2026-to-meet-ai-demand/)
+
+---
+
+## 경쟁사 투자 비교: CapEx·R&D·보조금 현황
+**수집일**: 2026-05-05
+**출처**: 각사 IR, NIST, TrendForce, Bloomberg, Morgan Stanley, Yole Group
+
+### 연간 CapEx 비교 테이블 (2024~2026E)
+
+| 업체 | 2024 CapEx | 2025 CapEx | 2026E CapEx | 단위 |
+|------|-----------|-----------|-----------|------|
+| 삼성전자 (전사) | 약 53조 원 | 약 57조 원 | 55~60조 원 | 조 원 |
+| 삼성전자 (메모리 추정) | 약 20~25조 원 | 약 22~27조 원 | 약 25~30조 원 | 조 원 |
+| SK하이닉스 | 약 15~18조 원 | 약 23~25조 원 | 30조 원 이상 | 조 원 |
+| Micron | 약 $84억 | 약 $140억 | $140~160억 | USD |
+| CXMT | 약 $28~42억 | 약 $40~55억 (추정) | 확대 예상 | USD |
+| YMTC | 약 $30~40억 (추정) | 약 $35~50억 (추정) | 3공장 투자 증가 | USD |
+
+- 출처: 각사 IR (삼성전자, SK하이닉스, Micron), Morgan Stanley (CXMT), Digitimes (YMTC)
+- 중국 업체(CXMT, YMTC) 수치는 공개 IR이 없어 외부 추정치이며 불확실성 높음
+- 삼성전자 메모리 부문 CapEx는 전사 CapEx에서 DS부문(반도체) 비중을 적용한 추정치
+
+### 연간 R&D 지출 비교 테이블 (2024~2025)
+
+| 업체 | 2024 R&D | 2025 R&D | 매출 대비 비율(2025) | 주요 R&D 방향 |
+|------|---------|---------|----------------|------------|
+| 삼성전자 (전사) | 약 29조 원 | 약 32조 원 (추정) | ~12% | HBM4/5, GAA 파운드리, MRAM |
+| 삼성전자 (메모리 추정) | 약 6~8조 원 | 약 7~9조 원 | ~10% | HBM4/5, 1c nm DRAM, V-NAND |
+| SK하이닉스 | 약 4~5조 원 | 약 6~7조 원 | ~6~7% | HBM4/5, 1c nm, 321L NAND |
+| Micron | 약 $34억 | 약 $40억 | ~11% | HBM4, 1γ DRAM, LPDDR6 |
+| CXMT | 약 $3~5억 (추정) | 약 $5~8억 (추정) | 낮음 | DDR5, LPDDR5X, 공정 미세화 |
+| YMTC | 약 $3~6억 (추정) | 약 $5~8억 (추정) | 낮음 | 300L+ NAND, Xtacking 3.0 |
+
+- 출처: 삼성전자·SK하이닉스·Micron 사업보고서, CXMT·YMTC 외부 추정
+
+### 정부 보조금·지원 비교 테이블
+
+| 업체 | 보조금/지원 프로그램 | 금액 (추정) | 지원국 | 비고 |
+|------|----------------|---------|------|------|
+| 삼성전자 | CHIPS Act (텍사스 Taylor 팹) | 최대 $66억 | 미국 | 2024년 예비 협정 체결 |
+| 삼성전자 | 일본 정부 보조 (JASM 제외 별도) | 수천억 엔 | 일본 | 파운드리 중심 |
+| 삼성전자 | 한국 K-반도체 전략 세액공제 | 투자액의 15% | 한국 | 국가전략기술 세액공제 |
+| SK하이닉스 | 한국 K-반도체 세액공제 | 투자액의 15% | 한국 | |
+| SK하이닉스 | 미국 인디애나 주정부 지원 | 수억 달러 (추정) | 미국 | 연방 CHIPS Act 신청 진행 중 |
+| Micron | CHIPS Act (Idaho + New York) | 최대 $61.65억 | 미국 | 2024년 12월 최종 확정 |
+| Micron | CHIPS Act (Virginia) | 최대 $2.75억 | 미국 | 레거시 팹 |
+| CXMT | 빅펀드 I·II·III + 안후이성 정부 | 수조 위안 (누적) | 중국 | 지분 투자+저금리 대출 포함 |
+| YMTC | 빅펀드 I·II·III + 후베이성 정부 | 수조 위안 (누적) | 중국 | 칭화유니그룹 구조조정 이후 국유화 강화 |
+
+- 출처: NIST (Micron), 삼성전자 IR (Taylor 팹), Bloomberg (빅펀드 III), Yole Group
+- 중국 업체 보조금은 직접 보조금 외에 토지·인프라·세제 혜택까지 포함하면 실질 지원 규모는 공시 대비 훨씬 클 것으로 추정
+
+### 투자 효율성 비교 (CapEx 대비 HBM 생산량 증가율 proxy)
+
+| 업체 | CapEx 효율성 특징 | 2025 HBM 점유율 | 평가 |
+|------|---------------|--------------|------|
+| SK하이닉스 | HBM 전용 집중 투자, 영업이익률 72% | ~53~62% | 최고 효율 |
+| Micron | 미국 팹 건설 비용 높으나 보조금 일부 상쇄 | ~11~21% | 중간 효율 |
+| 삼성전자 | DRAM+NAND+파운드리 분산 투자 | 17~35% | 효율 개선 필요 |
+| CXMT | 국가 지원으로 수익성 불문, 캐파 최우선 | ~8% (DRAM 전체) | 특수 구조 |
+
+- 출처: Astute Group, Counterpoint Research, TrendForce (2025년)
+
+---
+
+## 삼성전자 전략 관점에서의 종합 벤치마킹 시사점
+**수집일**: 2026-05-05
+**출처**: 각사 IR, TrendForce, Bloomberg, UBS, Morgan Stanley 종합
+
+### 1. 투자 집중도: "선택과 집중" vs. "포트폴리오 분산"
+
+| 구분 | SK하이닉스 방식 | Micron 방식 | 삼성전자 현황 | 삼성 시사점 |
+|------|------------|---------|-----------|---------|
+| CapEx 집중도 | HBM 95%+ 집중 | HBM + 범용 DRAM 균형 | DRAM + NAND + 파운드리 분산 | HBM CapEx 비중 상향 필요 |
+| 제품 전략 | HBM 단독 | HBM + DRAM + NAND | 전 제품 포트폴리오 | 고부가 비중 확대 필요 |
+| 고객 집중도 | NVIDIA 27% | 복수 분산 | 복수 분산 | NVIDIA 관계 강화 필요 |
+
+### 2. 고객과의 팹 공동투자(JV) 모델: SanDisk+Kioxia 사례 분석
+
+SanDisk(현 Western Digital)와 Kioxia는 1991년부터 일본 욧카이치(四日市)와 기타카미(北上)에 NAND 팹을 각 50% 지분으로 공동 소유·운영해 왔다. 이 구조의 핵심은 다음과 같다:
+
+| 요소 | SanDisk+Kioxia JV 모델 | 메모리 회사+하이퍼스케일러 응용 |
+|------|---------------------|----------------------|
+| 자본 분담 | 제조사+유통사가 각 50% 부담 | 메모리 회사+AI 고객이 각 50% 부담 |
+| 수요 확보 | JV 파트너가 생산량 우선 소화 | AI 고객이 JV 생산물량 장기 구매 보장 |
+| 기술 공유 | 제조 기술 공동 활용 | HBM 아키텍처 공동 정의 |
+| 리스크 분산 | 시장 불황 시 손실 분담 | 수요 감소 시 고객도 손실 분담 |
+
+**삼성전자 적용 시나리오**:
+- Google, Microsoft, Amazon 중 1개사와 HBM 전용 팹 JV 구성 (지분 50:50 또는 49:51)
+- JV 팹 생산물량 100%를 해당 고객에게 우선 공급하는 장기 계약 체결
+- 고객의 AI 가속기 로드맵에 맞춘 HBM 사양 공동 설계
+- 투자 규모 예시: JV 팹 총 투자 $200억 → 삼성 $100억 + 고객사 $100억 (보조금 별도)
+
+**장점**: 수요 불확실성 제거, 초기 자본 부담 50% 절감, 고객 락인(Lock-in) 효과
+**리스크**: 기술 유출, 의사결정 속도 저하, 고객 이탈 시 잉여 캐파 발생
+
+### 3. 경쟁사 투자 전략 요약 및 삼성 대응 방향
+
+| 경쟁사 | 핵심 투자 전략 | 삼성전자 대응 방향 |
+|--------|-----------|--------------|
+| SK하이닉스 | HBM 집중 + NVIDIA co-design + 패키징 내재화 | HBM 전용 라인 확대, 고객 co-design 파트너십 강화 |
+| Micron | CHIPS Act 활용 + 미국 현지 팹 + 수요 선점 계약 | LTSA 구조 도입, 정부 보조금 레버리지 극대화 |
+| CXMT | 국가자본 + 범용 DRAM 덤핑 | 범용 탈피, HBM·CXL·PIM 고부가 집중 |
+| YMTC | 국가자본 + NAND 다각화 + DRAM 진출 시도 | V-NAND 기술 격차 확대, DRAM 사업 방어 |
+
+- **삼성전자 종합 시사점**: 경쟁사들이 각각 "고수익 AI 메모리 집중(SK하이닉스)", "정부 보조금 활용 현지화(Micron)", "국가자본 기반 범용 확장(중국)"이라는 차별화된 전략을 취하는 가운데, 삼성전자는 세 방향 모두에서 경쟁하는 구조다. **HBM 리더십 회복 + 고객 공동개발 파트너십 + 팹 공동투자 JV 모델 도입**의 3축 전략으로 자본 효율성을 높이는 것이 핵심 과제다.
+
+- **수집일**: 2026-05-05
+- **출처**: 각사 IR, TrendForce, Bloomberg, UBS 리서치, Morgan Stanley
