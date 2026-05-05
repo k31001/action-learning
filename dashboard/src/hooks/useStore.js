@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo } from 'react'
 import { INITIAL_INDICATORS, INITIAL_TRIGGERS, SCENARIOS, INITIAL_QUADRANT_POSITIONS } from '../data/indicators'
 
-const STORAGE_KEY = 'ewi_dashboard_v2'
+const STORAGE_KEY = 'ewi_dashboard_v3'
 
 function computeStatus(indicator, value) {
   if (indicator.alertCondition === 'manual' || indicator.alertCondition === 'select') return indicator.status
@@ -38,11 +38,19 @@ function mergeWithDefaults(stored) {
   const triggers = INITIAL_TRIGGERS.map(def =>
     storedTriggerById[def.id] ? { ...def, ...storedTriggerById[def.id] } : def
   )
+  // Merge quadrant positions by key: use initial df1/df2 as base, preserve user note/date
+  const storedQpByKey = Object.fromEntries((stored.quadrantPositions || []).map(p => [p.key, p]))
+  const quadrantPositions = INITIAL_QUADRANT_POSITIONS.map(def => {
+    const s = storedQpByKey[def.key]
+    if (!s) return def
+    return { ...def, note: s.note ?? def.note, date: s.date ?? def.date }
+  })
+
   return {
     indicators,
     triggers,
     scenarios: stored.scenarios || SCENARIOS,
-    quadrantPositions: stored.quadrantPositions || INITIAL_QUADRANT_POSITIONS,
+    quadrantPositions,
   }
 }
 

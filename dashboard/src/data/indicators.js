@@ -6,10 +6,10 @@
 export const INITIAL_QUADRANT_POSITIONS = [
   { key: 'twoYear',    date: '2024-05', df1: 3.5,  df2: 4.5,  note: 'H100 CapEx 급증 시작, VEU 완화' },
   { key: 'oneYear',    date: '2025-05', df1: 5.0,  df2: 6.0,  note: 'HBM3E 품질 이슈, 삼성 점유율 17%' },
-  { key: 'sixMonth',   date: '2025-11', df1: 5.5,  df2: 5.5,  note: 'H20 부분 재허용, HBM 삼성 35% 반등' },
-  { key: 'threeMonth', date: '2026-02', df1: 6.5,  df2: 4.5,  note: 'MATCH법안 위원회 미통과, CapEx 성장세 지속' },
-  { key: 'oneMonth',   date: '2026-04', df1: 7.0,  df2: 4.0,  note: '빅테크 실적 호조, 관리된 공존 신호' },
-  { key: 'current',    date: '2026-05', df1: 7.0,  df2: 4.0,  note: 'B 시나리오 강한 모멘텀' },
+  { key: 'sixMonth',   date: '2025-11', df1: 5.5,  df2: 2.5,  note: 'H20 부분 재허용, 삼성 35% 반등, 디커플링 완화' },
+  { key: 'threeMonth', date: '2026-02', df1: 6.5,  df2: 1.5,  note: 'MATCH법안 위원회 미통과, 공존 신호 강화' },
+  { key: 'oneMonth',   date: '2026-04', df1: 7.0,  df2: 0.5,  note: '빅테크 실적 호조, 관리된 공존 신호' },
+  { key: 'current',    date: '2026-05', df1: 7.5,  df2: 0.5,  note: 'A/B 경계 도달, B 시나리오 강한 모멘텀' },
 ]
 
 export const SCENARIOS = [
@@ -401,7 +401,7 @@ export const INITIAL_TRIGGERS = [
     isPositive: true,
     probabilityDelta: { A: 0, B: +8, C: -3, D: -5, E: 0 },
     df1Delta: +1.5,
-    df2Delta: -0.5,
+    df2Delta: -1.0,
   },
   {
     id: 'imec_3ddram_power50',
@@ -430,7 +430,7 @@ export const INITIAL_TRIGGERS = [
     isPositive: true,
     probabilityDelta: { A: -3, B: +12, C: -5, D: -4, E: 0 },
     df1Delta: 1.5,
-    df2Delta: -0.5,
+    df2Delta: -1.5,
   },
   {
     id: 'us_china_semiconductor_deal',
@@ -444,7 +444,7 @@ export const INITIAL_TRIGGERS = [
     isPositive: true,
     probabilityDelta: { A: -8, B: +9, C: -5, D: +4, E: 0 },
     df1Delta: 0,
-    df2Delta: -2.5,
+    df2Delta: -3.5,
   },
   {
     id: 'enterprise_ai_roi_proven',
