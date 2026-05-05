@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import { INITIAL_INDICATORS, INITIAL_TRIGGERS, SCENARIOS, INITIAL_QUADRANT_POSITIONS } from '../data/indicators'
 
 const STORAGE_KEY = 'ewi_dashboard_v2'
@@ -170,11 +170,59 @@ export function useStore() {
     localStorage.removeItem(STORAGE_KEY)
   }, [])
 
+  const activeTriggers = triggers.filter(t => t.activated)
+
+  // ── 트리거 → 시나리오 확률 자동 조정 ─────────────────────────────────────
+  const adjustedScenarios = useMemo(() => {
+    // 활성 트리거의 probabilityDelta를 합산
+    const deltas = {}
+    activeTriggers.forEach(t => {
+      Object.entries(t.probabilityDelta ?? {}).forEach(([id, d]) => {
+        deltas[id] = (deltas[id] ?? 0) + d
+      })
+    })
+
+    // 베이스 확률에 델타 적용 후 0 이하 클램프
+    const raw = scenarios.map(s => ({
+      ...s,
+      probability: Math.max(0, s.probability + (deltas[s.id] ?? 0)),
+      delta: deltas[s.id] ?? 0,
+    }))
+
+    // 합계가 100이 되도록 정규화
+    const total = raw.reduce((s, sc) => s + sc.probability, 0) || 100
+    return raw.map(s => ({
+      ...s,
+      probability: Math.round((s.probability / total) * 100),
+    }))
+  }, [scenarios, activeTriggers])
+
+  // ── 트리거 → 쿼드런트 포지션 자동 조정 ───────────────────────────────────
+  const adjustedQuadrantPosition = useMemo(() => {
+    const df1Delta = activeTriggers.reduce((sum, t) => sum + (t.df1Delta ?? 0), 0)
+    const df2Delta = activeTriggers.reduce((sum, t) => sum + (t.df2Delta ?? 0), 0)
+    const base = quadrantPositions.find(p => p.key === 'current') ?? { df1: 0, df2: 0 }
+    return {
+      df1: Math.max(-10, Math.min(10, base.df1 + df1Delta)),
+      df2: Math.max(-10, Math.min(10, base.df2 + df2Delta)),
+      baseDf1: base.df1,
+      baseDf2: base.df2,
+      df1Delta,
+      df2Delta,
+      isAdjusted: df1Delta !== 0 || df2Delta !== 0,
+      activeTriggerNames: activeTriggers
+        .filter(t => (t.df1Delta ?? 0) !== 0 || (t.df2Delta ?? 0) !== 0)
+        .map(t => t.name),
+    }
+  }, [quadrantPositions, activeTriggers])
+
   return {
     indicators,
     triggers,
     scenarios,
     quadrantPositions,
+    adjustedScenarios,
+    adjustedQuadrantPosition,
     updateIndicator,
     updateTrigger,
     updateScenarioProbability,
@@ -184,6 +232,6 @@ export function useStore() {
     resetToDefaults,
     criticalCount: indicators.filter(i => i.status === 'critical').length,
     warningCount: indicators.filter(i => i.status === 'warning').length,
-    activeTriggers: triggers.filter(t => t.activated),
+    activeTriggers,
   }
 }

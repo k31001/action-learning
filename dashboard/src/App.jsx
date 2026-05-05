@@ -17,6 +17,7 @@ const MAIN_TABS = [
 export default function App() {
   const {
     indicators, triggers, scenarios, quadrantPositions,
+    adjustedScenarios, adjustedQuadrantPosition,
     updateIndicator, updateTrigger, updateScenarioProbability,
     addQuadrantSnapshot, exportData, importData, resetToDefaults,
     criticalCount, warningCount, activeTriggers,
@@ -53,10 +54,12 @@ export default function App() {
           <div className="space-y-4">
             <QuadrantMap
               positions={quadrantPositions}
+              adjustedPosition={adjustedQuadrantPosition}
               onAddSnapshot={addQuadrantSnapshot}
             />
             <ScenarioPanel
               scenarios={scenarios}
+              adjustedScenarios={adjustedScenarios}
               onUpdate={updateScenarioProbability}
             />
           </div>

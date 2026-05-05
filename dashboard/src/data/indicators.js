@@ -296,6 +296,9 @@ export const INITIAL_INDICATORS = [
 // ────────────────────────────────────────────
 // 시나리오 전환 트리거
 // ────────────────────────────────────────────
+// probabilityDelta: 각 시나리오 확률 변화 (활성화 시 적용, 합산 ~0 권장)
+// df1Delta: AI 수요 축 이동 (-=버블, +=슈퍼사이클)
+// df2Delta: 디커플링 축 이동 (-=공존, +=디커플링)
 export const INITIAL_TRIGGERS = [
   {
     id: 'bigtech_capex_cut25',
@@ -306,6 +309,9 @@ export const INITIAL_TRIGGERS = [
     activated: false,
     activatedDate: null,
     note: '',
+    probabilityDelta: { A: -4, B: -10, C: +8, D: +6, E: 0 },
+    df1Delta: -2.5,
+    df2Delta: 0,
   },
   {
     id: 'match_act_passed',
@@ -316,6 +322,9 @@ export const INITIAL_TRIGGERS = [
     activated: false,
     activatedDate: null,
     note: '',
+    probabilityDelta: { A: +10, B: -8, C: +5, D: -7, E: 0 },
+    df1Delta: 0,
+    df2Delta: +2.5,
   },
   {
     id: 'samsung_hbm4_no_nvidia',
@@ -327,6 +336,9 @@ export const INITIAL_TRIGGERS = [
     activatedDate: null,
     note: '',
     deadline: '2026-12-31',
+    probabilityDelta: { A: 0, B: -5, C: +3, D: +2, E: 0 },
+    df1Delta: -1.0,
+    df2Delta: 0,
   },
   {
     id: 'xian_license_rejected',
@@ -337,6 +349,9 @@ export const INITIAL_TRIGGERS = [
     activated: false,
     activatedDate: null,
     note: '',
+    probabilityDelta: { A: +8, B: -7, C: +5, D: -6, E: 0 },
+    df1Delta: 0,
+    df2Delta: +2.0,
   },
   {
     id: 'google_amazon_3ddram_patent',
@@ -347,6 +362,9 @@ export const INITIAL_TRIGGERS = [
     activated: false,
     activatedDate: null,
     note: '',
+    probabilityDelta: { A: -2, B: -3, C: -1, D: -2, E: +8 },
+    df1Delta: 0,
+    df2Delta: 0,
   },
   {
     id: 'hbm_price_drop30',
@@ -357,6 +375,9 @@ export const INITIAL_TRIGGERS = [
     activated: false,
     activatedDate: null,
     note: '',
+    probabilityDelta: { A: -4, B: -8, C: +7, D: +5, E: 0 },
+    df1Delta: -1.5,
+    df2Delta: 0,
   },
   {
     id: 'bigtech_ai_revenue_500b',
@@ -368,6 +389,9 @@ export const INITIAL_TRIGGERS = [
     activatedDate: null,
     note: '',
     isPositive: true,
+    probabilityDelta: { A: 0, B: +8, C: -3, D: -5, E: 0 },
+    df1Delta: +1.5,
+    df2Delta: -0.5,
   },
   {
     id: 'imec_3ddram_power50',
@@ -378,5 +402,8 @@ export const INITIAL_TRIGGERS = [
     activated: false,
     activatedDate: null,
     note: '',
+    probabilityDelta: { A: -2, B: -3, C: -1, D: -2, E: +8 },
+    df1Delta: 0,
+    df2Delta: 0,
   },
 ]
