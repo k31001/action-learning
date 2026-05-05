@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-gray-100 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .status-normal {
+    @apply border-green-500 bg-green-950/40;
+  }
+  .status-warning {
+    @apply border-yellow-400 bg-yellow-950/40;
+  }
+  .status-critical {
+    @apply border-red-500 bg-red-950/40;
+  }
+  .status-unknown {
+    @apply border-gray-600 bg-gray-900/40;
+  }
+
+  .badge-normal {
+    @apply bg-green-900 text-green-300 ring-1 ring-green-500/40;
+  }
+  .badge-warning {
+    @apply bg-yellow-900 text-yellow-300 ring-1 ring-yellow-500/40;
+  }
+  .badge-critical {
+    @apply bg-red-900 text-red-300 ring-1 ring-red-500/40;
+  }
+  .badge-unknown {
+    @apply bg-gray-800 text-gray-400 ring-1 ring-gray-600/40;
+  }
+
+  .scenario-A { @apply bg-blue-900/60 text-blue-300 ring-1 ring-blue-500/40; }
+  .scenario-B { @apply bg-emerald-900/60 text-emerald-300 ring-1 ring-emerald-500/40; }
+  .scenario-C { @apply bg-red-900/60 text-red-300 ring-1 ring-red-500/40; }
+  .scenario-D { @apply bg-orange-900/60 text-orange-300 ring-1 ring-orange-500/40; }
+  .scenario-E { @apply bg-purple-900/60 text-purple-300 ring-1 ring-purple-500/40; }
+}
+
+.pulse-critical {
+  animation: pulseCritical 2s ease-in-out infinite;
+}
+
+@keyframes pulseCritical {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

@@ -1,0 +1,16 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/capex.js":                    { "includeFiles": "data/**" },
+    "api/hbm-share.js":                { "includeFiles": "data/**" },
+    "api/auto-update/all.js":          { "includeFiles": "data/**" },
+    "api/auto-update/[indicatorId].js":{ "includeFiles": "data/**" }
+  },
+  "crons": [
+    {
+      "path": "/api/auto-update/all",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}
