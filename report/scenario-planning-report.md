@@ -215,21 +215,23 @@ DF1(AI 수요 구조)과 DF2(미중 지정학 강도)는 각각 기술·경제 �
 
 ```mermaid
 quadrantChart
-    title 시나리오 매트릭스
-    x-axis AI 수요 약화 --> AI 수요 지속
-    y-axis 관리된 공존 --> 미중 디커플링 심화
-    quadrant-1 A 황금 요새
-    quadrant-2 C 기술 냉전
-    quadrant-3 D 조용한 재편
-    quadrant-4 B AI 르네상스 Main Bet
-    A 황금 요새 25-30pct: [0.78, 0.80]
-    B AI 르네상스 30-35pct: [0.78, 0.22]
-    C 기술 냉전 10-15pct: [0.22, 0.80]
-    D 조용한 재편 20-25pct: [0.22, 0.22]
-    E 패러다임 전환 5-10pct: [0.72, 0.50]
+    title Scenario Matrix (DF1 x DF2)
+    x-axis AI Demand Decline --> AI Demand Growth
+    y-axis Coexistence --> US-China Decoupling
+    quadrant-1 A: Golden Fortress
+    quadrant-2 C: Tech Cold War
+    quadrant-3 D: Quiet Restructuring
+    quadrant-4 B: AI Renaissance
+    A Golden Fortress 25-30pct: [0.78, 0.80]
+    B AI Renaissance 30-35pct: [0.78, 0.22]
+    C Tech Cold War 10-15pct: [0.22, 0.80]
+    D Quiet Restructuring 20-25pct: [0.22, 0.22]
+    E Paradigm Shift 5-10pct: [0.72, 0.50]
 ```
 
-※ 시나리오 E "패러다임 전환" (와일드카드): AI 수요는 지속되지만 HBM이 3D DRAM·CXL 메모리 패브릭으로 대체되는 기술 불연속(DF3 Pole B). 어느 사분면에도 완전히 속하지 않아 우측 중앙에 위치.
+> **X축 (DF1)**: AI 수요 약화 ← → AI 수요 지속  
+> **Y축 (DF2)**: 관리된 공존 ↓ ↑ 미중 디커플링 심화  
+> **E (Paradigm Shift)**: 와일드카드 — AI 수요는 지속되지만 HBM이 3D DRAM·CXL로 대체되는 기술 불연속. 어느 사분면에도 완전히 속하지 않아 우측 중앙에 위치.
 
 | 시나리오 | DF1 | DF2 | 확률 | 삼성 함의 핵심 |
 |---------|-----|-----|------|-------------|
