@@ -7,6 +7,7 @@ import cron from 'node-cron'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const CACHE_DIR = path.join(__dirname, '.cache')
+const DATA_DIR  = path.join(__dirname, '../data')
 if (!existsSync(CACHE_DIR)) mkdirSync(CACHE_DIR, { recursive: true })
 
 const app = express()
@@ -134,18 +135,18 @@ app.get('/api/stocks/history/:symbol', async (req, res) => {
 })
 
 app.get('/api/capex', (_req, res) => {
-  res.json(JSON.parse(readFileSync(path.join(__dirname, 'data/capex.json'), 'utf8')))
+  res.json(JSON.parse(readFileSync(path.join(DATA_DIR, 'capex.json'), 'utf8')))
 })
 
 app.get('/api/hbm-share', (_req, res) => {
-  res.json(JSON.parse(readFileSync(path.join(__dirname, 'data/hbm-share.json'), 'utf8')))
+  res.json(JSON.parse(readFileSync(path.join(DATA_DIR, 'hbm-share.json'), 'utf8')))
 })
 
 // ── Auto-update handlers for EWI indicators ───────────────────────────────────
 const AUTO_UPDATE_HANDLERS = {
   // CapEx YoY: latest quarter vs 4 quarters ago from seeded data
   async bigtech_capex_growth() {
-    const capex = JSON.parse(readFileSync(path.join(__dirname, 'data/capex.json'), 'utf8'))
+    const capex = JSON.parse(readFileSync(path.join(DATA_DIR, 'capex.json'), 'utf8'))
     const q = capex.quarterly
     if (q.length < 5) throw new Error('quarterly 데이터 부족')
     const latest   = q[q.length - 1]
@@ -161,7 +162,7 @@ const AUTO_UPDATE_HANDLERS = {
 
   // Samsung HBM share: latest entry from seeded data
   async samsung_hbm_share() {
-    const hbm = JSON.parse(readFileSync(path.join(__dirname, 'data/hbm-share.json'), 'utf8'))
+    const hbm = JSON.parse(readFileSync(path.join(DATA_DIR, 'hbm-share.json'), 'utf8'))
     const latest = hbm.data[hbm.data.length - 1]
     return {
       value: latest.samsung,
