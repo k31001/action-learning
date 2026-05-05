@@ -1,0 +1,106 @@
+# AI 전력 소비 및 데이터센터 에너지 제약
+**수집일**: 2026-05-05
+**출처**: IEA, Deloitte, Pew Research, DOE, Belfer Center (Harvard), Brookings, Data Center Knowledge, Tech-Insider, IAEA, Introl Blog
+
+## 핵심 데이터
+
+### 데이터센터 전력 소비량 전망 (TWh)
+
+| 연도 | 전 세계 데이터센터 전력 소비 | AI 특화 데이터센터 | 비고 |
+|------|--------------------------|-----------------|------|
+| 2024 | ~415 TWh | - | IEA 기준 |
+| 2025 | ~485 TWh | +50% YoY 급증 | IEA |
+| 2026E | ~950~1,100 TWh | - | IEA·Tech-Insider |
+| 2030E | ~950 TWh | - | IEA 업데이트 전망 |
+
+- 2025년 데이터센터 전력 사용량 전년 대비 +17% 증가 (글로벌 전력 수요 증가율 +3% 대비 현저히 높음)
+- 2026년 데이터센터가 단독 국가일 경우 세계 5위 전력 소비국 (일본·러시아 사이)
+- 출처: IEA (2026), Tech-Insider
+
+### 데이터센터 전력 수요 성장률 (YoY)
+
+| 연도 | 전체 데이터센터 | AI 특화 데이터센터 |
+|------|--------------|-----------------|
+| 2025 | +17% | +50% |
+| 2026E | +50~100% | 지속 고성장 |
+
+- 출처: IEA News (2026)
+
+### 인프라 병목 및 그리드 제약
+
+| 항목 | 수치/내용 | 출처 |
+|------|---------|------|
+| 데이터센터 추가 필요 전력 | 92 GW | Deloitte |
+| PJM 전력시장 전기료 인상 | $93억 (2025~26 용량시장) | IEA |
+| 그리드 연결 지연 사례 | 미국 전역 다수 | DOE |
+| 현장 천연가스 발전기 설치 급증 | 주로 미국 | IEA |
+
+### 핵에너지 및 SMR 계약 현황
+
+| 기업 | 계약 규모 | 파트너 | 일정 |
+|------|---------|-------|------|
+| Microsoft | 2 GW | Constellation Energy | ~2040년까지 |
+| Microsoft (Three Mile Island 재가동) | 835 MW | Constellation Energy | 2027년 |
+| Google | 500 MW (6~7기 용융염 SMR) | Kairos Power | 2030년 첫 호기 |
+| Amazon | 5 GW (SMR) | X-energy ($5억 투자) | 2039년까지 |
+
+- 데이터센터-SMR 조건부 계약 파이프라인: 2024년 말 25 GW → 2026년 현재 45 GW
+- 출처: IEA, IAEA, Introl Blog
+
+### 에너지원별 대응 현황
+
+| 에너지원 | 현황 |
+|--------|------|
+| 천연가스 | 단기 공급 대응 주요 수단 (미국 현장 발전기 급증) |
+| 핵에너지(기존) | Three Mile Island 재가동 (835 MW, 2027년) |
+| SMR (소형모듈원자로) | 계약 급증 (45 GW 파이프라인)이나 상용화는 2030년 이후 |
+| 재생에너지 | DOE 클린에너지 조달 확대 지침 발표 |
+
+- 출처: IEA, DOE, ETF Trends
+
+### 전기요금 및 소비자 영향
+
+| 지역/시장 | 영향 | 수치 | 출처 |
+|---------|-----|------|------|
+| PJM 전력시장 (일리노이~노스캐롤라이나) | 2025~26 용량시장 가격 급등 | $93억 인상 | IEA |
+| 데이터센터 전력 계약 방식 | 민간 전력생산자와 직거래 계약 확대 | - | IEA |
+
+### 금리·환율·인플레이션의 반도체 투자 영향
+
+| 요인 | 내용 | 출처 |
+|-----|------|------|
+| 인플레이션 | 지속 고인플레이션으로 금리 인하 전망 지연 | KPMG |
+| 관세 | 반도체 수입관세 25% (2025-01-15 발효) → 비용 상승 | White House |
+| NVIDIA GPU 가격 인상 | AI 가속기 최대 +15%, 게이밍 +5~10% | Silicon Analysts |
+| 글로벌 불확실성 | 미국 관세 정책, 지정학 리스크로 공급망 재편 가속 | KPMG |
+| 설비투자 동향 | 인플레·금리에도 불구 AI 수요로 Capex 증가 지속 (2026: +20%) | Electronics Weekly |
+| 대만-미국 무역 협정 | 대만 반도체 기업 미국 내 투자 $2,500억 확약 | Automotive Logistics |
+
+## 주요 발견
+
+- 2025년 AI 특화 데이터센터 전력 소비 +50% 급증, 전체 데이터센터는 +17% (글로벌 평균 +3% 대비 5.7배)
+- 2026년 데이터센터 전력 소비 약 950~1,100 TWh 전망 (일본 전체 소비량에 근접)
+- 그리드 연결 지연으로 미국 내 현장 천연가스 발전기 설치 급증 — 에너지 효율 저하 우려
+- 데이터센터-SMR 계약 파이프라인 2024년 말 25 GW → 현재 45 GW로 급증
+- SMR 상용화는 2030년 이후: 단기 공백을 천연가스로 메우는 구조
+- Microsoft·Google·Amazon 모두 핵에너지 장기 공급 계약 체결
+- PJM 전력시장에서 데이터센터가 2025~26년 전기료 $93억 인상 유발
+- 데이터센터 신규 설치 필요 전력 92 GW — 그리드 확장 없이는 병목 심화
+- 인플레이션·고금리에도 AI 수요로 반도체 설비투자는 2026년 +20% 성장 전망
+- 반도체 관세 25% 부과(2025-01) → 비용 상승 → NVIDIA GPU 가격 최대 +15% 인상
+
+## 원본 링크
+
+- [Data centre electricity use surged in 2025 | IEA](https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions)
+- [Energy demand from AI | IEA](https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai)
+- [AI Data Centers: 1,000 TWh by 2026 | Tech-Insider](https://tech-insider.org/ai-data-center-power-crisis-2026/)
+- [Nuclear power for AI: inside the data center energy deals | Introl Blog](https://introl.com/blog/nuclear-power-ai-data-centers-microsoft-google-amazon-2025)
+- [SMRs Power AI: $10B Nuclear Data Center Revolution | Introl Blog](https://introl.com/blog/smr-nuclear-power-ai-data-centers-2025)
+- [AI, Data Centers, and the U.S. Electric Grid | Belfer Center](https://www.belfercenter.org/research-analysis/ai-data-centers-us-electric-grid)
+- [Global energy demands within the AI regulatory landscape | Brookings](https://www.brookings.edu/articles/global-energy-demands-within-the-ai-regulatory-landscape/)
+- [Clean Energy Resources to Meet Data Center Electricity Demand | DOE](https://www.energy.gov/oe/clean-energy-resources-meet-data-center-electricity-demand)
+- [What we know about energy use at U.S. data centers | Pew Research](https://www.pewresearch.org/short-reads/2025/10/24/what-we-know-about-energy-use-at-us-data-centers-amid-the-ai-boom/)
+- [Data Centres, AI and Cryptocurrencies Eye Advanced Nuclear | IAEA](https://www.iaea.org/bulletin/data-centres-artificial-intelligence-and-cryptocurrencies-eye-advanced-nuclear-to-meet-growing-power-needs)
+- [2026 Predictions: AI Sparks Data Center Power Revolution | DCK](https://www.datacenterknowledge.com/operations-and-management/2026-predictions-ai-sparks-data-center-power-revolution)
+- [2026 semiconductor capex to increase 20% YoY | Electronics Weekly](https://www.electronicsweekly.com/news/business/semiconductor-capex-2026-04/)
+- [US Announces Tariffs on Semiconductor Imports | GEODIS](https://geodis.com/us-en/resources/customs-corner/us-announces-tariffs-certain-semiconductor-imports-protect-national)

@@ -3,7 +3,7 @@
 > 수집된 모든 데이터의 중앙 인덱스. 데이터 추가/수정 시 반드시 이 파일도 업데이트.
 
 **마지막 업데이트**: 2026-05-05  
-**총 데이터 항목**: 0개
+**총 데이터 항목**: 15개
 
 ---
 
@@ -11,30 +11,123 @@
 
 | 카테고리 | 항목 수 | 디렉토리 |
 |---------|--------|---------|
-| 시장 데이터 | 0 | `data/market/` |
-| 산업 보고서 | 0 | `data/industry/` |
-| 기술 트렌드 | 0 | `data/technology/` |
-| 경쟁사 분석 | 0 | `data/competitors/` |
-| 거시경제 | 0 | `data/macro/` |
-| 정책/규제 | 0 | `data/policy/` |
+| 시장 데이터 | 4 | `data/market/` |
+| 산업/기술 트렌드 | 3 | `data/technology/` |
+| 경쟁사 분석 | 4 | `data/competitors/` |
+| 거시경제/AI수요 | 4 | `data/macro/` |
+| 정책/규제 | 4 | `data/policy/` |
 
 ---
 
-## 데이터 항목
+## 시장 데이터 (`data/market/`)
 
-> (Research Agent가 데이터 수집 후 아래에 추가)
+### market-overview.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #market #DRAM #NAND #forecast
+- **요약**: 2024년 글로벌 메모리 시장 $1,700억(역대 최고). TrendForce 기준 2026년 $5,516억, 2027년 $8,427억 전망. AI 슈퍼사이클로 2027년까지 공급 부족 지속 예상.
+- **출처**: Yole Group, TrendForce, Grand View Research, IDC
 
-### 형식 안내
-```
-### [데이터명]
-- **파일/링크**: 경로 또는 URL
-- **수집일**: YYYY-MM-DD
-- **출처**: 기관명
-- **신뢰도**: High / Medium / Low
-- **태그**: #태그1 #태그2
-- **요약**: 2~3줄 핵심 내용
-```
+### hbm-market.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #HBM #AI #market-share
+- **요약**: 2025년 HBM 매출 ~$340억(전년 2배). SK하이닉스 57~62%, Micron 21%, 삼성 17~22% (삼성 점유율 역전 상태). 2030년 CAGR 33%.
+- **출처**: Yole Group, BofA, Counterpoint Research
+
+### price-trends.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #price #DRAM #NAND #cycle
+- **요약**: 2026 Q1 DRAM 계약가 +55~60% QoQ (역대 최대 분기 상승폭). HBM4 단가 ~$500/개(HBM3E 대비 +67%). NAND +33~38% QoQ.
+- **출처**: TrendForce, NAND Research, Tom's Hardware
+
+### ai-server-demand.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #AI #server #demand #GPU
+- **요약**: AI가 2026년 전체 DRAM 웨이퍼 소비의 ~20% 차지. GPU당 HBM 탑재량이 기존 HPC 대비 7배. NVIDIA H200→B200으로 전환 시 HBM 탑재량 대폭 증가.
+- **출처**: TrendForce, SK하이닉스, Avnet, Oxford Economics
 
 ---
 
-*데이터 없음 — Research Agent 실행 후 채워집니다*
+## 기술 트렌드 (`data/technology/`)
+
+### hbm-roadmap.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #HBM #roadmap #Samsung #SKhynix #Micron
+- **요약**: HBM3E→HBM4 전환 진행 중. SK하이닉스 HBM4 Q3 2026 램프업(62% 점유). 삼성 2026년 2월 HBM4 양산 개시(3.3TB/s). 마이크론 2026 HBM4 연매출 $80억 전망.
+- **출처**: SK하이닉스 IR, Micron IR, TrendForce
+
+### dram-technology.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #DDR5 #DDR6 #LPDDR6 #process #EUV
+- **요약**: DDR5 보급률 2025년 45~50%. DDR6 2027년 대규모 상용화 예정. DRAM 1a→1b→1c→1d 미세공정 로드맵. 3D DRAM 상용화 2033~2034년 전망.
+- **출처**: JEDEC, TrendForce, Yole
+
+### emerging-tech.md
+- **수집일**: 2026-05-05 | **신뢰도**: Medium | **태그**: #CXL #PIM #NAND #emerging
+- **요약**: CXL 시장 2025년 $13억 → 2028년 $160억. 삼성/SK하이닉스 PIM 기술 경쟁(2배 성능, 70% 전력절감). NAND 300층+ 경쟁(SK하이닉스 321층 선두).
+- **출처**: CXL Consortium, SK하이닉스, 삼성전자 IR
+
+---
+
+## 경쟁사 분석 (`data/competitors/`)
+
+### sk-hynix.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #SKhynix #HBM #competitor #market-leader
+- **요약**: 2025년 매출 97조원(영업이익률 49%). HBM4 세계 최초 개발 완료(2025년 9월). Q2 2025 HBM 점유 62%. 2025 Q1에 33년 만에 삼성 DRAM 매출 추월.
+- **출처**: SK하이닉스 IR, TrendForce, Counterpoint
+
+### micron.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #Micron #HBM #CHIPS-Act #US
+- **요약**: FY2025 매출 $374억(역대 최고). HBM3E 점유율 21%(Q2 2025). CHIPS Act $61.65억 확정. NY/Idaho 팹 $1,000억+ 장기 투자.
+- **출처**: Micron IR, NIST, S&P Global
+
+### market-share.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #market-share #DRAM #HBM #삼성 #역전
+- **요약**: 2025년 SK하이닉스가 33년 만에 DRAM 매출에서 삼성 추월. 삼성 HBM 점유율 17~22%로 3위. DRAM 전체 점유율은 삼성 42%로 여전히 1위.
+- **출처**: TrendForce, Counterpoint Research
+
+### china-competitors.md
+- **수집일**: 2026-05-05 | **신뢰도**: Medium | **태그**: #China #CXMT #YMTC #risk
+- **요약**: CXMT DRAM 글로벌 점유율 8%(Q3 2025), DDR5-8000 기술 시연. YMTC NAND 13% 출하 점유, 294층 기술. 미국 수출 규제에도 불구 급성장 중.
+- **출처**: TrendForce, S&P Global, NAND Research
+
+---
+
+## 거시경제/AI수요 (`data/macro/`)
+
+### ai-capex.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #BigTech #Capex #AI #datacenter
+- **요약**: 빅테크 4사(Google·MS·Amazon·Meta) 2026년 합산 AI Capex $650~725B, 2027년 $1조 돌파 전망. Q1 2026 클라우드 매출 강세(Google Cloud +63%, AWS +28%).
+- **출처**: 각사 IR, Evercore, BofA
+
+### semiconductor-cycle.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #cycle #forecast #2028 #supercycle
+- **요약**: 글로벌 반도체 2026년 ~$975B, 2028년 $1T 전망. DRAM +51% / NAND +45% (2026). HBM $35B→$100B (2028). 2028~2029년 공급과잉 리스크 대두.
+- **출처**: BofA, Gartner, TrendForce
+
+### ai-demand-sustainability.md
+- **수집일**: 2026-05-05 | **신뢰도**: Medium | **태그**: #AI-bubble #demand #sustainability #risk
+- **요약**: 거품론: NBER 기업 90% AI 생산성 미체감, MIT 엔터프라이즈 95% ROI 미실현. 낙관론: 빅테크 Capex 지속 상향. 관세로 NVIDIA 중국 점유율 90%→50% 급락.
+- **출처**: NBER, MIT, Bloomberg, Reuters
+
+### energy-constraints.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #energy #power #SMR #nuclear #constraint
+- **요약**: 2026년 AI 데이터센터 전력 950~1,100 TWh(IEA). 빅테크 SMR/핵에너지 계약(MS 2GW, Amazon 5GW). 단기는 천연가스, 상용화는 2030년 이후. GPU 관세 최대 +15%.
+- **출처**: IEA, Microsoft IR, Amazon IR, Bloomberg
+
+---
+
+## 정책/규제 (`data/policy/`)
+
+### us-export-controls.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #export-control #US-China #BIS #risk
+- **요약**: 미국의 對중국 반도체 수출 통제 지속 강화. HBM 포함 첨단 메모리 규제 범위 확대. 삼성 중국 시안(NAND) 팹 운영 불확실성 증가.
+- **출처**: BIS, Reuters, SEMI
+
+### chips-act.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #CHIPS-Act #subsidy #Texas #Samsung
+- **요약**: 삼성전자 텍사스 팹 CHIPS Act 보조금 협상 진행 중. Micron은 $61.65억 확정. TSMC $66억 확정. 삼성 지연 이슈로 보조금 규모 불확실.
+- **출처**: NIST, Reuters, Bloomberg
+
+### china-policy.md
+- **수집일**: 2026-05-05 | **신뢰도**: Medium | **태그**: #China #자립 #CXMT #YMTC #정책
+- **요약**: 중국 반도체 자립 정책($1,500억+ 펀드). CXMT/YMTC 정부 지원으로 급성장. 미국 규제 회피 우회 전략 지속. 중장기 저가 공세로 메모리 시장 교란 가능.
+- **출처**: CSIS, Reuters, TrendForce
+
+### korea-policy.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #Korea #K반도체 #세제 #정책
+- **요약**: 한국 K-반도체 전략: 용인 클러스터 조성, R&D 세액공제 25%. 삼성·SK하이닉스 국내 투자 유지 인센티브. 대미 협력 강화로 수출 규제 완충 노력.
+- **출처**: 산업통상자원부, 기획재정부, KOTRA
