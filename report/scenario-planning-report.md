@@ -223,10 +223,10 @@ quadrantChart
     quadrant-3 D Quiet Restructuring
     quadrant-4 B AI Renaissance
     A Golden Fortress 25-30pct: [0.78, 0.80]
-    B AI Renaissance 30-35pct: [0.78, 0.22]
+    B AI Renaissance 30-35pct: [0.88, 0.15]
     C Tech Cold War 10-15pct: [0.22, 0.80]
     D Quiet Restructuring 20-25pct: [0.22, 0.22]
-    E Paradigm Shift 5-10pct: [0.72, 0.50]
+    E Paradigm Shift 5-10pct: [0.55, 0.52]
 ```
 
 > **X축 (DF1)**: AI 수요 약화 ← → AI 수요 지속  
