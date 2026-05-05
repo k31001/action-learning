@@ -218,10 +218,10 @@ quadrantChart
     title Scenario Matrix (DF1 x DF2)
     x-axis AI Demand Decline --> AI Demand Growth
     y-axis Coexistence --> US-China Decoupling
-    quadrant-1 A: Golden Fortress
-    quadrant-2 C: Tech Cold War
-    quadrant-3 D: Quiet Restructuring
-    quadrant-4 B: AI Renaissance
+    quadrant-1 A Golden Fortress
+    quadrant-2 C Tech Cold War
+    quadrant-3 D Quiet Restructuring
+    quadrant-4 B AI Renaissance
     A Golden Fortress 25-30pct: [0.78, 0.80]
     B AI Renaissance 30-35pct: [0.78, 0.22]
     C Tech Cold War 10-15pct: [0.22, 0.80]
