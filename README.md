@@ -123,3 +123,9 @@ action-learning/
 
 프로젝트 가이드라인은 [`CLAUDE.md`](CLAUDE.md) 참조.  
 모든 사용자 지시 누적 로그는 [`PROMPT.md`](PROMPT.md) 참조.
+
+---
+
+## Early Warning Indicator
+
+https://action-learning.vercel.app
