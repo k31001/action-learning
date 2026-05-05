@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
+import { triggerAutoUpdate } from './hooks/useMarketData'
 import Header from './components/Header'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
@@ -24,6 +25,34 @@ export default function App() {
   } = useStore()
 
   const [mainTab, setMainTab] = useState('market')
+
+  // On mount: apply any already-computed auto-update results from server cache
+  useEffect(() => {
+    fetch('/api/auto-update/all')
+      .then(r => r.ok ? r.json() : {})
+      .then(all => {
+        Object.entries(all).forEach(([id, result]) => {
+          if (result.ok && result.value != null) {
+            const indicator = indicators.find(i => i.autoUpdateId === id)
+            if (indicator) {
+              updateIndicator(indicator.id, result.value, result.note ?? '')
+            }
+          }
+        })
+      })
+      .catch(() => {})
+  // Run once on mount — indicators list identity is stable from useStore
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Manual "업데이트" button handler wired to IndicatorCard
+  const handleAutoUpdate = useCallback(async (autoUpdateId) => {
+    const result = await triggerAutoUpdate(autoUpdateId)
+    const indicator = indicators.find(i => i.autoUpdateId === autoUpdateId)
+    if (indicator && result.value != null) {
+      updateIndicator(indicator.id, result.value, result.note ?? '')
+    }
+  }, [indicators, updateIndicator])
 
   return (
     <div className="min-h-screen bg-gray-950">
@@ -98,7 +127,7 @@ export default function App() {
             {mainTab === 'ewi' && (
               <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
                 <h2 className="text-sm font-semibold text-gray-200 mb-4">EWI 수동 지표</h2>
-                <IndicatorGrid indicators={indicators} onUpdate={updateIndicator} />
+                <IndicatorGrid indicators={indicators} onUpdate={updateIndicator} onAutoUpdate={handleAutoUpdate} />
               </div>
             )}
             {mainTab === 'triggers' && (

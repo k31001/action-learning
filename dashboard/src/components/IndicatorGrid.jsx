@@ -8,7 +8,7 @@ const CATEGORY_LABELS = {
   annual: { label: '연간 검토', color: 'text-orange-400', dot: 'bg-orange-400' },
 }
 
-export default function IndicatorGrid({ indicators, onUpdate }) {
+export default function IndicatorGrid({ indicators, onUpdate, onAutoUpdate }) {
   const [editing, setEditing] = useState(null)
   const [filter, setFilter] = useState('all')
 
@@ -72,6 +72,7 @@ export default function IndicatorGrid({ indicators, onUpdate }) {
                   key={ind.id}
                   indicator={ind}
                   onEdit={setEditing}
+                  onAutoUpdate={onAutoUpdate}
                 />
               ))}
             </div>

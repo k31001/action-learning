@@ -49,3 +49,14 @@ export function useHbmShare() {
 export function useApiHealth() {
   return useFetch(`${BASE}/health`)
 }
+
+export function useAutoUpdateAll() {
+  return useFetch(`${BASE}/auto-update/all`)
+}
+
+export async function triggerAutoUpdate(indicatorId) {
+  const res = await fetch(`${BASE}/auto-update/${encodeURIComponent(indicatorId)}`, { method: 'POST' })
+  const json = await res.json().catch(() => ({}))
+  if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`)
+  return json
+}

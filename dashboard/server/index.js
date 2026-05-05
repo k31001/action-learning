@@ -141,6 +141,113 @@ app.get('/api/hbm-share', (_req, res) => {
   res.json(JSON.parse(readFileSync(path.join(__dirname, 'data/hbm-share.json'), 'utf8')))
 })
 
+// ── Auto-update handlers for EWI indicators ───────────────────────────────────
+const AUTO_UPDATE_HANDLERS = {
+  // CapEx YoY: latest quarter vs 4 quarters ago from seeded data
+  async bigtech_capex_growth() {
+    const capex = JSON.parse(readFileSync(path.join(__dirname, 'data/capex.json'), 'utf8'))
+    const q = capex.quarterly
+    if (q.length < 5) throw new Error('quarterly 데이터 부족')
+    const latest   = q[q.length - 1]
+    const yearAgo  = q[q.length - 5]
+    const growth   = +((latest.total - yearAgo.total) / yearAgo.total * 100).toFixed(1)
+    return {
+      value: growth,
+      note: `${latest.period}($${latest.total}B) vs ${yearAgo.period}($${yearAgo.total}B) YoY`,
+      source: '분기 실적 시드 데이터 자동 계산',
+      isProxy: false,
+    }
+  },
+
+  // Samsung HBM share: latest entry from seeded data
+  async samsung_hbm_share() {
+    const hbm = JSON.parse(readFileSync(path.join(__dirname, 'data/hbm-share.json'), 'utf8'))
+    const latest = hbm.data[hbm.data.length - 1]
+    return {
+      value: latest.samsung,
+      note: `최신 분기: ${latest.period} | SK하이닉스 ${latest.skhynix}% | 마이크론 ${latest.micron}%`,
+      source: 'TrendForce 집계 시드 데이터',
+      isProxy: false,
+    }
+  },
+
+  // HBM 현물 가격 proxy: NVDA 6-month stock change
+  async hbm_spot_price_change() {
+    const hist = cacheGet('hist_NVDA')
+    if (!hist?.history?.length) throw new Error('NVDA 캐시 없음 — 먼저 시장 데이터를 로드하세요')
+    const h = hist.history
+    const cur    = h[h.length - 1]
+    const sixMo  = h[Math.max(0, h.length - 26)]   // ~26주 = 6개월
+    const change = +((cur.close - sixMo.close) / sixMo.close * 100).toFixed(1)
+    return {
+      value: change,
+      note: `NVDA ${sixMo.date}→${cur.date}: $${sixMo.close}→$${cur.close}`,
+      source: 'Yahoo Finance (NVDA 6개월 프록시)',
+      isProxy: true,
+    }
+  },
+
+  // NVIDIA HBM order change proxy: NVDA 3-month momentum
+  async nvidia_hbm_order_change() {
+    const hist = cacheGet('hist_NVDA')
+    if (!hist?.history?.length) throw new Error('NVDA 캐시 없음')
+    const h = hist.history
+    const cur    = h[h.length - 1]
+    const thrMo  = h[Math.max(0, h.length - 13)]   // ~13주 = 3개월
+    const change = +((cur.close - thrMo.close) / thrMo.close * 100).toFixed(1)
+    return {
+      value: change,
+      note: `NVDA ${thrMo.date}→${cur.date}: $${thrMo.close}→$${cur.close}`,
+      source: 'Yahoo Finance (NVDA 3개월 모멘텀 프록시)',
+      isProxy: true,
+    }
+  },
+}
+
+// Run all auto-update handlers and store results
+async function runAutoUpdates() {
+  const results = {}
+  for (const [id, handler] of Object.entries(AUTO_UPDATE_HANDLERS)) {
+    try {
+      const result = await handler()
+      results[id] = { ...result, updatedAt: new Date().toISOString(), ok: true }
+      console.log(`[EWI] auto-update ✓ ${id}: ${result.value}`)
+    } catch (e) {
+      results[id] = { ok: false, error: e.message, updatedAt: new Date().toISOString() }
+      console.warn(`[EWI] auto-update ✗ ${id}: ${e.message}`)
+    }
+  }
+  writeFileSync(path.join(CACHE_DIR, 'auto_updates.json'), JSON.stringify(results, null, 2))
+  return results
+}
+
+// ── Routes: auto-update ───────────────────────────────────────────────────────
+// GET all latest auto-update results (for frontend on load)
+app.get('/api/auto-update/all', (_req, res) => {
+  const file = path.join(CACHE_DIR, 'auto_updates.json')
+  if (!existsSync(file)) return res.json({})
+  try { res.json(JSON.parse(readFileSync(file, 'utf8'))) }
+  catch { res.json({}) }
+})
+
+// POST trigger single auto-update (manual "업데이트" button)
+app.post('/api/auto-update/:indicatorId', async (req, res) => {
+  const { indicatorId } = req.params
+  const handler = AUTO_UPDATE_HANDLERS[indicatorId]
+  if (!handler) return res.status(404).json({ error: `No auto-update handler for ${indicatorId}` })
+  try {
+    const result = await handler()
+    const all = existsSync(path.join(CACHE_DIR, 'auto_updates.json'))
+      ? JSON.parse(readFileSync(path.join(CACHE_DIR, 'auto_updates.json'), 'utf8'))
+      : {}
+    all[indicatorId] = { ...result, updatedAt: new Date().toISOString(), ok: true }
+    writeFileSync(path.join(CACHE_DIR, 'auto_updates.json'), JSON.stringify(all, null, 2))
+    res.json({ ...result, ok: true, updatedAt: all[indicatorId].updatedAt })
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message })
+  }
+})
+
 // ── Cache warm-up ─────────────────────────────────────────────────────────────
 async function warmCache() {
   console.log('[EWI] Warming cache…')
@@ -152,10 +259,20 @@ async function warmCache() {
   catch (e) { console.warn('[EWI] ✗ quotes:', e.message) }
 }
 
+// 주가 캐시: 4시간마다
 cron.schedule('0 */4 * * *', warmCache)
 
+// EWI 지표 자동 업데이트: 매일 오전 9시 (KST = UTC+9, so 00:00 UTC)
+cron.schedule('0 0 * * *', async () => {
+  console.log('[EWI] Daily auto-update started')
+  await runAutoUpdates()
+  console.log('[EWI] Daily auto-update done')
+})
+
 const PORT = 3001
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`[EWI] API server on :${PORT}`)
-  warmCache().catch(console.warn)
+  // Warm stock cache first, then run auto-updates (some depend on stock cache)
+  await warmCache().catch(console.warn)
+  await runAutoUpdates().catch(console.warn)
 })

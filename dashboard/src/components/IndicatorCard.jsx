@@ -1,4 +1,5 @@
-import { Pencil, TrendingDown, TrendingUp, Minus } from 'lucide-react'
+import { useState } from 'react'
+import { Pencil, TrendingDown, TrendingUp, Minus, RefreshCw } from 'lucide-react'
 
 const STATUS_CONFIG = {
   normal: {
@@ -84,8 +85,23 @@ function formatValue(indicator) {
   return `${Number(v).toLocaleString('ko-KR', { maximumFractionDigits: 1 })} ${indicator.unit !== 'status' ? indicator.unit : ''}`
 }
 
-export default function IndicatorCard({ indicator, onEdit }) {
+export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
   const cfg = STATUS_CONFIG[indicator.status] || STATUS_CONFIG.unknown
+  const [updating, setUpdating] = useState(false)
+  const [updateError, setUpdateError] = useState(null)
+
+  async function handleAutoUpdate() {
+    if (!onAutoUpdate || updating) return
+    setUpdating(true)
+    setUpdateError(null)
+    try {
+      await onAutoUpdate(indicator.autoUpdateId)
+    } catch (e) {
+      setUpdateError(e.message)
+    } finally {
+      setUpdating(false)
+    }
+  }
 
   return (
     <div
@@ -103,14 +119,31 @@ export default function IndicatorCard({ indicator, onEdit }) {
               핵심
             </span>
           )}
+          {indicator.autoUpdateIsProxy && (
+            <span className="text-xs px-2 py-0.5 rounded-full bg-amber-950/60 text-amber-400 ring-1 ring-amber-500/30 font-medium" title="직접 데이터 대신 프록시 지표 사용">
+              프록시
+            </span>
+          )}
         </div>
-        <button
-          onClick={() => onEdit(indicator)}
-          className="shrink-0 p-1.5 rounded-lg hover:bg-gray-700/60 text-gray-500 hover:text-gray-200 transition-colors"
-          title="업데이트"
-        >
-          <Pencil size={13} />
-        </button>
+        <div className="flex items-center gap-1 shrink-0">
+          {indicator.autoUpdateId && (
+            <button
+              onClick={handleAutoUpdate}
+              disabled={updating}
+              className="p-1.5 rounded-lg hover:bg-gray-700/60 text-gray-500 hover:text-blue-400 transition-colors disabled:opacity-40"
+              title="자동 업데이트"
+            >
+              <RefreshCw size={13} className={updating ? 'animate-spin' : ''} />
+            </button>
+          )}
+          <button
+            onClick={() => onEdit(indicator)}
+            className="p-1.5 rounded-lg hover:bg-gray-700/60 text-gray-500 hover:text-gray-200 transition-colors"
+            title="수동 입력"
+          >
+            <Pencil size={13} />
+          </button>
+        </div>
       </div>
 
       {/* Name */}
@@ -141,6 +174,20 @@ export default function IndicatorCard({ indicator, onEdit }) {
             </span>
           ))}
           <span className="text-xs text-gray-500 self-center">{indicator.scenarioText}</span>
+        </div>
+      )}
+
+      {/* Auto-update source label */}
+      {indicator.autoUpdateSource && (
+        <div className="text-xs text-gray-600 mb-1">
+          <span className="text-gray-700">자동출처:</span> {indicator.autoUpdateSource}
+        </div>
+      )}
+
+      {/* Auto-update error */}
+      {updateError && (
+        <div className="text-xs text-red-400 bg-red-950/30 rounded px-2 py-1 mb-2">
+          업데이트 실패: {updateError}
         </div>
       )}
 
