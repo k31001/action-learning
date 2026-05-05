@@ -69,3 +69,42 @@
 ## 2026-05-05: PROMPT.md 누락분 로깅 및 로깅 규칙 확인
 
 지금까지 요청한 프롬프트들을 PROMPT.md 파일에 로깅해주고, 앞으로도 계속 로깅은 잊지 말아줘.
+
+---
+
+## 2026-05-05: 대규모 멀티파일 수정 지시
+
+다음 7개 파일에 대한 수정 요청:
+
+1. **README.md**: 상세 내용 추가, Canva 관련 내용 제거
+
+2. **CLAUDE.md**: Canva 참조 제거, Mermaid 다이어그램 가이드라인 추가 (기본 지침에 포함)
+
+3. **report/scenario-planning-report.md** 다수 변경:
+   - Executive Summary: AI 개발 효율화 섹션 추가 (모든 전략의 선행 조건으로 명시)
+   - 숫자 형식: 억 표기 → B 형식으로 전환 ($5,516억 → $551.6B 등)
+   - 약어 각주 추가: VEU, MATCH, BIS, P&L, FCF, EWI 등
+   - 시나리오 매트릭스: ASCII art → Mermaid 다이어그램 교체
+   - Section 6.1 MB-4: CMX/SCADA 내용 추가
+   - Section 6.4 포트폴리오 매트릭스: ✅ 기준 강화 (과도한 ✅ 정리)
+   - Decision 2 "HBM 사업부 독립 P&L 조직 전환" 제거
+   - Section 8.2 Call to Action: 부문별(전략기획/마케팅/인사/제조/연구/개발) 재작성
+
+4. **analysis/scenarios/strategy.md** 다수 변경:
+   - RS6 + RS7 단일 전략으로 병합 (재무 규율 + 초과이익 재투자 통합 패키지)
+   - 포트폴리오 매트릭스 ✅ 기준 강화
+   - RS 상호의존 관계도 추가 (Mermaid flowchart)
+   - CMX/SCADA 내용 보강
+
+5. **data/competitors/*.md** 4개 파일: 경쟁사 투자 전략 벤치마킹 데이터 추가 (서브에이전트가 수행)
+   - sk-hynix.md: HBM 캐파 투자 전략, NVIDIA 파트너십 심화 과정
+   - micron.md: CHIPS Act 활용 구조, 고객 공동투자 모델
+   - china-competitors.md: 빅펀드 구조, YMTC DRAM 진출 위협
+   - market-share.md: CapEx·R&D 비교 테이블, SanDisk+Kioxia JV 모델 분석
+
+6. **presentation/slide-outline.md**: 위 모든 변경사항 반영
+   - 슬라이드 3: 5개 즉시 결정 목록 업데이트 (HBM 조직 독립 제거, AI 개발 효율화 추가)
+   - 슬라이드 4: 숫자 형식 B 표기로 통일
+   - 슬라이드 19 MB-4: CMX/SCADA 추가
+   - 슬라이드 23: 결정 목록 업데이트
+   - 슬라이드 25 Call to Action: 부문별 6개 카드 그리드로 재구성

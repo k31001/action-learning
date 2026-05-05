@@ -3,7 +3,7 @@
 ## 프로젝트 정보
 - **주제**: 삼성전자 메모리사업부 불확실성 대응 전략 (시나리오 플래닝)
 - **방법론**: Shell 시나리오 플래닝
-- **최종 산출물**: 전략 보고서(Markdown) + 발표자료(PowerPoint via Canva MCP)
+- **최종 산출물**: 전략 보고서(Markdown) + 슬라이드 기획서(Markdown) + 발표자료(PowerPoint)
 
 ## 필수 규칙
 
@@ -50,8 +50,14 @@
 
 ### PowerPoint 제작
 - 1차: `presentation/slide-outline.md`에 슬라이드별 상세 기획
-- 2차: Canva MCP (`mcp__b3b23031-*__generate-design`) 활용
+- 2차: python-pptx 또는 외부 도구로 생성 (Canva MCP 미사용)
 - 데이터 차트: Python matplotlib/plotly로 생성 후 삽입
+
+### Mermaid 다이어그램
+- 시나리오 매트릭스, 전략 상관관계 등 시각적 다이어그램은 Mermaid 문법으로 작성
+- Markdown 파일 내 ` ```mermaid ` 코드 블록 사용
+- 지원 다이어그램 유형: flowchart, quadrantChart, graph, gitGraph 등
+- 복잡한 매트릭스(2×2)는 Mermaid quadrantChart 또는 graph 사용
 
 ## 언어
 - 모든 문서는 한국어 작성 (기술 용어는 영어 병기 허용)
