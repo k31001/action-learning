@@ -214,34 +214,22 @@ DF1(AI 수요 구조)과 DF2(미중 지정학 강도)는 각각 기술·경제 �
 ### 5.1 시나리오 매트릭스
 
 ```mermaid
-graph TB
-    subgraph TOP["🔺 미중 디커플링 심화 (DF2)"]
-        direction LR
-        C["🧊 시나리오 C<br/><b>기술 냉전</b><br/>AI 붕괴 + 디커플링<br/>확률 10~15%<br/>이중 충격 — 최악"]
-        A["🏰 시나리오 A<br/><b>황금 요새</b><br/>AI 지속 + 디커플링<br/>확률 25~30%<br/>고마진·고리스크"]
-    end
-    subgraph BOTTOM["🔻 관리된 공존 (DF2)"]
-        direction LR
-        D["🌅 시나리오 D<br/><b>조용한 재편</b><br/>AI 붕괴 + 공존<br/>확률 20~25%<br/>2022~2023형 다운사이클"]
-        B["⭐ 시나리오 B<br/><b>AI 르네상스</b><br/>AI 지속 + 공존<br/>확률 30~35%<br/><u>Main Bet</u>"]
-    end
-    subgraph WILD["🃏 와일드카드"]
-        E["🔮 시나리오 E<br/><b>패러다임 전환</b><br/>AI 지속 + HBM 붕괴<br/>확률 5~10%<br/>3D DRAM·CXL로 대체"]
-    end
-
-    DF1_L["◀ AI 거품 붕괴 (DF1)"] -.->|"왼쪽 절반"| C
-    DF1_L -.->|"왼쪽 절반"| D
-    DF1_R["AI 수요 지속 (DF1) ▶"] -.->|"오른쪽 절반"| A
-    DF1_R -.->|"오른쪽 절반"| B
-
-    style B fill:#1a6b3c,color:#fff,stroke:#0d4a28
-    style E fill:#6b3c1a,color:#fff,stroke:#4a280d
-    style C fill:#6b1a1a,color:#fff,stroke:#4a0d0d
-    style A fill:#1a3c6b,color:#fff,stroke:#0d284a
-    style D fill:#3c3c3c,color:#fff,stroke:#1a1a1a
+quadrantChart
+    title 시나리오 매트릭스: DF1(AI 수요) × DF2(미중관계)
+    x-axis AI 거품 붕괴 --> AI 수요 지속
+    y-axis 관리된 공존 --> 미중 디커플링 심화
+    quadrant-1 A 황금 요새 (25~30%)
+    quadrant-2 C 기술 냉전 (10~15%)
+    quadrant-3 D 조용한 재편 (20~25%)
+    quadrant-4 B AI 르네상스 — Main Bet (30~35%)
+    시나리오 A 황금 요새: [0.78, 0.80]
+    시나리오 B ⭐ Main Bet: [0.78, 0.22]
+    시나리오 C 기술 냉전: [0.22, 0.80]
+    시나리오 D 조용한 재편: [0.22, 0.22]
+    시나리오 E 🃏 패러다임 전환: [0.72, 0.50]
 ```
 
-※ 시나리오 E "패러다임 전환": AI 수요는 지속되지만 HBM이 3D DRAM·CXL 메모리 패브릭으로 대체되는 기술 불연속(DF3 Pole B).
+※ 시나리오 E "패러다임 전환" (와일드카드): AI 수요는 지속되지만 HBM이 3D DRAM·CXL 메모리 패브릭으로 대체되는 기술 불연속(DF3 Pole B). 어느 사분면에도 완전히 속하지 않아 우측 중앙에 위치.
 
 | 시나리오 | DF1 | DF2 | 확률 | 삼성 함의 핵심 |
 |---------|-----|-----|------|-------------|
