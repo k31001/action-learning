@@ -3,7 +3,7 @@
 > 수집된 모든 데이터의 중앙 인덱스. 데이터 추가/수정 시 반드시 이 파일도 업데이트.
 
 **마지막 업데이트**: 2026-05-05  
-**총 데이터 항목**: 15개
+**총 데이터 항목**: 16개
 
 ---
 
@@ -12,7 +12,7 @@
 | 카테고리 | 항목 수 | 디렉토리 |
 |---------|--------|---------|
 | 시장 데이터 | 4 | `data/market/` |
-| 산업/기술 트렌드 | 3 | `data/technology/` |
+| 산업/기술 트렌드 | 4 | `data/technology/` |
 | 경쟁사 분석 | 4 | `data/competitors/` |
 | 거시경제/AI수요 | 4 | `data/macro/` |
 | 정책/규제 | 4 | `data/policy/` |
@@ -59,6 +59,11 @@
 - **수집일**: 2026-05-05 | **신뢰도**: Medium | **태그**: #CXL #PIM #NAND #emerging
 - **요약**: CXL 시장 2025년 $13억 → 2028년 $160억. 삼성/SK하이닉스 PIM 기술 경쟁(2배 성능, 70% 전력절감). NAND 300층+ 경쟁(SK하이닉스 321층 선두).
 - **출처**: CXL Consortium, SK하이닉스, 삼성전자 IR
+
+### nvidia-cmx-scada.md
+- **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #CMX #SCADA #NVIDIA #KV-cache #AI-storage #SSD #PCIe-Gen6
+- **요약**: NVIDIA CMX(Context Memory Storage Platform): BlueField-4 기반 KV 캐시 오프로드 플랫폼. 삼성 PM1753 공식 공급 SSD. SCADA(Scaled Accelerated Data Access): GPU 네이티브 스토리지로 2.3억 IOPS 달성(SC'25). SK하이닉스·Kioxia가 NVIDIA AI SSD 전략 파트너 — 삼성전자 SLC AI SSD 전략 수립 시급.
+- **출처**: NVIDIA 공식 기술 블로그, Micron IR, Samsung Semiconductor 기술 블로그, TrendForce
 
 ---
 
