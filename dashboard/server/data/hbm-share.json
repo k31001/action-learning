@@ -1,0 +1,41 @@
+{
+  "title": "HBM 시장 점유율 분기별 추이",
+  "unit": "%",
+  "source": "TrendForce, Counterpoint Research, Korea Herald 집계",
+  "note": "2026 이후는 추정치",
+  "data": [
+    { "period": "2022Q4", "samsung": 40, "skhynix": 52, "micron": 8 },
+    { "period": "2023Q1", "samsung": 40, "skhynix": 51, "micron": 9 },
+    { "period": "2023Q2", "samsung": 40, "skhynix": 51, "micron": 9 },
+    { "period": "2023Q3", "samsung": 40, "skhynix": 51, "micron": 9 },
+    { "period": "2023Q4", "samsung": 38, "skhynix": 53, "micron": 9 },
+    { "period": "2024Q1", "samsung": 30, "skhynix": 56, "micron": 14 },
+    { "period": "2024Q2", "samsung": 25, "skhynix": 58, "micron": 17 },
+    { "period": "2024Q3", "samsung": 22, "skhynix": 60, "micron": 18 },
+    { "period": "2024Q4", "samsung": 18, "skhynix": 61, "micron": 21 },
+    { "period": "2025Q1", "samsung": 17, "skhynix": 62, "micron": 21 },
+    { "period": "2025Q2", "samsung": 17, "skhynix": 62, "micron": 21 },
+    { "period": "2025Q3", "samsung": 35, "skhynix": 53, "micron": 11 },
+    { "period": "2025Q4", "samsung": 36, "skhynix": 52, "micron": 12 },
+    { "period": "2026Q1", "samsung": 37, "skhynix": 51, "micron": 12 }
+  ],
+  "dram_share": {
+    "note": "DRAM 전체 시장 점유율",
+    "data": [
+      { "period": "2022Q4", "samsung": 43, "skhynix": 28, "micron": 24 },
+      { "period": "2023Q1", "samsung": 43, "skhynix": 28, "micron": 25 },
+      { "period": "2023Q2", "samsung": 42, "skhynix": 29, "micron": 25 },
+      { "period": "2023Q3", "samsung": 41, "skhynix": 30, "micron": 25 },
+      { "period": "2023Q4", "samsung": 40, "skhynix": 31, "micron": 25 },
+      { "period": "2024Q1", "samsung": 38, "skhynix": 33, "micron": 25 },
+      { "period": "2024Q2", "samsung": 36, "skhynix": 34, "micron": 26 },
+      { "period": "2024Q3", "samsung": 34, "skhynix": 35, "micron": 27 },
+      { "period": "2024Q4", "samsung": 33, "skhynix": 35, "micron": 28 },
+      { "period": "2025Q1", "samsung": 33, "skhynix": 36, "micron": 28 },
+      { "period": "2025Q2", "samsung": 32.6, "skhynix": 33.2, "micron": 25.7 },
+      { "period": "2025Q3", "samsung": 32.8, "skhynix": 33.0, "micron": 25.5 },
+      { "period": "2025Q4", "samsung": 33.2, "skhynix": 32.8, "micron": 25.5 },
+      { "period": "2026Q1", "samsung": 33.5, "skhynix": 32.5, "micron": 25.5 }
+    ]
+  }
+}

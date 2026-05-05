@@ -1,5 +1,17 @@
 // EWI 초기 데이터 — 시나리오 플래닝 보고서 기준 (2026-05-05)
 
+// ── 4사분면 포지션 히스토리 ────────────────────────────────────────────────────
+// DF1 (df1): AI 수요 강도  -10(버블붕괴) ~ +10(슈퍼사이클)
+// DF2 (df2): 디커플링 강도 -10(완전공존) ~ +10(전면디커플링)
+export const INITIAL_QUADRANT_POSITIONS = [
+  { key: 'twoYear',    date: '2024-05', df1: 3.5,  df2: 4.5,  note: 'H100 CapEx 급증 시작, VEU 완화' },
+  { key: 'oneYear',    date: '2025-05', df1: 5.0,  df2: 6.0,  note: 'HBM3E 품질 이슈, 삼성 점유율 17%' },
+  { key: 'sixMonth',   date: '2025-11', df1: 5.5,  df2: 5.5,  note: 'H20 부분 재허용, HBM 삼성 35% 반등' },
+  { key: 'threeMonth', date: '2026-02', df1: 6.5,  df2: 4.5,  note: 'MATCH법안 위원회 미통과, CapEx 성장세 지속' },
+  { key: 'oneMonth',   date: '2026-04', df1: 7.0,  df2: 4.0,  note: '빅테크 실적 호조, 관리된 공존 신호' },
+  { key: 'current',    date: '2026-05', df1: 7.0,  df2: 4.0,  note: 'B 시나리오 강한 모멘텀' },
+]
+
 export const SCENARIOS = [
   { id: 'A', name: '황금 요새', probability: 27, color: 'blue', description: 'AI 지속 + 디커플링' },
   { id: 'B', name: 'AI 르네상스', probability: 33, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
