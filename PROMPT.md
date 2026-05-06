@@ -432,3 +432,18 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 적용 사례. 사슬 전체�
    - `presentation/samsung-memory-scenario-planning-figma.pptx`
 
 **한계**: Figma Starter 플랜의 MCP 호출 한도로 슬라이드 4~10은 Figma 직접 export 불가 — python-pptx 네이티브로 디자인 시스템만 매칭. 한도 reset 후 재시도하면 모든 10매를 Figma 렌더링으로 통일 가능.
+
+---
+
+## 2026-05-06: Figma 산출물 제거 + 사용 정책 정립
+
+피드백: "피그마는 좀 복잡하고 화려한 시각화가 필요할 때 한번씩 불러다 쓰면 괜찮겠다. 일단 이번 피그마 관련하여 생성한 파일들을 제거해줘."
+
+작업:
+- 메모리에 `feedback_figma_usage.md` 등록 — Figma는 **일회성 복잡·화려 시각화 전용**, 일반 PPTX 빌드(변경 정합성 체인의 표준 경로)에는 끼우지 않음. 매번 호출하기엔 Starter 플랜 한도와 PNG export 추가 단계가 자동화에 부적합
+- 로컬 파일 제거 (git rm + commit):
+  - `presentation/samsung-memory-scenario-planning-figma.pptx`
+  - `presentation/scripts/generate_pptx_figma.py`
+  - `presentation/assets/figma/slide-{01,02,03}.png` + 디렉토리
+- Figma 원본 파일 (https://www.figma.com/design/rgllvhasHUQcLRRxBo7UOq) 은 사용자가 figma.com에서 직접 정리 (MCP 도구로 원격 파일 삭제 불가)
+- 표준 PPTX 빌드는 `presentation/scripts/generate_pptx.py` (matplotlib + python-pptx, 26슬라이드) 가 유일 경로로 복귀
