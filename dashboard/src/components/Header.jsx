@@ -14,15 +14,18 @@ export default function Header({ criticalCount, warningCount, activeTriggerCount
       <div className="max-w-screen-2xl mx-auto px-4 py-3 flex items-center gap-4">
         {/* Logo + Title */}
         <div className="flex items-center gap-3 min-w-0">
-          <div className="w-8 h-8 rounded bg-samsung-blue flex items-center justify-center text-white font-bold text-sm shrink-0">
+          <div className="w-9 h-9 rounded bg-samsung-blue flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-samsung-blue/30">
             SE
           </div>
           <div className="min-w-0">
-            <div className="text-sm font-semibold text-white truncate">
-              EWI 대시보드
+            <div className="text-sm font-semibold text-white truncate flex items-center gap-2">
+              AI 메모리 시나리오 EWI 대시보드
+              <span className="px-1.5 py-0.5 text-[10px] font-medium rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                v2.0
+              </span>
             </div>
             <div className="text-xs text-gray-400 truncate">
-              삼성전자 메모리사업부 시나리오 플래닝
+              삼성 메모리사업부 · 9개 결정 추적 · {new Date().toISOString().slice(0,10)}
             </div>
           </div>
         </div>
