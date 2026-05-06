@@ -123,3 +123,17 @@
   - Before/After 비교 슬라이드 포함
   - 90분 타임테이블 + 데모 체크리스트 + 인터넷 불안정 대비 플랜 B
   - 발표 대상: 비기술자 대상 (예제·결과·화면 캡처 위주 구성 요청 반영)
+
+---
+
+## 2026-05-06: 세미나 PPTX 템플릿 적용 재작성
+
+`working-style/seminar-claude-code-report/tutorial-template.pptx` (AI Harness Engineering 16매 템플릿) 디자인 시스템에 맞춰 발표자료 재작성 요청.
+
+- `slide-outline.md`: 28슬라이드 → **16슬라이드** 구조로 전면 재작성
+  - LAYOUT_WIDE (13.33×7.5"), 다크 네이비 `#0B1220` 배경, 시안 `#22D3EE` 강조, 앰버 `#FBBF24` 보조
+  - 폰트: Arial Black(타이틀) / Calibri(본문) / Consolas(코드)
+  - 공통 크롬: 좌상단 섹션 라벨, 우상단 페이지 카운터(NN/16), 우측 엣지 시안 라인, 좌하단 푸터
+  - 구성: Cover → Agenda → Definition → Why → Core Capabilities 6 → Component 01~06 → End-to-end → Live Demo → Lessons → Ecosystem → Q&A
+- `generate-pptx.js`: pptxgenjs로 템플릿 디자인 시스템 충실 재현 (16슬라이드 생성)
+- `seminar-claude-code.pptx`: 재생성 완료, Keynote에서 시각 검증 통과
