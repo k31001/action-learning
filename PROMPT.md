@@ -401,3 +401,34 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 적용 사례. 사슬 전체�
 **(7) Git** — 본 메시지 작성 직후 commit + push origin main → Vercel 자동 배포 (대시보드 프로덕션)
 
 **메타**: 본 작업은 CLAUDE.md "변경 정합성 체인" 규칙의 첫 실행 사례. 한 번의 사용자 지시로 데이터 수집 → 분석 → 전략 → 보고서 → 발표자료 → 대시보드 → 빌드 검증 → git push까지 한 사슬로 흘렸다. 두 갈래(① PPTX, ② 대시보드+Vercel)가 모두 빌드 통과 후 push.
+
+---
+
+## 2026-05-06: PPTX 미화 — Gamma 폐기 + Figma 하이브리드 도입
+
+피드백: "gamma는 별로인 것 같아 앞으로 쓰지말자". → 메모리에 `feedback_no_gamma.md` 저장 (PPTX 미화에 Gamma MCP 사용 금지).
+
+요청: "presentation/samsung-memory-scenario-planning.pptx를 더 시각적으로 풍성하게 만들기 위해 Figma를 활용해보고 (origin-name)-figma.pptx로 저장해줘".
+
+**작업 결과**:
+
+1. **Figma 디자인 파일 생성**: https://www.figma.com/design/rgllvhasHUQcLRRxBo7UOq — 1920×1080 hero 슬라이드 10매 (Cover, Executive Summary, Current State, Cycle History, Scenario Matrix, Main Bet, Robust 7, RS7 NAND, EWI Dashboard, Closing). Plugin API(`use_figma`)로 디자인 시스템(딥 네이비 + 앰버 + Samsung Blue) 적용.
+
+2. **Figma Starter 플랜 rate limit 문제**:
+   - `get_screenshot` 3회 + `use_figma` 다회 호출 후 limit 도달
+   - 슬라이드 1~3만 PNG 추출 성공 (`presentation/assets/figma/slide-01..03.png`)
+   - 슬라이드 4~10은 export 차단
+
+3. **하이브리드 빌드 — `generate_pptx_figma.py` 신규 작성**:
+   - 슬라이드 1~3: Figma PNG full-bleed 배경 (실제 Figma 렌더링)
+   - 슬라이드 4~10: python-pptx 네이티브로 동일 디자인 시스템 매칭 (NAVY=#0A1B5C, AMBER=#F5A623, GREEN/RED/PURPLE 동일 팔레트, Arial Black 타이포)
+   - Cycle History (다운턴 5번 음영 + 사이클 라인 + 현재 점), Scenario Matrix (2×2 quadrant + 5 시나리오 + E 와일드카드), Main Bet (Big "B" + 5 이니셔티브), Robust 7 (4×2 grid + RS7 NEW), RS7 NAND (3 evidence + 4 R&D 트랙), EWI Dashboard (KPI 6 + 사분면 궤적 + decisions 진척), Closing (Decision Request)
+
+4. **검증**: `python3 presentation/scripts/generate_pptx_figma.py` 정상 실행 → `presentation/samsung-memory-scenario-planning-figma.pptx` (175KB, 10슬라이드)
+
+5. **저장된 자산**:
+   - `presentation/scripts/generate_pptx_figma.py` (신규 빌드 스크립트)
+   - `presentation/assets/figma/slide-{01,02,03}.png` (Figma 원본 export, 1024×576)
+   - `presentation/samsung-memory-scenario-planning-figma.pptx`
+
+**한계**: Figma Starter 플랜의 MCP 호출 한도로 슬라이드 4~10은 Figma 직접 export 불가 — python-pptx 네이티브로 디자인 시스템만 매칭. 한도 reset 후 재시도하면 모든 10매를 Figma 렌더링으로 통일 가능.
