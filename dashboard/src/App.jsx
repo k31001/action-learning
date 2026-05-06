@@ -8,8 +8,10 @@ import IndicatorGrid from './components/IndicatorGrid'
 import StatusSummary from './components/StatusSummary'
 import QuadrantMap from './components/QuadrantMap'
 import MarketPanel from './components/MarketPanel'
+import DecisionTracker from './components/DecisionTracker'
 
 const MAIN_TABS = [
+  { id: 'decisions', label: '9개 결정' },
   { id: 'market', label: '시장 데이터' },
   { id: 'ewi', label: 'EWI 지표' },
   { id: 'triggers', label: '시나리오 트리거' },
@@ -24,7 +26,7 @@ export default function App() {
     criticalCount, warningCount, activeTriggers,
   } = useStore()
 
-  const [mainTab, setMainTab] = useState('market')
+  const [mainTab, setMainTab] = useState('decisions')
 
   // On mount: apply any already-computed auto-update results from server cache
   useEffect(() => {
@@ -68,9 +70,14 @@ export default function App() {
       <main className="max-w-screen-2xl mx-auto px-4 py-5">
         {/* Page title */}
         <div className="mb-4">
-          <h1 className="text-lg font-bold text-white">EWI 대시보드</h1>
-          <p className="text-sm text-gray-500 mt-0.5">
-            삼성전자 메모리사업부 시나리오 플래닝 — 2030~2035 전략 모니터링
+          <div className="flex items-baseline gap-3 flex-wrap">
+            <h1 className="text-lg font-bold text-white">AI 메모리 시나리오 EWI 대시보드</h1>
+            <span className="px-2 py-0.5 text-[10px] font-medium rounded bg-blue-900/50 text-blue-300 border border-blue-800">
+              Q1 2026 갱신 · 벤치마크 통합
+            </span>
+          </div>
+          <p className="text-sm text-gray-500 mt-1">
+            삼성전자 메모리사업부 시나리오 플래닝 — 2030~2035 전략 모니터링 · 9개 결정 추적
           </p>
         </div>
 
@@ -123,6 +130,7 @@ export default function App() {
             </div>
 
             {/* Tab content */}
+            {mainTab === 'decisions' && <DecisionTracker indicators={indicators} />}
             {mainTab === 'market' && <MarketPanel />}
             {mainTab === 'ewi' && (
               <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">

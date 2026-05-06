@@ -2,8 +2,8 @@
 
 > 수집된 모든 데이터의 중앙 인덱스. 데이터 추가/수정 시 반드시 이 파일도 업데이트.
 
-**마지막 업데이트**: 2026-05-05  
-**총 데이터 항목**: 16개 (2026-05-05 경쟁사 투자 전략 섹션 대폭 업데이트)
+**마지막 업데이트**: 2026-05-06  
+**총 데이터 항목**: 18개 (2026-05-06 Q1 2026 실적·HBM4 NVIDIA Rubin 공급 점유율·CXMT HBM3 양산·테일러 팹 진척 데이터 추가, 벤치마크 사례 통합)
 
 ---
 
@@ -11,11 +11,12 @@
 
 | 카테고리 | 항목 수 | 디렉토리 |
 |---------|--------|---------|
-| 시장 데이터 | 4 | `data/market/` |
+| 시장 데이터 | 5 | `data/market/` |
 | 산업/기술 트렌드 | 4 | `data/technology/` |
 | 경쟁사 분석 | 4 | `data/competitors/` |
 | 거시경제/AI수요 | 4 | `data/macro/` |
 | 정책/규제 | 4 | `data/policy/` |
+| **벤치마크** | **1** | **`analysis/benchmark/`** |
 
 ---
 
@@ -40,6 +41,11 @@
 - **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #AI #server #demand #GPU
 - **요약**: AI가 2026년 전체 DRAM 웨이퍼 소비의 ~20% 차지. GPU당 HBM 탑재량이 기존 HPC 대비 7배. NVIDIA H200→B200으로 전환 시 HBM 탑재량 대폭 증가.
 - **출처**: TrendForce, SK하이닉스, Avnet, Oxford Economics
+
+### 2026-q1-current-state.md ⭐ (신규)
+- **수집일**: 2026-05-06 | **신뢰도**: High | **태그**: #current-state #Q1-2026 #HBM4 #NVIDIA-Rubin #CXMT #Texas-Taylor #benchmark
+- **요약**: 2026년 1분기 삼성 매출 134조 원, 메모리 매출 +292% YoY ($50.4B). HBM4 양산 2026.2 개시, 2026년 캐파 전량 Sold Out. NVIDIA Rubin HBM4 점유율: SK 70%/Samsung 28%/Micron 18%. 빅테크 4사 AI CapEx $725B(+77%). 테일러 팹 CHIPS Act 보조금 $4.745B 확정(목표 대비 60~80%). CXMT HBM3 양산 2026년 개시(월 6만 W). MS가 메모리 가격 영향 $25B 직접 인정. 슬라이드용 8개 차트 권장 목록 포함.
+- **출처**: Samsung IR, TrendForce, Counterpoint Research, CNBC, Tom's Hardware, NIST, UBS, BofA
 
 ---
 
@@ -136,3 +142,12 @@
 - **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #Korea #K반도체 #세제 #정책
 - **요약**: 한국 K-반도체 전략: 용인 클러스터 조성, R&D 세액공제 25%. 삼성·SK하이닉스 국내 투자 유지 인센티브. 대미 협력 강화로 수출 규제 완충 노력.
 - **출처**: 산업통상자원부, 기획재정부, KOTRA
+
+---
+
+## 벤치마크 (`analysis/benchmark/`)
+
+### cyclical-strategy-benchmark.md ⭐ (신규)
+- **수집일**: 2026-05-06 | **신뢰도**: High | **태그**: #benchmark #cycle-strategy #counter-cyclical #asset-light #vertical-integration #hedging #m-and-a
+- **요약**: 7개 산업·7개 기업의 사이클 대응 전략 사례 분석. 7가지 핵심 패턴 추출 — ① 역사이클 투자(Samsung, ExxonMobil, Disney) ② 변동비 구조(Nucor) ③ Asset-light(Marriott, Maersk) ④ 수직·수평 통합(Maersk) ⑤ 헤징·장기계약(Southwest, Samsung Foundry) ⑥ 요새형 재무구조(Nucor, Samsung) ⑦ 불황기 M&A(Disney-Marvel, ExxonMobil-Pioneer). 메모리 산업에 적용 가능한 1~3개 조합 권장.
+- **출처**: Reuters, Korea Times, Nucor SEC 8-K, Maersk IR, ExxonMobil SEC 8-K, Hospitality Investor, Disney/Marvel SEC, Southwest SEC 8-K, Bloomberg
