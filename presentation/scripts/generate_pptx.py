@@ -1009,76 +1009,99 @@ def build_slide_6_paradox(prs):
 
 
 def build_slide_7_uncertainty(prs):
-    """단계 2-1: 다운턴은 언제? 얼마나?"""
+    """단계 2-1: 호황 지속·약한 다운턴·중간 다운턴 — 3가지 가설."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
-               '다음 다운턴이 언제·얼마나 클지는 아무도 모른다',
-               '3가지 가설 모두 실현 가능 — 어느 시점이 와도 영향은 막대, 그러나 정확한 예측은 불가능')
+               '호황이 더 길게 갈지, 다운턴이 언제·얼마나 클지 — 모두 알 수 없다',
+               '호황 지속 / 약한 조정 / 중간 다운턴 — 3가지 가설 모두 실현 가능, 각각 다른 전략 요구')
 
     hypotheses = [
         {
-            'title': '가설 A — 약한 조정',
+            'title': '가설 A — 호황 지속',
+            'date': '~2030',
+            'tag': '다운턴 2030+ 이후',
+            'capex': 'AI ROI 안정 실현\n빅테크 CapEx 지속 성장',
+            'price': 'HBM 슈퍼사이클\n2027 $1조 돌파',
+            'profit': '삼성 영업이익률 50%+\n사상 최대 지속',
+            'recovery': '4~5년 호황 사이클',
+            'reference': '2017~18 슈퍼사이클\n+ AI 재가속',
+            'color': THEME['green_pos'],
+            'strategy': '호황 최대 활용 — HBM 캐파 가속 증설, 신흥시장 선점, '
+                        '단가 프리미엄 LTA 락인',
+        },
+        {
+            'title': '가설 B — 약한 조정',
             'date': '2027 Q4',
-            'capex': '빅테크 AI CapEx YoY −10~15%',
+            'tag': '12개월 회복',
+            'capex': '빅테크 CapEx YoY\n−10~15%',
             'price': '메모리 가격 −20~30%',
             'profit': '삼성 영업이익 −50%',
             'recovery': '회복 12개월',
             'reference': '2022~23 형태',
             'color': THEME['amber'],
+            'strategy': '재고일수 상한 발동 + RS1 옵션형 캐파로 즉시 일시정지 + '
+                        'R&D 사수',
         },
         {
-            'title': '가설 B — 중간 다운턴',
+            'title': '가설 C — 중간 다운턴',
             'date': '2028 Q1',
-            'capex': 'AI ROI 실망 + CapEx −25~30%',
+            'tag': '18~24개월 회복',
+            'capex': 'AI ROI 실망 + CapEx\n−25~30%',
             'price': '메모리 가격 −45%',
             'profit': '삼성 영업이익 −85%',
             'recovery': '회복 18~24개월',
             'reference': '2008~09 형태',
             'color': THEME['red_alert'],
-        },
-        {
-            'title': '가설 C — 급격한 충격',
-            'date': '2027 H2',
-            'capex': '빅테크 −30%+ + 지정학 충격',
-            'price': '메모리 가격 −60% + 시안 차단',
-            'profit': '삼성 분기 −5조 원+',
-            'recovery': '회복 30개월+',
-            'reference': '2001~02 + 다운턴 동시',
-            'color': THEME['deep_navy'],
+            'strategy': '순현금 30조 버퍼 + 다운사이클 capex 4조원 사수 + '
+                        'Disney-Marvel 모델 M&A',
         },
     ]
 
     for i, h in enumerate(hypotheses):
         x = Inches(0.5 + i * 4.28)
         y = Inches(1.85)
-        # 상단 색상 띠
+        # 상단 색상 띠 + 제목
         add_rect(slide, x, y, Inches(4.1), Inches(0.5),
                  fill=h['color'])
-        add_text(slide, x + Inches(0.2), y + Inches(0.05), Inches(3.9), Inches(0.4),
+        add_text(slide, x + Inches(0.2), y + Inches(0.05), Inches(2.8), Inches(0.4),
                  h['title'], font=FONT_KO, size=13, bold=True, color=THEME['white'])
+        add_text(slide, x + Inches(2.95), y + Inches(0.13), Inches(1.1), Inches(0.3),
+                 h['tag'], font=FONT_KO, size=8.5, italic=True, color=THEME['white'],
+                 align='right')
+
         # 본문
-        add_rect(slide, x, y + Inches(0.5), Inches(4.1), Inches(4.2),
+        add_rect(slide, x, y + Inches(0.5), Inches(4.1), Inches(4.5),
                  fill=THEME['soft_white_bg'], line=THEME['light_gray'])
-        # 날짜
+        # 시점/날짜 큰 글자
         add_text(slide, x + Inches(0.2), y + Inches(0.6), Inches(3.7), Inches(0.5),
                  h['date'], font=FONT_EN, size=20, bold=True, color=h['color'])
 
         items = [
-            ('CapEx 변화', h['capex']),
+            ('CapEx', h['capex']),
             ('메모리 가격', h['price']),
             ('삼성 영업이익', h['profit']),
-            ('회복 기간', h['recovery']),
-            ('과거 사례 참조', h['reference']),
+            ('지속 기간', h['recovery']),
+            ('과거 사례', h['reference']),
         ]
         for j, (k, v) in enumerate(items):
-            yy = y + Inches(1.3 + j * 0.6)
-            add_text(slide, x + Inches(0.2), yy, Inches(3.7), Inches(0.25),
+            yy = y + Inches(1.25 + j * 0.5)
+            add_text(slide, x + Inches(0.2), yy, Inches(1.4), Inches(0.45),
                      k, font=FONT_KO, size=8.5, color=THEME['gray_caption'])
-            add_text(slide, x + Inches(0.2), yy + Inches(0.25), Inches(3.7), Inches(0.4),
-                     v, font=FONT_KO, size=10, bold=True, color=THEME['dark_text'])
+            add_text(slide, x + Inches(1.55), yy, Inches(2.45), Inches(0.45),
+                     v, font=FONT_KO, size=9, bold=True, color=THEME['dark_text'],
+                     line_spacing=1.15)
 
-    add_so_what(slide, Inches(6.55),
-                '어느 가설이 맞을지 모름 — 그러나 어느 시점이 와도 "지금 시작한 준비"만이 유효')
+        # 핵심 전략 박스 (하단)
+        add_rect(slide, x + Inches(0.15), y + Inches(3.95), Inches(3.85), Inches(0.95),
+                 fill=THEME['amber_light'])
+        add_text(slide, x + Inches(0.25), y + Inches(4.0), Inches(3.7), Inches(0.3),
+                 '필요 전략', font=FONT_KO, size=8.5, bold=True, color=THEME['amber'])
+        add_text(slide, x + Inches(0.25), y + Inches(4.27), Inches(3.7), Inches(0.65),
+                 h['strategy'], font=FONT_KO, size=8.5, color=THEME['dark_text'],
+                 line_spacing=1.3)
+
+    add_so_what(slide, Inches(6.85),
+                '호황 지속도 다운턴도 모두 가능 — 어느 가설이든 "지금 시작한 준비"가 양쪽 모두에서 가치를 만든다')
     add_footer(slide, 7, TOTAL, '불확실성')
     return slide
 
