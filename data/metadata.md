@@ -3,7 +3,7 @@
 > 수집된 모든 데이터의 중앙 인덱스. 데이터 추가/수정 시 반드시 이 파일도 업데이트.
 
 **마지막 업데이트**: 2026-05-06  
-**총 데이터 항목**: 18개 (2026-05-06 Q1 2026 실적·HBM4 NVIDIA Rubin 공급 점유율·CXMT HBM3 양산·테일러 팹 진척 데이터 추가, 벤치마크 사례 통합)
+**총 데이터 항목**: 19개 (2026-05-06 Q1 2026 실적·HBM4 NVIDIA Rubin 공급 점유율·CXMT HBM3 양산·테일러 팹 진척 데이터 추가, 벤치마크 사례 통합, **NAND 공정 전환 비용·기술 데이터 추가**)
 
 ---
 
@@ -12,7 +12,7 @@
 | 카테고리 | 항목 수 | 디렉토리 |
 |---------|--------|---------|
 | 시장 데이터 | 5 | `data/market/` |
-| 산업/기술 트렌드 | 4 | `data/technology/` |
+| 산업/기술 트렌드 | 5 | `data/technology/` |
 | 경쟁사 분석 | 4 | `data/competitors/` |
 | 거시경제/AI수요 | 4 | `data/macro/` |
 | 정책/규제 | 4 | `data/policy/` |
@@ -70,6 +70,11 @@
 - **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #CMX #SCADA #NVIDIA #KV-cache #AI-storage #SSD #PCIe-Gen6
 - **요약**: NVIDIA CMX(Context Memory Storage Platform): BlueField-4 기반 KV 캐시 오프로드 플랫폼. 삼성 PM1753 공식 공급 SSD. SCADA(Scaled Accelerated Data Access): GPU 네이티브 스토리지로 2.3억 IOPS 달성(SC'25). SK하이닉스·Kioxia가 NVIDIA AI SSD 전략 파트너 — 삼성전자 SLC AI SSD 전략 수립 시급.
 - **출처**: NVIDIA 공식 기술 블로그, Micron IR, Samsung Semiconductor 기술 블로그, TrendForce
+
+### nand-process-transition.md
+- **수집일**: 2026-05-06 | **신뢰도**: High | **태그**: #NAND #process-transition #hybrid-bonding #capex #yield-ramp
+- **요약**: NAND layer 경쟁 가속(Samsung V9 286L→V10 430L 2026, V11 2027, 1000L 2030 / SK V8 321L 2025→V10 hybrid bonding 2027). 2026 NAND capex $22.2B(+5%)만 — 업계가 capa 확장보다 process upgrade에 집중. **양산 ramp 6개월 지연 = 누적 이익의 2/3 손실**. **YMTC가 hybrid bonding 핵심 IP 지배** → 한국 메모리사 라이선스 종속 리스크. 공정 전환 주기 연장(deck 정교화·CBA·QLC/PLC·firmware) R&D가 모든 시나리오에서 robust 가치.
+- **출처**: TrendForce, Tom's Hardware, Yole Group, Knowmade, NAND Research, TechInsights, Lam Research, Block & Files
 
 ---
 

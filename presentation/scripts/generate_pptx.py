@@ -741,7 +741,7 @@ def chart_capex_growth(filepath):
 # Slide builders — 25 slides
 # ============================================================
 
-TOTAL = 25
+TOTAL = 26
 
 def build_slide_1_cover(prs):
     """표지."""
@@ -1589,11 +1589,11 @@ def build_slide_16_side_bets(prs):
 
 
 def build_slide_17_robust_overview(prs):
-    """단계 5-7 (Step 8 개요): Robust 6개 + 매트릭스."""
+    """단계 5-7 (Step 8 개요): Robust 7개 + 매트릭스 (RS7 NAND 공정 전환 주기 연장 신규)."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
-               'Step 8 · 어떤 미래가 와도 가치를 만드는 Robust 전략 6개를 도출했다',
-               '핵심 4개 (★ RS1·RS2·RS3·RS6) → 다음 4개 슬라이드에서 상세 — 6개 전략 모두 4개+ 시나리오에서 ✅')
+               'Step 8 · 어떤 미래가 와도 가치를 만드는 Robust 전략 7개를 도출했다',
+               '핵심 5개 (★ RS1·RS2·RS3·RS6·RS7) → 다음 5개 슬라이드에서 상세 — 7개 전략 모두 4개+ 시나리오에서 ✅ (RS7 NAND 공정 전환 주기 연장 신규)')
 
     rs_list = [
         ('RS1 ★', '옵션형 캐파 체계', '"켜고 끌 수 있는 능력"', True),
@@ -1602,28 +1602,33 @@ def build_slide_17_robust_overview(prs):
         ('RS4', '고객 포트폴리오 분산', 'LTA·Take-or-Pay', False),
         ('RS5', '정책 리스크 지역 분산', '한국·미국·일본·인도 4거점', False),
         ('RS6 ★', '재무 규율 + capex 하한', 'Nucor 사이클 전 구간 사수', True),
+        ('RS7 ★', 'NAND 공정 전환 주기 연장 R&D', 'Hybrid Bonding 자체 IP + 4 R&D 트랙', True),
     ]
+    # 4-col layout: row 0 = RS1~4, row 1 = RS5~7 (last col empty)
+    col_w_in = 2.95
+    gap_in = 0.20
+    base_x_in = 0.5
     for i, (code, name, desc, star) in enumerate(rs_list):
-        col = i % 3
-        row = i // 3
-        x = Inches(0.5 + col * 4.28)
-        y = Inches(1.85 + row * 1.45)
+        col = i % 4
+        row = i // 4
+        x = Inches(base_x_in + col * (col_w_in + gap_in))
+        y = Inches(1.85 + row * 1.40)
         # 카드
         bg = THEME['amber_light'] if star else THEME['soft_blue_bg']
-        add_rect(slide, x, y, Inches(4.1), Inches(1.3), fill=bg)
+        add_rect(slide, x, y, Inches(col_w_in), Inches(1.25), fill=bg)
         # 좌측 띠
-        add_rect(slide, x, y, Inches(0.08), Inches(1.3),
+        add_rect(slide, x, y, Inches(0.08), Inches(1.25),
                  fill=THEME['amber'] if star else THEME['samsung_blue'])
         # 코드
-        add_text(slide, x + Inches(0.25), y + Inches(0.15), Inches(2), Inches(0.4),
-                 code, font=FONT_EN, size=14, bold=True,
+        add_text(slide, x + Inches(0.20), y + Inches(0.12), Inches(2), Inches(0.4),
+                 code, font=FONT_EN, size=13, bold=True,
                  color=THEME['amber'] if star else THEME['samsung_blue'])
         # 이름
-        add_text(slide, x + Inches(0.25), y + Inches(0.55), Inches(3.7), Inches(0.4),
-                 name, font=FONT_KO, size=12, bold=True, color=THEME['dark_text'])
+        add_text(slide, x + Inches(0.20), y + Inches(0.50), Inches(col_w_in - 0.30), Inches(0.40),
+                 name, font=FONT_KO, size=10.5, bold=True, color=THEME['dark_text'])
         # 설명
-        add_text(slide, x + Inches(0.25), y + Inches(0.95), Inches(3.7), Inches(0.4),
-                 desc, font=FONT_KO, size=9.5, italic=True, color=THEME['gray_caption'])
+        add_text(slide, x + Inches(0.20), y + Inches(0.90), Inches(col_w_in - 0.30), Inches(0.32),
+                 desc, font=FONT_KO, size=8.5, italic=True, color=THEME['gray_caption'])
 
     # 미니 매트릭스
     matrix_y = Inches(4.9)
@@ -1652,9 +1657,10 @@ def build_slide_17_robust_overview(prs):
         ('RS4', '✅', '✅', '✅', '✅', '✅'),
         ('RS5', '✅', '⚠', '✅', '✅', '⚠'),
         ('RS6', '✅', '⚠', '✅', '✅', '✅'),
+        ('RS7', '✅', '✅', '✅', '✅', '✅'),
     ]
     for i, row in enumerate(rs_matrix):
-        y = table_y + Inches(0.4 + i * 0.27)
+        y = table_y + Inches(0.4 + i * 0.24)
         # RS code
         add_text(slide, Inches(2.3), y, Inches(col_w - 0.05), Inches(0.25),
                  row[0], font=FONT_EN, size=9, bold=True, color=THEME['dark_text'],
@@ -1924,7 +1930,83 @@ def build_slide_21_rs6(prs):
     return slide
 
 
-def build_slide_22_dashboard(prs):
+def build_slide_22_rs7(prs):
+    """단계 6-5: RS7 NAND 공정 전환 주기 연장 R&D (신규)."""
+    slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
+    add_header(slide,
+               'RS7 · NAND는 layer 경쟁이 아니라 "주기 연장" 경쟁이다',
+               '양산 ramp 6개월 지연 = 누적 이익의 2/3 소실 (Weber/PSU). 업계 4사 모두 capa 확장→process upgrade로 선회. YMTC가 hybrid bonding 핵심 IP 지배 → 자체 IP 확보가 디커플링 시 생존 변수.')
+
+    # 좌측: 왜 지금 (Why now) — 3개 evidence 박스
+    why_x = Inches(0.5)
+    why_y = Inches(1.85)
+    why_w = Inches(8.0)
+    add_text(slide, why_x, why_y, why_w, Inches(0.4),
+             '왜 지금 — 3가지 증거', font=FONT_KO, size=12, bold=True,
+             color=THEME['samsung_blue'])
+
+    evidence = [
+        ('① 학습곡선의 잔혹함',
+         '양산 ramp 6개월 지연 → 누적 순이익의 2/3 소실. 1년 지연 → 손실 전환. 공정 개발 1분당 약 $5,000 손실 (PSU Weber).',
+         THEME['red_alert']),
+        ('② 업계가 일제히 선회 (2026)',
+         'NAND capex $22.2B (+5%만). 4사 모두 capa 확장 대신 process upgrade·hybrid bonding에 집중. 우리만 layer 경쟁 → 한 세대 뒤처진 capex 추가 부담.',
+         THEME['amber']),
+        ('③ YMTC IP 지배 → 디커플링 시 차단 위험',
+         'Hybrid bonding 핵심 특허 다수가 YMTC 보유 (TrendForce 2025-05). Samsung·SK 라이선스 의존 → 시나리오 C 발생 시 차세대 NAND 양산 불가 리스크. 자체 IP = 국가 안보 R&D.',
+         THEME['samsung_blue']),
+    ]
+    for i, (title, body, color) in enumerate(evidence):
+        ey = why_y + Inches(0.45 + i * 1.05)
+        add_rect(slide, why_x, ey, why_w, Inches(0.95), fill=THEME['soft_blue_bg'])
+        add_rect(slide, why_x, ey, Inches(0.08), Inches(0.95), fill=color)
+        add_text(slide, why_x + Inches(0.20), ey + Inches(0.08), why_w - Inches(0.30), Inches(0.34),
+                 title, font=FONT_KO, size=11, bold=True, color=color)
+        add_text(slide, why_x + Inches(0.20), ey + Inches(0.42), why_w - Inches(0.30), Inches(0.50),
+                 body, font=FONT_KO, size=9.5, color=THEME['dark_text'])
+
+    # 우측: 4 R&D 트랙
+    rd_x = Inches(8.85)
+    rd_y = Inches(1.85)
+    rd_w = Inches(4.43)
+    add_text(slide, rd_x, rd_y, rd_w, Inches(0.4),
+             '4 R&D 트랙 (병행)', font=FONT_KO, size=12, bold=True,
+             color=THEME['amber'])
+
+    tracks = [
+        ('① Hybrid Bonding 자체 IP', 'YMTC 우회 특허 200건+ (2027). 한국 IP 컨소시엄. V11에 자체 IP 70%+. 패키징·본딩 R&D 1.5조 원 추가.'),
+        ('② Multi-deck 정교화', 'Deck 당 layer 한계 돌파. V9→V10 fab 재구성 비용 30% 절감 (TrendForce 추정).'),
+        ('③ bit-per-cell 확장', 'QLC 비중 30%+ (2026). PLC 시제품 (2028) → 양산 검토 (2029).'),
+        ('④ 호스트 협력 firmware', 'FDP·SCADA로 같은 silicon에서 endurance 2배+, throughput 30%+. RS3 SW 매출 ($5B/2030)과 R&D 자원 공유.'),
+    ]
+    for i, (title, body) in enumerate(tracks):
+        ty = rd_y + Inches(0.45 + i * 1.05)
+        add_rect(slide, rd_x, ty, rd_w, Inches(0.95), fill=THEME['amber_light'])
+        add_rect(slide, rd_x, ty, Inches(0.08), Inches(0.95), fill=THEME['amber'])
+        add_text(slide, rd_x + Inches(0.20), ty + Inches(0.08), rd_w - Inches(0.30), Inches(0.34),
+                 title, font=FONT_KO, size=10, bold=True, color=THEME['amber'])
+        add_text(slide, rd_x + Inches(0.20), ty + Inches(0.42), rd_w - Inches(0.30), Inches(0.50),
+                 body, font=FONT_KO, size=8.5, color=THEME['dark_text'])
+
+    # 하단: 재무 효과 + KPI
+    fin_y = Inches(5.55)
+    add_rect(slide, Inches(0.5), fin_y, Inches(12.83), Inches(0.95),
+             fill=RGBColor(0xEF, 0xF6, 0xFF))
+    add_text(slide, Inches(0.7), fin_y + Inches(0.10), Inches(12.4), Inches(0.35),
+             '재무 효과 + 이사회 모니터링 KPI 4', font=FONT_KO, size=11, bold=True,
+             color=THEME['samsung_blue'])
+    add_text(slide, Inches(0.7), fin_y + Inches(0.45), Inches(12.4), Inches(0.45),
+             '재무 효과: 전환 주기 18→24M 연장 시 3년 누적 capex 회피 1.5~2조 원 / 양산 ramp 6개월 단축 효과 한 세대만 적용해도 누적 이익 2/3 보전     '
+             'KPI: ① Hybrid bonding 자체 IP 비율  ② 공정 전환 ramp 시간  ③ NAND capex/bit growth  ④ YMTC 라이선스 의존도',
+             font=FONT_KO, size=9.5, color=THEME['dark_text'])
+
+    add_so_what(slide, Inches(6.85),
+                'Layer 경쟁 = 비용 자살. 주기 연장 R&D 4트랙이 모든 시나리오에서 비용 우위 + 자체 IP 생존 동시 확보.')
+    add_footer(slide, 22, TOTAL, 'Robust · RS7 · NEW')
+    return slide
+
+
+def build_slide_23_dashboard(prs):
     """단계 7: EWI 대시보드 — 사분면 위치 변화 궤적 + 트리거."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
@@ -1989,11 +2071,11 @@ def build_slide_22_dashboard(prs):
 
     add_so_what(slide, Inches(6.85),
                 '현재 위치 (DF1 +7.5, DF2 +0.5) — B 시나리오 강한 모멘텀, 그러나 자동 실현 아님')
-    add_footer(slide, 22, TOTAL, '대시보드')
+    add_footer(slide, 23, TOTAL, '대시보드')
     return slide
 
 
-def build_slide_23_decisions_summary(prs):
+def build_slide_24_decisions_summary(prs):
     """단계 8-1: 9개 결정 한 페이지 요약."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
@@ -2093,11 +2175,11 @@ def build_slide_23_decisions_summary(prs):
              '9개는 묶음이다 — D1·D5·D7 직렬 의존 / D4·D8 동시 처리 / D6이 D9의 거버넌스 기반',
              font=FONT_KO, size=11, bold=True, color=THEME['white'], align='center')
 
-    add_footer(slide, 23, TOTAL, '결정 요약')
+    add_footer(slide, 24, TOTAL, '결정 요약')
     return slide
 
 
-def build_slide_24_problem_solution(prs):
+def build_slide_25_problem_solution(prs):
     """단계 8-2: 핵심 전략 ↔ 해결 문제 매핑 — 3열 레이아웃."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
@@ -2183,11 +2265,11 @@ def build_slide_24_problem_solution(prs):
              '9개 핵심 전략의 묶음 = 다운턴이 와도 흑자 유지 + 회복기 1번 자리 + 자산 폭락 시 M&A',
              font=FONT_KO, size=11, bold=True, color=THEME['white'], align='center')
 
-    add_footer(slide, 24, TOTAL, '전략 리마인드')
+    add_footer(slide, 25, TOTAL, '전략 리마인드')
     return slide
 
 
-def build_slide_25_closing(prs):
+def build_slide_26_closing(prs):
     """단계 9: 최종 메시지."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     # 좌측 풀 사이드바
@@ -2246,7 +2328,7 @@ def build_slide_25_closing(prs):
              '삼성전자  ·  DS부문 메모리사업부 전략기획팀  ·  대외비  ·  2026.05.06',
              font=FONT_KO, size=10, color=THEME['gray_caption'])
     add_text(slide, Inches(11.8), Inches(7.05), Inches(1), Inches(0.3),
-             '25 / 25', font=FONT_EN, size=10, color=THEME['gray_caption'],
+             '26 / 26', font=FONT_EN, size=10, color=THEME['gray_caption'],
              align='right')
 
     return slide
@@ -2298,10 +2380,11 @@ def main():
         build_slide_19_rs2,
         build_slide_20_rs3,
         build_slide_21_rs6,
-        build_slide_22_dashboard,
-        build_slide_23_decisions_summary,
-        build_slide_24_problem_solution,
-        build_slide_25_closing,
+        build_slide_22_rs7,
+        build_slide_23_dashboard,
+        build_slide_24_decisions_summary,
+        build_slide_25_problem_solution,
+        build_slide_26_closing,
     ]
 
     for i, builder in enumerate(builders, start=1):

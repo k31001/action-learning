@@ -406,6 +406,56 @@
 
 ---
 
+### RS7: NAND 공정 전환 주기 연장 R&D (Process-Cycle Extension Technology)
+
+- **왜 Robust한가**:
+  - **공정 전환 패널티는 사이클 내 가장 가시적인 비용**. 학습 곡선 연구(Weber/PSU)에 따르면 새 노드 양산 ramp 6개월 지연 = **누적 이익의 2/3 소실**, 1년 지연 = 손실 전환. 공정 전환 시간 1분당 약 \$5,000 손실로 환산. NAND 18~24개월 주기를 24~36개월로 연장하는 것만으로도 capex 회수율이 구조적으로 개선
+  - **2026년 NAND capex \$22.2B(+5%) 중 대부분이 process upgrade·hybrid bonding에 배분** — 업계 4사 모두 capa 확장보다 "동일 fab에서 가치를 더 오래 뽑기"로 일제히 선회 (TrendForce 2025-11). 우리만 layer 경쟁에 뛰어들면 이미 한 세대 뒤처진 상태에서 capex만 추가 부담
+  - **Layer 경쟁의 한계가 가시화**: PUC(Peripheral-Under-Cell) 한계로 단순 layer 추가는 비용 곡선 우상향. Hybrid bonding/CBA는 layer 수 증가 없이도 bit 밀도 1.6배(Samsung BV NAND)를 가능케 함 — **layer 1개 늘릴 때마다 신규 fab line이 필요한 시대를 끝내는 기술**
+  - **YMTC가 hybrid bonding 핵심 IP·특허를 지배** (TrendForce 2025-05, Knowmade). Samsung·SK하이닉스 모두 라이선스 의존 가능성. 시나리오 C(전면 디커플링) 발생 시 라이선스 차단 → 차세대 NAND 양산 불가 리스크. 자체 IP 확보는 **국가 안보 차원의 R&D 의제**
+  - **시나리오 전 영역에서 가치**: A(서방 NAND 폭발) — 비용 우위 = 마진 우위 / B(AI SSD 수요 폭발) — capex 회수율 우위 / C(디커플링) — 자체 IP 생존 직결 / D(다운사이클) — 신규 노드 정당화 어려운 환경에서 기존 세대 가치 연장이 유일한 경로 / E(패러다임 전환) — NAND 자원 절감으로 차세대 메모리 R&D에 재배분 가능
+
+- **구체적 실행 방안 (R&D 4트랙 병행)**:
+
+  **[트랙 1: Hybrid Bonding (W2W) / CBA 자체 IP 확보 — 최우선]**
+  - **2026~2028년 패키징·본딩 R&D 1.5조 원 추가 배정** (RS6 다운사이클 capex 하한 4조 원/년의 별도 항목)
+  - **YMTC 우회 IP 포트폴리오 구축**: 자사 hybrid bonding 특허 200건+ 출원 목표(2027년까지). 한국 IP 컨소시엄(삼성·SK하이닉스 공동) 검토 — 디커플링 시 한국 IP 풀로 상호 보호
+  - **V10(BV NAND, 430L) 양산 안정화 + V11에서 자체 IP 비중 70%+ 목표**
+  - **국가 안보 R&D 인정 추진**: 정부와 협의해 KRW 700조 반도체 투자 패키지 내 hybrid bonding R&D 별도 트랙으로 분리 (CHIPS법 가드레일 회피용)
+
+  **[트랙 2: Multi-Deck String Stacking 정교화 — 즉시 효과]**
+  - **Deck 당 layer 수 한계 돌파 R&D**: 현재 V9는 2×143 deck. Deck 당 200층 이상 가능 시 같은 stacking 기술로 V10 → V12 세대까지 확장 가능
+  - **HAR(High Aspect Ratio) etch 공정 수율 개선**: 2026~2027년 라인별 모니터링, single cell defect 영향 최소화하는 redundancy 회로 설계
+  - **목표**: V9 → V10 전환 시 fab line 재구성 비용 30% 절감 (TrendForce 추정 기준)
+
+  **[트랙 3: bit-per-cell 확장 (TLC → QLC → PLC) — capacity 가치 연장]**
+  - **QLC 양산 비중 확대**: 2026 QLC 비중 30%+ 목표 (현재 V9 QLC 양산 시작 시점). 같은 layer에서 33% capacity 증가 = 새 노드 1세대 효과
+  - **PLC R&D 가속**: Kioxia·Western Digital이 2027~2028년 PLC 상용화 예고. 삼성 PLC R&D 2026년 본격화 → 2028년 시제품, 2029년 양산 검토
+  - **Controller·ECC firmware 동반 R&D**: bit-per-cell 증가는 endurance·error rate 부담을 firmware에서 흡수해야 함 — Samsung Memory Solutions Lab과 DS부문 협력 강화
+
+  **[트랙 4: 호스트 협력형 firmware/architecture (FDP·SCADA) — 가치 연장]**
+  - **RS3와 직접 연동**: FDP(Flexible Data Placement) + SCADA 호스트 협력 firmware로 같은 silicon에서 endurance 2배+, throughput 30%+ 추출. RS3의 Asset-Light SW 매출(\$5B/2030)과 R&D 자원 공유
+  - **NVIDIA SCADA 표준 참여 + 기여**: 호스트 협력 firmware의 사실상 표준화에서 Samsung 위치 확보 — 새 layer 노드 없이도 "performance generation" 갱신 가능
+
+- **재무 효과 추정 (3년 누적)**:
+  - 공정 전환 주기 18→24개월 연장 시 NAND 사업부 capex 회피 효과 **누적 1.5~2조 원** (capex \$22.2B/년 중 NAND 비중 추정)
+  - YMTC 라이선스 회피 시 향후 5년 누적 라이선스 비용 절감 **수천억 원~1조 원** (라이선스 단가 비공개로 추정)
+  - 양산 ramp 6개월 단축 효과를 한 세대만 적용해도 **누적 이익의 2/3 보전** (Weber 모델)
+
+- **기간**: 즉시 R&D 트랙 1·2·3·4 동시 착수 (2026~2027 2조 원 투자), 효과는 2028년부터 가시화
+
+- **핵심 KPI (이사회 모니터링 의무)**:
+  1. **Hybrid bonding 자체 IP 비율** (V10 → V11 → V12 추이)
+  2. **공정 전환 ramp 시간** (V9 → V10 → V11 각각의 yield 90% 도달 개월 수)
+  3. **NAND capex per bit growth** (전 세대 대비 연도별 추이)
+  4. **YMTC 라이선스 의존도** (라이선스된 특허 수, 회피 가능 특허 수)
+
+- **핵심 리스크**: ① 자체 hybrid bonding IP 개발 실패 → YMTC 라이선스 영구 종속 (대응: 한국 IP 컨소시엄 + 정부 R&D 분리). ② 트랙 1·3·4 동시 추진 시 R&D 인력 분산 (대응: AI 효율화로 확보된 잉여 엔지니어링 역량을 트랙 2·4 firmware R&D에 우선 배치 — RS2와 직결). ③ 경쟁사가 같은 길을 더 빨리 감 (대응: SK하이닉스가 V10에서 hybrid bonding을 더 늦게 도입하는 것이 오히려 기회 — 2026~2027 2년의 우위 윈도우)
+
+- **벤치마크 매핑**: TSMC가 노드 전환 주기를 늘리지 않고 "Nx · Nx+ · Nx++" enhancement 패턴으로 같은 노드를 3세대까지 활용한 모델. NAND에도 같은 logic을 layer-stacking에 적용 (V10 → V10+ → V10++로 세대 간 점프 대신 점진 개선)
+
+---
+
 ## 4. 전략 포트폴리오 매트릭스
 
 | 전략 이니셔티브 | 시나리오 A<br>(황금 요새) | 시나리오 B<br>(AI 르네상스) | 시나리오 C<br>(기술 냉전) | 시나리오 D<br>(조용한 재편) | 시나리오 E<br>(패러다임 전환) | 유형 |
@@ -427,6 +477,7 @@
 | **RS4** 고객 포트폴리오 의도적 분산 | ✅ 서방 편중 리스크 분산 | ✅ 신흥시장 발굴 필수 | ✅ 위기 시 리스크 분산 | ✅ 다운사이클 안정 수요 | ✅ 다양한 기술 수요처 | Robust |
 | **RS5** 정책 리스크 지역 분산 공급망 | ✅ 규제 대응 최우선 | ⚠️ 공존 환경, 덜 시급 | ✅ 생산 유지 생존 조건 | ✅ 안정적 출하 보장 | ⚠️ 기술 변화가 더 중요 변수 | Robust |
 | **RS6** 재무 규율 + 초과이익 재투자 | ✅ 투자 절제·원가 우위 | ⚠️ 호황기 성장 기회 미세 제약 | ✅ 생존 필수·흑자 구조 | ✅ 회복 자금·속도 확보 | ✅ 피벗 자금 보호 | Robust |
+| **RS7** NAND 공정 전환 주기 연장 R&D | ✅ 비용 우위 = 마진 우위 | ✅ Capex 회수율 우위 | ✅ 자체 IP 생존 직결 | ✅ 다운사이클 유일 경로 | ✅ NAND 자원 절감→차세대 R&D 재배분 | Robust |
 
 > 범례: ✅ 높은 가치 창출 / ⚠️ 조건부 가치 또는 제한적 효과 / ❌ 효과 없거나 역효과
 

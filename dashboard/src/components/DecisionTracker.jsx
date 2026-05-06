@@ -92,6 +92,16 @@ const DECISIONS = [
     benchmark: 'Disney-Marvel ($4B 인수, 10년 후 +$18B)',
     keyKpi: 'mna_target_undervalued',
   },
+  {
+    id: 'D10',
+    title: 'NAND 공정 전환 주기 연장 R&D 4트랙 착수 (RS7 신규)',
+    deadline: '2026-12-31',
+    owner: '메모리연구소·DS부문 패키징·Memory Solutions Lab',
+    rationale: '양산 ramp 6개월 지연 = 누적 이익의 2/3 소실 (Weber/PSU 학습곡선). 업계 4사가 capa 확장→process upgrade로 일제히 선회 (TrendForce 2025-11). YMTC가 hybrid bonding 핵심 IP 지배 → 디커플링 시 라이선스 차단 리스크. 4트랙 병행: ① Hybrid Bonding 자체 IP (1.5조 원/3년 + 한국 IP 컨소시엄), ② Multi-deck 정교화 (V9→V10 fab 재구성 30% 절감), ③ bit-per-cell 확장 (QLC 30%+/2026, PLC 시제품/2028), ④ FDP·SCADA 호스트 협력 firmware (RS3 SW 매출과 R&D 자원 공유)',
+    fallback: '트랙 1 IP 개발 지연 시 한국 IP 컨소시엄(SK하이닉스 공동) 또는 정부 R&D 분리 트랙. 자체 IP 확보 실패 시 YMTC 라이선스 의존도 최대 50% 한도로 통제',
+    benchmark: 'TSMC "Nx · Nx+ · Nx++" enhancement 패턴 — 노드 한 번에 3세대 활용. 메모리에 적용 시 V10 → V10+ → V10++ 점진 개선',
+    keyKpi: 'nand_layer_cycle_months',
+  },
 ]
 
 function daysUntil(deadline) {
