@@ -254,6 +254,26 @@
 
 - **구체적 실행 방안**:
 
+  **[2026-05-06 팩트체크 검증 완료]**
+
+  RS3은 NVIDIA 생태계의 3대 데이터 경로(CMX·SCADA·FDP)를 통해 전환비용을 만든다. 각 영역의 시장 현실성을 데이터로 검증한 결과:
+
+  | 영역 | 시장 현실성 | 기존 SSD로 대응? | 사업 모델 검증 |
+  |------|------------|-----------------|---------------|
+  | **CMX** (KV 캐시 G3.5) | NVIDIA CES 2026 공식 발표, 17개 클라우드·스토리지 파트너 확보, 2H 2026 일반 출시 (성능 5x TPS + 5x 전력 효율 입증) | ❌ 새 폼팩터(이더넷 연결 플래시) + BlueField-4 DPU 통합 필요. NAND 자체는 기존 사용 가능하나 **컨트롤러·펌웨어·NVMe over Fabrics 최적화 차별화**가 핵심 | NVIDIA Storage-Next 표준의 한 부분. 단기 fad 아님 — 장문맥 추론 인프라의 구조적 요구 |
+  | **SCADA** (GPU 네이티브) | AI 스토리지 시장 **$36B(2025) → $322B(2035, CAGR 24%)** (MarketsAndMarkets). 메모리가 hyperscaler capex의 30% 차지(2026, vs 2023~24 8%) | ❌ 기존 SSD는 CPU 경유 I/O — SCADA는 GPU 직접 제어. **컨트롤러 펌웨어 + DOCA SDK 통합** 필요. SK hynix·Kioxia가 100M IOPS SLC NAND 개발 중(2027 양산) | 단기 fad 절대 아님. AI 추론 표준 인터페이스 후보. SLC NAND 신규 사업 카테고리. 미참여 시 SSD에서 HBM 패권 손실 반복 |
+  | **FDP** (Flexible Data Placement) | NVMe TP41461 표준화(2022.12, Meta+Google+Samsung 공동). WAF 50%↓, OP 28%↓, 드라이브 수명 2배, 쓰기 속도 2배 (NVMe Consortium) | ✅ 기존 NAND·컨트롤러로 펌웨어 업데이트만으로 가능 (이미 OS·라이브러리·도구 지원). 그러나 **호스트 SW 통합·검증·튜닝 노하우**가 차별화 영역 | "구글에 SW 단독 판매"는 비현실적 (구글이 표준 공동 개발) — 그러나 (a) 통합 검증된 SSD 프리미엄 단가 (b) 중소 클라우드 대상 reference 라이선스 (c) 컨설팅·튜닝 서비스 매출은 가능 |
+
+  **사업 모델 재설계 (FDP 사례 — 현실성 보강 후)**:
+  
+  *현실 점검*: FDP 표준 자체는 오픈이며 구글이 공동 개발자다. "구글에게 FDP SW를 유료 판매"는 비현실적이므로 다음 3계층 매출 모델로 전환한다:
+  
+  1. **하드웨어 프리미엄** (HW 매출): FDP 통합 검증된 삼성 SSD를 일반 SSD 대비 단가 +10~15% 프리미엄에 판매. TCO 절감 효과(WAF -50%, 드라이브 수명 2배)로 고객은 ROI 회수 6~12개월. 2030년 FDP 검증 SSD 매출 비중 30% 목표.
+  2. **Reference 라이선스** (SW 매출): 구글과 공동 개발한 호스트 SW 스택을 reference implementation으로 패키징하여 중소 클라우드(CoreWeave·Crusoe·Lambda 등)에 라이선스 제공. 라이선스당 연 $50~200K 추정.
+  3. **컨설팅·통합 서비스** (서비스 매출): 엔터프라이즈 고객의 스토리지 소프트웨어 스택과 FDP 통합 컨설팅. 프로젝트당 $500K~5M.
+  
+  → 통합: 2030년 FDP 관련 매출 $2~3B/년 (HW 프리미엄 70% + 라이선스/서비스 30%)
+
   **[사례 1] FDP(Flexible Data Placement) 기반 SSD 전략 — 가장 상세한 실행 모델**
 
   *배경*: FDP(NVMe Flexible Data Placement)는 NVMe SSD에서 호스트(서버 OS·스토리지 소프트웨어)가 데이터를 SSD 내부 어디에 배치할지를 직접 제어하는 인터페이스 표준이다. 기존 SSD는 FTL(Flash Translation Layer)이 데이터 배치를 자율 결정하는 구조라 Write Amplification Factor(WAF)가 높고 SSD 수명이 단축된다. FDP를 사용하면 호스트가 "이 데이터는 자주 쓰고, 저 데이터는 가끔 쓴다"는 정보를 SSD에 직접 전달하므로 WAF를 최대 50% 감소시킬 수 있다 (출처: NVMe FDP Specification, NVMe Consortium, 2023).
