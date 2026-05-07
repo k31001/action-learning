@@ -8,6 +8,7 @@
   슬라이드 2  기대효과별        — 매출/마진/신시장/헤지 4개 카테고리
   슬라이드 3  실행부서별        — 책임 부서 매핑
   슬라이드 4  시간축별          — 단기(0~6M) / 중기(6~18M) / 장기(18M+) 타임라인
+  슬라이드 5  부록: 현황 요약   — 10개 전략 정성·정량 현황 + 다음 마일스톤 (작업 3)
 
 기존 `generate_pptx.py`의 디자인 시스템(THEME, helper 함수)을 재사용한다.
 """
@@ -31,7 +32,7 @@ from pptx.dml.color import RGBColor
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 OUTPUT = os.path.join(ROOT, 'presentation', 'core-strategies-categorization.pptx')
 
-TOTAL = 4
+TOTAL = 5
 
 # ============================================================
 # 핵심전략 10개 데이터 (단일 소스)
@@ -455,8 +456,124 @@ def build_slide_4_timeline(prs):
 
 
 # ============================================================
-# 표지 (선택) — 4개 슬라이드만 있으면 표지 없이 바로 시작 가능
-# 사용자 원본 프롬프트는 "4장"이므로 표지 생략
+# 슬라이드 5: 부록 — 10개 전략 현황 요약 매트릭스 (작업 3)
+# ============================================================
+
+def build_slide_5_appendix(prs):
+    """현재 위치 + 다음 마일스톤 + 신뢰도 한 눈 매트릭스."""
+    slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
+    add_header(slide,
+               '부록 · 10개 전략 현황 요약 — 우리는 지금 어디에 있는가',
+               '외부 공개 자료(IR·산업 리포트·뉴스)만으로 정성·정량 분석. ✅ 확정 / 🔵 추정 / ⚠️ 정보 공백')
+
+    # 매트릭스 — 행 10개, 열 4개 (전략·현재 위치·다음 마일스톤·신뢰도)
+    rows = [
+        ('MB-4', '커스텀 AI 메모리',
+         'HBM 회복 (Q3 2025 35%), 베이스다이 커스텀 미가시',
+         '2026 Tech Day SCADA + Pangea v3', '🔵'),
+        ('RS-3', '고객특화·전환비용 (NVIDIA 통합)',
+         'CMX 진입 (PM1753), SCADA 공개 로드맵 부재',
+         '2026 SCADA AI SSD 로드맵 발표', '✅ / ⚠️'),
+        ('RS-6', '공정 리더십 통합',
+         '1c yield 60%, hybrid bonding IP 공백 (YMTC 의존 정황)',
+         '2026 H2 V10 BV NAND 양산 + 80% yield', '🔵 / ⚠️'),
+        ('MB-2', '동서 균형 공급망',
+         '5거점 구축 (한·미·일·중·인도 계획), 시안 매년 갱신 리스크',
+         '2026 Q4 시안 라이선스 + CHIPS 2.0', '✅'),
+        ('SD-1', 'HBM 조직 독립 P&L',
+         '메모리사업부 내 통합 운영, 분리 P&L 미공개',
+         '2026 H1 P&L 분리 결정 (목표)', '⚠️'),
+        ('RS-5', '재무 규율 + 초과이익 재투자',
+         '현금 $63B 강점, 다운사이클 capex 하한 정책 명문화 부재',
+         '2026 H1 이사회 결의 + IR 사전 공시', '✅ / ⚠️'),
+        ('SA-2', '일본 R&D 허브 (EUV 우회 NIL)',
+         'Canon NIL 양산 채택 사례 부재, R&D 단계 베팅',
+         '2027 NIL 공동 개발 1차 결과', '⚠️'),
+        ('SD-2', '산업용 AI 메모리 (자동차·의료)',
+         'Tesla 다년 계약 ✅, AEC-Q100 양산 미공개, Micron에 후행',
+         '2026~2028 AEC-Q100 인증 사이클', '🔵 / ⚠️'),
+        ('SE-1', '3D DRAM + IMEC + M&A',
+         'SK 30년 로드맵 대비 후행, Samsung 전담 조직 미공개',
+         '2026~2027 전담 R&D 조직 + IMEC 협약', '⚠️'),
+        ('SE-2', 'CXL SIG 표준 주도',
+         'CMM-D 첫 제품 ✅, Pangea v3 (CXL 3.2) 2026 발표 예정',
+         '2026 H1 Pangea v3 + 워킹그룹 인력 2배', '✅'),
+    ]
+
+    # 표 헤더
+    table_x = Inches(0.4)
+    table_y = Inches(1.85)
+    col_widths = [Inches(0.7), Inches(2.6), Inches(4.4), Inches(3.6), Inches(1.2)]
+    headers = ['ID', '전략', '현재 위치', '다음 마일스톤', '신뢰도']
+
+    # 헤더 셀
+    for i, h in enumerate(headers):
+        x = table_x + Inches(sum(c.inches for c in col_widths[:i]))
+        add_rect(slide, x, table_y, col_widths[i], Inches(0.45),
+                 fill=THEME['samsung_blue'])
+        add_text(slide, x + Inches(0.08), table_y + Inches(0.08),
+                 col_widths[i] - Inches(0.16), Inches(0.30),
+                 h, font=FONT_KO, size=10, bold=True, color=THEME['white'],
+                 align='center' if i in [0, 4] else 'left')
+
+    # 데이터 행
+    row_h = Inches(0.43)
+    for ri, (sid, name, current, milestone, confidence) in enumerate(rows):
+        y = table_y + Inches(0.45) + row_h * ri
+        # 메인/사이드 색상 구분
+        is_main = sid in ('MB-4', 'RS-3', 'RS-6', 'MB-2', 'SD-1', 'RS-5')
+        bg = THEME['amber_light'] if is_main else THEME['soft_blue_bg']
+        accent = THEME['samsung_blue'] if is_main else THEME['amber']
+
+        # 행 배경
+        cells = [sid, name, current, milestone, confidence]
+        for i, value in enumerate(cells):
+            x = table_x + Inches(sum(c.inches for c in col_widths[:i]))
+            add_rect(slide, x, y, col_widths[i], row_h,
+                     fill=bg, line=THEME['light_gray'])
+
+            if i == 0:
+                # ID 셀 — 좌측 띠 + 코드
+                add_rect(slide, x, y, Inches(0.06), row_h, fill=accent)
+                add_text(slide, x + Inches(0.08), y + Inches(0.08),
+                         col_widths[i] - Inches(0.12), Inches(0.30),
+                         value, font=FONT_EN, size=9.5, bold=True,
+                         color=accent, align='center')
+            elif i == 1:
+                add_text(slide, x + Inches(0.08), y + Inches(0.10),
+                         col_widths[i] - Inches(0.16), Inches(0.30),
+                         value, font=FONT_KO, size=9, bold=True,
+                         color=THEME['dark_text'])
+            elif i == 4:
+                add_text(slide, x, y + Inches(0.10), col_widths[i], Inches(0.30),
+                         value, font=FONT_EN, size=10, bold=True,
+                         color=THEME['samsung_blue'], align='center')
+            else:
+                add_text(slide, x + Inches(0.10), y + Inches(0.10),
+                         col_widths[i] - Inches(0.20), Inches(0.30),
+                         value, font=FONT_KO, size=8.5,
+                         color=THEME['dark_text'])
+
+    # 핵심 인사이트 박스 (하단)
+    insight_y = table_y + Inches(0.45) + row_h * 10 + Inches(0.20)
+    add_rect(slide, table_x, insight_y, Inches(12.5), Inches(0.65),
+             fill=THEME['amber'])
+    add_text(slide, table_x + Inches(0.20), insight_y + Inches(0.08),
+             Inches(12.1), Inches(0.27),
+             '핵심 정보 공백 (⚠️ 7개): HBM P&L 분리 · hybrid bonding 자체 IP · SCADA 로드맵 · 3D DRAM 전담 조직 · AEC-Q100 양산 · NIL 협력 · 다운턴 capex 하한 명문화',
+             font=FONT_KO, size=9, bold=True, color=THEME['white'])
+    add_text(slide, table_x + Inches(0.20), insight_y + Inches(0.36),
+             Inches(12.1), Inches(0.27),
+             '→ 2026 H1 Tech Day + 이사회 결의 + IR 사전 공시로 정보 공백 해소가 다음 단계의 첫 행동',
+             font=FONT_KO, size=8.5, italic=True, color=THEME['white'])
+
+    add_footer(slide, 5, TOTAL, '부록 · 현황 요약')
+    return slide
+
+
+# ============================================================
+# 표지 (선택) — 5개 슬라이드만 있으면 표지 없이 바로 시작 가능
+# 사용자 원본 프롬프트는 "4장 + 부록"이므로 표지 생략
 # ============================================================
 
 
@@ -475,6 +592,7 @@ def main():
         build_slide_2_impact,
         build_slide_3_owner,
         build_slide_4_timeline,
+        build_slide_5_appendix,
     ]
     for i, builder in enumerate(builders, 1):
         print(f'  Building slide {i}: {builder.__name__}...')
