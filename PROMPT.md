@@ -487,3 +487,42 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 적용 사례. 사슬 전체�
 판단 메모:
 - **기존 세미나 덱 `working-style/seminar-claude-code-report/seminar-claude-code.pptx`(25매)** 가 별도 디자인 시스템(▍ AI HARNESS / CASE STUDY 라벨)을 사용 중이라, 그곳에 끼워 넣지 않고 사용자가 명시한 표준 경로 `slides/seminar/`에 독립 PPTX로 출력. 추후 통합 발표가 필요하면 동일 스크립트로 재생성하여 머지 가능.
 - 이번 슬라이드는 시나리오 플래닝 본 보고서/대시보드와 무관 → 변경 정합성 체인의 발표자료/대시보드 갈래 갱신 불필요 (presentation/, dashboard/ 영향 없음)
+
+---
+
+## 2026-05-07: 세미나 슬라이드 통합 — 기존 덱에 SKILLS + CONNECTORS 페이지 추가
+
+지시: "기존 세미나 자료에 적당한 위치에 통합해줘."
+
+판단:
+- 통합 대상 = `working-style/seminar-claude-code-report/seminar-claude-code.pptx` (25매, 라이트 인디고/핑크 테마, JS+pptxgenjs 빌드)
+- 삽입 지점 = 슬라이드 11 (Claude Code 위치도) 직후, 12 (하네스 설계 원칙) 직전 → HARNESS 트랙 안에서 "Claude Code = reference 하네스 → 이렇게 확장한다(SKILLS·CONNECTORS) → 이런 원칙으로 묶는다" 흐름
+- 결과: 25매 → 27매, HARNESS 트랙 10매 → 12매, 발표시간 60분 → 65분
+
+작업:
+1. **`generate-pptx.js` 두 슬라이드 블록 신설** — 기존 디자인 시스템(addChrome/addTitle/addCodePanel/addCard/captionFoot 헬퍼) 재사용
+   - **SLIDE 12 — SKILLS**: 좌측 SKILL.md 해부 코드패널(`~/.claude/skills/summarize-changes/SKILL.md`, frontmatter+`!`git diff HEAD``+지시문) / 우측 상단 Anthropic 공식 번들 4 칩(docx·pdf·pptx·xlsx) / 우측 하단 슬래시 6종 (2×3 카드, /simplify·/loop·/batch·/claude-api·/debug·/fewer-permission-prompts)
+   - **SLIDE 13 — CONNECTORS**: 좌측 `claude mcp add` 코드패널(HTTP/SSE/stdio + 관리 명령) / 우측 상단 디렉토리 카테고리 6종(2×3 카드, Productivity·Communication·Code·Data·Design·Financial + 대표 커넥터) / 우측 하단 SECURITY 콜아웃 (red 액센트, prompt injection 경고)
+2. **번호 일괄 갱신**:
+   - addChrome 페이지넘버: 옛 12-24 → 새 14-26 (suffix-anchored 정규식으로 SKILLS/CONNECTORS와 충돌 회피)
+   - SLIDE 주석 헤더: 옛 13-25 → 새 15-27 (descending 처리 + suffix CASE/Q&A 한정)
+   - 페이지 카운터 토큰 `/ 25` → `/ 27`
+   - 클로징 라벨 `25 / 25` → `27 / 27`
+   - 표지 cover 텍스트: `--slides=25` → `=27`, `(10매) + (10매)` → `(12매) + (12매)`
+   - 아젠다 카드 메타 + 총합 캡션 (`총 25슬라이드 · 약 60분` → `27슬라이드 · 약 65분`)
+   - 슬라이드 14 (구 12 PRINCIPLES) 캡션의 "다음 10슬라이드" → "12슬라이드"
+3. **`slide-outline.md` 동기화** — v3.1 → v3.2:
+   - 헤더 메타(슬라이드 수·시간·트랙 매수)
+   - 27행 요약표 (구 12-25 → 14-27 시프트, 12·13에 SKILLS·CONNECTORS 신규 행)
+   - 표지 cover 명세 + 아젠다 메타 텍스트
+   - 27개 per-slide 섹션 헤더 일괄 renumber (Python 스크립트로 descending 처리)
+   - SKILLS·CONNECTORS 두 섹션의 상세 명세 신규 작성 (좌/우 영역, 캡션, 출처)
+   - "시간 배분 65분 표준" 섹션 + 발표 동선 팁 (개발 전공 청중 대상에 12·13 추가)
+4. **빌드 검증**:
+   - `node working-style/seminar-claude-code-report/generate-pptx.js` → 27슬라이드 PPTX 생성
+   - 페이지 카운터 1~27 일치, 클로징 `▍ THANK YOU  ·  27 / 27` 정상
+   - 새 슬라이드 12·13의 텍스트 내용(코드패널 + 카드 + 캡션) 모두 렌더링 확인
+
+후속 정리:
+- 이전 세션에서 만든 standalone 산출물(`slides/seminar/claude-code-{skills,connectors,skills-and-connectors}.pptx`)은 단독 공유용 백업으로 유지 — 통합 덱과 별개로 존재 (디자인 시스템 다름)
+- 변경 정합성 체인의 발표자료 갈래(`presentation/`)와 대시보드 갈래(`dashboard/`)는 영향 없음 — 본 작업은 세미나 트랙 단독 변경

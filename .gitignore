@@ -3,6 +3,7 @@ node_modules/
 *.pptx
 # 최종 산출물 PPTX는 git에 포함 (원본 + Gamma 미화 버전)
 !presentation/samsung-memory-scenario-planning*.pptx
+!presentation/core-strategies-categorization*.pptx
 !working-style/seminar-claude-code-report/seminar-claude-code*.pptx
 !slides/seminar/*.pptx
 .claude/worktrees/
