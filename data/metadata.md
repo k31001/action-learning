@@ -2,8 +2,8 @@
 
 > 수집된 모든 데이터의 중앙 인덱스. 데이터 추가/수정 시 반드시 이 파일도 업데이트.
 
-**마지막 업데이트**: 2026-05-06  
-**총 데이터 항목**: 19개 (2026-05-06 Q1 2026 실적·HBM4 NVIDIA Rubin 공급 점유율·CXMT HBM3 양산·테일러 팹 진척 데이터 추가, 벤치마크 사례 통합, **NAND 공정 전환 비용·기술 데이터 추가**)
+**마지막 업데이트**: 2026-05-07  
+**총 데이터 항목**: 20개 (2026-05-07 **AI 인프라 가치사슬·DC 시장·하이퍼스케일러 capex·neocloud·삼성그룹 DC 자산 데이터 추가** — SE-3 수직진출 전략 기반)
 
 ---
 
@@ -14,7 +14,7 @@
 | 시장 데이터 | 5 | `data/market/` |
 | 산업/기술 트렌드 | 5 | `data/technology/` |
 | 경쟁사 분석 | 4 | `data/competitors/` |
-| 거시경제/AI수요 | 4 | `data/macro/` |
+| 거시경제/AI수요 | 5 | `data/macro/` |
 | 정책/규제 | 4 | `data/policy/` |
 | **벤치마크** | **1** | **`analysis/benchmark/`** |
 
@@ -123,6 +123,12 @@
 - **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #energy #power #SMR #nuclear #constraint
 - **요약**: 2026년 AI 데이터센터 전력 950~1,100 TWh(IEA). 빅테크 SMR/핵에너지 계약(MS 2GW, Amazon 5GW). 단기는 천연가스, 상용화는 2030년 이후. GPU 관세 최대 +15%.
 - **출처**: IEA, Microsoft IR, Amazon IR, Bloomberg
+
+### ai-infrastructure-value-chain.md ⭐ (신규, 2026-05-07)
+- **파일/링크**: SE-3 전략 문서 내장 표 — [report/core-strategies/current-state-se3-vertical-ascent.md](../report/core-strategies/current-state-se3-vertical-ascent.md)
+- **수집일**: 2026-05-07 | **신뢰도**: High~Medium | **태그**: #value-chain #AI-DC #hyperscaler #neocloud #vertical-integration #margin
+- **요약**: AI 가치사슬 마진 분포(NVIDIA DC FY26 매출 $197.3B 영업이익률 60.4% / AWS·Google Cloud 32.9% / 메모리 슈퍼사이클 ~25% / 서버 OEM 3-5%). 글로벌 DC 용량 103GW(2025)→200GW(2030, 14% CAGR). AI DC 시장 $147B→$811B(2033, 24% CAGR). Big4 capex $388B(2025)→$630B(2026, +62%). Neocloud $25B→$180B(2030, 69% CAGR), CoreWeave $5.1B 백로그 $55.6B. DC 건설비 표준 $10.7M/MW, AI 최적화 $20M+/MW. Stargate Korea LOI(2025-10): Samsung C&T+Heavy+SDS+Electronics+OpenAI 공동 데이터센터 평가, 부유식 DC 공동개발.
+- **출처**: NVIDIA Q4 FY26, theCUBE Cloud Q2 2025, IndexBox, JLL 2026 Outlook, Grand View, Markets and Markets, ABI Research, Sacra (CoreWeave), DCD, Tom's Hardware, Visual Capitalist, datacenterrichness, Samsung C&T Newsroom, Samsung Newsroom, Samsung SDS IR, OpenAI
 
 ---
 

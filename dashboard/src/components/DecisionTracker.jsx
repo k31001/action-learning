@@ -48,13 +48,13 @@ const DECISIONS = [
     deadline: '2026-12-31',
     owner: '인사·연구',
     rationale: 'AI 코딩·EDA·공정 시뮬레이션·수율 예측 도구 전사 파일럿',
-    fallback: '없음 (RS2·RS3 선행 조건)',
+    fallback: '없음 (RS-2·RS-3 선행 조건)',
     benchmark: 'Nucor 변동비 구조 모델 (인력 효율화)',
     keyKpi: 'ai_dev_efficiency_adoption',
   },
   {
     id: 'D6',
-    title: 'Robust RS1·RS4·RS6 이사회 정책화',
+    title: 'Robust RS-1·RS-4·RS-5 이사회 정책화',
     deadline: '2026-09-30',
     owner: '전략기획',
     rationale: '옵션형 캐파·LTA·재무 규율 + 다운사이클 capex 4조원/년 명문화',
@@ -64,11 +64,11 @@ const DECISIONS = [
   },
   {
     id: 'D7',
-    title: 'AI 잉여 인력 RS2·RS3 전환 배치',
+    title: 'AI 잉여 인력 RS-2·RS-3 전환 배치',
     deadline: '2027-03-31',
     owner: '인사·사업기획',
     rationale: 'AI 도구 도입 직후 분기별 "전환 배치 엔지니어 수" 의무 보고',
-    fallback: '없음 (RS2·RS3 실행의 기반)',
+    fallback: '없음 (RS-2·RS-3 실행의 기반)',
     benchmark: 'Nucor 분권화 경영 모델',
     keyKpi: null,
   },
@@ -94,13 +94,23 @@ const DECISIONS = [
   },
   {
     id: 'D10',
-    title: 'NAND 공정 전환 주기 연장 R&D 4트랙 착수 (RS7 신규)',
+    title: 'NAND 공정 전환 주기 연장 R&D 4트랙 착수 (RS-6 신규)',
     deadline: '2026-12-31',
     owner: '메모리연구소·DS부문 패키징·Memory Solutions Lab',
-    rationale: '양산 ramp 6개월 지연 = 누적 이익의 2/3 소실 (Weber/PSU 학습곡선). 업계 4사가 capa 확장→process upgrade로 일제히 선회 (TrendForce 2025-11). YMTC가 hybrid bonding 핵심 IP 지배 → 디커플링 시 라이선스 차단 리스크. 4트랙 병행: ① Hybrid Bonding 자체 IP (1.5조 원/3년 + 한국 IP 컨소시엄), ② Multi-deck 정교화 (V9→V10 fab 재구성 30% 절감), ③ bit-per-cell 확장 (QLC 30%+/2026, PLC 시제품/2028), ④ FDP·SCADA 호스트 협력 firmware (RS3 SW 매출과 R&D 자원 공유)',
+    rationale: '양산 ramp 6개월 지연 = 누적 이익의 2/3 소실 (Weber/PSU 학습곡선). 업계 4사가 capa 확장→process upgrade로 일제히 선회 (TrendForce 2025-11). YMTC가 hybrid bonding 핵심 IP 지배 → 디커플링 시 라이선스 차단 리스크. 4트랙 병행: ① Hybrid Bonding 자체 IP (1.5조 원/3년 + 한국 IP 컨소시엄), ② Multi-deck 정교화 (V9→V10 fab 재구성 30% 절감), ③ bit-per-cell 확장 (QLC 30%+/2026, PLC 시제품/2028), ④ FDP·SCADA 호스트 협력 firmware (RS-3 SW 매출과 R&D 자원 공유)',
     fallback: '트랙 1 IP 개발 지연 시 한국 IP 컨소시엄(SK하이닉스 공동) 또는 정부 R&D 분리 트랙. 자체 IP 확보 실패 시 YMTC 라이선스 의존도 최대 50% 한도로 통제',
     benchmark: 'TSMC "Nx · Nx+ · Nx++" enhancement 패턴 — 노드 한 번에 3세대 활용. 메모리에 적용 시 V10 → V10+ → V10++ 점진 개선',
     keyKpi: 'nand_layer_cycle_months',
+  },
+  {
+    id: 'D11',
+    title: 'AI 인프라 수직 진출 — Stargate Korea 본 계약 + Neocloud Equity-for-Supply (SE-3 신규)',
+    deadline: '2026-12-31',
+    owner: 'DS·Samsung C&T·Samsung SDS·Samsung Heavy 컨소시엄',
+    rationale: 'AI 가치사슬 마진 분포에서 NVIDIA DC 영업이익률 60.4%·하이퍼스케일러 33%로 메모리(슈퍼사이클 ~25%)는 "재료 공급자" 고착. 3-Tier 동시 착수: ① 지분 헷지 — Catalyst Fund/계열 VC로 CoreWeave-급 neocloud 1~3% + HBM equity-for-supply swap (5년 누계 $5~10B). ② AI Factory 파트너 — Stargate Korea LOI(2025-10) → DA 본계약, Electronics+C&T+SDS+Heavy 4사 컨소시엄 운영 협약, BTO/BOO 모델 (5년 누계 $15~25B). ③ 자체 캠퍼스 — 2029~2030 Hwaseong/Pyeongtaek 인접 50~100MW (Tier 3, 옵션). Big4 capex $630B(2026, +62%) 중 75%가 AI 인프라 — 메모리 매출 환원분 외 70%가 가치사슬 상류에 누적',
+    fallback: 'Stargate Korea 본 계약 결렬 시 Tier 1만 유지, Tier 2는 한국 정부 Sovereign AI 인프라 수요 대상 재포지셔닝. 하이퍼스케일러 카니발리제이션 신호 발생 시 Tier 2 비-하이퍼스케일러(OpenAI·Anthropic·xAI·neocloud) 우선 타겟',
+    benchmark: 'Marriott Asset-Light 모델 확장 (BTO/BOO 운영 수수료 P&L 추적) + Disney-Marvel 다운사이클 M&A (Tier 1 neocloud 지분 인수는 2027~2028 거품 조정 시 우선 집행)',
+    keyKpi: null,
   },
 ]
 
@@ -125,7 +135,7 @@ export default function DecisionTracker({ indicators }) {
     <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-sm font-semibold text-gray-200">9개 즉시 결정 — 묶음 의결</h2>
+          <h2 className="text-sm font-semibold text-gray-200">11개 즉시 결정 — 묶음 의결</h2>
           <p className="text-xs text-gray-500 mt-0.5">
             모든 결정은 2026년 Q4 마감. 단일 결정으로 분리 불가.
           </p>
@@ -213,7 +223,7 @@ export default function DecisionTracker({ indicators }) {
           <div className="text-xs">
             <span className="font-semibold text-amber-300">묶음 패키지로 의결 필요 — </span>
             <span className="text-gray-300">
-              D1(HBM4 점유율) ↔ D5(AI 도구) ↔ D7(잉여 인력 전환)은 직렬 의존. D4(텍사스 1·2단계) ↔ D8(추가 보조금)은 동시 처리 필수. D6(이사회 정책화)이 D9(M&A 펀드 적립)의 거버넌스 기반.
+              D1(HBM4 점유율) ↔ D5(AI 도구) ↔ D7(잉여 인력 전환)은 직렬 의존. D4(텍사스 1·2단계) ↔ D8(추가 보조금)은 동시 처리 필수. D6(이사회 정책화)이 D9(M&A 펀드 적립)의 거버넌스 기반. D11(AI 인프라 수직 진출)은 D6(재무 규율)의 다운사이클 capex 하한과 충돌 점검 필요.
             </span>
           </div>
         </div>

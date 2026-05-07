@@ -1,6 +1,6 @@
 # 핵심전략 10개 현황 분석 — 문서 인덱스
 
-> **작업 3 산출물**: 외부 공개 자료(연차보고서·산업 리포트·뉴스·IR·경쟁사 공시)만 사용해 10개 핵심전략 각각의 정성·정량 현황을 분석.
+> **작업 3 산출물**: 외부 공개 자료(연차보고서·산업 리포트·뉴스·IR·경쟁사 공시)만 사용해 11개 핵심전략 각각의 정성·정량 현황을 분석.
 > **선정 근거**: [analysis/scenarios/core-strategy-selection.md](../../analysis/scenarios/core-strategy-selection.md)
 > **상위 문서**: [report/scenario-planning-report.md](../scenario-planning-report.md)
 
@@ -19,7 +19,7 @@
 | **SD-1** | HBM 조직 독립 P&L | 메모리사업부 내 통합, 분리 P&L 미공개 | [current-state-sd1-hbm-pnl-spinoff.md](current-state-sd1-hbm-pnl-spinoff.md) |
 | **RS-5** | 재무 규율 + 재투자 | 현금 $63B 강점, 이사회 정책 명문화 부재 | [current-state-rs5-financial-discipline.md](current-state-rs5-financial-discipline.md) |
 
-### 사이드벳 4개 — 보완·헤지
+### 사이드벳 5개 — 보완·헤지
 
 | ID | 전략 | 현재 위치 (한 줄) | 문서 |
 |----|------|------|------|
@@ -27,6 +27,7 @@
 | **SD-2** | 산업용 AI 메모리 (자동차·의료) | Tesla 다년 계약 ✅, AEC-Q100 양산 미공개 | [current-state-sd2-industrial-ai-memory.md](current-state-sd2-industrial-ai-memory.md) |
 | **SE-1** | 3D DRAM + IMEC + M&A | SK 30년 로드맵 발표, Samsung 전담 조직 미공개 | [current-state-se1-3d-dram-imec-ma.md](current-state-se1-3d-dram-imec-ma.md) |
 | **SE-2** | CXL SIG 표준 주도 | Pangea v3 2026 발표 예정 ✅, 인력 부족 ⚠️ | [current-state-se2-cxl-sig-leadership.md](current-state-se2-cxl-sig-leadership.md) |
+| **SE-3** | AI 인프라 수직 진출 (Vertical Ascent) | Stargate Korea LOI ✅, 그룹 통합 P&L 부재 ⚠️ | [current-state-se3-vertical-ascent.md](current-state-se3-vertical-ascent.md) |
 
 ---
 
@@ -50,7 +51,7 @@
 
 목표: **"우리는 지금 어디에 있고, 무엇이 가장 큰 정보 공백인가"**를 외부 공개 자료만으로 명확히 답할 수 있는 수준.
 
-## 핵심 인사이트 (10개 전략 종합)
+## 핵심 인사이트 (11개 전략 종합)
 
 ### 강점 영역 (✅)
 
@@ -73,6 +74,9 @@
 ### 행동 우선순위 (외부 가시성 회복)
 
 - **2026 H1**: HBM 사업부 P&L 분리 + RS-5 이사회 정책 명문화 → IR 메시지 발표
+- **2026 H1**: Stargate Korea 컨소시엄 운영 협약 (Electronics·C&T·SDS·Heavy 4사 분담·이익 분배) → SE-3 작동 기반
 - **2026 Tech Day**: SCADA AI SSD 로드맵 공개 → SK·Kioxia 추격 가능성 결정
 - **2026 H2**: 자체 hybrid bonding 특허 출원 가속 → YMTC IP 의존 회피 신호
+- **2026 H2**: Stargate Korea LOI → DA 전환, neocloud equity-for-supply swap 첫 사례
 - **2027**: 3D DRAM 전담 R&D 조직 발표 + IMEC 협약 + AEC-Q100 양산 가시화
+- **2028**: 그룹 AI 인프라 사업 P&L 분리 공시 (SD-1 패턴 확장)
