@@ -35,9 +35,18 @@ function mergeWithDefaults(stored) {
     storedById[def.id] ? { ...def, ...storedById[def.id] } : def
   )
   const storedTriggerById = Object.fromEntries((stored.triggers || []).map(t => [t.id, t]))
-  const triggers = INITIAL_TRIGGERS.map(def =>
-    storedTriggerById[def.id] ? { ...def, ...storedTriggerById[def.id] } : def
-  )
+  const triggers = INITIAL_TRIGGERS.map((def, idx) => {
+    const s = storedTriggerById[def.id]
+    if (!s) return def
+    const merged = { ...def, ...s }
+    // 마이그레이션: 활성 상태인데 activatedAt 가 없는 옛 저장본은 activatedDate + idx 기반으로 보정
+    if (merged.activated && !merged.activatedAt) {
+      const date = merged.activatedDate || '2026-01-01'
+      merged.activatedAt = `${date}T00:00:${String(idx).padStart(2, '0')}.000Z`
+    }
+    if (!merged.activated) merged.activatedAt = null
+    return merged
+  })
   // Merge quadrant positions by key: use initial df1/df2 as base, preserve user note/date
   const storedQpByKey = Object.fromEntries((stored.quadrantPositions || []).map(p => [p.key, p]))
   const quadrantPositions = INITIAL_QUADRANT_POSITIONS.map(def => {
@@ -100,49 +109,52 @@ export function useStore() {
     })
   }, [triggers, scenarios, quadrantPositions, triggerHistory, persist])
 
-  // 트리거 클릭 이력: 클릭마다 시점·위치를 누적 기록.
-  // 다음 트리거는 항상 "직전 저장된 위치" + (이번 트리거의 df1Delta/df2Delta) 로 이동한다.
-  // 좌표는 의미 좌표(DF1/DF2, -10..+10)로 저장 — SVG 캔버스가 viewBox 기반 반응형이라 픽셀 절댓값보다 안전.
+  // 포지션 맵 좌표 = base.current + (활성 중인 트리거들의 df1/df2 델타를 활성화 시간순으로 누적).
+  // 해제하면 그 트리거 기여분은 체인에서 빠지므로 맵에서도 즉시 사라진다.
+  // triggerHistory 는 클릭 감사 로그(매 클릭 누적, 절대 덮어쓰지 않음)로 별도 보존.
   const updateTrigger = useCallback((id, activated, note) => {
     const trigger = triggers.find(t => t.id === id)
     if (!trigger) return
 
-    const today = new Date().toISOString().slice(0, 10)
+    const now = new Date().toISOString()
+    const today = now.slice(0, 10)
     const nextTriggers = triggers.map(t => t.id !== id ? t : {
       ...t,
       activated,
       activatedDate: activated ? today : null,
+      activatedAt: activated ? now : null,   // 체인 정렬 키
       note: note !== undefined ? note : t.note,
     })
 
-    // 직전 저장 위치 (= 이력의 마지막 위치). 이력이 비어 있으면 base.current 가 기준점.
+    // 갱신 후 활성 트리거 체인을 재계산해 이번 클릭 시점의 위치를 산출.
     const base = quadrantPositions.find(p => p.key === 'current') ?? { df1: 0, df2: 0 }
-    const lastPos = triggerHistory.length > 0
-      ? triggerHistory[triggerHistory.length - 1].position
-      : { df1: base.df1, df2: base.df2 }
+    const activeChain = nextTriggers
+      .filter(t => t.activated)
+      .sort((a, b) => (a.activatedAt ?? '').localeCompare(b.activatedAt ?? ''))
+    let pos = { df1: base.df1, df2: base.df2 }
+    for (const t of activeChain) {
+      pos = {
+        df1: clamp(pos.df1 + (t.df1Delta ?? 0), -10, 10),
+        df2: clamp(pos.df2 + (t.df2Delta ?? 0), -10, 10),
+      }
+    }
 
-    // 활성화는 +delta, 해제는 -delta (이전 활성화의 누적 효과를 되돌리는 의미).
-    const sign = activated ? 1 : -1
-    const intendedDelta = {
-      df1: sign * (trigger.df1Delta ?? 0),
-      df2: sign * (trigger.df2Delta ?? 0),
-    }
-    const nextPos = {
-      df1: clamp(lastPos.df1 + intendedDelta.df1, -10, 10),
-      df2: clamp(lastPos.df2 + intendedDelta.df2, -10, 10),
-    }
-    // 클램프 이후 실제 적용된 델타 (경계 부근에서는 의도값과 다를 수 있음).
-    const actualDelta = {
-      df1: +(nextPos.df1 - lastPos.df1).toFixed(3),
-      df2: +(nextPos.df2 - lastPos.df2).toFixed(3),
-    }
+    // 감사 로그: 클릭마다 한 줄씩 추가 (포지션·deltaFromPrev 는 이번 재계산 결과 기준).
+    const lastEventPos = triggerHistory.length > 0
+      ? triggerHistory[triggerHistory.length - 1].position
+      : null
     const event = {
       triggerId: id,
       triggerName: trigger.name,
       action: activated ? 'activate' : 'deactivate',
-      timestamp: new Date().toISOString(),
-      position: nextPos,                                          // 누적 절대 위치
-      deltaFromPrev: triggerHistory.length === 0 ? null : actualDelta,  // 첫 이벤트는 null
+      timestamp: now,
+      position: { df1: +pos.df1.toFixed(3), df2: +pos.df2.toFixed(3) },
+      deltaFromPrev: lastEventPos
+        ? {
+            df1: +(pos.df1 - lastEventPos.df1).toFixed(3),
+            df2: +(pos.df2 - lastEventPos.df2).toFixed(3),
+          }
+        : null,
     }
     const nextHistory = [...triggerHistory, event]
 
@@ -260,32 +272,43 @@ export function useStore() {
     }))
   }, [scenarios, activeTriggers])
 
-  // ── 트리거 이력 기반 쿼드런트 포지션 ────────────────────────────────────
-  // 표시 위치 = 이력의 마지막 이벤트 위치. 이력이 비면 base.current.
-  // (이전 구현은 활성 트리거 델타의 단순 합산이었으나, 이제는 클릭 순서를 따라 누적된 경로를 따라간다.)
+  // ── 활성 트리거 체인 기반 쿼드런트 포지션 ────────────────────────────────
+  // base.current → (활성 트리거를 activatedAt 순서로) 누적 적용 → 마지막이 표시 위치.
+  // 트리거 해제 시 해당 트리거가 체인에서 빠져 맵 좌표가 그만큼 즉시 되돌아간다.
   const adjustedQuadrantPosition = useMemo(() => {
     const base = quadrantPositions.find(p => p.key === 'current') ?? { df1: 0, df2: 0 }
-    if (triggerHistory.length === 0) {
-      return {
-        df1: base.df1, df2: base.df2,
-        baseDf1: base.df1, baseDf2: base.df2,
-        df1Delta: 0, df2Delta: 0,
-        isAdjusted: false,
-        activeTriggerNames: [],
+    const activeChain = triggers
+      .filter(t => t.activated)
+      .sort((a, b) => (a.activatedAt ?? '').localeCompare(b.activatedAt ?? ''))
+
+    const chain = [{ df1: base.df1, df2: base.df2, label: '기준점', kind: 'base' }]
+    let pos = { df1: base.df1, df2: base.df2 }
+    for (const t of activeChain) {
+      pos = {
+        df1: clamp(pos.df1 + (t.df1Delta ?? 0), -10, 10),
+        df2: clamp(pos.df2 + (t.df2Delta ?? 0), -10, 10),
       }
+      chain.push({
+        df1: pos.df1, df2: pos.df2,
+        label: t.name,
+        kind: 'trigger',
+        triggerId: t.id,
+        activatedAt: t.activatedAt,
+      })
     }
-    const latest = triggerHistory[triggerHistory.length - 1]
+
     return {
-      df1: latest.position.df1,
-      df2: latest.position.df2,
+      df1: pos.df1,
+      df2: pos.df2,
       baseDf1: base.df1,
       baseDf2: base.df2,
-      df1Delta: +(latest.position.df1 - base.df1).toFixed(3),
-      df2Delta: +(latest.position.df2 - base.df2).toFixed(3),
-      isAdjusted: true,
-      activeTriggerNames: activeTriggers.map(t => t.name),
+      df1Delta: +(pos.df1 - base.df1).toFixed(3),
+      df2Delta: +(pos.df2 - base.df2).toFixed(3),
+      isAdjusted: activeChain.length > 0,
+      activeTriggerNames: activeChain.map(t => t.name),
+      chain,
     }
-  }, [quadrantPositions, triggerHistory, activeTriggers])
+  }, [quadrantPositions, triggers])
 
   return {
     indicators,

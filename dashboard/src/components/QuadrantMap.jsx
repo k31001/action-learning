@@ -49,21 +49,14 @@ export default function QuadrantMap({
 
   const pts = TIME_KEYS.map(k => positions.find(p => p.key === k)).filter(Boolean)
   const basePos = positions.find(p => p.key === 'current')
-  const adjPos  = adjustedPosition  // { df1, df2, baseDf1, baseDf2, isAdjusted, activeTriggerNames }
+  const adjPos  = adjustedPosition  // { df1, df2, baseDf1, baseDf2, isAdjusted, activeTriggerNames, chain }
 
-  // 트리거 클릭 경로: base.current → event[0] → event[1] → ... → event[last]
-  const trailPoints = basePos && triggerHistory.length > 0
-    ? [
-        { df1: basePos.df1, df2: basePos.df2, label: '기준점' },
-        ...triggerHistory.map((e, i) => ({
-          df1: e.position.df1,
-          df2: e.position.df2,
-          label: `#${i + 1} ${e.triggerName}`,
-          event: e,
-          index: i + 1,
-        })),
-      ]
-    : []
+  // 활성 트리거 체인: base → 활성 트리거(activatedAt 순) 누적 위치들. 해제 시 즉시 사라짐.
+  const trailPoints = (adjPos?.chain ?? []).map((p, i) => ({
+    ...p,
+    index: i,
+    isLast: i === (adjPos?.chain?.length ?? 0) - 1,
+  }))
 
   function handleAdd() {
     onAddSnapshot({ ...draft, key: 'current', date: new Date().toISOString().slice(0, 10) })
@@ -181,16 +174,17 @@ export default function QuadrantMap({
           return <g>{segs}</g>
         })()}
 
-        {/* 트리거 이력 점들 (마지막 점은 아래 노란 별로 따로 그려짐) */}
+        {/* 활성 트리거 체인 점들 (마지막 점은 아래 노란 별로 따로 그려짐) */}
         {trailPoints.slice(1, -1).map((p, i) => {
           const { cx, cy } = toSvg(p.df1, p.df2)
+          const dateStr = p.activatedAt ? p.activatedAt.slice(0, 10) : null
           return (
-            <g key={`hist-${i}`}
+            <g key={`chain-${i}`}
               onMouseEnter={() => setHovered({
                 df1: p.df1, df2: p.df2,
                 label: p.label,
-                date: p.event?.timestamp?.slice(0, 10),
-                note: p.event?.action === 'activate' ? '발동' : '해제',
+                date: dateStr,
+                note: '발동 중',
               })}
               onMouseLeave={() => setHovered(null)}
               style={{ cursor: 'pointer' }}
@@ -301,18 +295,19 @@ export default function QuadrantMap({
           <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-yellow-400" /> 최신 트리거 위치</span>
         )}
         <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b border-dashed border-gray-500" /> 시점 스냅샷 경로</span>
-        {triggerHistory.length > 0 && (
-          <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b-2 border-dashed border-yellow-400" /> 트리거 클릭 경로</span>
+        {adjPos?.isAdjusted && (
+          <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b-2 border-dashed border-yellow-400" /> 활성 트리거 체인</span>
         )}
       </div>
 
-      {/* 트리거 클릭 이력 (누적, 시간순) */}
+      {/* 트리거 클릭 감사 로그 (모든 클릭 누적, 포지션 맵과 별도) */}
       {triggerHistory.length > 0 && (
         <div className="mt-3 border-t border-gray-800 pt-3">
           <div className="flex items-center gap-2 mb-2">
             <History size={13} className="text-yellow-400" />
             <h3 className="text-xs font-semibold text-gray-300 flex-1">
-              트리거 클릭 이력 <span className="text-gray-500 font-normal">({triggerHistory.length}건)</span>
+              트리거 클릭 감사 로그
+              <span className="text-gray-500 font-normal ml-1">({triggerHistory.length}건 · 맵과 무관, 모든 클릭 보존)</span>
             </h3>
             <button
               onClick={() => setShowHistory(s => !s)}
