@@ -21,16 +21,22 @@
 | RS6 재무 규율 + 재투자 | **RS-5** | 번호 재배치 |
 | RS7 NAND 공정 주기 연장 | **RS-6** (공정 리더십 통합) | MB-3 1c nm DRAM 흡수 |
 | (신설) | **RS-7** | AI 엔지니어링 자동화 (구 RS-2 prerequisite에서 분리) |
+| **(신설 — 2026-05-07)** | **RS-8** | 구조화 매출 헷지 (Participating Forward·HTA·Tiered Pricing·Memory Trading Desk) — 농수산 100년 헷지 노하우 이식 |
 
 또한 의사결정 로드맵 §6에 **Decision 11 (SE-3 가치사슬 수직 진출)** 이 신설되었다 (Stargate Korea 컨소시엄 + Tier 1/2/3 진출 모델). 본 권고안과 결이 다르므로 Side Bets 섹션이 아닌 Decision 섹션에 별도 정의. 정본 분석은 [`report/core-strategies/current-state-se3-vertical-ascent.md`](../../report/core-strategies/current-state-se3-vertical-ascent.md).
+
+추가로 **Decision 12 (RS-8 구조화 매출 헷지 시범 도입)** 이 신설되었다 — 농수산업·연료 헷지의 검증된 5가지 계약 구조 중 메모리에 적합한 3가지(Participating Forward + HTA Slot/Price 분리 + Tiered Pricing)를 1~2개 앵커 고객과 시범 도입. 정본 분석은 [`report/invariant-strategies/rs8-structured-revenue-hedging.md`](../../report/invariant-strategies/rs8-structured-revenue-hedging.md).
 
 ---
 
 ## 0. 벤치마크 정합성 점검 — 7개 사이클 전략 패턴 vs 본 권고안
 
-> **출처**: `analysis/benchmark/cyclical-strategy-benchmark.md`
+> **출처**:
+> - `analysis/benchmark/cyclical-strategy-benchmark.md` (7개 산업·기업 사이클 패턴)
+> - `analysis/benchmark/agri-hedging-to-memory-semi.md` (농수산업 7가지 헷지 메커니즘 → 메모리 매핑)
+> - `analysis/benchmark/upside-participation-hedging.md` (상방 참여형 5가지 계약 구조 + 적정 strike 산정 이론)
 >
-> 7개 산업·7개 기업의 사이클 대응 사례에서 추출한 검증된 7가지 패턴을, 본 권고안의 RS·MB·SB 전략에 매핑하여 **누락 없는 사이클 방어 체계**를 검증한다.
+> 7개 산업·7개 기업의 사이클 대응 사례에서 추출한 검증된 7가지 패턴을, 본 권고안의 RS·MB·SB 전략에 매핑하여 **누락 없는 사이클 방어 체계**를 검증한다. 2026-05-07에 농수산·연료 헷지 100년 노하우를 추가 검증한 결과, 단순 LTA(RS-4)로는 보호되지 않는 **계약 구조 자체의 혁신 영역**이 존재함을 확인하고 RS-8을 신설한다.
 
 | # | 벤치마크 패턴 | 대표 사례 | 본 권고안 매핑 | 상태 |
 |---|--------------|----------|---------------|------|
@@ -63,6 +69,21 @@
 - **벤치마크 메시지**: ExxonMobil은 다운사이클에 자본지출을 줄이지 않다가 2020년 다우 산업평균에서 제외되고 첫 연간 적자. 그러나 회복기 Pioneer $59.5B 인수로 폭발적 성장. 활동가 투자자 Engine No.1 압박을 견딘 거버넌스가 핵심.
 - **메모리에 적용**: 다운사이클에서 외국인 투자자의 배당 확대 압박이 RS-5를 무력화하지 않도록, **이사회 차원의 "장기 가치 우선 의결권 위임 구조"** 사전 명문화. 호황기 IR 메시지에 "다운사이클 배당 보장 < 장기 capex 사수" 명시.
 - **반영 위치**: RS-5 핵심 리스크 섹션에 추가 — "외국인 주주 압박 대비 IR 메시지 사전 정비"
+
+#### E. 농수산·연료 헷지 모델 — "계약 구조 혁신으로 매출 변동성 절반 축소" (2026-05-07 신규)
+- **벤치마크 메시지**:
+  - **Cargill DDC 포트폴리오**: 단일 헷지 도구가 아닌 Forward·Futures·Options·Swap 조합. 가격이 어느 방향으로 가도 일정 부분 보호 + 일정 부분 상승 참여
+  - **Cargill Black River Asset Management**: 글로벌 곡물 거래 한가운데에서 흐르는 정보를 **헤지펀드 $10B로 자산화** — "공급망 정보 우위의 자산화"
+  - **HTA (Hedge-to-Arrive) / Basis Contract**: 가격이라는 단일 변수를 **선물가격 + 베이시스로 분해**해 각각 따로 헷지. 메모리에서는 *제조 슬롯 예약*과 *최종 가격 결정*의 분리로 직결
+  - **Participating Forward**: 외환시장에서 50년 다듬어진 도구 — Floor 보장 + 상방 50%+ 참여. 무한 상방 + 프리미엄 0. **메모리 산업 미도입 최대 잠재 도구**
+  - **Mowi 수직 통합**: 가공·브랜드 매출이 사이클 평탄화의 도구. 단, 사이클 자체는 없애지 못함 (2025년 farming EBIT -23%)
+  - **Southwest 연료 헷지**: 1998~2008 누적 절감 $3.5B (회사 전체 이익의 83%). 그러나 시장 구조 변화(crack spread 확대)로 2025년 종료 — **헷지 정책은 정기 재검토 필요**
+  - **셰일업체 Three-way Collar 함정**: 2014·2020 두 번 sub-put 매도형으로 보호 사라지고 손실 가속. **단일 floor 원칙 절대 지킬 것**
+- **메모리에 적용 — 단순 LTA(RS-4)와 결정적 차이**:
+  - **RS-4 LTA**는 *물량* 계약 — Take-or-Pay·MVC·시장가 ±15% 밴드. 가격 결정은 시장 추종
+  - **RS-8 구조화 헷지**는 *계약 구조 자체의 혁신* — Floor + 상방 참여, 슬롯/가격 분리 결정, 시장구간별 차등 share, 사내 트레이딩 데스크. **가격 변동성을 옵션·스왑으로 분해**
+  - 2025년 9~12월 16Gb DDR5 +297% 가격 점프(SoftwareSeni·Tom's Hardware) 같은 사례에서, 9월 단순 고정가 LTA는 297% 상방을 모두 포기. Participating Forward(50% 참여) 적용 시 (15+50)/2 = $32.5로 단순 고정가 대비 +63% 매출 회수
+- **반영 위치**: **RS-8 신설** (Robust 전략) + Decision 12 신설 (시범 도입 1~2개 앵커 고객)
 
 ---
 
@@ -509,6 +530,101 @@
 
 ---
 
+### RS-8: 구조화 매출 헷지 — Participating Forward + Slot/Price 분리 + Memory Trading Desk [신설 — 2026-05-07]
+
+> **재편 메모**: 본 RS-8은 농수산업 100년 헷지 노하우 + 외환·연료 시장 50년 옵션 구조 + Cargill Black River 정보 자산화 모델을 메모리 산업에 압축 이식한다. RS-4(LTA·Take-or-Pay 물량 계약)와 결정적으로 구분되며, 가격 변동성 자체를 옵션·스왑 구조로 분해한다. 정본 분석은 [`report/invariant-strategies/rs8-structured-revenue-hedging.md`](../../report/invariant-strategies/rs8-structured-revenue-hedging.md).
+
+- **왜 Robust한가**:
+
+  메모리 사이클은 가격 진폭이 ±50~300%에 달한다 — 2025년 9~12월 16Gb DDR5 contract price $6.84 → $27.20 (+297%, 출처: SoftwareSeni 2026, Tom's Hardware 2025). 단순 고정가 LTA(RS-4)는 이런 사이클당 50~100% 매출 기회를 포기하는 반면, 단순 spot 노출은 다운사이클 시 변동비 회수도 불가능하다. **계약 구조 자체가 사이클의 양면을 동시에 잡지 못하면, 단일 계약 형태로는 어떤 시나리오에서도 차선이다.**
+
+  - **시나리오 A (디커플링 심화)**: HBM 희소성 프리미엄을 최대한 추출하려면 spot 매출 노출이 필요한데, 단순 LTA는 이를 막는다. RS-8 Participating Forward는 Floor 보장 + 상방 50% 참여로 양면을 동시에 잡음
+  - **시나리오 B (AI 르네상스)**: 호황기 297% 가격 점프 같은 상방을 50%만 참여해도 단순 고정가 대비 +63% 매출 회수
+  - **시나리오 C (거품 붕괴)**: Floor가 변동비 + 5~10% 마진을 보장하므로 다운사이클에서 흑자 유지 가능
+  - **시나리오 D (조용한 재편)**: 가격 변동성 평탄화로 다년 자본 회수 안정성 확보, capex 불필요한 회수 부담 감소
+  - **시나리오 E (패러다임 전환)**: Memory Trading Desk가 글로벌 거래 데이터에서 패러다임 전환 신호를 가장 먼저 포착 → RS-2·SE-1 피벗 자금 확보의 정보 기반
+
+- **구체적 실행 방안 (4트랙 병행)**:
+
+  **[트랙 1: Participating Forward 시범 도입 — 메모리 산업 최초]**
+  - **계약 구조**: 약정 물량 100%에 대해 Floor(변동비 + 5~10% 마진) 보장, 그 중 50%만 고정가 락인, 나머지 50%는 시장 가격 노출
+  - **수익 구조 예시** (DDR5 $20 spot 기준):
+    - Floor $15 (변동비 + 30% 마진)
+    - 시장 $50 상승 시 실현가: ($15 × 50% + $50 × 50%) = **$32.5**
+    - 시장 $5 폭락 시 실현가: **$15** (Floor 보장)
+    - 시장 $100 상승 시 실현가: **$57.5** (무한 상방 참여)
+  - **시범 대상**: NVIDIA 또는 하이퍼스케일러 1~2사와 HBM4E/HBM5 다년(2~3년) 약정 중 일부 물량(연간 10~20%)에 시범 적용. 2027~2028년 본격 확대 기준 HBM 매출의 30~40%까지
+  - **Strike 산정 거버넌스**: Black 모델 + Monte Carlo 시뮬레이션 + CVaR(Conditional Value at Risk) 5% 기준 최적화. 메모리는 변동성 σ ≈ 60~120%로 원유(30%)·S&P(18%) 대비 매우 높아 jump-diffusion 모델 보정 필수
+
+  **[트랙 2: HTA(Hedge-to-Arrive) — Wafer Slot Reservation + Price Decoupling]**
+  - **계약 구조**: 가격을 *선물 가격(futures level) + 베이시스(basis)*로 분해해 각각 따로 결정
+  - **메모리 적용**: 고객이 12~24개월 후 wafer 슬롯을 먼저 예약(Slot Reservation), 가격은 인도 6개월 전 시장가 대비 ±X% 밴드로 사후 결정. 농산물 HTA에서 검증된 표준
+  - **선급금 통합**: 2023년 Nvidia가 SK하이닉스·Micron에 각 $5.4~7.7억 선급한 사례를 산업 표준 계약 템플릿으로 정형화. 신규 팹 capex의 20~30%를 앵커 고객 선급금으로 보장 + Take-or-Pay 조항 포함 → 농산물에서 은행이 헷지된 곡물에 90% 대출하는 것처럼, 메모리 신규 팹 프로젝트 파이낸스도 LTA를 담보로 저금리 대출 가능
+
+  **[트랙 3: Tiered Pricing — 시장 구간별 차등 share]**
+  - **계약 구조**: 시장 가격 구간별로 메모리社와 고객의 매출 share 비율을 다르게 적용
+    | 시장 가격 구간 | 계약 가격 | 매출 share |
+    |---|---|---|
+    | < Floor ($15) | $15 (보장) | 메모리社 100% |
+    | $15~$30 | 시장가 | 50:50 |
+    | $30~$60 | 시장가 + α | 메모리社 70%, 고객 30% |
+    | > $60 (호황 정점) | 시장가 + 보너스 | 메모리社 80%, 고객 20% |
+  - **장점**: 고객 입장에서도 호황기에 자체 헷지 부담이 분산됨. Cargill의 식품기업 거래에서 검증된 모델
+  - **시범 대상**: 자동차·산업용·신흥 AI 시장(SD-2 연계) 등 중장기 안정 거래 고객 우선 — 가격 변동성을 양측이 분담
+
+  **[트랙 4: Memory Trading Desk + DRAM OTC 스왑 시장 조성 — Cargill Black River 모델]**
+  - **원리**: Cargill은 글로벌 곡물 흐름의 한가운데에서 *누가 어디서 얼마나 사고 파는지 가장 먼저 안다*는 정보 우위를 헤지펀드 Black River($10B 운용)로 자산화. **삼성·SK하이닉스·Micron만 보유한 메모리 글로벌 거래 데이터 우위**도 동일하게 자산화 가능
+  - **사내 메모리 트레이딩 데스크 신설 (2027~2028년)**:
+    - 인원 20~30인 (퀀트 5인, 트레이더 5인, 데이터 사이언티스트 10인, 컴플라이언스 5~10인). 골드만삭스·JP모건 등 commodity 트레이딩 출신 인재 영입
+    - 역할 1: 사내 capex 결정의 정확도 향상 — 하이퍼스케일러 주문 패턴·재고 신호·신흥시장 발주를 정량화
+    - 역할 2: 자체 헷지 포지션 운용 — RS-1(옵션형 캐파)·RS-8 트랙 1~3의 가격 결정 입력값 제공
+    - 역할 3: 장기적 DRAMeXchange 가격 지수 기반 OTC(Over-the-Counter) 스왑 시장 조성. 본격적 DRAM 선물 거래소(Fish Pool ASA가 연어 선물을 만든 모델)의 1차 단계
+  - **반독점 회피 설계**: 명시적 카르텔(2002~2006년 DRAM 가격담합 미국 법무부 $7.3억 벌금 전례)을 절대 회피. 양자간 LTA·Participating Forward·OTC 스왑은 합법적 헷지 도구이며, *capex 가이던스 시그널링*만 공개적으로 활용
+
+  **[금지 사항 — 셰일업체 실패 학습]**:
+  - **Three-way Collar 절대 금지**: 비용 절감 욕심에 sub-put 매도형 구조를 만들면, Floor 아래로 가격이 폭락 시 보호가 사라지고 손실이 가속된다. Pioneer·Whiting Petroleum이 2014년 유가 $93 → $26 폭락에서 두 번이나 같은 함정에 빠진 교훈 (출처: Mobius Risk Group, World Oil 2020.03)
+  - **단일 Floor 원칙**: 모든 RS-8 계약은 단일 Floor만 두고, 비용을 0으로 만들기 위해 sub-put을 매도하지 않는다 — 이사회 정책으로 명문화
+
+- **재무 효과 추정 (Monte Carlo 시뮬레이션 가정, 5년 누적)**:
+  - 매출 변동성 (분기 표준편차) 현재 ±25% → **±12% (3년 후)** : 절반 축소
+  - 다운사이클 capex 회수율 60~70% → **80~90%**
+  - HBM 매출 중 다년(2년+) 고정가 비중 10~15% → **40% (3년 후)**
+  - 사이클당 기회 매출 회수: 단순 고정가 대비 +50~100% (시장가 +297% 사례 기준 +63%)
+
+- **기간**: 2026년 H2 트랙 1·3 시범 협상 착수, 2027년 트랙 4 트레이딩 데스크 신설, 2028년 본격 확대
+
+- **핵심 KPI (이사회 모니터링 의무)**:
+  1. **다년(2년+) 고정가·Participating Forward 계약 매출 비중** (HBM·DRAM·NAND 별)
+  2. **매출 변동성 분기 표준편차** (사업부 전체 + HBM 단독)
+  3. **Floor 발동 시 변동비 회수율** (다운사이클 가상 시나리오 분기 보고)
+  4. **Memory Trading Desk Capex 결정 정확도** (수요 예측 vs 실제 6개월 후 비교)
+
+- **핵심 리스크**:
+  - ① **고객 수용 저항**: 하이퍼스케일러는 CapEx 통제력이 강해 가격 결정 권한 양보 어려움 (대응: 시범 도입 시 고객 인센티브 제공 — Floor 약정 + Take-or-Pay 부담 경감)
+  - ② **반독점 위험**: OTC 스왑 시장 조성이 카르텔로 오인될 수 있음 (대응: 양자간 계약·공개 가격 지수 기반 외부 청산소 활용 + 사내 컴플라이언스 5~10인 전담)
+  - ③ **Three-way Collar 함정**: 비용 절감 욕심에 sub-put 매도형 구조 도입 시 다운사이클 손실 가속 (대응: 이사회 정책으로 단일 Floor 원칙 명문화 — 위 "금지 사항" 참조)
+  - ④ **변동성 모델 오차**: 메모리 σ ≈ 60~120%로 점프 패턴이 강해 표준 BSM 한계 (대응: jump-diffusion 모델 + 분기 strike 재산정 의무)
+  - ⑤ **Southwest 종말 교훈**: 시장 구조 변화로 헷지 효과가 사라질 수 있음 — RS-8 정책의 정기 재검토(연 1회 이사회 보고) 의무화
+
+- **벤치마크 매핑**:
+  - **Cargill DDC + Black River** (`agri-hedging-to-memory-semi.md` §1, §전략 5): 단일 도구 아닌 포트폴리오 + 정보 자산화
+  - **HTA / Basis Contract** (`agri-hedging-to-memory-semi.md` §3, §전략 1): 가격 분해 + Wafer Slot Reservation
+  - **Mowi 수직 통합** (`agri-hedging-to-memory-semi.md` §4): 가공·브랜드 매출 평탄화 — RS-3 Asset-Light SW와 결합
+  - **Take-or-Pay** (`agri-hedging-to-memory-semi.md` §전략 4): Crop Insurance 응용 — RS-4와 연계
+  - **Participating Forward** (`upside-participation-hedging.md` §구조 2): 외환·통화시장 50년 검증된 도구의 메모리 첫 도입
+  - **Tiered Pricing** (`upside-participation-hedging.md` §구조 3): Cargill 식품기업 거래 모델
+  - **셰일 Three-way Collar 함정** (`upside-participation-hedging.md` §실패 사례): Pioneer·Whiting 2014/2020 — 절대 모방 금지
+  - **Southwest 연료 헷지** (`cyclical-strategy-benchmark.md` §7): 1998~2008 절감 $3.5B → 2025년 종료 — 정기 재검토 필요성 교훈
+
+- **모방난이도가 높은 이유 (defensibility)**:
+  1. **30년+ 양측 신뢰 자산**: 다년 Participating Forward는 양측 신뢰 + 분쟁 해결 메커니즘 + 표준 계약 템플릿이 전제. 신규 진입자가 단기에 만들 수 없음
+  2. **글로벌 거래 데이터 우위**: 삼성·SK하이닉스·Micron 외에는 하이퍼스케일러 발주 패턴 데이터에 접근 불가. CXMT·YMTC도 내수 중심이라 글로벌 데이터 부재
+  3. **옵션 가격 산정 인프라**: Black 모델·Monte Carlo·CVaR·jump-diffusion을 메모리 SKU별로 운용할 퀀트 인력 + 컴퓨팅 인프라
+  4. **첫 도입자 표준 효과**: 첫 도입자가 LTA + Participating Forward 표준 계약 템플릿을 만들면, 후발주자는 이를 따라야 함 (Fish Pool ASA가 연어 선물을 만든 모델)
+  5. **반독점 컴플라이언스 노하우**: 2002~2006년 DRAM 가격담합 처벌 전례 + 미국·EU 동시 검토 가능한 법무 인력. 신규 진입자는 동일 노하우 부재
+
+---
+
 ## 4. 전략 포트폴리오 매트릭스
 
 | 전략 이니셔티브 | 시나리오 A<br>(황금 요새) | 시나리오 B<br>(AI 르네상스) | 시나리오 C<br>(기술 냉전) | 시나리오 D<br>(조용한 재편) | 시나리오 E<br>(패러다임 전환) | 유형 |
@@ -532,6 +648,7 @@
 | **RS-5** 재무 규율 + 초과이익 재투자 | ✅ 투자 절제·원가 우위 | ⚠️ 호황기 성장 기회 미세 제약 | ✅ 생존 필수·흑자 구조 | ✅ 회복 자금·속도 확보 | ✅ 피벗 자금 보호 | Robust |
 | **RS-6** 공정 리더십 통합 (1c nm DRAM + NAND 주기 연장) | ✅ 비용 우위 = 마진 우위 | ✅ Capex 회수율 우위 | ✅ 자체 IP 생존 직결 | ✅ 다운사이클 유일 경로 | ✅ NAND 자원 절감→차세대 R&D 재배분 | Robust |
 | **RS-7** AI 엔지니어링 자동화 (신설) | ✅ 인력 보안 + 자체 IP R&D 가속 | ✅ R&D 속도 = 점유율 회복 | ✅ 인건비 절감 + 잉여 자원 R&D 투입 | ✅ 회복기 경쟁력 갭 방지 | ✅ 신기술 R&D 가속 | Robust |
+| **RS-8** 구조화 매출 헷지 (Participating Forward·HTA·Tiered·Trading Desk) (신설) | ✅ HBM 희소성 상방 + Floor 양면 | ✅ 297% 가격 점프 시 +63% 회수 | ✅ Floor가 변동비 회수 보장 → 다운사이클 흑자 | ✅ 매출 변동성 평탄화로 자본회수 안정 | ✅ Trading Desk가 패러다임 전환 신호 선포착 | Robust |
 
 > 범례: ✅ 높은 가치 창출 / ⚠️ 조건부 가치 또는 제한적 효과 / ❌ 효과 없거나 역효과
 
@@ -548,6 +665,7 @@ flowchart TD
     RS-4["RS-4\n고객 포트폴리오 분산\nLTA·Take-or-Pay"]
     RS5["RS5\n정책 리스크 지역 분산\n한국·미국·일본·인도"]
     RS-5["RS-5\n재무 규율 + 초과이익 재투자\n이사회 정책화"]
+    RS-8["RS-8\n구조화 매출 헷지\nParticipating Forward·HTA·Trading Desk"]
 
     AI -->|"잉여 인력 전환 배치"| RS-2
     AI -->|"잉여 인력 전환 배치"| RS-3
@@ -557,6 +675,9 @@ flowchart TD
     RS5 -->|"지역 거점이\n고객 다변화 지원"| RS-4
     RS-5 -->|"초과이익 → RS-2·RS-3\nR&D 우선 재투자"| RS-2
     RS-5 -->|"초과이익 → 패키징\n내재화 투자"| RS-3
+    RS-4 -->|"LTA 기반 위에\n옵션 구조 적층"| RS-8
+    RS-8 -->|"Trading Desk 신호\n→ Capex 정확도 향상"| RS-1
+    RS-8 -->|"Floor 보장으로\n변동비 회수 안정화"| RS-5
 
     style AI fill:#ff9900,color:#000,stroke:#cc7a00
     style RS-5 fill:#1a6b3c,color:#fff,stroke:#0d4a28
@@ -565,9 +686,10 @@ flowchart TD
     style RS-3 fill:#6b3c1a,color:#fff,stroke:#4a280d
     style RS-4 fill:#3c6b1a,color:#fff,stroke:#284a0d
     style RS5 fill:#1a6b6b,color:#fff,stroke:#0d4a4a
+    style RS-8 fill:#6b1a3c,color:#fff,stroke:#4a0d28
 ```
 
-> **핵심 논리**: AI 개발 효율화는 모든 전략의 선행 조건이다. RS-5(재무 규율)은 RS-1(캐파)의 집행 기준을 제공하고, 초과이익을 RS-2·RS-3에 재투자한다. RS5→RS-4→RS-3로 이어지는 지역 분산→고객 다변화→고객특화 체인이 삼성의 경쟁 해자를 구성한다.
+> **핵심 논리**: AI 개발 효율화는 모든 전략의 선행 조건이다. RS-5(재무 규율)은 RS-1(캐파)의 집행 기준을 제공하고, 초과이익을 RS-2·RS-3에 재투자한다. RS5→RS-4→RS-3로 이어지는 지역 분산→고객 다변화→고객특화 체인이 삼성의 경쟁 해자를 구성한다. **RS-8(구조화 매출 헷지)은 RS-4의 물량 LTA 위에 옵션 계약 구조를 적층하고, Trading Desk가 RS-1 Capex 정확도와 RS-5 Floor 회수 안정화를 동시에 강화한다 — 4가지 헷지 트랙(Participating Forward·HTA·Tiered Pricing·Trading Desk)이 매출 변동성을 절반 축소.**
 
 ---
 
@@ -728,6 +850,49 @@ flowchart TD
   - **시나리오 E (패러다임 재편)**: Tier 3 검토 가속 — 메모리 가치 흔들릴 때 보험
 - **RS5와의 충돌 관리**: Tier 2/3 capex가 RS5 다운사이클 capex 하한 4조 원/년과 경합 가능. 컨소시엄 거버넌스에서 Tier 2/3 자본은 **별도 자본 트랙**으로 운용하고, 메모리 fab capex 하한은 침해하지 않는 원칙 명문화
 - **비상 계획**: Stargate Korea 본 계약 결렬 시 → Tier 1만 유지, Tier 2는 한국 정부 Sovereign AI 인프라 수요 대상으로 재포지셔닝
+
+---
+
+#### Decision 12: RS-8 구조화 매출 헷지 시범 도입 — Participating Forward + Slot/Price 분리 (신규 — 2026-05-07 농수산 헷지 벤치마크)
+
+- **결정 내용**: 농수산업 100년 헷지 노하우 + 외환·연료 시장 50년 옵션 구조 + Cargill Black River 정보 자산화 모델을 메모리 산업에 압축 이식하는 4트랙을 2026~2028년 단계별로 착수
+  - **트랙 1 (시범, 2026 H2~2027)**: NVIDIA 또는 하이퍼스케일러 1~2사와 HBM4E/HBM5 다년 약정 중 일부 물량(연간 10~20%)에 **Participating Forward 시범 도입** — Floor(변동비 + 5~10% 마진) 보장 + 상방 50% 참여 구조
+  - **트랙 2 (병행, 2026 H2~2027)**: Wafer Slot Reservation 계약 템플릿 개발 — 슬롯 예약과 가격 결정 분리(HTA 모델). Nvidia 2023 선급금 $5.4~7.7억 사례를 산업 표준 템플릿으로 정형화. 신규 팹 capex의 20~30%를 앵커 고객 선급금 + Take-or-Pay로 보장
+  - **트랙 3 (병행, 2027~2028)**: 자동차·산업용·신흥 AI 시장(SD-2 연계) 중장기 안정 거래에 **Tiered Pricing 시범 도입** — 시장 구간별 차등 share 구조
+  - **트랙 4 (구축, 2027~2028)**: 사내 **Memory Trading Desk 신설** (20~30인, 골드만삭스·JP모건 commodity 트레이딩 출신 영입) + DRAMeXchange 가격 지수 기반 OTC 스왑 시장 조성 검토
+- **근거**:
+  - 2025년 9~12월 16Gb DDR5 contract price $6.84 → $27.20 (+297%, 출처: SoftwareSeni 2026, Tom's Hardware 2025) — 단순 고정가 LTA는 한 사이클당 50~100% 매출 기회 포기
+  - Participating Forward는 외환시장 50년 검증된 도구로 메모리 산업 미도입 — **선도 도입자 표준 효과**(Fish Pool ASA 연어 선물 모델)
+  - RS-4 LTA(물량)와 결정적으로 다른 영역(가격 변동성 옵션화) — RS-4 위에 적층되는 구조
+- **벤치마크 적용 사항**:
+  - Cargill DDC 포트폴리오 + Black River $10B 정보 자산화 모델 (`agri-hedging-to-memory-semi.md`)
+  - HTA / Basis Contract 가격 분해 (Iowa State Extension, Alberta.ca, FAO 2002)
+  - Participating Forward (Statrys 2026.03, ResearchGate)
+  - Tiered Pricing — Cargill 식품기업 거래 모델
+  - Southwest 1998~2008 누적 절감 $3.5B (회사 이익의 83%) → 2025년 종료 교훈 — 정기 재검토 의무
+- **금지 사항 (셰일업체 실패 학습)**: Three-way Collar(sub-put 매도형) **절대 금지**. Pioneer Natural Resources·Whiting Petroleum이 2014·2020 두 번 같은 함정에서 손실 가속 (출처: Mobius Risk Group, World Oil 2020.03). 단일 Floor 원칙 이사회 정책 명문화
+- **시한**:
+  - 2026년 Q4: 트랙 1 시범 계약 협상 완료 (앵커 고객 1~2사, HBM4E 일부 물량 10~20%)
+  - 2026년 Q4: Wafer Slot Reservation 표준 계약 템플릿 v1 작성
+  - 2027년 Q2: Memory Trading Desk 인력 채용 시작 (1차 10~15인)
+  - 2027년 Q4: 트랙 1·2 본 계약 단계 — HBM 매출의 20~30% 적용
+  - 2028년 Q4: 트랙 1·2·3 통합 — HBM 매출의 30~40% 적용 + Trading Desk 정상 운영
+- **투자 규모**:
+  - Memory Trading Desk 인력·인프라 연간 200~300억 원
+  - 옵션 가격 산정 인프라(Black 모델·Monte Carlo·jump-diffusion·CVaR 시스템) 일회성 100억 원
+  - 컴플라이언스(반독점 자문·법무 인력) 연간 30~50억 원
+  - 합계: 5년 누계 약 1,500~2,000억 원 (RS-7 AI 효율화 절감(연 0.9~1.35조 원)의 일부로 충당 가능)
+- **성과 측정 KPI**:
+  - 다년(2년+) 고정가·Participating Forward 계약 매출 비중: 현재 10~15% → **2028년 30%, 2030년 40%**
+  - 매출 변동성 (분기 표준편차): 현재 ±25% → **2028년 ±18%, 2030년 ±12%**
+  - 다운사이클 capex 회수율: 현재 60~70% → **2030년 80~90%**
+  - Memory Trading Desk Capex 결정 정확도: 6개월 후 실수요와 ±10% 이내 적중률 70%+
+- **핵심 리스크 및 대응**:
+  - 고객 수용 저항 (하이퍼스케일러 가격 통제 양보 어려움) → 시범 단계 인센티브 제공 (Floor 약정 + Take-or-Pay 부담 경감)
+  - 반독점 위험 (OTC 스왑이 카르텔로 오인) → 양자간 계약 + 외부 청산소 + 컴플라이언스 5~10인 전담
+  - Three-way Collar 함정 → 이사회 정책으로 단일 Floor 원칙 명문화
+  - 시장 구조 변화로 헷지 효과 소멸 (Southwest 종말) → 정기(연 1회 이사회 보고) 재검토 의무화
+- **비상 계획**: 트랙 1 시범 협상이 2026 Q4까지 결렬 시, 트랙 2(Wafer Slot Reservation)와 트랙 4(Trading Desk)만 우선 추진. 정보 자산화 단독으로도 RS-1·RS-5 정확도 향상 가치 충분
 
 ---
 

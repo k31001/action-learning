@@ -112,6 +112,16 @@ const DECISIONS = [
     benchmark: 'Marriott Asset-Light 모델 확장 (BTO/BOO 운영 수수료 P&L 추적) + Disney-Marvel 다운사이클 M&A (Tier 1 neocloud 지분 인수는 2027~2028 거품 조정 시 우선 집행)',
     keyKpi: null,
   },
+  {
+    id: 'D12',
+    title: 'RS-8 구조화 매출 헷지 시범 도입 (Participating Forward + Slot/Price 분리, 신규)',
+    deadline: '2026-12-31',
+    owner: '전략기획·메모리영업·CFO 트레이딩 데스크 신설TF',
+    rationale: '2025년 9~12월 16Gb DDR5 +297% 가격 점프(SoftwareSeni·Tom\'s Hardware) — 단순 고정가 LTA(RS-4)는 사이클당 50~100% 매출 기회 포기. 농수산업 100년 헷지(Cargill DDC + Black River $10B 정보 자산화) + 외환 50년 옵션(Participating Forward) + Cargill HTA 가격 분해 모델을 메모리에 압축 이식. 4트랙: ① Participating Forward 시범 — NVIDIA 또는 하이퍼스케일러 1~2사와 HBM4E 일부 물량(연 10~20%)에 Floor + 상방 50% 참여 구조. ② Wafer Slot Reservation HTA 모델 — 슬롯/가격 결정 분리 + Take-or-Pay + 선급금 산업 표준 템플릿화. ③ Tiered Pricing — 자동차·산업용·신흥 AI(SD-2 연계) 시장 구간별 차등 share. ④ Memory Trading Desk 신설 — 골드만/JP모건 commodity 트레이더 20~30인 + DRAMeXchange 기반 OTC 스왑. 단일 Floor 원칙(셰일 Three-way Collar 함정 회피) 이사회 정책 명문화',
+    fallback: '트랙 1 시범 협상 결렬 시 트랙 2(Slot Reservation)·트랙 4(Trading Desk)만 우선 추진. 정보 자산화 단독으로도 RS-1·RS-5 Capex·Floor 정확도 향상 가치 충분',
+    benchmark: 'Cargill DDC 포트폴리오 + Black River $10B (agri-hedging-to-memory-semi.md) / HTA·Basis Contract (Iowa State Extension) / Participating Forward (Statrys 2026, ResearchGate) / Tiered Pricing (Cargill 식품기업) / Southwest 1998~2008 누적 $3.5B 절감 → 2025 종료 (정기 재검토 교훈) / 셰일 Pioneer·Whiting 2014·2020 Three-way Collar 실패 (절대 모방 금지)',
+    keyKpi: 'multi_year_fixed_price_share',
+  },
 ]
 
 function daysUntil(deadline) {

@@ -9,12 +9,19 @@
 
 ## Executive Summary
 
-- **호황의 정점, 위기의 정점이 동시에**: 2026년 1분기 메모리 매출 $50.4B(+292% YoY, 사상 최대 분기), 빅테크 4사 AI CapEx **$725B 확정(+77% YoY)**, HBM4 양산 2026년 2월 개시 + 캐파 전량 Sold Out — 그러나 NVIDIA Rubin HBM4 점유율 SK 54~70% / Samsung 28% / Micron 18%로 듀오폴리 1번 자리는 미확보. 호황 속 구조적 패배가 실시간으로 진행 중이다.
-- **Main Bet: 시나리오 B "AI 르네상스"**(확률 30~35%) — 자동 실현되지 않는다. 2026년 내 **9개의 즉시 결정**(HBM4 NVIDIA 점유율 회복, 소재 공급망 다각화, 3D DRAM R&D, 텍사스 2단계 발표 + 보조금 추가 협상, AI 개발 효율화, 이사회 정책화, 다운사이클 M&A 펀드 적립 등)이 선행되어야 2030~2035년 시장 지위가 확보된다. 단일 결정이 아니라 결정의 묶음이 필요하다.
-- **AI 개발 효율화는 모든 전략의 선행 조건이다**: AI 코딩·EDA·공정 시뮬레이션·수율 예측 도구를 2026년 내 전사 도입하면 엔지니어링 생산성이 20~30% 향상된다. 이 잉여 역량을 바벨 포트폴리오 다변화(RS2)와 고객특화 기능 개발(RS3)에 전환 배치하는 것이 전략 실행의 핵심 논리다. 추가 채용 없이 두 전략을 동시 실행하는 유일한 경로다.
-- **벤치마크가 검증한 6개 Robust 전략**: 7개 산업 사례에서 추출한 7가지 사이클 대응 패턴(역사이클 투자, 변동비 구조, Asset-Light, 수직 통합, 헤징·LTA, 요새형 재무, 다운사이클 M&A) 중 **6개가 RS1~RS6에 매핑된다**. RS3에 Marriott식 Asset-Light 소프트웨어 매출 모델, RS6에 Nucor식 다운사이클 capex 하한(연 4조 원), Option L-4에 Disney-Marvel식 자동 트리거 M&A를 추가했다.
-- **어떤 시나리오가 와도 반드시 해야 할 것이 있다**: 옵션형 캐파(RS1), 바벨 포트폴리오(RS2), 고객특화·전환비용(RS3), 고객 분산(RS4), 지역 분산(RS5), 재무 규율 + 초과이익 재투자 + **다운사이클 capex 하한**(RS6), **NAND 공정 전환 주기 연장 R&D**(RS7). 이 7개 Robust 전략은 시나리오 불확실성과 무관하게 지금 당장 실행해야 한다.
-- **NAND 공정 전환 주기 연장 (RS7) 신규 추가**: NAND 양산 ramp **6개월 지연 = 누적 이익의 2/3 소실** (Weber/PSU 학습곡선). 2026년 NAND capex \$22.2B(+5%)도 대부분 process upgrade에 — 업계 4사가 capa 확장 대신 가치 연장으로 일제히 선회. **YMTC가 hybrid bonding 핵심 IP 지배** (TrendForce 2025-05) → 디커플링 시 라이선스 차단 리스크. 자체 IP 확보 + multi-deck 정교화 + bit-per-cell 확장 + 호스트 협력 firmware 4트랙 R&D를 즉시 착수. 3년 누적 capex 회피 효과 1.5~2조 원 추정.
+본 보고서의 한 문장 요약은 다음과 같다 — *호황의 정점에서 다운턴을 준비하는 유일한 방법은 어느 미래가 와도 작동하는 8개 Robust 전략과 2026년 Q4 안에 묶음으로 처리해야 하는 12개 결정이다.*
+
+- **호황 속 구조적 패배**. 2026년 1분기 메모리 매출은 사상 최대 $50.4B(+292% YoY)를 기록했고 빅테크 AI CapEx는 $725B(+77%)로 폭주하고 있으며 HBM4 캐파는 전량 Sold Out 상태다. 그러나 NVIDIA Rubin HBM4 1번 자리는 SK하이닉스(70%)가 가져갔고 삼성은 28%로 후순위로 밀렸다. 메모리는 지난 30년 5번의 다운턴마다 매출 −38%·이익 −84%가 사라진 사이클 산업이며 다음 다운턴은 반드시 온다 — 호황 속의 점유율 패배는 다운턴 손실을 키운다.
+
+- **두 축이 만드는 다섯 개의 미래**. 답할 수 없는 두 질문이 미래를 가른다. 첫째, AI 수요는 구조적으로 지속되는가(DF1). 둘째, 미중 디커플링은 어디까지 가는가(DF2). 두 축의 조합이 시나리오 A부터 E까지 다섯 개의 대안적 미래를 정의하며, 각 시나리오의 2035년 메모리 시장 규모는 $1,800억에서 $5,200억까지 갈린다.
+
+- **Main Bet은 시나리오 B "AI 르네상스" (확률 30~35%)**. 5개 시나리오 중 시나리오 B만이 2035년 시장 $5,200억 규모로 가장 크고 삼성의 동서 균형 포지션이 최대 가치를 발휘하는 유일한 미래다. 그러나 자동 실현되지 않는다. HBM4E·HBM5 기술 1위 탈환, 동서 균형 공급망(텍사스+인도), 1c nm 원가 우위, 커스텀 AI 메모리 솔루션, 텍사스 2기 미국 현지 생산이 동시에 추진되어야 1번 자리를 회복할 수 있다.
+
+- **어떤 미래가 와도 가치를 만드는 Robust 8개 전략**. 시나리오 불확실성과 무관하게 작동하는 8개 전략을 네 개 축으로 묶었다. *공급 거버넌스* 축의 RS-1(옵션형 캐파 — Fab Shell + 장비 단계 반입)과 RS-5(재무 규율 + 다운사이클 capex 4조 원 하한, Nucor·ExxonMobil 모델 적용)는 호황기 절제와 다운턴 사수를 같은 거버넌스 안에 넣는다. *포트폴리오* 축의 RS-2(바벨, HBM ↔ 범용 1c nm 양 끝)와 RS-6(공정 리더십 — 1c nm DRAM + NAND 주기 연장 4트랙 + Hybrid bonding 자체 IP로 YMTC 종속 회피)은 사이클 양면에서 모두 흑자가 가능한 제품 구조를 만든다. *고객 관계* 축의 RS-3(고객 락인 — CMX·SCADA·FDP 3대 통합 + Marriott식 Asset-Light SW 매출)와 RS-4(고객 분산 — LTA·Take-or-Pay·단일 고객 ≤25%)는 협상력의 양면을 동시에 잡는다. 마지막으로 *신규 도구* 축에는 RS-7(AI 엔지니어링 자동화 — 잉여 인력을 RS-2·3·6에 전환 배치하는, 모든 RS의 prerequisite)과 RS-8(구조화 매출 헷지 — Participating Forward + HTA + Memory Trading Desk로 매출 변동성을 ±25%에서 ±12%로 절반 축소하는, 농수산·외환 100년 헷지 노하우의 메모리 첫 도입)이 들어간다.
+
+- **2026년 Q4 안에 묶음으로 처리해야 할 12개 결정**. 12개 결정은 단일 결정으로 분리하면 효과가 사라진다. 가장 임박한 D-150에는 D1(HBM4 NVIDIA 점유율 28→40%), D2(소재 비중국 다각화), D6(RS-1·4·5 이사회 정책화)가 묶여 있다. D-240에는 R&D·생산 영역의 D3(3D DRAM + IMEC 협약), D4(텍사스 1·2단계), D5(AI 효율화 전사 도입), D8(텍사스 추가 보조금), D10(NAND 4트랙 R&D), D11(Stargate Korea 본 계약)과 거버넌스·헷지 영역의 D9(다운사이클 M&A 펀드 5,000억), D12(RS-8 구조화 헷지 시범)가 함께 처리된다. 가장 후순위인 D-330에는 D7(AI 잉여 인력 RS-2·3 전환 배치)이 위치한다.
+
+- **호황의 정점이 다운턴 준비의 마지막 기회다**. 다운턴은 막을 수 없다. 그러나 다운턴이 와도 흑자를 유지하고(RS-5·RS-8), 회복기에 1번 자리를 회복하고(MB-1·RS-3), 자산 가격 폭락 시 즉시 M&A를 집행하는 것(Option L-4)은 구조로 해결할 수 있다.
 
 ### 핵심 수치 한눈에 (2026년 5월 6일 기준)
 
@@ -344,9 +351,12 @@ AI 수요 자체는 지속되지만, AI 메모리 아키텍처가 HBM에서 3D D
 | **D 조용한 재편** | SK하이닉스 기술 우위 고착화, CXMT 범용 DRAM 잠식 | HBM 조직 독립 P&L 센터 전환, 패키징 전문 인재 100인+ 채용, 산업용 AI 메모리(자동차·의료) 선행 개발 | 산업용 AI 메모리 R&D 2,000억 원 |
 | **E 패러다임 전환** | HBM 40조 원+ 투자 매몰 비용화, 3D DRAM 기술 격차 | 3D DRAM 전담 R&D 조직(300인), IMEC 공동 개발 협약, 3D DRAM 스타트업 M&A 펀드, CXL SIG 표준 주도권 강화 | 3D DRAM R&D 1,500억 원/년, M&A 펀드 5,000억 원 |
 
-### 6.2b 벤치마크 정합성 — 7개 산업 사례에서 추출한 사이클 패턴 적용
+### 6.2b 벤치마크 정합성 — 7개 산업 사례 + 농수산·외환 헷지 100년 노하우 적용
 
-> 출처: `analysis/benchmark/cyclical-strategy-benchmark.md` (Samsung·Nucor·Maersk·ExxonMobil·Marriott·Disney·Southwest 7개 사례)
+> 출처:
+> - `analysis/benchmark/cyclical-strategy-benchmark.md` (Samsung·Nucor·Maersk·ExxonMobil·Marriott·Disney·Southwest 7개 사례)
+> - `analysis/benchmark/agri-hedging-to-memory-semi.md` (농수산업 7가지 헷지 메커니즘 → 메모리 매핑)
+> - `analysis/benchmark/upside-participation-hedging.md` (상방 참여형 5가지 계약 구조 + 적정 strike 산정 이론)
 
 | # | 벤치마크 패턴 | 대표 사례 | 본 권고안 매핑 |
 |---|--------------|----------|---------------|
@@ -358,11 +368,12 @@ AI 수요 자체는 지속되지만, AI 메모리 아키텍처가 HBM에서 3D D
 | 6 | 요새형 재무구조 | Nucor (순부채/EBITDA <1배) + Samsung 2025 현금 $63B | RS6 + SC-2 순현금 30조 원 버퍼 |
 | 7 | 불황기 M&A | Disney-Marvel (PER 37배에 인수, 10년 후 $18B+) / ExxonMobil-Pioneer ($59.5B, 5개월 종결) | Option L-4 + Decision 9 (M&A 펀드 5,000억 원 사전 적립) |
 
-**벤치마크에서 새로 도입한 3가지 보강 사항**
+**벤치마크에서 새로 도입한 4가지 보강 사항**
 
 - **Marriott 모델 적용** → RS3에 "테슬라 FSD 방식 비즈니스 모델" 명시. SSD 하드웨어 판매 + 소프트웨어(FDP·SCADA) 구독·라이선스 별도 P&L. 2030년 매출 목표 $5B
 - **Nucor 모델 적용** → RS6에 "다운사이클 capex 하한 4조 원/년" 명문화. HBM 신세대 R&D + 어드밴스드 패키징 + 3D DRAM 합산. 호황기 절제 + 불황기 사수 동일 거버넌스
 - **Disney-Marvel 모델 적용** → Option L-4에 자동 트리거 사전 정의(EV/EBITDA 5배 이하 6개월 지속 시 발동). 다운사이클에서 5개월 내 종결 가능한 PMI 팀 사전 구성
+- **Cargill DDC + Black River + Participating Forward 모델 적용 (신규, 2026-05-07)** → **RS8 신설**: 농수산업 100년 + 외환 50년 헷지 노하우를 메모리에 압축 이식. (1) Floor + 50% 상방 참여 Participating Forward 시범 (NVIDIA/하이퍼스케일러 1~2사 HBM4E 일부 물량), (2) Wafer Slot Reservation HTA 표준 템플릿 (슬롯/가격 결정 분리), (3) Tiered Pricing (자동차·산업용·신흥 AI 시장), (4) Memory Trading Desk + DRAMeXchange OTC 스왑 시장 조성. **단일 Floor 원칙 명문화** — 셰일 Pioneer·Whiting 2014/2020 Three-way Collar 손실 가속 사례 회피. 매출 변동성 ±25%→±12% 절반 축소
 
 ---
 
@@ -377,6 +388,7 @@ AI 수요 자체는 지속되지만, AI 메모리 아키텍처가 HBM에서 3D D
 | **RS5 핵심 인재 보유** | 모든 시나리오에서 기술 리더십의 궁극적 원천은 인재 — 다운사이클 인재 이탈이 회복기 경쟁력을 붕괴시킴 | HBM·패키징·PIM 핵심 인력 300인 전략 보유 프로그램(5년 스톡옵션). 패키징 전문가 100인+ 외부 채용(2026~2027년). 다운사이클 핵심 인력 감원 금지 이사회 정책화 | 즉시~전 기간 |
 | **RS6 재무 규율 + 초과이익 재투자 + 다운사이클 capex 하한 (Nucor·ExxonMobil 벤치마크)** | 호황기 과잉 증설과 다운사이클 R&D 삭감의 양 끝을 동시에 차단 — 사이클 전 구간에서 일관된 자본 배분 거버넌스 | (지출 통제) 재고일수 상한·LTA 없는 신규 캐파 금지·EBITDA→FCF 전환·EWI 연동 자동 보고 / (재투자) HBM 영업이익률 35%+ 분기에는 초과이익 60%+ 4개 항목(원가·수율·패키징·테스트)에 우선 배분 / **(다운사이클 하한)** **HBM 차세대 R&D + 어드밴스드 패키징 + 3D DRAM 합산 capex 4조 원/년 삭감 불가 명문화 (Nucor 모델)** / (거버넌스) 활동가 투자자 대비 "장기 가치 우선 의결권 구조" 사전 명문화 (ExxonMobil 모델) | 즉시~전 기간 |
 | **RS7 NAND 공정 전환 주기 연장 R&D (Process-Cycle Extension)** | NAND layer 경쟁이 capex·수율 ramp 부담을 매 세대 가중. 양산 ramp **6개월 지연 = 누적 이익의 2/3 소실** (Weber/PSU 학습곡선). 2026년 NAND capex \$22.2B(+5%)도 대부분 process upgrade·hybrid bonding에 — 업계 4사가 capa 확장 대신 "동일 fab에서 가치 연장"으로 일제히 선회. **YMTC가 hybrid bonding 핵심 IP 지배** → 디커플링(C) 시 라이선스 차단 = 차세대 NAND 양산 불가 리스크. 시나리오 A·B 모두에서 비용 우위, C에서 자체 IP 생존 직결, D에서 신규 노드 정당화 어려운 환경의 유일한 경로, E에서 NAND 자원 절감→차세대 메모리 R&D 재배분 | **(트랙 1) Hybrid Bonding/CBA 자체 IP** — 2026~2028 패키징·본딩 R&D 1.5조 원 추가, 한국 IP 컨소시엄 검토, V11에서 자체 IP 70%+ / **(트랙 2) Multi-deck stacking 정교화** — Deck 당 layer 수 한계 돌파, V9→V10 fab 재구성 비용 30% 절감 / **(트랙 3) bit-per-cell 확장** — QLC 비중 30%+ (2026), PLC 시제품 (2028) / **(트랙 4) 호스트 협력 firmware (FDP·SCADA)** — 같은 silicon에서 endurance 2배+, RS3 SW 매출과 R&D 공유 / **(KPI 4)** ① Hybrid bonding 자체 IP 비율 ② 공정 전환 ramp 시간 ③ NAND capex/bit growth ④ YMTC 라이선스 의존도 / **(재무 효과)** 전환 주기 18→24M 연장 시 3년 누적 capex 회피 1.5~2조 원 | 즉시~전 기간 |
+| **RS8 구조화 매출 헷지 (Structured Revenue Hedging) — Participating Forward + HTA + Tiered Pricing + Memory Trading Desk (신규, 농수산·외환 헷지 벤치마크)** | 메모리 가격 변동성 σ ≈ 60~120% (원유 30%·S&P 18% 대비)·2025년 9~12월 16Gb DDR5 +297% 점프 같은 사이클에서 **단순 고정가 LTA(RS-4)는 사이클당 50~100% 매출 기회를 포기**한다. 농수산업 100년 헷지 노하우 + 외환 50년 옵션 구조 + Cargill Black River \$10B 정보 자산화 모델을 메모리에 압축 이식하면 매출 변동성을 절반 축소 + 다운사이클 흑자 + 호황기 +63%~+187% 회수 동시에 가능. RS-4 LTA(*물량* 계약) 위에 적층되는 *가격 구조* 혁신 | **(트랙 1) Participating Forward 시범** — Floor(변동비+5~10%) 보장 + 50% 상방 참여, NVIDIA/하이퍼스케일러 1~2사 HBM4E 일부 물량(연 10~20%)에 시범 도입 / **(트랙 2) Wafer Slot Reservation HTA** — 슬롯 예약과 가격 결정 분리, Nvidia 2023 선급금 \$5.4~7.7억 사례 산업 표준 템플릿화, capex 20~30% 앵커 고객 선급금 보장 / **(트랙 3) Tiered Pricing** — 시장 구간별 차등 share (자동차·산업용·신흥 AI 시장 대상) / **(트랙 4) Memory Trading Desk** — 골드만/JP모건 commodity 트레이더 20~30인, DRAMeXchange 기반 OTC 스왑 시장 조성, capex 결정 정확도 향상 / **(금지)** Three-way Collar(sub-put 매도형) 절대 금지 — Pioneer·Whiting 2014/2020 두 차례 손실 가속 사례 / **(KPI 5)** ① 다년 고정가+Participating Forward 매출 비중 ② 매출 변동성 분기 표준편차 ③ Floor 발동 시 변동비 회수율 ④ Trading Desk capex 결정 정확도 ⑤ Three-way Collar 발동 0건 유지 / **(재무 효과)** 매출 변동성 ±25%→±12% / capex 회수율 60~70%→80~90% / 사이클당 +50~100% 회수 | 즉시~전 기간 |
 
 ### 6.4 전략 포트폴리오 매트릭스
 
@@ -396,6 +408,7 @@ AI 수요 자체는 지속되지만, AI 메모리 아키텍처가 HBM에서 3D D
 | RS4 공급망 지리적 분산 | ✅ 규제 대응 필수 | ⚠️ 공존 환경, 덜 긴급 | ✅ 핵심 생존 조건 | ✅ 안정적 출하 보장 | ⚠️ 아키텍처 변화가 더 중요 | **Robust** |
 | RS5 핵심 인재 보유 | ✅ 기술 격차 방어 | ✅ 성장 실행 인프라 | ✅ 다운턴 이탈 방지 필수 | ✅ 회복기 경쟁력 원천 | ✅ 신기술 전환 인재 필수 | **Robust** |
 | RS7 NAND 공정 전환 주기 연장 R&D | ✅ 비용 우위=마진 우위 | ✅ Capex 회수율 우위 | ✅ 자체 IP 생존 직결 | ✅ 다운사이클 유일 경로 | ✅ NAND 자원 절감 → 차세대 R&D 재배분 | **Robust** |
+| RS8 구조화 매출 헷지 (Participating Forward·HTA·Tiered·Trading Desk) | ✅ HBM 희소성 상방 + Floor 양면 | ✅ 297% 가격 점프 시 +63% 회수 | ✅ Floor가 변동비 회수 보장 → 다운사이클 흑자 | ✅ 매출 변동성 평탄화로 자본회수 안정 | ✅ Trading Desk가 패러다임 전환 신호 선포착 | **Robust** |
 
 > 범례: ✅ 높은 가치 창출 / ⚠️ 조건부 가치 또는 제한적 효과 / ❌ 효과 없거나 역효과
 
@@ -405,7 +418,7 @@ AI 수요 자체는 지속되지만, AI 메모리 아키텍처가 HBM에서 3D D
 
 ### 7.1 의사결정 로드맵
 
-**즉시 결정 필요 (2026~2027)** — 9개 결정 묶음
+**즉시 결정 필요 (2026~2027)** — 12개 결정 묶음 (D10·D11·D12는 2026-05-07 보강)
 
 | 결정 사항 | 핵심 내용 | 시한 | 비상 계획 |
 |---------|---------|------|---------|
@@ -418,6 +431,9 @@ AI 수요 자체는 지속되지만, AI 메모리 아키텍처가 HBM에서 3D D
 | **Decision 7** AI 개발 효율화 잉여 인력 RS2·RS3 전환 배치 | 도구 도입 후 분기별 "전환 배치 엔지니어 수" 사업부장 보고 의무화 | 2027년 Q1 (도구 도입 직후) | — |
 | **Decision 8** 텍사스 2단계 CHIPS Act 추가 보조금 협상 | 1단계 $4.745B 확정에 추가하여 2단계 HBM 전용 보조금 별도 협상 신청서 제출, Tesla 외 미국계 빅테크와 HBM 다년 LTA 사전 체결 | 2026년 Q4 | 추가 보조금 미확보 시 합작투자(JV) 모델 검토 (샌디스크+키옥시아 모델) |
 | **Decision 9** 다운사이클 M&A 펀드 사전 적립 (Disney-Marvel 모델) | 차세대 메모리(3D DRAM·CXL SW·FDP·어드밴스드 패키징) 영역 M&A 펀드 5,000억 원 사전 적립 + 트리거 발동 시 5개월 내 종결 가능한 PMI 팀 사전 구성 | 2026년 Q4 이사회 승인 | — |
+| **Decision 10** NAND 공정 전환 주기 연장 R&D 4트랙 착수 (RS-6 신규) | 4트랙 병행: ① **Hybrid Bonding 자체 IP** (1.5조 원/3년 + 한국 IP 컨소시엄 검토 — YMTC IP 우회), ② **Multi-deck 정교화** (V9→V10 fab 재구성 30% 절감, TSMC "Nx · Nx+ · Nx++" 패턴), ③ **bit-per-cell 확장** (QLC 30%+/2026, PLC 시제품/2028), ④ **FDP·SCADA 호스트 협력 firmware** (RS-3 SW 매출과 R&D 자원 공유). 양산 ramp 6개월 지연 = 누적 이익의 2/3 소실 (Weber/PSU 학습곡선) | 2026년 Q4 R&D 4트랙 착수 결의 | 트랙 1 IP 개발 지연 시 한국 IP 컨소시엄(SK하이닉스 공동) 또는 정부 R&D 분리 트랙. 자체 IP 확보 실패 시 YMTC 라이선스 의존도 최대 50% 한도로 통제 |
+| **Decision 11** AI 인프라 수직 진출 — Stargate Korea 본 계약 + Neocloud Equity-for-Supply (SE-3 신규) | 3-Tier 동시 착수: ① **Tier 1 (지분 헷지)** — Catalyst Fund/계열 VC로 CoreWeave-급 neocloud 1~3% 지분 + HBM equity-for-supply swap (5년 누계 $5~10B), ② **Tier 2 (AI Factory 파트너)** — Stargate Korea LOI(2025-10) → DA 본 계약, Electronics+C&T+SDS+Heavy 4사 컨소시엄, BTO/BOO 모델 (5년 누계 $15~25B), ③ **Tier 3 (자체 캠퍼스, 옵션)** — Hwaseong/Pyeongtaek 인접 50~100MW 2029~2030 검토. NVIDIA DC 영업이익률 60.4%·하이퍼스케일러 33% 대비 메모리(슈퍼사이클 ~25%)는 가치사슬 상류에 영업이익 헌납 — Big4 capex $630B(2026, +62%) 중 75%가 AI 인프라 | 2026년 H1 컨소시엄 운영 협약 + LOI→DA, H2 첫 neocloud equity-for-supply swap 1건, 2027년 첫 BTO/BOO 수주 | Stargate Korea 본 계약 결렬 시 Tier 1만 유지, Tier 2는 한국 정부 Sovereign AI 인프라 수요 대상 재포지셔닝. 하이퍼스케일러 카니발리제이션 신호 시 Tier 2 비-하이퍼스케일러(OpenAI·Anthropic·xAI·neocloud) 우선 타겟 |
+| **Decision 12** RS-8 구조화 매출 헷지 시범 도입 (농수산·외환 헷지 벤치마크) | (트랙 1) NVIDIA 또는 하이퍼스케일러 1~2사 HBM4E 일부 물량(연 10~20%)에 **Participating Forward** 시범 — Floor + 50% 상방 참여 / (트랙 2) **Wafer Slot Reservation** HTA 표준 계약 템플릿 작성 — 슬롯/가격 분리 결정 + Take-or-Pay 산업 표준화 / (트랙 3) 자동차·산업용·신흥 AI 시장 대상 **Tiered Pricing** 시범 / (트랙 4) **Memory Trading Desk 신설** (20~30인, 골드만삭스/JP모건 commodity 출신) + DRAMeXchange OTC 스왑 시장 조성 / **단일 Floor 원칙 이사회 정책 명문화** (셰일 Three-way Collar 함정 회피 — Pioneer·Whiting 2014/2020 손실 가속) | 2026년 Q4 시범 계약 협상 + 표준 템플릿 v1, 2027년 Q2 Trading Desk 1차 채용, 2028년 Q4 HBM 매출 30~40% 적용 | 트랙 1 결렬 시 트랙 2(Slot Reservation)·트랙 4(Trading Desk)만 우선 추진 — 정보 자산화 단독으로도 RS-1·RS-5 정확도 향상 가치 충분 |
 
 **중기 결정 (2027~2030)**
 
