@@ -11,10 +11,10 @@ template.pptx의 테마(색상·폰트·디자인)만 차용하고 25슬라이�
   단계 3  시나리오 플래닝 정당화 (슬라이드 9)
   단계 4  방법론 워크플로우    (슬라이드 10)
   단계 5  메모리 사업 적용    (슬라이드 11~17)
-  단계 6  Robust 7개 상세    (슬라이드 18~24)
-  단계 7  EWI 대시보드       (슬라이드 25)
-  단계 8  전략 리마인드      (슬라이드 26~27)
-  단계 9  최종 메시지        (슬라이드 28)
+  단계 6  Robust 8개 상세    (슬라이드 18~25, RS-8 신규)
+  단계 7  EWI 대시보드       (슬라이드 26)
+  단계 8  전략 리마인드 (12개 결정) (슬라이드 27~28)
+  단계 9  최종 메시지        (슬라이드 29)
 
 차트는 matplotlib으로 PNG 생성 후 삽입.
 """
@@ -741,7 +741,7 @@ def chart_capex_growth(filepath):
 # Slide builders — 25 slides
 # ============================================================
 
-TOTAL = 28
+TOTAL = 29
 
 def build_slide_1_cover(prs):
     """표지."""
@@ -805,10 +805,10 @@ def build_slide_2_toc(prs):
         ('03', '시나리오 플래닝의 정당화', 'Shell·ExxonMobil·Disney·Samsung 사례', '슬라이드 9'),
         ('04', '방법론 워크플로우', '8단계 시나리오 플래닝 프로세스', '슬라이드 10'),
         ('05', '메모리 사업 적용', '단계별 상세 적용', '슬라이드 11~17'),
-        ('06', 'Robust 전략 4가지', 'RS1·RS2·RS3·RS6 핵심 전략 상세', '슬라이드 18~21'),
-        ('07', 'EWI 대시보드', '실시간 모니터링 + 자동 트리거', '슬라이드 22'),
-        ('08', '전략 리마인드', '9개 결정 + 문제 해결 가능성', '슬라이드 23~24'),
-        ('09', '최종 메시지', 'Decision Request 클로징', '슬라이드 25'),
+        ('06', 'Robust 전략 8개', 'RS-1~RS-8 (RS-8 농수산 헷지 신규)', '슬라이드 18~25'),
+        ('07', 'EWI 대시보드', '실시간 모니터링 + 자동 트리거', '슬라이드 26'),
+        ('08', '전략 리마인드', '12개 결정 + 문제 해결 가능성', '슬라이드 27~28'),
+        ('09', '최종 메시지', 'Decision Request 클로징', '슬라이드 29'),
     ]
     # 3 columns x 3 rows
     for idx, (num, title, desc, pages) in enumerate(items):
@@ -1269,8 +1269,8 @@ def build_slide_11_focal_issue(prs):
     """단계 5-1 (Step 1): Focal Issue."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
-               'Step 1 · 우리가 답해야 할 질문은 단 하나다',
-               '"2030~2035 글로벌 리더십 유지를 위해 지금 어떤 결정을 내려야 하는가" — 모든 분석은 이 질문을 답하기 위함')
+               'Step 1 · 모든 분석은 "2030~2035 1위 유지를 위해 지금 무엇을 결정할 것인가"라는 단 하나의 질문에 답한다',
+               '호황의 정점·33년 만의 점유율 역전·HBM 세대 전환 분기점 — 세 가지 압박 위에서 도출된 Focal Issue')
 
     # 중앙 큰 인용 박스
     add_rect(slide, Inches(1.5), Inches(2.0), Inches(10.33), Inches(3.4),
@@ -1589,11 +1589,11 @@ def build_slide_16_side_bets(prs):
 
 
 def build_slide_17_robust_overview(prs):
-    """단계 5-7 (Step 8 개요): Robust 7개 재편 — 모두 5개 시나리오에서 ✅."""
+    """단계 5-7 (Step 8 개요): Robust 8개 재편 — 모두 5개 시나리오에서 ✅."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
-               'Step 8 · 어떤 미래가 와도 가치를 만드는 Robust 전략 7개를 도출했다',
-               '재검증 후 7개 재편 (RS-1~RS-7). 정책 지역 분산은 Side Bet으로 강등, AI 자동화는 독립 RS로 승격, 1c nm DRAM은 RS-6 공정 리더십에 통합')
+               'Step 8 · 어떤 미래가 와도 가치를 만드는 Robust 전략 8개를 도출했다',
+               '재검증 후 8개 재편 (RS-1~RS-8). 지역 분산은 Side Bet으로 강등, AI 자동화 독립 승격, 1c nm DRAM은 RS-6 통합, RS-8 농수산 헷지 신규')
 
     rs_list = [
         ('RS-1 ★', '옵션형 캐파 체계', '"켜고 끌 수 있는 능력"', True),
@@ -1603,8 +1603,9 @@ def build_slide_17_robust_overview(prs):
         ('RS-5 ★', '재무 규율 + 초과이익 재투자', 'Nucor·ExxonMobil 사이클 전 구간', True),
         ('RS-6 ★', '공정 리더십 통합', '1c nm DRAM + NAND 주기 연장 + 자체 IP', True),
         ('RS-7 ★', 'AI 엔지니어링 자동화', '잉여 자원 → 다른 RS의 실행 기반', True),
+        ('RS-8 ★', '구조화 매출 헷지', 'Participating Forward + HTA + Trading Desk', True),
     ]
-    # 4-col layout: row 0 = RS1~4, row 1 = RS5~7 (last col empty)
+    # 4-col layout: row 0 = RS1~4, row 1 = RS5~8
     col_w_in = 2.95
     gap_in = 0.20
     base_x_in = 0.5
@@ -1649,7 +1650,7 @@ def build_slide_17_robust_overview(prs):
                  h, font=FONT_KO, size=8.5, bold=True, color=THEME['white'],
                  align='center')
 
-    # 표 데이터 (7개 재편안)
+    # 표 데이터 (8개 재편안)
     rs_matrix = [
         ('RS-1', '✅', '✅', '✅', '✅', '✅'),
         ('RS-2', '✅', '✅', '✅', '✅', '⚠'),
@@ -1658,6 +1659,7 @@ def build_slide_17_robust_overview(prs):
         ('RS-5', '✅', '⚠', '✅', '✅', '✅'),
         ('RS-6', '✅', '✅', '✅', '✅', '✅'),
         ('RS-7', '✅', '✅', '✅', '✅', '✅'),
+        ('RS-8', '✅', '✅', '✅', '✅', '✅'),
     ]
     for i, row in enumerate(rs_matrix):
         y = table_y + Inches(0.4 + i * 0.24)
@@ -2002,8 +2004,8 @@ def build_slide_23_rs6_process(prs):
     """단계 6-6: RS-6 공정 리더십 통합 — 1c nm DRAM + NAND 주기 연장 + Hybrid bonding 자체 IP."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
-               'RS-6 · 공정 리더십 통합 — 1c nm DRAM + NAND 주기 연장 + 자체 IP',
-               '양산 ramp 6개월 지연 = 누적 이익의 2/3 소실 (Weber/PSU). 업계 4사 모두 capa 확장→process upgrade로 선회. YMTC가 hybrid bonding 핵심 IP 지배 → 자체 IP 확보가 디커플링 시 생존 변수.')
+               'RS-6 · NAND는 layer 경쟁이 아니라, 양산 ramp 6개월이 누적 이익의 2/3를 결정하는 "주기 연장" 경쟁이다',
+               '1c nm DRAM 원가 우위 + NAND 공정 전환 주기 연장 + Hybrid Bonding 자체 IP — 업계 4사 일제 선회와 YMTC IP 종속을 동시 돌파')
 
     # 좌측: 왜 지금 (Why now) — 3개 evidence 박스
     why_x = Inches(0.5)
@@ -2160,24 +2162,104 @@ def build_slide_24_rs7_ai_automation(prs):
     return slide
 
 
-def build_slide_25_dashboard(prs):
+def build_slide_25_rs8_structured_hedging(prs):
+    """단계 6-8: RS-8 구조화 매출 헷지 — 농수산·외환 헷지 100년 노하우의 메모리 첫 도입."""
+    slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
+    add_header(slide,
+               'RS-8 · 단순 LTA는 사이클당 50~100% 매출 기회를 포기한다',
+               '농수산 100년 + 외환 50년 헷지 노하우의 메모리 첫 도입 — Participating Forward + HTA + Tiered + Trading Desk = 매출 변동성 ±25%→±12%')
+
+    # 좌측 박스: 왜 지금 (3가지 증거)
+    add_rect(slide, Inches(0.5), Inches(1.85), Inches(6.3), Inches(4.7),
+             fill=THEME['soft_blue_bg'])
+    add_text(slide, Inches(0.7), Inches(2.0), Inches(6), Inches(0.4),
+             '왜 지금 — 단순 LTA의 한계', font=FONT_KO, size=12,
+             bold=True, color=THEME['samsung_blue'])
+
+    evidence = [
+        ('① 297% 가격 점프 사례 (2025년 9~12월)',
+         '16Gb DDR5 contract price $6.84 → $27.20 (3개월 +297%)',
+         '9월 단순 고정가 LTA 시 297% 상방 모두 포기 — 고객만 차익 향유'),
+        ('② 메모리 변동성 σ ≈ 60~120%',
+         '원유 30%·S&P 18% 대비 2~6배 — "농산물 같은 IT 부품"',
+         '농가도 작황의 30~50%만 forward 헷지 — 100% 락인은 표준 아님'),
+        ('③ Participating Forward 메모리 미도입',
+         '외환·통화시장 50년 표준 도구 — 메모리 산업 거의 도입 0건',
+         '첫 도입자 표준 효과 = Fish Pool 모델, 후발주자 진입장벽 형성'),
+    ]
+    for i, (name, metric, source) in enumerate(evidence):
+        y = Inches(2.55 + i * 1.40)
+        add_rect(slide, Inches(0.85), y, Inches(0.12), Inches(1.20),
+                 fill=THEME['amber'])
+        add_text(slide, Inches(1.10), y + Inches(0.05), Inches(5.5), Inches(0.4),
+                 name, font=FONT_KO, size=11, bold=True, color=THEME['samsung_blue'])
+        add_text(slide, Inches(1.10), y + Inches(0.45), Inches(5.5), Inches(0.35),
+                 metric, font=FONT_KO, size=9.5, color=THEME['dark_text'])
+        add_text(slide, Inches(1.10), y + Inches(0.83), Inches(5.5), Inches(0.35),
+                 source, font=FONT_KO, size=8.5, italic=True,
+                 color=THEME['gray_caption'])
+
+    # 우측 박스: 4트랙 헷지 구조
+    add_rect(slide, Inches(7.0), Inches(1.85), Inches(5.83), Inches(4.7),
+             fill=THEME['samsung_blue'])
+    add_text(slide, Inches(7.2), Inches(2.0), Inches(5.5), Inches(0.4),
+             '4트랙 헷지 구조 (RS-4 LTA 위에 적층)', font=FONT_KO, size=12,
+             bold=True, color=THEME['white'])
+    add_text(slide, Inches(7.2), Inches(2.4), Inches(5.5), Inches(0.4),
+             'STRUCTURED REVENUE HEDGING', font=FONT_EN, size=8,
+             color=THEME['amber'])
+
+    tracks = [
+        ('트랙 1', 'Participating Forward 시범',
+         'Floor + 50% 상방 참여 / NVIDIA·하이퍼스케일러 1~2사 / HBM4E 일부 물량 (연 10~20%)'),
+        ('트랙 2', 'Wafer Slot Reservation HTA',
+         '슬롯/가격 분리 결정 + Take-or-Pay / Nvidia $5.4~7.7억 선급금 산업 표준화'),
+        ('트랙 3', 'Tiered Pricing',
+         '시장 구간별 차등 share / 자동차·산업용·신흥 AI 시장 (SD-2 연계)'),
+        ('트랙 4', 'Memory Trading Desk',
+         '골드만/JP모건 트레이더 20~30인 / DRAMeXchange 기반 OTC 스왑 시장 조성'),
+    ]
+    for i, (label, headline, detail) in enumerate(tracks):
+        y = Inches(2.95 + i * 0.88)
+        add_text(slide, Inches(7.2), y, Inches(0.8), Inches(0.4),
+                 label, font=FONT_KO, size=11, bold=True, color=THEME['amber'])
+        add_text(slide, Inches(8.0), y, Inches(4.7), Inches(0.4),
+                 headline, font=FONT_KO, size=10.5, bold=True, color=THEME['white'])
+        add_text(slide, Inches(8.0), y + Inches(0.38), Inches(4.7), Inches(0.5),
+                 detail, font=FONT_KO, size=9, color=THEME['white'],
+                 line_spacing=1.25)
+
+    # 금지 사항 강조 (셰일 Three-way Collar 함정)
+    add_rect(slide, Inches(7.2), Inches(6.10), Inches(5.5), Inches(0.35),
+             fill=THEME['red_alert'])
+    add_text(slide, Inches(7.3), Inches(6.13), Inches(5.3), Inches(0.3),
+             '금지: Three-way Collar(sub-put 매도형) — 셰일 Pioneer 2014/2020 손실 가속',
+             font=FONT_KO, size=9.5, bold=True, color=THEME['white'])
+
+    add_so_what(slide, Inches(6.55),
+                '계약 *물량*(RS-4)이 아니라 계약 *구조*(RS-8)를 혁신 — 매출 변동성 절반 + 사이클당 +50~100% 회수.')
+    add_footer(slide, 25, TOTAL, 'Robust · RS-8 · 신규')
+    return slide
+
+
+def build_slide_26_dashboard(prs):
     """단계 7: EWI 대시보드 — 사분면 위치 변화 궤적 + 트리거."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
-               '지난 2년 사분면이 어떻게 움직였고 — 어디로 향하는가',
-               '실시간 사분면 궤적 + 9개 결정 D-day + 12개 자동 트리거 = 다운턴 신호 즉시 포착')
+               'EWI 대시보드의 사분면 궤적과 12개 자동 트리거가 다운턴 신호를 30일 내 실행 전환으로 바꾼다',
+               '지난 2년 궤적은 B 르네상스 모멘텀이지만 자동 실현은 아님 — 12개 결정 D-day와 12개 트리거가 신호를 즉시 행동으로 변환')
 
     # 좌측 (큰 영역) — 사분면 궤적 차트
     img = os.path.join(ASSETS_DIR, 'quadrant_trajectory.png')
     chart_quadrant_trajectory(img)
     slide.shapes.add_picture(img, Inches(0.5), Inches(1.85), width=Inches(8.4))
 
-    # 우측 — 9개 결정 D-day + 12개 트리거 컴팩트
-    # 9개 결정
+    # 우측 — 12개 결정 D-day + 12개 트리거 컴팩트
+    # 12개 결정
     add_rect(slide, Inches(9.1), Inches(1.85), Inches(3.73), Inches(2.4),
              fill=THEME['soft_blue_bg'])
     add_text(slide, Inches(9.3), Inches(1.95), Inches(3.4), Inches(0.3),
-             '9개 결정 D-day', font=FONT_KO, size=11, bold=True,
+             '12개 결정 D-day', font=FONT_KO, size=11, bold=True,
              color=THEME['samsung_blue'])
     decisions = [
         ('D1', 'HBM4 NVIDIA 점유율', 'D-150', True),
@@ -2188,17 +2270,20 @@ def build_slide_25_dashboard(prs):
         ('D5', 'AI 효율화', 'D-240', False),
         ('D8', '텍사스 추가 보조금', 'D-240', False),
         ('D9', 'M&A 펀드', 'D-240', False),
+        ('D10', 'NAND 주기 연장 R&D', 'D-240', False),
+        ('D11', 'Stargate Korea 본계약', 'D-240', False),
+        ('D12', 'RS-8 구조화 헷지 시범', 'D-240', False),
         ('D7', '잉여 인력 전환', 'D-330', False),
     ]
     for i, (d, name, dday, urgent) in enumerate(decisions):
-        y = Inches(2.3 + i * 0.21)
-        add_text(slide, Inches(9.3), y, Inches(0.4), Inches(0.2),
-                 d, font=FONT_EN, size=8.5, bold=True, color=THEME['amber'])
-        add_text(slide, Inches(9.6), y, Inches(2.4), Inches(0.2),
-                 name, font=FONT_KO, size=8, color=THEME['dark_text'])
+        y = Inches(2.30 + i * 0.16)
+        add_text(slide, Inches(9.3), y, Inches(0.5), Inches(0.18),
+                 d, font=FONT_EN, size=8, bold=True, color=THEME['amber'])
+        add_text(slide, Inches(9.7), y, Inches(2.3), Inches(0.18),
+                 name, font=FONT_KO, size=7.5, color=THEME['dark_text'])
         ddc = THEME['red_alert'] if urgent else THEME['gray_caption']
-        add_text(slide, Inches(12.0), y, Inches(0.7), Inches(0.2),
-                 dday, font=FONT_EN, size=8, bold=True, color=ddc, align='right')
+        add_text(slide, Inches(12.0), y, Inches(0.7), Inches(0.18),
+                 dday, font=FONT_EN, size=7.5, bold=True, color=ddc, align='right')
 
     # 12개 트리거 — 카테고리별 압축
     add_rect(slide, Inches(9.1), Inches(4.35), Inches(3.73), Inches(2.2),
@@ -2225,120 +2310,139 @@ def build_slide_25_dashboard(prs):
 
     add_so_what(slide, Inches(6.85),
                 '현재 위치 (DF1 +7.5, DF2 +0.5) — B 시나리오 강한 모멘텀, 그러나 자동 실현 아님')
-    add_footer(slide, 25, TOTAL, '대시보드')
+    add_footer(slide, 26, TOTAL, '대시보드')
     return slide
 
 
-def build_slide_26_decisions_summary(prs):
-    """단계 8-1: 9개 결정 한 페이지 요약."""
+def build_slide_27_decisions_summary(prs):
+    """단계 8-1: 12개 결정 한 페이지 요약."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
-               '9개 결정은 묶음이다 — 분리해서 처리하면 효과가 사라진다',
-               'D1·D5·D7 직렬 의존 / D4·D8 동시 처리 / D6이 D9 거버넌스 기반 — 모든 결정 시한 2026 Q4')
+               '12개 결정은 묶음이다 — 분리해서 처리하면 효과가 사라진다',
+               'D1·D5·D7 직렬 / D4·D8 동시 / D6이 D9·D12 거버넌스 기반 / D10·D11·D12 신성장축 — 모든 결정 시한 2026 Q4')
 
     decisions = [
         {
             'id': 'D1', 'urgent': True,
             'title': 'HBM4 NVIDIA 점유율',
-            'spec': '수율 90%+ Q3 2026\n점유율 28% → 40%+',
+            'spec': '수율 90%+ Q3 2026 / 점유율 28% → 40%+',
             'owner': 'D-150 · 마감 임박',
         },
         {
             'id': 'D2', 'urgent': False,
             'title': '소재 비중국 다각화',
-            'spec': 'Q3 2026 LTA 체결\n6개월 비축',
+            'spec': 'Q3 2026 LTA 체결 / 6개월 비축',
             'owner': '캐나다·호주·카자흐',
         },
         {
             'id': 'D3', 'urgent': False,
             'title': '3D DRAM R&D + IMEC',
-            'spec': 'Q4 2026 협약 체결\n$200M / 200~300인',
+            'spec': 'Q4 2026 협약 / $200M / 200~300인',
             'owner': '마이크론·SK 추격 차단',
         },
         {
             'id': 'D4', 'urgent': False,
             'title': '텍사스 1·2단계',
-            'spec': '1단계 가동 + 2단계 발표\nQ4 2026 마감',
+            'spec': '1단계 가동 + 2단계 발표 / Q4 2026',
             'owner': '$4.745B 보조금 활용',
         },
         {
             'id': 'D5', 'urgent': False,
             'title': 'AI 효율화 전사 도입',
-            'spec': 'Q4 파일럿 → Q1 전사\nRS2·RS3 선행 조건',
+            'spec': 'Q4 파일럿 → Q1 전사 / RS2·RS3 선행',
             'owner': '500~1,000억 원',
         },
         {
             'id': 'D6', 'urgent': False,
             'title': 'RS1·RS4·RS6 정책화',
-            'spec': '다운사이클 capex 4조원\n명문화',
+            'spec': '다운사이클 capex 4조원 명문화',
             'owner': '활동가 투자자 방어',
         },
         {
             'id': 'D7', 'urgent': False,
             'title': '잉여 인력 전환 배치',
-            'spec': '2027 Q1 가시화\n분기별 사업부장 보고',
+            'spec': '2027 Q1 가시화 / 분기별 사업부장 보고',
             'owner': '추가 채용 없이 RS2·RS3',
         },
         {
             'id': 'D8', 'urgent': False,
             'title': '텍사스 추가 보조금',
-            'spec': 'CHIPS 추가 협상 + LTA\nTesla 외 미국계 빅테크',
+            'spec': 'CHIPS 추가 협상 + LTA / Tesla 외 빅테크',
             'owner': 'JV 모델 대안',
         },
         {
             'id': 'D9', 'urgent': False,
             'title': '다운사이클 M&A 펀드',
-            'spec': '5,000억 원 사전 적립\n자동 트리거',
+            'spec': '5,000억 원 사전 적립 / 자동 트리거',
             'owner': 'Disney-Marvel 모델',
+        },
+        {
+            'id': 'D10', 'urgent': False,
+            'title': 'NAND 주기 연장 R&D 4트랙',
+            'spec': 'Hybrid Bonding 자체 IP / Multi-deck / QLC·PLC / FDP·SCADA firmware',
+            'owner': '1.5조 원/3년 · YMTC 우회',
+        },
+        {
+            'id': 'D11', 'urgent': False,
+            'title': 'Stargate Korea 본 계약',
+            'spec': 'LOI → DA / Electronics+C&T+SDS+Heavy 컨소시엄 / Neocloud 1~3% 지분',
+            'owner': 'AI 가치사슬 마진 헷지',
+        },
+        {
+            'id': 'D12', 'urgent': False,
+            'title': 'RS-8 구조화 매출 헷지 시범',
+            'spec': 'Participating Forward + HTA + Tiered + Trading Desk / Three-way 금지',
+            'owner': '농수산·외환 100년 헷지 이식',
         },
     ]
 
-    # 3x3 grid
+    # 3x4 grid (3 columns × 4 rows)
+    row_height = 1.18
     for i, d in enumerate(decisions):
         col = i % 3
         row = i // 3
         x = Inches(0.5 + col * 4.28)
-        y = Inches(1.85 + row * 1.55)
+        y = Inches(1.80 + row * row_height)
         bg = RGBColor(0xFE, 0xF2, 0xF2) if d['urgent'] else THEME['soft_blue_bg']
         border_color = THEME['red_alert'] if d['urgent'] else THEME['samsung_blue']
-        add_rect(slide, x, y, Inches(4.1), Inches(1.4),
+        add_rect(slide, x, y, Inches(4.1), Inches(row_height - 0.13),
                  fill=bg, line=border_color, line_width=Emu(15875) if d['urgent'] else None)
         # 좌측 띠
-        add_rect(slide, x, y, Inches(0.1), Inches(1.4),
+        add_rect(slide, x, y, Inches(0.1), Inches(row_height - 0.13),
                  fill=THEME['red_alert'] if d['urgent'] else THEME['samsung_blue'])
         # ID
-        add_text(slide, x + Inches(0.25), y + Inches(0.1), Inches(0.6), Inches(0.4),
-                 d['id'], font=FONT_EN, size=18, bold=True,
+        add_text(slide, x + Inches(0.20), y + Inches(0.05), Inches(0.85), Inches(0.35),
+                 d['id'], font=FONT_EN, size=15, bold=True,
                  color=THEME['red_alert'] if d['urgent'] else THEME['samsung_blue'])
         # 제목
-        add_text(slide, x + Inches(0.95), y + Inches(0.15), Inches(3.05), Inches(0.4),
-                 d['title'], font=FONT_KO, size=11, bold=True, color=THEME['dark_text'])
+        add_text(slide, x + Inches(1.05), y + Inches(0.10), Inches(2.95), Inches(0.30),
+                 d['title'], font=FONT_KO, size=10.5, bold=True, color=THEME['dark_text'])
         # 스펙
-        add_text(slide, x + Inches(0.25), y + Inches(0.6), Inches(3.7), Inches(0.55),
-                 d['spec'], font=FONT_KO, size=9, color=THEME['dark_text'],
-                 line_spacing=1.3)
+        add_text(slide, x + Inches(0.22), y + Inches(0.45), Inches(3.78), Inches(0.42),
+                 d['spec'], font=FONT_KO, size=8.5, color=THEME['dark_text'],
+                 line_spacing=1.2)
         # Owner / context
-        add_text(slide, x + Inches(0.25), y + Inches(1.1), Inches(3.7), Inches(0.3),
-                 d['owner'], font=FONT_KO, size=8.5, italic=True,
+        add_text(slide, x + Inches(0.22), y + Inches(0.83), Inches(3.78), Inches(0.22),
+                 d['owner'], font=FONT_KO, size=8, italic=True,
                  color=THEME['amber'])
 
-    # 하단 강조 박스
-    add_rect(slide, Inches(0.5), Inches(6.55), Inches(12.33), Inches(0.45),
+    # 하단 강조 박스 (4행 그리드 종료점 = 1.80 + 4×1.18 = 6.52)
+    add_rect(slide, Inches(0.5), Inches(6.58), Inches(12.33), Inches(0.45),
              fill=THEME['samsung_blue'])
-    add_text(slide, Inches(0.7), Inches(6.6), Inches(12), Inches(0.35),
-             '9개는 묶음이다 — D1·D5·D7 직렬 의존 / D4·D8 동시 처리 / D6이 D9의 거버넌스 기반',
-             font=FONT_KO, size=11, bold=True, color=THEME['white'], align='center')
+    add_text(slide, Inches(0.7), Inches(6.63), Inches(12), Inches(0.35),
+             '12개는 묶음이다 — D1·D5·D7 직렬 / D4·D8 동시 / D6이 D9·D12 거버넌스 / D10·D11·D12 신성장축',
+             font=FONT_KO, size=10.5, bold=True, color=THEME['white'], align='center')
 
-    add_footer(slide, 26, TOTAL, '결정 요약')
+    add_footer(slide, 27, TOTAL, '결정 요약')
     return slide
 
 
-def build_slide_27_problem_solution(prs):
+def build_slide_28_problem_solution(prs):
     """단계 8-2: 핵심 전략 ↔ 해결 문제 매핑 — 3열 레이아웃."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
-               '핵심 전략 × 해결되는 문제 — Main · Side · Robust 각 영역의 가장 중요한 것',
-               '각 전략을 3~4단어로 압축 → 어떤 문제를 푸는지 명시 → 묶음으로 모든 문제 해결')
+               'Main·Side·Robust 9개 핵심 전략의 묶음이 다운턴 흑자·1위 회복·자산 폭락 시 M&A를 동시에 해결한다',
+               '각 영역에서 가장 중요한 3개씩 — 단일 전략으로는 한 문제만 풀리지만, 묶음으로 실행하면 모든 문제가 동시에 해결된다')
 
     # 3열 헤더
     column_titles = [
@@ -2419,11 +2523,11 @@ def build_slide_27_problem_solution(prs):
              '9개 핵심 전략의 묶음 = 다운턴이 와도 흑자 유지 + 회복기 1번 자리 + 자산 폭락 시 M&A',
              font=FONT_KO, size=11, bold=True, color=THEME['white'], align='center')
 
-    add_footer(slide, 27, TOTAL, '전략 리마인드')
+    add_footer(slide, 28, TOTAL, '전략 리마인드')
     return slide
 
 
-def build_slide_28_closing(prs):
+def build_slide_29_closing(prs):
     """단계 9: 최종 메시지."""
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     # 좌측 풀 사이드바
@@ -2437,8 +2541,8 @@ def build_slide_28_closing(prs):
              'DECISION REQUEST', font=FONT_EN, size=12, bold=True,
              color=THEME['samsung_blue'])
     add_text(slide, Inches(1.0), Inches(1.1), Inches(11), Inches(0.5),
-             '경영진 결의 요청 사항 — 9개 결정의 묶음',
-             font=FONT_KO, size=22, bold=True, color=THEME['dark_text'])
+             '12개 결정의 묶음 의결로 호황의 정점을 다운턴 준비의 마지막 기회로 잡는다',
+             font=FONT_KO, size=20, bold=True, color=THEME['dark_text'])
 
     # Amber 짧은 라인
     add_rect(slide, Inches(1.0), Inches(1.85), Inches(0.6), Inches(0.05),
@@ -2451,17 +2555,17 @@ def build_slide_28_closing(prs):
              line_spacing=1.2)
 
     add_text(slide, Inches(1.0), Inches(4.0), Inches(11.5), Inches(0.4),
-             '─ 9개 결정의 묶음 의결을 요청드립니다 ─',
+             '─ 12개 결정의 묶음 의결을 요청드립니다 ─',
              font=FONT_KO, size=14, italic=True, color=THEME['gray_caption'])
 
     # 3개 결의 요청 카드
     asks = [
         ('01', '전략 방향 승인',
-         '시나리오 B Main Bet + Side Bets + Robust 7개 전략 채택\n2030~2035 메모리 1위 회복 로드맵 의결'),
-        ('02', '9개 즉시 결정 패키지',
-         'HBM4·소재·3D DRAM·텍사스·AI 효율화·이사회 정책화·\n잉여 인력·추가 보조금·M&A 펀드 — 묶음 처리. 시한: 2026 Q4'),
+         '시나리오 B Main Bet + Side Bets + Robust 8개 전략 채택\n2030~2035 메모리 1위 회복 로드맵 의결'),
+        ('02', '12개 즉시 결정 패키지',
+         'HBM4·소재·3D DRAM·텍사스·AI 효율화·정책화·잉여 인력·\n추가 보조금·M&A 펀드·NAND 4트랙·Stargate Korea·RS-8 헷지 — 시한: 2026 Q4'),
         ('03', '거버넌스 + 트리거 승인',
-         '30일 내 의사결정 + 자동 트리거 12개 + 다운사이클 capex 하한 4조 원/년\n+ 활동가 투자자 방어 의결권 구조'),
+         '30일 내 의사결정 + 자동 트리거 12개 + 다운사이클 capex 하한 4조 원/년\n+ 활동가 투자자 방어 의결권 구조 + 단일 Floor 원칙(RS-8)'),
     ]
     for i, (num, title, desc) in enumerate(asks):
         x = Inches(1.0 + i * 4.0)
@@ -2482,7 +2586,7 @@ def build_slide_28_closing(prs):
              '삼성전자  ·  DS부문 메모리사업부 전략기획팀  ·  대외비  ·  2026.05.06',
              font=FONT_KO, size=10, color=THEME['gray_caption'])
     add_text(slide, Inches(11.8), Inches(7.05), Inches(1), Inches(0.3),
-             '28 / 28', font=FONT_EN, size=10, color=THEME['gray_caption'],
+             '29 / 29', font=FONT_EN, size=10, color=THEME['gray_caption'],
              align='right')
 
     return slide
@@ -2537,10 +2641,11 @@ def main():
         build_slide_22_rs5_financial,
         build_slide_23_rs6_process,
         build_slide_24_rs7_ai_automation,
-        build_slide_25_dashboard,
-        build_slide_26_decisions_summary,
-        build_slide_27_problem_solution,
-        build_slide_28_closing,
+        build_slide_25_rs8_structured_hedging,
+        build_slide_26_dashboard,
+        build_slide_27_decisions_summary,
+        build_slide_28_problem_solution,
+        build_slide_29_closing,
     ]
 
     for i, builder in enumerate(builders, start=1):
