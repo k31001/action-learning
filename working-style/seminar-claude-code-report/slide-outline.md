@@ -1,12 +1,12 @@
 # AI Harness Engineering — 보고서 워크플로우
 ## 세미나 슬라이드 기획서 (v3 — 신설 트랙만, 라이트 테마)
 
-**작성일**: 2026년 5월 (v3.1 — 자동화 워크플로우 2매 추가)
-**슬라이드 수**: 25매
-**발표 예상 시간**: 60분 (이론 25 + 실전 28 + Q&A 7)
+**작성일**: 2026년 5월 (v3.2 — Claude Code 확장 메커니즘 SKILLS + CONNECTORS 2매 추가)
+**슬라이드 수**: 27매
+**발표 예상 시간**: 65분 (이론 30 + 실전 28 + Q&A 7)
 **대상**: 전략기획·연구·분석 담당자 (개발 경험 불필요)
 **컨셉**: 두 트랙으로 이론 → 실전을 잇는다. AI 하네스 엔지니어링의 개념을 잡고, 실제 보고서 프로젝트의 git 발췌로 검증한 뒤, **변경 정합성 체인을 CLAUDE.md 규칙으로 박제하는 메타 패턴까지** 보여준다.
-**2대 트랙**: ① 00 · 하네스 엔지니어링 (이론, 10매) → ② 04 · 케이스 스터디 (실전 9매 + 자동화 워크플로우 2매)
+**2대 트랙**: ① 00 · 하네스 엔지니어링 (이론, 12매 — Claude Code의 SKILLS·CONNECTORS 포함) → ② 04 · 케이스 스터디 (실전 10매 + 자동화 워크플로우 2매)
 
 ---
 
@@ -41,7 +41,7 @@
 
 ---
 
-## 📌 슬라이드 구성 요약 (25매)
+## 📌 슬라이드 구성 요약 (27매)
 
 | # | 트랙 | 내용 | 형태 |
 |---|------|------|------|
@@ -56,20 +56,22 @@
 | **9** | **00 · HARNESS** | **도구 사용 위계 + 권한 모드 3종** | 피라미드 + 모드 |
 | **10** | **00 · HARNESS** | **영속성 레이어 — 파일 시스템 = 외부 두뇌** | 4행 표 + 4 효과 |
 | **11** | **00 · HARNESS** | **Claude Code = reference 하네스 — 4분면 위치도** | 4분면 + 이유 |
-| **12** | **00 · HARNESS** | **하네스 설계 원칙 5가지** | 5칸 카드 |
-| **13** | **04 · CASE** | **케이스 개요 — 시나리오 플래닝 보고서** | 카드 + 산출물 트리 |
-| **14** | **04 · CASE** | **첫 프롬프트 → 하네스가 세운 6단계 계획** | 인용 + 단계 표 |
-| **15** | **04 · CASE** | **디렉토리 구조 — 워크플로우의 척추** | 트리 + 화살표 |
-| **16** | **04 · CASE** | **CLAUDE.md — 프로젝트 헌법 (실제 발췌)** | 코드 패널 + 효과 |
-| **17** | **04 · CASE** | **6개 서브에이전트 — 역할 기반 전문화** | 6행 표 |
-| **18** | **04 · CASE** | **데이터 수집 + metadata.md (실제 발췌)** | 카테고리 + 코드 |
-| **19** | **04 · CASE** | **STEEP 50요인 → I×U → 3개 Driving Force** | 깔때기 + DF 결과 |
-| **20** | **04 · CASE** | **시나리오 매트릭스 — Mermaid quadrantChart** | 코드 + 렌더링 |
-| **21** | **04 · CASE** | **Strategy Agent — 7개 벤치마크 cross-check** | 매핑 7행 표 |
-| **22** | **04 · CASE** | **report → slide-outline → PPTX 자동 빌드** | 3단 파이프라인 |
-| **23** | **04 · CASE** | **변경 정합성 체인 — 두 갈래 (PPTX + 대시보드)** | 두 갈래 다이어그램 |
-| **24** | **04 · CASE** | **자동화 보존 — CLAUDE.md 규칙으로 박제** | 규칙 발췌 + 효과 4개 |
-| 25 | CLOSING | Questions & Discussion + takeaway 3줄 | 표지 톤 |
+| **12** | **00 · HARNESS** | **SKILLS — SKILL.md 기반 동적 로드 지침** (v3.2 신설) | 코드 패널 + 번들 칩 + 슬래시 6 |
+| **13** | **00 · HARNESS** | **CONNECTORS — MCP로 외부 도구 통합** (v3.2 신설) | mcp add 코드 + 카테고리 + Security |
+| **14** | **00 · HARNESS** | **하네스 설계 원칙 5가지** | 5칸 카드 |
+| **15** | **04 · CASE** | **케이스 개요 — 시나리오 플래닝 보고서** | 카드 + 산출물 트리 |
+| **16** | **04 · CASE** | **첫 프롬프트 → 하네스가 세운 6단계 계획** | 인용 + 단계 표 |
+| **17** | **04 · CASE** | **디렉토리 구조 — 워크플로우의 척추** | 트리 + 화살표 |
+| **18** | **04 · CASE** | **CLAUDE.md — 프로젝트 헌법 (실제 발췌)** | 코드 패널 + 효과 |
+| **19** | **04 · CASE** | **6개 서브에이전트 — 역할 기반 전문화** | 6행 표 |
+| **20** | **04 · CASE** | **데이터 수집 + metadata.md (실제 발췌)** | 카테고리 + 코드 |
+| **21** | **04 · CASE** | **STEEP 50요인 → I×U → 3개 Driving Force** | 깔때기 + DF 결과 |
+| **22** | **04 · CASE** | **시나리오 매트릭스 — Mermaid quadrantChart** | 코드 + 렌더링 |
+| **23** | **04 · CASE** | **Strategy Agent — 7개 벤치마크 cross-check** | 매핑 7행 표 |
+| **24** | **04 · CASE** | **report → slide-outline → PPTX 자동 빌드** | 3단 파이프라인 |
+| **25** | **04 · CASE** | **변경 정합성 체인 — 두 갈래 (PPTX + 대시보드)** | 두 갈래 다이어그램 |
+| **26** | **04 · CASE** | **자동화 보존 — CLAUDE.md 규칙으로 박제** | 규칙 발췌 + 효과 4개 |
+| 27 | CLOSING | Questions & Discussion + takeaway 3줄 | 표지 톤 |
 
 ---
 
@@ -86,10 +88,10 @@ AI Harness                                 (84pt 다크 잉크)
 Engineering.                               (84pt 인디고)
 
 보고서 워크플로우 — 이론에서 실전까지         (18pt 슬레이트-800)
-두 트랙으로 진행합니다 — 00 · 하네스 (10매) + 04 · 케이스 스터디 (10매)
+두 트랙으로 진행합니다 — 00 · 하네스 (12매) + 04 · 케이스 스터디 (12매)
                                             (14pt italic 핑크)
 
-$ harness --tracks=00,04 --slides=25      (13pt 인디고 Consolas)
+$ harness --tracks=00,04 --slides=27      (13pt 인디고 Consolas)
 
 발표자: 권의혁  ·  소속: 메모리사업부  ·  2026.05.06
 ```
@@ -109,14 +111,14 @@ $ harness --tracks=00,04 --slides=25      (13pt 인디고 Consolas)
 ### 콘텐츠 (3 트랙)
 | # | 제목 | 부제 | 슬라이드 | 시간 |
 |---|------|------|---------|------|
-| **00** | AI Harness Engineering | LLM을 자율 에이전트로 동작시키기 위한 외부 시스템 설계 | 3~12 (10매) | 25분 |
-| **04** | Case — 시나리오 플래닝 보고서 + 자동화 | 실제 PROMPT · CLAUDE.md · 6 서브에이전트 · 디렉토리 + 변경 정합성 체인 | 13~24 (12매) | 28분 |
-| **Q** | Questions & Discussion | 이론과 실전의 연결 — 자유롭게 질문 | 25 (1매) | 7분 |
+| **00** | AI Harness Engineering | LLM을 자율 에이전트로 동작시키기 위한 외부 시스템 설계 (SKILLS·CONNECTORS 포함) | 3~14 (12매) | 30분 |
+| **04** | Case — 시나리오 플래닝 보고서 + 자동화 | 실제 PROMPT · CLAUDE.md · 6 서브에이전트 · 디렉토리 + 변경 정합성 체인 | 15~26 (12매) | 28분 |
+| **Q** | Questions & Discussion | 이론과 실전의 연결 — 자유롭게 질문 | 27 (1매) | 7분 |
 
 ### 디자인 지침
 - 3행 큰 카드 (가로 폭 12.05"). 카드 좌측 큰 번호 (00=인디고, 04=핑크, Q=뮤트 슬레이트)
-- 카드 우측에 시간 메타 (예: `12매 · 약 28분 · 슬라이드 13~24`)
-- 하단 중앙 캡션: `총 25슬라이드 · 약 60분`
+- 카드 우측에 시간 메타 (예: `12매 · 약 28분 · 슬라이드 15~26`)
+- 하단 중앙 캡션: `총 27슬라이드 · 약 65분`
 
 ---
 
@@ -399,7 +401,62 @@ $ harness --tracks=00,04 --slides=25      (13pt 인디고 Consolas)
 
 ---
 
-## 슬라이드 12: 00 · HARNESS — 하네스 설계 원칙 5가지
+## 슬라이드 12: 00 · HARNESS — SKILLS (Built-in)
+
+**섹션 라벨**: `▍ AI HARNESS  00 · SKILLS`
+**서브타이틀**: SKILL.md 패키지로 Claude 능력 확장 — 자동 발동 + 슬래시 호출
+
+### 좌측 — SKILL.md 해부 코드 패널 (`~/.claude/skills/summarize-changes/SKILL.md`)
+- YAML frontmatter (name · description · `disable-model-invocation` · `allowed-tools`)
+- 본문: dynamic context injection (`!`git diff HEAD``) + 지시문
+- 14줄, Consolas 10.5pt
+
+### 우측 상단 — Anthropic 공식 번들 (`github.com/anthropics/skills`)
+- 4 칩(card): `docx · pdf · pptx · xlsx` — 인디고 보더 둥근 모서리
+- 부제: "Claude.ai · Claude Code · API 동일 동작 — 문서 능력의 기반"
+
+### 우측 하단 — Claude Code 내장 슬래시 스킬 6종 (commands 페이지의 [Skill] 표시)
+- 2 cols × 3 rows 카드 그리드
+- `/simplify` · `/loop` · `/batch` · `/claude-api` · `/debug` · `/fewer-permission-prompts`
+- 각 칩: 명령(Consolas, 인디고) + 한 줄 설명
+
+### 하단 캡션
+`✱ 발견 = /skills (목록).  자동 발동 = description 매칭  /  명시 = /이름.  disable-model-invocation: true 로 자동 차단.`
+
+### 출처
+`code.claude.com/docs/en/skills` · `code.claude.com/docs/en/commands` · `github.com/anthropics/skills`
+
+---
+
+## 슬라이드 13: 00 · HARNESS — CONNECTORS (MCP)
+
+**섹션 라벨**: `▍ AI HARNESS  00 · CONNECTORS`
+**서브타이틀**: Model Context Protocol — GitHub · Slack · DB를 Claude의 도구로 노출
+
+### 좌측 — `claude mcp add` 코드 패널
+- Option 1 — HTTP (권장): `claude mcp add --transport http notion https://mcp.notion.com/mcp`
+- Option 2 — SSE (deprecated)
+- Option 3 — stdio (local process, `--env KEY=VAL ... -- npx -y <pkg>`)
+- 관리: `claude mcp list / get / remove`, 세션 내 `/mcp` (OAuth · 상태)
+- 헤더 라인: scopes `local | project (.mcp.json) | user`
+
+### 우측 상단 — Directory (`claude.com/connectors`)
+- 6 카테고리 카드 (2 cols × 3 rows): Productivity · Communication · Code · Data · Design · Financial
+- 각 카드: 카테고리명(Calibri bold, 인디고) + 대표 커넥터 목록(Consolas)
+- 대표: GitHub · Slack · Notion · Asana · Atlassian · Airtable · Stripe · Sentry · Linear · Figma · Google Drive
+
+### 우측 하단 — SECURITY 콜아웃 (red 액센트)
+- "신뢰할 수 있는 MCP 서버만 연결 — 외부 콘텐츠를 가져오는 서버는 prompt injection 위험에 특히 유의. 파일 시스템·네트워크 권한이 곧 해당 서버에 위임됨."
+
+### 하단 캡션
+`✱ 본 프로젝트도 Notion · Figma · Gamma MCP를 거쳐 Figma는 일회성 시각화 전용으로 정착 (CLAUDE.md 규칙).`
+
+### 출처
+`code.claude.com/docs/en/mcp` · `claude.com/connectors` · `modelcontextprotocol.io`
+
+---
+
+## 슬라이드 14: 00 · HARNESS — 하네스 설계 원칙 5가지
 
 **섹션 라벨**: `▍ AI HARNESS  00 · PRINCIPLES`
 **서브타이틀**: 보고서·문서 작업에 맞춰 검증된 5가지
@@ -423,7 +480,7 @@ $ harness --tracks=00,04 --slides=25      (13pt 인디고 Consolas)
 
 ---
 
-## 슬라이드 13: 04 · CASE — 케이스 개요 (시나리오 플래닝 보고서)
+## 슬라이드 15: 04 · CASE — 케이스 개요 (시나리오 플래닝 보고서)
 
 **섹션 라벨**: `▍ CASE STUDY  04 · OVERVIEW`
 **타이틀**: 한 프로젝트, 모든 컴포넌트가 흐른다
@@ -462,7 +519,7 @@ action-learning/
 
 ---
 
-## 슬라이드 14: 04 · CASE — 첫 프롬프트와 하네스가 세운 6단계 계획
+## 슬라이드 16: 04 · CASE — 첫 프롬프트와 하네스가 세운 6단계 계획
 
 **섹션 라벨**: `▍ CASE STUDY  04 · FIRST PROMPT`
 **큰 번호**: `01 / 10`
@@ -510,7 +567,7 @@ action-learning/
 
 ---
 
-## 슬라이드 15: 04 · CASE — 디렉토리 구조 (워크플로우의 척추)
+## 슬라이드 17: 04 · CASE — 디렉토리 구조 (워크플로우의 척추)
 
 **섹션 라벨**: `▍ CASE STUDY  04 · DIRECTORY`
 **큰 번호**: `02 / 10`
@@ -557,7 +614,7 @@ presentation/
 
 ---
 
-## 슬라이드 16: 04 · CASE — CLAUDE.md (프로젝트 헌법)
+## 슬라이드 18: 04 · CASE — CLAUDE.md (프로젝트 헌법)
 
 **섹션 라벨**: `▍ CASE STUDY  04 · CLAUDE.md`
 **큰 번호**: `03 / 10`
@@ -623,7 +680,7 @@ presentation/
 
 ---
 
-## 슬라이드 17: 04 · CASE — 6개 서브에이전트 (역할 기반 전문화)
+## 슬라이드 19: 04 · CASE — 6개 서브에이전트 (역할 기반 전문화)
 
 **섹션 라벨**: `▍ CASE STUDY  04 · SUBAGENTS`
 **큰 번호**: `04 / 10`
@@ -650,7 +707,7 @@ presentation/
 
 ---
 
-## 슬라이드 18: 04 · CASE — 데이터 수집 + metadata.md
+## 슬라이드 20: 04 · CASE — 데이터 수집 + metadata.md
 
 **섹션 라벨**: `▍ CASE STUDY  04 · DATA`
 **큰 번호**: `05 / 10`
@@ -692,7 +749,7 @@ presentation/
 
 ---
 
-## 슬라이드 19: 04 · CASE — STEEP 50요인 → I×U → 3개 Driving Force
+## 슬라이드 21: 04 · CASE — STEEP 50요인 → I×U → 3개 Driving Force
 
 **섹션 라벨**: `▍ CASE STUDY  04 · STEEP`
 **큰 번호**: `06 / 10`
@@ -730,7 +787,7 @@ presentation/
 
 ---
 
-## 슬라이드 20: 04 · CASE — 시나리오 매트릭스 (Mermaid quadrantChart)
+## 슬라이드 22: 04 · CASE — 시나리오 매트릭스 (Mermaid quadrantChart)
 
 **섹션 라벨**: `▍ CASE STUDY  04 · SCENARIOS`
 **큰 번호**: `07 / 10`
@@ -780,7 +837,7 @@ quadrantChart
 
 ---
 
-## 슬라이드 21: 04 · CASE — Strategy Agent의 벤치마크 cross-check
+## 슬라이드 23: 04 · CASE — Strategy Agent의 벤치마크 cross-check
 
 **섹션 라벨**: `▍ CASE STUDY  04 · STRATEGY`
 **큰 번호**: `08 / 10`
@@ -806,7 +863,7 @@ quadrantChart
 
 ---
 
-## 슬라이드 22: 04 · CASE — report → slide-outline → PPTX 자동 빌드
+## 슬라이드 24: 04 · CASE — report → slide-outline → PPTX 자동 빌드
 
 **섹션 라벨**: `▍ CASE STUDY  04 · BUILD`
 **큰 번호**: `09 / 10`
@@ -842,7 +899,7 @@ quadrantChart
 
 ---
 
-## 슬라이드 23: 04 · CASE — 변경 정합성 체인 (자동화 워크플로우)
+## 슬라이드 25: 04 · CASE — 변경 정합성 체인 (자동화 워크플로우)
 
 **섹션 라벨**: `▍ CASE STUDY  04 · CONSISTENCY`
 **큰 번호**: `10 / 11`
@@ -889,7 +946,7 @@ report/scenario-planning-report.md         (전략 보고서)
 
 ---
 
-## 슬라이드 24: 04 · CASE — 자동화 보존 (CLAUDE.md 규칙으로 박제)
+## 슬라이드 26: 04 · CASE — 자동화 보존 (CLAUDE.md 규칙으로 박제)
 
 **섹션 라벨**: `▍ CASE STUDY  04 · RULE`
 **큰 번호**: `11 / 11`
@@ -945,7 +1002,7 @@ report/scenario-planning-report.md         (전략 보고서)
 
 ---
 
-## 슬라이드 25: CLOSING — Q&A
+## 슬라이드 27: CLOSING — Q&A
 
 ### 표지 톤의 단순한 마무리
 ```
@@ -965,20 +1022,20 @@ Claude Code = 보고서를 만들어내는 LLM 에이전트.
 
 ## 발표자 가이드
 
-### 시간 배분 (60분 표준)
+### 시간 배분 (65분 표준 — v3.2 SKILLS·CONNECTORS 2매 추가 반영)
 
 | 구간 | 슬라이드 | 시간 | 비고 |
 |------|---------|-----|------|
 | 오프닝 (표지 + 목차) | 1~2 | 3분 | 두 트랙의 흐름을 한 번에 안내 |
-| **트랙 00 · 하네스 엔지니어링** (이론) | 3~12 | 25분 | 슬라이드 12 마지막 캡션이 트랙 04로 넘어가는 다리 역할 |
-| **트랙 04 · 케이스 + 자동화** (실전) | 13~24 | 25분 | 13~22 케이스 9 + 23~24 자동화 워크플로우 (정합성 체인 + CLAUDE.md 박제) |
-| Q&A | 25 | 7분 | takeaway 3줄 + 저장소 링크 |
+| **트랙 00 · 하네스 엔지니어링** (이론) | 3~14 | 30분 | 슬라이드 12·13 (SKILLS·CONNECTORS) 추가 → +5분, 14 마지막 캡션이 트랙 04로 넘어가는 다리 역할 |
+| **트랙 04 · 케이스 + 자동화** (실전) | 15~26 | 25분 | 15~24 케이스 10 + 25~26 자동화 워크플로우 (정합성 체인 + CLAUDE.md 박제) |
+| Q&A | 27 | 7분 | takeaway 3줄 + 저장소 링크 |
 
 ### 발표 동선 팁
 - **개발 비전공 청중**: 슬라이드 6 (에이전틱 루프), 8 (서브에이전트 3패턴)에 시간 더 할애. 슬라이드 9 (도구 위계)는 압축 가능
-- **개발 전공 청중**: 슬라이드 11 (Claude Code 위치도), 슬라이드 23~24 (자동화 워크플로우 + CLAUDE.md 규칙)에서 시간 더 할애
-- **데모를 곁들이고 싶을 때**: 슬라이드 14 (PROMPT.md), 16 (CLAUDE.md), 20 (Mermaid), **24 (CLAUDE.md 변경 정합성 체인 섹션 직접 보여주기)**를 GitHub 페이지로 이동해서 보여주기
-- **단축 시 1순위 압축 대상**: 슬라이드 9 (도구 위계), 18 (metadata 표) — 핵심 메시지를 한 줄로 요약하고 패스
+- **개발 전공 청중**: 슬라이드 11 (Claude Code 위치도), **12 (SKILLS), 13 (CONNECTORS)**, 슬라이드 25~26 (자동화 워크플로우 + CLAUDE.md 규칙)에서 시간 더 할애
+- **데모를 곁들이고 싶을 때**: 슬라이드 16 (PROMPT.md), 18 (CLAUDE.md), 22 (Mermaid), **26 (CLAUDE.md 변경 정합성 체인 섹션 직접 보여주기)**를 GitHub 페이지로 이동해서 보여주기. 추가로 **12 (SKILLS) 데모**: 터미널에서 `/skills` 실행
+- **단축 시 1순위 압축 대상**: 슬라이드 9 (도구 위계), 20 (metadata 표) — 핵심 메시지를 한 줄로 요약하고 패스
 
 ### 라이브 데모 체크리스트
 - [ ] 터미널 폰트 18pt 이상

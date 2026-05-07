@@ -3,6 +3,7 @@
 // Layout: 13.33" x 7.5" (LAYOUT_WIDE)
 
 const pptxgen = require("pptxgenjs");
+const path = require("path");
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";  // 13.33 x 7.5
 pres.title = "Claude Code for Reports";
@@ -53,7 +54,7 @@ function addChrome(s, sectionLabel, pageNum) {
     color: C.cyan, charSpacing: 4, margin: 0,
   });
   // Page counter (top-right)
-  s.addText(`${String(pageNum).padStart(2, "0")} / 25`, {
+  s.addText(`${String(pageNum).padStart(2, "0")} / 27`, {
     x: 11.73, y: 0.35, w: 1.0, h: 0.35,
     fontSize: 10, fontFace: "Consolas",
     color: C.muted, align: "right", margin: 0,
@@ -146,12 +147,12 @@ function addCard(s, x, y, w, h, opts = {}) {
     fontSize: 18, fontFace: "Calibri",
     color: C.light, margin: 0,
   });
-  s.addText("두 트랙으로 진행합니다 — 00 · 하네스 (10매)  +  04 · 케이스 스터디 (10매)", {
+  s.addText("두 트랙으로 진행합니다 — 00 · 하네스 (12매)  +  04 · 케이스 스터디 (12매)", {
     x: 0.6, y: 5.30, w: 12.0, h: 0.4,
     fontSize: 14, italic: true, fontFace: "Calibri",
     color: C.amber, margin: 0,
   });
-  s.addText("$ harness --tracks=00,04 --slides=25", {
+  s.addText("$ harness --tracks=00,04 --slides=27", {
     x: 0.6, y: 6.20, w: 12.0, h: 0.35,
     fontSize: 13, fontFace: "Consolas",
     color: C.cyan, margin: 0,
@@ -177,21 +178,21 @@ function addCard(s, x, y, w, h, opts = {}) {
       num: "00",
       title: "AI Harness Engineering",
       sub: "LLM을 자율 에이전트로 동작시키기 위한 외부 시스템 설계",
-      meta: "10매 · 약 25분 · 슬라이드 3~12",
+      meta: "12매 · 약 30분 · 슬라이드 3~14",
       color: C.cyan,
     },
     {
       num: "04",
       title: "Case — 시나리오 플래닝 보고서 + 자동화",
       sub: "실제 PROMPT · CLAUDE.md · 6 서브에이전트 · 디렉토리 + 변경 정합성 체인",
-      meta: "12매 · 약 28분 · 슬라이드 13~24",
+      meta: "12매 · 약 28분 · 슬라이드 15~26",
       color: C.amber,
     },
     {
       num: "Q",
       title: "Questions & Discussion",
       sub: "이론과 실전의 연결 — 자유롭게 질문하세요",
-      meta: "1매 · 약 7분 · 슬라이드 25",
+      meta: "1매 · 약 7분 · 슬라이드 27",
       color: C.muted,
     },
   ];
@@ -220,7 +221,7 @@ function addCard(s, x, y, w, h, opts = {}) {
       color: it.color, align: "right", margin: 0,
     });
   });
-  s.addText("총 25슬라이드 · 약 60분 (이론 25 + 실전 28 + Q&A 7)", {
+  s.addText("총 27슬라이드 · 약 65분 (이론 30 + 실전 28 + Q&A 7)", {
     x: 0.6, y: 6.65, w: 12.0, h: 0.3,
     fontSize: 11, italic: true, fontFace: "Calibri",
     color: C.muted, align: "center", margin: 0,
@@ -228,7 +229,7 @@ function addCard(s, x, y, w, h, opts = {}) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-//   TRACK 00 · AI HARNESS ENGINEERING (slides 3–12)
+//   TRACK 00 · AI HARNESS ENGINEERING (slides 3–14)
 // ═════════════════════════════════════════════════════════════════════════════
 
 // ─── helper for harness slides ──────────────────────────────────────────────
@@ -904,11 +905,209 @@ function captionFoot(s, txt, color) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-//   SLIDE 12 — HARNESS · Design Principles
+//   SLIDE 12 — HARNESS · Skills (Built-in)
 // ═════════════════════════════════════════════════════════════════════════════
 {
   const s = newSlide();
-  addChrome(s, "▍ AI HARNESS  00 · PRINCIPLES", 12);
+  addChrome(s, "▍ AI HARNESS  00 · SKILLS", 12);
+  addTitle(s, "SKILLS — 작업 지침의 동적 로드",
+              "SKILL.md 패키지로 Claude 능력 확장 — 자동 발동 + 슬래시 호출");
+
+  // LEFT: SKILL.md anatomy code panel
+  const skillCode =
+`---
+name: summarize-changes
+description: Summarizes uncommitted
+  changes and flags risks. Use when
+  user asks what changed.
+disable-model-invocation: false
+allowed-tools: Bash(git diff *)
+---
+
+## Current changes
+!\`git diff HEAD\`
+
+## Instructions
+Summarize the changes above in 2~3
+bullets. Then list any risks: missing
+error handling, hardcoded values...`;
+  addCodePanel(s, 0.6, 2.55, 5.85, 4.0,
+    "~/.claude/skills/summarize-changes/SKILL.md",
+    skillCode, { size: 10.5 });
+
+  // RIGHT TOP: Anthropic bundled skills
+  const rx = 7.0;
+  s.addText("Anthropic 공식 번들 — github.com/anthropics/skills", {
+    x: rx, y: 2.55, w: 5.85, h: 0.35,
+    fontSize: 13, bold: true, fontFace: "Calibri",
+    color: C.amber, margin: 0,
+  });
+  s.addText("Claude.ai · Claude Code · API 동일 동작 — 문서 능력의 기반", {
+    x: rx, y: 2.92, w: 5.85, h: 0.30,
+    fontSize: 10.5, fontFace: "Calibri",
+    color: C.mid, margin: 0,
+  });
+  const bundles = [
+    { tag: "docx",  note: "Word 문서" },
+    { tag: "pdf",   note: "PDF 처리" },
+    { tag: "pptx",  note: "프레젠테이션" },
+    { tag: "xlsx",  note: "스프레드시트" },
+  ];
+  const chipW = 1.40, chipGapX = 0.075;
+  bundles.forEach((b, i) => {
+    const x = rx + i * (chipW + chipGapX);
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
+      x, y: 3.32, w: chipW, h: 0.62,
+      fill: { color: C.panel2 },
+      line: { color: C.cyan, width: 1.5 },
+      rectRadius: 0.06,
+    });
+    s.addText(b.tag, {
+      x, y: 3.32, w: chipW, h: 0.32,
+      fontSize: 13, bold: true, fontFace: "Consolas",
+      color: C.cyan, align: "center", valign: "middle", margin: 0,
+    });
+    s.addText(b.note, {
+      x, y: 3.62, w: chipW, h: 0.32,
+      fontSize: 9, fontFace: "Calibri",
+      color: C.mid, align: "center", valign: "middle", margin: 0,
+    });
+  });
+
+  // RIGHT BOTTOM: Bundled slash skills (2 cols × 3 rows)
+  s.addText("Claude Code 내장 슬래시 스킬 6종 (commands 페이지에서 [Skill] 표시)", {
+    x: rx, y: 4.20, w: 5.85, h: 0.32,
+    fontSize: 12, bold: true, fontFace: "Calibri",
+    color: C.amber, margin: 0,
+  });
+  const slashSkills = [
+    { cmd: "/simplify",                 desc: "최근 변경 코드 3개 리뷰 에이전트" },
+    { cmd: "/loop",                     desc: "프롬프트 반복 실행 (스케줄/자율)" },
+    { cmd: "/batch",                    desc: "5~30 단위 분해 → worktree 병렬" },
+    { cmd: "/claude-api",               desc: "Anthropic SDK 코드 마이그레이션" },
+    { cmd: "/debug",                    desc: "디버그 로그 분석" },
+    { cmd: "/fewer-permission-prompts", desc: "권한 프롬프트 줄이기" },
+  ];
+  const colW = 2.85, rowHt = 0.55, gapX = 0.15, gapY = 0.10;
+  slashSkills.forEach((sk, i) => {
+    const colIdx = i % 2;
+    const rowIdx = Math.floor(i / 2);
+    const x = rx + colIdx * (colW + gapX);
+    const y = 4.58 + rowIdx * (rowHt + gapY);
+    s.addShape(pres.shapes.RECTANGLE, {
+      x, y, w: colW, h: rowHt,
+      fill: { color: C.panel },
+      line: { color: C.border, width: 1 },
+    });
+    s.addText(sk.cmd, {
+      x: x + 0.10, y: y + 0.04, w: colW - 0.2, h: 0.25,
+      fontSize: 10.5, bold: true, fontFace: "Consolas",
+      color: C.cyan, margin: 0,
+    });
+    s.addText(sk.desc, {
+      x: x + 0.10, y: y + 0.30, w: colW - 0.2, h: 0.22,
+      fontSize: 9, fontFace: "Calibri",
+      color: C.light, margin: 0,
+    });
+  });
+
+  captionFoot(s, "✱ 발견 = /skills (목록).  자동 발동 = description 매칭  /  명시 = /이름.  disable-model-invocation: true 로 자동 차단.");
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+//   SLIDE 13 — HARNESS · Connectors (MCP)
+// ═════════════════════════════════════════════════════════════════════════════
+{
+  const s = newSlide();
+  addChrome(s, "▍ AI HARNESS  00 · CONNECTORS", 13);
+  addTitle(s, "CONNECTORS — MCP로 외부 도구 통합",
+              "Model Context Protocol — GitHub · Slack · DB를 Claude의 도구로 노출");
+
+  // LEFT: claude mcp add code panel
+  const mcpCode =
+`# Option 1 — HTTP (권장)
+$ claude mcp add --transport http \\
+    notion https://mcp.notion.com/mcp
+
+# Option 2 — SSE (deprecated)
+$ claude mcp add --transport sse \\
+    asana https://mcp.asana.com/sse
+
+# Option 3 — stdio (local process)
+$ claude mcp add --transport stdio \\
+    --env AIRTABLE_API_KEY=YOUR_KEY \\
+    airtable -- npx -y airtable-mcp-server
+
+# 관리
+$ claude mcp list  /  get  /  remove
+$ /mcp                # 세션 내 OAuth · 상태`;
+  addCodePanel(s, 0.6, 2.55, 5.85, 4.0,
+    "$ claude mcp add  ·  scopes: local | project (.mcp.json) | user",
+    mcpCode, { size: 10.5 });
+
+  // RIGHT TOP: directory categories
+  const rx = 7.0;
+  s.addText("Directory — claude.com/connectors", {
+    x: rx, y: 2.55, w: 5.85, h: 0.35,
+    fontSize: 13, bold: true, fontFace: "Calibri",
+    color: C.amber, margin: 0,
+  });
+  s.addText("검증된 공식·서드파티 카탈로그 · 카테고리별 분류 · OAuth 인증", {
+    x: rx, y: 2.92, w: 5.85, h: 0.30,
+    fontSize: 10.5, fontFace: "Calibri",
+    color: C.mid, margin: 0,
+  });
+
+  const cats = [
+    { cat: "Productivity",   names: "Notion · Asana · Atlassian" },
+    { cat: "Communication",  names: "Slack · Linear" },
+    { cat: "Code",           names: "GitHub · Sentry" },
+    { cat: "Data",           names: "Airtable · Google Drive" },
+    { cat: "Design",         names: "Figma" },
+    { cat: "Financial",      names: "Stripe · PayPal" },
+  ];
+  const ccolW = 2.85, crowH = 0.55, cgapX = 0.15, cgapY = 0.10;
+  cats.forEach((c, i) => {
+    const colIdx = i % 2;
+    const rowIdx = Math.floor(i / 2);
+    const x = rx + colIdx * (ccolW + cgapX);
+    const y = 3.32 + rowIdx * (crowH + cgapY);
+    addCard(s, x, y, ccolW, crowH, { accent: C.cyan });
+    s.addText(c.cat, {
+      x: x + 0.20, y: y + 0.05, w: ccolW - 0.3, h: 0.23,
+      fontSize: 11, bold: true, fontFace: "Calibri",
+      color: C.cyan, margin: 0,
+    });
+    s.addText(c.names, {
+      x: x + 0.20, y: y + 0.28, w: ccolW - 0.3, h: 0.25,
+      fontSize: 9.5, fontFace: "Consolas",
+      color: C.light, margin: 0,
+    });
+  });
+
+  // SECURITY callout (right bottom, red accent)
+  const sy = 5.30, sw = 5.85, sh = 1.10;
+  addCard(s, rx, sy, sw, sh, { accent: C.red });
+  s.addText("⚠  SECURITY", {
+    x: rx + 0.20, y: sy + 0.10, w: sw - 0.3, h: 0.30,
+    fontSize: 11, bold: true, fontFace: "Calibri",
+    color: C.red, margin: 0,
+  });
+  s.addText("신뢰할 수 있는 MCP 서버만 연결 — 외부 콘텐츠를 가져오는 서버는 prompt injection 위험에 특히 유의. 파일 시스템·네트워크 권한이 곧 해당 서버에 위임됨.", {
+    x: rx + 0.20, y: sy + 0.40, w: sw - 0.3, h: 0.65,
+    fontSize: 10, fontFace: "Calibri",
+    color: C.light, margin: 0, wrap: true,
+  });
+
+  captionFoot(s, "✱ 본 프로젝트도 Notion · Figma · Gamma MCP를 거쳐 Figma는 일회성 시각화 전용으로 정착 (CLAUDE.md 규칙).");
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+//   SLIDE 14 — HARNESS · Design Principles
+// ═════════════════════════════════════════════════════════════════════════════
+{
+  const s = newSlide();
+  addChrome(s, "▍ AI HARNESS  00 · PRINCIPLES", 14);
   addTitle(s, "하네스 설계 원칙 5가지", "보고서·문서 작업에 맞춰 검증된 5가지");
 
   const principles = [
@@ -954,17 +1153,17 @@ function captionFoot(s, txt, color) {
     });
   });
 
-  captionFoot(s, "✱ 여기까지가 이론입니다. 다음 10슬라이드에서는 이 5가지 원칙이 실제 보고서 프로젝트에서 어떻게 작동했는지를 git 파일 발췌로 봅니다.");
+  captionFoot(s, "✱ 여기까지가 이론입니다. 다음 12슬라이드에서는 이 5가지 원칙이 실제 보고서 프로젝트에서 어떻게 작동했는지를 git 파일 발췌로 봅니다.");
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-//   TRACK 04 · CASE STUDY (slides 13–22)
+//   TRACK 04 · CASE STUDY (slides 15–26)
 // ═════════════════════════════════════════════════════════════════════════════
 
-// ─── SLIDE 13 — CASE · OVERVIEW ─────────────────────────────────────────────
+// ─── SLIDE 15 — CASE · OVERVIEW ─────────────────────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · OVERVIEW", 13);
+  addChrome(s, "▍ CASE STUDY  04 · OVERVIEW", 15);
   addTitle(s, "한 프로젝트, 모든 컴포넌트가 흐른다",
               "삼성전자 메모리사업부 시나리오 플래닝 — 첫 프롬프트 한 번에서 시작된 30+ 커밋");
 
@@ -1017,10 +1216,10 @@ function captionFoot(s, txt, color) {
   captionFoot(s, "✱ 앞에서 본 5대 빌딩 블록 · 5가지 설계 원칙이 실제로 어떻게 작동했는지를 11슬라이드(9 케이스 + 2 자동화 워크플로우) 동안 git 발췌로 봅니다.");
 }
 
-// ─── SLIDE 14 — CASE · FIRST PROMPT + 6-STEP PLAN ────────────────────────────────
+// ─── SLIDE 16 — CASE · FIRST PROMPT + 6-STEP PLAN ────────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · FIRST PROMPT", 14);
+  addChrome(s, "▍ CASE STUDY  04 · FIRST PROMPT", 16);
   s.addText("01 / 10", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1093,10 +1292,10 @@ Focal Issue → STEEP 브레인스토밍
   captionFoot(s, "✱ \"프로젝트 시작해줘\" 한 줄에서 위 계획이 자동 도출 — 사용자는 수정·승인만.");
 }
 
-// ─── SLIDE 15 — CASE · DIRECTORY ────────────────────────────────────────
+// ─── SLIDE 17 — CASE · DIRECTORY ────────────────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · DIRECTORY", 15);
+  addChrome(s, "▍ CASE STUDY  04 · DIRECTORY", 17);
   s.addText("02 / 10", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1146,10 +1345,10 @@ presentation/
   captionFoot(s, "✱ 디렉토리 = 단계. 각 단계 산출물이 다음 디렉토리에 쌓이며 — 절대 거꾸로 흐르지 않습니다.");
 }
 
-// ─── SLIDE 16 — CASE · CLAUDE.md (PROJECT CONSTITUTION) ────────────────────────────
+// ─── SLIDE 18 — CASE · CLAUDE.md (PROJECT CONSTITUTION) ────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · CLAUDE.md", 16);
+  addChrome(s, "▍ CASE STUDY  04 · CLAUDE.md", 18);
   s.addText("03 / 10", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1231,10 +1430,10 @@ presentation/
   captionFoot(s, "✱ 30분 들여 만든 CLAUDE.md가 이후 20세션 × 평균 2시간을 일관되게 만듭니다.");
 }
 
-// ─── SLIDE 17 — CASE · SUBAGENTS ────────────────────────────────────────────────
+// ─── SLIDE 19 — CASE · SUBAGENTS ────────────────────────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · SUBAGENTS", 17);
+  addChrome(s, "▍ CASE STUDY  04 · SUBAGENTS", 19);
   s.addText("04 / 10", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1304,10 +1503,10 @@ presentation/
   captionFoot(s, "✱ 한 에이전트 피드백이 한 번에 한 에이전트만 고치면 끝나는 구조 — 책임 분리.");
 }
 
-// ─── SLIDE 18 — CASE · DATA ─────────────────────────────────────────
+// ─── SLIDE 20 — CASE · DATA ─────────────────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · DATA", 18);
+  addChrome(s, "▍ CASE STUDY  04 · DATA", 20);
   s.addText("05 / 10", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1384,10 +1583,10 @@ presentation/
   captionFoot(s, "✱ Research Agent가 자동 작성 — 사용자는 카테고리만 지시. 신뢰도·태그·출처가 표준 포맷으로 누적.");
 }
 
-// ─── SLIDE 19 — CASE · STEEP ───────────────────────────────
+// ─── SLIDE 21 — CASE · STEEP ───────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · STEEP", 19);
+  addChrome(s, "▍ CASE STUDY  04 · STEEP", 21);
   s.addText("06 / 10", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1474,10 +1673,10 @@ presentation/
   captionFoot(s, "✱ STEEP Agent + DrivingForce Agent의 협업 산출. 점수가 명시적이라 사용자 판단 가능.");
 }
 
-// ─── SLIDE 20 — CASE · SCENARIOS ─────────────────────────────────────
+// ─── SLIDE 22 — CASE · SCENARIOS ─────────────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · SCENARIOS", 20);
+  addChrome(s, "▍ CASE STUDY  04 · SCENARIOS", 22);
   s.addText("07 / 10", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1546,10 +1745,10 @@ DF3 Pole B 실현 시 사분면 미해당`,
   captionFoot(s, "✱ 디자인 도구 없이 Mermaid 한 블록 = GitHub·Notion·VS Code 자동 렌더링.");
 }
 
-// ─── SLIDE 21 — CASE · STRATEGY CROSS-CHECK ──────────────────────────────
+// ─── SLIDE 23 — CASE · STRATEGY CROSS-CHECK ──────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · STRATEGY", 21);
+  addChrome(s, "▍ CASE STUDY  04 · STRATEGY", 23);
   s.addText("08 / 10", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1624,10 +1823,10 @@ DF3 Pole B 실현 시 사분면 미해당`,
   });
 }
 
-// ─── SLIDE 22 — CASE · BUILD PIPELINE ────────────────────────────
+// ─── SLIDE 24 — CASE · BUILD PIPELINE ────────────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · BUILD", 22);
+  addChrome(s, "▍ CASE STUDY  04 · BUILD", 24);
   s.addText("09 / 10", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1694,10 +1893,10 @@ DF3 Pole B 실현 시 사분면 미해당`,
   });
 }
 
-// ─── SLIDE 23 — CASE · CONSISTENCY CHAIN (자동화 워크플로우) ────────────────
+// ─── SLIDE 25 — CASE · CONSISTENCY CHAIN (자동화 워크플로우) ────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · CONSISTENCY", 23);
+  addChrome(s, "▍ CASE STUDY  04 · CONSISTENCY", 25);
   s.addText("10 / 11", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1744,10 +1943,10 @@ report/scenario-planning-report.md         (전략 보고서)
   captionFoot(s, "✱ 한 번의 데이터 변경이 양쪽 갈래로 자동 흐름. 발표자가 PPTX와 대시보드를 따로 갱신할 필요 없음.");
 }
 
-// ─── SLIDE 24 — CASE · DURABLE RULE (CLAUDE.md로 박제) ─────────────────────
+// ─── SLIDE 26 — CASE · DURABLE RULE (CLAUDE.md로 박제) ─────────────────────
 {
   const s = newSlide();
-  addChrome(s, "▍ CASE STUDY  04 · RULE", 24);
+  addChrome(s, "▍ CASE STUDY  04 · RULE", 26);
   s.addText("11 / 11", {
     x: 0.6, y: 0.85, w: 1.6, h: 0.5,
     fontSize: 14, bold: true, fontFace: "Consolas",
@@ -1823,11 +2022,11 @@ report/scenario-planning-report.md         (전략 보고서)
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-//   SLIDE 25 — Q&A / CLOSING
+//   SLIDE 27 — Q&A / CLOSING
 // ═════════════════════════════════════════════════════════════════════════════
 {
   const s = newSlide();
-  s.addText("▍ THANK YOU  ·  25 / 25", {
+  s.addText("▍ THANK YOU  ·  27 / 27", {
     x: 0.6, y: 0.55, w: 8.0, h: 0.35,
     fontSize: 12, bold: true, fontFace: "Calibri",
     color: C.cyan, charSpacing: 4, margin: 0,
@@ -1876,7 +2075,7 @@ report/scenario-planning-report.md         (전략 보고서)
 // ═════════════════════════════════════════════════════════════════════════════
 //   WRITE
 // ═════════════════════════════════════════════════════════════════════════════
-const outPath = "working-style/seminar-claude-code-report/seminar-claude-code.pptx";
+const outPath = path.join(__dirname, "seminar-claude-code.pptx");
 pres.writeFile({ fileName: outPath })
   .then(() => console.log("✓ Created:", outPath))
   .catch(err => console.error("Error:", err));

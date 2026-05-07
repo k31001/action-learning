@@ -1,0 +1,12 @@
+{
+  "name": "seminar-claude-code-report",
+  "version": "1.0.0",
+  "private": true,
+  "description": "세미나용 PPTX 생성 스크립트(Claude Code 사용기). 메인 대시보드(Vercel 배포)와 분리. 이 디렉토리에서 npm install && node generate-pptx.js 로 사용.",
+  "scripts": {
+    "build": "node generate-pptx.js"
+  },
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}
