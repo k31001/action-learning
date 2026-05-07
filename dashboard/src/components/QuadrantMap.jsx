@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Plus, Zap } from 'lucide-react'
+import { Plus, Zap, Trash2, History } from 'lucide-react'
 
 // X = DF1: AI 수요  -10(버블붕괴) → +10(슈퍼사이클)
 // Y = DF2: 디커플링 -10(공존)    → +10(전면디커플링)
@@ -35,18 +35,45 @@ function quadrantOf(df1, df2) {
   return 'D'
 }
 
-export default function QuadrantMap({ positions, adjustedPosition, onAddSnapshot }) {
+export default function QuadrantMap({
+  positions,
+  adjustedPosition,
+  triggerHistory = [],
+  onAddSnapshot,
+  onClearTriggerHistory,
+}) {
   const [hovered, setHovered] = useState(null)
   const [showAdd, setShowAdd] = useState(false)
+  const [showHistory, setShowHistory] = useState(false)
   const [draft, setDraft] = useState({ df1: 7, df2: 4, note: '' })
 
   const pts = TIME_KEYS.map(k => positions.find(p => p.key === k)).filter(Boolean)
   const basePos = positions.find(p => p.key === 'current')
   const adjPos  = adjustedPosition  // { df1, df2, baseDf1, baseDf2, isAdjusted, activeTriggerNames }
 
+  // 트리거 클릭 경로: base.current → event[0] → event[1] → ... → event[last]
+  const trailPoints = basePos && triggerHistory.length > 0
+    ? [
+        { df1: basePos.df1, df2: basePos.df2, label: '기준점' },
+        ...triggerHistory.map((e, i) => ({
+          df1: e.position.df1,
+          df2: e.position.df2,
+          label: `#${i + 1} ${e.triggerName}`,
+          event: e,
+          index: i + 1,
+        })),
+      ]
+    : []
+
   function handleAdd() {
     onAddSnapshot({ ...draft, key: 'current', date: new Date().toISOString().slice(0, 10) })
     setShowAdd(false)
+  }
+
+  function handleClearHistory() {
+    if (window.confirm(`트리거 클릭 이력 ${triggerHistory.length}건을 모두 지우시겠습니까?`)) {
+      onClearTriggerHistory?.()
+    }
   }
 
   return (
@@ -122,35 +149,63 @@ export default function QuadrantMap({ positions, adjustedPosition, onAddSnapshot
           />
         )}
 
-        {/* Arrow from base to adjusted (when trigger-adjusted) */}
-        {adjPos?.isAdjusted && basePos && (() => {
-          const b = toSvg(adjPos.baseDf1, adjPos.baseDf2)
-          const a = toSvg(adjPos.df1, adjPos.df2)
-          const dx = a.cx - b.cx
-          const dy = a.cy - b.cy
-          const len = Math.sqrt(dx * dx + dy * dy)
-          if (len < 4) return null
-          // Arrowhead
-          const angle = Math.atan2(dy, dx)
-          const arrowLen = 10
-          const ax1 = a.cx - arrowLen * Math.cos(angle - 0.4)
-          const ay1 = a.cy - arrowLen * Math.sin(angle - 0.4)
-          const ax2 = a.cx - arrowLen * Math.cos(angle + 0.4)
-          const ay2 = a.cy - arrowLen * Math.sin(angle + 0.4)
+        {/* 트리거 클릭 경로 (base.current → 각 이벤트 위치를 시간순으로 연결) */}
+        {trailPoints.length >= 2 && (() => {
+          const segs = []
+          for (let i = 1; i < trailPoints.length; i++) {
+            const a = toSvg(trailPoints[i - 1].df1, trailPoints[i - 1].df2)
+            const b = toSvg(trailPoints[i].df1, trailPoints[i].df2)
+            const angle = Math.atan2(b.cy - a.cy, b.cx - a.cx)
+            const arrowLen = 8
+            const ax1 = b.cx - arrowLen * Math.cos(angle - 0.4)
+            const ay1 = b.cy - arrowLen * Math.sin(angle - 0.4)
+            const ax2 = b.cx - arrowLen * Math.cos(angle + 0.4)
+            const ay2 = b.cy - arrowLen * Math.sin(angle + 0.4)
+            const len = Math.hypot(b.cx - a.cx, b.cy - a.cy)
+            segs.push(
+              <g key={`seg-${i}`}>
+                <line
+                  x1={a.cx} y1={a.cy} x2={b.cx} y2={b.cy}
+                  stroke="#fbbf24" strokeWidth={1.8} strokeDasharray="5 3"
+                  opacity={0.85}
+                />
+                {len >= 6 && (
+                  <polygon
+                    points={`${b.cx},${b.cy} ${ax1},${ay1} ${ax2},${ay2}`}
+                    fill="#fbbf24" opacity={0.85}
+                  />
+                )}
+              </g>
+            )
+          }
+          return <g>{segs}</g>
+        })()}
+
+        {/* 트리거 이력 점들 (마지막 점은 아래 노란 별로 따로 그려짐) */}
+        {trailPoints.slice(1, -1).map((p, i) => {
+          const { cx, cy } = toSvg(p.df1, p.df2)
           return (
-            <g>
-              <line
-                x1={b.cx} y1={b.cy} x2={a.cx} y2={a.cy}
-                stroke="#fbbf24" strokeWidth={2} strokeDasharray="5 3"
-                opacity={0.8}
+            <g key={`hist-${i}`}
+              onMouseEnter={() => setHovered({
+                df1: p.df1, df2: p.df2,
+                label: p.label,
+                date: p.event?.timestamp?.slice(0, 10),
+                note: p.event?.action === 'activate' ? '발동' : '해제',
+              })}
+              onMouseLeave={() => setHovered(null)}
+              style={{ cursor: 'pointer' }}
+            >
+              <circle cx={cx} cy={cy} r={5}
+                fill="#fde68a" opacity={0.95}
+                stroke="#fbbf24" strokeWidth={1.5}
               />
-              <polygon
-                points={`${a.cx},${a.cy} ${ax1},${ay1} ${ax2},${ay2}`}
-                fill="#fbbf24" opacity={0.8}
-              />
+              <text x={cx} y={cy + 3} textAnchor="middle"
+                style={{ fontSize: 8, fill: '#78350f', fontWeight: 700, userSelect: 'none' }}>
+                {p.index}
+              </text>
             </g>
           )
-        })()}
+        })}
 
         {/* Historical points */}
         {pts.map((p, i) => {
@@ -243,13 +298,79 @@ export default function QuadrantMap({ positions, adjustedPosition, onAddSnapshot
       <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-xs text-gray-500">
         <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-emerald-500" /> 기준 현재 위치</span>
         {adjPos?.isAdjusted && (
-          <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-yellow-400" /> 트리거 조정 위치</span>
+          <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-yellow-400" /> 최신 트리거 위치</span>
         )}
-        <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b border-dashed border-gray-500" /> 이동 경로</span>
-        {adjPos?.isAdjusted && (
-          <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b-2 border-dashed border-yellow-400" /> 트리거 이동 방향</span>
+        <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b border-dashed border-gray-500" /> 시점 스냅샷 경로</span>
+        {triggerHistory.length > 0 && (
+          <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b-2 border-dashed border-yellow-400" /> 트리거 클릭 경로</span>
         )}
       </div>
+
+      {/* 트리거 클릭 이력 (누적, 시간순) */}
+      {triggerHistory.length > 0 && (
+        <div className="mt-3 border-t border-gray-800 pt-3">
+          <div className="flex items-center gap-2 mb-2">
+            <History size={13} className="text-yellow-400" />
+            <h3 className="text-xs font-semibold text-gray-300 flex-1">
+              트리거 클릭 이력 <span className="text-gray-500 font-normal">({triggerHistory.length}건)</span>
+            </h3>
+            <button
+              onClick={() => setShowHistory(s => !s)}
+              className="text-xs text-gray-500 hover:text-gray-300"
+            >
+              {showHistory ? '접기' : '펼치기'}
+            </button>
+            <button
+              onClick={handleClearHistory}
+              className="flex items-center gap-1 px-2 py-1 text-xs rounded bg-gray-800 hover:bg-red-900/40 text-gray-400 hover:text-red-300 transition-colors"
+              title="이력 초기화"
+            >
+              <Trash2 size={11} /> 초기화
+            </button>
+          </div>
+          {showHistory && (
+            <div className="max-h-48 overflow-y-auto space-y-1 text-xs">
+              {triggerHistory.map((e, i) => {
+                const ts = new Date(e.timestamp)
+                const tsStr = isNaN(ts) ? e.timestamp : ts.toLocaleString('ko-KR', {
+                  month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit',
+                })
+                const dx = e.deltaFromPrev?.df1 ?? 0
+                const dy = e.deltaFromPrev?.df2 ?? 0
+                const isAct = e.action === 'activate'
+                return (
+                  <div key={i} className="flex items-start gap-2 py-1 px-2 rounded bg-gray-800/40 border border-gray-800">
+                    <span className="text-yellow-400 font-mono shrink-0">#{i + 1}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${
+                          isAct ? 'bg-emerald-900/50 text-emerald-300' : 'bg-gray-700 text-gray-400'
+                        }`}>
+                          {isAct ? '발동' : '해제'}
+                        </span>
+                        <span className="text-gray-200 truncate">{e.triggerName}</span>
+                      </div>
+                      <div className="text-gray-500 mt-0.5 flex flex-wrap gap-x-3">
+                        <span>{tsStr}</span>
+                        <span className="font-mono">
+                          DF1 {e.position.df1.toFixed(1)} / DF2 {e.position.df2.toFixed(1)}
+                        </span>
+                        {e.deltaFromPrev ? (
+                          <span className="font-mono text-gray-600">
+                            Δ ({dx > 0 ? '+' : ''}{dx.toFixed(1)}, {dy > 0 ? '+' : ''}{dy.toFixed(1)})
+                          </span>
+                        ) : (
+                          <span className="text-gray-600">최초 클릭 (Δ 없음)</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Add snapshot modal */}
       {showAdd && (

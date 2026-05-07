@@ -20,8 +20,9 @@ const MAIN_TABS = [
 export default function App() {
   const {
     indicators, triggers, scenarios, quadrantPositions,
+    triggerHistory,
     adjustedScenarios, adjustedQuadrantPosition,
-    updateIndicator, updateTrigger, updateScenarioProbability,
+    updateIndicator, updateTrigger, clearTriggerHistory, updateScenarioProbability,
     addQuadrantSnapshot, exportData, importData, resetToDefaults,
     criticalCount, warningCount, activeTriggers,
   } = useStore()
@@ -91,7 +92,9 @@ export default function App() {
             <QuadrantMap
               positions={quadrantPositions}
               adjustedPosition={adjustedQuadrantPosition}
+              triggerHistory={triggerHistory}
               onAddSnapshot={addQuadrantSnapshot}
+              onClearTriggerHistory={clearTriggerHistory}
             />
             <ScenarioPanel
               scenarios={scenarios}
