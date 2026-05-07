@@ -447,3 +447,43 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 적용 사례. 사슬 전체�
   - `presentation/assets/figma/slide-{01,02,03}.png` + 디렉토리
 - Figma 원본 파일 (https://www.figma.com/design/rgllvhasHUQcLRRxBo7UOq) 은 사용자가 figma.com에서 직접 정리 (MCP 도구로 원격 파일 삭제 불가)
 - 표준 PPTX 빌드는 `presentation/scripts/generate_pptx.py` (matplotlib + python-pptx, 26슬라이드) 가 유일 경로로 복귀
+
+---
+
+## 2026-05-07: Claude Code 세미나 슬라이드 — 기본 제공 스킬 + 커넥터 (각 1매)
+
+지시 요약:
+- 세미나 자료에 (1) Claude Code 기본 제공 스킬, (2) 커넥터를 각각 한 장씩 추가
+- **필수 절차**: 학습 데이터 outdated 가능성 → 슬라이드 작성 전 공식 문서 4종(`code.claude.com/docs/en/skills`, `/mcp`, `claude.com/connectors`, `github.com/anthropics/skills`)에서 최신 사양 직접 조회
+- 디자인: 한 장에 4~6 핵심 항목, 텍스트 위주 X, 아이콘+키워드 중심, 하단 출처 URL 명시, 두 슬라이드 시각 톤 통일
+- 산출물 경로: `slides/seminar/claude-code-skills.pptx`, `slides/seminar/claude-code-connectors.pptx` (또는 기존 세미나 덱에 페이지 추가)
+
+작업:
+1. **공식 문서 4종 WebFetch** — 학습 데이터 의존 금지 원칙 준수. 추출한 핵심 사실:
+   - **Skills**: SKILL.md(YAML frontmatter + Markdown) 기반 동적 로드. 자동 발동(description 매칭) vs 명시 호출(`/이름`). `disable-model-invocation` 으로 자동 차단. 저장 위치 4단계(enterprise/personal/project/plugin).
+   - **Bundled Skills**(공식 문서 commands 페이지에서 "**[Skill]**" 표시): `/simplify`, `/batch`, `/debug`, `/loop`, `/claude-api`, `/fewer-permission-prompts` (6종)
+   - **Anthropic 공식 번들 레포** `github.com/anthropics/skills`: `docx · pdf · pptx · xlsx` — Claude.ai/Code/API 동일 동작. 설치 `/plugin marketplace add anthropics/skills`
+   - **MCP 추가 명령**: HTTP(권장) `claude mcp add --transport http <name> <url>`, SSE(deprecated), stdio(`--env KEY=VAL ... -- 명령`). 관리: `mcp list/get/remove`, 세션 내 `/mcp`
+   - **보안 경고문 원문**: "Make sure you trust MCP servers you are installing. Be especially careful when using MCP servers that could fetch untrusted content, as these can expose you to prompt injection risk."
+   - **디렉토리 카테고리** (`claude.com/connectors`): Productivity / Communication / Data / Sales & Marketing / Code / Design / Financial 등. 대표: GitHub, Slack, Notion, Asana, Atlassian, Airtable, Stripe, Sentry, Linear, Figma, Google Drive
+
+2. **신규 디렉토리** `slides/seminar/{scripts,assets}/` 생성
+
+3. **`slide-outline.md` 작성** — 두 슬라이드의 4-카드 그리드 명세, 색 분리(스킬=copper, 커넥터=slate), 출처 라인 정의
+
+4. **`scripts/generate_slides.py` 작성** (python-pptx, Anthropic-feel 팔레트):
+   - 동일 헤더/푸터/그리드, 액센트 색만 분리 → 시각 톤 통일
+   - 모노그램 아이콘(원형+단일 글자: S/A/`/`/?, M/D/+/`>`) — 이모지 폰트 의존성 회피
+   - 커넥터 슬라이드는 하단 SECURITY 배너로 prompt injection 경고 강조
+   - 빌드: `python3 slides/seminar/scripts/generate_slides.py`
+
+5. **산출**:
+   - `slides/seminar/claude-code-skills.pptx` (1매, 30 KB)
+   - `slides/seminar/claude-code-connectors.pptx` (1매, 30 KB)
+   - `slides/seminar/claude-code-skills-and-connectors.pptx` (2매 합본, 33 KB)
+
+6. **.gitignore 갱신** — `!slides/seminar/*.pptx` 예외 추가 (기존 PPTX exclusion 패턴 유지하면서 본 산출물만 트래킹)
+
+판단 메모:
+- **기존 세미나 덱 `working-style/seminar-claude-code-report/seminar-claude-code.pptx`(25매)** 가 별도 디자인 시스템(▍ AI HARNESS / CASE STUDY 라벨)을 사용 중이라, 그곳에 끼워 넣지 않고 사용자가 명시한 표준 경로 `slides/seminar/`에 독립 PPTX로 출력. 추후 통합 발표가 필요하면 동일 스크립트로 재생성하여 머지 가능.
+- 이번 슬라이드는 시나리오 플래닝 본 보고서/대시보드와 무관 → 변경 정합성 체인의 발표자료/대시보드 갈래 갱신 불필요 (presentation/, dashboard/ 영향 없음)
