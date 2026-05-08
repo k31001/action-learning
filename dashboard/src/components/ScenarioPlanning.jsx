@@ -3,7 +3,7 @@ import {
   ScatterChart, Scatter, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, ZAxis,
 } from 'recharts'
-import { Layers, Compass, Map, BookOpen, Star, AlertOctagon, Target, ChevronDown, ChevronUp } from 'lucide-react'
+import { Layers, Compass, Map as MapIcon, BookOpen, Star, AlertOctagon, Target, ChevronDown, ChevronUp } from 'lucide-react'
 import {
   STEEP_DATA, DRIVING_FORCES_DATA, SCENARIOS_DATA, BENCHMARK_DATA,
 } from '../data/scenarioPlanning'
@@ -11,7 +11,7 @@ import {
 const SUB_TABS = [
   { id: 'steep',     label: 'STEEP',           icon: Layers },
   { id: 'drivers',   label: 'Driving Forces',  icon: Compass },
-  { id: 'scenarios', label: 'Scenarios',       icon: Map },
+  { id: 'scenarios', label: 'Scenarios',       icon: MapIcon },
   { id: 'benchmark', label: 'Benchmark',       icon: BookOpen },
 ]
 
