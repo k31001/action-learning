@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { triggerAutoUpdate } from './hooks/useMarketData'
-import { Activity, BarChart3 } from 'lucide-react'
+import { Activity, BarChart3, Compass } from 'lucide-react'
 import Header from './components/Header'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
@@ -11,11 +11,13 @@ import QuadrantMap from './components/QuadrantMap'
 import MarketPanel from './components/MarketPanel'
 import DecisionTracker from './components/DecisionTracker'
 import DataVisualization from './components/DataVisualization'
+import ScenarioPlanning from './components/ScenarioPlanning'
 
 // 최상단 페이지 탭
 const TOP_TABS = [
-  { id: 'ewi',          label: 'Early Warning Indicator', icon: Activity },
-  { id: 'visualization', label: 'Data Visualization',     icon: BarChart3 },
+  { id: 'ewi',           label: 'Early Warning Indicator', icon: Activity },
+  { id: 'visualization', label: 'Data Visualization',      icon: BarChart3 },
+  { id: 'planning',      label: 'Scenario Planning',       icon: Compass },
 ]
 
 const MAIN_TABS = [
@@ -188,9 +190,10 @@ export default function App() {
         )}
 
         {topTab === 'visualization' && <DataVisualization />}
+        {topTab === 'planning'      && <ScenarioPlanning />}
 
         <footer className="pt-4 border-t border-gray-800 text-xs text-gray-700 flex justify-between">
-          <span>삼성전자 메모리사업부 시나리오 대시보드 v2.1</span>
+          <span>삼성전자 메모리사업부 시나리오 대시보드 v2.2</span>
           <span>주가: Yahoo Finance 자동 수집 | 나머지: localStorage 저장 — JSON 내보내기로 팀 공유</span>
         </footer>
       </main>
