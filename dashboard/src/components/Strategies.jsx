@@ -30,10 +30,10 @@ const SCENARIO_META = {
 
 function Card({ title, source, children, className = '' }) {
   return (
-    <div className={`bg-white border border-slate-200 rounded-xl p-4 ${className}`}>
+    <div className={`bg-white border border-stone-200 rounded-xl p-4 ${className}`}>
       {title && (
         <div className="mb-3">
-          <h3 className="text-sm font-semibold text-slate-800">{title}</h3>
+          <h3 className="text-sm font-semibold text-stone-800">{title}</h3>
           <SourceLink source={source} />
         </div>
       )}
@@ -63,7 +63,7 @@ function OverviewPanel() {
   return (
     <div className="space-y-4">
       <Card title="Executive Summary — 한 문장 요약" source="report/scenario-planning-report.md">
-        <p className="text-sm text-slate-800 leading-relaxed italic">
+        <p className="text-sm text-stone-800 leading-relaxed italic">
           "{o.oneLineSummary}"
         </p>
       </Card>
@@ -84,11 +84,11 @@ function OverviewPanel() {
             <div className="text-3xl font-bold text-emerald-600">{o.mainBet.scenario}</div>
             <div className="text-sm text-emerald-700 mt-1">확률 {o.mainBet.probability}</div>
           </div>
-          <p className="text-xs text-slate-700 leading-relaxed mb-3">{o.mainBet.rationale}</p>
-          <div className="text-xs text-slate-500 font-bold mb-1.5">필수 조건 — 동시 추진</div>
+          <p className="text-xs text-stone-700 leading-relaxed mb-3">{o.mainBet.rationale}</p>
+          <div className="text-xs text-stone-500 font-bold mb-1.5">필수 조건 — 동시 추진</div>
           <ul className="space-y-1">
             {o.mainBet.requirements.map((r, i) => (
-              <li key={i} className="flex items-start gap-2 text-xs text-slate-700">
+              <li key={i} className="flex items-start gap-2 text-xs text-stone-700">
                 <CheckCircle2 size={12} className="text-emerald-600 mt-0.5 shrink-0" />
                 {r}
               </li>
@@ -105,7 +105,7 @@ function OverviewPanel() {
                 style={{ borderColor: axis.color }}
               >
                 <div className="flex items-center gap-2 mb-0.5">
-                  <span className="text-sm font-bold text-slate-900">{axis.axis}</span>
+                  <span className="text-sm font-bold text-stone-900">{axis.axis}</span>
                   <div className="flex gap-1">
                     {axis.members.map(m => (
                       <span
@@ -118,7 +118,7 @@ function OverviewPanel() {
                     ))}
                   </div>
                 </div>
-                <p className="text-xs text-slate-500 leading-snug">{axis.description}</p>
+                <p className="text-xs text-stone-500 leading-snug">{axis.description}</p>
               </div>
             ))}
           </div>
@@ -135,19 +135,19 @@ function RobustStrategyPanel() {
   return (
     <div className="space-y-4">
       <Card title="8개 Robust 전략 — 시나리오 가치 매트릭스 (8 × 5 = 40 셀)" source="report/invariant-strategies/README.md">
-        <p className="text-xs text-slate-500 mb-3">
+        <p className="text-xs text-stone-500 mb-3">
           전략별로 시나리오 A/B/C/D/E 각각에서 어떤 가치를 만드는가. 각 셀은 해당 시나리오에서 그 전략의 핵심 작동 방식.
         </p>
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-slate-200">
-                <th className="text-left font-medium pb-2 pr-2 text-slate-500 sticky left-0 bg-white">RS</th>
-                <th className="text-left font-medium pb-2 pr-2 text-slate-500 min-w-[200px]">전략</th>
+              <tr className="border-b border-stone-200">
+                <th className="text-left font-medium pb-2 pr-2 text-stone-500 sticky left-0 bg-white">RS</th>
+                <th className="text-left font-medium pb-2 pr-2 text-stone-500 min-w-[200px]">전략</th>
                 {Object.entries(SCENARIO_META).map(([id, m]) => (
-                  <th key={id} className="text-center font-medium pb-2 pr-2 text-slate-700">
+                  <th key={id} className="text-center font-medium pb-2 pr-2 text-stone-700">
                     <div className="text-xs font-bold" style={{ color: m.color }}>{id}</div>
-                    <div className="text-[10px] text-slate-400 font-normal">{m.name}</div>
+                    <div className="text-[10px] text-stone-400 font-normal">{m.name}</div>
                   </th>
                 ))}
               </tr>
@@ -156,7 +156,7 @@ function RobustStrategyPanel() {
               {RS_SCENARIO_MATRIX.map((row, i) => {
                 const rs = ROBUST_STRATEGIES.find(r => r.id === row.id)
                 return (
-                  <tr key={i} className="border-b border-slate-200/40 last:border-0">
+                  <tr key={i} className="border-b border-stone-200/40 last:border-0">
                     <td className="py-2 pr-2 sticky left-0 bg-white">
                       <span
                         className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded"
@@ -165,7 +165,7 @@ function RobustStrategyPanel() {
                         {row.id}
                       </span>
                     </td>
-                    <td className="py-2 pr-2 text-slate-800 font-semibold">
+                    <td className="py-2 pr-2 text-stone-800 font-semibold">
                       {row.title}
                       {rs.isNew && <span className="ml-1 text-[10px] text-amber-600">NEW</span>}
                     </td>
@@ -174,7 +174,7 @@ function RobustStrategyPanel() {
                       return (
                         <td
                           key={j}
-                          className="py-2 pr-2 text-[11px] text-slate-700"
+                          className="py-2 pr-2 text-[11px] text-stone-700"
                           style={{ backgroundColor: `${m.color}08` }}
                         >
                           {cell.value}
@@ -205,18 +205,18 @@ function RobustStrategyPanel() {
               </span>
               <div className="flex-1">
                 <div className="flex items-center gap-1.5">
-                  <h4 className="text-sm font-bold text-slate-900">{rs.title}</h4>
+                  <h4 className="text-sm font-bold text-stone-900">{rs.title}</h4>
                   {rs.isNew && (
                     <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 font-bold">NEW</span>
                   )}
                 </div>
-                <span className="text-[10px] text-slate-500">축: {rs.axis}</span>
+                <span className="text-[10px] text-stone-500">축: {rs.axis}</span>
               </div>
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed mb-2 italic">"{rs.summary}"</p>
-            <div className="text-[11px] text-slate-500 space-y-1">
-              <div><span className="text-slate-500 font-bold">메커니즘: </span>{rs.mechanism}</div>
-              <div><span className="text-slate-500 font-bold">벤치마크: </span><span className="text-purple-700">{rs.benchmark}</span></div>
+            <p className="text-xs text-stone-700 leading-relaxed mb-2 italic">"{rs.summary}"</p>
+            <div className="text-[11px] text-stone-500 space-y-1">
+              <div><span className="text-stone-500 font-bold">메커니즘: </span>{rs.mechanism}</div>
+              <div><span className="text-stone-500 font-bold">벤치마크: </span><span className="text-purple-700">{rs.benchmark}</span></div>
             </div>
           </div>
         ))}
@@ -241,15 +241,15 @@ function CoreStrategyPanel() {
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={sortedByScore} layout="vertical" margin={{ left: 24, right: 16, top: 8 }}>
             <CartesianGrid stroke="#1f2937" strokeDasharray="3 3" />
-            <XAxis type="number" domain={[0, 15]} tick={{ fill: '#64748b', fontSize: 11 }} />
+            <XAxis type="number" domain={[0, 15]} tick={{ fill: '#78716c', fontSize: 11 }} />
             <YAxis
               type="category" dataKey="id"
-              tick={{ fill: '#64748b', fontSize: 11 }}
+              tick={{ fill: '#78716c', fontSize: 11 }}
               width={60}
             />
             <Tooltip
               cursor={{ fill: 'rgba(75,85,99,0.1)' }}
-              contentStyle={{ background: '#ffffff', border: '1px solid #374151', borderRadius: 8, fontSize: 11, color: '#0f172a' }}
+              contentStyle={{ background: '#ffffff', border: '1px solid #374151', borderRadius: 8, fontSize: 11, color: '#1c1917' }}
             />
             <Bar dataKey="score" name="점수 (15점 만점)" radius={[0, 4, 4, 0]}>
               {sortedByScore.map((s, i) => {
@@ -259,7 +259,7 @@ function CoreStrategyPanel() {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-        <div className="flex gap-3 mt-2 text-xs text-slate-500">
+        <div className="flex gap-3 mt-2 text-xs text-stone-500">
           <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-emerald-500" /> 메인벳</span>
           <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-amber-500" /> 사이드벳</span>
         </div>
@@ -278,31 +278,31 @@ function CoreStrategyPanel() {
                   <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-mono shrink-0">{s.id}</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-sm font-bold text-slate-900">{s.title}</span>
+                      <span className="text-sm font-bold text-stone-900">{s.title}</span>
                       {s.score != null && (
                         <span className="text-[10px] font-mono text-amber-600">★{s.score}/15</span>
                       )}
                     </div>
-                    <p className="text-[11px] text-slate-500 mt-0.5 truncate">{s.coreOneLine}</p>
+                    <p className="text-[11px] text-stone-500 mt-0.5 truncate">{s.coreOneLine}</p>
                   </div>
-                  {isOpen ? <ChevronUp size={14} className="text-slate-500" /> : <ChevronDown size={14} className="text-slate-500" />}
+                  {isOpen ? <ChevronUp size={14} className="text-stone-500" /> : <ChevronDown size={14} className="text-stone-500" />}
                 </button>
                 {isOpen && (
                   <div className="border-t border-emerald-700/30 px-3 py-3 space-y-2">
                     <div className="text-xs">
-                      <div className="text-slate-500 font-semibold mb-1 flex items-center gap-1.5"><MapPin size={11} />현재 위치</div>
-                      <div className="text-slate-800 pl-2">{s.currentState}</div>
+                      <div className="text-stone-500 font-semibold mb-1 flex items-center gap-1.5"><MapPin size={11} />현재 위치</div>
+                      <div className="text-stone-800 pl-2">{s.currentState}</div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                       <div>
                         <div className="text-emerald-600 font-semibold mb-1 flex items-center gap-1.5"><CheckCircle2 size={11} />강점</div>
-                        <ul className="space-y-0.5 text-slate-700 pl-2">
+                        <ul className="space-y-0.5 text-stone-700 pl-2">
                           {s.strengths.map((x, i) => <li key={i}>· {x}</li>)}
                         </ul>
                       </div>
                       <div>
                         <div className="text-red-600 font-semibold mb-1 flex items-center gap-1.5"><AlertTriangle size={11} />갭</div>
-                        <ul className="space-y-0.5 text-slate-700 pl-2">
+                        <ul className="space-y-0.5 text-stone-700 pl-2">
                           {s.gaps.map((x, i) => <li key={i}>· {x}</li>)}
                         </ul>
                       </div>
@@ -334,20 +334,20 @@ function CoreStrategyPanel() {
                   <span className="text-[10px] px-2 py-0.5 rounded bg-amber-100 text-amber-700 font-mono shrink-0">{s.id}</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-sm font-bold text-slate-900">{s.title}</span>
+                      <span className="text-sm font-bold text-stone-900">{s.title}</span>
                       {s.score != null && (
                         <span className="text-[10px] font-mono text-amber-600">★{s.score}/15</span>
                       )}
                     </div>
-                    <p className="text-[11px] text-slate-500 mt-0.5 truncate">{s.coreOneLine}</p>
+                    <p className="text-[11px] text-stone-500 mt-0.5 truncate">{s.coreOneLine}</p>
                   </div>
-                  {isOpen ? <ChevronUp size={14} className="text-slate-500" /> : <ChevronDown size={14} className="text-slate-500" />}
+                  {isOpen ? <ChevronUp size={14} className="text-stone-500" /> : <ChevronDown size={14} className="text-stone-500" />}
                 </button>
                 {isOpen && (
                   <div className="border-t border-amber-200 px-3 py-3 space-y-2 text-xs">
                     <div>
-                      <div className="text-slate-500 font-semibold mb-1 flex items-center gap-1.5"><MapPin size={11} />현재 위치</div>
-                      <div className="text-slate-800 pl-2">{s.currentState}</div>
+                      <div className="text-stone-500 font-semibold mb-1 flex items-center gap-1.5"><MapPin size={11} />현재 위치</div>
+                      <div className="text-stone-800 pl-2">{s.currentState}</div>
                     </div>
                     <div>
                       <div className="text-purple-600 font-semibold mb-1 flex items-center gap-1.5"><Shield size={11} />헤지 시나리오</div>
@@ -366,14 +366,14 @@ function CoreStrategyPanel() {
       </Card>
 
       <Card title="외부 가시성 회복 우선순위 — 7대 정보 공백" source="report/core-strategies/README.md">
-        <p className="text-xs text-slate-500 mb-3">외부 공개 자료가 부족해 신뢰 회복·시장 신호 발신을 위해 우선 공개해야 할 영역.</p>
+        <p className="text-xs text-stone-500 mb-3">외부 공개 자료가 부족해 신뢰 회복·시장 신호 발신을 위해 우선 공개해야 할 영역.</p>
         <div className="space-y-1.5">
           {CORE_STRATEGIES.infoGaps.map((g, i) => (
-            <div key={i} className="flex items-center gap-3 py-1.5 px-3 rounded bg-slate-50 border border-slate-200">
+            <div key={i} className="flex items-center gap-3 py-1.5 px-3 rounded bg-stone-50 border border-stone-200">
               <span className="text-[10px] px-2 py-0.5 rounded bg-red-100 text-red-700 font-mono shrink-0">{g.id}</span>
-              <span className="text-xs text-slate-800 flex-1">{g.area}</span>
+              <span className="text-xs text-stone-800 flex-1">{g.area}</span>
               <span className="text-[10px] font-mono text-amber-600 shrink-0">{g.timing}</span>
-              <span className="text-[11px] text-slate-500 hidden md:inline shrink-0">→ {g.action}</span>
+              <span className="text-[11px] text-stone-500 hidden md:inline shrink-0">→ {g.action}</span>
             </div>
           ))}
         </div>
@@ -391,7 +391,7 @@ function DecisionsPanel() {
       <Card>
         <div className="text-center">
           <Sparkles size={20} className="inline text-amber-600 mr-2" />
-          <span className="text-sm text-slate-800">
+          <span className="text-sm text-stone-800">
             12개 결정은 <span className="text-amber-700 font-bold">단일 결정으로 분리하면 효과가 사라진다</span>
             — 묶음으로 처리해야 한다.
           </span>
@@ -404,27 +404,27 @@ function DecisionsPanel() {
           <div key={cluster.cluster} className={`border rounded-xl p-4 ${cluster.bgClass}`}>
             <div className="flex items-center gap-2 mb-3">
               <Clock size={16} style={{ color: cluster.color }} />
-              <h3 className="text-sm font-bold text-slate-900">{cluster.label}</h3>
-              <span className="text-xs text-slate-500">— {cluster.subtitle}</span>
-              <span className="ml-auto text-xs text-slate-500">총 {items.length}개</span>
+              <h3 className="text-sm font-bold text-stone-900">{cluster.label}</h3>
+              <span className="text-xs text-stone-500">— {cluster.subtitle}</span>
+              <span className="ml-auto text-xs text-stone-500">총 {items.length}개</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {items.map(d => {
                 const tag = PRIORITY_TAG[d.priority]
                 return (
-                  <div key={d.id} className="bg-white/95 border border-slate-200 rounded-lg p-3">
+                  <div key={d.id} className="bg-white/95 border border-stone-200 rounded-lg p-3">
                     <div className="flex items-start gap-2 mb-1.5">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-200 text-slate-800 shrink-0">{d.id}</span>
-                      <h4 className="text-sm font-semibold text-slate-900 flex-1">{d.title}</h4>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-stone-200 text-stone-800 shrink-0">{d.id}</span>
+                      <h4 className="text-sm font-semibold text-stone-900 flex-1">{d.title}</h4>
                       {d.isNew && (
                         <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 font-bold shrink-0">NEW</span>
                       )}
                       <span className={`text-[9px] px-1.5 py-0.5 rounded shrink-0 ${tag.cls}`}>{tag.label}</span>
                     </div>
                     <div className="text-[10px] font-mono text-amber-700 mb-2">⏰ {d.deadline}</div>
-                    <p className="text-[11px] text-slate-700 leading-relaxed mb-2">{d.summary}</p>
+                    <p className="text-[11px] text-stone-700 leading-relaxed mb-2">{d.summary}</p>
                     {d.contingency && d.contingency !== '—' && (
-                      <div className="text-[11px] text-slate-500 bg-red-50/70 border border-red-200 rounded px-2 py-1 mb-1.5">
+                      <div className="text-[11px] text-stone-500 bg-red-50/70 border border-red-200 rounded px-2 py-1 mb-1.5">
                         <AlertTriangle size={10} className="inline text-red-600 mr-1" />
                         <span className="text-red-700 font-bold">비상: </span>
                         {d.contingency}
@@ -456,7 +456,7 @@ export default function Strategies() {
 
   return (
     <div>
-      <div className="flex items-center gap-1 mb-4 border-b border-slate-200">
+      <div className="flex items-center gap-1 mb-4 border-b border-stone-200">
         {SUB_TABS.map(t => {
           const Icon = t.icon
           return (
@@ -465,8 +465,8 @@ export default function Strategies() {
               onClick={() => setTab(t.id)}
               className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
                 tab === t.id
-                  ? 'border-sky-500 text-slate-900 bg-white/80'
-                  : 'border-transparent text-slate-500 hover:text-slate-700 hover:bg-slate-50/60'
+                  ? 'border-sky-500 text-stone-900 bg-white/80'
+                  : 'border-transparent text-stone-500 hover:text-stone-700 hover:bg-stone-50/60'
               }`}
             >
               <Icon size={14} />

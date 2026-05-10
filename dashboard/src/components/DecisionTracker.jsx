@@ -142,18 +142,18 @@ export default function DecisionTracker({ indicators }) {
   const indicatorMap = Object.fromEntries(indicators.map(i => [i.id, i]))
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-4">
+    <div className="bg-white border border-stone-200 rounded-xl p-4">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-sm font-semibold text-slate-800">11개 즉시 결정 — 묶음 의결</h2>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <h2 className="text-sm font-semibold text-stone-800">11개 즉시 결정 — 묶음 의결</h2>
+          <p className="text-xs text-stone-500 mt-0.5">
             모든 결정은 2026년 Q4 마감. 단일 결정으로 분리 불가.
           </p>
         </div>
         <div className="flex items-center gap-3 text-xs">
           <span className="flex items-center gap-1 text-orange-600">
             <Clock size={12} /> D-{Math.min(...DECISIONS.map(d => daysUntil(d.deadline)))}
-            <span className="text-slate-500">최단 마감</span>
+            <span className="text-stone-500">최단 마감</span>
           </span>
         </div>
       </div>
@@ -176,28 +176,28 @@ export default function DecisionTracker({ indicators }) {
                 </span>
                 <button
                   onClick={() => setExpanded(isExpanded ? null : d.id)}
-                  className="text-slate-500 hover:text-slate-900"
+                  className="text-stone-500 hover:text-stone-900"
                 >
                   {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                 </button>
               </div>
 
-              <h3 className="text-sm font-semibold text-slate-900 mb-1.5 leading-snug">
+              <h3 className="text-sm font-semibold text-stone-900 mb-1.5 leading-snug">
                 {d.title}
               </h3>
 
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[10px] text-slate-500">마감</span>
-                <span className="text-xs font-mono text-slate-900">{d.deadline}</span>
-                <span className={`text-xs font-bold ${days < 60 ? 'text-orange-600' : 'text-slate-700'}`}>
+                <span className="text-[10px] text-stone-500">마감</span>
+                <span className="text-xs font-mono text-stone-900">{d.deadline}</span>
+                <span className={`text-xs font-bold ${days < 60 ? 'text-orange-600' : 'text-stone-700'}`}>
                   D-{days}
                 </span>
               </div>
 
               {linkedIndicator && (
                 <div className="flex items-center gap-2 mb-2 px-2 py-1 rounded bg-black/30 text-[10px]">
-                  <span className="text-slate-500">연계 KPI:</span>
-                  <span className="text-slate-900">{linkedIndicator.name}</span>
+                  <span className="text-stone-500">연계 KPI:</span>
+                  <span className="text-stone-900">{linkedIndicator.name}</span>
                   {linkedIndicator.currentValue != null && (
                     <span className="font-mono text-amber-700 ml-auto">
                       {linkedIndicator.currentValue}{linkedIndicator.unit === '%' ? '%' : ` ${linkedIndicator.unit ?? ''}`}
@@ -207,17 +207,17 @@ export default function DecisionTracker({ indicators }) {
               )}
 
               {isExpanded && (
-                <div className="mt-2 pt-2 border-t border-slate-300/50 space-y-2 text-xs">
+                <div className="mt-2 pt-2 border-t border-stone-300/50 space-y-2 text-xs">
                   <div>
-                    <span className="text-slate-500">근거: </span>
-                    <span className="text-slate-800">{d.rationale}</span>
+                    <span className="text-stone-500">근거: </span>
+                    <span className="text-stone-800">{d.rationale}</span>
                   </div>
                   <div>
-                    <span className="text-slate-500">비상 계획: </span>
-                    <span className="text-slate-700">{d.fallback}</span>
+                    <span className="text-stone-500">비상 계획: </span>
+                    <span className="text-stone-700">{d.fallback}</span>
                   </div>
                   <div>
-                    <span className="text-slate-500">벤치마크: </span>
+                    <span className="text-stone-500">벤치마크: </span>
                     <span className="text-amber-700 italic">{d.benchmark}</span>
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export default function DecisionTracker({ indicators }) {
           <AlertCircle size={14} className="text-amber-600 mt-0.5 shrink-0" />
           <div className="text-xs">
             <span className="font-semibold text-amber-700">묶음 패키지로 의결 필요 — </span>
-            <span className="text-slate-700">
+            <span className="text-stone-700">
               D1(HBM4 점유율) ↔ D5(AI 도구) ↔ D7(잉여 인력 전환)은 직렬 의존. D4(텍사스 1·2단계) ↔ D8(추가 보조금)은 동시 처리 필수. D6(이사회 정책화)이 D9(M&A 펀드 적립)의 거버넌스 기반. D11(AI 인프라 수직 진출)은 D6(재무 규율)의 다운사이클 capex 하한과 충돌 점검 필요.
             </span>
           </div>

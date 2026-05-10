@@ -29,8 +29,8 @@ export default function IndicatorGrid({ indicators, onUpdate, onAutoUpdate }) {
           onClick={() => setFilter('all')}
           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
             filter === 'all'
-              ? 'bg-slate-200 text-slate-900'
-              : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800'
+              ? 'bg-stone-200 text-stone-900'
+              : 'bg-white border border-stone-200 text-stone-500 hover:text-stone-800'
           }`}
         >
           전체 ({indicators.length})
@@ -44,8 +44,8 @@ export default function IndicatorGrid({ indicators, onUpdate, onAutoUpdate }) {
               onClick={() => setFilter(cat)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 filter === cat
-                  ? 'bg-slate-200 text-slate-900'
-                  : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800'
+                  ? 'bg-stone-200 text-stone-900'
+                  : 'bg-white border border-stone-200 text-stone-500 hover:text-stone-800'
               }`}
             >
               {c.label} ({count})
@@ -64,7 +64,7 @@ export default function IndicatorGrid({ indicators, onUpdate, onAutoUpdate }) {
               <h3 className={`text-xs font-semibold uppercase tracking-wider ${c.color}`}>
                 {c.label}
               </h3>
-              <div className="h-px flex-1 bg-slate-100" />
+              <div className="h-px flex-1 bg-stone-100" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-3">
               {items.map(ind => (

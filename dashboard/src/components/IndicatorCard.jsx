@@ -26,7 +26,7 @@ const STATUS_CONFIG = {
   unknown: {
     badge: 'badge-unknown',
     card: 'status-unknown',
-    dot: 'bg-slate-400',
+    dot: 'bg-stone-400',
     label: '미입력',
     icon: '?',
   },
@@ -65,12 +65,12 @@ function MiniSparkline({ history, unit }) {
   return (
     <div className="flex items-center gap-1.5 mt-1">
       <svg width={w} height={h} className="overflow-visible">
-        <path d={path} fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-500" />
+        <path d={path} fill="none" stroke="currentColor" strokeWidth="1.5" className="text-stone-500" />
         <circle cx={points[points.length - 1].x} cy={points[points.length - 1].y} r="2.5" className="fill-gray-300" />
       </svg>
       {trend === 'up' && <TrendingUp size={12} className="text-emerald-600" />}
       {trend === 'down' && <TrendingDown size={12} className="text-red-600" />}
-      {trend === 'flat' && <Minus size={12} className="text-slate-500" />}
+      {trend === 'flat' && <Minus size={12} className="text-stone-500" />}
     </div>
   )
 }
@@ -130,7 +130,7 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
             <button
               onClick={handleAutoUpdate}
               disabled={updating}
-              className="p-1.5 rounded-lg hover:bg-slate-200/60 text-slate-500 hover:text-sky-600 transition-colors disabled:opacity-40"
+              className="p-1.5 rounded-lg hover:bg-stone-200/60 text-stone-500 hover:text-sky-600 transition-colors disabled:opacity-40"
               title="자동 업데이트"
             >
               <RefreshCw size={13} className={updating ? 'animate-spin' : ''} />
@@ -138,7 +138,7 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
           )}
           <button
             onClick={() => onEdit(indicator)}
-            className="p-1.5 rounded-lg hover:bg-slate-200/60 text-slate-500 hover:text-slate-800 transition-colors"
+            className="p-1.5 rounded-lg hover:bg-stone-200/60 text-stone-500 hover:text-stone-800 transition-colors"
             title="수동 입력"
           >
             <Pencil size={13} />
@@ -147,21 +147,21 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
       </div>
 
       {/* Name */}
-      <h3 className="text-sm font-semibold text-slate-900 leading-snug mb-1">
+      <h3 className="text-sm font-semibold text-stone-900 leading-snug mb-1">
         {indicator.name}
       </h3>
-      <p className="text-xs text-slate-500 mb-3">{indicator.source}</p>
+      <p className="text-xs text-stone-500 mb-3">{indicator.source}</p>
 
       {/* Current value */}
       <div className="mb-3">
-        <div className="text-2xl font-mono font-bold text-slate-900">
+        <div className="text-2xl font-mono font-bold text-stone-900">
           {formatValue(indicator)}
         </div>
         <MiniSparkline history={indicator.history} unit={indicator.unit} />
       </div>
 
       {/* Alert threshold */}
-      <div className="text-xs text-slate-500 mb-3 leading-relaxed">
+      <div className="text-xs text-stone-500 mb-3 leading-relaxed">
         {indicator.alertDescription}
       </div>
 
@@ -173,14 +173,14 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
               {s}
             </span>
           ))}
-          <span className="text-xs text-slate-500 self-center">{indicator.scenarioText}</span>
+          <span className="text-xs text-stone-500 self-center">{indicator.scenarioText}</span>
         </div>
       )}
 
       {/* Auto-update source label */}
       {indicator.autoUpdateSource && (
-        <div className="text-xs text-slate-400 mb-1">
-          <span className="text-slate-300">자동출처:</span> {indicator.autoUpdateSource}
+        <div className="text-xs text-stone-400 mb-1">
+          <span className="text-stone-300">자동출처:</span> {indicator.autoUpdateSource}
         </div>
       )}
 
@@ -193,9 +193,9 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
 
       {/* Last updated */}
       {indicator.lastUpdated && (
-        <div className="text-xs text-slate-400 border-t border-slate-200/60 pt-2 mt-2">
+        <div className="text-xs text-stone-400 border-t border-stone-200/60 pt-2 mt-2">
           업데이트: {indicator.lastUpdated}
-          {indicator.note && <span className="ml-2 text-slate-400 italic truncate">— {indicator.note}</span>}
+          {indicator.note && <span className="ml-2 text-stone-400 italic truncate">— {indicator.note}</span>}
         </div>
       )}
     </div>

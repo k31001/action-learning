@@ -8,13 +8,13 @@ export default {
           blue: '#1428A0',
           dark: '#0A1854',
         },
-        // 라이트 테마 base 팔레트 — 옅은 슬레이트 + 스카이블루 + 월톤(amber) 액센트
-        // 눈에 부담 적도록 pure white 회피, 전체적 한 단계 어둡게
-        canvas: '#eef1f6',                // 페이지 base — 옅은 슬레이트 (slate-100 area)
+        // 라이트 테마 base 팔레트 — cream paper + 따뜻한 amber 액센트
+        // 눈에 부담 적은 warm stone 톤 (cool slate 회피)
+        canvas: '#f4ede0',                // 페이지 base — warm cream paper
         surface: {
-          DEFAULT: '#fbfcfe',              // 기본 카드 — 거의 흰색이지만 미세 sky 틴트
-          raised:  '#ffffff',              // 모달/팝오버 (대비를 위해 순수 흰색)
-          subtle:  '#f3f5f9',              // 헤더/섹션 미묘한 분리
+          DEFAULT: '#fdf9f1',              // 기본 카드 — 매우 옅은 cream
+          raised:  '#ffffff',              // 모달/팝오버 (대비를 위해 흰색)
+          subtle:  '#efe8da',              // 헤더/섹션 미묘한 분리
         },
       },
       fontFamily: {
