@@ -11,44 +11,45 @@
   }
 
   body {
-    @apply text-slate-800 font-sans antialiased;
-    background-color: #fafbff;
-    /* 두 개의 부드러운 광원 — 깊이감 + 차가운 sky 톤 + 따뜻한 액센트 */
+    @apply text-slate-700 font-sans antialiased;
+    /* 눈에 부담 적은 옅은 슬레이트 베이스 (pure white 회피) */
+    background-color: #eef1f6;
+    /* 그라디언트 밝기 절반 정도로 축소 — 깊이만 살짝 */
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(14, 165, 233, 0.10), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 100% 110%, rgba(245, 158, 11, 0.06), transparent 55%);
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(14, 165, 233, 0.05), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 110%, rgba(245, 158, 11, 0.03), transparent 55%);
     background-attachment: fixed;
     min-height: 100vh;
   }
 
-  /* 헤딩 letter-spacing — Inter 의 미세 트래킹 */
+  /* 헤딩 — 너무 진하지 않게 slate-800 (full black contrast 회피) */
   h1, h2, h3, h4 {
     letter-spacing: -0.011em;
-    @apply text-slate-900;
+    @apply text-slate-800;
   }
 
-  /* 숫자 표기 — tabular nums 로 자릿수 정렬 */
+  /* 숫자 표기 — tabular nums */
   .font-mono, code, pre {
     font-variant-numeric: tabular-nums;
   }
 
-  /* 스크롤바 — light theme */
+  /* 스크롤바 */
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
-    background: rgba(15, 23, 42, 0.12);
+    background: rgba(15, 23, 42, 0.10);
     border-radius: 6px;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(15, 23, 42, 0.22); background-clip: padding-box; border: 2px solid transparent; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(15, 23, 42, 0.18); background-clip: padding-box; border: 2px solid transparent; }
 }
 
 @layer components {
-  /* ── 상태 배경 (light 톤) ──────────────────────────────────────────────── */
-  .status-normal   { @apply border-emerald-300 bg-emerald-50; }
-  .status-warning  { @apply border-amber-300 bg-amber-50; }
-  .status-critical { @apply border-red-300 bg-red-50; }
+  /* ── 상태 배경 (light 톤, 채도 살짝 낮춤) ─────────────────────────────── */
+  .status-normal   { @apply border-emerald-200 bg-emerald-50/70; }
+  .status-warning  { @apply border-amber-200 bg-amber-50/70; }
+  .status-critical { @apply border-red-200 bg-red-50/70; }
   .status-unknown  { @apply border-slate-200 bg-slate-50; }
 
   /* ── 배지 (light 톤) ──────────────────────────────────────────────────── */
@@ -57,7 +58,7 @@
   .badge-critical { @apply bg-red-50 text-red-700 ring-1 ring-red-200; }
   .badge-unknown  { @apply bg-slate-50 text-slate-600 ring-1 ring-slate-200; }
 
-  /* 시나리오 chip (정체성 색은 유지, 라이트 톤으로 옅게) */
+  /* 시나리오 chip — 옅은 톤 */
   .scenario-A { @apply bg-blue-50    text-blue-700    ring-1 ring-blue-200; }
   .scenario-B { @apply bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200; }
   .scenario-C { @apply bg-red-50     text-red-700     ring-1 ring-red-200; }
