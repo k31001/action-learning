@@ -400,13 +400,24 @@ export default function QuadrantMap({
                   placeholder="예: MATCH법안 위원회 통과 직후..."
                   className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none" />
               </div>
-              <div className="bg-gray-800/60 rounded-lg p-3 text-xs text-gray-400">
-                예상 시나리오:&nbsp;
-                {draft.df1 >= 0 && draft.df2 < 0 ? '🟢 B — AI 르네상스'
-                  : draft.df1 >= 0 && draft.df2 >= 0 ? '🔵 A — 황금 요새'
-                  : draft.df1 < 0 && draft.df2 >= 0 ? '🔴 C — 기술 냉전'
-                  : '🟡 D — 조용한 재편'}
-              </div>
+              {(() => {
+                const s = draft.df1 >= 0 && draft.df2 <  0 ? { id: 'B', name: 'AI 르네상스', color: '#059669' }
+                        : draft.df1 >= 0 && draft.df2 >= 0 ? { id: 'A', name: '황금 요새',   color: '#1d4ed8' }
+                        : draft.df1 <  0 && draft.df2 >= 0 ? { id: 'C', name: '기술 냉전',   color: '#dc2626' }
+                                                           : { id: 'D', name: '조용한 재편', color: '#d97706' }
+                return (
+                  <div className="bg-gray-800/60 rounded-lg p-3 text-xs text-gray-400 flex items-center gap-2">
+                    <span className="text-gray-500">예상 시나리오:</span>
+                    <span
+                      className="w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold text-white"
+                      style={{ backgroundColor: s.color }}
+                    >
+                      {s.id}
+                    </span>
+                    <span className="text-gray-200 font-medium">{s.name}</span>
+                  </div>
+                )
+              })()}
             </div>
             <div className="flex gap-3 mt-5">
               <button onClick={() => setShowAdd(false)}

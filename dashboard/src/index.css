@@ -1,52 +1,73 @@
+@import url('https://rsms.me/inter/inter.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-gray-950 text-gray-100 font-sans antialiased;
+  html {
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    -webkit-text-size-adjust: 100%;
   }
+
+  body {
+    @apply text-gray-100 font-sans antialiased;
+    background-color: #0a0b0f;
+    /* 두 개의 부드러운 광원 — 깊이감 + 차가운 군청 톤 */
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(20, 40, 160, 0.12), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 110%, rgba(20, 40, 160, 0.05), transparent 60%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* 헤딩 letter-spacing — Inter 의 미세 트래킹 (전문 dashboard 표준) */
+  h1, h2, h3, h4 {
+    letter-spacing: -0.011em;
+  }
+
+  /* 숫자 표기 — tabular nums 로 자릿수 정렬 (KPI/표 가독성) */
+  .font-mono, code, pre {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 스크롤바 — dark theme 에 맞춰 미세 조정 */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.15); background-clip: padding-box; border: 2px solid transparent; }
 }
 
 @layer components {
-  .status-normal {
-    @apply border-green-500 bg-green-950/40;
-  }
-  .status-warning {
-    @apply border-yellow-400 bg-yellow-950/40;
-  }
-  .status-critical {
-    @apply border-red-500 bg-red-950/40;
-  }
-  .status-unknown {
-    @apply border-gray-600 bg-gray-900/40;
-  }
+  /* ── 상태 배경 (이전 가독성 유지 + 대비 살짝 낮춤) ───────────────────── */
+  .status-normal   { @apply border-emerald-500/50 bg-emerald-950/30; }
+  .status-warning  { @apply border-amber-500/50 bg-amber-950/30; }
+  .status-critical { @apply border-red-500/50 bg-red-950/30; }
+  .status-unknown  { @apply border-white/10 bg-white/[0.02]; }
 
-  .badge-normal {
-    @apply bg-green-900 text-green-300 ring-1 ring-green-500/40;
-  }
-  .badge-warning {
-    @apply bg-yellow-900 text-yellow-300 ring-1 ring-yellow-500/40;
-  }
-  .badge-critical {
-    @apply bg-red-900 text-red-300 ring-1 ring-red-500/40;
-  }
-  .badge-unknown {
-    @apply bg-gray-800 text-gray-400 ring-1 ring-gray-600/40;
-  }
+  /* ── 배지 (saturation 한 단계 낮춤 — '카툰' 인상 제거) ───────────────── */
+  .badge-normal   { @apply bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/30; }
+  .badge-warning  { @apply bg-amber-500/15 text-amber-300 ring-1 ring-amber-500/30; }
+  .badge-critical { @apply bg-red-500/15 text-red-300 ring-1 ring-red-500/30; }
+  .badge-unknown  { @apply bg-white/5 text-gray-400 ring-1 ring-white/10; }
 
-  .scenario-A { @apply bg-blue-900/60 text-blue-300 ring-1 ring-blue-500/40; }
-  .scenario-B { @apply bg-emerald-900/60 text-emerald-300 ring-1 ring-emerald-500/40; }
-  .scenario-C { @apply bg-red-900/60 text-red-300 ring-1 ring-red-500/40; }
-  .scenario-D { @apply bg-orange-900/60 text-orange-300 ring-1 ring-orange-500/40; }
-  .scenario-E { @apply bg-purple-900/60 text-purple-300 ring-1 ring-purple-500/40; }
+  .scenario-A { @apply bg-blue-500/15    text-blue-300    ring-1 ring-blue-500/30; }
+  .scenario-B { @apply bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/30; }
+  .scenario-C { @apply bg-red-500/15     text-red-300     ring-1 ring-red-500/30; }
+  .scenario-D { @apply bg-orange-500/15  text-orange-300  ring-1 ring-orange-500/30; }
+  .scenario-E { @apply bg-purple-500/15  text-purple-300  ring-1 ring-purple-500/30; }
 }
 
+/* 발동된 critical 항목 — 미세 호흡 (이전보다 약하게) */
 .pulse-critical {
-  animation: pulseCritical 2s ease-in-out infinite;
+  animation: pulseCritical 2.4s ease-in-out infinite;
 }
-
 @keyframes pulseCritical {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  50%      { opacity: 0.72; }
 }

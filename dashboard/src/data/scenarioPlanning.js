@@ -172,7 +172,7 @@ export const SCENARIOS_DATA = {
   // 시나리오 매트릭스 (DF1 × DF2)
   matrix: [
     {
-      id: 'A', name: '황금 요새', emoji: '🏰', color: '#1d4ed8',
+      id: 'A', name: '황금 요새', color: '#1d4ed8',
       df1: 'AI 지속',     df2: '디커플링',
       probability: 27,
       summary: '서방 AI 공급망 내 HBM 수요 폭발. 시안 팹 상실 + 서방 시장 프리미엄 급등',
@@ -181,7 +181,7 @@ export const SCENARIOS_DATA = {
       keyAssumption: 'MATCH 법안 통과 + 삼성 HBM4 NVIDIA 인증 획득',
     },
     {
-      id: 'B', name: 'AI 르네상스', emoji: '🚀', color: '#059669',
+      id: 'B', name: 'AI 르네상스', color: '#059669',
       df1: 'AI 지속',     df2: '관리된 공존',
       probability: 32,
       summary: 'AI 글로벌 성장 + 중국 시장 부분 접근 유지. 최상의 성장 환경, 가장 가능성 높음',
@@ -191,7 +191,7 @@ export const SCENARIOS_DATA = {
       mainBet: true,
     },
     {
-      id: 'C', name: '기술 냉전', emoji: '❄️', color: '#dc2626',
+      id: 'C', name: '기술 냉전', color: '#dc2626',
       df1: 'AI 거품 붕괴', df2: '디커플링',
       probability: 12,
       summary: 'AI 투자 급감 + 공급망 단절 동시 발생. 메모리 대규모 공급과잉 — 최악 시나리오',
@@ -200,7 +200,7 @@ export const SCENARIOS_DATA = {
       keyAssumption: 'AI 버블 붕괴 + MATCH 법안 + 대만 해협 긴장 동시 발생',
     },
     {
-      id: 'D', name: '조용한 재편', emoji: '🔄', color: '#d97706',
+      id: 'D', name: '조용한 재편', color: '#d97706',
       df1: 'AI 거품 붕괴', df2: '관리된 공존',
       probability: 22,
       summary: 'AI 과열 조정, 메모리 불황 재현. 지정학 안정화로 시장 질서는 유지',
@@ -209,7 +209,7 @@ export const SCENARIOS_DATA = {
       keyAssumption: 'AI ROI 미실현 + 지정학 안정화 (협상 지속)',
     },
     {
-      id: 'E', name: '패러다임 전환', emoji: '⚡', color: '#7c3aed',
+      id: 'E', name: '패러다임 전환', color: '#7c3aed',
       df1: 'AI 지속 (변형)', df2: '독립',
       probability: 7,
       summary: 'HBM 대신 3D DRAM·PIM·CXL이 AI 메모리 주류로 부상. 와일드카드',
@@ -272,9 +272,9 @@ export const BENCHMARK_DATA = {
   // 호황 참여 헤지 구조 5종
   upsideStructures: [
     { id: 1, name: 'Costless Collar',       complexity: '낮음', floor: 'O', upside: '×',  premium: '0',     downside: 'Floor 보호',         note: '가장 표준적, 양방향 락인' },
-    { id: 2, name: 'Participating Forward', complexity: '중간', floor: 'O', upside: '50%', premium: '0',     downside: 'Floor 보호',         note: '🌟 추천 — 농산물 헤지의 우아한 해법' },
+    { id: 2, name: 'Participating Forward', complexity: '중간', floor: 'O', upside: '50%', premium: '0',     downside: 'Floor 보호',         note: '권고 — 농산물 헤지의 우아한 해법', recommended: true },
     { id: 3, name: 'Tiered Pricing',        complexity: '낮음', floor: '△', upside: '△',  premium: '0',     downside: '중간 가격대 보호',  note: 'CPG 식품 표준 구조' },
-    { id: 4, name: 'Three-way Collar',      complexity: '높음', floor: 'O', upside: '제한', premium: '음수', downside: 'Sub-put 위험 ⚠️',    note: '💀 Pioneer/Whiting 손실 가속 사례 — 금지' },
+    { id: 4, name: 'Three-way Collar',      complexity: '높음', floor: 'O', upside: '제한', premium: '음수', downside: 'Sub-put 위험',      note: 'Pioneer/Whiting 손실 가속 — 금지', forbidden: true },
     { id: 5, name: 'Bull Call Spread',      complexity: '중간', floor: '×', upside: '제한', premium: '양수', downside: '없음 (구매자측)',   note: '고객측 도구 — 공급사 무관' },
   ],
 }

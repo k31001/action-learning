@@ -5,6 +5,7 @@ import {
 import {
   LayoutDashboard, Shield, Target, ListChecks,
   Star, AlertTriangle, CheckCircle2, Clock, Sparkles, ChevronDown, ChevronUp,
+  MapPin,
 } from 'lucide-react'
 import {
   STRATEGY_OVERVIEW, ROBUST_STRATEGIES, RS_SCENARIO_MATRIX,
@@ -77,7 +78,7 @@ function OverviewPanel() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card title="🎯 Main Bet — 시나리오 B" source="report/scenario-planning-report.md">
+        <Card title="Main Bet — 시나리오 B" source="report/scenario-planning-report.md">
           <div className="text-center mb-3">
             <div className="text-3xl font-bold text-emerald-400">{o.mainBet.scenario}</div>
             <div className="text-sm text-emerald-300 mt-1">확률 {o.mainBet.probability}</div>
@@ -94,7 +95,7 @@ function OverviewPanel() {
           </ul>
         </Card>
 
-        <Card title="🛡️ Robust 8개 전략 — 4축 구조" source="report/invariant-strategies/README.md">
+        <Card title="Robust 8개 전략 — 4축 구조" source="report/invariant-strategies/README.md">
           <div className="space-y-2">
             {o.roBustAxes.map((axis, i) => (
               <div
@@ -288,18 +289,18 @@ function CoreStrategyPanel() {
                 {isOpen && (
                   <div className="border-t border-emerald-700/30 px-3 py-3 space-y-2">
                     <div className="text-xs">
-                      <div className="text-gray-500 font-bold mb-1">📍 현재 위치</div>
+                      <div className="text-gray-500 font-semibold mb-1 flex items-center gap-1.5"><MapPin size={11} />현재 위치</div>
                       <div className="text-gray-200 pl-2">{s.currentState}</div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                       <div>
-                        <div className="text-emerald-400 font-bold mb-1">✅ 강점</div>
+                        <div className="text-emerald-400 font-semibold mb-1 flex items-center gap-1.5"><CheckCircle2 size={11} />강점</div>
                         <ul className="space-y-0.5 text-gray-300 pl-2">
                           {s.strengths.map((x, i) => <li key={i}>· {x}</li>)}
                         </ul>
                       </div>
                       <div>
-                        <div className="text-red-400 font-bold mb-1">⚠️ 갭</div>
+                        <div className="text-red-400 font-semibold mb-1 flex items-center gap-1.5"><AlertTriangle size={11} />갭</div>
                         <ul className="space-y-0.5 text-gray-300 pl-2">
                           {s.gaps.map((x, i) => <li key={i}>· {x}</li>)}
                         </ul>
@@ -307,7 +308,7 @@ function CoreStrategyPanel() {
                     </div>
                     {s.target2030 && (
                       <div className="text-xs bg-blue-950/30 border border-blue-700/30 rounded px-2 py-1.5">
-                        <span className="text-blue-400 font-bold">🎯 2030 목표: </span>
+                        <span className="text-blue-400 font-semibold">2030 목표 — </span>
                         <span className="text-blue-200">{s.target2030}</span>
                       </div>
                     )}
@@ -344,15 +345,15 @@ function CoreStrategyPanel() {
                 {isOpen && (
                   <div className="border-t border-amber-700/30 px-3 py-3 space-y-2 text-xs">
                     <div>
-                      <div className="text-gray-500 font-bold mb-1">📍 현재 위치</div>
+                      <div className="text-gray-500 font-semibold mb-1 flex items-center gap-1.5"><MapPin size={11} />현재 위치</div>
                       <div className="text-gray-200 pl-2">{s.currentState}</div>
                     </div>
                     <div>
-                      <div className="text-purple-400 font-bold mb-1">🛡️ 헤지 시나리오</div>
+                      <div className="text-purple-400 font-semibold mb-1 flex items-center gap-1.5"><Shield size={11} />헤지 시나리오</div>
                       <div className="text-purple-200 pl-2">{s.hedge}</div>
                     </div>
                     <div className="bg-blue-950/30 border border-blue-700/30 rounded px-2 py-1.5">
-                      <span className="text-blue-400 font-bold">🎯 목표: </span>
+                      <span className="text-blue-400 font-semibold">목표 — </span>
                       <span className="text-blue-200">{s.target}</span>
                     </div>
                   </div>
@@ -363,7 +364,7 @@ function CoreStrategyPanel() {
         </div>
       </Card>
 
-      <Card title="⚠️ 외부 가시성 회복 우선순위 — 7대 정보 공백" source="report/core-strategies/README.md">
+      <Card title="외부 가시성 회복 우선순위 — 7대 정보 공백" source="report/core-strategies/README.md">
         <p className="text-xs text-gray-500 mb-3">외부 공개 자료가 부족해 신뢰 회복·시장 신호 발신을 위해 우선 공개해야 할 영역.</p>
         <div className="space-y-1.5">
           {CORE_STRATEGIES.infoGaps.map((g, i) => (

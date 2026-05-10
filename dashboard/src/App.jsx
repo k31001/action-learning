@@ -71,38 +71,43 @@ export default function App() {
   }, [indicators, updateIndicator])
 
   return (
-    <div className="min-h-screen bg-gray-950">
-      <main className="max-w-screen-2xl mx-auto px-4 py-5">
+    <div className="min-h-screen">
+      <main className="max-w-screen-2xl mx-auto px-5 py-6">
         {/* ── 최상단 페이지 탭 ── */}
-        <div className="flex items-center gap-1 mb-5 border-b-2 border-gray-800">
+        <nav
+          aria-label="페이지 탭"
+          className="flex items-center gap-0.5 mb-6 px-1 py-1 rounded-xl bg-white/[0.025] ring-1 ring-white/[0.06] backdrop-blur-sm"
+        >
           {TOP_TABS.map(t => {
             const Icon = t.icon
             const active = topTab === t.id
+            const showBadge = t.id === 'ewi' && (criticalCount + warningCount + activeTriggers.length) > 0
             return (
               <button
                 key={t.id}
                 onClick={() => setTopTab(t.id)}
-                className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold border-b-2 -mb-0.5 transition-colors ${
+                aria-current={active ? 'page' : undefined}
+                className={`relative flex items-center gap-2 px-4 py-2 text-[13px] font-medium rounded-lg transition-all ${
                   active
-                    ? 'border-blue-500 text-white bg-gray-900/80'
-                    : 'border-transparent text-gray-500 hover:text-gray-200 hover:bg-gray-900/40'
+                    ? 'text-white bg-white/[0.06] ring-1 ring-white/[0.08] shadow-soft'
+                    : 'text-gray-400 hover:text-gray-100 hover:bg-white/[0.03]'
                 }`}
               >
-                <Icon size={16} />
-                {t.label}
-                {t.id === 'ewi' && (criticalCount + warningCount + activeTriggers.length) > 0 && (
-                  <span className="ml-1 px-1.5 py-0.5 rounded-full bg-red-900/60 text-red-300 text-[10px]">
+                <Icon size={15} className={active ? 'text-blue-400' : 'text-gray-500'} />
+                <span className="tracking-tight">{t.label}</span>
+                {showBadge && (
+                  <span className="ml-0.5 px-1.5 py-0.5 rounded-full bg-red-500/20 text-red-300 text-[10px] font-semibold ring-1 ring-red-500/30">
                     {criticalCount + warningCount + activeTriggers.length}
                   </span>
                 )}
               </button>
             )
           })}
-          {/* 버전 배지 — 탭 우측에 정렬 */}
-          <span className="ml-auto mr-1 px-2 py-0.5 text-[11px] font-medium font-mono rounded bg-amber-500/15 text-amber-300 border border-amber-500/30">
+          {/* 버전 배지 — 탭 우측에 정렬, 미세하게 */}
+          <span className="ml-auto mr-2 px-2 py-0.5 text-[10px] font-medium font-mono rounded text-gray-500 ring-1 ring-white/[0.06]">
             {VERSION}
           </span>
-        </div>
+        </nav>
 
         {topTab === 'ewi' && (
           <>

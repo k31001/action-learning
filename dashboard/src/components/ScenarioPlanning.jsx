@@ -3,7 +3,7 @@ import {
   ScatterChart, Scatter, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, ZAxis,
 } from 'recharts'
-import { Layers, Compass, Map as MapIcon, BookOpen, Star, AlertOctagon, Target, ChevronDown, ChevronUp } from 'lucide-react'
+import { Layers, Compass, Map as MapIcon, BookOpen, Star, AlertOctagon, Target, ChevronDown, ChevronUp, Info, Sparkles, MapPin } from 'lucide-react'
 import {
   STEEP_DATA, DRIVING_FORCES_DATA, SCENARIOS_DATA, BENCHMARK_DATA,
 } from '../data/scenarioPlanning'
@@ -250,8 +250,9 @@ function DrivingForcesPanel() {
                 </div>
               </div>
 
-              <div className="text-[11px] text-amber-300 bg-amber-950/30 border border-amber-700/30 rounded px-2 py-1.5">
-                📍 현재: {d.currentPosition}
+              <div className="text-[11px] text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded px-2 py-1.5 flex items-start gap-1.5">
+                <MapPin size={11} className="mt-0.5 shrink-0" />
+                <span><span className="font-semibold">현재: </span>{d.currentPosition}</span>
               </div>
             </div>
           )
@@ -300,14 +301,18 @@ function ScenariosPanel() {
                     style={{ borderColor: s.color, backgroundColor: `${s.color}15` }}
                   >
                     <div className="flex items-start justify-between mb-1">
-                      <div>
-                        <span className="text-2xl">{s.emoji}</span>
-                        <span className="ml-1.5 text-sm font-bold text-white">{s.id}</span>
-                        <span className="ml-1 text-xs text-gray-300">{s.name}</span>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="w-7 h-7 rounded-md flex items-center justify-center text-sm font-bold text-white"
+                          style={{ backgroundColor: s.color }}
+                        >
+                          {s.id}
+                        </span>
+                        <span className="text-sm font-semibold text-gray-100 tracking-tight">{s.name}</span>
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold font-mono" style={{ color: s.color }}>{s.probability}%</div>
-                        {s.mainBet && <div className="text-[9px] font-bold text-amber-400 flex items-center gap-0.5"><Star size={9} /> Main Bet</div>}
+                        {s.mainBet && <div className="text-[9px] font-bold text-amber-400 flex items-center gap-0.5 justify-end mt-0.5"><Star size={9} /> Main Bet</div>}
                       </div>
                     </div>
                     <p className="text-[11px] text-gray-300 leading-snug mt-1">{s.summary}</p>
@@ -317,15 +322,21 @@ function ScenariosPanel() {
             </div>
             {wildcard && (
               <div
-                className="mt-3 ml-6 rounded-xl p-3 border-2 border-dashed flex items-center gap-3"
-                style={{ borderColor: wildcard.color, backgroundColor: `${wildcard.color}12` }}
+                className="mt-3 ml-6 rounded-xl p-3 border border-dashed flex items-center gap-3"
+                style={{ borderColor: `${wildcard.color}80`, backgroundColor: `${wildcard.color}10` }}
               >
-                <span className="text-2xl">{wildcard.emoji}</span>
+                <span
+                  className="w-7 h-7 rounded-md flex items-center justify-center text-sm font-bold text-white shrink-0"
+                  style={{ backgroundColor: wildcard.color }}
+                >
+                  E
+                </span>
                 <div className="flex-1">
-                  <div className="text-sm font-bold text-white">
-                    E · {wildcard.name} <span className="text-[10px] font-normal text-purple-300 ml-1">와일드카드 (DF3)</span>
+                  <div className="text-sm font-semibold text-gray-100 tracking-tight">
+                    {wildcard.name}
+                    <span className="text-[10px] font-normal text-purple-300 ml-2">와일드카드 (DF3)</span>
                   </div>
-                  <p className="text-[11px] text-gray-300 mt-0.5">{wildcard.summary}</p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">{wildcard.summary}</p>
                 </div>
                 <div className="text-2xl font-bold font-mono" style={{ color: wildcard.color }}>{wildcard.probability}%</div>
               </div>
@@ -360,32 +371,38 @@ function ScenariosPanel() {
             style={{ borderColor: `${s.color}60` }}
           >
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-2xl">{s.emoji}</span>
-              <h4 className="text-sm font-bold text-white">{s.id} · {s.name}</h4>
+              <span
+                className="w-7 h-7 rounded-md flex items-center justify-center text-sm font-bold text-white shrink-0"
+                style={{ backgroundColor: s.color }}
+              >
+                {s.id}
+              </span>
+              <h4 className="text-sm font-semibold text-gray-100 tracking-tight">{s.name}</h4>
               {s.mainBet && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-900/60 text-amber-300 font-bold flex items-center gap-0.5">
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 ring-1 ring-amber-500/30 font-semibold flex items-center gap-0.5">
                   <Star size={10} /> Main Bet
                 </span>
               )}
               {s.wildcard && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-900/60 text-purple-300 font-bold">와일드카드</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-300 ring-1 ring-purple-500/30 font-semibold">와일드카드</span>
               )}
             </div>
             <div className="text-[11px] text-gray-500 mb-2">
-              {s.df1} × {s.df2} · 확률 <span className="font-mono font-bold" style={{ color: s.color }}>{s.probability}%</span>
+              {s.df1} × {s.df2} · 확률 <span className="font-mono font-semibold" style={{ color: s.color }}>{s.probability}%</span>
             </div>
-            <div className="text-xs text-amber-300 bg-amber-950/30 border border-amber-700/30 rounded px-2 py-1.5 mb-2">
-              💡 {s.keyAssumption}
+            <div className="text-xs text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded px-2 py-1.5 mb-2 flex items-start gap-1.5">
+              <Info size={11} className="mt-0.5 shrink-0" />
+              <span>{s.keyAssumption}</span>
             </div>
             <div className="space-y-1.5 text-[11px]">
               <div>
-                <div className="text-red-400 font-bold mb-0.5">⚠️ 위협</div>
+                <div className="text-red-400 font-semibold mb-0.5 flex items-center gap-1.5"><AlertOctagon size={11} />위협</div>
                 <ul className="text-gray-400 space-y-0.5">
                   {s.threats.map((t, i) => <li key={i} className="pl-2">· {t}</li>)}
                 </ul>
               </div>
               <div>
-                <div className="text-emerald-400 font-bold mb-0.5">✨ 기회</div>
+                <div className="text-emerald-400 font-semibold mb-0.5 flex items-center gap-1.5"><Sparkles size={11} />기회</div>
                 <ul className="text-gray-400 space-y-0.5">
                   {s.opportunities.map((o, i) => <li key={i} className="pl-2">· {o}</li>)}
                 </ul>
@@ -543,7 +560,7 @@ function BenchmarkPanel() {
         </p>
       </Card>
 
-      <Card title="🎯 메모리 사업부 적용 권고">
+      <Card title="메모리 사업부 적용 권고">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
           <div className="border border-emerald-700/40 bg-emerald-950/30 rounded-lg p-3">
             <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-emerald-400" /><span className="font-bold text-emerald-300">단기 (6~12개월)</span></div>
