@@ -1,0 +1,151 @@
+# SSD · UFS · 모바일 메모리 시장
+**수집일**: 2026-05-07
+**출처**: NVIDIA·Micron·Samsung Semiconductor 기술 블로그, TrendForce, Mordor Intelligence, Intel Market Research, Verified Market Reports, abit.ee, TechInsights, Blocks & Files
+
+---
+
+## 1. Enterprise SSD 시장 — AI·클라우드 폭발
+
+### 시장 규모
+
+| 지표 | 2025 | 2030~2031 | CAGR | 출처 |
+|------|------|-----------|------|------|
+| 글로벌 Enterprise SSD 매출 | **$32B** (265 EB 용량) | — | — | [Intel Market Research](https://www.intelmarketresearch.com/enterprise-ssd-for-ai-market-40989) |
+| Enterprise SSD 시장 (보수~공격) | $22~36B | — | 15.5% | [Verified Market Reports](https://www.verifiedmarketreports.com/product/enterprise-ssd-market/) |
+| 북미 Data Center SSD | **$16.74B** | **$69.08B** (2031) | **27.6%** | [Mordor Intelligence](https://www.mordorintelligence.com/industry-reports/north-america-data-center-ssd-market) |
+
+### 인터페이스 점유 (Generation Mix)
+
+| 인터페이스 | 점유 | 비고 |
+|----------|------|------|
+| PCIe Gen3/Gen4 | 점진 축소 | 레거시 |
+| **PCIe Gen5** | **양산 주력** (2025~) | PM1753 (Samsung), 9550 (Micron) |
+| **PCIe Gen6** | **2026 진입** | PM1763 (Samsung 28.4 GB/s), Micron 9650 |
+| PCIe Gen7 | 2027~2028 | NVIDIA 단일 SSD 1억 IOPS 목표 |
+
+- PCIe 인터페이스 전체 SSD 시장 85% 점유 (2017년 30%→) — [Intel Market Research](https://www.intelmarketresearch.com/enterprise-ssd-for-ai-market-40989)
+- 하이퍼스케일러가 Enterprise SSD 매출의 **60%** (2024) → 65% (2025) — [동일 출처](https://www.intelmarketresearch.com/enterprise-ssd-for-ai-market-40989)
+- AI 워크로드가 SSD 수요 성장의 **40%** 기여 — [동일 출처](https://www.intelmarketresearch.com/enterprise-ssd-for-ai-market-40989)
+
+---
+
+## 2. AI SSD 경쟁 — NVIDIA Storage-Next 생태계
+
+### IOPS 경쟁 — 기술 도약 곡선
+
+| 시점 | 이벤트 | 성과 / 목표 | 출처 |
+|------|--------|-----------|------|
+| 2025-11 (SC'25) | **Micron 9650 × 44개 + SCADA** | **2.3억 IOPS** (역대 최고, 단일 서버) | [Micron Blog](https://www.micron.com/about/blog/storage/ssd/sc25-performance-breakthrough-230m-iops-in-a-single-server) |
+| 2025-12 | 개별 SSD (Micron 9650) | **540만 IOPS** | [Blocks & Files](https://blocksandfiles.com/2025/11/25/scada-nvidia/) |
+| 2026 GTC | Samsung PM1763 시연 | NVIDIA SCADA 워크로드 | [Samsung GTC 2026](https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026) |
+| 2026~2027 | **SK하이닉스 AI-N P** (NVIDIA 공동 개발) | **2,500만 → 1억 IOPS** | [TrendForce](https://www.trendforce.com/news/2025/12/11/news-sk-hynix-reportedly-aims-100-million-iops-with-ai-nand-by-2027-in-collaboration-with-nvidia/) |
+| 2027 | **Kioxia** (NVIDIA 공동 개발) | **1억 IOPS** (단일 SSD) | [Kioxia](https://blocksandfiles.com/2025/09/15/kioxia-100-million-iops-ssd-nvidia/) |
+| **삼성전자** | (생태계 참여) | **목표 미공개** ⚠️ | — |
+
+### NVIDIA AI SSD 파트너 매트릭스
+
+| 업체 | NVIDIA 파트너십 단계 | NAND 타입 | 양산 시점 |
+|------|----------------------|-----------|----------|
+| **Micron** | **최초 레퍼런스 (9650 Gen6)** ✅ | TLC | 양산 중 (540만 IOPS) |
+| **SK하이닉스** | **공동 개발 (AI-N P)** ✅ | **SLC** (2,500만→1억 IOPS) | 2026~2027 |
+| **Kioxia** | 공동 개발 ✅ | SLC | 2027 (1억 IOPS) |
+| **삼성전자** | **생태계 참여** (PM1763 시연) ⚠️ | TLC (Gen6) | **공식 SLC AI SSD 로드맵 미공개** |
+
+> **시사점**: NVIDIA Storage-Next 핵심 파트너 자리를 **SK·Kioxia·Micron**이 선점. 삼성은 후행. SLC NAND 기반 초고 IOPS 로드맵 부재가 가장 큰 정보 공백 ⚠️.
+
+---
+
+## 3. NVIDIA CMX(Context Memory Storage Platform) 공급 구조
+
+### 채택 SSD
+
+| 제품 | 인터페이스 | 성능 | NVIDIA 채택 |
+|------|------------|------|-------------|
+| **Samsung PM1753** | PCIe Gen5 (TLC V8) | **순차읽기 14.5 GB/s, 랜덤 3.3M IOPS** | **CMX 공식 공급** ✅ |
+| **Samsung PM1763** | PCIe Gen6 (NVMe 2.1) | **28.4 GB/s, 4~64TB** | Vera Rubin 메인 스토리지 (시연) |
+
+- PM1753은 NVIDIA Vera Rubin GTC 2026에서 CMX 첫 공식 공급 SSD로 확정 — 즉각 매출 인식 가능
+- BlueField-4 DPU 출하(2026 H2) 이후 PM1753 → PM1763 전환 타이밍 관리 필요
+
+---
+
+## 4. UFS · LPDDR5X — 모바일 메모리
+
+### UFS (Universal Flash Storage) 현황
+
+| 세대 | 시점 | 주요 채택 | 점유 메이커 |
+|------|------|-----------|-------------|
+| UFS 3.1 | 2020~2023 | 미드레인지 스마트폰 | Samsung·SK·Micron·Kioxia |
+| **UFS 4.0** | 2023~2025 양산 | **삼성 갤럭시 S24·S25**, 플래그십 | Samsung 점유 50%+ (TechInsights) |
+| **UFS 4.1** | **2026 플래그십** | iPhone 18 Pro·갤럭시 S26 등 | 신규 진입 |
+| UFS 5.0 | 2027+ 목표 | — | JEDEC 표준 작업 |
+
+### 가격·수요 변동
+
+| 지표 | 2025 평균 | **2026 H1** | 변동 | 출처 |
+|------|-----------|-------------|------|------|
+| UFS 4.1 1TB 단가 | baseline | **+80~90% YoY** | AI 메모리 부족 전이 | [abit.ee](https://abit.ee/en/smartphones/lpddr5x-ufs-41-memory-prices-flagship-smartphones-16gb-ram-2026-en) |
+| LPDDR5X 16GB | baseline | **+80~90% YoY** | 동일 | 동일 출처 |
+| 플래그십 표준 | 12GB+512GB | **16GB + 1TB UFS 4.1** | 용량 2배 증가 | 동일 출처 |
+
+### 시장 구조
+
+- 모바일 메모리(LPDDR + UFS) 시장은 **Samsung·SK·Micron** 3강 (CXMT LPDDR5X-10667 시연으로 가시화 중)
+- 2026 H1: 메모리 부족이 서버 → 모바일로 전이, 스마트폰 BOM 부담 ↑
+- 분석가 전망: **2026 Q4부터 신규 capex 가동으로 부족 완화** ([Global Semi Research](https://globalsemiresearch.substack.com/p/2026-memory-industry-insights))
+
+---
+
+## 5. NAND 시장 — Data Center 비중 폭증
+
+### 데이터센터 NAND 매출 비중 (벤더별)
+
+| 벤더 | DC NAND 비중 (FY2025) | 비고 | 출처 |
+|------|----------------------|------|------|
+| **Micron** | **56%** ✅ (역대 최고) | 데이터센터 부문이 전체 매출의 56% | [Futurum Group](https://futurumgroup.com/insights/micron-q4-fy-2025-earnings-top-estimates-on-dram-and-hbm-strength/) |
+| Samsung | **비공개** ⚠️ | NAND P&L 분리 미공개 | — |
+| SK하이닉스 | 비공개 (대다수 추정) | 2025 NAND 321단 QLC 양산 | SK IR |
+
+### NAND 신노드 진척
+
+| 벤더 | 현세대 | 차세대 | 시점 |
+|------|--------|--------|------|
+| Samsung | V8 (236L), V9 TLC/QLC | **V10 (430L BV NAND)** | 2026 H2 |
+| SK하이닉스 | 238L | **321L QLC** | 양산 중 (2025) |
+| Micron | 232L | 276L (G9) | 2025~2026 |
+| YMTC | 232L | **294L** | 2025 양산 (제재에도 유지) |
+
+---
+
+## 6. 삼성전자 전략 시사점
+
+### 즉각적 수혜
+- **PM1753**: NVIDIA CMX 공식 공급으로 매출 인식 시작
+- **PM1763**: PCIe Gen6 28.4 GB/s, 시연 완료 → 양산 시 추가 매출
+
+### 구조적 위협
+- **SLC AI SSD 로드맵 부재**: SK·Kioxia가 NVIDIA Storage-Next 핵심 파트너 고착화 위험
+- **NAND DC 비중 비공개**: Micron 56% 대비 외부 평가 불리
+- **UFS 4.1 가격 급등**: 호황기 매출 호조이나, 2026 Q4 이후 capex 가동 시 가격 조정 가능
+
+### 외부 가시성 회복 액션
+- 2026 H2 SCADA 호환 SLC AI SSD 로드맵 공개 → SK·Kioxia 추격
+- NAND 사업부 P&L 분리 (HBM SD-1 패턴 확장) → DC 비중 외부 가시화
+
+---
+
+## 출처
+
+- [NVIDIA CMX 공식](https://www.nvidia.com/en-us/data-center/ai-storage/cmx/)
+- [Micron SC'25 — 2.3억 IOPS](https://www.micron.com/about/blog/storage/ssd/sc25-performance-breakthrough-230m-iops-in-a-single-server)
+- [SK hynix — 1억 IOPS AI NAND (TrendForce)](https://www.trendforce.com/news/2025/12/11/news-sk-hynix-reportedly-aims-100-million-iops-with-ai-nand-by-2027-in-collaboration-with-nvidia/)
+- [Kioxia — 1억 IOPS SSD](https://blocksandfiles.com/2025/09/15/kioxia-100-million-iops-ssd-nvidia/)
+- [Samsung GTC 2026 PM1763 시연](https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026)
+- [Mordor — 북미 DC SSD 시장](https://www.mordorintelligence.com/industry-reports/north-america-data-center-ssd-market)
+- [Intel Market Research — Enterprise SSD for AI](https://www.intelmarketresearch.com/enterprise-ssd-for-ai-market-40989)
+- [abit.ee — UFS 4.1 + LPDDR5X 가격 +80~90%](https://abit.ee/en/smartphones/lpddr5x-ufs-41-memory-prices-flagship-smartphones-16gb-ram-2026-en)
+- [TechInsights — Smartphone Memory Q2 2023](https://www.techinsights.com/blog/smartphone-memory-market-share-q2-2023-demand-grows-ufs-40-and-lpddr5x-chips)
+- [Global Semi Research — 2026 Memory Insights](https://globalsemiresearch.substack.com/p/2026-memory-industry-insights)
+- [Futurum — Micron Q4 FY2025 (DC 56%)](https://futurumgroup.com/insights/micron-q4-fy-2025-earnings-top-estimates-on-dram-and-hbm-strength/)
+- [Blocks & Files — NVIDIA SCADA](https://blocksandfiles.com/2025/11/25/scada-nvidia/)
+- 내부 연계: [data/technology/nvidia-cmx-scada.md](../technology/nvidia-cmx-scada.md), [data/technology/nand-process-transition.md](../technology/nand-process-transition.md)

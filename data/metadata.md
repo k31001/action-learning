@@ -3,7 +3,7 @@
 > 수집된 모든 데이터의 중앙 인덱스. 데이터 추가/수정 시 반드시 이 파일도 업데이트.
 
 **마지막 업데이트**: 2026-05-07  
-**총 데이터 항목**: 20개 (2026-05-07 **AI 인프라 가치사슬·DC 시장·하이퍼스케일러 capex·neocloud·삼성그룹 DC 자산 데이터 추가** — SE-3 수직진출 전략 기반)
+**총 데이터 항목**: 21개 (2026-05-07 **SSD/UFS·AI Storage·NVIDIA Storage-Next 데이터 추가** — 대시보드 indicator 13개 신규 보강 시 활용)
 
 ---
 
@@ -11,7 +11,7 @@
 
 | 카테고리 | 항목 수 | 디렉토리 |
 |---------|--------|---------|
-| 시장 데이터 | 5 | `data/market/` |
+| 시장 데이터 | 6 | `data/market/` |
 | 산업/기술 트렌드 | 5 | `data/technology/` |
 | 경쟁사 분석 | 4 | `data/competitors/` |
 | 거시경제/AI수요 | 5 | `data/macro/` |
@@ -41,6 +41,11 @@
 - **수집일**: 2026-05-05 | **신뢰도**: High | **태그**: #AI #server #demand #GPU
 - **요약**: AI가 2026년 전체 DRAM 웨이퍼 소비의 ~20% 차지. GPU당 HBM 탑재량이 기존 HPC 대비 7배. NVIDIA H200→B200으로 전환 시 HBM 탑재량 대폭 증가.
 - **출처**: TrendForce, SK하이닉스, Avnet, Oxford Economics
+
+### ssd-ufs-market.md ⭐ (신규, 2026-05-07)
+- **수집일**: 2026-05-07 | **신뢰도**: High~Medium | **태그**: #SSD #UFS #AI-storage #PCIe-Gen6 #SCADA #CMX #NAND-DC
+- **요약**: 글로벌 Enterprise SSD $32B (2025, 265 EB) → 북미 DC SSD $69B (2031, CAGR 27.6%). 하이퍼스케일러가 매출 60% 기여. AI SSD IOPS 경쟁: Micron 9650 540만 IOPS (현재) → SK·Kioxia 1억 IOPS 단일 SSD (2027). NVIDIA Storage-Next 핵심 파트너는 SK·Kioxia·Micron 선점 — 삼성 SLC AI SSD 로드맵 미공개 ⚠️. CMX는 PM1753 공식 공급 ✅ + PM1763 GTC 2026 시연. UFS 4.1 + LPDDR5X 16GB 가격 +80~90% YoY (2026 H1) — 플래그십 표준 16GB+1TB. NAND DC 매출 비중: Micron 56% ✅, Samsung 비공개 ⚠️.
+- **출처**: NVIDIA·Micron·Samsung Semiconductor 기술 블로그, TrendForce, Mordor Intelligence, Intel Market Research, Verified Market Reports, abit.ee, TechInsights, Blocks & Files, Global Semi Research, Futurum Group, Samsung GTC 2026
 
 ### 2026-q1-current-state.md ⭐ (신규)
 - **수집일**: 2026-05-06 | **신뢰도**: High | **태그**: #current-state #Q1-2026 #HBM4 #NVIDIA-Rubin #CXMT #Texas-Taylor #benchmark
