@@ -25,14 +25,14 @@ function QuoteCard({ quote, onClick, selected }) {
       onClick={onClick}
       className={`text-left p-3 rounded-xl border transition-all ${
         selected
-          ? 'border-stone-400 bg-stone-100'
-          : 'border-stone-200 bg-white/80 hover:border-stone-300 hover:bg-white'
+          ? 'border-zinc-400 bg-zinc-100'
+          : 'border-zinc-200 bg-white/80 hover:border-zinc-300 hover:bg-white'
       }`}
     >
       <div className="flex items-start justify-between gap-1 mb-1">
         <div>
-          <div className="text-xs font-mono text-stone-500">{quote.symbol}</div>
-          <div className="text-sm font-semibold text-stone-900">{m.nameKo}</div>
+          <div className="text-xs font-mono text-zinc-500">{quote.symbol}</div>
+          <div className="text-sm font-semibold text-zinc-900">{m.nameKo}</div>
         </div>
         <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${m.badgeClass}`}>
           {m.badge}
@@ -42,14 +42,14 @@ function QuoteCard({ quote, onClick, selected }) {
         <div className="text-xs text-red-600">조회 실패</div>
       ) : (
         <>
-          <div className="text-lg font-bold font-mono text-stone-900">
+          <div className="text-lg font-bold font-mono text-zinc-900">
             {quote.price?.toLocaleString('en-US', { maximumFractionDigits: 2 })}
-            <span className="text-xs text-stone-500 ml-1">{quote.currency}</span>
+            <span className="text-xs text-zinc-500 ml-1">{quote.currency}</span>
           </div>
           <div className={`flex items-center gap-1 text-xs font-medium mt-0.5 ${up ? 'text-emerald-600' : 'text-red-600'}`}>
             {up ? <TrendingUp size={11} /> : <TrendingDown size={11} />}
             {up ? '+' : ''}{quote.changePct?.toFixed(2)}%
-            <span className="text-stone-400 font-normal ml-1">
+            <span className="text-zinc-400 font-normal ml-1">
               ({up ? '+' : ''}{quote.change?.toFixed(2)})
             </span>
           </div>
@@ -63,15 +63,15 @@ function StockDetailPanel({ symbol }) {
   const { data, loading, error } = useStockHistory(symbol)
   const m = SYMBOL_META[symbol] ?? {}
 
-  if (loading) return <div className="h-44 flex items-center justify-center text-xs text-stone-500">로딩 중…</div>
+  if (loading) return <div className="h-44 flex items-center justify-center text-xs text-zinc-500">로딩 중…</div>
   if (error) return <div className="h-44 flex items-center justify-center text-xs text-red-600">오류: {error}</div>
   if (!data) return null
 
   return (
     <div>
       <div className="flex items-center gap-2 mb-3">
-        <span className="text-sm font-medium text-stone-900">{m.nameKo}</span>
-        <span className="text-xs text-stone-500">{symbol} — 주간 종가 (최대 5년)</span>
+        <span className="text-sm font-medium text-zinc-900">{m.nameKo}</span>
+        <span className="text-xs text-zinc-500">{symbol} — 주간 종가 (최대 5년)</span>
       </div>
       <StockHistoryChart data={data} color={m.color} unit={data.currency ?? ''} />
     </div>
@@ -92,12 +92,12 @@ function AllStocksPanel() {
   const anyLoading = hooks.some(([, r]) => r.loading)
 
   if (anyLoading && Object.keys(stocksData).length === 0) {
-    return <div className="h-44 flex items-center justify-center text-xs text-stone-500">주가 데이터 로딩 중…</div>
+    return <div className="h-44 flex items-center justify-center text-xs text-zinc-500">주가 데이터 로딩 중…</div>
   }
 
   return (
     <div>
-      <p className="text-xs text-stone-500 mb-3">기간 시작 = 100 기준 상대 수익률 비교</p>
+      <p className="text-xs text-zinc-500 mb-3">기간 시작 = 100 기준 상대 수익률 비교</p>
       <StockCompareChart stocksData={stocksData} />
     </div>
   )
@@ -121,12 +121,12 @@ export default function MarketPanel() {
   const serverOk = !!health?.ok
 
   return (
-    <div className="bg-white border border-stone-200 rounded-xl p-4">
+    <div className="bg-white border border-zinc-200 rounded-xl p-4">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div>
-          <h2 className="text-sm font-semibold text-stone-800">시장 데이터 (자동 업데이트)</h2>
-          <p className="text-xs text-stone-500 mt-0.5">Yahoo Finance 자동 수집 — 4시간 캐시</p>
+          <h2 className="text-sm font-semibold text-zinc-800">시장 데이터 (자동 업데이트)</h2>
+          <p className="text-xs text-zinc-500 mt-0.5">Yahoo Finance 자동 수집 — 4시간 캐시</p>
         </div>
         <div className="flex items-center gap-2">
           <span className={`flex items-center gap-1 text-xs ${serverOk ? 'text-emerald-600' : 'text-red-600'}`}>
@@ -135,7 +135,7 @@ export default function MarketPanel() {
           </span>
           <button
             onClick={qRefetch}
-            className="p-1.5 rounded-lg hover:bg-stone-100 text-stone-500 hover:text-stone-700 transition-colors"
+            className="p-1.5 rounded-lg hover:bg-zinc-100 text-zinc-500 hover:text-zinc-700 transition-colors"
             title="새로고침"
           >
             <RefreshCw size={13} />
@@ -159,15 +159,15 @@ export default function MarketPanel() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-4 border-b border-stone-200 pb-1">
+      <div className="flex gap-1 mb-4 border-b border-zinc-200 pb-1">
         {TABS.map(t => (
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
             className={`px-3 py-1.5 rounded-t text-xs font-medium transition-colors ${
               tab === t.id
-                ? 'bg-stone-100 text-stone-900'
-                : 'text-stone-500 hover:text-stone-700'
+                ? 'bg-zinc-100 text-zinc-900'
+                : 'text-zinc-500 hover:text-zinc-700'
             }`}
           >
             {t.label}
@@ -189,8 +189,8 @@ export default function MarketPanel() {
                     onClick={() => setSelectedSymbol(sym)}
                     className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
                       selectedSymbol === sym
-                        ? 'bg-stone-200 text-stone-900'
-                        : 'bg-stone-100 text-stone-500 hover:text-stone-800'
+                        ? 'bg-zinc-200 text-zinc-900'
+                        : 'bg-zinc-100 text-zinc-500 hover:text-zinc-800'
                     }`}
                     style={{ borderBottom: selectedSymbol === sym ? `2px solid ${m?.color}` : '2px solid transparent' }}
                   >
@@ -204,19 +204,19 @@ export default function MarketPanel() {
         )}
         {tab === 'capex' && (
           <div>
-            <p className="text-xs text-stone-500 mb-3">빅테크 4사(Google·MS·Amazon·Meta) 분기별 CapEx 합산 — 2025·2026은 가이던스 기준 추정치</p>
+            <p className="text-xs text-zinc-500 mb-3">빅테크 4사(Google·MS·Amazon·Meta) 분기별 CapEx 합산 — 2025·2026은 가이던스 기준 추정치</p>
             <CapExChart data={capex} />
           </div>
         )}
         {tab === 'hbm' && (
           <div>
-            <p className="text-xs text-stone-500 mb-1">분기별 HBM·DRAM 시장 점유율 추이 — 2026Q1 이후 추정치</p>
+            <p className="text-xs text-zinc-500 mb-1">분기별 HBM·DRAM 시장 점유율 추이 — 2026Q1 이후 추정치</p>
             <HbmShareChart data={hbm} />
           </div>
         )}
       </div>
 
-      <p className="text-xs text-stone-300 mt-3">
+      <p className="text-xs text-zinc-300 mt-3">
         주가 데이터: Yahoo Finance | CapEx·점유율: 각사 공시·리서치 집계
       </p>
     </div>

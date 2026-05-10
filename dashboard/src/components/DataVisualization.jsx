@@ -21,9 +21,9 @@ const SUB_TABS = [
 // ── 공통 카드 + 툴팁 ────────────────────────────────────────────────────────
 function ChartCard({ title, source, children, className = '' }) {
   return (
-    <div className={`bg-white border border-stone-200 rounded-xl p-4 ${className}`}>
+    <div className={`bg-white border border-zinc-200 rounded-xl p-4 ${className}`}>
       <div className="mb-3">
-        <h3 className="text-sm font-semibold text-stone-800">{title}</h3>
+        <h3 className="text-sm font-semibold text-zinc-800">{title}</h3>
         <SourceLink source={source} />
       </div>
       {children}
@@ -34,12 +34,12 @@ function ChartCard({ title, source, children, className = '' }) {
 function VizTooltip({ active, payload, label, unit }) {
   if (!active || !payload?.length) return null
   return (
-    <div className="bg-stone-100 border border-stone-300 rounded-lg p-2.5 text-xs shadow-xl">
-      <div className="text-stone-700 font-medium mb-1.5">{label}</div>
+    <div className="bg-zinc-100 border border-zinc-300 rounded-lg p-2.5 text-xs shadow-xl">
+      <div className="text-zinc-700 font-medium mb-1.5">{label}</div>
       {payload.map((p, i) => (
         <div key={i} className="flex items-center gap-2">
           <span style={{ color: p.color }}>●</span>
-          <span className="text-stone-500">{p.name}:</span>
+          <span className="text-zinc-500">{p.name}:</span>
           <span className="font-mono font-bold" style={{ color: p.color }}>
             {typeof p.value === 'number' ? p.value.toLocaleString('ko-KR', { maximumFractionDigits: 1 }) : p.value}
             {unit ? ` ${unit}` : ''}
@@ -50,8 +50,8 @@ function VizTooltip({ active, payload, label, unit }) {
   )
 }
 
-const AXIS = { tick: { fill: '#78716c', fontSize: 11 }, axisLine: { stroke: '#e7e5e4' }, tickLine: { stroke: '#e7e5e4' } }
-const GRID = { stroke: '#e7e5e4', strokeDasharray: '3 3' }
+const AXIS = { tick: { fill: '#71717a', fontSize: 11 }, axisLine: { stroke: '#e4e4e7' }, tickLine: { stroke: '#e4e4e7' } }
+const GRID = { stroke: '#e4e4e7', strokeDasharray: '3 3' }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPETITOR
@@ -68,7 +68,7 @@ function CompetitorPanel() {
             <YAxis yAxisId="left" {...AXIS} unit="₩T" />
             <YAxis yAxisId="right" orientation="right" {...AXIS} unit="%" />
             <Tooltip content={<VizTooltip unit="조원" />} cursor={{ fill: 'rgba(75,85,99,0.1)' }} />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#78716c' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
             <Bar yAxisId="left" dataKey="revenue" name="매출" fill={VIZ_COLORS.skhynix} radius={[4, 4, 0, 0]} />
             <Bar yAxisId="left" dataKey="opIncome" name="영업이익" fill={VIZ_COLORS.amber} radius={[4, 4, 0, 0]} />
             <Line yAxisId="right" dataKey="opMargin" name="영업이익률 (%)" stroke={VIZ_COLORS.green} strokeWidth={2} dot={{ r: 4, fill: VIZ_COLORS.green }} />
@@ -84,7 +84,7 @@ function CompetitorPanel() {
             <YAxis yAxisId="left" {...AXIS} unit="₩T" />
             <YAxis yAxisId="right" orientation="right" {...AXIS} unit="%" />
             <Tooltip content={<VizTooltip />} cursor={{ fill: 'rgba(75,85,99,0.1)' }} />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#78716c' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
             <Bar yAxisId="left" dataKey="revenue" name="분기 매출 (조원)" fill={VIZ_COLORS.skhynix} radius={[4, 4, 0, 0]} />
             <Line yAxisId="right" dataKey="yoyGrowth" name="YoY 성장 (%)" stroke={VIZ_COLORS.amber} strokeWidth={2} dot={{ r: 4 }} />
           </ComposedChart>
@@ -97,8 +97,8 @@ function CompetitorPanel() {
             <CartesianGrid {...GRID} />
             <XAxis dataKey="period" {...AXIS} />
             <YAxis {...AXIS} unit="%" domain={[0, 70]} />
-            <Tooltip content={<VizTooltip unit="%" />} cursor={{ stroke: '#e7e5e4' }} />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#78716c' }} />
+            <Tooltip content={<VizTooltip unit="%" />} cursor={{ stroke: '#e4e4e7' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
             <Line dataKey="skhynix" name="SK하이닉스" stroke={VIZ_COLORS.skhynix} strokeWidth={2.5} dot={{ r: 5 }} />
             <Line dataKey="samsung" name="삼성전자"   stroke={VIZ_COLORS.samsung} strokeWidth={2.5} dot={{ r: 5 }} />
             <Line dataKey="micron"  name="마이크론"   stroke={VIZ_COLORS.micron}  strokeWidth={2.5} dot={{ r: 5 }} />
@@ -106,14 +106,14 @@ function CompetitorPanel() {
         </ResponsiveContainer>
       </ChartCard>
 
-      <div className="lg:col-span-2 bg-white border border-stone-200 rounded-xl p-4">
-        <h3 className="text-sm font-semibold text-stone-800 mb-3">{c.milestones.title}</h3>
+      <div className="lg:col-span-2 bg-white border border-zinc-200 rounded-xl p-4">
+        <h3 className="text-sm font-semibold text-zinc-800 mb-3">{c.milestones.title}</h3>
         <div className="space-y-2">
           {c.milestones.items.map((m, i) => (
-            <div key={i} className="flex items-start gap-3 py-2 px-3 rounded bg-stone-50 border border-stone-200">
+            <div key={i} className="flex items-start gap-3 py-2 px-3 rounded bg-zinc-50 border border-zinc-200">
               <span className="text-xs font-mono text-amber-600 shrink-0 mt-0.5">{m.date}</span>
-              <span className="text-xs px-2 py-0.5 rounded shrink-0 bg-stone-200 text-stone-700">{m.actor}</span>
-              <span className="text-xs text-stone-700">{m.event}</span>
+              <span className="text-xs px-2 py-0.5 rounded shrink-0 bg-zinc-200 text-zinc-700">{m.actor}</span>
+              <span className="text-xs text-zinc-700">{m.event}</span>
             </div>
           ))}
         </div>
@@ -136,7 +136,7 @@ function MacroPanel() {
             <XAxis dataKey="year" {...AXIS} />
             <YAxis {...AXIS} unit="$B" />
             <Tooltip content={<VizTooltip unit="$B" />} cursor={{ fill: 'rgba(75,85,99,0.1)' }} />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#78716c' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
             <Bar dataKey="alphabet"  name="Alphabet"  stackId="a" fill={VIZ_COLORS.alphabet}  />
             <Bar dataKey="amazon"    name="Amazon"    stackId="a" fill={VIZ_COLORS.amazon}    />
             <Bar dataKey="microsoft" name="Microsoft" stackId="a" fill={VIZ_COLORS.microsoft} />
@@ -153,7 +153,7 @@ function MacroPanel() {
             <YAxis yAxisId="left" {...AXIS} unit="$B" />
             <YAxis yAxisId="right" orientation="right" {...AXIS} unit="%" />
             <Tooltip content={<VizTooltip />} cursor={{ fill: 'rgba(75,85,99,0.1)' }} />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#78716c' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
             <Bar yAxisId="left" dataKey="total" name="합계 ($B)" fill={VIZ_COLORS.primary} radius={[4, 4, 0, 0]} />
             <Line yAxisId="right" dataKey="yoyGrowth" name="YoY 성장 (%)" stroke={VIZ_COLORS.amber} strokeWidth={2} dot={{ r: 4 }} />
           </ComposedChart>
@@ -168,7 +168,7 @@ function MacroPanel() {
               dataKey="value" nameKey="name"
               cx="50%" cy="50%" outerRadius={90}
               label={({ name, value }) => `${name}: $${value}B`}
-              labelLine={{ stroke: '#a8a29e' }}
+              labelLine={{ stroke: '#a1a1aa' }}
             >
               {m.aiInfraShare.data.map((d, i) => (
                 <Cell key={i} fill={d.color} />
@@ -247,7 +247,7 @@ function MarketPanel() {
             <CartesianGrid {...GRID} />
             <XAxis dataKey="year" {...AXIS} />
             <YAxis {...AXIS} unit="$B" />
-            <Tooltip content={<VizTooltip unit="$B" />} cursor={{ stroke: '#e7e5e4' }} />
+            <Tooltip content={<VizTooltip unit="$B" />} cursor={{ stroke: '#e4e4e7' }} />
             <Area dataKey="size" name="HBM 시장규모" stroke={VIZ_COLORS.primary} strokeWidth={2.5} fill="url(#hbmArea)" />
           </AreaChart>
         </ResponsiveContainer>
@@ -261,7 +261,7 @@ function MarketPanel() {
             <YAxis {...AXIS} unit="%" />
             <Tooltip content={<VizTooltip unit="%" />} cursor={{ fill: 'rgba(75,85,99,0.1)' }} />
             <Bar dataKey="growth" name="YoY 성장률" fill={VIZ_COLORS.green} radius={[4, 4, 0, 0]} />
-            <ReferenceLine y={100} stroke="#6b7280" strokeDasharray="4 3" label={{ value: '+100%', fill: '#78716c', fontSize: 10 }} />
+            <ReferenceLine y={100} stroke="#6b7280" strokeDasharray="4 3" label={{ value: '+100%', fill: '#71717a', fontSize: 10 }} />
           </BarChart>
         </ResponsiveContainer>
       </ChartCard>
@@ -274,7 +274,7 @@ function MarketPanel() {
               dataKey="value" nameKey="name"
               cx="50%" cy="50%" innerRadius={50} outerRadius={90}
               label={({ name, value, price }) => `${name} ${value}% ($${price})`}
-              labelLine={{ stroke: '#a8a29e' }}
+              labelLine={{ stroke: '#a1a1aa' }}
             >
               {m.hbmGenerationMix.data.map((d, i) => (
                 <Cell key={i} fill={d.color} />
@@ -292,7 +292,7 @@ function MarketPanel() {
             <XAxis dataKey="year" {...AXIS} />
             <YAxis {...AXIS} unit="%" domain={[0, 100]} />
             <Tooltip content={<VizTooltip unit="%" />} cursor={{ fill: 'rgba(75,85,99,0.1)' }} />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#78716c' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
             <Bar dataKey="hbm" name="HBM" stackId="a" fill={VIZ_COLORS.primary} />
             <Bar dataKey="etc" name="기타 DRAM" stackId="a" fill={VIZ_COLORS.gray} radius={[4, 4, 0, 0]} />
           </BarChart>
@@ -311,7 +311,7 @@ function MarketPanel() {
             <CartesianGrid {...GRID} />
             <XAxis dataKey="year" {...AXIS} />
             <YAxis {...AXIS} unit="$B" />
-            <Tooltip content={<VizTooltip unit="$B" />} cursor={{ stroke: '#e7e5e4' }} />
+            <Tooltip content={<VizTooltip unit="$B" />} cursor={{ stroke: '#e4e4e7' }} />
             <Area dataKey="size" name="AI 서버 시장" stroke={VIZ_COLORS.purple} strokeWidth={2.5} fill="url(#aiServerArea)" />
           </AreaChart>
         </ResponsiveContainer>
@@ -329,7 +329,7 @@ function PolicyPanel() {
     critical: '#ef4444',
     high:     '#f59e0b',
     medium:   '#3b82f6',
-    low:      '#57534e',
+    low:      '#52525b',
   }
   const categoryColor = {
     제재: 'bg-red-100 text-red-700 border-red-200',
@@ -341,18 +341,18 @@ function PolicyPanel() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <ChartCard title={p.exportControlTimeline.title} source={p.exportControlTimeline.source} className="lg:col-span-2">
         <div className="relative">
-          <div className="absolute left-[88px] top-0 bottom-0 w-px bg-stone-200" />
+          <div className="absolute left-[88px] top-0 bottom-0 w-px bg-zinc-200" />
           <div className="space-y-2 max-h-96 overflow-y-auto pr-2">
             {p.exportControlTimeline.data.map((e, i) => (
               <div key={i} className="flex items-start gap-3">
-                <span className="text-xs font-mono text-stone-500 w-20 shrink-0 text-right pt-1.5">{e.date}</span>
+                <span className="text-xs font-mono text-zinc-500 w-20 shrink-0 text-right pt-1.5">{e.date}</span>
                 <span
                   className="w-3 h-3 rounded-full shrink-0 mt-2 ring-2 ring-gray-900"
                   style={{ backgroundColor: impactColor[e.impact] }}
                 />
-                <div className="flex-1 py-1 px-3 rounded-lg bg-stone-50 border border-stone-200">
+                <div className="flex-1 py-1 px-3 rounded-lg bg-zinc-50 border border-zinc-200">
                   <div className="flex items-start justify-between gap-2">
-                    <p className="text-sm text-stone-800">{e.event}</p>
+                    <p className="text-sm text-zinc-800">{e.event}</p>
                     <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium border ${categoryColor[e.category] ?? ''}`}>
                       {e.category}
                     </span>
@@ -361,7 +361,7 @@ function PolicyPanel() {
               </div>
             ))}
           </div>
-          <div className="flex gap-3 mt-3 text-xs text-stone-500">
+          <div className="flex gap-3 mt-3 text-xs text-zinc-500">
             {Object.entries(impactColor).map(([k, v]) => (
               <span key={k} className="flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full" style={{ backgroundColor: v }} /> {k}
@@ -423,7 +423,7 @@ function TechnologyPanel() {
             <YAxis yAxisId="left" {...AXIS} />
             <YAxis yAxisId="right" orientation="right" {...AXIS} />
             <Tooltip content={<VizTooltip />} cursor={{ fill: 'rgba(75,85,99,0.1)' }} />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#78716c' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
             <Bar yAxisId="left"  dataKey="bandwidth" name="대역폭 (GB/s)" fill={VIZ_COLORS.primary} radius={[4, 4, 0, 0]} />
             <Bar yAxisId="right" dataKey="capacity"  name="용량 (GB)"     fill={VIZ_COLORS.amber}   radius={[4, 4, 0, 0]} />
           </BarChart>
@@ -436,7 +436,7 @@ function TechnologyPanel() {
             <CartesianGrid {...GRID} />
             <XAxis dataKey="gen" {...AXIS} />
             <YAxis {...AXIS} unit="Gbps" />
-            <Tooltip content={<VizTooltip unit="Gbps" />} cursor={{ stroke: '#e7e5e4' }} />
+            <Tooltip content={<VizTooltip unit="Gbps" />} cursor={{ stroke: '#e4e4e7' }} />
             <Line dataKey="speed" name="핀 속도" stroke={VIZ_COLORS.purple} strokeWidth={2.5} dot={{ r: 5, fill: VIZ_COLORS.purple }} />
           </LineChart>
         </ResponsiveContainer>
@@ -448,8 +448,8 @@ function TechnologyPanel() {
             <CartesianGrid {...GRID} />
             <XAxis dataKey="year" {...AXIS} />
             <YAxis {...AXIS} unit="L" />
-            <Tooltip content={<VizTooltip unit="layers" />} cursor={{ stroke: '#e7e5e4' }} />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#78716c' }} />
+            <Tooltip content={<VizTooltip unit="layers" />} cursor={{ stroke: '#e4e4e7' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
             <Line dataKey="samsung" name="삼성"   stroke={VIZ_COLORS.samsung} strokeWidth={2} dot={{ r: 4 }} />
             <Line dataKey="skhynix" name="SK"     stroke={VIZ_COLORS.skhynix} strokeWidth={2} dot={{ r: 4 }} />
             <Line dataKey="micron"  name="마이크론" stroke={VIZ_COLORS.micron}  strokeWidth={2} dot={{ r: 4 }} />
@@ -463,19 +463,19 @@ function TechnologyPanel() {
             const statusBadge = {
               'first-mover':  { label: '선도', cls: 'bg-emerald-100 text-emerald-700' },
               'fast-follow':  { label: '추격', cls: 'bg-amber-100 text-amber-700' },
-              'follower':     { label: '후발', cls: 'bg-stone-200 text-stone-500' },
+              'follower':     { label: '후발', cls: 'bg-zinc-200 text-zinc-500' },
             }[c.status]
             return (
-              <div key={i} className="flex items-center gap-3 py-2 px-3 rounded-lg bg-stone-50 border border-stone-200">
-                <span className="text-sm font-semibold text-stone-800 w-24 shrink-0">{c.company}</span>
+              <div key={i} className="flex items-center gap-3 py-2 px-3 rounded-lg bg-zinc-50 border border-zinc-200">
+                <span className="text-sm font-semibold text-zinc-800 w-24 shrink-0">{c.company}</span>
                 <span className={`text-xs px-2 py-0.5 rounded shrink-0 ${statusBadge.cls}`}>{statusBadge.label}</span>
                 <div className="flex-1 grid grid-cols-2 gap-3 text-xs">
                   <div>
-                    <span className="text-stone-500">샘플: </span>
-                    <span className="font-mono text-stone-700">{c.sample}</span>
+                    <span className="text-zinc-500">샘플: </span>
+                    <span className="font-mono text-zinc-700">{c.sample}</span>
                   </div>
                   <div>
-                    <span className="text-stone-500">양산: </span>
+                    <span className="text-zinc-500">양산: </span>
                     <span className="font-mono text-amber-700 font-semibold">{c.massProd}</span>
                   </div>
                 </div>
@@ -485,8 +485,8 @@ function TechnologyPanel() {
         </div>
       </ChartCard>
 
-      <div className="lg:col-span-2 bg-white border border-stone-200 rounded-xl p-4">
-        <h3 className="text-sm font-semibold text-stone-800 mb-3">핵심 기술 마일스톤</h3>
+      <div className="lg:col-span-2 bg-white border border-zinc-200 rounded-xl p-4">
+        <h3 className="text-sm font-semibold text-zinc-800 mb-3">핵심 기술 마일스톤</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {t.techMilestones.map((m, i) => (
             <div
@@ -502,7 +502,7 @@ function TechnologyPanel() {
               }`}>
                 {m.tech}
               </span>
-              <span className="text-xs text-stone-700">{m.milestone}</span>
+              <span className="text-xs text-zinc-700">{m.milestone}</span>
             </div>
           ))}
         </div>
@@ -519,7 +519,7 @@ export default function DataVisualization() {
 
   return (
     <div>
-      <div className="flex items-center gap-1 mb-4 border-b border-stone-200">
+      <div className="flex items-center gap-1 mb-4 border-b border-zinc-200">
         {SUB_TABS.map(t => {
           const Icon = t.icon
           return (
@@ -528,8 +528,8 @@ export default function DataVisualization() {
               onClick={() => setTab(t.id)}
               className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
                 tab === t.id
-                  ? 'border-sky-500 text-stone-900 bg-white/80'
-                  : 'border-transparent text-stone-500 hover:text-stone-700 hover:bg-stone-50/60'
+                  ? 'border-sky-500 text-zinc-900 bg-white/80'
+                  : 'border-transparent text-zinc-500 hover:text-zinc-700 hover:bg-zinc-50/60'
               }`}
             >
               <Icon size={14} />

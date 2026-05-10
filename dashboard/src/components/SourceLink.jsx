@@ -44,7 +44,7 @@ function tokenize(text) {
 export default function SourceLink({
   source,
   prefix = '출처: ',
-  className = 'text-xs text-stone-400 mt-0.5',
+  className = 'text-xs text-zinc-400 mt-0.5',
 }) {
   if (!source) return null
   const tokens = tokenize(source)

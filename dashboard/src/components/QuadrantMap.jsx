@@ -70,15 +70,15 @@ export default function QuadrantMap({
   }
 
   return (
-    <div className="bg-white border border-stone-200 rounded-xl p-4">
+    <div className="bg-white border border-zinc-200 rounded-xl p-4">
       <div className="flex items-center justify-between mb-1">
         <div>
-          <h2 className="text-sm font-semibold text-stone-800">시나리오 포지션 맵</h2>
-          <p className="text-xs text-stone-500 mt-0.5">DF1 (AI 수요) × DF2 (디커플링 강도)</p>
+          <h2 className="text-sm font-semibold text-zinc-800">시나리오 포지션 맵</h2>
+          <p className="text-xs text-zinc-500 mt-0.5">DF1 (AI 수요) × DF2 (디커플링 강도)</p>
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-900 transition-colors"
+          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-900 transition-colors"
         >
           <Plus size={12} /> 스냅샷
         </button>
@@ -126,10 +126,10 @@ export default function QuadrantMap({
         <line x1={PAD} y1={H / 2} x2={W - PAD} y2={H / 2} stroke="#374151" strokeWidth={1.5} strokeDasharray="4 3" />
         <line x1={W / 2} y1={PAD} x2={W / 2} y2={H - PAD} stroke="#374151" strokeWidth={1.5} strokeDasharray="4 3" />
 
-        <text x={PAD + 2}    y={H / 2 - 6} style={{ fontSize: 9, fill: '#57534e' }}>← AI 거품 붕괴</text>
-        <text x={W - PAD - 2} y={H / 2 - 6} textAnchor="end" style={{ fontSize: 9, fill: '#57534e' }}>AI 수요 지속 →</text>
-        <text x={W / 2 + 5}  y={PAD + 10}  style={{ fontSize: 9, fill: '#57534e' }}>↑ 디커플링 심화</text>
-        <text x={W / 2 + 5}  y={H - PAD - 5} style={{ fontSize: 9, fill: '#57534e' }}>↓ 관리된 공존</text>
+        <text x={PAD + 2}    y={H / 2 - 6} style={{ fontSize: 9, fill: '#52525b' }}>← AI 거품 붕괴</text>
+        <text x={W - PAD - 2} y={H / 2 - 6} textAnchor="end" style={{ fontSize: 9, fill: '#52525b' }}>AI 수요 지속 →</text>
+        <text x={W / 2 + 5}  y={PAD + 10}  style={{ fontSize: 9, fill: '#52525b' }}>↑ 디커플링 심화</text>
+        <text x={W / 2 + 5}  y={H - PAD - 5} style={{ fontSize: 9, fill: '#52525b' }}>↓ 관리된 공존</text>
 
         {/* Historical trail */}
         {pts.length >= 2 && (
@@ -216,20 +216,20 @@ export default function QuadrantMap({
               {isCurrent && <circle cx={cx} cy={cy} r={r + 8} fill="rgba(16,185,129,0.12)" />}
               <circle
                 cx={cx} cy={cy} r={r}
-                fill={isCurrent ? '#10b981' : '#57534e'}
+                fill={isCurrent ? '#10b981' : '#52525b'}
                 opacity={op}
-                stroke={isCurrent ? '#34d399' : '#78716c'}
+                stroke={isCurrent ? '#34d399' : '#71717a'}
                 strokeWidth={isCurrent ? 2 : 1}
               />
               <text
                 x={cx + r + 4} y={cy + 4}
-                style={{ fontSize: 10, fill: isCurrent ? '#34d399' : '#78716c', opacity: op, userSelect: 'none' }}
+                style={{ fontSize: 10, fill: isCurrent ? '#34d399' : '#71717a', opacity: op, userSelect: 'none' }}
               >
                 {TIME_LABELS[i]}
               </text>
               {isCurrent && p.date && (
                 <text x={cx + r + 4} y={cy + 16}
-                  style={{ fontSize: 9, fill: '#57534e', userSelect: 'none' }}>
+                  style={{ fontSize: 9, fill: '#52525b', userSelect: 'none' }}>
                   {p.date}
                 </text>
               )}
@@ -253,7 +253,7 @@ export default function QuadrantMap({
                 stroke="#fde68a" strokeWidth={2.5}
               />
               <text x={cx} y={cy + 4} textAnchor="middle"
-                style={{ fontSize: 11, fill: '#1c1917', fontWeight: 700, userSelect: 'none' }}>
+                style={{ fontSize: 11, fill: '#18181b', fontWeight: 700, userSelect: 'none' }}>
                 {qId}
               </text>
             </g>
@@ -271,15 +271,15 @@ export default function QuadrantMap({
           return (
             <g>
               <rect x={tx} y={ty} width={115} height={50} rx={6} fill="#1f2937" stroke="#374151" strokeWidth={1} />
-              <text x={tx + 8} y={ty + 16} style={{ fontSize: 10, fill: '#1c1917', fontWeight: 600 }}>
+              <text x={tx + 8} y={ty + 16} style={{ fontSize: 10, fill: '#18181b', fontWeight: 600 }}>
                 {hovered.label ?? TIME_LABELS[TIME_KEYS.indexOf(hovered.key)] ?? ''}
                 {hovered.date ? ` (${hovered.date})` : ''}
               </text>
-              <text x={tx + 8} y={ty + 30} style={{ fontSize: 10, fill: '#78716c' }}>
+              <text x={tx + 8} y={ty + 30} style={{ fontSize: 10, fill: '#71717a' }}>
                 AI수요: {df1}  디커플링: {df2}
               </text>
               {hovered.note && (
-                <text x={tx + 8} y={ty + 44} style={{ fontSize: 9, fill: '#57534e' }}>
+                <text x={tx + 8} y={ty + 44} style={{ fontSize: 9, fill: '#52525b' }}>
                   {String(hovered.note).slice(0, 20)}
                 </text>
               )}
@@ -289,12 +289,12 @@ export default function QuadrantMap({
       </svg>
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-xs text-stone-500">
+      <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-xs text-zinc-500">
         <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-emerald-500" /> 기준 현재 위치</span>
         {adjPos?.isAdjusted && (
           <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-yellow-400" /> 최신 트리거 위치</span>
         )}
-        <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b border-dashed border-stone-400" /> 시점 스냅샷 경로</span>
+        <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b border-dashed border-zinc-400" /> 시점 스냅샷 경로</span>
         {adjPos?.isAdjusted && (
           <span className="flex items-center gap-1.5"><span className="inline-block w-5 border-b-2 border-dashed border-yellow-400" /> 활성 트리거 체인</span>
         )}
@@ -302,22 +302,22 @@ export default function QuadrantMap({
 
       {/* 트리거 클릭 감사 로그 (모든 클릭 누적, 포지션 맵과 별도) */}
       {triggerHistory.length > 0 && (
-        <div className="mt-3 border-t border-stone-200 pt-3">
+        <div className="mt-3 border-t border-zinc-200 pt-3">
           <div className="flex items-center gap-2 mb-2">
             <History size={13} className="text-yellow-600" />
-            <h3 className="text-xs font-semibold text-stone-700 flex-1">
+            <h3 className="text-xs font-semibold text-zinc-700 flex-1">
               트리거 클릭 감사 로그
-              <span className="text-stone-500 font-normal ml-1">({triggerHistory.length}건 · 맵과 무관, 모든 클릭 보존)</span>
+              <span className="text-zinc-500 font-normal ml-1">({triggerHistory.length}건 · 맵과 무관, 모든 클릭 보존)</span>
             </h3>
             <button
               onClick={() => setShowHistory(s => !s)}
-              className="text-xs text-stone-500 hover:text-stone-700"
+              className="text-xs text-zinc-500 hover:text-zinc-700"
             >
               {showHistory ? '접기' : '펼치기'}
             </button>
             <button
               onClick={handleClearHistory}
-              className="flex items-center gap-1 px-2 py-1 text-xs rounded bg-stone-100 hover:bg-red-50 text-stone-500 hover:text-red-700 transition-colors"
+              className="flex items-center gap-1 px-2 py-1 text-xs rounded bg-zinc-100 hover:bg-red-50 text-zinc-500 hover:text-red-700 transition-colors"
               title="이력 초기화"
             >
               <Trash2 size={11} /> 초기화
@@ -334,28 +334,28 @@ export default function QuadrantMap({
                 const dy = e.deltaFromPrev?.df2 ?? 0
                 const isAct = e.action === 'activate'
                 return (
-                  <div key={i} className="flex items-start gap-2 py-1 px-2 rounded bg-stone-50 border border-stone-200">
+                  <div key={i} className="flex items-start gap-2 py-1 px-2 rounded bg-zinc-50 border border-zinc-200">
                     <span className="text-yellow-600 font-mono shrink-0">#{i + 1}</span>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${
-                          isAct ? 'bg-emerald-100 text-emerald-700' : 'bg-stone-200 text-stone-500'
+                          isAct ? 'bg-emerald-100 text-emerald-700' : 'bg-zinc-200 text-zinc-500'
                         }`}>
                           {isAct ? '발동' : '해제'}
                         </span>
-                        <span className="text-stone-800 truncate">{e.triggerName}</span>
+                        <span className="text-zinc-800 truncate">{e.triggerName}</span>
                       </div>
-                      <div className="text-stone-500 mt-0.5 flex flex-wrap gap-x-3">
+                      <div className="text-zinc-500 mt-0.5 flex flex-wrap gap-x-3">
                         <span>{tsStr}</span>
                         <span className="font-mono">
                           DF1 {e.position.df1.toFixed(1)} / DF2 {e.position.df2.toFixed(1)}
                         </span>
                         {e.deltaFromPrev ? (
-                          <span className="font-mono text-stone-400">
+                          <span className="font-mono text-zinc-400">
                             Δ ({dx > 0 ? '+' : ''}{dx.toFixed(1)}, {dy > 0 ? '+' : ''}{dy.toFixed(1)})
                           </span>
                         ) : (
-                          <span className="text-stone-400">최초 클릭 (Δ 없음)</span>
+                          <span className="text-zinc-400">최초 클릭 (Δ 없음)</span>
                         )}
                       </div>
                     </div>
@@ -370,35 +370,35 @@ export default function QuadrantMap({
       {/* Add snapshot modal */}
       {showAdd && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white border border-stone-300 rounded-2xl p-6 w-full max-w-sm">
-            <h3 className="font-semibold text-stone-900 mb-4">현재 포지션 스냅샷 저장</h3>
+          <div className="bg-white border border-zinc-300 rounded-2xl p-6 w-full max-w-sm">
+            <h3 className="font-semibold text-zinc-900 mb-4">현재 포지션 스냅샷 저장</h3>
             <div className="space-y-4">
               <div>
-                <label className="text-xs text-stone-500 block mb-1.5">
-                  DF1: AI 수요 강도 <span className="text-stone-900 font-mono">{draft.df1}</span>
-                  <span className="text-stone-400 ml-2">−10(버블붕괴) ~ +10(슈퍼사이클)</span>
+                <label className="text-xs text-zinc-500 block mb-1.5">
+                  DF1: AI 수요 강도 <span className="text-zinc-900 font-mono">{draft.df1}</span>
+                  <span className="text-zinc-400 ml-2">−10(버블붕괴) ~ +10(슈퍼사이클)</span>
                 </label>
                 <input type="range" min="-10" max="10" step="0.5" value={draft.df1}
                   onChange={e => setDraft(d => ({ ...d, df1: +e.target.value }))}
                   className="w-full accent-emerald-500" />
-                <div className="flex justify-between text-xs text-stone-400"><span>−10</span><span>0</span><span>+10</span></div>
+                <div className="flex justify-between text-xs text-zinc-400"><span>−10</span><span>0</span><span>+10</span></div>
               </div>
               <div>
-                <label className="text-xs text-stone-500 block mb-1.5">
-                  DF2: 디커플링 강도 <span className="text-stone-900 font-mono">{draft.df2}</span>
-                  <span className="text-stone-400 ml-2">−10(완전공존) ~ +10(전면디커플링)</span>
+                <label className="text-xs text-zinc-500 block mb-1.5">
+                  DF2: 디커플링 강도 <span className="text-zinc-900 font-mono">{draft.df2}</span>
+                  <span className="text-zinc-400 ml-2">−10(완전공존) ~ +10(전면디커플링)</span>
                 </label>
                 <input type="range" min="-10" max="10" step="0.5" value={draft.df2}
                   onChange={e => setDraft(d => ({ ...d, df2: +e.target.value }))}
                   className="w-full accent-blue-500" />
-                <div className="flex justify-between text-xs text-stone-400"><span>−10</span><span>0</span><span>+10</span></div>
+                <div className="flex justify-between text-xs text-zinc-400"><span>−10</span><span>0</span><span>+10</span></div>
               </div>
               <div>
-                <label className="text-xs text-stone-500 block mb-1.5">메모</label>
+                <label className="text-xs text-zinc-500 block mb-1.5">메모</label>
                 <input type="text" value={draft.note}
                   onChange={e => setDraft(d => ({ ...d, note: e.target.value }))}
                   placeholder="예: MATCH법안 위원회 통과 직후..."
-                  className="w-full bg-stone-100 border border-stone-300 rounded-lg px-3 py-2 text-sm text-stone-900 placeholder-stone-400 focus:outline-none" />
+                  className="w-full bg-zinc-100 border border-zinc-300 rounded-lg px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none" />
               </div>
               {(() => {
                 const s = draft.df1 >= 0 && draft.df2 <  0 ? { id: 'B', name: 'AI 르네상스', color: '#059669' }
@@ -406,26 +406,26 @@ export default function QuadrantMap({
                         : draft.df1 <  0 && draft.df2 >= 0 ? { id: 'C', name: '기술 냉전',   color: '#dc2626' }
                                                            : { id: 'D', name: '조용한 재편', color: '#d97706' }
                 return (
-                  <div className="bg-stone-100 rounded-lg p-3 text-xs text-stone-500 flex items-center gap-2">
-                    <span className="text-stone-500">예상 시나리오:</span>
+                  <div className="bg-zinc-100 rounded-lg p-3 text-xs text-zinc-500 flex items-center gap-2">
+                    <span className="text-zinc-500">예상 시나리오:</span>
                     <span
                       className="w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold text-white"
                       style={{ backgroundColor: s.color }}
                     >
                       {s.id}
                     </span>
-                    <span className="text-stone-800 font-medium">{s.name}</span>
+                    <span className="text-zinc-800 font-medium">{s.name}</span>
                   </div>
                 )
               })()}
             </div>
             <div className="flex gap-3 mt-5">
               <button onClick={() => setShowAdd(false)}
-                className="flex-1 py-2 text-sm rounded-lg border border-stone-300 text-stone-500 hover:text-stone-900 transition-colors">
+                className="flex-1 py-2 text-sm rounded-lg border border-zinc-300 text-zinc-500 hover:text-zinc-900 transition-colors">
                 취소
               </button>
               <button onClick={handleAdd}
-                className="flex-1 py-2 text-sm rounded-lg bg-samsung-blue hover:bg-blue-700 text-stone-900 font-medium transition-colors">
+                className="flex-1 py-2 text-sm rounded-lg bg-samsung-blue hover:bg-blue-700 text-zinc-900 font-medium transition-colors">
                 저장
               </button>
             </div>

@@ -8,13 +8,13 @@ export default {
           blue: '#1428A0',
           dark: '#0A1854',
         },
-        // 라이트 테마 base 팔레트 — cream paper + 따뜻한 amber 액센트
-        // 눈에 부담 적은 warm stone 톤 (cool slate 회피)
-        canvas: '#f4ede0',                // 페이지 base — warm cream paper
+        // 라이트 테마 base 팔레트 — 중성 zinc (프로 SaaS 표준 톤)
+        // Linear / shadcn / Vercel 라이트 모드 계열, slate(cool)·stone(warm) 사이
+        canvas: '#f4f4f5',                // 페이지 base — zinc-100, 중성 paper
         surface: {
-          DEFAULT: '#fdf9f1',              // 기본 카드 — 매우 옅은 cream
-          raised:  '#ffffff',              // 모달/팝오버 (대비를 위해 흰색)
-          subtle:  '#efe8da',              // 헤더/섹션 미묘한 분리
+          DEFAULT: '#ffffff',              // 기본 카드 — 흰색 (zinc bg 위 contrast)
+          raised:  '#ffffff',              // 모달/팝오버
+          subtle:  '#fafafa',              // 헤더/섹션 미묘한 분리 (zinc-50)
         },
       },
       fontFamily: {

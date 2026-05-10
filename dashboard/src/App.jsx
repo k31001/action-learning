@@ -76,7 +76,7 @@ export default function App() {
         {/* ── 최상단 페이지 탭 ── */}
         <nav
           aria-label="페이지 탭"
-          className="flex items-center gap-0.5 mb-6 px-1 py-1 rounded-xl bg-white/70 ring-1 ring-stone-200 shadow-soft backdrop-blur-sm"
+          className="flex items-center gap-0.5 mb-6 px-1 py-1 rounded-xl bg-white/70 ring-1 ring-zinc-200 shadow-soft backdrop-blur-sm"
         >
           {TOP_TABS.map(t => {
             const Icon = t.icon
@@ -89,11 +89,11 @@ export default function App() {
                 aria-current={active ? 'page' : undefined}
                 className={`relative flex items-center gap-2 px-4 py-2 text-[13px] font-medium rounded-lg transition-all ${
                   active
-                    ? 'text-stone-900 bg-white ring-1 ring-stone-200 shadow-soft'
-                    : 'text-stone-500 hover:text-stone-900 hover:bg-white/60'
+                    ? 'text-zinc-900 bg-white ring-1 ring-zinc-200 shadow-soft'
+                    : 'text-zinc-500 hover:text-zinc-900 hover:bg-white/60'
                 }`}
               >
-                <Icon size={15} className={active ? 'text-sky-600' : 'text-stone-400'} />
+                <Icon size={15} className={active ? 'text-sky-600' : 'text-zinc-400'} />
                 <span className="tracking-tight">{t.label}</span>
                 {showBadge && (
                   <span className="ml-0.5 px-1.5 py-0.5 rounded-full bg-red-100 text-red-700 text-[10px] font-semibold ring-1 ring-red-200">
@@ -104,7 +104,7 @@ export default function App() {
             )
           })}
           {/* 버전 배지 — 탭 우측에 정렬, 미세하게 */}
-          <span className="ml-auto mr-2 px-2 py-0.5 text-[10px] font-medium font-mono rounded text-stone-500 ring-1 ring-stone-200 bg-white">
+          <span className="ml-auto mr-2 px-2 py-0.5 text-[10px] font-medium font-mono rounded text-zinc-500 ring-1 ring-zinc-200 bg-white">
             {VERSION}
           </span>
         </nav>
@@ -135,15 +135,15 @@ export default function App() {
               {/* Right: Tabbed content */}
               <div>
                 {/* Tabs */}
-                <div className="flex gap-1 mb-4 border-b border-stone-200 pb-0">
+                <div className="flex gap-1 mb-4 border-b border-zinc-200 pb-0">
                   {MAIN_TABS.map(t => (
                     <button
                       key={t.id}
                       onClick={() => setMainTab(t.id)}
                       className={`px-4 py-2 text-sm font-medium rounded-t transition-colors border-b-2 ${
                         mainTab === t.id
-                          ? 'border-sky-500 text-stone-900 bg-white/80'
-                          : 'border-transparent text-stone-500 hover:text-stone-700 hover:bg-stone-50/60'
+                          ? 'border-sky-500 text-zinc-900 bg-white/80'
+                          : 'border-transparent text-zinc-500 hover:text-zinc-700 hover:bg-zinc-50/60'
                       }`}
                     >
                       {t.label}
@@ -165,8 +165,8 @@ export default function App() {
                 {mainTab === 'decisions' && <DecisionTracker indicators={indicators} />}
                 {mainTab === 'market' && <MarketPanel />}
                 {mainTab === 'ewi' && (
-                  <div className="bg-white border border-stone-200 rounded-xl p-4">
-                    <h2 className="text-sm font-semibold text-stone-800 mb-4">EWI 수동 지표</h2>
+                  <div className="bg-white border border-zinc-200 rounded-xl p-4">
+                    <h2 className="text-sm font-semibold text-zinc-800 mb-4">EWI 수동 지표</h2>
                     <IndicatorGrid indicators={indicators} onUpdate={updateIndicator} onAutoUpdate={handleAutoUpdate} />
                   </div>
                 )}
