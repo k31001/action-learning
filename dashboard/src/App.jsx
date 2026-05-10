@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { triggerAutoUpdate } from './hooks/useMarketData'
 import { Activity, BarChart3, Compass, Crosshair } from 'lucide-react'
-import Header from './components/Header'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
 import IndicatorGrid from './components/IndicatorGrid'
@@ -13,6 +12,7 @@ import DecisionTracker from './components/DecisionTracker'
 import DataVisualization from './components/DataVisualization'
 import ScenarioPlanning from './components/ScenarioPlanning'
 import Strategies from './components/Strategies'
+import { VERSION } from './version'
 
 // 최상단 페이지 탭
 const TOP_TABS = [
@@ -35,7 +35,7 @@ export default function App() {
     triggerHistory,
     adjustedScenarios, adjustedQuadrantPosition,
     updateIndicator, updateTrigger, clearTriggerHistory, updateScenarioProbability,
-    addQuadrantSnapshot, exportData, importData, resetToDefaults,
+    addQuadrantSnapshot,
     criticalCount, warningCount, activeTriggers,
   } = useStore()
 
@@ -72,30 +72,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-950">
-      <Header
-        criticalCount={criticalCount}
-        warningCount={warningCount}
-        activeTriggerCount={activeTriggers.length}
-        onExport={exportData}
-        onImport={importData}
-        onReset={resetToDefaults}
-      />
-
       <main className="max-w-screen-2xl mx-auto px-4 py-5">
-        {/* Page title */}
-        <div className="mb-4">
-          <div className="flex items-baseline gap-3 flex-wrap">
-            <h1 className="text-lg font-bold text-white">AI 메모리 시나리오 대시보드</h1>
-            <span className="px-2 py-0.5 text-[10px] font-medium rounded bg-blue-900/50 text-blue-300 border border-blue-800">
-              Q1 2026 갱신 · 벤치마크 통합
-            </span>
-          </div>
-          <p className="text-sm text-gray-500 mt-1">
-            삼성전자 메모리사업부 시나리오 플래닝 — 2030~2035 전략 모니터링 · 9개 결정 추적
-          </p>
-        </div>
-
-        {/* ── 최상단 페이지 탭: EWI / Data Visualization ── */}
+        {/* ── 최상단 페이지 탭 ── */}
         <div className="flex items-center gap-1 mb-5 border-b-2 border-gray-800">
           {TOP_TABS.map(t => {
             const Icon = t.icon
@@ -120,6 +98,10 @@ export default function App() {
               </button>
             )
           })}
+          {/* 버전 배지 — 탭 우측에 정렬 */}
+          <span className="ml-auto mr-1 px-2 py-0.5 text-[11px] font-medium font-mono rounded bg-amber-500/15 text-amber-300 border border-amber-500/30">
+            {VERSION}
+          </span>
         </div>
 
         {topTab === 'ewi' && (
@@ -194,11 +176,6 @@ export default function App() {
         {topTab === 'visualization' && <DataVisualization />}
         {topTab === 'planning'      && <ScenarioPlanning />}
         {topTab === 'strategy'      && <Strategies />}
-
-        <footer className="pt-4 border-t border-gray-800 text-xs text-gray-700 flex justify-between">
-          <span>삼성전자 메모리사업부 시나리오 대시보드 v2.3</span>
-          <span>주가: Yahoo Finance 자동 수집 | 나머지: localStorage 저장 — JSON 내보내기로 팀 공유</span>
-        </footer>
       </main>
     </div>
   )
