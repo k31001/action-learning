@@ -7,6 +7,7 @@ import { Layers, Compass, Map as MapIcon, BookOpen, Star, AlertOctagon, Target, 
 import {
   STEEP_DATA, DRIVING_FORCES_DATA, SCENARIOS_DATA, BENCHMARK_DATA,
 } from '../data/scenarioPlanning'
+import SourceLink from './SourceLink'
 
 const SUB_TABS = [
   { id: 'steep',     label: 'STEEP',           icon: Layers },
@@ -22,7 +23,7 @@ function Card({ title, source, children, className = '' }) {
       {title && (
         <div className="mb-3">
           <h3 className="text-sm font-semibold text-slate-800">{title}</h3>
-          {source && <p className="text-xs text-slate-400 mt-0.5">출처: {source}</p>}
+          <SourceLink source={source} />
         </div>
       )}
       {children}

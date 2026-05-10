@@ -8,6 +8,7 @@ import { Users, Globe, TrendingUp, Shield, Cpu, AlertTriangle } from 'lucide-rea
 import {
   COMPETITOR_DATA, MACRO_DATA, MARKET_DATA, POLICY_DATA, TECHNOLOGY_DATA, VIZ_COLORS,
 } from '../data/visualizations'
+import SourceLink from './SourceLink'
 
 const SUB_TABS = [
   { id: 'competitor', label: 'Competitor', icon: Users },
@@ -23,7 +24,7 @@ function ChartCard({ title, source, children, className = '' }) {
     <div className={`bg-white border border-slate-200 rounded-xl p-4 ${className}`}>
       <div className="mb-3">
         <h3 className="text-sm font-semibold text-slate-800">{title}</h3>
-        {source && <p className="text-xs text-slate-400 mt-0.5">출처: {source}</p>}
+        <SourceLink source={source} />
       </div>
       {children}
     </div>
