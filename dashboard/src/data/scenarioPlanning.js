@@ -39,6 +39,9 @@ export const STEEP_DATA = {
         { id: 'T8',  name: 'DDR6 세대 전환 속도',                       impact: 3, uncertainty: 2 },
         { id: 'T9',  name: 'AI 워크로드별 메모리 아키텍처 다변화',     impact: 4, uncertainty: 4 },
         { id: 'T10', name: '어드밴스드 패키징 (Hybrid Bonding) 경쟁력', impact: 4, uncertainty: 3 },
+        { id: 'T11', name: 'NVIDIA Storage-Next 표준 (CMX/SCADA + SLC AI SSD)', impact: 4, uncertainty: 4 },
+        { id: 'T12', name: 'PCIe Gen6/Gen7 + 1억 IOPS 단일 SSD 가능성',         impact: 3, uncertainty: 3 },
+        { id: 'T13', name: 'UFS 4.1 → UFS 5.0 모바일 메모리 세대 전환',         impact: 3, uncertainty: 2 },
       ],
     },
     {
@@ -227,6 +230,9 @@ export const SCENARIOS_DATA = {
     { factor: '삼성 HBM4 NVIDIA 인증',         decisionDate: '2026 Q3',            monitor: 'NVIDIA 공급사 발표' },
     { factor: '중국 CXMT HBM 첫 양산',         decisionDate: '2027 ~ 2028',        monitor: '중국산 HBM 샘플 성능 평가' },
     { factor: '3D DRAM 개념증명 완료',         decisionDate: '2026 ~ 2027',        monitor: '삼성·마이크론·IMEC 논문·특허' },
+    { factor: 'SK·Kioxia 1억 IOPS AI SSD 양산', decisionDate: '2027',               monitor: 'NVIDIA Storage-Next 레퍼런스 발표 — Samsung SLC AI SSD 로드맵 공개 시급' },
+    { factor: 'CXMT DRAM 점유 4강 진입',        decisionDate: '2026 ~ 2027',        monitor: 'TrendForce 분기 점유율 — 12%+ 도달 시 범용 가격 압박 본격화' },
+    { factor: 'Stargate Korea LOI → DA',       decisionDate: '2026 H1',            monitor: 'Samsung+SK+OpenAI 본 계약 체결 + 4사 컨소시엄 운영 협약 (SE-3)' },
   ],
 }
 

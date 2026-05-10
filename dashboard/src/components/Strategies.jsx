@@ -9,15 +9,16 @@ import {
 } from 'lucide-react'
 import {
   STRATEGY_OVERVIEW, ROBUST_STRATEGIES, RS_SCENARIO_MATRIX,
-  CORE_STRATEGIES, DECISIONS, DECISION_CLUSTERS,
+  CORE_STRATEGIES, DECISIONS, DECISION_CLUSTERS, COMPETITIVE_LANDSCAPE,
 } from '../data/strategies'
 import SourceLink from './SourceLink'
 
 const SUB_TABS = [
-  { id: 'overview',  label: 'Overview',         icon: LayoutDashboard },
-  { id: 'robust',    label: 'Robust Strategy',  icon: Shield },
-  { id: 'core',      label: 'Core Strategy',    icon: Target },
-  { id: 'decisions', label: 'Decisions',        icon: ListChecks },
+  { id: 'overview',    label: 'Overview',            icon: LayoutDashboard },
+  { id: 'competitive', label: 'Competitive Landscape', icon: Target },
+  { id: 'robust',      label: 'Robust Strategy',     icon: Shield },
+  { id: 'core',        label: 'Core Strategy',       icon: Target },
+  { id: 'decisions',   label: 'Decisions',           icon: ListChecks },
 ]
 
 const SCENARIO_META = {
@@ -124,6 +125,133 @@ function OverviewPanel() {
           </div>
         </Card>
       </div>
+    </div>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COMPETITIVE LANDSCAPE — 5사 종합 비교 (신규)
+// ─────────────────────────────────────────────────────────────────────────────
+function CompetitivePanel() {
+  const cl = COMPETITIVE_LANDSCAPE
+  const tierColor = {
+    leader:  'text-emerald-700 bg-emerald-50 border-emerald-200',
+    mid:     'text-sky-700 bg-sky-50 border-sky-200',
+    low:     'text-amber-700 bg-amber-50 border-amber-200',
+    unknown: 'text-zinc-500 bg-zinc-50 border-zinc-200',
+  }
+  return (
+    <div className="space-y-4">
+      <Card title="5사 종합 비교 — Samsung은 어디에 서 있는가" source="data/competitors/{sk-hynix,micron,china-competitors,market-share}.md">
+        <p className="text-xs text-zinc-500 mb-3">
+          삼성 / SK하이닉스 / Micron / CXMT / YMTC — 매출·영업이익률·CapEx·HBM 점유·미국 보조금·강점·갭 비교.
+          Samsung 약점이 가장 두드러지는 4축은 아래 "핵심 비교 축"에서 별도 시각화.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-zinc-200">
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500 sticky left-0 bg-white">기업</th>
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500 min-w-[140px]">매출 (FY2025)</th>
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500 min-w-[150px]">영업이익률</th>
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500 min-w-[130px]">CapEx (2025~2026E)</th>
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500 min-w-[140px]">HBM 점유</th>
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500 min-w-[120px]">미국 보조금</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cl.vendors.map((v, i) => (
+                <tr key={i} className="border-b border-zinc-200/40">
+                  <td className="py-2 pr-2 sticky left-0 bg-white">
+                    <div className="flex items-center gap-2">
+                      <span className="text-base">{v.flag}</span>
+                      <span className="text-xs font-bold" style={{ color: v.color }}>{v.name}</span>
+                    </div>
+                  </td>
+                  <td className="py-2 pr-2">
+                    <div className="text-zinc-800 font-semibold">{v.revenue.fy2025}</div>
+                    <div className="text-[10px] text-zinc-500">{v.revenue.growth}</div>
+                  </td>
+                  <td className="py-2 pr-2">
+                    <div className="text-zinc-800 font-semibold">{v.opMargin.value}</div>
+                    <div className="text-[10px] text-zinc-500">{v.opMargin.note}</div>
+                  </td>
+                  <td className="py-2 pr-2">
+                    <div className="text-zinc-800 font-semibold">{v.capex.value}</div>
+                    <div className="text-[10px] text-zinc-500">{v.capex.note}</div>
+                  </td>
+                  <td className="py-2 pr-2">
+                    <div className="text-zinc-800 font-semibold">{v.hbmShare}</div>
+                    <div className="text-[10px] text-zinc-500">포지션: {v.hbmPosition}</div>
+                  </td>
+                  <td className="py-2 pr-2">
+                    <div className="text-zinc-800 font-semibold">{v.usSubsidy.value}</div>
+                    <div className="text-[10px] text-zinc-500">{v.usSubsidy.subtitle}</div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      <Card title="핵심 비교 축 — Samsung 갭 4가지" source="자체 종합">
+        <div className="space-y-3">
+          {cl.comparisonAxes.map((axis, i) => (
+            <div key={i} className="rounded-lg border border-zinc-200 p-3 bg-white">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="text-sm font-bold text-zinc-900">{axis.axis}</h4>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+                <div className={`px-3 py-1.5 rounded border ${tierColor[axis.samsung.tier]}`}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold">🇰🇷 Samsung</span>
+                    <span className="text-xs font-mono">{axis.samsung.value}</span>
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  {axis.others.map((o, j) => (
+                    <div key={j} className={`px-3 py-1 rounded border ${tierColor[o.tier]}`}>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] font-semibold">{o.vendor}</span>
+                        <span className="text-xs font-mono">{o.value}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="text-[11px] text-zinc-700 italic bg-amber-50 border border-amber-200 rounded px-2 py-1">
+                <span className="text-amber-700 font-bold">시사점: </span>{axis.insight}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card title="강점·갭 매트릭스" source="자체 종합">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
+          {cl.vendors.map((v, i) => (
+            <div key={i} className="rounded-lg border border-zinc-200 p-3 bg-white">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-base">{v.flag}</span>
+                <span className="text-sm font-bold" style={{ color: v.color }}>{v.name}</span>
+              </div>
+              <div className="text-[10px] text-emerald-700 font-bold mb-1">강점</div>
+              <ul className="space-y-0.5 mb-2">
+                {v.strengthAreas.map((s, j) => (
+                  <li key={j} className="text-[11px] text-zinc-700 leading-tight">· {s}</li>
+                ))}
+              </ul>
+              <div className="text-[10px] text-red-700 font-bold mb-1">갭</div>
+              <ul className="space-y-0.5">
+                {v.gapAreas.map((g, j) => (
+                  <li key={j} className="text-[11px] text-zinc-700 leading-tight">· {g}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Card>
     </div>
   )
 }
@@ -476,10 +604,11 @@ export default function Strategies() {
         })}
       </div>
 
-      {tab === 'overview'  && <OverviewPanel />}
-      {tab === 'robust'    && <RobustStrategyPanel />}
-      {tab === 'core'      && <CoreStrategyPanel />}
-      {tab === 'decisions' && <DecisionsPanel />}
+      {tab === 'overview'    && <OverviewPanel />}
+      {tab === 'competitive' && <CompetitivePanel />}
+      {tab === 'robust'      && <RobustStrategyPanel />}
+      {tab === 'core'        && <CoreStrategyPanel />}
+      {tab === 'decisions'   && <DecisionsPanel />}
     </div>
   )
 }

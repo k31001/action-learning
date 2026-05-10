@@ -63,6 +63,64 @@ export const COMPETITOR_DATA = {
       { date: '2026',    actor: '삼성전자',   event: 'HBM3E 고객 인증 확대 + HBM4 양산으로 30%+ 점유율 회복 목표' },
     ],
   },
+
+  // ── 신규 (2026-05-07): Micron 매출 + DC 비중 ──────────────────────────────
+  // 출처: data/competitors/micron.md (Futurum Group, Blocks and Files, Tom's Hardware)
+  micronAnnual: {
+    title: 'Micron 연간 매출·HBM 매출·DC 비중',
+    source: 'Micron IR, Futurum Group, Blocks and Files',
+    unit: '$B',
+    data: [
+      { year: 'FY2023', revenue: 15.5,  hbm: 0,   dcShare: null, note: '메모리 불황 (-49%)' },
+      { year: 'FY2024', revenue: 25.1,  hbm: 1.5, dcShare: null, note: '회복세 (+62%)' },
+      { year: 'FY2025', revenue: 37.4,  hbm: 8.0, dcShare: 56,   note: '역대 최고 (+49%, DC 56%)' },
+    ],
+  },
+
+  // ── 신규: 글로벌 DRAM 점유율 (3강 + 중국) ───────────────────────────────────
+  // 출처: data/competitors/market-share.md (TrendForce 2025-11-26)
+  dramMarketShare: {
+    title: '글로벌 DRAM 점유율 (분기별, 33년 만의 1위 교체)',
+    source: 'TrendForce (2025-11-26), Korea Herald',
+    unit: '%',
+    data: [
+      { period: '2024',     samsung: 41,   skhynix: 34,   micron: 25,   cxmt: 0  },
+      { period: 'Q1 2025',  samsung: 34,   skhynix: 36,   micron: 25,   cxmt: 5  },
+      { period: 'Q2 2025',  samsung: 33,   skhynix: 35,   micron: 26,   cxmt: 6  },
+      { period: 'Q3 2025',  samsung: 32.6, skhynix: 33.2, micron: 25.7, cxmt: 8  },
+      { period: '2027E',    samsung: 30,   skhynix: 32,   micron: 24,   cxmt: 14 },
+    ],
+  },
+
+  // ── 신규: CXMT/YMTC 점유율 성장 ─────────────────────────────────────────────
+  // 출처: data/competitors/china-competitors.md (Morgan Stanley, Digitimes, TechInsights)
+  chinaCompetitorShare: {
+    title: '중국 메모리 점유율 추이 (CXMT DRAM + YMTC NAND)',
+    source: 'Morgan Stanley, Digitimes, TrendForce',
+    unit: '%',
+    data: [
+      { year: '2020',  cxmtDram: 0,   ymtcNand: 2  },
+      { year: '2023',  cxmtDram: 3,   ymtcNand: 5  },
+      { year: '2024',  cxmtDram: 5,   ymtcNand: 9  },
+      { year: '2025',  cxmtDram: 8,   ymtcNand: 13 },
+      { year: '2027E', cxmtDram: 14,  ymtcNand: 18 },
+    ],
+  },
+
+  // ── 신규: 4사 CapEx + R&D 비교 ─────────────────────────────────────────────
+  // 출처: data/competitors/market-share.md
+  capexComparison: {
+    title: '메모리 4사 CapEx 비교 (2025 추정)',
+    source: '각사 IR, Morgan Stanley, Digitimes',
+    unit: '$B',
+    data: [
+      { vendor: 'Samsung (메모리)', capex: 19.0, rdRatio: 10, note: 'DS 부문 중 메모리 추정' },
+      { vendor: 'SK하이닉스',       capex: 17.5, rdRatio: 7,  note: 'HBM 95%+ 집중' },
+      { vendor: 'Micron',           capex: 14.0, rdRatio: 11, note: 'CHIPS Act 활용' },
+      { vendor: 'CXMT',             capex: 4.5,  rdRatio: 4,  note: '빅펀드 III 추정' },
+      { vendor: 'YMTC',             capex: 4.2,  rdRatio: 4,  note: '추정' },
+    ],
+  },
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -127,6 +185,32 @@ export const MACRO_DATA = {
     { title: 'Amazon FCF 마이너스 전환', detail: '2026E -$17B 전망', severity: 'critical' },
     { title: 'AI Capex / 운영현금흐름', detail: '2024 76% → 2026 94% — 자기잠식 임계점 근접', severity: 'warning' },
   ],
+
+  // ── 신규 (2026-05-07): 중국 빅펀드 I/II/III 누적 ──────────────────────────
+  // 출처: data/competitors/china-competitors.md (Bloomberg, Reuters, Yole Group)
+  chinaBigFund: {
+    title: '중국 국가집성전로산업투자기금 (빅펀드) — CXMT/YMTC 자본 동력',
+    source: 'Bloomberg (2024-05-24), Reuters (2024-03-27), Yole Group',
+    unit: '$B',
+    data: [
+      { phase: '빅펀드 I (2014)',  size: 19, target: 'YMTC, SMIC, CXMT 전신 등' },
+      { phase: '빅펀드 II (2019)', size: 28, target: '제조·장비·소재 확대' },
+      { phase: '빅펀드 III (2024)', size: 47, target: '첨단공정·메모리 자립 — 역대 최대' },
+    ],
+  },
+
+  // ── 신규: AI DC 전력 소비 폭증 ──────────────────────────────────────────────
+  // 출처: data/macro/energy-constraints.md (IEA)
+  dcPowerConsumption: {
+    title: 'AI 데이터센터 전력 소비 전망 (TWh)',
+    source: 'IEA, Microsoft IR, Amazon IR',
+    unit: 'TWh',
+    data: [
+      { year: '2024',  twh: 460,   note: '베이스라인' },
+      { year: '2026',  twh: 1025,  note: 'IEA 중간 추정 (950~1,100)' },
+      { year: '2030E', twh: 1700,  note: 'AI 가속 시나리오' },
+    ],
+  },
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -204,7 +288,69 @@ export const MARKET_DATA = {
     { label: 'HBM4 단가 프리미엄', value: '+67%', accent: 'amber' },
     { label: 'GPU당 HBM 탑재량', value: '×7배', accent: 'amber' },
     { label: 'HBM 공급 부족 지속', value: '~2027', accent: 'red' },
+    { label: 'Enterprise SSD TAM (2025)', value: '$32B', accent: 'green' },
+    { label: '북미 DC SSD CAGR', value: '27.6%', accent: 'green' },
+    { label: 'UFS 4.1 + LPDDR5X 가격', value: '+85% YoY', accent: 'amber' },
+    { label: 'AI SSD 단일 IOPS (현재)', value: '5.4M', accent: 'blue' },
+    { label: 'AI SSD IOPS 목표 (2027)', value: '100M', accent: 'red' },
+    { label: 'Micron NAND DC 비중', value: '56%', accent: 'amber' },
   ],
+
+  // ── 신규 (2026-05-07): Enterprise SSD 시장 ────────────────────────────────
+  // 출처: data/market/ssd-ufs-market.md (Mordor, Intel Market Research)
+  enterpriseSsdMarket: {
+    title: 'Enterprise SSD 시장 규모 (글로벌 + 북미 DC)',
+    source: 'Mordor Intelligence, Intel Market Research',
+    unit: '$B',
+    data: [
+      { year: '2025',  global: 32,   naDc: 16.7,  note: '하이퍼스케일러 60% 매출' },
+      { year: '2027E', global: 50,   naDc: 28,    note: 'PCIe Gen6 본격 진입' },
+      { year: '2031E', global: 105,  naDc: 69.1,  note: '북미 CAGR 27.6%' },
+    ],
+  },
+
+  // ── 신규: AI SSD IOPS 경쟁 ─────────────────────────────────────────────────
+  // 출처: data/market/ssd-ufs-market.md, data/technology/nvidia-cmx-scada.md
+  aiSsdIopsRace: {
+    title: 'AI SSD 단일 IOPS 경쟁 — NVIDIA Storage-Next',
+    source: 'NVIDIA, Micron, SK hynix, Kioxia 발표 (2025~2027)',
+    unit: 'M IOPS',
+    data: [
+      { period: '2025-Q4 (현재)',     micron: 5.4,  skhynix: null, kioxia: null, samsung: null },
+      { period: '2026 GTC',           micron: 5.4,  skhynix: null, kioxia: null, samsung: 5.4 },
+      { period: '2026~2027 (개발)',   micron: 10,   skhynix: 25,   kioxia: null, samsung: null },
+      { period: '2027 (목표)',        micron: 50,   skhynix: 100,  kioxia: 100,  samsung: null },
+    ],
+    note: 'Samsung SLC AI SSD 로드맵 미공개 ⚠️',
+  },
+
+  // ── 신규: UFS + LPDDR5X 가격 폭등 ─────────────────────────────────────────
+  // 출처: data/market/ssd-ufs-market.md (abit.ee 2026)
+  mobileMemoryPrice: {
+    title: 'UFS 4.1 + LPDDR5X 모바일 메모리 가격 변동률 (YoY)',
+    source: 'abit.ee, Global Semi Research (2026-04)',
+    unit: '%',
+    data: [
+      { period: '2025-H1',   ufs: 5,   lpddr: 8,   note: '베이스라인' },
+      { period: '2025-H2',   ufs: 25,  lpddr: 30,  note: 'AI 부족 전이 시작' },
+      { period: '2026-H1',   ufs: 85,  lpddr: 90,  note: '플래그십 16GB+1TB 표준' },
+      { period: '2026-Q4E',  ufs: 30,  lpddr: 35,  note: '신규 capex 가동으로 완화' },
+    ],
+  },
+
+  // ── 신규: NAND DC 매출 비중 (Micron 사례) ─────────────────────────────────
+  // 출처: data/market/ssd-ufs-market.md (Futurum Group)
+  nandDcShare: {
+    title: 'NAND 데이터센터 매출 비중 (Micron 공개 사례)',
+    source: 'Futurum Group (Micron Q4 FY2025)',
+    unit: '%',
+    data: [
+      { vendor: 'Micron (FY2025)',     dcShare: 56, note: '역대 최고, 공개' },
+      { vendor: 'Samsung (NAND)',      dcShare: null, note: '비공개 ⚠️' },
+      { vendor: 'SK하이닉스 (NAND)',   dcShare: null, note: '비공개' },
+      { vendor: 'YMTC',                dcShare: 30, note: '추정 (Xtacking 3D NAND)' },
+    ],
+  },
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -258,6 +404,38 @@ export const POLICY_DATA = {
       { policy: 'CHIPS Act 보조금 조건',       impactLevel: 60, urgency: 'medium' },
       { policy: '한국 K-CHIPS Act 세액공제',   impactLevel: 55, urgency: 'low' },
       { policy: '중국 희토류 수출 통제 보복', impactLevel: 50, urgency: 'medium' },
+    ],
+  },
+
+  // ── 신규 (2026-05-07): CHIPS Act 보조금 비교 ─────────────────────────────
+  // 출처: data/policy/chips-act.md (NIST, AIP.ORG)
+  chipsActSubsidies: {
+    title: '미국 CHIPS Act 직접 보조금 비교 — Samsung은 3위',
+    source: 'NIST CHIPS Program, AIP.ORG (2024-12)',
+    unit: '$B',
+    data: [
+      { vendor: 'Intel',          subsidy: 8.5,   investment: 100,  region: '오하이오·애리조나 등' },
+      { vendor: 'TSMC',           subsidy: 6.6,   investment: 65,   region: '애리조나' },
+      { vendor: 'Micron',         subsidy: 6.16,  investment: 50,   region: '아이다호·뉴욕' },
+      { vendor: 'Samsung',        subsidy: 4.745, investment: 37,   region: '텍사스 테일러' },
+    ],
+  },
+
+  // ── 신규: Samsung Taylor 팹 타임라인 ──────────────────────────────────────
+  // 출처: data/policy/chips-act.md
+  taylorTimeline: {
+    title: 'Samsung 텍사스 테일러 팹 — CHIPS Act 진척',
+    source: 'NIST CHIPS Program, Tom\'s Hardware, Digitimes',
+    items: [
+      { date: '2021-11', event: '테일러 팹 건설 발표 ($170억 초기 투자)', status: 'complete' },
+      { date: '2024-04', event: 'CHIPS Act 예비 지원 발표 ($6.4B)', status: 'complete' },
+      { date: '2024-12', event: '연방 보조금 최종 확정 ($4.745B, $1.655B 감액)', status: 'complete' },
+      { date: '2025-07', event: 'Tesla AI5/AI6 칩 $16.5B 공급 계약 — 첫 주요 고객', status: 'complete' },
+      { date: '2025-09', event: 'Texas 주정부 보조금 $250M 확정', status: 'complete' },
+      { date: '2026-03', event: '2nm 공정용 첫 장비 반입 시작', status: 'complete' },
+      { date: '2026-Q2', event: '2nm 위험생산(Risk Production) 시작 목표', status: 'in-progress' },
+      { date: '2026-Q4', event: 'D8 — HBM 전용 2단계 발표 + 추가 보조금 협상 마감', status: 'upcoming' },
+      { date: '2027-H2', event: '2nm 양산(Volume Production) 목표', status: 'upcoming' },
     ],
   },
 }
@@ -325,8 +503,53 @@ export const TECHNOLOGY_DATA = {
     { tech: 'HBM4 인터페이스', milestone: '버스폭 2배 (1024 → 2048-bit)',            impact: 'positive' },
     { tech: '16Hi 스택',     milestone: '용량 48 GB (HBM3 대비 2배)',                impact: 'positive' },
     { tech: 'PAM-4 시그널링', milestone: 'HBM4E 16 Gbps 목표',                       impact: 'positive' },
-    { tech: 'CMX',           milestone: 'NVIDIA 신규 메모리 인터커넥트 표준 — 메모리 SoC 통합 가속화', impact: 'risk' },
+    { tech: 'CMX',           milestone: 'NVIDIA Context Memory Storage Platform — PM1753 공식 공급 ✅', impact: 'positive' },
+    { tech: 'SCADA',         milestone: 'NVIDIA Storage-Next — SK·Kioxia·Micron이 핵심 파트너 선점 ⚠️', impact: 'risk' },
+    { tech: 'PCIe Gen6',     milestone: 'PM1763 28.4 GB/s 시연 — 양산 시 매출 인식', impact: 'positive' },
+    { tech: 'SLC AI SSD',    milestone: 'SK AI-N P / Kioxia 1억 IOPS 목표 — Samsung 로드맵 미공개 ⚠️', impact: 'risk' },
   ],
+
+  // ── 신규 (2026-05-07): NVIDIA AI 스토리지 계층 (G1~G4) ────────────────────
+  // 출처: data/technology/nvidia-cmx-scada.md (NVIDIA, HPCwire)
+  nvidiaStorageStack: {
+    title: 'NVIDIA AI 스토리지 계층 — G3.5 CMX 신설',
+    source: 'NVIDIA Technical Blog, HPCwire (2026-03)',
+    items: [
+      { tier: 'G1',   media: 'GPU HBM',                 latency: '나노초',         role: '활성 계산 (핫 데이터)',     samsungPosition: 'HBM4E ✅ (28% Rubin 점유)' },
+      { tier: 'G2',   media: '시스템 DRAM',             latency: '수십 ns',         role: 'KV 스테이징/버퍼링',         samsungPosition: 'DDR5 RDIMM' },
+      { tier: 'G3',   media: '로컬 NVMe SSD',           latency: '마이크로초',     role: '단일 노드 캐시',             samsungPosition: 'PM1753 ✅ Gen5' },
+      { tier: 'G3.5', media: 'CMX (이더넷 NVMe 어레이)', latency: 'μs~수백 μs',     role: '공유 포드 KV 캐시 (NEW)',    samsungPosition: 'PM1753 CMX 공식 ✅' },
+      { tier: 'G4',   media: '공유 스토리지 (HDD)',      latency: '밀리초',         role: '지속성 데이터',             samsungPosition: '—' },
+    ],
+  },
+
+  // ── 신규: NVIDIA AI SSD 파트너십 매트릭스 ─────────────────────────────────
+  // 출처: data/technology/nvidia-cmx-scada.md, data/market/ssd-ufs-market.md
+  aiSsdPartners: {
+    title: 'NVIDIA AI SSD (Storage-Next) 파트너십 — Samsung 후행',
+    source: 'NVIDIA, TrendForce, Blocks & Files (2025~2026)',
+    items: [
+      { vendor: 'Micron',       partnership: '최초 레퍼런스 (9650 Gen6) ✅',   nandType: 'TLC', iops: '5.4M (현재)', timing: '양산 중',  status: 'leader' },
+      { vendor: 'SK하이닉스',    partnership: '공동 개발 (AI-N P) ✅',          nandType: 'SLC', iops: '25M→100M',    timing: '2026~2027', status: 'leader' },
+      { vendor: 'Kioxia',        partnership: '공동 개발 ✅',                   nandType: 'SLC', iops: '100M',         timing: '2027',      status: 'fast-follow' },
+      { vendor: 'Samsung',       partnership: '생태계 참여 (PM1763 시연) ⚠️',   nandType: 'TLC', iops: '미공개',        timing: '미정',      status: 'follower' },
+    ],
+  },
+
+  // ── 신규: PCIe 세대 진화 (Gen3 → Gen7) ────────────────────────────────────
+  // 출처: data/market/ssd-ufs-market.md
+  pcieGenEvolution: {
+    title: 'PCIe 세대 진화 — Enterprise SSD 인터페이스 표준',
+    source: 'PCI-SIG, NVMe Consortium, JEDEC',
+    unit: 'GB/s',
+    data: [
+      { gen: 'Gen3',  bandwidth: 1,    year: 2010, status: '레거시' },
+      { gen: 'Gen4',  bandwidth: 2,    year: 2017, status: '점진 축소' },
+      { gen: 'Gen5',  bandwidth: 4,    year: 2022, status: '양산 주력' },
+      { gen: 'Gen6',  bandwidth: 8,    year: 2026, status: '진입 (PAM-4)' },
+      { gen: 'Gen7',  bandwidth: 16,   year: 2028, status: '1억 IOPS 목표' },
+    ],
+  },
 }
 
 // 공통 컬러 팔레트 (recharts 일관성용)

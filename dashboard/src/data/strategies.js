@@ -13,10 +13,16 @@ export const STRATEGY_OVERVIEW = {
     { label: '빅테크 4사 AI CapEx 2026',     value: '$725B',  subtitle: '+77% YoY — Microsoft만 메모리 영향 $25B 인정', accent: 'green' },
     { label: 'HBM4 NVIDIA Rubin 점유율',     value: '28%',    subtitle: 'SK 70% / Micron 18% 대비 후순위 (UBS)',     accent: 'red' },
     { label: 'HBM 수요 성장 (2026/2027)',     value: '+77/+68%', subtitle: '공급 부족 2027년까지 지속',              accent: 'green' },
-    { label: '텍사스 CHIPS 보조금',          value: '$4.745B', subtitle: '목표 $6~8B의 60~80% — 2단계 협상 필수',     accent: 'amber' },
+    { label: '텍사스 CHIPS 보조금',          value: '$4.745B', subtitle: 'Intel $8.5B / TSMC $6.6B / Micron $6.16B 대비 3위 — D8 2단계 협상 필수', accent: 'amber' },
     { label: 'CXMT HBM3 양산',                value: '2026~',  subtitle: '월 60K 웨이퍼 — 2028 HBM4 위협',           accent: 'red' },
     { label: '1c nm 수율 (현재)',             value: '50~70%', subtitle: '2027년 80%+ 목표 (RS-6 핵심)',             accent: 'amber' },
     { label: 'Samsung HBM4 캐파',             value: 'Sold Out', subtitle: '+50% YoY 증설 — 2027 NVIDIA 안정 공급',  accent: 'green' },
+    { label: 'SK하이닉스 영업이익률 Q1 2026', value: '72%', subtitle: '삼성 분산 포트폴리오 대비 효율 격차 — RS-5 자본 배분 신호', accent: 'red' },
+    { label: 'CXMT DRAM 점유율',              value: '8% → 14%', subtitle: '2025 Q3 → 2027E — 4강 진입, 빅펀드 III $47B', accent: 'amber' },
+    { label: 'AI SSD IOPS 격차',              value: '5.4M / 100M', subtitle: '현재 Micron / SK·Kioxia 2027 목표 — Samsung SLC 로드맵 ⚠️', accent: 'red' },
+    { label: 'Enterprise SSD TAM',           value: '$32B → $69B', subtitle: '2025 → 2031 (북미 DC, CAGR 27.6%)', accent: 'green' },
+    { label: 'UFS 4.1 + LPDDR5X 가격',        value: '+85% YoY', subtitle: '2026 H1 — AI 부족이 모바일 전이, Q4 완화 예상', accent: 'amber' },
+    { label: 'Stargate Korea LOI',            value: 'SE-3 ✅', subtitle: '$15~25B Tier 2 (Samsung+SK+OpenAI 2025-10)', accent: 'green' },
   ],
 
   // Robust 전략 4축 — 보고서 Executive Summary 의 묶음 구조
@@ -43,6 +49,118 @@ export const STRATEGY_OVERVIEW = {
 
   // Executive Summary 한 문장 요약
   oneLineSummary: '호황의 정점에서 다운턴을 준비하는 유일한 방법은 어느 미래가 와도 작동하는 8개 Robust 전략과 2026년 Q4 안에 묶음으로 처리해야 하는 12개 결정이다.',
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COMPETITIVE LANDSCAPE — 5사 종합 비교 (2026-05-07 신규)
+// 출처: data/competitors/{sk-hynix,micron,china-competitors,market-share}.md
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const COMPETITIVE_LANDSCAPE = {
+  vendors: [
+    {
+      id: 'samsung', name: '삼성전자', flag: '🇰🇷', color: '#1428a0',
+      revenue: { fy2025: '$117.5B (메모리)', growth: '+292% YoY (Q1 2026)' },
+      opMargin: { value: '비공개', note: 'P&L 분리 미공개 ⚠️ (SD-1 정보 공백)' },
+      capex: { value: '$19B (메모리 추정)', note: 'DS 부문 분산 — DRAM·NAND·파운드리' },
+      hbmShare: '35% (Q3 2025), 28% NVIDIA Rubin', hbmPosition: '추격',
+      dramRank: '2위 (33년 만의 강등)',
+      nandPosition: 'V8/V9 양산 중, V10 (430L BV) 2026 H2',
+      usSubsidy: { value: '$4.745B', subtitle: '연방 + Texas $250M', rank: 3 },
+      strengthAreas: ['파운드리 통합', 'HBM4 캐파 Sold Out', '5거점 글로벌'],
+      gapAreas: ['SLC AI SSD 로드맵 미공개', 'NAND DC 비중 비공개', '1c nm yield 추격'],
+    },
+    {
+      id: 'skhynix', name: 'SK하이닉스', flag: '🇰🇷', color: '#e8192c',
+      revenue: { fy2025: '97.1조 원 ($73B)', growth: '+47% YoY' },
+      opMargin: { value: '49% (FY2025) → 72% (Q1 2026)', note: 'HBM 집중 효과 — 분산 대비 우위' },
+      capex: { value: '23~25조 원 → 30조 원+ (2026E)', note: 'HBM 95%+ 집중' },
+      hbmShare: '53% (Q3 2025), 70% NVIDIA Rubin', hbmPosition: '리더',
+      dramRank: '1위 (2025 Q1~)',
+      nandPosition: '321L QLC NAND 양산 중',
+      usSubsidy: { value: '$3.87B 협상중', subtitle: '인디애나 패키징 팹', rank: 5 },
+      strengthAreas: ['HBM4 세계 최초 양산', 'NVIDIA 공동 개발 (Rubin)', 'HBM 캐파 3년치 초과'],
+      gapAreas: ['DRAM·NAND 외 다각화 부족', 'M15X 가동 지연 시 캐파 병목'],
+    },
+    {
+      id: 'micron', name: 'Micron', flag: '🇺🇸', color: '#e85d26',
+      revenue: { fy2025: '$37.4B', growth: '+49% YoY' },
+      opMargin: { value: '41% 매출총이익률 (FY2025)', note: 'AI 메모리 매출 5배 성장' },
+      capex: { value: '$140~160억 (FY2026E)', note: 'Idaho ID2 우선 집중' },
+      hbmShare: '11% (Q3 2025), 18% NVIDIA Rubin (UBS)', hbmPosition: '추격',
+      dramRank: '3위',
+      nandPosition: 'G9 (276L) 양산, NAND DC 56% 비중 ✅',
+      usSubsidy: { value: '$6.16B', subtitle: 'Idaho + NY (확정)', rank: 2 },
+      strengthAreas: ['HBM3E NVIDIA 직접 공급', 'CHIPS Act $61.65억 활용', 'DC NAND 56% 공개 ✅'],
+      gapAreas: ['HBM 점유율 변동성 (Q2 2025 21% → Q3 11%)', 'Idaho ID2 완공 지연 리스크'],
+    },
+    {
+      id: 'cxmt', name: 'CXMT', flag: '🇨🇳', color: '#dc2626',
+      revenue: { fy2025: '$28~42억 (추정)', growth: '국가 자본 기반' },
+      opMargin: { value: '비공개 (저수익 용인)', note: '시장 점유율 우선' },
+      capex: { value: '$45억+ (2025 추정)', note: '빅펀드 III + 안후이성 정부' },
+      hbmShare: '미진입 (HBM 진출 시도)', hbmPosition: '신규',
+      dramRank: '4위 (Q3 2025 8% 진입)',
+      nandPosition: '미진출',
+      usSubsidy: { value: '—', subtitle: '미국 Entity List 등재', rank: '—' },
+      strengthAreas: ['DDR5-8000 / LPDDR5X-10667 시연', 'DDR5 yield 80% 달성', '캐파 2024년 17만 → 2026E 30만 WSPM'],
+      gapAreas: ['EUV 차단 → DUV 다중 패터닝 한계', '1x nm 진입 어려움', '범용 DRAM 의존'],
+    },
+    {
+      id: 'ymtc', name: 'YMTC', flag: '🇨🇳', color: '#7c3aed',
+      revenue: { fy2025: '$30~40억 (추정)', growth: '제재 후 회복' },
+      opMargin: { value: '비공개', note: '국유 자본 + 칭화유니그룹' },
+      capex: { value: '$35~50억 (2025 추정)', note: '빅펀드 III + 후베이성' },
+      hbmShare: '미진출 (3공장 50% DRAM 전환 계획)', hbmPosition: '계획',
+      dramRank: '미진입',
+      nandPosition: '294L Xtacking 양산 ✅, 점유 13% (Q3 2025)',
+      usSubsidy: { value: '—', subtitle: '2022 Entity List 등재', rank: '—' },
+      strengthAreas: ['Xtacking 자체 IP', '국산 장비 라인 구축', '점유 5% → 13% 급성장'],
+      gapAreas: ['미국 장비·소재 차단', 'DRAM 진출 미검증'],
+    },
+  ],
+
+  // 핵심 비교 축 — Samsung 약점 시각화
+  comparisonAxes: [
+    {
+      axis: 'HBM 점유율 (Q3 2025)',
+      samsung: { value: '35%', tier: 'mid' },
+      others: [
+        { vendor: 'SK하이닉스', value: '53%', tier: 'leader' },
+        { vendor: 'Micron',     value: '11%', tier: 'low' },
+      ],
+      insight: 'Samsung Q2 2025 17%까지 추락 후 회복. NVIDIA Rubin은 SK 70% / Samsung 28% (UBS)',
+    },
+    {
+      axis: '영업이익률 (Q1 2026)',
+      samsung: { value: '비공개', tier: 'unknown' },
+      others: [
+        { vendor: 'SK하이닉스', value: '72%', tier: 'leader' },
+        { vendor: 'Micron',     value: '41% GP', tier: 'mid' },
+      ],
+      insight: 'P&L 분리 미공개 (SD-1 정보 공백). HBM 집중도 차이가 영업이익률 격차의 핵심',
+    },
+    {
+      axis: '미국 CHIPS Act 보조금',
+      samsung: { value: '$4.745B', tier: 'low' },
+      others: [
+        { vendor: 'Intel',      value: '$8.5B',  tier: 'leader' },
+        { vendor: 'TSMC',       value: '$6.6B',  tier: 'mid' },
+        { vendor: 'Micron',     value: '$6.16B', tier: 'mid' },
+      ],
+      insight: 'Samsung은 $6.4B 예비 발표에서 $4.745B로 $1.655B 감액. D8 2단계 추가 협상이 시급',
+    },
+    {
+      axis: 'NVIDIA AI SSD 파트너십',
+      samsung: { value: '생태계 참여 (PM1763 시연)', tier: 'low' },
+      others: [
+        { vendor: 'Micron',     value: '최초 레퍼런스 9650 ✅',   tier: 'leader' },
+        { vendor: 'SK하이닉스', value: '공동 개발 AI-N P (1억 IOPS) ✅', tier: 'leader' },
+        { vendor: 'Kioxia',     value: '공동 개발 (1억 IOPS) ✅',     tier: 'leader' },
+      ],
+      insight: 'Samsung SLC NAND 기반 초고 IOPS AI SSD 로드맵 미공개 — RS-3 SCADA 트랙 결정점',
+    },
+  ],
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
