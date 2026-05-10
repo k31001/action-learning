@@ -3,9 +3,9 @@ import IndicatorCard from './IndicatorCard'
 import UpdateModal from './UpdateModal'
 
 const CATEGORY_LABELS = {
-  monthly: { label: '월간 모니터링', color: 'text-blue-400', dot: 'bg-blue-400' },
-  quarterly: { label: '분기별 모니터링', color: 'text-purple-400', dot: 'bg-purple-400' },
-  annual: { label: '연간 검토', color: 'text-orange-400', dot: 'bg-orange-400' },
+  monthly: { label: '월간 모니터링', color: 'text-sky-600', dot: 'bg-blue-400' },
+  quarterly: { label: '분기별 모니터링', color: 'text-purple-600', dot: 'bg-purple-400' },
+  annual: { label: '연간 검토', color: 'text-orange-600', dot: 'bg-orange-400' },
 }
 
 export default function IndicatorGrid({ indicators, onUpdate, onAutoUpdate }) {
@@ -29,8 +29,8 @@ export default function IndicatorGrid({ indicators, onUpdate, onAutoUpdate }) {
           onClick={() => setFilter('all')}
           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
             filter === 'all'
-              ? 'bg-gray-700 text-white'
-              : 'bg-gray-900 border border-gray-800 text-gray-400 hover:text-gray-200'
+              ? 'bg-slate-200 text-slate-900'
+              : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800'
           }`}
         >
           전체 ({indicators.length})
@@ -44,8 +44,8 @@ export default function IndicatorGrid({ indicators, onUpdate, onAutoUpdate }) {
               onClick={() => setFilter(cat)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 filter === cat
-                  ? 'bg-gray-700 text-white'
-                  : 'bg-gray-900 border border-gray-800 text-gray-400 hover:text-gray-200'
+                  ? 'bg-slate-200 text-slate-900'
+                  : 'bg-white border border-slate-200 text-slate-500 hover:text-slate-800'
               }`}
             >
               {c.label} ({count})
@@ -64,7 +64,7 @@ export default function IndicatorGrid({ indicators, onUpdate, onAutoUpdate }) {
               <h3 className={`text-xs font-semibold uppercase tracking-wider ${c.color}`}>
                 {c.label}
               </h3>
-              <div className="h-px flex-1 bg-gray-800" />
+              <div className="h-px flex-1 bg-slate-100" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-3">
               {items.map(ind => (

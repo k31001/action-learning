@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { Star, Zap, Info } from 'lucide-react'
 
 const SCENARIO_COLORS = {
-  A: { bar: 'bg-blue-500', text: 'text-blue-300', border: 'border-blue-500/40', bg: 'bg-blue-900/30' },
-  B: { bar: 'bg-emerald-500', text: 'text-emerald-300', border: 'border-emerald-500/40', bg: 'bg-emerald-900/30' },
-  C: { bar: 'bg-red-500', text: 'text-red-300', border: 'border-red-500/40', bg: 'bg-red-900/30' },
-  D: { bar: 'bg-orange-500', text: 'text-orange-300', border: 'border-orange-500/40', bg: 'bg-orange-900/30' },
-  E: { bar: 'bg-purple-500', text: 'text-purple-300', border: 'border-purple-500/40', bg: 'bg-purple-900/30' },
+  A: { bar: 'bg-sky-500', text: 'text-sky-700', border: 'border-sky-300', bg: 'bg-sky-100/30' },
+  B: { bar: 'bg-emerald-500', text: 'text-emerald-700', border: 'border-emerald-300', bg: 'bg-emerald-100/30' },
+  C: { bar: 'bg-red-500', text: 'text-red-700', border: 'border-red-300', bg: 'bg-red-100/30' },
+  D: { bar: 'bg-orange-500', text: 'text-orange-700', border: 'border-orange-500/40', bg: 'bg-orange-100/30' },
+  E: { bar: 'bg-purple-500', text: 'text-purple-700', border: 'border-purple-300', bg: 'bg-purple-100/30' },
 }
 
 export default function ScenarioPanel({ scenarios, adjustedScenarios, onUpdate }) {
@@ -28,18 +28,18 @@ export default function ScenarioPanel({ scenarios, adjustedScenarios, onUpdate }
   }
 
   return (
-    <section className="bg-gray-900 border border-gray-800 rounded-xl p-4">
+    <section className="bg-white border border-slate-200 rounded-xl p-4">
       <div className="flex items-center justify-between mb-1">
-        <h2 className="text-sm font-semibold text-gray-200">시나리오 확률 추정</h2>
-        <span className={`text-xs px-2 py-0.5 rounded font-mono ${total === 100 ? 'text-green-400' : 'text-yellow-400'}`}>
+        <h2 className="text-sm font-semibold text-slate-800">시나리오 확률 추정</h2>
+        <span className={`text-xs px-2 py-0.5 rounded font-mono ${total === 100 ? 'text-emerald-600' : 'text-yellow-600'}`}>
           기준 합계 {total}%
         </span>
       </div>
 
       {/* Auto-adjustment notice */}
       {hasAdjustment && (
-        <div className="flex items-start gap-2 bg-yellow-950/40 border border-yellow-500/30 rounded-lg px-3 py-2 mb-3 text-xs text-yellow-300">
-          <Zap size={12} className="mt-0.5 shrink-0 text-yellow-400" />
+        <div className="flex items-start gap-2 bg-yellow-50 border border-amber-200 rounded-lg px-3 py-2 mb-3 text-xs text-yellow-700">
+          <Zap size={12} className="mt-0.5 shrink-0 text-yellow-600" />
           <span>활성 트리거에 의해 확률이 자동 조정됐습니다. 막대의 투명한 부분이 기준값, 진한 부분이 조정값입니다.</span>
         </div>
       )}
@@ -56,14 +56,14 @@ export default function ScenarioPanel({ scenarios, adjustedScenarios, onUpdate }
             <div key={sc.id} className={`rounded-lg border ${c.border} ${c.bg} p-3`}>
               <div className="flex items-center gap-2 mb-2">
                 <span className={`text-xs font-bold ${c.text}`}>{sc.id}</span>
-                <span className="text-xs text-gray-200 font-medium">{sc.name}</span>
-                {sc.mainBet && <Star size={11} className="text-yellow-400 fill-yellow-400" />}
-                <span className="text-xs text-gray-500 ml-auto">{sc.description}</span>
+                <span className="text-xs text-slate-800 font-medium">{sc.name}</span>
+                {sc.mainBet && <Star size={11} className="text-yellow-600 fill-yellow-400" />}
+                <span className="text-xs text-slate-500 ml-auto">{sc.description}</span>
               </div>
 
               {/* Bar: base (dim) + adjusted (bright) */}
               <div className="flex items-center gap-3">
-                <div className="flex-1 relative h-2.5 bg-gray-800 rounded-full overflow-hidden">
+                <div className="flex-1 relative h-2.5 bg-slate-100 rounded-full overflow-hidden">
                   {/* Base bar (dimmed, shown when adjusted) */}
                   {delta !== 0 && (
                     <div
@@ -88,10 +88,10 @@ export default function ScenarioPanel({ scenarios, adjustedScenarios, onUpdate }
                         onChange={e => setDraft(e.target.value)}
                         onBlur={() => commitEdit(sc.id)}
                         onKeyDown={e => e.key === 'Enter' && commitEdit(sc.id)}
-                        className="w-12 bg-gray-800 border border-gray-600 rounded px-1.5 py-0.5 text-xs text-white text-center focus:outline-none focus:border-gray-400"
+                        className="w-12 bg-slate-100 border border-slate-300 rounded px-1.5 py-0.5 text-xs text-slate-900 text-center focus:outline-none focus:border-slate-400"
                         autoFocus
                       />
-                      <span className="text-xs text-gray-400">%</span>
+                      <span className="text-xs text-slate-500">%</span>
                     </div>
                   ) : (
                     <button
@@ -105,7 +105,7 @@ export default function ScenarioPanel({ scenarios, adjustedScenarios, onUpdate }
 
                   {/* Delta badge */}
                   {delta !== 0 && (
-                    <span className={`text-xs font-mono font-bold ${delta > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                    <span className={`text-xs font-mono font-bold ${delta > 0 ? 'text-emerald-600' : 'text-red-600'}`}>
                       {delta > 0 ? `+${delta}` : delta}
                     </span>
                   )}
@@ -114,7 +114,7 @@ export default function ScenarioPanel({ scenarios, adjustedScenarios, onUpdate }
 
               {/* Base label */}
               {delta !== 0 && (
-                <div className="mt-1 text-xs text-gray-600 text-right">
+                <div className="mt-1 text-xs text-slate-400 text-right">
                   기준 {baseProb}% → 조정 {adjusted}%
                 </div>
               )}
@@ -123,7 +123,7 @@ export default function ScenarioPanel({ scenarios, adjustedScenarios, onUpdate }
         })}
       </div>
 
-      <p className="mt-2 text-xs text-gray-600">
+      <p className="mt-2 text-xs text-slate-400">
         확률값 클릭 → 기준값 수정 | 트리거 발동 시 자동 조정 (정규화 후 합계 100%)
       </p>
     </section>

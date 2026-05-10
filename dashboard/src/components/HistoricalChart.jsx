@@ -29,12 +29,12 @@ function tickDate(str) {
 const CustomTooltip = ({ active, payload, label, unit, formatValue }) => {
   if (!active || !payload?.length) return null
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs shadow-xl">
-      <div className="text-gray-400 mb-1.5">{label}</div>
+    <div className="bg-slate-100 border border-slate-300 rounded-lg p-2.5 text-xs shadow-xl">
+      <div className="text-slate-500 mb-1.5">{label}</div>
       {payload.map((p, i) => (
         <div key={i} className="flex items-center gap-2">
           <span style={{ color: p.color }}>●</span>
-          <span className="text-gray-300">{p.name}:</span>
+          <span className="text-slate-700">{p.name}:</span>
           <span className="font-mono font-bold" style={{ color: p.color }}>
             {formatValue ? formatValue(p.value) : p.value?.toLocaleString('ko-KR', { maximumFractionDigits: 2 })}
             {unit ? ` ${unit}` : ''}
@@ -57,7 +57,7 @@ export function StockHistoryChart({ data, color = '#10b981', unit = '', formatVa
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
-        <span className={`text-xs font-medium ${pct >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+        <span className={`text-xs font-medium ${pct >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
           범위 내 {pct >= 0 ? '+' : ''}{pct.toFixed(1)}%
         </span>
         <div className="flex gap-1">
@@ -67,8 +67,8 @@ export function StockHistoryChart({ data, color = '#10b981', unit = '', formatVa
               onClick={() => setRange(o.months)}
               className={`px-2 py-0.5 rounded text-xs transition-colors ${
                 range === o.months
-                  ? 'bg-gray-700 text-white'
-                  : 'text-gray-500 hover:text-gray-300'
+                  ? 'bg-slate-200 text-slate-900'
+                  : 'text-slate-500 hover:text-slate-700'
               }`}
             >
               {o.label}
@@ -85,8 +85,8 @@ export function StockHistoryChart({ data, color = '#10b981', unit = '', formatVa
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-          <XAxis dataKey="date" tickFormatter={tickDate} tick={{ fill: '#6b7280', fontSize: 10 }} interval="preserveStartEnd" />
-          <YAxis tick={{ fill: '#6b7280', fontSize: 10 }} width={50}
+          <XAxis dataKey="date" tickFormatter={tickDate} tick={{ fill: '#475569', fontSize: 10 }} interval="preserveStartEnd" />
+          <YAxis tick={{ fill: '#475569', fontSize: 10 }} width={50}
             tickFormatter={v => unit === '$' ? `$${v.toFixed(0)}` : v.toFixed(0)} />
           <Tooltip content={<CustomTooltip unit={unit} formatValue={formatValue} />} />
           <Area
@@ -111,12 +111,12 @@ export function CapExChart({ data }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
-        <span className="text-xs text-gray-500">분기별 합산 AI CapEx</span>
+        <span className="text-xs text-slate-500">분기별 합산 AI CapEx</span>
         <div className="flex gap-1">
           {RANGE_OPTIONS.slice(0, 4).map(o => (
             <button key={o.months} onClick={() => setRange(o.months)}
               className={`px-2 py-0.5 rounded text-xs transition-colors ${
-                range === o.months ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-gray-300'
+                range === o.months ? 'bg-slate-200 text-slate-900' : 'text-slate-500 hover:text-slate-700'
               }`}>
               {o.label}
             </button>
@@ -126,8 +126,8 @@ export function CapExChart({ data }) {
       <ResponsiveContainer width="100%" height={160}>
         <BarChart data={filtered} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-          <XAxis dataKey="period" tick={{ fill: '#6b7280', fontSize: 10 }} />
-          <YAxis tick={{ fill: '#6b7280', fontSize: 10 }} width={40}
+          <XAxis dataKey="period" tick={{ fill: '#475569', fontSize: 10 }} />
+          <YAxis tick={{ fill: '#475569', fontSize: 10 }} width={40}
             tickFormatter={v => `$${v}B`} />
           <Tooltip content={<CustomTooltip unit="$B" />} />
           <Bar dataKey="total" name="4사 합산" fill="#6366f1" radius={[3, 3, 0, 0]} />
@@ -156,11 +156,11 @@ export function HbmShareChart({ data }) {
       <div className="flex items-center justify-between mb-2">
         <div className="flex gap-1">
           <button onClick={() => setView('hbm')}
-            className={`px-2 py-0.5 rounded text-xs ${view === 'hbm' ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-gray-300'}`}>
+            className={`px-2 py-0.5 rounded text-xs ${view === 'hbm' ? 'bg-slate-200 text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}>
             HBM
           </button>
           <button onClick={() => setView('dram')}
-            className={`px-2 py-0.5 rounded text-xs ${view === 'dram' ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-gray-300'}`}>
+            className={`px-2 py-0.5 rounded text-xs ${view === 'dram' ? 'bg-slate-200 text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}>
             DRAM 전체
           </button>
         </div>
@@ -168,8 +168,8 @@ export function HbmShareChart({ data }) {
       <ResponsiveContainer width="100%" height={180}>
         <LineChart data={source} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-          <XAxis dataKey="period" tick={{ fill: '#6b7280', fontSize: 9 }} />
-          <YAxis domain={[0, 80]} tick={{ fill: '#6b7280', fontSize: 10 }} tickFormatter={v => `${v}%`} width={36} />
+          <XAxis dataKey="period" tick={{ fill: '#475569', fontSize: 9 }} />
+          <YAxis domain={[0, 80]} tick={{ fill: '#475569', fontSize: 10 }} tickFormatter={v => `${v}%`} width={36} />
           <Tooltip content={<CustomTooltip unit="%" />} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
           <ReferenceLine y={50} stroke="#374151" strokeDasharray="4 3" />
@@ -242,12 +242,12 @@ export function StockCompareChart({ stocksData }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
-        <span className="text-xs text-gray-500">기준: 선택 기간 시작 = 100</span>
+        <span className="text-xs text-slate-500">기준: 선택 기간 시작 = 100</span>
         <div className="flex gap-1">
           {RANGE_OPTIONS.slice(0, 4).map(o => (
             <button key={o.months} onClick={() => setRange(o.months)}
               className={`px-2 py-0.5 rounded text-xs transition-colors ${
-                range === o.months ? 'bg-gray-700 text-white' : 'text-gray-500 hover:text-gray-300'
+                range === o.months ? 'bg-slate-200 text-slate-900' : 'text-slate-500 hover:text-slate-700'
               }`}>
               {o.label}
             </button>
@@ -257,14 +257,14 @@ export function StockCompareChart({ stocksData }) {
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={normalized} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-          <XAxis dataKey="date" tickFormatter={tickDate} tick={{ fill: '#6b7280', fontSize: 10 }} interval="preserveStartEnd" />
-          <YAxis tick={{ fill: '#6b7280', fontSize: 10 }} width={40} tickFormatter={v => `${v}`} />
+          <XAxis dataKey="date" tickFormatter={tickDate} tick={{ fill: '#475569', fontSize: 10 }} interval="preserveStartEnd" />
+          <YAxis tick={{ fill: '#475569', fontSize: 10 }} width={40} tickFormatter={v => `${v}`} />
           <Tooltip content={<CustomTooltip unit="" />} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
           <ReferenceLine y={100} stroke="#374151" strokeDasharray="4 3" />
           {validStocks.map(([sym]) => (
             <Line key={sym} type="monotone" dataKey={sym} name={NAMES[sym] ?? sym}
-              stroke={COLORS[sym] ?? '#9ca3af'} strokeWidth={2} dot={false}
+              stroke={COLORS[sym] ?? '#64748b'} strokeWidth={2} dot={false}
               connectNulls activeDot={{ r: 4, strokeWidth: 0 }} />
           ))}
         </LineChart>
@@ -275,7 +275,7 @@ export function StockCompareChart({ stocksData }) {
 
 function EmptyChart() {
   return (
-    <div className="h-32 flex items-center justify-center text-xs text-gray-600">
+    <div className="h-32 flex items-center justify-center text-xs text-slate-400">
       데이터 로딩 중...
     </div>
   )

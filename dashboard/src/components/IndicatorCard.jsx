@@ -26,7 +26,7 @@ const STATUS_CONFIG = {
   unknown: {
     badge: 'badge-unknown',
     card: 'status-unknown',
-    dot: 'bg-gray-500',
+    dot: 'bg-slate-400',
     label: '미입력',
     icon: '?',
   },
@@ -65,12 +65,12 @@ function MiniSparkline({ history, unit }) {
   return (
     <div className="flex items-center gap-1.5 mt-1">
       <svg width={w} height={h} className="overflow-visible">
-        <path d={path} fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gray-500" />
+        <path d={path} fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-500" />
         <circle cx={points[points.length - 1].x} cy={points[points.length - 1].y} r="2.5" className="fill-gray-300" />
       </svg>
-      {trend === 'up' && <TrendingUp size={12} className="text-green-400" />}
-      {trend === 'down' && <TrendingDown size={12} className="text-red-400" />}
-      {trend === 'flat' && <Minus size={12} className="text-gray-500" />}
+      {trend === 'up' && <TrendingUp size={12} className="text-emerald-600" />}
+      {trend === 'down' && <TrendingDown size={12} className="text-red-600" />}
+      {trend === 'flat' && <Minus size={12} className="text-slate-500" />}
     </div>
   )
 }
@@ -115,12 +115,12 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
             {cfg.label}
           </span>
           {indicator.isCritical && (
-            <span className="text-xs px-2 py-0.5 rounded-full bg-red-950/60 text-red-400 ring-1 ring-red-500/40 font-medium">
+            <span className="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 ring-1 ring-red-300 font-medium">
               핵심
             </span>
           )}
           {indicator.autoUpdateIsProxy && (
-            <span className="text-xs px-2 py-0.5 rounded-full bg-amber-950/60 text-amber-400 ring-1 ring-amber-500/30 font-medium" title="직접 데이터 대신 프록시 지표 사용">
+            <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-600 ring-1 ring-amber-500/30 font-medium" title="직접 데이터 대신 프록시 지표 사용">
               프록시
             </span>
           )}
@@ -130,7 +130,7 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
             <button
               onClick={handleAutoUpdate}
               disabled={updating}
-              className="p-1.5 rounded-lg hover:bg-gray-700/60 text-gray-500 hover:text-blue-400 transition-colors disabled:opacity-40"
+              className="p-1.5 rounded-lg hover:bg-slate-200/60 text-slate-500 hover:text-sky-600 transition-colors disabled:opacity-40"
               title="자동 업데이트"
             >
               <RefreshCw size={13} className={updating ? 'animate-spin' : ''} />
@@ -138,7 +138,7 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
           )}
           <button
             onClick={() => onEdit(indicator)}
-            className="p-1.5 rounded-lg hover:bg-gray-700/60 text-gray-500 hover:text-gray-200 transition-colors"
+            className="p-1.5 rounded-lg hover:bg-slate-200/60 text-slate-500 hover:text-slate-800 transition-colors"
             title="수동 입력"
           >
             <Pencil size={13} />
@@ -147,21 +147,21 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
       </div>
 
       {/* Name */}
-      <h3 className="text-sm font-semibold text-gray-100 leading-snug mb-1">
+      <h3 className="text-sm font-semibold text-slate-900 leading-snug mb-1">
         {indicator.name}
       </h3>
-      <p className="text-xs text-gray-500 mb-3">{indicator.source}</p>
+      <p className="text-xs text-slate-500 mb-3">{indicator.source}</p>
 
       {/* Current value */}
       <div className="mb-3">
-        <div className="text-2xl font-mono font-bold text-white">
+        <div className="text-2xl font-mono font-bold text-slate-900">
           {formatValue(indicator)}
         </div>
         <MiniSparkline history={indicator.history} unit={indicator.unit} />
       </div>
 
       {/* Alert threshold */}
-      <div className="text-xs text-gray-500 mb-3 leading-relaxed">
+      <div className="text-xs text-slate-500 mb-3 leading-relaxed">
         {indicator.alertDescription}
       </div>
 
@@ -173,29 +173,29 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
               {s}
             </span>
           ))}
-          <span className="text-xs text-gray-500 self-center">{indicator.scenarioText}</span>
+          <span className="text-xs text-slate-500 self-center">{indicator.scenarioText}</span>
         </div>
       )}
 
       {/* Auto-update source label */}
       {indicator.autoUpdateSource && (
-        <div className="text-xs text-gray-600 mb-1">
-          <span className="text-gray-700">자동출처:</span> {indicator.autoUpdateSource}
+        <div className="text-xs text-slate-400 mb-1">
+          <span className="text-slate-300">자동출처:</span> {indicator.autoUpdateSource}
         </div>
       )}
 
       {/* Auto-update error */}
       {updateError && (
-        <div className="text-xs text-red-400 bg-red-950/30 rounded px-2 py-1 mb-2">
+        <div className="text-xs text-red-600 bg-red-50 rounded px-2 py-1 mb-2">
           업데이트 실패: {updateError}
         </div>
       )}
 
       {/* Last updated */}
       {indicator.lastUpdated && (
-        <div className="text-xs text-gray-600 border-t border-gray-800/60 pt-2 mt-2">
+        <div className="text-xs text-slate-400 border-t border-slate-200/60 pt-2 mt-2">
           업데이트: {indicator.lastUpdated}
-          {indicator.note && <span className="ml-2 text-gray-600 italic truncate">— {indicator.note}</span>}
+          {indicator.note && <span className="ml-2 text-slate-400 italic truncate">— {indicator.note}</span>}
         </div>
       )}
     </div>

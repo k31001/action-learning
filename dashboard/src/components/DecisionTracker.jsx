@@ -130,10 +130,10 @@ function daysUntil(deadline) {
 }
 
 function statusColor(days) {
-  if (days < 0) return 'text-red-400 bg-red-900/30 border-red-800'
-  if (days < 60) return 'text-orange-400 bg-orange-900/30 border-orange-800'
-  if (days < 180) return 'text-amber-300 bg-amber-900/30 border-amber-800'
-  return 'text-green-400 bg-green-900/30 border-green-800'
+  if (days < 0) return 'text-red-600 bg-red-100/30 border-red-800'
+  if (days < 60) return 'text-orange-600 bg-orange-100/30 border-orange-800'
+  if (days < 180) return 'text-amber-700 bg-amber-100/30 border-amber-800'
+  return 'text-emerald-600 bg-emerald-100/30 border-green-800'
 }
 
 export default function DecisionTracker({ indicators }) {
@@ -142,18 +142,18 @@ export default function DecisionTracker({ indicators }) {
   const indicatorMap = Object.fromEntries(indicators.map(i => [i.id, i]))
 
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
+    <div className="bg-white border border-slate-200 rounded-xl p-4">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-sm font-semibold text-gray-200">11개 즉시 결정 — 묶음 의결</h2>
-          <p className="text-xs text-gray-500 mt-0.5">
+          <h2 className="text-sm font-semibold text-slate-800">11개 즉시 결정 — 묶음 의결</h2>
+          <p className="text-xs text-slate-500 mt-0.5">
             모든 결정은 2026년 Q4 마감. 단일 결정으로 분리 불가.
           </p>
         </div>
         <div className="flex items-center gap-3 text-xs">
-          <span className="flex items-center gap-1 text-orange-400">
+          <span className="flex items-center gap-1 text-orange-600">
             <Clock size={12} /> D-{Math.min(...DECISIONS.map(d => daysUntil(d.deadline)))}
-            <span className="text-gray-500">최단 마감</span>
+            <span className="text-slate-500">최단 마감</span>
           </span>
         </div>
       </div>
@@ -176,30 +176,30 @@ export default function DecisionTracker({ indicators }) {
                 </span>
                 <button
                   onClick={() => setExpanded(isExpanded ? null : d.id)}
-                  className="text-gray-500 hover:text-white"
+                  className="text-slate-500 hover:text-slate-900"
                 >
                   {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                 </button>
               </div>
 
-              <h3 className="text-sm font-semibold text-white mb-1.5 leading-snug">
+              <h3 className="text-sm font-semibold text-slate-900 mb-1.5 leading-snug">
                 {d.title}
               </h3>
 
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[10px] text-gray-400">마감</span>
-                <span className="text-xs font-mono text-white">{d.deadline}</span>
-                <span className={`text-xs font-bold ${days < 60 ? 'text-orange-400' : 'text-gray-300'}`}>
+                <span className="text-[10px] text-slate-500">마감</span>
+                <span className="text-xs font-mono text-slate-900">{d.deadline}</span>
+                <span className={`text-xs font-bold ${days < 60 ? 'text-orange-600' : 'text-slate-700'}`}>
                   D-{days}
                 </span>
               </div>
 
               {linkedIndicator && (
                 <div className="flex items-center gap-2 mb-2 px-2 py-1 rounded bg-black/30 text-[10px]">
-                  <span className="text-gray-400">연계 KPI:</span>
-                  <span className="text-white">{linkedIndicator.name}</span>
+                  <span className="text-slate-500">연계 KPI:</span>
+                  <span className="text-slate-900">{linkedIndicator.name}</span>
                   {linkedIndicator.currentValue != null && (
-                    <span className="font-mono text-amber-300 ml-auto">
+                    <span className="font-mono text-amber-700 ml-auto">
                       {linkedIndicator.currentValue}{linkedIndicator.unit === '%' ? '%' : ` ${linkedIndicator.unit ?? ''}`}
                     </span>
                   )}
@@ -207,18 +207,18 @@ export default function DecisionTracker({ indicators }) {
               )}
 
               {isExpanded && (
-                <div className="mt-2 pt-2 border-t border-gray-700/50 space-y-2 text-xs">
+                <div className="mt-2 pt-2 border-t border-slate-300/50 space-y-2 text-xs">
                   <div>
-                    <span className="text-gray-500">근거: </span>
-                    <span className="text-gray-200">{d.rationale}</span>
+                    <span className="text-slate-500">근거: </span>
+                    <span className="text-slate-800">{d.rationale}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">비상 계획: </span>
-                    <span className="text-gray-300">{d.fallback}</span>
+                    <span className="text-slate-500">비상 계획: </span>
+                    <span className="text-slate-700">{d.fallback}</span>
                   </div>
                   <div>
-                    <span className="text-gray-500">벤치마크: </span>
-                    <span className="text-amber-200 italic">{d.benchmark}</span>
+                    <span className="text-slate-500">벤치마크: </span>
+                    <span className="text-amber-700 italic">{d.benchmark}</span>
                   </div>
                 </div>
               )}
@@ -227,12 +227,12 @@ export default function DecisionTracker({ indicators }) {
         })}
       </div>
 
-      <div className="mt-4 p-3 rounded-lg border border-amber-800/40 bg-amber-900/10">
+      <div className="mt-4 p-3 rounded-lg border border-amber-800/40 bg-amber-100/10">
         <div className="flex items-start gap-2">
-          <AlertCircle size={14} className="text-amber-400 mt-0.5 shrink-0" />
+          <AlertCircle size={14} className="text-amber-600 mt-0.5 shrink-0" />
           <div className="text-xs">
-            <span className="font-semibold text-amber-300">묶음 패키지로 의결 필요 — </span>
-            <span className="text-gray-300">
+            <span className="font-semibold text-amber-700">묶음 패키지로 의결 필요 — </span>
+            <span className="text-slate-700">
               D1(HBM4 점유율) ↔ D5(AI 도구) ↔ D7(잉여 인력 전환)은 직렬 의존. D4(텍사스 1·2단계) ↔ D8(추가 보조금)은 동시 처리 필수. D6(이사회 정책화)이 D9(M&A 펀드 적립)의 거버넌스 기반. D11(AI 인프라 수직 진출)은 D6(재무 규율)의 다운사이클 capex 하한과 충돌 점검 필요.
             </span>
           </div>

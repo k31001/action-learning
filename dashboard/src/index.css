@@ -11,59 +11,61 @@
   }
 
   body {
-    @apply text-gray-100 font-sans antialiased;
-    background-color: #0a0b0f;
-    /* 두 개의 부드러운 광원 — 깊이감 + 차가운 군청 톤 */
+    @apply text-slate-800 font-sans antialiased;
+    background-color: #fafbff;
+    /* 두 개의 부드러운 광원 — 깊이감 + 차가운 sky 톤 + 따뜻한 액센트 */
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(20, 40, 160, 0.12), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 90% 110%, rgba(20, 40, 160, 0.05), transparent 60%);
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(14, 165, 233, 0.10), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 110%, rgba(245, 158, 11, 0.06), transparent 55%);
     background-attachment: fixed;
     min-height: 100vh;
   }
 
-  /* 헤딩 letter-spacing — Inter 의 미세 트래킹 (전문 dashboard 표준) */
+  /* 헤딩 letter-spacing — Inter 의 미세 트래킹 */
   h1, h2, h3, h4 {
     letter-spacing: -0.011em;
+    @apply text-slate-900;
   }
 
-  /* 숫자 표기 — tabular nums 로 자릿수 정렬 (KPI/표 가독성) */
+  /* 숫자 표기 — tabular nums 로 자릿수 정렬 */
   .font-mono, code, pre {
     font-variant-numeric: tabular-nums;
   }
 
-  /* 스크롤바 — dark theme 에 맞춰 미세 조정 */
+  /* 스크롤바 — light theme */
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.12);
     border-radius: 6px;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.15); background-clip: padding-box; border: 2px solid transparent; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(15, 23, 42, 0.22); background-clip: padding-box; border: 2px solid transparent; }
 }
 
 @layer components {
-  /* ── 상태 배경 (이전 가독성 유지 + 대비 살짝 낮춤) ───────────────────── */
-  .status-normal   { @apply border-emerald-500/50 bg-emerald-950/30; }
-  .status-warning  { @apply border-amber-500/50 bg-amber-950/30; }
-  .status-critical { @apply border-red-500/50 bg-red-950/30; }
-  .status-unknown  { @apply border-white/10 bg-white/[0.02]; }
+  /* ── 상태 배경 (light 톤) ──────────────────────────────────────────────── */
+  .status-normal   { @apply border-emerald-300 bg-emerald-50; }
+  .status-warning  { @apply border-amber-300 bg-amber-50; }
+  .status-critical { @apply border-red-300 bg-red-50; }
+  .status-unknown  { @apply border-slate-200 bg-slate-50; }
 
-  /* ── 배지 (saturation 한 단계 낮춤 — '카툰' 인상 제거) ───────────────── */
-  .badge-normal   { @apply bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/30; }
-  .badge-warning  { @apply bg-amber-500/15 text-amber-300 ring-1 ring-amber-500/30; }
-  .badge-critical { @apply bg-red-500/15 text-red-300 ring-1 ring-red-500/30; }
-  .badge-unknown  { @apply bg-white/5 text-gray-400 ring-1 ring-white/10; }
+  /* ── 배지 (light 톤) ──────────────────────────────────────────────────── */
+  .badge-normal   { @apply bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200; }
+  .badge-warning  { @apply bg-amber-50 text-amber-700 ring-1 ring-amber-200; }
+  .badge-critical { @apply bg-red-50 text-red-700 ring-1 ring-red-200; }
+  .badge-unknown  { @apply bg-slate-50 text-slate-600 ring-1 ring-slate-200; }
 
-  .scenario-A { @apply bg-blue-500/15    text-blue-300    ring-1 ring-blue-500/30; }
-  .scenario-B { @apply bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/30; }
-  .scenario-C { @apply bg-red-500/15     text-red-300     ring-1 ring-red-500/30; }
-  .scenario-D { @apply bg-orange-500/15  text-orange-300  ring-1 ring-orange-500/30; }
-  .scenario-E { @apply bg-purple-500/15  text-purple-300  ring-1 ring-purple-500/30; }
+  /* 시나리오 chip (정체성 색은 유지, 라이트 톤으로 옅게) */
+  .scenario-A { @apply bg-blue-50    text-blue-700    ring-1 ring-blue-200; }
+  .scenario-B { @apply bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200; }
+  .scenario-C { @apply bg-red-50     text-red-700     ring-1 ring-red-200; }
+  .scenario-D { @apply bg-orange-50  text-orange-700  ring-1 ring-orange-200; }
+  .scenario-E { @apply bg-purple-50  text-purple-700  ring-1 ring-purple-200; }
 }
 
-/* 발동된 critical 항목 — 미세 호흡 (이전보다 약하게) */
+/* 발동된 critical — 미세 호흡 */
 .pulse-critical {
   animation: pulseCritical 2.4s ease-in-out infinite;
 }

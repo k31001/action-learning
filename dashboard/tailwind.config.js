@@ -8,13 +8,12 @@ export default {
           blue: '#1428A0',
           dark: '#0A1854',
         },
-        // 정제된 dark UI 팔레트 (Linear/Vercel/Stripe 영감)
-        // 기존 gray-* 호환을 위해 추가만 — 기존 클래스에 영향 없음
-        canvas: '#0a0b0f',
+        // 라이트 테마 base 팔레트 — 화이트 + 스카이블루 + 월톤(amber) 액센트
+        canvas: '#fafbff',                // 페이지 base — 아주 옅은 sky 틴트
         surface: {
-          DEFAULT: '#101218',
-          raised:  '#161922',
-          subtle:  '#0d0f15',
+          DEFAULT: '#ffffff',              // 기본 카드
+          raised:  '#ffffff',              // 모달/팝오버 (그림자로 구분)
+          subtle:  '#f6f8fc',              // 헤더/섹션 미묘한 분리
         },
       },
       fontFamily: {
@@ -29,8 +28,9 @@ export default {
         ],
       },
       boxShadow: {
-        soft:    '0 1px 2px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.04)',
-        elevate: '0 4px 16px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.06)',
+        // 라이트 모드 — 미세한 elevation
+        soft:    '0 1px 2px rgba(15, 23, 42, .04), 0 0 0 1px rgba(15, 23, 42, .05)',
+        elevate: '0 4px 16px rgba(15, 23, 42, .08), 0 0 0 1px rgba(15, 23, 42, .06)',
       },
     },
   },

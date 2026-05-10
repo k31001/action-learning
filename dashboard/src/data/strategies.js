@@ -312,9 +312,9 @@ export const DECISIONS = [
 // 클러스터별 그룹핑
 export const DECISION_CLUSTERS = [
   { cluster: 'D-150', label: 'D-150 (가장 임박)', subtitle: '~2026년 9월 30일',
-    color: '#ef4444', bgClass: 'bg-red-950/30 border-red-700/40' },
+    color: '#ef4444', bgClass: 'bg-red-50 border-red-200' },
   { cluster: 'D-240', label: 'D-240 (중기)',     subtitle: '~2026년 Q4',
-    color: '#f59e0b', bgClass: 'bg-amber-950/30 border-amber-700/40' },
+    color: '#f59e0b', bgClass: 'bg-amber-50 border-amber-200' },
   { cluster: 'D-330', label: 'D-330 (후순위)',    subtitle: '~2027년 Q1',
-    color: '#3b82f6', bgClass: 'bg-blue-950/30 border-blue-700/40' },
+    color: '#3b82f6', bgClass: 'bg-sky-50 border-sky-200' },
 ]

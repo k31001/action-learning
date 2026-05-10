@@ -18,11 +18,11 @@ const SUB_TABS = [
 // ── 공통 ────────────────────────────────────────────────────────────────────
 function Card({ title, source, children, className = '' }) {
   return (
-    <div className={`bg-gray-900 border border-gray-800 rounded-xl p-4 ${className}`}>
+    <div className={`bg-white border border-slate-200 rounded-xl p-4 ${className}`}>
       {title && (
         <div className="mb-3">
-          <h3 className="text-sm font-semibold text-gray-200">{title}</h3>
-          {source && <p className="text-xs text-gray-600 mt-0.5">출처: {source}</p>}
+          <h3 className="text-sm font-semibold text-slate-800">{title}</h3>
+          {source && <p className="text-xs text-slate-400 mt-0.5">출처: {source}</p>}
         </div>
       )}
       {children}
@@ -30,8 +30,8 @@ function Card({ title, source, children, className = '' }) {
   )
 }
 
-const AXIS = { tick: { fill: '#9ca3af', fontSize: 11 }, axisLine: { stroke: '#374151' }, tickLine: { stroke: '#374151' } }
-const GRID = { stroke: '#1f2937', strokeDasharray: '3 3' }
+const AXIS = { tick: { fill: '#64748b', fontSize: 11 }, axisLine: { stroke: '#e2e8f0' }, tickLine: { stroke: '#e2e8f0' } }
+const GRID = { stroke: '#e2e8f0', strokeDasharray: '3 3' }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STEEP
@@ -50,10 +50,10 @@ function STEEPPanel() {
             <YAxis yAxisId="left" {...AXIS} />
             <YAxis yAxisId="right" orientation="right" {...AXIS} />
             <Tooltip
-              contentStyle={{ background: '#1f2937', border: '1px solid #374151', borderRadius: 8, fontSize: 11 }}
-              labelStyle={{ color: '#e5e7eb' }}
+              contentStyle={{ background: '#ffffff', border: '1px solid #374151', borderRadius: 8, fontSize: 11 }}
+              labelStyle={{ color: '#0f172a' }}
             />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#9ca3af' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#64748b' }} />
             <Bar yAxisId="left" dataKey="count" name="요인 수" radius={[4, 4, 0, 0]}>
               {totals.map((c, i) => <Cell key={i} fill={c.color} />)}
             </Bar>
@@ -66,43 +66,44 @@ function STEEPPanel() {
         {STEEP_DATA.categories.map(cat => {
           const isOpen = openCat === cat.id
           return (
-            <div key={cat.id} className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+            <div key={cat.id} className="bg-white border border-slate-200 rounded-xl overflow-hidden">
               <button
                 onClick={() => setOpenCat(isOpen ? null : cat.id)}
-                className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-800/50 transition-colors text-left"
+                className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-100 transition-colors text-left"
               >
                 <span
                   className="w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold shrink-0 text-sm"
+
                   style={{ backgroundColor: cat.color }}
                 >
                   {cat.id}
                 </span>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-gray-200">{cat.label} ({cat.name})</span>
-                    <span className="text-xs text-gray-500">— {cat.factors.length}개 요인</span>
+                    <span className="text-sm font-semibold text-slate-800">{cat.label} ({cat.name})</span>
+                    <span className="text-xs text-slate-500">— {cat.factors.length}개 요인</span>
                   </div>
-                  <p className="text-xs text-gray-500 mt-0.5">{cat.summary}</p>
+                  <p className="text-xs text-slate-500 mt-0.5">{cat.summary}</p>
                 </div>
-                {isOpen ? <ChevronUp size={16} className="text-gray-500" /> : <ChevronDown size={16} className="text-gray-500" />}
+                {isOpen ? <ChevronUp size={16} className="text-slate-500" /> : <ChevronDown size={16} className="text-slate-500" />}
               </button>
               {isOpen && (
-                <div className="border-t border-gray-800 px-4 py-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="border-t border-slate-200 px-4 py-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {cat.factors.map(f => {
                     const iu = f.impact * f.uncertainty
                     const tier = iu >= 16 ? 'critical' : iu >= 9 ? 'medium' : 'low'
                     const tierCls = {
-                      critical: 'border-red-500/40 bg-red-950/20',
-                      medium:   'border-amber-500/30 bg-amber-950/15',
-                      low:      'border-gray-700 bg-gray-800/30',
+                      critical: 'border-red-300 bg-red-50/70',
+                      medium:   'border-amber-200 bg-amber-50',
+                      low:      'border-slate-300 bg-slate-50',
                     }[tier]
                     return (
                       <div key={f.id} className={`flex items-center gap-2 py-1.5 px-2.5 rounded-lg border ${tierCls}`}>
-                        <span className="text-[10px] font-mono text-gray-500 shrink-0 w-7">{f.id}</span>
-                        <span className="text-xs text-gray-300 flex-1 truncate">{f.name}</span>
-                        <span className="text-[10px] font-mono text-gray-500 shrink-0">I {f.impact}/U {f.uncertainty}</span>
+                        <span className="text-[10px] font-mono text-slate-500 shrink-0 w-7">{f.id}</span>
+                        <span className="text-xs text-slate-700 flex-1 truncate">{f.name}</span>
+                        <span className="text-[10px] font-mono text-slate-500 shrink-0">I {f.impact}/U {f.uncertainty}</span>
                         <span className={`text-[10px] font-mono font-bold shrink-0 ${
-                          tier === 'critical' ? 'text-red-400' : tier === 'medium' ? 'text-amber-400' : 'text-gray-500'
+                          tier === 'critical' ? 'text-red-600' : tier === 'medium' ? 'text-amber-600' : 'text-slate-500'
                         }`}>{iu}</span>
                       </div>
                     )
@@ -151,7 +152,7 @@ function DrivingForcesPanel() {
         title="Impact × Uncertainty 매트릭스 (50개 요인)"
         source="analysis/driving-forces/impact-uncertainty-matrix.md"
       >
-        <p className="text-xs text-gray-500 mb-2">
+        <p className="text-xs text-slate-500 mb-2">
           우상단 (Impact ≥ 4 + Uncertainty ≥ 4) = 핵심 불확실성 = Driving Force 후보. 점 크기는 같은 좌표에 있는 요인 수.
         </p>
         <ResponsiveContainer width="100%" height={400}>
@@ -161,13 +162,13 @@ function DrivingForcesPanel() {
               type="number" dataKey="impact"
               domain={[0.5, 5.5]} ticks={[1, 2, 3, 4, 5]}
               {...AXIS}
-              label={{ value: 'Impact (1~5)', position: 'insideBottom', offset: -5, fill: '#9ca3af', fontSize: 11 }}
+              label={{ value: 'Impact (1~5)', position: 'insideBottom', offset: -5, fill: '#64748b', fontSize: 11 }}
             />
             <YAxis
               type="number" dataKey="uncertainty"
               domain={[0.5, 5.5]} ticks={[1, 2, 3, 4, 5]}
               {...AXIS}
-              label={{ value: 'Uncertainty (1~5)', angle: -90, position: 'insideLeft', fill: '#9ca3af', fontSize: 11 }}
+              label={{ value: 'Uncertainty (1~5)', angle: -90, position: 'insideLeft', fill: '#64748b', fontSize: 11 }}
             />
             <ZAxis type="number" dataKey="size" range={[60, 280]} />
             <ReferenceLine x={3.5} stroke="#4b5563" strokeDasharray="4 3" />
@@ -178,14 +179,14 @@ function DrivingForcesPanel() {
                 if (!active || !payload?.length) return null
                 const p = payload[0].payload
                 return (
-                  <div className="bg-gray-800 border border-gray-700 rounded-lg p-2.5 text-xs shadow-xl max-w-xs">
-                    <div className="text-gray-400 mb-1">I={p.impact} / U={p.uncertainty} (I×U={p.iu})</div>
-                    <div className="text-gray-200">{p.names}</div>
+                  <div className="bg-slate-100 border border-slate-300 rounded-lg p-2.5 text-xs shadow-xl max-w-xs">
+                    <div className="text-slate-500 mb-1">I={p.impact} / U={p.uncertainty} (I×U={p.iu})</div>
+                    <div className="text-slate-800">{p.names}</div>
                   </div>
                 )
               }}
             />
-            <Legend wrapperStyle={{ fontSize: 11, color: '#9ca3af' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#64748b' }} />
             {Object.entries(scatterByCategory).map(([catId, info]) => (
               <Scatter
                 key={catId}
@@ -205,16 +206,16 @@ function DrivingForcesPanel() {
           {DRIVING_FORCES_DATA.top10.map(item => {
             const cat = STEEP_DATA.categories.find(c => c.id === item.category)
             return (
-              <div key={item.id} className="flex items-center gap-3 py-1.5 px-2.5 rounded bg-gray-800/40 border border-gray-800">
-                <span className="text-sm font-bold text-gray-500 w-6 shrink-0">#{item.rank}</span>
+              <div key={item.id} className="flex items-center gap-3 py-1.5 px-2.5 rounded bg-slate-50 border border-slate-200">
+                <span className="text-sm font-bold text-slate-500 w-6 shrink-0">#{item.rank}</span>
                 <span
                   className="text-[10px] px-2 py-0.5 rounded font-mono shrink-0"
                   style={{ backgroundColor: `${cat.color}30`, color: cat.color }}
                 >
                   {item.id}
                 </span>
-                <span className="text-xs text-gray-200 flex-1">{item.name}</span>
-                <span className="text-xs font-mono font-bold text-amber-400 shrink-0">I×U = {item.iu}</span>
+                <span className="text-xs text-slate-800 flex-1">{item.name}</span>
+                <span className="text-xs font-mono font-bold text-amber-600 shrink-0">I×U = {item.iu}</span>
               </div>
             )
           })}
@@ -228,29 +229,29 @@ function DrivingForcesPanel() {
             <div
               key={d.id}
               className={`border rounded-xl p-4 ${
-                isMain ? 'border-blue-500/40 bg-blue-950/20' : 'border-purple-500/40 bg-purple-950/20'
+                isMain ? 'border-sky-300 bg-sky-50' : 'border-purple-300 bg-purple-50'
               }`}
             >
               <div className="flex items-center gap-2 mb-2">
-                <span className={`text-xs font-bold px-2 py-0.5 rounded ${isMain ? 'bg-blue-900/60 text-blue-300' : 'bg-purple-900/60 text-purple-300'}`}>
+                <span className={`text-xs font-bold px-2 py-0.5 rounded ${isMain ? 'bg-sky-100 text-sky-700' : 'bg-purple-100 text-purple-700'}`}>
                   {d.id}
                 </span>
-                <span className="text-xs text-gray-500">{d.role}</span>
+                <span className="text-xs text-slate-500">{d.role}</span>
               </div>
-              <h4 className="text-sm font-semibold text-white mb-3">{d.title}</h4>
+              <h4 className="text-sm font-semibold text-slate-900 mb-3">{d.title}</h4>
 
               <div className="space-y-2 mb-3">
                 <div className="border-l-2 border-emerald-500 pl-2.5">
-                  <div className="text-[10px] uppercase tracking-wide text-emerald-400 font-bold">Pole A · {d.poleA.label}</div>
-                  <div className="text-xs text-gray-300 mt-0.5">{d.poleA.narrative}</div>
+                  <div className="text-[10px] uppercase tracking-wide text-emerald-600 font-bold">Pole A · {d.poleA.label}</div>
+                  <div className="text-xs text-slate-700 mt-0.5">{d.poleA.narrative}</div>
                 </div>
                 <div className="border-l-2 border-red-500 pl-2.5">
-                  <div className="text-[10px] uppercase tracking-wide text-red-400 font-bold">Pole B · {d.poleB.label}</div>
-                  <div className="text-xs text-gray-300 mt-0.5">{d.poleB.narrative}</div>
+                  <div className="text-[10px] uppercase tracking-wide text-red-600 font-bold">Pole B · {d.poleB.label}</div>
+                  <div className="text-xs text-slate-700 mt-0.5">{d.poleB.narrative}</div>
                 </div>
               </div>
 
-              <div className="text-[11px] text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded px-2 py-1.5 flex items-start gap-1.5">
+              <div className="text-[11px] text-amber-700 bg-amber-500/10 border border-amber-200 rounded px-2 py-1.5 flex items-start gap-1.5">
                 <MapPin size={11} className="mt-0.5 shrink-0" />
                 <span><span className="font-semibold">현재: </span>{d.currentPosition}</span>
               </div>
@@ -284,11 +285,11 @@ function ScenariosPanel() {
         <Card title="시나리오 매트릭스 (DF1 × DF2)" source="analysis/scenarios/scenario-matrix.md">
           <div className="relative">
             {/* Y-axis label */}
-            <div className="absolute -left-1 top-1/2 -translate-y-1/2 -rotate-90 origin-center text-[10px] text-gray-500 whitespace-nowrap">
+            <div className="absolute -left-1 top-1/2 -translate-y-1/2 -rotate-90 origin-center text-[10px] text-slate-500 whitespace-nowrap">
               DF2: 디커플링 ↑ / 공존 ↓
             </div>
             {/* X-axis label */}
-            <div className="text-center text-[10px] text-gray-500 mb-1">
+            <div className="text-center text-[10px] text-slate-500 mb-1">
               DF1: AI 거품 ← / AI 지속 →
             </div>
             <div className="grid grid-cols-2 grid-rows-2 gap-2 ml-6">
@@ -304,18 +305,19 @@ function ScenariosPanel() {
                       <div className="flex items-center gap-2">
                         <span
                           className="w-7 h-7 rounded-md flex items-center justify-center text-sm font-bold text-white"
+
                           style={{ backgroundColor: s.color }}
                         >
                           {s.id}
                         </span>
-                        <span className="text-sm font-semibold text-gray-100 tracking-tight">{s.name}</span>
+                        <span className="text-sm font-semibold text-slate-900 tracking-tight">{s.name}</span>
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold font-mono" style={{ color: s.color }}>{s.probability}%</div>
-                        {s.mainBet && <div className="text-[9px] font-bold text-amber-400 flex items-center gap-0.5 justify-end mt-0.5"><Star size={9} /> Main Bet</div>}
+                        {s.mainBet && <div className="text-[9px] font-bold text-amber-600 flex items-center gap-0.5 justify-end mt-0.5"><Star size={9} /> Main Bet</div>}
                       </div>
                     </div>
-                    <p className="text-[11px] text-gray-300 leading-snug mt-1">{s.summary}</p>
+                    <p className="text-[11px] text-slate-700 leading-snug mt-1">{s.summary}</p>
                   </div>
                 )
               })}
@@ -327,16 +329,17 @@ function ScenariosPanel() {
               >
                 <span
                   className="w-7 h-7 rounded-md flex items-center justify-center text-sm font-bold text-white shrink-0"
+
                   style={{ backgroundColor: wildcard.color }}
                 >
                   E
                 </span>
                 <div className="flex-1">
-                  <div className="text-sm font-semibold text-gray-100 tracking-tight">
+                  <div className="text-sm font-semibold text-slate-900 tracking-tight">
                     {wildcard.name}
-                    <span className="text-[10px] font-normal text-purple-300 ml-2">와일드카드 (DF3)</span>
+                    <span className="text-[10px] font-normal text-purple-700 ml-2">와일드카드 (DF3)</span>
                   </div>
-                  <p className="text-[11px] text-gray-400 mt-0.5">{wildcard.summary}</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{wildcard.summary}</p>
                 </div>
                 <div className="text-2xl font-bold font-mono" style={{ color: wildcard.color }}>{wildcard.probability}%</div>
               </div>
@@ -352,12 +355,12 @@ function ScenariosPanel() {
                 dataKey="value" nameKey="name"
                 cx="50%" cy="50%" outerRadius={100}
                 label={({ value }) => `${value}%`}
-                labelLine={{ stroke: '#4b5563' }}
+                labelLine={{ stroke: '#94a3b8' }}
               >
                 {pieData.map((d, i) => <Cell key={i} fill={d.color} />)}
               </Pie>
-              <Tooltip contentStyle={{ background: '#1f2937', border: '1px solid #374151', borderRadius: 8, fontSize: 11 }} />
-              <Legend wrapperStyle={{ fontSize: 10, color: '#9ca3af' }} />
+              <Tooltip contentStyle={{ background: '#ffffff', border: '1px solid #374151', borderRadius: 8, fontSize: 11 }} />
+              <Legend wrapperStyle={{ fontSize: 10, color: '#64748b' }} />
             </PieChart>
           </ResponsiveContainer>
         </Card>
@@ -367,43 +370,44 @@ function ScenariosPanel() {
         {SCENARIOS_DATA.matrix.map(s => (
           <div
             key={s.id}
-            className="rounded-xl p-4 border bg-gray-900"
+            className="rounded-xl p-4 border bg-white"
             style={{ borderColor: `${s.color}60` }}
           >
             <div className="flex items-center gap-2 mb-2">
               <span
                 className="w-7 h-7 rounded-md flex items-center justify-center text-sm font-bold text-white shrink-0"
+
                 style={{ backgroundColor: s.color }}
               >
                 {s.id}
               </span>
-              <h4 className="text-sm font-semibold text-gray-100 tracking-tight">{s.name}</h4>
+              <h4 className="text-sm font-semibold text-slate-900 tracking-tight">{s.name}</h4>
               {s.mainBet && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 ring-1 ring-amber-500/30 font-semibold flex items-center gap-0.5">
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 ring-1 ring-amber-500/30 font-semibold flex items-center gap-0.5">
                   <Star size={10} /> Main Bet
                 </span>
               )}
               {s.wildcard && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-300 ring-1 ring-purple-500/30 font-semibold">와일드카드</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-700 ring-1 ring-purple-500/30 font-semibold">와일드카드</span>
               )}
             </div>
-            <div className="text-[11px] text-gray-500 mb-2">
+            <div className="text-[11px] text-slate-500 mb-2">
               {s.df1} × {s.df2} · 확률 <span className="font-mono font-semibold" style={{ color: s.color }}>{s.probability}%</span>
             </div>
-            <div className="text-xs text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded px-2 py-1.5 mb-2 flex items-start gap-1.5">
+            <div className="text-xs text-amber-700 bg-amber-500/10 border border-amber-200 rounded px-2 py-1.5 mb-2 flex items-start gap-1.5">
               <Info size={11} className="mt-0.5 shrink-0" />
               <span>{s.keyAssumption}</span>
             </div>
             <div className="space-y-1.5 text-[11px]">
               <div>
-                <div className="text-red-400 font-semibold mb-0.5 flex items-center gap-1.5"><AlertOctagon size={11} />위협</div>
-                <ul className="text-gray-400 space-y-0.5">
+                <div className="text-red-600 font-semibold mb-0.5 flex items-center gap-1.5"><AlertOctagon size={11} />위협</div>
+                <ul className="text-slate-500 space-y-0.5">
                   {s.threats.map((t, i) => <li key={i} className="pl-2">· {t}</li>)}
                 </ul>
               </div>
               <div>
-                <div className="text-emerald-400 font-semibold mb-0.5 flex items-center gap-1.5"><Sparkles size={11} />기회</div>
-                <ul className="text-gray-400 space-y-0.5">
+                <div className="text-emerald-600 font-semibold mb-0.5 flex items-center gap-1.5"><Sparkles size={11} />기회</div>
+                <ul className="text-slate-500 space-y-0.5">
                   {s.opportunities.map((o, i) => <li key={i} className="pl-2">· {o}</li>)}
                 </ul>
               </div>
@@ -416,7 +420,7 @@ function ScenariosPanel() {
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="text-gray-500 border-b border-gray-800">
+              <tr className="text-slate-500 border-b border-slate-200">
                 <th className="text-left font-medium pb-2 pr-3">분기 요인</th>
                 <th className="text-left font-medium pb-2 pr-3">결정 시점</th>
                 <th className="text-left font-medium pb-2">모니터링 지표</th>
@@ -424,10 +428,10 @@ function ScenariosPanel() {
             </thead>
             <tbody>
               {SCENARIOS_DATA.branchingPoints.map((bp, i) => (
-                <tr key={i} className="border-b border-gray-800/50 last:border-0">
-                  <td className="py-2 pr-3 text-gray-200">{bp.factor}</td>
-                  <td className="py-2 pr-3 font-mono text-amber-300">{bp.decisionDate}</td>
-                  <td className="py-2 text-gray-400">{bp.monitor}</td>
+                <tr key={i} className="border-b border-slate-200/50 last:border-0">
+                  <td className="py-2 pr-3 text-slate-800">{bp.factor}</td>
+                  <td className="py-2 pr-3 font-mono text-amber-700">{bp.decisionDate}</td>
+                  <td className="py-2 text-slate-500">{bp.monitor}</td>
                 </tr>
               ))}
             </tbody>
@@ -454,17 +458,17 @@ function BenchmarkPanel() {
             >
               <div className="flex items-center gap-2 mb-1.5">
                 <span
-                  className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                   style={{ backgroundColor: p.color }}
                 >
                   {p.id}
                 </span>
-                <h4 className="text-sm font-bold text-white">{p.name}</h4>
+                <h4 className="text-sm font-bold text-slate-900">{p.name}</h4>
               </div>
-              <p className="text-[11px] text-gray-300 leading-snug mb-2">{p.mechanism}</p>
+              <p className="text-[11px] text-slate-700 leading-snug mb-2">{p.mechanism}</p>
               <div className="flex flex-wrap gap-1">
                 {p.cases.map((c, i) => (
-                  <span key={i} className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-300 border border-gray-700">{c}</span>
+                  <span key={i} className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-300">{c}</span>
                 ))}
               </div>
             </div>
@@ -476,7 +480,7 @@ function BenchmarkPanel() {
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="text-gray-500 border-b border-gray-800">
+              <tr className="text-slate-500 border-b border-slate-200">
                 <th className="text-left font-medium pb-2 pr-3">기업</th>
                 <th className="text-left font-medium pb-2 pr-3">산업</th>
                 <th className="text-left font-medium pb-2 pr-3">핵심 패턴</th>
@@ -485,11 +489,11 @@ function BenchmarkPanel() {
             </thead>
             <tbody>
               {BENCHMARK_DATA.industries.map((c, i) => (
-                <tr key={i} className="border-b border-gray-800/50 last:border-0">
-                  <td className="py-2 pr-3 text-white font-semibold">{c.name}</td>
-                  <td className="py-2 pr-3 text-gray-400">{c.industry}</td>
-                  <td className="py-2 pr-3 text-gray-300">{c.pattern}</td>
-                  <td className="py-2 text-gray-500 text-[11px]">{c.keyMetric}</td>
+                <tr key={i} className="border-b border-slate-200/50 last:border-0">
+                  <td className="py-2 pr-3 text-slate-900 font-semibold">{c.name}</td>
+                  <td className="py-2 pr-3 text-slate-500">{c.industry}</td>
+                  <td className="py-2 pr-3 text-slate-700">{c.pattern}</td>
+                  <td className="py-2 text-slate-500 text-[11px]">{c.keyMetric}</td>
                 </tr>
               ))}
             </tbody>
@@ -500,21 +504,21 @@ function BenchmarkPanel() {
       <Card title="농수산업 헤징 메커니즘 → 메모리 적용" source="analysis/benchmark/agri-hedging-to-memory-semi.md">
         <div className="space-y-2">
           {BENCHMARK_DATA.agriHedging.map(h => (
-            <div key={h.id} className="border border-gray-800 rounded-lg p-3 bg-gray-800/30">
+            <div key={h.id} className="border border-slate-200 rounded-lg p-3 bg-slate-50">
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-5 h-5 rounded-full bg-emerald-900/60 text-emerald-300 flex items-center justify-center text-[10px] font-bold shrink-0">
+                <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-bold shrink-0">
                   {h.id}
                 </span>
-                <h4 className="text-sm font-semibold text-white">{h.name}</h4>
+                <h4 className="text-sm font-semibold text-slate-900">{h.name}</h4>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] ml-7">
                 <div>
-                  <span className="text-gray-500">원리: </span>
-                  <span className="text-gray-300">{h.원리}</span>
+                  <span className="text-slate-500">원리: </span>
+                  <span className="text-slate-700">{h.원리}</span>
                 </div>
                 <div>
-                  <span className="text-blue-400">메모리 적용: </span>
-                  <span className="text-blue-200">{h.memoryApplication}</span>
+                  <span className="text-sky-600">메모리 적용: </span>
+                  <span className="text-sky-800">{h.memoryApplication}</span>
                 </div>
               </div>
             </div>
@@ -526,7 +530,7 @@ function BenchmarkPanel() {
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="text-gray-500 border-b border-gray-800">
+              <tr className="text-slate-500 border-b border-slate-200">
                 <th className="text-left font-medium pb-2 pr-2">구조</th>
                 <th className="text-center font-medium pb-2 pr-2">복잡도</th>
                 <th className="text-center font-medium pb-2 pr-2">Floor</th>
@@ -539,40 +543,40 @@ function BenchmarkPanel() {
               {BENCHMARK_DATA.upsideStructures.map(s => {
                 const isRecommended = s.note.includes('추천')
                 const isForbidden = s.note.includes('금지')
-                const rowCls = isRecommended ? 'bg-emerald-950/20' : isForbidden ? 'bg-red-950/20' : ''
+                const rowCls = isRecommended ? 'bg-emerald-50/70' : isForbidden ? 'bg-red-50/70' : ''
                 return (
-                  <tr key={s.id} className={`border-b border-gray-800/50 last:border-0 ${rowCls}`}>
-                    <td className="py-2 pr-2 text-white font-semibold">{s.name}</td>
-                    <td className="py-2 pr-2 text-center text-gray-400">{s.complexity}</td>
-                    <td className="py-2 pr-2 text-center text-gray-300 font-mono">{s.floor}</td>
-                    <td className="py-2 pr-2 text-center text-gray-300 font-mono">{s.upside}</td>
-                    <td className="py-2 pr-2 text-center text-gray-400 font-mono">{s.premium}</td>
-                    <td className="py-2 text-gray-300">{s.note}</td>
+                  <tr key={s.id} className={`border-b border-slate-200/50 last:border-0 ${rowCls}`}>
+                    <td className="py-2 pr-2 text-slate-900 font-semibold">{s.name}</td>
+                    <td className="py-2 pr-2 text-center text-slate-500">{s.complexity}</td>
+                    <td className="py-2 pr-2 text-center text-slate-700 font-mono">{s.floor}</td>
+                    <td className="py-2 pr-2 text-center text-slate-700 font-mono">{s.upside}</td>
+                    <td className="py-2 pr-2 text-center text-slate-500 font-mono">{s.premium}</td>
+                    <td className="py-2 text-slate-700">{s.note}</td>
                   </tr>
                 )
               })}
             </tbody>
           </table>
         </div>
-        <p className="text-[10px] text-gray-600 mt-2 flex items-start gap-1.5">
-          <AlertOctagon size={11} className="text-red-400 mt-0.5 shrink-0" />
+        <p className="text-[10px] text-slate-400 mt-2 flex items-start gap-1.5">
+          <AlertOctagon size={11} className="text-red-600 mt-0.5 shrink-0" />
           Three-way Collar 는 sub-put 매도로 가격 폭락 시 손실 가속 — Pioneer/Whiting 사례. 이사회 정책상 금지 권고.
         </p>
       </Card>
 
       <Card title="메모리 사업부 적용 권고">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-          <div className="border border-emerald-700/40 bg-emerald-950/30 rounded-lg p-3">
-            <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-emerald-400" /><span className="font-bold text-emerald-300">단기 (6~12개월)</span></div>
-            <p className="text-gray-300 leading-snug">Forward + Tiered Pricing 도입. 핵심 고객 대상 다년 공급계약으로 가격 가시성 확보.</p>
+          <div className="border border-emerald-200 bg-emerald-50 rounded-lg p-3">
+            <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-emerald-600" /><span className="font-bold text-emerald-700">단기 (6~12개월)</span></div>
+            <p className="text-slate-700 leading-snug">Forward + Tiered Pricing 도입. 핵심 고객 대상 다년 공급계약으로 가격 가시성 확보.</p>
           </div>
-          <div className="border border-blue-700/40 bg-blue-950/30 rounded-lg p-3">
-            <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-blue-400" /><span className="font-bold text-blue-300">중기 (1~2년)</span></div>
-            <p className="text-gray-300 leading-snug">Participating Forward 도입 (HBM 매출 30~40%). HTA 슬롯 예약 + 가격 분리.</p>
+          <div className="border border-sky-200 bg-sky-50 rounded-lg p-3">
+            <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-sky-600" /><span className="font-bold text-sky-700">중기 (1~2년)</span></div>
+            <p className="text-slate-700 leading-snug">Participating Forward 도입 (HBM 매출 30~40%). HTA 슬롯 예약 + 가격 분리.</p>
           </div>
-          <div className="border border-purple-700/40 bg-purple-950/30 rounded-lg p-3">
-            <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-purple-400" /><span className="font-bold text-purple-300">장기 (2년+)</span></div>
-            <p className="text-gray-300 leading-snug">Memory Trading Desk + DRAMeXchange OTC 스왑 직접 운영. Black River 모델.</p>
+          <div className="border border-purple-200 bg-purple-50 rounded-lg p-3">
+            <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-purple-600" /><span className="font-bold text-purple-700">장기 (2년+)</span></div>
+            <p className="text-slate-700 leading-snug">Memory Trading Desk + DRAMeXchange OTC 스왑 직접 운영. Black River 모델.</p>
           </div>
         </div>
       </Card>
@@ -588,7 +592,7 @@ export default function ScenarioPlanning() {
 
   return (
     <div>
-      <div className="flex items-center gap-1 mb-4 border-b border-gray-800">
+      <div className="flex items-center gap-1 mb-4 border-b border-slate-200">
         {SUB_TABS.map(t => {
           const Icon = t.icon
           return (
@@ -597,8 +601,8 @@ export default function ScenarioPlanning() {
               onClick={() => setTab(t.id)}
               className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
                 tab === t.id
-                  ? 'border-blue-500 text-white bg-gray-900/60'
-                  : 'border-transparent text-gray-500 hover:text-gray-300 hover:bg-gray-900/30'
+                  ? 'border-sky-500 text-slate-900 bg-white/80'
+                  : 'border-transparent text-slate-500 hover:text-slate-700 hover:bg-slate-50/60'
               }`}
             >
               <Icon size={14} />
