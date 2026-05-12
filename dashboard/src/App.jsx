@@ -75,10 +75,10 @@ export default function App() {
   return (
     <div className="min-h-screen">
       <main className="max-w-screen-2xl mx-auto px-5 py-6">
-        {/* ── 최상단 페이지 탭 ── */}
+        {/* ── 최상단 페이지 탭 — Apple HIG material chrome + continuous corners ── */}
         <nav
           aria-label="페이지 탭"
-          className="flex items-center gap-0.5 mb-6 px-1 py-1 rounded-xl bg-white/70 ring-1 ring-zinc-200 shadow-soft backdrop-blur-sm"
+          className="flex items-center gap-0.5 mb-6 px-1 py-1 rounded-hig-xl hig-material-chrome shadow-hig-2 transition-all ease-hig-standard"
         >
           {TOP_TABS.map(t => {
             const Icon = t.icon
@@ -89,16 +89,16 @@ export default function App() {
                 key={t.id}
                 onClick={() => setTopTab(t.id)}
                 aria-current={active ? 'page' : undefined}
-                className={`relative flex items-center gap-2 px-4 py-2 text-[13px] font-medium rounded-lg transition-all ${
+                className={`relative flex items-center gap-2 px-4 py-2 text-[13px] font-medium rounded-hig-md transition-all ease-hig-standard ${
                   active
-                    ? 'text-zinc-900 bg-white ring-1 ring-zinc-200 shadow-soft'
+                    ? 'text-zinc-900 bg-white ring-1 ring-zinc-200/80 shadow-hig-1'
                     : 'text-zinc-500 hover:text-zinc-900 hover:bg-white/60'
                 }`}
               >
-                <Icon size={15} className={active ? 'text-sky-600' : 'text-zinc-400'} />
+                <Icon size={15} className={active ? 'text-hig-blue' : 'text-zinc-400'} />
                 <span className="tracking-tight">{t.label}</span>
                 {showBadge && (
-                  <span className="ml-0.5 px-1.5 py-0.5 rounded-full bg-red-100 text-red-700 text-[10px] font-semibold ring-1 ring-red-200">
+                  <span className="ml-0.5 px-1.5 py-0.5 rounded-full bg-hig-red/15 text-hig-red text-[10px] font-semibold">
                     {criticalCount + warningCount + activeTriggers.length}
                   </span>
                 )}

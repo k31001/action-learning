@@ -4,6 +4,88 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =====================================================================
+   Apple HIG — global design tokens (Option B "token absorption")
+   These live at :root so any component can pick them up via `var(--hig-*)`
+   without needing to nest under `.apple-hig`. They DO NOT replace any
+   existing token; they sit alongside Tailwind/zinc/samsung tokens and
+   are opt-in. Same values as `components/apple-hig/apple-hig.css`.
+   ===================================================================== */
+:root {
+  /* System palette (vivid · light mode) */
+  --hig-systemRed:    #FF3B30;
+  --hig-systemOrange: #FF9500;
+  --hig-systemYellow: #FFCC00;
+  --hig-systemGreen:  #34C759;
+  --hig-systemMint:   #00C7BE;
+  --hig-systemTeal:   #30B0C7;
+  --hig-systemCyan:   #32ADE6;
+  --hig-systemBlue:   #007AFF;
+  --hig-systemIndigo: #5856D6;
+  --hig-systemPurple: #AF52DE;
+  --hig-systemPink:   #FF2D55;
+  --hig-systemBrown:  #A2845E;
+
+  /* System grays */
+  --hig-systemGray:  #8E8E93;
+  --hig-systemGray2: #AEAEB2;
+  --hig-systemGray3: #C7C7CC;
+  --hig-systemGray4: #D1D1D6;
+  --hig-systemGray5: #E5E5EA;
+  --hig-systemGray6: #F2F2F7;
+
+  /* Labels */
+  --hig-label:          rgba(0, 0, 0, 1);
+  --hig-secondaryLabel: rgba(60, 60, 67, 0.60);
+  --hig-tertiaryLabel:  rgba(60, 60, 67, 0.30);
+  --hig-quaternaryLabel:rgba(60, 60, 67, 0.18);
+
+  /* Fills */
+  --hig-systemFill:           rgba(120, 120, 128, 0.20);
+  --hig-secondarySystemFill:  rgba(120, 120, 128, 0.16);
+  --hig-tertiarySystemFill:   rgba(118, 118, 128, 0.12);
+  --hig-quaternarySystemFill: rgba(116, 116, 128, 0.08);
+
+  /* Backgrounds */
+  --hig-systemBackground:          #FFFFFF;
+  --hig-secondarySystemBackground: #F2F2F7;
+  --hig-systemGroupedBackground:   #F2F2F7;
+  --hig-secondarySystemGroupedBackground: #FFFFFF;
+
+  /* Separator */
+  --hig-separator:       rgba(60, 60, 67, 0.29);
+  --hig-opaqueSeparator: #C6C6C8;
+
+  /* Materials */
+  --hig-material-chrome-bg:    rgba(245, 245, 247, 0.85);
+  --hig-material-regular-bg:   rgba(255, 255, 255, 0.72);
+  --hig-material-thick-bg:     rgba(255, 255, 255, 0.82);
+  --hig-material-blur:         30px;
+
+  /* Radii */
+  --hig-radius-sm:  6px;
+  --hig-radius-md: 10px;   /* default button, list row */
+  --hig-radius-lg: 14px;   /* card */
+  --hig-radius-xl: 20px;
+  --hig-radius-2xl: 28px;
+  --hig-radius-pill: 9999px;
+
+  /* Shadows — soft, low-spread (Apple style) */
+  --hig-shadow-1: 0 1px 2px rgba(0,0,0,0.04), 0 1px 1px rgba(0,0,0,0.03);
+  --hig-shadow-2: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --hig-shadow-3: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --hig-shadow-4: 0 8px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
+  --hig-shadow-modal: 0 20px 60px rgba(0,0,0,0.20), 0 8px 16px rgba(0,0,0,0.10);
+
+  /* Motion */
+  --hig-ease-spring:   cubic-bezier(0.5, 1.5, 0.5, 1);
+  --hig-ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --hig-duration-micro: 200ms;
+
+  /* Accent — apps can override per-context (defaults to systemBlue) */
+  --hig-accent: var(--hig-systemBlue);
+}
+
 @layer base {
   html {
     font-feature-settings: 'cv11', 'ss01', 'ss03';
@@ -64,6 +146,73 @@
   .scenario-C { @apply bg-red-50     text-red-700     ring-1 ring-red-200; }
   .scenario-D { @apply bg-orange-50  text-orange-700  ring-1 ring-orange-200; }
   .scenario-E { @apply bg-purple-50  text-purple-700  ring-1 ring-purple-200; }
+
+  /* =====================================================================
+     Apple HIG opt-in helpers — components can add these classes for
+     Apple-flavored polish (radii, shadows, materials) without changing
+     existing tokens. All scoped to .hig-* prefix to avoid surprises.
+     ===================================================================== */
+
+  /* Card surface with Apple soft shadow + continuous-corner approximation */
+  .hig-card {
+    background: var(--hig-systemBackground);
+    border-radius: var(--hig-radius-lg);
+    box-shadow: var(--hig-shadow-2);
+    border: 1px solid var(--hig-separator);
+  }
+  .hig-card-flat {
+    background: var(--hig-systemBackground);
+    border-radius: var(--hig-radius-lg);
+    border: 1px solid var(--hig-separator);
+  }
+
+  /* Material chrome — translucent surface for nav bars / floating toolbars */
+  .hig-material-chrome {
+    background: var(--hig-material-chrome-bg);
+    backdrop-filter: blur(var(--hig-material-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--hig-material-blur)) saturate(180%);
+    border: 0.5px solid var(--hig-separator);
+  }
+  .hig-material-regular {
+    background: var(--hig-material-regular-bg);
+    backdrop-filter: blur(var(--hig-material-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--hig-material-blur)) saturate(180%);
+  }
+
+  /* Apple-style buttons (drop-in for action buttons elsewhere) */
+  .hig-btn-filled {
+    background: var(--hig-systemBlue);
+    color: white;
+    border-radius: var(--hig-radius-md);
+    padding: 8px 16px;
+    font-weight: 600;
+    transition: opacity var(--hig-duration-micro) var(--hig-ease-standard);
+  }
+  .hig-btn-filled:active { opacity: 0.7; }
+
+  .hig-btn-tinted {
+    background: rgba(0, 122, 255, 0.15);
+    color: var(--hig-systemBlue);
+    border-radius: var(--hig-radius-md);
+    padding: 8px 16px;
+    font-weight: 600;
+  }
+
+  /* Pill badge — Apple style */
+  .hig-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: var(--hig-radius-pill);
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .hig-pill-blue   { background: rgba(0, 122, 255, 0.15); color: var(--hig-systemBlue); }
+  .hig-pill-green  { background: rgba(52, 199, 89, 0.18); color: var(--hig-systemGreen); }
+  .hig-pill-red    { background: rgba(255, 59, 48, 0.18); color: var(--hig-systemRed); }
+  .hig-pill-orange { background: rgba(255, 149, 0, 0.18); color: var(--hig-systemOrange); }
+  .hig-pill-purple { background: rgba(175, 82, 222, 0.18); color: var(--hig-systemPurple); }
 }
 
 /* 발동된 critical — 미세 호흡 */
