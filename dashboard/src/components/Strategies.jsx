@@ -31,7 +31,7 @@ const SCENARIO_META = {
 
 function Card({ title, source, children, className = '' }) {
   return (
-    <div className={`bg-white border border-zinc-200 rounded-xl p-4 ${className}`}>
+    <div className={`bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4 ${className}`}>
       {title && (
         <div className="mb-3">
           <h3 className="text-sm font-semibold text-zinc-800">{title}</h3>
@@ -50,10 +50,11 @@ const ACCENT = {
   blue:  'border-sky-300 bg-sky-50 text-sky-700',
 }
 
+// Apple HIG pills for D-priority — tinted background + matching color
 const PRIORITY_TAG = {
-  critical: { cls: 'bg-red-100 text-red-700',     label: '최우선' },
-  high:     { cls: 'bg-amber-100 text-amber-700', label: '높음' },
-  medium:   { cls: 'bg-sky-100 text-sky-700',   label: '중간' },
+  critical: { cls: 'hig-pill hig-pill-red',    label: '최우선' },
+  high:     { cls: 'hig-pill hig-pill-orange', label: '높음' },
+  medium:   { cls: 'hig-pill hig-pill-blue',   label: '중간' },
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -71,7 +72,7 @@ function OverviewPanel() {
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         {o.keyNumbers.map((k, i) => (
-          <div key={i} className={`border rounded-xl p-3 ${ACCENT[k.accent]}`}>
+          <div key={i} className={`border rounded-hig-lg shadow-hig-1 p-3 ${ACCENT[k.accent]}`}>
             <p className="text-[10px] opacity-70 leading-tight">{k.label}</p>
             <p className="text-xl font-bold font-mono mt-1">{k.value}</p>
             <p className="text-[10px] opacity-70 mt-0.5">{k.subtitle}</p>
@@ -321,7 +322,7 @@ function RobustStrategyPanel() {
         {ROBUST_STRATEGIES.map(rs => (
           <div
             key={rs.id}
-            className="rounded-xl p-4 border bg-white"
+            className="rounded-hig-lg shadow-hig-1 p-4 border bg-white"
             style={{ borderColor: `${rs.color}50` }}
           >
             <div className="flex items-start gap-2 mb-2">
@@ -335,7 +336,7 @@ function RobustStrategyPanel() {
                 <div className="flex items-center gap-1.5">
                   <h4 className="text-sm font-bold text-zinc-900">{rs.title}</h4>
                   {rs.isNew && (
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 font-bold">NEW</span>
+                    <span className="hig-pill hig-pill-orange text-[10px] font-bold">NEW</span>
                   )}
                 </div>
                 <span className="text-[10px] text-zinc-500">축: {rs.axis}</span>
@@ -403,7 +404,7 @@ function CoreStrategyPanel() {
                   onClick={() => setOpenId(isOpen ? null : s.id)}
                   className="w-full text-left px-3 py-2.5 flex items-center gap-3 hover:bg-emerald-50"
                 >
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-mono shrink-0">{s.id}</span>
+                  <span className="hig-pill hig-pill-green text-[10px] font-mono shrink-0">{s.id}</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="text-sm font-bold text-zinc-900">{s.title}</span>
@@ -459,7 +460,7 @@ function CoreStrategyPanel() {
                   onClick={() => setOpenId(isOpen ? null : s.id)}
                   className="w-full text-left px-3 py-2.5 flex items-center gap-3 hover:bg-amber-50"
                 >
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-amber-100 text-amber-700 font-mono shrink-0">{s.id}</span>
+                  <span className="hig-pill hig-pill-orange text-[10px] font-mono shrink-0">{s.id}</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="text-sm font-bold text-zinc-900">{s.title}</span>
@@ -498,7 +499,7 @@ function CoreStrategyPanel() {
         <div className="space-y-1.5">
           {CORE_STRATEGIES.infoGaps.map((g, i) => (
             <div key={i} className="flex items-center gap-3 py-1.5 px-3 rounded bg-zinc-50 border border-zinc-200">
-              <span className="text-[10px] px-2 py-0.5 rounded bg-red-100 text-red-700 font-mono shrink-0">{g.id}</span>
+              <span className="hig-pill hig-pill-red text-[10px] font-mono shrink-0">{g.id}</span>
               <span className="text-xs text-zinc-800 flex-1">{g.area}</span>
               <span className="text-[10px] font-mono text-amber-600 shrink-0">{g.timing}</span>
               <span className="text-[11px] text-zinc-500 hidden md:inline shrink-0">→ {g.action}</span>
@@ -529,7 +530,7 @@ function DecisionsPanel() {
       {DECISION_CLUSTERS.map(cluster => {
         const items = DECISIONS.filter(d => d.cluster === cluster.cluster)
         return (
-          <div key={cluster.cluster} className={`border rounded-xl p-4 ${cluster.bgClass}`}>
+          <div key={cluster.cluster} className={`border rounded-hig-lg shadow-hig-1 p-4 ${cluster.bgClass}`}>
             <div className="flex items-center gap-2 mb-3">
               <Clock size={16} style={{ color: cluster.color }} />
               <h3 className="text-sm font-bold text-zinc-900">{cluster.label}</h3>
@@ -545,7 +546,7 @@ function DecisionsPanel() {
                       <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-zinc-200 text-zinc-800 shrink-0">{d.id}</span>
                       <h4 className="text-sm font-semibold text-zinc-900 flex-1">{d.title}</h4>
                       {d.isNew && (
-                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 font-bold shrink-0">NEW</span>
+                        <span className="hig-pill hig-pill-orange text-[9px] font-bold shrink-0">NEW</span>
                       )}
                       <span className={`text-[9px] px-1.5 py-0.5 rounded shrink-0 ${tag.cls}`}>{tag.label}</span>
                     </div>

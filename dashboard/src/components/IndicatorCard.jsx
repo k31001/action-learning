@@ -105,9 +105,9 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
 
   return (
     <div
-      className={`relative rounded-xl border-2 p-4 transition-all duration-200 ${cfg.card}`}
+      className={`relative rounded-hig-lg border-2 p-4 shadow-hig-2 transition-all duration-200 ease-hig-standard ${cfg.card}`}
     >
-      {/* Status badge + category */}
+      {/* Status badge + category — Apple HIG pill style */}
       <div className="flex items-start justify-between gap-2 mb-3">
         <div className="flex flex-wrap gap-1.5">
           <span className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full font-medium ${cfg.badge}`}>
@@ -115,12 +115,12 @@ export default function IndicatorCard({ indicator, onEdit, onAutoUpdate }) {
             {cfg.label}
           </span>
           {indicator.isCritical && (
-            <span className="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 ring-1 ring-red-300 font-medium">
+            <span className="hig-pill hig-pill-red text-xs">
               핵심
             </span>
           )}
           {indicator.autoUpdateIsProxy && (
-            <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-600 ring-1 ring-amber-500/30 font-medium" title="직접 데이터 대신 프록시 지표 사용">
+            <span className="hig-pill hig-pill-orange text-xs" title="직접 데이터 대신 프록시 지표 사용">
               프록시
             </span>
           )}

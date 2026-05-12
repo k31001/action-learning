@@ -21,7 +21,7 @@ const SUB_TABS = [
 // ── 공통 카드 + 툴팁 ────────────────────────────────────────────────────────
 function ChartCard({ title, source, children, className = '' }) {
   return (
-    <div className={`bg-white border border-zinc-200 rounded-xl p-4 ${className}`}>
+    <div className={`bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4 ${className}`}>
       <div className="mb-3">
         <h3 className="text-sm font-semibold text-zinc-800">{title}</h3>
         <SourceLink source={source} />
@@ -174,7 +174,7 @@ function CompetitorPanel() {
         </ResponsiveContainer>
       </ChartCard>
 
-      <div className="lg:col-span-2 bg-white border border-zinc-200 rounded-xl p-4">
+      <div className="lg:col-span-2 bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4">
         <h3 className="text-sm font-semibold text-zinc-800 mb-3">{c.milestones.title}</h3>
         <div className="space-y-2">
           {c.milestones.items.map((m, i) => (
@@ -265,7 +265,7 @@ function MacroPanel() {
             ? 'border-red-300 bg-red-50 text-red-700'
             : 'border-amber-300 bg-yellow-50 text-yellow-700'
           return (
-            <div key={i} className={`border rounded-xl p-3 ${cls}`}>
+            <div key={i} className={`border rounded-hig-lg shadow-hig-1 p-3 ${cls}`}>
               <div className="flex items-center gap-2 mb-1">
                 <AlertTriangle size={14} />
                 <span className="text-sm font-semibold">{w.title}</span>
@@ -333,7 +333,7 @@ function MarketPanel() {
             red:   'text-red-700 border-red-300 bg-red-50',
           }[k.accent]
           return (
-            <div key={i} className={`border rounded-xl p-3 ${accent}`}>
+            <div key={i} className={`border rounded-hig-lg shadow-hig-1 p-3 ${accent}`}>
               <p className="text-[10px] opacity-70 leading-tight">{k.label}</p>
               <p className="text-xl font-bold font-mono mt-1">{k.value}</p>
             </div>
@@ -719,7 +719,7 @@ function TechnologyPanel() {
         </div>
       </ChartCard>
 
-      <div className="lg:col-span-2 bg-white border border-zinc-200 rounded-xl p-4">
+      <div className="lg:col-span-2 bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4">
         <h3 className="text-sm font-semibold text-zinc-800 mb-3">핵심 기술 마일스톤</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {t.techMilestones.map((m, i) => (

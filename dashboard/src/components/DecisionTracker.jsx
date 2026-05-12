@@ -142,7 +142,7 @@ export default function DecisionTracker({ indicators }) {
   const indicatorMap = Object.fromEntries(indicators.map(i => [i.id, i]))
 
   return (
-    <div className="bg-white border border-zinc-200 rounded-xl p-4">
+    <div className="bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4">
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-sm font-semibold text-zinc-800">11개 즉시 결정 — 묶음 의결</h2>
@@ -168,7 +168,7 @@ export default function DecisionTracker({ indicators }) {
           return (
             <div
               key={d.id}
-              className={`border rounded-lg p-3 transition-all ${colorClasses} ${isExpanded ? 'ring-2 ring-blue-500/40' : ''}`}
+              className={`border rounded-hig-md shadow-hig-1 p-3 transition-all ease-hig-standard ${colorClasses} ${isExpanded ? 'ring-2 ring-hig-blue/40' : ''}`}
             >
               <div className="flex items-start justify-between mb-2">
                 <span className="text-[10px] font-bold tracking-wider opacity-70">
@@ -227,7 +227,7 @@ export default function DecisionTracker({ indicators }) {
         })}
       </div>
 
-      <div className="mt-4 p-3 rounded-lg border border-amber-800/40 bg-amber-100/10">
+      <div className="mt-4 p-3 rounded-hig-md shadow-hig-1 border border-hig-orange/40 bg-hig-orange/5">
         <div className="flex items-start gap-2">
           <AlertCircle size={14} className="text-amber-600 mt-0.5 shrink-0" />
           <div className="text-xs">
