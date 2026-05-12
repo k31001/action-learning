@@ -19,7 +19,7 @@ const SUB_TABS = [
 // ── 공통 ────────────────────────────────────────────────────────────────────
 function Card({ title, source, children, className = '' }) {
   return (
-    <div className={`bg-white border border-zinc-200 rounded-xl p-4 ${className}`}>
+    <div className={`bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4 ${className}`}>
       {title && (
         <div className="mb-3">
           <h3 className="text-sm font-semibold text-zinc-800">{title}</h3>
@@ -67,7 +67,7 @@ function STEEPPanel() {
         {STEEP_DATA.categories.map(cat => {
           const isOpen = openCat === cat.id
           return (
-            <div key={cat.id} className="bg-white border border-zinc-200 rounded-xl overflow-hidden">
+            <div key={cat.id} className="bg-white border border-zinc-200 rounded-hig-lg shadow-hig-1 overflow-hidden">
               <button
                 onClick={() => setOpenCat(isOpen ? null : cat.id)}
                 className="w-full flex items-center gap-3 px-4 py-3 hover:bg-zinc-100 transition-colors text-left"
@@ -229,12 +229,12 @@ function DrivingForcesPanel() {
           return (
             <div
               key={d.id}
-              className={`border rounded-xl p-4 ${
+              className={`border rounded-hig-lg shadow-hig-1 p-4 ${
                 isMain ? 'border-sky-300 bg-sky-50' : 'border-purple-300 bg-purple-50'
               }`}
             >
               <div className="flex items-center gap-2 mb-2">
-                <span className={`text-xs font-bold px-2 py-0.5 rounded ${isMain ? 'bg-sky-100 text-sky-700' : 'bg-purple-100 text-purple-700'}`}>
+                <span className={`hig-pill text-xs font-bold ${isMain ? 'hig-pill-blue' : 'hig-pill-purple'}`}>
                   {d.id}
                 </span>
                 <span className="text-xs text-zinc-500">{d.role}</span>
@@ -299,7 +299,7 @@ function ScenariosPanel() {
                 return (
                   <div
                     key={scenarioId}
-                    className="rounded-xl p-3 border-2 min-h-[140px] flex flex-col"
+                    className="rounded-hig-lg shadow-hig-1 p-3 border-2 min-h-[140px] flex flex-col"
                     style={{ borderColor: s.color, backgroundColor: `${s.color}15` }}
                   >
                     <div className="flex items-start justify-between mb-1">
@@ -325,7 +325,7 @@ function ScenariosPanel() {
             </div>
             {wildcard && (
               <div
-                className="mt-3 ml-6 rounded-xl p-3 border border-dashed flex items-center gap-3"
+                className="mt-3 ml-6 rounded-hig-lg shadow-hig-1 p-3 border border-dashed flex items-center gap-3"
                 style={{ borderColor: `${wildcard.color}80`, backgroundColor: `${wildcard.color}10` }}
               >
                 <span
@@ -371,7 +371,7 @@ function ScenariosPanel() {
         {SCENARIOS_DATA.matrix.map(s => (
           <div
             key={s.id}
-            className="rounded-xl p-4 border bg-white"
+            className="rounded-hig-lg shadow-hig-1 p-4 border bg-white"
             style={{ borderColor: `${s.color}60` }}
           >
             <div className="flex items-center gap-2 mb-2">
@@ -454,7 +454,7 @@ function BenchmarkPanel() {
           {BENCHMARK_DATA.cyclicalPatterns.map(p => (
             <div
               key={p.id}
-              className="border rounded-lg p-3"
+              className="border rounded-hig-md shadow-hig-1 p-3"
               style={{ borderColor: `${p.color}60`, backgroundColor: `${p.color}10` }}
             >
               <div className="flex items-center gap-2 mb-1.5">
@@ -505,9 +505,9 @@ function BenchmarkPanel() {
       <Card title="농수산업 헤징 메커니즘 → 메모리 적용" source="analysis/benchmark/agri-hedging-to-memory-semi.md">
         <div className="space-y-2">
           {BENCHMARK_DATA.agriHedging.map(h => (
-            <div key={h.id} className="border border-zinc-200 rounded-lg p-3 bg-zinc-50">
+            <div key={h.id} className="border border-zinc-200 rounded-hig-md shadow-hig-1 p-3 bg-zinc-50">
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-bold shrink-0">
+                <span className="w-5 h-5 rounded-full bg-hig-green/20 text-hig-green flex items-center justify-center text-[10px] font-bold shrink-0">
                   {h.id}
                 </span>
                 <h4 className="text-sm font-semibold text-zinc-900">{h.name}</h4>
@@ -567,15 +567,15 @@ function BenchmarkPanel() {
 
       <Card title="메모리 사업부 적용 권고">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-          <div className="border border-emerald-200 bg-emerald-50 rounded-lg p-3">
+          <div className="border border-emerald-200 bg-emerald-50 rounded-hig-md shadow-hig-1 p-3">
             <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-emerald-600" /><span className="font-bold text-emerald-700">단기 (6~12개월)</span></div>
             <p className="text-zinc-700 leading-snug">Forward + Tiered Pricing 도입. 핵심 고객 대상 다년 공급계약으로 가격 가시성 확보.</p>
           </div>
-          <div className="border border-sky-200 bg-sky-50 rounded-lg p-3">
+          <div className="border border-sky-200 bg-sky-50 rounded-hig-md shadow-hig-1 p-3">
             <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-sky-600" /><span className="font-bold text-sky-700">중기 (1~2년)</span></div>
             <p className="text-zinc-700 leading-snug">Participating Forward 도입 (HBM 매출 30~40%). HTA 슬롯 예약 + 가격 분리.</p>
           </div>
-          <div className="border border-purple-200 bg-purple-50 rounded-lg p-3">
+          <div className="border border-purple-200 bg-purple-50 rounded-hig-md shadow-hig-1 p-3">
             <div className="flex items-center gap-2 mb-1.5"><Target size={14} className="text-purple-600" /><span className="font-bold text-purple-700">장기 (2년+)</span></div>
             <p className="text-zinc-700 leading-snug">Memory Trading Desk + DRAMeXchange OTC 스왑 직접 운영. Black River 모델.</p>
           </div>
