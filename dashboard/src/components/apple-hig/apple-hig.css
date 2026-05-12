@@ -1,0 +1,302 @@
+/* =====================================================================
+   Apple HIG Design System — Scoped
+   All tokens & helper classes are scoped under `.apple-hig` to avoid
+   colliding with the dashboard's Tailwind styles.
+   Source: Apple Human Interface Guidelines (developer.apple.com/design)
+   ===================================================================== */
+
+.apple-hig {
+  /* ---------- Fonts ---------- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+               system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-rounded: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --font-serif: ui-serif, "New York", "Iowan Old Style", Georgia, serif;
+
+  /* ----- System palette (vivid) ----- */
+  --systemRed: #FF3B30;
+  --systemOrange: #FF9500;
+  --systemYellow: #FFCC00;
+  --systemGreen: #34C759;
+  --systemMint: #00C7BE;
+  --systemTeal: #30B0C7;
+  --systemCyan: #32ADE6;
+  --systemBlue: #007AFF;
+  --systemIndigo: #5856D6;
+  --systemPurple: #AF52DE;
+  --systemPink: #FF2D55;
+  --systemBrown: #A2845E;
+
+  /* ----- System grays ----- */
+  --systemGray:  #8E8E93;
+  --systemGray2: #AEAEB2;
+  --systemGray3: #C7C7CC;
+  --systemGray4: #D1D1D6;
+  --systemGray5: #E5E5EA;
+  --systemGray6: #F2F2F7;
+
+  /* ----- Labels (text) ----- */
+  --label:           rgba(0, 0, 0, 1);
+  --secondaryLabel:  rgba(60, 60, 67, 0.60);
+  --tertiaryLabel:   rgba(60, 60, 67, 0.30);
+  --quaternaryLabel: rgba(60, 60, 67, 0.18);
+  --placeholderText: rgba(60, 60, 67, 0.30);
+
+  /* ----- Fills ----- */
+  --systemFill:           rgba(120, 120, 128, 0.20);
+  --secondarySystemFill:  rgba(120, 120, 128, 0.16);
+  --tertiarySystemFill:   rgba(118, 118, 128, 0.12);
+  --quaternarySystemFill: rgba(116, 116, 128, 0.08);
+
+  /* ----- Backgrounds (standard) ----- */
+  --systemBackground:           #FFFFFF;
+  --secondarySystemBackground:  #F2F2F7;
+  --tertiarySystemBackground:   #FFFFFF;
+
+  /* ----- Backgrounds (grouped) ----- */
+  --systemGroupedBackground:           #F2F2F7;
+  --secondarySystemGroupedBackground:  #FFFFFF;
+  --tertiarySystemGroupedBackground:   #F2F2F7;
+
+  /* ----- Separators ----- */
+  --separator:        rgba(60, 60, 67, 0.29);
+  --opaqueSeparator:  #C6C6C8;
+
+  /* ----- Link / Accent ----- */
+  --link: #007AFF;
+  --accent: var(--systemBlue);
+  --accent-on: #FFFFFF;
+
+  /* ----- Type sizes (iOS Large defaults) ----- */
+  --type-largeTitle:  34px;
+  --type-title1:      28px;
+  --type-title2:      22px;
+  --type-title3:      20px;
+  --type-headline:    17px;
+  --type-body:        17px;
+  --type-callout:     16px;
+  --type-subheadline: 15px;
+  --type-footnote:    13px;
+  --type-caption1:    12px;
+  --type-caption2:    11px;
+
+  /* ----- Tracking ----- */
+  --tracking-largeTitle:  0.37px;
+  --tracking-title1:      0.36px;
+  --tracking-title2:     -0.26px;
+  --tracking-title3:     -0.45px;
+  --tracking-headline:   -0.43px;
+  --tracking-body:       -0.43px;
+  --tracking-callout:    -0.31px;
+  --tracking-subheadline:-0.24px;
+  --tracking-footnote:   -0.08px;
+  --tracking-caption1:    0px;
+  --tracking-caption2:    0.06px;
+
+  /* ----- Spacing (8pt grid) ----- */
+  --space-0:  0px;
+  --space-1:  2px;
+  --space-2:  4px;
+  --space-3:  8px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 20px;
+  --space-7: 24px;
+  --space-8: 32px;
+  --space-9: 44px;
+  --space-10: 64px;
+
+  /* ----- Radii ----- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-pill: 9999px;
+  --radius-appicon: 22.37%;
+
+  /* ----- Shadows ----- */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.04), 0 1px 1px rgba(0,0,0,0.03);
+  --shadow-2: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-3: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-4: 0 8px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
+  --shadow-modal: 0 20px 60px rgba(0,0,0,0.20), 0 8px 16px rgba(0,0,0,0.10);
+
+  /* ----- Materials ----- */
+  --material-ultraThin-bg: rgba(255,255,255,0.40);
+  --material-thin-bg:      rgba(255,255,255,0.60);
+  --material-regular-bg:   rgba(255,255,255,0.72);
+  --material-thick-bg:     rgba(255,255,255,0.82);
+  --material-chrome-bg:    rgba(245,245,247,0.85);
+  --material-blur: 30px;
+
+  /* ----- Motion ----- */
+  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-spring:   cubic-bezier(0.5, 1.5, 0.5, 1);
+  --duration-micro: 200ms;
+  --duration-sheet: 350ms;
+  --duration-page:  500ms;
+
+  /* Container base */
+  font-family: var(--font-sans);
+  color: var(--label);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* =====================================================================
+   Type helpers — scoped to .apple-hig descendants
+   ===================================================================== */
+.apple-hig .t-largeTitle  { font-family: var(--font-sans); font-size: var(--type-largeTitle);  line-height: 41px; letter-spacing: var(--tracking-largeTitle);  font-weight: 400; color: var(--label); }
+.apple-hig .t-title1      { font-family: var(--font-sans); font-size: var(--type-title1);      line-height: 34px; letter-spacing: var(--tracking-title1);      font-weight: 400; color: var(--label); }
+.apple-hig .t-title2      { font-family: var(--font-sans); font-size: var(--type-title2);      line-height: 28px; letter-spacing: var(--tracking-title2);      font-weight: 400; color: var(--label); }
+.apple-hig .t-title3      { font-family: var(--font-sans); font-size: var(--type-title3);      line-height: 25px; letter-spacing: var(--tracking-title3);      font-weight: 400; color: var(--label); }
+.apple-hig .t-headline    { font-family: var(--font-sans); font-size: var(--type-headline);    line-height: 22px; letter-spacing: var(--tracking-headline);    font-weight: 600; color: var(--label); }
+.apple-hig .t-body        { font-family: var(--font-sans); font-size: var(--type-body);        line-height: 22px; letter-spacing: var(--tracking-body);        font-weight: 400; color: var(--label); }
+.apple-hig .t-callout     { font-family: var(--font-sans); font-size: var(--type-callout);     line-height: 21px; letter-spacing: var(--tracking-callout);     font-weight: 400; color: var(--label); }
+.apple-hig .t-subheadline { font-family: var(--font-sans); font-size: var(--type-subheadline); line-height: 20px; letter-spacing: var(--tracking-subheadline); font-weight: 400; color: var(--label); }
+.apple-hig .t-footnote    { font-family: var(--font-sans); font-size: var(--type-footnote);    line-height: 18px; letter-spacing: var(--tracking-footnote);    font-weight: 400; color: var(--secondaryLabel); }
+.apple-hig .t-caption1    { font-family: var(--font-sans); font-size: var(--type-caption1);    line-height: 16px; letter-spacing: var(--tracking-caption1);    font-weight: 400; color: var(--secondaryLabel); }
+.apple-hig .t-caption2    { font-family: var(--font-sans); font-size: var(--type-caption2);    line-height: 13px; letter-spacing: var(--tracking-caption2);    font-weight: 400; color: var(--tertiaryLabel); }
+
+/* =====================================================================
+   Materials
+   ===================================================================== */
+.apple-hig .material-ultraThin,
+.apple-hig .material-thin,
+.apple-hig .material-regular,
+.apple-hig .material-thick,
+.apple-hig .material-chrome {
+  backdrop-filter: blur(var(--material-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--material-blur)) saturate(180%);
+}
+.apple-hig .material-ultraThin { background: var(--material-ultraThin-bg); }
+.apple-hig .material-thin      { background: var(--material-thin-bg); }
+.apple-hig .material-regular   { background: var(--material-regular-bg); }
+.apple-hig .material-thick     { background: var(--material-thick-bg); }
+.apple-hig .material-chrome    { background: var(--material-chrome-bg); }
+
+/* =====================================================================
+   iOS Kit — adapted from project/ui_kits/ios/styles.css
+   ===================================================================== */
+.apple-hig .ios-stage { width: 100%; height: 100%; background: var(--systemGroupedBackground); display: flex; flex-direction: column; font-family: var(--font-sans); color: var(--label); position: absolute; inset: 50px 0 0 0; overflow: hidden; }
+.apple-hig .ios-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 110px; }
+
+.apple-hig .hig-nav { position: sticky; top: 0; z-index: 10; background: var(--material-chrome-bg); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border-bottom: 0.5px solid var(--separator); }
+.apple-hig .hig-nav-row { display: flex; align-items: center; height: 44px; padding: 0 8px; gap: 4px; }
+.apple-hig .hig-nav-leading, .apple-hig .hig-nav-trailing { display: flex; align-items: center; min-width: 60px; flex: 0 0 auto; }
+.apple-hig .hig-nav-trailing { justify-content: flex-end; }
+.apple-hig .hig-nav-title { flex: 1; text-align: center; font: 600 17px var(--font-sans); color: var(--label); letter-spacing: -0.43px; }
+.apple-hig .hig-nav.lg .hig-nav-large-title { padding: 8px 20px 12px; font: 700 34px var(--font-sans); letter-spacing: 0.37px; color: var(--label); }
+
+.apple-hig .hig-back, .apple-hig .hig-nav-action { all: unset; cursor: pointer; padding: 0 8px; height: 44px; display: inline-flex; align-items: center; font: 400 17px var(--font-sans); color: var(--systemBlue); }
+.apple-hig .hig-nav-action.primary { font-weight: 600; }
+.apple-hig .hig-back:active, .apple-hig .hig-nav-action:active { opacity: 0.5; }
+
+.apple-hig .hig-list-section { padding: 20px 16px 0; }
+.apple-hig .hig-list-header { font: 400 13px var(--font-sans); color: var(--secondaryLabel); text-transform: uppercase; letter-spacing: 0.06px; padding: 0 16px 6px; }
+.apple-hig .hig-list-footer { font: 400 13px var(--font-sans); color: var(--secondaryLabel); padding: 6px 16px 0; }
+.apple-hig .hig-list-card { background: var(--secondarySystemGroupedBackground); border-radius: 10px; overflow: hidden; }
+.apple-hig .hig-list-card .hig-row + .hig-row { border-top: 0.5px solid var(--separator); }
+
+.apple-hig .hig-row { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 12px; width: 100%; min-height: 44px; padding: 8px 16px; cursor: pointer; }
+.apple-hig .hig-row:active { background: var(--quaternarySystemFill); }
+.apple-hig .hig-row.destructive .hig-row-title { color: var(--systemRed); }
+.apple-hig .hig-row-icon { width: 29px; height: 29px; border-radius: 7px; display: flex; align-items: center; justify-content: center; color: white; font: 600 14px var(--font-sans); flex-shrink: 0; }
+.apple-hig .hig-row-title { flex: 1; font: 400 17px var(--font-sans); color: var(--label); letter-spacing: -0.43px; }
+.apple-hig .hig-row-value { font: 400 17px var(--font-sans); color: var(--secondaryLabel); }
+.apple-hig .hig-chev { color: var(--tertiaryLabel); font: 600 15px var(--font-sans); }
+
+.apple-hig .hig-toggle { width: 51px; height: 31px; border-radius: 9999px; background: var(--systemFill); position: relative; cursor: pointer; transition: background .2s; flex-shrink: 0; }
+.apple-hig .hig-toggle.on { background: var(--systemGreen); }
+.apple-hig .hig-knob { position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: 9999px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.15), 0 1px 1px rgba(0,0,0,0.05); transition: transform .2s; }
+.apple-hig .hig-toggle.on .hig-knob { transform: translateX(20px); }
+
+.apple-hig .hig-btn { all: unset; box-sizing: border-box; cursor: pointer; font: 600 17px var(--font-sans); padding: 14px 22px; border-radius: 12px; text-align: center; transition: opacity .15s; display: inline-block; }
+.apple-hig .hig-btn.full { display: block; width: 100%; }
+.apple-hig .hig-btn.filled { background: var(--systemBlue); color: white; }
+.apple-hig .hig-btn.tinted { background: rgba(0,122,255,0.15); color: var(--systemBlue); }
+.apple-hig .hig-btn.gray   { background: var(--systemFill); color: var(--label); }
+.apple-hig .hig-btn.plain  { background: transparent; color: var(--systemBlue); padding: 8px 12px; }
+.apple-hig .hig-btn.destructive { background: var(--systemRed); color: white; }
+.apple-hig .hig-btn:active { opacity: 0.7; }
+
+.apple-hig .hig-search { display: flex; align-items: center; gap: 6px; background: var(--systemFill); border-radius: 10px; padding: 8px 10px; margin: 8px 16px 0; }
+.apple-hig .hig-search-ico { color: var(--secondaryLabel); font-size: 14px; }
+.apple-hig .hig-search input { all: unset; flex: 1; font: 400 17px var(--font-sans); color: var(--label); }
+.apple-hig .hig-search input::placeholder { color: var(--placeholderText); }
+
+.apple-hig .hig-tabbar-wrap { position: absolute; bottom: 18px; left: 0; right: 0; display: flex; justify-content: center; pointer-events: none; z-index: 20; }
+.apple-hig .hig-tabbar { pointer-events: auto; display: flex; gap: 2px; background: var(--material-chrome-bg); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border-radius: 28px; padding: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); border: 0.5px solid rgba(255,255,255,0.4); }
+.apple-hig .hig-tab { all: unset; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 14px; border-radius: 22px; min-width: 60px; color: var(--secondaryLabel); }
+.apple-hig .hig-tab.active { background: rgba(0,122,255,0.15); color: var(--systemBlue); }
+.apple-hig .hig-tab-glyph { font-size: 20px; line-height: 1; }
+.apple-hig .hig-tab-label { font: 600 10px var(--font-sans); }
+
+.apple-hig .hig-sheet-scrim { position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 30; display: flex; align-items: flex-end; }
+.apple-hig .hig-sheet { width: 100%; background: var(--systemGroupedBackground); border-radius: 14px 14px 0 0; padding: 8px 0 24px; max-height: 90%; overflow-y: auto; box-shadow: var(--shadow-modal); animation: hig-sheetIn .35s cubic-bezier(.32,.72,.16,1); }
+@keyframes hig-sheetIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.apple-hig .hig-sheet-handle { width: 36px; height: 5px; border-radius: 9999px; background: var(--tertiaryLabel); margin: 6px auto 14px; }
+
+.apple-hig .hig-msg-row { display: flex; padding: 2px 12px; }
+.apple-hig .hig-msg-row.me { justify-content: flex-end; }
+.apple-hig .hig-bubble { max-width: 75%; padding: 8px 12px; border-radius: 18px; font: 400 17px var(--font-sans); letter-spacing: -0.43px; line-height: 22px; }
+.apple-hig .hig-bubble.them { background: var(--systemFill); color: var(--label); }
+.apple-hig .hig-bubble.me { background: var(--systemBlue); color: white; }
+
+.apple-hig .hig-composer { display: flex; align-items: center; gap: 8px; padding: 8px 12px 12px; border-top: 0.5px solid var(--separator); background: var(--material-chrome-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); }
+.apple-hig .hig-composer input { all: unset; flex: 1; background: var(--systemBackground); border: 1px solid var(--separator); border-radius: 18px; padding: 8px 14px; font: 400 17px var(--font-sans); color: var(--label); }
+.apple-hig .hig-composer .send { background: var(--systemBlue); color: white; width: 34px; height: 34px; border-radius: 9999px; display:flex; align-items:center; justify-content:center; cursor: pointer; font-size: 18px; }
+
+/* =====================================================================
+   macOS Kit — adapted from project/ui_kits/macos/styles.css
+   ===================================================================== */
+.apple-hig .mac-stage { display: grid; grid-template-columns: 240px 1fr; height: 100%; background: var(--systemBackground); color: var(--label); font-family: var(--font-sans); }
+.apple-hig .mac-sidebar { background: var(--material-chrome-bg); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border-right: 0.5px solid var(--separator); padding: 36px 8px 8px; overflow-y: auto; }
+.apple-hig .mac-side-section + .mac-side-section { margin-top: 18px; }
+.apple-hig .mac-side-section-title { font: 600 11px var(--font-sans); color: var(--secondaryLabel); text-transform: uppercase; letter-spacing: 0.06px; padding: 4px 10px 6px; }
+.apple-hig .mac-side-item { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 8px; width: 100%; padding: 5px 10px; border-radius: 6px; cursor: pointer; min-height: 26px; font: 400 13px var(--font-sans); color: var(--label); }
+.apple-hig .mac-side-item:hover { background: var(--quaternarySystemFill); }
+.apple-hig .mac-side-item.active { background: var(--systemBlue); color: white; }
+.apple-hig .mac-side-ico { width: 18px; text-align: center; font-size: 14px; color: var(--secondaryLabel); }
+.apple-hig .mac-side-item.active .mac-side-ico { color: white; }
+.apple-hig .mac-side-label { flex: 1; }
+.apple-hig .mac-side-badge { background: var(--systemFill); color: var(--secondaryLabel); font: 600 11px var(--font-sans); padding: 1px 7px; border-radius: 9999px; min-width: 18px; text-align: center; }
+.apple-hig .mac-side-item.active .mac-side-badge { background: rgba(255,255,255,0.25); color: white; }
+
+.apple-hig .mac-main { display: flex; flex-direction: column; min-width: 0; }
+.apple-hig .mac-toolbar { height: 52px; display: flex; align-items: center; gap: 4px; padding: 0 12px; border-bottom: 0.5px solid var(--separator); background: var(--material-chrome-bg); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); }
+.apple-hig .mac-tb-btn { all: unset; cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 5px 9px; border-radius: 6px; color: var(--label); font: 400 13px var(--font-sans); min-height: 24px; }
+.apple-hig .mac-tb-btn:hover { background: var(--quaternarySystemFill); }
+.apple-hig .mac-tb-btn.danger { color: var(--systemRed); }
+.apple-hig .mac-tb-ico { font-size: 14px; line-height: 1; }
+
+.apple-hig .mac-search { display: inline-flex; align-items: center; gap: 4px; background: var(--systemFill); border-radius: 6px; padding: 3px 8px; width: 220px; }
+.apple-hig .mac-search-ico { color: var(--secondaryLabel); font-size: 13px; }
+.apple-hig .mac-search input { all: unset; flex: 1; font: 400 13px var(--font-sans); color: var(--label); }
+
+.apple-hig .mac-btn { all: unset; cursor: pointer; padding: 4px 14px; border-radius: 6px; font: 400 13px var(--font-sans); border: 0.5px solid var(--separator); background: var(--systemBackground); color: var(--label); box-shadow: var(--shadow-1); min-height: 22px; display: inline-flex; align-items: center; }
+.apple-hig .mac-btn:hover { background: var(--quaternarySystemFill); }
+.apple-hig .mac-btn.primary { background: var(--systemBlue); color: white; border-color: transparent; font-weight: 500; }
+.apple-hig .mac-btn.primary:hover { background: #0064d6; }
+
+.apple-hig .mac-mail { display: grid; grid-template-columns: 280px 1fr; height: 100%; min-height: 0; }
+.apple-hig .mac-mail-list { border-right: 0.5px solid var(--separator); overflow-y: auto; background: var(--systemBackground); }
+.apple-hig .mac-mail-item { padding: 12px 16px; cursor: pointer; border-bottom: 0.5px solid var(--separator); display: flex; flex-direction: column; gap: 2px; }
+.apple-hig .mac-mail-item.active { background: var(--systemBlue); color: white; }
+.apple-hig .mac-mail-item.active * { color: white !important; }
+.apple-hig .mac-mail-item:hover:not(.active) { background: var(--quaternarySystemFill); }
+.apple-hig .mac-mail-from { font: 600 13px var(--font-sans); color: var(--label); display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.apple-hig .mac-mail-time { font: 400 11px var(--font-sans); color: var(--secondaryLabel); flex-shrink: 0; }
+.apple-hig .mac-mail-subject { font: 400 13px var(--font-sans); color: var(--label); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.apple-hig .mac-mail-preview { font: 400 12px var(--font-sans); color: var(--secondaryLabel); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.apple-hig .mac-mail-read { overflow-y: auto; padding: 24px 32px; background: var(--systemBackground); }
+.apple-hig .mac-mail-read .h { font: 700 22px var(--font-sans); margin: 0 0 6px; letter-spacing: -0.26px; }
+.apple-hig .mac-mail-read .meta { display: flex; gap: 8px; align-items: center; font: 400 13px var(--font-sans); color: var(--secondaryLabel); padding-bottom: 12px; border-bottom: 0.5px solid var(--separator); margin-bottom: 16px; }
+.apple-hig .mac-mail-read .body { font: 400 14px/1.55 var(--font-sans); color: var(--label); max-width: 640px; }
+.apple-hig .mac-mail-read .body p { margin: 0 0 14px; }
+.apple-hig .mac-avatar { width: 32px; height: 32px; border-radius: 9999px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: white; font: 600 13px var(--font-sans); }

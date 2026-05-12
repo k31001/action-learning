@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { triggerAutoUpdate } from './hooks/useMarketData'
-import { Activity, BarChart3, Compass, Crosshair } from 'lucide-react'
+import { Activity, BarChart3, Compass, Crosshair, Palette } from 'lucide-react'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
 import IndicatorGrid from './components/IndicatorGrid'
@@ -12,6 +12,7 @@ import DecisionTracker from './components/DecisionTracker'
 import DataVisualization from './components/DataVisualization'
 import ScenarioPlanning from './components/ScenarioPlanning'
 import Strategies from './components/Strategies'
+import DesignSystem from './components/apple-hig/DesignSystem'
 import { VERSION } from './version'
 
 // 최상단 페이지 탭
@@ -20,6 +21,7 @@ const TOP_TABS = [
   { id: 'visualization', label: 'Data Visualization',      icon: BarChart3 },
   { id: 'planning',      label: 'Scenario Planning',       icon: Compass },
   { id: 'strategy',      label: 'Strategy',                icon: Crosshair },
+  { id: 'design',        label: 'Design System',           icon: Palette },
 ]
 
 const MAIN_TABS = [
@@ -181,6 +183,7 @@ export default function App() {
         {topTab === 'visualization' && <DataVisualization />}
         {topTab === 'planning'      && <ScenarioPlanning />}
         {topTab === 'strategy'      && <Strategies />}
+        {topTab === 'design'        && <DesignSystem />}
       </main>
     </div>
   )
