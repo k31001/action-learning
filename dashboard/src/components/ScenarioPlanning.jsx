@@ -43,7 +43,7 @@ function STEEPPanel() {
 
   return (
     <div className="space-y-4">
-      <Card title="STEEP 카테고리별 요인 구성" source="analysis/steep/*.md">
+      <Card title="STEEP 카테고리별 요인 구성" source="wiki/steep/*.md">
         <ResponsiveContainer width="100%" height={220}>
           <BarChart data={totals} margin={{ left: 0, right: 8, top: 8 }}>
             <CartesianGrid {...GRID} />
@@ -151,7 +151,7 @@ function DrivingForcesPanel() {
     <div className="space-y-4">
       <Card
         title="Impact × Uncertainty 매트릭스 (50개 요인)"
-        source="analysis/driving-forces/impact-uncertainty-matrix.md"
+        source="wiki/driving-forces/impact-uncertainty-matrix.md"
       >
         <p className="text-xs text-zinc-500 mb-2">
           우상단 (Impact ≥ 4 + Uncertainty ≥ 4) = 핵심 불확실성 = Driving Force 후보. 점 크기는 같은 좌표에 있는 요인 수.
@@ -202,7 +202,7 @@ function DrivingForcesPanel() {
         </ResponsiveContainer>
       </Card>
 
-      <Card title="Top 10 핵심 불확실성 (I×U 기준)" source="analysis/driving-forces/impact-uncertainty-matrix.md">
+      <Card title="Top 10 핵심 불확실성 (I×U 기준)" source="wiki/driving-forces/impact-uncertainty-matrix.md">
         <div className="space-y-1.5">
           {DRIVING_FORCES_DATA.top10.map(item => {
             const cat = STEEP_DATA.categories.find(c => c.id === item.category)
@@ -283,7 +283,7 @@ function ScenariosPanel() {
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-4">
-        <Card title="시나리오 매트릭스 (DF1 × DF2)" source="analysis/scenarios/scenario-matrix.md">
+        <Card title="시나리오 매트릭스 (DF1 × DF2)" source="wiki/scenarios/scenario-matrix.md">
           <div className="relative">
             {/* Y-axis label */}
             <div className="absolute -left-1 top-1/2 -translate-y-1/2 -rotate-90 origin-center text-[10px] text-zinc-500 whitespace-nowrap">
@@ -417,7 +417,7 @@ function ScenariosPanel() {
         ))}
       </div>
 
-      <Card title="분기점 모니터링 일정" source="analysis/scenarios/scenario-matrix.md">
+      <Card title="분기점 모니터링 일정" source="wiki/scenarios/scenario-matrix.md">
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
@@ -449,7 +449,7 @@ function ScenariosPanel() {
 function BenchmarkPanel() {
   return (
     <div className="space-y-4">
-      <Card title="경기 사이클 대응 7대 패턴" source="analysis/benchmark/cyclical-strategy-benchmark.md">
+      <Card title="경기 사이클 대응 7대 패턴" source="wiki/benchmark/cyclical-strategy-benchmark.md">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {BENCHMARK_DATA.cyclicalPatterns.map(p => (
             <div
@@ -477,7 +477,7 @@ function BenchmarkPanel() {
         </div>
       </Card>
 
-      <Card title="산업별 사례 — 7개" source="analysis/benchmark/cyclical-strategy-benchmark.md">
+      <Card title="산업별 사례 — 7개" source="wiki/benchmark/cyclical-strategy-benchmark.md">
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
@@ -502,7 +502,7 @@ function BenchmarkPanel() {
         </div>
       </Card>
 
-      <Card title="농수산업 헤징 메커니즘 → 메모리 적용" source="analysis/benchmark/agri-hedging-to-memory-semi.md">
+      <Card title="농수산업 헤징 메커니즘 → 메모리 적용" source="wiki/benchmark/agri-hedging-to-memory-semi.md">
         <div className="space-y-2">
           {BENCHMARK_DATA.agriHedging.map(h => (
             <div key={h.id} className="border border-zinc-200 rounded-hig-md shadow-hig-1 p-3 bg-zinc-50">
@@ -527,7 +527,7 @@ function BenchmarkPanel() {
         </div>
       </Card>
 
-      <Card title="호황 참여 헤지 구조 5종" source="analysis/benchmark/upside-participation-hedging.md">
+      <Card title="호황 참여 헤지 구조 5종" source="wiki/benchmark/upside-participation-hedging.md">
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>

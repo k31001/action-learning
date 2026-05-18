@@ -41,31 +41,39 @@ Early Warning Indicators 대시보드
 
 ---
 
-## 프로젝트 구조
+## 프로젝트 구조 (LLM Wiki 모델)
 
 ```
 action-learning/
-├── data/                          # 수집된 원시 데이터
-│   ├── market/                    # 시장 규모·가격·수요 데이터
-│   ├── technology/                # HBM 로드맵·기술 트렌드·NVIDIA CMX/SCADA
-│   ├── competitors/               # SK하이닉스·마이크론·중국 경쟁사 분석
-│   ├── macro/                     # AI CapEx·반도체 사이클·에너지
-│   ├── policy/                    # 미국 수출통제·CHIPS Act·한국 정책
-│   └── metadata.md                # 모든 데이터 항목의 중앙 인덱스
+├── sources/                       # 1층: 원본 (불변, append-only)
+│   └── raw/                       # 마이그레이션 중 — 다음 세션에서 articles/filings/papers/raw-notes 로 분리
+│       ├── market/                # 시장 규모·가격·수요
+│       ├── technology/            # HBM 로드맵·NVIDIA CMX/SCADA
+│       ├── competitors/           # SK하이닉스·마이크론·중국
+│       ├── macro/                 # AI CapEx·반도체 사이클
+│       ├── policy/                # 미국 수출통제·CHIPS Act·한국
+│       └── metadata.md            # 원본 카탈로그
 │
-├── analysis/
-│   └── scenarios/
-│       └── strategy.md            # 전략 권고안 (Main Bet·Side Bet·RS1~RS6)
+├── wiki/                          # 2층: 위키 (LLM이 소유)
+│   ├── steep/                     # STEEP 5 카테고리
+│   ├── driving-forces/            # DF 식별, Impact×Uncertainty
+│   ├── scenarios/                 # 5개 시나리오 + 매트릭스
+│   ├── strategies/
+│   │   ├── core/                  # 11개 핵심전략 현황
+│   │   └── invariant/             # 8개 Robust 전략 (RS1~RS8)
+│   ├── benchmark/                 # 사이클 대응·헤징 벤치마크
+│   ├── entities/                  # 회사·제품·인물 (생성 예정)
+│   └── concepts/                  # 개념·기술 트렌드 (생성 예정)
 │
-├── report/
-│   ├── scenario-planning-report.md # 시나리오 플래닝 전략 보고서 (최종 산출물)
-│   └── assets/                    # 보고서 첨부 시각자료
+├── outputs/                       # 3층: 빌드 결과물
+│   ├── report/scenario-planning-report.md
+│   └── presentation/              # slide-outline.md + scripts + assets + .pptx
 │
-├── presentation/
-│   └── slide-outline.md           # 슬라이드 25장 상세 기획서
+├── dashboard/                     # Vercel 빌드 루트 (최상위 유지)
 │
-├── CLAUDE.md                      # 프로젝트 가이드라인 및 규칙
-├── PROMPT.md                      # 누적 프롬프트 로그
+├── CLAUDE.md                      # 위키 관리자 헌법
+├── index.md                       # 위키 전체 목차
+├── log.md                         # 시간순 작업 로그
 └── README.md                      # 이 파일
 ```
 
@@ -75,10 +83,12 @@ action-learning/
 
 | 파일 | 설명 |
 |------|------|
-| [`report/scenario-planning-report.md`](report/scenario-planning-report.md) | 시나리오 플래닝 기반 전략 보고서 (약 500줄, 완성) |
-| [`analysis/scenarios/strategy.md`](analysis/scenarios/strategy.md) | 전략 권고안 상세본 — Main Bet / Side Bet / RS1~RS6 / EWI |
-| [`presentation/slide-outline.md`](presentation/slide-outline.md) | 25개 슬라이드 기획서 (내용·시각자료·발표 노트 포함) |
-| [`data/metadata.md`](data/metadata.md) | 16개 데이터 항목 중앙 인덱스 |
+| [`outputs/report/scenario-planning-report.md`](outputs/report/scenario-planning-report.md) | 시나리오 플래닝 기반 전략 보고서 (약 500줄, 완성) |
+| [`wiki/scenarios/strategy.md`](wiki/scenarios/strategy.md) | 전략 권고안 상세본 — Main Bet / Side Bet / RS / EWI |
+| [`outputs/presentation/slide-outline.md`](outputs/presentation/slide-outline.md) | 25개 슬라이드 기획서 |
+| [`sources/raw/metadata.md`](sources/raw/metadata.md) | 원본 데이터 카탈로그 |
+| [`index.md`](index.md) | 위키 전체 페이지 목차 |
+| [`log.md`](log.md) | 시간순 작업 로그 |
 
 ---
 
@@ -114,15 +124,16 @@ action-learning/
 
 ## 데이터 출처
 
-수집된 16개 데이터 항목은 [`data/metadata.md`](data/metadata.md) 참조.  
+수집된 데이터 항목은 [`sources/raw/metadata.md`](sources/raw/metadata.md) 참조.  
 주요 출처: TrendForce, Yole Group, Bank of America, Counterpoint Research, SK하이닉스 IR, Micron IR, NVIDIA 기술 블로그, BIS, NIST, IEA 등
 
 ---
 
 ## 관련 규칙
 
-프로젝트 가이드라인은 [`CLAUDE.md`](CLAUDE.md) 참조.  
-모든 사용자 지시 누적 로그는 [`PROMPT.md`](PROMPT.md) 참조.
+위키 관리자 헌법은 [`CLAUDE.md`](CLAUDE.md) 참조.  
+위키 전체 목차는 [`index.md`](index.md), 시간순 작업 로그는 [`log.md`](log.md) 참조.  
+위키화 이전 누적 프롬프트는 [`PROMPT.md`](PROMPT.md) (다음 세션에서 log.md로 변환 예정).
 
 ---
 

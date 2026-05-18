@@ -64,7 +64,7 @@ function OverviewPanel() {
   const o = STRATEGY_OVERVIEW
   return (
     <div className="space-y-4">
-      <Card title="Executive Summary — 한 문장 요약" source="report/scenario-planning-report.md">
+      <Card title="Executive Summary — 한 문장 요약" source="outputs/report/scenario-planning-report.md">
         <p className="text-sm text-zinc-800 leading-relaxed italic">
           "{o.oneLineSummary}"
         </p>
@@ -81,7 +81,7 @@ function OverviewPanel() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card title="Main Bet — 시나리오 B" source="report/scenario-planning-report.md">
+        <Card title="Main Bet — 시나리오 B" source="outputs/report/scenario-planning-report.md">
           <div className="text-center mb-3">
             <div className="text-3xl font-bold text-emerald-600">{o.mainBet.scenario}</div>
             <div className="text-sm text-emerald-700 mt-1">확률 {o.mainBet.probability}</div>
@@ -98,7 +98,7 @@ function OverviewPanel() {
           </ul>
         </Card>
 
-        <Card title="Robust 8개 전략 — 4축 구조" source="report/invariant-strategies/README.md">
+        <Card title="Robust 8개 전략 — 4축 구조" source="wiki/strategies/invariant/README.md">
           <div className="space-y-2">
             {o.roBustAxes.map((axis, i) => (
               <div
@@ -143,7 +143,7 @@ function CompetitivePanel() {
   }
   return (
     <div className="space-y-4">
-      <Card title="5사 종합 비교 — Samsung은 어디에 서 있는가" source="data/competitors/{sk-hynix,micron,china-competitors,market-share}.md">
+      <Card title="5사 종합 비교 — Samsung은 어디에 서 있는가" source="sources/raw/competitors/{sk-hynix,micron,china-competitors,market-share}.md">
         <p className="text-xs text-zinc-500 mb-3">
           삼성 / SK하이닉스 / Micron / CXMT / YMTC — 매출·영업이익률·CapEx·HBM 점유·미국 보조금·강점·갭 비교.
           Samsung 약점이 가장 두드러지는 4축은 아래 "핵심 비교 축"에서 별도 시각화.
@@ -263,7 +263,7 @@ function CompetitivePanel() {
 function RobustStrategyPanel() {
   return (
     <div className="space-y-4">
-      <Card title="8개 Robust 전략 — 시나리오 가치 매트릭스 (8 × 5 = 40 셀)" source="report/invariant-strategies/README.md">
+      <Card title="8개 Robust 전략 — 시나리오 가치 매트릭스 (8 × 5 = 40 셀)" source="wiki/strategies/invariant/README.md">
         <p className="text-xs text-zinc-500 mb-3">
           전략별로 시나리오 A/B/C/D/E 각각에서 어떤 가치를 만드는가. 각 셀은 해당 시나리오에서 그 전략의 핵심 작동 방식.
         </p>
@@ -366,7 +366,7 @@ function CoreStrategyPanel() {
 
   return (
     <div className="space-y-4">
-      <Card title="11개 핵심전략 점수 비교 (3축: 임팩트 × 창의성 × 모방난이도, 각 5점 만점 → 합산 15점)" source="analysis/scenarios/core-strategy-selection.md">
+      <Card title="11개 핵심전략 점수 비교 (3축: 임팩트 × 창의성 × 모방난이도, 각 5점 만점 → 합산 15점)" source="wiki/scenarios/core-strategy-selection.md">
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={sortedByScore} layout="vertical" margin={{ left: 24, right: 16, top: 8 }}>
             <CartesianGrid stroke="#1f2937" strokeDasharray="3 3" />
@@ -494,7 +494,7 @@ function CoreStrategyPanel() {
         </div>
       </Card>
 
-      <Card title="외부 가시성 회복 우선순위 — 7대 정보 공백" source="report/core-strategies/README.md">
+      <Card title="외부 가시성 회복 우선순위 — 7대 정보 공백" source="wiki/strategies/core/README.md">
         <p className="text-xs text-zinc-500 mb-3">외부 공개 자료가 부족해 신뢰 회복·시장 신호 발신을 위해 우선 공개해야 할 영역.</p>
         <div className="space-y-1.5">
           {CORE_STRATEGIES.infoGaps.map((g, i) => (

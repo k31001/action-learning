@@ -1,9 +1,9 @@
-// 전략 데이터셋 — report/{invariant-strategies, core-strategies, scenario-planning-report}.md 정리
-// 모든 수치·텍스트는 report/ 의 표·내용에서 직접 추출.
+// 전략 데이터셋 — wiki/strategies/{invariant, core} + outputs/report/scenario-planning-report.md 정리
+// 모든 수치·텍스트는 wiki/strategies/ 와 outputs/report/ 의 표·내용에서 직접 추출.
 
 // ─────────────────────────────────────────────────────────────────────────────
 // OVERVIEW — Executive Summary 핵심 수치
-// 출처: report/scenario-planning-report.md "핵심 수치 한눈에" + Executive Summary
+// 출처: outputs/report/scenario-planning-report.md "핵심 수치 한눈에" + Executive Summary
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const STRATEGY_OVERVIEW = {
@@ -53,7 +53,7 @@ export const STRATEGY_OVERVIEW = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPETITIVE LANDSCAPE — 5사 종합 비교 (2026-05-07 신규)
-// 출처: data/competitors/{sk-hynix,micron,china-competitors,market-share}.md
+// 출처: sources/raw/competitors/{sk-hynix,micron,china-competitors,market-share}.md
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const COMPETITIVE_LANDSCAPE = {
@@ -165,7 +165,7 @@ export const COMPETITIVE_LANDSCAPE = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ROBUST STRATEGY — 8개 RS
-// 출처: report/invariant-strategies/rs{1..8}-*.md + README.md 시나리오 가치 매트릭스
+// 출처: wiki/strategies/invariant/rs{1..8}-*.md + README.md 시나리오 가치 매트릭스
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const ROBUST_STRATEGIES = [
@@ -237,7 +237,7 @@ export const RS_SCENARIO_MATRIX = ROBUST_STRATEGIES.map(rs => ({
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CORE STRATEGY — 11개 (메인벳 6 + 사이드벳 5)
-// 출처: report/core-strategies/current-state-*.md + README.md
+// 출처: wiki/strategies/core/current-state-*.md + README.md
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const CORE_STRATEGIES = {
@@ -343,7 +343,7 @@ export const CORE_STRATEGIES = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DECISIONS — 12개 즉시 결정 (D-150 / D-240 / D-330)
-// 출처: report/scenario-planning-report.md "즉시 결정 필요"
+// 출처: outputs/report/scenario-planning-report.md "즉시 결정 필요"
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const DECISIONS = [

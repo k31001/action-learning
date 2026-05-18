@@ -1,9 +1,9 @@
-// 시나리오 플래닝 데이터셋 — analysis/{steep, driving-forces, scenarios, benchmark} 정리.
-// 모든 수치는 analysis/ 의 표·텍스트에서 직접 추출.
+// 시나리오 플래닝 데이터셋 — wiki/{steep, driving-forces, scenarios, benchmark} 정리.
+// 모든 수치는 wiki/ 의 표·텍스트에서 직접 추출.
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STEEP — 5 카테고리, 카테고리당 ~10개 요인
-// 출처: analysis/steep/{social, technology, environment, economy, political}.md
+// 출처: wiki/steep/{social, technology, environment, economy, political}.md
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const STEEP_DATA = {
@@ -97,7 +97,7 @@ export const STEEP_DATA = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DRIVING FORCES
-// 출처: analysis/driving-forces/{impact-uncertainty-matrix, key-drivers}.md
+// 출처: wiki/driving-forces/{impact-uncertainty-matrix, key-drivers}.md
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const DRIVING_FORCES_DATA = {
@@ -168,7 +168,7 @@ export const DRIVING_FORCES_DATA = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SCENARIOS
-// 출처: analysis/scenarios/{scenario-A..E, scenario-matrix}.md
+// 출처: wiki/scenarios/{scenario-A..E, scenario-matrix}.md
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const SCENARIOS_DATA = {
@@ -238,7 +238,7 @@ export const SCENARIOS_DATA = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BENCHMARK
-// 출처: analysis/benchmark/{cyclical, agri-hedging, upside-participation}.md
+// 출처: wiki/benchmark/{cyclical, agri-hedging, upside-participation}.md
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const BENCHMARK_DATA = {

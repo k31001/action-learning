@@ -1,150 +1,241 @@
-# 프로젝트 가이드라인
+# 위키 관리자 헌법 (LLM Wiki Constitution)
 
-## 프로젝트 정보
-- **주제**: 삼성전자 메모리사업부 불확실성 대응 전략 (시나리오 플래닝)
-- **방법론**: Shell 시나리오 플래닝
-- **최종 산출물**: 전략 보고서(Markdown) + 슬라이드 기획서(Markdown) + 발표자료(PowerPoint) + EWI 모니터링 대시보드(React + Vercel)
+이 레포는 **살아있는 위키**다. 단발 보고서를 만들기 위한 파이프라인이 아니라, 새로운 정보가 들어올 때마다 LLM이 읽고·요약하고·교차참조를 갱신해서 **한 번 컴파일되고 계속 최신 상태로 유지되는 지식베이스**다.
 
-## 필수 규칙
+도메인은 **삼성전자 메모리사업부의 Shell 시나리오 플래닝**. 위키가 진실의 원천이고, 전략 보고서·발표자료·대시보드는 위키에서 파생되는 빌드 산출물이다.
 
-### 파일 관리
-- 모든 사용자 지시 및 프롬프트는 `PROMPT.md`에 누적 기록
-- 모든 문서는 Markdown 형식 (PowerPoint 제외)
-- 데이터 수집/수정 시마다 `data/metadata.md` 업데이트 필수
-- 모든 변경사항은 git commit + 마무리 단계에서 push (자세한 흐름은 아래 "변경 정합성 체인" 참조)
+---
 
-### 디렉토리 규칙
-- 원시 데이터: `data/{category}/`
-- 분석 결과: `analysis/{type}/`
-- 보고서 시각자료: `report/assets/`
-- 발표 시각자료: `presentation/assets/`
-
-### 데이터 메타데이터 형식 (`data/metadata.md`)
-각 데이터 항목은 다음 형식으로 기록:
-```
-### [데이터명]
-- **파일/링크**: 경로 또는 URL
-- **수집일**: YYYY-MM-DD
-- **출처**: 기관명
-- **신뢰도**: High/Medium/Low
-- **태그**: #market #HBM #competitor 등
-- **요약**: 2~3줄 핵심 내용
-```
-
-### 시나리오 플래닝 방법론 순서
-1. Focal Issue 정의
-2. STEEP 요인 브레인스토밍 (30~50개)
-3. Impact × Uncertainty 매트릭스 작성
-4. 핵심 Driving Forces 2~3개 선별
-5. 시나리오 매트릭스 구성 (2×2 또는 선택적 조합)
-6. 시나리오 내러티브 작성 (3~5개)
-7. Main Bet + Side Bet 전략 도출
-8. Robust 전략 + Early Warning Indicators
-
-### 서브에이전트 사용 규칙
-- Research Agent: 데이터 수집만 담당, 판단 금지
-- STEEP Agent: 요인 도출 후 중요도/불확실성 점수 부여 (1~5점)
-- Scenario Agent: 시나리오는 중립적 이름 사용 (좋고 나쁨 없이)
-- Strategy Agent: 모든 전략은 시나리오와 연결고리 명시
-- Report/Presentation Agent: 수치는 반드시 출처 표기
-
-### PowerPoint 제작
-- 1차: `presentation/slide-outline.md`에 슬라이드별 상세 기획
-- 2차: **`python3 presentation/scripts/generate_pptx.py` 실행** → `presentation/samsung-memory-scenario-planning.pptx` (25매)
-- 데이터 차트: Python matplotlib (스크립트 내장) — 결과는 `presentation/assets/*.png`에 자동 저장
-- PPTX 자체는 `.gitignore`로 미커밋. 재현 가능성은 `template.pptx` + `slide-outline.md` + `scripts/generate_pptx.py` + `assets/*.png`에 의존
-- 의존성: `python3 -m pip install python-pptx matplotlib numpy`
-
-### EWI 대시보드 (`dashboard/`)
-
-전략 보고서의 시나리오·Driving Forces·Robust 전략과 항상 정합성을 맞춰야 하는 React + Vercel 웹앱.
-
-- **단일 소스 → 동기화 대상 매핑**:
-  | 단일 소스 (전략 사슬) | 대시보드 동기화 대상 |
-  |--------------------|--------------------|
-  | `analysis/scenarios/scenario-{A..E}.md` + `scenario-matrix.md` (시나리오 5종, 확률, 메인벳) | `dashboard/src/data/indicators.js` 의 `SCENARIOS` 배열 |
-  | `analysis/driving-forces/key-drivers.md` (DF1/DF2 축, 현재 위치) | `dashboard/src/data/indicators.js` 의 `INITIAL_QUADRANT_POSITIONS` |
-  | `analysis/scenarios/strategy.md` (9개 즉시 결정 — D1~D9) | `dashboard/src/components/DecisionTracker.jsx` 의 `DECISIONS` 배열 |
-  | `data/market/`, `data/macro/` 시계열 (HBM·CapEx 등) | `dashboard/data/*.json` (auto-update API가 채움) |
-- **로컬 빌드 검증**: `cd dashboard && npm run build` → `dist/` 생성 확인. 콘솔 오류 없으면 통과
-- **배포**: GitHub `origin/main` push 시 Vercel이 `dashboard/`를 자동 빌드·배포 (Vercel ↔ GitHub git integration). 별도 CLI 호출 불필요
-- **vercel.json**: 서버리스 함수(`api/*.js`) + 매일 0시 cron(`/api/auto-update/all`) 구성
-
-### 변경 정합성 체인 (Continuous Consistency)
-
-데이터·분석·전략·보고서 중 어느 단계든 변경되면 아래 사슬을 따라 **두 갈래**(① 발표자료 / ② 대시보드)의 하류를 모두 갱신한 뒤 git push 한 번으로 마무리한다 (push가 Vercel 자동 배포 트리거).
+## 1. 3계층 아키텍처
 
 ```
-data/{category}/                                          (원시 데이터)
-        ↓ Research Agent
-analysis/{steep, driving-forces, scenarios, benchmark}/   (분석)
-        ↓ Strategy Agent
-analysis/scenarios/strategy.md                            (전략 통합)
-        ↓
-report/scenario-planning-report.md                        (전략 보고서)
-        ↓
-        ├─── ① 발표자료 갈래 ───────────────────────┐
-        │                                              │
-        │   presentation/slide-outline.md              │
-        │           ↓                                  │
-        │   python3 presentation/scripts/              │
-        │           generate_pptx.py                   │
-        │           ↓                                  │
-        │   presentation/samsung-memory-               │
-        │           scenario-planning.pptx (.gitignore)│
-        │                                              │
-        └─── ② 대시보드 갈래 ───────────────────────┤
-            │                                          │
-            │   dashboard/src/data/indicators.js       │
-            │   dashboard/src/components/              │
-            │           DecisionTracker.jsx            │
-            │           ↓                              │
-            │   cd dashboard && npm run build  (검증)  │
-            │           ↓                              │
-            │   (push 후 Vercel 자동 배포)              │
-            │                                          │
-            └──────────────────────────────────────────┘
-                              ↓
-            git commit + git push origin main
-                              ↓
-            ✓ 원격 저장소 동기화
-            ✓ Vercel 프로덕션 자동 배포 (대시보드)
+sources/   ← 1층: 원본 (불변, append-only)
+wiki/      ← 2층: 위키 (LLM이 전적으로 소유·유지)
+outputs/   ← 3층: 빌드 결과물 (위키에서 합성)
+dashboard/ ← 빌드 결과물 (최상위 유지, Vercel 자동 배포 루트)
+
+CLAUDE.md  ← 스키마 (이 문서)
+index.md   ← 위키 전체 목차
+log.md     ← 시간순 작업 로그 (append-only)
 ```
 
-#### 변경 단계별 필수 갱신
+### `sources/` — 원본 (불변)
+- 외부에서 수집한 1차 자료: 기사·논문·실적발표·공시·회의록·로 데이터
+- 하위: `sources/articles/`, `sources/filings/`, `sources/papers/`, `sources/raw-notes/`
+- **LLM은 읽기만 한다.** 절대 수정·요약·재배치하지 않는다.
+- 새 소스는 항상 추가만. 기존 파일은 출처 변경이 있을 때만 덮어쓴다.
+- 마이그레이션 중: `sources/raw/`는 옛 `data/` 디렉토리. 다음 세션에서 `sources/{articles,filings,papers,raw-notes}/`로 파일 단위 분리.
+
+### `wiki/` — 위키 (LLM 소유)
+- LLM이 새 소스 수집·질의 응답·정기 점검을 통해 지속적으로 유지하는 마크다운 페이지
+- 모든 페이지는 다음 중 하나:
+  - **entities/** — 회사·제품·인물 (예: `sk-hynix.md`, `hbm4.md`, `nvidia.md`)
+  - **concepts/** — 개념·기술 트렌드·정책 (예: `memory-cycle.md`, `cxl.md`, `chips-act.md`)
+  - **steep/, driving-forces/, scenarios/, benchmark/** — 시나리오 플래닝 분석 페이지
+  - **strategies/** — 전략 페이지 (core, invariant)
+  - **comparisons/** — 비교표 (선택)
+- **모든 사실 주장은 `sources/`의 파일을 인용**한다. 형식:
+  ```markdown
+  HBM3E 12-hi는 2026년 1분기 양산 진입했다 ([micron-q1-fy26.md](../../sources/filings/micron-q1-fy26.md)).
+  ```
+- 인용 없는 주장은 lint에서 플래그 대상.
+
+### `outputs/` — 빌드 결과물
+- `outputs/report/scenario-planning-report.md` — 위키 페이지를 합성한 전략 보고서
+- `outputs/presentation/` — 발표자료 (slide-outline.md + scripts + assets + .pptx)
+- 빌드 산출물이므로, 위키와 모순되면 **항상 위키가 우선**. outputs은 재생성 가능.
+
+### `dashboard/` — 빌드 결과물 (최상위 유지, Vercel 루트)
+- React + Vercel 앱. `dashboard/src/data/*.js`의 SCENARIOS·DECISIONS·INITIAL_QUADRANT_POSITIONS는 wiki 페이지의 수치 미러
+- Vercel 빌드 루트가 `dashboard/`라 최상위에 유지
+
+---
+
+## 2. 인덱스와 로그
+
+### `index.md` — 위키 전체 목차
+- 카테고리별로 모든 wiki 페이지 나열: `- [페이지명](경로) — 한 줄 요약`
+- **수집·생성마다 갱신**. 페이지를 추가했는데 인덱스에 없으면 고아 페이지로 lint에서 잡힘.
+
+### `log.md` — 시간순 추가 전용 로그
+- 형식: `## [YYYY-MM-DD] 작업유형 | 제목`
+- 작업유형: `ingest`, `query`, `lint`, `migration`, `build`
+- 한 항목은 5~10줄 내외. 무엇을 추가·갱신했고 왜 했는지.
+- **삭제·재작성 금지**. 잘못된 항목은 새 항목으로 정정.
+
+---
+
+## 3. 3대 워크플로우
+
+### Ingest — 새 소스 추가
+사용자가 새 자료를 던지면:
+1. `sources/{articles,filings,papers,raw-notes}/` 적절한 곳에 저장 (원본 보존)
+2. 영향받는 wiki 페이지 식별 (entities·concepts·scenarios·strategies)
+3. 해당 페이지들을 갱신. 새 개체/개념이면 신규 페이지 생성
+4. `index.md` 갱신
+5. `log.md`에 항목 추가
+
+한 ingest는 보통 wiki 페이지 5~15개를 건드린다. 누락 페이지는 다음 lint에서 회수.
+
+### Query — 질문 응답
+사용자가 질문하면:
+1. wiki에서 먼저 답을 찾는다 (인용 포함)
+2. wiki에 없으면 sources에서 찾고, **답변 가치가 있으면 새 wiki 페이지로 환원**
+3. 답변 자체가 새 통찰이면 `log.md`에 `query` 항목으로 기록
+
+### Lint — 정기 정합성 점검
+점검 항목:
+- **고아 페이지**: `index.md`에 없는 wiki 파일
+- **역링크 누락**: 페이지 A가 B를 인용하는데 B가 A를 모름
+- **모순**: 동일 사실에 대해 두 페이지의 수치/주장이 다름
+- **낡은 주장**: 출처가 6개월 이상 묵었고 시계열 데이터(가격·점유율·CapEx)
+- **인용 없는 주장**: wiki 페이지에 `sources/` 링크 없는 수치·고유명사
+- **빌드 정합성**: 위키 ↔ `outputs/`·`dashboard/src/data/`의 핵심 수치 일치
+
+lint 결과는 `log.md`에 항목으로 남기고, 즉시 고칠 수 있는 건 그 자리에서 고친다.
+
+---
+
+## 4. 시나리오 플래닝 도메인 규칙
+
+위키의 분석 페이지는 Shell 시나리오 플래닝 방법론을 따른다:
+
+1. Focal Issue → `wiki/scenarios/scenario-matrix.md`
+2. STEEP 요인 → `wiki/steep/{social,technology,environment,economy,political}.md`
+3. Impact × Uncertainty → `wiki/driving-forces/impact-uncertainty-matrix.md`
+4. 핵심 Driving Forces → `wiki/driving-forces/key-drivers.md` (DF1·DF2)
+5. 시나리오 매트릭스 → `wiki/scenarios/scenario-matrix.md`
+6. 시나리오 내러티브 → `wiki/scenarios/scenario-{A..E}.md`
+7. Main Bet + Side Bet → `wiki/strategies/core/`
+8. Robust 전략 + EWI → `wiki/strategies/invariant/`
+
+### 일관성 규칙
+- 시나리오 이름은 **중립적** (좋고 나쁨 없이)
+- 모든 수치는 `sources/` 인용 필수
+- 모든 전략은 시나리오와 연결고리 명시 (어느 시나리오에서 작동하는가)
+
+---
+
+## 5. 빌드 산출물 동기화
+
+### 위키 → 빌드 산출물 매핑
+
+| 위키 (단일 소스) | 동기화 대상 |
+|---|---|
+| `wiki/scenarios/scenario-{A..E}.md` + `scenario-matrix.md` | `dashboard/src/data/scenarioPlanning.js` SCENARIOS |
+| `wiki/driving-forces/key-drivers.md` | `dashboard/src/data/scenarioPlanning.js` INITIAL_QUADRANT_POSITIONS |
+| `wiki/strategies/` (D1~D9, RS1~RS8) | `dashboard/src/components/DecisionTracker.jsx` DECISIONS, `dashboard/src/data/strategies.js` |
+| `sources/raw/{market,macro}/` 시계열 | `dashboard/data/*.json` (auto-update API) |
+| `wiki/` 전체 | `outputs/report/scenario-planning-report.md` (합성) |
+| `outputs/report/scenario-planning-report.md` | `outputs/presentation/slide-outline.md` |
+| `outputs/presentation/slide-outline.md` | `outputs/presentation/scripts/generate_pptx.py` (구조 변경 시) |
+
+### 빌드 명령
+- PPTX 재생성: `python3 outputs/presentation/scripts/generate_pptx.py`
+  - 의존성: `python3 -m pip install python-pptx matplotlib numpy`
+- 대시보드 검증: `cd dashboard && npm run build` → `dist/` 생성, 콘솔 오류 없음
+- PPTX 본체는 `.gitignore`로 미커밋. 재현성은 `outputs/presentation/template.pptx` + `slide-outline.md` + `scripts/` + `assets/*.png`에 의존
+
+---
+
+## 6. 변경 정합성 체인 (Continuous Consistency)
+
+위키의 한 페이지가 바뀌면 하류 산출물도 같이 갱신한다. lint의 일부.
+
+```
+sources/ (불변)
+   ↓ ingest
+wiki/entities, wiki/concepts (개체·개념)
+   ↓
+wiki/steep → wiki/driving-forces → wiki/scenarios → wiki/strategies
+   ↓
+        ├─ outputs/report/scenario-planning-report.md
+        │     ↓
+        │  outputs/presentation/slide-outline.md
+        │     ↓
+        │  python3 outputs/presentation/scripts/generate_pptx.py
+        │     ↓
+        │  outputs/presentation/*.pptx (미커밋)
+        │
+        └─ dashboard/src/data/*.js + DecisionTracker.jsx
+              ↓
+           cd dashboard && npm run build  (검증)
+              ↓
+           (push → Vercel 자동 배포)
+              ↓
+        git commit + git push origin main
+              ↓
+        ✓ 원격 동기화 + Vercel 프로덕션 배포
+```
+
+### 변경 단계별 필수 갱신
 
 | 변경된 위치 | 갱신해야 할 하류 |
-|----------|----------------|
-| `data/` 추가·수정 | `data/metadata.md` 항목 + 관련 `analysis/` 재검토 + `dashboard/data/*.json`(시계열인 경우) |
-| `analysis/steep/`, `driving-forces/` | `scenarios/`, `benchmark/` 일관성 재검토 + `dashboard/src/data/indicators.js`의 `INITIAL_QUADRANT_POSITIONS` |
-| `analysis/scenarios/`, `benchmark/` | `analysis/scenarios/strategy.md` (RS·MB·SB 매핑) + `dashboard/src/data/indicators.js`의 `SCENARIOS` |
-| `analysis/scenarios/strategy.md` | `report/scenario-planning-report.md` 해당 섹션 + `dashboard/src/components/DecisionTracker.jsx`의 `DECISIONS` |
-| `report/scenario-planning-report.md` | `presentation/slide-outline.md` 슬라이드 명세 |
-| `presentation/slide-outline.md` | `presentation/scripts/generate_pptx.py` 함수 (구조 변경 시) |
-| `dashboard/src/**` 또는 `api/**` | `cd dashboard && npm run build`로 빌드 검증 |
+|---|---|
+| `sources/` 추가·수정 | `index.md` (sources 섹션) + 관련 `wiki/` 페이지 재검토 + 시계열이면 `dashboard/data/*.json` |
+| `wiki/steep`, `wiki/driving-forces` | `wiki/scenarios/`, `wiki/strategies/`, `dashboard/src/data/scenarioPlanning.js`의 INITIAL_QUADRANT_POSITIONS |
+| `wiki/scenarios/` | `wiki/strategies/` (RS·MB·SB 매핑) + `dashboard/src/data/scenarioPlanning.js`의 SCENARIOS |
+| `wiki/strategies/` | `outputs/report/scenario-planning-report.md` 해당 섹션 + `dashboard/src/components/DecisionTracker.jsx`의 DECISIONS |
+| `outputs/report/scenario-planning-report.md` | `outputs/presentation/slide-outline.md` |
+| `outputs/presentation/slide-outline.md` | `outputs/presentation/scripts/generate_pptx.py` (구조 변경 시) |
+| `dashboard/src/**` 또는 `dashboard/api/**` | `cd dashboard && npm run build` 빌드 검증 |
 
-#### 마무리 단계 (모든 변경의 종착점)
+### 마무리 단계
 
-1. **PPTX 재생성**: `python3 presentation/scripts/generate_pptx.py`
-   → 슬라이드 수(예상 25) + 산출물 크기(~500KB) 확인
-2. **대시보드 빌드 검증**: `cd dashboard && npm run build`
-   → `dist/` 생성, 콘솔 오류 없음 확인
-3. **git commit**: 의미 단위로 커밋, `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>` 포함
-4. **`git push origin main`** — 원격 저장소 동기화 (이 규칙으로 사전 승인됨)
-5. **Vercel 자동 배포 확인**: push 후 GitHub Actions/Vercel 대시보드에서 빌드 성공 여부 확인 (실패 시 사용자에게 알림)
+1. PPTX 재생성: `python3 outputs/presentation/scripts/generate_pptx.py`
+2. 대시보드 빌드 검증: `cd dashboard && npm run build`
+3. `git commit` — 의미 단위, `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>` 포함
+4. `git push origin main` — 본 체인 흐름은 사전 승인됨 (push가 Vercel 자동 배포 트리거)
+5. Vercel 배포 성공 확인
 
-#### 자동화 원칙
+### 자동화 원칙
+- 한 번의 사용자 지시로 위키 → outputs → dashboard 갈래 끝까지 자동 추적·갱신
+- 영향 없는 갈래는 건너뛰되 **건너뛴 이유 명시**
+- push 전 반드시 양쪽 갈래 빌드 검증 통과
+- **사전 승인 범위**: 본 체인의 commit + push + (push로 트리거된) Vercel 배포만. 이외 destructive 작업(force push, branch 삭제, history rewrite, Vercel 환경변수 변경)은 매번 별도 확인.
 
-- 한 번의 사용자 지시로 영향 범위 끝까지 자동 추적·갱신 (발표자료 갈래 + 대시보드 갈래 모두)
-- 영향이 없는 갈래는 건너뛰되, **건너뛴 이유를 응답에 명시** (예: "데이터 시각화만 변경되어 대시보드 indicators.js는 영향 없음")
-- push 전에 반드시 양쪽 갈래 빌드 검증 (PPTX 스크립트 정상 실행 + dashboard `npm run build` 통과)
-- **사전 승인 범위**: 본 규칙은 위 체인 흐름에서 발생하는 commit + push + (push 트리거된) Vercel 배포에 한해 사전 승인. 이외 destructive 작업(force push, branch 삭제, history rewrite, Vercel 환경변수 변경 등)은 매번 별도 확인 필요
+---
 
-### Mermaid 다이어그램
-- 시나리오 매트릭스, 전략 상관관계 등 시각적 다이어그램은 Mermaid 문법으로 작성
-- Markdown 파일 내 ` ```mermaid ` 코드 블록 사용
-- 지원 다이어그램 유형: flowchart, quadrantChart, graph, gitGraph 등
-- 복잡한 매트릭스(2×2)는 Mermaid quadrantChart 또는 graph 사용
+## 7. 서브에이전트 사용 규칙
 
-## 언어
-- 모든 문서는 한국어 작성 (기술 용어는 영어 병기 허용)
+- **Research Agent** — `sources/`에 자료 수집만. 판단·해석 금지
+- **STEEP Agent** — STEEP 요인 도출 + Impact×Uncertainty 점수 (1~5)
+- **Scenario Agent** — 시나리오 내러티브, 중립적 이름
+- **Strategy Agent** — 모든 전략은 시나리오 연결고리 명시
+- **Lint Agent** — 위키 정합성 점검 (모순·고아·낡은 주장·인용 누락)
+
+---
+
+## 8. 언어와 표기
+- 모든 문서는 한국어 (기술 용어 영어 병기 허용)
+- 다이어그램은 Mermaid (` ```mermaid ` 코드 블록). 시나리오 매트릭스는 quadrantChart, 흐름은 flowchart, 관계는 graph
+- 모든 wiki 페이지 상단에 yaml frontmatter 권장 (선택):
+  ```yaml
+  ---
+  type: entity | concept | scenario | strategy | analysis
+  last_reviewed: 2026-05-18
+  sources: [sources/filings/micron-q1-fy26.md, sources/articles/trendforce-2026q1.md]
+  ---
+  ```
+
+---
+
+## 9. 기존 누적 로그
+- `PROMPT.md` — 위키화 이전 누적 작업 로그 (43KB). 다음 세션에서 `log.md`로 의미 단위 변환 후 삭제 예정. 그 전까지 참조용 보존.
+- `PLAN.md` — 초기 프로젝트 계획. 위키화 이후 의미가 줄어듦. 정리 대상.
+
+---
+
+## 10. 마이그레이션 진행 현황 (2026-05-18)
+
+| 단계 | 상태 |
+|---|---|
+| 디렉토리 골격 (sources/wiki/outputs) | ✓ |
+| 무손실 mv (analysis→wiki, report 분해, presentation→outputs, data→sources/raw) | ✓ |
+| dashboard 경로 의존성 갱신 (SourceLink PATH_REGEX + source props) | ✓ |
+| CLAUDE.md 위키 헌법화 | ✓ |
+| index.md, log.md 생성 | 진행중 |
+| `sources/raw/` → `sources/{articles,filings,papers,raw-notes}/` 파일 단위 분리 | 다음 세션 |
+| `wiki/entities/`, `wiki/concepts/` 신규 페이지 생성 | 다음 세션 |
+| `PROMPT.md` → `log.md` 의미 단위 변환 | 다음 세션 |
+| 빌드 검증 (PPTX + dashboard) | 다음 세션 |

@@ -4,18 +4,19 @@ import { ExternalLink } from 'lucide-react'
 // 사용처: DataVisualization / ScenarioPlanning / Strategies 의 Card source.
 //
 // 매칭 패턴:
-//   - data/foo.md
-//   - analysis/scenarios/scenario-matrix.md
-//   - report/invariant-strategies/README.md
-//   - analysis/steep/*.md  → 디렉토리 tree 링크
-//   - data/policy/*        → 디렉토리 tree 링크
+//   - sources/raw/foo.md
+//   - wiki/scenarios/scenario-matrix.md
+//   - wiki/strategies/invariant/README.md
+//   - wiki/steep/*.md           → 디렉토리 tree 링크
+//   - sources/raw/policy/*      → 디렉토리 tree 링크
+//   - outputs/report/scenario-planning-report.md
 //
 // 비-경로 텍스트(예: "Yole Group, Bank of America")는 그대로 표시.
 
 const REPO_BASE = 'https://github.com/k31001/action-learning'
 
-// 최상위 데이터 디렉토리만 화이트리스트 — 임의 텍스트가 매칭되지 않도록.
-const PATH_REGEX = /(?:data|analysis|report|presentation|working-style)\/(?:[\w-]+\/)*(?:[\w.-]+\.md|\*\.md|\*)/g
+// 최상위 디렉토리 화이트리스트 — 임의 텍스트가 매칭되지 않도록.
+const PATH_REGEX = /(?:sources|wiki|outputs|dashboard|working-style|slides)\/(?:[\w-]+\/)*(?:[\w.-]+\.md|\*\.md|\*)/g
 
 function pathToUrl(path) {
   // 글로브 → 부모 디렉토리 tree 뷰
