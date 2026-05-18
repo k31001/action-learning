@@ -65,7 +65,7 @@ export const COMPETITOR_DATA = {
   },
 
   // ── 신규 (2026-05-07): Micron 매출 + DC 비중 ──────────────────────────────
-  // 출처: data/competitors/micron.md (Futurum Group, Blocks and Files, Tom's Hardware)
+  // 출처: wiki/entities/micron.md (Futurum Group, Blocks and Files, Tom's Hardware)
   micronAnnual: {
     title: 'Micron 연간 매출·HBM 매출·DC 비중',
     source: 'Micron IR, Futurum Group, Blocks and Files',
@@ -78,7 +78,7 @@ export const COMPETITOR_DATA = {
   },
 
   // ── 신규: 글로벌 DRAM 점유율 (3강 + 중국) ───────────────────────────────────
-  // 출처: data/competitors/market-share.md (TrendForce 2025-11-26)
+  // 출처: wiki/concepts/dram-market-share.md (TrendForce 2025-11-26)
   dramMarketShare: {
     title: '글로벌 DRAM 점유율 (분기별, 33년 만의 1위 교체)',
     source: 'TrendForce (2025-11-26), Korea Herald',
@@ -93,7 +93,7 @@ export const COMPETITOR_DATA = {
   },
 
   // ── 신규: CXMT/YMTC 점유율 성장 ─────────────────────────────────────────────
-  // 출처: data/competitors/china-competitors.md (Morgan Stanley, Digitimes, TechInsights)
+  // 출처: wiki/entities/china-competitors.md (Morgan Stanley, Digitimes, TechInsights)
   chinaCompetitorShare: {
     title: '중국 메모리 점유율 추이 (CXMT DRAM + YMTC NAND)',
     source: 'Morgan Stanley, Digitimes, TrendForce',
@@ -108,7 +108,7 @@ export const COMPETITOR_DATA = {
   },
 
   // ── 신규: 4사 CapEx + R&D 비교 ─────────────────────────────────────────────
-  // 출처: data/competitors/market-share.md
+  // 출처: wiki/concepts/dram-market-share.md
   capexComparison: {
     title: '메모리 4사 CapEx 비교 (2025 추정)',
     source: '각사 IR, Morgan Stanley, Digitimes',
@@ -187,7 +187,7 @@ export const MACRO_DATA = {
   ],
 
   // ── 신규 (2026-05-07): 중국 빅펀드 I/II/III 누적 ──────────────────────────
-  // 출처: data/competitors/china-competitors.md (Bloomberg, Reuters, Yole Group)
+  // 출처: wiki/entities/china-competitors.md (Bloomberg, Reuters, Yole Group)
   chinaBigFund: {
     title: '중국 국가집성전로산업투자기금 (빅펀드) — CXMT/YMTC 자본 동력',
     source: 'Bloomberg (2024-05-24), Reuters (2024-03-27), Yole Group',
@@ -200,7 +200,7 @@ export const MACRO_DATA = {
   },
 
   // ── 신규: AI DC 전력 소비 폭증 ──────────────────────────────────────────────
-  // 출처: data/macro/energy-constraints.md (IEA)
+  // 출처: wiki/concepts/energy-constraints.md (IEA)
   dcPowerConsumption: {
     title: 'AI 데이터센터 전력 소비 전망 (TWh)',
     source: 'IEA, Microsoft IR, Amazon IR',
@@ -297,7 +297,7 @@ export const MARKET_DATA = {
   ],
 
   // ── 신규 (2026-05-07): Enterprise SSD 시장 ────────────────────────────────
-  // 출처: data/market/ssd-ufs-market.md (Mordor, Intel Market Research)
+  // 출처: wiki/concepts/ssd-ufs-market.md (Mordor, Intel Market Research)
   enterpriseSsdMarket: {
     title: 'Enterprise SSD 시장 규모 (글로벌 + 북미 DC)',
     source: 'Mordor Intelligence, Intel Market Research',
@@ -310,7 +310,7 @@ export const MARKET_DATA = {
   },
 
   // ── 신규: AI SSD IOPS 경쟁 ─────────────────────────────────────────────────
-  // 출처: data/market/ssd-ufs-market.md, data/technology/nvidia-cmx-scada.md
+  // 출처: wiki/concepts/ssd-ufs-market.md, wiki/entities/nvidia-cmx-scada.md
   aiSsdIopsRace: {
     title: 'AI SSD 단일 IOPS 경쟁 — NVIDIA Storage-Next',
     source: 'NVIDIA, Micron, SK hynix, Kioxia 발표 (2025~2027)',
@@ -325,7 +325,7 @@ export const MARKET_DATA = {
   },
 
   // ── 신규: UFS + LPDDR5X 가격 폭등 ─────────────────────────────────────────
-  // 출처: data/market/ssd-ufs-market.md (abit.ee 2026)
+  // 출처: wiki/concepts/ssd-ufs-market.md (abit.ee 2026)
   mobileMemoryPrice: {
     title: 'UFS 4.1 + LPDDR5X 모바일 메모리 가격 변동률 (YoY)',
     source: 'abit.ee, Global Semi Research (2026-04)',
@@ -339,7 +339,7 @@ export const MARKET_DATA = {
   },
 
   // ── 신규: NAND DC 매출 비중 (Micron 사례) ─────────────────────────────────
-  // 출처: data/market/ssd-ufs-market.md (Futurum Group)
+  // 출처: wiki/concepts/ssd-ufs-market.md (Futurum Group)
   nandDcShare: {
     title: 'NAND 데이터센터 매출 비중 (Micron 공개 사례)',
     source: 'Futurum Group (Micron Q4 FY2025)',
@@ -394,7 +394,7 @@ export const POLICY_DATA = {
   // 정책 카테고리별 영향도 — 한국 메모리 기업 관점
   policyImpactMatrix: {
     title: '정책별 한국 메모리 기업 영향도',
-    source: '자체 평가 (data/policy/*.md 종합)',
+    source: '자체 평가 (wiki/concepts/*.md 종합)',
     data: [
       { policy: 'HBM 對중국 수출 통제',        impactLevel: 95, urgency: 'critical' },
       { policy: 'VEU 폐지',                    impactLevel: 90, urgency: 'critical' },
@@ -408,7 +408,7 @@ export const POLICY_DATA = {
   },
 
   // ── 신규 (2026-05-07): CHIPS Act 보조금 비교 ─────────────────────────────
-  // 출처: data/policy/chips-act.md (NIST, AIP.ORG)
+  // 출처: wiki/concepts/chips-act.md (NIST, AIP.ORG)
   chipsActSubsidies: {
     title: '미국 CHIPS Act 직접 보조금 비교 — Samsung은 3위',
     source: 'NIST CHIPS Program, AIP.ORG (2024-12)',
@@ -422,7 +422,7 @@ export const POLICY_DATA = {
   },
 
   // ── 신규: Samsung Taylor 팹 타임라인 ──────────────────────────────────────
-  // 출처: data/policy/chips-act.md
+  // 출처: wiki/concepts/chips-act.md
   taylorTimeline: {
     title: 'Samsung 텍사스 테일러 팹 — CHIPS Act 진척',
     source: 'NIST CHIPS Program, Tom\'s Hardware, Digitimes',
@@ -486,7 +486,7 @@ export const TECHNOLOGY_DATA = {
   // NAND 공정 전환 비교
   nandProcessTransition: {
     title: 'NAND 공정 전환 (레이어 수)',
-    source: 'data/technology/nand-process-transition.md',
+    source: 'wiki/concepts/nand-process-transition.md',
     unit: 'layers',
     data: [
       { year: '2022', samsung: 176, skhynix: 176, micron: 232 },
@@ -510,7 +510,7 @@ export const TECHNOLOGY_DATA = {
   ],
 
   // ── 신규 (2026-05-07): NVIDIA AI 스토리지 계층 (G1~G4) ────────────────────
-  // 출처: data/technology/nvidia-cmx-scada.md (NVIDIA, HPCwire)
+  // 출처: wiki/entities/nvidia-cmx-scada.md (NVIDIA, HPCwire)
   nvidiaStorageStack: {
     title: 'NVIDIA AI 스토리지 계층 — G3.5 CMX 신설',
     source: 'NVIDIA Technical Blog, HPCwire (2026-03)',
@@ -524,7 +524,7 @@ export const TECHNOLOGY_DATA = {
   },
 
   // ── 신규: NVIDIA AI SSD 파트너십 매트릭스 ─────────────────────────────────
-  // 출처: data/technology/nvidia-cmx-scada.md, data/market/ssd-ufs-market.md
+  // 출처: wiki/entities/nvidia-cmx-scada.md, wiki/concepts/ssd-ufs-market.md
   aiSsdPartners: {
     title: 'NVIDIA AI SSD (Storage-Next) 파트너십 — Samsung 후행',
     source: 'NVIDIA, TrendForce, Blocks & Files (2025~2026)',
@@ -537,7 +537,7 @@ export const TECHNOLOGY_DATA = {
   },
 
   // ── 신규: PCIe 세대 진화 (Gen3 → Gen7) ────────────────────────────────────
-  // 출처: data/market/ssd-ufs-market.md
+  // 출처: wiki/concepts/ssd-ufs-market.md
   pcieGenEvolution: {
     title: 'PCIe 세대 진화 — Enterprise SSD 인터페이스 표준',
     source: 'PCI-SIG, NVMe Consortium, JEDEC',

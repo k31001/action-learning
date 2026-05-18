@@ -4,11 +4,11 @@ import { ExternalLink } from 'lucide-react'
 // 사용처: DataVisualization / ScenarioPlanning / Strategies 의 Card source.
 //
 // 매칭 패턴:
-//   - sources/raw/foo.md
+//   - sources/articles/foo.md
 //   - wiki/scenarios/scenario-matrix.md
 //   - wiki/strategies/invariant/README.md
-//   - wiki/steep/*.md           → 디렉토리 tree 링크
-//   - sources/raw/policy/*      → 디렉토리 tree 링크
+//   - wiki/concepts/*.md      → 디렉토리 tree 링크
+//   - wiki/entities/*         → 디렉토리 tree 링크
 //   - outputs/report/scenario-planning-report.md
 //
 // 비-경로 텍스트(예: "Yole Group, Bank of America")는 그대로 표시.

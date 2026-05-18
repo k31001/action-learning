@@ -53,7 +53,7 @@ export const STRATEGY_OVERVIEW = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPETITIVE LANDSCAPE — 5사 종합 비교 (2026-05-07 신규)
-// 출처: sources/raw/competitors/{sk-hynix,micron,china-competitors,market-share}.md
+// 출처: wiki/entities/sk-hynix.md, wiki/entities/micron.md, wiki/entities/china-competitors.md, wiki/concepts/dram-market-share.md
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const COMPETITIVE_LANDSCAPE = {

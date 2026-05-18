@@ -221,7 +221,7 @@ wiki/steep → wiki/driving-forces → wiki/scenarios → wiki/strategies
 ---
 
 ## 9. 기존 누적 로그
-- `PROMPT.md` — 위키화 이전 누적 작업 로그 (43KB). 다음 세션에서 `log.md`로 의미 단위 변환 후 삭제 예정. 그 전까지 참조용 보존.
+- `PROMPT.md` — 2026-05-18 위키화 시점에 의미 단위로 추려 `log.md`에 흡수 후 삭제. 필요 시 git history에서 회수.
 - `PLAN.md` — 초기 프로젝트 계획. 위키화 이후 의미가 줄어듦. 정리 대상.
 
 ---
@@ -232,10 +232,13 @@ wiki/steep → wiki/driving-forces → wiki/scenarios → wiki/strategies
 |---|---|
 | 디렉토리 골격 (sources/wiki/outputs) | ✓ |
 | 무손실 mv (analysis→wiki, report 분해, presentation→outputs, data→sources/raw) | ✓ |
-| dashboard 경로 의존성 갱신 (SourceLink PATH_REGEX + source props) | ✓ |
+| dashboard 경로 의존성 갱신 (SourceLink PATH_REGEX + source props + indicators/visualizations) | ✓ |
 | CLAUDE.md 위키 헌법화 | ✓ |
-| index.md, log.md 생성 | 진행중 |
-| `sources/raw/` → `sources/{articles,filings,papers,raw-notes}/` 파일 단위 분리 | 다음 세션 |
-| `wiki/entities/`, `wiki/concepts/` 신규 페이지 생성 | 다음 세션 |
-| `PROMPT.md` → `log.md` 의미 단위 변환 | 다음 세션 |
-| 빌드 검증 (PPTX + dashboard) | 다음 세션 |
+| `index.md`, `log.md` 생성 | ✓ |
+| `sources/raw/` 24개 파일 → `wiki/entities/`·`wiki/concepts/` 재배치 | ✓ |
+| `sources/raw/metadata.md` → `sources/README.md` (외부 출처 카탈로그) | ✓ |
+| `PROMPT.md` → `log.md` 의미 단위 변환 + 삭제 | ✓ |
+| 빌드 검증 (dashboard `npm run build` ✓ + `generate_pptx.py` ✓ 29매 540KB) | ✓ |
+| `wiki/entities/china-competitors.md` → `cxmt.md` + `ymtc.md` 분리 | 후속 ingest |
+| 신규 entity: `samsung.md`, `nvidia.md` (CMX/SCADA 외 일반), `tsmc.md`, `intel.md`, `amd.md`, `broadcom.md` | 후속 ingest |
+| CLAUDE.md §4·§5의 슬라이드 25매 → 실제 29매 정정 | 후속 lint |

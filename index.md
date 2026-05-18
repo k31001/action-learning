@@ -2,9 +2,7 @@
 
 이 위키의 전체 페이지 목차. 각 항목 형식: `- [페이지 경로](경로) — 한 줄 요약`.
 
-새 페이지를 만들 때마다 여기에 등록한다. 인덱스에 없는 wiki 파일은 lint에서 고아 페이지로 잡힌다. (한 줄 요약 미작성 페이지는 lint에서 자동 보강 대상.)
-
-마이그레이션 직후 상태이므로 일부 한 줄 요약은 비어 있다.
+새 페이지를 만들 때마다 여기에 등록한다. 인덱스에 없는 wiki 파일은 lint에서 고아 페이지로 잡힌다.
 
 ---
 
@@ -33,6 +31,44 @@
 - [wiki/steep/economy.md](wiki/steep/economy.md)
 - [wiki/steep/political.md](wiki/steep/political.md)
 
+## wiki/entities — 개체 페이지
+
+- [wiki/entities/sk-hynix.md](wiki/entities/sk-hynix.md) — 매출·HBM 점유·CapEx·NVIDIA co-design
+- [wiki/entities/micron.md](wiki/entities/micron.md) — FY2025 매출·HBM3E·CHIPS Act 보조금
+- [wiki/entities/china-competitors.md](wiki/entities/china-competitors.md) — CXMT·YMTC·ChangXin (빅펀드 III)
+- [wiki/entities/nvidia-cmx-scada.md](wiki/entities/nvidia-cmx-scada.md) — NVIDIA CMX(BlueField-4 KV 캐시) + SCADA(GPU 네이티브 스토리지)
+
+**다음 ingest에서 분리/신규 생성 후보**: `samsung.md` (메모리사업부 자체), `nvidia.md` (CMX/SCADA 외 일반), `tsmc.md`, `cxmt.md`/`ymtc.md` (china-competitors에서 분리), `intel.md`, `amd.md`, `broadcom.md`
+
+## wiki/concepts — 개념 페이지
+
+### 시장
+- [wiki/concepts/memory-market-overview.md](wiki/concepts/memory-market-overview.md) — 글로벌 메모리 시장 전망 ($1,700B → $5,516B → $8,427B)
+- [wiki/concepts/hbm-market.md](wiki/concepts/hbm-market.md) — HBM 시장 규모·점유율·세대별 단가
+- [wiki/concepts/hbm-roadmap.md](wiki/concepts/hbm-roadmap.md) — HBM3E→HBM4 세대별 양산 로드맵
+- [wiki/concepts/dram-market-share.md](wiki/concepts/dram-market-share.md) — DRAM 매출 1위 SK 역전, HBM 점유 변화
+- [wiki/concepts/price-trends.md](wiki/concepts/price-trends.md) — DRAM/NAND/HBM 분기 가격 트렌드
+- [wiki/concepts/ai-server-demand.md](wiki/concepts/ai-server-demand.md) — AI 서버 GPU·HBM 탑재량
+- [wiki/concepts/ssd-ufs-market.md](wiki/concepts/ssd-ufs-market.md) — Enterprise SSD·UFS·AI Storage
+- [wiki/concepts/2026-q1-current-state.md](wiki/concepts/2026-q1-current-state.md) — 2026 Q1 시점 메모리 산업 스냅샷
+
+### 거시·수요
+- [wiki/concepts/ai-capex.md](wiki/concepts/ai-capex.md) — 빅테크 4사 AI CapEx ($650~725B)
+- [wiki/concepts/ai-demand-sustainability.md](wiki/concepts/ai-demand-sustainability.md) — AI 거품론 vs 낙관론
+- [wiki/concepts/semiconductor-cycle.md](wiki/concepts/semiconductor-cycle.md) — 반도체 사이클·슈퍼사이클·2028 공급과잉 리스크
+- [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
+
+### 기술
+- [wiki/concepts/dram-technology.md](wiki/concepts/dram-technology.md) — DDR5/DDR6/LPDDR6, 1a→1d 미세공정
+- [wiki/concepts/nand-process-transition.md](wiki/concepts/nand-process-transition.md) — NAND 적층·hybrid bonding·YMTC IP 리스크
+- [wiki/concepts/emerging-tech.md](wiki/concepts/emerging-tech.md) — CXL·PIM·300층+ NAND
+
+### 정책·규제
+- [wiki/concepts/chips-act.md](wiki/concepts/chips-act.md) — 미국 CHIPS Act 보조금 (Samsung Texas $4.745B 등)
+- [wiki/concepts/us-export-controls.md](wiki/concepts/us-export-controls.md) — 對중국 반도체 수출 통제
+- [wiki/concepts/china-policy.md](wiki/concepts/china-policy.md) — 중국 반도체 자립·빅펀드
+- [wiki/concepts/korea-policy.md](wiki/concepts/korea-policy.md) — K-반도체 전략·용인 클러스터
+
 ## wiki/strategies/invariant — Robust 전략 (RS1~RS8)
 
 - [wiki/strategies/invariant/README.md](wiki/strategies/invariant/README.md) — 8개 Robust 전략 시나리오 가치 매트릭스
@@ -55,84 +91,34 @@
 - [wiki/strategies/core/current-state-sd2-industrial-ai-memory.md](wiki/strategies/core/current-state-sd2-industrial-ai-memory.md) — SD2 산업용 AI 메모리
 - [wiki/strategies/core/current-state-se1-3d-dram-imec-ma.md](wiki/strategies/core/current-state-se1-3d-dram-imec-ma.md) — SE1 3D DRAM + IMEC M&A
 - [wiki/strategies/core/current-state-se2-cxl-sig-leadership.md](wiki/strategies/core/current-state-se2-cxl-sig-leadership.md) — SE2 CXL SIG 리더십
-- [wiki/strategies/core/current-state-se3-vertical-ascent.md](wiki/strategies/core/current-state-se3-vertical-ascent.md) — SE3 수직 상승
+- [wiki/strategies/core/current-state-se3-vertical-ascent.md](wiki/strategies/core/current-state-se3-vertical-ascent.md) — SE3 수직 상승 (Stargate Korea LOI 포함)
 - [wiki/strategies/core/current-state-rs3-customer-switching-cost.md](wiki/strategies/core/current-state-rs3-customer-switching-cost.md) — RS3 현황
 - [wiki/strategies/core/current-state-rs5-financial-discipline.md](wiki/strategies/core/current-state-rs5-financial-discipline.md) — RS5 현황
 - [wiki/strategies/core/current-state-rs6-process-leadership.md](wiki/strategies/core/current-state-rs6-process-leadership.md) — RS6 현황
 
 ## wiki/benchmark — 벤치마크
 
-- [wiki/benchmark/cyclical-strategy-benchmark.md](wiki/benchmark/cyclical-strategy-benchmark.md) — 경기 사이클 대응 7대 패턴
+- [wiki/benchmark/cyclical-strategy-benchmark.md](wiki/benchmark/cyclical-strategy-benchmark.md) — 경기 사이클 대응 7대 패턴 (Samsung·Nucor·Disney·ExxonMobil 등)
 - [wiki/benchmark/agri-hedging-to-memory-semi.md](wiki/benchmark/agri-hedging-to-memory-semi.md) — 농수산업 헤징 → 메모리 적용
 - [wiki/benchmark/upside-participation-hedging.md](wiki/benchmark/upside-participation-hedging.md) — 호황 참여 헤지 구조 5종
 
-## wiki/entities — 개체 페이지 (생성 예정)
-
-다음 세션에서 신규 생성 대상:
-- `sk-hynix.md`, `micron.md`, `cxmt.md`, `ymtc.md`
-- `nvidia.md`, `amd.md`, `broadcom.md`
-- `tsmc.md`, `samsung-foundry.md`
-- `hbm3e.md`, `hbm4.md`, `hbm4e.md`
-
-## wiki/concepts — 개념 페이지 (생성 예정)
-
-다음 세션에서 신규 생성 대상:
-- `memory-cycle.md`, `hbm.md`, `cxl.md`, `pim.md`
-- `chips-act.md`, `us-export-controls.md`
-- `ai-capex.md`, `ai-demand.md`
-
 ---
 
-## sources/raw — 원본 (마이그레이션 중)
+## sources — 외부 출처
 
-다음 세션에서 `sources/{articles,filings,papers,raw-notes}/`로 파일 단위 분리 예정.
-
-### sources/raw/market
-- [sources/raw/market/market-overview.md](sources/raw/market/market-overview.md)
-- [sources/raw/market/hbm-market.md](sources/raw/market/hbm-market.md)
-- [sources/raw/market/ai-server-demand.md](sources/raw/market/ai-server-demand.md)
-- [sources/raw/market/price-trends.md](sources/raw/market/price-trends.md)
-- [sources/raw/market/ssd-ufs-market.md](sources/raw/market/ssd-ufs-market.md)
-- [sources/raw/market/2026-q1-current-state.md](sources/raw/market/2026-q1-current-state.md)
-
-### sources/raw/macro
-- [sources/raw/macro/ai-capex.md](sources/raw/macro/ai-capex.md)
-- [sources/raw/macro/ai-demand-sustainability.md](sources/raw/macro/ai-demand-sustainability.md)
-- [sources/raw/macro/semiconductor-cycle.md](sources/raw/macro/semiconductor-cycle.md)
-- [sources/raw/macro/energy-constraints.md](sources/raw/macro/energy-constraints.md)
-
-### sources/raw/competitors
-- [sources/raw/competitors/sk-hynix.md](sources/raw/competitors/sk-hynix.md)
-- [sources/raw/competitors/micron.md](sources/raw/competitors/micron.md)
-- [sources/raw/competitors/china-competitors.md](sources/raw/competitors/china-competitors.md)
-- [sources/raw/competitors/market-share.md](sources/raw/competitors/market-share.md)
-
-### sources/raw/technology
-- [sources/raw/technology/hbm-roadmap.md](sources/raw/technology/hbm-roadmap.md)
-- [sources/raw/technology/dram-technology.md](sources/raw/technology/dram-technology.md)
-- [sources/raw/technology/nand-process-transition.md](sources/raw/technology/nand-process-transition.md)
-- [sources/raw/technology/nvidia-cmx-scada.md](sources/raw/technology/nvidia-cmx-scada.md)
-- [sources/raw/technology/emerging-tech.md](sources/raw/technology/emerging-tech.md)
-
-### sources/raw/policy
-- [sources/raw/policy/chips-act.md](sources/raw/policy/chips-act.md)
-- [sources/raw/policy/us-export-controls.md](sources/raw/policy/us-export-controls.md)
-- [sources/raw/policy/china-policy.md](sources/raw/policy/china-policy.md)
-- [sources/raw/policy/korea-policy.md](sources/raw/policy/korea-policy.md)
-
-### sources/raw — 메타
-- [sources/raw/metadata.md](sources/raw/metadata.md) — 옛 data 카탈로그 (sources/README.md로 이관 예정)
-
----
+- [sources/README.md](sources/README.md) — 외부 출처 카탈로그 (기관·URL·관련 wiki 페이지)
+- `sources/articles/`, `sources/filings/`, `sources/papers/`, `sources/raw-notes/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
 
 ## outputs — 빌드 산출물
 
 - [outputs/report/scenario-planning-report.md](outputs/report/scenario-planning-report.md) — 시나리오 플래닝 전략 보고서 (위키 합성)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
-- `outputs/presentation/*.pptx` — 4종 디자인 변형 (미커밋, 스크립트로 재생성)
+- `outputs/presentation/*.pptx` — 4종 디자인 변형 (`scripts/generate_*_pptx.py`로 재생성)
 
-## dashboard — 빌드 산출물 (최상위)
+## dashboard — 빌드 산출물 (최상위, Vercel 루트)
 
 - [dashboard/src/data/scenarioPlanning.js](dashboard/src/data/scenarioPlanning.js) — SCENARIOS·INITIAL_QUADRANT_POSITIONS (wiki 미러)
 - [dashboard/src/data/strategies.js](dashboard/src/data/strategies.js) — DECISIONS·RS·전략 (wiki 미러)
+- [dashboard/src/data/indicators.js](dashboard/src/data/indicators.js) — EWI 지표
+- [dashboard/src/data/visualizations.js](dashboard/src/data/visualizations.js) — 시각화 데이터셋
 - [dashboard/src/components/DecisionTracker.jsx](dashboard/src/components/DecisionTracker.jsx) — D1~D9 즉시 결정 트래커

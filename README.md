@@ -132,8 +132,7 @@ action-learning/
 ## 관련 규칙
 
 위키 관리자 헌법은 [`CLAUDE.md`](CLAUDE.md) 참조.  
-위키 전체 목차는 [`index.md`](index.md), 시간순 작업 로그는 [`log.md`](log.md) 참조.  
-위키화 이전 누적 프롬프트는 [`PROMPT.md`](PROMPT.md) (다음 세션에서 log.md로 변환 예정).
+위키 전체 목차는 [`index.md`](index.md), 시간순 작업 로그는 [`log.md`](log.md) 참조.
 
 ---
 

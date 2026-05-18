@@ -552,7 +552,7 @@ export const INITIAL_INDICATORS = [
 
   // ────────────────────────────────────────────
   // 경쟁사 (Competitors) — SK하이닉스 / Micron / 중국 (2026-05-07 신규)
-  // 출처: data/competitors/sk-hynix.md, micron.md, china-competitors.md, market-share.md
+  // 출처: wiki/entities/sk-hynix.md, wiki/entities/micron.md, wiki/entities/china-competitors.md, wiki/concepts/dram-market-share.md
   // ────────────────────────────────────────────
   {
     id: 'sk_hynix_hbm_share',
@@ -719,7 +719,7 @@ export const INITIAL_INDICATORS = [
 
   // ────────────────────────────────────────────
   // SSD · UFS · AI Storage (2026-05-07 신규)
-  // 출처: data/market/ssd-ufs-market.md, data/technology/nvidia-cmx-scada.md
+  // 출처: wiki/concepts/ssd-ufs-market.md, wiki/entities/nvidia-cmx-scada.md
   // ────────────────────────────────────────────
   {
     id: 'ai_ssd_iops_max',
@@ -829,7 +829,7 @@ export const INITIAL_INDICATORS = [
 
   // ────────────────────────────────────────────
   // CHIPS Act & 보조금 (2026-05-07 신규/보강)
-  // 출처: data/policy/chips-act.md
+  // 출처: wiki/concepts/chips-act.md
   // ────────────────────────────────────────────
   {
     id: 'taylor_2nm_volume_production',
