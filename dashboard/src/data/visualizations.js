@@ -93,7 +93,7 @@ export const COMPETITOR_DATA = {
   },
 
   // ── 신규: CXMT/YMTC 점유율 성장 ─────────────────────────────────────────────
-  // 출처: wiki/entities/china-competitors.md (Morgan Stanley, Digitimes, TechInsights)
+  // 출처: wiki/entities/cxmt.md, wiki/entities/ymtc.md (Morgan Stanley, Digitimes, TechInsights)
   chinaCompetitorShare: {
     title: '중국 메모리 점유율 추이 (CXMT DRAM + YMTC NAND)',
     source: 'Morgan Stanley, Digitimes, TrendForce',
@@ -187,7 +187,7 @@ export const MACRO_DATA = {
   ],
 
   // ── 신규 (2026-05-07): 중국 빅펀드 I/II/III 누적 ──────────────────────────
-  // 출처: wiki/entities/china-competitors.md (Bloomberg, Reuters, Yole Group)
+  // 출처: wiki/entities/cxmt.md, wiki/entities/ymtc.md (Bloomberg, Reuters, Yole Group)
   chinaBigFund: {
     title: '중국 국가집성전로산업투자기금 (빅펀드) — CXMT/YMTC 자본 동력',
     source: 'Bloomberg (2024-05-24), Reuters (2024-03-27), Yole Group',

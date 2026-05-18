@@ -33,12 +33,26 @@
 
 ## wiki/entities — 개체 페이지
 
+### 분석 주체
+- [wiki/entities/samsung.md](wiki/entities/samsung.md) — Samsung Electronics 메모리사업부 (DS) — 본 위키의 분석 주체
+
+### 한국·미국 경쟁자
 - [wiki/entities/sk-hynix.md](wiki/entities/sk-hynix.md) — 매출·HBM 점유·CapEx·NVIDIA co-design
 - [wiki/entities/micron.md](wiki/entities/micron.md) — FY2025 매출·HBM3E·CHIPS Act 보조금
-- [wiki/entities/china-competitors.md](wiki/entities/china-competitors.md) — CXMT·YMTC·ChangXin (빅펀드 III)
-- [wiki/entities/nvidia-cmx-scada.md](wiki/entities/nvidia-cmx-scada.md) — NVIDIA CMX(BlueField-4 KV 캐시) + SCADA(GPU 네이티브 스토리지)
 
-**다음 ingest에서 분리/신규 생성 후보**: `samsung.md` (메모리사업부 자체), `nvidia.md` (CMX/SCADA 외 일반), `tsmc.md`, `cxmt.md`/`ymtc.md` (china-competitors에서 분리), `intel.md`, `amd.md`, `broadcom.md`
+### 중국 경쟁자 (그룹 + 개별)
+- [wiki/entities/china-competitors.md](wiki/entities/china-competitors.md) — CXMT/YMTC 그룹 인덱스 + 빅펀드 + 5개년 계획
+- [wiki/entities/cxmt.md](wiki/entities/cxmt.md) — CXMT (창신메모리, DRAM 전문)
+- [wiki/entities/ymtc.md](wiki/entities/ymtc.md) — YMTC (양쯔메모리, NAND Flash 전문)
+
+### 최대 고객·플랫폼 결정자
+- [wiki/entities/nvidia.md](wiki/entities/nvidia.md) — NVIDIA 일반 (Rubin·HBM 점유·AI CapEx)
+- [wiki/entities/nvidia-cmx-scada.md](wiki/entities/nvidia-cmx-scada.md) — CMX(BlueField-4 KV 캐시) + SCADA(GPU 네이티브 스토리지)
+
+### 파운드리·벤치마크
+- [wiki/entities/tsmc.md](wiki/entities/tsmc.md) — TSMC (Nx·Nx+ enhancement 패턴, CHIPS Act 비교, HBM 베이스다이)
+
+**다음 ingest에서 외부 자료가 들어올 때 신설 후보**: `intel.md`, `amd.md`, `broadcom.md` (현재 위키 내 정보 빈약 — wiki/strategies/core/current-state-sd2-industrial-ai-memory.md 등에서 산발 언급만)
 
 ## wiki/concepts — 개념 페이지
 

@@ -14,6 +14,35 @@
 
 ---
 
+## [2026-05-18] migration | wiki/entities 확장 (china-competitors 분리 + samsung/nvidia/tsmc 신설)
+
+마이그레이션 종결 작업. CLAUDE.md §10 후속 항목 정리.
+
+**china-competitors 분리**:
+- `wiki/entities/cxmt.md` 신규 — CXMT DRAM 전문 entity. 생산 용량, DDR5 기술, 자립 로드맵, 삼성 시사점
+- `wiki/entities/ymtc.md` 신규 — YMTC NAND 전문 entity. Xtacking, hybrid bonding IP 지배, 3공장 DRAM 전환
+- `wiki/entities/china-competitors.md` — 그룹 인덱스로 재작성 (빅펀드 III, 허페이 모델, 5개년 계획 공통 컨텍스트 유지). cxmt/ymtc로 링크.
+
+**신규 entity (위키 내 분산 정보 통합)**:
+- `wiki/entities/samsung.md` — 본 위키의 분석 주체. Q1 2026 매출 $50.4B, HBM 점유 35%(Q3 2025)→28%(Rubin), 1c nm 수율, Texas CHIPS $4.745B, 정보 공백(영업이익률·NAND DC 비중·SLC AI SSD)
+- `wiki/entities/nvidia.md` — 일반 NVIDIA(CMX/SCADA는 별도). Rubin HBM4 점유 분포(SK 70/Sam 28/Mic 18), AI CapEx $725B, Stargate Korea LOI, 4가지 충격(세대 강제·co-design 락인·CMX·SCADA)
+- `wiki/entities/tsmc.md` — 직접 경쟁자 아님. Nx·Nx+ enhancement 패턴(RS7 영감), CHIPS Act $6.6B 비교 기준, HBM 베이스다이 외주, Samsung Foundry 비교 baseline
+
+**보류**: `intel.md`(18건), `amd.md`(6건), `broadcom.md`(0건) — wiki 내 정보 빈약, 외부 자료 없이 신설하면 빈약한 페이지가 위키 가치 해침. 다음 ingest에서 외부 자료 들어올 때 신설.
+
+**기타**:
+- `PLAN.md` 삭제 — 위키화 이전 디렉토리 구조·서브에이전트 설계 담은 초기 계획. CLAUDE.md가 모두 흡수했고 디렉토리 매핑이 옛 것이라 가치 없음. 필요 시 git history에서 회수.
+- CLAUDE.md §10 잘못된 lint 항목("슬라이드 25매 → 29매 정정") 제거 — 본문에 25매 박힌 곳 없음. 마이그레이션 기록 오류.
+
+**dashboard 경로 갱신**:
+- 5곳의 `wiki/entities/china-competitors.md` 참조 → `wiki/entities/cxmt.md, wiki/entities/ymtc.md` 평문 나열로 갱신 (Strategies.jsx, strategies.js, indicators.js, visualizations.js 2곳)
+
+**검증**:
+- `cd dashboard && npm run build` (별도 확인 예정)
+- `python3 outputs/presentation/scripts/generate_pptx.py` (별도 확인 예정)
+
+---
+
 ## [2026-05-18] migration | sources/raw 24개 파일을 wiki/entities·concepts로 재배치
 
 §7-1(a) "엄격 분리" 결정 후 실제 데이터를 보니 sources/raw/의 파일들은 이미 "표·수치+해석"이 통합된 정리 노트였음. 진짜 외부 원본은 IR PDF·웹 URL로 레포 밖에 있고 sources/raw/는 사실상 위키의 첫 버전. 따라서 a 옵션의 정신을 살리기 어려워 사용자 재확인 후 "파일 통째로 wiki/로 이동 + sources/는 외부 출처 카탈로그" 전략으로 전환.

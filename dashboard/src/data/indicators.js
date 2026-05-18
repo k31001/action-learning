@@ -552,7 +552,7 @@ export const INITIAL_INDICATORS = [
 
   // ────────────────────────────────────────────
   // 경쟁사 (Competitors) — SK하이닉스 / Micron / 중국 (2026-05-07 신규)
-  // 출처: wiki/entities/sk-hynix.md, wiki/entities/micron.md, wiki/entities/china-competitors.md, wiki/concepts/dram-market-share.md
+  // 출처: wiki/entities/sk-hynix.md, wiki/entities/micron.md, wiki/entities/cxmt.md, wiki/entities/ymtc.md, wiki/concepts/dram-market-share.md
   // ────────────────────────────────────────────
   {
     id: 'sk_hynix_hbm_share',

@@ -239,6 +239,6 @@ wiki/steep → wiki/driving-forces → wiki/scenarios → wiki/strategies
 | `sources/raw/metadata.md` → `sources/README.md` (외부 출처 카탈로그) | ✓ |
 | `PROMPT.md` → `log.md` 의미 단위 변환 + 삭제 | ✓ |
 | 빌드 검증 (dashboard `npm run build` ✓ + `generate_pptx.py` ✓ 29매 540KB) | ✓ |
-| `wiki/entities/china-competitors.md` → `cxmt.md` + `ymtc.md` 분리 | 후속 ingest |
-| 신규 entity: `samsung.md`, `nvidia.md` (CMX/SCADA 외 일반), `tsmc.md`, `intel.md`, `amd.md`, `broadcom.md` | 후속 ingest |
-| CLAUDE.md §4·§5의 슬라이드 25매 → 실제 29매 정정 | 후속 lint |
+| `wiki/entities/china-competitors.md` → `cxmt.md` + `ymtc.md` 분리 | ✓ |
+| 신규 entity: `samsung.md`, `nvidia.md`, `tsmc.md` | ✓ |
+| 신규 entity (정보 부족으로 보류): `intel.md`, `amd.md`, `broadcom.md` | 다음 ingest에서 외부 자료 들어올 때 |

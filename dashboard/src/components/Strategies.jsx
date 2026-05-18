@@ -143,7 +143,7 @@ function CompetitivePanel() {
   }
   return (
     <div className="space-y-4">
-      <Card title="5사 종합 비교 — Samsung은 어디에 서 있는가" source="wiki/entities/sk-hynix.md, wiki/entities/micron.md, wiki/entities/china-competitors.md, wiki/concepts/dram-market-share.md">
+      <Card title="5사 종합 비교 — Samsung은 어디에 서 있는가" source="wiki/entities/sk-hynix.md, wiki/entities/micron.md, wiki/entities/cxmt.md, wiki/entities/ymtc.md, wiki/concepts/dram-market-share.md">
         <p className="text-xs text-zinc-500 mb-3">
           삼성 / SK하이닉스 / Micron / CXMT / YMTC — 매출·영업이익률·CapEx·HBM 점유·미국 보조금·강점·갭 비교.
           Samsung 약점이 가장 두드러지는 4축은 아래 "핵심 비교 축"에서 별도 시각화.
