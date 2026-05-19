@@ -75,3 +75,30 @@
 - [High-Bandwidth Memory Market Size to Hit USD 69.75 Billion by 2035 (Precedence Research)](https://www.precedenceresearch.com/high-bandwidth-memory-market)
 - [High Bandwidth Memory Report 2026-2031: 25.58% CAGR (Yahoo Finance)](https://finance.yahoo.com/news/high-bandwidth-memory-report-2026-105500152.html)
 - [HBM technology landscape 2026: market and AI demand (PatSnap)](https://www.patsnap.com/resources/blog/articles/hbm-technology-landscape-2026-market-and-ai-demand/)
+
+---
+
+## [Update 2026-05-19] Rubin HBM4 공급 분석 — SemiAnalysis vs UBS 충돌
+
+Rubin HBM4의 메모리 3사 공급 점유에 대해 두 주요 분석이 충돌. 분기점 모니터링 지표로 추적.
+
+| 분석 | SK hynix | Samsung | Micron |
+|---|---|---|---|
+| UBS (2026 Q1) | 70% | 28% | 18% |
+| SemiAnalysis (2026-02) | 주요 공급 | 주요 공급 | **자격 취득 불가 (effectively out)** |
+
+SemiAnalysis는 Micron이 자격 자체를 못 따고 사실상 배제된다고 봄. UBS의 18%는 본격 양산 후 인증 진입 시나리오. 2026 Q3~Q4 Rubin 출하 시점에 확인 가능.
+
+## [Update 2026-05-19] HBM4 핀 속도 진전 격차
+
+- NVIDIA HBM4 목표 약 **11 Gb/s** 핀 속도
+- **SK Hynix·Samsung**: 사양 충족에 더 나은 진전 (Samsung ISSCC 13 Gb/s 시연)
+- **Micron**: HBM4 핀 속도 진척에서 뒤처지는 상황
+
+## [Update 2026-05-19] HBM 웨이퍼 효율 — DRAM 캐파 잠식 가속
+
+- HBM은 일반 DRAM 대비 **웨이퍼당 약 3배 더 많은 용량 소비**
+- **HBM4 전환 시 격차가 거의 4배까지 확대 가능**
+- 함의: HBM 수요 증가가 일반 DRAM 캐파를 가속도로 잠식 → 범용 DRAM 가격 상승 압력 (price-trends.md, semiconductor-cycle.md 참조)
+
+**출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md), [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)

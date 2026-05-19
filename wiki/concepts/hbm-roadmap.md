@@ -97,3 +97,22 @@
 - [HBM3e and HBM4: IC design guide for next-generation high bandwidth memory](https://blogs.sw.siemens.com/semiconductor-packaging/2026/04/24/hbm3e-hbm4-ic-design-guide/)
 - [Micron's HBM3E: Powering the future of AI](https://www.micron.com/about/blog/applications/ai/microns-hbm3e-powering-the-future-of-ai-with-high-bandwidth-memory)
 - [2026 Market Outlook: SK hynix's HBM to Fuel AI Memory Boom](https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/)
+
+---
+
+## [Update 2026-05-19] ISSCC 2026 — HBM4 제조사별 사양 공개
+
+| 항목 | Samsung HBM4 (Paper 15.6) | SK Hynix HBM4 | Micron HBM4 |
+|---|---|---|---|
+| 용량 | 36 GB | — | — |
+| 스택 | 12-high | — | — |
+| 대역폭 | 3.3 TB/s | — | — |
+| 핀 속도 최고 | **13 Gb/s** (JEDEC 6.4 Gb/s의 2배+) | ISSCC 논문 미제출 | ISSCC 발표 없음 |
+| 베이스다이 | **SF4 (Samsung Foundry)** | **N12 (TSMC)** | **N12 (TSMC)** |
+| 코어 다이 | 1c DRAM | — | — |
+| VDDQ | **0.75 V** (HBM3E 1.1V → −32%) | — | — |
+| 특수 기법 | ABB, TSV 4× 증가, Per-channel RDQS 자동 캘리브레이션(7.8→9.4 Gb/s), PMBIST | — | — |
+
+**SemiAnalysis 평가**: Samsung HBM4가 13 Gb/s 핀 속도·전력 측면에서 경쟁사 대비 우수. 단 **SK Hynix는 안정성에서 여전히 우위**. Samsung SF4 베이스다이는 SK/Micron의 N12 대비 고비용 노선.
+
+**출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)

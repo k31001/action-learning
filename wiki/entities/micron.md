@@ -250,3 +250,31 @@
 
 - **수집일**: 2026-05-05
 - **출처**: Micron IR, NIST, Tom's Hardware, Bloomberg, Tweaktown
+
+---
+
+## [Update 2026-05-19] SemiAnalysis — Micron HBM4 후순위 평가
+
+### Rubin HBM4 자격 — SemiAnalysis (2026-02 Vera Rubin)
+- **"Micron is effectively out of the picture for Rubin HBM4"** — 자격 취득 불가능으로 평가
+- SK Hynix·Samsung이 주요 공급자
+
+### 핀 속도 진척 — SemiAnalysis (2026-03 AI Silicon Shortage)
+- NVIDIA HBM4 11 Gb/s 핀 속도 목표
+- **Micron은 SK·Samsung 대비 진척이 뒤처지는 상황**
+
+### HBM4 기술 — SemiAnalysis ISSCC 2026
+- N12 로직 베이스 다이 사용 (SK Hynix와 동일, Samsung SF4 대비 저비용)
+- ISSCC 2026에 별도 HBM4 논문 발표 없음
+- HBM3E 가격 압박
+
+### UBS 추정과의 충돌
+- UBS는 Rubin HBM4 Micron 18% 점유 진입 추정 — SemiAnalysis 평가와 충돌
+- 2026 Q3~Q4 Rubin 출하 시점에 확인
+- 자세히는 [hbm-market.md](../concepts/hbm-market.md) 참조
+
+### Samsung 입장 함의
+- Micron이 Rubin에서 빠지면 Samsung의 Rubin HBM4 28% 점유 진입 여지 확대 (UBS 시나리오)
+- 단 SemiAnalysis 시나리오에서는 SK Hynix가 70% 이상까지 흡수할 가능성 — Samsung Main Bet의 핵심 KPI
+
+**출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md), [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md), [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)

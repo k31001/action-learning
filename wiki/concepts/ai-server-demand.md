@@ -108,3 +108,22 @@
 - [New research reveals 2023 semiconductor market revenue down 9% from 2022 (Omdia/Light Reading)](https://www.lightreading.com/semiconductors/new-research-reveals-2023-semiconductor-market-revenue-down-9-from-2022-omdia)
 - [AI Architecture Evolution Set to Drive Memory Market Revenue to a New Peak in 2027 (TrendForce)](https://www.trendforce.com/presscenter/news/20260122-12893.html)
 - [RAM Shortage 2025: How AI Demand is Raising DRAM Prices (IntuitionLabs)](https://intuitionlabs.ai/articles/ram-shortage-2025-ai-demand)
+
+---
+
+## [Update 2026-05-19] Rubin·TPU·Trainium·MI400 메모리 폭증
+
+| 플랫폼 | 변화 |
+|---|---|
+| NVIDIA Blackwell → Rubin | **HBM 용량 +50%** |
+| Rubin → **Rubin Ultra** | 추가 **약 4배** |
+| Google TPU v8AX, AWS Trainium3 | **8-Hi → 12-Hi 스택** 마이그레이션 |
+| AMD MI350 → MI400 | 메모리 용량 **+50%** |
+| Vera CPU 메모리 (vs Grace) | 512 GB → **1,536 GB (3배)** |
+
+### 함의
+- AI 서버 1대당 HBM·DRAM 탑재량이 세대마다 50~400% 증가 → 메모리 수요 폭증 지속
+- VR NVL72 랙 단위 서버 DRAM 수요 폭증 (1,536 GB × CPU 다수)
+- 일반 DRAM 캐파를 HBM이 잠식하는 효과 가속화 → [hbm-market.md](hbm-market.md) "HBM 웨이퍼 효율" 섹션 참조
+
+**출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)

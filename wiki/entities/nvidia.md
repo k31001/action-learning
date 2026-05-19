@@ -99,3 +99,28 @@ sources: [sources/README.md (NVIDIA IR / 기술 블로그, UBS, BofA, TrendForce
 - [strategies/core/current-state-mb4-custom-ai-memory.md](../strategies/core/current-state-mb4-custom-ai-memory.md)
 - [strategies/invariant/rs3-customer-switching-cost.md](../strategies/invariant/rs3-customer-switching-cost.md)
 - [strategies/invariant/rs4-customer-portfolio-diversification.md](../strategies/invariant/rs4-customer-portfolio-diversification.md)
+
+---
+
+## [Update 2026-05-19] Rubin HBM4 — SemiAnalysis 분석
+
+### Rubin HBM4 사양 (Vera Rubin 기사)
+- 용량: **288 GB** (GB300/Blackwell Ultra와 동일 유지)
+- 대역폭 스케일링: ~2.8×
+- 목표 속도: **22 TB/s (10.8 GT/s)** — 실제 초기 출하 ~20 TB/s 수준 예상
+
+### 공급사 점유 — UBS와 충돌
+- **SemiAnalysis (2026-02)**: Micron HBM4 자격 취득 불가 (effectively out) → SK·Samsung 양강
+- **UBS (2026 Q1)**: SK 70% / Samsung 28% / Micron 18%
+
+→ 자세한 충돌 분석은 [hbm-market.md](../concepts/hbm-market.md) 참조
+
+### 메모리 산업 추가 충격
+- **Rubin → Rubin Ultra**: HBM 용량 추가 약 **4배**
+- **GPU 세대당 HBM 수요 누적**: Rubin이 Blackwell 대비 +50%, Rubin Ultra가 다시 ~4×
+
+### Vera CPU DRAM 폭증
+- Grace CPU당 512 GB → **Vera CPU당 1,536 GB (3배)**
+- VR NVL72 랙 단위 서버 DRAM 수요 폭증
+
+**출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md), [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)

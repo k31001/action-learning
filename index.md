@@ -120,8 +120,14 @@
 
 ## sources — 외부 출처
 
-- [sources/README.md](sources/README.md) — 외부 출처 카탈로그 (기관·URL·관련 wiki 페이지)
-- `sources/articles/`, `sources/filings/`, `sources/papers/`, `sources/raw-notes/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
+- [sources/README.md](sources/README.md) — 외부 출처 카탈로그 (기관·URL·관련 wiki 페이지) + 수집된 articles 카탈로그
+
+### sources/articles — 수집된 원본 자료
+- [sources/articles/semianalysis-isscc-2026-2026-04-15.md](sources/articles/semianalysis-isscc-2026-2026-04-15.md) — ISSCC 2026 메모리 논문 (HBM4/LPDDR6/GDDR7/4F²/BiCS10)
+- [sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md](sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md) — AI 칩 부족과 HBM 캐파 잠식
+- [sources/articles/semianalysis-vera-rubin-2026-02-25.md](sources/articles/semianalysis-vera-rubin-2026-02-25.md) — Vera Rubin 메모리 사양 + Micron 자격 분석
+
+> `sources/filings/`, `sources/papers/`, `sources/raw-notes/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
 
 ## outputs — 빌드 산출물
 

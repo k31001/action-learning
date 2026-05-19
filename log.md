@@ -14,6 +14,47 @@
 
 ---
 
+## [2026-05-19] ingest | SemiAnalysis 3개 기사 (ISSCC 2026 / AI Silicon Shortage / Vera Rubin)
+
+위키화 후 첫 본격 ingest. SemiAnalysis newsletter에서 메모리 관련 최신 3건 수집·반영.
+
+**수집 자료** (3개 원본, sources/articles/):
+- [semianalysis-isscc-2026-2026-04-15.md](sources/articles/semianalysis-isscc-2026-2026-04-15.md) — ISSCC 2026 메모리 논문 모음
+- [semianalysis-ai-silicon-shortage-2026-03-12.md](sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md) — AI 칩 부족·HBM 캐파 잠식
+- [semianalysis-vera-rubin-2026-02-25.md](sources/articles/semianalysis-vera-rubin-2026-02-25.md) — Vera Rubin 메모리·Micron 자격
+
+**갱신된 wiki 페이지 (12개)**:
+- `wiki/concepts/hbm-roadmap.md` — Samsung HBM4 13Gb/s·VDDQ 0.75V·ABB·PMBIST 스펙, SK Hynix N12 베이스다이
+- `wiki/concepts/hbm-market.md` — Rubin HBM4 공급 분석 SemiAnalysis vs UBS 충돌 표, 핀 속도 진척 격차, HBM 웨이퍼 효율 3→4×
+- `wiki/entities/nvidia.md` — Rubin HBM4 288GB/22TB/s, Rubin Ultra +4×, Vera CPU 1,536GB
+- `wiki/concepts/dram-technology.md` — LPDDR6 양사 비교, Samsung 4F² COP DRAM (3D DRAM 후보)
+- `wiki/concepts/emerging-tech.md` — GDDR7 SK Hynix 1c 48Gb/s, TSMC N16 MRAM
+- `wiki/concepts/nand-process-transition.md` — Kioxia BiCS10 332L 등장, 4사 layer 로드맵 갱신
+- `wiki/concepts/ai-server-demand.md` — Rubin/TPU v8AX/Trainium3/MI400 메모리 폭증 표
+- `wiki/concepts/price-trends.md` — DDR DRAM 마진이 HBM 계약 수준 근접 (시장 구조 변화)
+- `wiki/concepts/semiconductor-cycle.md` — HBM 웨이퍼 효율 압박 → 사이클 가속
+- `wiki/entities/samsung.md` — HBM4 우위(성능·전력), 1c 수율 SemiAnalysis 추정 50%, SF4 비용 우려
+- `wiki/entities/sk-hynix.md` — HBM4 N12·안정성 우위, LPDDR6 1c 14.4Gb/s, GDDR7 1c 48Gb/s
+- `wiki/entities/micron.md` — HBM4 뒤처짐, Rubin 자격 취득 불가 (UBS 추정과 충돌)
+
+**주요 발견** (시나리오·전략 함의):
+- **SemiAnalysis vs UBS 충돌**: Rubin HBM4에서 Micron 점유 18%(UBS) vs 자격 불가(SemiAnalysis) — Samsung 입장에서 양 시나리오 모두 점유 28% 진입 여지. 분기점 모니터링 지표로 추가.
+- **HBM 웨이퍼 효율 3→4× 가속**: 일반 DRAM 캐파 잠식이 가속 → 범용 DRAM 수익성 회복([price-trends.md](wiki/concepts/price-trends.md))
+- **DDR 마진이 HBM 계약 수준 근접**: [RS2 바벨 포트폴리오](wiki/strategies/invariant/rs2-barbell-portfolio.md)의 "저원가 범용" 축 수익 회복 → RS1·RS5 호황기 절제 재검토 필요
+- **Samsung HBM4 성능 우위·SK 안정성 우위**: 두 우위가 평행하게 존재 — Main Bet(시나리오 B) NVIDIA 인증 회복 노력의 명분 강화
+- **Kioxia BiCS10 332L**: NAND 적층 경쟁에서 4파전 강화. YMTC hybrid bonding IP 종속 리스크([RS7](wiki/strategies/invariant/rs7-ai-engineering-automation.md))와 별개로 한·미·중·일 모두 진척.
+
+**의도적 미반영**:
+- dashboard `COMPETITIVE_LANDSCAPE.micron.hbmShare` 등 수치 미러는 UBS 추정 그대로 유지. SemiAnalysis 분석과 충돌하지만 dashboard에 두 출처를 동시에 표기하기 어렵기 때문. 위키에 양쪽 모두 기록하고 분기점에서 재검토.
+- `wiki/entities/nvidia-cmx-scada.md` 미갱신 — CMX·SCADA 자체에 새 사실 없음. 일반 NVIDIA 정보는 [nvidia.md](wiki/entities/nvidia.md)에 반영.
+- 시나리오·전략 페이지 미갱신 — 본 ingest는 사실 갱신 위주, 시나리오 재가정/전략 변경은 별도 lint·query 세션에서 다룸.
+
+**검증** (다음 단계):
+- `cd dashboard && npm run build` — dashboard 코드 변경 없으므로 이전 빌드 그대로지만 정합성 확인 위해 실행
+- `python3 outputs/presentation/scripts/generate_pptx.py` — PPTX는 위키 합성이 아니라 slide-outline 기반이라 변동 없음. 그래도 재생성으로 확인.
+
+---
+
 ## [2026-05-18] migration | wiki/entities 확장 (china-competitors 분리 + samsung/nvidia/tsmc 신설)
 
 마이그레이션 종결 작업. CLAUDE.md §10 후속 항목 정리.

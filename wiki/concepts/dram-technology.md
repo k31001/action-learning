@@ -117,3 +117,30 @@
 - [Next-generation 3D DRAM approaches reality: 120-layer stack](https://www.tomshardware.com/tech-industry/next-generation-3d-dram-approaches-reality-as-scientists-achieve-120-layer-stack-using-advanced-deposition-techniques)
 - [Memory industry at a crossroads: why 2025 marks a defining year](https://www.yolegroup.com/strategy-insights/memory-industry-at-a-crossroads-why-2025-marks-a-defining-year/)
 - [The future of DRAM: From DDR5 advancements to future ICs](https://www.tomshardware.com/pc-components/ram/the-future-of-dram-from-ddr5-advancements-to-future-ics)
+
+---
+
+## [Update 2026-05-19] ISSCC 2026 — LPDDR6 + 4F² COP DRAM
+
+### LPDDR6 양사 비교
+| 항목 | Samsung LPDDR6 (Paper 15.8) | SK Hynix 1c LPDDR6 (Paper 15.7) |
+|---|---|---|
+| 최고 속도 | 14.4 Gb/s @ 1.025V | 14.4 Gb/s |
+| 저전압 동작 | 12.8 Gb/s @ 0.97V | 10.9 Gb/s @ 0.95V |
+| 다이 | 16 Gb, 44.5 mm², 0.360 Gb/mm² | — |
+| 아키텍처 | 2 서브채널, 16 뱅크/서브채널, Wide NRZ 12 DQ, 버스트 24 | — |
+| 효율 모드 | 읽기 −27%, 쓰기 −22% | 대기 −12.7%, 동작 −18.9% |
+
+→ Samsung이 LPDDR6 저전압 효율 측면에서 SK Hynix 대비 우위 (0.97V에서 12.8 Gb/s vs 0.95V에서 10.9 Gb/s)
+
+### Samsung 4F² COP DRAM (Paper 15.10) — 3D DRAM 상용화 후보
+- **Cell-on-Peripheral (COP) 아키텍처** — 수직 채널 트랜지스터(VCT) + 상단 캐패시터
+- 하이브리드 본딩으로 DRAM 노드 셀 + 로직 노드 주변회로 결합
+- **핵심 회로 면적 17.0% → 2.7%** (샌드위치 구조)
+- 16 Gb 다이, 10 nm급 DRAM 프로세스
+- **함의**: 위키 기존 전망(3D DRAM 상용화 2033~2034)을 앞당길 후보 아키텍처
+
+### Samsung SF2 LPDDR6 PHY (Paper 37.3)
+- 14.4 Gb/s, 2.32 mm 쇼어라인, 0.695 mm², 효율 모드 −39%/−29%, 클록 게이팅 −50%
+
+**출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)

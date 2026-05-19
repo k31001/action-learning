@@ -93,3 +93,34 @@ sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, Tre
 - [scenarios/scenario-A.md](../scenarios/scenario-A.md) — 황금 요새
 - [scenarios/scenario-B.md](../scenarios/scenario-B.md) — ⭐ Main Bet
 - [scenarios/scenario-C.md](../scenarios/scenario-C.md), [scenario-D.md](../scenarios/scenario-D.md), [scenario-E.md](../scenarios/scenario-E.md)
+
+---
+
+## [Update 2026-05-19] SemiAnalysis ISSCC 2026 — Samsung HBM4 우위
+
+### HBM4 (ISSCC Paper 15.6)
+- **36 GB, 12-high, 3.3 TB/s** — Samsung HBM4 1세대 사양
+- **최고 핀 속도 13 Gb/s** (JEDEC 6.4 Gb/s의 2배 이상) — 경쟁사 대비 성능 우위
+- **VDDQ 0.75 V** (HBM3E 대비 −32%) — 전력 우위
+- 구성: **1c DRAM 코어 다이 + SF4 (Samsung Foundry) 로직 베이스 다이**
+- 기법: ABB, TSV 4× 증가, Per-channel RDQS 자동 캘리브레이션(7.8→9.4 Gb/s), PMBIST
+
+### 1c DRAM 수율 — SemiAnalysis 추정
+- **2025년 약 50%** (점진 개선 중)
+- 위키 기존 "1c nm 수율 50~70%"의 하단에 가까운 수치
+
+### SemiAnalysis 평가
+- ✅ **성능·전력**: Samsung HBM4가 경쟁사 대비 우수
+- ⚠️ **안정성**: SK Hynix 여전히 우위
+- ⚠️ **베이스다이 비용**: Samsung **SF4가 SK/Micron의 N12 대비 고비용 노선**
+
+### LPDDR6 (Paper 15.8)
+- **14.4 Gb/s @ 1.025V**, 12.8 Gb/s @ 0.97V — 저전압 효율 우위
+- 16 Gb 다이, 44.5 mm², 0.360 Gb/mm² 밀도
+- 자세히는 [dram-technology.md](../concepts/dram-technology.md) 참조
+
+### 4F² COP DRAM (Paper 15.10) — 3D DRAM 상용화 후보
+- 핵심 회로 면적 17% → 2.7%, 10 nm급 DRAM 프로세스, 하이브리드 본딩 셀+페리
+- 자세히는 [dram-technology.md](../concepts/dram-technology.md) 참조
+
+**출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)

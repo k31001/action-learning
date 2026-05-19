@@ -159,3 +159,26 @@ NAND Flash는 매 18~24개월마다 새로운 layer 세대로 전환하면서 la
 - [3D NAND Race Faces Huge Tech And Cost Challenges — Semiconductor Engineering](https://semiengineering.com/3d-nand-race-faces-huge-tech-and-cost-challenges/)
 - [Beyond advanced packaging basics — Yole Group](https://www.yolegroup.com/strategy-insights/beyond-advanced-packaging-basics-exploring-the-next-frontier-in-memory/)
 - [Improvement of Read Performance Using CMOS on Array (COA) in 3D NAND Flash — BonView Press](https://ojs.bonviewpress.com/index.php/AAES/article/view/2269)
+
+---
+
+## [Update 2026-05-19] ISSCC 2026 — Kioxia BiCS10 등장
+
+### SanDisk/Kioxia BiCS10 (Paper 15.1)
+- **332 레이어, 3 데크 구성**
+- **최고 밀도 37.6 Gb/mm² (QLC)** — SK Hynix V9 대비 +30%
+- 6-plane (1×6 방식), IO 대역폭 +50%
+- CBA 아키텍처 — 추가 상단 금속층로 전력 공급 개선
+
+### 4사 layer 로드맵 갱신
+| 제조사 | 2024 | 2025 | 2026~2027 |
+|---|---|---|---|
+| Samsung | V8 (236L) | V9 (286L) | V10 430L (2026 H2) |
+| SK Hynix | V8 321L | (QLC 양산) | V10 hybrid bonding (2027) |
+| Micron | 232L | 276L | G9 (500L 계획) |
+| **Kioxia / SanDisk** | BiCS8 (218L) | BiCS9 (CBA 2023~) | **BiCS10 332L** (ISSCC 2026) |
+| YMTC | 232L → 294L | 294L 양산 | 300L+ + 국산 장비 |
+
+→ **함의**: BiCS10이 SK Hynix V9를 능가 (QLC 기준 +30% 밀도). 4사 적층 경쟁에서 Kioxia 선두 진입. 한·미·중·일 4파전 강화.
+
+**출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)

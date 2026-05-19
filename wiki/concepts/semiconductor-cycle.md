@@ -117,3 +117,13 @@
 - [Inside the AI Bottleneck: CoWoS, HBM, and 2-3nm Capacity Constraints](https://www.fusionww.com/insights/blog/inside-the-ai-bottleneck-cowos-hbm-and-2-3nm-capacity-constraints-through-2027)
 - [2026 AI & Semiconductor Outlook - Fabricated Knowledge](https://www.fabricatedknowledge.com/p/2026-ai-and-semiconductor-outlook)
 - [Memory Outlook Report 2026 | TechInsights](https://www.techinsights.com/outlook-reports-2026/memory-outlook-report)
+
+---
+
+## [Update 2026-05-19] HBM 웨이퍼 효율 압박 — 사이클 가속 요인
+
+- HBM은 일반 DRAM 대비 **웨이퍼당 약 3배 더 많은 용량 소비**
+- **HBM4 전환 시 격차가 거의 4배까지 확대 가능**
+- 함의: HBM 수요 증가(Rubin·Rubin Ultra·TPU 12-Hi 마이그레이션)가 일반 DRAM 캐파를 가속도로 잠식 → 범용 DRAM 공급 부족 장기화 가능성 ([price-trends.md](price-trends.md) DDR 마진 상승 참조)
+
+**출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)

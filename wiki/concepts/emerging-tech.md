@@ -162,3 +162,24 @@
 - [NAND Giants Reportedly Cut Output in 2H25 as Prices Surge](https://www.trendforce.com/news/2025/11/13/news-nand-giants-reportedly-cut-output-in-2h25-as-prices-surge-samsung-mulls-20-30-hike-in-2026/)
 - [Second-Tier No More: Kioxia and SanDisk Balance Alliance and Rivalry in AI NAND Race](https://www.trendforce.com/news/2026/01/29/news-second-tier-no-more-kioxia-and-sandisk-balance-alliance-and-rivalry-in-ai-nand-race/)
 - [2026 Memory Industry Insights](https://globalsemiresearch.substack.com/p/2026-memory-industry-insights)
+
+---
+
+## [Update 2026-05-19] ISSCC 2026 — GDDR7·MRAM·4F² COP
+
+### GDDR7 SK Hynix 1c (Paper 15.9)
+- **48 Gb/s @ 1.2V/1.2V**
+- 30.3 Gb/s @ 1.05V/0.9V (RTX 5080의 30 Gb/s 초과)
+- 비트 밀도 0.412 Gb/mm² (Samsung 1b의 0.309 Gb/mm² 대비)
+- GDDR7은 LPDDR5X 대비 약 70% 밀도 (주변회로 비중 증가)
+
+### TSMC N16 MRAM (Paper 15.4)
+- STT-MRAM, 자동차/산업용 비휘발성 메모리
+- 듀얼포트(독립 R/W 동시), 51.2 Gb/s @ 200 MHz
+- 7.5 ns 읽기, 비트셀 0.033 → 0.0249 µm² (−25%)
+- 매크로 밀도 16.0 Mb/mm²
+
+### Samsung 4F² COP DRAM
+- 3D DRAM 상용화 후보 아키텍처 — 자세한 내용은 [dram-technology.md](dram-technology.md) 참조
+
+**출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)

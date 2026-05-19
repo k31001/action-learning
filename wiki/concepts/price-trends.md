@@ -82,3 +82,17 @@
 - [Memory Market Trends 2025: Price Surge & Supply Chain Risk (Suntsu)](https://suntsu.com/blog/memory-market-trends-2025/)
 - [Memory Chip Market in 2024: DRAM & NAND Pricing, Demand, and Future Trends (PatentPC)](https://patentpc.com/blog/memory-chip-market-in-2024-dram-nand-pricing-demand-and-future-trends)
 - [Server memory prices could double by 2026 as AI demand strains supply (Network World)](https://www.networkworld.com/article/4093752/server-memory-prices-could-double-by-2026-as-ai-demand-strains-supply.html)
+
+---
+
+## [Update 2026-05-19] DDR DRAM 마진 ~ HBM 계약 수준 (시장 구조 변화)
+
+- **DDR DRAM 마진이 현재 HBM 계약 수준에 근접하거나 초과**
+- AI 부족이 모바일/PC 영역까지 전이 중
+
+### 함의
+- 범용 DRAM 수익성 회복 → HBM 후순위 제조사(Micron 등)도 일반 DRAM에서 수익 확보
+- CXMT의 범용 DRAM 침투 위협이 단가 측면에서 부분 완화 가능성 — 단 점유율·캐파 확대는 계속됨
+- Samsung 입장에서 [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md)의 "저원가 범용" 축이 예상보다 빨리 수익 회복 → 호황기 절제 정책(RS1·RS5) 재검토 필요
+
+**출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)

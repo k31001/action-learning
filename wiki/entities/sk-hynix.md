@@ -251,3 +251,29 @@ HBM은 그 자체가 어드밴스드 패키징 기술(TSV + 열압착 본딩, TC
 
 - **수집일**: 2026-05-05
 - **출처**: SK하이닉스 IR, TrendForce, KED Global, UBS 리서치, Nikkei Asia
+
+---
+
+## [Update 2026-05-19] SemiAnalysis ISSCC 2026 — SK Hynix 동향
+
+### HBM4
+- **N12 (TSMC) 로직 베이스 다이** 사용 — Samsung SF4 대비 저비용 노선
+- ISSCC 2026에 HBM4 별도 논문 미제출 (Samsung·Micron 노출 대비 신중)
+- **SemiAnalysis 평가**: HBM4 **안정성에서 Samsung 대비 여전히 우위**
+
+### LPDDR6 1c (Paper 15.7)
+- 최고 **14.4 Gb/s** (LPDDR5X 대비 +35%)
+- 0.95V에서 10.9 Gb/s (Samsung 0.97V에서 12.8 Gb/s 대비 낮은 저전압 효율)
+- 효율 모드: 대기 −12.7%, 동작 −18.9%
+
+### GDDR7 1c (Paper 15.9)
+- **48 Gb/s @ 1.2V/1.2V**
+- 30.3 Gb/s @ 1.05V/0.9V (RTX 5080 30 Gb/s 초과)
+- 비트 밀도 0.412 Gb/mm² (Samsung 1b의 0.309 Gb/mm² 대비)
+- 자세히는 [emerging-tech.md](../concepts/emerging-tech.md) 참조
+
+### Rubin HBM4 점유 — UBS 70% 추정 유지
+- SemiAnalysis Vera Rubin 기사도 SK Hynix를 "주요 공급자"로 명시
+- 자세한 공급 분석 충돌은 [hbm-market.md](../concepts/hbm-market.md) 참조
+
+**출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md), [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)

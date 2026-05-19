@@ -54,6 +54,17 @@
 ### 미디어
 - **CNBC / Reuters / Bloomberg / Nikkei Asia / KED Global / Tom's Hardware / Korea Times** — 실시간 보도
 - **theCUBE / DCD / JLL / Visual Capitalist** — 데이터센터·AI 인프라
+- **SemiAnalysis** (newsletter.semianalysis.com) — Dylan Patel 분석 뉴스레터. ISSCC 컨퍼런스 리뷰·플랫폼 분석·시장 부족 분석 (수집된 3개 기사는 `sources/articles/semianalysis-*` 참조)
+
+---
+
+## 수집된 원본 자료 (sources/articles/)
+
+| 파일 | 출처 | 발행일 | 요약 |
+|------|------|--------|------|
+| [semianalysis-isscc-2026-2026-04-15.md](articles/semianalysis-isscc-2026-2026-04-15.md) | SemiAnalysis | 2026-04-15 | ISSCC 2026 메모리 논문 — Samsung HBM4(13Gb/s), SK Hynix N12 베이스다이, LPDDR6 양사, GDDR7 1c, 4F² COP DRAM, Kioxia BiCS10 332L |
+| [semianalysis-ai-silicon-shortage-2026-03-12.md](articles/semianalysis-ai-silicon-shortage-2026-03-12.md) | SemiAnalysis | 2026-03-12 | Rubin HBM +50%, Rubin Ultra +4×, TPU/Trainium 12-Hi 마이그, Micron HBM4 뒤처짐, HBM 웨이퍼 효율 3→4×, DDR 마진 ~ HBM 계약 수준 |
+| [semianalysis-vera-rubin-2026-02-25.md](articles/semianalysis-vera-rubin-2026-02-25.md) | SemiAnalysis | 2026-02-25 | Rubin HBM4 288GB 유지, 22 TB/s 목표, Micron 자격 취득 불가 (UBS 18% 추정과 충돌) |
 
 ---
 
