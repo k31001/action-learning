@@ -14,6 +14,25 @@
 
 ---
 
+## [2026-05-19] build | dashboard 버전 v2.7.3 → v2.7.4 + 변경 정합성 체인 보강
+
+이번 ingest → query → dashboard sync 사이클을 마무리하면서 누락됐던 dashboard 버전 bump 처리 + CLAUDE.md §6 체인에 version bump 단계 강제 추가.
+
+**변경**:
+- `dashboard/src/version.js`: `v2.7.3` → `v2.7.4` (패치 — 신규 EWI 2종 + 카드 텍스트 보강, 페이지 구조 변경 없음)
+- `CLAUDE.md` §6 변경 정합성 체인 보강:
+  - 변경 단계별 갱신 표: `dashboard/src/**` 행에 "`version.js` bump (분류 규칙은 version.js 주석)" 명시
+  - 마무리 단계: 기존 5단계 → **6단계**. 단계 2로 "dashboard 변경 있으면 `version.js` bump" 신설. 변경 없으면 건너뛰되 사유 명시.
+  - 커밋 메시지에 새 버전 표기 의무 추가
+
+**누락 회수**:
+- 위키화 마이그레이션 이후 dashboard 코드 변경 3건(`5170bb9`, `2fd2f3c`, `491cc35`)이 version bump 없이 push됨. 이번 v2.7.4 패치로 그 누적 변경을 한꺼번에 반영.
+- 향후 동일 누락 방지를 위해 CLAUDE.md 체인에 강제 단계 추가.
+
+**검증**: `cd dashboard && npm run build` ✓ (3.04s)
+
+---
+
 ## [2026-05-19] build | 4개 query 결과를 dashboard에 미러링
 
 위키 갱신 결론을 dashboard 데이터 미러에 반영. 한 번에 묶음으로 처리.

@@ -178,15 +178,16 @@ wiki/steep → wiki/driving-forces → wiki/scenarios → wiki/strategies
 | `wiki/strategies/` | `outputs/report/scenario-planning-report.md` 해당 섹션 + `dashboard/src/components/DecisionTracker.jsx`의 DECISIONS |
 | `outputs/report/scenario-planning-report.md` | `outputs/presentation/slide-outline.md` |
 | `outputs/presentation/slide-outline.md` | `outputs/presentation/scripts/generate_pptx.py` (구조 변경 시) |
-| `dashboard/src/**` 또는 `dashboard/api/**` | `cd dashboard && npm run build` 빌드 검증 |
+| `dashboard/src/**` 또는 `dashboard/api/**` | `cd dashboard && npm run build` 빌드 검증 + `dashboard/src/version.js` **bump** (메이저/마이너/패치 분류는 `version.js` 주석 규칙 따름) |
 
 ### 마무리 단계
 
 1. PPTX 재생성: `python3 outputs/presentation/scripts/generate_pptx.py`
-2. 대시보드 빌드 검증: `cd dashboard && npm run build`
-3. `git commit` — 의미 단위, `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>` 포함
-4. `git push origin main` — 본 체인 흐름은 사전 승인됨 (push가 Vercel 자동 배포 트리거)
-5. Vercel 배포 성공 확인
+2. **dashboard 변경 있으면**: `dashboard/src/version.js` bump (단일 소스). 분류 — 메이저(구조 개편)·마이너(페이지/탭 추가·새 데이터 카테고리·큰 UX)·패치(데이터 갱신·텍스트 보강·미세 조정). 변경 없으면 건너뛰되 그 이유 명시.
+3. 대시보드 빌드 검증: `cd dashboard && npm run build`
+4. `git commit` — 의미 단위, `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>` 포함, dashboard 변경 시 커밋 메시지에 새 버전 표기
+5. `git push origin main` — 본 체인 흐름은 사전 승인됨 (push가 Vercel 자동 배포 트리거)
+6. Vercel 배포 성공 확인
 
 ### 자동화 원칙
 - 한 번의 사용자 지시로 위키 → outputs → dashboard 갈래 끝까지 자동 추적·갱신
