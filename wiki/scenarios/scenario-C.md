@@ -73,3 +73,21 @@ AI 투자 버블이 붕괴하면서 메모리 수요가 급냉각되는 동시�
 4. **중국 정부의 게르마늄·갈륨·희토류 대한국 수출 제한 발동 (2026~2027년)**: 중국이 반도체 소재 수출 통제 대상에 한국을 명시하거나 '비신뢰국' 목록에 포함시킬 경우, 기술 냉전 심화의 직접 신호. 삼성전자·SK하이닉스의 소재 재고 수준 및 대체 소싱 긴급 계획 실행 여부 모니터링
 
 5. **NVIDIA HBM 수주 계획 하향 또는 주요 고객 수주 취소 (2027년)**: NVIDIA가 공급사에 HBM4 수주 계획을 20% 이상 하향 조정하거나 특정 분기 납품을 연기하는 공문을 발송할 경우, 수요 급랭의 가장 직접적 지표. 관련 보도 및 업계 채널 모니터링 필수
+
+---
+
+## [Update 2026-05-19] CXMT 위협 가속 — 시나리오 C 가정 강화
+
+HBM ×4 캐파 잠식 + DDR 마진 회복으로 CXMT 물량 점유 확대 효과가 단가 효과보다 우세 ([cxmt.md](../entities/cxmt.md)의 [Update 2026-05-19]).
+
+### 시나리오 C에서의 함의
+- CXMT 점유 진입이 **기존 가정보다 빨라질 가능성** — 2027E 13.9% → 15~17%
+- 디커플링 환경에서 중국 자급 압력 ↑ → CXMT 캐파 증설 속도 가속화 명분 강함
+- Samsung·SK가 미국 의존도를 높이는 동안 중국 시장에서는 CXMT가 대체재로 부상
+
+### 시나리오 C 확률·payoff 영향
+- 시나리오 C **발생 확률(10~15%) 유지** — AI 붕괴 + 디커플링 거시 변수 본질
+- 시나리오 C 현실화 시 **payoff 가정 악화**: Samsung 중국 시안 NAND 팹의 가치 ↓, 범용 DRAM 매출 회복 어려움 (CXMT 흡수)
+- Side Bet 강화 명분: 인도·중동 신흥 시장 진입 가속 ([SE-3 동서 균형 공급자](../strategies/core/current-state-se3-vertical-ascent.md))
+
+**출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md), [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)

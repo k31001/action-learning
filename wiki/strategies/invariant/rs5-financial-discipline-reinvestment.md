@@ -166,3 +166,34 @@
 - [Memory industry to maintain cautious capex in 2026 — TrendForce](https://evertiq.com/news/2025-11-13-memory-industry-to-maintain-cautious-capex-in-2026)
 - [Samsung, SK hynix Plan 20% HBM3E Price Hike for 2026 — TrendForce](https://www.trendforce.com/news/2025/12/24/news-samsung-sk-hynix-reportedly-plan-20-hbm3e-price-hike-for-2026-as-nvidia-h200-asic-demand-rises/)
 - [ExxonMobil Pioneer Acquisition — ExxonMobil press release](https://corporate.exxonmobil.com/news/news-releases/2023/1011_exxonmobil-announces-merger-with-pioneer-natural-resources-in-an-all-stock-transaction)
+
+---
+
+## [Update 2026-05-19] DDR 마진 회복 → 재무 규율 + 재투자 원칙 강화
+
+SemiAnalysis (2026-03-12) **DDR DRAM 마진이 HBM 계약 수준 근접/초과** → RS5 호황기 재무 규율 **강화**.
+
+### 결론: 강화
+EBITDA 폭증 시점이 가까워질수록 자본 배분 규율의 시험대. RS5의 핵심 원칙(배당·자사주 매입 자제 + HBM 초과이익 원가·수율·패키징·테스트 재투자)을 더 엄격히 적용.
+
+### 근거
+- 범용 DRAM 마진 회복으로 2026~2027 EBITDA 추가 폭증 예상 → 외형 확대 유혹 ↑
+- HBM 캐파 잠식 가속(3→4×, [hbm-market.md](../../concepts/hbm-market.md))으로 후속 사이클 다운턴 진폭 ↑ 가능성
+- 호황 정점 무절제 → 다운턴 흑자 구조 약화 (메모리 사이클 역사 패턴 — [semiconductor-cycle.md](../../concepts/semiconductor-cycle.md))
+
+### 시나리오별 강도
+
+| 시나리오 | 강도 |
+|---|---|
+| A | **강화** — 디커플링 비용 누적 → 현금 확보 필수 |
+| B (Main Bet) | **강화** — HBM 인증 회복 R&D에 초과이익 재투자 |
+| C | **매우 강화** — 다운턴 임박, 재고일수 상한 엄격 적용 |
+| D | **강화** — 분산 재편 + 다운턴 대비 동시 |
+| E | **유지** — 와일드카드, 옵션 가치 유지 |
+
+### 실행 강화 항목
+- **재고일수 상한 -15%**: 호황기일수록 재고 누적 위험. 평년 대비 인하.
+- **HBM 초과이익 재투자 70%+ 명문화**: P&L 분리 공개([SD-1](../core/current-state-sd1-hbm-pnl-spinoff.md))와 함께 재투자 비율 공식화.
+- **자사주 매입 보류**: 2026~2027 EBITDA 폭증 분기에도 자사주 매입은 후순위, 현금 cushion 확보 우선.
+
+**출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)

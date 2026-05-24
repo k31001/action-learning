@@ -124,3 +124,18 @@ sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, Tre
 - 자세히는 [dram-technology.md](../concepts/dram-technology.md) 참조
 
 **출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
+
+---
+
+## [Update 2026-05-19] Rubin HBM4 28% 점유 가정 — 분기 분석
+
+UBS 28% vs SemiAnalysis "Micron out" 충돌. 세 분기:
+- **(α) UBS (50%)**: Samsung 28% 갇힘
+- **(β) SemiAnalysis (35%)**: Micron 자격 불가 → Samsung 28~35% 진입 여지
+- **(γ) 기타 (15%)**: Samsung 40%+ 진입 또는 Micron 협상 복귀
+
+→ Samsung 28%+ 진입 기대값 **~28.5%**, Main Bet 가정과 일치. **Main Bet 확률 30~35% 유지** + **HBM4 인증 회복 노력 conviction 강화**.
+
+자세한 분기 분석은 [scenario-B.md](../scenarios/scenario-B.md)의 [Update 2026-05-19] 섹션 참조.
+
+**출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)

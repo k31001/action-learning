@@ -278,3 +278,18 @@
 - 단 SemiAnalysis 시나리오에서는 SK Hynix가 70% 이상까지 흡수할 가능성 — Samsung Main Bet의 핵심 KPI
 
 **출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md), [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md), [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
+
+---
+
+## [Update 2026-05-19] Rubin HBM4 자격 분기 — Main Bet 함의
+
+UBS 18% vs SemiAnalysis "effectively out" 충돌. 위키는 양쪽 모두 분기로 기록:
+- **(α) UBS 시나리오**: Micron 18% 진입 (~50%)
+- **(β) SemiAnalysis 시나리오**: 자격 불가, Rubin 배제 (~35%)
+- **(γ) 기타**: Micron 협상 복귀 또는 Samsung 40%+ 진입 (~15%)
+
+Samsung 입장에서 (β)가 현실화되면 Rubin HBM4 점유 28→35% 진입 여지, Main Bet conviction 강화. 분기점: **2026 Q3 Rubin 초기 출하 시 Micron 자격 통과 여부**.
+
+자세한 분기 분석은 [scenario-B.md](../scenarios/scenario-B.md)의 [Update 2026-05-19] 섹션 참조.
+
+**출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)

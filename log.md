@@ -14,6 +14,60 @@
 
 ---
 
+## [2026-05-19] query | Kioxia BiCS10 → RS7 hybrid bonding 자체 IP 목표 시급도 재평가
+
+결론: 자체 IP 70%+ 목표 **유지** + **V11 hybrid bonding 진입 시점 2027 H1 → 2026 H2 가속 검토**.
+
+근거: CBA(Kioxia BiCS10 활용)는 산업 표준화 추세로 IP 종속 약함. Hybrid bonding W2W는 YMTC 핵심 IP 지배 — 별개 기술이라 BiCS10 등장이 자체 IP 시한 가속의 직접 근거는 약함. 단 332L 등장으로 layer 적층 경쟁이 4파전(한·미·중·일)으로 강화되어 Samsung V11 일정 가속 명분 발생.
+
+⚠️ Kioxia CBA IP 라이선스 구조는 sources에 명시 없음 — 추가 조사 필요(다음 ingest 후보).
+
+영향 페이지: `wiki/strategies/invariant/rs7-ai-engineering-automation.md`
+출처: `sources/articles/semianalysis-isscc-2026-2026-04-15.md`
+
+---
+
+## [2026-05-19] query | HBM ×4 + DDR 마진 회복 → CXMT 위협 시계열 재평가
+
+결론: CXMT 위협 **가속**. 위키 가정 갱신: 2027E DRAM 점유 13.9% → **15~17% 상향**.
+
+근거: 두 상충 효과 중 (B) 물량 효과(범용 공급 공백 흡수)가 (A) 단가 효과(범용 마진 회복)보다 우세. 메모리 시장은 물량 점유가 단가 우위보다 진입장벽을 더 빠르게 형성. 시나리오 C·D 모두 payoff 가정 악화. [RS2 바벨 포트폴리오](wiki/strategies/invariant/rs2-barbell-portfolio.md) "저원가 범용 양보" 전략 유효성 ↑.
+
+신규 EWI 지표 4개 제안: CXMT ASP 격차, 분기 캐파 증설 속도, 허페이 Fab 3 가동 시점, CXMT 하이퍼스케일러 인증 시도.
+
+영향 페이지: `wiki/entities/cxmt.md`, `wiki/scenarios/scenario-C.md`, `wiki/scenarios/scenario-D.md`
+출처: `sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md`, `vera-rubin-2026-02-25.md`
+
+---
+
+## [2026-05-19] query | SemiAnalysis vs UBS Rubin HBM4 충돌 → Main Bet 확률 재평가
+
+결론: Main Bet (Scenario B AI 르네상스) 확률 **30~35% 유지** + **conviction 강화**.
+
+근거: Samsung Rubin HBM4 28%+ 진입 기대값 ≈ **28.5%** (α UBS 50%·β SemiAnalysis 35%·γ 기타 15% 분기 가중 평균). 기존 Main Bet 가정과 정합. (β) SemiAnalysis 시나리오에서 Samsung 28~35% 진입 여지로 HBM4 인증 회복 노력의 expected payoff ↑. 시나리오 매트릭스 5개 확률 분포는 변동 없음. 의사결정 D2~D4(NVIDIA 인증 회복 + co-design + HBM4 캐파) 우선순위 ↑.
+
+모니터링 분기점: 2026 Q3 Rubin 초기 출하 시 Micron 자격 통과 여부.
+
+영향 페이지: `wiki/scenarios/scenario-B.md`, `wiki/entities/samsung.md`, `wiki/entities/micron.md`
+출처: `sources/articles/semianalysis-vera-rubin-2026-02-25.md`
+
+---
+
+## [2026-05-19] query | DDR 마진 ~ HBM 수준 → RS1·RS5 호황기 절제 강도 재검토
+
+결론: RS1(옵션형 캐파)·RS5(재무 규율) 모두 **강화**.
+
+근거: DDR DRAM 마진이 HBM 계약 수준 근접/초과는 시장 정점 임박 신호. HBM 캐파 잠식 3→4× 가속이 범용 공급 부족을 장기화해 추가 증설 유혹 ↑. 과거 메모리 사이클 정점 무절제 패턴과 동일. 모든 시나리오(A·B·C·D·E)에서 강화 결론 일치 — 다운턴 진폭 ↑ 우려.
+
+실행:
+- RS1: 신규 고정 캐파 증설 동결(Q3까지), mix 전환권 정량화, 장기계약 없는 증설 금지
+- RS5: 재고일수 상한 -15%, HBM 초과이익 재투자 70%+ 명문화, 자사주 매입 보류
+
+영향 페이지: `wiki/strategies/invariant/rs1-options-based-capacity.md`, `rs5-financial-discipline-reinvestment.md`
+출처: `sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md`
+
+---
+
 ## [2026-05-19] ingest | SemiAnalysis 3개 기사 (ISSCC 2026 / AI Silicon Shortage / Vera Rubin)
 
 위키화 후 첫 본격 ingest. SemiAnalysis newsletter에서 메모리 관련 최신 3건 수집·반영.

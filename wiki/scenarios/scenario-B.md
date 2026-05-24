@@ -71,3 +71,33 @@ AI가 실질적인 산업 생산성 혁명을 견인하며 글로벌 메모리 �
 4. **삼성전자 시안 팹 라이선스 1년 단위 갱신 지속 (2026~2028년)**: 미 상무부 BIS가 시안 팹 장비 라이선스를 조건 없이 1년 단위로 갱신하는 패턴이 2회 이상 지속될 경우, 관리된 공존 방향의 강력한 시그널
 
 5. **인도·중동 AI 데이터센터 발주 급증 (2026~2027년)**: 사우디 Humain·UAE G42·인도 Reliance Jio AI 데이터센터의 DRAM·NAND 발주 규모가 연간 50억 달러 이상으로 증가할 경우, 신흥 AI 시장 개화 확인. 삼성전자의 신시장 수혜 확대 시그널
+
+---
+
+## [Update 2026-05-19] Rubin HBM4 점유 분기 분석 — Main Bet 확률 재평가
+
+SemiAnalysis Vera Rubin (2026-02-25) "Micron is effectively out of the picture for Rubin HBM4"가 UBS의 Samsung 28% 추정과 충돌. Samsung 입장에서 세 분기:
+
+| 분기 | 가정 | Samsung Rubin HBM4 점유 | 추정 확률 |
+|------|------|----------------------|---------|
+| α (UBS) | Micron 18% 진입, Samsung 28% 갇힘 | 28% | ~50% |
+| β (SemiAnalysis) | Micron 자격 불가 → SK·Samsung 양강 | 28~35% 진입 여지 | ~35% |
+| γ (기타) | Micron 협상 진입 또는 Samsung 40%+ | 변동성 | ~15% |
+
+### Main Bet 확률 결론: 30~35% 유지 (conviction 강화)
+
+기대값: Samsung 28%+ 진입 확률 = 0.50×0.0 + 0.35×0.60 + 0.15×0.50 ≈ **28.5%** — Main Bet 30~35% 가정과 정합.
+
+다만 (β)에서 Samsung 인증 회복 노력의 보상이 더 큼 → **Main Bet에 대한 conviction 강화**. Main Bet 확률 자체는 30~35% **유지** (시나리오 B 발생 확률은 Samsung Rubin 점유와 직결되지 않음 — AI 지속 + 미중 공존 조합 확률이 본질).
+
+### 시나리오 매트릭스 영향
+- A·B·C·D·E 확률 분포 변동 없음
+- Main Bet expected payoff는 (β) 시나리오에서 ↑ → HBM4 NVIDIA 인증 회복 명분 강화
+- 의사결정 D2~D4 (NVIDIA 인증 회복 + co-design + HBM4 캐파 확장) 우선순위 ↑
+
+### 모니터링 분기점
+- **2026 Q3**: Rubin 초기 출하 시 Micron 자격 통과 여부 — (α)(β) 판가름
+- **2026 Q4**: Samsung HBM4 NVIDIA 인증 회복 진척
+- **2027 H1**: SK 70% 유지 여부 — 80%까지 흡수하면 Samsung 진입 여지 축소
+
+**출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)

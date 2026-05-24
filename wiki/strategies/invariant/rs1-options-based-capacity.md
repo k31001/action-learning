@@ -139,3 +139,31 @@
 - [Memory crisis and sky-high DRAM prices — PC Gamer](https://www.pcgamer.com/hardware/memory/memory-crisis-and-sky-high-dram-prices-could-run-past-2028-as-samsung-and-sk-hynix-opt-to-minimize-the-risk-of-oversupply/)
 - [Yield Learning and the Sources of Profitability — Weber, PSU](https://web.pdx.edu/~webercm/documents/2004%20Weber%20Yield%20Learning.pdf)
 - [The memory supercycle — Blocks & Files](https://blocksandfiles.com/2026/01/21/the-memory-supercycle/)
+
+---
+
+## [Update 2026-05-19] DDR 마진 회복 → 옵션형 캐파 절제 강화
+
+SemiAnalysis (2026-03-12) **DDR DRAM 마진이 HBM 계약 수준에 근접/초과** ([price-trends.md](../../concepts/price-trends.md)) 신호를 반영해 RS1 호황기 절제 강도를 **강화**한다.
+
+### 근거
+- 범용 DRAM 마진 회복은 시장 전체가 **호황 정점에 근접**했다는 신호. 다운턴 시점이 가까워졌다는 의미.
+- HBM 캐파 잠식 3→4× 가속([hbm-market.md](../../concepts/hbm-market.md))이 범용 공급 부족을 장기화해 추가 증설 유혹이 강해지는 시점.
+- 과거 메모리 사이클 정점에서의 무절제 증설이 다운턴 손실을 확대한 패턴([semiconductor-cycle.md](../../concepts/semiconductor-cycle.md)).
+
+### 시나리오별 강도
+
+| 시나리오 | 절제 강도 |
+|---|---|
+| A (황금 요새) | **강화** — 디커플링 + 호황 지속이지만 정점 임박 |
+| B (AI 르네상스, Main Bet) | **강화** — Main Bet conviction 강화, capex 규율로 다운턴 진입 시 손실 최소화 |
+| C (기술 냉전) | **매우 강화** — 다운턴 임박, 옵션 가치 극대화 |
+| D (조용한 재편) | **강화** + 다각화 우선 — 점유 분산 신호 동시 대응 |
+| E (패러다임 전환) | **유지·옵션 가치 ↑** — 와일드카드, 옵션형 캐파의 본질 가치 시현 |
+
+### 실행 강화 항목
+- **신규 고정 캐파 증설 동결**: 2026 Q3까지 장비 발주 우선권만 확보, 실집행은 분기 단위 재승인
+- **mix 전환권 정량화**: 라인별 HBM↔범용 mix 전환 시 6개월 이내 수율 회복 옵션 확보
+- **장기계약(LTA) 없는 증설 금지**: 1년치 이상 take-or-pay 보장 없는 캐파는 옵션으로만 유지
+
+**출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)

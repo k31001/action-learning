@@ -72,3 +72,25 @@ AI 과잉 투자에 대한 시장의 합리적 조정이 이루어지면서 메�
 4. **삼성전자 시안 팹 라이선스 조건부 갱신 (2026~2028년)**: 미 상무부가 시안 팹 라이선스를 1년 단위로 갱신하되, "128단 이하로 공정 업그레이드 금지" 조건을 명시하는 형태로 갱신할 경우. 부분 허용·부분 제한의 관리된 공존 패턴 확인
 
 5. **CXMT DDR5 대량 출하 개시 (2026~2027년)**: CXMT가 DDR5 DRAM을 중국 내 스마트폰·PC OEM에 분기 1,000만 개 이상 납품하기 시작할 경우. 삼성전자의 중국 범용 DRAM 시장 점유율이 조용히 잠식되기 시작하는 조용한 재편의 시작 신호
+
+---
+
+## [Update 2026-05-19] CXMT 위협 가속 — 시나리오 D 가정 강화
+
+미중 공존 + AI 둔화에서도 CXMT 가속 효과 발생 ([cxmt.md](../entities/cxmt.md)의 [Update 2026-05-19]).
+
+### 시나리오 D 특이성
+- AI 둔화 → HBM 수요 압박 완화 → 한·미·일 HBM 집중 균형 부분 해소
+- 그러나 범용 DRAM 마진 회복 지속 → CXMT가 정상 마진으로 점유 확대 → 글로벌 공급 분산 가속
+- 공존 환경에서 CXMT가 중국 외 글로벌 시장 진입 가능성 ↑
+
+### 시나리오 D 확률·payoff 영향
+- 발생 확률(20~25%) **유지**
+- Samsung 입장: 점유 분산 + 범용 다각화 우선
+- [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md) "저원가 범용 양보"가 가장 효율적인 시나리오
+
+### 모니터링 분기점
+- CXMT 중국 외 시장(인도·동남아) 입찰 진입 시도 — 2026~2027 보도
+- 미·중 메모리 협의 동향 — WTO·반덤핑 제재 결정
+
+**출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md), [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)

@@ -110,3 +110,39 @@ sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's 
 - [CXMT DDR5-8000 and LPDDR5X-10667 displayed — Tom's Hardware](https://www.tomshardware.com/pc-components/dram/chinas-banned-memory-maker-cxmt-unveils-surprising-new-chipmaking-capabilities-despite-crushing-us-export-restrictions-ddr5-8000-and-lpddr5x-10667-displayed)
 - [CXMT Achieves 80 Percent DDR5 Yield — ExportSemi](https://www.exportsemi.com/company-post/cxmt-achieves-80-percent-ddr5-yield/)
 - [China Enters 2025 with Big Memory Breakthroughs — TechInsights](https://www.techinsights.com/blog/china-enters-2025-big-memory-breakthroughs)
+
+---
+
+## [Update 2026-05-19] HBM ×4 + DDR 마진 회복 → CXMT 위협 가속
+
+SemiAnalysis 2건에서 발생한 두 상충 효과:
+
+| 효과 | CXMT에 미치는 영향 |
+|---|---|
+| (A) 범용 DRAM 마진이 HBM 계약 수준 근접/초과 | **단가 우위 약화** — 저가 공세 메리트 감소 |
+| (B) HBM 캐파 잠식 ×3 → ×4 | **점유 확대 기회** — 한·미·일 HBM 집중으로 범용 공급 공백 흡수 |
+
+### 결론: 위협 **가속**
+
+(B) 물량 효과가 (A) 단가 효과보다 우세 — 메모리 시장은 일반적으로 물량 점유가 단가 우위보다 진입장벽을 더 빠르게 형성. CXMT 캐파 증설 계획(2024 170K → 2026E 300K WSPM)이 (B)와 시너지. (A)는 CXMT 수익성에 긍정적 → 자체 R&D·차세대 노드 진입 가속 가능 → 양쪽 모두 위협 강화.
+
+### 위키 기존 가정 갱신
+
+| 지표 | 기존 (Q3 2025) | 갱신 (2026-05-19) |
+|---|---|---|
+| DRAM 점유 (2027E) | 13.9% | **15~17%로 상향** |
+| 캐파 (2026E) | 300,000 WSPM | 유지 |
+| 단가 우위 의존도 | 핵심 | **약화** — 물량 우위 + 자국 시장 보호로 전환 |
+
+### 신규 EWI 지표 제안
+
+1. **CXMT 평균 ASP vs 글로벌 DRAM ASP 격차** — 좁아지면 단가 우위 약화 신호
+2. **CXMT 분기 캐파 증설 속도** — 2026E 300K WSPM 도달 시점 가속/지연
+3. **허페이 Fab 3 가동 시점** — 1x nm 도달 여부 (2027 이전 vs 이후)
+4. **CXMT 하이퍼스케일러 인증 시도** — Alibaba·Tencent·ByteDance DRAM 입찰 진입 (보도)
+
+### Samsung 전략 시사점
+- [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md) "저원가 범용 양보 전략" **더 유효** — CXMT 점유 흡수, Samsung HBM 집중. 범용 마진 회복으로 양보 비용 ↓
+- 시나리오 C·D 모두 위협 강화 ([scenario-C.md](../scenarios/scenario-C.md), [scenario-D.md](../scenarios/scenario-D.md) [Update 2026-05-19] 섹션)
+
+**출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md), [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)

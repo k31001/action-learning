@@ -179,3 +179,51 @@
 - [AI in Semiconductors Industry — Aegis Softtech](https://www.aegissofttech.com/insights/ai-in-semiconductor-industry/)
 - Synopsys DSO.ai (제품 페이지)
 - Cadence Cerebrus (제품 페이지)
+
+---
+
+## [Update 2026-05-19] Kioxia BiCS10 332L 등장 → 자체 IP 시급도 재평가
+
+SemiAnalysis ISSCC 2026 (2026-04-15)에서 SanDisk/Kioxia BiCS10 332L 발표 — NAND 적층이 한·미·중·일 4파전으로 강화 ([nand-process-transition.md](../../concepts/nand-process-transition.md) 4사 layer 로드맵).
+
+### 결론: 자체 IP 70%+ 목표 **유지** + V11 진입 시점 가속 검토
+
+**근거 1 — CBA vs Hybrid Bonding W2W 구분**
+
+- **CBA (Circuit-Bonded Array, Kioxia BiCS10 활용)**: 산업 표준화 추세 — SK Hynix·Micron도 활용(BiCS9 이후 등). IP 종속 약함.
+- **Hybrid bonding W2W (YMTC 핵심 IP 지배)**: 별개 기술. 위키 기존 가정 유지 ([ymtc.md](../../entities/ymtc.md)).
+
+따라서 BiCS10의 CBA 활용 자체가 hybrid bonding 자체 IP 70%+ 시한 가속의 **직접적 근거는 약함**. ⚠️ Kioxia CBA IP 라이선스 구조는 sources 자료에 명시 없음 — **추가 조사 필요**(Knowmade/TechInsights 후속 ingest 권장).
+
+**근거 2 — Layer 적층 경쟁 가속 (V11 가속 명분)**
+
+- Kioxia 332L (ISSCC 2026) — SK V9(321L)·Samsung V9(286L) 초과
+- Samsung V10 430L (2026 H2) → V11 (2027 계획) hybrid bonding 진입
+- 4사 모두 hybrid bonding 도입이 2027에 집중 → Samsung **V11을 2026 H2로 가속** 검토 필요
+
+### 4사 IP 분포 (현 정보 기준 추정)
+
+| 제조사 | CBA (periphery-on-array) | Hybrid bonding W2W |
+|--------|------------------------|---------------------|
+| Samsung | V8/V9에서 활용 가능성 | V11(2027 계획) 진입, 자체 IP 비율 ⚠️ 미공개 |
+| SK Hynix | V8 321L에서 활용 | V10(2027) 진입 계획 |
+| Micron | G8/G9 활용 | 일정 미공개 |
+| Kioxia/SanDisk | **BiCS10 332L 활용 ✅** | BiCS11+ 검토 가능성 |
+| YMTC | Xtacking 자체 IP | **핵심 IP 지배 ✅** |
+
+### RS7 4 R&D 트랙 시급도 갱신
+
+| 트랙 | 기존 목표 | 갱신 |
+|------|---------|------|
+| Hybrid Bonding 자체 IP 70%+ | 2027 | **유지** (단 Kioxia CBA IP 조사 후 재검토) |
+| **V11 hybrid bonding 양산** | **2027 H1** | **2026 H2로 가속 검토** ← 신규 |
+| Multi-deck 정교화 (V10+ → V10++) | 진행 중 | 유지 |
+| bit-per-cell 확장 (QLC → PLC) | QLC 30%+ 2026 / PLC 2028 | 유지 |
+| FDP·SCADA 호스트 협력 firmware | 진행 중 | 유지 |
+
+### 추가 조사 필요 (다음 ingest 후보)
+- ⚠️ Kioxia BiCS10 CBA IP 라이선스 구조 (자체 IP인가 표준화 IP인가)
+- ⚠️ YMTC hybrid bonding W2W IP의 정확한 적용 범위 (적층 수·노드별)
+- ⚠️ Samsung·SK 자체 IP 비율의 현 시점 추정치
+
+**출처**: [semianalysis-isscc-2026-2026-04-15.md](../../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
