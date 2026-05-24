@@ -14,6 +14,38 @@
 
 ---
 
+## [2026-05-19] build | 4개 query 결과를 dashboard에 미러링
+
+위키 갱신 결론을 dashboard 데이터 미러에 반영. 한 번에 묶음으로 처리.
+
+**변경 (5곳)**:
+- `dashboard/src/data/visualizations.js`
+  - `dramMarketShareTrend.data` 2027E: cxmt 14 → **16** (samsung 30→29, skhynix 32→31 분배, 합 100 유지)
+  - `chinaCompetitorShare.data` 2027E: cxmtDram 14 → **16**
+- `dashboard/src/data/strategies.js` `COMPETITIVE_LANDSCAPE.cxmt`
+  - `dramRank`: "4위 (Q3 2025 8% → **2027E 15~17% 상향**, SemiAnalysis 2026-05-19)"
+  - `strengthAreas`에 "HBM ×4 캐파 잠식 → 범용 공급 공백 흡수 가속" 추가
+  - `gapAreas`에 "(DDR 마진 회복으로 약화)" 메모 추가
+- `dashboard/src/data/strategies.js` `DECISIONS` D6 (RS1·4·5)
+  - title에 "(호황기 절제 강화)" 추가
+  - summary에 [2026-05-19 강화] 실행 항목 5종 (Q3 캐파 동결, mix 전환권, LTA 없는 증설 금지, 재고일수 −15%, 재투자 70%+, 자사주 매입 보류)
+- `dashboard/src/data/strategies.js` `DECISIONS` D10 (NAND R&D)
+  - title에 "+ V11 가속 검토" 추가
+  - summary에 [2026-05-19 추가] Kioxia BiCS10 등장 → V11 2027 H1 → 2026 H2 가속 검토
+  - contingency에 Kioxia CBA IP 추가 조사 메모
+- `dashboard/src/data/indicators.js` 신규 EWI 2종 추가
+  - `cxmt_asp_gap`: CXMT 평균 ASP vs 글로벌 DRAM ASP 격차 (quarterly, −10% 임계값으로 단가 우위 약화 신호 추적)
+  - `cxmt_fab3_status`: 허페이 Fab 3 가동 상태 (4단계 select — 계획/건설/시험양산/양산)
+
+**의도적 미반영**:
+- SCENARIOS B 확률 33% **유지** (위키 결론과 정합 — 30~35% 유지)
+- RS2 바벨 포트폴리오 강도는 위키만 갱신 (dashboard DECISIONS에는 RS2 단독 항목 없음, D6의 RS-1·4·5 묶음에서 다룸)
+- 신규 EWI 4종 중 2종(캐파 증설 속도·하이퍼스케일러 인증 시도)은 기존 `cxmt_ddr5_shipment` 와 정성 지표라 미추가
+
+**검증**: `cd dashboard && npm run build` ✓ (3.02s)
+
+---
+
 ## [2026-05-19] query | Kioxia BiCS10 → RS7 hybrid bonding 자체 IP 목표 시급도 재평가
 
 결론: 자체 IP 70%+ 목표 **유지** + **V11 hybrid bonding 진입 시점 2027 H1 → 2026 H2 가속 검토**.

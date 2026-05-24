@@ -88,7 +88,7 @@ export const COMPETITOR_DATA = {
       { period: 'Q1 2025',  samsung: 34,   skhynix: 36,   micron: 25,   cxmt: 5  },
       { period: 'Q2 2025',  samsung: 33,   skhynix: 35,   micron: 26,   cxmt: 6  },
       { period: 'Q3 2025',  samsung: 32.6, skhynix: 33.2, micron: 25.7, cxmt: 8  },
-      { period: '2027E',    samsung: 30,   skhynix: 32,   micron: 24,   cxmt: 14 },
+      { period: '2027E',    samsung: 29,   skhynix: 31,   micron: 24,   cxmt: 16 },
     ],
   },
 
@@ -103,7 +103,7 @@ export const COMPETITOR_DATA = {
       { year: '2023',  cxmtDram: 3,   ymtcNand: 5  },
       { year: '2024',  cxmtDram: 5,   ymtcNand: 9  },
       { year: '2025',  cxmtDram: 8,   ymtcNand: 13 },
-      { year: '2027E', cxmtDram: 14,  ymtcNand: 18 },
+      { year: '2027E', cxmtDram: 16,  ymtcNand: 18 },
     ],
   },
 

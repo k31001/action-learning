@@ -100,11 +100,11 @@ export const COMPETITIVE_LANDSCAPE = {
       opMargin: { value: '비공개 (저수익 용인)', note: '시장 점유율 우선' },
       capex: { value: '$45억+ (2025 추정)', note: '빅펀드 III + 안후이성 정부' },
       hbmShare: '미진입 (HBM 진출 시도)', hbmPosition: '신규',
-      dramRank: '4위 (Q3 2025 8% 진입)',
+      dramRank: '4위 (Q3 2025 8% → 2027E 15~17% 상향, SemiAnalysis 2026-05-19)',
       nandPosition: '미진출',
       usSubsidy: { value: '—', subtitle: '미국 Entity List 등재', rank: '—' },
-      strengthAreas: ['DDR5-8000 / LPDDR5X-10667 시연', 'DDR5 yield 80% 달성', '캐파 2024년 17만 → 2026E 30만 WSPM'],
-      gapAreas: ['EUV 차단 → DUV 다중 패터닝 한계', '1x nm 진입 어려움', '범용 DRAM 의존'],
+      strengthAreas: ['DDR5-8000 / LPDDR5X-10667 시연', 'DDR5 yield 80% 달성', '캐파 2024년 17만 → 2026E 30만 WSPM', 'HBM ×4 캐파 잠식 → 범용 공급 공백 흡수 가속'],
+      gapAreas: ['EUV 차단 → DUV 다중 패터닝 한계', '1x nm 진입 어려움', '범용 DRAM 의존 (DDR 마진 회복으로 약화)'],
     },
     {
       id: 'ymtc', name: 'YMTC', flag: '🇨🇳', color: '#7c3aed',
@@ -361,8 +361,8 @@ export const DECISIONS = [
     relatedRS: ['MB-2'], priority: 'high',
   },
   {
-    id: 'D6', title: 'Robust RS-1·4·5 이사회 정책화', cluster: 'D-150', deadline: '2026-Q3',
-    summary: '옵션형 캐파·LTA 원칙·재무 규율 + 다운사이클 capex 하한 4조 원/년 이사회 공식 결의',
+    id: 'D6', title: 'Robust RS-1·4·5 이사회 정책화 (호황기 절제 강화)', cluster: 'D-150', deadline: '2026-Q3',
+    summary: '옵션형 캐파·LTA 원칙·재무 규율 + 다운사이클 capex 하한 4조 원/년 이사회 공식 결의. [2026-05-19 강화] DDR 마진 ~ HBM 수준 신호 반영 — RS1: 신규 고정 캐파 동결(Q3까지), mix 전환권 정량화, LTA 없는 증설 금지. RS5: 재고일수 −15%, HBM 초과이익 재투자 70%+ 명문화, 자사주 매입 보류.',
     contingency: '—',
     relatedRS: ['RS-1', 'RS-4', 'RS-5'], priority: 'high',
   },
@@ -399,9 +399,9 @@ export const DECISIONS = [
     relatedRS: ['RS-5'], priority: 'medium',
   },
   {
-    id: 'D10', title: 'NAND 공정 전환 주기 연장 R&D 4트랙', cluster: 'D-240', deadline: '2026-Q4',
-    summary: '4트랙 병행: ① Hybrid Bonding 자체 IP (1.5조/3년) · ② Multi-deck 정교화 · ③ QLC/PLC · ④ FDP/SCADA firmware',
-    contingency: '트랙 1 IP 지연 시 한국 IP 컨소시엄 또는 정부 R&D 분리. YMTC 라이선스 의존도 ≤50%',
+    id: 'D10', title: 'NAND 공정 전환 주기 연장 R&D 4트랙 + V11 가속 검토', cluster: 'D-240', deadline: '2026-Q4',
+    summary: '4트랙 병행: ① Hybrid Bonding 자체 IP (1.5조/3년) · ② Multi-deck 정교화 · ③ QLC/PLC · ④ FDP/SCADA firmware. [2026-05-19 추가] Kioxia BiCS10 332L 등장으로 4사 layer 경쟁 강화 — V11 hybrid bonding 양산 2027 H1 → 2026 H2 가속 검토.',
+    contingency: '트랙 1 IP 지연 시 한국 IP 컨소시엄 또는 정부 R&D 분리. YMTC 라이선스 의존도 ≤50%. Kioxia CBA IP 라이선스 구조 추가 조사 필요.',
     relatedRS: ['RS-6'], priority: 'high',
   },
   {
