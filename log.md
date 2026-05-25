@@ -14,6 +14,47 @@
 
 ---
 
+## [2026-05-25] ingest | Bloomberg TV: Micron CEO Mehrotra 미국 캐파·LTA·"discipline" 발언
+
+Bloomberg TV 인터뷰 (Sanjay Mehrotra, Manassas VA 1α DRAM 양산 개시 행사, 2026-05-22 게시, 10:05). yt-dlp로 영문 자막 추출 → 시나리오 플래닝 관점에서 의미 있는 6대 포인트 추출.
+
+**핵심 발언 6선**:
+- 미국 DRAM 비중 **10% → ~40% (10년)**, 총 **$200B**, **90,000 신규 일자리**
+- Manassas DDR4/1α — 4배 확장, 자동차·항공우주·국방·산업·네트워킹 long life cycle
+- Boise Fab 1 첫 웨이퍼 **2027년 중반**, Fab 2 **2028년 말**, Syracuse 4팹 메가 클러스터
+- "Shortage continuing **well beyond 2026**", 현재 고객 수요의 **50%~2/3**만 충족, "Meaningful new supply doesn't really start ramping until **2028**"
+- "**With discipline**" 4회 반복 — Shell 선행 + 장비 단계화 본인 언어 명시
+- "**Long term supply agreements**" — 고객 predictability ↔ 생산자 confidence 양방향 take-or-pay
+
+**RS·시나리오 매핑**:
+- RS-1 (옵션형 캐파): **본인 언어로 확인** — 경쟁사 동시 채택 시 점유율 손실 우려(반박 5.3) 약화
+- RS-2 (바벨): Manassas long life cycle + Boise leading edge = RS-2 본인 사례. Samsung은 자동차·산업·국방용 long life cycle 진입 여지
+- RS-5 (재무 규율): "discipline" 동시 채택 환경에서 강도 **유지**, IR 정량 지표 공시 검토
+- RS-8 (구조화 매출 헷지): 단순 LTA 산업 표준화 — Samsung은 Participating Forward·HTA·Tiered Pricing 한 단계 더 진전 차별화
+- MB2 동서 균형: Micron 미국 40% 집중 ↔ Samsung 평택·시안·Taylor 동서 분산 차별점 강화
+- 시나리오 A (디커플링 지속): 미국 메모리 자급 비중 상승 → 확률 상향 압력
+- 시나리오 B (Main Bet): 부족 장기화·메모리 strategic asset 프레임 정합 강화
+- 시나리오 D (조용한 재편): CEO 부족 장기화 공식 인정 → 일부 D→B 이동 신호
+
+**영향받은 페이지** (1차 ingest):
+- 신규: `sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md` (전체 자막에서 발췌 + RS 매핑)
+- 갱신: `wiki/entities/micron.md` (Update 2026-05-22 섹션 추가)
+- 갱신: `wiki/strategies/invariant/rs1-options-based-capacity.md` (Update 2026-05-22)
+- 갱신: `wiki/strategies/invariant/rs2-barbell-portfolio.md` (Update 2026-05-22)
+- 갱신: `wiki/strategies/invariant/rs5-financial-discipline-reinvestment.md` (Update 2026-05-22)
+- 갱신: `wiki/strategies/invariant/rs8-structured-revenue-hedging.md` (Update 2026-05-22)
+- 갱신: `index.md` (sources/articles 카탈로그)
+
+**의도적 미반영** (변경 정합성 체인 §6에서 건너뛴 이유 명시):
+- `wiki/scenarios/*.md` 본문: 시나리오 확률·내러티브 변경 없음. micron.md Update 안의 매핑으로 충분 (CEO 발언이 확률 가중치를 결정적으로 흔드는 신호는 아님 — 추가 신호 누적 시 다음 lint에서 처리)
+- `outputs/report/scenario-planning-report.md`: 기존 Micron 언급 3건은 HBM4 점유율·SSD 레퍼런스 — Bloomberg 인터뷰는 신규 수치 변경 없음, RS·entities 갱신만으로 다음 보고서 재합성 시 자동 반영 예정
+- `dashboard/src/data/*.js`: 신규 수치 (40%/10%/200B/90K jobs) 모두 위키 entity에 흡수. dashboard의 SCENARIOS·DECISIONS·INITIAL_QUADRANT_POSITIONS·EWI에 해당하는 변동 없음 → dashboard 변경 없음 → version bump 건너뜀
+- `outputs/presentation/*`: 위 report 미변경에 연동, PPTX 재생성 불필요
+
+**출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) (Bloomberg TV https://youtu.be/Q_PSCMdINmg)
+
+---
+
 ## [2026-05-19] build | dashboard 버전 v2.7.3 → v2.7.4 + 변경 정합성 체인 보강
 
 이번 ingest → query → dashboard sync 사이클을 마무리하면서 누락됐던 dashboard 버전 bump 처리 + CLAUDE.md §6 체인에 version bump 단계 강제 추가.

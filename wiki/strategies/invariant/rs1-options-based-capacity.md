@@ -167,3 +167,23 @@ SemiAnalysis (2026-03-12) **DDR DRAM 마진이 HBM 계약 수준에 근접/초�
 - **장기계약(LTA) 없는 증설 금지**: 1년치 이상 take-or-pay 보장 없는 캐파는 옵션으로만 유지
 
 **출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)
+
+---
+
+## [Update 2026-05-22] Micron CEO 본인 언어로 옵션형 캐파 구조 확인
+
+Bloomberg TV 인터뷰 (2026-05-22, Manassas VA 1α DRAM 양산 개시 행사)에서 Sanjay Mehrotra CEO가 RS-1의 핵심 메커니즘을 **본인 언어로** 명시:
+
+> "It really takes several years just to build, construct the shell. **How we equip that shell really very much depends on our latest assessments of demand at a given time.**" *(4:46~4:59)*
+
+> "Our investments, of course, will always be managed **with discipline**." *(5:26)*
+
+> "Have it grow in a **disciplined manner** focusing on, of course, always demand and supply." *(8:42~8:55)*
+
+### 함의
+- RS-1의 L5(a)(b)(c)("Shell 선행 + 장비 반입 단계화 + 반입 연기 옵션") 메커니즘이 **업계 표준어**로 자리잡음 — 더 이상 Samsung 단독 가설이 아님.
+- 경쟁사 동시 채택 시 RS-1의 단점인 "옵션 프리미엄 비용으로 점유율 손실 우려"(반박 5.3)가 약화 — **누구도 호황기 무절제 증설을 하지 않으면 가격 천장은 더 오래 유지**.
+- "Meaningful new supply doesn't really start ramping until 2028" (CEO 발언) → Shell 선행·장비 단계화 구조에서 산업 전체 공급 ramp가 옵션 행사 시점에 묶이는 것 확인.
+- **실행 보강**: 분기 IR에서 "Convertible Capacity" 공시 시 "Micron CEO도 동일 원칙"을 외부 커뮤니케이션 근거로 활용 가능.
+
+**출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)

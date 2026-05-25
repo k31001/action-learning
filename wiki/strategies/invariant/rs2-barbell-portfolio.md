@@ -143,3 +143,21 @@
 - [Global DRAM Revenue Jumps 30.9% in 3Q25 — TrendForce](https://www.trendforce.com/presscenter/news/20251126-12802.html)
 - [2026 Market Outlook: SK hynix's HBM-led Memory Supercycle](https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/)
 - [GitHub Copilot productivity research — GitHub Blog](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/)
+
+---
+
+## [Update 2026-05-22] Micron 미국 캐파 = RS-2 바벨 구조 본인 사례
+
+Bloomberg TV 인터뷰 (2026-05-22)에서 Mehrotra CEO가 Micron 미국 캐파의 **이원 구조**를 명확히 분리:
+
+- **Manassas, VA**: 1α DRAM 기반 **DDR4** — "long life cycle technology nodes", 자동차·항공우주·국방·산업·네트워킹 ([micron.md Update 2026-05-22](../../entities/micron.md))
+- **Boise, ID + Syracuse, NY**: leading-edge DRAM — 스마트폰·PC·서버·HBM
+
+→ 정확히 RS-2의 "**숙성 시장 안정 베이스로드 + 첨단 고변동성 노출**" 바벨 구조와 동형. 메모리 1위 미국 제조사가 동일 구조를 공개 채택했다는 점에서 **RS-2의 산업 정합성 검증**.
+
+### Samsung 차별점 함의
+- Micron의 베이스로드는 **자동차·국방·산업** (long life cycle)
+- Samsung의 베이스로드는 현재 **하이엔드 스마트폰·서버 DRAM** 중심 — 자동차·국방·산업 비중 낮음 ([sd2-industrial-ai-memory.md](../core/current-state-sd2-industrial-ai-memory.md))
+- → Samsung도 RS-2 바벨의 한쪽 끝을 강화하려면 **자동차·산업·국방용 long life cycle DRAM** 진입 검토 필요. 단, Micron이 이미 미국 정부 산업정책과 결합 — Samsung은 글로벌(특히 유럽·일본 자동차) 차별점에서 진입 여지.
+
+**출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)

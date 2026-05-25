@@ -197,3 +197,27 @@ EBITDA 폭증 시점이 가까워질수록 자본 배분 규율의 시험대. RS
 - **자사주 매입 보류**: 2026~2027 EBITDA 폭증 분기에도 자사주 매입은 후순위, 현금 cushion 확보 우선.
 
 **출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)
+
+---
+
+## [Update 2026-05-22] Micron CEO "with discipline" 4회 직접 인용 — 경쟁사 동시 절제 신호
+
+Bloomberg TV 인터뷰 (2026-05-22)에서 Mehrotra CEO는 **"discipline"/"disciplined"을 4회 반복**하며 capex 절제를 공개 선언:
+
+> "Our investments, of course, will always be managed **with discipline**." *(5:26)*
+> "It's really important that we, of course, bring up this supply **with discipline**." *(5:39)*
+> "Have it grow in a **disciplined manner** focusing on, of course, always demand and supply." *(8:42)*
+
+동시에 "**Meaningful new supply in the industry doesn't really start ramping until 2028**" *(7:00)* 발언으로 산업 전체의 ramp 지연을 공식 인정.
+
+### 함의 — RS-5 강도 유지(추가 강화 아님)
+
+- 경쟁사도 동일 원칙 → Samsung 단독 절제로 점유율 잃는 시나리오 약화. **5.1 반박(옵션 프리미엄 누적 비용)이 동시 절제 환경에서 무력화**.
+- 단, "discipline"의 실질 검증은 capex 액수 — Micron $200B/10년 약정은 연 $20B 페이스. Samsung FY2026 메모리 capex와 비교 필요 ([sk-hynix.md](../../entities/sk-hynix.md) 참조).
+- Mehrotra의 "accelerating the timeline for our investments **as much as possible**" *(8:55)* 단서 — 호황 가속 옵션은 열어둠. Samsung도 동일하게 옵션 행사 조건 사전 정의 필요.
+
+### 추가 실행 항목 (위의 [2026-05-19] 강화 항목에 누적)
+- **분기 IR에 "discipline" 정량 지표 공시**: 호황기 capex/매출 비율 상한, 재고일수 상한을 사전 공시. Micron이 동일 언어 사용 중이므로 외부 IR 커뮤니케이션 부담 감소.
+- **벤치마크 갱신**: 사이클 절제 벤치마크에 Nucor·ExxonMobil에 더해 **Micron 2026 $200B/10년 공시 페이스**를 추가 — 동시대 메모리 경쟁사 사례.
+
+**출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)

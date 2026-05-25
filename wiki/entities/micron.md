@@ -293,3 +293,60 @@ Samsung 입장에서 (β)가 현실화되면 Rubin HBM4 점유 28→35% 진입 �
 자세한 분기 분석은 [scenario-B.md](../scenarios/scenario-B.md)의 [Update 2026-05-19] 섹션 참조.
 
 **출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)
+
+---
+
+## [Update 2026-05-22] Bloomberg TV — CEO Mehrotra 미국 캐파·LTA·"discipline" 직접 발언
+
+**1차 자료**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) (Bloomberg TV 인터뷰, Manassas VA 1α DRAM 양산 개시 행사)
+
+### 미국 DRAM 캐파 10% → ~40% (10년) — CEO 공식 수치
+
+- **현재 미국 DRAM 비중**: ~10% (전량 Manassas, VA 한 사이트)
+- **10년 후 목표**: ~40% — 총 $200B 투자, 90,000 신규 일자리
+- 사이트별 일정 (CEO 발언):
+
+| 사이트 | 제품·노드 | 일정 |
+|---|---|---|
+| Manassas, VA (당일 가동) | **DDR4 / 1α** — 자동차·항공우주·국방·산업·네트워킹 ("long life cycle nodes") | 즉시 생산, 사이트 캐파 **4배(quadruple)** 확장 |
+| Boise, ID Fab 1 (선단) | leading-edge DRAM (스마트폰·PC·서버) | **2027년 중반 첫 웨이퍼** |
+| Boise, ID Fab 2 | leading-edge | **2028년 말 첫 웨이퍼** |
+| Syracuse, NY 메가 클러스터 | 4개 팹 시간차 | 장기 — 구체 일정 미언급 |
+
+→ 기존 위키 표(NY 2029/2030·Idaho 우선 가속)와 정합. 차이점: **Idaho 첫 웨이퍼 시점이 "2027년 중반"으로 구체화**, NY 메가 클러스터는 "4개 팹" 규모 명시.
+
+### 부족 장기화 — CEO 공식 인정
+
+- "Shortage continuing **well beyond 2026** time frame"
+- "Today we meet only **50%~2/3** of key customer demand"
+- "Meaningful new supply in the industry **doesn't really start ramping until 2028**"
+
+→ 메모리 사이클 베이스라인 ([semiconductor-cycle.md](../concepts/semiconductor-cycle.md)) 및 [price-trends.md](../concepts/price-trends.md)와 정합. CEO 발언 자체가 **2026~2028 부족 컨센서스의 1차 자료**.
+
+### "Disciplined" 캐파 집행 — Micron도 RS-1 옵션형 캐파 구조
+
+- 인터뷰 중 "with discipline" / "disciplined manner" **4회 반복**
+- "**How we equip that shell really very much depends on our latest assessments of demand at a given time**" — Shell 선행 + 장비 단계화 명시 (Samsung RS-1과 동형)
+
+→ [rs1-options-based-capacity.md](../strategies/invariant/rs1-options-based-capacity.md), [rs5-financial-discipline-reinvestment.md](../strategies/invariant/rs5-financial-discipline-reinvestment.md) 강화 근거.
+
+### 장기 공급 계약(LTSA) — CEO 본인 언어
+
+> "Long term supply agreements with our customers to really ensure that they can have **predictability for supply**, and Micron can have the **confidence for the investments**."
+
+→ [rs8-structured-revenue-hedging.md](../strategies/invariant/rs8-structured-revenue-hedging.md) 양방향 take-or-pay 구조의 산업 표준화 신호. Samsung도 동일 구조 가속 명분.
+
+### 정부 산업정책 결합 — "유일한 미국 메모리 제조사"
+
+- Trump 행정부·Lutnick 상무·Greer 통상대표에게 명시적 감사
+- 정부 지분 참여 질문에는 **명확 답변 회피**, "기술 리더십 + 대규모 미국 제조" 프레임으로 전환
+- → [chips-act.md](../concepts/chips-act.md), 시나리오 A (디커플링 지속) 강화 신호
+
+### Samsung 함의 (요약)
+
+1. **MB2 동서 균형 공급자** 차별점 강화: Micron 미국 40% 집중 ↔ Samsung 평택·시안·Taylor의 **동서 분산**이 고객 BCP/공급망 다원화 선호와 정합. 일부 미국 고객은 Micron 우선이지만, 글로벌 하이퍼스케일러·중국 고객 BCP는 Samsung 차별점.
+2. **RS-1·RS-5 강도 유지**: 경쟁사도 "discipline" 명시 → 호황기 절제로 한쪽만 손해 보는 구조 아님. 동시 절제 시 가격 천장 ↑ 유지.
+3. **RS-8 LTA 가속 명분**: Micron이 LTA를 capex 정당화 근거로 공개 발언 → Samsung도 동일 구조 정량화·공시 검토.
+4. **DDR4/1α long life cycle 시장 진입 검토**: 자동차·국방·산업·항공우주 메모리는 Samsung 약점. 현재 Samsung은 leading-edge·HBM 비중이 압도적. 별도 검토 트랙으로 [strategies/core/current-state-sd2-industrial-ai-memory.md](../strategies/core/current-state-sd2-industrial-ai-memory.md)에서 다룰 후보.
+
+**출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)

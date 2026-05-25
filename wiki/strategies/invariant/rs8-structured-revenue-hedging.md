@@ -243,3 +243,19 @@
 
 *최종 업데이트: 2026-05-07*
 *핵심 메시지: 메모리는 농산물 같은 IT 부품이고, 농산물 100년 헷지 노하우 중 4가지(Participating Forward·HTA·Tiered Pricing·Trading Desk)를 압축 적용하면 매출 변동성을 절반 축소하고 사이클당 50~100% 매출 기회를 회수할 수 있다. 단순 LTA(RS-4) 위에 적층되는 가격 구조 혁신이며, 모방난이도 5년+ 차별화 가능.*
+
+---
+
+## [Update 2026-05-22] Micron CEO LTSA 본인 언어 — 산업 표준화 신호
+
+Bloomberg TV 인터뷰 (2026-05-22, Manassas VA)에서 Mehrotra CEO가 **장기 공급 계약(LTSA)의 양방향 가치**를 직접 인용:
+
+> "Micron is working hard with our customers, working also on the **long term supply agreements** with our customers to really ensure that they can have **predictability for supply**. And, of course, Micron can have the **confidence for the investments**, that we are really committing to here for the long haul." *(3:52~4:11)*
+
+### 함의
+- **단순 LTA가 산업 표준어**로 굳어지는 추세 — Micron CEO가 IR 행사에서 capex 정당화 근거로 공개 사용.
+- Samsung은 단순 LTA(RS-4 영역)에서 한 단계 더 나아간 **Participating Forward·HTA·Tiered Pricing** 구조로 차별화 가능 (RS-8 본 페이지의 §3 구조 4종).
+- "Predictability for supply ↔ confidence for investments"의 양방향 take-or-pay 프레임은 RS-8의 핵심 가설과 동형. **고객 측 BCP/공급망 관점에서 가격 프리미엄 수용 의지 확인**.
+- 실행: 분기 IR에서 "LTSA 비중", "Take-or-Pay 비중" 별도 공시 검토. Micron이 동일 언어 사용 중이므로 외부 커뮤니케이션 마찰 감소.
+
+**출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)
