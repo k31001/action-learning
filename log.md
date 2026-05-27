@@ -55,6 +55,53 @@ Bloomberg TV 인터뷰 (Sanjay Mehrotra, Manassas VA 1α DRAM 양산 개시 행�
 
 ---
 
+## [2026-05-19] ingest | 권석준 성균관대 교수 인터뷰 (SBS 교양이를 부탁해, 2026-04-11)
+
+YouTube 영상 ingest. 권석준 교수의 산업 인사이트는 위키 다수 페이지와 정합·충돌이 동시에 발생.
+
+**수집 자료**: [youtube-kwon-seokjun-2026-04-11.md](sources/articles/youtube-kwon-seokjun-2026-04-11.md) — 자동 한국어 자막 기반 정리, 20분 영상, 11개 챕터.
+
+**핵심 12 메시지**:
+1. 메모리 단가 3~4배 폭등 (2025 9~10월 대비), 공급자가 가격·물량 권한 ("을이 갑")
+2. **HBM:DRAM 가격 균형선 = 6:1** — 그 미만이면 DRAM이 이익률에서 HBM 추월 가능
+3. **삼성 로직다이 내재화 = 장기 차별점** — TSMC·Intel·Samsung 3사 중 메모리도 하는 유일 회사. HBM4E 이후 EUV 10nm 이하 필수
+4. **SK하이닉스 "TSMC 인질 잡힐 위기"** → Plan B 시급 (새 위험)
+5. 머스크 Terafab 회의적 (양산 인력 확보 어려움)
+6. AI DC에 HBM 외 DRAM 폭증 동시 필요
+7. **메모리 파운드리화** — 고객 설계 단계 참여 + 라인 분기 운영
+8. **CXMT 추격 = 한국 80년대 일본 추격 패턴의 중국판**. 권 추정: 2026 5% → 2027 7~8% → 2030년대 마이크론 수준 (위키 추정보다 보수적)
+9. **한국 세컨드 리그 부재** → CXMT가 그 빈자리 점령 (새 통찰)
+10. 팹 건설 5년 + 슈퍼사이클 5년 베팅 + 속도 조절
+11. 슈퍼사이클 끝 시점 누구도 모름
+12. 변화의 씨앗 알아보는 시야 + 따라잡을 체력 + 변신 능력 (시나리오 플래닝 정신)
+
+**갱신된 wiki 페이지 (10개)**:
+- entities: `samsung.md` (로직다이 차별점), `sk-hynix.md` (TSMC 인질 위기), `tsmc.md` (HBM 로직다이 파운드리 지위), `cxmt.md` (권 추정 시계열 병기 + 80년대 추격 패턴)
+- concepts: `price-trends.md` (HBM:DRAM 6:1), `hbm-roadmap.md` (로직다이 EUV 10nm), `hbm-market.md` (갑을 역전 + 파운드리화), `memory-market-overview.md` (5년 베팅), `emerging-tech.md` (메모리 파운드리화)
+- strategies: `current-state-mb4-custom-ai-memory.md` (라인 분기 전략 + KPI 보강)
+
+**SemiAnalysis와의 충돌 (위키에 양 관점 병기)**:
+- Samsung SF4 베이스다이: SemiAnalysis "고비용 노선" ⚠️ vs 권석준 "장기 차별점" ✅ — 단기 비용 vs 장기 구조의 trade-off, 분기점 모니터링
+- CXMT 시계열: 위키 2027E 15~17% (SemiAnalysis) vs 권석준 2027E 7~8% — 양 추정 병기, 2026 Q3~Q4 분기 출하량으로 판가름
+
+**dashboard 갱신**:
+- `COMPETITIVE_LANDSCAPE.samsung.strengthAreas`: "로직다이 내재화 — TSMC/Intel/Samsung 3사 중 메모리도 하는 유일" 추가
+- `COMPETITIVE_LANDSCAPE.skhynix.gapAreas`: "TSMC N12 로직다이 의존 — '인질 잡힐 위기' Plan B 시급" 추가
+- 신규 EWI `hbm_dram_price_ratio` — HBM:DRAM 단가 비율, 임계 6배(권 균형선), 6배 이하 시 RS2 "저원가 범용" 축 강화 신호
+
+**의도적 미반영**:
+- SK하이닉스 Plan B 구체화는 SK 내부 결정 영역 — Samsung 위키에선 위험 신호로만 기록
+- 머스크 Terafab 별도 entity 미생성 — 정보 부족·권 교수 회의적 평가. 향후 신규 자료 시점에 재검토
+- 보고서(`outputs/report/scenario-planning-report.md`) 직접 갱신 안 함 — 위키 합성 산출물이라 다음 보고서 빌드 사이클에서 자동 반영
+- `wiki/strategies/invariant/rs1-options-based-capacity.md`는 이미 [Update 2026-05-19] 섹션 있음 — 5년 베팅·속도 조절은 권 교수가 RS1 핵심을 외부 검증한 형태이므로 별도 append 없이 `memory-market-overview.md`로 cross-ref
+
+**검증**:
+- `cd dashboard && npm run build` ✓ (2.76s)
+- `python3 outputs/presentation/scripts/generate_pptx.py` ✗ `ModuleNotFoundError: No module named 'pptx'` — brew Python PEP 668 externally-managed로 변경되어 `pip install python-pptx` 차단. CLAUDE.md 의존성 설치 명령 갱신 필요(다음 사이클에서 venv 또는 pipx로 회수). 이번 사이클은 위키·dashboard 변경만 commit, PPTX 본체는 다음에 재생성.
+- version bump v2.7.4 → **v2.7.5**
+
+---
+
 ## [2026-05-19] build | dashboard 버전 v2.7.3 → v2.7.4 + 변경 정합성 체인 보강
 
 이번 ingest → query → dashboard sync 사이클을 마무리하면서 누락됐던 dashboard 버전 bump 처리 + CLAUDE.md §6 체인에 version bump 단계 강제 추가.

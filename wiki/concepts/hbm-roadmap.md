@@ -116,3 +116,36 @@
 **SemiAnalysis 평가**: Samsung HBM4가 13 Gb/s 핀 속도·전력 측면에서 경쟁사 대비 우수. 단 **SK Hynix는 안정성에서 여전히 우위**. Samsung SF4 베이스다이는 SK/Micron의 N12 대비 고비용 노선.
 
 **출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — 로직다이 EUV 10nm 이하 진입
+
+### 로직다이 = HBM의 관제 센터
+
+권 교수는 HBM의 **로직다이(Logic Die)** 를 "공항 관제탑"에 비유:
+- DRAM 셀에 저장된 데이터가 정확한 타이밍에 GPU 코어로 전달되도록 스케줄링
+- 사실상 로직 반도체
+
+### HBM4·HBM4E 세대 = EUV 10nm 이하 진입
+
+- HBM 세대 진화 + 성능 강화 → 훨씬 더 정밀한 스케줄링 필요
+- **HBM4·HBM4E 세대부터 10nm 이하급 EUV 공정 필수**
+- 이미 도달했다고도 볼 수 있음
+
+### 10nm 이하 로직 양산 가능 회사 (전 세계 3사)
+
+1. **TSMC** (SK Hynix·Micron HBM4 N12 베이스다이 외주)
+2. **Intel**
+3. **Samsung Foundry** (자체 SF4 베이스다이 — Samsung HBM4 ISSCC 2026 Paper 15.6)
+
+→ 그 중 메모리도 하는 회사는 **Samsung 단독** ([samsung.md](../entities/samsung.md) [Update 2026-05-19] 권석준 섹션)
+
+### 함의
+
+- 로직다이 → DRAM 다이 적층 → NVIDIA GPU 코어 패키징까지 수직 통합 가능 회사 = Samsung
+- HBM 세대 진화할수록 SK 대비 Samsung 차별점
+- SK Hynix는 TSMC 의존 = "인질 잡힐 위기" ([sk-hynix.md](../entities/sk-hynix.md) [Update 2026-05-19] 권석준 섹션)
+- SemiAnalysis 평가(SF4 고비용)와 충돌 — 단기 비용 vs 장기 구조의 trade-off
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

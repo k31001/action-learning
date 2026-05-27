@@ -146,3 +146,51 @@ SemiAnalysis 2건에서 발생한 두 상충 효과:
 - 시나리오 C·D 모두 위협 강화 ([scenario-C.md](../scenarios/scenario-C.md), [scenario-D.md](../scenarios/scenario-D.md) [Update 2026-05-19] 섹션)
 
 **출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md), [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — 한국 80년대 일본 추격 방식의 중국판
+
+### 추격 전략 패턴
+
+CXMT 전략은 **한국이 1980~90년대 일본 추격 시 사용한 방식의 중국판** (권석준):
+- 후행 세대 메모리 양산 (DDR4/DDR5 16~17nm)
+- 중국 내수 시장에서 현금 확보
+- 2~3년 걸리는 기술을 **1.5년에 단축**
+- 가속 + 캐파 확장 과정에서 엔지니어 숙련도·경험치 가속
+- 엔지니어들이 다음 세대 개발·증설에 재투입 → **선순환 사이클**
+
+역사적 비교: 한국이 일본의 64MB DRAM 양산기에 4MB·1MB로 시장 만들면서 인력 파이프라인 키운 패턴과 동일. 단 중국은 **훨씬 더 큰 규모·빠른 속도**.
+
+### CXMT 점유율 시계열 — 권석준 추정 vs 위키 추정 (충돌)
+
+| 시점 | 권석준 추정 (2026-04) | 위키 추정 (SemiAnalysis 후) |
+|---|---|---|
+| 2~3년 전 | < 1% | — |
+| Q3 2025 | (불명시) | 8% (TrendForce) |
+| 2026E | **5%** | (보간) ~10% |
+| 2027E | **7~8%** | **15~17%** (SemiAnalysis ingest 후 상향) |
+| 2030년대 | **마이크론 수준 (~25%)** | — |
+
+→ **권 교수가 단기(2026~2027) 점유율을 위키보다 낮게 추정** (5% vs 10%, 7~8% vs 15~17%). 단 장기(2030년대) "마이크론 수준" 도달 시나리오는 위키와 정합 또는 더 공격적.
+
+해석 가능성:
+- 권 교수: 캐파 확장은 빠르나 점유율 전환은 느림 (수율 안정화 시간 필요)
+- 위키 (SemiAnalysis 영향): HBM ×4 캐파 잠식으로 범용 공급 공백이 가속도로 흡수됨
+
+**양 추정 병기 + 분기점 모니터링**: 2026 Q3·Q4 CXMT 분기 출하량 ([dashboard EWI `cxmt_ddr5_shipment`](../../dashboard/src/data/indicators.js))을 통해 판가름.
+
+### 한국 세컨드 리그 부재 = CXMT 부상의 구조적 원인
+
+권 교수의 추가 통찰:
+- 삼성·SK를 받쳐줄 한국 중소 메모리 기업 부재 (자금력·인력·R&D 모두 어려움)
+- TSMC의 UMC·PSMC·Vanguard 같은 layered 구조 한국에 없음
+- 결과: 한국이 못 가져가는 중·후행 세대 물량을 CXMT가 흡수
+- 함의: CXMT 위협은 단순 "중국 정부 자본"만의 문제가 아니라 **한국 산업 구조의 구조적 공백**도 원인
+
+### Samsung 전략 시사점
+
+- 위키 기존 가정의 "세그먼트 분리 전략(범용 양보 + HBM 집중)"이 더 정당화됨 — 어차피 한국엔 양보 받을 세컨드 리그 없음
+- [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md): 중간 제품 축소 + HBM/커스텀 ↔ 저원가 범용 양극화 — 권 교수 분석과 정합
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

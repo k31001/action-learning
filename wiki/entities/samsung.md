@@ -139,3 +139,39 @@ UBS 28% vs SemiAnalysis "Micron out" 충돌. 세 분기:
 자세한 분기 분석은 [scenario-B.md](../scenarios/scenario-B.md)의 [Update 2026-05-19] 섹션 참조.
 
 **출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — 로직다이 내재화 = 장기 차별점
+
+권석준 성균관대 교수는 HBM4·HBM4E 세대 이후 **로직다이(Logic Die)** 가 메모리 3사 차별의 핵심 요인이 된다고 진단. 삼성 입장에서 결정적 구조 우위 주장.
+
+### 핵심 주장 — Samsung 단독 수직 통합
+
+**HBM 로직다이**는 DRAM 셀에 저장된 데이터를 GPU 코어로 정확한 타이밍에 스케줄링하는 로직 반도체 ("공항 관제탑" 비유). HBM4·HBM4E 세대부터 **10nm 이하급 EUV 공정 필수**.
+
+10nm 이하 로직 양산 가능 회사 (전 세계 3사):
+1. TSMC
+2. Intel
+3. **Samsung Foundry**
+
+→ 그 중 **메모리도 하는 회사는 Samsung 단독**
+
+결론: **로직다이 → DRAM 다이 적층 → NVIDIA GPU 코어 패키징**까지 수직 통합 가능한 유일 회사. HBM 세대 진화할수록 SK 대비 차별점.
+
+### SemiAnalysis 평가와의 충돌 (양 관점 병기)
+
+| 관점 | 평가 |
+|---|---|
+| SemiAnalysis (2026-04-15) | Samsung SF4 베이스다이는 **SK/Micron의 N12 대비 고비용 노선** ⚠️ |
+| 권석준 (2026-04-11) | 메모리 + 로직 + 패키징 수직 통합 = **장기 차별점** ✅ |
+
+→ 단기 비용 vs 장기 구조의 trade-off. 분기점: HBM4E·HBM5 세대에서 로직다이 정밀도가 성능에 미치는 영향. 모니터링 필요.
+
+### 함의
+
+- **MB-4 커스텀 AI 메모리**([current-state-mb4](../strategies/core/current-state-mb4-custom-ai-memory.md)): 로직다이 내재화로 NVIDIA·Tesla·하이퍼스케일러 맞춤형 HBM 설계 가능성 ↑
+- **Main Bet (시나리오 B)**: HBM4 인증 회복 + HBM4E 차별화 = 시나리오 B의 expected payoff 추가 ↑
+- **SD-1 HBM P&L 분리**([current-state-sd1](../strategies/core/current-state-sd1-hbm-pnl-spinoff.md)): 로직다이 내재화 가치를 외부에 공개해야 평가 가능
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

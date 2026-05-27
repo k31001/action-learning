@@ -67,7 +67,7 @@ export const COMPETITIVE_LANDSCAPE = {
       dramRank: '2위 (33년 만의 강등)',
       nandPosition: 'V8/V9 양산 중, V10 (430L BV) 2026 H2',
       usSubsidy: { value: '$4.745B', subtitle: '연방 + Texas $250M', rank: 3 },
-      strengthAreas: ['파운드리 통합', 'HBM4 캐파 Sold Out', '5거점 글로벌'],
+      strengthAreas: ['파운드리 통합', 'HBM4 캐파 Sold Out', '5거점 글로벌', '로직다이 내재화 — TSMC/Intel/Samsung 3사 중 메모리도 하는 유일 (권석준 2026-04)'],
       gapAreas: ['SLC AI SSD 로드맵 미공개', 'NAND DC 비중 비공개', '1c nm yield 추격'],
     },
     {
@@ -80,7 +80,7 @@ export const COMPETITIVE_LANDSCAPE = {
       nandPosition: '321L QLC NAND 양산 중',
       usSubsidy: { value: '$3.87B 협상중', subtitle: '인디애나 패키징 팹', rank: 5 },
       strengthAreas: ['HBM4 세계 최초 양산', 'NVIDIA 공동 개발 (Rubin)', 'HBM 캐파 3년치 초과'],
-      gapAreas: ['DRAM·NAND 외 다각화 부족', 'M15X 가동 지연 시 캐파 병목'],
+      gapAreas: ['DRAM·NAND 외 다각화 부족', 'M15X 가동 지연 시 캐파 병목', 'TSMC N12 로직다이 의존 — "인질 잡힐 위기" Plan B 시급 (권석준 2026-04)'],
     },
     {
       id: 'micron', name: 'Micron', flag: '🇺🇸', color: '#e85d26',

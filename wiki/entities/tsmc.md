@@ -73,3 +73,30 @@ TSMC는 노드 전환을 **"Nx → Nx+ → Nx++"** 점진 개선으로 잘게 �
 - [strategies/invariant/rs7-ai-engineering-automation.md](../strategies/invariant/rs7-ai-engineering-automation.md)
 - [strategies/invariant/rs6-process-leadership.md](../strategies/invariant/rs6-process-leadership.md) — 공정 리더십 회복
 - [strategies/core/current-state-sd1-hbm-pnl-spinoff.md](../strategies/core/current-state-sd1-hbm-pnl-spinoff.md)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — HBM 로직다이 파운드리 지위
+
+### 핵심 위상
+
+10nm 이하급 로직 양산 가능 회사 3사(TSMC·Intel·Samsung Foundry) 중 TSMC가 **HBM 로직다이 사실상 표준 공급사**:
+
+- SK Hynix HBM4 로직다이: N12 (TSMC) ([SemiAnalysis ISSCC 2026](../concepts/hbm-roadmap.md))
+- Micron HBM4 로직다이: N12 (TSMC)
+- 권석준 평가: SK하이닉스에 대해 **"TSMC에 인질 잡힐 위기"** — SK는 플랜 B 시급 ([sk-hynix.md](sk-hynix.md) [Update 2026-05-19] 권석준 섹션)
+
+### TSMC의 layered 파운드리 구조 = 한국 부재 모델
+
+권 교수가 강조한 대만 파운드리 산업 구조:
+- TSMC가 최선단(2nm) → 5/4/3nm 구형 공정은 UMC·PSMC·Vanguard(VIS) 같은 2~4등 업체로 전수
+- 세대가 겹치지 않게 분담 → TSMC는 가장 비싼 칩에 집중
+- 한국은 동급 구조 부재 (DB하이텍 규모·기술 격차 큼)
+- 결과: 한국이 가져가야 할 중·후행 세대 메모리 물량을 CXMT가 흡수 — Samsung·SK 위협의 구조적 원인 중 하나
+
+### Samsung 전략 시사점
+
+- Samsung Foundry는 TSMC와 함께 10nm 이하 양산 가능한 3사 중 1곳 + 메모리도 하는 유일 회사 = **수직 통합 잠재력** ([samsung.md](samsung.md) [Update 2026-05-19])
+- 단 SemiAnalysis 평가는 Samsung SF4 베이스다이가 TSMC N12 대비 고비용 노선 — Samsung Foundry의 수율·비용 경쟁력이 차별점 실현의 전제
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

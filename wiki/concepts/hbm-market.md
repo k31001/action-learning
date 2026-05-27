@@ -102,3 +102,35 @@ SemiAnalysis는 Micron이 자격 자체를 못 따고 사실상 배제된다고 
 - 함의: HBM 수요 증가가 일반 DRAM 캐파를 가속도로 잠식 → 범용 DRAM 가격 상승 압력 (price-trends.md, semiconductor-cycle.md 참조)
 
 **출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md), [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — 갑을 역전 + 메모리 파운드리화 등장
+
+### 시장 구조 전환
+
+권 교수 진단: **공급자 주도 시장으로 전환** (을이 갑)
+- 메모리 단가 3~4배 폭등 (2025 9~10월 vs 2026 Q1~Q2)
+- 공급자가 가격·물량 조절 권한 행사
+- 하이퍼스케일러 대응:
+  - 일런 머스크의 **Terafab 프로젝트** — 자체 반도체 양산 시도 (권 교수 평가: **회의적**, 양산 인력 확보가 핵심 장벽)
+  - 또는 가격 더 오르기 전 장기계약으로 물량 입도선매
+
+### 메모리 파운드리화 + 고객 맞춤형 메모리
+
+권 교수가 강조한 **새로운 비즈니스 모델**:
+- 고객사(NVIDIA·하이퍼스케일러·Tesla 등)가 **설계 단계부터 참여**하는 맞춤형 메모리
+- AI 맞춤형 HBM, LPDDR (에이전트 AI·피지컬 AI 영역)
+- **앱 신규 건설은 모험** → 기존 시설의 일부 라인을 분기시켜 맞춤형 라인으로 운영
+- 메모리 업체들이 잘 해보지 않은 영역 → 향후 몇 년 불확실성 + **극복하는 업체가 장기 생존**
+
+→ [MB-4 커스텀 AI 메모리](../strategies/core/current-state-mb4-custom-ai-memory.md)의 전략 정당화 + 라인 분기 운영 실행 방안 제공
+
+### HBM 한계 + DRAM 폭증의 동시 진행
+
+- AI DC에서 HBM **단독으로 데이터 저장 다 감당 못 함**
+- DRAM도 폭증 — AI DC 데이터 저장 수요 동시 증가
+- 그러나 메모리 업체들이 함부로 DRAM 캐파 확대 결정 어려움 (수요 사이클 끝 시점 불확실 + 장기계약 위약금 사례)
+- → **공급량·증설 속도 조절 권한**을 최대한 활용하는 게 핵심 전략
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

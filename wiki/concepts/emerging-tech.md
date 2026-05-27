@@ -183,3 +183,29 @@
 - 3D DRAM 상용화 후보 아키텍처 — 자세한 내용은 [dram-technology.md](dram-technology.md) 참조
 
 **출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — 메모리 파운드리화
+
+### 메모리 파운드리 비즈니스 모델 등장
+
+권 교수가 강조한 **새 메모리 비즈니스 모델**:
+- 고객사(NVIDIA·하이퍼스케일러·Tesla 등)가 **설계 단계부터 참여**하는 맞춤형 메모리
+- 일종의 **메모리 파운드리화** — 기존 catalog 양산에서 고객 맞춤형으로 전환
+- 대상 제품군:
+  - **AI 맞춤형 HBM** — 에이전트 AI·피지컬 AI에 특화
+  - **AI 맞춤형 LPDDR** — 전성비 높은 범용 DRAM 변종
+
+### 실행 방식 = 라인 분기 운영
+
+- 신규 팹 건설은 모험 → 기존 시설의 **일부 라인을 분기**시켜 맞춤형 라인으로 운영
+- 메모리 업체들이 잘 해보지 않은 영역 → 향후 몇 년 불확실성
+- 극복하는 업체가 장기 생존
+
+### Samsung 전략 시사점
+
+- [MB-4 커스텀 AI 메모리](../strategies/core/current-state-mb4-custom-ai-memory.md): 전략 자체의 정당화 + 실행 방안 (라인 분기) 명확화
+- Samsung은 [로직다이 내재화 차별점](../entities/samsung.md)([Update 2026-05-19] 권석준 섹션)으로 메모리 파운드리화 경쟁에서 우위 잠재력
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

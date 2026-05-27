@@ -96,3 +96,33 @@
 - Samsung 입장에서 [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md)의 "저원가 범용" 축이 예상보다 빨리 수익 회복 → 호황기 절제 정책(RS1·RS5) 재검토 필요
 
 **출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — HBM:DRAM 가격 균형선 6:1 + 갑을 역전
+
+### 핵심 정량 (권석준)
+
+- **HBM:DRAM 가격 비율 균형선 = 6:1** (단위 GB 기준)
+- HBM은 일반적으로 DRAM 대비 6배 이상의 가격을 받아야 만드는 게 유리
+- 그 미만이면 시간·공정 난도가 높은 HBM보다 DRAM이 나음
+- **현재 상황 (2026 Q1~Q2)**: DRAM 가격이 공급 쇼티지로 가파르게 상승 → 일부 기관 분석에서 **총매출 대비 이익률은 DRAM이 HBM을 앞설 수도 있다**
+
+이 정량 비율은 [Update 2026-05-19] SemiAnalysis 섹션의 "DDR DRAM 마진이 HBM 계약 수준에 근접/초과" 신호를 **정량적으로 뒷받침**.
+
+### 단가 폭등 폭
+
+권 교수 증언: 2025년 9~10월 대비 **메모리 단가 3~4배 폭등**. 일부 제품은 "부르는 게 값" 수준.
+
+### 갑을 역전 — 공급자 가격 결정권
+
+> "메모리를 공급하는 업체들이 시장을 주도할 수 있는 상황. 이러한 타이밍은 자주 오지 않는다. 이런 타이밍에 가격 스트레스 테스트를 이어갈 수 있는 권한이 **공급자에게 있다**."
+
+### Samsung 전략 시사점 (보강)
+
+위키 기존 [Update 2026-05-19] 시사점에 추가:
+
+- **메모리 캐파 분배 결정의 격렬한 수익기 싸움**: HBM vs 범용 DRAM 비중 결정이 **이번 슈퍼사이클의 핵심 의사결정**
+- 권 교수 관점에서 [RS1 옵션형 캐파](../strategies/invariant/rs1-options-based-capacity.md)의 "라인별 mix 전환권"은 단순 옵션이 아니라 **수익 극대화 자체의 핵심 도구**
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

@@ -63,3 +63,38 @@
 - [Memory Industry to Maintain Cautious CapEx in 2026 (TrendForce)](https://www.trendforce.com/presscenter/news/20251113-12780.html)
 - [IDC Semiconductor Market Forecast 2026](https://www.idc.com/resource-center/blog/semiconductor-market-to-surge-past-the-trillion-dollar-threshold-ai-infrastructure-drives-market-growth/)
 - [Semiconductor Memory Market Size & Share Report 2030 (Grand View Research)](https://www.grandviewresearch.com/industry-analysis/the-global-semiconductor-memory)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — 팹 5년 베팅 + 속도 조절
+
+### 슈퍼사이클 끝 시점 불확실성
+
+- 시장 합의: 2027~2028~2029까지 갈 거라는 전망 多
+- 권 교수 견해: **누구도 장담 어려움**. "내년 말까지다" "후년 초까지다" 얘기조차 조심스러움
+- 역사적 패턴: 메모리 사이클은 항상 예측 못한 시점에 바뀌어 왔음
+
+### 팹 건설 = 5년 베팅
+
+- 팹 짓고 양산 테스트 + 칩 테이프아웃까지: **짧게 3년, 길게 5년+**
+- 단계: 터잡기 → 공사 → 공조 시설 → 설비 배치 → 양산 테스트 → 칩 테이프아웃
+- 지금 팹 짓는다 = **5년 후에도 슈퍼사이클 갈 거라는 베팅**
+
+### 속도 조절 전략
+
+- 뒤처지면 빨리 (가속)
+- 너무 앞서가면 일부러 느리게 (감속)
+- **삼성 평택이 가장 극명한 사례**: 슈퍼사이클 전 둔화 가정으로 속도 조절 → 슈퍼사이클 도래 → 노동자 대량 투입으로 가속
+
+### 함의 — Robust 전략 정합
+
+- [RS1 옵션형 캐파](../strategies/invariant/rs1-options-based-capacity.md): "켜고 끌 수 있는 능력" = 권 교수의 "속도 조절 권한". 정합
+- [RS5 재무 규율](../strategies/invariant/rs5-financial-discipline-reinvestment.md): 5년 베팅의 불확실성 = 재무 cushion 확보 명분
+
+### 변화 예측 불가능성 — 권 교수의 권고
+
+> "변화는 반드시 생깁니다. 예측 불가능한 영역으로 갑자기 튀어가는 것도 항상 나올 수 있죠. **변화의 씨앗을 알아보는 시야**, 변화가 멀리 가기 전에 **따라잡을 체력**, 적응할 **변신 능력**을 가지고 있어야 됩니다."
+
+→ 시나리오 플래닝 방법론의 본질과 정합. 본 위키의 5개 시나리오(A·B·C·D·E)와 EWI 모니터링 체계가 권 교수가 권고한 "변신 능력"의 구현체.
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

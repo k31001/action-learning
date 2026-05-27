@@ -277,3 +277,34 @@ HBM은 그 자체가 어드밴스드 패키징 기술(TSV + 열압착 본딩, TC
 - 자세한 공급 분석 충돌은 [hbm-market.md](../concepts/hbm-market.md) 참조
 
 **출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md), [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — TSMC 인질 위기 + 플랜 B 시급
+
+### 핵심 위험
+
+SK하이닉스는 HBM4 로직다이를 TSMC N12 공정에 외주. 권석준 교수 평가:
+
+> **"TSMC에 인질 잡힐 위기"** — SK하이닉스는 플랜 B를 서둘러야 한다.
+
+### 함의
+
+- HBM4E·HBM5 세대 진입 시 로직다이가 10nm 이하 EUV 필수 — TSMC 의존도 ↑
+- Samsung은 자체 SF4(2026 H1) → 자체 EUV 공정 보유로 수직 통합 ([samsung.md](samsung.md) [Update 2026-05-19] 권석준 섹션 참조)
+- SK 입장 플랜 B 후보 (권 교수 미명시, 추정):
+  - 자체 파운드리 진출 (자금·시간·기술 모두 어려움)
+  - Intel Foundry 활용 (CHIPS Act + 미국 거점)
+  - 일본 Rapidus 협력 (2nm 양산 진입 시점 불확실)
+  - 또는 TSMC 의존을 받아들이되 co-design 락인 심화
+
+### 단서
+
+권 교수는 "하이닉스가 답이 없느냐? **활용될 가능성이 있다**"고 여지 남김. 즉 인질 위기는 위험 신호일 뿐, 결정적 약점은 아님. 다만 **NVIDIA co-design 파트너십 + HBM4 안정성 우위** ([SemiAnalysis ISSCC 2026 섹션 참조](../concepts/hbm-roadmap.md))를 활용해 TSMC와의 협상력을 유지하는 게 핵심.
+
+### 모니터링 분기점
+
+- SK하이닉스의 자체 파운드리 또는 Intel Foundry 협력 발표 (2026~2027)
+- HBM4E 세대 로직다이 공급사 변경 신호
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

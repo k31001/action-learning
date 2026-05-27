@@ -89,3 +89,35 @@
 - [Samsung seeks post-HBM lead as CXL race heats up — KED Global](https://www.kedglobal.com/deep-insights/newsView/ked202604270010)
 - [CXL vs. HBM: Why Samsung, SK Hynix, and Micron are Racing — TradingKey](https://www.tradingkey.com/analysis/stocks/us-stocks/261834990-samsung-sk-hynix-micron-hbm-cxl-pangea-v2-ai-data-center-tradingkey)
 - 내부: [data/market/hbm-market.md](../../data/market/hbm-market.md), [data/market/2026-q1-current-state.md](../../data/market/2026-q1-current-state.md), [data/technology/nvidia-cmx-scada.md](../../data/technology/nvidia-cmx-scada.md), [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md)
+
+---
+
+## [Update 2026-05-19] 권석준 인터뷰 (SBS, 2026-04-11) — 메모리 파운드리 모델 + 라인 분기 전략
+
+권석준 교수가 제시한 **메모리 파운드리화** 비즈니스 모델은 MB-4 커스텀 AI 메모리 전략의 정확한 외부 검증.
+
+### 새 비즈니스 모델 요약
+
+- 고객사(NVIDIA·하이퍼스케일러·Tesla·OpenAI 등)가 **설계 단계부터 참여**하는 맞춤형 메모리
+- **AI 맞춤형 HBM, LPDDR** — 에이전트 AI·피지컬 AI 등 영역 특화
+- "지금까지 메모리 업체들이 잘 해보지 않은 비즈니스" → 향후 몇 년 불확실성 + **극복하는 업체가 장기 생존**
+
+### 실행 방식 = 라인 분기 (Lines split)
+
+- **신규 팹 건설은 모험**
+- 대신 기존 시설의 **일부 라인을 분기**시켜 맞춤형 라인으로 운영
+- 어떤 비율로 라인을 분기할지가 핵심 의사결정
+
+### Samsung 입장 우위
+
+- 권 교수: Samsung은 메모리 + Foundry 수직 통합 가능한 유일 회사 → 메모리 파운드리화 경쟁에서 **구조적 우위**
+- 로직다이 내재화로 NVIDIA·Tesla 같은 고객의 커스텀 HBM 설계 요구 직접 수용 가능
+- SK 하이닉스는 TSMC 의존으로 인해 동일 모델 실행 시 협상력 제약
+
+### KPI 보강 제안
+
+- **라인 분기 비율**: 전체 메모리 캐파 중 맞춤형 라인 비중 (목표: 2027E 15%+, 2030E 30%+)
+- **고객별 NRE(Non-Recurring Engineering) 수익**: 설계 단계 참여 고객 수 × 단가
+- **분기 라인 yield**: 맞춤형 양산 수율이 catalog 대비 격차 (15% 이내 목표)
+
+**출처**: [youtube-kwon-seokjun-2026-04-11.md](../../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)

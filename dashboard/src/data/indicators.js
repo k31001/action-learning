@@ -276,6 +276,28 @@ export const INITIAL_INDICATORS = [
     inputType: 'select',
     hint: 'CXMT 허페이 Fab 3 진척 단계 선택',
   },
+  // ── 신규 (2026-05-19 권석준 인터뷰 SBS, HBM:DRAM 가격 균형선 6:1 진단 기반) ──
+  {
+    id: 'hbm_dram_price_ratio',
+    name: 'HBM:DRAM 단위 GB 가격 비율',
+    category: 'quarterly',
+    source: 'TrendForce / DRAMeXchange',
+    unit: '배',
+    unitLabel: '배 (HBM 단가 / DRAM 단가, 단위 GB 기준)',
+    currentValue: null,
+    alertThreshold: 6,
+    alertCondition: 'lte',
+    alertDescription: '비율 6배 이하로 떨어지면 HBM이 DRAM 대비 수익기적 메리트 상실 — 캐파를 범용 DRAM 쪽으로 재분배 신호 (권석준 균형선)',
+    scenarioSignals: ['B', 'D'],
+    scenarioText: 'B·D 신호 — HBM 우위 약화 시 RS2 바벨 "저원가 범용" 축으로 무게 이동',
+    warningThreshold: 7,
+    status: 'unknown',
+    lastUpdated: null,
+    history: [],
+    note: '권석준 교수(SBS 2026-04): HBM:DRAM 균형선 6:1. 그 미만이면 DRAM이 이익률에서 HBM 추월 가능. SemiAnalysis "DDR 마진 ~ HBM 계약 수준" 신호의 정량 보조 지표.',
+    inputType: 'number',
+    hint: 'HBM 평균 단가 / DRAM 평균 단가 (단위 GB 기준 배수)',
+  },
 
   // ────────────────────────────────────────────
   // 연간 검토
@@ -1255,3 +1277,4 @@ export const INITIAL_TRIGGERS = [
     df2Delta: 0,
   },
 ]
+
