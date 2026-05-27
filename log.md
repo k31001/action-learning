@@ -55,6 +55,46 @@ Bloomberg TV 인터뷰 (Sanjay Mehrotra, Manassas VA 1α DRAM 양산 개시 행�
 
 ---
 
+## [2026-05-19] build | 4개 후속 작업 (venv 정비 + EWI 신설 + D13·D14 + v2.7.7)
+
+이전 ingest 사이클에서 식별된 4개 후속 작업을 일괄 처리.
+
+**(1) PPTX venv 정비** ✓
+- `python3 -m venv .venv` + `pip install python-pptx matplotlib numpy`
+- brew Python PEP 668 차단 우회 — 전용 가상환경에 의존성 격리
+- `.gitignore`에 `.venv/`, `__pycache__/` 추가
+- CLAUDE.md §5 빌드 명령 갱신: `python3 outputs/presentation/scripts/generate_pptx.py` → `.venv/bin/python outputs/presentation/scripts/generate_pptx.py`
+- 초기 셋업 명령 명시 + PEP 668 우회 사유 주석 추가
+- PPTX 재생성 ✓ (540.6 KB, 29매, venv 경유)
+
+**(2) 애플 온디바이스 AI EWI 모니터링** ✓
+- `apple_ondevice_ai_status` currentValue **'unannounced' 유지** — Apple Intelligence(2024 WWDC) 자체 발표는 별개이고, 권 교수가 우려한 **신규 메모리 폼팩터·LPDDR6/특수 규격 공식 채택**은 미발표 상태로 EWI 의미 정의가 분리됨
+- history에 의미 명확화 항목 추가 + options·hint 텍스트 정밀화
+- WebFetch는 검색 페이지 robots 차단으로 직접 시점 갱신 불가 — 다음 이벤트(Apple WWDC, 신규 iPhone 발표) 시점에 currentValue 재평가
+
+**(3) HBM 6세대 양산 진척 EWI 신설** ✓
+- 신규 EWI `hbm6_mass_production_status` — 4단계 select (계획/시제품/리스크 양산/대량 양산)
+- 권석준 동아일보 2026-05-12 진단 "빠르면 2026 하반기 HBM 6세대 양산 시작" 반영
+- scenarioSignals: A·B (Main Bet Scenario B의 기술 토대 검증 신호)
+- 리스크 양산 진입 시 권 교수 전망 검증 + MB-2 동서 균형 공급자 가속 명분
+
+**(4) SE-1·SE-2 결정 신설 (D13·D14)** ✓
+- **D13 SE-1 3D DRAM 가속**: IMEC 협약 $200M → $300M+ 상향, R&D 200~300인 → 300~500인 확대, 4F² COP DRAM 양산 일정 2030 → 2028 H2 risk production 목표
+- **D14 SE-2 CXL 표준 주도권 4단계 로드맵**: 2026 Q4 SIG 의장단 진입 → 2027 H1 CXL 3.0 표준 작성 주도 → 2027 H2 NVIDIA 인증 → 2028+ CXL Memory Pooling 시장 점유 30%+
+- 두 결정 모두 cluster D-240 (2026 Q4 결정), priority high, isNew flag
+- 권 교수 진단 "2030년대 후반 게임 체인저 = 3D DRAM + CXL"의 실행 결정 명문화
+
+**Dashboard 갱신 요약**:
+- `indicators.js`: EWI 1종 신설 (`hbm6_mass_production_status`) + `apple_ondevice_ai_status` history 보강
+- `strategies.js`: DECISIONS 신규 2종 (D13·D14)
+- `version.js`: v2.7.6 → **v2.7.7** (패치 — EWI 1종 + DECISIONS 2종, 페이지 구조 변경 없음)
+
+**검증**:
+- `cd dashboard && npm run build` ✓ (3.12s)
+- `.venv/bin/python outputs/presentation/scripts/generate_pptx.py` ✓ (540.6 KB, 29매)
+
+---
+
 ## [2026-05-19] ingest | 권석준 교수 추가 영상 3건 → 전략 개선 (MB-4 / SE-1 / SE-2 / RS2 강화)
 
 권석준 교수의 다른 영상 3건을 ingest하고 핵심 인사이트를 위키 12개 페이지에 반영. 단순 사실 갱신을 넘어 **전략 페이지 4개를 명시적으로 강화** (MB-4·SE-1·SE-2·RS2).

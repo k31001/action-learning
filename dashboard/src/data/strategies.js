@@ -417,6 +417,20 @@ export const DECISIONS = [
     relatedRS: ['RS-8'], priority: 'high',
     isNew: true,
   },
+  {
+    id: 'D13', title: 'SE-1 3D DRAM 가속 — IMEC 협약 $300M+ 상향 + R&D 조직 확대 (NEW)', cluster: 'D-240', deadline: '2026-Q4',
+    summary: '권석준 교수(동아일보 2026-05) "2030년대 후반 게임 체인저 = 3D DRAM + CXL" 진단 반영. (1) IMEC 협약 $200M → $300M+ 상향, (2) 3D DRAM R&D 전담 조직 200~300인 → 300~500인 확대, (3) SemiAnalysis ISSCC 2026 Samsung 4F² COP DRAM 후속 아키텍처 양산 일정 앞당김 (2030 → 2028 H2 risk production 목표).',
+    contingency: 'IMEC 협상 결렬 시 미국·일본 대학·연구소(Stanford·東京大·東北大)와 별도 컨소시엄. 4F² COP 양산 일정 지연 시 외부 IP(SanDisk/Kioxia CBA 등) 라이선스 검토.',
+    relatedRS: ['SE-1'], priority: 'high',
+    isNew: true,
+  },
+  {
+    id: 'D14', title: 'SE-2 CXL 표준 주도권 4단계 로드맵 (NEW)', cluster: 'D-240', deadline: '2026-Q4',
+    summary: '권석준 교수가 명시한 "CXL = 메모리 부도심·삼성 차별점" 진단 반영. 단순 SIG 멤버 → 표준 주도자로 전환: (1) 2026 Q4 SIG 의장단 진입, (2) 2027 H1 CXL 3.0 차세대 표준 작성 주도, (3) 2027 H2 CXL Memory Expander NVIDIA·하이퍼스케일러 인증 획득, (4) 2028+ CXL Memory Pooling 시장 점유 30%+. MB-4 5종 메모리 통합 솔루션의 핵심 부품으로 위치.',
+    contingency: 'SIG 의장단 진입 지연 시 단독 표준(Samsung CXL+) 발표 후 NVIDIA·CSP 협력. 표준 분파(fragmentation) 위험을 통제하기 위해 SK 하이닉스·Micron과 한국·미국 동맹 표준 협력 검토.',
+    relatedRS: ['SE-2'], priority: 'high',
+    isNew: true,
+  },
 
   // D-330 (가장 후순위)
   {

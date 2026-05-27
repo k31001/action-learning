@@ -295,15 +295,45 @@ export const INITIAL_INDICATORS = [
     lastUpdated: '2026-05-19',
     history: [
       { date: '2026-05-19', value: 'unannounced', note: '권석준 교수(SBS 2026-05): 애플 진입 시 거대 폭풍. 일본 폼팩터 실패 교훈으로 한국이 놓치면 동일 위험.' },
+      { date: '2026-05-19', value: 'unannounced', note: '의미 명확화: Apple Intelligence(2024 WWDC)는 발표됐으나 권석준이 우려한 신규 메모리 폼팩터·LPDDR6/특수 규격 공식 채택은 미발표 상태. EWI는 신규 규격 진척만 추적.' },
     ],
     options: [
-      { value: 'unannounced', label: '미발표', status: 'normal', signal: '기존 가정 유지' },
-      { value: 'announced', label: '공식 발표', status: 'warning', signal: '폼팩터 전환 신호 — 1~2년 내 표준 결정' },
+      { value: 'unannounced', label: '미발표', status: 'normal', signal: '기존 가정 유지 (Apple Intelligence 자체 발표는 별개)' },
+      { value: 'announced', label: '신규 규격 공식 발표', status: 'warning', signal: '폼팩터 전환 신호 — 1~2년 내 표준 결정' },
       { value: 'prototype', label: '시제품 공개', status: 'critical', signal: 'Samsung LPDDR·UFS 폼팩터 선점 필요' },
       { value: 'mass_adoption', label: '양산 채택', status: 'critical', signal: '스마트폰 메모리 시장 재편 — 시나리오 매트릭스 재평가' },
     ],
     inputType: 'select',
-    hint: '애플 온디바이스 AI 메모리 채택 단계 선택',
+    hint: '애플 온디바이스 AI용 신규 메모리 규격·폼팩터 채택 단계 선택 (Apple Intelligence 발표 자체는 별개)',
+  },
+  // ── 신규 (2026-05-19 권석준 인터뷰 동아일보, HBM 6세대 양산 추적) ──
+  {
+    id: 'hbm6_mass_production_status',
+    name: 'HBM 6세대 양산 진척 (HBM4E 이후)',
+    category: 'quarterly',
+    source: 'TrendForce / SK Hynix·Samsung IR',
+    unit: '단계',
+    unitLabel: '단계 (계획 / 시제품 / 리스크 양산 / 대량 양산)',
+    currentValue: 'planned',
+    alertThreshold: null,
+    alertCondition: 'manual',
+    alertDescription: '리스크 양산 또는 대량 양산 진입 시 Main Bet(시나리오 B) 기술 토대 확정 — HBM4E 이후 권 교수가 본 "4~5년 로드맵 안정" 검증',
+    scenarioSignals: ['A', 'B'],
+    scenarioText: 'A·B 신호 — HBM 로드맵 안정 = Main Bet 가정 검증, MB-2 동서 균형 공급자 가속 명분',
+    warningThreshold: null,
+    status: 'normal',
+    lastUpdated: '2026-05-19',
+    history: [
+      { date: '2026-05-19', value: 'planned', note: '권석준(동아 2026-05): "빠르면 2026 하반기 HBM 6세대 양산 시작. HBM 로드맵 4~5년 안정." 현 시점은 계획·R&D 단계.' },
+    ],
+    options: [
+      { value: 'planned', label: '계획 단계', status: 'normal', signal: '기존 로드맵 진행 중' },
+      { value: 'sample', label: '시제품 공급', status: 'normal', signal: 'NVIDIA·하이퍼스케일러 인증 시작' },
+      { value: 'risk_production', label: '리스크 양산', status: 'warning', signal: '2026 H2 권석준 전망 검증 단계 — Main Bet 토대 안정' },
+      { value: 'mass_production', label: '대량 양산', status: 'normal', signal: 'HBM 슈퍼사이클 1단계 확정 — HBM5/7 차세대 로드맵 점검 시점' },
+    ],
+    inputType: 'select',
+    hint: 'HBM 6세대 양산 진척 단계 선택 (HBM4E 이후 세대)',
   },
   // ── 신규 (2026-05-19 권석준 인터뷰 SBS, HBM:DRAM 가격 균형선 6:1 진단 기반) ──
   {

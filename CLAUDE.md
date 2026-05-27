@@ -131,8 +131,9 @@ lint 결과는 `log.md`에 항목으로 남기고, 즉시 고칠 수 있는 건 
 | `outputs/presentation/slide-outline.md` | `outputs/presentation/scripts/generate_pptx.py` (구조 변경 시) |
 
 ### 빌드 명령
-- PPTX 재생성: `python3 outputs/presentation/scripts/generate_pptx.py`
-  - 의존성: `python3 -m pip install python-pptx matplotlib numpy`
+- PPTX 재생성: `.venv/bin/python outputs/presentation/scripts/generate_pptx.py`
+  - 초기 셋업: `python3 -m venv .venv && .venv/bin/pip install python-pptx matplotlib numpy` (`.venv/`는 `.gitignore`로 제외)
+  - 시스템 brew Python은 PEP 668(externally-managed)로 `pip install` 차단되므로 반드시 venv 사용
 - 대시보드 검증: `cd dashboard && npm run build` → `dist/` 생성, 콘솔 오류 없음
 - PPTX 본체는 `.gitignore`로 미커밋. 재현성은 `outputs/presentation/template.pptx` + `slide-outline.md` + `scripts/` + `assets/*.png`에 의존
 

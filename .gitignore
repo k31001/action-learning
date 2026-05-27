@@ -7,3 +7,5 @@ node_modules/
 !working-style/seminar-claude-code-report/seminar-claude-code*.pptx
 !slides/seminar/*.pptx
 .claude/worktrees/
+.venv/
+__pycache__/
