@@ -149,3 +149,27 @@
 - [Futurum — Micron Q4 FY2025 (DC 56%)](https://futurumgroup.com/insights/micron-q4-fy-2025-earnings-top-estimates-on-dram-and-hbm-strength/)
 - [Blocks & Files — NVIDIA SCADA](https://blocksandfiles.com/2025/11/25/scada-nvidia/)
 - 내부 연계: [data/technology/nvidia-cmx-scada.md](../technology/nvidia-cmx-scada.md), [data/technology/nand-process-transition.md](../technology/nand-process-transition.md)
+
+---
+
+## [Update 2026-05-19 II] 권석준 — 애플 온디바이스 AI 진입 시 거대 폭풍 + 일본 폼팩터 실패 교훈
+
+### 애플 온디바이스 AI 시장 진입
+
+권석준 진단:
+- 애플이 **에너지 효율 무기로 온디바이스 AI 시장 본격 등판** 가능성
+- 스마트폰 폼팩터에 최적화된 **새 메모리 규격 등장** 가능
+- 기존 LPDDR·UFS 시장 압도하는 대격변
+
+### 일본 폼팩터 실패 교훈
+
+- 권석준: "일본 반도체가 망한 이유 중 하나 = **폼팩터 전환기를 놓침**"
+- 한국도 동일 위험 — 슈퍼사이클 정점에 LPDDR·UFS 새 폼팩터 전환을 놓치면 동일 결과
+
+### 함의 — 삼성의 약점·강점
+
+- **약점**: SLC AI SSD 로드맵 미공개 (NVIDIA Storage-Next 전략 파트너 SK·Kioxia·Micron 선점)
+- **잠재 강점**: 갤럭시·노트북 LPDDR·UFS에서 삼성이 최대 점유 → 애플 온디바이스 AI 진입 시 폼팩터 표준 주도 가능
+- **위험 신호 모니터링**: 애플 온디바이스 AI 발표 시점·메모리 규격 — 신규 EWI 후보
+
+**출처**: [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)

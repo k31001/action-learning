@@ -110,3 +110,52 @@
 - [Marvell next-gen CXL Switch](https://www.marvell.com/company/newsroom/marvell-next-gen-cxl-switch-memory-pooling-breaks-ai-memory-wall.html)
 - [Beyond HBM — TrendForce 2026-03](https://www.trendforce.com/news/2026/03/10/news-beyond-hbm-samsung-sk-hynix-reportedly-explore-next-gen-ai-memory-that-could-challenge-nvidia/)
 - 내부: [data/technology/emerging-tech.md](../../data/technology/emerging-tech.md), [analysis/scenarios/scenario-E.md](../../analysis/scenarios/scenario-E.md)
+
+---
+
+## [Update 2026-05-19 II] 권석준 — SE-2의 진짜 가치: CXL "메모리 부도심" 표준 주도권
+
+### 권석준 비유 — CXL = 메모리 부도심
+
+> "CXL은 메모리와 메모리 기기를 잇는 부도심 같은 개념. 메모리를 **버추얼리 확장**하는 그런 느낌."
+
+- 클러스터와 클러스터, 랙과 랙을 이어 **하나의 거대 컴퓨팅 인프라**로 통합
+- HBM-to-HBM, GDDR-to-GDDR 빠른 통신 가능
+- 메모리 풀링·확장의 기반 기술
+
+### 권석준 명시 — 삼성 차별점 = CXL
+
+> "SK는 HBM (고대역폭). **Samsung은 HBM + CXL** (클러스터/랙 연결) — 인프라 통합."
+
+→ SE-2의 외부 권위자 직접 검증.
+
+### 전략 강화 — 단순 SIG 참여를 넘어 표준 주도권
+
+이전 SE-2 정의: "CXL Consortium SIG 리더십 회복"
+
+**강화된 SE-2 (2026-05-19 II)**: **CXL 표준 주도권 확보**
+
+| 단계 | 목표 |
+|---|---|
+| 현재 | SIG 멤버 |
+| 2026 Q4 | SIG 의장단 진입 |
+| 2027 H1 | CXL 3.0 차세대 표준 작성 주도 |
+| 2027 H2 | 삼성 CXL 제품(CXL Memory Expander) NVIDIA·하이퍼스케일러 인증 |
+| 2028+ | CXL Memory Pooling 솔루션 시장 점유 30%+ |
+
+### 2030년대 후반 게임 체인저
+
+권석준: **2030년 후반 게임 체인저 = 3D DRAM + CXL**
+
+→ SE-1(3D DRAM) + SE-2(CXL) **두 전략 묶음**이 삼성 2030년대 후반 지속력의 핵심.
+
+### MB-4와의 시너지
+
+CXL은 [MB-4 5종 메모리 통합 솔루션](current-state-mb4-custom-ai-memory.md)의 핵심 부품:
+- HBM-to-HBM 풀링
+- GDDR-to-GDDR 확장
+- KV 캐시 메모리와의 인터페이스
+
+→ SE-2 표준 주도권이 MB-4 비즈니스 모델의 차별점 핵심.
+
+**출처**: [youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](../../../sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md)

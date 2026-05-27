@@ -67,7 +67,7 @@ export const COMPETITIVE_LANDSCAPE = {
       dramRank: '2위 (33년 만의 강등)',
       nandPosition: 'V8/V9 양산 중, V10 (430L BV) 2026 H2',
       usSubsidy: { value: '$4.745B', subtitle: '연방 + Texas $250M', rank: 3 },
-      strengthAreas: ['파운드리 통합', 'HBM4 캐파 Sold Out', '5거점 글로벌', '로직다이 내재화 — TSMC/Intel/Samsung 3사 중 메모리도 하는 유일 (권석준 2026-04)'],
+      strengthAreas: ['파운드리 통합', 'HBM4 캐파 Sold Out', '5거점 글로벌', '로직다이 내재화 — TSMC/Intel/Samsung 3사 중 메모리도 하는 유일 (권석준 2026-04)', 'IDM 종합반도체 — HBM4E 격전지 차별점 (권석준 2026-05)', 'CXL "메모리 부도심" 표준 주도 잠재력 (권석준 2026-05)'],
       gapAreas: ['SLC AI SSD 로드맵 미공개', 'NAND DC 비중 비공개', '1c nm yield 추격'],
     },
     {

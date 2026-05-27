@@ -161,3 +161,52 @@ Bloomberg TV 인터뷰 (2026-05-22)에서 Mehrotra CEO가 Micron 미국 캐파�
 - → Samsung도 RS-2 바벨의 한쪽 끝을 강화하려면 **자동차·산업·국방용 long life cycle DRAM** 진입 검토 필요. 단, Micron이 이미 미국 정부 산업정책과 결합 — Samsung은 글로벌(특히 유럽·일본 자동차) 차별점에서 진입 여지.
 
 **출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)
+
+---
+
+## [Update 2026-05-19 II] 권석준 — 5종 메모리 통합 포트폴리오로 확장
+
+### 기존 RS2 = 이분법 바벨 (HBM ↔ 범용 DRAM)
+
+기존 가정:
+- 한쪽 = HBM/커스텀 고성능
+- 다른쪽 = 저원가 범용 DRAM/NAND
+- 중간 어정쩡한 제품 축소
+
+### 권석준 통찰 — 5종 메모리 동시 폭증 → 바벨 확장
+
+권 교수 진단: 슈퍼사이클은 **5종 메모리가 동시에 비동기 사이클**:
+
+| 사이클 위치 | 메모리 |
+|---|---|
+| 슈퍼사이클 (고부가) | **HBM, KV 캐시 메모리, CXL** |
+| 가격 회복기 (중간) | GDDR, LPDDR |
+| 정상 사이클 (범용) | DDR4/DDR5 일반, NAND 범용 |
+
+### 강화된 RS2 — 다극(Multi-pole) 포트폴리오
+
+이전 "바벨(2극)" → "**다극(Multi-pole) + 코어 양극**"
+
+- **극 1**: HBM·CXL·KV 캐시 메모리 (고부가 = 슈퍼사이클 한가운데)
+- **극 2**: GDDR·LPDDR (중간 = 추론·온디바이스 신규 수요)
+- **극 3**: 범용 DDR·NAND (저원가 = CXMT에 양보 또는 마진 회복 시 회수)
+
+→ 단순 "양극화"가 아니라 **사이클 비동기성 활용**.
+
+### 시나리오별 mix 비중 가이드 (안)
+
+| 시나리오 | HBM·CXL·KV | GDDR·LPDDR | 범용 |
+|---|---|---|---|
+| A (황금 요새) | 55% | 25% | 20% |
+| B (Main Bet, AI 르네상스) | 50% | 30% | 20% |
+| C (기술 냉전) | 40% | 25% | 35% (저원가 다각화) |
+| D (조용한 재편) | 35% | 30% | 35% |
+| E (패러다임 전환) | 30% | 40% (대체 메모리·온디바이스) | 30% |
+
+### 라인 분기 운영과의 시너지
+
+[MB-4 라인 분기 전략](../core/current-state-mb4-custom-ai-memory.md)과 통합 실행:
+- 한 팹 내에서 라인별로 5종 메모리 비중을 분기·전환
+- 사이클 비동기성 → 한 라인의 절제와 다른 라인의 가속 동시 진행 가능
+
+**출처**: [youtube-kwon-cycle-formula-2026-05-21.md](../../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md), [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)

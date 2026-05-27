@@ -55,6 +55,53 @@ Bloomberg TV 인터뷰 (Sanjay Mehrotra, Manassas VA 1α DRAM 양산 개시 행�
 
 ---
 
+## [2026-05-19] ingest | 권석준 교수 추가 영상 3건 → 전략 개선 (MB-4 / SE-1 / SE-2 / RS2 강화)
+
+권석준 교수의 다른 영상 3건을 ingest하고 핵심 인사이트를 위키 12개 페이지에 반영. 단순 사실 갱신을 넘어 **전략 페이지 4개를 명시적으로 강화** (MB-4·SE-1·SE-2·RS2).
+
+**수집 자료 (3건)**:
+- [youtube-kwon-agentic-ai-memory-2026-05-01.md](sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md) — SBS 교양이를 부탁해, 추론 100배·HBM3E 한계·HBM4E 격전지
+- [youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md) — 동아일보 머니가이드, HBM6 2026 H2·CXL "메모리 부도심"·2030년대 게임 체인저
+- [youtube-kwon-cycle-formula-2026-05-21.md](sources/articles/youtube-kwon-cycle-formula-2026-05-21.md) — 연합뉴스경제TV 인사이트30, Q1 폭증·5종 메모리 다발·사이클 공식 변화
+
+**핵심 통합 인사이트**:
+1. **추론 패러다임 100배** (Jensen Huang GTC) — 학습→추론 전환, HBM3E도 토큰 한계
+2. **HBM-DRAM 사이 '징검다리 메모리'** 신규 시장 — CXL·GDDR·KV 캐시 플래시
+3. **5종 메모리 동시 폭증** — HBM·KV 캐시·플래시·GDDR·LPDDR (사이클 비동기화)
+4. **HBM 6세대 양산 2026 H2** + 4~5년 로드맵 안정
+5. **CXL = "메모리 부도심"** (메모리 풀링·버추얼 확장) + 삼성 차별점
+6. **2030년대 후반 게임 체인저 = 3D DRAM + CXL** (권 교수 명시)
+7. **HBM4E 격전지: 삼성 IDM vs SK + TSMC 연합** — 두 모델의 격돌
+8. **애플 온디바이스 AI 진입 시 거대 폭풍** — 일본 폼팩터 실패 교훈
+9. **구글 터보퀀트 역설** — 양자화도 메모리 수요 촉진 (총량 증가)
+10. **사이클 공식 변화** — 메모리 종류별 비동기 사이클
+
+**갱신된 wiki 페이지 (12개, 2025-05-19 [Update II] 섹션)**:
+- concepts: `ai-server-demand`, `hbm-market`, `hbm-roadmap`, `emerging-tech`, `semiconductor-cycle`, `dram-technology`, `ai-demand-sustainability`, `ssd-ufs-market`
+- strategies/core: `current-state-mb4-custom-ai-memory` (5종 통합 솔루션 확장), `current-state-se1-3d-dram-imec-ma` (게임 체인저), `current-state-se2-cxl-sig-leadership` (표준 주도권)
+- strategies/invariant: `rs2-barbell-portfolio` (다극 포트폴리오)
+
+**전략 개선 요약**:
+- **MB-4 강화**: HBM 커스텀 → **5종 메모리 통합 솔루션 제공자**로 정의 확장. 신규 KPI 3종 (통합 솔루션 매출 비중·CXL 표준 주도 점수·KV 캐시 매출). 실행 우선순위 5단계 제시.
+- **SE-1 가속**: IMEC 협약 $200M → $300M+ 상향 검토 + R&D 200~300인 → 300~500인 확대. 4F² COP DRAM 가속.
+- **SE-2 강화**: 단순 SIG 참여 → 표준 주도권 확보. 4단계 로드맵 (SIG 의장단 → CXL 3.0 표준 작성 → NVIDIA 인증 → 시장 점유 30%+).
+- **RS2 확장**: 양극 바벨 → **다극(Multi-pole) 포트폴리오**. 시나리오별 mix 비중 가이드 신설 (HBM·CXL·KV / GDDR·LPDDR / 범용 3극).
+
+**Dashboard 갱신**:
+- `COMPETITIVE_LANDSCAPE.samsung.strengthAreas`: "IDM 종합반도체 — HBM4E 격전지 차별점" + "CXL '메모리 부도심' 표준 주도 잠재력" 추가
+- 신규 EWI `apple_ondevice_ai_status` — 애플 온디바이스 AI 메모리 채택 단계 (4단계 select, 미발표/공식 발표/시제품/양산 채택)
+- `version.js`: v2.7.5 → **v2.7.6** (패치 — EWI 1종 + 전략 페이지 다수 강화. 페이지/탭 구조 변경 없으므로 패치 분류)
+
+**의도적 미반영**:
+- HBM4E 격전지 권석준 분석은 위키 hbm-market.md에 기록. 본인 페이지(samsung, sk-hynix)는 1차 ingest에 이미 반영된 권석준 2026-04-11 분석과 일관성 유지를 위해 추가 append 안 함 — 중복 회피.
+- 구글 터보퀀트 별도 entity 미생성 — 메모리 산업 관점에서는 양자화 효과만 의미있으며 위키 ai-demand-sustainability·semiconductor-cycle 에 흡수.
+
+**검증**:
+- `cd dashboard && npm run build` ✓ (2.67s)
+- PPTX 빌드는 직전 사이클과 동일하게 brew Python PEP 668 차단 — venv 정비 별도 필요
+
+---
+
 ## [2026-05-19] ingest | 권석준 성균관대 교수 인터뷰 (SBS 교양이를 부탁해, 2026-04-11)
 
 YouTube 영상 ingest. 권석준 교수의 산업 인사이트는 위키 다수 페이지와 정합·충돌이 동시에 발생.

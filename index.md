@@ -126,7 +126,10 @@
 - [sources/articles/semianalysis-isscc-2026-2026-04-15.md](sources/articles/semianalysis-isscc-2026-2026-04-15.md) — ISSCC 2026 메모리 논문 (HBM4/LPDDR6/GDDR7/4F²/BiCS10)
 - [sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md](sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md) — AI 칩 부족과 HBM 캐파 잠식
 - [sources/articles/semianalysis-vera-rubin-2026-02-25.md](sources/articles/semianalysis-vera-rubin-2026-02-25.md) — Vera Rubin 메모리 사양 + Micron 자격 분석
-- [sources/articles/youtube-kwon-seokjun-2026-04-11.md](sources/articles/youtube-kwon-seokjun-2026-04-11.md) — 권석준 교수 (SBS): 갑을 역전·HBM:DRAM 6:1·로직다이 차별점·SK TSMC 인질·메모리 파운드리화·CXMT 추격
+- [sources/articles/youtube-kwon-seokjun-2026-04-11.md](sources/articles/youtube-kwon-seokjun-2026-04-11.md) — 권석준 (SBS): 갑을 역전·6:1·로직다이·SK 인질·CXMT 추격
+- [sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md](sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md) — 권석준 (SBS): 추론 100배·HBM3E 한계·징검다리 메모리·애플 온디바이스·IDM vs SK+TSMC 연합
+- [sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md) — 권석준 (동아일보): HBM6 2026 H2·CXL "메모리 부도심"·2030년대 후반 게임 체인저
+- [sources/articles/youtube-kwon-cycle-formula-2026-05-21.md](sources/articles/youtube-kwon-cycle-formula-2026-05-21.md) — 권석준 (연합): Q1 폭증·5종 메모리 다발·사이클 공식 변화·터보퀀트 역설
 - [sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md](sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) — Bloomberg TV: Micron CEO Mehrotra 미국 캐파 10→40%·LTA·"discipline"
 
 > `sources/filings/`, `sources/papers/`, `sources/raw-notes/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)

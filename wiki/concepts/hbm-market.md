@@ -134,3 +134,42 @@ SemiAnalysis는 Micron이 자격 자체를 못 따고 사실상 배제된다고 
 - → **공급량·증설 속도 조절 권한**을 최대한 활용하는 게 핵심 전략
 
 **출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)
+
+---
+
+## [Update 2026-05-19 II] 권석준 — HBM3E도 토큰 한계 + HBM-DRAM 사이 '징검다리' 메모리 시장
+
+### HBM3E 한계 도달
+
+- 권석준: "현재 가장 앞선 5세대 HBM(HBM3E)도 수십만 개 토큰만 되어도 차고 넘침"
+- 병목이 GPU → 메모리로 이동 (Decode 단계 메모리 부족)
+- HBM 단독으로는 추론 수요 커버 불가
+
+### HBM-DRAM 사이 '징검다리 메모리' 신규 시장
+
+권 교수가 명명한 **메모리 수직 계열화**의 새 영역:
+
+```
+빠르지만 비싼 HBM
+       ↕
+   ★ 징검다리 ★
+   - CXL          (메모리 풀링·확장)
+   - GDDR         (추론 가속)
+   - KV 캐시 플래시 (NVIDIA CMX 같은 솔루션)
+       ↕
+느리지만 싼 범용 DRAM
+```
+
+→ 메모리사가 잘 안 해본 영역 — [MB-4 커스텀 AI 메모리](../strategies/core/current-state-mb4-custom-ai-memory.md) 전략 확장 명분
+
+### HBM4E 격전지 — 삼성 IDM vs SK + TSMC 연합
+
+권석준의 두 모델 대비 (영상 1, 2026-05-01):
+- **삼성 IDM (Integrated Device Manufacturer)**: 메모리 + Foundry + 패키징 종합반도체 생태계 자체 보유
+- **SK + TSMC 연합**: 메모리(SK) + 로직 파운드리(TSMC) 협력 모델
+
+→ HBM4E 세대에서 두 모델의 격돌이 한국 반도체 패권 분기점
+
+> **뉘앙스 변화**: 권 교수의 이전 발언(2026-04-11)에서는 SK-TSMC를 "TSMC 인질 위기"로 표현했으나, 본 영상(2026-05-01)에서는 "연합군"으로 표현. 같은 구조에 대한 두 관점 → SK 입장에서는 인질·삼성 입장에서는 경쟁 연합군.
+
+**출처**: [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)

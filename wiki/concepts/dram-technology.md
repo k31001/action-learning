@@ -144,3 +144,25 @@
 - 14.4 Gb/s, 2.32 mm 쇼어라인, 0.695 mm², 효율 모드 −39%/−29%, 클록 게이팅 −50%
 
 **출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
+
+---
+
+## [Update 2026-05-19 II] 권석준 — 메모리 5종 동시 폭증 (LPDDR·GDDR·KV 캐시 플래시 보강)
+
+### AI DC 메모리 다양화
+
+권 교수: 슈퍼사이클의 본질 = **5종 메모리 동시 폭증** (HBM + KV 캐시 메모리 + 플래시 + GDDR + LPDDR)
+
+| 메모리 | 신규 용도 |
+|---|---|
+| **GDDR** | 추론(Inference) 가속 그래픽 메모리 — RTX·게이밍 외 AI 추론 |
+| **LPDDR** | **온디바이스 AI** — 애플·삼성·구글 스마트폰·노트북 |
+| **KV 캐시 플래시** | NVIDIA CMX 같은 KV 캐시 오프로드 |
+
+### LPDDR + 신규 폼팩터 — 일본 폼팩터 실패 교훈
+
+- 권석준: **일본 반도체가 망한 이유 중 하나 = 폼팩터 전환기를 놓침**
+- 한국도 동일 위험 — 슈퍼사이클 정점에서 LPDDR·UFS 새 폼팩터 전환을 놓치면 동일 결과
+- 애플 온디바이스 AI 진입 시 스마트폰 폼팩터 최적화 메모리 규격 폭풍 ([ssd-ufs-market.md](ssd-ufs-market.md) [Update 2026-05-19 II])
+
+**출처**: [youtube-kwon-cycle-formula-2026-05-21.md](../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md), [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)

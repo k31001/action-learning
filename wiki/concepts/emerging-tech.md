@@ -209,3 +209,37 @@
 - Samsung은 [로직다이 내재화 차별점](../entities/samsung.md)([Update 2026-05-19] 권석준 섹션)으로 메모리 파운드리화 경쟁에서 우위 잠재력
 
 **출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)
+
+---
+
+## [Update 2026-05-19 II] 권석준 — CXL "메모리 부도심" + 2030년대 후반 게임 체인저 = 3D DRAM·CXL
+
+### CXL = 메모리 부도심 (권석준 비유)
+
+> "CXL은 메모리와 메모리 기기를 잇는 부도심 같은 개념이죠. 메모리를 **버추얼리 확장**하는 그런 느낌이 나오는 거죠."
+
+- 클러스터와 클러스터, 랙과 랙을 이어 **하나의 거대 컴퓨팅 인프라**로 통합
+- 굳이 느린 DRAM에 올리지 않고도 HBM-to-HBM, GDDR-to-GDDR 빠른 통신 가능
+- 메모리 풀링·버추얼 확장의 기반 기술
+
+### 삼성의 CXL 차별점 — 권석준 명시
+
+- SK: HBM (고대역폭) 학습 특화
+- **Samsung: HBM + CXL** (클러스터/랙 연결) — 인프라 통합
+
+→ [SE-2 CXL SIG 리더십](../strategies/core/current-state-se2-cxl-sig-leadership.md) 전략의 외부 권위자 검증. 표준 주도권 확보가 핵심.
+
+### 2030년대 후반 게임 체인저
+
+권 교수 진단: **2030년 후반 반도체 게임 체인저 = 3D DRAM + CXL**
+
+- 위키 기존 가정 "3D DRAM 상용화 2033~2034" 과 정합
+- SemiAnalysis ISSCC 2026 Samsung 4F² COP DRAM (3D 후보 아키텍처)이 게임 체인저 시기 앞당길 가능성
+
+### 함의
+
+- [SE-1 3D DRAM IMEC M&A](../strategies/core/current-state-se1-3d-dram-imec-ma.md) — 결정적 가치. IMEC 협약·M&A 가속 필수.
+- [SE-2 CXL SIG 리더십](../strategies/core/current-state-se2-cxl-sig-leadership.md) — 단순 SIG 참여 아닌 **표준 주도권** 확보 필요
+- 두 전략(SE-1, SE-2)이 2030년대 후반 Samsung 메모리 지속력의 핵심
+
+**출처**: [youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](../../sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md), [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)

@@ -127,3 +127,41 @@
 - 일반 DRAM 캐파를 HBM이 잠식하는 효과 가속화 → [hbm-market.md](hbm-market.md) "HBM 웨이퍼 효율" 섹션 참조
 
 **출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)
+
+---
+
+## [Update 2026-05-19 II] 권석준 (SBS·연합·동아 2026-04~05) — 추론 패러다임 100배 + 메모리 5종 다발 폭증
+
+### Jensen Huang GTC 발언 (권석준 인용)
+
+> "AI 데이터센터에서 누가 더 큰 모델을 학습시키느냐가 핵심이었던 시기에서, 이제는 **추론(Inference)이 학습 대비 10~100배 커질 것**."
+
+### 추론 단계 메모리 병목
+
+- 추론 = ① Prefill (사용자 입력 처리) + ② **Decode (맥락 발견·정보 생성)**
+- **Decode 단계가 메모리 병목의 핵심** — 더 많은 정보를 찾고 맥락 발견 필요
+- **현재 HBM3E도 수십만 토큰만 되어도 차고 넘침** — 병목이 GPU에서 **메모리로 이동**
+
+### 메모리 5종 동시 폭증 (사이클 공식 변화)
+
+권석준 진단: 이번 슈퍼사이클이 과거와 가장 다른 점 = 단일 제품이 아닌 **5종 메모리가 동시에 폭증**:
+
+| 메모리 종류 | 역할 |
+|---|---|
+| HBM | 학습용 핵심 |
+| KV 캐시용 메모리 (NVIDIA CMX 등) | 추론용 |
+| 플래시 메모리 | KV 캐시 오프로드 |
+| GDDR | 추론 가속 그래픽 메모리 |
+| LPDDR | 온디바이스 AI 메모리 |
+
+→ [hbm-market.md](hbm-market.md)·[dram-technology.md](dram-technology.md)·[semiconductor-cycle.md](semiconductor-cycle.md) cross-ref
+
+### 클로드 코드 사례 — AI 에이전트 메모리 폭식 증명
+
+권 교수 직접 사례:
+- 10만 줄 코드 → 한 달 작업 → **1일 완료, 속도 20배**
+- 월 수백만 원 클로드 사용
+
+토큰 양 폭증 = 메모리 수요 폭증의 직접 증거.
+
+**출처**: [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md), [youtube-kwon-cycle-formula-2026-05-21.md](../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md)

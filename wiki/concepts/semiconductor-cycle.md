@@ -127,3 +127,37 @@
 - 함의: HBM 수요 증가(Rubin·Rubin Ultra·TPU 12-Hi 마이그레이션)가 일반 DRAM 캐파를 가속도로 잠식 → 범용 DRAM 공급 부족 장기화 가능성 ([price-trends.md](price-trends.md) DDR 마진 상승 참조)
 
 **출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)
+
+---
+
+## [Update 2026-05-19 II] 권석준 (연합 2026-05-21) — "메모리 = 사이클" 공식 변화
+
+### 사이클 공식이 깨지는가?
+
+권 교수 진단: **사이클 자체가 깨지는 건 아니지만, 메모리 종류별로 비동기화**
+
+| 메모리 종류 | 현 사이클 위치 |
+|---|---|
+| HBM | 슈퍼사이클 한복판 |
+| 범용 DRAM | 가격 회복기 (HBM 캐파 잠식으로 공급 부족) |
+| GDDR | 추론 수요로 별도 슈퍼사이클 |
+| LPDDR | 온디바이스 AI 대비 |
+| 플래시 | KV 캐시 오프로드 등 신규 수요 |
+
+→ **종류별로 다른 사이클**이 동시 진행. 기존의 "단일 DRAM 사이클" 공식은 더 이상 안 맞음.
+
+### 시사
+
+- RS1 옵션형 캐파 강도를 **메모리 종류별로 차별화** 필요
+  - HBM 라인: 보수적 절제 (정점 임박, [SemiAnalysis 신호](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md))
+  - 범용 DRAM 라인: 신축적 (마진 회복 단계)
+  - LPDDR·GDDR 라인: 공격적 (온디바이스 AI·추론 수요 진입기)
+- 슈퍼사이클의 **지속력** = 메모리 종류 다양화가 결정
+
+### 구글 터보퀀트 역설
+
+- 양자화로 모델이 작아지지만 **더 많은 모델을 동시에 돌리니까 총 메모리 수요는 오히려 증가**
+- ASIC 자체 칩(구글·AWS·MS) 등장도 메모리 수요는 유지/증가
+- 시나리오 E(패러다임 전환)에서도 메모리 수요 자체는 살아남음
+
+**출처**: [youtube-kwon-cycle-formula-2026-05-21.md](../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md)

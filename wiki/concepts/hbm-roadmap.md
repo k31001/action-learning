@@ -149,3 +149,34 @@
 - SemiAnalysis 평가(SF4 고비용)와 충돌 — 단기 비용 vs 장기 구조의 trade-off
 
 **출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)
+
+---
+
+## [Update 2026-05-19 II] 권석준 (동아일보 2026-05-12) — HBM 로드맵 4~5년 안정 + HBM6 2026 H2
+
+### HBM 6세대 양산 임박
+
+권 교수 진단:
+- **HBM 6세대 양산: 빠르면 2026 하반기 시작** (HBM4 다음)
+- HBM 로드맵 자체는 향후 4~5년 안정적으로 잡혀있음
+- HBM4 → HBM4E → HBM5 → HBM6 순차 진행
+- 메모리 양사(삼성·SK) 모두 HBM 로드맵 동기화 상태
+
+### 함의
+
+- Main Bet (시나리오 B AI 르네상스)의 **기술적 토대 검증** — HBM 공급 자체는 안정
+- 차별화 포인트는 HBM 단독이 아니라:
+  - **로직다이 내재화** ([samsung.md](../entities/samsung.md) [Update 2026-05-19] 권석준 섹션)
+  - **CXL 메모리 풀링** ([emerging-tech.md](emerging-tech.md) [Update 2026-05-19 II])
+  - **HBM4E 패키징·격전지** ([hbm-market.md](hbm-market.md) [Update 2026-05-19 II])
+
+### 위키 기존 로드맵과 정합
+
+기존 위키 hbm-roadmap.md:
+- 삼성 HBM4 양산 2026.2 (3.3 TB/s)
+- SK HBM4 Q3 2026 ramp-up
+
+권 교수 추가 정보:
+- HBM 6세대 양산 2026 H2 시작 — 기존 위키 가정과 부합
+
+**출처**: [youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](../../sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md)

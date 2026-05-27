@@ -75,3 +75,29 @@
 - [Impact of tariffs on the semiconductor industry | McKinsey](https://www.mckinsey.com/industries/semiconductors/our-insights/the-effects-of-tariffs-on-the-semiconductor-industry)
 - [Trump Admin Targets Advanced AI Semiconductors](https://www.pillsburylaw.com/en/news-and-insights/trump-advanced-ai-semiconductors-actions.html)
 - [Amazon, Google, Microsoft, Meta Q1 earnings](https://www.uncoveralpha.com/p/amazon-google-microsoft-meta-q1-earnings)
+
+---
+
+## [Update 2026-05-19 II] 권석준 — 추론 100배 + 양자화로 메모리 수요 촉진
+
+### Jensen Huang GTC: 추론 10~100배
+
+권석준 인용:
+- 학습 vs 추론: 추론이 학습 대비 **10~100배** 커질 것
+- AI ROI 의문에 대한 직접적 반박 자료 — 추론 수요는 학습 수요보다 훨씬 큰 규모
+
+### 양자화 역설 — 모델 작아져도 총 메모리 수요 증가
+
+권석준 분석:
+- **구글 터보퀀트(Turbo Quantization)** 같은 양자화 기술이 발전
+- 일견 모델이 작아져 메모리 수요 줄 것 같음
+- **그러나 양자화가 잘 되면 더 많은 모델을 동시에 가동 가능**
+- → **총 메모리 수요는 오히려 증가**
+
+### 시사 — AI 거품론 vs 메모리 수요 분리
+
+- AI ROI 실현 불투명·NBER MIT 비관론에도 불구하고 **메모리 수요 자체는 살아남음**
+- ASIC 자체 칩(구글 TPU·AWS Trainium 등) 등장도 메모리 수요는 유지/증가
+- 시나리오 E(패러다임 전환)에서도 메모리 수요 자체는 살아남는 시나리오 가설 강화
+
+**출처**: [youtube-kwon-cycle-formula-2026-05-21.md](../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md), [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)

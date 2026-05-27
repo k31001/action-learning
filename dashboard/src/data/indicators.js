@@ -276,6 +276,35 @@ export const INITIAL_INDICATORS = [
     inputType: 'select',
     hint: 'CXMT 허페이 Fab 3 진척 단계 선택',
   },
+  // ── 신규 (2026-05-19 권석준 추가 영상 3건 ingest, 애플 온디바이스 AI 진입 추적) ──
+  {
+    id: 'apple_ondevice_ai_status',
+    name: '애플 온디바이스 AI 메모리 채택 단계',
+    category: 'quarterly',
+    source: '복수 보도 (Apple Newsroom, Bloomberg, Reuters)',
+    unit: '단계',
+    unitLabel: '단계 (미발표 / 발표 / 시제품 / 양산 채택)',
+    currentValue: 'unannounced',
+    alertThreshold: null,
+    alertCondition: 'manual',
+    alertDescription: '시제품 또는 양산 채택 단계 도달 시 스마트폰 폼팩터 최적화 메모리 시장 폭풍 신호 — Samsung LPDDR·UFS 폼팩터 선점 압력',
+    scenarioSignals: ['B', 'E'],
+    scenarioText: 'B·E 신호 — 온디바이스 AI 시대 본격 진입, MB-4 5종 메모리 통합 솔루션·SE-3 신흥 시장 가속 명분',
+    warningThreshold: null,
+    status: 'normal',
+    lastUpdated: '2026-05-19',
+    history: [
+      { date: '2026-05-19', value: 'unannounced', note: '권석준 교수(SBS 2026-05): 애플 진입 시 거대 폭풍. 일본 폼팩터 실패 교훈으로 한국이 놓치면 동일 위험.' },
+    ],
+    options: [
+      { value: 'unannounced', label: '미발표', status: 'normal', signal: '기존 가정 유지' },
+      { value: 'announced', label: '공식 발표', status: 'warning', signal: '폼팩터 전환 신호 — 1~2년 내 표준 결정' },
+      { value: 'prototype', label: '시제품 공개', status: 'critical', signal: 'Samsung LPDDR·UFS 폼팩터 선점 필요' },
+      { value: 'mass_adoption', label: '양산 채택', status: 'critical', signal: '스마트폰 메모리 시장 재편 — 시나리오 매트릭스 재평가' },
+    ],
+    inputType: 'select',
+    hint: '애플 온디바이스 AI 메모리 채택 단계 선택',
+  },
   // ── 신규 (2026-05-19 권석준 인터뷰 SBS, HBM:DRAM 가격 균형선 6:1 진단 기반) ──
   {
     id: 'hbm_dram_price_ratio',
