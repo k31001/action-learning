@@ -259,3 +259,42 @@ Bloomberg TV 인터뷰 (2026-05-22, Manassas VA)에서 Mehrotra CEO가 **장기 
 - 실행: 분기 IR에서 "LTSA 비중", "Take-or-Pay 비중" 별도 공시 검토. Micron이 동일 언어 사용 중이므로 외부 커뮤니케이션 마찰 감소.
 
 **출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — "LTA가 사이클의 본질 제거" (UBS Arcuri) + Microsoft·Google 선급금 락인
+
+Counterpoint Memory Pricing Tracker (2026-04-06, MS Hwang/Jeongku Choi):
+
+### UBS Timothy Arcuri의 핵심 주장
+
+> "**LTA가 메모리 산업의 cyclicality를 근본적으로 제거**한다"
+
+### 고객 행동의 구조적 역전
+
+| 과거 | 현재 (2026) |
+|---|---|
+| 제조사가 고객에게 주문 구걸 | **고객이 제조사에게 예치금 내고 캐파 락인** |
+| Spot 가격 협상 위주 | **3년 LTA + 선급금 표준화** |
+| Take-or-pay 회피 | Take-or-pay 수용 |
+
+### 구체 사례 — Microsoft·Google ↔ SK hynix
+
+- **Microsoft·Google**이 SK hynix와 **3년 DRAM 장기 계약** 협의 중
+- **선급금(prepayment) 포함**
+- → SK hynix는 capex 확신 + 가격 변동 보호 동시 확보
+
+### RS-8 본 페이지 가설 재평가
+
+| 기존 가설 (2026-05-07 작성) | 갱신 (2026-05-25) |
+|---|---|
+| 단순 LTA(RS-4)로는 부족, Participating Forward·HTA·Tiered Pricing 등 농산물 헷지 4종 필요 | 단순 LTA만으로도 사이클 평탄화 효과 (UBS Arcuri 분석) — RS-8 정교화 시급도 일부 완화 |
+| 모방난이도 5년+ 차별화 가능 | Microsoft·Google이 이미 SK hynix와 단순 LTA로 시작 — Samsung도 동일 구조 즉시 확보 못 하면 캐파 락인 격차 발생 |
+
+### 결론
+
+- **시급도 ↑**: Microsoft·Google이 SK hynix 캐파를 선급금으로 락인 중. Samsung은 동일 하이퍼스케일러와 3년 LTA + 선급금 구조 동기간 확보 필수.
+- **고도화는 후순위**: Participating Forward·HTA 같은 농산물형 구조는 1단계 단순 LTA 확보 후 2단계로.
+- 산업 전체가 LTA 표준화 ([bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) Mehrotra CEO 발언과 정합) → Samsung 단독 LTA 채택의 차별화 가치는 약화, **선급금 규모·기간·고객 선정의 차별화**가 새로운 차별점.
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §7

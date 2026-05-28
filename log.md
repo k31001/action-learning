@@ -14,6 +14,44 @@
 
 ---
 
+## [2026-05-25] ingest | Counterpoint Research 메모리 시리즈 7건 (2025-11 ~ 2026-04)
+
+counterpointresearch.com 인바운드 수집 — WebFetch는 JS 렌더링/구독 제한, WebSearch 스니펫 + 3자 보도(EE Times·Tom's Hardware·CNBC·The Register 등) 교차 검증으로 본문 추출.
+
+**수집된 7건**:
+1. (2025-11-19, MS Hwang/Ivan Lam) Advanced Memory Prices Likely to Double — NVIDIA LPDDR 피벗 "seismic shift", DDR4 $2.10/Gb > DDR5 $1.50/Gb 역전
+2. (2025-12-18, Jeongku Choi) Micron Achieves Record Performance — Q1 FY26 $13.6B +57% YoY, 시장 $200B→$400B
+3. (2025-12-18) 2026 Smartphone Shipment Forecasts Revised Down — 글로벌 -2.1%, BoM +25/15/10% (저/중/고가), ASP +6.9% YoY
+4. (2026-01-29, Jeongku Choi) Q4 2025 Samsung Reclaims Top Memory Spot — Samsung $25.9B 메모리 매출 1위 회복, SK hynix OPM 58%
+5. (2026-01-29, MS Hwang/CNBC) SK Hynix Overtakes Samsung in Annual Profit — SK 47.2조 > Samsung 전사 43.6조 (Samsung 메모리만 24.9조), HBM Q3 2025 SK 57% vs Samsung 22%, Rubin 2/3+ SK
+6. (2026-02-05, Jeongku Choi) Memory Prices Surge Up to 90% — Q1 2026 80~90% QoQ, 64GB RDIMM $450→$900→$1000+, DRAM OPM 60% > HBM 처음 발생
+7. (2026-04-06, MS Hwang/Jeongku Choi) LTA Structurally Reshaping DRAM — UBS Arcuri "LTA가 cyclicality 제거", Microsoft·Google SK hynix와 3년 LTA + 선급금 계약
+
+**핵심 결론 (시나리오 플래닝 관점)**:
+- **호황 정점 신호 결정적 확정**: DRAM OPM 60% > HBM은 사상 처음. RS-5 절제 강도 결정적 정점 신호로 격상
+- **NVIDIA LPDDR 피벗**: 스마트폰 OEM 1곳 수준 신규 수요. 모바일·산업 LPDDR4 공급 공백 영구화 가능
+- **LTA 산업 표준화 + Microsoft·Google SK 락인**: RS-8의 "단순 LTA 차별화 부족" 가설 일부 수정 — 단순 LTA가 사이클 평탄화 효과(UBS Arcuri). Samsung은 동일 하이퍼스케일러 LTA + 선급금 즉시 확보 필요
+- **Main Bet KPI 미달 사실 직시**: HBM 28%+ 목표 vs Q3 2025 22% 실측 (-6%pt). Rubin 2/3+ SK 락인 → SemiAnalysis (β) 시나리오 현실화 진행. Main Bet 확률(30~35%) 유지하되 KPI 윈도우 HBM4E·HBM5로 이동 검토
+- **스마트폰 -2.1%**: 메모리 부족이 소비자 시장 첫 수축. Samsung은 메모리(공급자) ↔ 스마트폰(수요자) 양면 노출 — 전사 자기상쇄
+
+**영향받은 페이지** (1차 ingest, 14곳):
+- 신규 source: `sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md` (7건 통합)
+- 갱신 wiki/concepts: `price-trends.md` · `memory-market-overview.md` · `dram-market-share.md` · `hbm-market.md` · `ai-server-demand.md`
+- 갱신 wiki/entities: `samsung.md` · `sk-hynix.md` · `micron.md`
+- 갱신 wiki/steep: `economy.md` (스마트폰 -2.1%·BoM)
+- 갱신 wiki/scenarios: `scenario-B.md` (Main Bet KPI 재평가)
+- 갱신 wiki/strategies/invariant: `rs1-options-based-capacity.md` · `rs5-financial-discipline-reinvestment.md` · `rs8-structured-revenue-hedging.md`
+- 갱신 `index.md` (sources 카탈로그)
+
+**의도적 미반영 / 다음 단계 후보** (체인 §6):
+- **dashboard**: 다수 수치 갱신 후보 발생 (Q3 2025 HBM 57/22, FY2025 OP 47.2/43.6/24.9, 메모리 시장 $200B/$400B, 64GB RDIMM 시계열). 본 ingest는 위키 갱신만 처리 — dashboard 미러는 별도 build 사이클에서 한꺼번에 sync 예정 (체인 §6 자동화 원칙: "영향 없는 갈래는 건너뛰되 이유 명시" — 본 건은 영향 있으나 폭이 넓어 별도 사이클 분리). 다음 build 작업으로 분리: SCENARIOS B의 KPI 메모, COMPETITIVE_LANDSCAPE 갱신, visualizations dramMarketShareTrend·hbmShareTrend 갱신, indicators에 "DRAM OPM > HBM OPM" EWI 신설 검토
+- **outputs/report**: 본 ingest의 결론들이 다음 보고서 재합성 시 자동 흡수. 별도 즉시 갱신 안 함 (위키가 진실의 원천)
+- **outputs/presentation**: report 미변경 → PPTX 재생성 불필요
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) (Counterpoint Research 7건)
+
+---
+
 ## [2026-05-25] ingest | Bloomberg TV: Micron CEO Mehrotra 미국 캐파·LTA·"discipline" 발언
 
 Bloomberg TV 인터뷰 (Sanjay Mehrotra, Manassas VA 1α DRAM 양산 개시 행사, 2026-05-22 게시, 10:05). yt-dlp로 영문 자막 추출 → 시나리오 플래닝 관점에서 의미 있는 6대 포인트 추출.

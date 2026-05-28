@@ -175,3 +175,32 @@ UBS 28% vs SemiAnalysis "Micron out" 충돌. 세 분기:
 - **SD-1 HBM P&L 분리**([current-state-sd1](../strategies/core/current-state-sd1-hbm-pnl-spinoff.md)): 로직다이 내재화 가치를 외부에 공개해야 평가 가능
 
 **출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — FY2025 메모리 OP·Q4 매출
+
+Counterpoint Research (2026-01-29) + 현지 언론 인용:
+
+### Q4 2025 메모리 매출
+
+- **Samsung 메모리 매출: KRW 37.1조 = $25.9B** — SK hynix를 추월하며 **메모리 매출 1위 탈환**
+- 동인: HBM·서버 DRAM·일반 DRAM 가격 동반 상승
+
+### FY2025 전사·메모리 영업이익
+
+| 구분 | FY2025 OP (조 원) |
+|---|---|
+| Samsung Electronics 전사 | **43.6** |
+| - Samsung 메모리사업부만 | **24.9** |
+| SK hynix (메모리 단일) | **47.2** |
+
+→ **SK hynix > Samsung 전사 OP (사상 최초)** — 단, Samsung은 다중 사업 구조, 메모리만 비교하면 24.9 vs 47.2로 SK hynix가 약 **1.9배**
+
+### Samsung 함의
+
+- Q4 2025 매출 1위 회복은 **표면 회복**. 사이클 평균 수익성·HBM 마진은 SK hynix가 우위.
+- 시나리오 B Main Bet의 KPI인 "HBM 28%+ 점유 회복"이 Q3 2025 22%로 미달 → 본 위키 [scenario-B.md](../scenarios/scenario-B.md) Main Bet conviction 재검증 필요.
+- [hbm-market.md Update 2026-05-25](../concepts/hbm-market.md) 및 [dram-market-share.md Update 2026-05-25](../concepts/dram-market-share.md) 교차 참조.
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §4, §5

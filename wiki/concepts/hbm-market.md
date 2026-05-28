@@ -173,3 +173,32 @@ SemiAnalysis는 Micron이 자격 자체를 못 따고 사실상 배제된다고 
 > **뉘앙스 변화**: 권 교수의 이전 발언(2026-04-11)에서는 SK-TSMC를 "TSMC 인질 위기"로 표현했으나, 본 영상(2026-05-01)에서는 "연합군"으로 표현. 같은 구조에 대한 두 관점 → SK 입장에서는 인질·삼성 입장에서는 경쟁 연합군.
 
 **출처**: [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — HBM 점유 Q3 2025 SK 57% vs Samsung 22%, Rubin 2/3+ SK 락인
+
+Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
+
+### Q3 2025 HBM 매출 점유율
+
+| 공급사 | Q3 2025 HBM 점유 |
+|---|---|
+| **SK hynix** | **57%** |
+| **Samsung** | **22%** |
+| Micron | (잔여 ~21%) |
+
+→ MS Hwang: "SK Hynix is clearly an outstanding **AI Winner** in Asia"
+
+### NVIDIA Rubin HBM4 공급량
+
+- **SK hynix가 Rubin HBM4 공급량의 2/3 이상 확보** (현지 언론)
+- → [Update 2026-05-19] 섹션의 (β) SemiAnalysis 시나리오(Micron 자격 불가, SK 70%+ 흡수)에 가까운 결과
+- UBS 18% Micron 진입 추정(α 시나리오)과 충돌 — Counterpoint·SemiAnalysis 진영이 우세
+
+### Samsung 함의
+
+- [scenario-B.md](../scenarios/scenario-B.md) Main Bet KPI(**HBM 28%+ 회복**)가 Q3 2025 시점 **22%로 미달** — Main Bet conviction 시험
+- Rubin 2/3+ SK 락인 = Samsung Rubin 진입 여지 매우 좁음. HBM4E 세대로 회복 베팅 필요.
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §5

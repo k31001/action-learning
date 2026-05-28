@@ -350,3 +350,23 @@ Samsung 입장에서 (β)가 현실화되면 Rubin HBM4 점유 28→35% 진입 �
 4. **DDR4/1α long life cycle 시장 진입 검토**: 자동차·국방·산업·항공우주 메모리는 Samsung 약점. 현재 Samsung은 leading-edge·HBM 비중이 압도적. 별도 검토 트랙으로 [strategies/core/current-state-sd2-industrial-ai-memory.md](../strategies/core/current-state-sd2-industrial-ai-memory.md)에서 다룰 후보.
 
 **출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — Q1 FY26 분기 매출 사상 최고 $13.6B
+
+Counterpoint Research (2025-12-18, Jeongku Choi):
+
+- **Micron Q1 FY26 (9~11월 2025)**: 매출 **$13.6B** — 분기 사상 최고
+- **+57% YoY**, **+21% QoQ**
+- Samsung·SK hynix도 동기간 사상 최고 매출 전망 (Counterpoint)
+- 견인: 64GB RDIMM 가격 Q3 2025 $255 → Q4 2025 $450 → 2026 3월 $700 목표 페이스
+- 메모리 시장 규모: 2025 **$200B** → 2026 **$400B+** 전망
+
+### Samsung 함의
+
+- Micron 분기 $13.6B × 4분기 = 연 ~$54B 페이스 → CHIPS Act 보조금 + $200B 미국 캐파 약정의 자금원 확인
+- 가격 효과가 매출 성장 +57% YoY의 주요 동인 — 출하량 증가는 부차적
+- 위 [Update 2026-05-22] Bloomberg 인터뷰에서 Mehrotra CEO의 "shortage well beyond 2026" 발언과 정합
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §2

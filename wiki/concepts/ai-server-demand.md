@@ -165,3 +165,32 @@
 토큰 양 폭증 = 메모리 수요 폭증의 직접 증거.
 
 **출처**: [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md), [youtube-kwon-cycle-formula-2026-05-21.md](../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — NVIDIA LPDDR 피벗 = "seismic shift"
+
+Counterpoint Research (2025-11-19, MS Hwang + Ivan Lam):
+
+### NVIDIA의 LPDDR 전환
+
+- NVIDIA는 AI 서버 전력 절감을 위해 **DDR5 → LPDDR**(스마트폰용 저전력 메모리) 채택
+- MS Hwang 인용: "Nvidia's recent pivot to LPDDR means they're a **customer on the scale of a major smartphone maker** — a **seismic shift for the supply chain** which can't easily absorb this scale of demand"
+
+### 결과 — 가격 역전
+
+- **DDR4 ~$2.10/Gb** (모바일·산업·구형) > **DDR5 ~$1.50/Gb** (서버용)
+- 구형·저전력 메모리 공급 공백 확대
+
+### 메모리 수요 구조의 영구적 변화
+
+- 종래 분리: 서버=DDR5/HBM, 모바일=LPDDR
+- NVIDIA 피벗 이후: **AI 서버까지 LPDDR 흡수** → 모바일 OEM과 직접 캐파 경쟁
+- 스마트폰 시장 -2.1% 수축([steep/economy.md](../steep/economy.md))의 주요 원인 중 하나
+
+### Samsung 함의
+
+- LPDDR 캐파는 Samsung의 [전통 강점 영역]. LPDDR6 세대 진입에서 NVIDIA 직접 채택 가능성을 [current-state-mb4-custom-ai-memory.md](../strategies/core/current-state-mb4-custom-ai-memory.md)와 연계 검토 필요.
+- HBM 잠식 3× + LPDDR NVIDIA 흡수의 이중 압박 → DDR4·LPDDR4 라인 캐파 부족 장기화
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §1

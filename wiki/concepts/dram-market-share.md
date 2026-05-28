@@ -210,3 +210,27 @@ SanDisk(현 Western Digital)와 Kioxia는 1991년부터 일본 욧카이치(四�
 
 - **수집일**: 2026-05-05
 - **출처**: 각사 IR, TrendForce, Bloomberg, UBS 리서치, Morgan Stanley
+
+---
+
+## [Update 2026-05-25] Counterpoint — Q4 2025 메모리 매출 1위·OPM
+
+Counterpoint Research (2026-01-29, Jeongku Choi):
+
+### Q4 2025 메모리 매출 1위 — Samsung 탈환
+
+- **Samsung 메모리 매출**: KRW **37.1조 = $25.9B** ($26B)
+- Samsung이 SK hynix를 누르고 **메모리 매출 1위 탈환**
+- 동인: HBM·서버 DRAM·일반 DRAM 가격 동반 상승
+
+### Q4 2025 영업이익률 — SK hynix 압도
+
+- **SK hynix 메모리 OPM: 58%** (역대 최고)
+- 매출 1위는 잃었으나 **마진은 SK hynix가 압도적 우위**
+
+### 함의
+
+- 매출 vs 마진의 분리: Samsung은 매출 기준 1위 회복했으나, 사이클 평균 수익성은 SK hynix가 우위.
+- [samsung.md Update 2026-05-25](../entities/samsung.md), [sk-hynix.md Update 2026-05-25](../entities/sk-hynix.md) 참조.
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §4

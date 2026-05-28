@@ -131,6 +131,7 @@
 - [sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md) — 권석준 (동아일보): HBM6 2026 H2·CXL "메모리 부도심"·2030년대 후반 게임 체인저
 - [sources/articles/youtube-kwon-cycle-formula-2026-05-21.md](sources/articles/youtube-kwon-cycle-formula-2026-05-21.md) — 권석준 (연합): Q1 폭증·5종 메모리 다발·사이클 공식 변화·터보퀀트 역설
 - [sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md](sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) — Bloomberg TV: Micron CEO Mehrotra 미국 캐파 10→40%·LTA·"discipline"
+- [sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md](sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) — Counterpoint 7건 묶음(2025-11~2026-04): 90% QoQ 폭등·DRAM OPM 60%>HBM·NVIDIA LPDDR 피벗·LTA 사이클 평탄화·SK hynix HBM 57%·스마트폰 -2.1%
 
 > `sources/filings/`, `sources/papers/`, `sources/raw-notes/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
 

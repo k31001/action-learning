@@ -187,3 +187,28 @@ Bloomberg TV 인터뷰 (2026-05-22, Manassas VA 1α DRAM 양산 개시 행사)�
 - **실행 보강**: 분기 IR에서 "Convertible Capacity" 공시 시 "Micron CEO도 동일 원칙"을 외부 커뮤니케이션 근거로 활용 가능.
 
 **출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — 3분기 연속 단계 인상 + LTA 락인 = 옵션형 캐파 운영의 결정적 환경
+
+Counterpoint Research 시리즈 (2025-11 ~ 2026-04):
+
+### 3분기 연속 단계 인상
+
+- 2025 YTD DRAM **+50%** → Q4 2025 추가 **+30%** → 2026 초 추가 **+20%** (총 약 130% 누적)
+- Q1 2026 단일 분기 **+80~90% QoQ** (DRAM·NAND·HBM 모두)
+
+### LTA 락인이 옵션형 캐파에 미치는 영향
+
+- Microsoft·Google이 SK hynix와 3년 DRAM LTA + 선급금 계약 중 ([§7](../../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md))
+- → LTA로 락인된 캐파는 옵션 행사 자유도 축소 — **옵션 캐파는 LTA 외 잔여분에 집중**
+- 신규 RS-1 운영 원칙: **"LTA 캐파 + 옵션 캐파"의 명시적 분리 회계**
+
+### Counterpoint MS Hwang 인용
+
+> "NVIDIA's pivot to LPDDR — a **seismic shift for the supply chain** which can't easily absorb this scale of demand"
+
+→ 수요 측 충격이 옵션 행사 가속을 요구할 수 있는 환경. Shell 선행 + 장비 단계화 + **mix 전환권 (HBM ↔ 범용 DRAM ↔ LPDDR)**의 3축 옵션이 모두 가치를 발휘하는 국면.
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §1, §6, §7

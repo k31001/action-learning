@@ -101,3 +101,36 @@ SemiAnalysis Vera Rubin (2026-02-25) "Micron is effectively out of the picture f
 - **2027 H1**: SK 70% 유지 여부 — 80%까지 흡수하면 Samsung 진입 여지 축소
 
 **출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — Main Bet KPI 사실 직시 (HBM 22% vs 28% 목표)
+
+### 사실 직시
+
+Counterpoint Research (2026-01-29):
+- **Q3 2025 HBM 매출 점유율**: SK hynix **57%** vs Samsung **22%**
+- **NVIDIA Rubin HBM4 공급**: SK hynix **2/3 이상** 락인
+- **FY2025 OP**: SK hynix 47.2조 > Samsung 전사 43.6조 (Samsung 메모리만 24.9조)
+
+### Main Bet KPI 재평가
+
+- Main Bet KPI = "HBM 점유 **28%+** 회복" (시나리오 B)
+- Q3 2025 시점 **22% — 6%pt 미달**
+- 또한 Rubin 2/3+ SK 락인은 [hbm-market.md Update 2026-05-19](../concepts/hbm-market.md)의 (β) SemiAnalysis 시나리오와 정합 → Micron 자격 불가 + SK 70%+ 흡수가 현실화 중
+
+### 결론 — Main Bet 확률 유지 (30~35%), 비중·KPI 재조정 필요
+
+- **확률 가중치는 유지**: B 시나리오의 macro 가정(AI 지속 + 미중 공존)은 여전히 가장 정합. Counterpoint 데이터는 시나리오 가정이 아닌 **Samsung 내부 진척의 부진**을 보여줌.
+- **KPI 재조정 후보**:
+  - HBM 28%+ → **HBM4E 25%+ + HBM5 30%+** (단계별)
+  - Rubin 진입 → **Rubin Ultra/post-Rubin (2027~)** 시점으로 윈도우 이동
+- **conviction 동인**: 권 교수의 IDM 모델([samsung.md Update 2026-04-11](../entities/samsung.md))이 HBM4E·HBM5에서 차별화 우위를 만들 수 있는지에 좌우
+
+### 모니터링 갱신
+
+- **2026 Q3**: Rubin 초기 출하 시 SK 점유 실측 — 70% 이상이면 Samsung Rubin 진입 사실상 종결
+- **2026 Q4**: Samsung HBM4 NVIDIA 인증 회복 진척
+- **2027 H1**: HBM4E 샘플링 단계 Samsung-NVIDIA 협력 신호
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §4, §5

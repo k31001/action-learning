@@ -308,3 +308,37 @@ SK하이닉스는 HBM4 로직다이를 TSMC N12 공정에 외주. 권석준 교�
 - HBM4E 세대 로직다이 공급사 변경 신호
 
 **출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — FY2025 OP 47.2조, Q4 OPM 58%, HBM 57%
+
+Counterpoint Research (2026-01-29):
+
+### FY2025 영업이익 — 사상 최초 Samsung 전사 추월
+
+- **SK hynix FY2025 OP: KRW 47.2조**
+- Samsung Electronics 전사 OP: KRW 43.6조
+- Samsung 메모리사업부만: KRW 24.9조
+- → SK hynix 메모리 단일 OP가 **Samsung 메모리 사업부 OP의 약 1.9배**
+
+### Q4 2025 메모리 OPM — 역대 최고
+
+- **SK hynix 메모리 OPM: 58%** (Q4 2025)
+- 매출 1위는 Samsung에 내줬으나 **마진 우위는 압도적**
+
+### HBM 점유율 (Q3 2025)
+
+- **SK hynix HBM 점유: 57%** (vs Samsung 22%)
+- **NVIDIA Rubin HBM4 공급의 2/3 이상 확보**
+
+### MS Hwang (Counterpoint Research Director) 평가
+
+> "SK Hynix is clearly an outstanding **'AI Winner' in Asia**"
+
+### Samsung 입장에서의 함의
+
+- SK hynix 단일 메모리 OP 47.2조 = Samsung 시나리오 B Main Bet의 **상한선** (Samsung이 HBM 회복 + 일반 DRAM 마진 정상화로 도달할 수 있는 최대치 기준점)
+- Rubin 2/3+ 락인 = Samsung Rubin 진입 여지 극히 좁음 → HBM4E 세대로 회복 베팅 필수
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §4, §5

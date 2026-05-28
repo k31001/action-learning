@@ -126,3 +126,42 @@
 - 권 교수 관점에서 [RS1 옵션형 캐파](../strategies/invariant/rs1-options-based-capacity.md)의 "라인별 mix 전환권"은 단순 옵션이 아니라 **수익 극대화 자체의 핵심 도구**
 
 **출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — Q1 2026 90% 폭등 + DRAM OPM 60% > HBM
+
+### 핵심 수치 — Counterpoint Memory Price Tracker (2026-02-05)
+
+- **Q1 2026 메모리 가격 QoQ**: **80~90% 상승** (DRAM·NAND·HBM 모두 사상 최고)
+- **64GB DDR5 RDIMM 계약가**:
+
+| 시점 | 가격 |
+|---|---|
+| Q3 2025 | $255 |
+| Q4 2025 | **$450** |
+| Q1 2026 (Counterpoint 2/5 시점) | **>$900** |
+| Q2 2026 (전망) | **$1,000+** |
+
+- **DRAM 영업이익률**: Q4 2025 **60%대** 진입 — **사상 처음 일반 DRAM 마진이 HBM 계약 마진을 초과**
+- 2026 Q1: 일반 DRAM 마진이 **역사적 최고치 초과** 예상
+
+### 가격 역전 — NVIDIA LPDDR 피벗 (2025-11-19 Counterpoint)
+
+- **DDR4** (구형 / 모바일·산업): **~$2.10/Gb**
+- **DDR5** (서버용): **~$1.50/Gb**
+- → 역전 원인: NVIDIA의 AI 서버 전력 절감용 LPDDR 채택 + HBM 캐파 잠식이 DDR4/LPDDR4 공급 공백을 확대
+
+### 단계 인상 누적
+
+- DRAM YTD 2025: 약 +50%
+- + Q4 2025: 추가 +30%
+- + 2026 초: 추가 +20%
+- → **2026년 말 64GB RDIMM은 2025년 초 대비 약 2배**
+
+### Samsung 함의
+
+- **호황 정점 신호 결정적 확인**: 일반 DRAM 마진 > HBM 마진은 [rs5-financial-discipline-reinvestment.md](../strategies/invariant/rs5-financial-discipline-reinvestment.md)의 호황기 절제 명분 정점
+- DDR4/LPDDR4 라인 전환 의사결정 압력 ↑ (HBM 잠식 vs 가격 역전 수익 사이의 trade-off)
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §1, §6

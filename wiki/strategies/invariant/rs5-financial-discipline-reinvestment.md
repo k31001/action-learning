@@ -221,3 +221,25 @@ Bloomberg TV 인터뷰 (2026-05-22)에서 Mehrotra CEO는 **"discipline"/"discip
 - **벤치마크 갱신**: 사이클 절제 벤치마크에 Nucor·ExxonMobil에 더해 **Micron 2026 $200B/10년 공시 페이스**를 추가 — 동시대 메모리 경쟁사 사례.
 
 **출처**: [bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — 일반 DRAM OPM > HBM, 호황 정점 신호 결정적 확정
+
+Counterpoint Memory Price Tracker (2026-02-05, Jeongku Choi):
+
+- **Q4 2025 DRAM 영업이익률 60%대** 진입 — **사상 처음 일반 DRAM 마진이 HBM 계약 마진을 초과**
+- **Q1 2026: 일반 DRAM 마진이 역사적 최고치 초과** 예상
+- 가격 변화: 64GB RDIMM Q4 2025 $450 → Q1 2026 >$900 → Q2 2026 $1,000+ 전망
+
+### RS-5 호황기 절제 — 결정적 정점 신호
+
+본 페이지 [Update 2026-05-19]에서 SemiAnalysis(2026-03-12)의 "DDR 마진 HBM 근접/초과" 신호로 **강화**했던 호황기 절제 원칙이, Counterpoint의 명시적 60% OPM + HBM 초과 확정으로 **결정적 정점 신호** 단계 진입.
+
+### 추가 실행 항목 (위 [2026-05-22] 항목에 누적)
+
+- **2026 Q2~Q3 다운턴 진입 대비 cushion 확보**: 현금 보유 비중 상한 일시 해제, capex 동결 옵션 분기별 재승인 강화
+- **자사주 매입 보류 연장**: 2026 EBITDA 폭증 분기에도 자사주 매입 후순위 — Counterpoint OPM 60% 진입 시점은 통상 사이클 정점 12~18개월 전
+- **다운턴 진입 시점 예측 KPI 추가**: "일반 DRAM OPM이 HBM OPM 초과" 자체를 사이클 정점 EWI로 정식 등재 검토
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §6

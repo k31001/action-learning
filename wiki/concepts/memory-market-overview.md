@@ -98,3 +98,17 @@
 → 시나리오 플래닝 방법론의 본질과 정합. 본 위키의 5개 시나리오(A·B·C·D·E)와 EWI 모니터링 체계가 권 교수가 권고한 "변신 능력"의 구현체.
 
 **출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)
+
+---
+
+## [Update 2026-05-25] Counterpoint — 메모리 시장 $200B → $400B+
+
+Counterpoint Research (2025-12-18, Jeongku Choi):
+
+- **2025년 글로벌 메모리 시장: $200B 최초 돌파**
+- **2026년 전망: $400B+** (1년 만에 2배)
+- 견인: 가격(80~90% QoQ surge), HBM 단가, AI 서버 수요. 출하량 증가는 부차적.
+
+→ 기존 시장 전망([Yole·Mordor·Precedence] $1.7T → $5.5T → $8.4T 장기 추세) 안에서 2026년 단년 도약이 정상치를 크게 상회.
+
+**출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §2
