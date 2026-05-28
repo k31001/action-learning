@@ -38,16 +38,19 @@ export const COMPETITOR_DATA = {
   },
 
   // HBM 시장 점유율 변화 (%) — 시간순
+  // 출처: Astute Group (2024~Q3 2025 매출 점유), Counterpoint Research (Q3 2025 재추정 + Rubin)
+  // ※ Counterpoint Q3 2025 추정: SK 57 / Samsung 22 / Micron 21 (Astute보다 SK 우위 더 큼) — Counterpoint 행 별도 표시
   hbmShareTrend: {
     title: 'HBM 시장 점유율 변화 (제조사별)',
-    source: 'Astute Group, Counterpoint Research',
+    source: 'Astute Group, Counterpoint Research (Q3 2025 두 기관 추정 병기)',
     unit: '%',
     data: [
-      { period: '2023',     skhynix: 50, samsung: 40, micron: 10 },
-      { period: '2024',     skhynix: 54, samsung: 39, micron: 7  },
-      { period: 'Q2 2025',  skhynix: 62, samsung: 17, micron: 21 },
-      { period: 'Q3 2025',  skhynix: 53, samsung: 35, micron: 11 },
-      { period: '2026E',    skhynix: 50, samsung: 30, micron: 20 },
+      { period: '2023',                  skhynix: 50, samsung: 40, micron: 10 },
+      { period: '2024',                  skhynix: 54, samsung: 39, micron: 7  },
+      { period: 'Q2 2025',               skhynix: 62, samsung: 17, micron: 21 },
+      { period: 'Q3 2025 (Astute)',      skhynix: 53, samsung: 35, micron: 11 },
+      { period: 'Q3 2025 (Counterpoint)', skhynix: 57, samsung: 22, micron: 21 },
+      { period: '2026E',                 skhynix: 50, samsung: 30, micron: 20 },
     ],
   },
 
@@ -61,6 +64,10 @@ export const COMPETITOR_DATA = {
       { date: '2026-Q1', actor: 'SK하이닉스', event: '영업이익률 72% — HBM4 수요가 향후 3년치 생산 용량 초과' },
       { date: '2026-05', actor: 'SK하이닉스', event: 'M15X 팹 클린룸 1호 완공 — HBM3E·HBM4 혼합 생산' },
       { date: '2026',    actor: '삼성전자',   event: 'HBM3E 고객 인증 확대 + HBM4 양산으로 30%+ 점유율 회복 목표' },
+      { date: '2025-Q4', actor: '삼성전자',   event: '메모리 매출 1위 회복 $25.9B (Counterpoint) — 단 SK FY25 OP 47.2조 > Samsung 전사 43.6조' },
+      { date: '2026-01', actor: '시장',       event: '64GB DDR5 RDIMM $450 → Q1 2026 >$900 (Counterpoint) — DRAM OPM 60% 사상 첫 HBM 초과' },
+      { date: '2026',    actor: 'NVIDIA',     event: 'AI 서버용 LPDDR 피벗 — 스마트폰 OEM 1곳 규모 신규 수요 (Counterpoint "seismic shift")' },
+      { date: '2026-05', actor: 'Micron',     event: '미국 DRAM 10% → 40% (10년) $200B 약정 — Manassas DDR4/1α 양산 개시 (Bloomberg)' },
     ],
   },
 

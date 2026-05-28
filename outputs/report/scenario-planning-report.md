@@ -29,7 +29,11 @@
 |------|------|---------|
 | Samsung Q1 2026 메모리 매출 | $50.4B (+292% YoY) | 호황의 정점 |
 | 빅테크 4사 AI CapEx 2026 | $725B (+77% YoY) | Microsoft만 메모리 가격 영향 $25B 인정 |
-| HBM4 NVIDIA Rubin 점유율 | SK 70% / Samsung 28% / Micron 18% (UBS) | 삼성 회복 궤도이나 1번 자리 미확보 |
+| HBM4 NVIDIA Rubin 점유율 | SK 70% / Samsung 28% / Micron 18% (UBS) ↔ Counterpoint·현지언론 "SK 2/3+ 락인" | 삼성 회복 궤도이나 1번 자리 미확보. Rubin 진입 여지 좁아짐 |
+| HBM 점유율 (Q3 2025) | Samsung 22% / SK 57% / Micron 21% (Counterpoint, 2026-01) | Main Bet KPI(28%+) -6%pt 미달 — HBM4E·HBM5 윈도우 이동 검토 |
+| Q4 2025 메모리 매출 1위 | Samsung $25.9B 탈환 (Counterpoint) — 단 SK FY25 OP 47.2조 > Samsung 전사 43.6조 | 매출 회복 ↔ 마진 격차 잔존 |
+| Q1 2026 DRAM 가격 | 64GB DDR5 RDIMM Q4 $450 → Q1 >$900 → Q2 $1,000+ (Counterpoint) | 90% QoQ, DRAM OPM 60% 사상 첫 HBM 초과 — 정점 신호 |
+| Micron 미국 캐파 | 10% → 40% (10년) $200B 약정 (Bloomberg 2026-05, CEO Mehrotra) | 미국 메모리 자급 비중 상승 — 시나리오 A 강화 압력 |
 | HBM 수요 성장 (2026/2027) | +77% / +68% YoY | 공급 부족 2027년까지 지속 |
 | 텍사스 테일러 CHIPS 보조금 | $4.745B 확정 (목표 $6~8B의 60~80%) | 2단계 추가 협상 필수 (Decision 8) |
 | CXMT HBM3 양산 | 2026년 개시, 월 60K 웨이퍼 | 2027년 HBM3E, 2028년 HBM4 위협 |
@@ -99,9 +103,13 @@ HBM 시장에서의 점유율 변화가 전체 DRAM 패권을 뒤흔들고 있�
 | DRAM 점유율 (Q3 2025) | **32.6%** | **33.2%** | 25.7% |
 | HBM 점유율 (2023) | 40% | 50% | 10% |
 | HBM 점유율 (Q2 2025) | **17%** | **62%** | 21% |
-| HBM 점유율 (Q3 2025 반등) | 35% | 53% | 11% |
+| HBM 점유율 (Q3 2025, Astute) | 35% | 53% | 11% |
+| HBM 점유율 (Q3 2025, Counterpoint) | **22%** | **57%** | 21% |
+| FY2025 영업이익 (조 원) | 24.9 (메모리만) / 43.6 (전사) | **47.2** (사상 최초 Samsung 전사 초과) | — |
 
-SK하이닉스는 NVIDIA H100/H200/B200 시리즈의 HBM3E 주요 공급업체로 확고한 입지를 구축했으며, UBS는 NVIDIA 루빈(Rubin) 플랫폼 HBM4 시장에서도 SK하이닉스가 70% 점유를 전망하고 있다. 마이크론은 2024년 7%에서 Q2 2025년 21%로 HBM 점유율을 3배 이상 성장시켰다. 중국의 CXMT·YMTC는 2025년 Q3 기준 합산 약 8~10%로 범용 메모리 시장 진입을 가속하고 있다.
+SK하이닉스는 NVIDIA H100/H200/B200 시리즈의 HBM3E 주요 공급업체로 확고한 입지를 구축했으며, UBS는 NVIDIA 루빈(Rubin) 플랫폼 HBM4 시장에서도 SK하이닉스가 70% 점유를 전망하고 있다. **Counterpoint Research(2026-01)와 현지 언론은 한 단계 더 나아가 SK하이닉스가 Rubin HBM4 공급량의 2/3 이상을 이미 락인했다고 평가한다.** 마이크론은 2024년 7%에서 Q2 2025년 21%로 HBM 점유율을 3배 이상 성장시켰다(단 Q3 2025 Astute는 11%, Counterpoint는 21%로 두 기관 추정이 갈림). **Counterpoint MS Hwang은 SK하이닉스를 "outstanding AI Winner in Asia"로 평가했다.** 중국의 CXMT·YMTC는 2025년 Q3 기준 합산 약 8~10%로 범용 메모리 시장 진입을 가속하고 있다.
+
+**삼성전자 함의 (2026-05-25)**: Q3 2025 HBM 점유율은 Astute 기준 35%, Counterpoint 기준 22%로 기관 간 격차가 크다. Main Bet KPI("HBM 28%+ 회복")는 Astute 기준 충족, Counterpoint 기준 6%pt 미달. **두 기관의 평균(약 28%)이 실제 시장 진실에 가깝다고 가정하면 KPI는 경계선 수준이며, Rubin 2/3+ SK 락인이 사실이면 HBM4E·HBM5(2027~) 세대로 KPI 윈도우를 이동하는 것이 안전.**
 
 ### 2.3 삼성전자의 강점과 약점
 
@@ -278,7 +286,9 @@ quadrantChart
 
 **전제 조건**: ① AI ROI 실현(2027~2028년), ② 미중 반도체 무역 타협(범용 DRAM·NAND 허용), ③ 삼성 HBM4E 기술 추격 성공, ④ 시안 팹 부분 운영 지속.
 
-**2026년 현재 Evidence**: 빅테크 4사 CapEx $650~725B(강한 Pole A 모멘텀) + H20 재허용·MATCH 법안 위원회 미통과(공존 방향 신호) + 삼성 HBM 점유율 Q3 2025 35% 반등(추격 궤도 진입). **현재 가장 가능성 높은 시나리오(30~35%).**
+**2026년 현재 Evidence**: 빅테크 4사 CapEx $650~725B(강한 Pole A 모멘텀) + H20 재허용·MATCH 법안 위원회 미통과(공존 방향 신호) + 삼성 HBM 점유율 Q3 2025 35% 반등(Astute 기준 추격 궤도 진입). **현재 가장 가능성 높은 시나리오(30~35%).**
+
+**Main Bet KPI 사실 직시 [2026-05-25 Counterpoint·Bloomberg·SemiAnalysis 통합 신호]**: Counterpoint(2026-01) Q3 2025 HBM 점유 22% / SK 57% / Rubin 2/3+ SK 락인 → Main Bet 진행은 Astute·Counterpoint 사이 기관 격차에 가려져 있으나 보수적으로 보면 6%pt 미달. SemiAnalysis(2026-02)는 "Micron is effectively out of the picture for Rubin HBM4"로 (β) 시나리오 가속. Q1 2026 DRAM OPM 60%(Counterpoint)가 HBM 마진을 사상 첫 초과 → 호황 정점 12~18개월 전 신호로 RS-1·RS-5 절제 격상. Micron CEO Mehrotra(Bloomberg 2026-05)의 "shortage well beyond 2026" + "with discipline" 4회 발언은 경쟁사 동시 절제 환경을 확인 → Samsung 단독 절제 점유율 손실 우려 약화. **결론: Main Bet 확률(30~35%) 유지하되 KPI 윈도우를 HBM4E·HBM5(2027~)로 이동, Rubin 진입 포기 옵션 사전 평가, HBM4 잔여 인증·MB-4 커스텀 HBM·하이퍼스케일러 ASIC 공동개발 가속.**
 
 ### 5.4 시나리오 C: "기술 냉전"
 
