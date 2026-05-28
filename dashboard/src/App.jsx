@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { triggerAutoUpdate } from './hooks/useMarketData'
-import { Activity, BarChart3, Compass, Crosshair, Palette, Square } from 'lucide-react'
+import { Activity, BarChart3, Compass, Crosshair, Palette, Square, History } from 'lucide-react'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
 import IndicatorGrid from './components/IndicatorGrid'
@@ -14,6 +14,7 @@ import ScenarioPlanning from './components/ScenarioPlanning'
 import Strategies from './components/Strategies'
 import DesignSystem from './components/apple-hig/DesignSystem'
 import CarbonSystem from './components/carbon/CarbonSystem'
+import Updates from './components/Updates'
 import { VERSION } from './version'
 
 // 최상단 페이지 탭
@@ -22,6 +23,7 @@ const TOP_TABS = [
   { id: 'visualization', label: 'Data Visualization',      icon: BarChart3 },
   { id: 'planning',      label: 'Scenario Planning',       icon: Compass },
   { id: 'strategy',      label: 'Strategy',                icon: Crosshair },
+  { id: 'updates',       label: '업데이트 내역',            icon: History },
   { id: 'design',        label: 'Design System',           icon: Palette },
   { id: 'carbon',        label: 'Carbon',                  icon: Square },
 ]
@@ -185,6 +187,7 @@ export default function App() {
         {topTab === 'visualization' && <DataVisualization />}
         {topTab === 'planning'      && <ScenarioPlanning />}
         {topTab === 'strategy'      && <Strategies />}
+        {topTab === 'updates'       && <Updates />}
         {topTab === 'design'        && <DesignSystem />}
         {topTab === 'carbon'        && <CarbonSystem />}
       </main>

@@ -14,6 +14,33 @@
 
 ---
 
+## [2026-05-25] build | dashboard 신규 탭 "업데이트 내역" 추가 (v2.7.8 → v2.8.0)
+
+사용자 요청: dashboard에 새로운 내용이 반영됐을 때 업데이트 날짜·핵심 내용을 한 곳에서 확인할 수 있는 메뉴 신설.
+
+**구조**:
+- 신규 컴포넌트: `dashboard/src/components/Updates.jsx` — 타임라인 카드 + 필터 칩 + 펼침/접기 + 통계 상자
+- 신규 데이터: `dashboard/src/data/updates.js` — 시간 역순 큐레이션 (date·type·version·title·summary·tags·items·links). 매 ingest/build 사이클 종료 시 entry 추가가 컨벤션.
+- `App.jsx` TOP_TABS에 History 아이콘 + "업데이트 내역" 5번째 탭(Strategy 다음)으로 삽입.
+
+**초기 채워진 entries**: 최근 9건 (Counterpoint sync v2.7.8, Counterpoint ingest, Bloomberg Micron ingest, 권석준 3건 v2.7.5~v2.7.7, SemiAnalysis 등). 그 이전 entries는 log.md에서 추후 큐레이션.
+
+**필터**: 타입(전체/Ingest/Build/Query) + 태그 다중 필터. 통계 상자 4종 (총·ingest·build·최신 일자).
+
+**의도적 미반영**:
+- log.md 자동 파싱: 향후 build hook으로 자동화 가능하나 현재는 수동 큐레이션이 더 정확 — entry당 사람이 정한 우선순위·태그·item 분류가 가치 있음
+- 사용자 알림(unread badge): 다음 build에서 검토 — 현재 dashboard에 alerting 채널이 없어 사이클·시각만으로 충분
+
+**version**: `v2.7.8 → v2.8.0` (마이너 — CLAUDE.md §6 규칙 "페이지/탭 추가, 새 데이터 카테고리")
+
+**검증**: `npm run build` ✓ 2.75s · 2,339 modules · 914.9 kB JS (이전 898.6 kB 대비 +16.3 kB)
+
+영향받은 파일:
+- 신규: `dashboard/src/components/Updates.jsx` · `dashboard/src/data/updates.js`
+- 갱신: `dashboard/src/App.jsx` (import + TOP_TABS + 분기) · `dashboard/src/version.js`
+
+---
+
 ## [2026-05-25] ingest | Counterpoint Research 메모리 시리즈 7건 (2025-11 ~ 2026-04)
 
 counterpointresearch.com 인바운드 수집 — WebFetch는 JS 렌더링/구독 제한, WebSearch 스니펫 + 3자 보도(EE Times·Tom's Hardware·CNBC·The Register 등) 교차 검증으로 본문 추출.
