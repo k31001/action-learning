@@ -13,11 +13,26 @@ const RANGE_OPTIONS = [
   { label: '전체', months: Infinity },
 ]
 
+// "2023Q1" / "2024-06" / "2025-06-15" 등 다양한 포맷 파싱.
+// 분기 표기(YYYYQN)는 native Date 가 파싱 못 하므로 별도 처리.
+function parseDate(val) {
+  if (!val) return null
+  if (typeof val === 'string') {
+    const q = val.match(/^(\d{4})Q([1-4])$/i)
+    if (q) return new Date(Number(q[1]), (Number(q[2]) - 1) * 3, 1)
+  }
+  const d = new Date(val)
+  return isNaN(d) ? null : d
+}
+
 function filterByRange(data, months, dateKey = 'date') {
   if (months === Infinity) return data
   const cutoff = new Date()
   cutoff.setMonth(cutoff.getMonth() - months)
-  return data.filter(d => new Date(d[dateKey]) >= cutoff)
+  return data.filter(d => {
+    const dt = parseDate(d[dateKey])
+    return dt && dt >= cutoff
+  })
 }
 
 function tickDate(str) {
