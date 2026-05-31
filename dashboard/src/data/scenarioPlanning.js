@@ -177,7 +177,7 @@ export const SCENARIOS_DATA = {
     {
       id: 'A', name: '황금 요새', color: '#1d4ed8',
       df1: 'AI 지속',     df2: '디커플링',
-      probability: 27,
+      probability: 27,  // 2026-05-31 동기화 — indicators.js SCENARIOS 기준
       summary: '서방 AI 공급망 내 HBM 수요 폭발. 시안 팹 상실 + 서방 시장 프리미엄 급등',
       threats: ['시안 팹 상실', '대중 HBM 봉쇄', '공급 다각화 압박'],
       opportunities: ['서방 AI 듀오폴리', 'HBM 단가 프리미엄', '텍사스 팹 CHIPS 보조금'],
@@ -186,7 +186,7 @@ export const SCENARIOS_DATA = {
     {
       id: 'B', name: 'AI 르네상스', color: '#059669',
       df1: 'AI 지속',     df2: '관리된 공존',
-      probability: 32,
+      probability: 34,
       summary: 'AI 글로벌 성장 + 중국 시장 부분 접근 유지. 최상의 성장 환경, 가장 가능성 높음. [2026-05-25] Main Bet KPI(HBM 28%+) Q3 2025 22% (Counterpoint) — 6%pt 미달. Rubin 2/3+ SK 락인 진행 중 → KPI 윈도우 HBM4E·HBM5(2027~)로 이동 검토',
       threats: ['SK하이닉스 기술 격차 고착 (FY25 OP 47.2조 vs Samsung 메모리 24.9조)', 'NAND 점유율 회복 압박', 'Rubin 진입 여지 좁아짐 (SK 2/3+ 락인)'],
       opportunities: ['동서 양쪽 시장 공략', 'HBM4E·HBM5 윈도우에서 회복 베팅', '대중 일반 메모리 매출 유지', 'IDM 종합반도체 차별점 (CXL·3D DRAM·로직다이 내재화)'],
@@ -196,7 +196,7 @@ export const SCENARIOS_DATA = {
     {
       id: 'C', name: '기술 냉전', color: '#dc2626',
       df1: 'AI 거품 붕괴', df2: '디커플링',
-      probability: 12,
+      probability: 11,
       summary: 'AI 투자 급감 + 공급망 단절 동시 발생. 메모리 대규모 공급과잉 — 최악 시나리오',
       threats: ['이중 충격', '시안 팹 + 수요 급감 동시', '구조조정 불가피', '경쟁사 인수 표적'],
       opportunities: ['생존 자체가 경쟁력', 'M&A 매물 등장', '재무체력으로 기술 격차 좁히기'],
@@ -205,7 +205,7 @@ export const SCENARIOS_DATA = {
     {
       id: 'D', name: '조용한 재편', color: '#d97706',
       df1: 'AI 거품 붕괴', df2: '관리된 공존',
-      probability: 22,
+      probability: 22,  // 합계 100 유지 (B 32→34, C 12→11, E 7→6)
       summary: 'AI 과열 조정, 메모리 불황 재현. 지정학 안정화로 시장 질서는 유지',
       threats: ['2022~2023형 다운사이클 재현', '비용 경쟁 심화', 'SK 기술 우위 고착화'],
       opportunities: ['기술 격차 좁힐 시간', '내부 체질 개선', '저가 M&A 기회'],
@@ -214,7 +214,7 @@ export const SCENARIOS_DATA = {
     {
       id: 'E', name: '패러다임 전환', color: '#7c3aed',
       df1: 'AI 지속 (변형)', df2: '독립',
-      probability: 7,
+      probability: 6,
       summary: 'HBM 대신 3D DRAM·PIM·CXL이 AI 메모리 주류로 부상. 와일드카드',
       threats: ['HBM 투자 가치 급락', '잘못된 베팅 위기', 'R&D 포트폴리오 재편 압박'],
       opportunities: ['3D DRAM·PIM 선점 시 재도약', '아키텍처 다양화 리더십'],

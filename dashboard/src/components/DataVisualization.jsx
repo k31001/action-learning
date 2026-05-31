@@ -4,16 +4,18 @@ import {
   PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine,
 } from 'recharts'
-import { Users, Globe, TrendingUp, Shield, Cpu, AlertTriangle } from 'lucide-react'
+import { Users, Globe, TrendingUp, Shield, Cpu, AlertTriangle, LineChart as LineChartIcon } from 'lucide-react'
 import {
   COMPETITOR_DATA, MACRO_DATA, MARKET_DATA, POLICY_DATA, TECHNOLOGY_DATA, VIZ_COLORS,
 } from '../data/visualizations'
 import SourceLink from './SourceLink'
+import StocksPanel from './MarketPanel'   // 외부 — 실시간 주가 (Yahoo Finance)
 
 const SUB_TABS = [
   { id: 'competitor', label: 'Competitor', icon: Users },
   { id: 'macro',      label: 'Macro',      icon: Globe },
   { id: 'market',     label: 'Market',     icon: TrendingUp },
+  { id: 'stocks',     label: 'Stocks',     icon: LineChartIcon },
   { id: 'policy',     label: 'Policy',     icon: Shield },
   { id: 'technology', label: 'Technology', icon: Cpu },
 ]
@@ -867,6 +869,7 @@ export default function DataVisualization() {
       {tab === 'competitor' && <CompetitorPanel />}
       {tab === 'macro'      && <MacroPanel />}
       {tab === 'market'     && <MarketPanel />}
+      {tab === 'stocks'     && <StocksPanel />}
       {tab === 'policy'     && <PolicyPanel />}
       {tab === 'technology' && <TechnologyPanel />}
     </div>

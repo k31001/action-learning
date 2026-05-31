@@ -1,4 +1,4 @@
-// EWI 초기 데이터 — 시나리오 플래닝 보고서 기준 (2026-05-05)
+// EWI 초기 데이터 — 시나리오 플래닝 보고서 기준 (2026-05-31)
 
 // ── 4사분면 포지션 히스토리 ────────────────────────────────────────────────────
 // DF1 (df1): AI 수요 강도  -10(버블붕괴) ~ +10(슈퍼사이클)
@@ -8,16 +8,21 @@ export const INITIAL_QUADRANT_POSITIONS = [
   { key: 'oneYear',    date: '2025-05', df1: 5.0,  df2: 6.0,  note: 'HBM3E 품질 이슈, 삼성 점유율 17%' },
   { key: 'sixMonth',   date: '2025-11', df1: 5.5,  df2: 2.5,  note: 'H20 부분 재허용, 삼성 35% 반등, 디커플링 완화' },
   { key: 'threeMonth', date: '2026-02', df1: 6.5,  df2: 1.5,  note: 'MATCH법안 위원회 미통과, 공존 신호 강화' },
-  { key: 'oneMonth',   date: '2026-04', df1: 7.0,  df2: 0.5,  note: '빅테크 실적 호조, 관리된 공존 신호' },
-  { key: 'current',    date: '2026-05', df1: 7.5,  df2: 0.5,  note: 'A/B 경계 도달, B 시나리오 강한 모멘텀' },
+  { key: 'oneMonth',   date: '2026-04', df1: 7.5,  df2: 0.5,  note: '빅테크 Q1 실적 호조, 관리된 공존 신호' },
+  // 최신 기준 (2026-05-31) — Q1 매출 사상 최대 + HBM4 Sold Out 으로 DF1 +0.5,
+  // Micron $200B 미국 약정 + CXMT HBM3 양산 신호로 DF2 +0.5 (디커플링 압박 재상승)
+  { key: 'current',    date: '2026-05', df1: 8.0,  df2: 1.0,  note: 'Q1 메모리 매출 $50.4B 사상 최대 + HBM4 Sold Out / Micron US$200B 약정 + CXMT HBM3 양산' },
 ]
 
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 의 추정 범위 기반 (2026-05-31 기준)
+//   A 25~30 / B 30~35 / C 10~15 / D 20~25 / E 5~10  → 합 100 으로 정규화
+//   Q1 AI 수요 사상 최대 신호 반영해 B 살짝 상향, D/C 살짝 하향.
 export const SCENARIOS = [
   { id: 'A', name: '황금 요새', probability: 27, color: 'blue', description: 'AI 지속 + 디커플링' },
-  { id: 'B', name: 'AI 르네상스', probability: 33, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
-  { id: 'C', name: '기술 냉전', probability: 12, color: 'red', description: 'AI 붕괴 + 디커플링' },
-  { id: 'D', name: '조용한 재편', probability: 23, color: 'orange', description: 'AI 붕괴 + 공존' },
-  { id: 'E', name: '패러다임 전환', probability: 5, color: 'purple', description: 'HBM 패러다임 붕괴 (와일드카드)' },
+  { id: 'B', name: 'AI 르네상스', probability: 34, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
+  { id: 'C', name: '기술 냉전', probability: 11, color: 'red', description: 'AI 붕괴 + 디커플링' },
+  { id: 'D', name: '조용한 재편', probability: 22, color: 'orange', description: 'AI 붕괴 + 공존' },
+  { id: 'E', name: '패러다임 전환', probability: 6, color: 'purple', description: 'HBM 패러다임 붕괴 (와일드카드)' },
 ]
 
 // alertCondition:

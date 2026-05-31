@@ -1,19 +1,16 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { triggerAutoUpdate } from './hooks/useMarketData'
-import { Activity, BarChart3, Compass, Crosshair, Palette, Square, History } from 'lucide-react'
+import { Activity, BarChart3, Compass, Crosshair, History } from 'lucide-react'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
 import IndicatorGrid from './components/IndicatorGrid'
 import StatusSummary from './components/StatusSummary'
 import QuadrantMap from './components/QuadrantMap'
-import MarketPanel from './components/MarketPanel'
 import DecisionTracker from './components/DecisionTracker'
 import DataVisualization from './components/DataVisualization'
 import ScenarioPlanning from './components/ScenarioPlanning'
 import Strategies from './components/Strategies'
-import DesignSystem from './components/apple-hig/DesignSystem'
-import CarbonSystem from './components/carbon/CarbonSystem'
 import Updates from './components/Updates'
 import { VERSION } from './version'
 
@@ -24,13 +21,10 @@ const TOP_TABS = [
   { id: 'planning',      label: 'Scenario Planning',       icon: Compass },
   { id: 'strategy',      label: 'Strategy',                icon: Crosshair },
   { id: 'updates',       label: '업데이트 내역',            icon: History },
-  { id: 'design',        label: 'Design System',           icon: Palette },
-  { id: 'carbon',        label: 'Carbon',                  icon: Square },
 ]
 
 const MAIN_TABS = [
   { id: 'decisions', label: '9개 결정' },
-  { id: 'market', label: '시장 데이터' },
   { id: 'ewi', label: 'EWI 지표' },
   { id: 'triggers', label: '시나리오 트리거' },
 ]
@@ -169,7 +163,6 @@ export default function App() {
 
                 {/* Tab content */}
                 {mainTab === 'decisions' && <DecisionTracker indicators={indicators} />}
-                {mainTab === 'market' && <MarketPanel />}
                 {mainTab === 'ewi' && (
                   <div className="bg-white border border-zinc-200 rounded-xl p-4">
                     <h2 className="text-sm font-semibold text-zinc-800 mb-4">EWI 수동 지표</h2>
@@ -188,8 +181,6 @@ export default function App() {
         {topTab === 'planning'      && <ScenarioPlanning />}
         {topTab === 'strategy'      && <Strategies />}
         {topTab === 'updates'       && <Updates />}
-        {topTab === 'design'        && <DesignSystem />}
-        {topTab === 'carbon'        && <CarbonSystem />}
       </main>
     </div>
   )
