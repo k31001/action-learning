@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-02] build | 버그 수정 — 지도 마커 호버 백지 크래시 + ErrorBoundary (v2.11.1 → v2.11.2)
+- **증상**: 세계 지도 마커에 마우스를 올렸다 떼면 툴팁이 잠깐 보였다가 브라우저 전체가 하얗게 됨(사용자 제보).
+- **근본 원인**: 원에서 마우스가 벗어날 때 circle `onMouseLeave`(setHover(null))와 svg `onMouseMove`가 React18 자동 배치로 한 렌더에 묶임. move 의 함수형 업데이터 `setHover(h => ({...h, ...pos(e)}))`가 null 상태에서 실행되면 `{...null, ...pos}` → **d 없는 부분 hover 객체** 생성 → 툴팁이 `hover.d.name`/`hover.d.stage` 접근 → TypeError → 에러 바운더리 부재로 트리 전체 붕괴(백지).
+- **수정**: `WorldMap.jsx` — 업데이터를 `h ? {...h, ...pos(e)} : null` 로 가드, 툴팁 렌더 `hover && →  hover?.d &&` 방어.
+- **안전망**: `ErrorBoundary.jsx` 신설. `App.jsx` 탭 콘텐츠를 `<ErrorBoundary key={topTab}>` 로 감싸 — 어떤 컴포넌트 오류든 전체 백지 대신 격리 폴백, 탭 전환 시 자동 리셋.
+- **검증**: 헤드리스 프리뷰에서 동일 레이스(hover 세팅 → 한 task 안 leave→move) 재현. 수정본: 앱 정상 유지(map+heading 존재, root 469KB)·hover null 클리어·콘솔 오류 0. `npm run build` ✓. version v2.11.2(패치).
+- **영향 페이지**: WorldMap.jsx·ErrorBoundary.jsx(신규)·App.jsx·updates.js·version.js.
+
 ## [2026-06-02] build | AI DC 세계 지도 인터랙션 3종 (v2.11.0 → v2.11.1)
 - **무엇**: 세계 지도 뷰에 ①줌/팬(휠·드래그·버튼) ②색상 기준 토글(권역↔단계) ③마커 클릭 시 상세 표 해당 행으로 스크롤·하이라이트 추가.
 - **왜**: 사용자 요청 — 밀집 지역 확대, 단계 색 구분, 지도↔표 연동.

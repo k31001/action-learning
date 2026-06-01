@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-02 (d) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-06-02',
+    type: 'build',
+    version: 'v2.11.2',
+    title: '버그 수정 — 지도 마커 호버 시 백지(white screen) 크래시',
+    summary:
+      '세계 지도 마커에 마우스를 올렸다 떼면 툴팁이 잠깐 보였다가 화면 전체가 하얗게 되던 크래시 수정. 원인: 원에서 마우스가 벗어날 때 leave(setHover(null))와 svg move 핸들러가 한 배치로 묶이며 d 없는 hover 객체가 만들어져 툴팁 렌더에서 예외 → 트리 붕괴.',
+    tags: ['버그수정', '세계지도', 'AI 데이터센터', 'dashboard'],
+    items: [
+      { label: '근본 원인', detail: 'onMove 의 setHover(h => ({...h, ...pos(e)})) 가 h=null 일 때 {...null,...} → d 없는 부분 객체 → hover.d.* 접근 시 TypeError' },
+      { label: '수정', detail: 'WorldMap.jsx: 업데이터를 h ? {...h, ...pos(e)} : null 로 가드 + 툴팁 렌더를 hover?.d && 로 방어' },
+      { label: '안전망 추가', detail: 'ErrorBoundary.jsx 신설 — App 탭 콘텐츠를 key={topTab} 로 감싸 컴포넌트 오류 시 전체 백지 대신 격리된 폴백 표시·탭 전환 시 자동 리셋' },
+      { label: '검증', detail: '동일 레이스(leave→move 한 배치) 재현 → 수정본은 앱 정상 유지·hover null 클리어·콘솔 오류 0' },
+      { label: 'version v2.11.1 → v2.11.2 (패치)', detail: '크래시 버그 수정' },
+    ],
+    links: [
+      { label: 'WorldMap.jsx', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/src/components/WorldMap.jsx' },
+      { label: 'ErrorBoundary.jsx', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/src/components/ErrorBoundary.jsx' },
+    ],
+  },
   // ── 2026-06-02 (c) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-02',

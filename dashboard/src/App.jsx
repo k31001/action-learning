@@ -12,6 +12,7 @@ import DataVisualization from './components/DataVisualization'
 import ScenarioPlanning from './components/ScenarioPlanning'
 import Strategies from './components/Strategies'
 import Updates from './components/Updates'
+import ErrorBoundary from './components/ErrorBoundary'
 import { VERSION } from './version'
 
 // 최상단 페이지 탭
@@ -109,6 +110,7 @@ export default function App() {
           </span>
         </nav>
 
+        <ErrorBoundary key={topTab}>
         {topTab === 'ewi' && (
           <>
             {/* Status summary */}
@@ -181,6 +183,7 @@ export default function App() {
         {topTab === 'planning'      && <ScenarioPlanning />}
         {topTab === 'strategy'      && <Strategies />}
         {topTab === 'updates'       && <Updates />}
+        </ErrorBoundary>
       </main>
     </div>
   )

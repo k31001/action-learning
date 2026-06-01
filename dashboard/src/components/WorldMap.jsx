@@ -101,7 +101,9 @@ export default function WorldMap({ dcs, onSelect, selectedId }) {
       setT(prev => clampT({ ...prev, x: prev.x + dx, y: prev.y + dy }))
       if (hover) setHover(null)
     } else if (hover) {
-      setHover(h => ({ ...h, ...pos(e) }))
+      // h 가 null 이면 그대로 null 반환 — leave 와 move 가 한 배치로 묶일 때
+      // d 없는 부분 객체가 만들어져 툴팁 렌더에서 크래시하는 것을 방지
+      setHover(h => (h ? { ...h, ...pos(e) } : null))
     }
   }
   function endDrag() { dragRef.current = null }
@@ -193,7 +195,7 @@ export default function WorldMap({ dcs, onSelect, selectedId }) {
       </div>
 
       {/* 호버 툴팁 */}
-      {hover && (
+      {hover?.d && (
         <div
           className="absolute z-20 pointer-events-none bg-white border border-zinc-300 rounded-lg shadow-xl p-2.5 text-xs w-56"
           style={{ left: clamp(hover.x + 14, 4, (hover.cw || W) - 232), top: clamp(hover.y + 14, 4, (hover.ch || H) - 8) }}
