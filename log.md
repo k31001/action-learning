@@ -14,6 +14,13 @@
 
 ---
 
+## [2026-06-02] build | AI DC 트래커 세계 지도 뷰 추가 (v2.10.0 → v2.11.0)
+- **무엇**: "AI DC" 탭에 세계 지도(Equal Earth) 배경 위 데이터센터를 전력 규모(원 크기)·권역(색)으로 표시하는 지도 뷰를 추가. 마커 호버 시 위치·전력·단계·칩·상태 툴팁.
+- **왜**: 사용자 요청 — "세계 지도를 배경으로 한눈에" 보기.
+- **구현**: d3-geo + topojson-client 도입, `dashboard/src/data/world-110m.json`(world-atlas countries-110m) 번들. 신규 `WorldMap.jsx`(정적 지오메트리 모듈 1회 계산·√스케일 버블·호버 툴팁·범례). `dataCenters.js`에 DC_COORDS [lng,lat] 46건 병합(CoreWeave 포트폴리오 제외). `DataCenterTracker.jsx` KPI 아래·단계 보드 위 풀폭 카드.
+- **검증**: 런타임 확인 — 지도 SVG(179 paths)·46 마커 좌표 유효(NaN 0)·Equal Earth 비율·호버 툴팁(Meta Hyperion 등) 정상. `npm run build` ✓. version v2.11.0(마이너: 큰 UX + 좌표 데이터 카테고리).
+- **건너뜀**: wiki/report/PPTX 미변경 — 새 사실 추가 없는 순수 시각화 강화(좌표는 도시 근사). 영향 페이지: dataCenters.js·DataCenterTracker.jsx·WorldMap.jsx(신규)·world-110m.json(신규)·package.json·index.md·updates.js·version.js.
+
 ## [2026-06-02] ingest+build | AI 데이터센터 착공 트래커 신설 — 메모리 수요 선행 지표 (v2.9.2 → v2.10.0)
 - **무엇**: 전 세계 AI 데이터센터 건설 현황을 부지 확보→가동 9단계로 추적하고 용량→메모리(HBM/DRAM) 수요로 환산하는 신규 모니터링 페이지를 Data Viz에 추가.
 - **왜**: AI DC 착공은 메모리 수요의 6~24개월 선행 신호. 어느 국가에서·어느 규모로·어느 단계까지 지어지는지를 통합 모니터링하면 향후 수요를 가늠할 수 있음 (사용자 요청).

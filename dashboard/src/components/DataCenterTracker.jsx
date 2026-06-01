@@ -5,6 +5,7 @@ import {
 } from 'recharts'
 import { Server, Zap, Globe, Cpu, Layers, AlertTriangle, MapPin } from 'lucide-react'
 import SourceLink from './SourceLink'
+import WorldMap from './WorldMap'
 import {
   DATA_CENTERS, DC_STAGES, DC_BOTTLENECK_STAGES, DC_CONVERSION, DC_ANCHORS,
   REGION_ORDER, REGION_LABEL, REGION_COLOR,
@@ -166,6 +167,16 @@ export default function DataCenterPanel() {
           </div>
         ))}
       </div>
+
+      {/* ── 세계 지도 (HERO) ─────────────────────────────────────────────────── */}
+      <Card
+        title="글로벌 분포 — 세계 지도로 한눈에"
+        source={`${WIKI_SRC}`}
+        className="lg:col-span-2"
+        right={<MapPin size={14} className="text-zinc-400" />}
+      >
+        <WorldMap dcs={dcs} />
+      </Card>
 
       {/* ── 단계 파이프라인 보드 (HERO) ─────────────────────────────────────── */}
       <Card

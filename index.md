@@ -153,4 +153,5 @@
 - [dashboard/src/data/visualizations.js](dashboard/src/data/visualizations.js) — 시각화 데이터셋
 - [dashboard/src/data/dataCenters.js](dashboard/src/data/dataCenters.js) — AI DC 착공 트래커 데이터 (9단계·환산모델·47건, [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) 미러)
 - [dashboard/src/components/DataCenterTracker.jsx](dashboard/src/components/DataCenterTracker.jsx) — AI DC 단계 보드·권역·예측 (Data Viz > AI DC 탭)
+- [dashboard/src/components/WorldMap.jsx](dashboard/src/components/WorldMap.jsx) — AI DC 세계 지도 뷰 (d3-geo Equal Earth, 전력 버블·호버 툴팁)
 - [dashboard/src/components/DecisionTracker.jsx](dashboard/src/components/DecisionTracker.jsx) — D1~D9 즉시 결정 트래커

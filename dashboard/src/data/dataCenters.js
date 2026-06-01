@@ -81,8 +81,9 @@ export const DC_ANCHORS = {
 // 3. 글로벌 AI 데이터센터 프로젝트 (mid-2026 시점)
 //    region: 'North America' | 'Asia-Pacific' | 'Middle East' | 'Europe'
 //    conf: 'confirmed' | 'estimate' | 'disputed'
+//    좌표(lng/lat)는 아래 DC_COORDS 에서 id 기준으로 병합 (세계 지도 마커용)
 // ─────────────────────────────────────────────────────────────────────────────
-export const DATA_CENTERS = [
+const DATA_CENTERS_BASE = [
   // ── North America (US) ──────────────────────────────────────────────────────
   { id: 'abilene',    name: 'Stargate Abilene',          operator: 'Crusoe / Oracle / OpenAI', region: 'North America', country: '미국', city: 'Abilene, TX',         mw: 1200, acres: 875,  capex: 15,  chip: 'GB200',     gpuK: 450, stage: 9, online: 2026, conf: 'confirmed', status: '4/8동 가동, 잔여동 건설', note: 'OpenAI 600MW 증설 철회(2026-03)·MS 700MW 임차', src: 'Epoch AI, DCD, Crusoe' },
   { id: 'frontier',   name: 'Stargate Frontier',         operator: 'Vantage / OpenAI',         region: 'North America', country: '미국', city: 'Shackelford Co., TX', mw: 1400, acres: 1200, capex: 25,  chip: 'GB300',     gpuK: null, stage: 4, online: 2026, conf: 'confirmed', status: '1동 건설중, H2 2026 인도', note: '10개동 3.7M sqft, 온사이트 가스 마이크로그리드', src: 'Vantage, DCD' },
@@ -138,6 +139,32 @@ export const DATA_CENTERS = [
   { id: 'nebius-fi',  name: 'Nebius Polarnode',          operator: 'Nebius (Meta 앵커)',        region: 'Europe',        country: '핀란드', city: 'Lappeenranta',      mw: 310,  acres: null, capex: 10,  chip: 'Blackwell', gpuK: null, stage: 3, online: 2027, conf: 'confirmed', status: '발표(26-03)·27년 1차 인도', note: 'Meta $27B 컴퓨트 약정 앵커', src: 'Nebius, CNBC' },
   { id: 'sines-pt',   name: 'Nscale Start Campus Sines',  operator: 'Nscale / Microsoft',      region: 'Europe',        country: '포르투갈', city: 'Sines',           mw: 1200, acres: null, capex: 10,  chip: 'Rubin',     gpuK: 66,   stage: 5, online: 2027, conf: 'confirmed', status: '1.2GW 인허가·66k Rubin', note: 'MS $10B·남유럽 최대급', src: 'Nscale, TechCrunch' },
 ]
+
+// 지도 마커용 좌표 [경도(lng), 위도(lat)]. 도시 기준 근사. 포트폴리오/다중 사이트는 생략(null).
+const DC_COORDS = {
+  // 북미
+  abilene: [-99.73, 32.45], frontier: [-99.30, 32.72], jupiter: [-106.77, 32.32], freebird: [-96.97, 30.79],
+  lighthouse: [-87.87, 43.39], barn: [-83.78, 42.17], hyperion: [-91.76, 32.42], prometheus: [-82.81, 40.08],
+  elpaso: [-106.49, 31.76], lebanon: [-86.47, 40.05], 'fairwater-wi': [-87.88, 42.72], 'fairwater-ga': [-84.39, 33.75],
+  colossus: [-90.05, 35.15], rainier: [-86.50, 41.70], 'aws-ms': [-90.04, 32.61], 'qts-fay': [-84.46, 33.45],
+  'crusoe-wy': [-104.82, 41.14], 'google-tx': [-101.36, 34.96], coreweave: null,
+  // 아시아·태평양
+  jamnagar: [70.06, 22.47], vizag: [83.22, 17.69], jeonnam: [126.71, 35.02], 'sk-aws-ulsan': [129.38, 35.50],
+  saemangeum: [126.60, 35.78], 'stargate-kr': [129.34, 36.02], sakai: [135.48, 34.57], 'oracle-jp': [139.69, 35.68],
+  'bridge-my': [103.74, 1.55], 'msft-my': [103.60, 1.66], 'alibaba-sg': [113.60, 24.81], 'alibaba-ul': [113.11, 41.02],
+  'dayone-batam': [104.10, 1.18], 'foxconn-tw': [120.30, 22.63], 'au-hyper': [151.21, -33.87],
+  // 중동
+  'stargate-uae': [54.38, 24.45], humain: [46.68, 24.71], 'aws-humain': [46.95, 24.55], datavolt: [35.20, 27.27],
+  // 유럽
+  'stargate-uk': [-1.50, 55.02], loughton: [0.05, 51.65], northumb: [-1.55, 55.16], 'stargate-no': [17.43, 68.44],
+  'mgx-fr': [2.35, 48.85], 'mistral-pa': [2.17, 48.56], 'dt-munich': [11.58, 48.14], 'nebius-fi': [28.19, 61.06],
+  'sines-pt': [-8.87, 37.96],
+}
+
+export const DATA_CENTERS = DATA_CENTERS_BASE.map(d => {
+  const c = DC_COORDS[d.id]
+  return { ...d, lng: c ? c[0] : null, lat: c ? c[1] : null }
+})
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 4. 집계 헬퍼 (컴포넌트에서 useMemo로 호출)

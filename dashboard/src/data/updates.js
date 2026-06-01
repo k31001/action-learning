@@ -14,7 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
-  // ── 2026-06-02 ─────────────────────────────────────────────────────────────
+  // ── 2026-06-02 (b) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-06-02',
+    type: 'build',
+    version: 'v2.11.0',
+    title: 'AI DC 트래커 — 세계 지도 뷰 추가',
+    summary:
+      '"AI DC" 탭 상단에 세계 지도(Equal Earth 투영) 배경 위에 데이터센터를 전력 규모(원 크기)·권역(색)으로 표시하는 지도 뷰를 추가. 마커 호버 시 위치·전력·단계·칩·상태 툴팁. 46개 프로젝트 좌표 병합.',
+    tags: ['AI 데이터센터', '세계지도', '시각화', 'd3-geo', 'dashboard'],
+    items: [
+      { label: '신규 컴포넌트', detail: 'dashboard/src/components/WorldMap.jsx — d3-geo Equal Earth 투영, 정적 지오메트리 모듈 1회 계산, 전력 √스케일 버블·호버 툴팁' },
+      { label: '신규 의존성', detail: 'd3-geo + topojson-client + world-110m.json(번들). 권역 색·범례·크기 안내' },
+      { label: '좌표 병합', detail: 'dataCenters.js DC_COORDS — id별 [lng,lat] 46건 병합 (포트폴리오/다중사이트 CoreWeave 제외)' },
+      { label: '배치', detail: 'DataCenterTracker.jsx KPI 아래·단계 보드 위 풀폭 카드로 삽입' },
+      { label: 'version v2.10.0 → v2.11.0 (마이너)', detail: '큰 UX 변경(세계 지도 뷰) + 새 데이터 카테고리(좌표)' },
+    ],
+    links: [
+      { label: 'WorldMap.jsx', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/src/components/WorldMap.jsx' },
+    ],
+  },
+  // ── 2026-06-02 (a) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-02',
     type: 'build',
