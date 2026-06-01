@@ -14,6 +14,13 @@
 
 ---
 
+## [2026-06-02] build | AI DC 세계 지도 인터랙션 3종 (v2.11.0 → v2.11.1)
+- **무엇**: 세계 지도 뷰에 ①줌/팬(휠·드래그·버튼) ②색상 기준 토글(권역↔단계) ③마커 클릭 시 상세 표 해당 행으로 스크롤·하이라이트 추가.
+- **왜**: 사용자 요청 — 밀집 지역 확대, 단계 색 구분, 지도↔표 연동.
+- **구현**: `WorldMap.jsx` — translate+scale 변환(패닝 클램프), 휠은 native non-passive 리스너(커서 기준 확대), 마커 반지름 ÷k·국경 vectorEffect non-scaling-stroke로 줌 시 시각 안정. colorBy state로 fill·범례 전환. onSelect/selectedId props. `DataCenterTracker.jsx` — handleSelectDc(동기 scrollIntoView)·표 행 id/하이라이트.
+- **검증**: 런타임 — 토글 색 전환·줌 transform(scale 2.25, 마커 r 역스케일)·마커 클릭 시 selectedId·행 하이라이트·scrollY 이동 확인. 콘솔 오류 0. `npm run build` ✓. (헤드리스 프리뷰에서 smooth 스크롤·rAF 미동작 → 동기 instant 스크롤로 확정.) version v2.11.1(패치: 기존 카드 인터랙션 강화).
+- **영향 페이지**: WorldMap.jsx·DataCenterTracker.jsx·updates.js·version.js.
+
 ## [2026-06-02] build | AI DC 트래커 세계 지도 뷰 추가 (v2.10.0 → v2.11.0)
 - **무엇**: "AI DC" 탭에 세계 지도(Equal Earth) 배경 위 데이터센터를 전력 규모(원 크기)·권역(색)으로 표시하는 지도 뷰를 추가. 마커 호버 시 위치·전력·단계·칩·상태 툴팁.
 - **왜**: 사용자 요청 — "세계 지도를 배경으로 한눈에" 보기.

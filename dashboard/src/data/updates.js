@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-02 (c) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-06-02',
+    type: 'build',
+    version: 'v2.11.1',
+    title: 'AI DC 세계 지도 — 인터랙션 3종 (줌·색상토글·클릭연동)',
+    summary:
+      '세계 지도 뷰에 ① 줌/팬(휠 확대·드래그 이동·버튼), ② 색상 기준 토글(권역↔단계), ③ 마커 클릭 시 하단 상세 표의 해당 행으로 스크롤·하이라이트를 추가. 줌 시 마커는 화면 크기 유지(역스케일)·국경선 굵기 유지(non-scaling-stroke).',
+    tags: ['AI 데이터센터', '세계지도', '인터랙션', 'UX', 'dashboard'],
+    items: [
+      { label: '줌/팬', detail: '휠 확대(커서 기준)·드래그 이동·+/−/초기화 버튼. translate+scale 변환, 패닝 클램프로 빈 영역 방지' },
+      { label: '색상 토글', detail: '권역별(4색) ↔ 단계별(9색) 전환 + 범례 동기 전환' },
+      { label: '클릭 연동', detail: '마커 클릭 → selectedId → 상세 표 해당 행 scrollIntoView + bg 하이라이트, 선택 마커 링 표시' },
+      { label: '시각 안정성', detail: '줌 시 마커 반지름 ÷k (화면 크기 일정)·vectorEffect non-scaling-stroke (국경/그래티큘 굵기 일정)' },
+      { label: 'version v2.11.0 → v2.11.1 (패치)', detail: '기존 지도 카드 내 인터랙션 강화 — 페이지/데이터 구조 불변' },
+    ],
+    links: [
+      { label: 'WorldMap.jsx', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/src/components/WorldMap.jsx' },
+    ],
+  },
   // ── 2026-06-02 (b) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-02',

@@ -76,6 +76,14 @@ function StageBar({ stage }) {
 export default function DataCenterPanel() {
   const [region, setRegion] = useState('all')
   const [sortKey, setSortKey] = useState('mw')
+  const [selectedId, setSelectedId] = useState(null)
+
+  // 지도 마커 클릭 → 상세 표의 해당 행으로 스크롤 + 하이라이트
+  // (행 DOM 은 항상 존재하므로 동기 호출 — rAF 불필요)
+  const handleSelectDc = (id) => {
+    setSelectedId(id)
+    document.getElementById(`dc-row-${id}`)?.scrollIntoView({ block: 'center' })
+  }
 
   const dcs = useMemo(
     () => (region === 'all' ? DATA_CENTERS : DATA_CENTERS.filter(d => d.region === region)),
@@ -175,7 +183,7 @@ export default function DataCenterPanel() {
         className="lg:col-span-2"
         right={<MapPin size={14} className="text-zinc-400" />}
       >
-        <WorldMap dcs={dcs} />
+        <WorldMap dcs={dcs} onSelect={handleSelectDc} selectedId={selectedId} />
       </Card>
 
       {/* ── 단계 파이프라인 보드 (HERO) ─────────────────────────────────────── */}
@@ -374,7 +382,14 @@ export default function DataCenterPanel() {
             </thead>
             <tbody>
               {sortedTable.map(d => (
-                <tr key={d.id} className="border-b border-zinc-100 hover:bg-zinc-50/60">
+                <tr
+                  key={d.id}
+                  id={`dc-row-${d.id}`}
+                  onClick={() => setSelectedId(d.id)}
+                  className={`border-b border-zinc-100 scroll-mt-24 transition-colors ${
+                    d.id === selectedId ? 'bg-sky-100/80' : 'hover:bg-zinc-50/60'
+                  }`}
+                >
                   <td className="py-1.5 pr-2">
                     <span className="font-semibold text-zinc-700" style={{ borderLeft: `3px solid ${REGION_COLOR[d.region]}`, paddingLeft: 6 }}>
                       {d.name} <span className={`${CONF[d.conf].cls}`} title={CONF[d.conf].label}>{CONF[d.conf].dot}</span>
