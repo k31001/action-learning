@@ -1,6 +1,7 @@
 # AI 전력 소비 및 데이터센터 에너지 제약
 **수집일**: 2026-05-05
 **출처**: IEA, Deloitte, Pew Research, DOE, Belfer Center (Harvard), Brookings, Data Center Knowledge, Tech-Insider, IAEA, Introl Blog
+**관련**: [ai-datacenter-buildout.md](ai-datacenter-buildout.md) — 착공 단계 트래커 (전력 인프라가 ⑤ 병목). 전력 제약은 발표 용량의 실제 가동 전환을 지연시키는 핵심 변수.
 
 ## 핵심 데이터
 

@@ -14,6 +14,30 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-02 ─────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-02',
+    type: 'build',
+    version: 'v2.10.0',
+    title: '신규 탭 "AI DC" — 전 세계 AI 데이터센터 착공 트래커',
+    summary:
+      'Data Viz에 AI 데이터센터 착공 모니터링 페이지 신설. 부지 확보→가동 9단계로 전 세계 47건(17개국·55.9GW)의 현 단계를 한눈에 보고, 용량→GPU→HBM/DRAM 환산으로 메모리 수요를 추정. AI DC 건설은 메모리 수요의 6~24개월 선행 지표.',
+    tags: ['AI 데이터센터', 'HBM', '메모리 수요', '선행지표', 'dashboard', '신규 탭'],
+    items: [
+      { label: '신규 데이터', detail: 'dashboard/src/data/dataCenters.js — 9단계 모델·용량→메모리 환산 모델·글로벌 프로젝트 47건·집계 헬퍼' },
+      { label: '신규 컴포넌트', detail: 'dashboard/src/components/DataCenterTracker.jsx — 단계 칸반 보드(한눈에)·권역 필터·KPI·예측' },
+      { label: '단계 보드', detail: '부지확보→인허가·전력→조성→골조→전력→M&E→IT설치→시운전→가동 9단계 칸반, 병목(②⑤⑦) 표기' },
+      { label: '시각화', detail: '단계별 용량·권역 도넛·국가별 막대·전력 규모 상위·메모리 수요 예측(누적 GW↔HBM EB)·정렬 가능 상세 테이블' },
+      { label: '메모리 환산', detail: '1GW ≈ 0.47M GPU ≈ 90~135PB HBM ≈ $1.35~2.0B HBM (Blackwell~GB300). 추적 55.9GW → ~5.0~7.5EB HBM 설치기반' },
+      { label: '위키 소스', detail: 'wiki/concepts/ai-datacenter-buildout.md (단일 소스) + sources/raw-notes/ai-datacenter-buildout-2026-06.md (4-에이전트 수집)' },
+      { label: 'DataVisualization.jsx 통합', detail: 'SUB_TABS 첫 번째 "AI DC" 탭(Server 아이콘)·기본 탭으로 설정' },
+      { label: 'version v2.9.2 → v2.10.0 (마이너)', detail: '신규 페이지/탭·새 데이터 카테고리 추가' },
+    ],
+    links: [
+      { label: 'ai-datacenter-buildout.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ai-datacenter-buildout.md' },
+      { label: 'DataCenterTracker.jsx', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/src/components/DataCenterTracker.jsx' },
+    ],
+  },
   // ── 2026-05-25 ─────────────────────────────────────────────────────────────
   {
     date: '2026-05-25',

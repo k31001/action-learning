@@ -71,6 +71,7 @@
 - [wiki/concepts/ai-demand-sustainability.md](wiki/concepts/ai-demand-sustainability.md) — AI 거품론 vs 낙관론
 - [wiki/concepts/semiconductor-cycle.md](wiki/concepts/semiconductor-cycle.md) — 반도체 사이클·슈퍼사이클·2028 공급과잉 리스크
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
+- [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 
 ### 기술
 - [wiki/concepts/dram-technology.md](wiki/concepts/dram-technology.md) — DDR5/DDR6/LPDDR6, 1a→1d 미세공정
@@ -133,7 +134,10 @@
 - [sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md](sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) — Bloomberg TV: Micron CEO Mehrotra 미국 캐파 10→40%·LTA·"discipline"
 - [sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md](sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) — Counterpoint 7건 묶음(2025-11~2026-04): 90% QoQ 폭등·DRAM OPM 60%>HBM·NVIDIA LPDDR 피벗·LTA 사이클 평탄화·SK hynix HBM 57%·스마트폰 -2.1%
 
-> `sources/filings/`, `sources/papers/`, `sources/raw-notes/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
+### sources/raw-notes — 리서치 노트
+- [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
+
+> `sources/filings/`, `sources/papers/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
 
 ## outputs — 빌드 산출물
 
@@ -147,4 +151,6 @@
 - [dashboard/src/data/strategies.js](dashboard/src/data/strategies.js) — DECISIONS·RS·전략 (wiki 미러)
 - [dashboard/src/data/indicators.js](dashboard/src/data/indicators.js) — EWI 지표
 - [dashboard/src/data/visualizations.js](dashboard/src/data/visualizations.js) — 시각화 데이터셋
+- [dashboard/src/data/dataCenters.js](dashboard/src/data/dataCenters.js) — AI DC 착공 트래커 데이터 (9단계·환산모델·47건, [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) 미러)
+- [dashboard/src/components/DataCenterTracker.jsx](dashboard/src/components/DataCenterTracker.jsx) — AI DC 단계 보드·권역·예측 (Data Viz > AI DC 탭)
 - [dashboard/src/components/DecisionTracker.jsx](dashboard/src/components/DecisionTracker.jsx) — D1~D9 즉시 결정 트래커

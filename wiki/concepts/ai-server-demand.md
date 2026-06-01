@@ -1,6 +1,7 @@
 # AI 서버용 메모리 수요 전망 및 메모리 시장 사이클 패턴
 **수집일**: 2026-05-05
 **출처**: TrendForce, SK hynix, Avnet, IDC, Octopart, Oxford Economics, Regions Financial, SIA
+**관련**: [ai-datacenter-buildout.md](ai-datacenter-buildout.md) — DC 용량(GW)→GPU→HBM/DRAM 환산 모델로 본 페이지의 GPU·HBM 탑재량을 거시 수요로 집계.
 
 ---
 

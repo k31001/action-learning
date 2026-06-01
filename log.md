@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-02] ingest+build | AI 데이터센터 착공 트래커 신설 — 메모리 수요 선행 지표 (v2.9.2 → v2.10.0)
+- **무엇**: 전 세계 AI 데이터센터 건설 현황을 부지 확보→가동 9단계로 추적하고 용량→메모리(HBM/DRAM) 수요로 환산하는 신규 모니터링 페이지를 Data Viz에 추가.
+- **왜**: AI DC 착공은 메모리 수요의 6~24개월 선행 신호. 어느 국가에서·어느 규모로·어느 단계까지 지어지는지를 통합 모니터링하면 향후 수요를 가늠할 수 있음 (사용자 요청).
+- **수집**: 4개 리서치 에이전트 병렬 웹 수집 (US / Asia-Pacific / Middle East·Europe / 라이프사이클·메모리 환산). 47건·17개국·55.9GW. → `sources/raw-notes/ai-datacenter-buildout-2026-06.md` (전체 URL 포함).
+- **위키**: 신규 `wiki/concepts/ai-datacenter-buildout.md` — 9단계 모델(Mermaid)·환산 모델(1GW≈0.47M GPU≈90~135PB HBM)·권역별 요약·함의 수요·시나리오(DF1) 연결. `ai-server-demand.md`·`energy-constraints.md`에 역링크 추가.
+- **dashboard**: `dataCenters.js`(데이터+9단계+환산+집계 헬퍼) + `DataCenterTracker.jsx`(단계 칸반 보드·권역 필터·KPI·도넛·국가/전력 막대·메모리 예측·정렬 테이블). `DataVisualization.jsx` SUB_TABS 첫 탭 "AI DC"로 통합·기본 탭. `npm run build` ✓. version v2.10.0(마이너).
+- **함의**: 추적 55.9GW → HBM 설치기반 ~5.0~7.5EB(~$75~113B). 2026 신규 가동 ~23.7GW → 증분 HBM ~$32B (cf. 2026 HBM TAM ~$45B Goldman). 병목 ②인허가·전력 ⑤변압기 ⑦HBM 할당이 수요 타이밍의 핵심.
+- **영향 페이지**: index.md(concepts·sources·dashboard 3곳), updates.js, version.js, ai-server-demand.md, energy-constraints.md.
+
 ## [2026-05-25] build | dashboard 신규 탭 "업데이트 내역" 추가 (v2.7.8 → v2.8.0)
 
 사용자 요청: dashboard에 새로운 내용이 반영됐을 때 업데이트 날짜·핵심 내용을 한 곳에서 확인할 수 있는 메뉴 신설.
