@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-02] build | 신규 차트 — 운영사별 연도 누적 데이터센터 용량 (v2.11.2 → v2.12.0)
+- **무엇**: AI DC 탭에 가로축=연도, 세로축=운영사 누적 보유 용량(GW), 운영사별 꺾은선 차트 추가.
+- **왜**: 사용자 요청 — 주요 운영사별 데이터센터 총 규모의 연도별 변화를 한 그래프로.
+- **구현**: `dataCenters.js` — DC_OPERATOR_GROUP(id→주요 AI 앵커 귀속) 맵 + operatorGroup 필드 병합 + capacityByOperatorYear(연도 누적·상위 N·기타 제외·커버리지%) 헬퍼 + OPERATOR_COLORS. `DataCenterTracker.jsx` — LineChart로 상위 10개 운영사(OpenAI/Stargate·Meta·G42·Amazon·CoreWeave·Microsoft·Reliance·Google·xAI·HUMAIN) 라인. region 필터 연동.
+- **귀속 규칙**: 조인트/콜로는 단일 앵커로 — Stargate 컨소시엄→OpenAI/Stargate, Nscale 앵커→Microsoft, SK·HUMAIN의 AWS 몫→Amazon, UAE 5GW→G42. 상위 10개=추적 용량 ~76%, 지역/소형/논란(전남) 제외. `wiki/concepts/ai-datacenter-buildout.md`에 방법론 노트 추가.
+- **검증**: 런타임 — 10개 라인·색상·범례(총량 내림차순)·Y축 0~12GW(최대 OpenAI/Stargate 8.68GW 적합) 확인. 누적 단조증가. 콘솔 오류 0. `npm run build` ✓. version v2.12.0(마이너: 새 데이터 카테고리).
+- **영향 페이지**: dataCenters.js·DataCenterTracker.jsx·ai-datacenter-buildout.md·updates.js·version.js.
+
 ## [2026-06-02] build | 버그 수정 — 지도 마커 호버 백지 크래시 + ErrorBoundary (v2.11.1 → v2.11.2)
 - **증상**: 세계 지도 마커에 마우스를 올렸다 떼면 툴팁이 잠깐 보였다가 브라우저 전체가 하얗게 됨(사용자 제보).
 - **근본 원인**: 원에서 마우스가 벗어날 때 circle `onMouseLeave`(setHover(null))와 svg `onMouseMove`가 React18 자동 배치로 한 렌더에 묶임. move 의 함수형 업데이터 `setHover(h => ({...h, ...pos(e)}))`가 null 상태에서 실행되면 `{...null, ...pos}` → **d 없는 부분 hover 객체** 생성 → 툴팁이 `hover.d.name`/`hover.d.stage` 접근 → TypeError → 에러 바운더리 부재로 트리 전체 붕괴(백지).

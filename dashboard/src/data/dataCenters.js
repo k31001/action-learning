@@ -161,9 +161,31 @@ const DC_COORDS = {
   'sines-pt': [-8.87, 37.96],
 }
 
+// 운영사 그룹 — 조인트/콜로 프로젝트가 많아 "주요 AI 앵커/소유주" 기준으로 단일 귀속.
+// (예: Stargate 컨소시엄 부지는 OpenAI/Stargate, Nscale-MS 부지는 Microsoft 앵커로)
+// 미지정 id 는 '기타'. 차트는 상위 N개 named 그룹만 표시(기타 제외).
+const DC_OPERATOR_GROUP = {
+  // OpenAI / Stargate 컨소시엄
+  abilene: 'OpenAI/Stargate', frontier: 'OpenAI/Stargate', jupiter: 'OpenAI/Stargate', freebird: 'OpenAI/Stargate',
+  lighthouse: 'OpenAI/Stargate', barn: 'OpenAI/Stargate', 'stargate-kr': 'OpenAI/Stargate', sakai: 'OpenAI/Stargate', 'stargate-uk': 'OpenAI/Stargate',
+  // Meta
+  hyperion: 'Meta', prometheus: 'Meta', elpaso: 'Meta', lebanon: 'Meta',
+  // Microsoft (자체 + Nscale 앵커)
+  'fairwater-wi': 'Microsoft', 'fairwater-ga': 'Microsoft', 'msft-my': 'Microsoft', loughton: 'Microsoft', 'stargate-no': 'Microsoft', 'sines-pt': 'Microsoft',
+  // Amazon AWS (자체 + SK·HUMAIN 조인트의 AWS 몫)
+  rainier: 'Amazon AWS', 'aws-ms': 'Amazon AWS', 'sk-aws-ulsan': 'Amazon AWS', 'aws-humain': 'Amazon AWS',
+  // Google
+  'google-tx': 'Google', vizag: 'Google',
+  xAI: 'xAI', colossus: 'xAI',
+  coreweave: 'CoreWeave',
+  'stargate-uae': 'G42 (UAE)',
+  jamnagar: 'Reliance',
+  humain: 'HUMAIN',
+}
+
 export const DATA_CENTERS = DATA_CENTERS_BASE.map(d => {
   const c = DC_COORDS[d.id]
-  return { ...d, lng: c ? c[0] : null, lat: c ? c[1] : null }
+  return { ...d, lng: c ? c[0] : null, lat: c ? c[1] : null, operatorGroup: DC_OPERATOR_GROUP[d.id] || '기타' }
 })
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -266,4 +288,51 @@ export function pipelineSummary(dcs = DATA_CENTERS) {
     hbmUsdBUltra: Math.round(memUltra.hbmUsdB),
     sysDramExa: +(memBase.sysDramPb / 1000).toFixed(2),
   }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 5. 운영사별 연도별 누적 용량 (라인 차트용)
+// ─────────────────────────────────────────────────────────────────────────────
+export const OPERATOR_COLORS = {
+  'OpenAI/Stargate': '#10b981',
+  'Meta':            '#0668e1',
+  'Microsoft':       '#00a4ef',
+  'Amazon AWS':      '#ff9900',
+  'Google':          '#4285f4',
+  'xAI':             '#111827',
+  'CoreWeave':       '#8b5cf6',
+  'G42 (UAE)':       '#ef4444',
+  'Reliance':        '#ec4899',
+  'HUMAIN':          '#14b8a6',
+}
+const OPERATOR_FALLBACK = ['#6b7280', '#f59e0b', '#06b6d4', '#a855f7']
+
+// 운영사 그룹별 연도 누적 용량(GW). 상위 topN named 그룹만 (기타 제외).
+// 반환: { data: [{year, '<group>': gw, ...}], groups: [{key,color,totalGw}], coverage(%) }
+export function capacityByOperatorYear(dcs = DATA_CENTERS, years = [2025, 2026, 2027, 2028], topN = 10) {
+  const totals = {}
+  for (const d of dcs) {
+    const g = d.operatorGroup
+    if (!g || g === '기타') continue
+    totals[g] = (totals[g] || 0) + (d.mw || 0)
+  }
+  const groupKeys = Object.keys(totals).sort((a, b) => totals[b] - totals[a]).slice(0, topN)
+  const data = years.map(y => {
+    const row = { year: String(y) }
+    for (const g of groupKeys) {
+      const cum = dcs
+        .filter(d => d.operatorGroup === g && d.online <= y)
+        .reduce((a, d) => a + (d.mw || 0), 0)
+      row[g] = +(cum / 1000).toFixed(2)
+    }
+    return row
+  })
+  const groups = groupKeys.map((g, i) => ({
+    key: g,
+    color: OPERATOR_COLORS[g] || OPERATOR_FALLBACK[i % OPERATOR_FALLBACK.length],
+    totalGw: +(totals[g] / 1000).toFixed(1),
+  }))
+  const coveredMw = groupKeys.reduce((a, g) => a + totals[g], 0)
+  const totalMw = dcs.reduce((a, d) => a + (d.mw || 0), 0)
+  return { data, groups, coverage: totalMw ? Math.round((coveredMw / totalMw) * 100) : 0 }
 }

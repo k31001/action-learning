@@ -1,15 +1,15 @@
 import { useState, useMemo } from 'react'
 import {
-  BarChart, Bar, ComposedChart, Line, PieChart, Pie, Cell,
+  BarChart, Bar, LineChart, ComposedChart, Line, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList,
 } from 'recharts'
-import { Server, Zap, Globe, Cpu, Layers, AlertTriangle, MapPin } from 'lucide-react'
+import { Server, Zap, Globe, Cpu, Layers, AlertTriangle, MapPin, Building2 } from 'lucide-react'
 import SourceLink from './SourceLink'
 import WorldMap from './WorldMap'
 import {
   DATA_CENTERS, DC_STAGES, DC_BOTTLENECK_STAGES, DC_CONVERSION, DC_ANCHORS,
   REGION_ORDER, REGION_LABEL, REGION_COLOR,
-  aggByStage, aggByCountry, aggByRegion, forecastByYear, pipelineSummary,
+  aggByStage, aggByCountry, aggByRegion, forecastByYear, pipelineSummary, capacityByOperatorYear,
 } from '../data/dataCenters'
 
 const AXIS = { tick: { fill: '#71717a', fontSize: 11 }, axisLine: { stroke: '#e4e4e7' }, tickLine: { stroke: '#e4e4e7' } }
@@ -95,6 +95,7 @@ export default function DataCenterPanel() {
   const regionAgg = useMemo(() => aggByRegion(DATA_CENTERS), [])  // 권역 파이는 항상 전체 기준
   const countryAgg = useMemo(() => aggByCountry(dcs), [dcs])
   const forecast  = useMemo(() => forecastByYear(dcs), [dcs])
+  const operatorSeries = useMemo(() => capacityByOperatorYear(dcs), [dcs])
 
   const topPower = useMemo(
     () => [...dcs].sort((a, b) => b.mw - a.mw).slice(0, 15).map(d => ({ name: d.name, mw: d.mw, region: d.region })),
@@ -303,6 +304,42 @@ export default function DataCenterPanel() {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
+      </Card>
+
+      {/* ── 운영사별 연도 누적 용량 ──────────────────────────────────────────── */}
+      <Card
+        title="주요 운영사별 연도별 누적 데이터센터 용량"
+        source={`${WIKI_SRC}`}
+        className="lg:col-span-2"
+        right={<Building2 size={14} className="text-zinc-400" />}
+      >
+        <ResponsiveContainer width="100%" height={320}>
+          <LineChart data={operatorSeries.data} margin={{ left: 0, right: 8, top: 8 }}>
+            <CartesianGrid {...GRID} />
+            <XAxis dataKey="year" {...AXIS} />
+            <YAxis {...AXIS} unit="GW" />
+            <Tooltip content={<VizTooltip unit="GW" />} cursor={{ stroke: '#e4e4e7' }} />
+            <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
+            {operatorSeries.groups.map(g => (
+              <Line
+                key={g.key}
+                dataKey={g.key}
+                name={g.key}
+                stroke={g.color}
+                strokeWidth={2.5}
+                dot={{ r: 3 }}
+                activeDot={{ r: 5 }}
+              />
+            ))}
+          </LineChart>
+        </ResponsiveContainer>
+        <p className="text-[10px] text-zinc-500 mt-2 leading-relaxed">
+          가로축 연도 · 세로축 해당 운영사 누적 보유 용량(GW, 1차 가동 연도 기준 누적). 상위 {operatorSeries.groups.length}개 운영사 — 추적 용량의 ~{operatorSeries.coverage}%.
+          <br />
+          <span className="text-zinc-400">
+            ※ 조인트·콜로 프로젝트는 주요 AI 앵커/소유주로 단일 귀속 (Stargate 컨소시엄→OpenAI/Stargate, Nscale 앵커→Microsoft, SK·HUMAIN 조인트의 AWS 몫→Amazon 등). 지역/소형·논란(전남 등) 프로젝트는 차트에서 제외 — 전체는 지도·표 참조.
+          </span>
+        </p>
       </Card>
 
       {/* ── 메모리 수요 예측 ─────────────────────────────────────────────────── */}

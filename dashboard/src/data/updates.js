@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-02 (e) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-06-02',
+    type: 'build',
+    version: 'v2.12.0',
+    title: '신규 차트 — 주요 운영사별 연도별 누적 데이터센터 용량',
+    summary:
+      'AI DC 탭에 운영사별 연도(가로) × 누적 보유 용량 GW(세로) 꺾은선 차트 추가. 상위 10개 운영사(OpenAI/Stargate·Meta·G42·Amazon·CoreWeave·Microsoft·Reliance·Google·xAI·HUMAIN)의 용량 성장 궤적을 비교.',
+    tags: ['AI 데이터센터', '운영사', '메모리 수요', '시각화', 'dashboard'],
+    items: [
+      { label: '신규 데이터', detail: 'dataCenters.js — DC_OPERATOR_GROUP(id→앵커 귀속) + operatorGroup 필드 + capacityByOperatorYear() 헬퍼(연도 누적, 상위 N, 기타 제외)' },
+      { label: '신규 차트', detail: 'DataCenterTracker.jsx — 운영사별 LineChart(10선), 1차 가동 연도 기준 누적 GW' },
+      { label: '귀속 규칙', detail: 'Stargate 컨소시엄→OpenAI/Stargate, Nscale 앵커→Microsoft, SK·HUMAIN 조인트의 AWS 몫→Amazon, UAE 5GW→G42. 상위 10개(추적 ~76%)·지역/논란 제외' },
+      { label: '위키', detail: 'ai-datacenter-buildout.md에 운영사 귀속 방법론 노트 추가' },
+      { label: 'version v2.11.2 → v2.12.0 (마이너)', detail: '새 데이터 카테고리(운영사 귀속) + 신규 차트' },
+    ],
+    links: [
+      { label: 'DataCenterTracker.jsx', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/src/components/DataCenterTracker.jsx' },
+    ],
+  },
   // ── 2026-06-02 (d) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-02',
