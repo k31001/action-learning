@@ -72,6 +72,7 @@
 - [wiki/concepts/semiconductor-cycle.md](wiki/concepts/semiconductor-cycle.md) — 반도체 사이클·슈퍼사이클·2028 공급과잉 리스크
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
+- [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축)
 
 ### 기술
 - [wiki/concepts/dram-technology.md](wiki/concepts/dram-technology.md) — DDR5/DDR6/LPDDR6, 1a→1d 미세공정
@@ -136,6 +137,7 @@
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
+- [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
 
 > `sources/filings/`, `sources/papers/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
 
@@ -154,4 +156,6 @@
 - [dashboard/src/data/dataCenters.js](dashboard/src/data/dataCenters.js) — AI DC 착공 트래커 데이터 (9단계·환산모델·47건, [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) 미러)
 - [dashboard/src/components/DataCenterTracker.jsx](dashboard/src/components/DataCenterTracker.jsx) — AI DC 단계 보드·권역·예측 (Data Viz > AI DC 탭)
 - [dashboard/src/components/WorldMap.jsx](dashboard/src/components/WorldMap.jsx) — AI DC 세계 지도 뷰 (d3-geo Equal Earth, 전력 버블·호버 툴팁)
+- [dashboard/src/data/demandSignals.js](dashboard/src/data/demandSignals.js) — 수요 변곡 인과 사슬 신호·괴리·복합 위험 ([wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) 미러)
+- [dashboard/src/components/DemandInflectionPanel.jsx](dashboard/src/components/DemandInflectionPanel.jsx) — 수요 EWI 탭 (복합 위험·괴리·사슬 보드·신호 표)
 - [dashboard/src/components/DecisionTracker.jsx](dashboard/src/components/DecisionTracker.jsx) — D1~D9 즉시 결정 트래커

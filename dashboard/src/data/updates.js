@@ -14,6 +14,29 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-02 (f) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-06-02',
+    type: 'build',
+    version: 'v2.13.0',
+    title: '신규 탭 "수요 EWI" — 메모리 수요 변곡 조기경보',
+    summary:
+      'DC 착공만으로 부족한 하락 변곡 조기탐지를 위해, 인과 사슬(①수요청산가→②돈→③발주미시→④착공→⑤메모리, ⑥공급축) 선행지표 체계를 신설. 복합 위험점수·선행/끈적 괴리·사슬 신호 보드. EWI 5종 신규. 착공보다 왼쪽 신호가 먼저 꺾이는 괴리 = 행동 윈도우.',
+    tags: ['수요 변곡', '조기경보', 'EWI', '메모리 수요', '신규 탭', 'dashboard'],
+    items: [
+      { label: '신규 데이터', detail: 'demandSignals.js — 인과 사슬 6단계·15신호·복합/측면 위험·괴리 헬퍼' },
+      { label: '신규 컴포넌트', detail: 'DemandInflectionPanel.jsx — 복합 위험 미터·선행/끈적/공급 바·괴리 콜아웃·사슬 보드·신호 표 (custom JSX)' },
+      { label: 'EWI 5종 신설', detail: 'gpu_rental_price_trend·ai_dc_credit_spread·dc_cancellation_count·spot_contract_spread·memory_inventory_days (indicators.js)' },
+      { label: '핵심 로직', detail: '선행(수요·돈·발주) − 끈적(착공·메모리) 괴리 + 공급 과잉 축. 샤프드롭 메커니즘(불휩 언와인드·효율 에어포켓) 명시' },
+      { label: '위키', detail: 'wiki/concepts/demand-inflection-ewi.md (단일 소스, Mermaid 사슬·계층표) + sources/raw-notes 방법론' },
+      { label: 'DataVisualization.jsx', detail: 'SUB_TABS 두 번째 "수요 EWI" 탭(Gauge)' },
+      { label: 'version v2.12.0 → v2.13.0 (마이너)', detail: '신규 페이지/탭 + 새 데이터 카테고리(수요 신호) + EWI 5종' },
+    ],
+    links: [
+      { label: 'demand-inflection-ewi.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/demand-inflection-ewi.md' },
+      { label: 'DemandInflectionPanel.jsx', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/src/components/DemandInflectionPanel.jsx' },
+    ],
+  },
   // ── 2026-06-02 (e) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-02',

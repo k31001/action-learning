@@ -4,15 +4,17 @@ import {
   PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine,
 } from 'recharts'
-import { Users, Globe, TrendingUp, Shield, Cpu, AlertTriangle, Server } from 'lucide-react'
+import { Users, Globe, TrendingUp, Shield, Cpu, AlertTriangle, Server, Gauge } from 'lucide-react'
 import {
   COMPETITOR_DATA, MACRO_DATA, MARKET_DATA, POLICY_DATA, TECHNOLOGY_DATA, VIZ_COLORS,
 } from '../data/visualizations'
 import SourceLink from './SourceLink'
 import DataCenterPanel from './DataCenterTracker'
+import DemandInflectionPanel from './DemandInflectionPanel'
 
 const SUB_TABS = [
   { id: 'datacenter', label: 'AI DC',      icon: Server },
+  { id: 'demandewi',  label: '수요 EWI',   icon: Gauge },
   { id: 'competitor', label: 'Competitor', icon: Users },
   { id: 'macro',      label: 'Macro',      icon: Globe },
   { id: 'market',     label: 'Market',     icon: TrendingUp },
@@ -867,6 +869,7 @@ export default function DataVisualization() {
       </div>
 
       {tab === 'datacenter' && <DataCenterPanel />}
+      {tab === 'demandewi'  && <DemandInflectionPanel />}
       {tab === 'competitor' && <CompetitorPanel />}
       {tab === 'macro'      && <MacroPanel />}
       {tab === 'market'     && <MarketPanel />}

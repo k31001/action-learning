@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-02] build+query | 수요 변곡 조기경보 시스템 신설 (v2.12.0 → v2.13.0)
+- **무엇**: "DC 착공보다 더 정확히, 메모리 수요 하락을 먼저 잡는 법"에 대한 답을 시스템으로 구현. Data Viz에 "수요 EWI" 탭 신설 + EWI 5종 추가.
+- **왜**: 사용자 질의 — 착공은 인과 사슬 중간의 끈적한 지표라 하락 변곡 탐지엔 느림. 더 정확 = 단일 지표가 아닌 **앙상블 + 괴리(선행−끈적) + 공급 축**.
+- **개념(query 산출)**: 인과 사슬 ①수요청산가(GPU임대가)→②돈(capex·파이낸싱)→③발주미시(스팟·book-to-bill·CoWoS)→④DC 착공→⑤메모리(재고·가격), ⑥공급 과잉(구조 축). 착공보다 왼쪽이 먼저 꺾이는 괴리 = 행동 윈도우. 샤프드롭: 불휩 언와인드(부족 정점=급락 셋업)·효율 에어포켓·파이낸싱 프리즈.
+- **위키**: 신규 `wiki/concepts/demand-inflection-ewi.md`(Mermaid 사슬·계층표·괴리·시나리오 D 연결) + `sources/raw-notes/demand-inflection-ewi-2026-06.md`(방법론·출처). DF1 선행 관측 도구.
+- **dashboard**: `demandSignals.js`(6단계·15신호·복합/측면 위험·괴리 헬퍼) + `DemandInflectionPanel.jsx`(복합 위험 미터·선행/끈적/공급 바·괴리 콜아웃·사슬 보드·15신호 표, custom JSX). `indicators.js`에 EWI 5종(gpu_rental_price_trend·ai_dc_credit_spread·dc_cancellation_count·spot_contract_spread·memory_inventory_days). `DataVisualization.jsx` SUB_TABS 2번째 "수요 EWI"(Gauge).
+- **검증**: 런타임 — 복합 36(주의)·선행33/끈적29/공급68·괴리+4·15신호 표·EWI 탭 5종 노출(뱃지 20→21) 확인. 콘솔 오류 0. `npm run build` ✓. version v2.13.0(마이너).
+- **영향 페이지**: demand-inflection-ewi.md·demand-inflection-ewi-2026-06.md(신규)·demandSignals.js·DemandInflectionPanel.jsx(신규)·indicators.js·DataVisualization.jsx·index.md·updates.js·version.js.
+
 ## [2026-06-02] build | 신규 차트 — 운영사별 연도 누적 데이터센터 용량 (v2.11.2 → v2.12.0)
 - **무엇**: AI DC 탭에 가로축=연도, 세로축=운영사 누적 보유 용량(GW), 운영사별 꺾은선 차트 추가.
 - **왜**: 사용자 요청 — 주요 운영사별 데이터센터 총 규모의 연도별 변화를 한 그래프로.
