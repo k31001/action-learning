@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-02] build | 수요 EWI — 신용 스프레드 자동 갱신 + what-if 시뮬레이터 (v2.13.0 → v2.14.0)
+- **무엇**: ① AI-DC 신용 스프레드 EWI를 HYG 프록시로 자동 갱신 연결, ② 수요 EWI 탭에 what-if 시뮬레이터 추가.
+- **왜**: 사용자 요청(실시간 피드 연동 + 괴리 추적 후속). 조기경보 시스템을 더 라이브하게.
+- **자동 갱신**: `ai_dc_credit_spread` ← HYG 6개월 역행·듀레이션 환산(bps, 계수 2900, 가격↓=스프레드↑). `api/_lib/handlers.js`(prod) + `server/index.js`(dev) 양쪽 핸들러 + 기존 일 1회 cron. indicators.js에 autoUpdateId/Source/IsProxy 추가.
+- **정직성 결정**: GPU 임대가는 자동 연동 **제외**. CRWV(CoreWeave) 6개월 +30.2%인데 실제 GPU 임대가는 하락세 — 주가는 임대'가격'이 아닌 지분가치 추종 → 핵심 Tier0 선행 신호를 "정상"으로 오인시킬 위험. 수동 유지(ClusterMAX/Vast.ai). 스팟(DXI)·재고·취소도 무료 실시간 피드 부재로 수동.
+- **what-if 시뮬레이터**: `DemandInflectionPanel` — sim 토글 + 사슬 보드 칩 클릭으로 레벨 변경(확장→중립→주의→수축), 복합 위험·선행/끈적 괴리·측면 바 즉시 재계산, "현재로 초기화". demandSignals 헬퍼가 signals 인자 받도록 이미 설계되어 재사용.
+- **검증**: 런타임 — 베이스라인 복합 36, 선행 4신호 수축 시뮬 → 복합 62(경계)·선행 74·괴리 +45·"행동 윈도우 열림" 메시지·초기화(4)→36 복귀. HYG 프록시 노드 테스트(+2.3%→-68bps). 콘솔 오류 0. `npm run build` ✓. version v2.14.0(마이너).
+- **영향 페이지**: DemandInflectionPanel.jsx·api/_lib/handlers.js·server/index.js·indicators.js·demand-inflection-ewi.md·updates.js·version.js.
+
 ## [2026-06-02] build+query | 수요 변곡 조기경보 시스템 신설 (v2.12.0 → v2.13.0)
 - **무엇**: "DC 착공보다 더 정확히, 메모리 수요 하락을 먼저 잡는 법"에 대한 답을 시스템으로 구현. Data Viz에 "수요 EWI" 탭 신설 + EWI 5종 추가.
 - **왜**: 사용자 질의 — 착공은 인과 사슬 중간의 끈적한 지표라 하락 변곡 탐지엔 느림. 더 정확 = 단일 지표가 아닌 **앙상블 + 괴리(선행−끈적) + 공급 축**.

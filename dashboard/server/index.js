@@ -203,6 +203,22 @@ const AUTO_UPDATE_HANDLERS = {
       isProxy: true,
     }
   },
+
+  // AI-DC 신용 스프레드 proxy: HYG 6개월 역행·듀레이션 환산(bps). 가격↓=스프레드↑
+  async ai_dc_credit_spread() {
+    const { history: h } = await fetchHistory('HYG')
+    if (!h?.length) throw new Error('HYG 데이터 없음')
+    const cur   = h[h.length - 1]
+    const sixMo = h[Math.max(0, h.length - 26)]
+    const ret   = (cur.close - sixMo.close) / sixMo.close
+    const bps   = Math.round(-ret * 2900)
+    return {
+      value: bps,
+      note: `HYG ${sixMo.date}→${cur.date}: $${sixMo.close}→$${cur.close} → ${bps > 0 ? '+' : ''}${bps}bps (광의 HY·금리 영향 포함)`,
+      source: 'Yahoo Finance (HYG 6개월 역행·듀레이션 환산 프록시)',
+      isProxy: true,
+    }
+  },
 }
 
 // Run all auto-update handlers and store results

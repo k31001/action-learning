@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-02 (g) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-06-02',
+    type: 'build',
+    version: 'v2.14.0',
+    title: '수요 EWI — 신용 스프레드 자동 갱신 + what-if 시뮬레이터',
+    summary:
+      'AI-DC 신용 스프레드 EWI를 HYG 프록시(듀레이션 환산 bps)로 자동 갱신 연결. 수요 EWI 탭에 what-if 시뮬레이터 추가 — 신호 레벨을 바꿔 복합 위험·선행/끈적 괴리를 즉시 재계산해 변곡 시나리오 스트레스 테스트. GPU 임대가는 CRWV가 가격 아닌 주가 추종해 오인 위험으로 수동 유지(정직성).',
+    tags: ['수요 EWI', '조기경보', '자동 갱신', 'what-if', 'dashboard'],
+    items: [
+      { label: '자동 갱신', detail: 'ai_dc_credit_spread ← HYG 6개월 역행·듀레이션 환산(bps). api/_lib/handlers.js + server/index.js 양쪽 핸들러 + 일 1회 cron' },
+      { label: 'what-if 시뮬레이터', detail: 'DemandInflectionPanel — 사슬 보드 칩 클릭으로 레벨 변경(확장→중립→주의→수축), 복합 위험·괴리·측면 바 즉시 재계산, 현재로 초기화' },
+      { label: '정직성 결정', detail: 'GPU 임대가는 자동 연동 제외 — CRWV 6개월 +30%인데 실제 임대가는 하락(주가≠가격), 핵심 선행 신호 오인 위험. 수동 유지(ClusterMAX/Vast.ai)' },
+      { label: '위키', detail: 'demand-inflection-ewi.md에 자동/수동·시뮬레이터 운용 노트 추가' },
+      { label: 'version v2.13.0 → v2.14.0 (마이너)', detail: '신규 실시간 데이터 연동 + 인터랙티브 시뮬레이터' },
+    ],
+    links: [
+      { label: 'handlers.js', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/api/_lib/handlers.js' },
+    ],
+  },
   // ── 2026-06-02 (f) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-02',

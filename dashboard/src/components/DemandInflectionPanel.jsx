@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { Gauge, AlertTriangle, ArrowRight, TrendingDown, Layers } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { Gauge, AlertTriangle, ArrowRight, TrendingDown, Layers, SlidersHorizontal, RotateCcw } from 'lucide-react'
 import SourceLink from './SourceLink'
 import {
   SIGNAL_LEVELS, TREND, CHAIN_TIERS, DEMAND_SIGNALS, TIER_BY_ID,
@@ -46,26 +46,43 @@ function RiskMeter({ score, height = 10 }) {
   )
 }
 
-function SignalChip({ s }) {
+function SignalChip({ s, editable = false, edited = false, onClick }) {
   const lvl = SIGNAL_LEVELS[s.signal]
   const tr = TREND[s.trend]
   return (
     <div
-      className="flex items-center gap-1.5 rounded bg-white border border-zinc-200 px-1.5 py-1"
-      title={`${s.name} · ${lvl.label} · ${tr.label}\n${s.note || ''}`}
+      onClick={editable ? onClick : undefined}
+      className={`flex items-center gap-1.5 rounded bg-white border px-1.5 py-1 ${editable ? 'cursor-pointer hover:border-amber-400 hover:bg-amber-50' : 'border-zinc-200'} ${edited ? 'border-amber-400 ring-1 ring-amber-300' : editable ? 'border-zinc-200' : ''}`}
+      title={editable ? `클릭하여 레벨 변경 (what-if)\n${s.name} · 현재 ${lvl.label}` : `${s.name} · ${lvl.label} · ${tr.label}\n${s.note || ''}`}
     >
       <span className="w-2 h-2 rounded-full shrink-0" style={{ background: lvl.color }} />
       <span className="text-[10px] text-zinc-700 leading-tight truncate flex-1">{s.name}</span>
+      {edited && <span className="text-[8px] text-amber-600 shrink-0">✎</span>}
       <span className="text-[9px] shrink-0" style={{ color: tr.color }}>{tr.arrow}</span>
     </div>
   )
 }
 
+const LEVEL_ORDER = ['expansion', 'neutral', 'caution', 'contraction']
+
 export default function DemandInflectionPanel() {
-  const sum = useMemo(() => inflectionSummary(), [])
+  const [sim, setSim] = useState(false)
+  const [overrides, setOverrides] = useState({})  // { signalId: levelKey }
+
+  // 시뮬레이션 모드면 override 적용한 신호로 전체 재계산
+  const signals = useMemo(
+    () => (sim ? DEMAND_SIGNALS.map(s => (overrides[s.id] ? { ...s, signal: overrides[s.id] } : s)) : DEMAND_SIGNALS),
+    [sim, overrides]
+  )
+  const sum = useMemo(() => inflectionSummary(signals), [signals])
   const leadingBand = riskBand(sum.leading)
   const stickyBand = riskBand(sum.sticky)
   const supplyBand = riskBand(sum.supply)
+  const editedCount = Object.keys(overrides).length
+
+  const cycle = (id, curLevel) =>
+    setOverrides(o => ({ ...o, [id]: LEVEL_ORDER[(LEVEL_ORDER.indexOf(o[id] || curLevel) + 1) % LEVEL_ORDER.length] }))
+  const resetSim = () => setOverrides({})
 
   const sideBar = (label, score, band) => (
     <div>
@@ -93,8 +110,30 @@ export default function DemandInflectionPanel() {
           착공 추적을 "대체"하는 게 아니라 사슬의 제자리에 놓고 선행·공급 신호로 둘러싸 변곡을 먼저 잡는다.
         </p>
         <p className="text-[10px] text-zinc-400 mt-1">
-          ※ 신호 레벨은 wiki 사실 기반 정성 판단값({EWI_ASOF} 시점, EWI와 동일 운용) — 실시간 피드 연동은 다음 단계. 출처: <code>{WIKI_SRC}</code>
+          ※ 신호 레벨은 wiki 사실 기반 정성 판단값({EWI_ASOF} 시점, EWI와 동일 운용). AI-DC 신용 스프레드는 HYG 프록시 자동 갱신, 나머지는 수동·EWI 탭 연동. 출처: <code>{WIKI_SRC}</code>
         </p>
+      </div>
+
+      {/* ── what-if 시뮬레이션 컨트롤 ─────────────────────────────────────────── */}
+      <div className="lg:col-span-2 flex items-center flex-wrap gap-2">
+        <button
+          onClick={() => setSim(v => !v)}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${sim ? 'bg-amber-500 text-white border-amber-500' : 'bg-white text-zinc-600 border-zinc-300 hover:bg-zinc-50'}`}
+        >
+          <SlidersHorizontal size={13} /> what-if 시뮬레이션 {sim ? 'ON' : 'OFF'}
+        </button>
+        {sim && (
+          <>
+            <span className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1">
+              ↓ 사슬 보드의 신호 칩을 클릭해 레벨 변경(확장→중립→주의→수축) → 복합 위험·괴리 즉시 재계산 (가정 시뮬레이션, 실측 아님)
+            </span>
+            {editedCount > 0 && (
+              <button onClick={resetSim} className="flex items-center gap-1 px-2 py-1 rounded text-[11px] text-zinc-600 border border-zinc-300 hover:bg-zinc-50">
+                <RotateCcw size={11} /> 현재로 초기화 ({editedCount})
+              </button>
+            )}
+          </>
+        )}
       </div>
 
       {/* ── 복합 위험 + 선행/끈적 괴리 ───────────────────────────────────────── */}
@@ -157,7 +196,7 @@ export default function DemandInflectionPanel() {
         <div className="flex items-stretch gap-1.5 overflow-x-auto pb-2">
           {CHAIN_TIERS.map((t, i) => {
             const style = SIDE_STYLE[t.side]
-            const sigs = tierSignals(t.id)
+            const sigs = tierSignals(t.id, signals)
             const tierRisk = sigs.length ? Math.round(sigs.reduce((a, s) => a + SIGNAL_LEVELS[s.signal].risk * s.weight, 0) / sigs.reduce((a, s) => a + s.weight, 0)) : 0
             return (
               <div key={t.id} className="flex items-stretch gap-1.5">
@@ -170,7 +209,7 @@ export default function DemandInflectionPanel() {
                     <div className="text-[8px] opacity-90 mt-0.5">{t.sub} · 선행 {t.lead} · 위험 {tierRisk}</div>
                   </div>
                   <div className="p-1 space-y-1 flex-1">
-                    {sigs.map(s => <SignalChip key={s.id} s={s} />)}
+                    {sigs.map(s => <SignalChip key={s.id} s={s} editable={sim} edited={!!overrides[s.id]} onClick={() => cycle(s.id, s.signal)} />)}
                   </div>
                 </div>
                 {/* 사슬 화살표 (공급축 앞에는 생략) */}
@@ -206,7 +245,7 @@ export default function DemandInflectionPanel() {
             </thead>
             <tbody>
               {CHAIN_TIERS.flatMap(t =>
-                tierSignals(t.id).map((s, idx) => {
+                tierSignals(t.id, signals).map((s, idx) => {
                   const lvl = SIGNAL_LEVELS[s.signal]
                   const tr = TREND[s.trend]
                   return (

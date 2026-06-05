@@ -1185,6 +1185,9 @@ export const INITIAL_INDICATORS = [
     note: 'capex 상당분이 부채·SPV·ABS(Meta-Blue Owl, Oracle, CoreWeave). 스프레드 확대 = 신규 빌드 조달 위축',
     inputType: 'number',
     hint: 'AI-DC 부채/ABS 신용 스프레드 6개월 변동(bps). 확대면 양수',
+    autoUpdateId: 'ai_dc_credit_spread',
+    autoUpdateSource: 'HYG 6개월 역행·듀레이션 환산 프록시 (Yahoo) — 광의 HY 신용·금리 영향 포함',
+    autoUpdateIsProxy: true,
   },
   {
     id: 'dc_cancellation_count',
