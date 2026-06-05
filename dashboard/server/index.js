@@ -44,6 +44,33 @@ async function yfFetch(url) {
   return res.json()
 }
 
+// ── Vast.ai 공개 오퍼 API (GPU 현물 임대가) — WAF가 브라우저 헤더 요구 ────────
+const VAST_HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
+  'Accept': 'application/json, text/plain, */*',
+  'Accept-Language': 'en-US,en;q=0.9',
+  'Origin': 'https://cloud.vast.ai',
+  'Referer': 'https://cloud.vast.ai/',
+}
+
+async function fetchVastMedian(gpu) {
+  const cacheKey = `vast_${gpu.replace(/\s+/g, '_')}`
+  const cached = cacheGet(cacheKey)
+  if (cached) return cached
+  const q = { verified: { eq: true }, rentable: { eq: true }, gpu_name: { eq: gpu }, type: 'on-demand', order: [['dph_total', 'asc']], limit: 256 }
+  const url = 'https://console.vast.ai/api/v0/bundles/?q=' + encodeURIComponent(JSON.stringify(q))
+  const res = await fetch(url, { headers: VAST_HEADERS })
+  if (!res.ok) throw new Error(`Vast.ai: HTTP ${res.status}`)
+  const json = await res.json()
+  const perGpu = (json.offers || []).map(o => o.dph_total / (o.num_gpus || 1)).filter(x => x > 0).sort((a, b) => a - b)
+  const n = perGpu.length
+  const stat = n
+    ? { gpu, n, min: +perGpu[0].toFixed(3), median: +perGpu[Math.floor(n / 2)].toFixed(3) }
+    : { gpu, n: 0, min: null, median: null }
+  cacheSet(cacheKey, stat)
+  return stat
+}
+
 async function fetchHistory(symbol, yearsBack = 5) {
   const cacheKey = `hist_${symbol.replace(/\./g, '_')}`
   const cached = cacheGet(cacheKey)
@@ -217,6 +244,20 @@ const AUTO_UPDATE_HANDLERS = {
       note: `HYG ${sixMo.date}→${cur.date}: $${sixMo.close}→$${cur.close} → ${bps > 0 ? '+' : ''}${bps}bps (광의 HY·금리 영향 포함)`,
       source: 'Yahoo Finance (HYG 6개월 역행·듀레이션 환산 프록시)',
       isProxy: true,
+    }
+  },
+
+  // GPU 현물 임대가 — Vast.ai H100 SXM on-demand 중앙값 $/GPU·h (실측)
+  async gpu_rental_h100_usd() {
+    const h100 = await fetchVastMedian('H100 SXM')
+    if (!h100.n) throw new Error('Vast.ai H100 오퍼 없음')
+    let h200 = { median: null }
+    try { h200 = await fetchVastMedian('H200') } catch { /* context only */ }
+    return {
+      value: h100.median,
+      note: `H100 SXM 중앙 $${h100.median}/GPU·h (n=${h100.n}, min $${h100.min})${h200.median ? ` · H200 $${h200.median}` : ''}`,
+      source: 'Vast.ai 공개 오퍼 API (on-demand·verified·per-GPU 현물)',
+      isProxy: false,
     }
   },
 }

@@ -42,7 +42,7 @@ export const TIER_BY_ID = Object.fromEntries(CHAIN_TIERS.map(t => [t.id, t]))
 // 신호 목록 (signal: SIGNAL_LEVELS 키 / trend: TREND 키 / weight: 가중치 / ewiId: EWI 연동)
 export const DEMAND_SIGNALS = [
   // ① 수요 청산가격
-  { id: 'gpu_rental',   tier: 'tier0', name: 'GPU 임대가 추세',        signal: 'caution',    trend: 'worsening', weight: 3, source: 'Vast.ai·ClusterMAX', ewiId: 'gpu_rental_price_trend', note: '24~25 H100 임대가 급락 후 둔화 — 컴퓨트 과잉 신호' },
+  { id: 'gpu_rental',   tier: 'tier0', name: 'GPU 임대가 추세',        signal: 'caution',    trend: 'worsening', weight: 3, source: 'Vast.ai 실측·ClusterMAX', ewiId: 'gpu_rental_h100_usd', note: 'H100 SXM 현물 $2~3/GPU·h (Vast.ai 자동 갱신·매일 누적) — 24~25 급락 후 둔화' },
   { id: 'gpu_util',     tier: 'tier0', name: 'AI 컴퓨트 가동률',       signal: 'neutral',    trend: 'stable',    weight: 2, source: 'SemiAnalysis 추정', note: '높지만 유휴율 상승 여부 관찰' },
   // ② 돈
   { id: 'capex_guide',  tier: 'tier1', name: '하이퍼스케일러 capex 가이던스', signal: 'expansion', trend: 'stable', weight: 3, source: '빅4 분기 콜', ewiId: null, note: "'26 $650~725B(+77%) 강세 — digestion 언어 관찰" },

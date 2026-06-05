@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-02 (h) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-06-02',
+    type: 'build',
+    version: 'v2.15.0',
+    title: 'GPU 현물 임대가 실측 연동 — Vast.ai 공개 API',
+    summary:
+      'Tier0 최선행 신호(GPU 임대가)를 Vast.ai 공개 오퍼 API로 실측 자동 갱신. H100 SXM on-demand 중앙값 $/GPU·h를 매일 누적해 추세 형성(프록시 아님). CRWV 주가 프록시는 가격이 아닌 지분가치 추종이라 거부하고 실제 마켓 현물가로 연동.',
+    tags: ['수요 EWI', 'GPU 임대가', 'Vast.ai', '실시간 데이터', 'dashboard'],
+    items: [
+      { label: '신규 실측 EWI', detail: 'gpu_rental_h100_usd — Vast.ai H100 SXM on-demand 중앙값 $/GPU·h (현재 ~$2.5, n=7, H200 ~$3.9 병기)' },
+      { label: '신규 연동', detail: 'api/_lib/vast.js + handlers.js + server/index.js — 공개 오퍼 API GET(브라우저 헤더 Origin/Referer 필요), per-GPU 중앙값, 일 1회 cron' },
+      { label: '실측 vs 프록시', detail: 'isProxy:false — Vast.ai 실제 임대가. CRWV 주가 프록시 검증 후 거부(6개월 +30%인데 임대가 하락 — 신호 오인 위험)' },
+      { label: '연동', detail: 'demandSignals Tier0 gpu_rental → ewiId gpu_rental_h100_usd. 패널 안내·위키 자동/수동 표 갱신' },
+      { label: 'version v2.14.0 → v2.15.0 (마이너)', detail: '신규 실측 데이터 소스(Vast.ai) + 신규 EWI' },
+    ],
+    links: [
+      { label: 'vast.js', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/api/_lib/vast.js' },
+    ],
+  },
   // ── 2026-06-02 (g) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-02',

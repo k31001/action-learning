@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-02] build | GPU 현물 임대가 실측 연동 — Vast.ai 공개 API (v2.14.0 → v2.15.0)
+- **무엇**: Tier0 최선행 신호(GPU 임대가)를 Vast.ai 공개 오퍼 API로 실측 자동 갱신.
+- **왜**: 사용자 요청 — "vast.ai 공개 API 무료 연동 시도". 지난 턴 CRWV 프록시 거부의 정직한 대안 = 실제 마켓 현물가.
+- **발견**: Vast.ai `console.vast.ai/api/v0/bundles/?q=` 는 무인증이지만 WAF가 브라우저 헤더(Origin/Referer/UA) 요구 — 헤더 없으면 403(HTML). 헤더 추가 시 200·offers JSON. H100 SXM n=7 중앙 $2.5(min $2.0), H200 n=42 $3.9, RTX4090 n=145 $0.67.
+- **구현**: `api/_lib/vast.js`(fetchVastMedian: per-GPU dph_total/num_gpus 중앙값·캐시) + `handlers.js`·`server/index.js` 핸들러 `gpu_rental_h100_usd`(H100 SXM 중앙값·H200 병기, isProxy:false). 기존 일 1회 cron 자동 편입. `indicators.js` 신규 EWI(level, alert $1.5/warn $2.0, autoUpdate). `demandSignals` Tier0 gpu_rental ewiId 연결.
+- **정직성**: CRWV 주가 프록시는 6개월 +30%인데 실제 임대가는 하락(주가≠가격) → 거부. Vast.ai 실측으로 대체.
+- **검증**: 로컬 dev 서버 엔드포인트 실측 — POST gpu_rental_h100_usd → $2.646(n=7, H200 $3.908) ok, ai_dc_credit_spread → -61bps ok. 신규 EWI 렌더(Vast·H100 SXM 노출)·콘솔 0. `npm run build` ✓. 프로덕션 egress(Vercel→Vast WAF/IP)는 배포 후 /api/auto-update/all 로 확인 예정.
+- **영향 페이지**: api/_lib/vast.js(신규)·handlers.js·server/index.js·indicators.js·demandSignals.js·DemandInflectionPanel.jsx·demand-inflection-ewi.md·updates.js·version.js.
+
 ## [2026-06-02] build | 수요 EWI — 신용 스프레드 자동 갱신 + what-if 시뮬레이터 (v2.13.0 → v2.14.0)
 - **무엇**: ① AI-DC 신용 스프레드 EWI를 HYG 프록시로 자동 갱신 연결, ② 수요 EWI 탭에 what-if 시뮬레이터 추가.
 - **왜**: 사용자 요청(실시간 피드 연동 + 괴리 추적 후속). 조기경보 시스템을 더 라이브하게.

@@ -110,7 +110,7 @@ export default function DemandInflectionPanel() {
           착공 추적을 "대체"하는 게 아니라 사슬의 제자리에 놓고 선행·공급 신호로 둘러싸 변곡을 먼저 잡는다.
         </p>
         <p className="text-[10px] text-zinc-400 mt-1">
-          ※ 신호 레벨은 wiki 사실 기반 정성 판단값({EWI_ASOF} 시점, EWI와 동일 운용). AI-DC 신용 스프레드는 HYG 프록시 자동 갱신, 나머지는 수동·EWI 탭 연동. 출처: <code>{WIKI_SRC}</code>
+          ※ 신호 레벨은 wiki 사실 기반 정성 판단값({EWI_ASOF} 시점, EWI와 동일 운용). GPU 임대가(Vast.ai 실측)·AI-DC 신용(HYG 프록시)은 자동 갱신, 나머지는 수동·EWI 탭 연동. 출처: <code>{WIKI_SRC}</code>
         </p>
       </div>
 
