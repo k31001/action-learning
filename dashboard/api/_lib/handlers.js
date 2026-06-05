@@ -2,7 +2,7 @@ import { readFileSync } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { fetchHistory } from './yahoo.js'
-import { fetchVastMedian } from './vast.js'
+import { fetchVastMedian, fetchVastBasket } from './vast.js'
 
 const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../data')
 
@@ -82,17 +82,26 @@ export const AUTO_UPDATE_HANDLERS = {
     }
   },
 
-  // GPU 현물 임대가 — Vast.ai H100 SXM on-demand 중앙값 $/GPU·h (실측, 프록시 아님)
-  // 매일 누적되어 추세 형성. H200 은 컨텍스트로 note 에 병기.
+  // GPU 현물 임대가 — Vast.ai AI GPU 바스켓(H100 SXM 0.5 / H200 0.5) 중앙값 $/GPU·h
+  // (실측, 프록시 아님). 바스켓으로 H100 단독 박한 유동성 안정화. 매일 누적되어 추세 형성.
   async gpu_rental_h100_usd() {
-    const h100 = await fetchVastMedian('H100 SXM')
-    if (!h100.n) throw new Error('Vast.ai H100 오퍼 없음')
-    let h200 = { median: null }
-    try { h200 = await fetchVastMedian('H200') } catch { /* context only */ }
+    const b = await fetchVastBasket()
+    const h100 = b.byGpu['H100 SXM'], h200 = b.byGpu['H200']
     return {
-      value: h100.median,
-      note: `H100 SXM 중앙 $${h100.median}/GPU·h (n=${h100.n}, min $${h100.min})${h200.median ? ` · H200 $${h200.median}` : ''}`,
-      source: 'Vast.ai 공개 오퍼 API (on-demand·verified·per-GPU 현물)',
+      value: b.basket,
+      note: `AI GPU 바스켓 $${b.basket}/GPU·h (H100 SXM $${h100?.median ?? '-'}·n${h100?.n ?? 0} / H200 $${h200?.median ?? '-'}·n${h200?.n ?? 0})`,
+      source: 'Vast.ai 공개 오퍼 API (H100 SXM·H200 바스켓 on-demand 중앙값)',
+      isProxy: false,
+    }
+  },
+
+  // GPU 현물 공급 — Vast.ai 가용 on-demand 오퍼 수(H100/H200). 증가 = 컴퓨트 현물 공급 완화
+  async gpu_supply_offers() {
+    const b = await fetchVastBasket()
+    return {
+      value: b.count,
+      note: `Vast.ai 가용 on-demand 오퍼 ${b.count}건 (H100 SXM/H200/H100 NVL). 증가 = 현물 공급 완화`,
+      source: 'Vast.ai 공개 오퍼 API (가용 오퍼 수)',
       isProxy: false,
     }
   },

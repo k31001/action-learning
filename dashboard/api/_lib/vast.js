@@ -32,3 +32,22 @@ export async function fetchVastMedian(gpu) {
   cacheSet(cacheKey, stat)
   return stat
 }
+
+// AI 데이터센터 GPU 바스켓 — 유동성 보강: H100 SXM·H200·H100 NVL 풀링.
+// 가격 바스켓은 고정 가중(H100 SXM 0.5 / H200 0.5)으로 H100 단독 박한 유동성을 안정화.
+// count 는 가용 on-demand 오퍼 총수(현물 공급 barometer).
+export async function fetchVastBasket() {
+  const gpus = ['H100 SXM', 'H200', 'H100 NVL']
+  const stats = []
+  for (const g of gpus) {
+    try { const s = await fetchVastMedian(g); if (s.n) stats.push(s) } catch { /* skip */ }
+  }
+  if (!stats.length) throw new Error('Vast.ai 바스켓 오퍼 없음')
+  const byGpu = Object.fromEntries(stats.map(s => [s.gpu, s]))
+  const W = { 'H100 SXM': 0.5, 'H200': 0.5 }
+  let num = 0, den = 0
+  for (const s of stats) { const wt = W[s.gpu] || 0; if (wt) { num += wt * s.median; den += wt } }
+  const basket = den ? +(num / den).toFixed(3) : +(stats.reduce((a, s) => a + s.median, 0) / stats.length).toFixed(3)
+  const count = stats.reduce((a, s) => a + s.n, 0)
+  return { basket, count, byGpu }
+}

@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-02 (i) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-06-02',
+    type: 'build',
+    version: 'v2.16.0',
+    title: '수요 EWI 고도화 — GPU 바스켓·선행 시장 추이·현물 공급',
+    summary:
+      '① GPU 임대가를 H100·H200 바스켓으로 전환(유동성 보강), ② 선행 시장 신호 12개월 실측 추이 차트(NVDA·MU·HYG, 로그축), ③ Vast.ai 현물 공급(가용 오퍼 수) 신호 신설. 모두 Vast.ai/Yahoo 실측.',
+    tags: ['수요 EWI', 'GPU 임대가', 'Vast.ai', '실시간 데이터', 'dashboard'],
+    items: [
+      { label: '① GPU 바스켓', detail: 'gpu_rental_h100_usd → H100 SXM·H200 0.5:0.5 바스켓 중앙값(유동성 안정화). vast.js fetchVastBasket. 현재 ~$3.3' },
+      { label: '② 선행 추이 차트', detail: 'DemandInflectionPanel — /api/stocks/history NVDA·MU·HYG 12개월 정규화·로그축 라인(동반 하락=선행 약화). HYG 심볼 추가' },
+      { label: '③ 현물 공급', detail: 'gpu_supply_offers — Vast.ai 가용 on-demand 오퍼 수(H100/H200/NVL). 증가=공급 완화. 현재 ~51건' },
+      { label: '검증', detail: '로컬+프로덕션 egress 확인: 바스켓 $3.277(H100 $2.65·n7/H200 $3.91·n42), 공급 51건, HYG 262주. MU 12개월 7.6배(슈퍼사이클) 실측' },
+      { label: 'version v2.15.0 → v2.16.0 (마이너)', detail: '바스켓·실측 추이 차트·공급 신호' },
+    ],
+    links: [
+      { label: 'vast.js', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/api/_lib/vast.js' },
+    ],
+  },
   // ── 2026-06-02 (h) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-02',

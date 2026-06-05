@@ -71,6 +71,20 @@ async function fetchVastMedian(gpu) {
   return stat
 }
 
+async function fetchVastBasket() {
+  const gpus = ['H100 SXM', 'H200', 'H100 NVL']
+  const stats = []
+  for (const g of gpus) { try { const s = await fetchVastMedian(g); if (s.n) stats.push(s) } catch { /* skip */ } }
+  if (!stats.length) throw new Error('Vast.ai 바스켓 오퍼 없음')
+  const byGpu = Object.fromEntries(stats.map(s => [s.gpu, s]))
+  const W = { 'H100 SXM': 0.5, 'H200': 0.5 }
+  let num = 0, den = 0
+  for (const s of stats) { const wt = W[s.gpu] || 0; if (wt) { num += wt * s.median; den += wt } }
+  const basket = den ? +(num / den).toFixed(3) : +(stats.reduce((a, s) => a + s.median, 0) / stats.length).toFixed(3)
+  const count = stats.reduce((a, s) => a + s.n, 0)
+  return { basket, count, byGpu }
+}
+
 async function fetchHistory(symbol, yearsBack = 5) {
   const cacheKey = `hist_${symbol.replace(/\./g, '_')}`
   const cached = cacheGet(cacheKey)
@@ -137,13 +151,14 @@ async function fetchCurrentQuotes() {
 }
 
 // ── Symbol metadata ───────────────────────────────────────────────────────────
-const SYMBOLS = ['NVDA', 'MU', '000660.KS', '005930.KS', 'SMH']
+const SYMBOLS = ['NVDA', 'MU', '000660.KS', '005930.KS', 'SMH', 'HYG']
 const SYMBOL_META = {
   NVDA: { nameKo: 'NVIDIA', role: 'AI 인프라 수요 지표', color: '#76b900', group: 'demand' },
   MU: { nameKo: '마이크론', role: '메모리 경쟁 지표', color: '#e85d26', group: 'memory' },
   '000660.KS': { nameKo: 'SK하이닉스', role: 'HBM 경쟁사', color: '#e8192c', group: 'memory' },
   '005930.KS': { nameKo: '삼성전자', role: '삼성전자 주가', color: '#1428a0', group: 'memory' },
   SMH: { nameKo: '반도체 ETF (SMH)', role: '섹터 전반 지표', color: '#8b5cf6', group: 'sector' },
+  HYG: { nameKo: 'HY 회사채 ETF', role: 'AI-DC 신용 여건', color: '#f59e0b', group: 'credit' },
 }
 
 // ── Routes ────────────────────────────────────────────────────────────────────
@@ -247,16 +262,25 @@ const AUTO_UPDATE_HANDLERS = {
     }
   },
 
-  // GPU 현물 임대가 — Vast.ai H100 SXM on-demand 중앙값 $/GPU·h (실측)
+  // GPU 현물 임대가 — Vast.ai AI GPU 바스켓(H100 SXM 0.5 / H200 0.5) 중앙값 $/GPU·h
   async gpu_rental_h100_usd() {
-    const h100 = await fetchVastMedian('H100 SXM')
-    if (!h100.n) throw new Error('Vast.ai H100 오퍼 없음')
-    let h200 = { median: null }
-    try { h200 = await fetchVastMedian('H200') } catch { /* context only */ }
+    const b = await fetchVastBasket()
+    const h100 = b.byGpu['H100 SXM'], h200 = b.byGpu['H200']
     return {
-      value: h100.median,
-      note: `H100 SXM 중앙 $${h100.median}/GPU·h (n=${h100.n}, min $${h100.min})${h200.median ? ` · H200 $${h200.median}` : ''}`,
-      source: 'Vast.ai 공개 오퍼 API (on-demand·verified·per-GPU 현물)',
+      value: b.basket,
+      note: `AI GPU 바스켓 $${b.basket}/GPU·h (H100 SXM $${h100?.median ?? '-'}·n${h100?.n ?? 0} / H200 $${h200?.median ?? '-'}·n${h200?.n ?? 0})`,
+      source: 'Vast.ai 공개 오퍼 API (H100 SXM·H200 바스켓 on-demand 중앙값)',
+      isProxy: false,
+    }
+  },
+
+  // GPU 현물 공급 — Vast.ai 가용 on-demand 오퍼 수(H100/H200). 증가 = 현물 공급 완화
+  async gpu_supply_offers() {
+    const b = await fetchVastBasket()
+    return {
+      value: b.count,
+      note: `Vast.ai 가용 on-demand 오퍼 ${b.count}건 (H100 SXM/H200/H100 NVL). 증가 = 현물 공급 완화`,
+      source: 'Vast.ai 공개 오퍼 API (가용 오퍼 수)',
       isProxy: false,
     }
   },

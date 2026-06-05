@@ -6,7 +6,7 @@ const YF_HEADERS = {
   'Accept-Language': 'en-US,en;q=0.9',
 }
 
-export const SYMBOLS = ['NVDA', 'MU', '000660.KS', '005930.KS', 'SMH']
+export const SYMBOLS = ['NVDA', 'MU', '000660.KS', '005930.KS', 'SMH', 'HYG']
 
 export const SYMBOL_META = {
   NVDA:        { nameKo: 'NVIDIA',          role: 'AI 인프라 수요 지표', color: '#76b900', group: 'demand' },
@@ -14,6 +14,7 @@ export const SYMBOL_META = {
   '000660.KS': { nameKo: 'SK하이닉스',      role: 'HBM 경쟁사',        color: '#e8192c', group: 'memory' },
   '005930.KS': { nameKo: '삼성전자',         role: '삼성전자 주가',      color: '#1428a0', group: 'memory' },
   SMH:         { nameKo: '반도체 ETF (SMH)', role: '섹터 전반 지표',    color: '#8b5cf6', group: 'sector' },
+  HYG:         { nameKo: 'HY 회사채 ETF',   role: 'AI-DC 신용 여건',   color: '#f59e0b', group: 'credit' },
 }
 
 async function yfFetch(url) {

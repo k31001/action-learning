@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-02] build | 수요 EWI 고도화 — GPU 바스켓·선행 시장 추이·현물 공급 (v2.15.0 → v2.16.0)
+- **무엇**: 사용자 1·2·3 순서 — ① GPU 임대가 바스켓(유동성 보강), ② 선행 시장 신호 실측 추이 차트, ③ Vast 현물 공급 신호.
+- **① 바스켓**: `vast.js` fetchVastBasket(H100 SXM·H200 0.5:0.5 + NVL은 count만). 핸들러 gpu_rental_h100_usd가 H100 단독(n=7 박함)→바스켓 중앙값으로 안정화(현재 ~$3.3). 지표 명/임계치(alert $2.0/warn $2.6) 갱신.
+- **② 추이 차트**: `DemandInflectionPanel`에 /api/stocks/history NVDA·MU·HYG 12개월 정규화(시작=100) 라인. MU 12개월 7.6배(슈퍼사이클) 실측이라 **로그축**으로 NVDA/HYG 가독성 확보. yahoo.js·server SYMBOLS에 HYG 추가. 동반 우하향=선행 약화.
+- **③ 현물 공급**: 핸들러 gpu_supply_offers(Vast 가용 오퍼 수, ~51건), 신규 EWI. demandSignals 미편입(복합 안정 유지, EWI 탭+위키 노트).
+- **검증**: 로컬 dev 엔드포인트 — 바스켓 $3.277(H100 $2.646·n7/H200 $3.908·n42), 공급 51, HYG 262주. 차트 3선·로그축 틱[100/200/400/800] 렌더, 콘솔 0. 프로덕션 egress(Vast)는 지난 배포서 확인됨(동일 API). `npm run build` ✓. version v2.16.0.
+- **영향 페이지**: vast.js·handlers.js·server/index.js·yahoo.js·indicators.js·demandSignals.js·DemandInflectionPanel.jsx·demand-inflection-ewi.md·updates.js·version.js.
+
 ## [2026-06-02] build | GPU 현물 임대가 실측 연동 — Vast.ai 공개 API (v2.14.0 → v2.15.0)
 - **무엇**: Tier0 최선행 신호(GPU 임대가)를 Vast.ai 공개 오퍼 API로 실측 자동 갱신.
 - **왜**: 사용자 요청 — "vast.ai 공개 API 무료 연동 시도". 지난 턴 CRWV 프록시 거부의 정직한 대안 = 실제 마켓 현물가.

@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
-import { Gauge, AlertTriangle, ArrowRight, TrendingDown, Layers, SlidersHorizontal, RotateCcw } from 'lucide-react'
+import { useMemo, useState, useEffect } from 'react'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts'
+import { Gauge, AlertTriangle, ArrowRight, TrendingDown, Layers, SlidersHorizontal, RotateCcw, LineChart as LineChartIcon } from 'lucide-react'
 import SourceLink from './SourceLink'
 import {
   SIGNAL_LEVELS, TREND, CHAIN_TIERS, DEMAND_SIGNALS, TIER_BY_ID,
@@ -65,6 +66,13 @@ function SignalChip({ s, editable = false, edited = false, onClick }) {
 
 const LEVEL_ORDER = ['expansion', 'neutral', 'caution', 'contraction']
 
+// 선행 시장 신호 추이용 (실측 Yahoo 주간 프록시)
+const MARKET_SYMS = [
+  { sym: 'NVDA', label: 'AI 수요 (NVDA)', color: '#76b900' },
+  { sym: 'MU',   label: '메모리 (MU)',    color: '#e85d26' },
+  { sym: 'HYG',  label: '신용 (HYG)',     color: '#f59e0b' },
+]
+
 export default function DemandInflectionPanel() {
   const [sim, setSim] = useState(false)
   const [overrides, setOverrides] = useState({})  // { signalId: levelKey }
@@ -83,6 +91,33 @@ export default function DemandInflectionPanel() {
   const cycle = (id, curLevel) =>
     setOverrides(o => ({ ...o, [id]: LEVEL_ORDER[(LEVEL_ORDER.indexOf(o[id] || curLevel) + 1) % LEVEL_ORDER.length] }))
   const resetSim = () => setOverrides({})
+
+  // 선행 시장 신호 추이 — 실측 Yahoo 주간(/api/stocks/history), 12개월·정규화(시작=100)
+  const [marketSeries, setMarketSeries] = useState(null)
+  useEffect(() => {
+    let alive = true
+    Promise.all(MARKET_SYMS.map(m =>
+      fetch(`/api/stocks/history/${encodeURIComponent(m.sym)}`).then(r => (r.ok ? r.json() : null)).catch(() => null)
+    )).then(results => {
+      if (!alive) return
+      const norm = {}
+      let dates = []
+      MARKET_SYMS.forEach((m, i) => {
+        const h = results[i]?.history
+        if (!h?.length) return
+        const last = h.slice(-52)
+        const base = last[0]?.close
+        if (!base) return
+        norm[m.sym] = {}
+        last.forEach(d => { norm[m.sym][d.date] = +((d.close / base) * 100).toFixed(1) })
+        if (last.length > dates.length) dates = last.map(d => d.date)
+      })
+      setMarketSeries(dates.length
+        ? dates.map(date => ({ date, ...Object.fromEntries(MARKET_SYMS.map(m => [m.sym, norm[m.sym]?.[date] ?? null])) }))
+        : [])
+    })
+    return () => { alive = false }
+  }, [])
 
   const sideBar = (label, score, band) => (
     <div>
@@ -226,6 +261,37 @@ export default function DemandInflectionPanel() {
         <p className="text-[10px] text-zinc-500 mt-2 flex items-start gap-1">
           <ArrowRight size={11} className="text-zinc-400 shrink-0 mt-0.5" />
           하락 신호는 →로 전파. <strong className="mx-1">④ DC 착공</strong>은 사슬 중간의 끈적한 지표 — 이보다 왼쪽(①②③)이 먼저 악화하면 하락 전 대응 시간 확보. ⑥ 공급 과잉은 별도 구조 축(공급발 하락).
+        </p>
+      </Card>
+
+      {/* ── 선행 시장 신호 추이 (실측) ────────────────────────────────────────── */}
+      <Card
+        title="선행 시장 신호 추이 (12개월·정규화, 실측 — 동반 하락 = 선행 약화)"
+        source="Yahoo Finance (NVDA·MU·HYG 주간)"
+        className="lg:col-span-2"
+        right={<LineChartIcon size={14} className="text-zinc-400" />}
+      >
+        {marketSeries === null ? (
+          <div className="h-[260px] flex items-center justify-center text-xs text-zinc-400">실측 데이터 로딩 중…</div>
+        ) : marketSeries.length === 0 ? (
+          <div className="h-[120px] flex items-center justify-center text-xs text-zinc-400">시장 데이터(/api) 미응답 — 배포 환경/서버 구동 시 표시됩니다.</div>
+        ) : (
+          <ResponsiveContainer width="100%" height={280}>
+            <LineChart data={marketSeries} margin={{ left: 0, right: 8, top: 8 }}>
+              <CartesianGrid stroke="#e4e4e7" strokeDasharray="3 3" />
+              <XAxis dataKey="date" tick={{ fill: '#71717a', fontSize: 10 }} interval={Math.max(0, Math.ceil(marketSeries.length / 8) - 1)} />
+              <YAxis scale="log" domain={[60, 1100]} ticks={[100, 200, 400, 800]} tick={{ fill: '#71717a', fontSize: 11 }} allowDataOverflow />
+              <Tooltip contentStyle={{ fontSize: 11 }} />
+              <Legend wrapperStyle={{ fontSize: 11, color: '#71717a' }} />
+              <ReferenceLine y={100} stroke="#d4d4d8" strokeDasharray="2 2" />
+              {MARKET_SYMS.map(m => (
+                <Line key={m.sym} dataKey={m.sym} name={m.label} stroke={m.color} strokeWidth={2} dot={false} connectNulls />
+              ))}
+            </LineChart>
+          </ResponsiveContainer>
+        )}
+        <p className="text-[10px] text-zinc-500 mt-2 leading-relaxed">
+          실측 시장 프록시(주간, 12개월 전=100, <strong>로그축</strong>): <strong>NVDA</strong> AI 수요 · <strong>MU</strong> 메모리 사이클(슈퍼사이클로 ~8배) · <strong>HYG</strong> 신용 여건(↑=완화). 세 선이 동반 <strong>하락 전환(우하향)</strong> = 선행 신호 약화(변곡 경고). 위 정성 사슬 신호와 교차 확인용 — 끈적(착공)은 AI DC 탭 연도 곡선 참조.
         </p>
       </Card>
 
