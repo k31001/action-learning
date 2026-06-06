@@ -24,7 +24,6 @@ log.md     ← 시간순 작업 로그 (append-only)
 - 하위: `sources/articles/`, `sources/filings/`, `sources/papers/`, `sources/raw-notes/`
 - **LLM은 읽기만 한다.** 절대 수정·요약·재배치하지 않는다.
 - 새 소스는 항상 추가만. 기존 파일은 출처 변경이 있을 때만 덮어쓴다.
-- 마이그레이션 중: `sources/raw/`는 옛 `data/` 디렉토리. 다음 세션에서 `sources/{articles,filings,papers,raw-notes}/`로 파일 단위 분리.
 
 ### `wiki/` — 위키 (LLM 소유)
 - LLM이 새 소스 수집·질의 응답·정기 점검을 통해 지속적으로 유지하는 마크다운 페이지
@@ -124,8 +123,8 @@ lint 결과는 `log.md`에 항목으로 남기고, 즉시 고칠 수 있는 건 
 |---|---|
 | `wiki/scenarios/scenario-{A..E}.md` + `scenario-matrix.md` | `dashboard/src/data/scenarioPlanning.js` SCENARIOS |
 | `wiki/driving-forces/key-drivers.md` | `dashboard/src/data/scenarioPlanning.js` INITIAL_QUADRANT_POSITIONS |
-| `wiki/strategies/` (D1~D9, RS1~RS8) | `dashboard/src/components/DecisionTracker.jsx` DECISIONS, `dashboard/src/data/strategies.js` |
-| `sources/raw/{market,macro}/` 시계열 | `dashboard/data/*.json` (auto-update API) |
+| `wiki/strategies/` (D1~D17, RS-1~RS-9) | `dashboard/src/data/strategies.js` (DECISIONS·ROBUST_STRATEGIES 단일 소스), `dashboard/src/components/DecisionTracker.jsx` |
+| 실시간 시계열 (GPU 임대가·공급·신용 스프레드·주가 프록시) | `dashboard/api/_lib/{vast,yahoo}.js` → EWI 자동 갱신 (정적 시드는 `dashboard/data/*.json`) |
 | `wiki/` 전체 | `outputs/report/scenario-planning-report.md` (합성) |
 | `outputs/report/scenario-planning-report.md` | `outputs/presentation/slide-outline.md` |
 | `outputs/presentation/slide-outline.md` | `outputs/presentation/scripts/generate_pptx.py` (구조 변경 시) |
@@ -222,25 +221,6 @@ wiki/steep → wiki/driving-forces → wiki/scenarios → wiki/strategies
 
 ---
 
-## 9. 기존 누적 로그
-- `PROMPT.md` — 2026-05-18 위키화 시점에 의미 단위로 추려 `log.md`에 흡수 후 삭제. 필요 시 git history에서 회수.
-- `PLAN.md` — 초기 프로젝트 계획. 위키화 이후 의미가 줄어듦. 정리 대상.
+## 9. 연혁
 
----
-
-## 10. 마이그레이션 진행 현황 (2026-05-18)
-
-| 단계 | 상태 |
-|---|---|
-| 디렉토리 골격 (sources/wiki/outputs) | ✓ |
-| 무손실 mv (analysis→wiki, report 분해, presentation→outputs, data→sources/raw) | ✓ |
-| dashboard 경로 의존성 갱신 (SourceLink PATH_REGEX + source props + indicators/visualizations) | ✓ |
-| CLAUDE.md 위키 헌법화 | ✓ |
-| `index.md`, `log.md` 생성 | ✓ |
-| `sources/raw/` 24개 파일 → `wiki/entities/`·`wiki/concepts/` 재배치 | ✓ |
-| `sources/raw/metadata.md` → `sources/README.md` (외부 출처 카탈로그) | ✓ |
-| `PROMPT.md` → `log.md` 의미 단위 변환 + 삭제 | ✓ |
-| 빌드 검증 (dashboard `npm run build` ✓ + `generate_pptx.py` ✓ 29매 540KB) | ✓ |
-| `wiki/entities/china-competitors.md` → `cxmt.md` + `ymtc.md` 분리 | ✓ |
-| 신규 entity: `samsung.md`, `nvidia.md`, `tsmc.md` | ✓ |
-| 신규 entity (정보 부족으로 보류): `intel.md`, `amd.md`, `broadcom.md` | 다음 ingest에서 외부 자료 들어올 때 |
+2026-05-18 위키화 마이그레이션 완료 — 디렉토리 3계층 분리(`data/`→`sources/`, `analysis/`→`wiki/`, report 분해→`outputs/`), `sources/raw/` 원본 24개 파일 → `wiki/entities`·`concepts` 재배치, `sources/raw/metadata.md` → `sources/README.md`, `PROMPT.md`·`PLAN.md` → `log.md` 흡수 후 삭제. 상세 이력은 git history 참조.
