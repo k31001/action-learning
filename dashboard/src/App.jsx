@@ -25,7 +25,7 @@ const TOP_TABS = [
 ]
 
 const MAIN_TABS = [
-  { id: 'decisions', label: '9개 결정' },
+  { id: 'decisions', label: '결정' },
   { id: 'ewi', label: 'EWI 지표' },
   { id: 'triggers', label: '시나리오 트리거' },
 ]

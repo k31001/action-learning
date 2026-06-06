@@ -9,19 +9,20 @@ export const INITIAL_QUADRANT_POSITIONS = [
   { key: 'sixMonth',   date: '2025-11', df1: 5.5,  df2: 2.5,  note: 'H20 부분 재허용, 삼성 35% 반등, 디커플링 완화' },
   { key: 'threeMonth', date: '2026-02', df1: 6.5,  df2: 1.5,  note: 'MATCH법안 위원회 미통과, 공존 신호 강화' },
   { key: 'oneMonth',   date: '2026-04', df1: 7.5,  df2: 0.5,  note: '빅테크 Q1 실적 호조, 관리된 공존 신호' },
-  // 최신 기준 (2026-05-31) — Q1 매출 사상 최대 + HBM4 Sold Out 으로 DF1 +0.5,
-  // Micron $200B 미국 약정 + CXMT HBM3 양산 신호로 DF2 +0.5 (디커플링 압박 재상승)
-  { key: 'current',    date: '2026-05', df1: 8.0,  df2: 1.0,  note: 'Q1 메모리 매출 $50.4B 사상 최대 + HBM4 Sold Out / Micron US$200B 약정 + CXMT HBM3 양산' },
+  // 최신 기준 (2026-06-06) — 슈퍼사이클 정점 확인(df1 유지 8.0) BUT 선행 균열 형성.
+  // DC 착공 55.9GW·MU +7.6×·HBM sold-out 강세 / 공급 과잉 EWI 경계(68)·DRAM>HBM OPM 정점·GPU 임대가 둔화 → 하락 변곡 감시
+  { key: 'current',    date: '2026-06', df1: 8.0,  df2: 1.0,  note: 'DC 착공 55.9GW·MU +7.6× 슈퍼사이클 정점 / 수요 변곡 EWI 공급 과잉 경계(68)·괴리 +4·GPU 임대가 둔화 → 하락 변곡 감시' },
 ]
 
-// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 의 추정 범위 기반 (2026-05-31 기준)
-//   A 25~30 / B 30~35 / C 10~15 / D 20~25 / E 5~10  → 합 100 으로 정규화
-//   Q1 AI 수요 사상 최대 신호 반영해 B 살짝 상향, D/C 살짝 하향.
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-06-06 갱신)
+//   A 25~30 / B 30~35 / C 8~12 / D 20~25 / E 5~8  → 합 100
+//   [2026-06] AI DC 착공 55.9GW·슈퍼사이클 정점(MU+7.6×·HBM sold-out) → Main Bet B 강화(34→35).
+//   수요 변곡 EWI 공급 과잉 경계(68)·DRAM>HBM OPM 정점·GPU 임대가 둔화 → 순환 조정 D 상향(22→23). A·C 소폭 하향.
 export const SCENARIOS = [
-  { id: 'A', name: '황금 요새', probability: 27, color: 'blue', description: 'AI 지속 + 디커플링' },
-  { id: 'B', name: 'AI 르네상스', probability: 34, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
-  { id: 'C', name: '기술 냉전', probability: 11, color: 'red', description: 'AI 붕괴 + 디커플링' },
-  { id: 'D', name: '조용한 재편', probability: 22, color: 'orange', description: 'AI 붕괴 + 공존' },
+  { id: 'A', name: '황금 요새', probability: 26, color: 'blue', description: 'AI 지속 + 디커플링' },
+  { id: 'B', name: 'AI 르네상스', probability: 35, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
+  { id: 'C', name: '기술 냉전', probability: 10, color: 'red', description: 'AI 붕괴 + 디커플링' },
+  { id: 'D', name: '조용한 재편', probability: 23, color: 'orange', description: 'AI 붕괴 + 공존' },
   { id: 'E', name: '패러다임 전환', probability: 6, color: 'purple', description: 'HBM 패러다임 붕괴 (와일드카드)' },
 ]
 
@@ -1554,6 +1555,48 @@ export const INITIAL_TRIGGERS = [
     isPositive: true,
     probabilityDelta: { A: 0, B: +7, C: -3, D: -4, E: 0 },
     df1Delta: 0.5,
+    df2Delta: 0,
+  },
+
+  // ── 수요 변곡 조기경보 트리거 (2026-06, demand-inflection-ewi.md) ──────────────
+  // 인과 사슬 선행 신호 — 기존 capex-cut/price-drop 보다 작은 델타(더 이른·약한 신호)
+  {
+    id: 'gpu_rental_collapse',
+    name: 'GPU 임대가 6개월 -35% 급락',
+    condition: 'Vast.ai·ClusterMAX 기준 H100/H200 바스켓 임대가 6개월 누적 -35% 이상 급락',
+    targetScenarios: ['D', 'C'],
+    immediateAction: '수요 청산가 선행 약화 — RS-5 재고·캐파 규율 점검, HBM 증설 속도 재검토 (RS-9 발동)',
+    activated: false,
+    activatedDate: null,
+    note: '인과 사슬 ① 최선행 신호 (선행 9~18개월). EWI gpu_rental_h100_usd 연동',
+    probabilityDelta: { A: -2, B: -6, C: +3, D: +5, E: 0 },
+    df1Delta: -1.5,
+    df2Delta: 0,
+  },
+  {
+    id: 'dc_construction_cancellations',
+    name: 'AI DC 착공 취소·연기 분기 5건+',
+    condition: 'DCD 등 기준 분기 5건 이상 신규 DC 착공 취소 또는 연기',
+    targetScenarios: ['D', 'C'],
+    immediateAction: '수요 파이프라인 둔화 — 신규 HBM 캐파 집행 보류, 소재 비축 재검토',
+    activated: false,
+    activatedDate: null,
+    note: '인과 사슬 ② 돈 단계 (선행 6~12개월). EWI dc_cancellation_count 연동. 발표보다 빠른 신호',
+    probabilityDelta: { A: -1, B: -5, C: +2, D: +4, E: 0 },
+    df1Delta: -1.0,
+    df2Delta: 0,
+  },
+  {
+    id: 'demand_inflection_divergence',
+    name: '수요 변곡 괴리 경보 (선행 꺾임 + 끈적 강세)',
+    condition: '복합 위험 점수 경계(≥75) 또는 선행−끈적 괴리 2개 분기 연속 확대 (선행 악화·착공/메모리 여전히 강세)',
+    targetScenarios: ['D'],
+    immediateAction: '하락 전 대응 윈도우 — RS-9 프로토콜 발동, RS-1 캐파 동결 + RS-5 규율 즉시 적용',
+    activated: false,
+    activatedDate: null,
+    note: '괴리 로직 = 하락 변곡 선행 윈도우. demand-inflection-ewi.md §3',
+    probabilityDelta: { A: -2, B: -6, C: +2, D: +6, E: 0 },
+    df1Delta: -1.5,
     df2Delta: 0,
   },
 ]

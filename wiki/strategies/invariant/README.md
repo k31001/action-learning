@@ -1,22 +1,24 @@
 # 불변전략 (Robust Strategies) — 문서 인덱스
 
 > **목적**: 시나리오 A~E (5개) **모두**에서 긍정적 가치를 창출하는 전략. "어떤 미래가 와도 이긴다"의 조건을 충족한다.
-> **재검증 결과**: 기존 RS1~RS7 비판적 평가 후 7개 재편 (메모: [robust-reverification.md](../../analysis/scenarios/robust-reverification.md))
+> **재검증 결과**: 기존 RS1~RS7 비판적 평가 후 재편 + RS-8(구조화 매출 헷지)·RS-9(데이터 기반 수요 변곡 센싱) 추가 = 9개 (메모: [robust-reverification.md](../../analysis/scenarios/robust-reverification.md))
 > **상위 문서**: [scenario-planning-report.md](../scenario-planning-report.md), [analysis/scenarios/strategy.md](../../analysis/scenarios/strategy.md)
 
 ---
 
-## 7개 불변전략
+## 9개 불변전략
 
 | ID | 전략명 | 핵심 메커니즘 | 문서 |
 |----|--------|-------------|------|
 | **RS-1** | 옵션형 캐파 체계 | Fab Shell 선행 + 장비 단계 반입 + 롤링 캐파 리뷰 | [rs1-options-based-capacity.md](rs1-options-based-capacity.md) |
 | **RS-2** | 바벨 포트폴리오 | 고마진(HBM)+저원가(범용) 양 끝, 가운데 제품 축소 | [rs2-barbell-portfolio.md](rs2-barbell-portfolio.md) |
 | **RS-3** | 고객특화·전환비용 극대화 | NVIDIA CMX/SCADA/FDP, Co-Validation, 베이스다이 커스텀 | [rs3-customer-switching-cost.md](rs3-customer-switching-cost.md) |
-| **RS-4** | 고객 포트폴리오 의도적 분산 | LTA + Take-or-Pay, 단일 고객 ≤25% | [rs4-customer-portfolio-diversification.md](rs4-customer-portfolio-diversification.md) |
+| **RS-4** | 고객 포트폴리오 의도적 분산 | LTA + Take-or-Pay, 단일 고객 ≤25% + 소버린 다변화 | [rs4-customer-portfolio-diversification.md](rs4-customer-portfolio-diversification.md) |
 | **RS-5** | 재무 규율 + 초과이익 재투자 | 재고일수 상한, FCF 기준, 다운사이클 capex 하한 | [rs5-financial-discipline-reinvestment.md](rs5-financial-discipline-reinvestment.md) |
 | **RS-6** | 공정 리더십 통합 | 1c nm DRAM 우위 + NAND 주기 연장 + Hybrid bonding 자체 IP | [rs6-process-leadership.md](rs6-process-leadership.md) |
 | **RS-7** | AI 엔지니어링 자동화 | EDA·firmware·수율예측 AI 전사 도입 → 잉여 자원 전략 투입 | [rs7-ai-engineering-automation.md](rs7-ai-engineering-automation.md) |
+| **RS-8** | 구조화 매출 헷지 | Participating Forward·Wafer Slot HTA·Tiered Pricing·Memory Trading Desk (변동성 ±25→±12%) | [rs8-structured-revenue-hedging.md](rs8-structured-revenue-hedging.md) |
+| **RS-9** | 데이터 기반 수요 변곡 센싱 **(NEW)** | DC 착공 추적 + 수요 변곡 EWI(선행·끈적·공급 과잉 + 괴리) → RS-1·RS-5 타이밍 | [rs9-demand-inflection-sensing.md](rs9-demand-inflection-sensing.md) |
 
 ## 시나리오 가치 매트릭스
 
@@ -29,8 +31,10 @@
 | RS-5 재무 규율+재투자 | 투자 절제 | 초과이익 재투자 | 다운턴 흑자 | 회복 자금 | 피벗 자금 |
 | RS-6 공정 리더십 | 마진 우위 | Capex 회수 | IP 자립 생존 | 원가 우위 | 자원 차세대 재배분 |
 | RS-7 AI 자동화 | 인력 보안 강화 | R&D 속도 | 인건비 절감 | 잉여 자원 활용 | 신기술 R&D 가속 |
+| RS-8 구조화 헷지 | 서방 매출 안정화 | 상방 50% 회수 | 다운턴 흑자 | 평탄화 | 신시장 차등 가격 |
+| RS-9 수요 변곡 센싱 | 디커플링 왜곡 식별 | 슈퍼사이클 정점 선포착 | 이중 충격 최속 컷 | 다운사이클 cushion | 아키텍처 전환 선감지 |
 
-> 7개 전략 × 5개 시나리오 = 35셀 모두에서 긍정 가치 창출 확인.
+> 9개 전략 × 5개 시나리오 = 45셀 모두에서 긍정 가치 창출 확인.
 
 ## 작성 원칙
 

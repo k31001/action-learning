@@ -263,7 +263,7 @@ function CompetitivePanel() {
 function RobustStrategyPanel() {
   return (
     <div className="space-y-4">
-      <Card title="8개 Robust 전략 — 시나리오 가치 매트릭스 (8 × 5 = 40 셀)" source="wiki/strategies/invariant/README.md">
+      <Card title="9개 Robust 전략 — 시나리오 가치 매트릭스 (9 × 5 = 45 셀)" source="wiki/strategies/invariant/README.md">
         <p className="text-xs text-zinc-500 mb-3">
           전략별로 시나리오 A/B/C/D/E 각각에서 어떤 가치를 만드는가. 각 셀은 해당 시나리오에서 그 전략의 핵심 작동 방식.
         </p>
@@ -521,7 +521,7 @@ function DecisionsPanel() {
         <div className="text-center">
           <Sparkles size={20} className="inline text-amber-600 mr-2" />
           <span className="text-sm text-zinc-800">
-            12개 결정은 <span className="text-amber-700 font-bold">단일 결정으로 분리하면 효과가 사라진다</span>
+            {DECISIONS.length}개 결정은 <span className="text-amber-700 font-bold">단일 결정으로 분리하면 효과가 사라진다</span>
             — 묶음으로 처리해야 한다.
           </span>
         </div>

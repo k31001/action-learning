@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-06 ─────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-06',
+    type: 'build',
+    version: 'v2.17.0',
+    title: '전략 리팩토링 — 최신 데이터(DC 착공 + 수요 변곡) 반영',
+    summary:
+      'AI DC 착공 트래커(55.9GW)와 수요 변곡 EWI를 시나리오·전략에 반영. Robust 전략 RS-9(데이터 기반 수요 변곡 센싱) 신설, SD-1(HBM 독립 P&L) → RS-5 흡수, 시나리오 확률 재튜닝(B·D 상향), 신규 의사결정 D15~D17·전환 트리거 3종 추가, DecisionTracker 단일 소스 통합.',
+    tags: ['전략 리팩토링', 'RS-9', '시나리오', '수요 변곡', 'DC 착공', 'dashboard'],
+    items: [
+      { label: 'RS-9 신설', detail: '데이터 기반 수요 변곡 센싱 — DC 착공 트래커 + 수요 변곡 EWI 앙상블로 하락 변곡 선제 포착. 공급 거버넌스 축(RS-1·RS-5·RS-9). 9개 Robust·45셀 매트릭스' },
+      { label: 'SD-1 demote', detail: 'HBM 독립 P&L → 시나리오 베팅에서 제외, RS-5 재무 규율 가시성으로 흡수. 메인벳 6→5개' },
+      { label: '시나리오 확률', detail: 'A26·B35·C10·D23·E6 (합 100). B 34→35(슈퍼사이클)·D 22→23(공급 과잉·정점 신호) 상향, A·C 소폭 하향. indicators.js + scenarioPlanning.js 동시 갱신' },
+      { label: '의사결정 +3', detail: 'D15(수요 변곡 조기경보 운영)·D16(호황 정점 공급 규율, critical)·D17(소버린 다변화) → 17개. DecisionTracker 로컬 중복 제거 후 strategies.js 단일 소스 통합(deadline 정규화 NaN 버그 수정)' },
+      { label: '전환 트리거 +3', detail: 'gpu_rental_collapse·dc_construction_cancellations·demand_inflection_divergence → 21개. 모두 시나리오 D·C 방향' },
+      { label: '위키·보고서 동기화', detail: 'rs9 위키 신설, scenario-matrix·key-drivers DF1·core/invariant README 갱신, 보고서 §5/7.1/7.3/4.2/8.1 반영(구 RS 택소노미 불일치는 알려진 이슈로 명시)' },
+      { label: 'version v2.16.0 → v2.17.0 (마이너)', detail: '전략 리팩토링·RS-9·신규 결정/트리거·시나리오 갱신·DecisionTracker 통합' },
+    ],
+    links: [
+      { label: 'rs9-demand-inflection-sensing.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/invariant/rs9-demand-inflection-sensing.md' },
+    ],
+  },
   // ── 2026-06-02 (i) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-02',

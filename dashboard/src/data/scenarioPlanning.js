@@ -125,7 +125,7 @@ export const DRIVING_FORCES_DATA = {
       id: 'DF1',
       title: 'AI 수요의 구조적 지속성 vs 거품 붕괴',
       role: '주축 X — 시나리오 매트릭스의 가로축',
-      currentPosition: 'Pole A (수요 지속) 강하게 진행 중. 2027~2028 분기점',
+      currentPosition: '슈퍼사이클 정점 확인(MU +7.6×·DC 착공 55.9GW·HBM sold-out) BUT 선행 균열 형성(수요 변곡 EWI 공급 과잉 경계 68·GPU 임대가 둔화·DRAM>HBM OPM 정점·DC 취소 일부) → 다음 하락 변곡 감시. DC 트래커 + 수요 변곡 EWI = DF1 공식 센싱 도구',
       poleA: {
         label: '구조적 지속·슈퍼사이클',
         narrative: 'AI 수요 폭증 + 빅테크 CapEx 2027 $1조 돌파, HBM이 DRAM의 50% 차지 (2030)',
@@ -177,7 +177,7 @@ export const SCENARIOS_DATA = {
     {
       id: 'A', name: '황금 요새', color: '#1d4ed8',
       df1: 'AI 지속',     df2: '디커플링',
-      probability: 27,  // 2026-05-31 동기화 — indicators.js SCENARIOS 기준
+      probability: 26,  // 2026-06-06 — indicators.js SCENARIOS 동기화 (디커플링 신호 안정 → 소폭 하향)
       summary: '서방 AI 공급망 내 HBM 수요 폭발. 시안 팹 상실 + 서방 시장 프리미엄 급등',
       threats: ['시안 팹 상실', '대중 HBM 봉쇄', '공급 다각화 압박'],
       opportunities: ['서방 AI 듀오폴리', 'HBM 단가 프리미엄', '텍사스 팹 CHIPS 보조금'],
@@ -186,17 +186,17 @@ export const SCENARIOS_DATA = {
     {
       id: 'B', name: 'AI 르네상스', color: '#059669',
       df1: 'AI 지속',     df2: '관리된 공존',
-      probability: 34,
-      summary: 'AI 글로벌 성장 + 중국 시장 부분 접근 유지. 최상의 성장 환경, 가장 가능성 높음. [2026-05-25] Main Bet KPI(HBM 28%+) Q3 2025 22% (Counterpoint) — 6%pt 미달. Rubin 2/3+ SK 락인 진행 중 → KPI 윈도우 HBM4E·HBM5(2027~)로 이동 검토',
-      threats: ['SK하이닉스 기술 격차 고착 (FY25 OP 47.2조 vs Samsung 메모리 24.9조)', 'NAND 점유율 회복 압박', 'Rubin 진입 여지 좁아짐 (SK 2/3+ 락인)'],
-      opportunities: ['동서 양쪽 시장 공략', 'HBM4E·HBM5 윈도우에서 회복 베팅', '대중 일반 메모리 매출 유지', 'IDM 종합반도체 차별점 (CXL·3D DRAM·로직다이 내재화)'],
-      keyAssumption: 'AI 수익화 가시화 + 미중 협상 모멘텀 지속',
+      probability: 35,
+      summary: 'AI 글로벌 성장 + 중국 시장 부분 접근 유지. 최상의 성장 환경, 가장 가능성 높음. [2026-06] DC 착공 55.9GW·MU +7.6× 슈퍼사이클로 수요 가시성 확보 → Main Bet 강화(34→35). KPI 윈도우 HBM4E·HBM5(2027~). 단 공급 과잉 경계(68)로 정점 절제(RS-5) 병행.',
+      threats: ['SK하이닉스 기술 격차 고착 (FY25 OP 47.2조 vs Samsung 메모리 24.9조)', 'NAND 점유율 회복 압박', 'Rubin 진입 여지 좁아짐 (SK 2/3+ 락인)', '공급 과잉 정점 후 순환 조정 리스크'],
+      opportunities: ['동서 양쪽 시장 공략', 'DC 파이프라인 55.9GW·운영사별 HBM 수요 가시성', 'HBM4E·HBM5 윈도우에서 회복 베팅', '대중 일반 메모리 매출 유지', 'IDM 종합반도체 차별점 (CXL·3D DRAM·로직다이 내재화)'],
+      keyAssumption: 'AI 수익화 가시화 + 미중 협상 모멘텀 지속 + DC 착공 파이프라인 실현',
       mainBet: true,
     },
     {
       id: 'C', name: '기술 냉전', color: '#dc2626',
       df1: 'AI 거품 붕괴', df2: '디커플링',
-      probability: 11,
+      probability: 10,
       summary: 'AI 투자 급감 + 공급망 단절 동시 발생. 메모리 대규모 공급과잉 — 최악 시나리오',
       threats: ['이중 충격', '시안 팹 + 수요 급감 동시', '구조조정 불가피', '경쟁사 인수 표적'],
       opportunities: ['생존 자체가 경쟁력', 'M&A 매물 등장', '재무체력으로 기술 격차 좁히기'],
@@ -205,11 +205,11 @@ export const SCENARIOS_DATA = {
     {
       id: 'D', name: '조용한 재편', color: '#d97706',
       df1: 'AI 거품 붕괴', df2: '관리된 공존',
-      probability: 22,  // 합계 100 유지 (B 32→34, C 12→11, E 7→6)
-      summary: 'AI 과열 조정, 메모리 불황 재현. 지정학 안정화로 시장 질서는 유지',
-      threats: ['2022~2023형 다운사이클 재현', '비용 경쟁 심화', 'SK 기술 우위 고착화'],
-      opportunities: ['기술 격차 좁힐 시간', '내부 체질 개선', '저가 M&A 기회'],
-      keyAssumption: 'AI ROI 미실현 + 지정학 안정화 (협상 지속)',
+      probability: 23,  // 2026-06-06 — 공급 과잉 경계(68)·정점 신호로 순환 조정 리스크 상향 (합계 100)
+      summary: 'AI 과열 조정, 메모리 불황 재현. 지정학 안정화로 시장 질서는 유지. [2026-06] 공급 과잉 EWI 경계(68)·DRAM>HBM OPM 정점·리드타임 정점(언와인드 셋업)·GPU 임대가 둔화가 이 시나리오의 선행 신호.',
+      threats: ['2022~2023형 다운사이클 재현', '더블오더링 언와인드(부족 정점→급락)', '비용 경쟁 심화', 'SK 기술 우위 고착화'],
+      opportunities: ['기술 격차 좁힐 시간', '수요 변곡 EWI로 선제 규율 (RS-9·RS-5)', '내부 체질 개선', '저가 M&A 기회'],
+      keyAssumption: 'AI ROI 미실현/순환 조정 + 지정학 안정화 (협상 지속)',
     },
     {
       id: 'E', name: '패러다임 전환', color: '#7c3aed',
@@ -233,6 +233,8 @@ export const SCENARIOS_DATA = {
     { factor: 'SK·Kioxia 1억 IOPS AI SSD 양산', decisionDate: '2027',               monitor: 'NVIDIA Storage-Next 레퍼런스 발표 — Samsung SLC AI SSD 로드맵 공개 시급' },
     { factor: 'CXMT DRAM 점유 4강 진입',        decisionDate: '2026 ~ 2027',        monitor: 'TrendForce 분기 점유율 — 12%+ 도달 시 범용 가격 압박 본격화' },
     { factor: 'Stargate Korea LOI → DA',       decisionDate: '2026 H1',            monitor: 'Samsung+SK+OpenAI 본 계약 체결 + 4사 컨소시엄 운영 협약 (SE-3)' },
+    { factor: 'AI DC 착공 파이프라인 가동',     decisionDate: '상시 (분기)',        monitor: 'DC 트래커 55.9GW 단계 분포·연도별 가동·취소 건수 — 메모리 수요 6~24개월 선행 (ai-datacenter-buildout.md)' },
+    { factor: '수요 변곡 EWI 괴리·공급 과잉',   decisionDate: '상시 (주간)',        monitor: '복합 위험·선행−끈적 괴리·공급 과잉(현재 경계 68)·GPU 임대가 — 하락 변곡 선행 (demand-inflection-ewi.md)' },
   ],
 }
 

@@ -23,11 +23,14 @@ export const STRATEGY_OVERVIEW = {
     { label: 'Enterprise SSD TAM',           value: '$32B → $69B', subtitle: '2025 → 2031 (북미 DC, CAGR 27.6%)', accent: 'green' },
     { label: 'UFS 4.1 + LPDDR5X 가격',        value: '+85% YoY', subtitle: '2026 H1 — AI 부족이 모바일 전이, Q4 완화 예상', accent: 'amber' },
     { label: 'Stargate Korea LOI',            value: 'SE-3 ✅', subtitle: '$15~25B Tier 2 (Samsung+SK+OpenAI 2025-10)', accent: 'green' },
+    { label: 'AI DC 착공 파이프라인',         value: '55.9GW', subtitle: '17개국 추적 · 2026 가동 ~23.7GW — 메모리 수요 6~24개월 선행 (신규)', accent: 'green' },
+    { label: '수요 변곡 위험 (EWI)',          value: '36 · 주의', subtitle: '공급 과잉 경계(68)·선행−끈적 괴리 +4 — RS-9 센싱 (신규)', accent: 'amber' },
+    { label: 'GPU 현물 임대가 (Vast.ai)',     value: '~$3.3', subtitle: 'H100·H200 바스켓 둔화세 — 컴퓨트 수급 Tier0 선행 (신규)', accent: 'amber' },
   ],
 
   // Robust 전략 4축 — 보고서 Executive Summary 의 묶음 구조
   roBustAxes: [
-    { axis: '공급 거버넌스', members: ['RS-1', 'RS-5'], description: '호황기 절제 + 다운턴 사수 동일 거버넌스 (Nucor·ExxonMobil 모델)', color: '#3b82f6' },
+    { axis: '공급 거버넌스', members: ['RS-1', 'RS-5', 'RS-9'], description: '호황기 절제 + 다운턴 사수 + 수요 변곡 센싱 — 정보로 타이밍하는 거버넌스 (Nucor·ExxonMobil·Black River)', color: '#3b82f6' },
     { axis: '포트폴리오',   members: ['RS-2', 'RS-6'], description: '바벨 (HBM↔범용) + 공정 리더십 (1c nm + NAND 주기 연장)',     color: '#10b981' },
     { axis: '고객 관계',     members: ['RS-3', 'RS-4'], description: '락인(CMX·SCADA·FDP) + 분산(LTA·Take-or-Pay) 협상력 양면',  color: '#f59e0b' },
     { axis: '신규 도구',     members: ['RS-7', 'RS-8'], description: 'AI 자동화(잉여 자원 전환) + 구조화 헷지 (변동성 ±25→±12%)', color: '#8b5cf6' },
@@ -48,7 +51,7 @@ export const STRATEGY_OVERVIEW = {
   },
 
   // Executive Summary 한 문장 요약
-  oneLineSummary: '호황의 정점에서 다운턴을 준비하는 유일한 방법은 어느 미래가 와도 작동하는 8개 Robust 전략과 2026년 Q4 안에 묶음으로 처리해야 하는 12개 결정이다.',
+  oneLineSummary: '호황의 정점에서 다운턴을 준비하는 유일한 방법은 어느 미래가 와도 작동하는 9개 Robust 전략(수요 변곡 센싱 RS-9 신설)과 2026 Q4 안에 묶음으로 처리해야 하는 결정들이다.',
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -192,15 +195,15 @@ export const ROBUST_STRATEGIES = [
   },
   {
     id: 'RS-4', title: '고객 포트폴리오 의도적 분산', axis: '고객 관계', color: '#f59e0b',
-    summary: '단일 고객 의존은 호황기 매출, 다운턴·관계 악화 시 협상력을 잃게 한다',
-    mechanism: 'LTA + Take-or-Pay + 단일 고객 ≤25% 한도',
+    summary: '단일 고객 의존은 호황기 매출, 다운턴·관계 악화 시 협상력을 잃게 한다 — DC 수요 상위 10개 운영사 ~76% 집중 확인',
+    mechanism: 'LTA + Take-or-Pay + 단일 고객 ≤25% 한도 + 소버린 다변화 (UAE G42 5GW·사우디 HUMAIN·인도 Reliance·Stargate Korea)',
     benchmark: 'Southwest (단일 의존 회피)',
-    scenarios: { A: '서방 편중 분산', B: '신흥시장 발굴', C: '위기 분산', D: '안정 수요', E: '다양한 기술 수요처' },
+    scenarios: { A: '서방 편중 분산', B: '소버린·신흥 수요처 발굴', C: '위기 분산', D: '안정 수요', E: '다양한 기술 수요처' },
   },
   {
     id: 'RS-5', title: '재무 규율 + 초과이익 재투자', axis: '공급 거버넌스', color: '#3b82f6',
-    summary: '호황기 절제(재고/FCF 기준) + 다운사이클 capex 4조원/년 하한 — 동일 거버넌스',
-    mechanism: '재고일수 상한, FCF 기준, 다운사이클 capex 하한, M&A 펀드 사전 적립',
+    summary: '호황기 절제(재고/FCF) + 다운사이클 capex 하한 — 동일 거버넌스. [2026-06] 정점 신호 다중 확인(공급 과잉 경계 68·DRAM>HBM OPM·리드타임 정점) → 절제 즉시',
+    mechanism: '재고일수 상한, FCF 기준, 다운사이클 capex 하한, M&A 펀드 사전 적립, HBM 독립 P&L 가시화 (구 SD-1 흡수)',
     benchmark: 'Nucor (요새형 재무) + ExxonMobil (역사이클 + Pioneer M&A)',
     scenarios: { A: '투자 절제', B: '초과이익 재투자', C: '다운턴 흑자', D: '회복 자금', E: '피벗 자금' },
   },
@@ -226,9 +229,17 @@ export const ROBUST_STRATEGIES = [
     scenarios: { A: '서방 매출 안정화', B: '상방 50% 회수', C: '다운턴 흑자', D: '평탄화', E: '신시장 차등 가격' },
     isNew: true,
   },
+  {
+    id: 'RS-9', title: '데이터 기반 수요 변곡 센싱 (NEW)', axis: '공급 거버넌스', color: '#3b82f6',
+    summary: 'DC 착공 추적 + 수요 변곡 EWI(선행·끈적·공급 과잉 앙상블 + 괴리)로 하락 변곡을 먼저 잡아 RS-1(캐파 on/off)·RS-5(규율)를 제때 발동',
+    mechanism: '인과 사슬 선행지표(GPU 임대가·신용 스프레드·스팟-계약 괴리·재고일수·DRAM>HBM OPM·공급 밸런스) 앙상블 + 복합 위험·괴리 밴드 → RS-1/RS-5 트리거 연동',
+    benchmark: 'Cargill Black River (정보 자산화) + ExxonMobil (역사이클 타이밍)',
+    scenarios: { A: '디커플링 수요 왜곡 조기 식별', B: '슈퍼사이클 정점 선포착 (증설 타이밍)', C: '이중 충격 최속 캐파·재고 컷', D: '다운사이클 변곡 선행 → cushion 조기 확보', E: '아키텍처 전환 수요 이동 선감지' },
+    isNew: true,
+  },
 ]
 
-// 8 RS × 5 시나리오 = 40 셀 가치 매트릭스 (heatmap 용)
+// 9 RS × 5 시나리오 = 45 셀 가치 매트릭스 (heatmap 용)
 export const RS_SCENARIO_MATRIX = ROBUST_STRATEGIES.map(rs => ({
   id: rs.id,
   title: rs.title,
@@ -245,8 +256,8 @@ export const CORE_STRATEGIES = {
     {
       id: 'MB-4', title: '커스텀 AI 메모리 솔루션', score: 15,
       coreOneLine: '메모리를 부품이 아니라 솔루션으로 — Google/Amazon/MS ASIC 통합 (HBM + CXL + PIM + CMX)',
-      currentState: 'HBM 회복 단계, 베이스다이 커스텀은 미가시',
-      strengths: ['광범위 제품 포트폴리오 (HBM·CXL·PIM·SSD)', '파운드리 보유 — 베이스다이 커스텀 가능'],
+      currentState: 'HBM 회복 단계, 베이스다이 커스텀은 미가시. DC 파이프라인 55.9GW로 운영사별 HBM 수요 가시성 확보',
+      strengths: ['광범위 제품 포트폴리오 (HBM·CXL·PIM·SSD)', '파운드리 보유 — 베이스다이 커스텀 가능', 'DC 트래커·운영사별 수요 가시성 (RS-9)'],
       gaps: ['NVIDIA Rubin 28% (vs SK 70%)', 'HBM3E 12Hi 품질 회복 중'],
       target2030: '단일 고객 매출 비중 30%+',
     },
@@ -275,20 +286,12 @@ export const CORE_STRATEGIES = {
       target2030: '비중국 신흥 시장 매출 3배+ (vs 2025)',
     },
     {
-      id: 'SD-1', title: 'HBM 조직 독립 P&L', score: 12,
-      coreOneLine: 'HBM 사업부를 메모리사업부 내 독립 P&L 센터로 분리, 패키징 전담 신설',
-      currentState: '메모리사업부 내 통합, 분리 P&L 미공개 ⚠️',
-      strengths: ['Samsung Foundry 통합 영업 가능'],
-      gaps: ['외부 비공개', 'TSMC·IMEC·ASE 출신 채용 필요 (100인+)'],
-      target2030: '독립 P&L 센터 + 패키징 전담 100인+',
-    },
-    {
-      id: 'RS-5', title: '재무 규율 + 재투자', score: 10,
-      coreOneLine: '호황기 절제 + 다운사이클 capex 하한 4조 원/년 (Nucor·ExxonMobil 모델)',
-      currentState: '현금 $63B 강점, 이사회 정책 명문화 부재 ⚠️',
-      strengths: ['현금 $63B — 다운사이클 capex 하한 자원'],
-      gaps: ['다운사이클 capex 하한 정책 명문화 부재 — 이사회 결의 필요'],
-      target2030: '다운사이클 capex 4조 원/년 (HBM R&D + 패키징 + 3D DRAM)',
+      id: 'RS-5', title: '재무 규율 + 재투자', score: 11,
+      coreOneLine: '호황기 절제 + 다운사이클 capex 하한 (Nucor·ExxonMobil) — 정점 신호 다중 확인 시 즉시 발동 (RS-9 연동)',
+      currentState: '현금 $63B 강점, 이사회 정책 명문화 부재 ⚠️. 공급 과잉 경계(68)·DRAM>HBM OPM 정점 → 절제 시급',
+      strengths: ['현금 $63B — 다운사이클 capex 하한 자원', '수요 변곡 EWI(RS-9)로 절제 타이밍 정밀화'],
+      gaps: ['다운사이클 capex 하한 정책 명문화 부재 — 이사회 결의 필요', 'HBM 독립 P&L 미분리 — 자본 배분 규율 가시성 공백 (구 SD-1 흡수)'],
+      target2030: '다운사이클 capex 4조 원/년 (HBM R&D + 패키징 + 3D DRAM) + HBM 독립 P&L',
     },
   ],
   sideBets: [
@@ -331,7 +334,7 @@ export const CORE_STRATEGIES = {
 
   // 7개 정보 공백 (외부 가시성 회복 우선순위)
   infoGaps: [
-    { id: 'SD-1', area: 'HBM 사업부 P&L 분리', timing: '2026 H1', action: '분리 + 이사회 정책 명문화 → IR 발표' },
+    { id: 'RS-5', area: 'HBM 사업부 P&L 분리 (구 SD-1 → RS-5 흡수)', timing: '2026 H1', action: '분리 + 이사회 정책 명문화 → IR 발표' },
     { id: 'RS-6', area: '자체 hybrid bonding IP 진척', timing: '2026 H2', action: '특허 출원 가속 → YMTC 의존 회피 신호' },
     { id: 'RS-3', area: 'SCADA AI SSD 로드맵', timing: '2026 Tech Day', action: 'SK·Kioxia 추격 가능성 결정' },
     { id: 'SE-1', area: '3D DRAM 전담 R&D 조직', timing: '2026 H2', action: 'SK 30년 로드맵 대비 후행 신호 차단' },
@@ -438,6 +441,26 @@ export const DECISIONS = [
     summary: 'AI 도구 도입 후 분기별 "전환 배치 엔지니어 수" 사업부장 보고 의무화',
     contingency: '—',
     relatedRS: ['RS-7', 'RS-2', 'RS-3'], priority: 'medium',
+  },
+
+  // ── 2026-06 신규 — 최신 데이터(DC 착공 + 수요 변곡) 기반 ──────────────────────
+  {
+    id: 'D15', title: '수요 변곡 조기경보 운영 체계 (RS-9 신규)', cluster: 'D-150', deadline: '2026-Q3',
+    summary: 'DC 착공 추적 + 수요 변곡 EWI 앙상블(선행·끈적·공급 과잉 + 괴리 밴드)을 상시 운영 — GPU 임대가·신용 스프레드·스팟-계약 괴리·재고일수·DRAM>HBM OPM 주간 모니터링, 복합 위험 경계(≥75) 또는 괴리 2분기 연속 확대 시 RS-1/RS-5 자동 발동 프로토콜 명문화. wiki/concepts/demand-inflection-ewi.md',
+    contingency: '실시간 피드 부재 신호(book-to-bill·CoWoS)는 분기 수동 보완. 단일 지표 오경보 방지 위해 괴리 2개 분기 연속 확인 후 발동.',
+    relatedRS: ['RS-9', 'RS-1', 'RS-5'], priority: 'high', isNew: true, keyKpi: 'gpu_rental_h100_usd',
+  },
+  {
+    id: 'D16', title: '호황 정점 공급 규율 즉시 발동 (RS-5)', cluster: 'D-150', deadline: '2026-Q3',
+    summary: 'DRAM OPM > HBM OPM(Counterpoint Q4 2025) + 공급 과잉 경계(68) + GPU 임대가 둔화 — 정점 신호 다중 확인. RS-5 규율 즉시: 재고일수 -15%, LTA 없는 신규 캐파 동결, 자사주 매입 보류, HBM 초과이익 재투자 70%+ 명문화.',
+    contingency: '경쟁사(Micron "with discipline" 4회 발언) 동시 절제 환경 — 단독 절제 점유율 손실 우려 약화. 신호 역전 시 동결 자동 해제 룰.',
+    relatedRS: ['RS-5', 'RS-9'], priority: 'critical', isNew: true, keyKpi: 'dram_opm_vs_hbm_opm',
+  },
+  {
+    id: 'D17', title: '소버린·신흥 수요처 다변화 (RS-4)', cluster: 'D-240', deadline: '2026-Q4',
+    summary: 'AI DC 수요가 상위 ~10개 운영사(OpenAI/Stargate·Meta·G42·AWS)에 ~76% 집중 — 단일 운영사 의존 리스크. UAE·사우디·인도·한국 소버린 AI 인프라 수요처와 LTA + Take-or-Pay 직접 계약, 단일 고객 ≤25% 한도.',
+    contingency: '소버린 수요 실현 지연 시 기존 하이퍼스케일러 LTA 비중 유지. 운영사 카니발리제이션 신호 시 비-하이퍼스케일러(neocloud) 우선.',
+    relatedRS: ['RS-4'], priority: 'high', isNew: true, keyKpi: 'gpu_supply_offers',
   },
 ]
 

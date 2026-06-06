@@ -81,6 +81,7 @@ flowchart LR
 
 - **DF1(AI 수요)** 하락 변곡의 선행 관측 ([key-drivers.md](../driving-forces/key-drivers.md)). 괴리 경보 = 시나리오 **D(조용한 재편)**·거품론 트리거.
 - 신규 EWI 5종은 시나리오 시그널 `['D','C']`로 연결.
+- **시나리오 전환 트리거 3종**(indicators.js INITIAL_TRIGGERS): `gpu_rental_collapse`(임대가 6mo -35%)·`dc_construction_cancellations`(분기 취소 5건+)·`demand_inflection_divergence`(복합 경계≥75 또는 괴리 2분기 확대) → 활성화 시 시나리오 D 확률↑·df1↓. 전략 **RS-9**(수요 변곡 센싱)·의사결정 **D15·D16**과 연동.
 - **자동 갱신 vs 수동**:
   - `gpu_rental_h100_usd` (Tier0 최선행) — **Vast.ai 공개 오퍼 API** 실측. **H100 SXM·H200 0.5:0.5 바스켓** on-demand 중앙값 $/GPU·h를 일 1회 자동 갱신(H100 단독 박한 유동성을 H200 深유동성으로 안정화). 매일 누적되어 추세 형성(실측 현물가, 프록시 아님). ※ CRWV 주가 프록시는 거부 — 임대 *가격*이 아니라 *지분 가치* 추종(6개월 +30%인데 실제 임대가는 하락)해 핵심 선행 신호 오인.
   - `gpu_supply_offers` (현물 공급) — Vast.ai 가용 on-demand 오퍼 수(H100/H200/NVL). 증가 = 컴퓨트 현물 공급 완화. 절대값보다 추세(마켓플레이스 한정, 노이즈).

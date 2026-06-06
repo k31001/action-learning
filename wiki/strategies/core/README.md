@@ -8,7 +8,7 @@
 
 ## 10개 전략 현황 분석
 
-### 메인벳 6개 — 평상시 작동, 불변전략 기반 최적
+### 메인벳 5개 — 평상시 작동, 불변전략 기반 최적 (2026-06: 구 SD-1 → RS-5 흡수)
 
 | ID | 전략 | 현재 위치 (한 줄) | 문서 |
 |----|------|------|------|
@@ -16,7 +16,7 @@
 | **RS-3** | 고객특화·전환비용 (NVIDIA 통합) | CMX 진입 ✅, SCADA 공개 로드맵 부재 ⚠️ | [current-state-rs3-customer-switching-cost.md](current-state-rs3-customer-switching-cost.md) |
 | **RS-6** | 공정 리더십 통합 | 1c yield 60% 추격, hybrid bonding IP 공백 ⚠️ | [current-state-rs6-process-leadership.md](current-state-rs6-process-leadership.md) |
 | **MB-2** | 동서 균형 공급망 | 5거점 구축 중, 시안 라이선스 매년 리스크 | [current-state-mb2-east-west-supply.md](current-state-mb2-east-west-supply.md) |
-| **SD-1** | HBM 조직 독립 P&L | 메모리사업부 내 통합, 분리 P&L 미공개 | [current-state-sd1-hbm-pnl-spinoff.md](current-state-sd1-hbm-pnl-spinoff.md) |
+| ~~SD-1~~ | HBM 조직 독립 P&L → **RS-5 흡수** | IR·거버넌스 전술이라 시나리오 베팅에서 demote (2026-06). 의도는 RS-5(재무 규율 가시성)로 이관 | [current-state-sd1-hbm-pnl-spinoff.md](current-state-sd1-hbm-pnl-spinoff.md) |
 | **RS-5** | 재무 규율 + 재투자 | 현금 $63B 강점, 이사회 정책 명문화 부재 | [current-state-rs5-financial-discipline.md](current-state-rs5-financial-discipline.md) |
 
 ### 사이드벳 5개 — 보완·헤지

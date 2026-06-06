@@ -85,9 +85,9 @@
 - [wiki/concepts/china-policy.md](wiki/concepts/china-policy.md) — 중국 반도체 자립·빅펀드
 - [wiki/concepts/korea-policy.md](wiki/concepts/korea-policy.md) — K-반도체 전략·용인 클러스터
 
-## wiki/strategies/invariant — Robust 전략 (RS1~RS8)
+## wiki/strategies/invariant — Robust 전략 (RS1~RS9)
 
-- [wiki/strategies/invariant/README.md](wiki/strategies/invariant/README.md) — 8개 Robust 전략 시나리오 가치 매트릭스
+- [wiki/strategies/invariant/README.md](wiki/strategies/invariant/README.md) — 9개 Robust 전략 시나리오 가치 매트릭스
 - [wiki/strategies/invariant/rs1-options-based-capacity.md](wiki/strategies/invariant/rs1-options-based-capacity.md) — 옵션형 캐파 체계
 - [wiki/strategies/invariant/rs2-barbell-portfolio.md](wiki/strategies/invariant/rs2-barbell-portfolio.md) — 바벨 포트폴리오
 - [wiki/strategies/invariant/rs3-customer-switching-cost.md](wiki/strategies/invariant/rs3-customer-switching-cost.md) — 고객 전환비용 극대화
@@ -96,6 +96,7 @@
 - [wiki/strategies/invariant/rs6-process-leadership.md](wiki/strategies/invariant/rs6-process-leadership.md) — 공정 리더십 회복
 - [wiki/strategies/invariant/rs7-ai-engineering-automation.md](wiki/strategies/invariant/rs7-ai-engineering-automation.md) — AI 엔지니어링 자동화
 - [wiki/strategies/invariant/rs8-structured-revenue-hedging.md](wiki/strategies/invariant/rs8-structured-revenue-hedging.md) — 구조화 매출 헤징
+- [wiki/strategies/invariant/rs9-demand-inflection-sensing.md](wiki/strategies/invariant/rs9-demand-inflection-sensing.md) — 데이터 기반 수요 변곡 센싱 (NEW, DC 착공 + 수요 변곡 EWI 앙상블)
 
 ## wiki/strategies/core — 핵심전략 현황 (11개)
 

@@ -14,6 +14,17 @@
 
 ---
 
+## [2026-06-06] build | 전략 리팩토링 — 최신 데이터(DC 착공 + 수요 변곡) 반영 (v2.16.0 → v2.17.0)
+- **무엇**: 이번 세션의 AI DC 착공 트래커(55.9GW·17개국)와 수요 변곡 EWI(복합 36 주의·공급 과잉 68 경계·괴리 +4)를 시나리오·구동력·전략에 반영하고 위키 → 대시보드 → 보고서로 동기화.
+- **왜**: "근위 슈퍼사이클 정점은 확인됐고 다음 하락 변곡이 선행 신호에서 형성 중"이라는 신규 데이터에 맞춰 불필요 전략 제거 + 신규 전략 추가로 전략 포트폴리오를 최신화. 이것이 대시보드에 드러나야 함.
+- **전략 ADD**: RS-9 "데이터 기반 수요 변곡 센싱" 신설 — DC 착공 추적 + 수요 변곡 EWI 앙상블(선행·끈적·공급 과잉 + 괴리)로 하락 변곡을 먼저 잡아 RS-1(캐파 on/off)·RS-5(규율) 제때 발동. 공급 거버넌스 축 편입(RS-1·RS-5·RS-9). 9개 Robust·45셀.
+- **전략 REMOVE/DEMOTE**: SD-1 "HBM 독립 P&L" → 메인벳에서 제외(6→5), IR·거버넌스 전술이라 시나리오 베팅 아님 → RS-5 재무 규율 가시성으로 흡수.
+- **시나리오 확률**: A26·B35·C10·D23·E6 (합 100). B 34→35(슈퍼사이클로 수요 가시성↑)·D 22→23(공급 과잉·정점 신호로 순환 조정 리스크↑) 상향, A 27→26·C 11→10 하향, E 6 불변(신규 신호는 DF1축, DF3 패러다임 근거 아님). indicators.js + scenarioPlanning.js 동시 갱신.
+- **의사결정 +3 / 트리거 +3**: D15(수요 변곡 조기경보 운영)·D16(호황 정점 공급 규율, critical)·D17(소버린 다변화) → 17개. gpu_rental_collapse·dc_construction_cancellations·demand_inflection_divergence → 21개(모두 시나리오 D·C). DecisionTracker 로컬 중복 DECISIONS 제거 → strategies.js 단일 소스 통합 + deadline 정규화(Q/H 문자열 NaN 버그 수정).
+- **영향 페이지**: wiki — strategies/invariant/{README, rs9-demand-inflection-sensing(신규)}, strategies/core/{README, current-state-sd1-hbm-pnl-spinoff}, scenarios/scenario-matrix, driving-forces/key-drivers, concepts/demand-inflection-ewi §5. dashboard — data/{indicators, scenarioPlanning, strategies, updates}.js, components/{DecisionTracker, Strategies}.jsx, App.jsx, version.js. outputs — report §5/7.1/7.3/4.2/8.1/6.3.
+- **알려진 이슈**: 보고서 §6.3의 구 RS 넘버링(RS1=수율…)은 대시보드 9-RS 택소노미와 불일치 — 이번엔 재조정 보류, §6.3 상단에 이슈로 명시. 진실의 원천은 wiki/strategies/invariant + 대시보드 Strategy 탭.
+- **검증**: 대시보드 런타임 확인(17 결정·NaN 없음, 9 RS·RS-9·45셀, 메인벳 5개·SD-1 사라짐, 확률 26/35/10/23/6, 트리거 21개, 콘솔 0). `npm run build` 통과.
+
 ## [2026-06-02] build | 수요 EWI 고도화 — GPU 바스켓·선행 시장 추이·현물 공급 (v2.15.0 → v2.16.0)
 - **무엇**: 사용자 1·2·3 순서 — ① GPU 임대가 바스켓(유동성 보강), ② 선행 시장 신호 실측 추이 차트, ③ Vast 현물 공급 신호.
 - **① 바스켓**: `vast.js` fetchVastBasket(H100 SXM·H200 0.5:0.5 + NVL은 count만). 핸들러 gpu_rental_h100_usd가 H100 단독(n=7 박함)→바스켓 중앙값으로 안정화(현재 ~$3.3). 지표 명/임계치(alert $2.0/warn $2.6) 갱신.

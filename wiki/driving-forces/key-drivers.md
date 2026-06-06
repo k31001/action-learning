@@ -25,7 +25,7 @@ Impact × Uncertainty 매트릭스에서 상위 20개 핵심 불확실성 요인
 
 - **Pole B (AI 버블 붕괴·수요 재조정)**: AI ROI 미실현에 실망한 빅테크·투자자가 2027~2028년 CapEx를 대폭 삭감하고, 동시에 신규 팹(마이크론 Idaho, SK하이닉스 용인) 공급이 쏟아지면서 HBM 공급 과잉이 2022~2023년형 메모리 불황을 재현. AI 추론 전용 칩의 메모리 효율화가 HBM 수요를 구조적으로 감소시키는 "구조적 리셋" 시나리오.
 
-- **현재 위치**: Pole A 방향으로 강하게 진행 중. 2026년 4대 빅테크 CapEx $650~725B, HBM 전량 Sold Out. 그러나 2026년 말부터 AI 수익화 압박이 가시화되기 시작해, 2027~2028년이 분기점이 될 것으로 분석된다.
+- **현재 위치**: 슈퍼사이클 정점 확인(2026 빅테크 CapEx $650~725B·MU 12개월 +7.6×·DC 착공 55.9GW·HBM 전량 Sold Out) **BUT 선행 균열 형성** — 수요 변곡 EWI 공급 과잉 경계(68)·GPU 임대가 둔화·DRAM>HBM OPM 정점·DC 취소 일부. 2027~2028 하락 분기점을 **DC 착공 트래커 + 수요 변곡 EWI(RS-9)**로 선행 감시. (→ [demand-inflection-ewi.md](../concepts/demand-inflection-ewi.md), [ai-datacenter-buildout.md](../concepts/ai-datacenter-buildout.md))
 
 ---
 
