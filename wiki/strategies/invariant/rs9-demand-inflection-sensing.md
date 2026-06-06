@@ -19,7 +19,7 @@ sources: [wiki/concepts/demand-inflection-ewi.md, wiki/concepts/ai-datacenter-bu
 
 ## 2. 근거 데이터 (Evidence)
 - **추적 파이프라인** 55.9GW·17개국, 2026 가동 ~23.7GW — 메모리 수요 가시성 ([ai-datacenter-buildout.md](../../concepts/ai-datacenter-buildout.md)).
-- **수요 변곡 EWI**(2026-06): 복합 36(주의) / 선행 33·끈적 29·**공급 과잉 68(경계)** / 괴리 +4. 실측 피드 — GPU 임대가 바스켓 ~$3.3(둔화)·신용 스프레드 −60bps·MU 슈퍼사이클 +7.6×.
+- **수요 변곡 EWI**(2026-06): 복합 43(주의) / 선행 33·끈적 29·**공급 과잉 68(경계)**·**SCM 56(경계 근접)** / 괴리 +4. 실측 피드 — GPU 임대가 바스켓 ~$3.3(둔화)·신용 스프레드 −60bps·MU 슈퍼사이클 +7.6×.
 - **정점 신호**: DRAM OPM > HBM OPM(Counterpoint Q4 2025)·리드타임 정점(언와인드 셋업)·HBM sold-out·LTA·선급금 = 더블오더링 셋업 ([price-trends.md](../../concepts/price-trends.md), [ai-server-demand.md](../../concepts/ai-server-demand.md)).
 
 ## 3. 추론 과정 (Logic Chain)
@@ -27,6 +27,7 @@ sources: [wiki/concepts/demand-inflection-ewi.md, wiki/concepts/ai-datacenter-bu
 2. 따라서 착공보다 **왼쪽(①수요 청산가·②돈·③발주 미시)** 선행 신호가 먼저 꺾이는데 끈적(착공·메모리)이 아직 강하면, 그 **괴리가 곧 하락 전 대응 윈도우**다.
 3. 이 윈도우에서 RS-1(LTA 없는 신규 캐파 동결)·RS-5(재고 −15%·자사주 보류·재투자 70%+)를 선제 발동하면, 다운사이클 진입 손실을 줄이고 회복기 우위를 확보한다.
 4. 공급 과잉(⑥, bit 공급 vs 수요)은 별도 구조 축 — 공급발 하락도 동일 프로토콜로 대응.
+5. **SCM 공급망 축(⑦)**은 사슬을 *횡단* — 발주와 셀스루의 괴리(가짜수요 갭)·할당 커버리지·업스트림 공급증분으로 더블오더링 언와인드를 ⑤메모리 재고가 움직이기 전 선포착. 채찍효과로 증폭된 "실체 없는 수요"가 풀리는 시점이 급락 방아쇠이므로, RS-1 캐파 동결·RS-5 재고 컷의 *가장 빠른* 트리거가 된다.
 
 ## 4. 결론 (시나리오별 가치)
 - **A 황금 요새**: 디커플링이 만드는 수요 왜곡(서방 편중·중국 봉쇄)을 조기 식별.

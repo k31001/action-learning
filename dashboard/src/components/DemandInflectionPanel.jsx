@@ -10,9 +10,10 @@ import {
 const WIKI_SRC = 'wiki/concepts/demand-inflection-ewi.md'
 
 const SIDE_STYLE = {
-  leading: { head: 'bg-sky-600',  ring: 'border-sky-200',  tag: '선행' },
-  sticky:  { head: 'bg-zinc-500', ring: 'border-zinc-200', tag: '끈적' },
-  supply:  { head: 'bg-amber-600',ring: 'border-amber-200',tag: '공급축' },
+  leading: { head: 'bg-sky-600',   ring: 'border-sky-200',    tag: '선행' },
+  sticky:  { head: 'bg-zinc-500',  ring: 'border-zinc-200',   tag: '끈적' },
+  supply:  { head: 'bg-amber-600', ring: 'border-amber-200',  tag: '공급축' },
+  scm:     { head: 'bg-violet-600',ring: 'border-violet-200', tag: 'SCM' },
 }
 
 function Card({ title, source, children, className = '', right = null }) {
@@ -86,6 +87,7 @@ export default function DemandInflectionPanel() {
   const leadingBand = riskBand(sum.leading)
   const stickyBand = riskBand(sum.sticky)
   const supplyBand = riskBand(sum.supply)
+  const scmBand = riskBand(sum.scm)
   const editedCount = Object.keys(overrides).length
 
   const cycle = (id, curLevel) =>
@@ -189,6 +191,7 @@ export default function DemandInflectionPanel() {
               {sideBar('① 선행 신호 (수요·돈·발주)', sum.leading, leadingBand)}
               {sideBar('② 끈적 신호 (착공·메모리)', sum.sticky, stickyBand)}
               {sideBar('③ 공급 과잉 (구조적)', sum.supply, supplyBand)}
+              {sideBar('④ SCM 공급망 (채찍·재고위치·할당)', sum.scm, scmBand)}
             </div>
             <div className="rounded-md border border-zinc-200 bg-white p-2.5">
               <div className="flex items-center gap-2 text-xs">
@@ -247,11 +250,11 @@ export default function DemandInflectionPanel() {
                     {sigs.map(s => <SignalChip key={s.id} s={s} editable={sim} edited={!!overrides[s.id]} onClick={() => cycle(s.id, s.signal)} />)}
                   </div>
                 </div>
-                {/* 사슬 화살표 (공급축 앞에는 생략) */}
-                {i < CHAIN_TIERS.length - 1 && CHAIN_TIERS[i + 1].side !== 'supply' && (
+                {/* 사슬 화살표 — 별도 구조 축(공급·SCM) 앞에는 구분선 | */}
+                {i < CHAIN_TIERS.length - 1 && !['supply', 'scm'].includes(CHAIN_TIERS[i + 1].side) && (
                   <div className="flex items-center text-zinc-300"><ArrowRight size={14} /></div>
                 )}
-                {CHAIN_TIERS[i + 1]?.side === 'supply' && (
+                {['supply', 'scm'].includes(CHAIN_TIERS[i + 1]?.side) && (
                   <div className="flex items-center"><span className="text-zinc-200 text-lg font-light px-0.5">|</span></div>
                 )}
               </div>
@@ -348,6 +351,7 @@ export default function DemandInflectionPanel() {
           <li><strong>샤프 드롭 메커니즘</strong>: 부족기 과잉발주(LTA·선급금) → 정상화 시 백로그 일시 증발(불휩 언와인드), 효율 혁신 에어포켓, 파이낸싱 프리즈, capex digestion. <strong>"부족 신호의 정점"(리드타임·할당 정점)이 역설적으로 급락 셋업</strong>.</li>
           <li><strong>괴리 로직</strong>: 단일 지표가 아니라 선행(수요·돈) − 끈적(착공·메모리) 괴리를 본다. 선행이 먼저 꺾이는 구간 = 행동 윈도우.</li>
           <li><strong>공급 축</strong>: 메모리 하락은 수요만큼 공급에서 터진다 — bit 공급 증가율 &gt; 수요 증가율이면 ~12~18개월 뒤 가격 붕괴. CXMT 범용 공급 포함.</li>
+          <li><strong>SCM 공급망 축(⑦)</strong>: 발주는 <em>진짜 수요 ± 재고조정 ± 헤지발주</em>의 합 — <strong>발주와 셀스루(최종소비)의 괴리</strong>로 파이프라인에 쌓인 "실체 없는 수요"를 측정한다. 가짜수요 갭·더블오더링·할당 커버리지가 ③발주↔⑤재고↔⑥공급의 빈틈을 메워 <strong>언와인드(불휩)를 선포착</strong>. 채찍효과로 메모리는 최종수요 변동이 증폭돼 도달하므로 이 축이 급락의 가장 빠른 신호.</li>
           <li><strong>한계</strong>: 가동률·고객 재고는 불투명, GPU 임대가는 노이즈 큼, 효율 혁신은 예측 불가. 확실성이 아니라 <strong>리드타임 최대화 + 앙상블 + 괴리</strong>가 목표. 신호 레벨은 정성 판단값(실시간 피드 연동은 다음 단계).</li>
           <li><strong>연동</strong>: EWI 탭(GPU 임대가·신용 스프레드·착공 취소·재고·스팟괴리 신규) + 시나리오 DF1(AI 수요)·시나리오 D(조용한 재편) 트리거.</li>
         </ul>

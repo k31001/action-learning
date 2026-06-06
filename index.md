@@ -72,7 +72,7 @@
 - [wiki/concepts/semiconductor-cycle.md](wiki/concepts/semiconductor-cycle.md) — 반도체 사이클·슈퍼사이클·2028 공급과잉 리스크
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
-- [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축)
+- [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
 
 ### 기술
 - [wiki/concepts/dram-technology.md](wiki/concepts/dram-technology.md) — DDR5/DDR6/LPDDR6, 1a→1d 미세공정

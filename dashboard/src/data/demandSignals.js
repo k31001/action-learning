@@ -2,7 +2,8 @@
 //
 // 논리: 메모리 수요의 하락 변곡은 인과 사슬을 따라 →로 전파된다.
 //   ①수요 청산가(GPU임대가) → ②돈(capex·파이낸싱) → ③발주 미시 → ④DC 착공(현재 지표)
-//   → ⑤메모리 내부(재고·가격)  // ⑥공급 과잉은 구조적 별도 축
+//   → ⑤메모리 내부(재고·가격)  // ⑥공급 과잉(구조)·⑦SCM 공급망(횡단)은 별도 축
+// ⑦ SCM 축: 발주−셀스루 괴리로 "실체 없는 수요"(채찍효과 누적)를 측정 — 언와인드 급락의 최선행 신호.
 // 착공보다 "왼쪽(선행)" 신호가 먼저 꺾이는데 "오른쪽(끈적)" 착공·메모리가 아직 강하면
 //   = 그 괴리(divergence)가 곧 행동 윈도우(=하락 전 대응 시간).
 //
@@ -35,6 +36,7 @@ export const CHAIN_TIERS = [
   { id: 'construction', n: '④', label: 'DC 착공 (현재 지표)', sub: '중간·끈적',          lead: '3~12개월', side: 'sticky', isCurrent: true },
   { id: 'tier3',        n: '⑤', label: '메모리 내부',         sub: '재고·가격',          lead: '0~3개월',  side: 'sticky' },
   { id: 'supply',       n: '⑥', label: '공급 과잉',           sub: '구조적',             lead: '12~18개월', side: 'supply' },
+  { id: 'scm',          n: '⑦', label: 'SCM 공급망 축',       sub: '채찍·재고위치·할당',  lead: '1~18개월', side: 'scm' },
 ]
 
 export const TIER_BY_ID = Object.fromEntries(CHAIN_TIERS.map(t => [t.id, t]))
@@ -62,6 +64,14 @@ export const DEMAND_SIGNALS = [
   // ⑥ 공급 과잉
   { id: 'supply_bal',   tier: 'supply', name: 'bit 공급 vs 수요 밸런스', signal: 'caution',   trend: 'worsening', weight: 2, source: '3사 capex·웨이퍼', note: '캐파 증설 누적 — 공급발 하락 구조적 리스크' },
   { id: 'cxmt',         tier: 'supply', name: 'CXMT 범용 공급',          signal: 'caution',   trend: 'worsening', weight: 2, source: 'cxmt 위키', ewiId: 'cxmt_asp_gap', note: '범용 DRAM 램프 — 공급 과잉 가속 위험' },
+  // ⑦ SCM 공급망 축 — 채찍효과·재고 위치·할당 동학. 발주와 셀스루(최종소비)의 괴리로 "실체 없는 수요"를 추적, ③발주↔⑤재고↔⑥공급 사이를 메운다
+  { id: 'phantom_gap',  tier: 'scm', name: '가짜수요 갭(발주−셀스루)',     signal: 'caution', trend: 'worsening', weight: 3, source: '발주 bit vs 단말 출하·DC 가동', note: '발주 증가율 − 단말 소비 증가율. (+) 확대 = 더블오더링 축적 / (+)→(−) 전환 = 언와인드 개시. 채찍효과의 직접 측정 — 가장 본질적' },
+  { id: 'double_order', tier: 'scm', name: '더블오더링(고객 재고주수)',     signal: 'caution', trend: 'worsening', weight: 2, source: 'TrendForce 채널·고객 IR', note: '고객 메모리 재고주수 ≥10주 = 추가 발주여력 소진 → 발주 급정지 임박. 메모리사 재고(⑤)보다 2~3배 선행' },
+  { id: 'inv_echelon',  tier: 'scm', name: '재고 에셜론(다운스트림 DIO)',   signal: 'neutral', trend: 'stable',    weight: 2, source: '메모리사·모듈·채널·HS 분해', note: '메모리사→모듈→채널→하이퍼스케일러 4단계 DIO. 다운스트림 선축적 = 발주 단절 선행. inventory(1단계)의 횡단 확장' },
+  { id: 'allocation',   tier: 'scm', name: '할당 커버리지·선급금률',       signal: 'caution', trend: 'worsening', weight: 3, source: '자사 영업·경쟁사 IR', note: '차기 2~4분기 캐파 중 LTA·선급금 잠금 비율. 할당 해제(de-allocation) 시점 = 사이클 정점. 현재 HBM sold-out·LTA 정점' },
+  { id: 'upstream_wfe', tier: 'scm', name: '업스트림 공급증분(WFE·장비반입)', signal: 'caution', trend: 'worsening', weight: 2, source: 'WFE 수주·CXMT/Micron 장비반입', note: '장비사 메모리향 수주·경쟁사 WSPM 증설·소재소비(가동률 프록시). 미래 공급 증분 12~18개월 선행 — supply축 보강' },
+  { id: 'order_churn',  tier: 'scm', name: '주문 처닝율(취소·푸시아웃)',    signal: 'neutral', trend: 'worsening', weight: 2, source: '채널·고객 발주', note: '분기 발주 대비 취소·연기·감량 비율. >5% 주의·>10% 경보. 가격 이전 미시신호 — dc_cancellation을 메모리 주문 레벨로 확장' },
+  { id: 'ccc_credit',   tier: 'scm', name: 'CCC·고객 신용(DSO)',          signal: 'neutral', trend: 'worsening', weight: 2, source: '자사 재무·고객 신용', note: 'DIO+DSO−DPO. 신생 neocloud·AI 고객 결제지연(DSO 악화)이 언와인드의 현금 전이 경로. credit_spread의 자사 재무판' },
 ]
 
 // ── 집계 ─────────────────────────────────────────────────────────────────────
@@ -94,10 +104,11 @@ export function inflectionSummary(signals = DEMAND_SIGNALS) {
   const leading = sideRisk('leading', signals)
   const sticky = sideRisk('sticky', signals)
   const supply = sideRisk('supply', signals)
+  const scm = sideRisk('scm', signals)   // SCM 공급망 축 — 채찍·재고위치·할당 (구조적 급락 셋업)
   const divergence = leading - sticky   // +면 선행 신호가 끈적 신호보다 먼저 악화 = 조기경보
   // 악화 중인 선행 신호(주의/수축) 목록 — 가장 먼저 켜진 경보
   const flashing = signals
     .filter(s => TIER_BY_ID[s.tier]?.side === 'leading' && s.trend === 'worsening' && SIGNAL_LEVELS[s.signal].risk >= 50)
     .map(s => s.name)
-  return { composite, leading, sticky, supply, divergence, flashing, band: riskBand(composite) }
+  return { composite, leading, sticky, supply, scm, divergence, flashing, band: riskBand(composite) }
 }

@@ -2246,7 +2246,7 @@ def build_slide_26_rs9_demand_sensing(prs):
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
                'RS-9 · 데이터 기반 수요 변곡 센싱 — 하락 변곡을 선행 신호에서 먼저 잡는다',
-               'AI DC 착공 트래커(55.9GW·17개국) + 수요 변곡 EWI 앙상블(선행·끈적·공급 과잉 + 괴리) → RS-1 캐파 on/off·RS-5 규율을 제때 발동')
+               'AI DC 착공 트래커(55.9GW·17개국) + 수요 변곡 EWI 앙상블(선행·끈적·공급 과잉·SCM 공급망 + 괴리) → RS-1 캐파 on/off·RS-5 규율을 제때 발동')
 
     # 좌측 박스: 왜 지금 (3가지 증거)
     add_rect(slide, Inches(0.5), Inches(1.85), Inches(6.3), Inches(4.7),
@@ -2260,8 +2260,8 @@ def build_slide_26_rs9_demand_sensing(prs):
          'Micron 주가 +7.6× · HBM Sold Out · DC 착공 55.9GW(17개국)',
          '정점은 다운턴 직전 — 호황기 절제(RS-5)의 마지막 창'),
         ('② 선행 균열 형성 중 (다음 하락 변곡)',
-         '복합 위험 36(주의)·공급 과잉 68(경계)·선행−끈적 괴리 +4',
-         'GPU 임대가 둔화·DC 착공 일부 취소·DRAM>HBM OPM 역전(언와인드)'),
+         '복합 위험 43(주의)·공급 과잉 68·SCM 56(경계 근접)·괴리 +4',
+         'GPU 임대가 둔화·DRAM>HBM OPM 역전·HBM sold-out·LTA(할당 정점=언와인드)'),
         ('③ 정보 비대칭 = 타이밍 우위',
          '기존 capex-cut·price-drop은 후행 — 착공·임대가·괴리는 6~24개월 선행',
          '남보다 먼저 보면 RS-1 캐파 동결·RS-5 규율을 먼저 발동'),
@@ -2278,11 +2278,11 @@ def build_slide_26_rs9_demand_sensing(prs):
                  source, font=FONT_KO, size=8.5, italic=True,
                  color=THEME['gray_caption'])
 
-    # 우측 박스: 수요 변곡 EWI 앙상블 4트랙
+    # 우측 박스: 수요 변곡 EWI 앙상블 5트랙 (SCM 공급망 축 신규)
     add_rect(slide, Inches(7.0), Inches(1.85), Inches(5.83), Inches(4.7),
              fill=THEME['samsung_blue'])
     add_text(slide, Inches(7.2), Inches(2.0), Inches(5.5), Inches(0.4),
-             '수요 변곡 EWI 앙상블 — 4트랙 센싱', font=FONT_KO, size=12,
+             '수요 변곡 EWI 앙상블 — 5트랙 센싱', font=FONT_KO, size=12,
              bold=True, color=THEME['white'])
     add_text(slide, Inches(7.2), Inches(2.4), Inches(5.5), Inches(0.4),
              'DEMAND-INFLECTION SENSING', font=FONT_EN, size=8,
@@ -2290,23 +2290,25 @@ def build_slide_26_rs9_demand_sensing(prs):
 
     tracks = [
         ('트랙 1', '선행 (Leading)',
-         'GPU 현물 임대가(Vast.ai)·신용 스프레드·DC 착공 파이프라인 (선행 9~18개월)'),
+         'GPU 임대가(Vast.ai)·신용 스프레드·DC 착공 (선행 9~18개월)'),
         ('트랙 2', '끈적 (Sticky)',
-         '메모리 계약가·리드타임·재고일수 — 후행하지만 확정적'),
+         '메모리 계약가·리드타임·재고일수 — 후행·확정적'),
         ('트랙 3', '공급 과잉 (Glut)',
-         'DRAM>HBM OPM 역전·book-to-bill·CoWoS 증설 = 정점 신호'),
-        ('트랙 4', '괴리 밴드 (Divergence)',
-         '선행−끈적 괴리 2분기 연속 확대 = 하락 변곡 선행 윈도우'),
+         'DRAM>HBM OPM 역전·book-to-bill·CoWoS = 정점 신호'),
+        ('트랙 4', 'SCM 공급망 (신규)',
+         '가짜수요 갭·더블오더링·할당 = 채찍효과 언와인드 선포착'),
+        ('트랙 5', '괴리 밴드 (Divergence)',
+         '선행−끈적 괴리 2분기 확대 = 하락 변곡 선행 윈도우'),
     ]
     for i, (label, headline, detail) in enumerate(tracks):
-        y = Inches(2.95 + i * 0.78)
+        y = Inches(2.92 + i * 0.62)
         add_text(slide, Inches(7.2), y, Inches(0.8), Inches(0.4),
-                 label, font=FONT_KO, size=11, bold=True, color=THEME['amber'])
+                 label, font=FONT_KO, size=10, bold=True, color=THEME['amber'])
         add_text(slide, Inches(8.0), y, Inches(4.7), Inches(0.4),
-                 headline, font=FONT_KO, size=10.5, bold=True, color=THEME['white'])
-        add_text(slide, Inches(8.0), y + Inches(0.36), Inches(4.7), Inches(0.4),
-                 detail, font=FONT_KO, size=9, color=THEME['white'],
-                 line_spacing=1.2)
+                 headline, font=FONT_KO, size=10, bold=True, color=THEME['white'])
+        add_text(slide, Inches(8.0), y + Inches(0.33), Inches(4.7), Inches(0.32),
+                 detail, font=FONT_KO, size=8.5, color=THEME['white'],
+                 line_spacing=1.1)
 
     # 발동 프로토콜 강조 (D15·D16)
     add_rect(slide, Inches(7.2), Inches(6.10), Inches(5.5), Inches(0.35),

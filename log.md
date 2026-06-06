@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-06] build | SCM 공급망 축 EWI 편입 — 채찍효과·재고위치·할당 (v2.17.0 → v2.18.0)
+- **무엇**: SCM(공급망관리) 관점 7대 불황 선행지표를 수요 변곡 EWI에 **⑦ SCM 공급망 축**으로 정식 편입. demand-inflection-ewi.md(§2 신호표 +7행·§2-1 신규 소단락·mermaid ⑦ 노드·복합점수 갱신) + 대시보드 `수요 EWI` 탭(CHAIN_TIERS ⑦·DEMAND_SIGNALS +7·inflectionSummary.scm·Panel SCM 막대/구분선/방법론).
+- **7대 신호**: 가짜수요 갭(발주−셀스루)·더블오더링(고객 재고주수)·재고 에셜론(다운스트림 DIO)·할당 커버리지·선급금률·업스트림 공급증분(WFE·경쟁사 장비반입)·주문 처닝율(취소·푸시아웃)·CCC/고객 신용(DSO). **즉시 운용 3종** = 가짜수요 갭·할당 커버리지·업스트림 공급증분.
+- **왜**: 기존 EWI는 "최종 수요 하강"(top-down)에 강하나, 메모리 불황의 직접 방아쇠인 **더블오더링/채찍효과 언와인드**(발주−셀스루 괴리)를 정량 추적하는 축이 부재했음. SCM 렌즈는 ③발주↔⑤재고↔⑥공급의 빈틈을 메워 ⑤메모리 재고가 움직이기 전 급락을 선포착. 사용자 요청(SCM 관점 메모리 불황 조기식별 아이디어 → A안 정식 편입).
+- **복합점수**: 36→43(주의), 신규 SCM side 56(경계 근접). 선행−끈적 괴리(+4)·밴드 로직 불변. RS-9 §2·§3, index.md EWI 요약 동기화.
+- **영향 페이지**: wiki — concepts/demand-inflection-ewi(§1·§2·§2-1·§3·§4), strategies/invariant/rs9-demand-inflection-sensing(§2·§3), index.md. dashboard — data/demandSignals.js, components/DemandInflectionPanel.jsx, version.js(v2.18.0). outputs — report(EWI 섹션)·presentation/slide-outline(해당 슬라이드).
+- **검증**: `cd dashboard && npm run build` 통과(예정), PPTX 재생성.
+
 ## [2026-06-06] lint | README 최신화 + CLAUDE.md 스테일 정리
 - **무엇**: README.md를 최근 작업에 맞춰 전면 재작성 — 9개 Robust(RS-1~RS-9 정확 택소노미)·확률 26/35/10/23/6·AI DC 착공 트래커(55.9GW)·수요 변곡 EWI·라이브 대시보드 기능표. CLAUDE.md의 완료된 마이그레이션 스캐폴딩(§9 기존 누적 로그 + §10 마이그레이션 진행 현황 표)을 §9 연혁 1단락으로 축약, `sources/raw/` 스테일 참조 3건 정리(§1 "마이그레이션 중" 불릿 + §5 매핑 표 2행: D/RS 카운트·실시간 시계열 출처를 vast/yahoo로 갱신).
 - **왜**: README가 옛 RS 택소노미(RS1~RS6)·옛 확률(30~35% 등)·"생성 예정" 디렉토리(지금은 entities 9·concepts 21 존재)·`sources/raw/metadata.md`(지금은 sources/README.md) 등 6개월 묵은 내용이라 현 위키와 불일치. 사용자 요청(README 최신화 + 불필요·올드 내용 제거).
