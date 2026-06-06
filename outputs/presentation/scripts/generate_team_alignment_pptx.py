@@ -438,8 +438,8 @@ def build_slide_2_how(prs):
         ('Step 4', 'Driving Forces',    'DF1 (AI 수요) × DF2 (미중 지정학)  +  DF3 (메모리 아키텍처)'),
         ('Step 5', '2×2 매트릭스',       '시나리오 A·B·C·D  +  와일드카드 E'),
         ('Step 6', '시나리오 내러티브',   '각 시나리오별 5년 후 풍경 + 분기점 + 모니터링 지표'),
-        ('Step 7', 'Main / Side Bet',   'Main = B 르네상스 (확률 30~35%) / Side = A·C·D·E 보험'),
-        ('Step 8', 'Robust + EWI',      'RS-1~RS-8  +  12개 자동 트리거  +  D1~D12 결정 묶음'),
+        ('Step 7', 'Main / Side Bet',   'Main = B 르네상스 (확률 35%) / Side = A·C·D·E 보험'),
+        ('Step 8', 'Robust + EWI',      'RS-1~RS-9  +  21개 자동 트리거  +  D1~D17 결정 묶음'),
     ]
     ROW_Y0 = MY + Inches(0.68)
     ROW_H = Inches(0.34)
@@ -479,10 +479,10 @@ def build_slide_2_how(prs):
     # 4분면 — 흰 배경 + 컬러 보더로 시나리오 구분
     quadrants = [
         # col, row, name, prob, border
-        (1, 0, 'A · 황금 요새',    '25~30%', T['blue']),
-        (1, 1, 'B · AI 르네상스 ⭐', '30~35%', T['orange']),
-        (0, 0, 'C · 기술 냉전',     '10~15%', T['caption']),
-        (0, 1, 'D · 조용한 재편',   '20~25%', T['caption']),
+        (1, 0, 'A · 황금 요새',    '26%', T['blue']),
+        (1, 1, 'B · AI 르네상스 ⭐', '35%', T['orange']),
+        (0, 0, 'C · 기술 냉전',     '10%', T['caption']),
+        (0, 1, 'D · 조용한 재편',   '23%', T['caption']),
     ]
     for col, row, name, prob, accent in quadrants:
         qx = GX + half_w * col
@@ -521,7 +521,7 @@ def build_slide_2_how(prs):
     # 와일드카드 주석
     add_text(slide, QX + Inches(0.2), MY + MH - Inches(0.35),
              QW - Inches(0.4), Inches(0.25),
-             '※ 와일드카드 E "패러다임 전환" (5~10%) — DF3 Pole B 실현',
+             '※ 와일드카드 E "패러다임 전환" (6%) — DF3 Pole B 실현',
              font=FONT_KO, size=8.5, italic=True, color=T['caption'])
 
     # 하단 SO WHAT 띠 (좌측 오렌지 바, 흰 배경)
@@ -558,15 +558,15 @@ def build_slide_3_what(prs):
     sw = (SW - Inches(0.16) * 4) / 5
 
     scenarios = [
-        ('B', 'AI 르네상스',   '30~35%', 'MAIN BET',
+        ('B', 'AI 르네상스',   '35%', 'MAIN BET',
          '동서 양쪽 시장 + HBM 리더십 회복 → 최대 수혜', T['orange']),
-        ('A', '황금 요새',     '25~30%', 'SIDE BET',
+        ('A', '황금 요새',     '26%', 'SIDE BET',
          '디커플링 + AI 지속 → 서방 HBM 독점 공급자', T['blue']),
-        ('D', '조용한 재편',   '20~25%', 'SIDE BET',
+        ('D', '조용한 재편',   '23%', 'SIDE BET',
          'AI 거품 + 공존 → 비용·차별화 경쟁 (2022~23형)', T['caption']),
-        ('C', '기술 냉전',     '10~15%', 'SIDE BET',
+        ('C', '기술 냉전',     '10%', 'SIDE BET',
          '이중 충격 → 시안 팹 + 수요 동시 직면', T['caption']),
-        ('E', '패러다임 전환', '5~10%',  'WILDCARD',
+        ('E', '패러다임 전환', '6%',  'WILDCARD',
          '3D DRAM·PIM·CXL 부상 → R&D 포트폴리오 재검토', T['ink']),
     ]
     for i, (code, name, prob, tag, desc, accent) in enumerate(scenarios):
@@ -632,7 +632,7 @@ def build_slide_3_what(prs):
 
     add_text(slide, c1x + Inches(0.28), DY + Inches(0.26),
              cw - Inches(0.56), Inches(0.18),
-             '예시 4 / 총 8개',
+             '예시 4 / 총 9개',
              font=FONT_EN, size=8.5, color=T['caption'])
     add_line(slide, c1x + Inches(0.28), DY + Inches(0.5),
              c1x + cw - Inches(0.28), DY + Inches(0.5),
@@ -741,7 +741,7 @@ def build_slide_3_what(prs):
 
     add_text(slide, c2x + Inches(0.28), DY2 + Inches(0.26),
              cw - Inches(0.56), Inches(0.18),
-             '예시 4 / 총 12개 (수요·거시·경쟁·정책 4영역)',
+             '예시 4 / 총 21개 (수요·거시·경쟁·정책 + 수요 변곡 선행)',
              font=FONT_EN, size=8.5, color=T['caption'])
     add_line(slide, c2x + Inches(0.28), DY2 + Inches(0.5),
              c2x + cw - Inches(0.28), DY2 + Inches(0.5),
