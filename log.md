@@ -14,6 +14,13 @@
 
 ---
 
+## [2026-06-06] migration | working-style/ 디렉토리 제거 (Claude Code 세미나 자료, 본 프로젝트 무관) — v2.19.0 → v2.19.1
+- **무엇**: 레포 최상위 `working-style/`(하위 `seminar-claude-code-report/` — Claude Code 세미나 발표자료: content.md·slide-outline.md·generate-pptx.js·*.pptx·node_modules) 전체 삭제. 추적 6파일 `git rm`, 비추적(node_modules·*.pptx·.DS_Store) 정리.
+- **왜**: 사용자 요청 — 시나리오 플래닝 위키와 무관한 세미나 자료라 제거. 직전 [2026-06-06] lint 항목에서 "본 프로젝트 무관이라 미변경"으로 보류했던 것을 정식 삭제.
+- **하류 정합**: `dashboard/src/components/SourceLink.jsx` PATH_REGEX 화이트리스트에서 `working-style` 토큰 제거(삭제된 디렉토리 → 죽은 참조). `slides/`는 실존하므로 유지. `version.js` v2.19.1(패치=죽은 참조 정리).
+- **영향 페이지**: `working-style/` 전체, `dashboard/src/components/SourceLink.jsx`, `dashboard/src/version.js`. wiki·sources·index.md·outputs·README 무영향(참조 없음 확인). log.md 과거 항목은 append-only라 보존(과거 working-style 언급은 당시 사실 기록).
+- **검증**: `cd dashboard && npm run build` 통과(2408 모듈·콘솔 0).
+
 ## [2026-06-06] ingest | 베인앤컴퍼니(신문섭) AI 컴퓨트·반도체 시리즈 → 위키·대시보드 (v2.18.0 → v2.19.0)
 - **무엇**: 베인 신문섭 파트너(APAC 하드웨어·반도체·DC 총괄·한국 TMT 대표) 도메인의 3개 시리즈를 취합·반영. ① 6th Global Technology Report(2025): AI 컴퓨트 경제학 갭 — 2030 글로벌 컴퓨트 200GW·연 $500B DC capex·수익성 충당 신규 매출 $2조·자금 갭 $800B. ② The AI Ripple Effect(2026-03, **신문섭 공동저자**): 메모리=하이퍼스케일러 AI 지출 ~30%(vs 2023~24 ~8%)·AI ~20% DRAM 웨이퍼 잠식·1GB HBM 4×/GDDR7 1.7× 웨이퍼·GPU 2배 시 부품사 +30% 증산. ③ DC Construction Crunch(2025-10)/Scramble→Strategy: 글로벌 DC 163GW(2030, ~2배)·북미 ~50%·전력=게이트키퍼·규율 있는 성장·4대 병목·계통 접속 5년.
 - **왜**: 사용자(메모리사업부) 요청 — "베인 신문섭 파트너의 AI DC·반도체 작업을 취합해 데이터·대시보드에 반영". 베인 top-down 프레임은 위키의 거품론(심리) 논쟁을 공급-수요-자금 경제학으로 환산하고, DRAM 웨이퍼 잠식·HBM 수요 비중을 외부 교차검증.

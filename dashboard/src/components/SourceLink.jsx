@@ -16,7 +16,7 @@ import { ExternalLink } from 'lucide-react'
 const REPO_BASE = 'https://github.com/k31001/action-learning'
 
 // 최상위 디렉토리 화이트리스트 — 임의 텍스트가 매칭되지 않도록.
-const PATH_REGEX = /(?:sources|wiki|outputs|dashboard|working-style|slides)\/(?:[\w-]+\/)*(?:[\w.-]+\.md|\*\.md|\*)/g
+const PATH_REGEX = /(?:sources|wiki|outputs|dashboard|slides)\/(?:[\w-]+\/)*(?:[\w.-]+\.md|\*\.md|\*)/g
 
 function pathToUrl(path) {
   // 글로브 → 부모 디렉토리 tree 뷰
