@@ -105,3 +105,15 @@
 - [2026 Predictions: AI Sparks Data Center Power Revolution | DCK](https://www.datacenterknowledge.com/operations-and-management/2026-predictions-ai-sparks-data-center-power-revolution)
 - [2026 semiconductor capex to increase 20% YoY | Electronics Weekly](https://www.electronicsweekly.com/news/business/semiconductor-capex-2026-04/)
 - [US Announces Tariffs on Semiconductor Imports | GEODIS](https://geodis.com/us-en/resources/customs-corner/us-announces-tariffs-certain-semiconductor-imports-protect-national)
+
+---
+
+## [Update 2026-06-06] Bain (신문섭) — 전력 = 성장의 결정적 게이트키퍼
+
+베인앤컴퍼니(APAC DC 총괄 신문섭)의 DC 전망·"Scramble→Strategy" 시리즈:
+
+- **전력 접근성이 GPU·건설을 넘어선 1순위 게이트키퍼** — *"Power access is now the critical gatekeeper of growth"*(Aaron Denman). behind-the-meter 발전(천연가스·옥상태양광·원전 재가동)이 미국 중심으로 배치 결정을 재편.
+- 2030 전망: 글로벌 증분 컴퓨트 **200GW**, 미국 신규 전력 수요 **100GW**(글로벌의 ~50%), 미국 DC 전력 **409TWh = 미국 전력의 9%**(현재 ~4.5%, EIA 기준선 +150TWh). 신규 발전 가동에 **4년+**.
+- 계통 접속 **최대 5년**·장비 리드타임 8~24개월 → 위 "인프라 병목"(PJM·변압기 리드타임)과 정합. 하이퍼스케일러는 "규율 있는, 전력 인식형 성장"으로 전환(자본 효율).
+
+**출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §①③ · 통합: [ai-compute-economics-gap.md](ai-compute-economics-gap.md)

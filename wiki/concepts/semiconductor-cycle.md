@@ -161,3 +161,15 @@
 - 시나리오 E(패러다임 전환)에서도 메모리 수요 자체는 살아남음
 
 **출처**: [youtube-kwon-cycle-formula-2026-05-21.md](../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md)
+
+---
+
+## [Update 2026-06-06] Bain (신문섭) — 웨이퍼 잠식 정밀화 + GPU 2배 → 부품사 +30% 증산
+
+베인 "The AI Ripple Effect"(2026-03, 신문섭 공동저자)가 기존 위키의 웨이퍼 잠식 테제를 정량 보강:
+
+- **1GB HBM = 표준 DRAM 4배 웨이퍼 / 1GB GDDR7 = 1.7배** → AI가 글로벌 DRAM 공급 **~20%** 잠식(등가 웨이퍼). 위 [Update 2026-05-19] SemiAnalysis "3→4배"와 정합.
+- **GPU 수요 2배 시 핵심 부품사 +30% 이상 증산 요구** → 메모리·부품 동반 증산 압박이 사이클 진폭을 확대.
+- 하이퍼스케일러의 **"규율 있는, 전력 인식형 성장"**(자본 효율 전환)은 2028~2029 공급 과잉 리스크의 완충 변수 — 무절제 증설이 아닌 선별 투자. [demand-inflection-ewi.md](demand-inflection-ewi.md) 공급 과잉 축과 연결.
+
+**출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §②③ · 통합: [ai-compute-economics-gap.md](ai-compute-economics-gap.md)

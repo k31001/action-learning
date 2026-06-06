@@ -73,8 +73,17 @@ export function impliedMemory(mw, hbmPerGpu = DC_CONVERSION.hbmGbPerGpuBlackwell
 export const DC_ANCHORS = {
   hbmTam2026B: 45,        // 2026 HBM TAM ~$45B (Goldman Sachs, 2025-12)
   hbmBitGrowth2026: 70,   // HBM bit 수요 +70% YoY 2026 (SK hynix/TrendForce)
-  aiDramWaferShare2026: 20, // AI가 2026 글로벌 DRAM 웨이퍼의 ~20% 소비 (TrendForce)
+  aiDramWaferShare2026: 20, // AI가 2026 글로벌 DRAM 웨이퍼의 ~20% 소비 (TrendForce / Bain)
   capexPerGwB: 60,        // 10GW ≈ $600B capex (이 중 ~$350B NVIDIA) — Morgan Stanley
+  // Bain & Company (신문섭, 2025~26) — top-down 외부 전망/벤치마크
+  // 출처: wiki/concepts/ai-compute-economics-gap.md
+  bainGlobalDcGw2030: 163,      // 글로벌 DC 용량 수요 2030 (현재 ~2배)
+  bainComputeGw2030: 200,       // 글로벌 증분 AI 컴퓨트 2030 (무어의 법칙 2배 속도)
+  bainDcCapexB2030: 500,        // 연간 DC 건설 capex 2030 ($B)
+  bainRevenueNeedT2030: 2,      // 수익성 충당에 필요한 신규 연간 매출 ($조)
+  bainFundingGapB2030: 800,     // 연간 자금 갭 ($B) — IT전액 클라우드 이전+AI절감 20% 재투자해도 잔존
+  bainMemoryPctAiSpend2026: 30, // 메모리 = 하이퍼스케일러 AI 지출 비중 2026 (%)
+  bainMemoryPctAiSpendBase: 8,  // 동 2023~2024 기준 (%)
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

@@ -26,6 +26,7 @@
 - **Bank of America** — HBM 2026/2028 전망 (wiki/concepts/hbm-market.md, ai-capex.md)
 - **Gartner / IDC / Mordor Intelligence / Precedence Research** — 시장 규모·CAGR
 - **Astute Group / Futurum Group / NAND Research** — 점유율·세그먼트 분석
+- **Bain & Company (베인앤컴퍼니)** — AI 컴퓨트 수요·반도체 공급·DC 2030 전망. 신문섭(Moonsup Shin) 파트너 = APAC 하드웨어·반도체·데이터센터 총괄·한국 TMT 대표 (wiki/concepts/ai-compute-economics-gap.md)
 
 ### 기업 IR·공시
 - **Samsung Semiconductor / Samsung Electronics IR** — 매출·캐파·HBM 진행 (wiki/concepts/2026-q1-current-state.md, wiki/strategies/*)
@@ -70,6 +71,7 @@
 | [youtube-kwon-agentic-ai-memory-2026-05-01.md](articles/youtube-kwon-agentic-ai-memory-2026-05-01.md) | SBS / 교양이를 부탁해 | 2026-05-01 | 권석준 교수 — 추론 100배·HBM3E 토큰 한계·HBM-DRAM 징검다리 메모리·애플 온디바이스 AI·일본 폼팩터 실패 교훈·HBM4E 격전지 (IDM vs SK+TSMC 연합) |
 | [youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md) | 동아일보 / 머니가이드 | 2026-05-12 | 권석준 교수 — HBM 6세대 2026 H2 양산·HBM 4~5년 로드맵·CXL "메모리 부도심"·2030년대 후반 게임 체인저(3D DRAM·CXL) |
 | [youtube-kwon-cycle-formula-2026-05-21.md](articles/youtube-kwon-cycle-formula-2026-05-21.md) | 연합뉴스경제TV / 인사이트30 | 2026-05-21 | 권석준 교수 — Q1 영업이익 폭증·5종 메모리 동시 폭증·메모리=사이클 공식 변화·구글 터보퀀트 양자화 역설 |
+| [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) | Bain & Company (신문섭) | 2025-09~2026-03 | AI 컴퓨트 경제학 갭($2조 매출/$500B capex/$800B 자금 갭)·메모리=AI 지출 ~30%(vs 2023~24 ~8%)·웨이퍼 잠식(HBM 4×/GDDR7 1.7×·AI ~20% DRAM)·DC 163GW(2030)·전력 게이트키퍼·Scramble→Strategy |
 
 ---
 

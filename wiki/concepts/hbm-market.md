@@ -202,3 +202,15 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 - Rubin 2/3+ SK 락인 = Samsung Rubin 진입 여지 매우 좁음. HBM4E 세대로 회복 베팅 필요.
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §5
+
+---
+
+## [Update 2026-06-06] Bain (신문섭) — 메모리 = 하이퍼스케일러 AI 지출의 ~30% (2026)
+
+베인 "The AI Ripple Effect"(2026-03, **신문섭 공동저자**):
+
+- **메모리가 하이퍼스케일러 AI 지출에서 차지하는 비중: 2026년 ~30%** — 2023~2024년 **~8%**에서 급등. HBM 부족이 공급망 전반에 파급되며 메모리의 AI capex 내 구조적 비중이 상향.
+- AI의 글로벌 DRAM 공급 잠식 **~20%**(HBM·GDDR7 등가 웨이퍼), **1GB HBM = 표준 DRAM 4배 웨이퍼**(GDDR7 1.7배) → 위 [Update 2026-05-19] "HBM 3→4배 웨이퍼"(SemiAnalysis)와 정합.
+- **함의**: 메모리의 AI 지출 비중 8%→30%는 HBM 슈퍼사이클의 **수요 측 정당화** — Samsung HBM4 회복 베팅이 노리는 시장 규모의 근거.
+
+**출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §② · 통합: [ai-compute-economics-gap.md](ai-compute-economics-gap.md)

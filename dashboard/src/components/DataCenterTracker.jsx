@@ -3,7 +3,7 @@ import {
   BarChart, Bar, LineChart, ComposedChart, Line, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList,
 } from 'recharts'
-import { Server, Zap, Globe, Cpu, Layers, AlertTriangle, MapPin, Building2 } from 'lucide-react'
+import { Server, Zap, Globe, Cpu, Layers, AlertTriangle, MapPin, Building2, Scale } from 'lucide-react'
 import SourceLink from './SourceLink'
 import WorldMap from './WorldMap'
 import {
@@ -381,6 +381,53 @@ export default function DataCenterPanel() {
           <span className="text-zinc-400">
             ※ 누적 = 설치 기반(1회성 충전). 연간 신규 GW × ~$1.35B/GW = 해당 연도 증분 HBM 수요 (상단 추정). 비교 앵커: 2026 HBM TAM ~${DC_ANCHORS.hbmTam2026B}B (Goldman), HBM bit 수요 +{DC_ANCHORS.hbmBitGrowth2026}% YoY, AI가 DRAM 웨이퍼 ~{DC_ANCHORS.aiDramWaferShare2026}% 소비 (TrendForce).
             대형 프로젝트는 다단계 확장이며 1차 주요 가동 연도에 전체 계획 용량을 귀속(보수적 상단).
+          </span>
+        </p>
+      </Card>
+
+      {/* ── 외부 전망 벤치마크 — Bain & Company (신문섭) ───────────────────────── */}
+      <Card
+        title="외부 전망 벤치마크 — Bain & Company (신문섭 파트너)"
+        source="wiki/concepts/ai-compute-economics-gap.md · Bain 6th Global Tech Report · AI Ripple Effect (2026-03)"
+        className="lg:col-span-2"
+        right={<Scale size={14} className="text-zinc-400" />}
+      >
+        <p className="text-xs text-zinc-600 leading-relaxed mb-3">
+          Bain APAC 하드웨어·반도체·데이터센터 총괄 <strong>신문섭</strong> 파트너 도메인의 top-down 전망 —
+          위 착공 트래커(추적 표본 {summary.totalGw}GW)를 시장 전체와 비교하는 외부 앵커.
+          <strong> AI 컴퓨트 경제학 갭</strong>: 2030년 수요 충족에 연 ${DC_ANCHORS.bainDcCapexB2030}B capex가 필요하나,
+          이를 <em>수익성 있게</em> 회수하려면 신규 매출 ${DC_ANCHORS.bainRevenueNeedT2030}조/년이 필요 → 연 ${DC_ANCHORS.bainFundingGapB2030}B 자금 갭.
+        </p>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+          {[
+            { label: '글로벌 DC 용량 (2030)', value: DC_ANCHORS.bainGlobalDcGw2030, unit: 'GW', sub: '현재 ~2배 · 북미 ~50%', tone: 'blue' },
+            { label: '글로벌 컴퓨트 (2030)', value: DC_ANCHORS.bainComputeGw2030, unit: 'GW', sub: '무어의 법칙 2배 속도', tone: 'blue' },
+            { label: '연간 DC capex (2030)', value: `$${DC_ANCHORS.bainDcCapexB2030}B`, unit: '', sub: '수요 충족 설비투자', tone: 'blue' },
+            { label: '필요 신규 매출', value: `$${DC_ANCHORS.bainRevenueNeedT2030}조`, unit: '', sub: '수익성 충당 조건', tone: 'amber' },
+            { label: '연간 자금 갭', value: `$${DC_ANCHORS.bainFundingGapB2030}B`, unit: '', sub: 'IT전액+절감20% 후 잔존', tone: 'red' },
+            { label: '메모리=AI 지출', value: DC_ANCHORS.bainMemoryPctAiSpend2026, unit: '%', sub: `2026 (vs ${DC_ANCHORS.bainMemoryPctAiSpendBase}% '23~24)`, tone: 'amber' },
+          ].map((t, i) => (
+            <div key={i} className={`border rounded-hig-lg shadow-hig-1 p-2.5 ${accentCls[t.tone]}`}>
+              <p className="text-[10px] opacity-70 leading-tight">{t.label}</p>
+              <p className="text-lg font-bold font-mono mt-0.5">
+                {typeof t.value === 'number' ? t.value.toLocaleString('ko-KR') : t.value}
+                {t.unit && <span className="text-xs font-semibold ml-0.5">{t.unit}</span>}
+              </p>
+              <p className="text-[9px] opacity-60 mt-0.5">{t.sub}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-[10px] text-zinc-500 mt-3 leading-relaxed">
+          <strong>Scramble → Strategy</strong>: 하이퍼스케일러가 "원시적 확장"에서 <strong>규율 있는·전력 인식형(power-aware) 성장</strong>(자본 효율)으로 전환.
+          <strong> 전력 접근성이 GPU·건설을 넘어선 1순위 게이트키퍼</strong>(behind-the-meter 가스·태양광·원전). 추론(inference)이 워크로드 무게중심.
+          4대 병목: 전력(신규 발전 4년+)·건설 서비스·컴퓨트 인에이블러(GPU)·DC 장비(스위치기어·냉각).
+          <br />
+          <span className="text-zinc-400">
+            ※ 추적 표본({summary.totalGw}GW)은 대형(&gt;200MW) 프로젝트 일부 — Bain 163GW(2030 글로벌 전수 수요)는 상한 벤치마크.
+            메모리 비중 {DC_ANCHORS.bainMemoryPctAiSpendBase}%→{DC_ANCHORS.bainMemoryPctAiSpend2026}%는 HBM 슈퍼사이클의 수요 측 정당화.
+            "The AI Ripple Effect"(2026-03)는 신문섭 공동저자.
           </span>
         </p>
       </Card>

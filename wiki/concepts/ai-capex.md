@@ -72,3 +72,15 @@
 - [Hyperscaler capex > $600 bn in 2026](https://techblog.comsoc.org/2025/12/22/hyperscaler-capex-600-bn-in-2026-a-36-increase-over-2025-while-global-spending-on-cloud-infrastructure-services-skyrockets/)
 - [Big Tech AI Spending Over Time (2022-2025)](https://www.visualcapitalist.com/visualized-big-tech-ai-spending/)
 - [Amazon, Google, Microsoft, Meta Q1 earnings: AI profits are here](https://www.uncoveralpha.com/p/amazon-google-microsoft-meta-q1-earnings)
+
+---
+
+## [Update 2026-06-06] Bain (신문섭) — top-down 검증: $500B DC capex / $2조 매출 (2030)
+
+위 4사 합산은 bottom-up(회사별 총 capex). 베인 6th Global Technology Report는 top-down으로 교차:
+
+- 2030 **연간 DC 건설 capex $500B** + 수익성 충당에 필요한 **신규 연간 매출 $2조** → **자금 갭 $800B/년**.
+- ⚠ **분모 주의**: 본 페이지 $650~725B(2026)는 4사 **총 capex**, 베인 $500B(2030)는 **DC 건설 capex**만 — 직접 합산·비교 금지(다른 렌즈).
+- 상세: [ai-compute-economics-gap.md](ai-compute-economics-gap.md) · [ai-demand-sustainability.md](ai-demand-sustainability.md).
+
+**출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §①

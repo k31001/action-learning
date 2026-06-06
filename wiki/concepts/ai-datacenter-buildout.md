@@ -10,7 +10,7 @@ AI 데이터센터 건설은 메모리(HBM/DRAM) 수요의 **6~24개월 선행 �
 
 > 표본 47건·17개국, 총 계획 용량 55.9GW (2026-06-01) ([ai-datacenter-buildout-2026-06.md](../../sources/raw-notes/ai-datacenter-buildout-2026-06.md)). **전수 조사가 아니므로 절대값보다 추세·구성·단계 분포로 해석**한다. 본 페이지는 dashboard `Data Viz > AI DC` 탭(`dashboard/src/data/dataCenters.js`)의 단일 소스.
 
-관련: [ai-server-demand.md](ai-server-demand.md) (GPU·HBM 탑재량) · [ai-capex.md](ai-capex.md) (빅테크 capex) · [energy-constraints.md](energy-constraints.md) (전력 제약) · [hbm-market.md](hbm-market.md) (HBM 시장) · [semiconductor-cycle.md](semiconductor-cycle.md) (사이클).
+관련: [ai-server-demand.md](ai-server-demand.md) (GPU·HBM 탑재량) · [ai-capex.md](ai-capex.md) (빅테크 capex) · [energy-constraints.md](energy-constraints.md) (전력 제약) · [hbm-market.md](hbm-market.md) (HBM 시장) · [semiconductor-cycle.md](semiconductor-cycle.md) (사이클) · [ai-compute-economics-gap.md](ai-compute-economics-gap.md) (Bain 컴퓨트 경제학·163GW 외부 앵커).
 
 ---
 
@@ -73,7 +73,7 @@ GB200 NVL72(132kW/랙·72 GPU, PUE 1.1) 기준. 상세·출처는 [ai-server-dem
 | B300/GB300 | 288GB | HBM3E 12-hi |
 | R100 Rubin | 288GB | HBM4 |
 
-**애널리스트 앵커** (cf. 본 추정): 2026 HBM TAM ~$45B (Goldman) · HBM bit 수요 +70% YoY 2026 (SK hynix/TrendForce) · AI가 글로벌 DRAM 웨이퍼 ~20% 소비 (TrendForce) · 10GW ≈ $600B capex 중 ~$350B NVIDIA, 메모리 BOM ~25% (Morgan Stanley). 단가 하락으로 **bit/EB 수요와 $ TAM은 별도 모델** — 선형 환산 금지.
+**애널리스트 앵커** (cf. 본 추정): 2026 HBM TAM ~$45B (Goldman) · HBM bit 수요 +70% YoY 2026 (SK hynix/TrendForce) · AI가 글로벌 DRAM 웨이퍼 ~20% 소비 (TrendForce) · 10GW ≈ $600B capex 중 ~$350B NVIDIA, 메모리 BOM ~25% (Morgan Stanley). 단가 하락으로 **bit/EB 수요와 $ TAM은 별도 모델** — 선형 환산 금지. **Bain(신문섭, 2025~26): 글로벌 DC 용량 163GW(2030, ~2배)·북미 ~50%·메모리=하이퍼스케일러 AI 지출 ~30%(2026, vs 2023~24 ~8%)** ([ai-compute-economics-gap.md](ai-compute-economics-gap.md)).
 
 ---
 
@@ -104,6 +104,7 @@ GB200 NVL72(132kW/랙·72 GPU, PUE 1.1) 기준. 상세·출처는 [ai-server-dem
 - 총 추적 파이프라인 **55.9GW** → 함의 HBM 설치기반 **~5.0EB**(Blackwell) ~ **7.5EB**(GB300), 금액 **~$75B ~ $113B** (1회성 충전, 설치 기반).
 - 가동중 **10.5GW**. 연간 1차 가동 신규: 2025 ~2.5GW, **2026 ~23.7GW** → 함의 증분 HBM **~$32B** (cf. 2026 HBM TAM ~$45B).
 - 시스템 DRAM 함의(설치기반) ~6.5EB.
+- **외부 벤치마크 (Bain, 신문섭)**: 글로벌 DC 용량 수요 **163GW(2030, 현재 ~2배)** — 본 추적 표본 55.9GW가 전체의 일부임을 정량화하는 상한 앵커. 하이퍼스케일러는 "원시적 확장 → 규율 있는 전력 인식형 성장"으로 전환, **전력이 GPU·건설을 넘어선 게이트키퍼** ([ai-compute-economics-gap.md](ai-compute-economics-gap.md)).
 
 > **메모리 수요 신호로서의 함의**: 2026년에 23.7GW가 1차 가동에 진입(전체의 ~42%)한다는 것은, HBM 수요가 2026~2027에 집중적으로 실현됨을 시사. 단 ⑤전력·⑦HBM 할당 병목이 이 전환을 지연시키면 수요가 2027~2028로 이연될 수 있다 — [semiconductor-cycle.md](semiconductor-cycle.md)의 2028 공급과잉 리스크와 연결되는 핵심 변수.
 

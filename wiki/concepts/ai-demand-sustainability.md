@@ -101,3 +101,22 @@
 - 시나리오 E(패러다임 전환)에서도 메모리 수요 자체는 살아남는 시나리오 가설 강화
 
 **출처**: [youtube-kwon-cycle-formula-2026-05-21.md](../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md), [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)
+
+---
+
+## [Update 2026-06-06] Bain (신문섭) — 컴퓨트 경제학 갭: $2조 매출 / $800B 자금 갭
+
+베인앤컴퍼니(APAC 하드웨어·반도체·DC 총괄 신문섭)의 6th Global Technology Report는 "AI 거품" 심리 논쟁을 **자본·매출 경제학**으로 환산:
+
+| 지표 | 수치 |
+|---|---|
+| 2030 글로벌 증분 AI 컴퓨트 | 200 GW (무어의 법칙 2배 속도) |
+| 2030 연간 DC 건설 capex | $500B/년 |
+| 수익성 충당에 필요한 신규 연간 매출 | **$2조/년** |
+| 연간 자금 갭(shortfall) | **$800B** (온프레미스 IT 예산 전액 클라우드 이전 + AI 절감액 20% 재투자해도 잔존) |
+
+- **중간 입장**: NBER·MIT의 ROI 미실현 비관과 달리, 베인은 **수요 자체는 견조**(200GW·메모리=AI 지출 ~30%)로 보되 **자본 회수 속도가 관건**이라 진단 → "수요는 살되 자본 효율이 변수".
+- 갭이 빠르게 안 메워지면 빅테크 capex **규율화·선별**(축소가 아닌) → 메모리 수요 변동성 → 시나리오 D(조용한 재편) 신호.
+- 상세·통합 프레임: [ai-compute-economics-gap.md](ai-compute-economics-gap.md).
+
+**출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §①

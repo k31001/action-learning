@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-06] ingest | 베인앤컴퍼니(신문섭) AI 컴퓨트·반도체 시리즈 → 위키·대시보드 (v2.18.0 → v2.19.0)
+- **무엇**: 베인 신문섭 파트너(APAC 하드웨어·반도체·DC 총괄·한국 TMT 대표) 도메인의 3개 시리즈를 취합·반영. ① 6th Global Technology Report(2025): AI 컴퓨트 경제학 갭 — 2030 글로벌 컴퓨트 200GW·연 $500B DC capex·수익성 충당 신규 매출 $2조·자금 갭 $800B. ② The AI Ripple Effect(2026-03, **신문섭 공동저자**): 메모리=하이퍼스케일러 AI 지출 ~30%(vs 2023~24 ~8%)·AI ~20% DRAM 웨이퍼 잠식·1GB HBM 4×/GDDR7 1.7× 웨이퍼·GPU 2배 시 부품사 +30% 증산. ③ DC Construction Crunch(2025-10)/Scramble→Strategy: 글로벌 DC 163GW(2030, ~2배)·북미 ~50%·전력=게이트키퍼·규율 있는 성장·4대 병목·계통 접속 5년.
+- **왜**: 사용자(메모리사업부) 요청 — "베인 신문섭 파트너의 AI DC·반도체 작업을 취합해 데이터·대시보드에 반영". 베인 top-down 프레임은 위키의 거품론(심리) 논쟁을 공급-수요-자금 경제학으로 환산하고, DRAM 웨이퍼 잠식·HBM 수요 비중을 외부 교차검증.
+- **sources**: `articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md` 신설(3개 시리즈 발췌+전체 URL+신문섭 인물), `sources/README.md` 카탈로그 2행.
+- **wiki**: `concepts/ai-compute-economics-gap.md` 신설(통합 환원 페이지) + 6개 페이지 보강(ai-demand-sustainability·ai-capex·ai-datacenter-buildout·energy-constraints·hbm-market·semiconductor-cycle) + index.md 2행.
+- **dashboard (v2.19.0, 마이너=새 데이터 카테고리)**: `data/dataCenters.js` DC_ANCHORS에 Bain 7개 앵커 추가, `components/DataCenterTracker.jsx` "외부 전망 벤치마크 — Bain(신문섭)" 카드 신설(6 KPI 타일+Scramble→Strategy 내러티브), `version.js` bump.
+- **outputs**: report §4.2(DF1)에 Bain 컴퓨트 경제학 갭 단락 추가. **발표자료(slide-outline/PPTX)는 건너뜀** — 직전 결정대로 v2.17+ 미반영분과 함께 별도 후속 작업으로 분리(현 outline에 Bain 콘텐츠 없음 → 스테일 비반영이 정합 깸 방지).
+- **검증**: `cd dashboard && npm run build` 통과(2408 모듈·콘솔 0). 브라우저 프리뷰 — AI DC 탭에 Bain 카드 렌더(163GW·200GW·$500B·$2조·$800B·30%), 콘솔 에러 0.
+
 ## [2026-06-06] build | SCM 공급망 축 EWI 편입 — 채찍효과·재고위치·할당 (v2.17.0 → v2.18.0)
 - **무엇**: SCM(공급망관리) 관점 7대 불황 선행지표를 수요 변곡 EWI에 **⑦ SCM 공급망 축**으로 정식 편입. demand-inflection-ewi.md(§2 신호표 +7행·§2-1 신규 소단락·mermaid ⑦ 노드·복합점수 갱신) + 대시보드 `수요 EWI` 탭(CHAIN_TIERS ⑦·DEMAND_SIGNALS +7·inflectionSummary.scm·Panel SCM 막대/구분선/방법론).
 - **7대 신호**: 가짜수요 갭(발주−셀스루)·더블오더링(고객 재고주수)·재고 에셜론(다운스트림 DIO)·할당 커버리지·선급금률·업스트림 공급증분(WFE·경쟁사 장비반입)·주문 처닝율(취소·푸시아웃)·CCC/고객 신용(DSO). **즉시 운용 3종** = 가짜수요 갭·할당 커버리지·업스트림 공급증분.

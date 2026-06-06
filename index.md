@@ -69,6 +69,7 @@
 ### 거시·수요
 - [wiki/concepts/ai-capex.md](wiki/concepts/ai-capex.md) — 빅테크 4사 AI CapEx ($650~725B)
 - [wiki/concepts/ai-demand-sustainability.md](wiki/concepts/ai-demand-sustainability.md) — AI 거품론 vs 낙관론
+- [wiki/concepts/ai-compute-economics-gap.md](wiki/concepts/ai-compute-economics-gap.md) — Bain(신문섭) AI 컴퓨트 경제학 갭 ($2조 매출·$500B capex·$800B 자금 갭·메모리=AI 지출 ~30%·DC 163GW 2030·전력 게이트키퍼)
 - [wiki/concepts/semiconductor-cycle.md](wiki/concepts/semiconductor-cycle.md) — 반도체 사이클·슈퍼사이클·2028 공급과잉 리스크
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
@@ -135,6 +136,7 @@
 - [sources/articles/youtube-kwon-cycle-formula-2026-05-21.md](sources/articles/youtube-kwon-cycle-formula-2026-05-21.md) — 권석준 (연합): Q1 폭증·5종 메모리 다발·사이클 공식 변화·터보퀀트 역설
 - [sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md](sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) — Bloomberg TV: Micron CEO Mehrotra 미국 캐파 10→40%·LTA·"discipline"
 - [sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md](sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) — Counterpoint 7건 묶음(2025-11~2026-04): 90% QoQ 폭등·DRAM OPM 60%>HBM·NVIDIA LPDDR 피벗·LTA 사이클 평탄화·SK hynix HBM 57%·스마트폰 -2.1%
+- [sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md](sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) — Bain(신문섭) AI 컴퓨트 수요·반도체 공급·DC 2030 전망 3개 시리즈: 컴퓨트 경제학 갭($2조/$500B/$800B)·메모리=AI 지출 30%·웨이퍼 잠식(HBM 4×)·163GW·전력 게이트키퍼·Scramble→Strategy
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
