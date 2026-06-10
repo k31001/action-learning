@@ -1,7 +1,7 @@
 ---
 type: strategy
-last_reviewed: 2026-06-06
-sources: [wiki/concepts/demand-inflection-ewi.md, wiki/concepts/ai-datacenter-buildout.md]
+last_reviewed: 2026-06-10
+sources: [wiki/concepts/demand-inflection-ewi.md, wiki/concepts/ai-datacenter-buildout.md, wiki/concepts/bottleneck-model-2030.md]
 ---
 
 # RS-9 · 데이터 기반 수요 변곡 센싱 (Demand-Inflection Sensing)
@@ -28,6 +28,7 @@ sources: [wiki/concepts/demand-inflection-ewi.md, wiki/concepts/ai-datacenter-bu
 3. 이 윈도우에서 RS-1(LTA 없는 신규 캐파 동결)·RS-5(재고 −15%·자사주 보류·재투자 70%+)를 선제 발동하면, 다운사이클 진입 손실을 줄이고 회복기 우위를 확보한다.
 4. 공급 과잉(⑥, bit 공급 vs 수요)은 별도 구조 축 — 공급발 하락도 동일 프로토콜로 대응.
 5. **SCM 공급망 축(⑦)**은 사슬을 *횡단* — 발주와 셀스루의 괴리(가짜수요 갭)·할당 커버리지·업스트림 공급증분으로 더블오더링 언와인드를 ⑤메모리 재고가 움직이기 전 선포착. 채찍효과로 증폭된 "실체 없는 수요"가 풀리는 시점이 급락 방아쇠이므로, RS-1 캐파 동결·RS-5 재고 컷의 *가장 빠른* 트리거가 된다.
+6. **병목 레이더(상방 축, 2026-06-10 추가)**: 하락 변곡 센싱에 더해, 2030 수요 실현을 제약하는 4대 병목(전력·CAPEX·파운드리·패키징)의 제약지수·유효 캐파 비율을 같은 인프라로 감시 ([bottleneck-model-2030.md](../../concepts/bottleneck-model-2030.md)). 운영 설계 — 3층(관측: 공식 API·공시 / 모형: q·I 지수 / 의사결정: 5단계 경보) + 혼합주기 nowcasting(전력 분·시간, CAPEX 일·분기, 파운드리·패키징 사건·월·분기). 충격 시 RS-1·RS-5와 동일 프로토콜로 대응하되, 병목발 충격은 *수요는 있는데 배치가 막히는* 경우라 **가격 급등 + 물량 재배분**(고마진 고객 우선·slot 재예약)이 추가된다.
 
 ## 4. 결론 (시나리오별 가치)
 - **A 황금 요새**: 디커플링이 만드는 수요 왜곡(서방 편중·중국 봉쇄)을 조기 식별.
@@ -48,4 +49,5 @@ sources: [wiki/concepts/demand-inflection-ewi.md, wiki/concepts/ai-datacenter-bu
 ## 출처
 - [wiki/concepts/demand-inflection-ewi.md](../../concepts/demand-inflection-ewi.md) — 인과 사슬·괴리·복합 위험·실측 피드
 - [wiki/concepts/ai-datacenter-buildout.md](../../concepts/ai-datacenter-buildout.md) — DC 착공 55.9GW 파이프라인
-- 대시보드: `Data Viz > 수요 EWI`·`AI DC` 탭, `dashboard/src/data/demandSignals.js`·`dataCenters.js`
+- [wiki/concepts/bottleneck-model-2030.md](../../concepts/bottleneck-model-2030.md) — 4대 병목 정량 모델 + 모니터링 설계 (제약지수·경보 5단계·KPI P1/P2/P3·대응 매뉴얼)
+- 대시보드: `Data Viz > 수요 EWI`·`AI DC` 탭 + `Bottleneck Model` 탭, `dashboard/src/data/demandSignals.js`·`dataCenters.js`·`bottleneckModel.js`

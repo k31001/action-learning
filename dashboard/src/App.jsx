@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { triggerAutoUpdate } from './hooks/useMarketData'
-import { Activity, BarChart3, Compass, Crosshair, History } from 'lucide-react'
+import { Activity, BarChart3, Compass, Crosshair, History, Hourglass } from 'lucide-react'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
 import IndicatorGrid from './components/IndicatorGrid'
@@ -10,6 +10,7 @@ import QuadrantMap from './components/QuadrantMap'
 import DecisionTracker from './components/DecisionTracker'
 import DataVisualization from './components/DataVisualization'
 import ScenarioPlanning from './components/ScenarioPlanning'
+import BottleneckModel from './components/BottleneckModel'
 import Strategies from './components/Strategies'
 import Updates from './components/Updates'
 import ErrorBoundary from './components/ErrorBoundary'
@@ -18,6 +19,7 @@ import { VERSION } from './version'
 // 최상단 페이지 탭
 const TOP_TABS = [
   { id: 'ewi',           label: 'Early Warning Indicator', icon: Activity },
+  { id: 'bottleneck',    label: 'Bottleneck Model',        icon: Hourglass },
   { id: 'visualization', label: 'Data Visualization',      icon: BarChart3 },
   { id: 'planning',      label: 'Scenario Planning',       icon: Compass },
   { id: 'strategy',      label: 'Strategy',                icon: Crosshair },
@@ -179,6 +181,7 @@ export default function App() {
           </>
         )}
 
+        {topTab === 'bottleneck'    && <BottleneckModel />}
         {topTab === 'visualization' && <DataVisualization />}
         {topTab === 'planning'      && <ScenarioPlanning />}
         {topTab === 'strategy'      && <Strategies />}

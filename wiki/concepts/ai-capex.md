@@ -84,3 +84,15 @@
 - 상세: [ai-compute-economics-gap.md](ai-compute-economics-gap.md) · [ai-demand-sustainability.md](ai-demand-sustainability.md).
 
 **출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §①
+
+## [Update 2026-06-10] 딥리서치 — CAPEX/ROI = 2030 최대 하방 병목 (-31.5%)
+
+4대 병목 정량 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 CAPEX 축:
+
+- 경로 앵커: IEA 2025 글로벌 DC 투자 **~$5,800억**, 빅테크 AI 인프라 2025 **$4,000억+** → 2026 **$7,000억+**. **Goldman Sachs: 연간 AI CAPEX 2026 $7,650억 → 2031 $1.6조, 2026~31 누적 $7.6조**. Morgan Stanley: 2028년까지 DC·하드웨어 ~$3조.
+- 모델 설정: 2030 연간 AI 인프라 CAPEX **$0.90조 / $1.37조 / $1.80조**(낮음/기준/높음), 탄력도 ε=0.90. 기준 지역 배분(전력·입지 proxy): 미국 ~$0.75조·중국 $0.27조·유럽 $0.16조·일·한 $0.11조.
+- **네 병목 중 최대 하방 민감도**: 최악 시 HBM **-0.91EB(-31.5%)**·AI 서버 DRAM **-0.79EB(-31.5%)**. 기술 병목보다 먼저 **투자수익률 재평가**가 수요를 꺾을 가능성이 가장 큼 — 2024~25식 금융조건(저금리·고주가·강한 FCF)이 유지되지 않으면 "계획된 AI 팩토리"와 "착공된 AI 팩토리"의 괴리 발생.
+- 모니터링 트리거: hyperscaler aggregate capex 가이드 **-15% 이상 하향** · **FCF/CapEx < 0.8** · HY OAS 급등. 본 페이지의 4사 가이던스 추적이 이 축의 P1 지표.
+- 시나리오 연결: 이 트리거는 [시나리오 C·D(AI 붕괴)](../scenarios/scenario-C.md) 진입 EWI와 동일 축 — 거품론([ai-demand-sustainability.md](ai-demand-sustainability.md))의 정량 트리거화.
+
+**출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) · [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)

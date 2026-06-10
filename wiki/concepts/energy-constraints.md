@@ -117,3 +117,15 @@
 - 계통 접속 **최대 5년**·장비 리드타임 8~24개월 → 위 "인프라 병목"(PJM·변압기 리드타임)과 정합. 하이퍼스케일러는 "규율 있는, 전력 인식형 성장"으로 전환(자본 효율).
 
 **출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §①③ · 통합: [ai-compute-economics-gap.md](ai-compute-economics-gap.md)
+
+## [Update 2026-06-10] 딥리서치 — 2030 병목 모델의 전력 축 정량화
+
+4대 병목 정량 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 전력 축 수치:
+
+- **IEA 중앙 시나리오: 2030 전 세계 DC 전력 ~945TWh**. 2030년까지 증가폭 — 미국 ~240TWh·중국 175TWh·유럽 45TWh·일본 15TWh. **AI-focused DC 전력은 2025~2030 3배**. LBNL: 미국 DC 전력 비중 2023년 4.4% → 2028년 6.7~12%.
+- 모델은 2030 **AI 집중형 DC 전력을 300 / 380 / 520TWh**(낮음/기준/높음)로 설정, 탄력도 ε=1.00(물리량). 기준 지역 분해: 미국 ~171·중국 110·유럽 46·일본 15·기타 38TWh (공식 지역 총량 + 저자 배분 모형).
+- 전력 최악 하방 시 **HBM 수요 -0.61EB(-21.1%)·AI 서버 DRAM -0.53EB(-21.1%)** — 하방 크기 2위(CAPEX 다음). 핵심은 요금이 아니라 **접속 가능한 MW/GW의 실재적 한계**: 송전선 증설 선진국 4~8년, 변압기·케이블 대기시간 최근 3년간 2배, 계획 프로젝트 ~20% 지연 위험(IEA).
+- 모니터링: 전력은 4대 병목 중 유일하게 **실시간 API 감시 가능**(EIA-930·PJM Data Miner 2·ERCOT·ENTSO-E) — 예비력·접속 지연·인입 가능성(COD)을 요금보다 우선 추적. 트리거: 상위 허브 2+ reserve margin <8% · LMP P90 초과 72h · 접속지연 >60일.
+- Bain "전력 = 게이트키퍼"(위 [Update 2026-06-06])의 정성 명제를 TWh 단위 수급 영향으로 환산한 것.
+
+**출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) · [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)

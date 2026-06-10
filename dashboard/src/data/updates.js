@@ -14,6 +14,63 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-10 ─────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-10',
+    type: 'ingest',
+    version: 'v2.20.0',
+    title: '병목 기반 정량 모델 도입 — Bottleneck Model 탭 신설 (4대 병목 min() 제약)',
+    summary:
+      '딥리서치 2건(2030 병목 정량 모델 + 모니터링·대시보드 설계)을 수집·환원하고 대시보드를 모델 기반으로 업그레이드. 전력·CAPEX/ROI·선단 파운드리·첨단 패키징 4대 병목의 min() 제약 모델로 2030 HBM(기준 2.88EB)·AI 서버 DRAM(2.50EB) 수급을 정량화 — what-if 시뮬레이터·수급 곡선·균형 가격지수·민감도·충격 대응 매뉴얼·KPI 모니터링 설계.',
+    tags: ['병목 모델', 'Bottleneck Model', 'HBM 2030', '딥리서치', '정량 모델', 'dashboard'],
+    items: [
+      { label: 'Bottleneck Model 탭 신설', detail: 'S₂₀₃₀=min(U, 전력, CAPEX, 파운드리, 패키징), Sᵢ=S_base×(Bᵢ/B_base)^εᵢ. 탄력도 priors 전력 1.00·CAPEX 0.90·파운드리 0.85·패키징 0.95. 제약지수 4축(패키징 72 Orange 최고)' },
+      { label: 'What-if 시뮬레이터', detail: '병목 자원 4슬라이더 + 잠재수요 U(99/164/260만 대)·공급 시나리오·메모리 강도(가속기 4/6/8·HBM 288/384/512GB·DRAM 1.5/2/3TB) → 실현 출하·binding 축·수급차·가격지수 즉시 재계산' },
+      { label: '수급 분석', detail: '상수탄력도 수급 곡선·균형점(기준 HBM p* 97.5·Q* 2.91EB), 3×3 수급차 매트릭스(기준-기준 +0.07EB 균형 / stress -1.12EB·p* 149.7), 공급사별 유효 캐파(SK 1.24·삼성 0.94·Micron 0.71EB)' },
+      { label: '민감도·대응 매뉴얼', detail: '하방 CAPEX(-0.91EB·-31.5%) > 전력(-0.61) ≈ 패키징(-0.59) > 파운드리(-0.43) · 상방 최종 병목 = 파운드리(152.8만 대). 충격 5종(전력·CAPEX·CoWoS·TSMC·복합) 트리거·즉시/중기/사전 대응' },
+      { label: 'KPI 모니터링 설계', detail: '병목별 P1/P2/P3 지표 20종 + 경보 5단계(Green<40 ~ Critical>85) + 혼합주기 운영원칙(전력 실시간 API·공시 이벤트·3-of-6 rule·단일 공식 원문 Red 승격)' },
+      { label: '위키·소스', detail: 'wiki/concepts/bottleneck-model-2030.md 신설 + 7개 페이지 보강(energy-constraints·ai-capex·hbm-market·ai-server-demand·tsmc·demand-inflection-ewi·rs9). sources/papers/ 딥리서치 2건 수집' },
+      { label: 'version v2.19.1 → v2.20.0 (마이너)', detail: '새 페이지(탭) + 새 데이터 카테고리(bottleneckModel.js)' },
+    ],
+    links: [
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'deep-research-2030-bottleneck-quant-model', href: 'https://github.com/k31001/action-learning/blob/main/sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md' },
+    ],
+  },
+  // ── 2026-06-06 (iii) — 소급 기록 (2026-06-10에 추가) ────────────────────────
+  {
+    date: '2026-06-06',
+    type: 'ingest',
+    version: 'v2.19.0',
+    title: 'Bain(신문섭) AI 컴퓨트·반도체 시리즈 — 컴퓨트 경제학 갭·163GW',
+    summary:
+      '베인 신문섭 파트너 도메인 3개 시리즈 취합: AI 컴퓨트 경제학 갭($2조 매출·$500B capex·$800B 자금 갭), 메모리=하이퍼스케일러 AI 지출 ~30%, DC 163GW(2030)·전력 게이트키퍼. AI DC 탭에 Bain 벤치마크 카드 신설. (v2.19.1: working-style/ 제거 + 죽은 참조 정리 패치)',
+    tags: ['Bain', '신문섭', 'AI capex', '컴퓨트 경제학', 'dashboard'],
+    items: [
+      { label: 'wiki 신설', detail: 'concepts/ai-compute-economics-gap.md + 6개 페이지 보강' },
+      { label: 'AI DC 탭', detail: 'DC_ANCHORS Bain 7개 앵커 + 외부 전망 벤치마크 카드(163GW·200GW·$500B·$2조·$800B·30%)' },
+    ],
+    links: [
+      { label: 'ai-compute-economics-gap.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ai-compute-economics-gap.md' },
+    ],
+  },
+  // ── 2026-06-06 (ii) — 소급 기록 (2026-06-10에 추가) ─────────────────────────
+  {
+    date: '2026-06-06',
+    type: 'build',
+    version: 'v2.18.0',
+    title: 'SCM 공급망 축 EWI 편입 — 채찍효과·재고위치·할당',
+    summary:
+      'SCM 관점 7대 불황 선행지표를 수요 변곡 EWI의 ⑦ SCM 공급망 축으로 정식 편입 — 가짜수요 갭(발주−셀스루)·더블오더링·재고 에셜론·할당 커버리지·업스트림 공급증분·주문 처닝·CCC/고객 신용. 복합점수 36→43(주의), SCM side 56(경계 근접).',
+    tags: ['SCM', '채찍효과', '수요 EWI', 'dashboard'],
+    items: [
+      { label: '⑦ SCM 축 신설', detail: 'CHAIN_TIERS·DEMAND_SIGNALS +7종, inflectionSummary.scm, Panel SCM 막대·방법론' },
+      { label: '즉시 운용 3종', detail: '가짜수요 갭·할당 커버리지·업스트림 공급증분' },
+    ],
+    links: [
+      { label: 'demand-inflection-ewi.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/demand-inflection-ewi.md' },
+    ],
+  },
   // ── 2026-06-06 ─────────────────────────────────────────────────────────────
   {
     date: '2026-06-06',

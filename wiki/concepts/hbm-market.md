@@ -214,3 +214,15 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 - **함의**: 메모리의 AI 지출 비중 8%→30%는 HBM 슈퍼사이클의 **수요 측 정당화** — Samsung HBM4 회복 베팅이 노리는 시장 규모의 근거.
 
 **출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §② · 통합: [ai-compute-economics-gap.md](ai-compute-economics-gap.md)
+
+## [Update 2026-06-10] 딥리서치 — 2030 HBM 수급: 기준 2.88EB 수요 vs 2.95EB 공급 (거의 균형·극도 타이트)
+
+4대 병목 정량 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 2030 HBM 수급 전망:
+
+- **수요**: 1.97 / **2.88** / 3.52EB (낮음/기준/높음) — HBM-GPU 서버 85.6만/125.0만/152.8만 대 × 가속기 6개/서버 × HBM 384GB/가속기 기준. **공급**: 2.40 / **2.95** / 3.80EB. 기준-기준 수급차 **+0.07EB = 사실상 균형**.
+- TAM 정합: Micron **HBM TAM 2025 ~$350억 → 2028 ~$1,000억**, SK hynix "**HBM 시장 2030년까지 연 30% 성장**" — 모델 기준 수요는 공개 TAM 상방보다 약간 보수적인 "배치 가능 물량".
+- 공급사별 2030 유효 캐파(기준, 모형 추정): **SK hynix 1.24EB·삼성 0.94EB·Micron 0.71EB·기타 0.06EB**. 앵커 — SK M15X 20조 원+·인디애나 2028말, 삼성 HBM 매출 2026 3배+·HBM4E 48→64GB, Micron 미국 $500억·Idaho 2027·HBM4E 2027.
+- **stress**: 고수요-저공급 시 **-1.12EB 부족·가격지수 149.7**(기준 97.5) — 물량 부족보다 가격 급등이 먼저 오는 구조 유지. 저수요-고공급 시 50.2(다운사이드 반토막). HBM 수요탄력도 -0.35·공급탄력도 +0.60의 상수탄력도 균형 모형.
+- 재고 구조: HBM 2/4/7주(낮음/기준/높음) — 장기계약·sell-out 구조로 구조적 저재고(Micron 2026 물량 가격 합의 완료).
+
+**출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md)

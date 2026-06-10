@@ -195,3 +195,15 @@ Counterpoint Research (2025-11-19, MS Hwang + Ivan Lam):
 - HBM 잠식 3× + LPDDR NVIDIA 흡수의 이중 압박 → DDR4·LPDDR4 라인 캐파 부족 장기화
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §1
+
+## [Update 2026-06-10] 딥리서치 — 2030 HBM-GPU 서버 출하: 잠재 164만 대 → 병목 반영 125만 대
+
+4대 병목 정량 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 서버 수요 축:
+
+- 2030 **AI-optimized server 총출하 330/410/520만 대**(Gartner 2028년 300만 대 전망을 IDC accelerated server 비중·IEA AI 전력 방향성으로 연장). 그중 **HBM 탑재 GPU/ASIC 서버 비중 30/40/50%** → 잠재 수요 99/164/260만 대.
+- 4대 병목(전력·CAPEX·파운드리·패키징) 동시 반영 시 **실현 출하 85.6 / 125.0 / 152.8만 대** — 기준 시나리오에서 잠재 164만 대의 24%가 병목으로 미실현. 높음 시나리오에서는 잠재 260만 대가 파운드리·패키징 때문에 152.8만 대에서 멈춤.
+- 메모리 강도 가정(공개 스펙 앵커): 서버당 가속기 **4/6/8개**, 가속기당 HBM **288/384/512GB**(DGX B200 = 8GPU·1,440GB HBM3e·2TB 시스템 DRAM·~14.3kW, MI355X 288GB, Rubin 최대 288GB HBM4, Micron 48GB 16-Hi·삼성 HBM4E 48→64GB), 서버당 DRAM **1.5/2.0/3.0TB**.
+- 강도 민감도: 출하 동일해도 높음 강도(8개·512GB·3TB)면 HBM 수요 +33%·DRAM +50%, 낮음 강도면 HBM -25% — **"서버 수"보다 "서버당 강도"가 수요의 절반을 결정**.
+- 2026~2030 출하 CAGR: 기준 11.8% (전력 하방 5.4%·CAPEX 하방 1.7%·상방 ~20%).
+
+**출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md)

@@ -74,6 +74,7 @@
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
+- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계)
 
 ### 기술
 - [wiki/concepts/dram-technology.md](wiki/concepts/dram-technology.md) — DDR5/DDR6/LPDDR6, 1a→1d 미세공정
@@ -142,7 +143,11 @@
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
 
-> `sources/filings/`, `sources/papers/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
+### sources/papers — 리서치 보고서
+- [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 딥리서치: 2030 메모리 수급 4대 병목 정량 모델 (HBM 2.88EB·서버 125만 대·민감도·가격 균형)
+- [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — 딥리서치: 병목 모니터링 모델·대시보드 설계 (3층 아키텍처·KPI P1/P2/P3·경보 5단계·대응 매뉴얼·12주 PoC)
+
+> `sources/filings/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
 
 ## outputs — 빌드 산출물
 
@@ -161,4 +166,6 @@
 - [dashboard/src/components/WorldMap.jsx](dashboard/src/components/WorldMap.jsx) — AI DC 세계 지도 뷰 (d3-geo Equal Earth, 전력 버블·호버 툴팁)
 - [dashboard/src/data/demandSignals.js](dashboard/src/data/demandSignals.js) — 수요 변곡 인과 사슬 신호·괴리·복합 위험 ([wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) 미러)
 - [dashboard/src/components/DemandInflectionPanel.jsx](dashboard/src/components/DemandInflectionPanel.jsx) — 수요 EWI 탭 (복합 위험·괴리·사슬 보드·신호 표)
+- [dashboard/src/data/bottleneckModel.js](dashboard/src/data/bottleneckModel.js) — 2030 병목 모델 데이터·수식 (min 제약·탄력도·가격 균형, [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) 미러)
+- [dashboard/src/components/BottleneckModel.jsx](dashboard/src/components/BottleneckModel.jsx) — Bottleneck Model 탭 (병목 상태 카드·what-if 시뮬레이터·수급 곡선·민감도·매트릭스·충격 매뉴얼·KPI 설계)
 - [dashboard/src/components/DecisionTracker.jsx](dashboard/src/components/DecisionTracker.jsx) — D1~D9 즉시 결정 트래커

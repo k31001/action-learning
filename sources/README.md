@@ -73,6 +73,13 @@
 | [youtube-kwon-cycle-formula-2026-05-21.md](articles/youtube-kwon-cycle-formula-2026-05-21.md) | 연합뉴스경제TV / 인사이트30 | 2026-05-21 | 권석준 교수 — Q1 영업이익 폭증·5종 메모리 동시 폭증·메모리=사이클 공식 변화·구글 터보퀀트 양자화 역설 |
 | [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) | Bain & Company (신문섭) | 2025-09~2026-03 | AI 컴퓨트 경제학 갭($2조 매출/$500B capex/$800B 자금 갭)·메모리=AI 지출 ~30%(vs 2023~24 ~8%)·웨이퍼 잠식(HBM 4×/GDDR7 1.7×·AI ~20% DRAM)·DC 163GW(2030)·전력 게이트키퍼·Scramble→Strategy |
 
+## 수집된 리서치 보고서 (sources/papers/)
+
+| 파일 | 출처 | 수집일 | 요약 |
+|------|------|--------|------|
+| [deep-research-2030-bottleneck-quant-model-2026-06.md](papers/deep-research-2030-bottleneck-quant-model-2026-06.md) | 딥리서치 (사용자 의뢰) | 2026-06-10 | 2030 메모리 수급 4대 병목(전력·CAPEX·파운드리·패키징) 정량 모델 — HBM 2.88EB·서버 125만 대·하방 CAPEX -31.5% 최대·상방 최종 병목 파운드리·가격 균형(stress p* 149.7) |
+| [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) | 딥리서치 (사용자 의뢰) | 2026-06-10 | 병목 모니터링 모델·대시보드 설계 — 3층 아키텍처·혼합주기 nowcasting·제약지수/유효 캐파 비율·경보 5단계·KPI P1/P2/P3·충격 대응 매뉴얼·12주 PoC |
+
 ---
 
 ## 이전 metadata.md

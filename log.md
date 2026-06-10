@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-10] ingest | 딥리서치 2건 수집 + 대시보드 병목 기반 모델링 도입 (v2.19.1 → v2.20.0)
+- **무엇**: 사용자 의뢰 딥리서치 2건(① 2030 메모리 수급 4대 병목 정량 모델, ② 병목 모니터링 모델·대시보드 설계)을 수집·환원하고, 대시보드에 **Bottleneck Model 탭**을 신설해 모델 기반으로 업그레이드. 핵심 프레임 — S₂₀₃₀ = min(U, 전력, CAPEX, 파운드리, 패키징), Sᵢ = S_base×(Bᵢ/B_base)^εᵢ (ε: 전력 1.00·CAPEX 0.90·파운드리 0.85·패키징 0.95). 기준: HBM-GPU 서버 125만 대·HBM 2.88/2.95EB·DRAM 2.50/3.30EB. 하방 CAPEX(-31.5%) > 전력(-21.1%) ≈ 패키징(-20.5%) > 파운드리(-14.9%), 상방 최종 병목 = 파운드리.
+- **왜**: 사용자 요청 — "두 문서 기반 자료 업데이트 + 대시보드를 병목 기반 모델링으로 업그레이드". 기존 EWI(수요 *방향*)에 병목 모델(수요 *실현 가능성*·상방 제약)을 더해 수요의 양면을 감시.
+- **sources**: `papers/deep-research-2030-bottleneck-quant-model-2026-06.md`·`papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md` 신설(원본 보존, papers 디렉토리 첫 파일), `sources/README.md` papers 카탈로그 신설.
+- **wiki**: `concepts/bottleneck-model-2030.md` 신설(모델 구조·4대 병목 정량·수급·가격 균형·모니터링 설계·시나리오 연결) + 7개 페이지 보강 — energy-constraints(IEA 945TWh·300/380/520TWh)·ai-capex(Goldman $7.6조·-31.5% 최대 하방)·hbm-market(2030 수급 2.88/2.95EB·공급사별 캐파)·ai-server-demand(잠재 164만→실현 125만 대)·tsmc(CoWoS 정량·상방 최종 병목)·demand-inflection-ewi(상보 축)·rs9(병목 레이더 = 상방 축 확장). index.md 갱신.
+- **dashboard (v2.20.0, 마이너 = 새 탭 + 새 데이터 카테고리)**: `data/bottleneckModel.js`(모델 데이터+수식 — min 제약·탄력도·상수탄력도 균형·경보 5단계·KPI 20종·충격 5종), `components/BottleneckModel.jsx`(병목 상태 카드 4축·what-if 시뮬레이터·수급 곡선+균형점·민감도 토네이도·3×3 수급차 매트릭스·공급사 캐파·충격 대응 매뉴얼·KPI 설계), App.jsx 탭 연결, updates.js v2.20.0 항목 + v2.18.0/v2.19.0 소급 2건(누락 갭 보충), version.js bump.
+- **outputs**: report §4.2(DF1)에 병목 정량 모델 단락, §7.2에 병목 레이더 표 추가. **발표자료(slide-outline/PPTX)는 건너뜀** — v2.17+ 미반영분과 함께 별도 후속 작업으로 분리(직전 2건 ingest와 동일 결정, 스테일 outline에 부분 반영 시 정합 깨짐 방지).
+- **검증**: `cd dashboard && npm run build` 통과(2410 모듈). 브라우저 프리뷰 — 탭 렌더·콘솔 에러 0, 시뮬레이터 인터랙션 검증(CAPEX 0.90조 달러 → 85.6만 대·HBM 1.97EB·binding 표시), 모델 수치가 보고서 표값 재현(125.0만·+0.07EB·p* 97.5·stress -1.12EB·149.7).
+
 ## [2026-06-06] migration | working-style/ 디렉토리 제거 (Claude Code 세미나 자료, 본 프로젝트 무관) — v2.19.0 → v2.19.1
 - **무엇**: 레포 최상위 `working-style/`(하위 `seminar-claude-code-report/` — Claude Code 세미나 발표자료: content.md·slide-outline.md·generate-pptx.js·*.pptx·node_modules) 전체 삭제. 추적 6파일 `git rm`, 비추적(node_modules·*.pptx·.DS_Store) 정리.
 - **왜**: 사용자 요청 — 시나리오 플래닝 위키와 무관한 세미나 자료라 제거. 직전 [2026-06-06] lint 항목에서 "본 프로젝트 무관이라 미변경"으로 보류했던 것을 정식 삭제.

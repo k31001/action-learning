@@ -100,3 +100,15 @@ TSMC는 노드 전환을 **"Nx → Nx+ → Nx++"** 점진 개선으로 잘게 �
 - 단 SemiAnalysis 평가는 Samsung SF4 베이스다이가 TSMC N12 대비 고비용 노선 — Samsung Foundry의 수율·비용 경쟁력이 차별점 실현의 전제
 
 **출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)
+
+## [Update 2026-06-10] 딥리서치 — CoWoS·선단 캐파 정량 + "상방 최종 병목" 지위
+
+4대 병목 정량 모델([bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md))에서 TSMC는 파운드리·패키징 두 축의 중심:
+
+- **CoWoS**: 2025년 캐파 **두 배** 증설에도 "**still fully loaded**"(2026 수요도 강세 발언). TrendForce 집계: **2026년 말 11.5만~14만 장/월 → 2027 ~17만 장/월**(연간 2026 ~130만 장 → 2027 ~200만 장). 전 세계 2.5D 부족은 2027년부터 점진 완화.
+- **선단 로직**: AI 가속기 매출 **2024년부터 5년간 중간 40%대 CAGR** 가이던스. 3nm 2026말 ~18만 장/월·2nm ~10만 장/월(TrendForce). 미국 추가 **$1,000억**(웨이퍼 팹 3 + 첨단 패키징 팹 2), 애리조나 AP 팹 **2029년 전** 가동 목표. ASML High-NA 2026말 HVM 요건 도달 → **2027~28 고객 양산 삽입**.
+- 미국 후공정 생태계: Amkor 애리조나 **2028년 초**·SK hynix 인디애나 **2028년 말** — 2030 패키징 지역 분해(기준): 대만 0.546 / 미국 0.070 / 한국 0.056 (백만 장/년).
+- **병목 지위**: 패키징은 2026~27의 최예리한 운영 병목이나 라인 개통 후 완화가 빠름. 반면 **선단 로직은 상방 시나리오에서 끝까지 남는 최종 병목** — 돈·전력이 충분해도 AI 배정 선단 캐파(0.62/0.75/0.95백만 장/년)가 출하 상한 결정. 하방 충격은 -0.43EB(-14.9%)로 4축 중 최소.
+- Samsung 함의: TSMC 단일 공급 집중(single-supplier concentration)이 상방을 누르는 구조 = Samsung Foundry 2nm·삼성 HBM4 베이스다이의 **대체 슬롯 가치**가 상방 시나리오일수록 커짐.
+
+**출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) · [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
