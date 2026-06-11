@@ -204,3 +204,42 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - [hbm-market.md Update 2026-05-25](../concepts/hbm-market.md) 및 [dram-market-share.md Update 2026-05-25](../concepts/dram-market-share.md) 교차 참조.
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §4, §5
+
+---
+
+## [Update 2026-06-11] 시니어 파트너 인터뷰 — 솔루션화·임베디드 SW·항공우주 확장
+
+[senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md)
+
+### 1. 2026 Q1 메모리 사업 — 분기 최대 실적
+
+- NVIDIA Vera Rubin용 **HBM4·SOCAMM2 업계 최초 양산 판매**
+- **PCIe Gen6 SSD 개발** 진행
+- **항공우주 산업 포트폴리오 확대** 언급 (신규 영역)
+- → MB-4 커스텀 AI 메모리·SD-2 산업용 메모리·신규 [space-semiconductor.md](../concepts/space-semiconductor.md) 정합
+
+### 2. Anthropic Strategic Infrastructure Partner
+
+- Anthropic Series F (2026, $65B post-money)에서 **Micron·Samsung·SK hynix를 "strategic infrastructure partners"로 공식 표기**
+- 개별사 직접 지분 투자액은 미공개 → "직접 투자"보다 **"전략적 인프라 파트너십"**으로 해석
+- → [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md) · MB-4 산업 표준화 신호
+
+### 3. 강점 자산 — 임베디드 SW 미수익화 상태
+
+| 자산 | 공개 효과 | 수익화 |
+|---|---|---|
+| SmartSSD | DB 쿼리 −50% 시간, −70% 에너지, −97% CPU 활용 | ❌ 무상 번들 |
+| CXL SMDK | 메모리 가상화·티어링·확장 풀 | ❌ 무상 번들 |
+| PCIe Gen6 SSD 펌웨어 | (개발 중) | — |
+
+→ 자산은 있으나 **수익화 시동 미동**. SK hynix(US AI Company $10B)·Micron이 한 발 앞서 솔루션화 진행 중.
+→ [embedded-software-monetization.md](../concepts/embedded-software-monetization.md) 사업화 권고.
+
+### 4. 시니어 파트너 인터뷰 4대 메시지의 Samsung 적용
+
+1. **하드웨어 시간 돌아옴** → 메모리 본업의 전략적 가치 ↑
+2. **요소기술·기능·운영능력으로 분해 재조합** → 5종 메모리 통합 솔루션 + BSP/SDK 분리 P&L
+3. **HW를 이해하는 SW + 다사이트 운영** → Samsung IDM 차별점의 직접 수익화 경로
+4. **인접시장 피벗** → 우주·국방·항공우주·중고 인증으로 RS-2 long-lifecycle 끝단 확장
+
+**출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §1, §3.2, §3.3

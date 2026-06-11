@@ -370,3 +370,33 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 - 위 [Update 2026-05-22] Bloomberg 인터뷰에서 Mehrotra CEO의 "shortage well beyond 2026" 발언과 정합
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §2
+
+---
+
+## [Update 2026-06-11] 시니어 파트너 인터뷰 — FY26 Q2 $23.86B + Elpida PMI 시사점
+
+### 1. FY26 Q2 실적
+
+- 매출 **$23.86B**
+- 영업현금흐름 **$11.9B**
+- FY26 capex **$25B 초과** 제시
+- 메모리를 **"고객의 전략 자산"**으로 규정 — AI 수요가 DRAM·NAND 수급을 2026년뿐 아니라 그 이후까지 타이트하게 만들 것
+
+### 2. Elpida PMI 다사이트 운영 — 시니어 파트너 인터뷰 메모
+
+> 인터뷰 발언: "Micron의 Tick-Tock 전략은 Elpida PMI 목적이었다"
+> **공개 1차 자료**: 1차 자료로 확인 불가. **PMI 설계라는 단정은 보류**.
+
+**단, Micron은 Elpida 인수(Hiroshima·Taiwan·Akita) 후 다음을 공식화**:
+- **Enterprise registration system**
+- **Central coordination and control across sites**
+- **Customer-specific requirements stored in a central database**
+
+→ 다사이트 지식관리·NPI 표준화 모델로서의 **운영 원리 해석으로는 유효**.
+→ Samsung 권고: 공정·수율·FA·고객요구의 **중앙 DB 구축** ([senior-partner-interview-deep-research-2026-06-11.md §4](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md))
+
+### 3. Anthropic Strategic Partner
+
+- Micron·Samsung·SK hynix 공동 명시 — [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md) 참조
+
+**출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §2, §3.1, §3.2

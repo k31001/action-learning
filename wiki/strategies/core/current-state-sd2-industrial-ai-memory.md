@@ -99,3 +99,40 @@
 - 내부: [analysis/benchmark/cyclical-strategy-benchmark.md (Samsung Foundry-Tesla)](../../analysis/benchmark/cyclical-strategy-benchmark.md)
 - NVIDIA Drive Thor 공식 발표
 - AEC-Q100 표준 문서
+
+---
+
+## [Update 2026-06-11] 시니어 파트너 인터뷰 — 우주·항공우주·국방 신규 영역 확장
+
+[senior-partner-interview-deep-research-2026-06-11.md](../../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §3.5
+
+### SD-2 영역 확장
+
+기존 SD-2 커버 영역: 자동차·산업·네트워킹
+
+신규 추가 영역 (Samsung 2026 Q1 공식 언급):
+- **항공우주 산업 포트폴리오 확대** — Samsung 공식 발표
+- **우주(smallsat) long-lifecycle DDR4/DDR5/SSD** — NASA SmallSat 보고서·BryceTech 시장 데이터 정합
+- **국방용 인증 제품군** — Micron·NASA·ESA 사례
+
+### Smallsat 시장 정량
+
+- BryceTech 2024: **약 2,800기 smallsat 발사**, 우주기체의 **97%**
+- 메모리 수요 동반 폭발
+
+### 중간지대 진입 영역 (full rad-hard 아님)
+
+| 영역 | Samsung 강점 매칭 |
+|---|---|
+| 선별 COTS 메모리/스토리지 (우주 인증) | 메모리 전 영역 ✓ |
+| Fault-logging firmware | SmartSSD·CXL SMDK firmware 노하우 ✓ |
+| Long-lifecycle DDR4/SSD (10년+ 공급 보증) | 자동차·산업용 라인 확장 |
+| Shield-aware 패키징 | 패키징 기술 ✓ |
+| EDAC 메모리 컨트롤러 | 메모리 컨트롤러 IP |
+
+### Micron Manassas와의 직접 경쟁 구도
+
+- Micron Manassas DDR4/1α long-lifecycle 라인([bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md))과 직접 경쟁
+- 차별점: Samsung은 **글로벌(유럽·일본 자동차)·우주(smallsat)** 진입 여지 + IDM 차별점 (firmware·로직)
+
+자세히는 [space-semiconductor.md](../../concepts/space-semiconductor.md) 참조

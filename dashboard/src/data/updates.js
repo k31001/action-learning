@@ -14,6 +14,33 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-11 ─────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-11',
+    type: 'ingest',
+    version: null,
+    title: '시니어 파트너 인터뷰 딥리서치 보고서 — 4대 메시지 + 사용자 1차 자료',
+    summary:
+      '사용자가 직접 인터뷰한 시니어 파트너 발언과 공개 자료(WSTS·IDC·IEA·Anthropic·NASA·NDRC) 교차 팩트체크. "SaaS Calypso 이후 하드웨어의 시간이 돌아왔다" 명제 + 솔루션 포트폴리오 전환 + 임베디드 SW 수익화 + 우주·중고 인접시장 권고. wiki 4개 신규 concept + 6개 갱신.',
+    tags: ['시니어 파트너 인터뷰', '딥리서치', 'Anthropic', '솔루션화', '임베디드 SW', '우주', '중고 반도체', 'MB-4', 'RS-2', 'SD-2'],
+    items: [
+      { label: '신규 source', detail: 'sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md (사용자 1차 자료 + 자체 팩트체크 종합)' },
+      { label: '신규 concept #1', detail: 'wiki/concepts/customer-co-design-anthropic.md — Anthropic Series F strategic infrastructure partners(Micron·Samsung·SK) 모델, 영업 4단계 진화' },
+      { label: '신규 concept #2', detail: 'wiki/concepts/used-semiconductor-market.md — 중고 반도체 인증 시장 보수적 시나리오 $2.4B~$14.6B, 본질은 거래소가 아닌 검사·등급화·보증' },
+      { label: '신규 concept #3', detail: 'wiki/concepts/space-semiconductor.md — Smallsat 2,800기/97% COTS 전환, 중간지대(선별 COTS·fault firmware·long-lifecycle·shield-aware)' },
+      { label: '신규 concept #4', detail: 'wiki/concepts/embedded-software-monetization.md — SmartSSD/CXL SMDK 자산 수익화, BSP/SDK 별도 P&L 분리 권고' },
+      { label: 'samsung.md', detail: 'HBM4·SOCAMM2 양산·PCIe Gen6 SSD·항공우주 포트폴리오 확대 + Anthropic strategic infra partner + 임베디드 SW 미수익화 격차' },
+      { label: 'sk-hynix.md', detail: '미국 AI Company $10B 신설, 영업 4단계 모델에서 Samsung과의 격차 분석' },
+      { label: 'micron.md', detail: 'FY26 Q2 $23.86B·영업현금 $11.9B·FY26 capex $25B+, Elpida PMI 시사점은 운영원리 해석으로만' },
+      { label: 'MB-4 갱신', detail: 'Anthropic 모델 + 임베디드 SW 통합 패키지화, 6개월 KPI 명시 (PoC 2건·디자인인 1건)' },
+      { label: 'SD-2 갱신', detail: '우주·항공우주·국방 신규 영역 확장, Micron Manassas 직접 경쟁 구도' },
+      { label: 'RS-2 갱신', detail: 'long-lifecycle 끝단을 우주·국방·중고 인증으로 확장, 인접시장 4종 매핑' },
+    ],
+    links: [
+      { label: '원본 보고서 (사용자 로컬)', href: 'file:///Users/euihyeokkwon/Downloads/deep-research-report-3.md' },
+    ],
+  },
+
   // ── 2026-06-10 ─────────────────────────────────────────────────────────────
   {
     date: '2026-06-10',

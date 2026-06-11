@@ -187,3 +187,31 @@
 5. **5종 통합 솔루션 영업 채널 신설** (NRE 전담팀)
 
 **출처**: [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md), [youtube-kwon-cycle-formula-2026-05-21.md](../../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md), [youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](../../../sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md)
+
+---
+
+## [Update 2026-06-11] 시니어 파트너 인터뷰 — Anthropic Strategic Partner 모델 + 임베디드 SW 결합
+
+### Anthropic Series F 사례가 MB-4 산업 표준화 검증
+
+- Anthropic 공식 발표에서 **Micron·Samsung·SK hynix를 "strategic infrastructure partners"로 명시**
+- 모델 개발사 ↔ 메모리 회사의 **로드맵 공동개발 + 자본 연계**가 산업 표준어로 자리잡음
+- 자세히는 [customer-co-design-anthropic.md](../../concepts/customer-co-design-anthropic.md) 참조
+
+### MB-4 + 임베디드 SW 통합 패키지화
+
+[embedded-software-monetization.md](../../concepts/embedded-software-monetization.md) 권고와 결합:
+
+- 5종 메모리 통합 솔루션 + **BSP/SDK/펌웨어 패키지** 동시 공급
+- 하이퍼스케일러·모델사 맞춤 커널/드라이버/보안 기능 NRE 모델
+- → MB-4 ASP와 전환비용을 **HW 단가의 1.2~1.5배**로 확장 가능
+
+### 시니어 파트너 인터뷰 단기 권고 (6개월)
+
+| 액션 | KPI |
+|---|---|
+| CXL/SmartSSD/스토리지 박스 2~3개 lighthouse 제품 정의 | 6개월 내 PoC 2건, 디자인인 1건 |
+| 커널·드라이버·펌웨어 BSP/SDK 패키지화 | 유상 지원 계약 3건 |
+| Anthropic형 전략 고객 접점 모델 구축 | 공동개발 MOU 2건 (중기) |
+
+**출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §1, §3.1, §3.3, §4

@@ -342,3 +342,32 @@ Counterpoint Research (2026-01-29):
 - Rubin 2/3+ 락인 = Samsung Rubin 진입 여지 극히 좁음 → HBM4E 세대로 회복 베팅 필수
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §4, §5
+
+---
+
+## [Update 2026-06-11] 시니어 파트너 인터뷰 — 미국 AI Company $10B + Anthropic Strategic Partner
+
+### 1. 미국 AI Solutions Company 신설
+
+- SK hynix는 **미국에 AI Company를 설립**하고 **$10B 커밋**
+- AI 데이터센터 생태계에서 **솔루션 사업 확대** 공식화
+- → 칩 공급자 → **AI 인프라 솔루션 플레이어**로의 역할 이동
+
+### 2. Anthropic Strategic Infrastructure Partner
+
+- Anthropic Series F (2026)에서 **Micron·Samsung·SK hynix 공동 "strategic infrastructure partners"** 명시
+- SK hynix는 이미 NVIDIA Rubin 2/3+ 락인 + Microsoft·Google 3년 DRAM LTA + 선급금 협의 + Anthropic 파트너 → **4단계 영업 모델(strategic infra partner)** 진입 사례
+- 자세히는 [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md) 참조
+
+### 3. Samsung 격차 분석
+
+| 영업 단계 | Samsung 현재 | SK hynix 현재 |
+|---|---|---|
+| 1. Spot 거래 | ✓ | ✓ |
+| 2. LTA | ✓ | ✓ |
+| 3. LTA + 선급금 | △ (확인 자료 부족) | ✓ (Microsoft·Google) |
+| 4. Strategic Infra Partner | △ | ✓ (Anthropic) |
+
+→ Samsung은 3·4단계에서 격차 — 동시대 동기간 확보 못 하면 캐파 락인 격차 영구화 위험
+
+**출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §3.1, §3.2

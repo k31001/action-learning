@@ -138,6 +138,55 @@
 - **함의**: 추적 55.9GW → HBM 설치기반 ~5.0~7.5EB(~$75~113B). 2026 신규 가동 ~23.7GW → 증분 HBM ~$32B (cf. 2026 HBM TAM ~$45B Goldman). 병목 ②인허가·전력 ⑤변압기 ⑦HBM 할당이 수요 타이밍의 핵심.
 - **영향 페이지**: index.md(concepts·sources·dashboard 3곳), updates.js, version.js, ai-server-demand.md, energy-constraints.md.
 
+## [2026-06-11] ingest | 시니어 파트너 인터뷰 딥리서치 보고서 (사용자 1차 자료)
+
+사용자가 직접 인터뷰한 시니어 파트너 발언 + 공개 자료(WSTS·IDC·IEA·Dell'Oro·Anthropic·NASA·NDRC·Oracle IR) 교차 팩트체크. 인터뷰 4대 메시지를 위키 4개 신규 concept + 6개 갱신으로 환원.
+
+**핵심 명제**: "SaaS Calypso 이후 하드웨어의 시간이 돌아왔다" — AI 시대의 병목이 메모리·가속기·전력·냉각·패키징·DC 부지·인허가·저계층 SW로 이동.
+
+**팩트체크 결과 요약**:
+- ✓ AI 하드웨어 재부상: WSTS $1.51T (+90%), 메모리 $800B+ (+250%), IDC $487B (+53%), IEA 945TWh
+- ✓ Anthropic strategic infra partners (Micron·Samsung·SK) — 단 직접 지분 투자액은 미공개 → "전략적 파트너십"으로 해석
+- △ Micron Tick-Tock PMI 목적: 1차 자료 부재 → 운영원리 해석으로만 유효 (다사이트 지식 DB 권고)
+- △ 충칭 기후 우위: NDRC 공식은 구이저우·내몽골·간쑤·닝샤 → "정책·전력·네트워크 통합배치"로 표현 수정
+- ✗ Stargate 일부 포기 가능성: 오히려 확대 진행 중 (Oracle Texas 90일 75%+)
+- △ Space COTS: smallsat·LEO에 한정 (deep-space·군수 일반화는 과함)
+- ? Google 중고 GPU·Tesla pull-in·과거 Samsung CoreWeave 논의: 공개 자료 부재 → 전략 가설로 처리
+
+**신규 wiki concept 4종**:
+- `customer-co-design-anthropic.md`: Anthropic Series F + Microsoft/Google SK LTA + Micron LTSA 통합, 영업 4단계 진화 모델
+- `embedded-software-monetization.md`: SmartSSD/CXL SMDK 자산 수익화, BSP/SDK 별도 P&L 분리, MB-4·RS-3·RS-7 연결
+- `used-semiconductor-market.md`: $2.4B~$14.6B 시나리오 추정, 본질=검사·인증, C·D 시나리오 폭발 가능성
+- `space-semiconductor.md`: Smallsat 2,800기/97% COTS, 중간지대(선별 COTS·fault firmware·long-lifecycle·shield-aware), SD-2·RS-2 long-lifecycle 끝단 강화
+
+**갱신 wiki 6개**:
+- `entities/samsung.md`: HBM4·SOCAMM2 양산·PCIe Gen6 SSD·항공우주 + Anthropic infra partner + 임베디드 SW 미수익화 격차
+- `entities/sk-hynix.md`: 미국 AI Company $10B + 영업 4단계 모델 격차 분석 (Samsung 3·4단계 미진입)
+- `entities/micron.md`: FY26 Q2 $23.86B + Elpida PMI는 운영원리 해석으로만
+- `strategies/core/current-state-mb4-custom-ai-memory.md`: Anthropic 모델 + 임베디드 SW 통합 패키지화 + 6개월 KPI
+- `strategies/core/current-state-sd2-industrial-ai-memory.md`: 우주·항공우주·국방 신규 영역 + Micron Manassas 경쟁 구도
+- `strategies/invariant/rs2-barbell-portfolio.md`: long-lifecycle 끝단을 우주·국방·중고 인증으로 확장
+
+**전략 권고 7개 (인터뷰 기반)**:
+- 단기: 메모리 포트폴리오 기능 단위 분해 + lighthouse 제품(CXL·SmartSSD·스토리지 박스), 다사이트 지식 DB, BSP/SDK 패키지화
+- 중기: Anthropic형 전략 고객 접점, DC 부지·전력 옵션 맵, 중고 반도체 인증 파일럿
+- 장기: 우주·산업·국방 장수명 + 인증 체계
+
+**반대 권고**: 고객-비경쟁 원칙 깨는 전면적 Neo Cloud 진출은 우선순위 낮음. **화이트라벨 인프라/레퍼런스 아키텍처 공급자**가 현실적 경로.
+
+**dashboard**:
+- `dashboard/src/data/updates.js`에 entry 추가 (v2.21.0 환경, version bump 없음 — wiki concept 추가는 dashboard 데이터 구조 변경 없음)
+- 브라우저 미리보기로 "업데이트 내역" 탭 신규 entry 표시 확인 (총 24건, ingest 8건, 최신 2026-06-11)
+
+**의도적 미반영 / 다음 사이클 후보**:
+- DECISIONS D15·D16·D17 신설 (인터뷰 권고 7개 → 즉시 결정): 별도 build 사이클로 분리
+- 신규 EWI 3종 후보: 전략 인프라 파트너 수, 임베디드 SW 매출 비중, 중고 인증 사업 진척
+- 다음 ingest 추적: Samsung·SK Anthropic 직접 지분, Micron Tick-Tock PMI 1차 자료, Google GPU 중고
+
+**출처**: [senior-partner-interview-deep-research-2026-06-11.md](sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) (사용자 로컬: `/Users/euihyeokkwon/Downloads/deep-research-report-3.md`)
+
+---
+
 ## [2026-05-25] build | dashboard 신규 탭 "업데이트 내역" 추가 (v2.7.8 → v2.8.0)
 
 사용자 요청: dashboard에 새로운 내용이 반영됐을 때 업데이트 날짜·핵심 내용을 한 곳에서 확인할 수 있는 메뉴 신설.

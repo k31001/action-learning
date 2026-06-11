@@ -210,3 +210,35 @@ Bloomberg TV 인터뷰 (2026-05-22)에서 Mehrotra CEO가 Micron 미국 캐파�
 - 사이클 비동기성 → 한 라인의 절제와 다른 라인의 가속 동시 진행 가능
 
 **출처**: [youtube-kwon-cycle-formula-2026-05-21.md](../../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md), [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)
+
+---
+
+## [Update 2026-06-11] 시니어 파트너 인터뷰 — Long-lifecycle 끝단을 우주·국방·산업으로 확장
+
+### 바벨 long-lifecycle 끝단 정의 확장
+
+- 기존: 자동차·산업
+- 확장: **우주(smallsat)·항공우주·국방 + 중고/재활용 인증 사업**
+
+### 인접시장 4종
+
+| 인접시장 | 강도 | 시나리오 가치 |
+|---|---|---|
+| [space-semiconductor.md](../../concepts/space-semiconductor.md) | smallsat 97% COTS 전환 + Samsung 항공우주 포트폴리오 확대 | **C·D·E 큼** (비경기민감) |
+| [used-semiconductor-market.md](../../concepts/used-semiconductor-market.md) | $2.4B~$14.6B 시장 추정, 본질은 검사·인증 | **C·D 폭발 가능성** |
+| 자동차 long-lifecycle DDR4/DDR5 | NVIDIA Drive Thor·Tesla AI6 | 전 시나리오 |
+| 국방용 인증 라인 | 미국 동맹 + 유럽 방위 산업 | A·C 강세 |
+
+### Long-lifecycle 끝단의 RS-2 가치
+
+- HBM/leading-edge 쪽 사이클 변동성 ↔ long-lifecycle 끝단의 안정성
+- 다운턴에서 long-lifecycle 매출이 cushion으로 작동
+- 권 교수의 "사이클 비동기성 활용" 명제와 정합
+
+### Micron Manassas와의 정합 + 차별
+
+- Micron: Manassas DDR4/1α long-lifecycle ↔ Boise leading-edge
+- Samsung: 평택·시안·Taylor의 동서 분산 + 우주·항공·산업·국방 신규
+- → **RS-2의 산업 표준화 + Samsung의 글로벌·우주 차별점**
+
+**출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §1, §3.5, §4

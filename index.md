@@ -76,6 +76,12 @@
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
 - [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계)
 
+### 신규 전략 인접영역 (시니어 파트너 인터뷰 2026-06-11 기반)
+- [wiki/concepts/customer-co-design-anthropic.md](wiki/concepts/customer-co-design-anthropic.md) — Anthropic Series F strategic infrastructure partners(Micron·Samsung·SK) 모델, 영업 4단계 진화
+- [wiki/concepts/embedded-software-monetization.md](wiki/concepts/embedded-software-monetization.md) — SmartSSD·CXL SMDK 임베디드 SW 별도 P&L 분리·BSP/SDK 패키지화
+- [wiki/concepts/used-semiconductor-market.md](wiki/concepts/used-semiconductor-market.md) — 중고/재활용 반도체 인증($2.4B~$14.6B 시나리오 추정, 본질=검사·등급화·보증)
+- [wiki/concepts/space-semiconductor.md](wiki/concepts/space-semiconductor.md) — Smallsat 2,800기/97% COTS 전환, 중간지대(선별 COTS·shield-aware·long-lifecycle)
+
 ### 기술
 - [wiki/concepts/dram-technology.md](wiki/concepts/dram-technology.md) — DDR5/DDR6/LPDDR6, 1a→1d 미세공정
 - [wiki/concepts/nand-process-transition.md](wiki/concepts/nand-process-transition.md) — NAND 적층·hybrid bonding·YMTC IP 리스크
@@ -142,6 +148,7 @@
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
+- [sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md](sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) — 시니어 파트너 인터뷰 딥리서치 (사용자 1차 + WSTS·IDC·IEA·Anthropic·NASA·NDRC 교차 팩트체크): "하드웨어 시간 돌아옴" 4대 메시지·전략 권고 7개
 
 ### sources/papers — 리서치 보고서
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 딥리서치: 2030 메모리 수급 4대 병목 정량 모델 (HBM 2.88EB·서버 125만 대·민감도·가격 균형)
