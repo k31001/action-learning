@@ -5,16 +5,15 @@ import {
 } from 'recharts'
 import {
   Zap, Banknote, Cpu, Layers, SlidersHorizontal, Radar, AlertTriangle,
-  TrendingDown, Grid3x3, RotateCcw, Activity, GitBranch, Gauge, ArrowRight, Hourglass,
+  TrendingDown, Grid3x3, RotateCcw, Activity, GitBranch, Gauge, Hourglass, Network,
 } from 'lucide-react'
 import {
-  MODEL_ASOF, BASE_SERVERS, POTENTIAL_DEMAND, BOTTLENECKS, INTENSITY, SUPPLY,
+  MODEL_ASOF, BASE_SERVERS, POTENTIAL_DEMAND, BOTTLENECKS, BOTTLENECK_BY_ID, INTENSITY, SUPPLY,
   SUPPLIERS, PRICE_ELASTICITY, ALERT_BANDS, alertBand, realizedShipments,
   memoryDemand, equilibrium, curvePoints, sensitivity, baseIntensity, PRESETS,
   SHOCK_SCENARIOS, MONITORING_NOTES,
   DRIVERS_ASOF, PRESSURE_LEVELS, DRIVER_TREND, BOTTLENECK_DRIVERS, driverPressure,
 } from '../data/bottleneckModel'
-import { inflectionSummary, riskBand, EWI_ASOF } from '../data/demandSignals'
 import DemandInflectionPanel from './DemandInflectionPanel'
 import SourceLink from './SourceLink'
 
@@ -549,7 +548,6 @@ function DriverRow({ d, child = false }) {
       <span className="text-zinc-700 flex-1 leading-tight">
         {d.name}
         {d.unknown && <span className="ml-1 text-[9px] text-zinc-400">(미지수)</span>}
-        {d.ewiLink && <span className="ml-1 px-1 py-px rounded bg-zinc-100 text-zinc-400 text-[9px]" title="수요 변곡 EWI의 동일 신호 — 같은 사실의 양면">EWI 연계</span>}
       </span>
       <span className="text-zinc-400 shrink-0 font-mono text-[10px]">{d.lead}</span>
       <span className="shrink-0 px-1.5 py-0.5 rounded-full text-[10px] font-semibold"
@@ -598,53 +596,131 @@ function DriverTree() {
       <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
         판독({DRIVERS_ASOF}): <strong className="text-orange-500">CAPEX</strong> — 가이던스(중류)는 강세지만 GPU 임대가·자금조달(상류)이 먼저 악화(상류 48 &gt; 중류 37) → 12~18개월 후 capex 둔화 리스크, <strong>AI 기업 매출·이익(OpenAI·Anthropic·xAI·Google)이 최상류 감시 대상</strong>.
         {' '}<strong className="text-indigo-500">파운드리</strong> — 운영은 완화 중이나 지정학·수율 미지수의 구조 리스크 잔존(괴리 +33).
-        {' '}<strong className="text-emerald-600">패키징</strong> — 유일하게 상류(45)가 현재(72)보다 낮음 = 2027~28 완화 방향, 단 16-Hi 수율 악화가 변수.
+        {' '}<strong className="text-emerald-600">패키징</strong> — 유일하게 상류(57)가 현재(72)보다 낮음 = 2027~28 완화 방향(경계 발동), 단 16-Hi 수율 악화가 변수.
         {' '}<strong className="text-amber-500">전력</strong> — 상류·중류·현재 모두 60 안팎, 장주기(18~48개월) 공급망이라 단기 해소 없음.
       </p>
     </Card>
   )
 }
 
-// ── 6c. 수요 변곡 EWI 요약 스트립 (하방 방향 레이더 — 상세는 서브탭) ─────────
-function DemandSummaryStrip({ onOpen }) {
-  const s = inflectionSummary()
-  const band = riskBand(s.composite)
-  const Stat = ({ label, value, color }) => (
-    <div className="text-center px-3">
-      <div className="text-[10px] text-zinc-400">{label}</div>
-      <div className="text-base font-bold font-mono" style={{ color }}>{value}</div>
-    </div>
-  )
+// ── 6c. 모델 구조 도식 — 상류 d2 → 중류 d1 → 4대 병목 → min() → 수급 ─────────
+// 수치(B·ε·지수·U·실현·수요·수급·p*)는 데이터 모듈에서 파생, 트리 항목 라벨은 요약 표기.
+const DIAGRAM_LANES = [
+  { id: 'capex',     cy: 98,  d2y: 52,  d2h: 92, d1y: 68,  d1h: 60, by: 66,
+    bLabel: 'B $1.37조',
+    d2: ['AI 기업 매출·이익', 'OpenAI·Anthropic·xAI·Google', 'AI 단위 경제성', 'GPU 임대가 (수요 청산가)', '금리·HY 스프레드'],
+    d1: ['이익·FCF 커버리지', 'capex 가이던스', '자금조달 (HY OAS)'] },
+  { id: 'power',     cy: 190, d2y: 160, d2h: 60, d1y: 160, d1h: 60, by: 158,
+    bLabel: 'B 380TWh',
+    d2: ['변압기·케이블 리드타임', 'BTM 발전 (터빈·SMR)', '전력요금 정치·수용성'],
+    d1: ['계통 접속 큐·지연', '발전 COD 달성률', '허브 예비력·LMP'] },
+  { id: 'foundry',   cy: 266, d2y: 236, d2h: 60, d1y: 244, d1h: 44, by: 234,
+    bLabel: 'B 0.75M장/년',
+    d2: ['ASML 출하·High-NA', '선단 수율 — 미지수', '대만 집중·지정학'],
+    d1: ['N2/18A 선단 램프', 'AI 배정 비율'] },
+  { id: 'packaging', cy: 342, d2y: 312, d2h: 60, d1y: 320, d1h: 44, by: 310,
+    bLabel: 'B 0.70M장/년',
+    d2: ['기판·인터포저 (ABF)', '적층 수율 (TSV·16-Hi)', 'HBM4→4E 세대 믹스'],
+    d1: ['CoWoS 가동률·증설', '신규 후공정 사이트'] },
+]
+
+function ModelStructureDiagram() {
+  const dem = memoryDemand(BASE_SERVERS, baseIntensity())
+  const sup = SUPPLY.base
+  const hbmEq = equilibrium(dem.hbmEB, sup.hbm, PRICE_ELASTICITY.hbm)
+  const dramEq = equilibrium(dem.dramEB, sup.dram, PRICE_ELASTICITY.dram)
+  const U = POTENTIAL_DEMAND.base
+  const pCapex = driverPressure('capex')
+  const pFoundry = driverPressure('foundry')
+  const pPkg = driverPressure('packaging')
+  const GRAY = '#a1a1aa', BORDER = '#e4e4e7', T1 = '#3f3f46', T2 = '#71717a', T3 = '#a1a1aa'
+  const boxFill = '#fafafa'
+  const item = { fontSize: 11.5, fill: T2 }
+  const title = { fontSize: 13, fontWeight: 600, fill: T1 }
+
   return (
-    <div className="bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4">
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2">
-          <Gauge size={16} className="text-zinc-400" />
-          <div>
-            <div className="text-sm font-semibold text-zinc-800">수요 변곡 EWI <span className="font-normal text-zinc-400 text-xs">— 하방 방향 레이더 (기준일 {EWI_ASOF})</span></div>
-            <div className="text-[11px] text-zinc-400">병목 모델이 "실현 가능한가"(상방)를 본다면, 이 축은 "수요가 꺾이는가"(하방)를 본다 — 인과 사슬 ①임대가→②돈→③발주→④착공→⑤메모리</div>
-          </div>
-        </div>
-        <div className="ml-auto flex items-center divide-x divide-zinc-100">
-          <Stat label="복합 위험" value={`${s.composite} ${band.label}`} color={band.color} />
-          <Stat label="선행" value={s.leading} color={riskBand(s.leading).color} />
-          <Stat label="끈적" value={s.sticky} color={riskBand(s.sticky).color} />
-          <Stat label="선행−끈적 괴리" value={`${s.divergence >= 0 ? '+' : ''}${s.divergence}`} color={s.divergence > 10 ? '#ef4444' : '#71717a'} />
-          <Stat label="공급 과잉" value={s.supply} color={riskBand(s.supply).color} />
-          <Stat label="SCM" value={s.scm} color={riskBand(s.scm).color} />
-        </div>
-        <button onClick={onOpen}
-          className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-md bg-zinc-800 text-white hover:bg-zinc-700">
-          상세 보기 <ArrowRight size={12} />
-        </button>
+    <Card title="모델 구조 — 상류 드라이버 → 4대 병목 → min() 게이트 → 수급·가격" icon={Network}
+      sub="왼쪽일수록 이른 신호(선행시차 축). 다섯 입력(U + 4 병목 상한) 중 최솟값이 실현 출하를 결정하고, 이후는 기계적 변환">
+      <div className="max-w-[880px] mx-auto">
+        <svg width="100%" viewBox="0 0 680 776" role="img" aria-label="병목 모델 구조 도식">
+          <defs>
+            <marker id="bm-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </marker>
+          </defs>
+
+          {/* 3단 컨테이너 */}
+          <rect x="40" y="20" width="212" height="368" rx="6" fill="none" stroke={BORDER} strokeDasharray="4 3" />
+          <text x="50" y="36" {...item} fill={T3}>상류 d2 — 9~48개월 선행</text>
+          <rect x="268" y="20" width="176" height="368" rx="6" fill="none" stroke={BORDER} strokeDasharray="4 3" />
+          <text x="278" y="36" {...item} fill={T3}>중류 d1 — 0~36개월</text>
+          <rect x="460" y="20" width="180" height="368" rx="6" fill="none" stroke={BORDER} strokeDasharray="4 3" />
+          <text x="470" y="36" {...item} fill={T3}>4대 병목 (B·ε·지수)</text>
+
+          {/* 레인: d2 → d1 → 병목 */}
+          {DIAGRAM_LANES.map(l => {
+            const b = BOTTLENECK_BY_ID[l.id]
+            const band = alertBand(b.currentIndex)
+            return (
+              <g key={l.id}>
+                <rect x="48" y={l.d2y} width="196" height={l.d2h} rx="4" fill={boxFill} stroke={BORDER} />
+                {l.d2.map((t, i) => <text key={i} x="58" y={l.d2y + 17 + i * 15} {...item}>{t}</text>)}
+                <rect x="276" y={l.d1y} width="160" height={l.d1h} rx="4" fill={boxFill} stroke={BORDER} />
+                {l.d1.map((t, i) => <text key={i} x="286" y={l.d1y + 17 + i * 15} {...item}>{t}</text>)}
+                <rect x="468" y={l.by} width="150" height="64" rx="4" fill={`${b.color}14`} stroke={`${b.color}88`} />
+                <text x="478" y={l.by + 18} {...title} fill={b.color}>{b.name}</text>
+                <text x="478" y={l.by + 34} {...item}>{l.bLabel} · ε {b.elasticity.toFixed(2)}</text>
+                <text x="478" y={l.by + 49} {...item}>지수 <tspan fontWeight="600" fill={band.color}>{b.currentIndex} · {band.label}</tspan></text>
+                <line x1="244" y1={l.cy} x2="272" y2={l.cy} stroke={GRAY} strokeWidth="1.2" markerEnd="url(#bm-arr)" />
+                <line x1="436" y1={l.cy} x2="464" y2={l.cy} stroke={GRAY} strokeWidth="1.2" markerEnd="url(#bm-arr)" />
+                <line x1="618" y1={l.cy} x2="628" y2={l.cy} stroke={BORDER} strokeWidth="1.2" />
+              </g>
+            )
+          })}
+
+          {/* 잠재 수요 U — min() 위에서 수직 합류 */}
+          <rect x="180" y="408" width="200" height="46" rx="4" fill={boxFill} stroke={BORDER} />
+          <text x="190" y="426" {...title}>잠재 수요 U = {U.value.toFixed(0)}만 대</text>
+          <text x="190" y="443" {...item}>AI 서버 {U.totalServers}만 × HBM 비중 {U.hbmShare}%</text>
+          <line x1="280" y1="454" x2="280" y2="470" stroke={GRAY} strokeWidth="1.2" markerEnd="url(#bm-arr)" />
+
+          {/* 수렴 컬렉터 → min() */}
+          <line x1="628" y1="98" x2="628" y2="491" stroke={BORDER} strokeWidth="1.2" />
+          <path d="M628 491 H438" fill="none" stroke={GRAY} strokeWidth="1.2" markerEnd="url(#bm-arr)" />
+
+          {/* min() 게이트 */}
+          <rect x="130" y="474" width="300" height="34" rx="4" fill="#27272a" />
+          <text x="280" y="495" textAnchor="middle" fontSize="13" fontWeight="600" fill="#fafafa">S₂₀₃₀ = min(U · 전력 · CAPEX · 파운드리 · 패키징)</text>
+
+          {/* 출력 체인 */}
+          <line x1="280" y1="508" x2="280" y2="528" stroke={GRAY} strokeWidth="1.2" markerEnd="url(#bm-arr)" />
+          <rect x="180" y="532" width="200" height="46" rx="4" fill={boxFill} stroke={BORDER} />
+          <text x="190" y="550" {...title}>실현 출하 = {fmt(BASE_SERVERS, 1)}만 대</text>
+          <text x="190" y="567" {...item}>잠재 {U.value.toFixed(0)}만 대의 {fmt(BASE_SERVERS / U.value * 100, 0)}%</text>
+
+          <line x1="280" y1="578" x2="280" y2="598" stroke={GRAY} strokeWidth="1.2" markerEnd="url(#bm-arr)" />
+          <rect x="150" y="602" width="260" height="62" rx="4" fill={boxFill} stroke={BORDER} />
+          <text x="160" y="620" {...title}>메모리 수요 변환</text>
+          <text x="160" y="637" {...item}>HBM = S·A·M = {fmt(dem.hbmEB)}EB</text>
+          <text x="160" y="652" {...item}>DRAM = S·D = {fmt(dem.dramEB)}EB</text>
+
+          <line x1="280" y1="664" x2="280" y2="684" stroke={GRAY} strokeWidth="1.2" markerEnd="url(#bm-arr)" />
+          <rect x="130" y="688" width="300" height="64" rx="4" fill={boxFill} stroke={BORDER} />
+          <text x="140" y="706" {...title}>수급차·가격 균형 (vs 공급)</text>
+          <text x="140" y="723" {...item}>HBM {fmtSigned(sup.hbm - dem.hbmEB)}EB · p* {fmt(hbmEq.price, 1)} (공급 {fmt(sup.hbm)})</text>
+          <text x="140" y="738" {...item}>DRAM {fmtSigned(sup.dram - dem.dramEB)}EB · p* {fmt(dramEq.price, 1)} (공급 {fmt(sup.dram)})</text>
+
+          {/* 조기경보 규칙 */}
+          <rect x="450" y="532" width="190" height="110" rx="6" fill="none" stroke={BORDER} strokeDasharray="4 3" />
+          <text x="460" y="550" {...title} fontSize="12.5">조기경보 규칙</text>
+          <text x="460" y="568" {...item}>악화 예고 · d2 ≥ 현재+10</text>
+          <text x="460" y="583" {...item}>완화 예고 · d2 ≤ 현재−15</text>
+          <text x="460" y="598" {...item}>상류 괴리 · d2−d1 ≥ +10</text>
+          <text x="460" y="616" {...item} fill="#f97316">발동: CAPEX +{pCapex.d2 - pCapex.d1} · 파운드리 +{pFoundry.d2 - pFoundry.d1}</text>
+          <text x="460" y="631" {...item} fill="#10b981">패키징 완화 예고 ({pPkg.d2} &lt; {pPkg.current})</text>
+        </svg>
       </div>
-      {s.flashing.length > 0 && (
-        <p className="text-[11px] text-zinc-500 mt-2">
-          <span className="text-red-500 font-semibold">악화 중 선행 신호:</span> {s.flashing.join(' · ')}
-          <span className="text-zinc-400"> — 드라이버 트리의 "EWI 연계" 신호와 동일 사실의 양면</span>
-        </p>
-      )}
-    </div>
+    </Card>
   )
 }
 
@@ -768,8 +844,8 @@ export default function BottleneckModel() {
             </div>
           </div>
 
-          {/* 수요 변곡 EWI 요약 (하방 레이더) — 상세는 서브탭 */}
-          <DemandSummaryStrip onOpen={() => setView('demand')} />
+          {/* 모델 구조 도식 — 상류 → 병목 → min() → 수급 */}
+          <ModelStructureDiagram />
 
           {/* 4대 병목 상태 카드 (선행 압력 포함) */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
