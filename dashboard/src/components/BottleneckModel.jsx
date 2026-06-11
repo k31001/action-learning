@@ -5,14 +5,17 @@ import {
 } from 'recharts'
 import {
   Zap, Banknote, Cpu, Layers, SlidersHorizontal, Radar, AlertTriangle,
-  TrendingDown, Grid3x3, RotateCcw, Activity,
+  TrendingDown, Grid3x3, RotateCcw, Activity, GitBranch, Gauge, ArrowRight, Hourglass,
 } from 'lucide-react'
 import {
   MODEL_ASOF, BASE_SERVERS, POTENTIAL_DEMAND, BOTTLENECKS, INTENSITY, SUPPLY,
   SUPPLIERS, PRICE_ELASTICITY, ALERT_BANDS, alertBand, realizedShipments,
   memoryDemand, equilibrium, curvePoints, sensitivity, baseIntensity, PRESETS,
   SHOCK_SCENARIOS, MONITORING_NOTES,
+  DRIVERS_ASOF, PRESSURE_LEVELS, DRIVER_TREND, BOTTLENECK_DRIVERS, driverPressure,
 } from '../data/bottleneckModel'
+import { inflectionSummary, riskBand, EWI_ASOF } from '../data/demandSignals'
+import DemandInflectionPanel from './DemandInflectionPanel'
 import SourceLink from './SourceLink'
 
 const ICONS = { zap: Zap, banknote: Banknote, cpu: Cpu, layers: Layers }
@@ -39,8 +42,26 @@ function Card({ title, icon: Icon, sub, children, className = '' }) {
   )
 }
 
+// 조기경보 플래그 칩 (wiki §5 규칙)
+function PressureFlagChips({ flags, size = 'normal' }) {
+  const cls = size === 'small' ? 'px-1 py-px text-[9px]' : 'px-1.5 py-0.5 text-[10px]'
+  const chips = []
+  if (flags.deterioration) chips.push({ label: '악화 예고', color: '#ef4444' })
+  if (flags.easing) chips.push({ label: '완화 예고', color: '#10b981' })
+  if (flags.upstreamGap) chips.push({ label: '상류 선행 악화', color: '#f97316' })
+  if (!chips.length) return null
+  return (
+    <span className="inline-flex gap-1">
+      {chips.map(c => (
+        <span key={c.label} className={`rounded-full font-semibold ${cls}`}
+          style={{ backgroundColor: `${c.color}1a`, color: c.color }}>{c.label}</span>
+      ))}
+    </span>
+  )
+}
+
 // ── 1. 병목 상태 카드 ─────────────────────────────────────────────────────────
-function BottleneckCard({ b, shock }) {
+function BottleneckCard({ b, shock, pressure }) {
   const Icon = ICONS[b.icon]
   const band = alertBand(b.currentIndex)
   return (
@@ -74,6 +95,19 @@ function BottleneckCard({ b, shock }) {
       </div>
       <p className="text-xs text-zinc-500 leading-relaxed">{b.desc}</p>
       <p className="text-[11px] text-zinc-400 leading-relaxed">현재 판단: {b.indexNote}</p>
+      {/* 선행 압력 (상류 드라이버 롤업) — 현재 지수와의 괴리가 조기경보 */}
+      {pressure && (
+        <div className="flex items-center gap-2 text-[11px] pt-1.5 border-t border-zinc-100">
+          <span className="text-zinc-400 shrink-0">선행 압력</span>
+          <span className="font-mono" title="상류 depth 2 — 가장 이른 신호">
+            <span className="text-zinc-400">상류</span> <span className="font-semibold" style={{ color: alertBand(pressure.d2).color }}>{pressure.d2}</span>
+          </span>
+          <span className="font-mono" title="중류 depth 1 — 병목 자원 직접 결정">
+            <span className="text-zinc-400">중류</span> <span className="font-semibold" style={{ color: alertBand(pressure.d1).color }}>{pressure.d1}</span>
+          </span>
+          <PressureFlagChips flags={pressure.flags} size="small" />
+        </div>
+      )}
       <div className="flex items-center justify-between text-[11px] mt-auto pt-1.5 border-t border-zinc-100">
         <span className="text-zinc-400">탄력도 ε <span className="font-mono text-zinc-600">{b.elasticity.toFixed(2)}</span></span>
         {shock && (
@@ -501,6 +535,119 @@ function ShockManual() {
   )
 }
 
+// ── 6b. 상류 드라이버 트리 (depth 1~2) ──────────────────────────────────────
+function DriverRow({ d, child = false }) {
+  const lvl = PRESSURE_LEVELS[d.level]
+  const tr = DRIVER_TREND[d.trend]
+  return (
+    <div className={`flex items-center gap-2 text-[11px] py-1 ${child ? 'pl-5' : ''}`}
+      title={`${d.note}\n출처: ${d.src}`}>
+      {child && <span className="text-zinc-300 -ml-3">↳</span>}
+      <span className={`px-1 py-px rounded font-mono font-semibold text-[9px] shrink-0 ${child ? 'bg-violet-50 text-violet-600' : 'bg-sky-50 text-sky-600'}`}>
+        D{d.depth}
+      </span>
+      <span className="text-zinc-700 flex-1 leading-tight">
+        {d.name}
+        {d.unknown && <span className="ml-1 text-[9px] text-zinc-400">(미지수)</span>}
+        {d.ewiLink && <span className="ml-1 px-1 py-px rounded bg-zinc-100 text-zinc-400 text-[9px]" title="수요 변곡 EWI의 동일 신호 — 같은 사실의 양면">EWI 연계</span>}
+      </span>
+      <span className="text-zinc-400 shrink-0 font-mono text-[10px]">{d.lead}</span>
+      <span className="shrink-0 px-1.5 py-0.5 rounded-full text-[10px] font-semibold"
+        style={{ backgroundColor: `${lvl.color}1a`, color: lvl.color }}>{lvl.label}</span>
+      <span className="shrink-0 text-[10px] w-3 text-center" style={{ color: tr.color }} title={`추세 ${tr.label}`}>{tr.arrow}</span>
+    </div>
+  )
+}
+
+function DriverTree() {
+  return (
+    <Card title="상류 드라이버 트리 (depth 1~2) — 더 이른 인지" icon={GitBranch}
+      sub={`병목 자원을 움직이는 상류 요소 분해: D1(중류) ← D2(상류, 가장 이른 신호). 상류·중류·현재 지수의 괴리가 조기경보. 판정 기준일 ${DRIVERS_ASOF} (정성, 분기 재검토)`}>
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
+        {BOTTLENECKS.map(b => {
+          const Icon = ICONS[b.icon]
+          const p = driverPressure(b.id)
+          const d1s = BOTTLENECK_DRIVERS.filter(d => d.bottleneck === b.id && d.depth === 1)
+          const childrenOf = id => BOTTLENECK_DRIVERS.filter(d => d.bottleneck === b.id && d.depth === 2 && d.parent === id)
+          const orphans = BOTTLENECK_DRIVERS.filter(d => d.bottleneck === b.id && d.depth === 2 && !d1s.some(x => x.id === d.parent))
+          return (
+            <div key={b.id} className="border border-zinc-100 rounded-lg p-3">
+              <div className="flex items-center gap-1.5 mb-1.5">
+                <Icon size={14} style={{ color: b.color }} />
+                <span className="text-xs font-semibold text-zinc-700">{b.name}</span>
+                <span className="ml-auto flex items-center gap-2 font-mono text-[10px]">
+                  <span className="text-zinc-400">현재 <b style={{ color: alertBand(p.current).color }}>{p.current}</b></span>
+                  <span className="text-zinc-400">중류 <b style={{ color: alertBand(p.d1).color }}>{p.d1}</b></span>
+                  <span className="text-zinc-400">상류 <b style={{ color: alertBand(p.d2).color }}>{p.d2}</b></span>
+                </span>
+                <PressureFlagChips flags={p.flags} size="small" />
+              </div>
+              <div className="divide-y divide-zinc-50">
+                {d1s.map(d1 => (
+                  <div key={d1.id} className="py-0.5">
+                    <DriverRow d={d1} />
+                    {childrenOf(d1.id).map(d2 => <DriverRow key={d2.id} d={d2} child />)}
+                  </div>
+                ))}
+                {orphans.map(d2 => <DriverRow key={d2.id} d={d2} child />)}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
+        판독({DRIVERS_ASOF}): <strong className="text-orange-500">CAPEX</strong> — 가이던스(중류)는 강세지만 GPU 임대가·자금조달(상류)이 먼저 악화(상류 48 &gt; 중류 37) → 12~18개월 후 capex 둔화 리스크, <strong>AI 기업 매출·이익(OpenAI·Anthropic·xAI·Google)이 최상류 감시 대상</strong>.
+        {' '}<strong className="text-indigo-500">파운드리</strong> — 운영은 완화 중이나 지정학·수율 미지수의 구조 리스크 잔존(괴리 +33).
+        {' '}<strong className="text-emerald-600">패키징</strong> — 유일하게 상류(45)가 현재(72)보다 낮음 = 2027~28 완화 방향, 단 16-Hi 수율 악화가 변수.
+        {' '}<strong className="text-amber-500">전력</strong> — 상류·중류·현재 모두 60 안팎, 장주기(18~48개월) 공급망이라 단기 해소 없음.
+      </p>
+    </Card>
+  )
+}
+
+// ── 6c. 수요 변곡 EWI 요약 스트립 (하방 방향 레이더 — 상세는 서브탭) ─────────
+function DemandSummaryStrip({ onOpen }) {
+  const s = inflectionSummary()
+  const band = riskBand(s.composite)
+  const Stat = ({ label, value, color }) => (
+    <div className="text-center px-3">
+      <div className="text-[10px] text-zinc-400">{label}</div>
+      <div className="text-base font-bold font-mono" style={{ color }}>{value}</div>
+    </div>
+  )
+  return (
+    <div className="bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4">
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="flex items-center gap-2">
+          <Gauge size={16} className="text-zinc-400" />
+          <div>
+            <div className="text-sm font-semibold text-zinc-800">수요 변곡 EWI <span className="font-normal text-zinc-400 text-xs">— 하방 방향 레이더 (기준일 {EWI_ASOF})</span></div>
+            <div className="text-[11px] text-zinc-400">병목 모델이 "실현 가능한가"(상방)를 본다면, 이 축은 "수요가 꺾이는가"(하방)를 본다 — 인과 사슬 ①임대가→②돈→③발주→④착공→⑤메모리</div>
+          </div>
+        </div>
+        <div className="ml-auto flex items-center divide-x divide-zinc-100">
+          <Stat label="복합 위험" value={`${s.composite} ${band.label}`} color={band.color} />
+          <Stat label="선행" value={s.leading} color={riskBand(s.leading).color} />
+          <Stat label="끈적" value={s.sticky} color={riskBand(s.sticky).color} />
+          <Stat label="선행−끈적 괴리" value={`${s.divergence >= 0 ? '+' : ''}${s.divergence}`} color={s.divergence > 10 ? '#ef4444' : '#71717a'} />
+          <Stat label="공급 과잉" value={s.supply} color={riskBand(s.supply).color} />
+          <Stat label="SCM" value={s.scm} color={riskBand(s.scm).color} />
+        </div>
+        <button onClick={onOpen}
+          className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-md bg-zinc-800 text-white hover:bg-zinc-700">
+          상세 보기 <ArrowRight size={12} />
+        </button>
+      </div>
+      {s.flashing.length > 0 && (
+        <p className="text-[11px] text-zinc-500 mt-2">
+          <span className="text-red-500 font-semibold">악화 중 선행 신호:</span> {s.flashing.join(' · ')}
+          <span className="text-zinc-400"> — 드라이버 트리의 "EWI 연계" 신호와 동일 사실의 양면</span>
+        </p>
+      )}
+    </div>
+  )
+}
+
 // ── 7. KPI 모니터링 설계 ─────────────────────────────────────────────────────
 const PR_STYLE = {
   P1: { bg: 'rgba(14,165,233,0.12)', color: '#0284c7' },
@@ -560,7 +707,13 @@ function KpiDesign() {
 }
 
 // ── 페이지 ───────────────────────────────────────────────────────────────────
+const SUB_VIEWS = [
+  { id: 'model',  label: '병목 모델',     icon: Hourglass },
+  { id: 'demand', label: '수요 변곡 EWI', icon: Gauge },
+]
+
 export default function BottleneckModel() {
+  const [view, setView] = useState('model')
   const worstShockByBottleneck = Object.fromEntries(
     SHOCK_SCENARIOS.filter(s => s.bottleneck).map(s => [s.bottleneck, s])
   )
@@ -570,51 +723,81 @@ export default function BottleneckModel() {
 
   return (
     <div className="space-y-5">
-      {/* 헤더 스트립 */}
-      <div className="bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <div>
-            <h2 className="text-base font-bold text-zinc-900">2030 병목 정량 모델 — 전력 · CAPEX/ROI · 선단 파운드리 · 첨단 패키징</h2>
-            <p className="text-xs text-zinc-500 mt-0.5">
-              2030 메모리 수요는 기술 상한이 아니라 <strong>배치 가능한 상한</strong>(돈·전기·웨이퍼·패키지 중 먼저 막히는 것)이 결정 —
-              4대 병목의 min() 제약 모델. <span className="text-zinc-400">기준일 {MODEL_ASOF} · 운영 모형(공식 전망 아님)</span>
-            </p>
-            <SourceLink source="wiki/concepts/bottleneck-model-2030.md (전거: sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md · sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)" />
+      {/* 서브탭 — 상방(병목) · 하방(수요 변곡) 통합 모델 */}
+      <div className="flex gap-1 border-b border-zinc-200">
+        {SUB_VIEWS.map(t => {
+          const Icon = t.icon
+          return (
+            <button key={t.id} onClick={() => setView(t.id)}
+              className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-t transition-colors border-b-2 ${
+                view === t.id
+                  ? 'border-sky-500 text-zinc-900 bg-white/80'
+                  : 'border-transparent text-zinc-500 hover:text-zinc-700 hover:bg-zinc-50/60'
+              }`}>
+              <Icon size={14} className={view === t.id ? 'text-hig-blue' : 'text-zinc-400'} />
+              {t.label}
+            </button>
+          )
+        })}
+      </div>
+
+      {view === 'demand' && <DemandInflectionPanel />}
+
+      {view === 'model' && (
+        <>
+          {/* 헤더 스트립 */}
+          <div className="bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <div>
+                <h2 className="text-base font-bold text-zinc-900">2030 병목 정량 모델 — 전력 · CAPEX/ROI · 선단 파운드리 · 첨단 패키징</h2>
+                <p className="text-xs text-zinc-500 mt-0.5">
+                  2030 메모리 수요는 기술 상한이 아니라 <strong>배치 가능한 상한</strong>(돈·전기·웨이퍼·패키지 중 먼저 막히는 것)이 결정 —
+                  4대 병목의 min() 제약 모델. <span className="text-zinc-400">기준일 {MODEL_ASOF} · 운영 모형(공식 전망 아님)</span>
+                </p>
+                <SourceLink source="wiki/concepts/bottleneck-model-2030.md (전거: sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md · sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)" />
+              </div>
+              <div className="ml-auto flex flex-wrap items-center gap-2 text-[11px]">
+                <span className="px-2 py-1 rounded-md bg-zinc-50 border border-zinc-200 font-mono text-zinc-600">
+                  기준: 서버 {fmt(BASE_SERVERS, 0)}만 대 · HBM {fmt(baseDem.hbmEB)}/2.95EB · DRAM {fmt(baseDem.dramEB)}/3.30EB
+                </span>
+                <span className="px-2 py-1 rounded-md border font-semibold"
+                  style={{ backgroundColor: `${maxBand.color}12`, borderColor: `${maxBand.color}55`, color: maxBand.color }}>
+                  현재 최고 제약: {maxB.name} {maxB.currentIndex} ({maxBand.label})
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="ml-auto flex flex-wrap items-center gap-2 text-[11px]">
-            <span className="px-2 py-1 rounded-md bg-zinc-50 border border-zinc-200 font-mono text-zinc-600">
-              기준: 서버 {fmt(BASE_SERVERS, 0)}만 대 · HBM {fmt(baseDem.hbmEB)}/2.95EB · DRAM {fmt(baseDem.dramEB)}/3.30EB
-            </span>
-            <span className="px-2 py-1 rounded-md border font-semibold"
-              style={{ backgroundColor: `${maxBand.color}12`, borderColor: `${maxBand.color}55`, color: maxBand.color }}>
-              현재 최고 제약: {maxB.name} {maxB.currentIndex} ({maxBand.label})
-            </span>
+
+          {/* 수요 변곡 EWI 요약 (하방 레이더) — 상세는 서브탭 */}
+          <DemandSummaryStrip onOpen={() => setView('demand')} />
+
+          {/* 4대 병목 상태 카드 (선행 압력 포함) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+            {BOTTLENECKS.map(b => (
+              <BottleneckCard key={b.id} b={b} shock={worstShockByBottleneck[b.id]} pressure={driverPressure(b.id)} />
+            ))}
           </div>
-        </div>
-      </div>
 
-      {/* 4대 병목 상태 카드 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-        {BOTTLENECKS.map(b => (
-          <BottleneckCard key={b.id} b={b} shock={worstShockByBottleneck[b.id]} />
-        ))}
-      </div>
+          {/* 상류 드라이버 트리 (depth 1~2) */}
+          <DriverTree />
 
-      {/* What-if 시뮬레이터 */}
-      <Simulator />
+          {/* What-if 시뮬레이터 */}
+          <Simulator />
 
-      {/* 분석 2열 */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-        <SensitivityTornado />
-        <GapMatrix />
-      </div>
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-        <SupplierCapacity />
-        <ShockManual />
-      </div>
+          {/* 분석 2열 */}
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+            <SensitivityTornado />
+            <GapMatrix />
+          </div>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+            <SupplierCapacity />
+            <ShockManual />
+          </div>
 
-      {/* KPI 설계 */}
-      <KpiDesign />
+          {/* KPI 설계 */}
+          <KpiDesign />
+        </>
+      )}
     </div>
   )
 }

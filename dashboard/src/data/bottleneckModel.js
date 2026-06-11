@@ -263,6 +263,108 @@ export const SHOCK_SCENARIOS = [
   },
 ]
 
+// ── 상류 드라이버 트리 (depth 1~2) — 더 이른 인지 ────────────────────────────
+// 병목 자원은 결과 변수. 각 병목을 움직이는 상류 요소를 depth 1(중류: 자원 직접 결정)·
+// depth 2(상류: 중류를 움직이는 더 이른 원인)로 분해 — 상류가 먼저 꺾이면 선행시차만큼
+// 먼저 인지. 예: CAPEX ← 하이퍼스케일러 이익·FCF(d1) ← AI 기업 매출·이익(d2, 12~18개월 선행).
+// 판정(level)은 EWI와 동일하게 wiki 사실 기반 정성값(2026-06-11) — "제약을 조이는 압력" 방향.
+// 단일 소스: wiki/concepts/bottleneck-model-2030.md §5
+
+export const DRIVERS_ASOF = '2026-06-11'
+
+// 제약 압력 4단계 (점수는 제약지수·경보 밴드와 동일 0~100 스케일)
+export const PRESSURE_LEVELS = {
+  easing:   { key: 'easing',   label: '완화', color: '#10b981', score: 15 },
+  neutral:  { key: 'neutral',  label: '중립', color: '#9ca3af', score: 40 },
+  tight:    { key: 'tight',    label: '긴장', color: '#f59e0b', score: 65 },
+  critical: { key: 'critical', label: '임계', color: '#ef4444', score: 90 },
+}
+
+export const DRIVER_TREND = {
+  worsening: { label: '악화', arrow: '▼', color: '#ef4444' },
+  stable:    { label: '안정', arrow: '▶', color: '#9ca3af' },
+  improving: { label: '개선', arrow: '▲', color: '#10b981' },
+}
+
+// ewiLink: 수요 변곡 EWI(demandSignals.js)의 동일 신호 id — 같은 사실의 양면(수요 방향 ↔ 병목 압력)
+export const BOTTLENECK_DRIVERS = [
+  // ── CAPEX/ROI 상류 ──
+  { id: 'hyp_fcf',     bottleneck: 'capex', depth: 1, name: '하이퍼스케일러 이익·FCF 커버리지', lead: '2~4분기', weight: 3, level: 'neutral', trend: 'worsening',
+    note: '빅4 FCF 견조하나 capex +77% 가속으로 커버리지 하락 — FCF/CapEx<0.8이 충격 트리거', src: 'SEC XBRL·ai-capex.md' },
+  { id: 'capex_guide', bottleneck: 'capex', depth: 1, name: 'capex 가이던스·발주 모멘텀', lead: '1~3분기', weight: 3, level: 'easing', trend: 'stable', ewiLink: 'capex_guide',
+    note: "'26 $650~725B(+77%) 강세 — digestion 언어 관찰", src: '빅4 분기 콜' },
+  { id: 'financing',   bottleneck: 'capex', depth: 1, name: '외부 자금조달 (HY OAS·사모신용·ABS)', lead: '0~2분기', weight: 2, level: 'tight', trend: 'worsening', ewiLink: 'credit_spread',
+    note: '부채·SPV·ABS 의존 확대 — 스프레드 확대 시 급랭', src: 'FRED·Oracle/CoreWeave 사례' },
+  { id: 'ai_revenue',  bottleneck: 'capex', depth: 2, parent: 'hyp_fcf', name: 'AI 기업 매출·이익 (OpenAI·Anthropic·xAI·Google)', lead: '12~18개월', weight: 3, level: 'neutral', trend: 'stable',
+    note: '클라우드 AI 매출 구조 성장(Google Cloud +63%·Azure +40%·AWS +28%, Q1 2026)·"AI 수익 실현 시작" vs MIT 95% ROI 미실현·프런티어 랩 적자 — capex의 최상류', src: 'ai-demand-sustainability.md' },
+  { id: 'ai_unit_econ',bottleneck: 'capex', depth: 2, parent: 'hyp_fcf', name: 'AI 단위 경제성 (토큰 원가 vs ARPU·구독 전환)', lead: '12~24개월', weight: 2, level: 'neutral', trend: 'stable',
+    note: '추론 효율 개선 = 수요 촉진과 단가 하락의 양날 — Bain: 수익성 충당 $2조 매출 필요·$800B 갭', src: 'ai-compute-economics-gap.md' },
+  { id: 'gpu_rental',  bottleneck: 'capex', depth: 2, parent: 'capex_guide', name: 'GPU 임대가 (수요 청산가)', lead: '9~18개월', weight: 3, level: 'tight', trend: 'worsening', ewiLink: 'gpu_rental',
+    note: 'H100 현물 $2~3/GPU·h 둔화(Vast.ai 실측) — neocloud 경제성 → GPU 발주의 최선행', src: 'Vast.ai 자동 갱신' },
+  { id: 'rates',       bottleneck: 'capex', depth: 2, parent: 'financing', name: '금리·텀스프레드 (10Y)', lead: '0~6개월', weight: 1, level: 'neutral', trend: 'stable',
+    note: '할인율·자본비용 환경', src: 'FRED 일간' },
+
+  // ── 전력 상류 ──
+  { id: 'interconnect', bottleneck: 'power', depth: 1, name: '계통 접속 큐·지연일수', lead: '12~36개월', weight: 3, level: 'tight', trend: 'worsening',
+    note: '접속 지연 확대 — 송전 증설 선진국 4~8년', src: '유틸리티·RTO 공시' },
+  { id: 'gen_cod',      bottleneck: 'power', depth: 1, name: '발전 COD 파이프라인 달성률', lead: '6~18개월', weight: 2, level: 'tight', trend: 'stable',
+    note: '계획 프로젝트 ~20% 지연 위험(IEA)', src: 'EIA-860·IRP' },
+  { id: 'reserve_lmp',  bottleneck: 'power', depth: 1, name: '허브 예비력·LMP', lead: '0~3개월', weight: 2, level: 'neutral', trend: 'stable',
+    note: '실시간 감시 축 — 현재 국지적 타이트', src: 'EIA-930·PJM·ERCOT' },
+  { id: 'transformer',  bottleneck: 'power', depth: 2, parent: 'interconnect', name: '변압기·HV 케이블 리드타임', lead: '18~36개월', weight: 2, level: 'tight', trend: 'worsening',
+    note: '대기시간 최근 3년간 2배(IEA) — 접속 지연의 물리적 원인', src: 'energy-constraints.md' },
+  { id: 'btm_supply',   bottleneck: 'power', depth: 2, parent: 'gen_cod', name: 'BTM 발전 공급망 (가스터빈·SMR)', lead: '24~48개월', weight: 2, level: 'tight', trend: 'worsening',
+    note: 'behind-the-meter 발전이 배치 재편(Bain) — 터빈 슬롯·SMR 인허가 장주기', src: 'energy-constraints.md' },
+  { id: 'power_politics', bottleneck: 'power', depth: 2, parent: 'gen_cod', name: '전력요금 정치·지역 수용성', lead: '12~24개월', weight: 1, level: 'neutral', trend: 'worsening',
+    note: '요금 인상 반발·DC 신설 제한 움직임 — 접속 허가의 정치적 상류', src: '주별 규제 문서' },
+
+  // ── 파운드리 상류 ──
+  { id: 'node_ramp', bottleneck: 'foundry', depth: 1, name: 'N2/18A 선단 램프 진척', lead: '6~12개월', weight: 3, level: 'easing', trend: 'improving',
+    note: 'N2 2026말 ~10만 장/월 확대 경로 순항', src: 'tsmc.md·TrendForce' },
+  { id: 'ai_alloc',  bottleneck: 'foundry', depth: 1, name: 'AI 배정 비율 (전통 수요와 캐파 경쟁)', lead: '3~9개월', weight: 2, level: 'easing', trend: 'stable',
+    note: '스마트폰 -2.1% 약세 = AI 배정 여지 확대 — 교차 부호: 수요 EWI엔 악재, 병목엔 완화', src: 'Counterpoint' },
+  { id: 'asml',      bottleneck: 'foundry', depth: 2, parent: 'node_ramp', name: 'ASML EUV/High-NA 출하·백로그', lead: '12~24개월', weight: 2, level: 'neutral', trend: 'stable',
+    note: 'High-NA 2026말 HVM 요건 → 2027~28 양산 삽입, 1Q26 장비 로직 49:메모리 51', src: 'ASML results' },
+  { id: 'yield_n2',  bottleneck: 'foundry', depth: 2, parent: 'node_ramp', name: '선단 수율 프록시 (N2·18A)', lead: '6~12개월', weight: 2, level: 'neutral', trend: 'stable',
+    note: '비공개 — 미지수, 범위 관리', src: '회사 발언', unknown: true },
+  { id: 'geo_conc',  bottleneck: 'foundry', depth: 2, parent: 'ai_alloc', name: '대만 집중·지정학', lead: '이벤트성', weight: 2, level: 'tight', trend: 'stable',
+    note: 'AI 배정 선단 캐파의 70%가 대만(0.525/0.75) — 단일 충격점, 미국 분산 2028+', src: 'bottleneck-model-2030.md' },
+
+  // ── 패키징 상류 ──
+  { id: 'cowos_util',  bottleneck: 'packaging', depth: 1, name: 'CoWoS 가동률·증설', lead: '3~9개월', weight: 3, level: 'tight', trend: 'stable', ewiLink: 'cowos',
+    note: '2025 두 배 증설에도 "still fully loaded"', src: 'TSMC transcript' },
+  { id: 'new_sites',   bottleneck: 'packaging', depth: 1, name: '신규 후공정 사이트 진척 (AZ·인디애나·싱가포르)', lead: '12~30개월', weight: 2, level: 'neutral', trend: 'improving',
+    note: 'Amkor AZ 2028 초·SK 인디애나 2028 말·TSMC AZ 2029 전 — 일정 진행', src: 'Amkor·SK hynix IR' },
+  { id: 'substrate',   bottleneck: 'packaging', depth: 2, parent: 'cowos_util', name: '기판·인터포저 (ABF)', lead: '6~18개월', weight: 2, level: 'tight', trend: 'stable',
+    note: '2.5D 부족의 연쇄 병목(TrendForce) — 2027부터 완화 전망', src: 'TrendForce' },
+  { id: 'stack_yield', bottleneck: 'packaging', depth: 2, parent: 'cowos_util', name: 'HBM 적층·테스트 수율 (TSV/KGD·16-Hi)', lead: '6~12개월', weight: 2, level: 'tight', trend: 'worsening',
+    note: 'HBM4 16-Hi 전환 난도 상승(Micron 자격 이슈 등) — 미지수 플래그', src: 'SemiAnalysis·내부', unknown: true },
+  { id: 'gen_mix',     bottleneck: 'packaging', depth: 2, parent: 'new_sites', name: 'HBM 세대 전환 믹스 (HBM4→4E 램프)', lead: '6~12개월', weight: 2, level: 'neutral', trend: 'stable',
+    note: '세대 전환기 유효 산출 일시 감소 — 3사 IR 추적', src: '3사 IR' },
+]
+
+// 병목별 선행 압력 롤업: Σ(점수×가중치)/Σ가중치, d1·d2 분리
+export function driverPressure(bottleneckId) {
+  const ds = BOTTLENECK_DRIVERS.filter(d => d.bottleneck === bottleneckId)
+  const agg = list => {
+    const w = list.reduce((a, d) => a + d.weight, 0)
+    return w ? Math.round(list.reduce((a, d) => a + PRESSURE_LEVELS[d.level].score * d.weight, 0) / w) : 0
+  }
+  const d1 = agg(ds.filter(d => d.depth === 1))
+  const d2 = agg(ds.filter(d => d.depth === 2))
+  const current = BOTTLENECK_BY_ID[bottleneckId].currentIndex
+  return {
+    d1, d2, overall: agg(ds), current,
+    worsening: ds.filter(d => d.trend === 'worsening').length, total: ds.length,
+    // 조기경보 규칙 (wiki §5): 악화 예고 d2≥현재+10 / 완화 예고 d2≤현재−15 / 상류-중류 괴리 d2−d1≥10
+    flags: {
+      deterioration: d2 >= current + 10,
+      easing: d2 <= current - 15,
+      upstreamGap: d2 - d1 >= 10,
+    },
+  }
+}
+
 // 모니터링 운영 원칙 (혼합주기 nowcasting)
 export const MONITORING_NOTES = [
   '관측 주기 — 전력: 분·시간(실시간 API 가능한 유일한 축) / CAPEX·ROI: 일·분기 / 파운드리·패키징: 사건·월·분기',

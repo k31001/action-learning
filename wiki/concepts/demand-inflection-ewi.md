@@ -10,7 +10,7 @@ sources: [sources/raw-notes/demand-inflection-ewi-2026-06.md]
 
 > 핵심: **DC 착공은 사슬 중간의 끈적한(committed) 지표** — 미래 수요 *규모*엔 좋지만 *하락 변곡* 탐지엔 느리다. 약정된 건설은 수요가 식어도 진행되기 때문. 따라서 더 정확한 조기탐지 = 단일 지표가 아니라 **앙상블 + 괴리(divergence) + 공급 축**.
 
-단일 소스: dashboard `Data Viz > 수요 EWI` 탭(`dashboard/src/data/demandSignals.js`) + EWI 5종(`dashboard/src/data/indicators.js`). 관련: [semiconductor-cycle.md](semiconductor-cycle.md) · [ai-demand-sustainability.md](ai-demand-sustainability.md) · [ai-capex.md](ai-capex.md) · [ai-server-demand.md](ai-server-demand.md).
+단일 소스: dashboard `Bottleneck Model > 수요 변곡 EWI` 서브탭(`dashboard/src/data/demandSignals.js`, 2026-06-11 Data Viz에서 이동 — 병목 모델과 통합) + EWI 5종(`dashboard/src/data/indicators.js`). 관련: [bottleneck-model-2030.md](bottleneck-model-2030.md) · [semiconductor-cycle.md](semiconductor-cycle.md) · [ai-demand-sustainability.md](ai-demand-sustainability.md) · [ai-capex.md](ai-capex.md) · [ai-server-demand.md](ai-server-demand.md).
 
 ---
 
@@ -106,10 +106,10 @@ flowchart LR
   - `gpu_supply_offers` (현물 공급) — Vast.ai 가용 on-demand 오퍼 수(H100/H200/NVL). 증가 = 컴퓨트 현물 공급 완화. 절대값보다 추세(마켓플레이스 한정, 노이즈).
   - `ai_dc_credit_spread` — HYG(광의 HY 회사채 ETF) 6개월 역행·듀레이션 환산 프록시 자동 갱신(금리 영향 포함).
   - 스팟-계약 괴리(DXI)·재고·취소 건수는 무료 실시간 피드 부재로 수동(EWI 탭).
-- **선행 시장 신호 추이 차트**: 대시보드 `수요 EWI` 탭에 실측 Yahoo 주간(NVDA AI수요·MU 메모리·HYG 신용) 12개월 정규화(로그축) 라인 — 세 선 동반 우하향 = 선행 약화. 정성 사슬과 교차 확인.
-- **what-if 시뮬레이터**: 대시보드 `수요 EWI` 탭에서 각 신호 레벨을 바꿔 복합 위험·선행/끈적 괴리를 즉시 재계산(가정 시뮬레이션, 실측 아님) — 변곡 시나리오 스트레스 테스트용.
+- **선행 시장 신호 추이 차트**: 대시보드 `Bottleneck Model > 수요 변곡 EWI` 서브탭에 실측 Yahoo 주간(NVDA AI수요·MU 메모리·HYG 신용) 12개월 정규화(로그축) 라인 — 세 선 동반 우하향 = 선행 약화. 정성 사슬과 교차 확인.
+- **what-if 시뮬레이터**: 같은 서브탭에서 각 신호 레벨을 바꿔 복합 위험·선행/끈적 괴리를 즉시 재계산(가정 시뮬레이션, 실측 아님) — 변곡 시나리오 스트레스 테스트용.
 - **한계**: 가동률·고객 재고 불투명, GPU 임대가 노이즈 큼, 효율 혁신 예측 불가. 확실성이 아니라 **리드타임 최대화 + 앙상블 + 괴리**가 목표.
-- **상보 축 — 2030 병목 모델** ([bottleneck-model-2030.md](bottleneck-model-2030.md), 2026-06-10): 본 EWI가 "수요가 **꺾이는가**"(하락 변곡)를 본다면, 병목 모델은 "수요가 **실현 가능한가**"(전력·CAPEX·파운드리·패키징의 상방 제약)를 정량화 — 같은 신호도 양면 해석(예: capex 가이던스 하향 = EWI ②돈 수축 신호이자 병목 모델 CAPEX 축 -31.5% 트리거). 대시보드 `Bottleneck Model` 탭과 `수요 EWI` 탭이 이 양면.
+- **상보 축 — 2030 병목 모델** ([bottleneck-model-2030.md](bottleneck-model-2030.md), 2026-06-10): 본 EWI가 "수요가 **꺾이는가**"(하락 변곡)를 본다면, 병목 모델은 "수요가 **실현 가능한가**"(전력·CAPEX·파운드리·패키징의 상방 제약)를 정량화 — 같은 신호도 양면 해석(예: capex 가이던스 하향 = EWI ②돈 수축 신호이자 병목 모델 CAPEX 축 -31.5% 트리거). **2026-06-11 통합**: 두 체계는 대시보드 `Bottleneck Model` 탭 하나로 합쳐짐(병목 모델 + 수요 변곡 EWI 서브탭) — 병목 모델 §5 상류 드라이버 트리가 본 EWI의 ①임대가·②돈·③발주 신호를 CAPEX·패키징 병목의 상류(depth 2)로 연계해 한 인과 구조로 묶는다.
 
 ---
 

@@ -172,7 +172,7 @@
 - [dashboard/src/components/DataCenterTracker.jsx](dashboard/src/components/DataCenterTracker.jsx) — AI DC 단계 보드·권역·예측 (Data Viz > AI DC 탭)
 - [dashboard/src/components/WorldMap.jsx](dashboard/src/components/WorldMap.jsx) — AI DC 세계 지도 뷰 (d3-geo Equal Earth, 전력 버블·호버 툴팁)
 - [dashboard/src/data/demandSignals.js](dashboard/src/data/demandSignals.js) — 수요 변곡 인과 사슬 신호·괴리·복합 위험 ([wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) 미러)
-- [dashboard/src/components/DemandInflectionPanel.jsx](dashboard/src/components/DemandInflectionPanel.jsx) — 수요 EWI 탭 (복합 위험·괴리·사슬 보드·신호 표)
-- [dashboard/src/data/bottleneckModel.js](dashboard/src/data/bottleneckModel.js) — 2030 병목 모델 데이터·수식 (min 제약·탄력도·가격 균형, [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) 미러)
-- [dashboard/src/components/BottleneckModel.jsx](dashboard/src/components/BottleneckModel.jsx) — Bottleneck Model 탭 (병목 상태 카드·what-if 시뮬레이터·수급 곡선·민감도·매트릭스·충격 매뉴얼·KPI 설계)
+- [dashboard/src/components/DemandInflectionPanel.jsx](dashboard/src/components/DemandInflectionPanel.jsx) — 수요 변곡 EWI 패널 (복합 위험·괴리·사슬 보드·신호 표 — 2026-06-11부터 Bottleneck Model 탭 서브탭)
+- [dashboard/src/data/bottleneckModel.js](dashboard/src/data/bottleneckModel.js) — 2030 병목 모델 데이터·수식 (min 제약·탄력도·가격 균형 + 상류 드라이버 트리 depth 1~2·조기경보, [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) 미러)
+- [dashboard/src/components/BottleneckModel.jsx](dashboard/src/components/BottleneckModel.jsx) — Bottleneck Model 탭 (서브탭: 병목 모델 + 수요 변곡 EWI. 병목 카드·드라이버 트리·what-if 시뮬레이터·수급 곡선·민감도·매트릭스·충격 매뉴얼·KPI 설계)
 - [dashboard/src/components/DecisionTracker.jsx](dashboard/src/components/DecisionTracker.jsx) — D1~D9 즉시 결정 트래커

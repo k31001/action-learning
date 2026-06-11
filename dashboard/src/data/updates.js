@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-11 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-06-11',
+    type: 'build',
+    version: 'v2.21.0',
+    title: '병목 모델 depth 확장 — 상류 드라이버 트리 + 수요 EWI 통합 (수요 EWI 탭 이동)',
+    summary:
+      '4대 병목 각각에 영향을 주는 상류 요소를 depth 1(중류)·depth 2(상류)로 분해한 22개 드라이버 트리를 모델에 반영 — 예: CAPEX ← 하이퍼스케일러 이익·FCF(d1) ← AI 기업 매출·이익(OpenAI·Anthropic·xAI·Google, d2·12~18개월 선행). 상류·중류·현재 지수의 괴리로 조기경보(악화/완화 예고·상류-중류 괴리)를 산출해 더 이른 시점에 수요 변화를 인지. 수요 EWI는 Data Viz에서 Bottleneck Model 탭의 서브탭으로 통합(겹침 해소).',
+    tags: ['병목 모델', '드라이버 트리', 'depth 2', 'AI 기업 매출', '수요 EWI 통합', '조기경보', 'dashboard'],
+    items: [
+      { label: '상류 드라이버 트리 (22개)', detail: 'CAPEX 7(AI 기업 매출·단위 경제성·GPU 임대가·금리 등)·전력 6(접속 큐·COD·변압기·BTM 발전·전력 정치)·파운드리 5(램프·배정·ASML·수율·지정학)·패키징 5(CoWoS·사이트·기판·적층 수율·세대 믹스). 압력 4단계(완화15·중립40·긴장65·임계90) 가중 롤업' },
+      { label: '조기경보 규칙', detail: '악화 예고(상류≥현재+10)·완화 예고(상류≤현재−15)·상류-중류 괴리(d2−d1≥10). 현재 발동: CAPEX 괴리 +11(임대가·자금조달 선행 악화)·파운드리 괴리 +33(지정학·수율 미지수)·패키징 완화 예고(상류 45 < 현재 72)' },
+      { label: '수요 EWI 통합', detail: 'Data Viz > 수요 EWI 서브탭 제거 → Bottleneck Model 탭 내 [병목 모델 | 수요 변곡 EWI] 서브탭. 병목 모델 화면에 EWI 요약 스트립(복합 위험·선행/끈적 괴리·SCM·악화 신호) + 드라이버의 EWI 연계 표기(같은 사실의 양면)' },
+      { label: '병목 카드 확장', detail: '카드마다 선행 압력(상류 d2/중류 d1) + 조기경보 플래그 표시 — 현재 지수(정성)와 교차 검증' },
+      { label: 'wiki', detail: 'bottleneck-model-2030.md §5 상류 드라이버 트리 신설(트리 표·롤업 수식·조기경보 규칙·종합 판독), demand-inflection-ewi·rs9·README 위치 갱신' },
+      { label: 'version v2.20.0 → v2.21.0 (마이너)', detail: '탭 구조 변경(수요 EWI 이동·서브탭) + 새 데이터 카테고리(드라이버 트리)' },
+    ],
+    links: [
+      { label: 'bottleneck-model-2030.md §5', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-06-11 ─────────────────────────────────────────────────────────────
   {
     date: '2026-06-11',

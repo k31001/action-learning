@@ -50,4 +50,4 @@ sources: [wiki/concepts/demand-inflection-ewi.md, wiki/concepts/ai-datacenter-bu
 - [wiki/concepts/demand-inflection-ewi.md](../../concepts/demand-inflection-ewi.md) — 인과 사슬·괴리·복합 위험·실측 피드
 - [wiki/concepts/ai-datacenter-buildout.md](../../concepts/ai-datacenter-buildout.md) — DC 착공 55.9GW 파이프라인
 - [wiki/concepts/bottleneck-model-2030.md](../../concepts/bottleneck-model-2030.md) — 4대 병목 정량 모델 + 모니터링 설계 (제약지수·경보 5단계·KPI P1/P2/P3·대응 매뉴얼)
-- 대시보드: `Data Viz > 수요 EWI`·`AI DC` 탭 + `Bottleneck Model` 탭, `dashboard/src/data/demandSignals.js`·`dataCenters.js`·`bottleneckModel.js`
+- 대시보드: `Bottleneck Model` 탭(병목 모델 + 수요 변곡 EWI 서브탭 통합, 2026-06-11)·`Data Viz > AI DC` 탭, `dashboard/src/data/demandSignals.js`·`dataCenters.js`·`bottleneckModel.js`(상류 드라이버 트리 depth 1~2 포함)
