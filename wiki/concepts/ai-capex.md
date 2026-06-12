@@ -96,3 +96,31 @@
 - 시나리오 연결: 이 트리거는 [시나리오 C·D(AI 붕괴)](../scenarios/scenario-C.md) 진입 EWI와 동일 축 — 거품론([ai-demand-sustainability.md](ai-demand-sustainability.md))의 정량 트리거화.
 
 **출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) · [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
+
+## [Update 2026-06-12] 2026년 첫 $1조 달성 확인 + GPU 임대가 하락
+
+### 2026 전체 컴퓨트 Capex (모든 출처 포함)
+
+| 구성 | 2026 추정 |
+|---|---|
+| 빅4 (Amazon·Microsoft·Google·Meta) | $650~725B |
+| Oracle | ~$50B |
+| Apple | ~$13B |
+| Neoclouds | ~$60B |
+| 중국 (국내 AI 인프라) | ~$80B |
+| 기타 (소버린 AI·대형 통신 등) | ~$108B |
+| **총합** | **~$1.04조** |
+
+- **2026년 = 인류 역사상 최초의 연간 컴퓨트 Capex $1조 달성 해** (AL Capital Advisory, BusinessEngineer.ai)
+- 빅4 Q1 2026 클라우드 실적: Google Cloud +63%, AWS +28%, Azure +40% — Capex 지속 정당화
+- Goldman Sachs 경로 유지: 2026 $7,650억 → 2031 $1.6조(누적 $7.6조)
+
+### GPU 임대가 하락 — 선행 신호 (2026-06 현재)
+
+- H100 NVL on Vast.ai: **$2.40/hr** (2024 초 $7+에서 -57%)
+- H100 시장 중앙값: **~$2.95/hr**
+- AWS·Azure: H100·H200·A100 가격 최대 **45% 인하**
+
+→ **CAPEX/ROI 드라이버 d2 gpu_rental "긴장 ▼" 판정 유지**: 단기 capex는 $1T이지만, GPU 임대가 하락은 9~18개월 후 neocloud 신규 발주 감소·ROI 재평가 선행 신호. 상방-하방 압력 공존 구조.
+
+**출처**: [web-research-market-update-2026-06-12.md](../../sources/articles/web-research-market-update-2026-06-12.md)

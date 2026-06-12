@@ -14,7 +14,7 @@
 //   (전거: sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md,
 //          sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
 
-export const MODEL_ASOF = '2026-06-10'
+export const MODEL_ASOF = '2026-06-12'
 
 // 기준 시나리오: HBM-GPU 서버 125.0만 대 → HBM 2.88EB · AI 서버 DRAM 2.50EB
 export const BASE_SERVERS = 125.0 // 만 대
@@ -35,9 +35,9 @@ export const BOTTLENECKS = [
     id: 'power', name: '전력', icon: 'zap', color: '#f59e0b',
     unit: 'TWh', resourceLabel: 'AI 집중형 DC 전력',
     low: 300, base: 380, high: 520, step: 5, elasticity: 1.00,
-    currentIndex: 64,
-    indexNote: '접속 지연·변압기 리드타임 2배(3년간)·계획 프로젝트 ~20% 지연 위험(IEA). 요금이 아니라 접속 가능한 MW/GW의 한계',
-    desc: 'IEA 2030 전 세계 DC 전력 ~945TWh·AI-focused 3배. 서버 구매보다 인입·계통접속·변전·냉각이 느림 — CAPEX가 있어도 전력이 없으면 배치 불가',
+    currentIndex: 66,
+    indexNote: '★ +2 (2026-06-12): IEA — 2026년말 전 세계 DC 전력 1,000 TWh 돌파(종전 2030 전망치 이미 초과); 랙 밀도 50 kW+ 일상화. 접속 지연·변압기 리드타임 2배(3년간) 지속',
+    desc: 'IEA 2026년말 DC 전력 1,000 TWh 초과(조기 돌파). 서버 구매보다 인입·계통접속·변전·냉각이 느림 — CAPEX가 있어도 전력이 없으면 배치 불가. 종전 2030 전망 945 TWh 이미 초과 — 상방 편향 가능성',
     trigger: '상위 허브 2+ reserve margin <8% · Hub LMP P90 초과 72h 지속 · 접속지연 >60일',
     kpis: [
       { name: 'ISO/RTO 예비력·수요·LMP', freq: '5분~1h', pr: 'P1', src: 'ERCOT·PJM·EIA-930' },
@@ -51,9 +51,9 @@ export const BOTTLENECKS = [
     id: 'capex', name: 'CAPEX·ROI', icon: 'banknote', color: '#ef4444',
     unit: '조 달러', resourceLabel: '연간 AI 인프라 CAPEX',
     low: 0.90, base: 1.37, high: 1.80, step: 0.01, elasticity: 0.90,
-    currentIndex: 46,
-    indexNote: "빅4 '26 가이던스 $650~725B(+77%) 강세·FCF 견조 — 단 부채·ABS·사모신용 의존 확대가 잠재 불안",
-    desc: 'Goldman 경로: 2026 $0.765조 → 2031 $1.6조(누적 $7.6조). 4대 병목 중 최대 하방 민감도 — 기술보다 ROI 재평가가 먼저 수요를 꺾는다',
+    currentIndex: 43,
+    indexNote: "★ -3 (2026-06-12): 2026 전체 컴퓨트 capex $1.04조(인류 최초 $1T 해) 확인; 빅4 Q1 AI cloud +28~63% YoY 실적 강세. 단 GPU 임대가 $2.95 중앙값(2024 $7+에서 -57%)이 9~18개월 후 ROI 재평가 선행 신호",
+    desc: 'Goldman 경로: 2026 $0.765조 → 2031 $1.6조(누적 $7.6조). 2026 전체 컴퓨트 capex $1.04조 확인(빅4+Oracle+Neoclouds+중국+소버린). 4대 병목 중 최대 하방 민감도 — GPU 임대가 하락(선행 -57%)이 장기 ROI 재평가 위험 신호',
     trigger: 'hyperscaler aggregate capex 가이드 -15%+ 하향 · FCF/CapEx <0.8 · HY OAS 급등',
     kpis: [
       { name: 'Hyperscaler capex 가이던스 합계', freq: '분기·이벤트', pr: 'P1', src: 'SEC 10-Q/8-K' },
@@ -67,9 +67,9 @@ export const BOTTLENECKS = [
     id: 'foundry', name: '선단 파운드리', icon: 'cpu', color: '#6366f1',
     unit: '백만 장/년', resourceLabel: 'AI 배정 선단 로직 캐파',
     low: 0.62, base: 0.75, high: 0.95, step: 0.01, elasticity: 0.85,
-    currentIndex: 56,
-    indexNote: 'N2·18A 램프 진행·High-NA 2027 삽입 경로 순항 — 단 AI 배정분은 스마트폰·PC와 경쟁 후 잔여. 대만 집중 0.525/0.75',
-    desc: 'TSMC AI 가속기 5년 mid-40% CAGR·3nm 2026말 ~18만 장/월. 하방은 최소(-14.9%)지만 상방 시나리오에서 끝까지 남는 최종 병목',
+    currentIndex: 63,
+    indexNote: '★ +7 (2026-06-12): TSMC N2 2026·2027 100% 예약 완료(리드타임 78~104주); Apple이 N2 물량 48~50% 독점 — AI 배정 여지 예상보다 크게 축소. 이전 "AI 배정 여지 확대" 판정 철회',
+    desc: 'TSMC N2 50K→140K wpm (2026말), 2026·2027 완전 예약. Apple 48~50% 독점으로 AI 고객 잔여분 경쟁 심화. 하방은 최소(-14.9%)지만 상방 시나리오에서 끝까지 남는 최종 병목 — Apple 독점 구조가 이 리스크를 심화',
     trigger: 'N2/A16 램프 1분기+ 지연 · ASML High-NA 삽입 지연 · AI 배정량 축소',
     kpis: [
       { name: '선단 노드 램프 상태 (N2·18A·2nm)', freq: '이벤트·월간', pr: 'P1', src: '실적·보도자료' },
@@ -83,9 +83,9 @@ export const BOTTLENECKS = [
     id: 'packaging', name: '첨단 패키징', icon: 'layers', color: '#10b981',
     unit: '백만 장/년', resourceLabel: 'HBM 컴퓨트용 유효 CoWoS',
     low: 0.55, base: 0.70, high: 0.95, step: 0.01, elasticity: 0.95,
-    currentIndex: 72,
-    indexNote: 'TSMC 2025 두 배 증설에도 "still fully loaded" (단일 공식 원문 = Red 승격 후보). 2027부터 점진 완화 전망',
-    desc: 'TSMC CoWoS 2026말 11.5만~14만 장/월 → 2027 ~17만 장/월(TrendForce). 2026~27 최예리 운영 병목 — 단 라인 개통 후 완화 빠름',
+    currentIndex: 67,
+    indexNote: '★ -5 (2026-06-12): CoWoS 35K wpm(2024말)→130K wpm(2026말) 4배 확장 경로 실증; OSAT 위탁 240~270K장/년(Amkor+SPIL) 본격 가동. "still fully loaded"이나 완화 방향 확인',
+    desc: 'TSMC CoWoS 2026말 130K wpm(이전 추정 11.5~14만보다 높음), OSAT 위탁 포함 총 유효 캐파 대폭 확대. 2026~27 최예리 운영 병목이나 완화 경로 실증 중 — 16-Hi 수율은 미지수 플래그 유지',
     trigger: 'qualified output -15% WoW 2주 지속 · 대형 사이트 outage · 납기 연장 급증',
     kpis: [
       { name: 'CoWoS 증설 마일스톤·utilization', freq: '이벤트·분기', pr: 'P1', src: 'TSMC transcript' },
@@ -300,7 +300,7 @@ export const BOTTLENECK_DRIVERS = [
   { id: 'ai_unit_econ',bottleneck: 'capex', depth: 2, parent: 'hyp_fcf', name: 'AI 단위 경제성 (토큰 원가 vs ARPU·구독 전환)', lead: '12~24개월', weight: 2, level: 'neutral', trend: 'stable',
     note: '추론 효율 개선 = 수요 촉진과 단가 하락의 양날 — Bain: 수익성 충당 $2조 매출 필요·$800B 갭', src: 'ai-compute-economics-gap.md' },
   { id: 'gpu_rental',  bottleneck: 'capex', depth: 2, parent: 'capex_guide', name: 'GPU 임대가 (수요 청산가)', lead: '9~18개월', weight: 3, level: 'tight', trend: 'worsening', ewiLink: 'gpu_rental',
-    note: 'H100 현물 $2~3/GPU·h 둔화(Vast.ai 실측) — neocloud 경제성 → GPU 발주의 최선행', src: 'Vast.ai 자동 갱신' },
+    note: '★ 2026-06-12: H100 NVL Vast.ai $2.40/hr·시장 중앙값 $2.95(2024 초 $7+에서 -57%). 메이저 클라우드 최대 -45% 인하 — neocloud 경제성 압박 ↑', src: 'Vast.ai 현물, Thunder Compute 2026-06, IntuitionLabs' },
   { id: 'rates',       bottleneck: 'capex', depth: 2, parent: 'financing', name: '금리·텀스프레드 (10Y)', lead: '0~6개월', weight: 1, level: 'neutral', trend: 'stable',
     note: '할인율·자본비용 환경', src: 'FRED 일간' },
 
@@ -320,9 +320,9 @@ export const BOTTLENECK_DRIVERS = [
 
   // ── 파운드리 상류 ──
   { id: 'node_ramp', bottleneck: 'foundry', depth: 1, name: 'N2/18A 선단 램프 진척', lead: '6~12개월', weight: 3, level: 'easing', trend: 'improving',
-    note: 'N2 2026말 ~10만 장/월 확대 경로 순항', src: 'tsmc.md·TrendForce' },
-  { id: 'ai_alloc',  bottleneck: 'foundry', depth: 1, name: 'AI 배정 비율 (전통 수요와 캐파 경쟁)', lead: '3~9개월', weight: 2, level: 'easing', trend: 'stable',
-    note: '스마트폰 -2.1% 약세 = AI 배정 여지 확대 — 교차 부호: 수요 EWI엔 악재, 병목엔 완화', src: 'Counterpoint' },
+    note: 'N2 50K→140K wpm(2026말) 확대 경로 순항. 단 2026·2027 100% 예약 완료 — 증설해도 즉시 소진 구조', src: 'tsmc.md·TrendForce·WCCFTech 2026-06' },
+  { id: 'ai_alloc',  bottleneck: 'foundry', depth: 1, name: 'AI 배정 비율 (Apple·전통 수요와 캐파 경쟁)', lead: '3~9개월', weight: 2, level: 'tight', trend: 'worsening',
+    note: '★ 2026-06-12 판정 변경: Apple이 N2 물량 48~50% 독점 — AI 배정 여지 예상보다 크게 축소. 이전 "완화" 판정 철회', src: 'Paradox Intelligence Research, Silicon Analysts 2026-06' },
   { id: 'asml',      bottleneck: 'foundry', depth: 2, parent: 'node_ramp', name: 'ASML EUV/High-NA 출하·백로그', lead: '12~24개월', weight: 2, level: 'neutral', trend: 'stable',
     note: 'High-NA 2026말 HVM 요건 → 2027~28 양산 삽입, 1Q26 장비 로직 49:메모리 51', src: 'ASML results' },
   { id: 'yield_n2',  bottleneck: 'foundry', depth: 2, parent: 'node_ramp', name: '선단 수율 프록시 (N2·18A)', lead: '6~12개월', weight: 2, level: 'neutral', trend: 'stable',
@@ -331,8 +331,8 @@ export const BOTTLENECK_DRIVERS = [
     note: 'AI 배정 선단 캐파의 70%가 대만(0.525/0.75) — 단일 충격점, 미국 분산 2028+', src: 'bottleneck-model-2030.md' },
 
   // ── 패키징 상류 ──
-  { id: 'cowos_util',  bottleneck: 'packaging', depth: 1, name: 'CoWoS 가동률·증설', lead: '3~9개월', weight: 3, level: 'tight', trend: 'stable', ewiLink: 'cowos',
-    note: '2025 두 배 증설에도 "still fully loaded"', src: 'TSMC transcript' },
+  { id: 'cowos_util',  bottleneck: 'packaging', depth: 1, name: 'CoWoS 가동률·증설', lead: '3~9개월', weight: 3, level: 'tight', trend: 'improving', ewiLink: 'cowos',
+    note: '★ 2026-06-12: CoWoS 35K→130K wpm (2026말, 4배), OSAT(Amkor 18~19만+SPIL 6~8만 장/년) 위탁 가동. "still fully loaded"이나 완화 방향 실증', src: 'Digitimes 2026-04, Silicon Analysts, Financial Content 2026' },
   { id: 'new_sites',   bottleneck: 'packaging', depth: 1, name: '신규 후공정 사이트 진척 (AZ·인디애나·싱가포르)', lead: '12~30개월', weight: 2, level: 'neutral', trend: 'improving',
     note: 'Amkor AZ 2028 초·SK 인디애나 2028 말·TSMC AZ 2029 전 — 일정 진행', src: 'Amkor·SK hynix IR' },
   { id: 'substrate',   bottleneck: 'packaging', depth: 2, parent: 'cowos_util', name: '기판·인터포저 (ABF)', lead: '6~18개월', weight: 2, level: 'tight', trend: 'stable',

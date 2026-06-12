@@ -144,6 +144,7 @@
 - [sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md](sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) — Bloomberg TV: Micron CEO Mehrotra 미국 캐파 10→40%·LTA·"discipline"
 - [sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md](sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) — Counterpoint 7건 묶음(2025-11~2026-04): 90% QoQ 폭등·DRAM OPM 60%>HBM·NVIDIA LPDDR 피벗·LTA 사이클 평탄화·SK hynix HBM 57%·스마트폰 -2.1%
 - [sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md](sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) — Bain(신문섭) AI 컴퓨트 수요·반도체 공급·DC 2030 전망 3개 시리즈: 컴퓨트 경제학 갭($2조/$500B/$800B)·메모리=AI 지출 30%·웨이퍼 잠식(HBM 4×)·163GW·전력 게이트키퍼·Scramble→Strategy
+- [sources/articles/web-research-market-update-2026-06-12.md](sources/articles/web-research-market-update-2026-06-12.md) — 웹 리서치 일괄 업데이트: Samsung Q1 2026 역대 최고(메모리 YoY+292%)·HBM4 $700·TSMC N2 100% 예약·CoWoS 130K wpm·$1조 capex 확인·GPU 임대가 -57%·병목지수 재보정
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL

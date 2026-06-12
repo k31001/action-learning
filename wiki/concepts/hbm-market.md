@@ -226,3 +226,44 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 - 재고 구조: HBM 2/4/7주(낮음/기준/높음) — 장기계약·sell-out 구조로 구조적 저재고(Micron 2026 물량 가격 합의 완료).
 
 **출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md)
+
+---
+
+## [Update 2026-06-12] Samsung Q1 2026 역대 최고 + HBM4 가격·점유 업데이트
+
+### Samsung Q1 2026 실적 (역대 최고)
+
+| 항목 | 수치 | 변동 |
+|---|---|---|
+| 전사 영업이익 | YoY +756% | 역대 최고 분기 |
+| 메모리 매출 | 74.8조 원 ($50.38B) | QoQ +101%, YoY +292% |
+| HBM4 양산 개시 | 2026-02-12 | 업계 최초 |
+
+- Samsung이 NVIDIA Vera Rubin 플랫폼용 HBM4 **업계 최초** 상업 출하
+- 2026년 HBM 매출 목표: 2025 대비 **3배 이상**
+- **Samsung 공식 경고: 2027년 메모리 공급 부족 예고** (수요가 공급 증설 속도 초과)
+- 주목: 일반 DRAM이 현재 HBM보다 수익성 높음 — HBM은 연간 계약 고정가, 범용 DRAM은 분기별 가격 재협상 가능 구조
+
+### HBM 가격 현황 수정 (2026-06-12)
+
+| 제품 | 이전 추정가 | 현재 추정가 | 변동 |
+|---|---|---|---|
+| HBM3E | ~$300/개 | ~$540~580/개 | **+80~93%** |
+| HBM4 | ~$500/개 | ~$700/개 | **+40%** |
+
+- Samsung HBM4 출하가 $700/개 (HBM3E 대비 +20~30%) → HBM3E 역산 $540~580
+- 이전 HBM4 추정가 $500 대비 +40% 상향 필요
+- HBM3E-서버 DDR5 가격 배율: 현재 4~5배 → 2026말 1~2배로 수렴 전망 (TrendForce Q2 2026 전망)
+
+### 2026 H1 HBM 시장점유 추정
+
+| 공급사 | 추정 점유 | 이전 (Q3 2025) | 변화 방향 |
+|---|---|---|---|
+| SK hynix | 50~62% | 57% | 유지 |
+| Samsung | 25~40% | 22% | **회복 중** |
+| Micron | 5~20% | ~21% | 하락 압박 (HBM4 자격 지연) |
+
+- Rubin HBM4 공급: SK hynix 2/3 이상 확보 (Counterpoint·SemiAnalysis 진영), Samsung 초기 배정 mid-20%
+- Micron HBM4 핀속도 진척 뒤처짐 → 자격 취득 지연·점유 압박
+
+**출처**: [web-research-market-update-2026-06-12.md](../../sources/articles/web-research-market-update-2026-06-12.md)

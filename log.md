@@ -14,6 +14,13 @@
 
 ---
 
+## [2026-06-12] ingest | 최신 시장 데이터 수집 + 병목 모델 제약지수 재보정 (v2.22.0 → v2.22.1)
+
+- **무엇**: SemiAnalysis·Counterpoint Research·TechInsights·TrendForce·IEA·Tom's Hardware 등 웹 리서치로 2026-06-12 기준 최신 데이터 수집 → 소스 파일 신규 생성(`web-research-market-update-2026-06-12.md`). HBM 시장·DRAM 가격·Bottleneck 4대 지표·AI Capex·GPU 임대가 일괄 갱신.
+- **핵심 발견**: ① Samsung Q1 2026 역대 최고(메모리 매출 YoY +292%, 영업이익 +756%) — HBM4 업계 최초 양산·$700/개; ② TSMC N2 2026·2027 **100% 예약 완료**(Apple 48~50% 독점)로 AI 배정 여지 예상보다 크게 축소; ③ CoWoS 35K→130K wpm + OSAT 위탁 — 패키징 완화 방향 실증; ④ IEA 2026년 DC 전력 1,000 TWh 돌파(종전 2030 전망 조기 초과); ⑤ 2026 총 컴퓨트 Capex $1.04조(인류 최초 $1T 해); ⑥ H100 임대가 $2.95 중앙값(2024 $7+에서 -57%, ROI 재평가 선행 신호).
+- **병목지수 변동**: 전력 64→66(+2), CAPEX/ROI 46→43(-3), 선단 파운드리 56→63(+7), 첨단 패키징 72→67(-5). 하방 위험 순서 불변(CAPEX > 전력 ≈ 패키징 > 파운드리).
+- **영향 파일**: `sources/articles/web-research-market-update-2026-06-12.md`(신규), `wiki/concepts/hbm-market.md`, `wiki/concepts/price-trends.md`, `wiki/concepts/bottleneck-model-2030.md`, `wiki/concepts/ai-capex.md`, `dashboard/src/data/bottleneckModel.js`, `dashboard/src/version.js`(v2.22.1), `index.md`, `log.md`.
+
 ## [2026-06-11] build | 모델 구조 도식 내장 + 모델 프레임에서 수요 EWI 분리 (v2.21.0 → v2.22.0)
 - **무엇**: ① 채팅에서 승인받은 **모델 구조 도식**(상류 d2 → 중류 d1 → 4대 병목 → min() 게이트 → 실현 출하 → 수요 변환 → 수급·가격 + 조기경보 규칙)을 대시보드 병목 모델 화면 상단에 SVG 카드로 내장 — 수치(B·ε·제약지수·U·실현 출하·수급차·p*·조기경보 발동값)는 `bottleneckModel.js`에서 실시간 파생, 트리 항목 라벨은 요약 표기. ② **수요 변곡 EWI를 모델 프레임에서 분리** — 병목 모델 화면의 EWI 요약 스트립 제거, 드라이버 트리의 "EWI 연계" 칩 제거, 도식에서도 EWI 축 제외. EWI는 같은 탭의 별도 서브탭으로만 운영(시스템 삭제 아님).
 - **왜**: 사용자 피드백 — "수요 변곡 EWI는 큰 틀에서 자료의 일관성을 무너뜨려서 빼는 게 낫겠다. 나머지 도식은 괜찮아 보여. dashboard에도 추가해주면 좋겠어." 수요 방향(EWI)과 제약 압력(병목)은 서로 다른 온톨로지(신호 레벨·스케일·방향)라 한 화면 혼합이 프레임 일관성을 해침. 신호 차원의 대응 관계(임대가·capex·CoWoS ↔ CAPEX·패키징 상류)는 위키 교차참조로만 유지.
