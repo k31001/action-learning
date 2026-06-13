@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-13] ingest | 병목 모델 정기 점검 — 제약지수 업데이트 + 변동폭(Δ) 표시 (v2.22.0 → v2.23.0)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 IEA·TSMC·KeyBanc 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 64→68(▲+4)·CAPEX 46→44(▼-2)·파운드리 56→54(▼-2)·패키징 72→70(▼-2)**. 지수 변동폭을 대시보드에 시각 표시(▲적색/▼녹색/─회색) — `PREV_MODEL_ASOF`·`PREV_INDICES` 상수 추가, `BottleneckCard`에 delta 배지·헤더에 요약 스트립.
+- **왜**: 정기 점검 루틴(사용자 지시). 주요 신호 — 미국 DC 전력 수요 23→42GW(3년 2배)·그리드 연계 대기열 2,600GW(5~12년 지연) = 전력 병목 심화; 삼성 HBM4E 업계 최초(2026-05-29)·Vera Rubin 인증 완료·CoWoS 98% 수율·TSMC 5월 매출 YoY+30.1%(사상최고) = 패키징·파운드리 완화; 빅4 CapEx $700~725B(상단 수렴·Meta 상향)·삼성 DS Q1 이익 약 49배 = CAPEX 다소 완화. Rubin 생산 목표 200→150만 대 하향(KeyBanc)은 단기 수요 하방 리스크.
+- **sources**: `articles/june-2026-market-update-2026-06-13.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — 종합 판독(2026-06-13) + 변동 표 추가·interconnect 드라이버 '긴장→임계' 업데이트. `concepts/hbm-market.md` — Q1 2026 점유율·HBM4E·Rubin 인증·가격 추가. `concepts/price-trends.md` — Q2 2026 DRAM/NAND 가격 추가. `concepts/energy-constraints.md` — 42GW·2,600GW 그리드 대기열·병목지수 68 업데이트.
+- **dashboard (v2.23.0, 마이너 = 변동폭 Δ 표시 신규 + 제약지수 갱신)**: `data/bottleneckModel.js` MODEL_ASOF/DRIVERS_ASOF 갱신·PREV_MODEL_ASOF·PREV_INDICES 추가·제약지수 4개 갱신·interconnect/cowos_util 드라이버 갱신. `components/BottleneckModel.jsx` BottleneckCard delta 배지·헤더 요약 스트립. `data/updates.js` v2.23.0 항목.
+- **outputs**: `report/scenario-planning-report.md` — 날짜 헤더·핵심 수치 표(삼성 DS 이익·CapEx·Rubin 하향·HBM4E·DRAM 가격·병목 지수 행) 최신화. 발표자료(slide-outline/PPTX)는 제약지수 숫자 변경 수준이라 재생성 보류.
+- **검증**: `cd dashboard && npm run build` 통과.
+
 ## [2026-06-11] build | 모델 구조 도식 내장 + 모델 프레임에서 수요 EWI 분리 (v2.21.0 → v2.22.0)
 - **무엇**: ① 채팅에서 승인받은 **모델 구조 도식**(상류 d2 → 중류 d1 → 4대 병목 → min() 게이트 → 실현 출하 → 수요 변환 → 수급·가격 + 조기경보 규칙)을 대시보드 병목 모델 화면 상단에 SVG 카드로 내장 — 수치(B·ε·제약지수·U·실현 출하·수급차·p*·조기경보 발동값)는 `bottleneckModel.js`에서 실시간 파생, 트리 항목 라벨은 요약 표기. ② **수요 변곡 EWI를 모델 프레임에서 분리** — 병목 모델 화면의 EWI 요약 스트립 제거, 드라이버 트리의 "EWI 연계" 칩 제거, 도식에서도 EWI 축 제외. EWI는 같은 탭의 별도 서브탭으로만 운영(시스템 삭제 아님).
 - **왜**: 사용자 피드백 — "수요 변곡 EWI는 큰 틀에서 자료의 일관성을 무너뜨려서 빼는 게 낫겠다. 나머지 도식은 괜찮아 보여. dashboard에도 추가해주면 좋겠어." 수요 방향(EWI)과 제약 압력(병목)은 서로 다른 온톨로지(신호 레벨·스케일·방향)라 한 화면 혼합이 프레임 일관성을 해침. 신호 차원의 대응 관계(임대가·capex·CoWoS ↔ CAPEX·패키징 상류)는 위키 교차참조로만 유지.
