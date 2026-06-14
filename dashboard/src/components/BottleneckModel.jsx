@@ -8,7 +8,8 @@ import {
   TrendingDown, Grid3x3, RotateCcw, Activity, GitBranch, Gauge, Hourglass, Network,
 } from 'lucide-react'
 import {
-  MODEL_ASOF, BASE_SERVERS, POTENTIAL_DEMAND, BOTTLENECKS, BOTTLENECK_BY_ID, INTENSITY, SUPPLY,
+  MODEL_ASOF, PREV_MODEL_ASOF, PREV_INDICES,
+  BASE_SERVERS, POTENTIAL_DEMAND, BOTTLENECKS, BOTTLENECK_BY_ID, INTENSITY, SUPPLY,
   SUPPLIERS, PRICE_ELASTICITY, ALERT_BANDS, alertBand, realizedShipments,
   memoryDemand, equilibrium, curvePoints, sensitivity, baseIntensity, PRESETS,
   SHOCK_SCENARIOS, MONITORING_NOTES,
@@ -63,6 +64,10 @@ function PressureFlagChips({ flags, size = 'normal' }) {
 function BottleneckCard({ b, shock, pressure }) {
   const Icon = ICONS[b.icon]
   const band = alertBand(b.currentIndex)
+  const prevIdx = PREV_INDICES[b.id]
+  const delta = b.currentIndex - prevIdx
+  const deltaColor = delta > 0 ? '#ef4444' : delta < 0 ? '#10b981' : '#9ca3af'
+  const deltaLabel = delta > 0 ? `▲ +${delta}` : delta < 0 ? `▼ ${delta}` : '─ 0'
   return (
     <div className="bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4 flex flex-col gap-2.5">
       <div className="flex items-center justify-between">
@@ -76,7 +81,10 @@ function BottleneckCard({ b, shock, pressure }) {
           </div>
         </div>
         <div className="text-right">
-          <div className="text-xl font-bold font-mono" style={{ color: band.color }}>{b.currentIndex}</div>
+          <div className="flex items-baseline gap-1.5 justify-end">
+            <div className="text-xl font-bold font-mono" style={{ color: band.color }}>{b.currentIndex}</div>
+            <span className="text-[11px] font-semibold font-mono" style={{ color: deltaColor }} title={`이전 ${prevIdx} (${PREV_MODEL_ASOF})`}>{deltaLabel}</span>
+          </div>
           <span className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold"
             style={{ backgroundColor: `${band.color}1a`, color: band.color }}>
             {band.label}
@@ -831,6 +839,9 @@ export default function BottleneckModel() {
                   4대 병목의 min() 제약 모델. <span className="text-zinc-400">기준일 {MODEL_ASOF} · 운영 모형(공식 전망 아님)</span>
                 </p>
                 <SourceLink source="wiki/concepts/bottleneck-model-2030.md (전거: sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md · sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)" />
+                <div className="mt-1 text-[10px] text-zinc-400">
+                  이전 기준일 {PREV_MODEL_ASOF} 대비: 전력 <span className="text-red-500 font-semibold">▲+4</span> · CAPEX <span className="text-emerald-500 font-semibold">▼−2</span> · 파운드리 <span className="text-emerald-500 font-semibold">▼−2</span> · 패키징 <span className="text-emerald-500 font-semibold">▼−2</span>
+                </div>
               </div>
               <div className="ml-auto flex flex-wrap items-center gap-2 text-[11px]">
                 <span className="px-2 py-1 rounded-md bg-zinc-50 border border-zinc-200 font-mono text-zinc-600">

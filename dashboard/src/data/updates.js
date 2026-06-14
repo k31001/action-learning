@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-13 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-13',
+    type: 'ingest',
+    version: 'v2.23.0',
+    title: '병목 모델 정기 점검 — 제약지수 업데이트 + 변동폭(Δ) 표시',
+    summary:
+      '최신 데이터(TSMC 5월 매출·CoWoS 수율·Rubin 목표 하향·미국 DC 전력·Big4 CapEx 상단 수렴) 반영해 4대 병목 제약지수 갱신: 전력 64→68(▲+4, 그리드 대기 2,600GW·5~12년), CAPEX 46→44(▼-2, ROI 실현), 파운드리 56→54(▼-2, N2 순항), 패키징 72→70(▼-2, CoWoS +76%·Rubin 하향). 대시보드 병목 카드에 이전 대비 변동폭(▲/▼) 실시간 표시 추가(v2.23.0). 삼성 HBM4E 업계 최초 샘플(2026-05-29)·NVIDIA Vera Rubin HBM4 3사 인증(2026-06-05) 위키 반영.',
+    tags: ['병목 모델', '제약지수', '변동폭', '전력', 'HBM', 'Rubin', 'CoWoS', 'TSMC', 'dashboard'],
+    items: [
+      { label: '제약지수 변경', detail: '전력 64→68(▲+4)·CAPEX 46→44(▼-2)·파운드리 56→54(▼-2)·패키징 72→70(▼-2). 전력 계통 접속 드라이버(d1) 긴장→임계 상향(대기 2,600GW·5~12년)' },
+      { label: '변동폭 표시', detail: '병목 카드 우상단에 이전 기준일(2026-06-10) 대비 Δ 표시(▲+N=악화 빨강 / ▼-N=개선 초록 / ─0=유지 회색). 헤더 스트립에도 4개 변동 요약' },
+      { label: 'HBM4E 삼성 선점', detail: '2026-05-29 삼성 HBM4E(3.6TB/s) 업계 최초 샘플 출하 — SK하이닉스 6개월 선행. HBM5 목업 Computex 2026 공개(양산 2028년)' },
+      { label: 'NVIDIA Vera Rubin', detail: '2026-06-01 풀프로덕션 발표. 2026-06-05 HBM4 3사(Samsung·SK·Micron) 공식 인증. Rubin 생산 목표 200→150만 대(−25%) 하향(KeyBanc)' },
+      { label: 'TSMC N2·CoWoS', detail: '5월 매출 NT$417B YoY+30.1% 사상최고. N2 50K→140K WPM 2026말 목표 순항. CoWoS 연간 65만 장(+76%), 수율 98%+, ASML 60+기 EUV 2026년 출하' },
+      { label: '소스·위키·보고서', detail: 'sources/articles/june-2026-market-update-2026-06-13.md 신규. wiki: bottleneck-model-2030·hbm-market·price-trends·energy-constraints 갱신. report §1 핵심 수치 갱신' },
+    ],
+    links: [
+      { label: 'june-2026-market-update-2026-06-13.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/june-2026-market-update-2026-06-13.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-06-11 (iii) ─────────────────────────────────────────────────────────
   {
     date: '2026-06-11',

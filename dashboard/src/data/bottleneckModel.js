@@ -14,7 +14,11 @@
 //   (전거: sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md,
 //          sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
 
-export const MODEL_ASOF = '2026-06-10'
+export const MODEL_ASOF = '2026-06-13'
+
+// 이전 점검 기준일 + 제약지수 — 대시보드의 변동폭(Δ) 표시에 사용
+export const PREV_MODEL_ASOF = '2026-06-10'
+export const PREV_INDICES = { power: 64, capex: 46, foundry: 56, packaging: 72 }
 
 // 기준 시나리오: HBM-GPU 서버 125.0만 대 → HBM 2.88EB · AI 서버 DRAM 2.50EB
 export const BASE_SERVERS = 125.0 // 만 대
@@ -35,8 +39,8 @@ export const BOTTLENECKS = [
     id: 'power', name: '전력', icon: 'zap', color: '#f59e0b',
     unit: 'TWh', resourceLabel: 'AI 집중형 DC 전력',
     low: 300, base: 380, high: 520, step: 5, elasticity: 1.00,
-    currentIndex: 64,
-    indexNote: '접속 지연·변압기 리드타임 2배(3년간)·계획 프로젝트 ~20% 지연 위험(IEA). 요금이 아니라 접속 가능한 MW/GW의 한계',
+    currentIndex: 68,
+    indexNote: '미국 DC 전력 23GW(2023)→42GW(2026) 3년 만에 2배. 그리드 연계 대기열 2,600GW(미국 발전 용량의 2배)·5~12년 지연. 변압기 리드타임 2배(3년). IEA 2030 AI-focused 3배. 요금이 아니라 접속 가능한 MW/GW의 한계',
     desc: 'IEA 2030 전 세계 DC 전력 ~945TWh·AI-focused 3배. 서버 구매보다 인입·계통접속·변전·냉각이 느림 — CAPEX가 있어도 전력이 없으면 배치 불가',
     trigger: '상위 허브 2+ reserve margin <8% · Hub LMP P90 초과 72h 지속 · 접속지연 >60일',
     kpis: [
@@ -51,8 +55,8 @@ export const BOTTLENECKS = [
     id: 'capex', name: 'CAPEX·ROI', icon: 'banknote', color: '#ef4444',
     unit: '조 달러', resourceLabel: '연간 AI 인프라 CAPEX',
     low: 0.90, base: 1.37, high: 1.80, step: 0.01, elasticity: 0.90,
-    currentIndex: 46,
-    indexNote: "빅4 '26 가이던스 $650~725B(+77%) 강세·FCF 견조 — 단 부채·ABS·사모신용 의존 확대가 잠재 불안",
+    currentIndex: 44,
+    indexNote: "빅4 '26 가이던스 $700~725B(상단 수렴, Meta 상향)·삼성 DS Q1 이익 약 49배(53.7조 원)·클라우드 AI +28~63% ROI 실현 신호. 단 Meta ADR·SPV 의존 잔존. 상단 수렴은 제약 완화가 아닌 수요 확증",
     desc: 'Goldman 경로: 2026 $0.765조 → 2031 $1.6조(누적 $7.6조). 4대 병목 중 최대 하방 민감도 — 기술보다 ROI 재평가가 먼저 수요를 꺾는다',
     trigger: 'hyperscaler aggregate capex 가이드 -15%+ 하향 · FCF/CapEx <0.8 · HY OAS 급등',
     kpis: [
@@ -67,8 +71,8 @@ export const BOTTLENECKS = [
     id: 'foundry', name: '선단 파운드리', icon: 'cpu', color: '#6366f1',
     unit: '백만 장/년', resourceLabel: 'AI 배정 선단 로직 캐파',
     low: 0.62, base: 0.75, high: 0.95, step: 0.01, elasticity: 0.85,
-    currentIndex: 56,
-    indexNote: 'N2·18A 램프 진행·High-NA 2027 삽입 경로 순항 — 단 AI 배정분은 스마트폰·PC와 경쟁 후 잔여. 대만 집중 0.525/0.75',
+    currentIndex: 54,
+    indexNote: 'TSMC N2 50K→140K WPM 2026말 목표 순항·5월 매출 NT$417B YoY+30.1%(사상최고)·ASML 2026년 60+기 EUV 출하. 단 AI 배정분은 스마트폰·PC와 경쟁 후 잔여·대만 집중(0.525/0.75) 지속',
     desc: 'TSMC AI 가속기 5년 mid-40% CAGR·3nm 2026말 ~18만 장/월. 하방은 최소(-14.9%)지만 상방 시나리오에서 끝까지 남는 최종 병목',
     trigger: 'N2/A16 램프 1분기+ 지연 · ASML High-NA 삽입 지연 · AI 배정량 축소',
     kpis: [
@@ -83,8 +87,8 @@ export const BOTTLENECKS = [
     id: 'packaging', name: '첨단 패키징', icon: 'layers', color: '#10b981',
     unit: '백만 장/년', resourceLabel: 'HBM 컴퓨트용 유효 CoWoS',
     low: 0.55, base: 0.70, high: 0.95, step: 0.01, elasticity: 0.95,
-    currentIndex: 72,
-    indexNote: 'TSMC 2025 두 배 증설에도 "still fully loaded" (단일 공식 원문 = Red 승격 후보). 2027부터 점진 완화 전망',
+    currentIndex: 70,
+    indexNote: 'CoWoS 2026년 연간 65만 장(+76% YoY), 연말 목표 127K~130K WPM·수율 98%+. NVIDIA Rubin 생산 목표 200→150만 대 하향으로 수요 일부 완화. CoPoS 파일럿 6월 완공. 그러나 여전히 fully booked',
     desc: 'TSMC CoWoS 2026말 11.5만~14만 장/월 → 2027 ~17만 장/월(TrendForce). 2026~27 최예리 운영 병목 — 단 라인 개통 후 완화 빠름',
     trigger: 'qualified output -15% WoW 2주 지속 · 대형 사이트 outage · 납기 연장 급증',
     kpis: [
@@ -270,7 +274,7 @@ export const SHOCK_SCENARIOS = [
 // 판정(level)은 EWI와 동일하게 wiki 사실 기반 정성값(2026-06-11) — "제약을 조이는 압력" 방향.
 // 단일 소스: wiki/concepts/bottleneck-model-2030.md §5
 
-export const DRIVERS_ASOF = '2026-06-11'
+export const DRIVERS_ASOF = '2026-06-13'
 
 // 제약 압력 4단계 (점수는 제약지수·경보 밴드와 동일 0~100 스케일)
 export const PRESSURE_LEVELS = {
@@ -305,8 +309,8 @@ export const BOTTLENECK_DRIVERS = [
     note: '할인율·자본비용 환경', src: 'FRED 일간' },
 
   // ── 전력 상류 ──
-  { id: 'interconnect', bottleneck: 'power', depth: 1, name: '계통 접속 큐·지연일수', lead: '12~36개월', weight: 3, level: 'tight', trend: 'worsening',
-    note: '접속 지연 확대 — 송전 증설 선진국 4~8년', src: '유틸리티·RTO 공시' },
+  { id: 'interconnect', bottleneck: 'power', depth: 1, name: '계통 접속 큐·지연일수', lead: '12~36개월', weight: 3, level: 'critical', trend: 'worsening',
+    note: '미국 대기열 2,600GW(발전 용량 2배)·ERCOT 410GW(87% DC)·평균 5~12년 지연. 23GW(2023)→42GW(2026) 3년 2배에도 접속 한계 임박', src: '유틸리티·RTO 공시·IEA 2026' },
   { id: 'gen_cod',      bottleneck: 'power', depth: 1, name: '발전 COD 파이프라인 달성률', lead: '6~18개월', weight: 2, level: 'tight', trend: 'stable',
     note: '계획 프로젝트 ~20% 지연 위험(IEA)', src: 'EIA-860·IRP' },
   { id: 'reserve_lmp',  bottleneck: 'power', depth: 1, name: '허브 예비력·LMP', lead: '0~3개월', weight: 2, level: 'neutral', trend: 'stable',
@@ -331,8 +335,8 @@ export const BOTTLENECK_DRIVERS = [
     note: 'AI 배정 선단 캐파의 70%가 대만(0.525/0.75) — 단일 충격점, 미국 분산 2028+', src: 'bottleneck-model-2030.md' },
 
   // ── 패키징 상류 ──
-  { id: 'cowos_util',  bottleneck: 'packaging', depth: 1, name: 'CoWoS 가동률·증설', lead: '3~9개월', weight: 3, level: 'tight', trend: 'stable', ewiLink: 'cowos',
-    note: '2025 두 배 증설에도 "still fully loaded"', src: 'TSMC transcript' },
+  { id: 'cowos_util',  bottleneck: 'packaging', depth: 1, name: 'CoWoS 가동률·증설', lead: '3~9개월', weight: 3, level: 'tight', trend: 'improving', ewiLink: 'cowos',
+    note: '여전히 fully booked이나 수율 98%+·연간 65만 장(+76% YoY)·Rubin 목표 하향으로 수요 일부 완화 — 점진 개선 추세', src: 'TSMC transcript·Digitimes 2026-05' },
   { id: 'new_sites',   bottleneck: 'packaging', depth: 1, name: '신규 후공정 사이트 진척 (AZ·인디애나·싱가포르)', lead: '12~30개월', weight: 2, level: 'neutral', trend: 'improving',
     note: 'Amkor AZ 2028 초·SK 인디애나 2028 말·TSMC AZ 2029 전 — 일정 진행', src: 'Amkor·SK hynix IR' },
   { id: 'substrate',   bottleneck: 'packaging', depth: 2, parent: 'cowos_util', name: '기판·인터포저 (ABF)', lead: '6~18개월', weight: 2, level: 'tight', trend: 'stable',

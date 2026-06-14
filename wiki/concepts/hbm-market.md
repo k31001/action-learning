@@ -226,3 +226,44 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 - 재고 구조: HBM 2/4/7주(낮음/기준/높음) — 장기계약·sell-out 구조로 구조적 저재고(Micron 2026 물량 가격 합의 완료).
 
 **출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md)
+
+---
+
+## [Update 2026-06-13] 최신 HBM 시장 — HBM4E 삼성 선점·Vera Rubin 양산·점유율 변화
+
+### HBM 점유율 Q1 2026 (추정)
+
+| 공급사 | Q3 2025 (이전) | Q1 2026 (최신 추정) | 변화 |
+|---|---|---|---|
+| **SK하이닉스** | 57% | ~60–65% | +3~8%pt ▲ |
+| **삼성전자** | 22% | ~25–30% | +3~8%pt ▲ (마이크론 재역전) |
+| **마이크론** | ~21% | ~10–15% | -6~11%pt ▼ |
+
+- Counterpoint Research (2026년 상반기 추정): 삼성이 Rubin HBM4 공급 확대로 마이크론 재추월
+- SK하이닉스 NVIDIA Rubin HBM4 비중 약 2/3 유지
+
+### HBM4E — 삼성 업계 최초 (중요 전환점)
+
+- **2026-05-29 삼성전자**: HBM4E (12-stack, 48GB) 업계 최초 샘플 출하
+  - 대역폭 3.6 TB/s, 16 Gbps 핀 속도, HBM4 대비 20%+ 성능 향상
+  - **SK하이닉스 대비 6개월 선행** — HBM4E 세대에서 점유율 역전 가능성 열림
+- SK하이닉스: Computex 2026 (2026-06-02) HBM4E 프리뷰 (4 TB/s), 샘플 출하는 하반기 예정
+- 삼성전자: Computex 2026에서 **HBM5** (8세대) 목업 최초 공개, 양산 2028년·base die 2nm
+- **핵심 신호**: 젠슨 황이 SK하이닉스 부스에서 HBM4E 웨이퍼에 **"Please Make More"** 직접 서명
+
+### NVIDIA Vera Rubin + HBM4 인증
+
+- **2026-06-01**: GTC 타이페이에서 Vera Rubin 풀 프로덕션 공식 발표, 동년 여름부터 클라우드 공급
+- **2026-06-05**: 젠슨 황, 삼성·SK하이닉스·마이크론 **3사 모두 HBM4 공식 공급사** 확인
+- **NVIDIA Rubin 생산 목표 하향**: HBM4 인증 지연(SK·마이크론 base die 이슈)으로 2026년 목표 200만 대 → **150만 대** (−25%, KeyBanc Capital Markets)
+  - 이는 단기 HBM 수요(패키징) 일부 완화 → 패키징 병목 지수 72→70
+
+### HBM 가격 최신 (2026-06-13)
+
+| 제품 | 2026년 계약가 | 변화 |
+|---|---|---|
+| HBM3E (36GB, 8-Hi) | $300–350/unit | SK하이닉스 $350, 삼성 $250–300, 2026년 +20% 인상 |
+| HBM4 (48GB, 12-Hi) | $500–700/unit | 삼성 양산가 $500–560, 목표 $700, 마진 80%+ |
+| HBM4E | 미정 (HBM4 대비 프리미엄 예상) | 2026년 하반기 가격 형성 예정 |
+
+**출처**: [june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md)

@@ -129,3 +129,16 @@
 - Bain "전력 = 게이트키퍼"(위 [Update 2026-06-06])의 정성 명제를 TWh 단위 수급 영향으로 환산한 것.
 
 **출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) · [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
+
+## [Update 2026-06-13] 전력 병목 심화 — 미국 DC 42GW·그리드 대기열 2,600GW
+
+- **미국 DC 전력 수요**: 23 GW(2023) → **42 GW(2026)** — 3년 만에 거의 2배. 불과 3년간의 폭발적 성장.
+- **미국 그리드 연계 대기열**: **2,600 GW**(미국 전체 발전 용량의 약 2배 수준)
+  - ERCOT: 대규모 부하 대기열 410 GW (이 중 **87%가 데이터센터**)
+  - 평균 대기 기간: **5~12년** (전년 대비 악화)
+  - IEA 2030 전망: 글로벌 DC 전력 소비 **950 TWh** (2024년 415 TWh의 약 2배)
+- **함의**: 전력 병목 제약지수 64 → **68** 상향(2026-06-13 기준). 계통 접속 드라이버(d1) '긴장'→'임계'. 4대 병목 중 현재 지수 최고·추세도 유일하게 명확 악화.
+- **신규 프로젝트**: Meta–TerraPower 6.6 GW 핵에너지 20년 계약, xAI 미시시피 $20B DC 발표, SMR 조건부 파이프라인 25 GW → 45 GW
+- **병목 모델 연결**: [bottleneck-model-2030.md](bottleneck-model-2030.md) §5 전력 드라이버 — `interconnect` '임계'(90) 상향, `btm_supply`·`transformer` '긴장' 유지.
+
+**출처**: [june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md)
