@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-13
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md]
+last_reviewed: 2026-06-14
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -288,13 +288,41 @@ flowchart LR
 - **HBM4E 삼성 선점**: 삼성전자 2026-05-29 HBM4E(3.6 TB/s, 48GB) 업계 최초 샘플 출하 — SK하이닉스보다 6개월 선행. HBM4E 세대 점유율 역전 가능성.
 - **NVIDIA Vera Rubin 양산 확정**: 2026-06-01 GTC 타이페이·2026-06-05 HBM4 3사 인증(Samsung·SK·Micron) 완료.
 
-
-
 - **CAPEX**: 중류(가이던스 강세·ROI 실현)는 완화 신호 추가(삼성 49배·클라우드 +28~63%·Meta 상향). 상류(d2 48)의 GPU 임대가 둔화·자금조달 긴장은 잔존 — d2 > d1 괴리 유지. AI 기업 매출 구조 성장으로 최상류(d2) 악화 리스크 소폭 완화. (**상류-중류 괴리 경보 유지, 강도 소폭 완화**).
 - **전력**: **현재 지수 4 상향(64→68)** — 계통 접속(d1)이 '긴장'→'임계'로 악화(대기열 2,600 GW·5~12년). 상류·중류·현재 모두 악화 방향. 변압기·BTM 공급망(d2)은 18~48개월 장주기라 단기 해소 없음. **4대 병목 중 현재 지수 최고·추세도 유일하게 명확 악화**.
 - **파운드리**: **현재 지수 2 하향(56→54)** — N2 램프 순항·TSMC 매출 사상 최고·ASML 출하 증가로 운영(d1) 완화 추가 확인. 구조 리스크(d2 48 — 지정학·수율 미지수) 잔존으로 d2−d1 +33 **상류-중류 괴리 유지**. 평시엔 가장 여유, 이벤트엔 가장 취약.
 - **패키징**: **현재 지수 2 하향(72→70)** — CoWoS 수율 98%+·연간 65만 장(+76%)·Rubin 목표 하향으로 점진 완화 진행. **상류(d2 57) < 현재(70), −13** — 완화 예고 경계(-15) 임박. 신규 사이트·기판 완화 진행 중. 16-Hi 수율(▼)이 남은 변수.
 - **수요 변곡 EWI와의 관계 (분리 운영)**: 수요 EWI의 ①수요청산가(GPU 임대가)·②돈(capex·신용)·③발주(CoWoS) 신호는 본 트리의 CAPEX·패키징 상류와 동일 사실을 다른 프레임(수요 방향 ↔ 제약 압력)으로 읽는다 — 위키 차원의 교차참조는 유지하되, **대시보드 모델 프레임에는 EWI를 표출하지 않는다**(2026-06-11 사용자 결정: 두 온톨로지 혼합이 자료 일관성을 해침). EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
+
+---
+
+### 종합 판독 (2026-06-14)
+
+#### 제약지수 업데이트 (2026-06-14, 이전 2026-06-13 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 68 | **70** | **▲ +2** | PJM 평균 대기 8년 확정·DOE 2030년 100GW 신규 필요(50% DC)·ERCOT 145GW(2031) |
+| **CAPEX/ROI** | 44 | **42** | **▼ −2** | Meta $125~145B 상향·Micron Q3 FY26 역대최고 $33.5B 가이던스·빅4 ROI 실현 강화 |
+| **파운드리** | 54 | **52** | **▼ −2** | NVIDIA Rubin 출하 비중 29%→22% 하향(HBM4 지연, 캐파 일부 여유)·N2 램프 지속 |
+| **패키징** | 70 | **68** | **▼ −2** | TSMC CoWoS 130K WPM 목표 확정·CoPoS 파일럿 6월 완공·선진 패키징 >10% 매출 |
+
+**전력: 현재 지수 최고(70) — 유일하게 지속 상승 추세. 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리. 파운드리·패키징·CAPEX 3개 동반 완화 — 공급 측 제약은 점진 해소 방향.**
+
+#### 2026-06-14 핵심 신규 신호
+
+- **전력 병목 추가 악화**: PJM(미국 최대 전력시장) 계통 접속 프로젝트 평균 대기 **8년** 확정(2025년 승인 기준). 선진국 허브 평균 7~10년, 일부 최장 13년. DOE: 2030년까지 **100GW 신규 발전 필요**(50%는 데이터센터). ERCOT 텍사스 피크 전력 2024년 85GW → 2031년 **145GW** 예상(32GW가 DC). 하이퍼스케일러 5사가 2026-03 백악관에서 **그리드 업그레이드 공동 출자 서약** ([june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md)).
+- **CAPEX 완화 신호 추가**: Meta 연간 가이던스 $125~**145B**로 상단 추가 상향. Micron Q3 FY2026 매출 가이던스 역대 최고 **$33.5B±750M**(HBM3E 2026년 물량 전량 완판). 빅4 합산 $700~725B + 전체 하이퍼스케일러 컨센서스 **$782B**(Dell'Oro). AWS +28%·Google Cloud +110%·Azure +84%·Meta +54% → ROI 실현 추가 확인. 자금조달 긴장(ABS·SPV 의존) 잔존, 괴리 완화.
+- **파운드리 여유 신호**: NVIDIA Rubin 출하 비중 TrendForce 전망 **29% → 22%** 하향 — HBM4 수율 미성숙으로 Rubin GPU 생산 상한 약 200K~300K대. 이는 N3 캐파 일부 여유를 시사(단기). N2 램프 지속 순항.
+- **패키징 추가 완화**: TSMC CoWoS 2026년 말 목표 **130,000 WPM** 확정(이전 127K~130K 범위 상단). CoPoS 파일럿 라인 **6월 완공** 확인. 선진 패키징 매출 비중 2025년 8% → 2026년 **>10%** 돌파 예상 — 전략 사업화 가속.
+- **삼성 HBM 점유율 급회복**: 4월 2026 데이터 기준 삼성 **35~40%** (이전 추정 25~30% 대폭 초과). Q3 2025 22% → 4개월 만에 +13~18%pt 회복 — HBM4 공급 확대 + HBM4E 선행 샘플이 주효. SK하이닉스는 50~55%로 하향 조정.
+- **DRAM 가격 실제치 대폭 상향**: 2026 Q1 DRAM 계약가 실제 상승폭 **+90~95% QoQ** (이전 추정 +55~60%에서 대폭 초과). Q2 2026 예상: DRAM +58~63%·NAND +70~75% QoQ.
+
+- **CAPEX**: 중류(d1) 완화 추가 확인 — Micron 역대 최고 가이던스·Meta 추가 상향. 상류(d2 48) GPU 임대가 둔화·자금조달 긴장 여전하나 AI 기업 매출 성장 신호 강화로 d2 압력 소폭 완화. 전반적 완화 신호 강화로 지수 2 추가 하향.
+- **전력**: 지수 **2 추가 상향(68→70)** — PJM 8년 확정·DOE 100GW·ERCOT 145GW 모두 구조 악화 방향. 백악관 서약은 긍정 정책이나 그리드 공사 리드타임(7~13년)은 단기 해소 불가. **4대 병목 중 유일하게 연속 상향 — 중장기 최대 구조 리스크로 부상**.
+- **파운드리**: 지수 **2 추가 하향(54→52)** — Rubin 출하 하향으로 단기 N3 수요 일부 완화. N2 램프 순항·ASML 출하 증가 유지. d2−d1 +33 상류-중류 괴리(지정학·수율 미지수)는 잔존 — **평시 가장 여유, 이벤트 시 가장 취약 구조 유지**.
+- **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
 
 ## 6. 시나리오 연결 + 한계
 
@@ -308,3 +336,5 @@ flowchart LR
 
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 4대 병목 정량 모델·수급·가격 균형 (본 페이지 수치의 전거)
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
+- [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
+- [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)

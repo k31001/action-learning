@@ -15,7 +15,8 @@
 | 2024 | +15~20% YoY (평균) | 전년 대비 ASP 상승 | PatentPC |
 | 2025 YTD | +50% YTD | AI 수요 지속 | 복수 기관 |
 | 2025 Q4 | +15~20% QoQ 예상 | 공급 긴축 유지 | NAND Research |
-| 2026 Q1 | +55~60% QoQ | 역대 최대 분기 상승폭 | TrendForce |
+| 2026 Q1 | **+90~95% QoQ** | **실제 역대 최대 분기 상승폭** (이전 추정 +55~60% 대폭 초과) | TrendForce·Tom's Hardware |
+| 2026 Q2 (예상) | +58~63% QoQ | 상승세 지속·속도는 다소 완화 | TrendForce |
 
 #### 제품 카테고리별 2026 Q1 가격 변동
 
@@ -43,6 +44,7 @@
 | 2025 Q4 (SanDisk) | +50% (계약가 인상) | NAND Research |
 | 2025 Q4 (Samsung/SK hynix) | +30% (계약가 인상) | NAND Research |
 | 2026 Q1 | +33~38% QoQ | TrendForce |
+| 2026 Q2 (예상) | **+70~75% QoQ** | 2026 Q1 대비 가속 — 클라이언트 SSD·엔터프라이즈 SSD 주도 | TrendForce |
 
 #### 제품 카테고리별 2026 Q1 NAND 가격 변동
 
@@ -66,7 +68,8 @@
 ## 주요 발견
 
 - 2024년 DRAM 계약가는 분기별로 60~95% 급등하는 이례적 가격 폭등 기록
-- 2026 Q1 DRAM 계약가 55~60% QoQ 상승은 TrendForce 추적 역대 최대 분기 상승폭
+- **2026 Q1 DRAM 계약가 실제 상승폭 +90~95% QoQ** — 이전 추정 +55~60% 대비 대폭 초과, 역대 최대 분기 상승폭 ([june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md))
+- 2026 Q2 DRAM 계약가 예상: +58~63% QoQ (상승세 지속, 속도 소폭 완화)
 - 공급업체들이 서버·HBM 우선 생산으로 전환하며 PC·모바일 DRAM 공급 의도적 축소
 - SanDisk는 2025년 11월 계약가를 50% 인상 (업계 최대 인상 폭)
 - HBM4는 HBM3E 대비 약 67% 높은 단가, AI GPU 수요로 프리미엄 유지

@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-14 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-14',
+    type: 'ingest',
+    version: 'v2.23.1',
+    title: '병목 모델 정기 점검 — 제약지수 4개 갱신 (전력 70·CAPEX 42·파운드리 52·패키징 68)',
+    summary:
+      '최신 데이터(PJM 8년 대기 확정·DOE 100GW·ERCOT 145GW·Meta $125~145B·Micron Q3 FY26 $33.5B 역대최고·TSMC CoWoS 130K WPM·DRAM Q1 실제 +90~95% QoQ·삼성 HBM 35~40% 급회복) 반영. 제약지수 갱신: 전력 68→70(▲+2 — 그리드 악화 지속), CAPEX 44→42(▼-2 — ROI 실현 강화), 파운드리 54→52(▼-2 — Rubin 출하 하향으로 단기 여유), 패키징 70→68(▼-2 — 130K WPM 확정·CoPoS 완공). 드라이버 notes 4개 갱신. HBM 점유 삼성 35~40% 급회복(이전 추정 25~30% 초과) 위키 반영.',
+    tags: ['병목 모델', '제약지수', '변동폭', '전력', 'CAPEX', 'HBM', 'DRAM가격', 'CoWoS', 'TSMC', 'Micron', 'samsung', 'dashboard'],
+    items: [
+      { label: '제약지수 변경', detail: '전력 68→70(▲+2)·CAPEX 44→42(▼-2)·파운드리 54→52(▼-2)·패키징 70→68(▼-2). 전력: PJM 8년 확정·DOE 100GW·ERCOT 145GW. CAPEX: Meta $125~145B·Micron $33.5B. 파운드리: Rubin 29%→22%. 패키징: 130K WPM 확정' },
+      { label: 'DRAM 가격 상향', detail: 'Q1 2026 실제 +90~95% QoQ (이전 추정 +55~60% 대폭 초과, 역대 최대 분기 상승폭). Q2 예상: DRAM +58~63%·NAND +70~75% QoQ' },
+      { label: 'HBM 점유율 삼성 급회복', detail: '4월 2026: 삼성 35~40%(이전 추정 25~30%), SK하이닉스 50~55%, Micron 5~10%. 삼성 Q3 2025 22%에서 불과 4개월 만에 +13~18%pt 급회복' },
+      { label: '드라이버 노트 갱신', detail: 'interconnect(전력 d1): PJM 8년·DOE 100GW·ERCOT 145GW·백악관 서약. capex_guide(CAPEX d1): Big4 $700~725B·전체 $782B. ai_revenue(CAPEX d2): Micron $33.5B·HBM3E 완판. cowos_util(패키징 d1): 130K WPM 확정·CoPoS 완공' },
+      { label: '소스·위키', detail: 'sources/articles/june-2026-market-update-2026-06-14.md 신규. wiki: bottleneck-model-2030·hbm-market·price-trends·energy-constraints 갱신' },
+    ],
+    links: [
+      { label: 'june-2026-market-update-2026-06-14.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/june-2026-market-update-2026-06-14.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-06-13 ───────────────────────────────────────────────────────────────
   {
     date: '2026-06-13',

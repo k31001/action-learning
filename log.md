@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-14] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 70·CAPEX 42·파운드리 52·패키징 68) (v2.23.0 → v2.23.1)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 DOE·ERCOT·WEF·TrendForce·Dell'Oro·Micron IR·Futurum 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 68→70(▲+2)·CAPEX 44→42(▼-2)·파운드리 54→52(▼-2)·패키징 70→68(▼-2)**. 드라이버 노트 4개 갱신(`interconnect`·`capex_guide`·`ai_revenue`·`cowos_util`). 패치 버전 v2.23.1.
+- **왜**: 정기 점검 루틴. 신규 신호 — PJM 계통 접속 평균 8년 확정·DOE 2030 100GW 신규 필요(50% DC)·ERCOT 145GW(2031) = 전력 병목 추가 악화; Meta $125~145B 상향·Micron Q3 FY26 $33.5B 역대최고·전체 하이퍼스케일러 $782B(Dell'Oro) = CAPEX 완화 추가; NVIDIA Rubin 29%→22% 하향(HBM4 지연)·N2 순항 = 파운드리 여유; TSMC 130K WPM 확정·CoPoS 6월 완공·선진 패키징 >10% 매출 = 패키징 완화. 삼성 HBM 4월 35~40%(이전 추정 25~30% 초과 급회복). DRAM Q1 실제 +90~95% QoQ(이전 추정 +55~60% 대폭 초과).
+- **sources**: `articles/june-2026-market-update-2026-06-14.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — 종합 판독(2026-06-14) + 변동 표 추가·드라이버 설명 갱신·출처 추가. `concepts/hbm-market.md` — 4월 2026 점유율(삼성 35~40%)·Micron 역대최고 가이던스·DRAM 가격 실적 추가. `concepts/price-trends.md` — Q1 실제 +90~95%·Q2 예상 갱신. `concepts/energy-constraints.md` — PJM 8년·DOE 100GW·ERCOT 145GW·백악관 서약 추가.
+- **dashboard (v2.23.1, 패치 = 제약지수 갱신·드라이버 노트·날짜 갱신)**: `data/bottleneckModel.js` MODEL_ASOF/DRIVERS_ASOF·PREV 갱신·제약지수 4개·indexNote 4개·드라이버 노트 4개 갱신. `data/updates.js` v2.23.1 항목. `src/version.js` v2.23.1.
+- **outputs**: 보고서·발표자료는 제약지수 수치 변경 수준이라 재생성 보류 (병목 분석 섹션 최신화는 다음 마이너 빌드에 포함).
+- **검증**: `cd dashboard && npm run build` 통과(2410 모듈·콘솔 0).
+
 ## [2026-06-13] ingest | 병목 모델 정기 점검 — 제약지수 업데이트 + 변동폭(Δ) 표시 (v2.22.0 → v2.23.0)
 - **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 IEA·TSMC·KeyBanc 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 64→68(▲+4)·CAPEX 46→44(▼-2)·파운드리 56→54(▼-2)·패키징 72→70(▼-2)**. 지수 변동폭을 대시보드에 시각 표시(▲적색/▼녹색/─회색) — `PREV_MODEL_ASOF`·`PREV_INDICES` 상수 추가, `BottleneckCard`에 delta 배지·헤더에 요약 스트립.
 - **왜**: 정기 점검 루틴(사용자 지시). 주요 신호 — 미국 DC 전력 수요 23→42GW(3년 2배)·그리드 연계 대기열 2,600GW(5~12년 지연) = 전력 병목 심화; 삼성 HBM4E 업계 최초(2026-05-29)·Vera Rubin 인증 완료·CoWoS 98% 수율·TSMC 5월 매출 YoY+30.1%(사상최고) = 패키징·파운드리 완화; 빅4 CapEx $700~725B(상단 수렴·Meta 상향)·삼성 DS Q1 이익 약 49배 = CAPEX 다소 완화. Rubin 생산 목표 200→150만 대 하향(KeyBanc)은 단기 수요 하방 리스크.
