@@ -1,6 +1,6 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
+last_reviewed: 2026-06-15
 sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
 ---
 
@@ -332,9 +332,48 @@ flowchart LR
 - **전략 함의**: 2030 승자의 조건 = ① 전력을 먼저 확보하고 ② 장기계약으로 CoWoS·선단 로직을 잠그고 ③ ROI가 흔들려도 CAPEX를 지속할 수 있는가. D-결정·RS 전략의 우선순위 검증 프레임.
 - **한계(미지수)**: ① TSMC·삼성·Intel의 2030 AI-allocatable WSPM 비공개 ② CoWoS package-per-wafer·고객별 할당 비공개 ③ hyperscaler ROI 기준·private credit은 매크로 민감 ④ 중국 선단 진전은 규제 의존. 모든 수치는 정답표가 아니라 **상한·하한이 있는 구조적 시뮬레이션** — 탄력도·가중치는 분기 재보정 대상.
 
+---
+
+### 종합 판독 (2026-06-15)
+
+#### 제약지수 업데이트 (2026-06-15, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **72** | **▲ +2** | Microsoft Azure $80B 전력-제한 백로그·유틸리티 $1.4T 투자·BTM 30%(2028)·DC 전력 76GW(연말 예상) |
+| **CAPEX/ROI** | 42 | **38** | **▼ −4** | SK하이닉스 Q1 OP 72% 마진(역대 최고)·삼성 DS OP +49배·빅테크 AI CapEx 2027년 $1조 돌파 전망 |
+| **파운드리** | 52 | **50** | **▼ −2** | TSMC N2 볼륨 프로덕션 진입·CoWoS 2027년 84만 장 경로 확정·Rubin Ultra 듀얼다이 스케일백 |
+| **패키징** | 68 | **65** | **▼ −3** | CoWoS 2026년 65만→2027년 84만 장 확정·3사(Samsung·SK·Micron) HBM4 인증 완료·Q3 출하 |
+
+**CAPEX/ROI 최대폭 하향 (▼−4) — 반도체 역사상 최강 ROI 실현 신호. 전력 유일하게 연속 상향(누적 +8, 2026-06-10 64 → 72). 하방 위험 순서 업데이트: 전력 ≈ CAPEX/ROI < 파운드리 = 패키징 순으로 재정렬 (전력이 CAPEX와 동등한 구조 리스크로 부상).**
+
+#### 2026-06-15 핵심 신규 신호
+
+- **전력 병목 구체화 — Azure $80B 전력-제한 백로그**: Microsoft가 $80B 규모의 Azure 수주 미충족 잔고를 공개. 이유: "전력 가용성 부족이 직접 원인, 수요 약세가 아님"(DataCenter Knowledge). 이는 전력 제약이 실제 비즈니스 손실로 이어지고 있다는 가장 직접적인 증거.
+- **유틸리티 $1.4조 투자 — 수요 대비 공급 부족 확인**: 미국 주요 유틸리티 5사가 AI DC 에너지 공급을 위해 합계 $1.4T 투자 계획 발표(Tech-Insider). 이 규모는 수요의 크기를 반영하는 동시에, 공급이 얼마나 뒤처졌는지를 보여주는 역설적 신호.
+- **BTM 30% 구조화**: Cleanview(2026-02) — 2028년까지 DC 에너지 용량의 30%를 현장 자체발전(BTM)으로 충당 전망. 기업들이 그리드를 우회하기 시작했다는 의미: ① 그리드가 얼마나 느린지를 방증 ② 동시에 전력 제약을 부분적으로 완화하는 메커니즘 ([june-2026-market-update-2026-06-15.md](../../sources/articles/june-2026-market-update-2026-06-15.md)).
+- **CAPEX 하방 위험 급감 — SK하이닉스 Q1 2026 역대 최고**: 매출 52.58조 원(+198% YoY), 영업이익 37.61조 원(**영업이익률 72%**), 순이익 40.35조 원(순이익률 77%). 이는 단일 분기로 2024년 연간 영업이익(23.5조)을 초과. Q1 2026 영업이익 단독으로 FY2025 연간(47.2조)과 맞먹는 수준. 3년치 HBM 물량 완판 ([june-2026-market-update-2026-06-15.md](../../sources/articles/june-2026-market-update-2026-06-15.md)).
+- **삼성 DS Q1 2026 역대 최고 — 49배 반등**: DS 부문 영업이익 53.7조 원(+49배 YoY, Q1 2025 1.1조 원에서). 메모리 매출 74.8조 원(+101% QoQ). Samsung은 "2027년 메모리 공급 부족 가능성"을 공식 경고 — 수요 지속성에 대한 내부 확신.
+- **빅테크 AI CapEx 2027년 $1조 돌파 전망**: CNBC(2026-04-30) — Big4 AI CapEx가 2027년 $1조를 초과할 것으로 전망. Big4 2026년 $710B(Alphabet $185B·Amazon $200B·Meta $135B·Microsoft $190B) 확정에서 추가 가속 경로.
+- **TSMC N2 볼륨 프로덕션 공식 진입**: TSMC N2 볼륨 프로덕션 공식 발표 (TechSpot). 2026년 말 N2 목표 10만 WPM. Kaohsiung Fab 22 + Baoshan 팹 동시 램프. N2P, A16 파생 노드 2026년 증설 계획.
+- **CoWoS 2027년 84만 장 경로 확정**: 2026년 65만 장(+76%), 2027년 84만 장(+29%). NVIDIA가 2026년 TSMC 전체 CoWoS 할당량 ~60% 독점 확보 (2027년까지 유지). 패키징 증설 경로가 예측 가능하게 확인됨.
+- **HBM4 3사(Samsung·SK·Micron) 인증 완료**: Jensen Huang(GTC 타이페이, 2026-06-05) 확인. Vera Rubin용 HBM4 Q3 2026 출하 개시. Samsung HBM4 11.7 Gb/s 달성(요구치 10 Gb/s 초과) — "with flying colors" 통과.
+- **Rubin Ultra 듀얼다이 스케일백**: Rubin Ultra가 쿼드다이에서 듀얼다이 구성으로 변경(CoWoS-L 수율 문제). HBM4 16-Hi 박막화(30μm 이하) 기술적 도전 잔존 — 이는 Rubin Ultra(2027+)에 한정, 현재 Rubin 기본 HBM4(12-Hi)는 문제없이 진행.
+- **CXMT 중국 DRAM 급성장**: Q4 2025 DRAM 시장점유율 7.67%(Q2 2025 3.97%에서 급등). 2026 H1 매출 전망 110~120B 위안(+613~677% YoY). HBM3 국산 양산 2026년 말 목표 ([june-2026-market-update-2026-06-15.md](../../sources/articles/june-2026-market-update-2026-06-15.md)).
+
+#### 드라이버 판정 업데이트 (2026-06-15)
+
+- **CAPEX**: ai_revenue(d2) trend 'stable'→**'improving'** — SK하이닉스·삼성 역대 최고 OP가 AI ROI 실현의 최직접 증거. 상류-중류 괴리 추가 축소. capex_guide(d1): 2027 $1조 전망 추가. **CAPEX 제약지수 최대폭 하향(-4) 근거: 상방 제약에서 CAPEX가 가장 빠르게 완화 중**.
+- **전력**: interconnect(d1) note 갱신 — Azure $80B 백로그(직접 비즈니스 피해), $1.4T 유틸리티 투자(공급 부족 규모), FERC 신속처리(긍정 정책·장주기), BTM 30%(우회). **전력은 4대 병목 중 유일하게 상향 연속 — 중장기 최대 구조 리스크로 CAPEX와 동등 수준 부상**.
+- **파운드리**: N2 볼륨 진입 확인. Rubin Ultra 듀얼다이(수요 단순화). CoWoS 84만 장 경로(공급 개선). 점진 완화 지속.
+- **패키징**: cowos_util(d1): 84만 장 경로·NVIDIA 60% 독점·3사 인증 갱신. stack_yield(d2): Rubin Ultra 16-Hi 30μm 기술적 도전 추가 — **완화 추세 속 Rubin Ultra 세대의 수율 도전은 잔존**. 종합: **−3 추가 하향**.
+
+---
+
 ## 출처
 
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 4대 병목 정량 모델·수급·가격 균형 (본 페이지 수치의 전거)
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-15.md](../../sources/articles/june-2026-market-update-2026-06-15.md) — 2026-06-15 병목 제약지수 갱신 데이터 (Azure 백로그·유틸리티 $1.4T·SK하이닉스 Q1 72%·삼성 DS +49배·빅테크 $1T 전망·N2 볼륨·CoWoS 84만·HBM4 3사 인증)

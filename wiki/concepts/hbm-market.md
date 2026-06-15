@@ -28,14 +28,18 @@
 
 ### 공급업체별 HBM 시장점유율
 
-| 기간 | SK hynix | Samsung | Micron |
-|------|----------|---------|--------|
-| 2024 | 54% | 39% | 7% |
-| Q2 2025 | 62% | 17% | 21% |
-| Q3 2025 | 57% | 22% | 21% |
-| 2026 전망 | 50%+ | 30%+ | - |
+| 기간 | SK hynix | Samsung | Micron | 기타 |
+|------|----------|---------|--------|------|
+| 2024 | 54% | 39% | 7% | - |
+| Q2 2025 | 62% | 17% | 21% | - |
+| Q3 2025 | 57% | 22% | 21% | - |
+| 2026 추정 | **~43%** | **~33%** | **~24%** | - |
+| Vera Rubin HBM4 물량 (2026) | **60~70%** | **25~30%** | 나머지 | - |
 
-- **출처**: Counterpoint Research, Astute Group
+- **2026 전망 업데이트 (2026-06-15)**: TradingKey — SK Hynix 43%, Samsung 33%, Micron 24% (Vera Rubin HBM4 기준). Digitimes — Vera Rubin HBM4 물량: SK Hynix 60~70%, Samsung 25~30%, Micron 나머지.
+- Samsung HBM4: NVIDIA 테스트 **"with flying colors" 통과**, 11.7 Gb/s 달성 (요구치 10 Gb/s 초과)
+- Micron HBM: 2026년 전량 완판 (3~5년 멀티이어 공급계약) — 출처: TradingKey
+- **출처**: Counterpoint Research, Astute Group, TradingKey, Digitimes (2026-06-15 갱신)
 
 ### HBM 제품 세대별 현황 (2026 기준)
 

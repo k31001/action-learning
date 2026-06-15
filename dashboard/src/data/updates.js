@@ -14,6 +14,30 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-15 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-15',
+    type: 'ingest',
+    version: 'v2.23.2',
+    title: '병목 모델 정기 점검 — 제약지수 4개 갱신 (전력 72·CAPEX 38·파운드리 50·패키징 65)',
+    summary:
+      '최신 데이터(Microsoft Azure $80B 전력-제한 백로그·유틸리티 $1.4T 투자·SK하이닉스 Q1 72% 영업마진·삼성 DS +49배 OP·빅테크 AI CapEx 2027 $1조 돌파·TSMC N2 볼륨 진입·CoWoS 84만 장(2027) 경로 확정·3사 HBM4 인증 완료) 반영. 제약지수 갱신: 전력 70→72(▲+2), CAPEX 42→38(▼-4 — 반도체 역사상 최강 ROI 실현), 파운드리 52→50(▼-2), 패키징 68→65(▼-3). 드라이버 notes 5개 갱신.',
+    tags: ['병목 모델', '제약지수', '변동폭', '전력', 'CAPEX', 'HBM', 'CoWoS', 'TSMC', 'SK하이닉스', '삼성DS', 'Rubin', 'dashboard'],
+    items: [
+      { label: '제약지수 변경', detail: '전력 70→72(▲+2): Azure $80B 전력-제한 백로그·유틸리티 $1.4T. CAPEX 42→38(▼-4): SK Hynix 72% 마진·삼성 DS +49배·$1T 돌파 전망. 파운드리 52→50(▼-2): N2 볼륨 진입·CoWoS 84만. 패키징 68→65(▼-3): 3사 HBM4 인증·CoWoS 84만 확정' },
+      { label: 'SK하이닉스 Q1 2026 역대 최고', detail: '매출 52.6조(+198% YoY)·OP 37.6조(72% 마진·+405% YoY) — 단분기 기준 반도체 역사상 최고 수익성. 3년 HBM 완판. CAPEX ROI 실현의 최강 신호' },
+      { label: '삼성 DS Q1 2026 역대 최고', detail: 'DS OP 53.7조(+49배 YoY). 메모리 매출 74.8조(+101% QoQ). Samsung: "2027년 공급 부족 가능성" 경고' },
+      { label: '전력 병목 악화 구체화', detail: 'Microsoft Azure $80B 미충족 주문 — 전력 부재가 직접 원인. 유틸리티 $1.4T 투자. FERC 신속처리 지시. BTM 2028년 30% — 자체발전으로 그리드 우회 구조화' },
+      { label: 'TSMC N2 볼륨·CoWoS 경로 확정', detail: 'N2 볼륨 프로덕션 공식 진입·2026말 10만 WPM 목표. CoWoS 2026년 65만→2027년 84만 장(+29%). NVIDIA 2026년 CoWoS 60% 독점' },
+      { label: 'HBM4 3사 인증 완료', detail: 'Jensen Huang: Samsung·SK·Micron 3사 HBM4 공식 인증·Q3 출하. Samsung 11.7Gb/s 통과(요구치 10Gb/s 초과). Rubin Ultra 듀얼다이(CoWoS-L 수율 이슈)' },
+      { label: '드라이버 notes 갱신', detail: 'interconnect(전력d1): Azure 백로그·$1.4T. capex_guide(CAPEXd1): $1T 전망. ai_revenue(CAPEXd2): SK·삼성 최고 OP. cowos_util(패키징d1): 84만 장·3사 인증. stack_yield(패키징d2): 16-Hi 30μm' },
+      { label: '소스·위키', detail: 'sources/articles/june-2026-market-update-2026-06-15.md 신규. wiki: bottleneck-model-2030·hbm-market·energy-constraints·sk-hynix·samsung 갱신' },
+    ],
+    links: [
+      { label: 'june-2026-market-update-2026-06-15.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/june-2026-market-update-2026-06-15.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-06-14 ───────────────────────────────────────────────────────────────
   {
     date: '2026-06-14',

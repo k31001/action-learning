@@ -21,15 +21,20 @@ sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, Tre
 | 핵심 거점 | 평택·기흥·화성·텍사스 테일러·중국 시안(NAND) |
 | 글로벌 위치 | DRAM 1위(42%), NAND 1위, HBM 추격(35% Q3 2025) |
 
-## 주요 수치 (2026 Q1 시점)
+## 주요 수치 (2026 Q1 시점, 2026-06-15 갱신)
 
 | 지표 | 값 | 출처 / 페이지 |
 |------|----|---------|
-| Q1 2026 메모리 매출 | $50.4B | +292% YoY, 호황의 정점 ([2026-q1-current-state.md](../concepts/2026-q1-current-state.md)) |
-| Q1 2026 총매출 | 134조 원 | Samsung IR |
-| HBM 점유 (Q3 2025) | 35% | SK 53%, Micron 11% ([hbm-market.md](../concepts/hbm-market.md)) |
+| Q1 2026 DS 부문 영업이익 | **53.7조 원** (+49배 YoY) | Samsung IR·TechPowerUp ([june-2026-market-update-2026-06-15.md](../../sources/articles/june-2026-market-update-2026-06-15.md)) |
+| Q1 2026 메모리 매출 | 74.8조 원 (+101% QoQ) | Samsung IR |
+| Q1 2026 DS 매출 | 81.7조 원 (+225% YoY) | Samsung IR |
+| Q1 2026 총매출 | 133.9조 원 (+69% YoY) | Samsung IR |
+| Q1 2026 전사 영업이익 | 57.2조 원 (역대 최고) | Samsung IR |
+| HBM 점유 (2026 추정) | ~33% | SK 43%, Micron 24% ([hbm-market.md](../concepts/hbm-market.md)) |
+| HBM 점유 (Q3 2025) | 35% | SK 53%, Micron 11% |
 | HBM 점유 (Q2 2025, 저점) | 17% | SK 62% — 가장 추락한 분기 |
-| NVIDIA Rubin HBM4 점유 | 28% | SK 70% / Micron 18% (UBS) |
+| NVIDIA Rubin HBM4 점유 | 25~30% | SK 60~70% / Micron 나머지 (2026년 H1, Digitimes) |
+| Samsung 2027 경고 | "메모리 공급 부족 가능성" | Samsung Q1 2026 콜 |
 | HBM4 캐파 (2026) | Sold Out | +50% YoY 증설 |
 | HBM4 양산 개시 | 2026.2 | 3.3 TB/s |
 | 1c nm 수율 | 50~70% | 2027년 80%+ 목표 (RS6) |

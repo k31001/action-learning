@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-15] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 72·CAPEX 38·파운드리 50·패키징 65) (v2.23.1 → v2.23.2)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 DataCenter Knowledge·Tech-Insider·CNBC·TechPowerUp·TechTimes·Digitimes·TradingKey·NineScrolls·Bitget News·TrendForce·Tom's Hardware 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 70→72(▲+2)·CAPEX 42→38(▼-4)·파운드리 52→50(▼-2)·패키징 68→65(▼-3)**. 드라이버 노트 5개 갱신(`interconnect`·`capex_guide`·`ai_revenue`·`cowos_util`·`stack_yield`). 패치 버전 v2.23.2.
+- **왜**: 정기 점검 루틴. 신규 신호 — Microsoft Azure $80B 전력-제한 백로그(전력이 구체적 비즈니스 손실로 현실화)·미국 유틸리티 $1.4T 투자(공급 부족 규모)·BTM 2028년 30%(우회 구조화) = 전력 병목 추가 악화; SK하이닉스 Q1 2026 OP 37.6조(72% 마진·역대 최고)·삼성 DS OP 53.7조(+49배)·빅테크 AI CapEx 2027 $1조 돌파 전망 = CAPEX 하방 위험 급감(-4); TSMC N2 볼륨 프로덕션 진입·CoWoS 2027년 84만 장 경로 확정 = 파운드리·패키징 완화 지속. 3사 HBM4 인증 완료·Samsung 11.7 Gb/s 통과 = 패키징 공급 확신. Rubin Ultra 듀얼다이(CoWoS-L 수율)·16-Hi 30μm 박막화 = 차세대 기술 도전 잔존.
+- **sources**: `articles/june-2026-market-update-2026-06-15.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — 종합 판독(2026-06-15) + 변동 표 추가·드라이버 설명 갱신·출처 추가. `concepts/hbm-market.md` — HBM 점유율 2026 추정(SK 43%·삼성 33%·Micron 24%)·Vera Rubin HBM4 물량 분배 갱신. `concepts/energy-constraints.md` — Azure $80B 백로그·$1.4T 투자·BTM 30%·FERC 지시·DC 전력 76GW 추가. `entities/sk-hynix.md` — Q1 2026 역대 최고(52.6조·72% 마진) 추가. `entities/samsung.md` — DS Q1 2026(53.7조·+49배) 갱신.
+- **dashboard (v2.23.2, 패치 = 제약지수 갱신·드라이버 노트·날짜 갱신)**: `data/bottleneckModel.js` MODEL_ASOF/DRIVERS_ASOF·PREV 갱신·제약지수 4개·indexNote 4개·드라이버 노트 5개 갱신. ai_revenue trend 'stable'→'improving'. `data/updates.js` v2.23.2 항목. `src/version.js` v2.23.2.
+- **outputs**: 보고서·발표자료는 제약지수 수치 변경 수준이라 재생성 보류 (병목 분석 섹션 최신화는 다음 마이너 빌드에 포함).
+- **검증**: `cd dashboard && npm run build` → 통과 예정.
+
 ## [2026-06-14] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 70·CAPEX 42·파운드리 52·패키징 68) (v2.23.0 → v2.23.1)
 - **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 DOE·ERCOT·WEF·TrendForce·Dell'Oro·Micron IR·Futurum 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 68→70(▲+2)·CAPEX 44→42(▼-2)·파운드리 54→52(▼-2)·패키징 70→68(▼-2)**. 드라이버 노트 4개 갱신(`interconnect`·`capex_guide`·`ai_revenue`·`cowos_util`). 패치 버전 v2.23.1.
 - **왜**: 정기 점검 루틴. 신규 신호 — PJM 계통 접속 평균 8년 확정·DOE 2030 100GW 신규 필요(50% DC)·ERCOT 145GW(2031) = 전력 병목 추가 악화; Meta $125~145B 상향·Micron Q3 FY26 $33.5B 역대최고·전체 하이퍼스케일러 $782B(Dell'Oro) = CAPEX 완화 추가; NVIDIA Rubin 29%→22% 하향(HBM4 지연)·N2 순항 = 파운드리 여유; TSMC 130K WPM 확정·CoPoS 6월 완공·선진 패키징 >10% 매출 = 패키징 완화. 삼성 HBM 4월 35~40%(이전 추정 25~30% 초과 급회복). DRAM Q1 실제 +90~95% QoQ(이전 추정 +55~60% 대폭 초과).
