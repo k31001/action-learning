@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-16] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 73·CAPEX 43·파운드리 49·패키징 65) (v2.23.1 → v2.23.2)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com·TrendForce·DataCenterKnowledge·TechTimes·EnkiAI·Yahoo Finance 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 70→73(▲+3)·CAPEX 42→43(▲+1)·파운드리 52→49(▼-3)·패키징 68→65(▼-3)**. 드라이버 노트 5개 갱신(`interconnect`·`capex_guide`·`cowos_util`·`new_sites`·`stack_yield`). 패치 버전 v2.23.2.
+- **왜**: 정기 점검 루틴. 신규 신호 — PJM 2025-12 용량경매 -6,625MW 부족(2030 15GW 누적)·병목 변전소 이동(5년 리드타임)·ERCOT Q1 2026 198GW 신규 신청 = 전력 병목 구조 심화; Q2 DRAM +63% QoQ(Q1 +90~95% 대비 둔화)·Big5 $660~690B 수렴 = CAPEX 미세 조정; Jensen Huang 2026-06-05 HBM4 3사 양산 공식 확정·SK hynix M15X 4개월 조기 가동 = 파운드리 완화 가속; TrendForce 수급 격차 20%→10% 공식 확인·OSAT 합산 190~200K WPM·SK hynix 청주팹(2027)·3사 16-Hi 인증 = 패키징 완화 가속.
+- **sources**: `articles/june-2026-market-update-2026-06-16.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — 종합 판독(2026-06-16) + 변동 표 추가·드라이버 설명 갱신·출처 추가. `concepts/hbm-market.md` — HBM4 3사 양산 확정·SK hynix M15X 조기·청주팹·가격 전망 추가. `concepts/energy-constraints.md` — PJM 용량 부족·변전소 병목 이동·ERCOT Q1 급증 추가.
+- **dashboard (v2.23.2, 패치 = 제약지수 갱신·드라이버 노트·날짜 갱신)**: `data/bottleneckModel.js` MODEL_ASOF/DRIVERS_ASOF·PREV 갱신·제약지수 4개·indexNote 4개·드라이버 노트 5개 갱신(`interconnect`·`capex_guide`·`cowos_util`·`new_sites`·`stack_yield` trend worsening→stable). `data/updates.js` v2.23.2 항목. `src/version.js` v2.23.2.
+- **outputs**: 보고서·발표자료는 제약지수 수치 변경 수준이라 재생성 보류 (병목 분석 섹션 최신화는 다음 마이너 빌드에 포함).
+
 ## [2026-06-14] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 70·CAPEX 42·파운드리 52·패키징 68) (v2.23.0 → v2.23.1)
 - **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 DOE·ERCOT·WEF·TrendForce·Dell'Oro·Micron IR·Futurum 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 68→70(▲+2)·CAPEX 44→42(▼-2)·파운드리 54→52(▼-2)·패키징 70→68(▼-2)**. 드라이버 노트 4개 갱신(`interconnect`·`capex_guide`·`ai_revenue`·`cowos_util`). 패치 버전 v2.23.1.
 - **왜**: 정기 점검 루틴. 신규 신호 — PJM 계통 접속 평균 8년 확정·DOE 2030 100GW 신규 필요(50% DC)·ERCOT 145GW(2031) = 전력 병목 추가 악화; Meta $125~145B 상향·Micron Q3 FY26 $33.5B 역대최고·전체 하이퍼스케일러 $782B(Dell'Oro) = CAPEX 완화 추가; NVIDIA Rubin 29%→22% 하향(HBM4 지연)·N2 순항 = 파운드리 여유; TSMC 130K WPM 확정·CoPoS 6월 완공·선진 패키징 >10% 매출 = 패키징 완화. 삼성 HBM 4월 35~40%(이전 추정 25~30% 초과 급회복). DRAM Q1 실제 +90~95% QoQ(이전 추정 +55~60% 대폭 초과).

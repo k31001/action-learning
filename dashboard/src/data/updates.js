@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-16 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-16',
+    type: 'ingest',
+    version: 'v2.23.2',
+    title: '병목 모델 정기 점검 — 제약지수 4개 갱신 (전력 73·CAPEX 43·파운드리 49·패키징 65)',
+    summary:
+      '최신 데이터(PJM 2025-12 용량경매 -6.6GW 부족·변전소 병목 이동·ERCOT Q1 198GW 신규 신청·HBM4 3사 Jensen 공식 양산 확인·SK hynix M15X 4개월 조기·TrendForce 수급 격차 20%→10%·Q2 DRAM +63% 상승률 둔화) 반영. 제약지수: 전력 70→73(▲+3 — PJM 용량 부족·변전소 병목), CAPEX 42→43(▲+1 — 가격 둔화·Big5 수렴), 파운드리 52→49(▼-3 — HBM4 3사 양산 확정), 패키징 68→65(▼-3 — 수급 격차 축소·SK hynix 청주팹). 드라이버 notes 5개 갱신.',
+    tags: ['병목 모델', '제약지수', '변동폭', '전력', 'CAPEX', 'HBM4', '파운드리', '패키징', 'CoWoS', 'TSMC', 'SK hynix', 'Samsung', 'dashboard'],
+    items: [
+      { label: '제약지수 변경', detail: '전력 70→73(▲+3)·CAPEX 42→43(▲+1)·파운드리 52→49(▼-3)·패키징 68→65(▼-3). 전력: PJM -6.6GW 용량부족·변전소 5년 리드타임·ERCOT Q1 198GW 신청. 파운드리: HBM4 3사 NVIDIA 인증·SK hynix M15X 조기 가동' },
+      { label: '전력 병목 구조 심화', detail: 'PJM 2025년 12월 용량경매 -6,625MW 부족(2030년 최대 15GW 누적). 병목이 연계 대기열→변전소·변압기(5년 리드타임)로 이동. ERCOT Q1 2026 198GW 신규 대형부하 신청, 대기열 233GW(DC 70% 이상). 하이퍼스케일러 "에너지 아일랜드" 구축 가속' },
+      { label: 'HBM4 3사 양산 확정', detail: 'Jensen Huang 2026-06-05 공식 확인: Samsung(4nm base-die·3.3TB/s)·SK hynix(60~70% 비중)·Micron 모두 NVIDIA Vera Rubin HBM4 Q3 양산 확정. 기존 "HBM4 지연" 리스크 해소. SK hynix M15X 4개월 조기 가동(2월 착수)' },
+      { label: '패키징 격차 축소 가속', detail: 'TrendForce: CoWoS 수급 격차 ~20%→~10% 목표(2026말). TSMC + OSAT 합산 190~200K WPM. SK hynix 청주 신규 패키징팹(2027 기여·$13B+)·인디애나 착공 완료. HBM4 3사 16-Hi 인증으로 적층 수율 불확실성 완화' },
+      { label: 'CAPEX 미세 상향', detail: 'Big5 $660~690B 수렴(이전 $700~725B 상단 대비 소폭 하향). Q2 DRAM 가격 +63% QoQ — Q1 +90~95% 대비 둔화. ROI 여전히 강세이나 가격 모멘텀 정점 신호' },
+      { label: '드라이버 notes 갱신', detail: 'interconnect(전력 d1): PJM 부족·변전소 병목. capex_guide(CAPEX d1): Big5 수렴·DRAM 둔화. cowos_util(패키징 d1): 격차 20%→10%·OSAT 합산. new_sites(패키징 d1): 청주팹 추가. stack_yield(패키징 d2): 3사 인증으로 trend worsening→stable' },
+    ],
+    links: [
+      { label: 'june-2026-market-update-2026-06-16.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/june-2026-market-update-2026-06-16.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-06-14 ───────────────────────────────────────────────────────────────
   {
     date: '2026-06-14',

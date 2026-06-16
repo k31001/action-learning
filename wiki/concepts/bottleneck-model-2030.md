@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-16
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-16.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -322,6 +322,34 @@ flowchart LR
 - **전력**: 지수 **2 추가 상향(68→70)** — PJM 8년 확정·DOE 100GW·ERCOT 145GW 모두 구조 악화 방향. 백악관 서약은 긍정 정책이나 그리드 공사 리드타임(7~13년)은 단기 해소 불가. **4대 병목 중 유일하게 연속 상향 — 중장기 최대 구조 리스크로 부상**.
 - **파운드리**: 지수 **2 추가 하향(54→52)** — Rubin 출하 하향으로 단기 N3 수요 일부 완화. N2 램프 순항·ASML 출하 증가 유지. d2−d1 +33 상류-중류 괴리(지정학·수율 미지수)는 잔존 — **평시 가장 여유, 이벤트 시 가장 취약 구조 유지**.
 - **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
+
+---
+
+### 종합 판독 (2026-06-16)
+
+#### 제약지수 업데이트 (2026-06-16, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **73** | **▲ +3** | PJM 2025-12 용량경매 -6.6GW 부족·변전소 병목 이동(5년 리드타임)·ERCOT Q1 198GW 신규 신청 |
+| **CAPEX/ROI** | 42 | **43** | **▲ +1** | Q2 DRAM 가격 상승률 둔화(+63% vs Q1 +95%)·Big5 $660~690B 수렴(이전 $700~725B 하단 수렴) |
+| **파운드리** | 52 | **49** | **▼ −3** | Jensen Huang HBM4 3사 양산 확정(2026-06-05)·Samsung 4nm base-die 검증·SK hynix M15X 4개월 조기 |
+| **패키징** | 68 | **65** | **▼ −3** | TrendForce 수급 격차 20%→10%·OSAT 합산 190~200K WPM·SK hynix 청주팹(2027)·3사 16-Hi 인증 |
+
+**전력 Red 진입(73) — 유일하게 연속 상승, 병목 구조가 변전소·변압기로 이동해 단기 해소 더욱 어려워짐. 파운드리·패키징 동반 완화 — HBM4 공급 정상화로 공급 측 제약 해소 가속.**
+
+#### 2026-06-16 핵심 신규 신호
+
+- **전력 병목 구조 심화 — PJM 용량 부족·변전소 이동**: PJM 2025년 12월 용량경매에서 **6,625 MW 부족** 확인 (2030년까지 최대 15 GW 누적 부족 전망). 이는 기존 "접속 대기" 문제에 더해, **가동 중 전력 신뢰도**까지 위협하는 새 단계. 인허가 후 실 가동까지 **평균 7년 이상**(접속협약 3년 + 이후 4년). 그리드 병목이 연계 대기열에서 **변전소·고압 변압기**(5년 리드타임)로 하류 이동 — 선행 병목이 추가됨. ERCOT Q1 2026 단 한 분기에 **198 GW 신규 대형부하 신청**. 하이퍼스케일러들이 공공 전력망을 우회한 **"에너지 아일랜드"** 구축을 가속 ([june-2026-market-update-2026-06-16.md](../../sources/articles/june-2026-market-update-2026-06-16.md)).
+- **CAPEX 미세 상향 — Q2 DRAM 가격 둔화·Big5 수렴**: Q2 2026 DRAM 계약가 **+63% QoQ** (Q1 +90~95% 대비 상승률 둔화). Big5 연간 CapEx 합산 **$660~690B** (이전 추정 상단 $700~725B 대비 소폭 하향 수렴). Amazon $200B·Google $175~185B·Meta $115~135B·Microsoft $110~120B. ROI는 여전히 강세이나 가격 모멘텀 정점 신호. Micron FY26 CapEx $25B+.
+- **파운드리 완화 가속 — HBM4 3사 NVIDIA 양산 확정**: 2026-06-05 Jensen Huang 공식 확인 — Samsung·SK hynix·Micron **3사 모두 NVIDIA Vera Rubin HBM4 Q3 양산 확정**. Samsung 4nm 기반다이 3.3 TB/s 사양 충족. SK hynix M15X, 당초 6월 목표 대비 **4개월 조기인 2월 착수**. 기존 "HBM4 지연 → Rubin 출하 축소" 리스크 완전 해소. Rubin 생산 목표(150만 대)를 향한 양산 정상 궤도.
+- **패키징 격차 축소 가속 — TrendForce 공식 확인**: TrendForce, 2026년 말 CoWoS 수급 격차 **~20% → ~10%** 축소 목표 발표. TSMC(130K WPM) + OSAT 파트너(50~70K WPM) = 합산 **190~200K WPM** 달성 경로. SK hynix 청주 **신규 첨단 패키징팹** 발표(2026-01, $13B+, 2027년 HBM 기여 목표) + 인디애나 착공 완료(2026-02). HBM4 3사 16-Hi 적층 인증으로 `stack_yield` 드라이버 trend **'worsening' → 'stable'** 전환.
+
+- **전력**: **지수 3 추가 상향(70→73)** — 병목 층위가 "접속 대기" → "변전소·변압기 공사"로 하류 이동. 해소 속도가 더 느려짐(5년 추가 리드타임). PJM 용량 부족은 구조적 공급 부족 공식화. ERCOT Q1 198GW 단기 급증은 수요 가속 재확인. 에너지 아일랜드 구축은 공공망 한계를 시장이 인정한 신호. **4대 병목 중 유일 상향, Red 밴드(70~85) 진입**.
+- **CAPEX/ROI**: **지수 1 소폭 상향(42→43)** — Q2 DRAM 가격 상승률 둔화는 가격 구조 정상화 시작 신호. Big5 CapEx 수렴은 ROI 검증 사이클 반영. CAPEX 감소 트리거(-15% 가이던스 하향·FCF/CapEx<0.8)는 발동되지 않았으나 방향성 변화 포착.
+- **파운드리**: **지수 3 하향(52→49)** — HBM4 3사 인증으로 선단 메모리 공급 정상화. Rubin 양산 정상 궤도로 N3 캐파 수요 예측 안정화. SK hynix M15X 조기 가동으로 HBM4 공급 능력 앞당겨짐. **완화 예고 경보 유지 (d2−d1 상류-중류 괴리 잔존)**.
+- **패키징**: **지수 3 하향(68→65)** — TrendForce 공식 격차 축소 확인(20%→10%)·OSAT 합산 캐파 확대·3사 인증으로 적층 수율 불확실성 완화. **상류(d2) < 현재(65) — 완화 예고 경보 유지** (d2 57로 변화없음, −8pt 차이로 경계 접근 중).
 - **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
 
 ## 6. 시나리오 연결 + 한계
