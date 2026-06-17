@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-17
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-17.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -324,6 +324,35 @@ flowchart LR
 - **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
 - **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
 
+### 종합 판독 (2026-06-17)
+
+#### 제약지수 업데이트 (2026-06-17, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **72** | **▲ +2** | ERCOT 큐 410GW(87% DC)·Q1 신규 198GW·PJM 용량 6.6GW 미달·가격 $333.44/MW-day 기록·변압기 납기 4년 |
+| **CAPEX/ROI** | 42 | **40** | **▼ −2** | SK하이닉스 Q1 KRW 52.6조(+198% YoY·72% 이익률)·빅4 Q1 CapEx 확정(합산 YoY +77%)·HBM 전량 완판 |
+| **파운드리** | 52 | **50** | **▼ −2** | NVIDIA Rubin 풀 프로덕션 진입·Q3 출하 확정·3사 HBM4 인증 완료(2026-06-05)·TSMC N2 순항 |
+| **패키징** | 68 | **66** | **▼ −2** | TSMC OSAT 외주 신규(Amkor+SPIL 연간 240~270K 웨이퍼)로 총 공급능력 대폭 확대·CoPoS 완공 유지 |
+
+**전력: 유일하게 지속 상승(70→72) — ERCOT·PJM 구조 악화. 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리. 공급 측(파운드리·패키징·CAPEX) 3개 동반 완화 기조 유지.**
+
+#### 2026-06-17 핵심 신규 신호
+
+- **전력 병목 추가 악화**: ERCOT 대규모 부하 접속 큐 **410 GW**(87%가 DC), 2026년 1분기 단독으로 신규 신청 198 GW. PJM 2027~2028 용량 경매에서 신뢰성 요건 **6.6 GW 미달**, 용량 가격 **$333.44/MW-day** 기록 경신. 미국 대형 변압기 납기 최장 **4년** 확인(2026-05-11, pv-magazine). FERC RM26-4-000 대규모 부하 접속 개혁 6월 말 발표 예정 — 정책 방향성은 긍정이나 구조 완화까지 수년 소요 ([june-2026-market-update-2026-06-17.md](../../sources/articles/june-2026-market-update-2026-06-17.md)).
+- **CAPEX 완화 신호 강화**: SK하이닉스 Q1 2026 매출 **KRW 52.6조**(+60% QoQ, +198% YoY), 영업이익률 **72%** — HBM 주도 역대 최고 실적. 빅4 Q1 2026 분기 CapEx 확정: Amazon **$44.2B**·Alphabet **$35.67B**·Microsoft **$30.88B**·Meta ~$20B(합산 YoY +77%). 전체 하이퍼스케일러 $782B(Dell'Oro) 재확인. HBM 3사 2026년 전량 완판·2027년 선예약 개시.
+- **파운드리 완화 추가**: NVIDIA Vera Rubin **풀 프로덕션 진입** — Jensen Huang, 2026-06-05 GTC Taipei에서 Samsung·SK하이닉스·Micron **3사 HBM4 공급 인증 완료** 공식 확인. 2026 Q3 출하 개시. TSMC 18개 신규 팹·첨단 패키징 시설 전 세계 건설 중. TSMC Q1 매출 **$35.9B** 최고 경신.
+- **패키징 외주화 가속**: TSMC 2026년부터 **OSAT 외주 병행** — Amkor AZ 180~190K 웨이퍼/년, SPIL 60~80K 웨이퍼/년, 총 연간 **240~270K 웨이퍼** 외주(≈월 20~23K WPM 추가). TSMC 내부 130K WPM + 외주를 합산하면 총 CoWoS 공급능력 대폭 확대. NVIDIA가 TSMC CoWoS의 **60%+** 장기 확보(2026~2027).
+- **HBM4 공급 구도 확정**: SK하이닉스 60~70% · 삼성 25~30% · Micron 나머지(분석가 추정). HBM3E 가격: ~$300/스택, HBM4 ~$500/스택 예상. 2026년 HBM3E 가격 인상 약 20% 확정.
+
+- **전력**: 지수 **2 추가 상향(70→72)** — ERCOT 410 GW 대기·PJM 6.6 GW 미달·변압기 4년은 모두 구조 악화 방향. FERC 개혁(RM26-4)은 긍정 정책이나 그리드 물리 인프라 리드타임 내 구조 완화 불가. **4대 병목 중 유일한 연속 상향 — 구조 리스크 점차 임계(Critical, >85) 접근 경로 주시 필요.**
+- **CAPEX**: 지수 **2 하향(42→40)** — SK하이닉스 역대 최고 실적·빅4 CapEx 확정·HBM 전량 완판으로 중류·상류 모두 완화 방향. GPU 임대가 둔화·ABS/SPV 의존 잔존하나 실물 수요 강세가 압도.
+- **파운드리**: 지수 **2 하향(52→50)** — Rubin 풀 프로덕션·3사 인증 완료·N2 순항이 단기 완화 추가 확인. 대만 집중(d2 48)·지정학 리스크 잔존 — **평시 가장 여유, 이벤트 시 가장 취약 구조 유지**.
+- **패키징**: 지수 **2 하향(68→66)** — OSAT 외주 확대로 실질 총 공급능력 대폭 증가. **상류(d2 57) < 현재(66), −9** — 완화 예고 경계(−15) 점차 접근. 중기(2027~2028) 신규 사이트 가동 시 추가 완화 가속 예상.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
+
+---
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -338,3 +367,4 @@ flowchart LR
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-17.md](../../sources/articles/june-2026-market-update-2026-06-17.md) — 2026-06-17 병목 제약지수 갱신 데이터 (ERCOT 410GW·PJM 미달·변압기 4년·SK하이닉스 역대최고·Rubin 풀 프로덕션·OSAT 외주 확대)

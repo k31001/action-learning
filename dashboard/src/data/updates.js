@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-17 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-17',
+    type: 'ingest',
+    version: 'v2.23.2',
+    title: '병목 모델 정기 점검 — 제약지수 4개 갱신 (전력 72·CAPEX 40·파운드리 50·패키징 66)',
+    summary:
+      '최신 데이터(ERCOT 410GW 큐 87% DC·Q1 198GW·PJM 6.6GW 미달·용량가격 $333.44/MW-day 기록·변압기 4년·FERC RM26-4 개혁 6월말·SK하이닉스 Q1 KRW 52.6조 +198%·빅4 Q1 CapEx 확정·NVIDIA Rubin Q3 풀 프로덕션·3사 HBM4 인증·TSMC OSAT 외주 240~270K 웨이퍼/년) 반영. 제약지수: 전력 70→72(▲+2 — ERCOT·PJM 악화), CAPEX 42→40(▼-2 — SK하이닉스 역대최고·빅4 CapEx 확정), 파운드리 52→50(▼-2 — Rubin 풀 프로덕션·N2 순항), 패키징 68→66(▼-2 — OSAT 외주화로 총 공급능력 급확대).',
+    tags: ['병목 모델', '제약지수', '변동폭', '전력', 'CAPEX', 'HBM', 'CoWoS', 'TSMC', 'SK hynix', 'Samsung', 'Rubin', 'FERC', 'ERCOT', 'PJM', 'dashboard'],
+    items: [
+      { label: '제약지수 변경', detail: '전력 70→72(▲+2)·CAPEX 42→40(▼-2)·파운드리 52→50(▼-2)·패키징 68→66(▼-2). 전력: ERCOT 410GW 큐(87% DC)·Q1 198GW·PJM 6.6GW 미달·용량가격 기록·변압기 4년. CAPEX: SK하이닉스 Q1 역대최고·빅4 확정 $700B+. 파운드리: Rubin Q3 풀 프로덕션·3사 인증. 패키징: OSAT 240~270K 외주 신규' },
+      { label: 'ERCOT 전력 큐 급증', detail: 'ERCOT 대규모 부하 큐 410GW(87% DC), Q1 2026 신규 신청만 198GW. PJM 2027~2028 용량 6.6GW 미달, 가격 $333.44/MW-day(기록). 미국 변압기 납기 최장 4년(2026-05). FERC RM26-4-000 개혁 6월말 예정' },
+      { label: 'SK하이닉스 역대 최고 실적', detail: 'Q1 2026: 매출 KRW 52.6조(+198% YoY·+60% QoQ)·영업이익률 72% — HBM 주도 역대 최고. 2026 HBM 전량 완판·2027 선예약 개시' },
+      { label: 'NVIDIA Rubin 풀 프로덕션', detail: '2026-06-05 GTC Taipei: Jensen Huang이 Samsung·SK hynix·Micron 3사 HBM4 공급 인증 완료 확인. Vera Rubin 2026 Q3 출하. HBM4 추정 배분: SK하이닉스 60~70%·삼성 25~30%·Micron 나머지' },
+      { label: 'TSMC CoWoS OSAT 외주 확대', detail: 'TSMC 2026년부터 Amkor(180~190K 웨이퍼/년)·SPIL(60~80K 웨이퍼/년) OSAT 외주 병행. 총 CoWoS 공급(내부 130K WPM + 외주 ~22K WPM 이상) 대폭 확대. N2 140K WPM 확대 순항' },
+      { label: '소스·위키', detail: 'sources/articles/june-2026-market-update-2026-06-17.md 신규. wiki: bottleneck-model-2030.md(종합 판독 2026-06-17 추가) 갱신' },
+    ],
+    links: [
+      { label: 'june-2026-market-update-2026-06-17.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/june-2026-market-update-2026-06-17.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-06-14 ───────────────────────────────────────────────────────────────
   {
     date: '2026-06-14',

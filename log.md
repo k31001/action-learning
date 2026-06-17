@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-17] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 72·CAPEX 40·파운드리 50·패키징 66) (v2.23.1 → v2.23.2)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com·TrendForce·FERC·ERCOT·PJM·SK hynix IR·Micron IR·TSMC·digitimes 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 70→72(▲+2)·CAPEX 42→40(▼-2)·파운드리 52→50(▼-2)·패키징 68→66(▼-2)**. 드라이버 노트 5개 갱신(`interconnect`·`capex_guide`·`ai_revenue`·`cowos_util`·`node_ramp`). 패치 버전 v2.23.2.
+- **왜**: 정기 점검 루틴. 신규 신호 — ERCOT 큐 410GW(87% DC)·Q1 198GW·PJM 6.6GW 미달·용량가격 $333.44/MW-day 기록·변압기 납기 4년 = 전력 추가 악화; SK하이닉스 Q1 KRW 52.6조(+198% YoY)·빅4 Q1 CapEx 확정·HBM 전량 완판 = CAPEX 완화 강화; NVIDIA Rubin Q3 풀 프로덕션·3사 HBM4 인증(2026-06-05) = 파운드리 완화; TSMC OSAT 외주(Amkor+SPIL 240~270K 웨이퍼/년) 신규 = 패키징 총 공급 확대·완화 가속.
+- **sources**: `articles/june-2026-market-update-2026-06-17.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — 종합 판독(2026-06-17) + 변동 표 추가·드라이버 노트 갱신·frontmatter·출처 추가.
+- **dashboard (v2.23.2, 패치 = 제약지수·드라이버 노트·날짜 갱신)**: `data/bottleneckModel.js` MODEL_ASOF·DRIVERS_ASOF·PREV 갱신·제약지수 4개·indexNote 4개·드라이버 노트 5개 갱신. `data/updates.js` v2.23.2 항목 추가. `src/version.js` v2.23.2.
+- **outputs**: 보고서·발표자료는 제약지수 수치 변경 수준이라 재생성 보류 (다음 마이너 빌드에 포함).
+- **검증**: `cd dashboard && npm run build` 통과 예정.
+
 ## [2026-06-14] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 70·CAPEX 42·파운드리 52·패키징 68) (v2.23.0 → v2.23.1)
 - **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 DOE·ERCOT·WEF·TrendForce·Dell'Oro·Micron IR·Futurum 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 68→70(▲+2)·CAPEX 44→42(▼-2)·파운드리 54→52(▼-2)·패키징 70→68(▼-2)**. 드라이버 노트 4개 갱신(`interconnect`·`capex_guide`·`ai_revenue`·`cowos_util`). 패치 버전 v2.23.1.
 - **왜**: 정기 점검 루틴. 신규 신호 — PJM 계통 접속 평균 8년 확정·DOE 2030 100GW 신규 필요(50% DC)·ERCOT 145GW(2031) = 전력 병목 추가 악화; Meta $125~145B 상향·Micron Q3 FY26 $33.5B 역대최고·전체 하이퍼스케일러 $782B(Dell'Oro) = CAPEX 완화 추가; NVIDIA Rubin 29%→22% 하향(HBM4 지연)·N2 순항 = 파운드리 여유; TSMC 130K WPM 확정·CoPoS 6월 완공·선진 패키징 >10% 매출 = 패키징 완화. 삼성 HBM 4월 35~40%(이전 추정 25~30% 초과 급회복). DRAM Q1 실제 +90~95% QoQ(이전 추정 +55~60% 대폭 초과).
