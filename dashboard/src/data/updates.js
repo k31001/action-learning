@@ -14,6 +14,25 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-18 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-18',
+    type: 'ingest',
+    version: 'v2.24.0',
+    title: '"인터뷰" 메뉴 신설 — 산업 전문가 인터뷰 보고서 아카이브',
+    summary:
+      '사용자 제공 산업 전문가 인터뷰("AI 인프라 슈퍼사이클과 메모리 사업의 전략 전환", 16개 섹션)를 sources 층에 원본 보존하고, 대시보드 최상단에 별도 "인터뷰" 탭을 신설. 향후 다수 인터뷰 누적을 전제로 한 확장형 구조(좌측 목록·검색·핵심 인용문 대형 강조·목차·블록 기반 본문). 마이너 버전 v2.24.0.',
+    tags: ['인터뷰', 'AI 인프라', '수요 검증 사이클', 'Customization', '임베디드 SW', 'Sensing Model', 'dashboard'],
+    items: [
+      { label: '인터뷰 탭 신설', detail: 'TOP_TABS에 "인터뷰"(MessageSquareQuote) 추가. 좌측 인터뷰 목록·검색 + 우측 본문(메타 헤더·핵심 인용문 대형 카드·목차·블록 렌더러). 인터뷰 추가 대비 확장형 스키마' },
+      { label: '핵심 인용문 강조', detail: '인터뷰별 keyQuotes를 다크 카드 대형 블록쿼트로 상단에 표시 — 중요 문구 빠른 재참조용' },
+      { label: '데이터 스키마', detail: 'data/interviews.js — INTERVIEWS 배열, 블록 타입 p/h/ul/ol/quote/table. sources/raw-notes 미러' },
+      { label: '소스·인덱스·로그', detail: 'sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md 신규(16개 섹션 전문). index.md·log.md 갱신' },
+    ],
+    links: [
+      { label: 'expert-interview-ai-infra-supercycle-2026-06-18.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md' },
+    ],
+  },
   // ── 2026-06-14 ───────────────────────────────────────────────────────────────
   {
     date: '2026-06-14',

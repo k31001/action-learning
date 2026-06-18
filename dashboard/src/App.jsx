@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { triggerAutoUpdate } from './hooks/useMarketData'
-import { Activity, BarChart3, Compass, Crosshair, History, Hourglass } from 'lucide-react'
+import { Activity, BarChart3, Compass, Crosshair, History, Hourglass, MessageSquareQuote } from 'lucide-react'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
 import IndicatorGrid from './components/IndicatorGrid'
@@ -12,6 +12,7 @@ import DataVisualization from './components/DataVisualization'
 import ScenarioPlanning from './components/ScenarioPlanning'
 import BottleneckModel from './components/BottleneckModel'
 import Strategies from './components/Strategies'
+import Interviews from './components/Interviews'
 import Updates from './components/Updates'
 import ErrorBoundary from './components/ErrorBoundary'
 import { VERSION } from './version'
@@ -23,6 +24,7 @@ const TOP_TABS = [
   { id: 'visualization', label: 'Data Visualization',      icon: BarChart3 },
   { id: 'planning',      label: 'Scenario Planning',       icon: Compass },
   { id: 'strategy',      label: 'Strategy',                icon: Crosshair },
+  { id: 'interviews',    label: '인터뷰',                   icon: MessageSquareQuote },
   { id: 'updates',       label: '업데이트 내역',            icon: History },
 ]
 
@@ -185,6 +187,7 @@ export default function App() {
         {topTab === 'visualization' && <DataVisualization />}
         {topTab === 'planning'      && <ScenarioPlanning />}
         {topTab === 'strategy'      && <Strategies />}
+        {topTab === 'interviews'    && <Interviews />}
         {topTab === 'updates'       && <Updates />}
         </ErrorBoundary>
       </main>
