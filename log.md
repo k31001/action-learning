@@ -14,6 +14,13 @@
 
 ---
 
+## [2026-06-18] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 73·CAPEX 41·파운드리 50·패키징 65) (v2.24.1 → v2.24.2)
+- **무엇**: 2026-06-18 기준 4대 병목 제약지수 업데이트. SK hynix HBM4E 12-layer 샘플 출하(당일), TrendForce CoWoS 공급-수요 갭 20%→10% 완화 예고(06-15), 전력 변압기 납기 3~5년 확인 등 신규 데이터 반영.
+- **변동폭 (이전 2026-06-14 대비)**: 전력 70→**73(▲+3)** · CAPEX 42→**41(▼−1)** · 파운드리 52→**50(▼−2)** · 패키징 68→**65(▼−3)**
+- **왜**: 정기 데이터 점검 루틴(수집처: Counterpoint, TrendForce, Vast.ai, Gartner, SK hynix 공식 발표, TSMC 주총)
+- **영향 페이지**: `sources/articles/june-2026-market-update-2026-06-18.md`(신규) · `wiki/concepts/bottleneck-model-2030.md`(종합 판독 06-18 섹션 추가) · `wiki/concepts/hbm-market.md`(Q1 2026 점유율·HBM4E 세대 추가) · `dashboard/src/data/bottleneckModel.js` · `dashboard/src/data/updates.js` · `dashboard/src/version.js`(v2.24.2)
+- **건너뜀**: wiki/steep·scenarios·strategies — 제약지수 변동이 병목 모델 내 로컬 변화이며 시나리오 확률·전략 방향을 바꾸는 임계 수준 아님(전력 73 Orange 유지·하방 위험 순서 불변). outputs/report·presentation — 병목 모델 수치 인용 없는 절 영향 없음.
+
 ## [2026-06-18] ingest | 인터뷰 대상자 식별 — 베인앤컴퍼니 신문섭 파트너 (v2.24.0 → v2.24.1)
 - **무엇**: 직전 ingest의 인터뷰 대상자를 "산업 전문가(직책·소속 미공개)"에서 **베인앤컴퍼니(Bain & Company) 신문섭(Moonsup Shin) 파트너** — APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표 — 로 정정. 원본 소스 헤더·대시보드 인터뷰 메뉴 메타(목록·헤더)·검색 태그·인덱스 동기화. 패치 v2.24.1.
 - **왜**: 사용자가 대상자 신원을 확인해 줌.

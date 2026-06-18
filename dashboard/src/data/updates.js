@@ -14,6 +14,29 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-18 (iii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-06-18',
+    type: 'ingest',
+    version: 'v2.24.2',
+    title: '병목 모델 정기 점검 — 제약지수 갱신 (전력 73·CAPEX 41·파운드리 50·패키징 65)',
+    summary:
+      '2026-06-18 기준 4대 병목 제약지수 업데이트. SK hynix HBM4E 12-Hi 샘플 출하(당일), TrendForce CoWoS 공급-수요 갭 20%→10% 완화 예고, 전력 변압기 3~5년 납기 확인. 전력 +3 악화·파운드리 -2·패키징 -3·CAPEX -1 개선. 이전(06-14) 대비 변동폭 표시.',
+    tags: ['병목 모델', '전력', 'CAPEX', '파운드리', 'CoWoS', 'HBM4E', 'SK hynix', 'TSMC', 'dashboard'],
+    items: [
+      { label: '전력 73 (▲+3)', detail: '변압기 납기 3~5년(이전 18~36개월 대폭 초과)·스위치기어 2028 전량 매진·2026년 DC 30~50% 지연·Gartner DC 1,000TWh 돌파' },
+      { label: 'CAPEX/ROI 41 (▼−1)', detail: 'GCloud 백로그 $460B+·Microsoft AI 매출 $37B+·H100 임대가 Vast.ai $2.00/hr 안정 확인' },
+      { label: '파운드리 50 (▼−2)', detail: 'TSMC 3nm 연말 180K WPM(YoY+40%)·N2 ~100K WPM 달성 경로·CoWoS 갭 완화' },
+      { label: '패키징 65 (▼−3)', detail: '총 산업 CoWoS ~200K WPM(OSAT 포함)·공급-수요 갭 20%→10%·SK hynix HBM4E 12-Hi 샘플 출하(06-18)' },
+      { label: 'HBM Q1 2026 점유율', detail: 'Counterpoint 공식: SK hynix 58%·Samsung 21%·Micron 21%(삼성 동률 달성)' },
+      { label: '소스·위키', detail: 'sources/articles/june-2026-market-update-2026-06-18.md 신규. wiki/concepts/bottleneck-model-2030.md·hbm-market.md 갱신' },
+    ],
+    links: [
+      { label: 'june-2026-market-update-2026-06-18.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/june-2026-market-update-2026-06-18.md' },
+      { label: 'TrendForce CoWoS 06-15', href: 'https://www.trendforce.com/news/2026/06/15/news-tsmc-cowos-supply-demand-gap-reportedly-seen-narrowing-from-20-to-10-by-end-2026-as-capacity-expands/' },
+      { label: 'SK hynix HBM4E 발표', href: 'https://news.skhynix.com/12-layer-hbm4e-sample/' },
+    ],
+  },
   // ── 2026-06-18 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-06-18',

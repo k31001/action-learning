@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-18
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-18.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -332,9 +332,40 @@ flowchart LR
 - **전략 함의**: 2030 승자의 조건 = ① 전력을 먼저 확보하고 ② 장기계약으로 CoWoS·선단 로직을 잠그고 ③ ROI가 흔들려도 CAPEX를 지속할 수 있는가. D-결정·RS 전략의 우선순위 검증 프레임.
 - **한계(미지수)**: ① TSMC·삼성·Intel의 2030 AI-allocatable WSPM 비공개 ② CoWoS package-per-wafer·고객별 할당 비공개 ③ hyperscaler ROI 기준·private credit은 매크로 민감 ④ 중국 선단 진전은 규제 의존. 모든 수치는 정답표가 아니라 **상한·하한이 있는 구조적 시뮬레이션** — 탄력도·가중치는 분기 재보정 대상.
 
+---
+
+### 종합 판독 (2026-06-18)
+
+#### 제약지수 업데이트 (2026-06-18, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **73** | **▲ +3** | 변압기 납기 3~5년(이전 추정 18~36개월 대폭 초과)·스위치기어 2028년까지 품절·2026년 DC 30~50% 지연·Gartner DC 전력 수요 1,000TWh 돌파 |
+| **CAPEX/ROI** | 42 | **41** | **▼ −1** | GCloud 백로그 $460B+·Microsoft AI 매출 연환산 $37B+(+84% YoY)·H100 임대가 Vast.ai $2.00/hr 안정 확인 |
+| **파운드리** | 52 | **50** | **▼ −2** | TSMC 3nm 월 180K WPM(YoY +40%)·N2 연말 ~100K WPM 달성 경로·CoWoS 공급-수요 갭 20%→10% 완화(TrendForce 06-15) |
+| **패키징** | 68 | **65** | **▼ −3** | 총 산업 CoWoS 200K WPM 접근(TSMC 120~140K + OSAT 50~60K)·공급-수요 갭 20%→10%·SK hynix HBM4E 12-Hi 샘플 출하(06-18) |
+
+**전력: 현재 지수 최고(73) — 유일하게 지속 상승, 절대 수준이 CAPEX(41)와 격차 확대. 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리. 파운드리·패키징·CAPEX 3개 동반 완화 지속.**
+
+#### 2026-06-18 핵심 신규 신호
+
+- **SK hynix HBM4E 12-Layer 샘플 출하** (당일): 핀당 16 Gbps·전력효율 +20%·48GB 12-Hi 적층. Samsung은 2026-05-29 최초 출하했고, SK hynix가 오늘 추격 완료. 고객 자격 심사(qualification)가 향후 점유율 변수. HBM4E 세대 경쟁 본격화 ([june-2026-market-update-2026-06-18.md](../../sources/articles/june-2026-market-update-2026-06-18.md)).
+- **CoWoS 공급-수요 갭 급속 완화 (TrendForce 06-15)**: 현재 ~20% → 2026년 말 ~10% 예상. TSMC 120~140K WPM + OSAT 50~60K WPM = 총 산업 CoWoS **~200K WPM** 접근. TSMC CEO 주총(06-04) "극도 tight·2026 sold out"이나 완화 추세는 확인. **패키징 지수 3 하향(68→65)** 근거.
+- **TSMC 3nm 월 캐파 180K WPM(YoY +40%)**: TrendForce 최신 추정. N2도 연말 ~100K WPM 달성 경로로 파운드리 완화 방향 추가 확인.
+- **전력 병목 추가 악화**: 고전압 변압기 납기 **3~5년**(이전 IEA 추정 "최근 3년간 2배" 선 더 나빠짐), 스위치기어 **2028년까지 전량 매진**. 2026년 예정 대규모 DC의 **30~50% 지연 또는 취소** 전망(Sightline Climate). Gartner DC 전력 수요 1,000 TWh 돌파(일본 전체 소비 초과). **전력 지수 3 상향(70→73)**.
+- **HBM Q1 2026 공식 시장점유율 (Counterpoint Research)**: SK hynix **58%** · Samsung **21%** · Micron **21%** — Micron이 Samsung과 동률 달성(4월 추정 35~40%와 괴리: Q1 평균 vs 월 단위 차이). 4월 시점 회복 추세는 유효하나 공식 Q1 집계 기준 Samsung 점유율 이전 추정보다 낮음. SK hynix 2026 HBM 전량 완판·연환산 $80억 목표 유지.
+- **하이퍼스케일러 AI 수익 추가 확인**: GCloud 백로그 $460B+(Q1 분기 콜)·Microsoft AI 매출 연환산 $37B+(Azure +84%)·H100 임대가 Vast.ai $2.00/hr 안정. CAPEX 하방 우려 소폭 추가 완화.
+
+- **전력**: **지수 3 추가 상향(70→73)** — 스위치기어 2028 품절·변압기 3~5년 납기가 구조 악화 방향 추가 확인. DC 30~50% 지연은 전력 제약이 "계획"이 아닌 **"실현"** 단계 진입을 의미. 계통 접속(d1) 임계 유지. 상류·중류·현재 모두 악화. **4대 병목 중 유일하게 연속 상향·절대 수준 73으로 최고치 경신.**
+- **CAPEX**: **지수 1 추가 하향(42→41)** — GCloud $460B+ 백로그·MS $37B 연환산 AI 매출이 ROI 실현 추가 확인. H100 임대가 $2.00/hr 안정(d2 `gpu_rental` 압력 소폭 완화). 자금조달 긴장(ABS·SPV) 잔존하나 하이퍼스케일러 유기적 수익 성장이 완충.
+- **파운드리**: **지수 2 추가 하향(52→50)** — 3nm 180K WPM·N2 100K WPM 달성 경로·CoWoS 갭 완화 모두 완화 방향. d2−d1 +33 상류-중류 괴리(지정학·수율 미지수) 잔존.
+- **패키징**: **지수 3 추가 하향(68→65)** — 총 산업 CoWoS ~200K WPM(OSAT 포함 신규 추정)이 이전 130K WPM 목표 대비 대폭 상향. 공급-수요 갭 10% 수렴 전망(TrendForce 06-15). **상류(d2 57) < 현재(65), −8** — 완화 예고 경계(-15)에 근접. HBM4E 16-Hi 수율(▼) 잔존 변수.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지.
+
 ## 출처
 
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 4대 병목 정량 모델·수급·가격 균형 (본 페이지 수치의 전거)
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-18.md](../../sources/articles/june-2026-market-update-2026-06-18.md) — 2026-06-18 병목 제약지수 갱신 데이터 (SK hynix HBM4E·CoWoS 200K WPM·전력 변압기·HBM 점유율·하이퍼스케일러 AI 수익)
