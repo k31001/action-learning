@@ -151,6 +151,7 @@
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
 - [sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md](sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) — 시니어 파트너 인터뷰 딥리서치 (사용자 1차 + WSTS·IDC·IEA·Anthropic·NASA·NDRC 교차 팩트체크): "하드웨어 시간 돌아옴" 4대 메시지·전략 권고 7개
+- [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 산업 전문가 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
 
 ### sources/papers — 리서치 보고서
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 딥리서치: 2030 메모리 수급 4대 병목 정량 모델 (HBM 2.88EB·서버 125만 대·민감도·가격 균형)
@@ -178,3 +179,5 @@
 - [dashboard/src/data/bottleneckModel.js](dashboard/src/data/bottleneckModel.js) — 2030 병목 모델 데이터·수식 (min 제약·탄력도·가격 균형 + 상류 드라이버 트리 depth 1~2·조기경보, [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) 미러)
 - [dashboard/src/components/BottleneckModel.jsx](dashboard/src/components/BottleneckModel.jsx) — Bottleneck Model 탭 (서브탭: 병목 모델 + 수요 변곡 EWI[분리 운영]. 모델 구조 도식·병목 카드·드라이버 트리·what-if 시뮬레이터·수급 곡선·민감도·매트릭스·충격 매뉴얼·KPI 설계)
 - [dashboard/src/components/DecisionTracker.jsx](dashboard/src/components/DecisionTracker.jsx) — D1~D9 즉시 결정 트래커
+- [dashboard/src/data/interviews.js](dashboard/src/data/interviews.js) — 인터뷰 아카이브 데이터 (확장형 스키마: keyQuotes·블록 기반 섹션, sources/raw-notes 미러)
+- [dashboard/src/components/Interviews.jsx](dashboard/src/components/Interviews.jsx) — "인터뷰" 탭 (좌측 목록·검색 + 핵심 인용문 대형 강조 + 목차·블록 본문, 인터뷰 추가 대비 확장형 구조)

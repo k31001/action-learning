@@ -14,6 +14,13 @@
 
 ---
 
+## [2026-06-18] ingest | 산업 전문가 인터뷰 추가 + 대시보드 "인터뷰" 메뉴 신설 (v2.23.1 → v2.24.0)
+- **무엇**: 사용자 제공 산업 전문가 인터뷰 보고서("AI 인프라 슈퍼사이클과 메모리 사업의 전략 전환", 16개 섹션)를 sources 층에 원본 보존하고, 대시보드에 별도 **"인터뷰" 최상단 탭**을 신설. 앞으로 다수 인터뷰 추가를 전제로 한 확장형 구조(좌측 목록·검색, 인터뷰별 메타 헤더, 핵심 인용문 대형 강조 카드, 목차, 블록 기반 본문 렌더러)로 설계. 마이너 버전 v2.24.0(탭 추가).
+- **왜**: 사용자가 향후 여러 인터뷰를 누적·참고할 메뉴를 요청. 중요 문구는 큰 인용문 형태로 강조해 빠르게 재참조할 수 있게 함.
+- **sources**: `raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md` 신설(원본·불변, 16개 섹션 전문 + 핵심 인용문 블록쿼트). `index.md` raw-notes·dashboard 섹션 갱신.
+- **dashboard (v2.24.0, 마이너 = 탭/페이지 추가)**: `data/interviews.js` 신설(INTERVIEWS 배열·확장형 스키마: keyQuotes·블록 타입 p/h/ul/ol/quote/table). `components/Interviews.jsx` 신설(목록·검색·핵심 인용문 대형 강조·목차·블록 본문). `App.jsx` TOP_TABS에 "인터뷰"(MessageSquareQuote) 추가 + 렌더 분기. `src/version.js` v2.24.0.
+- **건너뜀**: wiki·outputs·기타 dashboard 데이터(scenario/strategy/bottleneck)는 본 인터뷰가 분석 페이지 수치를 바꾸지 않으므로 미변경. 인터뷰 인사이트의 위키 환원은 후속 ingest에서 검토.
+
 ## [2026-06-14] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 70·CAPEX 42·파운드리 52·패키징 68) (v2.23.0 → v2.23.1)
 - **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 DOE·ERCOT·WEF·TrendForce·Dell'Oro·Micron IR·Futurum 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 68→70(▲+2)·CAPEX 44→42(▼-2)·파운드리 54→52(▼-2)·패키징 70→68(▼-2)**. 드라이버 노트 4개 갱신(`interconnect`·`capex_guide`·`ai_revenue`·`cowos_util`). 패치 버전 v2.23.1.
 - **왜**: 정기 점검 루틴. 신규 신호 — PJM 계통 접속 평균 8년 확정·DOE 2030 100GW 신규 필요(50% DC)·ERCOT 145GW(2031) = 전력 병목 추가 악화; Meta $125~145B 상향·Micron Q3 FY26 $33.5B 역대최고·전체 하이퍼스케일러 $782B(Dell'Oro) = CAPEX 완화 추가; NVIDIA Rubin 29%→22% 하향(HBM4 지연)·N2 순항 = 파운드리 여유; TSMC 130K WPM 확정·CoPoS 6월 완공·선진 패키징 >10% 매출 = 패키징 완화. 삼성 HBM 4월 35~40%(이전 추정 25~30% 초과 급회복). DRAM Q1 실제 +90~95% QoQ(이전 추정 +55~60% 대폭 초과).
