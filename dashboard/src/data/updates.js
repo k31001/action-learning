@@ -14,7 +14,24 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
-  // ── 2026-06-18 ───────────────────────────────────────────────────────────────
+  // ── 2026-06-18 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-06-18',
+    type: 'ingest',
+    version: 'v2.24.1',
+    title: '인터뷰 대상자 식별 — 베인앤컴퍼니 신문섭 파트너',
+    summary:
+      '인터뷰 대상자를 "산업 전문가(미공개)"에서 베인앤컴퍼니 신문섭(Moonsup Shin) 파트너로 갱신. APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표. 원본 소스·인터뷰 메뉴 메타·인덱스 동기화. 패치 v2.24.1.',
+    tags: ['인터뷰', '베인앤컴퍼니', '신문섭', 'dashboard'],
+    items: [
+      { label: '대상자 갱신', detail: 'interviewee → 신문섭 (Bain & Company 파트너). 인터뷰 카드 헤더·목록·검색 태그(베인앤컴퍼니·신문섭) 반영' },
+      { label: '소스·인덱스', detail: 'sources/raw-notes/expert-interview-...md 헤더 인터뷰 대상 갱신. index.md 설명 갱신' },
+    ],
+    links: [
+      { label: 'expert-interview-ai-infra-supercycle-2026-06-18.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md' },
+    ],
+  },
+  // ── 2026-06-18 (i) ───────────────────────────────────────────────────────────
   {
     date: '2026-06-18',
     type: 'ingest',

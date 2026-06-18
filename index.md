@@ -151,7 +151,7 @@
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
 - [sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md](sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) — 시니어 파트너 인터뷰 딥리서치 (사용자 1차 + WSTS·IDC·IEA·Anthropic·NASA·NDRC 교차 팩트체크): "하드웨어 시간 돌아옴" 4대 메시지·전략 권고 7개
-- [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 산업 전문가 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
+- [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 베인앤컴퍼니 신문섭 파트너 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
 
 ### sources/papers — 리서치 보고서
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 딥리서치: 2030 메모리 수급 4대 병목 정량 모델 (HBM 2.88EB·서버 125만 대·민감도·가격 균형)

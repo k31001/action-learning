@@ -30,8 +30,9 @@ export const INTERVIEWS = [
     title: 'AI 인프라 슈퍼사이클과 메모리 사업의 전략 전환',
     kicker: '산업 전문가 인터뷰 보고서',
     date: '2026-06-18',
-    interviewee: { name: '산업 전문가', role: '직책·소속 미공개', org: '미공개' },
+    interviewee: { name: '신문섭 (Moonsup Shin)', role: '베인앤컴퍼니 파트너 · APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표', org: '베인앤컴퍼니 (Bain & Company)' },
     tags: [
+      '베인앤컴퍼니', '신문섭',
       'AI 인프라', '수요 검증 사이클', 'HBM', 'Neo Cloud', '데이터센터',
       '전력 병목', 'Customization', '임베디드 SW', 'CXL', '우주', '중국',
       '중고 반도체', 'Sensing Model', '포트폴리오',
