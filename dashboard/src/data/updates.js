@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-19 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-19',
+    type: 'ingest',
+    version: 'v2.24.2',
+    title: '병목 모델 정기 점검 — 전력 72·CAPEX 40·파운드리 50·패키징 70',
+    summary:
+      '최신 데이터 수집 후 4대 병목 제약지수 갱신: 전력 70→72(▲+2, DC 전력 2026년 1,050 TWh — IEA 2030 Base Case 초과)·CAPEX 42→40(▼-2, Microsoft $190B 확정·AI ROI 강화)·파운드리 52→50(▼-2, Vera Rubin 풀 프로덕션·N3 정상 공급)·패키징 68→70(▲+2, CEO "sold out through 2026~2027"·납기 52~78주). 패치 v2.24.2.',
+    tags: ['병목 모델', 'CoWoS', 'TSMC', 'Microsoft CapEx', 'Vera Rubin', 'HBM4', '전력', 'dashboard'],
+    items: [
+      { label: '전력 72 (▲+2)', detail: 'DC 전력 2026년 약 1,050 TWh — IEA 2030 Base Case(945 TWh) 4년 앞당겨 초과. Goldman 2030 +165%·122 GW. 미국 DC 75.8 GW(2026)→134.4 GW(2030)' },
+      { label: 'CAPEX/ROI 40 (▼−2)', detail: 'Microsoft CY2026 CapEx $190B 확정(컨센서스 +$35B 초과). Samsung HBM4 마진 >80%·단가 $500~560. AI 클라우드 GCloud+110%·Azure+84%·AWS+28%' },
+      { label: '파운드리 50 (▼−2)', detail: 'NVIDIA Vera Rubin 풀 프로덕션(2026-06-01)·3사 HBM4 공급사 확정(2026-06-05). Counterpoint HBM4: SK 54%·Samsung 28%·Micron 18%' },
+      { label: '패키징 70 (▲+2)', detail: 'TSMC CEO(2026-06-04): "extremely tight, sold out through 2026". 3개 시설 2027까지 만판·납기 52~78주. NVIDIA 2026 CoWoS 60% 선점(800K~850K 웨이퍼)' },
+      { label: '소스·위키·인덱스', detail: 'sources/articles/june-2026-market-update-2026-06-19.md 신설. bottleneck-model-2030.md 종합 판독 추가. hbm-market.md HBM4 점유·CXMT 현황 추가. index.md 갱신' },
+    ],
+    links: [
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'june-2026-market-update-2026-06-19.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/june-2026-market-update-2026-06-19.md' },
+    ],
+  },
   // ── 2026-06-18 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-06-18',

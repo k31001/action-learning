@@ -300,3 +300,40 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 | HBM4E | 미정 (HBM4 대비 프리미엄 예상) | 2026년 하반기 가격 형성 예정 |
 
 **출처**: [june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md)
+
+---
+
+## [Update 2026-06-19] HBM4 공급 점유율 확정 + TSMC CEO CoWoS 병목 공식 재확인
+
+### HBM4 공급 점유율 (Counterpoint Research, 2026 기준)
+
+| 공급사 | 전체 HBM (4월 2026) | HBM4 전용 (Counterpoint) | 비고 |
+|---|---|---|---|
+| **SK Hynix** | ~55% | **54%** | HBM3E 우세 + HBM4 주요 공급 |
+| **Samsung** | ~30~35% | **28%** | HBM4 양산 2월·HBM4E 6개월 선행 |
+| **Micron** | ~10~15% | **18%** | HBM4 자격 진입으로 HBM3E 대비 회복 |
+
+- HBM4 Rubin 물량에서 Micron 18% 진입 확정 (UBS 시나리오에 가까운 결과, SemiAnalysis "자격 불가" 예측 불일치)
+- Samsung Q1 2026 HBM4 양산 확인: 2026년 2월 시작, 삼성전자 IR에서 HBM4 단가 **$500~560, 마진 >80%** 공식 확인
+
+### NVIDIA Vera Rubin 풀 프로덕션 확정
+
+- **2026-06-01** (GTC 타이페이): NVIDIA Vera Rubin 풀 프로덕션 공식 발표
+- **2026-06-05**: 젠슨 황 — 삼성·SK하이닉스·마이크론 **3사 모두** HBM4 공급사 확인
+- 세 공급사 모두 HBM4 12-Hi (48GB) 공급 중
+
+### CoWoS 병목 공식 확인 (TSMC CEO, 2026-06-04)
+
+- TSMC CEO C.C. Wei (2026-06-04 주주총회): "CoWoS capacity remains **extremely tight and sold out through 2026**"
+- TSMC 3개 첨단 패키징 시설 **2027년까지** 완판, 납기 **52~78주**
+- NVIDIA가 TSMC 2026년 CoWoS 총 출력의 **약 60%** 선점 (800K~850K 웨이퍼)
+- 2027 말 CoWoS 용량 목표: **170K WPM** (현재 ~125K WPM)
+
+### 중국 HBM 진입 현황
+
+- **CXMT**: HBM3 2026 말 양산 목표, 초기 수율 ~50%, 볼륨 경쟁력 **2028+ 현실적**
+  - HBM3 샘플 Huawei 제공 확인. 수출 규제·장비 접근성이 스케일업 핵심 변수
+- **YMTC**: 우한 3번째 팹 착공 시점 2026 H2로 앞당김(원래 2027). DRAM·HBM TSV 병행 연구
+  - 중국 HBM이 글로벌 경쟁에 진입하는 시기: **2028+** (수출 규제 체제 하에서)
+
+**출처**: [june-2026-market-update-2026-06-19.md](../../sources/articles/june-2026-market-update-2026-06-19.md)

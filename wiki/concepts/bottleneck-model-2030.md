@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-19
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-19.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -332,9 +332,39 @@ flowchart LR
 - **전략 함의**: 2030 승자의 조건 = ① 전력을 먼저 확보하고 ② 장기계약으로 CoWoS·선단 로직을 잠그고 ③ ROI가 흔들려도 CAPEX를 지속할 수 있는가. D-결정·RS 전략의 우선순위 검증 프레임.
 - **한계(미지수)**: ① TSMC·삼성·Intel의 2030 AI-allocatable WSPM 비공개 ② CoWoS package-per-wafer·고객별 할당 비공개 ③ hyperscaler ROI 기준·private credit은 매크로 민감 ④ 중국 선단 진전은 규제 의존. 모든 수치는 정답표가 아니라 **상한·하한이 있는 구조적 시뮬레이션** — 탄력도·가중치는 분기 재보정 대상.
 
+### 종합 판독 (2026-06-19)
+
+#### 제약지수 업데이트 (2026-06-19, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **72** | **▲ +2** | 글로벌 DC 전력 2026년 1,050 TWh — IEA 2030 Base Case(945 TWh)를 4년 앞당겨 초과 |
+| **CAPEX/ROI** | 42 | **40** | **▼ −2** | Microsoft CY2026 CapEx $190B 확정(컨센서스 +$35B 초과)·Samsung HBM4 마진 >80%·AI 클라우드 매출 추가 가속 |
+| **파운드리** | 52 | **50** | **▼ −2** | NVIDIA Vera Rubin 풀 프로덕션·3사 HBM4 공급 확정·N3 캐파 충분 운영 확인 |
+| **패키징** | 68 | **70** | **▲ +2** | TSMC CEO(2026-06-04) "extremely tight, sold out through 2026"·3개 시설 2027까지 만판·납기 52~78주 |
+
+**전력+패키징 동반 상향 / CAPEX+파운드리 동반 하향 — 공급 측 물리 병목(전기·CoWoS)과 수요 측 자금 병목(CAPEX) 분리 패턴 심화. 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리.**
+
+#### 2026-06-19 핵심 신규 신호
+
+- **전력 추가 악화**: 글로벌 데이터센터 전력 수요 **2026년 약 1,050 TWh** — IEA 2030 Base Case 945 TWh를 이미 4년 앞서 초과 속도. Goldman: 2030년까지 165% 증가·122 GW 온라인. 미국 데이터센터 2026 75.8 GW → 2030 134.4 GW. AI 데이터센터 전력 연 **15% 성장**(전체 전력 성장 4배 속도). 계통 접속 리드타임(7~13년)과의 괴리 추가 확대 ([june-2026-market-update-2026-06-19.md](../../sources/articles/june-2026-market-update-2026-06-19.md)).
+- **CAPEX 완화 추가**: Microsoft CY2026 CapEx **$190B** 확정 — 분석가 컨센서스 $154.6B 대비 **$35B 초과**, 2025 $118B 대비 +61%. 상향 이유: 메모리 가격 급등에 따른 구성 요소 비용 증가 ($25B 추가). 빅4 합산 $690~720B 수준 유지. 전체 하이퍼스케일러 $800B+ 추정. HBM4 단가 **$500~560, 마진 >80%** (Samsung IR 확인) — ROI 실현 강화.
+- **파운드리 추가 완화**: NVIDIA Vera Rubin 풀 프로덕션 확정(2026-06-01 GTC 타이페이)·삼성·SK·Micron 3사 HBM4 공식 공급사 확인(2026-06-05) → N3 로직 캐파 충분히 공급 중. Counterpoint HBM4 점유: SK 54%·Samsung 28%·Micron 18% — 3사 진입 확정으로 파운드리 병목이 출하 한계 요인 아님.
+- **패키징 추가 악화**: TSMC CEO C.C. Wei(2026-06-04 주주총회) 직접 발언 — **"CoWoS capacity remains extremely tight and sold out through 2026"**. TSMC 3개 첨단 패키징 시설 **2027년까지** 완판·납기 52~78주. NVIDIA가 2026년 CoWoS 출력의 **약 60%(800K~850K 웨이퍼)** 선점. 이전 점검의 "fully booked" 수준보다 더 장기·명시적 병목 확인. CXMT HBM3 2026 말 목표이나 초기 수율 ~50%·볼륨 경쟁력 2028+ 현실적.
+- **삼성 Q1 2026 최종 확인**: 메모리 매출 $50.4B(YoY +292%), 영업이익 +756% YoY — 단일 분기 이익이 2025년 연간 초과. HBM4 양산 2026년 2월 확정.
+- **DRAM 가격 궤적 유지**: Q1 +90~95% QoQ(실적 확정)·Q2 +58~63% 예상 — 이전 추정 유지.
+
+- **전력**: 지수 **2 추가 상향(70→72)** — 글로벌 DC 전력이 IEA 2030 Base Case를 2026년에 이미 초과하는 속도. 단기 해소 경로 없음(계통 접속 7~13년 리드타임). **유일하게 연속 4회 상향(64→68→70→72)** — 중장기 최대 구조 리스크 지위 공고화.
+- **CAPEX**: 지수 **2 추가 하향(42→40)** — Microsoft $190B 확정이 수요 견고성의 상징적 신호. ROI 실현(HBM4 마진 >80%·클라우드 AI 매출 가속)이 추가 확인. 단기 자금조달 리스크(ABS·SPV)는 이 규모 앞에서 상대적 비중 축소. **연속 5회 하향(46→44→42→42→40)**.
+- **파운드리**: 지수 **2 추가 하향(52→50)** — Vera Rubin 풀 프로덕션이 N3 캐파 정상 운영의 직접 증거. d2−d1 상류-중류 괴리(지정학·수율 미지수) 잔존. **평시 가장 여유, 이벤트성 충격에 가장 취약 구조 유지**.
+- **패키징**: 지수 **2 추가 상향(68→70)** — CEO 직접 발언으로 2026~2027 병목 공식 재확인. 납기 52~78주는 이전 "fully booked" 표현보다 훨씬 구체적이고 장기적. NVIDIA 60% 선점은 타 고객 패키징 공급 경쟁 심화를 의미. 완화 방향은 2028+ 신규 사이트 가동까지 기대 어려움.
+
+---
+
 ## 출처
 
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 4대 병목 정량 모델·수급·가격 균형 (본 페이지 수치의 전거)
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-19.md](../../sources/articles/june-2026-market-update-2026-06-19.md) — 2026-06-19 병목 제약지수 갱신 데이터 (Microsoft $190B·TSMC CEO 발언·Vera Rubin 확정·DC 전력 1,050 TWh)

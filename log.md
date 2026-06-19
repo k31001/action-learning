@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-19] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 72·CAPEX 40·파운드리 50·패키징 70) (v2.24.1 → v2.24.2)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 Goldman Sachs·IEA·S&P Global·TSMC CEO 주주총회·CNBC·The Register·TechTimes 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 70→72(▲+2)·CAPEX 42→40(▼-2)·파운드리 52→50(▼-2)·패키징 68→70(▲+2)**.
+- **왜**: 정기 점검 루틴. 신규 신호 — ① 글로벌 DC 전력 2026년 1,050 TWh(IEA 2030 Base Case 945 TWh를 4년 앞당겨 초과) = 전력 병목 추가 악화; ② Microsoft CY2026 CapEx $190B 확정(컨센서스 $154.6B 대비 +$35B·메모리 가격 급등이 원인)·AI 클라우드 매출 지속 강세·HBM4 마진 >80% = CAPEX 완화 추가; ③ NVIDIA Vera Rubin 풀 프로덕션 확정(2026-06-01)·3사 HBM4 공급사 확인(2026-06-05)·N3 캐파 정상 운영 = 파운드리 완화 추가; ④ TSMC CEO C.C. Wei(2026-06-04) "extremely tight, sold out through 2026"·3개 시설 2027 완판·납기 52~78주·NVIDIA 60% 선점 = 패키징 병목 재악화.
+- **sources**: `articles/june-2026-market-update-2026-06-19.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — frontmatter last_reviewed·sources 갱신·종합 판독(2026-06-19) + 변동 표 추가. `concepts/hbm-market.md` — HBM4 점유율(Counterpoint SK 54%·Samsung 28%·Micron 18%)·Vera Rubin 풀 프로덕션·CoWoS CEO 발언·중국(CXMT/YMTC) 현황 추가.
+- **dashboard (v2.24.2, 패치 = 제약지수 갱신·드라이버 노트·날짜 갱신)**: `data/bottleneckModel.js` MODEL_ASOF(→2026-06-19)·PREV_MODEL_ASOF(→2026-06-14)·PREV_INDICES·4개 제약지수·4개 indexNote·DRIVERS_ASOF·capex_guide·ai_revenue·cowos_util 드라이버 노트 갱신. `data/updates.js` v2.24.2 항목. `src/version.js` v2.24.2.
+- **outputs**: 보고서·발표자료는 제약지수 수치 변경 수준이라 재생성 보류 (병목 분석 섹션은 다음 마이너 빌드에 포함).
+
 ## [2026-06-18] ingest | 인터뷰 대상자 식별 — 베인앤컴퍼니 신문섭 파트너 (v2.24.0 → v2.24.1)
 - **무엇**: 직전 ingest의 인터뷰 대상자를 "산업 전문가(직책·소속 미공개)"에서 **베인앤컴퍼니(Bain & Company) 신문섭(Moonsup Shin) 파트너** — APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표 — 로 정정. 원본 소스 헤더·대시보드 인터뷰 메뉴 메타(목록·헤더)·검색 태그·인덱스 동기화. 패치 v2.24.1.
 - **왜**: 사용자가 대상자 신원을 확인해 줌.
