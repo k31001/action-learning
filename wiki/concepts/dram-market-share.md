@@ -15,8 +15,10 @@
 | Q1 2025 | 34% | 36% | 25% | 5% |
 | Q2 2025 | 33% | 35% | 26% | 6% |
 | Q3 2025 | 32.6% | 33.2% | 25.7% | 8.5% |
+| **Q1 2026** | **38%** | **29%** | **22%** | **8% (CXMT)** |
 
-- 출처: TrendForce (2025-11-26), S&P Global Market Intelligence, Korea Herald
+- 출처: TrendForce (2025-11-26), Counterpoint Research (2026-06 Q1 2026 공식), S&P Global Market Intelligence, Korea Herald
+- **Q1 2026**: Counterpoint Research 공식 집계. 시장 전체 **+80% QoQ·+260% YoY** — 역대 최대 분기 성장률. 삼성 DRAM 38%는 HBM ASP 개선·범용 DRAM 강세로 급반등. CXMT 8%는 전년 동기 3% 대비 지속 상승.
 - 비고: Q3 2025 기타에 CXMT 등 중국 업체 포함 시작
 
 ### 글로벌 DRAM 연간 매출 전망 (2025년)

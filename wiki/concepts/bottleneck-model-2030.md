@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-20
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-20.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -324,6 +324,38 @@ flowchart LR
 - **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
 - **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
 
+---
+
+### 종합 판독 (2026-06-20)
+
+#### 제약지수 업데이트 (2026-06-20, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **69** | **▼ −1** | FERC 패스트트랙 계통 접속 승인(2026-06-18) — 허가 프로세스 단축 기대. 그러나 물리 리드타임(7~13년) 잔존. 소폭 완화 신호 반영 |
+| **CAPEX/ROI** | 42 | **40** | **▼ −2** | 삼성 DS Q1 OP ₩53.7조(49배), SK하이닉스 Q1 OPM 72%(역대 최고), Micron Q3 FY26 $33.5B 가이던스 역대 최고 — AI ROI 실현 전반 확인 |
+| **파운드리** | 52 | **51** | **▼ −1** | HBM4E 양사(삼성 05-29·SK 06-18) 샘플 출하 완료 — HBM4E 생산 단계 성숙·Vera Rubin 풀프로덕션 유지 |
+| **패키징** | 68 | **67** | **▼ −1** | SK하이닉스 HBM4E 12층 샘플 조기 출하(2026-06-18, 예정보다 빠름) — Advanced MR-MUF 양산 준비 성숙. 12-Hi 수율 불확실성 잔존 |
+
+**전력: 여전히 최고 지수(69) — 다만 처음으로 하방 전환(FERC 패스트트랙). 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리. CAPEX·파운드리·패키징 3개 동반 완화 지속 — 공급 제약 점진 해소 방향.**
+
+#### 2026-06-20 핵심 신규 신호
+
+- **SK하이닉스 HBM4E 조기 샘플**: 2026-06-18 12층(48GB·16Gbps) 샘플 주요 AI 고객 출하. Q1 실적발표 "하반기 출하" 가이던스보다 조기. Advanced MR-MUF(열저항 −17%) — 패키징 공정 성숙. 삼성 05-29 대비 20일 내 추격, HBM4E 세대 경쟁 본격화 ([june-2026-market-update-2026-06-20.md](../../sources/articles/june-2026-market-update-2026-06-20.md)).
+- **Counterpoint Q1 2026 HBM 공식 확정**: SK 58%·삼성 21%·마이크론 21%. 위키 06-14 "4월 삼성 35~40%"는 4월 단월 추정 — Q1 분기 평균(21%)과 시점 차이. 삼성 HBM4 공급이 Q2 이후 가속화될수록 분기 평균도 상향 예상.
+- **Counterpoint Q1 2026 DRAM 공식 확정**: 삼성 38%·SK 29%·마이크론 22%·CXMT 8%. 시장 전체 QoQ +80%·YoY +260% — 역대 최대 분기 성장률.
+- **SK하이닉스 Q1 2026 공식 확정**: 매출 ₩52.6조(+60% QoQ·+198% YoY)·OP ₩37.61조(+405% YoY)·**OPM 72%** (역대 최고). AI HBM·서버 DRAM·eSSD 믹스 강세.
+- **삼성전자 Q1 2026 공식 확정**: 전체 매출 ₩133.9조($90.6B 역대 최고)·DS OP ₩53.7조(49배 YoY). 2026 HBM 매출 목표 3배+.
+- **DRAM Q2 2026 가격**: +58~63% QoQ(DRAM)·+70~75% QoQ(NAND) — TrendForce 재확인.
+- **FERC 패스트트랙**: 미국 AI 데이터센터 계통 접속 패스트트랙 승인(2026-06-18). 허가 절차 단축 → 착공 선행. 그러나 물리 공사 7~13년 리드타임 불변 — 2028+ 이전 실질 완화 어려움.
+
+- **전력**: 지수 **1 하향(70→69)** — FERC 패스트트랙은 규제 병목(허가 지연)을 줄이는 최초 구체적 완화 조치. 다만 물리적 그리드 공사·변압기 리드타임·접속 대기열 2,600GW는 단기 해소 불가. 처음으로 하방 전환이지만 구조 병목 강도는 잔존 — 경보 등급은 Orange(60~75) 유지.
+- **CAPEX**: 지수 **2 하향(42→40)** — 삼성·SK·Micron 3사 모두 Q1 2026 역대 최고 실적(삼성 DS 49배·SK OPM 72%·Micron 역대 최고 가이던스). AI 수익성 실현 전반 확인으로 하이퍼스케일러 CAPEX 지속 동력 강화. 공급 규율(상류 GPU 임대가 둔화·자금조달 긴장)은 잔존하나 ROI 확인이 압도. Yellow(40~60) 경계 도달.
+- **파운드리**: 지수 **1 하향(52→51)** — SK HBM4E 샘플 조기 출하 = HBM4E 세대 생산 단계 성숙, Vera Rubin 풀프로덕션 유지. d2−d1 괴리(지정학·수율 +33) 잔존, 이벤트 시 취약 구조 유지.
+- **패키징**: 지수 **1 하향(68→67)** — SK HBM4E Advanced MR-MUF 조기 양산화(예정보다 빠름)로 12-Hi 패키징 단계 성숙 신호. d2(상류 57) < 현재(67), −10 → 완화 예고 경계(-15) 지속 접근. CoWoS·신규 후공정 사이트 일정 유지.
+
+---
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -338,3 +370,4 @@ flowchart LR
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-20.md](../../sources/articles/june-2026-market-update-2026-06-20.md) — 2026-06-20 병목 제약지수 갱신 데이터 (SK HBM4E 조기 샘플·Counterpoint Q1 확정·삼성/SK Q1 실적·FERC 패스트트랙)

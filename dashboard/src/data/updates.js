@@ -14,6 +14,29 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-20 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-20',
+    type: 'ingest',
+    version: 'v2.24.2',
+    title: '병목 모델 정기 점검 — 전력 69·CAPEX 40·파운드리 51·패키징 67 (SK HBM4E 조기 출하·Q1 2026 공식 확정)',
+    summary:
+      '6월 20일 점검. SK하이닉스 HBM4E 12층 샘플 조기 출하(06-18, 예정보다 빠름)·Counterpoint Q1 2026 HBM/DRAM 공식 확정(SK 58%·삼성 21%·DRAM +80% QoQ)·FERC 그리드 패스트트랙 승인·삼성/SK 역대 최고 분기 실적 반영. 제약지수: 전력 70→69(▼-1 첫 하방 전환)·CAPEX 42→40(▼-2)·파운드리 52→51(▼-1)·패키징 68→67(▼-1). 패치 v2.24.2.',
+    tags: ['병목 모델', 'HBM4E', 'SK하이닉스', 'FERC', 'Counterpoint', 'Q1 2026', '제약지수', 'dashboard'],
+    items: [
+      { label: '전력 70→69 ▼-1', detail: 'FERC 패스트트랙 계통 접속 승인(2026-06-18) — 규제 병목 완화 첫 신호. 물리 리드타임(7~13년) 잔존, 처음으로 하방 전환. Orange 유지' },
+      { label: 'CAPEX 42→40 ▼-2', detail: '삼성 DS Q1 OP ₩53.7조(YoY 49배)·SK OPM 72%(역대 최고)·Micron 역대 최고 가이던스. AI ROI 3사 동반 역대 최고. Yellow 경계(40) 도달' },
+      { label: '파운드리 52→51 ▼-1', detail: 'HBM4E 양사 샘플 출하 완료(삼성 05-29·SK 06-18) — 생산 단계 성숙. Vera Rubin 풀프로덕션 유지' },
+      { label: '패키징 68→67 ▼-1', detail: 'SK HBM4E 12층 Advanced MR-MUF 조기 출하 — 12-Hi 패키징 공정 성숙 신호. 12-Hi 수율 불확실성 잔존' },
+      { label: 'Counterpoint Q1 2026 공식', detail: 'HBM: SK 58%·삼성 21%·마이크론 21%. DRAM: 삼성 38%·SK 29%·마이크론 22%·CXMT 8%. 전체 시장 +80% QoQ·+260% YoY' },
+      { label: 'SK하이닉스 Q1 확정', detail: '매출 ₩52.6조(+60% QoQ)·OPM 72%·OP ₩37.61조(+405% YoY). HBM4E 양산 목표 2027년' },
+      { label: '소스·위키', detail: 'sources/articles/june-2026-market-update-2026-06-20.md 신규. bottleneck-model-2030·hbm-market·dram-market-share·sk-hynix·energy-constraints 갱신' },
+    ],
+    links: [
+      { label: 'SK hynix HBM4E 12층 샘플 뉴스룸', href: 'https://news.skhynix.com/12-layer-hbm4e-sample/' },
+      { label: 'Counterpoint Q1 2026 HBM/DRAM', href: 'https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share' },
+    ],
+  },
   // ── 2026-06-18 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-06-18',

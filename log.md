@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-20] ingest | 병목 모델 정기 점검 — 전력 69·CAPEX 40·파운드리 51·패키징 67 (v2.24.1 → v2.24.2)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com·SK하이닉스 뉴스룸·Bloomberg·TrendForce 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 70→69(▼-1 — FERC 패스트트랙 첫 하방 전환)·CAPEX 42→40(▼-2 — 3사 역대 최고 분기 실적 확인)·파운드리 52→51(▼-1 — HBM4E 양사 샘플 완료)·패키징 68→67(▼-1 — SK HBM4E 조기 출하)**.
+- **왜**: 정기 점검 루틴. 주요 신규 신호 — ① SK하이닉스 2026-06-18 HBM4E 12층(48GB·16Gbps) 조기 샘플 출하(예정보다 빠름, Advanced MR-MUF) = 패키징 공정 성숙; ② Counterpoint Q1 2026 공식: HBM SK 58%·삼성 21%·마이크론 21%, DRAM 삼성 38%·SK 29%·마이크론 22%·CXMT 8%, 시장 +80% QoQ·+260% YoY; ③ SK 하이닉스 Q1 2026 공식 확정 ₩52.6조·OPM 72%·OP +405% YoY; ④ FERC 패스트트랙 계통 접속 승인(2026-06-18) = 전력 첫 하방 신호; ⑤ DRAM Q2 TrendForce 재확인 +58~63% QoQ·NAND +70~75% QoQ.
+- **sources**: `articles/june-2026-market-update-2026-06-20.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — 종합 판독(2026-06-20) + 변동 표 추가·출처 갱신. `concepts/hbm-market.md` — Q1 2026 공식 확정·SK HBM4E 조기 출하 추가. `concepts/dram-market-share.md` — Q1 2026 공식 행 추가. `wiki/entities/sk-hynix.md` — Q1 2026 공식 실적 갱신. `concepts/energy-constraints.md` — FERC 패스트트랙 추가.
+- **dashboard (v2.24.2, 패치 = 제약지수·날짜·이전값 갱신)**: `data/bottleneckModel.js` MODEL_ASOF/PREV 갱신·제약지수 4개·indexNote 4개 갱신. `data/updates.js` v2.24.2 항목. `src/version.js` v2.24.2.
+- **outputs**: 보고서·발표자료는 제약지수 수치 변경 수준이라 재생성 보류 (다음 마이너 빌드에 포함).
+
 ## [2026-06-18] ingest | 인터뷰 대상자 식별 — 베인앤컴퍼니 신문섭 파트너 (v2.24.0 → v2.24.1)
 - **무엇**: 직전 ingest의 인터뷰 대상자를 "산업 전문가(직책·소속 미공개)"에서 **베인앤컴퍼니(Bain & Company) 신문섭(Moonsup Shin) 파트너** — APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표 — 로 정정. 원본 소스 헤더·대시보드 인터뷰 메뉴 메타(목록·헤더)·검색 태그·인덱스 동기화. 패치 v2.24.1.
 - **왜**: 사용자가 대상자 신원을 확인해 줌.
