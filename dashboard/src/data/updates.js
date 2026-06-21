@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-21 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-21',
+    type: 'ingest',
+    version: 'v2.24.2',
+    title: '병목 모델 정기 점검 — 전력 73(▲+3)·CAPEX 40(▼-2)·파운드리 50(▼-2)·패키징 64(▼-4)',
+    summary:
+      'semianalysis.com·counterpointresearch.com·techinsights.com 및 TrendForce·Tech-Insider·Tom\'s Hardware 등 최신 데이터 수집. 전력 병목이 Orange zone 최고점(73)으로 추가 악화 — 변압기 리드타임 160주+·스위치기어 2028 완판·북버지니아 2030~2033 현실화·DC 30~50% 지연. CAPEX·파운드리·패키징은 3개 동반 완화: CoWoS 수급갭 20%→10%, TSMC N2 100K WPM, 3사 Rubin 인증 완료. 패치 v2.24.2.',
+    tags: ['병목 모델', '전력', 'CAPEX', '파운드리', 'CoWoS', 'HBM4', 'NVIDIA Rubin', 'CXMT', 'dashboard'],
+    items: [
+      { label: '전력 70→73 (▲+3)', detail: '변압기 리드타임 160주+(2025년 150주→추가 악화)·스위치기어 2028 완판. 북버지니아 2026-05 신청 시 전력 2030~2033년. 2026년 DC 30~50% 지연·취소. DOE 2030 미국 DC 12%(현재 4%). interconnect·transformer 드라이버 노트 갱신.' },
+      { label: 'CAPEX 42→40 (▼-2)', detail: 'Amazon FY2026 ~$200B·Alphabet $175~185B·Microsoft ~$190B·Meta $125~145B 전체 연간 전망 확인. Micron FY2026 capex >$25B(이전 $20B, +25%). H100 Vast.ai ~$2.00/hr(이전 $3.3). capex_guide·gpu_rental 드라이버 노트 갱신.' },
+      { label: '파운드리 52→50 (▼-2)', detail: 'TSMC N2 볼륨 생산 Q4 2025·2026년 100K WPM·2027년 200K WPM. Samsung·SK·Micron 전 3사 NVIDIA Vera Rubin HBM4 인증(2026-06-05). 삼성 로직 수율 90%. node_ramp·stack_yield 드라이버 갱신.' },
+      { label: '패키징 68→64 (▼-4)', detail: 'TrendForce 2026-06-15: CoWoS 수급갭 20%→10%(2026말). 캐파 115K~140K WPM(2026말)·170K WPM(2027). CoPoS 파일럿 6월 완공 확인. cowos_util 드라이버 갱신. 4개 병목 중 가장 큰 폭 완화.' },
+      { label: 'CXMT HBM3 진입', detail: 'CXMT 2026년 말 HBM3 생산 목표. DRAM 7.7% 점유·2025 매출 $8B(+130%). D 시나리오 가속 EWI — wiki/concepts/hbm-market.md 갱신.' },
+      { label: '신규 소스', detail: 'sources/articles/june-2026-market-update-2026-06-21.md 신설. wiki bottleneck-model-2030·energy-constraints·hbm-market 갱신.' },
+    ],
+    links: [
+      { label: 'TrendForce: CoWoS 수급갭 20%→10%', href: 'https://www.trendforce.com/news/2026/06/15/news-tsmc-cowos-supply-demand-gap-reportedly-seen-narrowing-from-20-to-10-by-end-2026-as-capacity-expands/' },
+      { label: 'StreetInsider: NVIDIA 3사 HBM4 인증', href: 'https://www.streetinsider.com/General+News/Nvidia+certifies+Samsung,+SK+Hynix+and+Micron+for+Vera+Rubin+HBM4+supply/26608889.html' },
+    ],
+  },
   // ── 2026-06-18 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-06-18',

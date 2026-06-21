@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-21
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-21.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -324,6 +324,35 @@ flowchart LR
 - **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
 - **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
 
+---
+
+### 종합 판독 (2026-06-21)
+
+#### 제약지수 업데이트 (2026-06-21, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **73** | **▲ +3** | 변압기 리드타임 160주+·스위치기어 2028 완판·북버지니아 2030~2033 현실화·DC 30~50% 지연 |
+| **CAPEX/ROI** | 42 | **40** | **▼ −2** | FY2026 전체 Amazon ~$200B·Alphabet $175~185B·Microsoft ~$190B 확인·Micron capex 25% 상향 |
+| **파운드리** | 52 | **50** | **▼ −2** | N2 100K WPM 2026·200K WPM 2027·3사 NVIDIA Rubin 인증·삼성 HBM4 로직 수율 90% |
+| **패키징** | 68 | **64** | **▼ −4** | CoWoS 수급갭 20%→10%(TrendForce 2026-06-15)·115K~140K WPM 확인 |
+
+**전력 73: Orange zone 최고점 — 변압기·스위치기어 공급망 위기가 그리드 지연을 2030년대로 고착. CAPEX·파운드리·패키징 3축 동반 완화 지속.**
+
+#### 2026-06-21 핵심 신규 신호
+
+- **전력 병목 추가 악화 (73, ▲+3)**: 변압기 리드타임 **160주+**(2025년 150주→2026년 추가 악화), 스위치기어 **2028년까지 완판** — 접속 지연의 물리적 원인이 다층화. 북버지니아 2026-05 접속 신청 시 현실적 전력 확보 시점 **2030~2033년**으로 구체화(기존 "평균 대기"에서 특정 허브 실제 시점으로 현실화). 2026년 예정 AI DC의 **30~50%가 지연·취소** — 발표 용량이 실제 가동 용량과 분리. DOE 전망: 2030년 미국 DC 전력 비중 **12%**(현재 4%) ([june-2026-market-update-2026-06-21.md](../../sources/articles/june-2026-market-update-2026-06-21.md)).
+- **파운드리 추가 완화 (50, ▼−2)**: TSMC N2 볼륨 생산 Q4 2025 돌입·2026년 **100K WPM**(Fab 20·Fab 22)·2027년 **200K WPM** 경로 확인. N2/A16 수주잔고 2028년까지 완판이나 캐파 확장 궤도 명확화. Samsung·SK Hynix·Micron **전 3사 NVIDIA Vera Rubin HBM4 공급 인증 완료**(Jensen Huang, 2026-06-05). 삼성 HBM4 로직 칩 수율 **90%** 달성(이전 R&D 단계 ~50%에서 대폭 개선).
+- **패키징 가장 큰 폭 완화 (64, ▼−4)**: TSMC CoWoS **수급 갭 20%→10% 축소**(TrendForce 2026-06-15). 2026말 캐파 **115K~140K WPM** 확인(2027년 ~170K WPM). CoPoS 파일럿 6월 완공 확인·2028~29 양산 목표. NVIDIA Rubin 수요 200→150만 대 하향 기반 수요 완화 지속. Amkor AZ 2028 초·SK 인디애나 2028말 일정 유지.
+- **CAPEX 추가 완화 (40, ▼−2)**: Big 4 FY2026 전체 전망 구체화 — Amazon ~$200B·Alphabet $175~185B·Microsoft ~$190B·Meta $125~145B. Micron FY2026 capex **>$25B**(이전 $20B에서 25% 인상) — HBM 수요 확신 신호. 단 H100 현물 ~**$2.00/GPU·h**(Vast.ai, 이전 $3.3 대비 하락)는 Neocloud 경제성 약화 신호 — 하이퍼스케일러 capex 강세가 상쇄.
+- **CXMT HBM3 진입 계획**: 중국 CXMT가 **2026년 말 HBM3 생산** 목표 발표. 7.7% DRAM 점유율·2025년 매출 $8B(+130%). D 시나리오(조용한 재편) 조기 발동 EWI — 별도 D 시나리오 모니터링 추가 필요.
+
+- **전력**: 지수 **3 추가 상향(70→73)** — 변압기·스위치기어 리드타임 악화·북버지니아 실제 지연 시점 확인. 상류-중류-현재 모두 악화 방향 일치. **4대 병목 중 현재 지수 최고(73, Orange zone) — 구조적 악화 추세 가장 심각**.
+- **CAPEX**: 지수 **2 하향(42→40)** — FY2026 전체 capex 큰 그림 확인, ROI 실현 지속. H100 임대가 하락(-ROI 신호) 존재하나 직접 capex 압력 강세가 우세. **상류-중류 괴리는 소폭 완화**.
+- **파운드리**: 지수 **2 하향(52→50)** — N2 램프 가속·3사 인증·삼성 수율 개선으로 공급 제약 추가 완화. **d2−d1 괴리(지정학·수율 미지수) 잔존 — 평시 가장 여유, 이벤트 시 취약 구조 유지**.
+- **패키징**: 지수 **4 하향(68→64)** — 가장 큰 폭 완화. TrendForce 수급 갭 20%→10% 공식화가 결정적 개선 신호. **상류(d2 57) < 현재(64), −7** — 완화 예고 경계(-15) 방향 진행 중.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지.
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -338,3 +367,4 @@ flowchart LR
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-21.md](../../sources/articles/june-2026-market-update-2026-06-21.md) — 2026-06-21 병목 제약지수 갱신 데이터 (변압기 160주+·북버지니아 2030~2033·CoWoS 수급갭 20%→10%·N2 100K WPM·3사 Rubin 인증·CXMT HBM3)

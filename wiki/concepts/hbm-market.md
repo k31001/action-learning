@@ -300,3 +300,22 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 | HBM4E | 미정 (HBM4 대비 프리미엄 예상) | 2026년 하반기 가격 형성 예정 |
 
 **출처**: [june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md)
+
+---
+
+## [Update 2026-06-21] NVIDIA Rubin 3사 인증 공식 확인 + 삼성 수율 90% + CXMT HBM3 진입
+
+### NVIDIA Vera Rubin HBM4 — 3사 최종 인증 확인
+
+- **2026-06-05**: Jensen Huang이 공개적으로 Samsung·SK Hynix·Micron **전 3사** NVIDIA Vera Rubin HBM4 공급 인증 완료를 확인 ([june-2026-market-update-2026-06-21.md](../../sources/articles/june-2026-market-update-2026-06-21.md)).
+- **삼성 HBM4 로직 칩 수율 90%** 달성 — 이전 R&D 웨이퍼 단계 ~50%에서 대폭 개선. 삼성은 2026년 2월 HBM4 양산을 업계 최초로 시작, 스펙은 11.7 Gb/s(NVIDIA·AMD 요구 10 Gb/s 초과).
+- **Rubin HBM4 공급 비중 추정(애널리스트)**: SK Hynix 60~70% · Samsung 25~30% · Micron 나머지. SK Hynix 우위 유지이나 삼성이 이전 28% 추정 대비 유사한 수준 확보.
+- Micron: 전 3사 중 유일하게 HBM4 자격 불가 위기를 극복 — HBM4E 수율은 HBM3E 대비 빠른 램프 자신감 표명.
+
+### CXMT HBM3 진입 계획 — D 시나리오 EWI
+
+- 중국 CXMT가 **2026년 말 HBM3 생산** 목표 발표(Tom's Hardware). CXMT는 현재 DRAM 시장점유율 7.7%·2025년 매출 $8B(+130% YoY).
+- CXMT HBM3 진입은 **D 시나리오(조용한 재편) 가속 신호** — 중국발 범용 DRAM + HBM 동시 과잉공급 리스크. 단, EUV 없이 HBM 수율 달성 여부가 핵심 변수.
+- YMTC: NAND 시장점유율 Q1 2026 **13%**. 2026년 하반기 신규 우한 팹 양산 개시 예정.
+
+**출처**: [june-2026-market-update-2026-06-21.md](../../sources/articles/june-2026-market-update-2026-06-21.md)

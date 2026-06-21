@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-21] ingest | 병목 모델 정기 점검 — 전력 73(▲+3)·CAPEX 40(▼-2)·파운드리 50(▼-2)·패키징 64(▼-4) (v2.24.1 → v2.24.2)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 TrendForce·Tech-Insider·Tom's Hardware·StreetInsider·Vast.ai·Belfer Center·DataCenterKnowledge 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 70→73(▲+3)·CAPEX 42→40(▼-2)·파운드리 52→50(▼-2)·패키징 68→64(▼-4)**. 드라이버 노트 7개 갱신.
+- **왜**: 정기 점검 루틴. 신규 신호 — 변압기 리드타임 160주+·스위치기어 2028 완판·북버지니아 2030~2033 현실화·DC 30~50% 지연(전력 추가 악화); Amazon ~$200B·Alphabet $175~185B·Microsoft ~$190B·Meta $125~145B FY2026 확인·Micron capex >$25B(CAPEX 완화); TSMC N2 100K WPM·전 3사 Rubin HBM4 인증(Jensen Huang 2026-06-05)·삼성 수율 90%(파운드리 완화); TrendForce CoWoS 수급갭 20%→10%(패키징 완화). H100 임대가 ~$2.00/hr(이전 $3.3) — GPU 공급 증가 신호. CXMT HBM3 2026말 진입 계획 — D 시나리오 EWI.
+- **sources**: `articles/june-2026-market-update-2026-06-21.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — 종합 판독(2026-06-21) + 변동 표·드라이버 설명·출처 추가. `concepts/hbm-market.md` — 3사 Rubin 인증·삼성 수율 90%·CXMT HBM3 진입 추가. `concepts/energy-constraints.md` — 변압기 160주+·북버지니아 2030~2033·DC 30~50% 지연 추가.
+- **dashboard (v2.24.2, 패치 = 제약지수 갱신·드라이버 노트·날짜 갱신)**: `data/bottleneckModel.js` MODEL_ASOF/DRIVERS_ASOF·PREV 갱신·제약지수 4개·indexNote 4개·드라이버 노트 7개 갱신. `data/updates.js` v2.24.2 항목. `src/version.js` v2.24.2.
+- **건너뜀**: outputs/report·presentation는 제약지수 수치 변경 수준이라 재생성 보류(다음 마이너 빌드에 포함 예정).
+
 ## [2026-06-18] ingest | 인터뷰 대상자 식별 — 베인앤컴퍼니 신문섭 파트너 (v2.24.0 → v2.24.1)
 - **무엇**: 직전 ingest의 인터뷰 대상자를 "산업 전문가(직책·소속 미공개)"에서 **베인앤컴퍼니(Bain & Company) 신문섭(Moonsup Shin) 파트너** — APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표 — 로 정정. 원본 소스 헤더·대시보드 인터뷰 메뉴 메타(목록·헤더)·검색 태그·인덱스 동기화. 패치 v2.24.1.
 - **왜**: 사용자가 대상자 신원을 확인해 줌.
