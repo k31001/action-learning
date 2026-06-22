@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-06-22] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 72·CAPEX 40·파운드리 50·패키징 65) (v2.24.1 → v2.24.2)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 TrendForce·TSMC Tech Symposium·Tom's Hardware·WebPRONews·Futurum·SiliconAnalysts 등 최신 데이터 수집. 4대 병목 제약지수 갱신: **전력 70→72(▲+2)·CAPEX 42→40(▼-2)·파운드리 52→50(▼-2)·패키징 68→65(▼-3)**. 드라이버 노트 5개 갱신·소스 파일 1개 신설.
+- **왜**: 정기 점검 루틴(전회 2026-06-14 대비 8일 경과). 신규 핵심 신호 — ① MS $80B Azure 백로그 전력 제약 이행 불가(GPUs 재고, 전기 없어 설치 못함) = 전력 병목 역대 최강 실증 신호; ② DC 전력 2026년 1,000 TWh 초과(Gartner 전망 조기 실현); ③ 변압기 리드타임 128주(2.5년) 추가 악화; ④ TrendForce 2026-06-15: CoWoS 공급-수요 갭 20%→10%(2026년 말) 최초 공식 수치화 = 패키징 최대 완화폭(-3); ⑤ TSMC Tech Sym 2026: A13·A12·N2U 신규 노드·N2 멀티팹(Fab20+22) 가속·tape-out 70개+ = 파운드리 추가 완화; ⑥ 글로벌 DRAM Q1 $97B 역대 최고(Counterpoint)·빅4+전체 $782B = CAPEX 완화; ⑦ CXMT Q1 +719% YoY 흑자전환·$4.3B IPO 추진·HBM 진입 준비.
+- **sources**: `articles/june-2026-market-update-2026-06-22.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — frontmatter last_reviewed·sources 갱신. 종합 판독(2026-06-22) 섹션 추가(제약지수 변동표·신규 신호 6개·드라이버 해석·출처 행 추가).
+- **dashboard (v2.24.2, 패치 = 제약지수 갱신·드라이버 노트·날짜 갱신)**: `data/bottleneckModel.js` MODEL_ASOF('2026-06-22')·DRIVERS_ASOF·PREV 갱신·제약지수 4개·indexNote 4개·드라이버 노트 5개 갱신. `src/version.js` v2.24.2.
+- **outputs**: `report/scenario-planning-report.md` 병목 레이더 표·주요 변화 설명 갱신(2026-06-22 기준). 발표자료 슬라이드 아웃라인은 수치 변경 범위이므로 재생성 보류.
+- **검증**: `cd dashboard && npm run build` 통과(2412 모듈·콘솔 0).
+
 ## [2026-06-18] ingest | 인터뷰 대상자 식별 — 베인앤컴퍼니 신문섭 파트너 (v2.24.0 → v2.24.1)
 - **무엇**: 직전 ingest의 인터뷰 대상자를 "산업 전문가(직책·소속 미공개)"에서 **베인앤컴퍼니(Bain & Company) 신문섭(Moonsup Shin) 파트너** — APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표 — 로 정정. 원본 소스 헤더·대시보드 인터뷰 메뉴 메타(목록·헤더)·검색 태그·인덱스 동기화. 패치 v2.24.1.
 - **왜**: 사용자가 대상자 신원을 확인해 줌.

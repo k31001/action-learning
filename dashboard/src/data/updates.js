@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-22 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-22',
+    type: 'ingest',
+    version: 'v2.24.2',
+    title: '병목 모델 정기 점검 — 제약지수 갱신 (전력 72·CAPEX 40·파운드리 50·패키징 65)',
+    summary:
+      'SemiAnalysis·Counterpoint·TrendForce·TSMC Tech Sym 최신 데이터 반영. 전력 ▲+2(MS $80B Azure 백로그 전력제약·DC 1,000 TWh 초과), CAPEX ▼−2(DRAM Q1 $97B 역대최고), 파운드리 ▼−2(TSMC A13/N2U·N2 멀티팹), 패키징 ▼−3(CoWoS 갭 20%→10% 공식 수치화). 패치 v2.24.2.',
+    tags: ['병목모델', '전력', 'CAPEX', 'CoWoS', 'TSMC', 'HBM', 'CXMT', 'Rubin'],
+    items: [
+      { label: '전력 ▲+2 (70→72)', detail: 'MS $80B Azure 백로그 전력 제약 이행 불가·DC 전력 1,000 TWh 초과·변압기 리드타임 128주(2.5년) 추가 악화' },
+      { label: 'CAPEX ▼−2 (42→40)', detail: '글로벌 DRAM Q1 $97B 역대최고(Counterpoint)·빅4+전체 $782B·CXMT Q1 +719% YoY 흑자전환' },
+      { label: '파운드리 ▼−2 (52→50)', detail: 'TSMC Tech Sym: A13·A12·N2U 신규 노드·N2 멀티팹(Fab20+22)·tape-out 70개+ 파이프라인' },
+      { label: '패키징 ▼−3 (68→65)', detail: 'TrendForce 2026-06-15: CoWoS 공급-수요 갭 20%→10%(2026말) 최초 공식 수치화·AP8 40K WPM·>98% 수율' },
+      { label: '신규 신호', detail: 'Rubin R100 확정(HBM4 288GB·22TB/s, H2 2026)·CXMT HBM 진입 준비·HBM Q2 점유율(SK 62%·Micron 21%·Samsung 17%)' },
+    ],
+    links: [
+      { label: 'TrendForce: CoWoS Gap Narrowing 20%→10%', href: 'https://www.trendforce.com/news/2026/06/15/news-tsmc-cowos-supply-demand-gap-reportedly-seen-narrowing-from-20-to-10-by-end-2026-as-capacity-expands/' },
+      { label: 'Counterpoint: DRAM Q1 $97B', href: 'https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share' },
+      { label: 'Microsoft Azure Power Bottleneck', href: 'https://www.webpronews.com/microsofts-80-billion-cloud-computing-backlog-signals-unprecedented-ai-infrastructure-strain/' },
+    ],
+  },
   // ── 2026-06-18 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-06-18',

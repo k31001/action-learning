@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-22
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-22.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -324,6 +324,37 @@ flowchart LR
 - **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
 - **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
 
+---
+
+### 종합 판독 (2026-06-22)
+
+#### 제약지수 업데이트 (2026-06-22, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **72** | **▲ +2** | 글로벌 DC 전력 1,000 TWh 초과·MS $80B Azure 백로그 전력 제약(GPUs 재고 대기)·변압기 리드타임 128주(2.5년) |
+| **CAPEX/ROI** | 42 | **40** | **▼ −2** | 글로벌 DRAM Q1 $97B 역대 최고·빅4+전체 $782B(Dell'Oro)·CXMT Q1 +719% YoY·AI 클라우드 ROI 실현 강화 |
+| **파운드리** | 52 | **50** | **▼ −2** | TSMC Tech Sym 2026: A13·A12·N2U 신규 노드·N2 멀티팹(Fab20+22) 가속·tape-out 70개+ 파이프라인 |
+| **패키징** | 68 | **65** | **▼ −3** | TrendForce 2026-06-15: CoWoS 공급-수요 갭 20%→10%(2026말)·AP8(40K WPM) 추가·수율 >98% 유지 |
+
+**전력: 단일 병목 최고(72) — 가장 강한 실증적 신호 확인. 나머지 3개 동반 완화 추세 지속. 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리.**
+
+#### 2026-06-22 핵심 신규 신호
+
+- **전력 병목 가장 강한 실증적 증거**: Microsoft가 $80B 규모의 Azure 수주 잔고를 전력 부족으로 이행 불가 공개 — "GPU가 재고에 있으나 전기가 없어 설치 불가"(CEO Satya Nadella). Azure 용량 제약 최소 2026년 6월 말까지 지속 공식 확인. 변압기 리드타임 **128주(2.5년)** 추가 악화(이전 발표 대비). 글로벌 DC 전력 소비 **1,000 TWh 초과 임박**(Gartner, 2026년 실현) — 세계 5위 에너지 소비국 수준 ([june-2026-market-update-2026-06-22.md](../../sources/articles/june-2026-market-update-2026-06-22.md)).
+- **CAPEX 완화 지속**: 글로벌 DRAM 시장 Q1 2026 총매출 **$97B** 역대 최고(Counterpoint), 빅4 + 전체 하이퍼스케일러 **$782B**(Dell'Oro). CXMT Q1 2026 **719% YoY 성장**, 순이익 흑자 전환 — 업계 전반 수익성 확인. AWS +28%·GCloud +110%·Azure +84%·Meta +54% 계속 강세. CAPEX 지출 의지와 전력 물리 제약의 **분리 현상** 가장 강하게 표출.
+- **파운드리 추가 완화**: TSMC Tech Symposium 2026에서 **A13·A12·N2U** 신규 공정 발표. N2 Fab 20(신주 phase 1·2) + Fab 22(고웅 phase 1) 멀티팹 동시 램프 — 팹 건설 속도 연 9 Phase(역대 평균 4의 2.25배). N2 고객 tape-out **20개 완료·70개+ 파이프라인** — "역대 가장 강한 고객 채택률" (TSMC 발표).
+- **패키징 최대 완화폭**: TrendForce 2026-06-15 공식 보고: CoWoS 공급-수요 갭 **20% → 10%** (2026년 말 기준) — 가장 구체적인 완화 수치 최초 공개. AP8(구 Innolux LCD 팹) 40K WPM 기여, CoWoS >98% 수율 유지. NVIDIA CoWoS 점유율 ~60%(~595K wafers/년) 확인 — 수요 집중이나 공급도 명확화.
+- **NVIDIA Rubin 플랫폼 확정**: Rubin CPX **GTC 2026 취소** — HBM 아닌 GDDR7 사용, 수요 영향 無. **Rubin R100** (HBM4 288GB·22 TB/s/GPU) H2 2026 출하 확정 — 기존 B200 대비 GPU당 HBM 용량 +50% 수요 함의.
+- **HBM 시장 Q2 2026**: SK hynix 62%·Micron 21%·Samsung 17% (Q2 평균 추정). Samsung은 NVIDIA HBM4 30%+ 공급 계약 협상 최종 단계·HBM4E 4.0 TB/s 양산 스펙 확정 → H2 회복 신호.
+- **CXMT 2026 HBM 진입**: IPO $4.3B 중 $1.1B을 HBM 양산 라인 전용 배정, 2026년 말 HBM 시험 생산 목표 — export control 하에서도 중국발 공급 경쟁 변수 등장.
+
+- **전력**: 지수 **2 추가 상향(70→72)** — $80B Azure 백로그(전력 물리 제약 최강 실증 신호)·DC 1,000 TWh 초과·변압기 128주 추가 악화. 기술·CAPEX와 달리 물리 인프라(계통·변전)는 수년 단위 해소 불가. **4대 병목 중 유일하게 3차례 연속 상향(64→68→70→72) — 중장기 최대 구조 리스크 지위 공고화**.
+- **CAPEX**: 지수 **2 추가 하향(42→40)** — DRAM Q1 $97B·전체 $782B·AI 클라우드 ROI 실현 심화로 자금 흐름 완화 추가 확인. 단 전력·물리 인프라 제약(Microsoft $80B 백로그)이 CAPEX의 실현 상한을 제약하는 구조적 분리 현상 — CAPEX 의지↑·전력 제약↑ 동시 진행.
+- **파운드리**: 지수 **2 추가 하향(52→50)** — TSMC Tech Sym 신규 노드 발표·멀티팹 N2 가속·tape-out 강세. d2−d1 +33 괴리(지정학·수율 미지수) 잔존. 2026말 N2 10만+ WPM 확대 경로 더 명확.
+- **패키징**: 지수 **3 추가 하향(68→65)** — 이번 업데이트 최대 변동폭. CoWoS 갭 20%→10% 최초 공식 수치화·AP8 40K WPM 추가·수율 >98% 유지. d2(57) < 현재(65), −8 — 완화 예고 경계(-15)까지 여전히 여유있으나 방향성 명확.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지.
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -338,3 +369,4 @@ flowchart LR
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-22.md](../../sources/articles/june-2026-market-update-2026-06-22.md) — 2026-06-22 병목 제약지수 갱신 데이터 (TSMC Tech Sym·CoWoS 갭 10%·MS $80B 백로그·DRAM $97B·CXMT·Rubin R100)
