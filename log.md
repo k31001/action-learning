@@ -14,6 +14,13 @@
 
 ---
 
+## [2026-06-23] ingest | 병목 모델 정기 점검 2026-06-23 — 제약지수 갱신 (v2.24.1 → v2.24.2)
+- **무엇**: 2026-06-23 기준 최신 시장 데이터(TrendForce·Samsung IR·SK Hynix IR·tech-insider·Tom's Hardware·Micron IR 외)를 수집해 4대 병목 제약지수 및 수요 EWI 신호 갱신. 이전 점검 2026-06-14 대비 9일 경과.
+- **제약지수 변동**: 전력 70→**73**(▲+3), CAPEX/ROI 42→**40**(▼−2), 파운드리 52→**50**(▼−2), 패키징 68→**63**(▼−5 — 최대 변동: CoWoS 갭 20%→10% 전망).
+- **핵심 신규 신호**: ① TrendForce 2026-06-15: CoWoS 수요-공급 갭 2026말 ~10% 축소 전망(현재 20%)+SK Hynix HBM4 속도 조절 → 패키징 −5; ② 미국 DC 계획 69% 미착공(5/16GW)·접속 최대 10년 → 전력 +3; ③ 삼성 DS Q1 이익 ~50배·SK Hynix Q1 72% OP·Micron Q3 FY26 $33.5B·81% GP → CAPEX −2; ④ TSMC N2 목표 140K WPM(+10K) + Vera Rubin 풀 생산(2026-06-01) → 파운드리 −2.
+- **영향 파일**: `sources/articles/june-2026-market-update-2026-06-23.md`(신규), `dashboard/src/data/bottleneckModel.js`(indices·notes·dates), `dashboard/src/data/demandSignals.js`(EWI_ASOF·7개 신호 갱신), `wiki/concepts/bottleneck-model-2030.md`(frontmatter·출처·2026-06-23 판독 섹션 신규), `wiki/entities/sk-hynix.md`(Q1 2026 기록·HBM4 속도 조절), `wiki/entities/samsung.md`(Q1 2026·HBM4 공급 현황), `dashboard/src/version.js`(v2.24.2), `log.md`.
+- **왜**: 2026-06-14 이후 9일간 CoWoS 공급-수요 갭 정량 수치(TrendForce), HBM4 3사 역할 분화 확정(Jensen 2026-06-01), 삼성·SK Hynix Q1 실적 및 전략 변화(HBM4→DRAM 전환), 미국 DC 그리드 제약 심화 데이터가 누적 — 병목 모델 갱신 시점.
+
 ## [2026-06-18] ingest | 인터뷰 대상자 식별 — 베인앤컴퍼니 신문섭 파트너 (v2.24.0 → v2.24.1)
 - **무엇**: 직전 ingest의 인터뷰 대상자를 "산업 전문가(직책·소속 미공개)"에서 **베인앤컴퍼니(Bain & Company) 신문섭(Moonsup Shin) 파트너** — APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표 — 로 정정. 원본 소스 헤더·대시보드 인터뷰 메뉴 메타(목록·헤더)·검색 태그·인덱스 동기화. 패치 v2.24.1.
 - **왜**: 사용자가 대상자 신원을 확인해 줌.

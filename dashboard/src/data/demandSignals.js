@@ -11,7 +11,7 @@
 //   실시간 데이터 피드 연동은 다음 단계. 절대값보다 "어느 링크가 먼저 켜지는가"로 해석.
 // 단일 소스: wiki/concepts/demand-inflection-ewi.md
 
-export const EWI_ASOF = '2026-06-02'
+export const EWI_ASOF = '2026-06-23'
 
 // 신호 레벨 → 하락 위험 점수(0 안전 ~ 100 위험)
 export const SIGNAL_LEVELS = {
@@ -44,31 +44,31 @@ export const TIER_BY_ID = Object.fromEntries(CHAIN_TIERS.map(t => [t.id, t]))
 // 신호 목록 (signal: SIGNAL_LEVELS 키 / trend: TREND 키 / weight: 가중치 / ewiId: EWI 연동)
 export const DEMAND_SIGNALS = [
   // ① 수요 청산가격
-  { id: 'gpu_rental',   tier: 'tier0', name: 'GPU 임대가 추세',        signal: 'caution',    trend: 'worsening', weight: 3, source: 'Vast.ai 실측·ClusterMAX', ewiId: 'gpu_rental_h100_usd', note: 'H100 SXM 현물 $2~3/GPU·h (Vast.ai 자동 갱신·매일 누적) — 24~25 급락 후 둔화' },
+  { id: 'gpu_rental',   tier: 'tier0', name: 'GPU 임대가 추세',        signal: 'caution',    trend: 'worsening', weight: 3, source: 'Thunder Compute·Spheron 2026-06', ewiId: 'gpu_rental_h100_usd', note: 'H100 온디맨드 $1.40~$3.12/GPU·h(Thunder Compute·Spheron 2026-06), 스팟 $1.03~$1.19/h. 피크 대비 $2~4 이상 하락. neocloud ROI 압박 지속' },
   { id: 'gpu_util',     tier: 'tier0', name: 'AI 컴퓨트 가동률',       signal: 'neutral',    trend: 'stable',    weight: 2, source: 'SemiAnalysis 추정', note: '높지만 유휴율 상승 여부 관찰' },
   // ② 돈
-  { id: 'capex_guide',  tier: 'tier1', name: '하이퍼스케일러 capex 가이던스', signal: 'expansion', trend: 'stable', weight: 3, source: '빅4 분기 콜', ewiId: null, note: "'26 $650~725B(+77%) 강세 — digestion 언어 관찰" },
+  { id: 'capex_guide',  tier: 'tier1', name: '하이퍼스케일러 capex 가이던스', signal: 'expansion', trend: 'stable', weight: 3, source: '빅4 IR·Statista 2026-06', ewiId: null, note: "Amazon $200B·Alphabet $175~185B·Meta $115~135B·Microsoft ~$190B(빅4 $725B·+77% 확인). GCloud +63% YoY. Meta FCF −90% 전망이 유일한 완화 신호" },
   { id: 'credit_spread',tier: 'tier1', name: 'AI-DC 파이낸싱 신용 스프레드', signal: 'neutral', trend: 'worsening', weight: 3, source: 'Oracle·CoreWeave·SPV·사모신용', ewiId: 'ai_dc_credit_spread', note: '부채·ABS 의존 확대 — 스프레드 확대 시 급랭' },
-  { id: 'cancel',       tier: 'tier1', name: '착공 취소·연기 건수',     signal: 'caution',    trend: 'worsening', weight: 2, source: 'DCD 등', ewiId: 'dc_cancellation_count', note: 'Abilene 600MW 철회·Norway OpenAI 이탈 — 발표보다 선행' },
+  { id: 'cancel',       tier: 'tier1', name: '착공 취소·연기 건수',     signal: 'caution',    trend: 'worsening', weight: 2, source: 'tech-insider·shiporskip 2026-06', ewiId: 'dc_cancellation_count', note: '미국 2026 계획 DC 16GW 중 11GW(69%) 미착공(전력·변압기·지역사회 반발). 전체 발표의 50% 지연·취소 — 구조적 그리드 제약 심화' },
   // ③ 발주 미시구조
   { id: 'book_to_bill', tier: 'tier2', name: '메모리 book-to-bill',    signal: 'expansion',  trend: 'stable',    weight: 2, source: 'SEMI·각사', note: '>1 강세' },
   { id: 'lead_time',    tier: 'tier2', name: '메모리 리드타임',         signal: 'caution',    trend: 'worsening', weight: 2, source: '채널', note: '정점 근처 — 단축 전환 시 부족 해소→과잉. 정점=언와인드 셋업' },
   { id: 'spot_spread',  tier: 'tier2', name: '스팟-계약가 괴리',        signal: 'expansion',  trend: 'stable',    weight: 2, source: 'DRAMeXchange', ewiId: 'spot_contract_spread', note: '스팟>계약(부족). 롤오버 시 선행 경고' },
-  { id: 'cowos',        tier: 'tier2', name: 'CoWoS 가동률·발주',       signal: 'expansion',  trend: 'stable',    weight: 2, source: 'TSMC', note: 'HBM 직결·GPU 발주 선행. 타이트' },
+  { id: 'cowos',        tier: 'tier2', name: 'CoWoS 가동률·발주',       signal: 'expansion',  trend: 'improving', weight: 2, source: 'TrendForce 2026-06-15·TSMC', note: 'TrendForce 2026-06-15: 수요-공급 갭 2026말 ~10%(현재 ~20%) 축소 전망. SK Hynix HBM4 속도 조절로 수요 완화. 산업 캐파 ~200K WPM 근접. 여전히 타이트하나 점진 완화 가속' },
   // ④ DC 착공 (현재 지표)
   { id: 'pipeline',     tier: 'construction', name: '신규 착공 파이프라인', signal: 'expansion', trend: 'stable', weight: 2, source: 'ai-datacenter-buildout.md', note: '55.9GW 추적·2026 신규 가동 ~23.7GW 강세(끈적)' },
   // ⑤ 메모리 내부
   { id: 'inventory',    tier: 'tier3', name: '메모리 재고일수',         signal: 'expansion',  trend: 'stable',    weight: 3, source: 'TrendForce·IR', ewiId: 'memory_inventory_days', note: '부족으로 낮음 — 상승 전환 시 최선행 경고' },
-  { id: 'opm_inv',      tier: 'tier3', name: 'DRAM vs HBM 이익률 역전',  signal: 'caution',    trend: 'worsening', weight: 2, source: 'Counterpoint', ewiId: 'dram_opm_vs_hbm_opm', note: 'DRAM OPM>HBM 관측 = 사이클 정점 신호' },
+  { id: 'opm_inv',      tier: 'tier3', name: 'DRAM vs HBM 이익률 역전',  signal: 'caution',    trend: 'worsening', weight: 2, source: 'Samsung IR·wccftech 2026-06', ewiId: 'dram_opm_vs_hbm_opm', note: 'Samsung Q1 2026: 범용 DRAM이 HBM보다 현재 영업이익률 높음 확인(분기 계약가 vs 연간 고정 HBM가). SK Hynix HBM4→DRAM 전환 결정의 근거. 사이클 정점 경보 강화' },
   { id: 'trad_demand',  tier: 'tier3', name: '전통 수요(스마트폰 YoY)', signal: 'caution',    trend: 'worsening', weight: 1, source: 'Counterpoint', ewiId: 'smartphone_shipment_yoy', note: '-2.1% — 범용 수요 약세' },
   // ⑥ 공급 과잉
   { id: 'supply_bal',   tier: 'supply', name: 'bit 공급 vs 수요 밸런스', signal: 'caution',   trend: 'worsening', weight: 2, source: '3사 capex·웨이퍼', note: '캐파 증설 누적 — 공급발 하락 구조적 리스크' },
-  { id: 'cxmt',         tier: 'supply', name: 'CXMT 범용 공급',          signal: 'caution',   trend: 'worsening', weight: 2, source: 'cxmt 위키', ewiId: 'cxmt_asp_gap', note: '범용 DRAM 램프 — 공급 과잉 가속 위험' },
+  { id: 'cxmt',         tier: 'supply', name: 'CXMT 범용 공급',          signal: 'caution',   trend: 'worsening', weight: 2, source: 'techwireasia·infotechlead 2026-06', ewiId: 'cxmt_asp_gap', note: 'Q1 2026 DRAM 매출 +700%+ YoY·글로벌 4위·시장점유율 8%. 2026말 HBM3 목표(볼륨 생산 2028+). HP·Dell·Acer·Asus — CXMT DRAM 자격 탐색. 한국 3사 HBM 집중으로 범용 DRAM 공백 공략 중' },
   // ⑦ SCM 공급망 축 — 채찍효과·재고 위치·할당 동학. 발주와 셀스루(최종소비)의 괴리로 "실체 없는 수요"를 추적, ③발주↔⑤재고↔⑥공급 사이를 메운다
   { id: 'phantom_gap',  tier: 'scm', name: '가짜수요 갭(발주−셀스루)',     signal: 'caution', trend: 'worsening', weight: 3, source: '발주 bit vs 단말 출하·DC 가동', note: '발주 증가율 − 단말 소비 증가율. (+) 확대 = 더블오더링 축적 / (+)→(−) 전환 = 언와인드 개시. 채찍효과의 직접 측정 — 가장 본질적' },
   { id: 'double_order', tier: 'scm', name: '더블오더링(고객 재고주수)',     signal: 'caution', trend: 'worsening', weight: 2, source: 'TrendForce 채널·고객 IR', note: '고객 메모리 재고주수 ≥10주 = 추가 발주여력 소진 → 발주 급정지 임박. 메모리사 재고(⑤)보다 2~3배 선행' },
   { id: 'inv_echelon',  tier: 'scm', name: '재고 에셜론(다운스트림 DIO)',   signal: 'neutral', trend: 'stable',    weight: 2, source: '메모리사·모듈·채널·HS 분해', note: '메모리사→모듈→채널→하이퍼스케일러 4단계 DIO. 다운스트림 선축적 = 발주 단절 선행. inventory(1단계)의 횡단 확장' },
-  { id: 'allocation',   tier: 'scm', name: '할당 커버리지·선급금률',       signal: 'caution', trend: 'worsening', weight: 3, source: '자사 영업·경쟁사 IR', note: '차기 2~4분기 캐파 중 LTA·선급금 잠금 비율. 할당 해제(de-allocation) 시점 = 사이클 정점. 현재 HBM sold-out·LTA 정점' },
+  { id: 'allocation',   tier: 'scm', name: '할당 커버리지·선급금률',       signal: 'caution', trend: 'stable',    weight: 3, source: '경쟁사 IR·Samsung·SK Hynix 2026-06', note: '2026 HBM 전량 확보 유지(3사 모두 완판). SK Hynix HBM4 속도 조절로 의도적 할당 관리. Samsung HBM4 full-scale 공급 6월 개시. HBM 시장 $62B(2026): SK Hynix 43%·Samsung 33%·Micron 24%. 2027 할당 가시성이 다음 관문' },
   { id: 'upstream_wfe', tier: 'scm', name: '업스트림 공급증분(WFE·장비반입)', signal: 'caution', trend: 'worsening', weight: 2, source: 'WFE 수주·CXMT/Micron 장비반입', note: '장비사 메모리향 수주·경쟁사 WSPM 증설·소재소비(가동률 프록시). 미래 공급 증분 12~18개월 선행 — supply축 보강' },
   { id: 'order_churn',  tier: 'scm', name: '주문 처닝율(취소·푸시아웃)',    signal: 'neutral', trend: 'worsening', weight: 2, source: '채널·고객 발주', note: '분기 발주 대비 취소·연기·감량 비율. >5% 주의·>10% 경보. 가격 이전 미시신호 — dc_cancellation을 메모리 주문 레벨로 확장' },
   { id: 'ccc_credit',   tier: 'scm', name: 'CCC·고객 신용(DSO)',          signal: 'neutral', trend: 'worsening', weight: 2, source: '자사 재무·고객 신용', note: 'DIO+DSO−DPO. 신생 neocloud·AI 고객 결제지연(DSO 악화)이 언와인드의 현금 전이 경로. credit_spread의 자사 재무판' },

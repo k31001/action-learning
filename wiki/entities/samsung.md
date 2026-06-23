@@ -243,3 +243,41 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 4. **인접시장 피벗** → 우주·국방·항공우주·중고 인증으로 RS-2 long-lifecycle 끝단 확장
 
 **출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §1, §3.2, §3.3
+
+---
+
+## [Update 2026-06-23] Q1 2026 기록 실적 + HBM4 Full-Scale 공급 개시
+
+### Q1 2026 실적 업데이트
+
+| 지표 | 수치 | 비고 |
+|---|---|---|
+| DS 부문 매출 | **81.7조 원 ($55B)** | +225% YoY |
+| 메모리 매출 | **74.8조 원 ($50.4B)** | +101% QoQ |
+| 총 매출 | **134조 원** | +43% QoQ |
+| 총 영업이익 | **57조 원** | +185% QoQ |
+| 메모리 영업이익 증가 | **~50배** | 전년 대비 |
+| 범용 DRAM vs HBM | **범용 DRAM 이익률 더 높음** | 분기 계약가 vs 연간 고정 HBM가 역전 |
+
+**출처**: [Samsung Q1 2026 IR](https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results), [CNBC 2026-04-30](https://www.cnbc.com/2026/04/30/samsung-q1-earnings-ai-memory-chip-demand-profit-record.html), [wccftech – DRAM vs HBM margin](https://wccftech.com/samsung-q1-2026-earnings-conventional-dram-more-profitable-than-hbm-right-now/)
+
+### HBM4 공급 현황 (2026-06)
+
+| 항목 | 내용 |
+|---|---|
+| HBM4 Full-Scale 공급 개시 | **2026년 6월** (Vera Rubin향) |
+| 2026 HBM4 점유율 | **25~30%** (SK Hynix 60~70%, Micron 잔여) |
+| HBM 2026 매출 목표 | **2025 대비 3배+** |
+| HBM 시장 2026 규모 | **$62B**: Samsung **33%**(SK Hynix 43%, Micron 24%) |
+| HBM4E 전략 | GTC 2026 발표 — 맞춤형 설계, 2026 중반 목표 |
+
+**출처**: [TechTimes – Vera Rubin full production](https://www.techtimes.com/articles/317539/20260602/nvidia-vera-rubin-enters-full-production-samsung-sk-hynix-micron-named-hbm4-suppliers.htm), [IG – HBM market $62B](https://www.ig.com/en/news-and-trade-ideas/micron-q3-fy2026-earnings-preview-260623)
+
+### 전략 시사점 (2026-06-23)
+
+- **호황의 정점에 있음**: 범용 DRAM 이익률 > HBM(연간 고정가 계약의 역설). SK Hynix와 동일 현상 → 사이클 정점 경보 신호.
+- **HBM4 확보 성공**: 2026년 전량 판매 완료. 하지만 점유율 25~30%는 SK Hynix(60~70%)와 여전히 2~3배 격차.
+- **다음 전투선: HBM4E(2026말~2027)**: SK Hynix가 HBM4E 12-layer 샘플(2026-06) 출하로 재선점 시도 중. Samsung은 맞춤형 HBM4E로 반격 필요.
+- **정보 공백 지속**: HBM 부문 P&L 여전히 비공개(SK Hynix·Micron 대비 불리). 외부 가시성 회복이 Main Bet 실현의 전제조건.
+
+**관련 위키**: [sk-hynix.md](sk-hynix.md), [hbm-market.md](../concepts/hbm-market.md), [bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md)

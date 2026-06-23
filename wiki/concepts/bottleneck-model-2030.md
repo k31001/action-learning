@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-23
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-23.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -338,3 +338,40 @@ flowchart LR
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-23.md](../../sources/articles/june-2026-market-update-2026-06-23.md) — 2026-06-23 병목 제약지수 갱신 데이터 (CoWoS 갭 축소·HBM4 3사 역할 분화·N2 목표 상향·전력 그리드 제약 심화·빅4 CapEx 재확인)
+
+---
+
+### 종합 판독 (2026-06-23)
+
+#### 제약지수 업데이트 (2026-06-23, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **73** | **▲ +3** | 미국 2026 DC 계획 69% 미착공(5GW/16GW). 일부 지역 접속 최대 10년. 변압기·스위치기어 18개월+ 납기 |
+| **CAPEX/ROI** | 42 | **40** | **▼ −2** | 빅4 $725B 재확인. 삼성 DS 이익 50배·SK Hynix 72% OP·Micron 81% GP — 메모리 ROI 극대화. FCF 리스크 잔존 |
+| **파운드리** | 52 | **50** | **▼ −2** | TSMC N2 목표 140K WPM(+10K 상향). Vera Rubin 풀 생산 확인(2026-06-01). Blackwell 70%+ 지배 |
+| **패키징** | 68 | **63** | **▼ −5** | TrendForce(2026-06-15): CoWoS 수요-공급 갭 2026말 ~10%(현재 20%). SK Hynix HBM4 속도 조절. 산업 총 캐파 ~200K WPM 근접 |
+
+**패키징 제약지수 5 하향: 4대 병목 중 이번 점검의 최대 변화 — TrendForce의 명시적 갭 축소 수치(20%→10%)가 근거. 전력은 유일하게 상향 지속 — 2030 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리.**
+
+#### 2026-06-23 핵심 신규 신호
+
+- **패키징 대폭 개선**: TrendForce 2026-06-15, CoWoS 수요-공급 갭 **2026말 ~10%**(현재 ~20%)로 축소 전망. TSMC 목표 120~140K WPM(기존 130K 상단 상향). OSAT 합산 산업 총 캐파 ~200K WPM 근접 가능. SK Hynix의 HBM4 생산 속도 조절(DRAM 전환)이 수요 완화에 기여. CoPoS 파일럿 6월 완공 확인 ([june-2026-market-update-2026-06-23.md](../../sources/articles/june-2026-market-update-2026-06-23.md)).
+- **전력 제약 구조 악화 확인**: 미국 2026년 발표 DC 캐파 16GW 중 **5GW(31%)만 착공**, 나머지 11GW(69%) 지연·취소. 원인: 계통접속 큐·변압기/스위치기어 납기 18개월+ 초과·지역사회 반발. 일부 지역 계통접속 **최대 10년** 대기. DOE 연방 신속허가·FERC 개혁 논의 진행 중.
+- **HBM4 3사 역할 분화 확정**: NVIDIA Vera Rubin 풀 생산(Jensen, 2026-06-01). SK Hynix 60~70%·Samsung 25~30%·Micron 잔여. HBM 시장 2026 **$62B**: SK Hynix 43%·Samsung 33%·Micron 24%. Samsung HBM4 full-scale 공급 6월 개시. SK Hynix는 의도적으로 HBM4 생산 속도 줄이고 범용 DRAM으로 전환(Q1 2026 OP 72% 기록).
+- **ROI 실현 극대화**: 삼성 DS Q1 2026 매출 81.7조원·이익 **~50배**. SK Hynix Q1 OP **72%**(KRW 37.61조). Micron Q3 FY26 가이던스 **$33.5B·81% GP**(기록). 범용 DRAM이 HBM보다 현재 영업이익률 높음(Samsung 확인) — HBM 연간 고정가 vs DRAM 분기 계약가 효과.
+- **TSMC N2 목표 상향**: 2026말 N2 캐파 목표 **140K WPM**(이전 130K에서 +10K). Fab 20(Baoshan)+Fab 22(Kaohsiung). N2 전량 예약(Apple 50%+). N2 wafer 가격 $30,000+/장.
+- **GPU 임대가 하락 지속**: H100 온디맨드 시장 중앙값 $2.29~$3.12/h, 스팟 $1.03~$1.19/h. 피크 대비 $2~4 하락 지속 — neocloud ROI 압박 지속 (수요 청산가 EWI 신호 유지).
+- **CXMT 위협 구체화**: Q1 2026 DRAM 매출 **+700%+ YoY**, 글로벌 **4위·시장점유율 8%**. 한국 3사 HBM 집중으로 범용 DRAM 공백을 공략. HP·Dell·Acer·Asus CXMT DRAM 자격 탐색 개시. HBM3 목표 2026말(볼륨 생산 2028+).
+
+#### 누적 제약지수 추이 (3개 점검 스냅샷)
+
+| 병목 | 2026-06-13 | 2026-06-14 | 2026-06-23 | 9일 누적 변동 |
+|---|---:|---:|---:|---:|
+| **전력** | 68 | 70 | **73** | **▲ +5** |
+| **CAPEX/ROI** | 44 | 42 | **40** | **▼ −4** |
+| **파운드리** | 54 | 52 | **50** | **▼ −4** |
+| **패키징** | 70 | 68 | **63** | **▼ −7** |
+
+9일 간 추이: 전력만 일관 상승(+5pt), 나머지 3개 병목은 모두 완화 방향. 특히 패키징이 가장 빠른 완화(−7pt). 하방 위험은 CAPEX/ROI 1위 불변.

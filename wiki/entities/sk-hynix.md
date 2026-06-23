@@ -371,3 +371,34 @@ Counterpoint Research (2026-01-29):
 → Samsung은 3·4단계에서 격차 — 동시대 동기간 확보 못 하면 캐파 락인 격차 영구화 위험
 
 **출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §3.1, §3.2
+
+
+---
+
+## [Update 2026-06-23] Q1 2026 기록 실적 + HBM4 전략적 속도 조절
+
+### Q1 2026 영업 실적 (기록)
+
+| 지표 | 수치 | 비고 |
+|---|---|---|
+| Q1 2026 영업이익 | **KRW 37.61조** | 역대 최고 |
+| Q1 2026 영업이익률 | **72%** | 역대 최고 |
+| HBM4 연간 출하 예상 | **400Gb** (이전 450Gb에서 하향) | 의도적 속도 조절 |
+| HBM4E 12-layer 샘플 | 2026-06 출하 | 차세대 선점 |
+
+**출처**: [cryptobriefing – SK Hynix slows HBM4](https://cryptobriefing.com/sk-hynix-slows-hbm4-dram-profits/), [TechPowerUp – SK Hynix HBM4 ramp](https://www.techpowerup.com/343802/sk-hynix-slows-down-hbm4-ramp-prepares-300-layer-nand-flash/), [SK Hynix – HBM4E sample](https://news.skhynix.com/12-layer-hbm4e-sample/)
+
+### 전략적 HBM4 속도 조절 (2026-06 결정)
+
+- SK Hynix가 **HBM4 생산 속도를 의도적으로 줄이고** 범용 DDR5 DRAM으로 자원 재배치
+- 이유: DRAM 가격 강세 + HBM 연간 고정가 vs 범용 DRAM 분기 계약가 역전 → **범용 DRAM 수익률이 HBM보다 현재 높음** (Samsung Q1 2026에서도 동일 현상 확인)
+- 2026 HBM 공급은 **전량 완판 유지** — 추가 생산 없어도 손실 없음
+- DRAM 연간 수익률이 이론적 최고치 90% 근접 전망 → 최적 자원 배분
+
+### 삼성 전략에 대한 함의
+
+- SK Hynix의 HBM4 속도 조절 = **패키징(CoWoS) 수요 완화 기여** (CoWoS 수요-공급 갭 20%→10% 개선의 일부 원인)
+- 그러나 2026 HBM4 물량 경쟁은 이미 완료 — 삼성은 25~30% 확보
+- **삼성의 위협**: HBM4E(2026말~2027) 세대에서 점유율 확대 필요. SK Hynix는 12-layer HBM4E 샘플(2026-06)로 재선점 시도
+
+**관련 위키**: [samsung.md](samsung.md), [hbm-market.md](../concepts/hbm-market.md), [bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md)
