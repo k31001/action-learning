@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-25] ingest | Micron FY26 Q3 실적 발표 (2026-06-24) — $41.46B 사상 최대 (v2.24.1 → v2.24.2)
+- **무엇**: 2026-06-24 발표된 Micron 회계 Q3 FY26(5/28 종료) 실적 반영. 매출 **$41.46B**(+74% QoQ·+346% YoY), GAAP 매출총이익률 **84.9%**(사상 최고), Non-GAAP EPS **$25.11**(컨센서스 $20.60 상회). DRAM $31.3B(76%, ASP +low-60s% QoQ)·NAND $9.9B. 데이터센터 연환산 $100B 초과. HBM4 누적 $1B·2026 캐파 완판. **SCA 16건 $100B·예치금 $22B**. Q4 가이던스 매출 **$50B**·마진 ~86%·EPS $30.73. 수급 타이트 calendar 2027 이후 지속 전망.
+- **왜**: 사용자 지시 — 어제 실적 발표 내용 위키·보고서·대시보드 반영.
+- **정정**: 직전 가이던스 $33.5B(june-2026-market-update §2)를 +24% 실제 상회 — 위키 내 $33.5B는 가이던스로 표기, 확정 실적은 신규 filing 따름.
+- **영향 페이지**: 신규 `sources/filings/micron-q3-fy26.md`(1차 자료), `wiki/entities/micron.md`(Update 섹션), `wiki/concepts/price-trends.md`(Update 섹션), `index.md`(filings 섹션 신설·micron 설명), `outputs/report/scenario-planning-report.md`(KPI 표·현재 위치), `dashboard/src/data/updates.js`+`version.js`(v2.24.2 패치).
+
+---
+
 ## [2026-06-18] ingest | 인터뷰 대상자 식별 — 베인앤컴퍼니 신문섭 파트너 (v2.24.0 → v2.24.1)
 - **무엇**: 직전 ingest의 인터뷰 대상자를 "산업 전문가(직책·소속 미공개)"에서 **베인앤컴퍼니(Bain & Company) 신문섭(Moonsup Shin) 파트너** — APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표 — 로 정정. 원본 소스 헤더·대시보드 인터뷰 메뉴 메타(목록·헤더)·검색 태그·인덱스 동기화. 패치 v2.24.1.
 - **왜**: 사용자가 대상자 신원을 확인해 줌.

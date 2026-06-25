@@ -38,7 +38,7 @@
 
 ### 한국·미국 경쟁자
 - [wiki/entities/sk-hynix.md](wiki/entities/sk-hynix.md) — 매출·HBM 점유·CapEx·NVIDIA co-design
-- [wiki/entities/micron.md](wiki/entities/micron.md) — FY2025 매출·HBM3E·CHIPS Act 보조금
+- [wiki/entities/micron.md](wiki/entities/micron.md) — FY2025 매출·HBM3E·CHIPS Act 보조금·Q3 FY26 실적($41.46B·SCA $100B)
 
 ### 중국 경쟁자 (그룹 + 개별)
 - [wiki/entities/china-competitors.md](wiki/entities/china-competitors.md) — CXMT/YMTC 그룹 인덱스 + 빅펀드 + 5개년 계획
@@ -157,7 +157,8 @@
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 딥리서치: 2030 메모리 수급 4대 병목 정량 모델 (HBM 2.88EB·서버 125만 대·민감도·가격 균형)
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — 딥리서치: 병목 모니터링 모델·대시보드 설계 (3층 아키텍처·KPI P1/P2/P3·경보 5단계·대응 매뉴얼·12주 PoC)
 
-> `sources/filings/` — 향후 ingest로 채워질 디렉토리 (현재 비어있음)
+### sources/filings — 공시·실적 발표
+- [sources/filings/micron-q3-fy26.md](sources/filings/micron-q3-fy26.md) — Micron FY26 Q3 실적(2026-06-24): 매출 $41.46B(+346% YoY)·매출총이익률 84.9%·EPS $25.11·SCA 16건 $100B·Q4 가이던스 $50B
 
 ## outputs — 빌드 산출물
 

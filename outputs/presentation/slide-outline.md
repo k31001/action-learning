@@ -1050,7 +1050,7 @@ AI DC 착공 트래커(55.9GW·17개국) + 수요 변곡 EWI 앙상블(선행·�
 
 [좌측 — 왜 지금: 3가지 증거]
 ① 근위 슈퍼사이클 정점 확인
-   Micron 주가 +7.6× · HBM Sold Out · DC 착공 55.9GW(17개국, 2026 가동 ~23.7GW)
+   Micron 주가 +7.6× · Micron Q3 FY26 $41.46B(+346% YoY·마진 84.9%·Q4 $50B 가이던스·SCA $100B) · HBM Sold Out · DC 착공 55.9GW(17개국, 2026 가동 ~23.7GW)
    → 정점은 다운턴 직전 — 호황기 절제(RS-5)의 마지막 창
 ② 선행 균열 형성 중 (다음 하락 변곡)
    수요 변곡 EWI 복합 43(주의)·공급 과잉 68(경계)·SCM 공급망 56(경계 근접)·선행−끈적 괴리 +4
@@ -1076,7 +1076,7 @@ SO WHAT  다른 RS가 "무엇을 하는가"라면 RS-9는 "언제 하는가" —
 **근거 데이터**:
 - `wiki/concepts/demand-inflection-ewi.md` — 수요 변곡 EWI 앙상블(선행·끈적·공급 과잉·SCM 공급망 + 괴리 밴드) — ⑦ SCM 축 = 채찍·재고위치·할당
 - `wiki/strategies/invariant/rs9-demand-inflection-sensing.md` — RS-9 전략 문서
-- AI DC 착공 트래커 55.9GW·17개국 (2026 가동 ~23.7GW), Micron 주가 +7.6× 슈퍼사이클, DRAM>HBM OPM 정점 (Counterpoint Q4 2025)
+- AI DC 착공 트래커 55.9GW·17개국 (2026 가동 ~23.7GW), Micron 주가 +7.6× 슈퍼사이클(Q3 FY26 $41.46B·+346% YoY·SCA $100B), DRAM>HBM OPM 정점 (Counterpoint Q4 2025)
 
 ---
 
