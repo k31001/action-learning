@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-25 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-25',
+    type: 'ingest',
+    version: 'v2.24.2',
+    title: 'Micron FY26 Q3 실적 (2026-06-24) — $41.46B 사상 최대',
+    summary:
+      'Micron 회계 Q3 FY26(5/28 종료) 실적 반영. 매출 $41.46B(+74% QoQ·+346% YoY), 매출총이익률 84.9% 사상 최고, EPS $25.11로 가이던스 $33.5B 전면 상회. DRAM ASP +low-60s% QoQ(가격 동인), SCA 16건 $100B·예치금 $22B, Q4 가이던스 $50B. 슈퍼사이클 정점 확증. 패치 v2.24.2.',
+    tags: ['Micron', '실적', 'HBM4', 'SCA', 'DRAM', '슈퍼사이클', 'dashboard'],
+    items: [
+      { label: '매출 $41.46B', detail: '+74% QoQ·+346% YoY. 컨센서스 ~$8B 상회, 시간외 +13.7%(~$1,192)' },
+      { label: 'DRAM $31.3B(76%)·NAND $9.9B', detail: 'DRAM ASP +low-60s% QoQ — 출하(low-single-digit%) 압도, 가격이 성장 동인' },
+      { label: 'SCA 16건 $100B', detail: '최소 계약 매출(RPO) ~$100B + 현금 예치금·금융 약정 $22B — take-or-pay LTA 산업 표준화(RS-8)' },
+      { label: 'HBM4 누적 $1B', detail: 'HBM4 12-high 램프 HBM3E 대비 ~2배. 2026 HBM 캐파 완판. 데이터센터 연환산 $100B 초과' },
+      { label: 'Q4 가이던스 $50B', detail: '매출 $50.0B±$1.0B, 매출총이익률 ~86%, EPS $30.73. 수급 타이트 calendar 2027 이후 지속' },
+    ],
+    links: [
+      { label: 'micron-q3-fy26.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/filings/micron-q3-fy26.md' },
+      { label: 'SEC 8-K Q3 FY26 Press Release', href: 'https://www.sec.gov/Archives/edgar/data/0000723125/000072312526000013/a2026q3ex991-pressrelease.htm' },
+    ],
+  },
   // ── 2026-06-18 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-06-18',

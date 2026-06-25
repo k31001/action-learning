@@ -400,3 +400,52 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 - Micron·Samsung·SK hynix 공동 명시 — [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md) 참조
 
 **출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §2, §3.1, §3.2
+
+---
+
+## [Update 2026-06-25] FY26 Q3 실적 (2026-06-24 발표) — 사상 최대 $41.46B, 가이던스 전면 상회
+
+**1차 자료**: [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md) (회계 Q3 FY26, 2026-05-28 종료)
+
+### 헤드라인
+
+| 항목 | Q3 FY26 | Q2 FY26 | 전년 동기 | 변동 |
+|---|---|---|---|---|
+| 매출 | **$41.46B** | $23.86B | $9.30B | **+74% QoQ, +346% YoY** |
+| GAAP 매출총이익률 | **84.9%** (사상 최고) | — | — | 80% 돌파 |
+| GAAP 희석 EPS | **$24.67** (순이익 $28.24B) | — | — | — |
+| Non-GAAP 희석 EPS | **$25.11** (순이익 $28.86B) | — | — | 컨센서스 $20.60 대비 +$4.51 |
+
+- 매출 컨센서스 ~$8B 상회. 발표 직후 시간외 주가 **+13.7%(~$1,192)**.
+- **가이던스 정정**: 직전 $33.5B±750M 가이던스([june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) §2) 대비 **+24% 실제 상회**. 위키 내 $33.5B는 가이던스, 확정 실적은 $41.46B.
+
+### 사업부
+
+- **DRAM $31.3B (전사 76%)** — 비트 출하 low-single-digit% QoQ, **ASP low-60s% QoQ 급등**(가격이 압도적 동인).
+- **NAND $9.9B** — QoQ 거의 2배.
+- **데이터센터 매출 분기 $25B 초과, 연환산 $100B 초과**.
+- **HBM4 누적 매출 $1B 초과**. HBM4 12-high 램프가 **HBM3E 12-high 대비 ~2배 빠름**. 2026년 HBM 캐파 **전량 완판**.
+- HBM 점유율은 **DRAM 점유율에 근접하게 의도적 관리**(웨이퍼 잠식·non-HBM 공급 압박 회피). → 위 [Update 2026-05-19] "DRAM 점유율 수준 목표 22~23%"와 정합.
+
+### Strategic Customer Agreements (SCA) — $100B
+
+- **16개 SCA, 최소 계약 매출 ~$100B**(RPO ~$100B, 최소 물량×최소 가격). 현금 예치금+금융 약정 **$22B** 예상.
+- → 양방향 take-or-pay LTA의 산업 표준화. [rs8-structured-revenue-hedging.md](../strategies/invariant/rs8-structured-revenue-hedging.md) 강화 근거.
+
+### 자본배분·수급
+
+- Q4 capex ~$10B, **FY2026 capex ~$27B**(정부 인센티브 차감 순). FY2027 분기 capex는 Q4 수준 상회(증가분 절반 이상 건설 capex=클린룸 선반입).
+- **DRAM·NAND 수급 타이트가 calendar 2027 이후까지 지속** 전망 — 직전 CEO "shortage well beyond 2026"과 정합.
+
+### Q4 FY26 가이던스 — $50B 분기 진입
+
+- 매출 **$50.0B ± $1.0B**, GAAP 매출총이익률 **~86%**, GAAP EPS **$30.73 ± $1.00**.
+
+### Samsung 함의
+
+1. **슈퍼사이클 정점 확증**: ASP가 매출 성장의 압도적 동인(low-60s% QoQ) + DRAM 마진 사상 최고 → [price-trends.md](../concepts/price-trends.md)·[semiconductor-cycle.md](../concepts/semiconductor-cycle.md)의 "근위 정점" 진단 강화. 동시에 "가격 의존 성장 = 언와인드 리스크 누적" — RS-5 규율 격상 명분.
+2. **RS-8 LTA 정량화 명분**: Micron이 SCA $100B/16건·$22B 예치금을 공시 → Samsung도 동일 take-or-pay 구조 정량화·공시 검토.
+3. **HBM 점유율 절제 동조**: Micron도 HBM을 DRAM 점유율에 묶어 절제 → 경쟁사 동시 절제 환경. Samsung 단독 절제 점유율 손실 우려 약화.
+4. **MB2 동서 균형**: Micron 데이터센터 $100B 런레이트의 미국 집중 ↔ Samsung 동서 분산 공급 차별점 유지.
+
+**출처**: [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)
