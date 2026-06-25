@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-25] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 72·CAPEX 36·파운드리 48·패키징 62) (v2.24.2 → v2.24.3)
+- **무엇**: semianalysis.com·counterpointresearch.com·techinsights.com 및 TrendForce·Micron IR·Forbes·Statista 등 최신 데이터 수집 후 4대 병목 제약지수 갱신: **전력 70→72(▲+2)·CAPEX 42→36(▼-6)·파운드리 52→48(▼-4)·패키징 68→62(▼-6)**. CAPEX/ROI **역대 최초 Green(<40) 진입**. 드라이버 6개 갱신(`ai_revenue`·`ai_unit_econ`·`capex_guide`·`reserve_lmp`·`cowos_util`·`stack_yield`). 패치 버전 v2.24.3.
+- **왜**: 정기 점검 루틴. 핵심 신규 신호 — Micron Q3 FY26 $41.46B 실적(가이던스 $33.5B +24% 대폭 상회·사상 최대)·SK하이닉스 Q1 72% 매총이익률·Q1 DRAM $97.1B = CAPEX ROI 실현 확정; CoWoS 공급-수요 갭 20%→10%(TrendForce 2026-06-15)·HBM4 12-Hi 램프 2배 속도 = 패키징 완화 가속; HBM4 3사 Vera Rubin 인증·Q3 양산 = 파운드리 완화; 전 세계 DC 전력 49→96GW(YoY 2배)·미국 AI 28GW = 전력 구조 악화 지속. SCA 16건 $100B·Amazon $200B AI 투자 계획.
+- **sources**: `articles/june-2026-market-update-2026-06-25.md` 신설. `index.md` 갱신.
+- **wiki**: `concepts/bottleneck-model-2030.md` — 종합 판독(2026-06-25) 섹션 + 변동 표 추가·출처 갱신. frontmatter last_reviewed·sources 갱신.
+- **dashboard (v2.24.3, 패치 = 제약지수 갱신·드라이버 노트·날짜 갱신)**: `data/bottleneckModel.js` MODEL_ASOF/DRIVERS_ASOF/PREV 갱신·제약지수 4개·indexNote 4개·드라이버 6개·SUPPLIERS 2개 갱신. `src/version.js` v2.24.3.
+- **outputs**: 보고서·발표자료는 제약지수 수치 변경 수준이라 재생성 보류.
+
 ## [2026-06-25] ingest | Micron FY26 Q3 실적 발표 (2026-06-24) — $41.46B 사상 최대 (v2.24.1 → v2.24.2)
 - **무엇**: 2026-06-24 발표된 Micron 회계 Q3 FY26(5/28 종료) 실적 반영. 매출 **$41.46B**(+74% QoQ·+346% YoY), GAAP 매출총이익률 **84.9%**(사상 최고), Non-GAAP EPS **$25.11**(컨센서스 $20.60 상회). DRAM $31.3B(76%, ASP +low-60s% QoQ)·NAND $9.9B. 데이터센터 연환산 $100B 초과. HBM4 누적 $1B·2026 캐파 완판. **SCA 16건 $100B·예치금 $22B**. Q4 가이던스 매출 **$50B**·마진 ~86%·EPS $30.73. 수급 타이트 calendar 2027 이후 지속 전망.
 - **왜**: 사용자 지시 — 어제 실적 발표 내용 위키·보고서·대시보드 반영.

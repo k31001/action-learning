@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-25
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-25.md, sources/filings/micron-q3-fy26.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -324,6 +324,34 @@ flowchart LR
 - **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
 - **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
 
+### 종합 판독 (2026-06-25)
+
+#### 제약지수 업데이트 (2026-06-25, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **72** | **▲ +2** | 전 세계 DC 전력 49→96GW(YoY 2배)·미국 AI 수요 28GW(2026)·그리드 구조 악화 지속 |
+| **CAPEX/ROI** | 42 | **36** | **▼ −6** | **역대 최초 Green 진입** — Micron $41.46B 실적(가이던스 +24% 상회)·SK하이닉스 72% 매총이익률·Q1 글로벌 DRAM $97.1B·하이퍼스케일러 "silicon-supply constrained" |
+| **파운드리** | 52 | **48** | **▼ −4** | HBM4 3사 NVIDIA Vera Rubin 인증 완료·N2 램프 지속·Vera Rubin Q3 2026 양산 시작 |
+| **패키징** | 68 | **62** | **▼ −6** | CoWoS 공급-수요 갭 20%→10% 축소(TrendForce 2026-06-15)·HBM4 12-Hi 램프 속도 HBM3E 대비 2배 |
+
+**CAPEX/ROI 사상 최초 Green(< 40) 진입 — 수익성 현실화의 정량 확인. 전력은 유일하게 연속 상향 추세(64→68→70→72). 4대 병목 중 3개 동시 완화(CAPEX ▼6·파운드리 ▼4·패키징 ▼6) — 공급 측 제약 해소 방향 확인.**
+
+#### 2026-06-25 핵심 신규 신호
+
+- **CAPEX/ROI — 역대 최초 Green 돌파 (42→36)**: Micron Q3 FY26 매출 **$41.46B** (가이던스 $33.5B 대비 +24% 상회, 사상 최대), GAAP 매출총이익률 **84.9%**(사상 최고), Non-GAAP EPS **$25.11**(컨센서스 +$4.51 상회). SK하이닉스 Q1 2026 매출총이익률 **72%** — 두 회사 모두 역대 최고 수준 동시 달성. Q1 2026 전 세계 DRAM 시장 **$97.1B**(분기 기준 사상 최고). **16개 전략 고객 계약(SCA) 최소 매출 $100B·예치금 $22B** — 장기 take-or-pay 공급계약 산업 표준화 시작. Amazon **$200B** 신규 AI 투자 계획 포함 빅4 합산 가이던스 강화. 하이퍼스케일러 공식 발언 **"silicon-supply constrained"** — 돈이 있어도 메모리·GPU가 없어 지출 불가 상태. DRAM 수급 타이트 calendar **2027 이후까지** 지속 전망(Micron CEO) ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md), [june-2026-market-update-2026-06-25.md](../../sources/articles/june-2026-market-update-2026-06-25.md)).
+- **패키징 — CoWoS 갭 20%→10%, HBM4 12-Hi 2배 램프 (68→62)**: TrendForce 2026-06-15 보고서: CoWoS 공급-수요 갭 **20%→10%** 축소 — 직전 점검(130K WPM 목표)보다 실제 완화 속도가 빠름. HBM4 12-Hi 스택 양산 램프 속도가 HBM3E 12-Hi 대비 **약 2배** (Micron Q3 FY26 실적 발표). 수율 성숙 도달도 전 세대보다 유의미하게 빠를 전망. 2026년 HBM 캐파 전량 완판. Micron NVIDIA Vera Rubin 인증 완료로 Micron 자격 이슈 해소 확인 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md), [june-2026-market-update-2026-06-25.md](../../sources/articles/june-2026-market-update-2026-06-25.md)).
+- **파운드리 — HBM4 3사 인증 + Vera Rubin Q3 램프 확정 (52→48)**: NVIDIA Vera Rubin HBM4 공급사 3사(Samsung·SK hynix·Micron) 인증 완료(2026-06-05 확정). Vera Rubin GPU Q3 2026 양산 램프 시작 확인 — N3 파운드리 수요 본격화. N2 램프 지속 순항. 3사 인증 완료로 단일 공급사 집중 리스크 분산 ([june-2026-market-update-2026-06-25.md](../../sources/articles/june-2026-market-update-2026-06-25.md)).
+- **전력 — 전 세계 DC 전력 YoY 2배, 구조 악화 지속 (70→72)**: 전 세계 데이터센터 전력 수요 **49GW(2024)→96GW(2026)** YoY 약 2배 — AI 집중형 DC의 기하급수적 확장. 미국 AI 데이터센터 전력 수요 **28GW 전망(2026)**. 그리드 연계 지연(평균 7~10년)·변압기 리드타임 장기화는 구조적 제약으로 단기 해소 불가. **4대 병목 중 유일하게 연속 상향 추세(64→68→70→72) — 중장기 최대 구조 리스크 유지** ([june-2026-market-update-2026-06-25.md](../../sources/articles/june-2026-market-update-2026-06-25.md)).
+
+- **CAPEX/ROI**: **역대 최초 Green 진입** — AI 기업 매출·단위 경제성(d2) 압력이 '중립'에서 '완화'로 격상. 하이퍼스케일러 "silicon-supply constrained" 발언은 ROI 실현이 CAPEX 집행을 정당화한 것의 최강 확인. 16개 SCA·$22B 예치금은 CAPEX 하방 트리거(가이드 -15%·FCF/CapEx<0.8) 발동 임계를 높이는 구조적 완충. Amazon $200B 포함 빅4 합산 d1 추가 개선.
+- **패키징**: **현재 지수 6 하향(68→62)** — CoWoS 갭 20%→10%는 단순 증설 확인을 넘어 **수요-공급 균형 이동** 신호. HBM4 12-Hi 2배 속도 램프는 적층 수율(d2, 이전 '긴장·악화')의 구조 개선 확인. `stack_yield` '중립·개선'으로 격상. **완화 예고 경계(-15) 근접 → d2 완화 신호 강화로 조기경보 발동 전 수준**.
+- **파운드리**: **현재 지수 4 하향(52→48)** — 3사 HBM4 인증 완료로 단일 공급사 집중 위험 분산. Vera Rubin 양산 시작은 N3 수요 본격화이나 동시에 공급망 정상화 신호. N2 순항 유지. d2−d1 +33 상류-중류 괴리(지정학·수율 미지수) 잔존 — **평시 가장 여유, 이벤트 시 가장 취약 구조 유지**.
+- **전력**: **현재 지수 2 추가 상향(70→72)** — 전 세계 DC 전력 49→96GW(YoY 2배) 신규 확인. 공급 제약 해소 방향인 3개 병목과 달리 전력은 수요 증가 속도가 공급 확충 속도를 압도. 그리드 연계 지연 구조는 단기 변화 없음.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
+
+---
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -338,3 +366,5 @@ flowchart LR
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-25.md](../../sources/articles/june-2026-market-update-2026-06-25.md) — 2026-06-25 병목 제약지수 갱신 데이터 (Micron $41.46B 실적·CoWoS 갭 20%→10%·DC 전력 96GW·HBM4 3사 인증)
+- [sources/filings/micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md) — Micron FY26 Q3 실적 (2026-06-24): $41.46B·매총이익률 84.9%·SCA 16건 $100B·HBM4 12-Hi 2배 램프·Q4 가이던스 $50B
