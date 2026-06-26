@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-26
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-26.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -323,6 +323,37 @@ flowchart LR
 - **파운드리**: 지수 **2 추가 하향(54→52)** — Rubin 출하 하향으로 단기 N3 수요 일부 완화. N2 램프 순항·ASML 출하 증가 유지. d2−d1 +33 상류-중류 괴리(지정학·수율 미지수)는 잔존 — **평시 가장 여유, 이벤트 시 가장 취약 구조 유지**.
 - **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
 - **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
+
+---
+
+### 종합 판독 (2026-06-26)
+
+#### 제약지수 업데이트 (2026-06-26, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **74** | **▲ +4** | PJM DOE 긴급명령(DC 비상차단)·Bloomberg 용량경보 신설·1,050TWh 근접·PJM 6.6GW 부족 |
+| **CAPEX/ROI** | 42 | **36** | **▼ −6** | Micron Q3 FY26 $41.46B(가이던스 +24% 상회)·HBM 2027 완판·Q4 ~$50B 예고·ROI 최고 강도 |
+| **파운드리** | 52 | **50** | **▼ −2** | N2 100K WPM 다중팹 순항·Rubin Q3 출하 확정(Jensen, 2026-06-05) |
+| **패키징** | 68 | **64** | **▼ −4** | CoWoS 공급-수요 갭 20%→10% 축소(TrendForce 2026-06-15)·완화 가속 |
+
+**전력: 4개 병목 중 유일 상승(+4), 지수 74 — Orange 진입 임박. CAPEX/ROI 6점 급하락 — ROI 실증이 이번 점검의 핵심 변화. 공급 측 3개(CAPEX·파운드리·패키징) 동반 완화, 전력만 악화.**
+
+#### 2026-06-26 핵심 신규 신호
+
+- **Micron Q3 FY2026 대폭 어닝 서프라이즈**: 실제 매출 **$41.46B** — 가이던스 $33.5B 대비 **+24%** 초과. 총이익률 81%+, EPS $25.11(예상 +31% 상회). HBM4 분기 매출 **$1B 돌파**. HBM3E+HBM4 **2027년까지 완판**, 수요 **2028년까지** 연장. Q4 FY2026 가이던스 **~$50B** (애널리스트 예상 $44B 대비 +14% 예고) — ROI 실현이 이번 점검 최대 변화 ([june-2026-market-update-2026-06-26.md](../../sources/articles/june-2026-market-update-2026-06-26.md)).
+- **전력 긴급 사태화**: PJM DOE 긴급명령(2026-05-18) — AI DC(백업발전 보유) 비상시 전력 **강제 차단** 권한 부여. 역사상 최초 선례. Bloomberg 2026-06-24: PJM **capacity advisory** 신설. FERC 2026-06-18: DC 접속 패스트트랙 의무화(6개 ISO/RTO). 버지니아 DC 전력 26% → 2030년 60% 전망(EPRI). 전 세계 DC 전력 **1,050TWh** 근접. PJM 2027-28 **6.6GW 부족** 전망.
+- **NVIDIA Rubin HBM4 공급 확정**: Jensen Huang 서울 방문(2026-06-05) — 삼성·SK·마이크론 3사 HBM4 자격·양산 확인, **Q3 2026 출하** 공식화. SemiAnalysis는 NVIDIA의 실제 HBM4 공급을 SK:삼성 = **70:30**으로 추정(마이크론 사실상 0). 확인 상충 — 추적 중.
+- **Samsung HBM4E 업계 최초 샘플**: 삼성전자 2026-05-29 HBM4E(12-Hi) 샘플 출하 — HBM4 양산 3개월 만에 차세대 선도. 에너지 효율 +16%, 성능 +20%+. HBM4 logic 수율 90%+, 1c DRAM 수율 ~50%.
+- **CoWoS 갭 절반으로 축소**: TrendForce 2026-06-15 — CoWoS 공급-수요 갭 **2026말 20% → 10%** 축소 전망. 목표 130K WPM 유지. 하이퍼스케일러 85%+ 선점 지속이나 완화 속도 가속.
+- **TSMC N2 100K WPM 다중팹 램프**: N2 2025 Q4 HVM 진입 후 **Hsinchu+Kaohsiung 다중팹** 동시 램프. 2026말 100K WPM → 2027말 200K WPM. A16(2H26 출시). N3 AI 수요로 더욱 타이트.
+- **DRAM 가격 Q2 2026**: TrendForce — DRAM 계약가 **+58~63% QoQ**(Q1 +90~95%에서 둔화이나 여전히 강세). NAND **+70~75% QoQ**. HBM 웨이퍼 점유율 **23%**(2025년 19%에서 상승).
+- **HBM 시장 점유율 Q2 2026**: SK하이닉스 55~65%, 삼성 25~30%, 마이크론 5~15% — HBM4 기준 Counterpoint: SK 54%·삼성 28%·마이크론 18%.
+
+- **CAPEX**: 중류·상류 모두 완화 신호 최고 강도 — Micron $41.46B 실적이 AI 메모리 ROI의 가장 직접적 실증. AI 기업 매출(d2) → '완화' 상향. 지수 **6점 하락(42→36)** — 4대 병목 중 최대 변동. 단 ABS·SPV 의존·금리 환경은 잔존.
+- **전력**: 지수 **4점 상향(70→74)** — PJM 긴급명령·capacity advisory·FERC 패스트트랙 모두 구조 압력 가중. 허브 예비력(d1) 판정 '중립'→**'긴장'** 상향. **74 = Orange 경보 진입(≥75) 직전. 4대 병목 중 유일 상승, 현재 지수 최고**.
+- **파운드리**: 지수 **2점 하향(52→50)** — N2 100K WPM 순항·Rubin Q3 확정으로 단기 캐파 여유 유지. 구조 리스크(d2 지정학·수율 미지수) 잔존.
+- **패키징**: 지수 **4점 하향(68→64)** — CoWoS 갭 절반 축소 신호가 이번 점검 완화 중 가장 강한 증거. 상류(d2) < 현재(64) 괴리 확대 — 완화 예고 신호 강화.
 
 ## 6. 시나리오 연결 + 한계
 

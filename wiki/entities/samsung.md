@@ -29,10 +29,12 @@ sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, Tre
 | Q1 2026 총매출 | 134조 원 | Samsung IR |
 | HBM 점유 (Q3 2025) | 35% | SK 53%, Micron 11% ([hbm-market.md](../concepts/hbm-market.md)) |
 | HBM 점유 (Q2 2025, 저점) | 17% | SK 62% — 가장 추락한 분기 |
-| NVIDIA Rubin HBM4 점유 | 28% | SK 70% / Micron 18% (UBS) |
+| NVIDIA Rubin HBM4 점유 | 28~30% | SK 70% / Micron 0~18% (SemiAnalysis·TrendForce·Counterpoint) |
 | HBM4 캐파 (2026) | Sold Out | +50% YoY 증설 |
 | HBM4 양산 개시 | 2026.2 | 3.3 TB/s |
-| 1c nm 수율 | 50~70% | 2027년 80%+ 목표 (RS6) |
+| **HBM4E 샘플 출하** | **2026-05-29** | **업계 최초. 에너지 효율 +16%·성능 +20%+** |
+| HBM4 logic 수율 | **~90%+** | 1c DRAM 수율 ~50% (TrendForce, 2026-05) |
+| 1c nm DRAM 수율 | ~50% | 2027년 80%+ 목표 (RS6) |
 | 영업이익률 (Q1 2026) | 비공개 ⚠️ | SD-1 정보 공백 (SK 72% / Micron 41% GP) |
 | Texas CHIPS 보조금 | $4.745B | 연방 + Texas $250M 추가, 3순위 (Intel $8.5B / TSMC $6.6B / Micron $6.16B) |
 | DRAM 매출 1위 | 빼앗김 (2025 Q1) | 33년 만에 SK에 추월 ([dram-market-share.md](../concepts/dram-market-share.md)) |

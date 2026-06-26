@@ -1,6 +1,6 @@
 # Micron Technology 경쟁사 동향
-**수집일**: 2026-05-05
-**출처**: Micron IR, TrendForce, Futurum Group, CNBC, NIST, Blocks and Files
+**수집일**: 2026-06-26 (최초: 2026-05-05)
+**출처**: Micron IR, TrendForce, Futurum Group, CNBC, NIST, Blocks and Files, Investing.com, The Next Web
 
 ---
 
@@ -13,9 +13,13 @@
 | FY2023 (Sep 2023) | $15.5B | -49% | 메모리 불황 |
 | FY2024 (Sep 2024) | $25.1B | +62% | 회복세 |
 | FY2025 (Sep 2025) | $37.4B | +49% | 역대 최고 |
+| **FY2026 Q3 (Jun 2026)** | **$41.46B** | **+4배 YoY** | **분기 역대 최고, 가이던스 $33.5B 대비 +24% 대폭 상회** |
+| FY2026 Q4 (Sep 2026, 예상) | ~$50B ± $1B | 신규 역대 최고 예고 | 애널리스트 컨센서스 $44B 대비 +14% |
 
-- 출처: Micron Technology IR (investors.micron.com)
+- 출처: Micron Technology IR (investors.micron.com), Investing.com Earnings Transcript (2026-06-24)
 - FY2025 매출총이익률: 41% (전년 대비 +17%p)
+- **FY2026 Q3 총이익률: 81%+** (Q2: 69%, 전년동기: 27%)
+- **FY2026 Q3 조정 EPS: $25.11** (애널리스트 예상 $20.49 대비 +31% 상회)
 
 ### 분기별 매출 (FY2025)
 
@@ -57,9 +61,13 @@
 | 2024 | 7% | 3위 (후발 진입) |
 | Q2 2025 | 21% | 삼성전자 추월 |
 | Q3 2025 | 11% | 변동 |
-| 목표 | 22~23% | DRAM 점유율 수준 달성 목표 |
+| Q2 2026 (최신) | **5~15%** | HBM4 Rubin 공급 불확실 (SemiAnalysis "0" vs Jensen "확인" 상충) |
+| HBM4 전체 (Counterpoint 2026) | 18% | SK 54% · 삼성 28% · 마이크론 18% |
 
-- 출처: Astute Group, Counterpoint Research
+- 출처: Astute Group, Counterpoint Research, SemiAnalysis (2026-06)
+- **NVIDIA Rubin HBM4**: SemiAnalysis는 Micron 공급 근거 없다고 주장(SK:삼성 70:30 추정). Jensen Huang(2026-06-05)은 3사 모두 양산 확인 발표 — 상충, 추적 필요
+- **HBM3E + HBM4 2027년까지 완판** 확인, 수요 **2028년까지** 연장 (Micron Q3 FY26 Earnings Call)
+- 출처: [june-2026-market-update-2026-06-26.md](../../sources/articles/june-2026-market-update-2026-06-26.md)
 
 ---
 

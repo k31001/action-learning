@@ -14,6 +14,12 @@
 
 ---
 
+## [2026-06-26] ingest | 정기 병목 모델 점검 — 전력↑+4·CAPEX↓−6·파운드리↓−2·패키징↓−4
+- **무엇**: SemiAnalysis·Counterpoint·TrendForce·Bloomberg·FERC·Micron IR·Jensen Huang 발언 등을 수집해 2026-06-26 기준 병목 모델 제약지수 갱신. 전력 70→74(+4), CAPEX 42→36(−6), 파운드리 52→50(−2), 패키징 68→64(−4). 변동폭 표시를 위한 PREV_MODEL_ASOF·PREV_INDICES 갱신.
+- **왜**: Micron Q3 FY26 실제 실적이 가이던스를 +24% 대폭 상회($41.46B), PJM DOE 긴급 DC 전력 차단 명령(2026-05-18)·Bloomberg 용량경보(2026-06-24)·FERC 패스트트랙(2026-06-18) 등 두 개의 큰 신규 사실이 병목 지형을 변경했다.
+- **주요 신규 신호**: ① Micron Q3 $41.46B(+24% 어닝 서프라이즈)·HBM 2027 완판·Q4 ~$50B. ② PJM DOE 긴급 DC 비상차단(최초 선례). ③ TrendForce 2026-06-15: CoWoS 갭 20%→10% 축소. ④ TSMC N2 100K WPM 다중팹 순항. ⑤ NVIDIA Rubin Q3 출하 확정(Jensen, 2026-06-05). ⑥ Samsung HBM4E 최초 샘플(2026-05-29). ⑦ DRAM Q2 +58~63%·NAND +70~75% QoQ.
+- **영향 파일**: `sources/articles/june-2026-market-update-2026-06-26.md`(신규), `dashboard/src/data/bottleneckModel.js`, `wiki/concepts/bottleneck-model-2030.md`, `wiki/entities/micron.md`, `wiki/entities/samsung.md`, `wiki/entities/sk-hynix.md`, `index.md`, `log.md`
+
 ## [2026-06-25] build | 보고서에 Micron Q3 FY26 분기 실적 상세 섹션 추가
 - **무엇**: `outputs/report/scenario-planning-report.md` §2.2에 하위 절 **2.2.1 [속보] 마이크론 FY26 Q3 실적**을 신설. 손익 표(매출 $41.46B·마진 84.9%·EPS $25.11)·사업부 표(DRAM $31.3B·NAND $9.9B·데이터센터 $100B 런레이트·HBM4 $1B)·SCA $100B 16건·자본배분·Q4 가이던스 $50B·삼성 함의 4가지를 1차 자료 인용과 함께 본문화.
 - **왜**: 사용자 지시 — 어제 마이크론 분기 실적 발표 내용을 보고서에 본격 추가.

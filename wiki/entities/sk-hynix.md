@@ -36,10 +36,14 @@
 | 2024 연간 | 54% | 39% | 7% |
 | Q2 2025 | 62% | 17% | 21% |
 | Q3 2025 | 53% | 35% | 11% |
-| 2026 전망 | ~50% 이상 | 30%+ 목표 | ~20% |
+| Q2 2026 (최신) | **55~65%** | 25~30% | 5~15% |
+| HBM4 Rubin (2026, Counterpoint) | **54%** | 28% | 18% |
+| HBM4 Rubin (2026, SemiAnalysis) | **~70%** | ~30% | ~0% |
 
-- 출처: Astute Group, Counterpoint Research (2025년 기준)
+- 출처: Astute Group, Counterpoint Research, SemiAnalysis (2026-06)
 - NVIDIA 공급물량: 2025년 상반기 SK하이닉스 전체 매출의 27% 기여 (TrendForce, 2025-08-18)
+- **NVIDIA Rubin HBM4**: SK하이닉스 약 70% 점유 확정 (SemiAnalysis·TrendForce·UBS 컨센서스)
+- 출처: [june-2026-market-update-2026-06-26.md](../../sources/articles/june-2026-market-update-2026-06-26.md)
 
 ### HBM 시장 규모 전망
 

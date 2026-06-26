@@ -146,6 +146,7 @@
 - [sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md](sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) — Bain(신문섭) AI 컴퓨트 수요·반도체 공급·DC 2030 전망 3개 시리즈: 컴퓨트 경제학 갭($2조/$500B/$800B)·메모리=AI 지출 30%·웨이퍼 잠식(HBM 4×)·163GW·전력 게이트키퍼·Scramble→Strategy
 - [sources/articles/june-2026-market-update-2026-06-13.md](sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 정기 점검 시장 데이터: HBM Q1 2026 점유율·삼성 HBM4E 업계 최초·Vera Rubin 인증·HBM 가격·빅4 CapEx $700~725B·DRAM/NAND Q2 가격·TSMC 5월 매출·CoWoS 65만 장·미국 DC 전력 42GW·그리드 대기열 2,600GW
 - [sources/articles/june-2026-market-update-2026-06-14.md](sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 정기 점검 시장 데이터: HBM 점유율 4월(삼성 35~40% 급회복)·Micron Q3 FY26 역대최고 $33.5B·빅4 Q1 분기 CapEx 상세·전체 하이퍼스케일러 $782B·PJM 8년·DOE 100GW·ERCOT 145GW·DRAM Q1 실제 +90~95%·Q2 예상·TSMC 130K WPM·Rubin 22% 하향
+- [sources/articles/june-2026-market-update-2026-06-26.md](sources/articles/june-2026-market-update-2026-06-26.md) — 2026-06-26 정기 점검: Micron Q3 FY26 $41.46B(가이던스 +24% 상회)·HBM 2027 완판·PJM DOE 긴급명령(DC 비상차단)·Bloomberg 용량경보·FERC 패스트트랙·CoWoS 갭 20%→10%·N2 100K WPM·Rubin Q3 출하·Samsung HBM4E 최초 샘플·병목지수 변동(전력↑+4·CAPEX↓−6·파운드리↓−2·패키징↓−4)
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
