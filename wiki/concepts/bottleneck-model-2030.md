@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-27
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-27.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -324,6 +324,35 @@ flowchart LR
 - **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
 - **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
 
+---
+
+### 종합 판독 (2026-06-27)
+
+#### 제약지수 업데이트 (2026-06-27, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **73** | **▲ +3** | Goldman Sachs: 미국 DC 수요 2027년 66GW(2배+)·45GW 부족분(2028)·DC 전력 2030년 175% 증가·DC 노동력 34만 명 미충원 |
+| **CAPEX/ROI** | 42 | **39** | **▼ −3** | SK Hynix Q1 72% OP 마진·HBM 수요 3년치 생산 초과·DRAM Q1 +80% QoQ·빅4 $725B 공급제약 확인 |
+| **파운드리** | 52 | **50** | **▼ −2** | Rubin 비중 29%→22%로 N3 캐파 일부 완화 지속·CXMT HBM 증가 but 수출통제 한계 |
+| **패키징** | 68 | **63** | **▼ −5** | TrendForce(2026-06-15): CoWoS 수급 갭 20%→10%(2026년 말)·CoWoS 최대 140K WPM·Rubin 수요 하향 |
+
+**전력: 현재 지수 최고(73) — 구조적 악화 지속. 공급 측 3개 병목(패키징·파운드리·CAPEX)은 점진 완화 방향 강화. 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리.**
+
+#### 2026-06-27 핵심 신규 신호
+
+- **전력 구조 병목 악화 심화**: Goldman Sachs: 미국 DC 전력 수요 31 GW(2025) → **66 GW(2027)** (2년 내 2배+). 2030년까지 **175%** 증가(2023 기준). 미국 DC **전력 부족분 45 GW(2028)** 예상 — 현재 11 GW에서 4배 확대. 2030년까지 72 GW 신규 발전 필요(대형 원전 72기 상당). 그리드 지출 2030년까지 **~$7,200억** 필요. DC 건설 노동력 **34만 명 미충원**(2026년 말 기준). **인력 병목이 전력 병목과 결합** — 그리드 전문 인력 양성에 3~4년 소요. Fortune: "DC 개발 궤적의 굴절" (2026-03) ([june-2026-market-update-2026-06-27.md](../../sources/articles/june-2026-market-update-2026-06-27.md)).
+- **CAPEX ROI 실현 신호 강화**: SK Hynix Q1 2026 **₩52.6조 매출·72% 영업이익률**(역대 최고, NVIDIA·TSMC 동기 마진 초과). HBM 고객 주문이 **향후 3년치 생산계획 초과** — 공급이 수요를 따라가지 못하는 구조 확인. 글로벌 DRAM Q1 2026 매출 **+80% QoQ** 사상 최고(Counterpoint Research). DRAM 계약가 Q1 2026 **+90~95% QoQ**. 빅4 $725B 전원 **공급 제약 상태** 확인 (Sundar Pichai: "compute-constrained"). CAPEX 하방 위험 지속 감소.
+- **파운드리 N3 수요 완화 지속**: Rubin 2026 출하 비중 **22%** 유지 확인(HBM4 인증 지연). N2 램프 순항. CXMT HBM3 양산 2026년 말 목표(월 6만 장), 그러나 미국 수출 통제(TSV 장비·유지보수 인원)로 2027+ 이후 확장 제한 — 비서방 시장에서만 유효.
+- **패키징 최대 완화 신호**: TrendForce(2026-06-15): TSMC CoWoS 수급 갭 **20% → 10%**(2026년 말) 축소 예상 — 이전 점검 대비 가장 큰 긍정 변화. CoWoS 캐파 **120~140K WPM** (업계 합산 ~200K WPM 가능). TSMC 첨단 패키징 매출 **>10%**(2025년 8%). CoPoS 파일럿 **6월 완공**. 상류(d2) < 현재 지수, 완화 추세 확인.
+
+#### 드라이버 판정 업데이트 (2026-06-27 변경 사항만)
+
+- **CAPEX d2→이익: AI 기업 매출·이익** 중립▶ 유지 → SK Hynix 72% OP·DRAM +80% QoQ로 메모리 수요 측면 ROI 재확인. HBM 수요 3년 초과 = 하이퍼스케일러 주문 강도 최대치.
+- **CAPEX d1: 하이퍼스케일러 이익·FCF** — 빅4 모두 공급 제약(수요 제약 아님) → 완화▶ 방향 강화. 지수 추가 하향 근거.
+- **전력 d2→접속: 변압기·HV 케이블 리드타임** 긴장▼ 유지 + **인력 병목** 신규 추가 — DC 건설 노동력 34만 명 부족, 그리드 T&D 인력 20.7만 명 부족(양성 3~4년). 전력 지수 상향 근거.
+- **패키징 d1: CoWoS 가동률·증설** — 수급 갭 20%→10% 확인, 긴장▶ → **중립▶** 하향 조정 근거.
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -338,3 +367,4 @@ flowchart LR
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-27.md](../../sources/articles/june-2026-market-update-2026-06-27.md) — 2026-06-27 병목 제약지수 갱신 데이터 (Goldman Sachs 전력·SK Hynix Q1·DRAM +80%·CoWoS 수급 갭 10%·CXMT·빅4 $725B)

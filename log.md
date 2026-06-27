@@ -14,6 +14,21 @@
 
 ---
 
+## [2026-06-27] ingest | 병목 모델 정기 점검 2026-06-27 — 제약지수 갱신 v2.24.3
+
+- **무엇**: 병목 모델(bottleneck-model-2030.md) 정기 점검. Goldman Sachs 전력 수요 보고서·SK Hynix Q1 2026 실적·Counterpoint Research DRAM 시장·TrendForce CoWoS 공급 갭 분석을 신규 수집하여 제약지수 4개 갱신. 이전 점검(2026-06-14) 대비 변동.
+- **이전(2026-06-14) → 현재(2026-06-27)**:
+  - 전력: 70 → **73** (**▲ +3**) — Goldman Sachs: 미국 DC 전력 2027년 66GW(2배+)·2028년 45GW 부족·2030년 175% 증가. DC 건설 인력 34만 명 미충원이 인프라 병목과 결합.
+  - CAPEX/ROI: 42 → **39** (**▼ −3**) — SK Hynix Q1 2026 ₩52.6조·72% OP 마진(역대 최고). HBM 수요 3년치 생산 초과. DRAM Q1 +80% QoQ. 빅4 $725B 전원 공급 제약 상태.
+  - 파운드리: 52 → **50** (**▼ −2**) — Rubin 비중 22% 유지로 N3 캐파 완화 지속. CXMT HBM3 양산 추진 but 수출통제 병목.
+  - 패키징: 68 → **63** (**▼ −5**) — TrendForce(2026-06-15): CoWoS 수급 갭 20%→10%(2026년 말). 최대 140K WPM. 4대 병목 중 가장 큰 완화.
+- **영향받은 파일**:
+  - `sources/articles/june-2026-market-update-2026-06-27.md` (신규)
+  - `wiki/concepts/bottleneck-model-2030.md` (종합 판독 2026-06-27 섹션 추가)
+  - `dashboard/src/data/bottleneckModel.js` (MODEL_ASOF·PREV_INDICES·currentIndex 4개·indexNote 4개)
+  - `dashboard/src/version.js` (v2.24.2 → v2.24.3)
+- **건너뛴 갈래**: `outputs/report/`·`outputs/presentation/`·`wiki/strategies/` — 이번 점검은 병목 제약지수 수치 갱신이며, 시나리오·전략 구조에 변화 없음. 빌드 산출물 재생성 불필요.
+
 ## [2026-06-25] build | 보고서에 Micron Q3 FY26 분기 실적 상세 섹션 추가
 - **무엇**: `outputs/report/scenario-planning-report.md` §2.2에 하위 절 **2.2.1 [속보] 마이크론 FY26 Q3 실적**을 신설. 손익 표(매출 $41.46B·마진 84.9%·EPS $25.11)·사업부 표(DRAM $31.3B·NAND $9.9B·데이터센터 $100B 런레이트·HBM4 $1B)·SCA $100B 16건·자본배분·Q4 가이던스 $50B·삼성 함의 4가지를 1차 자료 인용과 함께 본문화.
 - **왜**: 사용자 지시 — 어제 마이크론 분기 실적 발표 내용을 보고서에 본격 추가.
