@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-06-28] build | 위키 지식 그래프 — graph DB 없는 LLM 링크 시각화 (v2.24.2 → v2.25.0)
+- **무엇**: Karpathy LLM Wiki의 "graph DB 대신 LLM이 유지하는 마크다운 링크" 개념을 **기계 순회 가능한 그래프로 추출·시각화**. ① `scripts/build-knowledge-graph.mjs` 신설 — `wiki/**/*.md`를 스캔해 노드(페이지)·엣지(페이지 간 인용 링크) 추출, degree 집계, 의존성 없는 손수 구현 force-directed 레이아웃으로 좌표 베이크, 고아(index.md 미등록)·고립(엣지 0)·역링크 누락(A→B인데 B가 A 미인용) lint 신호 산출 → `dashboard/src/data/knowledgeGraph.js`(GENERATED) 출력. ② 대시보드 `Knowledge Graph` 탭 신설 — SVG 팬/줌·호버 이웃 하이라이트·클릭 고정·카테고리 토글 범례·검색·허브 top8·lint 패널·노드별 GitHub blob 링크.
+- **왜**: 사용자 요청 — "그래프 시각화를 위한 작업을 하고 대시보드에 표현". 기존엔 링크가 사람/LLM이 읽는 인라인 마크다운으로만 존재 → 노드-엣지로 추출하니 허브(Samsung 36·Bottleneck 18·HBM 16·NVIDIA 16)·고립 9·역링크 누락 162가 정량 가시화. graph DB의 쿼리/제약을 LLM lint 워크플로우로 대체하는 구조를 그대로 시각화.
+- **산출 통계**: 노드 77 · 엣지 199(상호 37) · 평균연결 5.2 · 고아 0(인덱스 무결성 OK).
+- **dashboard (v2.25.0, 마이너 = 새 탭 + 새 데이터 카테고리)**: App.jsx 탭 추가(Share2), KnowledgeGraph.jsx 신설, knowledgeGraph.js(빌드 산출물), version bump(원격 인터뷰 탭 v2.24.2와 rebase 머지). 빌드 검증 통과·콘솔 에러 없음. 재생성: `node scripts/build-knowledge-graph.mjs`.
+
+---
+
 ## [2026-06-25] build | 보고서에 Micron Q3 FY26 분기 실적 상세 섹션 추가
 - **무엇**: `outputs/report/scenario-planning-report.md` §2.2에 하위 절 **2.2.1 [속보] 마이크론 FY26 Q3 실적**을 신설. 손익 표(매출 $41.46B·마진 84.9%·EPS $25.11)·사업부 표(DRAM $31.3B·NAND $9.9B·데이터센터 $100B 런레이트·HBM4 $1B)·SCA $100B 16건·자본배분·Q4 가이던스 $50B·삼성 함의 4가지를 1차 자료 인용과 함께 본문화.
 - **왜**: 사용자 지시 — 어제 마이크론 분기 실적 발표 내용을 보고서에 본격 추가.
