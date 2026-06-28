@@ -151,3 +151,13 @@
 | DF-A | AI 수요 구조의 지속성 (AI CapEx + 버블 리스크 통합) | 25+25=50 | AI 인프라 투자가 2030~2035년까지 구조적으로 지속되는가, 아니면 버블 붕괴·ROI 실망으로 급감하는가 |
 | DF-B | 미중 지정학·수출통제 강도 (대만 + 수출통제 통합) | 25+25=50 | 미중 기술 디커플링이 전면화되어 삼성전자 시안 팹·대중 수출이 완전 차단되는가, 아니면 공존·협상 구도가 유지되는가 |
 | DF-C | AI 메모리 기술 패러다임 (3D DRAM + ASIC 통합) | 25+20=45 | HBM 중심 현재 패러다임이 2030~2035년까지 지속되는가, 아니면 3D DRAM·PIM·CXL 등 대안 아키텍처로 전환되는가 |
+
+---
+
+## 입력·출력 연결
+
+본 매트릭스는 STEEP 브레인스토밍 요인을 영향력×불확실성으로 점수화하는 단계다. (Shell 시나리오 플래닝 파이프라인)
+
+- **입력 — STEEP 5개 카테고리**: [Social](../steep/social.md) · [Technology](../steep/technology.md) · [Environment](../steep/environment.md) · [Economy](../steep/economy.md) · [Political](../steep/political.md)
+- **출력 — Driving Force 선정**: 상위 6개 후보 → [핵심 Driving Forces](key-drivers.md) 에서 DF1·DF2 주축 + DF3 보조 축으로 최종 선별
+- **다운스트림**: 선정된 DF → [시나리오 매트릭스](../scenarios/scenario-matrix.md) 2×2 구성

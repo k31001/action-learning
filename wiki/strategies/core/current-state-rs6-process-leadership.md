@@ -35,7 +35,7 @@
 ### Capex 효율 — Process Upgrade로 선회한 업계
 
 - **2026 NAND capex $22.2B (+5%)** — 업계가 capa 확장보다 **process upgrade·hybrid bonding 중심** 전략 (TrendForce 2025-11)
-- Samsung 2025 capex 전년比 -11%, SK하이닉스 23~25조 → **2026 30조+** ([data/competitors/market-share.md](../../data/competitors/market-share.md))
+- Samsung 2025 capex 전년比 -11%, SK하이닉스 23~25조 → **2026 30조+** ([wiki/competitors/market-share.md](../../concepts/dram-market-share.md))
 
 ### 양산 ramp 손실 환산
 
@@ -98,4 +98,4 @@
 - [Why YMTC's Hybrid Bonding IP Is Unavoidable — Knowmade](https://www.knowmade.com/technology-news/semiconductor-news/packaging-news/ymtcs-hybrid-bonding-patents-a-key-competitive-factor-for-memory-chipmakers/)
 - [Yield Learning — Weber, PSU](https://web.pdx.edu/~webercm/documents/2004%20Weber%20Yield%20Learning.pdf)
 - [TSMC Q1 2026 — CNBC](https://www.cnbc.com/2026/04/16/tsmc-q1-profit-58-percent-ai-chip-demand-record.html)
-- 내부: [data/technology/nand-process-transition.md](../../data/technology/nand-process-transition.md), [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md)
+- 내부: [wiki/technology/nand-process-transition.md](../../concepts/nand-process-transition.md), [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md)

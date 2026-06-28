@@ -1,8 +1,8 @@
 # 불변전략 (Robust Strategies) — 문서 인덱스
 
 > **목적**: 시나리오 A~E (5개) **모두**에서 긍정적 가치를 창출하는 전략. "어떤 미래가 와도 이긴다"의 조건을 충족한다.
-> **재검증 결과**: 기존 RS1~RS7 비판적 평가 후 재편 + RS-8(구조화 매출 헷지)·RS-9(데이터 기반 수요 변곡 센싱) 추가 = 9개 (메모: [robust-reverification.md](../../analysis/scenarios/robust-reverification.md))
-> **상위 문서**: [scenario-planning-report.md](../scenario-planning-report.md), [analysis/scenarios/strategy.md](../../analysis/scenarios/strategy.md)
+> **재검증 결과**: 기존 RS1~RS7 비판적 평가 후 재편 + RS-8(구조화 매출 헷지)·RS-9(데이터 기반 수요 변곡 센싱) 추가 = 9개 (메모: [robust-reverification.md](../../scenarios/robust-reverification.md))
+> **상위 문서**: [wiki/scenarios/strategy.md](../../scenarios/strategy.md) (Main Bet/Side Bet/RS 통합)
 
 ---
 

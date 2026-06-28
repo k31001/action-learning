@@ -14,7 +14,7 @@
 | **한국 (평택·기흥)** | HBM4/5, 첨단 DRAM·NAND 전략 허브 | P4·P5 1c nm 전환 진행, P5·P6 NAND 대체 라인 준비 | Samsung IR · ✅ |
 | **미국 (텍사스 테일러)** | HBM4E/HBM5 미국 공급 거점 | **CHIPS Act 보조금 $4.745B 확정** (목표 대비 60~80%, 2024.4) | NIST, Bloomberg · ✅ |
 | 텍사스 2기 (계획) | HBM4E·HBM5 전용 (2030 가동 목표) | 2026 내 CHIPS Act 2.0 신청 (목표 보조금 $60~80B) | Samsung IR · 🔵 |
-| **일본 (요코하마)** | 첨단 소재·패키징 R&D 허브 | 일본 보조금 수천억 엔 ([data/competitors/market-share.md](../../data/competitors/market-share.md)) | NIST, Yole · 🔵 |
+| **일본 (요코하마)** | 첨단 소재·패키징 R&D 허브 | 일본 보조금 수천억 엔 ([wiki/competitors/market-share.md](../../concepts/dram-market-share.md)) | NIST, Yole · 🔵 |
 | **인도 (델리/구자라트)** | OSAT 거점 (2027~2028 계획) | 인도 ISMP 인센티브 활용 검토 | strategy.md · ⚠️ |
 | **중국 (시안)** | 128단 NAND, 일반 DRAM·NAND 대중국 공급 | **연간 라이선스 갱신 체제** (VEU 폐지 후) | US 상무부 · ✅ |
 
@@ -39,7 +39,7 @@
 
 ### 정책 환경
 
-- **MATCH 법안 통과 여부**: 2026 Q3~2027 Q1 결정 — 통과 시 시안 운영 사실상 차단 ([data/policy/us-export-controls.md](../../data/policy/us-export-controls.md)) · ✅
+- **MATCH 법안 통과 여부**: 2026 Q3~2027 Q1 결정 — 통과 시 시안 운영 사실상 차단 ([wiki/policy/us-export-controls.md](../../concepts/us-export-controls.md)) · ✅
 - **VEU 폐지** (2025): 시안 팹은 연간 갱신 체제로 전환 — 갱신 실패 위험 상존 · ✅
 - **CHIPS Act 2.0**: 2026 신청, 결과 2027 예상 · 🔵
 - **인도 반도체 인센티브 (ISMP)**: 자본 투자의 50% 보조 가능 · ✅
@@ -57,7 +57,7 @@
 
 ### 외부 평가
 
-- **Counterpoint Research**: 삼성의 동서 양쪽 시장 접근은 SK하이닉스·Micron 대비 차별 구조 ([data/competitors/market-share.md](../../data/competitors/market-share.md))
+- **Counterpoint Research**: 삼성의 동서 양쪽 시장 접근은 SK하이닉스·Micron 대비 차별 구조 ([wiki/competitors/market-share.md](../../concepts/dram-market-share.md))
 - **NIST**: 텍사스 테일러 보조금 $4.745B 확정 (2024.4) — 미국 정부의 명시적 투자 지지
 - **Nikkei Asia**: SK하이닉스가 인디애나 팹 검토 중이나 CHIPS Act 보조금 미확정 — 삼성 대비 후발
 
@@ -98,4 +98,4 @@
 
 - [CHIPS Act Samsung Texas Taylor — NIST](https://www.nist.gov/news-events/news/2024/04/biden-harris-administration-announces-preliminary-terms-samsung-electronics)
 - [Samsung pulls ahead of SK Hynix as commodity DRAM prices surge — Digitimes](https://www.digitimes.com/news/a20260504VL202/samsung-sk-hynix-dram-hbm4-price.html)
-- 내부: [data/policy/us-export-controls.md](../../data/policy/us-export-controls.md), [data/policy/chips-act.md](../../data/policy/chips-act.md), [data/competitors/market-share.md](../../data/competitors/market-share.md), [data/market/2026-q1-current-state.md](../../data/market/2026-q1-current-state.md)
+- 내부: [wiki/policy/us-export-controls.md](../../concepts/us-export-controls.md), [wiki/policy/chips-act.md](../../concepts/chips-act.md), [wiki/competitors/market-share.md](../../concepts/dram-market-share.md), [wiki/market/2026-q1-current-state.md](../../concepts/2026-q1-current-state.md)

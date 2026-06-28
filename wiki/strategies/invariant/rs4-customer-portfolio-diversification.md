@@ -16,32 +16,32 @@
 ## 2. 근거 데이터 (Evidence)
 
 ### 2.1 단일 고객 의존의 실제 충격 — 메모리 산업 사례
-- 삼성 HBM3E 12Hi 품질 이슈 단발 사고로 NVIDIA 공급 자격 지연 → **Q2 2025 HBM 점유율 17%로 추락** ([data/competitors/market-share.md](../../data/competitors/market-share.md))
+- 삼성 HBM3E 12Hi 품질 이슈 단발 사고로 NVIDIA 공급 자격 지연 → **Q2 2025 HBM 점유율 17%로 추락** ([wiki/competitors/market-share.md](../../concepts/dram-market-share.md))
 - Q3 2025 35%로 회복했으나, 1년간의 매출 갭 = 추정 **$5~8B 손실** (HBM 매출 기준)
 - 핵심 교훈: **단일 고객의 단발 인증 지연이 매출의 절반을 날릴 수 있는 구조**
 
 ### 2.2 SK하이닉스의 NVIDIA 의존 — 양날의 검
-- SK하이닉스 NVIDIA Rubin HBM4 점유율 **70% 전망** (UBS) ([data/market/hbm-market.md](../../data/market/hbm-market.md))
+- SK하이닉스 NVIDIA Rubin HBM4 점유율 **70% 전망** (UBS) ([wiki/market/hbm-market.md](../../concepts/hbm-market.md))
 - 표면적으로는 호황. 그러나 UBS·Morgan Stanley는 **"단일 고객 의존 70%가 동시에 단일 고객 리스크 70%"**라고 분석
 - 시나리오 E(패러다임 전환)에서 NVIDIA가 커스텀 ASIC으로 전환할 경우 SK하이닉스 매출 직격탄
 
 ### 2.3 Take-or-Pay·LTA 사례 — Samsung Foundry-Tesla
-- Samsung Foundry-Tesla **다년 계약(2024)**: HW 다이 공급에 대한 take-or-pay 구조 명문화 ([analysis/benchmark/cyclical-strategy-benchmark.md §1](../../analysis/benchmark/cyclical-strategy-benchmark.md))
+- Samsung Foundry-Tesla **다년 계약(2024)**: HW 다이 공급에 대한 take-or-pay 구조 명문화 ([wiki/benchmark/cyclical-strategy-benchmark.md §1](../../benchmark/cyclical-strategy-benchmark.md))
 - 결과: Tesla AI 칩 출하 변동에도 Samsung Foundry 매출 안정화
 - 시사점: 고객도 **단가보다 공급 안정성**을 더 중시하는 구간이 존재 — 그 구간이 LTA 협상의 골든 타임
 
 ### 2.4 SK하이닉스의 장기 선불계약 구조
-- SK하이닉스가 2024~2025 shortage 시기에 NVIDIA·Microsoft·Amazon 등과 **장기 선불계약 체결** ([data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md), KED Global, Nikkei Asia)
+- SK하이닉스가 2024~2025 shortage 시기에 NVIDIA·Microsoft·Amazon 등과 **장기 선불계약 체결** ([wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md), KED Global, Nikkei Asia)
 - 효과: 2026~2028 캐파의 70%+ 사전 매출 확정. **다운사이클 충격 흡수 구조 확보**
 - 삼성도 동일한 구조 협상 가능 — 지금이 골든 타임
 
 ### 2.5 Maersk의 통합 물류 — 다양화의 사이클 평탄화 효과
-- 2016년 Maersk가 단일 사업(컨테이너) 모델 한계 인식 → **인접 영역(항공·육상·창고·풀필먼트) 통합** ([benchmark](../../analysis/benchmark/cyclical-strategy-benchmark.md))
+- 2016년 Maersk가 단일 사업(컨테이너) 모델 한계 인식 → **인접 영역(항공·육상·창고·풀필먼트) 통합** ([benchmark](../../benchmark/cyclical-strategy-benchmark.md))
 - 2020 상반기 해운 부진 시 항공화물 단가 상승으로 그룹 EBITDA +$5,100만
 - 메모리 적용: **사이클이 다른 고객군**(하이퍼스케일러 vs 자동차 vs 의료 vs 통신)을 균형 있게 보유 시 사이클 평탄화
 
 ### 2.6 SanDisk-Kioxia JV 모델 — 고객 공동투자
-- 1991년부터 일본 욧카이치·기타카미에 NAND 팹을 **각 50% 지분** 공동 소유 ([data/competitors/market-share.md](../../data/competitors/market-share.md))
+- 1991년부터 일본 욧카이치·기타카미에 NAND 팹을 **각 50% 지분** 공동 소유 ([wiki/competitors/market-share.md](../../concepts/dram-market-share.md))
 - 응용: 메모리 회사 + 하이퍼스케일러 50:50 JV 팹 구조. JV 생산물량 100%를 해당 고객에게 우선 공급, AI 가속기 로드맵에 맞춘 HBM 공동 설계
 - 효과: 수요 불확실성 제거, 초기 자본 부담 50% 절감, 고객 락인
 
@@ -134,12 +134,12 @@
 ## 출처 (Citations)
 
 ### 내부 문서
-- [analysis/scenarios/strategy.md §3 RS4](../../analysis/scenarios/strategy.md)
-- [analysis/benchmark/cyclical-strategy-benchmark.md (Maersk, Samsung Foundry-Tesla)](../../analysis/benchmark/cyclical-strategy-benchmark.md)
-- [data/competitors/market-share.md (SanDisk-Kioxia JV 모델)](../../data/competitors/market-share.md)
-- [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md)
-- [data/market/hbm-market.md](../../data/market/hbm-market.md)
-- [data/market/2026-q1-current-state.md](../../data/market/2026-q1-current-state.md)
+- [wiki/scenarios/strategy.md §3 RS4](../../scenarios/strategy.md)
+- [wiki/benchmark/cyclical-strategy-benchmark.md (Maersk, Samsung Foundry-Tesla)](../../benchmark/cyclical-strategy-benchmark.md)
+- [wiki/competitors/market-share.md (SanDisk-Kioxia JV 모델)](../../concepts/dram-market-share.md)
+- [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md)
+- [wiki/market/hbm-market.md](../../concepts/hbm-market.md)
+- [wiki/market/2026-q1-current-state.md](../../concepts/2026-q1-current-state.md)
 
 ### 외부 자료
 - [SK Hynix's NVIDIA Co-design Partnership — Nikkei Asia](https://asia.nikkei.com)

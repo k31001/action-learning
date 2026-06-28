@@ -98,7 +98,7 @@
 - [Samsung and SK hynix advance 4F2 DRAM — SemiWiki](https://semiwiki.com/forum/threads/samsung-and-sk-hynix-advance-4f%C2%B2-dram-as-gateway-to-3d-memory.23054/)
 - [SK hynix 4F2 DRAM cost reduction — TrendForce](https://www.trendforce.com/news/2024/08/14/news-sk-hynix-plans-to-develop-4f2-dram-to-reduce-the-cost-of-euv-processes-by-50/)
 - [3D DRAM Roadmap and Production Timeline — allpcb.com](https://www.allpcb.com/allelectrohub/3d-dram-roadmap-and-production-timeline)
-- 내부: [analysis/scenarios/scenario-E.md](../../analysis/scenarios/scenario-E.md), [data/technology/dram-technology.md](../../data/technology/dram-technology.md)
+- 내부: [wiki/scenarios/scenario-E.md](../../scenarios/scenario-E.md), [wiki/technology/dram-technology.md](../../concepts/dram-technology.md)
 
 ---
 

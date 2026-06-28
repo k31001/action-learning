@@ -33,7 +33,7 @@
 
 | 회사 | 영역 | Samsung과의 협력 (공개) |
 |------|------|------|
-| **JSR** | 포토레지스트 | 2025 SK하이닉스도 JSR 인수 시도 (공개) — Samsung도 JSR 의존 ([data/policy/korea-policy.md](../../data/policy/korea-policy.md)) · 🔵 |
+| **JSR** | 포토레지스트 | 2025 SK하이닉스도 JSR 인수 시도 (공개) — Samsung도 JSR 의존 ([wiki/policy/korea-policy.md](../../concepts/korea-policy.md)) · 🔵 |
 | **신에쓰화학** | Si 웨이퍼·소재 | 다년 공급 계약 (구체 비공개) · 🔵 |
 | **Canon** | NIL 장비 | (구체 협력 미공개) · ⚠️ |
 | **TEL** | 장비 (CVD/etch 등) | 장기 발주 관계 · ✅ |
@@ -100,4 +100,4 @@
 - [Canon ships first nanoprint lithography machine — DCD](https://www.datacenterdynamics.com/en/news/canon-ships-its-first-nanoprint-lithography-machine-rivals-asml/)
 - [Canon Delivers Nanoimprint Lithography to Compete With EUV — IEEE Spectrum](https://spectrum.ieee.org/nanoimprint-lithography)
 - [Japan's DNP targets 2027 mass production of 1.4nm NIL — Tom's Hardware](https://www.tomshardware.com/tech-industry/semiconductors/japans-dnp-targets-2027-mass-production-of-1-4nm-nanoimprint-templates)
-- 내부: [data/policy/korea-policy.md](../../data/policy/korea-policy.md), [data/policy/us-export-controls.md](../../data/policy/us-export-controls.md)
+- 내부: [wiki/policy/korea-policy.md](../../concepts/korea-policy.md), [wiki/policy/us-export-controls.md](../../concepts/us-export-controls.md)

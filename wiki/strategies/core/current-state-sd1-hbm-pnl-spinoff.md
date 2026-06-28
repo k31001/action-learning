@@ -47,9 +47,9 @@
 
 ### 외부 평가
 
-- **KED Global**: SK하이닉스의 청주 패키징 팹 + NVIDIA Co-design은 HBM 경쟁의 결정 요인 ([data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md))
+- **KED Global**: SK하이닉스의 청주 패키징 팹 + NVIDIA Co-design은 HBM 경쟁의 결정 요인 ([wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md))
 - **Counterpoint**: 삼성의 HBM 회복(Q3 2025 35%)은 인증 통과 결과이지 조직 변화 결과는 아님
-- **Bloomberg**: 메모리사들의 패키징 전담 조직 강화 추세 — 차별화 영역으로 부상 ([data/technology/nand-process-transition.md](../../data/technology/nand-process-transition.md))
+- **Bloomberg**: 메모리사들의 패키징 전담 조직 강화 추세 — 차별화 영역으로 부상 ([wiki/technology/nand-process-transition.md](../../concepts/nand-process-transition.md))
 
 ---
 
@@ -84,5 +84,5 @@
 
 - [SK hynix HBM4 supply backlog — KED Global 2026-04-23](https://www.kedglobal.com)
 - [Counterpoint Research HBM Market Share](https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share)
-- 내부: [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md), [data/competitors/micron.md](../../data/competitors/micron.md), [data/technology/nand-process-transition.md](../../data/technology/nand-process-transition.md)
+- 내부: [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md), [wiki/competitors/micron.md](../../entities/micron.md), [wiki/technology/nand-process-transition.md](../../concepts/nand-process-transition.md)
 - TSMC, IMEC, ASE 사업보고서 (인재 규모 추정)

@@ -14,6 +14,12 @@
 
 ---
 
+## [2026-06-28] lint | 마이그레이션 잔존 깨진 링크 일괄 수선 + 고립 페이지 0 달성 (v2.25.0 → v2.25.1)
+- **무엇**: 지식 그래프가 드러낸 연결성 결함을 수선. ① **마이그레이션(2026-05-18) 잔존 깨진 내부 링크 128건**(`analysis/` 37 + `data/` 87 + `report/` 4)을 각 타깃의 실제 wiki 위치로 재해석해 올바른 상대경로로 일괄 교정 — `scripts/fix-stale-analysis-links.mjs` 신설(basename 해석 + 개명 별칭 `competitors/market-share.md`→`concepts/dram-market-share.md`). 표시 라벨의 옛 경로(`analysis/`·`data/`·`report/`)도 `wiki/`로 정리. ② **기타 깨진 링크 5건** 수동 수선(ssd-ufs-market의 잘못된 `../technology/` 2건 → `entities/`·동일 dir; 보고서 역참조 3건 → 헌법상 원천인 `wiki/scenarios/strategy.md`로 재지정). ③ **고립 7개 페이지 신규 상호링크**: STEEP 4개(environment·political·social·technology) + Impact×Uncertainty 매트릭스에 Shell 파이프라인 spine 푸터 추가(STEEP→매트릭스→key-drivers→scenario-matrix, 상호링크화), 벤치마크 2개(agri-hedging·upside-participation)를 RS-8과 상호링크.
+- **왜**: 사용자 요청 — 그래프 lint 신호(고립 9·역링크 누락) 기반 위키 상호링크 보강. 고립의 근본 원인이 단순 미링크가 아니라 **마이그레이션 때 끊긴 깨진 경로**였음이 그래프 추출로 드러남.
+- **검증**: 위키 내부 .md 링크 604건 중 깨진 링크 **0건**(수선 전 9건). 그래프 재생성: 엣지 199→**275**(+38%)·상호링크 37→51·평균연결 5.2→7.1·**고립 9→0**·고아 0 유지.
+- **dashboard (v2.25.1, 패치 = 데이터 갱신)**: `knowledgeGraph.js` 재생성(빌드 산출물), version bump. 빌드 통과·고립 0 lint 패널 확인.
+
 ## [2026-06-28] build | 위키 지식 그래프 — graph DB 없는 LLM 링크 시각화 (v2.24.2 → v2.25.0)
 - **무엇**: Karpathy LLM Wiki의 "graph DB 대신 LLM이 유지하는 마크다운 링크" 개념을 **기계 순회 가능한 그래프로 추출·시각화**. ① `scripts/build-knowledge-graph.mjs` 신설 — `wiki/**/*.md`를 스캔해 노드(페이지)·엣지(페이지 간 인용 링크) 추출, degree 집계, 의존성 없는 손수 구현 force-directed 레이아웃으로 좌표 베이크, 고아(index.md 미등록)·고립(엣지 0)·역링크 누락(A→B인데 B가 A 미인용) lint 신호 산출 → `dashboard/src/data/knowledgeGraph.js`(GENERATED) 출력. ② 대시보드 `Knowledge Graph` 탭 신설 — SVG 팬/줌·호버 이웃 하이라이트·클릭 고정·카테고리 토글 범례·검색·허브 top8·lint 패널·노드별 GitHub blob 링크.
 - **왜**: 사용자 요청 — "그래프 시각화를 위한 작업을 하고 대시보드에 표현". 기존엔 링크가 사람/LLM이 읽는 인라인 마크다운으로만 존재 → 노드-엣지로 추출하니 허브(Samsung 36·Bottleneck 18·HBM 16·NVIDIA 16)·고립 9·역링크 누락 162가 정량 가시화. graph DB의 쿼리/제약을 LLM lint 워크플로우로 대체하는 구조를 그대로 시각화.

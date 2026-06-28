@@ -15,13 +15,13 @@
 | HBM이 DRAM 매출 차지 비중 | ~20% | 23%+ | — | 50%+ | Yole Group, [Tech Insider](https://tech-insider.org/memory-chip-shortage-2026-ai-consumer-electronics/) · ✅ |
 | 커스텀 AI 칩용 HBM 수요 성장률 | — | **+82%** | — | — | Goldman Sachs · 🔵 |
 | AI 학습/추론이 HBM 수요 차지 | — | **55%+** | — | — | JEDEC tracking ([Tech Insider](https://tech-insider.org/memory-chip-shortage-2026-ai-consumer-electronics/)) · ✅ |
-| 하이퍼스케일러 capex 중 메모리 비중 | 8% (2023~24) | **30%** | — | — | ([data/technology/nvidia-cmx-scada.md](../../data/technology/nvidia-cmx-scada.md)) · ✅ |
+| 하이퍼스케일러 capex 중 메모리 비중 | 8% (2023~24) | **30%** | — | — | ([wiki/technology/nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md)) · ✅ |
 
 ### 커스텀 AI 칩 진영 (2026 기준)
 
 | 진영 | 칩 | HBM 사양 | 메모리 파트너 (공개) |
 |------|---|----|----|
-| **NVIDIA** Rubin | HBM4 12-Hi/16-Hi | SK하이닉스 70% / Samsung 28% / Micron 18% (2026E, UBS 추정) ([data/market/2026-q1-current-state.md](../../data/market/2026-q1-current-state.md)) · 🔵 |
+| **NVIDIA** Rubin | HBM4 12-Hi/16-Hi | SK하이닉스 70% / Samsung 28% / Micron 18% (2026E, UBS 추정) ([wiki/market/2026-q1-current-state.md](../../concepts/2026-q1-current-state.md)) · 🔵 |
 | **Google** TPU v6/v7 | HBM3E → HBM4 | 다중 공급, Samsung 포함 (공개 미세부 공시 부재) · ⚠️ |
 | **Amazon** Trainium2/3 | HBM3E → HBM4 | 다중 공급 (Trainium2은 SK하이닉스 우세 보도) · 🔵 |
 | **Microsoft** Maia | HBM3E | TSMC 패키징, 메모리 공급사 비공개 · ⚠️ |
@@ -51,9 +51,9 @@
 
 ### 외부 평가
 
-- **Goldman Sachs**: 커스텀 AI 칩용 HBM 수요 +82% 급증, HBM이 전체 시장의 1/3 차지 예상 ([data/market/hbm-market.md](../../data/market/hbm-market.md))
+- **Goldman Sachs**: 커스텀 AI 칩용 HBM 수요 +82% 급증, HBM이 전체 시장의 1/3 차지 예상 ([wiki/market/hbm-market.md](../../concepts/hbm-market.md))
 - **UBS**: NVIDIA 듀얼소싱은 SK하이닉스 단일 의존도(70%)에 대한 NVIDIA 자체의 헤지 수요로 시간 다투기 (data/market/2026-q1-current-state.md)
-- **TrendForce**: 2026년 HBM 가격 +20% 인상에도 전 제품 Sold Out — 공급 우위 지속 → LTA 골든 타임 ([data/macro/semiconductor-cycle.md](../../data/macro/semiconductor-cycle.md))
+- **TrendForce**: 2026년 HBM 가격 +20% 인상에도 전 제품 Sold Out — 공급 우위 지속 → LTA 골든 타임 ([wiki/macro/semiconductor-cycle.md](../../concepts/semiconductor-cycle.md))
 
 ---
 
@@ -88,7 +88,7 @@
 - [Memory Chip Shortage 2026: HBM Takes 23% of DRAM Wafers — Tech Insider](https://tech-insider.org/memory-chip-shortage-2026-ai-consumer-electronics/)
 - [Samsung seeks post-HBM lead as CXL race heats up — KED Global](https://www.kedglobal.com/deep-insights/newsView/ked202604270010)
 - [CXL vs. HBM: Why Samsung, SK Hynix, and Micron are Racing — TradingKey](https://www.tradingkey.com/analysis/stocks/us-stocks/261834990-samsung-sk-hynix-micron-hbm-cxl-pangea-v2-ai-data-center-tradingkey)
-- 내부: [data/market/hbm-market.md](../../data/market/hbm-market.md), [data/market/2026-q1-current-state.md](../../data/market/2026-q1-current-state.md), [data/technology/nvidia-cmx-scada.md](../../data/technology/nvidia-cmx-scada.md), [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md)
+- 내부: [wiki/market/hbm-market.md](../../concepts/hbm-market.md), [wiki/market/2026-q1-current-state.md](../../concepts/2026-q1-current-state.md), [wiki/technology/nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md), [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md)
 
 ---
 

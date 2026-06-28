@@ -17,7 +17,7 @@
 ## 2. 근거 데이터 (Evidence)
 
 ### 2.1 NVIDIA 생태계 3대 데이터 경로 — 통합 진입점
-**[2026-05-06 팩트체크 검증 완료]** ([analysis/scenarios/strategy.md §RS3](../../analysis/scenarios/strategy.md))
+**[2026-05-06 팩트체크 검증 완료]** ([wiki/scenarios/strategy.md §RS3](../../scenarios/strategy.md))
 
 | 영역 | 시장 현실성 | 차별화 영역 | 사업 모델 |
 |------|------------|----------|---------|
@@ -26,13 +26,13 @@
 | **FDP** (Flexible Data Placement) | NVMe TP41461 표준화(2022.12, Meta+Google+Samsung 공동). WAF 50%↓, 드라이브 수명 2배, 쓰기 속도 2배 | 호스트 SW 통합·검증·튜닝 노하우가 차별화 영역 | (a) HW 프리미엄 (b) Reference 라이선스 (c) 컨설팅 매출 |
 
 ### 2.2 SK하이닉스의 NVIDIA 락인 — 위협의 실증
-- SK하이닉스 NVIDIA Rubin 플랫폼 HBM4 점유율 **70% 전망 (UBS)** ([data/market/hbm-market.md](../../data/market/hbm-market.md))
-- 락인 메커니즘: NVIDIA H100/H200/B200 시리즈에서 SK하이닉스 HBM3E **공식 인증된 단일 공급사 지위**. NVIDIA Co-design 파트너십 구조 ([data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md))
+- SK하이닉스 NVIDIA Rubin 플랫폼 HBM4 점유율 **70% 전망 (UBS)** ([wiki/market/hbm-market.md](../../concepts/hbm-market.md))
+- 락인 메커니즘: NVIDIA H100/H200/B200 시리즈에서 SK하이닉스 HBM3E **공식 인증된 단일 공급사 지위**. NVIDIA Co-design 파트너십 구조 ([wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md))
 - 결과: 삼성이 **HBM3E 12Hi 품질 이슈**를 해결한 후에도 시장 점유율 회복은 17%(Q2 2025) → 35%(Q3 2025)로 제한적 ([Counterpoint Research](https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share))
 - **시사점**: 단순 품질 우위로는 락인된 고객을 빼앗기 어렵다 — 락인 자체가 가장 강력한 경쟁 우위
 
 ### 2.3 SCADA AI SSD — SK하이닉스·Kioxia가 가져가고 있다
-- NVIDIA SCADA 핵심 파트너십이 **SK하이닉스(AI-N P, 2,500만→1억 IOPS SLC, Phison 컨트롤러)**, **Kioxia(1억 IOPS SLC, 2027년 목표)**, **Micron(9650, 최초 레퍼런스)** 중심 형성 중 ([data/technology/nvidia-cmx-scada.md](../../data/technology/nvidia-cmx-scada.md))
+- NVIDIA SCADA 핵심 파트너십이 **SK하이닉스(AI-N P, 2,500만→1억 IOPS SLC, Phison 컨트롤러)**, **Kioxia(1억 IOPS SLC, 2027년 목표)**, **Micron(9650, 최초 레퍼런스)** 중심 형성 중 ([wiki/technology/nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md))
 - 삼성전자는 PM1763으로 GTC 2026에서 시연했으나 **공개적 SLC 기반 AI SSD 로드맵 없음** — 전략 파트너 지위에서 상대적 소외
 - 위험: HBM 경험(SK하이닉스 독점 → 삼성 17% 추락)이 SSD에서 반복될 가능성
 
@@ -45,7 +45,7 @@
   1. **HW 프리미엄**: FDP 통합 검증 SSD 단가 +10~15%, TCO 회수 6~12개월. 2030년 검증 SSD 매출 비중 30% 목표
   2. **Reference 라이선스**: 중소 클라우드(CoreWeave·Crusoe·Lambda)에 라이선스. 연 $50~200K 추정
   3. **컨설팅·통합 서비스**: 프로젝트당 $500K~5M
-- 통합: 2030년 FDP 관련 매출 **$2~3B/년** (HW 70% + 라이선스/서비스 30%) ([analysis/scenarios/strategy.md §RS3](../../analysis/scenarios/strategy.md))
+- 통합: 2030년 FDP 관련 매출 **$2~3B/년** (HW 70% + 라이선스/서비스 30%) ([wiki/scenarios/strategy.md §RS3](../../scenarios/strategy.md))
 
 ### 2.6 벤치마크 — 자동차·소프트웨어 산업의 락인 경제
 - Tesla FSD: HW는 모든 차량에 기본 탑재, SW로 추가 수익 — 같은 silicon에서 차별화된 가치 추출
@@ -133,7 +133,7 @@
 **Steel-man**: HBM에서 SK하이닉스 70% 점유, NVIDIA Co-design 파트너십이 이미 굳어짐. 삼성이 이제 와서 락인을 만든다는 것은 가능성이 낮다.
 
 **재반박**:
-- HBM에서는 후발이지만 **SCADA AI SSD 영역은 아직 표준 결정 전**. 2026~2027년이 표준 결정의 골든 타임 ([data/technology/nvidia-cmx-scada.md](../../data/technology/nvidia-cmx-scada.md)).
+- HBM에서는 후발이지만 **SCADA AI SSD 영역은 아직 표준 결정 전**. 2026~2027년이 표준 결정의 골든 타임 ([wiki/technology/nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md)).
 - 삼성 PM1763 GTC 2026 시연 + 2026 Samsung Tech Day SCADA 로드맵 공개로 **선제적 진입 가능**. 늦는다고 영구 차단되는 게 아니라 시간 다투기.
 - NVIDIA 입장에서도 **단일 공급사 의존(SK하이닉스 70%)은 리스크**. 듀얼소싱 인센티브가 NVIDIA에게도 존재 → 삼성이 기술 격차를 줄이면 NVIDIA가 적극 채용.
 - 더 결정적으로, **하이퍼스케일러는 NVIDIA 외에도 존재** (구글 TPU, 아마존 Trainium, 메타 MTIA). 이들과의 락인은 HBM과 다른 영역에서 새로 만들 수 있음.
@@ -143,10 +143,10 @@
 ## 출처 (Citations)
 
 ### 내부 문서
-- [analysis/scenarios/strategy.md §3 RS3](../../analysis/scenarios/strategy.md)
-- [data/technology/nvidia-cmx-scada.md](../../data/technology/nvidia-cmx-scada.md)
-- [data/market/hbm-market.md](../../data/market/hbm-market.md)
-- [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md)
+- [wiki/scenarios/strategy.md §3 RS3](../../scenarios/strategy.md)
+- [wiki/technology/nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md)
+- [wiki/market/hbm-market.md](../../concepts/hbm-market.md)
+- [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md)
 
 ### 외부 자료
 - [Global DRAM and HBM Market Share — Counterpoint Research](https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share)

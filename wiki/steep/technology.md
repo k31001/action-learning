@@ -19,3 +19,9 @@
 ## 카테고리 소결
 
 기술 요인에서는 HBM 세대 전환 타이밍과 High-NA EUV 도입 속도가 2026~2028년 시장 지위를 결정하는 가장 즉각적인 변수다. 중장기적으로는 3D DRAM 전환, PIM/CXL 아키텍처의 성숙, 커스텀 AI 칩 확산이 HBM 중심의 현재 수익 구조를 교란할 수 있는 잠재적 패러다임 전환 요인이다. 삼성전자는 HBM 점유율 회복에 집중하면서도 이 중장기 기술 변화에 동시 대응하는 투트랙 전략이 요구된다. **추가로, NAND는 layer 경쟁 가속이 capex·수율 부담을 증폭시키므로 "공정 전환 주기 연장" R&D(7b)가 모든 시나리오에서 robust 가치를 갖는 신규 핵심 변수로 부상했다.**
+
+---
+
+## 시나리오 플래닝 연결
+
+이 기술 요인들은 [Impact × Uncertainty 매트릭스](../driving-forces/impact-uncertainty-matrix.md)에서 영향력×불확실성으로 점수화되어 [핵심 Driving Forces](../driving-forces/key-drivers.md) 선정의 입력이 된다. DF3(AI 메모리 기술 패러다임)의 직접 원천 요인군이다.

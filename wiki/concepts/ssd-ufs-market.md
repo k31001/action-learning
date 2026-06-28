@@ -148,7 +148,7 @@
 - [Global Semi Research — 2026 Memory Insights](https://globalsemiresearch.substack.com/p/2026-memory-industry-insights)
 - [Futurum — Micron Q4 FY2025 (DC 56%)](https://futurumgroup.com/insights/micron-q4-fy-2025-earnings-top-estimates-on-dram-and-hbm-strength/)
 - [Blocks & Files — NVIDIA SCADA](https://blocksandfiles.com/2025/11/25/scada-nvidia/)
-- 내부 연계: [data/technology/nvidia-cmx-scada.md](../technology/nvidia-cmx-scada.md), [data/technology/nand-process-transition.md](../technology/nand-process-transition.md)
+- 내부 연계: [nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md), [nand-process-transition.md](nand-process-transition.md)
 
 ---
 

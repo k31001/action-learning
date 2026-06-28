@@ -23,9 +23,9 @@
 | (신설) | **RS-7** | AI 엔지니어링 자동화 (구 RS-2 prerequisite에서 분리) |
 | **(신설 — 2026-05-07)** | **RS-8** | 구조화 매출 헷지 (Participating Forward·HTA·Tiered Pricing·Memory Trading Desk) — 농수산 100년 헷지 노하우 이식 |
 
-또한 의사결정 로드맵 §6에 **Decision 11 (SE-3 가치사슬 수직 진출)** 이 신설되었다 (Stargate Korea 컨소시엄 + Tier 1/2/3 진출 모델). 본 권고안과 결이 다르므로 Side Bets 섹션이 아닌 Decision 섹션에 별도 정의. 정본 분석은 [`report/core-strategies/current-state-se3-vertical-ascent.md`](../../report/core-strategies/current-state-se3-vertical-ascent.md).
+또한 의사결정 로드맵 §6에 **Decision 11 (SE-3 가치사슬 수직 진출)** 이 신설되었다 (Stargate Korea 컨소시엄 + Tier 1/2/3 진출 모델). 본 권고안과 결이 다르므로 Side Bets 섹션이 아닌 Decision 섹션에 별도 정의. 정본 분석은 [`wiki/strategies/core/current-state-se3-vertical-ascent.md`](../strategies/core/current-state-se3-vertical-ascent.md).
 
-추가로 **Decision 12 (RS-8 구조화 매출 헷지 시범 도입)** 이 신설되었다 — 농수산업·연료 헷지의 검증된 5가지 계약 구조 중 메모리에 적합한 3가지(Participating Forward + HTA Slot/Price 분리 + Tiered Pricing)를 1~2개 앵커 고객과 시범 도입. 정본 분석은 [`report/invariant-strategies/rs8-structured-revenue-hedging.md`](../../report/invariant-strategies/rs8-structured-revenue-hedging.md).
+추가로 **Decision 12 (RS-8 구조화 매출 헷지 시범 도입)** 이 신설되었다 — 농수산업·연료 헷지의 검증된 5가지 계약 구조 중 메모리에 적합한 3가지(Participating Forward + HTA Slot/Price 분리 + Tiered Pricing)를 1~2개 앵커 고객과 시범 도입. 정본 분석은 [`wiki/strategies/invariant/rs8-structured-revenue-hedging.md`](../strategies/invariant/rs8-structured-revenue-hedging.md).
 
 ---
 
@@ -506,7 +506,7 @@
 
 ### RS-7: AI 엔지니어링 자동화 (AI Engineering Productivity) [신설 — 2026-05-07]
 
-> **재편 메모**: 본 RS-7은 구 RS-2(바벨 + AI 효율화 메커니즘)에서 **AI 효율화** 부분을 분리해 독립 RS로 승격했다. 다른 모든 RS(특히 RS-2 바벨, RS-3 락인, RS-6 공정 리더십)의 실행 prerequisite로 작동한다. 정본 분석은 [`report/invariant-strategies/rs7-ai-engineering-automation.md`](../../report/invariant-strategies/rs7-ai-engineering-automation.md).
+> **재편 메모**: 본 RS-7은 구 RS-2(바벨 + AI 효율화 메커니즘)에서 **AI 효율화** 부분을 분리해 독립 RS로 승격했다. 다른 모든 RS(특히 RS-2 바벨, RS-3 락인, RS-6 공정 리더십)의 실행 prerequisite로 작동한다. 정본 분석은 [`wiki/strategies/invariant/rs7-ai-engineering-automation.md`](../strategies/invariant/rs7-ai-engineering-automation.md).
 
 - **왜 Robust한가**:
   AI 코딩 도구(GitHub Copilot 51% 속도 향상, cycle time -3.5h, PR +10.6% — GitHub Research) + EDA AI 자동화(Synopsys DSO.ai PPA +30%, Cadence Cerebrus 설계 사이클 50%+ 단축) + Fab Intelligence(TSMC predictive maintenance + computer vision wafer fault) 효과는 시나리오에 둔감하다. 인력은 어떤 시나리오에서도 비용이고, 효율화는 어떤 시나리오에서도 가치.
@@ -532,7 +532,7 @@
 
 ### RS-8: 구조화 매출 헷지 — Participating Forward + Slot/Price 분리 + Memory Trading Desk [신설 — 2026-05-07]
 
-> **재편 메모**: 본 RS-8은 농수산업 100년 헷지 노하우 + 외환·연료 시장 50년 옵션 구조 + Cargill Black River 정보 자산화 모델을 메모리 산업에 압축 이식한다. RS-4(LTA·Take-or-Pay 물량 계약)와 결정적으로 구분되며, 가격 변동성 자체를 옵션·스왑 구조로 분해한다. 정본 분석은 [`report/invariant-strategies/rs8-structured-revenue-hedging.md`](../../report/invariant-strategies/rs8-structured-revenue-hedging.md).
+> **재편 메모**: 본 RS-8은 농수산업 100년 헷지 노하우 + 외환·연료 시장 50년 옵션 구조 + Cargill Black River 정보 자산화 모델을 메모리 산업에 압축 이식한다. RS-4(LTA·Take-or-Pay 물량 계약)와 결정적으로 구분되며, 가격 변동성 자체를 옵션·스왑 구조로 분해한다. 정본 분석은 [`wiki/strategies/invariant/rs8-structured-revenue-hedging.md`](../strategies/invariant/rs8-structured-revenue-hedging.md).
 
 - **왜 Robust한가**:
 

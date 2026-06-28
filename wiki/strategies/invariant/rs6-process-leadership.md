@@ -30,7 +30,7 @@
 ### 2.3 NAND 공정 전환 비용 — 양산 ramp 시간이 곧 이익
 - **양산 ramp 6개월 단축 → 누적 순이익 2배+ 증가** (PSU Weber, "Yield Learning and Sources of Profitability")
 - **양산 6개월 지연 → 이익의 2/3 소실**, 1년 지연 → 손실 전환 ([Weber, PSU](https://web.pdx.edu/~webercm/documents/2004%20Weber%20Yield%20Learning.pdf))
-- 비용 환산: **공정 개발 시간 1분당 약 $5,000** 손실 ([data/technology/nand-process-transition.md](../../data/technology/nand-process-transition.md))
+- 비용 환산: **공정 개발 시간 1분당 약 $5,000** 손실 ([wiki/technology/nand-process-transition.md](../../concepts/nand-process-transition.md))
 
 ### 2.4 NAND 업계 — 2026년 process upgrade에 일제히 선회
 - **2026 NAND capex $22.2B (+5%)** — 캐파 확장이 아니라 process upgrade·hybrid bonding 중심 ([TrendForce 2025-11](https://evertiq.com/news/2025-11-13-memory-industry-to-maintain-cautious-capex-in-2026))
@@ -53,7 +53,7 @@
 - **벤치마크 시사점**: 공정 리더십이 마진과 시장 점유율의 결정 요인. 메모리에도 동일 논리 적용 가능
 
 ### 2.7 1c nm 원가 효과 — DDR5 웨이퍼당 30% 절감 가능
-- 1c nm DDR5 웨이퍼당 생산 원가 목표: 현재 대비 30% 절감 (2027 말 기준, [analysis/scenarios/strategy.md](../../analysis/scenarios/strategy.md))
+- 1c nm DDR5 웨이퍼당 생산 원가 목표: 현재 대비 30% 절감 (2027 말 기준, [wiki/scenarios/strategy.md](../../scenarios/strategy.md))
 - CXMT 보조금 공세 방어의 핵심 무기 — **CXMT 대비 원가 10%+ 우위 유지 가능**
 - 호황기에는 마진 확대로, 다운사이클에는 흑자 유지로 작동
 
@@ -129,7 +129,7 @@
 
 **재반박**:
 - 단계적 접근: V10에서는 라이선스 일부 의존, V11에서 자체 IP 비중 70%+ 목표, V12에서 100% 자립.
-- **한국 IP 컨소시엄 (삼성·SK하이닉스 공동) 검토** — 디커플링 시 한국 IP 풀로 상호 보호 ([analysis/scenarios/strategy.md §RS7](../../analysis/scenarios/strategy.md)).
+- **한국 IP 컨소시엄 (삼성·SK하이닉스 공동) 검토** — 디커플링 시 한국 IP 풀로 상호 보호 ([wiki/scenarios/strategy.md §RS7](../../scenarios/strategy.md)).
 - 정부와 협의해 **KRW 700조 반도체 투자 패키지 내 hybrid bonding R&D 별도 트랙**으로 분리 — CHIPS법 가드레일 회피용. 정부 지원 R&D는 가속 가능.
 - 2027년까지 자사 hybrid bonding 특허 200건+ 출원 목표 — 유효 IP 포트폴리오의 critical mass.
 
@@ -165,11 +165,11 @@
 ## 출처 (Citations)
 
 ### 내부 문서
-- [analysis/scenarios/strategy.md §3 RS7 + MB-3](../../analysis/scenarios/strategy.md)
-- [data/technology/nand-process-transition.md](../../data/technology/nand-process-transition.md)
-- [data/technology/dram-technology.md](../../data/technology/dram-technology.md)
-- [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md)
-- [data/competitors/china-competitors.md](../../data/competitors/china-competitors.md)
+- [wiki/scenarios/strategy.md §3 RS7 + MB-3](../../scenarios/strategy.md)
+- [wiki/technology/nand-process-transition.md](../../concepts/nand-process-transition.md)
+- [wiki/technology/dram-technology.md](../../concepts/dram-technology.md)
+- [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md)
+- [wiki/competitors/china-competitors.md](../../entities/china-competitors.md)
 
 ### 외부 자료
 - [Samsung 1c DRAM yields rumored to hit around 50% — Tweaktown](https://www.tweaktown.com/news/108316/samsung-1c-dram-for-hbm4-yields-rumored-to-hit-around-50-percent-to-battle-sk-hynix-and-micron/index.html)

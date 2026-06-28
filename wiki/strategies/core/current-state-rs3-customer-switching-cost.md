@@ -11,7 +11,7 @@
 
 | 영역 | 시장 규모 (2025) | 시장 규모 (2030~2035) | CAGR | 출처 / 신뢰도 |
 |---|---|---|---|---|
-| **CMX** (KV 캐시 G3.5) | NVIDIA CES 2026 공식 발표, 17개 클라우드·스토리지 파트너, 2H 2026 일반 출시 | — (NVIDIA Storage-Next 표준의 한 부분) | — | NVIDIA 공식 ([data/technology/nvidia-cmx-scada.md](../../data/technology/nvidia-cmx-scada.md)) · ✅ |
+| **CMX** (KV 캐시 G3.5) | NVIDIA CES 2026 공식 발표, 17개 클라우드·스토리지 파트너, 2H 2026 일반 출시 | — (NVIDIA Storage-Next 표준의 한 부분) | — | NVIDIA 공식 ([wiki/technology/nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md)) · ✅ |
 | **SCADA** (AI 스토리지) | $36B (2025) | $322B (2035) | **24%** | MarketsAndMarkets · 🔵 |
 | **FDP** (NVMe TP41461) | NVMe 표준 (Meta+Google+Samsung 공동) | (NAND 시장 일부, 별도 규모 추정 부재) | — | NVMe Consortium · ✅ |
 
@@ -51,7 +51,7 @@
 
 ### 외부 평가
 
-- **TrendForce**: SCADA AI SSD에서 SK하이닉스·Kioxia가 전략 파트너 지위 선점 — 삼성의 SLC AI SSD 전략 수립 시급 ([data/technology/nvidia-cmx-scada.md](../../data/technology/nvidia-cmx-scada.md))
+- **TrendForce**: SCADA AI SSD에서 SK하이닉스·Kioxia가 전략 파트너 지위 선점 — 삼성의 SLC AI SSD 전략 수립 시급 ([wiki/technology/nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md))
 - **Blocks & Files**: NVIDIA SCADA + DOCA SDK 통합은 AI 추론 표준 인터페이스 후보 (data/technology/nvidia-cmx-scada.md)
 
 ---
@@ -85,6 +85,6 @@
 
 - [Samsung Reportedly Plan 20% HBM3E Price Hike for 2026 — TrendForce](https://www.trendforce.com/news/2025/12/24/news-samsung-sk-hynix-reportedly-plan-20-hbm3e-price-hike-for-2026-as-nvidia-h200-asic-demand-rises/)
 - [Global DRAM and HBM Market Share — Counterpoint Research](https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share)
-- 내부: [data/technology/nvidia-cmx-scada.md](../../data/technology/nvidia-cmx-scada.md), [data/market/hbm-market.md](../../data/market/hbm-market.md)
+- 내부: [wiki/technology/nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md), [wiki/market/hbm-market.md](../../concepts/hbm-market.md)
 - NVMe Consortium: NVMe TP41461 Specification (FDP)
 - NVIDIA: CES 2026 CMX 공식 발표

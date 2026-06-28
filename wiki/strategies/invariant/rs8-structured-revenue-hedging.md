@@ -23,7 +23,7 @@
 - **메모리 변동성 σ**: 60~120% (연환산) — 비교: 원유 30%, S&P 500 18% (Macroption Black-Scholes Inputs)
 - **사이클 길이**: 4~5년 (capex 사이클) — 농산물 1~3년·연어 2~3년보다 길지만 진폭 더 큼
 
-### 2.2 농수산업 7가지 헷지 메커니즘 (`agri-hedging-to-memory-semi.md`)
+### 2.2 농수산업 7가지 헷지 메커니즘 ([agri-hedging-to-memory-semi.md](../../benchmark/agri-hedging-to-memory-semi.md))
 
 | # | 메커니즘 | 메모리 적용 가능성 | 현재 도입 |
 |---|---|---|---|
@@ -35,7 +35,7 @@
 | 6 | 공급 관리 카르텔 | 미국·EU 반독점법 위반 — 불가 | 🔴 |
 | 7 | 농작물 보험 (Take-or-Pay) | 고객 선급금 / capacity reservation | 🟢 시작 |
 
-### 2.3 상방 참여형 5가지 계약 구조 (`upside-participation-hedging.md`)
+### 2.3 상방 참여형 5가지 계약 구조 ([upside-participation-hedging.md](../../benchmark/upside-participation-hedging.md))
 
 | 구조 | 핵심 메커니즘 | 메모리 적합성 |
 |---|---|---|

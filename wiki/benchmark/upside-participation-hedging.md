@@ -403,3 +403,9 @@ for r in [revenue_unhedged, revenue_fixed, revenue_collar, revenue_participating
 2. **Participating Forward**가 메모리 산업이 아직 도입하지 않은 최대 잠재 도구 — 무한 상방 참여 + 하한 보장.
 3. 적정 strike는 **Black 모델 + Monte Carlo 시뮬레이션 + CVaR**의 조합으로 산정. 변동성 σ가 60~120%인 메모리 시장에서는 단순 BSM보다 jump-diffusion 모델이 정확.
 4. **Three-way collar는 절대 sub-put 매도형으로 만들지 말 것** — 셰일업체 2014/2020 두 번의 실패 사례가 증명.
+
+---
+
+## 관련 전략
+
+이 가이드는 [RS-8 구조화 매출 헷지](../strategies/invariant/rs8-structured-revenue-hedging.md) §2.3의 직접 근거다. 농수산업 7가지 헷지 메커니즘의 원천 정리는 [농수산업 헤징 전략](agri-hedging-to-memory-semi.md) 참조.

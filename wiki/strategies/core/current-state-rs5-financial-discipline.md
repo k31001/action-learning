@@ -14,7 +14,7 @@
 | 2017~2018 | +20조 원 (호황 피크) | 슈퍼사이클 | Samsung IR · ✅ |
 | 2019~2020 | +5~10조 원 (조정) | 다운턴 | Samsung IR · ✅ |
 | 2021 | +15조 원 (재상승) | 회복 | Samsung IR · ✅ |
-| 2022~2023 | **-8조 원+ (영업적자)** | 다운사이클 | Samsung IR, [data/macro/semiconductor-cycle.md](../../data/macro/semiconductor-cycle.md) · ✅ |
+| 2022~2023 | **-8조 원+ (영업적자)** | 다운사이클 | Samsung IR, [wiki/macro/semiconductor-cycle.md](../../concepts/semiconductor-cycle.md) · ✅ |
 | 2024~2025 | +20조 원+ (회복) | AI 호황 진입 | Samsung IR · ✅ |
 | 2026 Q1 | 메모리 매출 +292% YoY ($50.4B) | 슈퍼사이클 | Samsung IR · ✅ |
 
@@ -33,9 +33,9 @@
 
 | 회사 | 호황기 영업이익률 (2025) | 다운사이클 capex 정책 | 출처 / 신뢰도 |
 |------|---------|------|------|
-| **SK하이닉스** | **49%** (호황) | 청주 패키징 팹 $1.7B 사이클 전 구간 유지 | [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md) · 🔵 |
+| **SK하이닉스** | **49%** (호황) | 청주 패키징 팹 $1.7B 사이클 전 구간 유지 | [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md) · 🔵 |
 | **Micron** | **~30%** (안정) | CHIPS Act 활용 + LTSA 구조 | Micron IR · ✅ |
-| **Nucor (벤치마크)** | 평균 ROE 33% (2020~2023) | **30~40억 달러 capex 사이클 전 구간 유지** | [analysis/benchmark/cyclical-strategy-benchmark.md](../../analysis/benchmark/cyclical-strategy-benchmark.md) · ✅ |
+| **Nucor (벤치마크)** | 평균 ROE 33% (2020~2023) | **30~40억 달러 capex 사이클 전 구간 유지** | [wiki/benchmark/cyclical-strategy-benchmark.md](../../benchmark/cyclical-strategy-benchmark.md) · ✅ |
 | **ExxonMobil (벤치마크)** | (석유 사이클) | 다운사이클에 capex 사수 → 2023 Pioneer **$59.5B 인수** | benchmark · ✅ |
 
 ### 재투자 4개 항목 — 추정 비중
@@ -62,9 +62,9 @@
 
 ### 외부 평가
 
-- **Bank of America**: 2026 메모리 시장을 "1990년대형 슈퍼사이클"로 규정 — 호황기 절제와 다운사이클 자원 보존이 1~2회 사이클 후 결정 ([data/macro/semiconductor-cycle.md](../../data/macro/semiconductor-cycle.md))
+- **Bank of America**: 2026 메모리 시장을 "1990년대형 슈퍼사이클"로 규정 — 호황기 절제와 다운사이클 자원 보존이 1~2회 사이클 후 결정 ([wiki/macro/semiconductor-cycle.md](../../concepts/semiconductor-cycle.md))
 - **Goldman Sachs**: SK하이닉스 HBM 95%+ capex 집중은 호황기 점유율 우위지만 단일 사이클 패턴 — 사이클 평균 ROE 평가 필요
-- **Bloomberg (ExxonMobil 사례)**: 활동가 압박 견디고 capex 사수 → Pioneer $59.5B 인수까지 도달 ([benchmark](../../analysis/benchmark/cyclical-strategy-benchmark.md))
+- **Bloomberg (ExxonMobil 사례)**: 활동가 압박 견디고 capex 사수 → Pioneer $59.5B 인수까지 도달 ([benchmark](../../benchmark/cyclical-strategy-benchmark.md))
 
 ---
 
@@ -97,8 +97,8 @@
 
 ## 4. 출처
 
-- [Nucor 2020-2024 Capex 패턴 — analysis/benchmark/cyclical-strategy-benchmark.md §2](../../analysis/benchmark/cyclical-strategy-benchmark.md)
-- [ExxonMobil Pioneer Acquisition — benchmark §4](../../analysis/benchmark/cyclical-strategy-benchmark.md)
+- [Nucor 2020-2024 Capex 패턴 — wiki/benchmark/cyclical-strategy-benchmark.md §2](../../benchmark/cyclical-strategy-benchmark.md)
+- [ExxonMobil Pioneer Acquisition — benchmark §4](../../benchmark/cyclical-strategy-benchmark.md)
 - [Memory industry to maintain cautious capex — TrendForce 2025-11](https://evertiq.com/news/2025-11-13-memory-industry-to-maintain-cautious-capex-in-2026)
 - [2026 semiconductor capex outlook — Electronics Weekly](https://www.electronicsweekly.com/news/business/semiconductor-capex-2026-04/)
-- 내부: [data/macro/semiconductor-cycle.md](../../data/macro/semiconductor-cycle.md), [data/market/2026-q1-current-state.md](../../data/market/2026-q1-current-state.md), [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md), Samsung IR
+- 내부: [wiki/macro/semiconductor-cycle.md](../../concepts/semiconductor-cycle.md), [wiki/market/2026-q1-current-state.md](../../concepts/2026-q1-current-state.md), [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md), Samsung IR

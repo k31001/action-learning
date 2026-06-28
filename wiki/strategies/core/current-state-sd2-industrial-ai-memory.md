@@ -22,7 +22,7 @@
 | 플랫폼 | HBM/메모리 사양 | 메모리 공급사 |
 |---|---|---|
 | **NVIDIA Drive Thor** (2026~2027) | 1000 TOPS, HBM3 또는 LPDDR5X | 비공개 (다중 공급) · ⚠️ |
-| **Tesla FSD HW5** (2026) | 자체 ASIC, HBM 채택 보도 | Samsung Foundry 다년 계약 ([benchmark](../../analysis/benchmark/cyclical-strategy-benchmark.md)) · 🔵 |
+| **Tesla FSD HW5** (2026) | 자체 ASIC, HBM 채택 보도 | Samsung Foundry 다년 계약 ([benchmark](../../benchmark/cyclical-strategy-benchmark.md)) · 🔵 |
 | **Mobileye EyeQ Ultra** (2027) | LPDDR5X | 비공개 · ⚠️ |
 | **Qualcomm Snapdragon Ride Flex** (2026) | LPDDR5X-PIM | Samsung 양산 LPDDR5X-PIM (강점) · 🔵 |
 
@@ -96,7 +96,7 @@
 
 - [HBM technology landscape 2026 — PatSnap](https://www.patsnap.com/resources/blog/articles/hbm-technology-landscape-2026-market-and-ai-demand/)
 - [Automotive Grade Flash Memory Market — Intel Market Research](https://www.intelmarketresearch.com/automotive-grade-flash-memory-market-40957)
-- 내부: [analysis/benchmark/cyclical-strategy-benchmark.md (Samsung Foundry-Tesla)](../../analysis/benchmark/cyclical-strategy-benchmark.md)
+- 내부: [wiki/benchmark/cyclical-strategy-benchmark.md (Samsung Foundry-Tesla)](../../benchmark/cyclical-strategy-benchmark.md)
 - NVIDIA Drive Thor 공식 발표
 - AEC-Q100 표준 문서
 

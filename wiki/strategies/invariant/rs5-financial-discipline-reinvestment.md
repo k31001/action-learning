@@ -19,30 +19,30 @@
 ### 2.1 삼성 메모리사업부의 과거 손실 패턴 — 호황기 피크 증설 → 다운사이클 적자 반복
 - 2017~2018 슈퍼사이클: DRAM ASP +50%, HBM·고성능 DRAM 캐파 가속 증설
 - 2019~2020: 가격 하락 + 재고 급증, 영업이익 절반 이하로 축소
-- 2022~2023: 메모리 다운사이클, **메모리사업부 영업적자 8조 원+** 추정 ([data/macro/semiconductor-cycle.md](../../data/macro/semiconductor-cycle.md))
-- 2024~2026: AI 슈퍼사이클로 회복했으나, **HBM 경쟁에서는 SK하이닉스에 1세대 뒤처짐** — 다운사이클에 R&D·패키징 capex를 일부 절감한 결과 ([data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md))
+- 2022~2023: 메모리 다운사이클, **메모리사업부 영업적자 8조 원+** 추정 ([wiki/macro/semiconductor-cycle.md](../../concepts/semiconductor-cycle.md))
+- 2024~2026: AI 슈퍼사이클로 회복했으나, **HBM 경쟁에서는 SK하이닉스에 1세대 뒤처짐** — 다운사이클에 R&D·패키징 capex를 일부 절감한 결과 ([wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md))
 
 ### 2.2 Nucor 모델 — 사이클 전 구간 capex 유지
-- 2020~2024 호황기·불황기 모두 매년 **30~40억 달러 capex 유지** ([analysis/benchmark/cyclical-strategy-benchmark.md §2](../../analysis/benchmark/cyclical-strategy-benchmark.md))
+- 2020~2024 호황기·불황기 모두 매년 **30~40억 달러 capex 유지** ([wiki/benchmark/cyclical-strategy-benchmark.md §2](../../benchmark/cyclical-strategy-benchmark.md))
 - 순부채/EBITDA <1배의 **요새형 재무구조**가 이를 가능하게 함
 - 결과: 2020~2023 평균 **ROE 33%, EPS CAGR 44%**. 50년 연속 배당 인상
 - 동기간 통합 고로 경쟁사 대비 EBITDA 마진이 사이클 전 구간에서 우위
 - **시사점**: 사이클 산업에서 capex 단절은 회복기 경쟁력 손실. 사이클 전 구간 유지가 평균 수익률을 높임
 
 ### 2.3 ExxonMobil — 활동가 투자자 압박 견디고 다운사이클 capex 사수
-- 2020년 다우존스 산업평균 제외, 40년 만의 첫 연간 적자 ([benchmark](../../analysis/benchmark/cyclical-strategy-benchmark.md))
+- 2020년 다우존스 산업평균 제외, 40년 만의 첫 연간 적자 ([benchmark](../../benchmark/cyclical-strategy-benchmark.md))
 - 활동가 Engine No.1의 capex 축소·배당 확대 압박
 - CEO Darren Woods는 capex 사수 결정 → 2023년 **Pioneer Natural Resources $59.5B 인수** (1998년 Mobil 합병 이후 최대)
 - 결과: 인수 5개월 만에 종결, 2024년 자사주 매입 페이스 연 200억 달러로 가속
 - **시사점**: 다운사이클 capex 사수 거버넌스가 중장기 경쟁력의 결정 요인. 단, 활동가 압박을 견딜 이사회 구조 필수
 
 ### 2.4 삼성 2025 현금 $63B — 요새형 재무 자산
-- 삼성전자 2025년 연결 기준 현금성 자산 약 **$63B** ([data/market/2026-q1-current-state.md](../../data/market/2026-q1-current-state.md))
+- 삼성전자 2025년 연결 기준 현금성 자산 약 **$63B** ([wiki/market/2026-q1-current-state.md](../../concepts/2026-q1-current-state.md))
 - 다운사이클 진입 시 30조 원 버퍼 유지하고도 capex 사수 가능한 재무 체력
 - **시사점**: 자산은 이미 갖춰져 있다. 문제는 거버넌스 — 호황기 자원을 다운사이클 자원으로 보존하는 규율의 부재
 
 ### 2.5 SK하이닉스의 영업이익률 추이 — 사이클 변동성
-- 2025년 영업이익률 **49% (호황기)** ([data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md))
+- 2025년 영업이익률 **49% (호황기)** ([wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md))
 - 2022~2023 다운사이클: 영업적자 7조+
 - 사이클 평균 영업이익률 추정: 25~30%. **호황기 단면이 평균을 대표하지 않음**
 
@@ -109,7 +109,7 @@
 **Steel-man**: SK하이닉스는 호황기 capex 95%+ HBM 집중으로 점유율 62% 달성. 삼성이 절제한다고 그들이 절제하지 않으니, 점유율 격차만 더 벌어진다.
 
 **재반박**:
-- "절제"는 capex 절감이 아니라 **LTA·증거 기반 승인**. SK하이닉스도 NVIDIA·MS 등과 LTA 체결한 후 캐파 증설 — 본질적으로 같은 규율 ([data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md)).
+- "절제"는 capex 절감이 아니라 **LTA·증거 기반 승인**. SK하이닉스도 NVIDIA·MS 등과 LTA 체결한 후 캐파 증설 — 본질적으로 같은 규율 ([wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md)).
 - 차이는 **LTA 없는 투기적 증설을 금지**하는지 여부. SK하이닉스는 LTA 기반 증설로 90% 이상 사전 매출 확정. 삼성도 같은 구조 적용 시 호황기 절제와 캐파 확대가 양립.
 - 더 결정적으로, RS-1 옵션형 캐파와 결합하면 **"빠른 준비 + 규율 있는 집행"** 동시 구현. Shell은 선행 건설하되 LTA 확보 후 장비 반입.
 
@@ -118,8 +118,8 @@
 **Steel-man**: 2022~2023 다운사이클에 메모리사업부 영업적자 8조 원+. 그 상태에서 4조 원 capex를 어떻게 사수하나.
 
 **재반박**:
-- 삼성은 **2025년 현금성 자산 $63B (~85조 원)** ([2026-q1-current-state.md](../../data/market/2026-q1-current-state.md)). 4조 원 capex × 2년 다운사이클 = 8조 원. 충분히 흡수 가능.
-- Nucor가 사이클 전 구간 capex 30~40억 달러 유지하면서도 순부채/EBITDA <1배 사수 — **호황기 자산 비축이 다운사이클 capex 사수의 전제** ([benchmark](../../analysis/benchmark/cyclical-strategy-benchmark.md)).
+- 삼성은 **2025년 현금성 자산 $63B (~85조 원)** ([2026-q1-current-state.md](../../concepts/2026-q1-current-state.md)). 4조 원 capex × 2년 다운사이클 = 8조 원. 충분히 흡수 가능.
+- Nucor가 사이클 전 구간 capex 30~40억 달러 유지하면서도 순부채/EBITDA <1배 사수 — **호황기 자산 비축이 다운사이클 capex 사수의 전제** ([benchmark](../../benchmark/cyclical-strategy-benchmark.md)).
 - 추가로, 4조 원 capex 하한은 **HBM 신세대 R&D + 패키징 + 3D DRAM 합산** — 일반 캐파 확장이 아닌 미래 가치 투자. 이것을 깎으면 회복기 경쟁력이 사라짐.
 
 ### 반박 5.3: "외국인 주주가 배당 압박하면 결국 굴복할 수밖에 없다 — 거버넌스가 안 받쳐준다"
@@ -154,12 +154,12 @@
 ## 출처 (Citations)
 
 ### 내부 문서
-- [analysis/scenarios/strategy.md §3 RS6](../../analysis/scenarios/strategy.md)
-- [analysis/benchmark/cyclical-strategy-benchmark.md §2 Nucor, §4 ExxonMobil](../../analysis/benchmark/cyclical-strategy-benchmark.md)
-- [data/macro/semiconductor-cycle.md](../../data/macro/semiconductor-cycle.md)
-- [data/market/2026-q1-current-state.md](../../data/market/2026-q1-current-state.md)
-- [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md)
-- [data/competitors/market-share.md](../../data/competitors/market-share.md)
+- [wiki/scenarios/strategy.md §3 RS6](../../scenarios/strategy.md)
+- [wiki/benchmark/cyclical-strategy-benchmark.md §2 Nucor, §4 ExxonMobil](../../benchmark/cyclical-strategy-benchmark.md)
+- [wiki/macro/semiconductor-cycle.md](../../concepts/semiconductor-cycle.md)
+- [wiki/market/2026-q1-current-state.md](../../concepts/2026-q1-current-state.md)
+- [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md)
+- [wiki/competitors/market-share.md](../../concepts/dram-market-share.md)
 
 ### 외부 자료
 - [Yield Learning and the Sources of Profitability — Weber, PSU](https://web.pdx.edu/~webercm/documents/2004%20Weber%20Yield%20Learning.pdf)

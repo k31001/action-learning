@@ -1,8 +1,8 @@
 # 핵심전략 10개 현황 분석 — 문서 인덱스
 
 > **작업 3 산출물**: 외부 공개 자료(연차보고서·산업 리포트·뉴스·IR·경쟁사 공시)만 사용해 11개 핵심전략 각각의 정성·정량 현황을 분석.
-> **선정 근거**: [analysis/scenarios/core-strategy-selection.md](../../analysis/scenarios/core-strategy-selection.md)
-> **상위 문서**: [report/scenario-planning-report.md](../scenario-planning-report.md)
+> **선정 근거**: [wiki/scenarios/core-strategy-selection.md](../../scenarios/core-strategy-selection.md)
+> **상위 문서**: [wiki/scenarios/strategy.md](../../scenarios/strategy.md) (Main Bet/Side Bet/RS 통합)
 
 ---
 

@@ -22,7 +22,7 @@
 | 연도 | 시장 규모 | 출처 / 신뢰도 |
 |------|---------|------|
 | 2023 | ~$14M | CXL Consortium · 🔵 |
-| 2025E | ~$13억 | [data/technology/emerging-tech.md](../../data/technology/emerging-tech.md) · 🔵 |
+| 2025E | ~$13억 | [wiki/technology/emerging-tech.md](../../concepts/emerging-tech.md) · 🔵 |
 | 2026E | **$1.8~2.5B** | [TechTicker](https://techticker.fyi/cxl-memory-pooling-explained-the-16b-tech-thats-making-gpus-50-more-powerful/), Introl · 🔵 |
 | 2028E | **$16B** | TechTicker · 🔵 |
 
@@ -109,7 +109,7 @@
 - [CXMT CXL memory entry — Digitimes](https://www.digitimes.com/news/a20250910PD238/cxl-cxmt-sk-hynix-samsung-dram.html)
 - [Marvell next-gen CXL Switch](https://www.marvell.com/company/newsroom/marvell-next-gen-cxl-switch-memory-pooling-breaks-ai-memory-wall.html)
 - [Beyond HBM — TrendForce 2026-03](https://www.trendforce.com/news/2026/03/10/news-beyond-hbm-samsung-sk-hynix-reportedly-explore-next-gen-ai-memory-that-could-challenge-nvidia/)
-- 내부: [data/technology/emerging-tech.md](../../data/technology/emerging-tech.md), [analysis/scenarios/scenario-E.md](../../analysis/scenarios/scenario-E.md)
+- 내부: [wiki/technology/emerging-tech.md](../../concepts/emerging-tech.md), [wiki/scenarios/scenario-E.md](../../scenarios/scenario-E.md)
 
 ---
 

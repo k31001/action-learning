@@ -231,8 +231,7 @@ flowchart TB
 - [TechCrunch — OpenAI Samsung SK Stargate](https://techcrunch.com/2025/10/01/openai-ropes-in-samsung-sk-hynix-to-source-memory-chips-for-stargate/)
 
 ### 내부 자료
-- [analysis/scenarios/strategy.md](../../analysis/scenarios/strategy.md)
-- [report/scenario-planning-report.md](../scenario-planning-report.md)
-- [report/core-strategies/current-state-rs5-financial-discipline.md](current-state-rs5-financial-discipline.md) — RS-5 자본 충돌 점검
-- [report/core-strategies/current-state-mb2-east-west-supply.md](current-state-mb2-east-west-supply.md) — MB-2 동서 분리 패턴
-- [report/core-strategies/current-state-se2-cxl-sig-leadership.md](current-state-se2-cxl-sig-leadership.md) — SE-2 표준 시너지
+- [wiki/scenarios/strategy.md](../../scenarios/strategy.md)
+- [current-state-rs5-financial-discipline.md](current-state-rs5-financial-discipline.md) — RS-5 자본 충돌 점검
+- [wiki/strategies/core/current-state-mb2-east-west-supply.md](current-state-mb2-east-west-supply.md) — MB-2 동서 분리 패턴
+- [wiki/strategies/core/current-state-se2-cxl-sig-leadership.md](current-state-se2-cxl-sig-leadership.md) — SE-2 표준 시너지

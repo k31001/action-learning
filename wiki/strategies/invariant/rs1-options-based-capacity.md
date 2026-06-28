@@ -18,12 +18,12 @@
 ## 2. 근거 데이터 (Evidence)
 
 ### 2.1 메모리 가격 변동성 — 24개월 안에 ±60%
-- 2026 Q1 DRAM 계약가: **+55~60% QoQ** (역대 최대 분기 상승) ([data/market/price-trends.md](../../data/market/price-trends.md), TrendForce)
+- 2026 Q1 DRAM 계약가: **+55~60% QoQ** (역대 최대 분기 상승) ([wiki/market/price-trends.md](../../concepts/price-trends.md), TrendForce)
 - 2022~2023 다운사이클: DRAM ASP YoY -45~50%, 메모리 3사 합산 영업적자 진입 (TrendForce 2023)
 - 2024 Q4 → 2026 Q1 사이 DDR5 현물가 약 4배 인상 (데이터센터 다이내믹스, [PC Gamer 2026](https://www.pcgamer.com/hardware/memory/memory-crisis-and-sky-high-dram-prices-could-run-past-2028-as-samsung-and-sk-hynix-opt-to-minimize-the-risk-of-oversupply/))
 
 ### 2.2 업계가 이미 "신중 capex"로 선회
-- **2026 NAND capex $22.2B (+5%)** — 캐파 확장 아닌 process upgrade·hybrid bonding에 집중 ([TrendForce 2025-11](https://evertiq.com/news/2025-11-13-memory-industry-to-maintain-cautious-capex-in-2026), [data/technology/nand-process-transition.md](../../data/technology/nand-process-transition.md))
+- **2026 NAND capex $22.2B (+5%)** — 캐파 확장 아닌 process upgrade·hybrid bonding에 집중 ([TrendForce 2025-11](https://evertiq.com/news/2025-11-13-memory-industry-to-maintain-cautious-capex-in-2026), [wiki/technology/nand-process-transition.md](../../concepts/nand-process-transition.md))
 - 2025년 Samsung 전사 capex 전년比 **-11%**, Intel **-20%** vs TSMC +27~37%로 갈리는 흐름 ([Electronics Weekly 2026-04](https://www.electronicsweekly.com/news/business/semiconductor-capex-2026-04/))
 - Samsung 공식 코멘트: "수요와 가격을 균형 맞추는 Capex 전략으로 공급 과잉 위험을 최소화" ([Blocks & Files](https://blocksandfiles.com/2026/01/21/the-memory-supercycle/))
 
@@ -33,12 +33,12 @@
 - 반대로 호황기 빠른 증설 실패 시 매출 기회비용은 분기당 수천억 원 (HBM4 단가 $500/개 × 분기 수십만 개 단위)
 
 ### 2.4 벤치마크 — Nucor의 변동비 구조 모델
-- 1969년 Nucor가 도입한 **EAF(전기로) 미니밀** 구조: 고로 대비 가동률을 빠르게 조절. 분권화 경영으로 공장 단위 생산 결정 ([analysis/benchmark/cyclical-strategy-benchmark.md](../../analysis/benchmark/cyclical-strategy-benchmark.md))
+- 1969년 Nucor가 도입한 **EAF(전기로) 미니밀** 구조: 고로 대비 가동률을 빠르게 조절. 분권화 경영으로 공장 단위 생산 결정 ([wiki/benchmark/cyclical-strategy-benchmark.md](../../benchmark/cyclical-strategy-benchmark.md))
 - 결과: 2020~2023 평균 ROE 33%, EPS CAGR 44%, 50년 연속 배당 인상 — 사이클 전 구간에서 통합 고로 경쟁사 대비 EBITDA 마진 우위
 - 시사점: **고정비 → 변동비 전환**은 사이클 산업에서 가장 강력한 구조 개선
 
 ### 2.5 Marriott Asset-Light 모델 (자본 사이클 회피)
-- 1993년 Marriott Corporation을 두 회사로 분할: Marriott International(브랜드/운영) ↔ Host Marriott(부동산) ([benchmark](../../analysis/benchmark/cyclical-strategy-benchmark.md))
+- 1993년 Marriott Corporation을 두 회사로 분할: Marriott International(브랜드/운영) ↔ Host Marriott(부동산) ([benchmark](../../benchmark/cyclical-strategy-benchmark.md))
 - 9,300+ 호텔 중 **자체 보유 1% 미만**, 약 77%가 프랜차이즈/라이선스
 - COVID 직격탄 후 빠른 배당 복원, EBITDA 마진 77.7% (Airbnb 36.4%의 2배)
 - 시사점: 메모리도 "팹 소유" 외에 "팹 통제" 옵션을 늘리면 사이클 변동성 흡수 가능
@@ -101,7 +101,7 @@
 
 **재반박**:
 - IR 메시지 정비로 흡수 가능: "전략적 옵션 가치(Strategic Option Value)"로 명명, 분기 IR에서 "옵션 행사 가능 수치(Convertible Capacity)" 별도 공시.
-- ExxonMobil이 2020년 다우 산업평균 제외·40년 만의 첫 적자에도 capex를 사수해 2023년 Pioneer Natural Resources $59.5B 인수까지 도달한 거버넌스 모델 차용 ([benchmark](../../analysis/benchmark/cyclical-strategy-benchmark.md)).
+- ExxonMobil이 2020년 다우 산업평균 제외·40년 만의 첫 적자에도 capex를 사수해 2023년 Pioneer Natural Resources $59.5B 인수까지 도달한 거버넌스 모델 차용 ([benchmark](../../benchmark/cyclical-strategy-benchmark.md)).
 - IR 디스카운트 대비 옵션 행사 시 매출 갭 회피 효과 — 분기당 수천억 원 단위가 IR 디스카운트의 배수.
 
 ### 반박 5.3: "결국 SK하이닉스 같은 집중 투자가 점유율을 가져간다. 옵션은 후발 주자의 변명"
@@ -110,7 +110,7 @@
 
 **재반박**:
 - SK하이닉스의 집중 투자는 **단일 제품(HBM) + 단일 고객(NVIDIA)** 구조에서만 작동. 시나리오 E(패러다임 전환)에서는 같은 집중이 부메랑이 된다.
-- 또한 이미 SK하이닉스도 HBM4 단일 고객 의존도에 대한 우려가 본격화 — UBS는 "NVIDIA Rubin 70% 점유는 동시에 단일 고객 의존 70%이기도 하다"라고 분석 ([data/market/hbm-market.md](../../data/market/hbm-market.md)).
+- 또한 이미 SK하이닉스도 HBM4 단일 고객 의존도에 대한 우려가 본격화 — UBS는 "NVIDIA Rubin 70% 점유는 동시에 단일 고객 의존 70%이기도 하다"라고 분석 ([wiki/market/hbm-market.md](../../concepts/hbm-market.md)).
 - 삼성의 강점은 "다양한 제품·다양한 고객 구조에서의 가치 창출"이며, 이 구조에서는 옵션형 캐파가 더 큰 가치를 만든다 (RS-2 바벨, RS-4 고객 분산과 결합).
 
 ### 반박 5.4: "Multi-Product Fab은 이론적으로 가능하나 실제로는 라인 변경 비용이 크다"
@@ -127,11 +127,11 @@
 ## 출처 (Citations)
 
 ### 내부 문서
-- [analysis/scenarios/strategy.md §3 RS1](../../analysis/scenarios/strategy.md)
-- [analysis/benchmark/cyclical-strategy-benchmark.md (Nucor, Marriott, ExxonMobil)](../../analysis/benchmark/cyclical-strategy-benchmark.md)
-- [data/market/price-trends.md](../../data/market/price-trends.md)
-- [data/macro/semiconductor-cycle.md](../../data/macro/semiconductor-cycle.md)
-- [data/technology/nand-process-transition.md](../../data/technology/nand-process-transition.md)
+- [wiki/scenarios/strategy.md §3 RS1](../../scenarios/strategy.md)
+- [wiki/benchmark/cyclical-strategy-benchmark.md (Nucor, Marriott, ExxonMobil)](../../benchmark/cyclical-strategy-benchmark.md)
+- [wiki/market/price-trends.md](../../concepts/price-trends.md)
+- [wiki/macro/semiconductor-cycle.md](../../concepts/semiconductor-cycle.md)
+- [wiki/technology/nand-process-transition.md](../../concepts/nand-process-transition.md)
 
 ### 외부 자료
 - [Memory industry to maintain cautious capex in 2026 — TrendForce](https://evertiq.com/news/2025-11-13-memory-industry-to-maintain-cautious-capex-in-2026)

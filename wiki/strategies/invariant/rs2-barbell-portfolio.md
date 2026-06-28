@@ -17,14 +17,14 @@
 ## 2. 근거 데이터 (Evidence)
 
 ### 2.1 양 끝의 마진 격차 — HBM4 vs 범용 DRAM
-- **HBM4 단가 ~$500/개** vs HBM3E ~$300/개 (+67% 프리미엄, [NAND Research, data/market/hbm-market.md](../../data/market/hbm-market.md))
+- **HBM4 단가 ~$500/개** vs HBM3E ~$300/개 (+67% 프리미엄, [NAND Research, wiki/market/hbm-market.md](../../concepts/hbm-market.md))
 - HBM 사업부 추정 영업이익률 **35~45%** (호황기), 범용 DRAM은 사이클에 따라 -20%~+30% 변동
-- HBM이 DRAM 매출 비중에서 차지하는 비율: 2025년 약 20% → **2030년 50%+** (Yole Group, [data/market/hbm-market.md](../../data/market/hbm-market.md))
+- HBM이 DRAM 매출 비중에서 차지하는 비율: 2025년 약 20% → **2030년 50%+** (Yole Group, [wiki/market/hbm-market.md](../../concepts/hbm-market.md))
 
 ### 2.2 단일 사이클 우위 패턴 vs 바벨 우위 패턴
 - **SK하이닉스 (HBM 단일 집중)**: 2025년 영업이익률 49%, HBM 점유율 62% — 호황기 우위 명확. 그러나 2022~2023 다운사이클에서 영업적자 7조+
 - **Micron (HBM + 범용 균형)**: HBM CapEx + 범용 DRAM 균형 투자. FY2025 매출 $374억(역대 최고), HBM 점유율 21%로 안정 성장
-- **삼성 (광범위 분산)**: DRAM + NAND + 파운드리 + 시스템LSI — 분산 효과는 있으나 **"가운데 제품" 비중이 높아** 사이클 양 끝에서 경쟁사에 잠식 ([data/competitors/market-share.md](../../data/competitors/market-share.md))
+- **삼성 (광범위 분산)**: DRAM + NAND + 파운드리 + 시스템LSI — 분산 효과는 있으나 **"가운데 제품" 비중이 높아** 사이클 양 끝에서 경쟁사에 잠식 ([wiki/competitors/market-share.md](../../concepts/dram-market-share.md))
 
 ### 2.3 "가운데 제품"의 잠식 패턴 — 실제 데이터
 - 삼성 DRAM 점유율: 2024년 41% → **Q3 2025년 32.6%** (-8.4%p) ([TrendForce 2025-11-26](https://www.trendforce.com/presscenter/news/20251126-12802.html))
@@ -39,7 +39,7 @@
 - 출처: [Bank of America 2026 outlook](https://www.astutegroup.com/news/general/sk-hynix-holds-62-of-hbm-micron-overtakes-samsung-2026-battle-pivots-to-hbm4/), [SK hynix 2026 Market Outlook](https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/)
 
 ### 2.5 벤치마크 — Maersk의 인접 영역 통합
-- 2016년 Maersk는 단일 사업(컨테이너 해운) 모델의 한계를 인식하고 **end-to-end 통합 물류**로 전환 ([benchmark](../../analysis/benchmark/cyclical-strategy-benchmark.md))
+- 2016년 Maersk는 단일 사업(컨테이너 해운) 모델의 한계를 인식하고 **end-to-end 통합 물류**로 전환 ([benchmark](../../benchmark/cyclical-strategy-benchmark.md))
 - Logistics & Services 매출 비중 50% 목표
 - 2020 상반기 해운 부진 때 항공화물 단가 상승으로 그룹 EBITDA +$5,100만 — **사이클이 다른 사업의 상호 보완**
 - 시사점: 한 사이클에 노출된 비즈니스를 **사이클이 다른 영역**으로 확장 → 변동성 평탄화
@@ -93,16 +93,16 @@
 
 **재반박**:
 - SK하이닉스의 2025년 49% 영업이익률은 **호황기에만 측정된 단면**. 2022~2023 다운사이클에서 그들은 영업적자 7조+ 기록. 사이클 전 구간에서 보면 마진 변동폭이 더 큼.
-- 삼성의 HBM 추락은 **"양 끝 운영" 때문이 아니라 HBM3E 품질 이슈**라는 단발성 사고 때문. 양 끝 운영 자체의 결함이 아니다 (출처: [Counterpoint Research, data/market/hbm-market.md](../../data/market/hbm-market.md)).
+- 삼성의 HBM 추락은 **"양 끝 운영" 때문이 아니라 HBM3E 품질 이슈**라는 단발성 사고 때문. 양 끝 운영 자체의 결함이 아니다 (출처: [Counterpoint Research, wiki/market/hbm-market.md](../../concepts/hbm-market.md)).
 - 더 근본적으로, **"가운데 제품"을 축소해서 양 끝에 자원 집중**하는 게 핵심. SK하이닉스가 NAND·일반 DRAM을 사실상 포기한 구조와 본질적으로 같은 논리를 한 회사 안에서 적용.
-- Micron이 HBM + 범용 균형으로 FY2025 매출 $374억(역대 최고)을 달성한 것이 더 적절한 벤치마크 ([data/competitors/micron.md](../../data/competitors/micron.md)).
+- Micron이 HBM + 범용 균형으로 FY2025 매출 $374억(역대 최고)을 달성한 것이 더 적절한 벤치마크 ([wiki/competitors/micron.md](../../entities/micron.md)).
 
 ### 반박 5.2: "범용 DRAM은 CXMT의 보조금 공세에 어차피 진다 — 양 끝의 한쪽이 무너진다"
 
 **Steel-man**: CXMT는 빅펀드 III $470억 + 안후이성 정부 지원으로 가격 불문 캐파 확장. DDR5-8000까지 시연. 삼성의 1c nm 원가 우위가 5년 이상 지속될 수 있는가.
 
 **재반박**:
-- 단기(2026~2028)에는 1c nm 전환 속도(RS-6)로 CXMT 대비 **원가 10% 이상 우위 유지 가능** (data/technology/dram-technology.md, [data/competitors/china-competitors.md](../../data/competitors/china-competitors.md)).
+- 단기(2026~2028)에는 1c nm 전환 속도(RS-6)로 CXMT 대비 **원가 10% 이상 우위 유지 가능** (data/technology/dram-technology.md, [wiki/competitors/china-competitors.md](../../entities/china-competitors.md)).
 - 중장기(2028~)에는 CXMT가 따라잡을 수 있으나, 이때는 **범용 → 고부가 영역으로 자원 이동**하면 됨. 바벨은 정적 구조가 아니라 사이클·경쟁사 진입에 따라 양 끝의 정의가 진화하는 동적 구조.
 - 더 결정적으로, **시나리오 A·C(디커플링)에서는 CXMT가 서방 시장 진입 차단**되어 위협 자체가 봉쇄. 5개 시나리오 중 2개에서 위협이 사라지므로 평균적으로는 위협 강도가 낮아짐.
 
@@ -129,14 +129,14 @@
 ## 출처 (Citations)
 
 ### 내부 문서
-- [analysis/scenarios/strategy.md §3 RS2](../../analysis/scenarios/strategy.md)
-- [analysis/benchmark/cyclical-strategy-benchmark.md (Maersk)](../../analysis/benchmark/cyclical-strategy-benchmark.md)
-- [data/market/hbm-market.md](../../data/market/hbm-market.md)
-- [data/competitors/market-share.md](../../data/competitors/market-share.md)
-- [data/competitors/sk-hynix.md](../../data/competitors/sk-hynix.md)
-- [data/competitors/micron.md](../../data/competitors/micron.md)
-- [data/competitors/china-competitors.md](../../data/competitors/china-competitors.md)
-- [data/technology/dram-technology.md](../../data/technology/dram-technology.md)
+- [wiki/scenarios/strategy.md §3 RS2](../../scenarios/strategy.md)
+- [wiki/benchmark/cyclical-strategy-benchmark.md (Maersk)](../../benchmark/cyclical-strategy-benchmark.md)
+- [wiki/market/hbm-market.md](../../concepts/hbm-market.md)
+- [wiki/competitors/market-share.md](../../concepts/dram-market-share.md)
+- [wiki/competitors/sk-hynix.md](../../entities/sk-hynix.md)
+- [wiki/competitors/micron.md](../../entities/micron.md)
+- [wiki/competitors/china-competitors.md](../../entities/china-competitors.md)
+- [wiki/technology/dram-technology.md](../../concepts/dram-technology.md)
 
 ### 외부 자료
 - [SK hynix holds 62% of HBM, Micron overtakes Samsung — Astute Group](https://www.astutegroup.com/news/general/sk-hynix-holds-62-of-hbm-micron-overtakes-samsung-2026-battle-pivots-to-hbm4/)

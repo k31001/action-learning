@@ -165,8 +165,8 @@
 ## 출처 (Citations)
 
 ### 내부 문서
-- [analysis/scenarios/strategy.md §3 RS2 [AI 개발 효율화 메커니즘]](../../analysis/scenarios/strategy.md)
-- [analysis/scenarios/robust-reverification.md (RS-7 분리 근거)](../../analysis/scenarios/robust-reverification.md)
+- [analysis/scenarios/strategy.md §3 RS2 [AI 개발 효율화 메커니즘]](../../scenarios/strategy.md)
+- [wiki/scenarios/robust-reverification.md (RS-7 분리 근거)](../../scenarios/robust-reverification.md)
 
 ### 외부 자료
 - [Research: quantifying GitHub Copilot's impact — GitHub Blog](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/)
