@@ -14,6 +14,12 @@
 
 ---
 
+## [2026-06-28] build | 지식 그래프 팬(드래그) 크래시 수정 (v2.25.1 → v2.25.2)
+- **무엇**: Knowledge Graph 탭에서 `Cannot read properties of null (reading 'vx')` 런타임 크래시 수정. `onPointerMove`의 `setView` 업데이터 클로저가 `drag.current.vx`를 지연 실행 시점에 읽는데, 그 사이 `onPointerUp`이 `drag.current = null`로 만들면 null 참조 발생. ref 값을 핸들러 진입 시점에 지역 변수(`const d = drag.current`)로 캡처하도록 변경.
+- **왜**: 사용자 버그 리포트 — 그래프 탭에서 화면 오류, 다른 탭은 정상. 드래그-놓기 경합 조건.
+- **검증**: 프리뷰에서 드래그+놓기-후-이동 시뮬레이션 → 크래시 없이 정상 팬, 77노드 렌더 유지, 에러 바운더리 미발생.
+- **dashboard (v2.25.2, 패치 = 버그 수정)**: KnowledgeGraph.jsx onPointerMove, version bump.
+
 ## [2026-06-28] lint | 마이그레이션 잔존 깨진 링크 일괄 수선 + 고립 페이지 0 달성 (v2.25.0 → v2.25.1)
 - **무엇**: 지식 그래프가 드러낸 연결성 결함을 수선. ① **마이그레이션(2026-05-18) 잔존 깨진 내부 링크 128건**(`analysis/` 37 + `data/` 87 + `report/` 4)을 각 타깃의 실제 wiki 위치로 재해석해 올바른 상대경로로 일괄 교정 — `scripts/fix-stale-analysis-links.mjs` 신설(basename 해석 + 개명 별칭 `competitors/market-share.md`→`concepts/dram-market-share.md`). 표시 라벨의 옛 경로(`analysis/`·`data/`·`report/`)도 `wiki/`로 정리. ② **기타 깨진 링크 5건** 수동 수선(ssd-ufs-market의 잘못된 `../technology/` 2건 → `entities/`·동일 dir; 보고서 역참조 3건 → 헌법상 원천인 `wiki/scenarios/strategy.md`로 재지정). ③ **고립 7개 페이지 신규 상호링크**: STEEP 4개(environment·political·social·technology) + Impact×Uncertainty 매트릭스에 Shell 파이프라인 spine 푸터 추가(STEEP→매트릭스→key-drivers→scenario-matrix, 상호링크화), 벤치마크 2개(agri-hedging·upside-participation)를 RS-8과 상호링크.
 - **왜**: 사용자 요청 — 그래프 lint 신호(고립 9·역링크 누락) 기반 위키 상호링크 보강. 고립의 근본 원인이 단순 미링크가 아니라 **마이그레이션 때 끊긴 깨진 경로**였음이 그래프 추출로 드러남.

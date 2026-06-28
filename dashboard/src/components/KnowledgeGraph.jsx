@@ -61,12 +61,15 @@ export default function KnowledgeGraph() {
     e.currentTarget.setPointerCapture?.(e.pointerId)
   }
   const onPointerMove = (e) => {
-    if (!drag.current) return
+    // ref 값을 핸들러 진입 시점에 캡처 — setView 업데이터가 지연 실행돼도
+    // 그 사이 onPointerUp 이 drag.current 를 null 로 만들어 크래시하는 것을 방지.
+    const d = drag.current
     const svg = svgRef.current
+    if (!d || !svg) return
     const rect = svg.getBoundingClientRect()
-    const dx = (e.clientX - drag.current.px) / rect.width * view.w
-    const dy = (e.clientY - drag.current.py) / rect.height * view.h
-    setView(v => ({ ...v, x: drag.current.vx - dx, y: drag.current.vy - dy }))
+    const dx = (e.clientX - d.px) / rect.width * view.w
+    const dy = (e.clientY - d.py) / rect.height * view.h
+    setView(v => ({ ...v, x: d.vx - dx, y: d.vy - dy }))
   }
   const onPointerUp = () => { drag.current = null }
 
