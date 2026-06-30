@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-14
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md]
+last_reviewed: 2026-06-30
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/june-2026-market-update-2026-06-30.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -324,6 +324,32 @@ flowchart LR
 - **패키징**: 지수 **2 추가 하향(70→68)** — 130K WPM 확정·CoPoS 완공·선진 패키징 >10% 모두 완화 방향. **상류(d2 57) < 현재(68), −11** — 완화 예고 경계(-15) 접근. 2028~29 신규 사이트 가동 시 추가 완화 예상.
 - **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
 
+### 종합 판독 (2026-06-30)
+
+#### 제약지수 업데이트 (2026-06-30, 이전 2026-06-14 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 70 | **72** | **▲ +2** | PJM 용량권고(Capacity Advisory) 신메커니즘(06-24)·FERC 6개 RTO 대형부하 요금 개혁 명령(60일 기한)·NERC Level 3 경보(8/3 기한, "Computational Load Entity" 등록 추진)·미국 가스 발전 증설 2026~27년 연 10GW 미만(2028+ 본격화) |
+| **CAPEX/ROI** | 42 | **39** | **▼ −3** | SemiAnalysis "2026 美 DC 용량 절반 취소" 루머 반박 — 상위 2개 하이퍼스케일러만 5GW+ 자체건설 진행 중, 6개월 전망 수정폭 1~5%에 불과(파이프라인 건재). NVIDIA 2H FY27 DC매출 컨센서스 대비 +20% 상회 전망(HBM4 공급문제 해소+전공정 웨이퍼 재고 확보) |
+| **파운드리** | 52 | **55** | **▲ +3** | NVIDIA 수요 재가속 신호 — HBM4 공급 제약 해소로 Rubin 램프 속도 회복, AI 배정 선단 캐파 압력 재상승. 직전(06-14) "Rubin 출하 비중 22%로 하향"에 따른 완화 판단이 **역전** |
+| **패키징** | 68 | **65** | **▼ −3** | TSMC CoWoS 수급 갭 20%→10%로 축소 전망(TrendForce 06-15)·130K WPM 목표 유지·5월 매출 NT$417B(YoY+30.1%) 사상 최고 재확인 |
+
+**하방 위험 순서 유지: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리. 전력은 6회 연속 상향(64→68→70→72)으로 4대 병목 중 유일하게 일관된 구조적 악화. 파운드리는 직전 완화 흐름이 단일 점검 주기 만에 역전 — 4축 중 변동성 최대.**
+
+#### 2026-06-30 핵심 신규 신호
+
+- **전력 규제 격상**: PJM(6,700만 명·13개 주)이 AI DC 부하발 그리드 부족에 대응해 신규 경보 메커니즘 도입. FERC가 미국 6개 RTO/ISO 전체에 대형부하 요금체계 개혁안을 60일 내 제출하도록 명령 — 규제기관이 사후 대응에서 선제 개입으로 전환하는 신호. NERC Level 3 경보(2026-08-03 기한)는 1MW+ DC를 별도 신뢰성 관리 대상("Computational Load Entity")으로 등록시키려는 첫 시도 — 전력 병목이 산업 운영 차원을 넘어 **계통 신뢰성 리스크**로 격상됨을 시사 ([june-2026-market-update-2026-06-30.md](../../sources/articles/june-2026-market-update-2026-06-30.md)).
+- **CAPEX 파이프라인 건재 확인**: SemiAnalysis가 "2026 미국 DC 용량 절반 취소" 바이럴 주장을 반박 — 데이터 소스(Sightline Climate)의 분모 오류 지적, 실제 6개월 전망 수정폭은 1~5%에 불과. NVIDIA 자체 모델은 2H FY27 매출이 컨센서스 대비 +20% 높을 것으로 전망(HBM4 공급 문제 해소). **CAPEX 축의 하방 리스크가 추가 완화** — 단 자금조달(ABS·SPV) 긴장은 잔존.
+- **파운드리 — 완화 흐름 역전**: 06-13~14 점검에서는 "Rubin 출하 비중 29%→22% 하향"을 캐파 여유 신호로 해석했으나, 06-30 시점 SemiAnalysis는 그 하향의 원인이었던 HBM4 공급 제약이 **해소**되고 있다고 진단 — Rubin 램프가 다시 가속되면 AI 배정 선단 캐파(N2/N3) 수요도 재상승. 동일 사실(HBM4 공급)의 다른 국면이 파운드리 지수를 반대 방향으로 흔든 사례 — **단일 점검 주기 노이즈 가능성 있음, 다음 점검(2026 Q3 Rubin 초기 출하 데이터)에서 추세 확정 필요**.
+- **패키징 추가 완화**: TrendForce, CoWoS 수급 갭이 2026년 말까지 20%→10%로 축소될 것으로 전망 — 증설 속도가 수요 증가를 서서히 따라잡는 국면 진입.
+- **HBM 점유율 — 분기 실적 vs 월별 추정 괴리**: Counterpoint Q1 2026(1~3월) 확정 실적 기준 HBM 점유율은 SK하이닉스 57~58%·삼성 21~32%로, 위키 기존 "4월 2026 최신 35~40%"(월별 출하 추정)보다 낮음. 분기 매출 인식과 월별 출하 추정의 방법론 차이로 해석 — 두 수치 모두 병기하고 2026 Q2 확정 실적(8월 발표 예상)에서 재확인 ([hbm-market.md](hbm-market.md) [Update 2026-06-30] 참조). 본 모델의 공급사별 유효 캐파(SK 1.24EB·삼성 0.94EB·Micron 0.71EB)는 2030 장기 추정치로 분기 점유율 변동과 별개 — 변경 없음.
+- **CXMT 매출 급증, 그러나 HBM은 미진입**: CXMT 2026E 매출 $50B+ 전망(ASP 효과 주도, 점유율 효과 아님). 단 HBM 배정 캐파는 전체의 ~2%(5K/265K WSPM)에 불과 — **본 모델의 2030 HBM 공급 측 "기타·중국 0.06EB" 가정에 직접 영향 없음**(여전히 범용 DRAM 위협). [cxmt.md](../entities/cxmt.md) [Update 2026-06-30] 참조.
+
+**출처**: [june-2026-market-update-2026-06-30.md](../../sources/articles/june-2026-market-update-2026-06-30.md)
+
+---
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -338,3 +364,4 @@ flowchart LR
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/june-2026-market-update-2026-06-30.md](../../sources/articles/june-2026-market-update-2026-06-30.md) — 2026-06-30 병목 제약지수 갱신 데이터 (SemiAnalysis·Counterpoint·TechInsights·PJM/FERC/NERC·CXMT)

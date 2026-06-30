@@ -96,3 +96,11 @@
 - 시나리오 연결: 이 트리거는 [시나리오 C·D(AI 붕괴)](../scenarios/scenario-C.md) 진입 EWI와 동일 축 — 거품론([ai-demand-sustainability.md](ai-demand-sustainability.md))의 정량 트리거화.
 
 **출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) · [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
+
+## [Update 2026-06-30] SemiAnalysis — "DC 용량 절반 취소" 루머 반박 + NVIDIA 매출 컨센서스 상회 전망
+
+- **"Stop Saying Half of 2026 US Datacenter Capacity Is Canceled"**(2026-06-18): 바이럴 확산된 "美 2026 DC 용량 절반 취소" 주장을 반박 — 출처(Sightline Climate)의 분모 설정 오류 지적. 실제로는 상위 2개 하이퍼스케일러만으로도 **5GW+ 자체건설(self-build) 공사 진행 중**(제3자 개발사 GW급 프로젝트는 별도 집계). 6개월 전망 수정폭은 북미 하이퍼스케일 자체건설 **~1%**, 콜로케이션 **<5%**에 불과 — **capex 파이프라인이 헤드라인 루머만큼 흔들리지 않았음을 확인**.
+- **NVIDIA 2H FY2027 매출 전망 상향**: SemiAnalysis Accelerator Model 기준 데이터센터 매출이 월가 컨센서스 대비 **약 +20% 높음** — Rubin 램프를 지연시켰던 HBM4 공급 문제가 해소되고 전공정 웨이퍼 재고가 누적된 결과. **CAPEX 실현 가능성(ROI 측)의 추가 긍정 신호**.
+- **병목 모델 연결**: [bottleneck-model-2030.md](bottleneck-model-2030.md) §5 — CAPEX/ROI 제약지수 **42 → 39**(2026-06-30, 추가 완화). 단 자금조달(ABS·SPV 의존) 긴장은 잔존 — 4대 병목 중 여전히 최대 하방 민감도 축.
+
+**출처**: [june-2026-market-update-2026-06-30.md](../../sources/articles/june-2026-market-update-2026-06-30.md)

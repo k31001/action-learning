@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-06-30 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-06-30',
+    type: 'ingest',
+    version: 'v2.25.3',
+    title: '정기 시장 점검 — 병목지수 재조정·SK하이닉스 나스닥 상장·Q1 확정실적·전력망 규제 격상',
+    summary:
+      'SemiAnalysis·Counterpoint·TechInsights 등 3개 병렬 리서치로 수집한 최신 데이터 반영. Bottleneck Model 4대 지수 재조정(전력 70→72·CAPEX 42→39·파운드리 52→55·패키징 68→65, 직전 06-14 대비 변동폭 명시). SK하이닉스 나스닥 ADR 상장($29~30B, 7/10) + Q1 2026 DRAM/NAND/HBM 확정 실적 + 스마트폰 출하 -13.9%(역대 최대 하락) + 전력망 규제 격상(PJM·FERC·NERC) + CXMT 매출 $50B+ 전망. 전략 추가/삭제 없음(기존 RS2·RS9 프레임으로 충분히 흡수 판단).',
+    tags: ['Bottleneck Model', 'SK하이닉스', 'Counterpoint', 'SemiAnalysis', 'TechInsights', '전력망', 'CXMT', 'dashboard'],
+    items: [
+      { label: '병목지수 재조정', detail: '전력 72(▲+2, 6연속 상향)·CAPEX 39(▼-3)·파운드리 55(▲+3, 완화흐름 역전)·패키징 65(▼-3). PJM 용량권고·FERC 60일 명령·NERC Level3 경보 / NVIDIA 2H FY27 매출 컨센서스+20% / CoWoS 수급갭 20%→10%' },
+      { label: 'SK하이닉스 나스닥 ADR', detail: '2026-07-10 상장 예정, $29~30B 추정. 06-22 시가총액 일시 한국 1위. DDR5 수익 우선 전략 신호(TechTimes)' },
+      { label: 'Q1 2026 확정 실적', detail: 'DRAM: 삼성 38.6%($37.4B)·SK 28.8%($28.0B)·Micron 22.4%($21.7B), 시장 $97B. NAND $46B 사상최대(삼성 29% 1위). HBM: SK 57~58%·삼성 21~32%(4월 추정 35~40%와 방법론 차이)' },
+      { label: '스마트폰 출하 -13.9%', detail: '2026년 10.8억 대, 역대 최대 하락폭. 모바일 DRAM ~3배 폭등이 원인 — 메모리 호황의 실물 수요 파괴 경고' },
+      { label: 'CXMT 매출 $50B+ 전망', detail: 'ASP 효과 주도(점유율 아님). 캐파는 삼성·SK 절반(~350K WSPM), HBM 배정 ~2%뿐 — 위협 재평가: 여전히 범용 DRAM 한정' },
+    ],
+    links: [
+      { label: 'june-2026-market-update-2026-06-30.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/june-2026-market-update-2026-06-30.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-06-25 ───────────────────────────────────────────────────────────────
   {
     date: '2026-06-25',

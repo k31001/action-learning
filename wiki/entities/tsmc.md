@@ -112,3 +112,11 @@ TSMC는 노드 전환을 **"Nx → Nx+ → Nx++"** 점진 개선으로 잘게 �
 - Samsung 함의: TSMC 단일 공급 집중(single-supplier concentration)이 상방을 누르는 구조 = Samsung Foundry 2nm·삼성 HBM4 베이스다이의 **대체 슬롯 가치**가 상방 시나리오일수록 커짐.
 
 **출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) · [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
+
+## [Update 2026-06-30] CoWoS 수급 갭 20%→10%로 축소 + 5월 매출 사상 최고 재확인
+
+- **TrendForce(2026-06-15)**: CoWoS 수급 갭이 2026년 말까지 **20% → 10%로 축소** 전망 — 증설 속도가 수요 증가를 점진적으로 따라잡는 국면.
+- **DigiTimes(2026-06-10)**: TSMC 5월 매출 **NT$416.98B**(~$13.2B), MoM +1.5%, **YoY +30.1% — 월 매출 사상 최고 경신**.
+- 단, [nvidia.md](nvidia.md) [Update 2026-06-30]의 NVIDIA 2H FY27 수요 컨센서스 상회 전망과 결합하면 — **패키징은 완화, 선단 로직(파운드리)은 재긴장**이라는 엇갈린 신호. [bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md)에서 패키징 68→65(완화), 파운드리 52→55(긴장)로 반영.
+
+**출처**: [june-2026-market-update-2026-06-30.md](../../sources/articles/june-2026-market-update-2026-06-30.md)

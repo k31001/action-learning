@@ -182,3 +182,13 @@ NAND Flash는 매 18~24개월마다 새로운 layer 세대로 전환하면서 la
 → **함의**: BiCS10이 SK Hynix V9를 능가 (QLC 기준 +30% 밀도). 4사 적층 경쟁에서 Kioxia 선두 진입. 한·미·중·일 4파전 강화.
 
 **출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
+
+---
+
+## [Update 2026-06-30] TechInsights — 삼성 V-NAND도 hybrid bonding 채택 전망 + 5년 내 600~700단
+
+- KIOXIA/WD BiCS8 218L이 **CBA(CMOS-bonded-to-Array) hybrid bonding** 적용을 선도, **삼성 차세대 V-NAND도 유사 hybrid bonding 채택 전망** — 위 표의 "Samsung V10 430L(2026 H2)"이 hybrid bonding 기반일 가능성 시사. YMTC Xtacking도 동일 방향.
+- TechInsights 장기 전망: **5년 내 600~700단 NAND** 도달 — 본 페이지 §[학습곡선 경제학] 적용 시 layer당 ramp 단축 경쟁이 더욱 가속될 전망.
+- 출처 접근 제약: techinsights.com 본문 직접 fetch 403 차단 — 검색엔진 스니펫 기반, 정밀 수치(레이어 수·시점)는 1차 원문 대조 권고.
+
+**출처**: [june-2026-market-update-2026-06-30.md](../../sources/articles/june-2026-market-update-2026-06-30.md)

@@ -14,6 +14,19 @@
 
 ---
 
+## [2026-06-30] ingest | 정기 시장 점검 — Bottleneck Model 재조정·SK하이닉스 나스닥 상장·Q1 확정실적·전력망 규제 격상 (v2.25.2 → v2.25.3)
+
+- **무엇**: 사용자 요청("@data 보고서 작성에 필요한 최신 데이터를 검색·업데이트, Bottleneck Model 숫자를 최신 정보 기반으로 갱신하고 변동폭 표현, LLM wiki/link 갱신, 필요시 전략 수정")에 따라 SemiAnalysis·Counterpoint Research·TechInsights·PJM/FERC/NERC·DigiTimes·Bloomberg를 3개 병렬 리서치 에이전트로 조사. 신규 1차 소스 `sources/articles/june-2026-market-update-2026-06-30.md` 작성 후 위키 10개 페이지 갱신.
+- **Bottleneck Model 갱신 (변동폭 명시)**: `wiki/concepts/bottleneck-model-2030.md` §5에 "종합 판독 (2026-06-30)" 신설 — 전력 70→**72**(▲+2, PJM 용량권고·FERC 60일 명령·NERC Level3 경보)·CAPEX 42→**39**(▼-3, SemiAnalysis "DC 용량 절반 취소" 루머 반박+NVIDIA 매출 컨센서스 +20% 상회)·파운드리 52→**55**(▲+3, NVIDIA 수요 재가속으로 직전 완화 판단 역전)·패키징 68→**65**(▼-3, CoWoS 수급갭 20%→10% 축소). `dashboard/src/data/bottleneckModel.js`의 `MODEL_ASOF`·`PREV_MODEL_ASOF`·`PREV_INDICES`·각 병목 `currentIndex`/`indexNote`를 동일하게 갱신해 대시보드 Δ 표시가 06-14 대비 정확히 계산되도록 함. 파운드리 지수의 단일 주기 내 방향 역전은 위키에 노이즈 가능성으로 명시 기록.
+- **시장 점유율·실적 갱신**: `hbm-market.md`·`dram-market-share.md`에 Q1 2026 Counterpoint 확정 실적(DRAM 삼성38.6%/SK28.8%/Micron22.4%, $97B / HBM SK57~58%/삼성21~32%) 추가 — 기존 "4월 2026 최신 35~40%"(월별 추정)와의 방법론 차이를 명시적으로 병기. NAND $46B 사상최대(삼성 29% 1위) 신규 반영.
+- **기타 신규 사실**: `sk-hynix.md`(나스닥 ADR $29~30B 7/10 상장, 시총 일시 1위, DDR5 우선 전략 신호), `cxmt.md`(2026E 매출 $50B+이나 캐파·HBM 배정은 여전히 미미 — 위협 재평가), `nvidia.md`(Vera Rubin 8개 클라우드 파트너 확장, 2H FY27 매출 컨센서스+20%), `tsmc.md`(CoWoS 갭 20%→10%), `energy-constraints.md`(PJM·FERC·NERC 전력망 규제 격상), `ai-capex.md`(SemiAnalysis capex 파이프라인 건재 확인), `price-trends.md`(스마트폰 출하 -13.9% 역대 최대 하락 — 메모리 가격발 실물 수요 파괴 신호), `nand-process-transition.md`(TechInsights hybrid bonding 삼성 채택 전망).
+- **전략 검토 결론**: 신규/수정/삭제 전략 없음. SK하이닉스 DDR5 우선 신호·CXMT 매출 급증·전력망 규제 격상 모두 기존 전략 프레임(RS2 바벨 포트폴리오, RS9 수요 변곡 센싱)으로 충분히 흡수 가능하다고 판단 — 신규 전략 신설의 근거 미달.
+- **outputs 동기화**: `outputs/report/scenario-planning-report.md` "핵심 수치 한눈에"·"병목 레이더" 섹션을 06-30 수치로 갱신(날짜·지수·HBM/DRAM 점유율·신규 항목 5종 추가). `outputs/presentation/slide-outline.md`는 구조 변경 없어 건너뜀(기존 HBM 28% 등 수치가 갱신된 범위 내에 있어 구조적 모순 없음).
+- **dashboard 동기화 (v2.25.2 → v2.25.3, 패치 = 데이터 갱신)**: `bottleneckModel.js`(지수·PREV 갱신), `version.js`, `updates.js`(신규 entry). `npm run build` 통과 확인(콘솔 에러 없음, 7.26초, dist 생성 정상).
+- **영향 페이지**: `sources/articles/june-2026-market-update-2026-06-30.md`(신규), `index.md`, `wiki/concepts/{bottleneck-model-2030,hbm-market,dram-market-share,energy-constraints,ai-capex,price-trends,nand-process-transition}.md`, `wiki/entities/{sk-hynix,cxmt,nvidia,tsmc}.md`, `outputs/report/scenario-planning-report.md`, `dashboard/src/data/{bottleneckModel,updates}.js`, `dashboard/src/version.js`.
+
+---
+
 ## [2026-06-28] build | 지식 그래프 팬(드래그) 크래시 수정 (v2.25.1 → v2.25.2)
 - **무엇**: Knowledge Graph 탭에서 `Cannot read properties of null (reading 'vx')` 런타임 크래시 수정. `onPointerMove`의 `setView` 업데이터 클로저가 `drag.current.vx`를 지연 실행 시점에 읽는데, 그 사이 `onPointerUp`이 `drag.current = null`로 만들면 null 참조 발생. ref 값을 핸들러 진입 시점에 지역 변수(`const d = drag.current`)로 캡처하도록 변경.
 - **왜**: 사용자 버그 리포트 — 그래프 탭에서 화면 오류, 다른 탭은 정상. 드래그-놓기 경합 조건.

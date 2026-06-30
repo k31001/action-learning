@@ -124,3 +124,26 @@ sources: [sources/README.md (NVIDIA IR / 기술 블로그, UBS, BofA, TrendForce
 - VR NVL72 랙 단위 서버 DRAM 수요 폭증
 
 **출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md), [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)
+
+---
+
+## [Update 2026-06-30] Vera Rubin 풀 프로덕션 확장 + 2H FY27 매출 컨센서스 상회 전망
+
+### Vera Rubin 출하 — 8개 클라우드 파트너로 확장
+
+- 2026-06-01 풀 프로덕션 공식화 이후, 2026년 가을 **8개 클라우드 파트너**(AWS·Google Cloud·Microsoft Azure·Oracle Cloud·CoreWeave·Lambda·Nebius·Nscale) 출하 확정 — 고객 기반이 빅4 하이퍼스케일러를 넘어 neocloud(CoreWeave·Lambda·Nebius·Nscale)까지 확장.
+
+### 2H FY2027 매출 — 컨센서스 대비 +20% 전망 (SemiAnalysis)
+
+- SemiAnalysis Accelerator Model: NVIDIA 2H FY2027 데이터센터 매출이 월가 컨센서스 대비 **약 +20% 상회** 전망. 근거: **HBM4 공급 문제 해소** + 전공정 웨이퍼 재고 누적으로 Rubin 램프 가속.
+- Q2 FY2027 실적 발표 예정 **2026-08-26**(컨센서스 매출 $91.7B·EPS $2.07) — 모니터링 분기점.
+
+### HBM4 공급사 배분 — 3사 인증 후 첫 비공식 추정치
+
+- 2026-06-05 젠슨 황이 삼성·SK하이닉스·마이크론 **3사 모두 HBM4 자격 통과**를 확인한 데 이어, 비공식 애널리스트 배분 추정 등장: **SK하이닉스 ~60-70% · 삼성 ~25-30% · 마이크론 잔여**. UBS 기존 추정(SK 70%/삼성 28%/마이크론 18%, [hbm-roadmap.md](../concepts/hbm-roadmap.md))과 대체로 정합.
+
+### Bottleneck Model 함의 — 파운드리 압력 재상승
+
+- HBM4 공급 해소 → Rubin 램프 재가속은 [bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md)의 **파운드리 제약지수를 52→55로 재상승**시키는 핵심 근거 — 직전(06-14) "Rubin 출하 비중 하향 = 캐파 여유" 판단이 역전됨. AI 수요 강도가 식지 않았다는 신호로, Main Bet(시나리오 B) conviction에는 긍정적이나 공급망 압박은 지속.
+
+**출처**: [june-2026-market-update-2026-06-30.md](../../sources/articles/june-2026-market-update-2026-06-30.md)

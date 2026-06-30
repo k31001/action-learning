@@ -371,3 +371,26 @@ Counterpoint Research (2026-01-29):
 → Samsung은 3·4단계에서 격차 — 동시대 동기간 확보 못 하면 캐파 락인 격차 영구화 위험
 
 **출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §3.1, §3.2
+
+---
+
+## [Update 2026-06-30] 나스닥 ADR 상장 추진($29~30B) + 시가총액 일시 1위 + DDR5 우선 전략 신호
+
+### 나스닥 ADR 상장
+
+- SK하이닉스, **2026-07-10 나스닥 ADR 상장** 계획 — 규모 **$29~30B** 추정. 메모리 업체로는 이례적인 미국 자본시장 직접 접근 — 글로벌 투자자 기반 확대 + 달러 조달 채널 다변화 의도.
+
+### 시가총액 — 한국 1위 기업 일시 등극
+
+- 2026-06-22: SK하이닉스가 일시적으로 삼성전자를 제치고 **한국 시가총액 1위 기업**으로 등극(익일 양사 모두 -12% 조정되며 순위 환원). Q1 2026 매출 KRW 52.6조(+60% QoQ, +198% YoY) — 사상 첫 분기 50조 원 돌파가 배경.
+
+### DDR5 수익 우선 전략 신호 (TechTimes, 2026-06-24)
+
+- "SK Hynix Dethroned Samsung After 26 Years: Now Choosing DDR5 Profits Over HBM4 Ramp" — SK하이닉스가 **HBM4 공격적 증설보다 DDR5 수익을 우선**하는 전략 신호로 해석되는 보도. 범용 DRAM 마진이 HBM 계약 수준에 근접한 환경([price-trends.md](../concepts/price-trends.md))에서 합리적 선택지.
+- **Samsung 함의**: 업계 1위가 HBM 램프 속도를 일부 조절한다면 Samsung의 HBM4/HBM4E 점유율 회복에 상대적 여지 — 단 SK의 NVIDIA Rubin 락인(60~70%, [hbm-market.md](../concepts/hbm-market.md) [Update 2026-06-30])과 절대 캐파 우위는 구조적으로 유지되므로 과대 해석 경계.
+
+### Q1 2026 DRAM 매출 점유율 — 확정 실적은 삼성에 1위 내줌
+
+- Counterpoint 확정: SK하이닉스 DRAM 매출 점유율 **28.8%**($28.0B) — 삼성(38.6%, $37.4B)에 매출 1위 재차 내줌. 단 영업이익률은 **~72%**(사상 최고)로 마진 우위는 압도적([dram-market-share.md](../concepts/dram-market-share.md) [Update 2026-06-30]).
+
+**출처**: [june-2026-market-update-2026-06-30.md](../../sources/articles/june-2026-market-update-2026-06-30.md)

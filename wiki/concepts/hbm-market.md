@@ -300,3 +300,34 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 | HBM4E | 미정 (HBM4 대비 프리미엄 예상) | 2026년 하반기 가격 형성 예정 |
 
 **출처**: [june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md)
+
+---
+
+## [Update 2026-06-30] Counterpoint Q1 2026 확정 실적 — 분기 매출 기준은 월별 추정보다 낮음 + SK하이닉스 DDR5 우선 전략 신호
+
+### HBM Q1 2026 매출 점유율 (확정 실적)
+
+| 공급사 | Q1 2026 매출 기준 | 비고 |
+|---|---|---|
+| SK하이닉스 | **57~58%** | 매출 인식 기준 |
+| 삼성전자 | **21~32%** | 자료별 편차(Counterpoint 인용처 상이) |
+| 마이크론 | ~21% | |
+
+⚠️ **방법론 차이 주의**: 위 [Update 2026-06-14] 섹션의 "4월 2026 최신 35~40%"는 **월별 출하 추정치**, 본 섹션은 **분기 매출 인식 기준**(Q1=1~3월) — 같은 기간이라도 수치 체계가 다르다. 두 수치 모두 병기하고 **2026 Q2 확정 실적(8월 발표 예상)**에서 어느 쪽이 추세에 가까운지 재확인 필요. Counterpoint는 **2026년 전체 기준 삼성 HBM 점유율 30%+ 도달**을 유지 전망.
+
+### SK하이닉스 — DDR5 수익 우선 전략 신호 (TechTimes, 2026-06-24)
+
+- 제목: "SK Hynix Dethroned Samsung After 26 Years: Now Choosing DDR5 Profits Over HBM4 Ramp"
+- SK하이닉스가 HBM4 공격적 증설보다 **DDR5 수익 우선** 전략을 택하고 있다는 신호 — 일반 DRAM 마진이 HBM 계약 수준에 근접한 환경([price-trends.md](price-trends.md) [Update 2026-05-19] 참조)에서 합리적 선택.
+- **Samsung 함의**: 1위 사업자가 HBM 램프 속도를 일부 늦춘다면 Samsung의 HBM4/HBM4E 점유율 회복 여지가 확대 — 단, SK의 절대 캐파·NVIDIA 락인(Rubin 60~70%)이 줄어드는 것은 아니므로 "상대적 기회" 수준으로 해석.
+
+### DRAM 시장 Q1 2026 확정 실적 (참고 — [dram-market-share.md](dram-market-share.md)에 상세)
+
+삼성 38.6%($37.4B)·SK하이닉스 28.8%($28.0B)·마이크론 22.4%($21.7B), 시장 총 ~$97B(+260% YoY). SK하이닉스 영업이익률 ~72%(역대 최고)로 마진은 압도적 우위 유지.
+
+### NAND Q1 2026 — 사상 최대 $46B, 삼성 1위 29%
+
+- 글로벌 NAND 매출 **$46B**(+90% QoQ, +3.5배 YoY) — 사상 최대.
+- **삼성전자 NAND 점유율 29%로 1위**(SK하이닉스·키옥시아 순) — HBM과 별개로 NAND 리더십은 견고.
+
+**출처**: [june-2026-market-update-2026-06-30.md](../../sources/articles/june-2026-market-update-2026-06-30.md)
