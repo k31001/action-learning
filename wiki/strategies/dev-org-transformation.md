@@ -5,6 +5,7 @@ sources:
   - sources/articles/micron-anthropic-sca-2026-06-22.md
   - sources/articles/lta-to-sca-industry-context-2026-06.md
   - sources/filings/micron-q3-fy26.md
+  - sources/articles/palantir-fde-model-2026-07.md
   - sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md
   - sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md
 ---
@@ -12,6 +13,8 @@ sources:
 # 개발실 체질 전환 전략 — 수주 이행자에서 기술 파트너로 (DT: Dev-org Transformation)
 
 > **한 줄 요약**: LTA→SCA 전환([lta-to-sca-transition.md](../concepts/lta-to-sca-transition.md))으로 고객이 사는 것이 "정확한 납품"에서 "공동 기술 드라이브"로 바뀌었다. 개발실의 역할을 **요구사항 수령·구현 조직에서 요구사항 공동 정의·선제 제안 조직으로** 전환하지 않으면 SCA 시대의 계약 테이블에 앉지 못한다.
+
+> **북극성 명제 (신문섭 파트너, 2026-06-18 인터뷰)**: *"앞으로의 승부는 칩을 많이 파는 기업이 아니라, **고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업**이 가져갈 것이다."* ([expert-interview-ai-infra-supercycle-2026-06-18.md](../../sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) §16) — 본 전략의 목적을 한 문장으로 요약한다. "고객의 아키텍처 안으로 들어간다"는 것이 조직적으로 무엇을 뜻하는지는 이미 검증된 롤모델이 있다 → [§4.5 Palantir FDE 모델](#45-벤치마크--palantir-fde-forward-deployed-engineer-모델).
 
 ---
 
@@ -25,7 +28,7 @@ sources:
 | 2026-06-22 | **Micron ↔ Anthropic SCA** — 공급 + 공동 최적화 + 운영통합 + 자본연계 ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md)) | "전략적 파트너"가 계약 형태로 제도화. 공동설계 역량이 없으면 SCA 자체를 수주 불가 |
 | 2026-06-24 | Micron IR, **SCA 16건 · 최소 계약매출 ~$100B · 예치금 $22B** 공시 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md) §3) | SCA는 개별 딜이 아니라 계약 카테고리 — 산업 표준이 되는 중 |
 
-**진단**: 지금까지의 개발실 운영 모델(고객 요구사항을 정확히 받아 → 높은 품질로 → 정확한 시간에 납품)은 1~2단계 계약 구조에 최적화된 체질이다. 고객이 기술 혁신을 시도할 때 우리는 "함께 토론하여 방향을 정하는 파트너"가 아니라 "시키는 대로 만들어오는 기업"으로 인식되고 있으며, 이 인식은 3단계(SCA) 계약 수주에서 구조적 불리로 작동한다. 베인 신문섭 파트너의 "Commodity→Customization 체질 전환" 진단([expert-interview-ai-infra-supercycle-2026-06-18.md](../../sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md))과 동일 결론.
+**진단**: 지금까지의 개발실 운영 모델(고객 요구사항을 정확히 받아 → 높은 품질로 → 정확한 시간에 납품)은 1~2단계 계약 구조에 최적화된 체질이다. 고객이 기술 혁신을 시도할 때 우리는 "함께 토론하여 방향을 정하는 파트너"가 아니라 "시키는 대로 만들어오는 기업"으로 인식되고 있으며, 이 인식은 3단계(SCA) 계약 수주에서 구조적 불리로 작동한다. 베인 신문섭 파트너의 "Commodity→Customization 체질 전환" 진단([expert-interview-ai-infra-supercycle-2026-06-18.md](../../sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md))과 동일 결론이며, 같은 인터뷰의 최종 명제 — *"고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다"* — 가 전환의 방향을 규정한다. "아키텍처 안으로 들어간다"는 추상이 아니라 구체적 조직 형태로 이미 존재한다 → [Palantir FDE 모델(§4.5)](#45-벤치마크--palantir-fde-forward-deployed-engineer-모델).
 
 ## 2. 개발실 역할의 재정의 — As-Is vs To-Be
 
@@ -70,8 +73,8 @@ sources:
 - **토론 문화**: 고객 미팅에서 "가능/불가능 답변"이 아니라 "대안 제시·트레이드오프 토론"을 표준 행동으로
 
 ### 축 3. 조직 (Organization)
-- **고객별 공동설계 전담팀(Co-Design Pod)**: 영업 뒤가 아니라 고객 아키텍트 옆에 개발 엔지니어 상주 배치 — SK hynix·NVIDIA co-design 모델 벤치마크
-- **시스템 아키텍트·모델링 전문 조직 신설**: 디바이스 설계자와 별개 직군으로 시스템 아키텍트(데이터센터·랙·서버 아키텍처 이해)와 성능·파워 모델링 전문 인력을 확보 — 외부 채용(하이퍼스케일러·GPU·시스템 업체 출신) + 내부 육성 트랙 병행. 이 조직이 시스템 레벨 모델(축 1)을 소유하고 Co-Design Pod에 아키텍트를 공급하는 홈 조직 역할
+- **고객별 공동설계 전담팀(Co-Design Pod) = 메모리판 FDE**: 영업 뒤가 아니라 고객 아키텍트 옆에 개발 엔지니어 **상주** 배치. 롤모델은 Palantir가 창안한 **Forward Deployed Engineer(FDE)** — 고객사 내부에 상주하며 실제 운영 제약 아래서 문제를 푸는 엔지니어. Anthropic·OpenAI가 엔터프라이즈 GTM 전략으로 그대로 채택 중 ([§4.5](#45-벤치마크--palantir-fde-forward-deployed-engineer-모델)). SK hynix·NVIDIA co-design도 동일 계열
+- **시스템 아키텍트·모델링 전문 조직 신설**: 디바이스 설계자와 별개 직군으로 시스템 아키텍트(데이터센터·랙·서버 아키텍처 이해)와 성능·파워 모델링 전문 인력을 확보 — 외부 채용(하이퍼스케일러·GPU·시스템 업체 출신) + 내부 육성 트랙 병행. 이 조직이 시스템 레벨 모델(축 1)을 소유하고 Co-Design Pod에 아키텍트를 공급하는 홈 조직 역할. FDE에 시스템 모델링 역량을 결합해야 물리적 제조 리드타임이 긴 메모리에서도 고객 시스템 안에서 유효한 제안이 가능
 - **워크로드 인텔리전스 기능**: 고객·시장 워크로드 신호를 상시 수집·해석해 개발 로드맵에 주입 (RS-9 수요 변곡 센싱의 개발실 버전 — [rs9-demand-inflection-sensing.md](invariant/rs9-demand-inflection-sensing.md))
 - **기술 마케팅 승격**: 로드맵 제안서·아키텍처 백서를 만드는 기능을 개발실 1급 기능으로
 
@@ -80,12 +83,27 @@ sources:
 - **선행 시제품(Proof-of-Architecture) 사이클**: 고객 요청 전 자사 가설로 PoA 제작 → 고객 피드백 → 공동 스펙화
 - **AI 도구 내재화**: 설계·검증 자동화로 반복 업무를 축소하고 확보된 시간을 고객 대면·선행 검토에 재배치 ([rs7-ai-engineering-automation.md](invariant/rs7-ai-engineering-automation.md)) — Micron이 Claude를 전사 배치한 것과 같은 구조
 
+### 4.5 벤치마크 — Palantir FDE (Forward Deployed Engineer) 모델
+
+Co-Design Pod은 발명이 아니라 **이미 검증된 조직 형태의 이식**이다. 근거는 Palantir가 창안하고 지금 프런티어 AI 기업들이 복제하고 있는 FDE 모델 ([palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md)).
+
+| FDE 원리 | 내용 | 개발실 전환에의 매핑 |
+|---|---|---|
+| **고객사 상주** | 엔지니어가 고객 환경 **내부에** 상주하며 실제 운영 제약 아래서 시스템 구축 (내부 코드명 "Delta") | Co-Design Pod 상주 배치 (축 3) — "영업 뒤"가 아니라 "고객 옆" |
+| **"한 고객, 많은 능력"** | 제품팀(Dev)은 "한 능력, 많은 고객"이지만 FDE는 반대 — 한 고객에게 다역량 투입 | 파일럿 고객 1사 집중(Phase 1) → 확대(Phase 2) |
+| **명시 요구 vs 실제 요구** | 고객이 말한 것과 실제 데이터·시스템 현실의 간극을 상주로써 해소 | As-Is(스펙대로 수령) → To-Be(요구 공동 정의)의 실행 메커니즘 |
+| **gravel road → paved highway** | 특정 고객용 거친 해법을 먼저 만들고 → 제품 표준 기능으로 포장하는 피드백 루프 | 커스텀 대응 → 재사용 설계 플랫폼 축적 (축 1) |
+| **성과로 평가** | 청구 시간이 아니라 outcome으로 평가, 결과에 지분 | 개정 KPI(공동설계 건수·로드맵 채택률, 축 2) |
+
+- **산업 확산의 방증**: FDE는 Palantir 640% 주가 수익률의 동력으로 회자되며, **Anthropic·OpenAI가 엔터프라이즈 GTM 전략으로 명시 채택** — 즉 우리 최대 고객(모델사)이 이미 FDE로 자기 고객에게 침투하고 있다. 같은 언어로 대화하려면 우리도 대칭적 상주 모델이 필요하다.
+- **메모리 고유 변형**: FDE는 SW 회사 모델이라 코드를 즉시 배포하지만, 메모리는 제조 리드타임이 길다. 따라서 순수 상주가 아니라 **FDE(고객 상주) + 시스템 아키텍트·모델링(성능·파워 정량화, 축 1·3)**의 결합이 메모리판 정답이다. 상주 엔지니어가 시스템 모델을 무기로 들고 들어가야 물리적 제품 사이클보다 앞서 제안할 수 있다.
+
 ## 5. 액션 플랜
 
 ### Phase 1 — 90일 (증명)
 | # | 액션 | 산출물 | 담당 |
 |---|---|---|---|
-| A1 | 파일럿 고객 1사 선정, Co-Design Pod 1호 발족 | Pod 운영 헌장, 상주 인력 배치 | 개발실 + 영업 |
+| A1 | 파일럿 고객 1사 선정, Co-Design Pod 1호 발족 (FDE 모델 벤치마크 — 고객사 상주 근무 조건·NDA·평가체계 설계) | Pod 운영 헌장, 상주 인력 배치 | 개발실 + 영업 |
 | A2 | 워크로드 랩 최소 구성 (기존 장비 재배치) + 시스템 모델 프로토타입 — 대표 워크로드 1종의 디바이스→서버 레벨 성능·파워 모델 | 대표 워크로드 2종 프로파일 리포트 + 모델 v0.1 (실측 대비 오차 검증) | 개발실 |
 | A3 | 선제 제안 1호 — 파일럿 고객 차세대 로드맵 대상 아키텍처 제안서 | 제안서 + 고객 피드백 기록 | Pod |
 | A4 | 평가 체계 개정안 — 제안·공동설계 지표 추가 설계 | KPI 개정안 | 개발실 기획 |

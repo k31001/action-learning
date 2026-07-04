@@ -1,12 +1,13 @@
 """
-개발실 체질 전환 발표자료 (5슬라이드)
+개발실 체질 전환 발표자료 (6슬라이드)
 
 빌드 원천 — `outputs/presentation/dev-transformation-outline.md`
-  슬라이드 1  표지 + 사건        — LTA가 SCA가 된 날 (타임라인 + 키 넘버)
+  슬라이드 1  표지 + 사건        — LTA가 SCA가 된 날 (신문섭 북극성 배너 + 타임라인 + 키 넘버)
   슬라이드 2  해부              — 계약 3단 진화 + Micron–Anthropic 4대 구성요소
-  슬라이드 3  역할              — 개발실 As-Is vs To-Be 7행 비교
+  슬라이드 3  역할              — 개발실 As-Is vs To-Be 8행 비교
   슬라이드 4  득실              — 전환 실패 리스크 4 vs 성공 이점 4
-  슬라이드 5  실행              — 4대 축 + 3-Phase 로드맵 + KPI
+  슬라이드 5  벤치마크          — Palantir FDE 모델 매핑 + Anthropic·OpenAI 채택 + 메모리 변형
+  슬라이드 6  실행              — 4대 축 + 3-Phase 로드맵 + KPI
 
 기존 `generate_pptx.py`의 디자인 시스템(THEME, helper 함수)을 재사용한다.
 """
@@ -27,7 +28,7 @@ from pptx.util import Inches, Pt, Emu
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 OUTPUT = os.path.join(ROOT, 'presentation', 'dev-org-transformation.pptx')
 
-TOTAL = 5
+TOTAL = 6
 
 
 def _blank(prs):
@@ -48,9 +49,17 @@ def build_slide_1_cover(prs):
     add_text(slide, Inches(0.7), Inches(1.15), Inches(12), Inches(1.0),
              '개발실 체질 전환 — 수주 이행자에서 기술 파트너로',
              font=FONT_KO, size=31, bold=True, color=THEME['white'])
-    add_text(slide, Inches(0.7), Inches(2.1), Inches(12), Inches(0.45),
+    add_text(slide, Inches(0.7), Inches(1.98), Inches(12), Inches(0.4),
              'LTA(장기공급계약)가 SCA(전략적 고객 계약)가 되었다 — Micron–Anthropic 계약(2026-06-22)이 보여준 산업의 다음 단계',
-             font=FONT_KO, size=14, color=THEME['soft_blue_bg'])
+             font=FONT_KO, size=13, color=THEME['soft_blue_bg'])
+
+    # 북극성 배너 — 신문섭 파트너 인터뷰 인용
+    qb_y = Inches(2.5)
+    add_rect(slide, Inches(0.7), qb_y, Inches(11.93), Inches(0.62), fill=THEME['samsung_blue'])
+    add_rect(slide, Inches(0.7), qb_y, Inches(0.09), Inches(0.62), fill=THEME['amber'])
+    add_text(slide, Inches(0.95), qb_y + Inches(0.08), Inches(11.4), Inches(0.5),
+             '“앞으로의 승부는 칩을 많이 파는 기업이 아니라, 고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 가져갈 것이다.”  — 신문섭, Bain & Company',
+             font=FONT_KO, size=12.5, italic=True, bold=True, color=THEME['white'], valign='middle')
 
     # 키 넘버 3개 (Micron Q3 FY26 공시)
     nums = [
@@ -58,16 +67,16 @@ def build_slide_1_cover(prs):
         ('~$100B', 'SCA 최소 계약 매출 (RPO)'),
         ('$22B', '현금 예치금 + 금융 약정'),
     ]
-    box_w, box_h, gap = Inches(3.85), Inches(1.25), Inches(0.30)
-    x0, y0 = Inches(0.7), Inches(2.85)
+    box_w, box_h, gap = Inches(3.85), Inches(1.1), Inches(0.30)
+    x0, y0 = Inches(0.7), Inches(3.35)
     for i, (num, label) in enumerate(nums):
         x = x0 + (box_w + gap) * i
         add_rect(slide, x, y0, box_w, box_h, fill=THEME['samsung_blue'])
         add_rect(slide, x, y0, Inches(0.08), box_h, fill=THEME['amber'])
-        add_text(slide, x + Inches(0.25), y0 + Inches(0.14), box_w - Inches(0.4), Inches(0.55),
-                 num, font=FONT_EN, size=26, bold=True, color=THEME['white'])
-        add_text(slide, x + Inches(0.25), y0 + Inches(0.76), box_w - Inches(0.4), Inches(0.4),
-                 label, font=FONT_KO, size=10.5, color=THEME['soft_blue_bg'])
+        add_text(slide, x + Inches(0.25), y0 + Inches(0.11), box_w - Inches(0.4), Inches(0.5),
+                 num, font=FONT_EN, size=24, bold=True, color=THEME['white'])
+        add_text(slide, x + Inches(0.25), y0 + Inches(0.68), box_w - Inches(0.4), Inches(0.36),
+                 label, font=FONT_KO, size=10, color=THEME['soft_blue_bg'])
     add_text(slide, Inches(0.7), y0 + box_h + Inches(0.08), Inches(12), Inches(0.3),
              '출처: Micron FY26 Q3 실적 공시 (2026-06-24) — sources/filings/micron-q3-fy26.md §3',
              font=FONT_KO, size=9, italic=True, color=THEME['gray_caption'])
@@ -278,7 +287,7 @@ def build_slide_4_stakes(prs):
 # 슬라이드 5: 실행 — 4대 축 + 3-Phase + KPI
 # ============================================================
 
-def build_slide_5_execution(prs):
+def build_slide_6_execution(prs):
     slide = _blank(prs)
     add_header(slide,
                '실행 · 4대 축 전환 전략과 3-Phase 액션 플랜',
@@ -288,7 +297,7 @@ def build_slide_5_execution(prs):
     axes = [
         ('기술', '워크로드 랩 신설\n시스템 성능·파워 모델\n(디바이스→서버→랙→DC)\n커스텀 플랫폼·임베디드 SW', THEME['samsung_blue']),
         ('문화', '"정답 구현"→"가설 제안"\n실패 허용 예산\n트레이드오프 토론 표준화', THEME['amber']),
-        ('조직', '고객별 Co-Design Pod\n시스템 아키텍트·모델링\n전문 조직 신설 (채용+육성)\n워크로드 인텔리전스', THEME['green_pos']),
+        ('조직', '고객별 Co-Design Pod (=FDE)\n시스템 아키텍트·모델링\n전문 조직 신설 (채용+육성)\n워크로드 인텔리전스', THEME['green_pos']),
         ('일하는 방식', '로드맵 교차 리뷰(분기)\n선행 시제품(PoA) 사이클\nAI 도구 내재화', THEME['deep_navy']),
     ]
     card_w, gap = Inches(3.05), Inches(0.21)
@@ -350,7 +359,68 @@ def build_slide_5_execution(prs):
     add_so_what(slide, Inches(6.5),
                 '90일 안에 파일럿 Pod와 선제 제안 1호로 증명 — 1년 안에 SCA형 계약 1건으로 제도화의 근거를 만든다.',
                 label='NEXT STEP')
-    add_footer(slide, 5, TOTAL, '실행 · 4대 축 + 로드맵')
+    add_footer(slide, 6, TOTAL, '실행 · 4대 축 + 로드맵')
+    return slide
+
+
+# ============================================================
+# 슬라이드 5: 벤치마크 — Palantir FDE 모델
+# ============================================================
+
+def build_slide_5_benchmark(prs):
+    slide = _blank(prs)
+    add_header(slide,
+               '벤치마크 · "고객 아키텍처 안으로 들어간다"는 이미 검증된 조직 형태 — Palantir FDE',
+               'Forward Deployed Engineer(내부코드 "Delta") — 고객사에 상주하며 실제 운영 제약 아래서 문제를 푸는 엔지니어')
+
+    # 좌: FDE 원리 → 개발실 매핑 (5행)
+    lx, lw = Inches(0.5), Inches(7.7)
+    add_rect(slide, lx, Inches(1.85), lw, Inches(0.44), fill=THEME['deep_navy'])
+    add_text(slide, lx + Inches(0.2), Inches(1.93), Inches(3.6), Inches(0.3),
+             'FDE 원리', font=FONT_KO, size=11.5, bold=True, color=THEME['white'])
+    add_text(slide, lx + Inches(3.95), Inches(1.93), Inches(3.6), Inches(0.3),
+             '→ 개발실 전환 매핑', font=FONT_KO, size=11.5, bold=True, color=THEME['amber'])
+    rows = [
+        ('엔지니어가 고객사 내부에 상주', 'Co-Design Pod 상주 — "영업 뒤"가 아니라 "고객 옆"'),
+        ('"한 고객, 많은 능력" (제품팀은 반대)', '파일럿 고객 1사 집중 → 확대'),
+        ('말한 요구 vs 실제 요구의 간극 해소', 'As-Is(스펙 수령) → To-Be(요구 공동 정의)'),
+        ('gravel road → paved highway', '커스텀 대응 → 재사용 설계 플랫폼 축적'),
+        ('청구 시간 아닌 성과(outcome)로 평가', '개정 KPI (공동설계 건수·로드맵 채택률)'),
+    ]
+    ry = Inches(2.33)
+    col_split = lx + Inches(3.85)
+    for i, (fde, mem) in enumerate(rows):
+        rh = Inches(0.62)
+        bg = THEME['soft_white_bg'] if i % 2 == 0 else THEME['white']
+        add_rect(slide, lx, ry, lw, rh, fill=bg, line=THEME['light_gray'])
+        add_rect(slide, lx, ry, Inches(0.07), rh, fill=THEME['samsung_blue'])
+        add_text(slide, lx + Inches(0.2), ry + Inches(0.13), Inches(3.5), Inches(0.4),
+                 fde, font=FONT_KO, size=9.5, color=THEME['gray_caption'], valign='middle')
+        add_text(slide, col_split + Inches(0.1), ry + Inches(0.13), Inches(3.65), Inches(0.4),
+                 mem, font=FONT_KO, size=9.5, bold=True, color=THEME['dark_text'], valign='middle')
+        ry = ry + rh + Inches(0.04)
+
+    # 우: 확산 방증 + 메모리 변형
+    rx, rw = Inches(8.45), Inches(4.38)
+    add_rect(slide, rx, Inches(1.85), rw, Inches(1.75), fill=THEME['amber_light'])
+    add_rect(slide, rx, Inches(1.85), Inches(0.09), Inches(1.75), fill=THEME['amber'])
+    add_text(slide, rx + Inches(0.25), Inches(1.98), rw - Inches(0.45), Inches(0.3),
+             '산업 확산의 방증', font=FONT_KO, size=11.5, bold=True, color=THEME['amber'])
+    add_text(slide, rx + Inches(0.25), Inches(2.34), rw - Inches(0.45), Inches(1.3),
+             'Palantir 640% 주가 수익률의 동력 →\nAnthropic·OpenAI가 엔터프라이즈 진출\n(GTM) 전략으로 그대로 채택.\n\n= 우리 최대 고객(모델사)이 이미 FDE로\n자기 고객에게 침투하고 있다. 같은 언어로\n대화하려면 대칭적 상주 모델이 필요.',
+             font=FONT_KO, size=10, color=THEME['dark_text'], line_spacing=1.12)
+
+    add_rect(slide, rx, Inches(3.78), rw, Inches(2.5), fill=THEME['soft_blue_bg'])
+    add_rect(slide, rx, Inches(3.78), Inches(0.09), Inches(2.5), fill=THEME['samsung_blue'])
+    add_text(slide, rx + Inches(0.25), Inches(3.91), rw - Inches(0.45), Inches(0.3),
+             '메모리 고유 변형', font=FONT_KO, size=11.5, bold=True, color=THEME['samsung_blue'])
+    add_text(slide, rx + Inches(0.25), Inches(4.27), rw - Inches(0.45), Inches(2.0),
+             'FDE는 SW 회사 모델 — 코드를 즉시 배포.\n메모리는 제조 리드타임이 길다.\n\n∴ 순수 상주가 아니라\n  FDE(고객 상주)\n  + 시스템 아키텍트·모델링\n    (성능·파워 정량화)\n의 결합이 메모리판 정답.\n\n상주 엔지니어가 시스템 모델을 무기로\n들고 들어가야 물리적 제품 사이클보다\n앞서 제안할 수 있다.',
+             font=FONT_KO, size=10, color=THEME['dark_text'], line_spacing=1.1)
+
+    add_so_what(slide, Inches(6.5),
+                '새로운 발명이 아니라 검증된 조직 형태의 이식 — 리스크는 낮고 롤모델은 명확하다. 프런티어 AI 기업이 증명했다.')
+    add_footer(slide, 5, TOTAL, '벤치마크 · Palantir FDE')
     return slide
 
 
@@ -368,7 +438,8 @@ def main():
         build_slide_2_anatomy,
         build_slide_3_role,
         build_slide_4_stakes,
-        build_slide_5_execution,
+        build_slide_5_benchmark,
+        build_slide_6_execution,
     ]
     for i, builder in enumerate(builders, 1):
         print(f'  Building slide {i}: {builder.__name__}...')

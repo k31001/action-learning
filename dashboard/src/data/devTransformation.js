@@ -4,6 +4,12 @@
 export const DT_SUMMARY = {
   oneLine:
     'LTA→SCA 전환으로 고객이 사는 것이 "정확한 납품"에서 "공동 기술 드라이브"로 바뀌었다. 개발실을 요구사항 수령·구현 조직에서 요구사항 공동 정의·선제 제안 조직으로 전환하지 않으면 SCA 시대의 계약 테이블에 앉지 못한다.',
+  northStar: {
+    quote:
+      '앞으로의 승부는 칩을 많이 파는 기업이 아니라, 고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 가져갈 것이다.',
+    attribution: '신문섭, Bain & Company (2026-06-18 인터뷰)',
+    source: 'sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md',
+  },
   keyNumbers: [
     { label: 'Micron SCA 체결', value: '16건', subtitle: 'Q3 FY26 공시 (2026-06-24)', accent: 'blue' },
     { label: 'SCA 최소 계약매출', value: '~$100B', subtitle: '최소 약정 물량 × 최소 가격 (RPO)', accent: 'green' },
@@ -134,7 +140,7 @@ export const DT_AXES = [
   {
     axis: '조직',
     color: '#059669',
-    items: ['고객별 Co-Design Pod — 개발 엔지니어를 고객 아키텍트 옆에', '시스템 아키텍트·모델링 전문 조직 신설 — 외부 채용+내부 육성, 시스템 모델 소유, Pod에 아키텍트 공급', '워크로드 인텔리전스 기능 — RS-9의 개발실 버전', '기술 마케팅 승격 — 로드맵 제안서·백서를 1급 기능으로'],
+    items: ['고객별 Co-Design Pod (=메모리판 FDE) — 개발 엔지니어를 고객 아키텍트 옆에 상주 (Palantir Forward Deployed Engineer 모델)', '시스템 아키텍트·모델링 전문 조직 신설 — 외부 채용+내부 육성, 시스템 모델 소유, Pod에 아키텍트 공급', '워크로드 인텔리전스 기능 — RS-9의 개발실 버전', '기술 마케팅 승격 — 로드맵 제안서·백서를 1급 기능으로'],
   },
   {
     axis: '일하는 방식',
@@ -142,6 +148,25 @@ export const DT_AXES = [
     items: ['로드맵 교차 리뷰(분기) — 스펙 확정 전 단계 개입', '선행 시제품(PoA) 사이클 — 자사 가설로 먼저 만들어 검증', 'AI 도구 내재화(RS-7) — 확보 시간을 고객 대면에 재배치'],
   },
 ]
+
+// 벤치마크 — Palantir FDE (Forward Deployed Engineer) 모델
+// 원천: sources/articles/palantir-fde-model-2026-07.md
+export const DT_FDE_BENCHMARK = {
+  headline:
+    '"고객의 아키텍처 안으로 들어간다"는 추상이 아니라 이미 검증된 조직 형태 — Palantir가 창안하고 Anthropic·OpenAI가 채택한 Forward Deployed Engineer(FDE, 내부코드 "Delta").',
+  mapping: [
+    { fde: '엔지니어가 고객사 내부에 상주', dt: 'Co-Design Pod 상주 — "영업 뒤"가 아니라 "고객 옆"' },
+    { fde: '"한 고객, 많은 능력" (제품팀은 반대)', dt: '파일럿 고객 1사 집중 → 확대' },
+    { fde: '말한 요구 vs 실제 요구의 간극 해소', dt: 'As-Is(스펙 수령) → To-Be(요구 공동 정의)의 실행 메커니즘' },
+    { fde: 'gravel road → paved highway (거친 해법 → 표준화)', dt: '커스텀 대응 → 재사용 설계 플랫폼 축적' },
+    { fde: '청구 시간 아닌 성과(outcome)로 평가', dt: '개정 KPI (공동설계 건수·로드맵 채택률)' },
+  ],
+  adoption:
+    'Palantir 640% 주가 수익률의 동력 → Anthropic·OpenAI가 엔터프라이즈 진출(GTM) 전략으로 그대로 채택. 즉 우리 최대 고객(모델사)이 이미 FDE로 자기 고객에게 침투 중 — 같은 언어로 대화하려면 대칭적 상주 모델이 필요하다.',
+  memoryVariant:
+    'FDE는 SW 회사 모델(코드 즉시 배포)이지만 메모리는 제조 리드타임이 길다. ∴ 순수 상주가 아니라 FDE(고객 상주) + 시스템 아키텍트·모델링(성능·파워 정량화)의 결합이 메모리판 정답. 상주 엔지니어가 시스템 모델을 무기로 들고 들어가야 물리적 제품 사이클보다 앞서 제안할 수 있다.',
+  source: 'sources/articles/palantir-fde-model-2026-07.md',
+}
 
 // 3-Phase 액션 플랜
 export const DT_PHASES = [

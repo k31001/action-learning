@@ -14,6 +14,11 @@
 
 ---
 
+## [2026-07-04] ingest | 개발실 전환 설득력 보강 — Palantir FDE 벤치마크 + 신문섭 북극성 명제 (v2.28.3 → v2.29.0)
+- **무엇**: 사용자 요청 두 흐름 추가. ① **Palantir FDE(Forward Deployed Engineer, 내부코드 "Delta")** — 고객사 상주 엔지니어 모델을 Co-Design Pod의 검증된 롤모델로 명시. 5개 원리→개발실 매핑(상주/한고객·다능력/명시vs실제 요구/gravel→paved/성과평가), Anthropic·OpenAI GTM 채택이 방증, 메모리 변형(FDE+시스템 모델링 결합) 강조. ② **신문섭 파트너 북극성 명제** — 인터뷰 원문 "고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다"를 전략 서두·표지 배너로 격상.
+- **파일**: `sources/articles/palantir-fde-model-2026-07.md` 신규(FDE 5개 근거). `wiki/strategies/dev-org-transformation.md`(북극성 인용·§4.5 FDE 벤치마크 섹션·축3·A1). `outputs/report/dev-org-transformation-report.md`(Exec Summary 명제·§4.5). `outputs/presentation/`(5장→**6장**: 표지 북극성 배너 + 신규 슬라이드5 FDE 벤치마크, 실행 슬라이드6으로 이동) PPTX 재생성. `dashboard`(devTransformation.js DT_SUMMARY.northStar·DT_FDE_BENCHMARK·DT_AXES, Strategies.jsx 북극성 배너+FDE 카드). 마이너 bump v2.29.0(새 데이터 카테고리·발표 슬라이드 추가).
+- **검증**: `npm run build` 통과, PPTX 6장 생성, 프리뷰에서 북극성 인용·FDE 매핑 5행·방증·메모리 변형 렌더 확인·콘솔 0.
+
 ## [2026-07-04] ingest | SCA 전환 EWI 3종 기준선 등록 (v2.28.2 → v2.28.3)
 - **무엇**: lta-to-sca-transition §5의 EWI 후보 3종을 기준값 조사 후 대시보드 지표로 등록. ① `competitor_sca_disclosures` — 경쟁사 SCA형(공동설계 포함) 계약 공시, 기준 분기 1건(Micron–Anthropic 06-22), 경보 분기 2건+. ② `samsung_codesign_contracts` — Samsung 공동설계 조항 계약, 기준 공시 0건(선행 신호: 커스텀 전담 2팀·250명 증원·Broadcom/AMD 협의), 1건+ = DT Phase 2 달성 긍정 경보. ③ `custom_hbm_revenue_share` — 커스텀 HBM 매출 비중 기준 ~0%(2026은 표준 HBM3E/HBM4 중심), 경보 30%+(경계 15%), 선행 지표 HBM4E 2027년 ~40% 전망.
 - **파일**: `sources/articles/sca-ewi-baseline-2026-07-04.md` 신규(TrendForce 3건 근거), `wiki/concepts/lta-to-sca-transition.md` §5 기준선 표로 확정, `dashboard/src/data/indicators.js` 분기별 3종 추가, index.md. 패치 bump v2.28.3.

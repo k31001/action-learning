@@ -15,7 +15,7 @@ import {
 import {
   DT_SUMMARY, DT_EVENTS, DT_CONTRACT_STAGES, DT_SCA_COMPONENTS,
   DT_ROLE_SHIFT, DT_MODELING_NOTE, DT_RISKS, DT_BENEFITS, DT_AXES,
-  DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS,
+  DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS, DT_FDE_BENCHMARK,
 } from '../data/devTransformation'
 import SourceLink from './SourceLink'
 
@@ -526,6 +526,12 @@ function TransformationPanel() {
     <div className="space-y-4">
       <Card title="개발실 체질 전환 — 수주 이행자에서 기술 파트너로" source="wiki/strategies/dev-org-transformation.md">
         <p className="text-sm text-zinc-800 leading-relaxed italic mb-3">"{DT_SUMMARY.oneLine}"</p>
+        <div className="border-l-4 border-amber-400 bg-amber-50/60 rounded-r-lg px-3 py-2 mb-3">
+          <p className="text-sm text-zinc-900 font-medium leading-relaxed">
+            "{DT_SUMMARY.northStar.quote}"
+          </p>
+          <p className="text-[11px] text-amber-700 font-semibold mt-1">— {DT_SUMMARY.northStar.attribution}</p>
+        </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {DT_SUMMARY.keyNumbers.map((k, i) => (
             <div key={i} className={`border rounded-hig-lg shadow-hig-1 p-3 ${ACCENT[k.accent]}`}>
@@ -671,6 +677,38 @@ function TransformationPanel() {
               </ul>
             </div>
           ))}
+        </div>
+      </Card>
+
+      <Card title="벤치마크 — Palantir FDE (Forward Deployed Engineer) 모델" source="sources/articles/palantir-fde-model-2026-07.md">
+        <p className="text-xs text-zinc-700 leading-relaxed mb-3">{DT_FDE_BENCHMARK.headline}</p>
+        <div className="overflow-x-auto mb-3">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-zinc-200">
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500 w-1/2">FDE 원리 (Palantir)</th>
+                <th className="text-left font-medium pb-2 text-sky-700">→ 개발실 전환 매핑</th>
+              </tr>
+            </thead>
+            <tbody>
+              {DT_FDE_BENCHMARK.mapping.map((m, i) => (
+                <tr key={i} className="border-b border-zinc-200/40 last:border-0">
+                  <td className="py-1.5 pr-2 text-zinc-500">{m.fde}</td>
+                  <td className="py-1.5 text-zinc-900 font-medium">{m.dt}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div className="rounded-lg border border-amber-200 bg-amber-50/60 p-2.5">
+            <div className="text-[11px] font-bold text-amber-700 mb-1">산업 확산의 방증</div>
+            <p className="text-[11px] text-zinc-700 leading-snug">{DT_FDE_BENCHMARK.adoption}</p>
+          </div>
+          <div className="rounded-lg border border-sky-200 bg-sky-50/60 p-2.5">
+            <div className="text-[11px] font-bold text-sky-700 mb-1">메모리 고유 변형</div>
+            <p className="text-[11px] text-zinc-700 leading-snug">{DT_FDE_BENCHMARK.memoryVariant}</p>
+          </div>
         </div>
       </Card>
 
