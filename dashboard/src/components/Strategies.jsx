@@ -5,12 +5,17 @@ import {
 import {
   LayoutDashboard, Shield, Target, ListChecks,
   Star, AlertTriangle, CheckCircle2, Clock, Sparkles, ChevronDown, ChevronUp,
-  MapPin,
+  MapPin, ArrowRightLeft,
 } from 'lucide-react'
 import {
   STRATEGY_OVERVIEW, ROBUST_STRATEGIES, RS_SCENARIO_MATRIX,
   CORE_STRATEGIES, DECISIONS, DECISION_CLUSTERS, COMPETITIVE_LANDSCAPE,
 } from '../data/strategies'
+import {
+  DT_SUMMARY, DT_EVENTS, DT_CONTRACT_STAGES, DT_SCA_COMPONENTS,
+  DT_ROLE_SHIFT, DT_RISKS, DT_BENEFITS, DT_AXES, DT_PHASES, DT_KPIS,
+  DT_SCENARIO_LINKS,
+} from '../data/devTransformation'
 import SourceLink from './SourceLink'
 
 const SUB_TABS = [
@@ -18,6 +23,7 @@ const SUB_TABS = [
   { id: 'competitive', label: 'Competitive Landscape', icon: Target },
   { id: 'robust',      label: 'Robust Strategy',     icon: Shield },
   { id: 'core',        label: 'Core Strategy',       icon: Target },
+  { id: 'transformation', label: '개발실 전환',       icon: ArrowRightLeft, isNew: true },
   { id: 'decisions',   label: 'Decisions',           icon: ListChecks },
 ]
 
@@ -512,6 +518,220 @@ function CoreStrategyPanel() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// DEV-ORG TRANSFORMATION — 개발실 체질 전환 (LTA→SCA)
+// ─────────────────────────────────────────────────────────────────────────────
+function TransformationPanel() {
+  return (
+    <div className="space-y-4">
+      <Card title="개발실 체질 전환 — 수주 이행자에서 기술 파트너로" source="wiki/strategies/dev-org-transformation.md">
+        <p className="text-sm text-zinc-800 leading-relaxed italic mb-3">"{DT_SUMMARY.oneLine}"</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {DT_SUMMARY.keyNumbers.map((k, i) => (
+            <div key={i} className={`border rounded-hig-lg shadow-hig-1 p-3 ${ACCENT[k.accent]}`}>
+              <p className="text-[10px] opacity-70 leading-tight">{k.label}</p>
+              <p className="text-xl font-bold font-mono mt-1">{k.value}</p>
+              <p className="text-[10px] opacity-70 mt-0.5">{k.subtitle}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card title="왜 지금인가 — 체질 전환을 요구하는 사건의 누적" source="wiki/concepts/lta-to-sca-transition.md">
+        <div className="space-y-1.5">
+          {DT_EVENTS.map((e, i) => (
+            <div
+              key={i}
+              className={`flex items-start gap-3 py-2 px-3 rounded border ${
+                e.hot ? 'bg-amber-50 border-amber-300' : 'bg-zinc-50 border-zinc-200'
+              }`}
+            >
+              <span className={`text-[10px] font-mono font-bold shrink-0 mt-0.5 ${e.hot ? 'text-amber-700' : 'text-zinc-500'}`}>
+                {e.date}
+              </span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-zinc-900">{e.title}</span>
+                  {e.hot && <span className="hig-pill hig-pill-orange text-[9px] font-bold">결정적 사건</span>}
+                </div>
+                <p className="text-[11px] text-zinc-600 leading-snug mt-0.5">{e.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card title="계약 구조의 3단 진화 — 요구 역량의 이동" source="wiki/concepts/lta-to-sca-transition.md">
+          <div className="space-y-2">
+            {DT_CONTRACT_STAGES.map((s, i) => (
+              <div key={i} className="border-l-4 pl-3 py-1.5" style={{ borderColor: s.color }}>
+                <div className="text-sm font-bold" style={{ color: s.color }}>{s.stage}</div>
+                <p className="text-[11px] text-zinc-600 leading-snug">{s.nature}</p>
+                <p className="text-[11px] text-zinc-800 mt-0.5">
+                  <span className="font-bold text-zinc-500">요구 역량: </span>{s.capability}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card title="Micron ↔ Anthropic 계약 분해 (2026-06-22)" source="sources/articles/micron-anthropic-sca-2026-06-22.md">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-zinc-200">
+                <th className="text-left font-medium pb-1.5 text-zinc-500">구성요소</th>
+                <th className="text-center font-medium pb-1.5 text-zinc-500 w-12">LTA</th>
+                <th className="text-center font-medium pb-1.5 text-amber-600 w-12">SCA</th>
+              </tr>
+            </thead>
+            <tbody>
+              {DT_SCA_COMPONENTS.map((c, i) => (
+                <tr key={i} className="border-b border-zinc-200/40 last:border-0">
+                  <td className="py-2 pr-2">
+                    <div className="font-bold text-zinc-900">{c.name}</div>
+                    <div className="text-[10px] text-zinc-500 leading-snug">{c.desc}</div>
+                  </td>
+                  <td className="text-center font-bold text-zinc-400">{c.inLTA ? '✓' : '—'}</td>
+                  <td className="text-center font-bold text-amber-600">{c.inSCA ? '✓' : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Card>
+      </div>
+
+      <Card title="개발실 역할의 재정의 — As-Is vs To-Be" source="wiki/strategies/dev-org-transformation.md">
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-zinc-200">
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500 w-24">차원</th>
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500">As-Is · 수주 이행자</th>
+                <th className="text-left font-medium pb-2 text-sky-700">To-Be · 기술 파트너</th>
+              </tr>
+            </thead>
+            <tbody>
+              {DT_ROLE_SHIFT.map((r, i) => (
+                <tr key={i} className="border-b border-zinc-200/40 last:border-0">
+                  <td className="py-1.5 pr-2 font-bold text-zinc-800">{r.dim}</td>
+                  <td className="py-1.5 pr-2 text-zinc-500">{r.asIs}</td>
+                  <td className="py-1.5 text-zinc-900 font-medium">{r.toBe}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card title="전환 실패 시 리스크 — Do Nothing의 비용">
+          <div className="space-y-2">
+            {DT_RISKS.map(r => (
+              <div key={r.id} className="border border-red-200 bg-red-50/60 rounded-lg p-2.5">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono font-bold text-red-700">{r.id}</span>
+                  <span className="text-xs font-bold text-zinc-900">{r.title}</span>
+                </div>
+                <p className="text-[11px] text-zinc-700 leading-snug">{r.desc}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
+        <Card title="전환 성공 시 이점">
+          <div className="space-y-2">
+            {DT_BENEFITS.map(b => (
+              <div key={b.id} className="border border-sky-200 bg-sky-50/60 rounded-lg p-2.5">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono font-bold text-sky-700">{b.id}</span>
+                  <span className="text-xs font-bold text-zinc-900">{b.title}</span>
+                </div>
+                <p className="text-[11px] text-zinc-700 leading-snug">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
+
+      <Card title="전환 전략 — 4대 축" source="wiki/strategies/dev-org-transformation.md">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+          {DT_AXES.map((a, i) => (
+            <div key={i} className="rounded-lg border border-zinc-200 overflow-hidden bg-white">
+              <div className="px-3 py-1.5 text-xs font-bold text-white" style={{ backgroundColor: a.color }}>
+                축 {i + 1} · {a.axis}
+              </div>
+              <ul className="p-3 space-y-1.5">
+                {a.items.map((it, j) => (
+                  <li key={j} className="text-[11px] text-zinc-700 leading-snug">· {it}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card title="3-Phase 액션 플랜" source="outputs/report/dev-org-transformation-report.md">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-4">
+          {DT_PHASES.map((p, i) => (
+            <div key={i} className="rounded-lg border border-zinc-200 bg-white overflow-hidden">
+              <div className="px-3 py-1.5 flex items-center justify-between" style={{ backgroundColor: `${p.color}15` }}>
+                <span className="text-xs font-bold" style={{ color: p.color }}>{p.phase}</span>
+                <span className="text-[10px] font-bold text-zinc-500">{p.theme}</span>
+              </div>
+              <ul className="p-3 space-y-1.5">
+                {p.actions.map((a, j) => (
+                  <li key={j} className={`text-[11px] leading-snug ${a.startsWith('★') ? 'text-amber-700 font-bold' : 'text-zinc-700'}`}>
+                    {a.startsWith('★') ? a : `· ${a}`}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-zinc-200">
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500">KPI</th>
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500">현재</th>
+                <th className="text-left font-medium pb-2 pr-2 text-zinc-500">1년</th>
+                <th className="text-left font-medium pb-2 text-zinc-500">3년</th>
+              </tr>
+            </thead>
+            <tbody>
+              {DT_KPIS.map((k, i) => (
+                <tr key={i} className="border-b border-zinc-200/40 last:border-0">
+                  <td className="py-1.5 pr-2 font-semibold text-zinc-800">{k.label}</td>
+                  <td className="py-1.5 pr-2 text-zinc-500">{k.now}</td>
+                  <td className="py-1.5 pr-2 text-zinc-800 font-mono">{k.y1}</td>
+                  <td className="py-1.5 font-mono font-bold text-emerald-700">{k.y3}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      <Card title="시나리오 연결 — Robust 성격" source="wiki/strategies/dev-org-transformation.md">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
+          {DT_SCENARIO_LINKS.map((s, i) => {
+            const m = SCENARIO_META[s.scenario]
+            return (
+              <div key={i} className="rounded-lg border p-2.5" style={{ borderColor: `${m.color}50`, backgroundColor: `${m.color}08` }}>
+                <div className="text-xs font-bold mb-1" style={{ color: m.color }}>{s.scenario} · {m.name}</div>
+                <p className="text-[10px] text-zinc-700 leading-snug">{s.note}</p>
+              </div>
+            )
+          })}
+        </div>
+        <p className="text-[11px] text-zinc-500 mt-3">
+          연결 전략: MB-4(커스텀 AI 메모리)의 조직적 전제조건 · RS-3(전환비용) · RS-7(AI 자동화) · RS-8(구조화 매출) · RS-9(수요 센싱)의 개발실 실행 계층
+        </p>
+      </Card>
+    </div>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // DECISIONS
 // ─────────────────────────────────────────────────────────────────────────────
 function DecisionsPanel() {
@@ -600,16 +820,18 @@ export default function Strategies() {
             >
               <Icon size={14} />
               {t.label}
+              {t.isNew && <span className="hig-pill hig-pill-orange text-[9px] font-bold ml-1">NEW</span>}
             </button>
           )
         })}
       </div>
 
-      {tab === 'overview'    && <OverviewPanel />}
-      {tab === 'competitive' && <CompetitivePanel />}
-      {tab === 'robust'      && <RobustStrategyPanel />}
-      {tab === 'core'        && <CoreStrategyPanel />}
-      {tab === 'decisions'   && <DecisionsPanel />}
+      {tab === 'overview'       && <OverviewPanel />}
+      {tab === 'competitive'    && <CompetitivePanel />}
+      {tab === 'robust'         && <RobustStrategyPanel />}
+      {tab === 'core'           && <CoreStrategyPanel />}
+      {tab === 'transformation' && <TransformationPanel />}
+      {tab === 'decisions'      && <DecisionsPanel />}
     </div>
   )
 }

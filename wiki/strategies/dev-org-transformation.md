@@ -1,0 +1,119 @@
+---
+type: strategy
+last_reviewed: 2026-07-04
+sources:
+  - sources/articles/micron-anthropic-sca-2026-06-22.md
+  - sources/articles/lta-to-sca-industry-context-2026-06.md
+  - sources/filings/micron-q3-fy26.md
+  - sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md
+  - sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md
+---
+
+# 개발실 체질 전환 전략 — 수주 이행자에서 기술 파트너로 (DT: Dev-org Transformation)
+
+> **한 줄 요약**: LTA→SCA 전환([lta-to-sca-transition.md](../concepts/lta-to-sca-transition.md))으로 고객이 사는 것이 "정확한 납품"에서 "공동 기술 드라이브"로 바뀌었다. 개발실의 역할을 **요구사항 수령·구현 조직에서 요구사항 공동 정의·선제 제안 조직으로** 전환하지 않으면 SCA 시대의 계약 테이블에 앉지 못한다.
+
+---
+
+## 1. 왜 지금인가 — 사건 기반 논거
+
+| 시점 | 사건 | 개발실에 대한 함의 |
+|---|---|---|
+| 2025-06 | SK hynix, NVIDIA·Microsoft·Broadcom **커스텀 HBM 수주 인증** ([lta-to-sca-industry-context-2026-06.md](../../sources/articles/lta-to-sca-industry-context-2026-06.md) §3) | 제품 정의가 고객별 공동설계로 이동 — "표준 스펙 구현"의 부가가치 하락 |
+| 2025-10 | OpenAI Stargate ↔ Samsung·SK **LOI, 월 90만 장(글로벌 DRAM ~40%)** (동 §2) | 수주산업화 확정 — 물량은 계약이 보장, 차별화는 기술 관계가 결정 |
+| 2025~2026 | LTA 선급금 10~30% 체제화, 2027년 DDR 비트 20~30% 고정가 락인 (동 §1) | 가격·물량 경쟁의 여지 축소 — 남는 경쟁 변수는 로드맵 신뢰와 공동설계 역량 |
+| 2026-06-22 | **Micron ↔ Anthropic SCA** — 공급 + 공동 최적화 + 운영통합 + 자본연계 ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md)) | "전략적 파트너"가 계약 형태로 제도화. 공동설계 역량이 없으면 SCA 자체를 수주 불가 |
+| 2026-06-24 | Micron IR, **SCA 16건 · 최소 계약매출 ~$100B · 예치금 $22B** 공시 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md) §3) | SCA는 개별 딜이 아니라 계약 카테고리 — 산업 표준이 되는 중 |
+
+**진단**: 지금까지의 개발실 운영 모델(고객 요구사항을 정확히 받아 → 높은 품질로 → 정확한 시간에 납품)은 1~2단계 계약 구조에 최적화된 체질이다. 고객이 기술 혁신을 시도할 때 우리는 "함께 토론하여 방향을 정하는 파트너"가 아니라 "시키는 대로 만들어오는 기업"으로 인식되고 있으며, 이 인식은 3단계(SCA) 계약 수주에서 구조적 불리로 작동한다. 베인 신문섭 파트너의 "Commodity→Customization 체질 전환" 진단([expert-interview-ai-infra-supercycle-2026-06-18.md](../../sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md))과 동일 결론.
+
+## 2. 개발실 역할의 재정의 — As-Is vs To-Be
+
+| 차원 | As-Is (수주 이행자) | To-Be (기술 파트너) |
+|---|---|---|
+| **요구사항** | 고객이 확정한 스펙을 정확히 수령 | 고객 워크로드를 먼저 해석하고 **요구사항을 공동 정의** |
+| **제안** | RFQ 응답 — 요청받은 것에 답변 | 고객 로드맵 분석 기반 **선제 제안** — "다음 세대엔 이 구조가 유리하다" |
+| **기술 방향** | 고객·표준이 정한 방향을 추종 | 자사가 유리한 기술 요소(표준·아키텍처)를 **드라이브** |
+| **성공 지표** | 품질·납기·수율 (QCD) | QCD + **공동설계 건수·로드맵 채택률·전환비용** |
+| **고객 접점** | 영업이 소유, 개발은 후방 지원 | 개발 엔지니어가 고객 아키텍트와 **직접 상시 교류** |
+| **정보 흐름** | 요구사항이 내려오면 착수 | 고객 워크로드 데이터를 상시 센싱 — End-to-End Sensing (신문섭 인터뷰 동일 권고) |
+| **가치 단위** | 부품 (component) | 서브시스템 최적화 + 임베디드 SW ([embedded-software-monetization.md](../concepts/embedded-software-monetization.md)) |
+
+## 3. 리스크와 이점
+
+### 3.1 전환 실패 시 리스크
+1. **SCA 수주 배제**: 공동설계 역량을 증명하지 못하면 다년 최소매출 락인($100B급) 계약군에서 배제 — 사이클 방어 수단 상실 ([rs8-structured-revenue-hedging.md](invariant/rs8-structured-revenue-hedging.md))
+2. **커스텀 전환기의 점유율 구조 고착**: 커스텀 HBM이 범용을 대체하면(2033년 $130B 시장) 범용 잔여 시장에 갇힘 — SK hynix는 이미 3사 인증 확보
+3. **가격 결정력 상실**: 물량·가격이 LTA로 평탄화된 세계에서 기술 관계가 없는 공급자는 **대체 가능한 2nd source**로 취급 — 마진 프리미엄 소멸
+4. **미래 기술 선점 실패**: 고객 워크로드 정보에 대한 조기 접근이 없으면 차세대 제품 정의를 항상 후행 — CXL·PIM 등 신규 아키텍처 창에서 반복적 지각
+
+### 3.2 전환 성공 시 이점
+1. **지속 가능한 매출**: 공동설계 락인 → 최소 약정 매출 + 선급금 구조 → 사이클 진폭 완화 ([rs3-customer-switching-cost.md](invariant/rs3-customer-switching-cost.md))
+2. **수익률 프리미엄**: 커스텀·공동설계 제품은 범용 대비 가격 결정력 우위 — Micron GAAP 매출총이익률 84.9%의 상당 부분이 SCA 기반 예측가능성에서 발생 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md) §1)
+3. **미래 기술 선점**: 고객 워크로드 조기 가시성 → 차세대 표준·아키텍처를 자사 유리하게 드라이브 (IDM 종합반도체 강점과 결합 시 5종 메모리 통합 제안 가능 — [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md) §3.1)
+4. **자본 연계 옵션**: 전략적 파트너 지위는 고객 자본 테이블 참여(Series H 모델) 등 관계 심화 옵션을 연다
+
+## 4. 전환 전략 — 4대 축
+
+### 축 1. 기술 (Technology)
+- **워크로드 랩 신설**: 주요 고객(모델사·하이퍼스케일러)의 학습·추론 워크로드를 자사 장비로 재현·프로파일링하는 전담 랩 — 공동 최적화 제안의 기술적 기반
+- **커스텀 설계 플랫폼화**: 커스텀 HBM 베이스다이·FDP·CXL 요구를 고객별 일회성 대응이 아니라 재사용 가능한 설계 플랫폼으로 축적
+- **임베디드 SW 스택**: 하드웨어+SW 번들 제안 역량 ([embedded-software-monetization.md](../concepts/embedded-software-monetization.md))
+
+### 축 2. 문화 (Culture)
+- **"정답 구현"에서 "가설 제안" 문화로**: 고객 요구 없이도 기술 가설을 만들어 고객에게 먼저 검증받는 행동을 평가·보상 체계에 반영
+- **실패 허용 예산**: 선제 제안의 일정 비율은 채택되지 않는 것이 정상 — 제안 시도 자체를 KPI화 (채택률만 보면 제안 회피 유인)
+- **토론 문화**: 고객 미팅에서 "가능/불가능 답변"이 아니라 "대안 제시·트레이드오프 토론"을 표준 행동으로
+
+### 축 3. 조직 (Organization)
+- **고객별 공동설계 전담팀(Co-Design Pod)**: 영업 뒤가 아니라 고객 아키텍트 옆에 개발 엔지니어 상주 배치 — SK hynix·NVIDIA co-design 모델 벤치마크
+- **워크로드 인텔리전스 기능**: 고객·시장 워크로드 신호를 상시 수집·해석해 개발 로드맵에 주입 (RS-9 수요 변곡 센싱의 개발실 버전 — [rs9-demand-inflection-sensing.md](invariant/rs9-demand-inflection-sensing.md))
+- **기술 마케팅 승격**: 로드맵 제안서·아키텍처 백서를 만드는 기능을 개발실 1급 기능으로
+
+### 축 4. 일하는 방식 (Ways of Working)
+- **로드맵 공유 프로토콜**: NDA 기반 고객·자사 로드맵 정기 교차 리뷰 (분기) — 요구사항이 확정되기 전 단계에 개입
+- **선행 시제품(Proof-of-Architecture) 사이클**: 고객 요청 전 자사 가설로 PoA 제작 → 고객 피드백 → 공동 스펙화
+- **AI 도구 내재화**: 설계·검증 자동화로 반복 업무를 축소하고 확보된 시간을 고객 대면·선행 검토에 재배치 ([rs7-ai-engineering-automation.md](invariant/rs7-ai-engineering-automation.md)) — Micron이 Claude를 전사 배치한 것과 같은 구조
+
+## 5. 액션 플랜
+
+### Phase 1 — 90일 (증명)
+| # | 액션 | 산출물 | 담당 |
+|---|---|---|---|
+| A1 | 파일럿 고객 1사 선정, Co-Design Pod 1호 발족 | Pod 운영 헌장, 상주 인력 배치 | 개발실 + 영업 |
+| A2 | 워크로드 랩 최소 구성 (기존 장비 재배치) | 대표 워크로드 2종 프로파일 리포트 | 개발실 |
+| A3 | 선제 제안 1호 — 파일럿 고객 차세대 로드맵 대상 아키텍처 제안서 | 제안서 + 고객 피드백 기록 | Pod |
+| A4 | 평가 체계 개정안 — 제안·공동설계 지표 추가 설계 | KPI 개정안 | 개발실 기획 |
+
+### Phase 2 — 1년 (제도화)
+| # | 액션 | 산출물 |
+|---|---|---|
+| B1 | Co-Design Pod 3~5개로 확대 (모델사 1 + 하이퍼스케일러 2 + ASIC 1) | 고객별 공동설계 백로그 |
+| B2 | 로드맵 교차 리뷰 프로토콜 정례화 (분기) | 리뷰 캘린더·NDA 프레임 |
+| B3 | PoA 사이클 제도화 — 연 4회 선행 시제품 | PoA 포트폴리오 |
+| B4 | 개정 KPI 전면 적용 (QCD + 공동설계 건수·로드맵 채택률) | 평가 운영 결과 |
+| B5 | SCA형 계약 1건 이상 수주 (공동설계 조항 포함) | 계약 |
+
+### Phase 3 — 3년 (표준화)
+| # | 액션 | 산출물 |
+|---|---|---|
+| C1 | 커스텀 설계 플랫폼 완성 — 신규 고객 커스텀 대응 리드타임 50% 단축 | 플랫폼 |
+| C2 | "전략적 인프라 파트너" 지위 공시 가능 수준 도달 (분기 IR 공동설계 고객 수 공시 — [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md) §3.3 권고) | IR 공시 |
+| C3 | 임베디드 SW 별도 매출 라인 가동 | P&L |
+
+### 성공 지표 (EWI/KPI)
+| 지표 | 현재 | 1년 목표 | 3년 목표 |
+|---|---|---|---|
+| 공동설계 조항 포함 계약 | 파악 필요 | 1건+ | 분기 공시 수준 |
+| 선제 제안 건수 (연) | ~0 (RFQ 응답 중심) | 12건 | 40건 |
+| 제안 → 고객 로드맵 채택률 | — | 20% | 35% |
+| 개발 엔지니어 고객 직접 교류 시간 비중 | 낮음 | 10% | 25% |
+| 커스텀 제품 매출 비중 | 낮음 | 추적 시작 | 30%+ |
+
+## 6. 시나리오 연결 (일관성 규칙)
+
+- **시나리오 B (AI 르네상스, Main Bet)**: SCA 시장이 가장 크게 열리는 시나리오 — 본 전략의 주 작동 무대. MB-4(커스텀 AI 메모리)의 조직적 전제조건
+- **시나리오 A (황금 요새)**: 진영별 공급망에서 진영 내 핵심 고객과의 SCA가 더 중요해짐 — 동일 작동
+- **시나리오 C·D (AI 조정)**: 수요 수축기에는 최소 약정 매출 락인이 방어벽 — 공동설계 없이는 락인 계약 자체가 없음 (RS-8 연계)
+- **시나리오 E (패러다임 전환)**: 차세대 아키텍처 전환기에 고객 워크로드 조기 가시성이 생존 조건 — 워크로드 인텔리전스가 헤지
+- 연결 전략: [MB-4](core/current-state-mb4-custom-ai-memory.md) · [RS-3](invariant/rs3-customer-switching-cost.md) · [RS-7](invariant/rs7-ai-engineering-automation.md) · [RS-8](invariant/rs8-structured-revenue-hedging.md) · [RS-9](invariant/rs9-demand-inflection-sensing.md)

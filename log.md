@@ -14,6 +14,16 @@
 
 ---
 
+## [2026-07-04] build | 개발실 체질 전환 — 보고서·5장 PPTX·대시보드 전략 서브탭 (v2.26.0 → v2.27.0)
+- **무엇**: ① `outputs/report/dev-org-transformation-report.md` 신규 (LTA→SCA 사건 연대기·As-Is/To-Be·리스크/이점·4대 축·3-Phase). ② `outputs/presentation/dev-transformation-outline.md` + `scripts/generate_dev_transformation_pptx.py` → `dev-org-transformation.pptx` 5장 생성 (기존 THEME 재사용). ③ 대시보드 Strategy 탭에 "개발실 전환" 서브탭 신규 — `src/data/devTransformation.js` (사건 타임라인·계약 3단 진화·SCA 4대 요소·역할 비교·리스크/이점·4축·3-Phase·KPI·시나리오 연결), `Strategies.jsx` TransformationPanel. 마이너 bump v2.27.0 (새 서브탭 + 새 데이터 카테고리 — 같은 날 포지션 재평가 작업이 v2.26.0 선점, rebase로 정정).
+- **왜**: 사용자 요청 — Micron–Anthropic SCA를 계기로 개발실의 일하는 방식·문화·조직 체질 개선 전략과 액션 플랜 수립.
+- **검증**: `npm run build` 통과, 프리뷰에서 새 서브탭 렌더·콘솔 오류 0, 지식 그래프 재생성 (79 노드·고아 0).
+
+## [2026-07-04] ingest | Micron–Anthropic SCA + LTA→SCA 산업 전환 맥락
+- **무엇**: `sources/articles/micron-anthropic-sca-2026-06-22.md` (전략적 계약 4대 요소: 공동 최적화·다년 공급·Claude 전사 도입·Series H 투자), `sources/articles/lta-to-sca-industry-context-2026-06.md` (LTA 선급금 10~30% 체제화·Stargate LOI 월 90만 장·커스텀 HBM $130B 3주제 묶음) 신규 수집.
+- **위키 반영**: `wiki/concepts/lta-to-sca-transition.md` 신규 (계약 3단 진화 Spot→LTA→SCA), `wiki/concepts/customer-co-design-anthropic.md` Update 2026-07-04 (Micron 4단계 실체화·Series H), `wiki/strategies/dev-org-transformation.md` 신규 (개발실 체질 전환 전략 — MB-4·RS-3·RS-7·RS-8·RS-9 연결).
+- **인덱스**: index.md에 신규 페이지 4건 + outputs 2건 등록.
+
 ## [2026-07-04] build | 시나리오 포지션 맵·확률 재평가 — Micron Q3 슈퍼사이클 확증 (DF1 8.0→8.5) (v2.25.2 → v2.26.0)
 - **무엇**: 직전 포지션 맵 갱신(2026-06-06) 이후 git log로 수집분을 파악(병목 정기 점검 06-13/14, **Micron FY26 Q3 실적 06-24**)하고 시나리오 포지션 맵·확률을 재평가. ① **포지션 맵**: DF1 8.0→8.5 상향(DF2 1.0 불변, date 2026-06→2026-07). ② **확률**: A26→27·B35→37·C10→9·D23→21·E6 불변(합 100). ③ **EWI**: `dram_opm_vs_hbm_opm` 역전 신호 히스토리(06-24 Micron 84.9% 마진·DRAM ASP +low-60s%) 추가·`samsung_hbm_share` 35→37%(2026Q1 확정·4월 35~40% 급회복). ④ 업데이트 내역 메뉴에 **"포지션·확률"(assessment) 타입·필터 신설**로 재평가 이력을 별도 조회.
 - **왜**: 사용자 지시 — "포지션 맵 최근 업데이트 대비 변경점 파악·반영, 업데이트 내역 별도 조회, EWI·트리거 수집 데이터 기반 갱신". Micron Q3 $41.46B 사상 최대·Q4 $50B·SCA 16건 $100B take-or-pay 백로그·2026 HBM 전량 Sold Out·수급 타이트 2027+ → 근단기 수요 가시성이 계약 백로그로 고정, 슈퍼사이클 정점 확증·근단기 하락 조정 확률 축소. 단 사상 최고 마진(84.9%)·DRAM>HBM OPM 역전은 후기순환(정점) 신호로 유효 → 하락 변곡 EWI 감시 지속. DF2는 디커플링 신규 신호 없어 불변.

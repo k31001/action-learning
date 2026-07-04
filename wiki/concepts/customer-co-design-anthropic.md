@@ -1,8 +1,9 @@
 ---
 type: concept
-last_reviewed: 2026-06-11
+last_reviewed: 2026-07-04
 sources:
   - sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md
+  - sources/articles/micron-anthropic-sca-2026-06-22.md
 ---
 
 # 고객 공동개발 모델 — Anthropic Strategic Infrastructure Partnership
@@ -74,6 +75,15 @@ sources:
 - Samsung의 현재 위치: **2단계~3단계 사이**
 - SK hynix의 현재 위치: **3단계~4단계 사이**
 - Micron CEO 발언("LTSA"): 2단계 표준화 + 4단계 진입 신호
+
+### Update 2026-07-04 — Micron이 4단계를 실체화 (Micron ↔ Anthropic SCA)
+
+- 2026-06-22 Micron–Anthropic **전략적 계약(Strategic Agreement)** 발표 — 위 4단계 모델의 첫 완전체 사례 ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md)):
+  - 다년 공급(HBM·DRAM·SSD) + **Claude 워크로드 공동 최적화** + **Micron 전사 Claude 도입(운영 통합)** + **Series H 전략적 투자(자본 연계)**
+  - Series H: $65B 조달, 2026-05-28 클로징, post-money $965B — Micron·Samsung·SK hynix 3사 모두 strategic infrastructure partners로 참여
+- Micron Q3 FY26 공시에서 **"Strategic Customer Agreements(SCA)" 16건, 최소 계약매출 ~$100B**가 IR 공식 용어로 등장 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md) §3) — 4단계가 개별 딜이 아니라 **계약 카테고리**로 제도화
+- Micron의 현재 위치: **4단계 진입 확정**. Samsung과의 단계 격차가 1개 사에서 2개 사(SK hynix + Micron)로 확대
+- 계약 구조 관점의 상세 분해는 [lta-to-sca-transition.md](lta-to-sca-transition.md), 조직 대응은 [dev-org-transformation.md](../strategies/dev-org-transformation.md)
 
 ---
 

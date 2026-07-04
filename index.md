@@ -77,7 +77,8 @@
 - [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계)
 
 ### 신규 전략 인접영역 (시니어 파트너 인터뷰 2026-06-11 기반)
-- [wiki/concepts/customer-co-design-anthropic.md](wiki/concepts/customer-co-design-anthropic.md) — Anthropic Series F strategic infrastructure partners(Micron·Samsung·SK) 모델, 영업 4단계 진화
+- [wiki/concepts/customer-co-design-anthropic.md](wiki/concepts/customer-co-design-anthropic.md) — Anthropic strategic infrastructure partners(Micron·Samsung·SK) 모델, 영업 4단계 진화 (Update 2026-07-04: Micron SCA로 4단계 실체화)
+- [wiki/concepts/lta-to-sca-transition.md](wiki/concepts/lta-to-sca-transition.md) — 계약 구조 3단 진화(Spot→LTA→SCA), Micron–Anthropic 사건 분해, 산업 신호 누적
 - [wiki/concepts/embedded-software-monetization.md](wiki/concepts/embedded-software-monetization.md) — SmartSSD·CXL SMDK 임베디드 SW 별도 P&L 분리·BSP/SDK 패키지화
 - [wiki/concepts/used-semiconductor-market.md](wiki/concepts/used-semiconductor-market.md) — 중고/재활용 반도체 인증($2.4B~$14.6B 시나리오 추정, 본질=검사·등급화·보증)
 - [wiki/concepts/space-semiconductor.md](wiki/concepts/space-semiconductor.md) — Smallsat 2,800기/97% COTS 전환, 중간지대(선별 COTS·shield-aware·long-lifecycle)
@@ -92,6 +93,10 @@
 - [wiki/concepts/us-export-controls.md](wiki/concepts/us-export-controls.md) — 對중국 반도체 수출 통제
 - [wiki/concepts/china-policy.md](wiki/concepts/china-policy.md) — 중국 반도체 자립·빅펀드
 - [wiki/concepts/korea-policy.md](wiki/concepts/korea-policy.md) — K-반도체 전략·용인 클러스터
+
+## wiki/strategies — 조직 전환 전략
+
+- [wiki/strategies/dev-org-transformation.md](wiki/strategies/dev-org-transformation.md) — 개발실 체질 전환 (수주 이행자→기술 파트너): As-Is/To-Be·리스크/이점·4대 축·3-Phase 액션 플랜
 
 ## wiki/strategies/invariant — Robust 전략 (RS1~RS9)
 
@@ -145,6 +150,8 @@
 - [sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md](sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) — Counterpoint 7건 묶음(2025-11~2026-04): 90% QoQ 폭등·DRAM OPM 60%>HBM·NVIDIA LPDDR 피벗·LTA 사이클 평탄화·SK hynix HBM 57%·스마트폰 -2.1%
 - [sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md](sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) — Bain(신문섭) AI 컴퓨트 수요·반도체 공급·DC 2030 전망 3개 시리즈: 컴퓨트 경제학 갭($2조/$500B/$800B)·메모리=AI 지출 30%·웨이퍼 잠식(HBM 4×)·163GW·전력 게이트키퍼·Scramble→Strategy
 - [sources/articles/june-2026-market-update-2026-06-13.md](sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 정기 점검 시장 데이터: HBM Q1 2026 점유율·삼성 HBM4E 업계 최초·Vera Rubin 인증·HBM 가격·빅4 CapEx $700~725B·DRAM/NAND Q2 가격·TSMC 5월 매출·CoWoS 65만 장·미국 DC 전력 42GW·그리드 대기열 2,600GW
+- [sources/articles/micron-anthropic-sca-2026-06-22.md](sources/articles/micron-anthropic-sca-2026-06-22.md) — Micron↔Anthropic 전략적 계약(2026-06-22): 공동 최적화·다년 공급·Claude 전사 도입·Series H 투자 4대 요소
+- [sources/articles/lta-to-sca-industry-context-2026-06.md](sources/articles/lta-to-sca-industry-context-2026-06.md) — LTA 체제화(선급금 10~30%)·Stargate LOI(월 90만 장)·커스텀 HBM 공동설계($130B) 3주제 묶음
 - [sources/articles/june-2026-market-update-2026-06-14.md](sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 정기 점검 시장 데이터: HBM 점유율 4월(삼성 35~40% 급회복)·Micron Q3 FY26 역대최고 $33.5B·빅4 Q1 분기 CapEx 상세·전체 하이퍼스케일러 $782B·PJM 8년·DOE 100GW·ERCOT 145GW·DRAM Q1 실제 +90~95%·Q2 예상·TSMC 130K WPM·Rubin 22% 하향
 
 ### sources/raw-notes — 리서치 노트
@@ -163,7 +170,9 @@
 ## outputs — 빌드 산출물
 
 - [outputs/report/scenario-planning-report.md](outputs/report/scenario-planning-report.md) — 시나리오 플래닝 전략 보고서 (위키 합성)
+- [outputs/report/dev-org-transformation-report.md](outputs/report/dev-org-transformation-report.md) — 개발실 체질 전환 전략 보고서 (LTA→SCA 논거·역할 재정의·액션 플랜)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
+- [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
 - `outputs/presentation/*.pptx` — 4종 디자인 변형 (`scripts/generate_*_pptx.py`로 재생성)
 
 ## dashboard — 빌드 산출물 (최상위, Vercel 루트)
