@@ -13,8 +13,8 @@ import {
 } from '../data/strategies'
 import {
   DT_SUMMARY, DT_EVENTS, DT_CONTRACT_STAGES, DT_SCA_COMPONENTS,
-  DT_ROLE_SHIFT, DT_RISKS, DT_BENEFITS, DT_AXES, DT_PHASES, DT_KPIS,
-  DT_SCENARIO_LINKS,
+  DT_ROLE_SHIFT, DT_MODELING_NOTE, DT_RISKS, DT_BENEFITS, DT_AXES,
+  DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS,
 } from '../data/devTransformation'
 import SourceLink from './SourceLink'
 
@@ -621,6 +621,10 @@ function TransformationPanel() {
             </tbody>
           </table>
         </div>
+        <p className="text-[11px] text-zinc-700 italic bg-amber-50 border border-amber-200 rounded px-2.5 py-1.5 mt-3 leading-relaxed">
+          <span className="text-amber-700 font-bold not-italic">모델링 범위 확장이 결정적 — </span>
+          {DT_MODELING_NOTE}
+        </p>
       </Card>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

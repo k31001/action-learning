@@ -190,6 +190,7 @@ def build_slide_3_role(prs):
         ('고객 접점', '영업이 소유 — 개발은 후방 지원', '개발 엔지니어가 고객 아키텍트와 직접 상시 교류'),
         ('정보 흐름', '요구사항이 내려오면 착수', '고객 워크로드 상시 센싱 (End-to-End Sensing)'),
         ('가치 단위', '부품 (component)', '서브시스템 최적화 + 임베디드 SW'),
+        ('모델링 범위', '메모리 디바이스 단품 (스펙·데이터시트)', '랙·데이터센터 전체 시스템 모델 — 성능·전력 정량 예측'),
     ]
     x0 = Inches(0.5)
     dim_w, col_w = Inches(1.7), Inches(5.55)
@@ -204,18 +205,18 @@ def build_slide_3_role(prs):
              'To-Be · 기술 파트너 (Technology Partner)', font=FONT_KO, size=12, bold=True, color=THEME['white'])
 
     y = y + hdr_h + Inches(0.03)
-    row_h = Inches(0.51)
+    row_h = Inches(0.475)
     for i, (dim, asis, tobe) in enumerate(rows):
         bg = THEME['soft_white_bg'] if i % 2 == 0 else THEME['white']
         add_rect(slide, x0, y, dim_w, row_h, fill=THEME['soft_blue_bg'], line=THEME['light_gray'])
-        add_text(slide, x0 + Inches(0.12), y + Inches(0.13), dim_w - Inches(0.2), Inches(0.3),
+        add_text(slide, x0 + Inches(0.12), y + Inches(0.11), dim_w - Inches(0.2), Inches(0.3),
                  dim, font=FONT_KO, size=10.5, bold=True, color=THEME['deep_navy'])
         add_rect(slide, x0 + dim_w + Inches(0.02), y, col_w, row_h, fill=bg, line=THEME['light_gray'])
-        add_text(slide, x0 + dim_w + Inches(0.2), y + Inches(0.13), col_w - Inches(0.35), Inches(0.32),
-                 asis, font=FONT_KO, size=10, color=THEME['gray_caption'])
+        add_text(slide, x0 + dim_w + Inches(0.2), y + Inches(0.11), col_w - Inches(0.35), Inches(0.32),
+                 asis, font=FONT_KO, size=9.5, color=THEME['gray_caption'])
         add_rect(slide, x0 + dim_w + col_w + Inches(0.04), y, col_w, row_h, fill=bg, line=THEME['light_gray'])
-        add_text(slide, x0 + dim_w + col_w + Inches(0.24), y + Inches(0.13), col_w - Inches(0.35), Inches(0.32),
-                 tobe, font=FONT_KO, size=10, bold=True, color=THEME['dark_text'])
+        add_text(slide, x0 + dim_w + col_w + Inches(0.24), y + Inches(0.11), col_w - Inches(0.35), Inches(0.32),
+                 tobe, font=FONT_KO, size=9.5, bold=True, color=THEME['dark_text'])
         y = y + row_h + Inches(0.02)
 
     add_so_what(slide, Inches(6.5),
@@ -285,9 +286,9 @@ def build_slide_5_execution(prs):
 
     # 상단: 4대 축 카드
     axes = [
-        ('기술', '워크로드 랩 신설\n커스텀 설계 플랫폼화\n임베디드 SW 스택', THEME['samsung_blue']),
+        ('기술', '워크로드 랩 신설\n시스템 성능·파워 모델\n(디바이스→서버→랙→DC)\n커스텀 플랫폼·임베디드 SW', THEME['samsung_blue']),
         ('문화', '"정답 구현"→"가설 제안"\n실패 허용 예산\n트레이드오프 토론 표준화', THEME['amber']),
-        ('조직', '고객별 Co-Design Pod\n워크로드 인텔리전스 기능\n기술 마케팅 승격', THEME['green_pos']),
+        ('조직', '고객별 Co-Design Pod\n시스템 아키텍트·모델링\n전문 조직 신설 (채용+육성)\n워크로드 인텔리전스', THEME['green_pos']),
         ('일하는 방식', '로드맵 교차 리뷰(분기)\n선행 시제품(PoA) 사이클\nAI 도구 내재화', THEME['deep_navy']),
     ]
     card_w, gap = Inches(3.05), Inches(0.21)
@@ -307,9 +308,9 @@ def build_slide_5_execution(prs):
     add_text(slide, Inches(0.5), ph_y, Inches(6), Inches(0.3),
              '3-Phase 로드맵', font=FONT_KO, size=12, bold=True, color=THEME['dark_text'])
     phases = [
-        ('Phase 1 · 90일 — 증명', '파일럿 고객 Co-Design Pod 1호 발족\n워크로드 랩 최소 구성 · 선제 제안 1호\nKPI 개정안 설계'),
-        ('Phase 2 · 1년 — 제도화', 'Pod 3~5개 확대 · 로드맵 교차 리뷰 정례화\nPoA 연 4회 · 개정 KPI 전면 적용\n★ SCA형 계약 1건 이상 수주'),
-        ('Phase 3 · 3년 — 표준화', '커스텀 플랫폼 완성 (리드타임 50%↓)\n"전략적 인프라 파트너" IR 공시 수준\n임베디드 SW 별도 P&L'),
+        ('Phase 1 · 90일 — 증명', '파일럿 고객 Co-Design Pod 1호 발족\n워크로드 랩 + 시스템 모델 v0.1 (서버 레벨)\n선제 제안 1호 · KPI 개정안 설계'),
+        ('Phase 2 · 1년 — 제도화', 'Pod 3~5개 확대 · 아키텍트·모델링 조직 신설\n모델 v1.0 (랙) · PoA 연 4회 · KPI 전면 적용\n★ SCA형 계약 1건 이상 수주'),
+        ('Phase 3 · 3년 — 표준화', '커스텀 플랫폼 완성 (리드타임 50%↓)\n모델 v2.0 (DC 레벨·고객 공용 자산)\n"전략적 인프라 파트너" IR 공시 · SW P&L'),
     ]
     pw = Inches(4.0)
     for i, (title, desc) in enumerate(phases):
@@ -334,7 +335,7 @@ def build_slide_5_execution(prs):
         ('로드맵 채택률', '20% → 35%'),
         ('고객 직접 교류 시간', '10% → 25%'),
         ('커스텀 매출 비중', '추적 → 30%+'),
-        ('공동설계 계약', '1건+ → 분기 공시'),
+        ('시스템 모델 커버리지', '랙 → DC·고객 공용'),
     ]
     kw = Inches(2.44)
     for i, (label, val) in enumerate(kpis):

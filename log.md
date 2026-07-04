@@ -14,6 +14,12 @@
 
 ---
 
+## [2026-07-04] build | 개발실 전환 보강 — 시스템 아키텍트·모델링 축 추가 (v2.27.0 → v2.27.1)
+- **무엇**: 사용자 피드백 반영 — 공동 최적화의 기술적 전제조건으로 ① **시스템 레벨 성능·파워 모델**(우리 제품이 고객 시스템에서 만드는 성능·전력·TCO 효과를 정량 예측, 고객 공용 시뮬레이션 자산화)과 ② **시스템 아키텍트·모델링 전문 인력·조직**(외부 채용+내부 육성, Pod에 아키텍트 공급) 추가. ③ **모델링 범위 확장**(메모리 디바이스 단품 → 서버→랙→데이터센터 전체 시스템)을 As-Is/To-Be 8번째 행으로 명시.
+- **전파**: `wiki/strategies/dev-org-transformation.md`(축1·축3·액션플랜 A2/B2a/C4·KPI 2행) → `outputs/report/dev-org-transformation-report.md`(§2.1·§4·§5) → `dev-transformation-outline.md` + PPTX 재생성(슬라이드 3·5) → `dashboard devTransformation.js`(DT_ROLE_SHIFT·DT_MODELING_NOTE·DT_AXES·DT_PHASES·DT_KPIS) + `Strategies.jsx` 모델링 강조 노트. 패치 bump v2.27.1 (기존 카테고리 내 콘텐츠 보강).
+- **건너뜀**: 지식 그래프 재생성 (페이지 간 링크 변화 없음 — 본문 보강만).
+- **검증**: `npm run build` 통과, 프리뷰에서 신규 콘텐츠 6개 항목 렌더 확인·콘솔 오류 0.
+
 ## [2026-07-04] build | 개발실 체질 전환 — 보고서·5장 PPTX·대시보드 전략 서브탭 (v2.26.0 → v2.27.0)
 - **무엇**: ① `outputs/report/dev-org-transformation-report.md` 신규 (LTA→SCA 사건 연대기·As-Is/To-Be·리스크/이점·4대 축·3-Phase). ② `outputs/presentation/dev-transformation-outline.md` + `scripts/generate_dev_transformation_pptx.py` → `dev-org-transformation.pptx` 5장 생성 (기존 THEME 재사용). ③ 대시보드 Strategy 탭에 "개발실 전환" 서브탭 신규 — `src/data/devTransformation.js` (사건 타임라인·계약 3단 진화·SCA 4대 요소·역할 비교·리스크/이점·4축·3-Phase·KPI·시나리오 연결), `Strategies.jsx` TransformationPanel. 마이너 bump v2.27.0 (새 서브탭 + 새 데이터 카테고리 — 같은 날 포지션 재평가 작업이 v2.26.0 선점, rebase로 정정).
 - **왜**: 사용자 요청 — Micron–Anthropic SCA를 계기로 개발실의 일하는 방식·문화·조직 체질 개선 전략과 액션 플랜 수립.
