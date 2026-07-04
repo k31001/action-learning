@@ -39,7 +39,7 @@ export const STRATEGY_OVERVIEW = {
   // Main Bet 강조
   mainBet: {
     scenario: 'B · AI 르네상스',
-    probability: '30~35%',
+    probability: '34~38%',
     rationale: '5개 시나리오 중 시나리오 B만이 2035 시장 $5,200억 규모로 가장 크고, 동서 균형 포지션이 최대 가치를 발휘하는 유일한 미래.',
     requirements: [
       'HBM4E·HBM5 기술 1위 탈환',

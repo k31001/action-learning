@@ -9,20 +9,23 @@ export const INITIAL_QUADRANT_POSITIONS = [
   { key: 'sixMonth',   date: '2025-11', df1: 5.5,  df2: 2.5,  note: 'H20 부분 재허용, 삼성 35% 반등, 디커플링 완화' },
   { key: 'threeMonth', date: '2026-02', df1: 6.5,  df2: 1.5,  note: 'MATCH법안 위원회 미통과, 공존 신호 강화' },
   { key: 'oneMonth',   date: '2026-04', df1: 7.5,  df2: 0.5,  note: '빅테크 Q1 실적 호조, 관리된 공존 신호' },
-  // 최신 기준 (2026-06-06) — 슈퍼사이클 정점 확인(df1 유지 8.0) BUT 선행 균열 형성.
-  // DC 착공 55.9GW·MU +7.6×·HBM sold-out 강세 / 공급 과잉 EWI 경계(68)·DRAM>HBM OPM 정점·GPU 임대가 둔화 → 하락 변곡 감시
-  { key: 'current',    date: '2026-06', df1: 8.0,  df2: 1.0,  note: 'DC 착공 55.9GW·MU +7.6× 슈퍼사이클 정점 / 수요 변곡 EWI 공급 과잉 경계(68)·괴리 +4·GPU 임대가 둔화 → 하락 변곡 감시' },
+  // 최신 기준 (2026-07-04) — 슈퍼사이클 정점 '확증'으로 DF1 8.0→8.5 상향, DF2 1.0 불변(디커플링 신규 신호 없음).
+  // Micron FY26 Q3(2026-06-24) 매출 $41.46B 사상 최대·Q4 가이던스 $50B·SCA 16건 $100B take-or-pay 백로그·2026 HBM Sold Out·수급 타이트 2027+ → 근단기 수요 가시성 계약 백로그로 고정.
+  // 단 사상 최고 마진(84.9%)·DRAM>HBM OPM 역전은 후기순환(정점) 신호 → 하락 변곡은 뒤로 밀렸을 뿐, EWI(공급 과잉 68·GPU 임대가 둔화) 선행 감시 지속.
+  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 1.0,  note: 'MU Q3 $41.46B 사상 최대·Q4 $50B·SCA $100B take-or-pay·2026 HBM Sold Out → 슈퍼사이클 정점 확증(DF1 8→8.5). 사상 최고 마진(84.9%)·DRAM>HBM OPM 역전은 후기순환 신호 → 하락 변곡 감시 지속' },
 ]
 
-// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-06-06 갱신)
-//   A 25~30 / B 30~35 / C 8~12 / D 20~25 / E 5~8  → 합 100
-//   [2026-06] AI DC 착공 55.9GW·슈퍼사이클 정점(MU+7.6×·HBM sold-out) → Main Bet B 강화(34→35).
-//   수요 변곡 EWI 공급 과잉 경계(68)·DRAM>HBM OPM 정점·GPU 임대가 둔화 → 순환 조정 D 상향(22→23). A·C 소폭 하향.
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-07-04 갱신)
+//   A 25~29 / B 34~38 / C 7~11 / D 19~23 / E 5~8  → 합 100
+//   [2026-07] Micron FY26 Q3 $41.46B 사상 최대·Q4 가이던스 $50B·SCA 16건 $100B take-or-pay 백로그·2026 HBM Sold Out·수급 타이트 2027+
+//     → 근단기 수요 계약 백로그로 고정, AI-지속 축 강화·근단기 하락 조정 확률 축소.
+//     Main Bet B 강화(35→37)·A 소폭 상향(26→27)·D 하향(23→21)·C 소폭 하향(10→9). DF2(디커플링) 신규 신호 없어 불변.
+//   직전 [2026-06]: A26·B35·C10·D23·E6.
 export const SCENARIOS = [
-  { id: 'A', name: '황금 요새', probability: 26, color: 'blue', description: 'AI 지속 + 디커플링' },
-  { id: 'B', name: 'AI 르네상스', probability: 35, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
-  { id: 'C', name: '기술 냉전', probability: 10, color: 'red', description: 'AI 붕괴 + 디커플링' },
-  { id: 'D', name: '조용한 재편', probability: 23, color: 'orange', description: 'AI 붕괴 + 공존' },
+  { id: 'A', name: '황금 요새', probability: 27, color: 'blue', description: 'AI 지속 + 디커플링' },
+  { id: 'B', name: 'AI 르네상스', probability: 37, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
+  { id: 'C', name: '기술 냉전', probability: 9, color: 'red', description: 'AI 붕괴 + 디커플링' },
+  { id: 'D', name: '조용한 재편', probability: 21, color: 'orange', description: 'AI 붕괴 + 공존' },
   { id: 'E', name: '패러다임 전환', probability: 6, color: 'purple', description: 'HBM 패러다임 붕괴 (와일드카드)' },
 ]
 
@@ -162,7 +165,7 @@ export const INITIAL_INDICATORS = [
     source: 'TrendForce·Counterpoint Research',
     unit: '%',
     unitLabel: '%',
-    currentValue: 35,
+    currentValue: 37,
     alertThreshold: 30,
     alertCondition: 'lte',
     alertDescription: '30% 이하 하락 → 전략 위기 경보',
@@ -170,13 +173,14 @@ export const INITIAL_INDICATORS = [
     scenarioText: '전략 위기 경보',
     warningThreshold: 33,
     status: 'warning',
-    lastUpdated: '2026-05-05',
+    lastUpdated: '2026-06-14',
     history: [
       { date: '2025-01-01', value: 17, note: 'Q2 2025 (HBM3E 품질 이슈)' },
       { date: '2025-10-01', value: 35, note: 'Q3 2025 반등' },
       { date: '2026-05-05', value: 35, note: '2026Q1 추정' },
+      { date: '2026-06-14', value: 37, note: '2026Q1 확정 37%(hbm-share.json). 병목 점검(06-14): 삼성 HBM 4월 35~40%로 급회복 — 이전 25~30% 추정 초과' },
     ],
-    note: 'Q3 2025 35% 반등, SK하이닉스 53%',
+    note: '2026Q1 37%(SK 51%·Micron 12%). 4월 35~40% 급회복 (june-2026-market-update)',
     inputType: 'number',
     hint: '삼성전자 HBM 시장 점유율 % 입력',
     isCritical: true,
@@ -328,10 +332,11 @@ export const INITIAL_INDICATORS = [
     scenarioText: '정점 신호 — 다운턴 진입 예고. 호황기 절제 격상 + cushion 확보 가속',
     warningThreshold: null,
     status: 'critical',
-    lastUpdated: '2026-05-25',
+    lastUpdated: '2026-06-24',
     history: [
       { date: '2026-02-05', value: 'inverted', note: 'Counterpoint: Q4 2025 DRAM OPM 60%대 진입 — 사상 첫 HBM 계약 마진 초과' },
       { date: '2026-05-25', value: 'inverted', note: 'Counterpoint·Bloomberg(Mehrotra "with discipline") + SemiAnalysis "DDR 마진 HBM 근접/초과" 정합' },
+      { date: '2026-06-24', value: 'inverted', note: 'Micron FY26 Q3: GAAP 매출총이익률 84.9% 사상 최고·DRAM ASP +low-60s% QoQ(성장 압도 동인)·DRAM 76% 비중 — 역전·정점 신호 재확인 (micron-q3-fy26.md)' },
     ],
     options: [
       { value: 'normal', label: 'HBM > DRAM (정상)', status: 'normal', signal: '호황 정점 멀음' },

@@ -25,7 +25,7 @@
 
 - **Pole B (AI 버블 붕괴·수요 재조정)**: AI ROI 미실현에 실망한 빅테크·투자자가 2027~2028년 CapEx를 대폭 삭감하고, 동시에 신규 팹(마이크론 Idaho, SK하이닉스 용인) 공급이 쏟아지면서 HBM 공급 과잉이 2022~2023년형 메모리 불황을 재현. AI 추론 전용 칩의 메모리 효율화가 HBM 수요를 구조적으로 감소시키는 "구조적 리셋" 시나리오.
 
-- **현재 위치**: 슈퍼사이클 정점 확인(2026 빅테크 CapEx $650~725B·MU 12개월 +7.6×·DC 착공 55.9GW·HBM 전량 Sold Out) **BUT 선행 균열 형성** — 수요 변곡 EWI 공급 과잉 경계(68)·GPU 임대가 둔화·DRAM>HBM OPM 정점·DC 취소 일부. 2027~2028 하락 분기점을 **DC 착공 트래커 + 수요 변곡 EWI(RS-9)**로 선행 감시. (→ [demand-inflection-ewi.md](../concepts/demand-inflection-ewi.md), [ai-datacenter-buildout.md](../concepts/ai-datacenter-buildout.md))
+- **현재 위치 (2026-07 갱신)**: 슈퍼사이클 정점 **확증** — Micron FY26 Q3(2026-06-24) 매출 $41.46B 사상 최대(+346% YoY)·매출총이익률 84.9% 사상 최고·Q4 가이던스 $50B, DRAM ASP +low-60s% QoQ가 성장의 압도적 동인 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)). **SCA 16건 $100B 최소계약매출(take-or-pay)·예치금 $22B + 2026 HBM 전량 Sold Out·수급 타이트 calendar 2027 이후 지속**으로 근단기 수요 가시성이 계약 백로그로 고정 → 하락 변곡의 근단기 실현 확률 축소, **DF1 8.0→8.5 상향**. 여전히 빅테크 CapEx $650~725B·DC 착공 55.9GW 강세. **단, 사상 최고 마진(84.9%)·DRAM>HBM OPM 역전 자체가 후기순환(정점) 신호** — 2027~2028 하락 분기점을 **DC 착공 트래커 + 수요 변곡 EWI(RS-9)**로 선행 감시, RS-5 정점 절제 병행. (→ [demand-inflection-ewi.md](../concepts/demand-inflection-ewi.md), [ai-datacenter-buildout.md](../concepts/ai-datacenter-buildout.md), [micron.md](../entities/micron.md))
 
 ---
 
