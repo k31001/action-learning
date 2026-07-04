@@ -14,6 +14,30 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-04 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-07-04',
+    type: 'assessment',
+    version: 'v2.26.0',
+    title: '시나리오 포지션 맵·확률 재평가 — Micron Q3 슈퍼사이클 확증 반영 (DF1 8.0→8.5)',
+    summary:
+      '직전 포지션 맵 갱신(2026-06-06) 이후 수집분(Micron FY26 Q3 실적·병목 정기 점검)을 반영해 시나리오 포지션 맵과 확률을 재평가. Micron Q3 $41.46B 사상 최대·Q4 가이던스 $50B·SCA 16건 $100B take-or-pay 백로그·2026 HBM 전량 Sold Out·수급 타이트 2027+ 로 근단기 수요 가시성이 계약 백로그로 고정 → 슈퍼사이클 정점 확증. DF1 8.0→8.5 상향(DF2 1.0 불변), 확률 B 35→37·A 26→27·D 23→21·C 10→9(E 6 불변). 단 사상 최고 마진(84.9%)·DRAM>HBM OPM 역전은 후기순환 신호로 유효 → 하락 변곡 EWI 감시 지속. 업데이트 내역 메뉴에 "포지션·확률" 필터 신설. 마이너 v2.26.0.',
+    tags: ['시나리오', '포지션 맵', '확률', 'DF1', 'Micron', '슈퍼사이클', 'EWI', 'dashboard'],
+    items: [
+      { label: '포지션 맵 DF1 8.0→8.5 (DF2 1.0 불변)', detail: '슈퍼사이클 정점 "확인"→"확증". Micron Q3 사상 최대 + $100B take-or-pay 백로그 + 2026 HBM Sold Out으로 근단기 수요 가시성이 계약으로 고정 → 하락 변곡의 근단기 실현 확률 축소. DF2는 디커플링 신규 신호 없어 불변' },
+      { label: '확률 재추정: A27·B37·C9·D21·E6 (합 100)', detail: '직전 A26·B35·C10·D23·E6. B(Main Bet) 35→37·A 26→27(AI-지속 강화), D 23→21·C 10→9(근단기 하락 조정 확률 축소). E 불변(DF3 패러다임 신규 근거 없음)' },
+      { label: 'EWI 갱신 — DRAM>HBM OPM 역전 재확인', detail: 'Micron Q3 GAAP 매출총이익률 84.9% 사상 최고·DRAM ASP +low-60s% QoQ 반영. 역전(정점) 신호 히스토리 2026-06-24 추가 — critical 유지' },
+      { label: 'EWI 갱신 — 삼성 HBM 점유율 35→37%', detail: '2026Q1 확정 37%(hbm-share.json)·병목 점검(06-14) 4월 35~40% 급회복 반영. 이전 25~30% 추정 초과' },
+      { label: '시나리오 트리거 검토', detail: '수집분으로 신규 발동(activated) 조건 충족 트리거 없음 — Samsung 2027 캐파 사전확정·빅테크 2027 CapEx $500B 등은 미확정. Micron 백로그는 산업 방증(방향 근거)으로만 반영, 트리거 상태 불변' },
+      { label: '위키 동기화', detail: 'wiki/driving-forces/key-drivers.md DF1 현재 위치·wiki/scenarios/scenario-matrix.md 확률 추정표 갱신. dashboard scenarioPlanning.js·indicators.js 미러' },
+      { label: '업데이트 내역 메뉴', detail: '"포지션·확률"(assessment) 타입·필터 칩 신설 — 포지션 맵·확률 재평가 이력을 ingest/build와 분리해 한눈에 조회' },
+    ],
+    links: [
+      { label: 'micron-q3-fy26.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/filings/micron-q3-fy26.md' },
+      { label: 'scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+    ],
+  },
   // ── 2026-06-25 ───────────────────────────────────────────────────────────────
   {
     date: '2026-06-25',

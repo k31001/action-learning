@@ -1,18 +1,20 @@
 import { useState, useMemo } from 'react'
 import {
   History, ChevronDown, ChevronRight, Tag, ExternalLink,
-  Sparkles, BookOpen, Activity, Search,
+  Sparkles, BookOpen, Activity, Search, Crosshair,
 } from 'lucide-react'
 import { UPDATES } from '../data/updates'
 import { VERSION } from '../version'
 
 // ── type → 시각 속성 ─────────────────────────────────────────────────────────
 const TYPE_META = {
-  ingest:    { label: 'Ingest',    color: 'bg-blue-50 text-blue-700 border-blue-200',           icon: BookOpen },
-  build:     { label: 'Build',     color: 'bg-emerald-50 text-emerald-700 border-emerald-200', icon: Sparkles },
-  query:     { label: 'Query',     color: 'bg-violet-50 text-violet-700 border-violet-200',    icon: Search },
-  lint:      { label: 'Lint',      color: 'bg-amber-50 text-amber-700 border-amber-200',       icon: Activity },
-  migration: { label: 'Migration', color: 'bg-zinc-100 text-zinc-700 border-zinc-300',         icon: History },
+  ingest:     { label: 'Ingest',        color: 'bg-blue-50 text-blue-700 border-blue-200',           icon: BookOpen },
+  build:      { label: 'Build',         color: 'bg-emerald-50 text-emerald-700 border-emerald-200', icon: Sparkles },
+  query:      { label: 'Query',         color: 'bg-violet-50 text-violet-700 border-violet-200',    icon: Search },
+  lint:       { label: 'Lint',          color: 'bg-amber-50 text-amber-700 border-amber-200',       icon: Activity },
+  migration:  { label: 'Migration',     color: 'bg-zinc-100 text-zinc-700 border-zinc-300',         icon: History },
+  // 시나리오 포지션 맵·확률 추정 재평가 — 별도 필터로 한눈에
+  assessment: { label: '포지션·확률',    color: 'bg-rose-50 text-rose-700 border-rose-200',          icon: Crosshair },
 }
 
 // 한 entry 카드
@@ -155,10 +157,11 @@ export default function Updates() {
   }
 
   const TYPE_CHIPS = [
-    { id: 'all',     label: '전체',    count: UPDATES.length },
-    { id: 'ingest',  label: 'Ingest',  count: UPDATES.filter(u => u.type === 'ingest').length },
-    { id: 'build',   label: 'Build',   count: UPDATES.filter(u => u.type === 'build').length },
-    { id: 'query',   label: 'Query',   count: UPDATES.filter(u => u.type === 'query').length },
+    { id: 'all',        label: '전체',      count: UPDATES.length },
+    { id: 'assessment', label: '포지션·확률', count: UPDATES.filter(u => u.type === 'assessment').length },
+    { id: 'ingest',     label: 'Ingest',    count: UPDATES.filter(u => u.type === 'ingest').length },
+    { id: 'build',      label: 'Build',     count: UPDATES.filter(u => u.type === 'build').length },
+    { id: 'query',      label: 'Query',     count: UPDATES.filter(u => u.type === 'query').length },
   ]
 
   return (

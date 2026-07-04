@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-07-04] build | 시나리오 포지션 맵·확률 재평가 — Micron Q3 슈퍼사이클 확증 (DF1 8.0→8.5) (v2.25.2 → v2.26.0)
+- **무엇**: 직전 포지션 맵 갱신(2026-06-06) 이후 git log로 수집분을 파악(병목 정기 점검 06-13/14, **Micron FY26 Q3 실적 06-24**)하고 시나리오 포지션 맵·확률을 재평가. ① **포지션 맵**: DF1 8.0→8.5 상향(DF2 1.0 불변, date 2026-06→2026-07). ② **확률**: A26→27·B35→37·C10→9·D23→21·E6 불변(합 100). ③ **EWI**: `dram_opm_vs_hbm_opm` 역전 신호 히스토리(06-24 Micron 84.9% 마진·DRAM ASP +low-60s%) 추가·`samsung_hbm_share` 35→37%(2026Q1 확정·4월 35~40% 급회복). ④ 업데이트 내역 메뉴에 **"포지션·확률"(assessment) 타입·필터 신설**로 재평가 이력을 별도 조회.
+- **왜**: 사용자 지시 — "포지션 맵 최근 업데이트 대비 변경점 파악·반영, 업데이트 내역 별도 조회, EWI·트리거 수집 데이터 기반 갱신". Micron Q3 $41.46B 사상 최대·Q4 $50B·SCA 16건 $100B take-or-pay 백로그·2026 HBM 전량 Sold Out·수급 타이트 2027+ → 근단기 수요 가시성이 계약 백로그로 고정, 슈퍼사이클 정점 확증·근단기 하락 조정 확률 축소. 단 사상 최고 마진(84.9%)·DRAM>HBM OPM 역전은 후기순환(정점) 신호로 유효 → 하락 변곡 EWI 감시 지속. DF2는 디커플링 신규 신호 없어 불변.
+- **트리거**: 수집분으로 활성화(activated) 조건 충족 트리거 없음 — Samsung 2027 캐파 사전확정·빅테크 2027 CapEx $500B 등 미확정. Micron 백로그는 산업 방증으로만 반영, 트리거 상태 불변.
+- **wiki**: `driving-forces/key-drivers.md`(DF1 현재 위치), `scenarios/scenario-matrix.md`(확률 추정표·평가 기준).
+- **dashboard (v2.26.0, 마이너 = 업데이트 내역 새 타입·필터 칩)**: `data/indicators.js`(INITIAL_QUADRANT_POSITIONS current·SCENARIOS·EWI 2건), `data/scenarioPlanning.js`(SCENARIOS_DATA.matrix 확률·요약·DF1 currentPosition), `data/updates.js`(assessment 항목), `components/Updates.jsx`(assessment 타입·칩), `version.js`.
+- **건너뜀**: index.md(신규 페이지 없음), outputs/report·presentation(확률·포지션 수치 변경 수준 — 다음 보고서 빌드에 흡수, 발표자료 재생성 보류).
+- **검증**: `cd dashboard && npm run build` 통과(2414 모듈·콘솔 0). 확률 합 100(27+37+9+21+6).
+
 ## [2026-06-28] build | 지식 그래프 팬(드래그) 크래시 수정 (v2.25.1 → v2.25.2)
 - **무엇**: Knowledge Graph 탭에서 `Cannot read properties of null (reading 'vx')` 런타임 크래시 수정. `onPointerMove`의 `setView` 업데이터 클로저가 `drag.current.vx`를 지연 실행 시점에 읽는데, 그 사이 `onPointerUp`이 `drag.current = null`로 만들면 null 참조 발생. ref 값을 핸들러 진입 시점에 지역 변수(`const d = drag.current`)로 캡처하도록 변경.
 - **왜**: 사용자 버그 리포트 — 그래프 탭에서 화면 오류, 다른 탭은 정상. 드래그-놓기 경합 조건.
