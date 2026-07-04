@@ -153,3 +153,19 @@
 - **병목 모델 연결**: 전력 제약지수 **68 → 70** 추가 상향(2026-06-14). `interconnect` 드라이버 임계(90) 유지 — PJM 8년 기간 확정으로 단기 해소 가능성 추가 낮아짐.
 
 **출처**: [june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md)
+
+## 업데이트 (2026-07-04)
+
+전력망 신규 데이터 — PJM 개편 큐·ERCOT 4배 급증·설비 리드타임 (병목지수 70→72)
+
+- **PJM 개편 큐 Cycle 1**(2026-04-29 발표): 811개 프로젝트·220GW nameplate 접수, 가스 105.8GW가 주도 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **PJM 자체 구조적 공급 부족 경고**: 2027~28년 6.6GW 부족, 2030년까지 최대 15GW 부족 — 신규 공급이 연 2~3GW인 반면 신규 DC 부하는 연 5~7GW씩 증가 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **ERCOT 대형부하 접속 큐**: 1년 만에 거의 4배로 폭증해 410GW+ 도달(87%가 데이터센터·크립토). 신청 대비 실제 증설 배율은 ~45:1이며, 2024~25년 신규 발전은 ~23GW뿐이었다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **텍사스 PUCT 대형부하 정책**: 2026-07-09 표결 예정 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **변압기·개폐장치 리드타임**: 최대 5년으로 확대되며 가스터빈(~3년)보다 강한 신규 병목으로 부상. GE Vernova 터빈 백로그는 2026년 말까지 110GW, Siemens Energy 백로그는 €136B로 사상 최고를 기록했다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **원자력·SMR 데이터센터向 커밋 총량**: 9.8GW+로 전 주요 빅테크가 참여했으며, Meta는 2026-01-09 오클로·비스트라·테라파워 등과 최대 6.6GW 계약을 체결했다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **SemiAnalysis 전망**: 그리드의 신규 대형부하 여력이 2027년 조기에 마이너스로 전환될 수 있으며, BTM(behind-the-meter) 발전이 2028년부터 신규 미국 데이터센터 전력의 과반을 공급할 것으로 전망했다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **SemiAnalysis 취소설 반박**: "2026년 미국 DC 캐파의 절반이 취소됐다"는 주장은 과장이지만, 2026년 계획 캐파의 30~50%가 실제로 2027~28년으로 이연된 것은 확인됐다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **병목 모델 연결**: 위 신규 데이터를 반영해 전력 제약지수가 70 → 72로 추가 상향됐다(2026-07-04) — 변압기·개폐장치 리드타임(최대 5년)이 가스터빈을 제치고 최대 신규 병목으로 부상 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). [bottleneck-model-2030.md](bottleneck-model-2030.md) 갱신 검토 필요.
+
+**출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §1

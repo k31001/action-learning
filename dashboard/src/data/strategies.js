@@ -10,7 +10,7 @@ export const STRATEGY_OVERVIEW = {
   // 호황의 정점 + 다운턴 준비 핵심 수치
   keyNumbers: [
     { label: 'Samsung Q1 2026 메모리 매출', value: '$50.4B', subtitle: '+292% YoY — 호황의 정점',          accent: 'green' },
-    { label: '빅테크 4사 AI CapEx 2026',     value: '$725B',  subtitle: '+77% YoY — Microsoft만 메모리 영향 $25B 인정', accent: 'green' },
+    { label: '빅테크 5사 AI CapEx 2026',     value: '$745~755B+',  subtitle: "MS $190B(+61%, 메모리원가 $25B 귀속)·Dell'Oro 글로벌 DC $1조 돌파(07-04)", accent: 'green' },
     { label: 'HBM4 NVIDIA Rubin 점유율',     value: '28%',    subtitle: 'SK 70% / Micron 18% 대비 후순위 (UBS)',     accent: 'red' },
     { label: 'HBM 수요 성장 (2026/2027)',     value: '+77/+68%', subtitle: '공급 부족 2027년까지 지속',              accent: 'green' },
     { label: '텍사스 CHIPS 보조금',          value: '$4.745B', subtitle: 'Intel $8.5B / TSMC $6.6B / Micron $6.16B 대비 3위 — D8 2단계 협상 필수', accent: 'amber' },

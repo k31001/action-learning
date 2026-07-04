@@ -457,3 +457,20 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 - 2026-06-22 Anthropic과 **전략적 계약(Strategic Agreement)** 발표: 다년 공급(HBM·DRAM·SSD) + **Claude 워크로드 공동 최적화** + **Micron 전사 Claude 도입(운영 통합)** + **Series H 전략적 투자** ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md))
 - Q3 FY26 공시의 SCA 16건·~$100B ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md) §3)와 함께 "LTA→SCA" 전환을 주도 — 계약 구조 분석은 [lta-to-sca-transition.md](../concepts/lta-to-sca-transition.md)
 - Samsung 함의: 영업 4단계 모델에서 Micron이 4단계(Strategic Infra Partner) 진입 확정 — Samsung과의 단계 격차가 SK hynix에 이어 2개 사로 확대 ([customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md) §4). 조직 대응은 [dev-org-transformation.md](../strategies/dev-org-transformation.md)
+
+## 업데이트 (2026-07-04) — Vera Rubin 일시 배제 에피소드·최종 배정 "잔여"·반독점 소송 포함
+
+### Vera Rubin HBM4 일시 배제 에피소드
+
+- HBM4 베이스다이 검증·핀속도 이슈(삼성·SK 대비 낮은 속도)로 NVIDIA가 초기 Vera Rubin 빌드 계획을 삼성·SK하이닉스 2사 중심으로 세웠던 것으로 확인됨([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 2026-06-01 GTC 타이베이 기조연설에서 젠슨 황이 **3사(삼성·SK하이닉스·Micron) 전원 공급과 여름 출하 시작을 재확인** — 자격 획득 과정이 알려진 것보다 굴곡이 있었음이 사후 확인됨([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 위 [Update 2026-05-19] SemiAnalysis "effectively out" 평가와 최종 결과가 부분적으로 배치.
+
+### Vera Rubin 최종 배정 — Micron "잔여" 물량
+
+- 최종 확정 배분: **SK하이닉스 60~70%·삼성 25~30%·Micron 잔여** — 3사 중 가장 작은 비중으로 확정([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### 반독점 집단소송 — Micron 피고 포함
+
+- 2026-06-25 N.D. Cal. 제소 건에 Micron도 삼성전자·SK하이닉스와 함께 피고로 포함 — HBM 전환 명목 하 범용 DRAM 공급 제한·가격 담합 주장([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세 내용은 신규 개념 페이지 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
+
+**출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §3, §4

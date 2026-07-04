@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-01
-sources: [sources/raw-notes/ai-datacenter-buildout-2026-06.md]
+last_reviewed: 2026-07-04
+sources: [sources/raw-notes/ai-datacenter-buildout-2026-06.md, sources/articles/july-2026-market-update-2026-07-04.md]
 ---
 
 # AI 데이터센터 착공 현황 — 메모리 수요 선행 지표
@@ -128,3 +128,15 @@ EWI 후보: ① 분기별 신규 착공 GW, ② 병목 단계(②·⑤·⑦) 적
 - 라이프사이클: Global Data Center Hub, Epoch AI, JLL/CBRE, Mastt
 - 환산: NVIDIA·HPE 스펙, TrendForce, Morgan Stanley, Goldman Sachs, SK hynix
 - 프로젝트: DCD, CNBC, Epoch AI, 각사 보도자료 (소스 노트 C절 참조)
+
+---
+
+## 업데이트 (2026-07-04)
+
+- **SemiAnalysis 등 보강 자료 기준, 글로벌 하이퍼스케일 캐파 약 190GW가 777개 프로젝트에 걸쳐 발표**됐다(148GW 계획·21GW 착공중·12GW 가동) — 본 위키 트래커(47건·55.9GW)보다 훨씬 큰 모집단이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 이 차이는 **방법론 차이로 추정**된다 — 본 위키는 대형 랜드마크 프로젝트를 선별해 추적하는 반면, 신규 수치는 전수 집계 성격을 띤다. 다음 정기 ingest에서 방법론 조정을 검토할 필요가 있다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 미국은 ~43GW 계획(84개 시설)이 발표되어 있으나, Sightline Climate 기준 2026년 발표 12GW(140개 프로젝트) 중 **실제 착공은 5GW뿐**으로, "계획 vs 착공" 갭이 지속되고 있다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 6대 하이퍼스케일러(Amazon·Google·Meta·Microsoft·Oracle·Stargate) 합산 CAPEX 서약은 **$690B+**이며, 2026년 74개 시설이 착공했다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- Meta는 단독으로 2026년 상반기에만 **5GW+ 클라우드·코로케이션 용량 계약**을 체결했다(SemiAnalysis "Meta Compute: Everyone Wants To Be A Neocloud") ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+**출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §5

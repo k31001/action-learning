@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC)]
+last_reviewed: 2026-07-04
+sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md]
 ---
 
 # Samsung Electronics — 메모리사업부 (DS 부문)
@@ -251,3 +251,25 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - Anthropic **Series H**($65B, 2026-05-28 클로징, post-money $965B)에 Samsung이 Micron·SK hynix와 함께 **strategic infrastructure partner**로 참여 ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md) §3)
 - 그러나 Micron은 같은 라운드 직후 공급+공동설계+운영통합을 묶은 SCA를 체결하며 4단계로 진입 — Samsung은 자본 테이블에는 올랐지만 **공동설계 계약 계층은 미확보** ([lta-to-sca-transition.md](../concepts/lta-to-sca-transition.md))
 - 대응: 개발실을 수주 이행자에서 기술 파트너로 전환하는 [dev-org-transformation.md](../strategies/dev-org-transformation.md) 수립 — 시스템 레벨 성능·파워 모델, 시스템 아키텍트·모델링 조직, Co-Design Pod, 3-Phase 로드맵
+
+## 업데이트 (2026-07-04) — Q1 실적 세부·Rubin 배정 확정·반독점 소송·한국 800조 계획
+
+### Q1 CY2026 실적 세부 — HBM4 단가·마진·영업이익
+
+- NVIDIA向 HBM4 단가 **$500~560**, 매출총이익률 **80%+**([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 영업이익 YoY **+756%로 57.2조 원** 기록([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- HBM4·SOCAMM2 **업계 최초 양산 판매 개시** — 앞선 [Update 2026-06-11] 시니어 파트너 인터뷰의 "양산 판매" 언급이 Q1 실적 수치로 확증됨([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### Vera Rubin HBM4 공급사별 배정 — 삼성 25~30%
+
+- NVIDIA Vera Rubin向 HBM4 배정: **SK하이닉스 60~70%·삼성 25~30%·Micron 잔여** — 기존 위키의 UBS 28%/SemiAnalysis 분기 추정보다 세분화된 확정 배분([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). Main Bet 가정(28%대 기대값)과 대체로 부합.
+
+### 반독점 집단소송 — 삼성 피고 명시
+
+- 2026-06-25 N.D. Cal.에 삼성전자·SK하이닉스·Micron을 상대로 반독점 집단소송 제기 — HBM 전환을 명목으로 범용 DRAM 공급을 인위적으로 제한하고 가격을 담합했다는 주장([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세 내용은 신규 개념 페이지 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
+
+### 한국 800조 원 반도체 생태계 계획
+
+- 2026-06-29 발표된 한국 국가 반도체 생태계 계획(약 800조 원/$518B) — 삼성전자·SK하이닉스 각각 **신규 팹 2개씩** 건설 계획 포함([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+**출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §2, §4

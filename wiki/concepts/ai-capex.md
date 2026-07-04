@@ -96,3 +96,16 @@
 - 시나리오 연결: 이 트리거는 [시나리오 C·D(AI 붕괴)](../scenarios/scenario-C.md) 진입 EWI와 동일 축 — 거품론([ai-demand-sustainability.md](ai-demand-sustainability.md))의 정량 트리거화.
 
 **출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) · [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
+
+## 업데이트 (2026-07-04)
+
+빅5 CAPEX 가이던스 추가 상향·Dell'Oro $1조 돌파·JPMorgan $5.5조 상향
+
+- **Microsoft**: 2026 CAPEX 가이던스 ~$190B(+61% YoY) — CFO Amy Hood는 증가분 중 $25B을 메모리 칩·부품 원가 상승에 직접 귀속했다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **Alphabet**: $180~190B로 추가 상향 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). **Amazon**: ~$200B ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). **Meta**: $125~145B로 불변 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). **Oracle**: ~$50B로 신규 포착 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **Dell'Oro Group**: 2026년 글로벌 데이터센터 CAPEX 전망이 $1조를 돌파했다(2026-06-10 발표) — 메모리·스토리지 가격 인플레이션을 CAPEX 상승의 명시적 요인으로 지목했으며, 빅4 CAPEX는 분기 기준 +78% YoY를 기록했다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **JPMorgan**: 2030년까지 누적 AI 인프라 CAPEX 전망을 $5.1조에서 $5.5조로 상향했고, 부채 조달 규모도 $4.1조로 상향했다. 2026년 하이퍼스케일러 CAPEX는 $650B, 2027년은 $1.1조+로 전망했다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **신용시장**: HY OAS는 ~285bp로 안정적이며 스트레스 신호는 없다. IG 발행은 연초 5개월간 $800B 누적됐다. CoreWeave는 DDTL $3.1B·$8.5B를 체결했고, 오라클·메타·xAI·CoreWeave 등이 SPV를 경유해 쌓은 부외부채는 누적 ~$120B에 달한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **신규 리스크 — 반독점 집단소송**: 2026-06-25 삼성·SK하이닉스·Micron을 상대로 집단소송이 제기됐다 — HBM 전환을 명목으로 3사가 범용 DRAM 공급을 인위적으로 제한했다는 주장이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세는 신규 개념 페이지 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조(다른 에이전트가 작성 중).
+
+**출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §2

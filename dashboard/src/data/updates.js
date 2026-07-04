@@ -14,6 +14,30 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-04 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-07-04',
+    type: 'ingest',
+    version: 'v2.26.1',
+    title: '7월 정기 점검 — 병목 모델 갱신(전력 72·CAPEX 40·파운드리 50·패키징 67) + SK하이닉스 나스닥·반독점 소송',
+    summary:
+      'SemiAnalysis·Counterpoint·TechInsights 우선 수집(5개 병렬 리서치 에이전트) + PJM·ERCOT·TrendForce·Dell\'Oro·JPMorgan 등 보강. 4대 병목 제약지수 갱신(이전 06-14 대비): 전력 70→72(▲, ERCOT 큐 1년만에 4배·PJM 2030 15GW 부족·변압기 리드타임 5년), CAPEX 42→40(▼, 빅5 추가상향·Dell\'Oro $1조·JPMorgan $5.5조), 파운드리 52→50(▼, ASML High-NA 2029 연기), 패키징 68→67(▼, CoPoS 2028~29 재확인·HBM4 마이크로범프 결정). SK하이닉스 나스닥 이중상장(SKHY, 07-10 거래개시)·삼성·SK·Micron 대상 반독점 집단소송(신규 리스크)·DRAM Q3 가격 감속 조짐(+13~18% QoQ) 반영. 위키 18개 페이지 갱신 + 신규 페이지(dram-antitrust-litigation.md) + 지식그래프 재생성(78노드·285엣지). 패치 v2.26.1.',
+    tags: ['병목모델', 'SemiAnalysis', 'Counterpoint', 'CAPEX', '전력', 'SK하이닉스', '나스닥', '반독점', 'HBM4', 'dashboard'],
+    items: [
+      { label: '병목 제약지수 갱신 (07-04, 이전 06-14 대비)', detail: '전력 70→72(▲+2)·CAPEX 42→40(▼-2)·파운드리 52→50(▼-2)·패키징 68→67(▼-1). 전력 2개 분기 연속 재상승 — ERCOT 큐 410GW+(1년 4배)·변압기 리드타임 5년(신규 최대 병목)' },
+      { label: 'CAPEX 추가 상향', detail: 'MS $190B(+61%, $25B 메모리원가 귀속)·Alphabet $180~190B·Amazon $200B. Dell\'Oro 글로벌 DC CAPEX $1조 돌파·JPMorgan 2030 누적 $5.1조→$5.5조' },
+      { label: 'HBM4 Vera Rubin 배정 세분화', detail: 'SK하이닉스 60~70%·삼성 25~30%·Micron 잔여. Micron 초기 빌드 일시배제 후 06-01 GTC 재확인 에피소드 반영' },
+      { label: 'SK하이닉스 나스닥 이중상장', detail: 'Form F-1 수정 06-30·티커 SKHY·목표조달액 ~$294억·거래개시 07-10 — 역대 최대 ADR 상장 전망' },
+      { label: 'DRAM 반독점 집단소송 (신규 페이지)', detail: '06-25 N.D.Cal. 제소, 삼성·SK하이닉스·Micron 공동피고. wiki/concepts/dram-antitrust-litigation.md 신설·삼성 규제·평판 리스크로 추적' },
+      { label: 'DRAM 가격 감속 조짐', detail: 'TrendForce(07-03) Q3 2026 범용 DRAM +13~18% QoQ 전망 — Q2(+58~63%) 대비 대폭 감속. demandSignals.js에 dram_price_decel 신호 신설' },
+      { label: '위키 18개 페이지 갱신 + 지식그래프 재생성', detail: 'entities 5·concepts 12·strategies 1 + 신규 개념페이지 1. node scripts/build-knowledge-graph.mjs 재실행 — 노드 77→78·엣지 275→285·고립 0·고아 0' },
+    ],
+    links: [
+      { label: 'july-2026-market-update-2026-07-04.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/july-2026-market-update-2026-07-04.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'dram-antitrust-litigation.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/dram-antitrust-litigation.md' },
+    ],
+  },
   // ── 2026-07-04 ───────────────────────────────────────────────────────────────
   {
     date: '2026-07-04',

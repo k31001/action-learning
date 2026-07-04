@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (NIST, TrendForce, Tom's Hardware, Bloomberg, NAND Research, IMEC)]
+last_reviewed: 2026-07-04
+sources: [sources/README.md (NIST, TrendForce, Tom's Hardware, Bloomberg, NAND Research, IMEC), sources/articles/july-2026-market-update-2026-07-04.md]
 ---
 
 # TSMC (Taiwan Semiconductor Manufacturing Company)
@@ -112,3 +112,10 @@ TSMC는 노드 전환을 **"Nx → Nx+ → Nx++"** 점진 개선으로 잘게 �
 - Samsung 함의: TSMC 단일 공급 집중(single-supplier concentration)이 상방을 누르는 구조 = Samsung Foundry 2nm·삼성 HBM4 베이스다이의 **대체 슬롯 가치**가 상방 시나리오일수록 커짐.
 
 **출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) · [deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
+
+## 업데이트 (2026-07-04)
+
+- **N2 램프**: 2026년 3월부터 매출 기여 시작, 유의미한 매출 기여는 2026 Q3 예상. Kaohsiung Fab 22 + Baoshan 동시 램프 진행 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **CoWoS 세부 배정**: NVIDIA가 CoWoS 배정량의 ~60%(~59.5만 장)를 점유. TSMC는 2026년 24만~27만 장을 OSAT(Amkor·SPIL)에 외주. 첨단 패키징이 2026년 TSMC 총 CAPEX($520~560억)의 최대 20%를 배정받음. CEO 웨이저자(C.C. Wei)는 "CoWoS 캐파는 매우 타이트하며 2025~2026년까지 계속 sold out" 상태라고 재확인 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **CoPoS**: 2026-06-17 TrendForce 확인 — AP7 Chiayi 파일럿(310×310mm 글래스코어 패널) 트라이얼 수율 ~90%. 다만 **전면 양산 램프는 2028년 하반기~2029년**으로 재확인(DigiTimes: 2029년 목표) — 이전 위키 서술과 일치하되 양산 지연은 재확인·강조 필요 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **ASML High-NA EUV 도입 연기**: TSMC가 High-NA EUV 도입을 최소 2029년까지 연기 결정 — 비용 대비 현행 장비로 충분하다는 판단, 이전 전망(2027~28)보다 후퇴 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).

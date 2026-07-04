@@ -11,7 +11,7 @@
 //   실시간 데이터 피드 연동은 다음 단계. 절대값보다 "어느 링크가 먼저 켜지는가"로 해석.
 // 단일 소스: wiki/concepts/demand-inflection-ewi.md
 
-export const EWI_ASOF = '2026-06-02'
+export const EWI_ASOF = '2026-07-04'
 
 // 신호 레벨 → 하락 위험 점수(0 안전 ~ 100 위험)
 export const SIGNAL_LEVELS = {
@@ -47,7 +47,7 @@ export const DEMAND_SIGNALS = [
   { id: 'gpu_rental',   tier: 'tier0', name: 'GPU 임대가 추세',        signal: 'caution',    trend: 'worsening', weight: 3, source: 'Vast.ai 실측·ClusterMAX', ewiId: 'gpu_rental_h100_usd', note: 'H100 SXM 현물 $2~3/GPU·h (Vast.ai 자동 갱신·매일 누적) — 24~25 급락 후 둔화' },
   { id: 'gpu_util',     tier: 'tier0', name: 'AI 컴퓨트 가동률',       signal: 'neutral',    trend: 'stable',    weight: 2, source: 'SemiAnalysis 추정', note: '높지만 유휴율 상승 여부 관찰' },
   // ② 돈
-  { id: 'capex_guide',  tier: 'tier1', name: '하이퍼스케일러 capex 가이던스', signal: 'expansion', trend: 'stable', weight: 3, source: '빅4 분기 콜', ewiId: null, note: "'26 $650~725B(+77%) 강세 — digestion 언어 관찰" },
+  { id: 'capex_guide',  tier: 'tier1', name: '하이퍼스케일러 capex 가이던스', signal: 'expansion', trend: 'stable', weight: 3, source: '빅5 분기 콜·Dell\'Oro·JPMorgan', ewiId: null, note: "빅5 $745~755B+·Dell'Oro 글로벌 DC $1조 돌파·JPMorgan 2030 누적 $5.5조 — 추가 상향, digestion 언어 관찰 지속" },
   { id: 'credit_spread',tier: 'tier1', name: 'AI-DC 파이낸싱 신용 스프레드', signal: 'neutral', trend: 'worsening', weight: 3, source: 'Oracle·CoreWeave·SPV·사모신용', ewiId: 'ai_dc_credit_spread', note: '부채·ABS 의존 확대 — 스프레드 확대 시 급랭' },
   { id: 'cancel',       tier: 'tier1', name: '착공 취소·연기 건수',     signal: 'caution',    trend: 'worsening', weight: 2, source: 'DCD 등', ewiId: 'dc_cancellation_count', note: 'Abilene 600MW 철회·Norway OpenAI 이탈 — 발표보다 선행' },
   // ③ 발주 미시구조
@@ -61,6 +61,7 @@ export const DEMAND_SIGNALS = [
   { id: 'inventory',    tier: 'tier3', name: '메모리 재고일수',         signal: 'expansion',  trend: 'stable',    weight: 3, source: 'TrendForce·IR', ewiId: 'memory_inventory_days', note: '부족으로 낮음 — 상승 전환 시 최선행 경고' },
   { id: 'opm_inv',      tier: 'tier3', name: 'DRAM vs HBM 이익률 역전',  signal: 'caution',    trend: 'worsening', weight: 2, source: 'Counterpoint', ewiId: 'dram_opm_vs_hbm_opm', note: 'DRAM OPM>HBM 관측 = 사이클 정점 신호' },
   { id: 'trad_demand',  tier: 'tier3', name: '전통 수요(스마트폰 YoY)', signal: 'caution',    trend: 'worsening', weight: 1, source: 'Counterpoint', ewiId: 'smartphone_shipment_yoy', note: '-2.1% — 범용 수요 약세' },
+  { id: 'dram_price_decel', tier: 'tier3', name: '범용 DRAM 계약가 상승률 감속', signal: 'caution', trend: 'worsening', weight: 2, source: 'TrendForce 2026-07-03', note: 'Q3 2026 전망 +13~18% QoQ — Q2(+58~63%) 대비 대폭 감속(신규, 07-04). 서버향은 견조하나 범용 축 첫 감속 신호 — 완전한 변곡 확정은 아님' },
   // ⑥ 공급 과잉
   { id: 'supply_bal',   tier: 'supply', name: 'bit 공급 vs 수요 밸런스', signal: 'caution',   trend: 'worsening', weight: 2, source: '3사 capex·웨이퍼', note: '캐파 증설 누적 — 공급발 하락 구조적 리스크' },
   { id: 'cxmt',         tier: 'supply', name: 'CXMT 범용 공급',          signal: 'caution',   trend: 'worsening', weight: 2, source: 'cxmt 위키', ewiId: 'cxmt_asp_gap', note: '범용 DRAM 램프 — 공급 과잉 가속 위험' },
