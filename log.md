@@ -14,6 +14,11 @@
 
 ---
 
+## [2026-07-04] build | 개발실 전환 발표자료 — 6장→3장 축약 + Apple HIG 테마 재작성
+- **무엇**: 사용자 요청 — 발표자료를 3장으로 축약(함축적 카피 + 소형 폰트 8~9pt로 컴팩트) + Apple 디자인 시스템으로 테마 변경. `generate_dev_transformation_pptx.py`를 3장 Apple HIG 버전으로 전면 재작성: WHY(사건+북극성 명제+계약 3단 진화+Micron 4요소) / WHAT(As-Is→To-Be 5행+FDE 벤치마크+리스크↔이점) / HOW(4대 축+3-Phase+KPI).
+- **Apple HIG 구현**: `generate_pptx.py` helper 재사용하되 모듈 전역 `THEME`를 Apple 토큰(systemBlue #007AFF·systemOrange·systemRed·systemGreen·primary label #1D1D1F·secondaryLabel·opaqueSeparator·레이어드 배경)으로 in-place 치환(`G.THEME.update(APPLE)`) → helper 내부 색까지 Apple화. 폰트: 한글 Apple SD Gothic Neo + 영문/숫자 SF Pro Display. 둥근 카드(ROUNDED_RECTANGLE) helper 추가. 팔레트 토큰은 기존 `generate_apple_hig_pptx.py`(시나리오 덱 Apple 변형)와 동일 계열.
+- **검증**: python-pptx 구조 검증 — 3슬라이드·오버플로우 0(모든 shape 슬라이드 경계 내)·핵심 문구 9/9 present. `dev-transformation-outline.md` 3장·Apple HIG로 갱신. dashboard 무변경(발표 산출물 전용)이라 version bump 없음.
+
 ## [2026-07-04] ingest | 개발실 전환 설득력 보강 — Palantir FDE 벤치마크 + 신문섭 북극성 명제 (v2.28.3 → v2.29.0)
 - **무엇**: 사용자 요청 두 흐름 추가. ① **Palantir FDE(Forward Deployed Engineer, 내부코드 "Delta")** — 고객사 상주 엔지니어 모델을 Co-Design Pod의 검증된 롤모델로 명시. 5개 원리→개발실 매핑(상주/한고객·다능력/명시vs실제 요구/gravel→paved/성과평가), Anthropic·OpenAI GTM 채택이 방증, 메모리 변형(FDE+시스템 모델링 결합) 강조. ② **신문섭 파트너 북극성 명제** — 인터뷰 원문 "고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다"를 전략 서두·표지 배너로 격상.
 - **파일**: `sources/articles/palantir-fde-model-2026-07.md` 신규(FDE 5개 근거). `wiki/strategies/dev-org-transformation.md`(북극성 인용·§4.5 FDE 벤치마크 섹션·축3·A1). `outputs/report/dev-org-transformation-report.md`(Exec Summary 명제·§4.5). `outputs/presentation/`(5장→**6장**: 표지 북극성 배너 + 신규 슬라이드5 FDE 벤치마크, 실행 슬라이드6으로 이동) PPTX 재생성. `dashboard`(devTransformation.js DT_SUMMARY.northStar·DT_FDE_BENCHMARK·DT_AXES, Strategies.jsx 북극성 배너+FDE 카드). 마이너 bump v2.29.0(새 데이터 카테고리·발표 슬라이드 추가).

@@ -1,45 +1,36 @@
-# 개발실 체질 전환 발표 기획서 — 6장
+# 개발실 체질 전환 발표 기획서 — 3장 · Apple HIG · 컴팩트
 
 **빌드 원천**: [dev-org-transformation-report.md](../report/dev-org-transformation-report.md) (← wiki [dev-org-transformation.md](../../wiki/strategies/dev-org-transformation.md), [lta-to-sca-transition.md](../../wiki/concepts/lta-to-sca-transition.md))
-**생성 스크립트**: `scripts/generate_dev_transformation_pptx.py` → `dev-org-transformation.pptx` (6장, 16:9)
-**디자인**: 기존 `generate_pptx.py` THEME 재사용 (samsung_blue #1428A0, amber #D97706, 맑은 고딕)
+**생성 스크립트**: `scripts/generate_dev_transformation_pptx.py` → `dev-org-transformation.pptx` (3장, 16:9)
+**디자인**: **Apple HIG(Human Interface Guidelines)** — systemBlue #007AFF · systemOrange #FF9500 · systemRed #FF3B30 · systemGreen #34C759 · primary label #1D1D1F · secondaryLabel #6E6E73 · opaqueSeparator #C6C6C8 · 레이어드 배경(#F2F2F7 / #FFFFFF) · SF Pro Display + Apple SD Gothic Neo · 둥근 카드. 팔레트 토큰은 `generate_apple_hig_pptx.py`와 동일 계열.
+**설계 원칙**: 6장 → **3장 축약**. 함축적 카피 + 소형 폰트(본문 8~9pt, 헤더 21pt) + 조밀한 둥근 카드 레이아웃.
 
-## 발표 논리 (6단 구성)
+## 발표 논리 (3단 구성)
 
-사건(무슨 일이 있었나) → 해부(무엇이 달라졌나) → 역할(우리는 무엇이 되어야 하나) → 득실(안 하면/하면) → **벤치마크(이 조직 형태가 정답인 증거)** → 실행(무엇부터 하나)
+WHY(왜 지금인가) → WHAT(무엇이 되어야 하나) → HOW(무엇부터 하나)
 
 ---
 
-### 슬라이드 1 — 표지 + 사건: "LTA가 SCA가 되었다"
-- 제목: 개발실 체질 전환 — 수주 이행자에서 기술 파트너로
-- 부제: Micron–Anthropic 전략적 계약(2026-06-22)이 보여준 산업의 다음 단계
-- **북극성 배너 (신문섭 파트너)**: "앞으로의 승부는 칩을 많이 파는 기업이 아니라, 고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 가져갈 것이다."
-- 하단 타임라인 5개 마커: 커스텀 HBM 인증(25-06) → Stargate LOI(25-10) → 선급금 체제화(25~26) → Series H 3사 참여(26-05) → **Micron–Anthropic SCA(26-06)**
-- 키 넘버: SCA 16건 · $100B · 예치금 $22B
+### 슬라이드 1 — WHY · 왜 지금, LTA가 SCA가 되었다
+- 북극성 명제 배너 (신문섭): "고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다"
+- 좌: 계약 3단 진화 (Spot → LTA+선급금 → SCA) + 단계별 요구 역량 이동
+- 우: Micron–Anthropic SCA 4요소 (다년 공급=LTA / 공동 최적화·운영 통합·자본 연계=SCA 신규) + 키넘버 16건·$100B·$22B
+- SO WHAT: 고객이 사는 것은 칩이 아니라 "함께 최적화하는 파트너"
 
-### 슬라이드 2 — 해부: SCA는 LTA에 무엇을 더했나
-- 좌: 계약 3단 진화 (Spot → LTA+선급금 → SCA) + 단계별 요구 역량
-- 우: Micron–Anthropic 4대 구성요소 체크표 (다년 공급 ✅✅ / 공동 최적화 ─✅ / 운영 통합 ─✅ / 자본 연계 ─✅)
-- SO WHAT: 고객이 사는 것은 칩이 아니라 "워크로드를 이해하고 함께 최적화하는 파트너"
+### 슬라이드 2 — WHAT · 수주 이행자에서 기술 파트너로
+- 좌: As-Is → To-Be 압축 5행 (요구사항/제안/고객 접점/모델링 범위/성공 지표)
+- 우상: Palantir FDE 벤치마크 — 고객사 상주(=Co-Design Pod), Anthropic·OpenAI 채택, 4개 원리 매핑 + 메모리 변형(FDE+시스템 모델링)
+- 우하: 리스크 4 ↔ 이점 4 압축 대비
+- SO WHAT: 리스크는 비가역·이점은 복리, "아키텍처 안으로"는 검증된 조직 형태(FDE)
 
-### 슬라이드 3 — 역할: 개발실 As-Is vs To-Be
-- 8행 비교표 (요구사항/제안/기술 방향/성공 지표/고객 접점/정보 흐름/가치 단위/**모델링 범위**)
-- 모델링 범위: 메모리 디바이스 단품(데이터시트) → 랙·데이터센터 전체 시스템 모델(성능·전력 정량 예측)
-- 하단: 왜 As-Is로는 안 되는가 — 스펙 확정 "전" 단계(공동설계가 일어나는 곳)에 개입 불가
+### 슬라이드 3 — HOW · 4대 축과 3-Phase 실행
+- 4대 축 카드: 기술 / 문화 / 조직(Co-Design Pod=FDE + 아키텍트·모델링) / 일하는 방식
+- 3-Phase 로드맵: 90일(증명) → 1년(제도화·★SCA 계약 1건) → 3년(표준화)
+- KPI 5개: 선제 제안 12→40 / 채택률 20→35% / 고객 교류 10→25% / 커스텀 매출 30%+ / 시스템 모델 랙→DC
+- NEXT STEP: 90일 증명 → 1년 SCA 계약 1건으로 제도화 근거
 
-### 슬라이드 4 — 득실: 전환하지 않으면 vs 전환하면
-- 좌(적색): R1 SCA 수주 배제 / R2 커스텀 전환기 고착 / R3 2nd source화 / R4 기술 선점 실패
-- 우(청색): B1 지속 매출(락인+선급금) / B2 수익률 프리미엄 / B3 미래 기술 선점(IDM 통합 카드) / B4 자본 연계 옵션
-- SO WHAT: 리스크는 비가역, 이점은 복리 — 조기 전환의 기대값이 압도적
+---
 
-### 슬라이드 5 — 벤치마크: Palantir FDE 모델 = 검증된 정답
-- 상단: "고객의 아키텍처 안으로 들어간다"는 추상이 아니라 이미 있는 조직 형태 — Palantir Forward Deployed Engineer(FDE, 내부코드 "Delta")
-- FDE 원리 → 개발실 매핑 5행: 고객사 상주→Co-Design Pod / "한 고객 많은 능력"→파일럿 집중 / 말한요구 vs 실제요구→요구 공동정의 / gravel→paved(거친해법→표준화)→재사용 플랫폼 / 성과평가→개정 KPI
-- 확산 방증: Palantir 640% 수익률 동력 → **Anthropic·OpenAI가 엔터프라이즈 GTM으로 채택** = 우리 최대 고객이 이미 FDE로 침투 중
-- 메모리 변형: FDE(상주) + 시스템 아키텍트·모델링(성능·파워 정량화) 결합 — 제조 리드타임 긴 메모리는 모델을 무기로 들고 들어가야 앞서 제안 가능
-- SO WHAT: 새 발명이 아니라 검증된 형태의 이식 — 리스크 낮고 롤모델 명확
-
-### 슬라이드 6 — 실행: 4대 축 + 3-Phase 액션 플랜
-- 상단 4축 카드: 기술(워크로드 랩 + 시스템 성능·파워 모델, 디바이스→랙·DC 확장) / 문화(가설 제안 보상) / 조직(Co-Design Pod=FDE + 시스템 아키텍트·모델링 조직 신설) / 방식(로드맵 교차 리뷰·PoA)
-- 하단 로드맵: 90일(증명: Pod 1호·선제 제안 1호·시스템 모델 v0.1) → 1년(제도화: Pod 3~5·아키텍트 조직·모델 v1.0 랙·SCA 계약 1건) → 3년(표준화: 플랫폼·모델 v2.0 DC·IR 공시)
-- KPI 5개: 선제 제안 12→40건 / 채택률 20→35% / 고객 교류 시간 10→25% / 커스텀 매출 30%+ / 시스템 모델 랙→DC
+## Apple HIG 테마 재현 방법 (참고)
+- 본 스크립트는 `generate_pptx.py`의 helper(add_text/add_rect/add_footer 등)를 재사용하되, 모듈 전역 `THEME` 딕셔너리를 Apple HIG 값으로 in-place 치환(`G.THEME.update(APPLE)`)해 helper 내부 색까지 Apple화한다. 폰트는 한글 Apple SD Gothic Neo + 숫자/영문 SF Pro Display.
+- 시나리오 플래닝 30장 덱의 Apple HIG 변형은 별도 소스-치환 래퍼 `generate_apple_hig_pptx.py` 참조(동일 토큰 매핑).
