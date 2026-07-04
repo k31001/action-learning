@@ -180,3 +180,16 @@
 - HBM 6세대 양산 2026 H2 시작 — 기존 위키 가정과 부합
 
 **출처**: [youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](../../sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md)
+
+---
+
+## 업데이트 (2026-07-04)
+
+### HBM4E 스펙 세부 (SemiAnalysis "Scaling the Memory Wall")
+
+- 데이터레이트 **≥12Gb/s**(HBM3E 대비 I/O 핀 2배), 인터포저 레이어 최대 2배, 소비전력은 HBM3E 대비 **+86%** — HBM4E 세대의 전력·패키징 부담이 큰 폭으로 증가함을 시사한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### HBM4 수율 이슈 — 하이브리드본딩 연기·마이크로범프 유지
+
+- 삼성전자 하이브리드본딩 프로토타입(NVIDIA向 샘플)의 시험수율이 **~10%**에 그쳐, 업계 전반이 당분간 마이크로범프 유지로 선회했다 — 하이브리드본딩 전환은 업계 전반 연기 결정이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 8Hi→12Hi 전환 시 수율이 **15~20%** 하락하며, 16-Hi는 더 큰 하락이 예상된다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).

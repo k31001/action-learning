@@ -74,7 +74,8 @@
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
-- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계)
+- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-07-04 제약지수 전력72·CAPEX40·파운드리50·패키징67)
+- [wiki/concepts/dram-antitrust-litigation.md](wiki/concepts/dram-antitrust-litigation.md) — DRAM 반독점 집단소송(2026-06-25 제소, Samsung·SK하이닉스·Micron 공동 피고) — 삼성 규제·평판 리스크 추적 (NEW)
 
 ### 신규 전략 인접영역 (시니어 파트너 인터뷰 2026-06-11 기반)
 - [wiki/concepts/customer-co-design-anthropic.md](wiki/concepts/customer-co-design-anthropic.md) — Anthropic Series F strategic infrastructure partners(Micron·Samsung·SK) 모델, 영업 4단계 진화
@@ -146,6 +147,7 @@
 - [sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md](sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) — Bain(신문섭) AI 컴퓨트 수요·반도체 공급·DC 2030 전망 3개 시리즈: 컴퓨트 경제학 갭($2조/$500B/$800B)·메모리=AI 지출 30%·웨이퍼 잠식(HBM 4×)·163GW·전력 게이트키퍼·Scramble→Strategy
 - [sources/articles/june-2026-market-update-2026-06-13.md](sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 정기 점검 시장 데이터: HBM Q1 2026 점유율·삼성 HBM4E 업계 최초·Vera Rubin 인증·HBM 가격·빅4 CapEx $700~725B·DRAM/NAND Q2 가격·TSMC 5월 매출·CoWoS 65만 장·미국 DC 전력 42GW·그리드 대기열 2,600GW
 - [sources/articles/june-2026-market-update-2026-06-14.md](sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 정기 점검 시장 데이터: HBM 점유율 4월(삼성 35~40% 급회복)·Micron Q3 FY26 역대최고 $33.5B·빅4 Q1 분기 CapEx 상세·전체 하이퍼스케일러 $782B·PJM 8년·DOE 100GW·ERCOT 145GW·DRAM Q1 실제 +90~95%·Q2 예상·TSMC 130K WPM·Rubin 22% 하향
+- [sources/articles/july-2026-market-update-2026-07-04.md](sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 정기 점검(SemiAnalysis·Counterpoint·TechInsights 우선 수집): PJM 개편 큐·ERCOT 큐 4배 급증·변압기 리드타임 5년·빅5 CapEx 추가 상향(MS $190B)·Dell'Oro $1조 돌파·JPMorgan $5.5조·ASML High-NA 2029 연기·HBM4 마이크로범프 결정·SK하이닉스 나스닥 상장·반독점 소송·DRAM Q3 가격 감속 조짐
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL

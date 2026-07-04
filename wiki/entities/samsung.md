@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC)]
+last_reviewed: 2026-07-04
+sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md]
 ---
 
 # Samsung Electronics — 메모리사업부 (DS 부문)
@@ -243,3 +243,27 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 4. **인접시장 피벗** → 우주·국방·항공우주·중고 인증으로 RS-2 long-lifecycle 끝단 확장
 
 **출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §1, §3.2, §3.3
+
+---
+
+## 업데이트 (2026-07-04) — Q1 실적 세부·Rubin 배정 확정·반독점 소송·한국 800조 계획
+
+### Q1 CY2026 실적 세부 — HBM4 단가·마진·영업이익
+
+- NVIDIA向 HBM4 단가 **$500~560**, 매출총이익률 **80%+**([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 영업이익 YoY **+756%로 57.2조 원** 기록([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- HBM4·SOCAMM2 **업계 최초 양산 판매 개시** — 앞선 [Update 2026-06-11] 시니어 파트너 인터뷰의 "양산 판매" 언급이 Q1 실적 수치로 확증됨([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### Vera Rubin HBM4 공급사별 배정 — 삼성 25~30%
+
+- NVIDIA Vera Rubin向 HBM4 배정: **SK하이닉스 60~70%·삼성 25~30%·Micron 잔여** — 기존 위키의 UBS 28%/SemiAnalysis 분기 추정보다 세분화된 확정 배분([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). Main Bet 가정(28%대 기대값)과 대체로 부합.
+
+### 반독점 집단소송 — 삼성 피고 명시
+
+- 2026-06-25 N.D. Cal.에 삼성전자·SK하이닉스·Micron을 상대로 반독점 집단소송 제기 — HBM 전환을 명목으로 범용 DRAM 공급을 인위적으로 제한하고 가격을 담합했다는 주장([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세 내용은 신규 개념 페이지 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
+
+### 한국 800조 원 반도체 생태계 계획
+
+- 2026-06-29 발표된 한국 국가 반도체 생태계 계획(약 800조 원/$518B) — 삼성전자·SK하이닉스 각각 **신규 팹 2개씩** 건설 계획 포함([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+**출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §2, §4

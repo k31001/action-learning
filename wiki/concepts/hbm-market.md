@@ -300,3 +300,26 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 | HBM4E | 미정 (HBM4 대비 프리미엄 예상) | 2026년 하반기 가격 형성 예정 |
 
 **출처**: [june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md)
+
+---
+
+## 업데이트 (2026-07-04)
+
+### HBM 점유율 — Counterpoint Q1 2026 확정치 vs 4월 잠정치 병기
+
+| 공급사 | 4월 2026 잠정치 (Update 2026-06-14) | Q1 2026 확정치 (Counterpoint) |
+|---|---|---|
+| SK하이닉스 | 50–55% | **~58%** |
+| 삼성전자 | 35–40% | **~32%** |
+
+- Counterpoint Research의 Q1 2026 확정 집계는 SK하이닉스 ~58%·삼성전자 ~32%로, 위 4월 잠정치(50~55%/35~40%)보다 삼성이 낮고 SK하이닉스가 높다 — 확정치 vs 잠정치의 집계 시점 차이로 추정되며, 두 수치를 병기하고 추후 정합이 필요하다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 다만 Counterpoint는 삼성전자의 2026 연간 점유율이 **30% 돌파**할 것으로 전망한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### Vera Rubin HBM4 공급사별 배정 세분화 + Micron 일시 배제 에피소드
+
+- Vera Rubin向 HBM4 공급 배정이 SK하이닉스 60~70%·삼성전자 25~30%·마이크론 잔여로 세분화 확인됐다 — 기존 "3사 인증 완료"(2026-06-05) 서술보다 구체적인 물량 배분이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **Micron 일시 배제 에피소드(신규)**: HBM4 베이스다이 검증·핀속도 이슈(삼성·SK 대비 낮은 속도)로 NVIDIA가 초기 Rubin 빌드를 삼성·SK 2사 중심으로 계획했었으나, **2026-06-01 GTC 타이베이** 기조연설에서 젠슨 황이 3사 전원 공급 확정과 여름 출하 개시를 재확인했다 — 자격 획득 과정이 알려진 것보다 굴곡이 있었다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
+
+- SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).

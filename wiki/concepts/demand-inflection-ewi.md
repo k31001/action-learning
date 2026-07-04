@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-06-10
-sources: [sources/raw-notes/demand-inflection-ewi-2026-06.md]
+last_reviewed: 2026-07-04
+sources: [sources/raw-notes/demand-inflection-ewi-2026-06.md, sources/articles/july-2026-market-update-2026-07-04.md]
 ---
 
 # 메모리 수요 변곡 조기경보 (Demand-Inflection EWI)
@@ -117,3 +117,14 @@ flowchart LR
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](../../sources/raw-notes/demand-inflection-ewi-2026-06.md) — 방법론·계층·출처 정리
 - 사실 앵커: [ai-capex.md](ai-capex.md) · [ai-datacenter-buildout.md](ai-datacenter-buildout.md) · [price-trends.md](price-trends.md) · [semiconductor-cycle.md](semiconductor-cycle.md) · [ai-server-demand.md](ai-server-demand.md) · [cxmt.md](../entities/cxmt.md)
 - 신규 참조: SemiAnalysis ClusterMAX, TrendForce DXI, SEMI book-to-bill, TSMC CoWoS, AI-DC 파이낸싱(Oracle·CoreWeave·Blue Owl-Meta SPV)
+
+---
+
+## 업데이트 (2026-07-04)
+
+- **신규 모니터링 신호 — 범용 DRAM 계약가 전망 감속(TrendForce, 2026-07-03, 최신)**: Q3 2026 범용 DRAM 계약가가 QoQ **+13~18%**로 전망되어, Q2 2026(+58~63%)에 비해 **큰 폭으로 감속**한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 이는 ⑤ 메모리 내부 축(범용 DRAM 계약가)의 **첫 감속 신호**로, 조기경보 후보 신호에 추가한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 단, **서버향 수요는 에이전틱 AI 수요로 견조**하게 유지되고 있어 완전한 수요 변곡 신호로 단정할 수는 없다 — PC·스마트폰 구매력 한계와 고기저 효과가 감속의 주 원인으로 파악된다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 병목 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 실물 수급 제약 논리와도 교차 확인이 필요한 신호다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+**출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4

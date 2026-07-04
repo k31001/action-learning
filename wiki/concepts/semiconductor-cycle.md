@@ -1,3 +1,9 @@
+---
+type: concept
+last_reviewed: 2026-07-04
+sources: [sources/articles/july-2026-market-update-2026-07-04.md]
+---
+
 # 글로벌 반도체 업황 사이클 전망 (2026~2028)
 **수집일**: 2026-05-05
 **출처**: SK하이닉스, TrendForce, IDC, Deloitte, Blocks & Files, TechInsights, Gartner, KPMG, Electronics Weekly, PC Gamer
@@ -173,3 +179,13 @@
 - 하이퍼스케일러의 **"규율 있는, 전력 인식형 성장"**(자본 효율 전환)은 2028~2029 공급 과잉 리스크의 완충 변수 — 무절제 증설이 아닌 선별 투자. [demand-inflection-ewi.md](demand-inflection-ewi.md) 공급 과잉 축과 연결.
 
 **출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §②③ · 통합: [ai-compute-economics-gap.md](ai-compute-economics-gap.md)
+
+---
+
+## 업데이트 (2026-07-04)
+
+- **SemiAnalysis "Memory Mania"**: DRAM 셀 밀도 성장률이 과거 10년당 약 100배에서 최근 10년당 약 2배로 급감했다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 이 구조적 해석에 따르면, 최근의 메모리 가격 상승은 **기술 발전(밀도 스케일링)이 아니라 캐파 증설·사이클성**이 지배적 요인이라는 것이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 이는 위 [Update 2026-05-19] SemiAnalysis 웨이퍼 잠식 테제("HBM 전환이 범용 DRAM 캐파를 가속도로 잠식")와 함께, DRAM 가격 상승의 원인을 기술 공급 축(밀도 정체)과 수요·배분 축(HBM 전환) 양쪽에서 설명하는 보강 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+**출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §5

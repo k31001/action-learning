@@ -243,3 +243,27 @@ Counterpoint Memory Price Tracker (2026-02-05, Jeongku Choi):
 - **다운턴 진입 시점 예측 KPI 추가**: "일반 DRAM OPM이 HBM OPM 초과" 자체를 사이클 정점 EWI로 정식 등재 검토
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §6
+
+---
+
+## [Update 2026-07-04] DRAM 가격 상승 감속 조짐 + 반독점 소송 리스크 — cushion 확보 실행 앞당김
+
+### 1. TrendForce Q3 2026 전망 — 정점 신호 추가 확정
+
+TrendForce(2026-07-03, 최신)는 Q3 2026 범용 DRAM 계약가 전망을 QoQ **+13~18%**로 제시 — Q2 2026 실제/추정 **+58~63%** 대비 대폭 감속. 서버향(RDIMM 등)은 에이전틱 AI 수요로 견조하나, PC·스마트폰 축의 구매력 한계·고기저 효과가 뚜렷 ([july-2026-market-update-2026-07-04.md](../../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+- [Update 2026-05-25]에서 "결정적 정점 신호" 단계로 판정한 이후 처음 나온 **가격 상승률 자체의 명시적 둔화** — 정점 통과 이후 국면(하락 전환은 아니나 증가율 둔화)의 초기 신호로 판독.
+- [demand-inflection-ewi.md](../../concepts/demand-inflection-ewi.md)의 조기경보 신호로도 등재 — RS-9(수요 변곡 센싱)와 본 전략의 판단 축이 같은 사실을 공유.
+
+### 2. 반독점 집단소송 — 신규 리스크 축 (금융 규율과 별개 항목으로 추가)
+
+2026-06-25 미국 N.D. California에서 삼성전자·SK하이닉스·Micron을 상대로 HBM 전환을 명목으로 한 범용 DRAM 공급 제한·가격 담합 주장 집단소송이 제기됨 ([dram-antitrust-litigation.md](../../concepts/dram-antitrust-litigation.md), [july-2026-market-update-2026-07-04.md](../../../sources/articles/july-2026-market-update-2026-07-04.md)). 병목 모델의 실물 수급 구조를 바꾸는 사안은 아니나, RS-5가 관리하는 "다운사이클 대비 현금 cushion"에 **잠재적 화해금·벌금 충당분**을 별도 시나리오로 인식해야 한다.
+
+- 결론에 미치는 영향: **전략 자체는 불변**(재무 규율·재투자 원칙 유지) — 단, [Update 2026-05-25]의 "현금 보유 비중 상한 일시 해제" 실행 항목에 소송 대응 예비비 성격을 명시적으로 추가.
+- 소송은 제소 직후 단계로 결론 미확정 — 과잉 반응(예: HBM 가격 정책 선제적 변경) 대신 **모니터링만 강화**하고 결론이 나올 때까지 전략 변경은 보류.
+
+### 3. SK하이닉스 나스닥 이중상장 — 경쟁사 자본 접근성 확대 (RS-1과 교차 참조)
+
+SK하이닉스가 2026-06-30 나스닥 이중상장(SKHY, 목표 조달액 ~$294억, 거래개시 2026-07-10)을 추진 — 역대 최대 ADR 상장 전망. 조달 자금이 SK하이닉스의 캐파 증설·R&D 가속에 투입될 경우 RS-5가 전제하는 "삼성 현금 $63B 요새형 재무 자산" 우위가 상대적으로 축소될 수 있음. RS-1(옵션형 캐파)·RS-6(공정 리더십)의 실행 속도 벤치마크 갱신 필요 — 별도 전략 신설 대신 기존 RS-1·RS-5·RS-6의 모니터링 지표에 편입.
+
+**출처**: [july-2026-market-update-2026-07-04.md](../../../sources/articles/july-2026-market-update-2026-07-04.md)

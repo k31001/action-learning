@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters)]
+last_reviewed: 2026-07-04
+sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters), sources/articles/july-2026-market-update-2026-07-04.md]
 ---
 
 # CXMT (창신메모리 / 长鑫存储) — DRAM 전문
@@ -194,3 +194,7 @@ CXMT 전략은 **한국이 1980~90년대 일본 추격 시 사용한 방식의 �
 - [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md): 중간 제품 축소 + HBM/커스텀 ↔ 저원가 범용 양극화 — 권 교수 분석과 정합
 
 **출처**: [youtube-kwon-seokjun-2026-04-11.md](../../sources/articles/youtube-kwon-seokjun-2026-04-11.md)
+
+## 업데이트 (2026-07-04)
+
+CXMT의 HBM 진출 관련 신규 데이터(SemiAnalysis): HBM 웨이퍼 배정 규모가 2026년 말까지 **월 3만 장(30k wspm)** 수준으로 확대될 전망 — 기존 위키의 "3단계(2027~2030) HBM 진출 시도" 로드맵보다 이른 시점에 HBM향 웨이퍼 배정이 가시화되는 신호 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).

@@ -371,3 +371,26 @@ Counterpoint Research (2026-01-29):
 → Samsung은 3·4단계에서 격차 — 동시대 동기간 확보 못 하면 캐파 락인 격차 영구화 위험
 
 **출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §3.1, §3.2
+
+---
+
+## 업데이트 (2026-07-04) — 나스닥 이중상장·Rubin 배정 확정·HBM 점유율 확정치·한국 800조 계획
+
+### 나스닥 이중상장 추진 — 역대 최대 ADR 상장 전망
+
+- 2026-06-30 Form F-1 수정 제출, 티커 **SKHY**, 목표 조달액 **~$294억**, 거래 개시 **2026-07-10** 예정([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 성사 시 역대 최대 ADR(American Depositary Receipt) 상장으로 전망([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### Vera Rubin HBM4 배정 — SK하이닉스 60~70%로 최대 점유
+
+- NVIDIA Vera Rubin向 HBM4 배정: **SK하이닉스 60~70%·삼성 25~30%·Micron 잔여** — 기존 UBS 70% 전망과 대체로 정합하는 확정 배분([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### HBM 점유율 — Counterpoint Q1 2026 확정치 vs 4월 잠정치
+
+- Counterpoint Q1 2026 **확정치**: SK하이닉스 **~58%**·삼성 ~32% — 4월 잠정치(삼성 35~40%대, 이를 역산하면 SK 50~55%대 수준)보다 SK 점유율이 높게 확정됨. 집계 시점·기준 차이(Q1 확정 vs 4월 잠정)로 추정되며 위키에 양쪽 수치를 병기, 추후 정합 필요([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### 한국 800조 원 반도체 생태계 계획
+
+- 2026-06-29 발표(약 800조 원/$518B) — SK하이닉스 **신규 팹 2개** 건설 계획 포함(삼성전자도 동일하게 신규 팹 2개)([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+**출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4

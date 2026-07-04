@@ -234,3 +234,10 @@ Counterpoint Research (2026-01-29, Jeongku Choi):
 - [samsung.md Update 2026-05-25](../entities/samsung.md), [sk-hynix.md Update 2026-05-25](../entities/sk-hynix.md) 참조.
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §4
+
+---
+
+## 업데이트 (2026-07-04)
+
+- Counterpoint Research의 Q1 2026 확정 DRAM/HBM 시장점유율 데이터: SK하이닉스 HBM ~58%·삼성전자 ~32% — Counterpoint 발행물은 이를 "SK하이닉스가 지속되는 HBM 수요 속 역대 최초로 HBM 1위 유지"로 평가한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 4월 잠정치 대비 확정치 차이의 상세 병기는 [hbm-market.md](hbm-market.md) [Update 2026-07-04] 참조.
+- 2026-06-25 삼성전자·SK하이닉스·Micron을 상대로 한 반독점 집단소송이 제기됐다(N.D. Cal.) — HBM 전환을 명목으로 범용 DRAM 공급을 인위적으로 제한하고 가격을 담합했다는 주장이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세는 신규 페이지 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조(다른 에이전트가 작성 중).

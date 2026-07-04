@@ -1,3 +1,9 @@
+---
+type: concept
+last_reviewed: 2026-07-04
+sources: [sources/articles/july-2026-market-update-2026-07-04.md]
+---
+
 # 한국·EU·일본 반도체 정책 및 미중 갈등 리스크 시나리오
 **수집일**: 2026-05-05
 **출처**: Korea.net, Korea Herald, CNBC, TrendForce, UNCTAD, PIIE, CSIS, SEMI Europe, Dig.Watch, Tom's Hardware, Bloomberg, Fortune, The Register
@@ -134,3 +140,12 @@
 - [Samsung Could Lose 20% of AI Chip Sales in Q1 to US Restrictions - Mitrade](https://www.mitrade.com/insights/news/live-news/article-3-613140-20250201)
 - [Assessing Impact of US Export Controls on Samsung and SK Hynix - AInvest (Sep 2025)](https://www.ainvest.com/news/assessing-impact-export-controls-samsung-sk-hynix-strategic-opportunities-semiconductor-investors-2509/)
 - [Samsung, SK Hynix Lose US Waiver on Chip Equipment for China - KED Global (Aug 2025)](https://www.kedglobal.com/korean-chipmakers/newsView/ked202508310003)
+
+---
+
+## 업데이트 (2026-07-04)
+
+- 2026-06-29 한국 정부가 **국가 반도체 생태계 계획**을 발표했다 — 규모 약 **800조 원(약 $518B)** 이며, **삼성전자·SK하이닉스가 각각 신규 팹 2개씩** 건설할 계획이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- 기존 KRW 700조(2025-12 발표) 미래 반도체 산업 투자 목표와 별개로 집계된 신규 발표로, 국가 차원의 반도체 생태계 지원 규모가 추가로 상향된 것으로 파악된다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+**출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
