@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useHashSegment } from '../hooks/useHashRoute'
 import {
   BarChart, Bar, LineChart, Line, AreaChart, Area, ComposedChart,
   PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
@@ -843,7 +843,7 @@ function TechnologyPanel() {
 // MAIN
 // ─────────────────────────────────────────────────────────────────────────────
 export default function DataVisualization() {
-  const [tab, setTab] = useState('datacenter')
+  const [tab, setTab] = useHashSegment(1, 'datacenter', SUB_TABS.map(t => t.id))
 
   return (
     <div>

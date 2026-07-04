@@ -14,6 +14,12 @@
 
 ---
 
+## [2026-07-04] build | 대시보드 딥링크 URL — 페이지·서브탭 해시 라우팅 (v2.27.1 → v2.28.0)
+- **무엇**: 대시보드에 해시 기반 딥링크 라우팅 추가 — 페이지·서브탭마다 공유 가능한 고유 URL(`#/페이지/서브탭`). 신규 훅 `dashboard/src/hooks/useHashRoute.js`(useHashSegment — location.hash 세그먼트를 useState처럼 사용, 유효하지 않은 URL은 기본 탭으로 폴백, 뒤로가기 지원). App.jsx 최상위 8개 탭 + EWI 메인 탭, BottleneckModel·ScenarioPlanning·Strategies·DataVisualization 서브탭, Interviews 개별 인터뷰 선택까지 URL 동기화. 예: `#/strategy/transformation`, `#/ewi/triggers`, `#/interviews/ai-infra-supercycle`.
+- **왜**: 사용자 요청 — 특정 페이지를 다른 사람에게 공유할 때 항상 루트에서 메뉴를 찾아 들어가야 하는 불편 해소.
+- **건너뜀**: 위키·outputs 갈래 (콘텐츠 변경 없음 — 대시보드 코드만), PPTX 재생성·지식 그래프 재생성 불필요.
+- **검증**: `npm run build` 통과. 프리뷰에서 ① 최초 진입 시 `#/ewi` 정규화 ② 탭 클릭 → URL 갱신 ③ `#/planning/scenarios`·`#/strategy/transformation` 딥링크 직접 진입 시 해당 서브탭 렌더 ④ 잘못된 URL `#/oops/zzz` → `#/ewi` 폴백 확인, 콘솔 오류 0. 마이너 bump v2.28.0 (큰 UX 기능 추가).
+
 ## [2026-07-04] build | 개발실 전환 보강 — 시스템 아키텍트·모델링 축 추가 (v2.27.0 → v2.27.1)
 - **무엇**: 사용자 피드백 반영 — 공동 최적화의 기술적 전제조건으로 ① **시스템 레벨 성능·파워 모델**(우리 제품이 고객 시스템에서 만드는 성능·전력·TCO 효과를 정량 예측, 고객 공용 시뮬레이션 자산화)과 ② **시스템 아키텍트·모델링 전문 인력·조직**(외부 채용+내부 육성, Pod에 아키텍트 공급) 추가. ③ **모델링 범위 확장**(메모리 디바이스 단품 → 서버→랙→데이터센터 전체 시스템)을 As-Is/To-Be 8번째 행으로 명시.
 - **전파**: `wiki/strategies/dev-org-transformation.md`(축1·축3·액션플랜 A2/B2a/C4·KPI 2행) → `outputs/report/dev-org-transformation-report.md`(§2.1·§4·§5) → `dev-transformation-outline.md` + PPTX 재생성(슬라이드 3·5) → `dashboard devTransformation.js`(DT_ROLE_SHIFT·DT_MODELING_NOTE·DT_AXES·DT_PHASES·DT_KPIS) + `Strategies.jsx` 모델링 강조 노트. 패치 bump v2.27.1 (기존 카테고리 내 콘텐츠 보강).

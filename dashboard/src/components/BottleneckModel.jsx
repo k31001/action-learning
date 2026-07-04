@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useHashSegment } from '../hooks/useHashRoute'
 import {
   BarChart, Bar, Cell, LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer, ReferenceLine, ReferenceDot,
@@ -797,7 +798,7 @@ const SUB_VIEWS = [
 ]
 
 export default function BottleneckModel() {
-  const [view, setView] = useState('model')
+  const [view, setView] = useHashSegment(1, 'model', SUB_VIEWS.map(v => v.id))
   const worstShockByBottleneck = Object.fromEntries(
     SHOCK_SCENARIOS.filter(s => s.bottleneck).map(s => [s.bottleneck, s])
   )

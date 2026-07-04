@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useHashSegment } from '../hooks/useHashRoute'
 import {
   ScatterChart, Scatter, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, ZAxis,
@@ -589,7 +590,7 @@ function BenchmarkPanel() {
 // MAIN
 // ─────────────────────────────────────────────────────────────────────────────
 export default function ScenarioPlanning() {
-  const [tab, setTab] = useState('steep')
+  const [tab, setTab] = useHashSegment(1, 'steep', SUB_TABS.map(t => t.id))
 
   return (
     <div>

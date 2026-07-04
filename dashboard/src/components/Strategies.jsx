@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useHashSegment } from '../hooks/useHashRoute'
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell,
 } from 'recharts'
@@ -805,7 +806,7 @@ function DecisionsPanel() {
 // MAIN
 // ─────────────────────────────────────────────────────────────────────────────
 export default function Strategies() {
-  const [tab, setTab] = useState('overview')
+  const [tab, setTab] = useHashSegment(1, 'overview', SUB_TABS.map(t => t.id))
 
   return (
     <div>

@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useHashSegment } from '../hooks/useHashRoute'
 import {
   MessageSquareQuote, Quote, User, Calendar, Tag, Search,
   ChevronRight, FileText, ExternalLink, List,
@@ -129,7 +130,7 @@ function InterviewListItem({ itv, active, onClick }) {
 }
 
 export default function Interviews() {
-  const [selectedId, setSelectedId] = useState(INTERVIEWS[0]?.id)
+  const [selectedId, setSelectedId] = useHashSegment(1, INTERVIEWS[0]?.id)
   const [query, setQuery] = useState('')
 
   const filtered = useMemo(() => {

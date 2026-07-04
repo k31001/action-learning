@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
+import { useHashSegment } from './hooks/useHashRoute'
 import { triggerAutoUpdate } from './hooks/useMarketData'
 import { Activity, BarChart3, Compass, Crosshair, History, Hourglass, MessageSquareQuote, Share2 } from 'lucide-react'
 import ScenarioPanel from './components/ScenarioPanel'
@@ -46,8 +47,9 @@ export default function App() {
     criticalCount, warningCount, activeTriggers,
   } = useStore()
 
-  const [topTab, setTopTab] = useState('ewi')
-  const [mainTab, setMainTab] = useState('decisions')
+  // 탭 상태를 URL 해시와 동기화 — 페이지·서브탭마다 공유 가능한 고유 URL (#/페이지/서브탭)
+  const [topTab, setTopTab] = useHashSegment(0, 'ewi', TOP_TABS.map(t => t.id), true)
+  const [mainTab, setMainTab] = useHashSegment(1, 'decisions', MAIN_TABS.map(t => t.id))
 
   // On mount: apply any already-computed auto-update results from server cache
   useEffect(() => {
