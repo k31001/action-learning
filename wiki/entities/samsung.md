@@ -243,3 +243,11 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 4. **인접시장 피벗** → 우주·국방·항공우주·중고 인증으로 RS-2 long-lifecycle 끝단 확장
 
 **출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §1, §3.2, §3.3
+
+---
+
+## [Update 2026-07-04] Anthropic Series H 참여 + 개발실 체질 전환 전략 수립
+
+- Anthropic **Series H**($65B, 2026-05-28 클로징, post-money $965B)에 Samsung이 Micron·SK hynix와 함께 **strategic infrastructure partner**로 참여 ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md) §3)
+- 그러나 Micron은 같은 라운드 직후 공급+공동설계+운영통합을 묶은 SCA를 체결하며 4단계로 진입 — Samsung은 자본 테이블에는 올랐지만 **공동설계 계약 계층은 미확보** ([lta-to-sca-transition.md](../concepts/lta-to-sca-transition.md))
+- 대응: 개발실을 수주 이행자에서 기술 파트너로 전환하는 [dev-org-transformation.md](../strategies/dev-org-transformation.md) 수립 — 시스템 레벨 성능·파워 모델, 시스템 아키텍트·모델링 조직, Co-Design Pod, 3-Phase 로드맵

@@ -51,3 +51,5 @@ sources: [wiki/concepts/demand-inflection-ewi.md, wiki/concepts/ai-datacenter-bu
 - [wiki/concepts/ai-datacenter-buildout.md](../../concepts/ai-datacenter-buildout.md) — DC 착공 55.9GW 파이프라인
 - [wiki/concepts/bottleneck-model-2030.md](../../concepts/bottleneck-model-2030.md) — 4대 병목 정량 모델 + 모니터링 설계 (제약지수·경보 5단계·KPI P1/P2/P3·대응 매뉴얼)
 - 대시보드: `Bottleneck Model` 탭(병목 모델 + 수요 변곡 EWI 서브탭 통합, 2026-06-11)·`Data Viz > AI DC` 탭, `dashboard/src/data/demandSignals.js`·`dataCenters.js`·`bottleneckModel.js`(상류 드라이버 트리 depth 1~2 포함)
+
+**연관 전략**: [dev-org-transformation.md](../dev-org-transformation.md) — 개발실 워크로드 인텔리전스 기능(축 3)은 RS-9의 수요 센싱을 고객 워크로드 계층으로 확장한 것.

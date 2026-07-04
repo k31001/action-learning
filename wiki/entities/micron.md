@@ -449,3 +449,11 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 4. **MB2 동서 균형**: Micron 데이터센터 $100B 런레이트의 미국 집중 ↔ Samsung 동서 분산 공급 차별점 유지.
 
 **출처**: [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)
+
+---
+
+## [Update 2026-07-04] Anthropic 전략적 계약 — SCA의 첫 완전체
+
+- 2026-06-22 Anthropic과 **전략적 계약(Strategic Agreement)** 발표: 다년 공급(HBM·DRAM·SSD) + **Claude 워크로드 공동 최적화** + **Micron 전사 Claude 도입(운영 통합)** + **Series H 전략적 투자** ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md))
+- Q3 FY26 공시의 SCA 16건·~$100B ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md) §3)와 함께 "LTA→SCA" 전환을 주도 — 계약 구조 분석은 [lta-to-sca-transition.md](../concepts/lta-to-sca-transition.md)
+- Samsung 함의: 영업 4단계 모델에서 Micron이 4단계(Strategic Infra Partner) 진입 확정 — Samsung과의 단계 격차가 SK hynix에 이어 2개 사로 확대 ([customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md) §4). 조직 대응은 [dev-org-transformation.md](../strategies/dev-org-transformation.md)

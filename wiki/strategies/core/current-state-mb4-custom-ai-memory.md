@@ -215,3 +215,5 @@
 | Anthropic형 전략 고객 접점 모델 구축 | 공동개발 MOU 2건 (중기) |
 
 **출처**: [senior-partner-interview-deep-research-2026-06-11.md](../../../sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) §1, §3.1, §3.3, §4
+
+**Update 2026-07-04**: Micron–Anthropic SCA(공동 최적화 포함)로 커스텀·공동설계 시장이 계약 형태로 제도화 ([micron-anthropic-sca-2026-06-22.md](../../../sources/articles/micron-anthropic-sca-2026-06-22.md), [lta-to-sca-transition.md](../../concepts/lta-to-sca-transition.md)). MB-4의 조직적 전제조건(워크로드 랩·시스템 모델·Co-Design Pod)은 [dev-org-transformation.md](../dev-org-transformation.md)가 담당.

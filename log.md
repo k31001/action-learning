@@ -14,6 +14,10 @@
 
 ---
 
+## [2026-07-04] lint | SCA ingest 후속 — entities 갱신 + 역링크 7건 (v2.28.0 → v2.28.1)
+- **무엇**: 이번 SCA ingest가 entities를 건드리지 않았고 신규 전략 페이지의 역링크가 없었음(비대칭 링크). ① `wiki/entities/micron.md` Update(Anthropic SCA — 4단계 진입 확정), `wiki/entities/samsung.md` Update(Series H 참여했으나 공동설계 계층 미확보 → dev-org-transformation 대응). ② RS-3·RS-7·RS-8·RS-9·MB-4 페이지에 dev-org-transformation·lta-to-sca-transition 역링크/Update 추가.
+- **효과**: 지식 그래프 상호링크 54→62, 비대칭 233→230, dev-org-transformation이 허브 진입(연결 17). 그래프 재생성 + `npm run build` 통과. 패치 bump v2.28.1 (생성 데이터 갱신).
+
 ## [2026-07-04] build | 대시보드 딥링크 URL — 페이지·서브탭 해시 라우팅 (v2.27.1 → v2.28.0)
 - **무엇**: 대시보드에 해시 기반 딥링크 라우팅 추가 — 페이지·서브탭마다 공유 가능한 고유 URL(`#/페이지/서브탭`). 신규 훅 `dashboard/src/hooks/useHashRoute.js`(useHashSegment — location.hash 세그먼트를 useState처럼 사용, 유효하지 않은 URL은 기본 탭으로 폴백, 뒤로가기 지원). App.jsx 최상위 8개 탭 + EWI 메인 탭, BottleneckModel·ScenarioPlanning·Strategies·DataVisualization 서브탭, Interviews 개별 인터뷰 선택까지 URL 동기화. 예: `#/strategy/transformation`, `#/ewi/triggers`, `#/interviews/ai-infra-supercycle`.
 - **왜**: 사용자 요청 — 특정 페이지를 다른 사람에게 공유할 때 항상 루트에서 메뉴를 찾아 들어가야 하는 불편 해소.

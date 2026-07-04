@@ -298,3 +298,5 @@ Counterpoint Memory Pricing Tracker (2026-04-06, MS Hwang/Jeongku Choi):
 - 산업 전체가 LTA 표준화 ([bloomberg-micron-ceo-virginia-2026-05-22.md](../../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) Mehrotra CEO 발언과 정합) → Samsung 단독 LTA 채택의 차별화 가치는 약화, **선급금 규모·기간·고객 선정의 차별화**가 새로운 차별점.
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §7
+
+**Update 2026-07-04**: Micron SCA 16건·최소 계약매출 ~$100B·예치금 $22B 공시 ([micron-q3-fy26.md](../../../sources/filings/micron-q3-fy26.md) §3) — RS-8이 상정한 구조화 매출이 산업 표준 계약 카테고리(SCA)로 제도화. 단, SCA는 LTA 위에 공동설계를 요구하므로 개발실 역량이 선행 조건 ([lta-to-sca-transition.md](../../concepts/lta-to-sca-transition.md), [dev-org-transformation.md](../dev-org-transformation.md)).

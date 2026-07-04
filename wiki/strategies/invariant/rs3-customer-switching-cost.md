@@ -153,3 +153,5 @@
 - [Samsung, SK hynix Plan 20% HBM3E Price Hike for 2026 — TrendForce](https://www.trendforce.com/news/2025/12/24/news-samsung-sk-hynix-reportedly-plan-20-hbm3e-price-hike-for-2026-as-nvidia-h200-asic-demand-rises/)
 - [GitHub Copilot productivity research — GitHub Blog](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/)
 - NVMe Specification (NVMe Consortium): NVMe TP41461 Flexible Data Placement
+
+**연관 전략**: 공동설계·운영통합으로 전환비용을 심는 조직적 실행 계층은 [dev-org-transformation.md](../dev-org-transformation.md) — SCA 계약 구조([lta-to-sca-transition.md](../../concepts/lta-to-sca-transition.md))가 RS-3의 산업 표준 실현 경로.

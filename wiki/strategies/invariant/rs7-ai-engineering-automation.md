@@ -227,3 +227,5 @@ SemiAnalysis ISSCC 2026 (2026-04-15)에서 SanDisk/Kioxia BiCS10 332L 발표 —
 - ⚠️ Samsung·SK 자체 IP 비율의 현 시점 추정치
 
 **출처**: [semianalysis-isscc-2026-2026-04-15.md](../../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
+
+**연관 전략**: [dev-org-transformation.md](../dev-org-transformation.md) — AI 자동화로 확보한 엔지니어 시간을 고객 대면·선행 검토로 재배치하는 것이 개발실 체질 전환(축 4)의 전제. Micron이 SCA로 Claude를 전사 배치한 것과 같은 구조 ([micron-anthropic-sca-2026-06-22.md](../../../sources/articles/micron-anthropic-sca-2026-06-22.md)).
