@@ -14,6 +14,12 @@
 
 ---
 
+## [2026-07-04] ingest | SCA 전환 EWI 3종 기준선 등록 (v2.28.2 → v2.28.3)
+- **무엇**: lta-to-sca-transition §5의 EWI 후보 3종을 기준값 조사 후 대시보드 지표로 등록. ① `competitor_sca_disclosures` — 경쟁사 SCA형(공동설계 포함) 계약 공시, 기준 분기 1건(Micron–Anthropic 06-22), 경보 분기 2건+. ② `samsung_codesign_contracts` — Samsung 공동설계 조항 계약, 기준 공시 0건(선행 신호: 커스텀 전담 2팀·250명 증원·Broadcom/AMD 협의), 1건+ = DT Phase 2 달성 긍정 경보. ③ `custom_hbm_revenue_share` — 커스텀 HBM 매출 비중 기준 ~0%(2026은 표준 HBM3E/HBM4 중심), 경보 30%+(경계 15%), 선행 지표 HBM4E 2027년 ~40% 전망.
+- **파일**: `sources/articles/sca-ewi-baseline-2026-07-04.md` 신규(TrendForce 3건 근거), `wiki/concepts/lta-to-sca-transition.md` §5 기준선 표로 확정, `dashboard/src/data/indicators.js` 분기별 3종 추가, index.md. 패치 bump v2.28.3.
+- **다음 갱신**: Micron Q4 FY26(2026-09 말)·TrendForce HBM 분기 리포트 — 정기 점검 사이클에서 흡수.
+- **건너뜀**: 지식 그래프(위키 간 링크 무변화 — sources 링크만 추가), outputs 보고서·PPTX(EWI 운영 데이터 계층 — 보고서 서사 무영향).
+
 ## [2026-07-04] lint | SCA ingest 후속 — entities 갱신 + 역링크 7건 (v2.28.0 → v2.28.1)
 - **무엇**: 이번 SCA ingest가 entities를 건드리지 않았고 신규 전략 페이지의 역링크가 없었음(비대칭 링크). ① `wiki/entities/micron.md` Update(Anthropic SCA — 4단계 진입 확정), `wiki/entities/samsung.md` Update(Series H 참여했으나 공동설계 계층 미확보 → dev-org-transformation 대응). ② RS-3·RS-7·RS-8·RS-9·MB-4 페이지에 dev-org-transformation·lta-to-sca-transition 역링크/Update 추가.
 - **효과**: 지식 그래프 상호링크 54→62, 비대칭 233→230, dev-org-transformation이 허브 진입(연결 17). 그래프 재생성 + `npm run build` 통과. 패치 bump v2.28.1 (생성 데이터 갱신).

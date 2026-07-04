@@ -154,6 +154,7 @@
 - [sources/articles/micron-anthropic-sca-2026-06-22.md](sources/articles/micron-anthropic-sca-2026-06-22.md) — Micron↔Anthropic 전략적 계약(2026-06-22): 공동 최적화·다년 공급·Claude 전사 도입·Series H 투자 4대 요소
 - [sources/articles/lta-to-sca-industry-context-2026-06.md](sources/articles/lta-to-sca-industry-context-2026-06.md) — LTA 체제화(선급금 10~30%)·Stargate LOI(월 90만 장)·커스텀 HBM 공동설계($130B) 3주제 묶음
 - [sources/articles/june-2026-market-update-2026-06-14.md](sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 정기 점검 시장 데이터: HBM 점유율 4월(삼성 35~40% 급회복)·Micron Q3 FY26 역대최고 $33.5B·빅4 Q1 분기 CapEx 상세·전체 하이퍼스케일러 $782B·PJM 8년·DOE 100GW·ERCOT 145GW·DRAM Q1 실제 +90~95%·Q2 예상·TSMC 130K WPM·Rubin 22% 하향
+- [sources/articles/sca-ewi-baseline-2026-07-04.md](sources/articles/sca-ewi-baseline-2026-07-04.md) — SCA 전환 EWI 3종 기준선(경쟁사 공시 1건/분기·Samsung 공동설계 0건·커스텀 HBM ~0%, HBM4E 2027 ~40% 전망)
 - [sources/articles/july-2026-market-update-2026-07-04.md](sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 정기 점검(SemiAnalysis·Counterpoint·TechInsights 우선 수집): PJM 개편 큐·ERCOT 큐 4배 급증·변압기 리드타임 5년·빅5 CapEx 추가 상향(MS $190B)·Dell'Oro $1조 돌파·JPMorgan $5.5조·ASML High-NA 2029 연기·HBM4 마이크로범프 결정·SK하이닉스 나스닥 상장·반독점 소송·DRAM Q3 가격 감속 조짐
 
 ### sources/raw-notes — 리서치 노트

@@ -60,10 +60,14 @@ LTA와 SCA의 차이를 가장 선명하게 보여주는 사건 ([micron-anthrop
 - **[customer-co-design-anthropic.md](customer-co-design-anthropic.md)**: 영업 4단계 진화 모델의 4단계(Strategic Infra Partner)가 Micron에 의해 실체화 — Samsung 위치(2~3단계)와의 격차가 계약 구조로 가시화
 - **조직 함의**: SCA를 수주·이행하려면 개발 조직이 고객 워크로드를 해석하고 선제 제안하는 역량 필요 → [dev-org-transformation.md](../strategies/dev-org-transformation.md)
 
-## 5. EWI 후보
+## 5. EWI — 등록 완료 (2026-07-04, 대시보드 EWI > 분기별 모니터링)
 
-| 지표 | 임계값 | 의미 |
-|---|---|---|
-| 경쟁사 SCA형 계약 공시 건수 (공동설계 요소 포함) | 분기 2건+ | 3단계 표준화 가속 |
-| Samsung 공시 계약 중 공동설계 조항 포함 비율 | 추적 시작 | 자사 전환 진도 |
-| 커스텀 HBM 매출 비중 (업계) | >30% | 범용→커스텀 역전 |
+기준선 조사: [sca-ewi-baseline-2026-07-04.md](../../sources/articles/sca-ewi-baseline-2026-07-04.md)
+
+| 지표 (dashboard id) | 기준값 (2026-07-04) | 경보 임계값 | 의미 |
+|---|---|---|---|
+| 경쟁사 SCA형 계약 공시 건수 (`competitor_sca_disclosures`) | **분기 1건** (Micron–Anthropic 06-22; 스톡: Micron SCA 16건·SK 커스텀 인증 3건) | 분기 2건+ | 3단계 표준화 가속 — DT 시급도 격상 |
+| Samsung 공동설계 조항 포함 계약 (`samsung_codesign_contracts`) | **공시 0건** (선행 신호: 커스텀 전담 2팀·250명 증원·Broadcom/AMD 협의) | 1건+ (긍정 경보) | 자사 전환 진도 — DT Phase 2 목표 달성 |
+| 커스텀 HBM 매출 비중 (`custom_hbm_revenue_share`) | **~0%** (2026 매출은 표준 HBM3E/HBM4 중심) | 30%+ (경계 15%) | 범용→커스텀 역전 — 선행: HBM4E 2027년 ~40% 전망 |
+
+다음 갱신 시점: Micron Q4 FY26 실적(2026-09 말)·TrendForce HBM 분기 리포트 — 정기 시장 점검 사이클에서 흡수.
