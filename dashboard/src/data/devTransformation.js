@@ -110,6 +110,18 @@ export const DT_ROLE_SHIFT = [
 export const DT_MODELING_NOTE =
   'SCA의 공동 최적화는 "이 메모리를 쓰면 고객 워크로드의 성능·전력·TCO가 어떻게 달라지는가"를 계약 전에 정량으로 보여줄 수 있어야 성립한다. 디바이스 데이터시트로는 이 대화에 참여할 수 없다 — 워크로드→서버→랙→데이터센터로 이어지는 시스템 레벨 성능·파워 모델과, 그 모델로 고객 시스템 아키텍트와 대등하게 토론할 자체 시스템 아키텍트·모델링 전문 인력이 기술적 전제조건이다.'
 
+// 모델링 범위 확대 — 디바이스 → 서버 → 랙 → 데이터센터 (계단형 성장, 로드맵 버전과 정합)
+// level: 시각화 높이 비율(0~1). scope는 포함관계로 확대.
+export const DT_MODELING_SCOPE = {
+  intro: '모델링 범위가 메모리 디바이스 단품에서 서버·랙·데이터센터 전체 시스템으로 확대된다. 범위가 커질수록 고객 시스템 안에서의 성능·전력 효과를 정량화할 수 있고, 로드맵 v0.1→v2.0과 정확히 맞물린다.',
+  stages: [
+    { id: 'device', label: '메모리 디바이스', unit: '디바이스 단품', metric: '스펙·데이터시트', phase: '현재 · As-Is', version: '—', level: 0.4, color: '#525252' },
+    { id: 'server', label: '서버', unit: '노드 레벨', metric: '디바이스+SoC 성능·전력', phase: 'Phase 1 · 90일', version: 'v0.1', level: 0.58, color: '#78a9ff' },
+    { id: 'rack', label: '랙', unit: '랙 레벨', metric: '노드 집적·전력·냉각', phase: 'Phase 2 · 1년', version: 'v1.0', level: 0.78, color: '#0f62fe' },
+    { id: 'dc', label: '데이터센터', unit: 'DC 레벨 · 고객 공용', metric: '워크로드 TCO·전력 총량', phase: 'Phase 3 · 3년', version: 'v2.0', level: 1.0, color: '#0043ce' },
+  ],
+}
+
 // 리스크 (전환 실패) vs 이점 (전환 성공)
 export const DT_RISKS = [
   { id: 'R1', title: 'SCA 수주 배제', desc: '다년 최소매출 락인($100B급) 계약군에서 배제 — 사이클 방어 수단 상실' },

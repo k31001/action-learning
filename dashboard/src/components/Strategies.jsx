@@ -14,7 +14,7 @@ import {
 } from '../data/strategies'
 import {
   DT_SUMMARY, DT_EVENTS, DT_CONTRACT_STAGES, DT_SCA_COMPONENTS,
-  DT_ROLE_SHIFT, DT_MODELING_NOTE, DT_RISKS, DT_BENEFITS, DT_AXES,
+  DT_ROLE_SHIFT, DT_MODELING_NOTE, DT_MODELING_SCOPE, DT_RISKS, DT_BENEFITS, DT_AXES,
   DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS, DT_FDE_BENCHMARK,
 } from '../data/devTransformation'
 import SourceLink from './SourceLink'
@@ -632,6 +632,38 @@ function TransformationPanel() {
           <span className="text-amber-700 font-bold not-italic">모델링 범위 확장이 결정적 — </span>
           {DT_MODELING_NOTE}
         </p>
+      </Card>
+
+      <Card title="모델링 범위 확대 — 디바이스에서 데이터센터로" source="wiki/strategies/dev-org-transformation.md">
+        <p className="text-xs text-zinc-500 mb-4">{DT_MODELING_SCOPE.intro}</p>
+        {/* 계단형 성장 시각화: 왼→오른쪽으로 범위·정밀도가 커진다 (포함관계 device ⊂ server ⊂ rack ⊂ DC) */}
+        <div className="flex items-end gap-1.5 sm:gap-3" style={{ height: 210 }}>
+          {DT_MODELING_SCOPE.stages.map(s => (
+            <div key={s.id} className="flex-1 flex flex-col justify-end h-full">
+              <div className="text-[11px] font-bold text-zinc-800 mb-1 leading-tight break-keep">{s.label}</div>
+              <div
+                className="rounded-t-md border border-b-0 flex flex-col p-2 overflow-hidden transition-all"
+                style={{ height: `${s.level * 100}%`, backgroundColor: `${s.color}14`, borderColor: `${s.color}55` }}
+              >
+                <div className="flex items-center gap-1 mb-0.5 flex-wrap">
+                  <span className="text-[10px] font-bold break-keep" style={{ color: s.color }}>{s.unit}</span>
+                  {s.version !== '—' && (
+                    <span className="text-[9px] font-mono px-1 rounded shrink-0" style={{ backgroundColor: `${s.color}26`, color: s.color }}>{s.version}</span>
+                  )}
+                </div>
+                <div className="text-[10px] text-zinc-600 leading-tight break-keep">{s.metric}</div>
+              </div>
+              <div className="text-[10px] text-center font-medium py-1 rounded-b-md text-white break-keep" style={{ backgroundColor: s.color }}>
+                {s.phase}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 mt-3 text-[10px] text-zinc-500">
+          <span>범위·정밀도</span>
+          <div className="flex-1 h-1.5 rounded-full" style={{ background: 'linear-gradient(90deg, #52525233, #0043ce)' }} />
+          <span className="font-semibold text-zinc-700">디바이스 ⊂ 서버 ⊂ 랙 ⊂ 데이터센터</span>
+        </div>
       </Card>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

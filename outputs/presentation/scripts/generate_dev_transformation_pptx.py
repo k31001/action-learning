@@ -242,13 +242,39 @@ def build_slide_2(prs):
     ]
     ry = hy + Inches(0.32)
     for i, (dim, a, b) in enumerate(rows):
-        h = Inches(0.57)
-        add_rect(slide, lx, ry, lw, h, fill=THEME['soft_white_bg'] if i % 2 == 0 else THEME['white'], line=THEME['light_gray'])
-        add_text(slide, lx + Inches(0.14), ry, Inches(1.55), h, dim, font=FONT_KO, size=T_BODY, bold=True, color=THEME['dark_text'], valign='middle')
+        h = Inches(0.47)
+        hi = (dim == '모델링 범위')  # 계단 시각화로 이어지는 행 강조
+        add_rect(slide, lx, ry, lw, h, fill=THEME['soft_blue_bg'] if hi else (THEME['soft_white_bg'] if i % 2 == 0 else THEME['white']), line=THEME['light_gray'])
+        add_text(slide, lx + Inches(0.14), ry, Inches(1.55), h, dim, font=FONT_KO, size=T_BODY, bold=True, color=THEME['samsung_blue'] if hi else THEME['dark_text'], valign='middle')
         add_text(slide, lx + Inches(1.7), ry, Inches(2.45), h, a, font=FONT_KO, size=T_SUB, color=THEME['gray_caption'], valign='middle')
         add_text(slide, lx + Inches(4.05), ry, Inches(0.28), h, '→', font=FONT_MO, size=T_BODY, bold=True, color=THEME['samsung_blue'], valign='middle')
         add_text(slide, lx + Inches(4.2), ry, Inches(2.4), h, b, font=FONT_KO, size=T_SUB, bold=True, color=THEME['dark_text'], valign='middle')
         ry = ry + h
+
+    # 좌하: 모델링 범위 확대 — 계단형 (디바이스 → 서버 → 랙 → DC)
+    scope_title_y = ry + Inches(0.08)
+    add_text(slide, lx, scope_title_y, lw, Inches(0.24),
+             '↑ 모델링 범위 확대 — 디바이스 ⊂ 서버 ⊂ 랙 ⊂ 데이터센터', font=FONT_KO, size=T_SUB, bold=True, color=THEME['dark_text'])
+    base_y = Inches(6.4)          # 막대 하단 기준선
+    top_min = scope_title_y + Inches(0.3)  # 가장 높은 막대의 상단
+    max_h = base_y - top_min
+    scope = [
+        ('디바이스', '데이터시트', '현재', 0.42, THEME['gray_caption']),
+        ('서버', 'v0.1', 'P1', 0.62, BLUE_40),
+        ('랙', 'v1.0', 'P2', 0.8, THEME['samsung_blue']),
+        ('데이터센터', 'v2.0', 'P3', 1.0, RGBColor(0x00, 0x43, 0xCE)),
+    ]
+    sw = (lw - Inches(0.18)) / 4
+    for i, (name, ver, ph, lvl, c) in enumerate(scope):
+        x = lx + (sw + Inches(0.06)) * i
+        bh = Emu(int(max_h * lvl))
+        y = base_y - bh
+        add_rect(slide, x, y, sw, bh, fill=THEME['white'], line=c, line_width=Emu(12700))
+        add_rect(slide, x, y, sw, Inches(0.04), fill=c)  # 상단 액센트
+        add_text(slide, x + Inches(0.1), y + Inches(0.07), sw - Inches(0.2), Inches(0.24),
+                 name, font=FONT_KO, size=T_SUB, bold=True, color=c)
+        add_text(slide, x + Inches(0.1), y + bh - Inches(0.28), sw - Inches(0.2), Inches(0.22),
+                 f'{ver} · {ph}', font=FONT_MO, size=T_CAP, bold=True, color=THEME['gray_caption'])
 
     # 우상: FDE 벤치마크
     sect(slide, rx, colY, rw, '벤치마크 · Palantir FDE')
