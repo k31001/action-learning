@@ -4,7 +4,7 @@
 **생성 스크립트**: `scripts/generate_dev_transformation_pptx.py` → `dev-org-transformation.pptx` (3장, 16:9)
 **디자인**: **IBM Carbon Design System** — Blue-60 #0f62fe(단일 액센트) · Yellow-30 #f1c21b · Red-60 #da1e28 · Green-50 #24a148 · Gray-100 #161616 · Gray-70 #525252(2차 텍스트) · Gray-20 #e0e0e0(border-subtle) · Gray-10 #f4f4f4(layer-01) · Blue-10 #edf5ff(info bg) · **각진(sharp) 카드 + 얇은 헤어라인 그리드** · IBM Plex Sans KR + IBM Plex Mono(숫자). 팔레트 토큰은 `generate_carbon_pptx.py`와 동일 계열.
 **설계 원칙**: **여백 최소화 · 고밀도** — 외곽 마진 0.32in, 각진 카드, 얇은 헤어라인. Apple HIG(넓은 여백) 대비 슬라이드당 콘텐츠 밀도 ↑ (shape 60~68 → 74~85), 이전에 압축했던 As-Is/To-Be 행·전체 타임라인 복원.
-**타이포그래피 스케일** (점진적 위계, 전부 9pt 평면 지양): 타이틀 20 · 섹션 12 · 카드/행 제목 11 · 본문 10 · 보조 9 · 캡션·태그 8 · 키넘버(mono) 18 · 데이터 값 11.5. 슬라이드당 6~8단계 크기가 함께 쓰여 위계가 살아난다.
+**타이포그래피 스케일** (점진적 위계, 2단계 상향): 타이틀 23 · 섹션 14 · 카드/행 제목 13 · 본문 12 · 보조 11 · 캡션·태그 10 · 키넘버(mono) 22 · 데이터 값 13.5. 슬라이드당 6~8단계 크기가 함께 쓰여 위계가 살아나고, 커진 폰트에 맞춰 카드·행 높이/간격을 키워 콘텐츠가 슬라이드를 꽉 채운다(빈 공간 최소화).
 
 > 폰트 주의: IBM Plex Sans KR / IBM Plex Mono 미설치 환경에선 PowerPoint 대체 폰트로 렌더되나, Carbon의 밀도는 레이아웃(각진 카드·촘촘한 마진)이 좌우하므로 유지됨.
 
