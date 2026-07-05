@@ -1,9 +1,11 @@
-# 개발실 체질 전환 발표 기획서 — 3장 · Apple HIG · 컴팩트
+# 개발실 체질 전환 발표 기획서 — 3장 · IBM Carbon · 고밀도
 
 **빌드 원천**: [dev-org-transformation-report.md](../report/dev-org-transformation-report.md) (← wiki [dev-org-transformation.md](../../wiki/strategies/dev-org-transformation.md), [lta-to-sca-transition.md](../../wiki/concepts/lta-to-sca-transition.md))
 **생성 스크립트**: `scripts/generate_dev_transformation_pptx.py` → `dev-org-transformation.pptx` (3장, 16:9)
-**디자인**: **Apple HIG(Human Interface Guidelines)** — systemBlue #007AFF · systemOrange #FF9500 · systemRed #FF3B30 · systemGreen #34C759 · primary label #1D1D1F · secondaryLabel #6E6E73 · opaqueSeparator #C6C6C8 · 레이어드 배경(#F2F2F7 / #FFFFFF) · SF Pro Display + Apple SD Gothic Neo · 둥근 카드. 팔레트 토큰은 `generate_apple_hig_pptx.py`와 동일 계열.
-**설계 원칙**: 6장 → **3장 축약**. 함축적 카피 + 소형 폰트(본문 8~9pt, 헤더 21pt) + 조밀한 둥근 카드 레이아웃.
+**디자인**: **IBM Carbon Design System** — Blue-60 #0f62fe(단일 액센트) · Yellow-30 #f1c21b · Red-60 #da1e28 · Green-50 #24a148 · Gray-100 #161616 · Gray-70 #525252(2차 텍스트) · Gray-20 #e0e0e0(border-subtle) · Gray-10 #f4f4f4(layer-01) · Blue-10 #edf5ff(info bg) · **각진(sharp) 카드 + 얇은 헤어라인 그리드** · IBM Plex Sans KR + IBM Plex Mono(숫자). 팔레트 토큰은 `generate_carbon_pptx.py`와 동일 계열.
+**설계 원칙**: **여백 최소화 · 고밀도** — 외곽 마진 0.32in, 각진 카드, 얇은 헤어라인. 본문 **9pt**(라벨 8~8.5pt), 헤더 19pt. Apple HIG(넓은 여백) 대비 슬라이드당 콘텐츠 밀도 ↑ (shape 60~68 → 74~85), 이전에 압축했던 As-Is/To-Be 행·전체 타임라인 복원.
+
+> 폰트 주의: IBM Plex Sans KR / IBM Plex Mono 미설치 환경에선 PowerPoint 대체 폰트로 렌더되나, Carbon의 밀도는 레이아웃(각진 카드·촘촘한 마진)이 좌우하므로 유지됨.
 
 ## 발표 논리 (3단 구성)
 
@@ -26,11 +28,11 @@ WHY(왜 지금인가) → WHAT(무엇이 되어야 하나) → HOW(무엇부터 
 ### 슬라이드 3 — HOW · 4대 축과 3-Phase 실행
 - 4대 축 카드: 기술 / 문화 / 조직(Co-Design Pod=FDE + 아키텍트·모델링) / 일하는 방식
 - 3-Phase 로드맵: 90일(증명) → 1년(제도화·★SCA 계약 1건) → 3년(표준화)
-- KPI 5개: 선제 제안 12→40 / 채택률 20→35% / 고객 교류 10→25% / 커스텀 매출 30%+ / 시스템 모델 랙→DC
+- KPI 6개: 선제 제안 ~0→12→40 / 채택률 20→35% / 고객 교류 10→25% / 커스텀 매출 30%+ / 시스템 모델 디바이스→랙→DC / 아키텍트 인력 없음→조직→Pod당 1+
 - NEXT STEP: 90일 증명 → 1년 SCA 계약 1건으로 제도화 근거
 
 ---
 
-## Apple HIG 테마 재현 방법 (참고)
-- 본 스크립트는 `generate_pptx.py`의 helper(add_text/add_rect/add_footer 등)를 재사용하되, 모듈 전역 `THEME` 딕셔너리를 Apple HIG 값으로 in-place 치환(`G.THEME.update(APPLE)`)해 helper 내부 색까지 Apple화한다. 폰트는 한글 Apple SD Gothic Neo + 숫자/영문 SF Pro Display.
-- 시나리오 플래닝 30장 덱의 Apple HIG 변형은 별도 소스-치환 래퍼 `generate_apple_hig_pptx.py` 참조(동일 토큰 매핑).
+## Carbon 테마 재현 방법 (참고)
+- 본 스크립트는 `generate_pptx.py`의 helper(add_text/add_rect/add_footer 등)를 재사용하되, 모듈 전역 `THEME` 딕셔너리를 Carbon 값으로 in-place 치환(`G.THEME.update(CARBON)`)해 helper 내부 색까지 Carbon화한다. 각진 카드는 기본 `add_rect`(RECTANGLE), 폰트는 한글 IBM Plex Sans KR + 숫자 IBM Plex Mono.
+- 시나리오 플래닝 30장 덱의 Carbon 변형은 별도 소스-치환 래퍼 `generate_carbon_pptx.py` 참조(동일 토큰 매핑). Apple HIG 변형은 `generate_apple_hig_pptx.py`.

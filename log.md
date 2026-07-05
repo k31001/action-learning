@@ -14,6 +14,11 @@
 
 ---
 
+## [2026-07-05] build | 개발실 전환 발표자료 — Apple HIG→IBM Carbon 고밀도 재작성 (여백 축소·본문 9pt)
+- **무엇**: 사용자 피드백 "Apple은 여백이 많음 → 여백 줄이고 한 슬라이드에 많은 내용, 폰트 9pt". `generate_dev_transformation_pptx.py`를 IBM Carbon Design System으로 재작성. 각진(sharp) 카드 + 얇은 헤어라인 그리드 + 외곽 마진 0.32in로 밀도 ↑(shape 60~68→74~85). 본문 9pt(라벨 8~8.5pt). 압축했던 As-Is/To-Be 행(기술 방향·정보 흐름) + 전체 5-이벤트 타임라인 복원.
+- **Carbon 구현**: `G.THEME.update(CARBON)` — Blue-60 #0f62fe(단일 액센트)·Yellow-30·Red-60·Green-50·Gray-100/70/20/10·Blue-10. 폰트 IBM Plex Sans KR + IBM Plex Mono(숫자). 팔레트 토큰은 기존 `generate_carbon_pptx.py`(시나리오 덱 Carbon 변형)와 동일 계열. 각진 카드는 기본 add_rect 사용.
+- **검증**: python-pptx 구조 검증 — 3슬라이드·오버플로우 0·핵심 문구 11/11 present(복원 행 포함). `dev-transformation-outline.md` Carbon·고밀도로 갱신. dashboard 무변경(발표 산출물 전용)이라 version bump 없음.
+
 ## [2026-07-04] build | 개발실 전환 발표자료 — 6장→3장 축약 + Apple HIG 테마 재작성
 - **무엇**: 사용자 요청 — 발표자료를 3장으로 축약(함축적 카피 + 소형 폰트 8~9pt로 컴팩트) + Apple 디자인 시스템으로 테마 변경. `generate_dev_transformation_pptx.py`를 3장 Apple HIG 버전으로 전면 재작성: WHY(사건+북극성 명제+계약 3단 진화+Micron 4요소) / WHAT(As-Is→To-Be 5행+FDE 벤치마크+리스크↔이점) / HOW(4대 축+3-Phase+KPI).
 - **Apple HIG 구현**: `generate_pptx.py` helper 재사용하되 모듈 전역 `THEME`를 Apple 토큰(systemBlue #007AFF·systemOrange·systemRed·systemGreen·primary label #1D1D1F·secondaryLabel·opaqueSeparator·레이어드 배경)으로 in-place 치환(`G.THEME.update(APPLE)`) → helper 내부 색까지 Apple화. 폰트: 한글 Apple SD Gothic Neo + 영문/숫자 SF Pro Display. 둥근 카드(ROUNDED_RECTANGLE) helper 추가. 팔레트 토큰은 기존 `generate_apple_hig_pptx.py`(시나리오 덱 Apple 변형)와 동일 계열.
