@@ -635,34 +635,40 @@ function TransformationPanel() {
       </Card>
 
       <Card title="모델링 범위 확대 — 디바이스에서 데이터센터로" source="wiki/strategies/dev-org-transformation.md">
-        <p className="text-xs text-zinc-500 mb-4">{DT_MODELING_SCOPE.intro}</p>
-        {/* 계단형 성장 시각화: 왼→오른쪽으로 범위·정밀도가 커진다 (포함관계 device ⊂ server ⊂ rack ⊂ DC) */}
-        <div className="flex items-end gap-1.5 sm:gap-3" style={{ height: 210 }}>
-          {DT_MODELING_SCOPE.stages.map(s => (
-            <div key={s.id} className="flex-1 flex flex-col justify-end h-full">
-              <div className="text-[11px] font-bold text-zinc-800 mb-1 leading-tight break-keep">{s.label}</div>
-              <div
-                className="rounded-t-md border border-b-0 flex flex-col p-2 overflow-hidden transition-all"
-                style={{ height: `${s.level * 100}%`, backgroundColor: `${s.color}14`, borderColor: `${s.color}55` }}
-              >
-                <div className="flex items-center gap-1 mb-0.5 flex-wrap">
-                  <span className="text-[10px] font-bold break-keep" style={{ color: s.color }}>{s.unit}</span>
-                  {s.version !== '—' && (
-                    <span className="text-[9px] font-mono px-1 rounded shrink-0" style={{ backgroundColor: `${s.color}26`, color: s.color }}>{s.version}</span>
-                  )}
-                </div>
-                <div className="text-[10px] text-zinc-600 leading-tight break-keep">{s.metric}</div>
-              </div>
-              <div className="text-[10px] text-center font-medium py-1 rounded-b-md text-white break-keep" style={{ backgroundColor: s.color }}>
-                {s.phase}
-              </div>
-            </div>
-          ))}
+        <p className="text-xs text-zinc-500 mb-3">{DT_MODELING_SCOPE.intro}</p>
+        {/* 중첩(onion) 시각화: 메모리 디바이스 ⊂ 서버 ⊂ 랙 ⊂ 데이터센터 — 바깥으로 갈수록 모델링 범위 확대 */}
+        <div className="overflow-x-auto">
+          <svg viewBox="0 0 680 300" className="w-full" style={{ minWidth: 420, maxHeight: 320 }} role="img" aria-label="모델링 범위 중첩 다이어그램">
+            {/* 바깥→안 순서로 프레임(데이터센터→랙→서버→디바이스) */}
+            {[
+              { x: 6,   y: 6,   w: 668, h: 288, rx: 12, fill: '#eef4ff', stroke: '#78a9ff', label: '데이터센터', ver: 'v2.0', ph: 'Phase 3 · 3년', ty: 26, tc: '#0043ce' },
+              { x: 92,  y: 52,  w: 496, h: 196, rx: 10, fill: '#d8e6ff', stroke: '#4589ff', label: '랙',        ver: 'v1.0', ph: 'Phase 2 · 1년', ty: 72, tc: '#0f43b8' },
+              { x: 178, y: 98,  w: 324, h: 104, rx: 8,  fill: '#b6cfff', stroke: '#0f62fe', label: '서버',      ver: 'v0.1', ph: 'Phase 1 · 90일', ty: 118, tc: '#0f3aa8' },
+            ].map((f, i) => (
+              <g key={i}>
+                <rect x={f.x} y={f.y} width={f.w} height={f.h} rx={f.rx} fill={f.fill} stroke={f.stroke} strokeWidth="2" />
+                <text x={f.x + 14} y={f.ty} fontSize="15" fontWeight="700" fill={f.tc}>{f.label}</text>
+                <text x={f.x + 14 + f.label.length * 16 + 8} y={f.ty} fontSize="11" fontFamily="monospace" fontWeight="700" fill={f.stroke}>{f.ver} · {f.ph}</text>
+              </g>
+            ))}
+            {/* 중심: 메모리 디바이스 (칩) */}
+            <rect x="264" y="128" width="152" height="44" rx="6" fill="#0043ce" stroke="#002d9c" strokeWidth="2" />
+            <text x="340" y="147" fontSize="13" fontWeight="700" fill="#ffffff" textAnchor="middle">메모리 디바이스</text>
+            <text x="340" y="163" fontSize="10" fontFamily="monospace" fill="#c9d9ff" textAnchor="middle">현재 · 데이터시트</text>
+            {/* 확대 방향 화살표 (안→바깥) */}
+            <defs>
+              <marker id="scopeArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#525252" />
+              </marker>
+            </defs>
+            <line x1="416" y1="150" x2="600" y2="150" stroke="#525252" strokeWidth="1.5" strokeDasharray="4 3" markerEnd="url(#scopeArrow)" opacity="0.7" />
+            <text x="508" y="142" fontSize="10" fill="#525252" textAnchor="middle" opacity="0.85">모델링 범위 확대 →</text>
+          </svg>
         </div>
-        <div className="flex items-center gap-2 mt-3 text-[10px] text-zinc-500">
+        <div className="flex items-center gap-2 mt-2 text-[10px] text-zinc-500">
           <span>범위·정밀도</span>
-          <div className="flex-1 h-1.5 rounded-full" style={{ background: 'linear-gradient(90deg, #52525233, #0043ce)' }} />
-          <span className="font-semibold text-zinc-700">디바이스 ⊂ 서버 ⊂ 랙 ⊂ 데이터센터</span>
+          <div className="flex-1 h-1.5 rounded-full" style={{ background: 'linear-gradient(90deg, #0043ce, #78a9ff)' }} />
+          <span className="font-semibold text-zinc-700">메모리 디바이스 ⊂ 서버 ⊂ 랙 ⊂ 데이터센터 (안 → 바깥)</span>
         </div>
       </Card>
 

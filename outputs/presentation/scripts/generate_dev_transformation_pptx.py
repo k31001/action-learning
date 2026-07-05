@@ -251,30 +251,42 @@ def build_slide_2(prs):
         add_text(slide, lx + Inches(4.2), ry, Inches(2.4), h, b, font=FONT_KO, size=T_SUB, bold=True, color=THEME['dark_text'], valign='middle')
         ry = ry + h
 
-    # 좌하: 모델링 범위 확대 — 계단형 (디바이스 → 서버 → 랙 → DC)
+    # 좌하: 모델링 범위 확대 — 중첩(onion) 프레임 (디바이스 ⊂ 서버 ⊂ 랙 ⊂ DC)
     scope_title_y = ry + Inches(0.08)
     add_text(slide, lx, scope_title_y, lw, Inches(0.24),
-             '↑ 모델링 범위 확대 — 디바이스 ⊂ 서버 ⊂ 랙 ⊂ 데이터센터', font=FONT_KO, size=T_SUB, bold=True, color=THEME['dark_text'])
-    base_y = Inches(6.4)          # 막대 하단 기준선
-    top_min = scope_title_y + Inches(0.3)  # 가장 높은 막대의 상단
-    max_h = base_y - top_min
-    scope = [
-        ('디바이스', '데이터시트', '현재', 0.42, THEME['gray_caption']),
-        ('서버', 'v0.1', 'P1', 0.62, BLUE_40),
-        ('랙', 'v1.0', 'P2', 0.8, THEME['samsung_blue']),
-        ('데이터센터', 'v2.0', 'P3', 1.0, RGBColor(0x00, 0x43, 0xCE)),
+             '모델링 범위 확대 — 메모리 디바이스 ⊂ 서버 ⊂ 랙 ⊂ 데이터센터 (안 → 바깥)',
+             font=FONT_KO, size=T_SUB, bold=True, color=THEME['dark_text'])
+    base_y = Inches(6.4)          # 프레임 하단 기준선
+    # 바깥(DC) → 안(디바이스) 순서. 같은 좌하단 기준, 폭·높이가 안쪽으로 줄어드는 중첩.
+    C_DC   = RGBColor(0xED, 0xF5, 0xFF); L_DC   = BLUE_40
+    C_RACK = RGBColor(0xD8, 0xE6, 0xFF); L_RACK = RGBColor(0x45, 0x89, 0xFF)
+    C_SRV  = RGBColor(0xB6, 0xCF, 0xFF); L_SRV  = THEME['samsung_blue']
+    C_DEV  = RGBColor(0x00, 0x43, 0xCE); L_DEV  = RGBColor(0x00, 0x2D, 0x9C)
+    top0 = scope_title_y + Inches(0.28)
+    frames = [
+        # (x, y, w, name, ver·ph, fill, line, text_color, label_x_offset)
+        (lx,                 top0,               lw,          '데이터센터', 'v2.0 · P3', C_DC,   L_DC,   L_DC,          Inches(5.1)),
+        (lx,                 top0 + Inches(0.1), Inches(5.1), '랙',        'v1.0 · P2', C_RACK, L_RACK, RGBColor(0x0F,0x43,0xB8), Inches(3.55)),
+        (lx,                 top0 + Inches(0.2), Inches(3.6), '서버',      'v0.1 · P1', C_SRV,  L_SRV,  RGBColor(0x0F,0x3A,0xA8), Inches(2.0)),
     ]
-    sw = (lw - Inches(0.18)) / 4
-    for i, (name, ver, ph, lvl, c) in enumerate(scope):
-        x = lx + (sw + Inches(0.06)) * i
-        bh = Emu(int(max_h * lvl))
-        y = base_y - bh
-        add_rect(slide, x, y, sw, bh, fill=THEME['white'], line=c, line_width=Emu(12700))
-        add_rect(slide, x, y, sw, Inches(0.04), fill=c)  # 상단 액센트
-        add_text(slide, x + Inches(0.1), y + Inches(0.07), sw - Inches(0.2), Inches(0.24),
-                 name, font=FONT_KO, size=T_SUB, bold=True, color=c)
-        add_text(slide, x + Inches(0.1), y + bh - Inches(0.28), sw - Inches(0.2), Inches(0.22),
-                 f'{ver} · {ph}', font=FONT_MO, size=T_CAP, bold=True, color=THEME['gray_caption'])
+    for x, y, w, name, verph, fill, line, tc, lbx in frames:
+        add_rect(slide, x, y, w, base_y - y, fill=fill, line=line, line_width=Emu(12700))
+    # 중심: 메모리 디바이스 (칩) — 마지막에 위에 그림
+    dev_y = top0 + Inches(0.3)
+    add_rect(slide, lx, dev_y, Inches(2.0), base_y - dev_y, fill=C_DEV, line=L_DEV, line_width=Emu(12700))
+    # 라벨 — 각 프레임의 고유 우측 띠에 배치 (중첩이라 안쪽 프레임이 왼쪽을 덮음)
+    add_text(slide, lx + Inches(0.16), dev_y + Inches(0.06), Inches(1.7), Inches(0.24),
+             '메모리 디바이스', font=FONT_KO, size=T_CAP, bold=True, color=THEME['white'])
+    add_text(slide, lx + Inches(0.16), base_y - Inches(0.24), Inches(1.7), Inches(0.2),
+             '현재 · 데이터시트', font=FONT_MO, size=8, color=RGBColor(0xC9,0xD9,0xFF))
+    for x, y, w, name, verph, fill, line, tc, lbx in frames:
+        add_text(slide, lx + lbx + Inches(0.12), y + Inches(0.06), Inches(1.4), Inches(0.22),
+                 name, font=FONT_KO, size=T_CAP, bold=True, color=tc)
+        add_text(slide, lx + lbx + Inches(0.12), y + Inches(0.28), Inches(1.4), Inches(0.2),
+                 verph, font=FONT_MO, size=8, bold=True, color=line)
+    # 확대 방향 화살표 (안 → 바깥)
+    add_text(slide, lx + Inches(5.1), base_y - Inches(0.26), Inches(1.5), Inches(0.2),
+             '범위 확대 →', font=FONT_KO, size=8, bold=True, color=THEME['gray_caption'])
 
     # 우상: FDE 벤치마크
     sect(slide, rx, colY, rw, '벤치마크 · Palantir FDE')
