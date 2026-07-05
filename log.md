@@ -14,6 +14,10 @@
 
 ---
 
+## [2026-07-05] build | 개발실 전환 발표자료 — 타이포그래피 스케일 도입 (평면 9pt → 8단계 위계)
+- **무엇**: 사용자 피드백 "전부 9pt라 평면적·작아 보임 → 단계별 폰트 위계 필요". 타입 스케일 상수(T_TITLE 20·T_SECTION 12·T_CARD 11·T_BODY 10·T_SUB 9·T_CAP 8·T_NUM 18·T_DATA 11.5) 도입해 `generate_dev_transformation_pptx.py` 전체 size= 를 스케일로 교체. 섹션 제목 9.5→12(본문과 확실히 구분), 헤더 19→20, 카드/행 제목 11, 본문 10, 태그/캡션 8.
+- **검증**: 재생성 후 슬라이드별 실제 사용 폰트 = S1 {8,9,10,10.5,11,12,18,20}·S2 {9,10,10.5,12,20}·S3 {8,9,10,10.5,11,12,20} — 6~8단계 위계 확인, 오버플로우 0. outline 타입 스케일 명시. dashboard 무변경이라 version bump 없음.
+
 ## [2026-07-05] build | 개발실 전환 발표자료 — Apple HIG→IBM Carbon 고밀도 재작성 (여백 축소·본문 9pt)
 - **무엇**: 사용자 피드백 "Apple은 여백이 많음 → 여백 줄이고 한 슬라이드에 많은 내용, 폰트 9pt". `generate_dev_transformation_pptx.py`를 IBM Carbon Design System으로 재작성. 각진(sharp) 카드 + 얇은 헤어라인 그리드 + 외곽 마진 0.32in로 밀도 ↑(shape 60~68→74~85). 본문 9pt(라벨 8~8.5pt). 압축했던 As-Is/To-Be 행(기술 방향·정보 흐름) + 전체 5-이벤트 타임라인 복원.
 - **Carbon 구현**: `G.THEME.update(CARBON)` — Blue-60 #0f62fe(단일 액센트)·Yellow-30·Red-60·Green-50·Gray-100/70/20/10·Blue-10. 폰트 IBM Plex Sans KR + IBM Plex Mono(숫자). 팔레트 토큰은 기존 `generate_carbon_pptx.py`(시나리오 덱 Carbon 변형)와 동일 계열. 각진 카드는 기본 add_rect 사용.
