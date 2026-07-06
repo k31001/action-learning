@@ -14,6 +14,11 @@
 
 ---
 
+## [2026-07-06] build | 스타 엔지니어 논거 정정 — DE는 이미 존재, 미션 재정의 + 실리콘밸리 영입 (v2.31.0 → v2.31.1)
+- **무엇**: 사용자 정정 — ① "DE 1호 임명"은 틀림, DE는 이미 존재 → **기존 DE에게 고객사 협업·기술 리드 미션 부여** + **관리 보직에서 분리**(현 DE는 관리자 역할에 묶여 기술 교류 어려움, dual-ladder 실효화). ② **실리콘밸리 현역 스타 영입** 강조 — 고객 대부분이 미국이라 영어 커뮤니케이션이 관건, 한국인 한계 → SV 스타가 언어·현지 네트워크·아키텍처 감각을 동시 확보하는 최적 경로.
+- **반영**: §4.6을 "전제(DE 존재) + 축 A(미션 재정의·관리 분리) + 축 B(SV 영입·미국 고객·영어)"로 재구성. 축3 조직 항목·액션 A5/B6·KPI(고객리드 DE·SV 영입 2행)·보고서 §4.6·PPTX(축3 항목·NEXT STEP)·대시보드(DT_STAR_ENGINEER.twoAxes + 카드 렌더·DT_AXES·DT_PHASES·DT_KPIS) 전면 수정. source §3 실행 전제 추가.
+- **검증**: 대시보드 빌드·프리뷰(2축 카드 렌더·콘솔 0), PPTX 오버플로우 0·문구 확인. 위키 링크 구조 무변경이라 지식그래프 재생성 생략. 패치 bump v2.31.1.
+
 ## [2026-07-06] ingest | 개발실 전환에 스타 엔지니어(Distinguished Engineer) 트랙 추가 (v2.30.1 → v2.31.0)
 - **무엇**: 사용자 요청 — 스타 엔지니어/Distinguished Engineer 필요성 추가. ① **호명사회**(송길영 『시대예보: 호명사회』): 조직 이름 뒤에 숨지 않고 개인이 이름으로 불리는 사회 → 대기업도 스타(개인) 필요, SCA 시대 고객 신뢰 단위 = "그 아키텍트 누구". ② **메모리 처우 급등 활용**(2026 삼성 DS ~6억 성과급·SK 영업이익 10%·연봉 상한 철폐): 스타 영입 협상 우위(재원·정상화·명분·이탈방어). 조직×문화 양축에 걸친 요소로 정리(조직=DE 이원 트랙 신설, 문화=호명).
 - **파일**: `sources/articles/star-engineer-context-2026-07.md` 신규(호명사회 + 성과급 급등 5개 근거). `wiki/strategies/dev-org-transformation.md`(축2 문화·축3 조직 항목 + §4.6 스타 엔지니어 섹션 + 액션 A5/B6 + KPI DE 수 + frontmatter). `outputs/report`(§4.6 + 축 표 + Phase 2 + KPI). `outputs/presentation`(슬라이드 3 문화·조직 축 항목 교체 + NEXT STEP 타이밍 논거, PPTX 재생성). `dashboard`(devTransformation.js DT_STAR_ENGINEER·DT_AXES·DT_PHASES·DT_KPIS + Strategies.jsx 스타 엔지니어 카드). index.md. 마이너 bump v2.31.0.
