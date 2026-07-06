@@ -14,6 +14,11 @@
 
 ---
 
+## [2026-07-06] ingest | 개발실 전환에 스타 엔지니어(Distinguished Engineer) 트랙 추가 (v2.30.1 → v2.31.0)
+- **무엇**: 사용자 요청 — 스타 엔지니어/Distinguished Engineer 필요성 추가. ① **호명사회**(송길영 『시대예보: 호명사회』): 조직 이름 뒤에 숨지 않고 개인이 이름으로 불리는 사회 → 대기업도 스타(개인) 필요, SCA 시대 고객 신뢰 단위 = "그 아키텍트 누구". ② **메모리 처우 급등 활용**(2026 삼성 DS ~6억 성과급·SK 영업이익 10%·연봉 상한 철폐): 스타 영입 협상 우위(재원·정상화·명분·이탈방어). 조직×문화 양축에 걸친 요소로 정리(조직=DE 이원 트랙 신설, 문화=호명).
+- **파일**: `sources/articles/star-engineer-context-2026-07.md` 신규(호명사회 + 성과급 급등 5개 근거). `wiki/strategies/dev-org-transformation.md`(축2 문화·축3 조직 항목 + §4.6 스타 엔지니어 섹션 + 액션 A5/B6 + KPI DE 수 + frontmatter). `outputs/report`(§4.6 + 축 표 + Phase 2 + KPI). `outputs/presentation`(슬라이드 3 문화·조직 축 항목 교체 + NEXT STEP 타이밍 논거, PPTX 재생성). `dashboard`(devTransformation.js DT_STAR_ENGINEER·DT_AXES·DT_PHASES·DT_KPIS + Strategies.jsx 스타 엔지니어 카드). index.md. 마이너 bump v2.31.0.
+- **검증**: 대시보드 빌드·프리뷰(카드 렌더·호명사회 인용·처우 급등 4포인트·콘솔 0), PPTX 오버플로우 0·문구 확인, 지식그래프 재생성(80노드·고아 0).
+
 ## [2026-07-05] build | 모델링 범위 시각화 — 계단형 → 중첩(onion) 프레임 (v2.30.0 → v2.30.1)
 - **무엇**: 사용자 참조 이미지(AI Datacenter ⊃ Rack ⊃ Server ⊃ GPU 중첩 줌) 반영 — 계단형 막대를 **중첩 프레임**으로 교체. 메모리 디바이스가 서버·랙·데이터센터 안에 순차 포함되며 바깥으로 갈수록 모델링 범위가 커지는 containment 시각화.
 - **대시보드**: `Strategies.jsx` 모델링 범위 카드를 SVG 동심(onion) 프레임으로 재작성 — 데이터센터(바깥·연파랑) ⊃ 랙 ⊃ 서버 ⊃ 메모리 디바이스(중심·진파랑 칩), 각 프레임 모델버전·Phase 라벨 + "모델링 범위 확대 →" 화살표. 패치 bump v2.30.1.

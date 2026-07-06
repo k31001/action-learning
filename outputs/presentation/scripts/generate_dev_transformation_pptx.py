@@ -351,8 +351,8 @@ def build_slide_3(prs):
     sect(slide, MARGIN, ly, Inches(12), '전환 전략 — 4대 축')
     axes = [
         ('축 1 · 기술', THEME['samsung_blue'], ['워크로드 랩 신설', '시스템 성능·파워 모델', '커스텀 플랫폼·임베디드 SW']),
-        ('축 2 · 문화', THEME['amber'], ['"정답 구현"→"가설 제안"', '실패 허용 예산', '트레이드오프 토론 표준화']),
-        ('축 3 · 조직', THEME['green_pos'], ['Co-Design Pod (=FDE)', '시스템 아키텍트·모델링 조직', '워크로드 인텔리전스']),
+        ('축 2 · 문화', THEME['amber'], ['"정답 구현"→"가설 제안"', '실패 허용 예산', '스타 엔지니어 호명 (호명사회)']),
+        ('축 3 · 조직', THEME['green_pos'], ['Co-Design Pod (=FDE)', '시스템 아키텍트·모델링 조직', 'Distinguished Engineer 트랙 (스타)']),
         ('축 4 · 일하는 방식', PURPLE, ['로드맵 교차 리뷰 (분기)', '선행 시제품(PoA) 사이클', 'AI 도구 내재화 (RS-7)']),
     ]
     cw = (CW - Inches(0.24)) / 4
@@ -416,7 +416,7 @@ def build_slide_3(prs):
                  v, font=FONT_KO, size=T_BODY, bold=True, color=THEME['samsung_blue'])
 
     sowhat(slide, Inches(6.5),
-           '90일 안에 파일럿 Pod·선제 제안으로 증명 → 1년 안에 SCA형 계약 1건으로 제도화의 근거를 만든다.',
+           '메모리 처우 급등 국면은 스타(DE) 영입·유지의 적기 — 90일 Pod·선제 제안·DE 트랙 설계 → 1년 SCA 계약 1건·DE 1호.',
            label='NEXT STEP')
     add_footer(slide, 3, TOTAL, 'HOW · 4축 + 로드맵')
     return slide

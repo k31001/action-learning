@@ -15,7 +15,7 @@ import {
 import {
   DT_SUMMARY, DT_EVENTS, DT_CONTRACT_STAGES, DT_SCA_COMPONENTS,
   DT_ROLE_SHIFT, DT_MODELING_NOTE, DT_MODELING_SCOPE, DT_RISKS, DT_BENEFITS, DT_AXES,
-  DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS, DT_FDE_BENCHMARK,
+  DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS, DT_FDE_BENCHMARK, DT_STAR_ENGINEER,
 } from '../data/devTransformation'
 import SourceLink from './SourceLink'
 
@@ -748,6 +748,34 @@ function TransformationPanel() {
             <p className="text-[11px] text-zinc-700 leading-snug">{DT_FDE_BENCHMARK.memoryVariant}</p>
           </div>
         </div>
+      </Card>
+
+      <Card title="스타 엔지니어 — Distinguished Engineer 트랙 (조직 × 문화)" source="sources/articles/star-engineer-context-2026-07.md">
+        <p className="text-xs text-zinc-700 leading-relaxed mb-3">{DT_STAR_ENGINEER.headline}</p>
+        <div className="border-l-4 border-amber-400 bg-amber-50/60 rounded-r-lg px-3 py-2 mb-3">
+          <p className="text-sm text-zinc-900 font-medium leading-relaxed">"{DT_STAR_ENGINEER.quote.text}"</p>
+          <p className="text-[11px] text-amber-700 font-semibold mt-1">— {DT_STAR_ENGINEER.quote.attribution}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="rounded-lg border border-sky-200 bg-sky-50/50 p-3">
+            <div className="text-[11px] font-bold text-sky-700 mb-1">왜 스타 개인인가</div>
+            <p className="text-[11px] text-zinc-700 leading-snug">{DT_STAR_ENGINEER.whyStar}</p>
+          </div>
+          <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-3">
+            <div className="text-[11px] font-bold text-emerald-700 mb-1">왜 지금 채용에 유리한가 — 메모리 처우 급등</div>
+            <p className="text-[11px] text-zinc-600 leading-snug mb-2">{DT_STAR_ENGINEER.hiringEdge.intro}</p>
+            <ul className="space-y-1">
+              {DT_STAR_ENGINEER.hiringEdge.points.map((p, i) => (
+                <li key={i} className="text-[11px] text-zinc-700 leading-snug">
+                  <span className="font-bold text-emerald-700">{p.k}</span> — {p.v}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p className="text-[11px] text-zinc-500 mt-3 leading-snug">
+          <span className="font-semibold text-zinc-700">조직 형태 — </span>{DT_STAR_ENGINEER.form}
+        </p>
       </Card>
 
       <Card title="3-Phase 액션 플랜" source="outputs/report/dev-org-transformation-report.md">
