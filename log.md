@@ -14,6 +14,12 @@
 
 ---
 
+## [2026-07-07] assessment | 시나리오 포지션 맵·확률 재평가 — LTA→SCA 계약 체제 확립 반영 (B 37→38·C 9→8, DF1 8.5 유지, v2.31.2)
+- **무엇**: 직전 포지션 맵 갱신(2026-07-04, 정점 확증 DF1 8.0→8.5) 이후 git log로 파악한 변경분(LTA→SCA 전환·Micron–Anthropic SCA·Stargate LOI·CAPEX 추가 상향)을 근거로 포지션 맵·확률 재평가. **DF1 8.5·DF2 1.0 유지**, 확률 **B 37→38·C 9→8**(A27·D21·E6 불변, 합 100).
+- **왜**: 이번 주기의 핵심 변화는 개별 실적이 아니라 **계약 구조** — 산업이 스팟→LTA→SCA(공동설계+다년공급+운영통합+자본연계)로 이동하며 다년 계약 락인이 근단기 순환 붕괴 확률을 추가 축소(UBS: "LTA가 메모리 cyclicality를 근본적으로 제거"). Micron–Anthropic SCA(06-22)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)가 근거. 상쇄 하방으로 범용 DRAM Q3 감속(+13~18% vs Q2 +58~63%)이 처음 등장했으나 비(非)AI-락인 범용 축에 집중·서버/HBM/SCA 락인 축 견조 → 구조 반전 아닌 정제. 지지 성격이 실적 모멘텀→계약 구조 락인으로 전환됐으나 정점 위치는 8.5 유지.
+- **EWI·트리거**: 삼성 HBM 점유율 Counterpoint Q1 확정 ~32% 교차 병기(시계열은 hbm-share.json 37% 기준 통일). SCA 전환 EWI 3종은 07-04 기준선 유지(신규 분기 데이터 없음). 시나리오 트리거는 임계 미충족으로 신규 발동 없음(LTA→SCA는 방향 근거일 뿐 특정 트리거 크로싱 아님).
+- **영향받은 페이지**: dashboard/src/data/{indicators.js(포지션·확률·HBM점유율 EWI), scenarioPlanning.js(DF1·matrix 확률), updates.js(assessment 신규 항목), version.js(v2.31.2)}, wiki/driving-forces/key-drivers.md, wiki/scenarios/scenario-matrix.md, outputs/report/scenario-planning-report.md(§5.1 확률표 2026-06 잔존값 정정 + Exec Summary). 위키 링크 구조 무변경이라 지식그래프 재생성 생략. PPTX는 시나리오 확률 미포함이라 재생성 생략.
+
 ## [2026-07-06] build | 스타 엔지니어 논거 정정 — DE는 이미 존재, 미션 재정의 + 실리콘밸리 영입 (v2.31.0 → v2.31.1)
 - **무엇**: 사용자 정정 — ① "DE 1호 임명"은 틀림, DE는 이미 존재 → **기존 DE에게 고객사 협업·기술 리드 미션 부여** + **관리 보직에서 분리**(현 DE는 관리자 역할에 묶여 기술 교류 어려움, dual-ladder 실효화). ② **실리콘밸리 현역 스타 영입** 강조 — 고객 대부분이 미국이라 영어 커뮤니케이션이 관건, 한국인 한계 → SV 스타가 언어·현지 네트워크·아키텍처 감각을 동시 확보하는 최적 경로.
 - **반영**: §4.6을 "전제(DE 존재) + 축 A(미션 재정의·관리 분리) + 축 B(SV 영입·미국 고객·영어)"로 재구성. 축3 조직 항목·액션 A5/B6·KPI(고객리드 DE·SV 영입 2행)·보고서 §4.6·PPTX(축3 항목·NEXT STEP)·대시보드(DT_STAR_ENGINEER.twoAxes + 카드 렌더·DT_AXES·DT_PHASES·DT_KPIS) 전면 수정. source §3 실행 전제 추가.

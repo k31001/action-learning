@@ -14,6 +14,32 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-07 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-07-07',
+    type: 'assessment',
+    version: 'v2.31.2',
+    title: '시나리오 포지션 맵·확률 재평가 — LTA→SCA 계약 체제 확립 반영 (B 37→38·C 9→8, DF1 8.5 유지)',
+    summary:
+      '직전 포지션 맵 갱신(2026-07-04, 정점 확증 DF1 8.0→8.5) 이후 수집분(LTA→SCA 전환·Micron–Anthropic SCA·Stargate LOI·CAPEX 추가 상향)을 반영해 시나리오 포지션 맵과 확률을 재평가. 핵심 변화는 개별 실적이 아니라 계약 구조 — 산업이 스팟→LTA→SCA(공동설계+다년공급+운영통합+자본연계)로 이동하며 다년 계약 락인이 근단기 순환 붕괴 확률을 추가 축소(UBS: "LTA가 메모리 cyclicality를 근본적으로 제거"). Micron–Anthropic SCA(06-22)·SCA 16건 $100B 공시 제도화·Stargate LOI(월 90만 웨이퍼=글로벌 DRAM 40%)가 근거. 상쇄 하방으로 범용 DRAM Q3 계약가 감속(+13~18% vs Q2 +58~63%)이 처음 등장했으나 감속은 비(非)AI-락인 범용 축에 집중·서버/HBM/SCA 락인 축은 견조 → 구조 반전 아닌 정제. 결론: DF1 8.5 정점·DF2 1.0 유지(지지 성격 실적 모멘텀→계약 구조 락인으로 전환), 확률 B 37→38·C 9→8(A27·D21·E6 불변, 합 100). 시나리오 트리거는 임계 미충족으로 신규 발동 없음. 보고서 §5.1 확률표 동기화(2026-06 잔존값 정정). 패치 v2.31.2.',
+    tags: ['시나리오', '포지션 맵', '확률', 'DF1', 'LTA', 'SCA', 'Micron', 'Anthropic', 'Stargate', 'EWI', 'dashboard'],
+    items: [
+      { label: '포지션 맵 DF1 8.5·DF2 1.0 유지 (지지 성격 전환)', detail: '07-04 정점 확증(8.0→8.5) 이후 LTA→SCA 계약 체제 확립이 지지 근거를 실적 모멘텀→계약 구조 락인으로 전환. 구조 락인(상방)과 범용 DRAM 감속·중기 공급 씨앗(한국 800조·CXMT 30k)(하방)이 상쇄 → 정점 위치 8.5 유지' },
+      { label: '확률 재추정: A27·B38·C8·D21·E6 (합 100)', detail: '직전 A27·B37·C9·D21·E6. B(Main Bet) 37→38(다년 계약 락인 바닥 경직화)·C 9→8(근단기 이중충격 확률 추가 축소). A·D·E 불변. DF2 신규 신호 없어 불변' },
+      { label: '근거 — LTA→SCA 계약 3단 진화', detail: '스팟→LTA(선급금 10~30%, 역사적 5%↓ 대비)→SCA(공동설계·운영통합·자본연계 적층). Micron–Anthropic SCA(06-22) 완전체 4요소·SCA 16건 $100B 공시 제도화·Stargate LOI 글로벌 DRAM 40%. 메모리 3사 모두 Anthropic Series H 자본테이블 등재' },
+      { label: '상쇄 하방 — 범용 DRAM 가격 첫 감속', detail: 'TrendForce(07-03) Q3 2026 범용 DRAM 계약가 +13~18% QoQ 전망 — Q2(+58~63%) 대비 대폭 감속. 단 감속은 비AI-락인 범용 축 집중, 서버/RDIMM·HBM은 에이전틱 AI로 견조 → 구조 반전 아닌 정제로 판단' },
+      { label: 'EWI 갱신 — 삼성 HBM 점유율 교차 병기', detail: 'Counterpoint Q1 2026 확정치 삼성 ~32%·SK ~58% — 4월 잠정 35~40%보다 낮음(시점·집계 기준 차이). 시계열은 hbm-share.json(37%) 기준 통일, note에 교차 병기. Counterpoint도 삼성 2026 연간 30%+ 전망' },
+      { label: '시나리오 트리거 검토', detail: 'LTA→SCA는 산업 방증(방향 근거)이며 특정 트리거 임계 크로싱 아님 — samsung_hbm_capacity_sold_out_2027(2027 사전확정 미충족)·bigtech_ai_revenue_500b 등 신규 발동 조건 미충족. SCA 전환 EWI 3종(competitor_sca_disclosures·samsung_codesign_contracts·custom_hbm_revenue_share)은 07-04 기준선 유지(신규 분기 데이터 없음)' },
+      { label: '보고서 동기화', detail: 'outputs/report §5.1 확률표가 2026-06 잔존값(A26·B35·C10·D23)에 머물러 있어 07-04·07-07 갱신을 반영해 A27·B38·C8·D21·E6로 정정. Exec Summary Main Bet 확률 표기 갱신' },
+      { label: '위키 동기화', detail: 'wiki/driving-forces/key-drivers.md DF1 현재 위치·wiki/scenarios/scenario-matrix.md 확률 추정표 갱신. dashboard scenarioPlanning.js·indicators.js 미러' },
+    ],
+    links: [
+      { label: 'micron-anthropic-sca-2026-06-22.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/micron-anthropic-sca-2026-06-22.md' },
+      { label: 'lta-to-sca-industry-context-2026-06.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/lta-to-sca-industry-context-2026-06.md' },
+      { label: 'scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+    ],
+  },
   // ── 2026-07-04 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-07-04',

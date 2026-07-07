@@ -9,22 +9,26 @@ export const INITIAL_QUADRANT_POSITIONS = [
   { key: 'sixMonth',   date: '2025-11', df1: 5.5,  df2: 2.5,  note: 'H20 부분 재허용, 삼성 35% 반등, 디커플링 완화' },
   { key: 'threeMonth', date: '2026-02', df1: 6.5,  df2: 1.5,  note: 'MATCH법안 위원회 미통과, 공존 신호 강화' },
   { key: 'oneMonth',   date: '2026-04', df1: 7.5,  df2: 0.5,  note: '빅테크 Q1 실적 호조, 관리된 공존 신호' },
-  // 최신 기준 (2026-07-04) — 슈퍼사이클 정점 '확증'으로 DF1 8.0→8.5 상향, DF2 1.0 불변(디커플링 신규 신호 없음).
-  // Micron FY26 Q3(2026-06-24) 매출 $41.46B 사상 최대·Q4 가이던스 $50B·SCA 16건 $100B take-or-pay 백로그·2026 HBM Sold Out·수급 타이트 2027+ → 근단기 수요 가시성 계약 백로그로 고정.
-  // 단 사상 최고 마진(84.9%)·DRAM>HBM OPM 역전은 후기순환(정점) 신호 → 하락 변곡은 뒤로 밀렸을 뿐, EWI(공급 과잉 68·GPU 임대가 둔화) 선행 감시 지속.
-  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 1.0,  note: 'MU Q3 $41.46B 사상 최대·Q4 $50B·SCA $100B take-or-pay·2026 HBM Sold Out → 슈퍼사이클 정점 확증(DF1 8→8.5). 사상 최고 마진(84.9%)·DRAM>HBM OPM 역전은 후기순환 신호 → 하락 변곡 감시 지속' },
+  // 최신 기준 (2026-07-07 재평가) — DF1 8.5 유지·DF2 1.0 유지. 직전 07-04 정점 확증(8.0→8.5) 이후 수집분 재평가.
+  //   신규 상방(구조): LTA→SCA 계약 체제 확립 — Micron–Anthropic SCA(06-22, 공동설계+다년공급+운영통합+자본연계 4요소)·SCA 16건 $100B 공시 제도화·
+  //     Stargate LOI(월 90만 웨이퍼=글로벌 DRAM 40%)·빅5 CAPEX 추가상향(Dell'Oro $1조·JPMorgan $5.5조). UBS: "LTA가 메모리 cyclicality를 근본적으로 제거" → 근단기 수요 바닥 경직화.
+  //   신규 하방(순환·공급): 범용 DRAM Q3 계약가 +13~18% QoQ로 감속(Q2 +58~63% 대비, TrendForce 07-03) — 단 감속은 '비(非)AI-락인 범용' 축에 집중, 서버/HBM/SCA 락인 축은 견조.
+  //     중기 공급 씨앗: 한국 국가 반도체계획 800조($518B)·CXMT HBM 월 3만장(2026말) — 2027+ 과잉 감시.
+  //   결론: 구조 락인(상방)과 범용 감속·공급 씨앗(하방)이 상쇄 → DF1 8.5 정점 유지. 지지 성격이 '실적 모멘텀'→'계약 구조 락인'으로 전환. 하락 변곡은 여전히 EWI(공급 과잉 67·GPU 임대가·범용 감속) 선행 감시.
+  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 1.0,  note: '[07-07 재평가] DF1 8.5 유지 — LTA→SCA 계약 체제 확립(Micron–Anthropic SCA·$100B·Stargate 40% DRAM)으로 근단기 수요 바닥 경직화(상방)와 범용 DRAM 가격 감속(+13~18%, 비AI축)·중기 공급 씨앗(한국 800조·CXMT 30k)이 상쇄. 지지 성격 실적모멘텀→계약구조 전환' },
 ]
 
-// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-07-04 갱신)
-//   A 25~29 / B 34~38 / C 7~11 / D 19~23 / E 5~8  → 합 100
-//   [2026-07] Micron FY26 Q3 $41.46B 사상 최대·Q4 가이던스 $50B·SCA 16건 $100B take-or-pay 백로그·2026 HBM Sold Out·수급 타이트 2027+
-//     → 근단기 수요 계약 백로그로 고정, AI-지속 축 강화·근단기 하락 조정 확률 축소.
-//     Main Bet B 강화(35→37)·A 소폭 상향(26→27)·D 하향(23→21)·C 소폭 하향(10→9). DF2(디커플링) 신규 신호 없어 불변.
-//   직전 [2026-06]: A26·B35·C10·D23·E6.
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-07-07 재평가)
+//   A 25~29 / B 35~39 / C 6~10 / D 19~23 / E 5~8  → 합 100
+//   [2026-07-07] 07-04 정점 확증(A27·B37·C9·D21·E6) 이후 LTA→SCA 계약 체제 확립 반영.
+//     Micron–Anthropic SCA(06-22)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)로 다년 계약 락인 = 근단기 순환 붕괴 확률 추가 축소.
+//     감속 신호(범용 DRAM Q3 +13~18%)는 비(非)AI-락인 범용 축에 집중 — 락인 축(서버/HBM/SCA)은 견조 → 구조를 반전 아닌 정제.
+//     Main Bet B 37→38(계약 락인 바닥 경직화)·C 9→8(근단기 이중충격 확률 추가 축소). A·D·E 불변. DF2 신규 신호 없어 불변.
+//   직전 [2026-07-04]: A27·B37·C9·D21·E6.
 export const SCENARIOS = [
   { id: 'A', name: '황금 요새', probability: 27, color: 'blue', description: 'AI 지속 + 디커플링' },
-  { id: 'B', name: 'AI 르네상스', probability: 37, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
-  { id: 'C', name: '기술 냉전', probability: 9, color: 'red', description: 'AI 붕괴 + 디커플링' },
+  { id: 'B', name: 'AI 르네상스', probability: 38, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
+  { id: 'C', name: '기술 냉전', probability: 8, color: 'red', description: 'AI 붕괴 + 디커플링' },
   { id: 'D', name: '조용한 재편', probability: 21, color: 'orange', description: 'AI 붕괴 + 공존' },
   { id: 'E', name: '패러다임 전환', probability: 6, color: 'purple', description: 'HBM 패러다임 붕괴 (와일드카드)' },
 ]
@@ -180,7 +184,7 @@ export const INITIAL_INDICATORS = [
       { date: '2026-05-05', value: 35, note: '2026Q1 추정' },
       { date: '2026-06-14', value: 37, note: '2026Q1 확정 37%(hbm-share.json). 병목 점검(06-14): 삼성 HBM 4월 35~40%로 급회복 — 이전 25~30% 추정 초과' },
     ],
-    note: '2026Q1 37%(SK 51%·Micron 12%). 4월 35~40% 급회복 (june-2026-market-update)',
+    note: '2026Q1 37%(SK 51%·Micron 12%, TrendForce/hbm-share.json 기준). 4월 35~40% 급회복. 교차: Counterpoint Q1 확정치는 삼성 ~32%·SK ~58%로 더 낮음 — 시점·집계 기준 차이(시계열은 hbm-share.json 기준 통일). Counterpoint도 삼성 2026 연간 30%+ 전망 (july-2026-market-update)',
     inputType: 'number',
     hint: '삼성전자 HBM 시장 점유율 % 입력',
     isCritical: true,

@@ -125,7 +125,7 @@ export const DRIVING_FORCES_DATA = {
       id: 'DF1',
       title: 'AI 수요의 구조적 지속성 vs 거품 붕괴',
       role: '주축 X — 시나리오 매트릭스의 가로축',
-      currentPosition: '[2026-07] 슈퍼사이클 정점 확증(DF1 8.0→8.5) — Micron Q3 $41.46B 사상 최대·Q4 $50B·SCA $100B take-or-pay 백로그·2026 HBM Sold Out·수급 타이트 2027+ 로 근단기 수요 가시성 계약 백로그 고정. 단 사상 최고 마진(84.9%)·DRAM>HBM OPM 역전은 후기순환(정점) 신호 → 하락 변곡 감시 지속. DC 트래커 + 수요 변곡 EWI = DF1 공식 센싱 도구',
+      currentPosition: '[2026-07-07 재평가] DF1 8.5 정점 유지 — 07-04 확증(8.0→8.5) 이후 LTA→SCA 계약 체제 확립 반영. Micron–Anthropic SCA(06-22, 공동설계+다년공급+운영통합+자본연계)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)로 다년 계약 락인 → 근단기 수요 바닥 경직화(UBS: "LTA가 cyclicality를 근본적으로 제거"). 상쇄 하방: 범용 DRAM Q3 계약가 +13~18% 감속(비AI-락인 축 집중, 서버/HBM 견조)·중기 공급 씨앗(한국 800조·CXMT 30k). 지지 성격이 실적 모멘텀→계약 구조 락인으로 전환. DRAM>HBM OPM 역전(84.9%)은 후기순환 신호로 유효 → DC 트래커 + 수요 변곡 EWI(공급 과잉·범용 감속) 선행 감시 지속',
       poleA: {
         label: '구조적 지속·슈퍼사이클',
         narrative: 'AI 수요 폭증 + 빅테크 CapEx 2027 $1조 돌파, HBM이 DRAM의 50% 차지 (2030)',
@@ -186,8 +186,8 @@ export const SCENARIOS_DATA = {
     {
       id: 'B', name: 'AI 르네상스', color: '#059669',
       df1: 'AI 지속',     df2: '관리된 공존',
-      probability: 37,  // 2026-07-04 — Micron Q3 $41.46B·Q4 $50B·SCA $100B take-or-pay·2026 HBM Sold Out → 35→37
-      summary: 'AI 글로벌 성장 + 중국 시장 부분 접근 유지. 최상의 성장 환경, 가장 가능성 높음. [2026-07] Micron Q3 $41.46B 사상 최대·Q4 $50B·SCA 16건 $100B take-or-pay 백로그·2026 HBM Sold Out·수급 타이트 2027+ → 근단기 수요 계약 백로그로 고정, Main Bet 강화(35→37). KPI 윈도우 HBM4E·HBM5(2027~). 단 사상 최고 마진(84.9%)·정점 신호로 절제(RS-5) 병행.',
+      probability: 38,  // 2026-07-07 — LTA→SCA 계약 체제 확립(Micron–Anthropic SCA·$100B·Stargate 40% DRAM)으로 근단기 수요 바닥 경직화 → 37→38
+      summary: 'AI 글로벌 성장 + 중국 시장 부분 접근 유지. 최상의 성장 환경, 가장 가능성 높음. [2026-07-07] LTA→SCA 계약 체제 확립 — Micron–Anthropic SCA(06-22)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)로 다년 계약 락인, 근단기 수요 바닥 경직화 → Main Bet 강화(37→38). 감속 신호(범용 DRAM +13~18%)는 비AI-락인 축 집중, 서버/HBM/SCA 축 견조. KPI 윈도우 HBM4E·HBM5(2027~). 단 사상 최고 마진(84.9%)·정점 신호로 절제(RS-5) 병행.',
       threats: ['SK하이닉스 기술 격차 고착 (FY25 OP 47.2조 vs Samsung 메모리 24.9조)', 'NAND 점유율 회복 압박', 'Rubin 진입 여지 좁아짐 (SK 2/3+ 락인)', '공급 과잉 정점 후 순환 조정 리스크'],
       opportunities: ['동서 양쪽 시장 공략', 'DC 파이프라인 55.9GW·운영사별 HBM 수요 가시성', 'HBM4E·HBM5 윈도우에서 회복 베팅', '대중 일반 메모리 매출 유지', 'IDM 종합반도체 차별점 (CXL·3D DRAM·로직다이 내재화)'],
       keyAssumption: 'AI 수익화 가시화 + 미중 협상 모멘텀 지속 + DC 착공 파이프라인 실현',
@@ -196,7 +196,7 @@ export const SCENARIOS_DATA = {
     {
       id: 'C', name: '기술 냉전', color: '#dc2626',
       df1: 'AI 거품 붕괴', df2: '디커플링',
-      probability: 9,  // 2026-07-04 — 수요 백로그가 근단기 이중 충격 확률 축소 → 10→9
+      probability: 8,  // 2026-07-07 — LTA→SCA 다년 계약 락인으로 근단기 이중 충격(AI붕괴+디커플링) 확률 추가 축소 → 9→8
       summary: 'AI 투자 급감 + 공급망 단절 동시 발생. 메모리 대규모 공급과잉 — 최악 시나리오',
       threats: ['이중 충격', '시안 팹 + 수요 급감 동시', '구조조정 불가피', '경쟁사 인수 표적'],
       opportunities: ['생존 자체가 경쟁력', 'M&A 매물 등장', '재무체력으로 기술 격차 좁히기'],
