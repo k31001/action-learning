@@ -14,6 +14,20 @@
 
 ---
 
+## [2026-07-07] ingest | 정기 시장 점검 — 삼성 Q2 잠정실적 89.4조 원·SK하이닉스 나스닥 확정·BIS 버블 경고·병목지수 갱신
+
+3개 병렬 리서치 에이전트(전력/CAPEX·파운드리/패키징·HBM/DRAM 시장)로 SemiAnalysis·Counterpoint·TechInsights 우선 수집(대부분 직접 fetch 403 → 검색 스니펫/2차 인용 경유) + FERC·ERCOT·BIS·Fortune·Korea Times 등 보강. 신규 소스: [sources/articles/july-2026-market-update-2026-07-07.md](sources/articles/july-2026-market-update-2026-07-07.md).
+
+**핵심 신규 사실**: ① 삼성전자 2026 Q2 잠정 가이던스(오늘 발표) — 연결 영업이익 약 89.4조 원(사상 최대, 19배 YoY), 발표 당일 주가는 "재료 소진"으로 -7%. ② SK하이닉스 나스닥 ADR 조달목표 45.45조→43.14조 원(~$28.1~28.2B)으로 하향 확정, 코너스톤 투자자(Baillie Gifford·Coatue·Situational Awareness Partners) 최대 $7B, 가격확정 7/9·거래개시 7/10. 조달자금 용처 최초 공개(용인 Fab1 $20.2B·청주 P&T7 패키징팹 $12.4B·ASML EUV $7.8B). ③ BIS(국제결제은행) 연차보고서(06-28) — AI 투자 붐을 과거 버블 붕괴와 명시적 비교, 통화당국 최상위 기관의 첫 공식 경고. Oracle 주가 -40%대. ④ FERC PJM 신속접속트랙(EIT, 06-09 승인)·ERCOT Batch Zero(06-18 승인, 시행 07-11) — 절차적 완화. SemiAnalysis가 미국 신규 DC 전력수요 21GW(2026)→84GW(2030) vs 그리드 연 15GW 증설로 구조적 격차 재구성. ⑤ Micron FY2027 EPS 컨센서스 $98→$155/주 상향(16건 HBM 다년계약 근거, 기존 SCA $100B/16건과 동일 계약군 여부는 교차검증 플래그).
+
+**병목 모델 갱신**: [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) §5에 "종합 판독 (2026-07-07)" 신설. 제약지수 전력 72→**73**(▲+1, 절차 완화 vs SemiAnalysis 21→84GW 격차 재확인), CAPEX/ROI 40→**41**(▲+1, BIS 버블 경고 신규 vs 실적·투자 견조), 파운드리 **50**(변동없음, TSMC 6월매출 미발표 정보공백), 패키징 67→**66**(▼-1, SK하이닉스 신규 패키징팹 자금배분 확정). 4개 병목 중 처음으로 전력·CAPEX 동반 소폭 재상승 + 패키징 단독 완화라는 새로운 패턴.
+
+**갱신 페이지**: `wiki/concepts/bottleneck-model-2030.md`(§5 신규 절 + frontmatter), `wiki/concepts/ai-capex.md`, `wiki/concepts/energy-constraints.md`, `wiki/concepts/ai-demand-sustainability.md`(BIS 버블 경고 신규 섹션), `wiki/entities/samsung.md`(Q2 잠정실적 신규 섹션 + frontmatter), `wiki/entities/sk-hynix.md`(나스닥 확정 신규 섹션), `wiki/entities/micron.md`(FY27 EPS 신규 섹션), `index.md`(신규 소스 등록 + 병목지수 갱신), `dashboard/src/data/bottleneckModel.js`(MODEL_ASOF·PREV_INDICES·currentIndex 갱신), `outputs/report/scenario-planning-report.md`(Executive Summary 핵심수치 표 갱신).
+
+**전략 변경 없음** — 이번 갱신은 기존 Main Bet(시나리오 B)·9개 Robust 전략의 정량 근거를 보강하는 수준이며, 신규/폐기 전략은 없음. RS-5(재무 규율) 감시 대상에 "사상 최대 실적 발표 당일 주가 조정" 패턴 추가 관찰.
+
+---
+
 ## [2026-07-07] assessment | 시나리오 포지션 맵·확률 재평가 — LTA→SCA 계약 체제 확립 반영 (B 37→38·C 9→8, DF1 8.5 유지, v2.31.2)
 - **무엇**: 직전 포지션 맵 갱신(2026-07-04, 정점 확증 DF1 8.0→8.5) 이후 git log로 파악한 변경분(LTA→SCA 전환·Micron–Anthropic SCA·Stargate LOI·CAPEX 추가 상향)을 근거로 포지션 맵·확률 재평가. **DF1 8.5·DF2 1.0 유지**, 확률 **B 37→38·C 9→8**(A27·D21·E6 불변, 합 100).
 - **왜**: 이번 주기의 핵심 변화는 개별 실적이 아니라 **계약 구조** — 산업이 스팟→LTA→SCA(공동설계+다년공급+운영통합+자본연계)로 이동하며 다년 계약 락인이 근단기 순환 붕괴 확률을 추가 축소(UBS: "LTA가 메모리 cyclicality를 근본적으로 제거"). Micron–Anthropic SCA(06-22)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)가 근거. 상쇄 하방으로 범용 DRAM Q3 감속(+13~18% vs Q2 +58~63%)이 처음 등장했으나 비(非)AI-락인 범용 축에 집중·서버/HBM/SCA 락인 축 견조 → 구조 반전 아닌 정제. 지지 성격이 실적 모멘텀→계약 구조 락인으로 전환됐으나 정점 위치는 8.5 유지.

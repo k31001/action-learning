@@ -474,3 +474,21 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 - 2026-06-25 N.D. Cal. 제소 건에 Micron도 삼성전자·SK하이닉스와 함께 피고로 포함 — HBM 전환 명목 하 범용 DRAM 공급 제한·가격 담합 주장([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세 내용은 신규 개념 페이지 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §3, §4
+
+## 업데이트 (2026-07-07) — FY2027 EPS 컨센서스 대폭 상향 + 경쟁사 캐파 증설 "공급과잉 경고"
+
+### FY2027 EPS 컨센서스 — $98 → $155/주
+
+- Wall Street이 Micron FY2027 EPS 컨센서스를 **$98 → $155/주**로 대폭 상향(2026-07-06 보도) — 16건의 다년 고객계약(~$22B 커밋 HBM 매출)을 근거로 든다. 이 계약군이 기존 위키의 Q3 FY26 공시 "SCA 16건·~$100B RPO·$22B 예치금"([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md))과 동일한 계약군인지는 정의·집계 기준이 다를 수 있어 **교차검증 필요로 플래그**해 둔다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+
+### 경쟁사발 "공급과잉 경고" — 삼성·SK하이닉스 $2조 캐파 증설 공약
+
+- 삼성전자·SK하이닉스의 합산 **$2조 규모 캐파 증설 공약**(양사 합산 DRAM 점유율 67%, Counterpoint)이 2026-07-06 보도에서 Micron 투자자에 대한 "공급과잉 경고"로 해석됐다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- 2026-07-07 삼성 Q2 잠정실적(영업이익 89.4조 원 사상 최대) 발표 여파로 Micron 주가도 장중 약 -7.7% 하락했다 — 회사 고유 이슈가 아닌 시장 전반의 "재료 소진" 조정으로 해석된다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+
+### Samsung 함의
+
+- Micron의 EPS 상향(+58%)은 HBM 다년계약 구조의 수익성을 재확인 — Samsung의 RS-8(구조화 매출 헷지) 정량화 명분을 다시 한번 강화한다.
+- 경쟁사(삼성 자신 포함) 캐파 증설이 "공급과잉 경고"로 읽힌다는 점은 [rs5-financial-discipline-reinvestment.md](../strategies/invariant/rs5-financial-discipline-reinvestment.md)의 호황 정점 공급 규율 논의에 외부 관찰자 관점의 근거를 더한다.
+
+**출처**: [july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md) §4

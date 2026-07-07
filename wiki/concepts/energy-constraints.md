@@ -169,3 +169,14 @@
 - **병목 모델 연결**: 위 신규 데이터를 반영해 전력 제약지수가 70 → 72로 추가 상향됐다(2026-07-04) — 변압기·개폐장치 리드타임(최대 5년)이 가스터빈을 제치고 최대 신규 병목으로 부상 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). [bottleneck-model-2030.md](bottleneck-model-2030.md) 갱신 검토 필요.
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §1
+
+## 업데이트 (2026-07-07) — 절차적 완화(EIT·Batch Zero) vs SemiAnalysis 21→84GW 격차 재확인 (병목지수 72→73)
+
+- **FERC PJM 신속 접속 트랙(Expedited Interconnection Track, EIT)**: 2026-06-09 승인, 2026-06-10부터 2027년 말까지 한시 운영. 연 최대 10건·최소 250MW UCAP 프로젝트에 한해 10개월 내 접속계약 체결·3년 내 가동을 목표로 하는 신속 심사 트랙 — PJM 자체의 2027~28년 6.6GW 부족 경고에 대한 직접 대응이다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **ERCOT "Batch Zero Process" 공식화**: PUCT 2026-06-18 승인, **시행 2026-07-11**. 75MW 이상 대형부하(주로 데이터센터) 요청을 개별 심사 대신 시스템 단위 일괄 연구로 전환 — 서류 제출기한 7/10, ERCOT 분류통보 8/7 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **SemiAnalysis "US Grid Constraints" (2026년 7월 초)**: 미국 신규 데이터센터 전력 수요를 **21GW(2026) → 84GW(2030)**로, 그리드 신뢰용량(ELCC) 기준 연간 증설은 ~15GW로 제시 — 수요-공급 격차를 기존의 "대기열 GW" 서술보다 더 날카로운 성장률 숫자로 재구성했다. 2028년까지 자가발전(BTM) 40GW+가 신규 미국 DC 전력의 과반을 차지할 것으로 전망한다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **취소설 추가 반박**: SemiAnalysis(06-18)는 북미 하이퍼스케일러의 자체건설 전망이 최근 6개월간 1%만 하향(코로케이션 <5%)됐다는 데이터로 "2026 캐파 절반 취소" 주장을 재차 반박했다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **원자력/SMR**: DOE가 첨단원자로 11종을 선정했고, 2026-07-04까지 시험로 3기 이상 임계 달성을 목표로 하는 프로그램이 확인됐다 — 총 커밋량(9.8GW+) 자체는 불변이나 프로그램이 구체화됐다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **병목 모델 해석**: EIT·Batch Zero는 접속 "절차"의 개선일 뿐 신규 발전 용량 자체를 늘리지 않는다. 반면 SemiAnalysis의 21GW→84GW 재구성은 구조적 격차가 오히려 더 명확해졌다는 뜻이다 — 절차적 완화가 구조적 수급 악화를 상쇄하지 못해 전력 제약지수는 72 → **73**으로 추가 소폭 상향됐다(2026-07-07) ([bottleneck-model-2030.md](bottleneck-model-2030.md)).
+
+**출처**: [july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md) §1

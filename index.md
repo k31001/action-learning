@@ -74,7 +74,7 @@
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
-- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-07-04 제약지수 전력72·CAPEX40·파운드리50·패키징67)
+- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-07-07 제약지수 전력73·CAPEX41·파운드리50·패키징66)
 - [wiki/concepts/dram-antitrust-litigation.md](wiki/concepts/dram-antitrust-litigation.md) — DRAM 반독점 집단소송(2026-06-25 제소, Samsung·SK하이닉스·Micron 공동 피고) — 삼성 규제·평판 리스크 추적 (NEW)
 
 ### 신규 전략 인접영역 (시니어 파트너 인터뷰 2026-06-11 기반)
@@ -158,6 +158,7 @@
 - [sources/articles/palantir-fde-model-2026-07.md](sources/articles/palantir-fde-model-2026-07.md) — Palantir Forward Deployed Engineer(FDE, 내부코드 "Delta") 모델 — 고객사 상주 엔지니어, Anthropic·OpenAI GTM 채택, 개발실 Co-Design Pod 벤치마크
 - [sources/articles/star-engineer-context-2026-07.md](sources/articles/star-engineer-context-2026-07.md) — 스타 엔지니어 논거: 송길영 『호명사회』(조직→개인 이름) + 2026 메모리 성과급 급등(삼성 ~6억·SK 상한철폐) → DE 채용 협상 우위
 - [sources/articles/july-2026-market-update-2026-07-04.md](sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 정기 점검(SemiAnalysis·Counterpoint·TechInsights 우선 수집): PJM 개편 큐·ERCOT 큐 4배 급증·변압기 리드타임 5년·빅5 CapEx 추가 상향(MS $190B)·Dell'Oro $1조 돌파·JPMorgan $5.5조·ASML High-NA 2029 연기·HBM4 마이크로범프 결정·SK하이닉스 나스닥 상장·반독점 소송·DRAM Q3 가격 감속 조짐
+- [sources/articles/july-2026-market-update-2026-07-07.md](sources/articles/july-2026-market-update-2026-07-07.md) — 2026-07-07 정기 점검: 삼성 Q2 잠정실적 영업이익 89.4조 원(사상 최대·19배 YoY)·SK하이닉스 나스닥 조달목표 하향 확정($28.1~28.2B)+자금용처 공개(패키징 팹 $12.4B)·BIS 버블 경고·FERC EIT·ERCOT Batch Zero·SemiAnalysis 21→84GW 전력 격차·Micron FY27 EPS 컨센서스 $155 상향
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL

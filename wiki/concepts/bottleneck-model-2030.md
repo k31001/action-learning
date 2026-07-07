@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-07-07
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/july-2026-market-update-2026-07-07.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -348,6 +348,29 @@ flowchart LR
 - **DRAM 가격 상승 감속 조짐(조기경보 후보)**: TrendForce(2026-07-03, 최신) Q3 2026 범용 DRAM 계약가 전망 **+13~18% QoQ**로 Q2(+58~63%) 대비 큰 폭 감속 — PC/스마트폰 구매력 한계·고기저 효과가 주 원인, 서버향은 에이전틱 AI 수요로 견조. Jefferies는 여전히 Q3 +40~50%를 전망(스팟·HBM 포함 범위 차이로 추정) — **범용 DRAM 계약가 축의 첫 감속 신호로 [demand-inflection-ewi.md](demand-inflection-ewi.md) 모니터링 대상에 추가**.
 - **반독점 소송 신규 리스크**: 2026-06-25 삼성·SK하이닉스·Micron 대상 미국 집단소송 제기(HBM 전환 명목 범용 DRAM 공급 제한·가격 담합 주장) — 병목 모델 자체의 수급 축을 바꾸진 않으나 **CAPEX/ROI·가격 결정 관련 규제·평판 리스크**로 별도 모니터링 필요 ([dram-antitrust-litigation.md](dram-antitrust-litigation.md) 신설).
 
+---
+
+### 종합 판독 (2026-07-07)
+
+#### 제약지수 업데이트 (2026-07-07, 이전 2026-07-04 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 72 | **73** | **▲ +1** | FERC PJM 신속 접속 트랙(EIT, 2026-06-09 승인)·ERCOT Batch Zero Process(2026-06-18 승인, 시행 07-11)는 접속 "절차" 개선일 뿐 신규 발전 용량 자체는 늘리지 않음. SemiAnalysis "US Grid Constraints"가 미국 신규 DC 전력 수요를 **21GW(2026)→84GW(2030)** vs 그리드 신뢰용량 연 증설 ~15GW로 재구성 — 구조적 격차가 더 날카로운 숫자로 재확인되며 절차적 완화를 상쇄 |
+| **CAPEX/ROI** | 40 | **41** | **▲ +1** | BIS(국제결제은행) 연차보고서(2026-06-28)가 AI 투자 붐을 과거 버블 붕괴 사례와 명시적으로 비교하며 "급격한 되감기" 리스크 경고 — 신용기관 최초의 공식 버블 경고. Oracle 주가 최근 1개월 -40%대·"은행·하이퍼스케일러까지 버블 우려 확산"(The Register, 07-06) 보도로 센티먼트 축 하방 리스크 신규 등장. 단 HY OAS 2.75%로 소폭 타이트닝(스트레스 없음)·Oracle FY2027 CAPEX 가이던스는 오히려 ~$90~95B로 상향 확정·SK하이닉스 나스닥 조달자금 $40B 신규 팹 배분 확정·삼성 2026 Q2 잠정 영업이익 89.4조 원(사상 최대, 19배 YoY)으로 펀더멘털은 견조 — **센티먼트-펀더멘털 괴리 확대** |
+| **파운드리** | 50 | **50** | **변동 없음** | TSMC 6월 매출 미발표(통상 7/10)·Q2 실적발표(7/16) 전 확인 가능한 신규 데이터 없음. TSMC 주가 +4.83%(07-06)는 Citigroup의 가이던스 상향 기대감일 뿐 확정 데이터 아님 — watch 항목으로 이월 |
+| **패키징** | 67 | **66** | **▼ −1** | SK하이닉스 나스닥 ADR 조달자금 용처 공개 — ₩19조(~$12.4B) 청주 P&T7 첨단 패키징 팹, ₩12조(~$7.8B) ASML EUV 장비 구매로 배분 확정. 패키징 캐파 확장에 대한 구체적 신규 자본 투입 확인([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)) |
+
+**전력·CAPEX 동반 소폭 재상승(각▲+1) — 절차적 완화(전력의 EIT·Batch Zero)와 실적 호조(CAPEX의 삼성·SK하이닉스 실적)에도 불구하고, 더 날카로워진 구조적 수급 격차(전력)와 새로 등장한 버블 경고 내러티브(CAPEX)가 이를 상쇄. 패키징만 유일하게 완화(SK하이닉스 신규 자본 배분). 파운드리는 정보 공백 구간으로 보합. 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리.**
+
+#### 2026-07-07 핵심 신규 신호
+
+- **삼성전자 2026 Q2 잠정실적 — 병목 모델 밖 최대 재료**: 2026-07-07(오늘) 삼성전자가 연결 매출 약 171조 원·연결 영업이익 약 **89.4조 원**(사상 최대, 전년 동기 대비 약 **19배**) 잠정 가이던스를 발표했다. AI 반도체·HBM 수요가 견인 — 이 위키가 추적해온 "호황의 정점" 서사의 가장 강력한 정량적 확증이나, 발표 당일 주가는 "재료 소진(sell the news)"으로 약 -7% 하락했다. 확정 실적·컨퍼런스콜은 2026-07-30 예정 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **AI 버블 경고의 질적 전환**: 기존까지의 버블론은 주로 애널리스트·언론 논조 수준이었으나, BIS(국제결제은행)라는 통화당국 최상위 기관이 공식 연차보고서에서 명시적으로 경고하며 질적으로 격상됐다. Oracle 주가 급락(-40%대)이 대표 사례로 인용되고 있다 — CAPEX/ROI 병목의 상류(d2) 압력에 새로운 축으로 추가 모니터링 필요.
+- **SK하이닉스 나스닥 ADR — 조달 목표 하향 확정 + 자금 용처 공개**: KOSPI 주가 하락을 반영해 조달 목표를 45.45조 원→43.14조 원(~$28.1~28.2B)으로 하향 확정했으며, Baillie Gifford·Coatue·Situational Awareness Partners가 최대 $7B 코너스톤 투자 의향을 밝혔다. 가격 확정 7/9·거래 개시 7/10 예정. 자금 용처가 처음으로 구체 공개됐다(§ CAPEX/패키징 겸용 근거) ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **Micron FY2027 EPS 컨센서스 대폭 상향**: Wall Street이 $98→$155/주로 상향(2026-07-06) — 16건 다년 고객계약(~$22B 커밋 HBM 매출) 근거. 단, 이 계약군이 기존 위키의 SCA $100B/16건과 동일한지는 교차검증 필요로 플래그.
+- **전력·CAPEX 절차 vs 구조의 괴리 확대**: 전력은 행정적 완화 조치(EIT·Batch Zero)가 실행되고 있음에도 SemiAnalysis의 21GW→84GW 재구성이 구조적 격차를 오히려 부각시켰고, CAPEX는 실적·투자 지표가 개선되는 동시에 버블 경고가 격상되는 이중 트랙이 뚜렷해졌다 — 두 축 모두 "실물은 완화, 리스크 서사는 심화"라는 동일 패턴을 보인다.
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -363,3 +386,4 @@ flowchart LR
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 병목 제약지수 갱신 데이터 (PJM 개편 큐·ERCOT 4배 급증·변압기 리드타임·CAPEX 추가 상향·ASML High-NA 연기·HBM4 마이크로범프 결정·DRAM 가격 감속 조짐)
+- [sources/articles/july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md) — 2026-07-07 병목 제약지수 갱신 데이터 (FERC EIT·ERCOT Batch Zero·SemiAnalysis 21→84GW 격차·BIS 버블 경고·삼성 Q2 잠정실적 89.4조 원·SK하이닉스 나스닥 자금용처)

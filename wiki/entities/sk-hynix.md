@@ -394,3 +394,28 @@ Counterpoint Research (2026-01-29):
 - 2026-06-29 발표(약 800조 원/$518B) — SK하이닉스 **신규 팹 2개** 건설 계획 포함(삼성전자도 동일하게 신규 팹 2개)([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+## 업데이트 (2026-07-07) — 나스닥 ADR 조달목표 하향 확정 + 자금 용처 공개
+
+### 조달 목표 하향 — KOSPI 주가 하락 반영
+
+- 2026-07-06 북빌딩 개시와 함께 조달 목표를 **45.45조 원 → 43.14조 원(~$28.1~28.2B)**으로 하향 확정 — KOSPI 종가가 6/23 255.5만 원에서 242만 원으로 하락한 것을 반영([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- 코너스톤 투자자로 **Baillie Gifford·Coatue Management·Situational Awareness Partners**(Leopold Aschenbrenner 펀드)가 최대 **$7B** 공동 인수의향서 제출([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- 일정: 가격 확정 **7/9**, 거래 개시 **7/10**(티커 SKHY, 신주 1,779만 주 ≈ 발행주식 2.5%) — 07-04 스냅샷의 "~$294억·07-10" 전망 대비 조달액이 소폭 하향 확정된 것 외 일정은 그대로 유지([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+
+### 조달자금 용처 최초 구체 공개 — 패키징 캐파에 직접 배분
+
+| 용처 | 금액 | 목적 |
+|---|---|---|
+| 용인 반도체클러스터 Fab 1 | ₩31조 (~$20.2B) | 신규 웨이퍼 팹 |
+| 청주 P&T7 첨단 패키징 팹 | ₩19조 (~$12.4B) | HBM 패키징 캐파 확장 (기존 위키 "첨단 패키징 팹 19조 원"과 동일 프로젝트로 확인) |
+| ASML EUV 장비 구매 | ₩12조 (~$7.8B) | 리소그래피 장비 확보 |
+
+([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md))
+
+### 함의
+
+- **패키징 병목에 대한 구체적 자본 투입 확인**: 청주 P&T7 팹에 대한 자금 배분이 IPO 자료로 명시되며 — [bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md)의 패키징 제약지수가 67→**66**(▼-1)으로 소폭 완화됐다.
+- **자본시장 접근성 확대 재확인**: 역대 최대 ADR 상장(하향 조정 후에도 ~$28B) 자체가 Samsung 대비 자본조달 채널 다변화 격차를 재확인 — [Update 2026-06-11] "Samsung 3·4단계 격차" 서술과 함께 자금조달 측면의 경쟁 우위로도 추적 필요.
+
+**출처**: [july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md) §2, §3

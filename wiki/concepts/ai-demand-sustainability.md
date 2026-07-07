@@ -120,3 +120,14 @@
 - 상세·통합 프레임: [ai-compute-economics-gap.md](ai-compute-economics-gap.md).
 
 **출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §①
+
+---
+
+## [Update 2026-07-07] BIS(국제결제은행) 연차보고서 — 버블 경고의 질적 격상
+
+- BIS가 2026-06-28 발표한 연차보고서에서 AI 투자 붐을 과거 버블 붕괴 사례와 명시적으로 비교하며, 시스템 리스크가 "급격히 되감길(unwind abruptly)" 수 있다고 경고했다. AI 관련 사모신용 대출 규모가 $3B(2010) → $40B(2025)로 급증했다는 점을 근거로 들었다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **질적 전환의 의미**: 기존 거품론은 주로 애널리스트·언론 논조 수준이었으나, 통화당국의 최상위 국제기구인 BIS가 공식 연차보고서로 경고했다는 점에서 신뢰도가 다른 신규 리스크 신호다. Oracle 주가 최근 1개월 -40%대 급락이 은행·하이퍼스케일러까지 버블 우려가 확산되는 대표 사례로 인용된다(The Register, 2026-07-06) ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **펀더멘털과의 괴리**: 같은 주간 삼성전자 2026 Q2 잠정 영업이익 89.4조 원(사상 최대, 19배 YoY)·SK하이닉스 나스닥 조달자금 신규 팹 배분 확정 등 메모리 업계 실적·투자 지표는 오히려 견조했다 — 센티먼트(버블 경고)와 펀더멘털(실적 확증)의 괴리가 확대되는 국면으로 해석된다.
+- [bottleneck-model-2030.md](bottleneck-model-2030.md)의 CAPEX/ROI 병목 제약지수에 신규 상류 리스크 축으로 반영(40→41).
+
+**출처**: [july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md) §2

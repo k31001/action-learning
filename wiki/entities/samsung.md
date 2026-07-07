@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-07-07
+sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/july-2026-market-update-2026-07-07.md]
 ---
 
 # Samsung Electronics — 메모리사업부 (DS 부문)
@@ -273,3 +273,20 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - 2026-06-29 발표된 한국 국가 반도체 생태계 계획(약 800조 원/$518B) — 삼성전자·SK하이닉스 각각 **신규 팹 2개씩** 건설 계획 포함([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §2, §4
+
+## 업데이트 (2026-07-07) — 2026 Q2 잠정실적 사상 최대 (영업이익 89.4조 원, 19배 YoY)
+
+### Q2 2026 잠정 가이던스 (2026-07-07 발표, 확정실적·컨퍼런스콜 07-30 예정)
+
+- **연결 매출**: 약 171조 원 (컨센서스 172.18조 원 소폭 하회)
+- **연결 영업이익**: 약 **89.4조 원** — 사상 최대, **전년 동기 대비 약 19배** ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md))
+- 동인: AI 반도체·HBM 수요 — 위 [Update 2026-07-04] Q1 실적(DS 영업이익 57.2조 원, +756% YoY)에 이어 분기 연속 사상 최대 경신
+- **주가 반응**: 실적 발표 당일 "재료 소진(buy the rumor, sell the news)" 패턴으로 약 **-7%** 하락 — 실적 자체와 시장 반응이 괴리되는 호황 정점 특유의 신호로 기록해 둘 가치가 있다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md))
+
+### 함의
+
+- **호황의 정점 서사 최강 확증**: 이 위키가 추적해온 "호황의 함정"(사상 최고 실적 + HBM 후순위 리스크 공존) 서사에서, 실적 축은 89.4조 원으로 최고점을 재확인했다. HBM 점유율 축(25~32%대, [hbm-market.md](../concepts/hbm-market.md))은 여전히 후순위라는 점과 대비된다.
+- **RS-5 재무 규율 트리거 근접**: 사상 최대 이익 국면에서의 주가 조정은 [rs5-financial-discipline-reinvestment.md](../strategies/invariant/rs5-financial-discipline-reinvestment.md)의 "호황 정점 공급 규율" 감시 대상에 추가할 신호.
+- **BIS 버블 경고와의 시차 대비**: 같은 주 BIS(국제결제은행)가 AI 투자 버블을 공식 경고([ai-demand-sustainability.md](../concepts/ai-demand-sustainability.md))했음에도 삼성 실적은 정반대로 사상 최고를 기록 — 센티먼트와 펀더멘털의 괴리 확대 국면의 대표 사례.
+
+**출처**: [july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md) §4

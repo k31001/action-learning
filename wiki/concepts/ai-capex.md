@@ -109,3 +109,16 @@
 - **신규 리스크 — 반독점 집단소송**: 2026-06-25 삼성·SK하이닉스·Micron을 상대로 집단소송이 제기됐다 — HBM 전환을 명목으로 3사가 범용 DRAM 공급을 인위적으로 제한했다는 주장이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세는 신규 개념 페이지 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조(다른 에이전트가 작성 중).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §2
+
+## 업데이트 (2026-07-07)
+
+**AI 버블 경고 vs 실적·투자 지속의 괴리**
+
+- **BIS(국제결제은행) 연차보고서**(2026-06-28): AI 투자 붐을 과거 버블 붕괴 사례와 명시적으로 비교하며 시스템 리스크의 "급격한 되감기" 가능성을 경고했다 — AI 관련 사모신용 대출이 $3B(2010)→$40B(2025)로 급증했다는 근거를 들었다. 통화당국 최상위 기관의 공식 경고라는 점에서 기존 애널리스트·언론 수준 거품론과 질적으로 다르다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **Oracle 스트레스**: 최근 1개월간 주가 -40%대 — "은행·하이퍼스케일러까지 버블 우려 확산"(The Register, 2026-07-06)의 대표 사례로 인용. 단 Oracle FY2027 CAPEX 가이던스는 자체 지출 ~$70B + 고객상환 $20~25B(합계 ~$90~95B)로 오히려 상향 확정됐고, $40B 규모의 FY2027 부채/자본 조달 계획도 유지된다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **신용시장**: ICE BofA US HY OAS가 2026-07-02 기준 2.75%로, 07-04 스냅샷(~285bp) 대비 소폭 타이트닝 — 스트레스 신호 없음 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **SK하이닉스 나스닥 조달자금 용처 공개**: ₩31조(~$20.2B) 용인 Fab 1, ₩19조(~$12.4B) 청주 P&T7 패키징 팹, ₩12조(~$7.8B) ASML EUV 장비 구매로 배분 확정 — 신규 CAPEX 자금원이 구체화됐다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **삼성전자 2026 Q2 잠정실적**: 연결 영업이익 약 89.4조 원(사상 최대, 전년 동기 대비 약 19배) — ROI 실현 서사의 가장 강력한 정량적 확증. 발표 당일 주가는 "재료 소진"으로 약 -7% 하락했다 ([july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md)).
+- **병목 모델 반영**: 실물 지표(신용 스프레드·CAPEX 가이던스·실적)는 완화 방향이나 BIS 경고라는 신규 센티먼트 축 리스크가 이를 상쇄 — CAPEX/ROI 제약지수 40→**41**(▲+1) ([bottleneck-model-2030.md](bottleneck-model-2030.md)).
+
+**출처**: [july-2026-market-update-2026-07-07.md](../../sources/articles/july-2026-market-update-2026-07-07.md) §2
