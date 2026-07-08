@@ -14,6 +14,25 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-08 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-07-08',
+    type: 'build',
+    version: 'v2.31.3',
+    title: '인터뷰 목차 앵커 버그 수정 — 하단 섹션이 엉뚱한 위치로 스크롤되던 문제',
+    summary:
+      '인터뷰 목차에서 하단 섹션(§15 수정사항·§16 결론 등)을 클릭하면 문서 끝이라 뷰포트 최상단까지 스크롤되지 못하고 화면 중간(§16의 경우 466px 아래)에 멈추던 문제 수정. 본문 하단에 스크롤 여유(spacer)를 두고, 목차 클릭을 부드러운 스크롤 + 도착 섹션 강조로 개선. Chromium 실측으로 16개 섹션 전부 최상단(16px) 정렬 확인. 상위 탭 메뉴명 영문 통일(인터뷰→Interviews·업데이트 내역→Updates). 패치 v2.31.3.',
+    tags: ['인터뷰', '버그수정', '목차', 'UX', '메뉴명', 'dashboard'],
+    items: [
+      { label: '원인', detail: '문서 하단 짧은 섹션은 아래 스크롤 공간이 부족해 네이티브 #앵커가 최상단 정렬 불가 (§16 결론이 뷰포트 466px 지점에 멈춤)' },
+      { label: '수정', detail: '본문 말미 trailing spacer(h-70vh)로 스크롤 여유 확보 → 모든 섹션 최상단 정렬. 목차 클릭을 scrollIntoView(smooth)+도착 섹션 링 강조로 전환, #해시 잔류 제거(해시 라우팅과 충돌 방지)' },
+      { label: '메뉴명 영문 통일', detail: '상위 탭에서 한글이던 "인터뷰"·"업데이트 내역"을 Interviews·Updates로 변경해 나머지 영문 탭과 통일' },
+      { label: '검증', detail: 'Chromium 헤드리스 실측 — exec-summary·who-makes-money·recommendations·revisions·conclusion 모두 headingTop=16px 확인' },
+    ],
+    links: [
+      { label: 'Interviews.jsx', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/src/components/Interviews.jsx' },
+    ],
+  },
   // ── 2026-07-07 ───────────────────────────────────────────────────────────────
   {
     date: '2026-07-07',

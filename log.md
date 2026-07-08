@@ -14,6 +14,12 @@
 
 ---
 
+## [2026-07-08] build | 인터뷰 목차 앵커 버그 수정 + 상위 탭 메뉴명 영문 통일 (v2.31.2 → v2.31.3)
+- **무엇**: (1) 인터뷰 메뉴 목차에서 문서 하단 섹션(§15·§16 등)을 클릭하면 스크롤 여유 부족으로 뷰포트 최상단까지 못 가고 화면 중간(§16 결론은 466px 지점)에 멈추던 버그 수정 — 본문 말미 trailing spacer(h-70vh) 추가로 모든 섹션 최상단 정렬, 목차 클릭을 `scrollIntoView({behavior:'smooth'})`+도착 섹션 링 강조로 전환(#해시 잔류 제거 → 해시 라우팅과 충돌 방지). (2) 상위 탭 메뉴명 한글("인터뷰"·"업데이트 내역")을 영문(Interviews·Updates)으로 통일. 패치 v2.31.3.
+- **왜**: 사용자 보고("목차 클릭하면 이상한 곳으로 가네") + 상위 메뉴 영문 통일 요청("인터뷰·업데이트 내역만 한글이라 안 어울린다").
+- **검증**: `vite preview` + playwright-core(Chromium /opt/pw-browsers) 실측. 수정 후 16개 섹션 전부 headingTop=16px(=scroll-mt-4) 정렬 확인. 검증 스크립트·임시 dev 의존성(playwright-core)은 커밋에서 제외.
+- **dashboard (v2.31.3, 패치)**: `components/Interviews.jsx`(scrollToSection·flashId·spacer), `App.jsx`(TOP_TABS 라벨 Interviews·Updates), `data/updates.js`, `src/version.js`.
+
 ## [2026-07-07] assessment | 시나리오 포지션 맵·확률 재평가 — LTA→SCA 계약 체제 확립 반영 (B 37→38·C 9→8, DF1 8.5 유지, v2.31.2)
 - **무엇**: 직전 포지션 맵 갱신(2026-07-04, 정점 확증 DF1 8.0→8.5) 이후 git log로 파악한 변경분(LTA→SCA 전환·Micron–Anthropic SCA·Stargate LOI·CAPEX 추가 상향)을 근거로 포지션 맵·확률 재평가. **DF1 8.5·DF2 1.0 유지**, 확률 **B 37→38·C 9→8**(A27·D21·E6 불변, 합 100).
 - **왜**: 이번 주기의 핵심 변화는 개별 실적이 아니라 **계약 구조** — 산업이 스팟→LTA→SCA(공동설계+다년공급+운영통합+자본연계)로 이동하며 다년 계약 락인이 근단기 순환 붕괴 확률을 추가 축소(UBS: "LTA가 메모리 cyclicality를 근본적으로 제거"). Micron–Anthropic SCA(06-22)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)가 근거. 상쇄 하방으로 범용 DRAM Q3 감속(+13~18% vs Q2 +58~63%)이 처음 등장했으나 비(非)AI-락인 범용 축에 집중·서버/HBM/SCA 락인 축 견조 → 구조 반전 아닌 정제. 지지 성격이 실적 모멘텀→계약 구조 락인으로 전환됐으나 정점 위치는 8.5 유지.
@@ -156,8 +162,6 @@
 - **왜**: 사용자 지시 — 어제 실적 발표 내용 위키·보고서·대시보드 반영.
 - **정정**: 직전 가이던스 $33.5B(june-2026-market-update §2)를 +24% 실제 상회 — 위키 내 $33.5B는 가이던스로 표기, 확정 실적은 신규 filing 따름.
 - **영향 페이지**: 신규 `sources/filings/micron-q3-fy26.md`(1차 자료), `wiki/entities/micron.md`(Update 섹션), `wiki/concepts/price-trends.md`(Update 섹션), `index.md`(filings 섹션 신설·micron 설명), `outputs/report/scenario-planning-report.md`(KPI 표·현재 위치), `dashboard/src/data/updates.js`+`version.js`(v2.24.2 패치).
-
----
 
 ## [2026-06-18] ingest | 인터뷰 대상자 식별 — 베인앤컴퍼니 신문섭 파트너 (v2.24.0 → v2.24.1)
 - **무엇**: 직전 ingest의 인터뷰 대상자를 "산업 전문가(직책·소속 미공개)"에서 **베인앤컴퍼니(Bain & Company) 신문섭(Moonsup Shin) 파트너** — APAC 하드웨어·반도체·데이터센터 총괄 / 한국 TMT 대표 — 로 정정. 원본 소스 헤더·대시보드 인터뷰 메뉴 메타(목록·헤더)·검색 태그·인덱스 동기화. 패치 v2.24.1.

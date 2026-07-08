@@ -26,9 +26,9 @@ const TOP_TABS = [
   { id: 'visualization', label: 'Data Visualization',      icon: BarChart3 },
   { id: 'planning',      label: 'Scenario Planning',       icon: Compass },
   { id: 'strategy',      label: 'Strategy',                icon: Crosshair },
-  { id: 'interviews',    label: '인터뷰',                   icon: MessageSquareQuote },
+  { id: 'interviews',    label: 'Interviews',              icon: MessageSquareQuote },
   { id: 'graph',         label: 'Knowledge Graph',         icon: Share2 },
-  { id: 'updates',       label: '업데이트 내역',            icon: History },
+  { id: 'updates',       label: 'Updates',                 icon: History },
 ]
 
 const MAIN_TABS = [

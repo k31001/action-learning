@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { useHashSegment } from '../hooks/useHashRoute'
 import {
   MessageSquareQuote, Quote, User, Calendar, Tag, Search,
@@ -132,6 +132,19 @@ function InterviewListItem({ itv, active, onClick }) {
 export default function Interviews() {
   const [selectedId, setSelectedId] = useHashSegment(1, INTERVIEWS[0]?.id)
   const [query, setQuery] = useState('')
+  const [flashId, setFlashId] = useState(null)
+
+  // 목차 클릭 → 부드럽게 스크롤 + 도착 섹션 잠깐 강조.
+  // 네이티브 #앵커 대신 JS 스크롤을 쓰는 이유: 문서 하단 짧은 섹션도
+  // (아래 trailing spacer 덕에) 항상 뷰포트 최상단에 정렬되도록 하고,
+  // URL 에 #해시가 남아 탭 전환/새로고침 시 엉뚱하게 점프하는 것을 막기 위함.
+  const scrollToSection = useCallback((anchorId) => {
+    const el = document.getElementById(anchorId)
+    if (!el) return
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setFlashId(anchorId)
+    window.setTimeout(() => setFlashId(cur => (cur === anchorId ? null : cur)), 1500)
+  }, [])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -273,6 +286,7 @@ export default function Interviews() {
                     <li key={sec.id}>
                       <a
                         href={`#${selected.id}-${sec.id}`}
+                        onClick={(e) => { e.preventDefault(); scrollToSection(`${selected.id}-${sec.id}`) }}
                         className="flex items-baseline gap-2 text-sm text-zinc-600 hover:text-hig-blue transition-colors py-0.5"
                       >
                         <span className="font-mono text-xs text-zinc-400 w-5 flex-shrink-0">{sec.no}.</span>
@@ -290,7 +304,11 @@ export default function Interviews() {
                 <section
                   key={sec.id}
                   id={`${selected.id}-${sec.id}`}
-                  className="bg-white border border-zinc-200 rounded-hig-lg shadow-hig-1 p-6 scroll-mt-4"
+                  className={`bg-white border rounded-hig-lg shadow-hig-1 p-6 scroll-mt-4 transition-all ease-hig-standard ${
+                    flashId === `${selected.id}-${sec.id}`
+                      ? 'border-hig-blue/50 ring-2 ring-hig-blue/40'
+                      : 'border-zinc-200'
+                  }`}
                 >
                   <h3 className="flex items-baseline gap-2.5 text-lg font-semibold text-zinc-900 tracking-tight mb-4 pb-3 border-b border-zinc-100">
                     <span className="font-mono text-sm text-hig-blue">{String(sec.no).padStart(2, '0')}</span>
@@ -316,6 +334,9 @@ export default function Interviews() {
               </a>
               {' '}에 보관되어 있습니다.
             </div>
+
+            {/* trailing spacer — 하단 짧은 섹션도 목차 클릭 시 최상단 정렬되도록 스크롤 여유 확보 */}
+            <div aria-hidden className="h-[70vh]" />
           </div>
         )}
       </div>
