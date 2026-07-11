@@ -94,3 +94,16 @@ AI 과잉 투자에 대한 시장의 합리적 조정이 이루어지면서 메�
 - 미·중 메모리 협의 동향 — WTO·반덤핑 제재 결정
 
 **출처**: [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md), [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md)
+
+---
+
+## [Update 2026-07-11] 애플–CXMT 테스트 = 시나리오 D의 조기 전조
+
+위 EWI 5번("CXMT DDR5 대량 출하 개시")과 EWI 2번("미중 반도체 실무 협의 진전")을 **동시에 앞당기는** 사건이 발생했다. 애플이 중국 내수용 기기에 CXMT DRAM 테스트를 착수하고, 미 행정부가 이를 (조건부로) 용인하는 방향이면 — **"관리된 공존(DF2 Pole B) + 중국 범용 시장의 조용한 CXMT 잠식(D의 정의)"**이 결합한 시나리오 D의 교과서적 전조다 ([apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)).
+
+- **D 방향 강화 조건**: 애플 로비 성공 → 미 행정부 승인 → CXMT가 애플 중국 내수 물량이라는 **안정적 수요처** 확보 → 중국 범용 DRAM 자립 가속.
+- **반전 조건**: 의회·행정부 제동(YMTC 2022 전철) → 오히려 [시나리오 A/C(디커플링)](scenario-C.md) 쪽 신호.
+- Samsung 함의: [RS-2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md) 저원가 범용 양보 전략이 재확인되나, 양보 물량이 "애플 중국 내수"로 구체화 → [RS-4 고객 포트폴리오 분산](../strategies/invariant/rs4-customer-portfolio-diversification.md)의 애플 협상력 리스크 병행 관리 필요.
+- 추적: 신규 EWI [`cxmt_apple_qualification`](../../dashboard/src/data/indicators.js).
+
+**출처**: [apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)

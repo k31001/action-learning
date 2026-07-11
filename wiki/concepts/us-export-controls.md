@@ -58,7 +58,35 @@
 
 ---
 
+## [Update 2026-07-11] 1260H 리스트 & 애플–CXMT 로비 (2026-07)
+
+기존 표는 **BIS(상무부) 수출통제**(Entity List·VEU·라이선스) 중심. 이번 애플–CXMT 건은 **국방부(DoD) 1260H 리스트**라는 별개 체계를 위키에 최초로 도입한다.
+
+### 1260H 리스트란
+
+- **국방수권법(NDAA) Section 1260H**에 근거해 미 국방부가 매년 발표하는 **"중국 군사 연계 기업(Chinese Military Companies)" 목록**. Entity List(BIS 수출통제)와 **법적 성격이 다르다**.
+- 1260H 등재 자체는 민간기업의 거래를 *직접 금지하지 않는다*. 그러나 ① 국방부 조달 금지, ② 평판·정치 리스크, ③ 향후 제재 확대의 예비 단계라는 신호 효과가 크다.
+- **CXMT는 최신 1260H 목록에 등재**돼 있다 ([apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)).
+
+### 애플–CXMT 케이스
+
+| 항목 | 내용 |
+|---|---|
+| 사건 | 애플이 CXMT DRAM을 **중국 내수용 기기** 대상 기술 검증 착수 (FT 2026-07-08) |
+| 애플 대응 | 미 행정부에 CXMT **광범위 사용 허용 로비** — "행정부 사전 양해" 확보 시도 |
+| 트럼프 행정부 | 로이터(2026-06 중순): 대베이징 긴장 회피 위해 CXMT·DeepSeek 등 **추가 블랙리스트 등재 보류** — 단 1260H에는 이미 포함 |
+| 전례 | 2022년 애플 YMTC NAND 검토 → 미 의회 반대 + YMTC Entity List 등재로 **무산** |
+
+### 삼성/DF2 함의
+
+- **정책 진동의 새 축**: 기존 진동(강화 VEU 폐지 ↔ 완화 H20 재허용)에 더해, **"1260H 기업의 완제품 내수 채택을 용인할 것인가"**라는 새 분기점 추가. 승인 시 [DF2](../driving-forces/key-drivers.md) **Pole B(관리된 공존)**, 차단 시 **Pole A(디커플링)** 신호.
+- 애플 로비 성패가 실시간 리트머스 → 신규 EWI [`cxmt_apple_qualification`](../../dashboard/src/data/indicators.js).
+- CXMT 상세: [cxmt.md](../entities/cxmt.md#update-2026-07-11-애플-중국-내수용-기기에-cxmt-dram-테스트-착수--cxmt-고객-인증-이정표)
+
+---
+
 ## 원본 링크
+- [Apple begins testing CXMT chips for devices sold in China, FT says — CNBC](https://www.cnbc.com/2026/07/08/apple-begins-testing-cxmt-chips-for-devices-sold-in-china-ft-says-.html)
 - [Commerce Strengthens Export Controls - BIS Press Release](https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military)
 - [BIS Closes VEU Loophole for Foreign-Owned Fabs in China](https://www.bis.gov/press-release/department-commerce-closes-export-controls-loophole-foreign-owned-semiconductor-fabs-china)
 - [U.S. Export Controls and China: Advanced Semiconductors (CRS, Aug 2025)](https://www.congress.gov/crs_external_products/R/PDF/R48642/R48642.1.pdf)

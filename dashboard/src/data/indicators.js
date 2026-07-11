@@ -290,6 +290,35 @@ export const INITIAL_INDICATORS = [
     inputType: 'select',
     hint: 'CXMT 허페이 Fab 3 진척 단계 선택',
   },
+  // ── 신규 (2026-07-11 애플–CXMT ingest, FT 2026-07-08 보도) ──
+  {
+    id: 'cxmt_apple_qualification',
+    name: '애플 CXMT DRAM 인증·채택 단계 (중국 내수용)',
+    category: 'quarterly',
+    source: 'Financial Times / Reuters / 복수 보도',
+    unit: '단계',
+    unitLabel: '단계 (테스트 / 미승인대기 / 승인·채택 / 차단·무산)',
+    currentValue: 'testing',
+    alertThreshold: null,
+    alertCondition: 'manual',
+    alertDescription: '미 행정부 승인·양산 채택 도달 시 CXMT 프리미엄 고객 인증 이정표 + DF2 관리된 공존(Pole B) 신호 — 삼성·SK 과점 균열·애플 price leverage 확대',
+    scenarioSignals: ['B', 'D'],
+    scenarioText: 'B·D 신호 — 관리된 공존 + 중국 범용 CXMT 잠식. 차단(무산) 시 A·C 디커플링 반전 신호',
+    warningThreshold: null,
+    status: 'warning',
+    lastUpdated: '2026-07-11',
+    history: [
+      { date: '2026-07-11', value: 'testing', note: 'FT 2026-07-08: 애플이 중국 내수용 기기에 CXMT DRAM 기술 검증 착수 + 미 행정부에 사용 승인 로비. CXMT는 국방부 1260H 리스트 등재.' },
+    ],
+    options: [
+      { value: 'blocked', label: '차단·무산', status: 'normal', signal: 'YMTC 2022 전철 — DF2 디커플링(A·C) 신호' },
+      { value: 'testing', label: '기술 검증 중', status: 'warning', signal: '인증 파이프라인 진입 — CXMT 위상 변화 조짐' },
+      { value: 'pending_approval', label: '미 행정부 승인 대기', status: 'warning', signal: '정책 분기점 임박 — 승인 여부가 DF2 리트머스' },
+      { value: 'approved_adopted', label: '승인·양산 채택', status: 'critical', signal: 'DF2 관리된 공존(B·D) 확정 + 과점 균열·애플 price leverage' },
+    ],
+    inputType: 'select',
+    hint: '애플의 CXMT DRAM 인증·채택 진척 단계 선택 (중국 내수용 한정)',
+  },
   // ── 신규 (2026-05-19 권석준 추가 영상 3건 ingest, 애플 온디바이스 AI 진입 추적) ──
   {
     id: 'apple_ondevice_ai_status',

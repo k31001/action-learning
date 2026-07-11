@@ -958,3 +958,11 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 실행 사례. 한 번의 지�
 ## [2026-05-05] migration | 프로젝트 시작 — 목표·방법론·산출물 정의
 
 초기 지시(PROMPT.md 헤더). 목표: 삼성전자 메모리사업부의 일원으로 불확실성 대응 전략 발표자료. 방법론: Shell 시나리오 플래닝(Focal Issue → STEEP 브레인스토밍 → Driving Forces → Uncertainty 2~3개 선별 → 시나리오 도출 → Main Bet + Side Bet → Robust). 산출물: ① 데이터 수집 + 메타데이터 ② 시나리오 플래닝 기반 전략 보고서(마크다운, 시각자료 별도 디렉토리) ③ 슬라이드 기획서 ④ PowerPoint. 주요 지침: 역할별 서브에이전트 생성, PROMPT.md 누적 기록, git/GitHub 공유, PowerPoint 제외 모두 마크다운.
+
+## [2026-07-11] ingest | 애플, 중국 내수용 기기에 CXMT DRAM 테스트 착수 (FT 2026-07-08)
+
+사용자 제공 KBS 링크(직접 fetch 차단) → 웹검색·복수 매체(FT/CNBC/Reuters/이데일리/ZDNet/EBN 등) 교차 확인 후 반영. 신규 소스 `sources/articles/apple-cxmt-china-dram-2026-07-08.md`. **핵심**: 애플이 중국 내수용 기기 DRAM에 CXMT 기술 검증 착수 + 미 행정부에 사용 승인 로비. CXMT는 국방부 1260H(PLA 연계 의심) 리스트 등재. 배경 = 2026 초 범용 DRAM 계약가 +55~60% 급등·애플 맥북/아이패드 가격 인상. 전례 = 2022 YMTC NAND 무산. CXMT 웨이퍼 캐파점유 11%(2025)→15%(2028). 
+
+갱신 wiki 6종: (1) `entities/cxmt.md` [Update 2026-07-11] 고객 인증 이정표 + 캐파/매출 점유율 이중 계열 정합. (2) `concepts/us-export-controls.md` 1260H 리스트 체계 위키 최초 도입 + 애플 케이스. (3) `driving-forces/key-drivers.md` DF2 현재위치 — 승인=Pole B 공존/차단=Pole A 디커플링 리트머스. (4) `scenarios/scenario-D.md` D의 교과서적 전조. (5) `strategies/invariant/rs4-...md` 대칭 논리("고객도 공급사 분산")·애플 price leverage. (6) `index.md` 소스 등록. 
+
+빌드 동기화: `dashboard/src/data/indicators.js` 신규 EWI `cxmt_apple_qualification`(4단계 select, B·D 신호) 추가 → 지식그래프 재생성(node 80·edge 309·orphan 0) → version v2.31.3→v2.31.4(패치).

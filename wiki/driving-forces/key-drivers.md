@@ -41,6 +41,8 @@
 
 - **현재 위치**: 두 극단 사이의 긴장된 중간지점. 2025년 강화(VEU 폐지)와 완화(H20 재허용)가 반복되는 정책 진동이 진행 중이며, 2026년 MATCH 법안 통과 여부가 방향을 결정하는 분기점. 트럼프 행정부의 예측 불가능한 정책 스타일로 인해 불확실성이 역대 최고 수준.
 
+- **[Update 2026-07-11] 애플–CXMT 건 = 새 리트머스**: 애플이 중국 내수용 기기에 CXMT DRAM 테스트를 착수하고 미 행정부에 사용 승인을 로비 중이다 (FT 2026-07-08, [apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)). 로이터(2026-06)는 트럼프 행정부가 대베이징 긴장 회피 차원에서 CXMT의 추가 블랙리스트 등재를 보류했다고 보도. 이 건의 결말이 DF2 방향의 실시간 신호 — **승인 시 Pole B(관리된 공존), 차단(YMTC 2022 전철) 시 Pole A(디커플링)**. 신규 EWI [`cxmt_apple_qualification`](../../dashboard/src/data/indicators.js)로 추적. (→ [us-export-controls.md #1260H](../concepts/us-export-controls.md), [cxmt.md](../entities/cxmt.md))
+
 ---
 
 ### DF3: AI 메모리 기술 패러다임의 전환 — HBM 지속 vs 대안 아키텍처 부상
