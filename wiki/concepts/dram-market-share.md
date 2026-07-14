@@ -241,3 +241,11 @@ Counterpoint Research (2026-01-29, Jeongku Choi):
 
 - Counterpoint Research의 Q1 2026 확정 DRAM/HBM 시장점유율 데이터: SK하이닉스 HBM ~58%·삼성전자 ~32% — Counterpoint 발행물은 이를 "SK하이닉스가 지속되는 HBM 수요 속 역대 최초로 HBM 1위 유지"로 평가한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 4월 잠정치 대비 확정치 차이의 상세 병기는 [hbm-market.md](hbm-market.md) [Update 2026-07-04] 참조.
 - 2026-06-25 삼성전자·SK하이닉스·Micron을 상대로 한 반독점 집단소송이 제기됐다(N.D. Cal.) — HBM 전환을 명목으로 범용 DRAM 공급을 인위적으로 제한하고 가격을 담합했다는 주장이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세는 신규 페이지 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조(다른 에이전트가 작성 중).
+
+## 업데이트 (2026-07-14) — Counterpoint Q1 2026 DRAM 매출 확정치: 사상 최고 $97B
+
+- Counterpoint Research: 글로벌 DRAM 매출이 QoQ **+80%**, YoY **+260%** 폭증해 사상 최고 **$97B** 기록([july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)).
+- Q1 2026 DRAM **매출 점유율**: 삼성전자 **38%**·SK하이닉스 **29%**·Micron **22%**(3사 합산 ~89%) — 위키 상단의 TrendForce 계열(Q3 2025 삼성 32.6%·SK 33.2%·Micron 25.7%)과 **집계 시점·방법론 차이로 수치가 상이**, 병기 필요.
+- 2026년 전체 DRAM 출하 구성: **서버 DRAM 48%·HBM 9%** — 데이터센터향이 출하량 기준으로도 절반에 근접.
+
+**출처**: [july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)

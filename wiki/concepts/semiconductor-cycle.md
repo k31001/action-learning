@@ -189,3 +189,13 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 - 이는 위 [Update 2026-05-19] SemiAnalysis 웨이퍼 잠식 테제("HBM 전환이 범용 DRAM 캐파를 가속도로 잠식")와 함께, DRAM 가격 상승의 원인을 기술 공급 축(밀도 정체)과 수요·배분 축(HBM 전환) 양쪽에서 설명하는 보강 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §5
+
+---
+
+## 업데이트 (2026-07-14) — 슈퍼사이클 정점 국면에서 첫 자본시장 스트레스 테스트
+
+- SK하이닉스 나스닥 상장($26.5B 조달, 역대 최대 외국기업 미국 상장) 사흘 만에 서울 주가 -15.37%(사상 최대 낙폭)·코스피 -8.95%·서킷브레이커 발동. 원인은 ADR-서울 차익거래·애널리스트의 SK하이닉스 2026·2027 이익추정 하향(-9%·-11%)·미국-이란 지정학 충격의 복합 ([july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)).
+- **사이클 관점에서의 의미**: 이번 위키가 반복 확인해온 "1990년대형 슈퍼사이클"(BofA) 서사가 처음으로 **자본시장의 회의적 가격 반영**을 받은 사례다. 실물 수급(HBM sold-out·병목 모델의 min() 제약)이나 하이퍼스케일러 CAPEX 가이던스는 흔들리지 않았으나, "HBM 계약이 실제 이익률로 전환되는가"라는 질문이 처음 공개적으로 제기됐다.
+- 동일 사실을 [demand-inflection-ewi.md](demand-inflection-ewi.md) 업데이트(②돈 축 신규 하위 신호)·[bottleneck-model-2030.md](bottleneck-model-2030.md)(CAPEX/ROI 완화 속도 둔화)·[sk-hynix.md](../entities/sk-hynix.md)에서 교차 추적.
+
+**출처**: [july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)

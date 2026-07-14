@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-07-14
+sources: [sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/july-2026-market-update-2026-07-14.md]
 ---
 
 # DRAM 반독점 집단소송 (2026-06 제소)
@@ -17,6 +17,7 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 ## 현재 단계
 
 - 2026-06-25 제소 직후 단계이며, 아직 법원의 실질적 판단(기각·인용·화해 등)은 나오지 않았다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **[Update 2026-07-14] 세부 확인**: 원고는 **17명**(개인 + 소기업 혼합)이며, 근거로 최근 4년간 범용 DRAM 가격이 최대 **700%** 상승했다는 점을 제시한다. Micron은 혐의를 부인하며 법적 대응 방침을 공개했고, **기각 신청(motion to dismiss)이 향후 수개월 내 제출될 것으로 예상**된다 ([july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)).
 
 ## 위키 관점 — 왜 추적하는가
 

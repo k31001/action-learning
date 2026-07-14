@@ -974,3 +974,17 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 실행 사례. 한 번의 지�
 **EWI·트리거**: `cxmt_apple_qualification`(07-11 신설, 테스트 단계) 상태 유지. `cxmt_dram_share`에 FT 2028E 캐파 15%(2025 11%) 병기(캐파 계열, 매출 점유와 구분) + 애플 인증 파이프라인 note 연동. 신규 트리거 `apple_cxmt_approved`(승인·양산 채택 시 B·D 공존 확정, df2Δ −1.5) 추가.
 
 **동기화**: dashboard indicators.js(포지션·SCENARIOS·EWI note·트리거)·scenarioPlanning.js(matrix 확률·DF1·DF2 현재위치)·updates.js(assessment 항목)·version.js(v2.31.5). wiki key-drivers·scenario-matrix. outputs/report §5.1 확률표·Exec Summary. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX는 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증.
+
+## [2026-07-14] ingest | 7월 2차 정기 점검 — SK하이닉스 나스닥 급락 + Bottleneck Model 갱신(전력73·CAPEX39·파운드리49·패키징65)
+
+SemiAnalysis·Counterpoint Research·TechInsights 우선 수집 + CNBC·Bloomberg·Reuters·FT·TrendForce 교차 확인. 직전 07-04 정기 점검 이후 10일간 데이터 반영. 신규 소스 `sources/articles/july-2026-market-update-2026-07-14.md`.
+
+**최대 사건 — SK하이닉스 나스닥 상장 사흘 만의 사상 최대폭 급락**: 2026-07-10 나스닥 ADR 상장($26.5B 조달, 2014 알리바바 이후 외국기업 최대)에도 2026-07-13 서울 주가 -15.37%(창사 이래 최대 낙폭)·코스피 -8.95%(서킷브레이커 발동, 시총 546조 원 증발). 원인: ① ADR-서울 ~37% 프리미엄 차익거래, ② 한국투자증권의 SK하이닉스 2026·2027 영업이익 추정 -9%·-11% 하향(HBM 수익성 전환 의구심), ③ 미국-이란 지정학 충격(호르무즈·유가+9%) 복합. 복수 매체는 "AI 수요 냉각이 아니다"로 평가 — 실물 CAPEX·수요 축은 불변으로 판정, DF1 8.5 정점 유지(key-drivers.md에 근거 명시).
+
+**Bottleneck Model 제약지수 갱신 (07-14, 이전 07-04 대비, 변동폭 표시)**: 전력 72→**73**(▲+1, Gartner 1,000TWh 돌파·IEA 20% 지연위험), CAPEX/ROI 40→**39**(▼-1, 빅4 $725B 재확인+삼성 Q2 19배 vs SK하이닉스 신용도 회의로 완화 속도 둔화), 파운드리 50→**49**(▼-1, CoWoS 갭 축소 정합·TSMC Q2실적은 07-16 예정으로 미반영), 패키징 67→**65**(▼-2, TrendForce CoWoS 수급갭 20%→10% 축소+2027 캐파 20만 WPM 신규 목표). 상세: [bottleneck-model-2030.md §종합 판독(2026-07-14)](wiki/concepts/bottleneck-model-2030.md).
+
+**기타 신규 데이터**: 삼성 Q2 잠정 영업이익 89.4조 원(YoY 19배, 정식 실적 07-30) — samsung.md 반영. Counterpoint Q1 2026 DRAM 매출 확정 $97B(+80% QoQ)·점유율 삼성38%/SK29%/Micron22%(TrendForce 계열과 병기) — dram-market-share.md 반영. CXMT 1260H가 "제외 후 재등재" 진동이었음을 확인 + 애플 대응이 검증(testing)→인증(qualifying) 소폭 진전, 단 EWI 상태·DF2는 리트머스 미해결로 불변 — cxmt.md·us-export-controls.md 반영. DRAM 반독점 소송 세부(원고 17명·700% 가격상승 주장·기각신청 수개월 내 예상) — dram-antitrust-litigation.md 반영.
+
+**갱신 wiki 9개**: bottleneck-model-2030.md·sk-hynix.md·samsung.md·dram-market-share.md·dram-antitrust-litigation.md·cxmt.md·us-export-controls.md·demand-inflection-ewi.md·semiconductor-cycle.md·key-drivers.md.
+
+**동기화**: dashboard bottleneckModel.js(4대 지수·드라이버 노트·ASOF 갱신)·indicators.js(cxmt_apple_qualification 히스토리 추가)·updates.js(신규 entry)·version.js(v2.31.5→v2.31.6). outputs/report §Executive Summary·병목 지수 테이블 동기화. 위키 링크 다수 추가(교차참조) → 지식그래프 재생성. `cd dashboard && npm run build` 검증 후 push.

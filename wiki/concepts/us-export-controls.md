@@ -83,6 +83,11 @@
 - 애플 로비 성패가 실시간 리트머스 → 신규 EWI [`cxmt_apple_qualification`](../../dashboard/src/data/indicators.js).
 - CXMT 상세: [cxmt.md](../entities/cxmt.md#update-2026-07-11-애플-중국-내수용-기기에-cxmt-dram-테스트-착수--cxmt-고객-인증-이정표)
 
+### [Update 2026-07-14] 1260H는 "제외→재등재" 진동 — 단선적 등재 아님
+
+- CXMT·YMTC가 1260H 리스트에서 **한때 제외됐다가 2026년 6월 최신판에서 재등재(복원)**됐다는 사실이 새로 확인됐다 — 07-11 시점의 "등재 상태" 단순 서술보다 정책 유동성이 크다는 점을 시사한다 ([july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)).
+- 애플의 CXMT 대응 단계도 "기술 검증(testing)"에서 정식 공급사 승인에 선행하는 "기술 인증(qualifying)"으로 소폭 진전 — 단 미 행정부 승인·Entity List 미등재 확약이라는 결정적 리트머스는 여전히 미해결. 상세: [cxmt.md #Update 2026-07-14](../entities/cxmt.md).
+
 ---
 
 ## 원본 링크

@@ -242,3 +242,24 @@ FT 보도의 CXMT 점유율 수치("2025년 ~11% → 2028년 15%")는 **웨이�
 3. **모니터링 격상** — CXMT의 프리미엄 고객 인증 성공은 "저가 범용" 프레임을 넘어서는 위상 변화. HBM4/HBM5·CXL·PIM 등 추격 난이도 높은 영역의 리더십 방어가 더 중요해짐.
 
 **출처**: [apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)
+
+---
+
+## [Update 2026-07-14] 1260H 리스트 "제외 후 재등재" 확인 + "검증→인증" 단계 진전
+
+### 1260H 리스트 이력 — 단선적 등재가 아니라 제외·복원 진동
+
+- 미 국방부 1260H 리스트에서 CXMT·YMTC가 **한때 제외됐다가, 2026년 6월 최신판에서 재등재(복원)**됐다는 사실이 확인됐다 — 07-11 ingest 시점에는 "등재 상태"만 알려졌으나, 실제로는 제외↔복원의 정책 진동이 있었다는 점이 새로 드러났다 ([july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)).
+- 이는 미 행정부 내부에서도 CXMT 취급을 둘러싼 입장이 고정되지 않고 흔들리고 있음을 시사 — DF2 판단에서 "아직 리트머스 미해결" 절제 근거를 강화한다.
+
+### 애플 대응 단계 — 기술 검증(testing)에서 인증(qualifying)으로 소폭 진전
+
+- 2026-07-08 보도(FT 인용)는 애플의 CXMT 대응이 단순 "기술 검증"에서 **정식 공급사 승인에 선행하는 기술 인증(qualification) 단계**로 진전했다고 전한다 — 아직 미 행정부 승인·양산 채택 확정은 아니다 ([july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)).
+- 애플은 계속해서 CXMT가 상무부 Entity List에 추가되지 않을 것이라는 확약을 미 행정부에 구하고 있다.
+
+### 위키 판정 — EWI 상태 유지, 근거만 보강
+
+- [`cxmt_apple_qualification`](../../dashboard/src/data/indicators.js) EWI 값은 여전히 **`testing`(기술 검증 중)** 단계로 유지한다 — "인증(qualifying)" 진전은 같은 대분류 내의 세부 진행이며, `pending_approval`(행정부 승인 대기)로의 격상 조건(공식 승인 절차 착수)은 아직 충족되지 않았다.
+- DF2 포지션([key-drivers.md](../driving-forces/key-drivers.md), 2026-07-14 기존 재평가 DF2 1.0→0.5)도 변경하지 않는다 — 승인/차단 리트머스가 여전히 미해결이기 때문.
+
+**출처**: [july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)

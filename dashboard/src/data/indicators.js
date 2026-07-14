@@ -306,9 +306,10 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'B·D 신호 — 관리된 공존 + 중국 범용 CXMT 잠식. 차단(무산) 시 A·C 디커플링 반전 신호',
     warningThreshold: null,
     status: 'warning',
-    lastUpdated: '2026-07-11',
+    lastUpdated: '2026-07-14',
     history: [
       { date: '2026-07-11', value: 'testing', note: 'FT 2026-07-08: 애플이 중국 내수용 기기에 CXMT DRAM 기술 검증 착수 + 미 행정부에 사용 승인 로비. CXMT는 국방부 1260H 리스트 등재.' },
+      { date: '2026-07-14', value: 'testing', note: '1260H 리스트는 CXMT·YMTC가 한때 제외됐다가 2026-06 최신판에서 재등재(복원)된 것으로 확인 — 단선적 등재가 아닌 정책 진동. 애플 대응은 검증(testing)에서 정식 승인에 선행하는 인증(qualifying) 쪽으로 소폭 진전했으나 상태값은 testing 유지(행정부 승인 착수 전).' },
     ],
     options: [
       { value: 'blocked', label: '차단·무산', status: 'normal', signal: 'YMTC 2022 전철 — DF2 디커플링(A·C) 신호' },

@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-07-14
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/july-2026-market-update-2026-07-14.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -348,6 +348,32 @@ flowchart LR
 - **DRAM 가격 상승 감속 조짐(조기경보 후보)**: TrendForce(2026-07-03, 최신) Q3 2026 범용 DRAM 계약가 전망 **+13~18% QoQ**로 Q2(+58~63%) 대비 큰 폭 감속 — PC/스마트폰 구매력 한계·고기저 효과가 주 원인, 서버향은 에이전틱 AI 수요로 견조. Jefferies는 여전히 Q3 +40~50%를 전망(스팟·HBM 포함 범위 차이로 추정) — **범용 DRAM 계약가 축의 첫 감속 신호로 [demand-inflection-ewi.md](demand-inflection-ewi.md) 모니터링 대상에 추가**.
 - **반독점 소송 신규 리스크**: 2026-06-25 삼성·SK하이닉스·Micron 대상 미국 집단소송 제기(HBM 전환 명목 범용 DRAM 공급 제한·가격 담합 주장) — 병목 모델 자체의 수급 축을 바꾸진 않으나 **CAPEX/ROI·가격 결정 관련 규제·평판 리스크**로 별도 모니터링 필요 ([dram-antitrust-litigation.md](dram-antitrust-litigation.md) 신설).
 
+---
+
+### 종합 판독 (2026-07-14)
+
+#### 제약지수 업데이트 (2026-07-14, 이전 2026-07-04 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 72 | **73** | **▲ +1** | Gartner: 2026 글로벌 DC 전력수요 1,000TWh 돌파(2023 대비 2배)·2027년까지 AI DC 40%가 전력 제약 직면 전망. IEA: 전 세계 계획 DC 프로젝트 약 20%가 그리드 제약으로 지연 위험. 접속 승인 기간 미·유럽 주요 시장 24~36개월로 확대 — 07-04의 구조적 악화(변압기 5년·ERCOT 4배)가 다른 소스로 재확인 |
+| **CAPEX/ROI** | 40 | **39** | **▼ −1** | 빅4 CY2026 합산 $725B 가이던스 재확인(Amazon ~$200B·Alphabet ~$185B·Meta $125~145B·MS ~$190B) — 신규 하향 없음. 삼성 Q2 잠정 영업이익 89.4조 원(YoY 19배)이 ROI 실현 서사를 추가 강화. **단, SK하이닉스 나스닥 급락(하단 별도 서술)에서 애널리스트가 SK하이닉스 2026·2027 영업이익 추정치를 각각 -9%·-11% 하향** — 하이퍼스케일러 CAPEX 자체는 견조하나 메모리 공급사의 HBM 수익성 전환에 대한 자본시장 회의론이 처음 가시화되어 완화 속도를 소폭 늦춤 |
+| **파운드리** | 50 | **49** | **▼ −1** | TSMC CoWoS(패키징 인접) 수급 갭 20%→10%(연말) 축소 전망이 파운드리 전반의 여유 신호와 정합. N2 램프·ASML 연기 기조 불변. **TSMC Q2 2026 실적은 2026-07-16 발표 예정으로 이번 갱신에는 미반영** — 다음 정기 점검에서 확인 |
+| **패키징** | 67 | **65** | **▼ −2** | TrendForce(2026-06-15): CoWoS 수급 갭이 연말까지 **20%→10%로 축소** — 07-04 대비 뚜렷한 개선 신호. 2027년 CoWoS 캐파 목표 **20만 장/월 이상**으로 신규 제시(기존 07-04 갱신에 없던 장기 확장 목표). HBM4 하이브리드본딩 수율 10%·마이크로범프 유지 결정(07-04 기존 근거)은 잔존하나, 갭 축소가 상쇄 |
+
+**전력: 3개 분기 연속 재상승(70→72→73) — 유일하게 지속 악화. CAPEX/ROI: 하이퍼스케일러 축은 견조하나 메모리 공급사 수익성 신뢰 축에 신규 균열. 패키징: 07-04 대비 가장 뚜렷한 완화(CoWoS 갭 축소). 하방 위험 순서 불변: 전력 ≈ CAPEX/ROI > 패키징 > 파운드리로 소폭 재정렬(패키징 완화폭이 파운드리에 근접).**
+
+#### 2026-07-14 핵심 신규 신호
+
+- **SK하이닉스 나스닥 상장 후 사흘 만의 사상 최대폭 급락 (신규, CAPEX/ROI 인접 리스크)**: SK하이닉스가 2026-07-10 나스닥 ADR 상장으로 $26.5B(역대 최대 외국기업 미국 상장)를 조달한 직후, 2026-07-13 서울 상장주가 **-15.37%**(창사 이래 최대 낙폭) 급락 — 코스피 지수도 **-8.95%**(669.01p) 폭락해 20분간 서킷브레이커가 발동됐고 코스피 시가총액 약 546조 원이 하루 만에 증발했다. 원인은 ① ADR-서울 약 37% 가격 괴리를 노린 국경 간 차익거래(ADR 매수+서울 공매도), ② 한국투자증권의 SK하이닉스 2026·2027년 영업이익 추정치 하향(각각 -9%·-11%), ③ 미국-이란 긴장 재점화(호르무즈 봉쇄 우려·유가 +9%)의 복합 — 복수 매체는 "AI 수요 자체의 갑작스런 냉각이 아니다"라고 평가한다 ([july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)).
+  - **병목 모델 판정**: 본 사건은 하이퍼스케일러의 AI 인프라 CAPEX *지출 능력·의지*를 직접 훼손하지 않는다(빅4 가이던스 $725B 불변) — 따라서 CAPEX/ROI 병목 자원(연간 AI 인프라 CAPEX) 자체를 하향 조정하지는 않는다. 다만 **메모리 공급사의 HBM 계약이 실제 이익률로 전환되는지에 대한 자본시장의 첫 회의적 신호**로, CAPEX/ROI 병목의 완화 "속도"를 소폭 늦추는 근거로만 반영(-2 대신 -1)했다. 순수 시장구조적 요인(ADR 차익거래·지정학)과 분리해 [demand-inflection-ewi.md](demand-inflection-ewi.md)·[semiconductor-cycle.md](semiconductor-cycle.md)에서 별도 모니터링 신호로 추적한다.
+- **삼성전자 Q2 2026 잠정 실적**: 연결 영업이익 약 89.4조 원(전년 동기 대비 약 19배) — CAPEX/ROI 완화 서사(ROI 실현)를 삼성 쪽에서도 강하게 뒷받침. 정식 사업부문별 실적은 2026-07-30 발표 예정 ([july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)).
+- **TSMC CoWoS 수급 갭 축소 확인**: TrendForce(2026-06-15) 연말까지 갭 20%→10% 축소 전망 + 2027년 캐파 20만 장/월 이상 신규 제시 — 패키징 병목의 완화가 07-04 예상보다 빠르게 진행 중임을 시사.
+- **CXMT/애플 — 검증에서 인증 단계로 소폭 진전**: 국방부 1260H 리스트에서 CXMT·YMTC가 한때 제외됐다가 2026년 6월 최신판에서 **재등재(복원)**된 사실이 새로 확인됐고, 애플의 대응 단계도 "기술 검증(testing)"에서 정식 공급사 승인에 선행하는 "기술 인증(qualifying)" 쪽으로 소폭 진전했다고 보도됨 — 단 미 행정부 승인·양산 채택이라는 결정적 리트머스는 여전히 미해결이라 DF2 포지션(2026-07-14 기존 재평가, DF2 1.0→0.5)은 변경하지 않는다. 상세는 [cxmt.md](../entities/cxmt.md)·[us-export-controls.md](us-export-controls.md) 참조.
+- **Counterpoint Q1 2026 DRAM 확정 데이터**: 글로벌 DRAM 매출 사상 최고 $97B(QoQ +80%·YoY +260%). 매출 점유율 삼성 38%·SK하이닉스 29%·Micron 22% — 위키 기존 TrendForce 계열(Q3 2025 삼성 32.6%·SK 33.2%)과 집계 시점·방법론 차이로 수치가 다름, 병기 필요. 2026년 DRAM 출하 구성은 서버 48%·HBM 9%로 데이터센터향이 절반에 근접.
+
+**병목 모델 종합**: 이번 10일 구간의 핵심은 **실물 수급 축(전력·파운드리·패키징)의 완만한 개선/악화 지속과, CAPEX/ROI 축에서 처음 나타난 "밸류에이션 신뢰 균열"의 분리**다. 하이퍼스케일러 CAPEX 지출 능력은 흔들리지 않았으나, 메모리 공급사 주가에서 HBM 계약의 수익성 전환 가능성에 대한 회의론이 처음 시장 가격에 반영됐다. 이는 아직 병목 모델의 실물 제약(전력·파운드리·패키징의 min())을 바꾸는 신호는 아니지만, **CAPEX/ROI 병목의 "트리거"(capex 가이드 -15%·FCF/CapEx<0.8·HY OAS 급등)로 발전할 수 있는 선행 조짐인지 다음 분기까지 감시가 필요**하다.
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -363,3 +389,4 @@ flowchart LR
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 병목 제약지수 갱신 데이터 (PJM 개편 큐·ERCOT 4배 급증·변압기 리드타임·CAPEX 추가 상향·ASML High-NA 연기·HBM4 마이크로범프 결정·DRAM 가격 감속 조짐)
+- [sources/articles/july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md) — 2026-07-14 병목 제약지수 갱신 데이터 (SK하이닉스 나스닥 급락·삼성 Q2 잠정실적·Counterpoint Q1 DRAM 확정치·TSMC CoWoS 갭 축소·CXMT 1260H 복원)

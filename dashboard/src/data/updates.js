@@ -14,6 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-14 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-07-14',
+    type: 'ingest',
+    version: 'v2.31.6',
+    title: '7월 2차 정기 점검 — SK하이닉스 나스닥 급락 + 병목 모델 갱신(전력73·CAPEX39·파운드리49·패키징65)',
+    summary:
+      'SemiAnalysis·Counterpoint Research·TechInsights 우선 수집 + CNBC·Bloomberg·Reuters·FT·TrendForce 교차 확인. 직전 07-04 정기 점검 이후 10일간 데이터 반영. 최대 사건은 SK하이닉스 나스닥 상장($26.5B 조달, 2014 알리바바 이후 외국기업 최대) 사흘 만의 사상 최대폭 급락 — 서울 주가 -15.37%(창사 이래 최대 낙폭)·코스피 -8.95%(서킷브레이커·시총 546조원 증발). 원인은 ADR-서울 ~37% 프리미엄 차익거래·한투증권의 SK하이닉스 2026·2027 영업이익 추정 -9%·-11% 하향·미국-이란 지정학 충격의 복합이며, 복수 매체는 "AI 수요 냉각이 아니다"로 평가 — DF1 8.5 정점 유지로 판정. 병목 제약지수 갱신(07-04 대비): 전력 72→73(▲, Gartner 1,000TWh·IEA 20% 지연위험), CAPEX 40→39(▼, 빅4 $725B 재확인+삼성 Q2 19배 vs SK하이닉스 신용도 회의 상쇄), 파운드리 50→49(▼, CoWoS 갭 축소 정합), 패키징 67→65(▼, TrendForce CoWoS 수급갭 20%→10% 축소). 삼성 Q2 잠정 영업이익 19배(89.4조원)·Counterpoint Q1 DRAM 확정 $97B·CXMT 1260H 제외후재등재 확인·DRAM 반독점 소송 세부(원고17명·700%)도 반영. 위키 9개 페이지 갱신 + 지식그래프 재생성. 패치 v2.31.6.',
+    tags: ['병목모델', 'SK하이닉스', '나스닥', '급락', 'CAPEX', 'Samsung', 'Counterpoint', 'CXMT', '반독점', 'dashboard'],
+    items: [
+      { label: 'SK하이닉스 나스닥 급락 (신규 최대 사건)', detail: '07-10 ADR 상장($26.5B) 후 07-13 서울 -15.37%(사상 최대)·코스피 -8.95%·서킷브레이커·시총 546조원 증발. 원인: ADR-서울 차익거래(+37% 프리미엄)·애널리스트 이익추정 하향(2026 -9%·2027 -11%)·미국-이란 지정학. AI 수요 냉각 아님으로 판정 → DF1 불변' },
+      { label: '병목 제약지수 갱신 (07-14, 이전 07-04 대비)', detail: '전력 72→73(▲+1)·CAPEX 40→39(▼-1)·파운드리 50→49(▼-1)·패키징 67→65(▼-2). 전력 3개 분기 연속 재상승. 패키징이 가장 뚜렷한 완화(CoWoS 갭 20%→10%)' },
+      { label: 'CAPEX/ROI — 하이퍼스케일러 축 vs 메모리 공급사 신뢰 축 분리', detail: '빅4 CY2026 $725B 가이던스 불변(견조) + 삼성 Q2 잠정 영업이익 19배가 ROI 실현 뒷받침. 단 SK하이닉스 급락에서 드러난 HBM 수익성 전환 회의론을 완화 속도 둔화 근거로만 반영(-2 대신 -1)' },
+      { label: '삼성 Q2 2026 잠정 가이던스', detail: '연결 영업이익 약 89.4조 원(YoY 19배), 매출 171조 원. 정식 사업부문별 실적은 07-30 발표' },
+      { label: 'Counterpoint Q1 2026 DRAM 확정치', detail: '매출 $97B(QoQ+80%·YoY+260%, 사상최고). 점유율 삼성38%·SK29%·Micron22% — 위키 기존 TrendForce 계열과 집계기준 차이로 병기' },
+      { label: 'CXMT 1260H — 제외 후 재등재 확인', detail: 'CXMT·YMTC가 한때 1260H 제외됐다가 2026-06 최신판에서 재등재. 애플 대응은 검증(testing)→인증(qualifying)으로 소폭 진전하나 EWI 상태·DF2는 리트머스 미해결로 불변' },
+      { label: 'DRAM 반독점 소송 세부', detail: '원고 17명(개인+소기업), 4년간 최대 700% 가격상승 주장 근거. Micron 혐의 부인, 기각신청(motion to dismiss) 수개월 내 예상' },
+      { label: '위키 9개 페이지 갱신 + 지식그래프 재생성', detail: 'bottleneck-model-2030·sk-hynix·samsung·dram-market-share·dram-antitrust-litigation·cxmt·us-export-controls·demand-inflection-ewi·semiconductor-cycle·key-drivers. node scripts/build-knowledge-graph.mjs 재실행' },
+    ],
+    links: [
+      { label: 'july-2026-market-update-2026-07-14.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/july-2026-market-update-2026-07-14.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'sk-hynix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/entities/sk-hynix.md' },
+    ],
+  },
   // ── 2026-07-14 ───────────────────────────────────────────────────────────────
   {
     date: '2026-07-14',

@@ -273,3 +273,19 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - 2026-06-29 발표된 한국 국가 반도체 생태계 계획(약 800조 원/$518B) — 삼성전자·SK하이닉스 각각 **신규 팹 2개씩** 건설 계획 포함([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §2, §4
+
+---
+
+## 업데이트 (2026-07-14) — Q2 2026 잠정 실적 가이던스: 영업이익 19배
+
+### 잠정 가이던스 (2026-07-07 발표, 정식 실적 07-30)
+
+- 연결 매출 약 **171조 원**, 연결 영업이익 약 **89.4조 원** — 전년 동기(2025 Q2, 4.68조 원) 대비 약 **19배(~1,800%)** 증가([july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)).
+- 메모리 사업부 Q2 ASP QoQ **+40~60%** 추정. HBM4E 샘플 출하 지속으로 기술 리더십 강화, 하반기 신규 GPU·CPU向 조기 수요 선점 전략 지속.
+- 사업부별 세부 실적(HBM P&L 분리 여부 포함)은 **2026-07-30 정식 발표** 예정 — 정보 공백([strategies/core/README.md](../strategies/core/README.md)) 해소 여부는 그때 확인.
+
+### 위키 관점
+
+- [bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md)의 CAPEX/ROI 병목 완화 서사("ROI 실현 가시화")를 삼성 쪽에서도 강하게 뒷받침 — 단 같은 주간 [SK하이닉스 나스닥 급락](sk-hynix.md#업데이트-2026-07-14--나스닥-상장-완료--사흘-만의-사상-최대폭-급락)에서 애널리스트가 경쟁사 HBM 수익성 전환에 회의를 제기한 만큼, 07-30 정식 실적에서 삼성 메모리 부문 마진의 질(HBM vs 범용)이 시장의 다음 관심사가 될 전망.
+
+**출처**: [july-2026-market-update-2026-07-14.md](../../sources/articles/july-2026-market-update-2026-07-14.md)
