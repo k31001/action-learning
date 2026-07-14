@@ -9,25 +9,25 @@ export const INITIAL_QUADRANT_POSITIONS = [
   { key: 'sixMonth',   date: '2025-11', df1: 5.5,  df2: 2.5,  note: 'H20 부분 재허용, 삼성 35% 반등, 디커플링 완화' },
   { key: 'threeMonth', date: '2026-02', df1: 6.5,  df2: 1.5,  note: 'MATCH법안 위원회 미통과, 공존 신호 강화' },
   { key: 'oneMonth',   date: '2026-04', df1: 7.5,  df2: 0.5,  note: '빅테크 Q1 실적 호조, 관리된 공존 신호' },
-  // 최신 기준 (2026-07-07 재평가) — DF1 8.5 유지·DF2 1.0 유지. 직전 07-04 정점 확증(8.0→8.5) 이후 수집분 재평가.
-  //   신규 상방(구조): LTA→SCA 계약 체제 확립 — Micron–Anthropic SCA(06-22, 공동설계+다년공급+운영통합+자본연계 4요소)·SCA 16건 $100B 공시 제도화·
-  //     Stargate LOI(월 90만 웨이퍼=글로벌 DRAM 40%)·빅5 CAPEX 추가상향(Dell'Oro $1조·JPMorgan $5.5조). UBS: "LTA가 메모리 cyclicality를 근본적으로 제거" → 근단기 수요 바닥 경직화.
-  //   신규 하방(순환·공급): 범용 DRAM Q3 계약가 +13~18% QoQ로 감속(Q2 +58~63% 대비, TrendForce 07-03) — 단 감속은 '비(非)AI-락인 범용' 축에 집중, 서버/HBM/SCA 락인 축은 견조.
-  //     중기 공급 씨앗: 한국 국가 반도체계획 800조($518B)·CXMT HBM 월 3만장(2026말) — 2027+ 과잉 감시.
-  //   결론: 구조 락인(상방)과 범용 감속·공급 씨앗(하방)이 상쇄 → DF1 8.5 정점 유지. 지지 성격이 '실적 모멘텀'→'계약 구조 락인'으로 전환. 하락 변곡은 여전히 EWI(공급 과잉 67·GPU 임대가·범용 감속) 선행 감시.
-  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 1.0,  note: '[07-07 재평가] DF1 8.5 유지 — LTA→SCA 계약 체제 확립(Micron–Anthropic SCA·$100B·Stargate 40% DRAM)으로 근단기 수요 바닥 경직화(상방)와 범용 DRAM 가격 감속(+13~18%, 비AI축)·중기 공급 씨앗(한국 800조·CXMT 30k)이 상쇄. 지지 성격 실적모멘텀→계약구조 전환' },
+  // 최신 기준 (2026-07-14 재평가) — DF1 8.5 유지·DF2 1.0→0.5 (관리된 공존 쪽으로 소폭 이동). 직전 07-07 재평가(DF1 8.5·DF2 1.0) 이후 수집분 반영.
+  //   유일한 물질적 신규 소스: 애플–CXMT 건 (FT 2026-07-08, 07-11 ingest). DF1(수요 강도)에는 구조 변화 없음(범용 DRAM +55~60% 급등은 기존 슈퍼사이클과 정합) → DF1 8.5 정점 유지.
+  //   DF2 하향(관리된 공존 쪽)의 근거: (a) 애플이 중국 내수용 기기에 中 CXMT DRAM 기술 검증 착수 + 미 행정부에 사용 승인 로비 — 프리미엄 고객이 중국 공급사를 조달 후보로 세우는 것 자체가 공존 정합 발전.
+  //     (b) 로이터(2026-06): 트럼프 행정부가 대베이징 긴장 회피 차원에서 CXMT 추가 블랙리스트 등재 보류 = 디에스컬레이션. → 실현된 사실 2건 모두 공존 쪽 약한 신호.
+  //   절제: 아직 '테스트' 단계(양산 채택·승인 미확정)·1260H 리스트 등재·의회 반대·YMTC 2022 무산 전철 리스크 상존 → 리트머스(승인/차단) 미해결이므로 이동폭 소폭(1.0→0.5)에 그침.
+  //   하방 병기(공급 씨앗): CXMT 글로벌 DRAM 캐파 점유 11%(2025)→15%(2028E)·애플 price leverage로 삼성·SK 과점 '균열 신호' — 중기 마진 리스크로 EWI 감시(cxmt_apple_qualification·cxmt_dram_share).
+  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 0.5,  note: '[07-14 재평가] DF1 8.5 유지·DF2 1.0→0.5 — 애플–CXMT 건(FT 07-08): 애플의 中 CXMT DRAM 테스트 착수 + 행정부 승인 로비 + 로이터(CXMT 추가 블랙리스트 보류)가 관리된 공존 쪽 약한 신호. 테스트 단계·리트머스 미해결로 소폭 이동. DF1은 수요 구조 무변화로 정점 유지' },
 ]
 
-// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-07-07 재평가)
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-07-14 재평가)
 //   A 25~29 / B 35~39 / C 6~10 / D 19~23 / E 5~8  → 합 100
-//   [2026-07-07] 07-04 정점 확증(A27·B37·C9·D21·E6) 이후 LTA→SCA 계약 체제 확립 반영.
-//     Micron–Anthropic SCA(06-22)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)로 다년 계약 락인 = 근단기 순환 붕괴 확률 추가 축소.
-//     감속 신호(범용 DRAM Q3 +13~18%)는 비(非)AI-락인 범용 축에 집중 — 락인 축(서버/HBM/SCA)은 견조 → 구조를 반전 아닌 정제.
-//     Main Bet B 37→38(계약 락인 바닥 경직화)·C 9→8(근단기 이중충격 확률 추가 축소). A·D·E 불변. DF2 신규 신호 없어 불변.
-//   직전 [2026-07-04]: A27·B37·C9·D21·E6.
+//   [2026-07-14] 애플–CXMT 건(FT 07-08) 반영 — DF2가 관리된 공존 쪽으로 소폭 이동(1.0→0.5)한 데 따른 순수 DF2 재배분.
+//     공존 신호는 AI-지속 행(A+B, DF1 8.5 불변) 내부에서 디커플링(A)→공존(B)으로 확률을 이동시킴 → A 27→26·B 38→39.
+//     C·D·E 불변(DF1 무변화·C·D는 이미 낮음·E는 DF3 근거 아님). AI-지속 행 합계 65 유지, C+D+E 합계 35 유지 → 합 100.
+//     이동폭은 소폭 — 애플–CXMT는 아직 '테스트' 단계이고 승인/차단 리트머스가 미해결이기 때문(양방향 EWI cxmt_apple_qualification로 추적).
+//   직전 [2026-07-07]: A27·B38·C8·D21·E6.
 export const SCENARIOS = [
-  { id: 'A', name: '황금 요새', probability: 27, color: 'blue', description: 'AI 지속 + 디커플링' },
-  { id: 'B', name: 'AI 르네상스', probability: 38, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
+  { id: 'A', name: '황금 요새', probability: 26, color: 'blue', description: 'AI 지속 + 디커플링' },
+  { id: 'B', name: 'AI 르네상스', probability: 39, color: 'emerald', description: 'AI 지속 + 공존', mainBet: true },
   { id: 'C', name: '기술 냉전', probability: 8, color: 'red', description: 'AI 붕괴 + 디커플링' },
   { id: 'D', name: '조용한 재편', probability: 21, color: 'orange', description: 'AI 붕괴 + 공존' },
   { id: 'E', name: '패러다임 전환', probability: 6, color: 'purple', description: 'HBM 패러다임 붕괴 (와일드카드)' },
@@ -911,8 +911,9 @@ export const INITIAL_INDICATORS = [
       { date: '2024', value: 5, note: 'Morgan Stanley 추정 (4.9%)' },
       { date: '2025-Q3', value: 8, note: 'TrendForce 추정 — DRAM 4강 진입' },
       { date: '2027E', value: 13.9, note: '업계 예측치' },
+      { date: '2028E', value: 15, note: 'FT(2026-07-08): 글로벌 DRAM 웨이퍼 캐파 점유율 11%(2025)→15%(2028) 전망 — 애플–CXMT 보도 기준 (캐파 계열, 매출 점유와 구분)' },
     ],
-    note: '캐파: 2024년 17만 WSPM → 2026E 30만 WSPM (글로벌 10~12%). 빅펀드 III $470억 + 안후이성 정부 지원. DDR5 양산 + DDR5-8000·LPDDR5X-10667 시연',
+    note: '캐파: 2024년 17만 WSPM → 2026E 30만 WSPM (글로벌 10~12%). FT(2026-07-08) 캐파 점유 11%(2025)→15%(2028E) — 매출 점유(본 EWI)와 별개 계열. 빅펀드 III $470억 + 안후이성 정부 지원. DDR5 양산 + DDR5-8000·LPDDR5X-10667 시연. 애플이 中 내수용 기기에 CXMT DRAM 테스트 착수(FT 2026-07-08)로 프리미엄 고객 인증 파이프라인 진입 — cxmt_apple_qualification EWI 연동',
     inputType: 'number',
     hint: 'CXMT DRAM 분기 점유율 % 입력',
     isCritical: true,
@@ -1551,6 +1552,20 @@ export const INITIAL_TRIGGERS = [
     probabilityDelta: { A: -8, B: +9, C: -5, D: +4, E: 0 },
     df1Delta: 0,
     df2Delta: -3.5,
+  },
+  {
+    id: 'apple_cxmt_approved',
+    name: '애플 CXMT DRAM 미 행정부 승인·양산 채택 (중국 내수용)',
+    condition: '미 행정부가 애플의 CXMT DRAM 조달을 승인(사전 양해)하고 애플이 중국 내수용 기기에 양산 채택 확정',
+    targetScenarios: ['B', 'D'],
+    immediateAction: '관리된 공존 리트머스 확인 — 中 CXMT 잠식 대비 범용 DRAM 원가 우위(1c nm) 가속 + 과점 균열 대비 SCA 락인·고부가(HBM) 편중 강화',
+    activated: false,
+    activatedDate: null,
+    note: 'DF2 리트머스 (FT 2026-07-08). 현재 테스트 단계. 승인·채택 = 관리된 공존 확정 신호 + 삼성·SK 과점 균열·애플 price leverage. 반대로 차단·무산(YMTC 2022 전철) 시 A·C 디커플링 신호. us_china_semiconductor_deal보다 좁은·약한 공존 신호',
+    isPositive: false,
+    probabilityDelta: { A: -3, B: +3, C: -1, D: +1, E: 0 },
+    df1Delta: 0,
+    df2Delta: -1.5,
   },
   {
     id: 'enterprise_ai_roi_proven',

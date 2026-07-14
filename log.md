@@ -966,3 +966,11 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 실행 사례. 한 번의 지�
 갱신 wiki 6종: (1) `entities/cxmt.md` [Update 2026-07-11] 고객 인증 이정표 + 캐파/매출 점유율 이중 계열 정합. (2) `concepts/us-export-controls.md` 1260H 리스트 체계 위키 최초 도입 + 애플 케이스. (3) `driving-forces/key-drivers.md` DF2 현재위치 — 승인=Pole B 공존/차단=Pole A 디커플링 리트머스. (4) `scenarios/scenario-D.md` D의 교과서적 전조. (5) `strategies/invariant/rs4-...md` 대칭 논리("고객도 공급사 분산")·애플 price leverage. (6) `index.md` 소스 등록. 
 
 빌드 동기화: `dashboard/src/data/indicators.js` 신규 EWI `cxmt_apple_qualification`(4단계 select, B·D 신호) 추가 → 지식그래프 재생성(node 80·edge 309·orphan 0) → version v2.31.3→v2.31.4(패치).
+
+## [2026-07-14] assessment | 시나리오 포지션 맵·확률 재평가 — 애플–CXMT 건 반영 (DF2 1.0→0.5·A 27→26·B 38→39)
+
+직전 포지션 맵 갱신(2026-07-07) 이후 git log로 파악한 변경분 재평가. 물질적 신규 소스는 하나 — 애플–CXMT 건(FT 2026-07-08, 07-11 ingest). **포지션 맵**: 애플의 中 CXMT DRAM 테스트 착수·행정부 승인 로비 + 로이터(2026-06) CXMT 추가 블랙리스트 보류 = 관리된 공존 쪽 약한 신호 → **DF2 1.0→0.5 소폭 이동**. DF1은 애플–CXMT가 DF2 축 신호일 뿐 수요 강도 구조 변화 아님(범용 DRAM +55~60% 급등은 기존 슈퍼사이클과 정합) → **8.5 정점 유지**. **확률**: 순수 DF2 재배분 — AI-지속 행(A+B, 합 65 유지) 내부에서 디커플링(A)→공존(B)으로 **A 27→26·B 38→39**, C·D·E 불변(합 100). 이동폭 소폭 한정 이유 = 아직 "테스트" 단계·1260H 등재·의회 반대·YMTC 2022 무산 전철 → 승인/차단 리트머스 미해결.
+
+**EWI·트리거**: `cxmt_apple_qualification`(07-11 신설, 테스트 단계) 상태 유지. `cxmt_dram_share`에 FT 2028E 캐파 15%(2025 11%) 병기(캐파 계열, 매출 점유와 구분) + 애플 인증 파이프라인 note 연동. 신규 트리거 `apple_cxmt_approved`(승인·양산 채택 시 B·D 공존 확정, df2Δ −1.5) 추가.
+
+**동기화**: dashboard indicators.js(포지션·SCENARIOS·EWI note·트리거)·scenarioPlanning.js(matrix 확률·DF1·DF2 현재위치)·updates.js(assessment 항목)·version.js(v2.31.5). wiki key-drivers·scenario-matrix. outputs/report §5.1 확률표·Exec Summary. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX는 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증.

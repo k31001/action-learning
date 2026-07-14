@@ -125,7 +125,7 @@ export const DRIVING_FORCES_DATA = {
       id: 'DF1',
       title: 'AI 수요의 구조적 지속성 vs 거품 붕괴',
       role: '주축 X — 시나리오 매트릭스의 가로축',
-      currentPosition: '[2026-07-07 재평가] DF1 8.5 정점 유지 — 07-04 확증(8.0→8.5) 이후 LTA→SCA 계약 체제 확립 반영. Micron–Anthropic SCA(06-22, 공동설계+다년공급+운영통합+자본연계)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)로 다년 계약 락인 → 근단기 수요 바닥 경직화(UBS: "LTA가 cyclicality를 근본적으로 제거"). 상쇄 하방: 범용 DRAM Q3 계약가 +13~18% 감속(비AI-락인 축 집중, 서버/HBM 견조)·중기 공급 씨앗(한국 800조·CXMT 30k). 지지 성격이 실적 모멘텀→계약 구조 락인으로 전환. DRAM>HBM OPM 역전(84.9%)은 후기순환 신호로 유효 → DC 트래커 + 수요 변곡 EWI(공급 과잉·범용 감속) 선행 감시 지속',
+      currentPosition: '[2026-07-14 재평가] DF1 8.5 정점 유지 — 애플–CXMT 건은 DF2(공존) 축 신호로 수요 강도(DF1)에는 구조 변화 없음(범용 DRAM +55~60% 급등은 기존 슈퍼사이클과 정합). [2026-07-07 재평가] 07-04 확증(8.0→8.5) 이후 LTA→SCA 계약 체제 확립 반영. Micron–Anthropic SCA(06-22, 공동설계+다년공급+운영통합+자본연계)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)로 다년 계약 락인 → 근단기 수요 바닥 경직화(UBS: "LTA가 cyclicality를 근본적으로 제거"). 상쇄 하방: 범용 DRAM Q3 계약가 +13~18% 감속(비AI-락인 축 집중, 서버/HBM 견조)·중기 공급 씨앗(한국 800조·CXMT 30k). 지지 성격이 실적 모멘텀→계약 구조 락인으로 전환. DRAM>HBM OPM 역전(84.9%)은 후기순환 신호로 유효 → DC 트래커 + 수요 변곡 EWI(공급 과잉·범용 감속) 선행 감시 지속',
       poleA: {
         label: '구조적 지속·슈퍼사이클',
         narrative: 'AI 수요 폭증 + 빅테크 CapEx 2027 $1조 돌파, HBM이 DRAM의 50% 차지 (2030)',
@@ -139,7 +139,7 @@ export const DRIVING_FORCES_DATA = {
       id: 'DF2',
       title: '미중 지정학 대결의 강도 — 디커플링 vs 관리된 공존',
       role: '주축 Y — 시나리오 매트릭스의 세로축',
-      currentPosition: '두 극단 사이의 긴장된 중간지점. 2026 MATCH 법안 통과가 분기점',
+      currentPosition: '[2026-07-14 재평가] DF2 1.0→0.5 — 관리된 공존 쪽으로 소폭 이동. 애플–CXMT 건(FT 07-08): 애플이 중국 내수용 기기에 中 CXMT DRAM 기술 검증 착수 + 미 행정부에 사용 승인 로비, 로이터(2026-06)는 행정부가 대베이징 긴장 회피로 CXMT 추가 블랙리스트 등재 보류 → 실현된 사실 2건 모두 공존 쪽 약한 신호. 절제: 아직 테스트 단계·1260H 등재·의회 반대·YMTC 2022 무산 전철 리스크 상존 → 승인/차단 리트머스 미해결로 이동폭 소폭. 신규 트리거 apple_cxmt_approved + EWI cxmt_apple_qualification로 양방향 추적. 두 극단 사이 긴장된 중간지점, 2026 MATCH 법안 통과가 여전히 주 분기점',
       poleA: {
         label: '전면 기술 디커플링',
         narrative: 'MATCH 법안 통과 → 시안 팹 매각 압박, 서방 동맹 공급망에서 지배적 위치 확보',
@@ -177,7 +177,7 @@ export const SCENARIOS_DATA = {
     {
       id: 'A', name: '황금 요새', color: '#1d4ed8',
       df1: 'AI 지속',     df2: '디커플링',
-      probability: 27,  // 2026-07-04 — Micron Q3 사상 최대·$100B SCA 백로그로 AI-지속 Pole A 강화 → 26→27 (indicators.js 동기화)
+      probability: 26,  // 2026-07-14 — 애플–CXMT 건으로 DF2 관리된 공존 쪽 이동 → AI-지속 행 내 A(디커플링)→B(공존) 재배분 27→26 (indicators.js 동기화)
       summary: '서방 AI 공급망 내 HBM 수요 폭발. 시안 팹 상실 + 서방 시장 프리미엄 급등',
       threats: ['시안 팹 상실', '대중 HBM 봉쇄', '공급 다각화 압박'],
       opportunities: ['서방 AI 듀오폴리', 'HBM 단가 프리미엄', '텍사스 팹 CHIPS 보조금'],
@@ -186,8 +186,8 @@ export const SCENARIOS_DATA = {
     {
       id: 'B', name: 'AI 르네상스', color: '#059669',
       df1: 'AI 지속',     df2: '관리된 공존',
-      probability: 38,  // 2026-07-07 — LTA→SCA 계약 체제 확립(Micron–Anthropic SCA·$100B·Stargate 40% DRAM)으로 근단기 수요 바닥 경직화 → 37→38
-      summary: 'AI 글로벌 성장 + 중국 시장 부분 접근 유지. 최상의 성장 환경, 가장 가능성 높음. [2026-07-07] LTA→SCA 계약 체제 확립 — Micron–Anthropic SCA(06-22)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)로 다년 계약 락인, 근단기 수요 바닥 경직화 → Main Bet 강화(37→38). 감속 신호(범용 DRAM +13~18%)는 비AI-락인 축 집중, 서버/HBM/SCA 축 견조. KPI 윈도우 HBM4E·HBM5(2027~). 단 사상 최고 마진(84.9%)·정점 신호로 절제(RS-5) 병행.',
+      probability: 39,  // 2026-07-14 — 애플–CXMT 건(FT 07-08)으로 DF2 관리된 공존 쪽 소폭 이동, AI-지속 행 내 A→B 재배분 → 38→39
+      summary: 'AI 글로벌 성장 + 중국 시장 부분 접근 유지. 최상의 성장 환경, 가장 가능성 높음. [2026-07-14] 애플–CXMT 건(애플의 中 CXMT DRAM 테스트 착수 + 행정부 승인 로비 + 로이터 CXMT 블랙리스트 보류)이 관리된 공존 쪽 약한 신호 → AI-지속 행 내 A(디커플링)→B(공존) 재배분(38→39). [2026-07-07] LTA→SCA 계약 체제 확립 — Micron–Anthropic SCA(06-22)·SCA 16건 $100B 공시 제도화·Stargate LOI(글로벌 DRAM 40%)로 다년 계약 락인, 근단기 수요 바닥 경직화. KPI 윈도우 HBM4E·HBM5(2027~). 단 사상 최고 마진(84.9%)·정점 신호로 절제(RS-5) 병행. CXMT 과점 균열·애플 price leverage는 중기 마진 리스크로 병기.',
       threats: ['SK하이닉스 기술 격차 고착 (FY25 OP 47.2조 vs Samsung 메모리 24.9조)', 'NAND 점유율 회복 압박', 'Rubin 진입 여지 좁아짐 (SK 2/3+ 락인)', '공급 과잉 정점 후 순환 조정 리스크'],
       opportunities: ['동서 양쪽 시장 공략', 'DC 파이프라인 55.9GW·운영사별 HBM 수요 가시성', 'HBM4E·HBM5 윈도우에서 회복 베팅', '대중 일반 메모리 매출 유지', 'IDM 종합반도체 차별점 (CXL·3D DRAM·로직다이 내재화)'],
       keyAssumption: 'AI 수익화 가시화 + 미중 협상 모멘텀 지속 + DC 착공 파이프라인 실현',

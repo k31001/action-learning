@@ -14,6 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-14 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-07-14',
+    type: 'assessment',
+    version: 'v2.31.5',
+    title: '시나리오 포지션 맵·확률 재평가 — 애플–CXMT 건 반영 (DF2 1.0→0.5·A 27→26·B 38→39)',
+    summary:
+      '직전 포지션 맵 갱신(2026-07-07) 이후 git log로 파악한 변경분을 근거로 시나리오 포지션 맵과 확률을 재평가. 물질적 신규 소스는 하나 — 애플–CXMT 건(FT 2026-07-08, 07-11 ingest): 애플이 중국 내수용 기기에 中 CXMT DRAM 기술 검증(qualification)에 착수하고 미 행정부에 사용 승인을 로비 중이며, 로이터(2026-06)는 트럼프 행정부가 대베이징 긴장 회피 차원에서 CXMT 추가 블랙리스트 등재를 보류했다고 보도. 이 두 실현된 사실이 DF2(미중 지정학) 축의 "관리된 공존" 쪽 약한 신호로 작동 → DF2 1.0→0.5 소폭 이동, DF1은 수요 구조 무변화로 8.5 정점 유지(범용 DRAM +55~60% 급등은 기존 슈퍼사이클과 정합). 확률은 순수 DF2 재배분 — AI-지속 행(A+B, DF1 불변) 내부에서 디커플링(A)→공존(B)으로 A 27→26·B 38→39, C·D·E 불변(합 100). 이동폭을 소폭에 한정한 이유: 아직 "테스트" 단계이고 CXMT 1260H 리스트 등재·의회 반대·YMTC 2022 무산 전철 리스크로 승인/차단 리트머스가 미해결. EWI cxmt_apple_qualification(테스트 단계) 유지·cxmt_dram_share에 FT 2028E 캐파 15% 병기, 신규 트리거 apple_cxmt_approved(승인·채택 시 B·D 공존 확정) 추가. 패치 v2.31.5.',
+    tags: ['시나리오', '포지션 맵', '확률', 'DF2', '애플', 'CXMT', '관리된 공존', '1260H', 'EWI', '트리거', 'dashboard'],
+    items: [
+      { label: '포지션 맵 DF2 1.0→0.5 (DF1 8.5 유지)', detail: '애플–CXMT 건의 실현된 사실 2건(애플의 中 CXMT DRAM 테스트 착수·행정부 승인 로비 + 로이터의 CXMT 추가 블랙리스트 보류)이 관리된 공존 쪽 약한 신호 → DF2 소폭 하향. DF1은 애플–CXMT가 DF2 축 신호일 뿐 수요 강도 구조 변화 아님 → 8.5 정점 유지' },
+      { label: '확률 재추정: A26·B39·C8·D21·E6 (합 100)', detail: '직전 A27·B38·C8·D21·E6. DF2가 공존 쪽으로 이동한 만큼 AI-지속 행(A+B, 합 65 유지) 내부에서 디커플링(A)→공존(B) 재배분 = A 27→26·B 38→39. C·D·E 불변(DF1 무변화·C·D 이미 낮음·E는 DF3 근거 아님)' },
+      { label: '근거 — 애플–CXMT 건 (FT 2026-07-08)', detail: '애플이 중국 내수용 기기 DRAM에 CXMT 기술 검증 착수 + 미 행정부에 사용 승인 로비. CXMT는 국방부 1260H 리스트(PLA 연계 의심) 등재. 로이터(2026-06): 행정부가 대베이징 긴장 회피로 CXMT·DeepSeek 추가 블랙리스트 보류. 프리미엄 고객이 중국 공급사를 조달 후보로 세우는 것 자체가 공존 정합 발전' },
+      { label: '이동폭을 소폭에 한정한 이유', detail: '아직 "테스트" 단계(양산 채택·승인 미확정)·1260H 등재·의회 반대·YMTC 2022 무산 전철 리스크 상존 → 승인/차단 리트머스가 미해결. 승인 시 Pole B(관리된 공존), 차단 시 Pole A(디커플링)로 양방향 열려 있어 선제 이동폭 최소화' },
+      { label: 'EWI 갱신', detail: 'cxmt_apple_qualification(07-11 신설, "테스트 단계"·warning) 유지 — 상태 변화 없음. cxmt_dram_share에 FT 2028E 글로벌 캐파 점유 15%(2025 11%) 병기(캐파 계열, 매출 점유와 구분) + 애플 인증 파이프라인 진입 note 연동' },
+      { label: '시나리오 트리거 신설 — apple_cxmt_approved', detail: '미 행정부가 애플 CXMT 조달을 승인하고 애플이 양산 채택 확정 시 발동 → 관리된 공존 확정 신호(targetScenarios B·D, df2Δ −1.5, A−3·B+3·C−1·D+1). us_china_semiconductor_deal(df2Δ −3.5)보다 좁은·약한 공존 신호. 반대로 차단·무산 시 A·C 디커플링 신호(EWI blocked 상태로 추적)' },
+      { label: '보고서·위키 동기화', detail: 'outputs/report §5.1 확률표 A26·B39 + Exec Summary Main Bet 확률 갱신. wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치·wiki/scenarios/scenario-matrix.md 확률 추정표 갱신. dashboard scenarioPlanning.js·indicators.js 미러' },
+    ],
+    links: [
+      { label: 'apple-cxmt-china-dram-2026-07-08.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/apple-cxmt-china-dram-2026-07-08.md' },
+      { label: 'scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'us-export-controls.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/us-export-controls.md' },
+    ],
+  },
   // ── 2026-07-08 ───────────────────────────────────────────────────────────────
   {
     date: '2026-07-08',
