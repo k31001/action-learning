@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-07-21
+sources: [sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/july-2026-market-update-2026-07-21.md]
 ---
 
 # 한국·EU·일본 반도체 정책 및 미중 갈등 리스크 시나리오
@@ -149,3 +149,11 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 - 기존 KRW 700조(2025-12 발표) 미래 반도체 산업 투자 목표와 별개로 집계된 신규 발표로, 국가 차원의 반도체 생태계 지원 규모가 추가로 상향된 것으로 파악된다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+## 업데이트 (2026-07-21) — 용인 클러스터 완공 목표 단축 + 반도체·AI 1,350조 원 지원
+
+- **용인 클러스터 완공 목표 단축(2026-06-29 "3대 메가프로젝트" 브리핑)**: 삼성전자 용인 국가산단 완공 목표가 **2040년**(기존 2047년 대비 -7년), SK하이닉스 용인 일반산단은 **2035년**(기존 대비 -12년)으로 단축됐다. SK하이닉스는 그리드 인프라 구축 기간을 10년→5년으로 압축해 **1호 팹을 2027년 상반기 목표**로 삼성보다 앞서 진행 중이며, 삼성 부지는 행정·지리적 여건으로 상대적으로 진행이 더디다 ([july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)).
+- **반도체·AI 1,350조 원 지원 패키지(신규, 2026-07-13 발표)**: "2026 하반기 경제정책방향"에서 반도체·AI 분야에 약 **1,350조 원** 규모 지원을 발표 — 800조 원 팹클러스터 지원(2026-06-29 발표분과 연속)에 더해 **18.1조 원+ 규모 신규 반도체 금융지원 프로그램**이 2026년 7월 출범한다 ([july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)).
+- **함의**: SK하이닉스가 용인 인프라 구축 속도에서 삼성을 앞서는 것은 [MB2 동서 균형 공급자](../strategies/core/current-state-mb2-east-west-supply.md)·[SE3 수직 상승](../strategies/core/current-state-se3-vertical-ascent.md) 전략의 국내 실행 속도 벤치마크로 추적 필요.
+
+**출처**: [july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)

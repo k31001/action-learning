@@ -14,6 +14,20 @@
 
 ---
 
+## [2026-07-21] ingest | 정기 시장 점검 — 전력 병목 실측 확정·삼성 Q2 사상 최대·CXMT 상장·Bottleneck Model 변동폭 반영
+
+예약 작업(자동 실행): semianalysis.com·counterpointresearch.com·techinsights.com 우선 + PJM·TSMC·ASML·CXMT·Reuters·FT·한국 언론 보강. 3개 병렬 리서치 에이전트(① HBM/DRAM 가격·실적 ② 전력·CAPEX·파운드리·패키징 병목 ③ 중국·정책·반독점)로 2026-07-08~07-21 신규 정보 수집. 신규 소스 [july-2026-market-update-2026-07-21.md](sources/articles/july-2026-market-update-2026-07-21.md).
+
+**Bottleneck Model 변동폭 (2026-07-04 → 07-21)**: 전력 72→**75**(▲+3, PJM 2028/29 용량경매 목표 대비 6,831MW 부족 확정 — 처음으로 "전망"이 "실측"으로 전환. 폭염 비상·예비마진 14.4%·전기설비 부족 CAPEX 지연리스크 30~50% 신규 정량화), CAPEX/ROI 40→**40**(보합, 빅테크 4사 실적 콜이 07-22~30 예정이라 재확인 신호뿐), 파운드리 50→**48**(▼-2, TSMC Q2 콜 FY26 성장률 40%+ 상향·CAPEX $60~64B 상향, ASML Q2 가이던스 상향), 패키징 67→**65**(▼-2, CoWoS 공급갭 20%→10% 축소 전망·Amkor CAPEX 상향, HBM4 마이크로범프 유지는 불변). 전력이 3개 분기 연속 재상승(68→70→72→75)으로 4대 병목 중 유일하게 Red 밴드(75) 진입.
+
+**주요 신규 사실**: ① 삼성 Q2 2026 잠정실적 사상 최대(영업이익 ~89.4조 원, +1,181% YoY)에도 주가 6~10% 하락 — 메모리/AI 인접주 전반 20%+ 밸류에이션 조정(07-02~07-19)과 동반, 실적 펀더멘털 신호가 아닌 센티먼트 신호로 판단해 DF1·병목 지수에 미반영. ② SK하이닉스 Q2 실적 07-29 예정(컨센서스 영업이익 ~63.45조 원). ③ TrendForce 공식 Q3 DRAM 전망(+13~18%) 불변이나 ADATA 스팟가는 +20~30%로 더 가파름 — 계약가/스팟가 괴리 신규 플래그. ④ CXMT 상하이 STAR Market IPO(07-16, $4.1~4.3B, 中 A주 최대) + 텐센트 DRAM 공급계약. ⑤ BIS의 CXMT Entity List 등재 보류(무역협상 연계)와 하원 Moolenaar·Whitesides 의원의 등재+구매금지 촉구 서한이 동시 발생 — 공존·디커플링 신호 상쇄, DF2 리트머스 미해결. ⑥ 한국 검찰이 삼성·SK하이닉스에 MIC(메모리 인터페이스 칩)를 공급하는 Montage·Renesas·Rambus 압수수색(07-15) — 美 DRAM 가격담합 소송(삼성 피고)과는 별개 트랙(삼성·SK는 구매자 측). ⑦ 용인 클러스터 완공 목표 단축(삼성 2040·SK하이닉스 2035) + 반도체·AI 1,350조 원 지원 패키지(07-13). ⑧ 16-Hi HBM4가 차세대 경쟁 축으로 부상.
+
+**DF1/DF2 거시 축**: 위 신규 신호는 모두 병목(물리적 실현가능성) 또는 개별 기업 실행·센티먼트 영역 — 거시 축을 이동시키는 근거 없음. DF1 8.5·DF2 0.5·확률(A26/B39/C8/D21/E6)은 직전 재평가(v2.31.6)를 유지.
+
+**갱신 wiki 9종**: `concepts/bottleneck-model-2030.md`(§종합 판독 2026-07-21 신설), `entities/samsung.md`, `entities/sk-hynix.md`, `entities/cxmt.md`, `concepts/us-export-controls.md`, `concepts/dram-antitrust-litigation.md`(한국 MIC 트랙 신설), `concepts/price-trends.md`, `concepts/hbm-market.md`, `concepts/korea-policy.md`. `index.md` 소스 등록.
+
+**빌드 동기화**: `dashboard/src/data/bottleneckModel.js`(MODEL_ASOF·PREV_INDICES·4개 currentIndex·indexNote·주요 드라이버 note 갱신) · `dashboard/src/data/indicators.js`(`cxmt_apple_qualification` 히스토리 추가) · 지식그래프 재생성(`node scripts/build-knowledge-graph.mjs` — node 80·edge 314·orphan 0) · `outputs/report/scenario-planning-report.md`(§2.2.3 신설·핵심수치표·§7.2 병목레이더 표 스테일 수치 수정) · `outputs/presentation/slide-outline.md`(데이터 갱신 노트 라인만 갱신, 슬라이드 구조 불변이므로 PPTX 재생성 생략) · `dashboard/src/version.js` v2.31.6→**v2.31.7**(패치 — 데이터 갱신, 구조·페이지 변경 없음) · `cd dashboard && npm run build` 통과.
+
 ## [2026-07-21] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 + 삼성 HBM4 볼륨 발주 지연·EWI 갱신 (v2.31.5 → v2.31.6)
 - **무엇**: 직전 포지션 맵 갱신(2026-07-14) 이후 git log상 신규 커밋·소스 없음. 07-14→07-21 구간을 웹 리서치로 점검한 결과 거시 축(DF1·DF2)을 움직일 신규 실현 신호가 없어 **포지션 맵(DF1 8.5·DF2 0.5)과 확률(A26·B39·C8·D21·E6)을 전부 유지**. 이번 주 물질적 발전은 개별 실행 신호 하나 — 삼성 HBM4가 NVIDIA 인증(06-05 Vera Rubin 3사 인증)을 통과했으나 07-17 현재 볼륨(양산) 발주로 미전환·매출 유상 평가용 샘플 수준(Winbuzzer 07-17), SK Rubin 2/3+ 락인 유지. 이는 거시 축이 아니라 시나리오 B 내부의 삼성 점유·실행 리스크 → EWI·트리거·B 내러티브로만 반영. 신규 소스 1건(`samsung-hbm4-volume-order-pending-2026-07-17.md`).
 - **왜**: 주간 모니터링 사이클 — 시나리오 포지션 맵을 최신 수집 데이터 대비 재평가하고, EWI·시나리오 트리거 중 갱신 가능한 부분을 갱신하기 위함. 확증(무변화) 신호: 빅테크 4사 2026 CapEx ~$725B(+77% YoY, DF1 정점 재확인)·GPU 현물 임대가 firming(H200 +8% YoY, 붕괴 아님 → 수요 변곡 조기경보 미발동)·DRAM Q3 계약가 +13~18% 감속(소비자 지불한계·기저효과에 따른 정제, 서버 견조)·MATCH 위원회 단계 유지·CXMT 2026 HBM 양산 지연.

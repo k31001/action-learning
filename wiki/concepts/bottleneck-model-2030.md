@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-07-21
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/july-2026-market-update-2026-07-21.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -348,6 +348,30 @@ flowchart LR
 - **DRAM 가격 상승 감속 조짐(조기경보 후보)**: TrendForce(2026-07-03, 최신) Q3 2026 범용 DRAM 계약가 전망 **+13~18% QoQ**로 Q2(+58~63%) 대비 큰 폭 감속 — PC/스마트폰 구매력 한계·고기저 효과가 주 원인, 서버향은 에이전틱 AI 수요로 견조. Jefferies는 여전히 Q3 +40~50%를 전망(스팟·HBM 포함 범위 차이로 추정) — **범용 DRAM 계약가 축의 첫 감속 신호로 [demand-inflection-ewi.md](demand-inflection-ewi.md) 모니터링 대상에 추가**.
 - **반독점 소송 신규 리스크**: 2026-06-25 삼성·SK하이닉스·Micron 대상 미국 집단소송 제기(HBM 전환 명목 범용 DRAM 공급 제한·가격 담합 주장) — 병목 모델 자체의 수급 축을 바꾸진 않으나 **CAPEX/ROI·가격 결정 관련 규제·평판 리스크**로 별도 모니터링 필요 ([dram-antitrust-litigation.md](dram-antitrust-litigation.md) 신설).
 
+### 종합 판독 (2026-07-21)
+
+#### 제약지수 업데이트 (2026-07-21, 이전 2026-07-04 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 72 | **75** | **▲ +3** | PJM 2028/29 용량경매(2026-07-14) 목표 대비 6,831MW 부족 — 3년 연속 미달·법정상한가 3년 연속 청산(전망이 실측으로 확정). 폭염 비상(07-01/02, 피크 162.9GW). 예비마진 20%→14.4%, 2027년 마이너스 헤드룸 가능성. 변압기 리드타임 최대 4년+개폐장치 2028년까지 완판. 하이퍼스케일러 CAPEX $750B+의 30~50%가 전기설비 부족으로 지연·취소 리스크(신규 정량화). SemiAnalysis: 그리드가 아닌 BTM(자가발전) 확보 경쟁이 새 결정 변수 |
+| **CAPEX/ROI** | 40 | **40** | **— 0** | 빅테크 4사 실적 콜(Alphabet 07-22·MS·Meta 07-29·Amazon 07-30)이 이번 수집 창구 이후 예정 — 기존 가이던스($725B, +77% YoY) 재확인만 있고 신규 상·하향 신호 부재. 삼성 Q2 잠정실적 사상 최대(영업이익 89.4조 원, +1,181% YoY)에도 주가 6~10% 급락은 밸류에이션·센티먼트 신호로 판단해 지수에 미반영(§핵심 신규 신호 참조) |
+| **파운드리** | 50 | **48** | **▼ −2** | TSMC Q2 실적 콜(2026-07-16): FY26 매출성장 가이던스 "40%대 상회"로 상향, CAPEX $52~56B→$60~64B 상향, N2 첫 매출 기여(웨이퍼 매출 3%), HPC/AI 66%, 애리조나 추가 $100B(누적 $265B). 6월 매출 사상 최고(NT$442.68B, +67.9% YoY). ASML Q2 가이던스 상향(FY26 €43~45B), 단 High-NA는 분기 1대 출하에 그쳐 도입 지연(2029년) 실측 재확인 |
+| **패키징** | 67 | **65** | **▼ −2** | TrendForce: CoWoS 공급-수요 갭 2026년 말까지 20%→10%로 축소 전망 재확인, TSMC 캐파 2026말 120~140K장/월(2025말 75K 대비)+OSAT 50~60K로 산업 전체 ~200K장/월. Amkor CAPEX $2.5~3B로 상향. 단 CoWoS sold-out 상태·HBM4 마이크로범프 유지(하이브리드본딩 연기)는 불변 — 완화 속도는 07-04와 유사 |
+
+**전력: 3개 분기 연속 재상승(68→70→72→75) — 이번 갱신의 핵심 특징은 "전망"이 처음으로 "실측 결과"(PJM 용량경매 미달)로 확정됐다는 점. 하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리. 파운드리·패키징은 완화 지속, CAPEX는 실적 시즌 대기로 보합.**
+
+#### 2026-07-21 핵심 신규 신호
+
+- **전력 — 전망에서 실측으로**: PJM의 "2027~28년 6.6GW 부족" 경고(07-04 반영)가 2026-07-14 실제 용량경매 결과 **6,831MW 부족·법정상한가 3년 연속 청산**으로 확정. 같은 주 폭염 비상(피크 162.9GW, Max Generation Alert)까지 겹치며 전력 병목이 중장기 전망에서 **현재진행형 그리드 스트레스**로 전환. Wood Mackenzie 기반 신규 추정: 2026년 하이퍼스케일러 DC CAPEX($750B+)의 **30~50%가 변압기·개폐장치 부족으로 지연·취소 리스크**에 노출 — CAPEX/ROI 병목과의 교차 리스크로도 유의미. SemiAnalysis는 "그리드 자체는 더 이상 유일한 병목이 아니다 — 이제는 BTM(behind-the-meter) 자가발전 확보 경쟁"이라는 재프레이밍을 제시(2028년까지 美 BTM DC 40GW+ 전망) ([july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)).
+- **파운드리·패키징 — TSMC/ASML 이중 실적 서프라이즈**: TSMC와 ASML 모두 Q2 가이던스를 상향하며 AI 수요 둔화 신호가 없음을 재확인. TSMC CAPEX 상향($60~64B)은 공급 측 확장 가속을, ASML High-NA 1대만 출하는 근시일 기술 리스크가 여전히 낮음을(=2029년 지연 유지) 시사 — 두 병목 모두 완화 방향 유지.
+- **CAPEX/ROI — 실적 시즌 공백기**: 이번 수집 창구(07-05~07-21)는 빅테크 4사 실적 콜 **직전** 구간이라 신규 가이던스 발표가 사실상 없음. 삼성 Q2 잠정실적(영업이익 89.4조 원, 사상 최대)은 메모리 슈퍼사이클의 강도를 재확인하나, 발표 당일 주가 6~10% 하락은 **AI CapEx 지속가능성 우려·밸류에이션 부담에 따른 차익실현**으로, 메모리·AI 인접주 전반의 20%+ 조정(07-02~07-19)과 함께 나타난 **금융시장 센티먼트 신호**다. 이는 실물 CAPEX 가이던스 축소가 아니므로 지수에 직접 반영하지 않되, 07-22~07-30 실적 시즌에서 실제 코멘터리로 검증 필요 — **재확인 대기 플래그**.
+- **삼성 개별 실행 신호(거시 축과 분리)**: 16-Hi HBM4가 차세대 경쟁 축으로 부상(2026 Q4 목표) — 삼성의 볼륨 발주 지연(07-17 기 반영) 국면에서 재진입 기회일 수 있음. 단 이는 시나리오 B 내부의 개별 경쟁 신호이며 병목 모델·거시 DF 축과는 무관.
+- **DF1/DF2 거시 축 — 무변화**: 이번 창구의 신규 신호(전력 실측 악화, TSMC/ASML 서프라이즈, CXMT 상하이 IPO, BIS 등재보류-의회반발 상쇄, 메모리주 밸류에이션 조정)는 모두 병목(물리적 실현가능성) 또는 개별 기업 실행·센티먼트 영역이며, DF1(AI 수요 구조)·DF2(미중 디커플링) 축을 이동시키는 근거가 아니다. DF1 8.5·DF2 0.5·확률 A26/B39/C8/D21/E6은 직전 재평가([key-drivers.md](../driving-forces/key-drivers.md))를 유지한다.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
+
+---
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -363,3 +387,4 @@ flowchart LR
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 병목 제약지수 갱신 데이터 (PJM 개편 큐·ERCOT 4배 급증·변압기 리드타임·CAPEX 추가 상향·ASML High-NA 연기·HBM4 마이크로범프 결정·DRAM 가격 감속 조짐)
+- [sources/articles/july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md) — 2026-07-21 병목 제약지수 갱신 데이터 (PJM 용량경매 3년 연속 미달·폭염 비상·TSMC/ASML Q2 실적 서프라이즈·CoWoS 갭 축소 전망·CAPEX 실적시즌 대기)

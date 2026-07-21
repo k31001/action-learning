@@ -323,3 +323,17 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 ### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
 
 - SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## 업데이트 (2026-07-21)
+
+### 16-Hi HBM4 — 차세대 경쟁 축 부상
+
+- NVIDIA의 차세대 **16-Hi HBM4**(2026 Q4 물량 목표)를 두고 삼성·SK하이닉스·Micron 3사가 경쟁 중이라는 보도(TweakTown) — 기존 8-Hi/12-Hi 세대의 인증·배정 구도(SK 60~70%·삼성 25~30%·Micron 잔여)에 더해진 다음 세대 축이다 ([july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)). 볼륨 발주가 지연 중인 삼성([samsung.md](../entities/samsung.md#업데이트-2026-07-21--hbm4-인증-통과에도-nvidia-볼륨-발주-대기))에게는 16-Hi가 재진입 기회일 수 있어 모니터링 대상이다.
+
+### HBM 점유율 — 오래된 자료 재유통 주의 (신규 확정치 없음)
+
+- 웹상에 "SK하이닉스 62%·Micron 21%·삼성 17%"라는 수치가 순환 중이나, 원출처를 추적하면 **2025-09 vintage(2025 Q2 기준)** 자료로 확인됐다 — 위키의 2026-04 잠정치(삼성 35~40%)·Q1 2026 확정치(삼성 32%)를 대체할 근거가 아니다 ([july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)). Counterpoint의 공식 최신 갱신은 이번 수집 창구에서 확인되지 않았다(웹 접근 차단) — 다음 정기 점검에서 재시도.
+
+**출처**: [july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)

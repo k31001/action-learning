@@ -85,6 +85,17 @@
 
 ---
 
+## [Update 2026-07-21] BIS Entity List 등재 보류 확정 + 의회 반발 서한 — 리트머스 여전히 미해결
+
+- **BIS 등재 보류(구체화)**: 트럼프 행정부가 CXMT의 Entity List 추가를 **미중 무역협상과 명시적으로 연계해 보류**한 것이 The Register·FT(2026-07-17)로 재확인됨 — 07-11 반영한 로이터의 "보류" 보도를 뒷받침.
+- **의회 반발(신규)**: 하원 미중전략경쟁특별위원회 위원장 존 물리너(Moolenaar)·조지 화이트사이즈(Whitesides) 의원이 상무장관 러트닉에게 서한(2026-07-17 전후) 발송 — CXMT Entity List 등재, YMTC 제재 확대, 애플 등 미국 기업의 CXMT/YMTC 구매 금지, 중국 군 연계 공급사 조달 금지 행정명령을 촉구.
+- **판독**: 행정부(보류=공존 방향)와 의회(반발=디커플링 방향)가 반대 방향으로 동시에 움직이는 **긴장 지속** 상태 — 리트머스(승인 vs 차단)는 여전히 미해결. 한쪽 신호만으로 DF2를 재평가하지 않고, 실제 최종 결정(승인·차단·양보안)이 나올 때까지 EWI [`cxmt_apple_qualification`](../../dashboard/src/data/indicators.js)로 계속 추적.
+- CXMT 상세: [cxmt.md](../entities/cxmt.md#update-2026-07-21-상하이-star-market-ipo-41-43b--bis-등재-보류--의회-반발)
+
+**출처**: [july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)
+
+---
+
 ## 원본 링크
 - [Apple begins testing CXMT chips for devices sold in China, FT says — CNBC](https://www.cnbc.com/2026/07/08/apple-begins-testing-cxmt-chips-for-devices-sold-in-china-ft-says-.html)
 - [Commerce Strengthens Export Controls - BIS Press Release](https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military)

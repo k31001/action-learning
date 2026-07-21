@@ -230,3 +230,14 @@ Micron FY26 Q3(2026-05-28 종료, 2026-06-24 발표) 실적이 가격 주도 성
 - TrendForce(2026-07-03, 최신)는 Q3 2026 범용 DRAM 계약가를 QoQ **+13~18%**로 전망한다 — Q2 2026 실적(+58~63%) 대비 대폭 감속이며, PC·스마트폰의 구매력 한계와 고기저 효과가 주 요인이다. 서버향 수요는 에이전틱 AI로 견조함을 유지한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - 이 감속 신호는 [demand-inflection-ewi.md](demand-inflection-ewi.md)의 조기경보(EWI) 후보로 교차 링크할 필요가 있다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - Jefferies는 이와 배치되게 Q3 2026 +40~50%·Q4 2026 +30~40% QoQ를 여전히 전망한다 — TrendForce의 "범용 DRAM 계약가" 특정치와 달리 스팟·HBM을 포함한 전반적 메모리 가격 기준일 가능성이 있어 범위 차이로 병기한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## 업데이트 (2026-07-21) — 공식 계약가 전망 vs 스팟·모듈 유통단 괴리(신규)
+
+- TrendForce의 공식 Q3 2026 전망(범용 DRAM +13~18%·NAND +10~15% QoQ, 07-04 반영)은 **불변**으로 재확인됐다.
+- 그러나 대만 모듈업체 **ADATA**는 2026-07-08 보도에서 Q3 DRAM **스팟가가 +20~30%**, **NAND가 +35~40%**로 공식 계약가 전망보다 훨씬 가파르다고 밝혔다 ([july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)).
+- **해석**: 계약가(대형 고객·장기계약 기준)와 스팟·모듈 유통단(소량·현물 기준) 간 괴리가 확대되는 것은 전형적인 공급 타이트 국면의 특징 — 계약가 감속(+13~18%)이 "수요 둔화"가 아니라 "대형 바이어의 협상력·장기계약 우선순위"를 반영할 뿐, 실물 공급은 여전히 매우 타이트할 수 있음을 시사한다. TrendForce의 감속 신호를 [demand-inflection-ewi.md](demand-inflection-ewi.md) 조기경보로 해석할 때 이 괴리를 함께 고려해야 한다.
+- 두 계열(계약가 vs 스팟/모듈가)을 혼동하지 않도록 위키·보고서에서 출처를 명시해 병기한다.
+
+**출처**: [july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)

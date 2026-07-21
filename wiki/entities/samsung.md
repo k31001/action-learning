@@ -281,3 +281,12 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - **함의**: "인증 ≠ 공급 계약" 구간이 길어질수록 Main Bet(시나리오 B) 1위 탈환 가정의 **시간 리스크**가 커진다. 이는 거시 축(DF1·DF2) 신호가 아니라 시나리오 B 내부의 삼성 실행 리스크 — EWI [`samsung_hbm4_rubin_share`](../../dashboard/src/data/indicators.js)·트리거 `samsung_hbm4_nvidia_confirmed`(인증 아닌 "공식 볼륨 계약 확인서" 기준)로 추적. (→ [scenario-B.md](../scenarios/scenario-B.md), [key-drivers.md](../driving-forces/key-drivers.md))
 
 **출처**: [samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md)
+
+## 업데이트 (2026-07-21) — Q2 잠정실적 사상 최대 + 밸류에이션 조정 + Anthropic 파운드리 초기 논의
+
+- **Q2 2026 잠정실적 (2026-07-07 발표)**: 매출 **약 171조 원**, 영업이익 **약 89.4조 원**(YoY +1,181%, 상여충당금 제외 시 약 100조 원 추정) — 사상 최대 분기 실적, 컨센서스(86~87.3조 원) 상회. HBM·DRAM 가격 상승이 견인. **DS부문 세부 실적·HBM 코멘터리를 포함한 확정 실적은 2026-07-30 발표 예정**(본 업데이트 시점 기준 미발표 — 다음 정기 점검에서 확인).
+- **주가는 발표 당일 6~10% 하락** — 실적 서프라이즈에도 AI CapEx 지속가능성 우려·YTD +150% 랠리 이후 차익실현으로 해석됨. Micron·SK하이닉스·SanDisk·Western Digital 등 메모리/AI 인접주 전반이 2026-07-02~07-19 사이 고점 대비 20%+ 하락하며 동반 조정 — **실적·수요 펀더멘털 악화가 아닌 밸류에이션·센티먼트 신호**로 판단([bottleneck-model-2030.md §종합 판독(2026-07-21)](../concepts/bottleneck-model-2030.md) 참조, DF1 축에는 미반영).
+- **Anthropic과 2nm 파운드리 커스텀 AI 칩 초기 논의(신규, 2026-07-02 보도)**: HBM이 아닌 로직/파운드리 인접 스레드 — Anthropic이 삼성 파운드리 2nm 공정 기반 커스텀 AI 칩을 초기 단계로 검토 중. Anthropic Series H 전략적 인프라 파트너(Micron·SK hynix·Samsung 공동, 2026-06 반영)에 이어, 삼성이 파운드리 사업으로도 Anthropic과의 관계를 확장할 실마리 — [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md)의 4단계 영업 모델 진화와 정합.
+- **16-Hi HBM4 — 재진입 기회 가능성**: NVIDIA의 차세대 16-Hi HBM4(2026 Q4 목표)를 두고 삼성·SK하이닉스·Micron 3사가 경쟁 중 — 8/12-Hi 세대에서 볼륨 발주가 지연된 삼성이 16-Hi에서 재진입할 여지. 모니터링 대상.
+
+**출처**: [july-2026-market-update-2026-07-21.md](../../sources/articles/july-2026-market-update-2026-07-21.md)

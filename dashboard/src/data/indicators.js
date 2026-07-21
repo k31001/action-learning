@@ -311,9 +311,10 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'B·D 신호 — 관리된 공존 + 중국 범용 CXMT 잠식. 차단(무산) 시 A·C 디커플링 반전 신호',
     warningThreshold: null,
     status: 'warning',
-    lastUpdated: '2026-07-11',
+    lastUpdated: '2026-07-21',
     history: [
       { date: '2026-07-11', value: 'testing', note: 'FT 2026-07-08: 애플이 중국 내수용 기기에 CXMT DRAM 기술 검증 착수 + 미 행정부에 사용 승인 로비. CXMT는 국방부 1260H 리스트 등재.' },
+      { date: '2026-07-21', value: 'testing', note: 'BIS Entity List 등재를 미중 무역협상과 연계해 보류(The Register·FT 07-17, 공존 방향) vs 하원 Moolenaar·Whitesides 의원 서한(Entity List 등재+구매 금지 촉구, 디커플링 방향)이 동시 발생 — 단계는 "테스트" 유지, 리트머스 미해결. CXMT 상하이 IPO $4.1~4.3B(07-16)로 자본 접근성은 별도로 확대.' },
     ],
     options: [
       { value: 'blocked', label: '차단·무산', status: 'normal', signal: 'YMTC 2022 전철 — DF2 디커플링(A·C) 신호' },
