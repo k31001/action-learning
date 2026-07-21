@@ -14,6 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-21 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-07-21',
+    type: 'assessment',
+    version: 'v2.31.6',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 삼성 HBM4 볼륨 발주 지연·EWI 갱신',
+    summary:
+      '직전 포지션 맵 갱신(2026-07-14) 이후 git log상 신규 커밋·소스 없음. 07-14→07-21 구간을 웹 리서치(TrendForce·Bloomberg·Tom\'s Hardware·getdeploying 등)로 점검한 결과 거시 축(DF1·DF2)을 움직일 신규 실현 신호는 없어 포지션 맵과 확률을 유지한다. 이번 주 물질적 발전은 개별 실행 신호 하나 — 삼성 HBM4는 NVIDIA 인증(06-05 Vera Rubin 3사 인증)을 통과했으나 07-17 현재 볼륨(양산) 발주로 전환되지 못했고 매출은 여전히 유상 평가용 샘플 수준(Winbuzzer 07-17), SK하이닉스가 Rubin 2/3+ 락인 유지. 이는 "어떤 거시 세계가 실현되는가"(시나리오 확률)가 아니라 그 안에서 삼성 점유를 좌우하는 경쟁·실행 신호이므로 EWI·트리거·시나리오 B 실행 리스크로만 반영. 확증(무변화) 신호: 빅테크 4사 2026 CapEx ~$725B(+77% YoY)로 DF1 정점 재확인·GPU 현물 임대가 firming(H200 온디맨드 +8% YoY, 붕괴 아님)으로 수요 변곡 조기경보 미발동·DRAM Q3 계약가 +13~18% 감속은 소비자 지불한계·기저효과에 따른 정제(서버 견조). 미중 축: MATCH 법안 위원회 통과 후 본회의 표결 전 단계 유지·CXMT 2026 HBM 양산 도달 불투명(지연) → DF2 방향 무변화. 결론: DF1 8.5·DF2 0.5·확률 A26·B39·C8·D21·E6 전부 유지. EWI 5종 갱신(bigtech_capex_growth 40→77·samsung_hbm4_rubin_share 볼륨 발주 대기·gpu_rental firming·cxmt_hbm3_production 지연)·트리거 1종 note 보강(samsung_hbm4_nvidia_confirmed = 인증 아닌 볼륨 계약 기준). 신규 소스 1건. 패치 v2.31.6.',
+    tags: ['시나리오', '포지션 맵', '확률', '유지', 'DF1', 'DF2', '삼성', 'HBM4', 'NVIDIA', 'CapEx', 'GPU임대가', 'EWI', 'dashboard'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5', detail: '07-14→07-21 신규 거시 축 신호 부재. DF1: 빅테크 CapEx +77%·GPU 임대가 firming·DRAM 감속(정제)으로 정점 재확인. DF2: 신규 미중 실현 사실 없음, MATCH 위원회 단계·CXMT HBM 지연으로 방향 무변화. 두 축 모두 위치·방향 유지' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6 (합 100)', detail: '거시 축이 움직이지 않았으므로 시나리오 확률 재배분 없음. 이번 주 발전(삼성 HBM4 볼륨 발주 지연)은 시나리오 B 내부의 삼성 점유·실행 리스크이지 B vs 여타 시나리오의 상대 확률을 바꾸는 요인이 아님' },
+      { label: '이번 주 물질적 발전 — 삼성 HBM4 볼륨 발주 지연 (Winbuzzer 07-17)', detail: '삼성은 06-05 NVIDIA Vera Rubin HBM4 인증을 3사 동시 통과했으나, 07-17 현재 볼륨(양산) 발주 미전환·NVIDIA향 매출은 유상 평가용 샘플 수준. SK하이닉스 Rubin 2/3+ 락인 유지. "인증 ≠ 공급 계약" 구간 장기화 = Main Bet(B) 1위 탈환 가정의 시간 리스크' },
+      { label: '확증(무변화) 신호 — DF1 정점 재확인', detail: '빅테크 4사 2026 CapEx ~$725B(Amazon $200B·MS $190B·Alphabet $175~185B·Meta $115~135B) = 2025 $410B 대비 +77%(Tom\'s Hardware·Statista). "AI 경제 건강, 매출 성장이 자본지출 정당화"(Jefferies). GPU 현물 임대가 firming(H200 온디맨드 중앙값 $3.82, +8% YoY) → Tier0 최선행 정상' },
+      { label: 'EWI 5종 갱신', detail: 'bigtech_capex_growth 40→77%(2026 실측)·samsung_hbm4_rubin_share 28% 유지+볼륨 발주 대기 이력·gpu_rental_h100_usd/gpu_rental_price_trend firming 이력(H200 +8% YoY)·cxmt_hbm3_production "2026 HBM 양산 지연" 이력. 실측·live-auto 지표는 Vast.ai·Yahoo API 자동 갱신 지속' },
+      { label: '시나리오 트리거 검토 — 신규 발동 없음', detail: 'samsung_hbm4_nvidia_confirmed(공식 볼륨 계약 기준)는 인증만으로 미충족 — note 보강(인증 ≠ 공급 계약). samsung_hbm4_no_nvidia(deadline 2026-12-31) 미도래. apple_cxmt_approved·us_china_semiconductor_deal 등 DF2 트리거 임계 미충족. 발동 트리거 0건' },
+      { label: '보고서·위키 동기화', detail: 'outputs/report §5.1 확률표에 [2026-07-21 재평가] 유지 note 추가. wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치·wiki/scenarios/scenario-matrix.md 확률표·wiki/entities/samsung.md HBM4 볼륨 발주 이슈 갱신. dashboard scenarioPlanning·indicators 미러' },
+    ],
+    links: [
+      { label: 'samsung-hbm4-volume-order-pending-2026-07-17.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md' },
+      { label: 'scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'samsung.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/entities/samsung.md' },
+    ],
+  },
   // ── 2026-07-14 ───────────────────────────────────────────────────────────────
   {
     date: '2026-07-14',

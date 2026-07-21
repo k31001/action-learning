@@ -338,6 +338,7 @@ quadrantChart
 > **[2026-07-04 확률 갱신]** Micron FY26 Q3(매출 $41.46B 사상 최대·Q4 $50B·SCA $100B take-or-pay·2026 HBM Sold Out) 반영 — 근단기 수요 가시성 계약 백로그로 고정 → B 35→37·A 26→27·D 23→21·C 10→9(2026-06 대비). DF1 8.0→8.5 정점 확증.
 > **[2026-07-07 재평가]** LTA→SCA 계약 체제 확립(Micron–Anthropic SCA 06-22·SCA 16건 $100B 공시 제도화·Stargate LOI 글로벌 DRAM 40%)으로 다년 계약 락인 → 근단기 순환 붕괴 확률 추가 축소. 감속(범용 DRAM Q3 +13~18%)은 비AI-락인 축 집중·서버/HBM 견조. **B 37→38·C 9→8**, A·D·E 불변. 합계 100% (A27·B38·C8·D21·E6). DF1 8.5 정점·DF2 1.0 유지.
 > **[2026-07-14 재평가]** 애플–CXMT 건(FT 07-08: 애플의 中 CXMT DRAM 테스트 착수·미 행정부 승인 로비 + 로이터 CXMT 추가 블랙리스트 보류)으로 **DF2 관리된 공존 쪽 소폭 이동(1.0→0.5)** → AI-지속 행(DF1 8.5 불변) 내 디커플링(A)→공존(B) 순수 재배분. **A 27→26·B 38→39**, C·D·E 불변. 합계 100% (A26·B39·C8·D21·E6). 이동폭 소폭 — 테스트 단계·승인/차단 리트머스 미해결(양방향 EWI `cxmt_apple_qualification` + 트리거 `apple_cxmt_approved` 추적). 단일 소스: `wiki/scenarios/scenario-matrix.md` + 대시보드 Planning 탭.
+> **[2026-07-21 정기 재평가 — 유지]** 07-14 이후 신규 거시 축(DF1·DF2) 신호 부재 → **확률 A26·B39·C8·D21·E6 전부 유지**. 이번 주 물질적 발전(삼성 HBM4 인증 통과에도 볼륨 발주 미전환, [samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md))은 시나리오 B *내부*의 삼성 점유·실행 리스크로 상대 확률 불변. 확증(무변화): 빅테크 2026 CapEx +77%($725B, DF1 정점 재확인)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속(정제)·MATCH 위원회 단계·CXMT HBM 지연. EWI 5종 갱신·트리거 발동 0건.
 
 ### 5.2 시나리오 A: "황금 요새"
 

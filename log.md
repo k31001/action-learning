@@ -14,6 +14,12 @@
 
 ---
 
+## [2026-07-21] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 + 삼성 HBM4 볼륨 발주 지연·EWI 갱신 (v2.31.5 → v2.31.6)
+- **무엇**: 직전 포지션 맵 갱신(2026-07-14) 이후 git log상 신규 커밋·소스 없음. 07-14→07-21 구간을 웹 리서치로 점검한 결과 거시 축(DF1·DF2)을 움직일 신규 실현 신호가 없어 **포지션 맵(DF1 8.5·DF2 0.5)과 확률(A26·B39·C8·D21·E6)을 전부 유지**. 이번 주 물질적 발전은 개별 실행 신호 하나 — 삼성 HBM4가 NVIDIA 인증(06-05 Vera Rubin 3사 인증)을 통과했으나 07-17 현재 볼륨(양산) 발주로 미전환·매출 유상 평가용 샘플 수준(Winbuzzer 07-17), SK Rubin 2/3+ 락인 유지. 이는 거시 축이 아니라 시나리오 B 내부의 삼성 점유·실행 리스크 → EWI·트리거·B 내러티브로만 반영. 신규 소스 1건(`samsung-hbm4-volume-order-pending-2026-07-17.md`).
+- **왜**: 주간 모니터링 사이클 — 시나리오 포지션 맵을 최신 수집 데이터 대비 재평가하고, EWI·시나리오 트리거 중 갱신 가능한 부분을 갱신하기 위함. 확증(무변화) 신호: 빅테크 4사 2026 CapEx ~$725B(+77% YoY, DF1 정점 재확인)·GPU 현물 임대가 firming(H200 +8% YoY, 붕괴 아님 → 수요 변곡 조기경보 미발동)·DRAM Q3 계약가 +13~18% 감속(소비자 지불한계·기저효과에 따른 정제, 서버 견조)·MATCH 위원회 단계 유지·CXMT 2026 HBM 양산 지연.
+- **EWI·트리거**: EWI 5종 갱신 — `bigtech_capex_growth` 40→77%(2026 실측)·`samsung_hbm4_rubin_share` 28% 유지+볼륨 발주 대기 이력·`gpu_rental_h100_usd`/`gpu_rental_price_trend` firming 이력(H200 +8% YoY)·`cxmt_hbm3_production` "2026 HBM 양산 지연" 이력. 트리거 발동 0건 — `samsung_hbm4_nvidia_confirmed`(볼륨 계약 기준)는 인증만으로 미충족(note 보강), `samsung_hbm4_no_nvidia`(deadline 2026-12-31) 미도래.
+- **영향받은 페이지**: `sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md`(신규), `dashboard/src/data/{indicators,scenarioPlanning,updates,version}.js`, `wiki/driving-forces/key-drivers.md`, `wiki/scenarios/scenario-matrix.md`, `wiki/entities/samsung.md`, `outputs/report/scenario-planning-report.md` §5.1, `index.md`. 위키 간 링크 무변경(신규 링크는 sources/ 인용) → 지식그래프 재생성 생략. PPTX는 확률 미포함·구조 무변경 → 재생성 생략. `cd dashboard && npm run build` 검증.
+
 ## [2026-07-08] build | 인터뷰 목차 앵커 버그 수정 + 상위 탭 메뉴명 영문 통일 (v2.31.2 → v2.31.3)
 - **무엇**: (1) 인터뷰 메뉴 목차에서 문서 하단 섹션(§15·§16 등)을 클릭하면 스크롤 여유 부족으로 뷰포트 최상단까지 못 가고 화면 중간(§16 결론은 466px 지점)에 멈추던 버그 수정 — 본문 말미 trailing spacer(h-70vh) 추가로 모든 섹션 최상단 정렬, 목차 클릭을 `scrollIntoView({behavior:'smooth'})`+도착 섹션 링 강조로 전환(#해시 잔류 제거 → 해시 라우팅과 충돌 방지). (2) 상위 탭 메뉴명 한글("인터뷰"·"업데이트 내역")을 영문(Interviews·Updates)으로 통일. 패치 v2.31.3.
 - **왜**: 사용자 보고("목차 클릭하면 이상한 곳으로 가네") + 상위 메뉴 영문 통일 요청("인터뷰·업데이트 내역만 한글이라 안 어울린다").

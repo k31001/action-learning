@@ -273,3 +273,11 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - 2026-06-29 발표된 한국 국가 반도체 생태계 계획(약 800조 원/$518B) — 삼성전자·SK하이닉스 각각 **신규 팹 2개씩** 건설 계획 포함([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §2, §4
+
+## 업데이트 (2026-07-21) — HBM4 인증 통과에도 NVIDIA 볼륨 발주 대기
+
+- **인증 통과 vs 볼륨 발주의 간극**: 삼성은 2026-06-05 NVIDIA Vera Rubin HBM4 인증을 SK하이닉스·Micron과 동시 통과했으나, **2026-07-17 현재 NVIDIA로부터 볼륨(양산) 발주를 받지 못했고 NVIDIA向 HBM4 매출은 여전히 유상 평가용 샘플(paid evaluation samples) 수준**이다 ([samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md)). SK하이닉스는 Rubin HBM4 물량 2/3+ 락인을 유지.
+- **기술 사양은 확보**: 삼성 HBM4는 11.7Gbps(업계 표준 8Gbps 상회, 최대 13Gbps) — 병목은 사양이 아니라 볼륨 발주 전환.
+- **함의**: "인증 ≠ 공급 계약" 구간이 길어질수록 Main Bet(시나리오 B) 1위 탈환 가정의 **시간 리스크**가 커진다. 이는 거시 축(DF1·DF2) 신호가 아니라 시나리오 B 내부의 삼성 실행 리스크 — EWI [`samsung_hbm4_rubin_share`](../../dashboard/src/data/indicators.js)·트리거 `samsung_hbm4_nvidia_confirmed`(인증 아닌 "공식 볼륨 계약 확인서" 기준)로 추적. (→ [scenario-B.md](../scenarios/scenario-B.md), [key-drivers.md](../driving-forces/key-drivers.md))
+
+**출처**: [samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md)

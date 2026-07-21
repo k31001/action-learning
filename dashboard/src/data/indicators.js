@@ -15,7 +15,9 @@ export const INITIAL_QUADRANT_POSITIONS = [
   //     (b) 로이터(2026-06): 트럼프 행정부가 대베이징 긴장 회피 차원에서 CXMT 추가 블랙리스트 등재 보류 = 디에스컬레이션. → 실현된 사실 2건 모두 공존 쪽 약한 신호.
   //   절제: 아직 '테스트' 단계(양산 채택·승인 미확정)·1260H 리스트 등재·의회 반대·YMTC 2022 무산 전철 리스크 상존 → 리트머스(승인/차단) 미해결이므로 이동폭 소폭(1.0→0.5)에 그침.
   //   하방 병기(공급 씨앗): CXMT 글로벌 DRAM 캐파 점유 11%(2025)→15%(2028E)·애플 price leverage로 삼성·SK 과점 '균열 신호' — 중기 마진 리스크로 EWI 감시(cxmt_apple_qualification·cxmt_dram_share).
-  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 0.5,  note: '[07-14 재평가] DF1 8.5 유지·DF2 1.0→0.5 — 애플–CXMT 건(FT 07-08): 애플의 中 CXMT DRAM 테스트 착수 + 행정부 승인 로비 + 로이터(CXMT 추가 블랙리스트 보류)가 관리된 공존 쪽 약한 신호. 테스트 단계·리트머스 미해결로 소폭 이동. DF1은 수요 구조 무변화로 정점 유지' },
+  // [2026-07-21 정기 재평가] DF1 8.5·DF2 0.5 유지 — 직전 07-14 재평가 이후 신규 거시 축 신호 부재. 이번 주 물질적 발전은 삼성 개별 실행 신호(HBM4 인증 통과에도 볼륨 발주 미전환, Winbuzzer 07-17)로 거시 축이 아닌 EWI·트리거·시나리오 B 실행 리스크로 반영.
+  //   확증(무변화) 신호: 빅테크 2026 CapEx ~$725B(+77% YoY)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속(정제)·MATCH 위원회 단계 유지 → DF1 정점·DF2 방향 모두 유지.
+  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 0.5,  note: '[07-21 재평가] DF1 8.5·DF2 0.5 유지 — 신규 거시 신호 부재. 확증: 빅테크 CapEx +77%·GPU firming·DRAM 감속(정제). [07-14 재평가] DF1 8.5 유지·DF2 1.0→0.5 — 애플–CXMT 건(FT 07-08)이 관리된 공존 쪽 약한 신호. 삼성 HBM4 볼륨 발주 지연(07-17)은 시나리오 B 실행 리스크(EWI 추적), 거시 축 무영향' },
 ]
 
 // 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-07-14 재평가)
@@ -146,7 +148,7 @@ export const INITIAL_INDICATORS = [
     source: '빅테크 분기 실적 발표',
     unit: '%',
     unitLabel: '% YoY',
-    currentValue: 40,
+    currentValue: 77,
     alertThreshold: -5,
     alertCondition: 'lte',
     alertDescription: '5~10% 둔화→D경보 / 절대 삭감→C긴급경보',
@@ -154,9 +156,12 @@ export const INITIAL_INDICATORS = [
     scenarioText: '20%+→A·B확인 / 5~10% 둔화→D / 절대삭감→C긴급',
     warningThreshold: 10,
     status: 'normal',
-    lastUpdated: '2026-05-05',
-    history: [{ date: '2026-05-05', value: 40, note: '2026년 초기값 (빅테크 4사 합산 +40%)' }],
-    note: 'Google·MS·Amazon·Meta 합산 CapEx YoY 성장률',
+    lastUpdated: '2026-07-21',
+    history: [
+      { date: '2026-05-05', value: 40, note: '2026년 초기값 (빅테크 4사 합산 +40%, 보수적 하한)' },
+      { date: '2026-07-21', value: 77, note: '빅테크 4사 2026 CapEx ~$725B (Amazon $200B·MS $190B·Alphabet $175~185B·Meta $115~135B) = 2025 $410B 대비 +77% (Tom\'s Hardware·Statista). "AI 경제 건강·매출 성장이 자본지출 정당화" — DF1 정점 재확인' },
+    ],
+    note: 'Google·MS·Amazon·Meta 합산 CapEx YoY 성장률. 2026 +77%(20%+ 임계 대폭 초과) → A·B 확인 신호 강',
     inputType: 'number',
     hint: '빅테크 4사 합산 AI CapEx YoY 성장률 % 입력',
     autoUpdateId: 'bigtech_capex_growth',
@@ -527,13 +532,14 @@ export const INITIAL_INDICATORS = [
     scenarioText: '40%+ → B 가속 / 25%↓ → 전략 위기',
     warningThreshold: 35,
     status: 'warning',
-    lastUpdated: '2026-05-06',
+    lastUpdated: '2026-07-21',
     history: [
       { date: '2025-04', value: 17, note: 'HBM3E 품질 이슈로 추락' },
       { date: '2025-09', value: 35, note: 'Q3 2025 반등 시작' },
       { date: '2026-03', value: 28, note: 'NVIDIA Rubin HBM4 공급 점유 (UBS)' },
+      { date: '2026-07-21', value: 28, note: '인증은 통과(06-05 Vera Rubin 3사 인증)했으나 볼륨 발주 미전환 — 삼성 NVIDIA향 HBM4 매출 여전히 유상 평가용 샘플 수준(Winbuzzer 07-17). SK하이닉스 Rubin 2/3+ 락인 유지. 인증→볼륨 발주 전환 지연 = 시나리오 B 실행 리스크' },
     ],
-    note: '목표: 2027년 40%+ (NVIDIA Feynman 1번 공급사 지위)',
+    note: '목표: 2027년 40%+ (NVIDIA Feynman 1번 공급사 지위). 06-05 인증 통과·07-17 볼륨 발주 대기 — "인증 ≠ 공급 계약" 구간',
     inputType: 'number',
     hint: '삼성 HBM4 NVIDIA Rubin 점유율 % 입력',
     isCritical: true,
@@ -577,11 +583,12 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'HBM4 양산 도달 시 → 시나리오 D·C 가속',
     warningThreshold: null,
     status: 'warning',
-    lastUpdated: '2026-05-06',
+    lastUpdated: '2026-07-21',
     history: [
       { date: '2026-04', value: 'HBM3 양산 개시', note: '월 60K 웨이퍼, 화웨이 우선 공급' },
+      { date: '2026-07-21', value: 'HBM3 양산 (일정 지연)', note: '[정기 점검] CXMT는 DDR5/LPDDR5 양산 지속하나, 2026년 내 HBM3 양산 도달은 이제 어려워 보임(일정 슬립, techwireasia·semiconductorsinsight 2026-07). D·C 가속 시점 후퇴 요인 — DF2 무변화 정합' },
     ],
-    note: '2026년 양산 개시 → 2027 HBM3E → 2028 HBM4 위협 가능성',
+    note: '2026년 양산 개시 목표였으나 HBM 일정 지연(2026 도달 불투명) → 2027 HBM3E → 2028 HBM4 위협 가능성. DDR5/LPDDR5는 양산 중',
     inputType: 'select',
     selectOptions: [
       { value: 'rd', label: 'R&D 단계', status: 'normal', signal: '정상' },
@@ -1199,9 +1206,12 @@ export const INITIAL_INDICATORS = [
     scenarioText: '컴퓨트 공급과잉 신호 → 메모리 수요 둔화 선행',
     warningThreshold: -20,
     status: 'warning',
-    lastUpdated: '2026-06-02',
-    history: [{ date: '2026-06-02', value: -20, note: '2024~25 H100 임대가 급락 후 둔화세 (예시 판단값)' }],
-    note: '메모리 수요의 최선행(Tier0) — 컴퓨트 수요 청산가격. 급락 = 과잉 빌드 신호. demand-inflection-ewi.md',
+    lastUpdated: '2026-07-21',
+    history: [
+      { date: '2026-06-02', value: -20, note: '2024~25 H100 임대가 급락 후 둔화세 (예시 판단값)' },
+      { date: '2026-07-21', value: -20, note: '[정기 점검] 최신 실측은 firming — H200 온디맨드 +8% YoY(2025-07 $3.54→2026-07 $3.82). 6개월 추세 급락 신호 없음, -35% 경보 임계와 여유. 실측 바스켓(gpu_rental_h100_usd) 우선 참조' },
+    ],
+    note: '메모리 수요의 최선행(Tier0) — 컴퓨트 수요 청산가격. 급락 = 과잉 빌드 신호. 2026-07 firming. demand-inflection-ewi.md',
     inputType: 'number',
     hint: 'GPU 시간당 임대가 6개월 변동률 % (하락이면 음수)',
   },
@@ -1220,9 +1230,12 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'GPU 현물 급락 = 메모리 수요 둔화 선행',
     warningThreshold: 2.6,
     status: 'normal',
-    lastUpdated: '2026-06-02',
-    history: [{ date: '2026-06-02', value: 3.21, note: 'Vast.ai 바스켓 (H100 SXM $2.52 / H200 $3.91, 0.5:0.5)' }],
-    note: '실측 GPU 현물 임대가(Tier0 최선행). H100 SXM·H200 0.5:0.5 바스켓으로 유동성 안정화. 매일 자동 누적되어 추세 형성. 23년 ~$8 → 25~26년 $2~4.',
+    lastUpdated: '2026-07-21',
+    history: [
+      { date: '2026-06-02', value: 3.21, note: 'Vast.ai 바스켓 (H100 SXM $2.52 / H200 $3.91, 0.5:0.5)' },
+      { date: '2026-07-21', value: 3.21, note: '[정기 점검] H200 온디맨드 중앙값 $3.82 (전년 $3.54 대비 +8% YoY, getdeploying)·H100 Vast.ai 최저 ~$1.49/h — 붕괴 아닌 firming. Tier0 최선행 신호 정상, 수요 변곡 조기경보 미발동. Vast.ai API 자동 갱신 지속' },
+    ],
+    note: '실측 GPU 현물 임대가(Tier0 최선행). H100 SXM·H200 0.5:0.5 바스켓으로 유동성 안정화. 매일 자동 누적되어 추세 형성. 23년 ~$8 → 25~26년 $2~4. 2026-07 firming(H200 +8% YoY).',
     inputType: 'number',
     hint: 'AI GPU 바스켓 중앙 임대가 $/GPU·h (Vast.ai 자동 갱신)',
     autoUpdateId: 'gpu_rental_h100_usd',
@@ -1535,6 +1548,7 @@ export const INITIAL_TRIGGERS = [
     activatedDate: null,
     note: '',
     isPositive: true,
+    note: '[2026-07-21] 인증(qualification)은 06-05 통과했으나 이 트리거는 "공식 공급(볼륨) 계약 확인서" 기준 — 07-17 현재 삼성 NVIDIA향 HBM4 매출은 유상 평가용 샘플 수준으로 미충족(Winbuzzer). 인증→볼륨 발주 전환이 발동 조건',
     probabilityDelta: { A: -3, B: +12, C: -5, D: -4, E: 0 },
     df1Delta: 1.5,
     df2Delta: -1.5,
