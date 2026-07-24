@@ -134,7 +134,7 @@ function slideHigh(pres, ic) {
   const events = [
     ["’25.06", "SK하이닉스 커스텀 HBM\n3사 인증"],
     ["’25.10", "Stargate LOI\n월 90만 장 (DRAM ~40%)"],
-    ["’26.06", "Micron–Anthropic SCA\n16건 · $100B · $22B"],
+    ["’26.06", "Micron–Anthropic\n전략적 고객 계약\n16건 · $100B · $22B"],
   ];
   events.forEach(([d, t], i) => {
     const y = 2.28 + i * 0.94;
@@ -150,7 +150,7 @@ function slideHigh(pres, ic) {
   });
   s.addShape("roundRect", { x: xs[0] + 0.2, y: 5.02, w: colW - 0.4, h: 0.78, rectRadius: 0.08, fill: { color: "FFFFFF" }, line: { color: LINE_GRAY, width: 1 } });
   s.addImage({ data: ic.alertInk, x: xs[0] + 0.36, y: 5.24, w: 0.34, h: 0.34 });
-  s.addText("납품 정확성만으론\nSCA 테이블에 못 앉는다", {
+  s.addText("정확한 납품만으로는\n전략적 고객 계약 수주 불가", {
     x: xs[0] + 0.82, y: 5.06, w: colW - 1.06, h: 0.7,
     fontFace: FONT, fontSize: 14, bold: true, color: INK, margin: 0, valign: "middle", lineSpacingMultiple: 1.05,
   });
@@ -192,7 +192,7 @@ function slideHigh(pres, ic) {
   const axes = [
     ["기술", "워크로드 랩·모델", ic.cpu],
     ["문화", "모난 놈 → 호명", ic.star],
-    ["조직", "DE 스타·Pod 상주", ic.users],
+    ["조직", "FDE 스타·Pod 상주", ic.users],
     ["방식", "교차 리뷰·PoA", ic.refresh],
   ];
   axes.forEach(([t, c, icon], i) => {
@@ -218,7 +218,7 @@ function slideHigh(pres, ic) {
     });
   });
   deCallout(s, xs[2] + 0.2, 5.32, colW - 0.4, 0.56, ic,
-    "DE를 스타 플레이어로", "고객과 기술 생태계 공동 설계", 13, 10.5);
+    "FDE를 스타 플레이어로", "고객과 기술 생태계 공동 설계", 13, 10.5);
 
   // ── KPI 스탯 밴드 (스타 영입만 그린 강조)
   const stats = [
@@ -265,26 +265,25 @@ function slideMid(pres, ic) {
     fontFace: FONT, fontSize: 19, bold: true, color: INK, margin: 0,
   });
   const stages = [
-    ["Spot", "현물 거래", "E7ECEF", SUB],
-    ["LTA", "물량·가격 락인", "CBD6DD", INK],
-    ["SCA", "공동설계·자본 연계", TEAL, "FFFFFF"],
+    ["Spot", "현물 거래", "E7ECEF", SUB, 0.74, 1.15],
+    ["LTA", "물량·가격 락인", "CBD6DD", INK, 2.15, 1.35],
+    ["전략적 고객 계약", "공동설계·자본 연계", TEAL, "FFFFFF", 3.76, 2.5],
   ];
-  stages.forEach(([name, cap, fill, txt], i) => {
-    const x = 0.78 + i * 1.86;
+  stages.forEach(([name, cap, fill, txt, x, w], i) => {
     s.addText([
-      { text: name, options: { fontSize: 17, bold: true, breakLine: true } },
+      { text: name, options: { fontSize: 15, bold: true, breakLine: true } },
       { text: cap, options: { fontSize: 10.5 } },
     ], {
-      shape: "roundRect", rectRadius: 0.07, x, y: rowY + 0.58, w: 1.6, h: 0.82,
+      shape: "roundRect", rectRadius: 0.07, x, y: rowY + 0.58, w, h: 0.82,
       fill: { color: fill }, align: "center", valign: "middle",
       fontFace: FONT, color: txt, margin: 0,
     });
     if (i < 2) s.addText("▶", {
-      x: x + 1.58, y: rowY + 0.58, w: 0.3, h: 0.82, align: "center", valign: "middle",
+      x: x + w, y: rowY + 0.58, w: 0.26, h: 0.82, align: "center", valign: "middle",
       fontFace: FONT, fontSize: 14, color: SUB, margin: 0,
     });
   });
-  s.addText("고객이 사는 것: 납품 → 공동 기술 드라이브 · SCA 16건 · $100B", {
+  s.addText("고객이 사는 것: 납품 → 공동 기술 드라이브 (16건 · $100B)", {
     x: 0.78, y: rowY + 1.56, w: cardW - 0.56, h: 0.34,
     fontFace: FONT, fontSize: 12, color: SUB, margin: 0, align: "center", valign: "middle",
   });
@@ -329,7 +328,7 @@ function slideMid(pres, ic) {
   const axes = [
     ["기술", "워크로드 랩 · 시스템 모델", ic.cpu],
     ["문화", "모난 놈 → 호명 문화", ic.star],
-    ["조직", "DE 스타 · Co-Design Pod", ic.users],
+    ["조직", "FDE 스타 · Co-Design Pod", ic.users],
     ["방식", "교차 리뷰 · PoA · AI", ic.refresh],
   ];
   axes.forEach(([t, c, icon], i) => {
@@ -347,7 +346,7 @@ function slideMid(pres, ic) {
 
   // ── DE 스타 플레이어 콜아웃 (핵심 강조)
   deCallout(s, 0.5, 5.08, 12.33, 0.74, ic,
-    "핵심 — DE(Distinguished Engineer)를 스타 플레이어로, 고객사와 기술 생태계를 함께 만든다",
+    "핵심 — FDE(Forward Deployed Engineer)를 스타 플레이어로, 고객사와 기술 생태계를 함께 만든다",
     "“조직 이름 뒤에 숨지 않고 자기 이름으로 불린다” — 송길영 『호명사회』 · ‘모난 놈이 정 맞는’ 문화 → 호명 문화로 · 관리 분리 + SV 영입",
     14, 11);
 
@@ -356,7 +355,7 @@ function slideMid(pres, ic) {
   s.addShape("line", { x: pxs[0], y: 6.34, w: pxs[2] - pxs[0], h: 0, line: { color: RAIL_GRAY, width: 2 } });
   const phases = [
     ["90일 · 증명", "Co-Design Pod 1호 · 시스템 모델 v0.1"],
-    ["1년 · 제도화", "Pod 3~5개 · SCA형 계약 1건"],
+    ["1년 · 제도화", "Pod 3~5개 · 전략적 고객 계약 1건"],
     ["3년 · 표준화", "설계 플랫폼 · 커스텀 매출 30%+"],
   ];
   phases.forEach(([t, c], i) => {
@@ -410,10 +409,10 @@ function slideLow(pres, ic) {
     fontFace: FONT, fontSize: 12.5, color: SUB, margin: 0,
   });
 
-  s.addText("LTA → SCA", {
-    shape: "rightArrow", x: 5.85, y: boxY + 0.4, w: 1.6, h: 0.9,
+  s.addText("LTA →\n전략적 고객 계약", {
+    shape: "rightArrow", x: 5.78, y: boxY + 0.4, w: 1.74, h: 0.9,
     fill: { color: TEAL }, align: "center", valign: "middle",
-    fontFace: FONT, fontSize: 13, bold: true, color: "FFFFFF", margin: 0,
+    fontFace: FONT, fontSize: 11, bold: true, color: "FFFFFF", margin: 0, lineSpacingMultiple: 1.05,
   });
 
   s.addShape("roundRect", { x: 7.6, y: boxY, w: 3.5, h: boxH, rectRadius: 0.1, fill: { color: TINT_GREEN }, line: { color: GREEN, width: 1.5 } });
@@ -429,7 +428,7 @@ function slideLow(pres, ic) {
 
   // ── DE 스타 플레이어 콜아웃 (핵심 강조)
   deCallout(s, 1.6, 4.02, 10.13, 0.8, ic,
-    "핵심 전략 — Distinguished Engineer를 스타 플레이어로, 고객사와 기술 생태계를 함께 만든다",
+    "핵심 전략 — FDE(Forward Deployed Engineer)를 스타 플레이어로, 고객사와 기술 생태계를 함께 만든다",
     "‘모난 놈이 정 맞는’ 기존 문화에서 → 스타를 호명하고 드러내는 문화로",
     14.5, 11.5);
 
@@ -438,7 +437,7 @@ function slideLow(pres, ic) {
   s.addShape("line", { x: pxs[0], y: 5.44, w: pxs[2] - pxs[0], h: 0, line: { color: RAIL_GRAY, width: 2 } });
   const phases = [
     ["90일 증명", "Pod 1호 · 모델 v0.1"],
-    ["1년 제도화", "Pod 3~5 · SCA 1건"],
+    ["1년 제도화", "Pod 3~5 · 전략적 고객 계약 1건"],
     ["3년 표준화", "플랫폼 · 커스텀 30%+"],
   ];
   phases.forEach(([t, c], i) => {
@@ -455,7 +454,7 @@ function slideLow(pres, ic) {
 
   s.addText([
     { text: "$100B", options: { fontSize: 32, bold: true, color: TEAL } },
-    { text: "   SCA 최소 계약매출 — 공동설계 없이는 참여할 수 없는 시장 (Micron IR, 2026-06)", options: { fontSize: 14, color: SUB } },
+    { text: "   전략적 고객 계약 최소 계약매출 — 공동설계 없이는 참여할 수 없는 시장 (Micron IR, 2026-06)", options: { fontSize: 14, color: SUB } },
   ], {
     x: 0.5, y: 6.12, w: 12.33, h: 0.6, align: "center", valign: "middle",
     fontFace: FONT, margin: 0,
