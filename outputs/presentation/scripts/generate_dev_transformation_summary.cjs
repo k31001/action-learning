@@ -110,9 +110,13 @@ function slideHigh(pres, ic) {
   s.addText([
     { text: "북극성  ", options: { bold: true, color: TEAL } },
     { text: "“고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다” — 신문섭 파트너 (2026-06)", options: { italic: true, color: SUB } },
-  ], { x: 0.5, y: 0.92, w: 12.33, h: 0.32, fontFace: FONT, fontSize: 13, margin: 0 });
+  ], { x: 0.5, y: 0.88, w: 12.33, h: 0.27, fontFace: FONT, fontSize: 13, margin: 0 });
+  s.addText([
+    { text: "호명사회  ", options: { bold: true, color: GREEN } },
+    { text: "“조직의 이름 뒤에 숨지 않고, 자신의 이름으로 불리며 책임과 결과를 마주한다” — 송길영 『시대예보: 호명사회』", options: { italic: true, color: SUB } },
+  ], { x: 0.5, y: 1.15, w: 12.33, h: 0.27, fontFace: FONT, fontSize: 13, margin: 0 });
 
-  const colY = 1.32, colH = 4.7, colW = 3.94;
+  const colY = 1.52, colH = 4.5, colW = 3.94;
   const xs = [0.5, 4.7, 8.89];
   const hdrs = ["왜 지금인가", "무엇이 되나", "어떻게 하나"];
   xs.forEach((x, i) => {
@@ -152,8 +156,8 @@ function slideHigh(pres, ic) {
   });
 
   // ── 열 2: As-Is → To-Be (To-Be만 틸 강조)
-  s.addText("As-Is", { x: xs[1] + 0.24, y: 2.06, w: 1.5, h: 0.26, fontFace: FONT, fontSize: 12, bold: true, color: SUB, margin: 0 });
-  s.addText("To-Be", { x: xs[1] + 2.06, y: 2.06, w: 1.6, h: 0.26, fontFace: FONT, fontSize: 12, bold: true, color: TEAL, margin: 0 });
+  s.addText("As-Is", { x: xs[1] + 0.24, y: 2.14, w: 1.5, h: 0.26, fontFace: FONT, fontSize: 12, bold: true, color: SUB, margin: 0 });
+  s.addText("To-Be", { x: xs[1] + 2.06, y: 2.14, w: 1.6, h: 0.26, fontFace: FONT, fontSize: 12, bold: true, color: TEAL, margin: 0 });
   const pairs = [
     ["스펙 수령", "요구 공동 정의"],
     ["RFQ 응답", "선제 제안"],
@@ -161,7 +165,7 @@ function slideHigh(pres, ic) {
     ["QCD", "공동설계 KPI"],
   ];
   pairs.forEach(([a, b], i) => {
-    const y = 2.36 + i * 0.66;
+    const y = 2.44 + i * 0.63;
     s.addText(a, {
       shape: "roundRect", rectRadius: 0.06, x: xs[1] + 0.24, y, w: 1.5, h: 0.52,
       fill: { color: "FFFFFF" }, line: { color: LINE_GRAY, width: 1 },
@@ -193,7 +197,7 @@ function slideHigh(pres, ic) {
   ];
   axes.forEach(([t, c, icon], i) => {
     const gx = xs[2] + 0.22 + (i % 2) * 1.82;
-    const gy = 2.02 + Math.floor(i / 2) * 1.16;
+    const gy = 2.14 + Math.floor(i / 2) * 1.16;
     iconCircle(s, gx + 0.62, gy, 0.44, SUB, icon);
     s.addText(t, {
       x: gx, y: gy + 0.46, w: 1.68, h: 0.3, align: "center",
@@ -344,7 +348,7 @@ function slideMid(pres, ic) {
   // ── DE 스타 플레이어 콜아웃 (핵심 강조)
   deCallout(s, 0.5, 5.08, 12.33, 0.74, ic,
     "핵심 — DE(Distinguished Engineer)를 스타 플레이어로, 고객사와 기술 생태계를 함께 만든다",
-    "‘모난 놈이 정 맞는’ 기존 문화 → 스타를 호명하고 드러내는 문화로 (호명사회) · 관리 보직 분리 + 실리콘밸리 현역 스타 영입",
+    "“조직 이름 뒤에 숨지 않고 자기 이름으로 불린다” — 송길영 『호명사회』 · ‘모난 놈이 정 맞는’ 문화 → 호명 문화로 · 관리 분리 + SV 영입",
     14, 11);
 
   // ── 3-Phase 타임라인 (뉴트럴)
@@ -375,14 +379,22 @@ function slideLow(pres, ic) {
   const s = pres.addSlide();
   header(s, "하");
 
-  s.addShape("roundRect", { x: 1.0, y: 1.02, w: 11.33, h: 0.9, rectRadius: 0.1, fill: { color: NEUTRAL } });
-  s.addText("“고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다”", {
-    x: 1.2, y: 1.1, w: 10.93, h: 0.46, align: "center",
-    fontFace: FONT, fontSize: 22, italic: true, bold: true, color: INK, margin: 0,
-  });
-  s.addText("— 신문섭 파트너, AI 인프라 슈퍼사이클 인터뷰 (2026-06)", {
-    x: 1.2, y: 1.56, w: 10.93, h: 0.26, align: "center",
-    fontFace: FONT, fontSize: 12.5, color: SUB, margin: 0,
+  const quotes = [
+    ["“고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다”",
+     "— 신문섭 파트너, AI 인프라 슈퍼사이클 인터뷰 (2026-06)", 0.5],
+    ["“조직의 이름 뒤에 숨지 않고, 자신의 이름으로 불리며 책임과 결과를 마주한다”",
+     "— 송길영, 『시대예보: 호명사회』 (2024)", 6.77],
+  ];
+  quotes.forEach(([q, a, x]) => {
+    s.addShape("roundRect", { x, y: 1.02, w: 6.06, h: 0.94, rectRadius: 0.09, fill: { color: NEUTRAL } });
+    s.addText(q, {
+      x: x + 0.2, y: 1.1, w: 5.66, h: 0.5, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 14.5, italic: true, bold: true, color: INK, margin: 0, lineSpacingMultiple: 1.05,
+    });
+    s.addText(a, {
+      x: x + 0.2, y: 1.63, w: 5.66, h: 0.24, align: "center",
+      fontFace: FONT, fontSize: 10.5, color: SUB, margin: 0,
+    });
   });
 
   // ── 전환 한 컷 (To-Be 쪽만 그린 강조)
