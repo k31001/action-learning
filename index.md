@@ -180,6 +180,7 @@
 - [outputs/report/dev-org-transformation-report.md](outputs/report/dev-org-transformation-report.md) — 개발실 체질 전환 전략 보고서 (LTA→SCA 논거·역할 재정의·액션 플랜)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
+- [outputs/presentation/dev-transformation-summary.pptx](outputs/presentation/dev-transformation-summary.pptx) — 개발실 체질 전환 1장 요약 × 디테일 3단계(상·중·하), 화이트+블루·그린 (`scripts/generate_dev_transformation_summary.cjs`로 재생성)
 - `outputs/presentation/*.pptx` — 4종 디자인 변형 (`scripts/generate_*_pptx.py`로 재생성)
 
 ## dashboard — 빌드 산출물 (최상위, Vercel 루트)

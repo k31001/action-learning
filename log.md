@@ -980,3 +980,11 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 실행 사례. 한 번의 지�
 **EWI·트리거**: `cxmt_apple_qualification`(07-11 신설, 테스트 단계) 상태 유지. `cxmt_dram_share`에 FT 2028E 캐파 15%(2025 11%) 병기(캐파 계열, 매출 점유와 구분) + 애플 인증 파이프라인 note 연동. 신규 트리거 `apple_cxmt_approved`(승인·양산 채택 시 B·D 공존 확정, df2Δ −1.5) 추가.
 
 **동기화**: dashboard indicators.js(포지션·SCENARIOS·EWI note·트리거)·scenarioPlanning.js(matrix 확률·DF1·DF2 현재위치)·updates.js(assessment 항목)·version.js(v2.31.5). wiki key-drivers·scenario-matrix. outputs/report §5.1 확률표·Exec Summary. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX는 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증.
+
+## [2026-07-24] build | 개발실 전환 요약 PPT — 1장 요약 × 디테일 상·중·하 3페이지
+
+요청: 최근 추가한 개발실 전환 전략(dev-org-transformation) 요약 PPT를 만들어 GitHub에 업로드. 스타일 지정 — 화이트 배경 + 블루·그린 계열 강조, 제목 32pt·본문 21pt, 내용 디테일 수준(상·중·하)별 1장씩 총 3페이지.
+
+산출: `outputs/presentation/dev-transformation-summary.pptx` (3장, 16:9) + 생성 스크립트 `scripts/generate_dev_transformation_summary.cjs` (pptxgenjs·Node). 3장 공통 골격 = 북극성 명제(신문섭) + 왜(WHY: LTA→SCA·Micron–Anthropic SCA 16건·$100B) / 무엇(WHAT: As-Is→To-Be) / 어떻게(HOW: 4대 축·3-Phase). 디테일 상 = 3열 + KPI 스탯 5종(선제 제안 40건/년·채택률 35%·커스텀 매출 30%+·교류 시간 25%·SV 스타 5명+), 중 = 2카드 + 4축 칩 + Phase 스트립, 하 = 인용 배너 + 3카드 + $100B 콜아웃. 원천은 wiki/strategies/dev-org-transformation.md 단일 페이지 — 위키 무변경.
+
+동기화: `.gitignore` 화이트리스트에 summary pptx 추가(최종 산출물 커밋 관례), `index.md` outputs 섹션 등록. dashboard 무변경(데이터·UI 영향 없음 → version bump 생략), report·slide-outline 무변경(기존 3장 발표덱과 별개 요약 변형). 브랜치 `claude/dev-lab-transition-ppt-e9stzt`에 push.

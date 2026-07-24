@@ -5,6 +5,7 @@ node_modules/
 !outputs/presentation/samsung-memory-scenario-planning*.pptx
 !outputs/presentation/core-strategies-categorization*.pptx
 !outputs/presentation/team-alignment-scenario-planning*.pptx
+!outputs/presentation/dev-transformation-summary*.pptx
 !working-style/seminar-claude-code-report/seminar-claude-code*.pptx
 !slides/seminar/*.pptx
 .claude/worktrees/
