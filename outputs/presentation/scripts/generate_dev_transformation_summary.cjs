@@ -208,34 +208,36 @@ function slideHigh(pres, ic) {
       fontFace: FONT, fontSize: 10.5, color: SUB, margin: 0,
     });
   });
-  const pxs = [xs[2] + 0.62, xs[2] + 1.97, xs[2] + 3.32];
-  s.addShape("line", { x: pxs[0], y: 4.6, w: pxs[2] - pxs[0], h: 0, line: { color: RAIL_GRAY, width: 1.5 } });
-  ["90일\n증명", "1년\n제도화", "3년\n표준화"].forEach((t, i) => {
-    s.addShape("ellipse", { x: pxs[i] - 0.07, y: 4.53, w: 0.14, h: 0.14, fill: { color: INK } });
-    s.addText(t, {
-      x: pxs[i] - 0.6, y: 4.74, w: 1.2, h: 0.5, align: "center",
-      fontFace: FONT, fontSize: 11.5, bold: true, color: INK, margin: 0, lineSpacingMultiple: 1.0,
-    });
-  });
-  deCallout(s, xs[2] + 0.2, 5.32, colW - 0.4, 0.56, ic,
-    "FDE를 스타 플레이어로", "고객과 기술 생태계 공동 설계", 13, 10.5);
+  deCallout(s, xs[2] + 0.2, 4.9, colW - 0.4, 0.7, ic,
+    "FDE를 스타 플레이어로", "고객과 기술 생태계 공동 설계", 13.5, 11);
 
-  // ── KPI 스탯 밴드 (스타 영입만 그린 강조)
-  const stats = [
-    ["40건/년", "선제 제안 (현재 ~0)", INK],
-    ["35%", "로드맵 채택률", INK],
-    ["30%+", "커스텀 매출 비중", INK],
-    ["25%", "고객 직접 교류 시간", INK],
-    ["5명+", "실리콘밸리 스타 영입", GREEN],
+  // ── 환경 변화 스트립 — 스타를 영입할 수 있는 임금 수준 (과거 → 현재 → 선순환)
+  card(s, 0.5, 6.08, 12.33, 0.9);
+  s.addText("환경 변화", {
+    x: 0.74, y: 6.24, w: 2.1, h: 0.3,
+    fontFace: FONT, fontSize: 15, bold: true, color: INK, margin: 0,
+  });
+  s.addText("영입 가능한 임금 수준", {
+    x: 0.74, y: 6.56, w: 2.2, h: 0.24,
+    fontFace: FONT, fontSize: 10.5, color: SUB, margin: 0,
+  });
+  const envBoxes = [
+    ["과거", "실리콘밸리 보상 열위", 3.0, 2.55, "E7ECEF", SUB, SUB],
+    ["현재 — 처우 급등", "성과급 ~6억 · 상한 철폐 · 최대 12.9억 전망", 5.79, 3.6, "FFFFFF", INK, SUB],
+    ["선순환 기대", "스타 영입 축적 → 조직 수준 상향", 9.63, 2.95, TINT_GREEN, INK, SUB],
   ];
-  stats.forEach(([v, l, c], i) => {
-    const x = 0.5 + i * 2.47;
-    s.addText(v, {
-      x, y: 6.22, w: 2.37, h: 0.42, align: "center",
-      fontFace: FONT, fontSize: 24, bold: true, color: c, margin: 0,
+  envBoxes.forEach(([t, c, x, w, fill, tc, cc], i) => {
+    s.addText([
+      { text: t, options: { fontSize: 12.5, bold: true, color: tc, breakLine: true } },
+      { text: c, options: { fontSize: 10, color: cc } },
+    ], {
+      shape: "roundRect", rectRadius: 0.06, x, y: 6.2, w, h: 0.66,
+      fill: { color: fill },
+      line: { color: i === 2 ? GREEN : LINE_GRAY, width: i === 2 ? 1.25 : 1 },
+      align: "center", valign: "middle", fontFace: FONT, margin: 0, lineSpacingMultiple: 1.05,
     });
-    s.addText(l, {
-      x, y: 6.66, w: 2.37, h: 0.26, align: "center",
+    if (i < 2) s.addText("▶", {
+      x: x + w, y: 6.2, w: 0.24, h: 0.66, align: "center", valign: "middle",
       fontFace: FONT, fontSize: 12, color: SUB, margin: 0,
     });
   });
@@ -350,23 +352,31 @@ function slideMid(pres, ic) {
     "“조직 이름 뒤에 숨지 않고 자기 이름으로 불린다” — 송길영 『호명사회』 · ‘모난 놈이 정 맞는’ 문화 → 호명 문화로 · 관리 분리 + SV 영입",
     14, 11);
 
-  // ── 3-Phase 타임라인 (뉴트럴)
-  const pxs = [1.6, 6.67, 11.73];
-  s.addShape("line", { x: pxs[0], y: 6.34, w: pxs[2] - pxs[0], h: 0, line: { color: RAIL_GRAY, width: 2 } });
-  const phases = [
-    ["90일 · 증명", "Co-Design Pod 1호 · 시스템 모델 v0.1"],
-    ["1년 · 제도화", "Pod 3~5개 · 전략적 고객 계약 1건"],
-    ["3년 · 표준화", "설계 플랫폼 · 커스텀 매출 30%+"],
+  // ── 환경 변화 — 스타를 영입할 수 있는 임금 수준
+  card(s, 0.5, 5.96, 12.33, 1.0);
+  numCircle(s, 0.7, 6.28, 4);
+  s.addText("환경 변화 — 영입 가능한 임금", {
+    x: 1.16, y: 6.25, w: 3.3, h: 0.4,
+    fontFace: FONT, fontSize: 17, bold: true, color: INK, margin: 0,
+  });
+  const envBoxes = [
+    ["과거", "실리콘밸리 보상 열위", 4.5, 2.3, "E7ECEF", SUB],
+    ["현재", "성과급 ~6억 · 상한 철폐", 7.04, 2.9, "FFFFFF", INK],
+    ["선순환", "영입 축적 → 조직 수준 상향", 10.18, 2.5, TINT_GREEN, INK],
   ];
-  phases.forEach(([t, c], i) => {
-    s.addShape("ellipse", { x: pxs[i] - 0.09, y: 6.25, w: 0.18, h: 0.18, fill: { color: INK } });
-    s.addText(t, {
-      x: pxs[i] - 1.55, y: 5.96, w: 3.1, h: 0.28, align: "center",
-      fontFace: FONT, fontSize: 14.5, bold: true, color: INK, margin: 0,
+  envBoxes.forEach(([t, c, x, w, fill, tc], i) => {
+    s.addText([
+      { text: t, options: { fontSize: 12.5, bold: true, color: tc, breakLine: true } },
+      { text: c, options: { fontSize: 10, color: SUB } },
+    ], {
+      shape: "roundRect", rectRadius: 0.06, x, y: 6.13, w, h: 0.66,
+      fill: { color: fill },
+      line: { color: i === 2 ? GREEN : LINE_GRAY, width: i === 2 ? 1.25 : 1 },
+      align: "center", valign: "middle", fontFace: FONT, margin: 0, lineSpacingMultiple: 1.05,
     });
-    s.addText(c, {
-      x: pxs[i] - 1.75, y: 6.5, w: 3.5, h: 0.26, align: "center",
-      fontFace: FONT, fontSize: 11, color: SUB, margin: 0,
+    if (i < 2) s.addText("▶", {
+      x: x + w, y: 6.13, w: 0.24, h: 0.66, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 12, color: SUB, margin: 0,
     });
   });
 }
@@ -432,32 +442,30 @@ function slideLow(pres, ic) {
     "‘모난 놈이 정 맞는’ 기존 문화에서 → 스타를 호명하고 드러내는 문화로",
     14.5, 11.5);
 
-  // ── 로드맵 타임라인 (뉴트럴)
-  const pxs = [2.7, 6.67, 10.63];
-  s.addShape("line", { x: pxs[0], y: 5.44, w: pxs[2] - pxs[0], h: 0, line: { color: RAIL_GRAY, width: 2 } });
-  const phases = [
-    ["90일 증명", "Pod 1호 · 모델 v0.1"],
-    ["1년 제도화", "Pod 3~5 · 전략적 고객 계약 1건"],
-    ["3년 표준화", "플랫폼 · 커스텀 30%+"],
-  ];
-  phases.forEach(([t, c], i) => {
-    s.addShape("ellipse", { x: pxs[i] - 0.1, y: 5.34, w: 0.2, h: 0.2, fill: { color: INK } });
-    s.addText(t, {
-      x: pxs[i] - 1.4, y: 5.0, w: 2.8, h: 0.3, align: "center",
-      fontFace: FONT, fontSize: 15.5, bold: true, color: INK, margin: 0,
-    });
-    s.addText(c, {
-      x: pxs[i] - 1.5, y: 5.62, w: 3.0, h: 0.26, align: "center",
-      fontFace: FONT, fontSize: 11.5, color: SUB, margin: 0,
-    });
+  // ── 환경 변화 — 스타를 영입할 수 있는 임금 수준 (과거 → 현재 → 선순환)
+  s.addText("환경도 바뀌었다 — 스타를 영입할 수 있는 임금 수준", {
+    x: 0.5, y: 5.22, w: 12.33, h: 0.32, align: "center",
+    fontFace: FONT, fontSize: 15, bold: true, color: INK, margin: 0,
   });
-
-  s.addText([
-    { text: "$100B", options: { fontSize: 32, bold: true, color: TEAL } },
-    { text: "   전략적 고객 계약 최소 계약매출 — 공동설계 없이는 참여할 수 없는 시장 (Micron IR, 2026-06)", options: { fontSize: 14, color: SUB } },
-  ], {
-    x: 0.5, y: 6.12, w: 12.33, h: 0.6, align: "center", valign: "middle",
-    fontFace: FONT, margin: 0,
+  const envBoxes = [
+    ["과거", "실리콘밸리 수준에 못 미친 보상", 0.82, 3.4, "E7ECEF", SUB],
+    ["현재", "성과급 ~6억 · 상한 철폐 · 영입 가능 수준", 4.52, 3.7, "FFFFFF", INK],
+    ["선순환 기대", "스타 영입 축적 → 조직 전반 수준 상향", 8.52, 4.0, TINT_GREEN, INK],
+  ];
+  envBoxes.forEach(([t, c, x, w, fill, tc], i) => {
+    s.addText([
+      { text: t, options: { fontSize: 13.5, bold: true, color: tc, breakLine: true } },
+      { text: c, options: { fontSize: 11.5, color: SUB } },
+    ], {
+      shape: "roundRect", rectRadius: 0.08, x, y: 5.64, w, h: 0.88,
+      fill: { color: fill },
+      line: { color: i === 2 ? GREEN : LINE_GRAY, width: i === 2 ? 1.5 : 1.25 },
+      align: "center", valign: "middle", fontFace: FONT, margin: 0, lineSpacingMultiple: 1.08,
+    });
+    if (i < 2) s.addText("▶", {
+      x: x + w, y: 5.64, w: 0.3, h: 0.88, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 14, color: SUB, margin: 0,
+    });
   });
 }
 
