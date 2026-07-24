@@ -996,3 +996,9 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 실행 사례. 한 번의 지�
 **PPT 재설계**: `generate_dev_transformation_summary.cjs` 전면 개편 — 불릿 텍스트를 도식으로 대체. 디테일 상 = 사건 수직 타임라인 + As-Is→To-Be 화살표 페어(박스→화살표→박스) + 4대 축 2×2 아이콘 그리드(react-icons Feather, 컬러 서클) + Phase 미니 타임라인 + KPI 스탯 밴드. 중 = 계약 진화 체브런(Spot→LTA→SCA) + 역할 전환 화살표 3행 + 4대 축 아이콘 행 + 3-Phase 수평 타임라인. 하 = 인용 배너 + 전환 한 컷(수주 이행자 → rightArrow(LTA→SCA) → 기술 파트너) + 로드맵 타임라인 + $100B 콜아웃. 1장짜리 개별본 3종(`-high/-mid/-low.pptx`) 신규 생성, 통합 3장본과 함께 outputs/presentation/에 커밋.
 
 **대시보드 (v2.31.6→v2.32.0, 마이너 — 새 자료 카테고리)**: `dashboard/public/downloads/`에 1장본 3종 미러(생성 스크립트가 자동 복사) + `devTransformation.js` DT_DOWNLOADS 추가 + `Strategies.jsx` 개발실 전환 탭 상단에 다운로드 카드(FileDown 아이콘 서클 3버튼, `<a download>`) 배치. `npm run build` 통과, dist/downloads/ 포함 확인. `.gitignore`에 `!dashboard/public/downloads/*.pptx` 화이트리스트 추가.
+
+## [2026-07-24] build | 요약 PPT — DE 스타 플레이어 핵심 강조 + 컬러 절제 (v2.32.1)
+
+피드백 2건 반영: ① 핵심 전략 = "DE(Distinguished Engineer)를 스타 플레이어로, 고객사와 기술 생태계를 함께 만든다"를 3장 모두에 명시 — 하·중은 그린 콜아웃 스트립("'모난 놈이 정 맞는' 기존 문화 → 스타를 호명하고 드러내는 문화로" 부제 포함), 상은 HOW 카드 내 배지 + 문화/조직 축 캡션("모난 놈 → 호명", "DE 스타·Pod 상주"). 근거는 wiki §4.6 스타 엔지니어 트랙(호명사회·관리 분리·실리콘밸리 영입). ② 블루·그린 절제 — 카드 배경·헤더·아이콘·타임라인을 뉴트럴 그레이로 통일하고, 강조색은 To-Be 박스·SCA 체브런·전환 화살표·DE 콜아웃(그린)·$100B·스타 영입 KPI에만 유지.
+
+동기화: 통합 3장본 + 1장본 3종 재생성 → dashboard/public/downloads/ 자동 미러. DT_DOWNLOADS 설명에 DE 스타 반영, version v2.32.0→v2.32.1(패치 — 자료·텍스트 갱신). npm run build 통과. 위키 무변경(발표 표현만 조정, 사실 주장 추가 없음).
