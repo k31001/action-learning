@@ -988,3 +988,11 @@ CLAUDE.md "변경 정합성 체인" 규칙의 첫 실행 사례. 한 번의 지�
 산출: `outputs/presentation/dev-transformation-summary.pptx` (3장, 16:9) + 생성 스크립트 `scripts/generate_dev_transformation_summary.cjs` (pptxgenjs·Node). 3장 공통 골격 = 북극성 명제(신문섭) + 왜(WHY: LTA→SCA·Micron–Anthropic SCA 16건·$100B) / 무엇(WHAT: As-Is→To-Be) / 어떻게(HOW: 4대 축·3-Phase). 디테일 상 = 3열 + KPI 스탯 5종(선제 제안 40건/년·채택률 35%·커스텀 매출 30%+·교류 시간 25%·SV 스타 5명+), 중 = 2카드 + 4축 칩 + Phase 스트립, 하 = 인용 배너 + 3카드 + $100B 콜아웃. 원천은 wiki/strategies/dev-org-transformation.md 단일 페이지 — 위키 무변경.
 
 동기화: `.gitignore` 화이트리스트에 summary pptx 추가(최종 산출물 커밋 관례), `index.md` outputs 섹션 등록. dashboard 무변경(데이터·UI 영향 없음 → version bump 생략), report·slide-outline 무변경(기존 3장 발표덱과 별개 요약 변형). 브랜치 `claude/dev-lab-transition-ppt-e9stzt`에 push.
+
+## [2026-07-24] build | 요약 PPT 도식 재설계 + 대시보드 다운로드 링크 (v2.32.0)
+
+요청 2건: ① 개발실 전환 대시보드 페이지에 PPT 3종 다운로드 링크, ② "글자가 너무 많다" — 도식·이미지 중심으로 개선.
+
+**PPT 재설계**: `generate_dev_transformation_summary.cjs` 전면 개편 — 불릿 텍스트를 도식으로 대체. 디테일 상 = 사건 수직 타임라인 + As-Is→To-Be 화살표 페어(박스→화살표→박스) + 4대 축 2×2 아이콘 그리드(react-icons Feather, 컬러 서클) + Phase 미니 타임라인 + KPI 스탯 밴드. 중 = 계약 진화 체브런(Spot→LTA→SCA) + 역할 전환 화살표 3행 + 4대 축 아이콘 행 + 3-Phase 수평 타임라인. 하 = 인용 배너 + 전환 한 컷(수주 이행자 → rightArrow(LTA→SCA) → 기술 파트너) + 로드맵 타임라인 + $100B 콜아웃. 1장짜리 개별본 3종(`-high/-mid/-low.pptx`) 신규 생성, 통합 3장본과 함께 outputs/presentation/에 커밋.
+
+**대시보드 (v2.31.6→v2.32.0, 마이너 — 새 자료 카테고리)**: `dashboard/public/downloads/`에 1장본 3종 미러(생성 스크립트가 자동 복사) + `devTransformation.js` DT_DOWNLOADS 추가 + `Strategies.jsx` 개발실 전환 탭 상단에 다운로드 카드(FileDown 아이콘 서클 3버튼, `<a download>`) 배치. `npm run build` 통과, dist/downloads/ 포함 확인. `.gitignore`에 `!dashboard/public/downloads/*.pptx` 화이트리스트 추가.

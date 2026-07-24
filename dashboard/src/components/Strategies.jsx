@@ -6,7 +6,7 @@ import {
 import {
   LayoutDashboard, Shield, Target, ListChecks,
   Star, AlertTriangle, CheckCircle2, Clock, Sparkles, ChevronDown, ChevronUp,
-  MapPin, ArrowRightLeft,
+  MapPin, ArrowRightLeft, FileDown,
 } from 'lucide-react'
 import {
   STRATEGY_OVERVIEW, ROBUST_STRATEGIES, RS_SCENARIO_MATRIX,
@@ -15,7 +15,7 @@ import {
 import {
   DT_SUMMARY, DT_EVENTS, DT_CONTRACT_STAGES, DT_SCA_COMPONENTS,
   DT_ROLE_SHIFT, DT_MODELING_NOTE, DT_MODELING_SCOPE, DT_RISKS, DT_BENEFITS, DT_AXES,
-  DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS, DT_FDE_BENCHMARK, DT_STAR_ENGINEER,
+  DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS, DT_FDE_BENCHMARK, DT_STAR_ENGINEER, DT_DOWNLOADS,
 } from '../data/devTransformation'
 import SourceLink from './SourceLink'
 
@@ -541,6 +541,35 @@ function TransformationPanel() {
             </div>
           ))}
         </div>
+      </Card>
+
+      <Card title="요약 발표자료 다운로드 — 1장 요약 × 디테일 3단계" source="outputs/presentation/dev-transformation-outline.md">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          {DT_DOWNLOADS.map(d => (
+            <a
+              key={d.file}
+              href={`/downloads/${d.file}`}
+              download
+              className="group flex items-center gap-3 rounded-hig-lg border border-zinc-200 bg-white p-3 shadow-hig-1 transition-all hover:shadow-hig-2 hover:border-zinc-300"
+            >
+              <span
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white"
+                style={{ backgroundColor: d.color }}
+              >
+                <FileDown size={16} />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-xs font-bold text-zinc-900 group-hover:underline">
+                  {d.label} <span className="font-mono text-[10px] font-normal text-zinc-400">.pptx</span>
+                </span>
+                <span className="block text-[10px] text-zinc-500 leading-snug mt-0.5">{d.desc}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+        <p className="text-[10px] text-zinc-400 mt-2">
+          16:9 · 1장씩 · 화이트 + 블루·그린 · 클릭하면 바로 다운로드 (3장 통합본은 repo outputs/presentation/dev-transformation-summary.pptx)
+        </p>
       </Card>
 
       <Card title="왜 지금인가 — 체질 전환을 요구하는 사건의 누적" source="wiki/concepts/lta-to-sca-transition.md">

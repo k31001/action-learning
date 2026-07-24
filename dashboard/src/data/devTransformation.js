@@ -258,3 +258,29 @@ export const DT_SCENARIO_LINKS = [
   { scenario: 'D', note: '공동설계 없이는 락인 계약 자체가 없음 — 방어 가치 동일' },
   { scenario: 'E', note: '차세대 아키텍처 전환기 워크로드 조기 가시성이 생존 조건' },
 ]
+
+// 요약 발표자료 다운로드 (outputs/presentation/scripts/generate_dev_transformation_summary.cjs로 재생성,
+// public/downloads/에 빌드 복사본 — 1장 요약 × 디테일 3단계)
+export const DT_DOWNLOADS = [
+  {
+    file: 'dev-transformation-summary-high.pptx',
+    level: '상',
+    label: '디테일 상 — 상세',
+    desc: '사건 타임라인 · As-Is→To-Be · 4대 축 · KPI 5종',
+    color: '#0e6ba8',
+  },
+  {
+    file: 'dev-transformation-summary-mid.pptx',
+    level: '중',
+    label: '디테일 중 — 표준',
+    desc: '계약 진화(Spot→LTA→SCA) · 역할 전환 · 3-Phase',
+    color: '#028090',
+  },
+  {
+    file: 'dev-transformation-summary-low.pptx',
+    level: '하',
+    label: '디테일 하 — 핵심',
+    desc: '북극성 명제 · 전환 한 컷 · 로드맵 · $100B',
+    color: '#02a878',
+  },
+]
