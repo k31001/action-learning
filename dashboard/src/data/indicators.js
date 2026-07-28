@@ -21,7 +21,7 @@ export const INITIAL_QUADRANT_POSITIONS = [
   //   DF2: 창 내 미중 실현 사실 부재(MATCH 위원회 단계 유지·CXMT HBM 미확정·애플 CXMT 테스트 단계·신규 수출통제 없음) → 방향·위치 무변화. 삼성 HBM4 볼륨 발주 미전환도 무변화(EWI 추적).
   // [2026-07-21 정기 재평가] DF1 8.5·DF2 0.5 유지 — 직전 07-14 재평가 이후 신규 거시 축 신호 부재. 이번 주 물질적 발전은 삼성 개별 실행 신호(HBM4 인증 통과에도 볼륨 발주 미전환, Winbuzzer 07-17)로 거시 축이 아닌 EWI·트리거·시나리오 B 실행 리스크로 반영.
   //   확증(무변화) 신호: 빅테크 2026 CapEx ~$725B(+77% YoY)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속(정제)·MATCH 위원회 단계 유지 → DF1 정점·DF2 방향 모두 유지.
-  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 0.5,  note: '[07-28 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 실행/조직 계층(개발실 전환·수주산업화 질의)으로 거시 축 무영향. in-window 신호 전부 정점 재확인: Alphabet Q2(07-22) 2026 CapEx $180~190B→$195~205B 상향·SK하이닉스 Q2 OP ~$43.7B 사상 최대. MSFT·Meta(07-29)·Amazon(07-30) 발표가 DF1 핵심 확인 이벤트로 창 직후 대기. [07-21 재평가] 신규 거시 신호 부재, 확증: 빅테크 CapEx +77%·GPU firming·DRAM 감속(정제). [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
+  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 0.5,  note: '[07-28 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 실행/조직 계층(개발실 전환·수주산업화 질의)으로 거시 축 무영향. in-window 신호 전부 정점 재확인: Alphabet Q2(07-22) 2026 CapEx $180~190B→$195~205B 상향·SK하이닉스 Q2 OP ~$43.7B 사상 최대. MSFT·Meta(07-29)·Amazon(07-30) 발표가 DF1 핵심 확인 이벤트로 창 직후 대기. [07-28 추가] CXMT 상하이 IPO(시총 $489B) — 서방 마더보드 3사 DDR5 인증(공존 신호) vs 미 하원 안보조사 요구(디커플링 신호) 상반 발생, 조사 미조치화로 DF2 0.5 유지·cxmt_security_probe_action 트리거 신설. [07-21 재평가] 신규 거시 신호 부재, 확증: 빅테크 CapEx +77%·GPU firming·DRAM 감속(정제). [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
 ]
 
 // 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-07-28 정기 재평가 — 유지)
@@ -922,7 +922,7 @@ export const INITIAL_INDICATORS = [
     scenarioText: '15%+ → 시나리오 D 가속 (CXMT가 한국 메이커 범용 DRAM 가격 결정권 잠식)',
     warningThreshold: 10,
     status: 'warning',
-    lastUpdated: '2026-05-06',
+    lastUpdated: '2026-07-28',
     history: [
       { date: '2023', value: 3, note: '빠른 성장 시작' },
       { date: '2024', value: 5, note: 'Morgan Stanley 추정 (4.9%)' },
@@ -930,7 +930,7 @@ export const INITIAL_INDICATORS = [
       { date: '2027E', value: 13.9, note: '업계 예측치' },
       { date: '2028E', value: 15, note: 'FT(2026-07-08): 글로벌 DRAM 웨이퍼 캐파 점유율 11%(2025)→15%(2028) 전망 — 애플–CXMT 보도 기준 (캐파 계열, 매출 점유와 구분)' },
     ],
-    note: '캐파: 2024년 17만 WSPM → 2026E 30만 WSPM (글로벌 10~12%). FT(2026-07-08) 캐파 점유 11%(2025)→15%(2028E) — 매출 점유(본 EWI)와 별개 계열. 빅펀드 III $470억 + 안후이성 정부 지원. DDR5 양산 + DDR5-8000·LPDDR5X-10667 시연. 애플이 中 내수용 기기에 CXMT DRAM 테스트 착수(FT 2026-07-08)로 프리미엄 고객 인증 파이프라인 진입 — cxmt_apple_qualification EWI 연동',
+    note: '캐파: 2024년 17만 WSPM → 2026E 30만 WSPM (글로벌 10~12%) → [Update 2026-07-28] 상하이 IPO(시총 $489B, ¥57.92B 조달) 자금으로 2026년말 목표 35만 WSPM 상향 전망(DigiTimes 2026-07-20). FT(2026-07-08) 캐파 점유 11%(2025)→15%(2028E) — 매출 점유(본 EWI)와 별개 계열. 빅펀드 III $470억 + 안후이성 정부 지원. 서방 마더보드 3사(GIGABYTE·MSI·ASUS) DDR5 인증 완료로 서방 소비자 시장 침투 본격화, 동시에 미 하원 초당파 안보 조사 요구(2026-07-28) 발생 — 상반된 신호 병존. 애플이 中 내수용 기기에 CXMT DRAM 테스트 착수(FT 2026-07-08)로 프리미엄 고객 인증 파이프라인 진입 — cxmt_apple_qualification EWI 연동',
     inputType: 'number',
     hint: 'CXMT DRAM 분기 점유율 % 입력',
     isCritical: true,
@@ -1592,6 +1592,20 @@ export const INITIAL_TRIGGERS = [
     probabilityDelta: { A: -3, B: +3, C: -1, D: +1, E: 0 },
     df1Delta: 0,
     df2Delta: -1.5,
+  },
+  {
+    id: 'cxmt_security_probe_action',
+    name: 'CXMT 국가안보 조사 → 실제 조치화 (입법·블랙리스트·구매금지)',
+    condition: '2026-07-28 미 하원 초당파 의원들의 CXMT 국가안보 조사 요구가 실제 입법·추가 블랙리스트 등재·연방/민간 구매금지 조치로 실체화',
+    targetScenarios: ['A', 'C'],
+    immediateAction: '디커플링 리트머스 재점화 — 서방 시장向 범용 DRAM 공급 안정성 프리미엄 강화 메시지, 애플–CXMT 인증 건 동반 좌초 가능성 모니터링',
+    activated: false,
+    activatedDate: null,
+    note: 'CXMT 상하이 IPO(2026-07-27, 시총 $489B) 직후 촉발. 같은 날 서방 마더보드 3사 DDR5 인증 완료(공존 신호)와 정반대 방향 — 애플–CXMT 리트머스(07-11)가 만든 공존 드리프트에 대한 첫 정치적 카운터 시그널. 조사가 요구 단계에 머물면 DF2 무영향, 조치화되면 A·C 방향 재평가 필요',
+    isPositive: false,
+    probabilityDelta: { A: +3, B: -3, C: +2, D: -2, E: 0 },
+    df1Delta: 0,
+    df2Delta: +1.5,
   },
   {
     id: 'enterprise_ai_roi_proven',

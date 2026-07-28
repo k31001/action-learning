@@ -14,6 +14,30 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-28 (병목 모델 갱신) ─────────────────────────────────────────────
+  {
+    date: '2026-07-28',
+    type: 'ingest',
+    version: 'v2.32.7',
+    title: '2030 병목 모델 4대 지수 정기 갱신 + CXMT 상하이 IPO($489B) 반영',
+    summary:
+      'CLAUDE.md 자동 정기 갱신 지시(semianalysis·counterpoint·techinsights 우선 참조)에 따라 4개 영역(전력·CAPEX·파운드리·패키징) 병렬 웹 리서치를 수행하고 Bottleneck Model 4대 제약지수를 07-04 대비 갱신했다: 전력 72→75(▲+3, PJM 용량경매 FERC 상한 도달·2년 연속 예비력 미달로 6.8GW 부족 확정·2027-06부터 50MW+ 데이터센터 강제감축 규정 FERC 제출 예정·ERCOT 큐 438GW·변압기 리드타임 2031년까지 확대), CAPEX/ROI 40→44(▲+4, TSMC·Micron 가이던스 재상향은 완화 요인이나 Oracle 신용등급 BBB→BBB- 하향·하이퍼스케일러 회사채 주문 커버리지 5배→2배 미만 급랭·부외부채 재평가 $120B→최대 $1.65조로 신용 리스크 신규 부상), 파운드리 50→54(▲+4, TSMC CAPEX $60~64B 대폭 상향+ASML High-NA 2029 연기 재확인에 더해 삼성 파운드리 브로드컴 ~$200B 수주·Anthropic 2nm MOU·Tesla AI6로 대만 집중 리스크의 실질적 분산 시작), 패키징 67→64(▼-3, HBM4 하이브리드본딩이 열/냉각 이슈로 추가 지연·JEDEC이 HBM4E 세대까지 핀피치 완화 검토로 마이크로범프 의존 연장 조짐·"패키징이 진짜 병목"이라는 업계 프레이밍 확산). 전력·CAPEX·파운드리 3개 지수가 동시 상향되고 패키징만 추가 완화 — 07-04 시점 트렌드(파운드리·CAPEX 완화, 패키징 완화 둔화)가 일부 반전. 별도로 CXMT가 2026-07-27 상하이 STAR Market에 상장, 첫날 +466~472% 급등해 시가총액 $489B(중국 A주 1위) 기록 — 조달 자금(¥57.92B)으로 2026년말 캐파 목표를 30만→35만 WSPM으로 상향 전망. 같은 시기 서방 마더보드 3사(GIGABYTE·MSI·ASUS)의 CXMT DDR5 전원 인증(공존 신호)과 미 하원 초당파 의원들의 국가안보 조사·구매 차단 요구(디커플링 신호)가 정반대 방향으로 동시 발생 — DF2 리트머스에 대한 첫 정치적 카운터 시그널로 신규 트리거 cxmt_security_probe_action 추가. DF1(8.5)·DF2(0.5)·시나리오 확률(A26·B39·C8·D21·E6)은 거시 축 무변화로 유지.',
+    tags: ['병목모델', 'Bottleneck', '전력', 'CAPEX', '파운드리', '패키징', 'CXMT', 'IPO', 'DF2', 'SemiAnalysis', 'dashboard'],
+    items: [
+      { label: '병목 지수 갱신 — 전력 75(▲3)·CAPEX 44(▲4)·파운드리 54(▲4)·패키징 64(▼3)', detail: 'PJM 6.8GW 예비력 부족 확정+강제감축 규정 예정(전력)·Oracle 신용등급 하향+회사채 수요 급랭(CAPEX)·삼성 파운드리 브로드컴 $200B 수주로 대만집중 분산(파운드리, 완화 전환)·HBM4 하이브리드본딩 추가 지연(패키징)' },
+      { label: 'CXMT 상하이 IPO(07-27) — 시총 $489B, 중국 A주 1위', detail: '공모 ¥57.92B(2026년 아시아 최대 IPO), 캐파 목표 30만→35만 WSPM 상향 전망. 서방 마더보드 3사 DDR5 인증(공존 신호) vs 미 하원 안보조사 요구(디커플링 신호) 동시 발생' },
+      { label: '신규 트리거 — cxmt_security_probe_action', detail: 'CXMT 안보 조사가 입법·블랙리스트·구매금지로 실체화되는지 추적. 조사 요구 단계에서는 DF2 무영향(probabilityDelta 대기), 조치화 시 A·C 방향 재평가' },
+      { label: 'DF1·DF2·확률 유지', detail: 'DF1 8.5·DF2 0.5·A26·B39·C8·D21·E6 전부 유지 — 이번 리서치 신호는 병목 지수·CXMT 경쟁 구도 갱신이지 거시 축 재평가 트리거 아님. CXMT 상반 신호는 방향이 반대이고 안보조사 미조치화로 DF2 무변화' },
+      { label: '신규 소스 2건 + 위키 5개 페이지 갱신', detail: 'bottleneck-model-update-2026-07-28.md·cxmt-shanghai-ipo-2026-07-27.md 신설. bottleneck-model-2030.md(§종합판독 2026-07-28)·cxmt.md(§Update 2026-07-28)·key-drivers.md(DF2 추가 note)·us-export-controls.md(§Update 2026-07-28) 갱신' },
+      { label: '보고서·발표자료 동기화', detail: 'outputs/report §2.2.3 신설(정기점검)·§5.1 병목 레이더 표 갱신. slide-outline.md 07-28 데이터 갱신 노트 추가(구조 변경 없어 PPTX 재생성 생략)' },
+    ],
+    links: [
+      { label: 'bottleneck-model-update-2026-07-28.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/bottleneck-model-update-2026-07-28.md' },
+      { label: 'cxmt-shanghai-ipo-2026-07-27.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/cxmt-shanghai-ipo-2026-07-27.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'cxmt.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/entities/cxmt.md' },
+    ],
+  },
   // ── 2026-07-28 ───────────────────────────────────────────────────────────────
   {
     date: '2026-07-28',

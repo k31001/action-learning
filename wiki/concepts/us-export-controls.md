@@ -85,6 +85,12 @@
 
 ---
 
+## [Update 2026-07-28] CXMT 상하이 IPO 이후 미 의회 안보 조사 요구 — 1260H 체계의 첫 정치적 발동 압력
+
+CXMT가 2026-07-27 상하이 STAR Market에 상장해 시가총액 $489B(중국 A주 1위)를 기록하자, **2026-07-28 당일** 미 하원 초당파 의원들이 CXMT에 대한 국가안보 조사를 요구하고 최소 2명이 CXMT 칩의 미국 내 구매 전면 차단을 트럼프 행정부에 촉구했다 — CCP가 IPO 주가 급등을 인위적으로 조성해 1260H 등재 자산을 방어했다는 의혹이 배경 ([cxmt-shanghai-ipo-2026-07-27.md](../../sources/articles/cxmt-shanghai-ipo-2026-07-27.md)).
+
+이는 [Update 2026-07-11] 애플–CXMT 케이스가 만든 "관리된 공존" 드리프트에 대한 **1260H 체계 도입 이후 첫 정치적 역풍**이다 — 같은 날 서방 마더보드 3사(GIGABYTE·MSI·ASUS)의 CXMT DDR5 공식 인증이라는 공존 쪽 신호와 정확히 반대 방향으로 발생했다. 안보 조사는 아직 요구 단계이며 입법·블랙리스트 등 실제 조치로 이어지지 않았으므로 DF2 위치는 유지하되([key-drivers.md](../driving-forces/key-drivers.md) [Update 2026-07-28 추가] 참조), 조사가 실체화되는지가 다음 리트머스.
+
 ## 원본 링크
 - [Apple begins testing CXMT chips for devices sold in China, FT says — CNBC](https://www.cnbc.com/2026/07/08/apple-begins-testing-cxmt-chips-for-devices-sold-in-china-ft-says-.html)
 - [Commerce Strengthens Export Controls - BIS Press Release](https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military)

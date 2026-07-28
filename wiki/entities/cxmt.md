@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-07-28
+sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters), sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/cxmt-shanghai-ipo-2026-07-27.md]
 ---
 
 # CXMT (창신메모리 / 长鑫存储) — DRAM 전문
@@ -242,3 +242,37 @@ FT 보도의 CXMT 점유율 수치("2025년 ~11% → 2028년 15%")는 **웨이�
 3. **모니터링 격상** — CXMT의 프리미엄 고객 인증 성공은 "저가 범용" 프레임을 넘어서는 위상 변화. HBM4/HBM5·CXL·PIM 등 추격 난이도 높은 영역의 리더십 방어가 더 중요해짐.
 
 **출처**: [apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)
+
+---
+
+## [Update 2026-07-28] 상하이 STAR Market 상장 — 시총 $489B·미 의회 안보 조사 요구
+
+CXMT가 2026-07-27 상하이 STAR Market(과창판)에 상장했다. 공모 ¥57.92B(~$8.56B, 2026년 아시아 최대 IPO), 상장 첫날 **+466~472% 급등**해 시가총액 **~$489B**로 중국 A주 전체 1위에 등극했다. 공모 자금은 DDR5·HBM 캐파 확장에 투입 예정이며, DigiTimes(2026-07-20)는 이 자본을 발판으로 **2026년 말 목표 캐파가 기존 300,000 WSPM에서 350,000 WSPM으로 상향**될 것으로 전망 ([cxmt-shanghai-ipo-2026-07-27.md](../../sources/articles/cxmt-shanghai-ipo-2026-07-27.md)).
+
+### 사실 요약
+
+| 항목 | 내용 |
+|---|---|
+| 상장일·거래소 | 2026-07-27, 상하이 STAR Market |
+| 공모가·규모 | ¥8.66/주 · ¥57.92B(~$8.56B) |
+| 첫날 주가 | +466~472% → 시총 ~¥3.3조(~$489B), 중국 A주 시총 1위 |
+| 자금 용도 | DDR5·HBM 생산 캐파 확장 |
+| 캐파 목표 갱신 | 2026E 300,000 WSPM → **350,000 WSPM**(DigiTimes 전망) |
+| 서방 침투 | GIGABYTE·MSI·ASUS 3사 전원 DDR5(최대 DDR5-8200) 인증 완료(2026-07-24) |
+| 미 정치권 반응 | 2026-07-28 초당파 하원의원들이 국가안보 조사 요구 + 구매 전면 차단 촉구 |
+| 애널리스트 반응 | Nomura — 밸류에이션 추가 상승 여력 / Morningstar — 장비수출통제发 원가열위 ~30% 상한 지적 |
+
+### DF2에 대한 함의 — 상반된 신호의 동시 발생
+
+기존 애플–CXMT 건([Update 2026-07-11] 참조)이 만든 "관리된 공존" 쪽 드리프트에 대해, 이번 사건은 **정치적 신호와 상업적 신호가 반대 방향으로 동시에 움직인 첫 사례**다:
+- **공존 쪽 신호**: 서방 마더보드 3사 전원의 공식 DDR5 인증 = CXMT 제품의 서방 소비자 시장 상업적 정상화. 글로벌 자본시장(IPO 흥행)의 CXMT 신뢰.
+- **디커플링 쪽 신호**: 초당파 의회의 안보 조사·구매 전면 차단 요구 = 애플–CXMT 리트머스에 대한 정치적 역풍 가능성.
+
+순자산 방향은 아직 판가름 나지 않음 — 안보 조사가 실제 입법·블랙리스트 조치로 이어지는지가 다음 리트머스. 현재로선 두 신호가 상쇄되는 것으로 보고 [key-drivers.md DF2](../driving-forces/key-drivers.md) 위치는 유지하되 신규 모니터링 항목으로 병기한다.
+
+### Samsung 전략 시사점 (갱신)
+
+1. **경쟁 강도 상향 재확인** — $489B 시총·¥57.92B 신규 자본은 CXMT의 캐파 확장(350K WSPM) 재원을 명확히 확보시켰다. [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md)(범용 양보 + HBM 집중)의 전제가 더 강화됨 — CXMT가 범용 DRAM 저변을 더 빠르게 흡수할 자본력을 갖췄다.
+2. **정치 리스크의 양방향성** — 안보 조사가 실제 조치로 이어지면(YMTC 2022 전철) 오히려 삼성·SK의 서방 시장 지위가 보호되는 방향. 반대로 조사가 흐지부지되면 CXMT의 서방 소비자 시장 침투(마더보드 인증)가 가속. 두 경로 모두 EWI로 계속 추적 필요.
+
+**출처**: [cxmt-shanghai-ipo-2026-07-27.md](../../sources/articles/cxmt-shanghai-ipo-2026-07-27.md)

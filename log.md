@@ -1044,3 +1044,19 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 **EWI·트리거**: EWI 5종 실측 갱신(`bigtech_capex_growth` Alphabet 상향·`gpu_rental_price_trend`/`gpu_rental_h100_usd` 07-28 스냅샷 H100 ~$3.46·H200 ~$4.11·`samsung_hbm4_rubin_share` 무변화·`cxmt_hbm3_production` 무변화). 트리거 4종 note 갱신(`bigtech_capex_2027_sustained` 선행 상방·`bigtech_capex_cut25` 미발동·`match_act_passed` 위원회 단계·`samsung_hbm4_nvidia_confirmed` 미충족). 발동 트리거 0건.
 
 **동기화**: 신규 소스 `hyperscaler-q2-2026-capex-2026-07-28.md`. dashboard indicators.js(포지션·SCENARIOS·EWI·트리거)·scenarioPlanning.js(DF1·DF2 현재위치·matrix 확률)·updates.js(assessment 항목 — 업데이트 내역 메뉴)·version.js(v2.32.6 패치). wiki key-drivers·scenario-matrix. outputs/report §5.1. index.md sources 등록. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX는 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증. main 직접 병합·push.
+
+## [2026-07-28] ingest | 2030 병목 모델 4대 지수 정기 갱신 + CXMT 상하이 IPO($489B) 반영 (v2.32.7)
+
+**왜**: 사용자 지시 — "@data 보고서 작성에 필요한 최신 데이터를 검색하여 업데이트, semianalysis/counterpoint/techinsights 등 참조, Bottleneck Model 최신 수치 반영 + 변동폭 표시, LLM wiki·link 업데이트, 필요시 전략 수정". 직전 병목 지수 갱신(2026-07-04) 이후 3주 4일 경과분을 4개 영역(전력·CAPEX·파운드리·패키징)으로 나눠 병렬 웹 리서치(SemiAnalysis·Counterpoint·TechInsights 우선, Utility Dive·Bloomberg·Forbes·DigiTimes·TechTimes 등 보강)로 점검.
+
+**병목 지수 갱신 (07-04→07-28)**: 전력 72→**75**(▲+3, PJM 용량경매 FERC 상한 도달·2년 연속 예비력 미달로 6.8GW 부족 확정·2027-06부터 50MW+ 데이터센터 강제감축 규정 FERC 제출 예정·ERCOT 큐 410→438GW·변압기 리드타임 최대 5년→일부 라인 2031년 납품). CAPEX/ROI 40→**44**(▲+4, TSMC·Micron 가이던스 재상향은 완화 요인이나 Oracle 신용등급 BBB→BBB- 하향(AI CAPEX 노출 첫 등급조치)·하이퍼스케일러 회사채 주문 커버리지 5배→2배 미만 급랭·부외부채 재평가 $120B→최대 $1.65조로 신용 리스크 신규 부상). 파운드리 50→**54**(▲+4, TSMC 2026 CAPEX $52~56B→$60~64B 대폭 상향+ASML High-NA 2029 연기 재확인에 더해 **삼성 파운드리 브로드컴 ~$200B 수주·Anthropic 2nm MOU·Tesla AI6**로 대만 집중 리스크의 실질적 분산 시작 — 07-04 이전 트렌드에서 반전). 패키징 67→**64**(▼-3, CoWoS 캐파 4배 확장에도 수요 상회 지속·HBM4 하이브리드본딩이 열/냉각 이슈로 추가 지연·JEDEC이 HBM4E 세대까지 핀피치 완화 검토로 마이크로범프 의존 연장 조짐·"패키징이 진짜 병목"이라는 업계 프레이밍 확산). 전력·CAPEX·파운드리 3개 지수 동시 상향(제약 강화), 패키징만 추가 완화 — 하방 위험 순서 CAPEX/ROI≈전력 > 패키징 > 파운드리로 변경(파운드리가 처음으로 최저치를 벗어남).
+
+**CXMT 상하이 IPO (2026-07-27, 신규)**: 상하이 STAR Market 상장, 공모 ¥57.92B(~$8.56B, 2026년 아시아 최대 IPO), 첫날 +466~472% 급등해 시가총액 **$489B**(중국 A주 1위). 조달 자금으로 2026년말 캐파 목표 30만→**35만 WSPM** 상향 전망(DigiTimes). 같은 시기 서방 마더보드 3사(GIGABYTE·MSI·ASUS)의 CXMT DDR5 전원 인증(공존 신호)과 미 하원 초당파 의원들의 국가안보 조사·구매 전면 차단 요구(디커플링 신호)가 **정반대 방향으로 동시 발생** — 애플–CXMT 건(07-11)이 만든 공존 드리프트에 대한 첫 정치적 카운터 시그널. 조사가 요구 단계에 머물러 있어 **DF2 0.5 유지**, 신규 트리거 `cxmt_security_probe_action`(조치화 시 A·C 방향 재평가) 추가.
+
+**DF1·DF2·확률**: DF1 8.5·DF2 0.5·A26·B39·C8·D21·E6 전부 유지 — 이번 리서치는 병목 지수·CXMT 경쟁 구도 갱신이며 거시 축 재평가를 촉발하는 신규 사실 아님.
+
+**신규 소스**: `bottleneck-model-update-2026-07-28.md`(4개 영역 리서치 종합), `cxmt-shanghai-ipo-2026-07-27.md`.
+
+**wiki**: `bottleneck-model-2030.md`(§종합 판독 2026-07-28 신설, frontmatter last_reviewed 갱신), `entities/cxmt.md`(§Update 2026-07-28 IPO 반영), `driving-forces/key-drivers.md`(DF2에 CXMT IPO 상반 신호 note 추가, 위치 불변), `concepts/us-export-controls.md`(§Update 2026-07-28 안보조사 반영). `index.md` 신규 소스 2건 등록.
+
+**동기화**: `dashboard/src/data/bottleneckModel.js`(MODEL_ASOF/PREV_MODEL_ASOF/PREV_INDICES·제약지수 4개·indexNote 4개 갱신), `indicators.js`(cxmt_dram_share 이력·note 갱신, 신규 트리거 `cxmt_security_probe_action`, DF 포지션 note 추가), `updates.js`(신규 ingest 항목), `knowledgeGraph.js`(재생성 — node 80·edge 309→311, orphan 0·isolated 0), `version.js`(v2.32.6→v2.32.7 패치 — 데이터 갱신). `outputs/report/scenario-planning-report.md`(핵심수치표·§2.2.3 신설·병목 레이더 표 갱신), `outputs/presentation/slide-outline.md`(07-28 데이터 갱신 노트 추가, 구조 변경 없어 PPTX 재생성 생략). `cd dashboard && npm run build` 통과. 브랜치 `claude/focused-pascal-4ty6jn`에 push(세션 지정 브랜치 — main 직접 병합 아님).
