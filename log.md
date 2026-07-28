@@ -1032,3 +1032,15 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 ## [2026-07-24] query | 수주산업화 적응을 위한 개발실의 추가 전략 옵션
 
 질문: 메모리 수주사업화 국면에서 개발실이 (기존 전환 전략 외에) 또 어떤 전략적 변화를 가져갈 수 있는가. wiki 기존 커버리지(dev-org-transformation 4대 축·FDE 스타·임금 선순환) 확인 후, 수주산업(조선·항공·ASIC)의 표준 운영 체계를 개발실에 이식하는 8개 옵션을 신규 제안: ① 프로그램 조직(고객 계약 단위 PM·수익성 소유) ② 수주 심의 게이트(Deal Review·Design-to-Cost) ③ NRE 과금 — 공동설계의 수익 센터화 ④ 체인지오더 프로세스 ⑤ 백로그 연동 R&D 캐파 플래닝 ⑥ 감사 가능한 개발 프로세스(트레이서빌리티) ⑦ 고객간 방화벽+공통 플랫폼 학습 양립 ⑧ FDE 로테이션·수주 연동 인센티브. 채팅 답변으로 제공 — 채택 항목 확정 시 wiki 전략 페이지 반영 예정(현재 위키 미반영, 전략 판단 제안 단계).
+
+## [2026-07-28] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + Alphabet CapEx 상향·SK하이닉스 사상 최대
+
+직전 포지션 맵 갱신(2026-07-21) 이후 git log로 파악한 변경분(개발실 전환 요약 PPT·FDE/전략적 고객 계약 용어 정비·임금 선순환·수주산업화 8개 전략 옵션 질의)은 전부 실행/조직 계층으로 거시 축(DF1·DF2)을 움직일 신규 소스 없음. 07-21→07-28 구간 웹 리서치 점검 결과 in-window 신호는 전부 **정점 재확인** 방향 → 포지션 맵·확률 유지.
+
+**포지션 맵**: DF1 8.5·DF2 0.5 유지. 물질적 발전 2건 — (1) Alphabet Q2(07-22) 2026 CapEx 가이던스 **$180~190B→$195~205B 상향**·Cloud 백로그 QoQ +$50B→$514B(상방 확인), (2) SK하이닉스 Q2(~07-28) 영업이익 **~$43.7B·OPM ~76% 사상 최대**(정점 확인). 이미 정점(8.5)이므로 신규 상방 레그 아닌 재확인 → DF1 유지. **절제**: 가장 큰 3개 tell(MS·Meta 07-29·Amazon 07-30)이 창 직후 발표 예정 — DF1 방향 핵심 확인 이벤트 다음 주 대기. DF2: 미중 신규 실현 사실 부재(MATCH 위원회 단계·본회의 표결 movement 없음·CXMT HBM 미확정·애플 CXMT 테스트 단계·신규 수출통제 없음) → 유지. 삼성 HBM4 볼륨 발주 미전환도 무변화.
+
+**확률**: A26·B39·C8·D21·E6 전부 유지 — 거시 축 무변화, in-window 신호는 DF1 정점 재확인이지 시나리오 간 상대 확률 변경 요인 아님.
+
+**EWI·트리거**: EWI 5종 실측 갱신(`bigtech_capex_growth` Alphabet 상향·`gpu_rental_price_trend`/`gpu_rental_h100_usd` 07-28 스냅샷 H100 ~$3.46·H200 ~$4.11·`samsung_hbm4_rubin_share` 무변화·`cxmt_hbm3_production` 무변화). 트리거 4종 note 갱신(`bigtech_capex_2027_sustained` 선행 상방·`bigtech_capex_cut25` 미발동·`match_act_passed` 위원회 단계·`samsung_hbm4_nvidia_confirmed` 미충족). 발동 트리거 0건.
+
+**동기화**: 신규 소스 `hyperscaler-q2-2026-capex-2026-07-28.md`. dashboard indicators.js(포지션·SCENARIOS·EWI·트리거)·scenarioPlanning.js(DF1·DF2 현재위치·matrix 확률)·updates.js(assessment 항목 — 업데이트 내역 메뉴)·version.js(v2.32.6 패치). wiki key-drivers·scenario-matrix. outputs/report §5.1. index.md sources 등록. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX는 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증. main 직접 병합·push.

@@ -15,13 +15,20 @@ export const INITIAL_QUADRANT_POSITIONS = [
   //     (b) 로이터(2026-06): 트럼프 행정부가 대베이징 긴장 회피 차원에서 CXMT 추가 블랙리스트 등재 보류 = 디에스컬레이션. → 실현된 사실 2건 모두 공존 쪽 약한 신호.
   //   절제: 아직 '테스트' 단계(양산 채택·승인 미확정)·1260H 리스트 등재·의회 반대·YMTC 2022 무산 전철 리스크 상존 → 리트머스(승인/차단) 미해결이므로 이동폭 소폭(1.0→0.5)에 그침.
   //   하방 병기(공급 씨앗): CXMT 글로벌 DRAM 캐파 점유 11%(2025)→15%(2028E)·애플 price leverage로 삼성·SK 과점 '균열 신호' — 중기 마진 리스크로 EWI 감시(cxmt_apple_qualification·cxmt_dram_share).
+  // [2026-07-28 정기 재평가] DF1 8.5·DF2 0.5 유지 — 07-21 이후 git log 변경분은 전부 실행/조직 계층(개발실 전환 발표·수주산업화 8개 전략 옵션 질의)으로 거시 축(DF1·DF2) 무영향. 웹 리서치로 확인한 in-window 신호는 전부 정점 재확인 방향:
+  //   (상방 확인) Alphabet Q2(2026-07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향·Cloud 백로그 QoQ +$50B→$514B(CNBC·Seeking Alpha). (정점 확인) SK하이닉스 Q2(~07-28) 영업이익 ~KRW 64T(~$43.7B)·OPM ~76% 사상 최대(Korea Times·TrendForce). GPU 임대가 firming/flat(H100 ~$3.46·H200 ~$4.11)·DRAM Q3 +13~18% 유지.
+  //   이미 정점(8.5)이므로 Alphabet 상향은 신규 상방 레그가 아닌 정점 재확인 → DF1 8.5 유지. 절제 이유: 가장 큰 3개 tell(MSFT·Meta 07-29·Amazon 07-30)이 창 직후 발표 예정 — DF1 핵심 확인 이벤트가 다음 주 대기.
+  //   DF2: 창 내 미중 실현 사실 부재(MATCH 위원회 단계 유지·CXMT HBM 미확정·애플 CXMT 테스트 단계·신규 수출통제 없음) → 방향·위치 무변화. 삼성 HBM4 볼륨 발주 미전환도 무변화(EWI 추적).
   // [2026-07-21 정기 재평가] DF1 8.5·DF2 0.5 유지 — 직전 07-14 재평가 이후 신규 거시 축 신호 부재. 이번 주 물질적 발전은 삼성 개별 실행 신호(HBM4 인증 통과에도 볼륨 발주 미전환, Winbuzzer 07-17)로 거시 축이 아닌 EWI·트리거·시나리오 B 실행 리스크로 반영.
   //   확증(무변화) 신호: 빅테크 2026 CapEx ~$725B(+77% YoY)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속(정제)·MATCH 위원회 단계 유지 → DF1 정점·DF2 방향 모두 유지.
-  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 0.5,  note: '[07-21 재평가] DF1 8.5·DF2 0.5 유지 — 신규 거시 신호 부재. 확증: 빅테크 CapEx +77%·GPU firming·DRAM 감속(정제). [07-14 재평가] DF1 8.5 유지·DF2 1.0→0.5 — 애플–CXMT 건(FT 07-08)이 관리된 공존 쪽 약한 신호. 삼성 HBM4 볼륨 발주 지연(07-17)은 시나리오 B 실행 리스크(EWI 추적), 거시 축 무영향' },
+  { key: 'current',    date: '2026-07', df1: 8.5,  df2: 0.5,  note: '[07-28 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 실행/조직 계층(개발실 전환·수주산업화 질의)으로 거시 축 무영향. in-window 신호 전부 정점 재확인: Alphabet Q2(07-22) 2026 CapEx $180~190B→$195~205B 상향·SK하이닉스 Q2 OP ~$43.7B 사상 최대. MSFT·Meta(07-29)·Amazon(07-30) 발표가 DF1 핵심 확인 이벤트로 창 직후 대기. [07-21 재평가] 신규 거시 신호 부재, 확증: 빅테크 CapEx +77%·GPU firming·DRAM 감속(정제). [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
 ]
 
-// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-07-14 재평가)
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-07-28 정기 재평가 — 유지)
 //   A 25~29 / B 35~39 / C 6~10 / D 19~23 / E 5~8  → 합 100
+//   [2026-07-28 정기 재평가 — 유지] 07-21 이후 git log 변경분은 전부 실행/조직 계층(개발실 전환·수주산업화 질의)으로 거시 축 무영향.
+//     in-window 신호(Alphabet CapEx 상향·SK하이닉스 사상 최대)는 DF1 정점 재확인이지 시나리오 간 상대 확률을 바꾸는 요인이 아님(이미 A+B 행 DF1 8.5 반영). DF2 무변화 → 확률 A26·B39·C8·D21·E6 전부 유지.
+//     MSFT·Meta(07-29)·Amazon(07-30) Q2 CapEx 가이던스가 다음 주 확인 이벤트 — 상향 시 B 강화·삭감 시 D 경보로 EWI bigtech_capex_growth 추적.
 //   [2026-07-14] 애플–CXMT 건(FT 07-08) 반영 — DF2가 관리된 공존 쪽으로 소폭 이동(1.0→0.5)한 데 따른 순수 DF2 재배분.
 //     공존 신호는 AI-지속 행(A+B, DF1 8.5 불변) 내부에서 디커플링(A)→공존(B)으로 확률을 이동시킴 → A 27→26·B 38→39.
 //     C·D·E 불변(DF1 무변화·C·D는 이미 낮음·E는 DF3 근거 아님). AI-지속 행 합계 65 유지, C+D+E 합계 35 유지 → 합 100.
@@ -156,12 +163,13 @@ export const INITIAL_INDICATORS = [
     scenarioText: '20%+→A·B확인 / 5~10% 둔화→D / 절대삭감→C긴급',
     warningThreshold: 10,
     status: 'normal',
-    lastUpdated: '2026-07-21',
+    lastUpdated: '2026-07-28',
     history: [
       { date: '2026-05-05', value: 40, note: '2026년 초기값 (빅테크 4사 합산 +40%, 보수적 하한)' },
       { date: '2026-07-21', value: 77, note: '빅테크 4사 2026 CapEx ~$725B (Amazon $200B·MS $190B·Alphabet $175~185B·Meta $115~135B) = 2025 $410B 대비 +77% (Tom\'s Hardware·Statista). "AI 경제 건강·매출 성장이 자본지출 정당화" — DF1 정점 재확인' },
+      { date: '2026-07-28', value: 77, note: 'Q2 실적 시즌 시작 — Alphabet(07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향(Cloud 백로그 QoQ +$50B→$514B, CNBC·Seeking Alpha) = 상방 확인. MSFT·Meta(07-29)·Amazon(07-30)은 창 직후 발표 예정으로 4사 합산 재계산은 다음 주 — Alphabet 상향으로 +77% 기준선은 상방 쪽. DF1 정점 재확인' },
     ],
-    note: 'Google·MS·Amazon·Meta 합산 CapEx YoY 성장률. 2026 +77%(20%+ 임계 대폭 초과) → A·B 확인 신호 강',
+    note: 'Google·MS·Amazon·Meta 합산 CapEx YoY 성장률. 2026 +77%(20%+ 임계 대폭 초과) → A·B 확인 신호 강. Alphabet 07-22 상향($195~205B), MSFT·Meta 07-29·Amazon 07-30 발표가 DF1 핵심 확인 이벤트',
     inputType: 'number',
     hint: '빅테크 4사 합산 AI CapEx YoY 성장률 % 입력',
     autoUpdateId: 'bigtech_capex_growth',
@@ -532,12 +540,13 @@ export const INITIAL_INDICATORS = [
     scenarioText: '40%+ → B 가속 / 25%↓ → 전략 위기',
     warningThreshold: 35,
     status: 'warning',
-    lastUpdated: '2026-07-21',
+    lastUpdated: '2026-07-28',
     history: [
       { date: '2025-04', value: 17, note: 'HBM3E 품질 이슈로 추락' },
       { date: '2025-09', value: 35, note: 'Q3 2025 반등 시작' },
       { date: '2026-03', value: 28, note: 'NVIDIA Rubin HBM4 공급 점유 (UBS)' },
       { date: '2026-07-21', value: 28, note: '인증은 통과(06-05 Vera Rubin 3사 인증)했으나 볼륨 발주 미전환 — 삼성 NVIDIA향 HBM4 매출 여전히 유상 평가용 샘플 수준(Winbuzzer 07-17). SK하이닉스 Rubin 2/3+ 락인 유지. 인증→볼륨 발주 전환 지연 = 시나리오 B 실행 리스크' },
+      { date: '2026-07-28', value: 28, note: '무변화 — 07-21~28 창 내 볼륨 발주 전환 보도 없음(07-15 Digitimes·07-17 Winbuzzer 이후 신규 반전 부재). SK하이닉스 Rubin/HBM4 선두 60~70% 유지. 인증→볼륨 발주 전환 지연 지속 = 시나리오 B 시간 리스크' },
     ],
     note: '목표: 2027년 40%+ (NVIDIA Feynman 1번 공급사 지위). 06-05 인증 통과·07-17 볼륨 발주 대기 — "인증 ≠ 공급 계약" 구간',
     inputType: 'number',
@@ -583,10 +592,11 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'HBM4 양산 도달 시 → 시나리오 D·C 가속',
     warningThreshold: null,
     status: 'warning',
-    lastUpdated: '2026-07-21',
+    lastUpdated: '2026-07-28',
     history: [
       { date: '2026-04', value: 'HBM3 양산 개시', note: '월 60K 웨이퍼, 화웨이 우선 공급' },
       { date: '2026-07-21', value: 'HBM3 양산 (일정 지연)', note: '[정기 점검] CXMT는 DDR5/LPDDR5 양산 지속하나, 2026년 내 HBM3 양산 도달은 이제 어려워 보임(일정 슬립, techwireasia·semiconductorsinsight 2026-07). D·C 가속 시점 후퇴 요인 — DF2 무변화 정합' },
+      { date: '2026-07-28', value: 'HBM3 양산 (일정 지연)', note: '[정기 점검] 무변화 — 07-21~28 창 내 HBM 대규모 양산 확정 신규 보도 없음. 최근 구체 건은 6월 CXMT–Tencent ~$3B 서버 DRAM 계약(창 이전)으로 DDR5 축. HBM at scale 여전히 불투명 — DF2 무변화 정합' },
     ],
     note: '2026년 양산 개시 목표였으나 HBM 일정 지연(2026 도달 불투명) → 2027 HBM3E → 2028 HBM4 위협 가능성. DDR5/LPDDR5는 양산 중',
     inputType: 'select',
@@ -1206,10 +1216,11 @@ export const INITIAL_INDICATORS = [
     scenarioText: '컴퓨트 공급과잉 신호 → 메모리 수요 둔화 선행',
     warningThreshold: -20,
     status: 'warning',
-    lastUpdated: '2026-07-21',
+    lastUpdated: '2026-07-28',
     history: [
       { date: '2026-06-02', value: -20, note: '2024~25 H100 임대가 급락 후 둔화세 (예시 판단값)' },
       { date: '2026-07-21', value: -20, note: '[정기 점검] 최신 실측은 firming — H200 온디맨드 +8% YoY(2025-07 $3.54→2026-07 $3.82). 6개월 추세 급락 신호 없음, -35% 경보 임계와 여유. 실측 바스켓(gpu_rental_h100_usd) 우선 참조' },
+      { date: '2026-07-28', value: -20, note: '[정기 점검] 07-28 스냅샷 firming/flat — H100 온디맨드 중앙값 ~$3.46/h·H200 코호트 중앙값 ~$4.11/h(getdeploying). 주간 급락 신호 없음, Tier0 최선행 조기경보 미발동' },
     ],
     note: '메모리 수요의 최선행(Tier0) — 컴퓨트 수요 청산가격. 급락 = 과잉 빌드 신호. 2026-07 firming. demand-inflection-ewi.md',
     inputType: 'number',
@@ -1230,10 +1241,11 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'GPU 현물 급락 = 메모리 수요 둔화 선행',
     warningThreshold: 2.6,
     status: 'normal',
-    lastUpdated: '2026-07-21',
+    lastUpdated: '2026-07-28',
     history: [
       { date: '2026-06-02', value: 3.21, note: 'Vast.ai 바스켓 (H100 SXM $2.52 / H200 $3.91, 0.5:0.5)' },
       { date: '2026-07-21', value: 3.21, note: '[정기 점검] H200 온디맨드 중앙값 $3.82 (전년 $3.54 대비 +8% YoY, getdeploying)·H100 Vast.ai 최저 ~$1.49/h — 붕괴 아닌 firming. Tier0 최선행 신호 정상, 수요 변곡 조기경보 미발동. Vast.ai API 자동 갱신 지속' },
+      { date: '2026-07-28', value: 3.21, note: '[정기 점검] 07-28 시장 스냅샷 — H100 온디맨드 중앙값 ~$3.46/h(범위 $1.49~6.98)·H200 코호트 중앙값 ~$4.11/h(범위 $2.30~13.78, getdeploying). 직전 $3.82 대비 정합, 붕괴 없음. 실측 바스켓은 Vast.ai API 자동 갱신 지속' },
     ],
     note: '실측 GPU 현물 임대가(Tier0 최선행). H100 SXM·H200 0.5:0.5 바스켓으로 유동성 안정화. 매일 자동 누적되어 추세 형성. 23년 ~$8 → 25~26년 $2~4. 2026-07 firming(H200 +8% YoY).',
     inputType: 'number',
@@ -1438,7 +1450,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: 'HBM 신규 설비 집행 중단·소재 비축 즉시 실행',
     activated: false,
     activatedDate: null,
-    note: '',
+    note: '[2026-07-28] 미발동 — 정반대 방향. Alphabet Q2(07-22) 2026 CapEx 상향($195~205B)·SK하이닉스 Q2 사상 최대. 삭감 신호 0건. MSFT·Meta(07-29)·Amazon(07-30) 발표가 다음 확인점',
     probabilityDelta: { A: -4, B: -10, C: +8, D: +6, E: 0 },
     df1Delta: -2.5,
     df2Delta: 0,
@@ -1451,7 +1463,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: '시안 팹 이전 계획 즉시 발동',
     activated: false,
     activatedDate: null,
-    note: '',
+    note: '[2026-07-28] 미발동 — H.R.8170 위원회 통과 단계 유지, 07-21~28 창 내 본회의 표결 movement 없음(congress.gov). DF2 방향 결정 주 분기점으로 계속 추적',
     probabilityDelta: { A: +10, B: -8, C: +5, D: -7, E: 0 },
     df1Delta: 0,
     df2Delta: +2.5,
@@ -1548,7 +1560,7 @@ export const INITIAL_TRIGGERS = [
     activatedDate: null,
     note: '',
     isPositive: true,
-    note: '[2026-07-21] 인증(qualification)은 06-05 통과했으나 이 트리거는 "공식 공급(볼륨) 계약 확인서" 기준 — 07-17 현재 삼성 NVIDIA향 HBM4 매출은 유상 평가용 샘플 수준으로 미충족(Winbuzzer). 인증→볼륨 발주 전환이 발동 조건',
+    note: '[2026-07-28] 미충족 유지 — 07-21~28 창 내 볼륨 발주 전환 보도 없음(07-15 Digitimes·07-17 Winbuzzer 이후 반전 부재). 인증(qualification)은 06-05 통과했으나 이 트리거는 "공식 공급(볼륨) 계약 확인서" 기준 — NVIDIA향 HBM4 매출은 여전히 유상 평가용 샘플 수준. 인증→볼륨 발주 전환이 발동 조건',
     probabilityDelta: { A: -3, B: +12, C: -5, D: -4, E: 0 },
     df1Delta: 1.5,
     df2Delta: -1.5,
@@ -1603,7 +1615,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: 'HBM5 조기 양산 결정 · 텍사스 2기 조기 착공 확정 · 소재 장기 계약 확대',
     activated: false,
     activatedDate: null,
-    note: '',
+    note: '[2026-07-28] 선행 신호 상방 — Alphabet Q2(07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향, Cloud 백로그 QoQ +$50B→$514B(다년 수요 락인). 미충족(트리거는 2027 $500B+ 가이던스 기준)이나 방향은 유지·상향 쪽. MSFT·Meta(07-29)·Amazon(07-30) 발표가 다음 확인점',
     isPositive: true,
     probabilityDelta: { A: 0, B: +8, C: -4, D: -4, E: 0 },
     df1Delta: 1.5,

@@ -14,6 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-28 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-07-28',
+    type: 'assessment',
+    version: 'v2.32.6',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + Alphabet CapEx 상향·SK하이닉스 사상 최대·EWI 갱신',
+    summary:
+      '직전 포지션 맵 갱신(2026-07-21) 이후 git log 변경분(개발실 전환 요약 PPT·FDE/전략적 고객 계약 용어 정비·임금 선순환·수주산업화 8개 전략 옵션 질의)은 전부 실행/조직 계층으로 거시 축(DF1·DF2)을 움직일 신규 소스가 없다. 07-21→07-28 구간을 웹 리서치로 점검한 결과 in-window 신호는 전부 정점 재확인 방향 — 포지션 맵과 확률을 유지한다. 이번 주 물질적 발전 2건: (1) Alphabet Q2(2026-07-22)가 2026 연간 CapEx 가이던스를 $180~190B→$195~205B로 상향하고 Google Cloud 백로그가 QoQ +$50B→$514B로 급증(CNBC·Seeking Alpha) — AI 데이터센터 수요 강도의 in-window 상방 확인. (2) SK하이닉스 Q2(~07-28) 영업이익 ~KRW 64T(~$43.7B)·OPM ~76% 사상 최대(Korea Times·TrendForce) — DF1 정점 확인. 이미 DF1이 정점(8.5)이므로 Alphabet 상향은 신규 상방 레그가 아닌 재확인 → DF1 8.5 유지. 절제 근거: 가장 큰 3개 tell(Microsoft·Meta 07-29·Amazon 07-30)이 재평가 창 직후 발표 예정 — DF1 방향의 핵심 확인 이벤트가 다음 주 대기. DF2: 창 내 미중 실현 사실 부재(MATCH 법안 위원회 단계 유지·본회의 표결 movement 없음·CXMT HBM 대규모 양산 미확정·애플–CXMT 테스트 단계·신규 수출통제 없음) → 방향·위치 유지. 삼성 HBM4 볼륨 발주 미전환도 무변화(창 내 반전 보도 없음). 결론: DF1 8.5·DF2 0.5·확률 A26·B39·C8·D21·E6 전부 유지. EWI 5종 실측 갱신(bigtech_capex_growth Alphabet 상향·gpu_rental H100 ~$3.46·H200 ~$4.11·samsung_hbm4_rubin_share 무변화·cxmt_hbm3_production 무변화)·트리거 3종 note 갱신(bigtech_capex_2027_sustained 선행 상방·bigtech_capex_cut25 미발동·match_act_passed 위원회 단계·samsung_hbm4_nvidia_confirmed 미충족). 발동 트리거 0건. 신규 소스 1건. 패치 v2.32.6.',
+    tags: ['시나리오', '포지션 맵', '확률', '유지', 'DF1', 'DF2', 'Alphabet', 'CapEx', 'SK하이닉스', 'GPU임대가', 'EWI', 'dashboard'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5', detail: '07-21→07-28 git log 변경분은 전부 실행/조직 계층(개발실 전환·수주산업화 질의)으로 거시 축 무영향. DF1: Alphabet CapEx 상향·SK하이닉스 사상 최대·GPU 임대가 firming으로 정점 재확인. DF2: 미중 신규 실현 사실 부재(MATCH 위원회 단계·CXMT HBM 미확정). 두 축 모두 위치·방향 유지' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6 (합 100)', detail: '거시 축이 움직이지 않았으므로 시나리오 확률 재배분 없음. in-window 신호(Alphabet CapEx 상향·SK하이닉스 사상 최대)는 이미 A+B 행에 반영된 DF1 8.5의 정점 재확인이지 시나리오 간 상대 확률을 바꾸는 요인이 아님' },
+      { label: '이번 주 물질적 발전 (1) — Alphabet 2026 CapEx 상향 (07-22)', detail: 'Alphabet Q2 2026: 2026 연간 CapEx 가이던스 $180~190B→$195~205B 상향. Google Cloud 매출 +82% YoY(~$24.8B)·백로그 QoQ +$50B→$514B. 다년 수요 락인 확대 = AI 데이터센터 수요 강도(DF1) 상방 확인. 주가는 AI ROI 입증 요구로 하락했으나 가이던스 상향은 수요 견인형 신호' },
+      { label: '이번 주 물질적 발전 (2) — SK하이닉스 사상 최대 Q2 (~07-28)', detail: '컨센서스 영업이익 ~KRW 64T(~$43.7B)·OPM ~76% 사상 최대(HBM+AI DC SSD 견인). 컨센서스 부합(서프라이즈 아님)이나 DF1 정점 확인. Micron FY26 Q3($41.46B)와 함께 슈퍼사이클 정점 지속 신호' },
+      { label: '핵심 절제 — 하이퍼스케일러 3사 발표가 창 직후 대기', detail: 'Microsoft·Meta(07-29)·Amazon(07-30) Q2 CapEx 가이던스는 재평가 창(07-28) 직후 발표 예정 — 4사 합산 2026 CapEx(+77% 기준선) 재계산과 DF1 방향의 핵심 확인은 다음 주. Alphabet 1개사 상향만으로 정점을 넘어 이동하지 않고 재확인에 그침' },
+      { label: 'EWI 5종 갱신', detail: 'bigtech_capex_growth(Alphabet 상향 07-28 이력·note에 3사 발표일 표기)·gpu_rental_price_trend/gpu_rental_h100_usd(07-28 스냅샷 H100 ~$3.46·H200 ~$4.11, 붕괴 없음)·samsung_hbm4_rubin_share(창 내 볼륨 발주 반전 부재, 무변화)·cxmt_hbm3_production(HBM 대규모 양산 미확정, 무변화). 실측·live-auto 지표는 Vast.ai·Yahoo API 자동 갱신 지속' },
+      { label: '시나리오 트리거 검토 — 신규 발동 없음 (0건)', detail: 'bigtech_capex_2027_sustained(선행 신호 상방 — Alphabet 상향)·bigtech_capex_cut25(미발동, 정반대 방향)·match_act_passed(위원회 단계 유지·본회의 표결 movement 없음)·samsung_hbm4_nvidia_confirmed(볼륨 계약 미충족 유지) 4종 note 갱신. apple_cxmt_approved·us_china_semiconductor_deal 등 DF2 트리거 임계 미충족' },
+      { label: '보고서·위키 동기화', detail: 'outputs/report §5.1 확률표에 [2026-07-28 재평가] 유지 note 추가. wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치·wiki/scenarios/scenario-matrix.md 확률표 갱신. dashboard scenarioPlanning·indicators 미러. 신규 소스 hyperscaler-q2-2026-capex-2026-07-28.md' },
+    ],
+    links: [
+      { label: 'hyperscaler-q2-2026-capex-2026-07-28.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md' },
+      { label: 'scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+    ],
+  },
   // ── 2026-07-21 ───────────────────────────────────────────────────────────────
   {
     date: '2026-07-21',
