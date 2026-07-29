@@ -14,6 +14,25 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-07-29 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-07-29',
+    type: 'ingest',
+    version: 'v2.32.7',
+    title: '인터뷰 2번째 추가 — 최장석 상무(메모리 상품기획팀장)',
+    summary:
+      '2026-07-29 진행된 최장석 상무(상품기획팀장, 녹취록 참석자 4) 내부 인터뷰를 sources 층에 녹취록 원본으로 보존하고, 대시보드 "인터뷰" 메뉴에 신문섭 파트너 인터뷰와 동일 형식(15개 섹션·핵심 인용문 4개·블록/표)으로 구조화해 추가. 핵심: "수요 감소"를 가속기→HBM→DDR 제품 단위 인과로 정의, HBM↔DDR 캐파 상쇄 리스크, GHBM(3D 적층 커스텀 메모리)·가속기 전력/써멀 병목, 미주 우선 선택과 집중, 커스텀 제품 소싱·컨트랙·SCM 체질, 하이-로 포트폴리오. 패치 v2.32.7.',
+    tags: ['인터뷰', '최장석', '상품기획팀', 'HBM 다운사이드', 'GHBM', '가속기', '미주 vs 중화', '커스텀 HBM', 'dashboard'],
+    items: [
+      { label: '녹취록 원본 보존', detail: 'sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md 신설 — 참석자 구성·과제 맥락 헤더 + 자동 전사 녹취록 전문(원본·불변)' },
+      { label: '인터뷰 메뉴 구조화', detail: 'data/interviews.js INTERVIEWS 최상단에 추가(최신순). Executive Summary 포함 15개 섹션, keyQuotes 4개(HBM↔DDR 캐파 상쇄·수요 감소 정의·모든 고객 GHBM·하이-로), HBM vs GHBM 비교표' },
+      { label: '핵심 논지', detail: '베인 신문섭 파트너의 "AI가 돈을 버는가/수요 검증 사이클"을 내부 제품·캐파·계약 관점에서 재확인. HBM 편중 다운사이드 대비가 과제의 실질 기여점' },
+      { label: '인덱스·로그', detail: 'index.md raw-notes 섹션·log.md 갱신' },
+    ],
+    links: [
+      { label: 'choi-jangseok-product-planning-interview-2026-07-29.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md' },
+    ],
+  },
   // ── 2026-07-28 ───────────────────────────────────────────────────────────────
   {
     date: '2026-07-28',
