@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-03 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-03',
+    type: 'ingest',
+    version: 'v2.32.10',
+    title: '외부 전문가 수집 — 크리스 밀러(Chip War 저자) 인터뷰·기고 10건 종합',
+    summary:
+      'Chip War 저자 크리스 밀러의 2025-12~2026-07 공개 발언 10건(상원 외교위 증언·WaPo H200 비판·ChinaTalk·AEI·CMU 강연·중앙일보 "반도체 구루의 고언" 시리즈·경향신문 단독·인사이트코리아 2부작 등)을 웹 조사로 수집·종합해 sources 신규 파일로 보존하고, wiki 6개 페이지에 [Update 2026-08-03] 반영, 인터뷰 메뉴에 외부 전문가 항목(4번째)으로 구조화. 핵심: ① 초크포인트 위계 — HBM·제조장비가 GPU보다 깊은 초크포인트(HBM 3사 전원 비중국), ② 중국 이중 평가 — AI 칩 구조적 제약(Ascend 5~8배 열위·SMIC 규모 한계·"4년째 AI 과소투자") vs 전력·피지컬 AI·범용 침투(애플–CXMT 공개 경계), ③ 한국 처방 — R&D·설비 동시 투자 + "HBM이 유일한 솔루션 아니다"(추론 최적화 메모리 아키텍처 선점). DF1·DF2 위치 변경 없음(외부 교차 검증·해석 보강). 패치 v2.32.10.',
+    tags: ['크리스 밀러', 'Chip War', '외부 전문가', '초크포인트', 'HBM', '추론 메모리', '수출통제', 'H200', 'CXMT', '피지컬 AI', 'dashboard'],
+    items: [
+      { label: '신규 소스', detail: 'sources/articles/chris-miller-interviews-2025-12-to-2026-07.md — 발언 10건 항목별 원문 URL·핵심 주장 보존 (원문 접근 차단 항목은 검색 요약·2차 인용 명시)' },
+      { label: '인터뷰 메뉴 구조화', detail: 'data/interviews.js에 외부 전문가 항목 추가(내부 3건과 층위 구분: 지정학·정책). 6개 섹션, keyQuotes 4개(추론 메모리 프런티어·HBM>GPU 초크포인트·3대 투입·무게추 이동), 중국 이중 평가 표' },
+      { label: 'wiki 6개 페이지 갱신', detail: 'samsung(체질 전환·동시 투자·추론 메모리·800조 환영)·cxmt(애플–CXMT 위협 해석 무게)·china-competitors(중국 이중 평가)·hbm-roadmap(추론 아키텍처 축)·us-export-controls(초크포인트 위계·완화 vs 통제 정치 구도)·steep/political(요인 1·4·6 교차 검증)' },
+      { label: '거시 축 판단', detail: 'DF1·DF2 위치·확률 변경 없음 — 신규 실현 사실이 아닌 외부 교차 검증. "통제 무게중심 GPU→HBM·장비 이동" 관찰은 다음 정기 재평가 참고 입력으로 표기' },
+      { label: '인덱스·로그', detail: 'index.md articles 섹션·log.md 갱신, 지식그래프 재생성' },
+    ],
+    links: [
+      { label: 'chris-miller-interviews-2025-12-to-2026-07.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/chris-miller-interviews-2025-12-to-2026-07.md' },
+      { label: 'The Shifting Politics of AI Chip Export Controls (Substack)', href: 'https://chrismillersnewsletter.substack.com/p/the-shifting-politics-of-ai-chip' },
+      { label: '경향신문 단독 인터뷰 (2026-07-09)', href: 'https://v.daum.net/v/20260709100107724' },
+    ],
+  },
   // ── 2026-08-03 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-03',

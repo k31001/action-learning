@@ -193,3 +193,15 @@
 
 - 삼성전자 하이브리드본딩 프로토타입(NVIDIA向 샘플)의 시험수율이 **~10%**에 그쳐, 업계 전반이 당분간 마이크로범프 유지로 선회했다 — 하이브리드본딩 전환은 업계 전반 연기 결정이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - 8Hi→12Hi 전환 시 수율이 **15~20%** 하락하며, 16-Hi는 더 큰 하락이 예상된다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## [Update 2026-08-03] 크리스 밀러 — "HBM 너머, 추론 최적화 메모리 프런티어"
+
+- 크리스 밀러(Chip War 저자)는 경향신문 인터뷰(2026-07-09)에서 **"HBM이 AI가 필요로 하는 유일한 메모리 솔루션은 아니다"**라며, 삼성·SK하이닉스의 대중국 경쟁 우위 유지 관건으로 **AI 추론(inference)에 최적화된 메모리 아키텍처 혁신의 주도권**을 지목했다 ([chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §9).
+- 위키 기존 논지와의 연결:
+  - HBM 세대 로드맵(본 페이지)이 다루는 **세대 내 경쟁**(HBM4/4E/5·수율·패키징)과 별개로, **아키텍처 계층의 경쟁 축**(추론向 메모리 계층 구조: CXL·PIM·SOCAMM·zHBM류 3D 적층 커스텀·HBF 등)이 존재한다는 외부 확인.
+  - 내부 인터뷰의 커스텀 HBM 논쟁(최장석 "모든 고객 zHBM" vs 이창수 "커스텀 HBM 퇴조") 어느 쪽이든, "추론 시대의 메모리는 HBM 단일 축이 아니다"라는 상위 명제에서 밀러와 수렴.
+  - ChinaTalk(2025-08)에서 밀러는 **HBM·제조장비가 GPU보다 깊은 초크포인트**일 수 있다고 주장 — HBM 3사가 모두 비중국 기업이라는 구조적 사실이 메모리의 지정학적 위상을 규정 ([chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §3).
+
+**출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)

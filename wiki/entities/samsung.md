@@ -281,3 +281,20 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - **함의**: "인증 ≠ 공급 계약" 구간이 길어질수록 Main Bet(시나리오 B) 1위 탈환 가정의 **시간 리스크**가 커진다. 이는 거시 축(DF1·DF2) 신호가 아니라 시나리오 B 내부의 삼성 실행 리스크 — EWI [`samsung_hbm4_rubin_share`](../../dashboard/src/data/indicators.js)·트리거 `samsung_hbm4_nvidia_confirmed`(인증 아닌 "공식 볼륨 계약 확인서" 기준)로 추적. (→ [scenario-B.md](../scenarios/scenario-B.md), [key-drivers.md](../driving-forces/key-drivers.md))
 
 **출처**: [samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md)
+
+## [Update 2026-08-03] 크리스 밀러(Chip War 저자) — "체질 전환·R&D/설비 동시 투자·HBM 너머 추론 메모리"
+
+외부 전문가(지정학·반도체 산업사) 크리스 밀러의 2026년 4~7월 삼성 관련 발언 종합 ([chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)).
+
+### 중앙일보 서면 인터뷰 (2026-04-24, "반도체 구루의 고언" 시리즈)
+
+- **영향력 무게추 이동**: 고객사들은 메모리를 최대한 범용화하려 하지만, 현재 무게추는 **독보적 HBM 기술력 + 고객 맞춤(커스텀) 역량을 갖춘 메모리 업체 쪽** — 삼성·SK하이닉스에 유리. 이는 위키의 [LTA→SCA 전환](../concepts/lta-to-sca-transition.md)·[고객 공동설계](../concepts/customer-co-design-anthropic.md) 논지와 외부 시각에서 합치.
+- **생존 조건**: 메모리 기술 격차 유지 — 호황 이익을 **R&D와 설비에 동시 투자**할 때. "지금 당장 체질 못 바꾸면 삼성 또 밀린다"는 체질 전환 촉구는 내부 진단([이창수 인터뷰](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)의 "이익률은 AI가 준 선물, 지금은 파티할 때가 아니다")과 정확히 공명.
+- **노사 리스크**: 속도 경쟁 산업에서 노사 갈등 격화 시 공멸 경고 — [dev-org-transformation.md](../strategies/dev-org-transformation.md)의 임금 선순환 논지의 리스크 대칭면.
+
+### 경향신문 단독 인터뷰 (2026-07-09) — "HBM을 넘어, 다음 AI 메모리 프런티어로"
+
+- **"HBM이 AI가 필요로 하는 유일한 메모리 솔루션은 아니다"** — 대중국 경쟁 우위 유지의 관건은 **AI 추론(inference) 최적화 메모리 아키텍처 혁신의 주도권**. 추론 시대 전환 국면에서 HBM 점유율 경쟁(현 Main Bet)과 별개의 **차세대 아키텍처 선점 축**을 외부 전문가가 명시적으로 제시 — [hbm-roadmap.md [Update 2026-08-03]](../concepts/hbm-roadmap.md#update-2026-08-03-크리스-밀러--hbm-너머-추론-최적화-메모리-프런티어) 참조.
+- **한국 800조 원 클러스터 투자 환영** — "비중국 세계의 경제·전략적 이해에 부합." 기존 위키 수집(2026-06-29 발표, 삼성·SK 각 신규 팹 2개)에 대한 외부 지정학 전문가의 긍정 평가.
+
+**출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §7, §9

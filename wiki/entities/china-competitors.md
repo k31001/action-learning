@@ -100,3 +100,27 @@ sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, Tec
 - [dram-market-share.md](../concepts/dram-market-share.md) — DRAM 점유율 변화
 - [nand-process-transition.md](../concepts/nand-process-transition.md) — NAND 적층·hybrid bonding
 - [wiki/scenarios/scenario-C.md](../scenarios/scenario-C.md) — 기술 냉전 시나리오
+
+---
+
+## [Update 2026-08-03] 크리스 밀러의 중국 이중 평가
+
+크리스 밀러(Chip War 저자)의 2025-12~2026-07 발언 종합 ([chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)) — 중국 평가는 **구조적 제약과 비대칭 위협의 이중 구도**.
+
+### 구조적 제약 (AI 칩)
+
+- **"중국은 지난 4년간 AI에 과소투자"** — "중국 정부는 AI가 우리 생각만큼 중요해질 거라고 진짜로 믿지 않는다" (2026-06 발언, §8).
+- **Huawei Ascend 910B 280~400 TFLOPS vs Nvidia Blackwell 2,250 TFLOPS** (5~8배 격차) + 장비 통제로 SMIC가 규모 생산 불가 → 중국은 **AI 데이터센터 기술 수출국이 될 수 없고**, 자국 수요조차 스펙다운된 서방 칩 수입으로 채워야 하는 처지 (AEI 기고, §5).
+- 함의: 첨단 AI 칩·HBM에서의 중국 추격은 단기 위협이 아님 — 위키의 "CXMT HBM 대규모 양산 미확정" 판단과 정합.
+
+### 비대칭 위협 (전력·피지컬 AI·범용 침투)
+
+- **전력**: AI 3대 투입(컴퓨팅·인재·전력) 중 중국이 전력에서 우위 (상원 증언 2025-12-02, §1).
+- **피지컬 AI**: 중국은 **제조 기반과 소프트웨어 역량을 동시에 갖춘 거의 유일한 국가** — 로보틱스/피지컬 AI 시대의 최강 경쟁자. 각국은 중국산 피지컬 AI 의존을 피할 산업 정책을 고민해야 (인사이트코리아, §10).
+- **범용 침투**: 애플–CXMT 류의 완제품 채택 경로 경계 — [cxmt.md [Update 2026-08-03]](cxmt.md) 참조.
+
+### 삼성 함의
+
+- 위협의 실현 경로는 **첨단 정면 추월이 아니라 ① 범용·완제품 채택(CXMT), ② 피지컬 AI 수요의 중국 내 수직계열화** — 시나리오 C·D의 중국 변수 해석과 일치하며, HBM·추론 아키텍처 등 추격 난이도 높은 영역의 격차 유지가 방어의 핵심이라는 기존 결론을 강화.
+
+**출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
