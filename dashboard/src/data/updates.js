@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-03 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-03',
+    type: 'ingest',
+    version: 'v2.32.9',
+    title: '인터뷰 3번째 추가 — 이창수 부사장(메모리 영업팀장)',
+    summary:
+      '2026-08-03 진행된 이창수 부사장(영업팀장, 녹취록 참석자 3) 내부 인터뷰(약 89분)를 앞선 두 인터뷰와 동일 형식(16개 섹션·핵심 인용문 4개·수요 사슬 3형태 표)으로 구조화해 추가. 핵심: 수요는 예측이 아니라 만드는 것(가격 탄력도), AI 프론티어가 만든 시가(時價) 시장과 중복 수요 리스크, CAPEX vs FCF 재무 시그널, take-or-pay 멀티이어·NTE/NTB 가격 밴드(1차 방어선), 과제=2차 방어선(사업 경쟁력 Back to Basic·WPSI·상시 비가동), 커스텀 HBM 퇴조론(최장석 zHBM 관점과 대비), 브로드컴·ASIC·소버린 생태계 재편, 중국 비동조화. 민감 상업 수치(계약 금액·판가·이익률·캐파 비중·내부 코드명)는 사용자 요청에 따라 제외 또는 대략적 표현으로 조정. 패치 v2.32.9.',
+    tags: ['인터뷰', '이창수', '영업팀', 'take-or-pay', '멀티이어', 'NTE·NTB', '2차 방어선', 'WPSI', 'FCF', '커스텀 HBM', '브로드컴', 'dashboard'],
+    items: [
+      { label: '녹취록 정리본 보존', detail: 'sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md 신설 — 참석자 구성·과제 맥락 헤더 + 주요 발언 정리(민감 수치 범위 표현으로 대체, 정정 정책 헤더 명시)' },
+      { label: '인터뷰 메뉴 구조화', detail: 'data/interviews.js INTERVIEWS 최상단에 추가(최신순). 16개 섹션, keyQuotes 4개(수요는 만드는 것·종이 다른 고객·take-or-pay 1차/2차 방어선·AI가 준 선물), 수요 사슬 3형태 표' },
+      { label: '핵심 논지', detail: '3자 공통 축 확정 — AI 수익화·현금흐름이 마스터 변수(신문섭·최장석·이창수 일치). 층위: 매크로(신문섭)→제품·캐파(최장석)→계약·오퍼레이션(이창수). 대비점: 커스텀 HBM 퇴조 vs zHBM 커스텀 시대, 미주 집중 vs 전방위 헤지' },
+      { label: '민감 정보 처리', detail: '개별 계약 금액·구체 판가·이익률·캐파 바인딩 비중·내부 프로젝트 코드명·고객별 일정을 제외하거나 "수백억 달러 규모"·"몇 배 수준"·"과반을 훨씬 넘는 비중" 등 범위 표현으로 조정' },
+      { label: '인덱스·로그', detail: 'index.md raw-notes 섹션·log.md 갱신' },
+    ],
+    links: [
+      { label: 'lee-changsoo-memory-sales-interview-2026-08-03.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md' },
+    ],
+  },
   // ── 2026-07-29 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-07-29',
