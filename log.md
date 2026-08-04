@@ -1065,3 +1065,17 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 **EWI·트리거**: EWI 5종 실측 갱신(`bigtech_capex_growth` Alphabet 상향·`gpu_rental_price_trend`/`gpu_rental_h100_usd` 07-28 스냅샷 H100 ~$3.46·H200 ~$4.11·`samsung_hbm4_rubin_share` 무변화·`cxmt_hbm3_production` 무변화). 트리거 4종 note 갱신(`bigtech_capex_2027_sustained` 선행 상방·`bigtech_capex_cut25` 미발동·`match_act_passed` 위원회 단계·`samsung_hbm4_nvidia_confirmed` 미충족). 발동 트리거 0건.
 
 **동기화**: 신규 소스 `hyperscaler-q2-2026-capex-2026-07-28.md`. dashboard indicators.js(포지션·SCENARIOS·EWI·트리거)·scenarioPlanning.js(DF1·DF2 현재위치·matrix 확률)·updates.js(assessment 항목 — 업데이트 내역 메뉴)·version.js(v2.32.6 패치). wiki key-drivers·scenario-matrix. outputs/report §5.1. index.md sources 등록. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX는 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증. main 직접 병합·push.
+
+## [2026-08-04] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 내부 인터뷰 2건(최장석·이창수) 반영·EWI 갱신
+
+직전 포지션 맵 갱신(2026-07-28) 이후 git log 변경분은 **내부 임원·전문가 인터뷰 2건**뿐 — 최장석 상무(상품기획팀장, 07-29)·이창수 부사장(영업팀장, 08-03). 둘 다 sources 층 녹취록 + 인터뷰 메뉴 구조화이며, 거시 축(DF1·DF2)은 "실현된 외부 사실"이 움직인다는 일관 방법론상 내부 전문가 프레이밍(해석·전망)으로 분류. 내용도 양면적 → **정점 재확인, 축 무이동**.
+
+**양면성**: (상방·바닥 경직화) 이창수 1차 방어선 — take-or-pay 멀티이어 다수 사인(선수금 수백억 달러 규모 예치)·**NTB(Not-To-Below) 가격 하한**·NTE 상한으로 컬랩스 와도 상당 이익률 바닥 계약 고정 = 기존 LTA→SCA 락인을 삼성 1차 자료로 재확인, 핸드투마우스(재고 없음)로 근단기 수급 견조. (하방·유보) 최장석 HBM 편중 다운사이드(HBM 꺼지면 캐파 stranded·HBM↔DDR 상쇄로 shortage→oversupply 반전, D/S 60~70%)·이창수 중복수요·NAND 조정 우려(YMTC 에코 확대)·원가 비교열위. 영업 수장 본인 "충분히 올랐다·파티할 때 아니다·2차 방어선 필요"로 정점+경계 톤. 순효과 상쇄 → DF1 8.5 정점 재확인.
+
+**포지션 맵**: DF1 8.5·DF2 0.5 유지. 커스텀 HBM 퇴조(이창수) vs zHBM 커스텀 시대(최장석) 논쟁은 DF3/제품믹스 축이지 DF1·DF2 아님. DF2: 이창수 "중국 비동조화"·미주 집중+중국 페이즈2 멀티이어는 관리된 공존(0.5) 정합 전망(실현된 정책 사실 아님) → 위치·방향 유지.
+
+**확률**: A26·B39·C8·D21·E6 전부 유지 — 이창수 take-or-pay/NTB 확인은 이미 C 8·D 21에 반영된 락인의 재확인(신규 증분 아님), 최장석 HBM 편중은 조건부 심도(꺼졌을 때 캐파 리스크)라 상대 확률 무변화.
+
+**EWI·트리거**: EWI 4종 정성 note/history 갱신(`bigtech_capex_growth`에 CAPEX-vs-FCF 꼭짓점 프레임·`custom_hbm_revenue_share`에 커스텀 HBM 퇴조 vs zHBM 대비·`samsung_codesign_contracts`에 take-or-pay/NTB 1차 확인·`competitor_sca_disclosures` 스톡 note). 트리거 3종 note 갱신(`demand_inflection_divergence`에 3축 프레임+핸드투마우스 미발동 확인·`bigtech_capex_cut25`/`bigtech_capex_2027_sustained`에 FCF 렌즈). 민감 수치 제외로 currentValue는 전부 무변화(정성 갱신). 발동 트리거 0건.
+
+**동기화**: 신규 소스 0건(인터뷰 2건은 기 ingest). dashboard indicators.js(QUADRANT·SCENARIOS·EWI·트리거)·scenarioPlanning.js(DF1·DF2 현재위치·matrix A·B note)·updates.js(assessment 항목 — 업데이트 내역 메뉴)·version.js(v2.32.10 패치). wiki key-drivers·scenario-matrix. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증. main 직접 병합·push.

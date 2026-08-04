@@ -14,6 +14,32 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-04 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-04',
+    type: 'assessment',
+    version: 'v2.32.10',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 내부 인터뷰 2건(최장석·이창수) 반영·EWI 갱신',
+    summary:
+      '직전 포지션 맵 갱신(2026-07-28) 이후 git log 변경분은 내부 임원·전문가 인터뷰 2건뿐 — 최장석 상무(상품기획팀장, 07-29)·이창수 부사장(영업팀장, 08-03). 둘 다 sources 층 녹취록 + 인터뷰 메뉴 구조화이며, 거시 축(DF1·DF2)을 움직이는 것은 "실현된 외부 사실"이라는 일관 방법론에 따라 이들은 내부 전문가 프레이밍(해석·전망)으로 분류된다. 내용은 양면적: (상방·바닥 경직화) 이창수 1차 방어선 — take-or-pay 멀티이어 계약 다수 사인(선수금 수백억 달러 규모 통장 예치)·NTB(Not-To-Below) 가격 하한·NTE 상한으로 컬랩스 와도 상당 이익률 바닥 계약 고정 = 기존 LTA→SCA 락인 논지를 삼성 1차 자료로 재확인·강화, 핸드투마우스(재고 없음)로 근단기 수급 견조 확인. (하방 유보) 최장석 HBM 편중 다운사이드 — HBM 꺼지면 캐파 stranded·HBM↔DDR 캐파 상쇄로 shortage→oversupply 반전 리스크, 디맨드/서플라이 60~70%. 이창수 중복 수요(duplicated demand) 비즈니스 리스크·NAND 조정 우려(YMTC 에코 확대, 내년 어느 시점)·원가 비교열위. 영업 수장 본인도 "충분히 오를 만큼 올랐다"·"파티할 때 아니다"·"2차 방어선 필요"로 정점+경계 톤. 순효과: 바닥 경직화(상방)와 HBM편중·중복수요·NAND(하방)가 상쇄 → 정점 재확인, 거시 축 무이동. 커스텀 HBM 퇴조론(이창수) vs zHBM 커스텀 시대(최장석) 논쟁은 DF3/제품믹스 축이지 DF1·DF2 아님. DF2: 신규 미중 실현 사실 부재 — 이창수 "중국 비동조화"·미주 집중+중국 페이즈2 멀티이어는 관리된 공존(0.5) 정합 전망. 결론: DF1 8.5·DF2 0.5·확률 A26·B39·C8·D21·E6 전부 유지. EWI 4종 note/history 정성 갱신(bigtech_capex_growth에 CAPEX-vs-FCF 꼭짓점 프레임·custom_hbm_revenue_share에 커스텀 HBM 퇴조 vs zHBM 대비·samsung_codesign_contracts에 take-or-pay/NTB 1차 자료 확인·competitor_sca_disclosures 스톡 note)·트리거 3종 note 갱신(demand_inflection_divergence에 3축 프레임·bigtech_capex_cut25/2027_sustained에 FCF 렌즈). 발동 트리거 0건. 신규 소스 0건(인터뷰 2건은 기 ingest). 패치 v2.32.10.',
+    tags: ['시나리오', '포지션 맵', '확률', '유지', 'DF1', 'DF2', '인터뷰', '최장석', '이창수', 'take-or-pay', 'NTB', 'FCF', '커스텀 HBM', 'zHBM', 'EWI', 'dashboard'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5', detail: '07-28 이후 git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐 — 내부 전문가 프레이밍으로 거시 축을 움직이는 실현된 외부 사실 아님. 내용도 양면적: take-or-pay/NTB 바닥 경직화(상방 재확인) vs HBM 편중·중복수요·NAND 조정(하방 유보) 상쇄 → 정점 재확인. DF2: 신규 미중 실현 사실 부재(이창수 중국 비동조화·미주 집중은 관리된 공존 정합 전망). 두 축 위치·방향 유지' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6 (합 100)', detail: '거시 축이 움직이지 않았으므로 시나리오 간 재배분 없음. 이창수 take-or-pay/NTB 1차 확인은 이미 C 8·D 21에 반영된 LTA→SCA 락인 논지의 재확인(신규 증분 아님)이고, 최장석 HBM 편중 다운사이드는 "AI가 꺼질 확률"이 아니라 "꺼졌을 때 삼성 캐파 리스크"(조건부 심도)라 상대 확률 무변화' },
+      { label: '상방 재확인 — 이창수 1차 방어선(take-or-pay·NTB·NTE)', detail: '멀티이어 계약 다수 사인(열 곳 동시 진행·페이즈2 대기)·선수금 수백억 달러 규모 통장 예치·구매 의무 저버리면 개수×판가로 캐시에서 차감(take-or-pay, "사우디 오일 계약처럼")·NTB(이 밑으로 가격 안 들어감)·NTE 상한. 캐파 과반 훨씬 넘는 수준을 이 컨셉으로 바인딩 목표. 젠틀맨십 LTA→법적 구속 계약으로 진화 = 메모리 바닥의 계약적 경직화 1차 자료 확인. 핸드투마우스(고객·자사 재고 없음)로 근단기 수급 견조' },
+      { label: '하방 유보 — 최장석 HBM 편중·이창수 중복수요/NAND', detail: '최장석: "HBM 꺼지면 대책 없어"·HBM 하나=DDR 4~5개 희생이라 HBM 시장 축소 시 bit 쏟아져 캐파 stranded·디맨드/서플라이 60~70%가 shortage→oversupply로 급반전 리스크. 이창수: 중복 수요(앤트로픽 5년치가 AWS·MS·구글에 다 던져짐)·NAND 조정 우려(YMTC 에코 확대, 내년 어느 시점)·원가 경쟁사 대비 비교열위("AI가 준 선물이지 실력 아니다"). 정점+경계 톤으로 하방 감시 정당화(RS-5·RS-9)' },
+      { label: '커스텀 HBM 퇴조 vs zHBM — DF3/제품믹스 축', detail: '이창수: 커스텀 HBM4 거의 다 캔슬(커머디티가 해마다 3/3E/4/4E로 앞서가는데 커스텀은 2~3년 걸려 뒤늦음) → 기술 몰빵·커머디티 원가 결과론. 최장석: zHBM(GPU 위 3D 수직 적층 커스텀 메모리) 전 고객 요구·표준 아니어도 채택 늘어남·업체별 인터레이어 달라 커스텀. 상충이 아니라 층위 차이(현세대 커스텀 HBM 퇴조 vs 차세대 zHBM 커스텀 부상) — DF3 패러다임/제품믹스 신호로 EWI custom_hbm_revenue_share에 병기, DF1·DF2 무영향' },
+      { label: 'EWI 4종 정성 갱신 (2026-08-04)', detail: 'bigtech_capex_growth: 이창수 "꼭짓점은 FCF"(CAPEX↑인데 FCF 흑자→마이너스 = 미래 리스크 매수, 메타 주가 흔들림)·3축 프레임(CSP FCF·AI 최종수요·GPU 생태계) history 추가. custom_hbm_revenue_share: 커스텀 HBM 퇴조(이창수) vs zHBM 부상(최장석) note 병기. samsung_codesign_contracts: 공시 0건 유지하되 take-or-pay/NTB 멀티이어 다수 사인 1차 확인 note(공시≠내부계약). competitor_sca_disclosures: 스톡 note에 산업 take-or-pay 표준화 정성 확인. 민감 수치 제외로 currentValue는 전부 무변화(정성 note/history만)' },
+      { label: '시나리오 트리거 검토 — 신규 발동 없음 (0건)', detail: 'demand_inflection_divergence note에 이창수 3축 프레임(CSP FCF·AI 최종수요·GPU 생태계)·핸드투마우스 재고 없음(현재 미발동 확인) 반영. bigtech_capex_cut25·bigtech_capex_2027_sustained note에 "FCF가 진짜 꼭짓점" 렌즈 보강. samsung_hbm4_nvidia_confirmed 무변화(인터뷰 미언급). 임계 크로싱 없어 발동 0건' },
+      { label: '보고서·위키 동기화', detail: 'wiki/driving-forces/key-drivers.md DF1·DF2 [2026-08-04] 현재 위치 추가·wiki/scenarios/scenario-matrix.md 확률표 [2026-08-04 유지] note. dashboard scenarioPlanning(DF·SCENARIOS)·indicators(QUADRANT·EWI·트리거) 미러. 신규 소스 0건(인터뷰 2건은 기 ingest)' },
+    ],
+    links: [
+      { label: 'lee-changsoo-memory-sales-interview-2026-08-03.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md' },
+      { label: 'choi-jangseok-product-planning-interview-2026-07-29.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md' },
+      { label: 'scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+    ],
+  },
   // ── 2026-08-03 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-03',
