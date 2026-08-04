@@ -14,6 +14,29 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-04 (외부 데이터 갱신) ───────────────────────────────────────────────
+  {
+    date: '2026-08-04',
+    type: 'ingest',
+    version: 'v2.32.11',
+    title: '정기 외부 데이터 점검 — 빅4 CapEx 전원 상향(메모리 원가 귀속 2개 분기 연속) + Bottleneck Model 4대 지수 갱신',
+    summary:
+      '스케줄 작업(정기 자동 실행): SemiAnalysis·Counterpoint Research·TechInsights 및 기타 사이트에서 최신 데이터 수집 → 위키·Bottleneck Model·대시보드 반영. 5개 병렬 리서치(하이퍼스케일러 실적·SemiAnalysis·Counterpoint/TechInsights·삼성 HBM4/가격·전력망+파운드리+패키징) 수행. 핵심 발견: 직전 재평가(07-28)에서 대기 중이던 Microsoft·Meta(07-29)·Amazon(07-30) Q2 2026 실적이 전원 발표 — 빅4(Alphabet·MSFT·Meta·Amazon) 전원 CY2026 CapEx 가이던스 상향/재확인(합산 ~$725B→~$730~760B), 둔화 신호 0건. Amazon이 CapEx 상향분 $20B을 "메모리 가격 상승"에 명시 귀속(직전분기 Microsoft $25B 귀속에 이어 2개 분기 연속) — 메모리=AI 지출 되먹임 구조 재확인. SK하이닉스 Q2 실적은 사상 최대(영업이익 ₩60.54조·OPM 76%)이나 컨센서스 소폭 미스. 삼성 HBM4 볼륨 발주 여전히 미전환. 전력망은 PJM이 2028/29 용량경매에서 목표 예비율(20%) 대비 14.4%만 확보해 이사회가 백스톱 경매·DC 우선감축안 제안 — 계통 운영기관이 신뢰성 목표 미달을 스스로 공식화한 최초 신호. 변압기 리드타임 최대 5년→60개월로 재악화. HBM4 하이브리드본딩은 16-hi HBM4E로 채택 시점 추가 후퇴. HBM 시장점유율 상충 데이터 발견 — 원문 403 차단으로 미반영(기존 수치 유지, lint 플래그). Bottleneck Model 4대 지수(2026-07-04 대비 변동폭): 전력 72→75(▲+3)·CAPEX/ROI 40→37(▼−3, 최대 완화 폭)·파운드리 50→49(▼−1)·패키징 67→69(▲+2). DF1은 이미 정점(8.5)이라 신규 레그 아닌 최강 재확인, DF2 무변화 → 확률 A26·B39·C8·D21·E6 전부 유지. 패치 v2.32.11.',
+    tags: ['SemiAnalysis', 'Counterpoint', 'TechInsights', 'CapEx', '하이퍼스케일러', 'Bottleneck Model', '전력', 'CAPEX', '파운드리', '패키징', 'SK하이닉스', 'CXMT', 'dashboard'],
+    items: [
+      { label: '빅4 하이퍼스케일러 Q2 CapEx 전원 상향/재확인', detail: 'Alphabet $195~205B(불변)·Microsoft 회계상 ~$175B(실질 불변, FY27 상향)·Meta $130~145B(재상향)·Amazon ~$220B(+$20B, 메모리 원가 명시 귀속). 합산 ~$730~760B. 둔화 신호 0건 — DF1 정점 최강 재확인' },
+      { label: 'Bottleneck Model 4대 지수 갱신 (2026-07-04 대비 변동폭)', detail: '전력 72→75(▲+3, PJM 용량경매 미달 공식화)·CAPEX/ROI 40→37(▼−3, 최대 완화 폭)·파운드리 50→49(▼−1)·패키징 67→69(▲+2, 하이브리드본딩 추가 지연)' },
+      { label: 'SK하이닉스 Q2 사상 최대·컨센서스 소폭 미스', detail: '매출 ₩79.32조·영업이익 ₩60.54조(OPM 76%)·순이익 ₩93.92조 — 사상 최대이나 컨센서스 ~₩64.1조 대비 미스(HBM4 매출인식 시차 추정). 방향성 불변' },
+      { label: '삼성 HBM4 볼륨 발주 미전환 재확인 + HBM 점유율 데이터 상충 플래그', detail: '08-04까지 볼륨 발주 전환 보도 없음. HBM 시장점유율 상충 데이터(SK 62%·Micron 21%·삼성 17% vs 기존 SK 50~55%·삼성 35~40%) 발견 — 원문 403 차단으로 검증 불가, 기존 수치 유지·lint 대상 기록' },
+      { label: '전력망 — PJM 용량경매 목표 미달 공식화', detail: 'PJM 2028/29 용량경매 14.4% 예비율(목표 20% 미달), 이사회 백스톱 경매+DC 우선감축안 제안(07-27) — 계통 운영기관 스스로 신뢰성 미달 공식화 최초 사례. 변압기 리드타임 최대 5년→60개월, 개폐장치 44주→60주+' },
+      { label: '위키 8개 페이지 갱신', detail: 'bottleneck-model-2030.md(종합판독 신규절)·ai-capex.md·energy-constraints.md·key-drivers.md(DF1·DF2)·scenario-matrix.md·sk-hynix.md·cxmt.md·samsung.md·dram-antitrust-litigation.md. 신규 소스 sources/articles/august-2026-market-update-2026-08-04.md' },
+    ],
+    links: [
+      { label: 'august-2026-market-update-2026-08-04.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/august-2026-market-update-2026-08-04.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'ai-capex.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ai-capex.md' },
+    ],
+  },
   // ── 2026-08-04 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-04',

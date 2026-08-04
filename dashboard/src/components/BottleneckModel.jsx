@@ -841,7 +841,7 @@ export default function BottleneckModel() {
                 </p>
                 <SourceLink source="wiki/concepts/bottleneck-model-2030.md (전거: sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md · sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)" />
                 <div className="mt-1 text-[10px] text-zinc-400">
-                  이전 기준일 {PREV_MODEL_ASOF} 대비: 전력 <span className="text-red-500 font-semibold">▲+4</span> · CAPEX <span className="text-emerald-500 font-semibold">▼−2</span> · 파운드리 <span className="text-emerald-500 font-semibold">▼−2</span> · 패키징 <span className="text-emerald-500 font-semibold">▼−2</span>
+                  이전 기준일 {PREV_MODEL_ASOF} 대비: 전력 <span className="text-red-500 font-semibold">▲+3</span> · CAPEX <span className="text-emerald-500 font-semibold">▼−3</span> · 파운드리 <span className="text-emerald-500 font-semibold">▼−1</span> · 패키징 <span className="text-red-500 font-semibold">▲+2</span>
                 </div>
               </div>
               <div className="ml-auto flex flex-wrap items-center gap-2 text-[11px]">

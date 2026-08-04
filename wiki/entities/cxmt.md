@@ -242,3 +242,14 @@ FT 보도의 CXMT 점유율 수치("2025년 ~11% → 2028년 15%")는 **웨이�
 3. **모니터링 격상** — CXMT의 프리미엄 고객 인증 성공은 "저가 범용" 프레임을 넘어서는 위상 변화. HBM4/HBM5·CXL·PIM 등 추격 난이도 높은 영역의 리더십 방어가 더 중요해짐.
 
 **출처**: [apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)
+
+---
+
+## [Update 2026-08-04] HBM3 양산 지연 재확인 + LPDDR6 샘플링(비-HBM) + STAR Market IPO 첫날 +465%
+
+- **HBM3 양산 시점**: 2026년 내 양산 "어려움" 전망 유지 — 애플 인증(위 [Update 2026-07-11])·60k wspm HBM 배정 확대 전망(위 [업데이트 2026-07-04]) 모두 캐파·고객 파이프라인 신호일 뿐, HBM 양산 자체의 기술적 지연은 무변화([august-2026-market-update-2026-08-04.md](../../sources/articles/august-2026-market-update-2026-08-04.md)).
+- **LPDDR6 샘플링 개시**(2026-07-20): HBM과 무관한 **비-HBM DRAM 제품 라인**, 2026년 하반기 양산 목표 — 범용·모바일 DRAM 세그먼트에서의 추격 지속을 보여주는 별도 신호.
+- **STAR Market IPO 첫날 +465%**(SemiAnalysis 2차 인용): CXMT의 중국 내 자본시장 조달력이 시장에서 강하게 검증됨 — 2026 회계연도 매출 $50B+ 전망과 함께, 중국 내수 자본이 CXMT 확장 자금을 뒷받침하는 구조가 강화되고 있다는 신호. 미국 수출통제와 무관하게 확장 자금력이 축적되는 경로로, DF2 Pole A(디커플링) 시나리오에서도 CXMT의 존속력을 높이는 요인.
+- **위키 관점**: HBM 진입은 여전히 지연되나(DF2 즉시 신호 없음), 비-HBM 제품군(LPDDR6)과 자본시장 접근력은 계속 강화 — [china-competitors.md](china-competitors.md) 그룹 인덱스에 반영.
+
+**출처**: [august-2026-market-update-2026-08-04.md](../../sources/articles/august-2026-market-update-2026-08-04.md) §4, §2

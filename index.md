@@ -161,6 +161,7 @@
 - [sources/articles/apple-cxmt-china-dram-2026-07-08.md](sources/articles/apple-cxmt-china-dram-2026-07-08.md) — 애플이 중국 내수용 기기에 CXMT DRAM 기술 검증 착수(FT 2026-07-08)·미 행정부 사용 승인 로비·CXMT 1260H 리스트·YMTC 2022 전례·DRAM 계약가 +55~60%·CXMT 캐파점유 11%→15%(2028)·삼성·SK 과점 균열/애플 price leverage
 - [sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md](sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md) — 삼성 HBM4 NVIDIA 인증(06-05 Vera Rubin 3사 인증) 통과에도 볼륨 발주 미전환·매출 유상 평가용 샘플 수준(Winbuzzer 07-17)·SK Rubin 2/3+ 락인 / 확증 신호: 빅테크 2026 CapEx ~$725B(+77% YoY)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속·MATCH 위원회 단계·CXMT HBM 지연
 - [sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md](sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md) — 하이퍼스케일러 Q2 2026 실적 시즌(07-21~28 수집): Alphabet(07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향·Cloud 백로그 QoQ +$50B→$514B / SK하이닉스 Q2 영업이익 ~$43.7B·OPM ~76% 사상 최대 / MSFT·Meta 07-29·Amazon 07-30 발표 대기 / GPU 임대가 firming·DRAM Q3 +13~18% 유지·MATCH 위원회 단계·CXMT HBM 미확정
+- [sources/articles/august-2026-market-update-2026-08-04.md](sources/articles/august-2026-market-update-2026-08-04.md) — 2026-08-04 정기 점검(5개 병렬 리서치): 빅4 하이퍼스케일러 Q2 CapEx 전원 상향·메모리 원가 귀속 2개 분기 연속(Amazon $20B·MSFT $25B)·SK하이닉스 Q2 사상최대·컨센서스 소폭 미스·PJM 용량경매 목표 미달 공식화·변압기 60개월·HBM4 하이브리드본딩 추가 지연·CXMT STAR Market IPO +465%·HBM 점유율 데이터 상충(미반영 플래그)
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL

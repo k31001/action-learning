@@ -394,3 +394,13 @@ Counterpoint Research (2026-01-29):
 - 2026-06-29 발표(약 800조 원/$518B) — SK하이닉스 **신규 팹 2개** 건설 계획 포함(삼성전자도 동일하게 신규 팹 2개)([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+---
+
+## 업데이트 (2026-08-04) — Q2 2026 실적: 사상 최대이나 컨센서스 소폭 미스
+
+- **Q2 2026 실적**(2026-07-29 발표): 매출 **₩79.32조**(+51% QoQ)·영업이익 **₩60.54조**(영업이익률 76%)·순이익 ₩93.92조 — **사상 최대**. 다만 컨센서스(14개 증권사 평균 ~₩64.1조 영업이익) 대비 소폭 미스 — 일부 매체는 **HBM4 매출 인식 시차**를 원인으로 지목([august-2026-market-update-2026-08-04.md](../../sources/articles/august-2026-market-update-2026-08-04.md)).
+- HBM4 양산 출하 개시, 다년 계약 ~10건 확보, 2026 CapEx 가이던스 ₩40조대 후반.
+- **해석**: 사상 최대 실적임에도 컨센서스 미스는 성장 속도가 시장 기대에 못 미쳤다는 신호일 수 있으나, 원인이 매출 인식 시차(공급은 견조, 회계 인식만 지연)로 추정되어 방향성(HBM 슈퍼사이클 지속)을 바꾸는 신호는 아님 — [key-drivers.md DF1](../driving-forces/key-drivers.md)의 "정점 재확인" 판정과 정합.
+
+**출처**: [august-2026-market-update-2026-08-04.md](../../sources/articles/august-2026-market-update-2026-08-04.md) §4

@@ -281,3 +281,11 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - **함의**: "인증 ≠ 공급 계약" 구간이 길어질수록 Main Bet(시나리오 B) 1위 탈환 가정의 **시간 리스크**가 커진다. 이는 거시 축(DF1·DF2) 신호가 아니라 시나리오 B 내부의 삼성 실행 리스크 — EWI [`samsung_hbm4_rubin_share`](../../dashboard/src/data/indicators.js)·트리거 `samsung_hbm4_nvidia_confirmed`(인증 아닌 "공식 볼륨 계약 확인서" 기준)로 추적. (→ [scenario-B.md](../scenarios/scenario-B.md), [key-drivers.md](../driving-forces/key-drivers.md))
 
 **출처**: [samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md)
+
+## 업데이트 (2026-08-04) — 볼륨 발주 미전환 지속 확인
+
+- 2026-08-04 기준 재점검 결과, 07-17 이후 이를 뒤집는 보도 없음 — **NVIDIA向 HBM4 볼륨 발주 미전환 상태 지속**. 삼성은 NVIDIA GTC 2026에서 HBM4E(16Gbps/pin, 4.0TB/s)를 공개했으나 이는 로드맵 시연이며 볼륨 발주 확정과는 별개([august-2026-market-update-2026-08-04.md](../../sources/articles/august-2026-market-update-2026-08-04.md)).
+- **HBM 시장점유율 데이터 상충 발견 — 미반영**: 이번 리서치에서 "SK하이닉스 62%·Micron 21%·삼성 17%"(2026 Q2 추정) 자료가 발견되었으나, 위키 기존 기준선(4월 기준 삼성 35~40%·SK 50~55%·Micron 5~10%, [sk-hynix.md](sk-hynix.md) Counterpoint Q1 확정치 SK ~58%·삼성 ~32%와도 상이)과 상충한다. Counterpoint·TechInsights 원문 접근이 이번에도 차단(403)되어 1차 검증 불가 — **본 갱신에서는 기존 수치를 유지**하고 상충 사실만 기록한다(lint 대상, 다음 ingest에서 원자료 확보 시 재검증 필요).
+- **트리거 `samsung_hbm4_nvidia_confirmed` 미발동 유지.**
+
+**출처**: [august-2026-market-update-2026-08-04.md](../../sources/articles/august-2026-market-update-2026-08-04.md) §4

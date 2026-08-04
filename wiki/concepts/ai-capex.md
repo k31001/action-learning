@@ -109,3 +109,23 @@
 - **신규 리스크 — 반독점 집단소송**: 2026-06-25 삼성·SK하이닉스·Micron을 상대로 집단소송이 제기됐다 — HBM 전환을 명목으로 3사가 범용 DRAM 공급을 인위적으로 제한했다는 주장이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세는 신규 개념 페이지 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조(다른 에이전트가 작성 중).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §2
+
+## 업데이트 (2026-08-04) — 빅4 Q2 실적 전원 상향, 메모리 원가 귀속 2개 분기 연속
+
+직전 07-28 재평가에서 대기 중이던 Microsoft·Meta(07-29)·Amazon(07-30) Q2 2026 실적이 전원 발표. **4사(Alphabet·MSFT·Meta·Amazon) 전원 CY2026 CapEx 가이던스 상향 또는 재확인 — 둔화 신호 0건.**
+
+| 기업 | 직전 가이던스(07-28 기준) | 2026-08-04 확인 가이던스 | 변동 |
+|---|---:|---:|---|
+| Alphabet | $195~205B | $195~205B(불변, 07-22 기보고) | — |
+| Microsoft | ~$190B(컨센서스) | 표면상 ~$175B(**회계처리 변경** — 내용연수 15→25년 연장 + 리스 재분류. CFO 명시: "실질 투자 기대치 불변") | 회계상 ▼, 실질 불변·FY27 상향 |
+| Meta | $125~145B | **$130~145B**로 재상향(연내 2번째 상향) | ▲ |
+| Amazon | ~$200B(컨센서스) | **~$220B**로 상향(+$20B) | ▲ |
+
+- **Amazon**: CapEx 상향분 $20B을 CNBC·TechTimes가 **"메모리 가격 상승"에 직접 귀속** — CEO Jassy: "이렇게 써도 2026년 수요를 다 못 채운다." 클라우드 계약 백로그 $364B→$496B로 분기 내 급증. 주가 +12%(증액을 수요확인 신호로 해석).
+- **Microsoft**: CFO Amy Hood가 헤드라인 CapEx 하락을 순수 회계처리 변경(자산 내용연수 연장 + 금융리스→운용리스 재분류)이라고 명시 — 실질 투자 의도는 불변이며 **FY2027 CapEx는 YoY 성장 가이드**. 직전 분기(04-29)엔 CapEx 상향분 중 $25B을 메모리 원가에 명시 귀속한 바 있음.
+- **Meta**: FCF $784M로 급감(capex가 영업현금흐름 거의 전액 소진), EPS 미스로 주가 -9.6%. CFO Susan Li: "수요 제약적"(capacity만 있으면 ROI-positive 프로젝트 다수), 2028년까지 공급망 제약 불확실성 언급.
+- **빅4 합산**: 확정 가이던스 기준 약 **$730~760B**로 직전 분석가 추정($700~725B, +77% YoY) 대비 소폭 추가 상향.
+
+**핵심 함의**: 메모리 원가가 CapEx 상승의 명시적 귀속 요인으로 지목된 것이 **Amazon(이번 분기 $20B)·Microsoft(직전 분기 $25B) 2개 분기 연속** — 메모리=AI 지출의 상당 축이라는 Bain 프레임([ai-compute-economics-gap.md](ai-compute-economics-gap.md))을 하이퍼스케일러 1차 자료로 재확인. Bottleneck Model([bottleneck-model-2030.md](bottleneck-model-2030.md)) CAPEX/ROI 제약지수는 이 신호를 반영해 40→**37**로 하향(자금조달 지속성 확인, 5개 갱신 구간 중 최대 완화 폭).
+
+**출처**: [august-2026-market-update-2026-08-04.md](../../sources/articles/august-2026-market-update-2026-08-04.md) §1
