@@ -1123,3 +1123,10 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 ## [2026-08-05] fix | 개발실 전환 탭 NEW 태그 제거 (v2.34.1)
 
 Strategies 상위 탭의 "개발실 전환"에서 isNew 배지 제거 — 탭이 정착 단계로 판단. version v2.34.1(패치).
+## [2026-08-05] ingest | Dylan Patel MAD Podcast 디테일 보강 — $11M·Anthropic 수치·CPO/800V (v2.34.2)
+
+요청: 사용자 제공 유튜브 링크(youtu.be/3FHsGiONOGw)로 인터뷰 디테일 보완. 영상 자체는 프록시 정책으로 직접 접근 불가(유튜브·oEmbed·noembed 전부 403, 영상 ID 웹검색 미식별) — 대신 동일 에피소드의 상세 2차 자료를 추가 발굴해 교차 보강: Jukan(@jukan05) 테이크어웨이 스레드, TradingKey(Marvell 하락 분석), Podcast Alpha 세부.
+
+해소된 미확정 항목: ① "$11M Bill" = SemiAnalysis 자신의 AI 추론 지출(8개월 새 연환산 $100K→$11M, 인건비 ~1/3→연말 절반) — 토큰 수요 미시 표본. ② Anthropic 세부 — Q2 2026 FCF 흑자 전환·4/5월 모두 흑자(6월 미마감·동일 방향)·ARR $50B+·GM 70%+(Opus 4.8 토큰 80%+)·SBC 제외 Q2 순이익 흑자. 공식 가이던스(현금흐름 흑자 2028, The Information)와 대조 명시 — 주장 단계 유지. ③ 컨슈머 전치 정량 — 빅테크 2026 CapEx ~30% 메모리·iPhone 원가 ~$150↑·저가폰 연 11억→5~6억 대 붕괴 가능. ④ CPO 2028말~2029 + Rubin·Feynman 세대까지 올-커퍼 유지(Amphenol 수혜)·NVIDIA가 Kyber(Rubin Ultra)에서 800V 설계 제거. ⑤ 공급 기원 — 2023 다운턴 무증설 + 팹 건설 2년+.
+
+반영: 소스 파일 재작성(유튜브 링크 병기·녹음 시점 근거 "6월 미마감" 명시), wiki 3개 페이지 [보강 2026-08-05](price-trends 컨슈머 전치 정량+공급 기원, ai-demand-sustainability Anthropic 세부+$11M 표본, ai-datacenter-buildout Rubin/Feynman 올-커퍼+Kyber 800V 제거), interviews.js 보강(keyQuote 4번째·수집 방법 갱신), updates.js 항목 추가, version v2.34.2(패치 — v2.33.2로 부여했으나 FDP 후속 작업이 v2.34.1까지 선점, main 병합 시 재버전). 지식그래프 재생성·npm run build 검증. 브랜치 커밋 후 main 병합·push(사전 승인 체인).
