@@ -1155,3 +1155,11 @@ Strategies 상위 탭의 "개발실 전환"에서 isNew 배지 제거 — 탭이
 **대시보드(마이너 v2.36.0)**: Storyline 탭 하위 메뉴 5개(시나리오 플래닝 기본 + 렌즈 4). `data/storylineLenses.js`(STORYLINE_LENSES — 렌즈별 thesis·visual·sections 미러) + `Storyline.jsx` 개편(서브탭 라우팅 `#/storyline/<렌즈>`, 구 딥링크 `#/storyline/chN`→`#/storyline/scenario/chN` 자동 리다이렉트, ForcesDiagram 십자 SVG·LensChain 진화 체인·LensGrid 2×2 시각화). CLAUDE.md §1/§5/§6에 렌즈 매핑 등록, index.md 렌즈 4종+신규 소스 등록, 지식그래프 재생성(노드 86·엣지 376, storyline 허브 33링크). `npm run build` 통과.
 
 **생략 명시**: outputs/ 무변경 → PPTX 재생성 생략. 사용자 사전 승인에 따라 브랜치 푸시 후 main 병합까지 진행.
+
+## [2026-08-05] update | Storyline 렌즈별 최적 전략 도출 + 렌즈 교차 검증 (v2.36.1)
+
+요청: "각 렌즈 별로 최적의 전략까지 도출해줘."
+
+**위키**: 4개 렌즈 페이지에 "이 렌즈가 도출하는 최적 전략" 절 신설 — 각 프레임워크의 목적함수로 우선순위화. 파이브 포스(구매자 권력 역전 RS-3+RS-4·8 → 대체재 흡수 SE-1·2 → 공급자 내재화 → 로엔드 방어; MB-1은 구조 불변 지적) · 게임이론(절제 공개 신호 D16·D6 → take-or-pay 커버리지 → RS-1 억지력 → CXMT 게임 분리; 캐파 경쟁형 MB 실행 = 치킨게임 재점화 경고) · 실물옵션(풋 먼저 D12·D16 → 확정 투자 옵션화 RS-1 → 전환옵션 프리미엄 D13·14 → 행사 자동화 D15; 확정 최소·옵션 최대 형태 교정) · 파괴적 혁신(별동대 D13·SD-1 → AI SSD 니치 진입 → 로엔드 잔류 RS-2·6 → 궤적 계측; MB-1 = 지난 전쟁의 훈장). `storyline.md` 7장에 **렌즈 교차 검증** 신설 — 5전략군 × 5렌즈 수렴 표: 네 렌즈 공통 지지(계약 구조·정점 규율·옵션 캐파·차세대 별동대·바벨) = framework-invariant, Robust 개념의 메타 검증. 렌즈 간 이견은 실행 경고로 통합(인증·기술 순위전 한정, 확정 최소·옵션 최대, 구조 전략·별동대 우선 배분).
+
+**대시보드(패치 v2.36.1)**: `storylineLenses.js` 4렌즈에 최적 전략 절(ol+차이 p) 미러, `storyline.js` ch7에 교차 검증 표 블록, `Storyline.jsx` Block에 table 렌더 추가. 지식그래프 재생성(노드 86·엣지 378). `npm run build` 통과. outputs/ 무변경 → PPTX 생략. 기존 승인 흐름대로 main 병합·푸시.

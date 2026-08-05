@@ -39,7 +39,18 @@ HBM에게 당한 일은 HBM에게도 일어날 수 있다. 3D DRAM·PIM·CXL 메
 
 파괴는 인접 시장에서도 진행 중이다. NVIDIA SCADA(GPU 네이티브 스토리지)에서 SK하이닉스·Kioxia가 SLC 기반 초고 IOPS AI SSD로 전략 파트너를 선점하고 있다 — HBM에서 벌어진 "니치 선점 → 레퍼런스 고착 → 구조적 열위"가 SSD에서 반복될 수 있는 구도다 ([nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md)). 이번에는 삼성이 니치를 무시하지 않는다는 것이 차이다: PM1763 시연·CMX 공식 공급 파트너 지위를 발판으로 2026년 내 SCADA 호환 전략을 확정하는 것이 MB-4의 하위 과제로 명시돼 있고, FDP 호스트 협력 플랫폼은 하드웨어가 아니라 소프트웨어 층에서 전환비용을 쌓는 대응이다 ([fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md), [strategy.md](../scenarios/strategy.md)).
 
-## 5. 이 렌즈의 결론
+## 5. 이 렌즈가 도출하는 최적 전략 — 다음 궤적을 선점하는 순서
+
+파괴적 혁신의 목적함수는 "다음 궤적이 교차하기 전에 그 궤적 위에 서는 것"이다. 파괴의 임박도 × 대응 창의 크기로 우선순위를 매기면 다음과 같다.
+
+1. **[1순위] 별동대를 완성하라 — D13 SE-1 조직 확대 + SD-1 독립 P&L**: 크리스텐슨이 남긴 유일하게 검증된 해법은 자원배분 논리의 분리다. 3D DRAM 전담 300~500인 확대(D13)와 HBM 조직 독립 P&L(SD-1)이 완성되지 않으면, 아래 모든 대응은 주력 사업의 마진 논리에 잡아먹힌다 ([strategy.md](../scenarios/strategy.md), [core-strategy-selection.md](../scenarios/core-strategy-selection.md)).
+2. **[2순위] 인접 니치에 지금 진입하라 — 2026년 내 SCADA 호환 AI SSD 전략 확정**: AI SSD는 파괴의 시계가 가장 빠른 전선이다 — SK·Kioxia의 레퍼런스 고착이 완성되기 전인 2026년이 임계 시한이며, HBM에서 니치를 무시한 비용(40%→17%)이 이미 청구서로 와 있다 ([nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md), [dram-market-share.md](../concepts/dram-market-share.md)). FDP 소프트웨어 층(전환비용)이 병행 수단이다 ([fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md)).
+3. **[3순위] 로엔드에 남아라 — RS-2 바벨 + RS-6 원가**: 상위 이동만 하는 기업은 옥상까지 몰린다. 범용을 버리지 않는 바벨 구조가 CXMT 로엔드 파괴의 방파제다 ([cxmt.md](../entities/cxmt.md)).
+4. **[4순위] 궤적을 계측하라 — D15 EWI의 파괴 트리거(3D DRAM 전력 50% 개선·CXL 인터페이스 특허·zHBM 채택)**: 파괴는 확률이 아니라 궤적이므로, 확률 재평가가 아니라 궤적 교차점 감시가 맞는 계기판이다 ([strategy.md](../scenarios/strategy.md)).
+
+**시나리오 렌즈와의 차이**: 이 렌즈에서 MB-1(HBM 1위 탈환)은 지난 전쟁의 훈장이다 — 존속적 경쟁의 승리는 다음 파괴를 막지 못한다는 것을, 범용 DRAM 1위인 채로 HBM에 당한 삼성 자신이 증명했다. 최적 전략의 무게중심은 **점유율 회복이 아니라 다음 궤적(zHBM·3D DRAM·CXL·AI SSD)의 선점**에 있다.
+
+## 6. 이 렌즈의 결론
 
 파괴적 혁신 렌즈에서 삼성 전략의 요체는 한 문장이다 — **다시는 궤적을 밖에서 맞지 마라.** 로엔드 파괴(CXMT)에는 원가 방어와 바벨로, 차세대 파괴(3D DRAM·CXL·zHBM)에는 자기잠식을 허락받은 별동대로, 인접 파괴(AI SSD)에는 니치 단계의 조기 진입으로 대응한다. 시나리오 렌즈가 파괴를 "확률 6%의 시나리오 E"로 계량한다면, 이 렌즈는 파괴가 확률이 아니라 **궤적**임을 상기시킨다 — 궤적은 어느 날 갑자기 오는 것이 아니라 지금 이미 그려지고 있고, EWI의 3D DRAM·CXL 트리거는 그 궤적의 교차점을 감시하는 장치다 ([strategy.md](../scenarios/strategy.md)).
 

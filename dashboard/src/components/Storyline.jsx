@@ -52,6 +52,33 @@ function Block({ block }) {
             )}
           </blockquote>
         )
+      case 'table':
+        return (
+          <div className="my-4 overflow-x-auto rounded-hig-md border border-zinc-200">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="bg-zinc-50">
+                  {block.headers.map((h, i) => (
+                    <th key={i} className="text-left px-3 py-2 font-semibold text-zinc-700 border-b border-zinc-200 whitespace-nowrap">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {block.rows.map((row, ri) => (
+                  <tr key={ri} className="even:bg-zinc-50/40">
+                    {row.map((cell, ci) => (
+                      <td key={ci} className={`px-3 py-2 align-top text-zinc-700 border-b border-zinc-100 ${ci === 0 ? 'font-medium text-zinc-900' : ''}`}>
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )
       default:
         return null
     }

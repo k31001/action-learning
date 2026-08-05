@@ -76,6 +76,26 @@ export const STORYLINE_LENSES = [
       },
       {
         num: 5,
+        title: '이 렌즈가 도출하는 최적 전략 — 구조를 바꾸는 순서대로',
+        blocks: [
+          {
+            type: 'ol',
+            items: [
+              '[1순위] 구매자 권력 역전 패키지 — RS-3(CMX·SCADA·FDP 전환비용) + RS-4·RS-8(take-or-pay·NTB·Participating Forward). 최대 가치 유출구인 구매자 이익 배분 비대칭을 잠그는 유일한 수단. 구매자들이 스스로 락인에 들어온 지금이 실행 적기 (D12·D17)',
+              '[2순위] 대체재 흡수 — SE-1·SE-2. 대체재는 로드맵 단계(잠복기)에 흡수 비용이 가장 싸다',
+              '[3순위] 공급자 내재화 — Hybrid Bonding 자체 IP + NIL(SA-2). TSMC·ASML·YMTC 종속 절단',
+              '[4순위] 로엔드 방어선 — RS-6 1c nm 원가 우위로 국가보조 진입자의 잠식 속도 관리',
+            ],
+            refs: 'wiki/storyline/storyline-five-forces.md · sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md · sources/filings/micron-q3-fy26.md',
+          },
+          {
+            type: 'p',
+            text: '시나리오 렌즈와의 차이: MB-1(HBM 기술 1위 탈환)은 이 렌즈에서 필요하되 충분치 않은 전략이다 — 순위전에서 1번이 되어도 배정 권력이 구매자에게 있는 구조는 그대로다. 구조를 바꾸는 전략(락인·계약·표준)이 순위를 바꾸는 전략보다 우선한다.',
+          },
+        ],
+      },
+      {
+        num: 6,
         title: '이 렌즈의 결론',
         blocks: [
           {
@@ -155,6 +175,26 @@ export const STORYLINE_LENSES = [
       },
       {
         num: 5,
+        title: '이 렌즈가 도출하는 최적 전략 — 균형을 지키는 수의 순서',
+        blocks: [
+          {
+            type: 'ol',
+            items: [
+              '[1순위] 절제의 공개 신호 — D16 호황 정점 규율 즉시 발동 + RS-5 이사회 정책화(D6). 반복게임에서 가장 강한 수는 내 손을 공개적으로 묶는 것 (마이크론 "with discipline" 4회 반복이 선례)',
+              '[2순위] 약속 장치 커버리지 극대화 — take-or-pay·NTB 바인딩을 캐파 과반 훨씬 이상으로 + RS-8 표준화(D12). 계약이 두터울수록 치킨게임 재점화 유인 소멸',
+              '[3순위] 보복 능력 보존 — RS-1 옵션형 캐파. "균형을 깨면 신속 증설로 응징 가능"하다는 능력 자체가 억지력',
+              '[4순위] 게임 분리 — CXMT에는 다른 판(RS-6 원가 + RS-2 + MB-4 고부가층). 국가보조 경기자와 코스트 게임을 받지 않는다',
+            ],
+            refs: 'wiki/storyline/storyline-game-theory.md · sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md · sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md',
+          },
+          {
+            type: 'p',
+            text: '시나리오 렌즈와의 차이: 이 렌즈의 고유 경고는 Main Bet 실행 방식에 있다 — 시나리오 B 공략을 캐파 경쟁으로 수행하면 치킨게임 재점화의 방아쇠가 된다. MB-1은 증설 경쟁이 아니라 인증·기술 순위전(수율·HBM4E 선행)으로만 수행하고, 균형 이탈 신호는 EWI로 감시해 D16과 연동한다.',
+          },
+        ],
+      },
+      {
+        num: 6,
         title: '이 렌즈의 결론',
         blocks: [
           {
@@ -248,6 +288,26 @@ export const STORYLINE_LENSES = [
           },
         ],
       },
+      {
+        num: 6,
+        title: '이 렌즈가 도출하는 최적 전략 — 옵션 데스크의 집행 순서',
+        blocks: [
+          {
+            type: 'ol',
+            items: [
+              '[1순위] 풋을 먼저 사라 — D12 RS-8 Participating Forward 시범 + D16 규율. 후기순환 신호 군집(사상 최고 마진·범용 감속·DRAM>HBM OPM 역전) 국면에서 하방 보호의 기대가치가 최대. take-or-pay·NTB 바닥이 형성 중인 지금이 Floor 협상 적기',
+              '[2순위] 확정 투자를 전부 옵션화하라 — 신규 캐파는 RS-1 구조(Fab Shell+단계 반입)로만 집행, MB-5 텍사스 2기도 단계화된 콜로 유지. 확정 행사는 deep in-the-money 자산(HBM4E — 업계 최초 샘플·6개월 선행)에만 허용',
+              '[3순위] 전환옵션 프리미엄을 계속 납입하라 — D13·D14(SE-1·SE-2). 소액 프리미엄으로 패러다임 전환 시 비대칭 보상. 프리미엄 절약(3D DRAM·CXL 투자 중단)은 Three-way Collar와 같은 종류의 실수',
+              '[4순위] 행사를 자동화하라 — D15 EWI 운영 + 트리거-행동 배선. 옵션 가치의 절반은 규율 있는 행사에서 나온다',
+            ],
+            refs: 'wiki/storyline/storyline-real-options.md · sources/articles/june-2026-market-update-2026-06-14.md · wiki/benchmark/upside-participation-hedging.md',
+          },
+          {
+            type: 'p',
+            text: '시나리오 렌즈와의 차이: 시나리오 렌즈는 "가장 큰 미래(B)에 베팅하라"고 말하지만, 이 렌즈는 베팅의 형태를 교정한다 — 같은 B 공략이라도 40조 원 확정 집중이 아니라 확정 최소·옵션 최대의 구조로 수행하라. 최적 전략은 "무엇에 베팅하나"만큼 "얼마나 되돌릴 수 있게 베팅하나"로 결정된다.',
+          },
+        ],
+      },
     ],
   },
 
@@ -318,6 +378,26 @@ export const STORYLINE_LENSES = [
       },
       {
         num: 5,
+        title: '이 렌즈가 도출하는 최적 전략 — 다음 궤적을 선점하는 순서',
+        blocks: [
+          {
+            type: 'ol',
+            items: [
+              '[1순위] 별동대를 완성하라 — D13 SE-1 3D DRAM 조직 300~500인 확대 + SD-1 독립 P&L. 자원배분 논리의 분리 없이는 아래 모든 대응이 주력 사업의 마진 논리에 잡아먹힌다 (크리스텐슨의 유일 검증 해법)',
+              '[2순위] 인접 니치에 지금 진입하라 — 2026년 내 SCADA 호환 AI SSD 전략 확정 + FDP 소프트웨어 층. SK·Kioxia 레퍼런스 고착 전이 임계 시한 — HBM에서 니치를 무시한 비용(40%→17%)이 이미 청구서로 와 있다',
+              '[3순위] 로엔드에 남아라 — RS-2 바벨 + RS-6 원가. 상위 이동만 하는 기업은 옥상까지 몰린다 — 범용을 버리지 않는 구조가 CXMT 로엔드 파괴의 방파제',
+              '[4순위] 궤적을 계측하라 — D15 EWI의 파괴 트리거(3D DRAM 전력 50% 개선·CXL 특허·zHBM 채택). 파괴는 확률이 아니라 궤적이므로 궤적 교차점 감시가 맞는 계기판',
+            ],
+            refs: 'wiki/storyline/storyline-disruption.md · wiki/entities/nvidia-cmx-scada.md · wiki/concepts/dram-market-share.md',
+          },
+          {
+            type: 'p',
+            text: '시나리오 렌즈와의 차이: MB-1(HBM 1위 탈환)은 이 렌즈에서 지난 전쟁의 훈장이다 — 존속적 경쟁의 승리는 다음 파괴를 막지 못한다는 것을, 범용 DRAM 1위인 채로 HBM에 당한 삼성 자신이 증명했다. 최적 전략의 무게중심은 점유율 회복이 아니라 다음 궤적(zHBM·3D DRAM·CXL·AI SSD)의 선점에 있다.',
+          },
+        ],
+      },
+      {
+        num: 6,
         title: '이 렌즈의 결론',
         blocks: [
           {

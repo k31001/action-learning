@@ -14,6 +14,24 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-05 (iv) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-05',
+    type: 'update',
+    version: 'v2.36.1',
+    title: 'Storyline 렌즈별 최적 전략 도출 + 렌즈 교차 검증',
+    summary:
+      '4개 대안 렌즈 각각에 "이 렌즈가 도출하는 최적 전략" 절 신설 — 각 프레임워크의 목적함수로 우선순위화한 전략 패키지와 시나리오 플래닝과의 차이(경고)를 명시. 파이브 포스: 구조 변경 순(구매자 권력 역전 RS-3+RS-4·8 → 대체재 흡수 → 공급자 내재화 → 로엔드 방어), MB-1은 "순위를 바꿔도 구조는 불변" 지적. 게임이론: 균형 유지 순(절제 공개 신호 D16·D6 → 계약 커버리지 → RS-1 억지력 → CXMT 게임 분리), "MB 실행이 캐파 경쟁으로 흐르면 치킨게임 재점화" 경고. 실물옵션: 집행 순(풋 먼저 D12·D16 → 확정 투자 옵션화 → 전환옵션 프리미엄 → 행사 자동화), "확정 최소·옵션 최대" 형태 교정. 파괴적 혁신: 궤적 선점 순(별동대 D13·SD-1 → AI SSD 니치 진입 → 로엔드 잔류 → 궤적 계측), "MB-1은 지난 전쟁의 훈장". 마스터 서사 7장에 렌즈 교차 검증 표 추가 — 네 렌즈 공통 지지 전략(계약 구조·정점 규율·옵션 캐파·차세대 별동대·바벨) = 프레임워크 불변, Robust 개념의 메타 검증. 패치 v2.36.1.',
+    tags: ['Storyline', '최적 전략', '렌즈 교차 검증', 'framework-invariant', '파이브 포스', '게임이론', '실물옵션', '파괴적 혁신', 'dashboard'],
+    items: [
+      { label: '위키 렌즈 4종에 최적 전략 절', detail: 'storyline-{five-forces,game-theory,real-options,disruption}.md 각각에 우선순위 4단 전략 패키지 + 시나리오 렌즈와의 차이. 전 항목 D·RS·MB·SE 결정 체계와 인용으로 연결' },
+      { label: '마스터 7장 렌즈 교차 검증', detail: 'storyline.md 7장에 5전략군 × 5렌즈 수렴 표 + 이중 해석(공통 지지 = framework-invariant / 렌즈 간 이견 = 실행 경고: 인증·기술 순위전 한정, 확정 최소·옵션 최대, 구조 전략·별동대 우선 배분)' },
+      { label: '대시보드 미러', detail: 'storylineLenses.js 각 렌즈에 최적 전략 절 추가, storyline.js ch7에 교차 검증 표, Storyline.jsx Block에 table 렌더 지원. 지식그래프 재생성(엣지 378)' },
+    ],
+    links: [
+      { label: 'wiki/storyline/storyline.md §7 렌즈 교차 검증', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/storyline.md' },
+    ],
+  },
   // ── 2026-08-05 (iii) ─────────────────────────────────────────────────────────
   {
     date: '2026-08-05',

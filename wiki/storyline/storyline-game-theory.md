@@ -36,7 +36,18 @@ flowchart LR
 
 이 균형의 최대 위협은 3강 내부가 아니라 외부에 있다. CXMT는 이윤 극대화가 아니라 **국가 목표(반도체 자립)를 보수함수로 갖는 경기자**다 — 빅펀드 III와 IPO의 이중 자금원, DDR5 수율 80%+, HBM3 양산 개시 ([cxmt.md](../entities/cxmt.md), [2026-q1-current-state.md](../concepts/2026-q1-current-state.md)). 손실을 국가가 흡수하는 경기자에게는 가격 보복(치킨게임의 위협)이 억지력을 갖지 못한다. 따라서 대응 게임이 달라진다: 같은 코스트 게임을 받아주는 대신, **RS-6(1c nm 원가 우위)으로 로엔드의 손실 한계를 관리하고, RS-2(바벨)·MB-4(커스텀 솔루션)로 국가보조가 닿지 않는 고부가 층으로 게임판을 옮긴다** ([strategy.md](../scenarios/strategy.md)). 중국 시장이 미주 AI 사이클과 비동조화되어 있다는 관찰도 이 게임의 분리 가능성을 지지한다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)).
 
-## 5. 이 렌즈의 결론
+## 5. 이 렌즈가 도출하는 최적 전략 — 균형을 지키는 수의 순서
+
+게임이론의 목적함수는 "반복게임의 협조 균형에서 얻는 장기 보수의 극대화"다. 균형 기여도 순으로 최적 전략 패키지를 도출하면 다음과 같다.
+
+1. **[1순위] 절제의 공개 신호 — D16 호황 정점 규율 즉시 발동 + RS-5 이사회 정책화(D6)**: 반복게임에서 가장 강한 수는 내 손을 공개적으로 묶는 것이다. 마이크론이 "with discipline"을 4회 반복하고 HBM을 DRAM 점유율에 묶어 공시한 것처럼 ([bloomberg-micron-ceo-virginia-2026-05-22.md](../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md), [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)), 삼성도 규율을 이사회 정책으로 명문화해 신뢰 가능한 신호를 발신해야 균형이 유지된다 ([strategy.md](../scenarios/strategy.md) D6·D16).
+2. **[2순위] 약속 장치의 커버리지 극대화 — take-or-pay·NTB 바인딩 + RS-8 표준화(D12)**: 캐파의 과반을 훨씬 넘는 수준까지 법적 구속 계약으로 묶는 것이 목표다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)) — 계약이 두터울수록 다운턴에서 치킨게임이 재점화될 유인 자체가 소멸한다.
+3. **[3순위] 보복 능력의 보존 — RS-1 옵션형 캐파**: 협조 균형은 이탈 시 보복이 신뢰 가능할 때만 유지된다. Fab Shell + 단계 반입은 "상대가 균형을 깨면 신속히 증설로 응징할 수 있다"는 능력을 저비용으로 유지하는 억지 장치다 ([rs1-options-based-capacity.md](../strategies/invariant/rs1-options-based-capacity.md)).
+4. **[4순위] 게임 분리 — CXMT에는 다른 판 (RS-6 + RS-2 + MB-4)**: 국가보조 경기자와는 코스트 게임을 받지 않는다. 원가 방어선 위에 커스텀·솔루션 층을 올리고, 중국 시장의 비동조화를 활용해 게임판을 분리한다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)).
+
+**시나리오 렌즈와의 차이**: 이 렌즈의 고유 경고는 Main Bet 실행 방식에 있다 — 시나리오 B 공략(점유율 회복)을 **캐파 경쟁으로 수행하면 치킨게임 재점화의 방아쇠**가 된다. MB-1은 증설 경쟁이 아니라 인증·기술 순위전(수율·HBM4E 선행)으로만 수행해야 하며, 균형 이탈 신호(경쟁사 공격적 증설)는 EWI로 감시해 D16 대응과 연동한다.
+
+## 6. 이 렌즈의 결론
 
 게임이론 렌즈에서 삼성 전략의 요체는 세 문장이다. **첫째, 절제 균형을 지켜라** — RS-5·RS-1로 자기 손을 묶고, 경쟁사의 공개 절제 신호를 EWI로 감시한다(균형 이탈 = D16 발동 신호). **둘째, 약속 장치를 쌓아라** — take-or-pay·NTB·SCA로 다운사이클의 보수 구조 자체를 바꾼다. **셋째, 이단 경기자와는 다른 판에서 싸워라** — 원가 방어선 위에 커스텀·솔루션 층을 올린다. 시나리오 렌즈의 "다섯 개의 미래"는 이 렌즈에서 "균형이 유지되는 미래(A·B)와 균형이 깨지는 미래(C·D·E)"로 다시 읽히며, 두 렌즈 모두 같은 결론에 도달한다 — 호황 정점의 규율이 다음 게임의 승패를 결정한다.
 

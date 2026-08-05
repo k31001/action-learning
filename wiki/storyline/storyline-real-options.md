@@ -44,7 +44,18 @@ RS-8의 Participating Forward는 명시적 풋 구조다: Floor(변동비+5~10%)
 
 옵션 포트폴리오의 가치는 행사 타이밍이 결정한다. RS-9의 수요 변곡 EWI(GPU 임대가·신용 스프레드·스팟-계약 괴리·발주-셀스루 갭)와 4대 병목 정량 모델은 각 옵션의 기초자산 가격을 실시간으로 읽는 시세판이다 ([demand-inflection-ewi-2026-06.md](../../sources/raw-notes/demand-inflection-ewi-2026-06.md), [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md)). 트리거는 행사 규칙이다 — GPU 임대가 6개월 -35%면 콜(RS-1 증설) 동결·풋 점검, EV/EBITDA 5배 이하 6개월이면 M&A 콜 행사, 3D DRAM 전력 50% 개선 입증이면 전환옵션 행사 ([strategy.md](../scenarios/strategy.md) 시나리오 전환 트리거). "꼭짓점은 FCF"라는 영업 현장의 렌즈는 이 시세판의 대표 지표다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)).
 
-## 6. 이 렌즈의 결론
+## 6. 이 렌즈가 도출하는 최적 전략 — 옵션 데스크의 집행 순서
+
+실물옵션의 목적함수는 "포트폴리오의 위험조정 기대가치 극대화"다. 변동성 정점(σ 60~120%, DF1 8.5)이라는 현재 조건에서 최적 집행 순서는 다음과 같다.
+
+1. **[1순위] 풋을 먼저 사라 — D12 RS-8 Participating Forward 시범 + D16 규율**: 보험은 불이 나기 전에 든다. 하락 변곡의 사전 확률이 가장 높은 국면(사상 최고 마진·범용 감속·DRAM>HBM OPM 역전이라는 후기순환 신호 군집, [key-drivers.md](../driving-forces/key-drivers.md))에서 하방 보호의 기대가치가 가장 크다. take-or-pay·NTB 바닥이 이미 형성 중인 지금이 Floor 계약의 협상 적기다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)).
+2. **[2순위] 확정 투자를 전부 옵션화하라 — 신규 캐파는 RS-1 구조로만**: Fab Shell + 단계 반입을 신규 증설의 기본 계약 형태로 강제하고, MB-5 텍사스 2기도 단계화된 콜로 유지한다. 확정 행사는 deep in-the-money 자산에만 허용한다 — 업계 최초 샘플로 6개월 선행이 확인된 HBM4E 세대가 그 예다 ([june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md)).
+3. **[3순위] 전환옵션 프리미엄을 계속 납입하라 — D13·D14 (SE-1·SE-2)**: R&D 재배분이라는 소액 프리미엄으로 패러다임 전환 시 비대칭 보상을 확보한다. 프리미엄을 아끼는 것(3D DRAM·CXL 투자 중단)은 Three-way Collar와 같은 종류의 실수다 ([upside-participation-hedging.md](../benchmark/upside-participation-hedging.md)).
+4. **[4순위] 행사를 자동화하라 — D15 EWI 운영 + 트리거-행동 배선**: 옵션 가치의 절반은 규율 있는 행사에서 나온다. 정점의 낙관·공포 속 재량 판단을 배제하고, 트리거 충족 시 30일 내 집행되는 사전 배선을 완성한다 ([strategy.md](../scenarios/strategy.md)).
+
+**시나리오 렌즈와의 차이**: 시나리오 렌즈는 "가장 큰 미래(B)에 베팅하라"고 말하지만, 이 렌즈는 베팅의 **형태**를 교정한다 — 같은 B 공략이라도 40조 원 확정 집중이 아니라, 확정 최소·옵션 최대의 구조로 수행하라. 최적 전략은 "무엇에 베팅하나"만큼 "얼마나 되돌릴 수 있게 베팅하나"로 결정된다.
+
+## 7. 이 렌즈의 결론
 
 실물옵션 렌즈에서 보면 시나리오 플래닝의 "Main Bet + Side Bet + Robust"는 정확히 옵션 포트폴리오의 언어로 번역된다 — Main Bet은 가장 큰 내가격(in-the-money) 가능성에 대한 포지션, Side Bet은 외가격 보험, Robust는 어떤 기초자산 경로에서도 양(+)의 감마를 갖는 구조다. 이 렌즈가 더하는 고유한 통찰은 하나다: **변동성이 역대 최고인 지금이야말로 옵션(유연성)의 가치가 역대 최고이며, 따라서 확정 증설·확정 가격이라는 "옵션 없는 전략"의 기회비용도 역대 최고라는 것.** 호황 정점에서 유연성을 사두는 비용은, 다운턴에서 유연성이 없어 치르는 비용의 몇 분의 일에 불과하다.
 

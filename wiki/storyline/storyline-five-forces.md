@@ -40,7 +40,18 @@ flowchart TB
 
 대체재는 잠복 중인 최대 변수다. HBM의 대체재(3D DRAM·PIM·CXL 패브릭·커스텀 ASIC 내장 메모리)는 아직 점유율이 아니라 로드맵 위에 있지만 ([key-drivers.md](../driving-forces/key-drivers.md) DF3), 대체가 시작되면 HBM 집중 투자 전체가 좌초된다(시나리오 E). SE-1(3D DRAM)·SE-2(CXL 표준 주도권)는 대체재 위협을 **자기 포트폴리오 안으로 흡수**하는 고전적 응수다 ([strategy.md](../scenarios/strategy.md)).
 
-## 5. 이 렌즈의 결론
+## 5. 이 렌즈가 도출하는 최적 전략 — 구조를 바꾸는 순서대로
+
+파이브 포스의 목적함수는 "산업 이익 풀에서 삼성 몫의 구조적 극대화"다. 힘의 세기 × 개선 가능성으로 우선순위를 매기면 최적 전략 패키지는 다음 순서가 된다.
+
+1. **[1순위] 구매자 권력 역전 패키지 — RS-3 + RS-4·RS-8**: 이 산업 최대의 가치 유출구는 구매자와의 이익 배분 비대칭(NVIDIA DC 60%대 영업이익률 vs 메모리 그 절반 이하, [strategy.md](../scenarios/strategy.md))이다. CMX·SCADA·FDP 전환비용(RS-3)과 take-or-pay·NTB·Participating Forward 계약 구조(RS-4·RS-8)는 구매자의 이탈 자유 — 권력의 원천 그 자체 — 를 잠그는 유일한 수단이며, 2026년 구매자들이 스스로 락인에 들어온 지금이 실행 적기다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md), [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)). 실행 결정은 D12·D17 ([strategy.md](../scenarios/strategy.md)).
+2. **[2순위] 대체재 흡수 — SE-1·SE-2**: 대체재는 잠복기에 흡수 비용이 가장 싸다. 3D DRAM·CXL이 로드맵 단계인 지금 표준·조직을 선점하지 못하면, 대체가 시작된 뒤에는 어떤 협상력 전략도 무력화된다 ([key-drivers.md](../driving-forces/key-drivers.md) DF3).
+3. **[3순위] 공급자 내재화 — Hybrid Bonding 자체 IP + NIL(SA-2)**: TSMC(CoWoS NVIDIA 배정 60%)·ASML(노광 독점)·YMTC(본딩 IP) 종속을 끊는 수직 통합 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md), [core-strategy-selection.md](../scenarios/core-strategy-selection.md)).
+4. **[4순위] 로엔드 방어선 — RS-6 1c nm 원가 우위**: 국가보조 진입자(CXMT)의 잠식 속도를 늦추는 원가 격차 유지 ([cxmt.md](../entities/cxmt.md)).
+
+**시나리오 렌즈와의 차이**: 시나리오 플래닝이 MB-1(HBM 기술 1위 탈환)을 Main Bet의 선두에 두는 것과 달리, 이 렌즈에서 MB-1은 필요하되 충분치 않은 전략이다 — 순위전에서 1번이 되어도 배정 권력이 구매자에게 있는 구조는 그대로이기 때문이다. **구조를 바꾸는 전략(락인·계약·표준)이 순위를 바꾸는 전략보다 우선한다.**
+
+## 6. 이 렌즈의 결론
 
 다섯 힘 지도에서 삼성의 전략은 하나의 문장으로 요약된다 — **모든 힘의 화살표를 자기 쪽으로 꺾어라**: 구매자에게는 전환비용(RS-3)과 계약 구조(RS-4·RS-8)로, 경쟁자에게는 기술 순위전 승리(MB-1)와 절제 균형 유지(RS-5)로, 진입자에게는 원가 방어선(RS-6)으로, 공급자에게는 내재화(Hybrid Bonding IP)로, 대체재에게는 흡수(SE-1·SE-2)로. 시나리오 렌즈가 "어느 미래에 베팅할까"를 묻는다면, 이 렌즈는 "어느 미래가 와도 협상력 구조에서 이겨야 이익이 남는다"를 보여준다 — 두 렌즈는 같은 전략 세트를 서로 다른 이유로 정당화한다.
 
