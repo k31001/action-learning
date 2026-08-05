@@ -1095,6 +1095,17 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 
 **동기화**: 신규 소스 0건(인터뷰 2건은 기 ingest). dashboard indicators.js(QUADRANT·SCENARIOS·EWI·트리거)·scenarioPlanning.js(DF1·DF2 현재위치·matrix A·B note)·updates.js(assessment 항목 — 업데이트 내역 메뉴)·version.js(v2.32.10 패치). wiki key-drivers·scenario-matrix. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증. main 직접 병합·push.
 
+## [2026-08-05] ingest | MAD Podcast(Matt Turck) × Dylan Patel — 메모리 부족·KV 캐시·CPO 지연 (v2.33.1)
+
+요청: 사용자 제공 Apple Podcasts 링크(에피소드 ID 1000779102407)의 인터뷰 추가. 이 환경에서 원문(오디오·트랜스크립트·Apple 페이지) 직접 접근이 프록시 정책으로 차단되어, 웹 검색으로 에피소드를 특정(MAD Podcast Dylan Patel 2번째 출연, 2026-07 초)하고 2차 보도 3건(Podcast Alpha 요약·BigGo Finance·KuCoin 플래시)으로 내용을 교차 수집. 공식 에피소드 제목 미확정·"$11M Bill" 세부 미확인은 소스 헤더에 명시.
+
+핵심: ① 메모리 다년 구조적 부족 — 가격 상방 2~3배, 진짜 증분 공급 2028(팹 연 +20~30% 한계, ILTB EP.468 "DRAM은 여기서 2~3배" 직접 인용 교차), ② KV 캐시가 수요의 미시 메커니즘(추론·에이전트→용량 선점) + 컨슈머 전치가 랠리 재원, ③ Anthropic FCF 전환 주장(연환산 $50B+·수익성 — 2차 보도 경유, 주장 단계 명시), ④ CPO 양산 2029 지연(Street 2027)·구리 붐 연장·NVIDIA 800V.
+
+신규 소스: `sources/articles/mad-podcast-dylan-patel-memory-2026-07.md`. wiki 3개 페이지 [Update 2026-08-05] — price-trends(상방 2~3배 vs 기존 Q3 감속 조짐의 해석 대립 명시·공급 2028=C/D 시간축 가늠자), ai-demand-sustainability(KV 캐시=권석준 "추론 100배"의 미시 구체화·Anthropic FCF=3자 마스터 변수의 첫 긍정 사례, CSP FCF와 층위 구분 유의), ai-datacenter-buildout(CPO 2029·800V — 방법론 가정 무변화).
+
+거시 축 판단: DF1·DF2 위치 변경 없음 — 외부 애널리스트 전망(프레이밍)이지 실현된 사실 아님. 단 price-trends의 "감속 vs 다년 부족" 해석 대립은 다음 정기 재평가 참고 입력.
+
+대시보드: interviews.js에 외부 전문가 항목(Dylan Patel, 5번째) 추가. updates.js ingest 항목. version v2.33.1(패치 — 당초 v2.32.12로 부여했으나 FDP 대시보드 반영이 v2.33.0 마이너를 선점, main 병합 시 재버전). 지식그래프 재생성·npm run build 검증. 개발 브랜치 커밋 후 main 병합·push(사전 승인 체인).
 ## [2026-08-05] build | FDP 제품·기술 축 — 대시보드 섹션 + PPT 슬라이드 2장 추가 (v2.33.0)
 
 요청: FDP 병합분의 대시보드 반영 + PPT 슬라이드 1~2장 추가. **대시보드(마이너 v2.33.0 — 새 데이터 카테고리)**: devTransformation.js에 DT_FDP 신설(선언·전략 문장·문제 3·6요소·실행전략 6종·로드맵 4단계·핵심 KPI), Strategies.jsx 개발실 전환 탭에 카드 2개 추가(제품·기술 축 개요 — 스타 엔지니어 카드 다음 / 실행전략·로드맵·KPI), 다운로드 카드에 4번째 항목(제품·기술 축 FDP 2장) + 그리드 4열화.

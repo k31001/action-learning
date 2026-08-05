@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-05 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-05',
+    type: 'ingest',
+    version: 'v2.33.1',
+    title: '외부 전문가 수집 — Dylan Patel(SemiAnalysis) MAD Podcast: 메모리 부족·KV 캐시·CPO 지연',
+    summary:
+      '사용자 제공 Apple Podcasts 링크의 MAD Podcast(Matt Turck) × Dylan Patel 2번째 출연(2026-07 초)을 2차 보도 3건(Podcast Alpha·BigGo·KuCoin) 교차로 수집(원문 접근 차단 — 한계 소스 헤더 명시). 핵심: ① 메모리 다년 구조적 부족 — 가격 상방 2~3배·진짜 증분 공급 2028(팹 연 +20~30% 한계)·컨슈머 전치가 랠리 재원, ② KV 캐시 = 추론·에이전트 수요의 미시 메커니즘(권석준 "추론 100배" 구체화), ③ Anthropic FCF 전환 주장(연환산 $50B+ — 3자 마스터 변수 "AI 수익화"의 첫 긍정 사례, 주장 단계), ④ CPO 양산 2029 지연(Street 2027)·구리 붐 연장·NVIDIA 800V. 위키 기존 신호(DRAM Q3 감속 조짐)와의 해석 대립(정점 vs 중간 조정)을 명시 기록 — 다음 정기 재평가 참고 입력. DF1·DF2 변경 없음. 인터뷰 메뉴 5번째 항목. 패치 v2.33.1 (v2.32.12로 부여했다가 FDP v2.33.0 마이너 선점으로 main 병합 시 재버전).',
+    tags: ['Dylan Patel', 'SemiAnalysis', 'MAD Podcast', '메모리 부족', 'KV 캐시', '가격 상방', '공급 2028', 'Anthropic', 'FCF', 'CPO', 'dashboard'],
+    items: [
+      { label: '신규 소스', detail: 'sources/articles/mad-podcast-dylan-patel-memory-2026-07.md — 에피소드 특정 경위·2차 보도 3건 교차·미확정 항목(공식 제목·"$11M Bill" 세부) 명시' },
+      { label: '인터뷰 메뉴 구조화', detail: 'data/interviews.js 최상단 추가(외부 전문가 2번째, 전체 5번째). 6개 섹션, keyQuotes 3개(2~3배·KV 캐시·CPO 2029), 수집 한계 섹션 별도' },
+      { label: 'wiki 3개 페이지 갱신', detail: 'price-trends(상방 2~3배 vs Q3 감속 조짐 해석 대립·공급 2028=C/D 시간축 가늠자)·ai-demand-sustainability(KV 캐시 미시 메커니즘·Anthropic FCF, CSP FCF와 층위 구분)·ai-datacenter-buildout(CPO 2029·800V, 방법론 가정 무변화)' },
+      { label: '거시 축 판단', detail: 'DF1·DF2 위치 변경 없음 — 외부 애널리스트 전망(프레이밍). "감속 vs 다년 부족" 해석 대립·"공급 2028" 시간축은 다음 정기 재평가 참고 입력으로 표기' },
+      { label: '인덱스·로그', detail: 'index.md articles 섹션·log.md 갱신, 지식그래프 재생성' },
+    ],
+    links: [
+      { label: 'mad-podcast-dylan-patel-memory-2026-07.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/mad-podcast-dylan-patel-memory-2026-07.md' },
+      { label: 'Apple Podcasts 에피소드 (원문)', href: 'https://podcasts.apple.com/kr/podcast/the-mad-podcast-with-matt-turck/id1686238724?i=1000779102407' },
+      { label: 'Podcast Alpha 요약', href: 'https://podcastalpha.substack.com/p/dylan-patel-of-semianalysis-the-11m' },
+    ],
+  },
   // ── 2026-08-04 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-04',
