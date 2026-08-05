@@ -97,3 +97,26 @@
 - [BIS Subsidiary Rule - Federal Register (Sep 2025)](https://www.federalregister.gov/documents/2025/09/16/2025-17893/additions-and-revisions-to-the-entity-list)
 - [Samsung Projects 56% Profit Plunge from US Chip Controls - Fortune](https://fortune.com/asia/2025/07/08/samsungs-projects-plunge-operating-profit-us-chips-controls-china/)
 - [TrendForce: VEU Revocation Impact on TSMC, Samsung, SK Hynix](https://www.trendforce.com/news/2025/06/23/news-if-us-revokes-chip-tool-exemptions-unpacking-tsmc-samsung-and-sk-hynixs-china-operations/)
+
+---
+
+## [Update 2026-08-03] 크리스 밀러 — 초크포인트 위계와 수출통제 정치 지형
+
+크리스 밀러(Chip War 저자)의 2025-12~2026-07 발언 종합 ([chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)). 기존 표의 "정책 진동" 사실관계에 **행위자 구도와 논리**를 보강한다.
+
+### 초크포인트 위계 — "HBM·장비 > GPU"
+
+- 밀러의 프레임: AI 리더십 3대 투입 = **컴퓨팅 파워·인재·전력** (상원 외교위 증언 2025-12-02). 컴퓨팅 파워는 미국의 **마지막 초크포인트**이며, 그 안에서도 **HBM과 반도체 제조장비가 Nvidia GPU 자체보다 깊은 초크포인트**일 수 있다 (ChinaTalk 2025-08) — HBM 3사(SK하이닉스·삼성·Micron)가 모두 비중국 기업이라는 구조 때문.
+- 함의: 對중국 통제의 무게중심이 GPU 단품에서 **메모리·장비 계층으로 이동**할수록, 삼성·SK하이닉스는 통제의 '대상'(시안 팹·對중 HBM 매출)이자 '지렛대'(비중국 공급 과점)로서의 이중 지위가 강화 — 기존 표의 Big Four HBM 통제(2024)·MATCH 법안(2026-04)이 이 논리의 제도화.
+
+### H200 완화(2025-12-08)를 둘러싼 정치 구도
+
+- 밀러는 상원 증언 6일 뒤 나온 H200 완화를 WaPo 기고(2025-12-10)에서 정면 비판 — "최후의 지렛대를 시험대에 올린 결정."
+- **초당적 통제파의 존재**: MAGA 진영(Jim Banks)과 우파 논객(Oren Cass·Matt Pottinger)까지 통제 입법 촉구 — 완화(행정부·Nvidia) vs 통제(의회 초당파) 대립이 기존 표의 "정책 진동"(H20 금지→재허용→H200 완화 ↔ MATCH 재강화)을 재생산하는 구동 메커니즘.
+- EWI 함의: [`match_act_passed`](../../dashboard/src/data/indicators.js) 트리거(위원회 단계)는 이 의회 통제파의 제도적 반격 경로 — 밀러의 관찰은 법안의 정치적 동력이 소멸하지 않았음을 시사.
+
+### 통제 실효성 평가 (밀러, AEI 2026)
+
+- 장비 통제는 실효 — SMIC 규모 생산 불가로 Huawei는 AI 데이터센터 기술을 수출하지 못함 (Ascend 910B 280~400 vs Blackwell 2,250 TFLOPS). 상세: [china-competitors.md [Update 2026-08-03]](../entities/china-competitors.md#update-2026-08-03-크리스-밀러의-중국-이중-평가).
+
+**출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §1~§5

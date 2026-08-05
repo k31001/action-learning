@@ -24,3 +24,15 @@
 ## 시나리오 플래닝 연결
 
 이 정치 요인들은 [Impact × Uncertainty 매트릭스](../driving-forces/impact-uncertainty-matrix.md)에서 영향력×불확실성으로 점수화되어 [핵심 Driving Forces](../driving-forces/key-drivers.md) 선정의 입력이 된다.
+
+---
+
+## [Update 2026-08-03] 외부 전문가 교차 검증 — 크리스 밀러
+
+크리스 밀러(Chip War 저자)의 2025-12~2026-07 인터뷰·기고 종합([chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md))이 본 페이지의 정치 요인 평가를 외부 시각에서 교차 검증한다:
+
+- **요인 1 (수출통제 진동)**: 진동의 구동 메커니즘을 행위자 구도로 확인 — 완화(행정부·Nvidia) vs 통제(의회 초당파, MAGA 포함). H200 완화(2025-12-08)와 MATCH 법안이 같은 대립 구도의 양면 → [us-export-controls.md [Update 2026-08-03]](../concepts/us-export-controls.md#update-2026-08-03-크리스-밀러--초크포인트-위계와-수출통제-정치-지형).
+- **요인 4·6 (중국 자립·디커플링)**: 이중 평가 — AI 칩 자립은 구조적 제약(Ascend 5~8배 열위·SMIC 규모 한계·"4년째 AI 과소투자") vs 전력·피지컬 AI·범용 침투는 실질 위협 → [china-competitors.md](../entities/china-competitors.md).
+- **신규 관찰**: 통제 무게중심의 **GPU → HBM·장비 계층 이동** 가능성("HBM이 GPU보다 깊은 초크포인트") — 삼성의 '통제 대상 겸 지렛대' 이중 지위를 강화하는 방향. Impact×Uncertainty 재점수화가 필요할 수준의 축 이동은 아니며(DF2 정의 내 포함), 다음 정기 재평가 시 참고 입력으로 반영.
+
+**출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)

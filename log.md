@@ -14,6 +14,27 @@
 
 ---
 
+## [2026-08-03] ingest | 인터뷰 3번째 추가 — 이창수 부사장(메모리 영업팀장) (v2.32.8 → v2.32.9)
+- **무엇**: 2026-08-03 진행된 이창수 부사장(영업팀장, 녹취록 참석자 3, 약 89분) 내부 인터뷰를 동일 형식(16개 섹션·핵심 인용문 4개·수요 사슬 3형태 표)으로 구조화해 대시보드 "인터뷰" 메뉴에 추가. **민감 상업 수치(개별 계약 금액·구체 판가·이익률·캐파 바인딩 비중·내부 코드명·고객별 일정)는 사용자 요청에 따라 제외 또는 대략적 범위 표현으로 조정**(소스 정리본 헤더에 정책 명시). 패치 v2.32.9.
+- **왜**: 사용자 지시 — 인터뷰 시리즈(신문섭 파트너 → 최장석 상무 → 이창수 부사장)의 세 번째. 판매 최전선·멀티이어 계약 실무 총괄 관점 확보.
+- **핵심 논지**: (1) 수요는 예측이 아니라 만드는 것 — 가격 탄력도, 수요 예측 무용론. (2) 작년 하반기부터 "종이 다른" 고객(AI 프론티어·CSP) — 투자 기반 타이밍 산업, 시가(時價) 시장, 중복 수요·수요 사슬 3형태(CSP 경유→GPU 리스→직접 건설). (3) 꺼짐 시그널은 재무 — CAPEX vs FCF(메타 사례), 3축 프레임(CSP 파이낸셜·최종 수요 진정성·GPU 생태계). (4) 1차 방어선 = take-or-pay 멀티이어(대규모 선수금·상호 페널티·NTE/NTB 밴드·캐파 대부분 바인딩 목표), 과제 = 2차 방어선(사업 경쟁력 3축 Back to Basic + WPSI·상시 비가동·투자 탄력도). (5) 원가 비교열위 — 현 이익률은 "AI가 준 선물". (6) 커스텀 HBM 퇴조론(속도전) — 최장석 zHBM 관점과 대비되는 리트머스. (7) 브로드컴·ASIC·소버린 재편, HBM 판매 비중 브로드컴 우위(의도적 밸런스). (8) 중국 비동조화 — BAT 멀티이어 헤지, 낸드는 YMTC발 조정 가능성.
+- **sources**: `raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md` 신설(주요 발언 정리본, 민감 수치 조정). `index.md` raw-notes 섹션 갱신.
+- **dashboard (v2.32.9, 패치 = 콘텐츠 추가, 동일 탭·스키마)**: `data/interviews.js` INTERVIEWS 최상단에 이창수 인터뷰 추가(16개 섹션·keyQuotes 4). `data/updates.js` v2.32.9 항목. `src/version.js` v2.32.9.
+- **건너뜀**: wiki·outputs·기타 dashboard 데이터는 본 인터뷰가 분석 페이지 수치를 직접 바꾸지 않으므로 미변경(앞선 인터뷰들과 동일 스코프). 인터뷰 인사이트의 위키 환원(take-or-pay 계약 구조는 wiki/concepts/lta-to-sca-transition.md 와 연결 여지, WPSI·FCF EWI 편입)은 후속 ingest에서 검토.
+
+## [2026-07-29] ingest | 용어 정정 — GHBM → zHBM (최장석 인터뷰) (v2.32.7 → v2.32.8)
+- **무엇**: 최장석 상무 인터뷰의 3D 적층 커스텀 메모리 용어를 GHBM → zHBM으로 일괄 통일 정정(38곳: `raw-notes/choi-jangseok-...md` 12·`interviews.js` 19·`updates.js`·`index.md`·`log.md`). 소스 녹취록 헤더에 "음성 자동 전사가 GHBM·지앤드·z HBM으로 흩어 표기 → zHBM 통일" 정정 이력 명시. 패치 v2.32.8.
+- **왜**: 사용자 지시 — 올바른 용어는 zHBM.
+- **dashboard (v2.32.8, 패치)**: `data/interviews.js`·`data/updates.js`·`src/version.js`.
+
+## [2026-07-29] ingest | 인터뷰 2번째 추가 — 최장석 상무(메모리 상품기획팀장) (v2.32.6 → v2.32.7)
+- **무엇**: 2026-07-29 진행된 최장석 상무(상품기획팀장, 녹취록 참석자 4) 내부 인터뷰를 sources 층에 녹취록 원본으로 보존하고, 대시보드 "인터뷰" 메뉴에 신문섭 파트너 인터뷰와 동일 형식(Executive Summary 포함 15개 섹션·핵심 인용문 4개·HBM vs zHBM 비교표)으로 구조화해 추가. 패치 v2.32.7.
+- **왜**: 사용자 지시 — 사내 임원·전문가 인터뷰 시리즈(베인 신문섭 → 최장석 → 이창수 예정)의 2번째. 고객 최일선(상품기획) 관점 확보.
+- **핵심 논지**: (1) "AI 수요 감소"를 추상적 시장 축소가 아니라 가속기→HBM→DDR 제품 단위 인과로 정의. (2) HBM은 DDR 캐파를 희생해 만들므로 HBM 감소 시 디맨드/서플라이 60~70% 갭이 반전 → 쇼티지가 즉시 오버서플라이. (3) 모든 미국 CSP가 zHBM(가속기 로직 위 3D 수직 적층 커스텀 메모리)만 요구, 배경은 가속기 비용·전력(랙당 6~8kW→210kW)·써멀 한계. (4) 커스텀 제품은 소싱·컨트랙·SCM이 파운더리 모델에 가까워 표준품과 근본적으로 다름 — 과거 커스텀 GPU 실패 원인이자 확보해야 할 체질. (5) 미주 우선 선택과 집중 + 중화 재진입 딜레마(YMTC·CXMT). (6) 하이-로 포트폴리오(80% 메인스트림 현금 + 20% 차별화 옵션). 베인 신문섭의 "AI가 돈을 버는가/수요 검증 사이클"을 내부 제품·캐파 관점에서 재확인.
+- **sources**: `raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md` 신설(참석자 구성·과제 맥락 헤더 + 자동 전사 녹취록 전문, 원본·불변). `index.md` raw-notes 섹션 갱신.
+- **dashboard (v2.32.7, 패치 = 데이터/콘텐츠 추가, 동일 탭·스키마)**: `data/interviews.js` INTERVIEWS 최상단에 최장석 인터뷰 추가(15개 섹션·keyQuotes 4). `data/updates.js` v2.32.7 항목. `src/version.js` v2.32.7.
+- **건너뜀**: wiki·outputs·기타 dashboard 데이터는 본 인터뷰가 분석 페이지 수치를 직접 바꾸지 않으므로 미변경(신문섭 인터뷰와 동일 스코프). 인터뷰 인사이트의 위키 환원(HBM↔DDR 캐파 상쇄·zHBM·커스텀 체질)은 후속 ingest에서 검토.
+
 ## [2026-07-21] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 + 삼성 HBM4 볼륨 발주 지연·EWI 갱신 (v2.31.5 → v2.31.6)
 - **무엇**: 직전 포지션 맵 갱신(2026-07-14) 이후 git log상 신규 커밋·소스 없음. 07-14→07-21 구간을 웹 리서치로 점검한 결과 거시 축(DF1·DF2)을 움직일 신규 실현 신호가 없어 **포지션 맵(DF1 8.5·DF2 0.5)과 확률(A26·B39·C8·D21·E6)을 전부 유지**. 이번 주 물질적 발전은 개별 실행 신호 하나 — 삼성 HBM4가 NVIDIA 인증(06-05 Vera Rubin 3사 인증)을 통과했으나 07-17 현재 볼륨(양산) 발주로 미전환·매출 유상 평가용 샘플 수준(Winbuzzer 07-17), SK Rubin 2/3+ 락인 유지. 이는 거시 축이 아니라 시나리오 B 내부의 삼성 점유·실행 리스크 → EWI·트리거·B 내러티브로만 반영. 신규 소스 1건(`samsung-hbm4-volume-order-pending-2026-07-17.md`).
 - **왜**: 주간 모니터링 사이클 — 시나리오 포지션 맵을 최신 수집 데이터 대비 재평가하고, EWI·시나리오 트리거 중 갱신 가능한 부분을 갱신하기 위함. 확증(무변화) 신호: 빅테크 4사 2026 CapEx ~$725B(+77% YoY, DF1 정점 재확인)·GPU 현물 임대가 firming(H200 +8% YoY, 붕괴 아님 → 수요 변곡 조기경보 미발동)·DRAM Q3 계약가 +13~18% 감속(소비자 지불한계·기저효과에 따른 정제, 서버 견조)·MATCH 위원회 단계 유지·CXMT 2026 HBM 양산 지연.
@@ -1038,3 +1059,38 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 사용자 전략 인풋 병합: 기존 FDE는 인재 축, 신규 내용은 제품·기술 축. 원문 보존 `sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md`. 신규 위키 페이지 `wiki/strategies/fdp-host-ssd-platform.md` — FDP SSD 공급자→Host–SSD 통합 솔루션 제공자 전환: 6요소 구조(Binding·FDP 표준 SSD·시스템 SW·E2E 검증·공동개발·텔레메트리), 실행전략 6종(Enablement Platform SDK·Profiler·Emulator / 표준 워크로드 프로파일 7종 / E2E 공동검증 / 공동개발 조직 4기능 / Binding 기술협력 / 오픈소스-차별화 경계), 4단계 로드맵, KPI(핵심 = FDP 실제 활성화 용량), 시나리오 연결(B 주 무대·RS-3 전환비용·RS-8 연계).
 
 동기화: dev-org-transformation.md §4.7 신설(인재 축×제품 축 프레임·frontmatter 소스 추가), report §4.5 요약 추가, index.md 등록(위키·소스), 지식그래프 재생성(node 80→81·edge 309→316·orphan 0), version v2.32.12(패치 — 원격 v2.32.11 이후). 건너뜀: 대시보드 개발실 전환 탭 UI(신규 페이지는 DT_* 미러 범위 외 — 요청 시 확장), 요약 PPT(구성 변경은 별도 지시 대기).
+
+## [2026-07-28] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + Alphabet CapEx 상향·SK하이닉스 사상 최대
+
+직전 포지션 맵 갱신(2026-07-21) 이후 git log로 파악한 변경분(개발실 전환 요약 PPT·FDE/전략적 고객 계약 용어 정비·임금 선순환·수주산업화 8개 전략 옵션 질의)은 전부 실행/조직 계층으로 거시 축(DF1·DF2)을 움직일 신규 소스 없음. 07-21→07-28 구간 웹 리서치 점검 결과 in-window 신호는 전부 **정점 재확인** 방향 → 포지션 맵·확률 유지.
+
+**포지션 맵**: DF1 8.5·DF2 0.5 유지. 물질적 발전 2건 — (1) Alphabet Q2(07-22) 2026 CapEx 가이던스 **$180~190B→$195~205B 상향**·Cloud 백로그 QoQ +$50B→$514B(상방 확인), (2) SK하이닉스 Q2(~07-28) 영업이익 **~$43.7B·OPM ~76% 사상 최대**(정점 확인). 이미 정점(8.5)이므로 신규 상방 레그 아닌 재확인 → DF1 유지. **절제**: 가장 큰 3개 tell(MS·Meta 07-29·Amazon 07-30)이 창 직후 발표 예정 — DF1 방향 핵심 확인 이벤트 다음 주 대기. DF2: 미중 신규 실현 사실 부재(MATCH 위원회 단계·본회의 표결 movement 없음·CXMT HBM 미확정·애플 CXMT 테스트 단계·신규 수출통제 없음) → 유지. 삼성 HBM4 볼륨 발주 미전환도 무변화.
+
+**확률**: A26·B39·C8·D21·E6 전부 유지 — 거시 축 무변화, in-window 신호는 DF1 정점 재확인이지 시나리오 간 상대 확률 변경 요인 아님.
+
+**EWI·트리거**: EWI 5종 실측 갱신(`bigtech_capex_growth` Alphabet 상향·`gpu_rental_price_trend`/`gpu_rental_h100_usd` 07-28 스냅샷 H100 ~$3.46·H200 ~$4.11·`samsung_hbm4_rubin_share` 무변화·`cxmt_hbm3_production` 무변화). 트리거 4종 note 갱신(`bigtech_capex_2027_sustained` 선행 상방·`bigtech_capex_cut25` 미발동·`match_act_passed` 위원회 단계·`samsung_hbm4_nvidia_confirmed` 미충족). 발동 트리거 0건.
+
+**동기화**: 신규 소스 `hyperscaler-q2-2026-capex-2026-07-28.md`. dashboard indicators.js(포지션·SCENARIOS·EWI·트리거)·scenarioPlanning.js(DF1·DF2 현재위치·matrix 확률)·updates.js(assessment 항목 — 업데이트 내역 메뉴)·version.js(v2.32.6 패치). wiki key-drivers·scenario-matrix. outputs/report §5.1. index.md sources 등록. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX는 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증. main 직접 병합·push.
+
+## [2026-08-03] ingest | 크리스 밀러(Chip War 저자) 최근 인터뷰·기고 종합 수집 (v2.32.11)
+
+요청: Chip War 저자 크리스 밀러의 최근 인터뷰·기고문 조사 → inbound data로 활용, 대시보드 갱신. 웹 검색 기반으로 2025-12~2026-07 발언 10건 수집(상원 외교위 증언 12-02·WaPo H200 비판 12-10·ChinaTalk H20+15%·CommonWealth·AEI "Why China Can't Export AI Chips"·CMU Chips and Chokepoints·중앙일보 "반도체 구루의 고언" 시리즈 04-24·"중국 4년째 AI 과소투자" 06월 발언·경향신문 단독 07-09·인사이트코리아 2부작). 원문 직접 접근 차단 항목은 검색 결과 요약·2차 인용으로 수집(소스 헤더에 명시).
+
+신규 소스: `sources/articles/chris-miller-interviews-2025-12-to-2026-07.md`. wiki 6개 페이지에 [Update 2026-08-03] 추가 — samsung(체질 전환·R&D/설비 동시 투자·추론 메모리 프런티어·800조 환영), cxmt(애플–CXMT 공개 경계 = 위협 해석 무게), china-competitors(중국 이중 평가: Ascend 5~8배 열위·SMIC 규모 한계 vs 전력·피지컬 AI 위협), hbm-roadmap("HBM은 유일한 솔루션 아니다" — 추론 최적화 아키텍처 축), us-export-controls(초크포인트 위계 HBM·장비>GPU, H200 완화의 정치 구도: 행정부 완화 vs 의회 초당 통제파), steep/political(요인 1·4·6 외부 교차 검증).
+
+거시 축 판단: DF1·DF2 위치 변경 없음 — 밀러 발언은 기존 신호의 외부 교차 검증이자 해석 보강(정성)이며 신규 실현 사실이 아님. "통제 무게중심의 GPU→HBM·장비 이동" 관찰은 다음 정기 재평가 참고 입력으로 표기.
+
+대시보드: interviews.js에 외부 전문가 항목(크리스 밀러 종합, 공개 자료 기반) 추가 — 인터뷰 메뉴 4번째. updates.js ingest 항목 추가. version v2.32.11(패치: 데이터 추가·기존 카테고리 내 — 당초 v2.32.10으로 부여했으나 08-04 정기 재평가가 동일 버전을 선점, main 병합 시 v2.32.11로 재버전). 지식그래프 재생성(wiki 링크 신규)·npm run build 검증. 개발 브랜치 push 후 사용자 승인으로 main 병합(08-04 재평가 커밋과 merge — updates.js·log.md 충돌은 양쪽 항목 시간순 유지로 해결).
+## [2026-08-04] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 내부 인터뷰 2건(최장석·이창수) 반영·EWI 갱신
+
+직전 포지션 맵 갱신(2026-07-28) 이후 git log 변경분은 **내부 임원·전문가 인터뷰 2건**뿐 — 최장석 상무(상품기획팀장, 07-29)·이창수 부사장(영업팀장, 08-03). 둘 다 sources 층 녹취록 + 인터뷰 메뉴 구조화이며, 거시 축(DF1·DF2)은 "실현된 외부 사실"이 움직인다는 일관 방법론상 내부 전문가 프레이밍(해석·전망)으로 분류. 내용도 양면적 → **정점 재확인, 축 무이동**.
+
+**양면성**: (상방·바닥 경직화) 이창수 1차 방어선 — take-or-pay 멀티이어 다수 사인(선수금 수백억 달러 규모 예치)·**NTB(Not-To-Below) 가격 하한**·NTE 상한으로 컬랩스 와도 상당 이익률 바닥 계약 고정 = 기존 LTA→SCA 락인을 삼성 1차 자료로 재확인, 핸드투마우스(재고 없음)로 근단기 수급 견조. (하방·유보) 최장석 HBM 편중 다운사이드(HBM 꺼지면 캐파 stranded·HBM↔DDR 상쇄로 shortage→oversupply 반전, D/S 60~70%)·이창수 중복수요·NAND 조정 우려(YMTC 에코 확대)·원가 비교열위. 영업 수장 본인 "충분히 올랐다·파티할 때 아니다·2차 방어선 필요"로 정점+경계 톤. 순효과 상쇄 → DF1 8.5 정점 재확인.
+
+**포지션 맵**: DF1 8.5·DF2 0.5 유지. 커스텀 HBM 퇴조(이창수) vs zHBM 커스텀 시대(최장석) 논쟁은 DF3/제품믹스 축이지 DF1·DF2 아님. DF2: 이창수 "중국 비동조화"·미주 집중+중국 페이즈2 멀티이어는 관리된 공존(0.5) 정합 전망(실현된 정책 사실 아님) → 위치·방향 유지.
+
+**확률**: A26·B39·C8·D21·E6 전부 유지 — 이창수 take-or-pay/NTB 확인은 이미 C 8·D 21에 반영된 락인의 재확인(신규 증분 아님), 최장석 HBM 편중은 조건부 심도(꺼졌을 때 캐파 리스크)라 상대 확률 무변화.
+
+**EWI·트리거**: EWI 4종 정성 note/history 갱신(`bigtech_capex_growth`에 CAPEX-vs-FCF 꼭짓점 프레임·`custom_hbm_revenue_share`에 커스텀 HBM 퇴조 vs zHBM 대비·`samsung_codesign_contracts`에 take-or-pay/NTB 1차 확인·`competitor_sca_disclosures` 스톡 note). 트리거 3종 note 갱신(`demand_inflection_divergence`에 3축 프레임+핸드투마우스 미발동 확인·`bigtech_capex_cut25`/`bigtech_capex_2027_sustained`에 FCF 렌즈). 민감 수치 제외로 currentValue는 전부 무변화(정성 갱신). 발동 트리거 0건.
+
+**동기화**: 신규 소스 0건(인터뷰 2건은 기 ingest). dashboard indicators.js(QUADRANT·SCENARIOS·EWI·트리거)·scenarioPlanning.js(DF1·DF2 현재위치·matrix A·B note)·updates.js(assessment 항목 — 업데이트 내역 메뉴)·version.js(v2.32.10 패치). wiki key-drivers·scenario-matrix. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증. main 직접 병합·push.

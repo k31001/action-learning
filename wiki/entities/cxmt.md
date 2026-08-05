@@ -242,3 +242,13 @@ FT 보도의 CXMT 점유율 수치("2025년 ~11% → 2028년 15%")는 **웨이�
 3. **모니터링 격상** — CXMT의 프리미엄 고객 인증 성공은 "저가 범용" 프레임을 넘어서는 위상 변화. HBM4/HBM5·CXL·PIM 등 추격 난이도 높은 영역의 리더십 방어가 더 중요해짐.
 
 **출처**: [apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)
+
+---
+
+## [Update 2026-08-03] 크리스 밀러 — 애플–CXMT 건에 공개 경계 표명
+
+- 크리스 밀러(Chip War 저자)는 경향신문 인터뷰(2026-07-09)에서 **애플의 중국 메모리(CXMT) 구매 시도에 경계**를 표명 — 성사 시 **중국 메모리 업체의 글로벌 점유율 확대**로 이어질 수 있다고 평가 ([chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §9).
+- 위 [Update 2026-07-11] 애플–CXMT 테스트 건에 대한 **외부 전문가의 위협 인식 확인** — "중국 내수 한정 소량"이라는 최소화 해석보다 "글로벌 점유율 확대의 교두보"라는 위협 해석에 무게를 싣는 방향. DF2 리트머스([`cxmt_apple_qualification`](../../dashboard/src/data/indicators.js)) 모니터링의 우선순위를 재확인.
+- 다만 밀러는 같은 시기 중국의 구조적 제약도 병행 지적("중국은 4년째 AI 과소투자", Huawei/SMIC 규모 한계 — [china-competitors.md [Update 2026-08-03]](china-competitors.md#update-2026-08-03-크리스-밀러의-중국-이중-평가) 참조) — CXMT 위협은 첨단(HBM)이 아닌 **범용·완제품 채택 경로**로 실현된다는 위키 기존 프레임과 정합.
+
+**출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
