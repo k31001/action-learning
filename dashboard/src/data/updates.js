@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-05 (iii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-08-05',
+    type: 'build',
+    version: 'v2.36.0',
+    title: 'Storyline 대안 렌즈 4종 — 파이브 포스·게임이론·실물옵션·파괴적 혁신 서브탭',
+    summary:
+      '같은 위키 지식·지식그래프를 시나리오 플래닝이 아닌 4개 전략 프레임워크로 재서사화한 자매 스토리라인을 Storyline 탭 하위 메뉴로 추가. 파이브 포스(협상력의 지도 — 다섯 힘의 화살표를 자기 쪽으로 꺾는 싸움), 게임이론(치킨게임 → 3강 절제 균형 → take-or-pay 약속 게임 → CXMT 비대칭 게임), 실물옵션(콜·풋·전환·포기 옵션 포트폴리오 + EWI 행사 신호), 파괴적 혁신(HBM 파괴 피해 사례 → 로엔드·차세대·인접 3방향 파괴 대응). 게임이론 렌즈의 역사적 근거로 DRAM 치킨게임(2007~13, Qimonda·Elpida 파산, 6강→3강, 삼성 역사이클 투자) 웹 리서치 신규 소스 등재. 각 렌즈는 위키 페이지(단일 소스)+대시보드 미러 구조, 전 수치 sources/ 인용. 렌즈별 시각화(파이브 포스 십자 SVG·게임 진화 체인·옵션 2×2 그리드) 포함. 마이너 v2.36.0.',
+    tags: ['Storyline', '파이브 포스', '게임이론', '실물옵션', '파괴적 혁신', '치킨게임', '렌즈', 'dashboard'],
+    items: [
+      { label: '위키 렌즈 4종 신설', detail: 'wiki/storyline/storyline-{five-forces,game-theory,real-options,disruption}.md — 각각 Mermaid 시각화 + 4~6절 산문 서사 + sources/ 인용 + 갱신 규칙. 마스터 storyline.md에 자매 렌즈 내비게이션 추가' },
+      { label: '신규 소스 (웹 리서치)', detail: 'sources/articles/dram-chicken-game-history-2026-08-05.md — 1차(2007~09 Qimonda)·2차(2010~13 Elpida·대만) 치킨게임, 가격 -85%/-58%, 6강→3강 압축, 삼성 2010 메모리 capex 5.5조→9조 역사이클 상향 (Computerworld·IEEE Spectrum·Forbes·Taipei Times·Nippon.com 등 교차)' },
+      { label: '대시보드 서브탭', detail: 'Storyline 탭에 하위 메뉴 5개(시나리오 플래닝 기본 + 렌즈 4). data/storylineLenses.js(STORYLINE_LENSES) + Storyline.jsx 개편 — ForcesDiagram·LensChain·LensGrid 시각화 3종. 딥링크 #/storyline/<렌즈>, 기존 #/storyline/chN은 #/storyline/scenario/chN으로 자동 리다이렉트' },
+      { label: '정합성 체인', detail: 'CLAUDE.md §1 storyline 카테고리에 렌즈 명시, §5·§6에 storyline-*.md ↔ storylineLenses.js 매핑 행 추가. index.md 렌즈 4종+신규 소스 등록. 지식그래프 재생성 — 노드 86(+4)·엣지 376' },
+    ],
+    links: [
+      { label: 'wiki/storyline/storyline-game-theory.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/storyline-game-theory.md' },
+      { label: 'dram-chicken-game-history-2026-08-05.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/dram-chicken-game-history-2026-08-05.md' },
+    ],
+  },
   // ── 2026-08-05 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-08-05',

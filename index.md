@@ -8,7 +8,11 @@
 
 ## wiki/storyline — 종합 스토리라인 (NEW)
 
-- [wiki/storyline/storyline.md](wiki/storyline/storyline.md) — 위키 전체 지식을 잇는 종합 서사: 환경 변화 → 진단 → 핵심 동인 → 시나리오 → 전략 선택 논증 → EWI (대시보드 "Storyline" 첫 탭의 단일 소스)
+- [wiki/storyline/storyline.md](wiki/storyline/storyline.md) — 위키 전체 지식을 잇는 종합 서사(시나리오 플래닝 마스터): 환경 변화 → 진단 → 핵심 동인 → 시나리오 → 전략 선택 논증 → EWI (대시보드 "Storyline" 첫 탭의 단일 소스)
+- [wiki/storyline/storyline-five-forces.md](wiki/storyline/storyline-five-forces.md) — (NEW) 파이브 포스 렌즈: 협상력의 지도 — 구매자·경쟁·진입·공급자·대체재 다섯 힘으로 재서사화
+- [wiki/storyline/storyline-game-theory.md](wiki/storyline/storyline-game-theory.md) — (NEW) 게임이론 렌즈: 치킨게임(2007~13) → 3강 절제 균형 → take-or-pay 약속 게임 → CXMT 비대칭 게임
+- [wiki/storyline/storyline-real-options.md](wiki/storyline/storyline-real-options.md) — (NEW) 실물옵션 렌즈: 콜(RS-1·MB-5·D9)·풋(RS-8·NTB)·전환(SE-1·SE-2·RS-2)·포기(시안 Plan B) 옵션 포트폴리오 + EWI 행사 신호
+- [wiki/storyline/storyline-disruption.md](wiki/storyline/storyline-disruption.md) — (NEW) 파괴적 혁신 렌즈: HBM 파괴 피해 사례 → CXMT 로엔드·3D DRAM/CXL 차세대·AI SSD 인접 파괴와 대응
 
 ## wiki/scenarios — 5개 시나리오 + 매트릭스
 
@@ -153,6 +157,7 @@
 - [sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md](sources/articles/youtube-kwon-hbm-roadmap-cxl-2026-05-12.md) — 권석준 (동아일보): HBM6 2026 H2·CXL "메모리 부도심"·2030년대 후반 게임 체인저
 - [sources/articles/youtube-kwon-cycle-formula-2026-05-21.md](sources/articles/youtube-kwon-cycle-formula-2026-05-21.md) — 권석준 (연합): Q1 폭증·5종 메모리 다발·사이클 공식 변화·터보퀀트 역설
 - [sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md](sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) — Bloomberg TV: Micron CEO Mehrotra 미국 캐파 10→40%·LTA·"discipline"
+- [sources/articles/dram-chicken-game-history-2026-08-05.md](sources/articles/dram-chicken-game-history-2026-08-05.md) — (NEW) DRAM 치킨게임 역사(2007~13) 웹 리서치: Qimonda·Elpida 파산, 6강→3강, 삼성 역사이클 투자 (게임이론 렌즈 근거)
 - [sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md](sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) — Counterpoint 7건 묶음(2025-11~2026-04): 90% QoQ 폭등·DRAM OPM 60%>HBM·NVIDIA LPDDR 피벗·LTA 사이클 평탄화·SK hynix HBM 57%·스마트폰 -2.1%
 - [sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md](sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) — Bain(신문섭) AI 컴퓨트 수요·반도체 공급·DC 2030 전망 3개 시리즈: 컴퓨트 경제학 갭($2조/$500B/$800B)·메모리=AI 지출 30%·웨이퍼 잠식(HBM 4×)·163GW·전력 게이트키퍼·Scramble→Strategy
 - [sources/articles/june-2026-market-update-2026-06-13.md](sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 정기 점검 시장 데이터: HBM Q1 2026 점유율·삼성 HBM4E 업계 최초·Vera Rubin 인증·HBM 가격·빅4 CapEx $700~725B·DRAM/NAND Q2 가격·TSMC 5월 매출·CoWoS 65만 장·미국 DC 전력 42GW·그리드 대기열 2,600GW

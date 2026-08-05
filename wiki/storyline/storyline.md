@@ -10,6 +10,8 @@ sources: [sources/filings/micron-q3-fy26.md, sources/articles/july-2026-market-u
 
 이 페이지는 위키 전체 지식 — 환경 변화([STEEP](../steep/economy.md)) → 진단([entities](../entities/samsung.md)·[concepts](../concepts/hbm-market.md)) → 핵심 동인([driving-forces](../driving-forces/key-drivers.md)) → 갈림길([scenarios](../scenarios/scenario-matrix.md)) → 선택([strategies](../scenarios/strategy.md)) — 을 하나의 이야기로 잇는 종합 서사다. 위키에 새 소스가 들어와 하류 페이지가 바뀌면 이 서사도 함께 갱신된다(CLAUDE.md §6 정합성 체인).
 
+> **다른 렌즈로 읽기** — 같은 위키 지식을 시나리오 플래닝이 아닌 다른 프레임워크로 재서사화한 자매 스토리라인: [파이브 포스(협상력의 지도)](storyline-five-forces.md) · [게임이론(치킨게임에서 약속의 게임으로)](storyline-game-theory.md) · [실물옵션(변동성이 클수록 옵션은 비싸진다)](storyline-real-options.md) · [파괴적 혁신(삼성은 이미 한 번 파괴당했다)](storyline-disruption.md). 대시보드 Storyline 탭의 하위 메뉴와 1:1 대응한다.
+
 ## 스토리 흐름 한눈에
 
 ```mermaid

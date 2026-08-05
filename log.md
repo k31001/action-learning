@@ -1143,3 +1143,15 @@ Strategies 상위 탭의 "개발실 전환"에서 isNew 배지 제거 — 탭이
 **대시보드(마이너 v2.35.0)**: TOP_TABS 첫 탭 "Storyline"(BookOpen) 신설, 기본 랜딩 ewi→storyline 변경(기존 `#/ewi` 딥링크 동작 유지). `data/storyline.js`(META·FLOW 7단계·TIMELINE 6이벤트·CHAPTERS 8장, 블록별 refs) + `components/Storyline.jsx`(SVG 플로우 체인 — 클릭 시 해당 장 스크롤·EWI→시나리오 점선 피드백 루프, 연대기 스트립, Interviews Block 계열 본문 렌더러 + SourceLink 각주, `#/storyline/ch1~ch8` 딥링크). 지식그래프 빌더 CATEGORIES에 storyline(노랑) 추가 후 재생성 — 노드 82·엣지 343, 스토리라인 허브(링크 25). asymmetric 증가(~25건)는 종합 페이지의 단방향 인용 특성상 수용. `npm run build` 통과.
 
 **생략 명시**: outputs/ 무변경(storyline은 위키 계층 서사, report·PPT는 별도 산출물) → PPTX 재생성 생략. 브랜치 push 후 사용자 승인으로 main 병합(병합 시 v2.34.2와 합류 — v2.35.0 유지, 지식그래프 재생성).
+
+## [2026-08-05] build | Storyline 대안 렌즈 4종 — 파이브 포스·게임이론·실물옵션·파괴적 혁신 (v2.36.0)
+
+요청: "시나리오 플래닝 구조를 전혀 고려하지 않고 새로운 시각으로 스토리를 풀어가는 스토리라인들을 Storyline 하위 메뉴로 추가 — 위키 데이터·지식그래프 기반, 부족한 정보는 조사해서 보완."
+
+**신규 소스 (웹 리서치)**: `sources/articles/dram-chicken-game-history-2026-08-05.md` — 게임이론 렌즈의 역사적 근거 공백을 웹 조사로 보완: 1차 치킨게임(2007~09, 가격 -85%/-58%, Qimonda 누적손실 $30억 후 2009-01 파산·직후 현물가 급등), 2차(2010~13, Elpida 부채 4,480억 엔 전후 일본 제조업 최대 파산·대만 진영 퇴장), 6강→3강 압축("3사는 6사가 못 하는 공급 규율 조율 가능"), 삼성 2010 메모리 capex 5.5조→9조 역사이클 상향. Computerworld·InfoWorld·IEEE Spectrum·Forbes·Taipei Times·Nippon.com·VentureBeat 등 교차.
+
+**위키 렌즈 4종 신설**: `wiki/storyline/storyline-five-forces.md`(협상력의 지도 — 구매자 균열=take-or-pay/NTB, 3강 절제, 국가보조 진입자, TSMC/ASML 공급자, DF3 대체재 흡수) · `storyline-game-theory.md`(치킨게임→반복게임 절제 균형→약속 장치→CXMT 비대칭 게임) · `storyline-real-options.md`(σ 60~120% 산업에서 콜 RS-1/MB-5/D9·풋 RS-8/NTB·전환 SE-1/SE-2/RS-2·포기 시안 Plan B + EWI=행사 신호) · `storyline-disruption.md`(HBM=신시장 파괴 피해 1막 → CXMT 로엔드·3D DRAM/CXL 차세대·AI SSD 인접 파괴 3방향과 "파괴자를 안에서 기른다" 대응). 각 페이지 Mermaid 시각화 + 완결 문장 서사 + 전 수치 sources/ 인용 + 갱신 규칙. 마스터 `storyline.md`에 자매 렌즈 내비게이션 추가.
+
+**대시보드(마이너 v2.36.0)**: Storyline 탭 하위 메뉴 5개(시나리오 플래닝 기본 + 렌즈 4). `data/storylineLenses.js`(STORYLINE_LENSES — 렌즈별 thesis·visual·sections 미러) + `Storyline.jsx` 개편(서브탭 라우팅 `#/storyline/<렌즈>`, 구 딥링크 `#/storyline/chN`→`#/storyline/scenario/chN` 자동 리다이렉트, ForcesDiagram 십자 SVG·LensChain 진화 체인·LensGrid 2×2 시각화). CLAUDE.md §1/§5/§6에 렌즈 매핑 등록, index.md 렌즈 4종+신규 소스 등록, 지식그래프 재생성(노드 86·엣지 376, storyline 허브 33링크). `npm run build` 통과.
+
+**생략 명시**: outputs/ 무변경 → PPTX 재생성 생략. 사용자 사전 승인에 따라 브랜치 푸시 후 main 병합까지 진행.
