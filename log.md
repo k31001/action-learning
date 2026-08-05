@@ -1032,3 +1032,9 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 ## [2026-07-24] query | 수주산업화 적응을 위한 개발실의 추가 전략 옵션
 
 질문: 메모리 수주사업화 국면에서 개발실이 (기존 전환 전략 외에) 또 어떤 전략적 변화를 가져갈 수 있는가. wiki 기존 커버리지(dev-org-transformation 4대 축·FDE 스타·임금 선순환) 확인 후, 수주산업(조선·항공·ASIC)의 표준 운영 체계를 개발실에 이식하는 8개 옵션을 신규 제안: ① 프로그램 조직(고객 계약 단위 PM·수익성 소유) ② 수주 심의 게이트(Deal Review·Design-to-Cost) ③ NRE 과금 — 공동설계의 수익 센터화 ④ 체인지오더 프로세스 ⑤ 백로그 연동 R&D 캐파 플래닝 ⑥ 감사 가능한 개발 프로세스(트레이서빌리티) ⑦ 고객간 방화벽+공통 플랫폼 학습 양립 ⑧ FDE 로테이션·수주 연동 인센티브. 채팅 답변으로 제공 — 채택 항목 확정 시 wiki 전략 페이지 반영 예정(현재 위키 미반영, 전략 판단 제안 단계).
+
+## [2026-07-24] ingest | FDP Host–SSD 통합 플랫폼 전략 — 개발실 전환의 제품·기술 축 병합 (v2.32.12)
+
+사용자 전략 인풋 병합: 기존 FDE는 인재 축, 신규 내용은 제품·기술 축. 원문 보존 `sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md`. 신규 위키 페이지 `wiki/strategies/fdp-host-ssd-platform.md` — FDP SSD 공급자→Host–SSD 통합 솔루션 제공자 전환: 6요소 구조(Binding·FDP 표준 SSD·시스템 SW·E2E 검증·공동개발·텔레메트리), 실행전략 6종(Enablement Platform SDK·Profiler·Emulator / 표준 워크로드 프로파일 7종 / E2E 공동검증 / 공동개발 조직 4기능 / Binding 기술협력 / 오픈소스-차별화 경계), 4단계 로드맵, KPI(핵심 = FDP 실제 활성화 용량), 시나리오 연결(B 주 무대·RS-3 전환비용·RS-8 연계).
+
+동기화: dev-org-transformation.md §4.7 신설(인재 축×제품 축 프레임·frontmatter 소스 추가), report §4.5 요약 추가, index.md 등록(위키·소스), 지식그래프 재생성(node 80→81·edge 309→316·orphan 0), version v2.32.12(패치 — 원격 v2.32.11 이후). 건너뜀: 대시보드 개발실 전환 탭 UI(신규 페이지는 DT_* 미러 범위 외 — 요청 시 확장), 요약 PPT(구성 변경은 별도 지시 대기).
