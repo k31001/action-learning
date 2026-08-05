@@ -140,3 +140,13 @@ EWI 후보: ① 분기별 신규 착공 GW, ② 병목 단계(②·⑤·⑦) 적
 - Meta는 단독으로 2026년 상반기에만 **5GW+ 클라우드·코로케이션 용량 계약**을 체결했다(SemiAnalysis "Meta Compute: Everyone Wants To Be A Neocloud") ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §5
+
+---
+
+## [Update 2026-08-05] Dylan Patel — CPO 2029 지연·구리 붐 연장·NVIDIA 800V
+
+- MAD Podcast(2026-07)에서 Dylan Patel은 **CPO(Co-Packaged Optics) 양산을 2029년으로 전망** — Street 기대(2027) 대비 2년 지연. "2026년 최고 인기 네트워킹 트레이드는 2년 이르다" ([mad-podcast-dylan-patel-memory-2026-07.md](../../sources/articles/mad-podcast-dylan-patel-memory-2026-07.md)).
+- 그 결과 **구리 케이블 붐 연장** — 광학 전환 지연의 수혜. **NVIDIA 800V(HVDC) 전력 로드맵**도 논의 — DC 전력 아키텍처 전환 맥락(본 페이지의 전력 게이트키퍼 논지와 연결).
+- 메모리 함의: 네트워킹·전력 아키텍처의 전환 지연은 랙당 구성의 급변 리스크를 낮춰 **GPU+HBM 실투입 단계 예측의 안정성**을 높이는 방향 — DC 파이프라인→메모리 수요 환산(본 페이지 방법론)의 가정 변화 요인은 아님.
+
+**출처**: [mad-podcast-dylan-patel-memory-2026-07.md](../../sources/articles/mad-podcast-dylan-patel-memory-2026-07.md)

@@ -120,3 +120,15 @@
 - 상세·통합 프레임: [ai-compute-economics-gap.md](ai-compute-economics-gap.md).
 
 **출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §①
+
+---
+
+## [Update 2026-08-05] Dylan Patel — KV 캐시 메커니즘 + Anthropic FCF 전환 주장
+
+MAD Podcast(2026-07) Dylan Patel(SemiAnalysis) 발언 ([mad-podcast-dylan-patel-memory-2026-07.md](../../sources/articles/mad-podcast-dylan-patel-memory-2026-07.md)):
+
+- **KV 캐시 = 수요의 미시 메커니즘**: 추론·에이전트 워크로드의 KV 캐시가 다년 메모리 부족을 구동 — 긴 컨텍스트·멀티턴 에이전트일수록 DRAM/HBM 용량 선점. 권석준의 "추론 100배"([Update 2026-05-19 II] 위 섹션)를 기술적 미시 수준에서 구체화하는 첫 소스.
+- **Anthropic FCF 전환 주장**: 연환산 매출 $50B+·수익성 달성(2차 보도 경유 — Patel 주장 단계). 내부 인터뷰 3자(신문섭·최장석·이창수) 공통 축 **"AI 수익화·현금흐름이 마스터 변수"**에 대한 첫 긍정 방향 구체 사례 — 이창수의 "꼭짓점은 CSP FCF" 프레임에서 프론티어 랩 층위의 선행 신호. 단 CSP(구매 주체)의 FCF와 프론티어 랩의 FCF는 층위가 다름을 유의.
+- 수요 지속성 논쟁에의 위치: 거품론(MIT 95% 미실현) ↔ 필연론 스펙트럼에서 Patel은 **수요 실재론 + 공급 제약론** 조합 — "버블 여부는 모델 진보 지속에 달렸다"(2026-02 출연 시 견해)와 일관.
+
+**출처**: [mad-podcast-dylan-patel-memory-2026-07.md](../../sources/articles/mad-podcast-dylan-patel-memory-2026-07.md)

@@ -26,6 +26,103 @@
 
 export const INTERVIEWS = [
   {
+    id: 'dylan-patel-mad-podcast',
+    title: '메모리 랠리는 몇 년 간다 — KV 캐시, 공급 2028, 그리고 CPO 2년 지연',
+    kicker: '외부 전문가 발언 종합 (MAD Podcast, 2026-07)',
+    date: '2026-08-05',
+    interviewee: { name: 'Dylan Patel', role: 'SemiAnalysis 창업자·수석 애널리스트 (진행: Matt Turck, FirstMark)', org: 'SemiAnalysis' },
+    tags: [
+      'Dylan Patel', 'SemiAnalysis', 'MAD Podcast', '메모리 부족', 'KV 캐시', '가격 상방 2~3배',
+      '공급 2028', '컨슈머 전치', 'Anthropic', 'FCF', 'CPO', '구리', '800V',
+    ],
+    source: 'sources/articles/mad-podcast-dylan-patel-memory-2026-07.md',
+    summary:
+      'SemiAnalysis Dylan Patel의 MAD Podcast 2번째 출연(2026-07 초). 원문 접근이 차단된 환경이라 2차 보도 3건으로 교차 수집했다(소스 헤더에 한계 명시). ' +
+      '핵심은 세 가지 — ① 메모리는 다년 구조적 부족: 가격 상방 2~3배, 진짜 증분 공급은 2028에야 도래(팹 연 +20~30% 한계), 랠리의 재원은 컨슈머 물량 전치. ' +
+      '② 수요의 미시 메커니즘은 KV 캐시: 추론·에이전트 워크로드가 DRAM/HBM 용량을 선점 — 권석준 "추론 100배"의 기술적 구체화. ' +
+      '③ Anthropic FCF 전환 주장(연환산 $50B+·수익성): 내부 인터뷰 3자의 "AI 수익화·현금흐름이 마스터 변수"에 대한 첫 긍정 방향 사례. ' +
+      '부가로 CPO 양산 2029 지연(Street 2027)·구리 붐 연장·NVIDIA 800V. 위키 기존 신호(DRAM Q3 감속 조짐)와의 해석 대립을 명시적으로 기록했다.',
+    keyQuotes: [
+      {
+        text: 'DRAM은 여기서 2~3배 더 오른다. 그만큼의 캐파가 필요하기 때문이다 — 진짜 증분 공급은 2028년에야 오고, 팹은 1년에 20~30%밖에 못 늘린다.',
+        context: '메모리 다년 부족론 (동일 논거의 직접 인용은 Invest Like the Best EP.468, 2026-04)',
+      },
+      {
+        text: '추론·에이전트의 KV 캐시가 다년 메모리 부족을 구동한다 — 그리고 그 랠리의 비용은 컨슈머 일렉트로닉스에서 전치된 물량이 지불하고 있다.',
+        context: '수요의 미시 메커니즘과 재원 (2차 보도 종합 표현)',
+      },
+      {
+        text: '시장은 CPO 램프를 2027년으로 기대하지만, 나는 2029년으로 본다 — 2026년 최고 인기 네트워킹 트레이드는 아마 2년 이르다.',
+        context: 'CPO 지연과 구리 붐 연장 (2차 보도 종합 표현)',
+      },
+    ],
+    sections: [
+      {
+        no: 1,
+        id: 'context-method',
+        title: '맥락과 수집 방법 — 한계 명시',
+        blocks: [
+          { type: 'p', text: 'Dylan Patel은 AI 반도체 공급망 분석에서 가장 인용도 높은 독립 애널리스트로, 위키는 이미 SemiAnalysis 소스 3건(AI 실리콘 부족·ISSCC 2026·Vera Rubin)을 보유한다. 이번 에피소드는 그의 MAD Podcast 2번째 출연(1번째: 2026-02-05 NVIDIA 포트폴리오 전략·중국 "semiconductor pilled")으로, 메모리가 대화의 중심이다.' },
+          { type: 'p', text: '수집 한계: 이 환경에서 오디오·트랜스크립트·Apple 페이지 직접 접근이 차단되어, 에피소드를 다룬 2차 보도 3건(Podcast Alpha 상세 요약·BigGo Finance·KuCoin 플래시)으로 교차 수집했다. 공식 에피소드 제목과 "$11M Bill"의 세부 맥락은 미확정 — 소스 파일 헤더에 명시했고, 원문 확보 시 보강한다.' },
+        ],
+      },
+      {
+        no: 2,
+        id: 'memory-shortage',
+        title: '메모리 다년 부족론: 상방 2~3배, 공급은 2028',
+        blocks: [
+          { type: 'ul', items: [
+            '가격 상방 여력 2~3배 — 랠리는 "몇 달이 아니라 몇 년" 단위. 구조적 논거: 필요한 캐파 자체가 그만큼 크다.',
+            '공급 제약 — 업체들이 2025년 말부터 대응을 시작했어도 진짜 증분 공급은 2028년 도래. 팹은 연간 캐파의 20~30%만 증설 가능.',
+            '재원 — 컨슈머 일렉트로닉스(폰·PC) 물량이 AI로 전치되며 컨슈머 시장이 가격 충격을 흡수.',
+          ] },
+          { type: 'p', text: '위키 기존 신호와의 대립이 핵심 기록 가치다. 위키는 DRAM Q3 계약가 +13~18%로의 감속 조짐을 수집해 두었는데(july-2026-market-update), Patel의 프레임에서 이는 정점 신호가 아니라 다년 부족의 중간 조정이다. 이 해석 대립(감속=정점 vs 중간 조정)이 시나리오 A/B vs C/D의 판별점 중 하나가 된다.' },
+          { type: 'p', text: '또한 "공급 2028 도래"는 최장석 상무가 경고한 shortage→oversupply 급반전 리스크의 시간축 가늠자로 기능한다 — 반전이 온다면 2028 전후가 유력 창이라는 함의.' },
+        ],
+      },
+      {
+        no: 3,
+        id: 'kv-cache',
+        title: 'KV 캐시: 추론 시대 메모리 수요의 미시 메커니즘',
+        blocks: [
+          { type: 'p', text: '추론·에이전트 워크로드의 KV 캐시가 다년 메모리 부족을 구동하는 핵심 메커니즘이다. 긴 컨텍스트·멀티턴 에이전트일수록 KV 캐시가 DRAM/HBM 용량을 선점하며, 추론 시대의 메모리 수요는 학습 시대보다 용량 탄성이 크다.' },
+          { type: 'p', text: '위키 맥락에서의 위치: 권석준 교수의 "추론 100배 + 양자화로 메모리 수요 촉진"(거시), 이창수 부사장의 "AI 프론티어 시가 시장"(구매 행동)과 수렴하되, 수요의 기술적 미시 메커니즘을 명시한 첫 소스다. 크리스 밀러의 "추론 최적화 메모리 아키텍처가 다음 프런티어"라는 처방과도 맞물린다 — KV 캐시 관리가 그 아키텍처 경쟁의 실제 워크로드인 셈이다.' },
+        ],
+      },
+      {
+        no: 4,
+        id: 'anthropic-fcf',
+        title: 'Anthropic FCF 전환 주장 — 마스터 변수의 첫 긍정 사례',
+        blocks: [
+          { type: 'p', text: 'Patel은 Anthropic의 흑자 전환(FCF turn) 세부를 언급했다 — 2차 보도 기준 연환산 매출 $50B+ 및 수익성 달성(토큰 효율성·매출 지표 세부 포함). 원문 검증 전까지 Patel 주장 단계로 취급한다.' },
+          { type: 'ul', items: [
+            '의미 — 내부 인터뷰 3자(신문섭·최장석·이창수)의 공통 축 "AI 수익화·현금흐름이 마스터 변수"에 대한 첫 긍정 방향 구체 사례. 프론티어 랩 중 최초 수준의 FCF 전환 주장.',
+            '유의 — 이창수의 "꼭짓점은 CSP FCF" 프레임에서 CSP(구매 주체)의 FCF와 프론티어 랩의 FCF는 층위가 다르다. 프론티어 랩의 수익화는 CSP CapEx의 지속가능성을 뒷받침하는 상류 신호로 읽는 것이 정확하다.',
+            '삼성 접점 — Anthropic은 삼성 Series H 투자·Micron SCA의 당사자로, 위키 customer-co-design-anthropic 페이지의 분석 대상. 수익성 달성은 SCA 상대방의 신용 리스크를 낮추는 방향.',
+          ] },
+        ],
+      },
+      {
+        no: 5,
+        id: 'cpo-networking',
+        title: 'CPO 2029·구리 붐 연장·NVIDIA 800V',
+        blocks: [
+          { type: 'p', text: 'CPO(Co-Packaged Optics) 양산은 Street 기대(2027)보다 2년 늦은 2029년으로 전망 — 구체 타임라인과 GPU 세대 근거를 제시하며 "2026년 최고 인기 네트워킹 트레이드는 2년 이르다"고 평가했다. 그 결과 구리 케이블 붐이 예상 밖으로 연장된다. NVIDIA 800V(HVDC) 전력 로드맵 세부도 논의됐다.' },
+          { type: 'p', text: '메모리 함의는 간접적이다 — 네트워킹·전력 아키텍처 전환이 늦어질수록 랙 구성의 급변 리스크가 낮아져, DC 파이프라인→GPU+HBM 실투입 시점 예측(ai-datacenter-buildout 방법론)의 안정성이 높아진다.' },
+        ],
+      },
+      {
+        no: 6,
+        id: 'wiki-impact-patel',
+        title: '위키 반영 및 거시 축 판단',
+        blocks: [
+          { type: 'p', text: 'wiki 3개 페이지에 [Update 2026-08-05] 반영 — price-trends(상방 2~3배와 기존 감속 조짐의 해석 대립 명시), ai-demand-sustainability(KV 캐시 미시 메커니즘·Anthropic FCF), ai-datacenter-buildout(CPO 2029·800V).' },
+          { type: 'p', text: '거시 축 판단: DF1·DF2 위치 변경 없음 — 외부 애널리스트의 전망(프레이밍)이지 실현된 사실이 아니다. 단 price-trends의 "감속 vs 다년 부족" 해석 대립과 "공급 2028" 시간축은 다음 정기 재평가의 참고 입력으로 표기했다.' },
+        ],
+      },
+    ],
+  },
+  {
     id: 'chris-miller-chip-war',
     title: 'HBM 너머 추론 메모리 프런티어 — Chip War 저자가 본 초크포인트 위계와 한국 메모리',
     kicker: '외부 전문가 발언 종합 (공개 인터뷰·기고, 2025-12 ~ 2026-07)',
