@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-05 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-05',
+    type: 'ingest',
+    version: 'v2.33.2',
+    title: '디테일 보강 — Dylan Patel MAD Podcast: $11M Bill 정체·Anthropic 수치·CPO/800V 세부',
+    summary:
+      '사용자 제공 유튜브 링크를 계기로 동일 에피소드의 상세 2차 자료(Jukan 테이크어웨이 스레드·TradingKey·Podcast Alpha)를 추가 발굴해 1차 수집의 미확정 항목을 해소. ① "$11M Bill" = SemiAnalysis 자신의 AI 지출(8개월 새 연환산 $100K→$11M, 인건비 ~1/3→연말 절반 전망) — 토큰 수요 미시 표본, ② Anthropic 세부 — Q2 2026 FCF 흑자 전환(4·5월 흑자, 6월 미마감·동일 방향)·ARR $50B+·GM 70%+(Opus 4.8 토큰 80%+)·SBC 제외 Q2 순이익 흑자, 공식 가이던스(2028 흑자)와 대조 명시, ③ 컨슈머 전치 정량 — 빅테크 CapEx ~30% 메모리·iPhone 원가 ~$150↑·저가폰 11억→5~6억 대 붕괴 가능, ④ CPO 2028말~2029·Rubin/Feynman 올-커퍼 유지·Kyber 800V 제거, ⑤ 공급 기원 — 2023 다운턴 무증설+팹 2년+. 소스·wiki 3개 페이지·인터뷰 항목 동일 반영. 영상 자체는 환경 제약으로 직접 접근 불가(소스 헤더 명시). 패치 v2.33.2.',
+    tags: ['Dylan Patel', 'SemiAnalysis', '보강', '$11M', 'Anthropic', 'FCF', 'KV 캐시', '컨슈머 전치', 'CPO', '800V', 'Amphenol', 'dashboard'],
+    items: [
+      { label: '$11M Bill 해소', detail: 'SemiAnalysis 자체 AI 추론 지출 연환산 $100K 미만→$11M(8개월), 인건비 ~1/3→연말 절반 전망 — 수요 미시 표본으로 소스 §1 신설' },
+      { label: 'Anthropic 수치 세부', detail: 'Q2 2026 FCF 흑자·4/5월 흑자·ARR $50B+·GM 70%+/Opus 4.8 80%+·ex-SBC 순이익 흑자(Jukan 스레드). The Information 공식 가이던스(2028)와 대조 — 주장 단계 유지' },
+      { label: '컨슈머 전치 정량', detail: '빅테크 2026 CapEx ~30% 메모리·iPhone ~$150↑·저가폰 11억→5~6억 대 — price-trends에 이창수 "12~13억 대 비저블" 가정의 하방 케이스로 연결' },
+      { label: 'CPO/800V 세부', detail: 'Rubin·Feynman 올-커퍼 유지(Amphenol 수혜)·Kyber(Rubin Ultra) 800V 제거·수율/설계/공급망 미성숙 — ai-datacenter-buildout 갱신' },
+      { label: '반영 범위', detail: '소스 재작성(유튜브 링크 병기)·wiki 3개 페이지 [보강 2026-08-05]·interviews.js 항목 보강(keyQuote 4번째 추가)·log.md' },
+    ],
+    links: [
+      { label: 'mad-podcast-dylan-patel-memory-2026-07.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/mad-podcast-dylan-patel-memory-2026-07.md' },
+      { label: 'YouTube 영상 (사용자 제공)', href: 'https://youtu.be/3FHsGiONOGw' },
+      { label: 'Jukan 테이크어웨이 스레드', href: 'https://x.com/jukan05/status/2075453653662769476' },
+    ],
+  },
   // ── 2026-08-05 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-05',

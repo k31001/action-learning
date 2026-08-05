@@ -237,7 +237,8 @@ Micron FY26 Q3(2026-05-28 종료, 2026-06-24 발표) 실적이 가격 주도 성
 
 - SemiAnalysis Dylan Patel은 MAD Podcast(2026-07)에서 메모리를 **다년 구조적 부족**으로 규정 — **가격 상방 여력 2~3배**, 랠리는 "몇 달이 아니라 몇 년" ([mad-podcast-dylan-patel-memory-2026-07.md](../../sources/articles/mad-podcast-dylan-patel-memory-2026-07.md)).
 - 공급 논거: 업체들이 2025년 말부터 대응을 시작했어도 **진짜 증분 공급은 2028년 도래** — 팹은 연간 캐파 **+20~30%**가 한계. 동일 논거 직접 인용(Invest Like the Best EP.468, 2026-04): "DRAM은 여기서 2~3배 더 오른다."
-- 수요 재원: **컨슈머 일렉트로닉스 물량 전치** — 폰·PC로 가던 물량이 AI로 이동하며 컨슈머가 가격 충격을 흡수.
+- 수요 재원: **컨슈머 일렉트로닉스 물량 전치** — 폰·PC로 가던 물량이 AI로 이동하며 컨슈머가 가격 충격을 흡수. [보강 2026-08-05] 정량화: 빅테크 2026 CapEx의 **~30%가 메모리 배분**, 파급으로 **iPhone 원가 ~$150 상승** 압력·**저가 스마트폰 시장 연 11억 대 → 5~6억 대 붕괴 가능** ([mad-podcast-dylan-patel-memory-2026-07.md](../../sources/articles/mad-podcast-dylan-patel-memory-2026-07.md) §2). 저가폰 붕괴 시나리오는 이창수 인터뷰의 "폰 시장 12~13억 대 비저블" 가정의 하방 케이스.
+- [보강 2026-08-05] 공급 부족의 구조적 기원: **2023년 다운턴에 벤더들이 신규 팹을 짓지 않았고**, 수요 확인 후 팹 건설에 **2년+** 소요 — "공급 2028"의 근거 사슬.
 - **해석 대립 기록**: 위키 기존 신호(DRAM Q3 +13~18% **감속 조짐**, [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md))와 방향이 다르다 — 감속을 "정점 신호"로 볼지 "다년 부족의 중간 조정"으로 볼지가 시나리오 A/B vs C/D 판별점. Patel의 "공급 2028"은 최장석 인터뷰의 shortage→oversupply 급반전 리스크의 **시간축 가늠자**(2028 전후)로 기능.
 
 **출처**: [mad-podcast-dylan-patel-memory-2026-07.md](../../sources/articles/mad-podcast-dylan-patel-memory-2026-07.md)

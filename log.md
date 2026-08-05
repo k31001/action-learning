@@ -1111,3 +1111,11 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 요청: FDP 병합분의 대시보드 반영 + PPT 슬라이드 1~2장 추가. **대시보드(마이너 v2.33.0 — 새 데이터 카테고리)**: devTransformation.js에 DT_FDP 신설(선언·전략 문장·문제 3·6요소·실행전략 6종·로드맵 4단계·핵심 KPI), Strategies.jsx 개발실 전환 탭에 카드 2개 추가(제품·기술 축 개요 — 스타 엔지니어 카드 다음 / 실행전략·로드맵·KPI), 다운로드 카드에 4번째 항목(제품·기술 축 FDP 2장) + 그리드 4열화.
 
 **PPT**: generate_dev_transformation_summary.cjs 확장 — 제품 축 슬라이드 2장 신규(① 전환 한 컷[FDP SSD 공급자 →+시스템 SW→ 통합 솔루션 제공자]·왜 시스템 SW인가 3문제·6요소 체인, ② 실행전략 6종 아이콘 그리드·핵심 KPI 콜아웃[실제 활성화 용량]). 통합본 3장→5장, 개별본 4종(-fdp 신규 2장)·downloads 미러. 헤더 함수 리팩터(제목·출처·칩 파라미터화). 렌더 QA 통과·validate 통과·npm run build 통과.
+
+## [2026-08-05] ingest | Dylan Patel MAD Podcast 디테일 보강 — $11M·Anthropic 수치·CPO/800V (v2.33.2)
+
+요청: 사용자 제공 유튜브 링크(youtu.be/3FHsGiONOGw)로 인터뷰 디테일 보완. 영상 자체는 프록시 정책으로 직접 접근 불가(유튜브·oEmbed·noembed 전부 403, 영상 ID 웹검색 미식별) — 대신 동일 에피소드의 상세 2차 자료를 추가 발굴해 교차 보강: Jukan(@jukan05) 테이크어웨이 스레드, TradingKey(Marvell 하락 분석), Podcast Alpha 세부.
+
+해소된 미확정 항목: ① "$11M Bill" = SemiAnalysis 자신의 AI 추론 지출(8개월 새 연환산 $100K→$11M, 인건비 ~1/3→연말 절반) — 토큰 수요 미시 표본. ② Anthropic 세부 — Q2 2026 FCF 흑자 전환·4/5월 모두 흑자(6월 미마감·동일 방향)·ARR $50B+·GM 70%+(Opus 4.8 토큰 80%+)·SBC 제외 Q2 순이익 흑자. 공식 가이던스(현금흐름 흑자 2028, The Information)와 대조 명시 — 주장 단계 유지. ③ 컨슈머 전치 정량 — 빅테크 2026 CapEx ~30% 메모리·iPhone 원가 ~$150↑·저가폰 연 11억→5~6억 대 붕괴 가능. ④ CPO 2028말~2029 + Rubin·Feynman 세대까지 올-커퍼 유지(Amphenol 수혜)·NVIDIA가 Kyber(Rubin Ultra)에서 800V 설계 제거. ⑤ 공급 기원 — 2023 다운턴 무증설 + 팹 건설 2년+.
+
+반영: 소스 파일 재작성(유튜브 링크 병기·녹음 시점 근거 "6월 미마감" 명시), wiki 3개 페이지 [보강 2026-08-05](price-trends 컨슈머 전치 정량+공급 기원, ai-demand-sustainability Anthropic 세부+$11M 표본, ai-datacenter-buildout Rubin/Feynman 올-커퍼+Kyber 800V 제거), interviews.js 보강(keyQuote 4번째·수집 방법 갱신), updates.js 항목 추가, version v2.33.2(패치). 지식그래프 재생성·npm run build 검증. 브랜치 커밋 후 main 병합·push(사전 승인 체인).
