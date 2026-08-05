@@ -98,7 +98,7 @@
 ## wiki/strategies — 조직 전환 전략
 
 - [wiki/strategies/dev-org-transformation.md](wiki/strategies/dev-org-transformation.md) — 개발실 체질 전환 (수주 이행자→기술 파트너): As-Is/To-Be·리스크/이점·4대 축·3-Phase 액션 플랜·인재 축(FDE 스타)×제품 축(§4.7)
-- [wiki/strategies/fdp-host-ssd-platform.md](wiki/strategies/fdp-host-ssd-platform.md) — FDP Host–SSD 통합 플랫폼 (개발실 전환의 제품·기술 축): SSD 공급자→통합 솔루션 제공자, 시스템 SW(SDK·Profiler·Emulator)·표준 프로파일·E2E 검증·Binding 기술협력·오픈소스 경계·4단계 로드맵
+- [wiki/strategies/fdp-host-ssd-platform.md](wiki/strategies/fdp-host-ssd-platform.md) — FDP Host–SSD 통합 플랫폼 (개발실 전환의 제품·기술 축): 환경 변화(Binding·수요 지배·통제권 상승) → Captive SSD 위상 4단계(데이터) → 전략 선택지 4개 비교·선택 논리 → 실행전략 6종·KPI
 
 ## wiki/strategies/invariant — Robust 전략 (RS1~RS9)
 
@@ -169,6 +169,7 @@
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
 - [sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md](sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) — 시니어 파트너 인터뷰 딥리서치 (사용자 1차 + WSTS·IDC·IEA·Anthropic·NASA·NDRC 교차 팩트체크): "하드웨어 시간 돌아옴" 4대 메시지·전략 권고 7개
 - [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 베인앤컴퍼니 신문섭 파트너 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
+- [sources/articles/captive-ssd-fdp-context-2026-08.md](sources/articles/captive-ssd-fdp-context-2026-08.md) — 웹 리서치 종합: Captive SSD 위상 변화 4단계(완제품→펌웨어→자체 컨트롤러 Nitro→표준·웨이퍼)·하이퍼스케일러 SSD 수요 ~55%·NAND 웨이퍼 +246%·FDP 표준 기원(Meta·Google 주도·삼성 공동)
 - [sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md](sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md) — 사용자 전략 인풋 원문: FDP 기반 Host–SSD 통합 솔루션 전략 (시스템 SW·실행전략 6종·로드맵·KPI·스토리라인)
 - [sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md](sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md) — 최장석 상무(메모리 상품기획팀장) 내부 인터뷰 녹취록: "수요 감소"의 제품 단위 정의, HBM↔DDR 캐파 상쇄 리스크, zHBM(3D 적층 커스텀 메모리)·가속기 전력/써멀 병목, 미주 vs 중화 선택과 집중, 커스텀 제품 소싱·컨트랙 체질, 하이-로 전략 (대시보드 "인터뷰" 메뉴 미러)
 - [sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md](sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md) — 이창수 부사장(메모리 영업팀장) 내부 인터뷰 정리본: 수요는 예측이 아니라 만드는 것(가격 탄력도), AI 프론티어·시가(時價) 시장, 중복 수요·수요 사슬 3형태, CAPEX vs FCF 재무 시그널, take-or-pay 멀티이어·NTE/NTB(1차 방어선), 사업 경쟁력 Back to Basic·WPSI(2차 방어선), 커스텀 HBM 퇴조, 브로드컴·ASIC·소버린 (민감 수치 대략 표현, 대시보드 "인터뷰" 메뉴 미러)

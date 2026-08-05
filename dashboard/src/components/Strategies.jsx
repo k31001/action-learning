@@ -813,22 +813,101 @@ function TransformationPanel() {
         </div>
       </Card>
 
-      <Card title="제품·기술 축 — FDP Host–SSD 통합 플랫폼 (인재 축의 짝)" source="wiki/strategies/fdp-host-ssd-platform.md">
-        <p className="text-xs text-zinc-700 leading-relaxed mb-3">{DT_FDP.oneLine}</p>
-        <div className="border-l-4 border-sky-400 bg-sky-50/60 rounded-r-lg px-3 py-2 mb-3">
-          <p className="text-sm text-zinc-900 font-bold leading-relaxed">{DT_FDP.declaration}</p>
-          <p className="text-xs text-zinc-700 mt-1 italic">"{DT_FDP.messageKo}"</p>
-          <p className="text-[10px] text-sky-700 font-medium mt-1">{DT_FDP.messageEn}</p>
-        </div>
+      <Card title="제품·기술 축 ① 왜 지금인가 — 환경 변화와 Captive SSD 위상 변화" source="wiki/strategies/fdp-host-ssd-platform.md">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3">
-          {DT_FDP.problems.map((p, i) => (
+          {DT_FDP.envFlows.map((f, i) => (
             <div key={i} className="rounded-lg border border-zinc-200 bg-zinc-50/60 p-2.5">
-              <div className="text-[11px] font-bold text-zinc-900 mb-1">{p.title}</div>
-              <p className="text-[11px] text-zinc-700 leading-snug">{p.desc}</p>
+              <div className="text-[11px] font-bold text-zinc-900 mb-1">{f.title}</div>
+              <p className="text-[11px] text-zinc-700 leading-snug">{f.desc}</p>
             </div>
           ))}
         </div>
-        <div className="text-[11px] font-bold text-zinc-500 mb-1.5">전체 전략 구조 — 6요소</div>
+        <div className="text-xs font-bold text-zinc-800 mb-1.5">Captive SSD 위상 변화 — 고객 통제권의 단계 상승 (불가역, 데이터 기반)</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-3 items-center">
+          <div className="h-56">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={DT_FDP.captiveSteps} margin={{ top: 8, right: 8, left: -24, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e4e4e7" />
+                <XAxis dataKey="period" tick={{ fontSize: 10, fill: '#52525b' }} />
+                <YAxis domain={[0, 4]} ticks={[1, 2, 3, 4]} tick={{ fontSize: 10, fill: '#a1a1aa' }} />
+                <Tooltip formatter={(v, _n, p) => [`${v}단계 · ${p.payload.stage}`, '고객 통제 계층']} labelStyle={{ fontSize: 11 }} contentStyle={{ fontSize: 11 }} />
+                <Bar dataKey="level" radius={[4, 4, 0, 0]}>
+                  {DT_FDP.captiveSteps.map((st, i) => (
+                    <Cell key={i} fill={['#c7d3db', '#9dbacb', '#4c7c94', '#028090'][i]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="space-y-2">
+            {DT_FDP.captiveSteps.map((st, i) => (
+              <div key={i} className="flex items-start gap-2">
+                <span
+                  className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white mt-0.5"
+                  style={{ backgroundColor: ['#c7d3db', '#9dbacb', '#4c7c94', '#028090'][i] }}
+                >
+                  {st.level}
+                </span>
+                <div className="min-w-0">
+                  <span className="text-[11px] font-bold text-zinc-900">{st.stage}</span>
+                  <span className="text-[10px] text-zinc-400 ml-1.5">{st.period}</span>
+                  <p className="text-[10px] text-zinc-600 leading-snug">{st.evidence}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
+          {DT_FDP.captiveStats.map((s, i) => (
+            <div key={i} className="rounded-lg border border-zinc-200 bg-white p-2.5 text-center">
+              <div className="text-lg font-bold font-mono text-teal-700">{s.value}</div>
+              <p className="text-[10px] text-zinc-500 leading-snug">{s.label}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[11px] text-zinc-700 italic bg-sky-50 border border-sky-200 rounded px-2.5 py-1.5 leading-relaxed">
+          <span className="text-sky-700 font-bold not-italic">독해 — </span>
+          {DT_FDP.captiveTakeaway}
+        </p>
+      </Card>
+
+      <Card title="제품·기술 축 ② 전략 선택지 — 왜 이 전략인가" source="wiki/strategies/fdp-host-ssd-platform.md">
+        <p className="text-[11px] text-zinc-500 mb-2">
+          교차점에서 검토한 선택지 4개 — 평가 기준: 부가가치 방어 · 펌웨어 공통화 · 통제권 흐름 정합 · 차별화 지속성
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3">
+          {DT_FDP.options.map(o => (
+            <div
+              key={o.id}
+              className={`rounded-lg border p-3 ${o.verdict ? 'border-emerald-300 bg-emerald-50/60' : 'border-zinc-200 bg-zinc-50/50'}`}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <span
+                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white ${o.verdict ? 'bg-emerald-600' : 'bg-zinc-400'}`}
+                >
+                  {o.verdict ? '✓' : '✕'}
+                </span>
+                <span className={`text-xs font-bold ${o.verdict ? 'text-emerald-800' : 'text-zinc-900'}`}>{o.id}. {o.name}</span>
+              </div>
+              <p className="text-[11px] text-zinc-500 leading-snug mb-1">{o.desc}</p>
+              <p className="text-[11px] text-zinc-700 leading-snug">
+                <span className={`font-bold ${o.verdict ? 'text-emerald-700' : 'text-zinc-400'}`}>{o.verdict ? '채택' : '탈락'}</span>
+                {' — '}{o.reason}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-3">
+          <div className="text-[11px] font-bold text-emerald-700 mb-0.5">선택 논리</div>
+          <p className="text-[11px] text-zinc-700 leading-snug">{DT_FDP.selectionLogic}</p>
+        </div>
+      </Card>
+
+      <Card title="제품·기술 축 ③ 선택된 전략 — 구조 · 실행 · KPI" source="wiki/strategies/fdp-host-ssd-platform.md">
+        <div className="border-l-4 border-sky-400 bg-sky-50/60 rounded-r-lg px-3 py-2 mb-3">
+          <p className="text-sm text-zinc-900 font-bold leading-relaxed">{DT_FDP.declaration}</p>
+          <p className="text-xs text-zinc-700 mt-1 italic">"{DT_FDP.messageKo}"</p>
+        </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-3">
           {DT_FDP.elements.map((e, i) => (
             <div key={i} className={`rounded-lg border p-2 ${i === 2 ? 'border-emerald-300 bg-emerald-50/60' : 'border-zinc-200 bg-white'}`}>
@@ -837,13 +916,6 @@ function TransformationPanel() {
             </div>
           ))}
         </div>
-        <p className="text-[11px] text-zinc-700 italic bg-emerald-50 border border-emerald-200 rounded px-2.5 py-1.5 leading-relaxed">
-          <span className="text-emerald-700 font-bold not-italic">인재 축과의 결합 — </span>
-          {DT_FDP.relation}
-        </p>
-      </Card>
-
-      <Card title="FDP 실행전략 6종 · 로드맵 · KPI" source="wiki/strategies/fdp-host-ssd-platform.md">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-3">
           {DT_FDP.strategies.map(st => (
             <div key={st.no} className="rounded-lg border border-zinc-200 bg-white p-2.5">
@@ -864,7 +936,7 @@ function TransformationPanel() {
             </div>
           ))}
         </div>
-        <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-3">
+        <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-3 mb-3">
           <div className="text-[11px] font-bold text-emerald-700 mb-1">핵심 KPI — {DT_FDP.kpiCore}</div>
           <div className="flex flex-wrap gap-1.5">
             {DT_FDP.kpis.map((k, i) => (
@@ -872,6 +944,10 @@ function TransformationPanel() {
             ))}
           </div>
         </div>
+        <p className="text-[11px] text-zinc-700 italic bg-emerald-50 border border-emerald-200 rounded px-2.5 py-1.5 leading-relaxed">
+          <span className="text-emerald-700 font-bold not-italic">인재 축과의 결합 — </span>
+          {DT_FDP.relation}
+        </p>
       </Card>
 
       <Card title="3-Phase 액션 플랜" source="outputs/report/dev-org-transformation-report.md">

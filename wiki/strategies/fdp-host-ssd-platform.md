@@ -1,84 +1,78 @@
 ---
 type: strategy
-last_reviewed: 2026-07-24
+last_reviewed: 2026-08-05
 sources:
   - sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md
+  - sources/articles/captive-ssd-fdp-context-2026-08.md
+  - sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md
+  - sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md
 ---
 
-# FDP Host–SSD 통합 플랫폼 전략 — SSD 공급자에서 통합 솔루션 제공자로 (DT-P: 개발실 전환의 제품·기술 축)
+# FDP Host–SSD 통합 플랫폼 전략 — 환경 변화에서 전략 선택까지 (DT-P: 개발실 전환의 제품·기술 축)
 
-> **한 줄 요약**: FDP(Flexible Data Placement)는 인터페이스일 뿐이다. 워크로드의 데이터 수명을 분석해 RUH에 매핑하고 효과를 검증하는 **시스템 소프트웨어가 없으면 고객은 FDP를 활용할 수 없고, 삼성은 "FDP 지원 SSD 공급사 중 하나"로 가격 경쟁에 노출**된다. 따라서 **FDP SSD 공급자 → FDP 기반 Host–SSD 통합 솔루션 제공자**로 전환한다 ([fdp-host-ssd-platform-strategy-2026-07-24.md](../../sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md)).
+> **한 줄 요약**: 고객(하이퍼스케일러)의 스토리지 통제권이 완제품 → 펌웨어 → 자체 컨트롤러(Captive) → **표준(FDP)·웨이퍼 직구매**로 일관되게 상승했다. 이 흐름은 되돌릴 수 없다 — 남은 선택은 흐름 위에서 부가가치를 재정의하는 것이며, 검토한 4개 선택지 중 **"FDP 표준 SSD + 시스템 소프트웨어 통합 플랫폼"**이 유일하게 표준화(펌웨어 공통화)와 고객 통제권 수용을 양립시킨다 ([fdp-host-ssd-platform-strategy-2026-07-24.md](../../sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md), [captive-ssd-fdp-context-2026-08.md](../../sources/articles/captive-ssd-fdp-context-2026-08.md)).
 
-> **전략 메시지**: *"Binding secures demand. FDP standardizes the device. System software creates customer value. End-to-end co-optimization builds the strategic relationship."* — Binding으로 수요를 확보하고, FDP로 제품을 표준화하며, 시스템 소프트웨어로 고객 워크로드를 연결한다.
+> **전략 문장**: *Binding으로 수요를 확보하고, FDP로 제품을 표준화하며, 시스템 소프트웨어로 고객 워크로드를 연결한다.*
 
-> **개발실 전환 전략과의 관계**: [dev-org-transformation.md](dev-org-transformation.md)의 **인재 축(FDE 스타 플레이어, §4.6)** 과 짝을 이루는 **제품·기술 축**이다. FDE가 "누가 고객 아키텍처 안으로 들어가는가"라면, 본 전략은 "무엇을 들고 들어가는가"(시스템 SW·프로파일러·에뮬레이터)에 답한다.
+> **개발실 전환 전략과의 관계**: [dev-org-transformation.md](dev-org-transformation.md)의 **인재 축(FDE 스타, §4.6)** 과 짝을 이루는 **제품·기술 축(§4.7)**. FDE가 "누가 들어가는가"라면 본 전략은 "무엇을 들고 들어가는가"다.
 
 ---
 
-## 1. 문제 정의 — 스토리라인의 빠진 조각
+## 1. 환경 변화 — 세 갈래 흐름이 한 지점에서 만난다
 
-기존 스토리라인(수주산업화 → Binding 계약 → FDP 표준 SSD)에는 **FDP 표준을 실제 고객 가치로 전환하는 실행 주체**가 빠져 있었다 ([원문](../../sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md)):
+**① 수주산업화 — Binding 계약의 등장** (기존 지식 기반과의 연결)
+AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계약으로 진화했다 ([lta-to-sca-transition.md](../concepts/lta-to-sca-transition.md)). 이창수 부사장(메모리 영업팀장)의 1차 확인: *"지금은 5년짜리에 선수금을 수십억 달러 단위로 받아서… 구매 의무를 저버리면 받은 캐시에서 깐다 — take-or-pay야. **메모리가 처음으로 그 개념을 바인딩해**"* ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)). Binding은 장기 물량을 보장하지만 **물량 계약일 뿐, 완제품 부가가치를 보장하지 않는다** — 이것이 본 전략의 출발점이다.
 
-- **고객 관점**: FDP SSD가 제공하는 것은 RU·RG·RUH와 명령/상태정보뿐. 어떤 데이터가 hot/cold인지, 예상 수명·삭제 단위·테넌트 소속·tail latency 민감도는 **SSD가 스스로 알 수 없고 DB·캐시·파일시스템 등 상위 SW에 있다.** 고객에게 이 통합을 전적으로 맡기면 도입이 확산되지 않는다.
-- **삼성 관점**: 시스템 SW 없이 SSD만 공급하면 표준화의 이익보다 **가격 경쟁 압력**이 커진다. 반대로 전략 고객은 TCO 통제를 위해 **Captive SSD**를 확대 중 — NAND 공급에만 머물면 완제품 부가가치를 잃고, 모든 요구를 커스텀 SSD로 받으면 **펌웨어가 파편화**된다.
-- **해법**: FDP 표준 SSD(공통 펌웨어)로 파편화를 막고, **시스템 소프트웨어로 고객 워크로드와 SSD를 연결**해 도입 장벽을 낮추면서 고객 아키텍처에 더 깊이 참여한다.
+**② 하이퍼스케일러의 수요 지배** — 하이퍼스케일 클라우드가 글로벌 enterprise SSD 물량의 **약 55%를 소비**하며, 2026 공급 부족 국면에서 이들의 개방형 구매 약정이 가격 불문 물량을 흡수한다 ([captive-ssd-fdp-context-2026-08.md](../../sources/articles/captive-ssd-fdp-context-2026-08.md) §1). 소수 고객이 시장 규칙을 정한다.
 
-## 2. 전체 전략 구조 (6요소)
+**③ 고객 통제권의 상승 — Captive SSD의 위상 변화** — 이 소수 고객이 TCO 통제를 위해 스토리지 스택을 계층별로 내재화해 왔다(§2). 세 흐름의 교차점: **물량은 Binding으로 잠기고, 규격은 고객이 정하며, 완제품 가치는 고객이 가져가려 한다.** 개발실이 대응 전략 없이 이 교차점에 서면 "웨이퍼 공급자"로 후퇴한다.
 
-| 전략 요소 | 역할 |
-|---|---|
-| **Binding 계약** | 장기 물량과 공급능력 확보 |
-| **FDP 표준 SSD** | 고객별 요구를 공통 인터페이스로 수용 (펌웨어 공통화) |
-| **시스템 소프트웨어** | 워크로드 요구를 FDP 정책으로 변환 |
-| **End-to-End 검증** | 실제 WAF·QoS·수명 개선 보장 |
-| **고객 공동개발** | 고객 시스템 최적화 + 장기 관계 구축 |
-| **현장 텔레메트리** | 제품·소프트웨어 지속 개선 루프 |
+## 2. Captive SSD 위상 변화 — 데이터로 본 통제권의 단계 상승
 
-FDP 효과가 만들어지는 과정: 고객 워크로드 I/O·데이터 수명 분석 → 유형·수명별 분류 → RUH 매핑 → 워크로드 변화에 따른 정책 조정 → WAF·성능·용량·수명 측정 → 텔레메트리 기반 재조정.
+| 단계 | 시기 | 고객이 통제하는 계층 | 근거 이정표 (출처: [captive-ssd-fdp-context-2026-08.md](../../sources/articles/captive-ssd-fdp-context-2026-08.md)) |
+|---|---|---|---|
+| 1. 완제품 구매 | ~2016 | 없음 (벤더 표준품) | 전통적 조달 |
+| 2. 커스텀 스펙·펌웨어 | 2017~20 | 펌웨어 | OCP 스토리지 스펙 · 고객별 펌웨어 브랜치 관행 |
+| 3. **자체 컨트롤러 (Captive)** | 2021~ | 하드웨어 | **AWS Nitro SSD (2021-12)** — 자체 컨트롤러 자작 SSD. "crown jewels는 만들고 staples는 산다" |
+| 4. **표준 주도 + 웨이퍼 직구매** | 2022~26 | 인터페이스 표준 + 공급 단위 | **FDP(TP4146): Meta·Google이 각자 WAF 문제를 풀다 합류, 삼성과 6개월 만에 비준(2023)** · Meta CacheLib FDP 공식 지원 · NAND 웨이퍼 다년 계약(계약가 월 +60%, Q1'25 대비 +246%) |
 
-## 3. 실행전략 6종
+**독해**: ① 통제권 상승은 일방향이다 — 펌웨어를 가진 고객이 컨트롤러로, 컨트롤러를 가진 고객이 표준과 웨이퍼로 내려갔다. ② **FDP 표준 자체가 고객이 설계한 것** — 벤더 기능이 아니라 "데이터 배치 통제권을 표준으로 달라"는 요구의 산물. ③ 구매 단위가 완제품→웨이퍼로 내려간다는 것 = 컨트롤러·펌웨어 부가가치를 고객이 내재화한다는 뜻. **단, 삼성은 FDP 표준의 공동 주도자다** (백서·기술 블로그 발행) — 흐름의 피해자가 아니라 설계 참여자 위치에 있다.
 
-### 실행전략 1 — Samsung FDP Enablement Platform
-- **FDP SDK·공통 라이브러리**: FDP 탐색/설정 API, RU/RG/RUH 관리, 데이터 분류·RUH 매핑 API, 미지원 SSD fallback, Linux block I/O·io_uring·SPDK 연동, telemetry 수집, reset/format/namespace 상태 관리. 고객 앱은 SSD별 세부 명령 대신 SDK·공통 API 사용
-- **주요 워크로드 플러그인**: RocksDB·KV, CacheLib 등 분산 캐시, Ceph·오브젝트 스토리지, MySQL·PostgreSQL, Vector DB·RAG, Kubernetes PV, 가상화·멀티테넌트, AI checkpoint/dataset — 공통 시스템 SW에 FDP 연결 계층을 제공하고 고객은 정책만 수정
-- **Workload Profiler**: 고객 I/O trace에서 데이터 수명 분포·overwrite 주기·hot/cold 비율·테넌트별 분포·GC-tail latency 상관을 분석해 **추천 RUH 수·매핑과 예상 WAF/OP/endurance 효과**를 자동 산출 — FDP를 기능에서 TCO 솔루션으로 격상시키는 도구
-- **FDP Emulator·Digital Twin**: 삼성 SSD 미디어 모델 + 고객 워크로드 모델 결합 — trace replay, RU/RUH 스윕, NAND 세대별·수명 경과·장애/reset·멀티테넌트 간섭·p999/p9999까지 대규모 qualification 전 예측
+## 3. 삼성의 딜레마와 전략적 선택지 — 왜 이 전략인가
 
-### 실행전략 2 — 표준 워크로드 프로파일
-고객마다 펌웨어를 새로 만들지 않고 **검증된 정책 프로파일**(Host SW 설정 + 검증된 FDP 사용법)로 제공 — 펌웨어 공통화와 고객별 최적화의 양립: FDP-Cache(eviction 주기별 분리) · FDP-KV(LSM level·compaction 분리) · FDP-Database(WAL·metadata·user data 분리) · FDP-Multi-tenant(GC 간섭 억제) · FDP-Vector(index·embedding·temp 분리) · FDP-Checkpoint(장기 vs 반복 갱신 분리) · FDP-QLC(저빈도 쓰기·대용량 읽기 최적화)
+교차점에서 검토 가능한 선택지는 4개였다. 평가 기준: (a) 완제품 부가가치 방어 (b) 펌웨어 공통화·개발 효율 (c) 고객 통제권 흐름과의 정합 (d) 차별화 지속성.
 
-### 실행전략 3 — End-to-End 공동검증 체계
-고객이 원하는 것은 표준 준수가 아니라 **실제 TCO 개선**. 검증 범위를 Application→파일시스템/DB→Host FDP 라이브러리→OS/Driver/SPDK→NVMe FDP→SSD FTL·GC→NAND media→현장 텔레메트리로 확대하고, 지표도 제품 성능에서 시스템 성과로: 효율(WAF·OP·usable capacity), 성능(throughput·p999/p9999), 수명(NAND write·DWPD·교체주기), 격리(테넌트 간섭), 전력(TB당 전력), 운영(reset·rollback·복구), 도입(고객 SW 변경량·qualification 기간). **고객 trace를 pre/post-silicon 검증에 재사용** — 고객 워크로드가 개발 후반이 아니라 컨트롤러·펌웨어 설계 초기부터 반영되게 한다.
+| 선택지 | 내용 | 탈락/채택 사유 |
+|---|---|---|
+| **A. 컴포넌트 후퇴** | NAND·웨이퍼 공급에 집중, 완제품은 고객에 위임 | ❌ 물량은 지키나 **완제품 부가가치 영구 상실** — 커머디티 공급자 고착, Binding이 있어도 마진 열위 |
+| **B. 풀커스텀 대응** | 고객별 커스텀 SSD·펌웨어 전면 개발 | ❌ 제품·펌웨어 **파편화**. 커스텀 소싱·컨트랙 체질 부재는 사내 1차 확인 — 최장석: *"커스텀 제품은 소싱·컨트랙이 파운드리 모델과 비슷한데 **그걸 우리가 안 해본 것**, 보상 계약 없이 코스트를 다 먹었다"* ([choi-jangseok-product-planning-interview-2026-07-29.md](../../sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md)) |
+| **C. FDP 표준 SSD만 공급 (HW-only)** | 표준 지원 SSD를 만들되 통합은 고객 몫 | ❌ 통제권 흐름과는 정합하나 **"FDP 지원 여러 공급사 중 하나"** — 시스템 SW 없이는 고객 도입 장벽도 못 낮추고 차별화도 없어 가격 경쟁으로 회귀 |
+| **D. FDP 표준 + 시스템 SW 통합 플랫폼** ✅ | 표준 SSD(공통 펌웨어) + Host SDK·Profiler·E2E 검증 제공 | ✅ 유일하게 4개 기준 동시 충족: 공통 펌웨어로 파편화 방지(b) + 고객의 데이터 배치 통제권을 표준으로 수용(c) + SW·검증 계층에서 차별화(a·d) + 표준 공동 주도자 지위 활용. **고객 통제권 흐름을 거스르지 않고 그 위에서 부가가치를 재정의** |
 
-### 실행전략 4 — 고객 공동개발 조직 신설
-SSD 제품개발 조직과 고객 시스템 SW 조직 사이를 잇는 4개 기능: **Host Software**(SDK·Linux·SPDK), **Workload Integration**(DB·Cache·Vector DB 연동), **Customer Solution Engineering**(고객 trace 분석·정책 공동설계), **End-to-End Validation**(Host–SSD–NAND 통합검증). 단순 기술지원이 아니라 **제품 기획·개발에 참여**: 워크로드 요구 수집 → FDP 표준 개선 제안 → SSD 아키텍처 요구 도출 → Host SW·FW 공동 릴리스 → 현장 검증·배포 → 현장 데이터의 차기 제품 반영. *실행 주체 관점에서 [dev-org-transformation.md](dev-org-transformation.md)의 Co-Design Pod·FDE(§4.5–4.6)가 이 조직의 고객 접점 모델이다.*
+**선택 논리 한 줄**: 통제권 상승이 불가역이라면, 부가가치는 "고객이 가져간 계층 아래(웨이퍼)"가 아니라 **"고객이 아직 풀지 못한 계층 위(워크로드↔FDP 정책 변환)"**에서 만들어야 한다. FDP SSD가 제공하는 RU/RUH를 워크로드에 매핑하는 시스템 SW가 그 계층이고, 이는 [rs3-customer-switching-cost.md](invariant/rs3-customer-switching-cost.md)(전환비용)와 [embedded-software-monetization.md](../concepts/embedded-software-monetization.md)(SW 수익화)의 NAND/SSD 구체화다.
 
-### 실행전략 5 — Binding 계약에 기술협력 포함
-단순 물량·가격 약정 → **공동 플랫폼 계약**으로 확장. 고객 약정: 연도별 NAND·SSD 물량, 대상 워크로드·도입 시스템, qualification 일정, **익명화 trace·workload 특성 제공**, FDP Host SW 적용·검증 참여, 공동 로드맵. 삼성 약정: 공급능력·제품/NAND 로드맵, FDP SSD·SDK, 워크로드 공동 최적화, 장기 FW·시스템 SW 지원, 성능·WAF·수명 개선 목표, 세대 전환 동등성 검증. ([lta-to-sca-transition.md](../concepts/lta-to-sca-transition.md)의 전략적 고객 계약 구조와 동일 계열 — NAND/SSD 도메인 구체화)
+## 4. 선택된 전략 — 구조와 실행
 
-### 실행전략 6 — 오픈소스와 차별화의 경계
-FDP는 개방형 표준 — 지나친 독점은 vendor lock-in 우려를 낳는다. **공개**: 기본 FDP 라이브러리·API, Linux·SPDK 연동, 관리·진단 도구, 표준 workload adapter, 규격 적합성 테스트. **차별화(비공개)**: NAND·FTL 동작 모델, workload 분석 알고리즘, 자동 RUH 정책 추천, 삼성 SSD 전용 최적화, 수명·WAF·tail latency 예측 모델, 현장 텔레메트리 분석, 고객별 검증 프로파일. 고객은 개방 표준의 안정성을 얻되, 삼성 SSD 선택 시 더 높은 TCO 효과를 얻는다.
+**6요소 구조**: Binding 계약(장기 물량) → FDP 표준 SSD(공통 인터페이스) → **시스템 소프트웨어(워크로드→정책 변환)** → E2E 검증(TCO 보장) → 고객 공동개발(장기 관계) → 현장 텔레메트리(개선 루프).
 
-## 4. 단계별 실행 로드맵
+**실행전략 6종** (상세: [fdp-host-ssd-platform-strategy-2026-07-24.md](../../sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md)):
+1. **Samsung FDP Enablement Platform** — SDK·공통 라이브러리(Linux·io_uring·SPDK), 워크로드 플러그인(RocksDB·CacheLib·Ceph·Vector DB·K8s), Workload Profiler(trace→추천 RUH·예상 WAF), Emulator/Digital Twin
+2. **표준 워크로드 프로파일 7종** — Cache·KV·Database·Multi-tenant·Vector·Checkpoint·QLC: 새 펌웨어가 아니라 Host 설정+검증된 사용법 → 펌웨어 공통화와 고객별 최적화 양립
+3. **End-to-End 공동검증** — App→Host→SSD→NAND→텔레메트리, 시스템 성과 지표(WAF·p999/p9999·격리·전력·qualification 기간), 고객 trace의 pre/post-silicon 재사용
+4. **고객 공동개발 조직** — Host SW·Workload Integration·Solution Engineering·E2E Validation 4기능, 제품 기획·개발 참여 (Co-Design Pod·FDE의 NAND/SSD 구체화)
+5. **Binding 계약에 기술협력 포함** — 물량·trace 제공·공동 로드맵 ↔ 공급능력·SDK·개선 목표: 물량 계약을 **공동 플랫폼 계약**으로 격상 (이창수 take-or-pay 체제의 다음 단계)
+6. **오픈소스·차별화 경계** — 공개(기본 라이브러리·연동·적합성) / 차별화(NAND·FTL 모델·정책 추천·예측 모델): lock-in 우려 없이 삼성 SSD 선택 시 더 높은 TCO 효과
 
-| 단계 | 내용 |
-|---|---|
-| **1단계 — 제품·기본 도구** | 공통 FDP 펌웨어, Linux·SPDK SDK, nvme-cli·fio 테스트 도구, trace 수집·분석, FDP Emulator, 기본 Cache/KV 프로파일 |
-| **2단계 — 전략 고객 공동검증** | 핵심 CSP 2~3개사 workload pilot, trace 기반 RUH 정책, WAF·p999·용량효율 측정, 공통 요구의 제품·표준 반영, 고객별 펌웨어 요구의 Host 정책 전환 |
-| **3단계 — 상용 플랫폼화** | FDP 전 라인업 확대, 검증된 프로파일 제공, qualification 자동화, Host SW·SSD FW 공동 릴리스, Binding 계약에 시스템 SW 지원 포함 |
-| **4단계 — Host Control 확장** | 데이터 배치 성공 후 동일 접근을 QoS·traffic isolation, 전력·thermal, telemetry·failure analytics, firmware attestation·배포관리, namespace별 endurance·OP, multi-tenant resource control로 확대 |
+**단계**: ① 제품·기본 도구 → ② 전략 고객 2~3사 공동검증 → ③ 상용 플랫폼화(Binding에 SW 지원 포함) → ④ Host Control 확장(QoS·전력·telemetry·multi-tenant)
 
 ## 5. KPI
 
-- 기업용 SSD 중 FDP 지원 비중 / **실제 FDP 활성화 비중** (핵심 지표 — 지원 출하량만 세면 미사용 기능이 됨: **고객 시스템에서 FDP가 실제 활성화된 SSD 용량**이 가장 중요)
-- FDP 적용 고객·Binding 계약 물량, 고객별 펌웨어 브랜치 감소율, qualification 기간, Host SW 적용 개발기간
-- WAF·NAND write 감소율, usable capacity 증가율, p999/p9999 개선율
-- **고객 Captive SSD 계획에서 삼성 완제품으로 전환된 물량**
+핵심 = **고객 시스템에서 FDP가 실제 활성화된 SSD 용량** (지원 출하량만 세면 미사용 기능이 된다). 보조: FDP 적용 Binding 물량 · 펌웨어 브랜치 감소율 · qualification 기간 · WAF/NAND write 감소율 · usable capacity 증가율 · p999/p9999 개선율 · **Captive 계획에서 삼성 완제품으로 전환된 물량**.
 
 ## 6. 시나리오 연결 (일관성 규칙)
 
-- **시나리오 B (AI 르네상스, Main Bet)**: 기업용 SSD·AI 스토리지 수요 최대 — 플랫폼 효과가 가장 크게 작동. MB-4(커스텀 AI 메모리)의 NAND/SSD 측 대응물
-- **시나리오 A (황금 요새)**: 진영 내 핵심 CSP와의 Binding+플랫폼 결합이 진영 락인을 강화
-- **시나리오 C·D (AI 조정)**: 수요 수축기에 Binding 최소 물량 + 시스템 SW 전환비용이 방어벽 ([rs3-customer-switching-cost.md](invariant/rs3-customer-switching-cost.md) — FDP SW 스택은 전환비용 그 자체, [rs8-structured-revenue-hedging.md](invariant/rs8-structured-revenue-hedging.md) 연계)
-- **시나리오 E (패러다임 전환)**: Host Control 확장(4단계)이 차세대 스토리지 아키텍처 전환기의 헤지
-- 연결: [dev-org-transformation.md](dev-org-transformation.md)(조직·인재 실행 계층) · [embedded-software-monetization.md](../concepts/embedded-software-monetization.md)(시스템 SW 수익화의 상위 개념) · [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md)(공동 최적화 선례)
+- **B (AI 르네상스, Main Bet)**: enterprise SSD·AI 스토리지 수요 최대 — 플랫폼 효과 최대. MB-4의 NAND/SSD 대응물
+- **A (황금 요새)**: 진영 내 핵심 CSP와 Binding+플랫폼 결합이 진영 락인 강화
+- **C·D (AI 조정)**: Binding 최소 물량 + 시스템 SW 전환비용이 방어벽 ([rs8-structured-revenue-hedging.md](invariant/rs8-structured-revenue-hedging.md) 연계)
+- **E (패러다임 전환)**: Host Control 확장(4단계)이 차세대 스토리지 아키텍처 전환기의 헤지
+- 연결: [dev-org-transformation.md](dev-org-transformation.md) · [rs3-customer-switching-cost.md](invariant/rs3-customer-switching-cost.md) · [embedded-software-monetization.md](../concepts/embedded-software-monetization.md) · [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md)

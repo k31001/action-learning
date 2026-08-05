@@ -474,77 +474,188 @@ function slideLow(pres, ic) {
 }
 
 /* ---------------------------------------------------------------- */
-/* 제품·기술 축 ① — FDP 플랫폼: 왜·무엇 (전환 한 컷 + 6요소 체인)       */
+/* 제품·기술 축 ① — 환경 변화: Captive SSD 위상 변화 (데이터 차트)      */
 /* ---------------------------------------------------------------- */
 const FDP_TITLE = "제품·기술 축 — FDP Host–SSD 통합 플랫폼";
 const FDP_OPTS = { title: FDP_TITLE, source: "wiki/strategies/fdp-host-ssd-platform.md", chipW: 1.6 };
 
-function slideFdpOverview(pres, ic) {
+function slideFdpWhy(pres, ic) {
   const s = pres.addSlide();
   header(s, "제품 축 ①", FDP_OPTS);
 
-  s.addText("“Binding으로 수요를 확보하고, FDP로 제품을 표준화하며, 시스템 소프트웨어로 고객 워크로드를 연결한다”", {
-    shape: "roundRect", rectRadius: 0.09,
-    x: 0.5, y: 0.94, w: 12.33, h: 0.56,
-    fill: { color: NEUTRAL }, align: "center", valign: "middle",
-    fontFace: FONT, fontSize: 16.5, italic: true, color: INK, margin: 0,
-  });
-
-  // ── 전환 한 컷: FDP SSD 공급자 → (시스템 SW) → 통합 솔루션 제공자
-  const boxY = 1.66, boxH = 1.5;
-  s.addShape("roundRect", { x: 2.2, y: boxY, w: 3.5, h: boxH, rectRadius: 0.1, fill: { color: NEUTRAL }, line: { color: LINE_GRAY, width: 1.25 } });
-  iconCircle(s, 3.72, boxY + 0.14, 0.46, SUB, ic.inbox);
-  s.addText("FDP SSD 공급자", {
-    x: 2.3, y: boxY + 0.64, w: 3.3, h: 0.36, align: "center",
-    fontFace: FONT, fontSize: 19, bold: true, color: SUB, margin: 0,
-  });
-  s.addText("여러 공급사 중 하나 · 가격 경쟁 노출", {
-    x: 2.3, y: boxY + 1.04, w: 3.3, h: 0.28, align: "center",
-    fontFace: FONT, fontSize: 11.5, color: SUB, margin: 0,
-  });
-  s.addText("+ 시스템 SW", {
-    shape: "rightArrow", x: 5.78, y: boxY + 0.3, w: 1.74, h: 0.9,
-    fill: { color: TEAL }, align: "center", valign: "middle",
-    fontFace: FONT, fontSize: 12, bold: true, color: "FFFFFF", margin: 0,
-  });
-  s.addShape("roundRect", { x: 7.6, y: boxY, w: 3.5, h: boxH, rectRadius: 0.1, fill: { color: TINT_GREEN }, line: { color: GREEN, width: 1.5 } });
-  iconCircle(s, 9.12, boxY + 0.14, 0.46, GREEN, ic.compass);
-  s.addText("통합 솔루션 제공자", {
-    x: 7.7, y: boxY + 0.64, w: 3.3, h: 0.36, align: "center",
-    fontFace: FONT, fontSize: 19, bold: true, color: GREEN, margin: 0,
-  });
-  s.addText("Host SDK · Profiler · End-to-End 검증", {
-    x: 7.6, y: boxY + 1.04, w: 3.5, h: 0.28, align: "center",
-    fontFace: FONT, fontSize: 11.5, color: INK, margin: 0,
-  });
-
-  // ── 왜 시스템 소프트웨어인가 — 문제 3
-  s.addText("왜 시스템 소프트웨어인가", {
-    x: 0.5, y: 3.32, w: 6, h: 0.28,
-    fontFace: FONT, fontSize: 14, bold: true, color: INK, margin: 0,
-  });
-  const problems = [
-    ["FDP는 인터페이스일 뿐", "SSD는 hot/cold·수명·테넌트를 모른다 — 정보는 DB·캐시 등 상위 SW에 있다"],
-    ["Captive SSD 확대", "NAND 공급에만 머물면 완제품 SSD의 부가가치를 잃는다"],
-    ["커스텀 파편화", "고객별 커스텀 SSD 개발은 제품·펌웨어를 파편화시킨다"],
+  // ── 환경 변화 세 갈래
+  const flows = [
+    ["수주산업화 — Binding", "5년 take-or-pay·선수금 수백억$ — “메모리가 처음으로 바인딩” (이창수 인터뷰)"],
+    ["수요 지배", "하이퍼스케일러가 글로벌 enterprise SSD의 ~55% 소비 — 소수 고객이 규칙을 정한다"],
+    ["통제권 상승", "고객이 완제품 → 펌웨어 → 컨트롤러 → 표준·웨이퍼로 스토리지를 내재화"],
   ];
-  problems.forEach(([t, c], i) => {
+  flows.forEach(([t, c], i) => {
     const x = 0.5 + i * 4.2;
     s.addText([
       { text: t, options: { fontSize: 13.5, bold: true, color: INK, breakLine: true } },
       { text: c, options: { fontSize: 10.5, color: SUB } },
     ], {
-      shape: "roundRect", rectRadius: 0.08, x, y: 3.64, w: 3.94, h: 0.96,
+      shape: "roundRect", rectRadius: 0.08, x, y: 0.96, w: 3.94, h: 1.0,
       fill: { color: NEUTRAL }, align: "center", valign: "middle",
       fontFace: FONT, margin: 0, lineSpacingMultiple: 1.1,
     });
   });
 
-  // ── 전체 전략 구조 — 6요소 체인
-  s.addText("전체 전략 구조 — 6요소", {
-    x: 0.5, y: 4.84, w: 6, h: 0.28,
-    fontFace: FONT, fontSize: 14, bold: true, color: INK, margin: 0,
+  // ── Captive SSD 위상 변화 — 계단형 차트
+  s.addText("Captive SSD 위상 변화 — 고객 통제권의 단계 상승 (불가역)", {
+    x: 0.5, y: 2.14, w: 9, h: 0.3,
+    fontFace: FONT, fontSize: 15, bold: true, color: INK, margin: 0,
   });
+  const baseY = 5.5, unit = 0.68;
+  const steps = [
+    ["~2016", "완제품 구매", "C7D3DB", INK],
+    ["2017~20", "커스텀 펌웨어", "9DBACB", INK],
+    ["2021~", "자체 컨트롤러", "4C7C94", "FFFFFF"],
+    ["2022~26", "표준·웨이퍼", TEAL, "FFFFFF"],
+  ];
+  steps.forEach(([period, stage, fill, tc], i) => {
+    const x = 0.7 + i * 1.62;
+    const h = unit * (i + 1);
+    s.addShape("roundRect", { x, y: baseY - h, w: 1.34, h, rectRadius: 0.05, fill: { color: fill } });
+    s.addText(String(i + 1), {
+      x, y: baseY - h + 0.04, w: 1.34, h: 0.3, align: "center",
+      fontFace: FONT, fontSize: 13, bold: true, color: tc, margin: 0,
+    });
+    s.addText(stage, {
+      x: x - 0.14, y: baseY - h - 0.32, w: 1.62, h: 0.28, align: "center",
+      fontFace: FONT, fontSize: 11, bold: true, color: INK, margin: 0,
+    });
+    s.addText(period, {
+      x, y: baseY + 0.06, w: 1.34, h: 0.26, align: "center",
+      fontFace: FONT, fontSize: 10.5, color: SUB, margin: 0,
+    });
+  });
+  s.addShape("line", { x: 0.6, y: baseY, w: 6.7, h: 0, line: { color: RAIL_GRAY, width: 1.5 } });
+
+  // ── 단계별 근거 (우측)
+  const evid = [
+    ["1", "벤더 표준품 조달 — 통제권 없음"],
+    ["2", "OCP 스토리지 스펙 · 고객별 펌웨어 브랜치 관행"],
+    ["3", "AWS Nitro SSD(’21) — 자체 컨트롤러 자작 SSD"],
+    ["4", "FDP 표준 비준(’23) — Meta·Google 주도·삼성 공동 · NAND 웨이퍼 다년 계약"],
+  ];
+  evid.forEach(([n, t], i) => {
+    const y = 2.62 + i * 0.74;
+    s.addText(n, {
+      shape: "ellipse", x: 7.7, y: y + 0.05, w: 0.3, h: 0.3,
+      fill: { color: i === 3 ? TEAL : SUB }, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 11, bold: true, color: "FFFFFF", margin: 0,
+    });
+    s.addText(t, {
+      x: 8.12, y, w: 4.6, h: 0.66,
+      fontFace: FONT, fontSize: 11, color: INK, margin: 0, valign: "middle", lineSpacingMultiple: 1.05,
+    });
+  });
+
+  // ── 정량 포인트 스탯
+  const stats = [
+    ["~55%", "하이퍼스케일러의 enterprise SSD 수요 비중"],
+    ["+246%", "NAND 웨이퍼 가격 (vs Q1’25) — 웨이퍼 직구매 경쟁"],
+    ["6개월", "FDP 표준 비준 소요 — 고객(Meta·Google) 주도 속도"],
+  ];
+  stats.forEach(([v, l], i) => {
+    const x = 0.5 + i * 4.2;
+    s.addText(v, {
+      x, y: 6.06, w: 3.94, h: 0.4, align: "center",
+      fontFace: FONT, fontSize: 22, bold: true, color: i === 2 ? TEAL : INK, margin: 0,
+    });
+    s.addText(l, {
+      x, y: 6.48, w: 3.94, h: 0.28, align: "center",
+      fontFace: FONT, fontSize: 10.5, color: SUB, margin: 0,
+    });
+  });
+}
+
+/* ---------------------------------------------------------------- */
+/* 제품·기술 축 ② — 전략 선택지 4개와 선택 논리                        */
+/* ---------------------------------------------------------------- */
+function slideFdpOptions(pres, ic) {
+  const s = pres.addSlide();
+  header(s, "제품 축 ②", FDP_OPTS);
+
+  s.addText("교차점에서 검토한 선택지 4개 — 평가 기준: 부가가치 방어 · 펌웨어 공통화 · 통제권 흐름 정합 · 차별화 지속성", {
+    x: 0.5, y: 0.92, w: 12.33, h: 0.3,
+    fontFace: FONT, fontSize: 13, color: SUB, margin: 0,
+  });
+
+  const options = [
+    ["A", "컴포넌트 후퇴", "NAND·웨이퍼 공급에 집중, 완제품은 고객에 위임",
+      "물량은 지키나 완제품 부가가치 영구 상실 — 커머디티 공급자 고착", false],
+    ["B", "풀커스텀 대응", "고객별 커스텀 SSD·펌웨어 전면 개발",
+      "제품·펌웨어 파편화 — “커스텀 소싱·컨트랙은 파운드리 모델, 우리가 안 해본 것” (최장석)", false],
+    ["C", "FDP 표준 SSD만 공급", "표준 지원 하드웨어만 제공, 통합은 고객 몫",
+      "“FDP 지원 여러 공급사 중 하나” — 차별화 없이 가격 경쟁 회귀", false],
+    ["D", "FDP 표준 + 시스템 SW 플랫폼", "공통 펌웨어 + Host SDK·Profiler·E2E 검증 제공",
+      "유일하게 4개 기준 동시 충족 — 통제권 흐름 위에서 부가가치 재정의", true],
+  ];
+  options.forEach(([id, name, desc, reason, chosen], i) => {
+    const x = 0.5 + (i % 2) * 6.27;
+    const y = 1.36 + Math.floor(i / 2) * 2.28;
+    s.addShape("roundRect", {
+      x, y, w: 6.06, h: 2.12, rectRadius: 0.09,
+      fill: { color: chosen ? TINT_GREEN : NEUTRAL },
+      line: chosen ? { color: GREEN, width: 1.5 } : { color: LINE_GRAY, width: 1 },
+    });
+    s.addText(chosen ? "✓" : "✕", {
+      shape: "ellipse", x: x + 0.24, y: y + 0.22, w: 0.4, h: 0.4,
+      fill: { color: chosen ? GREEN : "B9C7D1" }, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 16, bold: true, color: "FFFFFF", margin: 0,
+    });
+    s.addText(`${id}. ${name}`, {
+      x: x + 0.78, y: y + 0.22, w: 5.1, h: 0.4, valign: "middle",
+      fontFace: FONT, fontSize: 16.5, bold: true, color: chosen ? GREEN : INK, margin: 0,
+    });
+    s.addText(desc, {
+      x: x + 0.28, y: y + 0.76, w: 5.5, h: 0.34,
+      fontFace: FONT, fontSize: 12, color: SUB, margin: 0,
+    });
+    s.addText([
+      { text: chosen ? "채택  " : "탈락  ", options: { bold: true, color: chosen ? GREEN : "8A9BA8" } },
+      { text: reason, options: { color: INK } },
+    ], {
+      x: x + 0.28, y: y + 1.14, w: 5.5, h: 0.88,
+      fontFace: FONT, fontSize: 12, margin: 0, valign: "top", lineSpacingMultiple: 1.12,
+    });
+  });
+
+  // ── 선택 논리
+  s.addShape("roundRect", {
+    x: 0.5, y: 5.92, w: 12.33, h: 0.78, rectRadius: 0.08,
+    fill: { color: TINT_GREEN }, line: { color: GREEN, width: 1.25 },
+  });
+  s.addImage({ data: ic.targetGreen, x: 0.72, y: 6.11, w: 0.4, h: 0.4 });
+  s.addText([
+    { text: "선택 논리 — 부가가치는 고객이 가져간 계층 아래(웨이퍼)가 아니라, 아직 풀지 못한 계층 위에서 만든다", options: { fontSize: 14, bold: true, color: INK, breakLine: true } },
+    { text: "워크로드 ↔ FDP 정책 변환이 그 계층 — 삼성은 FDP 표준의 공동 주도자로서 이 계층을 선점할 위치에 있다", options: { fontSize: 11, color: SUB } },
+  ], {
+    x: 1.26, y: 5.92, w: 11.4, h: 0.78, valign: "middle",
+    fontFace: FONT, margin: 0, lineSpacingMultiple: 1.12,
+  });
+}
+
+/* ---------------------------------------------------------------- */
+/* 제품·기술 축 ③ — 선택된 전략: 구조·실행·KPI                         */
+/* ---------------------------------------------------------------- */
+function slideFdpHow(pres, ic) {
+  const s = pres.addSlide();
+  header(s, "제품 축 ③", FDP_OPTS);
+
+  s.addText([
+    { text: "FDP SSD 공급자 → FDP 기반 Host–SSD 통합 솔루션 제공자   ", options: { fontSize: 15, bold: true, color: INK } },
+    { text: "“Binding으로 수요 확보 · FDP로 표준화 · 시스템 SW로 연결”", options: { fontSize: 12.5, italic: true, color: SUB } },
+  ], {
+    shape: "roundRect", rectRadius: 0.09,
+    x: 0.5, y: 0.94, w: 12.33, h: 0.6,
+    fill: { color: NEUTRAL }, align: "center", valign: "middle",
+    fontFace: FONT, margin: 0,
+  });
+
+  // ── 6요소 체인
   const chain = [
     ["Binding 계약", "장기 물량 확보"],
     ["FDP 표준 SSD", "공통 인터페이스"],
@@ -559,77 +670,53 @@ function slideFdpOverview(pres, ic) {
       { text: t, options: { fontSize: 12, bold: true, color: i === 2 ? GREEN : INK, breakLine: true } },
       { text: c, options: { fontSize: 9.5, color: SUB } },
     ], {
-      shape: "roundRect", rectRadius: 0.07, x, y: 5.16, w: 1.84, h: 0.8,
+      shape: "roundRect", rectRadius: 0.07, x, y: 1.7, w: 1.84, h: 0.78,
       fill: { color: i === 2 ? TINT_GREEN : "FFFFFF" },
       line: { color: i === 2 ? GREEN : LINE_GRAY, width: i === 2 ? 1.25 : 1 },
       align: "center", valign: "middle", fontFace: FONT, margin: 0, lineSpacingMultiple: 1.05,
     });
     if (i < 5) s.addText("▶", {
-      x: x + 1.84, y: 5.16, w: 0.22, h: 0.8, align: "center", valign: "middle",
+      x: x + 1.84, y: 1.7, w: 0.22, h: 0.78, align: "center", valign: "middle",
       fontFace: FONT, fontSize: 10.5, color: SUB, margin: 0,
     });
   });
 
-  // ── 스토리 한 줄
-  s.addText("Captive 고객의 요구를 삼성 완제품 생태계 안에 수용한다 — Binding secures demand · FDP standardizes · System SW creates value", {
-    x: 0.5, y: 6.28, w: 12.33, h: 0.3, align: "center",
-    fontFace: FONT, fontSize: 12, italic: true, color: SUB, margin: 0,
-  });
-}
-
-/* ---------------------------------------------------------------- */
-/* 제품·기술 축 ② — 실행전략 6종 + 핵심 KPI                            */
-/* ---------------------------------------------------------------- */
-function slideFdpExec(pres, ic) {
-  const s = pres.addSlide();
-  header(s, "제품 축 ②", FDP_OPTS);
-
-  s.addText("실행전략 6종 — Samsung FDP Enablement", {
-    x: 0.5, y: 0.94, w: 8, h: 0.34,
-    fontFace: FONT, fontSize: 16, bold: true, color: INK, margin: 0,
-  });
-
+  // ── 실행전략 6종 (압축 그리드)
   const strategies = [
-    ["Enablement Platform", "FDP SDK·공통 라이브러리 (Linux·io_uring·SPDK) · Workload Profiler(trace→추천 RUH·예상 WAF) · Emulator/Digital Twin", "BLUE", "layers"],
-    ["표준 워크로드 프로파일", "Cache·KV·DB·Multi-tenant·Vector·Checkpoint·QLC 7종 — 펌웨어 공통화와 고객별 최적화 양립", "TEAL", "sliders"],
-    ["End-to-End 공동검증", "App→Host→SSD→NAND→텔레메트리 · 시스템 성과 지표(WAF·p999·격리·전력) · 고객 trace의 pre/post-silicon 재사용", "GREEN", "check"],
-    ["고객 공동개발 조직", "Host SW · Workload Integration · Solution Engineering · E2E Validation — 기술지원이 아니라 제품 기획·개발 참여", "SLATE", "users"],
-    ["Binding 계약 기술협력", "고객: 물량·trace 제공·공동 로드맵 ↔ 삼성: 공급능력·SDK·개선 목표 — 공동 플랫폼 계약으로 확장", "BLUE", "link"],
-    ["오픈소스·차별화 경계", "공개: 기본 라이브러리·연동·적합성 테스트 / 차별화: NAND·FTL 모델·정책 추천·예측 모델 — lock-in 우려 해소", "TEAL", "unlock"],
+    ["Enablement Platform", "SDK·라이브러리(Linux·SPDK) · Workload Profiler · Emulator/Digital Twin", "0E6BA8", "layers"],
+    ["표준 프로파일 7종", "Cache·KV·DB·Multi-tenant·Vector·Checkpoint·QLC — 펌웨어 공통화+고객 최적화", TEAL, "sliders"],
+    ["E2E 공동검증", "App→Host→SSD→NAND · WAF·p999·격리·전력 · trace의 pre/post-silicon 재사용", GREEN, "check"],
+    ["고객 공동개발 조직", "Host SW·Workload Integration·Solution Eng·Validation — 제품 기획 참여", "4C7C94", "users"],
+    ["Binding 기술협력", "물량·trace·공동 로드맵 ↔ 공급능력·SDK·개선 목표 — 공동 플랫폼 계약", "0E6BA8", "link"],
+    ["오픈소스·차별화 경계", "공개: 라이브러리·연동·적합성 / 차별화: FTL 모델·정책 추천·예측", TEAL, "unlock"],
   ];
-  const colorMap = { BLUE: "0E6BA8", TEAL, GREEN, SLATE: "4C7C94" };
-  strategies.forEach(([t, c, colorKey, iconKey], i) => {
+  strategies.forEach(([t, c, color, iconKey], i) => {
     const x = 0.5 + (i % 3) * 4.2;
-    const y = 1.4 + Math.floor(i / 3) * 2.06;
-    card(s, x, y, 3.94, 1.9);
-    iconCircle(s, x + 0.2, y + 0.18, 0.44, colorMap[colorKey], ic[iconKey]);
+    const y = 2.66 + Math.floor(i / 3) * 1.66;
+    card(s, x, y, 3.94, 1.52);
+    iconCircle(s, x + 0.18, y + 0.16, 0.4, color, ic[iconKey]);
     s.addText(`${i + 1}. ${t}`, {
-      x: x + 0.76, y: y + 0.2, w: 3.0, h: 0.4,
-      fontFace: FONT, fontSize: 14, bold: true, color: INK, margin: 0, valign: "middle",
+      x: x + 0.68, y: y + 0.16, w: 3.1, h: 0.36, valign: "middle",
+      fontFace: FONT, fontSize: 13, bold: true, color: INK, margin: 0,
     });
     s.addText(c, {
-      x: x + 0.22, y: y + 0.74, w: 3.5, h: 1.06,
-      fontFace: FONT, fontSize: 10.5, color: SUB, margin: 0, valign: "top", lineSpacingMultiple: 1.12,
+      x: x + 0.2, y: y + 0.62, w: 3.56, h: 0.84,
+      fontFace: FONT, fontSize: 10, color: SUB, margin: 0, valign: "top", lineSpacingMultiple: 1.1,
     });
   });
 
-  // ── 핵심 KPI 콜아웃 (그린 강조)
+  // ── 핵심 KPI + 실행 주체
   s.addShape("roundRect", {
-    x: 0.5, y: 5.66, w: 12.33, h: 0.9, rectRadius: 0.08,
+    x: 0.5, y: 6.04, w: 12.33, h: 0.72, rectRadius: 0.08,
     fill: { color: TINT_GREEN }, line: { color: GREEN, width: 1.25 },
   });
-  s.addImage({ data: ic.targetGreen, x: 0.72, y: 5.91, w: 0.4, h: 0.4 });
+  s.addImage({ data: ic.starGreen, x: 0.72, y: 6.2, w: 0.4, h: 0.4 });
   s.addText([
-    { text: "핵심 KPI — 고객 시스템에서 FDP가 실제 활성화된 SSD 용량", options: { fontSize: 14.5, bold: true, color: INK, breakLine: true } },
-    { text: "지원 SSD 출하량만 세면 미사용 기능이 된다 · Captive SSD 계획에서 삼성 완제품으로 전환된 물량을 병행 추적 · WAF·p999·usable capacity 개선율", options: { fontSize: 11, color: SUB } },
+    { text: "핵심 KPI — 고객 시스템에서 FDP가 실제 활성화된 SSD 용량 · Captive→삼성 완제품 전환 물량", options: { fontSize: 13.5, bold: true, color: INK, breakLine: true } },
+    { text: "실행 주체: 인재 축(FDE 스타)이 이 플랫폼을 들고 고객 아키텍처 안으로 들어간다 — 단계: 기본 도구 → 전략 고객 공동검증 → 상용 플랫폼화 → Host Control 확장", options: { fontSize: 10.5, color: SUB } },
   ], {
-    x: 1.26, y: 5.66, w: 11.4, h: 0.9, valign: "middle",
+    x: 1.26, y: 6.04, w: 11.4, h: 0.72, valign: "middle",
     fontFace: FONT, margin: 0, lineSpacingMultiple: 1.12,
-  });
-
-  s.addText("실행 주체: 인재 축(FDE 스타)이 이 플랫폼을 들고 고객 아키텍처 안으로 들어간다", {
-    x: 0.5, y: 6.68, w: 12.33, h: 0.28, align: "center",
-    fontFace: FONT, fontSize: 12, italic: true, color: SUB, margin: 0,
   });
 }
 
@@ -658,8 +745,9 @@ async function main() {
   slideHigh(combined, ic);
   slideMid(combined, ic);
   slideLow(combined, ic);
-  slideFdpOverview(combined, ic);
-  slideFdpExec(combined, ic);
+  slideFdpWhy(combined, ic);
+  slideFdpOptions(combined, ic);
+  slideFdpHow(combined, ic);
   const outCombined = path.join(PRES_DIR, "dev-transformation-summary.pptx");
   await combined.writeFile({ fileName: outCombined });
   console.log("written:", outCombined);
@@ -669,7 +757,7 @@ async function main() {
     ["high", [slideHigh]],
     ["mid", [slideMid]],
     ["low", [slideLow]],
-    ["fdp", [slideFdpOverview, slideFdpExec]],
+    ["fdp", [slideFdpWhy, slideFdpOptions, slideFdpHow]],
   ];
   for (const [name, builds] of singles) {
     const p = new pptxgen();
