@@ -7,6 +7,7 @@ sources:
   - sources/filings/micron-q3-fy26.md
   - sources/articles/palantir-fde-model-2026-07.md
   - sources/articles/star-engineer-context-2026-07.md
+  - sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md
   - sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md
   - sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md
 ---
@@ -133,6 +134,14 @@ FDE·Co-Design Pod·시스템 모델링이 작동하려면 그 중심에 **고�
 - 영입 스타는 미국 현지에서 Co-Design Pod·FDE 상주의 앵커 역할 — 미국 고객 옆에서 우리를 대표해 기술을 주도.
 
 **호명 문화 (공통)**: 사내외에 개인을 드러냄 — 컨퍼런스 발표·기술 백서 저자·특허 대표발명자·고객 공동설계 리드로 **이름을 남기게** 한다. 기존 DE와 영입 스타 모두 "삼성의 그 아키텍트"로 호명되게 만드는 것이 목표.
+
+### 4.7 제품·기술 축 — FDP Host–SSD 통합 플랫폼 (인재 축의 짝)
+
+개발실 전환은 두 축이 짝을 이룬다: **§4.5–4.6이 인재 축**(FDE·스타 플레이어 — *누가* 고객 아키텍처 안으로 들어가는가)이라면, **제품·기술 축**은 *무엇을 들고* 들어가는가에 답한다. 상세는 별도 전략 페이지 → **[fdp-host-ssd-platform.md](fdp-host-ssd-platform.md)** ([fdp-host-ssd-platform-strategy-2026-07-24.md](../../sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md)).
+
+- **핵심 전환**: FDP SSD 공급자 → **FDP 기반 Host–SSD 통합 솔루션 제공자**. FDP는 인터페이스일 뿐 — 워크로드 데이터 수명을 분석해 RUH에 매핑하고 검증하는 **시스템 소프트웨어**(SDK·워크로드 플러그인·Profiler·Emulator)가 없으면 고객은 FDP를 활용할 수 없고, 삼성은 여러 공급사 중 하나로 가격 경쟁에 노출된다
+- **전략 문장**: *Binding으로 수요를 확보하고, FDP로 제품을 표준화하며, 시스템 소프트웨어로 고객 워크로드를 연결한다* — Captive SSD 확대 요구를 삼성 완제품 생태계 안에 수용
+- **개발실 함의**: 실행전략 4(고객 공동개발 조직 — Host SW·Workload Integration·Customer Solution Engineering·E2E Validation)는 본 전략의 Co-Design Pod·시스템 모델링 조직(축 1·3)의 NAND/SSD 도메인 구체화이며, FDE 스타(§4.6)가 그 고객 접점 리드를 맡는다
 
 ### Phase 1 — 90일 (증명)
 | # | 액션 | 산출물 | 담당 |
