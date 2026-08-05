@@ -1066,6 +1066,15 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 
 **동기화**: 신규 소스 `hyperscaler-q2-2026-capex-2026-07-28.md`. dashboard indicators.js(포지션·SCENARIOS·EWI·트리거)·scenarioPlanning.js(DF1·DF2 현재위치·matrix 확률)·updates.js(assessment 항목 — 업데이트 내역 메뉴)·version.js(v2.32.6 패치). wiki key-drivers·scenario-matrix. outputs/report §5.1. index.md sources 등록. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX는 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증. main 직접 병합·push.
 
+## [2026-08-03] ingest | 크리스 밀러(Chip War 저자) 최근 인터뷰·기고 종합 수집 (v2.32.11)
+
+요청: Chip War 저자 크리스 밀러의 최근 인터뷰·기고문 조사 → inbound data로 활용, 대시보드 갱신. 웹 검색 기반으로 2025-12~2026-07 발언 10건 수집(상원 외교위 증언 12-02·WaPo H200 비판 12-10·ChinaTalk H20+15%·CommonWealth·AEI "Why China Can't Export AI Chips"·CMU Chips and Chokepoints·중앙일보 "반도체 구루의 고언" 시리즈 04-24·"중국 4년째 AI 과소투자" 06월 발언·경향신문 단독 07-09·인사이트코리아 2부작). 원문 직접 접근 차단 항목은 검색 결과 요약·2차 인용으로 수집(소스 헤더에 명시).
+
+신규 소스: `sources/articles/chris-miller-interviews-2025-12-to-2026-07.md`. wiki 6개 페이지에 [Update 2026-08-03] 추가 — samsung(체질 전환·R&D/설비 동시 투자·추론 메모리 프런티어·800조 환영), cxmt(애플–CXMT 공개 경계 = 위협 해석 무게), china-competitors(중국 이중 평가: Ascend 5~8배 열위·SMIC 규모 한계 vs 전력·피지컬 AI 위협), hbm-roadmap("HBM은 유일한 솔루션 아니다" — 추론 최적화 아키텍처 축), us-export-controls(초크포인트 위계 HBM·장비>GPU, H200 완화의 정치 구도: 행정부 완화 vs 의회 초당 통제파), steep/political(요인 1·4·6 외부 교차 검증).
+
+거시 축 판단: DF1·DF2 위치 변경 없음 — 밀러 발언은 기존 신호의 외부 교차 검증이자 해석 보강(정성)이며 신규 실현 사실이 아님. "통제 무게중심의 GPU→HBM·장비 이동" 관찰은 다음 정기 재평가 참고 입력으로 표기.
+
+대시보드: interviews.js에 외부 전문가 항목(크리스 밀러 종합, 공개 자료 기반) 추가 — 인터뷰 메뉴 4번째. updates.js ingest 항목 추가. version v2.32.11(패치: 데이터 추가·기존 카테고리 내 — 당초 v2.32.10으로 부여했으나 08-04 정기 재평가가 동일 버전을 선점, main 병합 시 v2.32.11로 재버전). 지식그래프 재생성(wiki 링크 신규)·npm run build 검증. 개발 브랜치 push 후 사용자 승인으로 main 병합(08-04 재평가 커밋과 merge — updates.js·log.md 충돌은 양쪽 항목 시간순 유지로 해결).
 ## [2026-08-04] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 내부 인터뷰 2건(최장석·이창수) 반영·EWI 갱신
 
 직전 포지션 맵 갱신(2026-07-28) 이후 git log 변경분은 **내부 임원·전문가 인터뷰 2건**뿐 — 최장석 상무(상품기획팀장, 07-29)·이창수 부사장(영업팀장, 08-03). 둘 다 sources 층 녹취록 + 인터뷰 메뉴 구조화이며, 거시 축(DF1·DF2)은 "실현된 외부 사실"이 움직인다는 일관 방법론상 내부 전문가 프레이밍(해석·전망)으로 분류. 내용도 양면적 → **정점 재확인, 축 무이동**.
