@@ -32,6 +32,7 @@ log.md     ← 시간순 작업 로그 (append-only)
   - **concepts/** — 개념·기술 트렌드·정책 (예: `memory-cycle.md`, `cxl.md`, `chips-act.md`)
   - **steep/, driving-forces/, scenarios/, benchmark/** — 시나리오 플래닝 분석 페이지
   - **strategies/** — 전략 페이지 (core, invariant)
+  - **storyline/** — 위키 전체를 잇는 종합 서사 (환경 변화 → 전략 선택 논증 → EWI, 대시보드 Storyline 탭의 단일 소스)
   - **comparisons/** — 비교표 (선택)
 - **모든 사실 주장은 `sources/`의 파일을 인용**한다. 형식:
   ```markdown
@@ -71,8 +72,9 @@ log.md     ← 시간순 작업 로그 (append-only)
 1. `sources/{articles,filings,papers,raw-notes}/` 적절한 곳에 저장 (원본 보존)
 2. 영향받는 wiki 페이지 식별 (entities·concepts·scenarios·strategies)
 3. 해당 페이지들을 갱신. 새 개체/개념이면 신규 페이지 생성
-4. `index.md` 갱신
-5. `log.md`에 항목 추가
+4. steep·driving-forces·scenarios·strategies가 바뀌었으면 `wiki/storyline/storyline.md` 해당 장의 서사 정합 여부 확인·갱신
+5. `index.md` 갱신
+6. `log.md`에 항목 추가
 
 한 ingest는 보통 wiki 페이지 5~15개를 건드린다. 누락 페이지는 다음 lint에서 회수.
 
@@ -125,6 +127,7 @@ lint 결과는 `log.md`에 항목으로 남기고, 즉시 고칠 수 있는 건 
 | `wiki/driving-forces/key-drivers.md` | `dashboard/src/data/scenarioPlanning.js` INITIAL_QUADRANT_POSITIONS |
 | `wiki/strategies/` (D1~D17, RS-1~RS-9) | `dashboard/src/data/strategies.js` (DECISIONS·ROBUST_STRATEGIES 단일 소스), `dashboard/src/components/DecisionTracker.jsx` |
 | 실시간 시계열 (GPU 임대가·공급·신용 스프레드·주가 프록시) | `dashboard/api/_lib/{vast,yahoo}.js` → EWI 자동 갱신 (정적 시드는 `dashboard/data/*.json`) |
+| `wiki/storyline/storyline.md` | `dashboard/src/data/storyline.js` (STORYLINE_META·FLOW·TIMELINE·CHAPTERS 미러) |
 | `wiki/**/*.md` 페이지 간 링크 | `dashboard/src/data/knowledgeGraph.js` (GENERATED — `node scripts/build-knowledge-graph.mjs`로 재생성) |
 | `wiki/` 전체 | `outputs/report/scenario-planning-report.md` (합성) |
 | `outputs/report/scenario-planning-report.md` | `outputs/presentation/slide-outline.md` |
@@ -178,6 +181,8 @@ wiki/steep → wiki/driving-forces → wiki/scenarios → wiki/strategies
 | `wiki/steep`, `wiki/driving-forces` | `wiki/scenarios/`, `wiki/strategies/`, `dashboard/src/data/scenarioPlanning.js`의 INITIAL_QUADRANT_POSITIONS |
 | `wiki/scenarios/` | `wiki/strategies/` (RS·MB·SB 매핑) + `dashboard/src/data/scenarioPlanning.js`의 SCENARIOS |
 | `wiki/strategies/` | `outputs/report/scenario-planning-report.md` 해당 섹션 + `dashboard/src/components/DecisionTracker.jsx`의 DECISIONS |
+| `wiki/steep`·`driving-forces`·`scenarios`·`strategies` 중 어느 것이든 | `wiki/storyline/storyline.md` 해당 장(확률·DF 위치·전략 목록 변경 시 3~7장 수치·논증 동반 갱신) + `dashboard/src/data/storyline.js` |
+| `wiki/storyline/storyline.md` | `dashboard/src/data/storyline.js` (STORYLINE_* 미러) |
 | `outputs/report/scenario-planning-report.md` | `outputs/presentation/slide-outline.md` |
 | `outputs/presentation/slide-outline.md` | `outputs/presentation/scripts/generate_pptx.py` (구조 변경 시) |
 | `dashboard/src/**` 또는 `dashboard/api/**` | `cd dashboard && npm run build` 빌드 검증 + `dashboard/src/version.js` **bump** (메이저/마이너/패치 분류는 `version.js` 주석 규칙 따름) |

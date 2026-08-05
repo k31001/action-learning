@@ -2,7 +2,7 @@ import { useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { useHashSegment } from './hooks/useHashRoute'
 import { triggerAutoUpdate } from './hooks/useMarketData'
-import { Activity, BarChart3, Compass, Crosshair, History, Hourglass, MessageSquareQuote, Share2 } from 'lucide-react'
+import { Activity, BarChart3, BookOpen, Compass, Crosshair, History, Hourglass, MessageSquareQuote, Share2 } from 'lucide-react'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
 import IndicatorGrid from './components/IndicatorGrid'
@@ -16,11 +16,13 @@ import Strategies from './components/Strategies'
 import Interviews from './components/Interviews'
 import KnowledgeGraph from './components/KnowledgeGraph'
 import Updates from './components/Updates'
+import Storyline from './components/Storyline'
 import ErrorBoundary from './components/ErrorBoundary'
 import { VERSION } from './version'
 
 // 최상단 페이지 탭
 const TOP_TABS = [
+  { id: 'storyline',     label: 'Storyline',               icon: BookOpen },
   { id: 'ewi',           label: 'Early Warning Indicator', icon: Activity },
   { id: 'bottleneck',    label: 'Bottleneck Model',        icon: Hourglass },
   { id: 'visualization', label: 'Data Visualization',      icon: BarChart3 },
@@ -48,7 +50,7 @@ export default function App() {
   } = useStore()
 
   // 탭 상태를 URL 해시와 동기화 — 페이지·서브탭마다 공유 가능한 고유 URL (#/페이지/서브탭)
-  const [topTab, setTopTab] = useHashSegment(0, 'ewi', TOP_TABS.map(t => t.id), true)
+  const [topTab, setTopTab] = useHashSegment(0, 'storyline', TOP_TABS.map(t => t.id), true)
   const [mainTab, setMainTab] = useHashSegment(1, 'decisions', MAIN_TABS.map(t => t.id))
 
   // On mount: apply any already-computed auto-update results from server cache
@@ -187,6 +189,7 @@ export default function App() {
           </>
         )}
 
+        {topTab === 'storyline'     && <Storyline />}
         {topTab === 'bottleneck'    && <BottleneckModel />}
         {topTab === 'visualization' && <DataVisualization />}
         {topTab === 'planning'      && <ScenarioPlanning />}

@@ -1123,6 +1123,7 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 ## [2026-08-05] fix | 개발실 전환 탭 NEW 태그 제거 (v2.34.1)
 
 Strategies 상위 탭의 "개발실 전환"에서 isNew 배지 제거 — 탭이 정착 단계로 판단. version v2.34.1(패치).
+
 ## [2026-08-05] ingest | Dylan Patel MAD Podcast 디테일 보강 — $11M·Anthropic 수치·CPO/800V (v2.34.2)
 
 요청: 사용자 제공 유튜브 링크(youtu.be/3FHsGiONOGw)로 인터뷰 디테일 보완. 영상 자체는 프록시 정책으로 직접 접근 불가(유튜브·oEmbed·noembed 전부 403, 영상 ID 웹검색 미식별) — 대신 동일 에피소드의 상세 2차 자료를 추가 발굴해 교차 보강: Jukan(@jukan05) 테이크어웨이 스레드, TradingKey(Marvell 하락 분석), Podcast Alpha 세부.
@@ -1130,3 +1131,15 @@ Strategies 상위 탭의 "개발실 전환"에서 isNew 배지 제거 — 탭이
 해소된 미확정 항목: ① "$11M Bill" = SemiAnalysis 자신의 AI 추론 지출(8개월 새 연환산 $100K→$11M, 인건비 ~1/3→연말 절반) — 토큰 수요 미시 표본. ② Anthropic 세부 — Q2 2026 FCF 흑자 전환·4/5월 모두 흑자(6월 미마감·동일 방향)·ARR $50B+·GM 70%+(Opus 4.8 토큰 80%+)·SBC 제외 Q2 순이익 흑자. 공식 가이던스(현금흐름 흑자 2028, The Information)와 대조 명시 — 주장 단계 유지. ③ 컨슈머 전치 정량 — 빅테크 2026 CapEx ~30% 메모리·iPhone 원가 ~$150↑·저가폰 연 11억→5~6억 대 붕괴 가능. ④ CPO 2028말~2029 + Rubin·Feynman 세대까지 올-커퍼 유지(Amphenol 수혜)·NVIDIA가 Kyber(Rubin Ultra)에서 800V 설계 제거. ⑤ 공급 기원 — 2023 다운턴 무증설 + 팹 건설 2년+.
 
 반영: 소스 파일 재작성(유튜브 링크 병기·녹음 시점 근거 "6월 미마감" 명시), wiki 3개 페이지 [보강 2026-08-05](price-trends 컨슈머 전치 정량+공급 기원, ai-demand-sustainability Anthropic 세부+$11M 표본, ai-datacenter-buildout Rubin/Feynman 올-커퍼+Kyber 800V 제거), interviews.js 보강(keyQuote 4번째·수집 방법 갱신), updates.js 항목 추가, version v2.34.2(패치 — v2.33.2로 부여했으나 FDP 후속 작업이 v2.34.1까지 선점, main 병합 시 재버전). 지식그래프 재생성·npm run build 검증. 브랜치 커밋 후 main 병합·push(사전 승인 체인).
+
+## [2026-08-05] build | Storyline 신설 — 위키 종합 서사 + 대시보드 첫 탭 (v2.35.0)
+
+요청: "최상위 메뉴에 Storyline 항목 신설 — 위키 전체 지식을 아우르는 삼성 전략 방향성 스토리라인, 완전한 문장·스토리 느낌·시각화·명시적 레퍼런스·신규 소스 유입 시 자동 갱신."
+
+**위키 신설**: `wiki/storyline/storyline.md` — 8장 완결형 서사(환경 변화→진단→핵심 동인→다섯 개의 미래→선택→Robust 구조→**대안 비교 논증**(올인·관망·수축 3개 대안 대비 확률가중 베팅+Robust 헤지+데이터 트리거의 우위)→감시와 전환). Mermaid 스토리 플로우 + 2023→2035 연대기 내장. 전 수치·주장에 sources/ 인용, 해석은 위키 페이지 상대링크(→ 지식그래프 엣지). 상단에 갱신 규칙 명문화.
+
+**정합성 체인 등록**: CLAUDE.md §1 카테고리에 storyline/ 추가, §3 Ingest에 "storyline 서사 정합 확인" 4단계 삽입, §5 매핑 테이블·§6 변경 단계별 테이블에 storyline 행 추가 — 이후 steep·driving-forces·scenarios·strategies 변경 시 storyline 해당 장(3~7장) + `dashboard/src/data/storyline.js` 동반 갱신 의무. index.md 최상단 섹션 등록.
+
+**대시보드(마이너 v2.35.0)**: TOP_TABS 첫 탭 "Storyline"(BookOpen) 신설, 기본 랜딩 ewi→storyline 변경(기존 `#/ewi` 딥링크 동작 유지). `data/storyline.js`(META·FLOW 7단계·TIMELINE 6이벤트·CHAPTERS 8장, 블록별 refs) + `components/Storyline.jsx`(SVG 플로우 체인 — 클릭 시 해당 장 스크롤·EWI→시나리오 점선 피드백 루프, 연대기 스트립, Interviews Block 계열 본문 렌더러 + SourceLink 각주, `#/storyline/ch1~ch8` 딥링크). 지식그래프 빌더 CATEGORIES에 storyline(노랑) 추가 후 재생성 — 노드 82·엣지 343, 스토리라인 허브(링크 25). asymmetric 증가(~25건)는 종합 페이지의 단방향 인용 특성상 수용. `npm run build` 통과.
+
+**생략 명시**: outputs/ 무변경(storyline은 위키 계층 서사, report·PPT는 별도 산출물) → PPTX 재생성 생략. 브랜치 push 후 사용자 승인으로 main 병합(병합 시 v2.34.2와 합류 — v2.35.0 유지, 지식그래프 재생성).
