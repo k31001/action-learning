@@ -15,7 +15,7 @@ import {
 import {
   DT_SUMMARY, DT_EVENTS, DT_CONTRACT_STAGES, DT_SCA_COMPONENTS,
   DT_ROLE_SHIFT, DT_MODELING_NOTE, DT_MODELING_SCOPE, DT_RISKS, DT_BENEFITS, DT_AXES,
-  DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS, DT_FDE_BENCHMARK, DT_STAR_ENGINEER, DT_DOWNLOADS,
+  DT_PHASES, DT_KPIS, DT_SCENARIO_LINKS, DT_FDE_BENCHMARK, DT_STAR_ENGINEER, DT_DOWNLOADS, DT_FDP,
 } from '../data/devTransformation'
 import SourceLink from './SourceLink'
 
@@ -544,7 +544,7 @@ function TransformationPanel() {
       </Card>
 
       <Card title="요약 발표자료 다운로드 — 1장 요약 × 디테일 3단계" source="outputs/presentation/dev-transformation-outline.md">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
           {DT_DOWNLOADS.map(d => (
             <a
               key={d.file}
@@ -808,6 +808,67 @@ function TransformationPanel() {
               <div key={i} className="text-[11px] text-zinc-700 leading-snug">
                 <span className="font-bold text-emerald-700">{p.k}</span> — {p.v}
               </div>
+            ))}
+          </div>
+        </div>
+      </Card>
+
+      <Card title="제품·기술 축 — FDP Host–SSD 통합 플랫폼 (인재 축의 짝)" source="wiki/strategies/fdp-host-ssd-platform.md">
+        <p className="text-xs text-zinc-700 leading-relaxed mb-3">{DT_FDP.oneLine}</p>
+        <div className="border-l-4 border-sky-400 bg-sky-50/60 rounded-r-lg px-3 py-2 mb-3">
+          <p className="text-sm text-zinc-900 font-bold leading-relaxed">{DT_FDP.declaration}</p>
+          <p className="text-xs text-zinc-700 mt-1 italic">"{DT_FDP.messageKo}"</p>
+          <p className="text-[10px] text-sky-700 font-medium mt-1">{DT_FDP.messageEn}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3">
+          {DT_FDP.problems.map((p, i) => (
+            <div key={i} className="rounded-lg border border-zinc-200 bg-zinc-50/60 p-2.5">
+              <div className="text-[11px] font-bold text-zinc-900 mb-1">{p.title}</div>
+              <p className="text-[11px] text-zinc-700 leading-snug">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="text-[11px] font-bold text-zinc-500 mb-1.5">전체 전략 구조 — 6요소</div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-3">
+          {DT_FDP.elements.map((e, i) => (
+            <div key={i} className={`rounded-lg border p-2 ${i === 2 ? 'border-emerald-300 bg-emerald-50/60' : 'border-zinc-200 bg-white'}`}>
+              <div className={`text-[11px] font-bold ${i === 2 ? 'text-emerald-700' : 'text-zinc-900'}`}>{e.name}</div>
+              <p className="text-[10px] text-zinc-500 leading-snug mt-0.5">{e.role}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[11px] text-zinc-700 italic bg-emerald-50 border border-emerald-200 rounded px-2.5 py-1.5 leading-relaxed">
+          <span className="text-emerald-700 font-bold not-italic">인재 축과의 결합 — </span>
+          {DT_FDP.relation}
+        </p>
+      </Card>
+
+      <Card title="FDP 실행전략 6종 · 로드맵 · KPI" source="wiki/strategies/fdp-host-ssd-platform.md">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-3">
+          {DT_FDP.strategies.map(st => (
+            <div key={st.no} className="rounded-lg border border-zinc-200 bg-white p-2.5">
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-zinc-800 text-white">{st.no}</span>
+                <span className="text-[11px] font-bold text-zinc-900">{st.title}</span>
+              </div>
+              <p className="text-[11px] text-zinc-700 leading-snug">{st.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-3">
+          {DT_FDP.roadmap.map((r, i) => (
+            <div key={i} className="rounded-lg border border-zinc-200 bg-zinc-50/60 p-2.5">
+              <div className="text-[10px] font-mono font-bold text-sky-700">{r.phase}</div>
+              <div className="text-[11px] font-bold text-zinc-900 mb-0.5">{r.title}</div>
+              <p className="text-[10px] text-zinc-600 leading-snug">{r.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-3">
+          <div className="text-[11px] font-bold text-emerald-700 mb-1">핵심 KPI — {DT_FDP.kpiCore}</div>
+          <div className="flex flex-wrap gap-1.5">
+            {DT_FDP.kpis.map((k, i) => (
+              <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-white border border-emerald-200 text-zinc-700">{k}</span>
             ))}
           </div>
         </div>

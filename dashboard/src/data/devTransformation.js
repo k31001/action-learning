@@ -284,4 +284,50 @@ export const DT_DOWNLOADS = [
     desc: '북극성·호명사회 인용 · 전환 한 컷 · FDE 스타 · 임금 선순환',
     color: '#02a878',
   },
+  {
+    file: 'dev-transformation-summary-fdp.pptx',
+    level: '제품',
+    label: '제품·기술 축 — FDP',
+    desc: 'FDP Host–SSD 통합 플랫폼: 전환 한 컷 · 6요소 · 실행전략 6종 · 핵심 KPI (2장)',
+    color: '#4c7c94',
+  },
 ]
+
+// 제품·기술 축 — FDP Host–SSD 통합 플랫폼 (wiki/strategies/fdp-host-ssd-platform.md 미러)
+export const DT_FDP = {
+  declaration: 'FDP SSD 공급자 → FDP 기반 Host–SSD 통합 솔루션 제공자',
+  oneLine:
+    'FDP(Flexible Data Placement)는 인터페이스일 뿐이다. 워크로드의 데이터 수명을 분석해 RUH에 매핑하고 효과를 검증하는 시스템 소프트웨어가 없으면 고객은 FDP를 활용할 수 없고, 삼성은 "FDP 지원 SSD 공급사 중 하나"로 가격 경쟁에 노출된다.',
+  messageKo: 'Binding으로 수요를 확보하고, FDP로 제품을 표준화하며, 시스템 소프트웨어로 고객 워크로드를 연결한다',
+  messageEn: 'Binding secures demand. FDP standardizes the device. System software creates customer value. End-to-end co-optimization builds the strategic relationship.',
+  relation: '인재 축(FDE 스타, §4.6)이 "누가 들어가는가"라면, 제품·기술 축은 "무엇을 들고 들어가는가"에 답한다 — FDE가 이 플랫폼을 들고 고객 아키텍처 안으로 들어간다.',
+  problems: [
+    { title: 'FDP는 인터페이스일 뿐', desc: 'SSD는 hot/cold·데이터 수명·삭제 단위·테넌트·tail latency 민감도를 스스로 모른다 — 정보는 DB·캐시·파일시스템 등 상위 SW에 있다. 통합을 고객에게 맡기면 도입이 확산되지 않는다.' },
+    { title: 'Captive SSD 확대', desc: '전략 고객은 TCO 통제를 위해 Captive SSD를 확대 중 — NAND 공급에만 머물면 완제품 SSD의 부가가치를 잃는다.' },
+    { title: '커스텀 파편화', desc: '모든 요구를 고객별 커스텀 SSD로 받으면 제품·펌웨어가 파편화된다 — FDP 표준 SSD(공통 펌웨어)로 막고 시스템 SW로 연결한다.' },
+  ],
+  elements: [
+    { name: 'Binding 계약', role: '장기 물량·공급능력 확보' },
+    { name: 'FDP 표준 SSD', role: '고객 요구를 공통 인터페이스로 수용' },
+    { name: '시스템 소프트웨어', role: '워크로드 요구를 FDP 정책으로 변환' },
+    { name: 'End-to-End 검증', role: '실제 WAF·QoS·수명 개선 보장' },
+    { name: '고객 공동개발', role: '고객 시스템 최적화·장기 관계' },
+    { name: '현장 텔레메트리', role: '제품·SW 지속 개선 루프' },
+  ],
+  strategies: [
+    { no: 1, title: 'Samsung FDP Enablement Platform', desc: 'FDP SDK·공통 라이브러리(Linux block I/O·io_uring·SPDK 연동, fallback·telemetry·상태 관리) + 주요 워크로드 플러그인(RocksDB·CacheLib·Ceph·MySQL/PostgreSQL·Vector DB·K8s·AI checkpoint) + Workload Profiler(고객 trace→추천 RUH·예상 WAF/OP/endurance 자동 산출) + FDP Emulator/Digital Twin(대규모 qualification 전 정책 효과 예측)' },
+    { no: 2, title: '표준 워크로드 프로파일', desc: 'FDP-Cache·KV·Database·Multi-tenant·Vector·Checkpoint·QLC 7종 — 새 펌웨어가 아니라 Host SW 설정 + 검증된 사용법으로 제공 → 펌웨어 공통화와 고객별 최적화 양립' },
+    { no: 3, title: 'End-to-End 공동검증', desc: 'App→파일시스템/DB→Host 라이브러리→OS/Driver→NVMe→FTL·GC→NAND→현장 텔레메트리까지 검증 확대. 지표를 시스템 성과로: WAF·OP·usable capacity·p999/p9999·테넌트 격리·TB당 전력·qualification 기간. 고객 trace를 pre/post-silicon 검증에 재사용 — 워크로드가 설계 초기부터 반영' },
+    { no: 4, title: '고객 공동개발 조직', desc: 'Host Software · Workload Integration · Customer Solution Engineering · E2E Validation 4기능 — 기술지원이 아니라 제품 기획·개발 참여(요구 수집→표준 개선 제안→아키텍처 요구 도출→공동 릴리스→현장 반영). Co-Design Pod·FDE의 NAND/SSD 도메인 구체화' },
+    { no: 5, title: 'Binding 계약에 기술협력 포함', desc: '고객: 물량·워크로드·qualification 일정·익명화 trace 제공·공동 로드맵 ↔ 삼성: 공급능력·로드맵·FDP SSD+SDK·공동 최적화·개선 목표·세대 전환 동등성 검증 — 단순 NAND 예약이 아닌 공동 플랫폼 계약' },
+    { no: 6, title: '오픈소스·차별화 경계', desc: '공개: 기본 FDP 라이브러리·Linux/SPDK 연동·관리 도구·표준 adapter·적합성 테스트 / 차별화: NAND·FTL 동작 모델·workload 분석 알고리즘·자동 RUH 정책 추천·수명/WAF/tail latency 예측·텔레메트리 분석 — lock-in 우려 없이 삼성 SSD 선택 시 더 높은 TCO 효과' },
+  ],
+  roadmap: [
+    { phase: '1단계', title: '제품·기본 도구', desc: '공통 FDP 펌웨어 · Linux/SPDK SDK · 테스트 도구 · Emulator · 기본 Cache/KV 프로파일' },
+    { phase: '2단계', title: '전략 고객 공동검증', desc: '핵심 CSP 2~3개 pilot · trace 기반 RUH 정책 · WAF/p999 측정 · 공통 요구 제품 반영' },
+    { phase: '3단계', title: '상용 플랫폼화', desc: '전 라인업 확대 · qualification 자동화 · Host SW·FW 공동 릴리스 · Binding에 SW 지원 포함' },
+    { phase: '4단계', title: 'Host Control 확장', desc: 'QoS·traffic isolation · 전력/thermal · telemetry/failure analytics · attestation · multi-tenant control' },
+  ],
+  kpiCore: '고객 시스템에서 FDP가 실제 활성화된 SSD 용량 — 지원 출하량만 세면 미사용 기능이 된다',
+  kpis: ['FDP 지원/활성화 비중', 'FDP 적용 Binding 물량', '펌웨어 브랜치 감소율', 'qualification 기간', 'WAF·NAND write 감소율', 'usable capacity 증가율', 'p999/p9999 개선율', 'Captive→삼성 완제품 전환 물량'],
+}

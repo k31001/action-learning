@@ -18,7 +18,8 @@ const ReactDOMServer = require("react-dom/server");
 const sharp = require("sharp");
 const {
   FiCpu, FiStar, FiUsers, FiRefreshCw, FiAlertTriangle,
-  FiInbox, FiCompass,
+  FiInbox, FiCompass, FiLayers, FiSliders, FiCheckCircle,
+  FiLink, FiUnlock, FiTarget,
 } = require("react-icons/fi");
 
 const PRES_DIR = path.join(__dirname, "..");
@@ -44,14 +45,17 @@ async function iconPng(Icon, hex) {
   return "image/png;base64," + buf.toString("base64");
 }
 
-function header(slide, level) {
-  slide.addText(TITLE, {
-    x: 0.5, y: 0.26, w: 10.6, h: 0.62,
+function header(slide, chip, opts = {}) {
+  const title = opts.title || TITLE;
+  const source = opts.source || "wiki/strategies/dev-org-transformation.md";
+  const chipW = opts.chipW || 1.35;
+  slide.addText(title, {
+    x: 0.5, y: 0.26, w: 12.83 - chipW - 0.55, h: 0.62,
     fontFace: FONT, fontSize: 32, bold: true, color: INK, margin: 0,
   });
-  slide.addText(`디테일 ${level}`, {
+  slide.addText(chip, {
     shape: "roundRect", rectRadius: 0.1,
-    x: 11.48, y: 0.34, w: 1.35, h: 0.46,
+    x: 12.83 - chipW, y: 0.34, w: chipW, h: 0.46,
     fill: { color: "EFF3F5" }, align: "center", valign: "middle",
     fontFace: FONT, fontSize: 14, bold: true, color: SUB, margin: 0,
   });
@@ -59,7 +63,7 @@ function header(slide, level) {
     x: 0.5, y: 7.12, w: 7.6, h: 0.28,
     fontFace: FONT, fontSize: 10, color: SUB, margin: 0,
   });
-  slide.addText("원천: wiki/strategies/dev-org-transformation.md", {
+  slide.addText(`원천: ${source}`, {
     x: 8.3, y: 7.12, w: 4.53, h: 0.28, align: "right",
     fontFace: FONT, fontSize: 10, color: SUB, margin: 0,
   });
@@ -105,7 +109,7 @@ function deCallout(slide, x, y, w, h, ic, main, sub, mainSize, subSize) {
 /* ---------------------------------------------------------------- */
 function slideHigh(pres, ic) {
   const s = pres.addSlide();
-  header(s, "상");
+  header(s, "디테일 상");
 
   s.addText([
     { text: "북극성  ", options: { bold: true, color: TEAL } },
@@ -248,7 +252,7 @@ function slideHigh(pres, ic) {
 /* ---------------------------------------------------------------- */
 function slideMid(pres, ic) {
   const s = pres.addSlide();
-  header(s, "중");
+  header(s, "디테일 중");
 
   s.addText("“고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다” — 신문섭 (2026-06)", {
     shape: "roundRect", rectRadius: 0.09,
@@ -386,7 +390,7 @@ function slideMid(pres, ic) {
 /* ---------------------------------------------------------------- */
 function slideLow(pres, ic) {
   const s = pres.addSlide();
-  header(s, "하");
+  header(s, "디테일 하");
 
   const quotes = [
     ["“고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다”",
@@ -470,6 +474,166 @@ function slideLow(pres, ic) {
 }
 
 /* ---------------------------------------------------------------- */
+/* 제품·기술 축 ① — FDP 플랫폼: 왜·무엇 (전환 한 컷 + 6요소 체인)       */
+/* ---------------------------------------------------------------- */
+const FDP_TITLE = "제품·기술 축 — FDP Host–SSD 통합 플랫폼";
+const FDP_OPTS = { title: FDP_TITLE, source: "wiki/strategies/fdp-host-ssd-platform.md", chipW: 1.6 };
+
+function slideFdpOverview(pres, ic) {
+  const s = pres.addSlide();
+  header(s, "제품 축 ①", FDP_OPTS);
+
+  s.addText("“Binding으로 수요를 확보하고, FDP로 제품을 표준화하며, 시스템 소프트웨어로 고객 워크로드를 연결한다”", {
+    shape: "roundRect", rectRadius: 0.09,
+    x: 0.5, y: 0.94, w: 12.33, h: 0.56,
+    fill: { color: NEUTRAL }, align: "center", valign: "middle",
+    fontFace: FONT, fontSize: 16.5, italic: true, color: INK, margin: 0,
+  });
+
+  // ── 전환 한 컷: FDP SSD 공급자 → (시스템 SW) → 통합 솔루션 제공자
+  const boxY = 1.66, boxH = 1.5;
+  s.addShape("roundRect", { x: 2.2, y: boxY, w: 3.5, h: boxH, rectRadius: 0.1, fill: { color: NEUTRAL }, line: { color: LINE_GRAY, width: 1.25 } });
+  iconCircle(s, 3.72, boxY + 0.14, 0.46, SUB, ic.inbox);
+  s.addText("FDP SSD 공급자", {
+    x: 2.3, y: boxY + 0.64, w: 3.3, h: 0.36, align: "center",
+    fontFace: FONT, fontSize: 19, bold: true, color: SUB, margin: 0,
+  });
+  s.addText("여러 공급사 중 하나 · 가격 경쟁 노출", {
+    x: 2.3, y: boxY + 1.04, w: 3.3, h: 0.28, align: "center",
+    fontFace: FONT, fontSize: 11.5, color: SUB, margin: 0,
+  });
+  s.addText("+ 시스템 SW", {
+    shape: "rightArrow", x: 5.78, y: boxY + 0.3, w: 1.74, h: 0.9,
+    fill: { color: TEAL }, align: "center", valign: "middle",
+    fontFace: FONT, fontSize: 12, bold: true, color: "FFFFFF", margin: 0,
+  });
+  s.addShape("roundRect", { x: 7.6, y: boxY, w: 3.5, h: boxH, rectRadius: 0.1, fill: { color: TINT_GREEN }, line: { color: GREEN, width: 1.5 } });
+  iconCircle(s, 9.12, boxY + 0.14, 0.46, GREEN, ic.compass);
+  s.addText("통합 솔루션 제공자", {
+    x: 7.7, y: boxY + 0.64, w: 3.3, h: 0.36, align: "center",
+    fontFace: FONT, fontSize: 19, bold: true, color: GREEN, margin: 0,
+  });
+  s.addText("Host SDK · Profiler · End-to-End 검증", {
+    x: 7.6, y: boxY + 1.04, w: 3.5, h: 0.28, align: "center",
+    fontFace: FONT, fontSize: 11.5, color: INK, margin: 0,
+  });
+
+  // ── 왜 시스템 소프트웨어인가 — 문제 3
+  s.addText("왜 시스템 소프트웨어인가", {
+    x: 0.5, y: 3.32, w: 6, h: 0.28,
+    fontFace: FONT, fontSize: 14, bold: true, color: INK, margin: 0,
+  });
+  const problems = [
+    ["FDP는 인터페이스일 뿐", "SSD는 hot/cold·수명·테넌트를 모른다 — 정보는 DB·캐시 등 상위 SW에 있다"],
+    ["Captive SSD 확대", "NAND 공급에만 머물면 완제품 SSD의 부가가치를 잃는다"],
+    ["커스텀 파편화", "고객별 커스텀 SSD 개발은 제품·펌웨어를 파편화시킨다"],
+  ];
+  problems.forEach(([t, c], i) => {
+    const x = 0.5 + i * 4.2;
+    s.addText([
+      { text: t, options: { fontSize: 13.5, bold: true, color: INK, breakLine: true } },
+      { text: c, options: { fontSize: 10.5, color: SUB } },
+    ], {
+      shape: "roundRect", rectRadius: 0.08, x, y: 3.64, w: 3.94, h: 0.96,
+      fill: { color: NEUTRAL }, align: "center", valign: "middle",
+      fontFace: FONT, margin: 0, lineSpacingMultiple: 1.1,
+    });
+  });
+
+  // ── 전체 전략 구조 — 6요소 체인
+  s.addText("전체 전략 구조 — 6요소", {
+    x: 0.5, y: 4.84, w: 6, h: 0.28,
+    fontFace: FONT, fontSize: 14, bold: true, color: INK, margin: 0,
+  });
+  const chain = [
+    ["Binding 계약", "장기 물량 확보"],
+    ["FDP 표준 SSD", "공통 인터페이스"],
+    ["시스템 SW", "워크로드→정책 변환"],
+    ["E2E 검증", "TCO 개선 보장"],
+    ["고객 공동개발", "장기 관계 구축"],
+    ["텔레메트리", "지속 개선 루프"],
+  ];
+  chain.forEach(([t, c], i) => {
+    const x = 0.5 + i * 2.06;
+    s.addText([
+      { text: t, options: { fontSize: 12, bold: true, color: i === 2 ? GREEN : INK, breakLine: true } },
+      { text: c, options: { fontSize: 9.5, color: SUB } },
+    ], {
+      shape: "roundRect", rectRadius: 0.07, x, y: 5.16, w: 1.84, h: 0.8,
+      fill: { color: i === 2 ? TINT_GREEN : "FFFFFF" },
+      line: { color: i === 2 ? GREEN : LINE_GRAY, width: i === 2 ? 1.25 : 1 },
+      align: "center", valign: "middle", fontFace: FONT, margin: 0, lineSpacingMultiple: 1.05,
+    });
+    if (i < 5) s.addText("▶", {
+      x: x + 1.84, y: 5.16, w: 0.22, h: 0.8, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 10.5, color: SUB, margin: 0,
+    });
+  });
+
+  // ── 스토리 한 줄
+  s.addText("Captive 고객의 요구를 삼성 완제품 생태계 안에 수용한다 — Binding secures demand · FDP standardizes · System SW creates value", {
+    x: 0.5, y: 6.28, w: 12.33, h: 0.3, align: "center",
+    fontFace: FONT, fontSize: 12, italic: true, color: SUB, margin: 0,
+  });
+}
+
+/* ---------------------------------------------------------------- */
+/* 제품·기술 축 ② — 실행전략 6종 + 핵심 KPI                            */
+/* ---------------------------------------------------------------- */
+function slideFdpExec(pres, ic) {
+  const s = pres.addSlide();
+  header(s, "제품 축 ②", FDP_OPTS);
+
+  s.addText("실행전략 6종 — Samsung FDP Enablement", {
+    x: 0.5, y: 0.94, w: 8, h: 0.34,
+    fontFace: FONT, fontSize: 16, bold: true, color: INK, margin: 0,
+  });
+
+  const strategies = [
+    ["Enablement Platform", "FDP SDK·공통 라이브러리 (Linux·io_uring·SPDK) · Workload Profiler(trace→추천 RUH·예상 WAF) · Emulator/Digital Twin", "BLUE", "layers"],
+    ["표준 워크로드 프로파일", "Cache·KV·DB·Multi-tenant·Vector·Checkpoint·QLC 7종 — 펌웨어 공통화와 고객별 최적화 양립", "TEAL", "sliders"],
+    ["End-to-End 공동검증", "App→Host→SSD→NAND→텔레메트리 · 시스템 성과 지표(WAF·p999·격리·전력) · 고객 trace의 pre/post-silicon 재사용", "GREEN", "check"],
+    ["고객 공동개발 조직", "Host SW · Workload Integration · Solution Engineering · E2E Validation — 기술지원이 아니라 제품 기획·개발 참여", "SLATE", "users"],
+    ["Binding 계약 기술협력", "고객: 물량·trace 제공·공동 로드맵 ↔ 삼성: 공급능력·SDK·개선 목표 — 공동 플랫폼 계약으로 확장", "BLUE", "link"],
+    ["오픈소스·차별화 경계", "공개: 기본 라이브러리·연동·적합성 테스트 / 차별화: NAND·FTL 모델·정책 추천·예측 모델 — lock-in 우려 해소", "TEAL", "unlock"],
+  ];
+  const colorMap = { BLUE: "0E6BA8", TEAL, GREEN, SLATE: "4C7C94" };
+  strategies.forEach(([t, c, colorKey, iconKey], i) => {
+    const x = 0.5 + (i % 3) * 4.2;
+    const y = 1.4 + Math.floor(i / 3) * 2.06;
+    card(s, x, y, 3.94, 1.9);
+    iconCircle(s, x + 0.2, y + 0.18, 0.44, colorMap[colorKey], ic[iconKey]);
+    s.addText(`${i + 1}. ${t}`, {
+      x: x + 0.76, y: y + 0.2, w: 3.0, h: 0.4,
+      fontFace: FONT, fontSize: 14, bold: true, color: INK, margin: 0, valign: "middle",
+    });
+    s.addText(c, {
+      x: x + 0.22, y: y + 0.74, w: 3.5, h: 1.06,
+      fontFace: FONT, fontSize: 10.5, color: SUB, margin: 0, valign: "top", lineSpacingMultiple: 1.12,
+    });
+  });
+
+  // ── 핵심 KPI 콜아웃 (그린 강조)
+  s.addShape("roundRect", {
+    x: 0.5, y: 5.66, w: 12.33, h: 0.9, rectRadius: 0.08,
+    fill: { color: TINT_GREEN }, line: { color: GREEN, width: 1.25 },
+  });
+  s.addImage({ data: ic.targetGreen, x: 0.72, y: 5.91, w: 0.4, h: 0.4 });
+  s.addText([
+    { text: "핵심 KPI — 고객 시스템에서 FDP가 실제 활성화된 SSD 용량", options: { fontSize: 14.5, bold: true, color: INK, breakLine: true } },
+    { text: "지원 SSD 출하량만 세면 미사용 기능이 된다 · Captive SSD 계획에서 삼성 완제품으로 전환된 물량을 병행 추적 · WAF·p999·usable capacity 개선율", options: { fontSize: 11, color: SUB } },
+  ], {
+    x: 1.26, y: 5.66, w: 11.4, h: 0.9, valign: "middle",
+    fontFace: FONT, margin: 0, lineSpacingMultiple: 1.12,
+  });
+
+  s.addText("실행 주체: 인재 축(FDE 스타)이 이 플랫폼을 들고 고객 아키텍처 안으로 들어간다", {
+    x: 0.5, y: 6.68, w: 12.33, h: 0.28, align: "center",
+    fontFace: FONT, fontSize: 12, italic: true, color: SUB, margin: 0,
+  });
+}
+
+/* ---------------------------------------------------------------- */
 async function main() {
   const ic = {
     cpu: await iconPng(FiCpu, "FFFFFF"),
@@ -481,6 +645,12 @@ async function main() {
     alertInk: await iconPng(FiAlertTriangle, INK),
     usersSub: await iconPng(FiUsers, SUB),
     starGreen: await iconPng(FiStar, GREEN),
+    targetGreen: await iconPng(FiTarget, GREEN),
+    layers: await iconPng(FiLayers, "FFFFFF"),
+    sliders: await iconPng(FiSliders, "FFFFFF"),
+    check: await iconPng(FiCheckCircle, "FFFFFF"),
+    link: await iconPng(FiLink, "FFFFFF"),
+    unlock: await iconPng(FiUnlock, "FFFFFF"),
   };
 
   const combined = new pptxgen();
@@ -488,16 +658,23 @@ async function main() {
   slideHigh(combined, ic);
   slideMid(combined, ic);
   slideLow(combined, ic);
+  slideFdpOverview(combined, ic);
+  slideFdpExec(combined, ic);
   const outCombined = path.join(PRES_DIR, "dev-transformation-summary.pptx");
   await combined.writeFile({ fileName: outCombined });
   console.log("written:", outCombined);
 
   fs.mkdirSync(DL_DIR, { recursive: true });
-  const singles = [["high", slideHigh], ["mid", slideMid], ["low", slideLow]];
-  for (const [name, build] of singles) {
+  const singles = [
+    ["high", [slideHigh]],
+    ["mid", [slideMid]],
+    ["low", [slideLow]],
+    ["fdp", [slideFdpOverview, slideFdpExec]],
+  ];
+  for (const [name, builds] of singles) {
     const p = new pptxgen();
     p.layout = "LAYOUT_WIDE";
-    build(p, ic);
+    builds.forEach((b) => b(p, ic));
     const out = path.join(PRES_DIR, `dev-transformation-summary-${name}.pptx`);
     await p.writeFile({ fileName: out });
     fs.copyFileSync(out, path.join(DL_DIR, `dev-transformation-summary-${name}.pptx`));

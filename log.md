@@ -1094,3 +1094,9 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 **EWI·트리거**: EWI 4종 정성 note/history 갱신(`bigtech_capex_growth`에 CAPEX-vs-FCF 꼭짓점 프레임·`custom_hbm_revenue_share`에 커스텀 HBM 퇴조 vs zHBM 대비·`samsung_codesign_contracts`에 take-or-pay/NTB 1차 확인·`competitor_sca_disclosures` 스톡 note). 트리거 3종 note 갱신(`demand_inflection_divergence`에 3축 프레임+핸드투마우스 미발동 확인·`bigtech_capex_cut25`/`bigtech_capex_2027_sustained`에 FCF 렌즈). 민감 수치 제외로 currentValue는 전부 무변화(정성 갱신). 발동 트리거 0건.
 
 **동기화**: 신규 소스 0건(인터뷰 2건은 기 ingest). dashboard indicators.js(QUADRANT·SCENARIOS·EWI·트리거)·scenarioPlanning.js(DF1·DF2 현재위치·matrix A·B note)·updates.js(assessment 항목 — 업데이트 내역 메뉴)·version.js(v2.32.10 패치). wiki key-drivers·scenario-matrix. 위키 링크 무변경 → 지식그래프 재생성 생략. PPTX 확률 미포함 → 재생성 생략. cd dashboard && npm run build 검증. main 직접 병합·push.
+
+## [2026-08-05] build | FDP 제품·기술 축 — 대시보드 섹션 + PPT 슬라이드 2장 추가 (v2.33.0)
+
+요청: FDP 병합분의 대시보드 반영 + PPT 슬라이드 1~2장 추가. **대시보드(마이너 v2.33.0 — 새 데이터 카테고리)**: devTransformation.js에 DT_FDP 신설(선언·전략 문장·문제 3·6요소·실행전략 6종·로드맵 4단계·핵심 KPI), Strategies.jsx 개발실 전환 탭에 카드 2개 추가(제품·기술 축 개요 — 스타 엔지니어 카드 다음 / 실행전략·로드맵·KPI), 다운로드 카드에 4번째 항목(제품·기술 축 FDP 2장) + 그리드 4열화.
+
+**PPT**: generate_dev_transformation_summary.cjs 확장 — 제품 축 슬라이드 2장 신규(① 전환 한 컷[FDP SSD 공급자 →+시스템 SW→ 통합 솔루션 제공자]·왜 시스템 SW인가 3문제·6요소 체인, ② 실행전략 6종 아이콘 그리드·핵심 KPI 콜아웃[실제 활성화 용량]). 통합본 3장→5장, 개별본 4종(-fdp 신규 2장)·downloads 미러. 헤더 함수 리팩터(제목·출처·칩 파라미터화). 렌더 QA 통과·validate 통과·npm run build 통과.
