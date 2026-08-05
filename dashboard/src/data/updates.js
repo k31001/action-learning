@@ -17,6 +17,25 @@ export const UPDATES = [
   // ── 2026-08-05 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-05',
+    type: 'build',
+    version: 'v2.35.0',
+    title: 'Storyline 신설 — 위키 종합 서사 페이지 + 대시보드 첫 탭',
+    summary:
+      '위키 전체 지식(STEEP → Driving Forces → 시나리오 → 전략 → EWI)을 하나의 완결형 서사로 잇는 wiki/storyline/storyline.md를 신설하고, 대시보드 최상위 메뉴 첫 탭 "Storyline"으로 미러링. 환경 변화에서 출발해 Main Bet(시나리오 B 39%) 선택과 대안 3개(올인·관망·수축) 대비 우수성 논증, EWI 기반 자기 갱신 구조까지 8장 산문으로 기술 — 모든 수치·주장에 sources/ 인용 명시. 스토리 플로우 SVG 다이어그램(클릭 시 해당 장 스크롤·EWI→시나리오 재평가 피드백 루프)과 2023→2035 연대기 스트립으로 시각화. 기본 랜딩 탭이 EWI에서 Storyline으로 변경(기존 #/ewi 딥링크는 그대로 동작). CLAUDE.md §1/§3/§5/§6 정합성 체인에 storyline 등록 — 이후 steep·driving-forces·scenarios·strategies가 바뀌면 storyline 해당 장도 동반 갱신. 마이너 v2.35.0.',
+    tags: ['Storyline', '종합 서사', '신규 탭', '위키', '지식그래프', 'dashboard'],
+    items: [
+      { label: '위키 신설', detail: 'wiki/storyline/storyline.md — 8장 서사(환경 변화→진단→핵심 동인→다섯 개의 미래→선택→Robust 구조→대안 비교 논증→감시와 전환) + Mermaid 플로우·연대기. 전 수치 sources/ 인용' },
+      { label: '대시보드 신규 탭', detail: 'components/Storyline.jsx + data/storyline.js(STORYLINE_META·FLOW·TIMELINE·CHAPTERS). TOP_TABS 첫 항목, 기본 랜딩 storyline으로 변경. #/storyline/ch1~ch8 딥링크 지원' },
+      { label: '정합성 체인 등록', detail: 'CLAUDE.md §1 카테고리·§3 Ingest 4단계·§5 매핑 테이블·§6 변경 단계별 갱신 테이블에 storyline 추가 — 새 소스 유입 시 스토리라인 동반 갱신 의무화' },
+      { label: '지식그래프', detail: 'build-knowledge-graph.mjs CATEGORIES에 storyline(노랑) 추가 후 재생성 — 노드 82(+1)·엣지 343, 스토리라인이 링크 25개 허브로 등록. asymmetric 증가는 종합 페이지 특성상 수용' },
+      { label: '생략 명시', detail: 'outputs/ 무변경(스토리라인은 위키 계층 서사, report는 별도 산출물) → PPTX 재생성 생략' },
+    ],
+    links: [
+      { label: 'wiki/storyline/storyline.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/storyline.md' },
+    ],
+  },
+  {
+    date: '2026-08-05',
     type: 'ingest',
     version: 'v2.33.1',
     title: '외부 전문가 수집 — Dylan Patel(SemiAnalysis) MAD Podcast: 메모리 부족·KV 캐시·CPO 지연',

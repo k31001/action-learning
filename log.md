@@ -1123,3 +1123,15 @@ PPT: 3장 모두 하단에 [과거: SV 보상 열위] ▶ [현재: 성과급 ~6�
 ## [2026-08-05] fix | 개발실 전환 탭 NEW 태그 제거 (v2.34.1)
 
 Strategies 상위 탭의 "개발실 전환"에서 isNew 배지 제거 — 탭이 정착 단계로 판단. version v2.34.1(패치).
+
+## [2026-08-05] build | Storyline 신설 — 위키 종합 서사 + 대시보드 첫 탭 (v2.35.0)
+
+요청: "최상위 메뉴에 Storyline 항목 신설 — 위키 전체 지식을 아우르는 삼성 전략 방향성 스토리라인, 완전한 문장·스토리 느낌·시각화·명시적 레퍼런스·신규 소스 유입 시 자동 갱신."
+
+**위키 신설**: `wiki/storyline/storyline.md` — 8장 완결형 서사(환경 변화→진단→핵심 동인→다섯 개의 미래→선택→Robust 구조→**대안 비교 논증**(올인·관망·수축 3개 대안 대비 확률가중 베팅+Robust 헤지+데이터 트리거의 우위)→감시와 전환). Mermaid 스토리 플로우 + 2023→2035 연대기 내장. 전 수치·주장에 sources/ 인용, 해석은 위키 페이지 상대링크(→ 지식그래프 엣지). 상단에 갱신 규칙 명문화.
+
+**정합성 체인 등록**: CLAUDE.md §1 카테고리에 storyline/ 추가, §3 Ingest에 "storyline 서사 정합 확인" 4단계 삽입, §5 매핑 테이블·§6 변경 단계별 테이블에 storyline 행 추가 — 이후 steep·driving-forces·scenarios·strategies 변경 시 storyline 해당 장(3~7장) + `dashboard/src/data/storyline.js` 동반 갱신 의무. index.md 최상단 섹션 등록.
+
+**대시보드(마이너 v2.35.0)**: TOP_TABS 첫 탭 "Storyline"(BookOpen) 신설, 기본 랜딩 ewi→storyline 변경(기존 `#/ewi` 딥링크 동작 유지). `data/storyline.js`(META·FLOW 7단계·TIMELINE 6이벤트·CHAPTERS 8장, 블록별 refs) + `components/Storyline.jsx`(SVG 플로우 체인 — 클릭 시 해당 장 스크롤·EWI→시나리오 점선 피드백 루프, 연대기 스트립, Interviews Block 계열 본문 렌더러 + SourceLink 각주, `#/storyline/ch1~ch8` 딥링크). 지식그래프 빌더 CATEGORIES에 storyline(노랑) 추가 후 재생성 — 노드 82·엣지 343, 스토리라인 허브(링크 25). asymmetric 증가(~25건)는 종합 페이지의 단방향 인용 특성상 수용. `npm run build` 통과.
+
+**생략 명시**: outputs/ 무변경(storyline은 위키 계층 서사, report·PPT는 별도 산출물) → PPTX 재생성 생략. 푸시는 세션 지정 브랜치 `claude/storyline-menu-creation-f6ch4f`(main 아님).

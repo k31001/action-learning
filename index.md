@@ -6,6 +6,10 @@
 
 ---
 
+## wiki/storyline — 종합 스토리라인 (NEW)
+
+- [wiki/storyline/storyline.md](wiki/storyline/storyline.md) — 위키 전체 지식을 잇는 종합 서사: 환경 변화 → 진단 → 핵심 동인 → 시나리오 → 전략 선택 논증 → EWI (대시보드 "Storyline" 첫 탭의 단일 소스)
+
 ## wiki/scenarios — 5개 시나리오 + 매트릭스
 
 - [wiki/scenarios/scenario-matrix.md](wiki/scenarios/scenario-matrix.md) — DF1(AI 수요) × DF2(미중 관계) 2×2 매트릭스 + 와일드카드 E
