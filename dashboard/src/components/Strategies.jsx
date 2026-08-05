@@ -24,7 +24,7 @@ const SUB_TABS = [
   { id: 'competitive', label: 'Competitive Landscape', icon: Target },
   { id: 'robust',      label: 'Robust Strategy',     icon: Shield },
   { id: 'core',        label: 'Core Strategy',       icon: Target },
-  { id: 'transformation', label: '개발실 전환',       icon: ArrowRightLeft, isNew: true },
+  { id: 'transformation', label: '개발실 전환',       icon: ArrowRightLeft },
   { id: 'decisions',   label: 'Decisions',           icon: ListChecks },
 ]
 
