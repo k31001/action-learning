@@ -169,3 +169,15 @@
 - **병목 모델 연결**: 위 신규 데이터를 반영해 전력 제약지수가 70 → 72로 추가 상향됐다(2026-07-04) — 변압기·개폐장치 리드타임(최대 5년)이 가스터빈을 제치고 최대 신규 병목으로 부상 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). [bottleneck-model-2030.md](bottleneck-model-2030.md) 갱신 검토 필요.
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §1
+
+---
+
+## [Update 2026-08-06] Sachin Katti(OpenAI) — 그리드 투자 원칙·가스터빈·원자력 "빨리 올수록 좋다"
+
+- **그리드 원칙**: "데이터센터를 지을 때마다 그리드에서 전력을 빼앗지 않는다는 하드 커밋" — 신규 발전(가스·태양광·수력)+송전선·변압기·변전소를 OpenAI가 직접 자금 지원. "이 데이터센터들이 아니면 자금이 붙지 않았을 인프라 — 미국 그리드가 빠르게 업그레이드되는 부수 효과" ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)).
+- **비하인드 더 미터**: 그리드 한계 지역은 온사이트 자가발전 — 현재는 **가스터빈**(미국에서 가장 밀도 높고 수송·가용성 우수).
+- **원자력**: "빨리 올수록 좋다(can't come soon enough)" — 가장 밀도 높은 클린 에너지원으로 데이터센터 대규모 확장의 중요 에너지원 전망.
+- **전력 기자재·인력 병목 1차 확인**: 가스터빈·변압기 산업은 지난 10년 증설 없이 수요 충격을 맞아 **캐파 추가에 수년** 소요, 전기공·배관공 등 숙련 인력도 병목("하이퍼스케일러·랩 전부가 채용 경쟁") — 본 페이지·[bottleneck-model-2030.md](bottleneck-model-2030.md)의 전력 제약 축을 최대 수요자가 확인.
+- **냉각-성능 결합**: 전면 액체냉각(칩·케이블·변압기까지), "칩을 뜨겁게 돌릴수록 메모리 대역폭·FLOPS↑" — 냉각 효율이 인텔리전스 생산량과 직결. 물은 폐루프 재활용으로 소비 미미.
+
+**출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)

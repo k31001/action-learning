@@ -120,3 +120,18 @@
 - 상세·통합 프레임: [ai-compute-economics-gap.md](ai-compute-economics-gap.md).
 
 **출처**: [bain-ai-compute-semiconductor-2025-09-to-2026-03.md](../../sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) §①
+
+---
+
+## [Update 2026-08-06] Sachin Katti(OpenAI) — "수요≫공급, 컴퓨트 3배=매출 3배, 최대 리스크는 과소 건설"
+
+OpenAI Head of Industrial Compute의 MAD Podcast 발언 ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)) — 수요 지속성 논쟁에 **최대 구매 당사자의 1차 발언**이 추가됐다:
+
+- **"수요가 컴퓨트 공급을 압도적으로 앞선다. 온라인되는 모든 컴퓨트를 즉시 소비한다"** — OpenAI 기준 유휴 컴퓨트 없음.
+- **"컴퓨트를 3배 늘리면 매출이 3배 늘었다"** — 컴퓨트-매출 결합을 당사자가 정량 확인. 거품론의 "투자≠수익" 우려에 대한 반대 방향 1차 데이터 포인트(단, OpenAI 자사 매출 기준).
+- **비대칭 리스크 인식**: "충분하다고 생각해 늦출 때마다 항상 후회했다" — 향후 3년의 서프라이즈는 과잉이 아니라 **과소 건설**(물리 세계·공급망이 수요 속도를 못 따라감) 방향이라는 것.
+- **AI 재귀 = 수요의 새 상방 메커니즘**: AI가 AI 연구를 수행하며 실험 수가 인간 연구자 수 제약에서 해방 → **연구용 컴퓨트 수요 폭발**. "AI가 다음 세대 AI의 시스템(칩 포함)을 설계하는 재귀의 세계가 멀지 않다." 권석준의 "추론 100배"(사용량 축)와 별개의 연구 축 상방.
+- **학습·추론 구분 소멸**: "학습의 상당 부분이 이제 추론"(합성 데이터·포스트트레이닝·테스트타임 컴퓨트) — 추론 비중 논쟁 자체가 무의미해지는 방향.
+- 유의: 최대 이해당사자의 발언(포지션 톡 가능성)이며, 이창수의 "중복 수요" 리스크(프론티어 수요가 여러 CSP에 중복 계상)는 이 발언으로 해소되지 않음 — 병행 추적.
+
+**출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)

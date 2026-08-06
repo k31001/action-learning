@@ -1180,3 +1180,13 @@ Strategies 상위 탭의 "개발실 전환"에서 isNew 배지 제거 — 탭이
 제거 범위: ① sources/articles/mad-podcast-dylan-patel-memory-2026-07.md 삭제(사용자 명시 요청에 따른 sources 불변 원칙의 예외), ② wiki 3개 페이지(price-trends·ai-demand-sustainability·ai-datacenter-buildout)의 [Update 2026-08-05] Dylan Patel 섹션 제거, ③ dashboard interviews.js 항목 삭제(인터뷰 메뉴 5개→4개), ④ updates.js의 해당 ingest 항목 2건 제거 + 본 철회 항목 추가, ⑤ index.md 등록 해제. 크리스 밀러 수집은 전체 유지. version v2.36.3(패치 — main 병합 시 재버전). 지식그래프 재생성·npm run build 검증. 브랜치 커밋 후 main 병합·push.
 
 재수집 조건: 에피소드 원문 트랜스크립트가 확보되면 1차 자료 기반으로 재수집 가능.
+
+## [2026-08-06] ingest | MAD Podcast × Sachin Katti(OpenAI 산업 컴퓨트 총괄) — "We Can't Build Fast Enough" (v2.36.4)
+
+요청: 사용자 제공 트랜스크립트 전문(1차 자료)으로 Sachin Katti 인터뷰 추가(한국어 정리). Dylan Patel 건과 달리 원문 전문이 확보되어 소스 품질 기준 충족 — sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md에 한국어 구조화 요약 + 영어 원문 트랜스크립트 전문을 부록으로 불변 보존. 에피소드 발행 시점(2026-07 중순)은 웹 검색으로 확인.
+
+핵심: ① 수요≫공급 — "온라인되는 즉시 소진", 컴퓨트 3배=매출 3배, 최대 리스크는 과잉이 아닌 과소 건설(물리 세계가 못 따라옴), ② OpenAI 올해 ~$50B·업계 ~$700B 1차 확인(위키 기존 ~$700~725B와 정합), ③ AI 재귀 — AI가 AI 연구·칩 설계 수행, 연구용 컴퓨트 수요 폭발, ④ 학습·추론 구분 소멸, ⑤ "전자→토큰 공장"·전면 액체냉각·"칩이 뜨거울수록 메모리 대역폭↑", ⑥ 그리드 투자 원칙·비하인드 더 미터 가스터빈·원자력 "빨리 올수록 좋다", ⑦ 가스터빈·변압기(10년 무증설+수요 충격)·숙련 인력 병목 — "병목은 어디에나", ⑧ Jalapeño 자체 추론 칩(와트당 토큰 최적화·Broadcom·9개월 테이프아웃·AI 보조 설계), ⑨ Stargate=우산 전략·포트폴리오 조달·오프테이커 재무 구조, ⑩ 보장 캐파=보장 토큰(인텔리전스의 유틸리티화), ⑪ 오비탈 컴퓨트 보완재론.
+
+wiki 6개 페이지 [Update 2026-08-06]: ai-capex($50B/$700B 교차 확인·오프테이커 구조), ai-demand-sustainability(수요≫공급·3배=3배·AI 재귀 — 최대 구매 당사자 1차 발언, 포지션 톡 유의·중복 수요 리스크 병행 추적 명시), energy-constraints(그리드 원칙·가스터빈·원자력·기자재/인력 병목), ai-datacenter-buildout(공장 정의·사이트 4요소·Abilene/미시간·텍사스 파이프라인·커스텀 ASIC 믹스), lta-to-sca-transition(토큰 층위 보장 계약 — 사슬 양끝 동시 진행 논지), space-semiconductor(오비탈 보완재·발사/하드웨어 경제성 변곡점).
+
+거시 축 판단: DF1·DF2 위치 변경 없음 — 정기 재평가 밖의 정성 1차 자료이나, DF1 상방(수요≫공급·과소 건설 리스크·AI 재귀)의 1차 당사자 확인으로 다음 재평가의 유력 입력. 대시보드: interviews.js 외부 전문가 항목(전체 5번째) 추가, updates.js, version v2.36.4(패치). 지식그래프 재생성·npm run build 검증. 브랜치 커밋 후 main 병합·push(사전 승인 체인).

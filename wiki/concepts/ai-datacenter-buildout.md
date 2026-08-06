@@ -140,3 +140,14 @@ EWI 후보: ① 분기별 신규 착공 GW, ② 병목 단계(②·⑤·⑦) 적
 - Meta는 단독으로 2026년 상반기에만 **5GW+ 클라우드·코로케이션 용량 계약**을 체결했다(SemiAnalysis "Meta Compute: Everyone Wants To Be A Neocloud") ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §5
+
+---
+
+## [Update 2026-08-06] Sachin Katti(OpenAI) — "전자를 토큰으로 바꾸는 공장"의 실체
+
+- OpenAI 컴퓨트 총괄이 말하는 AI 데이터센터의 정의: **"전자를 토큰으로 바꾸는 거대한 공장"** — 축구장 크기·전면 액체냉각(칩·데이터홀·연결 케이블·변압기까지) ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)).
+- **사이트 선정 4요소**: ① 부지(넓고 주거지에서 이격) ② 인허가 ③ 전력(강한 그리드+가스 가용성) ④ **건설 인력**(전기공·배관공) — 본 페이지 9단계 트래커의 단계 이행 속도를 결정하는 변수와 일치.
+- **파이프라인 1차 확인**: Abilene(Oracle) GB 클러스터는 가동 중(최신 모델 학습), Oracle이 미시간·텍사스 등에 추가 대형 클러스터 건설 중 — **2~3년 내 온라인**(학습+프로덕트 추론 겸용). OpenAI는 오프테이커, Oracle이 건설·소유.
+- **자체 칩 투입 예고**: SoftBank Energy와 웜셸 공동 설계 후 **자체 칩(Jalapeño — 와트당 토큰 최적화, Broadcom 협력, 9개월 설계→테이프아웃)** 운영 계획 — DC 파이프라인의 칩 믹스에 커스텀 ASIC 비중 확대 신호. 커스텀 ASIC+HBM 어태치 흐름은 이창수 인터뷰의 "브로드컴·ASIC 생태계 재편"과 수렴.
+
+**출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)

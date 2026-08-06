@@ -71,3 +71,13 @@ LTA와 SCA의 차이를 가장 선명하게 보여주는 사건 ([micron-anthrop
 | 커스텀 HBM 매출 비중 (`custom_hbm_revenue_share`) | **~0%** (2026 매출은 표준 HBM3E/HBM4 중심) | 30%+ (경계 15%) | 범용→커스텀 역전 — 선행: HBM4E 2027년 ~40% 전망 |
 
 다음 갱신 시점: Micron Q4 FY26 실적(2026-09 말)·TrendForce HBM 분기 리포트 — 정기 시장 점검 사이클에서 흡수.
+
+---
+
+## [Update 2026-08-06] 토큰 층위의 보장 계약 등장 — OpenAI "Guaranteed Capacity = Guaranteed Tokens"
+
+- OpenAI가 엔터프라이즈 대상 **보장 캐파(guaranteed capacity)** 상품을 출시 — Sachin Katti: **"보장 캐파는 보장 토큰이다. 일정 달러어치 인텔리전스를 보장한다"** ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)).
+- 논리 구조가 본 페이지의 Spot→LTA→SCA 진화와 동형: "컴퓨트 부족 세계에서 토큰은 항상 프리미엄 → 엔터프라이즈의 필수 투입재가 된 인텔리전스의 공급을 계약으로 보증 → 사업 리스크 제거는 좋은 비즈니스 위생." **인텔리전스가 공급 단위(supply unit)로 유틸리티화.**
+- 함의: 수요 사슬(프론티어→CSP→메모리)의 **최상류가 자기 하류(엔터프라이즈)에 공급 보증을 판매** — 메모리 층위의 take-or-pay/SCA(이창수 1차 방어선)와 토큰 층위의 보장 계약이 사슬 양끝에서 동시 진행. 사슬 전체가 "보장 계약의 사슬"로 재편되면 중간(CSP·메모리)의 수요 가시성이 구조적으로 개선되는 방향 — 단 중복 수요 리스크(이창수)는 계약 층위가 달라 별도 추적 필요.
+
+**출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)

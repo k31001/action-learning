@@ -107,3 +107,12 @@ sources:
 - NASA SmallSat State of the Art (공개 리포트)
 - ESA COTS guidance (공개)
 - BryceTech Smallsat Markets Report 2024
+
+---
+
+## [Update 2026-08-06] Sachin Katti(OpenAI) — 오비탈 컴퓨트 "보완재로 실현 가능"
+
+- OpenAI 컴퓨트 총괄의 평가: 우주 데이터센터는 "엔지니어링 문제로서 시간·투자가 있으면 해결 가능하며 **오비탈 컴퓨트의 자리는 있다**" — 단 전체 컴퓨트 수요의 해법이 아닌 **보완재(complement in the arsenal)** ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)).
+- 변곡점 조건: **발사 경제성 + 하드웨어 경제성** — "싸게 쏘아올리고, 고장 나면 (수리 불가하므로) 싸게 버릴 수 있어야" 한다. 본 페이지의 선별 COTS·저비용 폐기 전제와 일치하는 프레임 — 우주 반도체의 "고신뢰 소량"에서 "저가 대량 폐기형"으로의 전환 논지를 최대 수요자 후보가 확인.
+
+**출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)

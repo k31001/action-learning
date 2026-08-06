@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-06 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-06',
+    type: 'ingest',
+    version: 'v2.36.4',
+    title: '외부 전문가 수집 — Sachin Katti(OpenAI 컴퓨트 총괄) MAD Podcast: "We Can\'t Build Fast Enough"',
+    summary:
+      '사용자 제공 트랜스크립트 전문(1차 자료)으로 MAD Podcast × Sachin Katti(OpenAI Head of Industrial Compute, 전 Intel CTO, 2026-07 발행) 수집 — 원문을 소스 부록에 불변 보존. 핵심: ① 수요≫공급("온라인되는 즉시 소진")·컴퓨트 3배=매출 3배·최대 리스크는 과소 건설, ② OpenAI 올해 ~$50B·업계 ~$700B 1차 확인, ③ AI 재귀(AI가 AI 연구·칩 설계 → 연구 컴퓨트 폭발)·학습/추론 구분 소멸, ④ "전자→토큰 공장"·전면 액체냉각·"칩이 뜨거울수록 메모리 대역폭↑", ⑤ 그리드 투자 원칙·가스터빈·원자력·기자재/인력 병목("병목은 어디에나"), ⑥ Jalapeño(와트당 토큰·Broadcom·9개월 테이프아웃)·Stargate 우산 전략·오프테이커 재무·보장 토큰·오비탈 보완재. wiki 6개 페이지 갱신, 인터뷰 메뉴 5번째 항목. DF1·DF2 변경 없음(다음 재평가 유력 입력 표기). 패치 v2.36.4.',
+    tags: ['Sachin Katti', 'OpenAI', 'MAD Podcast', '수요≫공급', 'AI 재귀', '전력', '원자력', 'Jalapeño', 'Broadcom', 'Stargate', '보장 토큰', 'dashboard'],
+    items: [
+      { label: '신규 소스 (1차 자료)', detail: 'sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md — 한국어 구조화 요약 10개 절 + 위키 함의 6개 + 영어 원문 트랜스크립트 전문 부록 보존' },
+      { label: '인터뷰 메뉴 구조화', detail: 'data/interviews.js 최상단 추가(외부 전문가, 전체 5번째). 6개 섹션, keyQuotes 4개(즉시 소진·3배=3배·AI 재귀·물리 세계 한계), 병목 지도 표' },
+      { label: 'wiki 6개 페이지 갱신', detail: 'ai-capex($50B/$700B 교차 확인·오프테이커)·ai-demand-sustainability(수요≫공급·AI 재귀, 포지션 톡·중복 수요 유의 명시)·energy-constraints(그리드 원칙·원자력·기자재/인력 병목)·ai-datacenter-buildout(공장 정의·사이트 4요소·파이프라인)·lta-to-sca-transition(토큰 층위 보장 계약)·space-semiconductor(오비탈 보완재)' },
+      { label: '거시 축 판단', detail: 'DF1·DF2 위치 변경 없음 — 단 DF1 상방(수요≫공급·과소 건설 리스크·AI 재귀)의 최대 구매 당사자 1차 확인으로 다음 정기 재평가 유력 입력 표기' },
+      { label: '인덱스·로그', detail: 'index.md articles 섹션·log.md 갱신, 지식그래프 재생성' },
+    ],
+    links: [
+      { label: 'mad-podcast-sachin-katti-openai-compute-2026-07.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md' },
+      { label: 'YouTube — OpenAI\'s Compute Chief: We Can\'t Build Fast Enough', href: 'https://www.youtube.com/watch?v=wEZBlmvxx4o' },
+    ],
+  },
   // ── 2026-08-06 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-06',
