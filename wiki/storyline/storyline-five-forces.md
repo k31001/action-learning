@@ -42,14 +42,32 @@ flowchart TB
 
 ## 5. 이 렌즈가 도출하는 최적 전략 — 구조를 바꾸는 순서대로
 
-파이브 포스의 목적함수는 "산업 이익 풀에서 삼성 몫의 구조적 극대화"다. 힘의 세기 × 개선 가능성으로 우선순위를 매기면 최적 전략 패키지는 다음 순서가 된다.
+파이브 포스가 묻는 질문은 하나다: "이 산업이 벌어들이는 이익 전체 중, 삼성 몫을 구조적으로 키우려면 어떤 힘부터 꺾어야 하는가?" 힘이 셀수록, 그리고 지금 개선할 여지가 클수록 우선순위가 높다. 그 순서로 정리하면 다음과 같다.
 
-1. **[1순위] 구매자 권력 역전 패키지 — RS-3 + RS-4·RS-8**: 이 산업 최대의 가치 유출구는 구매자와의 이익 배분 비대칭(NVIDIA DC 60%대 영업이익률 vs 메모리 그 절반 이하, [strategy.md](../scenarios/strategy.md))이다. CMX·SCADA·FDP 전환비용(RS-3)과 take-or-pay·NTB·Participating Forward 계약 구조(RS-4·RS-8)는 구매자의 이탈 자유 — 권력의 원천 그 자체 — 를 잠그는 유일한 수단이며, 2026년 구매자들이 스스로 락인에 들어온 지금이 실행 적기다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md), [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)). 실행 결정은 D12·D17 ([strategy.md](../scenarios/strategy.md)).
-2. **[2순위] 대체재 흡수 — SE-1·SE-2**: 대체재는 잠복기에 흡수 비용이 가장 싸다. 3D DRAM·CXL이 로드맵 단계인 지금 표준·조직을 선점하지 못하면, 대체가 시작된 뒤에는 어떤 협상력 전략도 무력화된다 ([key-drivers.md](../driving-forces/key-drivers.md) DF3).
-3. **[3순위] 공급자 내재화 — Hybrid Bonding 자체 IP + NIL(SA-2)**: TSMC(CoWoS NVIDIA 배정 60%)·ASML(노광 독점)·YMTC(본딩 IP) 종속을 끊는 수직 통합 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md), [core-strategy-selection.md](../scenarios/core-strategy-selection.md)).
-4. **[4순위] 로엔드 방어선 — RS-6 1c nm 원가 우위**: 국가보조 진입자(CXMT)의 잠식 속도를 늦추는 원가 격차 유지 ([cxmt.md](../entities/cxmt.md)).
+**1순위 — 구매자가 떠날 수 없게 만들어라 (RS-3 고객 락인 + RS-4·RS-8 계약 구조)**
 
-**시나리오 렌즈와의 차이**: 시나리오 플래닝이 MB-1(HBM 기술 1위 탈환)을 Main Bet의 선두에 두는 것과 달리, 이 렌즈에서 MB-1은 필요하되 충분치 않은 전략이다 — 순위전에서 1번이 되어도 배정 권력이 구매자에게 있는 구조는 그대로이기 때문이다. **구조를 바꾸는 전략(락인·계약·표준)이 순위를 바꾸는 전략보다 우선한다.**
+- *무엇을 하자는 것인가*: 두 가지다. 첫째, 삼성의 SSD·메모리를 NVIDIA의 소프트웨어 생태계(CMX 캐시 플랫폼·SCADA 스토리지 표준·FDP 데이터 배치 기술) 깊숙이 통합해서, 고객이 삼성을 떠나려면 자기 시스템을 뜯어고쳐야 하게 만드는 것 — 이것이 [RS-3 고객 전환비용 전략](../strategies/invariant/rs3-customer-switching-cost.md)이다. 둘째, "사겠다고 약속한 물량은 안 사가도 돈을 내는" take-or-pay 계약과 "이 가격 밑으로는 안 판다"는 가격 하한(NTB)을 다년 계약에 못박는 것 — [RS-4 고객 분산·장기계약](../strategies/invariant/rs4-customer-portfolio-diversification.md)과 [RS-8 구조화 매출 헷지](../strategies/invariant/rs8-structured-revenue-hedging.md)다.
+- *왜 이것이 1순위인가*: 이 산업에서 돈이 새는 가장 큰 구멍이 구매자이기 때문이다. NVIDIA는 AI 데이터센터에서 60%대 영업이익률을 가져가는데 메모리 3사는 슈퍼사이클 정점에도 그 절반 이하다 ([strategy.md](../scenarios/strategy.md)). 구매자가 강한 근본 이유는 "언제든 공급사를 갈아탈 수 있어서"인데, 2026년 공급 부족 국면에서 고객들이 제 발로 다년 계약·선수금 예치에 들어오고 있다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md), [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)). 힘의 원천(이탈 자유)을 잠글 수 있는 드문 기회의 창이 지금 열려 있다.
+- *실행 결정*: D12(구조화 헷지 시범)·D17(소버린 수요처 다변화) — 상세는 [strategy.md](../scenarios/strategy.md) §6.
+
+**2순위 — 대체 기술을 남의 손에 두지 마라 (SE-1 3D DRAM · SE-2 CXL)**
+
+- *무엇을 하자는 것인가*: HBM을 언젠가 대체할 수 있는 차세대 기술(3D DRAM, CXL 메모리 연결 표준)을 삼성이 직접 개발·표준화해서, 대체재 위협을 외부의 적이 아니라 내 포트폴리오의 일부로 만드는 것이다. [SE-1은 3D DRAM 전담 조직 + IMEC 공동연구](../scenarios/strategy.md), [SE-2는 CXL 표준화 기구(SIG) 주도권 확보](../scenarios/strategy.md)다.
+- *왜 2순위인가*: 대체재는 아직 시장이 아니라 연구 로드맵 위에 있다 ([key-drivers.md](../driving-forces/key-drivers.md) DF3 참조). 위협이 잠복해 있는 지금이 흡수 비용이 가장 싼 시점이고, 대체가 실제로 시작된 뒤에는 아무리 협상력이 좋아도 소용없다.
+
+**3순위 — 공급자 종속을 끊어라 (Hybrid Bonding 자체 IP + 나노임프린트)**
+
+- *무엇을 하자는 것인가*: 삼성이 남에게 의존하는 세 개의 목줄 — TSMC의 첨단 패키징(CoWoS, NVIDIA 물량의 60% 배정권), ASML의 노광 장비 독점, YMTC가 쥔 차세대 접합(Hybrid Bonding) 특허 — 을 자체 기술로 대체하는 것이다. 접합 IP 자체 개발은 [RS-6 공정 리더십](../strategies/invariant/rs6-process-leadership.md)의 한 축이고, ASML 우회용 나노임프린트(NIL) 기술은 [일본 R&D 허브 전략(SA-2)](../strategies/core/current-state-sa2-japan-rd-hub-nil.md)이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md), [core-strategy-selection.md](../scenarios/core-strategy-selection.md)).
+- *왜 3순위인가*: 공급자 힘은 세지만 국지적이다 — 병목 몇 곳에만 존재하므로, 그 병목만 내재화하면 되고 구매자·대체재 문제보다 범위가 좁다.
+
+**4순위 — 아래층 방어선을 지켜라 (RS-6 1c nm 원가 우위)**
+
+- *무엇을 하자는 것인가*: 범용 DRAM에서 최신 공정(1c 나노미터)으로 전환해 원가를 낮추고, 중국 CXMT가 저가로 치고 올라오는 속도를 늦추는 것이다 ([rs6-process-leadership.md](../strategies/invariant/rs6-process-leadership.md)).
+- *왜 4순위인가*: CXMT의 위협은 실재하지만 ([cxmt.md](../entities/cxmt.md)) 아직 로엔드에 머물러 있다. 원가 격차가 유지되는 동안은 방어선이 버틴다 — 단, 이 방어선이 뚫리면 1~3순위 전략의 시간을 벌 수 없으므로 버려도 되는 전략은 아니다.
+
+**시나리오 렌즈와 어떻게 다른가**: 시나리오 플래닝은 MB-1(HBM 기술 1위 탈환)을 Main Bet의 선두에 둔다. 그러나 파이브 포스 렌즈에서 보면 MB-1은 "필요하지만 그것만으로는 부족한" 전략이다 — 경쟁 순위전에서 1번 공급사가 되어도, 누구를 얼마나 쓸지 정하는 권력이 구매자(NVIDIA)에게 있는 구조 자체는 바뀌지 않기 때문이다. 그래서 이 렌즈의 결론은: **구조를 바꾸는 전략(락인·계약·표준)에 먼저 투자하고, 순위를 바꾸는 전략(기술 1위)은 그 위에 얹어라.**
+
+> 📊 대시보드에서 자세히: 전략 전체는 **Strategy 탭 → Robust Strategy / Core Strategy**, 17개 결정은 **Strategy 탭 → Decisions**에서 볼 수 있다.
 
 ## 6. 이 렌즈의 결론
 

@@ -52,6 +52,50 @@ function Block({ block }) {
             )}
           </blockquote>
         )
+      case 'strategy':
+        // 렌즈별 최적 전략 카드 — rank·name + 무엇을/왜 + 내부 탭 링크 + 출처
+        return (
+          <div className="space-y-3 my-4">
+            {block.items.map(item => (
+              <div key={item.rank} className="rounded-hig-lg border border-zinc-200 bg-white p-4">
+                <div className="flex items-start gap-3 mb-2">
+                  <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-zinc-900 text-white text-[12px] font-bold">
+                    {item.rank}
+                  </span>
+                  <h5 className="text-[14px] font-bold text-zinc-900 leading-snug pt-1">{item.name}</h5>
+                </div>
+                <p className="text-[14px] leading-relaxed text-zinc-700 mb-2">
+                  <span className="font-semibold text-zinc-500">무엇을 하자는 것인가 — </span>
+                  {item.what}
+                </p>
+                <p className="text-[14px] leading-relaxed text-zinc-700">
+                  <span className="font-semibold text-zinc-500">왜 이 순위인가 — </span>
+                  {item.why}
+                </p>
+                {(item.links?.length || item.refs) && (
+                  <div className="mt-3 pt-2.5 border-t border-zinc-100 space-y-1.5">
+                    {item.links?.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {item.links.map((l, i) => (
+                          <a
+                            key={i}
+                            href={l.hash}
+                            className="inline-flex items-center px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 text-[11px] font-medium hover:bg-sky-100 transition-colors"
+                          >
+                            {l.label} →
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                    {item.refs && (
+                      <SourceLink source={item.refs} className="text-[11px] text-zinc-400" />
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )
       case 'table':
         return (
           <div className="my-4 overflow-x-auto rounded-hig-md border border-zinc-200">

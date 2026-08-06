@@ -14,6 +14,25 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-05 (v) ───────────────────────────────────────────────────────────
+  {
+    date: '2026-08-05',
+    type: 'update',
+    version: 'v2.36.2',
+    title: '렌즈별 최적 전략 친절화 — 쉬운 설명·용어 풀이·탐색 링크 보강',
+    summary:
+      '"도출된 전략이 너무 요약·함축적이라 이해가 어렵다"는 피드백 반영. 4개 렌즈의 최적 전략 절을 순위별 "무엇을 하자는 것인가(용어를 풀어 쓴 설명) → 왜 이 순위인가(렌즈 논리) → 어디서 자세히 보나(링크)" 3단 구조의 완전한 문장으로 전면 재서술 — take-or-pay·NTB·Fab Shell·풋옵션·별동대·상위 이동 등 전문 용어를 본문 안에서 풀이. 위키에는 RS/SE/SA 전략 상세 페이지로 가는 직접 링크와 대시보드 탭 안내를, 대시보드에는 전용 strategy 카드 블록(순위 배지 + 무엇을/왜 + Strategy·EWI·Bottleneck 탭으로 점프하는 내부 링크 칩 + 출처)을 추가. 마스터 7장 교차 검증 표에 "표 읽는 법" 안내 추가. 패치 v2.36.2.',
+    tags: ['Storyline', '최적 전략', '가독성', '용어 풀이', '내부 링크', 'dashboard'],
+    items: [
+      { label: '위키 4렌즈 재서술', detail: 'storyline-{five-forces,game-theory,real-options,disruption}.md 최적 전략 절 — 순위별 3단 구조(무엇을/왜/실행 결정), RS·SE·SA 상세 페이지 상대링크, 하단에 대시보드 탭 안내 블록' },
+      { label: '대시보드 strategy 블록', detail: 'storylineLenses.js 4렌즈의 ol 요약을 strategy 카드 배열(rank·name·what·why·links·refs)로 전환, Storyline.jsx에 카드 렌더러 + 내부 해시 링크 칩(#/strategy/robust 등) 추가' },
+      { label: '교차 검증 표 안내', detail: 'storyline.md·storyline.js ch7에 표 읽는 법(순위 의미, —는 미포함이지 반대 아님) 명시' },
+      { label: '지식그래프', detail: '렌즈→전략 상세 페이지 링크 증가로 재생성 — 엣지 378→390' },
+    ],
+    links: [
+      { label: 'wiki/storyline/storyline-five-forces.md §5', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/storyline-five-forces.md' },
+    ],
+  },
   // ── 2026-08-05 (iv) ──────────────────────────────────────────────────────────
   {
     date: '2026-08-05',
