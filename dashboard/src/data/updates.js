@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-06 (iii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-08-06',
+    type: 'build',
+    version: 'v2.36.5',
+    title: '스토리라인 반영 — Sachin Katti 증언을 1장(환경 변화)·3장(DF1)에 통합',
+    summary:
+      'Sachin Katti(OpenAI 컴퓨트 총괄) 인터뷰(v2.36.4 ingest)를 마스터 스토리라인에 반영. 1장 환경 변화에 사슬 최상류의 1차 증언 문단 신설 — 업계 ~$700B/OpenAI ~$50B 확인·"수요가 공급을 압도, 즉시 소비"·"전자를 토큰으로 바꾸는 공장"(칩이 뜨거울수록 메모리 대역폭↑)·가스터빈/변압기/인력 병목이 전력 72 지수를 수요자 시점에서 확인. 3장 DF1 상방 근거에 "컴퓨트 3배=매출 3배·최대 리스크는 과소 건설" 증언과 AI 재귀(연구 컴퓨트 폭발) 메커니즘 추가 — 후기순환 신호(마진 정점·Q3 감속)와의 긴장 구도는 유지. 렌즈 4종은 미갱신(사유: 인터뷰는 DF1 수요 증거의 보강이며 각 렌즈의 전략 도출 논리·순위를 바꾸지 않음). wiki storyline.md(frontmatter last_reviewed 08-06) ↔ dashboard storyline.js(META asof·ch1 블록 신설·ch3 블록 확장·refs) 동기. 패치 v2.36.5.',
+    tags: ['스토리라인', 'Sachin Katti', 'OpenAI', 'DF1', '환경 변화', 'AI 재귀', 'dashboard'],
+    items: [
+      { label: '1장 환경 변화', detail: '최상류 1차 증언 문단 신설 — $700B/$50B·즉시 소진·전자→토큰 공장·냉각↔메모리 대역폭·기자재/인력 병목의 수요자 시점 확인' },
+      { label: '3장 DF1', detail: '상방 근거에 Katti 증언(3배=3배·과소 건설 리스크)·AI 재귀 추가. 하방 신호(사상 최고 마진·Q3 감속=후기순환)와의 긴장 구도 유지 — DF1 위치(8.5)·확률 무변경' },
+      { label: '렌즈 4종 미갱신', detail: '파이브 포스·게임이론·실물옵션·파괴적 혁신 렌즈는 전략 도출 논리 무영향으로 건너뜀(사유 명시)' },
+      { label: '동기화', detail: 'wiki/storyline/storyline.md ↔ dashboard/src/data/storyline.js (META asof·FLOW 무변경·ch1/ch3 블록·refs)' },
+    ],
+    links: [
+      { label: 'storyline.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/storyline.md' },
+      { label: 'mad-podcast-sachin-katti-openai-compute-2026-07.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md' },
+    ],
+  },
   // ── 2026-08-06 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-08-06',

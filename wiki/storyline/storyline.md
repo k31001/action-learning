@@ -1,7 +1,7 @@
 ---
 type: analysis
-last_reviewed: 2026-08-05
-sources: [sources/filings/micron-q3-fy26.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md, sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md, sources/raw-notes/ai-datacenter-buildout-2026-06.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md]
+last_reviewed: 2026-08-06
+sources: [sources/filings/micron-q3-fy26.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md, sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md, sources/raw-notes/ai-datacenter-buildout-2026-06.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md, sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md]
 ---
 
 # 스토리라인 — 환경 변화에서 전략적 선택까지
@@ -43,6 +43,8 @@ flowchart LR
 
 이야기는 2023년에 시작된다. 생성형 AI가 데이터센터의 설계도를 다시 그리면서, 30년간 PC와 스마트폰의 사이클을 따라 움직이던 메모리 산업에 완전히 새로운 수요 엔진이 장착됐다. 빅테크 4사의 AI 설비투자는 2024년 $200B에서 2026년 $725B로 2년 만에 3배 이상 불어났고, 2026년 성장률만 +77%에 달한다 ([samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md)). 전 세계 17개국에서 55.9GW 규모의 AI 데이터센터가 착공 파이프라인에 올라 있으며 ([ai-datacenter-buildout-2026-06.md](../../sources/raw-notes/ai-datacenter-buildout-2026-06.md)), 마이크로소프트는 2026년 CapEx $190B 중 $25B가 메모리·반도체 가격 상승분이라고 직접 인정했다 ([2026-q1-current-state.md](../concepts/2026-q1-current-state.md)).
 
+이 수요가 과장이 아니라는 것은 사슬의 최상류가 직접 증언한다. OpenAI의 컴퓨트 총괄 Sachin Katti는 올해 업계 컴퓨트 지출 ~$700B(OpenAI 단독 ~$50B)를 확인하며 **"수요가 공급을 압도해, 온라인으로 가져오는 모든 컴퓨트를 즉시 소비한다"**고 말한다 ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)). 그가 정의하는 데이터센터는 "전자를 토큰으로 바꾸는 거대한 공장"이고 — 칩이 뜨거울수록 메모리 대역폭이 늘어나는, 냉각이 곧 인텔리전스 생산량인 공장 — 그 공장의 병목은 칩만이 아니라 가스터빈·변압기·숙련 인력까지 "어디에나" 있다. 10년간 증설이 없던 전력 기자재 산업이 수요 충격을 맞아 캐파 추가에 수년이 걸린다는 그의 증언은, 아래 전력 72 병목 지수를 최대 수요자의 눈으로 확인해 준다.
+
 이 수요 폭발은 메모리 시장 전체를 들어올렸다. 2026년 글로벌 메모리 시장은 $551.6B(+134% YoY)로 전망되고, HBM은 전 물량이 Sold Out이다 ([memory-market-overview.md](../concepts/memory-market-overview.md)). 그러나 환경 변화는 수요만이 아니다. [STEEP 50요인 분석](../steep/economy.md)이 보여주듯, 반도체는 국가 안보 자산이 됐고([political.md](../steep/political.md)), 데이터센터 전력망은 새로운 병목으로 떠올랐으며([environment.md](../steep/environment.md)) — 2026년 7월 기준 4대 병목 제약지수에서 전력이 72로 최대 병목이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)) — AI 투자의 ROI 논쟁은 사회적 회의론으로 번지고 있다([social.md](../steep/social.md)). 게임의 규칙이 바뀌었다는 것은, 기회와 위험의 규칙이 동시에 바뀌었다는 뜻이다.
 
 ## 2장. 호황 속의 구조적 패배
@@ -57,7 +59,7 @@ flowchart LR
 
 미래를 결정하는 것은 삼성이 통제할 수 없는 두 개의 질문이다. [50개 STEEP 요인을 Impact × Uncertainty로 평가](../driving-forces/impact-uncertainty-matrix.md)한 결과, 최상위 불확실성은 두 축으로 수렴했다 ([key-drivers.md](../driving-forces/key-drivers.md)).
 
-**첫 번째 질문(DF1): AI 수요는 구조적으로 지속되는가?** 빅테크 CapEx가 2027년 $1조를 돌파하는 슈퍼사이클(Pole A)과, ROI 실망으로 2027~2028년 투자가 급삭감되는 버블 붕괴(Pole B)가 양 극단이다. 현재 위치는 8.5 — 정점이다. 마이크론의 사상 최고 마진(84.9%)과 SCA 16건 $100B의 계약 락인 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)), take-or-pay 멀티이어 계약과 NTB 가격 하한으로 바닥까지 경직화된 수급 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md))이 상방을 지지하지만, 바로 그 사상 최고 마진과 범용 DRAM 계약가의 첫 감속(Q3 +13~18%, Q2 +58~63% 대비)이 후기순환의 전형적 신호이기도 하다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+**첫 번째 질문(DF1): AI 수요는 구조적으로 지속되는가?** 빅테크 CapEx가 2027년 $1조를 돌파하는 슈퍼사이클(Pole A)과, ROI 실망으로 2027~2028년 투자가 급삭감되는 버블 붕괴(Pole B)가 양 극단이다. 현재 위치는 8.5 — 정점이다. 마이크론의 사상 최고 마진(84.9%)과 SCA 16건 $100B의 계약 락인 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)), take-or-pay 멀티이어 계약과 NTB 가격 하한으로 바닥까지 경직화된 수급 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)), 그리고 최대 구매자의 1차 증언 — "컴퓨트를 3배 늘리면 매출이 3배 늘었다. 최대 리스크는 과잉이 아니라 과소 건설"이라는 OpenAI 컴퓨트 총괄의 발언과, AI가 AI 연구·칩 설계를 수행하며 연구용 컴퓨트 수요가 인간 연구자 수 제약에서 해방되는 재귀 메커니즘 ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)) — 이 상방을 지지하지만, 바로 그 사상 최고 마진과 범용 DRAM 계약가의 첫 감속(Q3 +13~18%, Q2 +58~63% 대비)이 후기순환의 전형적 신호이기도 하다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **두 번째 질문(DF2): 미중 디커플링은 어디까지 가는가?** 삼성은 시안 팹(글로벌 NAND의 40%)과 대중 수출, 대미 관세에 동시에 노출된 '이중 노출' 구조로 이 축에 가장 취약하다 ([key-drivers.md](../driving-forces/key-drivers.md)). 현재 위치는 0.5로 관리된 공존 쪽에 소폭 기울어 있다 — 애플이 중국 내수용 CXMT DRAM 테스트에 착수하고 미 행정부에 승인을 로비 중인 사건이 최신 리트머스다 ([apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)). 두 질문은 서로 독립적이다 — 하나는 기술·경제 내적 논리로, 다른 하나는 외교·안보 논리로 움직인다. 그래서 하나의 예측이 아니라 조합의 시나리오가 필요하다. 보조 축(DF3)으로는 HBM 패러다임이 3D DRAM·PIM·CXL로 대체될 가능성을 별도로 감시한다 ([key-drivers.md](../driving-forces/key-drivers.md)).
 

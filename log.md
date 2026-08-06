@@ -1190,3 +1190,15 @@ Strategies 상위 탭의 "개발실 전환"에서 isNew 배지 제거 — 탭이
 wiki 6개 페이지 [Update 2026-08-06]: ai-capex($50B/$700B 교차 확인·오프테이커 구조), ai-demand-sustainability(수요≫공급·3배=3배·AI 재귀 — 최대 구매 당사자 1차 발언, 포지션 톡 유의·중복 수요 리스크 병행 추적 명시), energy-constraints(그리드 원칙·가스터빈·원자력·기자재/인력 병목), ai-datacenter-buildout(공장 정의·사이트 4요소·Abilene/미시간·텍사스 파이프라인·커스텀 ASIC 믹스), lta-to-sca-transition(토큰 층위 보장 계약 — 사슬 양끝 동시 진행 논지), space-semiconductor(오비탈 보완재·발사/하드웨어 경제성 변곡점).
 
 거시 축 판단: DF1·DF2 위치 변경 없음 — 정기 재평가 밖의 정성 1차 자료이나, DF1 상방(수요≫공급·과소 건설 리스크·AI 재귀)의 1차 당사자 확인으로 다음 재평가의 유력 입력. 대시보드: interviews.js 외부 전문가 항목(전체 5번째) 추가, updates.js, version v2.36.4(패치). 지식그래프 재생성·npm run build 검증. 브랜치 커밋 후 main 병합·push(사전 승인 체인).
+
+## [2026-08-06] build | 스토리라인 반영 — Sachin Katti 증언 1장·3장 통합 (v2.36.5)
+
+요청: 직전 ingest(Sachin Katti, v2.36.4)를 스토리라인에 반영. CLAUDE.md §6 정합성 체인(steep·driving-forces 하류 변경 시 storyline 동반 갱신)에 따라 마스터 스토리라인 2개 장 갱신.
+
+1장(환경 변화): 사슬 최상류의 1차 증언 문단 신설 — 업계 ~$700B/OpenAI ~$50B 확인, "수요가 공급을 압도해 온라인되는 모든 컴퓨트를 즉시 소비", "전자를 토큰으로 바꾸는 공장"(칩이 뜨거울수록 메모리 대역폭↑ = 냉각이 곧 인텔리전스 생산량), 가스터빈·변압기·숙련 인력 병목("10년 무증설 산업의 수요 충격")이 기존 전력 72 병목 지수를 최대 수요자 시점에서 확인.
+
+3장(DF1): 상방 지지 근거에 Katti 증언 추가 — "컴퓨트 3배=매출 3배, 최대 리스크는 과잉이 아니라 과소 건설" + AI 재귀(AI가 AI 연구·칩 설계 수행 → 연구용 컴퓨트 수요가 인간 연구자 제약에서 해방). 하방 신호(사상 최고 마진·Q3 계약가 첫 감속 = 후기순환 전형)와의 긴장 구도는 그대로 유지 — DF1 위치(8.5)·시나리오 확률 무변경(서사 증거 보강이지 재평가 아님).
+
+렌즈 4종(파이브 포스·게임이론·실물옵션·파괴적 혁신) 미갱신 — 사유: 이 인터뷰는 DF1 수요 증거·병목 확인의 보강으로, 각 렌즈의 힘 분석·게임 구조·옵션 가치·파괴 경로와 전략 순위를 바꾸지 않음. storyline-*.md 무변경이므로 storylineLenses.js도 무변경.
+
+동기화: wiki/storyline/storyline.md(frontmatter sources 추가·last_reviewed 08-06·1장 문단 신설·3장 확장) ↔ dashboard/src/data/storyline.js(META asof 08-06·ch1 블록 신설·ch3 블록 확장·refs 추가). FLOW·TIMELINE 무변경(수치 축 무변화). version v2.36.5(패치). 지식그래프 재생성(storyline→소스 링크 신규)·npm run build 검증. 브랜치 커밋 후 main 병합·push.

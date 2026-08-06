@@ -3,7 +3,7 @@
 // 각 블록의 refs는 SourceLink가 GitHub 링크로 토큰화하는 경로 문자열.
 
 export const STORYLINE_META = {
-  asof: '2026-08-05',
+  asof: '2026-08-06',
   title: '스토리라인 — 환경 변화에서 전략적 선택까지',
   thesis:
     '사상 최대 호황의 정점에서 내려야 할 결정은 "더 크게 베팅하라"가 아니라, 가장 큰 미래(시나리오 B, 39%)에 베팅하되 어떤 미래가 와도 지지 않는 구조(RS-1~9)를 먼저 깔고, 전환 시점은 데이터(EWI)가 알려주게 하는 것이다.',
@@ -44,6 +44,11 @@ export const STORYLINE_CHAPTERS = [
         type: 'p',
         text: '이야기는 2023년에 시작된다. 생성형 AI가 데이터센터의 설계도를 다시 그리면서, 30년간 PC와 스마트폰의 사이클을 따라 움직이던 메모리 산업에 완전히 새로운 수요 엔진이 장착됐다. 빅테크 4사의 AI 설비투자는 2024년 $200B에서 2026년 $725B로 2년 만에 3배 이상 불어났고, 2026년 성장률만 +77%에 달한다. 전 세계 17개국에서 55.9GW 규모의 AI 데이터센터가 착공 파이프라인에 올라 있으며, 마이크로소프트는 2026년 CapEx $190B 중 $25B가 메모리·반도체 가격 상승분이라고 직접 인정했다.',
         refs: 'sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md · sources/raw-notes/ai-datacenter-buildout-2026-06.md · wiki/concepts/2026-q1-current-state.md',
+      },
+      {
+        type: 'p',
+        text: '이 수요가 과장이 아니라는 것은 사슬의 최상류가 직접 증언한다. OpenAI의 컴퓨트 총괄 Sachin Katti는 올해 업계 컴퓨트 지출 ~$700B(OpenAI 단독 ~$50B)를 확인하며 "수요가 공급을 압도해, 온라인으로 가져오는 모든 컴퓨트를 즉시 소비한다"고 말한다. 그가 정의하는 데이터센터는 "전자를 토큰으로 바꾸는 거대한 공장"이고 — 칩이 뜨거울수록 메모리 대역폭이 늘어나는, 냉각이 곧 인텔리전스 생산량인 공장 — 그 공장의 병목은 칩만이 아니라 가스터빈·변압기·숙련 인력까지 "어디에나" 있다. 10년간 증설이 없던 전력 기자재 산업이 수요 충격을 맞아 캐파 추가에 수년이 걸린다는 그의 증언은, 전력 72 병목 지수를 최대 수요자의 눈으로 확인해 준다.',
+        refs: 'sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md',
       },
       {
         type: 'p',
@@ -90,8 +95,8 @@ export const STORYLINE_CHAPTERS = [
       },
       {
         type: 'p',
-        text: '첫 번째 질문(DF1): AI 수요는 구조적으로 지속되는가? 빅테크 CapEx가 2027년 $1조를 돌파하는 슈퍼사이클(Pole A)과, ROI 실망으로 2027~2028년 투자가 급삭감되는 버블 붕괴(Pole B)가 양 극단이다. 현재 위치는 8.5 — 정점이다. 마이크론의 사상 최고 마진(84.9%)과 SCA 16건 $100B의 계약 락인, take-or-pay 멀티이어 계약과 NTB 가격 하한으로 바닥까지 경직화된 수급이 상방을 지지하지만, 바로 그 사상 최고 마진과 범용 DRAM 계약가의 첫 감속(Q3 +13~18%, Q2 +58~63% 대비)이 후기순환의 전형적 신호이기도 하다.',
-        refs: 'sources/filings/micron-q3-fy26.md · sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md · sources/articles/july-2026-market-update-2026-07-04.md',
+        text: '첫 번째 질문(DF1): AI 수요는 구조적으로 지속되는가? 빅테크 CapEx가 2027년 $1조를 돌파하는 슈퍼사이클(Pole A)과, ROI 실망으로 2027~2028년 투자가 급삭감되는 버블 붕괴(Pole B)가 양 극단이다. 현재 위치는 8.5 — 정점이다. 마이크론의 사상 최고 마진(84.9%)과 SCA 16건 $100B의 계약 락인, take-or-pay 멀티이어 계약과 NTB 가격 하한으로 바닥까지 경직화된 수급, 그리고 최대 구매자의 1차 증언 — "컴퓨트를 3배 늘리면 매출이 3배 늘었다. 최대 리스크는 과잉이 아니라 과소 건설"이라는 OpenAI 컴퓨트 총괄의 발언과 AI가 AI 연구·칩 설계를 수행하며 연구용 컴퓨트 수요가 폭발하는 재귀 메커니즘 — 이 상방을 지지하지만, 바로 그 사상 최고 마진과 범용 DRAM 계약가의 첫 감속(Q3 +13~18%, Q2 +58~63% 대비)이 후기순환의 전형적 신호이기도 하다.',
+        refs: 'sources/filings/micron-q3-fy26.md · sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md · sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md · sources/articles/july-2026-market-update-2026-07-04.md',
       },
       {
         type: 'p',
