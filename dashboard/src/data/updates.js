@@ -14,6 +14,22 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-06 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-06',
+    type: 'migration',
+    version: 'v2.36.3',
+    title: '수집 철회 — Dylan Patel MAD Podcast 인터뷰 전면 제거',
+    summary:
+      '사용자 판단(근거 부족 — 원문 미접근·2차 보도 의존)에 따라 Dylan Patel MAD Podcast 수집(v2.33.1 ingest·v2.34.2 보강)을 전면 철회. 소스 파일 삭제, wiki 3개 페이지(price-trends·ai-demand-sustainability·ai-datacenter-buildout)의 [Update 2026-08-05] 섹션 제거, 인터뷰 메뉴 항목 삭제(5개→4개), index.md 등록 해제, 업데이트 피드의 해당 ingest 항목 2건 제거. log.md는 append-only 원칙에 따라 기존 항목 유지 + 철회 항목으로 정정. 크리스 밀러 수집은 유지. 지식그래프 재생성·빌드 검증. 패치 v2.36.3 (main 병합 시 재버전).',
+    tags: ['철회', 'Dylan Patel', 'MAD Podcast', '인터뷰', 'dashboard'],
+    items: [
+      { label: '삭제 범위', detail: 'sources/articles/mad-podcast-dylan-patel-memory-2026-07.md 삭제, wiki 3개 페이지 Patel 섹션 제거, interviews.js 항목 삭제, index.md 항목 제거, updates.js ingest 항목 2건(v2.33.1·v2.34.2) 제거' },
+      { label: '철회 사유', detail: '원문(오디오·유튜브) 직접 검증 불가 상태에서 2차 보도 의존도가 높아 소스 품질 기준 미달 — 사용자 판단. 원문 트랜스크립트 확보 시 재수집 가능' },
+      { label: '유지 항목', detail: '크리스 밀러(Chip War) 수집 전체 유지. sources/README.md의 SemiAnalysis 뉴스레터 설명(기존 semianalysis-* 기사 3건 관련)도 무관하므로 유지' },
+    ],
+    links: [],
+  },
   // ── 2026-08-05 (v) ───────────────────────────────────────────────────────────
   {
     date: '2026-08-05',
@@ -72,68 +88,6 @@ export const UPDATES = [
     ],
   },
   // ── 2026-08-05 (ii) ──────────────────────────────────────────────────────────
-  {
-    date: '2026-08-05',
-    type: 'ingest',
-    version: 'v2.34.2',
-    title: '디테일 보강 — Dylan Patel MAD Podcast: $11M Bill 정체·Anthropic 수치·CPO/800V 세부',
-    summary:
-      '사용자 제공 유튜브 링크를 계기로 동일 에피소드의 상세 2차 자료(Jukan 테이크어웨이 스레드·TradingKey·Podcast Alpha)를 추가 발굴해 1차 수집의 미확정 항목을 해소. ① "$11M Bill" = SemiAnalysis 자신의 AI 지출(8개월 새 연환산 $100K→$11M, 인건비 ~1/3→연말 절반 전망) — 토큰 수요 미시 표본, ② Anthropic 세부 — Q2 2026 FCF 흑자 전환(4·5월 흑자, 6월 미마감·동일 방향)·ARR $50B+·GM 70%+(Opus 4.8 토큰 80%+)·SBC 제외 Q2 순이익 흑자, 공식 가이던스(2028 흑자)와 대조 명시, ③ 컨슈머 전치 정량 — 빅테크 CapEx ~30% 메모리·iPhone 원가 ~$150↑·저가폰 11억→5~6억 대 붕괴 가능, ④ CPO 2028말~2029·Rubin/Feynman 올-커퍼 유지·Kyber 800V 제거, ⑤ 공급 기원 — 2023 다운턴 무증설+팹 2년+. 소스·wiki 3개 페이지·인터뷰 항목 동일 반영. 영상 자체는 환경 제약으로 직접 접근 불가(소스 헤더 명시). 패치 v2.34.2 (FDP 후속 v2.34.1 선점으로 main 병합 시 재버전).',
-    tags: ['Dylan Patel', 'SemiAnalysis', '보강', '$11M', 'Anthropic', 'FCF', 'KV 캐시', '컨슈머 전치', 'CPO', '800V', 'Amphenol', 'dashboard'],
-    items: [
-      { label: '$11M Bill 해소', detail: 'SemiAnalysis 자체 AI 추론 지출 연환산 $100K 미만→$11M(8개월), 인건비 ~1/3→연말 절반 전망 — 수요 미시 표본으로 소스 §1 신설' },
-      { label: 'Anthropic 수치 세부', detail: 'Q2 2026 FCF 흑자·4/5월 흑자·ARR $50B+·GM 70%+/Opus 4.8 80%+·ex-SBC 순이익 흑자(Jukan 스레드). The Information 공식 가이던스(2028)와 대조 — 주장 단계 유지' },
-      { label: '컨슈머 전치 정량', detail: '빅테크 2026 CapEx ~30% 메모리·iPhone ~$150↑·저가폰 11억→5~6억 대 — price-trends에 이창수 "12~13억 대 비저블" 가정의 하방 케이스로 연결' },
-      { label: 'CPO/800V 세부', detail: 'Rubin·Feynman 올-커퍼 유지(Amphenol 수혜)·Kyber(Rubin Ultra) 800V 제거·수율/설계/공급망 미성숙 — ai-datacenter-buildout 갱신' },
-      { label: '반영 범위', detail: '소스 재작성(유튜브 링크 병기)·wiki 3개 페이지 [보강 2026-08-05]·interviews.js 항목 보강(keyQuote 4번째 추가)·log.md' },
-    ],
-    links: [
-      { label: 'mad-podcast-dylan-patel-memory-2026-07.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/mad-podcast-dylan-patel-memory-2026-07.md' },
-      { label: 'YouTube 영상 (사용자 제공)', href: 'https://youtu.be/3FHsGiONOGw' },
-      { label: 'Jukan 테이크어웨이 스레드', href: 'https://x.com/jukan05/status/2075453653662769476' },
-    ],
-  },
-  // ── 2026-08-05 ───────────────────────────────────────────────────────────────
-  {
-    date: '2026-08-05',
-    type: 'build',
-    version: 'v2.35.0',
-    title: 'Storyline 신설 — 위키 종합 서사 페이지 + 대시보드 첫 탭',
-    summary:
-      '위키 전체 지식(STEEP → Driving Forces → 시나리오 → 전략 → EWI)을 하나의 완결형 서사로 잇는 wiki/storyline/storyline.md를 신설하고, 대시보드 최상위 메뉴 첫 탭 "Storyline"으로 미러링. 환경 변화에서 출발해 Main Bet(시나리오 B 39%) 선택과 대안 3개(올인·관망·수축) 대비 우수성 논증, EWI 기반 자기 갱신 구조까지 8장 산문으로 기술 — 모든 수치·주장에 sources/ 인용 명시. 스토리 플로우 SVG 다이어그램(클릭 시 해당 장 스크롤·EWI→시나리오 재평가 피드백 루프)과 2023→2035 연대기 스트립으로 시각화. 기본 랜딩 탭이 EWI에서 Storyline으로 변경(기존 #/ewi 딥링크는 그대로 동작). CLAUDE.md §1/§3/§5/§6 정합성 체인에 storyline 등록 — 이후 steep·driving-forces·scenarios·strategies가 바뀌면 storyline 해당 장도 동반 갱신. 마이너 v2.35.0.',
-    tags: ['Storyline', '종합 서사', '신규 탭', '위키', '지식그래프', 'dashboard'],
-    items: [
-      { label: '위키 신설', detail: 'wiki/storyline/storyline.md — 8장 서사(환경 변화→진단→핵심 동인→다섯 개의 미래→선택→Robust 구조→대안 비교 논증→감시와 전환) + Mermaid 플로우·연대기. 전 수치 sources/ 인용' },
-      { label: '대시보드 신규 탭', detail: 'components/Storyline.jsx + data/storyline.js(STORYLINE_META·FLOW·TIMELINE·CHAPTERS). TOP_TABS 첫 항목, 기본 랜딩 storyline으로 변경. #/storyline/ch1~ch8 딥링크 지원' },
-      { label: '정합성 체인 등록', detail: 'CLAUDE.md §1 카테고리·§3 Ingest 4단계·§5 매핑 테이블·§6 변경 단계별 갱신 테이블에 storyline 추가 — 새 소스 유입 시 스토리라인 동반 갱신 의무화' },
-      { label: '지식그래프', detail: 'build-knowledge-graph.mjs CATEGORIES에 storyline(노랑) 추가 후 재생성 — 노드 82(+1)·엣지 343, 스토리라인이 링크 25개 허브로 등록. asymmetric 증가는 종합 페이지 특성상 수용' },
-      { label: '생략 명시', detail: 'outputs/ 무변경(스토리라인은 위키 계층 서사, report는 별도 산출물) → PPTX 재생성 생략' },
-    ],
-    links: [
-      { label: 'wiki/storyline/storyline.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/storyline.md' },
-    ],
-  },
-  {
-    date: '2026-08-05',
-    type: 'ingest',
-    version: 'v2.33.1',
-    title: '외부 전문가 수집 — Dylan Patel(SemiAnalysis) MAD Podcast: 메모리 부족·KV 캐시·CPO 지연',
-    summary:
-      '사용자 제공 Apple Podcasts 링크의 MAD Podcast(Matt Turck) × Dylan Patel 2번째 출연(2026-07 초)을 2차 보도 3건(Podcast Alpha·BigGo·KuCoin) 교차로 수집(원문 접근 차단 — 한계 소스 헤더 명시). 핵심: ① 메모리 다년 구조적 부족 — 가격 상방 2~3배·진짜 증분 공급 2028(팹 연 +20~30% 한계)·컨슈머 전치가 랠리 재원, ② KV 캐시 = 추론·에이전트 수요의 미시 메커니즘(권석준 "추론 100배" 구체화), ③ Anthropic FCF 전환 주장(연환산 $50B+ — 3자 마스터 변수 "AI 수익화"의 첫 긍정 사례, 주장 단계), ④ CPO 양산 2029 지연(Street 2027)·구리 붐 연장·NVIDIA 800V. 위키 기존 신호(DRAM Q3 감속 조짐)와의 해석 대립(정점 vs 중간 조정)을 명시 기록 — 다음 정기 재평가 참고 입력. DF1·DF2 변경 없음. 인터뷰 메뉴 5번째 항목. 패치 v2.33.1 (v2.32.12로 부여했다가 FDP v2.33.0 마이너 선점으로 main 병합 시 재버전).',
-    tags: ['Dylan Patel', 'SemiAnalysis', 'MAD Podcast', '메모리 부족', 'KV 캐시', '가격 상방', '공급 2028', 'Anthropic', 'FCF', 'CPO', 'dashboard'],
-    items: [
-      { label: '신규 소스', detail: 'sources/articles/mad-podcast-dylan-patel-memory-2026-07.md — 에피소드 특정 경위·2차 보도 3건 교차·미확정 항목(공식 제목·"$11M Bill" 세부) 명시' },
-      { label: '인터뷰 메뉴 구조화', detail: 'data/interviews.js 최상단 추가(외부 전문가 2번째, 전체 5번째). 6개 섹션, keyQuotes 3개(2~3배·KV 캐시·CPO 2029), 수집 한계 섹션 별도' },
-      { label: 'wiki 3개 페이지 갱신', detail: 'price-trends(상방 2~3배 vs Q3 감속 조짐 해석 대립·공급 2028=C/D 시간축 가늠자)·ai-demand-sustainability(KV 캐시 미시 메커니즘·Anthropic FCF, CSP FCF와 층위 구분)·ai-datacenter-buildout(CPO 2029·800V, 방법론 가정 무변화)' },
-      { label: '거시 축 판단', detail: 'DF1·DF2 위치 변경 없음 — 외부 애널리스트 전망(프레이밍). "감속 vs 다년 부족" 해석 대립·"공급 2028" 시간축은 다음 정기 재평가 참고 입력으로 표기' },
-      { label: '인덱스·로그', detail: 'index.md articles 섹션·log.md 갱신, 지식그래프 재생성' },
-    ],
-    links: [
-      { label: 'mad-podcast-dylan-patel-memory-2026-07.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/mad-podcast-dylan-patel-memory-2026-07.md' },
-      { label: 'Apple Podcasts 에피소드 (원문)', href: 'https://podcasts.apple.com/kr/podcast/the-mad-podcast-with-matt-turck/id1686238724?i=1000779102407' },
-      { label: 'Podcast Alpha 요약', href: 'https://podcastalpha.substack.com/p/dylan-patel-of-semianalysis-the-11m' },
-    ],
-  },
   // ── 2026-08-04 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-04',

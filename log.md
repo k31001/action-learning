@@ -1171,3 +1171,12 @@ Strategies 상위 탭의 "개발실 전환"에서 isNew 배지 제거 — 탭이
 **위키**: 4개 렌즈의 최적 전략 절을 순위별 3단 구조로 전면 재서술 — *무엇을 하자는 것인가*(take-or-pay·NTB·Fab Shell·풋옵션·별동대·상위 이동 등 용어를 본문에서 풀이) → *왜 이 순위인가*(렌즈 목적함수 기준 논리) → *실행 결정·링크*(RS/SE/SA 전략 상세 페이지 상대링크 + D 결정 참조). 각 절 하단에 대시보드 탭 안내(📊) 추가. `storyline.md` 교차 검증 표에 "표 읽는 법"(순위 의미·— 해석) 명시.
 
 **대시보드(패치 v2.36.2)**: `storylineLenses.js`의 압축 ol 요약을 전용 **strategy 카드 블록**(rank·name·what·why·links·refs)으로 전환하고, `Storyline.jsx`에 카드 렌더러 신설 — 순위 배지 + "무엇을 하자는 것인가/왜 이 순위인가" 라벨 문단 + **내부 탭 점프 링크 칩**(#/strategy/robust·core·decisions·transformation, #/ewi/triggers, #/bottleneck) + SourceLink 출처. `storyline.js` ch7에 표 읽는 법 문단. 지식그래프 재생성(엣지 378→390 — 렌즈→전략 상세 링크 증가). `npm run build` 통과. outputs/ 무변경 → PPTX 생략. 기존 승인 흐름대로 main 병합·푸시.
+## [2026-08-06] migration | 수집 철회 — Dylan Patel MAD Podcast 인터뷰 전면 제거 (v2.36.3)
+
+요청: "Dylan Patel 인터뷰는 부족해 보여서 완전히 제거." 앞선 두 항목([2026-08-05] ingest v2.33.1 수집·v2.34.2 보강)을 철회하는 정정 항목이다(append-only 원칙에 따라 기존 항목은 삭제하지 않고 본 항목으로 정정).
+
+철회 사유: 원문(오디오·유튜브·Apple 페이지) 직접 검증이 불가한 상태에서 2차 보도(Podcast Alpha·Jukan 스레드·TradingKey 등) 의존도가 높아 소스 품질 기준에 미달 — 사용자 판단.
+
+제거 범위: ① sources/articles/mad-podcast-dylan-patel-memory-2026-07.md 삭제(사용자 명시 요청에 따른 sources 불변 원칙의 예외), ② wiki 3개 페이지(price-trends·ai-demand-sustainability·ai-datacenter-buildout)의 [Update 2026-08-05] Dylan Patel 섹션 제거, ③ dashboard interviews.js 항목 삭제(인터뷰 메뉴 5개→4개), ④ updates.js의 해당 ingest 항목 2건 제거 + 본 철회 항목 추가, ⑤ index.md 등록 해제. 크리스 밀러 수집은 전체 유지. version v2.36.3(패치 — main 병합 시 재버전). 지식그래프 재생성·npm run build 검증. 브랜치 커밋 후 main 병합·push.
+
+재수집 조건: 에피소드 원문 트랜스크립트가 확보되면 1차 자료 기반으로 재수집 가능.
