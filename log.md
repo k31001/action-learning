@@ -1202,3 +1202,13 @@ wiki 6개 페이지 [Update 2026-08-06]: ai-capex($50B/$700B 교차 확인·오�
 렌즈 4종(파이브 포스·게임이론·실물옵션·파괴적 혁신) 미갱신 — 사유: 이 인터뷰는 DF1 수요 증거·병목 확인의 보강으로, 각 렌즈의 힘 분석·게임 구조·옵션 가치·파괴 경로와 전략 순위를 바꾸지 않음. storyline-*.md 무변경이므로 storylineLenses.js도 무변경.
 
 동기화: wiki/storyline/storyline.md(frontmatter sources 추가·last_reviewed 08-06·1장 문단 신설·3장 확장) ↔ dashboard/src/data/storyline.js(META asof 08-06·ch1 블록 신설·ch3 블록 확장·refs 추가). FLOW·TIMELINE 무변경(수치 축 무변화). version v2.36.5(패치). 지식그래프 재생성(storyline→소스 링크 신규)·npm run build 검증. 브랜치 커밋 후 main 병합·push.
+
+## [2026-08-07] build | CMO(Context-Mechanism-Outcome) 렌즈 스토리라인 추가 — 다운턴 사례 분석 + 차기 다운턴 전략 (v2.37.0)
+
+요청: "CMO 방법론으로 삼성 메모리 다운턴 사례를 분석하고, 이전과 현재 상황의 달라진 부분을 고려한 차기 다운턴 대비 전략 스토리라인 추가."
+
+**위키**: `wiki/storyline/storyline-cmo.md` 신설 (렌즈 5호). 리얼리스트 평가(Pawson & Tilley)의 C-M-O 구성으로 과거 다운턴 3건 분해 — CMO-1(1차 치킨게임 2007~09: 소모전+역사이클 증설 완전 발화), CMO-2(2차 치킨게임 2010~13: 다운턴=기술 전환 심판대, Elpida 반면교사), CMO-3(2022~23: 복제된 공식의 결과 이질성 — 범용 승리·HBM 인증 니치 상실). §3 맥락 감사 6대 변화(3강 절제 균형+CXMT 이단 경기자·계약 바닥·인증 슬롯 게임·비동기 사이클·CAPEX/ROI 진입 경로·추격자 출발 위치), §4 메커니즘 감사(발화 유지/부러짐/신규), §5 전략 4순위(① RS-8·RS-4 계약 바닥 선점 — 지금만 열린 창 ② 역사이클 대상 교정: 캐파→인증·기술·자산 ③ 치킨게임 CXMT 재사용 금지 ④ EWI에 맥락 지표 추가). 근거: dram-chicken-game-history·cyclical-strategy-benchmark·이창수 인터뷰·micron-q3-fy26 등.
+
+**마스터 정합**: `storyline.md` 렌즈 목록·교차 검증 표를 5렌즈 6열로 확장(CMO 열: 1순위 계약 바닥 / 2순위 요새·R&D 하한·옵션형·전환 투자 / 3순위 치킨게임 봉인), 수렴 결론 "다섯 렌즈"로 갱신 + CMO 고유 경고(과거 공식 무맥락 복제) 추가. CLAUDE.md 렌즈 enumeration 2곳·index.md 등록.
+
+**대시보드(마이너 v2.37.0)**: `storylineLenses.js`에 CMO 렌즈 추가(chain 시각화 5단계·섹션 6·strategy 카드 4) — Storyline 하위 메뉴 5→6개(마이너 사유). `storyline.js` ch7 표·결론 동기. `updates.js` 항목 추가. 지식그래프 재생성, `npm run build` 검증. outputs/ 무변경 → PPTX 생략(사유: 렌즈 페이지는 보고서·슬라이드 구조에 미포함, 기존 렌즈 4종과 동일 처리). 지정 브랜치(claude/samsung-memory-downturn-strategy-ejn2as) 커밋·푸시.

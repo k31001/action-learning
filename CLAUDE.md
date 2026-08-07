@@ -32,7 +32,7 @@ log.md     ← 시간순 작업 로그 (append-only)
   - **concepts/** — 개념·기술 트렌드·정책 (예: `memory-cycle.md`, `cxl.md`, `chips-act.md`)
   - **steep/, driving-forces/, scenarios/, benchmark/** — 시나리오 플래닝 분석 페이지
   - **strategies/** — 전략 페이지 (core, invariant)
-  - **storyline/** — 위키 전체를 잇는 종합 서사 (환경 변화 → 전략 선택 논증 → EWI, 대시보드 Storyline 탭의 단일 소스). 시나리오 플래닝 마스터(`storyline.md`) + 대안 프레임워크 렌즈(`storyline-{five-forces,game-theory,real-options,disruption}.md`)
+  - **storyline/** — 위키 전체를 잇는 종합 서사 (환경 변화 → 전략 선택 논증 → EWI, 대시보드 Storyline 탭의 단일 소스). 시나리오 플래닝 마스터(`storyline.md`) + 대안 프레임워크 렌즈(`storyline-{five-forces,game-theory,real-options,disruption,cmo}.md`)
   - **comparisons/** — 비교표 (선택)
 - **모든 사실 주장은 `sources/`의 파일을 인용**한다. 형식:
   ```markdown
@@ -128,7 +128,7 @@ lint 결과는 `log.md`에 항목으로 남기고, 즉시 고칠 수 있는 건 
 | `wiki/strategies/` (D1~D17, RS-1~RS-9) | `dashboard/src/data/strategies.js` (DECISIONS·ROBUST_STRATEGIES 단일 소스), `dashboard/src/components/DecisionTracker.jsx` |
 | 실시간 시계열 (GPU 임대가·공급·신용 스프레드·주가 프록시) | `dashboard/api/_lib/{vast,yahoo}.js` → EWI 자동 갱신 (정적 시드는 `dashboard/data/*.json`) |
 | `wiki/storyline/storyline.md` | `dashboard/src/data/storyline.js` (STORYLINE_META·FLOW·TIMELINE·CHAPTERS 미러) |
-| `wiki/storyline/storyline-*.md` (렌즈 4종) | `dashboard/src/data/storylineLenses.js` (STORYLINE_LENSES 미러) |
+| `wiki/storyline/storyline-*.md` (렌즈 5종) | `dashboard/src/data/storylineLenses.js` (STORYLINE_LENSES 미러) |
 | `wiki/**/*.md` 페이지 간 링크 | `dashboard/src/data/knowledgeGraph.js` (GENERATED — `node scripts/build-knowledge-graph.mjs`로 재생성) |
 | `wiki/` 전체 | `outputs/report/scenario-planning-report.md` (합성) |
 | `outputs/report/scenario-planning-report.md` | `outputs/presentation/slide-outline.md` |

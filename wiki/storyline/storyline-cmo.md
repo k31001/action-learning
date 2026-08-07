@@ -1,0 +1,111 @@
+---
+type: analysis
+last_reviewed: 2026-08-07
+sources: [sources/articles/dram-chicken-game-history-2026-08-05.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/filings/micron-q3-fy26.md, sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md, sources/articles/apple-cxmt-china-dram-2026-07-08.md, sources/articles/youtube-kwon-cycle-formula-2026-05-21.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md]
+---
+
+# 스토리라인 (CMO 렌즈) — 같은 전략은 같은 결과를 재생하지 않는다
+
+> **한 문장 논지**: 리얼리스트 평가(Pawson & Tilley)의 Context-Mechanism-Outcome 방법론으로 삼성 메모리의 과거 다운턴을 분해하면, 승리의 원인은 "전략 목록"이 아니라 **"특정 맥락(C)이 특정 메커니즘(M)을 발화시켜 만든 결과(O)의 구성"**이었음이 드러난다. 2026년의 맥락은 과거 다운턴들과 여섯 지점에서 구조적으로 다르므로, 다음 다운턴 전략은 과거 성공 공식의 복제가 아니라 **맥락 감사(context audit)를 통과한 메커니즘만으로 재조립**해야 한다.
+
+이 페이지는 [시나리오 플래닝 스토리라인](storyline.md)과 같은 위키 지식을 리얼리스트 평가(realist evaluation)의 CMO 프레임워크라는 다른 렌즈로 다시 서사화한 것이다. 시간축(미래 분기) 대신 **인과축(과거 다운턴의 발화 조건 → 현재 맥락에서의 이전 가능성)**으로 이야기를 푼다. 다섯 렌즈 중 유일하게 시간을 거꾸로 본다.
+
+## CMO 구성 한눈에
+
+```mermaid
+flowchart LR
+    subgraph P1["1차 치킨게임 2007~09"]
+        C1["C: 6강 대칭 · 범용재<br/>현물가 · 금융위기"] --> M1["M: 소모전 +<br/>역사이클 증설"] --> O1["O: Qimonda 퇴출<br/>회복기 점유 흡수"]
+    end
+    subgraph P2["2차 치킨게임 2010~13"]
+        C2["C: 태국 홍수 · 엔고<br/>PC→모바일 전환기"] --> M2["M: 소모전 +<br/>기술 전환 성패"] --> O2["O: Elpida·대만 퇴출<br/>6강 → 3강"]
+    end
+    subgraph P3["다운사이클 2022~23"]
+        C3["C: 3강 과점<br/>코로나 수요 절벽"] --> M3["M: 역사이클 캐파<br/>공식 재복제"] --> O3["O: 범용 승리 ·<br/>HBM 니치 상실"]
+    end
+    P1 --> P2 --> P3 --> NOW["2026~28 맥락 전환<br/>메커니즘 감사 필요"]
+```
+
+## 1. 방법론 — 왜 Context-Mechanism-Outcome인가
+
+사이클 산업의 전략 논의는 대개 "무엇이 통했나"의 목록으로 귀결된다 — 역사이클 투자, 재무 요새, 불황기 M&A 같은 [7대 패턴](../benchmark/cyclical-strategy-benchmark.md)이 그것이다. CMO 방법론은 여기에 한 단계를 더 요구한다: **결과(Outcome)는 전략이 만드는 것이 아니라, 특정 맥락(Context)에서만 발화(fire)하는 메커니즘(Mechanism)이 만든다.** 같은 전략이라도 맥락이 바뀌면 메커니즘이 발화하지 않고, 발화하지 않는 메커니즘은 결과를 재생하지 못한다. 따라서 질문은 "과거에 무엇이 통했나"가 아니라 **"무엇이, 어떤 조건에서, 왜 통했고 — 그 조건이 지금도 성립하는가"**다.
+
+이 렌즈가 삼성 메모리에 특히 필요한 이유는 역설적이게도 삼성이 과거 다운턴의 승자이기 때문이다. 승자는 자기 성공 공식을 복제하려는 유인이 가장 강하고, 복제의 함정 — 맥락이 바뀐 것을 모른 채 낡은 메커니즘을 재발화시키는 것 — 에 가장 깊이 노출된다. 아래 사례 분해가 보여주듯, 그 함정은 가설이 아니라 이미 한 번 실현된 관측이다.
+
+## 2. 사례 분해 — 세 번의 다운턴, 세 개의 CMO 구성
+
+### CMO-1 · 1차 치킨게임 (2007~09) — 소모전 메커니즘의 완전 발화
+
+- **Context**: 6개 이상의 대칭적 경기자(삼성 ~30%, 하이닉스 ~19%, 엘피다 ~15%, 마이크론 ~11%, 키몬다 ~10%, 대만 진영), 차별화 없는 범용재, 현물가 중심 거래, 금융위기발 수요 급감, 그리고 삼성의 상대적 재무 체력 ([dram-chicken-game-history-2026-08-05.md](../../sources/articles/dram-chicken-game-history-2026-08-05.md)).
+- **Mechanism**: ① 소모전 — 가격이 붕괴(2007년 -85%, 2008년 -58%)해도 전원이 증설·버티기를 선택하면, 원가와 현금 체력이 열위인 기업부터 퇴출된다. ② 역사이클 증설 — 경쟁사 퇴출 직후 캐파를 늘린 쪽이 회복기 점유율을 흡수한다.
+- **Outcome**: 키몬다가 누적 손실 $30억을 견디지 못하고 2009년 1월 파산했고, 퇴출 발표 직후 현물가가 급등하며 "경기자 1개 퇴출이 즉시 가격 균형을 바꾸는" 과점 구조가 실증됐다. 삼성은 2009년 매출 100조 원·영업이익 10조 원을 달성하고 2010년 메모리 시설투자를 5.5조에서 9조 원으로 상향해 회복기 점유율을 흡수했다 ([dram-chicken-game-history-2026-08-05.md](../../sources/articles/dram-chicken-game-history-2026-08-05.md)).
+
+### CMO-2 · 2차 치킨게임 (2010~13) — 다운턴은 기술 전환의 심판대
+
+- **Context**: 태국 홍수·엔고라는 외생 충격에 **PC→모바일이라는 수요 구조 전환기**가 겹쳤다 ([dram-chicken-game-history-2026-08-05.md](../../sources/articles/dram-chicken-game-history-2026-08-05.md)).
+- **Mechanism**: 소모전 메커니즘이 다시 발화하되, 이번에는 퇴출 순서를 정한 것이 현금 체력만이 아니라 **다운턴 중 기술·제품 전환의 성패**였다 — 엘피다의 파산 요인에는 가격 급락과 함께 "PC→모바일 전환 대응 실패"가 명시된다.
+- **Outcome**: 엘피다(부채 4,480억 엔, 전후 일본 제조업 최대 파산)와 대만 진영이 퇴장하며 6강이 3강으로 압축됐고, "3사는 6사가 할 수 없는 공급 규율 조율이 가능하다"는 구조적 유산 — 이후 모든 사이클의 전제 — 를 남겼다 ([dram-chicken-game-history-2026-08-05.md](../../sources/articles/dram-chicken-game-history-2026-08-05.md)).
+
+### CMO-3 · 다운사이클 (2022~23) — 복제된 메커니즘의 결과 이질성
+
+- **Context**: 이미 3강 과점, 코로나 특수 소멸로 인한 수요 절벽, 삼성의 현금 약 $630억 ([cyclical-strategy-benchmark.md](../benchmark/cyclical-strategy-benchmark.md)).
+- **Mechanism**: 삼성은 1차 치킨게임의 승리 공식을 그대로 재발화시켰다 — "인위적 감산은 고려하지 않는다"를 공식 선언하고 2022년 47.7조 원의 CapEx를 집행했으며, 텍사스 Taylor 팹을 다운사이클 한복판에 착공했다 ([cyclical-strategy-benchmark.md](../benchmark/cyclical-strategy-benchmark.md)).
+- **Outcome — 이 렌즈의 핵심 관측**: 결과는 둘로 갈라졌다. 복제된 메커니즘이 겨냥한 **낡은 게임(범용 캐파 경쟁)에서는 승리**했다 — 회복기인 2025~26년 사상 최대 실적이 그 배당이다. 그러나 **같은 기간 진행되던 새 게임(HBM 인증 니치)은 놓쳤다** — HBM 점유율은 2023년 40%에서 2025년 상반기 17%로 추락했고, 33년 만에 DRAM 1위를 SK하이닉스에 내줬다 ([dram-market-share.md](../concepts/dram-market-share.md)). CMO 언어로 말하면 이것은 **결과 이질성(outcome heterogeneity)** 이다: 메커니즘은 발화했으나, 맥락이 이동한 곳(캐파가 아니라 인증이 점유율을 결정하는 게임)에서는 그 메커니즘이 결과를 만들지 못했다. 다음 다운턴 준비의 출발점은 바로 이 관측이어야 한다.
+
+## 3. 맥락 감사 — 2026~28의 C는 과거와 어디가 다른가
+
+과거 CMO 구성의 발화 조건과 현재 맥락을 항목별로 대조하면 여섯 개의 구조 변화가 나온다.
+
+| # | 맥락 변수 | 과거 다운턴 (2007~09 · 2010~13 · 2022~23) | 2026~28 |
+|---|---|---|---|
+| 1 | 경기자 구조 | 6강 대칭 소모전 → 3강 압축 | 3강 **절제 균형**("with discipline" 공개 신호) + 이윤이 아니라 국가 목표로 움직이는 이단 경기자 CXMT ([bloomberg-micron-ceo-virginia-2026-05-22.md](../../sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md), [cxmt.md](../entities/cxmt.md)) |
+| 2 | 계약 구조 | 현물가 중심, 고객의 이탈 자유 → 다운턴 시 매출 바닥 없음 | take-or-pay 멀티이어·NTB 가격 하한·수백억 달러 선수금·SCA 16건 $100B — **매출 바닥이 계약으로 존재** ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md), [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)) |
+| 3 | 제품 성격 | 차별화 없는 범용재 — 캐파와 원가가 점유율을 결정 | HBM은 **인증 슬롯이 배분을 결정하는 준커스텀재** — Vera Rubin 배정(SK 60~70% vs 삼성 25~30%)은 캐파가 아니라 인증 순위의 결과 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)) |
+| 4 | 사이클 구조 | 단일 DRAM 사이클 — 전 제품이 함께 오르내림 | HBM·범용 DRAM·GDDR·LPDDR·플래시가 **종류별 비동기 사이클** — 다운턴도 부분적·비동기적으로 올 수 있음 ([youtube-kwon-cycle-formula-2026-05-21.md](../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md)) |
+| 5 | 다운턴 진입 경로 | PC·스마트폰 소비 사이클의 수요 둔화 | 가장 유력한 경로는 **AI 투자수익률 재평가**(병목 모델 하방 민감도 CAPEX/ROI -31.5%)와 2028~29 신규 캐파 동시 도래 — "꼭짓점은 FCF" ([deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md), [semiconductor-cycle.md](../concepts/semiconductor-cycle.md), [lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)) |
+| 6 | 삼성의 출발 위치 | 명백한 원가·기술 리더로 다운턴 진입 | HBM 후순위·DRAM 역전 상태로 진입할 수 있음 — 리더의 소모전이 아니라 **추격자의 다운턴**이 될 위험 ([dram-market-share.md](../concepts/dram-market-share.md)) |
+
+## 4. 메커니즘 감사 — 아직 발화하는 것, 부러진 것, 새로 생긴 것
+
+**그대로 발화하는 메커니즘** — ① *재무 요새*: 다운턴을 버티는 현금·저부채 체력은 맥락에 거의 의존하지 않는 준불변 메커니즘이다 ([cyclical-strategy-benchmark.md](../benchmark/cyclical-strategy-benchmark.md)). ② *다운턴 저가 매수*: 자산 가격이 폭락하면 매수자 우위가 열리는 메커니즘(Disney-Marvel·ExxonMobil-Pioneer형)도 유효하다 — D9 다운사이클 M&A 펀드가 그 행사 장치다 ([strategy.md](../scenarios/strategy.md)). ③ *다운턴 중 기술 전환 투자*: 엘피다의 반면교사가 보여주듯 다운턴은 다음 세대의 심판대이며, 인증이 배분을 결정하는 새 맥락(#3)에서 이 메커니즘은 오히려 **강화**됐다 — 다음 다운턴 중의 HBM4E·zHBM·3D DRAM·CXL 전환 성패가 다음 사이클의 순위를 정한다.
+
+**부러졌거나 약화된 메커니즘** — ① *소모전(치킨게임)*: 두 겹으로 부러졌다. 3강 절제 균형에서 소모전 재개는 균형을 스스로 깨는 자해이고([게임이론 렌즈](storyline-game-theory.md)), 이단 경기자 CXMT에게는 퇴출 메커니즘 자체가 작동하지 않는다 — 손실을 국가가 흡수하는 경기자는 가격으로 퇴출시킬 수 없다 ([cxmt.md](../entities/cxmt.md)). ② *무차별 역사이클 캐파 증설*: 인증 없는 캐파는 점유율로 전환되지 않는 맥락(#3)에서, 2008년형 캐파 선제는 발화 조건을 잃었다 — 게다가 그 시도 자체가 치킨게임 재점화의 방아쇠가 된다.
+
+**새로 생긴 메커니즘 (과거엔 존재하지 않았던 것)** — ① *계약적 매출 바닥*: take-or-pay·NTB·Participating Forward는 다운턴이 매출에 도달하기 전에 차단하는 메커니즘으로, 과거 세 다운턴 어디에도 없었다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md), [rs8-structured-revenue-hedging.md](../strategies/invariant/rs8-structured-revenue-hedging.md)). ② *소프트웨어 전환비용 락인*: CMX·SCADA·FDP 통합으로 고객 이탈 비용을 쌓는 메커니즘 ([rs3-customer-switching-cost.md](../strategies/invariant/rs3-customer-switching-cost.md)). ③ *데이터 트리거 규율*: 정점의 낙관과 바닥의 공포를 우회하는 EWI-행동 배선 ([rs9-demand-inflection-sensing.md](../strategies/invariant/rs9-demand-inflection-sensing.md)).
+
+## 5. 이 렌즈가 도출하는 최적 전략 — 다음 다운턴의 CMO를 설계하는 순서
+
+CMO가 묻는 질문은 하나다: "다음 다운턴에서 원하는 결과(O)에서 출발해, 2026~28의 맥락(C)에서 실제로 발화하는 메커니즘(M)만으로 대응을 재조립하면 무엇부터 해야 하는가?" 발화의 창이 닫히는 순서 — 지금 하지 않으면 영영 못 하는 것부터 — 로 배열한다.
+
+**1순위 — 다운턴이 오기 전에 매출 바닥을 계약으로 만들어라 (RS-8·RS-4 계약 구조, D12)**
+
+- *무엇을 하자는 것인가*: "사겠다고 약속한 물량은 안 사가도 돈을 내는" take-or-pay 다년 계약, "이 가격 밑으로는 안 판다"는 가격 하한(NTB), 하한을 보장받는 대신 상승분의 절반을 나누는 Participating Forward를 계약 커버리지의 표준으로 만드는 것 — [RS-8 구조화 매출 헷지](../strategies/invariant/rs8-structured-revenue-hedging.md)와 [RS-4 고객 분산·장기계약](../strategies/invariant/rs4-customer-portfolio-diversification.md)이고, 실행 결정은 D12다.
+- *왜 1순위인가*: 이것은 과거 세 다운턴에 존재하지 않았던 **새 메커니즘**이며, 그 발화 조건(C)이 "공급 부족 호황 + 고객의 물량 불안"인데 이 조건은 지금만 성립한다 — 고객들이 스스로 선수금을 예치하고 다년 계약에 서명하는 국면은 다운턴이 시작되는 순간 끝난다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md), [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)). 과거 공식이 "폭락을 체력으로 버틴다"였다면, 새 공식은 **"폭락이 매출에 도달하지 못하게 한다"**다.
+
+**2순위 — 역사이클 투자는 유지하되, 사는 것을 캐파에서 인증·기술·자산으로 바꿔라 (RS-5 + D9 + D6, RS-1 옵션형만 허용)**
+
+- *무엇을 하자는 것인가*: 역사이클 메커니즘의 핵심 — "남들이 멈출 때 산다" — 은 유지하되, 사는 대상을 바꾸는 것이다. 2008·2022년형 웨이퍼 캐파 대신 ① 다운턴에 싸지는 기술 자산·인재를 D9 M&A 펀드(EV/EBITDA 5배 트리거)로 매수하고, ② 다운사이클에도 R&D 예산 하한을 이사회 정책으로 못박아(D6) HBM4E 6개월 선행 같은 다음 세대 인증 준비를 계속하며 ([june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md)), ③ 캐파형 역사이클은 [RS-1 옵션형(Fab Shell + 단계 반입)](../strategies/invariant/rs1-options-based-capacity.md)으로만 수행한다. 재무 체력의 원천은 [RS-5 재무 규율](../strategies/invariant/rs5-financial-discipline-reinvestment.md)이다.
+- *왜 2순위인가*: 여전히 발화하는 메커니즘 중 가장 배당이 크지만, **발화 대상을 교정해야 하기 때문**이다. 맥락 #3(인증이 배분을 결정)에서 인증 없는 캐파는 점유율로 전환되지 않고, 맥락 #6(추격자의 다운턴)에서 진짜 사야 할 것은 캐파가 아니라 다음 세대의 인증 슬롯이다. 엘피다는 다운턴 중 기술 전환에 실패해서 죽었다 — 2022~23의 삼성은 범용 캐파를 지키느라 HBM 전환을 놓쳤다. 두 사례가 같은 경고를 두 번 반복한다.
+
+**3순위 — 치킨게임 메커니즘을 CXMT에 재사용하지 마라 (RS-6 원가 방어 + RS-2 바벨 + MB-4 판 옮기기)**
+
+- *무엇을 하자는 것인가*: 다운턴이 오면 "저가 공세로 열위 경쟁자를 털어낸다"는 과거 승리 공식을 CXMT에 적용하려는 유혹을 명시적으로 금지하고, 대신 [RS-6 1c nm 원가 우위](../strategies/invariant/rs6-process-leadership.md)로 로엔드의 손실 한계를 관리하며, [RS-2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md)와 MB-4 커스텀 솔루션으로 국가 보조가 닿지 않는 고부가 층에서 승부하는 것이다 ([strategy.md](../scenarios/strategy.md)).
+- *왜 3순위인가*: 소모전 메커니즘의 발화 조건은 "상대가 이윤 극대화 경기자"라는 것인데, CXMT는 이 조건을 충족하지 않는다 — 손실을 국가가 메우는 상대는 가격으로 퇴출되지 않는다 ([cxmt.md](../entities/cxmt.md), [apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)). 부러진 메커니즘을 재발화시키려는 시도는 결과를 만들지 못할 뿐 아니라, 3강 절제 균형(맥락 #1)까지 파괴하는 이중 비용을 치른다.
+
+**4순위 — EWI에 결과 지표만이 아니라 맥락 지표를 올려라 (RS-9·D15·D16)**
+
+- *무엇을 하자는 것인가*: 조기경보 체계가 감시하는 대상을 "다운턴의 도착"(가격·수요·FCF 같은 결과 변수)에서 **"맥락의 변화"**(어떤 메커니즘이 유효한지를 결정하는 조건 변수)로 확장하는 것이다. 구체적으로 — 계약 커버리지 비율(1순위 메커니즘의 유효성), 경쟁사 증설 공시(절제 균형 유지 여부, D16 발동 신호), CXMT 하이엔드 진입 신호(게임 분리 유효성), 메모리 종류별 사이클 위치(비동기 다운턴 감시) — 를 [RS-9 수요 변곡 센싱](../strategies/invariant/rs9-demand-inflection-sensing.md)·D15 트리거 체계에 배선한다.
+- *왜 4순위인가*: CMO의 고유한 기여가 바로 이것이다 — **어떤 메커니즘을 발화시킬지는 맥락이 결정하므로, 전략의 마지막 조각은 맥락 자체를 계기판에 올리는 것**이다. 과거 다운턴의 승자가 다음 다운턴에서 지는 경로는 신호를 못 봐서가 아니라, 낡은 지도를 들고 신호를 읽어서다.
+
+> 📊 대시보드에서 자세히: 전략 전체는 **Strategy 탭 → Robust Strategy / Core Strategy**, 17개 결정은 **Strategy 탭 → Decisions**, 트리거는 **EWI 탭**에서 볼 수 있다.
+
+## 6. 이 렌즈의 결론
+
+CMO 렌즈에서 삼성의 다운턴 전략은 하나의 문장으로 요약된다 — **지난 전쟁의 교범을 다음 전쟁에 그대로 들고 가지 마라.** 2022~23이 그 증거다: 복제된 역사이클 공식이 낡은 게임(범용 캐파)을 이기는 동안 새 게임(HBM 인증)을 놓쳤고, 그 대가가 40%→17%와 33년 만의 역전이었다 ([dram-market-share.md](../concepts/dram-market-share.md)). 다음 다운턴을 준비하는 순서는 그래서 명확하다: 지금만 열려 있는 새 메커니즘(계약 바닥)부터 잠그고, 여전히 발화하는 메커니즘(역사이클)은 대상을 교정해서 쓰고, 부러진 메커니즘(치킨게임)은 명시적으로 봉인하고, 맥락의 변화 자체를 계기판에 올려라. 시나리오 렌즈가 "어떤 미래가 오는가"를 묻는다면, 이 렌즈는 **"과거의 어떤 교훈이 그 미래로 이전 가능한가"를 심사**한다 — 두 렌즈는 예측과 학습이라는 서로 다른 방향에서 같은 Robust 전략 세트를 정당화한다.
+
+---
+
+## 갱신 규칙
+
+- 다운턴 사례·맥락 변수에 영향을 주는 페이지(entities의 경쟁 구도, concepts의 사이클·계약 구조 데이터, strategies)가 바뀌면 이 페이지와 `dashboard/src/data/storylineLenses.js`의 CMO 렌즈를 동반 갱신한다 (CLAUDE.md §6).
+- 새 다운턴이 실제로 시작되면(§3 맥락 #5 경로 확인 시) §2에 CMO-4 구성을 추가하고 §3~5를 재감사한다.

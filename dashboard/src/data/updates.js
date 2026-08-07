@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-07 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-07',
+    type: 'build',
+    version: 'v2.37.0',
+    title: '스토리라인 렌즈 5호 — CMO(Context-Mechanism-Outcome) 다운턴 분석 렌즈 추가',
+    summary:
+      '리얼리스트 평가(Pawson & Tilley)의 CMO 방법론으로 삼성 메모리의 과거 다운턴 3건(1차 치킨게임 2007~09, 2차 치킨게임 2010~13, 다운사이클 2022~23)을 맥락(C)-메커니즘(M)-결과(O) 구성으로 분해하고, 2026~28 맥락 감사(6대 구조 변화)와 메커니즘 감사(발화·부러짐·신규)를 거쳐 차기 다운턴 대비 전략 4순위를 도출하는 다섯 번째 렌즈 신설. 핵심 관측: 2022~23의 결과 이질성 — 복제된 역사이클 공식이 범용 게임을 이기는 동안 HBM 인증 게임을 놓침(40%→17%·33년 만의 역전). 위키 storyline-cmo.md ↔ dashboard storylineLenses.js 동기, 마스터 스토리라인 교차 검증 표를 5렌즈 6열로 확장. 마이너 v2.37.0(Storyline 하위 메뉴 추가).',
+    tags: ['스토리라인', 'CMO', '다운턴', '치킨게임', '역사이클', 'take-or-pay', 'CXMT', 'dashboard'],
+    items: [
+      { label: '사례 분해 (§2)', detail: 'CMO-1 소모전 완전 발화(Qimonda 퇴출·2010 투자 5.5조→9조), CMO-2 기술 전환 심판대(Elpida PC→모바일 실패), CMO-3 결과 이질성(범용 승리·HBM 니치 상실)' },
+      { label: '맥락 감사 (§3)', detail: '6대 변화 — 3강 절제 균형+CXMT 이단 경기자·계약 바닥(take-or-pay/NTB/SCA)·인증 슬롯 게임·종류별 비동기 사이클·CAPEX/ROI 재평가 경로·추격자 출발 위치' },
+      { label: '메커니즘 감사 (§4)', detail: '발화 유지: 재무 요새·저가 매수·기술 전환 투자 / 부러짐: 소모전(CXMT 퇴출 불가)·무차별 캐파 증설 / 신규: 계약 바닥·SW 락인·EWI 규율' },
+      { label: '전략 4순위 (§5)', detail: '① 계약 바닥 선점(RS-8·RS-4·D12, 지금만 열린 창) ② 역사이클 대상 교정 — 캐파→인증·기술·자산(RS-5·D9·D6·RS-1 옵션형만) ③ 치킨게임 CXMT 재사용 금지(RS-6·RS-2·MB-4) ④ EWI에 맥락 지표 추가(RS-9·D15·D16)' },
+      { label: '교차 검증 표 확장', detail: 'storyline.md·storyline.js ch7 표에 CMO 열 추가(5렌즈+시나리오 플래닝) — 프레임워크 불변 전략 결론 유지, CMO 고유 경고(과거 공식 무맥락 복제) 추가' },
+    ],
+    links: [
+      { label: 'storyline-cmo.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/storyline-cmo.md' },
+      { label: 'dram-chicken-game-history-2026-08-05.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/dram-chicken-game-history-2026-08-05.md' },
+    ],
+  },
   // ── 2026-08-06 (iii) ─────────────────────────────────────────────────────────
   {
     date: '2026-08-06',

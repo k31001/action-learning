@@ -229,11 +229,11 @@ export const STORYLINE_CHAPTERS = [
       },
       {
         type: 'h',
-        text: '렌즈 교차 검증 — 네 개의 다른 프레임워크가 같은 곳을 가리킨다',
+        text: '렌즈 교차 검증 — 다섯 개의 다른 프레임워크가 같은 곳을 가리킨다',
       },
       {
         type: 'p',
-        text: '이 논증의 마지막 방어선은 프레임워크 자체를 바꿔보는 것이다. 같은 위키 지식을 파이브 포스·게임이론·실물옵션·파괴적 혁신으로 독립적으로 다시 풀어 각 렌즈의 최적 전략을 도출한 결과(상단 하위 메뉴), 서로 다른 목적함수에서 같은 전략들이 반복 선택됐다.',
+        text: '이 논증의 마지막 방어선은 프레임워크 자체를 바꿔보는 것이다. 같은 위키 지식을 파이브 포스·게임이론·실물옵션·파괴적 혁신·CMO(Context-Mechanism-Outcome)로 독립적으로 다시 풀어 각 렌즈의 최적 전략을 도출한 결과(상단 하위 메뉴), 서로 다른 목적함수에서 같은 전략들이 반복 선택됐다.',
       },
       {
         type: 'p',
@@ -241,19 +241,19 @@ export const STORYLINE_CHAPTERS = [
       },
       {
         type: 'table',
-        headers: ['전략', '파이브 포스', '게임이론', '실물옵션', '파괴적 혁신', '시나리오 플래닝'],
+        headers: ['전략', '파이브 포스', '게임이론', '실물옵션', '파괴적 혁신', 'CMO', '시나리오 플래닝'],
         rows: [
-          ['RS-3·RS-8·RS-4 (락인·계약 구조)', '1순위', '2순위', '1순위(풋)', '—', 'Robust'],
-          ['RS-5·D16 (정점 규율)', '—', '1순위', '1순위(풋)', '—', 'Robust·critical'],
-          ['RS-1 (옵션형 캐파)', '—', '3순위(억지력)', '2순위', '—', 'Robust'],
-          ['SE-1·SE-2 (3D DRAM·CXL)', '2순위(대체재 흡수)', '—', '3순위(전환옵션)', '1순위(별동대)', 'Side Bet E'],
-          ['RS-6·RS-2 (원가·바벨)', '4순위', '4순위(게임 분리)', '2순위(전환권)', '3순위(로엔드 잔류)', 'Robust'],
+          ['RS-3·RS-8·RS-4 (락인·계약 구조)', '1순위', '2순위', '1순위(풋)', '—', '1순위(계약 바닥)', 'Robust'],
+          ['RS-5·D16 (정점 규율)', '—', '1순위', '1순위(풋)', '—', '2순위(요새·R&D 하한)', 'Robust·critical'],
+          ['RS-1 (옵션형 캐파)', '—', '3순위(억지력)', '2순위', '—', '2순위(옵션형만 허용)', 'Robust'],
+          ['SE-1·SE-2 (3D DRAM·CXL)', '2순위(대체재 흡수)', '—', '3순위(전환옵션)', '1순위(별동대)', '2순위(전환 투자)', 'Side Bet E'],
+          ['RS-6·RS-2 (원가·바벨)', '4순위', '4순위(게임 분리)', '2순위(전환권)', '3순위(로엔드 잔류)', '3순위(치킨게임 봉인)', 'Robust'],
         ],
       },
       {
         type: 'p',
-        text: '수렴의 의미는 두 겹이다. 첫째, 네 렌즈 전부가 지지하는 전략(계약 구조·정점 규율·옵션 캐파·차세대 별동대·바벨)은 프레임워크 불변(framework-invariant) — 어떤 이론으로 세상을 봐도 해야 하는 일이며, Robust 개념의 메타 검증이다. 둘째, 렌즈들이 갈라지는 지점은 경고로 읽는다 — 파이브 포스와 파괴적 혁신은 MB-1(1위 탈환)의 한계를, 게임이론은 MB 실행이 캐파 경쟁으로 흐를 위험을, 실물옵션은 확정 집중의 형태 리스크를 지적한다. 결론: Main Bet은 유지하되 실행은 인증·기술 순위전으로 한정하고, 확정 최소·옵션 최대 구조로 집행하며, 구조 전략(락인·표준)과 차세대 별동대에 최우선 자원을 배분한다.',
-        refs: 'wiki/storyline/storyline-five-forces.md · wiki/storyline/storyline-game-theory.md · wiki/storyline/storyline-real-options.md · wiki/storyline/storyline-disruption.md',
+        text: '수렴의 의미는 두 겹이다. 첫째, 다섯 렌즈 전부가 지지하는 전략(계약 구조·정점 규율·옵션 캐파·차세대 별동대·바벨)은 프레임워크 불변(framework-invariant) — 어떤 이론으로 세상을 봐도 해야 하는 일이며, Robust 개념의 메타 검증이다. 둘째, 렌즈들이 갈라지는 지점은 경고로 읽는다 — 파이브 포스와 파괴적 혁신은 MB-1(1위 탈환)의 한계를, 게임이론은 MB 실행이 캐파 경쟁으로 흐를 위험을, 실물옵션은 확정 집중의 형태 리스크를, CMO는 과거 승리 공식의 무맥락 복제(2022~23형 캐파 역사이클·CXMT 상대 치킨게임) 리스크를 지적한다. 결론: Main Bet은 유지하되 실행은 인증·기술 순위전으로 한정하고, 확정 최소·옵션 최대 구조로 집행하며, 구조 전략(락인·표준)과 차세대 별동대에 최우선 자원을 배분한다.',
+        refs: 'wiki/storyline/storyline-five-forces.md · wiki/storyline/storyline-game-theory.md · wiki/storyline/storyline-real-options.md · wiki/storyline/storyline-disruption.md · wiki/storyline/storyline-cmo.md',
       },
     ],
     sources: 'wiki/scenarios/core-strategy-selection.md · wiki/scenarios/robust-reverification.md · wiki/benchmark/cyclical-strategy-benchmark.md · wiki/storyline/storyline-five-forces.md',

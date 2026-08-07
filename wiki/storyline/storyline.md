@@ -1,6 +1,6 @@
 ---
 type: analysis
-last_reviewed: 2026-08-06
+last_reviewed: 2026-08-07
 sources: [sources/filings/micron-q3-fy26.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md, sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md, sources/raw-notes/ai-datacenter-buildout-2026-06.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md, sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md]
 ---
 
@@ -10,7 +10,7 @@ sources: [sources/filings/micron-q3-fy26.md, sources/articles/july-2026-market-u
 
 이 페이지는 위키 전체 지식 — 환경 변화([STEEP](../steep/economy.md)) → 진단([entities](../entities/samsung.md)·[concepts](../concepts/hbm-market.md)) → 핵심 동인([driving-forces](../driving-forces/key-drivers.md)) → 갈림길([scenarios](../scenarios/scenario-matrix.md)) → 선택([strategies](../scenarios/strategy.md)) — 을 하나의 이야기로 잇는 종합 서사다. 위키에 새 소스가 들어와 하류 페이지가 바뀌면 이 서사도 함께 갱신된다(CLAUDE.md §6 정합성 체인).
 
-> **다른 렌즈로 읽기** — 같은 위키 지식을 시나리오 플래닝이 아닌 다른 프레임워크로 재서사화한 자매 스토리라인: [파이브 포스(협상력의 지도)](storyline-five-forces.md) · [게임이론(치킨게임에서 약속의 게임으로)](storyline-game-theory.md) · [실물옵션(변동성이 클수록 옵션은 비싸진다)](storyline-real-options.md) · [파괴적 혁신(삼성은 이미 한 번 파괴당했다)](storyline-disruption.md). 대시보드 Storyline 탭의 하위 메뉴와 1:1 대응한다.
+> **다른 렌즈로 읽기** — 같은 위키 지식을 시나리오 플래닝이 아닌 다른 프레임워크로 재서사화한 자매 스토리라인: [파이브 포스(협상력의 지도)](storyline-five-forces.md) · [게임이론(치킨게임에서 약속의 게임으로)](storyline-game-theory.md) · [실물옵션(변동성이 클수록 옵션은 비싸진다)](storyline-real-options.md) · [파괴적 혁신(삼성은 이미 한 번 파괴당했다)](storyline-disruption.md) · [CMO(같은 전략은 같은 결과를 재생하지 않는다)](storyline-cmo.md). 대시보드 Storyline 탭의 하위 메뉴와 1:1 대응한다.
 
 ## 스토리 흐름 한눈에
 
@@ -101,21 +101,21 @@ flowchart LR
 
 **본 제안 — 확률가중 베팅 + Robust 헤지 + 데이터 트리거** — 는 세 대안의 강점만 취한다. 가장 큰 미래를 공략하고(대안 1의 상방), 어떤 미래에서도 흑자 구조를 유지하며(대안 3의 하방 방어), 전환 시점 판단을 사람의 낙관이 아니라 EWI 데이터에 위임한다(대안 2가 놓치는 규율). [24개 후보 전략을 임팩트×창의성×모방난이도로 점수화해 선별](../scenarios/core-strategy-selection.md)했고, 9개 불변전략은 재검증을 거쳐 45셀 가치 매트릭스로 입증됐다 ([robust-reverification.md](../scenarios/robust-reverification.md)). 반론도 수용한다 — "Robust는 공짜가 아니다"라는 비판은 옳다. 옵션형 캐파와 헤지에는 기회비용이 있다. 그러나 메모리 가격 변동성(σ 60~120%)이 원유(30%)의 2~4배인 산업에서 ([agri-hedging-to-memory-semi.md](../benchmark/agri-hedging-to-memory-semi.md)), 변동성 관리의 기대가치는 그 비용을 압도한다.
 
-### 렌즈 교차 검증 — 네 개의 다른 프레임워크가 같은 곳을 가리킨다
+### 렌즈 교차 검증 — 다섯 개의 다른 프레임워크가 같은 곳을 가리킨다
 
-이 논증의 마지막 방어선은 프레임워크 자체를 바꿔보는 것이다. 같은 위키 지식을 [파이브 포스](storyline-five-forces.md)·[게임이론](storyline-game-theory.md)·[실물옵션](storyline-real-options.md)·[파괴적 혁신](storyline-disruption.md)으로 독립적으로 다시 풀어 각 렌즈의 최적 전략을 도출한 결과, 서로 다른 목적함수에서 같은 전략들이 반복 선택됐다.
+이 논증의 마지막 방어선은 프레임워크 자체를 바꿔보는 것이다. 같은 위키 지식을 [파이브 포스](storyline-five-forces.md)·[게임이론](storyline-game-theory.md)·[실물옵션](storyline-real-options.md)·[파괴적 혁신](storyline-disruption.md)·[CMO(Context-Mechanism-Outcome)](storyline-cmo.md)로 독립적으로 다시 풀어 각 렌즈의 최적 전략을 도출한 결과, 서로 다른 목적함수에서 같은 전략들이 반복 선택됐다.
 
 표 읽는 법: 행은 전략 묶음, 열은 렌즈다. 각 칸은 그 렌즈가 해당 전략을 최적 전략 패키지의 몇 번째 우선순위로 뽑았는지를 나타낸다 (— 는 그 렌즈의 상위 4순위에 들지 않았다는 뜻이지, 반대했다는 뜻이 아니다). 각 순위의 상세한 논리는 각 렌즈 페이지의 "이 렌즈가 도출하는 최적 전략" 절에 있다.
 
-| 전략 | 파이브 포스 | 게임이론 | 실물옵션 | 파괴적 혁신 | 시나리오 플래닝 |
-|---|---|---|---|---|---|
-| RS-3·RS-8·RS-4 (락인·계약 구조) | **1순위** | 2순위 | 1순위(풋) | — | Robust |
-| RS-5·D16 (정점 규율) | — | **1순위** | 1순위(풋) | — | Robust·critical |
-| RS-1 (옵션형 캐파) | — | 3순위(억지력) | **2순위** | — | Robust |
-| SE-1·SE-2 (3D DRAM·CXL) | 2순위(대체재 흡수) | — | 3순위(전환옵션) | **1순위**(별동대) | Side Bet E |
-| RS-6·RS-2 (원가·바벨) | 4순위 | 4순위(게임 분리) | 2순위(전환권) | 3순위(로엔드 잔류) | Robust |
+| 전략 | 파이브 포스 | 게임이론 | 실물옵션 | 파괴적 혁신 | CMO | 시나리오 플래닝 |
+|---|---|---|---|---|---|---|
+| RS-3·RS-8·RS-4 (락인·계약 구조) | **1순위** | 2순위 | 1순위(풋) | — | **1순위**(계약 바닥) | Robust |
+| RS-5·D16 (정점 규율) | — | **1순위** | 1순위(풋) | — | 2순위(요새·R&D 하한) | Robust·critical |
+| RS-1 (옵션형 캐파) | — | 3순위(억지력) | **2순위** | — | 2순위(옵션형만 허용) | Robust |
+| SE-1·SE-2 (3D DRAM·CXL) | 2순위(대체재 흡수) | — | 3순위(전환옵션) | **1순위**(별동대) | 2순위(전환 투자) | Side Bet E |
+| RS-6·RS-2 (원가·바벨) | 4순위 | 4순위(게임 분리) | 2순위(전환권) | 3순위(로엔드 잔류) | 3순위(치킨게임 봉인) | Robust |
 
-수렴의 의미는 두 겹이다. 첫째, **네 렌즈 전부가 지지하는 전략(계약 구조·정점 규율·옵션 캐파·차세대 별동대·바벨)은 프레임워크 불변(framework-invariant)** — 어떤 이론으로 세상을 봐도 해야 하는 일이며, 이는 Robust 개념의 메타 검증이다. 둘째, 렌즈들이 갈라지는 지점은 경고로 읽는다 — 파이브 포스와 파괴적 혁신은 MB-1(1위 탈환)의 한계(구조 불변·지난 전쟁)를, 게임이론은 MB 실행이 캐파 경쟁으로 흐를 위험(치킨게임 재점화)을, 실물옵션은 확정 집중의 형태 리스크를 지적한다. **결론: Main Bet은 유지하되, 그 실행은 인증·기술 순위전으로 한정하고(게임이론), 확정 최소·옵션 최대 구조로 집행하며(실물옵션), 구조 전략(락인·표준)과 차세대 별동대에 최우선 자원을 배분한다(파이브 포스·파괴적 혁신).**
+수렴의 의미는 두 겹이다. 첫째, **다섯 렌즈 전부가 지지하는 전략(계약 구조·정점 규율·옵션 캐파·차세대 별동대·바벨)은 프레임워크 불변(framework-invariant)** — 어떤 이론으로 세상을 봐도 해야 하는 일이며, 이는 Robust 개념의 메타 검증이다. 둘째, 렌즈들이 갈라지는 지점은 경고로 읽는다 — 파이브 포스와 파괴적 혁신은 MB-1(1위 탈환)의 한계(구조 불변·지난 전쟁)를, 게임이론은 MB 실행이 캐파 경쟁으로 흐를 위험(치킨게임 재점화)을, 실물옵션은 확정 집중의 형태 리스크를, CMO는 과거 승리 공식의 무맥락 복제(2022~23형 캐파 역사이클·CXMT 상대 치킨게임) 리스크를 지적한다. **결론: Main Bet은 유지하되, 그 실행은 인증·기술 순위전으로 한정하고(게임이론), 확정 최소·옵션 최대 구조로 집행하며(실물옵션), 구조 전략(락인·표준)과 차세대 별동대에 최우선 자원을 배분한다(파이브 포스·파괴적 혁신).**
 
 ## 8장. 감시와 전환 — 이야기는 데이터가 계속 쓴다
 
