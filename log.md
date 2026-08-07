@@ -1212,3 +1212,11 @@ wiki 6개 페이지 [Update 2026-08-06]: ai-capex($50B/$700B 교차 확인·오�
 **마스터 정합**: `storyline.md` 렌즈 목록·교차 검증 표를 5렌즈 6열로 확장(CMO 열: 1순위 계약 바닥 / 2순위 요새·R&D 하한·옵션형·전환 투자 / 3순위 치킨게임 봉인), 수렴 결론 "다섯 렌즈"로 갱신 + CMO 고유 경고(과거 공식 무맥락 복제) 추가. CLAUDE.md 렌즈 enumeration 2곳·index.md 등록.
 
 **대시보드(마이너 v2.37.0)**: `storylineLenses.js`에 CMO 렌즈 추가(chain 시각화 5단계·섹션 6·strategy 카드 4) — Storyline 하위 메뉴 5→6개(마이너 사유). `storyline.js` ch7 표·결론 동기. `updates.js` 항목 추가. 지식그래프 재생성, `npm run build` 검증. outputs/ 무변경 → PPTX 생략(사유: 렌즈 페이지는 보고서·슬라이드 구조에 미포함, 기존 렌즈 4종과 동일 처리). 지정 브랜치(claude/samsung-memory-downturn-strategy-ejn2as) 커밋·푸시.
+
+## [2026-08-07] build | CMO 렌즈 표 정리 — 사례 분해·메커니즘 감사 요약 표 (v2.37.1)
+
+피드백: "CMO를 표로 정리해줄 수 있을까?"
+
+**위키**: `storyline-cmo.md`에 요약 표 2종 추가 — §2 상단에 CMO 구성 표(CMO-1 1차 치킨게임 · CMO-2 2차 치킨게임 · CMO-3 2022~23 결과 이질성 · CMO-4 다음 다운턴 설계를 Context·Mechanism·Outcome·교훈 5열로 대조), §4 상단에 메커니즘 감사 표(8개 메커니즘의 과거 발화 사례 · 2026~28 판정[유지/강화/부러짐/약화/신규] · 판정 근거[§3 맥락 변수 번호] · 전략 배선[RS/D]). 서사 본문은 유지 — 표는 요약 진입점, 출처는 본문 인용을 따름을 명시.
+
+**대시보드(패치 v2.37.1)**: `storylineLenses.js` CMO 렌즈 섹션 2·4에 동일 table 블록 미러(기존 Block 렌더러의 table 타입 재사용, 컴포넌트 변경 없음). `updates.js` 항목 추가. 지식그래프 무변경(신규 페이지 간 링크 없음 — 표는 평문 참조). `npm run build` 검증. outputs/ 무변경 → PPTX 생략. 지정 브랜치 커밋 후 main 병합·푸시(사용자 승인 흐름).

@@ -14,6 +14,23 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-07 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-07',
+    type: 'build',
+    version: 'v2.37.1',
+    title: 'CMO 렌즈 표 정리 — 사례 분해·메커니즘 감사 요약 표 2종 추가',
+    summary:
+      '피드백("CMO를 표로 정리")에 따라 CMO 렌즈에 요약 표 2종 추가: §2 사례 분해 표(CMO-1~3 + 다음 다운턴 설계 CMO-4를 Context·Mechanism·Outcome·교훈 5열로 대조), §4 메커니즘 감사 표(메커니즘 8종의 과거 발화·2026~28 판정[유지/강화/부러짐/약화/신규]·판정 근거·전략 배선). 기존 서사 본문은 유지, 표는 요약 진입점. wiki storyline-cmo.md ↔ dashboard storylineLenses.js 동기. 패치 v2.37.1.',
+    tags: ['스토리라인', 'CMO', '표', 'dashboard'],
+    items: [
+      { label: '§2 사례 분해 표', detail: '구성(CMO-1·2·3·4설계) × Context·Mechanism·Outcome·다음 다운턴에의 교훈 — 2022~23 결과 이질성을 한 행으로 대조' },
+      { label: '§4 메커니즘 감사 표', detail: '재무 요새·저가 매수·기술 전환(유지·강화) / 소모전·무차별 캐파(부러짐·약화) / 계약 바닥·SW 락인·EWI 규율(신규) — 각각 판정 근거(§3 맥락 변수 번호)와 RS/D 전략 배선 명시' },
+    ],
+    links: [
+      { label: 'storyline-cmo.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/storyline-cmo.md' },
+    ],
+  },
   // ── 2026-08-07 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-07',
