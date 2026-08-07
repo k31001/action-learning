@@ -13,7 +13,7 @@
 - [wiki/storyline/storyline-game-theory.md](wiki/storyline/storyline-game-theory.md) — (NEW) 게임이론 렌즈: 치킨게임(2007~13) → 3강 절제 균형 → take-or-pay 약속 게임 → CXMT 비대칭 게임
 - [wiki/storyline/storyline-real-options.md](wiki/storyline/storyline-real-options.md) — (NEW) 실물옵션 렌즈: 콜(RS-1·MB-5·D9)·풋(RS-8·NTB)·전환(SE-1·SE-2·RS-2)·포기(시안 Plan B) 옵션 포트폴리오 + EWI 행사 신호
 - [wiki/storyline/storyline-disruption.md](wiki/storyline/storyline-disruption.md) — (NEW) 파괴적 혁신 렌즈: HBM 파괴 피해 사례 → CXMT 로엔드·3D DRAM/CXL 차세대·AI SSD 인접 파괴와 대응
-- [wiki/storyline/storyline-cmo.md](wiki/storyline/storyline-cmo.md) — (NEW) CMO 렌즈(Context-Mechanism-Outcome): 다운턴 3건(2007~09·2010~13·2022~23) CMO 분해 → 2026~28 맥락·메커니즘 감사 → 차기 다운턴 전략 4순위(계약 바닥·역사이클 대상 교정·치킨게임 봉인·맥락 EWI)
+- [wiki/storyline/storyline-cmo.md](wiki/storyline/storyline-cmo.md) — (NEW) CMO 렌즈(Context-Mechanism-Outcome): 다운턴 3건(2007~09·2010~13·2022~23) CMO 분해 → 2026~28 맥락·메커니즘 감사 → 액션 추적(A1~A6 효과 판정 ◎/△/✕ → 전략 번역) → 차기 다운턴 전략 4순위(계약 바닥·역사이클 대상 교정·치킨게임 봉인·맥락 EWI)
 
 ## wiki/scenarios — 5개 시나리오 + 매트릭스
 

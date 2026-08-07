@@ -96,6 +96,55 @@ function Block({ block }) {
             ))}
           </div>
         )
+      case 'trace':
+        // 액션 추적 카드 — 과거 액션 → 효과 판정 → 2026 전략 번역 (CMO 렌즈 §5)
+        return (
+          <div className="space-y-2.5 my-4">
+            {block.items.map((item, i) => {
+              const verdict = {
+                clear: { label: '◎ 효과 분명', cls: 'bg-emerald-100 text-emerald-800' },
+                partial: { label: '△ 조건부', cls: 'bg-amber-100 text-amber-800' },
+                adverse: { label: '✕ 역효과', cls: 'bg-red-100 text-red-700' },
+              }[item.verdict] || { label: item.verdict, cls: 'bg-zinc-100 text-zinc-600' }
+              return (
+                <div key={i} className="rounded-hig-lg border border-zinc-200 bg-white p-3.5">
+                  <div className="flex flex-col md:flex-row md:items-stretch gap-2.5">
+                    <div className="md:w-[27%] flex-shrink-0">
+                      <p className="text-[11px] font-semibold text-zinc-400 mb-0.5">과거 액션 · {item.period}</p>
+                      <p className="text-[13.5px] font-semibold text-zinc-900 leading-snug">{item.action}</p>
+                    </div>
+                    <div className="hidden md:flex items-center text-zinc-300 flex-shrink-0">→</div>
+                    <div className="md:flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5 flex-wrap">
+                        <p className="text-[11px] font-semibold text-zinc-400">효과</p>
+                        <span className={`px-1.5 py-px rounded-full text-[10.5px] font-bold ${verdict.cls}`}>
+                          {verdict.label}
+                        </span>
+                      </div>
+                      <p className="text-[13px] text-zinc-700 leading-snug">{item.outcome}</p>
+                      {item.reason && (
+                        <p className="mt-1 text-[12px] text-zinc-500 leading-snug">
+                          <span className="font-semibold">맥락 감사 — </span>
+                          {item.reason}
+                        </p>
+                      )}
+                    </div>
+                    <div className="hidden md:flex items-center text-zinc-300 flex-shrink-0">→</div>
+                    <div className="md:w-[24%] flex-shrink-0 md:border-l md:border-zinc-100 md:pl-3">
+                      <p className="text-[11px] font-semibold text-zinc-400 mb-0.5">2026 전략 번역</p>
+                      <p className="text-[13px] font-medium text-sky-800 leading-snug">{item.strategy}</p>
+                    </div>
+                  </div>
+                  {item.refs && (
+                    <div className="mt-2 pt-2 border-t border-zinc-100">
+                      <SourceLink source={item.refs} className="text-[11px] text-zinc-400" />
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        )
       case 'table':
         return (
           <div className="my-4 overflow-x-auto rounded-hig-md border border-zinc-200">
