@@ -96,6 +96,55 @@ function Block({ block }) {
             ))}
           </div>
         )
+      case 'matrix':
+        // M×C→O 매트릭스 — 행=메커니즘(M), 열=맥락(C), 셀=결과(O). tone으로 효과 색 구분 (CMO 렌즈 §5)
+        return (
+          <div className="my-4">
+            <div className="overflow-x-auto rounded-hig-md border border-zinc-200">
+              <table className="w-full text-[13px] border-collapse">
+                <thead>
+                  <tr className="bg-zinc-50">
+                    {block.headers.map((h, i) => (
+                      <th key={i} className="text-left px-3 py-2 font-semibold text-zinc-700 border-b border-zinc-200 min-w-[9rem]">
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {block.rows.map((row, ri) => (
+                    <tr key={ri}>
+                      <td className="px-3 py-2 align-top font-semibold text-zinc-900 border-b border-zinc-100 bg-white min-w-[11rem]">
+                        {row.label}
+                      </td>
+                      {row.cells.map((cell, ci) => {
+                        const tone = {
+                          clear: 'bg-emerald-100/90 text-emerald-900 font-medium',
+                          partial: 'bg-amber-50 text-amber-900',
+                          adverse: 'bg-red-50 text-red-800',
+                          none: 'bg-white text-zinc-300',
+                        }[cell.tone] || 'bg-white text-zinc-700'
+                        return (
+                          <td key={ci} className={`px-3 py-2 align-top border-b border-zinc-100 border-l border-l-zinc-100 leading-snug ${tone}`}>
+                            {cell.text || '—'}
+                          </td>
+                        )
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {block.legend && (
+              <div className="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-zinc-500">
+                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-emerald-100 border border-emerald-300" /> 효과 분명 (◎)</span>
+                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-amber-50 border border-amber-300" /> 조건부·부분 (△)</span>
+                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-red-50 border border-red-300" /> 역효과 (✕)</span>
+                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-white border border-zinc-200" /> 유의미한 상호작용 없음 (—)</span>
+              </div>
+            )}
+          </div>
+        )
       case 'trace':
         // 액션 추적 카드 — 과거 액션 → 효과 판정 → 2026 전략 번역 (CMO 렌즈 §5)
         return (
