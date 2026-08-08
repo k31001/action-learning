@@ -14,6 +14,25 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-08 (iv) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-08',
+    type: 'ingest',
+    version: 'v2.39.0',
+    title: '메모리 3사 CAPEX 히스토리 — 역사이클 투자 정량 근거 + Data Visualization CAPEX 탭 신설',
+    summary:
+      '"다운턴에서 투자를 늘리는 삼성 전략"의 근거를 숫자·그래프로 확인하기 위한 신규 데이터 카테고리. 2016~2026E 3사 CAPEX(삼성 DS·SK하이닉스·Micron)·삼성 DS 매출/영업이익/메모리 매출·DRAM/NAND 부문별(2019·2025·2026E, TrendForce) 시계열을 수집해 wiki/concepts/memory-capex-history.md 신설, Data Visualization에 인터랙티브 CAPEX 서브탭 추가 — 부문 선택(전체/DRAM/NAND)과 시리즈 토글 칩으로 한 차트에서 원하는 항목만 동적 표시. 다운턴 음영(2019·2023)에서 삼성만 투자를 유지한 패턴(2023: 삼성 +1% vs SK -56% vs Micron -42%)과 회복기 수확, 그리고 2026E 격차 수렴(역사이클 우위 축소)까지 시각화. 마이너 v2.39.0.',
+    tags: ['CAPEX', '역사이클', 'DRAM', 'NAND', 'TrendForce', 'dashboard', 'wiki'],
+    items: [
+      { label: 'wiki/concepts/memory-capex-history.md 신설', detail: '2019(-69% 이익에도 capex -5%)·2023(-14.9조 적자에도 사상 최대 48.4조) 실증 + 2008~2012 치킨게임 원형 + 격차 수렴 한계' },
+      { label: 'sources/raw-notes/memory-capex-history-research-2026-08-08.md', detail: '각사 IR·TrendForce·연평균 환율표·추정 방법론·전체 URL' },
+      { label: 'CAPEX 서브탭 (visualizations.js CAPEX_DATA)', detail: '부문 3종 × 시리즈 8종 토글 ComposedChart(좌 $B·우 조원), 인사이트 카드 3종, 다운턴 CAPEX YoY 비교, 집계 기준 각주' },
+    ],
+    links: [
+      { label: 'memory-capex-history.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/memory-capex-history.md' },
+      { label: 'TrendForce 2026 CapEx 전망', href: 'https://www.trendforce.com/presscenter/news/20251113-12780.html' },
+    ],
+  },
   // ── 2026-08-08 (iii) ─────────────────────────────────────────────────────────
   {
     date: '2026-08-08',

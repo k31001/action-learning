@@ -1,12 +1,13 @@
+import { useState } from 'react'
 import { useHashSegment } from '../hooks/useHashRoute'
 import {
   BarChart, Bar, LineChart, Line, AreaChart, Area, ComposedChart,
   PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
-  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine,
+  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, ReferenceArea,
 } from 'recharts'
-import { Users, Globe, TrendingUp, Shield, Cpu, AlertTriangle, Server } from 'lucide-react'
+import { Users, Globe, TrendingUp, Shield, Cpu, AlertTriangle, Server, Banknote } from 'lucide-react'
 import {
-  COMPETITOR_DATA, MACRO_DATA, MARKET_DATA, POLICY_DATA, TECHNOLOGY_DATA, VIZ_COLORS,
+  CAPEX_DATA, COMPETITOR_DATA, MACRO_DATA, MARKET_DATA, POLICY_DATA, TECHNOLOGY_DATA, VIZ_COLORS,
 } from '../data/visualizations'
 import SourceLink from './SourceLink'
 import DataCenterPanel from './DataCenterTracker'
@@ -14,6 +15,7 @@ import DataCenterPanel from './DataCenterTracker'
 // 수요 EWI 서브탭은 2026-06-11 Bottleneck Model 탭으로 이동 (병목 모델과 통합)
 const SUB_TABS = [
   { id: 'datacenter', label: 'AI DC',      icon: Server },
+  { id: 'capex',      label: 'CAPEX',      icon: Banknote },
   { id: 'competitor', label: 'Competitor', icon: Users },
   { id: 'macro',      label: 'Macro',      icon: Globe },
   { id: 'market',     label: 'Market',     icon: TrendingUp },
@@ -55,6 +57,228 @@ function VizTooltip({ active, payload, label, unit }) {
 
 const AXIS = { tick: { fill: '#71717a', fontSize: 11 }, axisLine: { stroke: '#e4e4e7' }, tickLine: { stroke: '#e4e4e7' } }
 const GRID = { stroke: '#e4e4e7', strokeDasharray: '3 3' }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CAPEX — 역사이클 투자 (2016~2026E)
+// ─────────────────────────────────────────────────────────────────────────────
+const CAPEX_SEGMENTS = [
+  { id: 'total', label: '전체 (DRAM+NAND 합산)' },
+  { id: 'dram',  label: 'DRAM' },
+  { id: 'nand',  label: 'NAND' },
+]
+
+// 시리즈 정의 — keys[segment]가 null이면 해당 부문에 데이터 없음 (칩 비활성화)
+const CAPEX_SERIES = [
+  { id: 'samsung',  label: '삼성 CAPEX',            color: VIZ_COLORS.samsung, kind: 'bar',
+    keys: { total: 'samsung', dram: 'samsungDram', nand: null } },
+  { id: 'skhynix',  label: 'SK하이닉스 CAPEX',      color: VIZ_COLORS.skhynix, kind: 'bar',
+    keys: { total: 'skhynix', dram: 'skDram', nand: null } },
+  { id: 'micron',   label: 'Micron CAPEX',          color: VIZ_COLORS.micron,  kind: 'bar',
+    keys: { total: 'micron', dram: 'micronDram', nand: null } },
+  { id: 'kioxia',   label: 'Kioxia/SanDisk CAPEX',  color: VIZ_COLORS.purple,  kind: 'bar',
+    keys: { total: null, dram: null, nand: 'kioxiaNand' } },
+  { id: 'industry', label: '산업 합계',              color: VIZ_COLORS.gray,    kind: 'line',
+    keys: { total: null, dram: 'industryDram', nand: 'industryNand' } },
+  { id: 'dsRev',    label: '삼성 DS 매출',           color: VIZ_COLORS.cyan,    kind: 'line', axis: 'krw',
+    keys: { total: 'dsRev', dram: 'dsRev', nand: 'dsRev' } },
+  { id: 'dsOp',     label: '삼성 DS 영업이익',       color: VIZ_COLORS.green,   kind: 'line', axis: 'krw',
+    keys: { total: 'dsOp', dram: 'dsOp', nand: 'dsOp' } },
+  { id: 'memRev',   label: '삼성 메모리 매출',       color: VIZ_COLORS.amber,   kind: 'line', axis: 'krw',
+    keys: { total: 'memRev', dram: 'memRev', nand: 'memRev' } },
+]
+
+// 혼합 단위 툴팁 — CAPEX는 $B(삼성·SK는 조원 원본 병기), 삼성 재무는 조원
+function CapexTooltip({ active, payload, label }) {
+  if (!active || !payload?.length) return null
+  const row = CAPEX_DATA.years.find(y => y.year === label)
+  const isDownturn = CAPEX_DATA.downturnYears.includes(label)
+  return (
+    <div className="bg-zinc-100 border border-zinc-300 rounded-lg p-2.5 text-xs shadow-xl">
+      <div className="text-zinc-700 font-medium mb-1.5">
+        {label}
+        {isDownturn && <span className="ml-1.5 text-red-600 font-semibold">· 다운턴</span>}
+      </div>
+      {payload.map((p, i) => {
+        const isKrwSeries = ['dsRev', 'dsOp', 'memRev'].includes(p.dataKey)
+        const krwOrigin = p.dataKey === 'samsung' ? row?.samsungKrw
+          : p.dataKey === 'skhynix' ? row?.skKrw : null
+        return (
+          <div key={i} className="flex items-center gap-2">
+            <span style={{ color: p.color }}>●</span>
+            <span className="text-zinc-500">{p.name}:</span>
+            <span className="font-mono font-bold" style={{ color: p.color }}>
+              {isKrwSeries
+                ? `${p.value?.toLocaleString('ko-KR', { maximumFractionDigits: 1 })}조원`
+                : `$${p.value?.toLocaleString('ko-KR', { maximumFractionDigits: 1 })}B`}
+              {krwOrigin != null && <span className="font-normal text-zinc-500"> (₩{krwOrigin}조)</span>}
+            </span>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+function CapexPanel() {
+  const d = CAPEX_DATA
+  const [segment, setSegment] = useState('total')
+  const [visible, setVisible] = useState({
+    samsung: true, skhynix: true, micron: true, kioxia: true, industry: true,
+    dsRev: true, dsOp: true, memRev: false,
+  })
+  const toggle = id => setVisible(v => ({ ...v, [id]: !v[id] }))
+
+  const activeSeries = CAPEX_SERIES.filter(s => s.keys[segment] && visible[s.id])
+  const showKrwAxis = activeSeries.some(s => s.axis === 'krw')
+  const toneCls = {
+    blue:  'border-sky-300 bg-sky-50 text-sky-800',
+    amber: 'border-amber-300 bg-amber-50 text-amber-800',
+    red:   'border-red-300 bg-red-50 text-red-800',
+  }
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      {/* ── 메인 인터랙티브 차트 ─────────────────────────────────────────── */}
+      <ChartCard title={d.title} source={d.source} className="lg:col-span-2">
+        {/* 부문 선택 (전체 / DRAM / NAND) */}
+        <div className="flex flex-wrap items-center gap-2 mb-2">
+          <div className="flex rounded-lg border border-zinc-300 overflow-hidden">
+            {CAPEX_SEGMENTS.map(s => (
+              <button
+                key={s.id}
+                onClick={() => setSegment(s.id)}
+                className={`px-3 py-1.5 text-xs font-medium transition-colors ${
+                  segment === s.id
+                    ? 'bg-sky-600 text-white'
+                    : 'bg-white text-zinc-600 hover:bg-zinc-50'
+                }`}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
+          <span className="text-[10px] text-zinc-400">
+            CAPEX $B (좌축) · 삼성 재무 조원 (우축) · 붉은 음영 = 다운턴
+          </span>
+        </div>
+
+        {/* 시리즈 토글 칩 — 클릭으로 표시/제거 */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {CAPEX_SERIES.map(s => {
+            const available = !!s.keys[segment]
+            const on = available && visible[s.id]
+            return (
+              <button
+                key={s.id}
+                onClick={() => available && toggle(s.id)}
+                disabled={!available}
+                title={available ? '클릭해서 표시/제거' : '이 부문에는 데이터 없음'}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] border transition-colors ${
+                  !available
+                    ? 'border-zinc-200 text-zinc-300 cursor-not-allowed line-through'
+                    : on
+                      ? 'border-zinc-400 bg-white text-zinc-800 shadow-hig-1'
+                      : 'border-zinc-200 bg-zinc-50 text-zinc-400'
+                }`}
+              >
+                <span
+                  className={`w-2 h-2 shrink-0 ${s.kind === 'bar' ? 'rounded-sm' : 'rounded-full'}`}
+                  style={{ backgroundColor: available && on ? s.color : '#d4d4d8' }}
+                />
+                {s.label}
+              </button>
+            )
+          })}
+        </div>
+
+        <ResponsiveContainer width="100%" height={360}>
+          <ComposedChart data={d.years} margin={{ left: 0, right: 8, top: 8 }}>
+            <CartesianGrid {...GRID} />
+            <XAxis dataKey="year" {...AXIS} />
+            <YAxis yAxisId="usd" {...AXIS} unit="$B" />
+            {showKrwAxis && <YAxis yAxisId="krw" orientation="right" {...AXIS} unit="조" />}
+            <Tooltip content={<CapexTooltip />} cursor={{ fill: 'rgba(75,85,99,0.08)' }} />
+            {d.downturnYears.map(y => (
+              <ReferenceArea
+                key={y} yAxisId="usd" x1={y} x2={y}
+                fill="#ef4444" fillOpacity={0.07}
+                label={{ value: '다운턴', position: 'insideTop', fill: '#dc2626', fontSize: 10 }}
+              />
+            ))}
+            {showKrwAxis && <ReferenceLine yAxisId="krw" y={0} stroke="#d4d4d8" />}
+            {/* 토글·부문 전환마다 재애니메이션되지 않도록 즉시 렌더 */}
+            {activeSeries.filter(s => s.kind === 'bar').map(s => (
+              <Bar
+                key={s.id} yAxisId="usd" dataKey={s.keys[segment]} name={s.label}
+                fill={s.color} radius={[3, 3, 0, 0]} isAnimationActive={false}
+              />
+            ))}
+            {activeSeries.filter(s => s.kind === 'line').map(s => (
+              <Line
+                key={s.id} yAxisId={s.axis === 'krw' ? 'krw' : 'usd'}
+                dataKey={s.keys[segment]} name={s.label}
+                stroke={s.color} strokeWidth={2.5} dot={{ r: 4, fill: s.color }}
+                strokeDasharray={s.id === 'industry' || s.id === 'memRev' ? '5 4' : undefined}
+                connectNulls isAnimationActive={false}
+              />
+            ))}
+          </ComposedChart>
+        </ResponsiveContainer>
+
+        {segment !== 'total' && (
+          <p className="text-[10px] text-amber-600 mt-2">
+            ⚠️ 회사별 {segment === 'dram' ? 'DRAM' : 'NAND'} 분리 CAPEX는 2019·2025·2026E만 공개 추정 존재 (TrendForce) — 나머지 연도는 총액만 공시.
+            {segment === 'nand' && ' 삼성·SK NAND CAPEX는 미공개 — 2025~2026 축소 기조 (HBM/DRAM 재배치).'}
+          </p>
+        )}
+      </ChartCard>
+
+      {/* ── 핵심 인사이트 카드 ───────────────────────────────────────────── */}
+      <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {d.insights.map((ins, i) => (
+          <div key={i} className={`border rounded-hig-lg shadow-hig-1 p-3 ${toneCls[ins.tone]}`}>
+            <p className="text-sm font-semibold mb-1">{ins.title}</p>
+            <p className="text-xs opacity-80 leading-relaxed">{ins.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* ── 다운턴 대응 비교 ─────────────────────────────────────────────── */}
+      <ChartCard title={d.downturnResponse.title} source={d.downturnResponse.source}>
+        <ResponsiveContainer width="100%" height={240}>
+          <BarChart data={d.downturnResponse.data} layout="vertical" margin={{ left: 24, right: 24, top: 8 }}>
+            <CartesianGrid {...GRID} />
+            <XAxis type="number" {...AXIS} unit="%" domain={[-70, 20]} />
+            <YAxis type="category" dataKey="company" {...AXIS} width={130} fontSize={10} />
+            <Tooltip content={<VizTooltip unit="%" />} cursor={{ fill: 'rgba(75,85,99,0.08)' }} />
+            <ReferenceLine x={0} stroke="#a1a1aa" />
+            <Bar dataKey="yoy" name="CAPEX YoY" radius={[0, 3, 3, 0]} isAnimationActive={false}>
+              {d.downturnResponse.data.map((r, i) => (
+                <Cell key={i} fill={r.yoy >= 0 ? VIZ_COLORS.green : VIZ_COLORS.red} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+        <p className="text-[10px] text-zinc-500 mt-2">
+          다운턴 연도의 CAPEX 증감률 — 삼성만 규모를 유지했다. 2023년 삼성 +1%는 사상 최대치 경신.
+        </p>
+      </ChartCard>
+
+      {/* ── 집계 기준 각주 ───────────────────────────────────────────────── */}
+      <div className="bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4">
+        <h3 className="text-sm font-semibold text-zinc-800 mb-2">집계 기준·주의사항</h3>
+        <ul className="space-y-1.5">
+          {d.footnotes.map((f, i) => (
+            <li key={i} className="text-xs text-zinc-600 flex gap-2">
+              <span className="text-zinc-400 shrink-0">·</span>
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPETITOR
@@ -868,6 +1092,7 @@ export default function DataVisualization() {
       </div>
 
       {tab === 'datacenter' && <DataCenterPanel />}
+      {tab === 'capex'      && <CapexPanel />}
       {tab === 'competitor' && <CompetitorPanel />}
       {tab === 'macro'      && <MacroPanel />}
       {tab === 'market'     && <MarketPanel />}
