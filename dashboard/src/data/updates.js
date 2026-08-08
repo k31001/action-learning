@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-07 (iv) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-07',
+    type: 'build',
+    version: 'v2.37.3',
+    title: 'CMO 렌즈 경쟁사 비교 신설 — DRAM·NAND 경쟁사 전략 CMO 분석 + 벤치마킹 B1~B5',
+    summary:
+      '피드백("DRAM·NAND로 나눠 경쟁사 전략을 CMO로 분석 — 무엇이 달랐고 어떤 결과를 가져왔는지 비교, 잘한 부분은 벤치마킹")에 따라 CMO 렌즈에 §6 "경쟁사 CMO 비교" 신설(기존 §6·7 → §7·8 재번호). 같은 다운턴 맥락에서 다른 메커니즘을 발화시킨 경기자 = 자연 실험이라는 비교 논리. DRAM: SK하이닉스(적자 속 CapEx 절감에도 HBM·공동설계 방향 유지 → DRAM 1위·HBM 57%·OP 47.2조 삼성 전사 추월, ◎◎)·마이크론(수축은 교훈 아님, 엘피다 다운턴 M&A + 수요 선점→팹 역순 + SCA $100B는 1급, △→◎). NAND: Kioxia(체력 열위자의 아키텍처 선행 — CBA 최초 양산·BiCS10 밀도 선두, ◎)·YMTC(제재의 아키텍처 우회 — Xtacking·hybrid bonding IP 지배, ◎ 경계 겸). 벤치마킹 B1~B5를 §7 전략 카드에 배선. 핵심 교훈: "갈린 것은 지출의 양이 아니라 배분의 방향". 패치 v2.37.3.',
+    tags: ['스토리라인', 'CMO', '경쟁사 비교', 'SK하이닉스', '마이크론', 'Kioxia', 'YMTC', '벤치마킹', 'dashboard'],
+    items: [
+      { label: 'DRAM 비교 (§6.1)', detail: 'SK: 2023 적자 -7.7조·CapEx ~10조 절감에도 HBM4 공동설계·패키징 내재화 유지 → 33년 만의 1위·Rubin 2/3+·OPM 72% / 마이크론: FY23 -49% 수축 후 CHIPS 보조금·SCA·Shell 단계화 — 단 HBM 순위전 후발(Rubin 잔여)' },
+      { label: 'NAND 비교 (§6.2)', detail: 'Kioxia: 2023 업계 최초 CBA 양산·BiCS10 332단 밀도 +30% 선두·SCADA SLC 선점 / YMTC: 엔티티 리스트 후 Xtacking·국산 장비로 점유 5%→13% — 삼성·SK가 오히려 hybrid bonding 라이선스 의존 정황. 삼성 자기 대조: A6 패턴(니치 후순위)의 NAND 반복 위험' },
+      { label: '벤치마킹 B1~B5 (§6.3)', detail: 'B1 SK 니치 방향 유지→D13·D6 / B2 SK 공동설계 락인→MB-4·RS-3 / B3 마이크론 다운턴 M&A+PMI→D9 실행 각본·중앙 DB / B4 마이크론 수요 선점 역순·계약 레버리지→RS-8·D12 가속 / B5 Kioxia·YMTC 아키텍처 선행→SA-2 NIL·자체 IP(RS-6·7)' },
+      { label: '전략 배선', detail: '§7 전략 카드 why에 B번호 연결(1순위=B4 실증, 2순위=B1·B3·B5 실증). §2 CMO-4 행·§5 교차참조 §7로 갱신' },
+    ],
+    links: [
+      { label: 'storyline-cmo.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/storyline-cmo.md' },
+      { label: 'sk-hynix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/entities/sk-hynix.md' },
+    ],
+  },
   // ── 2026-08-07 (iii) ─────────────────────────────────────────────────────────
   {
     date: '2026-08-07',
