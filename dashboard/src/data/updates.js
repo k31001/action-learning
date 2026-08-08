@@ -14,6 +14,24 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-08 (iii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-08-08',
+    type: 'build',
+    version: 'v2.38.2',
+    title: '키 코드 툴팁·딥링크 — RS-1·D6 등 전략 코드에 마우스오버 설명 + 해당 탭 링크',
+    summary:
+      '피드백("RS-1, D6 이런 키 값이 무엇인지 알 수 있도록 짧은 마우스오버 레이블 + 링크")에 따라 Storyline 탭 전역(마스터+렌즈 5종)에 키 코드 렌더러 추가. 신규 data/glossary.js — RS-1~9·D1~17은 strategies.js(단일 소스)에서 자동 파생, MB/SE/SA/SD·DF1~3·CMO 로컬 코드(A1~6·B1~5·M1~6)는 수동 정의. 본문·표 셀·매트릭스·trace/strategy 카드의 모든 키 코드가 점선 밑줄로 표시되고, 마우스오버 시 한 줄 설명(예: "RS-8 · 구조화 매출 헷지 — Robust 전략"), 클릭 시 해당 탭(#/strategy/robust·decisions·core)으로 이동. 오탐 가드: 앞뒤 영숫자·하이픈 인접 시 매치 제외(HBM4 속 M4, D-150 속 D1 차단 — 토크나이저 테스트 검증). 위키 무변경(위키는 상대링크 인용 체계 기보유). 패치 v2.38.2.',
+    tags: ['UX', '툴팁', '용어집', 'glossary', 'Storyline', 'dashboard'],
+    items: [
+      { label: 'data/glossary.js 신설', detail: 'RS·D 자동 파생 + MB-1/2/4/5·SE-1/2/3·SA-2·SD-1/2·DF1~3·A1~6·B1~5·M1~6 수동 정의. 전략 코드는 딥링크, 분석 로컬 코드는 툴팁만' },
+      { label: 'Keyed 렌더러', detail: 'Storyline.jsx 전 텍스트 경로(p·h·ul/ol·quote·table·matrix 셀/parts·trace·strategy 카드·thesis)에 적용 — 점선 밑줄·cursor-help·현재 색 상속' },
+      { label: '오탐 가드 검증', detail: 'HBM4E/D-150/M15X/DDR5/LPDDR6에서 미매치, RS-1~9·§6 B4·SCADA·MB-4·D12 정상 매치 — Node 토크나이저 테스트 통과' },
+    ],
+    links: [
+      { label: 'glossary.js', href: 'https://github.com/k31001/action-learning/blob/main/dashboard/src/data/glossary.js' },
+    ],
+  },
   // ── 2026-08-08 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-08-08',

@@ -6,6 +6,31 @@ import {
 } from '../data/storyline'
 import { STORYLINE_LENSES } from '../data/storylineLenses'
 import SourceLink from './SourceLink'
+import { GLOSSARY, tokenizeKeys } from '../data/glossary'
+
+// ── 키 코드 렌더러 — RS-1·D6·MB-4 같은 코드에 마우스오버 툴팁 + 딥링크 ──────
+function Keyed({ text }) {
+  const toks = tokenizeKeys(text)
+  if (!toks) return text ?? null
+  return toks.map((t, i) => {
+    if (!t.key) return t.v
+    const g = GLOSSARY[t.v]
+    return g.hash ? (
+      <a
+        key={i}
+        href={g.hash}
+        title={g.label}
+        className="underline decoration-dotted decoration-current/50 underline-offset-2 cursor-help text-inherit hover:opacity-70"
+      >
+        {t.v}
+      </a>
+    ) : (
+      <span key={i} title={g.label} className="underline decoration-dotted decoration-current/40 underline-offset-2 cursor-help">
+        {t.v}
+      </span>
+    )
+  })
+}
 
 // ── 본문 블록 렌더러 (Interviews.jsx Block 계열 + refs 각주) ─────────────────
 function Block({ block }) {
@@ -14,18 +39,18 @@ function Block({ block }) {
       case 'h':
         return (
           <h4 className="text-sm font-semibold text-zinc-900 mt-5 mb-2 tracking-tight">
-            {block.text}
+            <Keyed text={block.text} />
           </h4>
         )
       case 'p':
-        return <p className="text-[15px] leading-relaxed text-zinc-700">{block.text}</p>
+        return <p className="text-[15px] leading-relaxed text-zinc-700"><Keyed text={block.text} /></p>
       case 'ul':
         return (
           <ul className="space-y-1.5 ml-1">
             {block.items.map((it, i) => (
               <li key={i} className="flex items-start gap-2.5 text-[15px] leading-relaxed text-zinc-700">
                 <span className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-hig-blue/60" />
-                <span>{it}</span>
+                <span><Keyed text={it} /></span>
               </li>
             ))}
           </ul>
@@ -38,7 +63,7 @@ function Block({ block }) {
                 <span className="flex-shrink-0 flex items-center justify-center w-5 h-5 mt-0.5 rounded-full bg-zinc-100 text-zinc-600 text-[11px] font-semibold">
                   {i + 1}
                 </span>
-                <span>{it}</span>
+                <span><Keyed text={it} /></span>
               </li>
             ))}
           </ol>
@@ -46,9 +71,9 @@ function Block({ block }) {
       case 'quote':
         return (
           <blockquote className="pl-5 pr-4 py-3 border-l-4 border-hig-blue bg-sky-50/70 rounded-r-hig-md">
-            <p className="text-[15px] leading-relaxed text-zinc-800 font-medium italic">{block.text}</p>
+            <p className="text-[15px] leading-relaxed text-zinc-800 font-medium italic"><Keyed text={block.text} /></p>
             {block.context && (
-              <p className="mt-1.5 text-xs text-zinc-500">— {block.context}</p>
+              <p className="mt-1.5 text-xs text-zinc-500">— <Keyed text={block.context} /></p>
             )}
           </blockquote>
         )
@@ -62,15 +87,15 @@ function Block({ block }) {
                   <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-zinc-900 text-white text-[12px] font-bold">
                     {item.rank}
                   </span>
-                  <h5 className="text-[14px] font-bold text-zinc-900 leading-snug pt-1">{item.name}</h5>
+                  <h5 className="text-[14px] font-bold text-zinc-900 leading-snug pt-1"><Keyed text={item.name} /></h5>
                 </div>
                 <p className="text-[14px] leading-relaxed text-zinc-700 mb-2">
                   <span className="font-semibold text-zinc-500">무엇을 하자는 것인가 — </span>
-                  {item.what}
+                  <Keyed text={item.what} />
                 </p>
                 <p className="text-[14px] leading-relaxed text-zinc-700">
                   <span className="font-semibold text-zinc-500">왜 이 순위인가 — </span>
-                  {item.why}
+                  <Keyed text={item.why} />
                 </p>
                 {(item.links?.length || item.refs) && (
                   <div className="mt-3 pt-2.5 border-t border-zinc-100 space-y-1.5">
@@ -115,7 +140,7 @@ function Block({ block }) {
                   {block.rows.map((row, ri) => (
                     <tr key={ri}>
                       <td className="px-3 py-2 align-top font-semibold text-zinc-900 border-b border-zinc-100 bg-white min-w-[11rem]">
-                        {row.label}
+                        <Keyed text={row.label} />
                       </td>
                       {row.cells.map((cell, ci) => {
                         const tone = {
@@ -141,12 +166,12 @@ function Block({ block }) {
                                   return (
                                     <div key={pi} className={`rounded px-1.5 py-1 text-[12px] leading-snug ${pTone}`}>
                                       <span className="font-bold mr-1">{pt.tag}</span>
-                                      {pt.text}
+                                      <Keyed text={pt.text} />
                                     </div>
                                   )
                                 })}
                               </div>
-                            ) : (cell.text || '—')}
+                            ) : (cell.text ? <Keyed text={cell.text} /> : '—')}
                           </td>
                         )
                       })}
@@ -188,7 +213,7 @@ function Block({ block }) {
                   <div className="flex flex-col md:flex-row md:items-stretch gap-2.5">
                     <div className="md:w-[27%] flex-shrink-0">
                       <p className="text-[11px] font-semibold text-zinc-400 mb-0.5">과거 액션 · {item.period}</p>
-                      <p className="text-[13.5px] font-semibold text-zinc-900 leading-snug">{item.action}</p>
+                      <p className="text-[13.5px] font-semibold text-zinc-900 leading-snug"><Keyed text={item.action} /></p>
                     </div>
                     <div className="hidden md:flex items-center text-zinc-300 flex-shrink-0">→</div>
                     <div className="md:flex-1 min-w-0">
@@ -198,18 +223,18 @@ function Block({ block }) {
                           {verdict.label}
                         </span>
                       </div>
-                      <p className="text-[13px] text-zinc-700 leading-snug">{item.outcome}</p>
+                      <p className="text-[13px] text-zinc-700 leading-snug"><Keyed text={item.outcome} /></p>
                       {item.reason && (
                         <p className="mt-1 text-[12px] text-zinc-500 leading-snug">
                           <span className="font-semibold">맥락 감사 — </span>
-                          {item.reason}
+                          <Keyed text={item.reason} />
                         </p>
                       )}
                     </div>
                     <div className="hidden md:flex items-center text-zinc-300 flex-shrink-0">→</div>
                     <div className="md:w-[24%] flex-shrink-0 md:border-l md:border-zinc-100 md:pl-3">
                       <p className="text-[11px] font-semibold text-zinc-400 mb-0.5">2026 전략 번역</p>
-                      <p className="text-[13px] font-medium text-sky-800 leading-snug">{item.strategy}</p>
+                      <p className="text-[13px] font-medium text-sky-800 leading-snug"><Keyed text={item.strategy} /></p>
                     </div>
                   </div>
                   {item.refs && (
@@ -240,7 +265,7 @@ function Block({ block }) {
                   <tr key={ri} className="even:bg-zinc-50/40">
                     {row.map((cell, ci) => (
                       <td key={ci} className={`px-3 py-2 align-top text-zinc-700 border-b border-zinc-100 ${ci === 0 ? 'font-medium text-zinc-900' : ''}`}>
-                        {cell}
+                        <Keyed text={cell} />
                       </td>
                     ))}
                   </tr>
@@ -538,7 +563,7 @@ function LensView({ lens }) {
         </div>
         <p className="text-[15px] leading-relaxed text-zinc-700">
           <span className="font-semibold text-zinc-900">한 문장 논지 — </span>
-          {lens.thesis}
+          <Keyed text={lens.thesis} />
         </p>
         <SourceLink
           source={`단일 소스: ${lens.wikiSource} (같은 위키 지식·지식그래프를 ${lens.label} 프레임워크로 재서사화)`}
@@ -610,7 +635,7 @@ function ScenarioView() {
         </div>
         <p className="text-[15px] leading-relaxed text-zinc-700">
           <span className="font-semibold text-zinc-900">한 문장 논지 — </span>
-          {STORYLINE_META.thesis}
+          <Keyed text={STORYLINE_META.thesis} />
         </p>
         <SourceLink source={`단일 소스: ${STORYLINE_META.wikiSource} (위키에 새 내용이 들어오면 이 서사도 함께 갱신)`} prefix="" className="text-xs text-zinc-400 mt-2" />
       </div>
