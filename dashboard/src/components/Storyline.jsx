@@ -119,10 +119,11 @@ function Block({ block }) {
                       </td>
                       {row.cells.map((cell, ci) => {
                         const tone = {
-                          clear: 'bg-emerald-100/90 text-emerald-900 font-medium',
+                          clear: 'bg-emerald-600 text-white font-medium',
+                          clearSoft: 'bg-emerald-50 text-emerald-900',
                           partial: 'bg-amber-50 text-amber-900',
-                          adverse: 'bg-red-50 text-red-800',
-                          none: 'bg-white text-zinc-300',
+                          adverse: 'bg-white text-red-800 border-l-4 !border-l-red-500',
+                          none: 'bg-zinc-50 text-zinc-300',
                         }[cell.tone] || 'bg-white text-zinc-700'
                         return (
                           <td key={ci} className={`px-3 py-2 align-top border-b border-zinc-100 border-l border-l-zinc-100 leading-snug ${tone}`}>
@@ -137,10 +138,18 @@ function Block({ block }) {
             </div>
             {block.legend && (
               <div className="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-zinc-500">
-                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-emerald-100 border border-emerald-300" /> 효과 분명 (◎)</span>
-                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-amber-50 border border-amber-300" /> 조건부·부분 (△)</span>
-                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-red-50 border border-red-300" /> 역효과 (✕)</span>
-                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-white border border-zinc-200" /> 유의미한 상호작용 없음 (—)</span>
+                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-emerald-600" /> 효과 분명 ◎ (primary)</span>
+                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-emerald-50 border border-emerald-300" /> ◎ 참조 셀 (중복 계상 방지)</span>
+                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-amber-50 border border-amber-300" /> 조건부·부분 △</span>
+                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-white border-l-4 border-l-red-500 border border-zinc-200" /> 역효과 ✕</span>
+                <span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-zinc-50 border border-zinc-200" /> 상호작용 없음 —</span>
+              </div>
+            )}
+            {block.footnotes?.length > 0 && (
+              <div className="mt-2 space-y-1">
+                {block.footnotes.map((f, i) => (
+                  <p key={i} className="text-[11px] text-zinc-500 leading-snug">※ {f}</p>
+                ))}
               </div>
             )}
           </div>
