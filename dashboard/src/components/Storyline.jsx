@@ -126,8 +126,27 @@ function Block({ block }) {
                           none: 'bg-zinc-50 text-zinc-300',
                         }[cell.tone] || 'bg-white text-zinc-700'
                         return (
-                          <td key={ci} className={`px-3 py-2 align-top border-b border-zinc-100 border-l border-l-zinc-100 leading-snug ${tone}`}>
-                            {cell.text || '—'}
+                          <td key={ci} className={`px-3 py-2 align-top border-b border-zinc-100 border-l border-l-zinc-100 leading-snug ${cell.parts ? 'bg-white text-zinc-700' : tone}`}>
+                            {cell.parts ? (
+                              // 원인 조건부 O — 셀 내부를 원인별 변이로 분해 (예측 매트릭스 CMO-4)
+                              <div className="space-y-1">
+                                {cell.text && <p className="text-[11px] font-bold text-zinc-500">{cell.text}</p>}
+                                {cell.parts.map((pt, pi) => {
+                                  const pTone = {
+                                    clear: 'bg-emerald-600 text-white',
+                                    clearSoft: 'bg-emerald-50 text-emerald-900',
+                                    partial: 'bg-amber-50 text-amber-900',
+                                    adverse: 'bg-red-50 text-red-800',
+                                  }[pt.tone] || 'bg-zinc-50 text-zinc-600'
+                                  return (
+                                    <div key={pi} className={`rounded px-1.5 py-1 text-[12px] leading-snug ${pTone}`}>
+                                      <span className="font-bold mr-1">{pt.tag}</span>
+                                      {pt.text}
+                                    </div>
+                                  )
+                                })}
+                              </div>
+                            ) : (cell.text || '—')}
                           </td>
                         )
                       })}
