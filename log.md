@@ -1272,3 +1272,19 @@ wiki 6개 페이지 [Update 2026-08-06]: ai-capex($50B/$700B 교차 확인·오�
 **대시보드(패치 v2.38.2)**: `data/glossary.js` 신설 — RS-1~9·D1~17은 `strategies.js`(단일 소스)에서 자동 파생(제목·기한 포함), MB-1/2/4/5·SE-1/2/3·SA-2·SD-1/2·DF1~3과 CMO 렌즈 로컬 코드(A1~6 액션·B1~5 벤치마킹·M1~6 예측 행)는 수동 정의. `Storyline.jsx`에 Keyed 렌더러 — 마스터+렌즈 5종의 모든 텍스트 경로(p·h·목록·quote·table·matrix 셀/원인 칩·trace·strategy 카드·thesis)에서 키 코드를 점선 밑줄로 표시, 마우스오버 시 한 줄 설명, 전략 코드는 클릭 시 해당 탭 딥링크(#/strategy/robust·decisions·core), 분석 로컬 코드는 툴팁만. 오탐 가드: 앞뒤 영숫자·하이픈 인접 시 매치 제외 — HBM4(M4)·D-150(D1)·M15X·DDR5·LPDDR6 미매치, 독립 키 정상 매치를 Node 토크나이저 테스트로 검증. lookbehind 미사용(구형 Safari 호환).
 
 **건너뜀 사유**: 위키 무변경 — 위키는 상대링크 인용 체계를 이미 보유(마크다운에 툴팁 개념 없음). outputs/·지식그래프 무변경(위키 링크 변화 없음) → PPTX·그래프 재생성 생략. `npm run build` 검증. 지정 브랜치 커밋 후 main 병합·푸시(사용자 승인 흐름).
+
+## [2026-08-09] ingest | SSD 스토리라인 제안서 준비 — 검증 리서치 3건 수집
+
+요청: `outputs/storyline/` SSD 제안서(공통 개요 1~4장 + SSD 5~7장) 작성 준비 — 아웃라인 전 비판적 분석용 팩트체크.
+
+**sources/articles 신규 3건**: ① `google-captive-titanium-fdp-factcheck-2026-08.md` — "구글 Captive 미채택" 주장 **부분 반증**(구글 Titanium SSD = custom-designed Local SSD + Titanium Offload Processor, C4A GA·2.4M IOPS), FDP는 Meta·Google·Samsung 3사 주도 재확인(Chris Sabol OCP 발표), FDP 멀티벤더 확산(Micron Aerospike 실측·Kioxia RocksDB 데모·Silicon Motion MonTitan) → FDP 지원 자체는 비차별화. ② `kv-cache-ssd-offload-ecosystem-2026-08.md` — KV Cache→SSD 오프로드 실재·가속(H100 동시 사용자 10배), 단 오케스트레이션 SW 계층은 NVIDIA(Dynamo·NIXL·ICMSP→CMX)와 OSS(LMCache·Mooncake)가 선점 — SSD 벤더 자리는 "최적 FDP 백엔드". ③ `enterprise-ssd-market-1q26-2026-08.md` — 1Q26 Top5 $18.46B(+86.1% QoQ), **삼성 1위 38.2%**($7.05B)·SK그룹 25.1%·Micron 16.7%, 계약가 +80%, Micron Crucial 철수 → 제안서 "키플레이어가 된다" 프레임을 "1위 수성+침식 방어"로 교정할 근거.
+
+index.md sources 섹션 3건 등록. 위키 페이지 반영은 제안서 확정 후 일괄(합의된 순서). 다음 단계: 비판 분석 → 아웃라인 → 본문.
+
+## [2026-08-09] build | SSD 스토리라인 제안서 2부 초안 — 멀티에이전트 집필 (outputs/storyline)
+
+요청: 액션러닝 제안서 작성 — 질문 10개 → 답변 반영 → 비판 분석 10건 전부 수용(구글 이중 트랙·1위 수성 서사·3차 다운턴 결과 이질성·NAND 지형 신설·CUDA 포지셔닝·FDP 무료 기본·플랫폼은 오케스트레이션과 통합 등) → 사용자 추가 결정(SCA-FDP-FDE 사슬 = 문·열쇠·사람) → 아웃라인 컨펌. 제목 확정: 개요편 「호황은 전략을 심는 계절이다」·SSD편 「SSD의 CUDA — 하드웨어를 지키는 소프트웨어」.
+
+**멀티에이전트 실행(워크플로우 5에이전트, 사용자 지시 — 집필/자료·팩트체크·시각화 분리)**: ① 데이터 팩(장별 정량 주장 71건 ↔ 출처 대조표, 공백 12·모순 9 식별, 내부 인터뷰 익명화) ② 6장 산정 모델(3층×3안 — 기본 5년 누적 $5.9B: 방어 3.9+전환 1.6+프리미엄 0.4, 브래킷 보수 $1.2B~공격 $17.9B, HS 물량 내 삼성 비중 무대응 28% vs 전략 32%) ③ 시각화(mermaid 도식 4종·표 2종) → ④ 집필(2부 연속 집필로 톤 통일, 불가침 규칙 8종) → ⑤ 팩트체크(pass·critical 0·minor 7) → 호출자 최종 교정 7건 반영(아마존 FCF 전망 표현·CUDA 문단 인용 정합·인용 생략부호·NTB 글로스 분리·"80%씩" 2건·구글 협업 사내 확인 플래그·열쇠 문단 분할).
+
+**산출**: outputs/storyline/{outline, common-overview, ssd-fdp-proposal}.md — index.md outputs 섹션 등록. 위키 역갱신(fdp-host-ssd-platform·ssd-ufs-market 등)·대시보드·커밋은 사용자 확정 후 진행. 사내 확인 대기 2건: Titanium SSD 드라이브 공급 구조, 구글·메타 FDP 협업 표현 수위.

@@ -175,6 +175,9 @@
 - [sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md](sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md) — 삼성 HBM4 NVIDIA 인증(06-05 Vera Rubin 3사 인증) 통과에도 볼륨 발주 미전환·매출 유상 평가용 샘플 수준(Winbuzzer 07-17)·SK Rubin 2/3+ 락인 / 확증 신호: 빅테크 2026 CapEx ~$725B(+77% YoY)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속·MATCH 위원회 단계·CXMT HBM 지연
 - [sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md](sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md) — 하이퍼스케일러 Q2 2026 실적 시즌(07-21~28 수집): Alphabet(07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향·Cloud 백로그 QoQ +$50B→$514B / SK하이닉스 Q2 영업이익 ~$43.7B·OPM ~76% 사상 최대 / MSFT·Meta 07-29·Amazon 07-30 발표 대기 / GPU 임대가 firming·DRAM Q3 +13~18% 유지·MATCH 위원회 단계·CXMT HBM 미확정
 - [sources/articles/chris-miller-interviews-2025-12-to-2026-07.md](sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) — 크리스 밀러(Chip War 저자) 인터뷰·기고 10건 종합(2025-12~2026-07): 상원 증언(AI 3대 투입 컴퓨팅·인재·전력)·WaPo H200 비판·"HBM·장비 > GPU" 초크포인트 위계·Ascend 5~8배 열위·"중국 4년째 AI 과소투자"·중앙일보 고언 시리즈(R&D/설비 동시 투자·체질 전환)·경향 인터뷰(HBM 너머 추론 최적화 메모리·800조 클러스터 환영·애플–CXMT 경계)·피지컬 AI 위협 (대시보드 "인터뷰" 메뉴 미러)
+- [sources/articles/google-captive-titanium-fdp-factcheck-2026-08.md](sources/articles/google-captive-titanium-fdp-factcheck-2026-08.md) — (NEW) 구글 Captive SSD·FDP 팩트체크: "구글 Captive 미채택" 부분 반증(Titanium SSD 자체 설계 확인) + Chris Sabol OCP 발표·FDP 멀티벤더 확산(Micron·Kioxia·Silicon Motion)·FDP 정량 효과(OP 28% 제거 등)
+- [sources/articles/kv-cache-ssd-offload-ecosystem-2026-08.md](sources/articles/kv-cache-ssd-offload-ecosystem-2026-08.md) — (NEW) KV Cache→SSD 오프로드 생태계: NVIDIA Dynamo·NIXL·ICMSP→CMX, LMCache×Dynamo 1.0 통합, Mooncake 분산 KVCache 풀, H100 동시 사용자 10배 — 오케스트레이션 계층은 NVIDIA·OSS 선점, SSD 벤더 자리는 "최적 FDP 백엔드"
+- [sources/articles/enterprise-ssd-market-1q26-2026-08.md](sources/articles/enterprise-ssd-market-1q26-2026-08.md) — (NEW) Enterprise SSD 1Q26 실적: Top5 $18.46B(+86.1% QoQ)·삼성 1위 38.2%($7.05B)·계약가 +80%·Micron Crucial 철수 + 중기 전망 교차(2030 ~$66B 등)
 - [sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md](sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md) — MAD Podcast×Sachin Katti(OpenAI 산업 컴퓨트 총괄, 2026-07, 트랜스크립트 전문 보존): 수요≫공급 즉시 소진·컴퓨트 3배=매출 3배·최대 리스크는 과소 건설·OpenAI ~$50B/업계 ~$700B·AI 재귀(AI가 칩 설계)·전자→토큰 공장·전면 액체냉각(냉각↔메모리 대역폭)·그리드 투자 원칙·가스터빈/변압기/인력 병목·원자력·Jalapeño(와트당 토큰·Broadcom·9개월 테이프아웃)·Stargate 우산 전략·오프테이커 구조·보장 토큰·오비탈 컴퓨트 (대시보드 "인터뷰" 메뉴 미러)
 
 ### sources/raw-notes — 리서치 노트
@@ -199,6 +202,9 @@
 
 - [outputs/report/scenario-planning-report.md](outputs/report/scenario-planning-report.md) — 시나리오 플래닝 전략 보고서 (위키 합성)
 - [outputs/report/dev-org-transformation-report.md](outputs/report/dev-org-transformation-report.md) — 개발실 체질 전환 전략 보고서 (LTA→SCA 논거·역할 재정의·액션 플랜)
+- [outputs/storyline/outline.md](outputs/storyline/outline.md) — (NEW) SSD 스토리라인 제안서 아웃라인 (2부 구성·비판 10건 반영 내역·제목 확정)
+- [outputs/storyline/common-overview.md](outputs/storyline/common-overview.md) — (NEW) 「호황은 전략을 심는 계절이다」 — 7인 공통 개요편(1~4장): 호황의 외생성·다운턴 3건 재감사(결과 이질성)·NAND 지형·3중 저지선
+- [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md) — (NEW) 「SSD의 CUDA — 하드웨어를 지키는 소프트웨어」 — SSD 제안편(5~7장): Captive 진단(구글 이중 트랙·KV Cache)·3안 선택·문(SCA)/열쇠(FDP)/사람(FDE)·수익화 3단 사다리·5년 효과 산정($1.2B~$17.9B)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
 - [outputs/presentation/dev-transformation-summary.pptx](outputs/presentation/dev-transformation-summary.pptx) — 개발실 체질 전환 요약 5장: 디테일 상·중·하 + 제품·기술 축(FDP 플랫폼) 2장, 도식 중심(타임라인·As-Is→To-Be·아이콘)·화이트+블루·그린. 개별본 `-high/-mid/-low/-fdp.pptx` + `dashboard/public/downloads/` 다운로드 미러 (`scripts/generate_dev_transformation_summary.cjs`로 재생성)
