@@ -71,3 +71,22 @@
 - [Huge CHIPS Grants Awarded to TSMC, Samsung, and Micron - AIP.ORG](https://www.aip.org/fyi/huge-chips-grants-awarded-to-tsmc-samsung-and-micron)
 - [Samsung Taylor Texas Fab - Equipment Move-In for Tesla AI5/AI6 (Apr 2026)](https://evxl.co/2026/04/16/samsungs-taylor-texas-tesla-ai5-ai6-chips/)
 - [Samsung's Silicon Setback: Subsidy Cuts and Taylor Fab Delays - Financial Content (Dec 2025)](https://markets.financialcontent.com/wral/article/tokenring-2025-12-22-samsungs-silicon-setback-subsidy-cuts-and-taylor-fab-delays-signal-a-crisis-in-us-semiconductor-ambitions)
+
+---
+
+## [Update 2026-08-11] R&D LOI 신규 체결 + "정책 절벽" — 2026년 말 착공 시한
+
+### R&D LOI 신규 체결
+
+- **2026-07-29 $8.74억 R&D LOI 7개사와 체결** ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §6).
+
+### 정책 절벽 (policy cliff)
+
+- **FY2026이 CHIPS Act 인센티브 자금의 마지막 회계연도**.
+- **35% 투자세액공제(ITC) 요건상 2026년 12월 31일 전 팹 착공이 필요** ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §6, 원출처 NIST·CRS R49031).
+
+### 함의 — 삼성 테일러 등 투자 타이밍 EWI
+
+이번 위키 상단 타임라인 기준 삼성 테일러 팹은 이미 2026년 3~4월 2nm 장비 반입·이전(Move-In)이 진행 중이라 착공 자체는 선행됐으나, **35% ITC 요건의 2026-12-31 착공 시한**은 테일러 R&D 팹·추가 라인 등 **후속 투자 결정의 타이밍에 새로운 압박**으로 작용 — 미국 내 팹 투자 확대 여부·시점을 가늠하는 **신규 EWI 후보**로 명시. 이 시한을 넘기는 신규 프로젝트는 인센티브 자금 창구 자체가 닫힐 리스크가 있어, 삼성·TSMC·Micron 등 CHIPS Act 수혜 기업 전반의 2026년 하반기 투자 발표 속도에 영향을 줄 수 있다.
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §6

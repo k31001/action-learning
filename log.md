@@ -14,6 +14,21 @@
 
 ---
 
+## [2026-08-11] ingest | 정기 시장 점검 — 병목 모델 3개 축 동반 악화 + 삼성/SK하이닉스 Q2 실적·HBM4 수율 80% + CXMT IPO·수출통제 확대 (v2.39.1 → v2.39.2)
+- **무엇**: 사용자 지시 — "@data 보고서 작성에 필요한 최신 데이터를 검색, semianalysis/counterpoint/techinsights 우선 참조, Bottleneck Model 최신 수치 반영 + 변동폭 표시, LLM wiki·link 업데이트, 필요시 전략 수정". 4개 병렬 리서치 에이전트(전력/파운드리·패키징/HBM·DRAM시장/일반 종합)로 2026-07-04 정기 점검 이후 데이터 수집.
+- **병목 모델 갱신 (2026-06-11 이후 첫 "3개 축 동반 악화" 판독)**: 전력 72→**76**(▲+4, 텍사스 주지사 전주 신규 DC 그리드 접속 일시중단[08-03]·ERCOT 큐 410→474GW·GE Vernova 터빈 백로그 100→116GW·PJM 용량경매 사상 최고가 $333.44/MW-day), 파운드리 50→**55**(▲+5, 3개 분기 연속 완화 추세 첫 반전 — TSMC 7월 매출 사상 최고[+44.7% YoY]·2Q CAPEX $60~64B 상향에도 N2/A16 리드타임 78~156주로 2027~28년 예약 완료), 패키징 67→**68**(▲+1, CoWoS 리드타임 52~78주·ABF 기판 재타이트가 삼성 HBM4 수율 80% 도약을 상쇄), CAPEX/ROI 40→**38**(▼-2, 빅4 Q2 실적 후 전원 상향[+82% YoY]이나 Meta FCF -91%·Amazon TTM FCF 마이너스 전환으로 완화폭 축소). 하방 위험 순서 변경: 전력≈CAPEX/ROI > 패키징 > 파운드리(파운드리 최초로 하방 서열 상단 이탈).
+- **기업 실적**: Samsung 2Q26 DS부문 영업이익 89.2~89.5조 원(YoY +1,814%)·HBM4 수율 ~80%("golden yield" 4개월 조기 달성, UBS는 2027년 삼성 HBM 1위[41% vs 39%] 가능성 제시)·MX부문 사상 첫 영업손실. SK하이닉스 2Q26 영업이익률 76%·HBM4 양산 출하 개시·나스닥 이중상장 완료(SKHY, ~$290억 조달). Counterpoint 2Q26 DRAM 매출 점유율 삼성 39%(1위 재탈환)·SK하이닉스 26%·Micron 25% — 2025 Q1 이후 처음 재역전.
+- **가격·수요**: TrendForce Q3 서버 DRAM +13~18%·NAND +10~15%(감속 지속)·SemiAnalysis "Memory Mania"(2026 DRAM 가격 2배+ 전망, HBM이 DRAM 웨이퍼 ~23% 소비). **소비자 축 최초의 명확한 수요파괴 신호** — Gartner/IDC: 메모리값 급등발 2026 PC 출하 -10.4%·스마트폰 -8.4% 전망, Dell·Lenovo·HP 등 15~20% 가격 인상/스펙 다운그레이드 확인.
+- **중국·정책**: CXMT 상하이 STAR Market IPO(~$41~43억 조달, 2030 DRAM 점유율 30% 목표) + 美 국방부 "중국 군사기업" 지정(Entity List 추가 부처간 승인 진행) — 자본시장 접근 확대와 디커플링 압력이 동시 강화. CHIPS Act **정책 절벽**: FY2026이 인센티브 자금 마지막 회계연도, 35% ITC 요건상 2026-12-31 전 팹 착공 필요.
+- **sources**: `sources/articles/august-2026-market-update-2026-08-11.md` 신규(4개 병렬 리서치 통합, 전력/파운드리·패키징/HBM·DRAM시장/일반 7개 섹션 + 원본 링크 30여 건).
+- **wiki**: `wiki/concepts/bottleneck-model-2030.md`(§종합 판독 2026-08-11 신설) + Update 섹션 추가 11개 — `entities/{samsung,sk-hynix,cxmt,tsmc}.md`, `concepts/{hbm-market,dram-market-share,price-trends,energy-constraints,demand-inflection-ewi,us-export-controls,chips-act}.md`. `wiki/storyline/storyline.md` 전력 지수 인용 2건(72→76) 갱신. `index.md` 신규 소스 등록.
+- **outputs**: `outputs/report/scenario-planning-report.md` §2.2.3 신설(병목 갱신·기업 실적·가격·중국정책 요약). `outputs/presentation/slide-outline.md` 데이터 갱신 노트 추가 — 구조 변경 없어 **PPTX 재생성 생략**(각주성 수치 갱신).
+- **dashboard (v2.39.2, 패치 = 데이터 갱신)**: `bottleneckModel.js` MODEL_ASOF·PREV_INDICES·4대 BOTTLENECKS currentIndex/indexNote 갱신. `indicators.js` 3종(`dram_market_leader` — 삼성 재탈환, `samsung_hbm4_yield` — 80% 외부보도치, `bigtech_capex_growth` — 이미 08-11 (i) 갱신에서 반영됨, 확인만). `updates.js` ingest 항목 신규. `version.js` v2.39.1→v2.39.2. `npm run build` 검증.
+- **전략 검토 결과**: 신규 전략 미신설. 병목 3개 축 악화는 기존 Robust 전략(RS-1 옵션형 캐파·RS-6 공정 리더십)의 긴급성을 높이는 방향으로만 해석 — `bottleneck-model-2030.md` §6에 함의 note 추가. 삼성 HBM4 수율 도약은 Main Bet(시나리오 B) 실행 리스크 완화 신호로 다음 시나리오 정기 재평가 사이클에서 유효캐파 가정(§4 삼성 0.94EB) 재검토 대상으로 플래그(이번 사이클은 개별 기업 신호로만 반영, DF1·DF2·확률 변경 없음).
+- **건너뜀**: 시나리오 확률·DF1·DF2 재평가(직전 2026-08-11 (i) assessment에서 이미 수행, 본 ingest의 신규 사실들은 병목/기업 실행 리스크 축이라 거시 축 재평가 트리거 아님) — 이유 명시. PPTX 본체 재생성(각주성 갱신, 구조 무변경). 지식그래프 재생성은 빌드 검증 단계에서 수행.
+
+---
+
 ## [2026-08-08] ingest | 메모리 3사 CAPEX 히스토리 — 역사이클 투자 정량 근거 + 대시보드 CAPEX 탭 (v2.38.2 → v2.39.0)
 - **무엇**: 사용자 요청 — "다운턴에서 투자를 늘리는 삼성 전략의 근거를 숫자·그래프로". 웹 리서치로 2016~2026E 시계열 수집: 3사 CAPEX(삼성 DS·SK하이닉스·Micron), 삼성 DS 매출·영업이익·메모리 매출, DRAM/NAND 부문별 CAPEX(2019·2025·2026E만 공개 추정 존재 — TrendForce).
 - **파일**: `sources/raw-notes/memory-capex-history-research-2026-08-08.md` 신규(각사 IR·TrendForce·연평균 환율표·전체 URL·추정 방법론). `wiki/concepts/memory-capex-history.md` 신규 — 2019(-69% 이익에도 capex -5%)·2023(-14.9조 적자에도 사상 최대 48.4조) 실증 + 2023 대응 비교(삼성 +1% vs SK -56% vs Micron -42%) + 한계(2026E 3사 DRAM capex 격차 수렴, 총량보다 배분이 승부처). index.md 2건 등록.

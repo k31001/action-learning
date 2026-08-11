@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-11 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-11',
+    type: 'ingest',
+    version: 'v2.39.2',
+    title: '정기 시장 점검 — 병목 모델 3개 축 동반 악화(전력76·CAPEX38·파운드리55·패키징68) + 삼성/SK하이닉스 Q2 실적·HBM4 수율 80%·DRAM 1위 재탈환 + CXMT IPO·수출통제 확대',
+    summary:
+      'semianalysis.com·counterpointresearch.com·techinsights.com 우선 참조 + PJM·ERCOT·FERC·TSMC/ASML IR·TrendForce·Gartner 등 4개 병렬 리서치로 2026-07-04 이후 시장 데이터 갱신. [병목 모델] 2026-06-11 이후 첫 "3개 축 동반 악화" 판독 — 전력 72→76(▲+4, 텍사스 주지사 전주 신규 DC 그리드 접속 일시중단[08-03]·ERCOT 큐 410→474GW·GE Vernova 터빈 백로그 116GW·PJM 용량경매 사상 최고가), 파운드리 50→55(▲+5, 3분기 연속 완화 추세 첫 반전 — TSMC 기록적 매출에도 N2/A16 리드타임 78~156주로 2027~28년 예약 완료), 패키징 67→68(▲+1, CoWoS·ABF 재타이트가 삼성 HBM4 수율 도약을 상쇄), CAPEX/ROI 40→38(▼-2, 완화 지속이나 Meta FCF -91%·Amazon TTM FCF 마이너스로 폭 축소). 하방 위험 순서 변경: 전력≈CAPEX/ROI > 패키징 > 파운드리. [기업] 삼성 HBM4 수율 ~80%("golden yield") 4개월 조기 달성(UBS: 2027 HBM 1위 가능성)·2Q26 DS 영업이익 89.2~89.5조(YoY+1,814%)·CAPEX $734억 중 $300억 HBM 배정·MX 첫 영업손실. SK하이닉스 2Q26 영업이익률 76%·HBM4 양산 출하 개시·나스닥 이중상장 완료(SKHY, ~$290억 조달). Counterpoint 2Q26 DRAM 매출 점유율: 삼성 39%(1위 재탈환)·SK 26%·Micron 25%. [가격] TrendForce Q3 DRAM+13~18%·NAND+10~15%(감속 지속)+SemiAnalysis "Memory Mania"(2026 DRAM 가격 2배+ 전망) + Gartner/IDC 소비자 축 최초 수요파괴 신호(PC -10.4%·스마트폰 -8.4%). [중국·정책] CXMT 상하이 IPO(~$41~43억)+美 국방부 "중국 군사기업" 지정(Entity List 검토 중)·CHIPS Act FY2026 자금 마지막 해(35% ITC 시한 2026-12-31). 신규 소스 1건, wiki 9개 페이지 갱신(병목모델·samsung·sk-hynix·cxmt·tsmc·hbm-market·dram-market-share·price-trends·energy-constraints·demand-inflection-ewi·us-export-controls·chips-act — 총 12개). outputs/report §2.2.3 신설, slide-outline 데이터 노트 갱신(구조 변경 없어 PPTX 재생성 생략). dashboard indicators.js 3종(dram_market_leader·samsung_hbm4_yield·bigtech_capex_growth) + bottleneckModel.js 4종 지수 갱신. 패치 v2.39.2.',
+    tags: ['병목모델', '전력', '파운드리', '패키징', 'CAPEX', 'Samsung', 'SK하이닉스', 'HBM4', '수율', 'DRAM점유율', 'CXMT', '수출통제', 'CHIPS Act', 'SemiAnalysis', 'Counterpoint', '가격'],
+    items: [
+      { label: '병목 지수 3개 축 동반 악화', detail: '전력 72→76(텍사스 DC 접속 일시중단 신규 벡터)·파운드리 50→55(완화 추세 첫 반전)·패키징 67→68(정체). CAPEX만 40→38 완화 지속(FCF 다이버전스로 폭 축소). 하방 위험 순서 변경: 전력≈CAPEX/ROI > 패키징 > 파운드리' },
+      { label: '삼성 HBM4 수율 80%·DRAM 매출 1위 재탈환', detail: 'HBM4 수율 4개월 조기 달성(<60%→80%), UBS 2027 HBM 1위 가능성 제시. Counterpoint 2Q26 DRAM 매출 점유율 삼성 39%(1위)·SK 26%·Micron 25% — 2025 Q1 이후 최초 재역전' },
+      { label: 'Samsung·SK하이닉스 2Q26 사상 최대 실적', detail: '삼성 DS 영업이익 89.2~89.5조(YoY+1,814%)·MX 첫 영업손실. SK하이닉스 영업이익률 76%·나스닥 이중상장 완료(SKHY)' },
+      { label: 'CXMT IPO + 美 수출통제 확대', detail: '상하이 STAR Market IPO ~$41~43억 조달, 2030 DRAM 점유율 30% 목표. 美 국방부 "중국 군사기업" 지정, Entity List 검토 진행 — 자본시장 접근과 디커플링 압력이 동시 강화' },
+      { label: '소비자 축 최초 수요파괴 신호', detail: 'Gartner/IDC: 메모리값 급등발 2026 PC -10.4%·스마트폰 -8.4% 전망 — demand-inflection-ewi.md 신규 후보 추가, 서버/HBM 축은 견조 유지' },
+      { label: 'wiki·outputs·dashboard 동기화', detail: '신규 소스 august-2026-market-update-2026-08-11.md. wiki 12개 페이지(병목모델·samsung·sk-hynix·cxmt·tsmc·hbm-market·dram-market-share·price-trends·energy-constraints·demand-inflection-ewi·us-export-controls·chips-act) Update 섹션 추가. outputs/report §2.2.3 신설(PPTX는 각주성 갱신이라 재생성 생략). dashboard indicators.js·bottleneckModel.js·version.js 갱신' },
+    ],
+    links: [
+      { label: 'august-2026-market-update-2026-08-11.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/august-2026-market-update-2026-08-11.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-08-11 ────────────────────────────────────────────────────────────────
   {
     date: '2026-08-11',

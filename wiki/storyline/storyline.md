@@ -33,7 +33,7 @@ flowchart LR
     Y2023["2023<br/>AI 붐 개화<br/>HBM 점유 40%"] --> Y2025["2025 Q1<br/>SK하이닉스 DRAM 역전<br/>HBM 17% 추락"]
     Y2025 --> Y2026["2026<br/>슈퍼사이클 정점<br/>$50.4B · Rubin 배정"]
     Y2026 --> Y2027["2027~28<br/>공급 도래 창<br/>AI 수익화 분기점"]
-    Y2027 --> Y2030["2030<br/>4대 병목<br/>전력 72 최대"]
+    Y2027 --> Y2030["2030<br/>4대 병목<br/>전력 76 최대"]
     Y2030 --> Y2035["2035<br/>시나리오 지평<br/>$1,800억~$5,200억"]
 ```
 
@@ -43,9 +43,9 @@ flowchart LR
 
 이야기는 2023년에 시작된다. 생성형 AI가 데이터센터의 설계도를 다시 그리면서, 30년간 PC와 스마트폰의 사이클을 따라 움직이던 메모리 산업에 완전히 새로운 수요 엔진이 장착됐다. 빅테크 4사의 AI 설비투자는 2024년 $200B에서 2026년 $725B로 2년 만에 3배 이상 불어났고, 2026년 성장률만 +77%에 달한다 ([samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md)). 전 세계 17개국에서 55.9GW 규모의 AI 데이터센터가 착공 파이프라인에 올라 있으며 ([ai-datacenter-buildout-2026-06.md](../../sources/raw-notes/ai-datacenter-buildout-2026-06.md)), 마이크로소프트는 2026년 CapEx $190B 중 $25B가 메모리·반도체 가격 상승분이라고 직접 인정했다 ([2026-q1-current-state.md](../concepts/2026-q1-current-state.md)).
 
-이 수요가 과장이 아니라는 것은 사슬의 최상류가 직접 증언한다. OpenAI의 컴퓨트 총괄 Sachin Katti는 올해 업계 컴퓨트 지출 ~$700B(OpenAI 단독 ~$50B)를 확인하며 **"수요가 공급을 압도해, 온라인으로 가져오는 모든 컴퓨트를 즉시 소비한다"**고 말한다 ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)). 그가 정의하는 데이터센터는 "전자를 토큰으로 바꾸는 거대한 공장"이고 — 칩이 뜨거울수록 메모리 대역폭이 늘어나는, 냉각이 곧 인텔리전스 생산량인 공장 — 그 공장의 병목은 칩만이 아니라 가스터빈·변압기·숙련 인력까지 "어디에나" 있다. 10년간 증설이 없던 전력 기자재 산업이 수요 충격을 맞아 캐파 추가에 수년이 걸린다는 그의 증언은, 아래 전력 72 병목 지수를 최대 수요자의 눈으로 확인해 준다.
+이 수요가 과장이 아니라는 것은 사슬의 최상류가 직접 증언한다. OpenAI의 컴퓨트 총괄 Sachin Katti는 올해 업계 컴퓨트 지출 ~$700B(OpenAI 단독 ~$50B)를 확인하며 **"수요가 공급을 압도해, 온라인으로 가져오는 모든 컴퓨트를 즉시 소비한다"**고 말한다 ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)). 그가 정의하는 데이터센터는 "전자를 토큰으로 바꾸는 거대한 공장"이고 — 칩이 뜨거울수록 메모리 대역폭이 늘어나는, 냉각이 곧 인텔리전스 생산량인 공장 — 그 공장의 병목은 칩만이 아니라 가스터빈·변압기·숙련 인력까지 "어디에나" 있다. 10년간 증설이 없던 전력 기자재 산업이 수요 충격을 맞아 캐파 추가에 수년이 걸린다는 그의 증언은, 아래 전력 76 병목 지수(2026-08-11 기준, 텍사스 주지사의 전주 신규 데이터센터 그리드 접속 일시중단까지 겹치며 72에서 추가 상승 — [bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md))를 최대 수요자의 눈으로 확인해 준다.
 
-이 수요 폭발은 메모리 시장 전체를 들어올렸다. 2026년 글로벌 메모리 시장은 $551.6B(+134% YoY)로 전망되고, HBM은 전 물량이 Sold Out이다 ([memory-market-overview.md](../concepts/memory-market-overview.md)). 그러나 환경 변화는 수요만이 아니다. [STEEP 50요인 분석](../steep/economy.md)이 보여주듯, 반도체는 국가 안보 자산이 됐고([political.md](../steep/political.md)), 데이터센터 전력망은 새로운 병목으로 떠올랐으며([environment.md](../steep/environment.md)) — 2026년 7월 기준 4대 병목 제약지수에서 전력이 72로 최대 병목이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)) — AI 투자의 ROI 논쟁은 사회적 회의론으로 번지고 있다([social.md](../steep/social.md)). 게임의 규칙이 바뀌었다는 것은, 기회와 위험의 규칙이 동시에 바뀌었다는 뜻이다.
+이 수요 폭발은 메모리 시장 전체를 들어올렸다. 2026년 글로벌 메모리 시장은 $551.6B(+134% YoY)로 전망되고, HBM은 전 물량이 Sold Out이다 ([memory-market-overview.md](../concepts/memory-market-overview.md)). 그러나 환경 변화는 수요만이 아니다. [STEEP 50요인 분석](../steep/economy.md)이 보여주듯, 반도체는 국가 안보 자산이 됐고([political.md](../steep/political.md)), 데이터센터 전력망은 새로운 병목으로 떠올랐으며([environment.md](../steep/environment.md)) — 2026년 8월 기준 4대 병목 제약지수에서 전력이 76으로 최대 병목이다(텍사스 주지사의 전주 신규 DC 그리드 접속 일시중단이 겹치며 7월 72에서 추가 상승) ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md)) — AI 투자의 ROI 논쟁은 사회적 회의론으로 번지고 있다([social.md](../steep/social.md)). 게임의 규칙이 바뀌었다는 것은, 기회와 위험의 규칙이 동시에 바뀌었다는 뜻이다.
 
 ## 2장. 호황 속의 구조적 패배
 

@@ -119,3 +119,31 @@ TSMC는 노드 전환을 **"Nx → Nx+ → Nx++"** 점진 개선으로 잘게 �
 - **CoWoS 세부 배정**: NVIDIA가 CoWoS 배정량의 ~60%(~59.5만 장)를 점유. TSMC는 2026년 24만~27만 장을 OSAT(Amkor·SPIL)에 외주. 첨단 패키징이 2026년 TSMC 총 CAPEX($520~560억)의 최대 20%를 배정받음. CEO 웨이저자(C.C. Wei)는 "CoWoS 캐파는 매우 타이트하며 2025~2026년까지 계속 sold out" 상태라고 재확인 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **CoPoS**: 2026-06-17 TrendForce 확인 — AP7 Chiayi 파일럿(310×310mm 글래스코어 패널) 트라이얼 수율 ~90%. 다만 **전면 양산 램프는 2028년 하반기~2029년**으로 재확인(DigiTimes: 2029년 목표) — 이전 위키 서술과 일치하되 양산 지연은 재확인·강조 필요 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **ASML High-NA EUV 도입 연기**: TSMC가 High-NA EUV 도입을 최소 2029년까지 연기 결정 — 비용 대비 현행 장비로 충분하다는 판단, 이전 전망(2027~28)보다 후퇴 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+## [Update 2026-08-11] 파운드리·패키징 완화 추세 반전 — 기록적 실적이 곧 여유 캐파를 뜻하지 않는다
+
+### 매출·실적
+
+- **TSMC 7월 매출 NT$467.58B, YoY +44.7%·MoM +5.6%, 사상 최고**.
+- **2분기 실적**: 매출 **$40.2B(+36% YoY)**·매출총이익률 **67.7%**·**2026 CAPEX $60~64B로 상향**·연간 성장 가이던스 **40%+로 상향**·3분기 가이드 **$44.6~45.8B** ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §2).
+
+### 선단 노드 — 초장기 리드타임
+
+- **N2/A16 리드타임 78~156주로 보도**, 두 노드 모두 **2027~2028년까지 예약 완료**.
+- **N3 신규 프로젝트 수주가 N2 고객 유도를 위해 일부 중단됐다**는 보도(Tom's Hardware) — 캐파를 의도적으로 최선단에 몰아주는 배분 신호 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §2).
+
+### ASML — EUV 캐파 증설 vs 병목 지속
+
+- ASML 2분기: 순매출 **€9.3B**·매출총이익률 **54%**, **"2027년 필요 주문을 거의 다 확보"**.
+- **2027년 EUV 캐파 2026 대비 ~30% 증설** + **2028년 추가 ~30% 검토** 중, **High-NA EUV가 Intel에서 실사용 진입** — 단 위키 [Update 2026-07-04]의 "TSMC는 High-NA 도입을 2029년까지 연기" 서술과는 배치되지 않음(TSMC 자체 도입 지연과 ASML의 전체 출하·타사 실사용은 별개) ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §2).
+
+### CoWoS — 완전 가동 재확인
+
+- CoWoS **"완전 가동" 확인, 리드타임 52~78주**.
+- **연말 목표 캐파 12.5만~13만 장/월**(2025년 말 ~7.5만 장/월 대비 확대) — 캐파는 늘고 있으나 여전히 fully booked ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §3).
+
+### 함의
+
+지난 [Update 2026-06-10]·[Update 2026-07-04]에서 확인된 파운드리·패키징 완화 추세(리드타임 단축·CoWoS 증설 등)가 **이번 창에서 반전**됐다 — 파운드리·패키징 두 축 모두 기록적 실적·CAPEX 상향·초장기 리드타임이 동시에 나타남. **기록적 매출·이익이 곧 여유 캐파를 의미하지 않는다는 역설**: 수요가 공급 증설 속도를 계속 앞지르고 있다는 신호로, [bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md)의 "선단 로직이 상방 시나리오의 최종 병목" 판정과 정합.
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §2, §3

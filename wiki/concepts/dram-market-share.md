@@ -241,3 +241,14 @@ Counterpoint Research (2026-01-29, Jeongku Choi):
 
 - Counterpoint Research의 Q1 2026 확정 DRAM/HBM 시장점유율 데이터: SK하이닉스 HBM ~58%·삼성전자 ~32% — Counterpoint 발행물은 이를 "SK하이닉스가 지속되는 HBM 수요 속 역대 최초로 HBM 1위 유지"로 평가한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 4월 잠정치 대비 확정치 차이의 상세 병기는 [hbm-market.md](hbm-market.md) [Update 2026-07-04] 참조.
 - 2026-06-25 삼성전자·SK하이닉스·Micron을 상대로 한 반독점 집단소송이 제기됐다(N.D. Cal.) — HBM 전환을 명목으로 범용 DRAM 공급을 인위적으로 제한하고 가격을 담합했다는 주장이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세는 신규 페이지 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조(다른 에이전트가 작성 중).
+
+---
+
+## [Update 2026-08-11] Counterpoint 2Q26 — 삼성 DRAM 매출 1위 재역전
+
+- **Counterpoint 2Q26 DRAM 매출 점유율: 삼성전자 39%(1위 탈환)·SK하이닉스 26%·Micron 25%** (Counterpoint, 2026-08-04, [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+- **삼성 재역전(중요 반전)**: 위 "역사적 순위 교체"(2025년 1분기 SK하이닉스가 33년 만에 처음으로 DRAM 시장 점유율에서 삼성전자를 추월, SK하이닉스 36.3% vs 삼성전자 32.7%) 이후, 2026년 2분기 기준 **삼성전자가 DRAM 매출 점유율 1위를 재탈환**했다. 위 [Update 2026-05-25] "Q4 2025 메모리 매출 1위 — Samsung 탈환"(HBM+DRAM+NAND 합산 메모리 매출 기준)에 이어, DRAM 단독 기준으로도 삼성의 매출 우위가 2026년 2분기까지 이어지고 있음이 확인된다.
+- SK하이닉스는 **YoY 매출 +214%**의 고성장을 기록했음에도 **점유율은 1년 전(39%)보다 하락**했다. HBM 평균판가는 legacy HBM3E 가격 인하와 HBM4 출시 지연으로 **YoY 하락**했다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+- **해석**: 매출 순위와 수익성(마진)은 여전히 분리된 지표다. 위 [Update 2026-05-25] "Q4 2025 영업이익률 — SK hynix 압도"(OPM 58%)에서 확인된 마진 우위가 2Q26에도 유지되는지는 각사 실적발표 원자료로 별도 확인 필요. 삼성의 DRAM 매출 1위 재탈환은 HBM4 수율 개선([hbm-market.md](hbm-market.md) [Update 2026-08-11] 참조)과 시기가 맞물린다는 점에서 정합적이다.
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4

@@ -252,3 +252,24 @@ FT 보도의 CXMT 점유율 수치("2025년 ~11% → 2028년 15%")는 **웨이�
 - 다만 밀러는 같은 시기 중국의 구조적 제약도 병행 지적("중국은 4년째 AI 과소투자", Huawei/SMIC 규모 한계 — [china-competitors.md [Update 2026-08-03]](china-competitors.md#update-2026-08-03-크리스-밀러의-중국-이중-평가) 참조) — CXMT 위협은 첨단(HBM)이 아닌 **범용·완제품 채택 경로**로 실현된다는 위키 기존 프레임과 정합.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
+
+---
+
+## [Update 2026-08-11] 상하이 STAR Market IPO + 美 국방부 "중국 군사기업" 지정
+
+### 상하이 IPO — 자본시장 접근 확대
+
+- **CXMT 상하이 STAR Market IPO(2026-07-16)**: **RMB 295억(~$41~43억) 조달**, **2026년 중국 A주 최대 IPO**.
+- **2030년까지 글로벌 DRAM 점유율 30% 목표**, **6번째 메가팹** 추진, **상하이 팹은 2H26 완공 시 합산 캐파 ~35만 장/월** 목표로 제시 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §6).
+- 기존 위키의 "2026E 300,000 WSPM" 캐파 목표(빅펀드 III 기반)와 방향은 일치하되, 이번 IPO 자금은 국가 빅펀드에 더해 **민간·기관 자본시장 접근을 새로 확보**했다는 점에서 자금원이 다변화됨.
+
+### 美 국방부 "중국 군사기업" 지정 — 대응 강화
+
+- **美 국방부, CXMT를 "중국 군사기업(Chinese Military Company)"으로 지정** — Entity List 추가에 대한 **부처간 승인 진행 중(시행 대기)**.
+- ASML 장비 접근은 이미 제한된 상태(18nm급 DRAM 상한) — 이번 지정은 기존 1260H 리스트([us-export-controls.md](../concepts/us-export-controls.md#update-2026-07-11-1260h-리스트--애플-cxmt-로비-2026-07)) 등재에 더해 **Entity List 정식 추가라는 한 단계 더 강한 제재 경로**가 가시화된 것 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §6).
+
+### 함의 — DF2(미중관계) 상충 신호
+
+**자본시장 접근 확대(추격 역량 강화)**와 **美 대응 강화(디커플링 압력)**가 **동시에** 진행되는 구도 — [Update 2026-07-11]에서 이미 제기한 "동시 강화" 패턴이 이번 IPO·Entity List 검토로 재확인됨. DF2([key-drivers.md](../driving-forces/key-drivers.md)) 축에서 Pole A(디커플링)·Pole B(관리된 공존) 어느 쪽으로도 확정되지 않는 **상충 신호**로 플래그 — Entity List 시행 여부가 다음 리트머스.
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §6

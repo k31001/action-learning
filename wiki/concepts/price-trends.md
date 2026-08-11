@@ -230,3 +230,37 @@ Micron FY26 Q3(2026-05-28 종료, 2026-06-24 발표) 실적이 가격 주도 성
 - TrendForce(2026-07-03, 최신)는 Q3 2026 범용 DRAM 계약가를 QoQ **+13~18%**로 전망한다 — Q2 2026 실적(+58~63%) 대비 대폭 감속이며, PC·스마트폰의 구매력 한계와 고기저 효과가 주 요인이다. 서버향 수요는 에이전틱 AI로 견조함을 유지한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - 이 감속 신호는 [demand-inflection-ewi.md](demand-inflection-ewi.md)의 조기경보(EWI) 후보로 교차 링크할 필요가 있다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - Jefferies는 이와 배치되게 Q3 2026 +40~50%·Q4 2026 +30~40% QoQ를 여전히 전망한다 — TrendForce의 "범용 DRAM 계약가" 특정치와 달리 스팟·HBM을 포함한 전반적 메모리 가격 기준일 가능성이 있어 범위 차이로 병기한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## [Update 2026-08-11] 가격 감속 재확인 + 채널가 괴리 + 3사 가격전략 분화 + 소비자 수요파괴 신호
+
+### TrendForce 3분기 전망 재확인 — 서버 DRAM·NAND 동반 감속
+
+- TrendForce 3분기 2026 전망(재확인): **서버 DRAM 계약가 +13~18% QoQ·NAND +10~15% QoQ** — 2분기(+58~63%) 대비 뚜렷한 감속이며, 소비자 지불한계와 고기저 효과가 원인이다. 위 [업데이트 2026-07-04] TrendForce Q3 전망(+13~18%)과 동일 수치로, 이번 갱신은 NAND +10~15% QoQ를 추가 확인한다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+
+### 대만 채널가는 TrendForce 전망보다 훨씬 높음 — 실측 vs 전망 괴리
+
+- 대만 모듈업체 **ADATA의 실측 채널가**는 위 TrendForce 계약가 전망보다 훨씬 높다: **DRAM +20~30%·NAND +35~40% QoQ** (2026-07-08). 계약가(대형 CSP·OEM 대상)와 채널·스팟가(중소 바이어 대상) 사이의 괴리가 확대되고 있음을 시사한다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+
+### 3사 가격전략 분화
+
+- **삼성**은 3분기 DRAM ASP 추가 최대 20% 인상을 시도 중이며(LPDDR은 20%+ 가능), 협상이 진행 중이다.
+- **SK하이닉스**는 장기계약의 가격 상한(cap)을 폐지했다.
+- **Micron**은 가격 밴드(상하한)를 유지하는 방식을 고수한다.
+- 세 회사가 슈퍼사이클 후반부에서 서로 다른 가격 리스크 관리 전략을 택하고 있다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+
+### SemiAnalysis "Memory Mania" — 2026년 DRAM 가격 2배 이상 전망
+
+- SemiAnalysis는 **2026년 DRAM 가격이 2배 이상 상승**할 것으로 전망한다 — 위 "서버 메모리 가격 2026년 말까지 2025년 초 대비 2배" 전망(Network World)과 정합한다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+
+### 소비자 축 수요파괴 — Gartner/IDC
+
+- **Gartner/IDC: 메모리값 급등이 2026년 PC 출하 -10.4%·스마트폰 출하 -8.4%를 유발**할 것으로 전망한다. **DRAM+SSD 합산가는 연말까지 ~130% 급등**, **PC 가격 +17%·스마트폰 가격 +13% YoY**가 예상된다.
+- Dell·Lenovo·HP·Asus·Acer가 **15~20% 가격 인상 또는 스펙 다운그레이드**를 확인했다 — 10년 지속된 "스펙 민주화" 추세의 역전이다 (Gartner, 2026-02-26; TechRadar 등 후속, [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+
+### 함의 — 축 분리: 서버/AI vs 소비자
+
+서버/AI 축(HBM·서버 DRAM)은 가격 상승·타이트가 지속되지만, **소비자 축(PC·스마트폰)에서는 이번이 최초의 명확한 수요파괴(demand destruction) 신호**다 — 위 [업데이트 2026-07-04]에서 이미 "감속" 신호로 플래그한 흐름이 이번 갱신에서 구체적 출하량 하락 전망치(PC -10.4%·스마트폰 -8.4%)로 확인됐다. [demand-inflection-ewi.md](demand-inflection-ewi.md)의 조기경보(EWI) 지표로 교차 참조할 것을 권고한다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5

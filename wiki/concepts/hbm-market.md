@@ -323,3 +323,28 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 ### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
 
 - SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## [Update 2026-08-11] 삼성 HBM4 수율 80% 도달 — UBS 2027 역전 전망 vs Rubin Ultra HBM 구성 하향 검토
+
+### 삼성 HBM4 수율 급진전
+
+- **삼성 HBM4 수율 ~80%("golden yield") 도달** — 2026년 2월 양산 개시 시 <60%였던 수율이 4개월 만에 조기 목표 달성. **HBM4E 수율도 70%+ 돌파**했다 (TrendForce·BigGo Finance, 2026-08-08~10, [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §3).
+- **UBS: 2027년 삼성이 SK하이닉스를 제치고 HBM 시장 1위(41% vs 39%)를 차지할 가능성 제시**했다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §3).
+
+> **주(전망치 vs 확정치 구분)**: 위 UBS 2027년 41% vs 39% 전망은 위 [Update 2026-07-04] 섹션의 Counterpoint **Q1 2026 확정치**(SK하이닉스 ~58%·삼성 ~32%)를 대체하는 것이 아니다. 이는 최근 수율 개선을 근거로 한 **2027년 전방(forward-looking) 애널리스트 추정**이며, 실제 분기별 점유율이 아니다. 확정 분기 실적이 나오는 대로 위 점유율 테이블에 별도 행으로 반영할 것.
+
+### 반대 신호 — Rubin Ultra HBM 구성 하향 검토
+
+- **NVIDIA·AMD가 Rubin Ultra의 HBM 구성을 12-Hi/288GB에서 8-Hi/192GB로 하향 검토 중** — HBM4/HBM4E 공급 타이트·검증 불확실성이 원인이다 (TechTimes·BigGo Finance, 2026-08-05, [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §3). 수요측이 공급 제약에 맞춰 스펙을 낮추기 시작했다는 신호로, 병목이 여전히 taut함을 시사한다.
+
+### SK하이닉스 HBM4 양산 출하 개시
+
+- SK하이닉스가 **2Q26 HBM4 양산 출하를 개시**했으며 **2H26 램프업 계획**을 확인했다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+
+### SemiAnalysis "Memory Mania" — HBM 수요·웨이퍼 소비 재확인
+
+- **HBM 수요 YoY +70%**, **HBM이 DRAM 웨이퍼의 ~23% 소비** — 위 [Update 2026-06-06] Bain 수치(AI capex 내 메모리 비중 8%→30%)·[Update 2026-05-19] 웨이퍼 효율 수치(3~4배)와 정합한다. **2026년 내내 HBM 공급 부족이 지속되며, 의미있는 신규 캐파는 2026년 말~2027-28년 전에는 없다**고 확인했다 (semianalysis.com, 2026 여름, [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §3, §4, §5

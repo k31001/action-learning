@@ -35,9 +35,11 @@ sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, Tre
 | 1c nm 수율 | 50~70% | 2027년 80%+ 목표 (RS6) |
 | 영업이익률 (Q1 2026) | 비공개 ⚠️ | SD-1 정보 공백 (SK 72% / Micron 41% GP) |
 | Texas CHIPS 보조금 | $4.745B | 연방 + Texas $250M 추가, 3순위 (Intel $8.5B / TSMC $6.6B / Micron $6.16B) |
-| DRAM 매출 1위 | 빼앗김 (2025 Q1) | 33년 만에 SK에 추월 ([dram-market-share.md](../concepts/dram-market-share.md)) |
+| DRAM 매출 1위 | 빼앗김 (2025 Q1) → **재탈환 (2026 Q2, 39%)** ⚠️ 아래 [Update 2026-08-11] 참조 | 33년 만에 SK에 추월당했다가 5분기만에 재역전 ([dram-market-share.md](../concepts/dram-market-share.md)) |
 | NAND DC 비중 | 비공개 ⚠️ | Micron 56% ✅ 대비 (SD-2 정보 공백) |
 | SLC AI SSD 로드맵 | 미공개 ⚠️ | SK·Kioxia·Micron이 NVIDIA Storage-Next 전략 파트너 선점 |
+| HBM4 수율 (2026-08, "golden yield") | ~80% | 2월 양산개시 시 <60%에서 4개월만에 조기 달성, HBM4E도 70%+ ([Update 2026-08-11](#update-2026-08-11-2q26-실적-서프라이즈--hbm4-수율-golden-yield-80--dram-매출-1위-재탈환) 참조) |
+| DS부문 영업이익 (2026 Q2) | 89.2~89.5조 원 | YoY +1,814% ([Update 2026-08-11](#update-2026-08-11-2q26-실적-서프라이즈--hbm4-수율-golden-yield-80--dram-매출-1위-재탈환) 참조) |
 
 ## 강점 vs 약점 (Competitive Landscape)
 
@@ -298,3 +300,28 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - **한국 800조 원 클러스터 투자 환영** — "비중국 세계의 경제·전략적 이해에 부합." 기존 위키 수집(2026-06-29 발표, 삼성·SK 각 신규 팹 2개)에 대한 외부 지정학 전문가의 긍정 평가.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §7, §9
+
+---
+
+## [Update 2026-08-11] 2Q26 실적 서프라이즈 + HBM4 수율 "golden yield" 80% + DRAM 매출 1위 재탈환
+
+### 2Q26 실적 — DS부문 영업이익 YoY +1,814%
+- Samsung 2Q26 연결매출 **171.5조 원**(사상 최고, QoQ +28%), **DS부문 영업이익 89.2~89.5조 원**(YoY +1,814%) ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+- HBM4 매출이 3분기 QoQ 3배 성장 전망, 2H26 HBM 매출 중 HBM4 비중 60%+ 목표. HBM4E 샘플 업계 최초 고객 전달 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+
+### CAPEX·캐파 배정 — HBM 우선순위 심화
+- 2026 CAPEX **~$734억**, 이 중 ~$300억을 천안·평택 HBM 라인에 배정. 메가팹 공정 6개월 단축, 평택 파운드리 캐파 50%+를 인하우스 HBM4 베이스다이에 배정 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+- 4nm 파운드리 라인이 2027년까지 완전 예약되며 **삼성이 5nm 기반 HBM4 베이스다이를 고객에 제안**하기 시작 — 캐파 압박이 구체적 운영 신호로 표면화 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+- 갤럭시(MX) 사업부는 메모리 원가 상승 압박으로 **사상 첫 영업손실(-0.7조 원)** — 메모리 호황이 삼성 내부에서도 상류(DS)-하류(MX) 긴장을 만듦 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+
+### HBM4 수율 "golden yield" 80% 도달 — 조기 목표 달성
+- **HBM4 수율 ~80%("golden yield") 도달** — 2월 양산 개시 시 <60%에서 4개월 조기 목표 달성, HBM4E 수율도 70%+ 돌파. UBS는 2027년 삼성이 SK하이닉스를 제치고 HBM 1위(41% vs 39%) 가능성 제시 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §3).
+- [Update 2026-07-21](#업데이트-2026-07-21--hbm4-인증-통과에도-nvidia-볼륨-발주-대기)에서 지적한 "인증 통과 vs 볼륨 발주 간극" 리스크를 부분 상쇄하는 공급능력측 호재. 단, 출처 §3 판정에 따르면 이는 "공급능력" 확대가 아니라 "수율" 개선 — 공급사 간 재분배 성격이 강함을 유의.
+
+### DRAM 매출 점유율 — 5분기만에 재탈환
+- **Counterpoint 2Q26 DRAM 매출 점유율: 삼성 39%(1위 탈환)·SK하이닉스 26%·Micron 25%** ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4). 위 "주요 수치" 표의 "DRAM 매출 1위 빼앗김(2025 Q1)" 행은 2026 Q2 기준 갱신 — 삼성이 33년 만의 추월(2025 Q1) 이후 5분기만에 매출 기준 1위를 재탈환. [dram-market-share.md](../concepts/dram-market-share.md) 교차 갱신 필요.
+
+### 시나리오 함의
+2Q26 실적 서프라이즈 + HBM4 수율 조기 golden yield 달성 + DRAM 매출 1위 재탈환은 **Main Bet(시나리오 B) 실행 확신(conviction)을 강화**하는 방향. 다만 [Update 2026-07-21](#업데이트-2026-07-21--hbm4-인증-통과에도-nvidia-볼륨-발주-대기)의 NVIDIA 볼륨 발주 미확정 리스크는 이번 갱신으로도 해소되지 않음 — 수율·캐파 개선은 "공급 가능"을 보여줄 뿐 "확정 수요"는 여전히 별도 트랙으로 추적 필요.
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §3, §4

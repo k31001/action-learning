@@ -181,3 +181,32 @@
 - **냉각-성능 결합**: 전면 액체냉각(칩·케이블·변압기까지), "칩을 뜨겁게 돌릴수록 메모리 대역폭·FLOPS↑" — 냉각 효율이 인텔리전스 생산량과 직결. 물은 폐루프 재활용으로 소비 미미.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+---
+
+## [Update 2026-08-11] 텍사스 전주(全州) 데이터센터 접속 일시중단 — 순악화 (신규 정책 리스크 벡터)
+
+물리적 병목(큐 규모·트랜스포머·터빈)이 추가 악화한 데 더해, **텍사스에서 직전 갱신(2026-07-04, 병목지수 72)까지는 없던 완전히 새로운 정책 리스크가 발생** — 이번 갱신은 전력 축 전체로 볼 때 **순악화(net worsening)**다.
+
+### 물리적 병목 — 악화
+- **ERCOT 대형부하 접속 큐 410GW(4월) → 474GW(8월 3일)** — ERCOT 기록 최대 피크수요의 5배 이상, ~90%가 데이터센터 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+- **GE Vernova 가스터빈 백로그 100GW(1분기) → 116GW(2분기)** — 2029~2030년 슬롯 잔여 ~10GW뿐, "2030년까지 사실상 매진" ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+- 트랜스포머 서브부품(탭체인저 부싱) 리드타임 **3~5년** ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+- **PJM 2027/28 용량경매 사상 최고가 $333.44/MW-day 낙찰**, 예비율 18.9%→14.8% 급락. 데이터센터가 용량비용의 ~40% 차지 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+- SemiAnalysis Q3 2026 Energy Model: 미국 DC 전력수요 증가분 **21GW(2026) → 84GW(2030)** vs 그리드 신뢰용량(ELCC) 증설은 **연 ~15GW뿐**, 복수 대도시권 접속 리드타임 7~10년 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+
+### 신규 정책 리스크 — 텍사스 전주 접속 일시중단 (이전에 없던 벡터)
+- **텍사스 주지사 Abbott, 2026-08-03 전주(全州) 신규 데이터센터 그리드 접속 일시중단 발표** — ERCOT·PUCT에 전력·용수 사용 감사를 지시했고, ERCOT는 "Batch Zero" 대형부하 프로세스를 무기한 정지(완료 시한 미정) ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+- **BNEF 경고**: 텍사스 감사가 **49.8GW의 데이터센터 부하를 지연**시키고 **최대 $150억 비용**을 유발할 수 있다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+- 최대 DC 성장주(텍사스)에서 규제 리스크가 물리적 희소성만큼 큰 변수로 부상 — 기존 위키 항목들은 물리적 병목(큐·기자재 리드타임)만 추적했으나, 이번 이벤트는 **주(州) 정부발 정책 중단**이라는 질적으로 다른 리스크.
+
+### 완화 신호 (구조적이나 효과는 지연)
+- **FERC, 6개 RTO/ISO(PJM·MISO·SPP·CAISO·ISO-NE·NYISO)에 대형부하 요금제 개혁 강제 show-cause 명령(2026-06-18)**, 60일 시한(**2026-08-17 마감** — 이번 갱신 시점 기준 아직 미확정) ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+- FERC, PJM **신속 접속 트랙("fast-track") 승인**(2026-06-09) ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+- PJM Transition Cycle 2 큐가 **~46GW로 압축** ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+- 하이퍼스케일러 원자력 PPA 누적 **~9.8GW** — 대부분 2028년 이후 가동 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1).
+
+### 판정
+물리적 병목(트랜스포머·터빈·큐 규모)은 계속 전원 악화 중이며, 여기에 **텍사스 전주 접속 일시중단**이라는 7월 baseline에 없던 완전히 새로운 정책발 악화 벡터가 더해져 이번 갱신은 **순악화**로 판정한다. FERC 개혁은 구조적 완화 레버이나 60일 시한(8/17) 이후 컴플라이언스 제출부터 효과가 가시화돼 단기 상쇄 효과는 제한적. 텍사스 리스크는 물리적 병목과 별개로 **정책 축의 신규 EWI 후보**로 모니터링 필요 — [bottleneck-model-2030.md](bottleneck-model-2030.md) 전력 드라이버 갱신 검토 대상.
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §1

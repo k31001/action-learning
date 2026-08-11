@@ -120,3 +120,21 @@
 - 장비 통제는 실효 — SMIC 규모 생산 불가로 Huawei는 AI 데이터센터 기술을 수출하지 못함 (Ascend 910B 280~400 vs Blackwell 2,250 TFLOPS). 상세: [china-competitors.md [Update 2026-08-03]](../entities/china-competitors.md#update-2026-08-03-크리스-밀러의-중국-이중-평가).
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §1~§5
+
+---
+
+## [Update 2026-08-11] CXMT "중국 군사기업" 지정 + GPU 우회 임대 재검토 — 정책 진동 재차 확인
+
+### CXMT — 1260H를 넘어선 Entity List 검토
+
+- **美 국방부, CXMT를 "중국 군사기업(Chinese Military Company)"으로 지정** — **Entity List 추가에 대한 부처간 승인 진행 중(시행 대기)**. 기존 [Update 2026-07-11]에서 다룬 1260H 리스트(국방부·거래 직접 금지 아님) 등재에 더해, 이번 지정은 **BIS Entity List(수출통제 직접 금지)로의 격상 가능성**을 시사 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §6). 상세는 [cxmt.md](../entities/cxmt.md#update-2026-08-11-상하이-star-market-ipo--美-국방부-중국-군사기업-지정) 참조.
+
+### GPU 우회 임대 — 수출통제 회피 재검토
+
+- **美 상무부/BIS, 중국 기업의 해외 우회 GPU 임대를 통한 수출통제 회피 여부 재검토 착수(2026-08-07)** — 2026년 1월 규정은 조건부 H200 대중 판매를 허용했던 터라, 이번 재검토로 **정책 방향이 재차 유동적**으로 전환 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §6).
+
+### 함의 — 정책 진동의 반복, EWI 후보
+
+기존 표의 "정책 진동"(H20 금지→재허용→H200 완화 ↔ VEU 폐지·MATCH 법안 재강화, [Update 2026-08-03] 참조) 패턴이 이번에도 반복 — **2026년 1월의 부분 개방(조건부 H200 허용)과 2026년 8월의 긴축 신호(GPU 우회 재검토·CXMT 군사기업 지정)가 불과 반년 만에 방향을 재전환**. 이는 시나리오 A(황금 요새)와 시나리오 B(AI 르네상스) 사이 분기를 가르는 **EWI 후보**로 명시 — Entity List 시행 여부와 GPU 우회 재검토 결론이 다음 분기점.
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §6

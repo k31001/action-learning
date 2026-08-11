@@ -394,3 +394,24 @@ Counterpoint Research (2026-01-29):
 - 2026-06-29 발표(약 800조 원/$518B) — SK하이닉스 **신규 팹 2개** 건설 계획 포함(삼성전자도 동일하게 신규 팹 2개)([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+---
+
+## [Update 2026-08-11] 2Q26 실적 폭발 + HBM4 양산 출하 개시 + 나스닥 이중상장 완료 + DRAM 매출 점유율 삼성에 재역전당함
+
+### 2Q26 실적 — 매출·이익률 사상 최고 수준
+- SK하이닉스 2Q26: **매출 79.3조 원**(QoQ +51%·YoY +257%), **영업이익 60.5조 원**(영업이익률 76%). DRAM ASP +~30% QoQ·NAND ASP +중반 50%대 QoQ ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+- **HBM4 양산 출하 개시**, 2H26 램프업 계획, 약 10건의 고객 LTA 체결 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+
+### 나스닥 이중상장 완료 — 역대 최대 ADR급 조달
+- ADR(티커 **SKHY**) **2026-07-10 거래 개시**, **~$290억 조달**(1,779만 신주 발행). 상장 첫날 +13%·종가 $168.01, 07-13부터 정규거래 전환 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4). [Update 2026-07-04]에서 예고된 "역대 최대 ADR 상장" 전망이 실현 확정됨.
+
+### DRAM 매출 점유율 — 삼성에 1위 재역전당함
+- **Counterpoint 2Q26 DRAM 매출 점유율**: 삼성 39%(1위 탈환)·**SK하이닉스 26%**·Micron 25% — SK하이닉스는 YoY 매출 +214%에도 불구하고 점유율은 1년 전(39%) 대비 하락, 삼성에 매출 점유율 1위를 재역전당함 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+- HBM 평균판가는 legacy HBM3E 가격 인하 + HBM4 출시 지연으로 YoY 하락 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+- (참고, 기존 트렌드 재확인 — 신규 사실 아님) Vera Rubin HBM4 배정 SK하이닉스 ~60~70% 유지 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4).
+
+### 경쟁 구도 함의
+2025 Q1 33년 만의 DRAM 매출 1위 등극(위 "주요 발견" 참조) 이후 약 5분기만에 삼성에 매출 점유율 1위를 다시 내준 것은, HBM 마진 우위(영업이익률 76%)에도 불구하고 **매출 규모 경쟁에서는 삼성의 캐파·가격 인상 공세가 SK하이닉스를 재추월했음**을 보여주는 신호 — 추적 필요한 경쟁구도 지표로 플래그.
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §4

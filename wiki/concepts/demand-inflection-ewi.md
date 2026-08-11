@@ -128,3 +128,17 @@ flowchart LR
 - 병목 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 실물 수급 제약 논리와도 교차 확인이 필요한 신호다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+---
+
+## 업데이트 (2026-08-11) — 신규 EWI 후보: ⑤ 메모리 내부 축, 소비자 수요파괴(demand destruction) 최초 관측
+
+**요약**: 서버/AI 축(HBM·서버 DRAM)은 여전히 견조하나, **소비자 축(PC·스마트폰)에서 이번 창에 처음으로 명확한 수요파괴 신호가 관측**됐다. §2 표의 **⑤ 메모리 단계 "전통 수요(스마트폰 YoY)"** 신호(`smartphone_shipment_yoy`)에 더해, PC 출하까지 포함한 소비자 전자기기 전반의 수요 위축이 정량 확인된 것 — 구조 반전 신호는 아니나 모니터링 강화 대상으로 신규 편입한다.
+
+- **Gartner/IDC**: 메모리값 급등이 **2026년 PC 출하 -10.4%·스마트폰 -8.4%**를 유발한다는 전망(2026-02-26 발표, 이번 갱신에서 재확인) — DRAM+SSD 합산가가 연말까지 **~130% 급등**, PC 가격 **+17%**·스마트폰 가격 **+13% YoY** ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+- **OEM 확인**: Dell·Lenovo·HP·Asus·Acer가 **15~20% 가격 인상 또는 스펙 다운그레이드**를 확인 — 10년 지속된 "스펙 민주화(spec democratization)" 추세의 역전 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+- **TrendForce 3분기 2026 전망**: 서버 DRAM 계약가 **+13~18% QoQ**·NAND **+10~15% QoQ** — 2분기(+58~63%) 대비 감속. 직전 갱신(2026-07-04)에서 이미 추적 중이던 감속 신호의 연속으로, 서버/AI 축은 가격 상승세가 완전히 꺾인 것이 아니라 상승폭이 줄어드는 정도에 그친다 ([august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5).
+
+**해석 — 축별 비대칭**: 서버·AI 축(HBM·서버 DRAM)은 가격 상승·타이트 지속 중이며 매출·이익 비중도 압도적이라, 이번 신호만으로 구조 반전(§3 복합 위험 점수 급등)을 선언하기는 이르다. 다만 소비자 축 수요파괴는 §2 표의 ⑤ 메모리 내부 단계에서 **전통 수요(스마트폰 YoY)** 신호를 넘어 PC까지 확장된 첫 정량 확인 사례이며, ⑦ SCM 축의 "가짜수요 갭"·재고 에셜론 신호와 결합해 다운스트림 셀스루 둔화가 상류로 전파되는지 다음 갱신에서 교차 확인이 필요하다. 시나리오 연결은 기존과 동일하게 **DF1(AI 수요) 하락 변곡의 선행 관측**, 시나리오 **D(조용한 재편)** 트리거 후보로 편입한다.
+
+**출처**: [august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md) §5

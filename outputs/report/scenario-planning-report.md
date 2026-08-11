@@ -174,6 +174,19 @@ SemiAnalysis·Counterpoint·TechInsights를 우선 참조하고 PJM·ERCOT·Tren
 
 > 1차 자료: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)
 
+#### 2.2.3 [정기점검] 2026-08-11 시장 업데이트 — 병목 3개 축 동반 악화·삼성 HBM4 수율 80%·CXMT IPO+수출통제 확대
+
+SemiAnalysis·Counterpoint·TechInsights를 우선 참조하고 PJM·ERCOT·FERC·TSMC/ASML IR·TrendForce·Gartner 등으로 보강한 정기 점검(2026-08-11, 이전 점검 2026-07-04 대비).
+
+- **병목 모델 4대 제약지수 갱신 — 3개 축 동반 악화(2026-06-11 이후 첫 전면 악화 판독)**: 전력 72→**76**(▲+4, 텍사스 주지사 전주 신규 DC 그리드 접속 일시중단[08-03]·ERCOT 큐 410→474GW·GE Vernova 터빈 백로그 100→116GW·PJM 용량경매 사상 최고가), CAPEX/ROI 40→**38**(▼-2, 빅4 Q2 실적 후 전원 상향[+82% YoY]이나 Meta FCF -91%·Amazon TTM FCF 마이너스 전환으로 완화폭 축소), 파운드리 50→**55**(▲+5, 3개 분기 연속 완화 추세 반전 — TSMC 기록적 매출·CAPEX 상향에도 N2/A16 리드타임 78~156주로 2027~28년 예약 완료), 패키징 67→**68**(▲+1, CoWoS 리드타임 52~78주 지속·ABF 기판 재타이트, 삼성 HBM4 수율 80% 도약이 부분 상쇄). 하방 위험 순서 변경: **전력 ≈ CAPEX/ROI > 패키징 > 파운드리**(파운드리가 처음으로 하방 서열 상단 이탈). 상세: [wiki/concepts/bottleneck-model-2030.md §종합 판독(2026-08-11)](../../wiki/concepts/bottleneck-model-2030.md).
+- **삼성 HBM4 수율 80% 조기 달성**: 2월 양산 개시 <60%에서 4개월 조기 목표 달성, HBM4E 수율도 70%+ 돌파. UBS는 2027년 삼성이 SK하이닉스를 제치고 HBM 1위(41% vs 39%) 가능성을 제시 — Main Bet(시나리오 B) 실행 리스크를 낮추는 개별 기업 신호.
+- **삼성 DRAM 매출 점유율 1위 재탈환**: Counterpoint 2Q26 기준 삼성 39%·SK하이닉스 26%·Micron 25% — SK하이닉스는 YoY 매출 +214%에도 점유율은 하락. Samsung 2Q26 DS 영업이익 89.2~89.5조 원(YoY +1,814%), SK하이닉스 영업이익률 76%로 양사 모두 사상 최대 분기.
+- **소비자 축 최초의 명확한 수요파괴 신호**: Gartner/IDC가 메모리값 급등발 2026년 PC 출하 -10.4%·스마트폰 -8.4%를 전망 — 서버·HBM 축은 견조하나 [demand-inflection-ewi.md](../../wiki/concepts/demand-inflection-ewi.md) 조기경보 후보로 신규 추가.
+- **CXMT 상하이 IPO(~$41~43억 조달) + 美 국방부 "중국 군사기업" 지정**: 자본시장 접근 확대(추격 역량 강화)와 美 대응 강화(Entity List 검토 진행)가 동시 진행 — DF2(미중관계) 축의 상충 신호.
+- **CHIPS Act 정책 절벽**: FY2026이 인센티브 자금 마지막 회계연도, 35% ITC 요건상 2026년 12월 31일 전 팹 착공 필요 — 삼성 테일러 등 미국 내 투자 타이밍에 대한 신규 시한 압박.
+
+> 1차 자료: [sources/articles/august-2026-market-update-2026-08-11.md](../../sources/articles/august-2026-market-update-2026-08-11.md)
+
 | 구분 | 내용 |
 |------|------|
 | **강점 (S)** | 그룹 차원의 자금력 및 순현금 규모 / 시안·평택·텍사스 멀티-팹 글로벌 네트워크 / DRAM·NAND 통합 포트폴리오 (경쟁사 대비 리스크 분산) / PIM(LPDDR5X-PIM), CXL 등 신기술 선행 개발 이력 / K-칩스법 세액공제(20%, 2031년 일몰) |
