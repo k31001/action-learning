@@ -199,19 +199,3 @@ if __name__ == "__main__":
     closing = build_closing()
     report("hero-cover.png", hero)
     report("closing-bg.png", closing)
-
-
-# ── S1 표지용 오버레이 사전 합성 (디자인 스펙 §5.1: solid navy 45% + 하단 그라데이션 65%) ──
-def composite_cover_overlay():
-    img = Image.open(OUT + "/hero-cover.png").convert("RGB")
-    Wc, Hc = img.size
-    navy = (0x0A, 0x18, 0x54)
-    img = Image.blend(img, Image.new("RGB", (Wc, Hc), navy), 0.45)
-    arr = np.asarray(img).astype(np.float32)
-    t = np.clip((np.arange(Hc, dtype=np.float32) - 0.40 * Hc) / (0.60 * Hc), 0, 1) * 0.65
-    t = t[:, None, None]
-    out = arr * (1 - t) + np.array(navy, np.float32)[None, None, :] * t
-    Image.fromarray(out.astype(np.uint8)).save(OUT + "/hero-cover-composited.png")
-
-
-composite_cover_overlay()
