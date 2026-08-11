@@ -1288,3 +1288,12 @@ index.md sources 섹션 3건 등록. 위키 페이지 반영은 제안서 확정
 **멀티에이전트 실행(워크플로우 5에이전트, 사용자 지시 — 집필/자료·팩트체크·시각화 분리)**: ① 데이터 팩(장별 정량 주장 71건 ↔ 출처 대조표, 공백 12·모순 9 식별, 내부 인터뷰 익명화) ② 6장 산정 모델(3층×3안 — 기본 5년 누적 $5.9B: 방어 3.9+전환 1.6+프리미엄 0.4, 브래킷 보수 $1.2B~공격 $17.9B, HS 물량 내 삼성 비중 무대응 28% vs 전략 32%) ③ 시각화(mermaid 도식 4종·표 2종) → ④ 집필(2부 연속 집필로 톤 통일, 불가침 규칙 8종) → ⑤ 팩트체크(pass·critical 0·minor 7) → 호출자 최종 교정 7건 반영(아마존 FCF 전망 표현·CUDA 문단 인용 정합·인용 생략부호·NTB 글로스 분리·"80%씩" 2건·구글 협업 사내 확인 플래그·열쇠 문단 분할).
 
 **산출**: outputs/storyline/{outline, common-overview, ssd-fdp-proposal}.md — index.md outputs 섹션 등록. 위키 역갱신(fdp-host-ssd-platform·ssd-ufs-market 등)·대시보드·커밋은 사용자 확정 후 진행. 사내 확인 대기 2건: Titanium SSD 드라이브 공급 구조, 구글·메타 FDP 협업 표현 수위.
+
+## [2026-08-11] build | 스토리라인 공통 개요편 PPT 10장 제작
+
+- `outputs/storyline/common-overview.md` → `outputs/presentation/storyline-common-overview.pptx` (10장, 16:9). 사용자 컨펌한 10장 구성(표지→지도→진단 2→역사 2→재감사 2→저지선 2)대로 제작.
+- 멀티에이전트: 스토리라인(아웃라인·핵심 메시지·전환 논리)·디자인(토큰·타이포·지오메트리 스펙)·이미지(표지/클로징 배경 — Gamma 생성은 성공했으나 cdn.gamma.app 이그레스 차단으로 브랜드 그래픽 폴백)·시각화는 세션 한도로 호출자가 인라인 수행.
+- 디자인 시스템: Samsung Blue #1428A0 모노크롬 축 + 판정 레드 #C00000, 전 텍스트 20pt 이상(제목 40pt의 절반 하한 — python-pptx 런 스캔으로 0건 위반 검증), 내용 슬라이드 전면에 제목 아래 핵심 메시지 밴드, 데이터 그래픽은 pptxgenjs 도형 직접 드로잉(하이라이트-원·직접 라벨·범례 없음).
+- 검증: OOXML validate 통과 · LibreOffice 렌더 시각 QA 3라운드(겹침·오버플로 13건 수정) · 발표자 노트 10/10 · placeholder 0건.
+- 신규: 덱 + 아웃라인 md + `scripts/generate_storyline_overview.cjs` + 배경 스크립트 2종(`generate_storyline_overview_assets.py`·`compose_storyline_hero.py`) + `assets/storyline-overview/` PNG 3장. index.md outputs 섹션 등록, `.gitignore` 예외 추가.
+- samsung.com 실측은 네트워크 프록시 차단 → 저장소에 정립된 삼성 토큰(#1428A0·#0A1854, dashboard tailwind와 일치) 기준으로 도출. dashboard 미변경 → version bump 생략(사유: 빌드 산출물만 추가).

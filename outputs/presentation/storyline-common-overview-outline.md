@@ -2,7 +2,7 @@
 
 덱: `storyline-common-overview.pptx` (10장, 16:9) — 원문 `outputs/storyline/common-overview.md`의 발표자료.
 재생성: `npm i pptxgenjs` 후 `node outputs/presentation/scripts/generate_storyline_overview.cjs`
-(배경 에셋 재생성: `.venv/bin/python outputs/presentation/scripts/generate_storyline_overview_assets.py`)
+(배경 에셋: `generate_storyline_overview_assets.py` → 원본 2장 생성, `compose_storyline_hero.py` → 표지 다크 오버레이 합성본)
 
 디자인 시스템: Samsung Blue `#1428A0` 모노크롬 축(+판정용 레드 `#C00000`), 다크 표지·클로징 `#0A1854`,
 전 텍스트 20pt 이상(제목 40pt의 절반 하한), 내용 슬라이드는 제목 아래 핵심 메시지 밴드 고정, 맑은 고딕.
