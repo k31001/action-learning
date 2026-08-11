@@ -32,6 +32,7 @@ const C = {
 };
 const F = '맑은 고딕';
 const RAD = 0.08;
+const TOTAL = 17;   // 표지 + 본문 12 + 2차 저지선 4
 
 const pres = new pptxgen();
 pres.defineLayout({ name: 'W169', width: 13.333, height: 7.5 });
@@ -88,7 +89,74 @@ function contentSlide(num, title, band, src) {
   const bandText = Array.isArray(band) ? runs(band, { fontSize: 24, bold: true, color: C.NAVY }) : band;
   tx(s, bandText, { x: 0.94, y: 1.26, w: 11.6, h: 0.62, fontSize: 24, bold: true, color: C.NAVY, valign: 'middle' });
   if (src) tx(s, src, { x: 0.67, y: 7.04, w: 9.6, h: 0.34, fontSize: 20, color: C.MUTED, valign: 'middle' });
-  tx(s, `${String(num).padStart(2, '0')} / 10`, { x: 11.47, y: 7.04, w: 1.2, h: 0.34, fontSize: 20, color: C.MUTED, align: 'right', valign: 'middle' });
+  tx(s, `${String(num).padStart(2, '0')} / ${TOTAL}`, { x: 11.47, y: 7.04, w: 1.2, h: 0.34, fontSize: 20, color: C.MUTED, align: 'right', valign: 'middle' });
+  return s;
+}
+
+// 판정 칩 — ◎(발화) · △(부분) · ✕(불발). 셀 중앙 배치
+function verdictChip(s, cx, cy, v) {
+  const st = v === '◎' ? { bg: C.BLUE12, fg: C.BLUE }
+    : v === '✕' ? { bg: C.NEG_BG, fg: C.NEG }
+      : { bg: C.TINT, fg: C.MUTED };
+  rrect(s, cx - 0.36, cy - 0.21, 0.72, 0.42, { fill: st.bg, radius: 0.21 });
+  tx(s, v, { x: cx - 0.36, y: cy - 0.21, w: 0.72, h: 0.42, fontSize: 20, bold: true, color: st.fg, align: 'center', valign: 'middle' });
+}
+
+/**
+ * CMO 매트릭스 슬라이드 — 다운턴 1건의 M×C→O 분석.
+ * cDefs: [[C 라벨, C 값], ...] 4개 · rows: [[액션, 메커니즘, 발화 맥락, 판정, 관측 결과], ...] 5개
+ * 출처: wiki/storyline/storyline-cmo.md §5 「다운턴별 M×C→O 매트릭스」
+ */
+function cmoSlide(num, title, band, cDefs, rows) {
+  const s = contentSlide(num, title, band,
+    '판정 ◎ 분명 · △ 부분 · ✕ 불발 — 출처: CMO 렌즈 M×C→O 매트릭스');
+
+  // C 열 정의 스트립 — 그 다운턴의 맥락 4변수
+  const cw = 2.91;
+  cDefs.forEach((d, i) => {
+    const x = 0.67 + i * (cw + 0.115);
+    rect(s, x, 2.12, cw, 0.70, C.BLUE12);
+    tx(s, d[0], { x: x + 0.16, y: 2.18, w: cw - 0.32, h: 0.28, fontSize: 20, bold: true, color: C.BLUE });
+    tx(s, d[1], { x: x + 0.16, y: 2.48, w: cw - 0.32, h: 0.28, fontSize: 20, color: C.BODY });
+  });
+
+  // M×C→O 표 — 행 = 액션(M), 발화 맥락(C), 판정, 관측 결과(O)
+  const cx = [0.67, 4.17, 6.77, 7.87], cwd = [3.50, 2.60, 1.10, 4.80];
+  const HY = 3.06, HH = 0.46, RH = 0.66;
+  rect(s, 0.67, HY, 12.0, HH, C.NAVY);
+  ['액션 (M · 메커니즘)', '발화 맥락 (C)', '판정', '관측 결과 (O)'].forEach((h, i) => {
+    tx(s, h, i === 2
+      ? { x: cx[i], y: HY, w: cwd[i], h: HH, fontSize: 20, bold: true, color: C.INV, align: 'center', valign: 'middle' }
+      : { x: cx[i] + 0.16, y: HY, w: cwd[i] - 0.24, h: HH, fontSize: 20, bold: true, color: C.INV, valign: 'middle' });
+  });
+  rows.forEach((r, i) => {
+    const y = HY + HH + i * RH;
+    rect(s, 0.67, y, 12.0, RH, i % 2 ? C.ROW_ALT : C.WHITE);
+    hline(s, 0.67, 12.67, y, C.HAIRLINE, 0.75);
+    tx(s, r[0], { x: cx[0] + 0.16, y: y + 0.05, w: cwd[0] - 0.24, h: 0.28, fontSize: 20, bold: true, color: C.TXT });
+    tx(s, r[1], { x: cx[0] + 0.16, y: y + 0.33, w: cwd[0] - 0.24, h: 0.28, fontSize: 20, color: C.MUTED });
+    tx(s, r[2], { x: cx[1] + 0.16, y, w: cwd[1] - 0.24, h: RH, fontSize: 20, color: C.BODY, valign: 'middle' });
+    verdictChip(s, cx[2] + cwd[2] / 2, y + RH / 2, r[3]);
+    tx(s, r[4], { x: cx[3] + 0.16, y, w: cwd[3] - 0.24, h: RH, fontSize: 20, color: C.BODY, valign: 'middle' });
+  });
+  hline(s, 0.67, 12.67, HY + HH + rows.length * RH, C.HAIRLINE, 0.75);
+  return s;
+}
+
+// 내용 미입력 슬라이드 — 제목·메시지 밴드 골격만 두고 본문은 비운다
+function blankSlide(num, title) {
+  const s = pres.addSlide();
+  s.background = { color: C.WHITE };
+  tx(s, title, { x: 0.67, y: 0.36, w: 12.0, h: 0.75, fontSize: 40, bold: true, color: C.TXT, valign: 'middle' });
+  rect(s, 0.67, 1.26, 12.0, 0.62, C.TINT);
+  tx(s, '핵심 메시지 — 이 슬라이드를 관통하는 한 문장', { x: 0.94, y: 1.26, w: 11.6, h: 0.62, fontSize: 24, bold: true, color: C.BLUE40, valign: 'middle' });
+  s.addShape('rect', {
+    x: 0.67, y: 2.12, w: 12.0, h: 4.70,
+    fill: { color: 'FFFFFF', transparency: 100 },
+    line: { color: C.HAIRLINE, width: 1.25, dashType: 'dash' },
+  });
+  tx(s, '내용 입력 영역', { x: 0.67, y: 4.18, w: 12.0, h: 0.40, fontSize: 20, color: C.MUTED, align: 'center', valign: 'middle' });
+  tx(s, `${String(num).padStart(2, '0')} / ${TOTAL}`, { x: 11.47, y: 7.04, w: 1.2, h: 0.34, fontSize: 20, color: C.MUTED, align: 'right', valign: 'middle' });
   return s;
 }
 
@@ -115,25 +183,25 @@ function contentSlide(num, title, band, src) {
 
   const cards = [
     { k: '01 · 진단', q: '이 호황은\n누가 만들었나', b: '수요는 외생 변수', ref: 'S3 – S4' },
-    { k: '02 · 역사', q: '게임의 룰은\n어떻게 바뀌었나', b: '3+1 다운턴', ref: 'S5 – S6' },
-    { k: '03 · 재감사', q: '무엇이 통했고\n무엇이 부러졌나', b: '판정 ◎ 4 · ✕ 2', ref: 'S7 – S8' },
-    { k: '04 · 처방', q: '무엇으로\n막을 것인가', b: '세 개의 저지선', ref: 'S9 – S10' },
+    { k: '02 · 역사', q: '게임의 룰은\n어떻게 바뀌었나', b: '3+1 다운턴', ref: 'S5 – S9' },
+    { k: '03 · 재감사', q: '무엇이 통했고\n무엇이 부러졌나', b: '판정 ◎ 4 · ✕ 2', ref: 'S10 – S11' },
+    { k: '04 · 처방', q: '무엇으로\n막을 것인가', b: '세 개의 저지선', ref: 'S12 – S13' },
   ];
   const xs = [0.67, 3.79, 6.91, 10.03];
-  const Y = 2.42, H = 2.60, W = 2.64;
+  const Y = 2.36, H = 2.70, W = 2.64;
   cards.forEach((c, i) => {
     const dark = i === 3;
     rrect(s, xs[i], Y, W, H, { fill: dark ? C.NAVY : C.TINT });
     tx(s, c.k, { x: xs[i] + 0.25, y: Y + 0.24, w: W - 0.5, h: 0.30, fontSize: 20, bold: true, color: dark ? C.BLUE40 : C.BLUE });
     tx(s, c.q, { x: xs[i] + 0.25, y: Y + 0.62, w: W - 0.5, h: 0.85, fontSize: 22, bold: true, color: dark ? C.INV : C.TXT, lineSpacingMultiple: 1.1 });
-    tx(s, c.b, { x: xs[i] + 0.25, y: Y + 1.62, w: W - 0.5, h: 0.60, fontSize: 20, color: dark ? C.INV_SUB : C.BODY, lineSpacingMultiple: 1.15 });
-    tx(s, c.ref, { x: xs[i] + 0.25, y: Y + 2.16, w: W - 0.5, h: 0.30, fontSize: 20, color: dark ? C.INV_MUTED : C.MUTED });
+    tx(s, c.b, { x: xs[i] + 0.25, y: Y + 1.58, w: W - 0.5, h: 0.62, fontSize: 20, color: dark ? C.INV_SUB : C.BODY, lineSpacingMultiple: 1.15 });
+    tx(s, c.ref, { x: xs[i] + 0.25, y: Y + 2.24, w: W - 0.5, h: 0.30, fontSize: 20, color: dark ? C.INV_MUTED : C.MUTED });
   });
   [[3.31, 3.79], [6.43, 6.91], [9.55, 10.03]].forEach(([a, b]) => arrow(s, a, Y + 1.30, b, Y + 1.30));
 
   arrow(s, 11.35, Y + H, 11.35, 5.58);
-  rrect(s, 6.67, 5.58, 6.0, 0.62, { fill: C.WHITE, line: { color: C.NAVY, width: 1.25 }, radius: 0.31 });
-  tx(s, '7편의 제안 — 2·3차 저지선의 구체안', { x: 6.67, y: 5.58, w: 6.0, h: 0.62, fontSize: 20, bold: true, color: C.NAVY, align: 'center', valign: 'middle' });
+  rrect(s, 6.17, 5.58, 6.5, 0.62, { fill: C.WHITE, line: { color: C.NAVY, width: 1.25 }, radius: 0.31 });
+  tx(s, '2차 저지선 상세 — S14 ~ S17', { x: 6.17, y: 5.58, w: 6.5, h: 0.62, fontSize: 20, bold: true, color: C.NAVY, align: 'center', valign: 'middle' });
 
   s.addNotes('순서에는 뜻이 있다 — 과거를 다시 읽지 않으면 미래의 준비가 과거의 반복이 되기 때문이다. 그래서 진단(왜 지금인가) → 역사(룰의 세 번의 변화) → 재감사(무엇이 통했나) → 처방(세 개의 저지선) 순으로 논증한다. 1차 저지선은 이미 계약이 세우고 있고, 나머지 두 저지선은 제품 경쟁력의 몫 — 그 구체안이 이어지는 일곱 편이다.');
 }
@@ -274,10 +342,70 @@ function contentSlide(num, title, band, src) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-// S6 — 네 번째 게임의 룰 (2×2 룰 카드)
+// S6~S8 — CMO 매트릭스 3종 (다운턴별 M×C→O)
 // ════════════════════════════════════════════════════════════════════════
 {
-  const s = contentSlide(6, '네 번째 게임의 룰',
+  const s = cmoSlide(6, 'CMO-1 · 1차 치킨게임 2007~09',
+    [['소모전이 통한 이유는 실력이 아니라 ', {}], ['6강 대칭이라는 맥락', { color: C.BLUE }], ['이었다', {}]],
+    [
+      ['C-a 경기자 구조', '6강 대칭 구조'],
+      ['C-b 배분 규칙', '캐파·원가 = 점유율'],
+      ['C-c 수요·거래', '현물가 · 가격 붕괴'],
+      ['C-d 출발 위치', '재무·원가 리더'],
+    ],
+    [
+      ['무감산 버티기', '소모전 — 체력 열위 퇴출', 'C-a 6강 대칭', '◎', '키몬다 파산 09.01 → 퇴출 직후 현물가 급등'],
+      ['40nm 공정 선행', '원가 격차 확대', 'C-b 캐파·원가', '◎', '50nm급 대비 생산성 +60% · 전력 −30%'],
+      ['A1 · 조직 통합', '위기를 재편의 창으로', 'C-c 수요 충격', '◎', '이듬해 매출 136.3조 · 영업이익 10.9조'],
+      ['SanDisk 인수 시도', '다운턴 저가 매수', 'C-c 자산가 붕괴', '△', '철회 — 인수 불발, 가격 규율만 관측'],
+      ['A2 · 역사이클 증설', '회복기 점유 흡수', 'C-b 캐파=점유율', '◎', '2010 시설투자 21.6조 → 회복기 점유 흡수'],
+    ]);
+  s.addNotes('행=삼성의 액션(M), 열=그 다운턴의 맥락(C), 셀=결과(O). 무감산 버티기는 6강 대칭·전원 이윤극대화라는 C에서만 완전 발화했다 — 키몬다 누적손실 30억 달러·2009년 1월 파산, 퇴출 직후 현물가 급등으로 과점 구조가 실증됐다. 다만 같은 액션은 C-c(현물가·수요 절벽)에서는 부분 발화(△)에 그쳐 2008년 4분기 전사 사상 첫 분기 적자 -0.94조를 냈다 — 체력 격차가 손실률 격차(-14% vs -40% 이하)로 전환되는 것이 소모전의 작동 형태다. 채움률 8/20 = 40%, "—"는 M×C 상호작용이 무의미한 칸. 반사실 한계: 대조군은 존재하지 않으며 판정은 동시대 경쟁사 대조로 보완한 정합성 판단이다.');
+}
+
+{
+  const s = cmoSlide(7, 'CMO-2 · 2차 치킨게임 2010~13',
+    [['심판대는 캐파가 아니라 ', {}], ['기술 전환', { color: C.BLUE }], ['이었다', {}]],
+    [
+      ['C-a 경기자 구조', '엘피다 체력 열위'],
+      ['C-b 배분 규칙', '전환 성패 = 퇴출'],
+      ['C-c 수요·거래', 'PC → 모바일 전환'],
+      ['C-d 출발 위치', '1차전 승자 · 현금'],
+    ],
+    [
+      ['Line-16 역사이클', '역사이클 캐파 선점', 'C-b 캐파·원가', '◎', '12조 투입 · 20nm급 DDR3 동시 양산'],
+      ['공정·모바일 선행', '전환 심판대 선점', 'C-b 전환 성패', '◎', '30→20nm 세계 최초 — 엘피다는 탈락'],
+      ['포트폴리오 재배분', '수요 전환 추종', 'C-c PC→모바일', '△', 'Austin $4B 전환 — 점유 효과는 미확인'],
+      ['HDD 사업 매각', '비핵심 경량화', 'C-c 모바일 전환', '△', '$1.375B 회수 — 메모리 점유엔 간접'],
+      ['엘피다 입찰 불참', '저가 매수 불행사', 'C-a 체력 열위', '△', '마이크론이 인수 — 스케일 점프 허용'],
+    ]);
+  s.addNotes('2차는 소모전 위에 기술 전환이 겹친 게임이었다. 같은 심판대에서 삼성은 30nm급(2010-07)·20nm급(2011-09) 세계 최초 연속과 LPDDR3 선행으로 통과했고, 엘피다는 PC→모바일 전환 대응 실패가 파산 요인으로 명시되며 탈락했다(부채 4,480억 엔, 전후 일본 제조업 최대). Line-16은 2010년 5월 착공·2011년 9월 가동, 총 12조로 당시 세계 최대 메모리 팹이다. 주목할 △는 엘피다 입찰 불참 — 저가 매수 창이 열렸으나 배분을 불행사했고, 인수한 마이크론이 모바일 DRAM 스케일과 다사이트 중앙 운영 체계를 얻었다. 퇴출자는 사라지는 것이 아니라 인수자의 체급이 된다.');
+}
+
+{
+  const s = cmoSlide(8, 'CMO-3 · 다운사이클 2022~23',
+    [['메커니즘은 복제됐지만, ', {}], ['맥락이 이동한 곳에서 결과는 재생되지 않았다', { color: C.BLUE }]],
+    [
+      ['C-a 경기자 구조', '3강 · 퇴출 후보 0'],
+      ['C-b 배분 규칙', '캐파 vs 인증 이원화'],
+      ['C-c 수요·거래', '수요 절벽 · AI 전야'],
+      ['C-d 출발 위치', '$63B · HBM 후순위'],
+    ],
+    [
+      ['A5 · 무감산 선언', '소모전 — 퇴출 유도', 'C-a 3강 과점', '✕', '퇴출자 0 · DS −4.58조 → 23.04 자진 철회'],
+      ['투자·R&D 분리 집행', '재무 요새 역사이클', 'C-d 현금 요새', '◎', 'CapEx 53.1조 · R&D 28.34조 사상 최대'],
+      ['A4 · Taylor 착공', '리드타임 소화', 'C-c 다운사이클', '△', '가동 2026~27 순연 · $17B → $37B+'],
+      ['A6 · HBM 후순위', '주력 우선 자원배분', 'C-b 인증 게임', '✕', 'HBM 40%→17% · 33년 만의 DRAM 역전'],
+      ['조직 구조 무대응', '1차전형 재편 불행사', 'C-c 사상 최대 적자', '△', '조직 재편 불발 — 2009 A1과 대칭 실패'],
+    ]);
+  s.addNotes('3차는 1차의 승리 공식을 복제했으나 C가 이동해 있었다. 무감산 선언(2022-10-27)→재확인(2023-01-31)→감산 공식화(2023-04-07)의 궤적에서 퇴출자는 0이었고, Q1 2023 전사 영업이익 0.6조(-96%)·DS부문 -4.58조 사상 최대 부문 적자 끝에 삼성 스스로 철회했다. 반면 재무 요새 위의 역사이클 투자는 발화했다 — 사상 최대 적자 연도에 CapEx 53.1조·R&D 28.34조 동시 사상 최대는 3강 중 삼성 단독이다(SK하이닉스는 적자 7.7조 속 CapEx 약 10조로 절감). A6의 반면교사: 2019년 HBM팀 축소라는 과거의 M이 2022년에는 C(출발 위치)로 전환돼 있었다 — 한 다운턴의 M이 다음 다운턴의 C가 된다.');
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// S9 — 네 번째 게임의 룰 (2×2 룰 카드)
+// ════════════════════════════════════════════════════════════════════════
+{
+  const s = contentSlide(9, '네 번째 게임의 룰',
     [['필요한 것은 재복제가 아니라 ', {}], ['새 공식', { color: C.BLUE }], ['이다', {}]],
     '출처: LTA→SCA 업계 동향 · 마이크론–앤스로픽 SCA · 스타게이트 의향서');
 
@@ -300,10 +428,10 @@ function contentSlide(num, title, band, src) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-// S7 — 재감사 (A1~A6 판정 표)
+// S10 — 재감사 (A1~A6 판정 표)
 // ════════════════════════════════════════════════════════════════════════
 {
-  const s = contentSlide(7, '재감사 — 무엇이 통했고 부러졌는가',
+  const s = contentSlide(10, '재감사 — 무엇이 통했고 부러졌는가',
     [['◎의 공통분모 — 버티는 시간이 아니라 ', {}], ['사용하는 시간', { color: C.BLUE }]],
     '출처: 다운턴 액션 재감사 — 3개 다운턴 사료 종합');
 
@@ -341,18 +469,18 @@ function contentSlide(num, title, band, src) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-// S8 — 자연 실험 (HBM 슬로프·비교 막대 + 낸드 점유 스트립 + 벤치마크 3)
+// S11 — 자연 실험 (HBM 슬로프·비교 막대 + 낸드 점유 스트립 + 벤치마크 3)
 // ════════════════════════════════════════════════════════════════════════
 {
-  const s = contentSlide(8, '자연 실험 — 경쟁사는 다르게 통과했다',
+  const s = contentSlide(11, '자연 실험 — 경쟁사는 다르게 통과했다',
     [['갈린 것은 지출의 양이 아니라 ', {}], ['배분의 방향', { color: C.BLUE }], ['이었다', {}]],
     '출처: HBM/DRAM 점유율 리서치 · 기업용 SSD 1Q26 · 마이크론 FQ3 FY26');
 
-  // ── 좌상 A: 삼성 HBM 점유율 슬로프 (하락 = 리스크 레드) ──
+  // ── 상단 좌: 삼성 HBM 점유율 슬로프 (하락 = 리스크 레드) ──
+  const base8 = 4.06, maxH8 = 1.30, maxV = 60;
   tx(s, '삼성 HBM 점유율', { x: 0.67, y: 2.12, w: 3.5, h: 0.30, fontSize: 20, bold: true, color: C.BLUE });
-  const base8 = 4.42, maxH8 = 1.55, maxV = 60;
   const yOf = (v) => base8 - maxH8 * (v / maxV);
-  const p1 = { x: 1.30, v: 40 }, p2 = { x: 3.30, v: 17 };
+  const p1 = { x: 1.35, v: 40 }, p2 = { x: 3.40, v: 17 };
   s.addShape('line', { x: p1.x, y: yOf(p1.v), w: p2.x - p1.x, h: yOf(p2.v) - yOf(p1.v), line: { color: C.NEG, width: 3 } });
   [p1, p2].forEach((p) => s.addShape('ellipse', { x: p.x - 0.08, y: yOf(p.v) - 0.08, w: 0.16, h: 0.16, fill: { color: C.NEG }, line: { color: C.WHITE, width: 2 } }));
   tx(s, '40%', { x: p1.x - 0.5, y: yOf(p1.v) - 0.40, w: 1.0, h: 0.30, fontSize: 20, bold: true, color: C.BODY, align: 'center' });
@@ -360,9 +488,9 @@ function contentSlide(num, title, band, src) {
   tx(s, '2023', { x: p1.x - 0.6, y: base8 + 0.06, w: 1.2, h: 0.28, fontSize: 20, color: C.MUTED, align: 'center' });
   tx(s, '25 상반기', { x: p2.x - 0.75, y: base8 + 0.06, w: 1.5, h: 0.28, fontSize: 20, color: C.MUTED, align: 'center' });
 
-  // ── 좌상 B: HBM 점유 현재 비교 막대 ──
-  tx(s, 'HBM 점유 — 현재', { x: 4.46, y: 2.12, w: 3.5, h: 0.30, fontSize: 20, bold: true, color: C.BLUE });
-  const bars8 = [{ x: 4.95, v: 57, f: C.BLUE, lc: C.NAVY, n: 'SK하이닉스' }, { x: 6.35, v: 22, f: C.GRAY, lc: C.BODY, n: '삼성' }];
+  // ── 상단 중: HBM 점유 현재 비교 막대 ──
+  tx(s, 'HBM 점유 — 현재', { x: 4.60, y: 2.12, w: 3.5, h: 0.30, fontSize: 20, bold: true, color: C.BLUE });
+  const bars8 = [{ x: 5.30, v: 57, f: C.BLUE, lc: C.NAVY, n: 'SK하이닉스' }, { x: 6.85, v: 22, f: C.GRAY, lc: C.BODY, n: '삼성' }];
   bars8.forEach((b) => {
     const h = maxH8 * (b.v / maxV);
     rect(s, b.x, base8 - h, 0.85, h, b.f);
@@ -370,52 +498,53 @@ function contentSlide(num, title, band, src) {
     tx(s, b.n, { x: b.x - 0.45, y: base8 + 0.06, w: 1.75, h: 0.28, fontSize: 20, color: C.MUTED, align: 'center' });
   });
 
-  tx(s, '33년 만의 DRAM 1위 상실 — 1Q25 36% 대 34%', { x: 0.67, y: 4.88, w: 7.30, h: 0.30, fontSize: 20, color: C.MUTED });
+  // ── 상단 우: DRAM 역전 스탯 카드 ──
+  rrect(s, 8.40, 2.12, 4.27, 2.06, { fill: C.TINT });
+  tx(s, '33년 만의 DRAM 1위 상실', { x: 8.66, y: 2.53, w: 3.75, h: 0.30, fontSize: 20, bold: true, color: C.NAVY });
+  tx(s, '36% 대 34%', { x: 8.66, y: 2.89, w: 3.75, h: 0.50, fontSize: 32, bold: true, color: C.NEG });
+  tx(s, '2025년 1분기 · SK 대 삼성', { x: 8.66, y: 3.45, w: 3.75, h: 0.30, fontSize: 20, color: C.MUTED });
 
-  // ── 좌하: 기업용 SSD 매출 점유 스트립 (1Q26, %) ──
-  tx(s, '기업용 SSD 매출 점유 1Q26 (%)', { x: 0.67, y: 5.30, w: 4.4, h: 0.30, fontSize: 20, bold: true, color: C.BLUE });
-  tx(s, 'YMTC 낸드 5→13%', { x: 4.87, y: 5.30, w: 3.10, h: 0.30, fontSize: 20, color: C.MUTED, align: 'right' });
-  const segs = [
-    { v: 38.2, f: C.BLUE, tc: C.INV, n: '삼성', row: 0 },
-    { v: 25.1, f: C.BLUE70, tc: C.INV, n: 'SK그룹', row: 1 },
-    { v: 16.7, f: C.BLUE40, tc: C.NAVY, n: '마이크론', row: 0 },
-    { v: 12.0, f: C.GRAY, tc: C.BODY, n: '키옥시아', row: 1 },
-    { v: 8.0, f: C.HAIRLINE, tc: C.BODY, n: '샌디스크', row: 0 },
+  // ── 중단: 벤치마크 3카드 (가로 1행) ──
+  const bm = [
+    { t: 'SK하이닉스 · 방향 유지', b: 'OP 47.2조 — 전사 초과' },
+    { t: '마이크론 · 수요 선행', b: 'SCA 16건 · $1,000억' },
+    { t: '키옥시아 · 세대 선행', b: '캐파 대신 아키텍처' },
   ];
-  const stripY = 5.68, stripH = 0.50, gap = 0.02;
-  const usable = 7.30 - gap * (segs.length - 1);
+  bm.forEach((c, i) => {
+    const x = 0.67 + i * 4.07;
+    rrect(s, x, 4.56, 3.86, 0.98, { fill: C.TINT });
+    tx(s, c.t, { x: x + 0.22, y: 4.65, w: 3.42, h: 0.30, fontSize: 20, bold: true, color: C.BLUE });
+    tx(s, c.b, { x: x + 0.22, y: 4.99, w: 3.42, h: 0.30, fontSize: 20, color: C.BODY });
+  });
+
+  // ── 하단: 기업용 SSD 매출 점유 스트립 (1Q26, %) — 낸드는 5강 분산 ──
+  tx(s, '기업용 SSD 매출 점유 1Q26 (%) — 5강 분산 · YMTC 5%→13%', { x: 0.67, y: 5.68, w: 12.0, h: 0.30, fontSize: 20, bold: true, color: C.BLUE });
+  const segs = [
+    { v: 38.2, f: C.BLUE, tc: C.INV, n: '삼성' },
+    { v: 25.1, f: C.BLUE70, tc: C.INV, n: 'SK그룹' },
+    { v: 16.7, f: C.BLUE40, tc: C.NAVY, n: '마이크론' },
+    { v: 12.0, f: C.GRAY, tc: C.BODY, n: '키옥시아' },
+    { v: 8.0, f: C.HAIRLINE, tc: C.BODY, n: '샌디스크' },
+  ];
+  const gap = 0.02, usable = 12.0 - gap * (segs.length - 1);
   let sx = 0.67;
   segs.forEach((g) => {
     const w = usable * (g.v / 100);
-    rect(s, sx, stripY, w, stripH, g.f);
-    if (w > 0.5) tx(s, g.v.toFixed(1), { x: sx, y: stripY, w, h: stripH, fontSize: 20, bold: true, color: g.tc, align: 'center', valign: 'middle' });
-    const cx = sx + w / 2;
-    const ny = g.row === 0 ? 6.22 : 6.52;
-    tx(s, g.n, { x: Math.min(Math.max(cx - 0.65, 0.67), 6.62), y: ny, w: 1.3, h: 0.28, fontSize: 20, color: C.MUTED, align: 'center' });
+    const cx0 = sx + w / 2;
+    tx(s, g.n, { x: Math.min(cx0 - 0.55, 11.57), y: 6.06, w: 1.10, h: 0.28, fontSize: 20, color: C.MUTED, align: 'center' });
+    rect(s, sx, 6.42, w, 0.40, g.f);
+    tx(s, g.v.toFixed(1), { x: sx, y: 6.42, w, h: 0.40, fontSize: 20, bold: true, color: g.tc, align: 'center', valign: 'middle' });
     sx += w + gap;
-  });
-
-  // ── 우측: 벤치마크 3카드 ──
-  const bm = [
-    { t: 'SK하이닉스 — 방향 유지', b: '적자에도 HBM · 공동설계 집중\n영업이익 47.2조 — 전사 초과' },
-    { t: '마이크론 — 수요 선행', b: 'SCA 16건 · $1,000억 선확약\n수요 확약 뒤 팹 — 순서 역전' },
-    { t: '키옥시아 — 세대 선행', b: '캐파 경쟁 대신 아키텍처 선행\n체력 열위의 생존 공식 전환' },
-  ];
-  bm.forEach((c, i) => {
-    const y = [2.12, 3.76, 5.40][i];
-    rrect(s, 8.25, y, 4.42, 1.42, { fill: C.TINT });
-    tx(s, c.t, { x: 8.47, y: y + 0.16, w: 3.98, h: 0.30, fontSize: 20, bold: true, color: C.BLUE });
-    tx(s, c.b, { x: 8.47, y: y + 0.52, w: 3.98, h: 0.76, fontSize: 20, color: C.BODY, lineSpacingMultiple: 1.2 });
   });
 
   s.addNotes('SK하이닉스는 2023년 영업적자 7.7조 원 속에 투자를 10조 원 수준으로 줄이면서도 HBM·엔비디아 공동설계에 집중해 DRAM 1위(36% 대 34%)·HBM 57%, 2025 회계연도 영업이익 47.2조 원(삼성 전사 43.6조 원 초과)을 가져갔다 — A6의 정확한 반례다[5]. 마이크론은 매출 -49%의 수축 속에서 수요를 먼저 잠갔고(SCA 16건·최소 계약 매출 약 1,000억 달러·예치금과 금융 약정 220억 달러), 2026년 초 크루셜 철수로 전 캐파를 고마진 기업용·AI로 돌렸다[2][3]. 낸드는 5강 분산에 YMTC까지 — 2023년 낸드 감산률 50% 유지가 방증하듯 감산 공조도 퇴출 유도도 어려워, 다음 다운턴은 낸드에서 더 깊고 규율 없이 온다[2][5][7]. "거기를 선점 못하면 다음 턴이 오면 점점 (저가) 장사밖에 안 되는 거거든요." — 상품기획 리더[10].');
 }
 
 // ════════════════════════════════════════════════════════════════════════
-// S9 — 1차 저지선과 세 개의 구멍 (방벽 4층 + 구멍 콜아웃 3)
+// S12 — 1차 저지선과 세 개의 구멍 (방벽 4층 + 구멍 콜아웃 3)
 // ════════════════════════════════════════════════════════════════════════
 {
-  const s = contentSlide(9, '1차 저지선과 세 개의 구멍',
+  const s = contentSlide(12, '1차 저지선과 세 개의 구멍',
     [['계약이 지키는 것은 ', {}], ['물량뿐', { color: C.BLUE }], ['이다', {}]],
     '출처: 사내 인터뷰 (메모리 영업 리더) · 낸드 웨이퍼 가격 리서치');
 
@@ -434,27 +563,27 @@ function contentSlide(num, title, band, src) {
   });
   tx(s, '업계: 마이크론 SCA 16건 · 약 $1,000억\nLTA 선급금 10~30% 관행', { x: 0.92, y: 6.02, w: 6.0, h: 0.62, fontSize: 20, color: C.MUTED, lineSpacingMultiple: 1.15 });
 
-  // 구멍 콜아웃 3 (원 마커는 방벽 우변 위, 리더선으로 카드와 연결)
+  // 구멍 콜아웃 3 — 마커는 방벽 우변, 카드 중심과 같은 높이로 수평 연결
   const holes = [
-    { t: '구멍 1 — 완제품 부가가치', b: '웨이퍼 후퇴 시 마진 층 소멸\n계약가 1분기比 +246%', my: 2.93 },
-    { t: '구멍 2 — 계약 만기', b: '갱신의 힘은 계약서 밖에 있다\n“필요 없으면 PO 캔슬” (23년)', my: 4.53 },
-    { t: '구멍 3 — 기술 전환', b: '수요 이동 시 커버리지 공동화\n계약은 전환을 못 막는다 (예측)', my: 5.60 },
+    { t: '구멍 1 — 완제품 부가가치', b: '웨이퍼 후퇴 시 마진 층 소멸\n계약가 1분기比 +246%' },
+    { t: '구멍 2 — 계약 만기', b: '갱신의 힘은 계약서 밖에 있다\n“필요 없으면 PO 캔슬” (23년)' },
+    { t: '구멍 3 — 기술 전환', b: '수요 이동 시 커버리지 공동화\n계약은 전환을 못 막는다 (예측)' },
   ];
   holes.forEach((hc, i) => {
-    const y = [2.32, 3.92, 5.52][i];
-    const cy = y + 0.61;
-    dashCircle(s, 7.32, hc.my, 0.44, C.NEG);
-    arrow(s, 7.54, hc.my, 7.85, cy, { color: C.NEG, width: 1.5, dash: true, noHead: true });
-    rrect(s, 7.85, y, 4.82, 1.22, { fill: C.WHITE, line: { color: C.HAIRLINE, width: 1.0 } });
-    tx(s, hc.t, { x: 8.07, y: y + 0.14, w: 4.4, h: 0.30, fontSize: 20, bold: true, color: C.NEG });
-    tx(s, hc.b, { x: 8.07, y: y + 0.48, w: 4.4, h: 0.66, fontSize: 20, color: C.BODY, lineSpacingMultiple: 1.15 });
+    const y = [2.38, 3.78, 5.18][i];
+    const cy = y + 0.57;
+    dashCircle(s, 7.32, cy, 0.44, C.NEG);
+    arrow(s, 7.54, cy, 7.85, cy, { color: C.NEG, width: 1.5, dash: true, noHead: true });
+    rrect(s, 7.85, y, 4.82, 1.14, { fill: C.WHITE, line: { color: C.HAIRLINE, width: 1.0 } });
+    tx(s, hc.t, { x: 8.07, y: y + 0.10, w: 4.4, h: 0.30, fontSize: 20, bold: true, color: C.NEG });
+    tx(s, hc.b, { x: 8.07, y: y + 0.44, w: 4.4, h: 0.62, fontSize: 20, color: C.BODY, lineSpacingMultiple: 1.12 });
   });
 
   s.addNotes('"지금은 5년짜리에 선수금을 수십억 달러 단위로 받아서 통장에 넣어. 걔네가 구매 의무를 저버리면 그 개수 × 판가만큼 받은 캐시에서 깐다는 것 — 테이크 오어 페이(take-or-pay)야. 사우디 오일 계약처럼. 메모리가 처음으로 그 개념을 바인딩해." — 메모리 영업 리더[4]. 세 다운턴 어디에도 없던 매출 바닥 메커니즘이고 거래는 스팟→LTA→SCA로, 참여형 구조까지 금융의 언어로 진화 중이다[5][8]. 그러나 구멍도 셋 — 낸드 웨이퍼 계약가 급등(2025년 11월 한 달 +60% 초과·1분기 대비 +246%)은 완제품 부가가치의 고객 내재화 신호이고[11], "얘네는 계약을 했다지만 필요 없으면 CFO가 오더를 다 캔슬해 — 2023년 하반기에 경험한 거예요"[4], 기술 전환이 방아쇠인 다운턴에는 커버리지 자체가 공동화된다(예측)[5].');
 }
 
 // ════════════════════════════════════════════════════════════════════════
-// S10 — 세 개의 저지선 (다크 클로징)
+// S13 — 세 개의 저지선 (다크 — 처방 장 매듭 + 2차 저지선 상세로의 다리)
 // ════════════════════════════════════════════════════════════════════════
 {
   const s = pres.addSlide();
@@ -494,9 +623,23 @@ function contentSlide(num, title, band, src) {
     rrect(s, x, 6.50, 1.06, 0.44, { fill: C.NAVY_RAISED, line: { color: C.BLUE70, width: 1.0 }, radius: 0.22 });
     tx(s, c, { x, y: 6.50, w: 1.06, h: 0.44, fontSize: 20, color: C.INV_SUB, align: 'center', valign: 'middle' });
   });
-  tx(s, '10 / 10', { x: 11.47, y: 7.04, w: 1.2, h: 0.34, fontSize: 20, color: C.INV_MUTED, align: 'right', valign: 'middle' });
+  tx(s, `13 / ${TOTAL}`, { x: 11.47, y: 7.04, w: 1.2, h: 0.34, fontSize: 20, color: C.INV_MUTED, align: 'right', valign: 'middle' });
 
   s.addNotes('"1차 방어가 그렇게 되더라도 2차 방어가 이제부터 필요한 거죠. 여러분들이 그 과제를 하는 게 나는 2차 방어라고 생각해. 미래 리스크의 80%는 뭔가 마련을 해야 된다." — 메모리 영업 리더[4]. 세 저지선은 대체재가 아니라 직렬이다. 2차 방어의 골격 — 제품(램프업 속도와 수율), 투자("투자 셰어 < 빗 셰어 < 프로핏 셰어"의 규율), 오퍼레이션[4]. 일곱 편의 제안이 각자의 자리에서 구체안을 내며, 공통 질문은 하나다: 다운턴이 왔을 때, 그리고 그 한복판에서 새 게임이 태어났을 때, 우리는 대체되지 않는 공급자인가.');
 }
+
+// ════════════════════════════════════════════════════════════════════════
+// S14~S17 — 2차 저지선 상세 (골격만 · 내용은 작성자가 채운다)
+// 제목은 원문 §4의 2차 방어 골격(제품·투자·오퍼레이션 3축)을 따른 잠정안
+// ════════════════════════════════════════════════════════════════════════
+[
+  '제2 저지선 — 무엇을 지키는가',
+  '제품 — 램프업 속도와 수율',
+  '투자 — 투자 셰어 < 빗 셰어 < 프로핏 셰어',
+  '오퍼레이션 — 실행의 규율',
+].forEach((t, i) => {
+  const s = blankSlide(14 + i, t);
+  s.addNotes('내용 미작성 — 2차 저지선 상세. 원문 §4의 2차 방어 골격(제품: 램프업 속도와 수율 / 투자: "투자 셰어 < 빗 셰어 < 프로핏 셰어"의 순서를 지키는 규율 / 오퍼레이션)을 따른 잠정 제목이다.');
+});
 
 pres.writeFile({ fileName: OUT }).then(() => console.log('WROTE', OUT));

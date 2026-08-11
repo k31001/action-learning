@@ -1297,3 +1297,11 @@ index.md sources 섹션 3건 등록. 위키 페이지 반영은 제안서 확정
 - 검증: OOXML validate 통과 · LibreOffice 렌더 시각 QA 3라운드(겹침·오버플로 13건 수정) · 발표자 노트 10/10 · placeholder 0건.
 - 신규: 덱 + 아웃라인 md + `scripts/generate_storyline_overview.cjs` + 배경 스크립트 2종(`generate_storyline_overview_assets.py`·`compose_storyline_hero.py`) + `assets/storyline-overview/` PNG 3장. index.md outputs 섹션 등록, `.gitignore` 예외 추가.
 - samsung.com 실측은 네트워크 프록시 차단 → 저장소에 정립된 삼성 토큰(#1428A0·#0A1854, dashboard tailwind와 일치) 기준으로 도출. dashboard 미변경 → version bump 생략(사유: 빌드 산출물만 추가).
+
+## [2026-08-11] build | 공통 개요편 PPT 10장 → 17장 확장 (CMO 매트릭스 3장 + 2차 저지선 골격 4장)
+
+- **CMO 매트릭스 3장 삽입** (S6~S8, 역사 장 내부): `wiki/storyline/storyline-cmo.md` §5 「다운턴별 M×C→O 매트릭스」의 CMO-1(2007~09)·CMO-2(2010~13)·CMO-3(2022~23)을 각 1장으로 시각화. 상단 C 열 정의 스트립 4개(경기자 구조·배분 규칙·수요/거래·출발 위치) + 하단 표(액션 M·메커니즘 / 발화 맥락 C / 판정 칩 ◎△✕ / 관측 결과 O) 5행. 위키 4등급 판정과 primary 셀 서술 원칙을 슬라이드 폭에 맞춰 압축(각 행은 primary 셀 1개만 표기, 부차 판정은 발표자 노트로).
+- **2차 저지선 골격 4장 추가** (S14~S17): 제목·핵심 메시지 밴드·페이지 번호만 있는 빈 슬라이드. 제목은 원문 §4의 2차 방어 3축(제품 = 램프업 속도·수율 / 투자 = "투자 셰어 < 빗 셰어 < 프로핏 셰어" / 오퍼레이션) 기반 잠정안 — 내용은 작성자가 채운다.
+- **레이아웃 수정 5건**: ① S11(자연 실험) 재구성 — 낸드 5강 스트립을 전폭 12in으로 옮겨 라벨 2행 스태거 제거, 우상단에 DRAM 역전 스탯 카드 신설, 벤치마크 3카드를 가로 1행으로 ② CMO C 스트립 값 문자열 축약(2줄 넘침 제거) ③ S2 로드맵 카드 지오메트리(본문↔참조 겹침) ④ S12 구멍 콜아웃 3개를 카드 중심과 수평 정렬(대각 리더선 제거) ⑤ 페이지 번호 전면 `NN / 17` 재계산.
+- 검증: OOXML validate 통과 · 17장 전수 LibreOffice 렌더 검수(3라운드) · 20pt 미만 런 0건 · 발표자 노트 17/17.
+- 갱신: 아웃라인 md 재번호(S6~S8 신규·기존 S6~S10 → S9~S13·S14~S17 절 추가), index.md. dashboard 미변경 → version bump 생략.
