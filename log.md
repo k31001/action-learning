@@ -1288,3 +1288,13 @@ index.md sources 섹션 3건 등록. 위키 페이지 반영은 제안서 확정
 **멀티에이전트 실행(워크플로우 5에이전트, 사용자 지시 — 집필/자료·팩트체크·시각화 분리)**: ① 데이터 팩(장별 정량 주장 71건 ↔ 출처 대조표, 공백 12·모순 9 식별, 내부 인터뷰 익명화) ② 6장 산정 모델(3층×3안 — 기본 5년 누적 $5.9B: 방어 3.9+전환 1.6+프리미엄 0.4, 브래킷 보수 $1.2B~공격 $17.9B, HS 물량 내 삼성 비중 무대응 28% vs 전략 32%) ③ 시각화(mermaid 도식 4종·표 2종) → ④ 집필(2부 연속 집필로 톤 통일, 불가침 규칙 8종) → ⑤ 팩트체크(pass·critical 0·minor 7) → 호출자 최종 교정 7건 반영(아마존 FCF 전망 표현·CUDA 문단 인용 정합·인용 생략부호·NTB 글로스 분리·"80%씩" 2건·구글 협업 사내 확인 플래그·열쇠 문단 분할).
 
 **산출**: outputs/storyline/{outline, common-overview, ssd-fdp-proposal}.md — index.md outputs 섹션 등록. 위키 역갱신(fdp-host-ssd-platform·ssd-ufs-market 등)·대시보드·커밋은 사용자 확정 후 진행. 사내 확인 대기 2건: Titanium SSD 드라이브 공급 구조, 구글·메타 FDP 협업 표현 수위.
+
+## [2026-08-11] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 하이퍼스케일러 Q2 CapEx 전원 상향·FCF 다이버전스 실측 (v2.39.1)
+
+직전 포지션 맵 갱신(2026-08-04) 대비 git log 변경분을 파악해 재평가. 변경분은 전부 제품믹스(SSD)·역사 리서치·외부 전문가 프레이밍 계층 — enterprise SSD 1Q26 실측(삼성 1위 38.2%)·CMO 다운턴 역사·메모리 3사 CAPEX 역사·크리스 밀러·Sachin Katti 인터뷰. 일관 방법론(거시 축은 실현된 외부 사실이 움직인다)상 제품믹스(DF3/NAND)·역사·전문가 해석으로 분류돼 축 무이동.
+
+**신규 실현 사실(웹 수집)**: 07-28 재평가가 "다음 주 DF1 핵심 확인 이벤트"로 지목한 MS·Meta·Amazon Q2(07-29·07-30) 실적 실현 — 4사 CapEx 전원 상향(Amazon 2026 $200B→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B·Google $195~205B, 합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점(8.5) 재확인. 이창수 프레임("꼭짓점은 FCF")의 CapEx-vs-FCF 다이버전스가 Meta FCF -91%·Amazon TTM FCF 마이너스로 실측 등장 — 후기순환 tell이나 수요 붕괴 아닌 조달 경보(핸드투마우스·백로그 $514B 견조)라 축 무이동·EWI 감시 강화로 반영. GPU 임대가 firming/flat(H100 ~$2.69·H200 ~$4.38). DF2 무변화(신규 미중 실현 사실 부재).
+
+**결론**: DF1 8.5·DF2 0.5·확률 A26·B39·C8·D21·E6 전부 유지. 발동 트리거 0건.
+
+**갱신**: 신규 소스 `hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md`. wiki key-drivers.md(DF1·DF2)·scenario-matrix.md(확률표) [08-11 재평가] note. dashboard scenarioPlanning.js·indicators.js 미러(INITIAL_QUADRANT_POSITIONS·확률 주석·EWI 4종: bigtech_capex_growth 77→82·gpu_rental 2종·enterprise_ssd_tam 1Q26·트리거 3종 note). updates.js assessment 항목(업데이트 내역 "포지션·확률" 필터). version v2.39.1(패치). index.md sources 등록. npm run build 검증. 지정 브랜치 커밋 후 main 병합·푸시.
