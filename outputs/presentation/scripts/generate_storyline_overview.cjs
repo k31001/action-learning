@@ -32,7 +32,7 @@ const C = {
 };
 const F = '맑은 고딕';
 const RAD = 0.08;
-const TOTAL = 18;   // 표지 + 본문 12 + 2차 저지선 4 + 별첨 1
+const TOTAL = 19;   // 표지 + 본문 12 + 2차 저지선 5 + 별첨 1
 
 const pres = new pptxgen();
 pres.defineLayout({ name: 'W169', width: 13.333, height: 7.5 });
@@ -201,7 +201,7 @@ function blankSlide(num, title) {
 
   arrow(s, 11.35, Y + H, 11.35, 5.58);
   rrect(s, 6.17, 5.58, 6.5, 0.62, { fill: C.WHITE, line: { color: C.NAVY, width: 1.25 }, radius: 0.31 });
-  tx(s, '2차 저지선 상세 — S14 ~ S17', { x: 6.17, y: 5.58, w: 6.5, h: 0.62, fontSize: 20, bold: true, color: C.NAVY, align: 'center', valign: 'middle' });
+  tx(s, '2차 저지선 상세 — S14 ~ S18', { x: 6.17, y: 5.58, w: 6.5, h: 0.62, fontSize: 20, bold: true, color: C.NAVY, align: 'center', valign: 'middle' });
 
   s.addNotes('순서에는 뜻이 있다 — 과거를 다시 읽지 않으면 미래의 준비가 과거의 반복이 되기 때문이다. 그래서 진단(왜 지금인가) → 역사(룰의 세 번의 변화) → 재감사(무엇이 통했나) → 처방(세 개의 저지선) 순으로 논증한다. 1차 저지선은 이미 계약이 세우고 있고, 나머지 두 저지선은 제품 경쟁력의 몫 — 그 구체안이 이어지는 일곱 편이다.');
 }
@@ -637,10 +637,79 @@ function blankSlide(num, title) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-// S15 — 전략 1번 · 전환할 수 있는 몸 (outputs/storyline/mfg-fungibility-proposal.md 요약)
+// S15 — 비동기 사이클 (전략 1번의 당위성) · 100% 누적 막대
+// 데이터: wiki/concepts/product-mix-asynchrony.md
 // ════════════════════════════════════════════════════════════════════════
 {
-  const s = contentSlide(15, '전략 1번 · 전환할 수 있는 몸',
+  const s = contentSlide(15, '비동기 사이클 — 어느 믹스가 올지 모른다',
+    [['과거 3년에 믹스는 이미 뒤집혔고, ', {}], ['세 시나리오는 서로 반대로 갈라진다', { color: C.BLUE }]],
+    '출처: TrendForce·Yole (매출 기준) — product-mix-asynchrony.md');
+
+  // 세그먼트 정의 — 아래에서 위로 쌓는다
+  const SEG = [
+    { key: 'nand', n: 'NAND', f: C.GRAY, tc: C.BODY },
+    { key: 'gen', n: '범용 DRAM', f: C.BLUE40, tc: C.NAVY },
+    { key: 'hbm', n: 'HBM', f: C.BLUE, tc: C.INV },
+    { key: 'next', n: '차세대', f: C.NAVY, tc: C.INV },
+  ];
+  const BARS = [
+    { x: 0.80, lbl: '2023', d: { nand: 42.4, gen: 53.0, hbm: 4.6 } },
+    { x: 2.42, lbl: '2024', d: { nand: 42.6, gen: 45.9, hbm: 11.5 } },
+    { x: 4.04, lbl: '2025', d: { nand: 29.6, gen: 56.0, hbm: 14.4 } },
+    { x: 5.66, lbl: '2026E', d: { nand: 26.7, gen: 43.2, hbm: 30.1 } },
+    { x: 7.75, lbl: '① 수요발', d: { nand: 35, gen: 50, hbm: 15 } },
+    { x: 9.37, lbl: '② 공급발', d: { nand: 28, gen: 34, hbm: 38 } },
+    { x: 10.99, lbl: '③ 전환발', d: { nand: 27, gen: 33, hbm: 20, next: 20 } },
+  ];
+  const BW = 1.30, BASE = 5.90, BH = 3.28;
+
+  // 범례 (좌) + 시나리오 그룹 헤더 (우)
+  let lx = 0.67;
+  SEG.forEach((g) => {
+    rect(s, lx, 2.20, 0.22, 0.22, g.f);
+    tx(s, g.n, { x: lx + 0.30, y: 2.12, w: 1.85, h: 0.34, fontSize: 20, color: C.BODY, valign: 'middle' });
+    lx += 0.30 + (g.n.length > 4 ? 1.85 : 1.05);
+  });
+  tx(s, '2029 시나리오 — 예시 가정', { x: 7.20, y: 2.12, w: 5.47, h: 0.34, fontSize: 20, bold: true, color: C.BLUE, align: 'right', valign: 'middle' });
+
+  // 실적 / 시나리오 구분선
+  s.addShape('line', { x: 7.20, y: 2.56, w: 0, h: 3.70, line: { color: C.HAIRLINE, width: 1.25 } });
+
+  // 100% 누적 막대
+  BARS.forEach((b) => {
+    let acc = 0;
+    SEG.forEach((g) => {
+      const v = b.d[g.key];
+      if (!v) return;
+      const h = BH * (v / 100);
+      const y = BASE - h - acc;
+      rect(s, b.x, y, BW, h, g.f);
+      if (h >= 0.36) {
+        tx(s, `${Math.round(v)}%`, { x: b.x, y, w: BW, h, fontSize: 20, bold: true, color: g.tc, align: 'center', valign: 'middle' });
+      }
+      acc += h;
+    });
+    tx(s, b.lbl, { x: b.x - 0.25, y: 5.96, w: BW + 0.50, h: 0.30, fontSize: 20, color: C.MUTED, align: 'center' });
+  });
+  hline(s, 0.67, 12.67, BASE, C.HAIRLINE, 1.0);
+
+  // 결론 2타일
+  [
+    ['3년 만에 HBM 5% → 30%', 0.67],
+    ['2025년 DRAM +73% · NAND +3%', 6.81],
+  ].forEach(([t, x]) => {
+    rect(s, x, 6.36, 5.86, 0.46, C.BLUE12);
+    tx(s, t, { x: x + 0.22, y: 6.36, w: 5.42, h: 0.46, fontSize: 20, bold: true, color: C.NAVY, valign: 'middle' });
+  });
+
+  s.addNotes('단일 사이클 시대라면 모든 제품군이 같은 방향으로 움직여야 한다. 실측은 반대다 — 2025년 한 해에 DRAM은 +73%($907억→$1,657억), NAND는 +3.4%($674억→$697억)였다. 더 선명한 것은 2024년 4분기다: DRAM 매출 +9.9% QoQ 상승 국면에 NAND는 −6.2% QoQ로 내렸고, 이듬해 1분기에는 추가 −20%가 전망됐다. 같은 분기, 반대 방향 — 사이클이 하나였다면 불가능한 관측이다. 믹스도 3년 만에 뒤집혔다. HBM은 매출 비중 4.6%에서 30.1%로 6.5배, NAND는 42.4%에서 26.7%로 거의 반토막이 됐고, 범용 DRAM조차 53→46→56→43%로 오르내린다. 어떤 제품군도 안정된 지분을 갖지 못한다. 오른쪽 세 막대는 다음 다운턴(2028~29 창)의 세 원인 경로가 만드는 믹스로, 방향성 대비를 위한 예시 가정이며 예측이 아니다. 확정된 것은 하나 — 세 경로가 만드는 믹스는 서로 반대다. ①수요발(AI 투자수익률 재평가, 시나리오 C·D 합산 약 29%)이 오면 HBM 캐파가 남고, ②공급발(2028~29 신규 캐파 동시 도래 + CXMT)이 오면 범용 캐파가 남으며, ③전환발(3D DRAM·CXL·zHBM, 시나리오 E 5~10%)이 오면 둘 다 남으면서 차세대 캐파가 모자란다. 셋 중 하나를 골라 배분하면 나머지 둘에서 틀린다. 그런데 전환에는 실행만 6개월, 신호 감지와 의사결정을 붙이면 9~12개월이 들고 그사이 판가는 분기마다 15%씩 빠진다. 그래서 답은 방향의 선택이 아니라 전환 속도의 확보다 — 다음 장의 「전환할 수 있는 몸」이 그 방법이다. 수치 주의: 2023년 절대액은 이듬해 매출과 YoY에서 역산했고 2026E는 TrendForce 2026-01 전망치다. 비중은 매출 기준이며 비트 기준과 다르다 — 2024년 HBM은 매출의 20%였으나 비트로는 5%였다.');
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// S16 — 전략 1번 · 전환할 수 있는 몸 (outputs/storyline/mfg-fungibility-proposal.md 요약)
+// ════════════════════════════════════════════════════════════════════════
+{
+  const s = contentSlide(16, '전략 1번 · 전환할 수 있는 몸',
     [['무너뜨리는 것은 판가가 아니라 감가 — 가르는 것은 ', {}], ['전환 가능성', { color: C.BLUE }], ['이다', {}]],
     '출처: mfg-fungibility-proposal.md — 종합반도체의 양산 체제로');
 
@@ -688,18 +757,18 @@ function blankSlide(num, title) {
 }
 
 // ════════════════════════════════════════════════════════════════════════
-// S16~S17 — 2차 저지선 나머지 전략 (골격만)
+// S17~S18 — 2차 저지선 나머지 전략 (골격만)
 // ════════════════════════════════════════════════════════════════════════
 ['전략 2번 · (제목 미정)', '전략 3번 · (제목 미정)'].forEach((t, i) => {
-  const s = blankSlide(16 + i, t);
+  const s = blankSlide(17 + i, t);
   s.addNotes('내용 미작성 — 2차 저지선의 후속 전략 자리.');
 });
 
 // ════════════════════════════════════════════════════════════════════════
-// S18 — 별첨 · DS 전사로 넓히면 (파운드리 접점 포함)
+// S19 — 별첨 · DS 전사로 넓히면 (파운드리 접점 포함)
 // ════════════════════════════════════════════════════════════════════════
 {
-  const s = contentSlide(18, '별첨 · DS 전사로 넓히면',
+  const s = contentSlide(19, '별첨 · DS 전사로 넓히면',
     [['셋 다 사업부 단독 결정 범위를 넘는다 — ', {}], ['옵션으로만 제시한다', { color: C.BLUE }]],
     '출처: mfg-fungibility-proposal.md §4.1 · §3.1 — 전략 1번 별첨');
 

@@ -96,6 +96,7 @@
 
 ### 기술
 - [wiki/concepts/dram-technology.md](wiki/concepts/dram-technology.md) — DDR5/DDR6/LPDDR6, 1a→1d 미세공정
+- [wiki/concepts/product-mix-asynchrony.md](wiki/concepts/product-mix-asynchrony.md) — (NEW) 제품 믹스 비동기성: 2025년 DRAM +73% vs NAND +3.4%·2024 4Q 반대 방향 실측, 믹스 3년 만에 뒤집힘(HBM 4.6→30.1%·NAND 42.4→26.7%), 2029 3경로 시나리오 믹스(예시 가정) → 전환 속도 확보 논거
 - [wiki/concepts/nand-process-transition.md](wiki/concepts/nand-process-transition.md) — NAND 적층·hybrid bonding·YMTC IP 리스크
 - [wiki/concepts/emerging-tech.md](wiki/concepts/emerging-tech.md) — CXL·PIM·300층+ NAND
 
@@ -174,6 +175,7 @@
 - [sources/articles/apple-cxmt-china-dram-2026-07-08.md](sources/articles/apple-cxmt-china-dram-2026-07-08.md) — 애플이 중국 내수용 기기에 CXMT DRAM 기술 검증 착수(FT 2026-07-08)·미 행정부 사용 승인 로비·CXMT 1260H 리스트·YMTC 2022 전례·DRAM 계약가 +55~60%·CXMT 캐파점유 11%→15%(2028)·삼성·SK 과점 균열/애플 price leverage
 - [sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md](sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md) — 삼성 HBM4 NVIDIA 인증(06-05 Vera Rubin 3사 인증) 통과에도 볼륨 발주 미전환·매출 유상 평가용 샘플 수준(Winbuzzer 07-17)·SK Rubin 2/3+ 락인 / 확증 신호: 빅테크 2026 CapEx ~$725B(+77% YoY)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속·MATCH 위원회 단계·CXMT HBM 지연
 - [sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md](sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md) — 하이퍼스케일러 Q2 2026 실적 시즌(07-21~28 수집): Alphabet(07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향·Cloud 백로그 QoQ +$50B→$514B / SK하이닉스 Q2 영업이익 ~$43.7B·OPM ~76% 사상 최대 / MSFT·Meta 07-29·Amazon 07-30 발표 대기 / GPU 임대가 firming·DRAM Q3 +13~18% 유지·MATCH 위원회 단계·CXMT HBM 미확정
+- [sources/articles/memory-product-mix-history-2026-08.md](sources/articles/memory-product-mix-history-2026-08.md) — (NEW) 메모리 제품별 매출 시계열과 비동기 사이클 원본: DRAM/NAND 연간 매출 2023~2026E(TrendForce)·HBM의 DRAM 매출 내 비중 2023 8%→2026E 41%·2024 4Q DRAM +9.9% vs NAND −6.2% QoQ·2027 수급 갈림 전망
 - [sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md](sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md) — (NEW) 하이퍼스케일러 Q2 2026 실적 실현 + GPU 임대가 스냅샷(08-11 재평가 입력): MS·Meta·Amazon(07-29·07-30) 4사 CapEx 전원 상향(Amazon→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B·Google $195~205B, 합산 ~$745~750B·+82% YoY)·삭감 0건 / CapEx-vs-FCF 다이버전스 실측(Meta FCF -91%·Amazon TTM FCF 마이너스) / GPU 임대가 firming/flat(H100 ~$2.69·H200 ~$4.38)
 - [sources/articles/chris-miller-interviews-2025-12-to-2026-07.md](sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) — 크리스 밀러(Chip War 저자) 인터뷰·기고 10건 종합(2025-12~2026-07): 상원 증언(AI 3대 투입 컴퓨팅·인재·전력)·WaPo H200 비판·"HBM·장비 > GPU" 초크포인트 위계·Ascend 5~8배 열위·"중국 4년째 AI 과소투자"·중앙일보 고언 시리즈(R&D/설비 동시 투자·체질 전환)·경향 인터뷰(HBM 너머 추론 최적화 메모리·800조 클러스터 환영·애플–CXMT 경계)·피지컬 AI 위협 (대시보드 "인터뷰" 메뉴 미러)
 - [sources/articles/google-captive-titanium-fdp-factcheck-2026-08.md](sources/articles/google-captive-titanium-fdp-factcheck-2026-08.md) — (NEW) 구글 Captive SSD·FDP 팩트체크: "구글 Captive 미채택" 부분 반증(Titanium SSD 자체 설계 확인) + Chris Sabol OCP 발표·FDP 멀티벤더 확산(Micron·Kioxia·Silicon Motion)·FDP 정량 효과(OP 28% 제거 등)
@@ -211,8 +213,8 @@
 - [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md) — (NEW) 「SSD의 CUDA — 하드웨어를 지키는 소프트웨어」 — SSD 제안편(5~7장): Captive 진단(구글 이중 트랙·KV Cache)·3안 선택·문(SCA)/열쇠(FDP)/사람(FDE)·수익화 3단 사다리·5년 효과 산정($1.2B~$17.9B)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
-- [outputs/presentation/storyline-common-overview-outline.md](outputs/presentation/storyline-common-overview-outline.md) — (NEW) 「호황은 전략을 심는 계절이다」 공통 개요편 발표 18장 기획서 (핵심 메시지 밴드·시각 스펙·전환 논리·발표자 노트)
-- [outputs/presentation/storyline-common-overview.pptx](outputs/presentation/storyline-common-overview.pptx) — (NEW) 공통 개요편 18장 덱: 본문 13장(CMO 매트릭스 3장 = 다운턴별 M×C→O 포함) + 2차 저지선 4장(전략 1번 「전환할 수 있는 몸」 작성 완료) + 별첨 1장(DS 전사·파운드리 접점). 삼성 블루 모노크롬 · 전 텍스트 20pt 이상 · 도형 드로잉 데이터 그래픽 (`scripts/generate_storyline_overview.cjs`로 재생성)
+- [outputs/presentation/storyline-common-overview-outline.md](outputs/presentation/storyline-common-overview-outline.md) — (NEW) 「호황은 전략을 심는 계절이다」 공통 개요편 발표 19장 기획서 (핵심 메시지 밴드·시각 스펙·전환 논리·발표자 노트)
+- [outputs/presentation/storyline-common-overview.pptx](outputs/presentation/storyline-common-overview.pptx) — (NEW) 공통 개요편 19장 덱: 본문 13장(CMO 매트릭스 3장 = 다운턴별 M×C→O 포함) + 2차 저지선 5장(비동기 사이클 100% 누적 막대 + 전략 1번 「전환할 수 있는 몸」) + 별첨 1장(DS 전사·파운드리 접점). 삼성 블루 모노크롬 · 전 텍스트 20pt 이상 · 도형 드로잉 데이터 그래픽 (`scripts/generate_storyline_overview.cjs`로 재생성)
 - [outputs/presentation/dev-transformation-summary.pptx](outputs/presentation/dev-transformation-summary.pptx) — 개발실 체질 전환 요약 5장: 디테일 상·중·하 + 제품·기술 축(FDP 플랫폼) 2장, 도식 중심(타임라인·As-Is→To-Be·아이콘)·화이트+블루·그린. 개별본 `-high/-mid/-low/-fdp.pptx` + `dashboard/public/downloads/` 다운로드 미러 (`scripts/generate_dev_transformation_summary.cjs`로 재생성)
 - `outputs/presentation/*.pptx` — 4종 디자인 변형 (`scripts/generate_*_pptx.py`로 재생성)
 
