@@ -15,9 +15,13 @@
 | Q1 2025 | 34% | 36% | 25% | 5% |
 | Q2 2025 | 33% | 35% | 26% | 6% |
 | Q3 2025 | 32.6% | 33.2% | 25.7% | 8.5% |
+| Q4 2025 | **36.5%** (1위 탈환) | 32.1% | 22.4% | — |
+| Q1 2026 | **38.5%** | 28.8% | 22.4% | CXMT 7% |
 
-- 출처: TrendForce (2025-11-26), S&P Global Market Intelligence, Korea Herald
+- 출처: TrendForce (2025-11-26), S&P Global Market Intelligence, Korea Herald / Q4 2025~Q1 2026은 [memory-cycle-storyline-r3-2026-08-12.md](../../sources/raw-notes/memory-cycle-storyline-r3-2026-08-12.md) (과제팀 집계, TrendForce·Counterpoint 기준 병기)
 - 비고: Q3 2025 기타에 CXMT 등 중국 업체 포함 시작
+- ⚠️ **CXMT 수치의 기준 차이** — 중국 업체는 TrendForce 상위 공급사 순위표에 포함되지 않아 출처별로 갈린다. Q3 2025의 경우 본 표의 "기타 8.5%"와 과제팀 자료의 "CXMT 5%"가 그 차이다. 단일 수치로 인용하지 말 것
+- **독해**: 2025 Q3의 32.6%는 바닥이었고 Q4에 1위를 되찾아 Q1 2026에 38.5%까지 회복했다. 3사 사이를 오가는 **순환 점유율**은 원가·기술(1겹)을 회복하면 되찾아지지만, 중국으로 넘어간 **유출 점유율**은 돌아오지 않고 파이 자체를 줄인다 — 2013~2019년 3사 약 94%였던 DRAM은 현재 CXMT·난야·윈본드를 포함해 실질 6사 구도다 ([memory-cycle-storyline-r3-2026-08-12.md](../../sources/raw-notes/memory-cycle-storyline-r3-2026-08-12.md))
 
 ### 글로벌 DRAM 연간 매출 전망 (2025년)
 
