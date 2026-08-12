@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-11 ────────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-11',
+    type: 'assessment',
+    version: 'v2.39.1',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 하이퍼스케일러 Q2 CapEx 전원 상향·FCF 다이버전스 실측 등장·EWI 갱신',
+    summary:
+      '직전 포지션 맵 갱신(2026-08-04) 이후 git log 변경분은 전부 제품믹스(SSD)·역사 리서치·외부 전문가 프레이밍 계층 — enterprise SSD 1Q26 실측(삼성 1위 38.2%·Top5 $18.46B QoQ +86.1% 사상 최대)·CMO 다운턴 역사 렌즈·메모리 3사 CAPEX 역사·크리스 밀러(Chip War)·Sachin Katti(OpenAI) 인터뷰. 거시 축(DF1·DF2)은 "실현된 외부 사실"이 움직인다는 일관 방법론상 이들은 제품믹스(DF3/NAND)·역사·전문가 해석으로 분류돼 축 무이동. [핵심 신규 실현 사실] 07-28 재평가가 "다음 주 DF1 핵심 확인 이벤트"로 지목한 Microsoft·Meta·Amazon Q2(07-29·07-30) 실적이 실현 — 4사 CapEx 전원 상향(Amazon 2026 $200B→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B·Google $195~205B, 합산 ~$745~750B ≈ +82% YoY)·삭감 0건. 이미 정점(8.5)이므로 전원 상향은 신규 상방 레그가 아닌 재확인 → DF1 8.5 유지. [후기순환 tell 실측 등장] 08-04가 이창수 프레임("진짜 꼭짓점은 CapEx가 아니라 FCF")으로 선행 관전 대상 지목한 CapEx-vs-FCF 다이버전스가 Q2 실적에서 가시화 — Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B). 단 수요 붕괴가 아닌 조달 구조 경보(CapEx 자체 상승·핸드투마우스 재고 없음·Google Cloud 백로그 $514B 견조)라 D로의 확률 재배분 미실행, EWI 감시 강화로 반영. GPU 임대가 firming/flat(H100 ~$2.69·H200 ~$4.38, 붕괴 없음)로 수요 변곡 조기경보 미발동. DF2: 신규 미중 실현 사실 부재(크리스 밀러 "초크포인트 GPU→HBM 이동"은 외부 해석·MATCH 본회의 movement 없음·CXMT HBM 미확정) → 방향·위치 유지. 결론: DF1 8.5·DF2 0.5·확률 A26·B39·C8·D21·E6 전부 유지. EWI 4종 실측 갱신(bigtech_capex_growth 77→82·gpu_rental H100 ~$2.69·H200 ~$4.38·enterprise_ssd_tam 1Q26 삼성 1위 38.2%)·트리거 3종 note 갱신(demand_inflection_divergence에 FCF 축 실측·bigtech_capex_cut25 전원 상향 0삭감·bigtech_capex_2027_sustained MS FY27 상향). 발동 트리거 0건. 신규 소스 1건. 패치 v2.39.1.',
+    tags: ['시나리오', '포지션 맵', '확률', '유지', 'DF1', 'DF2', 'CapEx', 'FCF', '하이퍼스케일러', 'Q2실적', 'GPU임대가', 'SSD', 'EWI', 'dashboard'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5', detail: '08-04 이후 git log 변경분은 제품믹스(SSD 1Q26)·역사 리서치·외부 전문가 프레이밍으로 거시 축을 움직이는 실현된 외부 사실 아님. DF1: MS·Meta·Amazon Q2 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점 재확인. FCF 다이버전스 실측 등장은 조달 경보(수요 붕괴 아님). DF2: 신규 미중 실현 사실 부재. 두 축 위치·방향 유지' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '전원 상향은 이미 정점(DF1 8.5)인 축의 재확인이지 시나리오 간 상대 확률 변경 요인 아님. Meta FCF -91%·Amazon TTM FCF 마이너스는 후기순환 tell이나 D로의 재배분은 EWI 감시 강화로 대체(수요 자체는 견조) → 상대 확률 5종 전부 유지' },
+      { label: 'DF1 핵심 확인 이벤트 실현 — 4사 CapEx 전원 상향', detail: 'Amazon 2026 $200B→~$220B·MS FY27 $255~260B 상향·Meta 하한 $130~145B·Google $195~205B. 07-28이 "다음 주 대기"로 지목한 3개 tell(MS·Meta·Amazon)이 전부 상방으로 실현, 삭감 0건 (hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md)' },
+      { label: 'FCF 다이버전스 정식 관전축 승격', detail: '이창수 프레임("진짜 꼭짓점은 FCF")의 CapEx-vs-FCF 다이버전스가 Meta FCF -91%·Amazon TTM 마이너스로 실측 등장 — demand_inflection_divergence 3축(CSP FCF·AI 최종수요·GPU 생태계) 중 FCF 축 꺾임 확인. 나머지 2축 미꺼짐으로 미발동이나 정식 관전축 승격' },
+      { label: 'EWI·트리거 갱신', detail: 'bigtech_capex_growth 77→82(전원 상향)·gpu_rental_h100_usd/price_trend 08-11 스냅샷(firming/flat)·enterprise_ssd_tam 1Q26 실측($74B 연환산·삼성 1위 38.2%)·트리거 note 3종(divergence/cut25/2027_sustained). 발동 0건' },
+      { label: '위키 동기화', detail: 'wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치·wiki/scenarios/scenario-matrix.md 확률표에 [2026-08-11 재평가] 유지 note 추가. dashboard scenarioPlanning·indicators 미러. 신규 소스 hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md' },
+    ],
+    links: [
+      { label: 'hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+    ],
+  },
   // ── 2026-08-08 (iv) ──────────────────────────────────────────────────────────
   {
     date: '2026-08-08',

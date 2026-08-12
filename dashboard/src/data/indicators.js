@@ -26,11 +26,22 @@ export const INITIAL_QUADRANT_POSITIONS = [
   //   (하방·유보) 최장석 HBM 편중 다운사이드(HBM 꺼지면 캐파 stranded·HBM↔DDR 상쇄로 shortage→oversupply 반전, D/S 60~70%)·이창수 중복수요·NAND 조정 우려(YMTC 에코 확대, 내년 어느 시점)·원가 비교열위. 영업 수장 본인 "충분히 올랐다·파티할 때 아니다·2차 방어선 필요"로 정점+경계 톤.
   //   순효과: 바닥 경직화(상방)와 HBM편중·중복수요·NAND(하방)가 상쇄 → 정점 재확인, 거시 축 무이동. 커스텀 HBM 퇴조(이창수) vs zHBM 커스텀 시대(최장석) 논쟁은 DF3/제품믹스 축(EWI custom_hbm_revenue_share 병기)이지 DF1·DF2 아님.
   //   DF2: 신규 미중 실현 사실 부재 — 이창수 "중국 비동조화(미주 꺼져도 자동 연동 아님)"·미주 집중+중국 페이즈2 멀티이어는 관리된 공존(0.5) 정합 전망 → 위치·방향 유지.
-  { key: 'current',    date: '2026-08', df1: 8.5,  df2: 0.5,  note: '[08-04 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐, 내부 전문가 프레이밍으로 거시 축 무이동. 양면적: take-or-pay/NTB 바닥 경직화(상방 재확인) vs HBM 편중·중복수요·NAND 조정(하방 유보) 상쇄 → 정점 재확인. DF2: 이창수 중국 비동조화·미주 집중은 관리된 공존 정합. [07-28 재평가] in-window 신호 정점 재확인: Alphabet CapEx 상향·SK하이닉스 사상 최대. [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
+  // [2026-08-11 정기 재평가] DF1 8.5·DF2 0.5 유지 — 08-04 이후 git log 변경분은 전부 제품믹스(SSD)·역사 리서치·외부 전문가 프레이밍 계층:
+  //   enterprise SSD 1Q26 실측(삼성 1위 38.2%·Top5 $18.46B QoQ +86.1% 사상 최대)·CMO 다운턴 역사 렌즈·메모리 3사 CAPEX 역사·크리스 밀러(Chip War)·Sachin Katti(OpenAI) 인터뷰.
+  //   거시 축은 "실현된 외부 사실"이 움직인다는 일관 방법론상 이들은 제품믹스(DF3/NAND)·역사·전문가 해석으로 분류 → DF1 무이동. 삼성 SSD 1위는 AI-스토리지 NAND 강세 확인이나 삼성 개별 실행 신호(EWI enterprise_ssd_tam).
+  //   [핵심 신규 실현 사실] 07-28 재평가가 "다음 주 DF1 핵심 확인 이벤트"로 지목한 MS·Meta·Amazon Q2(07-29·07-30) 실적 실현 — 4사 CapEx 전원 상향(Amazon 2026 $200B→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B·Google $195~205B, 합산 ~$745~750B ≈ +82% YoY)·삭감 0건.
+  //     이미 정점(8.5)이므로 전원 상향은 신규 상방 레그가 아닌 재확인 → DF1 8.5 유지.
+  //   [후기순환 tell 실측 등장] 08-04가 이창수 프레임("진짜 꼭짓점은 CapEx가 아니라 FCF")으로 선행 관전 대상 지목한 CapEx-vs-FCF 다이버전스가 Q2 실적에서 가시화 — Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B).
+  //     단 수요 붕괴가 아닌 조달 구조 경보(CapEx 자체 상승·핸드투마우스 재고 없음·Google Cloud 백로그 $514B 견조) → 축 무이동, EWI(demand_inflection_divergence·bigtech_capex_growth FCF 렌즈) 감시 강화로 반영.
+  //   GPU 임대가 firming/flat(H100 ~$2.69·H200 ~$4.38, 붕괴 없음)로 수요 변곡 조기경보 미발동. DF2: 신규 미중 실현 사실 부재(크리스 밀러 "초크포인트 GPU→HBM 이동"은 외부 해석·MATCH 본회의 movement 없음·CXMT HBM 미확정) → 방향·위치 유지.
+  { key: 'current',    date: '2026-08', df1: 8.5,  df2: 0.5,  note: '[08-11 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동. 07-28이 지목한 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점 재확인. Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 조달 경보(수요 붕괴 아님)라 축 무이동·EWI 감시 강화. GPU 임대가 firming/flat. [08-04 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐, 내부 전문가 프레이밍으로 거시 축 무이동. 양면적: take-or-pay/NTB 바닥 경직화(상방 재확인) vs HBM 편중·중복수요·NAND 조정(하방 유보) 상쇄 → 정점 재확인. DF2: 이창수 중국 비동조화·미주 집중은 관리된 공존 정합. [07-28 재평가] in-window 신호 정점 재확인: Alphabet CapEx 상향·SK하이닉스 사상 최대. [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
 ]
 
-// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-08-04 정기 재평가 — 유지)
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-08-11 정기 재평가 — 유지)
 //   A 25~29 / B 35~39 / C 6~10 / D 19~23 / E 5~8  → 합 100
+//   [2026-08-11 정기 재평가 — 유지] 08-04 이후 git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치(CMO·CAPEX)·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동 → A26·B39·C8·D21·E6 전부 유지.
+//     07-28이 지목한 DF1 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건은 이미 정점(DF1 8.5)인 축의 재확인이지 시나리오 간 상대 확률 변경 요인 아님(이미 A+B 행 반영).
+//     Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 수요 붕괴가 아닌 조달 경보 → D로의 재배분 미실행, EWI(demand_inflection_divergence·bigtech_capex_growth FCF 렌즈) 감시 강화로 반영. DF2 무변화.
 //   [2026-08-04 정기 재평가 — 유지] 07-28 이후 git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐 — 내부 전문가 프레이밍으로 거시 축 무이동.
 //     양면적: 이창수 take-or-pay/NTB 1차 확인은 이미 C 8·D 21에 반영된 LTA→SCA 락인의 재확인(신규 증분 아님)·최장석 HBM 편중 다운사이드는 "AI가 꺼질 확률"이 아니라 "꺼졌을 때 삼성 캐파 리스크"(조건부 심도)라 상대 확률 무변화 → A26·B39·C8·D21·E6 전부 유지.
 //     커스텀 HBM 퇴조(이창수) vs zHBM 부상(최장석)은 DF3/제품믹스 신호로 EWI custom_hbm_revenue_share 병기, 시나리오 확률 무영향. DF2 무변화(중국 비동조화·미주 집중은 관리된 공존 정합).
@@ -163,7 +174,7 @@ export const INITIAL_INDICATORS = [
     source: '빅테크 분기 실적 발표',
     unit: '%',
     unitLabel: '% YoY',
-    currentValue: 77,
+    currentValue: 82,
     alertThreshold: -5,
     alertCondition: 'lte',
     alertDescription: '5~10% 둔화→D경보 / 절대 삭감→C긴급경보',
@@ -171,14 +182,15 @@ export const INITIAL_INDICATORS = [
     scenarioText: '20%+→A·B확인 / 5~10% 둔화→D / 절대삭감→C긴급',
     warningThreshold: 10,
     status: 'normal',
-    lastUpdated: '2026-08-04',
+    lastUpdated: '2026-08-11',
     history: [
       { date: '2026-05-05', value: 40, note: '2026년 초기값 (빅테크 4사 합산 +40%, 보수적 하한)' },
       { date: '2026-07-21', value: 77, note: '빅테크 4사 2026 CapEx ~$725B (Amazon $200B·MS $190B·Alphabet $175~185B·Meta $115~135B) = 2025 $410B 대비 +77% (Tom\'s Hardware·Statista). "AI 경제 건강·매출 성장이 자본지출 정당화" — DF1 정점 재확인' },
       { date: '2026-07-28', value: 77, note: 'Q2 실적 시즌 시작 — Alphabet(07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향(Cloud 백로그 QoQ +$50B→$514B, CNBC·Seeking Alpha) = 상방 확인. MSFT·Meta(07-29)·Amazon(07-30)은 창 직후 발표 예정으로 4사 합산 재계산은 다음 주 — Alphabet 상향으로 +77% 기준선은 상방 쪽. DF1 정점 재확인' },
       { date: '2026-08-04', value: 77, note: '[해석 렌즈 보강 — 이창수 부사장 인터뷰 08-03] 값 무변화. 이창수 프레임: "꼭짓점은 CapEx가 아니라 FCF" — 과거엔 CapEx↑=메모리 매수라 좋았으나, 지금은 CapEx↑인데 FCF가 흑자→마이너스로 꺾이면 빅테크 주가가 흔들리고(메타 사례) 미래 리스크를 매수하는 것. 3축(CSP FCF·AI 최종수요 진정성·GPU 생태계) 중 하나라도 안 꺼지면 수요 양호. → 향후 이 지표는 절대 CapEx 성장률과 함께 CapEx-vs-FCF 다이버전스를 병행 관전(demand_inflection_divergence 연동)' },
+      { date: '2026-08-11', value: 82, note: 'Q2 실적 실현(MS·Meta 07-29·Amazon 07-30) — 4사 전원 상향: Amazon 2026 $200B→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B·Google $195~205B. 합산 ~$745~750B → +77%에서 ~+82% YoY로 상향, 삭감 0건 = DF1 정점 재확인. 단 이창수 FCF tell 실측 등장 — Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B). CapEx↑는 유지되나 FCF 다이버전스가 후기순환 경보로 가시화(hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md)' },
     ],
-    note: 'Google·MS·Amazon·Meta 합산 CapEx YoY 성장률. 2026 +77%(20%+ 임계 대폭 초과) → A·B 확인 신호 강. Alphabet 07-22 상향($195~205B). [08-04] 이창수 프레임 — "진짜 꼭짓점은 FCF": CapEx↑ 자체보다 CapEx-vs-FCF 다이버전스(FCF 흑자→마이너스 반전)가 하락 변곡 선행 tell',
+    note: 'Google·MS·Amazon·Meta 합산 CapEx YoY 성장률. 2026 ~+82%(20%+ 임계 대폭 초과) → A·B 확인 신호 강. [08-11] Q2 실적 후 4사 전원 상향(합산 ~$745~750B). [08-04→08-11] 이창수 프레임 실측 검증 — "진짜 꼭짓점은 FCF": CapEx-vs-FCF 다이버전스(Meta FCF -91%·Amazon TTM FCF 마이너스)가 하락 변곡 선행 tell로 등장, 절대 CapEx 성장(상방)과 병행 관전',
     inputType: 'number',
     hint: '빅테크 4사 합산 AI CapEx YoY 성장률 % 입력',
     autoUpdateId: 'bigtech_capex_growth',
@@ -1046,15 +1058,16 @@ export const INITIAL_INDICATORS = [
     alertCondition: 'manual',
     alertDescription: 'AI 워크로드가 SSD 수요 성장의 40% 기여. 북미 DC SSD CAGR 27.6% (2025-2031)',
     scenarioSignals: ['A', 'B'],
-    scenarioText: 'TAM $69B 도달 (2031) 시 삼성 AI SSD 점유율 회복 여부가 RS-3 KPI',
+    scenarioText: 'TAM $69B 도달 (2031) 시 삼성 AI SSD 점유율 회복 여부가 RS-3 KPI. [08-11] 1Q26 실측 삼성 1위 38.2%',
     warningThreshold: null,
     status: 'normal',
-    lastUpdated: '2026-05-07',
+    lastUpdated: '2026-08-11',
     history: [
       { date: '2025', value: 32, note: '글로벌 Enterprise SSD 매출 ($32B, 265 EB)' },
+      { date: '2026-1Q', value: 74, note: '[실측] Top5 벤더 매출 $18.46B/분기(QoQ +86.1% 사상 최대) → 연환산 ~$74B. 삼성 1위 38.2%($7.05B·QoQ +92.8%)·SK그룹 25.1%·Micron 16.7%·Kioxia 12.0%·SanDisk 8.0%. 계약가 분기 +80%(공급 제약)·재고 사상 최저. 단 쇼티지 가격 급등이 부풀린 수치(TrendForce, enterprise-ssd-market-1q26-2026-08.md)' },
       { date: '2031E', value: 69, note: '북미 Data Center SSD만으로 $69.08B (CAGR 27.6%)' },
     ],
-    note: '하이퍼스케일러가 60% 매출 기여 (2024) → 65% (2025). PCIe Gen5 양산, Gen6 2026 진입, Gen7 2027~2028',
+    note: '하이퍼스케일러가 60% 매출 기여 (2024) → 65% (2025). PCIe Gen5 양산, Gen6 2026 진입, Gen7 2027~2028. [08-11] 1Q26 삼성 enterprise SSD 1위(38.2%) 실측 — AI-스토리지 NAND 수요 강세 확인(삼성 개별 실행 신호, 거시 축 무관). Micron 컨슈머 Crucial 철수로 전 산업 enterprise 집중',
     inputType: 'number',
     hint: '글로벌 Enterprise SSD 시장 TAM ($B) 입력',
   },
@@ -1230,8 +1243,9 @@ export const INITIAL_INDICATORS = [
       { date: '2026-06-02', value: -20, note: '2024~25 H100 임대가 급락 후 둔화세 (예시 판단값)' },
       { date: '2026-07-21', value: -20, note: '[정기 점검] 최신 실측은 firming — H200 온디맨드 +8% YoY(2025-07 $3.54→2026-07 $3.82). 6개월 추세 급락 신호 없음, -35% 경보 임계와 여유. 실측 바스켓(gpu_rental_h100_usd) 우선 참조' },
       { date: '2026-07-28', value: -20, note: '[정기 점검] 07-28 스냅샷 firming/flat — H100 온디맨드 중앙값 ~$3.46/h·H200 코호트 중앙값 ~$4.11/h(getdeploying). 주간 급락 신호 없음, Tier0 최선행 조기경보 미발동' },
+      { date: '2026-08-11', value: -20, note: '[정기 점검] 08-11 스냅샷 firming/flat — H200 코호트 중앙값 ~$4.38/h(소폭 상승)·H100 온디맨드 ~$2.69/h(Jarvislabs). 6개월 -35% 급락 신호 없음, gpu_rental_collapse 트리거·수요 변곡 조기경보 미발동' },
     ],
-    note: '메모리 수요의 최선행(Tier0) — 컴퓨트 수요 청산가격. 급락 = 과잉 빌드 신호. 2026-07 firming. demand-inflection-ewi.md',
+    note: '메모리 수요의 최선행(Tier0) — 컴퓨트 수요 청산가격. 급락 = 과잉 빌드 신호. 2026-08 firming/flat. demand-inflection-ewi.md',
     inputType: 'number',
     hint: 'GPU 시간당 임대가 6개월 변동률 % (하락이면 음수)',
   },
@@ -1255,8 +1269,9 @@ export const INITIAL_INDICATORS = [
       { date: '2026-06-02', value: 3.21, note: 'Vast.ai 바스켓 (H100 SXM $2.52 / H200 $3.91, 0.5:0.5)' },
       { date: '2026-07-21', value: 3.21, note: '[정기 점검] H200 온디맨드 중앙값 $3.82 (전년 $3.54 대비 +8% YoY, getdeploying)·H100 Vast.ai 최저 ~$1.49/h — 붕괴 아닌 firming. Tier0 최선행 신호 정상, 수요 변곡 조기경보 미발동. Vast.ai API 자동 갱신 지속' },
       { date: '2026-07-28', value: 3.21, note: '[정기 점검] 07-28 시장 스냅샷 — H100 온디맨드 중앙값 ~$3.46/h(범위 $1.49~6.98)·H200 코호트 중앙값 ~$4.11/h(범위 $2.30~13.78, getdeploying). 직전 $3.82 대비 정합, 붕괴 없음. 실측 바스켓은 Vast.ai API 자동 갱신 지속' },
+      { date: '2026-08-11', value: 3.21, note: '[정기 점검] 08-11 시장 스냅샷 — H100 온디맨드 중앙값 ~$2.69/h(Jarvislabs, 범위 $1.49~6.98·스팟 ~$1.03~2.00)·H200 온디맨드 ~$3.99/h(Jarvislabs)·복수 공급사 중앙값 ~$4.38/h(스팟 ~$1.99, getdeploying). H200 중앙값 소폭 상승(~$4.11→~$4.38)·H100 공급사별 분산 큼 — firming/flat, 붕괴 없음. Tier0 최선행 조기경보 미발동' },
     ],
-    note: '실측 GPU 현물 임대가(Tier0 최선행). H100 SXM·H200 0.5:0.5 바스켓으로 유동성 안정화. 매일 자동 누적되어 추세 형성. 23년 ~$8 → 25~26년 $2~4. 2026-07 firming(H200 +8% YoY).',
+    note: '실측 GPU 현물 임대가(Tier0 최선행). H100 SXM·H200 0.5:0.5 바스켓으로 유동성 안정화. 매일 자동 누적되어 추세 형성. 23년 ~$8 → 25~26년 $2~4. 2026-08 firming/flat(H200 중앙값 ~$4.38).',
     inputType: 'number',
     hint: 'AI GPU 바스켓 중앙 임대가 $/GPU·h (Vast.ai 자동 갱신)',
     autoUpdateId: 'gpu_rental_h100_usd',
@@ -1468,7 +1483,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: 'HBM 신규 설비 집행 중단·소재 비축 즉시 실행',
     activated: false,
     activatedDate: null,
-    note: '[2026-08-04] 미발동 — 정반대 방향 유지. 인터뷰 2건은 삭감 신호 아님(핸드투마우스 재고 없음). 단 이창수 프레임 보강 — 절대 CapEx 삭감뿐 아니라 CapEx↑인데 FCF 흑자→마이너스 반전(빅테크 내 차별화 시작)이 선행 tell. [2026-07-28] Alphabet Q2(07-22) 2026 CapEx 상향($195~205B)·SK하이닉스 Q2 사상 최대. 삭감 신호 0건',
+    note: '[2026-08-11] 미발동 — Q2 실적 실현으로 정반대 방향 확정: MS·Meta·Amazon(07-29·07-30) 전원 상향, 삭감(YoY -25%) 발표 0건(Amazon $200B→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B). 단 이창수 FCF 렌즈 실측 — 절대 삭감은 없으나 CapEx↑ + FCF 흑자→마이너스 반전(Meta -91%·Amazon TTM 마이너스)이 빅테크 내 차별화 선행 tell로 등장. [2026-08-04] 미발동 — 인터뷰 2건은 삭감 신호 아님. [2026-07-28] Alphabet 상향·SK하이닉스 사상 최대',
     probabilityDelta: { A: -4, B: -10, C: +8, D: +6, E: 0 },
     df1Delta: -2.5,
     df2Delta: 0,
@@ -1633,7 +1648,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: 'HBM5 조기 양산 결정 · 텍사스 2기 조기 착공 확정 · 소재 장기 계약 확대',
     activated: false,
     activatedDate: null,
-    note: '[2026-08-04] 미충족(2027 $500B+ 가이던스 기준)·방향 상방 유지. 이창수(08-03) 1차 보강 — 다년 take-or-pay 멀티이어 캐파 바인딩(선수금 수백억 달러·NTB 하한)이 CapEx의 계약적 뒷받침. 단 "진짜 꼭짓점은 FCF"라 절대 CapEx 지속과 함께 FCF 다이버전스 병행 관전. [2026-07-28] 선행 상방 — Alphabet Q2(07-22) 2026 CapEx $180~190B→$195~205B 상향·Cloud 백로그 QoQ +$50B→$514B(다년 수요 락인)',
+    note: '[2026-08-11] 미충족이나 선행 상방 강화 — Q2 실적에서 Microsoft가 FY2027 CapEx를 $255~260B로 상향(단독으로 2027 4사 합산 $500B+ 경로의 큰 축). 4사 정식 2027 가이던스 제시 시 충족. Amazon도 2026 $220B로 상향해 2027 기저 상승. 단 이창수 "꼭짓점은 FCF"라 FCF 다이버전스(Meta -91%·Amazon TTM 마이너스) 병행 관전. [2026-08-04] 미충족·take-or-pay 멀티이어 바인딩이 계약적 뒷받침. [2026-07-28] Alphabet 상향·Cloud 백로그 $514B',
     isPositive: true,
     probabilityDelta: { A: 0, B: +8, C: -4, D: -4, E: 0 },
     df1Delta: 1.5,
@@ -1759,7 +1774,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: '하락 전 대응 윈도우 — RS-9 프로토콜 발동, RS-1 캐파 동결 + RS-5 규율 즉시 적용',
     activated: false,
     activatedDate: null,
-    note: '괴리 로직 = 하락 변곡 선행 윈도우. demand-inflection-ewi.md §3. [2026-08-04] 미발동 — 이창수 부사장(08-03) 3축 프레임과 정합: (1) CSP FCF(CapEx↑인데 FCF 흑자→마이너스 반전이 진짜 꼭짓점)·(2) AI 최종수요 진정성·(3) GPU 생태계 중 하나라도 안 꺼지면 수요 양호. 현재 핸드투마우스(고객·자사 재고 없음)로 선행 약화 신호 부재 → 미발동 확인. 향후 FCF 다이버전스 병행 관전',
+    note: '괴리 로직 = 하락 변곡 선행 윈도우. demand-inflection-ewi.md §3. [2026-08-11] 미발동 유지 — 단 이창수 3축 중 (1) CSP FCF 축이 Q2 실적에서 실측 등장: Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B). 그러나 CapEx 자체 상승(4사 전원 상향·~+82% YoY)·핸드투마우스 재고 없음·Google Cloud 백로그 $514B·GPU 임대가 firming으로 (2)AI 최종수요·(3)GPU 생태계 미꺼짐 → 선행 약화 아닌 조달 구조 경보로 판정, 미발동. FCF 다이버전스를 정식 관전축으로 승격(향후 3축 동시 꺾임 시 발동). [2026-08-04] 미발동 — 3축 프레임 정합, 핸드투마우스로 선행 약화 신호 부재',
     probabilityDelta: { A: -2, B: -6, C: +2, D: +6, E: 0 },
     df1Delta: -1.5,
     df2Delta: 0,
