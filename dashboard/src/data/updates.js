@@ -14,6 +14,30 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-12 (ii) ───────────────────────────────────────────────────────────
+  {
+    date: '2026-08-12',
+    type: 'ingest',
+    version: 'v2.40.0',
+    title: '회의록 메뉴 신설 — 2026-08-11 액션러닝 브레인스토밍 녹취(99분) 정리본',
+    summary:
+      '사용자 제공 회의 녹취(Clova Note ASR 전사, 99분 17초)를 sources/raw-notes 에 전문 보존하고, 대시보드 최상단에 "Meeting Notes" 탭을 신설해 정리본을 게시했다. ' +
+      '회의는 액션러닝 발표 스토리라인 초안 리뷰 + 2차 저지선(제품·기술 경쟁력) 아이디어 발표. 서사 합의(호황은 우리가 만든 것이 아니다 → 과거 다운턴 복기 → 3개 저지선), ' +
+      '진단(치킨게임 성립 조건 붕괴·경쟁력 축 이동·"사업이 건재하다"의 5가지 조작적 정의·2023년 첫 감산에서 공식 실패), ' +
+      '솔루션 6건(라인 전환 TAT 훈련·낸드-DRAM 라인 일체화·본딩 전담 조직 개발담당 직속·마일스톤 기술 PI 인센티브·M&A/투자·최적 본딩 구조와 로직 접목)을 ' +
+      '결정 6건·액션 9건·미결 6건으로 구조화. 회의록은 실명 대신 역할 라벨을 쓰고, 발언자가 유보한 수치는 "녹취 발언" 단서와 함께 미결로 이월했다. 마이너 v2.40.0.',
+    tags: ['회의록', '액션러닝', '스토리라인', '2차 저지선', '전환 TAT', '라인 일체화', '본딩', 'zHBM', '조직', 'dashboard'],
+    items: [
+      { label: '신규 소스', detail: 'sources/raw-notes/action-learning-brainstorming-2026-08-11.md — 녹취 전문 무수정 보존 + ASR 표기 변이 대조표(랜드→낸드·감사→감산·GHBM→zHBM·이비지→EVG 추정 등)와 미확인 수치 목록' },
+      { label: '회의록 메뉴 신설', detail: 'data/meetings.js + components/MeetingNotes.jsx — 좌측 목록·검색 + 개요표·참석자(역할 추정)·결정/액션/미결 3종 패널 + 핵심 발언 대형 인용 + 목차·14개 논의 섹션' },
+      { label: '공용 렌더러 분리', detail: 'components/ContentBlocks.jsx 신설 — 블록(p/h/ul/ol/quote/table)·KeyQuote 렌더러를 Interviews.jsx 에서 추출해 회의록과 공유 (중복 95줄 제거)' },
+      { label: '최상단 탭 추가', detail: 'App.jsx TOP_TABS 에 meetings 추가(Interviews 다음, NotebookPen 아이콘). URL 해시 #/meetings/<회의id> 로 공유 가능' },
+      { label: '이월된 미결 6건', detail: '2023 감산율(낸드 ~40%·DRAM ~30%) 재확인 / 점유율 시계열 기준 확정 / "최적 본딩 구조"의 최적 정의(제품 특성 vs 공정 호환율) / 전환 능력의 값 정의(원가·매출·탄력성) / 본딩 설비 과점 대응 / 3차 저지선 포함 범위' },
+    ],
+    links: [
+      { label: 'action-learning-brainstorming-2026-08-11.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/action-learning-brainstorming-2026-08-11.md' },
+    ],
+  },
   // ── 2026-08-11 ────────────────────────────────────────────────────────────────
   {
     date: '2026-08-11',

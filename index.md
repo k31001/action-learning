@@ -189,6 +189,7 @@
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
 - [sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md](sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) — 시니어 파트너 인터뷰 딥리서치 (사용자 1차 + WSTS·IDC·IEA·Anthropic·NASA·NDRC 교차 팩트체크): "하드웨어 시간 돌아옴" 4대 메시지·전략 권고 7개
+- [sources/raw-notes/action-learning-brainstorming-2026-08-11.md](sources/raw-notes/action-learning-brainstorming-2026-08-11.md) — (NEW) 액션러닝 과제 브레인스토밍 회의 녹취 전문(99분, Clova Note ASR): 스토리라인 3개 저지선 합의·치킨게임 성립조건 붕괴·경쟁력 축 이동·"사업이 건재하다" 5조건·2023년 첫 감산 해부·2차 저지선 아이디어 6건(전환 TAT 훈련·낸드-DRAM 라인 일체화·조직 통합·기술 PI 인센티브·M&A/투자·최적 본딩 구조) + ASR 표기 변이 대조표·미확인 수치 목록 (대시보드 "회의록" 메뉴 미러)
 - [sources/raw-notes/keyence-benchmark-note-2026-08-12.md](sources/raw-notes/keyence-benchmark-note-2026-08-12.md) — (NEW) 키엔스 벤치마크 사내 별첨: 10년 50~56% 영업이익률 밴드(사이클 무관)·팹리스 경영·외보(外報) 체계·"고객이 원하는 상품을 만들지 않는다"·1983년 저마진 사업 매각 + 저장소 대조표(2018 DS 51.6% 일치 / 2026 상반기 68%는 미검증)와 전략 1·2 배분표
 - [sources/raw-notes/memory-capex-history-research-2026-08-08.md](sources/raw-notes/memory-capex-history-research-2026-08-08.md) — 메모리 3사 CAPEX·실적 히스토리 리서치 (2016~2026E, 각사 IR·TrendForce·환율표)
 - [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 베인앤컴퍼니 신문섭 파트너 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
@@ -234,3 +235,6 @@
 - [dashboard/src/components/DecisionTracker.jsx](dashboard/src/components/DecisionTracker.jsx) — D1~D9 즉시 결정 트래커
 - [dashboard/src/data/interviews.js](dashboard/src/data/interviews.js) — 인터뷰 아카이브 데이터 (확장형 스키마: keyQuotes·블록 기반 섹션, sources/raw-notes 미러)
 - [dashboard/src/components/Interviews.jsx](dashboard/src/components/Interviews.jsx) — "인터뷰" 탭 (좌측 목록·검색 + 핵심 인용문 대형 강조 + 목차·블록 본문, 인터뷰 추가 대비 확장형 구조)
+- [dashboard/src/data/meetings.js](dashboard/src/data/meetings.js) — (NEW) 회의록 아카이브 데이터 (개요·참석자 역할 추정·결정/액션/미결 + 블록 기반 논의 섹션, sources/raw-notes 녹취 미러)
+- [dashboard/src/components/MeetingNotes.jsx](dashboard/src/components/MeetingNotes.jsx) — (NEW) "회의록(Meeting Notes)" 탭 (좌측 목록·검색 + 결정·액션 아이템·미결 3종 패널 + 핵심 발언 대형 강조 + 목차·블록 본문)
+- [dashboard/src/components/ContentBlocks.jsx](dashboard/src/components/ContentBlocks.jsx) — (NEW) 문서형 콘텐츠 공용 렌더러 (블록 p/h/ul/ol/quote/table + KeyQuote — 인터뷰·회의록 공유)

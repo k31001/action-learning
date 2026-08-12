@@ -2,7 +2,7 @@ import { useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { useHashSegment } from './hooks/useHashRoute'
 import { triggerAutoUpdate } from './hooks/useMarketData'
-import { Activity, BarChart3, BookOpen, Compass, Crosshair, History, Hourglass, MessageSquareQuote, Share2 } from 'lucide-react'
+import { Activity, BarChart3, BookOpen, Compass, Crosshair, History, Hourglass, MessageSquareQuote, NotebookPen, Share2 } from 'lucide-react'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
 import IndicatorGrid from './components/IndicatorGrid'
@@ -14,6 +14,7 @@ import ScenarioPlanning from './components/ScenarioPlanning'
 import BottleneckModel from './components/BottleneckModel'
 import Strategies from './components/Strategies'
 import Interviews from './components/Interviews'
+import MeetingNotes from './components/MeetingNotes'
 import KnowledgeGraph from './components/KnowledgeGraph'
 import Updates from './components/Updates'
 import Storyline from './components/Storyline'
@@ -29,6 +30,7 @@ const TOP_TABS = [
   { id: 'planning',      label: 'Scenario Planning',       icon: Compass },
   { id: 'strategy',      label: 'Strategy',                icon: Crosshair },
   { id: 'interviews',    label: 'Interviews',              icon: MessageSquareQuote },
+  { id: 'meetings',      label: 'Meeting Notes',           icon: NotebookPen },
   { id: 'graph',         label: 'Knowledge Graph',         icon: Share2 },
   { id: 'updates',       label: 'Updates',                 icon: History },
 ]
@@ -195,6 +197,7 @@ export default function App() {
         {topTab === 'planning'      && <ScenarioPlanning />}
         {topTab === 'strategy'      && <Strategies />}
         {topTab === 'interviews'    && <Interviews />}
+        {topTab === 'meetings'      && <MeetingNotes />}
         {topTab === 'graph'         && <KnowledgeGraph />}
         {topTab === 'updates'       && <Updates />}
         </ErrorBoundary>
