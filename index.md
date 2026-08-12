@@ -216,8 +216,8 @@
 - [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md) — (NEW) 「SSD의 CUDA — 하드웨어를 지키는 소프트웨어」 — SSD 제안편(5~7장): Captive 진단(구글 이중 트랙·KV Cache)·3안 선택·문(SCA)/열쇠(FDP)/사람(FDE)·수익화 3단 사다리·5년 효과 산정($1.2B~$17.9B)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
-- [outputs/presentation/storyline-common-overview-outline.md](outputs/presentation/storyline-common-overview-outline.md) — (NEW) 「호황은 전략을 심는 계절이다」 공통 개요편 발표 19장 기획서 (핵심 메시지 밴드·시각 스펙·전환 논리·발표자 노트)
-- [outputs/presentation/storyline-common-overview.pptx](outputs/presentation/storyline-common-overview.pptx) — (NEW) 공통 개요편 19장 덱: 본문 13장(CMO 매트릭스 3장 = 다운턴별 M×C→O 포함) + 2차 저지선 5장(비동기 사이클 100% 누적 막대 + 전략 1번 「전환할 수 있는 몸」) + 별첨 1장(DS 전사·파운드리 접점). 삼성 블루 모노크롬 · 전 텍스트 20pt 이상 · 도형 드로잉 데이터 그래픽 (`scripts/generate_storyline_overview.cjs`로 재생성)
+- [outputs/presentation/storyline-common-overview-outline.md](outputs/presentation/storyline-common-overview-outline.md) — (NEW) 「호황은 전략을 심는 계절이다」 공통 개요편 발표 20장 기획서 (핵심 메시지 밴드·시각 스펙·전환 논리·발표자 노트)
+- [outputs/presentation/storyline-common-overview.pptx](outputs/presentation/storyline-common-overview.pptx) — (NEW) 공통 개요편 20장 덱: 본문 13장(CMO 매트릭스 3장 = 다운턴별 M×C→O 포함) + 2차 저지선 6장(당위성 2장 + 전략 1번 「전환할 수 있는 몸」·전략 2번 「판을 옮긴다」) + 별첨 1장(DS 전사·파운드리 접점). 삼성 블루 모노크롬 · 전 텍스트 20pt 이상 · 도형 드로잉 데이터 그래픽 (`scripts/generate_storyline_overview.cjs`로 재생성)
 - [outputs/presentation/dev-transformation-summary.pptx](outputs/presentation/dev-transformation-summary.pptx) — 개발실 체질 전환 요약 5장: 디테일 상·중·하 + 제품·기술 축(FDP 플랫폼) 2장, 도식 중심(타임라인·As-Is→To-Be·아이콘)·화이트+블루·그린. 개별본 `-high/-mid/-low/-fdp.pptx` + `dashboard/public/downloads/` 다운로드 미러 (`scripts/generate_dev_transformation_summary.cjs`로 재생성)
 - `outputs/presentation/*.pptx` — 4종 디자인 변형 (`scripts/generate_*_pptx.py`로 재생성)
 
