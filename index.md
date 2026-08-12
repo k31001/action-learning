@@ -191,6 +191,7 @@
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
 - [sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md](sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) — 시니어 파트너 인터뷰 딥리서치 (사용자 1차 + WSTS·IDC·IEA·Anthropic·NASA·NDRC 교차 팩트체크): "하드웨어 시간 돌아옴" 4대 메시지·전략 권고 7개
+- [sources/raw-notes/keyence-benchmark-note-2026-08-12.md](sources/raw-notes/keyence-benchmark-note-2026-08-12.md) — (NEW) 키엔스 벤치마크 사내 별첨: 10년 50~56% 영업이익률 밴드(사이클 무관)·팹리스 경영·외보(外報) 체계·"고객이 원하는 상품을 만들지 않는다"·1983년 저마진 사업 매각 + 저장소 대조표(2018 DS 51.6% 일치 / 2026 상반기 68%는 미검증)와 전략 1·2 배분표
 - [sources/raw-notes/memory-capex-history-research-2026-08-08.md](sources/raw-notes/memory-capex-history-research-2026-08-08.md) — 메모리 3사 CAPEX·실적 히스토리 리서치 (2016~2026E, 각사 IR·TrendForce·환율표)
 - [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 베인앤컴퍼니 신문섭 파트너 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
 - [sources/articles/captive-ssd-fdp-context-2026-08.md](sources/articles/captive-ssd-fdp-context-2026-08.md) — 웹 리서치 종합: Captive SSD 위상 변화 4단계(완제품→펌웨어→자체 컨트롤러 Nitro→표준·웨이퍼)·하이퍼스케일러 SSD 수요 ~55%·NAND 웨이퍼 +246%·FDP 표준 기원(Meta·Google 주도·삼성 공동)
