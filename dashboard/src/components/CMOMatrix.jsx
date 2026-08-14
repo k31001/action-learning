@@ -3,12 +3,13 @@ import { LayoutGrid, List, X, AlertTriangle, Lightbulb } from 'lucide-react'
 import SourceLink from './SourceLink'
 import {
   CMO_DOWNTURNS, CMO_PHASES, CMO_PRODUCTS, CMO_CONTEXTS,
-  CMO_VERDICTS, CMO_CAUSES, CMO_ENTRIES,
+  CMO_VERDICTS, CMO_CAUSES, CMO_ENTRIES, CMO_PREP_TYPES,
 } from '../data/cmoMatrix'
 
 const VERDICT = Object.fromEntries(CMO_VERDICTS.map(v => [v.id, v]))
 const DOWNTURN = Object.fromEntries(CMO_DOWNTURNS.map(d => [d.id, d]))
 const PHASE = Object.fromEntries(CMO_PHASES.map(p => [p.id, p]))
+const PREP_TYPE = Object.fromEntries(CMO_PREP_TYPES.map(p => [p.id, p]))
 
 // 대비/대응은 과거 관측, 추천/실수는 예측 — 국면 배지 색으로 구분
 const PHASE_TONE = {
@@ -90,6 +91,11 @@ function EntryDetail({ entry, onClose }) {
             {d.label}
           </span>
           <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${PHASE_TONE[entry.phase]}`}>{p.label}</span>
+          {entry.prepType && (
+            <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${PREP_TYPE[entry.prepType].tone}`} title={PREP_TYPE[entry.prepType].desc}>
+              {PREP_TYPE[entry.prepType].label}
+            </span>
+          )}
           <span className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-zinc-100 text-zinc-600">{entry.product}</span>
           <span className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-zinc-100 text-zinc-600">{entry.context}</span>
           <VerdictBadge entry={entry} />
@@ -148,6 +154,7 @@ export default function CMOMatrix() {
   const [products, setProducts] = useState(() => new Set(CMO_PRODUCTS))
   const [contexts, setContexts] = useState(() => new Set(CMO_CONTEXTS.map(c => c.id)))
   const [verdicts, setVerdicts] = useState(() => new Set(['clear', 'partial', 'adverse', 'mistake']))
+  const [prepTypes, setPrepTypes] = useState(() => new Set(CMO_PREP_TYPES.map(p => p.id)))
   const [q, setQ] = useState('')
   const [selected, setSelected] = useState(null)
 
@@ -162,6 +169,7 @@ export default function CMOMatrix() {
     setProducts(new Set(CMO_PRODUCTS))
     setContexts(new Set(CMO_CONTEXTS.map(c => c.id)))
     setVerdicts(new Set(['clear', 'partial', 'adverse', 'mistake']))
+    setPrepTypes(new Set(CMO_PREP_TYPES.map(p => p.id)))
     setQ('')
   }
   // 프리셋 — 자주 쓰는 조합 한 번에
@@ -175,6 +183,9 @@ export default function CMOMatrix() {
       setVerdicts(new Set(['adverse']))
     } else if (key === 'prep') {
       setPhases(new Set(['prep', 'recommend']))
+    } else if (key === 'prepIntent') {
+      setPhases(new Set(['prep', 'recommend']))
+      setPrepTypes(new Set(['intent']))
     } else if (key === 'next') {
       setDownturns(new Set(['d4']))
     }
@@ -187,6 +198,8 @@ export default function CMOMatrix() {
       if (!phases.has(e.phase)) return false
       if (!products.has(e.product)) return false
       if (!contexts.has(e.context)) return false
+      if (e.prepType && !prepTypes.has(e.prepType)) return false
+      if (!e.prepType && prepTypes.size < CMO_PREP_TYPES.length && (e.phase === 'prep' || e.phase === 'recommend')) return false
       const vKey = e.phase === 'mistake' ? 'mistake' : e.causes ? 'clear' : e.verdict
       if (!verdicts.has(vKey) && !(e.causes && [...verdicts].some(v => Object.values(e.causes).some(c => c.verdict === v)))) return false
       if (needle) {
@@ -195,7 +208,7 @@ export default function CMOMatrix() {
       }
       return true
     })
-  }, [downturns, phases, products, contexts, verdicts, q])
+  }, [downturns, phases, products, contexts, verdicts, prepTypes, q])
 
   const counts = useMemo(() => {
     const by = { clear: 0, partial: 0, adverse: 0, mistake: 0, forecast: 0 }
@@ -229,7 +242,8 @@ export default function CMOMatrix() {
           <span className="text-[11px] font-semibold text-zinc-400">프리셋</span>
           <Chip onClick={() => preset('worked')} tone="bg-emerald-600 text-white">효과 있었던 것만 (◎)</Chip>
           <Chip onClick={() => preset('failed')} tone="bg-red-600 text-white">실패·역효과 (✕)</Chip>
-          <Chip onClick={() => preset('prep')} tone="bg-sky-600 text-white">대비 국면만</Chip>
+          <Chip onClick={() => preset('prepIntent')} tone="bg-blue-600 text-white">⭑ 다운턴 대비 전략만</Chip>
+          <Chip onClick={() => preset('prep')} tone="bg-sky-600 text-white">대비 국면 전체</Chip>
           <Chip onClick={() => preset('next')} tone="bg-blue-600 text-white">다음 다운턴</Chip>
           <button onClick={resetAll} className="text-[11px] text-zinc-400 hover:text-zinc-700 underline underline-offset-2">
             전체 해제
@@ -281,6 +295,14 @@ export default function CMOMatrix() {
                 <span title={c.desc}>{c.id}</span>
               </Chip>
             ))}
+          </FilterRow>
+          <FilterRow label="대비 성격">
+            {CMO_PREP_TYPES.map(t => (
+              <Chip key={t.id} active={prepTypes.has(t.id)} onClick={() => toggle(prepTypes, setPrepTypes)(t.id)} tone={t.tone}>
+                <span title={t.desc}>{t.label}</span>
+              </Chip>
+            ))}
+            <span className="text-[11px] text-zinc-400 self-center ml-1">대비·추천 항목에만 적용</span>
           </FilterRow>
           <FilterRow label="판정">
             {CMO_VERDICTS.map(v => (
@@ -351,6 +373,11 @@ export default function CMOMatrix() {
                                     <span className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: d.color }} />
                                     <span className="text-[10px] font-bold text-zinc-400">{d.short}</span>
                                     <span className={`px-1 rounded text-[10px] font-bold ${PHASE_TONE[e.phase]}`}>{PHASE[e.phase].label}</span>
+                                    {e.prepType && (
+                                      <span className={`px-1 rounded text-[10px] font-bold ${PREP_TYPE[e.prepType].tone}`} title={PREP_TYPE[e.prepType].desc}>
+                                        {PREP_TYPE[e.prepType].label}
+                                      </span>
+                                    )}
                                     <VerdictBadge entry={e} compact />
                                   </div>
                                   <span className="text-[12px] leading-snug text-zinc-700 line-clamp-3">{e.action}</span>
@@ -395,6 +422,11 @@ export default function CMOMatrix() {
                     </td>
                     <td className="px-3 py-2 align-top border-b border-zinc-100">
                       <span className={`px-1.5 py-0.5 rounded text-[11px] font-bold ${PHASE_TONE[e.phase]}`}>{PHASE[e.phase].label}</span>
+                      {e.prepType && (
+                        <span className={`ml-1 px-1.5 py-0.5 rounded text-[11px] font-bold ${PREP_TYPE[e.prepType].tone}`} title={PREP_TYPE[e.prepType].desc}>
+                          {PREP_TYPE[e.prepType].label}
+                        </span>
+                      )}
                     </td>
                     <td className="px-3 py-2 align-top border-b border-zinc-100 text-zinc-600 whitespace-nowrap">{e.product}</td>
                     <td className="px-3 py-2 align-top border-b border-zinc-100 text-zinc-600 whitespace-nowrap">{e.context}</td>
