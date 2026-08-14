@@ -14,6 +14,7 @@
 - [wiki/storyline/storyline-real-options.md](wiki/storyline/storyline-real-options.md) — (NEW) 실물옵션 렌즈: 콜(RS-1·MB-5·D9)·풋(RS-8·NTB)·전환(SE-1·SE-2·RS-2)·포기(시안 Plan B) 옵션 포트폴리오 + EWI 행사 신호
 - [wiki/storyline/storyline-disruption.md](wiki/storyline/storyline-disruption.md) — (NEW) 파괴적 혁신 렌즈: HBM 파괴 피해 사례 → CXMT 로엔드·3D DRAM/CXL 차세대·AI SSD 인접 파괴와 대응
 - [wiki/storyline/storyline-cmo.md](wiki/storyline/storyline-cmo.md) — (NEW) CMO 렌즈(Context-Mechanism-Outcome): 다운턴 3건(2007~09·2010~13·2022~23) CMO 분해 → 2026~28 맥락·메커니즘 감사 → 액션 추적(A1~A6 효과 판정 ◎/△/✕ → 전략 번역) → 경쟁사 CMO 비교(DRAM: SK·마이크론 / NAND: Kioxia·YMTC, 벤치마킹 B1~B5) → 차기 다운턴 전략 4순위(계약 바닥·역사이클 대상 교정·치킨게임 봉인·맥락 EWI)
+- [wiki/storyline/cmo-matrix.md](wiki/storyline/cmo-matrix.md) — (NEW) CMO 통합 매트릭스: 1~3차 다운턴(관측)+4차(예측)를 하나의 필터 가능한 데이터셋으로 — 대비/대응 국면 구분, 제품(DRAM·NAND·SSD·UFS·공통)×관점(제조·투자·개발·제품·운영) 5관점 통일, 4차 추천 전략+예상 실수 12종 (대시보드 CMO Matrix 탭 단일 소스)
 
 ## wiki/scenarios — 5개 시나리오 + 매트릭스
 
@@ -204,6 +205,8 @@
 
 ## dashboard — 빌드 산출물 (최상위, Vercel 루트)
 
+- [dashboard/src/data/cmoMatrix.js](dashboard/src/data/cmoMatrix.js) — CMO 통합 매트릭스 엔트리 ([wiki/storyline/cmo-matrix.md](wiki/storyline/cmo-matrix.md) 미러)
+- [dashboard/src/components/CMOMatrix.jsx](dashboard/src/components/CMOMatrix.jsx) — CMO Matrix 탭 (다운턴·국면·제품·관점·판정 필터 + 매트릭스/리스트 뷰)
 - [dashboard/src/data/scenarioPlanning.js](dashboard/src/data/scenarioPlanning.js) — SCENARIOS·INITIAL_QUADRANT_POSITIONS (wiki 미러)
 - [dashboard/src/data/strategies.js](dashboard/src/data/strategies.js) — DECISIONS·RS·전략 (wiki 미러)
 - [dashboard/src/data/indicators.js](dashboard/src/data/indicators.js) — EWI 지표
