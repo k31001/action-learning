@@ -14,14 +14,14 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
-  // ── 2026-08-08 (iv) ──────────────────────────────────────────────────────────
+  // ── 2026-08-14 ───────────────────────────────────────────────────────────────
   {
-    date: '2026-08-08',
+    date: '2026-08-14',
     type: 'build',
-    version: 'v2.39.0',
+    version: 'v2.41.0',
     title: 'CMO Matrix 탭 신설 — 1~4차 다운턴 통합 매트릭스 + 필터',
     summary:
-      '요청("개선된 테이블을 별도 페이지로 — 1·2·3차를 하나의 테이블에 통합, 조건 필터, 다음 다운턴 테이블도 함께, 추천 전략과 흔한 실수 예측, 대비/대응 구분, C는 제조·투자·개발·제품·운영 공통 5관점, M은 DRAM·NAND·SSD/UFS·공통 구분")에 따라 신규 최상위 탭 추가. 위키 단일 소스 wiki/storyline/cmo-matrix.md 신설. 축 재설계: 다운턴 4종 × 국면(대비=다운턴 전/대응=다운턴 중, 4차는 추천/실수) × 제품 4종 × 관점 5종 × 판정(◎△✕, 4차는 원인 3종별 분기). 매트릭스 뷰(제품×관점 그리드)와 리스트 뷰 토글, 프리셋 필터 4종(효과 있었던 것만·실패·대비 국면·다음 다운턴), 본문 검색, 항목 클릭 시 상세 패널(원인별 결과 분기·조기 신호·차단 장치). 4차는 추천 전략 9건 + 예상되는 흔한 실수 12건. 대비 국면 엔트리는 근거 조사 완료 후 추가 예정. 마이너 v2.39.0(신규 페이지).',
+      '요청("개선된 테이블을 별도 페이지로 — 1·2·3차를 하나의 테이블에 통합, 조건 필터, 다음 다운턴 테이블도 함께, 추천 전략과 흔한 실수 예측, 대비/대응 구분, C는 제조·투자·개발·제품·운영 공통 5관점, M은 DRAM·NAND·SSD/UFS·공통 구분")에 따라 신규 최상위 탭 추가. 위키 단일 소스 wiki/storyline/cmo-matrix.md 신설. 축 재설계: 다운턴 4종 × 국면(대비=다운턴 전/대응=다운턴 중, 4차는 추천/실수) × 제품 4종 × 관점 5종 × 판정(◎△✕, 4차는 원인 3종별 분기). 매트릭스 뷰(제품×관점 그리드)와 리스트 뷰 토글, 프리셋 필터 4종(효과 있었던 것만·실패·대비 국면·다음 다운턴), 본문 검색, 항목 클릭 시 상세 패널(원인별 결과 분기·조기 신호·차단 장치). 4차는 추천 전략 9건 + 예상되는 흔한 실수 12건. 대비 국면 엔트리는 근거 조사 완료 후 추가 예정. 마이너 v2.41.0(신규 페이지 — main의 v2.40.0 위에 병합).',
     tags: ['CMO Matrix', '신규 탭', '필터', '대비/대응', '다운턴', 'dashboard'],
     items: [
       { label: 'C 축 통일', detail: '다운턴마다 달랐던 개별 맥락 대신 제조·투자·개발·제품·운영 5관점으로 고정 — 네 번의 다운턴을 같은 관점에서 세로로 비교 가능' },
@@ -32,6 +32,71 @@ export const UPDATES = [
     ],
     links: [
       { label: 'cmo-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/cmo-matrix.md' },
+    ],
+  },
+  // ── 2026-08-12 (ii) ───────────────────────────────────────────────────────────
+  {
+    date: '2026-08-12',
+    type: 'ingest',
+    version: 'v2.40.0',
+    title: '회의록 메뉴 신설 — 2026-08-11 액션러닝 브레인스토밍 녹취(99분) 정리본',
+    summary:
+      '사용자 제공 회의 녹취(Clova Note ASR 전사, 99분 17초)를 sources/raw-notes 에 전문 보존하고, 대시보드 최상단에 "Meeting Notes" 탭을 신설해 정리본을 게시했다. ' +
+      '회의는 액션러닝 발표 스토리라인 초안 리뷰 + 2차 저지선(제품·기술 경쟁력) 아이디어 발표. 서사 합의(호황은 우리가 만든 것이 아니다 → 과거 다운턴 복기 → 3개 저지선), ' +
+      '진단(치킨게임 성립 조건 붕괴·경쟁력 축 이동·"사업이 건재하다"의 5가지 조작적 정의·2023년 첫 감산에서 공식 실패), ' +
+      '솔루션 6건(라인 전환 TAT 훈련·낸드-DRAM 라인 일체화·본딩 전담 조직 개발담당 직속·마일스톤 기술 PI 인센티브·M&A/투자·최적 본딩 구조와 로직 접목)을 ' +
+      '결정 6건·액션 9건·미결 6건으로 구조화. 회의록은 실명 대신 역할 라벨을 쓰고, 발언자가 유보한 수치는 "녹취 발언" 단서와 함께 미결로 이월했다. 마이너 v2.40.0.',
+    tags: ['회의록', '액션러닝', '스토리라인', '2차 저지선', '전환 TAT', '라인 일체화', '본딩', 'zHBM', '조직', 'dashboard'],
+    items: [
+      { label: '신규 소스', detail: 'sources/raw-notes/action-learning-brainstorming-2026-08-11.md — 녹취 전문 무수정 보존 + ASR 표기 변이 대조표(랜드→낸드·감사→감산·GHBM→zHBM·이비지→EVG 추정 등)와 미확인 수치 목록' },
+      { label: '회의록 메뉴 신설', detail: 'data/meetings.js + components/MeetingNotes.jsx — 좌측 목록·검색 + 개요표·참석자(역할 추정)·결정/액션/미결 3종 패널 + 핵심 발언 대형 인용 + 목차·14개 논의 섹션' },
+      { label: '공용 렌더러 분리', detail: 'components/ContentBlocks.jsx 신설 — 블록(p/h/ul/ol/quote/table)·KeyQuote 렌더러를 Interviews.jsx 에서 추출해 회의록과 공유 (중복 95줄 제거)' },
+      { label: '최상단 탭 추가', detail: 'App.jsx TOP_TABS 에 meetings 추가(Interviews 다음, NotebookPen 아이콘). URL 해시 #/meetings/<회의id> 로 공유 가능' },
+      { label: '이월된 미결 6건', detail: '2023 감산율(낸드 ~40%·DRAM ~30%) 재확인 / 점유율 시계열 기준 확정 / "최적 본딩 구조"의 최적 정의(제품 특성 vs 공정 호환율) / 전환 능력의 값 정의(원가·매출·탄력성) / 본딩 설비 과점 대응 / 3차 저지선 포함 범위' },
+    ],
+    links: [
+      { label: 'action-learning-brainstorming-2026-08-11.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/action-learning-brainstorming-2026-08-11.md' },
+    ],
+  },
+  // ── 2026-08-11 ────────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-11',
+    type: 'assessment',
+    version: 'v2.39.1',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 하이퍼스케일러 Q2 CapEx 전원 상향·FCF 다이버전스 실측 등장·EWI 갱신',
+    summary:
+      '직전 포지션 맵 갱신(2026-08-04) 이후 git log 변경분은 전부 제품믹스(SSD)·역사 리서치·외부 전문가 프레이밍 계층 — enterprise SSD 1Q26 실측(삼성 1위 38.2%·Top5 $18.46B QoQ +86.1% 사상 최대)·CMO 다운턴 역사 렌즈·메모리 3사 CAPEX 역사·크리스 밀러(Chip War)·Sachin Katti(OpenAI) 인터뷰. 거시 축(DF1·DF2)은 "실현된 외부 사실"이 움직인다는 일관 방법론상 이들은 제품믹스(DF3/NAND)·역사·전문가 해석으로 분류돼 축 무이동. [핵심 신규 실현 사실] 07-28 재평가가 "다음 주 DF1 핵심 확인 이벤트"로 지목한 Microsoft·Meta·Amazon Q2(07-29·07-30) 실적이 실현 — 4사 CapEx 전원 상향(Amazon 2026 $200B→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B·Google $195~205B, 합산 ~$745~750B ≈ +82% YoY)·삭감 0건. 이미 정점(8.5)이므로 전원 상향은 신규 상방 레그가 아닌 재확인 → DF1 8.5 유지. [후기순환 tell 실측 등장] 08-04가 이창수 프레임("진짜 꼭짓점은 CapEx가 아니라 FCF")으로 선행 관전 대상 지목한 CapEx-vs-FCF 다이버전스가 Q2 실적에서 가시화 — Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B). 단 수요 붕괴가 아닌 조달 구조 경보(CapEx 자체 상승·핸드투마우스 재고 없음·Google Cloud 백로그 $514B 견조)라 D로의 확률 재배분 미실행, EWI 감시 강화로 반영. GPU 임대가 firming/flat(H100 ~$2.69·H200 ~$4.38, 붕괴 없음)로 수요 변곡 조기경보 미발동. DF2: 신규 미중 실현 사실 부재(크리스 밀러 "초크포인트 GPU→HBM 이동"은 외부 해석·MATCH 본회의 movement 없음·CXMT HBM 미확정) → 방향·위치 유지. 결론: DF1 8.5·DF2 0.5·확률 A26·B39·C8·D21·E6 전부 유지. EWI 4종 실측 갱신(bigtech_capex_growth 77→82·gpu_rental H100 ~$2.69·H200 ~$4.38·enterprise_ssd_tam 1Q26 삼성 1위 38.2%)·트리거 3종 note 갱신(demand_inflection_divergence에 FCF 축 실측·bigtech_capex_cut25 전원 상향 0삭감·bigtech_capex_2027_sustained MS FY27 상향). 발동 트리거 0건. 신규 소스 1건. 패치 v2.39.1.',
+    tags: ['시나리오', '포지션 맵', '확률', '유지', 'DF1', 'DF2', 'CapEx', 'FCF', '하이퍼스케일러', 'Q2실적', 'GPU임대가', 'SSD', 'EWI', 'dashboard'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5', detail: '08-04 이후 git log 변경분은 제품믹스(SSD 1Q26)·역사 리서치·외부 전문가 프레이밍으로 거시 축을 움직이는 실현된 외부 사실 아님. DF1: MS·Meta·Amazon Q2 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점 재확인. FCF 다이버전스 실측 등장은 조달 경보(수요 붕괴 아님). DF2: 신규 미중 실현 사실 부재. 두 축 위치·방향 유지' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '전원 상향은 이미 정점(DF1 8.5)인 축의 재확인이지 시나리오 간 상대 확률 변경 요인 아님. Meta FCF -91%·Amazon TTM FCF 마이너스는 후기순환 tell이나 D로의 재배분은 EWI 감시 강화로 대체(수요 자체는 견조) → 상대 확률 5종 전부 유지' },
+      { label: 'DF1 핵심 확인 이벤트 실현 — 4사 CapEx 전원 상향', detail: 'Amazon 2026 $200B→~$220B·MS FY27 $255~260B 상향·Meta 하한 $130~145B·Google $195~205B. 07-28이 "다음 주 대기"로 지목한 3개 tell(MS·Meta·Amazon)이 전부 상방으로 실현, 삭감 0건 (hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md)' },
+      { label: 'FCF 다이버전스 정식 관전축 승격', detail: '이창수 프레임("진짜 꼭짓점은 FCF")의 CapEx-vs-FCF 다이버전스가 Meta FCF -91%·Amazon TTM 마이너스로 실측 등장 — demand_inflection_divergence 3축(CSP FCF·AI 최종수요·GPU 생태계) 중 FCF 축 꺾임 확인. 나머지 2축 미꺼짐으로 미발동이나 정식 관전축 승격' },
+      { label: 'EWI·트리거 갱신', detail: 'bigtech_capex_growth 77→82(전원 상향)·gpu_rental_h100_usd/price_trend 08-11 스냅샷(firming/flat)·enterprise_ssd_tam 1Q26 실측($74B 연환산·삼성 1위 38.2%)·트리거 note 3종(divergence/cut25/2027_sustained). 발동 0건' },
+      { label: '위키 동기화', detail: 'wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치·wiki/scenarios/scenario-matrix.md 확률표에 [2026-08-11 재평가] 유지 note 추가. dashboard scenarioPlanning·indicators 미러. 신규 소스 hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md' },
+    ],
+    links: [
+      { label: 'hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+    ],
+  },
+  // ── 2026-08-08 (iv) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-08',
+    type: 'ingest',
+    version: 'v2.39.0',
+    title: '메모리 3사 CAPEX 히스토리 — 역사이클 투자 정량 근거 + Data Visualization CAPEX 탭 신설',
+    summary:
+      '"다운턴에서 투자를 늘리는 삼성 전략"의 근거를 숫자·그래프로 확인하기 위한 신규 데이터 카테고리. 2016~2026E 3사 CAPEX(삼성 DS·SK하이닉스·Micron)·삼성 DS 매출/영업이익/메모리 매출·DRAM/NAND 부문별(2019·2025·2026E, TrendForce) 시계열을 수집해 wiki/concepts/memory-capex-history.md 신설, Data Visualization에 인터랙티브 CAPEX 서브탭 추가 — 부문 선택(전체/DRAM/NAND)과 시리즈 토글 칩으로 한 차트에서 원하는 항목만 동적 표시. 다운턴 음영(2019·2023)에서 삼성만 투자를 유지한 패턴(2023: 삼성 +1% vs SK -56% vs Micron -42%)과 회복기 수확, 그리고 2026E 격차 수렴(역사이클 우위 축소)까지 시각화. 마이너 v2.39.0.',
+    tags: ['CAPEX', '역사이클', 'DRAM', 'NAND', 'TrendForce', 'dashboard', 'wiki'],
+    items: [
+      { label: 'wiki/concepts/memory-capex-history.md 신설', detail: '2019(-69% 이익에도 capex -5%)·2023(-14.9조 적자에도 사상 최대 48.4조) 실증 + 2008~2012 치킨게임 원형 + 격차 수렴 한계' },
+      { label: 'sources/raw-notes/memory-capex-history-research-2026-08-08.md', detail: '각사 IR·TrendForce·연평균 환율표·추정 방법론·전체 URL' },
+      { label: 'CAPEX 서브탭 (visualizations.js CAPEX_DATA)', detail: '부문 3종 × 시리즈 8종 토글 ComposedChart(좌 $B·우 조원), 인사이트 카드 3종, 다운턴 CAPEX YoY 비교, 집계 기준 각주' },
+    ],
+    links: [
+      { label: 'memory-capex-history.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/memory-capex-history.md' },
+      { label: 'TrendForce 2026 CapEx 전망', href: 'https://www.trendforce.com/presscenter/news/20251113-12780.html' },
     ],
   },
   // ── 2026-08-08 (iii) ─────────────────────────────────────────────────────────

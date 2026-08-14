@@ -559,6 +559,96 @@ export const TECHNOLOGY_DATA = {
   },
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// CAPEX — 메모리 3사 투자 히스토리 (역사이클 투자 근거)
+// ─────────────────────────────────────────────────────────────────────────────
+// 출처: wiki/concepts/memory-capex-history.md ← sources/raw-notes/memory-capex-history-research-2026-08-08.md
+//
+// 단위 약속:
+//   - 회사별 CAPEX: $B (삼성·SK 원화 공시치를 연평균 환율로 환산 — krw 필드에 조원 원본 병기)
+//   - 삼성 재무 (dsRev·dsOp·memRev): 조원 (우측 축)
+//   - 삼성 CAPEX는 DS 부문(파운드리 포함), SK·Micron은 전사. Micron은 회계연도(8월 말 종료)
+//   - DRAM/NAND 회사별 분리치는 2019·2025·2026E만 공개 추정 존재 (TrendForce)
+
+export const CAPEX_DATA = {
+  title: '메모리 3사 CAPEX vs 삼성 실적 — 역사이클 투자 (2016~2026E)',
+  source: 'wiki/concepts/memory-capex-history.md (각사 IR, TrendForce, SemiAnalysis)',
+  downturnYears: ['2019', '2023'],
+  years: [
+    { year: '2016',  samsung: 11.3, samsungKrw: 13.15, skhynix: 5.4,  skKrw: 6.3,   micron: 5.8,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 51.2, dsOp: 13.6, memRev: null },
+    { year: '2017',  samsung: 26.1, samsungKrw: 29.5,  skhynix: 9.1,  skKrw: 10.3,  micron: 4.9,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: 16.3, kioxiaNand: null, industryNand: null,
+      dsRev: 74.3, dsOp: 35.2, memRev: null },
+    { year: '2018',  samsung: 21.5, samsungKrw: 23.7,  skhynix: 15.5, skKrw: 17.0,  micron: 8.2,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: 22.9, kioxiaNand: null, industryNand: null,
+      dsRev: 86.3, dsOp: 44.6, memRev: null },
+    { year: '2019',  samsung: 19.4, samsungKrw: 22.6,  skhynix: 10.9, skKrw: 12.7,  micron: 9.1,
+      samsungDram: 8.0, skDram: 5.5, micronDram: 3.0, industryDram: 18.0, kioxiaNand: null, industryNand: null,
+      dsRev: 64.9, dsOp: 14.0, memRev: null },
+    { year: '2020',  samsung: 27.9, samsungKrw: 32.9,  skhynix: 8.5,  skKrw: 10.07, micron: 8.0,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 72.9, dsOp: 18.8, memRev: null },
+    { year: '2021',  samsung: 38.1, samsungKrw: 43.6,  skhynix: 10.9, skKrw: 12.49, micron: 10.0,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 94.2, dsOp: 29.2, memRev: null },
+    { year: '2022',  samsung: 37.1, samsungKrw: 47.9,  skhynix: 14.7, skKrw: 19.01, micron: 12.1,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 98.5, dsOp: 23.8, memRev: null },
+    { year: '2023',  samsung: 37.1, samsungKrw: 48.4,  skhynix: 6.4,  skKrw: 8.33,  micron: 7.0,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 66.6, dsOp: -14.9, memRev: 44.1 },
+    { year: '2024',  samsung: 33.9, samsungKrw: 46.3,  skhynix: 11.7, skKrw: 15.95, micron: 8.1,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 111.1, dsOp: 15.1, memRev: 84.6 },
+    { year: '2025',  samsung: 30.3, samsungKrw: 41.5,  skhynix: 20.1, skKrw: 27.52, micron: 13.8,
+      samsungDram: 18.0, skDram: 17.5, micronDram: 11.0, industryDram: 53.7, kioxiaNand: 3.2, industryNand: 21.1,
+      dsRev: 130.1, dsOp: 24.9, memRev: 104.1 },
+    { year: '2026E', samsung: 42.9, samsungKrw: 60.0,  skhynix: 32.1, skKrw: 45.0,  micron: 20.0,
+      samsungDram: 20.0, skDram: 20.5, micronDram: 13.5, industryDram: 61.3, kioxiaNand: 4.5, industryNand: 22.2,
+      dsRev: null, dsOp: null, memRev: null },
+  ],
+
+  // 다운턴 대응 비교 — CAPEX YoY (%)
+  downturnResponse: {
+    title: '다운턴 대응 비교 — CAPEX 증감률 (YoY %)',
+    source: 'wiki/concepts/memory-capex-history.md',
+    data: [
+      { company: '삼성 (2023)',       yoy: 1.0,   note: '₩47.9→48.4조 — 적자에도 사상 최대 유지' },
+      { company: 'SK하이닉스 (2023)', yoy: -56.2, note: '₩19.0→8.3조 — 반토막' },
+      { company: 'Micron (FY2023)',   yoy: -42.0, note: '$12.1→7.0B' },
+      { company: '삼성 (2019)',       yoy: -4.6,  note: '₩23.7→22.6조 — 규모 유지' },
+      { company: 'SK하이닉스 (2019)', yoy: -25.3, note: '₩17.0→12.7조' },
+    ],
+  },
+
+  // 핵심 인사이트 카드
+  insights: [
+    {
+      title: '2019 다운턴 — 이익 -69%에도 투자 규모 유지',
+      detail: 'DS 영업이익 44.6→14.0조 급감. 그러나 CAPEX는 -5%만 축소 (22.6조). DRAM CAPEX $8.0B는 SK($5.5B)+Micron($3.0B) 합계 수준.',
+      tone: 'blue',
+    },
+    {
+      title: '2023 최악 다운턴 — 14.9조 적자에도 사상 최대 CAPEX',
+      detail: '삼성 48.4조 (+1%) vs SK -56% vs Micron -42%. 직후 2024~2025 회복기에 DS 영업이익 15.1→24.9조, 메모리 매출 104.1조 사상 최대 수확.',
+      tone: 'amber',
+    },
+    {
+      title: '단, 격차 수렴 — 역사이클 우위의 구조적 축소',
+      detail: 'DRAM CAPEX 3사 격차: 2019년 8.0/5.5/3.0 → 2026E 20/20.5/13.5($B)로 수렴. SK 2026년 ~45조 사상 최대 계획 — 총량 우위보다 배분(HBM)이 승부처.',
+      tone: 'red',
+    },
+  ],
+
+  footnotes: [
+    '삼성 CAPEX는 DS 부문(파운드리·시스템LSI 포함), SK하이닉스·Micron은 전사 기준. Micron은 회계연도(8월 말 종료, 역년 대비 ~4개월 선행).',
+    '원화 공시치(삼성·SK)는 연평균 환율로 $B 환산 — 툴팁에 조원 원본 병기. 2025 삼성·2026E 전체는 추정/계획치.',
+    'DRAM/NAND 회사별 분리 CAPEX는 2019·2025·2026E만 공개 추정 존재 (TrendForce). 삼성·SK NAND CAPEX는 미공개 — 2025~2026 축소 기조(HBM/DRAM 재배치).',
+  ],
+}
+
 // 공통 컬러 팔레트 (recharts 일관성용)
 export const VIZ_COLORS = {
   primary: '#3b82f6',
