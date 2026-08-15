@@ -14,6 +14,21 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-15 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-15',
+    type: 'build',
+    version: 'v2.41.1',
+    title: 'CMO Matrix 버그 수정 — 다운턴 필터 선택 시 글자 안 보이는 문제',
+    summary:
+      '피드백("다운턴 필터가 선택되었을 때 글이 안보이는 문제") 수정. 원인: 다운턴 칩이 Chip 컴포넌트에 tone="text-white"만 전달해, active 상태에서 배경색 클래스 없이 흰 글자만 적용되어 흰 배경 위에 흰 글자가 찍히는 렌더링 버그였다. Chip에 style prop을 추가해 다운턴별 색상(d.color)을 인라인 배경으로 지정하도록 수정, 선택 시 점(dot)도 흰색으로 반전되게 조정. 부수적으로 프리셋 버튼 5종도 active prop 누락으로 tone이 전혀 반영되지 않던 문제를 발견해 별도 ActionChip 컴포넌트로 분리 — 항상 지정된 색으로 표시되도록 수정. 패치 v2.41.1.',
+    tags: ['버그수정', 'CMO Matrix', 'UI', 'dashboard'],
+    items: [
+      { label: '다운턴 필터 수정', detail: 'Chip에 style prop 추가, 다운턴 칩은 active 시 style={{backgroundColor: d.color}}로 다운턴별 색상 배경 적용 — 흰 글자가 실제로 보이게' },
+      { label: '프리셋 버튼 수정', detail: '기존 Chip 재사용 시 active prop을 넘기지 않아 tone이 무시되고 항상 회색으로 렌더되던 문제 — 별도 ActionChip(토글 아닌 클릭형 버튼)으로 분리해 tone 색이 항상 표시되도록 수정' },
+    ],
+    links: [],
+  },
   // ── 2026-08-14 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-14',

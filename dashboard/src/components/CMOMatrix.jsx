@@ -19,15 +19,28 @@ const PHASE_TONE = {
   mistake: 'bg-red-100 text-red-700',
 }
 
-function Chip({ active, onClick, children, tone = '' }) {
+function Chip({ active, onClick, children, tone = '', style }) {
   return (
     <button
       onClick={onClick}
+      style={active ? style : undefined}
       className={`px-2.5 py-1 rounded-full text-[12px] font-medium border transition-colors ${
         active
           ? `border-transparent ${tone || 'bg-zinc-900 text-white'}`
           : 'border-zinc-200 bg-white text-zinc-500 hover:border-zinc-300 hover:text-zinc-700'
       }`}
+    >
+      {children}
+    </button>
+  )
+}
+
+// 프리셋 액션 버튼 — 토글이 아니라 클릭 즉시 필터 조합을 바꾸는 버튼이라 항상 tone 색을 표시한다
+function ActionChip({ onClick, tone, children }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`px-2.5 py-1 rounded-full text-[12px] font-semibold border border-transparent transition-opacity hover:opacity-85 ${tone}`}
     >
       {children}
     </button>
@@ -240,11 +253,11 @@ export default function CMOMatrix() {
       <div className="rounded-hig-lg border border-zinc-200 bg-white p-4">
         <div className="flex items-center gap-2 mb-2 flex-wrap">
           <span className="text-[11px] font-semibold text-zinc-400">프리셋</span>
-          <Chip onClick={() => preset('worked')} tone="bg-emerald-600 text-white">효과 있었던 것만 (◎)</Chip>
-          <Chip onClick={() => preset('failed')} tone="bg-red-600 text-white">실패·역효과 (✕)</Chip>
-          <Chip onClick={() => preset('prepIntent')} tone="bg-blue-600 text-white">⭑ 다운턴 대비 전략만</Chip>
-          <Chip onClick={() => preset('prep')} tone="bg-sky-600 text-white">대비 국면 전체</Chip>
-          <Chip onClick={() => preset('next')} tone="bg-blue-600 text-white">다음 다운턴</Chip>
+          <ActionChip onClick={() => preset('worked')} tone="bg-emerald-600 text-white">효과 있었던 것만 (◎)</ActionChip>
+          <ActionChip onClick={() => preset('failed')} tone="bg-red-600 text-white">실패·역효과 (✕)</ActionChip>
+          <ActionChip onClick={() => preset('prepIntent')} tone="bg-blue-600 text-white">⭑ 다운턴 대비 전략만</ActionChip>
+          <ActionChip onClick={() => preset('prep')} tone="bg-sky-600 text-white">대비 국면 전체</ActionChip>
+          <ActionChip onClick={() => preset('next')} tone="bg-blue-600 text-white">다음 다운턴</ActionChip>
           <button onClick={resetAll} className="text-[11px] text-zinc-400 hover:text-zinc-700 underline underline-offset-2">
             전체 해제
           </button>
@@ -269,9 +282,18 @@ export default function CMOMatrix() {
         <div className="border-t border-zinc-100 pt-1">
           <FilterRow label="다운턴">
             {CMO_DOWNTURNS.map(d => (
-              <Chip key={d.id} active={downturns.has(d.id)} onClick={() => toggle(downturns, setDownturns)(d.id)} tone="text-white" >
-                <span style={downturns.has(d.id) ? { color: '#fff' } : undefined}>
-                  <span className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle" style={{ background: d.color }} />
+              <Chip
+                key={d.id}
+                active={downturns.has(d.id)}
+                onClick={() => toggle(downturns, setDownturns)(d.id)}
+                tone="text-white"
+                style={{ backgroundColor: d.color }}
+              >
+                <span className="inline-flex items-center">
+                  <span
+                    className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
+                    style={{ background: downturns.has(d.id) ? '#fff' : d.color }}
+                  />
                   {d.label}
                 </span>
               </Chip>
