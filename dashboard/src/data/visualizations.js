@@ -571,10 +571,48 @@ export const TECHNOLOGY_DATA = {
 //   - DRAM/NAND 회사별 분리치는 2019·2025·2026E만 공개 추정 존재 (TrendForce)
 
 export const CAPEX_DATA = {
-  title: '메모리 3사 CAPEX vs 삼성 실적 — 역사이클 투자 (2016~2026E)',
-  source: 'wiki/concepts/memory-capex-history.md (각사 IR, TrendForce, SemiAnalysis)',
-  downturnYears: ['2019', '2023'],
+  title: '메모리 3사 CAPEX vs 삼성 실적 — 역사이클 투자 (2006~2026E)',
+  source: 'wiki/concepts/memory-capex-history.md (각사 IR·연차보고서, SEC 10-K, TrendForce)',
+  // 툴팁 배지용 다운턴 연도 + 차트 음영 구간(라벨)
+  downturnYears: ['2007', '2008', '2009', '2011', '2012', '2019', '2023'],
+  downturns: [
+    { from: '2007', to: '2009', label: '1차 치킨게임·금융위기' },
+    { from: '2011', to: '2012', label: '2차 치킨게임' },
+    { from: '2019', to: '2019', label: '다운턴' },
+    { from: '2023', to: '2023', label: '다운턴' },
+  ],
+  // 2006~2015: 삼성·SK 일부 근사치(approx, ±0.5조) — 확정치·등급은 wiki 데이터 신뢰도 절 참조
   years: [
+    { year: '2006',  samsung: 6.9,  samsungKrw: 6.6,   skhynix: 4.7,  skKrw: 4.5,   micron: 1.4,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 19.9, dsOp: 5.3, memRev: null, approx: true },
+    { year: '2007',  samsung: 5.8,  samsungKrw: 5.4,   skhynix: 5.3,  skKrw: 4.9,   micron: 3.6,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 20.4, dsOp: 2.4, memRev: null, approx: true },
+    { year: '2008',  samsung: 5.4,  samsungKrw: 6.0,   skhynix: 2.4,  skKrw: 2.7,   micron: 2.5,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 22.4, dsOp: 0.0, memRev: null, approx: true },
+    { year: '2009',  samsung: 5.1,  samsungKrw: 6.5,   skhynix: 0.8,  skKrw: 1.0,   micron: 0.5,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 26.8, dsOp: 2.6, memRev: null, approx: true },
+    { year: '2010',  samsung: 11.0, samsungKrw: 12.7,  skhynix: 2.6,  skKrw: 3.05,  micron: 0.6,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 37.6, dsOp: 10.1, memRev: 25.8 },
+    { year: '2011',  samsung: 11.7, samsungKrw: 13.0,  skhynix: 3.2,  skKrw: 3.5,   micron: 2.6,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 37.0, dsOp: 7.3, memRev: 22.7, approx: true },
+    { year: '2012',  samsung: 12.6, samsungKrw: 14.2,  skhynix: 3.4,  skKrw: 3.85,  micron: 1.7,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 34.9, dsOp: 4.2, memRev: null, approx: true },
+    { year: '2013',  samsung: 11.5, samsungKrw: 12.6,  skhynix: 3.3,  skKrw: 3.6,   micron: 1.4,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 37.4, dsOp: 6.9, memRev: 23.7, approx: true },
+    { year: '2014',  samsung: 13.6, samsungKrw: 14.3,  skhynix: 4.9,  skKrw: 5.2,   micron: 3.1,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 39.7, dsOp: 8.8, memRev: 29.3, approx: true },
+    { year: '2015',  samsung: 13.0, samsungKrw: 14.7,  skhynix: 5.9,  skKrw: 6.65,  micron: 4.0,
+      samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
+      dsRev: 47.6, dsOp: 12.8, memRev: null, approx: true },
     { year: '2016',  samsung: 11.3, samsungKrw: 13.15, skhynix: 5.4,  skKrw: 6.3,   micron: 5.8,
       samsungDram: null, skDram: null, micronDram: null, industryDram: null, kioxiaNand: null, industryNand: null,
       dsRev: 51.2, dsOp: 13.6, memRev: null },
@@ -620,15 +658,23 @@ export const CAPEX_DATA = {
       { company: 'Micron (FY2023)',   yoy: -42.0, note: '$12.1→7.0B' },
       { company: '삼성 (2019)',       yoy: -4.6,  note: '₩23.7→22.6조 — 규모 유지' },
       { company: 'SK하이닉스 (2019)', yoy: -25.3, note: '₩17.0→12.7조' },
+      { company: '삼성 (2009)',       yoy: 8.3,   note: '~6.0→6.5조ᵉ — 금융위기에 오히려 증액 (근사)' },
+      { company: '하이닉스 (2009)',   yoy: -63.0, note: '~2.7→1.0조ᵉ — 채권단 관리, 투자 동결 (근사)' },
+      { company: 'Micron (FY2009)',   yoy: -80.7, note: '$2.53→0.49B — 사실상 투자 중단 (10-K)' },
     ],
   },
 
   // 핵심 인사이트 카드
   insights: [
     {
+      title: '2007~2012 치킨게임 — 역사이클의 원형',
+      detail: '2009 최저점: 삼성 ~6.5조ᵉ vs 하이닉스 ~1.0조ᵉ vs Micron $0.49B(-81%). Qimonda(2009)·Elpida(2012) 파산 → 5강→3강 과점. 삼성은 위기 직후 2010 투자 12.7조 배증 → 영업이익 10.11조 당시 사상 최대.',
+      tone: 'blue',
+    },
+    {
       title: '2019 다운턴 — 이익 -69%에도 투자 규모 유지',
       detail: 'DS 영업이익 44.6→14.0조 급감. 그러나 CAPEX는 -5%만 축소 (22.6조). DRAM CAPEX $8.0B는 SK($5.5B)+Micron($3.0B) 합계 수준.',
-      tone: 'blue',
+      tone: 'green',
     },
     {
       title: '2023 최악 다운턴 — 14.9조 적자에도 사상 최대 CAPEX',
@@ -637,14 +683,16 @@ export const CAPEX_DATA = {
     },
     {
       title: '단, 격차 수렴 — 역사이클 우위의 구조적 축소',
-      detail: 'DRAM CAPEX 3사 격차: 2019년 8.0/5.5/3.0 → 2026E 20/20.5/13.5($B)로 수렴. SK 2026년 ~45조 사상 최대 계획 — 총량 우위보다 배분(HBM)이 승부처.',
+      detail: 'DRAM CAPEX 3사 격차: 2019년 8.0/5.5/3.0 → 2026E 20/20.5/13.5($B)로 수렴. 치킨게임 성립 조건(경쟁자 재무 취약)도 소멸 — 국가 자본(CXMT)·사상 최대 현금(SK). 총량 우위보다 배분(HBM)이 승부처.',
       tone: 'red',
     },
   ],
 
   footnotes: [
-    '삼성 CAPEX는 DS 부문(파운드리·시스템LSI 포함), SK하이닉스·Micron은 전사 기준. Micron은 회계연도(8월 말 종료, 역년 대비 ~4개월 선행).',
+    '삼성 CAPEX는 반도체 부문(파운드리·시스템LSI 포함), SK하이닉스·Micron은 전사 기준. Micron은 회계연도(8월 말 종료, 역년 대비 ~4개월 선행) — 2006~2015는 10-K 현금흐름표 총액, 2016~은 실적 발표 순액.',
     '원화 공시치(삼성·SK)는 연평균 환율로 $B 환산 — 툴팁에 조원 원본 병기. 2025 삼성·2026E 전체는 추정/계획치.',
+    '2006~2015 삼성·SK CAPEX 일부는 보도 종합 근사치(ᵉ, ±0.5조 범위) — 툴팁에 "일부 근사" 표기, 확정치·신뢰도 등급은 wiki/concepts/memory-capex-history.md 참조. 사이클 패턴(방향·규모 격차) 해석에는 영향 없음.',
+    '삼성 회계기준: 2008년까지 K-GAAP, 2009년~ K-IFRS 연결 (시계열 단절 존재). 하이닉스는 2012년 SK 인수 전 채권단 공동관리(2001~2012) — 금융위기 국면 투자 여력 부재.',
     'DRAM/NAND 회사별 분리 CAPEX는 2019·2025·2026E만 공개 추정 존재 (TrendForce). 삼성·SK NAND CAPEX는 미공개 — 2025~2026 축소 기조(HBM/DRAM 재배치).',
   ],
 }
