@@ -1,5 +1,7 @@
 # 핵심 Driving Forces
 
+> **트랙 안내**: 이 페이지는 **SP-1**의 Driving Force(DF1 AI 수요 · DF2 미중 지정학 · DF3 기술 패러다임)다. 다운턴 트랙(SP-2)은 별도의 축을 쓴다 — [DF-D1 발원지 × DF-D2 전개 속도](../downturn/key-drivers.md). SP-2에서 DF2(지정학)는 축이 아니라 각 시나리오의 배경 변수로 강등되고, DF3(기술 패러다임)는 와일드카드 [DT-E 판 갈이](../downturn/scenario-DT-E.md)로 이어진다.
+
 ## 선별 프로세스 요약
 
 [Impact × Uncertainty 매트릭스](impact-uncertainty-matrix.md)에서 상위 20개 핵심 불확실성 요인을 대상으로, 다음 두 기준을 적용해 최종 3개 Driving Force를 선정했다.

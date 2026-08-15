@@ -16,7 +16,24 @@
 - [wiki/storyline/storyline-cmo.md](wiki/storyline/storyline-cmo.md) — (NEW) CMO 렌즈(Context-Mechanism-Outcome): 다운턴 3건(2007~09·2010~13·2022~23) CMO 분해 → 2026~28 맥락·메커니즘 감사 → 액션 추적(A1~A6 효과 판정 ◎/△/✕ → 전략 번역) → 경쟁사 CMO 비교(DRAM: SK·마이크론 / NAND: Kioxia·YMTC, 벤치마킹 B1~B5) → 차기 다운턴 전략 4순위(계약 바닥·역사이클 대상 교정·치킨게임 봉인·맥락 EWI)
 - [wiki/storyline/cmo-matrix.md](wiki/storyline/cmo-matrix.md) — (NEW) CMO 통합 매트릭스: 1~3차 다운턴(관측)+4차(예측)를 하나의 필터 가능한 데이터셋으로 — 대비/대응 국면 구분, 제품(DRAM·NAND·SSD·UFS·공통)×관점(제조·투자·개발·제품·운영) 5관점 통일, 4차 추천 전략+예상 실수 12종 (대시보드 CMO Matrix 탭 단일 소스)
 
-## wiki/scenarios — 5개 시나리오 + 매트릭스
+## wiki/downturn — 다운턴 시나리오 플래닝 SP-2 (NEW)
+
+> 위키의 **두 번째 시나리오 플래닝 트랙**. 기존 SP-1(`wiki/scenarios`)이 "AI 메모리 시대에 어떤 위치를 차지할 것인가"를 묻는다면, SP-2는 다운턴의 **도착을 조건으로 고정**하고 "어떤 다운턴이 오는가"만 묻는다. 대시보드 **Scenario Planning > SP-2 메모리 다운턴** 트랙의 단일 소스.
+
+- [wiki/downturn/README.md](wiki/downturn/README.md) — Focal Issue("2027~2030 다운턴에 지금 무엇을 준비하고 도착 후 무엇을 실행할 것인가") + 세 전제 + SP-1과 분리하는 이유 + 8단계 방법론 + 결론 한 장
+- [wiki/downturn/steep-factors.md](wiki/downturn/steep-factors.md) — 다운턴 렌즈 STEEP 40요인 + Impact×Uncertainty (Impact = 다운턴의 형태를 바꾸는 힘) + Top 12 + 확정 리스크 8건(축은 아니나 전 시나리오 공통 배경)
+- [wiki/downturn/key-drivers.md](wiki/downturn/key-drivers.md) — DF-D1 발원지(수요발↔공급발, "무엇을 조절할지") × DF-D2 전개 속도(급락형↔침식형, "언제 결정할지") + 네 사분면 역사적 실례로 독립성 검증 + 기각된 축 6종
+- [wiki/downturn/scenario-matrix.md](wiki/downturn/scenario-matrix.md) — 2×2 + 와일드카드, **조건부 확률**(도착 전제) + 축별 한계 확률 + 시나리오 간 전이 경로 + 분기점 모니터링
+- [wiki/downturn/scenario-DT-A.md](wiki/downturn/scenario-DT-A.md) — 「급제동」 수요발×급락 (20%): AI 인프라 조달 경색. 대응할 시간이 없어 대비가 결과의 전부
+- [wiki/downturn/scenario-DT-B.md](wiki/downturn/scenario-DT-B.md) — 「긴 하산」 수요발×침식 (24%): 메모리 원단위 감소. 위기감이 생기지 않는 것이 최대 위험 — 3차 대비기 실패 패턴의 재발 조건
+- [wiki/downturn/scenario-DT-C.md](wiki/downturn/scenario-DT-C.md) — 「동시 방류」 공급발×급락 (22%): 캐파 동시 도래 + 절제 붕괴. 감산·투자 규율이 직접 작동하는 유일한 시나리오
+- [wiki/downturn/scenario-DT-D.md](wiki/downturn/scenario-DT-D.md) — 「저가 잠식」 공급발×침식 (26%, 최고): 보조금 기반 침투. 사이클이 아니라 구조 변화 — 회복이 없고 철수·전환이 핵심 액션
+- [wiki/downturn/scenario-DT-E.md](wiki/downturn/scenario-DT-E.md) — 「판 갈이」 와일드카드·전환발 (8%): 총시장은 성장하는데 특정 자산군만 다운턴. 다운턴 매뉴얼이 작동하지 않음
+- [wiki/downturn/preparation.md](wiki/downturn/preparation.md) — 대비 DP-1~7 (도착 전에만 살 수 있는 것). 무후회 3종(DP-2 옵션형 캐파·DP-4 감별 EWI 배선·DP-5 차세대 별동대) + **신규 기여 DP-1 계약 만기 사다리화** + 유효기간표
+- [wiki/downturn/response-playbook.md](wiki/downturn/response-playbook.md) — 대응 DR-1~6 (원인 판별 후 분기). DR-1 감별 프로토콜(30일)·DR-2 공급 규율은 공급발에서만·DR-2b 소모전 봉인(치킨게임 4대 전제 붕괴)·금지 목록 8종
+- [wiki/downturn/differential-indicators.md](wiki/downturn/differential-indicators.md) — 감별 지표 DX-1~8. 기존 EWI가 "오는가"를 묻는다면 DX는 "어떤 다운턴인가"를 묻는다 + 판별 결정표 + 오진 방지 + 구축 로드맵(DX-7 만기 집중도 미측정 = 유일한 🔴)
+
+## wiki/scenarios — 5개 시나리오 + 매트릭스 (SP-1)
 
 - [wiki/scenarios/scenario-matrix.md](wiki/scenarios/scenario-matrix.md) — DF1(AI 수요) × DF2(미중 관계) 2×2 매트릭스 + 와일드카드 E
 - [wiki/scenarios/scenario-A.md](wiki/scenarios/scenario-A.md) — 황금 요새 (AI 지속 + 디커플링, 25~30%)
@@ -226,6 +243,9 @@
 
 ## dashboard — 빌드 산출물 (최상위, Vercel 루트)
 
+- [dashboard/src/data/downturnPlanning.js](dashboard/src/data/downturnPlanning.js) — (NEW) SP-2 다운턴 시나리오 플래닝 데이터셋 ([wiki/downturn/*.md](wiki/downturn/README.md) 미러 — DT_FOCAL·DT_STEEP_DATA·DT_DRIVERS·DT_SCENARIOS·DT_PREPARATION·DT_RESPONSE·DT_INDICATORS)
+- [dashboard/src/components/DownturnPlanning.jsx](dashboard/src/components/DownturnPlanning.jsx) — (NEW) SP-2 트랙 6개 서브탭 (Focal Issue·STEEP·Driving Forces·Scenarios·대비/대응·감별 지표)
+- [dashboard/src/components/ScenarioPlanning.jsx](dashboard/src/components/ScenarioPlanning.jsx) — Scenario Planning 탭 — 상단 트랙 스위처로 SP-1(AI 메모리 시대)·SP-2(메모리 다운턴) 분리
 - [dashboard/src/data/cmoMatrix.js](dashboard/src/data/cmoMatrix.js) — CMO 통합 매트릭스 엔트리 ([wiki/storyline/cmo-matrix.md](wiki/storyline/cmo-matrix.md) 미러)
 - [dashboard/src/components/CMOMatrix.jsx](dashboard/src/components/CMOMatrix.jsx) — CMO Matrix 탭 (다운턴·국면·제품·관점·판정 필터 + 매트릭스/리스트 뷰)
 - [dashboard/src/data/scenarioPlanning.js](dashboard/src/data/scenarioPlanning.js) — SCENARIOS·INITIAL_QUADRANT_POSITIONS (wiki 미러)

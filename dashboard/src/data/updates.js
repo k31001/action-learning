@@ -14,20 +14,45 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
-  // ── 2026-08-15 ───────────────────────────────────────────────────────────────
+  // ── 2026-08-15 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-08-15',
     type: 'build',
-    version: 'v2.41.1',
+    version: 'v2.42.1',
     title: 'CMO Matrix 버그 수정 — 다운턴 필터 선택 시 글자 안 보이는 문제',
     summary:
-      '피드백("다운턴 필터가 선택되었을 때 글이 안보이는 문제") 수정. 원인: 다운턴 칩이 Chip 컴포넌트에 tone="text-white"만 전달해, active 상태에서 배경색 클래스 없이 흰 글자만 적용되어 흰 배경 위에 흰 글자가 찍히는 렌더링 버그였다. Chip에 style prop을 추가해 다운턴별 색상(d.color)을 인라인 배경으로 지정하도록 수정, 선택 시 점(dot)도 흰색으로 반전되게 조정. 부수적으로 프리셋 버튼 5종도 active prop 누락으로 tone이 전혀 반영되지 않던 문제를 발견해 별도 ActionChip 컴포넌트로 분리 — 항상 지정된 색으로 표시되도록 수정. 패치 v2.41.1.',
+      '피드백("다운턴 필터가 선택되었을 때 글이 안보이는 문제") 수정. 원인: 다운턴 칩이 Chip 컴포넌트에 tone="text-white"만 전달해, active 상태에서 배경색 클래스 없이 흰 글자만 적용되어 흰 배경 위에 흰 글자가 찍히는 렌더링 버그였다. Chip에 style prop을 추가해 다운턴별 색상(d.color)을 인라인 배경으로 지정하도록 수정, 선택 시 점(dot)도 흰색으로 반전되게 조정. 부수적으로 프리셋 버튼 5종도 active prop 누락으로 tone이 전혀 반영되지 않던 문제를 발견해 별도 ActionChip 컴포넌트로 분리 — 항상 지정된 색으로 표시되도록 수정. 패치 v2.42.1(신규 SP-2 마이너 위에 적용).',
     tags: ['버그수정', 'CMO Matrix', 'UI', 'dashboard'],
     items: [
       { label: '다운턴 필터 수정', detail: 'Chip에 style prop 추가, 다운턴 칩은 active 시 style={{backgroundColor: d.color}}로 다운턴별 색상 배경 적용 — 흰 글자가 실제로 보이게' },
       { label: '프리셋 버튼 수정', detail: '기존 Chip 재사용 시 active prop을 넘기지 않아 tone이 무시되고 항상 회색으로 렌더되던 문제 — 별도 ActionChip(토글 아닌 클릭형 버튼)으로 분리해 tone 색이 항상 표시되도록 수정' },
     ],
     links: [],
+  },
+  // ── 2026-08-15 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-15',
+    type: 'build',
+    version: 'v2.42.0',
+    title: 'SP-2 다운턴 시나리오 플래닝 신설 — Scenario Planning 메뉴를 두 트랙으로 분리',
+    summary:
+      '요청("메모리 다운턴 대비 전략을 기존 방식 그대로 시나리오 플래닝으로 — 다운턴이 어떤 방식·원인으로 오는지에 따라 대비와 대응이 달라진다. 기존 시나리오 플래닝 메뉴에 새 항목을 신설해 메뉴를 구분")에 따라 두 번째 시나리오 플래닝 트랙(SP-2)을 신설하고, Scenario Planning 탭 상단에 트랙 선택기를 추가해 SP-1(AI 메모리 시대)과 SP-2(메모리 다운턴)를 분리했다. wiki/downturn/ 12페이지 신설(Focal Issue·STEEP 40요인·DF-D1/D2·시나리오 5종·대비 DP-1~7·대응 DR-1~6·감별 DX-1~8). 축은 사용자 문제 정의를 그대로 옮긴 것 — DF-D1 발원지(수요발↔공급발, "무엇을 조절할지") × DF-D2 전개 속도(급락형↔침식형, "언제 결정할지"). 네 사분면 모두 메모리 산업의 역사적 실례로 독립성 검증(2008 수요발 급락 / 2022~23 수요발 침식 / 2007~09 공급발 급락 / 2010~13 공급발 침식). 조건부 확률: DT-D 저가 잠식 26% · DT-B 긴 하산 24% · DT-C 동시 방류 22% · DT-A 급제동 20% · DT-E 판 갈이 8%. 마이너 v2.42.0(신규 트랙·데이터 카테고리).',
+    tags: ['SP-2', '다운턴', '시나리오 플래닝', '신규 트랙', '대비/대응', '감별 지표', 'dashboard'],
+    items: [
+      { label: 'wiki/downturn/ 12페이지 신설', detail: 'README(Focal Issue·방법론) · steep-factors(40요인 I×U) · key-drivers(DF-D1·DF-D2·독립성 검증·기각 축) · scenario-matrix(2×2+와일드카드·전이 경로) · scenario-DT-{A..E} 5종 · preparation(DP-1~7) · response-playbook(DR-1~6) · differential-indicators(DX-1~8)' },
+      { label: '축 설계 — 원인 × 방식', detail: 'DF-D1 발원지(수요 수축 주도 ↔ 공급 확대 주도)가 "무엇을 조절할지"를, DF-D2 전개 속도(급락형 ↔ 침식형)가 "언제 결정할지"를 결정한다. 급락형은 준비의 문제, 침식형은 인지의 문제.' },
+      { label: '시나리오 5종 (조건부 확률)', detail: 'DT-A 급제동 20%(수요발·급락, 조달 경색) · DT-B 긴 하산 24%(수요발·침식, 메모리 원단위 감소) · DT-C 동시 방류 22%(공급발·급락, 캐파 도래+절제 붕괴) · DT-D 저가 잠식 26%(공급발·침식, 회복이 없는 구조 변화) · DT-E 판 갈이 8%(와일드카드, 전환발)' },
+      { label: '신규 기여 — DP-1 계약 만기 사다리화', detail: '계약은 급락을 막는 것이 아니라 미룬다. 커버리지 총량이 아니라 만기 집중도(HHI)가 급락의 방아쇠 — 만기가 한 분기에 몰리면 계약이 급락 방지 장치가 아니라 급락 발사 장치가 된다. 신규 지표 DX-7로 추적(현재 미측정, 2026 Q4 구축 목표).' },
+      { label: '무후회 대비 3종 교차 검증', detail: 'DP-2 옵션형 캐파 · DP-4 감별 EWI 배선 · DP-5 차세대 별동대가 다섯 시나리오 전부 ◎. CMO 통합 매트릭스 §4.2의 cause-robust 3종과 정확히 일치 — 서로 다른 방법론이 같은 결론에 도달.' },
+      { label: '감별 지표 DX-1~8 신설', detail: '기존 EWI(RS-9)가 "다운턴이 오는가"를 묻는다면 DX 패널은 "어떤 다운턴인가"를 묻는다. 결과 지표(가격·재고)는 네 시나리오에서 동일하게 나타나므로 판별력이 없다 → 수요/공급 측 맥락 지표 + 임계형·추세형 병행. 현재 판독: DX-1 경보 · DX-4/DX-5 진행 · DX-7 미측정(유일한 🔴).' },
+      { label: 'Scenario Planning 메뉴 2트랙 분리', detail: '탭 상단에 트랙 선택기(SP-1 AI 메모리 시대 / SP-2 메모리 다운턴). 서브탭 id가 두 트랙에 걸쳐 유일해 기존 딥링크(#/planning/steep 등)는 그대로 유지되고, 신규는 #/planning/dt-* 로 접근.' },
+      { label: 'dashboard 신규 파일', detail: 'src/data/downturnPlanning.js(위키 미러) · src/components/DownturnPlanning.jsx(6개 서브탭 패널) · ScenarioPlanning.jsx 트랙 스위처 · build-knowledge-graph.mjs 에 downturn 카테고리 추가' },
+    ],
+    links: [
+      { label: 'wiki/downturn/README.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/downturn/README.md' },
+      { label: 'wiki/downturn/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/downturn/key-drivers.md' },
+      { label: 'wiki/downturn/preparation.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/downturn/preparation.md' },
+    ],
   },
   // ── 2026-08-14 ───────────────────────────────────────────────────────────────
   {

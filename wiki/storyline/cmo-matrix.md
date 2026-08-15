@@ -161,6 +161,8 @@ flowchart LR
 
 ## 4. 4차 다운사이클 (2028~29 예측)
 
+> **[2026-08-15] 후속 트랙**: 아래 §4.1의 "원인 3종"은 이후 정식 시나리오 플래닝 트랙 **[SP-2](../downturn/README.md)**로 전개됐다. 원인 축(수요발↔공급발)에 **속도 축**(급락형↔침식형)을 직교시켜 2×2 + 와일드카드로 재구성하고([SP-2 key-drivers](../downturn/key-drivers.md)), 시나리오별 [대비 DP-1~7](../downturn/preparation.md)·[대응 DR-1~6](../downturn/response-playbook.md)·[감별 지표 DX-1~8](../downturn/differential-indicators.md)로 분화했다. §4.2의 cause-robust 3종은 SP-2의 무후회 대비 3종(DP-2·DP-4·DP-5)과 정확히 일치한다.
+
 ### 4.1 다운사이클 원인 3종 — O가 갈리는 분기점
 
 | 원인 | 경로 | 확인 트리거 | 시나리오 |
