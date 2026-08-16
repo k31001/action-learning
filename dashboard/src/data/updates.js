@@ -14,6 +14,24 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-17 (i) ───────────────────────────────────────────────────────────
+  {
+    date: '2026-08-17',
+    type: 'ingest',
+    version: 'v2.46.0',
+    title: 'CAPEX 탭에 솔루션(SSD·UFS) 오버레이 + 사업 연표 — 사이클과 함께 변모한 20년',
+    summary:
+      'CAPEX 차트에 삼성 SSD 매출ᵉ·UFS/모바일 매출ᵉ·스토리지 영업이익ᵉ 3개 시리즈(2013~2025, 토글형) 추가 — 제품별 미공시라 NAND 산업 규모 × 삼성 점유율 × 제품 믹스 3단 역산(전량 추정ᵉ, 방법론 소스 문서화). 차트 하단에 솔루션 사업 연표 신설: 계기(2005 Apple NAND·2006 세계 최초 SSD·2011 HDD 매각)부터 V-NAND(2013)·UFS(2015)·첫 감산(2023)·CMX(2026)까지 13개 이벤트를 사이클 국면 색(상승/다운턴/중립)으로, 변모 4단계(태동→수직계열화→솔루션 주도→AI 전환) 카드와 함께. wiki/concepts/samsung-storage-solution-history.md 신설. 마이너 v2.46.0.',
+    tags: ['SSD', 'UFS', '솔루션', 'NAND', 'V-NAND', '역산', 'CAPEX', 'dashboard', 'wiki'],
+    items: [
+      { label: '역산 방법론', detail: 'NAND 산업(앵커: 2018 $63.2B 정점, TrendForce) × 삼성 점유 33~37% × 믹스(SSD 25%→50%, 모바일 45%→25%) × 마진(-60%~+45%). 이익은 SSD/UFS 분리 불가로 스토리지 합산' },
+      { label: 'wiki/concepts/samsung-storage-solution-history.md 신설', detail: '계기 3장면 + 연표 13건 + 사이클×솔루션 변모 4단계 + 역산 시계열' },
+      { label: '핵심 패턴', detail: '2017 SSD가 모바일 역전(서버 시대) · 2019 다운턴 소폭 적자ᵉ로 완충 · 2023 -9.1조ᵉ 최악 · 2025 SSD 16.4조ᵉ 사상 최대 — 솔루션이 사이클 진폭의 완충재' },
+    ],
+    links: [
+      { label: '스토리지 솔루션 리서치', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/samsung-storage-solution-research-2026-08-17.md' },
+    ],
+  },
   // ── 2026-08-16 (viii) ────────────────────────────────────────────────────────
   {
     date: '2026-08-16',

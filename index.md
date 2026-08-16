@@ -99,6 +99,7 @@
 - [wiki/concepts/ai-compute-economics-gap.md](wiki/concepts/ai-compute-economics-gap.md) — Bain(신문섭) AI 컴퓨트 경제학 갭 ($2조 매출·$500B capex·$800B 자금 갭·메모리=AI 지출 ~30%·DC 163GW 2030·전력 게이트키퍼)
 - [wiki/concepts/semiconductor-cycle.md](wiki/concepts/semiconductor-cycle.md) — 반도체 사이클·슈퍼사이클·2028 공급과잉 리스크
 - [wiki/concepts/memory-capex-history.md](wiki/concepts/memory-capex-history.md) — 메모리 3사 CAPEX 히스토리 (2006~2026E) — 역사이클 투자 정량 근거 20년: 1·2차 치킨게임(Qimonda·Elpida 파산)·2019·2023 다운턴 대응 비교, DRAM/NAND 부문별
+- [wiki/concepts/samsung-storage-solution-history.md](wiki/concepts/samsung-storage-solution-history.md) — 삼성 스토리지 솔루션(SSD·UFS) 사업사 — 계기 3장면(Apple·최초 SSD·HDD 매각)·연표·사이클 연동 4단계·매출/이익 역산ᵉ (NEW)
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
@@ -218,6 +219,7 @@
 - [sources/raw-notes/keyence-benchmark-note-2026-08-12.md](sources/raw-notes/keyence-benchmark-note-2026-08-12.md) — (NEW) 키엔스 벤치마크 사내 별첨: 10년 50~56% 영업이익률 밴드(사이클 무관)·팹리스 경영·외보(外報) 체계·"고객이 원하는 상품을 만들지 않는다"·1983년 저마진 사업 매각 + 저장소 대조표(2018 DS 51.6% 일치 / 2026 상반기 68%는 미검증)와 전략 1·2 배분표
 - [sources/raw-notes/memory-capex-history-research-2026-08-08.md](sources/raw-notes/memory-capex-history-research-2026-08-08.md) — 메모리 3사 CAPEX·실적 히스토리 리서치 (2016~2026E, 각사 IR·TrendForce·환율표)
 - [sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md](sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md) — CAPEX 히스토리 리서치 II: 2006~2015 치킨게임 시대 (삼성 AR·4Q 경영설명회 PDF 직접 열람, Micron SEC 10-K 원문, 데이터 신뢰도 등급)
+- [sources/raw-notes/samsung-storage-solution-research-2026-08-17.md](sources/raw-notes/samsung-storage-solution-research-2026-08-17.md) — 스토리지 솔루션 리서치: SSD·UFS 매출·이익 3단 역산(시장×점유율×믹스) 방법론 + 연표 앵커 (전량 추정ᵉ)
 - [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 베인앤컴퍼니 신문섭 파트너 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
 - [sources/articles/captive-ssd-fdp-context-2026-08.md](sources/articles/captive-ssd-fdp-context-2026-08.md) — 웹 리서치 종합: Captive SSD 위상 변화 4단계(완제품→펌웨어→자체 컨트롤러 Nitro→표준·웨이퍼)·하이퍼스케일러 SSD 수요 ~55%·NAND 웨이퍼 +246%·FDP 표준 기원(Meta·Google 주도·삼성 공동)
 - [sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md](sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md) — 사용자 전략 인풋 원문: FDP 기반 Host–SSD 통합 솔루션 전략 (시스템 SW·실행전략 6종·로드맵·KPI·스토리라인)

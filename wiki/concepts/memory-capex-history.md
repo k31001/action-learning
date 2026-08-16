@@ -111,6 +111,7 @@ SemiAnalysis(2022-12): "Samsung swims against the tide as the industry cuts capi
 
 ## 연결 페이지
 
+- [samsung-storage-solution-history.md](samsung-storage-solution-history.md) — 솔루션(SSD·UFS) 사업사·매출 역산ᵉ — CAPEX 차트의 스토리지 오버레이 시계열
 - [semiconductor-cycle.md](semiconductor-cycle.md) — 사이클 국면·2028 공급과잉 리스크
 - [cyclical-strategy-benchmark.md](../benchmark/cyclical-strategy-benchmark.md) — 역사이클 전략 벤치마크 (정성)
 - [samsung.md](../entities/samsung.md) · [sk-hynix.md](../entities/sk-hynix.md) · [micron.md](../entities/micron.md)

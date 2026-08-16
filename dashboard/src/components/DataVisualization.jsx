@@ -85,7 +85,19 @@ const CAPEX_SERIES = [
     keys: { total: 'dsOp', dram: 'dsOp', nand: 'dsOp' } },
   { id: 'memRev',   label: '삼성 메모리 매출',       color: VIZ_COLORS.amber,   kind: 'line', axis: 'krw',
     keys: { total: 'memRev', dram: 'memRev', nand: 'memRev' } },
+  // 스토리지 솔루션 3종 — 전량 역산 추정ᵉ (2013~2025, 시장규모×점유율×믹스)
+  { id: 'ssdRev',    label: 'SSD 매출ᵉ',            color: VIZ_COLORS.pink,    kind: 'line', axis: 'krw',
+    keys: { total: 'ssdRev', dram: 'ssdRev', nand: 'ssdRev' } },
+  { id: 'ufsRev',    label: 'UFS/모바일 매출ᵉ',      color: VIZ_COLORS.teal,    kind: 'line', axis: 'krw',
+    keys: { total: 'ufsRev', dram: 'ufsRev', nand: 'ufsRev' } },
+  { id: 'storageOp', label: '스토리지 영업이익ᵉ',    color: VIZ_COLORS.lime,    kind: 'line', axis: 'krw',
+    keys: { total: 'storageOp', dram: 'storageOp', nand: 'storageOp' } },
 ]
+
+// 점선(추정·산업) 시리즈
+const DASHED_SERIES = new Set(['industry', 'memRev', 'ssdRev', 'ufsRev', 'storageOp'])
+// 우측(조원) 축 시리즈 — 툴팁 단위 판별용
+const KRW_SERIES = new Set(['dsRev', 'dsOp', 'memRev', 'ssdRev', 'ufsRev', 'storageOp'])
 
 // 혼합 단위 툴팁 — CAPEX는 $B(삼성·SK는 조원 원본 병기), 삼성 재무는 조원
 function CapexTooltip({ active, payload, label }) {
@@ -100,7 +112,7 @@ function CapexTooltip({ active, payload, label }) {
         {row?.approx && <span className="ml-1.5 text-zinc-400 font-normal">· 일부 근사</span>}
       </div>
       {payload.map((p, i) => {
-        const isKrwSeries = ['dsRev', 'dsOp', 'memRev'].includes(p.dataKey)
+        const isKrwSeries = KRW_SERIES.has(p.dataKey)
         const krwOrigin = p.dataKey === 'samsung' ? row?.samsungKrw
           : p.dataKey === 'skhynix' ? row?.skKrw : null
         return (
@@ -126,6 +138,7 @@ function CapexPanel() {
   const [visible, setVisible] = useState({
     samsung: true, skhynix: true, micron: true, kioxia: true, industry: true,
     dsRev: true, dsOp: true, memRev: false,
+    ssdRev: true, ufsRev: true, storageOp: true,
   })
   const toggle = id => setVisible(v => ({ ...v, [id]: !v[id] }))
 
@@ -220,7 +233,7 @@ function CapexPanel() {
                 key={s.id} yAxisId={s.axis === 'krw' ? 'krw' : 'usd'}
                 dataKey={s.keys[segment]} name={s.label}
                 stroke={s.color} strokeWidth={2.5} dot={{ r: 4, fill: s.color }}
-                strokeDasharray={s.id === 'industry' || s.id === 'memRev' ? '5 4' : undefined}
+                strokeDasharray={DASHED_SERIES.has(s.id) ? '5 4' : undefined}
                 connectNulls isAnimationActive={false}
               />
             ))}
@@ -277,6 +290,61 @@ function CapexPanel() {
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* ── 솔루션(SSD·UFS) 사업 연표 — 사이클과 함께 ────────────────────── */}
+      <div className="lg:col-span-2 bg-white border border-zinc-200 rounded-hig-lg shadow-hig-2 p-4">
+        <div className="mb-3">
+          <h3 className="text-sm font-semibold text-zinc-800">{d.solutionTimeline.title}</h3>
+          <SourceLink source={d.solutionTimeline.source} />
+        </div>
+
+        {/* 변모 4단계 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+          {d.solutionTimeline.phases.map((ph, i) => (
+            <div key={i} className="border border-zinc-200 bg-zinc-50 rounded-hig-lg p-3">
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-[10px] font-mono text-zinc-500">{ph.period}</span>
+                <span className="text-sm font-semibold text-zinc-800">{ph.name}</span>
+              </div>
+              <p className="text-xs text-zinc-600 leading-relaxed">{ph.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* 이벤트 타임라인 — 사이클 국면 색 (상승 emerald / 다운턴 red / 중립 zinc) */}
+        <div className="relative">
+          <div className="absolute left-[72px] top-0 bottom-0 w-px bg-zinc-200" />
+          <div className="space-y-2">
+            {d.solutionTimeline.items.map((e, i) => {
+              const dotCls = { up: 'bg-emerald-500', down: 'bg-red-500', neutral: 'bg-zinc-400' }[e.cycle]
+              const tagCls = {
+                up:      'bg-emerald-100 text-emerald-700 border-emerald-200',
+                down:    'bg-red-100 text-red-700 border-red-200',
+                neutral: 'bg-zinc-100 text-zinc-700 border-zinc-200',
+              }[e.cycle]
+              return (
+                <div key={i} className="flex items-start gap-3">
+                  <span className="text-xs font-mono text-zinc-500 w-16 shrink-0 text-right pt-1.5">{e.date}</span>
+                  <span className={`w-3 h-3 rounded-full shrink-0 mt-2 ring-2 ring-white ${dotCls}`} />
+                  <div className="flex-1 py-1 px-3 rounded-lg bg-zinc-50 border border-zinc-200">
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="text-sm text-zinc-800">{e.event}</p>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium border shrink-0 ${tagCls}`}>
+                        {e.tag}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          <div className="flex gap-4 mt-3 text-[10px] text-zinc-500">
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-emerald-500" /> 상승 사이클</span>
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500" /> 다운턴</span>
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-zinc-400" /> 중립·계기</span>
+          </div>
+        </div>
       </div>
     </div>
   )
