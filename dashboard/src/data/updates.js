@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-16 (iii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'ingest',
+    version: 'v2.42.5',
+    title: '삼성 SSD 탑재(design win) 축 — PM1763 양산 전환·CMX 물량 구조·DGX Spark 실탑재',
+    summary:
+      '피드백("NVIDIA 서버나 AI PC에 삼성 SSD가 탑재된 뉴스들이 중요한데 빠져 있다")에 따라 전용 리서치(samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md) 수행. 핵심: ① PM1763 양산 개시(2026-07-08 공식, "차세대 AI 플랫폼 검증 완료" — Vera Rubin 명시는 매체 해석으로 유보) → 위키의 "양산 시 추가 매출" 서술이 낡아 있던 것을 갱신. ② CMX 물량 구조 — 1유닛 = SSD 576개·9,600TB, CMX향 NAND 수요 2026년 3,500만→2027년 1억+ TB("스펀지" 수요), 삼성 V-NAND 캐파 60%+ NVIDIA 배정·V10 공급 개시 보도(Med), Vera Rubin 램프가 512Gb TLC 스팟 $21로 압박(TrendForce 실측). ③ NVIDIA DGX Spark 4TB의 SSD가 삼성 PM9E1(M.2 2242)임을 분해로 실물 확인 — 개인용 AI 기기 design win. ④ 정정: 갤럭시 S26은 UFS 4.0 잔류(기존 표의 4.1 전망 오류). 재해석: "AI SSD 후행"은 SLC 초고 IOPS 트랙 한정 — CMX·Gen6·클라이언트 축은 선두. ssd-ufs-market.md·nvidia-cmx-scada.md 갱신. 패치 v2.42.5.',
+    tags: ['SSD', 'NVIDIA', 'design win', 'PM1763', 'PM9E1', 'DGX Spark', 'CMX', 'ingest'],
+    items: [
+      { label: 'NVIDIA 서버 축', detail: 'PM1763 양산 개시(9세대 V-NAND·4nm 컨트롤러·16TB 28.4/21.9GB/s) · CMX 1유닛 576 SSD·9,600TB · NAND 수요 2027년 1억+ TB · 캐파 60%+ 배정·V10 공급·V11 500단 개발 · TLC 스팟 $21 회복' },
+      { label: 'AI PC 축', detail: 'PM9E1(자체 5nm Presto 컨트롤러·14.5GB/s) DGX Spark 4TB 실탑재 분해 확인(MZALC4T0HBL1) · 2242 세계 최초 양면 4TB Gen5·CES 2026 어워드 · 9100 PRO 8TB AI 워크스테이션 포지셔닝' },
+      { label: '정정·재해석', detail: '갤럭시 S26 = UFS 4.0 잔류(4.1 전망 정정) · nvidia-cmx-scada §2.5 "위협 우세"를 SLC IOPS 트랙 한정으로 재해석 — CMX·Vera Rubin·개인용 축은 선두 지위. 캐파 60% 배정은 매출 락인이자 단일 고객 집중 리스크(RS-4 긴장) 병기' },
+      { label: '미확인 잔여', detail: 'PM1753 CMX 물량·매출 수치 / CMX 경쟁사 진입 / 서버 OEM 명시 채택 / PM9E1 갤럭시 북 탑재 — 후속 수집 대상' },
+    ],
+    links: [
+      { label: 'samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md' },
+      { label: 'nvidia-cmx-scada.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/entities/nvidia-cmx-scada.md' },
+    ],
+  },
   // ── 2026-08-16 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-08-16',

@@ -153,3 +153,23 @@ SCADA는 NVIDIA **"Storage-Next"** 이니셔티브의 소프트웨어 기반이�
 - [Blocks & Files - NVIDIA KV Cache 파트너 현황](https://www.blocksandfiles.com/ai-ml/2026/03/30/nvidia-and-its-partners-kv-cache-extenders/5209284)
 - [Tweaktown - NVIDIA+SK하이닉스 AI SSD](https://www.tweaktown.com/news/109427/nvidia-and-sk-hynix-to-introduce-ai-ssd-with-10x-more-performance-in-middle-of-dram-crisis/index.html)
 - [Kioxia - 1억 IOPS SSD](https://blocksandfiles.com/2025/09/15/kioxia-100-million-iops-ssd-nvidia/)
+
+---
+
+## [Update 2026-08-16] PM1763 양산 전환 + CMX 물량 구조 + DGX Spark — 탑재 축 구체화
+
+> 근거: [samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md) (항목별 신뢰도 표기).
+
+### §1.3 갱신 — 시연에서 양산·물량으로
+
+- **PM1763 양산 개시 (2026-07-08)**: "차세대 AI 플랫폼 검증 완료" 공식 발표 — GTC 2026 시연이 4개월 만에 양산으로 전환. 16TB·28,400/21,900 MB/s. 단 "Vera Rubin 공식 채택" 표현은 매체 해석이며 삼성 공식 문구는 검증 완료까지 — 최종 통합은 OEM·인증 디자인 의존.
+- **CMX 물량 구조 확인**: 1유닛 = SSD 576개·9,600TB, CMX향 NAND 수요 2026년 3,500만 → 2027년 1억+ TB — §1.3의 "즉각적 매출 기회"가 물량 구조로 구체화됐다.
+- **캐파 배정**: 삼성 V-NAND 캐파 60%+ NVIDIA CMX向 배정·V10 공급 개시·V11(500단) 개발 보도(재인용 경유, Med) — "낸드 동맹"이 HBM에 이어 NAND로 확장되는 신호. 기존 리스크 문구(PM1753→PM1763 전환 타이밍)는 양산 개시로 관리 국면 진입.
+
+### 신설 — 개인용 AI 기기 축 (DGX Spark)
+
+- **NVIDIA DGX Spark 4TB의 SSD = 삼성 PM9E1 M.2 2242** — 분해 실측으로 확인(MZALC4T0HBL1-00B07), 펌웨어 DGX Spark OS·CUDA 최적화·SPDM v1.2 보도. **데이터센터(CMX·Gen6)와 개인용 AI 기기(Gen5 클라이언트) 양 축에서 삼성이 NVIDIA 스토리지 공급사**임이 실물로 확인.
+
+### §2.5 재해석 — 두 트랙 구분
+
+- 본 페이지의 "위협 우세" 진단은 **SLC 초고 IOPS(SCADA Storage-Next) 트랙에 한정해 유지**된다 — 그 트랙의 SK(AI-N P)·Kioxia(1억 IOPS)·Micron(9650 레퍼런스) 선점 구도는 불변. 반면 **CMX(TLC 대용량)·Vera Rubin 메인 스토리지·개인용 AI 기기 트랙에서는 삼성이 선두 공급 지위**를 확보했다. "AI SSD에서 삼성 후행"이라는 단일 서술은 이제 부정확하며, 트랙별로 갈라 읽어야 한다.

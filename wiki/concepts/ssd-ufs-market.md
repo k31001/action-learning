@@ -62,7 +62,7 @@
 | 제품 | 인터페이스 | 성능 | NVIDIA 채택 |
 |------|------------|------|-------------|
 | **Samsung PM1753** | PCIe Gen5 (TLC V8) | **순차읽기 14.5 GB/s, 랜덤 3.3M IOPS** | **CMX 공식 공급** ✅ |
-| **Samsung PM1763** | PCIe Gen6 (NVMe 2.1) | **28.4 GB/s, 4~64TB** | Vera Rubin 메인 스토리지 (시연) |
+| **Samsung PM1763** | PCIe Gen6 (NVMe 2.1) | **28.4 GB/s 읽기·21.9 GB/s 쓰기, 4~16TB** | **양산 개시 (2026-07-08)** — "차세대 AI 플랫폼 검증 완료" 공식 발표 (아래 [Update 2026-08-16] 참조) |
 
 - PM1753은 NVIDIA Vera Rubin GTC 2026에서 CMX 첫 공식 공급 SSD로 확정 — 즉각 매출 인식 가능
 - BlueField-4 DPU 출하(2026 H2) 이후 PM1753 → PM1763 전환 타이밍 관리 필요
@@ -77,7 +77,7 @@
 |------|------|-----------|-------------|
 | UFS 3.1 | 2020~2023 | 미드레인지 스마트폰 | Samsung·SK·Micron·Kioxia |
 | **UFS 4.0** | 2023~2025 양산 | **삼성 갤럭시 S24·S25**, 플래그십 | Samsung 점유 50%+ (TechInsights) |
-| **UFS 4.1** | **2026 플래그십** | iPhone 18 Pro·갤럭시 S26 등 | 신규 진입 |
+| **UFS 4.1** | **2026 일부 플래그십** | iPhone 18 Pro 등 — **갤럭시 S26은 UFS 4.0 잔류(삼성 확인, 아래 정정)** | 신규 진입 |
 | UFS 5.0 | 2027+ 목표 | — | JEDEC 표준 작업 |
 
 ### 가격·수요 변동
@@ -121,7 +121,7 @@
 
 ### 즉각적 수혜
 - **PM1753**: NVIDIA CMX 공식 공급으로 매출 인식 시작
-- **PM1763**: PCIe Gen6 28.4 GB/s, 시연 완료 → 양산 시 추가 매출
+- **PM1763**: PCIe Gen6 28.4 GB/s — **2026-07-08 양산 개시 확정** (시연→양산 전환 완료)
 
 ### 구조적 위협
 - **SLC AI SSD 로드맵 부재**: SK·Kioxia가 NVIDIA Storage-Next 핵심 파트너 고착화 위험
@@ -233,3 +233,29 @@ JEDEC 표준 이정표: UFS 3.0 2018-01-30·4.0 2022-08-17·4.1 2025-01-08 (JEDE
 - **다운턴 중 니치 육성의 사내 성공 선례 확보**: 2차 다운턴(2010~13) 한복판의 소비자 SSD 브랜드 구축(830 풀 자체화→840 세계 최초 TLC→2013 전체 SSD 1위)은, 3차 다운턴의 HBM 니치 배제(✕)와 정반대의 **성공한 "다운턴 중 니치→주류 전환"**이다. AI SSD(SCADA) 대응의 사내 벤치마크는 멀리 있지 않다 — CMO 매트릭스 참조.
 - **소비자 SSD 지형 변화**: Micron 철수·Sandisk 독립으로 소비자 SSD는 삼성 대 중국·대만 모듈 메이커 구도로 재편 중 — 브랜드 수성 비용 대비 가치의 재평가 필요.
 - **UFS 5.0 양산(2026 Q4)이 온디바이스 AI 폼팩터 전환의 선점 수** — §[Update 2026-05-19 II] 권석준의 "폼팩터 전환기를 놓치면 일본 꼴" 경고에 대한 실행 응답.
+
+---
+
+## [Update 2026-08-16] 탑재(Design Win) 축 — NVIDIA 서버·AI PC에 삼성 SSD
+
+> 근거: 전용 리서치 노트 ([samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)). 프록시 차단으로 검색 요약 경유가 다수 — 항목별 신뢰도는 노트에 표기.
+
+### NVIDIA 서버 축 — PM1763 양산 전환 + CMX "스펀지" 수요
+
+- **PM1763 양산 개시 (2026-07-08 공식 발표)** — 9세대 V-NAND + 4nm 컨트롤러, 4/8/16TB, 16TB 기준 순차 읽기 28,400·쓰기 21,900 MB/s(PM1753 대비 2배+), 액체 냉각 최적화. 공식 인용: **"차세대 AI 플랫폼 검증(validation)을 성공적으로 완료"** — 단 "Vera Rubin 공식 채택"은 매체 해석이며 삼성 공식 문구는 여기까지다(최종 통합은 OEM·인증 시스템 디자인 의존) ([samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)).
+- **CMX 물량 구조** — 1유닛 = SSD 576개·9,600TB. CMX향 NAND 수요 추정 **2026년 3,500만 TB → 2027년 1억+ TB** ("NAND 시장에 Apple급 수요원이 하나 더" 비유, 분석가 "Rubin CMX는 스펀지처럼 NAND를 흡수" 인용) ([samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)).
+- **삼성 V-NAND 캐파의 CMX 배정 60%+ 보도** — V9 중심 월 10만 장+ 캐파의 약 60%를 NVIDIA向 배정, V10 양산·NVIDIA 공급 개시 + V11(최대 500단) 개발 병행("낸드 동맹 확대") — 한국 매체 원문 접근 불가로 재인용 확인(Med), 소비자 SSD 공급 크런치 우려 병행 보도 ([samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)).
+- **시황 임팩트** — Vera Rubin 램프가 TLC NAND 공급을 압박, 512Gb TLC 웨이퍼 스팟가 6월 슬럼프 후 8월 $21 회복(+4.97% 주간, TrendForce 실측) ([samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)).
+
+### AI PC·온디바이스 축 — DGX Spark 실탑재 확인
+
+- **PM9E1** (2024-10 양산) — "AI 응용에 최적인 업계 최고 성능 PC SSD", PCIe 5.0 8채널, **자체 5nm 'Presto' 컨트롤러(삼성 파운드리) + 8세대 V-NAND**, 순차 14,500/13,000 MB/s ([samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)).
+- **NVIDIA DGX Spark(GB10 데스크톱 AI 슈퍼컴퓨터) 4TB 모델에 PM9E1 M.2 2242 실탑재** — 분해로 실물 확인(모델 MZALC4T0HBL1-00B07), 펌웨어가 DGX Spark OS·CUDA에 최적화·SPDM v1.2 지원 보도. **데이터센터(CMX·Vera Rubin)에 이어 개인용 AI 기기에서도 삼성이 NVIDIA 스토리지 공급사임이 실물로 확인된 design win** ([samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)).
+- **PM9E1 2242 파생** — 세계 최초 M.2 22×42mm 양면 4TB Gen5, CES 2026 Innovation Award honoree — 공간 제약형 AI PC·컴팩트 AI 기기 타깃. **9100 PRO 8TB**는 소비자 Gen5를 "AI 컴퓨팅·워크스테이션"으로 공식 포지셔닝 ([samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)).
+- **정정** — 갤럭시 S26(2026-03)은 **UFS 4.0 잔류**(1TB 모델 4.1 루머를 삼성이 부인, 4.0↔4.1 인터페이스 대역폭 동일) — 본 페이지 §4 표의 기존 전망을 정정함 ([samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](../../sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)).
+
+### 시사점 갱신
+
+- **탑재 임팩트의 구조**: NVIDIA 스토리지 계층 전체(서버 CMX Gen5 → Vera Rubin Gen6 → 개인용 DGX Spark Gen5 클라이언트)에서 삼성 SSD가 공급 지위를 확보 — §2의 "AI SSD 후행" 진단은 **SLC 초고 IOPS(SCADA Storage-Next) 트랙에 한정**되며, 범용·CMX·클라이언트 축에서는 오히려 선두다. 두 트랙을 구분해 읽어야 한다.
+- **캐파 배정의 양면**: NAND 캐파 60%+ NVIDIA 배정(보도 기준)은 매출 락인이자 **단일 고객 집중 리스크**(RS-4 단일 고객 ≤25% 원칙과 긴장) — 소비자 SSD 크런치와 함께 4차 다운턴 대비 관점에서 계약 커버리지·만기 구조 확인 필요.
+- **미확인 잔여**: PM1753 CMX 공급 물량·매출 수치, CMX 경쟁사 진입 여부, 서버 OEM(Dell·HPE 등)의 삼성 eSSD 명시 채택, PM9E1의 갤럭시 북 탑재 — 후속 수집 대상.
