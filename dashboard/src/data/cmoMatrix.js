@@ -58,6 +58,60 @@ export const CMO_CAUSES = [
 ]
 
 // ─────────────────────────────────────────────────────────────────────────────
+// 통찰 — wiki/storyline/cmo-matrix.md §5 "이 매트릭스에서 읽히는 것" 미러
+// ─────────────────────────────────────────────────────────────────────────────
+export const CMO_INSIGHTS = [
+  {
+    id: 0,
+    title: '대비기 절제는 1차에서만 있었다',
+    text: '2007-01 CapEx -18% 삭감은 "삼성 = 항상 역사이클 확대"라는 통설의 반례이며, 2·3차 대비기에는 붕괴 직전까지 증액했다. 특히 3차는 수요 절벽 6개월 전에 450조 5년 계획을 공표해 이후 조정의 자유도를 스스로 좁혔다. 절제의 형태도 다르다 — 1차는 "개발은 선행하되 양산 투입은 이연"이라는 배합이었고, 3차는 "캐파는 늘리고 판매만 조이는" 비대칭이었다.',
+  },
+  {
+    id: 1,
+    title: '효과가 분명했던 액션의 관점 편중',
+    text: '◎ 판정은 개발·투자에 몰려 있고(공정 세대 선행, 역사이클 증설, R&D 하한), 제조(감산·가동률) 축에서는 1차의 무감산만 ◎이며 3차에서는 같은 액션이 ✕가 됐다. 제조 축의 교범은 맥락 의존성이 가장 크다.',
+  },
+  {
+    id: 2,
+    title: '무행동이 만든 손실이 행동의 실패보다 크다',
+    text: '✕·△ 중 상당수가 무행동이다(HBM 후순위, 엘피다 불참, 조직 무대응). 다운턴 전략의 실패는 대개 "잘못한 것"이 아니라 "안 한 것"에서 온다.',
+  },
+  {
+    id: 3,
+    title: '삼성은 "다운턴 중 니치 육성"에 성공한 역사를 이미 갖고 있다',
+    text: '초판의 "SSD·UFS 축은 HDD 매각 한 건뿐"은 조사 공백이었다. 재조사 결과 2차 다운턴(2010~13) 한복판에서 소비자 SSD를 풀 자체화(830)→세계 최초 TLC(840)→V-NAND 최초 양산으로 니치에서 2013 전체 SSD 1위(28.5%)까지 육성한 ◎급 선례가 있었다. 즉 3차의 HBM 니치 배제(✕)는 "삼성은 원래 니치를 못 키운다"가 아니라 같은 회사가 이미 성공했던 플레이북을 실행하지 않은 것이다 — AI SSD(SCADA) 니치 대응의 벤치마크는 SK·Kioxia가 아니라 2012년의 삼성 자신이다. 남은 진짜 공백은 SLC 초고 IOPS AI SSD 트랙 하나다.',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
+  },
+  {
+    id: 4,
+    title: '대비 국면이 대응의 선택지를 결정한다',
+    text: '2019년 HBM팀 축소가 2022~23의 출발 위치가 됐듯, 지금(2026~27)의 계약 커버리지·옵션 캐파 비율·별동대 진척이 2028~29의 C가 된다. 4차 추천 전략에서 대비 항목이 대응 항목보다 많은 이유다.',
+  },
+  {
+    id: 5,
+    title: '계약 바닥은 삼성에게 완전히 새로운 메커니즘이 아니다',
+    text: '2005-11 Apple NAND 장기공급계약(선급 총 $1.25B, 5개사)에서 삼성은 이미 선급 LTA의 공급자 당사자였다. 4차 추천 1순위(계약 바닥)는 없던 능력을 새로 만드는 일이 아니라, 20년 전 개별 계약으로 했던 것을 전사 커버리지 정책으로 제도화하는 일이다 — 실행 난이도의 성격이 달라진다.',
+    refs: 'sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md',
+  },
+  {
+    id: 6,
+    title: '대비기 액션의 72%는 다운턴 대비가 아니었다',
+    text: '25건 중 다운턴을 겨냥한 의도적 대비는 7건(28%)뿐이고, 11건은 호황 성장, 7건은 결과적 대비였다. 다운턴 대비를 문제로 삼는다면 참고할 사내 선례의 모수 자체가 작다는 것이 출발점이다.',
+  },
+  {
+    id: 7,
+    title: '무행동은 대비 국면에서 더 치명적이다',
+    text: '대응 국면의 ✕는 2건(무감산·HBM 후순위)이지만, 3차 대비 국면에서만 ✕가 4건(CapEx 무절제·450조 공표·HBM 조직 부재·재고 방치)이다. 그중 둘(HBM 조직 부재·재고 방치)은 무행동이다 — 다운턴이 오기 전의 무행동이 다운턴 중의 선택지를 지운다.',
+  },
+  {
+    id: 8,
+    title: '전환발(③) 다운턴의 O를 가르는 것은 "전환기 플레이북"의 실행 여부다',
+    text: '시장 전환기 재조사 결과, 삼성이 PC→모바일·모바일→데이터센터 두 전환에서 반복한 승리 공식은 4요소였다: ①레거시 exit+판로 심기(2011 HDD 매각에 NAND 크로스-서플라이 조항 동반), ②자기잠식형 표준 창설(eMMC 지배자가 UFS 주도), ③수요 폭발 3~5년 전 전용 캐파 베팅(시안 V-NAND), ④인터페이스 세대 선점(XS1715 — 업계 최초 NVMe, Intel보다 1년 선행). 반례도 같은 조사에서 나왔다 — NVMe 규격을 설계한 Intel은 제품화 1년 후행 + 자기 생태계 없는 차세대 베팅(Optane, 2022 청산)으로 데이터센터 전환의 승자 자리를 내줬다. 규격·기술을 가진 쪽이 아니라 플레이북을 완주한 쪽이 이긴다 — 4차의 전환발 시나리오(3D DRAM·CXL·zHBM)에서 D6·RS-9 계열 대비책의 판정 기준으로 쓸 수 있는 관측 선례다.',
+    refs: 'sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
+  },
+]
+
+// ─────────────────────────────────────────────────────────────────────────────
 // 엔트리 — action(M) · mechanism(그 액션이 작동시킨 인과 경로) · outcome(O) · verdict
 // ─────────────────────────────────────────────────────────────────────────────
 export const CMO_ENTRIES = [
@@ -131,19 +185,35 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd2-res-05', downturn: 'd2', phase: 'response', product: 'NAND', context: '투자',
-    action: '시안 NAND 팹 다운턴 착공 (2012-09 착공 → 2014-05 양산, 투자액 매체별 $2.3B~$10B+ 병기)',
-    mechanism: '리드타임 소화 — 다운턴에 건설, 업사이클에 가동',
-    outcome: '다운턴 국면에 건설 기간을 소화해 2014년 NAND 수요 확대기에 맞춰 양산 진입. 중국 현지 생산 거점 확보로 동서 균형 공급의 토대(현재 MB-2의 자산)',
+    action: '시안 NAND 팹 다운턴 착공 (2012 발표 $7B → 2012-09 착공 → 2014-05 V-NAND 전용 양산, 1기 누계 $10.87B 후대 집계 병기)',
+    mechanism: '리드타임 소화 + 수요 폭발 3~5년 전 전용 캐파 베팅 — 다운턴에 건설, 업사이클에 가동',
+    outcome: '다운턴 국면에 건설 기간을 소화해 2014년 NAND 수요 확대기에 V-NAND 전용 캐파로 양산 진입 → 데이터센터 전환의 캐파 기반(2기 $7B는 2017-08-30 슈퍼사이클 정점 직전 발표, 현재 전체 NAND 40%+). 중국 현지 생산 거점 확보로 동서 균형 공급의 토대(현재 MB-2의 자산)이자 전환기 플레이북 요소 3의 원형',
     verdict: 'clear',
-    refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md',
+    refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md · sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
   },
   {
     id: 'd2-res-06', downturn: 'd2', phase: 'response', product: 'SSD·UFS', context: '제품',
-    action: 'HDD 사업 매각 (2011-04 Seagate에 $1.375B, 2011-12 종결)',
-    mechanism: '비핵심 경량화 — 스토리지를 NAND/SSD로 집중',
-    outcome: '모바일 전환으로 HDD 수요 구조가 사양화되는 맥락에서 발화 → $1.375B 회수 + Seagate 지분·NAND 공급 파트너십 확보. 단 메모리 점유율에의 효과는 간접',
+    action: 'HDD 사업 매각 (2011-04 Seagate에 $1.375B — 현금 50%+주식 50%: 지분 9.6%·이사회 1석, 같은 계약에 "삼성 NAND→Seagate SSD" 크로스-서플라이 조항 동반, 2011-12 종결)',
+    mechanism: '레거시 exit + 판로 심기 — 스토리지를 NAND/SSD로 집중하며 매각 계약에 자사 NAND 판로를 내장',
+    outcome: '모바일 전환으로 HDD 수요 구조가 사양화되는 맥락에서 발화 → $1.375B 회수 + Seagate 지분 + 매각과 동시에 자사 NAND의 신규 판로를 계약 구조에 심음(전환기 플레이북 요소 1의 원형). 단 메모리 점유율에의 효과는 간접',
     verdict: 'partial',
-    refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md',
+    refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md · sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
+  },
+  {
+    id: 'd2-res-09', downturn: 'd2', phase: 'response', product: 'SSD·UFS', context: '개발',
+    action: 'UFS 표준 창설 주도 (JEDEC UFS 1.0 2011-02-24 → 2.0 2013-09-18, MIPI M-PHY·UniPro 협업 — 삼성 임원이 표준 발표 대표 논평자 반복)',
+    mechanism: '자기잠식형 표준 창설 — eMMC 지배자가 자기 시장을 대체할 차세대 표준을 주도',
+    outcome: 'eMMC 1위(2013년 35.6%, Gartner)를 쥔 상태에서 SSD(SCSI/UAS)식 command queuing을 모바일에 이식한 UFS를 다운턴 중에 주도 → 2015-01 세계 최초 UFS 2.0 양산으로 회수, PC→모바일 전환기의 모바일 스토리지 지배를 표준 계층에서 연장(전환기 플레이북 요소 2의 원형)',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
+  },
+  {
+    id: 'd2-res-10', downturn: 'd2', phase: 'response', product: 'SSD·UFS', context: '개발',
+    action: 'XS1715 — 업계 최초 NVMe eSSD (2013-05-31 UNH-IOL NVMe 인증 1호 → 2013-07 공개, 최초 U.2(SFF-8639) 채택, 순차 3,000MB/s·740K IOPS)',
+    mechanism: '인터페이스 세대 선점 — SATA→NVMe 전환의 첫 제품을 잡아 데이터센터 전환기의 주도권 확보',
+    outcome: 'NVMe 규격을 설계한 Intel보다 제품화 약 1년 선행(Intel 첫 NVMe DC P3700은 2014-Q2) → 모바일→데이터센터 전환기의 인터페이스 주도권 확보, 3Q18 eSSD 매출 38.5% 1위 vs Intel 18.3%로 회수(단 1Q17 출하량 기준 Intel 1위 구간 존재 — 집계 기준별 뉘앙스). 전환기 플레이북 요소 4의 원형 — 최종 승부는 Intel의 자멸(Optane 2022 청산·NAND 매각)로 확정',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
   },
   {
     id: 'd2-res-07', downturn: 'd2', phase: 'response', product: 'DRAM', context: '투자',

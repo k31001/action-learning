@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
-import { LayoutGrid, List, X, AlertTriangle, Lightbulb } from 'lucide-react'
+import { LayoutGrid, List, X, AlertTriangle, Lightbulb, ChevronDown, ChevronRight } from 'lucide-react'
 import SourceLink from './SourceLink'
 import {
   CMO_DOWNTURNS, CMO_PHASES, CMO_PRODUCTS, CMO_CONTEXTS,
-  CMO_VERDICTS, CMO_CAUSES, CMO_ENTRIES, CMO_PREP_TYPES,
+  CMO_VERDICTS, CMO_CAUSES, CMO_ENTRIES, CMO_PREP_TYPES, CMO_INSIGHTS,
 } from '../data/cmoMatrix'
 
 const VERDICT = Object.fromEntries(CMO_VERDICTS.map(v => [v.id, v]))
@@ -156,6 +156,51 @@ function EntryDetail({ entry, onClose }) {
       )}
 
       {entry.refs && <SourceLink source={entry.refs} className="mt-3 text-[11px] text-zinc-400" />}
+    </div>
+  )
+}
+
+// 이 매트릭스에서 읽히는 것 — wiki/storyline/cmo-matrix.md §5 미러. 항목 클릭으로 본문 펼침.
+function InsightsPanel() {
+  const [open, setOpen] = useState(() => new Set([CMO_INSIGHTS[CMO_INSIGHTS.length - 1].id]))
+  const toggleOpen = id => {
+    const next = new Set(open)
+    next.has(id) ? next.delete(id) : next.add(id)
+    setOpen(next)
+  }
+  return (
+    <div className="rounded-hig-lg border border-zinc-200 bg-white p-4">
+      <h3 className="text-[13px] font-bold text-zinc-900 mb-1 flex items-center gap-1.5">
+        <Lightbulb size={14} /> 이 매트릭스에서 읽히는 것 — 통찰 {CMO_INSIGHTS.length}
+      </h3>
+      <p className="text-[11px] text-zinc-400 mb-2">항목을 클릭하면 본문이 펼쳐진다 · 단일 소스: wiki/storyline/cmo-matrix.md §5</p>
+      <div className="divide-y divide-zinc-100">
+        {CMO_INSIGHTS.map(ins => {
+          const isOpen = open.has(ins.id)
+          return (
+            <div key={ins.id}>
+              <button
+                onClick={() => toggleOpen(ins.id)}
+                className="w-full flex items-start gap-2 py-2 text-left hover:bg-zinc-50/60 transition-colors"
+              >
+                <span className="flex-shrink-0 mt-0.5 text-zinc-400">
+                  {isOpen ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                </span>
+                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-zinc-900 text-white text-[10px] font-bold inline-flex items-center justify-center">
+                  {ins.id}
+                </span>
+                <span className="text-[13px] font-semibold text-zinc-800 leading-snug">{ins.title}</span>
+              </button>
+              {isOpen && (
+                <div className="pl-11 pb-3">
+                  <p className="text-[13px] leading-relaxed text-zinc-600">{ins.text}</p>
+                  {ins.refs && <SourceLink source={ins.refs} className="mt-1.5 text-[11px] text-zinc-400" />}
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -468,6 +513,9 @@ export default function CMOMatrix() {
           )}
         </div>
       )}
+
+      {/* ── 통찰 — 위키 §5 미러 ── */}
+      <InsightsPanel />
 
       {/* ── 4차 원인 범례 ── */}
       <div className="rounded-hig-lg border border-zinc-200 bg-white p-4">
