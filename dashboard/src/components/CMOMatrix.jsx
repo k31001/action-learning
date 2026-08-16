@@ -234,10 +234,10 @@ export default function CMOMatrix() {
   const preset = key => {
     resetAll()
     if (key === 'worked') {
-      setDownturns(new Set(['d1', 'd2', 'd3']))
+      setDownturns(new Set(['d1', 'd2', 'd19', 'd3']))
       setVerdicts(new Set(['clear']))
     } else if (key === 'failed') {
-      setDownturns(new Set(['d1', 'd2', 'd3']))
+      setDownturns(new Set(['d1', 'd2', 'd19', 'd3']))
       setVerdicts(new Set(['adverse']))
     } else if (key === 'prep') {
       setPhases(new Set(['prep', 'recommend']))
@@ -284,9 +284,10 @@ export default function CMOMatrix() {
     <div className="space-y-4">
       {/* ── 헤더 ── */}
       <div className="rounded-hig-lg border border-zinc-200 bg-white p-5">
-        <h1 className="text-xl font-bold text-zinc-900 tracking-tight">CMO 통합 매트릭스 — 네 번의 다운턴</h1>
+        <h1 className="text-xl font-bold text-zinc-900 tracking-tight">CMO 통합 매트릭스 — 다섯 번의 다운턴</h1>
         <p className="mt-2 text-[15px] leading-relaxed text-zinc-700">
-          1·2·3차 다운턴(관측)과 다음 다운사이클(예측)을 하나의 데이터셋으로 합쳤다. 각 항목은 <b>액션(M)</b>이
+          1·2차 치킨게임, 2019 다운사이클, 3차 다운사이클(관측)과 다음 다운사이클(예측)을 하나의 데이터셋으로 합쳤다.
+          1·2·3차 번호 체계는 위키 전반의 확립 표기라 유지하고, 2019는 번호 없이 연도로 표기한다. 각 항목은 <b>액션(M)</b>이
           <b> 맥락(C)</b> 아래에서 만든 <b>결과(O)</b>이며, 두 축으로 분류된다 — <b>제품</b>(DRAM·NAND·SSD·UFS·공통)과
           <b> 관점</b>(제조·투자·개발·제품·운영). 국면은 <b>대비</b>(다운턴이 오기 전에 한 것)와
           <b> 대응</b>(다운턴 기간 중에 한 것)으로 나누고, 4차는 <b>추천 전략</b>과 <b>예상되는 흔한 실수</b>로 나눈다.

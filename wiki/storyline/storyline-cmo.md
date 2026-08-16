@@ -1,7 +1,7 @@
 ---
 type: analysis
 last_reviewed: 2026-08-16
-sources: [sources/articles/dram-chicken-game-history-2026-08-05.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/filings/micron-q3-fy26.md, sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md, sources/articles/apple-cxmt-china-dram-2026-07-08.md, sources/articles/youtube-kwon-cycle-formula-2026-05-21.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md, sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md, sources/articles/semiconductor-depreciation-cost-structure-2026-08.md, sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md, sources/raw-notes/memory-cycle-storyline-r3-2026-08-12.md]
+sources: [sources/articles/dram-chicken-game-history-2026-08-05.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/filings/micron-q3-fy26.md, sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md, sources/articles/apple-cxmt-china-dram-2026-07-08.md, sources/articles/youtube-kwon-cycle-formula-2026-05-21.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md, sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md, sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md, sources/articles/semiconductor-depreciation-cost-structure-2026-08.md, sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md, sources/raw-notes/memory-cycle-storyline-r3-2026-08-12.md]
 ---
 
 # 스토리라인 (CMO 렌즈) — 같은 전략은 같은 결과를 재생하지 않는다
@@ -115,11 +115,11 @@ flowchart LR
     S2 -.->|"✕ 역효과"| X2["반면교사로 역이용"]
 ```
 
-**액션은 두 국면으로 나뉜다.** 다운턴 **기간 중**의 액션(대응)과, 다운턴이 **오기 전 호황 말기**의 액션(대비)은 성격이 다르다 — 대응의 선택지 자체가 대비 국면에 이미 정해져 있기 때문이다. 2019년 HBM팀 축소(그 시점의 M)는 2022~23 다운턴에서는 바꿀 수 없는 출발 위치(C)였다. **한 시기의 M이 다음 시기의 C가 된다**는 이 순환이 두 국면을 나누는 이유이고, 초판의 A1~A6이 전부 대응 국면이었던 것이 이 페이지의 공백이었다. §5.1이 그 공백을 메운다 (전체 25건의 대비 액션과 성격 분류는 [CMO 통합 매트릭스 §3.2~3.3](cmo-matrix.md)).
+**액션은 두 국면으로 나뉜다.** 다운턴 **기간 중**의 액션(대응)과, 다운턴이 **오기 전 호황 말기**의 액션(대비)은 성격이 다르다 — 대응의 선택지 자체가 대비 국면에 이미 정해져 있기 때문이다. 2019년 HBM팀 축소(그 시점의 M)는 2022~23 다운턴에서는 바꿀 수 없는 출발 위치(C)였다. **한 시기의 M이 다음 시기의 C가 된다**는 이 순환이 두 국면을 나누는 이유이고, 초판의 A1~A6이 전부 대응 국면이었던 것이 이 페이지의 공백이었다. §5.1이 그 공백을 메운다 (전체 28건의 대비 액션과 성격 분류는 [CMO 통합 매트릭스 §3.2~3.3](cmo-matrix.md) — 2019 다운사이클(2018 Q4~2019) 창 편입 이후 기준).
 
-### 5.1 대비 국면 — 도착 전에 한 것 (P1~P7, 의도적 대비만)
+### 5.1 대비 국면 — 도착 전에 한 것 (P1~P8, 의도적 대비만)
 
-대비기 액션 25건 중 **의도 자체가 다가올 하강 국면에 대한 포지셔닝**이었던 것만 추리면 7건이다(나머지는 결과적 대비 7건·호황 성장 11건). 이것이 삼성이 실제로 보유한 **다운턴 대비 레퍼토리의 전부**다 ([samsung-pre-downturn-preparation-2005-2022-2026-08-08.md](../../sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md)).
+대비기 액션 28건 중 **의도 자체가 다가올 하강 국면에 대한 포지셔닝**이었던 것만 추리면 8건이다(나머지는 결과적 대비 7건·호황 성장 13건). 이것이 삼성이 실제로 보유한 **다운턴 대비 레퍼토리의 전부**다 ([samsung-pre-downturn-preparation-2005-2022-2026-08-08.md](../../sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md), 2019 창은 [samsung-2019-downturn-2017-2019-actions-2026-08-16.md](../../sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md)).
 
 | # | 대비기 | 대비 액션 (M) · 메커니즘 | 결과 (O) | 판정 | 지금도 성립? | 전략 번역 (2026) |
 |---|---|---|---|---|---|---|
@@ -128,10 +128,11 @@ flowchart LR
 | P3 | 1차 (2005~07) | **Apple 선급 장기공급계약 참여** (2005-11, Apple 선급 총 $1.25B/5개사) — 계약적 매출 바닥 | 삼성이 이미 선급 LTA의 **공급자 당사자**였던 사내 최초 선례. 단 고객 주도 개별 계약이며 전사 정책 아님 | **◎** | 성립 — **성공한 대비 2건 중 하나**. §4의 "계약 바닥 = 완전 신규" 정리를 부분 교정 | [DP-1 만기 사다리화](../downturn/preparation.md)·RS-8·RS-4·D12 — 개별 계약을 **전사 커버리지 정책**으로 |
 | P4 | 2차 (2009~10) | **사이클 외부 다각화** (5대 신수종 23.3조/10년, 2010-05) — 변동성 분산 | 상관 낮은 축 개설 시도. 다운턴 손익을 상쇄할 규모의 축은 **미확인** | △ | 부분 — 메모리 손익 상쇄 효과는 여전히 미검증 | 이 렌즈의 처방에서 제외 — 상쇄는 계약(DP-1)·전환(DP-6)이 담당 |
 | P5 | 3차 (2020~22) | **판매 측 규율** (2022 Q2 "disciplined sales" — 서버 집중·ASP 유지) — 가격 규율 | 대비기 말 유일한 절제 신호이나 판매 축에 국한 — **캐파는 늘리고 판매만 조인 비대칭** | △ | 재발 위험 — 절제가 한쪽 축에만 걸리는 패턴 | DP-2(생산 측) + DP-1(판매 측)의 **동시 배선** |
-| P6 | 3차 (2020~22) | **[미실행] HBM 니치 조직 유지** (2019 해체 → 대비기 전 구간 부재 → 2024-04 재구성) — 니치 역량 보존 | 대비의 부재가 3차의 출발 위치(C)를 만듦 → HBM 40%→17%·33년 만의 DRAM 역전 | **✕** | **재발 위험 최대** — 다음 대상은 zHBM·3D DRAM·AI SSD | [DP-5 별동대 + R&D 하한](../downturn/preparation.md) 🔵 무후회 · D13·SD-1 |
-| P7 | 3차 (2020~22) | **[미실행] 재고 조정** (DS 16.5조 → 29.1조 **+76.6%** 방치) — 재고 버퍼 관리 | 진입 6~12개월 전 정량 경보가 행동으로 연결되지 않음 → 2022-10 무감산·2023-04 뒤늦은 선회 | **✕** | 재발 위험 — 신호는 있었으나 **배선이 없었다** | [DP-4 감별 EWI + 트리거 배선](../downturn/preparation.md) 🔵 무후회 · D15·D16 |
+| P6 | 2019 (2017~18) | **[미실행] 재고·경보 대응** (TrendForce 2H18 연속 경보 → 2018년 말 재고 상대 고점 방치) — 조기경보 미행동 | 경보→행동 배선 부재가 4Q18 절벽(DRAM QoQ -18.3%) 낙폭을 키움 — P8과 동일 패턴의 **첫 번째 발생** | **✕** | 재발 위험 — 같은 실패가 이미 두 번 반복됐다 | [DP-4 감별 EWI + 트리거 배선](../downturn/preparation.md) 🔵 무후회 · RS-9 |
+| P7 | 3차 (2020~22) | **[미실행] HBM 니치 조직 유지** (2019 해체 → 대비기 전 구간 부재 → 2024-04 재구성) — 니치 역량 보존 | 대비의 부재가 3차의 출발 위치(C)를 만듦 → HBM 40%→17%·33년 만의 DRAM 역전 | **✕** | **재발 위험 최대** — 다음 대상은 zHBM·3D DRAM·AI SSD | [DP-5 별동대 + R&D 하한](../downturn/preparation.md) 🔵 무후회 · D13·SD-1 |
+| P8 | 3차 (2020~22) | **[미실행] 재고 조정** (DS 16.5조 → 29.1조 **+76.6%** 방치) — 재고 버퍼 관리 | 진입 6~12개월 전 정량 경보가 행동으로 연결되지 않음 → 2022-10 무감산·2023-04 뒤늦은 선회 — P6에 이은 **두 번째 반복** | **✕** | 재발 위험 — 신호는 있었으나 **배선이 없었다** | [DP-4 감별 EWI + 트리거 배선](../downturn/preparation.md) 🔵 무후회 · D15·D16 |
 
-**이 7건이 말하는 것** — ① **레퍼토리가 얇다**: 20년·세 대비기에 걸쳐 의도적 대비가 7건뿐이고, 명확한 성공은 P2·P3 둘이다. ② **성공한 둘은 "속도를 늦추거나 바닥을 깐" 형태**였다 — 무엇을 더 한 것이 아니다. ③ **실패한 둘은 하지 않은 것**(P6·P7)이다 — 대비 국면에서는 무행동이 행동의 실패보다 비싸다. ④ **무게중심이 어긋나 있었다**: 7건 중 4건이 운영 축(계약·재고·판매·조직)인데 자원은 내내 투자 축(캐파)으로 쏠렸다. ⑤ 따라서 **DP-1~7은 과거 성공 공식의 재현이 아니라 없던 수단을 처음 갖추는 목록**이다 — 옵션형 캐파·EWI 사전 배선·조직 대응 매뉴얼·만기 관리·전환 라인 실증은 세 대비기 어디에도 없다.
+**이 8건이 말하는 것** — ① **레퍼토리가 얇다**: 20년·네 대비기에 걸쳐 의도적 대비가 8건뿐이고, 명확한 성공은 P2·P3 둘이다. ② **성공한 둘은 "속도를 늦추거나 바닥을 깐" 형태**였다 — 무엇을 더 한 것이 아니다. ③ **실패한 셋은 전부 하지 않은 것**(P6·P7·P8)이다 — 대비 국면에서는 무행동이 행동의 실패보다 비싸고, 그중 재고·경보 무행동(P6·P8)은 2018과 2021 **두 사이클 연속 반복된 구조 패턴**이다. ④ **무게중심이 어긋나 있었다**: 8건 중 5건이 운영 축(계약·재고·판매·조직)인데 자원은 내내 투자 축(캐파)으로 쏠렸다. ⑤ 따라서 **DP-1~7은 과거 성공 공식의 재현이 아니라 없던 수단을 처음 갖추는 목록**이다 — 옵션형 캐파·EWI 사전 배선·조직 대응 매뉴얼·만기 관리·전환 라인 실증은 네 대비기 어디에도 없다.
 
 ### 5.2 대응 국면 — 도착 후에 한 것 (A1~A6) · 액션 유효성 판정 표
 
@@ -361,6 +362,6 @@ CMO 렌즈에서 삼성의 다운턴 전략은 하나의 문장으로 요약된�
 ## 갱신 규칙
 
 - 다운턴 사례·맥락 변수에 영향을 주는 페이지(entities의 경쟁 구도, concepts의 사이클·계약 구조 데이터, strategies)가 바뀌면 이 페이지와 `dashboard/src/data/storylineLenses.js`의 CMO 렌즈를 동반 갱신한다 (CLAUDE.md §6).
-- 새 다운턴이 실제로 시작되면(§3 맥락 #5 경로 확인 시) §2에 CMO-4 구성을 추가하고 §3~7(액션 판정·경쟁사 비교 표 포함)을 재감사한다. 이때 **§5.1의 P1~P7 옆에 2026~27 대비 국면의 액션을 4차 대비 행으로 추가**한다 — 지금의 액션이 그 다운턴의 C가 되기 때문이다.
+- 새 다운턴이 실제로 시작되면(§3 맥락 #5 경로 확인 시) §2에 CMO-4 구성을 추가하고 §3~7(액션 판정·경쟁사 비교 표 포함)을 재감사한다. 이때 **§5.1의 P1~P8 옆에 2026~27 대비 국면의 액션을 4차 대비 행으로 추가**한다 — 지금의 액션이 그 다운턴의 C가 되기 때문이다.
 - [CMO 통합 매트릭스](cmo-matrix.md)의 판정·수치와 어긋나면 **더 최근 근거를 가진 쪽으로 통일**하고 양쪽을 함께 고친다. §5.1과 통합 매트릭스 §3.3은 같은 7건을 다루므로 항상 동기화한다.
 - [SP-2](../downturn/README.md)가 바뀌면 §2 CMO-4 형태 분해 행·§3 맥락 #7·#8·§4 다운턴 배선 열·§7 속도 축 절을 동반 갱신한다. **SP-1 무조건부 확률과 SP-2 조건부 확률을 섞지 않는다.**
