@@ -8,13 +8,13 @@
 
 ## wiki/storyline — 종합 스토리라인 (NEW)
 
-- [wiki/storyline/storyline.md](wiki/storyline/storyline.md) — 위키 전체 지식을 잇는 종합 서사(시나리오 플래닝 마스터): 환경 변화 → 진단 → 핵심 동인 → 시나리오 → 전략 선택 논증 → EWI (대시보드 "Storyline" 첫 탭의 단일 소스)
+- [wiki/storyline/storyline.md](wiki/storyline/storyline.md) — 위키 전체 지식을 잇는 종합 서사(시나리오 플래닝 SP-1 마스터): 환경 변화 → 진단 → 핵심 동인 → 시나리오 → 전략 선택 논증 → EWI. **SP-2 다운턴 트랙 연결**(4장 "다운턴은 C·D에 갇혀 있지 않다"·6장 RS/D + DP/DR/DX 코드 체계·7장 무후회 3종 교차 검증·8장 EWI⊥DX 직렬) (대시보드 "Storyline" 첫 탭의 단일 소스)
 - [wiki/storyline/storyline-five-forces.md](wiki/storyline/storyline-five-forces.md) — (NEW) 파이브 포스 렌즈: 협상력의 지도 — 구매자·경쟁·진입·공급자·대체재 다섯 힘으로 재서사화
 - [wiki/storyline/storyline-game-theory.md](wiki/storyline/storyline-game-theory.md) — (NEW) 게임이론 렌즈: 치킨게임(2007~13) → 3강 절제 균형 → take-or-pay 약속 게임 → CXMT 비대칭 게임
 - [wiki/storyline/storyline-real-options.md](wiki/storyline/storyline-real-options.md) — (NEW) 실물옵션 렌즈: 콜(RS-1·MB-5·D9)·풋(RS-8·NTB)·전환(SE-1·SE-2·RS-2)·포기(시안 Plan B) 옵션 포트폴리오 + EWI 행사 신호
 - [wiki/storyline/storyline-disruption.md](wiki/storyline/storyline-disruption.md) — (NEW) 파괴적 혁신 렌즈: HBM 파괴 피해 사례 → CXMT 로엔드·3D DRAM/CXL 차세대·AI SSD 인접 파괴와 대응
-- [wiki/storyline/storyline-cmo.md](wiki/storyline/storyline-cmo.md) — (NEW) CMO 렌즈(Context-Mechanism-Outcome): 다운턴 3건(2007~09·2010~13·2022~23) CMO 분해 → 2026~28 맥락·메커니즘 감사 → 액션 추적(A1~A6 효과 판정 ◎/△/✕ → 전략 번역) → 경쟁사 CMO 비교(DRAM: SK·마이크론 / NAND: Kioxia·YMTC, 벤치마킹 B1~B5) → 차기 다운턴 전략 4순위(계약 바닥·역사이클 대상 교정·치킨게임 봉인·맥락 EWI)
-- [wiki/storyline/cmo-matrix.md](wiki/storyline/cmo-matrix.md) — (NEW) CMO 통합 매트릭스: 1~3차 다운턴(관측)+4차(예측)를 하나의 필터 가능한 데이터셋으로 — 대비/대응 국면 구분, 제품(DRAM·NAND·SSD·UFS·공통)×관점(제조·투자·개발·제품·운영) 5관점 통일, 4차 추천 전략+예상 실수 12종 (대시보드 CMO Matrix 탭 단일 소스)
+- [wiki/storyline/storyline-cmo.md](wiki/storyline/storyline-cmo.md) — (NEW) CMO 렌즈(Context-Mechanism-Outcome): 다운턴 3건(2007~09·2010~13·2022~23) CMO 분해 → 2026~28 맥락·메커니즘 감사 → 액션 추적(**§5.1 대비 P1~P7** / §5.2 대응 A1~A6, 효과 판정 ◎/△/✕ → 전략 번역) → 경쟁사 CMO 비교(DRAM: SK·마이크론 / NAND: Kioxia·YMTC, 벤치마킹 B1~B5) → 차기 다운턴 전략 4순위(계약 바닥+만기 사다리화·역사이클 대상 교정·치킨게임 봉인·맥락 EWI) + SP-2 속도 축 보강. 맥락 변수 8종(⑦ 계약 만기 구조·⑧ 감가 정점 추가)
+- [wiki/storyline/cmo-matrix.md](wiki/storyline/cmo-matrix.md) — (NEW) CMO 통합 매트릭스: 1~3차 다운턴(관측)+4차(예측)를 하나의 필터 가능한 데이터셋으로 — 대비/대응 국면 구분, 제품(DRAM·NAND·SSD·UFS·공통)×관점(제조·투자·개발·제품·운영) 5관점 통일, 4차 추천 전략+예상 실수 12종, **SP-2 코드 배선(DP·DR)·역사에 없는 대비 수단 9종**(만기 사다리화·원가 곡선 측정·전환 라인 실증 추가) (대시보드 CMO Matrix 탭 단일 소스)
 
 ## wiki/downturn — 다운턴 시나리오 플래닝 SP-2 (NEW)
 
