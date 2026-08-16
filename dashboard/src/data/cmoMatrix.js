@@ -448,7 +448,7 @@ export const CMO_ENTRIES = [
   // ══ 4차 (2028~29 예측) · 추천 전략 ══════════════════════════════════════
   {
     id: 'd4-rec-01', downturn: 'd4', phase: 'recommend', product: '공통', context: '운영', prepType: 'intent',
-    action: '[대비] 계약 바닥 선점 — take-or-pay·NTB 하한·Participating Forward를 커버리지 표준으로 (RS-8·RS-4·D12)',
+    action: '[대비] 계약 바닥 선점 — take-or-pay·NTB 하한·Participating Forward를 커버리지 표준으로 + 만기 사다리화 (RS-8·RS-4·D12 · DP-1)',
     mechanism: '계약적 매출 바닥 — 과거 3회 다운턴에 없던 신규 메커니즘',
     outcome: '발화 창은 다운턴 도착 전뿐 — 고객이 스스로 선수금·다년 계약에 들어오는 지금만 성립. 영업 4단계 격차(SK·마이크론 선행)만큼 바닥의 격차가 생긴다',
     causes: {
@@ -460,7 +460,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-02', downturn: 'd4', phase: 'recommend', product: '공통', context: '투자', prepType: 'intent',
-    action: '[대비] 옵션형 캐파 강제 — Fab Shell 선행 + 장비 단계 반입을 신규 캐파의 기본형으로 (RS-1·RS-5)',
+    action: '[대비] 옵션형 캐파 강제 — Fab Shell 선행 + 장비 단계 반입을 신규 캐파의 기본형으로 (RS-1·RS-5 · DP-2 🔵 무후회)',
     mechanism: '교정형 역사이클 투자 — 확정을 옵션으로',
     outcome: 'cause-robust — 옵션 가치는 원인과 무관하게 변동성 자체에 비례. 재무 요새는 모든 액션의 공통 전제이며, 2023년 감산·투자 분리 집행이 사내 선례',
     causes: {
@@ -472,7 +472,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-03', downturn: 'd4', phase: 'recommend', product: '공통', context: '운영', prepType: 'intent',
-    action: '[대비] 맥락 EWI + 다운턴 조직 대응 매뉴얼 사전 정의 (RS-9·D15·D16)',
+    action: '[대비] 맥락 EWI + 다운턴 조직 대응 매뉴얼 사전 정의 (RS-9·D15·D16 · DP-4 🔵 무후회·DP-7)',
     mechanism: '데이터 트리거 규율 + 조직 재편 사전 배선',
     outcome: 'cause-robust — 이 액션의 산출물이 곧 원인 판별이며, 나머지 액션의 행사 스위치를 켠다. 실행 순서는 "EWI 상시 → 계약 바닥 즉시 → 나머지는 트리거 발동 시"',
     causes: {
@@ -484,7 +484,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-04', downturn: 'd4', phase: 'recommend', product: 'DRAM', context: '개발', prepType: 'intent',
-    action: '[대비] 차세대 별동대 + R&D 하한 — HBM4E·zHBM·3D DRAM 선행 조직을 주력 배분 논리에서 분리 (D13·D6·SD-1)',
+    action: '[대비] 차세대 별동대 + R&D 하한 — HBM4E·zHBM·3D DRAM 선행 조직을 주력 배분 논리에서 분리 (D13·D6·SD-1 · DP-5 🔵 무후회)',
     mechanism: '다운턴 중 기술 전환 선행 — 자기잠식 허용 별동대',
     outcome: 'cause-robust — 세 원인 모두에서 발화. 2022~23 SK가 적자 속에서도 HBM 방향을 유지해 왕좌를 가져간 것의 정확한 이식이며, 2019 HBM팀 축소의 반면교사',
     causes: {
@@ -496,7 +496,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-05', downturn: 'd4', phase: 'recommend', product: 'NAND', context: '개발', prepType: 'intent',
-    action: '[대비] hybrid bonding 자체 IP 확보 + 공정 전환 주기 연장 R&D (RS-6·RS-7·D10)',
+    action: '[대비] hybrid bonding 자체 IP 확보 + 공정 전환 주기 연장 R&D (RS-6·RS-7·D10 · DP-5)',
     mechanism: '공급자·IP 종속 해소 — 세대 전환의 순서를 바꾸기',
     outcome: 'Kioxia(2023 업계 최초 CBA 양산)·YMTC(Xtacking·hybrid bonding 특허 지배)가 제약 국면에서 아키텍처 선행으로 판을 바꾼 것의 이식. V10(430L, BV NAND) 세대에서 YMTC 라이선스 의존은 시나리오 C/E에서 차단 리스크',
     causes: {
@@ -508,7 +508,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-06', downturn: 'd4', phase: 'recommend', product: 'SSD·UFS', context: '제품', prepType: 'intent',
-    action: '[대비] AI SSD 니치 조기 진입 — SCADA 대응 확정 + FDP 호스트 통합 플랫폼으로 소프트웨어 전환비용 축적 (MB-4·RS-3)',
+    action: '[대비] AI SSD 니치 조기 진입 — SCADA 대응 확정 + FDP 호스트 통합 플랫폼으로 소프트웨어 전환비용 축적 (MB-4·RS-3 · DP-5)',
     mechanism: '인접 파괴 선점 — 레퍼런스 고착 전 진입',
     outcome: 'SK·Kioxia가 SLC 기반 초고 IOPS AI SSD로 NVIDIA 전략 파트너를 선점 중 — HBM에서 벌어진 "니치 선점 → 레퍼런스 고착 → 구조적 열위"의 반복 위험. 레퍼런스가 굳은 뒤 진입 비용은 니치 단계의 몇 배',
     causes: {
@@ -520,7 +520,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-07', downturn: 'd4', phase: 'recommend', product: '공통', context: '투자',
-    action: '[대응] 다운사이클 M&A 펀드 집행 + PMI 각본 (D9 — EV/EBITDA 5배 6개월 트리거, 대상은 캐파가 아니라 기술 자산·인재)',
+    action: '[대응] 다운사이클 M&A 펀드 집행 + PMI 각본 (D9 · DR-4 — EV/EBITDA 5배 6개월 트리거, 대상은 캐파가 아니라 기술 자산·인재)',
     mechanism: '다운턴 저가 매수 — 대상 교정',
     outcome: '2012 엘피다 불참(불행사)의 교정이자, 마이크론이 인수 후 중앙 운영 체계(고객 요구 중앙 DB·다사이트 표준화)로 배당을 키운 것의 이식. 인수 자체가 아니라 PMI가 배당을 결정',
     causes: {
@@ -532,7 +532,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-08', downturn: 'd4', phase: 'recommend', product: 'DRAM', context: '제조',
-    action: '[대응] 게임 분리 — 소모전 불행사 + 로엔드 원가 방어 + 고부가 층 이동 (RS-6·RS-2·MB-4)',
+    action: '[대응] 게임 분리 — 소모전 불행사 + 로엔드 원가 방어 + 고부가 층 이동 (RS-6·RS-2·MB-4 · DR-2b 소모전 봉인·DR-5)',
     mechanism: '소모전 봉인 + 판 옮기기',
     outcome: 'CXMT는 국가가 손실을 흡수하므로 가격으로 퇴출되지 않는다 — 2023년에 이미 3강 맥락에서 소모전 불발을 실증. 로엔드는 원가로 속도만 늦추고 승부는 커스텀·솔루션 층에서',
     causes: {
@@ -544,7 +544,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-09', downturn: 'd4', phase: 'recommend', product: '공통', context: '운영',
-    action: '[대응] 조직 재편을 다운턴 안에서 실행 (2009년형 — 회복 후로 미루지 않기, D16 매뉴얼 발동)',
+    action: '[대응] 조직 재편을 다운턴 안에서 실행 (2009년형 — 회복 후로 미루지 않기, D16 매뉴얼 발동 · DR-6)',
     mechanism: '위기를 구조 재편의 창으로 사용',
     outcome: '2009년 조직 통합(◎)과 2022~23년 무대응(△)의 대칭 실패가 근거. 다운턴은 조직 저항이 가장 낮은 유일한 창이며, 회복기에는 그 창이 닫힌다',
     causes: {

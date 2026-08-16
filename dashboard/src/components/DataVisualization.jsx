@@ -97,6 +97,7 @@ function CapexTooltip({ active, payload, label }) {
       <div className="text-zinc-700 font-medium mb-1.5">
         {label}
         {isDownturn && <span className="ml-1.5 text-red-600 font-semibold">· 다운턴</span>}
+        {row?.approx && <span className="ml-1.5 text-zinc-400 font-normal">· 일부 근사</span>}
       </div>
       {payload.map((p, i) => {
         const isKrwSeries = ['dsRev', 'dsOp', 'memRev'].includes(p.dataKey)
@@ -132,6 +133,7 @@ function CapexPanel() {
   const showKrwAxis = activeSeries.some(s => s.axis === 'krw')
   const toneCls = {
     blue:  'border-sky-300 bg-sky-50 text-sky-800',
+    green: 'border-emerald-300 bg-emerald-50 text-emerald-800',
     amber: 'border-amber-300 bg-amber-50 text-amber-800',
     red:   'border-red-300 bg-red-50 text-red-800',
   }
@@ -198,11 +200,11 @@ function CapexPanel() {
             <YAxis yAxisId="usd" {...AXIS} unit="$B" />
             {showKrwAxis && <YAxis yAxisId="krw" orientation="right" {...AXIS} unit="조" />}
             <Tooltip content={<CapexTooltip />} cursor={{ fill: 'rgba(75,85,99,0.08)' }} />
-            {d.downturnYears.map(y => (
+            {d.downturns.map(dt => (
               <ReferenceArea
-                key={y} yAxisId="usd" x1={y} x2={y}
+                key={dt.from} yAxisId="usd" x1={dt.from} x2={dt.to}
                 fill="#ef4444" fillOpacity={0.07}
-                label={{ value: '다운턴', position: 'insideTop', fill: '#dc2626', fontSize: 10 }}
+                label={{ value: dt.label, position: 'insideTop', fill: '#dc2626', fontSize: 10 }}
               />
             ))}
             {showKrwAxis && <ReferenceLine yAxisId="krw" y={0} stroke="#d4d4d8" />}
@@ -234,7 +236,7 @@ function CapexPanel() {
       </ChartCard>
 
       {/* ── 핵심 인사이트 카드 ───────────────────────────────────────────── */}
-      <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {d.insights.map((ins, i) => (
           <div key={i} className={`border rounded-hig-lg shadow-hig-1 p-3 ${toneCls[ins.tone]}`}>
             <p className="text-sm font-semibold mb-1">{ins.title}</p>
@@ -245,10 +247,10 @@ function CapexPanel() {
 
       {/* ── 다운턴 대응 비교 ─────────────────────────────────────────────── */}
       <ChartCard title={d.downturnResponse.title} source={d.downturnResponse.source}>
-        <ResponsiveContainer width="100%" height={240}>
+        <ResponsiveContainer width="100%" height={300}>
           <BarChart data={d.downturnResponse.data} layout="vertical" margin={{ left: 24, right: 24, top: 8 }}>
             <CartesianGrid {...GRID} />
-            <XAxis type="number" {...AXIS} unit="%" domain={[-70, 20]} />
+            <XAxis type="number" {...AXIS} unit="%" domain={[-90, 20]} />
             <YAxis type="category" dataKey="company" {...AXIS} width={130} fontSize={10} />
             <Tooltip content={<VizTooltip unit="%" />} cursor={{ fill: 'rgba(75,85,99,0.08)' }} />
             <ReferenceLine x={0} stroke="#a1a1aa" />
@@ -260,7 +262,7 @@ function CapexPanel() {
           </BarChart>
         </ResponsiveContainer>
         <p className="text-[10px] text-zinc-500 mt-2">
-          다운턴 연도의 CAPEX 증감률 — 삼성만 규모를 유지했다. 2023년 삼성 +1%는 사상 최대치 경신.
+          세 번의 다운턴(2009·2019·2023) 모두 삼성만 규모를 유지·증액했다. 2009 금융위기: 삼성 +8%ᵉ vs 경쟁사 -63~-81% → Qimonda·Elpida 퇴출. 2023 삼성 +1%는 사상 최대치 경신.
         </p>
       </ChartCard>
 

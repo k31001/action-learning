@@ -14,14 +14,14 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
-  // ── 2026-08-15 (iii) ─────────────────────────────────────────────────────────
+  // ── 2026-08-16 (ii) ──────────────────────────────────────────────────────────
   {
-    date: '2026-08-15',
+    date: '2026-08-16',
     type: 'ingest',
-    version: 'v2.42.2',
+    version: 'v2.42.4',
     title: 'SSD·UFS 축 보강 — 삼성 스토리지 사업사 20년 + 경쟁 재편 + CMO 매트릭스 4건 추가',
     summary:
-      '피드백("전반적으로 SSD·UFS 관련 내용이 부실 — 면밀히 조사해 보강")에 따라 전용 리서치(samsung-ssd-ufs-history-competition-2026-08-15.md) 수행 후 3개 페이지 보강. 핵심 발견: ① 2차 다운턴(2010~13) 한복판에서 소비자 SSD를 풀 자체화(830, NAND·컨트롤러 MCX·DRAM·펌웨어 전부 자체)→세계 최초 TLC(840, 2012-10)→V-NAND 최초 양산(2013-08)으로 니치에서 2013 전체 SSD 1위(28.5%, Gartner)까지 육성 — 3차 다운턴의 HBM 니치 배제(✕)와 정반대인 "다운턴 중 니치 육성 성공"의 사내 최대 선례. ② UFS 세계 최초 연쇄(2.0 양산 2015→1TB eUFS 2019→4.0 2022→5.0 공개 2026-06·Q4 양산·온디바이스 AI 타깃). ③ 경쟁 재편 3건 — SK–Solidigm 정점 매수($9B)→2023 손실→122TB QLC로 2024 흑자 반전(QLC 점유 42→51%), WD–SanDisk $19B 통합 9년 만의 해체(2025-02 분사), Micron Crucial 소비자 철수(2025-12). ④ 3차 다운턴 중 삼성 eSSD 1Q23 -55%($801M) — 계약 바닥 없는 완제품의 충격 실증. CMO 매트릭스 SSD·UFS 엔트리 6→10건, §5 통찰 3("SSD 축의 얇음") 교정. 패치 v2.42.2.',
+      '피드백("전반적으로 SSD·UFS 관련 내용이 부실 — 면밀히 조사해 보강")에 따라 전용 리서치(samsung-ssd-ufs-history-competition-2026-08-15.md) 수행 후 3개 페이지 보강. 핵심 발견: ① 2차 다운턴(2010~13) 한복판에서 소비자 SSD를 풀 자체화(830, NAND·컨트롤러 MCX·DRAM·펌웨어 전부 자체)→세계 최초 TLC(840, 2012-10)→V-NAND 최초 양산(2013-08)으로 니치에서 2013 전체 SSD 1위(28.5%, Gartner)까지 육성 — 3차 다운턴의 HBM 니치 배제(✕)와 정반대인 "다운턴 중 니치 육성 성공"의 사내 최대 선례. ② UFS 세계 최초 연쇄(2.0 양산 2015→1TB eUFS 2019→4.0 2022→5.0 공개 2026-06·Q4 양산·온디바이스 AI 타깃). ③ 경쟁 재편 3건 — SK–Solidigm 정점 매수($9B)→2023 손실→122TB QLC로 2024 흑자 반전(QLC 점유 42→51%), WD–SanDisk $19B 통합 9년 만의 해체(2025-02 분사), Micron Crucial 소비자 철수(2025-12). ④ 3차 다운턴 중 삼성 eSSD 1Q23 -55%($801M) — 계약 바닥 없는 완제품의 충격 실증. CMO 매트릭스 SSD·UFS 엔트리 6→10건, §5 통찰 3("SSD 축의 얇음") 교정. 패치 v2.42.4.',
     tags: ['SSD', 'UFS', '스토리지', 'CMO Matrix', 'Solidigm', '사업사', 'ingest'],
     items: [
       { label: '신규 소스', detail: 'samsung-ssd-ufs-history-competition-2026-08-15.md — 3축(삼성 SSD 사업사·UFS/모바일·경쟁사 스토리지 전략사) + 다운턴/대비기 창 태깅 + 미확인 12건 목록' },
@@ -32,6 +32,45 @@ export const UPDATES = [
     links: [
       { label: 'samsung-ssd-ufs-history-competition-2026-08-15.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md' },
       { label: 'ssd-ufs-market.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ssd-ufs-market.md' },
+    ],
+  },
+  // ── 2026-08-16 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'lint',
+    version: 'v2.42.3',
+    title: '스토리라인 정합성 갱신 — SP-2 다운턴 트랙·CMO 매트릭스 반영 + 모순 3건 교정',
+    summary:
+      'SP-2 다운턴 시나리오 플래닝(v2.42.0)과 CMO 통합 매트릭스 대비 축(v2.41.0)이 신설된 뒤 갱신되지 않았던 스토리라인 마스터·CMO 렌즈·CMO 매트릭스를 동기화했다. 페이지 간 모순 3건을 먼저 교정 — ① "계약 바닥은 과거에 없던 완전 신규 메커니즘"이라는 CMO 렌즈의 정리를 2005-11 Apple 선급 LTA 선례로 교정(신규인 것은 메커니즘이 아니라 전사 정책화), ② SP-1 무조건부 확률과 SP-2 조건부 확률의 혼동 방지 경고 삽입, ③ CMO 매트릭스 §5 항목 번호 순서 오류. 이어 마스터에 SP-2 연결(4장 "다운턴은 C·D 사분면에 갇혀 있지 않다"·6장 RS/D+DP/DR/DX 코드 체계·7장 무후회 3종 교차 검증·8장 EWI⊥DX 직렬 구조)과 하이퍼스케일러 Q2 실측(Meta FCF -91%·Amazon TTM 마이너스·CapEx 삭감 0건)·감가 정점 메커니즘을 반영했다. 렌즈 4종(파이브 포스·게임이론·실물옵션·파괴적 혁신)은 이번 범위에서 제외 — 다음 갱신 대상. 패치 v2.42.3.',
+    tags: ['스토리라인', 'SP-2', 'CMO', '정합성', 'lint', 'wiki', 'dashboard'],
+    items: [
+      { label: '모순 교정 3건', detail: '계약 바닥 "완전 신규" 주장 4곳 교정(2005 Apple 선급 LTA 선례) · 두 확률 체계 혼동 경고 · §5 번호 순서' },
+      { label: 'storyline.md (마스터)', detail: 'SP-2 트랙 안내·흐름도 분기·연대기 2027~28 "4차 다운사이클 창" · 1·3장 하이퍼스케일러 Q2 실측 · 4장 다운턴 사분면 한계 + DT-A~E · 6장 코드 체계표 + 대비 레퍼토리 7건 · 8장 DX 패널 · 갱신 규칙' },
+      { label: 'storyline-cmo.md (CMO 렌즈)', detail: '맥락 변수 6종 → 8종(계약 만기 구조·감가 정점) · 메커니즘 감사표에 SP-2 배선 열 · §5.1 대비 국면 P1~P7 신설(초판은 대응 A1~A6뿐) · §7에 만기 사다리화·속도 축 보강' },
+      { label: 'cmo-matrix.md', detail: 'frontmatter·sources 갱신 · "역사에 없는 대비 수단" 6종 → 9종(만기 사다리화·원가 곡선 측정·전환 라인 실증) · 추천 전략 표에 DP/DR 코드 병기 · 실수 패턴에 DR-2b 금지 옵션 연결' },
+      { label: '대시보드 미러', detail: 'storyline.js(ch3·4·6·7·8 블록 추가) · storylineLenses.js(CMO 렌즈 §3·4·5·7) · cmoMatrix.js(4차 액션에 DP·DR 코드) · knowledgeGraph 재생성' },
+    ],
+    links: [
+      { label: 'SP-2 다운턴 트랙', href: 'https://github.com/k31001/action-learning/blob/main/wiki/downturn/README.md' },
+      { label: 'CMO 통합 매트릭스', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/cmo-matrix.md' },
+    ],
+  },
+  // ── 2026-08-15 (iii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-08-15',
+    type: 'ingest',
+    version: 'v2.42.2',
+    title: 'CAPEX 히스토리 2006년까지 소급 — 치킨게임 시대(Qimonda·Elpida 파산) 정량 보강',
+    summary:
+      'CAPEX 탭 시계열을 2016~2026E에서 2006~2026E 20년으로 확장. 삼성 연차보고서·4Q 경영설명회 PDF 직접 열람과 Micron SEC 10-K 원문으로 1차 사료 확정치 확보 — 삼성 반도체 2010 투자 12.7조(위기 직후 배증)·2011 13.0조, 반도체 매출·영업이익 2007~2015, 메모리 매출 2010~2014, Micron FY2006~15 전 구간. 2009 최저점 대비(삼성 ~6.5조ᵉ vs 하이닉스 ~1.0조ᵉ vs Micron $0.49B -81%)와 1·2차 치킨게임 음영(2007~09·2011~12)·다운턴 대응 비교 3행 추가. 근사치는 ᵉ·툴팁 "일부 근사"로 명시, 데이터 신뢰도 등급(A/B/C) 소스 문서화. 패치 v2.42.2.',
+    tags: ['CAPEX', '치킨게임', 'Qimonda', 'Elpida', '역사이클', '1차사료', 'dashboard', 'wiki'],
+    items: [
+      { label: '1차 사료', detail: '삼성 2010 AR(반도체 12.7조)·4Q2008/2009/2011/2012/2014 경영설명회 PDF·Micron 10-K 4건(FY06~15 현금흐름표) 직접 열람' },
+      { label: 'wiki/concepts/memory-capex-history.md 확장', detail: '2006~2015 표·치킨게임 대응 비교(2009 최저점)·성립 조건 소멸 논지(경쟁자 재무 취약 → 국가 자본·사상 최대 현금) 추가' },
+      { label: '대시보드 CAPEX 탭', detail: '연도 21개로 확장, 다운턴 음영 구간형(1·2차 치킨게임 라벨), 인사이트 4카드, 다운턴 비교 8행(-90~20%), 근사치 툴팁 표기' },
+    ],
+    links: [
+      { label: '리서치 II (2006~2015)', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md' },
     ],
   },
   // ── 2026-08-15 (ii) ──────────────────────────────────────────────────────────
