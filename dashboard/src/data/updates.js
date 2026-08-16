@@ -14,6 +14,21 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-16 (iv) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'ingest',
+    version: 'v2.42.6',
+    title: '시장 전환기 전략 축 — PC→모바일→데이터센터, 삼성 SSD의 전환기 플레이북',
+    summary:
+      '요청("PC→모바일 전환과 이후 데이터센터 전환 시점의 SSD·UFS 전략적 움직임, 특히 삼성 SSD의 데이터센터 전환 전략과 결과를 정리")에 따라 전용 리서치(samsung-ssd-ufs-market-transition-strategy-2026-08-16.md) 수행. 전환기 ①(PC→모바일): 2011 HDD 매각의 계약 구조 — $1.375B를 현금 50%+Seagate 지분 9.6%로 받고 같은 계약에 "삼성 NAND→Seagate SSD" 크로스-서플라이 조항 동반(레거시 exit+판로 심기), eMMC 35.6% 1위(Gartner 2013), 자기잠식형 UFS 표준 창설. 전환기 ②(→데이터센터): 시안 V-NAND 전용 캐파 선행 베팅(2012 발표→2014-05 양산→2017-08 2기 $7B), XS1715 업계 최초 NVMe(2013, UNH-IOL 인증 1호 — Intel DC P3700보다 1년 선행), 제품 언어의 datacenter→hyperscale 단계 이동(PM963→NGSFF→PM983), 3Q17 공식 실적의 "datacenter NVMe SSD 적극 대응" 문구. 결과: 3Q17 사상 최대 영업이익 14.53조, 3Q18 eSSD 매출 38.5% 1위 — 단 1Q17 출하량 기준 Intel 1위 등 집계 기준별 뉘앙스 병기, 최종 승부는 Intel의 자멸(Optane 2022 청산·NAND SK 매각)로 확정. 전환기 플레이북 4요소 도출 → 현재 CMX·PM1763 축은 요소 3·4 재실행 중, SLC 트랙은 요소 2 공백 — cmo-matrix.md §5 통찰 8(전환발 다운턴 판정 기준) 추가. 패치 v2.42.6.',
+    tags: ['SSD', 'UFS', '시장 전환', '데이터센터', 'NVMe', 'Intel', '시안 팹', 'CMO', 'ingest'],
+    items: [
+      { label: '신규 소스', detail: 'samsung-ssd-ufs-market-transition-strategy-2026-08-16.md — 축 A(PC→모바일)·축 B(→데이터센터), 전 항목 검색 요약 경유 등급 명기, 미확인 11건' },
+      { label: 'ssd-ufs-market.md', detail: '[Update 2026-08-16 II] 시장 전환기 전략 축 신설 — 전환기 ①·② 상술 + 결과 정량표(집계 기준별 뉘앙스) + 전환기 플레이북 4요소 → 3차 전환(AI·CMX) 대입' },
+      { label: 'cmo-matrix.md', detail: '§5 통찰 8 추가 — 전환발(③) 다운턴의 O를 가르는 전환기 플레이북, Intel 반례("규격을 만들고도 제품화가 늦으면 진다")' },
+    ],
+  },
   // ── 2026-08-16 (iii) ─────────────────────────────────────────────────────────
   {
     date: '2026-08-16',

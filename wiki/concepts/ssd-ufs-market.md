@@ -259,3 +259,55 @@ JEDEC 표준 이정표: UFS 3.0 2018-01-30·4.0 2022-08-17·4.1 2025-01-08 (JEDE
 - **탑재 임팩트의 구조**: NVIDIA 스토리지 계층 전체(서버 CMX Gen5 → Vera Rubin Gen6 → 개인용 DGX Spark Gen5 클라이언트)에서 삼성 SSD가 공급 지위를 확보 — §2의 "AI SSD 후행" 진단은 **SLC 초고 IOPS(SCADA Storage-Next) 트랙에 한정**되며, 범용·CMX·클라이언트 축에서는 오히려 선두다. 두 트랙을 구분해 읽어야 한다.
 - **캐파 배정의 양면**: NAND 캐파 60%+ NVIDIA 배정(보도 기준)은 매출 락인이자 **단일 고객 집중 리스크**(RS-4 단일 고객 ≤25% 원칙과 긴장) — 소비자 SSD 크런치와 함께 4차 다운턴 대비 관점에서 계약 커버리지·만기 구조 확인 필요.
 - **미확인 잔여**: PM1753 CMX 공급 물량·매출 수치, CMX 경쟁사 진입 여부, 서버 OEM(Dell·HPE 등)의 삼성 eSSD 명시 채택, PM9E1의 갤럭시 북 탑재 — 후속 수집 대상.
+
+---
+
+## [Update 2026-08-16 II] 시장 전환기 전략 축 — PC→모바일→데이터센터, 삼성은 어떻게 움직였나
+
+> 근거: 전용 리서치 노트 ([samsung-ssd-ufs-market-transition-strategy-2026-08-16.md](../../sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md)). 프록시 차단으로 전 항목이 검색 요약 경유 등급(다수 매체 교차 일치 여부는 노트에 명기) — 수치 인용 시 유의.
+
+### 전환기 ① PC→모바일 (2010~2015) — "레거시 매각 + 표준 창설"
+
+- **HDD 사업 매각의 계약 구조 (2011)**: 발표 2011-04-19, Seagate에 **$1.375B** 매각(종결 2011-12-20). 대가는 **현금 50% + Seagate 주식 50%**(지분 약 9.6% + 이사회 1석), 그리고 같은 계약에 **"삼성 NAND → Seagate SSD 공급" 크로스-서플라이 조항**이 포함 — 레거시(회전 매체)에서 exit하면서 동시에 자사 NAND의 신규 판로를 심은 구조였다 ([samsung-ssd-ufs-market-transition-strategy-2026-08-16.md](../../sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md)).
+- **수요 역전의 실측**: IHS 2013 — 스마트폰이 NAND 최대 소비처 등극(**스마트폰 24.6% > SSD 20.6%**, 태블릿 11.4% — 모바일 합산 ~36%). Gartner 2013 — 삼성 eMMC+eMCP **$3.317B·35.6% 1위**, 상위 4사 합계 95.4% ([samsung-ssd-ufs-market-transition-strategy-2026-08-16.md](../../sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md)).
+- **UFS 표준 창설**: JEDEC UFS 1.0 2011-02-24 → 2.0 2013-09-18 (MIPI M-PHY·UniPro 참조). SSD(SCSI/UAS)식 command queuing을 모바일에 이식한 설계로, eMMC 지배자였던 삼성이 **자기 시장을 스스로 대체하는 차세대 표준**을 주도 — JEDEC 발표마다 삼성 임원(Kenny Han 등)이 대표 논평자로 반복 등장(의장사 여부는 미확인), 세계 최초 양산(2015-01)으로 회수 ([samsung-ssd-ufs-market-transition-strategy-2026-08-16.md](../../sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md)).
+- **경쟁사 대비**: HDD 진영(Seagate·WD)은 스마트폰 내장 스토리지에 진입 자체가 불가한 채 PC 쇠퇴를 맞아 인수 연쇄(WD: 히타치→STEC→…→2015 SanDisk $19B)로 뒤늦게 플래시 전환 — 삼성만이 쇠퇴 자산을 **정점 부근에서 현금화**하고 성장 축으로 갈아탔다.
+
+### 전환기 ② 모바일→데이터센터 (2014~2019) ★ — "캐파 선행 베팅 + 인터페이스 세대 선점"
+
+**전략 4수** (시점 순):
+
+| 수 | 액션 | 시점 | 성격 |
+|---|---|---|---|
+| 1 | **시안 팹 — V-NAND 전용 캐파 선행 베팅**: 2012 발표($7B) → 2012-09 착공 → **2014-05-09 V-NAND 양산 개시** → 2기 $7B 발표(2017-08-30, 월 20K→65K) → 2019-12 +$8B | 수요 폭발 **3~5년 전** | 캐파 |
+| 2 | **NVMe 인터페이스 선점**: XS1715 — **업계 최초 NVMe 엔터프라이즈 SSD**(2013-07 공개, 2013-05-31 UNH-IOL NVMe 인증 1호, 최초 U.2 채택). Intel 첫 NVMe(DC P3700)는 2014-Q2로 **약 1년 후행** | 시장 형성 전 | 기술 표준 |
+| 3 | **제품 사다리의 타깃 언어 이동**: PM953(2015, 저전력 DC) → PM963(2016, "data center") → NGSFF 16TB·1U 576TB(2017-08, "hyperscale") → PM983 NF1 8TB(2018-06, "hyperscale") | 2015→2018 | 제품 |
+| 4 | **클라우드 표준 침투**: 2018-03 Microsoft **Project Denali**(클라우드 SSD 펌웨어 표준) 창립 파트너 — 하이퍼스케일러 개별 공급계약은 비공개라 보도 부재, OCP·표준 활동이 간접 증거 | 2018~ | 생태계 |
+
+**전환 의도의 직접 증거**: 삼성 3Q17 공식 실적 자료 — NAND에서 "**datacenter NVMe SSD 등 고부가가치·고밀도 시장 수요에 적극 대응**", 전망에서 "서버 SSD 채택 가속" 명시. 같은 분기 DRAMeXchange도 NAND 성장 동인을 "smartphone **and server**"로 병기 — 서버가 스마트폰과 동급 수요축으로 격상된 당대 표현 ([samsung-ssd-ufs-market-transition-strategy-2026-08-16.md](../../sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md)).
+
+**결과 — 이겼지만 단선적이지 않았다**:
+
+| 시점 | 결과 | 기준 |
+|---|---|---|
+| 3Q17 | 분기 영업이익 **14.53조 원 사상 최대**(YoY +9.33조) — 데이터센터 수요가 명시 동인 | 실적 |
+| 1Q17 | **Intel 1위, 삼성 2위(25%)** — 1Q16 32.4% 1위와 상충 가능(매출 vs 출하 집계 차이 추정, 미확인) | eSSD 출하량 |
+| 3Q18 | **삼성 38.5% 1위 vs Intel 18.3%** — 역전 확대 | eSSD 매출 |
+| 3Q19 | Intel ≈ 삼성 각 ~35% 동률 | eSSD 용량 |
+| 4Q18~2019 | NAND 산업 매출 4Q18 QoQ -16.8%, **2019 연간 -23.1%** — 삼성 4Q18 매출 QoQ -28.9%, 서버 고객 재고조정이 동인의 하나 | 다운턴 |
+| 3Q21~ | 삼성 eSSD 출하 과반 — "Intel fades" | 확정 |
+
+즉 "2017~2019 내내 압도적 1위"는 집계 기준에 따라 흔들리는 서사이며(1Q17 출하량 기준 Intel 1위), **최종 승부는 Intel의 자멸로 확정**됐다: Optane 베팅(2015 발표 → 2017-03 첫 제품 → **2022 청산, 재고 손상 $559M**) + NAND 사업 SK 매각(2020-10, $9B). NVMe 규격을 설계한 Intel이 제품화에서 삼성에 1년 뒤졌고, 차세대 베팅(3D XPoint)은 생태계를 만들지 못했다 ([samsung-ssd-ufs-market-transition-strategy-2026-08-16.md](../../sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md)).
+
+### 전환기 플레이북 — 3차 전환(AI·CMX)에 주는 시사
+
+두 전환에서 반복된 삼성의 승리 공식은 4요소로 정리된다:
+
+1. **레거시 exit + 판로 심기** — HDD 매각에 NAND 공급 조항 동반 (전환기 ①)
+2. **자기잠식을 두려워하지 않는 표준 창설** — eMMC 지배자가 UFS를 주도 (전환기 ①)
+3. **수요 폭발 3~5년 전의 전용 캐파 베팅** — 시안 V-NAND (전환기 ②)
+4. **인터페이스 세대 선점** — NVMe 1호 인증, Intel보다 1년 선행 (전환기 ②)
+
+현재 진행 중인 3차 전환(범용 DC → AI 스토리지)에 대입하면: §[Update 2026-08-16]의 **CMX·PM1763·PM9E1 축은 요소 3·4를 재실행 중**(V9 캐파 60%+ 배정 = 캐파 베팅, Gen6 28.4GB/s = 인터페이스 선점)이다. 반면 **SLC 초고 IOPS(SCADA Storage-Next) 트랙은 요소 2(자기잠식형 표준 창설)의 공백** — 과거 UFS를 만들던 방식으로 AI SSD 표준(초고 IOPS 계층)을 주도할지가 미결이다. 그리고 Intel의 교훈은 역방향 경고다: **규격을 만들고도 제품화가 늦으면 진다**. 다운턴 관점 연결은 [CMO 매트릭스 §5](../storyline/cmo-matrix.md) 참조 — 전환발(③) 다운턴 시나리오에서 이 플레이북의 실행 여부가 O를 가른다.
+
+**미확인 잔여** (노트 §미확인 11건 중 핵심): 1Q16↔1Q17 점유율 집계 기준 상충, 시안 1기 투자액 $7B vs $10.87B 불일치, 하이퍼스케일러 개별 공급의 당대 보도 부재, "캐파를 eSSD로 전환" DRAMeXchange 명시 논평 원문.
