@@ -90,7 +90,7 @@
 - [wiki/concepts/dram-market-share.md](wiki/concepts/dram-market-share.md) — DRAM 매출 1위 SK 역전, HBM 점유 변화
 - [wiki/concepts/price-trends.md](wiki/concepts/price-trends.md) — DRAM/NAND/HBM 분기 가격 트렌드
 - [wiki/concepts/ai-server-demand.md](wiki/concepts/ai-server-demand.md) — AI 서버 GPU·HBM 탑재량
-- [wiki/concepts/ssd-ufs-market.md](wiki/concepts/ssd-ufs-market.md) — Enterprise SSD·UFS·AI Storage
+- [wiki/concepts/ssd-ufs-market.md](wiki/concepts/ssd-ufs-market.md) — Enterprise SSD·UFS·AI Storage + 삼성 SSD·UFS 사업사 3단계(2006 개척→2차 다운턴 중 브랜드 구축·2013 1위→엔터프라이즈 1위)·1Q26 실측(삼성 38.2% 1위·Top5 $18.46B)·경쟁 재편(Solidigm·Sandisk 분사·Crucial 철수)·UFS 5.0
 - [wiki/concepts/2026-q1-current-state.md](wiki/concepts/2026-q1-current-state.md) — 2026 Q1 시점 메모리 산업 스냅샷
 
 ### 거시·수요
@@ -180,6 +180,7 @@
 - [sources/articles/dram-chicken-game-history-2026-08-05.md](sources/articles/dram-chicken-game-history-2026-08-05.md) — (NEW) DRAM 치킨게임 역사(2007~13) 웹 리서치: Qimonda·Elpida 파산, 6강→3강, 삼성 역사이클 투자 (게임이론 렌즈 근거)
 - [sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md](sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md) — (NEW) 삼성 다운턴 실제 액션 심층 리서치(2007~09·2010~13·2022~23): 2023-04-07 감산 공식화 선회·2019 HBM팀 축소·2008 SanDisk 인수 시도·철회·Line-16 역사이클·HDD 매각·엘피다 입찰 불참·2023 CapEx 53.1조/R&D 28.34조 사상 최대 (CMO 렌즈 M×C 매트릭스 근거)
 - [sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md](sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md) — (NEW) 삼성 **다운턴 전 대비기** 액션 리서치(2005~07·2009~10·2020~22 H1, 제품×관점 태깅): 2007-01 CapEx -18% 선제 삭감(통설의 반례)·2005-11 Apple 선급 LTA 참여·Line-16 12조 착공·5대 신수종사업·평택 P2~P4·450조 계획(절벽 6개월 전)·HBM 조직 부재·DS 재고 +76.6% (CMO 통합 매트릭스 대비 축 근거)
+- [sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md](sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md) — (NEW) 삼성 SSD·UFS 사업사(2006~2026: 컨트롤러 MCX→MDX→MEX 자체화·840 세계 최초 TLC·850 V-NAND 최초·UFS 세계 최초 연쇄·UFS 5.0 2026-06) + 경쟁사 스토리지 전략사(SK–Solidigm 정점 매수→QLC 반전·Kioxia IPO·WD–SanDisk 통합 해체·Micron Crucial 철수) — 다운턴/대비기 창 태깅 (SSD·UFS 축 보강 근거)
 - [sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md](sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) — Counterpoint 7건 묶음(2025-11~2026-04): 90% QoQ 폭등·DRAM OPM 60%>HBM·NVIDIA LPDDR 피벗·LTA 사이클 평탄화·SK hynix HBM 57%·스마트폰 -2.1%
 - [sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md](sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) — Bain(신문섭) AI 컴퓨트 수요·반도체 공급·DC 2030 전망 3개 시리즈: 컴퓨트 경제학 갭($2조/$500B/$800B)·메모리=AI 지출 30%·웨이퍼 잠식(HBM 4×)·163GW·전력 게이트키퍼·Scramble→Strategy
 - [sources/articles/june-2026-market-update-2026-06-13.md](sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 정기 점검 시장 데이터: HBM Q1 2026 점유율·삼성 HBM4E 업계 최초·Vera Rubin 인증·HBM 가격·빅4 CapEx $700~725B·DRAM/NAND Q2 가격·TSMC 5월 매출·CoWoS 65만 장·미국 DC 전력 42GW·그리드 대기열 2,600GW

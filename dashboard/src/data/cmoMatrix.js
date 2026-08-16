@@ -103,6 +103,15 @@ export const CMO_ENTRIES = [
     refs: 'sources/articles/dram-chicken-game-history-2026-08-05.md · sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md',
   },
 
+  {
+    id: 'd1-res-06', downturn: 'd1', phase: 'response', product: 'SSD·UFS', context: '제품',
+    action: 'SSD 밀도 3연타 — 256GB MLC 발표(2008-05, "자체 컨트롤러로 MLC에서 SLC급 성능" 명시)·128GB 양산(2008-07)·256GB 양산(2008-11)',
+    mechanism: '다운턴 중 응용처 개척 — NAND 신수요 창출 + 컨트롤러 내재화 축적',
+    outcome: 'NAND 가격 폭락의 1차 치킨게임 한복판에서 SSD 최고 밀도 라인업을 계속 출시 — SLC→MLC 전환과 자체 컨트롤러 내재화가 공식 서술에 동시 등장한 기점. 시장이 초기라 당장의 손익 기여는 미미했으나, 이때 축적한 컨트롤러·펌웨어 역량이 2기(830 풀 자체화)의 토대가 됐다',
+    verdict: 'partial',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
+  },
+
   // ══ 2차 다운턴 (2010~13) · 대응 ═════════════════════════════════════════
   {
     id: 'd2-res-02', downturn: 'd2', phase: 'response', product: 'DRAM', context: '개발',
@@ -143,6 +152,15 @@ export const CMO_ENTRIES = [
     outcome: '엘피다 체력 열위(퇴출 임박)로 저가 매수 창이 열렸으나 불발 → 마이크론이 인수해 모바일 DRAM 스케일 + 다사이트 중앙 운영 체계 확보. (+) 6강→3강 압축·공급 규율 유산은 삼성도 공유 / (−) 경쟁자의 스케일 점프 허용 — 등급은 낮은 쪽',
     verdict: 'partial',
     refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md · wiki/entities/micron.md',
+  },
+
+  {
+    id: 'd2-res-08', downturn: 'd2', phase: 'response', product: 'SSD·UFS', context: '제품',
+    action: '소비자 SSD 브랜드 구축 — 830 풀 자체화(2011: NAND·컨트롤러 MCX·DRAM·펌웨어 전 컴포넌트 자체) → 840 세계 최초 TLC(2012-10, MDX) → 840 EVO(2013-07, MEX) → V-NAND 세계 최초 양산 + 첫 V-NAND SSD(2013-08)',
+    mechanism: '다운턴 중 니치→주류 전환 — 수직통합 완제품으로 부품 다운턴을 우회',
+    outcome: '2차 다운턴과 정면 중첩된 4년간 소비자 SSD를 니치에서 1위 사업으로 육성 → 2013 전체 SSD 점유 28.5% 1위(Gartner), 850 PRO(2014)로 V-NAND 소비자 시장까지 선점. 다운턴 중 저원가 TLC로 가격대를 끌어내려 시장 자체를 키웠다 — 3차 다운턴의 HBM 니치 배제(✕)와 정반대의, "다운턴 중 니치 육성"이 성공한 사내 최대 선례',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
   },
 
   // ══ 3차 다운턴 (2022~23) · 대응 ═════════════════════════════════════════
@@ -203,6 +221,15 @@ export const CMO_ENTRIES = [
     refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md',
   },
 
+
+  {
+    id: 'd3-res-08', downturn: 'd3', phase: 'response', product: 'SSD·UFS', context: '제품',
+    action: '플래그십 유지 속 eSSD 매출 급락 — 990 PRO 출시(2022-10, 무감산 선언과 같은 달) / enterprise SSD 매출 1Q23 $801M(QoQ -55%)',
+    mechanism: '제품 로드맵 사수 — 단 수요 붕괴에는 무방비 노출',
+    outcome: '다운턴 중에도 소비자 플래그십(990 PRO)과 eSSD 로드맵은 유지했으나, 북미 서버 재고 조정으로 enterprise SSD 매출이 1Q23 -55%까지 급락(시장 전체도 2023 H1 반토막) — 계약 바닥이 없는 스토리지 완제품이 다운턴 충격을 가장 직접적으로 받는다는 실증. 회복은 4Q23(+47.6% QoQ)부터',
+    verdict: 'partial',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
+  },
 
   // ══ 1차 다운턴 (2007~09) · 대비 [2005~2007 H1] ══════════════════════════
   {
@@ -409,6 +436,15 @@ export const CMO_ENTRIES = [
     verdict: 'partial',
     refs: 'sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md',
   },
+  {
+    id: 'd3-pre-13', downturn: 'd3', phase: 'prep', product: 'SSD·UFS', context: '개발', prepType: 'effect',
+    action: '고부가 eSSD 아키텍처 선행 3연타 — SmartSSD CSD(2020-11, Xilinx FPGA 연산 스토리지)·첫 ZNS SSD(2021-06)·PM1743 업계 최초급 PCIe Gen5(2021-12 발표, 2022 Q1 양산)',
+    mechanism: '차세대 인터페이스·아키텍처 선행 — 회복기 자산 축적',
+    outcome: '다운턴 진입 전에 Gen5·연산 스토리지·ZNS를 선행해 둔 것이 회복기 PM1753(NVIDIA CMX 공급)·PM1763 Gen6·1Q26 enterprise SSD 1위(38.2%)의 계보적 토대. PM9A3·UFS 4.0(별도 항목)과 함께 3차 대비기의 SSD·UFS 축은 세 대비기 중 가장 두터웠다 — 단 SLC 초고 IOPS AI SSD 트랙은 이 시기에도 열리지 않았다(현재 SK·Kioxia 선점의 원인)',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
+  },
+
   // ══ 4차 (2028~29 예측) · 추천 전략 ══════════════════════════════════════
   {
     id: 'd4-rec-01', downturn: 'd4', phase: 'recommend', product: '공통', context: '운영', prepType: 'intent',

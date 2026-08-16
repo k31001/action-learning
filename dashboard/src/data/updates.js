@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-15 (iii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-08-15',
+    type: 'ingest',
+    version: 'v2.42.2',
+    title: 'SSD·UFS 축 보강 — 삼성 스토리지 사업사 20년 + 경쟁 재편 + CMO 매트릭스 4건 추가',
+    summary:
+      '피드백("전반적으로 SSD·UFS 관련 내용이 부실 — 면밀히 조사해 보강")에 따라 전용 리서치(samsung-ssd-ufs-history-competition-2026-08-15.md) 수행 후 3개 페이지 보강. 핵심 발견: ① 2차 다운턴(2010~13) 한복판에서 소비자 SSD를 풀 자체화(830, NAND·컨트롤러 MCX·DRAM·펌웨어 전부 자체)→세계 최초 TLC(840, 2012-10)→V-NAND 최초 양산(2013-08)으로 니치에서 2013 전체 SSD 1위(28.5%, Gartner)까지 육성 — 3차 다운턴의 HBM 니치 배제(✕)와 정반대인 "다운턴 중 니치 육성 성공"의 사내 최대 선례. ② UFS 세계 최초 연쇄(2.0 양산 2015→1TB eUFS 2019→4.0 2022→5.0 공개 2026-06·Q4 양산·온디바이스 AI 타깃). ③ 경쟁 재편 3건 — SK–Solidigm 정점 매수($9B)→2023 손실→122TB QLC로 2024 흑자 반전(QLC 점유 42→51%), WD–SanDisk $19B 통합 9년 만의 해체(2025-02 분사), Micron Crucial 소비자 철수(2025-12). ④ 3차 다운턴 중 삼성 eSSD 1Q23 -55%($801M) — 계약 바닥 없는 완제품의 충격 실증. CMO 매트릭스 SSD·UFS 엔트리 6→10건, §5 통찰 3("SSD 축의 얇음") 교정. 패치 v2.42.2.',
+    tags: ['SSD', 'UFS', '스토리지', 'CMO Matrix', 'Solidigm', '사업사', 'ingest'],
+    items: [
+      { label: '신규 소스', detail: 'samsung-ssd-ufs-history-competition-2026-08-15.md — 3축(삼성 SSD 사업사·UFS/모바일·경쟁사 스토리지 전략사) + 다운턴/대비기 창 태깅 + 미확인 12건 목록' },
+      { label: 'ssd-ufs-market.md 보강', detail: '역사 축 신설(SSD 3단계 연표·컨트롤러 MCX→MDX→MEX 계보·UFS 세계 최초 연쇄·점유율 시계열 2013 28.5%→1Q16 32.4%→1Q23 -55%→1Q26 38.2%) + 1Q26 실측 반영(Top5 $18.46B·변동성 주의) + 경쟁 재편 3건 + UFS 5.0' },
+      { label: 'CMO 매트릭스 +4건', detail: '[1차 대응] SSD 밀도 3연타(2008, △) / [2차 대응] 소비자 SSD 브랜드 구축(◎ — 니치→1위) / [3차 대비] 고부가 eSSD 선행 3연타 SmartSSD·ZNS·PM1743 Gen5(◎) / [3차 대응] 990 PRO+eSSD -55%(△). 위키·대시보드 동기' },
+      { label: '통찰 교정', detail: '§5 통찰 3 "SSD·UFS 축의 얇음" → "재조사가 뒤집은 통찰: 다운턴 중 니치 육성의 성공 선례를 이미 보유 — AI SSD 대응의 벤치마크는 2012년의 삼성 자신. 남은 진짜 공백은 SLC 초고 IOPS 트랙 하나". storyline-cmo §6.2에 SK–Solidigm 행(△→◎ 양면 사례) 추가' },
+    ],
+    links: [
+      { label: 'samsung-ssd-ufs-history-competition-2026-08-15.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md' },
+      { label: 'ssd-ufs-market.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ssd-ufs-market.md' },
+    ],
+  },
   // ── 2026-08-15 (ii) ──────────────────────────────────────────────────────────
   {
     date: '2026-08-15',
