@@ -242,7 +242,7 @@
 
 - [outputs/report/scenario-planning-report.md](outputs/report/scenario-planning-report.md) — 시나리오 플래닝 전략 보고서 (위키 합성)
 - [outputs/report/dev-org-transformation-report.md](outputs/report/dev-org-transformation-report.md) — 개발실 체질 전환 전략 보고서 (LTA→SCA 논거·역할 재정의·액션 플랜)
-- [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md) — (NEW) 삼성 SSD 전략적 방향성 보고서 — 목차 제안 v0.1 (승인 대기, 장=슬라이드 1:1 설계·PPT 3~4장 압축 전제)
+- [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md) — (NEW) 삼성 SSD 전략적 방향성 보고서 본문 v1.0 — 세 번의 선택(2005 진출·2013 NVMe 선행·2017~ DC 집중)→호황의 역설(믹스 쏠림·Captive 부상)→네 번째 방향성(FDP+시스템SW 생태계)→실행(제휴 패키지·조직 2트랙)·비중 전환 3단계 결론 + 팩트체크·용어·자산맵 부록 (다음 단계: PPT 3~4장)
 - [outputs/storyline/outline.md](outputs/storyline/outline.md) — (NEW) SSD 스토리라인 제안서 아웃라인 (2부 구성·비판 10건 반영 내역·제목 확정)
 - [outputs/storyline/common-overview.md](outputs/storyline/common-overview.md) — (NEW) 「호황은 전략을 심는 계절이다」 — 7인 공통 개요편(1~4장): 호황의 외생성·다운턴 3건 재감사(결과 이질성)·NAND 지형·3중 저지선
 - [outputs/storyline/open-innovation-proposal.md](outputs/storyline/open-innovation-proposal.md) — (NEW) 「지금만 살 수 있는 것」 — 오픈이노베이션(자원배분 Axis 2): D9 다운사이클 M&A와의 충돌 해소(가격 vs 기술 vs 자리)·저전력 반도체 즉시 실행(Axelera·EnCharge 등 5곳)·퀀텀 모달리티 분산과 극저온 메모리 장기 옵션(Diraq·SEEQC 등 9곳)·실행 3원칙(락인 안 된 곳·자본 5~10% 상한·시계별 심사 분리)
