@@ -209,6 +209,7 @@
 - [sources/articles/enterprise-ssd-market-1q26-2026-08.md](sources/articles/enterprise-ssd-market-1q26-2026-08.md) — (NEW) Enterprise SSD 1Q26 실적: Top5 $18.46B(+86.1% QoQ)·삼성 1위 38.2%($7.05B)·계약가 +80%·Micron Crucial 철수 + 중기 전망 교차(2030 ~$66B 등)
 - [sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md](sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md) — (NEW) 가트너 captive NVMe SSD 전망 팩트체크: "on-premises storage 5%(2023)→30%+(2026)" 원문·범위 확인(어레이 벤더 자체 드라이브 문맥 — 하이퍼스케일러 캡티브 통계와 구분), $158B는 GMI SSD 컨트롤러 시장 수치
 - [sources/articles/fdp-technical-limits-adoption-context-2026-08.md](sources/articles/fdp-technical-limits-adoption-context-2026-08.md) — (NEW) FDP 기술 한계·배치 표준 선례 웹 리서치: Streams 채택 미미·ZNS 호스트 비용·메인라인 거부(파편화) / FDP = SmartFTL+DPM 통합(수요자 설계·하위 호환) / FAST'26 WARP — WAF ~1은 RUH-수명 정렬 조건부, 오분류·간섭·"Noisy RUH" 시 실패 (비판적 검토 근거)
+- [sources/articles/fdp-open-source-ecosystem-2026-08.md](sources/articles/fdp-open-source-ecosystem-2026-08.md) — (NEW) FDP 오픈소스 생태계 지도: 커널 5.19 passthrough→**6.16 블록 write streams 메인라인 진입**·도구 성숙(fio·QEMU 8.0·SPDK·xNVMe)·CacheLib 공식 지원 / AI 스택 — LMCache(vLLM·SGLang·Dynamo)·llm-d SSD 오프로드 일반화, **FDP 인지 백엔드 공백** = 업스트림 1호 과제의 표적
 - [sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md](sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md) — MAD Podcast×Sachin Katti(OpenAI 산업 컴퓨트 총괄, 2026-07, 트랜스크립트 전문 보존): 수요≫공급 즉시 소진·컴퓨트 3배=매출 3배·최대 리스크는 과소 건설·OpenAI ~$50B/업계 ~$700B·AI 재귀(AI가 칩 설계)·전자→토큰 공장·전면 액체냉각(냉각↔메모리 대역폭)·그리드 투자 원칙·가스터빈/변압기/인력 병목·원자력·Jalapeño(와트당 토큰·Broadcom·9개월 테이프아웃)·Stargate 우산 전략·오프테이커 구조·보장 토큰·오비탈 컴퓨트 (대시보드 "인터뷰" 메뉴 미러)
 
 ### sources/raw-notes — 리서치 노트
@@ -243,8 +244,8 @@
 
 - [outputs/report/scenario-planning-report.md](outputs/report/scenario-planning-report.md) — 시나리오 플래닝 전략 보고서 (위키 합성)
 - [outputs/report/dev-org-transformation-report.md](outputs/report/dev-org-transformation-report.md) — 개발실 체질 전환 전략 보고서 (LTA→SCA 논거·역할 재정의·액션 플랜)
-- [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md) — (NEW) 삼성 SSD 전략적 방향성 보고서 본문 v1.0 — 세 번의 선택(2005 진출·2013 NVMe 선행·2017~ DC 집중)→호황의 역설(믹스 쏠림·Captive 부상)→네 번째 방향성(FDP+시스템SW 생태계)→실행(제휴 패키지·조직 2트랙)·비중 전환 3단계 결론 + 팩트체크·용어·자산맵 부록 (다음 단계: PPT 3~4장)
-- [outputs/report/ssd-strategy-critique.md](outputs/report/ssd-strategy-critique.md) — (NEW) 삼성 SSD 전략적 방향성 비판적 검토 — 24개 지적(팩트 5·논리 6·전략 6·기술 4·표현 3, 🔴5건: Streams·ZNS 선례의 역설/균열 1 처방 공백/두 전장 혼동/FDP 조건부성/가트너 3차 인용) + 보완 로드맵(v1.1 반영 9건·별도 과제 6건·수용 명기)
+- [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md) — (NEW) 삼성 SSD 전략적 방향성 보고서 **본문 v1.1** — 세 번의 선택→호황의 역설(소비자 외주 경량 유지 반영)→네 번째 방향성(동인-대응 매핑·"왜 이번에는 다른가"·생태계 계층 지도·SCADA 분리)→실행(제휴 패키지 선례 한정·수익화 원칙)·비중 전환 3단계 결론 + 부록 A~D(팩트체크·용어·자산맵·**실행 과제 6건**)
+- [outputs/report/ssd-strategy-critique.md](outputs/report/ssd-strategy-critique.md) — (NEW) 삼성 SSD 전략적 방향성 비판적 검토 — 24개 지적(🔴5: 선례의 역설/균열 1/두 전장/FDP 조건부성/가트너 3차 인용) + **사용자 결정 5건·로드맵 B 채택 반영 완료**(2026-08-18, 보고서 v1.1·덱 5장)
 - [outputs/storyline/outline.md](outputs/storyline/outline.md) — (NEW) SSD 스토리라인 제안서 아웃라인 (2부 구성·비판 10건 반영 내역·제목 확정)
 - [outputs/storyline/common-overview.md](outputs/storyline/common-overview.md) — (NEW) 「호황은 전략을 심는 계절이다」 — 7인 공통 개요편(1~4장): 호황의 외생성·다운턴 3건 재감사(결과 이질성)·NAND 지형·3중 저지선
 - [outputs/storyline/open-innovation-proposal.md](outputs/storyline/open-innovation-proposal.md) — (NEW) 「지금만 살 수 있는 것」 — 오픈이노베이션(자원배분 Axis 2): D9 다운사이클 M&A와의 충돌 해소(가격 vs 기술 vs 자리)·저전력 반도체 즉시 실행(Axelera·EnCharge 등 5곳)·퀀텀 모달리티 분산과 극저온 메모리 장기 옵션(Diraq·SEEQC 등 9곳)·실행 3원칙(락인 안 된 곳·자본 5~10% 상한·시계별 심사 분리)
@@ -253,8 +254,8 @@
 - [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md) — (NEW) 「SSD의 CUDA — 하드웨어를 지키는 소프트웨어」 — SSD 제안편(5~7장): Captive 진단(구글 이중 트랙·KV Cache)·3안 선택·문(SCA)/열쇠(FDP)/사람(FDE)·수익화 3단 사다리·5년 효과 산정($1.2B~$17.9B)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
-- [outputs/presentation/ssd-strategy-outline.md](outputs/presentation/ssd-strategy-outline.md) — (NEW) 삼성 SSD 전략적 방향성 발표 4장 기획서 (storyline-overview 디자인 시스템 승계, 보고서 장=슬라이드 1:1)
-- [outputs/presentation/ssd-strategy.pptx](outputs/presentation/ssd-strategy.pptx) — (NEW) 삼성 SSD 전략적 방향성 4장 덱 본체 (`scripts/generate_ssd_strategy_pptx.py`로 재생성, 커밋 예외 등록)
+- [outputs/presentation/ssd-strategy-outline.md](outputs/presentation/ssd-strategy-outline.md) — (NEW) 삼성 SSD 전략적 방향성 발표 **5장** 기획서 (요약 1 + 본편 4, storyline-overview 디자인 시스템 승계)
+- [outputs/presentation/ssd-strategy.pptx](outputs/presentation/ssd-strategy.pptx) — (NEW) 삼성 SSD 전략적 방향성 **5장** 덱 본체 — S0 의사결정 요약(무엇·왜·어떻게+결정 요청) + 본편 4장 (`scripts/generate_ssd_strategy_pptx.py`로 재생성, 커밋 예외 등록)
 - [outputs/presentation/dev-transformation-summary.pptx](outputs/presentation/dev-transformation-summary.pptx) — 개발실 체질 전환 요약 5장: 디테일 상·중·하 + 제품·기술 축(FDP 플랫폼) 2장, 도식 중심(타임라인·As-Is→To-Be·아이콘)·화이트+블루·그린. 개별본 `-high/-mid/-low/-fdp.pptx` + `dashboard/public/downloads/` 다운로드 미러 (`scripts/generate_dev_transformation_summary.cjs`로 재생성)
 - `outputs/presentation/*.pptx` — 4종 디자인 변형 (`scripts/generate_*_pptx.py`로 재생성)
 

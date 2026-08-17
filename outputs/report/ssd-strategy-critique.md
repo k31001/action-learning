@@ -1,8 +1,8 @@
 ---
 type: review
-status: v1.0 — 비판적 검토 완료 (보완 반영은 사용자 선택 대기)
-target: outputs/report/ssd-strategy-report.md (본문 v1.0) + outputs/presentation/ssd-strategy.pptx (4장 덱)
-last_updated: 2026-08-17
+status: v1.1 — 사용자 결정 5건 + 로드맵 B 채택 반영 완료 (2026-08-18, 보고서 v1.1·덱 5장으로 반영)
+target: outputs/report/ssd-strategy-report.md (본문 v1.1) + outputs/presentation/ssd-strategy.pptx (5장 덱)
+last_updated: 2026-08-18
 ---
 
 # 삼성 SSD 전략적 방향성 — 비판적 검토와 보완 제안
@@ -175,6 +175,22 @@ last_updated: 2026-08-17
 - F-4·F-5 추정·재인용 수치 — 신뢰도 표기 동반 인용 원칙 유지
 
 ---
+
+## 사용자 결정과 반영 결과 (2026-08-18)
+
+🔴 5건에 대한 사용자 결정([prompt-fdp-ssd.md](../../sources/prompt/prompt-fdp-ssd.md) 추가 지시)과 v1.1 반영:
+
+| # | 결정 | 반영 |
+|---|---|---|
+| L-1 | FDP의 강점 = ZNS 대비 호스트 SW 복잡도가 훨씬 낮음. 팩트체크로 논거 보완 + 생태계 투자 중요성 인정 | 보고서 3.2 "왜 이번에는 다른가" 절 — 하위 호환·수요자 설계·커널 6.16 메인라인 진입 3논거 ([fdp-open-source-ecosystem-2026-08.md](../../sources/articles/fdp-open-source-ecosystem-2026-08.md) 신규 수집) |
+| L-2 | 소비자용은 외주 활용 예정 — 별도 처방 불요 | 2.1 외주 경량 유지 한 문장 + 2.3 복귀 통로 연결 (keep-warm 제안은 철회) |
+| S-1 | LMCache 포함 오픈소스 생태계 조사·보강. **SCADA는 다른 응용 분야 — FDP와 경쟁 구도 아님** | 3.3 생태계 계층 지도(커널 6.16·도구·CacheLib·LMCache 공백) + SCADA 분리 명시. '두 전장 경쟁' 프레임 철회 |
+| T-1 | 조건부성 = 고객 협업이 중요하다는 증거 | 3.2 한계 명시 후 협업 논거로 역전 서술 |
+| F-1 | 제안대로 — 정황 지표 주근거, 가트너 격하 | 2.2 재구성 + 덱 S2(현 3페이지) 라벨에 "기업 저장 인프라 기준" 명기 |
+
+- **로드맵 B 채택** → 보고서 부록 D로 상세화(과제 6건: KV Cache FDP 업스트림 1호 과제·공개 벤치마크·시장조사·조직 파일럿·IP 방화벽·EWI 연동 데드라인).
+- 로드맵 A 잔여 항목(L-3·L-4·L-6·F-3·S-3 등)도 v1.1에 함께 반영.
+- 덱: 요약 슬라이드(무엇을·왜·어떻게 + 결정 요청) 신설 — 5장 구성.
 
 ## 연결
 
