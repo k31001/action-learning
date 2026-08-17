@@ -7,6 +7,7 @@ node_modules/
 !outputs/presentation/team-alignment-scenario-planning*.pptx
 !outputs/presentation/dev-transformation-summary*.pptx
 !outputs/presentation/storyline-overview.pptx
+!outputs/presentation/ssd-strategy.pptx
 !dashboard/public/downloads/*.pptx
 !working-style/seminar-claude-code-report/seminar-claude-code*.pptx
 !slides/seminar/*.pptx

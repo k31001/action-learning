@@ -14,6 +14,15 @@
 
 ---
 
+## [2026-08-17] build | 「삼성 SSD 전략적 방향성」 발표 4장 덱 생성 (storyline-overview 디자인 시스템 승계)
+
+- **무엇**: 사용자 요청("PPT 작업 시작, 기존 storyline-overview.pptx 디자인 시스템 활용")에 따라 보고서 v1.0의 PPT 압축 맵을 4장 덱으로 구현. Deck Read: 과제·액션러닝 SSD 전략 보고 / 사업부 경영진 / 4장·10분 / DATA_DENSITY 6 · FORMALITY 8 · VISUAL_EXPRESSION 3.
+- **디자인 시스템 추출**: storyline-overview.pptx는 생성 스크립트 없이 바이너리만 커밋돼 있어 XML·python-pptx로 실측 — 20×11.25in 캔버스, Arial 단일 폰트, #1428A0 단일 액센트+그레이 체계(#1A1A1A·#555555·#D9D9D9), 헤더(조직명·[문서등급 표기]·킥커·33pt 액션 타이틀·21pt 리드·헤어라인), 틴트 카드 #F4F6FC/아웃라인 카드 0.75pt, 다크 블루 정리 밴드, 직각 사각형, 푸터(출처·NN / NN). 어휘 체계 승계(하강기·낸드·대형 클라우드 사업자·자체 설계 SSD·존댓말 액션 타이틀).
+- **구성**: S1 역사(선택 3카드+공통 구조 밴드·2019 완충 실증) / S2 균열(믹스 쏠림+통제권 4단계·스탯 4종, 이중 리스크 밴드) / S3 네 번째 방향성(두 갈래 판정 카드+부가가치 계층 스택) / S4 실행과 결론(제휴 패키지·조직 결정 요청+비중 전환 3단계+실행 창 2027, 결론 밴드). 타이틀 스캔: 반복했습니다→만들고 있습니다→흡수합니다→격상합니다. 가트너 수치는 overview S11과 동일하게 "기업 저장 인프라 기준" 표기. 스피커 노트 4장 포함.
+- **신규 파일**: `outputs/presentation/ssd-strategy-outline.md` · `scripts/generate_ssd_strategy_pptx.py`(.venv python-pptx) · `ssd-strategy.pptx`(.gitignore 예외 등록 — storyline-overview 선례).
+- **QA**: OOXML validate 통과 · 지오메트리 QA(경계·오버플로 추정·겹침) 1차 10건 검출 → 수정 후 0건 · 덱 텍스트 em-dash 0건. 시각 렌더는 PowerPoint·Keynote AppleScript 자동화가 권한 대화상자에 막혀 미수행(수치 QA로 대체) — 실기기 열람 확인 권장.
+- **건너뜀**: dashboard·version bump(무변경), 메인 덱 generate_pptx.py 재생성(본 덱과 무관), KG(위키 무변경).
+
 ## [2026-08-17] build | 「삼성 SSD 전략적 방향성」 보고서 본문 v1.0 집필
 
 - **무엇**: 목차 승인(프레이밍 = 원문 이중 구조 유지 / 가트너 F-1 = 범위 명시 인용 + 정황 지표 병기 / "슬라이드는 다음 단계 — 보고서는 설득력 있게 충분한 내용으로") 후 `outputs/report/ssd-strategy-report.md` 본문 집필. 4장 + 부록 3종(팩트체크 F-1~F-9 승계·용어 9종·재사용 자산 맵) + PPT 압축 맵. 전 수치 sources/ 인용, 사내 1차 주장(전담 조직·믹스 전환·FDP 실공급)은 브리프를 소스로 명시.
