@@ -14,6 +14,19 @@
 
 ---
 
+## [2026-08-17] query | 「삼성 SSD 전략적 방향성」 비판적 검토 — 24개 지적 + 보완 로드맵
+
+- **요청**: "팩트체크·전략적 사고·비판적 사고로 부족한 점·허점·논리적 오류·기술적 난제를 찝어내고 보완 방안 제안."
+- **신규 소스**: `sources/articles/fdp-technical-limits-adoption-context-2026-08.md` — 웹 검증 2건: ① 배치 표준 선례(Streams 채택 미미·ZNS 호스트 비용·메인라인 거부, 삼성 기술블로그도 계보 인정) ② FDP 조건부성(FAST'26 WARP — WAF ~1은 RUH-수명 정렬 시에만, "Noisy RUH" 간섭 현상).
+- **산출**: `outputs/report/ssd-strategy-critique.md` — 24개 지적(F 팩트 5·L 논리 6·S 전략 6·T 기술 4·E 표현 3). 🔴 5건: L-1 선례의 역설(같은 계보의 Streams·ZNS가 생태계 부족으로 실패 — "왜 FDP는 다른가" 부재) / L-2 균열 1(믹스) 처방 공백 / S-1 두 전장 혼동(하이퍼스케일러 FDP vs NVIDIA CMX·SCADA — 레포 기존 판정 "SCADA 후행 리스크"와 정합 필요) / T-1 FDP 효과 조건부성(워크로드별 정량 부재) / F-1 가트너 3차 인용 취약. 보완 로드맵: 보고서 v1.1 반영 9건 + 별도 실행 과제 6건(KV Cache FDP 업스트림 1호 과제·벤치마크 프로그램·시장조사·조직 파일럿·IP 방화벽·EWI 연동 데드라인) + 수용 명기 2건.
+- **건너뜀**: 보고서·덱 본문 수정 없음(반영 항목은 사용자 선택 대기), dashboard·PPTX·KG 무변경.
+
+## [2026-08-17] lint | Anthropic 한글 표기 통일 — 앤스로픽 → 앤트로픽 (4곳)
+
+- **요청**: "앤트로픽으로 통일해줘" — 신규 ssd-strategy 보고서·덱(앤트로픽)과 기존 자산(앤스로픽)의 표기 불일치 해소.
+- **수정**: ① `storyline-overview.pptx` S5 — XML 직접 치환 후 재패키징, OOXML validate(--original) 통과, 앤스로픽 잔존 0건 확인. ② `outputs/storyline/common-overview.md` 2곳(본문·출처 [9]). ③ `outputs/storyline/ssd-fdp-proposal.md` 1곳(FDE 절). md·js·위키 전수 grep — 그 외 잔존 없음.
+- **비고**: `outputs/presentation/storylinecommonoverview.pptx`(미커밋 로컬 빌드 산출물)는 손대지 않음 — md 원본이 수정됐으므로 재생성 시 반영됨.
+
 ## [2026-08-17] build | 「삼성 SSD 전략적 방향성」 발표 4장 덱 생성 (storyline-overview 디자인 시스템 승계)
 
 - **무엇**: 사용자 요청("PPT 작업 시작, 기존 storyline-overview.pptx 디자인 시스템 활용")에 따라 보고서 v1.0의 PPT 압축 맵을 4장 덱으로 구현. Deck Read: 과제·액션러닝 SSD 전략 보고 / 사업부 경영진 / 4장·10분 / DATA_DENSITY 6 · FORMALITY 8 · VISUAL_EXPRESSION 3.

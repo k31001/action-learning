@@ -208,6 +208,7 @@
 - [sources/articles/fab-toolset-commonality-conversion-2026-08.md](sources/articles/fab-toolset-commonality-conversion-2026-08.md) — (NEW) 팹 설비 공용성·제품 전환: DRAM↔CIS 공용률 80%(캐파는 50% 감소)·화성 12라인/평택 P4 전환·전환 병목은 고객 퀄과 후공정·W2W 하이브리드 본딩의 NAND→DRAM 이전·완전 가변 팹 실패 실증·자동차 플랫폼 공용화 벤치마크
 - [sources/articles/enterprise-ssd-market-1q26-2026-08.md](sources/articles/enterprise-ssd-market-1q26-2026-08.md) — (NEW) Enterprise SSD 1Q26 실적: Top5 $18.46B(+86.1% QoQ)·삼성 1위 38.2%($7.05B)·계약가 +80%·Micron Crucial 철수 + 중기 전망 교차(2030 ~$66B 등)
 - [sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md](sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md) — (NEW) 가트너 captive NVMe SSD 전망 팩트체크: "on-premises storage 5%(2023)→30%+(2026)" 원문·범위 확인(어레이 벤더 자체 드라이브 문맥 — 하이퍼스케일러 캡티브 통계와 구분), $158B는 GMI SSD 컨트롤러 시장 수치
+- [sources/articles/fdp-technical-limits-adoption-context-2026-08.md](sources/articles/fdp-technical-limits-adoption-context-2026-08.md) — (NEW) FDP 기술 한계·배치 표준 선례 웹 리서치: Streams 채택 미미·ZNS 호스트 비용·메인라인 거부(파편화) / FDP = SmartFTL+DPM 통합(수요자 설계·하위 호환) / FAST'26 WARP — WAF ~1은 RUH-수명 정렬 조건부, 오분류·간섭·"Noisy RUH" 시 실패 (비판적 검토 근거)
 - [sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md](sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md) — MAD Podcast×Sachin Katti(OpenAI 산업 컴퓨트 총괄, 2026-07, 트랜스크립트 전문 보존): 수요≫공급 즉시 소진·컴퓨트 3배=매출 3배·최대 리스크는 과소 건설·OpenAI ~$50B/업계 ~$700B·AI 재귀(AI가 칩 설계)·전자→토큰 공장·전면 액체냉각(냉각↔메모리 대역폭)·그리드 투자 원칙·가스터빈/변압기/인력 병목·원자력·Jalapeño(와트당 토큰·Broadcom·9개월 테이프아웃)·Stargate 우산 전략·오프테이커 구조·보장 토큰·오비탈 컴퓨트 (대시보드 "인터뷰" 메뉴 미러)
 
 ### sources/raw-notes — 리서치 노트
@@ -243,6 +244,7 @@
 - [outputs/report/scenario-planning-report.md](outputs/report/scenario-planning-report.md) — 시나리오 플래닝 전략 보고서 (위키 합성)
 - [outputs/report/dev-org-transformation-report.md](outputs/report/dev-org-transformation-report.md) — 개발실 체질 전환 전략 보고서 (LTA→SCA 논거·역할 재정의·액션 플랜)
 - [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md) — (NEW) 삼성 SSD 전략적 방향성 보고서 본문 v1.0 — 세 번의 선택(2005 진출·2013 NVMe 선행·2017~ DC 집중)→호황의 역설(믹스 쏠림·Captive 부상)→네 번째 방향성(FDP+시스템SW 생태계)→실행(제휴 패키지·조직 2트랙)·비중 전환 3단계 결론 + 팩트체크·용어·자산맵 부록 (다음 단계: PPT 3~4장)
+- [outputs/report/ssd-strategy-critique.md](outputs/report/ssd-strategy-critique.md) — (NEW) 삼성 SSD 전략적 방향성 비판적 검토 — 24개 지적(팩트 5·논리 6·전략 6·기술 4·표현 3, 🔴5건: Streams·ZNS 선례의 역설/균열 1 처방 공백/두 전장 혼동/FDP 조건부성/가트너 3차 인용) + 보완 로드맵(v1.1 반영 9건·별도 과제 6건·수용 명기)
 - [outputs/storyline/outline.md](outputs/storyline/outline.md) — (NEW) SSD 스토리라인 제안서 아웃라인 (2부 구성·비판 10건 반영 내역·제목 확정)
 - [outputs/storyline/common-overview.md](outputs/storyline/common-overview.md) — (NEW) 「호황은 전략을 심는 계절이다」 — 7인 공통 개요편(1~4장): 호황의 외생성·다운턴 3건 재감사(결과 이질성)·NAND 지형·3중 저지선
 - [outputs/storyline/open-innovation-proposal.md](outputs/storyline/open-innovation-proposal.md) — (NEW) 「지금만 살 수 있는 것」 — 오픈이노베이션(자원배분 Axis 2): D9 다운사이클 M&A와의 충돌 해소(가격 vs 기술 vs 자리)·저전력 반도체 즉시 실행(Axelera·EnCharge 등 5곳)·퀀텀 모달리티 분산과 극저온 메모리 장기 옵션(Diraq·SEEQC 등 9곳)·실행 3원칙(락인 안 된 곳·자본 5~10% 상한·시계별 심사 분리)
