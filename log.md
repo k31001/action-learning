@@ -14,6 +14,14 @@
 
 ---
 
+## [2026-08-17] ingest | 「삼성 SSD 전략적 방향성」 집필 브리프 수집 + 보고서 목차 v0.1 제안
+
+- **무엇**: 사용자 구술 브리프(2005 진출 → NVMe 선행 → DC 집중 → FDP 전환, "SSD = 사이클 감쇠 사업"의 비중 전환 3단계론)를 `sources/prompt/prompt-fdp-ssd.md`로 정리 저장 — 원문 보존 + 표현·문법 정리 + 저장소 소스 기반 데이터 보강(XS1715 인텔 1년 선행·HDD 매각 $1.375B·1Q26 38.2% 1위·Micron–Anthropic SCA 4요소·PM9E1 DGX Spark 실탑재 등) + 팩트체크 대장 F-1~F-9.
+- **웹 검증**: 브리프의 "가트너: Captive SSD 5%→30%" — 수치 실존 확인, 단 측정 대상은 **on-premises storage의 captive NVMe SSD**(어레이 벤더 자체 드라이브 문맥, ScaleFlux PR 2025-08-11 → 원출처 Blocks & Files 2023-09-07). 하이퍼스케일러 캡티브 공식 통계 부재 결론([ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md) §5.1)은 유지 → `sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md` 신규(인용 가이드 포함).
+- **보고서**: `outputs/report/ssd-strategy-report.md` 신규 — 목차 제안 v0.1: 4장 구성(세 번의 선택 → 호황의 역설 → FDP 네 번째 방향성 → 실행·결론), 장=슬라이드 1:1 매핑 + 장별 거버닝 메시지 + PPT 3~4장 압축 맵 + 저장소 재사용 자산 맵. **사용자 승인 대기 — 본문 미집필**.
+- **index.md**: sources/prompt 섹션 신설(기존 `fdp-fde-solution-prompt.md` 고아 등재 해소 포함) + articles·outputs 신규 3건 등록.
+- **건너뜀**: wiki 페이지 무변경(본문 집필 단계에서 fdp-host-ssd-platform·samsung-storage-solution-history와 정합 재검토 예정), dashboard·version bump·PPTX·KG 무변경(하류 아님).
+
 ## [2026-08-17] ingest | CAPEX 탭 솔루션(SSD·UFS) 오버레이 + 사업 연표 (v2.45.0 → v2.46.0)
 - **무엇**: 사용자 요청 — "CAPEX 그래프에 삼성 SSD·UFS 매출·이익 추가(없으면 시장규모×점유율 역산 허용) + 솔루션 사업 계기·이벤트 연표 + 사이클 연동 변모". 제품별 매출·이익 미공시 확인 → **3단 역산**(NAND 산업 규모 × 삼성 점유율 × 제품 믹스, 마진 -60%~+45%) 채택. 앵커: NAND 산업 2018 $63.2B 정점(TrendForce 확보), 삼성 점유 2Q24 36.9%·2025 32.9%, 2023 삼성 분기 ~$2.9B, 엔터프라이즈 SSD 4Q25 33.8%·1Q26 $7.05B. 전량 추정ᵉ — 신뢰도 C 명시.
 - **파일**: `sources/raw-notes/samsung-storage-solution-research-2026-08-17.md` 신규(방법론·역산표 2013~2025·연표 앵커·4단계 해석 프레임). `wiki/concepts/samsung-storage-solution-history.md` 신규 — 계기 3장면(2005 Apple NAND·2006 세계 최초 SSD·2011 HDD Seagate 매각) + 연표 13건 + 사이클×솔루션 변모 4단계(태동→수직계열화→솔루션 주도→AI 전환) + 역산 시계열. memory-capex-history.md 연결. index.md 2건. 기존 ssd-ufs-market.md 사업사 3단계 서술과 상호 보강(교차링크 기보유).

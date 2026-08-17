@@ -207,6 +207,7 @@
 - [sources/articles/semiconductor-depreciation-cost-structure-2026-08.md](sources/articles/semiconductor-depreciation-cost-structure-2026-08.md) — (NEW) 반도체 감가상각·원가 구조 (5사 공시 직접 파싱): 삼성 기계장치 내용연수 5년·상각률 77.1%, 감가상각비의 85~93%가 기계장치, 마이크론 FY2023 감가=매출 49.4%, 인텔 5→8년 연장 후 가속상각 되돌림, TSMC 레거시가 이익 73%, CXMT DUV 원가 페널티
 - [sources/articles/fab-toolset-commonality-conversion-2026-08.md](sources/articles/fab-toolset-commonality-conversion-2026-08.md) — (NEW) 팹 설비 공용성·제품 전환: DRAM↔CIS 공용률 80%(캐파는 50% 감소)·화성 12라인/평택 P4 전환·전환 병목은 고객 퀄과 후공정·W2W 하이브리드 본딩의 NAND→DRAM 이전·완전 가변 팹 실패 실증·자동차 플랫폼 공용화 벤치마크
 - [sources/articles/enterprise-ssd-market-1q26-2026-08.md](sources/articles/enterprise-ssd-market-1q26-2026-08.md) — (NEW) Enterprise SSD 1Q26 실적: Top5 $18.46B(+86.1% QoQ)·삼성 1위 38.2%($7.05B)·계약가 +80%·Micron Crucial 철수 + 중기 전망 교차(2030 ~$66B 등)
+- [sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md](sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md) — (NEW) 가트너 captive NVMe SSD 전망 팩트체크: "on-premises storage 5%(2023)→30%+(2026)" 원문·범위 확인(어레이 벤더 자체 드라이브 문맥 — 하이퍼스케일러 캡티브 통계와 구분), $158B는 GMI SSD 컨트롤러 시장 수치
 - [sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md](sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md) — MAD Podcast×Sachin Katti(OpenAI 산업 컴퓨트 총괄, 2026-07, 트랜스크립트 전문 보존): 수요≫공급 즉시 소진·컴퓨트 3배=매출 3배·최대 리스크는 과소 건설·OpenAI ~$50B/업계 ~$700B·AI 재귀(AI가 칩 설계)·전자→토큰 공장·전면 액체냉각(냉각↔메모리 대역폭)·그리드 투자 원칙·가스터빈/변압기/인력 병목·원자력·Jalapeño(와트당 토큰·Broadcom·9개월 테이프아웃)·Stargate 우산 전략·오프테이커 구조·보장 토큰·오비탈 컴퓨트 (대시보드 "인터뷰" 메뉴 미러)
 
 ### sources/raw-notes — 리서치 노트
@@ -226,6 +227,10 @@
 - [sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md](sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md) — 최장석 상무(메모리 상품기획팀장) 내부 인터뷰 녹취록: "수요 감소"의 제품 단위 정의, HBM↔DDR 캐파 상쇄 리스크, zHBM(3D 적층 커스텀 메모리)·가속기 전력/써멀 병목, 미주 vs 중화 선택과 집중, 커스텀 제품 소싱·컨트랙 체질, 하이-로 전략 (대시보드 "인터뷰" 메뉴 미러)
 - [sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md](sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md) — 이창수 부사장(메모리 영업팀장) 내부 인터뷰 정리본: 수요는 예측이 아니라 만드는 것(가격 탄력도), AI 프론티어·시가(時價) 시장, 중복 수요·수요 사슬 3형태, CAPEX vs FCF 재무 시그널, take-or-pay 멀티이어·NTE/NTB(1차 방어선), 사업 경쟁력 Back to Basic·WPSI(2차 방어선), 커스텀 HBM 퇴조, 브로드컴·ASIC·소버린 (민감 수치 대략 표현, 대시보드 "인터뷰" 메뉴 미러)
 
+### sources/prompt — 보고서 집필 브리프 (사용자 구술 원문)
+- [sources/prompt/fdp-fde-solution-prompt.md](sources/prompt/fdp-fde-solution-prompt.md) — FDP·FDE 솔루션 제안서 브리프 (2026-08-09, [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md)의 모체)
+- [sources/prompt/prompt-fdp-ssd.md](sources/prompt/prompt-fdp-ssd.md) — (NEW) 「삼성 SSD 전략적 방향성」 보고서 브리프 (2026-08-17, 원문 보존+데이터 보강+팩트체크 대장 F-1~F-9 — [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md)의 모체)
+
 ### sources/papers — 리서치 보고서
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 딥리서치: 2030 메모리 수급 4대 병목 정량 모델 (HBM 2.88EB·서버 125만 대·민감도·가격 균형)
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — 딥리서치: 병목 모니터링 모델·대시보드 설계 (3층 아키텍처·KPI P1/P2/P3·경보 5단계·대응 매뉴얼·12주 PoC)
@@ -237,6 +242,7 @@
 
 - [outputs/report/scenario-planning-report.md](outputs/report/scenario-planning-report.md) — 시나리오 플래닝 전략 보고서 (위키 합성)
 - [outputs/report/dev-org-transformation-report.md](outputs/report/dev-org-transformation-report.md) — 개발실 체질 전환 전략 보고서 (LTA→SCA 논거·역할 재정의·액션 플랜)
+- [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md) — (NEW) 삼성 SSD 전략적 방향성 보고서 — 목차 제안 v0.1 (승인 대기, 장=슬라이드 1:1 설계·PPT 3~4장 압축 전제)
 - [outputs/storyline/outline.md](outputs/storyline/outline.md) — (NEW) SSD 스토리라인 제안서 아웃라인 (2부 구성·비판 10건 반영 내역·제목 확정)
 - [outputs/storyline/common-overview.md](outputs/storyline/common-overview.md) — (NEW) 「호황은 전략을 심는 계절이다」 — 7인 공통 개요편(1~4장): 호황의 외생성·다운턴 3건 재감사(결과 이질성)·NAND 지형·3중 저지선
 - [outputs/storyline/open-innovation-proposal.md](outputs/storyline/open-innovation-proposal.md) — (NEW) 「지금만 살 수 있는 것」 — 오픈이노베이션(자원배분 Axis 2): D9 다운사이클 M&A와의 충돌 해소(가격 vs 기술 vs 자리)·저전력 반도체 즉시 실행(Axelera·EnCharge 등 5곳)·퀀텀 모달리티 분산과 극저온 메모리 장기 옵션(Diraq·SEEQC 등 9곳)·실행 3원칙(락인 안 된 곳·자본 5~10% 상한·시계별 심사 분리)
