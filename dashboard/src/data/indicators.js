@@ -34,11 +34,18 @@ export const INITIAL_QUADRANT_POSITIONS = [
   //   [후기순환 tell 실측 등장] 08-04가 이창수 프레임("진짜 꼭짓점은 CapEx가 아니라 FCF")으로 선행 관전 대상 지목한 CapEx-vs-FCF 다이버전스가 Q2 실적에서 가시화 — Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B).
   //     단 수요 붕괴가 아닌 조달 구조 경보(CapEx 자체 상승·핸드투마우스 재고 없음·Google Cloud 백로그 $514B 견조) → 축 무이동, EWI(demand_inflection_divergence·bigtech_capex_growth FCF 렌즈) 감시 강화로 반영.
   //   GPU 임대가 firming/flat(H100 ~$2.69·H200 ~$4.38, 붕괴 없음)로 수요 변곡 조기경보 미발동. DF2: 신규 미중 실현 사실 부재(크리스 밀러 "초크포인트 GPU→HBM 이동"은 외부 해석·MATCH 본회의 movement 없음·CXMT HBM 미확정) → 방향·위치 유지.
-  { key: 'current',    date: '2026-08', df1: 8.5,  df2: 0.5,  note: '[08-11 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동. 07-28이 지목한 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점 재확인. Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 조달 경보(수요 붕괴 아님)라 축 무이동·EWI 감시 강화. GPU 임대가 firming/flat. [08-04 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐, 내부 전문가 프레이밍으로 거시 축 무이동. 양면적: take-or-pay/NTB 바닥 경직화(상방 재확인) vs HBM 편중·중복수요·NAND 조정(하방 유보) 상쇄 → 정점 재확인. DF2: 이창수 중국 비동조화·미주 집중은 관리된 공존 정합. [07-28 재평가] in-window 신호 정점 재확인: Alphabet CapEx 상향·SK하이닉스 사상 최대. [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
+  // [2026-08-18 정기 재평가] DF1 8.5·DF2 0.5 유지 — 08-11 이후 git log 변경분(v2.40.0~v2.46.0)은 전부 다섯 계층: ① 제품믹스·삼성 실행(SSD·UFS 축 보강 v2.42.4·삼성 SSD design win v2.42.5·CAPEX 탭 솔루션 오버레이 v2.46.0) ② 역사 리서치(CMO 통합 매트릭스 v2.41.0·2019 다운사이클 편입 v2.44.0·CAPEX 히스토리 2006 소급 v2.42.2·시장 전환기 전략 v2.42.6) ③ 신규 분석 트랙(SP-2 다운턴 시나리오 플래닝 v2.42.0 — 별도 축 DF-D1×DF-D2, SP-1 거시 축 무영향) ④ outputs/보고서(2차 저지선 전략·키엔스 벤치마크·SSD 전략적 방향성 보고서 v1.1) ⑤ 내부 문서(회의록 메뉴 v2.40.0).
+  //   거시 축은 "실현된 외부 사실"이 움직인다는 일관 방법론상 위 전부 제품믹스(DF3/NAND)·역사·내부 분석·outputs로 분류 → 신규 실현된 외부 거시 수요 사실 0건. 직전 실현 외부 데이터는 여전히 Q2 하이퍼스케일러 실적(08-11) → DF1 8.5 정점 유지, 축 무이동.
+  //   [이번 사이클 최대 산출물] SP-2 다운턴 트랙 신설 + CMO 다운턴 역사 매트릭스(관측 3→4개)는 다운턴 대비·감별 차원을 심화하나 설계상 별도 축(DF-D1 발원지×DF-D2 속도)을 써 SP-1 DF1 무이동 — 공급발 다운턴은 A·B 사분면 안에서도 발생하므로 두 트랙 병존이 방법론적으로 정합.
+  //   [삼성 실행 진전] SSD design win(PM1763 양산 개시 2026-07-08 공식·CMX V-NAND 캐파 60%+ NVIDIA 배정·DGX Spark PM9E1 실탑재)은 AI-스토리지 NAND 수요·삼성 실행 진전 확인이나 삼성 개별 실행 신호(DF3/NAND)라 거시 축 아님 → EWI(samsung_ai_ssd_position·nvidia_storage_next_partner·enterprise_ssd_tam) 갱신으로 반영.
+  //   DF2: 08-11 이후 신규 미중 실현 정책 사실 0건(MATCH 본회의 movement 없음·CXMT HBM 미확정·애플–CXMT 테스트 단계·신규 수출통제 없음). SP-2에서 DF2는 배경 변수로 강등되어 SP-1 위치 무영향 → DF2 0.5 방향·위치 유지. 발동 트리거 0건.
+  { key: 'current',    date: '2026-08', df1: 8.5,  df2: 0.5,  note: '[08-18 재평가] DF1 8.5·DF2 0.5 유지 — 08-11 이후 git log 변경분(v2.40.0~v2.46.0)은 전부 제품믹스·삼성 실행(SSD·UFS·CAPEX 솔루션)·역사 리서치(CMO 매트릭스·2019 편입·CAPEX 히스토리)·신규 분석 트랙(SP-2 다운턴 — 별도 축 DF-D1×DF-D2)·outputs/보고서(2차 저지선·SSD 전략)·회의록으로 신규 실현된 외부 거시 사실 0건 → 축 무이동. 이번 사이클 최대 산출물 SP-2 다운턴 트랙은 다운턴 대비 심화이나 별도 축이라 SP-1 무이동. 삼성 SSD design win(PM1763 양산·CMX·DGX Spark)은 삼성 개별 실행 신호(DF3/NAND)라 EWI 갱신으로 반영. DF2 신규 미중 실현 사실 부재. 발동 트리거 0건. [08-11 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동. 07-28이 지목한 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점 재확인. Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 조달 경보(수요 붕괴 아님)라 축 무이동·EWI 감시 강화. GPU 임대가 firming/flat. [08-04 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐, 내부 전문가 프레이밍으로 거시 축 무이동. 양면적: take-or-pay/NTB 바닥 경직화(상방 재확인) vs HBM 편중·중복수요·NAND 조정(하방 유보) 상쇄 → 정점 재확인. DF2: 이창수 중국 비동조화·미주 집중은 관리된 공존 정합. [07-28 재평가] in-window 신호 정점 재확인: Alphabet CapEx 상향·SK하이닉스 사상 최대. [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
 ]
 
-// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-08-11 정기 재평가 — 유지)
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-08-18 정기 재평가 — 유지)
 //   A 25~29 / B 35~39 / C 6~10 / D 19~23 / E 5~8  → 합 100
+//   [2026-08-18 정기 재평가 — 유지] 08-11 이후 git log 변경분(v2.40.0~v2.46.0)은 전부 제품믹스·삼성 실행(SSD·UFS·CAPEX 솔루션 오버레이)·역사 리서치(CMO 통합 매트릭스·2019 다운사이클 편입·CAPEX 히스토리)·신규 분석 트랙(SP-2 다운턴 — 별도 축 DF-D1×DF-D2)·outputs/보고서(2차 저지선·SSD 전략)·회의록으로 신규 실현된 외부 거시 사실 0건 → A26·B39·C8·D21·E6 전부 유지.
+//     이번 사이클 최대 산출물인 SP-2 다운턴 트랙은 다운턴 대비 차원을 심화하나 설계상 별도 축을 써 이 매트릭스(SP-1 DF1×DF2) 상대 확률을 바꾸지 않음(공급발 다운턴은 A·B 안에서도 발생). 삼성 SSD design win(PM1763 양산·CMX·DGX Spark)은 삼성 개별 실행 신호(DF3/NAND)라 EWI 갱신으로 반영, 상대 확률 무영향. DF2 무변화(신규 미중 실현 사실 부재). 발동 트리거 0건.
 //   [2026-08-11 정기 재평가 — 유지] 08-04 이후 git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치(CMO·CAPEX)·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동 → A26·B39·C8·D21·E6 전부 유지.
 //     07-28이 지목한 DF1 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건은 이미 정점(DF1 8.5)인 축의 재확인이지 시나리오 간 상대 확률 변경 요인 아님(이미 A+B 행 반영).
 //     Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 수요 붕괴가 아닌 조달 경보 → D로의 재배분 미실행, EWI(demand_inflection_divergence·bigtech_capex_growth FCF 렌즈) 감시 강화로 반영. DF2 무변화.
@@ -1004,10 +1011,11 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'SK·Kioxia 1억 IOPS 도달 (2027) 전 삼성 SLC AI SSD 로드맵 공개 시급',
     warningThreshold: 10,
     status: 'warning',
-    lastUpdated: '2026-05-06',
+    lastUpdated: '2026-08-18',
     history: [
       { date: '2025-11', value: 5.4, note: 'Micron 9650 PCIe Gen6 — 단일 SSD 최고치' },
       { date: '2026-Q1', value: 5.4, note: 'Samsung PM1763 시연 (수치 미공개)' },
+      { date: '2026-07', value: 5.4, note: 'Samsung PM1763 양산 개시(07-08, 16TB 28.4/21.9GB/s) — 대역폭 스펙 공개, 단일 IOPS 최고치는 여전히 미공개(SLC 초고 IOPS 트랙 로드맵 공백 유지)' },
       { date: '2026-2027E', value: 25, note: 'SK하이닉스 AI-N P 목표 (NVIDIA 공동 개발)' },
       { date: '2027E', value: 100, note: 'Kioxia·SK 1억 IOPS 단일 SSD 목표 (PCIe Gen7)' },
     ],
@@ -1030,16 +1038,19 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'PM1753 CMX 공급은 즉각 매출 기회. SLC AI SSD 로드맵 공개가 다음 마일스톤',
     warningThreshold: null,
     status: 'warning',
-    lastUpdated: '2026-03',
+    lastUpdated: '2026-08-18',
     history: [
       { date: '2026-03', value: 'PM1763 시연', note: 'GTC 2026 NVIDIA SCADA 시연' },
       { date: '2026-Q2', value: 'PM1753 CMX 공급', note: 'NVIDIA Vera Rubin CMX 공식 공급 (TLC V8 PCIe Gen5)' },
+      { date: '2026-07', value: 'PM1763 양산 개시', note: '[실측] 2026-07-08 공식 양산 개시 — "차세대 AI 플랫폼 검증 완료"(9세대 V-NAND·4nm 컨트롤러·16TB 28.4/21.9GB/s). Vera Rubin 명시는 매체 해석으로 유보. CMX 물량 구조: 1유닛 576 SSD·9,600TB, 삼성 V-NAND 캐파 60%+ NVIDIA 배정 보도 (samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)' },
+      { date: '2026-08', value: 'DGX Spark PM9E1 실탑재', note: '[실측] NVIDIA DGX Spark 4TB SSD가 삼성 PM9E1(M.2 2242·자체 5nm Presto 컨트롤러·14.5GB/s)임을 분해로 확인(MZALC4T0HBL1) — 개인용 AI 기기 design win. 단 SLC 초고 IOPS(SCADA) 트랙 로드맵은 여전히 공백' },
     ],
-    note: 'CMX(즉각 매출 ✅) vs SCADA(구조적 위협 ⚠️) — 삼성 RS-3 다음 결정점은 SLC NAND 기반 초고 IOPS AI SSD 로드맵 공개 (2026 Tech Day 목표)',
+    note: 'CMX(즉각 매출 ✅) vs SCADA(구조적 위협 ⚠️) — 삼성 RS-3 다음 결정점은 SLC NAND 기반 초고 IOPS AI SSD 로드맵 공개 (2026 Tech Day 목표). [08-18] PM1763 양산 개시(07-08)·PM9E1 DGX Spark 실탑재로 CMX·클라이언트 축 실행 진전 확인 — "AI SSD 후행"은 SLC 초고 IOPS 트랙 한정으로 재해석. 캐파 60% NVIDIA 배정은 매출 락인이자 단일 고객 집중 리스크(RS-4 긴장) 병기',
     inputType: 'select',
     selectOptions: [
-      { value: 'pm1763_demo', label: 'PM1763 GTC 시연 (현재)', status: 'warning', signal: '생태계 진입' },
+      { value: 'pm1763_demo', label: 'PM1763 GTC 시연', status: 'warning', signal: '생태계 진입' },
       { value: 'pm1753_supply', label: 'PM1753 CMX 공식 공급', status: 'warning', signal: 'CMX 매출 확보' },
+      { value: 'pm1763_mass_prod', label: 'PM1763 양산 개시 + DGX Spark 실탑재 (현재)', status: 'warning', signal: 'CMX·클라이언트 축 실행 진전 (SLC 트랙은 공백)' },
       { value: 'slc_roadmap', label: 'SLC AI SSD 로드맵 공개', status: 'normal', signal: 'SCADA 추격 시작' },
       { value: 'nvidia_codev', label: 'NVIDIA 공동 개발 발표', status: 'normal', signal: 'B 가속' },
     ],
@@ -1174,14 +1185,15 @@ export const INITIAL_INDICATORS = [
     scenarioText: '핵심 파트너 진입 → B 가속 / 후행 고착 → RS-3 SCADA 트랙 위기',
     warningThreshold: null,
     status: 'warning',
-    lastUpdated: '2026-05-07',
+    lastUpdated: '2026-08-18',
     history: [
       { date: '2025-09', value: 'Kioxia 1억 IOPS 발표', note: 'Kioxia + NVIDIA 공동 개발' },
       { date: '2025-11', value: 'Micron 9650 SCADA 레퍼런스', note: 'SC\'25 2.3억 IOPS 시연' },
       { date: '2025-12', value: 'SK AI-N P 발표', note: 'NVIDIA 공동 개발 — 1억 IOPS 목표 (SLC NAND)' },
       { date: '2026-03', value: 'Samsung PM1763 시연', note: 'GTC 2026 — 생태계 참여 단계' },
+      { date: '2026-08', value: 'CMX 공급자 지위 심화 (PM1763 양산)', note: '[실측] PM1763 양산 개시(07-08)·CMX V-NAND 캐파 60%+ NVIDIA 배정으로 CMX(TLC) 공급자 지위는 심화 — 그러나 핵심 파트너(SLC NAND 초고 IOPS SCADA 레퍼런스)는 여전히 SK·Kioxia 선점. 삼성 SLC AI SSD 로드맵 미공개 = 최대 정보 공백 유지 (samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)' },
     ],
-    note: 'Storage-Next는 NVIDIA AI SSD 생태계의 미래 표준. SLC NAND 기반 초고 IOPS가 핵심 — 삼성 SLC AI SSD 로드맵 미공개가 가장 큰 정보 공백',
+    note: 'Storage-Next는 NVIDIA AI SSD 생태계의 미래 표준. SLC NAND 기반 초고 IOPS가 핵심 — 삼성 SLC AI SSD 로드맵 미공개가 가장 큰 정보 공백. [08-18] CMX(TLC) 축은 양산·캐파 배정으로 공급자 지위 심화, SLC(SCADA) 축 로드맵은 미도달',
     inputType: 'select',
     selectOptions: [
       { value: 'observer', label: '관찰자 (생태계 참여)', status: 'warning', signal: 'PM1763 시연 단계' },

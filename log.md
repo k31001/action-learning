@@ -10,9 +10,15 @@
 - 영향받은 페이지 목록
 ```
 
-작업유형: `ingest` · `query` · `lint` · `migration` · `build`
+작업유형: `ingest` · `query` · `lint` · `migration` · `build` · `assessment`
 
 ---
+
+## [2026-08-18] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + SSD design win EWI 3종 갱신
+
+- **무엇을**: 직전 포지션 맵 갱신(2026-08-11, v2.39.1) 이후 git log 변경분(v2.40.0~v2.46.0)을 다섯 계층으로 분류하고 거시 축(DF1·DF2)·시나리오 확률을 재평가. 결과 전부 **유지** — DF1 8.5·DF2 0.5·A26·B39·C8·D21·E6. EWI 3종(samsung_ai_ssd_position·nvidia_storage_next_partner·ai_ssd_iops_max)은 수집된 SSD design win 데이터로 갱신. 발동 트리거 0건.
+- **왜**: 08-11 이후 변경분은 ① 제품믹스·삼성 실행(SSD·UFS·CAPEX 솔루션 오버레이) ② 역사 리서치(CMO 통합 매트릭스·2019 다운사이클 편입·CAPEX 히스토리·시장 전환기 전략) ③ 신규 분석 트랙(SP-2 다운턴 — 별도 축 DF-D1×DF-D2) ④ outputs/보고서 ⑤ 회의록. 거시 축은 "실현된 외부 사실"이 움직인다는 일관 방법론상 신규 실현 외부 거시 사실 0건 → 축 무이동. 이번 사이클 최대 산출물 SP-2 다운턴 트랙은 다운턴 대비 심화이나 별도 축이라 SP-1 무영향(공급발 다운턴은 A·B 안에서도 발생). 삼성 SSD design win(PM1763 양산 개시 07-08·CMX 캐파 60% 배정·DGX Spark PM9E1)은 삼성 개별 실행 신호(DF3/NAND)라 EWI 갱신으로 반영. 업데이트 내역 메뉴(updates.js)에 assessment 타입("포지션·확률" 필터 칩)으로 별도 게시.
+- **영향받은 페이지**: wiki/driving-forces/key-drivers.md(DF1·DF2 현재 위치) · wiki/scenarios/scenario-matrix.md(확률표 note) · dashboard/src/data/indicators.js(INITIAL_QUADRANT_POSITIONS·SCENARIOS·EWI 3종) · dashboard/src/data/scenarioPlanning.js(DF1·DF2 currentPosition·A·B 확률) · dashboard/src/data/updates.js(신규 assessment 엔트리) · dashboard/src/version.js(v2.46.1) · log.md. 패치 v2.46.1(데이터·텍스트 갱신).
 
 ## [2026-08-18] build | 요약 슬라이드 재설계 — 결정 요청형 → 한 장 논증형 (문제·원인·결론·실행)
 

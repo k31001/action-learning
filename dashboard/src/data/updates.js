@@ -14,6 +14,29 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-18 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-18',
+    type: 'assessment',
+    version: 'v2.46.1',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + SSD design win EWI 3종 갱신',
+    summary:
+      '직전 포지션 맵 갱신(2026-08-11) 이후 git log 변경분(v2.40.0~v2.46.0)을 다섯 계층으로 분류: ① 제품믹스·삼성 실행(SSD·UFS 축 보강·삼성 SSD design win·CAPEX 탭 솔루션 오버레이) ② 역사 리서치(CMO 통합 매트릭스·2019 다운사이클 편입·CAPEX 히스토리 2006 소급·시장 전환기 전략) ③ 신규 분석 트랙(SP-2 다운턴 시나리오 플래닝 — 별도 축 DF-D1×DF-D2) ④ outputs/보고서(2차 저지선 전략·키엔스 벤치마크·SSD 전략적 방향성 보고서 v1.1) ⑤ 내부 문서(회의록 메뉴). 거시 축은 "실현된 외부 사실"이 움직인다는 일관 방법론상 위 전부 제품믹스(DF3/NAND)·역사·내부 분석·outputs로 분류돼 신규 실현된 외부 거시 수요 사실 0건 — 직전 실현 외부 데이터는 여전히 Q2 하이퍼스케일러 실적(08-11). → DF1 8.5·DF2 0.5·확률 5종 전부 유지. 이번 사이클 최대 산출물인 SP-2 다운턴 트랙·CMO 다운턴 역사 매트릭스는 다운턴 대비·감별 차원을 심화하나 설계상 별도 축을 써 SP-1 거시 축을 움직이지 않는다(공급발 다운턴은 A·B 사분면 안에서도 발생 — 두 트랙 병존이 방법론적으로 정합). 삼성 SSD design win(PM1763 양산 개시 07-08·CMX V-NAND 캐파 60%+ NVIDIA 배정·DGX Spark PM9E1 실탑재)은 AI-스토리지 NAND 수요·삼성 실행 진전 확인이나 삼성 개별 실행 신호(DF3/NAND)라 거시 축 아님 → EWI 3종 갱신으로 반영. 발동 트리거 0건. 패치 v2.46.1.',
+    tags: ['시나리오', '포지션 맵', '확률', '유지', 'DF1', 'DF2', 'SP-2', 'SSD', 'PM1763', 'CMX', 'EWI', 'dashboard', 'wiki'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5', detail: '08-11 이후 변경분은 제품믹스·삼성 실행·역사 리서치·SP-2 트랙·outputs·회의록으로 거시 축을 움직이는 실현된 외부 사실 아님. 직전 실현 외부 데이터는 여전히 Q2 하이퍼스케일러 실적. 두 축 위치·방향 무이동' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '거시 축 무이동 → 상대 확률 무변화. SP-2 다운턴 트랙은 다운턴 대비 심화이나 별도 축(DF-D1×DF-D2)이라 SP-1 매트릭스 상대 확률에 무영향' },
+      { label: 'SP-2 다운턴 트랙 = 별도 축', detail: '이번 사이클 최대 산출물. 공급발 다운턴은 AI 수요 유지(A·B) 안에서도 실현되므로 SP-1의 특정 사분면에 갇히지 않음 → 두 트랙 병존이 방법론적으로 정합, SP-1 DF1/DF2 무이동' },
+      { label: 'EWI 3종 갱신 (수집 데이터 반영)', detail: 'samsung_ai_ssd_position(PM1753 CMX → PM1763 양산 개시 07-08·DGX Spark PM9E1 실탑재, 선택지·history 추가) · nvidia_storage_next_partner(CMX 공급자 지위 심화, SLC SCADA 핵심 파트너는 미도달) · ai_ssd_iops_max(PM1763 양산 note, 단일 IOPS 수치 미공개 유지). 삼성 SSD "AI 후행"은 SLC 초고 IOPS 트랙 한정으로 재해석' },
+      { label: '트리거 — 발동 0건', detail: '신규 미중 실현 사실 부재(MATCH 본회의 movement 없음·CXMT HBM 미확정·애플–CXMT 테스트 단계)로 DF2 트리거 무변화. 거시 조기경보(GPU 임대가·CapEx·FCF)는 신규 실측 부재로 08-11 스냅샷 유지(자동 갱신 지표는 Vast.ai API 지속)' },
+      { label: '위키 동기화', detail: 'wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치 · wiki/scenarios/scenario-matrix.md 확률표에 [2026-08-18 재평가] 유지 note 추가. dashboard indicators(INITIAL_QUADRANT_POSITIONS·SCENARIOS·EWI 3종)·scenarioPlanning(DF1·DF2·A·B) 미러' },
+    ],
+    links: [
+      { label: 'samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
   // ── 2026-08-17 (i) ───────────────────────────────────────────────────────────
   {
     date: '2026-08-17',
