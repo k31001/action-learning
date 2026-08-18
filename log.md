@@ -14,6 +14,21 @@
 
 ---
 
+## [2026-08-18] ingest | 정기 스케줄 점검 — Bottleneck Model 갱신(전력 최초 최상위 병목)·기업 동향·시장 데이터 (v2.46.1 → v2.46.2)
+
+- **무엇을**: 스케줄 자동 실행 — SemiAnalysis·Counterpoint Research·TechInsights 우선 + 일반 웹 리서치로 직전 점검(2026-08-11) 이후 신규 데이터 수집(2026-08-11~08-18 구간). 병렬 리서치 에이전트 3개(① SemiAnalysis·전력/CAPEX/파운드리/패키징 ② Counterpoint·TechInsights 시장데이터 ③ 삼성·SK·Micron·NVIDIA·중국)로 수집 후 신규 소스 2건으로 정리, 이어 병렬 편집 에이전트 2개로 위키 8개 페이지에 인용 반영.
+- **신규 소스**: `sources/articles/august-2026-market-update-2026-08-18.md`(전력·CAPEX·파운드리·패키징·가격·출하), `sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md`(기업별 동향).
+- **Bottleneck Model 2030 제약지수 갱신** (직전 2026-07-04 대비, wiki/concepts/bottleneck-model-2030.md §"종합 판독 2026-08-18" 신설): **전력 72→75(▲+3)** — ERCOT이 텍사스 주지사 지시로 신규 데이터센터 접속을 사실상 일시 동결(250~300개 프로젝트·약 200GW 감사, 큐 474GW), SemiAnalysis(08-16)는 PJM 용량경매 모델링 결함으로 $120억 낭비·재발 위험 지적 — **전력이 이번 갱신에서 최초로 CAPEX/ROI를 제치고 4대 병목 중 최상위로 부상**(종전 "CAPEX/ROI > 전력" 서열 역전). **CAPEX/ROI 40→39(▼-1)** — 신규 가이던스는 없으나 HY 스프레드 역사적 저점권·AI DC 채권 프리미엄 추가 압축. **파운드리 50→50(불변)** — 이번 구간 TSMC·ASML 신규 뉴스 없음. **패키징 67→65(▼-2)** — 삼성 HBM4 수율 <60%→80% 개선 + SK하이닉스 HBM4 램프 자발적 연기(HBM3E 우선·일부 DDR5 재배정) + NVIDIA Rubin Ultra 메모리 최대 1TB→최소 192GB 하향 검토, 공급·수요 양측 완화 신호 중첩. 상류 드라이버 트리 3개 행(`financing`·`interconnect`·`stack_yield`·`cowos_util`) 판정·근거 갱신.
+- **기업 페이지 갱신**(citations 전부 위 2개 신규 소스): `samsung.md`(베트남 타이응우옌 레거시 D램·낸드 후공정 이전 검토 — "HBM은 한국, 레거시는 베트남"·H1 R&D+CAPEX 55조 원+ 사상 최대·HBM4 수율 80%·주가 -33% 조정+ACT 자사주 매입 요구·반독점 소송 초기 단계 지속), `sk-hynix.md`(나스닥 ADR 상장 완료 ~$290억·Q2 실적 확정 영업이익률 76%·**HBM4 램프 자발적 감속** 신규 신호), `micron.md`(Q4 FY26 가이던스 상향·HBM4E "커스텀 HBM 시대" 발언·Idaho/NY CHIPS 재배정), `cxmt.md`+`china-competitors.md`(상하이 IPO 첫날 +466~470%·애플 인증 테스트+상원 08-21 답변 요구·하원 대중국특위 수입금지 압박), `nvidia.md`+`nvidia-cmx-scada.md`(Rubin Ultra 메모리 최대 1TB→최소 192GB 하향 검토·FMS 2026 cuFile 오픈소스화·SCADA 2.3억 IOPS 재시연).
+- **시장 데이터**: `hbm-market.md`(HBM4 원가 $31~32/GB NVIDIA향·$35~36/GB 비NVIDIA향, HBM3E 대비 2배), `dram-market-share.md`(2Q26 삼성 39%·SK 26%·Micron 25%·CXMT 7%, SK-Micron 격차 1%p로 축소), `ssd-ufs-market.md`(NAND Top5 매출 $68.87B, +77% QoQ, Micron이 Kioxia 제치고 3위), `price-trends.md`(Q3 DRAM 계약가 전망 +13~18% QoQ 불변 확인), `energy-constraints.md`(ERCOT 동결·PJM 결함·지멘스에너지 백로그 사상최고), `dram-antitrust-litigation.md`(초기 절차 단계 유지, 신규 제출 없음).
+- **스마트폰 출하 전망 정정**: 여러 페이지에 남아있던 구 수치(2026 -2.1%, 2025-12 Counterpoint 전망)를 2Q26 실제 -11%(13년 만 최저 분기)·2026 연간 전망 -14%(대폭 추가 하향)로 정정 — `wiki/concepts/ai-server-demand.md`, `wiki/steep/economy.md`(구 항목에 정정 note 추가, 삭제하지 않음), `wiki/concepts/bottleneck-model-2030.md`(파운드리 AI 배정 드라이버), `dashboard/src/data/indicators.js`(`smartphone_shipment_yoy` currentValue -2.1→-11, history 추가), `dashboard/src/data/demandSignals.js`(`trad_demand`·`credit_spread` note·trend 갱신).
+- **스케일 판단**: DF1/DF2 거시 축 재평가는 별도로 하지 않음 — 이번 구간 신규 사실(ERCOT 동결·SK하이닉스 HBM4 감속·NVIDIA Rubin Ultra 하향·메모리주 밸류에이션 조정·스마트폰 출하 재하향)은 전력/패키징 병목·기업 개별 실행·소비자 축(비AI) 신호로, 같은 날 앞선 [assessment] 항목이 검토한 "실현된 외부 AI 수요 거시 사실" 범주와 겹치지 않음 — 필요 시 다음 정기 재평가에서 반영. 전략 신설·폐기 없음(기존 RS9 수요변곡센싱·다운턴 EWI 프레임이 이번 신호들을 이미 포괄).
+- **건너뜀**: `outputs/report`·PPTX(서사 변경 없는 데이터 갱신, 기존 market-update 사이클과 동일 처리) · 지식그래프(위키 신규 페이지·링크 구조 변경 없음, 기존 페이지 내용만 갱신).
+- **dashboard (v2.46.1 → v2.46.2, 패치 = 데이터 갱신)**: `bottleneckModel.js`(제약지수 4종·PREV_INDICES·드라이버 5행) · `indicators.js`(smartphone EWI) · `demandSignals.js`(trad_demand·credit_spread) · `version.js`.
+- **검증**: `npm run build` 통과 확인 예정(본 항목 직후 실행) — 콘솔 오류 0 목표.
+
+---
+
 ## [2026-08-18] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + SSD design win EWI 3종 갱신
 
 - **무엇을**: 직전 포지션 맵 갱신(2026-08-11, v2.39.1) 이후 git log 변경분(v2.40.0~v2.46.0)을 다섯 계층으로 분류하고 거시 축(DF1·DF2)·시나리오 확률을 재평가. 결과 전부 **유지** — DF1 8.5·DF2 0.5·A26·B39·C8·D21·E6. EWI 3종(samsung_ai_ssd_position·nvidia_storage_next_partner·ai_ssd_iops_max)은 수집된 SSD design win 데이터로 갱신. 발동 트리거 0건.

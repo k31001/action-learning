@@ -14,7 +14,29 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
-  // ── 2026-08-18 ───────────────────────────────────────────────────────────────
+  // ── 2026-08-18 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-18',
+    type: 'ingest',
+    version: 'v2.46.2',
+    title: '정기 스케줄 점검 — Bottleneck Model 갱신(전력 최초 최상위 병목)·기업 동향·시장 데이터',
+    summary:
+      'SemiAnalysis·Counterpoint·TechInsights 우선 수집(2026-08-11~08-18 구간). Bottleneck Model 제약지수 갱신: 전력 72→75(ERCOT 신규 접속 사실상 일시 동결·SemiAnalysis PJM 경매 모델링 결함 지적 — 전력이 이번 갱신에서 최초로 CAPEX/ROI를 제치고 최상위 병목으로 부상)·CAPEX 40→39(신용스프레드 추가 완화)·파운드리 50→50(신규뉴스 없음)·패키징 67→65(삼성 HBM4 수율 80%·SK하이닉스 HBM4 램프 자발 감속·NVIDIA Rubin Ultra 메모리 하향 검토로 완화). 기업 페이지 8개(삼성·SK하이닉스·Micron·CXMT·china-competitors·NVIDIA·CMX-SCADA) + 시장 데이터 6개(HBM 가격·DRAM 점유율·NAND 매출·가격·전력·반독점) 갱신. 스마트폰 출하 전망 -2.1%→-14%(2Q26 실적 -11%, 13년 만 최저) 전 위키·대시보드 정정.',
+    tags: ['Bottleneck Model', '전력', 'ERCOT', 'PJM', 'SemiAnalysis', 'HBM4', 'Counterpoint', '스마트폰', 'dashboard', 'wiki'],
+    items: [
+      { label: '전력 72→75, 최초로 최상위 병목', detail: 'ERCOT "Batch Zero" 프로젝트 250~300개·약 200GW 감사로 신규 접속 사실상 동결(전체 큐 474GW). SemiAnalysis(08-16): PJM 용량경매 모델링 결함 $120억 낭비 지적. 전력 75 > CAPEX 39 — 종전 서열 역전' },
+      { label: 'CAPEX 40→39·파운드리 50→50·패키징 67→65', detail: 'CAPEX는 신용스프레드 추가 완화(HY OAS 271bp). 파운드리는 이번 구간 신규 뉴스 없음(불변). 패키징은 삼성 HBM4 수율 80%(<60%→)·SK하이닉스 HBM4 램프 자발 연기·NVIDIA Rubin Ultra 메모리 1TB→192GB 하향 검토가 겹쳐 완화' },
+      { label: '기업 동향 8개 페이지', detail: '삼성(베트남 레거시 이전 검토·H1 R&D+CAPEX 최대)·SK하이닉스(나스닥 상장 완료·HBM4 램프 감속)·Micron(Q4 가이던스·HBM4E 커스텀 시대)·CXMT/china-competitors(IPO +466~470%·애플 인증 테스트·의회 압박)·NVIDIA/CMX-SCADA(Rubin Ultra 메모리 하향·FMS 2026)' },
+      { label: '스마트폰 출하 전망 정정 -2.1%→-14%', detail: '2Q26 실적 -11%YoY(13년 만 최저 분기), 2026 연간 전망 대폭 추가 하향. ai-server-demand.md·economy.md·indicators.js·demandSignals.js 전수 갱신(구 수치는 삭제 대신 정정 note 추가)' },
+      { label: '건너뜀', detail: 'outputs/report·PPTX(서사 변경 없는 데이터 갱신) · 지식그래프(신규 페이지·링크 구조 변경 없음) · 시나리오 포지션 맵 재평가(같은 날 별도 assessment 항목에서 처리, 이번 신호는 병목·기업 실행·비AI 소비 축이라 DF1/DF2 무관)' },
+    ],
+    links: [
+      { label: 'august-2026-market-update-2026-08-18.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/august-2026-market-update-2026-08-18.md' },
+      { label: 'samsung-sk-micron-nvidia-china-update-2026-08-18.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
+  // ── 2026-08-18 (i) ───────────────────────────────────────────────────────────
   {
     date: '2026-08-18',
     type: 'assessment',
