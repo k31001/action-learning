@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-08-18
+sources: [sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/august-2026-market-update-2026-08-18.md, sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md]
 ---
 
 # DRAM 반독점 집단소송 (2026-06 제소)
@@ -17,6 +17,11 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 ## 현재 단계
 
 - 2026-06-25 제소 직후 단계이며, 아직 법원의 실질적 판단(기각·인용·화해 등)은 나오지 않았다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+### [Update 2026-08-18] 상태 점검 — 여전히 초기 절차 단계, 신규 진전 없음
+
+- 소송(N.D. Cal., 사건번호 **3:26-cv-06345**, 담당판사 **Noel Wise**)은 2026-08-08 기준으로도 여전히 초기 절차 단계다 — **기각신청(motion to dismiss)·답변(answer)·판결(ruling) 어느 것도 아직 나오지 않았다** ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md)).
+- 2026-08-11~08-18 구간 신규 제출 문서도 확인되지 않았다 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md)).
 
 ## 위키 관점 — 왜 추적하는가
 

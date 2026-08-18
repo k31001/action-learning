@@ -311,3 +311,13 @@ JEDEC 표준 이정표: UFS 3.0 2018-01-30·4.0 2022-08-17·4.1 2025-01-08 (JEDE
 현재 진행 중인 3차 전환(범용 DC → AI 스토리지)에 대입하면: §[Update 2026-08-16]의 **CMX·PM1763·PM9E1 축은 요소 3·4를 재실행 중**(V9 캐파 60%+ 배정 = 캐파 베팅, Gen6 28.4GB/s = 인터페이스 선점)이다. 반면 **SLC 초고 IOPS(SCADA Storage-Next) 트랙은 요소 2(자기잠식형 표준 창설)의 공백** — 과거 UFS를 만들던 방식으로 AI SSD 표준(초고 IOPS 계층)을 주도할지가 미결이다. 그리고 Intel의 교훈은 역방향 경고다: **규격을 만들고도 제품화가 늦으면 진다**. 다운턴 관점 연결은 [CMO 매트릭스 §5](../storyline/cmo-matrix.md) 참조 — 전환발(③) 다운턴 시나리오에서 이 플레이북의 실행 여부가 O를 가른다.
 
 **미확인 잔여** (노트 §미확인 11건 중 핵심): 1Q16↔1Q17 점유율 집계 기준 상충, 시안 1기 투자액 $7B vs $10.87B 불일치, 하이퍼스케일러 개별 공급의 당대 보도 부재, "캐파를 eSSD로 전환" DRAMeXchange 명시 논평 원문.
+
+---
+
+## [Update 2026-08-18] NAND Flash 전체(Top5) 매출 Q2 2026 — $688.7억(+77% QoQ), Micron이 Kioxia 제치고 3위
+
+Evertiq·TechPowerUp(2026-08-18): **NAND Flash Top5 벤더 합산 매출이 Q2 2026 $688.7억(QoQ +77%)**로 급증했다 — 벤더별로는 **삼성 $230.6억(+70.7%)·SK하이닉스 $142.7억(+89.5%)·Micron $118.5억(+99.2%, Kioxia를 제치고 3위 등극)·Kioxia $107.2억(+79.9%)·SanDisk 5위** 순이다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+
+- 성장의 주 원인은 **AI 서버향 엔터프라이즈 SSD 수요·가격 인상**으로 지목된다. **Q3 2026도 엔터프라이즈 SSD 주도 성장이 이어질 전망이나, PC·스마트폰향 NAND 수요는 약세를 유지**할 것으로 전망된다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+- **Micron의 3위 등극**은 위 [Update 2026-08-15 II] "③ Micron: 소비자 철수·DC 집중"(Crucial 소비자 사업 철수·엔터프라이즈 재배치)의 실적 확인이다 — 캐파를 고마진 엔터프라이즈로 재배치한 전략이 순위 역전(Kioxia 추월)으로 이어졌다.
+- 이 수치는 **Top5 전체 NAND Flash 매출**(§1의 Enterprise SSD 세부 시장과는 집계 범위가 다름)이며, 위 "[Update 2026-08-15 II] Enterprise SSD 1Q26 — Top5 $18.46B" 절대치와 직접 비교하지 말 것 — 전자는 NAND Flash 전체, 후자는 Enterprise SSD 서브세그먼트다.

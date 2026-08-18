@@ -49,3 +49,13 @@ Counterpoint Research (2025-12-18):
 - 시나리오 D (조용한 재편) 부분 강화 신호 — 단, 현재까지는 D보다 B(AI 르네상스) 정합이 더 강함
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §3
+
+---
+
+## [Update 2026-08-18] Counterpoint — 2026 전망 -2.1%→-14%로 대폭 추가 하향, 2Q26 실적 -11%(13년 만 최저)
+
+Counterpoint 2Q26 스마트폰 실적(2026-08 발표): 글로벌 출하 **-11% YoY**, 13년 만에 가장 낮은 2분기 — 메모리 부족발 BoM 원가 상승이 명시적 원인으로 재확인. 2026 연간 전망도 기존 **-2.1%에서 -14%로 대폭 추가 하향**(위 05-25 항목의 -2.1% 수치는 이 갱신으로 대체). 삼성은 **24% 점유**로 Apple과 함께 YoY 성장한 유이한 벤더, Xiaomi·OPPO·vivo는 두 자릿수 감소 — 05-25 항목의 "최대 피해=중국 OEM" 판단과 정합, "수혜=Samsung·Apple" 판단도 강화.
+
+**영향**: 소비자 시장 수축이 예상보다 훨씬 가팔라 메모리(공급자)↔스마트폰(수요자) 자기상쇄 구조의 하방 폭이 확대됐으나, 상방(HBM·서버 DRAM) 슈퍼사이클과는 여전히 분리된 축 — DF1(AI 수요)에는 직접 영향 없음(전통 소비자 수요 축이지 AI 인프라 축이 아님). 시나리오 D 부분 강화 신호는 유지, B 우위 판단도 유지.
+
+**출처**: [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md), [august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)

@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, TechInsights, Caixin Global, Digitimes)]
+last_reviewed: 2026-08-18
+sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, TechInsights, Caixin Global, Digitimes), sources/articles/august-2026-market-update-2026-08-18.md, sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md]
 ---
 
 # 중국 메모리 업체 그룹 (CXMT · YMTC)
@@ -124,3 +124,21 @@ sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, Tec
 - 위협의 실현 경로는 **첨단 정면 추월이 아니라 ① 범용·완제품 채택(CXMT), ② 피지컬 AI 수요의 중국 내 수직계열화** — 시나리오 C·D의 중국 변수 해석과 일치하며, HBM·추론 아키텍처 등 추격 난이도 높은 영역의 격차 유지가 방어의 핵심이라는 기존 결론을 강화.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
+
+---
+
+## [Update 2026-08-18] DRAM 점유율 Q2 2026 확정치 + CXMT 상장 폭등·의회 압박 (요약)
+
+### DRAM 시장 점유율 Q2 2026 (Counterpoint, 2026-08-04)
+
+- **삼성 39% · SK하이닉스 26% · Micron 25% · CXMT 7%** — SK·Micron 격차가 1%p로 축소됐다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) §5). 위 "업체별 페이지" 표의 Q3 2025 CXMT 8%(TrendForce 기준)와는 집계 기관·시점이 달라 양쪽 수치를 병기하며, 정합성은 추후 교차검증 필요.
+
+### CXMT — 상하이 STAR마켓 상장 폭등 + 애플 인증·의회 압박
+
+- CXMT가 2026-07-27 상하이 STAR마켓 상장 첫날 **+466~470% 폭등**, 중국 시총 최대 상장사(약 3.3조 위안) 등극. 애플의 중국 내수용 iPhone/MacBook向 CXMT DRAM 인증 테스트가 지속되는 가운데 **CXMT는 할인을 거부**. 미 상원(Schumer, 2026-08-21 답변 요구)·하원 대중국특위(Moolenaar·Whitesides, Entity List 전면 구매금지 요구, 유예기한 2028-12-23 제안)의 압박이 확대되고 있다 — 상세는 [cxmt.md [Update 2026-08-18]](cxmt.md#update-2026-08-18-star마켓-상장-폭등애플-인증-테스트-진전의회-압박-확대) 참조 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §5).
+
+### YMTC — 자체 국산 장비 라인 구축 지속
+
+- YMTC는 자체 국산 장비 생산라인 구축을 지속하며 2026년 말까지 글로벌 NAND 점유율 **15%** 목표를 유지 중 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §5).
+
+**출처**: [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §5, [august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) §5

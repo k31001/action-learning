@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-08-18
+sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters), sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/august-2026-market-update-2026-08-18.md, sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md]
 ---
 
 # CXMT (창신메모리 / 长鑫存储) — DRAM 전문
@@ -252,3 +252,26 @@ FT 보도의 CXMT 점유율 수치("2025년 ~11% → 2028년 15%")는 **웨이�
 - 다만 밀러는 같은 시기 중국의 구조적 제약도 병행 지적("중국은 4년째 AI 과소투자", Huawei/SMIC 규모 한계 — [china-competitors.md [Update 2026-08-03]](china-competitors.md#update-2026-08-03-크리스-밀러의-중국-이중-평가) 참조) — CXMT 위협은 첨단(HBM)이 아닌 **범용·완제품 채택 경로**로 실현된다는 위키 기존 프레임과 정합.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
+
+---
+
+## [Update 2026-08-18] STAR마켓 상장 폭등·애플 인증 테스트 진전·의회 압박 확대
+
+### 상하이 STAR마켓 상장 (2026-07-27) — 첫날 +466~470%, 중국 시총 최대 상장사
+
+- CXMT가 2026-07-27 상하이 STAR마켓에 상장, **첫날 주가 +466~470% 폭등**, **$98억 조달**, **중국 시가총액 최대 상장사(약 3.3조 위안)**로 등극 — 미 의회 조사를 촉발했다 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §5).
+
+### 애플 인증 테스트 진전 — CXMT 할인 거부
+
+- 애플이 중국 내수용 iPhone·MacBook向 CXMT DRAM 인증 테스트를 진행 중(2026-07-08~08-10 보도 흐름) — 위 [Update 2026-07-11]에서 확인된 기술 검증 착수가 지속되고 있음을 재확인. **CXMT는 삼성·SK하이닉스 수준 이상의 가격을 고수하며 애플에 어떠한 할인도 거부**한 것으로 보도됨 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §5).
+
+### 미 의회 압박 확대
+
+- 상원은 애플에 CXMT/YMTC 메모리 사용 여부·방식에 대한 답변을 **2026-08-21까지** 요구(Schumer 서한, 2026-07-29).
+- 하원 대중국특위(Moolenaar)·Whitesides 의원이 상무부 러트닉 장관에 **Entity List/국방부 블랙리스트 등재 중국 메모리 업체(CXMT·YMTC 명시)로부터의 미국 구매 전면 금지**를 요구, 준수 유예 기한은 **2028-12-23** 제안(2026-07-17) — 08-11~08-18 구간 내 상무부의 신규 Entity List 조치는 확인되지 않았다 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §5).
+
+### 함의
+
+- 애플과의 협상에서 CXMT가 할인을 거부하고 프리미엄 가격을 고수한 것은, 위 [Update 2026-07-11]에서 제기된 "애플 로비 = 애플이 CXMT를 지렛대 삼아 3사와의 협상력을 확보"라는 해석과는 반대로, **CXMT가 기술 검증 단계에서부터 저가 침투가 아닌 프리미엄 포지셔닝을 시도**하고 있다는 신호로 읽을 수 있다. STAR마켓 상장 성공(시총 약 3.3조 위안)이 이러한 협상력을 뒷받침하는 자금 기반으로 작동. DF2(미중 지정학) 리트머스는 여전히 미확정 — 애플의 2026-08-21 상원 답변 및 상무부 Entity List 조치 여부가 다음 분기점.
+
+**출처**: [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §5

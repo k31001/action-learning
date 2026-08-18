@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-08-18
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/august-2026-market-update-2026-08-18.md, sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -229,7 +229,7 @@ flowchart LR
 |---|---|---|---|---|
 | 1 | 하이퍼스케일러 이익·FCF 커버리지 | 2~4분기 | 중립 ▼ | 빅4 FCF 견조하나 capex +77% 가속으로 커버리지 하락 — FCF/CapEx<0.8이 충격 트리거 ([ai-capex.md](ai-capex.md)) |
 | 1 | capex 가이던스·발주 모멘텀 | 1~3분기 | 완화 ▶ | '26 $650~725B(+77%) 강세 (수요 EWI ②돈 `capex_guide` 연계) |
-| 1 | 외부 자금조달 (HY OAS·사모신용·ABS) | 0~2분기 | 긴장 ▼ | 부채·SPV·ABS 의존 확대 — 스프레드 확대 시 급랭 (EWI `credit_spread` 연계) |
+| 1 | 외부 자금조달 (HY OAS·사모신용·ABS) | 0~2분기 | 중립 ▲ | HY OAS 271bp 역사적 저점권(2026-08-12)·AI 데이터센터 채권 프리미엄이 광의 HY 대비 거의 0으로 압축 — 부채·SPV·ABS 의존 자체는 잔존하나 스프레드 확대 신호 없음 (EWI `credit_spread` 연계, 2026-08-18 갱신) |
 | 2→이익 | **AI 기업 매출·이익 (OpenAI·Anthropic·xAI·Google)** | 12~18개월 | 중립 ▶ | 클라우드 AI 매출 구조 성장(Google Cloud +63%·Azure +40%·AWS +28%, Q1 2026)·"AI 수익 실현 시작" vs MIT 95% ROI 미실현·프런티어 랩 적자 지속 ([ai-demand-sustainability.md](ai-demand-sustainability.md)) — 하이퍼스케일러 capex의 최상류 |
 | 2→이익 | AI 단위 경제성 (토큰 원가 vs ARPU·구독 전환) | 12~24개월 | 중립 ▶ | 추론 효율 개선은 수요 촉진(추론 100배)과 단가 하락의 양날 — Bain: 수익성 충당에 $2조 매출 필요·$800B 갭 ([ai-compute-economics-gap.md](ai-compute-economics-gap.md)) |
 | 2→가이던스 | GPU 임대가 (수요 청산가) | 9~18개월 | 긴장 ▼ | H100 현물 $2~3/GPU·h 둔화(Vast.ai 실측) — neocloud 경제성→GPU 발주의 최선행 (EWI `gpu_rental` 연계) |
@@ -239,7 +239,7 @@ flowchart LR
 
 | depth | 요소 | 선행시차 | 판정 | 근거 |
 |---|---|---|---|---|
-| 1 | 계통 접속 큐·지연일수 | 12~36개월 | 긴장 ▼ | 접속 지연 확대 — 송전 증설 선진국 4~8년 ([energy-constraints.md](energy-constraints.md)) |
+| 1 | 계통 접속 큐·지연일수 | 12~36개월 | 임계 ▼ | 접속 지연 확대 — 송전 증설 선진국 4~8년 ([energy-constraints.md](energy-constraints.md)). **2026-08-18 갱신**: 텍사스주가 ERCOT 신규 DC 접속을 사실상 일시 동결(주지사 지시, 250~300개 프로젝트·약 200GW 감사 착수) — 큐 적체를 넘어 실제 처리 절차가 멈춘 최초 사례 |
 | 1 | 발전 COD 파이프라인 달성률 | 6~18개월 | 긴장 ▶ | 계획 프로젝트 ~20% 지연 위험(IEA) |
 | 1 | 허브 예비력·LMP | 0~3개월 | 중립 ▶ | 실시간 감시 축(EIA-930·PJM·ERCOT) — 현재 국지적 타이트 |
 | 2→접속 | 변압기·HV 케이블 리드타임 | 18~36개월 | 긴장 ▼ | 대기시간 최근 3년간 2배(IEA) — 접속 지연의 물리적 원인 |
@@ -251,7 +251,7 @@ flowchart LR
 | depth | 요소 | 선행시차 | 판정 | 근거 |
 |---|---|---|---|---|
 | 1 | N2/18A 선단 램프 진척 | 6~12개월 | 완화 ▲ | N2 2026말 ~10만 장/월 확대 경로 순항 ([../entities/tsmc.md](../entities/tsmc.md)) |
-| 1 | AI 배정 비율 (전통 수요와 캐파 경쟁) | 3~9개월 | 완화 ▶ | 스마트폰 -2.1% 약세 = AI 배정 여지 확대 — **교차 부호**: 수요 EWI에선 악재(전통 수요 약세), 병목엔 완화 |
+| 1 | AI 배정 비율 (전통 수요와 캐파 경쟁) | 3~9개월 | 완화 ▶ | 스마트폰 출하 2Q26 -11%(13년 만 최저)·2026 전망 -2.1%→-14% 추가 하향(2026-08-18 갱신) = AI 배정 여지 확대 — **교차 부호**: 수요 EWI에선 악재(전통 수요 약세 심화), 병목엔 완화 |
 | 2→램프 | ASML EUV/High-NA 출하·백로그 | 12~24개월 | 중립 ▶ | High-NA 2026말 HVM 요건 → 2027~28 고객 양산 삽입, 1Q26 장비 매출 로직 49:메모리 51 |
 | 2→램프 | 선단 수율 프록시 (N2·18A) | 6~12개월 | 중립 ▶ | 비공개 — **미지수**, 범위 관리 |
 | 2→배정 | 대만 집중·지정학 | 이벤트성 | 긴장 ▶ | AI 배정 선단 캐파의 70%가 대만(0.525/0.75) — 단일 충격점, 미국 분산은 2028+ |
@@ -260,10 +260,10 @@ flowchart LR
 
 | depth | 요소 | 선행시차 | 판정 | 근거 |
 |---|---|---|---|---|
-| 1 | CoWoS 가동률·증설 | 3~9개월 | 긴장 ▶ | 2025 두 배 증설에도 "still fully loaded" (EWI `cowos` 연계) |
+| 1 | CoWoS 가동률·증설 | 3~9개월 | 긴장 ▲ | 2025 두 배 증설에도 "still fully loaded" (EWI `cowos` 연계). **2026-08-18 갱신**: SK하이닉스가 HBM4 램프를 자발적으로 1개 분기 연기(HBM3E 잔존 수요 우선, 일부 캐파 DDR5 재배정)하고 NVIDIA가 Rubin Ultra 메모리 사양을 최대 1TB에서 최소 192GB까지 하향 검토 — 수요측 자율 조정으로 단기 패키징 수요압 일부 완화 |
 | 1 | 신규 후공정 사이트 진척 | 12~30개월 | 중립 ▲ | Amkor AZ 2028 초·SK 인디애나 2028 말·TSMC AZ 2029 전 — 일정 진행 |
 | 2→가동률 | 기판·인터포저 (ABF) | 6~18개월 | 긴장 ▶ | 2.5D 부족의 연쇄 병목(TrendForce) — 2027부터 완화 전망 |
-| 2→가동률 | HBM 적층·테스트 수율 (TSV/KGD·16-Hi) | 6~12개월 | 긴장 ▼ | HBM4 16-Hi 전환 난도 상승(Micron 자격 이슈 등) — **미지수** 플래그 |
+| 2→가동률 | HBM 적층·테스트 수율 (TSV/KGD·16-Hi) | 6~12개월 | 중립 ▲ | HBM4 16-Hi 전환 난도 상승(Micron 자격 이슈 등) — **미지수** 플래그. **2026-08-18 갱신**: 삼성 HBM4 수율(마이크로범프 경로) 2월 양산 개시(<60%) 대비 약 80%로 개선 확인 — 하이브리드본딩 정체는 잔존하나 대체 경로가 작동 중 |
 | 2→사이트 | HBM 세대 전환 믹스 (HBM4→4E 램프) | 6~12개월 | 중립 ▶ | 세대 전환기 유효 산출 일시 감소 — 3사 IR 추적 |
 
 ### 종합 판독 (2026-06-13)
@@ -348,6 +348,36 @@ flowchart LR
 - **DRAM 가격 상승 감속 조짐(조기경보 후보)**: TrendForce(2026-07-03, 최신) Q3 2026 범용 DRAM 계약가 전망 **+13~18% QoQ**로 Q2(+58~63%) 대비 큰 폭 감속 — PC/스마트폰 구매력 한계·고기저 효과가 주 원인, 서버향은 에이전틱 AI 수요로 견조. Jefferies는 여전히 Q3 +40~50%를 전망(스팟·HBM 포함 범위 차이로 추정) — **범용 DRAM 계약가 축의 첫 감속 신호로 [demand-inflection-ewi.md](demand-inflection-ewi.md) 모니터링 대상에 추가**.
 - **반독점 소송 신규 리스크**: 2026-06-25 삼성·SK하이닉스·Micron 대상 미국 집단소송 제기(HBM 전환 명목 범용 DRAM 공급 제한·가격 담합 주장) — 병목 모델 자체의 수급 축을 바꾸진 않으나 **CAPEX/ROI·가격 결정 관련 규제·평판 리스크**로 별도 모니터링 필요 ([dram-antitrust-litigation.md](dram-antitrust-litigation.md) 신설).
 
+---
+
+### 종합 판독 (2026-08-18)
+
+#### 제약지수 업데이트 (2026-08-18, 이전 2026-07-04 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 72 | **75** | **▲ +3** | ERCOT 신규 데이터센터 접속 **사실상 일시 동결**(주지사 지시로 250~300개 프로젝트·약 200GW 감사 착수, 큐 474GW·90%가 DC) + SemiAnalysis "PJM 용량경매 모델링 결함으로 $120억 낭비, 재발 위험" 지적(08-16) + 지멘스에너지 그리드 백로그 사상최고 €510억 |
+| **CAPEX/ROI** | 40 | **39** | **▼ −1** | 신규 하이퍼스케일러 가이던스 갱신 없음(7월 실적 반영분이 최신 유지) + 일반 HY 스프레드 271bp 역사적 저점권·AI 데이터센터 채권 프리미엄이 광의 HY 대비 거의 0으로 추가 압축(자금조달 긴장 추가 완화) |
+| **파운드리** | 50 | **50** | **— 0** | TSMC N2/A16·ASML 관련 이번 구간(08-11~08-18) 신규 뉴스 없음 — 07-04 수준(N2 램프 순항·High-NA 2029 연기) 유지. HBM4 원가 $31~32/GB(TrendForce 08-13)는 파운드리 캐파가 아닌 HBM 가격 정보로 별도 트래킹 |
+| **패키징** | 67 | **65** | **▼ −2** | 삼성 HBM4 수율 <60%→**약 80%**로 개선(마이크로범프 경로, 08-10) + **SK하이닉스가 HBM4 램프를 스스로 연기**(HBM3E 잔존 수요 우선, 일부 캐파 DDR5 재배정, 08-13)해 단기 패키징 수요압 완화 + NVIDIA가 Rubin Ultra 메모리 사양을 최대 1TB에서 **최소 192GB까지 하향 검토**(HBM4E 인증 불확실성·공급부족 대응, 08-04/07) — CoWoS WPM·CoPoS 자체 진척 뉴스는 이번 구간 없음(07-04 수준 유지) |
+
+**전력: 3개 분기 연속 재상승(70→72→75) 유지, 이번엔 큐 성장이 아니라 텍사스주가 실제로 접속 처리를 멈추는 행정 조치로 격상 — 4대 병목 중 유일하게 "정책적 정지" 단계 진입. 패키징은 07-04 이후 최초로 뚜렷한 완화(수율 개선 + 최대 HBM 공급사의 자발적 램프 감속 + NVIDIA 수요측 사양 하향 검토가 동시에 겹침). 하방 위험 순서 변경: 전력이 CAPEX/ROI를 근소하게 상회할 가능성 — 전력 75 > CAPEX 39, 종전 "CAPEX/ROI > 전력" 서열이 이번 갱신에서 처음 역전.**
+
+#### 2026-08-18 핵심 신규 신호
+
+- **ERCOT 데이터센터 접속 일시 동결**: 텍사스 주지사 Abbott 2026-08-03 지시로 PUCT·ERCOT이 "Batch Zero" 프로젝트 전수 감사 착수 전까지 진행을 보류. 2026-08-14 공개된 감사 범위는 약 250~300개 프로젝트·**약 200GW**(ERCOT 역대 최대 피크 수요의 2배 이상). 전체 큐는 474GW(90%가 DC). PUCT 공개회의 2026-08-20 예정 — **큐 적체가 아니라 실제 처리 절차가 멈춘 최초 사례**로, 접속지연(d1 `interconnect`) 판정을 '긴장'을 넘어 '임계' 상태를 재확인·구체화 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+- **SemiAnalysis: PJM 용량경매 모델링 결함**(2026-08-16) — PJM Reserve Requirement Study가 실제 발전설비 신뢰도보다 낮게 산정해 2025/26·2026/27 경매 청산가를 왜곡시켰다고 지적, 예정된 Reliability Backstop Auction이 같은 오류를 반복하면 요금·투자 신호가 재차 왜곡될 위험. 전력 병목의 "정책·시장설계 리스크" 축을 새로 노출.
+- **삼성 HBM4 수율 80%·SK하이닉스 HBM4 램프 자발적 감속**: 삼성 수율이 2월 양산 개시(<60%) 대비 큰 폭 개선된 한편, 최대 HBM 공급자 SK하이닉스는 오히려 HBM3E→HBM4 전환을 1개 분기 늦추고 일부 캐파를 범용 DDR5로 돌림(HBM3E 잔존 수요 우선). 공급사 스스로 램프를 늦추는 것은 **패키징 병목의 단기 완화** 신호이자, HBM 공급이 "빨리 늘리기"보다 "믹스 최적화" 국면에 들어섰다는 방증 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md)).
+- **NVIDIA Rubin Ultra 메모리 사양 하향 검토**: HBM4E 인증 불확실성과 전 공급사 공통 부족 리스크에 대응해 계획 대비(최대 1TB) 대폭 낮춘 최소 192GB 구성, 8-Hi HBM4E·HBM4 대체 사양을 병행 테스트 — **수요측이 병목을 인지하고 스스로 사양을 낮추는 최초의 구체 사례**. 패키징·HBM 병목의 하방 압력을 일부 흡수하지만, 동시에 "실현 수요가 잠재 수요(U)보다 낮게 재설정될 수 있다"는 새 리스크.
+- **HBM4 가격 데이터 신규**: NVIDIA GPU향 HBM4 원가 $31~32/GB(HBM3E 대비 약 2배), 비NVIDIA/ASIC향 $35~36/GB(TrendForce 08-13) — 병목이 물량보다 가격에서 먼저 나타난다는 기존 결론(§3 수급차 매트릭스)과 정합하는 실측치.
+- **CAPEX/파운드리는 이번 구간 신규 이벤트 없음** — 7월 말 실적 시즌 이후 소강. 일반 신용 스프레드 축소(HY OAS 271bp)만 CAPEX 지수를 소폭 추가 완화.
+
+- **전력**: 지수 **3 상향(72→75)** — 상류(d2 변압기·BTM 공급망, 이미 '임계')·중류(d1 접속 큐) 모두 실물 조치(ERCOT 동결)로 악화 재확인. `interconnect` 드라이버 note를 ERCOT 감사 사실로 갱신, 판정 '임계' 유지·근거 구체화. **4대 병목 중 유일하게 3개 분기 연속 상승, 이번 갱신에서 최초로 최상위 병목으로 부상**.
+- **CAPEX**: 지수 **1 하향(40→39)** — 신규 가이던스는 없으나 자금조달 여건(d1 `financing`)이 추가 완화(HY OAS 저점·AI DC 채권 프리미엄 소멸) — 판정을 '긴장'에서 '중립'으로 하향, trend를 '악화'에서 '개선'으로 전환.
+- **파운드리**: 지수 **불변(50)** — 이번 구간 TSMC·ASML 신규 정보 없음. d2 지정학(대만 집중) 리스크는 잔존.
+- **패키징**: 지수 **2 하향(67→65)** — d2 `stack_yield` 판정을 '긴장/악화'에서 '중립/개선'으로 전환(마이크로범프 경로 수율 80% 확인 — 하이브리드본딩 정체는 여전하나 대체 경로가 작동), d1 `cowos_util` note에 SK하이닉스 램프 감속·NVIDIA 사양 하향을 수요측 완화 요인으로 추가.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -363,3 +393,5 @@ flowchart LR
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 병목 제약지수 갱신 데이터 (PJM 개편 큐·ERCOT 4배 급증·변압기 리드타임·CAPEX 추가 상향·ASML High-NA 연기·HBM4 마이크로범프 결정·DRAM 가격 감속 조짐)
+- [sources/articles/august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) — 2026-08-18 병목 제약지수 갱신 데이터 (ERCOT 접속 일시 동결·SemiAnalysis PJM 경매 모델링 결함·HBM4 가격 $31~32/GB·삼성 수율 80%·NAND Q2 매출 +77% QoQ·스마트폰 -14% 하향)
+- [sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) — 2026-08-18 기업별 동향 (SK하이닉스 나스닥 상장·HBM4 램프 자발적 감속, 삼성 베트남 레거시 이전 검토, NVIDIA Rubin Ultra 메모리 하향 검토, CXMT IPO 폭등)

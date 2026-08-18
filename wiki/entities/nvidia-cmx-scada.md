@@ -173,3 +173,23 @@ SCADA는 NVIDIA **"Storage-Next"** 이니셔티브의 소프트웨어 기반이�
 ### §2.5 재해석 — 두 트랙 구분
 
 - 본 페이지의 "위협 우세" 진단은 **SLC 초고 IOPS(SCADA Storage-Next) 트랙에 한정해 유지**된다 — 그 트랙의 SK(AI-N P)·Kioxia(1억 IOPS)·Micron(9650 레퍼런스) 선점 구도는 불변. 반면 **CMX(TLC 대용량)·Vera Rubin 메인 스토리지·개인용 AI 기기 트랙에서는 삼성이 선두 공급 지위**를 확보했다. "AI SSD에서 삼성 후행"이라는 단일 서술은 이제 부정확하며, 트랙별로 갈라 읽어야 한다.
+
+---
+
+## [Update 2026-08-18] FMS 2026 — cuFile 오픈소스화·SCADA 2.3억 IOPS 재시연·CMX BlueField-4/STX
+
+> 근거: [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §4 (NVIDIA FMS 2026 발표 종합).
+
+### cuFile 오픈소스화
+
+- FMS 2026(2026년 8월)에서 NVIDIA가 **cuFile을 Google·Intel·Meta와 공동으로 오픈소스화** — GPU 주도 스토리지 접근(GPUDirect Storage 계열) 생태계를 업계 전반으로 확대하는 신호.
+
+### SCADA — Wiwynn 44대 Gen6 SSD로 2.3억 IOPS 재시연
+
+- BlueField-4/STX 기반 SCADA로 Wiwynn이 **PCIe Gen6 SSD 44대**를 사용해 **초당 2.3억 회 랜덤읽기(IOPS)**를 시연 — 위 §2.2의 "2025년 11월 SC'25 Micron 9650×44개, 2.3억 IOPS" 성과가 2026년 FMS에서도 재확인·재시연됐다. 이번 시연은 Wiwynn 서버 구성 기준으로 보도되어 개별 SSD 벤더명은 원문에 명시되지 않음 — Micron 9650이 동일 구성인지는 후속 확인 필요.
+
+### CMX — BlueField-4/STX 기반 장문맥 추론 컨텍스트 메모리 계층 재확인
+
+- NVIDIA는 FMS 2026에서 **CMX(장문맥 추론용 컨텍스트 메모리 스토리지 계층)**를 BlueField-4/STX 기반으로 다시 선보였다 — §1의 G3.5 계층 구조·BlueField-4 DPU 의존성이 FMS 2026 시점에도 유효함을 재확인하는 신호. §1.3·[Update 2026-08-16]에서 다룬 PM1763 양산·CMX 물량 구조(2026년 3,500만 TB → 2027년 1억+ TB)의 하드웨어 기반이 이 BlueField-4/STX 축임을 뒷받침.
+
+**출처**: [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §4

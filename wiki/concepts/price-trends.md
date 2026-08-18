@@ -230,3 +230,8 @@ Micron FY26 Q3(2026-05-28 종료, 2026-06-24 발표) 실적이 가격 주도 성
 - TrendForce(2026-07-03, 최신)는 Q3 2026 범용 DRAM 계약가를 QoQ **+13~18%**로 전망한다 — Q2 2026 실적(+58~63%) 대비 대폭 감속이며, PC·스마트폰의 구매력 한계와 고기저 효과가 주 요인이다. 서버향 수요는 에이전틱 AI로 견조함을 유지한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - 이 감속 신호는 [demand-inflection-ewi.md](demand-inflection-ewi.md)의 조기경보(EWI) 후보로 교차 링크할 필요가 있다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - Jefferies는 이와 배치되게 Q3 2026 +40~50%·Q4 2026 +30~40% QoQ를 여전히 전망한다 — TrendForce의 "범용 DRAM 계약가" 특정치와 달리 스팟·HBM을 포함한 전반적 메모리 가격 기준일 가능성이 있어 범위 차이로 병기한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+## 업데이트 (2026-08-18)
+
+- **DRAM Q3 2026 계약가 전망 불변 확인**: TrendForce 2026-08-12 DRAM Market Bulletin·스팟 업데이트 시점에도 Q3 2026 범용 DRAM 계약가 **+13~18% QoQ**(07-09 발표치) 전망 자체는 변경되지 않았다 — 08-12 갱신은 스팟시장 세부(**DDR4 스팟 +0.93%**, "거래 부진")만 다뤘을 뿐, 분기 계약가 전망의 수정은 아니다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+- **HBM4 가격 신규**: TrendForce(2026-08-13) — NVIDIA GPU向 HBM4 원가 **$31~32/GB**로 HBM3E($17~18/GB) 대비 약 2배. 비NVIDIA/ASIC向 HBM4는 **$35~36/GB**까지 형성 가능 — 상세는 [hbm-market.md](hbm-market.md) [업데이트 2026-08-18] 참조 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).

@@ -17,8 +17,9 @@
 | Q3 2025 | 32.6% | 33.2% | 25.7% | 8.5% |
 | Q4 2025 | **36.5%** (1위 탈환) | 32.1% | 22.4% | — |
 | Q1 2026 | **38.5%** | 28.8% | 22.4% | CXMT 7% |
+| Q2 2026 | **39%** | 26% | 25% | CXMT 7% |
 
-- 출처: TrendForce (2025-11-26), S&P Global Market Intelligence, Korea Herald / Q4 2025~Q1 2026은 [memory-cycle-storyline-r3-2026-08-12.md](../../sources/raw-notes/memory-cycle-storyline-r3-2026-08-12.md) (과제팀 집계, TrendForce·Counterpoint 기준 병기)
+- 출처: TrendForce (2025-11-26), S&P Global Market Intelligence, Korea Herald / Q4 2025~Q1 2026은 [memory-cycle-storyline-r3-2026-08-12.md](../../sources/raw-notes/memory-cycle-storyline-r3-2026-08-12.md) (과제팀 집계, TrendForce·Counterpoint 기준 병기) / Q2 2026은 Counterpoint(2026-08-04 발행) ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md))
 - 비고: Q3 2025 기타에 CXMT 등 중국 업체 포함 시작
 - ⚠️ **CXMT 수치의 기준 차이** — 중국 업체는 TrendForce 상위 공급사 순위표에 포함되지 않아 출처별로 갈린다. Q3 2025의 경우 본 표의 "기타 8.5%"와 과제팀 자료의 "CXMT 5%"가 그 차이다. 단일 수치로 인용하지 말 것
 - **독해**: 2025 Q3의 32.6%는 바닥이었고 Q4에 1위를 되찾아 Q1 2026에 38.5%까지 회복했다. 3사 사이를 오가는 **순환 점유율**은 원가·기술(1겹)을 회복하면 되찾아지지만, 중국으로 넘어간 **유출 점유율**은 돌아오지 않고 파이 자체를 줄인다 — 2013~2019년 3사 약 94%였던 DRAM은 현재 CXMT·난야·윈본드를 포함해 실질 6사 구도다 ([memory-cycle-storyline-r3-2026-08-12.md](../../sources/raw-notes/memory-cycle-storyline-r3-2026-08-12.md))
@@ -245,3 +246,7 @@ Counterpoint Research (2026-01-29, Jeongku Choi):
 
 - Counterpoint Research의 Q1 2026 확정 DRAM/HBM 시장점유율 데이터: SK하이닉스 HBM ~58%·삼성전자 ~32% — Counterpoint 발행물은 이를 "SK하이닉스가 지속되는 HBM 수요 속 역대 최초로 HBM 1위 유지"로 평가한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 4월 잠정치 대비 확정치 차이의 상세 병기는 [hbm-market.md](hbm-market.md) [Update 2026-07-04] 참조.
 - 2026-06-25 삼성전자·SK하이닉스·Micron을 상대로 한 반독점 집단소송이 제기됐다(N.D. Cal.) — HBM 전환을 명목으로 범용 DRAM 공급을 인위적으로 제한하고 가격을 담합했다는 주장이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세는 신규 페이지 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조(다른 에이전트가 작성 중).
+
+## 업데이트 (2026-08-18)
+
+- Counterpoint(2026-08-04 발행) 기준 **DRAM 매출 점유율 Q2 2026**: **삼성전자 39% · SK하이닉스 26% · Micron 25% · CXMT 7%** — SK하이닉스와 Micron의 격차가 **1%p로 축소**됐다. Q1 2026(28.8% vs 22.4%, 6.4%p 격차) 대비 SK하이닉스의 2위 자리가 확연히 흔들리는 신호다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).

@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-08-18
+sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/august-2026-market-update-2026-08-18.md, sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md]
 ---
 
 # Samsung Electronics — 메모리사업부 (DS 부문)
@@ -298,3 +298,29 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - **한국 800조 원 클러스터 투자 환영** — "비중국 세계의 경제·전략적 이해에 부합." 기존 위키 수집(2026-06-29 발표, 삼성·SK 각 신규 팹 2개)에 대한 외부 지정학 전문가의 긍정 평가.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §7, §9
+
+---
+
+## [Update 2026-08-18] 베트남 후공정 이전 검토·상반기 R&D+CAPEX 사상 최대·HBM4 수율 80%·주가 조정·반독점 소송 근황
+
+### 레거시 D램·낸드 후공정 베트남 이전 검토 — "HBM은 한국, 레거시는 베트남"
+
+- 2026-08-14/15 보도: 삼성이 천안·온양의 레거시 D램·낸드 패키징·테스트 공정을 베트남 타이응우옌 신설 공장(약 $15억 투자, 2027년 11월 양산 목표)으로 이전하는 방안을 검토 중이다. 목적은 국내 라인의 HBM 전용화 — **"HBM은 한국, 레거시는 베트남" 분업** 구도 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §1).
+
+### 2026 상반기 R&D+CAPEX 사상 최대
+
+- 반도체 R&D+설비투자 합산이 **55조 원+**(약 $389억, R&D **+51.5% YoY**)로 상반기 사상 최대를 기록 — 2026년 전체 목표(2026-03 발표 110조 원, 약 $733억) 궤도 진행 중 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §1).
+
+### HBM4 수율 약 80%로 상승
+
+- TrendForce(2026-08-10): 2월 양산 개시 시점 <60%였던 삼성 HBM4 수율이 **약 80%**로 개선 — NVIDIA 수요가 4nm 라인을 포화시키자 삼성이 5nm HBM4 베이스다이 옵션을 병행 제안 중이라는 정황도 함께 보도됨 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) §3, [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §1). 위 "1c nm 수율 50~70%"와는 별개 지표(HBM4 완제품 수율 vs 코어 다이 수율)이므로 구분 필요.
+
+### 주가 조정과 주주환원 압박
+
+- 삼성 주가는 2026-06-25 고점 대비 2026-08-03까지 약 **-33% 하락** 후 부분 반등 — 삼성·SK하이닉스·Micron 메모리 3사 모두 동반한 **-30~33%대 "베어마켓" 조정**으로, 실적·수급 펀더멘털 변화라기보다 밸류에이션 조정 국면으로 평가됨. 소액주주 플랫폼 액트(ACT)는 임시주총 소집과 약 **320억 달러(약 43조 원) 규모 자사주 매입**을 요구 중 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §1, [august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) §5).
+
+### 반독점 집단소송 — 초기 절차 단계 지속
+
+- 2026-06-25 제소된 Garciaguirre v. Samsung 등(N.D. Cal., 3:26-cv-06345) 반독점 집단소송은 **2026-08-08 기준 여전히 초기 절차 단계** — 기각신청·답변·판결 없음, 08-11~08-18 구간 신규 제출도 없음. 위 [업데이트 2026-07-04] "반독점 집단소송 — 삼성 피고 명시" 섹션의 후속 근황 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §1).
+
+**출처**: [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §1, [august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) §3, §5

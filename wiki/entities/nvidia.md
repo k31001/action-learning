@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (NVIDIA IR / 기술 블로그, UBS, BofA, TrendForce, theCUBE, JLL, CNBC)]
+last_reviewed: 2026-08-18
+sources: [sources/README.md (NVIDIA IR / 기술 블로그, UBS, BofA, TrendForce, theCUBE, JLL, CNBC), sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md]
 ---
 
 # NVIDIA Corporation
@@ -124,3 +124,17 @@ sources: [sources/README.md (NVIDIA IR / 기술 블로그, UBS, BofA, TrendForce
 - VR NVL72 랙 단위 서버 DRAM 수요 폭증
 
 **출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md), [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)
+
+---
+
+## [Update 2026-08-18] Rubin Ultra 메모리 구성 축소 검토
+
+### 배경 — HBM4E 인증 불확실성·전 공급사 공급 부족 리스크
+
+- NVIDIA가 Rubin Ultra의 메모리 구성을 원래 계획(HBM4E 최대 1TB)보다 낮춘 **최소 192GB** 옵션까지 테스트 중이며, **8-Hi HBM4E·12-Hi/8-Hi HBM4** 대체 사양도 함께 검증 중이다(2026-08-04/07 보도). TrendForce는 DRAM 타이트 기조가 2027년까지 지속될 것으로 전망 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §4).
+
+### 함의 — HBM 수요측 하향 조정 신호
+
+- 공급 부족·인증 리스크에 대한 **수요측 대응**. NVIDIA조차 원래 계획한 HBM4E 최대 용량을 낮출 수 있다는 것은, 위 [Update 2026-05-19]의 "Rubin → Rubin Ultra HBM 용량 추가 약 4배" 전망에 하향 리스크가 있음을 시사 — Samsung·SK하이닉스·Micron 3사의 HBM4E 캐파 투자 계획도 이 불확실성을 반영해 재검토할 필요가 있다.
+
+**출처**: [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §4

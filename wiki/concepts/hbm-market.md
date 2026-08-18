@@ -323,3 +323,24 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 ### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
 
 - SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## 업데이트 (2026-08-18)
+
+### HBM4 원가/가격 — NVIDIA향 $31~32/GB, 비NVIDIA/ASIC향 최대 $35~36/GB
+
+- TrendForce(2026-08-13): **NVIDIA GPU향 HBM4 원가는 $31~32/GB**로, HBM3E($17~18/GB) 대비 **약 2배**다. **비NVIDIA/ASIC향 HBM4는 $35~36/GB**까지 형성될 수 있다 — 고객·용도별 가격 차별화가 세대 전환과 함께 뚜렷해지는 신호다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+- 같은 자료에서 **삼성 Q3 2026 HBM4 매출은 QoQ 3배 초과**, **2026년 하반기 HBM4 매출 비중은 삼성 전체 HBM 매출의 60% 초과**로 전망된다 — HBM3E→HBM4 매출 구조 전환이 하반기에 본격화됨을 시사한다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+
+### 삼성 HBM4 수율 약 80%로 상승
+
+- TrendForce(2026-08-10): 삼성 HBM4 수율이 **약 80%**로 상승했다 — 2월 양산 개시 시점의 **60% 미만**에서 빠르게 개선된 수치다. Vera Rubin 공급 경쟁이 격화되는 국면에서 나온 개선이다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+
+### SK하이닉스 — HBM4 램프 의도적 감속
+
+- TrendForce·TechPowerUp(2026-08-13): SK하이닉스가 **HBM3E→HBM4 라인 전환을 2분기에서 3분기로 연기**하고, 일부 HBM4 예정 캐파를 범용 DDR5로 재배정했다 — 여전히 강한 Blackwell/HBM3E 수요를 우선 소화하기 위한 의도적 감속이다. 최대 HBM 공급자가 스스로 램프 속도를 늦추는 것은 단기 수요 배분 최적화이자 간접적인 HBM 공급 완화 신호로 해석된다 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md)).
+
+### NVIDIA — Rubin Ultra 메모리 사양 축소 검토(신규 수요측 신호)
+
+- TrendForce(2026-08-04)·Seoul Economic Daily(2026-08-07)·Tom's Hardware: NVIDIA가 HBM4E 인증 불확실성과 전 공급사 공통의 공급 부족 리스크에 대응해, Rubin Ultra의 메모리 구성을 원래 계획(HBM4E 최대 1TB)보다 낮춘 **최소 192GB** 옵션까지 테스트 중이다. 8-Hi HBM4E·12-Hi/8-Hi HBM4 대체 사양도 함께 검증 중이며, TrendForce는 DRAM 타이트 기조가 2027년까지 지속될 것으로 전망한다 — 공급 부족·인증 리스크에 대한 **수요측 하향 조정** 신호로, 위 삼성 HBM4 수율 개선·SK하이닉스 감속과 함께 읽어야 한다 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md)).

@@ -394,3 +394,22 @@ Counterpoint Research (2026-01-29):
 - 2026-06-29 발표(약 800조 원/$518B) — SK하이닉스 **신규 팹 2개** 건설 계획 포함(삼성전자도 동일하게 신규 팹 2개)([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+---
+
+## 업데이트 (2026-08-18) — 나스닥 ADR 상장 완료·Q2 실적 확정·HBM4 램프 의도적 감속
+
+### 나스닥 ADR 상장 완료 (2026-07-10)
+
+- 2026-07-10 나스닥 상장이 실제로 개시됐다 — 최대 약 **$290억** 규모 공모로, 역대 최대급 ADR(American Depositary Receipt) 공모 중 하나로 보도됨. 위 [업데이트 2026-07-04]에서 예고된 상장(Form F-1 수정, 목표 조달액 ~$294억)이 확정치와 대체로 정합하며 완료됨 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §2).
+
+### Q2 2026 실적 확정 — 영업이익률 76% 사상 최대, 컨센서스는 소폭 미달
+
+- 매출 **79.3조 원(+257% YoY)**, 영업이익 **60.5조 원(+557% YoY)**, 영업이익률 **76%로 사상 최대** — 다만 시장 컨센서스는 소폭 미달 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §2).
+
+### HBM4 램프 의도적 감속 — 신규/중요 신호
+
+- SK하이닉스가 **HBM3E→HBM4 라인 전환을 2분기에서 3분기로 연기**했다 — 여전히 강한 Blackwell 수요에 대응해 HBM3E 캐파를 유지하는 한편, 일부 HBM4 예정 캐파를 범용 DDR5로 재배정. **300층+(10세대, V10) 낸드 개발**도 병행 중 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §2, [august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) §5).
+- 함의: 최대 HBM 공급자 스스로가 램프 속도를 늦추는 것은 단기 수요 배분 최적화(HBM3E 잔존 수요 우선)이자 간접적 공급 완화 신호 — 위 "HBM 생산 캐파 투자 전략" 섹션의 "캐파 증설이 매출 성장의 핵심 제약 요인"이라는 종전 진단에 **일시적 반례**가 될 수 있어 후속 분기 모니터링 필요.
+
+**출처**: [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §2

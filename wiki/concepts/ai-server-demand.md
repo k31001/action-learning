@@ -187,7 +187,7 @@ Counterpoint Research (2025-11-19, MS Hwang + Ivan Lam):
 
 - 종래 분리: 서버=DDR5/HBM, 모바일=LPDDR
 - NVIDIA 피벗 이후: **AI 서버까지 LPDDR 흡수** → 모바일 OEM과 직접 캐파 경쟁
-- 스마트폰 시장 -2.1% 수축([steep/economy.md](../steep/economy.md))의 주요 원인 중 하나
+- 스마트폰 시장 -2.1% 수축([steep/economy.md](../steep/economy.md))의 주요 원인 중 하나 — **⚠️ 이 -2.1% 수치는 이후 -14%로 하향 조정됐다. 아래 [Update 2026-08-18] 참조, 대체된(superseded) 수치로 취급할 것**
 
 ### Samsung 함의
 
@@ -207,3 +207,13 @@ Counterpoint Research (2025-11-19, MS Hwang + Ivan Lam):
 - 2026~2030 출하 CAGR: 기준 11.8% (전력 하방 5.4%·CAPEX 하방 1.7%·상방 ~20%).
 
 **출처**: [deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md)
+
+## [Update 2026-08-18] Counterpoint — 스마트폰 출하 Q2 2026 -11% YoY, 13년來 최저 + 연간 전망 -2.1%→-14% 대폭 하향
+
+Counterpoint Research: **글로벌 스마트폰 출하 Q2 2026 -11% YoY** — **13년 만에 최저 Q2 출하량**을 기록했다. 메모리 품귀로 인한 기기 BoM(Bill of Materials) 원가 상승이 원인으로 지목된다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+
+- **삼성 24% 점유** — Apple과 함께 **YoY 성장한 유이(唯二)한 벤더**. Xiaomi·OPPO·vivo는 두 자릿수 감소를 기록했다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+- **2026 연간 전망이 기존 -2.1%에서 -14%로 대폭 하향**됐다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)) — 위 [Update 2026-05-25] 섹션 및 [steep/economy.md](../steep/economy.md)에서 인용해 온 **-2.1% 수치는 이 -14%로 대체(superseded)됐다**. 메모리 쇼티지의 수요 파급이 당초 예상보다 훨씬 가혹함을 시사하는 상향된 하향 조정이다.
+- **교차 신호**: 메모리 쇼티지가 스마트폰 BoM을 밀어올려 소비자 수요를 위축시키는 한편(부정적), 스마트폰 생산 위축은 파운드리·조립 캐파의 AI向 배정 여지를 넓힐 수 있다(긍정적) — 두 방향이 동시에 작동한다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+
+**출처**: [august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)

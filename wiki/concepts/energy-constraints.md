@@ -181,3 +181,28 @@
 - **냉각-성능 결합**: 전면 액체냉각(칩·케이블·변압기까지), "칩을 뜨겁게 돌릴수록 메모리 대역폭·FLOPS↑" — 냉각 효율이 인텔리전스 생산량과 직결. 물은 폐루프 재활용으로 소비 미미.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+## [Update 2026-08-18] 텍사스 ERCOT 사실상 접속 동결(감사 대상)·SemiAnalysis PJM 경매 결함 지적·지멘스 백로그 사상 최고
+
+### ERCOT — 신규 데이터센터 접속 일시 동결(감사 착수)
+
+텍사스 주지사 Abbott가 2026-08-03 지시로 PUCT·ERCOT이 "Batch Zero" 데이터센터 프로젝트를 전수 감사하기 전까지 접속 진행을 보류시켰다 — 지금까지의 "큐 증가" 수준을 넘어선 **실제 접속 처리의 단기 정지**라는 점에서 새로운 국면이다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+
+- 2026-08-14 그리드 당국이 PUCT에 보고한 감사 범위: **약 250~300개 프로젝트, 미래 수요 약 200GW**(ERCOT 역대 최대 피크 수요의 2배 이상).
+- 전체 그리드 접속 큐는 **474GW**(90%가 데이터센터).
+- PUCT 공개회의는 **2026-08-20** 예정이며, ERCOT은 "good cause exception"을 요청한 상태다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+- 위 [Update 2026-07-04] "텍사스 PUCT 대형부하 정책 2026-07-09 표결 예정" 이후의 후속 전개다 — 정책 논의가 실제 프로젝트 감사·처리 보류로 구체화됐다.
+
+### SemiAnalysis — PJM 용량경매 모델링 결함, "$120억 낭비·재발 위험"
+
+SemiAnalysis(2026-08-16 발행, "$12B of US ratepayers' money wasted on a modeling mistake and PJM wants to do it again"): PJM의 **Reserve Requirement Study가 2025/26·2026/27 경매에서 필요 용량을 과대 추정**(실제 발전설비 신뢰도가 모델보다 높음)해 청산가를 왜곡시켰다고 지적한다. 예정된 **Reliability Backstop Auction이 동일 오류를 반복**하면 요금자 부담이 재차 확대될 위험을 경고한다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+
+### 지멘스에너지 그리드 백로그 — 사상 최고 €510억
+
+지멘스에너지의 그리드 오더 백로그가 변압기 수요로 **사상 최고 €510억**을 기록했다(2026-08-09) — 위 [Update 2026-07-04]의 변압기 리드타임 최대 5년 진단과 정합하며, 완화 신호는 아직 없다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+
+### 자금조달 여건 — 긴장 신호 없음(대조)
+
+일반 하이일드 신용스프레드(HY OAS)는 271bp(2026-08-12)로 역사적 저점권을 유지하고 있으며, AI 데이터센터 채권 스프레드도 광의 하이일드 대비 프리미엄이 거의 0으로 축소됐다(2026-08-06 자료) — 전력·그리드 물리적 병목은 심화되는 반면, 이를 뒷받침하는 자금조달 여건 자체에는 긴장 신호가 없다는 대조가 확인된다 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md)).
+
+**출처**: [august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) §1

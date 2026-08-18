@@ -474,3 +474,25 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 - 2026-06-25 N.D. Cal. 제소 건에 Micron도 삼성전자·SK하이닉스와 함께 피고로 포함 — HBM 전환 명목 하 범용 DRAM 공급 제한·가격 담합 주장([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세 내용은 신규 개념 페이지 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §3, §4
+
+---
+
+## 업데이트 (2026-08-18) — Q4 FY26 가이던스 상향·HBM4E "커스텀 시대"·Idaho/NY 팹 진척·NAND 3위 등극
+
+### Q4 FY2026 실적 발표 예정 + 가이던스 상향
+
+- Q4 FY2026 실적 발표는 **2026-09-23** 예정. 2026-08-11 가이던스 상향: **EPS $2.78~2.92 / 매출 $111~113억** ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §3).
+
+### HBM4E = "커스텀 HBM 시대의 시작" — Sumit Sadana(EVP)
+
+- KeyBanc 컨퍼런스(2026-08-12)에서 Micron EVP Sumit Sadana가 **HBM4E는 "커스텀 HBM 시대의 시작"**이라고 규정 — 램프업은 **2027년 예정**이며, 시장이 듀얼/단일 공급사 커스텀 계약 구조로 기울 가능성을 시사했다(정식 고객 인증은 아직 없음) ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §3).
+
+### Idaho/NY 팹 진척
+
+- Idaho Fab1 DRAM 출하는 **2027년** 목표로 순항 중 — "blowdown" 마일스톤을 2026년 봄 달성. NY 팹 착공은 **2026년 말** 예정. CHIPS Act 보조금 약 **$12억을 NY에서 Idaho로 재배정** — 위 [Update 2026-05-22] Bloomberg 인터뷰의 "Idaho 2027년 중반 첫 웨이퍼" 목표, 위 자본배분 표의 "2025년 자금 재배분 ~$12억" 항목과 정합하는 최신 근황 ([samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §3).
+
+### NAND 3위 등극 — Kioxia 추월
+
+- Q2 2026 Micron NAND 매출 **$118.5억(+99.2% QoQ)** — Kioxia($107.2억)를 제치고 Top5 NAND 벤더 중 **3위**로 등극. Top5 합산 NAND 매출은 $688.7억(+77% QoQ)로, AI 서버향 엔터프라이즈 SSD 수요·가격 인상이 견인 ([august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) §5).
+
+**출처**: [samsung-sk-micron-nvidia-china-update-2026-08-18.md](../../sources/articles/samsung-sk-micron-nvidia-china-update-2026-08-18.md) §3, [august-2026-market-update-2026-08-18.md](../../sources/articles/august-2026-market-update-2026-08-18.md) §5
