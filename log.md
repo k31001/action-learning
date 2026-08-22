@@ -1605,3 +1605,15 @@ index.md sources 섹션 3건 등록. 위키 페이지 반영은 제안서 확정
 **덱 신설**: `outputs/presentation/downturn-review.pptx` 6장 — S1 한 장 요약(타임라인+음영 / 산점도(버블=낙폭·색=발원) / 5행 표 / 인사이트 밴드) + Appendix A~E. 차트 자산 7종(`generate_downturn_assets.py`) + 덱 스크립트(`generate_downturn_review_pptx.py`), ssd-strategy 디자인 시스템 승계. LibreOffice 렌더 QA 3회전(표 셀·밴드·KPI 타일 줄바꿈 수정), validate PASS. `.gitignore` 커밋 예외 등록. 기획서 `downturn-review-outline.md`.
 
 **패치 v2.46.2** (KG 데이터 갱신 — wiki 링크 추가로 `knowledgeGraph.js` 재생성, 노드 103·엣지 545). index.md 3곳 등록, `npm run build` 검증. **건너뜀 사유**: storyline 3~7장 무변경(확률·DF 위치·전략 목록 불변 — 역사 기준선 추가는 서사 수정 불요), scenario-planning-report·slide-outline 무변경(SP-1 산출물), dashboard SP-2 데이터셋(downturnPlanning.js) 무변경(DT_* 스키마 밖의 참고 페이지), PPTX 기존 덱 재생성 불요.
+
+## [2026-08-22] ingest+build | 다운턴 복기를 전체 메모리(DRAM+NAND)로 확장 (v2.46.3)
+
+요청: "nand도 포함해야 전체 메모리 산업이 보일거야."
+
+**소스 신설**: `sources/raw-notes/nand-market-history-research-2026-08-22.md` — NAND 산업 연매출 2006~2025(앵커: 2007 $13.9B·2008 $12.0B -14%[IHS]·2018 $63.2B·2020 $55.1B·2021 $67.1B·2023 $36.7B -39.9%·2024 $67.4Bᵉ), 분기 전환점 10건(4Q16 +17.8% "공급 부족 최심"·4Q18 -16.8%·3Q22 -24.3%·2Q23 +7.4%·4Q25 +26.7%), 다운턴 5건 NAND 동행 판정, 도시바 요카이치 30% 감산(2012-07-24, 현물 31¢/GB → 2주 +20%). 미확인 6건 명시.
+
+**위키 갱신**: `downturn-history.md` — §1 타임라인 표를 DRAM/NAND/전체 3열로 재구성(전체 낙폭: DT08 -26%ᵉ·DT12 -19%ᵉ·DT16 +2%ᵉ·DT19 -34%ᵉ·DT23 -45%ᵉ), §2 비교표에 낙폭 전체·D·N 분리 + 속도 지표 DRAM 기준 명시, §3 프로필 5건에 NAND 동행 문단(DT16 = DRAM 단독 다운턴·DT23 = D·N 동일 -45% 완전 동조), §4 패턴 6 신설("NAND 완충 효과 소멸 — 다음 다운턴은 전체가 한 몸으로 떨어진다", RS2 연결).
+
+**덱 갱신**: 타임라인·미니 차트 5종을 D+N 스택으로(DT16 창에서 전체 유지·DRAM만 수축이 시각화됨), 표 낙폭 열 전체/D·N 2단, 인사이트 밴드 3→4종(③ NAND 동조화), 보충 5장에 NAND 불릿·현장수치, 산점도에 "지표: DRAM 기준" 명시. LibreOffice 렌더 QA 2회전(밴드 4종 축약·DT23 미니 범례 충돌 → y상한 자동 확장), validate PASS.
+
+**패치 v2.46.3** (KG 재생성 — nand 소스 노드·엣지 추가). index.md 소스 I/II 구분·위키/덱 설명 갱신, outline에 전체 낙폭 표 추가, `npm run build` 검증. **건너뜀 사유**: storyline·scenario/strategy 페이지 무변경(수치·논증 축 불변), dashboard SP-2 데이터셋 무변경, 산점도 축은 DRAM 유지(NAND 분기 시계열이 2010년대 이전 미확보 — 혼합 지표 회피, 근거 위키 §2 명시).

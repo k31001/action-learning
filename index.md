@@ -32,7 +32,7 @@
 - [wiki/downturn/preparation.md](wiki/downturn/preparation.md) — 대비 DP-1~7 (도착 전에만 살 수 있는 것). 무후회 3종(DP-2 옵션형 캐파·DP-4 감별 EWI 배선·DP-5 차세대 별동대) + **신규 기여 DP-1 계약 만기 사다리화** + 유효기간표
 - [wiki/downturn/response-playbook.md](wiki/downturn/response-playbook.md) — 대응 DR-1~6 (원인 판별 후 분기). DR-1 감별 프로토콜(30일)·DR-2 공급 규율은 공급발에서만·DR-2b 소모전 봉인(치킨게임 4대 전제 붕괴)·금지 목록 8종
 - [wiki/downturn/differential-indicators.md](wiki/downturn/differential-indicators.md) — 감별 지표 DX-1~8. 기존 EWI가 "오는가"를 묻는다면 DX는 "어떤 다운턴인가"를 묻는다 + 판별 결정표 + 오진 방지 + 구축 로드맵(DX-7 만기 집중도 미측정 = 유일한 🔴)
-- [wiki/downturn/downturn-history.md](wiki/downturn/downturn-history.md) — (NEW) 지난 20년 다운턴 5건 복기(DT08·DT12·DT16·DT19·DT23): 산업 연매출 타임라인(2006~2025)·지속기간×속도×발원 정량 비교·다운턴별 원인/대응/결과/교훈·패턴 5종 — SP-2의 역사 기준선 (복기 덱 downturn-review.pptx의 단일 소스)
+- [wiki/downturn/downturn-history.md](wiki/downturn/downturn-history.md) — (NEW) 지난 20년 다운턴 5건 복기(DT08·DT12·DT16·DT19·DT23): **전체 메모리(DRAM+NAND)** 연매출 타임라인(2006~2025)·지속기간×속도×발원 정량 비교(낙폭 전체·D·N 분리)·다운턴별 원인/대응/결과/교훈·NAND 동행 판정·패턴 6종(NAND 완충 소멸 포함) — SP-2의 역사 기준선 (복기 덱 downturn-review.pptx의 단일 소스)
 
 ## wiki/scenarios — 5개 시나리오 + 매트릭스 (SP-1)
 
@@ -223,7 +223,8 @@
 - [sources/raw-notes/keyence-benchmark-note-2026-08-12.md](sources/raw-notes/keyence-benchmark-note-2026-08-12.md) — (NEW) 키엔스 벤치마크 사내 별첨: 10년 50~56% 영업이익률 밴드(사이클 무관)·팹리스 경영·외보(外報) 체계·"고객이 원하는 상품을 만들지 않는다"·1983년 저마진 사업 매각 + 저장소 대조표(2018 DS 51.6% 일치 / 2026 상반기 68%는 미검증)와 전략 1·2 배분표
 - [sources/raw-notes/memory-capex-history-research-2026-08-08.md](sources/raw-notes/memory-capex-history-research-2026-08-08.md) — 메모리 3사 CAPEX·실적 히스토리 리서치 (2016~2026E, 각사 IR·TrendForce·환율표)
 - [sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md](sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md) — CAPEX 히스토리 리서치 II: 2006~2015 치킨게임 시대 (삼성 AR·4Q 경영설명회 PDF 직접 열람, Micron SEC 10-K 원문, 데이터 신뢰도 등급)
-- [sources/raw-notes/memory-downturn-history-research-2026-08-22.md](sources/raw-notes/memory-downturn-history-research-2026-08-22.md) — (NEW) 다운턴 복기 리서치: DRAM 산업 연매출 시계열 2006~2025(기관 혼합·신뢰도 태그)·분기 낙폭 검증(4Q08 -36%·3Q22 -28.9%·4Q22 -32.5% 등)·2015~16 다운턴 보강(칭화유니 $23B 무산 → YMTC·CXMT 설립, Micron Inotera $4.1B)·다운턴 5건 창 정의(지속·낙폭·최악분기·발원)
+- [sources/raw-notes/memory-downturn-history-research-2026-08-22.md](sources/raw-notes/memory-downturn-history-research-2026-08-22.md) — (NEW) 다운턴 복기 리서치 I(DRAM): 산업 연매출 시계열 2006~2025(기관 혼합·신뢰도 태그)·분기 낙폭 검증(4Q08 -36%·3Q22 -28.9%·4Q22 -32.5% 등)·2015~16 다운턴 보강(칭화유니 $23B 무산 → YMTC·CXMT 설립, Micron Inotera $4.1B)·다운턴 5건 창 정의(지속·낙폭·최악분기·발원)
+- [sources/raw-notes/nand-market-history-research-2026-08-22.md](sources/raw-notes/nand-market-history-research-2026-08-22.md) — (NEW) 다운턴 복기 리서치 II(NAND): 산업 연매출 시계열 2006~2025(앵커: 2008 $12.0B -14%·2018 $63.2B·2021 $67.1B·2023 $36.7B -39.9%)·분기 전환점(4Q16 +17.8% "공급 부족 최심"·3Q22 -24.3%·4Q25 +26.7%)·다운턴 5건 NAND 동행/비동행 판정(침투기 완충 → DT19부터 완전 동조)·도시바 2012-07 30% 감산
 - [sources/raw-notes/samsung-storage-solution-research-2026-08-17.md](sources/raw-notes/samsung-storage-solution-research-2026-08-17.md) — 스토리지 솔루션 리서치: SSD·UFS 매출·이익 3단 역산(시장×점유율×믹스) 방법론 + 연표 앵커 (전량 추정ᵉ)
 - [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 베인앤컴퍼니 신문섭 파트너 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
 - [sources/articles/captive-ssd-fdp-context-2026-08.md](sources/articles/captive-ssd-fdp-context-2026-08.md) — 웹 리서치 종합: Captive SSD 위상 변화 4단계(완제품→펌웨어→자체 컨트롤러 Nitro→표준·웨이퍼)·하이퍼스케일러 SSD 수요 ~55%·NAND 웨이퍼 +246%·FDP 표준 기원(Meta·Google 주도·삼성 공동)
@@ -258,7 +259,7 @@
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
 - [outputs/presentation/ssd-strategy-outline.md](outputs/presentation/ssd-strategy-outline.md) — (NEW) 삼성 SSD 전략적 방향성 발표 **6장** 기획서 (요약 2종 + 본편 4, storyline-overview 디자인 시스템 승계)
 - [outputs/presentation/downturn-review-outline.md](outputs/presentation/downturn-review-outline.md) — (NEW) 메모리 다운턴 복기 덱 **6장** 기획서 (요약 1장 + DT08~DT23 보충 5장, 산점도 데이터 표 포함)
-- [outputs/presentation/downturn-review.pptx](outputs/presentation/downturn-review.pptx) — (NEW) 다운턴 복기 **6장** 덱 본체 — S1 한 장 요약(연매출 타임라인+다운턴 음영 / 지속기간×속도 산점도(버블=낙폭·색=발원) / 5행 비교 표 / 인사이트 밴드 3종) + Appendix A~E 다운턴별 1장 (`scripts/generate_downturn_assets.py` + `scripts/generate_downturn_review_pptx.py`로 재생성, 커밋 예외 등록)
+- [outputs/presentation/downturn-review.pptx](outputs/presentation/downturn-review.pptx) — (NEW) 다운턴 복기 **6장** 덱 본체 — S1 한 장 요약(**DRAM+NAND 스택** 타임라인+다운턴 음영 / 지속기간×속도 산점도(DRAM 기준, 버블=낙폭·색=발원) / 5행 비교 표(낙폭 전체·D·N) / 인사이트 밴드 4종) + Appendix A~E 다운턴별 1장(NAND 동행 라인 포함) (`scripts/generate_downturn_assets.py` + `scripts/generate_downturn_review_pptx.py`로 재생성, 커밋 예외 등록)
 - [outputs/presentation/ssd-strategy.pptx](outputs/presentation/ssd-strategy.pptx) — (NEW) 삼성 SSD 전략적 방향성 **6장** 덱 본체 — S0 한 장 논증(문제 바 차트→원인 표→결론→실행) + S0b 일곱 걸음 스토리(솔루션화 90%→서버 29%→캡티브 11%/100EB→FDP, 사내 수치 [확인] 표기) + 본편 4장 (`scripts/generate_ssd_strategy_pptx.py`로 재생성, 커밋 예외 등록)
 - [outputs/presentation/dev-transformation-summary.pptx](outputs/presentation/dev-transformation-summary.pptx) — 개발실 체질 전환 요약 5장: 디테일 상·중·하 + 제품·기술 축(FDP 플랫폼) 2장, 도식 중심(타임라인·As-Is→To-Be·아이콘)·화이트+블루·그린. 개별본 `-high/-mid/-low/-fdp.pptx` + `dashboard/public/downloads/` 다운로드 미러 (`scripts/generate_dev_transformation_summary.cjs`로 재생성)
 - `outputs/presentation/*.pptx` — 4종 디자인 변형 (`scripts/generate_*_pptx.py`로 재생성)
