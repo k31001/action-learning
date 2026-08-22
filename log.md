@@ -1593,3 +1593,15 @@ index.md sources 섹션 3건 등록. 위키 페이지 반영은 제안서 확정
 **대시보드 미러(storylineLenses.js)**: CMO 렌즈 섹션 2(제목 4개화·서사 p·요약 행)·섹션 5(h+p+matrix 블록) 동기.
 
 **마이너 v2.45.0** (렌즈 정밀 구성 확장). `npm run build` 검증, KG 재생성. **건너뜀 사유**: cmo-matrix.md는 이미 v2.44.0에서 2019 편입 완료(판정 일치 확인 — 무감산 ◎·HBM 축소 ✕·비전 2030 △ 동일), cmoMatrix.js 무변경, outputs/·PPTX 무변경.
+
+## [2026-08-22] ingest+build | 지난 20년 다운턴 복기 — 위키 페이지 + 6장 덱 (v2.46.2)
+
+요청: "지난 20년 메모리 다운턴의 원인·양상·지속기간·기업 대응·성공과 실패를 복기하는 PPT — 요약 1장(매출 타임라인+다운턴 위치, 지속기간×속도 산점도, 수요/공급 발원 구분) + 다운턴별 보충 1장씩."
+
+**소스 신설**: `sources/raw-notes/memory-downturn-history-research-2026-08-22.md` — 웹 리서치로 DRAM 산업 연매출 시계열 2006~2025 구축(기관 혼합·신뢰도 태그, 앵커: 2008 $23.6B·2011 $29.6B·2019 $62.0B·2023 $51.8B·2024 $90.7B), 분기 낙폭 검증(4Q08 -36%·4Q10 -20%·4Q15 -9.1%·4Q18 -18.3%·3Q22 -28.9%·4Q22 -32.5%·2Q23 +20.4% 반등), 기존 소스 공백이던 2015~16 다운턴 보강(Gartner 2015 -2.4%·PC DRAM 계약가 2016 -34%·칭화유니 $23B 무산 → YMTC·CXMT 설립·Micron Inotera $4.1B). 미확인 7건 목록 명시.
+
+**위키 신설**: `wiki/downturn/downturn-history.md` — 5건을 저점 연도 라벨 DT08·DT12·DT16·DT19·DT23으로 정렬(CMO 차수 매핑 명시), 동일 지표(지속·낙폭·최악분기·발원) 비교 표 + SP-2 사분면 매핑(DT23 = 침식 진입 → 급락 전화) + 다운턴별 프로필(원인/대응 승자·패자/결과·교훈, 전 수치 인용) + 패턴 5종(발원이 기간 결정·과점화는 기간만 단축·속도 가속·승자 행동 3종·직전 성공이 다음 함정). `wiki/downturn/README.md` 방법론 표에 기준선 행 추가.
+
+**덱 신설**: `outputs/presentation/downturn-review.pptx` 6장 — S1 한 장 요약(타임라인+음영 / 산점도(버블=낙폭·색=발원) / 5행 표 / 인사이트 밴드) + Appendix A~E. 차트 자산 7종(`generate_downturn_assets.py`) + 덱 스크립트(`generate_downturn_review_pptx.py`), ssd-strategy 디자인 시스템 승계. LibreOffice 렌더 QA 3회전(표 셀·밴드·KPI 타일 줄바꿈 수정), validate PASS. `.gitignore` 커밋 예외 등록. 기획서 `downturn-review-outline.md`.
+
+**패치 v2.46.2** (KG 데이터 갱신 — wiki 링크 추가로 `knowledgeGraph.js` 재생성, 노드 103·엣지 545). index.md 3곳 등록, `npm run build` 검증. **건너뜀 사유**: storyline 3~7장 무변경(확률·DF 위치·전략 목록 불변 — 역사 기준선 추가는 서사 수정 불요), scenario-planning-report·slide-outline 무변경(SP-1 산출물), dashboard SP-2 데이터셋(downturnPlanning.js) 무변경(DT_* 스키마 밖의 참고 페이지), PPTX 기존 덱 재생성 불요.

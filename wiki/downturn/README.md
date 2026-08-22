@@ -84,6 +84,7 @@ flowchart TB
 | 6. 시나리오 내러티브 5종 | [scenario-DT-A.md](scenario-DT-A.md) · [B](scenario-DT-B.md) · [C](scenario-DT-C.md) · [D](scenario-DT-D.md) · [E](scenario-DT-E.md) |
 | 7. 대비 전략 (Main Bet 성격) | [preparation.md](preparation.md) |
 | 8. 대응 플레이북 + 감별 EWI | [response-playbook.md](response-playbook.md) · [differential-indicators.md](differential-indicators.md) |
+| (기준선) 지난 20년 다운턴 5건 복기 | [downturn-history.md](downturn-history.md) — DT08·DT12·DT16·DT19·DT23 지속기간×속도×발원 정량 비교 |
 
 ### 2.1 SP-1과 다른 점 — 7·8단계의 구조
 
