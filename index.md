@@ -32,7 +32,7 @@
 - [wiki/downturn/preparation.md](wiki/downturn/preparation.md) — 대비 DP-1~7 (도착 전에만 살 수 있는 것). 무후회 3종(DP-2 옵션형 캐파·DP-4 감별 EWI 배선·DP-5 차세대 별동대) + **신규 기여 DP-1 계약 만기 사다리화** + 유효기간표
 - [wiki/downturn/response-playbook.md](wiki/downturn/response-playbook.md) — 대응 DR-1~6 (원인 판별 후 분기). DR-1 감별 프로토콜(30일)·DR-2 공급 규율은 공급발에서만·DR-2b 소모전 봉인(치킨게임 4대 전제 붕괴)·금지 목록 8종
 - [wiki/downturn/differential-indicators.md](wiki/downturn/differential-indicators.md) — 감별 지표 DX-1~8. 기존 EWI가 "오는가"를 묻는다면 DX는 "어떤 다운턴인가"를 묻는다 + 판별 결정표 + 오진 방지 + 구축 로드맵(DX-7 만기 집중도 미측정 = 유일한 🔴)
-- [wiki/downturn/downturn-history.md](wiki/downturn/downturn-history.md) — (NEW) 지난 20년 다운턴 5건 복기(DT08·DT12·DT16·DT19·DT23): **전체 메모리(DRAM+NAND)** 연매출 타임라인(2006~2025)·지속기간×속도×발원 정량 비교(낙폭 전체·D·N 분리)·다운턴별 원인/대응/결과/교훈·NAND 동행 판정·패턴 6종(NAND 완충 소멸 포함) — SP-2의 역사 기준선 (복기 덱 downturn-review.pptx의 단일 소스)
+- [wiki/downturn/downturn-history.md](wiki/downturn/downturn-history.md) — (NEW) 지난 20년 다운턴 복기 **본편 4건**(DT08·DT12·DT19·DT23) + 경계 1건(DT16: 전체 +2%ᵉ·DRAM 단독으로 재분류): **전체 메모리(DRAM+NAND)** 연매출 타임라인·지속기간×속도×발원 정량 비교(낙폭 전체·D·N 분리)·다운턴별 원인/대응/결과/교훈·NAND 동행 판정·패턴 6종 + **§5 역사→시나리오 매핑**(DT-A~E의 역사 대응물·계승 문법·함정) — SP-2의 역사 기준선 (복기 덱 downturn-review.pptx의 단일 소스)
 
 ## wiki/scenarios — 5개 시나리오 + 매트릭스 (SP-1)
 
@@ -258,8 +258,8 @@
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
 - [outputs/presentation/ssd-strategy-outline.md](outputs/presentation/ssd-strategy-outline.md) — (NEW) 삼성 SSD 전략적 방향성 발표 **6장** 기획서 (요약 2종 + 본편 4, storyline-overview 디자인 시스템 승계)
-- [outputs/presentation/downturn-review-outline.md](outputs/presentation/downturn-review-outline.md) — (NEW) 메모리 다운턴 복기 덱 **6장** 기획서 (요약 1장 + DT08~DT23 보충 5장, 산점도 데이터 표 포함)
-- [outputs/presentation/downturn-review.pptx](outputs/presentation/downturn-review.pptx) — (NEW) 다운턴 복기 **6장** 덱 본체 — S1 한 장 요약(**DRAM+NAND 스택** 타임라인+다운턴 음영 / 지속기간×속도 산점도(DRAM 기준, 버블=낙폭·색=발원) / 5행 비교 표(낙폭 전체·D·N) / 인사이트 밴드 4종) + Appendix A~E 다운턴별 1장(NAND 동행 라인 포함) (`scripts/generate_downturn_assets.py` + `scripts/generate_downturn_review_pptx.py`로 재생성, 커밋 예외 등록)
+- [outputs/presentation/downturn-review-outline.md](outputs/presentation/downturn-review-outline.md) — (NEW) 메모리 다운턴 복기 + 다음 다운턴 덱 **11장** 기획서 (본편 2장 + 과거 4장 + 시나리오 5장, 산점도·낙폭·시나리오 데이터 표 포함)
+- [outputs/presentation/downturn-review.pptx](outputs/presentation/downturn-review.pptx) — (NEW) 다운턴 복기 + 다음 다운턴 **11장** 덱 본체 — S1 과거 4건 요약(D+N 스택 타임라인 / 지속기간×속도 산점도 / 4행 표 / 밴드 4종) + S2 다음 다운턴(시나리오 사분면·역사 대응물 / 유효 대응 vs 치명 실수 5행 표 / 지금 닫히는 창 DP 3타일 / 무후회 밴드) + Appendix 과거 4장·시나리오 DT-A~E 5장. 개조식 문체·**전 장 발표자 노트**(함축 표현 해설) (`scripts/generate_downturn_assets.py` + `generate_downturn_review_pptx.py`로 재생성, 커밋 예외 등록)
 - [outputs/presentation/ssd-strategy.pptx](outputs/presentation/ssd-strategy.pptx) — (NEW) 삼성 SSD 전략적 방향성 **6장** 덱 본체 — S0 한 장 논증(문제 바 차트→원인 표→결론→실행) + S0b 일곱 걸음 스토리(솔루션화 90%→서버 29%→캡티브 11%/100EB→FDP, 사내 수치 [확인] 표기) + 본편 4장 (`scripts/generate_ssd_strategy_pptx.py`로 재생성, 커밋 예외 등록)
 - [outputs/presentation/dev-transformation-summary.pptx](outputs/presentation/dev-transformation-summary.pptx) — 개발실 체질 전환 요약 5장: 디테일 상·중·하 + 제품·기술 축(FDP 플랫폼) 2장, 도식 중심(타임라인·As-Is→To-Be·아이콘)·화이트+블루·그린. 개별본 `-high/-mid/-low/-fdp.pptx` + `dashboard/public/downloads/` 다운로드 미러 (`scripts/generate_dev_transformation_summary.cjs`로 재생성)
 - `outputs/presentation/*.pptx` — 4종 디자인 변형 (`scripts/generate_*_pptx.py`로 재생성)

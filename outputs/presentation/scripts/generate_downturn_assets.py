@@ -50,12 +50,11 @@ EST_T = EST_D | EST_N  # 합산은 어느 한쪽이 추정이면 추정
 WINDOWS = [
     ("DT08", [2007, 2008, 2009], "-26%*"),
     ("DT12", [2011, 2012], "-19%*"),
-    ("DT16", [2015, 2016], "+2%*"),
     ("DT19", [2019], "-34%*"),
     ("DT23", [2022, 2023], "-45%*"),
 ]
 # 합산 라벨 (정점·저점·현재만 선별 표기)
-LABEL_YEARS = {2006, 2009, 2010, 2012, 2014, 2016, 2018, 2019, 2021, 2023, 2024, 2025}
+LABEL_YEARS = {2006, 2009, 2010, 2012, 2014, 2018, 2019, 2021, 2023, 2024, 2025}
 
 
 def style_axes(ax):
@@ -119,7 +118,6 @@ plt.close(fig)
 POINTS = [
     ("DT08", "'07-'09", 9, -36.0, 34, "mixed"),
     ("DT12", "'10-'12", 9, -20.0, 33, "supply"),
-    ("DT16", "'15-'16", 6, -9.1, 11, "demand"),
     ("DT19", "'18-'19", 5, -18.3, 38, "demand"),
     ("DT23", "'22-'23", 6, -32.5, 45, "demand"),
 ]
@@ -140,8 +138,7 @@ for name, era, dur, worst, depth, origin in POINTS:
                linewidths=lw, zorder=3)
 
 OFF = {"DT08": (0.42, 0.5, "left"), "DT12": (0.42, 0.5, "left"),
-       "DT16": (0.32, 1.2, "left"), "DT19": (-0.38, 0.6, "right"),
-       "DT23": (0.62, 0.5, "left")}
+       "DT19": (-0.38, 0.6, "right"), "DT23": (0.62, 0.5, "left")}
 for name, era, dur, worst, depth, origin in POINTS:
     dx, dy, ha = OFF[name]
     ax.annotate(f"{name} {era}", (dur + dx, worst + dy), ha=ha, va="bottom",
@@ -177,7 +174,6 @@ plt.close(fig)
 MINIS = {
     "dt08": (2006, 2010),
     "dt12": (2010, 2013),
-    "dt16": (2014, 2017),
     "dt19": (2017, 2020),
     "dt23": (2021, 2024),
 }
@@ -209,5 +205,72 @@ for key, (y0, y1) in MINIS.items():
     fig.tight_layout(pad=0.35)
     fig.savefig(os.path.join(ASSETS, f"downturn_mini_{key}.png"))
     plt.close(fig)
+
+
+# ================= 4) 다음 다운턴 시나리오 사분면 (SP-2) =================
+# 데이터: wiki/downturn/scenario-matrix.md (조건부 확률·mermaid 좌표)
+SCEN = [
+    # (이름, x, y, 확률, 색, 라벨y기준, 위/아래, 제목줄, 부제줄)
+    ("DT-A", 0.22, 0.80, 20, BLUE, 0.905, "above",
+     "「급제동」 AI 조달 경색", "역사: DT19형 · 짧고 깊다"),
+    ("DT-B", 0.25, 0.22, 24, BLUE, 0.345, "above",
+     "「긴 하산」 원단위 감소", "역사에 없던 길이: 8-12분기"),
+    ("DT-C", 0.78, 0.78, 22, GRAY, 0.905, "above",
+     "「동시 방류」 캐파+절제 붕괴", "역사: DT08형 · 낙폭 여지 확대"),
+    ("DT-D", 0.80, 0.20, 26, GRAY, 0.345, "above",
+     "「저가 잠식」 CXMT 침투", "역사: DT12형 · 단, 회복 없음"),
+]
+
+fig, ax = plt.subplots(figsize=(8.15, 5.30), dpi=200)
+for s in ("top", "right", "left", "bottom"):
+    ax.spines[s].set_color(LINE)
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+ax.set_xticks([])
+ax.set_yticks([])
+ax.axhline(0.5, color=LINE, linewidth=0.9)
+ax.axvline(0.5, color=LINE, linewidth=0.9)
+
+# 사분면 코너 힌트
+ax.text(0.02, 0.965, "수요발 × 급락", fontsize=10, color=GRAY_MID, va="top")
+ax.text(0.98, 0.965, "공급발 × 급락", fontsize=10, color=GRAY_MID, va="top", ha="right")
+ax.text(0.02, 0.035, "수요발 × 침식", fontsize=10, color=GRAY_MID, va="bottom")
+ax.text(0.98, 0.035, "공급발 × 침식", fontsize=10, color=GRAY_MID, va="bottom", ha="right")
+
+# 전이 경로 (최위험: B -> A, 만기 집중) — 좌측 여백으로 우회
+ax.annotate("", xy=(0.155, 0.76), xytext=(0.185, 0.26),
+            arrowprops=dict(arrowstyle="-|>", color=GRAY_MID, linestyle=(0, (4, 3)),
+                            linewidth=1.3, connectionstyle="arc3,rad=0.18"))
+ax.text(0.115, 0.52, "만기 집중 →\n급락 전이\n(최위험 경로)", fontsize=9.5,
+        color=GRAY_MID, ha="center", va="center")
+
+for name, x, y, prob, color, ly, pos, t1, t2 in SCEN:
+    ax.scatter([x], [y], s=prob * 150, color=color, edgecolors="white",
+               linewidths=1.5, zorder=3)
+    ax.text(x, y + 0.012, name, ha="center", va="center", fontsize=12,
+            fontweight="bold", color="white", zorder=4)
+    ax.text(x, y - 0.045, f"{prob}%", ha="center", va="center", fontsize=10.5,
+            color="white", zorder=4)
+    ax.text(x, ly, t1, ha="center", va="bottom", fontsize=11.5, fontweight="bold",
+            color=INK)
+    ax.text(x, ly - 0.012, t2, ha="center", va="top", fontsize=10, color=GRAY)
+
+# 현재 위치
+ax.scatter([0.53], [0.40], s=130, marker="D", color=INK, zorder=4)
+ax.text(0.53, 0.345, "현재 위치 (2026-08)", ha="center", va="top", fontsize=10,
+        color=INK)
+
+# 와일드카드 노트
+ax.text(0.50, 0.065, "와일드카드 DT-E 「판 갈이」 8%: 축 밖(제품 정의 변화) · 유일 응수는 별동대(DP-5)",
+        ha="center", va="bottom", fontsize=10, color=GRAY,
+        bbox=dict(facecolor="white", edgecolor=LINE, linewidth=0.8, pad=4))
+
+ax.set_xlabel("수요 수축 주도   ←   발원지 (DF-D1)   →   공급 확대 주도",
+              fontsize=11, color=GRAY)
+ax.set_ylabel("침식형 Grind   ←   속도 (DF-D2)   →   급락형 Cliff",
+              fontsize=11, color=GRAY)
+fig.tight_layout(pad=0.4)
+fig.savefig(os.path.join(ASSETS, "downturn_scenario_matrix.png"))
+plt.close(fig)
 
 print("assets written:", sorted(f for f in os.listdir(ASSETS) if f.startswith("downturn")))
