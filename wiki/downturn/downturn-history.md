@@ -1,7 +1,7 @@
 ---
 type: analysis
 last_reviewed: 2026-08-22
-sources: [sources/raw-notes/memory-downturn-history-research-2026-08-22.md, sources/raw-notes/nand-market-history-research-2026-08-22.md, sources/articles/dram-chicken-game-history-2026-08-05.md, sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md, sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md, sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md]
+sources: [sources/raw-notes/memory-downturn-history-research-2026-08-22.md, sources/raw-notes/nand-market-history-research-2026-08-22.md, sources/raw-notes/nand-quarterly-addendum-2026-08-24.md, sources/articles/dram-chicken-game-history-2026-08-05.md, sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md, sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md, sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md]
 ---
 
 # 지난 20년 메모리 다운턴 복기 (2006~2025) — 본편 4건 + 경계 1건의 원인·양상·지속·대응·결과
@@ -32,15 +32,24 @@ sources: [sources/raw-notes/memory-downturn-history-research-2026-08-22.md, sour
 
 ## 2. 5건 한눈 비교 — 지속기간 × 속도 × 발원
 
-조작적 정의: 지속기간 = 산업 분기 매출(또는 대표 가격) 정점 직후 분기 ~ 저점 분기. 낙폭 = 연 매출 정점→저점 (전체 메모리 = DRAM+NAND 합산, D·N 분리 병기). 속도 = 하강 창 내 **최악 분기의 매출 QoQ 낙폭** — 속도 지표는 **DRAM 기준**(20년 전 구간까지 분기 시계열이 검증되는 유일한 기준 시장; NAND 분기 낙폭은 [nand-market-history-research-2026-08-22.md](../../sources/raw-notes/nand-market-history-research-2026-08-22.md) §2). 근거는 [memory-downturn-history-research-2026-08-22.md](../../sources/raw-notes/memory-downturn-history-research-2026-08-22.md) §2·§4. **DT16은 전체 메모리 기준 낙폭이 +2%ᵉ(성장)여서 다운턴 성립이 애매한 경계 사례** — 표에는 참고로 남기되 복기 덱 본편·산점도·타임라인 음영에서는 제외한다.
+조작적 정의: 지속기간 = 산업 분기 매출(또는 대표 가격) 정점 직후 분기 ~ 저점 분기. 낙폭 = 연 매출 정점→저점 (전체 메모리 = DRAM+NAND 합산, D·N 분리 병기). 속도 = 하강 창 내 **최악 분기의 매출 QoQ 낙폭** — **전체 메모리(D+N) 통합 기준**을 대표 지표로 쓴다. 통합 분기 절대액 시계열이 없는 구간이 있어, 검증된 D·N 각각의 QoQ를 **연간 매출 비중으로 가중 평균**해 산출한다(근사, 오차 ±1~2%p — DRAM 단독치 병기):
 
-| | 창 | 지속ᵉ | 연매출 낙폭 (전체 / D / N) | 최악 분기(DRAM QoQ) | 발원 | 구조 이벤트 |
+| | D QoQ (검증) | N QoQ | 가중(D:N) | **통합ᵉ** |
+|---|---|---|---|---|
+| 4Q08 | -36% | -19.3% ([nand-quarterly-addendum-2026-08-24.md](../../sources/raw-notes/nand-quarterly-addendum-2026-08-24.md)) | 0.66:0.34 | **-30%ᵉ** |
+| 4Q10 | -20% | 보합 0ᵉ 가정 (2010~11 NAND 성장기, 미검증) | 0.68:0.32 | **-14%ᵉ** |
+| 4Q18 | -18.3% | -16.8% ([nand-market-history-research-2026-08-22.md](../../sources/raw-notes/nand-market-history-research-2026-08-22.md) §2) | 0.61:0.39 | **-18%ᵉ** |
+| 4Q22 | -32.5% | -25% ([nand-quarterly-addendum-2026-08-24.md](../../sources/raw-notes/nand-quarterly-addendum-2026-08-24.md)) | 0.57:0.43 | **-29%ᵉ** |
+
+통합 기준으로 보면 **순간 낙차의 최대는 여전히 DT08(4Q08 -30%ᵉ, 금융위기)**이고 DT23(-29%ᵉ)이 근접 — 단 총낙폭(-45%)과 정점→저점 누적 속도(전체 2Q22 $43.9Bᵉ → 1Q23 $18.3Bᵉ, 3분기 -58%ᵉ)는 DT23이 사상 최대다. 근거는 [memory-downturn-history-research-2026-08-22.md](../../sources/raw-notes/memory-downturn-history-research-2026-08-22.md) §2·§4. **DT16은 전체 메모리 기준 낙폭이 +2%ᵉ(성장)여서 다운턴 성립이 애매한 경계 사례** — 표에는 참고로 남기되 복기 덱 본편·산점도·타임라인 음영에서는 제외한다.
+
+| | 창 | 지속ᵉ | 연매출 낙폭 (전체 / D / N) | 최악 분기 (통합ᵉ / D) | 발원 | 구조 이벤트 |
 |---|-----|------|---------------------------|----------------------|------|-------------|
-| **DT08** | 2007Q1~2009Q1 | ~9분기 | **-26%ᵉ** / -34%ᵉ / -14% | 4Q08 **-36%** | **공급발**(6강 캐파 경쟁) → 말기 수요 충격(금융위기) 복합 | Qimonda 파산(2009-01) |
-| **DT12** | 2010Q4~2012Q4 | ~9분기 | **-19%ᵉ** / -33%ᵉ / -2%ᵉ | 4Q10 -20% | **공급발**(대만·엘피다 증산, PC 부진 겹침) — 저가 장기전 | Elpida 파산(2012-02)·SK의 하이닉스 인수(2012) → **3강 과점 완성**. NAND는 도시바 30% 감산(2012-07) |
-| **DT16** (경계) | 2015Q1~2016Q2 | ~6분기 | **+2%ᵉ** / -11%ᵉ / +14%ᵉ | 4Q15 -9.1% | **수요발**(PC 출하 감소·스마트폰 둔화) + 20nm 전환 공급 증가 — **DRAM 단독** | 파산 없음 — 3강 과점 첫 시험. 중국 진입 결정(칭화유니→YMTC·CXMT 설립) |
-| **DT19** | 2018Q4~2019Q4 | ~5분기 | **-34%ᵉ** / -37.6% / -27%ᵉ | 4Q18 -18.3% | **수요발**(하이퍼스케일러·스마트폰 재고 조정, 미중 분쟁 증폭) — D·N 동시 진입 | 파산 없음. Micron 최초 공식 감산(2019-03)·요카이치 정전(2019-06) |
-| **DT23** | 2022Q2~2023Q3 | ~6분기 | **-45%ᵉ** / -45%ᵉ / **-45%** | 4Q22 **-32.5%** | **수요발**(팬데믹 특수 소멸·금리) + 재고 대조정 — 6개월 인지 실패, D·N 완전 동조 | 3사 전원 감산 — 삼성 첫 공식 감산(2023-04, NAND 중심 연장). DRAM 분기 정점→저점 **-62%ᵉ, 사상 최속** |
+| **DT08** | 2007Q1~2009Q1 | ~9분기 | **-26%ᵉ** / -34%ᵉ / -14% | 4Q08 **-30%ᵉ** / -36% | **공급발**(6강 캐파 경쟁) → 말기 수요 충격(금융위기) 복합 | Qimonda 파산(2009-01) |
+| **DT12** | 2010Q4~2012Q4 | ~9분기 | **-19%ᵉ** / -33%ᵉ / -2%ᵉ | 4Q10 -14%ᵉ / -20% | **공급발**(대만·엘피다 증산, PC 부진 겹침) — 저가 장기전 | Elpida 파산(2012-02)·SK의 하이닉스 인수(2012) → **3강 과점 완성**. NAND는 도시바 30% 감산(2012-07) |
+| **DT16** (경계) | 2015Q1~2016Q2 | ~6분기 | **+2%ᵉ** / -11%ᵉ / +14%ᵉ | 4Q15 (D -9.1%) | **수요발**(PC 출하 감소·스마트폰 둔화) + 20nm 전환 공급 증가 — **DRAM 단독** | 파산 없음 — 3강 과점 첫 시험. 중국 진입 결정(칭화유니→YMTC·CXMT 설립) |
+| **DT19** | 2018Q4~2019Q4 | ~5분기 | **-34%ᵉ** / -37.6% / -27%ᵉ | 4Q18 -18%ᵉ / -18.3% | **수요발**(하이퍼스케일러·스마트폰 재고 조정, 미중 분쟁 증폭) — D·N 동시 진입 | 파산 없음. Micron 최초 공식 감산(2019-03)·요카이치 정전(2019-06) |
+| **DT23** | 2022Q2~2023Q3 | ~6분기 | **-45%ᵉ** / -45%ᵉ / **-45%** | 4Q22 **-29%ᵉ** / -32.5% | **수요발**(팬데믹 특수 소멸·금리) + 재고 대조정 — 6개월 인지 실패, D·N 완전 동조 | 3사 전원 감산 — 삼성 첫 공식 감산(2023-04, NAND 중심 연장). DRAM 분기 정점→저점 **-62%ᵉ, 사상 최속** |
 
 ### SP-2 사분면 매핑 (DF-D1 발원지 × DF-D2 전개 속도)
 

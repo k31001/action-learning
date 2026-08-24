@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""다운턴 복기 덱 차트 자산 생성 (matplotlib) — 전체 메모리(DRAM+NAND) 기준.
+"""다운턴 복기 덱 차트 자산 생성 (matplotlib), 전체 메모리(DRAM+NAND) 기준.
 
 산출:
   assets/downturn_timeline.png   : 메모리 산업 연매출 2006-2025 (D+N 스택) + 다운턴 5개 창 음영
@@ -113,13 +113,14 @@ fig.tight_layout(pad=0.4)
 fig.savefig(os.path.join(ASSETS, "downturn_timeline.png"))
 plt.close(fig)
 
-# ================= 2) 산점도: 지속기간 x 속도 (DRAM 기준) =================
-# (라벨, 기간표기, 지속분기, 최악분기 QoQ%, DRAM 연매출 낙폭%, 발원)
+# ================= 2) 산점도: 지속기간 x 속도 (전체 메모리 D+N 기준) =================
+# (라벨, 기간표기, 지속분기, 최악분기 통합 QoQ%ᵉ, 전체 연매출 낙폭%, 발원)
+# 통합 QoQ = 검증된 D·N QoQ의 연간 매출 비중 가중 평균 (wiki/downturn/downturn-history.md §2)
 POINTS = [
-    ("DT08", "'07-'09", 9, -36.0, 34, "mixed"),
-    ("DT12", "'10-'12", 9, -20.0, 33, "supply"),
-    ("DT19", "'18-'19", 5, -18.3, 38, "demand"),
-    ("DT23", "'22-'23", 6, -32.5, 45, "demand"),
+    ("DT08", "'07-'09", 9, -30.0, 26, "mixed"),
+    ("DT12", "'10-'12", 9, -14.0, 19, "supply"),
+    ("DT19", "'18-'19", 5, -18.0, 34, "demand"),
+    ("DT23", "'22-'23", 6, -29.0, 45, "demand"),
 ]
 C = {"demand": BLUE, "supply": GRAY, "mixed": GRAY}
 
@@ -138,21 +139,21 @@ for name, era, dur, worst, depth, origin in POINTS:
                linewidths=lw, zorder=3)
 
 OFF = {"DT08": (0.42, 0.5, "left"), "DT12": (0.42, 0.5, "left"),
-       "DT19": (-0.38, 0.6, "right"), "DT23": (0.62, 0.5, "left")}
+       "DT19": (-0.36, 0.6, "right"), "DT23": (0.58, 0.5, "left")}
 for name, era, dur, worst, depth, origin in POINTS:
     dx, dy, ha = OFF[name]
     ax.annotate(f"{name} {era}", (dur + dx, worst + dy), ha=ha, va="bottom",
                 fontsize=11.5, fontweight="bold", color=INK)
-    ax.annotate(f"연매출 {'-' + str(depth)}%", (dur + dx, worst + dy - 0.3),
+    ax.annotate(f"전체 -{depth}%*", (dur + dx, worst + dy - 0.3),
                 ha=ha, va="top", fontsize=10, color=GRAY)
 
 ax.set_xlim(3.4, 11.3)
-ax.set_ylim(-41, 0)
+ax.set_ylim(-36, 0)
 ax.set_xticks([4, 5, 6, 7, 8, 9, 10, 11])
-ax.set_yticks([0, -10, -20, -30, -40])
-ax.set_yticklabels(["0", "-10%", "-20%", "-30%", "-40%"])
+ax.set_yticks([0, -10, -20, -30])
+ax.set_yticklabels(["0", "-10%", "-20%", "-30%"])
 ax.set_xlabel("하강 지속기간 (분기)", fontsize=11.5, color=GRAY)
-ax.set_ylabel("최악 분기 매출 낙폭 (QoQ)", fontsize=11.5, color=GRAY)
+ax.set_ylabel("최악 분기 매출 낙폭 (D+N, QoQ)", fontsize=11.5, color=GRAY)
 
 handles = [
     Line2D([], [], marker="o", linestyle="", markersize=9, color=BLUE, label="수요발"),
@@ -162,9 +163,9 @@ handles = [
 ]
 ax.legend(handles=handles, loc="lower left", frameon=False, fontsize=10.5,
           handletextpad=0.15, borderaxespad=0.1, labelcolor=GRAY)
-ax.text(11.15, -1.2, "지표: DRAM 기준 (버블 크기 = 연매출 낙폭)", ha="right", va="top",
-        fontsize=10, color=GRAY_MID)
-ax.text(11.15, -3.6, "NAND 동행 여부는 좌측 표 참조", ha="right", va="top",
+ax.text(11.15, -1.1, "지표: 전체 메모리(D+N) · *통합 QoQ는 가중 산출", ha="right",
+        va="top", fontsize=10, color=GRAY_MID)
+ax.text(11.15, -3.2, "버블 크기 = 전체 연매출 낙폭", ha="right", va="top",
         fontsize=10, color=GRAY_MID)
 fig.tight_layout(pad=0.4)
 fig.savefig(os.path.join(ASSETS, "downturn_scatter.png"))
@@ -237,7 +238,7 @@ ax.text(0.98, 0.965, "공급발 × 급락", fontsize=10, color=GRAY_MID, va="top
 ax.text(0.02, 0.035, "수요발 × 침식", fontsize=10, color=GRAY_MID, va="bottom")
 ax.text(0.98, 0.035, "공급발 × 침식", fontsize=10, color=GRAY_MID, va="bottom", ha="right")
 
-# 전이 경로 (최위험: B -> A, 만기 집중) — 좌측 여백으로 우회
+# 전이 경로 (최위험: B -> A, 만기 집중), 좌측 여백으로 우회
 ax.annotate("", xy=(0.155, 0.76), xytext=(0.185, 0.26),
             arrowprops=dict(arrowstyle="-|>", color=GRAY_MID, linestyle=(0, (4, 3)),
                             linewidth=1.3, connectionstyle="arc3,rad=0.18"))
@@ -271,6 +272,87 @@ ax.set_ylabel("침식형 Grind   ←   속도 (DF-D2)   →   급락형 Cliff",
               fontsize=11, color=GRAY)
 fig.tight_layout(pad=0.4)
 fig.savefig(os.path.join(ASSETS, "downturn_scenario_matrix.png"))
+plt.close(fig)
+
+
+# ================= 5) NAND 단독 타임라인 =================
+N_WINDOWS = [
+    ("DT08", [2007, 2008, 2009], "N -14%"),
+    ("DT12", [2011, 2012], "N -2%*·가격 위기"),
+    ("DT19", [2019], "N -27%*"),
+    ("DT23", [2022, 2023], "N -45%"),
+]
+N_DOWN = {2008, 2019, 2022, 2023}  # NAND 매출 하강 연도 (강조)
+N_LABELS = {2006, 2008, 2011, 2014, 2016, 2018, 2019, 2021, 2023, 2025}
+
+
+def fmt_n(y):
+    v = NAND[YEARS.index(y)]
+    return f"{v:.0f}" + ("*" if y in EST_N else "")
+
+
+fig, ax = plt.subplots(figsize=(10.9, 3.75), dpi=200)
+style_axes(ax)
+for label, ys, depth in N_WINDOWS:
+    x0, x1 = min(ys) - 0.5, max(ys) + 0.5
+    ax.axvspan(x0, x1, color=BAND, zorder=0)
+    ax.text((x0 + x1) / 2, 79.5, label, ha="center", va="top",
+            fontsize=12.5, fontweight="bold", color=BLUE)
+    ax.text((x0 + x1) / 2, 73.5, depth, ha="center", va="top", fontsize=10.5,
+            color=GRAY)
+# DT16 비동행 주석 (음영 없음)
+ax.text(2015.5, 79.5, "(DT16)", ha="center", va="top", fontsize=11, color=GRAY_MID)
+ax.text(2015.5, 73.5, "비동행 +14%*", ha="center", va="top", fontsize=10.5,
+        color=GRAY_MID)
+
+cols = [BLUE if y in N_DOWN else BLUE_T2 for y in YEARS]
+ax.bar(YEARS, NAND, width=0.68, color=cols, zorder=2)
+for y in YEARS:
+    if y in N_LABELS:
+        ax.text(y, NAND[YEARS.index(y)] + 1.6, fmt_n(y), ha="center", va="bottom",
+                fontsize=10, color=INK if y in N_DOWN else GRAY)
+ax.set_xlim(2005.3, 2025.7)
+ax.set_ylim(0, 82)
+ax.set_yticks([0, 20, 40, 60, 80])
+ax.set_xticks([2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024])
+ax.set_ylabel("NAND 산업 연매출 ($B)", fontsize=11.5, color=GRAY)
+fig.tight_layout(pad=0.4)
+fig.savefig(os.path.join(ASSETS, "nand_timeline.png"))
+plt.close(fig)
+
+# ================= 6) D vs N 연매출 낙폭 비교 (동조화의 진행) =================
+CATS = ["DT08", "DT12", "DT16(경계)", "DT19", "DT23"]
+D_DEPTH = [-34, -33, -11, -37.6, -45]
+N_DEPTH = [-14, -2, 14, -27, -45]
+D_LBL = ["-34*", "-33*", "-11*", "-37.6", "-45*"]
+N_LBL = ["-14", "-2*", "+14*", "-27*", "-45"]
+
+fig, ax = plt.subplots(figsize=(7.26, 3.75), dpi=200)
+style_axes(ax)
+xs = range(len(CATS))
+w = 0.36
+ax.bar([x - w / 2 for x in xs], D_DEPTH, width=w, color=BLUE, edgecolor="white",
+       linewidth=0.8, zorder=2, label="DRAM")
+ax.bar([x + w / 2 for x in xs], N_DEPTH, width=w, color=BLUE_T2, edgecolor="white",
+       linewidth=0.8, zorder=2, label="NAND")
+ax.axhline(0, color=GRAY, linewidth=0.9, zorder=3)
+for x, (d, n, dl, nl) in enumerate(zip(D_DEPTH, N_DEPTH, D_LBL, N_LBL)):
+    ax.text(x - w / 2, d - 1.5, dl, ha="center", va="top", fontsize=10, color=INK)
+    ax.text(x + w / 2, n - 1.5 if n < 0 else n + 1.5, nl, ha="center",
+            va="top" if n < 0 else "bottom", fontsize=10, color=GRAY)
+ax.set_xticks(list(xs))
+ax.set_xticklabels(CATS, fontsize=11)
+ax.set_ylim(-54, 22)
+ax.set_yticks([20, 0, -20, -40])
+ax.set_yticklabels(["+20%", "0", "-20%", "-40%"])
+ax.set_ylabel("연매출 낙폭 (정점 → 저점)", fontsize=11.5, color=GRAY)
+ax.legend(loc="lower left", frameon=False, fontsize=10.5, handlelength=1.1,
+          handletextpad=0.4, borderaxespad=0.1, labelcolor=GRAY)
+ax.annotate("동조화", xy=(4.18, -45), xytext=(3.05, -50.5), fontsize=10.5,
+            color=GRAY, arrowprops=dict(arrowstyle="->", color=GRAY_MID,
+                                        linewidth=1.1))
+fig.tight_layout(pad=0.4)
+fig.savefig(os.path.join(ASSETS, "nand_depth_compare.png"))
 plt.close(fig)
 
 print("assets written:", sorted(f for f in os.listdir(ASSETS) if f.startswith("downturn")))
