@@ -355,4 +355,96 @@ fig.tight_layout(pad=0.4)
 fig.savefig(os.path.join(ASSETS, "nand_depth_compare.png"))
 plt.close(fig)
 
+
+# ================= 7) DRAM 단독 타임라인 (DT16 포함 5개 창) =================
+D_WINDOWS = [
+    ("DT08", [2007, 2008, 2009], "D -34%*"),
+    ("DT12", [2011, 2012], "D -33%*"),
+    ("DT16", [2015, 2016], "D -11%*·D 단독"),
+    ("DT19", [2019], "D -37.6%"),
+    ("DT23", [2022, 2023], "D -45%*"),
+]
+D_DOWN = {y for _, ys, _ in D_WINDOWS for y in ys}
+D_LABELS = {2006, 2009, 2010, 2012, 2014, 2016, 2018, 2019, 2021, 2023, 2024, 2025}
+BAR_NEUTRAL = "#C9CDD6"
+
+
+def fmt_d(y):
+    v = DRAM[YEARS.index(y)]
+    return f"{v:.0f}" + ("*" if y in EST_D else "")
+
+
+fig, ax = plt.subplots(figsize=(10.9, 3.75), dpi=200)
+style_axes(ax)
+for label, ys, depth in D_WINDOWS:
+    x0, x1 = min(ys) - 0.5, max(ys) + 0.5
+    ax.axvspan(x0, x1, color=BAND, zorder=0)
+    ax.text((x0 + x1) / 2, 173, label, ha="center", va="top",
+            fontsize=12.5, fontweight="bold", color=BLUE)
+    ax.text((x0 + x1) / 2, 160, depth, ha="center", va="top", fontsize=10.5,
+            color=GRAY)
+cols = [BLUE if y in D_DOWN else BAR_NEUTRAL for y in YEARS]
+ax.bar(YEARS, DRAM, width=0.68, color=cols, zorder=2)
+for y in YEARS:
+    if y in D_LABELS:
+        ax.text(y, DRAM[YEARS.index(y)] + 3.4, fmt_d(y), ha="center", va="bottom",
+                fontsize=10, color=INK if y in D_DOWN else GRAY)
+ax.set_xlim(2005.3, 2025.7)
+ax.set_ylim(0, 178)
+ax.set_yticks([0, 50, 100, 150])
+ax.set_xticks([2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024])
+ax.set_ylabel("DRAM 산업 연매출 ($B)", fontsize=11.5, color=GRAY)
+fig.tight_layout(pad=0.4)
+fig.savefig(os.path.join(ASSETS, "dram_timeline.png"))
+plt.close(fig)
+
+# ================= 8) DRAM 단독 산점도 (5점 — 분기 검증치 전건 보유) =================
+D_POINTS = [
+    ("DT08", "'07-'09", 9, -36.0, 34, "mixed"),
+    ("DT12", "'10-'12", 9, -20.0, 33, "supply"),
+    ("DT16", "'15-'16", 6, -9.1, 11, "demand"),
+    ("DT19", "'18-'19", 5, -18.3, 38, "demand"),
+    ("DT23", "'22-'23", 6, -32.5, 45, "demand"),
+]
+fig, ax = plt.subplots(figsize=(7.26, 3.75), dpi=200)
+style_axes(ax)
+ax.plot([p[2] for p in D_POINTS], [p[3] for p in D_POINTS], color=LINE,
+        linewidth=1.0, linestyle=(0, (3, 3)), zorder=1)
+for name, era, dur, worst, depth, origin in D_POINTS:
+    edge = BLUE if origin == "mixed" else "white"
+    lw = 2.4 if origin == "mixed" else 1.5
+    ax.scatter([dur], [worst], s=depth * 42, color=C[origin], edgecolors=edge,
+               linewidths=lw, zorder=3)
+D_OFF = {"DT08": (0.42, 0.5, "left"), "DT12": (0.42, 0.5, "left"),
+         "DT16": (0.32, 1.2, "left"), "DT19": (-0.38, 0.6, "right"),
+         "DT23": (0.62, 0.5, "left")}
+for name, era, dur, worst, depth, origin in D_POINTS:
+    dx, dy, ha = D_OFF[name]
+    ax.annotate(f"{name} {era}", (dur + dx, worst + dy), ha=ha, va="bottom",
+                fontsize=11.5, fontweight="bold", color=INK)
+    ax.annotate(f"D -{depth}%*", (dur + dx, worst + dy - 0.3), ha=ha, va="top",
+                fontsize=10, color=GRAY)
+ax.set_xlim(3.4, 11.3)
+ax.set_ylim(-41, 0)
+ax.set_xticks([4, 5, 6, 7, 8, 9, 10, 11])
+ax.set_yticks([0, -10, -20, -30, -40])
+ax.set_yticklabels(["0", "-10%", "-20%", "-30%", "-40%"])
+ax.set_xlabel("하강 지속기간 (분기)", fontsize=11.5, color=GRAY)
+ax.set_ylabel("최악 분기 매출 낙폭 (DRAM, QoQ)", fontsize=11.5, color=GRAY)
+handles_d = [
+    Line2D([], [], marker="o", linestyle="", markersize=9, color=BLUE, label="수요발"),
+    Line2D([], [], marker="o", linestyle="", markersize=9, color=GRAY, label="공급발"),
+    Line2D([], [], marker="o", linestyle="", markersize=9, color=GRAY,
+           markeredgecolor=BLUE, markeredgewidth=2.0, label="복합 (공급발+수요 충격)"),
+]
+ax.legend(handles=handles_d, loc="lower left", frameon=False, fontsize=10.5,
+          handletextpad=0.15, borderaxespad=0.1, labelcolor=GRAY)
+ax.text(11.15, -1.1, "지표: DRAM 단독 (분기 검증치 5건 전부 보유)", ha="right",
+        va="top", fontsize=10, color=GRAY_MID)
+ax.text(11.15, -3.5, "버블 크기 = DRAM 연매출 낙폭 · DT16 포함", ha="right", va="top",
+        fontsize=10, color=GRAY_MID)
+fig.tight_layout(pad=0.4)
+fig.savefig(os.path.join(ASSETS, "dram_scatter.png"))
+plt.close(fig)
+
 print("assets written:", sorted(f for f in os.listdir(ASSETS) if f.startswith("downturn")))

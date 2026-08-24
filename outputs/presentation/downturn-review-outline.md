@@ -1,9 +1,9 @@
-# 메모리 다운턴 복기 + 다음 다운턴 덱 (12장) 기획서 — downturn-review.pptx
+# 메모리 다운턴 복기 + 다음 다운턴 덱 (13장) 기획서 — downturn-review.pptx
 
 > 지난 20년(2006-2025) 다운턴 4건의 복기(원인·양상·지속기간·대응·성패)와, 같은 축(발원×속도) 위의 다음 다운턴 시나리오 5종(SP-2) 분석. **전체 메모리(DRAM+NAND) 기준**, 문체는 개조식(명사형 종결), **전 슬라이드 발표자 노트 포함**(함축 표현 해설·예상 질문).
 > 2015~16 조정(DT16)은 전체 메모리 +2%ᵉ의 경계 사례로 본편에서 제외 (wiki §2 참조).
 
-- **Deck Read**: 과제·액션러닝 보고, 청중은 메모리사업부 과제팀·경영진, 본편 3장 + 별첨 9장, 결론 우선 스코어카드 언어
+- **Deck Read**: 과제·액션러닝 보고, 청중은 메모리사업부 과제팀·경영진, 본편 4장 + 별첨 9장, 결론 우선 스코어카드 언어
 - **다이얼**: DATA_DENSITY 7 / FORMALITY 7 / VISUAL_EXPRESSION 3
 - **디자인 시스템**: ssd-strategy.pptx / storyline-overview.pptx 승계 (20x11.25in, Arial, Samsung Blue #1428A0 단일 액센트)
 - **콘텐츠 단일 소스**: [wiki/downturn/downturn-history.md](../../wiki/downturn/downturn-history.md) (과거 4건 + §5 역사-시나리오 매핑) · [scenario-matrix.md](../../wiki/downturn/scenario-matrix.md) · [preparation.md](../../wiki/downturn/preparation.md) · [response-playbook.md](../../wiki/downturn/response-playbook.md) + 소스 노트 2종(memory-downturn·nand-market-history-research-2026-08-22)
@@ -15,9 +15,10 @@
 |---|---|---|
 | 01 | **과거 복기 요약** — "공급발은 장기 소모전, 수요발은 갈수록 빠르고 깊은 단기전" | D+N 스택 타임라인(4개 창 음영) · 지속기간×속도 산점도(**전체 메모리 D+N 통합 QoQ**, 4점) · 4행 비교 표(대응·결과도 D/N 통합 관점) · 인사이트 밴드 4종 |
 | 02 | **NAND 단독 뷰** — "침투기의 완충재에서 DRAM과 한 몸으로, 완충의 시대 종료" | NAND 단독 타임라인(하강 연도 강조, DT16 비동행 주석) · **D vs N 낙폭 비교 차트**(동조화 진행) · NAND 관점 5행 표(낙폭·사건·대응·결과, DT16 경계 포함) · NAND 밴드 4종 |
-| 03 | **다음 다운턴** — "예측이 아니라 감별의 게임, 형태별 처방은 정반대" | 시나리오 사분면(DT-A~D 버블+확률+역사 대응물, DT-E 와일드카드, 전이 화살표, 현재 위치) · 시나리오×유효 대응×치명 실수 5행 표 · "지금 닫히는 창" 3타일(DP-1·2·6 유효기간) · 무후회 밴드 4종 |
-| 04-07 | Appendix A-D · **DT08 / DT12 / DT19 / DT23** | KPI 4타일 + D+N 미니 차트 + 현장 수치 + 원인/대응(승자·패자)/결과·교훈 |
-| 08-12 | Appendix E-I · **시나리오 DT-A~E** | KPI 4타일(확률·발원·전개·역사 대응물) + 역사와의 연결 + 감별 신호(DX) + 트리거/대응 문법(유효 vs 실수)/대비 체크(DP) |
+| 03 | **DRAM 단독 뷰** — "다섯 번 모두 하강한 조정의 진앙, 치킨게임과 퇴출의 무대" | DRAM 단독 타임라인(**DT16 포함 5개 창**) · DRAM 5점 산점도(분기 검증치 전건, DT16 포함) · DRAM 관점 5행 표 · DRAM 밴드 4종(진앙·퇴출 무대·다음 진앙 후보) |
+| 04 | **다음 다운턴** — "예측이 아니라 감별의 게임, 형태별 처방은 정반대" | 시나리오 사분면(DT-A~D 버블+확률+역사 대응물, DT-E 와일드카드, 전이 화살표, 현재 위치) · 시나리오×유효 대응×치명 실수 5행 표 · "지금 닫히는 창" 3타일(DP-1·2·6 유효기간) · 무후회 밴드 4종 |
+| 05-08 | Appendix A-D · **DT08 / DT12 / DT19 / DT23** | KPI 4타일 + D+N 미니 차트 + 현장 수치 + 원인/대응(승자·패자)/결과·교훈 |
+| 09-13 | Appendix E-I · **시나리오 DT-A~E** | KPI 4타일(확률·발원·전개·역사 대응물) + 역사와의 연결 + 감별 신호(DX) + 트리거/대응 문법(유효 vs 실수)/대비 체크(DP) |
 
 ## 산점도 데이터 (S1 우상단 — 전체 메모리 D+N 통합)
 
@@ -53,6 +54,6 @@
 ## 재생성
 
 ```bash
-.venv/bin/python outputs/presentation/scripts/generate_downturn_assets.py       # 차트 PNG 9종 (타임라인·산점도·사분면·NAND 2종·미니 4종)
+.venv/bin/python outputs/presentation/scripts/generate_downturn_assets.py       # 차트 PNG 11종 (통합 타임라인·통합 산점도·사분면·NAND 2종·DRAM 2종·미니 4종)
 .venv/bin/python outputs/presentation/scripts/generate_downturn_review_pptx.py  # 덱 본체 (발표자 노트 포함)
 ```
