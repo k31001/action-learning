@@ -24,7 +24,9 @@ plt.rcParams["axes.unicode_minus"] = False
 # ---- 디자인 토큰 (samsung-memory 디자인 시스템, ssd-strategy.pptx 승계) ----
 BLUE = "#1428A0"       # DRAM
 BLUE_T2 = "#AAB8E8"    # NAND
-BAND = "#EDF1FB"       # 다운턴 창 음영
+BAND = "#EDF1FB"       # (구) 공통 음영
+BAND_DEMAND = "#E2E9FA"  # 수요발 창 음영 (블루 틴트)
+BAND_SUPPLY = "#EBEBEE"  # 공급발 창 음영 (그레이 틴트)
 INK = "#1A1A1A"
 GRAY = "#555555"
 GRAY_MID = "#8A8F99"
@@ -46,13 +48,39 @@ EST_N = {2006, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017,
          2019, 2022, 2024, 2025}
 EST_T = EST_D | EST_N  # 합산은 어느 한쪽이 추정이면 추정
 
-# 다운턴 창: (라벨, 하강 연도 리스트, 전체 메모리 낙폭 표기)
+# 다운턴 창: (라벨, 하강 연도, 발원, 원인 1-2단어, 전체 메모리 낙폭)
 WINDOWS = [
-    ("DT08", [2007, 2008, 2009], "-26%*"),
-    ("DT12", [2011, 2012], "-19%*"),
-    ("DT19", [2019], "-34%*"),
-    ("DT23", [2022, 2023], "-45%*"),
+    ("DT08", [2007, 2008, 2009], "mixed", "치킨게임·금융위기", "-26%*"),
+    ("DT12", [2011, 2012], "supply", "증산 경쟁", "-19%*"),
+    ("DT19", [2019], "demand", "재고 조정", "-34%*"),
+    ("DT23", [2022, 2023], "demand", "재고 대조정", "-45%*"),
 ]
+ORIGIN_TXT = {"demand": "수요발", "supply": "공급발", "mixed": "공급발→수요충격"}
+
+
+def origin_color(origin):
+    return BLUE if origin == "demand" else GRAY
+
+
+def draw_band(ax, ys, origin):
+    """발원별 음영. mixed(DT08)는 공급 구간(그레이) + 말기 수요충격(블루) 2단."""
+    x0, x1 = min(ys) - 0.5, max(ys) + 0.5
+    if origin == "mixed":
+        ax.axvspan(x0, x1 - 1.0, color=BAND_SUPPLY, zorder=0)
+        ax.axvspan(x1 - 1.0, x1, color=BAND_DEMAND, zorder=0)
+    else:
+        ax.axvspan(x0, x1, color=BAND_DEMAND if origin == "demand" else BAND_SUPPLY,
+                   zorder=0)
+    return (x0 + x1) / 2
+
+
+def band_text(ax, cx, name, origin, cause, depth, ypos, fs=(12.5, 9.5, 9.5, 10.5)):
+    ax.text(cx, ypos[0], name, ha="center", va="top", fontsize=fs[0],
+            fontweight="bold", color=origin_color(origin))
+    ax.text(cx, ypos[1], ORIGIN_TXT[origin], ha="center", va="top", fontsize=fs[1],
+            fontweight="bold", color=origin_color(origin))
+    ax.text(cx, ypos[2], cause, ha="center", va="top", fontsize=fs[2], color=GRAY_MID)
+    ax.text(cx, ypos[3], depth, ha="center", va="top", fontsize=fs[3], color=GRAY)
 # 합산 라벨 (정점·저점·현재만 선별 표기)
 LABEL_YEARS = {2006, 2009, 2010, 2012, 2014, 2018, 2019, 2021, 2023, 2024, 2025}
 
@@ -84,13 +112,9 @@ def stack(ax, yrs, width=0.68):
 fig, ax = plt.subplots(figsize=(10.9, 3.75), dpi=200)
 style_axes(ax)
 
-for label, ys, depth in WINDOWS:
-    x0, x1 = min(ys) - 0.5, max(ys) + 0.5
-    ax.axvspan(x0, x1, color=BAND, zorder=0)
-    ax.text((x0 + x1) / 2, 252, label, ha="center", va="top",
-            fontsize=12.5, fontweight="bold", color=BLUE)
-    ax.text((x0 + x1) / 2, 234, depth, ha="center", va="top",
-            fontsize=11, color=GRAY)
+for label, ys, origin, cause, depth in WINDOWS:
+    cx = draw_band(ax, ys, origin)
+    band_text(ax, cx, label, origin, cause, depth, (257, 241, 227, 212))
 
 stack(ax, YEARS)
 
@@ -184,8 +208,7 @@ for key, (y0, y1) in MINIS.items():
     fig, ax = plt.subplots(figsize=(5.5, 2.85), dpi=200)
     style_axes(ax)
     win = next(w for w in WINDOWS if w[0].lower() == key)
-    x0, x1 = min(win[1]) - 0.5, max(win[1]) + 0.5
-    ax.axvspan(x0, x1, color=BAND, zorder=0)
+    draw_band(ax, win[1], win[2])
     stack(ax, yrs, width=0.6)
     top = max(tot)
     ylim = top * 1.26
@@ -277,10 +300,10 @@ plt.close(fig)
 
 # ================= 5) NAND 단독 타임라인 =================
 N_WINDOWS = [
-    ("DT08", [2007, 2008, 2009], "N -14%"),
-    ("DT12", [2011, 2012], "N -2%*·가격 위기"),
-    ("DT19", [2019], "N -27%*"),
-    ("DT23", [2022, 2023], "N -45%"),
+    ("DT08", [2007, 2008, 2009], "mixed", "ASP 급락", "N -14%"),
+    ("DT12", [2011, 2012], "supply", "가격 위기", "N -2%*"),
+    ("DT19", [2019], "demand", "재고·정전", "N -27%*"),
+    ("DT23", [2022, 2023], "demand", "재고 대조정", "N -45%"),
 ]
 N_DOWN = {2008, 2019, 2022, 2023}  # NAND 매출 하강 연도 (강조)
 N_LABELS = {2006, 2008, 2011, 2014, 2016, 2018, 2019, 2021, 2023, 2025}
@@ -293,16 +316,13 @@ def fmt_n(y):
 
 fig, ax = plt.subplots(figsize=(10.9, 3.75), dpi=200)
 style_axes(ax)
-for label, ys, depth in N_WINDOWS:
-    x0, x1 = min(ys) - 0.5, max(ys) + 0.5
-    ax.axvspan(x0, x1, color=BAND, zorder=0)
-    ax.text((x0 + x1) / 2, 79.5, label, ha="center", va="top",
-            fontsize=12.5, fontweight="bold", color=BLUE)
-    ax.text((x0 + x1) / 2, 73.5, depth, ha="center", va="top", fontsize=10.5,
-            color=GRAY)
+for label, ys, origin, cause, depth in N_WINDOWS:
+    cx = draw_band(ax, ys, origin)
+    band_text(ax, cx, label, origin, cause, depth, (81.3, 76.3, 71.9, 67.2),
+              fs=(12, 9.5, 9.5, 10))
 # DT16 비동행 주석 (음영 없음)
-ax.text(2015.5, 79.5, "(DT16)", ha="center", va="top", fontsize=11, color=GRAY_MID)
-ax.text(2015.5, 73.5, "비동행 +14%*", ha="center", va="top", fontsize=10.5,
+ax.text(2015.5, 81.3, "(DT16)", ha="center", va="top", fontsize=11, color=GRAY_MID)
+ax.text(2015.5, 75.8, "비동행 +14%*", ha="center", va="top", fontsize=10,
         color=GRAY_MID)
 
 cols = [BLUE if y in N_DOWN else BLUE_T2 for y in YEARS]
@@ -358,13 +378,13 @@ plt.close(fig)
 
 # ================= 7) DRAM 단독 타임라인 (DT16 포함 5개 창) =================
 D_WINDOWS = [
-    ("DT08", [2007, 2008, 2009], "D -34%*"),
-    ("DT12", [2011, 2012], "D -33%*"),
-    ("DT16", [2015, 2016], "D -11%*·D 단독"),
-    ("DT19", [2019], "D -37.6%"),
-    ("DT23", [2022, 2023], "D -45%*"),
+    ("DT08", [2007, 2008, 2009], "mixed", "치킨게임·금융위기", "D -34%*"),
+    ("DT12", [2011, 2012], "supply", "증산 경쟁", "D -33%*"),
+    ("DT16", [2015, 2016], "demand", "PC·폰 둔화 (D 단독)", "D -11%*"),
+    ("DT19", [2019], "demand", "재고 조정", "D -37.6%"),
+    ("DT23", [2022, 2023], "demand", "재고 대조정", "D -45%*"),
 ]
-D_DOWN = {y for _, ys, _ in D_WINDOWS for y in ys}
+D_DOWN = {y for _, ys, _, _, _ in D_WINDOWS for y in ys}
 D_LABELS = {2006, 2009, 2010, 2012, 2014, 2016, 2018, 2019, 2021, 2023, 2024, 2025}
 BAR_NEUTRAL = "#C9CDD6"
 
@@ -376,13 +396,10 @@ def fmt_d(y):
 
 fig, ax = plt.subplots(figsize=(10.9, 3.75), dpi=200)
 style_axes(ax)
-for label, ys, depth in D_WINDOWS:
-    x0, x1 = min(ys) - 0.5, max(ys) + 0.5
-    ax.axvspan(x0, x1, color=BAND, zorder=0)
-    ax.text((x0 + x1) / 2, 173, label, ha="center", va="top",
-            fontsize=12.5, fontweight="bold", color=BLUE)
-    ax.text((x0 + x1) / 2, 160, depth, ha="center", va="top", fontsize=10.5,
-            color=GRAY)
+for label, ys, origin, cause, depth in D_WINDOWS:
+    cx = draw_band(ax, ys, origin)
+    band_text(ax, cx, label, origin, cause, depth, (175, 165, 155.5, 145.5),
+              fs=(12, 9.5, 9.5, 10))
 cols = [BLUE if y in D_DOWN else BAR_NEUTRAL for y in YEARS]
 ax.bar(YEARS, DRAM, width=0.68, color=cols, zorder=2)
 for y in YEARS:
