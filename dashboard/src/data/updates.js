@@ -17,6 +17,27 @@ export const UPDATES = [
   // ── 2026-08-25 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-25',
+    type: 'assessment',
+    version: 'v2.46.10',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + EWI 3종·트리거 3종 갱신',
+    summary:
+      '직전 08-18 재평가 이후 git log 변경분(v2.46.2~v2.46.9·v2.42.1)은 전부 역사 리서치(지난 20년 다운턴 복기 전체 메모리 D+N 통합 산점도·NAND 분기 낙폭 검증)·SP-2 삼성 영향 진단(S/W 코드 좌표계 — 별도 축 DF-D1×DF-D2)·FDP 생태계 실행전략·발표 층 분리(PPTX 확률 표기 제거)로 신규 실현된 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. 08-25 웹 리서치 in-window 신호도 정점 재확인·유보뿐(CapEx ~$725B·삭감 0건·DRAM Q3 +13~18%·NAND +10~15% QoQ 감속·HBM4 +30%·MATCH 본회의 movement 없음·애플–CXMT 인증 진전했으나 백악관 사인오프 대기). 수집 데이터로 EWI·트리거 노트만 갱신.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '유지'],
+    items: [
+      { label: 'DF1 8.5·DF2 0.5 유지 (축 무이동)', detail: '변경분은 역사 리서치·SP-2 진단(별도 축)·FDP 전략·발표 층 분리로 신규 실현 외부 거시 수요/정책 사실 0건. 직전 실현 외부 데이터는 여전히 Q2 하이퍼스케일러 실적(08-11)' },
+      { label: '확률 A26·B39·C8·D21·E6 유지', detail: 'in-window 신호(CapEx ~$725B·삭감 0건·메모리 가격 감속=정제)는 이미 정점(DF1 8.5)인 축의 재확인이지 시나리오 간 상대 확률 변경 요인 아님. 분석 층 확률 추적은 발표 층 확률 미표기 원칙(사용자 지시 08-25)과 별개로 유지' },
+      { label: 'EWI 3종 갱신', detail: 'cxmt_apple_qualification(테스트→인증 진전·Schumer 반대 서한·백악관 사인오프 대기, testing 유지)·samsung_hbm4_rubin_share(볼륨 발주 미전환·베트남 백엔드 이전 검토, 28% 유지)·bigtech_capex_growth(삭감 0건 재확인)' },
+      { label: '시나리오 트리거 3종 노트 갱신', detail: 'bigtech_capex_cut25(미발동)·match_act_passed(위원회 단계 유지·본회의 movement 없음)·samsung_hbm4_nvidia_confirmed(미충족 유지) — 08-25 웹 리서치 재확인' },
+    ],
+    links: [
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
+
+  // ── 2026-08-25 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-25',
     type: 'build',
     version: 'v2.42.1',
     title: 'SP-2 시나리오별 삼성 영향 진단 슬라이드 1장 + samsung-impact 위키 신설',

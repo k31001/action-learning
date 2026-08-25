@@ -14,6 +14,11 @@
 
 ---
 
+## [2026-08-25] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) (v2.46.10)
+- **무엇**: 직전 08-18 재평가 이후 git log 변경분(v2.46.2~v2.46.9·v2.42.1)을 계층 분류하고 08-25 웹 리서치로 in-window 거시 신호를 대조 → 포지션 맵·확률 전부 **유지**로 확정. EWI 3종·시나리오 트리거 3종 노트만 수집 데이터로 갱신.
+- **왜**: 변경분은 전부 ② 역사 리서치(지난 20년 다운턴 복기 전체 메모리 D+N 통합 산점도·NAND 분기 낙폭 4Q08 -19.3%·4Q22 -25% 검증) ③ SP-2 다운턴 트랙 심화(시나리오별 삼성 영향 진단 — S/W 코드 좌표계, 별도 축 DF-D1×DF-D2라 SP-1 무이동) ④ 전략·outputs(FDP 생태계 실행전략 3종) ⑤ 발표 층(PPTX 확률 표기 제거·영향 진단 슬라이드 리디자인)으로 **신규 실현된 외부 거시 사실 0건**. 08-25 웹 리서치 in-window 신호도 정점 재확인·유보뿐: 빅테크 CapEx ~$725B(+77% YoY)·삭감 0건·DRAM Q3 +13~18%·NAND +10~15% QoQ 감속(정제)·HBM4 +30%·MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전했으나 백악관 사인오프 대기·Schumer 반대 서한(07-29). 리트머스 미해결 → DF2 이동 근거 미충족.
+- **영향받은 페이지**: `wiki/driving-forces/key-drivers.md`(DF1·DF2 08-25 현재 위치)·`wiki/scenarios/scenario-matrix.md`(확률 추정 08-25 로그)·`dashboard/src/data/indicators.js`(INITIAL_QUADRANT_POSITIONS current·SCENARIOS 주석·EWI cxmt_apple_qualification·samsung_hbm4_rubin_share·트리거 3종 노트)·`dashboard/src/data/scenarioPlanning.js`(SCENARIOS_DATA A·B 주석)·`dashboard/src/data/updates.js`(assessment 엔트리 신설)·`dashboard/src/version.js`(v2.46.9→v2.46.10 패치).
+
 ## [2026-08-25] build | 영향 진단 슬라이드 리디자인 — 텍스트 축약 + 공유 히트맵
 - **무엇**: 사용자 피드백("글자가 너무 많아 busy — 핵심 강조 위주로 남기고 시각적으로 개선")에 따라 `downturn-scenario-impact.pptx` 전면 리디자인. 콘텐츠·판정은 `wiki/downturn/samsung-impact.md` 그대로(압축만), 위키 무변경.
 - **구조 변경**: ① 시나리오별 4행 노출 스트립 → 제품 4행 × 시나리오 5열 **공유 히트맵**(좌측 레일에 제품 라벨 1회만, 라벨 반복 제거) ② 시나리오당 프로즈 8~9줄 → 승부처 인용구 2줄(블루 좌측 바) + W/S 배지·키워드 힌트 각 1줄 ③ S/W 칩 8종 근거 줄 삭제(코드+이름만) ④ 리드 문장·섹션 설명 줄 삭제(각주로 이동) ⑤ 종합 밴드 2줄 → 1줄. 컬럼 박스 대신 얇은 세로 구분선 + 여백.
