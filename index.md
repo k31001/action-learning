@@ -32,6 +32,7 @@
 - [wiki/downturn/preparation.md](wiki/downturn/preparation.md) — 대비 DP-1~7 (도착 전에만 살 수 있는 것). 무후회 3종(DP-2 옵션형 캐파·DP-4 감별 EWI 배선·DP-5 차세대 별동대) + **신규 기여 DP-1 계약 만기 사다리화** + 유효기간표
 - [wiki/downturn/response-playbook.md](wiki/downturn/response-playbook.md) — 대응 DR-1~6 (원인 판별 후 분기). DR-1 감별 프로토콜(30일)·DR-2 공급 규율은 공급발에서만·DR-2b 소모전 봉인(치킨게임 4대 전제 붕괴)·금지 목록 8종
 - [wiki/downturn/differential-indicators.md](wiki/downturn/differential-indicators.md) — 감별 지표 DX-1~8. 기존 EWI가 "오는가"를 묻는다면 DX는 "어떤 다운턴인가"를 묻는다 + 판별 결정표 + 오진 방지 + 구축 로드맵(DX-7 만기 집중도 미측정 = 유일한 🔴)
+- [wiki/downturn/samsung-impact.md](wiki/downturn/samsung-impact.md) — (NEW) 시나리오별 삼성 메모리 영향 진단: 강점(S1~S4)·약점(W1~W4) 코드 좌표계 + 시나리오×제품 노출 매트릭스 + 승부처·보완·활용 힌트 (확률·전략 코드 미표기, 영향 진단 슬라이드의 단일 소스)
 
 ## wiki/scenarios — 5개 시나리오 + 매트릭스 (SP-1)
 
@@ -236,6 +237,7 @@
 - [outputs/storyline/dram-architecture-proposal.md](outputs/storyline/dram-architecture-proposal.md) — (NEW) 「판을 옮긴다」 — 2차 저지선 전략 2번(DRAM 제품·아키텍처): 따라잡히는 축·로직 4단계 판 갈이↔메모리 대응(4F² COP)·제품 3분류 개발 체계·세 제안(WoW 필연·zHBM MTO 플랫폼·본딩 분할 경계 5선택지)·해자는 본딩이 아니라 본딩+선단 로직+메모리의 결합
 - [outputs/storyline/mfg-fungibility-proposal.md](outputs/storyline/mfg-fungibility-proposal.md) — (NEW) 「전환할 수 있는 몸」 — 2차 저지선 전략 1번(양산 체제): 감가의 파고(2028~29 감가 정점 = 감가 완료 설비 풀 최대)·전환 리드타임 9~12개월·세 갈래 길·세 축(세대 연장성/제품 간 동일성/N-1 설계, 선단 리더십 유지 바벨)·실행 4영역
 - [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md) — (NEW) 「SSD의 CUDA — 하드웨어를 지키는 소프트웨어」 — SSD 제안편(5~7장): Captive 진단(구글 이중 트랙·KV Cache)·3안 선택·문(SCA)/열쇠(FDP)/사람(FDE)·수익화 3단 사다리·5년 효과 산정($1.2B~$17.9B)
+- [outputs/presentation/downturn-scenario-impact.pptx](outputs/presentation/downturn-scenario-impact.pptx) — (NEW) SP-2 시나리오별 삼성 영향 진단 1장 슬라이드 ([wiki/downturn/samsung-impact.md](wiki/downturn/samsung-impact.md) 합성, `scripts/generate_downturn_impact_slide.py`로 재생성)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
 - [outputs/presentation/dev-transformation-summary.pptx](outputs/presentation/dev-transformation-summary.pptx) — 개발실 체질 전환 요약 5장: 디테일 상·중·하 + 제품·기술 축(FDP 플랫폼) 2장, 도식 중심(타임라인·As-Is→To-Be·아이콘)·화이트+블루·그린. 개별본 `-high/-mid/-low/-fdp.pptx` + `dashboard/public/downloads/` 다운로드 미러 (`scripts/generate_dev_transformation_summary.cjs`로 재생성)

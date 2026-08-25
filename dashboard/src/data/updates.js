@@ -14,6 +14,24 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-08-25 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-25',
+    type: 'build',
+    version: 'v2.42.1',
+    title: 'SP-2 시나리오별 삼성 영향 진단 슬라이드 1장 + samsung-impact 위키 신설',
+    summary:
+      '강점(S1~S4)·약점(W1~W4) 코드 좌표계로 다섯 다운턴 시나리오의 삼성 메모리 노출을 진단하는 위키 페이지(wiki/downturn/samsung-impact.md)와 1장 발표 슬라이드(outputs/presentation/downturn-scenario-impact.pptx)를 신설. 시나리오×제품 노출 매트릭스(직격/압박/제한/방어·수혜) + 시나리오별 승부처·보완/활용 힌트·전략적 중요 분야. 종합 통찰: 약점은 W3(판단 지연)로 수렴하고 강점 발화는 유형별로 분화 — 감별이 강점 활용의 전제. 확률·전략 코드는 진단 층 역할 경계상 미표기. 지식그래프 재생성 반영, 패치 v2.42.1.',
+    tags: ['SP-2', '다운턴', '영향 진단', '슬라이드', 'S/W 코드'],
+    items: [
+      { label: 'wiki/downturn/samsung-impact.md 신설', detail: '강점 4(재무 요새·풀라인업·IDM 결합·세대 선행) × 약점 4(인증 열위·원가 열위·판단 지연·커밋 관성) 고정 좌표계, 전 시나리오 동일 기준 진단' },
+      { label: '1장 슬라이드 downturn-scenario-impact.pptx', detail: '5컬럼 진단(노출 스트립·승부처·W 보완·S 활용·중요 분야) + 종합 밴드. scripts/generate_downturn_impact_slide.py로 재생성' },
+    ],
+    links: [
+      { label: 'wiki/downturn/samsung-impact.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/downturn/samsung-impact.md' },
+    ],
+  },
+
   // ── 2026-08-15 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-15',
