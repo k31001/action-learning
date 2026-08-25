@@ -323,6 +323,10 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 
 - 차세대 3D 아키텍처 **zHBM·zNAND-O** 목업을 업계 최초로 공개, 8월 중 HBM을 단순 메모리를 넘어 일부 AI 연산까지 수행하는 **"advanced HBM(aHBM)"** 구상을 공개 — 크리스 밀러가 2026-07-09 인터뷰에서 제시한 "HBM을 넘어선 차세대 AI 메모리 아키텍처" 논지([Update 2026-08-03])와 정확히 부합하는 구체 실행 사례([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md); [hbm-roadmap.md](../concepts/hbm-roadmap.md#update-2026-08-03-크리스-밀러--hbm-너머-추론-최적화-메모리-프런티어) 참조).
 
+### Hot Chips 2026(2026-08-11경 발표, 보도 08-24~25) — zHBM 정량 성능 최초 공개
+
+- FMS 2026에서 공개한 zHBM 목업이 Hot Chips 2026에서 구체 성능 수치를 얻었다: 표준 HBM4e 대비 **전력효율 70% 개선·대역폭 230% 향상** 주장(측정 조건 미확인). 메모리 1c 노드·베이스다이(로직) 4nm 노드 분리로 DRAM을 GPU 위에 직접 3D 수직 적층하는 구조를 지향 — SK하이닉스는 같은 학회에서 로직화 대신 패키징·열관리(i-HBM)에 베팅해 기술 전략이 갈렸다. 상세: [hbm-roadmap.md §Hot Chips 2026](../concepts/hbm-roadmap.md#update-2026-08-25-hot-chips-2026--삼성-zhbm베이스다이-로직화-vs-sk하이닉스-i-hbm패키징열관리-하이브리드본딩-hbm5로-순연) ([hot-chips-2026-hbm-architecture-2026-08-25.md](../../sources/raw-notes/hot-chips-2026-hbm-architecture-2026-08-25.md)).
+
 ### 참고 — 병목모델 교차 신호
 
 - 삼성 HBM 웨이퍼 캐파 17만 → 25만 wpm(+47%, 2026년말 목표), 레거시 DRAM/NAND 후공정의 베트남(타이응우옌, 2027-11 가동 목표) 이전 검토로 천안·온양 국내 캐파를 HBM向으로 전환 — CoWoS 수급 갭 축소와 함께 2026년 패키징 병목 완화 신호 중 하나([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).

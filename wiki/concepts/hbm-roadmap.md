@@ -205,3 +205,16 @@
   - ChinaTalk(2025-08)에서 밀러는 **HBM·제조장비가 GPU보다 깊은 초크포인트**일 수 있다고 주장 — HBM 3사가 모두 비중국 기업이라는 구조적 사실이 메모리의 지정학적 위상을 규정 ([chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §3).
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
+
+---
+
+## [Update 2026-08-25] Hot Chips 2026 — 삼성 zHBM(베이스다이 로직화) vs SK하이닉스 i-HBM(패키징·열관리), 하이브리드본딩 HBM5로 순연
+
+크리스 밀러의 "아키텍처 계층 경쟁" 논지([Update 2026-08-03] 위)가 Hot Chips 2026(학회 발표 2026-08-11경, 매체 보도 2026-08-24~25 집중)에서 구체적 정량치로 실증됐다 — 삼성·SK하이닉스가 서로 다른 층위의 병목을 겨냥한다.
+
+- **삼성 — zHBM(베이스다이 로직화)**: 표준 HBM → 커스텀 HBM → zHBM 3단계 진화를 제시. zHBM은 표준 HBM4e 스택 대비 **전력효율 70% 개선·대역폭 230% 향상**을 주장 — 메모리는 1c 노드, 베이스다이(로직)는 4nm 노드로 분리해 DRAM을 GPU 등 연산 칩 위에 직접 수직 적층하는 진정한 3D 통합을 지향한다. [Update 2026-07-04~08-25]에서 이미 확인한 FMS 2026(8/4~6) zHBM 목업 공개의 후속으로, Hot Chips에서 처음 구체 성능 수치가 공개됐다 ([hot-chips-2026-hbm-architecture-2026-08-25.md](../../sources/raw-notes/hot-chips-2026-hbm-architecture-2026-08-25.md)).
+- **SK하이닉스 — i-HBM(패키징·열관리)**: 베이스다이 로직화 대신 첨단 패키징·열관리에 집중 — CoWoS-S·CoWoS-L·Intel EMIB가 HBM 스택·인터포저에 가하는 기계적·열적 스트레스를 비교 평가(Intel EMIB 옵션 검토 확인). i-HBM은 고열전도 절연 소재를 die-to-die PHY 영역에 내장해 전용 방열 경로를 만들어 **열저항 30%+ 감소**를 목표한다 (동 출처).
+- **하이브리드본딩 HBM5로 순연 + 775마이크론 한계**: SK하이닉스는 하이브리드본딩이 HBM4E 시점까지 준비되지 않을 것으로 보고 최소 HBM5로 순연 전망을 공식화 — AI 메모리 스택이 **775마이크론 높이 한계**에 부딪혔다는 문제의식과 함께 제시했다. 기존 MR-MUF 공정을 NVIDIA Rubin 세대까지 확장 적용할 계획 — 이는 [bottleneck-model-2030.md](bottleneck-model-2030.md)의 08-25 정기점검에서 이미 확인한 "업계 전반 마이크로범프 유지·하이브리드본딩 순연" 판단을 SK하이닉스측 1차 근거로 재확인한 것(새 방향 전환 아님, 보강) (동 출처).
+- **함의**: 두 회사의 분기(베이스다이 로직 vs 패키징·열관리)는 [MB-4 커스텀 AI 메모리](../strategies/core/current-state-mb4-custom-ai-memory.md)의 두 가지 다른 실행 경로를 시사한다 — 삼성이 zHBM 성능 주장(70%/230%)을 실제 양산 스펙으로 전환할 수 있다면 커스텀 HBM 경쟁에서 아키텍처 차별화 우위를 점할 잠재력이 있으나, 측정 조건(워크로드·구성)이 아직 확인되지 않아 마케팅 수치와 양산 스펙의 괴리 가능성은 열어둔다.
+
+**출처**: [hot-chips-2026-hbm-architecture-2026-08-25.md](../../sources/raw-notes/hot-chips-2026-hbm-architecture-2026-08-25.md)

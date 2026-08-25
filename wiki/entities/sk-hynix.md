@@ -420,4 +420,8 @@ Counterpoint Research (2026-01-29):
 
 - 인디애나 패키징 팹은 2026-04 파일링 착공에 이어 **2026-08-27 정식 그라운드브레이킹**($3.87억 최초 투자, 총 $3.9B), 2028년 하반기 전면가동 목표, HBM4E/HBM5 타깃([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)) — 기존 위키의 "2028년 목표"와 정합.
 
-**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md), [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)
+### Hot Chips 2026 — i-HBM(패키징·열관리) 노선, 하이브리드본딩 HBM5로 순연
+
+- SK하이닉스는 삼성의 베이스다이 로직화(zHBM)와 달리 **첨단 패키징·열관리**에 집중 — CoWoS-S·CoWoS-L·Intel EMIB의 열적·기계적 스트레스를 비교 평가하고, 고열전도 절연 소재를 die-to-die PHY 영역에 내장한 **i-HBM**으로 열저항 30%+ 감소를 목표. 하이브리드본딩은 HBM4E까지 준비되지 않을 것으로 보고 **HBM5로 순연** 공식화(AI 메모리 스택의 775마이크론 높이 한계 문제의식과 함께) — 기존 MR-MUF 공정을 Rubin 세대까지 확장 적용할 계획. 상세: [hbm-roadmap.md §Hot Chips 2026](../concepts/hbm-roadmap.md#update-2026-08-25-hot-chips-2026--삼성-zhbm베이스다이-로직화-vs-sk하이닉스-i-hbm패키징열관리-하이브리드본딩-hbm5로-순연) ([hot-chips-2026-hbm-architecture-2026-08-25.md](../../sources/raw-notes/hot-chips-2026-hbm-architecture-2026-08-25.md)).
+
+**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md), [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md), [hot-chips-2026-hbm-architecture-2026-08-25.md](../../sources/raw-notes/hot-chips-2026-hbm-architecture-2026-08-25.md)
