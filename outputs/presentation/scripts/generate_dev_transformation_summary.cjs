@@ -864,20 +864,28 @@ function slideFdpEco(pres, ic) {
     fill: { color: SB_BG }, valign: "middle",
     fontFace: FONT, fontSize: 9.5, margin: 0.08, lineSpacingMultiple: 1.12,
   });
+  s.addText([
+    { text: "FDE 선례  ", options: { bold: true, color: SBLUE } },
+    { text: "Palantir가 창안한 직군 (코드명 Delta, 640% 주가 동력으로 회자) · Anthropic·OpenAI도 엔터프라이즈 GTM으로 채택", options: { color: SINK } },
+  ], {
+    shape: "roundRect", rectRadius: 0.05, x: 9.11, y: 3.62, w: 3.5, h: 0.76,
+    fill: { color: SB_BG }, line: { color: SBLUE, width: 1 }, valign: "middle",
+    fontFace: FONT, fontSize: 9.5, margin: 0.08, lineSpacingMultiple: 1.1,
+  });
   const hr = [
-    ["채용", "실리콘밸리 현지 중심, 오픈소스 스토리지 기여자 우대, 영어 커뮤니케이션 필수"],
-    ["양성", "본사 엔지니어 미국 로테이션 6~12개월 + 현지 FDE 멘토 페어링, 사내 FW 인력의 호스트 SW 전환 트랙"],
-    ["운영", "파일럿 1~2사 상주 (Pod 소속·dual-ladder), 평가는 outcome (FDP 활성화 용량), 커널·SPDK·CacheLib 업스트림 기여"],
+    ["채용", "실리콘밸리 현지, 오픈소스 스토리지 기여자 우대, 영어 필수"],
+    ["양성", "본사 엔지니어 미국 로테이션 6~12개월 + 현지 FDE 멘토 페어링"],
+    ["운영", "파일럿 1~2사 상주 (Pod 소속), outcome 평가 (활성화 용량), 업스트림 기여"],
   ];
   hr.forEach(([k, v], i) => {
-    const y = 3.72 + i * 1.0;
+    const y = 4.52 + i * 0.78;
     s.addText(k, {
       shape: "roundRect", rectRadius: 0.05, x: 9.11, y, w: 0.62, h: 0.32,
       fill: { color: SBLUE }, align: "center", valign: "middle",
       fontFace: FONT, fontSize: 10, bold: true, color: "FFFFFF", margin: 0,
     });
     s.addText(v, {
-      x: 9.85, y: y - 0.02, w: 2.82, h: 0.94,
+      x: 9.85, y: y - 0.02, w: 2.82, h: 0.72,
       fontFace: FONT, fontSize: 10, color: SINK, margin: 0, valign: "top", lineSpacingMultiple: 1.12,
     });
   });
