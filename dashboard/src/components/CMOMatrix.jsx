@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
-import { LayoutGrid, List, X, AlertTriangle, Lightbulb } from 'lucide-react'
+import { LayoutGrid, List, X, AlertTriangle, Lightbulb, ChevronDown, ChevronRight } from 'lucide-react'
 import SourceLink from './SourceLink'
 import {
   CMO_DOWNTURNS, CMO_PHASES, CMO_PRODUCTS, CMO_CONTEXTS,
-  CMO_VERDICTS, CMO_CAUSES, CMO_ENTRIES, CMO_PREP_TYPES,
+  CMO_VERDICTS, CMO_CAUSES, CMO_ENTRIES, CMO_PREP_TYPES, CMO_INSIGHTS,
 } from '../data/cmoMatrix'
 
 const VERDICT = Object.fromEntries(CMO_VERDICTS.map(v => [v.id, v]))
@@ -19,15 +19,28 @@ const PHASE_TONE = {
   mistake: 'bg-red-100 text-red-700',
 }
 
-function Chip({ active, onClick, children, tone = '' }) {
+function Chip({ active, onClick, children, tone = '', style }) {
   return (
     <button
       onClick={onClick}
+      style={active ? style : undefined}
       className={`px-2.5 py-1 rounded-full text-[12px] font-medium border transition-colors ${
         active
           ? `border-transparent ${tone || 'bg-zinc-900 text-white'}`
           : 'border-zinc-200 bg-white text-zinc-500 hover:border-zinc-300 hover:text-zinc-700'
       }`}
+    >
+      {children}
+    </button>
+  )
+}
+
+// 프리셋 액션 버튼 — 토글이 아니라 클릭 즉시 필터 조합을 바꾸는 버튼이라 항상 tone 색을 표시한다
+function ActionChip({ onClick, tone, children }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`px-2.5 py-1 rounded-full text-[12px] font-semibold border border-transparent transition-opacity hover:opacity-85 ${tone}`}
     >
       {children}
     </button>
@@ -147,6 +160,51 @@ function EntryDetail({ entry, onClose }) {
   )
 }
 
+// 이 매트릭스에서 읽히는 것 — wiki/storyline/cmo-matrix.md §5 미러. 항목 클릭으로 본문 펼침.
+function InsightsPanel() {
+  const [open, setOpen] = useState(() => new Set([CMO_INSIGHTS[CMO_INSIGHTS.length - 1].id]))
+  const toggleOpen = id => {
+    const next = new Set(open)
+    next.has(id) ? next.delete(id) : next.add(id)
+    setOpen(next)
+  }
+  return (
+    <div className="rounded-hig-lg border border-zinc-200 bg-white p-4">
+      <h3 className="text-[13px] font-bold text-zinc-900 mb-1 flex items-center gap-1.5">
+        <Lightbulb size={14} /> 이 매트릭스에서 읽히는 것 — 통찰 {CMO_INSIGHTS.length}
+      </h3>
+      <p className="text-[11px] text-zinc-400 mb-2">항목을 클릭하면 본문이 펼쳐진다 · 단일 소스: wiki/storyline/cmo-matrix.md §5</p>
+      <div className="divide-y divide-zinc-100">
+        {CMO_INSIGHTS.map(ins => {
+          const isOpen = open.has(ins.id)
+          return (
+            <div key={ins.id}>
+              <button
+                onClick={() => toggleOpen(ins.id)}
+                className="w-full flex items-start gap-2 py-2 text-left hover:bg-zinc-50/60 transition-colors"
+              >
+                <span className="flex-shrink-0 mt-0.5 text-zinc-400">
+                  {isOpen ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                </span>
+                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-zinc-900 text-white text-[10px] font-bold inline-flex items-center justify-center">
+                  {ins.id}
+                </span>
+                <span className="text-[13px] font-semibold text-zinc-800 leading-snug">{ins.title}</span>
+              </button>
+              {isOpen && (
+                <div className="pl-11 pb-3">
+                  <p className="text-[13px] leading-relaxed text-zinc-600">{ins.text}</p>
+                  {ins.refs && <SourceLink source={ins.refs} className="mt-1.5 text-[11px] text-zinc-400" />}
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 export default function CMOMatrix() {
   const [view, setView] = useState('matrix')
   const [downturns, setDownturns] = useState(() => new Set(CMO_DOWNTURNS.map(d => d.id)))
@@ -176,10 +234,10 @@ export default function CMOMatrix() {
   const preset = key => {
     resetAll()
     if (key === 'worked') {
-      setDownturns(new Set(['d1', 'd2', 'd3']))
+      setDownturns(new Set(['d1', 'd2', 'd19', 'd3']))
       setVerdicts(new Set(['clear']))
     } else if (key === 'failed') {
-      setDownturns(new Set(['d1', 'd2', 'd3']))
+      setDownturns(new Set(['d1', 'd2', 'd19', 'd3']))
       setVerdicts(new Set(['adverse']))
     } else if (key === 'prep') {
       setPhases(new Set(['prep', 'recommend']))
@@ -226,9 +284,10 @@ export default function CMOMatrix() {
     <div className="space-y-4">
       {/* ── 헤더 ── */}
       <div className="rounded-hig-lg border border-zinc-200 bg-white p-5">
-        <h1 className="text-xl font-bold text-zinc-900 tracking-tight">CMO 통합 매트릭스 — 네 번의 다운턴</h1>
+        <h1 className="text-xl font-bold text-zinc-900 tracking-tight">CMO 통합 매트릭스 — 다섯 번의 다운턴</h1>
         <p className="mt-2 text-[15px] leading-relaxed text-zinc-700">
-          1·2·3차 다운턴(관측)과 다음 다운사이클(예측)을 하나의 데이터셋으로 합쳤다. 각 항목은 <b>액션(M)</b>이
+          1·2차 치킨게임, 2019 다운사이클, 3차 다운사이클(관측)과 다음 다운사이클(예측)을 하나의 데이터셋으로 합쳤다.
+          1·2·3차 번호 체계는 위키 전반의 확립 표기라 유지하고, 2019는 번호 없이 연도로 표기한다. 각 항목은 <b>액션(M)</b>이
           <b> 맥락(C)</b> 아래에서 만든 <b>결과(O)</b>이며, 두 축으로 분류된다 — <b>제품</b>(DRAM·NAND·SSD·UFS·공통)과
           <b> 관점</b>(제조·투자·개발·제품·운영). 국면은 <b>대비</b>(다운턴이 오기 전에 한 것)와
           <b> 대응</b>(다운턴 기간 중에 한 것)으로 나누고, 4차는 <b>추천 전략</b>과 <b>예상되는 흔한 실수</b>로 나눈다.
@@ -240,11 +299,11 @@ export default function CMOMatrix() {
       <div className="rounded-hig-lg border border-zinc-200 bg-white p-4">
         <div className="flex items-center gap-2 mb-2 flex-wrap">
           <span className="text-[11px] font-semibold text-zinc-400">프리셋</span>
-          <Chip onClick={() => preset('worked')} tone="bg-emerald-600 text-white">효과 있었던 것만 (◎)</Chip>
-          <Chip onClick={() => preset('failed')} tone="bg-red-600 text-white">실패·역효과 (✕)</Chip>
-          <Chip onClick={() => preset('prepIntent')} tone="bg-blue-600 text-white">⭑ 다운턴 대비 전략만</Chip>
-          <Chip onClick={() => preset('prep')} tone="bg-sky-600 text-white">대비 국면 전체</Chip>
-          <Chip onClick={() => preset('next')} tone="bg-blue-600 text-white">다음 다운턴</Chip>
+          <ActionChip onClick={() => preset('worked')} tone="bg-emerald-600 text-white">효과 있었던 것만 (◎)</ActionChip>
+          <ActionChip onClick={() => preset('failed')} tone="bg-red-600 text-white">실패·역효과 (✕)</ActionChip>
+          <ActionChip onClick={() => preset('prepIntent')} tone="bg-blue-600 text-white">⭑ 다운턴 대비 전략만</ActionChip>
+          <ActionChip onClick={() => preset('prep')} tone="bg-sky-600 text-white">대비 국면 전체</ActionChip>
+          <ActionChip onClick={() => preset('next')} tone="bg-blue-600 text-white">다음 다운턴</ActionChip>
           <button onClick={resetAll} className="text-[11px] text-zinc-400 hover:text-zinc-700 underline underline-offset-2">
             전체 해제
           </button>
@@ -269,9 +328,18 @@ export default function CMOMatrix() {
         <div className="border-t border-zinc-100 pt-1">
           <FilterRow label="다운턴">
             {CMO_DOWNTURNS.map(d => (
-              <Chip key={d.id} active={downturns.has(d.id)} onClick={() => toggle(downturns, setDownturns)(d.id)} tone="text-white" >
-                <span style={downturns.has(d.id) ? { color: '#fff' } : undefined}>
-                  <span className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle" style={{ background: d.color }} />
+              <Chip
+                key={d.id}
+                active={downturns.has(d.id)}
+                onClick={() => toggle(downturns, setDownturns)(d.id)}
+                tone="text-white"
+                style={{ backgroundColor: d.color }}
+              >
+                <span className="inline-flex items-center">
+                  <span
+                    className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
+                    style={{ background: downturns.has(d.id) ? '#fff' : d.color }}
+                  />
                   {d.label}
                 </span>
               </Chip>
@@ -446,6 +514,9 @@ export default function CMOMatrix() {
           )}
         </div>
       )}
+
+      {/* ── 통찰 — 위키 §5 미러 ── */}
+      <InsightsPanel />
 
       {/* ── 4차 원인 범례 ── */}
       <div className="rounded-hig-lg border border-zinc-200 bg-white p-4">

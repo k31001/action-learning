@@ -85,6 +85,7 @@ flowchart TB
 | 6.5 시나리오별 삼성 영향 진단 (S/W 노출) | [samsung-impact.md](samsung-impact.md) — 슬라이드 산출물의 단일 소스 |
 | 7. 대비 전략 (Main Bet 성격) | [preparation.md](preparation.md) |
 | 8. 대응 플레이북 + 감별 EWI | [response-playbook.md](response-playbook.md) · [differential-indicators.md](differential-indicators.md) |
+| (기준선) 지난 20년 다운턴 5건 복기 | [downturn-history.md](downturn-history.md) — DT08·DT12·DT16·DT19·DT23 지속기간×속도×발원 정량 비교 |
 
 ### 2.1 SP-1과 다른 점 — 7·8단계의 구조
 

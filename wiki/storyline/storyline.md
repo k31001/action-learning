@@ -1,7 +1,7 @@
 ---
 type: analysis
-last_reviewed: 2026-08-07
-sources: [sources/filings/micron-q3-fy26.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md, sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md, sources/raw-notes/ai-datacenter-buildout-2026-06.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md, sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md]
+last_reviewed: 2026-08-16
+sources: [sources/filings/micron-q3-fy26.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md, sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md, sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md, sources/articles/semiconductor-depreciation-cost-structure-2026-08.md, sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md, sources/raw-notes/ai-datacenter-buildout-2026-06.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md, sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md]
 ---
 
 # 스토리라인 — 환경 변화에서 전략적 선택까지
@@ -11,6 +11,8 @@ sources: [sources/filings/micron-q3-fy26.md, sources/articles/july-2026-market-u
 이 페이지는 위키 전체 지식 — 환경 변화([STEEP](../steep/economy.md)) → 진단([entities](../entities/samsung.md)·[concepts](../concepts/hbm-market.md)) → 핵심 동인([driving-forces](../driving-forces/key-drivers.md)) → 갈림길([scenarios](../scenarios/scenario-matrix.md)) → 선택([strategies](../scenarios/strategy.md)) — 을 하나의 이야기로 잇는 종합 서사다. 위키에 새 소스가 들어와 하류 페이지가 바뀌면 이 서사도 함께 갱신된다(CLAUDE.md §6 정합성 체인).
 
 > **다른 렌즈로 읽기** — 같은 위키 지식을 시나리오 플래닝이 아닌 다른 프레임워크로 재서사화한 자매 스토리라인: [파이브 포스(협상력의 지도)](storyline-five-forces.md) · [게임이론(치킨게임에서 약속의 게임으로)](storyline-game-theory.md) · [실물옵션(변동성이 클수록 옵션은 비싸진다)](storyline-real-options.md) · [파괴적 혁신(삼성은 이미 한 번 파괴당했다)](storyline-disruption.md) · [CMO(같은 전략은 같은 결과를 재생하지 않는다)](storyline-cmo.md). 대시보드 Storyline 탭의 하위 메뉴와 1:1 대응한다.
+
+> **확대해서 읽기 — 두 번째 시나리오 플래닝 트랙(SP-2)** — 이 페이지는 **SP-1**("AI 메모리 시대에 어떤 전략적 위치를 차지할 것인가", 축 = DF1 AI 수요 × DF2 미중 지정학)의 서사다. 그 지도 위에서 **하강 국면만 확대한 별도 트랙**이 [다운턴 시나리오 플래닝(SP-2)](../downturn/README.md)이다 — Focal Issue는 "2027~2030 다운턴에 지금 무엇을 준비하고, 도착한 뒤에는 무엇을 실행할 것인가", 축은 **DF-D1 발원지**(수요발↔공급발) × **DF-D2 전개 속도**(급락형↔침식형)다. SP-2는 렌즈가 아니라 **같은 방법론의 두 번째 적용**이며, 두 트랙이 충돌하면 전략 코드의 정의는 SP-1(이 페이지 계열)이 우선한다. 과거 다운턴의 관측 데이터셋은 [CMO 통합 매트릭스](cmo-matrix.md)가 담당한다.
 
 ## 스토리 흐름 한눈에
 
@@ -24,6 +26,7 @@ flowchart LR
     RS --> WHY["7장 왜 이 선택인가<br/>대안 비교 논증"]
     WHY --> EWI["8장 감시와 전환<br/>EWI · 트리거"]
     EWI -.->|"신호 발생 시 재평가"| SCN
+    EWI -.->|"도착 판정 시<br/>형태를 감별"| SP2["SP-2 다운턴 트랙<br/>DT-A~E · DP·DR·DX"]
 ```
 
 ## 연대기
@@ -32,7 +35,7 @@ flowchart LR
 flowchart LR
     Y2023["2023<br/>AI 붐 개화<br/>HBM 점유 40%"] --> Y2025["2025 Q1<br/>SK하이닉스 DRAM 역전<br/>HBM 17% 추락"]
     Y2025 --> Y2026["2026<br/>슈퍼사이클 정점<br/>$50.4B · Rubin 배정"]
-    Y2026 --> Y2027["2027~28<br/>공급 도래 창<br/>AI 수익화 분기점"]
+    Y2026 --> Y2027["2027~28<br/>공급 도래 창 · 감가 정점<br/>4차 다운사이클 창 (DT 5형)"]
     Y2027 --> Y2030["2030<br/>4대 병목<br/>전력 72 최대"]
     Y2030 --> Y2035["2035<br/>시나리오 지평<br/>$1,800억~$5,200억"]
 ```
@@ -41,7 +44,7 @@ flowchart LR
 
 ## 1장. 2023년, 게임의 규칙이 바뀌었다
 
-이야기는 2023년에 시작된다. 생성형 AI가 데이터센터의 설계도를 다시 그리면서, 30년간 PC와 스마트폰의 사이클을 따라 움직이던 메모리 산업에 완전히 새로운 수요 엔진이 장착됐다. 빅테크 4사의 AI 설비투자는 2024년 $200B에서 2026년 $725B로 2년 만에 3배 이상 불어났고, 2026년 성장률만 +77%에 달한다 ([samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md)). 전 세계 17개국에서 55.9GW 규모의 AI 데이터센터가 착공 파이프라인에 올라 있으며 ([ai-datacenter-buildout-2026-06.md](../../sources/raw-notes/ai-datacenter-buildout-2026-06.md)), 마이크로소프트는 2026년 CapEx $190B 중 $25B가 메모리·반도체 가격 상승분이라고 직접 인정했다 ([2026-q1-current-state.md](../concepts/2026-q1-current-state.md)).
+이야기는 2023년에 시작된다. 생성형 AI가 데이터센터의 설계도를 다시 그리면서, 30년간 PC와 스마트폰의 사이클을 따라 움직이던 메모리 산업에 완전히 새로운 수요 엔진이 장착됐다. 빅테크 4사의 AI 설비투자는 2024년 $200B에서 2026년 $725B로 2년 만에 3배 이상 불어났고 ([samsung-hbm4-volume-order-pending-2026-07-17.md](../../sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md)), 2026년 2분기 실적 확정으로 이 숫자는 오히려 **합산 ~$745~750B(+82% YoY)로 상향**됐다 — 네 곳 모두 가이던스를 올렸고 **삭감은 0건**이다 ([hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md](../../sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md)). 전 세계 17개국에서 55.9GW 규모의 AI 데이터센터가 착공 파이프라인에 올라 있으며 ([ai-datacenter-buildout-2026-06.md](../../sources/raw-notes/ai-datacenter-buildout-2026-06.md)), 마이크로소프트는 2026년 CapEx $190B 중 $25B가 메모리·반도체 가격 상승분이라고 직접 인정했다 ([2026-q1-current-state.md](../concepts/2026-q1-current-state.md)).
 
 이 수요가 과장이 아니라는 것은 사슬의 최상류가 직접 증언한다. OpenAI의 컴퓨트 총괄 Sachin Katti는 올해 업계 컴퓨트 지출 ~$700B(OpenAI 단독 ~$50B)를 확인하며 **"수요가 공급을 압도해, 온라인으로 가져오는 모든 컴퓨트를 즉시 소비한다"**고 말한다 ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)). 그가 정의하는 데이터센터는 "전자를 토큰으로 바꾸는 거대한 공장"이고 — 칩이 뜨거울수록 메모리 대역폭이 늘어나는, 냉각이 곧 인텔리전스 생산량인 공장 — 그 공장의 병목은 칩만이 아니라 가스터빈·변압기·숙련 인력까지 "어디에나" 있다. 10년간 증설이 없던 전력 기자재 산업이 수요 충격을 맞아 캐파 추가에 수년이 걸린다는 그의 증언은, 아래 전력 72 병목 지수를 최대 수요자의 눈으로 확인해 준다.
 
@@ -59,7 +62,7 @@ flowchart LR
 
 미래를 결정하는 것은 삼성이 통제할 수 없는 두 개의 질문이다. [50개 STEEP 요인을 Impact × Uncertainty로 평가](../driving-forces/impact-uncertainty-matrix.md)한 결과, 최상위 불확실성은 두 축으로 수렴했다 ([key-drivers.md](../driving-forces/key-drivers.md)).
 
-**첫 번째 질문(DF1): AI 수요는 구조적으로 지속되는가?** 빅테크 CapEx가 2027년 $1조를 돌파하는 슈퍼사이클(Pole A)과, ROI 실망으로 2027~2028년 투자가 급삭감되는 버블 붕괴(Pole B)가 양 극단이다. 현재 위치는 8.5 — 정점이다. 마이크론의 사상 최고 마진(84.9%)과 SCA 16건 $100B의 계약 락인 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)), take-or-pay 멀티이어 계약과 NTB 가격 하한으로 바닥까지 경직화된 수급 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)), 그리고 최대 구매자의 1차 증언 — "컴퓨트를 3배 늘리면 매출이 3배 늘었다. 최대 리스크는 과잉이 아니라 과소 건설"이라는 OpenAI 컴퓨트 총괄의 발언과, AI가 AI 연구·칩 설계를 수행하며 연구용 컴퓨트 수요가 인간 연구자 수 제약에서 해방되는 재귀 메커니즘 ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)) — 이 상방을 지지하지만, 바로 그 사상 최고 마진과 범용 DRAM 계약가의 첫 감속(Q3 +13~18%, Q2 +58~63% 대비)이 후기순환의 전형적 신호이기도 하다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+**첫 번째 질문(DF1): AI 수요는 구조적으로 지속되는가?** 빅테크 CapEx가 2027년 $1조를 돌파하는 슈퍼사이클(Pole A)과, ROI 실망으로 2027~2028년 투자가 급삭감되는 버블 붕괴(Pole B)가 양 극단이다. 현재 위치는 8.5 — 정점이다. 마이크론의 사상 최고 마진(84.9%)과 SCA 16건 $100B의 계약 락인 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)), take-or-pay 멀티이어 계약과 NTB 가격 하한으로 바닥까지 경직화된 수급 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)), 그리고 최대 구매자의 1차 증언 — "컴퓨트를 3배 늘리면 매출이 3배 늘었다. 최대 리스크는 과잉이 아니라 과소 건설"이라는 OpenAI 컴퓨트 총괄의 발언과, AI가 AI 연구·칩 설계를 수행하며 연구용 컴퓨트 수요가 인간 연구자 수 제약에서 해방되는 재귀 메커니즘 ([mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)) — 이 상방을 지지하지만, 바로 그 사상 최고 마진과 범용 DRAM 계약가의 첫 감속(Q3 +13~18%, Q2 +58~63% 대비)이 후기순환의 전형적 신호이기도 하다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 2026년 2분기 실적은 여기에 한 겹을 더한다 — **지출은 늘리는데 현금 창출은 줄어드는 다이버전스가 실측 단계에 진입했다**: Meta FCF -91%(→$784M), Amazon TTM FCF 마이너스 전환(~-$7.6B). 그러나 CapEx 삭감은 아직 0건이고 GPU 현물 임대가도 firming/flat(H100 ~$2.69·H200 ~$4.38)이다 ([hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md](../../sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md)). **경보는 켜졌지만 발화는 아직**이라는 것 — DF1을 8.5에서 내리지 않되 감시 등급은 올리는 근거다.
 
 **두 번째 질문(DF2): 미중 디커플링은 어디까지 가는가?** 삼성은 시안 팹(글로벌 NAND의 40%)과 대중 수출, 대미 관세에 동시에 노출된 '이중 노출' 구조로 이 축에 가장 취약하다 ([key-drivers.md](../driving-forces/key-drivers.md)). 현재 위치는 0.5로 관리된 공존 쪽에 소폭 기울어 있다 — 애플이 중국 내수용 CXMT DRAM 테스트에 착수하고 미 행정부에 승인을 로비 중인 사건이 최신 리트머스다 ([apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)). 두 질문은 서로 독립적이다 — 하나는 기술·경제 내적 논리로, 다른 하나는 외교·안보 논리로 움직인다. 그래서 하나의 예측이 아니라 조합의 시나리오가 필요하다. 보조 축(DF3)으로는 HBM 패러다임이 3D DRAM·PIM·CXL로 대체될 가능성을 별도로 감시한다 ([key-drivers.md](../driving-forces/key-drivers.md)).
 
@@ -75,6 +78,8 @@ flowchart LR
 
 확률은 고정된 숫자가 아니라 매주 소스가 들어올 때마다 재평가되는 살아있는 값이다 — 마이크론 실적으로 B가 35→37로, LTA→SCA 계약 체제 확립으로 37→38로, 애플–CXMT 건으로 38→39로 움직여 온 이력 전체가 [scenario-matrix.md](../scenarios/scenario-matrix.md)에 기록돼 있다. 2035년 시장 규모가 시나리오에 따라 $1,800억~$5,200억까지 갈리는 만큼 ([scenario-matrix.md](../scenarios/scenario-matrix.md)), 어느 하나만 가정한 단선적 계획은 위험하다.
 
+**그리고 이 매트릭스에는 한 가지 한계가 있다 — 다운턴이 C·D 사분면에 갇혀 있지 않다는 것이다.** 이 매트릭스에서 하강 국면은 AI 붕괴 축(C·D, 합산 29%)의 *결과*로만 등장한다. 그러나 2028~29년에 도래하는 신규 캐파(마이크론 Idaho·SK 용인·한국 팹 증설분)는 이미 착공·발주가 끝난 확정 사실이고 ([semiconductor-cycle.md](../concepts/semiconductor-cycle.md)), 같은 시기 **감가상각이 끝난 설비 풀이 최대가 되면 원가 하한 자체가 내려간다** — 삼성 기계장치 내용연수 5년·상각률 77.1%, 감가상각비의 85~93%가 기계장치다 ([semiconductor-depreciation-cost-structure-2026-08.md](../../sources/articles/semiconductor-depreciation-cost-structure-2026-08.md)). 즉 **AI 수요가 유지되는 A·B 안에서도 공급발 조정은 일어난다.** 그래서 다운턴은 이 매트릭스의 한 칸이 아니라 다섯 시나리오 전부에 열려 있는 경로이며, 그것을 별도의 축으로 다시 자른 것이 [SP-2 다운턴 트랙](../downturn/README.md)이다 — 발원지(수요발↔공급발) × 전개 속도(급락형↔침식형)로 **DT-A 급제동 20% · DT-B 긴 하산 24% · DT-C 동시 방류 22% · DT-D 저가 잠식 26% · DT-E 판 갈이 8%**의 다섯 형태가 나온다 ([downturn/scenario-matrix.md](../downturn/scenario-matrix.md)). **⚠️ 이 확률은 "다운턴이 도착한다는 조건 하에서의 형태별 확률"이므로 위의 A~E 무조건부 확률과 더하거나 직접 비교할 수 없다.**
+
 ## 5장. 선택 — 가장 큰 미래에 베팅하되, 자동 실현을 믿지 않는다
 
 삼성의 선택은 **Main Bet 시나리오 B**다. 확률이 가장 높고(39%), 시장이 가장 크고($5,200억), 삼성의 동서 균형 포지션 — 평택·시안·텍사스를 모두 가진 유일한 플레이어 — 이 최대 가치를 발휘하는 미래이기 때문이다 ([strategy.md](../scenarios/strategy.md)). 그러나 시나리오 B는 저절로 실현되지 않는다. B가 와도 SK하이닉스의 선점이 유지되는 미래와, 삼성이 1번 자리를 되찾는 미래가 갈린다. 그래서 Main Bet은 5개의 실행 이니셔티브로 구체화된다 ([strategy.md](../scenarios/strategy.md)): **MB-1** HBM4E·HBM5 기술 1위 탈환(NVIDIA 듀얼소싱 1번 공급사), **MB-2** 동서 균형 공급망(시안 유지 + 텍사스 + 인도), **MB-3** 1c nm 공정 조기 전환(원가 우위 복원), **MB-4** 커스텀 AI 메모리 솔루션(HBM+CXL+PIM+CMX 복합 — [핵심전략 평가에서 임팩트·창의성·모방난이도 만점](../scenarios/core-strategy-selection.md)), **MB-5** 텍사스 테일러 2기(미국 현지 HBM 생산).
@@ -88,6 +93,19 @@ flowchart LR
 구조는 네 축이다. **공급 거버넌스** — RS-1 옵션형 캐파(Fab Shell 선행 + 장비 단계 반입, "켜고 끌 수 있는 능력")와 RS-5 재무 규율(재고일수 상한·다운사이클 capex 하한 4조 원/년, Nucor·ExxonMobil 벤치마크 — [cyclical-strategy-benchmark.md](../benchmark/cyclical-strategy-benchmark.md)), 그리고 그 발동 시점을 알려주는 RS-9 수요 변곡 센싱. **포트폴리오** — RS-2 바벨(HBM ↔ 범용 1c nm 양 끝)과 RS-6 공정 리더십(1c nm + NAND 주기 연장 + Hybrid Bonding 자체 IP). 2026년 1분기에 일반 DRAM 마진이 HBM을 앞선 사건은 바벨의 가치를 실시간으로 증명했다 ([2026-q1-current-state.md](../concepts/2026-q1-current-state.md)). **고객 관계** — RS-3 전환비용 극대화(NVIDIA CMX·SCADA·FDP 통합 — [nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md))와 RS-4 고객 분산(LTA·Take-or-Pay·단일 고객 ≤25%). **신규 도구** — RS-7 AI 엔지니어링 자동화와 RS-8 구조화 매출 헷지(Participating Forward 등으로 매출 변동성 ±25%→±12% — [agri-hedging-to-memory-semi.md](../benchmark/agri-hedging-to-memory-semi.md)).
 
 이 구조는 결정으로 실행된다. 2026년 4분기까지 묶음으로 처리해야 할 **17개 결정(D1~D17)**이 마감 클러스터 D-150·D-240·D-330으로 배열되어 있다 — 가장 임박한 묶음에는 HBM4 점유율 회복(D1), 이사회 정책화(D6), 수요 변곡 조기경보 운영(D15), 호황 정점 공급 규율 즉시 발동(D16, critical)이 들어 있다 ([strategy.md](../scenarios/strategy.md)). 17개를 낱개로 흩으면 효과가 사라진다 — 묶음이 곧 전략이다.
+
+### 구조에 시간 축을 더하면 — 대비와 대응은 서로 다른 시간의 자원이다
+
+RS와 D는 "어떤 미래에도 지지 않는 구조"를 말하지만, 그 구조에는 **살 수 있는 시점이 정해져 있다.** 계약 커버리지는 고객이 먼저 다년 계약에 들어오는 부족 국면에만 만들 수 있고, 확정 발주는 한 번 나가면 옵션으로 되돌릴 수 없으며, 전환 라인은 필요해진 뒤에 훈련하면 이미 늦다(TAT 9~12개월). 반대로 감산·저가 매수·조직 재편은 다운턴이 도착한 뒤에만 살 수 있다. **순서를 바꿀 수 없는 두 종류의 자원**이라는 이 구분이 [SP-2](../downturn/README.md)가 RS·D 위에 얹는 층이다.
+
+| 층 | 코드 | 성격 |
+|---|---|---|
+| SP-1 불변 구조 | **RS-1~9** · **D1~D17** | 시나리오 무관 가치 + 2026 Q4까지의 결정 묶음 |
+| SP-2 대비 (도착 전) | **DP-1~DP-7** | 유효기간이 있는 결정. 무후회 3종 = DP-2 옵션형 캐파·DP-4 감별 EWI 배선·DP-5 차세대 별동대 ([preparation.md](../downturn/preparation.md)) |
+| SP-2 감별 (도착 직후 30일) | **DX-1~DX-8** | 원인·속도 판별 패널 ([differential-indicators.md](../downturn/differential-indicators.md)) |
+| SP-2 대응 (도착 후) | **DR-1~DR-6** | 원인별로 갈리는 처방 ([response-playbook.md](../downturn/response-playbook.md)) |
+
+DP 코드가 필요한 이유는 역사가 직접 말해준다. 세 번의 대비기(2005~07·2009~10·2020~22) 20년을 통틀어 **다운턴을 겨냥한 의도적 대비는 7건뿐이었고, 그중 2건은 미실행·3건은 부분이었다** — 명확히 성공한 것은 **양산 투입 이연**(2007, 50nm 개발 완료·양산은 2008로)과 **선급 장기공급계약 참여**(2005-11 Apple) 둘뿐이다 ([cmo-matrix.md §3.3](cmo-matrix.md), [samsung-pre-downturn-preparation-2005-2022-2026-08-08.md](../../sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md)). 성공한 둘은 무엇을 *더* 한 것이 아니라 **투입을 늦추고 하한을 깐 것**이었고, 실패한 둘(HBM 니치 조직 유지·재고 조정)은 **하지 않은 것**이었다. 옵션형 캐파·EWI 트리거 사전 배선·조직 대응 매뉴얼·계약 만기 관리는 세 대비기 어디에도 없다 — **DP는 과거 성공 공식의 재현이 아니라 없던 수단을 처음 갖추는 목록**이다.
 
 ## 7장. 왜 이 선택인가 — 세 개의 대안과 비교하면
 
@@ -117,9 +135,15 @@ flowchart LR
 
 수렴의 의미는 두 겹이다. 첫째, **다섯 렌즈 전부가 지지하는 전략(계약 구조·정점 규율·옵션 캐파·차세대 별동대·바벨)은 프레임워크 불변(framework-invariant)** — 어떤 이론으로 세상을 봐도 해야 하는 일이며, 이는 Robust 개념의 메타 검증이다. 둘째, 렌즈들이 갈라지는 지점은 경고로 읽는다 — 파이브 포스와 파괴적 혁신은 MB-1(1위 탈환)의 한계(구조 불변·지난 전쟁)를, 게임이론은 MB 실행이 캐파 경쟁으로 흐를 위험(치킨게임 재점화)을, 실물옵션은 확정 집중의 형태 리스크를, CMO는 과거 승리 공식의 무맥락 복제(2022~23형 캐파 역사이클·CXMT 상대 치킨게임) 리스크를 지적한다. **결론: Main Bet은 유지하되, 그 실행은 인증·기술 순위전으로 한정하고(게임이론), 확정 최소·옵션 최대 구조로 집행하며(실물옵션), 구조 전략(락인·표준)과 차세대 별동대에 최우선 자원을 배분한다(파이브 포스·파괴적 혁신).**
 
+**여섯 번째 검증 — 다른 방법론으로 다시 풀어도 같은 셋이 남는다.** [SP-2](../downturn/README.md)는 렌즈가 아니라 별도의 시나리오 플래닝 트랙이지만, 결과적으로 교차 검증 하나를 더 제공한다. 다운턴을 원인×속도로 잘라 다섯 형태 전부에서 ◎인 대비를 추린 **무후회 3종(DP-2 옵션형 캐파 · DP-4 감별 EWI 배선 · DP-5 차세대 별동대)**은, [CMO 통합 매트릭스 §4.2](cmo-matrix.md)가 원인 3종 축으로 추린 cause-robust 3종(옵션형 캐파·맥락 EWI·차세대 별동대)과 **정확히 일치하고**, 위 표의 프레임워크 불변 전략과도 겹친다. 서로 다른 세 방법론(다섯 렌즈 / CMO 리얼리스트 평가 / 다운턴 시나리오 플래닝)이 같은 셋에 수렴한다는 것이 Robust 개념의 가장 강한 근거다.
+
+동시에 SP-2는 **다섯 렌즈가 아직 다루지 않은 두 항목**을 새로 올린다 — **DP-1 계약 만기 사다리화**("계약은 급락을 막는 것이 아니라 미룬다. 만기가 몰려 있으면 계약은 급락 방지 장치가 아니라 급락 발사 장치가 된다")와 **DP-6 전환 가능한 몸의 평시 실증**(전환 TAT 9~12개월·전환 시 캐파 -50%). 두 항목은 아직 렌즈 교차 검증을 통과하지 않았으므로, **다음 렌즈 갱신 시 각 렌즈의 우선순위 재평가 대상**으로 남긴다.
+
 ## 8장. 감시와 전환 — 이야기는 데이터가 계속 쓴다
 
 이 스토리의 마지막 장은 열려 있다. 어느 시나리오가 실현될지는 예측이 아니라 감시의 대상이기 때문이다. 그래서 전략의 마지막 조각은 **조기경보 체계(EWI)**다. GPU 현물 임대가·신용 스프레드·스팟-계약 괴리·재고일수·발주-셀스루 갭을 주간 감시하는 수요 변곡 EWI 앙상블 ([demand-inflection-ewi-2026-06.md](../../sources/raw-notes/demand-inflection-ewi-2026-06.md))과, 2030년 수요의 실현 가능성을 제약하는 4대 병목(전력·CAPEX/ROI·파운드리·패키징) 정량 모델 ([deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md))이 두 레이어를 이룬다. 병목 모델의 하방 민감도 분석은 버블 붕괴의 가장 유력한 진입 경로가 기술이 아니라 투자수익률 재평가(CAPEX/ROI -31.5%)임을 보여준다 ([deep-research-2030-bottleneck-quant-model-2026-06.md](../../sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md)). "꼭짓점은 FCF다 — CapEx가 늘어나는데 FCF가 흑자에서 마이너스로 반전되는 순간이 진짜 하락 신호"라는 영업 현장의 렌즈도 EWI에 이식됐다 ([lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)).
+
+그러나 EWI가 답하는 질문은 하나뿐이다 — **"오는가."** 도착한 뒤에는 질문이 바뀐다: **"어떤 다운턴인가."** 가격 하락·재고 증가·매출 감소는 어떤 원인의 다운턴에서도 똑같이 나타나므로 결과 지표만으로는 원인을 판별할 수 없고, **원인을 틀리면 처방이 반대로 나간다** — 감산은 공급발에서는 가격에 직접 작동하지만 수요발에서는 무효다. 삼성은 이 구분을 틀려 이미 한 번 비용을 치렀다(2022-10 무감산 선언 → 2023-04 감산 공식화, 그 6개월 사이 DS -4.58조). 그래서 EWI 뒤에 **감별 패널 [DX-1~DX-8](../downturn/differential-indicators.md)**을 직렬로 연결한다 — 수요 측 맥락(FCF·조달 스프레드·GPU 임대가·메모리 원단위)과 공급 측 맥락(증설 공시·투입-출하 갭·경쟁사 점유율)을 각각 직접 보고, 침식형은 임계를 한 번에 넘지 않으므로 **레벨 임계와 추세 조건을 병행**한다. 2026년 8월 현재 판독은 **다운턴 미도착 · 수요 측 경보 1건(DX-1 FCF) · 공급 측 진행 2건(DX-4 캐파 파이프라인·DX-5 CXMT)**이며, 유일한 🔴는 지표가 아니라 **능력의 공백**이다 — **DX-7 계약 만기 집중도 미측정**. 내부 계약 데이터라 외부에서 살 수 없고, 2026 Q4까지 산출 체계를 세우는 것이 [DP-1](../downturn/preparation.md)의 첫 실행 항목이다.
 
 경보는 행동과 배선되어 있다. 빅테크 CapEx 25%+ 삭감, GPU 임대가 6개월 -35%, MATCH 법안 통과 같은 트리거가 발동하면 RS-1 캐파 동결·RS-5 규율 전면 발동·시안 Plan B 같은 사전 정의된 행동이 30일 내 집행된다 ([strategy.md](../scenarios/strategy.md)). 요컨대 이 스토리라인은 완결된 예언이 아니라 **자기 갱신하는 전략 서사**다. 새 소스가 들어오면 확률이 움직이고, 확률이 움직이면 전략 배분이 조정되고, 트리거가 발동하면 장이 다시 쓰인다. 호황의 정점이 다운턴 준비의 마지막 기회라는 것 — 그것이 이 이야기가 지금 여기서 멈추지 않는 이유다.
 
@@ -129,4 +153,6 @@ flowchart LR
 
 - `wiki/steep/`·`wiki/driving-forces/`·`wiki/scenarios/`·`wiki/strategies/` 중 어느 것이든 바뀌면 이 페이지의 해당 장(1·3·4·5·6장)과 대시보드 미러(`dashboard/src/data/storyline.js`)를 동반 갱신한다 (CLAUDE.md §6).
 - 시나리오 확률·DF 위치가 바뀌면 3·4장 수치와 7장 논증의 확률 인용을 함께 수정한다.
+- **`wiki/downturn/`(SP-2)가 바뀌면** 4장 말미(DT 5형·조건부 확률)·6장 코드 체계표·7장 무후회 3종·8장 DX 패널 상태를 동반 갱신한다. **SP-1 무조건부 확률과 SP-2 조건부 확률을 같은 문장에서 더하거나 비교하지 않는다** — 인용할 때마다 조건부임을 명시한다.
+- 전략 코드가 SP-1(RS·D)과 SP-2(DP·DR·DX)에서 충돌하면 **SP-1의 정의가 우선**하고, SP-2는 그 코드를 다운턴 렌즈로 재배치한 것으로 서술한다.
 - 대시보드 Storyline 탭은 이 페이지의 미러다 — 진실의 원천은 항상 이 페이지.

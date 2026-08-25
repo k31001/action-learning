@@ -32,6 +32,215 @@ export const UPDATES = [
     ],
   },
 
+  // ── 2026-08-18 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-18',
+    type: 'assessment',
+    version: 'v2.46.1',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + SSD design win EWI 3종 갱신',
+    summary:
+      '직전 포지션 맵 갱신(2026-08-11) 이후 git log 변경분(v2.40.0~v2.46.0)을 다섯 계층으로 분류: ① 제품믹스·삼성 실행(SSD·UFS 축 보강·삼성 SSD design win·CAPEX 탭 솔루션 오버레이) ② 역사 리서치(CMO 통합 매트릭스·2019 다운사이클 편입·CAPEX 히스토리 2006 소급·시장 전환기 전략) ③ 신규 분석 트랙(SP-2 다운턴 시나리오 플래닝 — 별도 축 DF-D1×DF-D2) ④ outputs/보고서(2차 저지선 전략·키엔스 벤치마크·SSD 전략적 방향성 보고서 v1.1) ⑤ 내부 문서(회의록 메뉴). 거시 축은 "실현된 외부 사실"이 움직인다는 일관 방법론상 위 전부 제품믹스(DF3/NAND)·역사·내부 분석·outputs로 분류돼 신규 실현된 외부 거시 수요 사실 0건 — 직전 실현 외부 데이터는 여전히 Q2 하이퍼스케일러 실적(08-11). → DF1 8.5·DF2 0.5·확률 5종 전부 유지. 이번 사이클 최대 산출물인 SP-2 다운턴 트랙·CMO 다운턴 역사 매트릭스는 다운턴 대비·감별 차원을 심화하나 설계상 별도 축을 써 SP-1 거시 축을 움직이지 않는다(공급발 다운턴은 A·B 사분면 안에서도 발생 — 두 트랙 병존이 방법론적으로 정합). 삼성 SSD design win(PM1763 양산 개시 07-08·CMX V-NAND 캐파 60%+ NVIDIA 배정·DGX Spark PM9E1 실탑재)은 AI-스토리지 NAND 수요·삼성 실행 진전 확인이나 삼성 개별 실행 신호(DF3/NAND)라 거시 축 아님 → EWI 3종 갱신으로 반영. 발동 트리거 0건. 패치 v2.46.1.',
+    tags: ['시나리오', '포지션 맵', '확률', '유지', 'DF1', 'DF2', 'SP-2', 'SSD', 'PM1763', 'CMX', 'EWI', 'dashboard', 'wiki'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5', detail: '08-11 이후 변경분은 제품믹스·삼성 실행·역사 리서치·SP-2 트랙·outputs·회의록으로 거시 축을 움직이는 실현된 외부 사실 아님. 직전 실현 외부 데이터는 여전히 Q2 하이퍼스케일러 실적. 두 축 위치·방향 무이동' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '거시 축 무이동 → 상대 확률 무변화. SP-2 다운턴 트랙은 다운턴 대비 심화이나 별도 축(DF-D1×DF-D2)이라 SP-1 매트릭스 상대 확률에 무영향' },
+      { label: 'SP-2 다운턴 트랙 = 별도 축', detail: '이번 사이클 최대 산출물. 공급발 다운턴은 AI 수요 유지(A·B) 안에서도 실현되므로 SP-1의 특정 사분면에 갇히지 않음 → 두 트랙 병존이 방법론적으로 정합, SP-1 DF1/DF2 무이동' },
+      { label: 'EWI 3종 갱신 (수집 데이터 반영)', detail: 'samsung_ai_ssd_position(PM1753 CMX → PM1763 양산 개시 07-08·DGX Spark PM9E1 실탑재, 선택지·history 추가) · nvidia_storage_next_partner(CMX 공급자 지위 심화, SLC SCADA 핵심 파트너는 미도달) · ai_ssd_iops_max(PM1763 양산 note, 단일 IOPS 수치 미공개 유지). 삼성 SSD "AI 후행"은 SLC 초고 IOPS 트랙 한정으로 재해석' },
+      { label: '트리거 — 발동 0건', detail: '신규 미중 실현 사실 부재(MATCH 본회의 movement 없음·CXMT HBM 미확정·애플–CXMT 테스트 단계)로 DF2 트리거 무변화. 거시 조기경보(GPU 임대가·CapEx·FCF)는 신규 실측 부재로 08-11 스냅샷 유지(자동 갱신 지표는 Vast.ai API 지속)' },
+      { label: '위키 동기화', detail: 'wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치 · wiki/scenarios/scenario-matrix.md 확률표에 [2026-08-18 재평가] 유지 note 추가. dashboard indicators(INITIAL_QUADRANT_POSITIONS·SCENARIOS·EWI 3종)·scenarioPlanning(DF1·DF2·A·B) 미러' },
+    ],
+    links: [
+      { label: 'samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md' },
+      { label: 'key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
+  // ── 2026-08-17 (i) ───────────────────────────────────────────────────────────
+  {
+    date: '2026-08-17',
+    type: 'ingest',
+    version: 'v2.46.0',
+    title: 'CAPEX 탭에 솔루션(SSD·UFS) 오버레이 + 사업 연표 — 사이클과 함께 변모한 20년',
+    summary:
+      'CAPEX 차트에 삼성 SSD 매출ᵉ·UFS/모바일 매출ᵉ·스토리지 영업이익ᵉ 3개 시리즈(2013~2025, 토글형) 추가 — 제품별 미공시라 NAND 산업 규모 × 삼성 점유율 × 제품 믹스 3단 역산(전량 추정ᵉ, 방법론 소스 문서화). 차트 하단에 솔루션 사업 연표 신설: 계기(2005 Apple NAND·2006 세계 최초 SSD·2011 HDD 매각)부터 V-NAND(2013)·UFS(2015)·첫 감산(2023)·CMX(2026)까지 13개 이벤트를 사이클 국면 색(상승/다운턴/중립)으로, 변모 4단계(태동→수직계열화→솔루션 주도→AI 전환) 카드와 함께. wiki/concepts/samsung-storage-solution-history.md 신설. 마이너 v2.46.0.',
+    tags: ['SSD', 'UFS', '솔루션', 'NAND', 'V-NAND', '역산', 'CAPEX', 'dashboard', 'wiki'],
+    items: [
+      { label: '역산 방법론', detail: 'NAND 산업(앵커: 2018 $63.2B 정점, TrendForce) × 삼성 점유 33~37% × 믹스(SSD 25%→50%, 모바일 45%→25%) × 마진(-60%~+45%). 이익은 SSD/UFS 분리 불가로 스토리지 합산' },
+      { label: 'wiki/concepts/samsung-storage-solution-history.md 신설', detail: '계기 3장면 + 연표 13건 + 사이클×솔루션 변모 4단계 + 역산 시계열' },
+      { label: '핵심 패턴', detail: '2017 SSD가 모바일 역전(서버 시대) · 2019 다운턴 소폭 적자ᵉ로 완충 · 2023 -9.1조ᵉ 최악 · 2025 SSD 16.4조ᵉ 사상 최대 — 솔루션이 사이클 진폭의 완충재' },
+    ],
+    links: [
+      { label: '스토리지 솔루션 리서치', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/samsung-storage-solution-research-2026-08-17.md' },
+    ],
+  },
+  // ── 2026-08-16 (viii) ────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'build',
+    version: 'v2.45.0',
+    title: 'CMO 렌즈에 CMO-2019 정밀 구성 추가 — 무임승차형 버티기와 시한폭탄 배분',
+    summary:
+      '요청("storyline-cmo에도 2019 정밀 CMO 구성 추가")에 따라 렌즈 페이지의 사례 분해를 3→4개로 확장. §2에 CMO-2019 요약 행·서사 절(Context: 3강 첫 다운턴·후발이 먼저 감산 / Mechanism: 무임승차형 버티기+기술 완주+HBM팀 축소 배분 / Outcome: 1Q20 44.1% 회수, HBM 축소는 3차의 C로 청구), §5.4에 M×C→O 정밀 매트릭스(6M×4C, 채움률 10/24=42%, 전 첨자 ² — 원문 차단 명기, 경쟁사 대조 각주 3종) 추가. 핵심 교호작용: C19-a(후발 감산)×C19-d(1위 체력)가 결합해야 무임승차가 발화 — 무감산 ◎는 경쟁사 행동 의존 조건부 성공이며 3차 ✕의 원인은 이 결합의 부재. 한눈에 mermaid에 2019 노드 삽입. 대시보드 Storyline 탭 CMO 렌즈 미러(storylineLenses.js) 동기 — 서사 p·요약 행·matrix 블록. 마이너 v2.45.0.',
+    tags: ['CMO', '2019 다운턴', '스토리라인', 'M×C 매트릭스', 'build'],
+    items: [
+      { label: 'storyline-cmo.md', detail: '§2 CMO-2019 요약 행+서사 절, §5.4 CMO-2019 M×C 매트릭스(매트릭스 3종→4종), mermaid 2019 노드' },
+      { label: 'storylineLenses.js', detail: 'CMO 렌즈 섹션 2·5 미러 — CMO-2019 서사 p·요약 테이블 행·matrix 블록 추가' },
+    ],
+  },
+  // ── 2026-08-16 (vii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'lint',
+    version: 'v2.44.1',
+    title: 'cmo-matrix.md 2019 편입 잔여 표현 정리',
+    summary:
+      '지적("2019 다운사이클 관련 cmo-matrix.md 내용 업데이트가 안 된 것 같은데") 확인 결과 2019 행 10개는 반영돼 있었으나, §3 섹션 제목이 "통합 매트릭스 — 1~3차 (관측)"으로 남는 등 편입 이전 표현 8곳이 잔존해 미갱신처럼 보였다. 일괄 정리: §3 제목 → "1·2차, 2019, 3차 (관측)", "세 대비기" → "네 대비기"(4곳), 레퍼토리 공백 표의 EWI 행에 2H18 경보 반복 명시, storyline-cmo.md §2에 2019 범위 주기 추가. 텍스트만 변경 — 데이터·판정 불변. 패치 v2.44.1.',
+    tags: ['CMO', 'lint', '2019 다운턴'],
+    items: [
+      { label: 'cmo-matrix.md', detail: '§3 제목·"세 대비기" 4곳·EWI 공백 행 등 잔여 표현 8곳 정리' },
+      { label: 'storyline-cmo.md', detail: '§2 범위 주기(2019는 통합 매트릭스 참조) + §5 통합 버전 설명 갱신' },
+    ],
+  },
+  // ── 2026-08-16 (vi) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'ingest',
+    version: 'v2.44.0',
+    title: 'CMO 매트릭스에 2019 다운사이클 편입 — 관측 다운턴 3→4개',
+    summary:
+      '지적("CMO 통합 Matrix에 2019년 다운턴이 빠져있는 것 같은데?")이 맞아 2018 Q4~2019 다운사이클(DRAM -37~38%·삼성 반도체 영업이익 -69%)을 전용 리서치 후 편입. 1·2·3차 번호 체계는 유지하고 2019는 연도로 표기. 대응 6건 — 무감산 공식 기조("인위적 웨이퍼 투입 감소 검토 안 함", 2Q19 컨콜) ◎: Micron(3월)·SK(7월) 감산과 요카이치 정전이 공급을 조이는 동안 1위가 버티는 무임승차형(1Q20 DRAM 44.1%) / CapEx 22.6조 유지 ◎ / 기술 4축(1z·136단 V낸드·Flashbolt·EUV) 세대 전환 완주 ◎ / [무행동] HBM팀 축소 ✕(3차의 C를 만든 원형) / 비전 2030 133조 △ / 일본 수출규제 대응 ◎. 대비 3건 — 정점 확장 연쇄 △·주주환원 3년 고정 △·[무행동] 2H18 경보 속 재고 방치 ✕. 통찰 갱신: 무감산이 표본 3개(1차 ◎ 소모전·2019 ◎ 무임승차·3차 ✕ 불발)로 실증, 재고·경보 무행동은 2018·2021 두 사이클 연속 반복 — EWI 사전 배선의 최강 근거(신규 통찰 9). 다운턴 대비 레퍼토리 7→8건(P1~P8 재편). 엔트리 69→78건. 마이너 v2.44.0.',
+    tags: ['CMO', '2019 다운턴', '무감산', 'EWI', 'HBM', '재고', 'ingest'],
+    items: [
+      { label: '신규 소스', detail: 'samsung-2019-downturn-2017-2019-actions-2026-08-16.md — 정량·대응·대비기·경쟁사 대조·결과, 미확인 15건' },
+      { label: 'cmoMatrix.js', detail: "CMO_DOWNTURNS에 d19 추가(관측 4개+예측 1개) + 대응 6건·대비 3건 + 통찰 1·6·7 갱신·통찰 9 신설" },
+      { label: 'cmo-matrix.md', detail: '§1 편입·번호 체계 노트, §3.1 대응 6행, §3.2 대비 3행, §3.3 재분류(28건 중 8건·P 목록 재편), §5 통찰 갱신' },
+      { label: 'storyline-cmo.md', detail: '§5.1 P1~P7 → P1~P8 재편(P6=2019 재고·경보 무행동) — 재고 무행동 2연속 반복 명시' },
+    ],
+  },
+  // ── 2026-08-16 (v) ───────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'build',
+    version: 'v2.43.0',
+    title: 'CMO Matrix 탭 — 통찰 9종 미러 + 전환기 플레이북 항목 반영',
+    summary:
+      '요청("지금까지 업데이트한 내용을 CMO Matrix 대시보드에도 추가")에 따라 위키 cmo-matrix.md §5 "이 매트릭스에서 읽히는 것" 통찰 0~8을 CMO_INSIGHTS로 미러하고 탭 하단에 펼침형 통찰 패널을 신설(최신 통찰 8 — 전환기 플레이북 — 기본 펼침). 시장 전환기 조사(v2.42.6)의 사실을 항목에도 반영: HDD 매각에 계약 구조(현금 50%+지분 9.6%+NAND 크로스-서플라이 조항 — 플레이북 요소 1)·시안 팹에 V-NAND 전용·2기 타이밍(요소 3) 보강, 신규 항목 2건 추가 — UFS 표준 창설 주도(2차·개발 ◎, 자기잠식형 표준 창설 = 요소 2)·XS1715 업계 최초 NVMe(2차·개발 ◎, 인터페이스 세대 선점 = 요소 4, Intel 1년 선행). 위키 §3.1 동반 갱신(단일 소스 유지). 엔트리 67→69건. 마이너 v2.43.0.',
+    tags: ['CMO', '대시보드', '통찰', '전환기 플레이북', 'XS1715', 'UFS', 'build'],
+    items: [
+      { label: 'cmoMatrix.js', detail: 'CMO_INSIGHTS 신설(통찰 0~8 미러) + d2-res-09(UFS 표준 창설 ◎)·d2-res-10(XS1715 NVMe 선점 ◎) 추가 + d2-res-05(시안)·d2-res-06(HDD 매각) 뉘앙스 보강' },
+      { label: 'CMOMatrix.jsx', detail: 'InsightsPanel 신설 — 클릭 펼침형 통찰 목록, 근거 소스 링크 포함' },
+      { label: 'cmo-matrix.md', detail: '§3.1 대응 표 동반 갱신 — HDD 매각·시안 행 보강 + UFS 표준·XS1715 행 추가, frontmatter sources에 전환기 소스 등재' },
+    ],
+  },
+  // ── 2026-08-16 (iv) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'ingest',
+    version: 'v2.42.6',
+    title: '시장 전환기 전략 축 — PC→모바일→데이터센터, 삼성 SSD의 전환기 플레이북',
+    summary:
+      '요청("PC→모바일 전환과 이후 데이터센터 전환 시점의 SSD·UFS 전략적 움직임, 특히 삼성 SSD의 데이터센터 전환 전략과 결과를 정리")에 따라 전용 리서치(samsung-ssd-ufs-market-transition-strategy-2026-08-16.md) 수행. 전환기 ①(PC→모바일): 2011 HDD 매각의 계약 구조 — $1.375B를 현금 50%+Seagate 지분 9.6%로 받고 같은 계약에 "삼성 NAND→Seagate SSD" 크로스-서플라이 조항 동반(레거시 exit+판로 심기), eMMC 35.6% 1위(Gartner 2013), 자기잠식형 UFS 표준 창설. 전환기 ②(→데이터센터): 시안 V-NAND 전용 캐파 선행 베팅(2012 발표→2014-05 양산→2017-08 2기 $7B), XS1715 업계 최초 NVMe(2013, UNH-IOL 인증 1호 — Intel DC P3700보다 1년 선행), 제품 언어의 datacenter→hyperscale 단계 이동(PM963→NGSFF→PM983), 3Q17 공식 실적의 "datacenter NVMe SSD 적극 대응" 문구. 결과: 3Q17 사상 최대 영업이익 14.53조, 3Q18 eSSD 매출 38.5% 1위 — 단 1Q17 출하량 기준 Intel 1위 등 집계 기준별 뉘앙스 병기, 최종 승부는 Intel의 자멸(Optane 2022 청산·NAND SK 매각)로 확정. 전환기 플레이북 4요소 도출 → 현재 CMX·PM1763 축은 요소 3·4 재실행 중, SLC 트랙은 요소 2 공백 — cmo-matrix.md §5 통찰 8(전환발 다운턴 판정 기준) 추가. 패치 v2.42.6.',
+    tags: ['SSD', 'UFS', '시장 전환', '데이터센터', 'NVMe', 'Intel', '시안 팹', 'CMO', 'ingest'],
+    items: [
+      { label: '신규 소스', detail: 'samsung-ssd-ufs-market-transition-strategy-2026-08-16.md — 축 A(PC→모바일)·축 B(→데이터센터), 전 항목 검색 요약 경유 등급 명기, 미확인 11건' },
+      { label: 'ssd-ufs-market.md', detail: '[Update 2026-08-16 II] 시장 전환기 전략 축 신설 — 전환기 ①·② 상술 + 결과 정량표(집계 기준별 뉘앙스) + 전환기 플레이북 4요소 → 3차 전환(AI·CMX) 대입' },
+      { label: 'cmo-matrix.md', detail: '§5 통찰 8 추가 — 전환발(③) 다운턴의 O를 가르는 전환기 플레이북, Intel 반례("규격을 만들고도 제품화가 늦으면 진다")' },
+    ],
+  },
+  // ── 2026-08-16 (iii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'ingest',
+    version: 'v2.42.5',
+    title: '삼성 SSD 탑재(design win) 축 — PM1763 양산 전환·CMX 물량 구조·DGX Spark 실탑재',
+    summary:
+      '피드백("NVIDIA 서버나 AI PC에 삼성 SSD가 탑재된 뉴스들이 중요한데 빠져 있다")에 따라 전용 리서치(samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md) 수행. 핵심: ① PM1763 양산 개시(2026-07-08 공식, "차세대 AI 플랫폼 검증 완료" — Vera Rubin 명시는 매체 해석으로 유보) → 위키의 "양산 시 추가 매출" 서술이 낡아 있던 것을 갱신. ② CMX 물량 구조 — 1유닛 = SSD 576개·9,600TB, CMX향 NAND 수요 2026년 3,500만→2027년 1억+ TB("스펀지" 수요), 삼성 V-NAND 캐파 60%+ NVIDIA 배정·V10 공급 개시 보도(Med), Vera Rubin 램프가 512Gb TLC 스팟 $21로 압박(TrendForce 실측). ③ NVIDIA DGX Spark 4TB의 SSD가 삼성 PM9E1(M.2 2242)임을 분해로 실물 확인 — 개인용 AI 기기 design win. ④ 정정: 갤럭시 S26은 UFS 4.0 잔류(기존 표의 4.1 전망 오류). 재해석: "AI SSD 후행"은 SLC 초고 IOPS 트랙 한정 — CMX·Gen6·클라이언트 축은 선두. ssd-ufs-market.md·nvidia-cmx-scada.md 갱신. 패치 v2.42.5.',
+    tags: ['SSD', 'NVIDIA', 'design win', 'PM1763', 'PM9E1', 'DGX Spark', 'CMX', 'ingest'],
+    items: [
+      { label: 'NVIDIA 서버 축', detail: 'PM1763 양산 개시(9세대 V-NAND·4nm 컨트롤러·16TB 28.4/21.9GB/s) · CMX 1유닛 576 SSD·9,600TB · NAND 수요 2027년 1억+ TB · 캐파 60%+ 배정·V10 공급·V11 500단 개발 · TLC 스팟 $21 회복' },
+      { label: 'AI PC 축', detail: 'PM9E1(자체 5nm Presto 컨트롤러·14.5GB/s) DGX Spark 4TB 실탑재 분해 확인(MZALC4T0HBL1) · 2242 세계 최초 양면 4TB Gen5·CES 2026 어워드 · 9100 PRO 8TB AI 워크스테이션 포지셔닝' },
+      { label: '정정·재해석', detail: '갤럭시 S26 = UFS 4.0 잔류(4.1 전망 정정) · nvidia-cmx-scada §2.5 "위협 우세"를 SLC IOPS 트랙 한정으로 재해석 — CMX·Vera Rubin·개인용 축은 선두 지위. 캐파 60% 배정은 매출 락인이자 단일 고객 집중 리스크(RS-4 긴장) 병기' },
+      { label: '미확인 잔여', detail: 'PM1753 CMX 물량·매출 수치 / CMX 경쟁사 진입 / 서버 OEM 명시 채택 / PM9E1 갤럭시 북 탑재 — 후속 수집 대상' },
+    ],
+    links: [
+      { label: 'samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md' },
+      { label: 'nvidia-cmx-scada.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/entities/nvidia-cmx-scada.md' },
+    ],
+  },
+  // ── 2026-08-16 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'ingest',
+    version: 'v2.42.4',
+    title: 'SSD·UFS 축 보강 — 삼성 스토리지 사업사 20년 + 경쟁 재편 + CMO 매트릭스 4건 추가',
+    summary:
+      '피드백("전반적으로 SSD·UFS 관련 내용이 부실 — 면밀히 조사해 보강")에 따라 전용 리서치(samsung-ssd-ufs-history-competition-2026-08-15.md) 수행 후 3개 페이지 보강. 핵심 발견: ① 2차 다운턴(2010~13) 한복판에서 소비자 SSD를 풀 자체화(830, NAND·컨트롤러 MCX·DRAM·펌웨어 전부 자체)→세계 최초 TLC(840, 2012-10)→V-NAND 최초 양산(2013-08)으로 니치에서 2013 전체 SSD 1위(28.5%, Gartner)까지 육성 — 3차 다운턴의 HBM 니치 배제(✕)와 정반대인 "다운턴 중 니치 육성 성공"의 사내 최대 선례. ② UFS 세계 최초 연쇄(2.0 양산 2015→1TB eUFS 2019→4.0 2022→5.0 공개 2026-06·Q4 양산·온디바이스 AI 타깃). ③ 경쟁 재편 3건 — SK–Solidigm 정점 매수($9B)→2023 손실→122TB QLC로 2024 흑자 반전(QLC 점유 42→51%), WD–SanDisk $19B 통합 9년 만의 해체(2025-02 분사), Micron Crucial 소비자 철수(2025-12). ④ 3차 다운턴 중 삼성 eSSD 1Q23 -55%($801M) — 계약 바닥 없는 완제품의 충격 실증. CMO 매트릭스 SSD·UFS 엔트리 6→10건, §5 통찰 3("SSD 축의 얇음") 교정. 패치 v2.42.4.',
+    tags: ['SSD', 'UFS', '스토리지', 'CMO Matrix', 'Solidigm', '사업사', 'ingest'],
+    items: [
+      { label: '신규 소스', detail: 'samsung-ssd-ufs-history-competition-2026-08-15.md — 3축(삼성 SSD 사업사·UFS/모바일·경쟁사 스토리지 전략사) + 다운턴/대비기 창 태깅 + 미확인 12건 목록' },
+      { label: 'ssd-ufs-market.md 보강', detail: '역사 축 신설(SSD 3단계 연표·컨트롤러 MCX→MDX→MEX 계보·UFS 세계 최초 연쇄·점유율 시계열 2013 28.5%→1Q16 32.4%→1Q23 -55%→1Q26 38.2%) + 1Q26 실측 반영(Top5 $18.46B·변동성 주의) + 경쟁 재편 3건 + UFS 5.0' },
+      { label: 'CMO 매트릭스 +4건', detail: '[1차 대응] SSD 밀도 3연타(2008, △) / [2차 대응] 소비자 SSD 브랜드 구축(◎ — 니치→1위) / [3차 대비] 고부가 eSSD 선행 3연타 SmartSSD·ZNS·PM1743 Gen5(◎) / [3차 대응] 990 PRO+eSSD -55%(△). 위키·대시보드 동기' },
+      { label: '통찰 교정', detail: '§5 통찰 3 "SSD·UFS 축의 얇음" → "재조사가 뒤집은 통찰: 다운턴 중 니치 육성의 성공 선례를 이미 보유 — AI SSD 대응의 벤치마크는 2012년의 삼성 자신. 남은 진짜 공백은 SLC 초고 IOPS 트랙 하나". storyline-cmo §6.2에 SK–Solidigm 행(△→◎ 양면 사례) 추가' },
+    ],
+    links: [
+      { label: 'samsung-ssd-ufs-history-competition-2026-08-15.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md' },
+      { label: 'ssd-ufs-market.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ssd-ufs-market.md' },
+    ],
+  },
+  // ── 2026-08-16 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-08-16',
+    type: 'lint',
+    version: 'v2.42.3',
+    title: '스토리라인 정합성 갱신 — SP-2 다운턴 트랙·CMO 매트릭스 반영 + 모순 3건 교정',
+    summary:
+      'SP-2 다운턴 시나리오 플래닝(v2.42.0)과 CMO 통합 매트릭스 대비 축(v2.41.0)이 신설된 뒤 갱신되지 않았던 스토리라인 마스터·CMO 렌즈·CMO 매트릭스를 동기화했다. 페이지 간 모순 3건을 먼저 교정 — ① "계약 바닥은 과거에 없던 완전 신규 메커니즘"이라는 CMO 렌즈의 정리를 2005-11 Apple 선급 LTA 선례로 교정(신규인 것은 메커니즘이 아니라 전사 정책화), ② SP-1 무조건부 확률과 SP-2 조건부 확률의 혼동 방지 경고 삽입, ③ CMO 매트릭스 §5 항목 번호 순서 오류. 이어 마스터에 SP-2 연결(4장 "다운턴은 C·D 사분면에 갇혀 있지 않다"·6장 RS/D+DP/DR/DX 코드 체계·7장 무후회 3종 교차 검증·8장 EWI⊥DX 직렬 구조)과 하이퍼스케일러 Q2 실측(Meta FCF -91%·Amazon TTM 마이너스·CapEx 삭감 0건)·감가 정점 메커니즘을 반영했다. 렌즈 4종(파이브 포스·게임이론·실물옵션·파괴적 혁신)은 이번 범위에서 제외 — 다음 갱신 대상. 패치 v2.42.3.',
+    tags: ['스토리라인', 'SP-2', 'CMO', '정합성', 'lint', 'wiki', 'dashboard'],
+    items: [
+      { label: '모순 교정 3건', detail: '계약 바닥 "완전 신규" 주장 4곳 교정(2005 Apple 선급 LTA 선례) · 두 확률 체계 혼동 경고 · §5 번호 순서' },
+      { label: 'storyline.md (마스터)', detail: 'SP-2 트랙 안내·흐름도 분기·연대기 2027~28 "4차 다운사이클 창" · 1·3장 하이퍼스케일러 Q2 실측 · 4장 다운턴 사분면 한계 + DT-A~E · 6장 코드 체계표 + 대비 레퍼토리 7건 · 8장 DX 패널 · 갱신 규칙' },
+      { label: 'storyline-cmo.md (CMO 렌즈)', detail: '맥락 변수 6종 → 8종(계약 만기 구조·감가 정점) · 메커니즘 감사표에 SP-2 배선 열 · §5.1 대비 국면 P1~P7 신설(초판은 대응 A1~A6뿐) · §7에 만기 사다리화·속도 축 보강' },
+      { label: 'cmo-matrix.md', detail: 'frontmatter·sources 갱신 · "역사에 없는 대비 수단" 6종 → 9종(만기 사다리화·원가 곡선 측정·전환 라인 실증) · 추천 전략 표에 DP/DR 코드 병기 · 실수 패턴에 DR-2b 금지 옵션 연결' },
+      { label: '대시보드 미러', detail: 'storyline.js(ch3·4·6·7·8 블록 추가) · storylineLenses.js(CMO 렌즈 §3·4·5·7) · cmoMatrix.js(4차 액션에 DP·DR 코드) · knowledgeGraph 재생성' },
+    ],
+    links: [
+      { label: 'SP-2 다운턴 트랙', href: 'https://github.com/k31001/action-learning/blob/main/wiki/downturn/README.md' },
+      { label: 'CMO 통합 매트릭스', href: 'https://github.com/k31001/action-learning/blob/main/wiki/storyline/cmo-matrix.md' },
+    ],
+  },
+  // ── 2026-08-15 (iii) ─────────────────────────────────────────────────────────
+  {
+    date: '2026-08-15',
+    type: 'ingest',
+    version: 'v2.42.2',
+    title: 'CAPEX 히스토리 2006년까지 소급 — 치킨게임 시대(Qimonda·Elpida 파산) 정량 보강',
+    summary:
+      'CAPEX 탭 시계열을 2016~2026E에서 2006~2026E 20년으로 확장. 삼성 연차보고서·4Q 경영설명회 PDF 직접 열람과 Micron SEC 10-K 원문으로 1차 사료 확정치 확보 — 삼성 반도체 2010 투자 12.7조(위기 직후 배증)·2011 13.0조, 반도체 매출·영업이익 2007~2015, 메모리 매출 2010~2014, Micron FY2006~15 전 구간. 2009 최저점 대비(삼성 ~6.5조ᵉ vs 하이닉스 ~1.0조ᵉ vs Micron $0.49B -81%)와 1·2차 치킨게임 음영(2007~09·2011~12)·다운턴 대응 비교 3행 추가. 근사치는 ᵉ·툴팁 "일부 근사"로 명시, 데이터 신뢰도 등급(A/B/C) 소스 문서화. 패치 v2.42.2.',
+    tags: ['CAPEX', '치킨게임', 'Qimonda', 'Elpida', '역사이클', '1차사료', 'dashboard', 'wiki'],
+    items: [
+      { label: '1차 사료', detail: '삼성 2010 AR(반도체 12.7조)·4Q2008/2009/2011/2012/2014 경영설명회 PDF·Micron 10-K 4건(FY06~15 현금흐름표) 직접 열람' },
+      { label: 'wiki/concepts/memory-capex-history.md 확장', detail: '2006~2015 표·치킨게임 대응 비교(2009 최저점)·성립 조건 소멸 논지(경쟁자 재무 취약 → 국가 자본·사상 최대 현금) 추가' },
+      { label: '대시보드 CAPEX 탭', detail: '연도 21개로 확장, 다운턴 음영 구간형(1·2차 치킨게임 라벨), 인사이트 4카드, 다운턴 비교 8행(-90~20%), 근사치 툴팁 표기' },
+    ],
+    links: [
+      { label: '리서치 II (2006~2015)', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md' },
+    ],
+  },
+  // ── 2026-08-15 (ii) ──────────────────────────────────────────────────────────
+  {
+    date: '2026-08-15',
+    type: 'build',
+    version: 'v2.42.1',
+    title: 'CMO Matrix 버그 수정 — 다운턴 필터 선택 시 글자 안 보이는 문제',
+    summary:
+      '피드백("다운턴 필터가 선택되었을 때 글이 안보이는 문제") 수정. 원인: 다운턴 칩이 Chip 컴포넌트에 tone="text-white"만 전달해, active 상태에서 배경색 클래스 없이 흰 글자만 적용되어 흰 배경 위에 흰 글자가 찍히는 렌더링 버그였다. Chip에 style prop을 추가해 다운턴별 색상(d.color)을 인라인 배경으로 지정하도록 수정, 선택 시 점(dot)도 흰색으로 반전되게 조정. 부수적으로 프리셋 버튼 5종도 active prop 누락으로 tone이 전혀 반영되지 않던 문제를 발견해 별도 ActionChip 컴포넌트로 분리 — 항상 지정된 색으로 표시되도록 수정. 패치 v2.42.1(신규 SP-2 마이너 위에 적용).',
+    tags: ['버그수정', 'CMO Matrix', 'UI', 'dashboard'],
+    items: [
+      { label: '다운턴 필터 수정', detail: 'Chip에 style prop 추가, 다운턴 칩은 active 시 style={{backgroundColor: d.color}}로 다운턴별 색상 배경 적용 — 흰 글자가 실제로 보이게' },
+      { label: '프리셋 버튼 수정', detail: '기존 Chip 재사용 시 active prop을 넘기지 않아 tone이 무시되고 항상 회색으로 렌더되던 문제 — 별도 ActionChip(토글 아닌 클릭형 버튼)으로 분리해 tone 색이 항상 표시되도록 수정' },
+    ],
+    links: [],
+  },
   // ── 2026-08-15 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-15',
@@ -57,7 +266,6 @@ export const UPDATES = [
       { label: 'wiki/downturn/preparation.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/downturn/preparation.md' },
     ],
   },
-
   // ── 2026-08-14 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-14',

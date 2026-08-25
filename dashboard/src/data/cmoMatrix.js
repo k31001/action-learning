@@ -2,7 +2,8 @@
 // 단일 소스: wiki/storyline/cmo-matrix.md. 수치·판정 변경은 위키 먼저.
 //
 // 축 정의
-//   downturn : d1(2007~09) · d2(2010~13) · d3(2022~23) · d4(2028~29 예측)
+//   downturn : d1(2007~09) · d2(2010~13) · d19(2018 Q4~2019) · d3(2022~23) · d4(2028~29 예측)
+//              — 1·2·3차 번호 체계는 리포지토리 전반의 확립 표기라 유지. 2019는 번호 없이 연도로 표기
 //   phase    : prep(대비 — 다운턴 오기 전) · response(대응 — 다운턴 기간 중)
 //              d4는 recommend(추천 전략) · mistake(예상되는 흔한 실수)
 //   product  : DRAM · NAND · SSD·UFS · 공통
@@ -13,6 +14,7 @@
 export const CMO_DOWNTURNS = [
   { id: 'd1', short: '1차', label: '1차 치킨게임 (2007~09)', prepWindow: '대비기 2005~2007 H1', color: '#FF3B30' },
   { id: 'd2', short: '2차', label: '2차 치킨게임 (2010~13)', prepWindow: '대비기 2009 H2~2010', color: '#FF9500' },
+  { id: 'd19', short: '2019', label: '2019 다운사이클 (2018 Q4~2019)', prepWindow: '대비기 2017~2018', color: '#30B0C7' },
   { id: 'd3', short: '3차', label: '다운사이클 (2022~23)', prepWindow: '대비기 2020~2022 H1', color: '#AF52DE' },
   { id: 'd4', short: '4차', label: '다음 다운사이클 (2028~29 예측)', prepWindow: '대비 창 = 지금(2026~27)', color: '#007AFF', forecast: true },
 ]
@@ -55,6 +57,66 @@ export const CMO_CAUSES = [
   { id: 'demand', mark: '①', label: '수요발', desc: 'AI 투자수익률(CAPEX/ROI) 재평가 — 병목 모델 하방 민감도 -31.5%, "꼭짓점은 FCF"', trigger: '빅테크 FCF 반전 · CapEx 25%+ 삭감 · GPU 임대가 6개월 -35%', scenario: 'C·D (~29%)' },
   { id: 'supply', mark: '②', label: '공급발', desc: '2028~29 신규 캐파 동시 도래(마이크론 Idaho·SK 용인·한국 팹 2+2) + CXMT 캐파 15% 접근 — 수요 유지에도 과잉', trigger: '경쟁사 증설 공시 · 재고일수 · DRAM 계약가 감속 지속', scenario: 'A·B 내 조정' },
   { id: 'shift', mark: '③', label: '전환발', desc: '3D DRAM·CXL·zHBM 채택 개시로 HBM 스택 수요 이동 — 부분적·비동기 다운턴', trigger: '3D DRAM 전력 50% 개선 입증 · 빅테크 커스텀 칩 CXL/3D 채택', scenario: 'E (5~10%)' },
+]
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 통찰 — wiki/storyline/cmo-matrix.md §5 "이 매트릭스에서 읽히는 것" 미러
+// ─────────────────────────────────────────────────────────────────────────────
+export const CMO_INSIGHTS = [
+  {
+    id: 0,
+    title: '대비기 절제는 1차에서만 있었다',
+    text: '2007-01 CapEx -18% 삭감은 "삼성 = 항상 역사이클 확대"라는 통설의 반례이며, 2·3차 대비기에는 붕괴 직전까지 증액했다. 특히 3차는 수요 절벽 6개월 전에 450조 5년 계획을 공표해 이후 조정의 자유도를 스스로 좁혔다. 절제의 형태도 다르다 — 1차는 "개발은 선행하되 양산 투입은 이연"이라는 배합이었고, 3차는 "캐파는 늘리고 판매만 조이는" 비대칭이었다.',
+  },
+  {
+    id: 1,
+    title: '효과가 분명했던 액션의 관점 편중',
+    text: '◎ 판정은 개발·투자에 몰려 있고(공정 세대 선행, 역사이클 증설, R&D 하한), 제조(감산·가동률) 축에서는 무감산이 1차·2019에서 ◎, 3차에서 ✕로 갈렸다 — 같은 액션의 운명이 맥락에 따라 세 번 다 달랐다. 제조 축의 교범은 맥락 의존성이 가장 크다.',
+  },
+  {
+    id: 2,
+    title: '무행동이 만든 손실이 행동의 실패보다 크다',
+    text: '✕·△ 중 상당수가 무행동이다(HBM 후순위, 엘피다 불참, 조직 무대응). 다운턴 전략의 실패는 대개 "잘못한 것"이 아니라 "안 한 것"에서 온다.',
+  },
+  {
+    id: 3,
+    title: '삼성은 "다운턴 중 니치 육성"에 성공한 역사를 이미 갖고 있다',
+    text: '초판의 "SSD·UFS 축은 HDD 매각 한 건뿐"은 조사 공백이었다. 재조사 결과 2차 다운턴(2010~13) 한복판에서 소비자 SSD를 풀 자체화(830)→세계 최초 TLC(840)→V-NAND 최초 양산으로 니치에서 2013 전체 SSD 1위(28.5%)까지 육성한 ◎급 선례가 있었다. 즉 3차의 HBM 니치 배제(✕)는 "삼성은 원래 니치를 못 키운다"가 아니라 같은 회사가 이미 성공했던 플레이북을 실행하지 않은 것이다 — AI SSD(SCADA) 니치 대응의 벤치마크는 SK·Kioxia가 아니라 2012년의 삼성 자신이다. 남은 진짜 공백은 SLC 초고 IOPS AI SSD 트랙 하나다.',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
+  },
+  {
+    id: 4,
+    title: '대비 국면이 대응의 선택지를 결정한다',
+    text: '2019년 HBM팀 축소가 2022~23의 출발 위치가 됐듯, 지금(2026~27)의 계약 커버리지·옵션 캐파 비율·별동대 진척이 2028~29의 C가 된다. 4차 추천 전략에서 대비 항목이 대응 항목보다 많은 이유다.',
+  },
+  {
+    id: 5,
+    title: '계약 바닥은 삼성에게 완전히 새로운 메커니즘이 아니다',
+    text: '2005-11 Apple NAND 장기공급계약(선급 총 $1.25B, 5개사)에서 삼성은 이미 선급 LTA의 공급자 당사자였다. 4차 추천 1순위(계약 바닥)는 없던 능력을 새로 만드는 일이 아니라, 20년 전 개별 계약으로 했던 것을 전사 커버리지 정책으로 제도화하는 일이다 — 실행 난이도의 성격이 달라진다.',
+    refs: 'sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md',
+  },
+  {
+    id: 6,
+    title: '대비기 액션의 71%는 다운턴 대비가 아니었다',
+    text: '28건 중 다운턴을 겨냥한 의도적 대비는 8건(29%)뿐이고, 13건은 호황 성장, 7건은 결과적 대비였다(2019 대비기 3건 추가 반영). 다운턴 대비를 문제로 삼는다면 참고할 사내 선례의 모수 자체가 작다는 것이 출발점이다.',
+  },
+  {
+    id: 7,
+    title: '무행동은 대비 국면에서 더 치명적이다',
+    text: '대응 국면의 ✕는 3건(3차 무감산·HBM 후순위, 2019 HBM팀 축소)이지만, 대비 국면의 ✕는 3차에서만 4건(CapEx 무절제·450조 공표·HBM 조직 부재·재고 방치)에 2019의 재고·경보 무행동까지 5건이다. 그중 셋(HBM 조직 부재, 재고 방치 2회)은 무행동이다 — 다운턴이 오기 전의 무행동이 다운턴 중의 선택지를 지운다.',
+  },
+  {
+    id: 8,
+    title: '전환발(③) 다운턴의 O를 가르는 것은 "전환기 플레이북"의 실행 여부다',
+    text: '시장 전환기 재조사 결과, 삼성이 PC→모바일·모바일→데이터센터 두 전환에서 반복한 승리 공식은 4요소였다: ①레거시 exit+판로 심기(2011 HDD 매각에 NAND 크로스-서플라이 조항 동반), ②자기잠식형 표준 창설(eMMC 지배자가 UFS 주도), ③수요 폭발 3~5년 전 전용 캐파 베팅(시안 V-NAND), ④인터페이스 세대 선점(XS1715 — 업계 최초 NVMe, Intel보다 1년 선행). 반례도 같은 조사에서 나왔다 — NVMe 규격을 설계한 Intel은 제품화 1년 후행 + 자기 생태계 없는 차세대 베팅(Optane, 2022 청산)으로 데이터센터 전환의 승자 자리를 내줬다. 규격·기술을 가진 쪽이 아니라 플레이북을 완주한 쪽이 이긴다 — 4차의 전환발 시나리오(3D DRAM·CXL·zHBM)에서 D6·RS-9 계열 대비책의 판정 기준으로 쓸 수 있는 관측 선례다.',
+    refs: 'sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
+  },
+  {
+    id: 9,
+    title: '2019가 채운 표본 — 같은 액션의 세 번째 운명, 두 번 반복된 무행동',
+    text: '2019 다운사이클(2018 Q4~2019)을 추가하면서 무감산은 세 개의 데이터 포인트를 갖게 됐다 — 1차 ◎(소모전: 대칭 6강에서 퇴출 유도), 2019 ◎(무임승차: Micron·SK가 감산하고 요카이치 정전이 공급을 조이는 동안 1위가 버티며 점유 흡수 — 1Q20 DRAM 44.1%), 3차 ✕(불발: 퇴출 후보 없는 3강에서 자멸). 제조 축 교범의 맥락 의존성(통찰 1)이 표본 3개로 실증된 것이다. 재고·경보 무행동도 2018(✕)과 2021(✕) 두 사이클 연속 반복됐다 — "신호는 있었으나 배선이 없었다"가 일회성 실수가 아니라 구조 패턴이라는 확인이며, EWI 트리거 사전 배선(RS-9·DP-4)의 가장 강한 근거다. 그리고 2019는 같은 해에 HBM2E Flashbolt를 발표하면서 HBM 전담 조직을 축소했다 — 제품 로드맵과 조직 배선의 불일치는 니치 상실의 초기 신호로, 4차 EWI에 "로드맵-조직 정합" 점검이 들어가야 하는 이유다.',
+    refs: 'sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
+  },
 ]
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -103,6 +165,15 @@ export const CMO_ENTRIES = [
     refs: 'sources/articles/dram-chicken-game-history-2026-08-05.md · sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md',
   },
 
+  {
+    id: 'd1-res-06', downturn: 'd1', phase: 'response', product: 'SSD·UFS', context: '제품',
+    action: 'SSD 밀도 3연타 — 256GB MLC 발표(2008-05, "자체 컨트롤러로 MLC에서 SLC급 성능" 명시)·128GB 양산(2008-07)·256GB 양산(2008-11)',
+    mechanism: '다운턴 중 응용처 개척 — NAND 신수요 창출 + 컨트롤러 내재화 축적',
+    outcome: 'NAND 가격 폭락의 1차 치킨게임 한복판에서 SSD 최고 밀도 라인업을 계속 출시 — SLC→MLC 전환과 자체 컨트롤러 내재화가 공식 서술에 동시 등장한 기점. 시장이 초기라 당장의 손익 기여는 미미했으나, 이때 축적한 컨트롤러·펌웨어 역량이 2기(830 풀 자체화)의 토대가 됐다',
+    verdict: 'partial',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
+  },
+
   // ══ 2차 다운턴 (2010~13) · 대응 ═════════════════════════════════════════
   {
     id: 'd2-res-02', downturn: 'd2', phase: 'response', product: 'DRAM', context: '개발',
@@ -122,19 +193,35 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd2-res-05', downturn: 'd2', phase: 'response', product: 'NAND', context: '투자',
-    action: '시안 NAND 팹 다운턴 착공 (2012-09 착공 → 2014-05 양산, 투자액 매체별 $2.3B~$10B+ 병기)',
-    mechanism: '리드타임 소화 — 다운턴에 건설, 업사이클에 가동',
-    outcome: '다운턴 국면에 건설 기간을 소화해 2014년 NAND 수요 확대기에 맞춰 양산 진입. 중국 현지 생산 거점 확보로 동서 균형 공급의 토대(현재 MB-2의 자산)',
+    action: '시안 NAND 팹 다운턴 착공 (2012 발표 $7B → 2012-09 착공 → 2014-05 V-NAND 전용 양산, 1기 누계 $10.87B 후대 집계 병기)',
+    mechanism: '리드타임 소화 + 수요 폭발 3~5년 전 전용 캐파 베팅 — 다운턴에 건설, 업사이클에 가동',
+    outcome: '다운턴 국면에 건설 기간을 소화해 2014년 NAND 수요 확대기에 V-NAND 전용 캐파로 양산 진입 → 데이터센터 전환의 캐파 기반(2기 $7B는 2017-08-30 슈퍼사이클 정점 직전 발표, 현재 전체 NAND 40%+). 중국 현지 생산 거점 확보로 동서 균형 공급의 토대(현재 MB-2의 자산)이자 전환기 플레이북 요소 3의 원형',
     verdict: 'clear',
-    refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md',
+    refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md · sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
   },
   {
     id: 'd2-res-06', downturn: 'd2', phase: 'response', product: 'SSD·UFS', context: '제품',
-    action: 'HDD 사업 매각 (2011-04 Seagate에 $1.375B, 2011-12 종결)',
-    mechanism: '비핵심 경량화 — 스토리지를 NAND/SSD로 집중',
-    outcome: '모바일 전환으로 HDD 수요 구조가 사양화되는 맥락에서 발화 → $1.375B 회수 + Seagate 지분·NAND 공급 파트너십 확보. 단 메모리 점유율에의 효과는 간접',
+    action: 'HDD 사업 매각 (2011-04 Seagate에 $1.375B — 현금 50%+주식 50%: 지분 9.6%·이사회 1석, 같은 계약에 "삼성 NAND→Seagate SSD" 크로스-서플라이 조항 동반, 2011-12 종결)',
+    mechanism: '레거시 exit + 판로 심기 — 스토리지를 NAND/SSD로 집중하며 매각 계약에 자사 NAND 판로를 내장',
+    outcome: '모바일 전환으로 HDD 수요 구조가 사양화되는 맥락에서 발화 → $1.375B 회수 + Seagate 지분 + 매각과 동시에 자사 NAND의 신규 판로를 계약 구조에 심음(전환기 플레이북 요소 1의 원형). 단 메모리 점유율에의 효과는 간접',
     verdict: 'partial',
-    refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md',
+    refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md · sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
+  },
+  {
+    id: 'd2-res-09', downturn: 'd2', phase: 'response', product: 'SSD·UFS', context: '개발',
+    action: 'UFS 표준 창설 주도 (JEDEC UFS 1.0 2011-02-24 → 2.0 2013-09-18, MIPI M-PHY·UniPro 협업 — 삼성 임원이 표준 발표 대표 논평자 반복)',
+    mechanism: '자기잠식형 표준 창설 — eMMC 지배자가 자기 시장을 대체할 차세대 표준을 주도',
+    outcome: 'eMMC 1위(2013년 35.6%, Gartner)를 쥔 상태에서 SSD(SCSI/UAS)식 command queuing을 모바일에 이식한 UFS를 다운턴 중에 주도 → 2015-01 세계 최초 UFS 2.0 양산으로 회수, PC→모바일 전환기의 모바일 스토리지 지배를 표준 계층에서 연장(전환기 플레이북 요소 2의 원형)',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
+  },
+  {
+    id: 'd2-res-10', downturn: 'd2', phase: 'response', product: 'SSD·UFS', context: '개발',
+    action: 'XS1715 — 업계 최초 NVMe eSSD (2013-05-31 UNH-IOL NVMe 인증 1호 → 2013-07 공개, 최초 U.2(SFF-8639) 채택, 순차 3,000MB/s·740K IOPS)',
+    mechanism: '인터페이스 세대 선점 — SATA→NVMe 전환의 첫 제품을 잡아 데이터센터 전환기의 주도권 확보',
+    outcome: 'NVMe 규격을 설계한 Intel보다 제품화 약 1년 선행(Intel 첫 NVMe DC P3700은 2014-Q2) → 모바일→데이터센터 전환기의 인터페이스 주도권 확보, 3Q18 eSSD 매출 38.5% 1위 vs Intel 18.3%로 회수(단 1Q17 출하량 기준 Intel 1위 구간 존재 — 집계 기준별 뉘앙스). 전환기 플레이북 요소 4의 원형 — 최종 승부는 Intel의 자멸(Optane 2022 청산·NAND 매각)로 확정',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md',
   },
   {
     id: 'd2-res-07', downturn: 'd2', phase: 'response', product: 'DRAM', context: '투자',
@@ -143,6 +230,65 @@ export const CMO_ENTRIES = [
     outcome: '엘피다 체력 열위(퇴출 임박)로 저가 매수 창이 열렸으나 불발 → 마이크론이 인수해 모바일 DRAM 스케일 + 다사이트 중앙 운영 체계 확보. (+) 6강→3강 압축·공급 규율 유산은 삼성도 공유 / (−) 경쟁자의 스케일 점프 허용 — 등급은 낮은 쪽',
     verdict: 'partial',
     refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md · wiki/entities/micron.md',
+  },
+
+  {
+    id: 'd2-res-08', downturn: 'd2', phase: 'response', product: 'SSD·UFS', context: '제품',
+    action: '소비자 SSD 브랜드 구축 — 830 풀 자체화(2011: NAND·컨트롤러 MCX·DRAM·펌웨어 전 컴포넌트 자체) → 840 세계 최초 TLC(2012-10, MDX) → 840 EVO(2013-07, MEX) → V-NAND 세계 최초 양산 + 첫 V-NAND SSD(2013-08)',
+    mechanism: '다운턴 중 니치→주류 전환 — 수직통합 완제품으로 부품 다운턴을 우회',
+    outcome: '2차 다운턴과 정면 중첩된 4년간 소비자 SSD를 니치에서 1위 사업으로 육성 → 2013 전체 SSD 점유 28.5% 1위(Gartner), 850 PRO(2014)로 V-NAND 소비자 시장까지 선점. 다운턴 중 저원가 TLC로 가격대를 끌어내려 시장 자체를 키웠다 — 3차 다운턴의 HBM 니치 배제(✕)와 정반대의, "다운턴 중 니치 육성"이 성공한 사내 최대 선례',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
+  },
+
+  // ══ 2019 다운사이클 (2018 Q4~2019) · 대응 ═══════════════════════════════
+  {
+    id: 'd19-res-01', downturn: 'd19', phase: 'response', product: '공통', context: '제조',
+    action: '무감산 공식 기조 유지 — "현재 인위적인 웨이퍼 투입 감소는 검토하고 있지 않다"(2Q19 컨콜 2019-07-31) + 12라인 플래너 낸드 캐파 일부 R&D 용도 전환',
+    mechanism: '무임승차형 버티기 — 후발 감산·사고 감소분 위에서 빗 점유율 방어',
+    outcome: 'Micron(2019-03 DRAM·NAND 웨이퍼 각 5% 감축 → 6월 NAND 10% 확대)·SK하이닉스(2019-07 NAND 웨이퍼 15%+ 축소·4Q19 D램 캐파 축소)·요카이치 정전(2019-06, 3Q19 NAND 공급 ~17% 감소)이 공급을 조이는 맥락에서 발화 → 4Q19 출하 증가로 매출 보합 방어, 1Q20 DRAM 점유 44.1%. 무감산의 세 번째 데이터 포인트 — 1차 ◎(소모전)·2019 ◎(무임승차)·3차 ✕(불발): 같은 액션, 세 가지 운명',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
+  },
+  {
+    id: 'd19-res-02', downturn: 'd19', phase: 'response', product: '공통', context: '투자',
+    action: 'CapEx 삭감 없이 유지 (2019 반도체 22.6조 — 반도체 영업이익 -69%(14.02조) 국면에서 전년 유사 수준)',
+    mechanism: '재무 체력 기반 역사이클 유지',
+    outcome: '경쟁사가 삭감하는 동안(Micron FY19 $10.5B→$9B, SK 2020 상당폭 축소 방향) 유지 → Counterpoint "지속 투자가 2020 반등기 선도 지위를 강화" 평가, 2020 COVID발 서버·클라우드 반등기를 온전한 캐파로 흡수',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
+  },
+  {
+    id: 'd19-res-03', downturn: 'd19', phase: 'response', product: '공통', context: '개발',
+    action: '기술 세대 전환 완주 — 1z DRAM 세계 최초 개발(2019-03-21)·6세대 136단 V낸드 양산(2019-08)·HBM2E Flashbolt 발표(2019-03 GTC)·EUV D1x 준비(→2020-03 100만 모듈 출하)',
+    mechanism: '다운턴 중 기술 전환 — 1·2차 ◎ 패턴의 반복',
+    outcome: '이익 -69% 국면에서도 DRAM·NAND·HBM·EUV 네 축의 세대 전환을 모두 완주 → 2020~21 상승기 원가·세대 우위로 회수. 단 같은 해 HBM 전담 조직은 축소 — 제품 발표(Flashbolt)와 조직 배선의 불일치가 병존',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
+  },
+  {
+    id: 'd19-res-04', downturn: 'd19', phase: 'response', product: 'DRAM', context: '운영',
+    action: '[무행동] HBM 전담팀 축소 (2019 — "니치에 머물 것" 판단, 자원을 범용 DRAM에 재배치)',
+    mechanism: '주력 논리에 의한 니치 배제',
+    outcome: '당장의 비용 절감 효과는 미미했고, 3차 다운턴의 출발 위치(C)를 만든 결정이 됐다 — HBM 40%→17%·33년 만의 DRAM 역전의 기점(CNBC 사후 지목). 같은 해 SK는 반대로 HBM 베팅을 늘림. "한 다운턴의 M이 다음 다운턴의 C가 된다"는 순환의 원형 사례',
+    verdict: 'adverse',
+    refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md · sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
+  },
+  {
+    id: 'd19-res-05', downturn: 'd19', phase: 'response', product: '공통', context: '투자',
+    action: '반도체 비전 2030 선언 (2019-04-24 — 시스템반도체 133조: R&D 73조+인프라 60조, 전문인력 15,000명, 1Q19 실적 발표 직전 주)',
+    mechanism: '다운턴 중 포트폴리오 다각화 베팅 — 사이클 외부 축 개설',
+    outcome: '메모리 이익이 반토막 이하로 떨어지던 한복판에 비메모리 초장기 베팅을 공표 — 파운드리 확장으로 계승(2021-05 171조 증액). 단 메모리 사이클 대응으로서의 효과는 간접 — 2차 대비기의 5대 신수종(△)과 같은 계열',
+    verdict: 'partial',
+    refs: 'sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
+  },
+  {
+    id: 'd19-res-06', downturn: 'd19', phase: 'response', product: '공통', context: '운영',
+    action: '일본 수출규제 대응 (2019-07 불화수소·EUV 레지스트·폴리이미드 규제 → 공급처 다변화, JSR-imec 벨기에산 레지스트 우회 확보, 국산화 착수)',
+    mechanism: '공급망 이원화 — 외생 충격의 구조화 대응',
+    outcome: '다운턴+지정학 이중 충격에서 생산 차질 없이 통과 → 소재 국산화(솔브레인 2020-01·SK머티리얼즈 2020-06·동진쎄미켐 2021-03)로 구조화, 이후 공급망 리스크 관리의 표준이 된 계기',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
   },
 
   // ══ 3차 다운턴 (2022~23) · 대응 ═════════════════════════════════════════
@@ -203,6 +349,15 @@ export const CMO_ENTRIES = [
     refs: 'sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md',
   },
 
+
+  {
+    id: 'd3-res-08', downturn: 'd3', phase: 'response', product: 'SSD·UFS', context: '제품',
+    action: '플래그십 유지 속 eSSD 매출 급락 — 990 PRO 출시(2022-10, 무감산 선언과 같은 달) / enterprise SSD 매출 1Q23 $801M(QoQ -55%)',
+    mechanism: '제품 로드맵 사수 — 단 수요 붕괴에는 무방비 노출',
+    outcome: '다운턴 중에도 소비자 플래그십(990 PRO)과 eSSD 로드맵은 유지했으나, 북미 서버 재고 조정으로 enterprise SSD 매출이 1Q23 -55%까지 급락(시장 전체도 2023 H1 반토막) — 계약 바닥이 없는 스토리지 완제품이 다운턴 충격을 가장 직접적으로 받는다는 실증. 회복은 4Q23(+47.6% QoQ)부터',
+    verdict: 'partial',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
+  },
 
   // ══ 1차 다운턴 (2007~09) · 대비 [2005~2007 H1] ══════════════════════════
   {
@@ -313,6 +468,32 @@ export const CMO_ENTRIES = [
   },
 
   // ══ 3차 다운턴 (2022~23) · 대비 [2020~2022 H1] ═════════════════════════
+  // ══ 2019 다운사이클 · 대비 (2017~2018) ═══════════════════════════════════
+  {
+    id: 'd19-pre-01', downturn: 'd19', phase: 'prep', product: '공통', context: '투자', prepType: 'growth',
+    action: '정점 확장 연쇄 — 2017 반도체 CapEx 27.3조 사상 최대 · 평택 P1 가동+37조 투자 발표(2017-07) · P2 착공(2018-01, 30조+) · 시안 2기 발표(2017-08)',
+    mechanism: '호황 정점의 캐파 확장 — 슈퍼사이클 지속 전제',
+    outcome: '확장 캐파와 2018년 말 재고 고점이 4Q18 수요 절벽(DRAM 매출 QoQ -18.3%)과 충돌해 2019 DRAM -37~38%의 낙폭을 키웠으나, 같은 캐파가 2020 반등기 흡수 자산이 되기도 했다 — 3차 대비기 CapEx 무절제(✕)의 예고편이자 양날',
+    verdict: 'partial',
+    refs: 'sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
+  },
+  {
+    id: 'd19-pre-02', downturn: 'd19', phase: 'prep', product: '공통', context: '운영', prepType: 'growth',
+    action: '주주환원 3년 고정 약정 (2017-10-31 — 2018~2020 배당 9.6조 원/년, FCF 최소 50% 환원)',
+    mechanism: '정점 자본배분의 경직화 — 하방 유연성 사전 축소',
+    outcome: '사이클 정점에서 3년 배당을 고정 약정 → 2019 전사 영업이익 -52% 국면에도 배당 9.6조 유지 의무. 재무 요새로 감당은 됐으나, 정점의 대외 공표가 다운턴 자유도를 좁힌 구조는 3차의 450조 공표(✕)에 앞선 선행 사례',
+    verdict: 'partial',
+    refs: 'sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
+  },
+  {
+    id: 'd19-pre-03', downturn: 'd19', phase: 'prep', product: '공통', context: '운영', prepType: 'intent',
+    action: '[무행동] 2H18 공급과잉 경보에도 재고 조정 부재 (TrendForce 2018-08-16·09-26 연속 경보 → 2018년 말 공급·수요 재고 상대 고점 도달)',
+    mechanism: '조기경보 신호의 미행동 — 신호는 있었으나 배선이 없었다',
+    outcome: '경보→행동 배선 부재가 4Q18 절벽의 낙폭을 키웠다. 3차 대비기의 재고 +76.6% 방치(✕)와 동일 패턴 — 같은 실패가 두 사이클 연속 반복됐다는 사실이 EWI 트리거 사전 배선(RS-9·DP-4)의 가장 강한 근거',
+    verdict: 'adverse',
+    refs: 'sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md',
+  },
+
   {
     id: 'd3-pre-01', downturn: 'd3', phase: 'prep', product: '공통', context: '투자', prepType: 'growth',
     action: '반도체 CapEx 3년 연속 증액 (32.9조 2020 → 43.6조 2021 → 47.9조 2022)',
@@ -409,10 +590,19 @@ export const CMO_ENTRIES = [
     verdict: 'partial',
     refs: 'sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md',
   },
+  {
+    id: 'd3-pre-13', downturn: 'd3', phase: 'prep', product: 'SSD·UFS', context: '개발', prepType: 'effect',
+    action: '고부가 eSSD 아키텍처 선행 3연타 — SmartSSD CSD(2020-11, Xilinx FPGA 연산 스토리지)·첫 ZNS SSD(2021-06)·PM1743 업계 최초급 PCIe Gen5(2021-12 발표, 2022 Q1 양산)',
+    mechanism: '차세대 인터페이스·아키텍처 선행 — 회복기 자산 축적',
+    outcome: '다운턴 진입 전에 Gen5·연산 스토리지·ZNS를 선행해 둔 것이 회복기 PM1753(NVIDIA CMX 공급)·PM1763 Gen6·1Q26 enterprise SSD 1위(38.2%)의 계보적 토대. PM9A3·UFS 4.0(별도 항목)과 함께 3차 대비기의 SSD·UFS 축은 세 대비기 중 가장 두터웠다 — 단 SLC 초고 IOPS AI SSD 트랙은 이 시기에도 열리지 않았다(현재 SK·Kioxia 선점의 원인)',
+    verdict: 'clear',
+    refs: 'sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md',
+  },
+
   // ══ 4차 (2028~29 예측) · 추천 전략 ══════════════════════════════════════
   {
     id: 'd4-rec-01', downturn: 'd4', phase: 'recommend', product: '공통', context: '운영', prepType: 'intent',
-    action: '[대비] 계약 바닥 선점 — take-or-pay·NTB 하한·Participating Forward를 커버리지 표준으로 (RS-8·RS-4·D12)',
+    action: '[대비] 계약 바닥 선점 — take-or-pay·NTB 하한·Participating Forward를 커버리지 표준으로 + 만기 사다리화 (RS-8·RS-4·D12 · DP-1)',
     mechanism: '계약적 매출 바닥 — 과거 3회 다운턴에 없던 신규 메커니즘',
     outcome: '발화 창은 다운턴 도착 전뿐 — 고객이 스스로 선수금·다년 계약에 들어오는 지금만 성립. 영업 4단계 격차(SK·마이크론 선행)만큼 바닥의 격차가 생긴다',
     causes: {
@@ -424,7 +614,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-02', downturn: 'd4', phase: 'recommend', product: '공통', context: '투자', prepType: 'intent',
-    action: '[대비] 옵션형 캐파 강제 — Fab Shell 선행 + 장비 단계 반입을 신규 캐파의 기본형으로 (RS-1·RS-5)',
+    action: '[대비] 옵션형 캐파 강제 — Fab Shell 선행 + 장비 단계 반입을 신규 캐파의 기본형으로 (RS-1·RS-5 · DP-2 🔵 무후회)',
     mechanism: '교정형 역사이클 투자 — 확정을 옵션으로',
     outcome: 'cause-robust — 옵션 가치는 원인과 무관하게 변동성 자체에 비례. 재무 요새는 모든 액션의 공통 전제이며, 2023년 감산·투자 분리 집행이 사내 선례',
     causes: {
@@ -436,7 +626,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-03', downturn: 'd4', phase: 'recommend', product: '공통', context: '운영', prepType: 'intent',
-    action: '[대비] 맥락 EWI + 다운턴 조직 대응 매뉴얼 사전 정의 (RS-9·D15·D16)',
+    action: '[대비] 맥락 EWI + 다운턴 조직 대응 매뉴얼 사전 정의 (RS-9·D15·D16 · DP-4 🔵 무후회·DP-7)',
     mechanism: '데이터 트리거 규율 + 조직 재편 사전 배선',
     outcome: 'cause-robust — 이 액션의 산출물이 곧 원인 판별이며, 나머지 액션의 행사 스위치를 켠다. 실행 순서는 "EWI 상시 → 계약 바닥 즉시 → 나머지는 트리거 발동 시"',
     causes: {
@@ -448,7 +638,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-04', downturn: 'd4', phase: 'recommend', product: 'DRAM', context: '개발', prepType: 'intent',
-    action: '[대비] 차세대 별동대 + R&D 하한 — HBM4E·zHBM·3D DRAM 선행 조직을 주력 배분 논리에서 분리 (D13·D6·SD-1)',
+    action: '[대비] 차세대 별동대 + R&D 하한 — HBM4E·zHBM·3D DRAM 선행 조직을 주력 배분 논리에서 분리 (D13·D6·SD-1 · DP-5 🔵 무후회)',
     mechanism: '다운턴 중 기술 전환 선행 — 자기잠식 허용 별동대',
     outcome: 'cause-robust — 세 원인 모두에서 발화. 2022~23 SK가 적자 속에서도 HBM 방향을 유지해 왕좌를 가져간 것의 정확한 이식이며, 2019 HBM팀 축소의 반면교사',
     causes: {
@@ -460,7 +650,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-05', downturn: 'd4', phase: 'recommend', product: 'NAND', context: '개발', prepType: 'intent',
-    action: '[대비] hybrid bonding 자체 IP 확보 + 공정 전환 주기 연장 R&D (RS-6·RS-7·D10)',
+    action: '[대비] hybrid bonding 자체 IP 확보 + 공정 전환 주기 연장 R&D (RS-6·RS-7·D10 · DP-5)',
     mechanism: '공급자·IP 종속 해소 — 세대 전환의 순서를 바꾸기',
     outcome: 'Kioxia(2023 업계 최초 CBA 양산)·YMTC(Xtacking·hybrid bonding 특허 지배)가 제약 국면에서 아키텍처 선행으로 판을 바꾼 것의 이식. V10(430L, BV NAND) 세대에서 YMTC 라이선스 의존은 시나리오 C/E에서 차단 리스크',
     causes: {
@@ -472,7 +662,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-06', downturn: 'd4', phase: 'recommend', product: 'SSD·UFS', context: '제품', prepType: 'intent',
-    action: '[대비] AI SSD 니치 조기 진입 — SCADA 대응 확정 + FDP 호스트 통합 플랫폼으로 소프트웨어 전환비용 축적 (MB-4·RS-3)',
+    action: '[대비] AI SSD 니치 조기 진입 — SCADA 대응 확정 + FDP 호스트 통합 플랫폼으로 소프트웨어 전환비용 축적 (MB-4·RS-3 · DP-5)',
     mechanism: '인접 파괴 선점 — 레퍼런스 고착 전 진입',
     outcome: 'SK·Kioxia가 SLC 기반 초고 IOPS AI SSD로 NVIDIA 전략 파트너를 선점 중 — HBM에서 벌어진 "니치 선점 → 레퍼런스 고착 → 구조적 열위"의 반복 위험. 레퍼런스가 굳은 뒤 진입 비용은 니치 단계의 몇 배',
     causes: {
@@ -484,7 +674,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-07', downturn: 'd4', phase: 'recommend', product: '공통', context: '투자',
-    action: '[대응] 다운사이클 M&A 펀드 집행 + PMI 각본 (D9 — EV/EBITDA 5배 6개월 트리거, 대상은 캐파가 아니라 기술 자산·인재)',
+    action: '[대응] 다운사이클 M&A 펀드 집행 + PMI 각본 (D9 · DR-4 — EV/EBITDA 5배 6개월 트리거, 대상은 캐파가 아니라 기술 자산·인재)',
     mechanism: '다운턴 저가 매수 — 대상 교정',
     outcome: '2012 엘피다 불참(불행사)의 교정이자, 마이크론이 인수 후 중앙 운영 체계(고객 요구 중앙 DB·다사이트 표준화)로 배당을 키운 것의 이식. 인수 자체가 아니라 PMI가 배당을 결정',
     causes: {
@@ -496,7 +686,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-08', downturn: 'd4', phase: 'recommend', product: 'DRAM', context: '제조',
-    action: '[대응] 게임 분리 — 소모전 불행사 + 로엔드 원가 방어 + 고부가 층 이동 (RS-6·RS-2·MB-4)',
+    action: '[대응] 게임 분리 — 소모전 불행사 + 로엔드 원가 방어 + 고부가 층 이동 (RS-6·RS-2·MB-4 · DR-2b 소모전 봉인·DR-5)',
     mechanism: '소모전 봉인 + 판 옮기기',
     outcome: 'CXMT는 국가가 손실을 흡수하므로 가격으로 퇴출되지 않는다 — 2023년에 이미 3강 맥락에서 소모전 불발을 실증. 로엔드는 원가로 속도만 늦추고 승부는 커스텀·솔루션 층에서',
     causes: {
@@ -508,7 +698,7 @@ export const CMO_ENTRIES = [
   },
   {
     id: 'd4-rec-09', downturn: 'd4', phase: 'recommend', product: '공통', context: '운영',
-    action: '[대응] 조직 재편을 다운턴 안에서 실행 (2009년형 — 회복 후로 미루지 않기, D16 매뉴얼 발동)',
+    action: '[대응] 조직 재편을 다운턴 안에서 실행 (2009년형 — 회복 후로 미루지 않기, D16 매뉴얼 발동 · DR-6)',
     mechanism: '위기를 구조 재편의 창으로 사용',
     outcome: '2009년 조직 통합(◎)과 2022~23년 무대응(△)의 대칭 실패가 근거. 다운턴은 조직 저항이 가장 낮은 유일한 창이며, 회복기에는 그 창이 닫힌다',
     causes: {

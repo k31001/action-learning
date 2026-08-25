@@ -476,7 +476,7 @@ function slideLow(pres, ic) {
 /* ---------------------------------------------------------------- */
 /* 제품·기술 축 ① — 환경 변화: Captive SSD 위상 변화 (데이터 차트)      */
 /* ---------------------------------------------------------------- */
-const FDP_TITLE = "제품·기술 축 — FDP Host–SSD 통합 플랫폼";
+const FDP_TITLE = "제품·기술 축: FDP Host–SSD 통합 플랫폼";
 const FDP_OPTS = { title: FDP_TITLE, source: "wiki/strategies/fdp-host-ssd-platform.md", chipW: 1.6 };
 
 function slideFdpWhy(pres, ic) {
@@ -721,6 +721,177 @@ function slideFdpHow(pres, ic) {
 }
 
 /* ---------------------------------------------------------------- */
+/* 제품·기술 축 ④ — 생태계 확산·락인 실행전략 (3컬럼, Samsung Blue)     */
+/* ---------------------------------------------------------------- */
+function slideFdpEco(pres, ic) {
+  const s = pres.addSlide();
+  // Samsung 메모리 PPT 스킬 컬러 토큰 (이 장은 Samsung Blue 단일 액센트)
+  const SBLUE = "1428A0", SB_T1 = "3C5AC8", SB_T2 = "8FA0DC";
+  const SB_BG = "EEF1FA", SINK = "1A1A1A", SGRAY = "555555", SLINE = "D9D9D9";
+
+  header(s, "제품 축 ④", FDP_OPTS);
+
+  s.addText([
+    { text: "실행전략  ", options: { bold: true, color: SBLUE } },
+    { text: "SCA로 다가가고 · FDP로 제공하고 · FDE로 협업한다: 워크로드가 들어올수록 전환비용이 커지는 락인 플라이휠, 다운턴 피해 최소화", options: { color: SGRAY } },
+  ], { x: 0.5, y: 0.9, w: 12.33, h: 0.3, fontFace: FONT, fontSize: 13, margin: 0 });
+
+  // ── 공통: 3컬럼 골격
+  const colX = [0.5, 4.7, 8.89], colW = 3.94;
+  const titles = ["락인 플라이휠", "SCA: Micron이 증명한 접근", "FDP·FDE: 기술과 사람"];
+  titles.forEach((t, i) => {
+    s.addText(String(i + 1), {
+      shape: "ellipse", x: colX[i], y: 1.3, w: 0.34, h: 0.34,
+      fill: { color: SBLUE }, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 14, bold: true, color: "FFFFFF", margin: 0,
+    });
+    s.addText(t, {
+      x: colX[i] + 0.44, y: 1.28, w: colW - 0.44, h: 0.38, valign: "middle",
+      fontFace: FONT, fontSize: 14, bold: true, color: SINK, margin: 0,
+    });
+    s.addShape("roundRect", {
+      x: colX[i], y: 1.78, w: colW, h: 5.06, rectRadius: 0.08,
+      fill: { color: "FFFFFF" }, line: { color: SLINE, width: 1 },
+    });
+  });
+
+  // ── 컬럼 1: SCA→FDP→FDE 플라이휠 + 약자 풀네임
+  const nodes = [
+    ["SCA", "다가간다", SBLUE, 2.0, 2.0],
+    ["FDP", "제공한다", SB_T1, 0.94, 3.78],
+    ["FDE", "협업한다", SB_T2, 3.06, 3.78],
+  ];
+  nodes.forEach(([t, verb, color, x, y]) => {
+    s.addText([
+      { text: t, options: { fontSize: 14.5, bold: true, breakLine: true } },
+      { text: verb, options: { fontSize: 9.5 } },
+    ], {
+      shape: "ellipse", x, y, w: 0.96, h: 0.96,
+      fill: { color }, align: "center", valign: "middle",
+      fontFace: FONT, color: "FFFFFF", margin: 0, lineSpacingMultiple: 1.0,
+    });
+  });
+  const arrows = [
+    [1.86, 2.96, 1.5, 3.74],
+    [1.94, 4.44, 3.02, 4.44],
+    [3.52, 3.74, 3.1, 2.96],
+  ];
+  arrows.forEach(([x1, y1, x2, y2]) => {
+    s.addShape("line", {
+      x: Math.min(x1, x2), y: Math.min(y1, y2),
+      w: Math.abs(x2 - x1) || 0.001, h: Math.abs(y2 - y1) || 0.001,
+      flipH: x2 < x1, flipV: y2 < y1,
+      line: { color: "B9C2DC", width: 1.75, endArrowType: "triangle" },
+    });
+  });
+  s.addText("고객 락인\n다운턴 방어", {
+    shape: "roundRect", rectRadius: 0.06, x: 1.68, y: 3.28, w: 1.6, h: 0.62,
+    fill: { color: SB_BG }, line: { color: SBLUE, width: 1 },
+    align: "center", valign: "middle",
+    fontFace: FONT, fontSize: 10, bold: true, color: SINK, margin: 0, lineSpacingMultiple: 1.0,
+  });
+  s.addText("워크로드가 들어올수록 최적화가 깊어지고 전환비용이 커진다. 계약이 끝나도 갈아타기 어려운 관계가 다운턴의 방어벽이 된다", {
+    x: 0.72, y: 5.0, w: 3.5, h: 0.85,
+    fontFace: FONT, fontSize: 10.5, color: SGRAY, margin: 0, valign: "top", lineSpacingMultiple: 1.15,
+  });
+  s.addShape("line", { x: 0.72, y: 5.94, w: 3.5, h: 0, line: { color: SLINE, width: 0.75 } });
+  s.addText([
+    { text: "SCA", options: { bold: true, color: SBLUE } },
+    { text: " Strategic Customer Agreement · 전략적 고객 계약", options: { color: SGRAY, breakLine: true } },
+    { text: "FDP", options: { bold: true, color: SBLUE } },
+    { text: " Flexible Data Placement · NVMe 데이터 배치 표준", options: { color: SGRAY, breakLine: true } },
+    { text: "FDE", options: { bold: true, color: SBLUE } },
+    { text: " Forward Deployed Engineer · 고객 상주 엔지니어", options: { color: SGRAY } },
+  ], {
+    x: 0.72, y: 6.04, w: 3.55, h: 0.72,
+    fontFace: FONT, fontSize: 9.5, margin: 0, valign: "top", lineSpacingMultiple: 1.25,
+  });
+
+  // ── 컬럼 2: SCA 설명 + Micron ↔ Anthropic 선례
+  s.addText("공급부족 협상력의 창이 열려 있을 때 워크로드 교환을 제안한다: 고객이 워크로드를 공유하면 그 워크로드에 최적화한 FDP SSD를 공급. 성능·수명 개선과 TCO 절감으로 거절하기 어려운 딜", {
+    x: 4.92, y: 1.96, w: 3.5, h: 1.2,
+    fontFace: FONT, fontSize: 10.5, color: SINK, margin: 0, valign: "top", lineSpacingMultiple: 1.15,
+  });
+  s.addText("대상: 하이퍼스케일러 · Pure Storage · VAST Data · DDN", {
+    x: 4.92, y: 3.2, w: 3.5, h: 0.3,
+    fontFace: FONT, fontSize: 9.5, color: SGRAY, margin: 0,
+  });
+  s.addShape("roundRect", {
+    x: 4.9, y: 3.6, w: 3.54, h: 3.06, rectRadius: 0.07,
+    fill: { color: SB_BG }, line: { color: SBLUE, width: 1.25 },
+  });
+  s.addText("선례: Micron ↔ Anthropic (’26.06)", {
+    x: 5.08, y: 3.74, w: 3.3, h: 0.3,
+    fontFace: FONT, fontSize: 11.5, bold: true, color: SBLUE, margin: 0,
+  });
+  s.addText([
+    { text: "다년 공급 (HBM·DRAM·SSD 전 포트폴리오)", options: { bullet: { color: SBLUE }, breakLine: true } },
+    { text: "Claude 워크로드 공동 최적화", options: { bullet: { color: SBLUE }, breakLine: true } },
+    { text: "운영 통합 (Micron 전사에 Claude 배치)", options: { bullet: { color: SBLUE }, breakLine: true } },
+    { text: "자본 연계 (Series H 전략 투자)", options: { bullet: { color: SBLUE } } },
+  ], {
+    x: 5.14, y: 4.08, w: 3.24, h: 1.3,
+    fontFace: FONT, fontSize: 10, color: SINK, margin: 0,
+    paraSpaceAfter: 4, valign: "top", lineSpacingMultiple: 1.08,
+  });
+  s.addText("전략적 고객 계약 16건 · 최소 매출 $100B · 예치금 $22B", {
+    x: 5.08, y: 5.5, w: 3.24, h: 0.5,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SINK, margin: 0, lineSpacingMultiple: 1.1,
+  });
+  s.addText("워크로드를 열고 공급을 잠근 계약. 우리가 맺으려는 관계의 실물 견본이다", {
+    x: 5.08, y: 6.06, w: 3.28, h: 0.52,
+    fontFace: FONT, fontSize: 10, italic: true, color: SGRAY, margin: 0, lineSpacingMultiple: 1.12,
+  });
+
+  // ── 컬럼 3: FDP·FDE — 추가 필요 기술 + 채용·양성·운영
+  s.addText("추가로 필요한 기술 (기존 SSD 기술 대비)", {
+    x: 9.11, y: 1.94, w: 3.5, h: 0.28,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SBLUE, margin: 0,
+  });
+  s.addText([
+    { text: "기존  ", options: { bold: true, color: SGRAY } },
+    { text: "NAND · 컨트롤러 · 펌웨어 · 수율", options: { color: SGRAY } },
+  ], {
+    shape: "roundRect", rectRadius: 0.05, x: 9.11, y: 2.26, w: 3.5, h: 0.36,
+    fill: { color: "F4F4F6" }, valign: "middle",
+    fontFace: FONT, fontSize: 9.5, margin: 0.08,
+  });
+  s.addText([
+    { text: "추가  ", options: { bold: true, color: SBLUE } },
+    { text: "커널 블록계층·io_uring·NVMe / SPDK / DB·캐시 내부 (RocksDB·CacheLib·Ceph) / 워크로드 분석 (fio·eBPF·WAF)", options: { color: SINK } },
+  ], {
+    shape: "roundRect", rectRadius: 0.05, x: 9.11, y: 2.68, w: 3.5, h: 0.82,
+    fill: { color: SB_BG }, valign: "middle",
+    fontFace: FONT, fontSize: 9.5, margin: 0.08, lineSpacingMultiple: 1.12,
+  });
+  s.addText([
+    { text: "FDE 선례  ", options: { bold: true, color: SBLUE } },
+    { text: "Palantir가 창안한 직군 (코드명 Delta, 640% 주가 동력으로 회자) · Anthropic·OpenAI도 엔터프라이즈 GTM으로 채택", options: { color: SINK } },
+  ], {
+    shape: "roundRect", rectRadius: 0.05, x: 9.11, y: 3.62, w: 3.5, h: 0.76,
+    fill: { color: SB_BG }, line: { color: SBLUE, width: 1 }, valign: "middle",
+    fontFace: FONT, fontSize: 9.5, margin: 0.08, lineSpacingMultiple: 1.1,
+  });
+  const hr = [
+    ["채용", "실리콘밸리 현지, 오픈소스 스토리지 기여자 우대, 영어 필수"],
+    ["양성", "본사 엔지니어 미국 로테이션 6~12개월 + 현지 FDE 멘토 페어링"],
+    ["운영", "파일럿 1~2사 상주 (Pod 소속), outcome 평가 (활성화 용량), 업스트림 기여"],
+  ];
+  hr.forEach(([k, v], i) => {
+    const y = 4.52 + i * 0.78;
+    s.addText(k, {
+      shape: "roundRect", rectRadius: 0.05, x: 9.11, y, w: 0.62, h: 0.32,
+      fill: { color: SBLUE }, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 10, bold: true, color: "FFFFFF", margin: 0,
+    });
+    s.addText(v, {
+      x: 9.85, y: y - 0.02, w: 2.82, h: 0.72,
+      fontFace: FONT, fontSize: 10, color: SINK, margin: 0, valign: "top", lineSpacingMultiple: 1.12,
+    });
+  });
+}
+
+/* ---------------------------------------------------------------- */
 async function main() {
   const ic = {
     cpu: await iconPng(FiCpu, "FFFFFF"),
@@ -748,6 +919,7 @@ async function main() {
   slideFdpWhy(combined, ic);
   slideFdpOptions(combined, ic);
   slideFdpHow(combined, ic);
+  slideFdpEco(combined, ic);
   const outCombined = path.join(PRES_DIR, "dev-transformation-summary.pptx");
   await combined.writeFile({ fileName: outCombined });
   console.log("written:", outCombined);
@@ -757,7 +929,8 @@ async function main() {
     ["high", [slideHigh]],
     ["mid", [slideMid]],
     ["low", [slideLow]],
-    ["fdp", [slideFdpWhy, slideFdpOptions, slideFdpHow]],
+    ["fdp", [slideFdpWhy, slideFdpOptions, slideFdpHow, slideFdpEco]],
+    ["fdp-eco", [slideFdpEco]],
   ];
   for (const [name, builds] of singles) {
     const p = new pptxgen();
