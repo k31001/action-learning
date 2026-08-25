@@ -721,6 +721,99 @@ function slideFdpHow(pres, ic) {
 }
 
 /* ---------------------------------------------------------------- */
+/* 제품·기술 축 ④ — 생태계 확산·락인 실행전략 (SCA·FDP·FDE 플라이휠)     */
+/* ---------------------------------------------------------------- */
+function slideFdpEco(pres, ic) {
+  const s = pres.addSlide();
+  header(s, "제품 축 ④", FDP_OPTS);
+
+  s.addText([
+    { text: "실행전략  ", options: { bold: true, color: TEAL } },
+    { text: "SCA로 다가가고 · FDP로 제공하고 · FDE로 협업한다: 워크로드가 들어올수록 전환비용이 커지는 락인 플라이휠", options: { italic: true, color: SUB } },
+  ], { x: 0.5, y: 0.9, w: 12.33, h: 0.3, fontFace: FONT, fontSize: 13, margin: 0 });
+
+  // ── 좌: SCA→FDP→FDE 플라이휠 (중심 = 고객 락인·다운턴 방어)
+  const nodes = [
+    ["SCA", "다가간다", SUB, 1.92, 1.42],
+    ["FDP", "제공한다", TEAL, 0.72, 3.66],
+    ["FDE", "협업한다", GREEN, 3.12, 3.66],
+  ];
+  nodes.forEach(([t, verb, color, x, y]) => {
+    s.addText([
+      { text: t, options: { fontSize: 16, bold: true, breakLine: true } },
+      { text: verb, options: { fontSize: 10.5 } },
+    ], {
+      shape: "ellipse", x, y, w: 1.12, h: 1.12,
+      fill: { color }, align: "center", valign: "middle",
+      fontFace: FONT, color: "FFFFFF", margin: 0, lineSpacingMultiple: 1.0,
+    });
+  });
+  const arrows = [
+    [1.72, 2.52, 1.28, 3.62],
+    [1.94, 4.22, 3.02, 4.22],
+    [3.68, 3.62, 3.18, 2.5],
+  ];
+  arrows.forEach(([x1, y1, x2, y2]) => {
+    s.addShape("line", {
+      x: Math.min(x1, x2), y: Math.min(y1, y2),
+      w: Math.abs(x2 - x1) || 0.001, h: Math.abs(y2 - y1) || 0.001,
+      flipH: x2 < x1, flipV: y2 < y1,
+      line: { color: RAIL_GRAY, width: 2, endArrowType: "triangle" },
+    });
+  });
+  s.addText("고객 락인\n다운턴 방어", {
+    shape: "roundRect", rectRadius: 0.08, x: 1.7, y: 2.98, w: 1.56, h: 0.84,
+    fill: { color: TINT_GREEN }, line: { color: GREEN, width: 1.25 },
+    align: "center", valign: "middle",
+    fontFace: FONT, fontSize: 11.5, bold: true, color: INK, margin: 0, lineSpacingMultiple: 1.05,
+  });
+  s.addText([
+    { text: "락인 플라이휠", options: { fontSize: 12.5, bold: true, color: INK, breakLine: true } },
+    { text: "워크로드 유입 → 최적화 심화 → 전환비용 증가. 계약이 끝나도 갈아타기 어려운 관계가 다운턴의 방어벽이 된다", options: { fontSize: 10.5, color: SUB } },
+  ], {
+    shape: "roundRect", rectRadius: 0.08, x: 0.5, y: 5.2, w: 4.14, h: 1.5,
+    fill: { color: NEUTRAL }, align: "left", valign: "middle",
+    fontFace: FONT, margin: 0.12, lineSpacingMultiple: 1.15,
+  });
+
+  // ── 우: 실행전략 3 카드
+  const execs = [
+    ["협상력의 창이 열려 있을 때 워크로드 교환을 제안한다", TEAL, "link", [
+      "대상: 하이퍼스케일러 + 스토리지 박스 업체(Pure Storage·VAST Data·DDN)",
+      "딜 구조: 고객 워크로드 공유 ↔ 그 워크로드에 최적화한 FDP SSD 공급",
+      "고객 효익: 성능·수명 개선과 TCO 절감으로 거절하기 어려운 제안 (공급부족 국면 한정의 창)",
+    ]],
+    ["호스트를 이해하는 최적화 개발 역량을 채용·양성으로 확보한다", "4C7C94", "layers", [
+      "전문가 5종: ① 커널 블록계층·io_uring·NVMe ② SPDK 유저스페이스 ③ DB·캐시 내부(RocksDB·CacheLib·Ceph) ④ 성능·워크로드 분석(fio·eBPF·WAF) ⑤ FTL·미디어 모델(사내 강점 브리지)",
+      "확보: 오픈소스 커미터·하이퍼스케일러 스토리지팀 출신 채용 + 사내 FW 인력의 호스트 SW 전환 트랙(오픈소스 기여를 평가에 반영)",
+    ]],
+    ["FDE를 고객 옆에 두고 FDP 생태계에 함께 기여한다", GREEN, "users", [
+      "채용: 실리콘밸리 현지 중심, 오픈소스 스토리지 기여자 우대, 영어 커뮤니케이션 필수",
+      "양성: 본사 엔지니어 미국 로테이션(6~12개월) + 현지 FDE 멘토 페어링",
+      "운영: 파일럿 1~2사 상주(Pod 소속·dual-ladder), outcome 평가(FDP 활성화 용량), 커널·SPDK·CacheLib 업스트림 기여로 호명",
+    ]],
+  ];
+  execs.forEach(([title, color, iconKey, lines], i) => {
+    const y = 1.32 + i * 1.94;
+    card(s, 4.85, y, 7.98, 1.8);
+    numCircle(s, 5.03, y + 0.16, i + 1);
+    iconCircle(s, 5.49, y + 0.13, 0.42, color, ic[iconKey]);
+    s.addText(title, {
+      x: 6.05, y: y + 0.14, w: 6.6, h: 0.4, valign: "middle",
+      fontFace: FONT, fontSize: 14, bold: true, color: INK, margin: 0,
+    });
+    s.addText(lines.map((t, j) => ({
+      text: t,
+      options: { bullet: { color }, breakLine: j < lines.length - 1 },
+    })), {
+      x: 5.08, y: y + 0.6, w: 7.55, h: 1.12,
+      fontFace: FONT, fontSize: 10.5, color: INK, margin: 0,
+      paraSpaceAfter: 4, valign: "top", lineSpacingMultiple: 1.08,
+    });
+  });
+}
+
+/* ---------------------------------------------------------------- */
 async function main() {
   const ic = {
     cpu: await iconPng(FiCpu, "FFFFFF"),
@@ -748,6 +841,7 @@ async function main() {
   slideFdpWhy(combined, ic);
   slideFdpOptions(combined, ic);
   slideFdpHow(combined, ic);
+  slideFdpEco(combined, ic);
   const outCombined = path.join(PRES_DIR, "dev-transformation-summary.pptx");
   await combined.writeFile({ fileName: outCombined });
   console.log("written:", outCombined);
@@ -757,7 +851,8 @@ async function main() {
     ["high", [slideHigh]],
     ["mid", [slideMid]],
     ["low", [slideLow]],
-    ["fdp", [slideFdpWhy, slideFdpOptions, slideFdpHow]],
+    ["fdp", [slideFdpWhy, slideFdpOptions, slideFdpHow, slideFdpEco]],
+    ["fdp-eco", [slideFdpEco]],
   ];
   for (const [name, builds] of singles) {
     const p = new pptxgen();

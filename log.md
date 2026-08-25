@@ -1655,3 +1655,9 @@ index.md sources 섹션 3건 등록. 위키 페이지 반영은 제안서 확정
 **덱 갱신 (13장 유지)**: 통합·NAND·DRAM 타임라인 3종 + 미니 4종의 창 음영을 발원별 색으로 — 수요발 = 블루 틴트(#E2E9FA)·공급발 = 그레이 틴트(#EBEBEE), **DT08은 공급발(회색) → 금융위기 수요충격(파랑) 2단 분할**로 복합 성격을 직접 인코딩(산점도 색 규약과 일치). 각 창 상단 4줄 라벨: DT명(발원색 볼드)·발원 텍스트·원인 키워드(치킨게임·금융위기 / 증산 경쟁 / PC·폰 둔화 / 재고 조정 / 재고 대조정, NAND 렌즈는 ASP 급락·가격 위기·재고·정전)·낙폭. draw_band/band_text 공용 헬퍼로 재구성. S1·S2·S3 발표자 노트에 음영 색 해설 추가. validate PASS·렌더 QA.
 
 **건너뜀 사유**: 위키·소스 무변경(시각 인코딩 변경, 데이터 불변 — 발원 분류는 위키 §2 기존 문서화), KG 재생성 불필요(링크 무변경), dashboard 무변경 → version bump 생략.
+
+## [2026-08-05] ingest+build | FDP 생태계 확산·락인 실행전략 3종 + 제품 축 ④ 1장 (v2.46.7)
+
+사용자 인풋(원문 보존 sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md): SCA로 다가가고 · FDP로 제공하고 · FDE로 협업한다. wiki fdp-host-ssd-platform.md §4.5 신설 — ① 공급부족 협상력의 창에서 하이퍼스케일러+스토리지 박스(Pure Storage·VAST·DDN)에 워크로드 교환 협업 제안(워크로드 공유 ↔ 최적화 FDP SSD, 성능·수명·TCO 효익으로 거절 어려움) ② 최적화 개발 역량 전문가 5종 분석 추가(커널 블록계층·io_uring·NVMe / SPDK / DB·캐시 내부 RocksDB·CacheLib·Ceph / 성능·워크로드 분석 fio·eBPF·WAF / FTL·미디어 모델) + 채용·양성안 ③ FDE 채용(실리콘밸리 현지·오픈소스 기여자·영어)·양성(미국 로테이션 6~12개월·멘토 페어링)·운영(파일럿 상주·outcome 평가·업스트림 기여 호명, Palantir 모델 준용).
+
+PPT: 제품 축 ④ 1장 신설 — SCA→FDP→FDE 플라이휠 도식(중심 고객 락인·다운턴 방어) + 실행전략 3카드. 통합본에 추가, -fdp 4장, 단독 1장본 -fdp-eco 신설·downloads 미러. 대시보드: DT_DOWNLOADS에 실행전략 1장본 카드 추가(5종)·fdp desc 갱신, version v2.46.7(패치). 삼성 메모리 PPT 스킬 적용(액션 타이틀·em-dash 금지·기존 덱 팔레트 보존).

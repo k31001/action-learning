@@ -544,7 +544,7 @@ function TransformationPanel() {
       </Card>
 
       <Card title="요약 발표자료 다운로드 — 1장 요약 × 디테일 3단계" source="outputs/presentation/dev-transformation-outline.md">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
           {DT_DOWNLOADS.map(d => (
             <a
               key={d.file}

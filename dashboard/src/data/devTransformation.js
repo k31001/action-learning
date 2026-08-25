@@ -288,8 +288,15 @@ export const DT_DOWNLOADS = [
     file: 'dev-transformation-summary-fdp.pptx',
     level: '제품',
     label: '제품·기술 축 — FDP',
-    desc: 'FDP Host–SSD 통합 플랫폼: 전환 한 컷 · 6요소 · 실행전략 6종 · 핵심 KPI (2장)',
+    desc: 'FDP 플랫폼: 환경 변화·Captive 차트 · 선택지 비교 · 전략·실행 · 생태계 확산 (4장)',
     color: '#4c7c94',
+  },
+  {
+    file: 'dev-transformation-summary-fdp-eco.pptx',
+    level: '실행',
+    label: '생태계 확산 실행전략',
+    desc: 'SCA·FDP·FDE 락인 플라이휠 · 워크로드 교환 · 전문가 5종 · FDE 운영 (1장)',
+    color: '#028090',
   },
 ]
 

@@ -6,6 +6,7 @@ sources:
   - sources/articles/captive-ssd-fdp-context-2026-08.md
   - sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md
   - sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md
+  - sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md
 ---
 
 # FDP Host–SSD 통합 플랫폼 전략 — 환경 변화에서 전략 선택까지 (DT-P: 개발실 전환의 제품·기술 축)
@@ -64,6 +65,25 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 6. **오픈소스·차별화 경계** — 공개(기본 라이브러리·연동·적합성) / 차별화(NAND·FTL 모델·정책 추천·예측 모델): lock-in 우려 없이 삼성 SSD 선택 시 더 높은 TCO 효과
 
 **단계**: ① 제품·기본 도구 → ② 전략 고객 2~3사 공동검증 → ③ 상용 플랫폼화(Binding에 SW 지원 포함) → ④ Host Control 확장(QoS·전력·telemetry·multi-tenant)
+
+### 4.5 생태계 확산·락인 실행전략 3종 — "SCA로 다가가고, FDP로 제공하고, FDE로 협업한다"
+
+목표: FDP 생태계를 고객사에 이식해 **락인 플라이휠**(워크로드 유입 → 최적화 심화 → 전환비용 증가)을 만들고, 다운턴에도 유지되는 관계로 피해를 최소화한다 ([fdp-ecosystem-execution-input-2026-08-05.md](../../sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md), 사용자 전략 인풋 2026-08-05).
+
+**실행전략 1 — 워크로드 교환 협업 제안 (지금이 적기)**: 현재 공급부족 국면의 협상력 우위를 지렛대로, **하이퍼스케일러 + 스토리지 박스 업체(Pure Storage·VAST Data·DDN)**에 협업을 제안한다. 딜 구조: 고객이 워크로드(trace)를 공유하면 삼성이 FDP SSD를 그 워크로드에 최적화해 공급. 고객은 소중한 데이터를 내주지만 성능·수명 개선과 TCO 절감을 얻으므로 거절하기 어렵다. 공급부족이 끝나면 이 창은 닫힌다 — 협상력이 있을 때 관계를 계약(전략적 고객 계약)으로 고정한다.
+
+**실행전략 2 — 워크로드 최적화 개발 역량 확보 (전문가 프로파일 5종, 분석 2026-08-05)**: SSD를 잘 만드는 것을 넘어 호스트 시스템·소프트웨어 이해가 필요하다.
+1. **Linux 커널 스토리지**: 블록 계층·io_uring·NVMe 드라이버 (커널 업스트림 경험자)
+2. **유저스페이스 스토리지 엔진**: SPDK·NVMe-oF 데이터패스
+3. **데이터 인프라 내부구조**: RocksDB(LSM·compaction)·CacheLib·Ceph·DB 스토리지 엔진 — FDP 플러그인(실행전략 1~2의 워크로드 연동)의 실장 역량
+4. **스토리지 성능·워크로드 분석**: fio·blktrace·eBPF 트레이싱, WAF·tail latency 정량 분석
+5. **FTL·NAND 미디어 모델링**: 사내 강점(FW·미디어)과 호스트 SW를 잇는 브리지, Emulator/Digital Twin 소유
+- 확보: **채용**(오픈소스 커미터·하이퍼스케일러 스토리지팀 출신) + **양성**(사내 SSD FW 인력의 호스트 SW 전환 트랙, 오픈소스 기여를 평가에 반영)
+
+**실행전략 3 — FDE 파견·협력 운영안 (분석 2026-08-05, [palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md) 준용)**: 고객이 밀집한 미국에서 하이퍼스케일러 개발자들과 상시 소통하며 개발하고 FDP 생태계에 기여할 인재.
+- **채용**: 실리콘밸리 현지 채용 중심(고객 인접·영어 커뮤니케이션), 오픈소스 스토리지 기여자·고객사/스토리지 스타트업 출신 우대 — §4.6 스타 영입 트랙과 결합
+- **양성**: 본사 FW·시스템 SW 엔지니어의 미국 로테이션(6~12개월) + 현지 FDE 멘토 페어링, "명시 요구 vs 실제 요구" 검증 단계 훈련
+- **운영**: 파일럿 고객 1~2사 상주(Co-Design Pod 소속·홈조직 유지, dual-ladder), 평가는 청구 시간이 아닌 **outcome**(FDP 활성화 용량·정책 채택률), 커널·SPDK·CacheLib **업스트림 기여로 생태계 공헌과 호명**을 병행, 순환 배치로 번아웃·단절 방지
 
 ## 5. KPI
 
