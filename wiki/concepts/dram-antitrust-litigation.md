@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-08-25
+sources: [sources/articles/july-2026-market-update-2026-07-04.md, sources/raw-notes/bottleneck-model-update-2026-08-25.md, sources/raw-notes/memory-market-strategy-update-2026-08-25.md]
 ---
 
 # DRAM 반독점 집단소송 (2026-06 제소)
@@ -18,6 +18,11 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 
 - 2026-06-25 제소 직후 단계이며, 아직 법원의 실질적 판단(기각·인용·화해 등)은 나오지 않았다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
+### [Update 2026-08-25] 진행 중, 실질 변화 없음
+
+- 2026-08-08 기준으로도 여전히 초기 단계 그대로다 — **기각신청·답변서·판결·합의 모두 전무**하다. SK하이닉스·Micron은 혐의를 부인하고 있다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- 2026-06-25 제소 이후 약 6주간 소송 자체는 절차적으로 정체 상태이며, 위키가 앞서 정리한 리스크 평가(잠재적 벌금·화해금·평판 리스크, 병목 모델 자체는 불변)에는 아직 변화가 없다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
 ## 위키 관점 — 왜 추적하는가
 
 - 삼성전자에 대한 **규제·평판·재무 리스크 요인**이다 — 잠재적 벌금·화해금·법적 대응 비용, 그리고 HBM 전환 서사에 대한 대외 이미지 리스크로 이어질 수 있다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
@@ -32,3 +37,5 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 
 ## 출처
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — §2, §4 (Tom's Hardware, Gizmochina 원문 인용 경유)
+- [sources/raw-notes/memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md) — 반독점 소송 섹션(Lexology 원문 인용 경유)
+- [sources/raw-notes/bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md) — 참고(병목 모델 갱신 리서치, 본 페이지 직접 언급 없음)

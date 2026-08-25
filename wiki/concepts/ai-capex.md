@@ -119,3 +119,25 @@
 - **Stargate는 우산 전략으로 진화**: 하이퍼스케일러(과반)+뉴클라우드(CoreWeave)+칩 직공급(Cerebras)+디자인빌드+잠재 자체 건설의 포트폴리오. Abilene(Oracle) GB 클러스터에서 최신 모델 학습 중, 미시간·텍사스 추가 DC 2~3년 내 온라인.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+---
+
+## [Update 2026-08-25] 빅4 CAPEX 2026 합산 $725B 재확인·추가 상향 + Alphabet/Meta 투자자 인내심 약화 신호 + 신용시장 스트레스 없음 + DC 증권화 확대 전망
+
+### 빅4 CAPEX 2026 — 추가 상향
+
+- 빅4(Amazon·Google·Meta·Microsoft) 2026 CAPEX 합산이 **$725B**로 재확인됐다 — Amazon **$220B**(상향), Google **$195~205B**(상향), Meta는 하한이 **$130~145B**로 추가 상향됐다. MS는 리스회계 방식 변경으로 $190B→$175B로 재표시됐으나 이는 회계상 조정이며 실질 축소가 아니다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- **Dell'Oro**: 2030년까지 글로벌 DC CAPEX **$1.7조** 전망(상향) — 메모리 가격 인플레이션이 서버 단가를 밀어올려 capex 상향의 추가 요인으로 명시됐다. **JPMorgan**: 2030년 누적 AI CAPEX 전망을 **$5.5조**로 재확인/상향, 부채조달 규모 전망도 $4.1조로 상향했다. 2026년 하이퍼스케일러 CAPEX $650B, 2027년 $1.1조 초과 신규 전망도 제시됐다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+### 신규 리스크 — ROI 실현 지연에 대한 투자자 인내심 약화 신호
+
+- **Alphabet**(2026-07-22 실적발표): **2004년 상장 후 첫 분기 Free Cash Flow 마이너스** 기록.
+- **Meta**(2026-07-29 실적발표): 발표 다음날 주가 **-10%** 급락 — ROI 실현 지연 우려가 원인으로 지목된다.
+- 반면 MS 커머셜 RPO $678B로 시간외 +8%, Amazon AWS +37% 성장으로 2026-08-03 시가총액 $3조 돌파 — 수요측 신뢰는 견조하나, Alphabet·Meta 사례는 **"ROI 실현 지연에 대한 시장 인내심 약화"**라는 신규 하위 리스크로 명시해 둔다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+### 신용시장 — 스트레스 없음, 단 DC 증권화 확대 전망
+
+- **HY OAS 275bp**(2026-08-20, 장기 중앙값 ~450bp 대비 역사적 최저) — 스트레스 신호는 없다. 대형 회사채 발행이 급증했다(Amazon $25B 등 $20B+ 딜 9건, Hut 8 Beacon Point $4.25B 채권이 사상 최저 스프레드 T+165로 발행) ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- **JPMorgan**: 데이터센터 증권화(ABS/SPV) 발행이 **2026-27년 $30~40B(전체 발행의 7~10%)**로 성장할 것으로 전망 — 구조적 리스크가 축적되고 있으나 아직 가시적 스트레스는 아니라는 평가다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)

@@ -394,3 +394,30 @@ Counterpoint Research (2026-01-29):
 - 2026-06-29 발표(약 800조 원/$518B) — SK하이닉스 **신규 팹 2개** 건설 계획 포함(삼성전자도 동일하게 신규 팹 2개)([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+---
+
+## [Update 2026-08-25] 2026 Q2 실적 컨센서스 하회·NVIDIA $500B+ LOI·용인 클러스터 가속
+
+### 2026 Q2 실적(2026-07-29 발표) — 컨센서스 하회로 주가 급락
+
+- 매출 **79.32조원**(YoY +257%, QoQ +51%), 영업이익 **60.54조원**(YoY +557%, QoQ +61%) — 역대 최고 실적이나 시장 컨센서스(매출 84조원/영업이익 64조원)를 하회하며 발표일 주가 급락([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)). 기존 위키의 "Q1 2026 세부 미공개(역대 최고 분기 이익)" 상태에서 Q2 실제 수치로 갱신.
+- HBM4 2Q26 출하 개시, 하반기 풀램프업 계획. 주요 고객 약 10곳과 장기공급계약(HBM4E 샘플 출하 포함) 체결([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- Counterpoint 기준 DRAM 시장점유율(매출, Q2 2026, 발표 2026-08-04/05)은 **26%로 삼성(39%)에 1위를 내줌**(SK YoY 매출 +214%에도 점유율은 전년 Q2 39%→26%로 하락) — 기존 위키의 "Counterpoint Q1 2026 확정치 SK ~58%·삼성 ~32%"([업데이트 2026-07-04] 섹션) 대비 시점·집계기준 차이가 있어 병기 필요([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### NVIDIA와 $500B+ 전략적 파트너십 LOI(2026-07-25) — 위키 baseline에 없던 대형 신규 사건
+
+- **NVIDIA·SK그룹이 2026-07-25 $500B+ 규모의 전략적 파트너십 LOI(의향서)를 체결** — AI 팩토리(SK텔레콤 2GW Vera Rubin DSX 데이터센터, 2027년 1단계 가동)와 **HBM4 공동개발·장기공급**을 포함하는, 금액·범위 면에서 기존 위키에 없던 최대 규모 신규 사건([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- 위 "NVIDIA 파트너십 심화 방식" 섹션에서 이미 확인된 "NVIDIA와 HBM4 아키텍처 공동 정의" 관계가, 이번 LOI로 AI 팩토리 인프라 투자까지 포함하는 포괄적 파트너십으로 격상됨 — SK하이닉스가 단순 메모리 공급사에서 NVIDIA의 AI 인프라 전략적 파트너로 지위가 공식 격상된 사례([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- Samsung 함의: [Update 2026-06-11] "Samsung 3·4단계 격차" 분석에서 SK hynix가 이미 4단계(Strategic Infra Partner)에 있다고 진단했는데, 이번 LOI는 그 격차를 금액 기준으로 한층 더 벌리는 사건 — Samsung의 AMD-HBM4 계약 임박([samsung.md](samsung.md) [Update 2026-08-25])이 상대적 격차 축소 시도로 해석 가능.
+
+### 용인 클러스터 Y2·청주 M17 54조원 투자, 총 600조원 장기계획
+
+- Y2·청주 M17에 **54조원 투자**, 용인 장기 총 투자계획이 기존 위키의 122조원(팹 5기, 2042년까지)보다 크게 확대된 **약 600조원(~$407B)**으로 재확인됨([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- **Y1 1단계 완공을 2027년 1분기로 앞당김**, Y2 착공은 2027년 7월([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### 참고 — 인디애나 패키징 팹 착공
+
+- 인디애나 패키징 팹은 2026-04 파일링 착공에 이어 **2026-08-27 정식 그라운드브레이킹**($3.87억 최초 투자, 총 $3.9B), 2028년 하반기 전면가동 목표, HBM4E/HBM5 타깃([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)) — 기존 위키의 "2028년 목표"와 정합.
+
+**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md), [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

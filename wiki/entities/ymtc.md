@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (Digitimes, Tom's Hardware, TechInsights, Yole Group, Bloomberg, Reuters)]
+last_reviewed: 2026-08-25
+sources: [sources/README.md (Digitimes, Tom's Hardware, TechInsights, Yole Group, Bloomberg, Reuters), sources/raw-notes/memory-market-strategy-update-2026-08-25.md]
 ---
 
 # YMTC (양쯔메모리 / 长江存储) — NAND Flash 전문
@@ -113,3 +113,23 @@ sources: [sources/README.md (Digitimes, Tom's Hardware, TechInsights, Yole Group
 - [YMTC moves to break free of US sanctions — Tom's Hardware](https://www.tomshardware.com/pc-components/ssds/chinas-ymtc-moves-to-break-free-of-u-s-sanctions-by-building-production-line-with-homegrown-tools-aims-to-capture-15-percent-of-nand-market-by-late-2026)
 - [CXMT and YMTC to massively expand memory output — KR Asia](https://kr-asia.com/chinas-cxmt-and-ymtc-to-massively-expand-memory-output-amid-global-crunch)
 - [A Gap Created by Shifting Supply Priorities — Economy.ac](https://economy.ac/news/2026/02/202602287605)
+
+---
+
+## [Update 2026-08-25] 우한 3공장 — 절반가량 DRAM 배정, NAND 전업에서 DRAM 진출로 전략 전환
+
+YMTC의 **우한 3공장**(2027년경 가동 목표)이 신규 캐파의 **절반가량을 DRAM에 할당**할 예정이다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)). 위 [팹 투자 및 DRAM 다각화](#팹-투자-및-dram-다각화) 표에서 "50% 전환"으로 이미 언급됐던 계획이, 이번 갱신에서 **비중 있는 전략 전환 신호로 격상**된다.
+
+### 왜 중요한가 — "NAND 단일 사업자"에서 "DRAM 신규 진입자"로
+
+- YMTC는 설립 이래 **NAND Flash 전업(專業)** 업체였다. 국가 빅펀드·후베이성 지원도 NAND 자립에 집중돼 왔고, CXMT(DRAM)와 YMTC(NAND)가 영역을 분담하는 구도가 [china-competitors.md](china-competitors.md)의 그룹 프레임이었다.
+- 우한 3공장의 DRAM 절반 배정은 이 **영역 분담 구도 자체를 흔드는 사건**이다. YMTC가 NAND에서 축적한 자본·엔지니어링 역량·정부 지원 채널을 DRAM으로 확장한다는 뜻이며, 실현될 경우 CXMT와 함께 **중국 내 DRAM 공급자가 복수화**된다 — 단일 국가대표(CXMT) 체제에서 경쟁 구도로 전환.
+- 3공장 DRAM 라인이 최종적으로 HBM까지 겨냥할지는 미확정이나, 기존 위키의 "HBM 진출 계획: 3공장 50% DRAM 전환" 메모(기술 현황 표)와 결합하면 **YMTC가 NAND뿐 아니라 DRAM·HBM 전 영역에서 중국의 두 번째 공급축이 되려는 궤적**으로 읽힌다.
+
+### Samsung 전략 시사점 (갱신)
+
+1. **경쟁자 지형 확대** — 범용 DRAM에서 삼성·SK·Micron이 상대해야 할 중국 업체가 CXMT 단일에서 CXMT+YMTC 복수로 늘어날 가능성. [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md)(범용 양보 전략)의 "양보 대상"이 더 커지는 동시에, 양보 이후 저가 경쟁 압력이 이중화될 리스크.
+2. **NAND 쪽 여력 재배분 신호** — YMTC가 신규 캐파의 절반을 DRAM으로 돌린다는 것은 NAND 증설 속도가 상대적으로 둔화될 수 있음을 시사 — 삼성 NAND DC 사업의 경쟁 압력이 단기적으로는 완화될 여지. 단, 3공장 가동(2027년경) 이전까지는 확정적 신호로 보기 어려워 EWI 모니터링 대상.
+3. **hybrid bonding IP 리스크와 결합** — DRAM·HBM 진출 시 YMTC가 보유한 hybrid bonding 핵심 IP(위 [기술 현황](#기술-현황) 참조)를 자사 DRAM/HBM 라인에도 적용할 가능성 — 한국·미국 메모리사의 V11·HBM4 세대 IP 종속 리스크와는 별개로, **YMTC 자체가 DRAM/HBM 경쟁자로 부상하는 시나리오**를 [RS7 AI 엔지니어링 자동화](../strategies/invariant/rs7-ai-engineering-automation.md)의 자체 IP 확보 트랙에서 함께 추적할 필요.
+
+**출처**: [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

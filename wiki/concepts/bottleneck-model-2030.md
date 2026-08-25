@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-08-25
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/raw-notes/bottleneck-model-update-2026-08-25.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -348,6 +348,35 @@ flowchart LR
 - **DRAM 가격 상승 감속 조짐(조기경보 후보)**: TrendForce(2026-07-03, 최신) Q3 2026 범용 DRAM 계약가 전망 **+13~18% QoQ**로 Q2(+58~63%) 대비 큰 폭 감속 — PC/스마트폰 구매력 한계·고기저 효과가 주 원인, 서버향은 에이전틱 AI 수요로 견조. Jefferies는 여전히 Q3 +40~50%를 전망(스팟·HBM 포함 범위 차이로 추정) — **범용 DRAM 계약가 축의 첫 감속 신호로 [demand-inflection-ewi.md](demand-inflection-ewi.md) 모니터링 대상에 추가**.
 - **반독점 소송 신규 리스크**: 2026-06-25 삼성·SK하이닉스·Micron 대상 미국 집단소송 제기(HBM 전환 명목 범용 DRAM 공급 제한·가격 담합 주장) — 병목 모델 자체의 수급 축을 바꾸진 않으나 **CAPEX/ROI·가격 결정 관련 규제·평판 리스크**로 별도 모니터링 필요 ([dram-antitrust-litigation.md](dram-antitrust-litigation.md) 신설).
 
+---
+
+### 종합 판독 (2026-08-25)
+
+#### 제약지수 업데이트 (2026-08-25, 이전 2026-07-04 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 72 | **75** | **▲ +3** | ERCOT 1분기 신규 접속신청 198GW 폭주 vs 지난 12개월 실제 승인 9,062MW(승인률 극도 저조) · 변압기 리드타임 최대 128주·GSU 144주·일부 4년(2020-21년 약 1년 대비) · 개폐장치 60주 초과(2025년말 44주에서 추가 상승) · 원자력 계약 9.8GW 중 가동은 1.92GW뿐(실질 완화는 2027년 하반기 이후) |
+| **CAPEX/ROI** | 40 | **38** | **▼ −2** | 빅4 합산 $725B로 추가 상향(Amazon $220B·Google $195~205B·Meta 하한 $130~145B) · Dell'Oro 2030년 $1.7조·JPMorgan 2030 누적 $5.5조 재확인 · HY OAS 275bp 역사적 최저 — 신용 스트레스 없음. 단 Alphabet 상장 후 첫 분기 FCF 마이너스·Meta 실적 발표 익일 주가 -10%로 **ROI 실현 지연에 대한 투자자 인내심 약화** 신규 하위 리스크 등장(각주 유지) |
+| **파운드리** | 50 | **49** | **▼ −1** | TSMC N2 2Q26 웨이퍼매출 첫 유의미 기여(3%)·2026 CapEx $60~64B로 상향·CFO "향후 3년 CapEx 과거 3년 대비 significantly higher" — 완화 지속되나 HPC(AI) 매출비중 66%로 캐파에 대한 AI 수요압력도 동반 상승해 속도는 정체 |
+| **패키징** | 67 | **64** | **▼ −3** | TrendForce: CoWoS 수급 갭 20%→10%로 연내 축소 · 캐파 연말 120~130K wpm+OSAT 오버플로우 ~80K wpm · 삼성 HBM 웨이퍼 캐파 17만→25만 wpm(+47%, 연말 목표) · NVIDIA Rubin 2026년 출하 20~30만대에 그치고 물량 대부분 2027 이월(2026년 압력 완화). 단 CoWoS 14-reticle 양산 2028년·하이브리드본딩 정체(마이크로범프 유지)는 구조적 상한으로 잔존 |
+
+**전력: 5개 분기 연속 상승(64→68→70→72→75) — 유일하게 지속 악화, 4대 병목 중 현재 지수 최고. 하방 위험 순서 변화: 전력이 CAPEX/ROI를 근접 추월(75 vs 38의 절대 격차는 크나, 최근 추세 기울기는 전력이 더 가파름). 파운드리·패키징·CAPEX 3개 축은 완화 지속, 패키징이 가장 빠르게 완화(-3).**
+
+#### 2026-08-25 핵심 신규 신호
+
+- **전력 — 승인률 붕괴가 신규 관측**: ERCOT 2026 Q1 신규 대형부하 접속 신청 198GW·심사대기 86GW(ERCOT 현 피크부하 규모)에 달했으나, 지난 12개월 실제 승인은 9,062MW에 그쳐 **신청 대비 승인 비율이 극도로 낮다는 사실이 처음 정량 확인**됐다 — 기존에는 큐 폭증만 알려졌으나 이제 "큐가 실제로 얼마나 안 풀리는지"가 드러났다. 변압기(128주)·GSU(144주)·개폐장치(60주+) 리드타임이 전 항목에서 추가 연장돼 물리적 병목이 계속 조여지고 있다([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- **CAPEX — 투자자 인내심이라는 신규 하위 축**: 절대 지출액은 여전히 상향 일로(빅4 $725B)이나, Alphabet(상장 후 최초 분기 FCF 마이너스)·Meta(실적 발표 익일 주가 -10%) 사례는 "capex 자체는 안 꺾여도 시장이 ROI 실현 지연을 얼마나 오래 참아줄지"가 새로운 취약점임을 시사한다. 신용시장(HY OAS 275bp)은 아직 무풍지대이나, JPMorgan이 전망한 DC 증권화(ABS/SPV, 2026~27년 $30~40B) 확대는 이 인내심이 소진될 경우의 전이 경로다.
+- **파운드리·패키징 — 완화 지속, 단 구조적 상한은 불변**: TSMC CapEx가 계속 올라가는데도(선단 로직 자체는 완화) 이는 결국 HPC/AI 수요 대응이라 "병목이 풀린다"기보다 "병목에 돈을 더 쏟아붓는다"에 가깝다. 패키징은 CoWoS 갭 축소·삼성 HBM 캐파 +47%·Rubin 물량 2027 이월로 가장 뚜렷하게 완화됐으나, CoWoS 14-reticle 2028년·하이브리드본딩 미해결(마이크로범프 유지)은 그대로다 — **2026~27년 운영 병목은 계속 느슨해지지만 2030년 상한 자체가 낮아진 것은 아니다**.
+- **HBM4 수율 개선 확인**: 삼성 HBM4 수율이 2월 양산개시 시 60% 미만에서 2026-08-10 기준 80%로 상승(TrendForce) — 연말 목표를 조기 달성, 패키징·파운드리 양쪽의 유효 산출 개선에 기여([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- **NVIDIA-SK하이닉스 $500B+ LOI(2026-07-25)**: AI 팩토리(SK텔레콤 2GW Vera Rubin DSX)와 HBM4 공동개발·장기공급을 묶은 대형 전략 파트너십 — 병목 모델의 수급 축 자체를 바꾸진 않으나(공급능력이 계약으로 창출되진 않음), **CAPEX 가이던스의 상류(하이퍼스케일러·NVIDIA 자금력)가 메모리 공급사 개별 계약으로 직접 전이**되는 구체 사례로 CAPEX 드라이버 트리 참고자료에 추가.
+
+- **전력**: 지수 **3 추가 상향(72→75)** — 승인률 저조·리드타임 재연장 모두 구조 악화 방향. 완화 조치(PJM Expedited Track 8월 시행, ERCOT 절차 정비)는 시행 초기라 효과 미반영. **5개 분기 연속 유일한 악화 축 — 중장기 최대 구조 리스크 지위 유지·심화**.
+- **CAPEX**: 지수 **2 추가 하향(40→38)** — 절대 지출·리서치사 전망 모두 상향이나 투자자 ROI 인내심 약화라는 신규 리스크를 감안해 하향 폭을 이전 분기(-2 수준)와 동일하게 유지(가속 완화는 아님).
+- **파운드리**: 지수 **1 하향(50→49)** — N2 램프 지속·CapEx 확대는 완화 신호이나 HPC 매출비중 상승(AI 수요압력)이 상쇄해 하향 폭이 이전 분기(-2)보다 둔화.
+- **패키징**: 지수 **3 하향(67→64)** — CoWoS 갭 축소·삼성 캐파 확대·Rubin 물량 이월이 겹치며 4대 병목 중 가장 빠른 완화. **상류(d2 57) < 현재(64), −7** — 완화 예고 경계(-15)에는 아직 못 미침.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근.
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -363,3 +392,5 @@ flowchart LR
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 병목 제약지수 갱신 데이터 (PJM 개편 큐·ERCOT 4배 급증·변압기 리드타임·CAPEX 추가 상향·ASML High-NA 연기·HBM4 마이크로범프 결정·DRAM 가격 감속 조짐)
+- [sources/raw-notes/bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md) — 2026-08-25 병목 제약지수 갱신 데이터 (ERCOT 승인률 붕괴·변압기 128주·TSMC N2/CapEx $60~64B·ASML 메모리 매출 +75%·CoWoS 갭 20%→10%·삼성 HBM 캐파 +47%)
+- [sources/raw-notes/memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md) — 2026-08-25 시장·전략 갱신 데이터 (삼성 HBM4 수율 80%·2Q26 실적·SK하이닉스-NVIDIA $500B LOI·Micron-GM SCA)

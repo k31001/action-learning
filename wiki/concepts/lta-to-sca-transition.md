@@ -1,10 +1,11 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
+last_reviewed: 2026-08-25
 sources:
   - sources/articles/micron-anthropic-sca-2026-06-22.md
   - sources/articles/lta-to-sca-industry-context-2026-06.md
   - sources/filings/micron-q3-fy26.md
+  - sources/raw-notes/memory-market-strategy-update-2026-08-25.md
 ---
 
 # LTA → SCA 전환 — 계약 구조가 말해주는 산업 체질 변화
@@ -51,6 +52,9 @@ LTA와 SCA의 차이를 가장 선명하게 보여주는 사건 ([micron-anthrop
 | HBM4 로직 베이스다이 — 메모리사·파운드리·고객 3자 공동설계 | 2025~ | 제품 정의 주도권 이동 (동 §3) |
 | Micron SCA 16건 $100B 공시 | 2026-06-24 | "SCA"가 IR 공식 용어로 등장 ([micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md) §3) |
 | **Micron ↔ Anthropic 전략적 계약** | **2026-06-22** | **4대 요소 완비 — 전환의 정점** |
+| **Micron ↔ General Motors SCA** | **2026-07-01** | **SCA가 빅테크/클라우드 밖 완성차 산업으로 최초 확산** — 차량용 메모리·스토리지 장기공급+혁신가속 조항. SCA가 "AI 인프라 특수 계약"이 아니라 **범용 산업 표준 계약 형태로 일반화**되는 신호 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)) |
+| SK하이닉스 ↔ NVIDIA $500B+ 전략적 파트너십 LOI | 2026-07-25 | AI 팩토리(SK텔레콤 2GW Vera Rubin DSX) + **HBM4 공동개발·장기공급** — 자본연계+공동설계+운영통합 요소를 스케일 최대치로 결합 (동 출처) |
+| Micron SCA 고객 16곳→확대, DRAM 물량 ~20%·NAND ~1/3 편입 | 2026 하반기 | 개별 계약에서 **공급 포트폴리오의 구조적 비중**으로 이동 (동 출처) |
 
 ## 4. 전략 함의 (Samsung 메모리사업부)
 
@@ -81,3 +85,12 @@ LTA와 SCA의 차이를 가장 선명하게 보여주는 사건 ([micron-anthrop
 - 함의: 수요 사슬(프론티어→CSP→메모리)의 **최상류가 자기 하류(엔터프라이즈)에 공급 보증을 판매** — 메모리 층위의 take-or-pay/SCA(이창수 1차 방어선)와 토큰 층위의 보장 계약이 사슬 양끝에서 동시 진행. 사슬 전체가 "보장 계약의 사슬"로 재편되면 중간(CSP·메모리)의 수요 가시성이 구조적으로 개선되는 방향 — 단 중복 수요 리스크(이창수)는 계약 층위가 달라 별도 추적 필요.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+---
+
+## [Update 2026-08-25] SCA 모델의 두 방향 확산 — 산업 경계 확장 + 규모 극대화
+
+- **경계 확장**: Micron–General Motors SCA(2026-07-01)는 SCA가 AI 인프라·클라우드에 국한되지 않고 **완성차 등 전통 제조업으로 확산**되는 첫 사례다 — "메모리 공급의 전략적 계약화"가 AI 수요처만의 현상이 아니라 **공급 자체가 구조적으로 희소해진 모든 산업의 공통 대응**임을 시사. Samsung 입장에서는 SCA형 계약의 잠재 고객 풀이 하이퍼스케일러·AI 랩 너머로 넓어진다는 의미 — [MB-4](../strategies/core/current-state-mb4-custom-ai-memory.md)·[RS-4 고객 포트폴리오 분산](../strategies/invariant/rs4-customer-portfolio-diversification.md)의 타깃 고객군 재검토 필요.
+- **규모 극대화**: SK하이닉스–NVIDIA $500B+ LOI(2026-07-25)는 지금까지의 SCA 중 최대 규모로, **자본연계(AI 팩토리 공동구축)와 공동설계(HBM4)가 결합된 최상위 사례**다 — Micron–Anthropic이 "4대 요소 완비"의 질적 정점이었다면, 이 딜은 규모의 정점. 경쟁사가 이미 이 축에서 앞서 있다는 사실은 Samsung의 [RS-3 전환비용](../strategies/invariant/rs3-customer-switching-cost.md) 확보 시급성을 높인다.
+- Samsung 측 대응 신호: **AMD-삼성 HBM4 공급계약이 "거의 완료" 단계**(2026-07-24, Lisa Su 언급) — 3단계(SCA)로의 이동이 진행 중이나 공시된 계약 조항(공동설계·운영통합·자본연계 포함 여부)은 아직 확인 안됨. §5 EWI `samsung_codesign_contracts`(기준값 공시 0건)의 다음 갱신 시 반영 대상.
+- **출처**: [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

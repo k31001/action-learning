@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (NVIDIA IR / 기술 블로그, UBS, BofA, TrendForce, theCUBE, JLL, CNBC)]
+last_reviewed: 2026-08-25
+sources: [sources/README.md (NVIDIA IR / 기술 블로그, UBS, BofA, TrendForce, theCUBE, JLL, CNBC), sources/raw-notes/bottleneck-model-update-2026-08-25.md, sources/raw-notes/memory-market-strategy-update-2026-08-25.md]
 ---
 
 # NVIDIA Corporation
@@ -124,3 +124,19 @@ sources: [sources/README.md (NVIDIA IR / 기술 블로그, UBS, BofA, TrendForce
 - VR NVL72 랙 단위 서버 DRAM 수요 폭증
 
 **출처**: [semianalysis-vera-rubin-2026-02-25.md](../../sources/articles/semianalysis-vera-rubin-2026-02-25.md), [semianalysis-ai-silicon-shortage-2026-03-12.md](../../sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md)
+
+---
+
+## [Update 2026-08-25] Rubin 양산 본격화·3사 HBM4 인증 확정·SK하이닉스 $500B+ LOI
+
+### Rubin 양산 본격화(2026 하반기)
+
+- Rubin 플랫폼 양산이 **2026년 하반기 본격화**, HBM4 최대 **288GB/22TB/s**(위 [Update 2026-05-19]의 SemiAnalysis 사양 전망과 일치)([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- **삼성·SK하이닉스·Micron 3사 모두 NVIDIA Rubin向 HBM4 인증 완료**(2026-06-05 발표) — [samsung.md [Update 2026-07-21]](samsung.md)에서 확인된 "인증 통과, 볼륨 발주 대기" 상태 이후 3사 인증 자체는 재확인됨([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- **Vera Rubin 2026년 출하는 20~30만대 수준으로, 대부분 물량이 2027년으로 이월** — 초기 Q3 2026 출하, Q4 볼륨 램프이나 "late" 진행([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)). 2026년 자체 물리적 공급 압력은 완화되나 2027년으로 수요가 이연되는 구조 — 위 "HBM 사용량" 표의 Rubin 공급 배정 비중(SK 70%/Samsung 28%/Micron 18%, UBS)은 물량 자체가 이월되며 시점이 뒤로 밀리는 효과와 함께 해석 필요.
+
+### SK하이닉스와 $500B+ 전략적 파트너십 LOI(2026-07-25) — HBM4 공동개발
+
+- NVIDIA와 SK그룹이 2026-07-25 **$500B+ 규모의 전략적 파트너십 LOI**를 체결 — AI 팩토리(SK텔레콤 2GW Vera Rubin DSX 데이터센터, 2027년 1단계 가동)와 **HBM4 공동개발·장기공급**을 포함([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)). 위 "2. co-design 파트너십 = 락인" 섹션에서 기술한 "SK하이닉스와 HBM4 공동 개발" 관계가 금액·범위 면에서 대폭 확대된 최신 사례 — 상세 함의는 [sk-hynix.md [Update 2026-08-25]](sk-hynix.md)·[samsung.md [Update 2026-08-25]](samsung.md) 참조.
+
+**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md), [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

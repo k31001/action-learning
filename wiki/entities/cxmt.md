@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-08-25
+sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters), sources/articles/july-2026-market-update-2026-07-04.md, sources/raw-notes/memory-market-strategy-update-2026-08-25.md]
 ---
 
 # CXMT (창신메모리 / 长鑫存储) — DRAM 전문
@@ -66,6 +66,7 @@ sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's 
 | Fab 1 (기존) | 허페이 | ~150,000 | DDR4 (16nm), LPDDR4/5 | 가동 중 |
 | Fab 2 (신규) | 허페이 | ~50,000 추가 | DDR5 (17nm), LPDDR5X | 2025년 가동 |
 | Fab 3 (계획) | 허페이 또는 신규 | ~100,000+ | 1x nm 이하 목표 | 계획 |
+| 상하이 신공장 | 상하이 | 허페이 대비 2~3배 규모 | DRAM (HBM 포함 목표) | 2026년 하반기 장비반입 시작, 2027년 양산 목표 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)) |
 
 2026년 총 캐파 목표 300,000 WSPM은 글로벌 DRAM 캐파의 약 10~12% 수준.
 
@@ -252,3 +253,27 @@ FT 보도의 CXMT 점유율 수치("2025년 ~11% → 2028년 15%")는 **웨이�
 - 다만 밀러는 같은 시기 중국의 구조적 제약도 병행 지적("중국은 4년째 AI 과소투자", Huawei/SMIC 규모 한계 — [china-competitors.md [Update 2026-08-03]](china-competitors.md#update-2026-08-03-크리스-밀러의-중국-이중-평가) 참조) — CXMT 위협은 첨단(HBM)이 아닌 **범용·완제품 채택 경로**로 실현된다는 위키 기존 프레임과 정합.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
+
+---
+
+## [Update 2026-08-25] 상하이 신공장 착공 + HBM3 양산 시점 재확인 + 미 국방부 1260H 등재
+
+### 상하이 신공장 — 허페이 대비 2~3배 규모
+
+CXMT가 **상하이에 신공장**을 건설 중이며, 기존 허페이 캐파 대비 **2~3배 규모**로 계획돼 있다. **2026년 하반기 장비반입** 개시, **2027년 양산** 목표다 — 위 [팹 투자](#팹-투자) 표에 반영. 허페이 단일 거점 구조에서 상하이로 지리적·자본적 확장이 이뤄지는 시점으로, 앞서 언급된 2026E 300,000 WSPM 캐파 목표 이후의 **다음 증설 사이클**로 해석된다.
+
+### HBM3 로드맵 — 목표(2026년말)와 경쟁력 있는 양산(2028년 이후) 분리
+
+- CXMT는 **HBM3를 2026년말 양산 목표**로 제시하고 있으나, **경쟁력 있는 수율의 실제 양산은 2028년 이후**로 전망된다.
+- 이는 위 [Update 2026-07-04] "HBM 웨이퍼 배정 2026년말 3만 WSPM"과 결이 다르다: 웨이퍼 배정(캐파 확보)과 **양산 가능 수율 도달**은 별개 지표다. "목표 발표 시점"과 "경쟁력 있는 양산 시점" 사이 약 2년의 간극이 존재 — 삼성·SK하이닉스·Micron이 HBM4/HBM4E로 세대 전환하는 동안 CXMT는 여전히 HBM3 수율 확보 단계에 머문다는 뜻으로, [기술 자립 로드맵](#기술-자립-로드맵)의 "3단계(2027~2030) HBM 진출 시도"와 정합적이나 하한선(2028년 이후)이 이번에 구체화됐다.
+
+### 미 국방부 1260H 리스트 등재 재확인
+
+- 미 국방부가 CXMT를 **중국군 관련 기업(1260H) 리스트에 추가**했다(2026년). [us-export-controls.md](../concepts/us-export-controls.md#1260h-리스트--애플-cxmt-로비-2026-07)에서 이미 다룬 1260H 체계상의 등재이며, **자동 거래금지는 아니다**라는 점이 이번 소스에서도 재확인됐다 — 국방부 조달 금지·평판 리스크·향후 제재 확대의 예비 신호라는 기존 해석을 유지.
+
+### Samsung 전략 시사점
+
+- 상하이 신공장의 "2~3배 규모"는 CXMT가 범용 DRAM 캐파 경쟁에서 장기전을 준비하고 있다는 신호 — [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md)(범용 양보 + HBM 집중)의 전제를 강화.
+- HBM3 "목표 vs 경쟁력 있는 양산" 간극(2026말 vs 2028+)은 삼성·SK·Micron에게 **HBM4/HBM4E/HBM5로 최소 2세대 앞서 나갈 시간적 여유**가 아직 있음을 시사 — 단, 상하이 신공장이 HBM향으로도 배정될 경우 이 여유는 축소될 수 있어 EWI 모니터링 대상 유지.
+
+**출처**: [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

@@ -1,9 +1,10 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
+last_reviewed: 2026-08-25
 sources:
   - sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md
   - sources/articles/micron-anthropic-sca-2026-06-22.md
+  - sources/raw-notes/memory-market-strategy-update-2026-08-25.md
 ---
 
 # 고객 공동개발 모델 — Anthropic Strategic Infrastructure Partnership
@@ -33,8 +34,10 @@ sources:
 | **NVIDIA ↔ SK hynix** | Rubin HBM4 co-design, 공급의 2/3+ 락인 (Counterpoint·현지언론) | HBM Q3 2025 SK 57% (Counterpoint) |
 | **Micron LTSA 공식 인용** | CEO Mehrotra (Bloomberg 2026-05-22): "long term supply agreements with our customers to really ensure that they can have predictability for supply, and Micron can have the confidence for the investments" | RS-8 본인 언어 |
 | **Anthropic strategic infra partners** | Micron·Samsung·SK hynix 동시 지정 | 2026 |
+| **NVIDIA ↔ SK hynix $500B+ LOI** | AI 팩토리(SK텔레콤 2GW Vera Rubin DSX) 공동구축 + **HBM4 공동개발·장기공급** | 2026-07-25, 지금까지 최대 규모 사례 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)) |
+| **Micron ↔ General Motors** | 완성차向 메모리·스토리지 SCA — AI 인프라 밖 산업으로 최초 확산 | 2026-07-01 (동 출처) |
 
-→ **단순 LTA·co-design·전략적 인프라 파트너십이 산업 표준어로 자리잡음**
+→ **단순 LTA·co-design·전략적 인프라 파트너십이 산업 표준어로 자리잡음.** 2026-07 두 사례(SK하이닉스-NVIDIA·Micron-GM)는 이 패턴이 ① 규모(딜 사이즈 최대치) ② 범위(AI 밖 산업으로 확산) 두 방향으로 동시에 심화되고 있음을 보여준다 — 자세한 계약구조 비교는 [lta-to-sca-transition.md](lta-to-sca-transition.md) 참고.
 
 ---
 

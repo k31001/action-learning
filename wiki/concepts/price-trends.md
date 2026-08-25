@@ -230,3 +230,21 @@ Micron FY26 Q3(2026-05-28 종료, 2026-06-24 발표) 실적이 가격 주도 성
 - TrendForce(2026-07-03, 최신)는 Q3 2026 범용 DRAM 계약가를 QoQ **+13~18%**로 전망한다 — Q2 2026 실적(+58~63%) 대비 대폭 감속이며, PC·스마트폰의 구매력 한계와 고기저 효과가 주 요인이다. 서버향 수요는 에이전틱 AI로 견조함을 유지한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - 이 감속 신호는 [demand-inflection-ewi.md](demand-inflection-ewi.md)의 조기경보(EWI) 후보로 교차 링크할 필요가 있다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - Jefferies는 이와 배치되게 Q3 2026 +40~50%·Q4 2026 +30~40% QoQ를 여전히 전망한다 — TrendForce의 "범용 DRAM 계약가" 특정치와 달리 스팟·HBM을 포함한 전반적 메모리 가격 기준일 가능성이 있어 범위 차이로 병기한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## [Update 2026-08-25] 3Q26 계약가 확정 — 서버 DRAM +13~18% QoQ, NAND +10~15% QoQ로 둔화. Q4 2026 미확인
+
+### 서버 DRAM 3Q26
+
+- TrendForce(2026-07-09 발표): **3Q26 서버 DRAM 계약가 +13~18% QoQ** — 장기계약(LTA) 캡이 작용한 수치로, 위 [업데이트 2026-07-04]의 "범용 DRAM +13~18%"(2026-07-03 발표) 전망과 같은 방향·같은 범위로 재확인됐다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### NAND 3Q26 — 둔화 확인
+
+- TrendForce(2026-07-03 발표): **3Q26 NAND 계약가 +10~15% QoQ**로 둔화한다 — 위 [Update 2026-06-13]에서 이미 포착된 "2026년 5월 모멘텀 둔화 신호"가 계약가 전망치로 구체화된 것이며, Q2 2026 실적(+70~75% QoQ) 대비 상승폭이 큰 폭으로 꺾였다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### Q4 2026 전망 — 확인 안됨
+
+- 2026-08-25 조사 시점 기준, Q4 2026 DRAM·NAND 계약가에 대한 명시적 전망치는 검색 범위 내에서 확인되지 않았다 — 3Q26까지만 확인된 상태다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+**출처**: [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

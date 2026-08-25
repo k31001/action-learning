@@ -105,7 +105,7 @@
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
-- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-07-04 제약지수 전력72·CAPEX40·파운드리50·패키징67)
+- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-08-25 제약지수 전력75(▲+3)·CAPEX38(▼-2)·파운드리49(▼-1)·패키징64(▼-3))
 - [wiki/concepts/dram-antitrust-litigation.md](wiki/concepts/dram-antitrust-litigation.md) — DRAM 반독점 집단소송(2026-06-25 제소, Samsung·SK하이닉스·Micron 공동 피고) — 삼성 규제·평판 리스크 추적 (NEW)
 
 ### 신규 전략 인접영역 (시니어 파트너 인터뷰 2026-06-11 기반)
@@ -229,6 +229,8 @@
 - [sources/raw-notes/nand-market-history-research-2026-08-22.md](sources/raw-notes/nand-market-history-research-2026-08-22.md) — (NEW) 다운턴 복기 리서치 II(NAND): 산업 연매출 시계열 2006~2025(앵커: 2008 $12.0B -14%·2018 $63.2B·2021 $67.1B·2023 $36.7B -39.9%)·분기 전환점(4Q16 +17.8% "공급 부족 최심"·3Q22 -24.3%·4Q25 +26.7%)·다운턴 5건 NAND 동행/비동행 판정(침투기 완충 → DT19부터 완전 동조)·도시바 2012-07 30% 감산
 - [sources/raw-notes/samsung-storage-solution-research-2026-08-17.md](sources/raw-notes/samsung-storage-solution-research-2026-08-17.md) — 스토리지 솔루션 리서치: SSD·UFS 매출·이익 3단 역산(시장×점유율×믹스) 방법론 + 연표 앵커 (전량 추정ᵉ)
 - [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 베인앤컴퍼니 신문섭 파트너 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
+- [sources/raw-notes/bottleneck-model-update-2026-08-25.md](sources/raw-notes/bottleneck-model-update-2026-08-25.md) — (NEW) 병목 모델 정기점검(전력·CAPEX·파운드리·패키징) 웹 리서치: ERCOT 승인률 저조(신청 198GW vs 승인 9,062MW)·변압기 리드타임 128주·TSMC 2Q26 N2 첫 기여·CapEx $60~64B·ASML 메모리매출 +75%·CoWoS 수급갭 20%→10%·삼성 HBM 캐파 +47%
+- [sources/raw-notes/memory-market-strategy-update-2026-08-25.md](sources/raw-notes/memory-market-strategy-update-2026-08-25.md) — (NEW) 시장·전략 정기점검 웹 리서치: DRAM Q2 2026 점유율(삼성 39% 1위 탈환)·HBM 점유율 상충 데이터·삼성 HBM4 수율 80%·삼성·SK 2Q26 실적·SK하이닉스-NVIDIA $500B LOI·Micron-GM SCA·CXMT/YMTC 최신 동향·수출통제 갱신
 - [sources/articles/captive-ssd-fdp-context-2026-08.md](sources/articles/captive-ssd-fdp-context-2026-08.md) — 웹 리서치 종합: Captive SSD 위상 변화 4단계(완제품→펌웨어→자체 컨트롤러 Nitro→표준·웨이퍼)·하이퍼스케일러 SSD 수요 ~55%·NAND 웨이퍼 +246%·FDP 표준 기원(Meta·Google 주도·삼성 공동)
 - [sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md](sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md) — 사용자 전략 인풋: FDP 생태계 확산·락인 실행전략 3종 (워크로드 교환 협업 · 최적화 역량 확보 · FDE 파견 운영)
 - [sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md](sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md) — 사용자 전략 인풋 원문: FDP 기반 Host–SSD 통합 솔루션 전략 (시스템 SW·실행전략 6종·로드맵·KPI·스토리라인)

@@ -14,6 +14,24 @@
 
 ---
 
+## [2026-08-25] ingest+build | 정기 시장 점검 — Bottleneck Model 4대 지수 갱신(변동폭 표기) + SK하이닉스-NVIDIA $500B LOI·Micron-GM SCA 등 위키 전반 반영 (v2.46.11)
+
+**요청**: SemiAnalysis·Counterpoint·TechInsights 등을 참조해 최신 데이터를 수집하고, Bottleneck Model 숫자를 지난 업데이트 대비 변동폭과 함께 갱신, 위키·링크 전반을 최신화하고 필요시 전략을 수정/추가/삭제.
+
+**리서치**: 4개 병렬 에이전트(전력·CAPEX / 파운드리·패키징 / 시장가격·점유율 / 기업전략·경쟁동향)로 2026-07-04~2026-08-25 구간 웹 리서치 수행. `sources/raw-notes/bottleneck-model-update-2026-08-25.md`(ERCOT 승인률 저조·변압기 128주·TSMC 2Q26·ASML 2Q26·CoWoS 갭 20%→10%)·`sources/raw-notes/memory-market-strategy-update-2026-08-25.md`(DRAM/HBM/NAND 점유율·2Q26 실적·SK하이닉스-NVIDIA $500B LOI·Micron-GM SCA·CXMT/YMTC·수출통제) 2건 신설.
+
+**Bottleneck Model 갱신** (`wiki/concepts/bottleneck-model-2030.md` §종합 판독 신설 + `dashboard/src/data/bottleneckModel.js` PREV_INDICES/MODEL_ASOF): 전력 72→**75(▲+3)**, CAPEX/ROI 40→**38(▼-2)**, 파운드리 50→**49(▼-1)**, 패키징 67→**64(▼-3)**. 전력이 5개 분기 연속(64→68→70→72→75) 유일한 악화 축으로 4대 병목 중 현재 지수 최고 — ERCOT 신규 접속신청 198GW 대비 지난 12개월 실제 승인 9,062MW뿐(승인률 저조 신규 확인). CAPEX는 빅4 합산 $725B로 추가 상향되나 Alphabet 첫 FCF 마이너스·Meta 주가 -10%로 ROI 인내심 약화 하위 리스크 신규 기재. 패키징이 CoWoS 갭 축소·삼성 HBM 캐파 +47%·Rubin 물량 2027 이월로 가장 빠르게 완화. 상류 드라이버 트리(interconnect·transformer·capex_guide·node_ramp·cowos_util·stack_yield) 6개 항목 근거 갱신.
+
+**위키 반영** (3개 병렬 에이전트): entities(samsung·sk-hynix·micron·tsmc·nvidia) — 2Q26 실적, AMD-삼성 HBM4 계약 임박, **SK하이닉스-NVIDIA $500B+ LOI(AI 팩토리+HBM4 공동개발)**, 텍사스 테일러 2공장 앞당김, FMS 2026 aHBM 구상, **Micron-GM SCA**(SCA 최초 반도체 밖 확산), 용인 클러스터 600조원 계획. concepts(hbm-market·dram-market-share·price-trends·ai-capex·energy-constraints·dram-antitrust-litigation) — DRAM 점유율(삼성 39% 1위 탈환)·HBM 점유율 **상충 데이터 병기**(SK 62%·삼성 17% 저품질 출처 vs 기존 35~40%, 재확인 필요로 명시)·삼성 HBM4 수율 80%·TrendForce 3Q26 가격·반독점 소송 답보. china-competitors·cxmt·ymtc·us-export-controls — CXMT 상하이 신공장, **YMTC 우한 3공장 절반 DRAM 할당(NAND 전업→DRAM 진출 신호)**, 중국 팹 연례 수출허가 의무화, H200 재개 조건.
+
+**전략 반영**: `lta-to-sca-transition.md`·`customer-co-design-anthropic.md`에 SK하이닉스-NVIDIA LOI(규모 극대화)·Micron-GM SCA(범위 확장, AI 밖 산업 최초)를 SCA 패턴표에 추가 — LTA→SCA 전환이 "규모"와 "범위" 두 방향으로 동시 심화 중임을 논증. 시나리오 확률·RS 구조 자체는 오늘 별도의 정기 EWI 재평가(위 assessment 항목, DF1 8.5·DF2 0.5 유지)와 정합 — 축 전환 없음.
+
+**대시보드**: `indicators.js`의 `samsung_hbm_share`(상충 데이터 08-25 이력 추가, currentValue 미변경)·`cxmt_dram_share`(Counterpoint Q2 매출 점유 7% 확정치 추가). `outputs/report/scenario-planning-report.md` §2.2.3 신설(정기점검 08-25 섹션).
+
+**영향받은 페이지**: `wiki/concepts/bottleneck-model-2030.md`·`lta-to-sca-transition.md`·`customer-co-design-anthropic.md`·`hbm-market.md`·`dram-market-share.md`·`price-trends.md`·`ai-capex.md`·`energy-constraints.md`·`dram-antitrust-litigation.md`·`us-export-controls.md`, `wiki/entities/{samsung,sk-hynix,micron,tsmc,nvidia,cxmt,ymtc,china-competitors}.md`, `dashboard/src/data/{bottleneckModel,indicators}.js`, `outputs/report/scenario-planning-report.md`, `index.md`(신규 소스 2건 등록).
+
+**마이너 v2.46.11**(신규 데이터 카테고리 — 병목 5차 정기점검+SCA 패턴 확장). 지식그래프 재생성·`npm run build` 검증 후 커밋. **건너뜀 사유**: storyline·scenario 확률(오늘 별도 assessment에서 유지 결론) 무변경, PPTX는 텍스트 소스(wiki/report) 변경 폭이 구조 변경이 아니라 재생성 보류(다음 정기 빌드에서 흡수) — 상세 사유는 아래 build 항목 참고.
+
 ## [2026-08-25] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) (v2.46.10)
 - **무엇**: 직전 08-18 재평가 이후 git log 변경분(v2.46.2~v2.46.9·v2.42.1)을 계층 분류하고 08-25 웹 리서치로 in-window 거시 신호를 대조 → 포지션 맵·확률 전부 **유지**로 확정. EWI 3종·시나리오 트리거 3종 노트만 수집 데이터로 갱신.
 - **왜**: 변경분은 전부 ② 역사 리서치(지난 20년 다운턴 복기 전체 메모리 D+N 통합 산점도·NAND 분기 낙폭 4Q08 -19.3%·4Q22 -25% 검증) ③ SP-2 다운턴 트랙 심화(시나리오별 삼성 영향 진단 — S/W 코드 좌표계, 별도 축 DF-D1×DF-D2라 SP-1 무이동) ④ 전략·outputs(FDP 생태계 실행전략 3종) ⑤ 발표 층(PPTX 확률 표기 제거·영향 진단 슬라이드 리디자인)으로 **신규 실현된 외부 거시 사실 0건**. 08-25 웹 리서치 in-window 신호도 정점 재확인·유보뿐: 빅테크 CapEx ~$725B(+77% YoY)·삭감 0건·DRAM Q3 +13~18%·NAND +10~15% QoQ 감속(정제)·HBM4 +30%·MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전했으나 백악관 사인오프 대기·Schumer 반대 서한(07-29). 리트머스 미해결 → DF2 이동 근거 미충족.

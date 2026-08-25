@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-08-25
+sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md, sources/raw-notes/bottleneck-model-update-2026-08-25.md, sources/raw-notes/memory-market-strategy-update-2026-08-25.md]
 ---
 
 # Samsung Electronics — 메모리사업부 (DS 부문)
@@ -298,3 +298,34 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - **한국 800조 원 클러스터 투자 환영** — "비중국 세계의 경제·전략적 이해에 부합." 기존 위키 수집(2026-06-29 발표, 삼성·SK 각 신규 팹 2개)에 대한 외부 지정학 전문가의 긍정 평가.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §7, §9
+
+---
+
+## [Update 2026-08-25] 2026 Q2 실적 사상 최고·HBM4E 샘플 업계 최초 출하·AMD 계약 임박·FMS 2026 차세대 비전
+
+### 2026 Q2 실적(2026-07-31 발표) — Q1 대비 재차 급증
+
+- 연결 매출 **171.5조원**(QoQ +28%), 영업이익 **89.5조원**(QoQ +56%, 역대 최고) — 앞선 [Update 2026-07-04]의 Q1 2026 영업이익 57.2조원(YoY +756%)에서 재차 QoQ +56% 급증([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- DS부문(메모리) 매출 **127.5조원**, 영업이익 약 89조원(부문별 공시 소스에 따라 87.5~89.5조원 범위, 위키는 보수적으로 "약 89조원"으로 통일) — DS부문이 전사 영업이익의 사실상 전부를 견인([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- D램·낸드 비트출하 모두 사상 최고. **HBM4E 샘플을 업계 최초로 주요 고객에 출하** — HBM4 인증은 확보했으나 볼륨 발주가 지연된다던 [Update 2026-07-21]의 우려 이후, HBM4E 세대에서는 오히려 업계 최초 샘플 출하로 선행([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- **가이던스**: 3Q26 HBM4 매출 전분기 대비 **3배 이상**, 하반기 HBM 매출의 **60% 이상을 HBM4**가 차지 — Main Bet(시나리오 B) HBM4 회복 가정에 대한 회사측 공식 전망치([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### AMD-삼성 HBM4 공급계약 임박(2026-07-24)
+
+- Lisa Su(AMD CEO)가 2026-07-24 삼성과의 HBM4 공급계약이 "거의 완료(nearly done)" 단계라고 언급, 삼성 파운드리 사업부장이 샌프란시스코 최종협상에 직접 파견됨 — 2026-03-18 Bloomberg 보도의 HBM4·DDR5 공급 MOU 체결([Update 2026-07-04] 이전 baseline)이 정식 공급계약 단계로 진전 중([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)). NVIDIA 편중 완화 + 고객 포트폴리오 다변화([RS4](../strategies/invariant/rs4-customer-portfolio-diversification.md)) 관점에서 유의미.
+
+### 텍사스 테일러 2공장 착공 앞당김 + 파운드리 흑자화 병행
+
+- 텍사스 테일러 **2공장 착공을 2026년말로 앞당김**, 1공장은 2026년말~2027년초 가동 목표 유지([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- 2026-07-30, 삼성은 HBM4E 2027년 양산 목표를 재확인하는 동시에 **파운드리 사업 흑자화를 병행 추진**한다고 밝힘 — DS부문 메모리 초호황과 별개로 파운드리 사업 정상화가 별도 축으로 진행 중([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### FMS 2026(2026-08-04~06, 산타클라라) — 차세대 3D 메모리 비전
+
+- 차세대 3D 아키텍처 **zHBM·zNAND-O** 목업을 업계 최초로 공개, 8월 중 HBM을 단순 메모리를 넘어 일부 AI 연산까지 수행하는 **"advanced HBM(aHBM)"** 구상을 공개 — 크리스 밀러가 2026-07-09 인터뷰에서 제시한 "HBM을 넘어선 차세대 AI 메모리 아키텍처" 논지([Update 2026-08-03])와 정확히 부합하는 구체 실행 사례([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md); [hbm-roadmap.md](../concepts/hbm-roadmap.md#update-2026-08-03-크리스-밀러--hbm-너머-추론-최적화-메모리-프런티어) 참조).
+
+### 참고 — 병목모델 교차 신호
+
+- 삼성 HBM 웨이퍼 캐파 17만 → 25만 wpm(+47%, 2026년말 목표), 레거시 DRAM/NAND 후공정의 베트남(타이응우옌, 2027-11 가동 목표) 이전 검토로 천안·온양 국내 캐파를 HBM向으로 전환 — CoWoS 수급 갭 축소와 함께 2026년 패키징 병목 완화 신호 중 하나([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- 삼성 HBM4 수율 80%(2026-08-10 TrendForce, 2월 양산개시 시 60% 미만에서 상승, 연말 목표 조기 달성)([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md), [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

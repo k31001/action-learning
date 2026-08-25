@@ -323,3 +323,29 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 ### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
 
 - SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## [Update 2026-08-25] HBM 점유율 Q2 2026 — 저품질 2차 출처(SK 62%/Micron 21%/삼성 17%) vs 위키 기존치(35~40%) 상충, 재확인 필요
+
+### 신규 점유율 수치 — 출처 신뢰도 낮음, 단정 금지
+
+- Q2 2026 HBM 점유율 관련 새 수치가 하나 확인됐다: **SK하이닉스 62%·Micron 21%·삼성 17%**. 다만 이 수치는 **저품질 2차 집계 사이트 인용이며 원출처(1차 자료)가 확인되지 않는다** — 신뢰도를 낮게 잡을 것 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- 이는 위 [Update 2026-07-04] 섹션의 "2026년 4월 기준 삼성 35~40%"(Counterpoint 잠정치 기반)와 **정면으로 상충**한다. 상충 원인은 집계 기준(출하량 vs 매출 vs 인증 물량) 및 시점 차이일 가능성이 있으나 확인되지 않았다.
+- **위키 방침**: 어느 한쪽 수치로 단정하지 않고 **두 수치를 병기**한다 — "4월 2026: 삼성 35~40%(집계 방식 불명, Counterpoint 계열 잠정치) vs Q2 2026: 삼성 17%(저품질 2차 출처, 원출처 미확인)" — **집계 기준·시점 차이로 상충, 재확인 필요**로 명시한다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- **UBS(2026-07-31)**: "삼성이 2027년 HBM 왕좌를 SK하이닉스로부터 탈환할 수도 있다"고 전망 — 이는 "현재는 SK하이닉스가 우위"라는 정성적 방향에서는 Q2 2026 저품질 수치(SK 62%)와 정합하나, 정량치 자체를 검증하지는 않는다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### 삼성 HBM4 수율 80% — 2월 60% 미만에서 급상승
+
+- TrendForce(2026-08-10): 삼성 HBM4 수율이 **80%**로 확인됐다 — 2월 양산 개시 시점 60% 미만에서 상승한 것으로, 연말 목표를 조기 달성한 것으로 평가된다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### 삼성 HBM 웨이퍼 캐파 +47% 확대(17만→25만wpm)
+
+- 삼성 HBM 웨이퍼 캐파가 **17만wpm → 25만wpm(+47%)**로 확대된다 — 2026년말 목표. 레거시 DRAM/NAND 후공정을 베트남(타이응우옌, 2027-11 가동 목표)으로 이전하고 국내(천안·온양) 캐파를 HBM向으로 전환하는 방식이다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+### HBM4(Vera Rubin) 배정 비율 — 매체별 편차 확대
+
+- HBM4 공급 배정 추정치의 매체별 편차가 크다: 2026-02 시점 TrendForce 전망은 SK하이닉스 mid-50%대·삼성 mid-20%대·Micron 약 20%였으나, 이후 한국매체(techpowerup·techtimes) 보도는 SK하이닉스 약 70%로 더 높게 추정한다. **NVIDIA 공식 배정치는 여전히 미공개**이며 모두 추정 보도 수준이다 — 위 [Update 2026-07-04]의 "SK 60~70%·삼성 25~30%"와 함께 SK 50%대~70%·삼성 20%대·Micron 20%대의 폭넓은 추정 범위로 병기한다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- 참고: SK하이닉스 생산 지연이 Rubin 출시 일정에 영향을 줄 수 있다는 보도(SDxCentral)도 있어 공급망 리스크 신호로 병기해 둔다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md), [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

@@ -474,3 +474,28 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 - 2026-06-25 N.D. Cal. 제소 건에 Micron도 삼성전자·SK하이닉스와 함께 피고로 포함 — HBM 전환 명목 하 범용 DRAM 공급 제한·가격 담합 주장([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세 내용은 신규 개념 페이지 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §3, §4
+
+---
+
+## [Update 2026-08-25] FY26 Q3 실적 HBM 전량 완판 재확인·Micron-GM SCA·SCA 16곳으로 확대
+
+### FY26 Q3 실적(2026-06-24 발표) 및 FQ4 가이던스 재확인
+
+- 앞선 [Update 2026-06-25]에서 상세 기록한 FY26 Q3 실적(매출 $41.46B) 및 Q4 가이던스($50.0B±$1.0B, GAAP 매출총이익률 ~86%)가 8월 시점 리서치에서도 재확인됨 — **2026년 HBM 공급 전량 고정가 계약 완판** 상태 유지([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)). 실제 FY26 Q4 실적은 2026년 9월 발표 예정으로 8/25 시점 미발표.
+- HBM4(1-beta) 대량양산 중, HBM4E(1-gamma)는 2027년 양산 목표로 개발 중([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### Micron-GM SCA 체결(2026-07-01) — 반도체 밖 산업 최초 SCA 사례
+
+- Micron과 General Motors(GM)가 **2026-07-01 Strategic Agreement(SCA)를 체결** — 차량용 메모리·스토리지 장기공급을 다루는 계약으로, Anthropic SCA([Update 2026-07-04])에 이어 **반도체 밖(완성차) 산업 최초의 SCA 사례**([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- 이는 SCA 모델이 데이터센터/AI 고객을 넘어 자동차 등 전통 산업으로 확산되는 첫 신호 — [lta-to-sca-transition.md](../concepts/lta-to-sca-transition.md)의 "LTA→SCA 전환" 논지가 반도체 산업 경계를 넘어서기 시작함을 시사.
+
+### SCA 고객 16곳으로 확대 — 물량·누적 확보액
+
+- SCA 고객이 **16곳으로 확대**, DRAM 물량의 약 **20%**·NAND 물량의 약 **1/3**을 커버 — 앞선 [Update 2026-06-25]의 "16개 SCA, 최소계약매출 ~$100B" 공시와 동일 건수로 정합([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- 누적 확보액은 **~$22B 유지**(현금예치금 등 ~$18B 포함) — 기존 위키의 "$22B 예상"이 실제 확보치로 재확인됨([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### 참고 — NAND 시장점유율 매출 기준 3위 재확인
+
+- Q2 2026 NAND 시장(매출 기준, Blocks & Files 2026-08-19): 삼성 $2.306B 1위·SK하이닉스그룹 $1.427B 2위에 이어 **Micron $1.185B로 Kioxia(13.6%)·SanDisk(11.4%)를 제치고 3위** 확정 — 위 [Update 2026-05-05] "DRAM 점유율(25%)에 상응하는 HBM 점유율 목표" 전략과 함께, Micron이 NAND에서도 후발주자에서 3강 구도로 안착했음을 확인([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md), [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

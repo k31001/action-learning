@@ -245,3 +245,26 @@ Counterpoint Research (2026-01-29, Jeongku Choi):
 
 - Counterpoint Research의 Q1 2026 확정 DRAM/HBM 시장점유율 데이터: SK하이닉스 HBM ~58%·삼성전자 ~32% — Counterpoint 발행물은 이를 "SK하이닉스가 지속되는 HBM 수요 속 역대 최초로 HBM 1위 유지"로 평가한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 4월 잠정치 대비 확정치 차이의 상세 병기는 [hbm-market.md](hbm-market.md) [Update 2026-07-04] 참조.
 - 2026-06-25 삼성전자·SK하이닉스·Micron을 상대로 한 반독점 집단소송이 제기됐다(N.D. Cal.) — HBM 전환을 명목으로 범용 DRAM 공급을 인위적으로 제한하고 가격을 담합했다는 주장이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세는 신규 페이지 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조(다른 에이전트가 작성 중).
+
+---
+
+## [Update 2026-08-25] DRAM 시장점유율 Q2 2026(Counterpoint, 발표 2026-08-04/05) — 삼성 1위 탈환, SK하이닉스는 급성장에도 점유율 하락
+
+### Q2 2026 매출 기준 DRAM 점유율
+
+| 순위 | 업체 | Q2 2026 점유율 | 비고 |
+|---|---|---|---|
+| 1 | **삼성전자** | **39%** | 1위 탈환 |
+| 2 | **SK하이닉스** | **26%** | |
+| 3 | **Micron** | **25%** | SK하이닉스와 격차 1%p |
+| 4 | **CXMT** | **7%** | 4위권 부상 |
+
+- Counterpoint Research 발표(2026-08-04/05): 매출 기준 삼성전자가 39%로 1위를 탈환했고, SK하이닉스(26%)와 Micron(25%)은 격차 1%p로 근접했다. CXMT는 7%로 4위권에 부상했다 — 위 Q1 2026(38.5%/28.8%/22.4%/CXMT 7%) 대비 삼성 소폭 상승·SK하이닉스 하락·Micron 상승·CXMT 유지의 흐름이다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+- **급성장 시장에서의 상대 점유율 하락 현상**: SK하이닉스는 이 기간 매출이 **YoY +214%** 급증했음에도 불구하고, 점유율은 전년 동기(Q2 2025) **39% → 26%**로 오히려 하락했다 — 시장 전체(삼성·Micron·CXMT 포함)가 SK하이닉스보다 더 빠르게 성장했기 때문으로, 절대 매출 성장과 상대 점유율이 반대 방향으로 움직일 수 있음을 보여주는 사례다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+### 참고 — NAND 점유율 Q2 2026 (동시 확인)
+
+- 출하량 기준: 삼성전자 25%·SK하이닉스(솔리다임 포함) 22%·**YMTC 14%(첫 Top3 진입, Kioxia 추월)**.
+- 매출 기준: 삼성전자 $2.306B(1위)·SK하이닉스그룹 $1.427B(2위)·**Micron이 Kioxia를 제치고 3위**($1.185B)·Kioxia 13.6%·SanDisk 11.4%. Top5 합산 매출 QoQ +77% ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
+
+**출처**: [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

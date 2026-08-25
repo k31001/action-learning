@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, TechInsights, Caixin Global, Digitimes)]
+last_reviewed: 2026-08-25
+sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, TechInsights, Caixin Global, Digitimes), sources/raw-notes/memory-market-strategy-update-2026-08-25.md]
 ---
 
 # 중국 메모리 업체 그룹 (CXMT · YMTC)
@@ -19,6 +19,8 @@ sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, Tec
 |------|------|------|--------------|------|
 | **CXMT** (창신메모리) | DRAM | 안후이성 허페이 | 글로벌 DRAM 8% (4위 진입) | [cxmt.md](cxmt.md) |
 | **YMTC** (양쯔메모리) | NAND Flash | 후베이성 우한 | 글로벌 NAND 13% (출하 기준) | [ymtc.md](ymtc.md) |
+
+**2026-08-25 갱신 요약**: CXMT는 상하이에 허페이 대비 2~3배 규모 신공장을 건설 중(2026년 하반기 장비반입, 2027년 양산 목표), HBM3는 2026년말 목표하나 경쟁력 있는 수율의 양산은 2028년 이후로 전망. YMTC는 우한 3공장(2027년경 가동) 신규 캐파의 절반가량을 DRAM에 배정할 예정 — NAND 전업에서 DRAM 진출로의 전략 전환 신호. 상세는 [cxmt.md](cxmt.md#update-2026-08-25-상하이-신공장-착공--hbm3-양산-시점-재확인--미-국방부-1260h-등재), [ymtc.md](ymtc.md#update-2026-08-25-우한-3공장--절반가량-dram-배정-nand-전업에서-dram-진출로-전략-전환) 참조.
 
 ---
 
@@ -66,8 +68,9 @@ sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, Tec
 ## 미국 수출통제 영향
 
 - **YMTC**: 2022-12 엔티티 리스트 등재 — 미국 장비·소재 차단
-- **CXMT**: 엔티티 리스트 등재 상태, 첨단 미국 장비 접근 제한
+- **CXMT**: 엔티티 리스트 등재 상태, 첨단 미국 장비 접근 제한. 미 국방부가 2026년 CXMT를 중국군 관련 기업(1260H) 리스트에 추가(자동 거래금지는 아님) ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md))
 - **대응**: 국산 DUV(SMEE) + 다중 패터닝 + Xtacking 자체 IP + 국산 장비 라인 구축
+- **한국·대만 팹 공급망 리스크 상시화(2026-01-01~)**: TSMC·삼성·SK하이닉스의 중국 팹에 대한 기존 자동면제(VEU)가 폐지된 데 이어, 2026-01-01부터 **연례 수출허가 갱신이 의무화**됐다 — 매년 갱신 심사를 통과해야 장비 반입이 지속되는 구조로, 중국 경쟁사(CXMT·YMTC) 대비 한국·대만 팹의 정책 리스크가 일회성이 아닌 **상시 변수**로 자리잡았다 ([memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)).
 - 자세히는 [us-export-controls.md](../concepts/us-export-controls.md) 참조
 
 ---
@@ -124,3 +127,27 @@ sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, Tec
 - 위협의 실현 경로는 **첨단 정면 추월이 아니라 ① 범용·완제품 채택(CXMT), ② 피지컬 AI 수요의 중국 내 수직계열화** — 시나리오 C·D의 중국 변수 해석과 일치하며, HBM·추론 아키텍처 등 추격 난이도 높은 영역의 격차 유지가 방어의 핵심이라는 기존 결론을 강화.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
+
+---
+
+## [Update 2026-08-25] CXMT 상하이 신공장 + YMTC DRAM 진출 + 중국 팹 연례 수출허가 상시화
+
+### CXMT — 상하이 신공장, HBM3 목표와 경쟁력 있는 양산의 간극
+
+CXMT가 상하이에 **허페이 대비 2~3배 규모**의 신공장을 건설 중이며, **2026년 하반기 장비반입**을 시작해 **2027년 양산**을 목표로 한다. HBM3는 **2026년말 양산 목표**를 제시하고 있으나, **경쟁력 있는 수율의 양산은 2028년 이후**로 전망된다 — "목표 발표"와 "실제 경쟁력 확보" 사이 약 2년의 간극이 이번에 구체화됐다. 미 국방부는 2026년 CXMT를 **중국군 관련 기업(1260H) 리스트**에 추가했으나(자동 거래금지는 아님), 앞선 [Update 2026-07-11]·[Update 2026-08-03]에서 다룬 1260H 등재 사실과 정합적이다. 상세: [cxmt.md](cxmt.md#update-2026-08-25-상하이-신공장-착공--hbm3-양산-시점-재확인--미-국방부-1260h-등재).
+
+### YMTC — 우한 3공장, NAND 전업에서 DRAM 진출로
+
+YMTC 우한 3공장(2027년경 가동)이 신규 캐파의 **절반가량을 DRAM에 배정**할 예정이다. YMTC가 **NAND 단일 사업자에서 DRAM 신규 진입자로 전략을 확장**하는 신호로, 실현되면 CXMT 단일 축이던 중국 DRAM 진영이 **CXMT+YMTC 복수 축**으로 바뀔 수 있다. 위 [업체별 페이지](#업체별-페이지) 표의 "DRAM=CXMT / NAND=YMTC" 영역 분담 구도가 장기적으로 흔들릴 수 있는 사건. 상세: [ymtc.md](ymtc.md#update-2026-08-25-우한-3공장--절반가량-dram-배정-nand-전업에서-dram-진출로-전략-전환).
+
+### 정책 환경 — 중국 팹 연례 수출허가 갱신 의무화(2026-01-01)
+
+**2026-01-01부터 TSMC·삼성·SK하이닉스의 중국 팹에 대해 연례 수출허가 갱신이 의무화**됐다 — 기존의 자동면제(VEU)가 이미 폐지된 데 이어, 매년 갱신 심사를 받아야 하는 구조로 굳어졌다. 이는 [us-export-controls.md](../concepts/us-export-controls.md)의 기존 "연간 라이선스 전환(2025년 12월)" 항목의 **적용 대상이 TSMC까지 포함되고 시행일이 2026-01-01로 확정**된 갱신판이다 — 한·미·대만 팹의 정책 리스크가 이제 매년 반복되는 **상시 변수**로 굳어졌다는 뜻.
+
+### Samsung 전략 시사점 (갱신)
+
+1. **범용 DRAM 경쟁 지형 확대** — CXMT 캐파 증설(상하이)과 YMTC의 DRAM 진출이 겹치면서, [RS2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md)가 양보하는 범용 세그먼트의 중국측 경쟁자가 단일(CXMT)에서 복수(CXMT+YMTC)로 늘어날 가능성 — 양보 이후 가격 경쟁 강도가 예상보다 커질 리스크를 모니터링.
+2. **HBM 격차 유지 시간 재확인** — CXMT의 HBM3 "목표 vs 경쟁력 있는 양산" 간극(2026말 vs 2028+)은 삼성·SK·Micron이 HBM4/HBM4E/HBM5로 세대를 앞서 나갈 여유가 여전함을 시사 — [RS6 공정 리더십](../strategies/invariant/rs6-process-leadership.md)의 전제 강화.
+3. **정책 리스크의 상시 비용화** — 연례 수출허가 갱신 의무화는 시안·중국 내 팹 운영의 **매년 반복되는 불확실성 비용**을 의미 — 팹 운영·투자 계획에 연례 리스크 프리미엄을 반영할 필요.
+
+**출처**: [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)

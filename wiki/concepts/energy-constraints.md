@@ -181,3 +181,28 @@
 - **냉각-성능 결합**: 전면 액체냉각(칩·케이블·변압기까지), "칩을 뜨겁게 돌릴수록 메모리 대역폭·FLOPS↑" — 냉각 효율이 인텔리전스 생산량과 직결. 물은 폐루프 재활용으로 소비 미미.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+---
+
+## [Update 2026-08-25] ERCOT 승인률 극도로 저조 신규 확인 + 설비 리드타임 추가 악화(변압기 128주·GSU 144주·개폐장치 60주+) + 원자력 가동률 20%(9.8GW 커밋 중 1.92GW) + PJM 신속트랙 8월 시행
+
+### ERCOT — 신청 대비 승인 비율 저조 신규 확인
+
+- **ERCOT 2026 Q1**: 신규 대형부하 접속 신청 **198GW**, 심사대기 **86GW**(ERCOT 현 피크부하와 맞먹는 규모)에 달했으나, **지난 12개월 실제 승인 용량은 9,062MW(약 9GW)뿐**이었다 — 신청 대비 승인 비율이 극도로 낮다는 점이 신규로 확인됐다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- ERCOT Batch Zero 절차: LLIS 심사 승인 마감 7/10, 필수 정보 제출 마감 7/24, Batch Zero 분류 통보 8/7 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+### 설비 리드타임 — 추가 악화
+
+- 대용량 변압기 리드타임 **128주**, 발전기 승압용 GSU **144주**, 일부 특수사양은 최대 **4년**(2020~21년 약 1년 대비 대폭 확대). 개폐장치/고압차단기 리드타임은 2026-05 기준 **60주 초과**로, 2025년말 44주 대비 상승했다. GOES(방향성 전기강판) 미국 내 생산업체는 단 1곳뿐이다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- 미국 계획 데이터센터의 절반 가까이가 지연·취소 위험에 있으며, 2026년 예정 12GW 중 실제 착공은 약 1/3에 그친다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+### 원자력/SMR — 커밋 대비 실제 가동률 20% 수준
+
+- 하이퍼스케일러 누적 원자력/SMR 계약은 **9.8GW(13개 딜)**이나, 실제 **가동 중인 용량은 1.92GW뿐**이다(가동률 약 20%). 최초 신규 용량(TMI-1, Microsoft 835MW)은 2027년 하반기 가동 예정으로, **2030년 이전 실질 기여는 제한적**이다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+### 완화 조짐 — PJM 신속트랙, 단 시행 초기
+
+- **PJM Expedited Interconnection Track**이 2026년 8월 시행 예정이다 — BYONG(Bring Your Own Nameplate Generation) 메커니즘을 활용하면 GIA(발전기 접속 계약) 체결까지 약 **10개월**로 단축될 수 있다. 2030년까지 최대 15GW 구조적 공급 부족 전망(기존 baseline과 동일)은 재확인됐다 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- **종합 판단**(리서치 에이전트): 승인률 저조·리드타임 추가 연장·원자력 실질 기여 지연은 모두 제약 심화 방향이다. 완화 요소(PJM 신속트랙, ERCOT 절차 정비)는 아직 시행 전이라, 방향 전환이라기보다는 속도 조절 수준으로 평가된다 — [bottleneck-model-2030.md](bottleneck-model-2030.md)의 전력 제약지수(72, 2026-07-04 기준) 재산정 시 반영 필요 ([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)

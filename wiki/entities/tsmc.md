@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (NIST, TrendForce, Tom's Hardware, Bloomberg, NAND Research, IMEC), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-08-25
+sources: [sources/README.md (NIST, TrendForce, Tom's Hardware, Bloomberg, NAND Research, IMEC), sources/articles/july-2026-market-update-2026-07-04.md, sources/raw-notes/bottleneck-model-update-2026-08-25.md, sources/raw-notes/memory-market-strategy-update-2026-08-25.md]
 ---
 
 # TSMC (Taiwan Semiconductor Manufacturing Company)
@@ -119,3 +119,28 @@ TSMC는 노드 전환을 **"Nx → Nx+ → Nx++"** 점진 개선으로 잘게 �
 - **CoWoS 세부 배정**: NVIDIA가 CoWoS 배정량의 ~60%(~59.5만 장)를 점유. TSMC는 2026년 24만~27만 장을 OSAT(Amkor·SPIL)에 외주. 첨단 패키징이 2026년 TSMC 총 CAPEX($520~560억)의 최대 20%를 배정받음. CEO 웨이저자(C.C. Wei)는 "CoWoS 캐파는 매우 타이트하며 2025~2026년까지 계속 sold out" 상태라고 재확인 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **CoPoS**: 2026-06-17 TrendForce 확인 — AP7 Chiayi 파일럿(310×310mm 글래스코어 패널) 트라이얼 수율 ~90%. 다만 **전면 양산 램프는 2028년 하반기~2029년**으로 재확인(DigiTimes: 2029년 목표) — 이전 위키 서술과 일치하되 양산 지연은 재확인·강조 필요 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **ASML High-NA EUV 도입 연기**: TSMC가 High-NA EUV 도입을 최소 2029년까지 연기 결정 — 비용 대비 현행 장비로 충분하다는 판단, 이전 전망(2027~28)보다 후퇴 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## [Update 2026-08-25] 2026 Q2 실적·CapEx 상향·CoWoS 수급갭 축소·애리조나 2공장 가속
+
+### 2026 Q2 실적(2026-07-16 발표)
+
+- 매출 **$40.2B**(가이던스 상단), HPC(AI가속기 포함) 매출 비중 **66%**(전분기 대비 +20%). **N2가 웨이퍼 매출의 3% 기여**(첫 유의미 매출) — 위 [업데이트 2026-07-04]의 "N2 3월부터 매출 기여 시작, Q3 유의미 기여 예상" 전망이 Q2 시점 3% 기여로 조기 실현됨([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- N2 램프로 3Q 매출총이익률 3~4%p 희석 전망. CFO는 향후 3년 CapEx가 과거 3년 대비 "significantly higher"라고 언급 — 수요-공급 갭이 쉽게 좁혀지지 않음을 시사([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+### 2026 CapEx 가이던스 상향
+
+- 2026 CapEx 가이던스를 **$60~64B로 상향** — 위 [업데이트 2026-07-04]에서 기록한 "첨단 패키징이 총 CAPEX($520~560억)의 최대 20%" 시점 대비 CapEx 규모 자체가 상향됨([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+### CoWoS 캐파·수급갭 축소
+
+- TrendForce(2026-06-15): TSMC CoWoS 수급 갭이 **20%→10%로 2026년 말까지 축소** 전망 — 캐파 확장이 원인. TSMC CoWoS 캐파는 연말 **120~130K wpm** 목표(현재 75~80K 추정 대비 대폭 확대), NVIDIA 2026년 CoWoS 수요는 약 60%(총 수요 약 100만 장 규모), ASE·Amkor 오버플로우 물량 약 80K wpm 추가([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- **CoWoS 14-reticle(컴퓨트 다이 ~10개+HBM 20스택) 양산은 2028년으로 재확인**(가속 없음) — 상방 시나리오에서도 구조적 상한은 유지([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+- 애리조나 2공장 **tool move-in이 2026년 하반기**로 진행 — 1공장 가동 중, 3공장 건설 중, 4공장+최초 후공정(패키징) 시설은 2026년 내 착수([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)). 위 [업데이트 2026-07-04]의 "ASML High-NA EUV 도입 2029년까지 연기" 방침은 이번 조사에서도 불변으로 재확인됨.
+
+### 참고 — HBM4 인증·삼성 HBM 캐파 확대와의 교차 신호
+
+- NVIDIA가 2026-06-05 삼성·SK하이닉스·Micron 3사 모두 Rubin向 HBM4 인증 완료를 발표한 것과 별개로, 하이브리드본딩·CoPoS는 기존 baseline과 동일(정체) — TSMC CoWoS 캐파 확장·삼성 HBM 웨이퍼 캐파 확대(17만→25만 wpm)가 2026년 패키징 병목 완화의 두 축([bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md)).
+
+**출처**: [bottleneck-model-update-2026-08-25.md](../../sources/raw-notes/bottleneck-model-update-2026-08-25.md), [memory-market-strategy-update-2026-08-25.md](../../sources/raw-notes/memory-market-strategy-update-2026-08-25.md)
