@@ -1661,3 +1661,7 @@ index.md sources 섹션 3건 등록. 위키 페이지 반영은 제안서 확정
 사용자 인풋(원문 보존 sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md): SCA로 다가가고 · FDP로 제공하고 · FDE로 협업한다. wiki fdp-host-ssd-platform.md §4.5 신설 — ① 공급부족 협상력의 창에서 하이퍼스케일러+스토리지 박스(Pure Storage·VAST·DDN)에 워크로드 교환 협업 제안(워크로드 공유 ↔ 최적화 FDP SSD, 성능·수명·TCO 효익으로 거절 어려움) ② 최적화 개발 역량 전문가 5종 분석 추가(커널 블록계층·io_uring·NVMe / SPDK / DB·캐시 내부 RocksDB·CacheLib·Ceph / 성능·워크로드 분석 fio·eBPF·WAF / FTL·미디어 모델) + 채용·양성안 ③ FDE 채용(실리콘밸리 현지·오픈소스 기여자·영어)·양성(미국 로테이션 6~12개월·멘토 페어링)·운영(파일럿 상주·outcome 평가·업스트림 기여 호명, Palantir 모델 준용).
 
 PPT: 제품 축 ④ 1장 신설 — SCA→FDP→FDE 플라이휠 도식(중심 고객 락인·다운턴 방어) + 실행전략 3카드. 통합본에 추가, -fdp 4장, 단독 1장본 -fdp-eco 신설·downloads 미러. 대시보드: DT_DOWNLOADS에 실행전략 1장본 카드 추가(5종)·fdp desc 갱신, version v2.46.7(패치). 삼성 메모리 PPT 스킬 적용(액션 타이틀·em-dash 금지·기존 덱 팔레트 보존).
+
+## [2026-08-05] build | 제품 축 ④ 재설계: Samsung Blue 3컬럼 레이아웃 (v2.46.8)
+
+피드백: PPT 스킬의 Samsung Blue가 아닌 녹색톤이 적용됐고 레이아웃 변경 요청. 제품 축 ④ 1장을 스킬 컬러 토큰(Samsung Blue #1428A0 단일 액센트 + 뉴트럴 그레이·화이트 카드)으로 재도색하고 3컬럼으로 재구성: ① 락인 플라이휠(SCA·FDP·FDE 순환 도식 + 약자 풀네임 각주) ② SCA 설명 + Micron ↔ Anthropic 선례 박스(다년 공급·공동 최적화·운영 통합·자본 연계, 16건·$100B·$22B, "실물 견본" 뉘앙스) ③ FDP·FDE: 기존 SSD 기술 대비 추가 기술(기존/추가 비교 박스) + 채용·양성·운영 3행. 헤더 제목 em-dash를 콜론으로 교체(FDP 슬라이드 4장 공통). 통합본·-fdp·-fdp-eco 재생성·미러, version v2.46.8(패치). 기존 상·중·하 및 FDP ①~③ 장은 틸·그린 유지(재도색은 별도 지시 대기).
