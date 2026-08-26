@@ -109,6 +109,12 @@ sources: [sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sou
 | | **신흥이 파고든다** (보조금 공급) | [DT-D 저가 잠식](scenario-DT-D.md) | CXMT·YMTC — 손실로 퇴출되지 않는 공급자가 하단 가격대를 영구히 끌어내린다 |
 | **전환발** (판이 바뀐다) | **제품 정의가 바뀐다** (기술 대체) | [DT-E 판 갈이](scenario-DT-E.md) | 3D DRAM·zHBM·CXL 채택으로 수요가 다른 제품군으로 이동 |
 
+### 5.1b 슬라이드 v5 데이터 기반 (2026-08-25, 4차 피드백)
+
+- **수요 막대 기준을 실측으로 교체**: 2025 글로벌 메모리 매출 실측 구성 — DRAM $1,657억(그중 HBM $340억) + NAND $697억 = $2,354억 ([memory-market-overview.md](../concepts/memory-market-overview.md), [hbm-market.md](../concepts/hbm-market.md), TrendForce·Yole) → 지수 100 = HBM 14 · 기타 DRAM 56 · NAND·SSD 30. 시나리오 막대는 이 실측 기준에 §5.3 방향 가정을 적용한 값(수요발 73·91, 전환발 99 = 91 + 차세대 이동분 8). 서버/범용 DRAM 분리 실측치는 공개 소스에 없어 DRAM은 단일 세그먼트.
+- **공급 두 케이스는 수요 막대 대신 공급 전망 차트**: CAPEX 몰림 — 3사 CAPEX 합산 2024 $54B → 2025 $64B → 2026E $95B ([memory-capex-history.md](../concepts/memory-capex-history.md) 각사 IR, 삼성 33.9+SK 11.7+Micron 8.1 / 30.3+20.1+13.8 / 42.9+32.1+20.0), 투자→캐파 리드타임 2~3년으로 2028~29 공급 도래. 후발 잠식 — CXMT 캐파 점유 11%→15%E(2028)·매출 점유 8%(2025 Q3)→14%E(2027E) ([apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md), [cxmt.md](../entities/cxmt.md)).
+- **발표자 노트**: 슬라이드 맥락(SP-2 위치·원인 중심 이유·확률 미표기 이유), 다섯 갈래 상세 해설, 막대·차트 읽는 법과 계산 근거, 문제 정의 배경을 노트로 수록 — 슬라이드 단독으로 부족한 맥락은 노트가 보완.
+
 ### 5.2 가상 헤드라인 — 도착한 날의 한 문장
 
 각 시나리오가 실제 발생했을 때 신문 1면을 상상한 **가상의 예시 문장**이다 (실제 보도 아님, 수치 미포함).
