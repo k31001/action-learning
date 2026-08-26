@@ -125,7 +125,7 @@ SCEN = [
     dict(cause='CAPEX가 몰리는 경우', group=1, chart='capex',
          head='「신규 팹 동시 가동에 공급\n과잉… 치킨게임 재점화 우려」',
          mk=('공급', 'Micron 아이다호 · SK하이닉스 용인 · 국내 신규 팹, 2028~29 동시 가동(착공 확정)'),
-         note='2026E 투자가 2028~29 캐파로',
+         note='27E·28E = 과잉 유지 가정',
          prob='범용·NAND 감산 결단의\n30일 규율: 2023년 6개월\n지연의 재발 차단'),
     dict(cause='후발이 파고드는 경우', group=1, chart='cxmt',
          head='「중국산 메모리 범용 시장\n잠식… 가격 하단이 사라졌다」',
@@ -140,7 +140,10 @@ SCEN = [
 ]
 
 # 공급 차트 데이터 (위키 기인용)
-CAPEX3 = [('2024', 54), ('2025', 64), ('2026E', 95)]   # 3사 합산 $B (각사 IR)
+# DRAM 3사(삼성·SK·Micron) + NAND 6사(산업: 삼성·키옥시아·SK/솔리다임·Micron·샌디스크·YMTC)
+# 부문별 CAPEX $B (TrendForce·각사 IR, memory-capex-history.md). 2027E·28E는 과잉 유지 가정(시나리오).
+CAPEX3 = [('2025', 46.5, 21.1, False), ('26E', 54.0, 22.2, False),
+          ('27E', 54.0, 22.2, True), ('28E', 54.0, 22.2, True)]
 CXMT   = [('캐파', 11, 15), ('매출', 8, 14)]            # 점유율 % (현재, 전망E)
 
 GROUPS = [
@@ -225,7 +228,7 @@ txt(slide, MX, BAR_LY + 1.30, RAIL_W - 0.14, 0.34,
     align=PP_ALIGN.RIGHT, leading=1.15)
 
 # 컬럼별 차트 소제목
-CHART_TITLE = {'demand': '제품 수요 (2025=100)', 'capex': '3사 CAPEX 합산 ($B)', 'cxmt': 'CXMT 점유율 (%)'}
+CHART_TITLE = {'demand': '제품 수요 (2025=100)', 'capex': '메모리 CAPEX ($B)', 'cxmt': 'CXMT 점유율 (%)'}
 for i, sc in enumerate(SCEN):
     txt(slide, col_x[i], BAR_LY, col_w, 0.16,
         [[(CHART_TITLE[sc['chart']], {'bold': True, 'color': G_MID, 'size': 10})]],
@@ -242,9 +245,9 @@ for i, sc in enumerate(SCEN):
         bw, bgap = 0.40, 0.14
         pair_x = x + (col_w - (2 * bw + bgap)) / 2
         yy = BASE_Y
-        for v, c in zip(BASE_MIX, P_LITE):
+        for v, c in zip(BASE_MIX, P_FULL):
             h = v * DSCALE
-            box(slide, pair_x, yy - h, bw, h, fill=c)
+            box(slide, pair_x, yy - h, bw, h, fill=c, line=WHITE, line_w=0.75)
             yy -= h
         txt(slide, pair_x - 0.1, BASE_Y - 100 * DSCALE - 0.21, bw + 0.2, 0.16,
             [[('100', {'bold': True, 'color': G_MID, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
@@ -253,7 +256,7 @@ for i, sc in enumerate(SCEN):
         tot = sum(sc['mix'])
         for v, c in zip(sc['mix'], P_FULL):
             h = v * DSCALE
-            box(slide, sx, yy - h, bw, h, fill=c)
+            box(slide, sx, yy - h, bw, h, fill=c, line=WHITE, line_w=0.75)
             yy -= h
         if sc['newseg']:
             h = sc['newseg'] * DSCALE
@@ -268,17 +271,29 @@ for i, sc in enumerate(SCEN):
             [[('시나리오', {'color': G_MID, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
 
     elif sc['chart'] == 'capex':
-        # 3사 CAPEX 합산: 2024 $54B -> 2025 $64B -> 2026E $95B (각사 IR)
-        bw, bgap = 0.36, 0.22
-        total_w = 3 * bw + 2 * bgap
+        # DRAM 3사 + NAND 6사 부문별 CAPEX 누적 (2027E·28E = 과잉 유지 가정)
+        # 미니 범례
+        txt(slide, x, BAR_LY + 0.175, col_w, 0.14, [[
+            ('■ ', {'color': S_FUT, 'size': 10}), ('DRAM 3사  ', {'color': GRAY, 'size': 10}),
+            ('■ ', {'color': S_CUR, 'size': 10}), ('NAND 6사', {'color': GRAY, 'size': 10})]],
+            align=PP_ALIGN.CENTER, leading=1.0)
+        bw, bgap = 0.30, 0.135
+        total_w = 4 * bw + 3 * bgap
         bx0 = x + (col_w - total_w) / 2
-        CSCALE = 1.30 / 95
-        for bi, (label, v) in enumerate(CAPEX3):
+        CSCALE = 1.12 / 77
+        for bi, (label, dram, nand, assumed) in enumerate(CAPEX3):
             bx = bx0 + bi * (bw + bgap)
-            h = v * CSCALE
-            box(slide, bx, BASE_Y - h, bw, h, fill=(S_FUT if 'E' in label else S_CUR))
-            txt(slide, bx - 0.1, BASE_Y - h - 0.21, bw + 0.2, 0.16,
-                [[(str(v), {'bold': True, 'color': (INK if 'E' in label else G_MID), 'size': 10})]],
+            hd, hn = dram * CSCALE, nand * CSCALE
+            if assumed:
+                box(slide, bx, BASE_Y - hd, bw, hd, fill=RGBColor(0xA9, 0xA9, 0xAE), line=WHITE, line_w=0.75)
+                box(slide, bx, BASE_Y - hd - hn, bw, hn, fill=RGBColor(0xE2, 0xE2, 0xE5), line=G_MID, line_w=0.7, dash=2)
+            else:
+                box(slide, bx, BASE_Y - hd, bw, hd, fill=S_FUT, line=WHITE, line_w=0.75)
+                box(slide, bx, BASE_Y - hd - hn, bw, hn, fill=S_CUR, line=WHITE, line_w=0.75)
+            tot = round(dram + nand)
+            txt(slide, bx - 0.12, BASE_Y - hd - hn - 0.20, bw + 0.24, 0.16,
+                [[(f'{tot}ᵉ' if assumed else str(tot),
+                   {'bold': True, 'color': (G_MID if assumed else INK), 'size': 10})]],
                 align=PP_ALIGN.CENTER, leading=1.0)
             txt(slide, bx - 0.12, BASE_Y + 0.05, bw + 0.24, 0.14,
                 [[(label, {'color': G_MID, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
@@ -327,7 +342,7 @@ txt(slide, MX + 0.16, BY + 0.075, MW - 0.32, 0.2, [[
 
 txt(slide, MX, BY + 0.46, MW - 1.65, 0.34, [[
     ('수요 막대 기준: 2025 글로벌 메모리 매출 실측 구성(DRAM $1,657억 중 HBM $340억 · NAND $697억, TrendForce·Yole)=100, 시나리오 막대는 방향 가정 적용 · '
-     '공급 차트: 3사 CAPEX 합산(각사 IR)·CXMT 점유(TrendForce·FT) · 헤드라인은 가상 예시 · 대응 전략은 별도 장 · 기준일 2026-08',
+     '공급 차트: DRAM 3사·NAND 6사 부문별 CAPEX(TrendForce·각사 IR, 27Eᵉ·28Eᵉ는 과잉 유지 가정)·CXMT 점유(TrendForce·FT) · 헤드라인은 가상 예시 · 대응 전략은 별도 장 · 기준일 2026-08',
      {'color': GRAY, 'size': 9})]], leading=1.25)
 txt(slide, MX + MW - 1.5, BY + 0.46, 1.5, 0.18, [[('[문서등급 표기]', {'color': GRAY, 'size': 9})]],
     align=PP_ALIGN.RIGHT, leading=1.0)
@@ -340,13 +355,13 @@ NOTES = """[슬라이드 위치] SP-2 다운턴 시나리오 플래닝 트랙의
 [다섯 갈래 해설]
 1. 투자 자금이 끊기는 경우(수요발·조달): 최종 수요가 아니라 돈이 먼저 끊기는 경로. 이미 전조가 실측됐다. Meta의 분기 FCF가 -91%(약 $7.8억까지 축소), Amazon은 TTM FCF가 적자로 전환했는데 4사 합산 CapEx는 ~$750B(+82% YoY)로 계속 늘고 있다. 지출과 현금창출의 방향이 갈라진 상태는 지속 기간에 한계가 있고, 신용 이벤트(네오클라우드·DC SPV 디폴트) 하나로 발주 동결이 시작될 수 있다. 이때 가장 먼저 비는 곳은 가장 많이 투자한 고부가(HBM·서버) 캐파다.
 2. 필요량이 줄어드는 경우(수요발·원단위): AI는 성장하는데 작업당 메모리 소요가 꺾이는 경로. NVIDIA Dynamo 계열 KV 캐시 오프로드는 같은 H100으로 동시 사용자를 10배로 늘렸다. 같은 하드웨어로 10배를 처리한다는 것은 10배를 사지 않아도 된다는 뜻이기도 하다. CXL 풀링·모델 경량화도 같은 방향. 가격 폭락 없이 성장률만 꺾여서 위기감이 생기지 않는 것이 최대 위험이며, NAND·SSD는 오프로드 수혜로 오히려 수요가 는다(막대에서 유일하게 커지는 세그먼트).
-3. CAPEX가 몰리는 경우(공급발·기존 3사): 수요는 멀쩡한데 호황기에 결정된 투자가 한꺼번에 캐파로 도착하는 경로. 차트의 3사 CAPEX 합산이 2024 $54B, 2025 $64B, 2026E $95B로 가파르게 서 있고, 투자가 캐파로 바뀌는 리드타임 2~3년을 감안하면 2028~29에 Micron 아이다호, SK하이닉스 용인 1기, 국내 신규 팹이 동시에 가동된다(모두 착공이 끝난 확정 사실). 여기에 3강 절제가 무너지면(점유율 목표 선언, 조기 램프업) 급락으로 전환된다. 다섯 갈래 중 감산이 직접 효과를 내는 유일한 경우다.
+3. CAPEX가 몰리는 경우(공급발·기존 진영): 수요는 멀쩡한데 호황기에 결정된 투자가 한꺼번에 캐파로 도착하는 경로. 차트는 부문별 CAPEX로, DRAM 3사(삼성·SK하이닉스·Micron)가 2025 $46.5B에서 2026E $54.0B, NAND 6사(삼성·키옥시아·SK/솔리다임·Micron·샌디스크·YMTC 산업 합계)가 $21.1B에서 $22.2B로 올라선다(TrendForce·각사 IR). 2027E·28E 막대는 공표된 전망치가 아니라 이 시나리오의 정의인 '과잉 유지 가정'(2026E 수준 지속)을 표시한 것으로 옅은 색·점선으로 구분했다. 투자가 캐파로 바뀌는 리드타임 2~3년을 감안하면 2028~29에 Micron 아이다호, SK하이닉스 용인 1기, 국내 신규 팹이 동시에 가동된다(모두 착공이 끝난 확정 사실). 여기에 3강 절제가 무너지면(점유율 목표 선언, 조기 램프업) 급락으로 전환된다. 다섯 갈래 중 감산이 직접 효과를 내는 유일한 경우다.
 4. 후발이 파고드는 경우(공급발·신흥): 보조금 기반 후발이 하단 가격대를 영구히 끌어내리는 경로. CXMT는 글로벌 DRAM 캐파 점유 11%에서 2028년 15%로, 매출 점유는 8%(2025 Q3)에서 14%(2027E)로 오르는 전망이고 HBM3도 월 6만 장 양산에 들어간다. NAND에서는 YMTC가 Xtacking 하이브리드 본딩으로 같은 일을 한다. 손실이 나도 퇴출되지 않는 공급자라서 치킨게임(소모전)의 승리 조건 자체가 없고, 다른 갈래와 달리 회복이 없다. 지금도 진행 중인 유일한 갈래다.
 5. 제품 정의가 바뀌는 경우(전환발): 수요가 사라지는 게 아니라 다른 제품군으로 이동하는 경로. 3D DRAM(4F² VCT 셀), zHBM(커스텀 적층), CXL 채택이 시작되면 표준 HBM 주문이 옮겨간다. 막대 꼭대기의 점선 세그먼트가 그 이동분이다. 감산도 계약 방어도 무의미하고, 미리 그 자리에 가 있는 것(별동대)만 유효하다.
 
 [수요 막대 읽는 법] 왼쪽 옅은 막대는 2025 글로벌 메모리 매출의 실측 구성을 100으로 지수화한 것이다. DRAM $1,657억(그중 HBM $340억) + NAND $697억 = $2,354억(TrendForce·Yole) 이므로 HBM 14, HBM 제외 DRAM 56, NAND·SSD 30. 오른쪽 진한 막대는 각 시나리오의 방향 가정(wiki/downturn/samsung-impact.md §5.3)을 이 실측 구성에 적용한 시나리오 값이다. 기준은 실측, 변화 폭은 시나리오 가정이라는 점을 구분해서 설명할 것. 서버/범용 DRAM 분리 실측치는 공개 소스에 없어 DRAM은 한 세그먼트로 묶었다.
 
-[공급 차트 읽는 법] CAPEX가 몰리는 경우는 수요 막대가 무의미하다(수요는 그대로). 대신 공급의 선행 지표인 3사 CAPEX 합산을 보여준다. 후발의 경우도 마찬가지로 CXMT의 캐파·매출 점유 전망을 보여준다. 두 차트 모두 "수요가 아니라 공급 쪽 곡선이 커진다"는 것이 메시지다.
+[공급 차트 읽는 법] CAPEX가 몰리는 경우는 수요 막대가 무의미하다(수요는 그대로). 대신 공급의 선행 지표인 부문별 CAPEX(DRAM 3사 + NAND 6사 누적)를 보여준다. 2025~26E는 실측·계획, 2027E·28E는 시나리오 가정이라는 구분을 반드시 언급할 것. 후발의 경우도 마찬가지로 CXMT의 캐파·매출 점유 전망을 보여준다. 두 차트 모두 "수요가 아니라 공급 쪽 곡선이 커진다"는 것이 메시지다.
 
 [풀어야 할 문제] 전략 자체가 아니라 전략이 풀어야 할 문제를 정의한 것이다(전략은 다음 장). 1번: HBM4 캐파는 +50% 증설이 잡혀 있는데 조달이 끊기면 팔 곳이 없다. DRAM-CIS 설비 공용률 80%인 전환 옵션과 take-or-pay·NTB 계약 방어선 중 무엇을 어디까지 쓸 것인가. 2번: GPU당 HBM 탑재량 같은 원단위 지표가 현재 추적 체계에 없다(감별 지표 DX-8 미구축). enterprise SSD 1위(점유 38.2%)를 활용한 믹스 이동이 유일한 상방. 3번: 2022-10 무감산 선언에서 2023-04 감산 공식화까지 6개월이 걸렸고 그 사이 DS 적자 -4.58조가 쌓였다. 같은 지연을 막을 30일 결정 규율이 문제. 4번: DDR4·LPDDR4 하단은 CXMT 침투로 돌아오지 않는다. 철수 시점과 라인 전환처(CIS·차량용), 그리고 HBM 인증 장벽 유지가 문제. 5번: 2019년 HBM팀 해체가 점유 40%에서 17%로의 추락으로 이어진 전례가 있다. 전환기에 별동대와 R&D 하한을 배분 논리에서 지켜내는 것이 문제.
 
