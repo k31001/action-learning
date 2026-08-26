@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-SP-2 다운턴 시나리오 -- 원인·파급·문제 정의 1장 슬라이드.
+SP-2 다운턴 -- 원인·파급·문제 정의 1장 슬라이드 (v4).
 
-단일 소스: wiki/downturn/samsung-impact.md §5 (원인 계통과 제품 파급)
+단일 소스: wiki/downturn/samsung-impact.md §5
 출력:     outputs/presentation/downturn-scenario-impact.pptx
 재생성:   .venv/bin/python outputs/presentation/scripts/generate_downturn_impact_slide.py
 
-v3 (2026-08-25): 원인 중심 재구성 -- S/W 진단·속도 축·노출 히트맵 제거.
-  원인 계통(수요발 2·공급발 2·전환발 1) + 가상 헤드라인 + 제품별 수요/공급
-  화살표 그리드 + 풀어야 할 문제. 색감은 그레이스케일 + 블루 최소 포인트.
+v4 (2026-08-25): 시나리오 코드 제거·"~는 경우" 표현, 수요는 누적 막대
+  (현재=100 지수 개념도), 공급 두 케이스는 기업·기술·수치 팩트로 구체화,
+  제품별 문제 정의 구체화, 블루 램프로 색 보강.
+  모든 수치는 wiki 기인용 사실만 사용(막대 배분은 개념도임을 각주 명기).
 """
 from pptx import Presentation
 from pptx.util import Inches, Pt, Emu
@@ -18,15 +19,23 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.oxml.ns import qn
 
-# ── 토큰 (모노톤 + 블루 최소) ────────────────────────────────────────────────
+# ── 토큰 ────────────────────────────────────────────────────────────────────
 BLUE   = RGBColor(0x14, 0x28, 0xA0)
 INK    = RGBColor(0x1A, 0x1A, 0x1A)
 GRAY   = RGBColor(0x55, 0x55, 0x55)
 G_MID  = RGBColor(0x8A, 0x8A, 0x8E)
 G_LINE = RGBColor(0xD9, 0xD9, 0xD9)
 G_BG   = RGBColor(0xF6, 0xF6, 0xF7)
-G_SH   = RGBColor(0xEC, 0xEC, 0xEE)   # 움직이는 열 음영
 WHITE  = RGBColor(0xFF, 0xFF, 0xFF)
+# 그룹 밴드 옅은 틴트
+T_DEM  = RGBColor(0xE9, 0xED, 0xF8)   # 수요발
+T_SUP  = RGBColor(0xF3, 0xF0, 0xE9)   # 공급발
+T_SHF  = RGBColor(0xEF, 0xEC, 0xF4)   # 전환발
+# 제품 컬러 램프 (블루 계열) + 옅은 버전(현재 막대)
+P_FULL = [RGBColor(0x14, 0x28, 0xA0), RGBColor(0x4E, 0x68, 0xC8),
+          RGBColor(0x93, 0xA2, 0xDC), RGBColor(0xC9, 0xD1, 0xEE)]
+P_LITE = [RGBColor(0xC4, 0xCA, 0xE7), RGBColor(0xD5, 0xDB, 0xF0),
+          RGBColor(0xE3, 0xE7, 0xF6), RGBColor(0xEF, 0xF1, 0xFA)]
 
 FONT = 'SamsungOneKorean'
 
@@ -65,7 +74,8 @@ def txt(slide, x, y, w, h, parts, *, size=10, align=PP_ALIGN.LEFT,
             _font(r, kw.get('size', size), kw.get('bold', False), kw.get('color', INK))
     return tb
 
-def box(slide, x, y, w, h, *, fill=None, line=None, line_w=0.75, rnd=False, radius=0.055):
+def box(slide, x, y, w, h, *, fill=None, line=None, line_w=0.75, rnd=False,
+        radius=0.055, dash=None):
     shp = MSO_SHAPE.ROUNDED_RECTANGLE if rnd else MSO_SHAPE.RECTANGLE
     s = slide.shapes.add_shape(shp, Inches(x), Inches(y), Inches(w), Inches(h))
     if rnd:
@@ -76,6 +86,8 @@ def box(slide, x, y, w, h, *, fill=None, line=None, line_w=0.75, rnd=False, radi
     if line:
         s.line.color.rgb = line
         s.line.width = Pt(line_w)
+        if dash:
+            s.line.dash_style = dash
     else:
         s.line.fill.background()
     s.shadow.inherit = False
@@ -93,50 +105,47 @@ def vline(slide, x, y, h, color=G_LINE, weight=0.5):
     ln.line.width = Pt(weight)
     ln.shadow.inherit = False
 
-# ── 콘텐츠 (wiki/downturn/samsung-impact.md §5) ─────────────────────────────
+# ── 콘텐츠 (wiki §5 — 수치·기업·기술은 전부 위키 기인용 사실) ──────────────
 PRODUCTS = ['HBM', '서버 DRAM', '범용·레거시', 'NAND·SSD']
-
-# 화살표 스타일: (기호, 굵기, 색)
-AR = {
-    '↓↓': ('▼▼', True,  INK),
-    '↓':  ('▼',  False, GRAY),
-    '─':  ('─',  False, G_LINE),
-    '↑':  ('▲',  False, GRAY),
-    '↑↑': ('▲▲', True,  INK),
-}
+BASE_MIX = [30, 25, 25, 20]   # 현재=100 개념 배분 (지수 개념도, 각주 명기)
 
 SCEN = [
-    dict(code='DT-A 급제동', cause='투자 자금이 끊긴다', tag='조달 경색',
-         side='d',
+    dict(cause='투자 자금이 끊기는 경우', group=0,
          head='「AI 인프라 자금줄 경색,\n데이터센터 발주 일제히 보류」',
-         dem=['↓↓', '↓↓', '─', '↓'], sup=['─', '─', '─', '─'],
-         prob='팔 곳이 사라진 고부가 캐파,\n어디로 돌릴 것인가'),
-    dict(code='DT-B 긴 하산', cause='필요량이 줄어든다', tag='원단위 감소',
-         side='d',
+         mk=('전조', 'Meta FCF -91% · Amazon FCF 적자 전환, 4사 CapEx ~$750B의 조달 의존'),
+         mix=[15, 13, 24, 16], newseg=0,
+         note=None,
+         prob='팔 곳 잃은 HBM4·서버 캐파:\nCIS 전환(공용 80%)인가,\ntake-or-pay 방어인가'),
+    dict(cause='필요량이 줄어드는 경우', group=0,
          head='「AI는 호황인데 메모리는\n제자리… 효율화의 역설」',
-         dem=['↓', '↓', '↓', '↑'], sup=['─', '─', '─', '─'],
-         prob='경보 없는 하강,\n무엇으로 감지할 것인가'),
-    dict(code='DT-C 동시 방류', cause='기존 3사가 쏟아낸다', tag='증설 동시 도래',
-         side='s',
+         mk=('동인', 'KV 캐시 오프로드(H100 동시 사용자 10배) · CXL 풀링 · 모델 경량화'),
+         mix=[24, 20, 20, 24], newseg=0,
+         note=None,
+         prob='GPU당 HBM 탑재량을 읽을\n지표가 없다: 추적 체계와\neSSD(1위 38.2%) 믹스 이동'),
+    dict(cause='CAPEX가 몰리는 경우', group=1,
          head='「신규 팹 동시 가동에 공급\n과잉… 치킨게임 재점화 우려」',
-         dem=['─', '─', '─', '─'], sup=['↑', '↑', '↑↑', '↑↑'],
-         prob='공급 조절 결단,\n얼마나 빨리 내릴 것인가'),
-    dict(code='DT-D 저가 잠식', cause='신흥이 파고든다', tag='보조금 공급',
-         side='s',
+         mk=('공급', 'Micron 아이다호 · SK하이닉스 용인 · 국내 신규 팹, 2028~29 동시 가동(착공 확정)'),
+         mix=BASE_MIX, newseg=0,
+         note='수요 유지 · 공급이 초과',
+         prob='범용·NAND 감산 결단의\n30일 규율: 2023년 6개월\n지연의 재발 차단'),
+    dict(cause='후발이 파고드는 경우', group=1,
          head='「중국산 메모리 범용 시장\n잠식… 가격 하단이 사라졌다」',
-         dem=['─', '─', '─', '─'], sup=['─', '↑', '↑↑', '↑↑'],
-         prob='돌아오지 않는 하단,\n무엇으로 대체할 것인가'),
-    dict(code='DT-E 판 갈이', cause='제품 정의가 바뀐다', tag='기술 대체',
-         side='d',
+         mk=('공급', 'CXMT 캐파 점유 11%→15%E(2028) · HBM3 월 6만장, YMTC Xtacking 본딩'),
+         mix=BASE_MIX, newseg=0,
+         note='수요 유지 · 하단 가격 붕괴',
+         prob='DDR4·LPDDR4 하단 철수\n시점과 전환처(CIS·차량),\nHBM 인증 장벽 사수'),
+    dict(cause='제품 정의가 바뀌는 경우', group=2,
          head='「HBM 시대 저무나…\n주문은 차세대 메모리로」',
-         dem=['↓↓', '↓', '─', '↑'], sup=['─', '─', '─', '─'],
-         prob='다음 판의 자리,\n지금 어떻게 확보할 것인가'),
+         mk=('동인', '3D DRAM(4F² VCT) · zHBM · CXL 채택 개시로 표준 HBM 주문 이동'),
+         mix=[12, 20, 25, 26], newseg=15,
+         note='수요가 차세대로 이동',
+         prob='표준 HBM에서 zHBM·4F²\n3D DRAM으로의 전환기,\n별동대·R&D 하한 사수'),
 ]
 
-GROUPS = [  # (시작 컬럼, 컬럼 수, 라벨)
-    (0, 2, [('수요발', True), (' · 수요가 꺼진다', False)]),
-    (2, 2, [('공급발', True), (' · 공급이 넘친다', False)]),
-    (4, 1, [('전환발', True), (' · 판이 바뀐다', False)]),
+GROUPS = [
+    (0, 2, T_DEM, [('수요발', True), (' · 수요가 꺼진다', False)]),
+    (2, 2, T_SUP, [('공급발', True), (' · 공급이 넘친다', False)]),
+    (4, 1, T_SHF, [('전환발', True), (' · 판이 바뀐다', False)]),
 ]
 
 # ── 슬라이드 ────────────────────────────────────────────────────────────────
@@ -146,121 +155,145 @@ slide = prs.slides.add_slide(prs.slide_layouts[6])
 
 MX, MW = 0.47, 12.393
 
-# 타이틀
-txt(slide, MX, 0.28, MW, 0.38, [[
+txt(slide, MX, 0.26, MW, 0.38, [[
     ('다운턴의 다섯 갈래:  ', {'bold': True, 'color': BLUE, 'size': 20}),
     ('꺼지는 수요가 둘, 넘치는 공급이 둘, 바뀌는 판이 하나다', {'bold': True, 'size': 20}),
 ]])
-hline(slide, MX, 0.76, MW, BLUE, 1.4)
+hline(slide, MX, 0.72, MW, BLUE, 1.4)
 
-# 그리드 좌표
 RAIL_W = 1.10
 col_g = 0.12
 col_w = (MW - RAIL_W - 4 * col_g) / 5
 col_x = [MX + RAIL_W + i * (col_w + col_g) for i in range(5)]
 
-# 원인 대분류 밴드
-GB_Y, GB_H = 0.94, 0.34
-for st, n, label in GROUPS:
+# 원인 대분류 밴드 (옅은 틴트)
+GB_Y, GB_H = 0.86, 0.32
+for st, n, tint, label in GROUPS:
     gx = col_x[st]
     gw = n * col_w + (n - 1) * col_g
-    box(slide, gx, GB_Y, gw, GB_H, fill=G_BG, line=G_LINE, line_w=0.5, rnd=True, radius=0.12)
-    txt(slide, gx, GB_Y + 0.075, gw, 0.2, [[
-        (t, {'bold': b, 'size': 11}) for t, b in label
-    ]], align=PP_ALIGN.CENTER, leading=1.0)
+    box(slide, gx, GB_Y, gw, GB_H, fill=tint, rnd=True, radius=0.13)
+    txt(slide, gx, GB_Y + 0.065, gw, 0.2, [[(t, {'bold': b, 'size': 11}) for t, b in label]],
+        align=PP_ALIGN.CENTER, leading=1.0)
 
-# 컬럼: 하위 원인(주인공) + 시나리오 태그
-CH_Y = 1.44
+# 하위 원인 헤더 ("~는 경우")
+CH_Y = 1.30
 for i, sc in enumerate(SCEN):
-    x = col_x[i]
-    txt(slide, x, CH_Y, col_w, 0.22, [[(sc['cause'], {'bold': True, 'size': 12.5})]], leading=1.0)
-    txt(slide, x, CH_Y + 0.27, col_w, 0.16, [[
-        (sc['tag'] + ' · ', {'color': G_MID, 'size': 10}),
-        (sc['code'], {'color': GRAY, 'size': 10})]], leading=1.0)
+    txt(slide, col_x[i], CH_Y, col_w, 0.22, [[(sc['cause'], {'bold': True, 'size': 12.5})]], leading=1.0)
 
 # 컬럼 세로 구분선
-SEP_TOP, SEP_BOT = 1.42, 6.28
 for i in range(1, 5):
-    vline(slide, col_x[i] - col_g / 2, SEP_TOP, SEP_BOT - SEP_TOP)
+    vline(slide, col_x[i] - col_g / 2, 1.28, 4.94)
 
 # 가상 헤드라인
-HL_Y, HL_H = 2.02, 0.82
-txt(slide, MX, HL_Y + 0.10, RAIL_W - 0.14, 0.5,
+HL_Y, HL_H = 1.62, 0.64
+txt(slide, MX, HL_Y + 0.04, RAIL_W - 0.14, 0.5,
     [[('그날의', {'bold': True, 'color': G_MID, 'size': 10})],
      [('헤드라인', {'bold': True, 'color': G_MID, 'size': 10})],
      [('(가상)', {'color': G_MID, 'size': 10})]],
-    align=PP_ALIGN.RIGHT, leading=1.15)
+    align=PP_ALIGN.RIGHT, leading=1.12)
 for i, sc in enumerate(SCEN):
     x = col_x[i]
-    box(slide, x, HL_Y, col_w, HL_H, fill=WHITE, line=G_LINE, line_w=0.75, rnd=False)
-    box(slide, x, HL_Y, col_w, 0.035, fill=INK)   # 신문 컷 느낌의 상단 굵은 잉크 라인
-    txt(slide, x + 0.10, HL_Y + 0.14, col_w - 0.20, 0.6,
-        [[(ln, {'bold': True, 'size': 10.5})] for ln in sc['head'].split('\n')],
-        leading=1.22)
+    box(slide, x, HL_Y, col_w, HL_H, fill=WHITE, line=G_LINE, line_w=0.75)
+    box(slide, x, HL_Y, col_w, 0.032, fill=INK)
+    txt(slide, x + 0.10, HL_Y + 0.09, col_w - 0.20, 0.5,
+        [[(ln, {'bold': True, 'size': 10.5})] for ln in sc['head'].split('\n')], leading=1.18)
 
-# 제품 파급 그리드 (수요/공급 화살표)
-GR_LY = 3.06
-txt(slide, MX, GR_LY, RAIL_W - 0.14, 0.16, [[('제품 파급', {'bold': True, 'color': G_MID, 'size': 10})]],
-    align=PP_ALIGN.RIGHT, leading=1.0)
-txt(slide, MX + MW - 4.2, GR_LY, 4.2, 0.16,
-    [[('▼▼ 급감 · ▼ 감소 · ─ 유지 · ▲ 증가 · ▲▲ 급증', {'color': G_MID, 'size': 10})]],
-    align=PP_ALIGN.RIGHT, leading=1.0)
+# 무엇이 움직이나 (기업·기술·수치 팩트)
+MK_Y = 2.40
+txt(slide, MX, MK_Y + 0.02, RAIL_W - 0.14, 0.4,
+    [[('무엇이', {'bold': True, 'color': G_MID, 'size': 10})],
+     [('움직이나', {'bold': True, 'color': G_MID, 'size': 10})]],
+    align=PP_ALIGN.RIGHT, leading=1.12)
+for i, sc in enumerate(SCEN):
+    pre, body = sc['mk']
+    txt(slide, col_x[i], MK_Y, col_w, 0.62, [[
+        (pre + '  ', {'bold': True, 'color': BLUE, 'size': 10}),
+        (body, {'size': 10, 'color': INK})]], leading=1.16)
 
-ROW_Y, row_h, row_g = 3.55, 0.335, 0.05
-GRID_END = ROW_Y + 4 * row_h + 3 * row_g
-sub_w = col_w / 2
-# 움직이는 쪽 열 음영 + 수요/공급 서브헤더
+# ── 제품 수요 누적 막대 (현재=100 지수 개념도) ──────────────────────────────
+BAR_LY = 3.14
+txt(slide, MX, BAR_LY, RAIL_W - 0.14, 0.34,
+    [[('제품 수요', {'bold': True, 'color': G_MID, 'size': 10})],
+     [('(지수 개념도)', {'color': G_MID, 'size': 10})]],
+    align=PP_ALIGN.RIGHT, leading=1.12)
+# 범례 (제품 4 + 이동분)
+lg_items = list(zip(PRODUCTS, P_FULL)) + [('차세대 이동분', None)]
+for li, (name, c) in enumerate(lg_items):
+    ly = BAR_LY + 0.50 + li * 0.225
+    if c is not None:
+        box(slide, MX + 0.08, ly + 0.015, 0.115, 0.115, fill=c)
+    else:
+        box(slide, MX + 0.08, ly + 0.015, 0.115, 0.115, fill=WHITE, line=G_MID, line_w=0.8, dash=2)
+    txt(slide, MX + 0.26, ly, RAIL_W - 0.28, 0.16, [[(name, {'color': GRAY, 'size': 10})]],
+        leading=1.0, wrap=False)
+
+BASE_Y = 4.72          # 막대 바닥
+SCALE = 0.0128         # 지수 1 → in
+bw, bgap = 0.40, 0.14
 for i, sc in enumerate(SCEN):
     x = col_x[i]
-    mx_ = x if sc['side'] == 'd' else x + sub_w
-    box(slide, mx_, ROW_Y - 0.06, sub_w, GRID_END - ROW_Y + 0.12, fill=G_SH, rnd=True, radius=0.06)
-    txt(slide, x, GR_LY + 0.26, sub_w, 0.16,
-        [[('수요', {'bold': sc['side'] == 'd', 'color': INK if sc['side'] == 'd' else G_MID, 'size': 10})]],
-        align=PP_ALIGN.CENTER, leading=1.0)
-    txt(slide, x + sub_w, GR_LY + 0.26, sub_w, 0.16,
-        [[('공급', {'bold': sc['side'] == 's', 'color': INK if sc['side'] == 's' else G_MID, 'size': 10})]],
-        align=PP_ALIGN.CENTER, leading=1.0)
+    pair_x = x + (col_w - (2 * bw + bgap)) / 2
+    # 현재(옅은 톤) 막대
+    yy = BASE_Y
+    for v, c in zip(BASE_MIX, P_LITE):
+        h = v * SCALE
+        box(slide, pair_x, yy - h, bw, h, fill=c)
+        yy -= h
+    txt(slide, pair_x - 0.1, BASE_Y - 100 * SCALE - 0.22, bw + 0.2, 0.16,
+        [[('100', {'bold': True, 'color': G_MID, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
+    # 시나리오 막대 (본색)
+    sx = pair_x + bw + bgap
+    yy = BASE_Y
+    tot = sum(sc['mix'])
+    for v, c in zip(sc['mix'], P_FULL):
+        h = v * SCALE
+        if h > 0:
+            box(slide, sx, yy - h, bw, h, fill=c)
+        yy -= h
+    if sc['newseg']:
+        h = sc['newseg'] * SCALE
+        box(slide, sx, yy - h, bw, h, fill=WHITE, line=G_MID, line_w=0.9, dash=2)
+        yy -= h
+        tot += sc['newseg']
+    txt(slide, sx - 0.1, yy - 0.22, bw + 0.2, 0.16,
+        [[(str(tot), {'bold': True, 'color': BLUE, 'size': 10.5})]], align=PP_ALIGN.CENTER, leading=1.0)
+    # 바닥선 + 축 캡션
+    hline(slide, x + 0.10, BASE_Y, col_w - 0.20, G_LINE, 0.9)
+    txt(slide, pair_x - 0.08, BASE_Y + 0.05, bw + 0.16, 0.14,
+        [[('현재', {'color': G_MID, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
+    txt(slide, sx - 0.08, BASE_Y + 0.05, bw + 0.16, 0.14,
+        [[('시나리오', {'color': G_MID, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
+    if sc['note']:
+        txt(slide, x, BASE_Y + 0.235, col_w, 0.15, [[(sc['note'], {'bold': True, 'color': GRAY, 'size': 10})]],
+            align=PP_ALIGN.CENTER, leading=1.0)
 
-for r, prod in enumerate(PRODUCTS):
-    ry = ROW_Y + r * (row_h + row_g)
-    txt(slide, MX, ry + 0.075, RAIL_W - 0.14, 0.16,
-        [[(prod, {'color': GRAY, 'size': 10})]], align=PP_ALIGN.RIGHT, leading=1.0, wrap=False)
-    if r > 0:
-        hline(slide, col_x[0], ry - row_g / 2, MW - RAIL_W, G_LINE, 0.4)
-    for i, sc in enumerate(SCEN):
-        x = col_x[i]
-        for j, key in enumerate((sc['dem'][r], sc['sup'][r])):
-            sym, bold, color = AR[key]
-            txt(slide, x + j * sub_w, ry + 0.055, sub_w, 0.2,
-                [[(sym, {'bold': bold, 'color': color, 'size': 11})]],
-                align=PP_ALIGN.CENTER, leading=1.0)
-
-# 풀어야 할 문제 (전략의 문제 정의)
-PB_Y = GRID_END + 0.30
-txt(slide, MX, PB_Y + 0.06, RAIL_W - 0.14, 0.4,
+# 풀어야 할 문제
+PB_Y = 5.34
+txt(slide, MX, PB_Y + 0.05, RAIL_W - 0.14, 0.4,
     [[('풀어야 할', {'bold': True, 'color': G_MID, 'size': 10})],
      [('문제', {'bold': True, 'color': G_MID, 'size': 10})]],
-    align=PP_ALIGN.RIGHT, leading=1.15)
+    align=PP_ALIGN.RIGHT, leading=1.12)
 for i, sc in enumerate(SCEN):
     x = col_x[i]
-    box(slide, x, PB_Y + 0.02, 0.035, 0.50, fill=BLUE)
-    txt(slide, x + 0.13, PB_Y + 0.03, col_w - 0.13, 0.5,
-        [[(ln, {'bold': True, 'size': 11.5})] for ln in sc['prob'].split('\n')], leading=1.14)
+    box(slide, x, PB_Y + 0.02, 0.035, 0.52, fill=BLUE)
+    txt(slide, x + 0.12, PB_Y + 0.03, col_w - 0.12, 0.55,
+        [[(ln, {'bold': True, 'size': 10.5})] for ln in sc['prob'].split('\n')], leading=1.18)
 
-# 하단 종합 밴드
-BY = 6.48
+# 종합 밴드
+BY = 6.18
 box(slide, MX, BY, MW, 0.34, fill=G_BG, rnd=True, radius=0.10)
 txt(slide, MX + 0.16, BY + 0.075, MW - 0.32, 0.2, [[
     ('종합  ', {'bold': True, 'color': BLUE, 'size': 10.5}),
-    ('수요발에서는 수요 열만, 공급발에서는 공급 열만 움직인다.  ', {'size': 10.5}),
-    ('어느 열이 움직였는지 읽는 것이 대응의 첫 단추다.', {'bold': True, 'size': 10.5}),
+    ('수요발은 막대가 줄고, 공급발은 수요가 그대로인 채 공급이 넘친다.  ', {'size': 10.5}),
+    ('원인이 다르면 풀어야 할 문제도 다르다.', {'bold': True, 'size': 10.5}),
 ]], leading=1.0)
 
 # 각주
-txt(slide, MX, BY + 0.44, MW - 1.6, 0.18, [[
-    ('출처: wiki/downturn/samsung-impact.md §5 · 헤드라인은 가상 예시(실제 보도 아님) · 대응 전략은 별도 장 · 기준일 2026-08',
-     {'color': GRAY, 'size': 9})]], leading=1.0)
-txt(slide, MX + MW - 1.5, BY + 0.44, 1.5, 0.18, [[('[문서등급 표기]', {'color': GRAY, 'size': 9})]],
+txt(slide, MX, BY + 0.46, MW - 1.65, 0.34, [[
+    ('막대는 wiki/downturn/samsung-impact.md §5.3 방향 표의 지수화 개념도(현재 총수요=100, 배분·폭은 방향 표현용이며 실측 아님) · 헤드라인은 가상 예시 · '
+     '인용 수치: Meta FCF -91%·4사 CapEx ~$750B(hyperscaler-q2-2026-actuals) · CXMT 11%→15%E·HBM3 월 6만장(apple-cxmt·TrendForce) · eSSD 38.2%(1Q26) · '
+     'CIS 공용률 80%(fab-toolset) · 대응 전략은 별도 장 · 기준일 2026-08', {'color': GRAY, 'size': 9})]], leading=1.25)
+txt(slide, MX + MW - 1.5, BY + 0.46, 1.5, 0.18, [[('[문서등급 표기]', {'color': GRAY, 'size': 9})]],
     align=PP_ALIGN.RIGHT, leading=1.0)
 
 OUT = 'outputs/presentation/downturn-scenario-impact.pptx'

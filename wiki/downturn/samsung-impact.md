@@ -95,7 +95,7 @@ sources: [sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sou
 
 ## 5. 원인 계통과 제품 파급 — 영향 슬라이드 v3의 소스
 
-> 슬라이드 v3(2026-08-25 사용자 피드백 반영)는 §1~§4의 S/W 진단 대신 **원인**에 집중한다. 속도 축(급락/침식)은 슬라이드에서 제외한다 — 역사적으로 수요발은 단기전(DT19형), 공급발은 장기전(DT08·DT12형) 패턴이 확인되어 ([downturn-history.md](downturn-history.md)) 원인을 알면 기간의 대강이 따라오기 때문. §1~§4는 분석 층으로 그대로 유지된다.
+> 슬라이드 v4(2026-08-25, 3차 피드백): 하위 원인은 "~는 경우"로 표기하고 시나리오 코드(DT-x)·이름은 슬라이드에서 제외한다(위키 분석 층에서만 사용). 제품 수요는 **누적 막대 지수 개념도**(현재 총수요=100, 아래 §5.3 방향 표를 지수화한 것으로 배분·폭은 방향 표현용이며 실측 아님)로, 공급 두 케이스(CAPEX 몰림·후발 잠식)는 기업·기술·수치 팩트 라인으로 구체화한다. 슬라이드 v3 설명: 슬라이드 v3(2026-08-25 사용자 피드백 반영)는 §1~§4의 S/W 진단 대신 **원인**에 집중한다. 속도 축(급락/침식)은 슬라이드에서 제외한다 — 역사적으로 수요발은 단기전(DT19형), 공급발은 장기전(DT08·DT12형) 패턴이 확인되어 ([downturn-history.md](downturn-history.md)) 원인을 알면 기간의 대강이 따라오기 때문. §1~§4는 분석 층으로 그대로 유지된다.
 
 ### 5.1 원인 계통 — 다섯 갈래
 
@@ -136,13 +136,13 @@ sources: [sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sou
 
 ### 5.4 풀어야 할 문제 — 전략의 문제 정의 (전략 자체는 별도 장)
 
-| 시나리오 | 필요한 전략이 풀어야 할 문제 |
+| 시나리오 | 필요한 전략이 풀어야 할 문제 (v4: 제품·기술·데이터로 구체화) |
 |---|---|
-| DT-A | 팔 곳이 사라진 고부가 캐파, 어디로 돌릴 것인가 |
-| DT-B | 경보 없는 하강, 무엇으로 감지할 것인가 |
-| DT-C | 공급 조절 결단, 얼마나 빨리 내릴 것인가 |
-| DT-D | 돌아오지 않는 하단, 무엇으로 대체할 것인가 |
-| DT-E | 다음 판의 자리, 지금 어떻게 확보할 것인가 |
+| DT-A (끊기는 경우) | 팔 곳 잃은 HBM4 증설분(+50%)·서버 캐파: CIS 전환(공용률 80%, [fab-toolset-commonality-conversion-2026-08.md](../../sources/articles/fab-toolset-commonality-conversion-2026-08.md))으로 돌리나, take-or-pay·NTB로 버티나 |
+| DT-B (줄어드는 경우) | GPU당 HBM 탑재량을 읽을 지표가 없다: 원단위 추적 체계(DX-8) 확보와 eSSD(1위 38.2%, [enterprise-ssd-market-1q26-2026-08.md](../../sources/articles/enterprise-ssd-market-1q26-2026-08.md))로 믹스를 옮길 수 있는 폭 |
+| DT-C (CAPEX 몰리는 경우) | 범용 DRAM·NAND 감산 결단의 30일 규율: 2023년 6개월 지연([samsung-downturn-actions-2007-2023-2026-08-07.md](../../sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md))의 재발 차단 |
+| DT-D (후발이 파고드는 경우) | DDR4·LPDDR4 하단의 철수 시점과 전환처(CIS·차량), HBM 인증 장벽 사수 (CXMT 캐파 11%→15%E 2028, [apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)) |
+| DT-E (바뀌는 경우) | 표준 HBM에서 zHBM·4F² 3D DRAM으로의 전환기: 별동대와 R&D 하한 사수 |
 
 ---
 
