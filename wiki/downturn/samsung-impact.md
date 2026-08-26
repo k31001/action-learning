@@ -112,7 +112,7 @@ sources: [sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sou
 ### 5.1b 슬라이드 v5 데이터 기반 (2026-08-25, 4차 피드백)
 
 - **수요 막대 기준을 실측으로 교체**: 2025 글로벌 메모리 매출 실측 구성 — DRAM $1,657억(그중 HBM $340억) + NAND $697억 = $2,354억 ([memory-market-overview.md](../concepts/memory-market-overview.md), [hbm-market.md](../concepts/hbm-market.md), TrendForce·Yole) → 지수 100 = HBM 14 · 기타 DRAM 56 · NAND·SSD 30. 시나리오 막대는 이 실측 기준에 §5.3 방향 가정을 적용한 값(수요발 73·91, 전환발 99 = 91 + 차세대 이동분 8). 서버/범용 DRAM 분리 실측치는 공개 소스에 없어 DRAM은 단일 세그먼트.
-- **공급 두 케이스는 수요 막대 대신 공급 전망 차트**: CAPEX 몰림 — 부문별 CAPEX 누적(DRAM 3사 + NAND 6사): 2025 $46.5B+$21.1B=$67.6B → 2026E $54.0B+$22.2B=$76.2B ([memory-capex-history.md](../concepts/memory-capex-history.md) §3, TrendForce·각사 IR — DRAM 3사 = 삼성 20.0·SK 20.5·Micron 13.5, NAND 6사 = 산업 합계 = 삼성·키옥시아·SK/솔리다임·Micron·샌디스크·YMTC). **2027E·28E는 공표 전망치가 아니라 이 시나리오의 정의인 '과잉 유지 가정'(2026E 수준 지속)을 옅은 색·점선 막대로 표기** — 수치 창작이 아닌 시나리오 가정임을 슬라이드·노트에 명시. 투자→캐파 리드타임 2~3년으로 2028~29 공급 도래. 후발 잠식 — CXMT 캐파 점유 11%→15%E(2028)·매출 점유 8%(2025 Q3)→14%E(2027E) ([apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md), [cxmt.md](../entities/cxmt.md)).
+- **공급 두 케이스는 수요 막대 대신 공급 전망 차트**: CAPEX 몰림 — 부문별 CAPEX 누적(DRAM 3사 + NAND 6사): 2025 $46.5B+$21.1B=$67.6B → 2026E $54.0B+$22.2B=$76.2B ([memory-capex-history.md](../concepts/memory-capex-history.md) §3, TrendForce·각사 IR — DRAM 3사 = 삼성 20.0·SK 20.5·Micron 13.5, NAND 6사 = 산업 합계 = 삼성·키옥시아·SK/솔리다임·Micron·샌디스크·YMTC). **2027E·28E는 리서치 기반 추정(ᵉ)** — 2027E $81B ≈ DRAM 3사 $58B(장비 매출 2027 +7.8% 프록시 적용) + NAND 6사 $23B(Kioxia FY26~28 연 ¥470B 고원·YMTC 캐파 2배 반영), 2028E는 27E 수준 유지 가정(TrendForce: 신규 캐파 산출 기여 2028 본격화와 정합). 산출 방법·한계는 [memory-capex-outlook-2027-2028-2026-08-26.md](../../sources/articles/memory-capex-outlook-2027-2028-2026-08-26.md). 옅은 색·점선·ᵉ로 실측/계획과 구분. 투자→캐파 리드타임 2~3년으로 2028~29 공급 도래. 후발 잠식 — CXMT 캐파 점유 11%→15%E(2028)·매출 점유 8%(2025 Q3)→14%E(2027E) ([apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md), [cxmt.md](../entities/cxmt.md)).
 - **발표자 노트**: 슬라이드 맥락(SP-2 위치·원인 중심 이유·확률 미표기 이유), 다섯 갈래 상세 해설, 막대·차트 읽는 법과 계산 근거, 문제 정의 배경을 노트로 수록 — 슬라이드 단독으로 부족한 맥락은 노트가 보완.
 
 ### 5.2 가상 헤드라인 — 도착한 날의 한 문장
@@ -145,7 +145,7 @@ sources: [sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sou
 | 시나리오 | 필요한 전략이 풀어야 할 문제 (v4: 제품·기술·데이터로 구체화) |
 |---|---|
 | DT-A (끊기는 경우) | 팔 곳 잃은 HBM4 증설분(+50%)·서버 캐파: CIS 전환(공용률 80%, [fab-toolset-commonality-conversion-2026-08.md](../../sources/articles/fab-toolset-commonality-conversion-2026-08.md))으로 돌리나, take-or-pay·NTB로 버티나 |
-| DT-B (줄어드는 경우) | GPU당 HBM 탑재량을 읽을 지표가 없다: 원단위 추적 체계(DX-8) 확보와 eSSD(1위 38.2%, [enterprise-ssd-market-1q26-2026-08.md](../../sources/articles/enterprise-ssd-market-1q26-2026-08.md))로 믹스를 옮길 수 있는 폭 |
+| DT-B (줄어드는 경우) | HBM에서 밀려난 수요는 SSD로 온다(KV 캐시 오프로드): 서버 고객을 eSSD(1위 38.2%, [enterprise-ssd-market-1q26-2026-08.md](../../sources/articles/enterprise-ssd-market-1q26-2026-08.md))에 묶어둘 표준·소프트웨어 고리의 확보 — 원단위 추적 체계(DX-8)와 병행 |
 | DT-C (CAPEX 몰리는 경우) | 범용 DRAM·NAND 감산 결단의 30일 규율: 2023년 6개월 지연([samsung-downturn-actions-2007-2023-2026-08-07.md](../../sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md))의 재발 차단 |
 | DT-D (후발이 파고드는 경우) | DDR4·LPDDR4 하단의 철수 시점과 전환처(CIS·차량), HBM 인증 장벽 사수 (CXMT 캐파 11%→15%E 2028, [apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md)) |
 | DT-E (바뀌는 경우) | 표준 HBM에서 zHBM·4F² 3D DRAM으로의 전환기: 별동대와 R&D 하한 사수 |

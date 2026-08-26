@@ -100,6 +100,7 @@ SemiAnalysis(2022-12): "Samsung swims against the tide as the industry cuts capi
 
 - 산업: 2025 $21.1B → 2026E $22.2B (+5%)
 - Kioxia/SanDisk: 2025 ~$3.2B → 2026E $4.5B (+41%), Micron NAND +63% (금액 미공개)
+- **[2026-08-26 추가] 2027E~2028E 전망**: DRAM 3사 합산 2027E ≈$58Bᵉ(장비 매출 2027 +7.8% 프록시)·NAND 6사 2027E ≈$23Bᵉ(Kioxia FY26~28 연 ¥470B 고원·Kioxia–SanDisk 2026 +40%·YMTC 캐파 2배), 2028E는 27E 유지 가정 — 산출·한계는 [memory-capex-outlook-2027-2028-2026-08-26.md](../../sources/articles/memory-capex-outlook-2027-2028-2026-08-26.md)
 - **삼성·SK/Solidigm은 NAND 투자 축소·제한 기조** — HBM/DRAM으로 자본 재배치. 삼성 NAND 웨이퍼 투입 2024 490만장 → 2025 468만장 감축 ([memory-capex-history-research-2026-08-08.md](../../sources/raw-notes/memory-capex-history-research-2026-08-08.md))
 
 ## 4. 시사점 — 역사이클 투자의 성립 조건과 한계
