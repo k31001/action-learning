@@ -115,6 +115,25 @@ sources: [sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md, sou
 - **공급 두 케이스는 수요 막대 대신 공급 전망 차트**: CAPEX 몰림 — 부문별 CAPEX 누적(DRAM 3사 + NAND 6사): 2025 $46.5B+$21.1B=$67.6B → 2026E $54.0B+$22.2B=$76.2B ([memory-capex-history.md](../concepts/memory-capex-history.md) §3, TrendForce·각사 IR — DRAM 3사 = 삼성 20.0·SK 20.5·Micron 13.5, NAND 6사 = 산업 합계 = 삼성·키옥시아·SK/솔리다임·Micron·샌디스크·YMTC). **2027E·28E는 리서치 기반 추정(ᵉ)** — 2027E $81B ≈ DRAM 3사 $58B(장비 매출 2027 +7.8% 프록시 적용) + NAND 6사 $23B(Kioxia FY26~28 연 ¥470B 고원·YMTC 캐파 2배 반영), 2028E는 27E 수준 유지 가정(TrendForce: 신규 캐파 산출 기여 2028 본격화와 정합). 산출 방법·한계는 [memory-capex-outlook-2027-2028-2026-08-26.md](../../sources/articles/memory-capex-outlook-2027-2028-2026-08-26.md). 옅은 색·점선·ᵉ로 실측/계획과 구분. 투자→캐파 리드타임 2~3년으로 2028~29 공급 도래. 후발 잠식 — CXMT 캐파 점유 11%→15%E(2028)·매출 점유 8%(2025 Q3)→14%E(2027E) ([apple-cxmt-china-dram-2026-07-08.md](../../sources/articles/apple-cxmt-china-dram-2026-07-08.md), [cxmt.md](../entities/cxmt.md)).
 - **발표자 노트**: 슬라이드 맥락(SP-2 위치·원인 중심 이유·확률 미표기 이유), 다섯 갈래 상세 해설, 막대·차트 읽는 법과 계산 근거, 문제 정의 배경을 노트로 수록 — 슬라이드 단독으로 부족한 맥락은 노트가 보완.
 
+### 5.1c 발현 근접도 평가 — 투자 자금이 끊기는 경우 (슬라이드 2p 소스, 2026-08-26)
+
+> "끊기는 경우"가 실제로 발현될 가능성을 **지출 속도 vs 창출 속도의 괴리**와 **발화 전 체크리스트**로 가늠한다. 판정: **전조는 실측되었으나 발화 신호는 0건 — 가능성 상승 국면이지 발현 국면은 아니다.**
+
+**① 지출: AI CapEx (4사 합산, $B)** — 2024 ~205 → 2025 ~410(+100%) → 2026E ~750(+82%, Q2 실적 후 전원 상향·삭감 0건) → 2027E $1,100+ᵉ(JPMorgan) ([ai-capex.md](../concepts/ai-capex.md), [hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md](../../sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md))
+
+**② 창출: 이익·현금이 따라가지 못하는 실측**
+| 지표 | 값 | 의미 | 출처 |
+|---|---|---|---|
+| AI CapEx / 영업현금흐름 | 2024 76% → 2026E **94%** | 자기잠식 임계점 근접 — 내부 현금만으로 지출 유지 불가에 접근 | [visualizations.js](../../dashboard/src/data/visualizations.js) 하이퍼스케일러 구성 |
+| Meta 분기 FCF | **-91% → $784M** | 첫 하이퍼스케일러 FCF 붕괴 수준 급감 | [hyperscaler-q2-2026-actuals](../../sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md) |
+| Amazon TTM FCF | **~-$7.6B 적자 전환** | 두 번째 — 다이버전스가 개별 사가 아닌 패턴화 조짐 | 同 |
+| 필요 매출 vs 자금 갭 (Bain) | 2030 필요 신규 매출 **$2조/년**, 자금 갭 **$800B/년** | 현 지출 궤도의 수익성 회수 조건 자체가 미충족 | [ai-compute-economics-gap.md](../concepts/ai-compute-economics-gap.md) |
+| 공급자 이익 정점 | SK하이닉스 OPM ~75~77% 사상 최대 | 후기순환 전형 신호 | [hyperscaler-q2-2026-capex-2026-07-28.md](../../sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md) |
+
+**③ 발화 전 체크리스트 (미발동 4건)**: CapEx 삭감 발표 0건(트리거 YoY -25%) · GPU 임대가 firming/flat(H100 ~$2.69·H200 ~$4.38, 트리거 6개월 -35% 미달) · DC 착공·발주 취소 미관측(파이프라인 55.9GW 유지) · Google Cloud 백로그 $514B(+$50B QoQ) 견조. **완충**: take-or-pay·NTB 락인이 발화 후에도 초기 6~12개월을 흡수 — 그래서 관건은 커버리지 **만기 구조**(DX-7).
+
+**종합**: 전조(괴리) 실측 3건+ / 발화 신호 0건. 다음 변곡은 **FCF 반전이 발주 동결로 번지는 순간**이며 그 감시선이 [DX-1(FCF·조달)·DX-2(임대가)](differential-indicators.md)다.
+
 ### 5.2 가상 헤드라인 — 도착한 날의 한 문장
 
 각 시나리오가 실제 발생했을 때 신문 1면을 상상한 **가상의 예시 문장**이다 (실제 보도 아님, 수치 미포함).
