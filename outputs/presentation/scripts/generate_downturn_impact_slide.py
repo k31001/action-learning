@@ -376,121 +376,119 @@ slide.notes_slide.notes_text_frame.text = NOTES
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# 슬라이드 2 — "투자 자금이 끊기는 경우" 발현 근접도 평가
-# 단일 소스: wiki/downturn/samsung-impact.md §5.1c
+# 근접도 슬라이드 공용 빌더 — 시나리오별 "발현 근접도 평가" (슬라이드 2~6)
+# 단일 소스: wiki/downturn/samsung-impact.md §5.1c 이하
 # ═════════════════════════════════════════════════════════════════════════════
-s2 = prs.slides.add_slide(prs.slide_layouts[6])
+EST_FILL = RGBColor(0xE2, 0xE2, 0xE5)
 
-txt(s2, MX, 0.26, MW, 0.38, [[
-    ('끊기는 경우의 근접도:  ', {'bold': True, 'color': BLUE, 'size': 20}),
-    ('전조는 실측되었지만, 발화 신호는 아직 없다', {'bold': True, 'size': 20}),
-]])
-hline(s2, MX, 0.72, MW, BLUE, 1.4)
-txt(s2, MX, 0.84, MW, 0.2, [[(
-    '1번 시나리오(투자 자금이 끊기는 경우)의 발현 가능성 평가: 지출 속도와 창출 속도의 괴리, 그리고 발화 전 체크리스트',
-    {'color': GRAY, 'size': 10.5})]], leading=1.0)
+def _numfmt(v):
+    s = f'{v:,.1f}'
+    return s[:-2] if s.endswith('.0') else s
 
-PA_X, PA_W = MX, 3.92
-PB_X, PB_W = MX + 4.10, 3.92
-PC_X, PC_W = MX + 8.20, MW - 8.20
-P_Y, P_H = 1.22, 4.78
+def draw_bar_series(sl, px, pw, series, *, annot_color=BLUE):
+    """세로 막대. series: [(라벨, 값, 주석, 추정여부)]. 추정 막대는 옅은 색·점선·ᵉ."""
+    A_BASE = 5.30
+    vmax = max(v for _, v, _, _ in series)
+    scale = 3.30 / vmax
+    n = len(series)
+    bw, bgap = 0.62, 0.24
+    need = n * bw + (n - 1) * bgap
+    if need > pw - 0.2:
+        bw = (pw - 0.2 - (n - 1) * bgap) / n
+        need = n * bw + (n - 1) * bgap
+    bx0 = px + (pw - need) / 2
+    hline(sl, px + 0.1, A_BASE, pw - 0.2, G_LINE, 0.9)
+    for bi, (label, v, annot, est) in enumerate(series):
+        bx = bx0 + bi * (bw + bgap)
+        h = v * scale
+        if est:
+            box(sl, bx, A_BASE - h, bw, h, fill=EST_FILL, line=G_MID, line_w=0.8, dash=2)
+        else:
+            box(sl, bx, A_BASE - h, bw, h, fill=S_FUT)
+        txt(sl, bx - 0.15, A_BASE - h - 0.22, bw + 0.3, 0.16,
+            [[(_numfmt(v) + ('ᵉ' if est else ''), {'bold': True, 'color': (G_MID if est else INK), 'size': 10.5})]],
+            align=PP_ALIGN.CENTER, leading=1.0)
+        if annot:
+            txt(sl, bx - 0.15, A_BASE - h - 0.40, bw + 0.3, 0.15,
+                [[(annot, {'color': annot_color, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
+        txt(sl, bx - 0.15, A_BASE + 0.05, bw + 0.3, 0.14,
+            [[(label, {'color': G_MID, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
 
-for px, pw, title in ((PA_X, PA_W, '지출  AI CapEx, 4사 합산 ($B)'),
-                      (PB_X, PB_W, '창출  이익·현금이 따라가지 못한다'),
-                      (PC_X, PC_W, '판정 보드  발화 전 체크리스트')):
-    box(s2, px, P_Y, pw, 0.045, fill=BLUE)
-    parts = title.split('  ')
-    txt(s2, px, P_Y + 0.12, pw, 0.2, [[
-        (parts[0] + '   ', {'bold': True, 'color': BLUE, 'size': 12.5}),
-        (parts[1], {'bold': True, 'size': 12.5})]], leading=1.0)
+def proximity_slide(spec):
+    sl = prs.slides.add_slide(prs.slide_layouts[6])
+    txt(sl, MX, 0.26, MW, 0.38, [[
+        (spec['title_blue'], {'bold': True, 'color': BLUE, 'size': 20}),
+        (spec['title_rest'], {'bold': True, 'size': 20})]])
+    hline(sl, MX, 0.72, MW, BLUE, 1.4)
+    txt(sl, MX, 0.84, MW, 0.2, [[(spec['subtitle'], {'color': GRAY, 'size': 10.5})]], leading=1.0)
 
-# ── 패널 A: CapEx 막대 (2024~2027E) ──
-CAPX = [('2024', 205, '', False), ('2025', 410, '+100%', False),
-        ('26E', 750, '+82%', False), ('27E', 1100, 'JPM 전망', True)]
-A_BASE, A_SCALE = 5.30, 3.30 / 1100
-bw, bgap = 0.62, 0.24
-bx0 = PA_X + (PA_W - (4 * bw + 3 * bgap)) / 2
-hline(s2, PA_X + 0.1, A_BASE, PA_W - 0.2, G_LINE, 0.9)
-for bi, (label, v, yoy, est) in enumerate(CAPX):
-    bx = bx0 + bi * (bw + bgap)
-    h = v * A_SCALE
-    if est:
-        box(s2, bx, A_BASE - h, bw, h, fill=RGBColor(0xE2, 0xE2, 0xE5), line=G_MID, line_w=0.8, dash=2)
-    else:
-        box(s2, bx, A_BASE - h, bw, h, fill=S_FUT)
-    txt(s2, bx - 0.15, A_BASE - h - 0.22, bw + 0.3, 0.16,
-        [[(f'{v:,}' + ('ᵉ' if est else ''), {'bold': True, 'color': (G_MID if est else INK), 'size': 10.5})]],
-        align=PP_ALIGN.CENTER, leading=1.0)
-    if yoy:
-        txt(s2, bx - 0.15, A_BASE - h - 0.40, bw + 0.3, 0.15,
-            [[(yoy, {'color': BLUE, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
-    txt(s2, bx - 0.15, A_BASE + 0.05, bw + 0.3, 0.14,
-        [[(label, {'color': G_MID, 'size': 10})]], align=PP_ALIGN.CENTER, leading=1.0)
-txt(s2, PA_X, A_BASE + 0.28, PA_W, 0.34,
-    [[('Q2 실적 후 4사 전원 상향, 삭감 발표 0건.', {'size': 10})],
-     [('장기 자산(토지·전력·셸)은 조기 확약 관행 지속', {'size': 10})]], leading=1.2)
+    PA_X, PA_W = MX, 3.92
+    PB_X, PB_W = MX + 4.10, 3.92
+    PC_X, PC_W = MX + 8.20, MW - 8.20
+    P_Y = 1.22
+    for px, pw, title in ((PA_X, PA_W, spec['panelA']), (PB_X, PB_W, spec['panelB']),
+                          (PC_X, PC_W, spec['panelC'])):
+        box(sl, px, P_Y, pw, 0.045, fill=BLUE)
+        head, rest = title.split('  ', 1)
+        txt(sl, px, P_Y + 0.12, pw, 0.2, [[
+            (head + '   ', {'bold': True, 'color': BLUE, 'size': 12.5}),
+            (rest, {'bold': True, 'size': 12.5})]], leading=1.0)
 
-# ── 패널 B: 창출 괴리 스탯 타일 3종 ──
-tiles = [
-    ('CapEx / 영업현금흐름', [('76%', G_MID), ('  →  ', G_MID), ('94%', BLUE)],
-     "2024 → 2026E, '자기잠식' 임계점 근접"),
-    ('하이퍼스케일러 FCF 반전', [('Meta -91%', BLUE), (' · ', G_MID), ('Amazon 적자', BLUE)],
-     '분기 $784M로 급감 · TTM ~-$7.6B, 두 번째 반전'),
-    ('필요 매출 vs 자금 갭 (Bain)', [('$2조/년', BLUE), ('  vs 갭 ', G_MID), ('$800B/년', BLUE)],
-     '2030 수익성 회수에 필요한 신규 매출과 부족분'),
-]
-for ti, (label, val_parts, sub) in enumerate(tiles):
-    ty = 1.52 + ti * 1.42
-    vsize = 16 if ti == 1 else 19
-    box(s2, PB_X, ty, PB_W, 1.26, fill=G_BG, line=G_LINE, line_w=0.5, rnd=True, radius=0.06)
-    txt(s2, PB_X + 0.16, ty + 0.12, PB_W - 0.32, 0.17, [[(label, {'bold': True, 'color': GRAY, 'size': 10.5})]], leading=1.0)
-    txt(s2, PB_X + 0.16, ty + 0.36, PB_W - 0.32, 0.34,
-        [[(t, {'bold': True, 'color': c, 'size': vsize}) for t, c in val_parts]], leading=1.0)
-    txt(s2, PB_X + 0.16, ty + 0.82, PB_W - 0.32, 0.32, [[(sub, {'color': GRAY, 'size': 10})]], leading=1.15)
+    spec['chart'](sl, PA_X, PA_W)
+    txt(sl, PA_X, 5.58, PA_W, 0.34,
+        [[(c, {'size': 10})] for c in spec['chart_caption']], leading=1.2)
 
-# ── 패널 C: 판정 보드 ──
-def crow(y, color, text_parts):
-    box(s2, PC_X + 0.02, y + 0.028, 0.10, 0.10, fill=color)
-    txt(s2, PC_X + 0.22, y, PC_W - 0.24, 0.32, [text_parts], leading=1.12)
+    for ti, (label, val_parts, sub, vsize) in enumerate(spec['tiles']):
+        ty = 1.52 + ti * 1.42
+        box(sl, PB_X, ty, PB_W, 1.26, fill=G_BG, line=G_LINE, line_w=0.5, rnd=True, radius=0.06)
+        txt(sl, PB_X + 0.16, ty + 0.12, PB_W - 0.32, 0.17, [[(label, {'bold': True, 'color': GRAY, 'size': 10.5})]], leading=1.0)
+        txt(sl, PB_X + 0.16, ty + 0.36, PB_W - 0.32, 0.34,
+            [[(t, {'bold': True, 'color': c, 'size': vsize}) for t, c in val_parts]], leading=1.0)
+        txt(sl, PB_X + 0.16, ty + 0.82, PB_W - 0.32, 0.32, [[(sub, {'color': GRAY, 'size': 10})]], leading=1.15)
 
-txt(s2, PC_X, 1.52, PC_W, 0.17, [[('실측된 전조 3', {'bold': True, 'color': RED, 'size': 10.5})]], leading=1.0)
-crow(1.74, RED, [('FCF 다이버전스 2사', {'bold': True, 'size': 10}), (': Meta·Amazon 반전', {'size': 10, 'color': GRAY})])
-crow(1.99, RED, [('CapEx/현금흐름 94%', {'bold': True, 'size': 10}), (': 자기잠식 임계', {'size': 10, 'color': GRAY})])
-crow(2.24, RED, [('공급자 이익 정점', {'bold': True, 'size': 10}), (': SK OPM ~76% 사상 최대', {'size': 10, 'color': GRAY})])
+    def crow(y, color, bold_t, rest_t):
+        box(sl, PC_X + 0.02, y + 0.028, 0.10, 0.10, fill=color)
+        txt(sl, PC_X + 0.22, y, PC_W - 0.24, 0.32,
+            [[(bold_t, {'bold': True, 'size': 10}), (rest_t, {'size': 10, 'color': GRAY})]], leading=1.12)
 
-txt(s2, PC_X, 2.62, PC_W, 0.17, [[('미발동 발화 신호 4', {'bold': True, 'color': GREEN, 'size': 10.5})]], leading=1.0)
-crow(2.84, GREEN, [('CapEx 삭감 0건', {'bold': True, 'size': 10}), (': 트리거 YoY -25%', {'size': 10, 'color': GRAY})])
-crow(3.09, GREEN, [('GPU 임대가 firming', {'bold': True, 'size': 10}), (': H100 $2.69·H200 $4.38', {'size': 10, 'color': GRAY})])
-crow(3.34, GREEN, [('DC 취소 미관측', {'bold': True, 'size': 10}), (': 파이프라인 55.9GW 유지', {'size': 10, 'color': GRAY})])
-crow(3.59, GREEN, [('Cloud 백로그 견조', {'bold': True, 'size': 10}), (': Google $514B(+$50B QoQ)', {'size': 10, 'color': GRAY})])
+    y = 1.52
+    txt(sl, PC_X, y, PC_W, 0.17, [[(f"실측된 전조 {len(spec['red_rows'])}", {'bold': True, 'color': RED, 'size': 10.5})]], leading=1.0)
+    y += 0.22
+    for b, r in spec['red_rows']:
+        crow(y, RED, b, r); y += 0.25
+    y += 0.13
+    txt(sl, PC_X, y, PC_W, 0.17, [[(f"미발동 발화 신호 {len(spec['green_rows'])}", {'bold': True, 'color': GREEN, 'size': 10.5})]], leading=1.0)
+    y += 0.22
+    for b, r in spec['green_rows']:
+        crow(y, GREEN, b, r); y += 0.25
+    y += 0.13
+    txt(sl, PC_X, y, PC_W, 0.17, [[('완충', {'bold': True, 'color': GRAY, 'size': 10.5})]], leading=1.0)
+    y += 0.22
+    txt(sl, PC_X + 0.02, y, PC_W - 0.04, 0.5,
+        [[(spec['buffer'][0], {'size': 10})],
+         [(spec['buffer'][1], {'bold': True, 'size': 10})]], leading=1.25)
+    wy = y + 0.59
+    box(sl, PC_X, wy, PC_W, 1.10, fill=G_BG, rnd=True, radius=0.06)
+    txt(sl, PC_X + 0.14, wy + 0.12, PC_W - 0.28, 0.9,
+        [[('감시선  ', {'bold': True, 'color': BLUE, 'size': 10.5}), (spec['watch'][0], {'size': 10.5})]] +
+        [[(w, {'size': 10.5})] for w in spec['watch'][1:]], leading=1.25)
 
-txt(s2, PC_X, 3.97, PC_W, 0.17, [[('완충', {'bold': True, 'color': GRAY, 'size': 10.5})]], leading=1.0)
-txt(s2, PC_X + 0.02, 4.19, PC_W - 0.04, 0.5,
-    [[('take-or-pay·NTB 락인이 발화 후에도 초기 6~12개월을 흡수.', {'size': 10})],
-     [('그래서 관건은 커버리지의 만기 구조다', {'bold': True, 'size': 10})]], leading=1.25)
+    box(sl, MX, 6.18, MW, 0.34, fill=G_BG, rnd=True, radius=0.10)
+    txt(sl, MX + 0.16, 6.255, MW - 0.32, 0.2, [[
+        ('종합  ', {'bold': True, 'color': BLUE, 'size': 10.5}),
+        (spec['verdict_plain'], {'size': 10.5}),
+        (spec['verdict_bold'], {'bold': True, 'size': 10.5})]], leading=1.0)
 
-box(s2, PC_X, 4.78, PC_W, 1.10, fill=G_BG, rnd=True, radius=0.06)
-txt(s2, PC_X + 0.14, 4.90, PC_W - 0.28, 0.9,
-    [[('감시선  ', {'bold': True, 'color': BLUE, 'size': 10.5}),
-      ('다음 변곡 = FCF 반전이', {'size': 10.5})],
-     [('발주 동결로 번지는 순간.', {'size': 10.5})],
-     [('빅테크 FCF·조달 스프레드와 GPU', {'size': 10.5})],
-     [('임대가(6개월 -35%)가 최선행 감시선', {'size': 10.5})]], leading=1.25)
+    txt(sl, MX, 6.64, MW - 1.65, 0.34, [[(spec['footer'], {'color': GRAY, 'size': 9})]], leading=1.25)
+    txt(sl, MX + MW - 1.5, 6.64, 1.5, 0.18, [[('[문서등급 표기]', {'color': GRAY, 'size': 9})]],
+        align=PP_ALIGN.RIGHT, leading=1.0)
+    sl.notes_slide.notes_text_frame.text = spec['notes']
+    return sl
 
-# 종합 밴드
-box(s2, MX, 6.18, MW, 0.34, fill=G_BG, rnd=True, radius=0.10)
-txt(s2, MX + 0.16, 6.255, MW - 0.32, 0.2, [[
-    ('종합  ', {'bold': True, 'color': BLUE, 'size': 10.5}),
-    ('지출은 2년 새 3.7배가 됐는데 내부 현금 여력은 임계에 닿았다. 전조 3건 실측, 발화 신호 0건.  ', {'size': 10.5}),
-    ('가능성이 오르는 국면이지, 아직 발현 국면은 아니다.', {'bold': True, 'size': 10.5}),
-]], leading=1.0)
 
-txt(s2, MX, 6.64, MW - 1.65, 0.34, [[
-    ('출처: wiki/downturn/samsung-impact.md §5.1c · CapEx: 각사 가이던스 종합(2026E ~$750B)·27Eᵉ JPMorgan 전망 · FCF·백로그·임대가: Q2 2026 실적 보도 종합 · '
-     'CapEx/현금흐름·자금 갭: SemiAnalysis 계열·Bain · 기준일 2026-08', {'color': GRAY, 'size': 9})]], leading=1.25)
-txt(s2, MX + MW - 1.5, 6.64, 1.5, 0.18, [[('[문서등급 표기]', {'color': GRAY, 'size': 9})]],
-    align=PP_ALIGN.RIGHT, leading=1.0)
-
+# ═════════════════════════════════════════════════════════════════════════════
+# 슬라이드 2 — "투자 자금이 끊기는 경우" 발현 근접도 (wiki §5.1c)
+# ═════════════════════════════════════════════════════════════════════════════
 NOTES2 = """[슬라이드 위치] 앞 장(다섯 갈래)의 1번 시나리오(투자 자금이 끊기는 경우)에 대한 심화 장. 질문은 하나다: 이 시나리오는 지금 얼마나 가까이 와 있는가. 구성은 지출(왼쪽), 창출(가운데), 판정(오른쪽)의 3단이다.
 
 [왼쪽: 지출 패널] 4사(Alphabet·Amazon·Microsoft·Meta) 합산 AI CapEx는 2024 약 $205B, 2025 약 $410B(+100%), 2026E 약 $750B(+82%)로 2년 새 3.7배가 됐다. 2026E는 Q2 실적 발표 후 네 곳 전원이 가이던스를 올린 결과이고 삭감 발표는 0건이다(Amazon ~$220B, Google $195~205B, Meta $130~145B, MS ~$190B + FY27 $255~260B 상향). 2027E $1,100B+는 JPMorgan 전망으로 점선ᵉ 표기했다. 참고로 4사는 토지·전력·셸 같은 장기 자산은 조기 확약하고 칩은 필요 몇 달 전에 사는 디리스킹 관행을 공통 채택 중이다.
@@ -502,7 +500,51 @@ NOTES2 = """[슬라이드 위치] 앞 장(다섯 갈래)의 1번 시나리오(�
 [판정을 말로 하면] "가능성이 오르는 국면이지, 발현 국면이 아니다." 확률 숫자는 표기하지 않되, 방향은 분명하다: 괴리(전조)는 계속 벌어지고 있고, 발화는 아직 시작되지 않았다. 다음 변곡은 FCF 반전이 실제 발주 동결로 번지는 순간이며, 빅테크 FCF·조달 스프레드와 GPU 임대가가 그 최선행 감시선이다. 질문이 나오면: 이 감시선은 대시보드 EWI로 이미 배선되어 있고, 트리거 도달 시 30일 내 대응 규율과 연결된다.
 
 [출처] wiki/downturn/samsung-impact.md §5.1c(단일 소스). 수치 원출처: ai-capex(연도별 CapEx), hyperscaler-q2-2026-actuals(가이던스 상향·FCF·임대가), hyperscaler-q2-2026-capex(백로그·SK OPM), ai-compute-economics-gap(Bain $2조·$800B), visualizations 하이퍼스케일러 구성(76%→94%). 2027E는 JPMorgan 전망 인용."""
-s2.notes_slide.notes_text_frame.text = NOTES2
+
+SPEC_A = dict(
+    title_blue='끊기는 경우의 근접도:  ',
+    title_rest='전조는 실측되었지만, 발화 신호는 아직 없다',
+    subtitle='1번 시나리오(투자 자금이 끊기는 경우)의 발현 가능성 평가: 지출 속도와 창출 속도의 괴리, 그리고 발화 전 체크리스트',
+    panelA='지출  AI CapEx, 4사 합산 ($B)',
+    panelB='창출  이익·현금이 따라가지 못한다',
+    panelC='판정 보드  발화 전 체크리스트',
+    chart=lambda sl, px, pw: draw_bar_series(sl, px, pw, [
+        ('2024', 205, '', False), ('2025', 410, '+100%', False),
+        ('26E', 750, '+82%', False), ('27E', 1100, 'JPM 전망', True)]),
+    chart_caption=['Q2 실적 후 4사 전원 상향, 삭감 발표 0건.',
+                   '장기 자산(토지·전력·셸)은 조기 확약 관행 지속'],
+    tiles=[
+        ('CapEx / 영업현금흐름', [('76%', G_MID), ('  →  ', G_MID), ('94%', BLUE)],
+         "2024 → 2026E, '자기잠식' 임계점 근접", 19),
+        ('하이퍼스케일러 FCF 반전', [('Meta -91%', BLUE), (' · ', G_MID), ('Amazon 적자', BLUE)],
+         '분기 $784M로 급감 · TTM ~-$7.6B, 두 번째 반전', 16),
+        ('필요 매출 vs 자금 갭 (Bain)', [('$2조/년', BLUE), ('  vs 갭 ', G_MID), ('$800B/년', BLUE)],
+         '2030 수익성 회수에 필요한 신규 매출과 부족분', 19),
+    ],
+    red_rows=[
+        ('FCF 다이버전스 2사', ': Meta·Amazon 반전'),
+        ('CapEx/현금흐름 94%', ': 자기잠식 임계'),
+        ('공급자 이익 정점', ': SK OPM ~76% 사상 최대'),
+    ],
+    green_rows=[
+        ('CapEx 삭감 0건', ': 트리거 YoY -25%'),
+        ('GPU 임대가 firming', ': H100 $2.69·H200 $4.38'),
+        ('DC 취소 미관측', ': 파이프라인 55.9GW 유지'),
+        ('Cloud 백로그 견조', ': Google $514B(+$50B QoQ)'),
+    ],
+    buffer=['take-or-pay·NTB 락인이 발화 후에도 초기 6~12개월을 흡수.',
+            '그래서 관건은 커버리지의 만기 구조다'],
+    watch=['다음 변곡 = FCF 반전이',
+           '발주 동결로 번지는 순간.',
+           '빅테크 FCF·조달 스프레드와 GPU',
+           '임대가(6개월 -35%)가 최선행 감시선'],
+    verdict_plain='지출은 2년 새 3.7배가 됐는데 내부 현금 여력은 임계에 닿았다. 전조 3건 실측, 발화 신호 0건.  ',
+    verdict_bold='가능성이 오르는 국면이지, 아직 발현 국면은 아니다.',
+    footer=('출처: wiki/downturn/samsung-impact.md §5.1c · CapEx: 각사 가이던스 종합(2026E ~$750B)·27Eᵉ JPMorgan 전망 · FCF·백로그·임대가: Q2 2026 실적 보도 종합 · '
+            'CapEx/현금흐름·자금 갭: SemiAnalysis 계열·Bain · 기준일 2026-08'),
+    notes=NOTES2,
+)
+proximity_slide(SPEC_A)
 
 OUT = 'outputs/presentation/downturn-scenario-impact.pptx'
 prs.save(OUT)
