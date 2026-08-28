@@ -14,6 +14,13 @@
 
 ---
 
+## [2026-08-28] ingest+build | 영향 덱 6p 완성 — 다섯 시나리오 전부에 발현 근접도 평가 1장씩 (병렬 에이전트 조사)
+- **무엇**: downturn-scenario-impact.pptx를 6장 한 덱으로 완성 — 1p 다섯 갈래 개요 + 2~6p 시나리오별 발현 근접도(DT-A~E). 자료 조사·분석은 시나리오별 별도 에이전트 4개 병렬 수행(DT-B·C·D·E), 슬라이드는 공용 빌더(proximity_slide)로 통일 프레임: 동인 실측 차트 / 스탯 타일 3 / 판정 보드(실측된 전조 vs 미발동 발화 신호 / 완충 / 감시선) / 정성 종합(확률 숫자 없음 — PPT 층 확률 제거 방침 유지).
+- **판정 요약**: DT-B "전조 최다·발화 0 — 상쇄(Jevons)가 꺾이면 경보 없이 발현" · DT-C "장전 완료·방아쇠 미당김(2028 만기, NAND 2H27이 예고편)" · DT-D "유일하게 진행 중 — 가격 앵커만 슈퍼사이클이 가림" · DT-E "잠복 국면 — 정의권은 이동, 매출은 표준(미리 가 있는 것만 유효)".
+- **ingest**: 신규 소스 4건 — dt-b-demand-efficiency-signals(토큰 비용 280분의 1·KV 90% 절감·CXL -25%·비트수요 감속), dt-c-capex-oversupply-signals(2027 수급 분기·신규 팹 일정 전수·리드타임 12~24개월·재고 2~4주), dt-d-china-entrant-signals(CXMT 수율 >90% 보도·HP/Asus/Acer 인증·YMTC 14% 3위·DDR4 +172% 역설), dt-e-product-redefinition-signals(NVHBM 발표·zHBM 스펙·커스텀 HBM4E·CXL 논쟁). 전부 출처 URL·방법·한계·신뢰도 명시. index.md sources 4건 등록.
+- **wiki**: samsung-impact.md §5.1d~§5.1g 신설(슬라이드 3~6p 단일 소스). §5.1c(DT-A)는 기존 유지.
+- **건너뜀**: dashboard 무변경(version bump 생략 — 덱은 outputs 층), 후속 과제로 이월: cxmt.md 수율 갱신(80%→90% 보도)·ymtc.md 3위 등극·DX-5 반영은 다음 lint에서(에이전트 정합 노트 기록됨).
+
 ## [2026-08-28] build | 영향 덱 2p 추가 — "투자 자금이 끊기는 경우" 발현 근접도 평가
 - **무엇**: downturn-scenario-impact.pptx에 슬라이드 2 신설 — 1번 시나리오(DT-A, 투자 자금이 끊기는 경우)의 발현 가능성을 가늠하는 근거 자료. 3단 구성: ① 지출(4사 합산 AI CapEx $205B→$410B→~$750B, 27E $1,100Bᵉ JPM 전망 점선) ② 창출(CapEx/영업현금흐름 76%→94% 자기잠식 임계, Meta FCF -91%·Amazon TTM 적자, Bain 필요매출 $2조/년 vs 갭 $800B/년) ③ 판정 보드(실측된 전조 3 빨강 / 미발동 발화 신호 4 초록 / take-or-pay 완충 / 감시선 DX-1·DX-2). 종합: "가능성이 오르는 국면이지, 아직 발현 국면은 아니다" — 확률 숫자 없는 정성 판정(PPT 층 확률 제거 방침 유지). 상세 발표자 노트 포함.
 - **왜**: 사용자 요청 — "AI capex와 하이퍼스케일러 영업이익 추세로 이 시나리오의 발현 가능성을 가늠할 자료".
