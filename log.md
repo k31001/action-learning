@@ -1727,3 +1727,15 @@ PPT: 제품 축 ④ 1장 신설 — SCA→FDP→FDE 플라이휠 도식(중심 �
 ## [2026-08-05] build | 제품 축 ④에 FDE 도입 선례 추가 (v2.46.9)
 
 요청: FDE의 Palantir·타사 도입 사례 추가. 3번 컬럼에 "FDE 선례" 박스 신설(Palantir 창안·코드명 Delta·640% 주가 동력으로 회자, Anthropic·OpenAI도 엔터프라이즈 GTM으로 채택 — palantir-fde-model-2026-07.md 인용), 채용·양성·운영 3행 압축 재배치. 2번 컬럼(Micron ↔ Anthropic)과 선례 박스 대구 구조. wiki §4.5 실행전략 3에 동일 선례 문구 반영. pptx 재생성·미러, version v2.46.9(패치).
+
+## [2026-08-28] ingest+query | YMTC 낸드 3위 등극·"2027 1위" 선언 — 소스 수집 + 추격 방어 전략 페이지 신설
+
+사용자 인풋: 데일리한국 YMTC 추격 기사(idxno=1399467) + "삼성/한국은 이 추격을 어떻게 따돌리나" 질의. 원문 도메인이 세션 프록시에서 차단되어 동일 사건 다매체·원 데이터(Counterpoint·TrendForce·FT·IPO 신청서 보도)를 웹 검색 교차 수집으로 재구성.
+
+**소스 신설**: `ymtc-nand-top3-ipo-2027-target-2026-08-28.md` — Q2 2026 출하 14% 사상 첫 3위(Counterpoint, 삼성 25%·SK 22%)·매출은 5위(컨슈머 편중)·상하이 STAR IPO 330억 위안(생산 208억+R&D 122억)·Q1 순이익 333.8억 위안(GM 76.8%)·FT발 "2027년 말 1위" 목표·캐파 설계 상한 50만 WSPM·3공장 국산장비 50% 돌파·294단 출하/Xtacking 5.0.
+
+**위키 갱신**: `entities/ymtc.md`(점유율 표 + [Update 2026-08-28] 3위 등극·IPO·캐파 산술 — "2027 빗 1위 비현실적, 20% 안팎 진입은 성립"), `entities/china-competitors.md`(표·주요 발견), `concepts/nand-process-transition.md`(YMTC 294L·Xtacking 5.0·IP+자본 결합 경고).
+
+**신설**: `strategies/ymtc-nand-defense.md` (query 환원) — 진단(빗 3위 ↔ 달러 5위 비대칭이 방어 전략을 규정) → 삼성 5축(RS-2 철수 주도권·RS-6 세대 전환 경제학·RS-7 hybrid bonding IP 자립·RS-3+FDP/SCA/FDE 락인·RS-5/8/1 치킨게임 봉인+초과이익 배분+시안 Plan B) → 정부 4대 비대칭 교정(자본비용·인프라 속도·인재 유출·시안 조건 협상) → 시나리오 A~E 연결(신규 코드 없이 기존 RS 재배선 = 무후회) → EWI 보드(매출 점유율 순위·DC eSSD 인증·4/5공장 착공 신규 관찰) → 반박 4종 검토.
+
+**대시보드**: `indicators.js` ymtc_nand_share 갱신(14%·3위 반영·서술 정정 — 기존 "4위 고착" 문구는 낡음) + KG 재생성, version 패치 bump. **건너뜀 사유**: storyline·시나리오 페이지는 정성 서술이라 수치 모순 없음(grep 확인) — 서사 재작성은 다음 정기 lint로 이월. outputs/report·slide는 전략 코드 체계(RS·D·MB/SB) 무변경이므로 구조 영향 없음. scenarioPlanning.js(SCENARIOS·확률) 무변경.

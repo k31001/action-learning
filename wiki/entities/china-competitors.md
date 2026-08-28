@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-05-18
-sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, TechInsights, Caixin Global, Digitimes)]
+last_reviewed: 2026-08-28
+sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, TechInsights, Caixin Global, Digitimes), sources/articles/ymtc-nand-top3-ipo-2027-target-2026-08-28.md]
 ---
 
 # 중국 메모리 업체 그룹 (CXMT · YMTC)
@@ -15,10 +15,10 @@ sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, Tec
 
 ## 업체별 페이지
 
-| 업체 | 영역 | 본사 | 점유 (Q3 2025) | 상세 |
+| 업체 | 영역 | 본사 | 점유 (최신) | 상세 |
 |------|------|------|--------------|------|
-| **CXMT** (창신메모리) | DRAM | 안후이성 허페이 | 글로벌 DRAM 8% (4위 진입) | [cxmt.md](cxmt.md) |
-| **YMTC** (양쯔메모리) | NAND Flash | 후베이성 우한 | 글로벌 NAND 13% (출하 기준) | [ymtc.md](ymtc.md) |
+| **CXMT** (창신메모리) | DRAM | 안후이성 허페이 | 글로벌 DRAM 8% (4위 진입, Q3 2025) | [cxmt.md](cxmt.md) |
+| **YMTC** (양쯔메모리) | NAND Flash | 후베이성 우한 | 글로벌 NAND **14% — 사상 첫 3위** (출하 기준, Q2 2026 Counterpoint; 매출은 5위) ([출처](../../sources/articles/ymtc-nand-top3-ipo-2027-target-2026-08-28.md)) | [ymtc.md](ymtc.md) |
 
 ---
 
@@ -76,8 +76,8 @@ sources: [sources/README.md (Bloomberg, Reuters, Yole Group, Morgan Stanley, Tec
 
 - **공급 공백 수혜**: 한국·미국 업체가 HBM 등 고부가 제품에 집중하는 과정에서 발생하는 범용 DRAM/NAND 공급 공백을 CXMT, YMTC가 흡수 (Economy.ac, 2026-02-28)
 - **CXMT DRAM 4강 진입**: Q3 2025 기준 글로벌 DRAM 8% → 2027E 13.9% 전망
-- **YMTC NAND 13% 돌파**: Q3 2025 기준 글로벌 NAND 출하량 13%, 마이크론 추격 단계
-- **YMTC 3공장 건설 중**: 2027년 가동 목표, 신규 설비 50%를 DRAM(HBM 포함 가능성) 전환
+- **YMTC NAND 출하 3위 등극 (Q2 2026)**: Counterpoint 기준 출하 14%로 Kioxia 제치고 사상 첫 3위 — 단 매출은 5위 (컨슈머 편중). 상하이 STAR IPO 330억 위안 신청 수리 + FT발 "2027년 말 세계 1위" 목표 보도 ([ymtc-nand-top3-ipo-2027-target-2026-08-28.md](../../sources/articles/ymtc-nand-top3-ipo-2027-target-2026-08-28.md)). 대응 전략: [ymtc-nand-defense.md](../strategies/ymtc-nand-defense.md)
+- **YMTC 3공장 건설 중**: 2026년 말 가동 개시(국산 장비 50% 돌파), 신규 설비 50%를 DRAM(HBM 포함 가능성) 전환 검토
 - **YMTC hybrid bonding IP 지배**: 한국·미국 메모리사가 V11·HBM4 세대에서 라이선스 의존 가능 → 디커플링 시 차단 리스크
 
 ---

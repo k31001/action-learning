@@ -182,3 +182,13 @@ NAND Flash는 매 18~24개월마다 새로운 layer 세대로 전환하면서 la
 → **함의**: BiCS10이 SK Hynix V9를 능가 (QLC 기준 +30% 밀도). 4사 적층 경쟁에서 Kioxia 선두 진입. 한·미·중·일 4파전 강화.
 
 **출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
+
+---
+
+## [Update 2026-08-28] YMTC 5세대 294L 출하·Xtacking 5.0 — 적층 경쟁 변수 갱신
+
+출처: [ymtc-nand-top3-ipo-2027-target-2026-08-28.md](../../sources/articles/ymtc-nand-top3-ipo-2027-target-2026-08-28.md)
+
+- YMTC 5세대 **294단(액티브 232단) TLC 양산·출하 중** — Xtacking 4.0, 512Gb 다이 12.66 Gb/mm² (TechInsights). 주력 양산은 267단, **300단+·Xtacking 5.0 개발**로 SK하이닉스 321단 세대 대응·추월 겨냥.
+- IPO 조달 122억 위안이 차세대 NAND R&D로 배정 — §6의 YMTC hybrid bonding IP 지배 구도에서 **IP 보유자가 자본까지 갖추는** 조합. RS-6/RS-7의 자체 IP 트랙(자체 IP 비율 70%+) 긴급도 상승.
+- 시장 구도: Q2 2026 출하 기준 YMTC 14%로 Kioxia를 제치고 3위 — §5 시나리오별 영향 중 D(조용한 재편)의 "YMTC 저가 빗 압박" 메커니즘이 예상보다 빠르게 실현. 종합 대응은 [ymtc-nand-defense.md](../strategies/ymtc-nand-defense.md) 참조.

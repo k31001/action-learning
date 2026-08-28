@@ -130,6 +130,7 @@
 
 - [wiki/strategies/dev-org-transformation.md](wiki/strategies/dev-org-transformation.md) — 개발실 체질 전환 (수주 이행자→기술 파트너): As-Is/To-Be·리스크/이점·4대 축·3-Phase 액션 플랜·인재 축(FDE 스타)×제품 축(§4.7)
 - [wiki/strategies/fdp-host-ssd-platform.md](wiki/strategies/fdp-host-ssd-platform.md) — FDP Host–SSD 통합 플랫폼 (개발실 전환의 제품·기술 축): 환경 변화(Binding·수요 지배·통제권 상승) → Captive SSD 위상 4단계(데이터) → 전략 선택지 4개 비교·선택 논리 → 실행전략 6종·KPI
+- [wiki/strategies/ymtc-nand-defense.md](wiki/strategies/ymtc-nand-defense.md) — (NEW) YMTC 추격 방어 전략 "빗이 아니라 달러를 지킨다": 추격 실체 분해(빗 3위 ↔ 달러 5위) → 삼성 5축(바벨 철수 주도권·세대 전환 경제학·hybrid bonding IP 자립·FDP/SCA/FDE 락인·치킨게임 봉인+초과이익 배분) → 정부 4대 비대칭 교정(자본비용·인프라 속도·인재·시안 조건 협상) → 시나리오 A~E 연결·EWI 보드·반박 검토
 
 ## wiki/strategies/invariant — Robust 전략 (RS1~RS9)
 
@@ -213,6 +214,7 @@
 - [sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md](sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md) — (NEW) 가트너 captive NVMe SSD 전망 팩트체크: "on-premises storage 5%(2023)→30%+(2026)" 원문·범위 확인(어레이 벤더 자체 드라이브 문맥 — 하이퍼스케일러 캡티브 통계와 구분), $158B는 GMI SSD 컨트롤러 시장 수치
 - [sources/articles/fdp-technical-limits-adoption-context-2026-08.md](sources/articles/fdp-technical-limits-adoption-context-2026-08.md) — (NEW) FDP 기술 한계·배치 표준 선례 웹 리서치: Streams 채택 미미·ZNS 호스트 비용·메인라인 거부(파편화) / FDP = SmartFTL+DPM 통합(수요자 설계·하위 호환) / FAST'26 WARP — WAF ~1은 RUH-수명 정렬 조건부, 오분류·간섭·"Noisy RUH" 시 실패 (비판적 검토 근거)
 - [sources/articles/fdp-open-source-ecosystem-2026-08.md](sources/articles/fdp-open-source-ecosystem-2026-08.md) — (NEW) FDP 오픈소스 생태계 지도: 커널 5.19 passthrough→**6.16 블록 write streams 메인라인 진입**·도구 성숙(fio·QEMU 8.0·SPDK·xNVMe)·CacheLib 공식 지원 / AI 스택 — LMCache(vLLM·SGLang·Dynamo)·llm-d SSD 오프로드 일반화, **FDP 인지 백엔드 공백** = 업스트림 1호 과제의 표적
+- [sources/articles/ymtc-nand-top3-ipo-2027-target-2026-08-28.md](sources/articles/ymtc-nand-top3-ipo-2027-target-2026-08-28.md) — (NEW) YMTC 낸드 출하 3위 등극 종합(데일리한국 보도 방아쇠·다매체 교차): Counterpoint Q2 2026 출하 14% 첫 3위(삼성 25%·SK 22%)·**매출은 5위**·상하이 STAR IPO 330억 위안(생산 208억+R&D 122억)·Q1 순이익 333.8억 위안(GM 76.8%)·FT발 "2027년 말 1위" 목표·캐파 설계 상한 50만 WSPM·3공장 국산장비 50% 돌파·294단 출하/Xtacking 5.0 개발
 - [sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md](sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md) — MAD Podcast×Sachin Katti(OpenAI 산업 컴퓨트 총괄, 2026-07, 트랜스크립트 전문 보존): 수요≫공급 즉시 소진·컴퓨트 3배=매출 3배·최대 리스크는 과소 건설·OpenAI ~$50B/업계 ~$700B·AI 재귀(AI가 칩 설계)·전자→토큰 공장·전면 액체냉각(냉각↔메모리 대역폭)·그리드 투자 원칙·가스터빈/변압기/인력 병목·원자력·Jalapeño(와트당 토큰·Broadcom·9개월 테이프아웃)·Stargate 우산 전략·오프테이커 구조·보장 토큰·오비탈 컴퓨트 (대시보드 "인터뷰" 메뉴 미러)
 
 ### sources/raw-notes — 리서치 노트
