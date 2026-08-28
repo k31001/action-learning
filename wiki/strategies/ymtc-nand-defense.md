@@ -1,7 +1,7 @@
 ---
 type: strategy
 last_reviewed: 2026-08-28
-sources: [sources/articles/ymtc-nand-top3-ipo-2027-target-2026-08-28.md, sources/articles/enterprise-ssd-market-1q26-2026-08.md, sources/articles/july-2026-market-update-2026-07-04.md]
+sources: [sources/articles/ymtc-nand-top3-ipo-2027-target-2026-08-28.md, sources/articles/enterprise-ssd-market-1q26-2026-08.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/hbf-standard-china-dc-demand-2026-08-28.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md]
 ---
 
 # YMTC 추격 방어 전략 — "빗(bit)이 아니라 달러를 지킨다"
@@ -131,6 +131,7 @@ YMTC는 2026년 Q2 낸드 출하(빗) 점유율 14%로 Kioxia를 제치고 사�
 | IPO 완료·조달액 | 330억 위안 완주 여부 | 자금 자립 구조 확정 | 신규 관찰 |
 | Xtacking 5.0 양산 | 321단급 양산 개시 | 세대 격차 완전 소멸 | [nand-process-transition.md](../concepts/nand-process-transition.md) |
 | 자체 hybrid bonding IP 비율 | 50% 미달 시 경보 (방어 측 지표) | 축 3 진행도 — V10 양산 전 확보 필수 | `hybrid_bonding_ip` |
+| HBF 표준·생태계 (2026-08-28 추가) | ① 삼성 HBF 컨소시엄 합류 여부(방어 측) ② YMTC HBF 샘플·Ascend 채택 ③ HBF 탑재 추론 디바이스 실수요(2027~) | 낸드 신계층의 표준 밖 고립 vs 조건부 해자 분기 — §8.5 | [hbf-high-bandwidth-flash.md](../concepts/hbf-high-bandwidth-flash.md) |
 
 ---
 
@@ -150,7 +151,42 @@ YMTC는 2026년 Q2 낸드 출하(빗) 점유율 14%로 Kioxia를 제치고 사�
 
 ---
 
-## 8. 관련 페이지
+## 8. 후속 질의 (2026-08-28) — AI 집중·중국 DC 협업·미중 공존·HBF 해자
+
+사용자 후속 질문 5건에 대한 판단. 근거: [hbf-standard-china-dc-demand-2026-08-28.md](../../sources/articles/hbf-standard-china-dc-demand-2026-08-28.md), [lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md), [us-export-controls.md](../concepts/us-export-controls.md), [current-state-mb2-east-west-supply.md](core/current-state-mb2-east-west-supply.md), [rs4-customer-portfolio-diversification.md](invariant/rs4-customer-portfolio-diversification.md), [hbf-high-bandwidth-flash.md](../concepts/hbf-high-bandwidth-flash.md).
+
+### 8.1 "AI 수요에 집중하는 게 좋은 전략인가" — 집중하되, '독점 베팅'이 아니라 '가중 베팅'으로
+
+- **긍정 근거**: AI가 유일하게 구조적으로 성장하는 수요 축 — 글로벌 톱9 CSP 2026 CapEx $886.7B+, 서버 eSSD가 낸드 출하 48%. 축 1(가치 사다리)의 상단이 곧 AI 수요다.
+- **절제 근거**: 위키의 기준 리스크는 HBM 편중 다운사이드(최장석 — HBM 꺼지면 캐파 stranded)와 수요 변곡(RS-9). AI "집중"은 **RS-2 바벨의 고부가 끝단을 AI로 채우는 것**이지, 포트폴리오를 AI 단일 축으로 만드는 것이 아니다. 범용 최저원가 끝단과 [RS-8](invariant/rs8-structured-revenue-hedging.md) 바닥 계약이 반대쪽 추로 남아야 시나리오 C·D에서 생존한다.
+- **판단**: Yes — 단 "AI 수요 집중"의 정확한 형태는 *AI 가중 바벨*이며, 이는 YMTC 방어(축 1)와 동일한 수단이다.
+
+### 8.2 "중국 DC 기업과도 협업해야 하나" — 이미 하고 있고, 계속하되 '판매·다년 계약'과 '심층 공동설계'를 구분
+
+- **실측**: 영업 수장 이창수 — 중국 AI 수요는 미주와 비동조("중국은 AI에 목숨 걸었어"), **"지금 중국 빅테크(바이트댄스·알리바바·텐센트)와도 페이즈 2로 멀티이어를 진행"**, "경쟁사는 미국 셀렉티드 포커스인데 우리는 마켓셰어가 크니까 다 잘해야 돼 — 헤지를 위해서라도". 중국 4사 2026 CapEx +80%+, 바이트댄스 단독 ~$23B.
+- **경계선은 법이 이미 그어놨다**: HBM·첨단 DRAM은 2024년부터 대중 수출 전면 통제 — 중국 DC에 팔 수 있는 것은 범용 DRAM·NAND·eSSD 등 비통제 품목뿐. 따라서 "협업"의 실제 형태는 ① 비통제 품목의 다년 공급 계약(현행, 유지·확대), ② 통제 품목·공동설계(SCA/FDP 딥 인테그레이션)는 불가/자제 — 미국 하이퍼스케일러와의 신뢰 자산이 더 크다.
+- **판단**: Yes(비통제 품목 판매·다년 계약) / No(심층 기술 협업). 이 구분이 무너지는 순간 8.3의 리스크가 현실화된다.
+
+### 8.3 "미국과 관계가 어려워지면 미국에 집중하는 게 낫나" — 이분법이 아니라 '비대칭 이중 트랙'
+
+- 미국 집중 단일 노선의 문제: ① 중국 매출 ~20~25%를 자진 반납해도 미국이 대가를 주지 않는다(시안 라이선스는 연간 갱신 리스크로 남음), ② RS-4 위반 — NVIDIA 의존 70%의 SK하이닉스형 단일 고객 리스크를 국가 단위로 복제, ③ 중국 수요는 미주와 비동조라 **헤지 가치**가 있다(이창수).
+- 실제 위험 신호가 온 국면(MATCH 통과, 시안 갱신 실패)에는 [MB2](core/current-state-mb2-east-west-supply.md)의 Plan B(시안→평택 이전)와 신흥 시장(중동·인도) 3배 트랙이 완충 — "미국 집중"이 아니라 **"서방 심층 + 중국 표층 + 신흥 확장"의 3층 구조**가 설계된 답이다.
+- **판단**: No — 미국 '심층'(HBM·공동설계·현지 팹)과 중국 '표층'(비통제 품목 판매)은 서로 배타가 아니다. 포기 결정은 정책 이벤트(EWI: MATCH·시안 갱신)가 트리거할 때만.
+
+### 8.4 "고객 리스트에 미중 공존이 가능한가" — 현재는 가능, 공존의 형태는 '비대칭'
+
+- 실현 사실: 미 행정부가 H200 대중 판매 허용 + 중국 정부가 3사에 구매 승인(최대 40만 개) — 양쪽 규제 모두 "관리된 공존" 방향 (DF2 현 위치 0.5와 정합). 삼성은 이미 미주 하이퍼스케일러(HBM·eSSD 심층)와 중국 빅테크(범용·eSSD 다년) 양쪽 계약을 보유.
+- 공존이 깨지는 조건 = 시나리오 A/C 전환: MATCH 통과, 대중 통제의 낸드 확대, 중국의 보복(희토류·시장 접근). 이때도 잃는 것은 중국 '표층' 매출이며, 심층 자산(미국)은 남는다 — 비대칭 구조의 목적이 바로 이 절단면 관리다.
+- **판단**: 가능 — 단 "대칭적 공존"(양쪽에 같은 깊이)이 아니라 **"비대칭 공존"**(미국 심층·중국 표층)만 지속 가능하다. 리트머스는 EWI로 상시 감시(MATCH·시안·애플-CXMT 승인).
+
+### 8.5 "HBF 차별화는 해자인가, 중국이 금방 따라오나" — 따라온다. 단 '다른 생태계에서'. 해자는 실리콘이 아니라 표준·패키지 안의 자리
+
+- 상세 분석: [hbf-high-bandwidth-flash.md](../concepts/hbf-high-bandwidth-flash.md). 요지: HBF의 구성 요소 중 NAND 다이·본딩 적층은 YMTC의 홈그라운드다(Xtacking이 곧 NAND-로직 본딩, hybrid bonding 특허 지배, **Digitimes: "YMTC full speed toward HBF"**). "기술이 어려워서 못 따라온다"는 가정은 성립하지 않는다.
+- 못 따라오는 것은 **서방 가속기 패키지 안으로 들어가는 길**이다: OCP 표준(SanDisk-SK 주도, Google 합류), 가속기 공동설계·인증, 첨단 패키징 장비 통제. 중국 HBF는 Ascend 등 자국 생태계에서 병행 성립 → 세계 시장은 이중화되고, 서방 쪽 시장은 지정학이 지켜준다.
+- **삼성의 진짜 리스크는 중국이 아니라 표준 밖 고립**: 컨소시엄에 불참한 채 자체 zHBF·zNAND-O 노선 — eSSD 1위임에도 HBM 초기의 실기를 낸드 신계층에서 반복할 수 있다. 컨소시엄 합류 또는 NVIDIA Storage-Next 축 선점 중 하나를 조기 확정해야 한다.
+- **판단**: 조건부 해자 — ① 표준·가속기 생태계 안에 먼저 들어가고 ② 컨트롤러·펌웨어 통합(축 4)을 얹으면 서방 시장 한정 해자, 방치하면 2~3년 내 '차별화 없는 신계층'이 된다. 이 판단은 §6 EWI에 반영(삼성 컨소시엄 합류 여부·YMTC HBF 샘플·zNAND/HBF 채택 디바이스).
+
+## 9. 관련 페이지
 
 - [ymtc.md](../entities/ymtc.md) — 개체 페이지 (2026-08-28 갱신)
 - [china-competitors.md](../entities/china-competitors.md) — 중국 그룹 인덱스
@@ -162,3 +198,5 @@ YMTC는 2026년 Q2 낸드 출하(빗) 점유율 14%로 Kioxia를 제치고 사�
 - [downturn/steep-factors.md](../downturn/steep-factors.md) — P3 시안·P4 보조금 가격 하한
 - [korea-policy.md](../concepts/korea-policy.md) — K-칩스법·용인 클러스터
 - [storyline-cmo.md](../storyline/storyline-cmo.md) — 치킨게임 봉인 교훈
+- [hbf-high-bandwidth-flash.md](../concepts/hbf-high-bandwidth-flash.md) — HBF 신계층·해자 분석 (§8.5)
+- [current-state-mb2-east-west-supply.md](core/current-state-mb2-east-west-supply.md) — 동서 균형 공급 (§8.3·8.4)

@@ -1739,3 +1739,13 @@ PPT: 제품 축 ④ 1장 신설 — SCA→FDP→FDE 플라이휠 도식(중심 �
 **신설**: `strategies/ymtc-nand-defense.md` (query 환원) — 진단(빗 3위 ↔ 달러 5위 비대칭이 방어 전략을 규정) → 삼성 5축(RS-2 철수 주도권·RS-6 세대 전환 경제학·RS-7 hybrid bonding IP 자립·RS-3+FDP/SCA/FDE 락인·RS-5/8/1 치킨게임 봉인+초과이익 배분+시안 Plan B) → 정부 4대 비대칭 교정(자본비용·인프라 속도·인재 유출·시안 조건 협상) → 시나리오 A~E 연결(신규 코드 없이 기존 RS 재배선 = 무후회) → EWI 보드(매출 점유율 순위·DC eSSD 인증·4/5공장 착공 신규 관찰) → 반박 4종 검토.
 
 **대시보드**: `indicators.js` ymtc_nand_share 갱신(14%·3위 반영·서술 정정 — 기존 "4위 고착" 문구는 낡음) + KG 재생성, version 패치 bump. **건너뜀 사유**: storyline·시나리오 페이지는 정성 서술이라 수치 모순 없음(grep 확인) — 서사 재작성은 다음 정기 lint로 이월. outputs/report·slide는 전략 코드 체계(RS·D·MB/SB) 무변경이므로 구조 영향 없음. scenarioPlanning.js(SCENARIOS·확률) 무변경.
+
+## [2026-08-28] query | 후속 질의 5건 — AI 집중·중국 DC 협업·미중 공존·HBF 해자 (v2.46.12)
+
+질의: ① AI 수요 집중이 좋은 전략인가 ② 중국 DC 기업과 협업해야 하나 ③ 미국 집중이 낫나 ④ 고객 리스트 미중 공존 가능한가 ⑤ HBF 차별화는 해자인가.
+
+**소스 신설**: `hbf-standard-china-dc-demand-2026-08-28.md` — HBF 표준화(SanDisk·SK 컨소시엄 2026-02 → 첫 OCP 스펙 FMS 2026-08, 512GB·3.0TB/s, Google·Tenstorrent 합류, 샘플 2026 H2·디바이스 2027 초)·삼성 컨소시엄 밖(zNAND-O·zHBM·zHBF 신호)·YMTC "full speed toward HBF"(Digitimes)·Huawei 중국 HBM 컨소시엄 / 중국 4사 2026 CapEx +80%(바이트댄스 ~$23B·알리바바 3년 ~$53B)·H200 대중 판매·구매 양측 승인(3사 최대 40만 개).
+
+**위키**: `concepts/hbf-high-bandwidth-flash.md` 신설(구성 요소별 복제 가능성 분해 — 다이·본딩은 YMTC 홈그라운드, 해자는 표준·가속기 패키지 안의 자리 = 조건부. 삼성 리스크는 중국이 아니라 표준 밖 고립) + `strategies/ymtc-nand-defense.md` §8 후속 질의 신설(①AI 가중 바벨 ②중국 협업 = 비통제 품목 판매·다년 Yes / 심층 공동설계 No — 이창수 "중국 빅테크 페이즈 2 멀티이어" 실측 인용 ③미국 단일 집중 No — 서방 심층+중국 표층+신흥 3층 ④비대칭 공존만 지속 가능 ⑤HBF 조건부 해자) + §6 EWI에 HBF 행 추가 + `entities/ymtc.md` HBF 확장 절.
+
+**대시보드**: KG 재생성, version v2.46.12(패치). **건너뜀 사유**: indicators.js 무변경(HBF EWI는 위키 관찰 항목 단계 — 정량 임계 미정), 시나리오·storyline 무변경(DF2 0.5 판단 재확인일 뿐 이동 없음), outputs 무변경.

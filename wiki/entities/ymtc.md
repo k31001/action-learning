@@ -140,6 +140,10 @@ sources: [sources/README.md (Digitimes, Tom's Hardware, TechInsights, Yole Group
 | 4·5공장 (계획) | 각 10만 WSPM 설계 | 일정 미공개 |
 | 설계 상한 | **~50만 WSPM** | Digitimes: 실질 기여는 2028년 이후 |
 
+### HBF·HBM 방향 확장 (2026-08-28 추가)
+
+- Digitimes(2025-12-31): **"YMTC goes full speed toward HBF"** — Xtacking 진화로 AI 가속기 통합(TSV+hybrid bonding) 지향. TSV 기반 HBM 진입 보도(TrendForce 2025-09) + Huawei 주도 중국 HBM 컨소시엄 참여 ([hbf-standard-china-dc-demand-2026-08-28.md](../../sources/articles/hbf-standard-china-dc-demand-2026-08-28.md)). 해자 분석은 [hbf-high-bandwidth-flash.md](../concepts/hbf-high-bandwidth-flash.md) 참조.
+
 ### "2027년 말 세계 1위" 목표
 
 - FT 보도: IPO 투자자 미팅에서 "2027년 말까지 삼성·SK를 제치고 세계 최대 NAND 생산업체" 목표 공언. IPO 밸류에이션용 공격적 목표 성격이 강하나, 설계 상한 50만 WSPM과 결합하면 빗 기준 추월 시도는 실재하는 방향.
