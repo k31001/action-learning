@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-01 (병목 모델) ─────────────────────────────────────────────────
+  {
+    date: '2026-09-01',
+    type: 'build',
+    version: 'v2.46.12',
+    title: '병목 모델 정기 갱신 — 전력 76(Red 최초 진입)·CAPEX 38·파운드리 48·패키징 65',
+    summary:
+      '2026-07-04 이후 병목 모델 4대 제약지수 재점검. ERCOT가 08-03 신규 데이터센터 접속 절차를 전면 중단(감사 시한 12-10)하며 전력이 4개 점검 연속 재상승·최초 Red 밴드 진입. CAPEX·파운드리·패키징은 완화 지속 — 빅4 Q2 실적 전원 상향(삭감 0건), TSMC N3 조기 램프, CoWoS 수급갭 20%→10% 축소·삼성 HBM4 마이크로범프 수율 80% 골든수율 조기 달성(하이브리드본딩 16-Hi는 여전히 ~10%로 HBM4E/5E 이연).',
+    tags: ['병목 모델', '전력', 'CAPEX', '파운드리', '패키징', 'ERCOT', 'CoWoS', 'HBM4'],
+    items: [
+      { label: '전력 72→76 (▲+4, Red 최초 진입)', detail: 'ERCOT 신규 DC 접속 절차 전면 중단(08-03 Abbott 지시)·474GW 신청 90% DC·감사 12-10 마감·BNEF 최대 49.8GW 지연·$15억 비용 추정. 큐 적체(점증)에서 접속 절차 정지(레짐 전환)로 성격 악화' },
+      { label: 'CAPEX/ROI 40→38 (▼-2)', detail: '빅4(MS·Alphabet·Amazon·Meta) Q2 실적 시즌 전원 추가 상향(합산 ~$745~750B, +82% YoY), 삭감 0건. HY OAS 안정' },
+      { label: '파운드리 50→48 (▼-2)', detail: 'TSMC N3 18만 장 목표를 원 예상보다 2~3개월 조기 달성 전망(4Q26 초)·N2 연말 10만 장 경로 순항' },
+      { label: '패키징 67→65 (▼-2)', detail: 'CoWoS 수급갭 20%→10% 축소 최초 정량 확인(수율 98~99%)·삼성 HBM4(마이크로범프) 수율 80% 골든수율 업계 예상보다 ~4개월 조기 달성(연말 목표 85%). 하이브리드본딩(16-Hi)은 여전히 ~10%로 HBM4E/5E 이연 — CoPoS 전면양산 2028~29 불변' },
+    ],
+    links: [
+      { label: 'wiki/concepts/bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'sources/articles/september-2026-market-update-2026-09-01.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/september-2026-market-update-2026-09-01.md' },
+    ],
+  },
+
   // ── 2026-09-01 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-01',
