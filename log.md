@@ -14,6 +14,11 @@
 
 ---
 
+## [2026-09-01] assessment | 시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) (v2.46.11)
+- **무엇**: 직전 08-25 재평가 이후 git log 변경분을 계층 분류하고 08-28 수집 소스로 in-window 신호를 대조 → 포지션 맵·확률 전부 **유지**로 확정. 08-28 수집 데이터로 EWI 6종·시나리오 트리거 3종을 실측 갱신. (08-28 ingest 로그가 후속 과제로 이월했던 cxmt 수율 >90%·ymtc 3위 EWI 반영을 이번 재평가에서 회수.)
+- **왜**: 변경분은 전부 ③ SP-2 다운턴 트랙(다섯 시나리오 발현 근접도 dt-b/c/d/e-signals 08-28 — 별도 축 DF-D1×DF-D2라 SP-1 무이동) ④ 전략/FDP(FDP 협업 3유형 비교·스토리지 벤더 딜 구조·KV Cache SSD 수요 — DF3/전략) ② 역사 리서치(2023 NAND 다운턴 벤더별 데이터) ⑤ 발표 층(영향 덱 6p 완성)으로 **신규 실현된 외부 거시 사실 0건**. 08-28 수집 in-window 신호도 정점 재확인·유보뿐: HBM 비트수요 성장 감속(2025 +130%→2026 +70%→2027 +50~60%, 단 여전히 공급>수요)·TrendForce 2027 메모리 $1.28T 상향(Agentic AI 구조적 확장)·재고 역대최저(DRAM 2~3주·NAND 3~4주)·SEMI 장비지출 사상최대(2026 $133B·2027 $151B)·NVIDIA Rubin Ultra HBM 구성 축소 검토(공급 타이트발, 수요 붕괴 아님)·토큰 소비 폭증(구글 3.2 quadrillion/월 +7배, Jevons 상쇄). DF2: MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전(CXMT DDR5 수율 >90%·HP/Asus/Acer 인증)했으나 Schumer 서한 답변시한(08-21) 경과·백악관 사인오프 대기·9월 시진핑 방미 정상회담 관측(저신뢰)으로 리트머스 미해결 → DF2 이동 근거 미충족.
+- **영향받은 페이지**: `wiki/driving-forces/key-drivers.md`(DF1·DF2 09-01 현재 위치)·`wiki/scenarios/scenario-matrix.md`(확률 추정 09-01 로그)·`dashboard/src/data/indicators.js`(INITIAL_QUADRANT_POSITIONS current·SCENARIOS 주석·EWI 6종 cxmt_dram_share·ymtc_nand_share·cxmt_apple_qualification·samsung_hbm4_rubin_share·custom_hbm_revenue_share·bigtech_capex_growth·트리거 3종 match_act_passed·apple_cxmt_approved·samsung_hbm4_nvidia_confirmed)·`dashboard/src/data/scenarioPlanning.js`(SCENARIOS_DATA A·B 주석)·`dashboard/src/data/updates.js`(assessment 엔트리 신설 — 업데이트 내역 메뉴)·`dashboard/src/data/knowledgeGraph.js`(재생성)·`dashboard/src/version.js`(v2.46.10→v2.46.11 패치).
+
 ## [2026-08-28] ingest+build | 영향 덱 6p 완성 — 다섯 시나리오 전부에 발현 근접도 평가 1장씩 (병렬 에이전트 조사)
 - **무엇**: downturn-scenario-impact.pptx를 6장 한 덱으로 완성 — 1p 다섯 갈래 개요 + 2~6p 시나리오별 발현 근접도(DT-A~E). 자료 조사·분석은 시나리오별 별도 에이전트 4개 병렬 수행(DT-B·C·D·E), 슬라이드는 공용 빌더(proximity_slide)로 통일 프레임: 동인 실측 차트 / 스탯 타일 3 / 판정 보드(실측된 전조 vs 미발동 발화 신호 / 완충 / 감시선) / 정성 종합(확률 숫자 없음 — PPT 층 확률 제거 방침 유지).
 - **판정 요약**: DT-B "전조 최다·발화 0 — 상쇄(Jevons)가 꺾이면 경보 없이 발현" · DT-C "장전 완료·방아쇠 미당김(2028 만기, NAND 2H27이 예고편)" · DT-D "유일하게 진행 중 — 가격 앵커만 슈퍼사이클이 가림" · DT-E "잠복 국면 — 정의권은 이동, 매출은 표준(미리 가 있는 것만 유효)".
