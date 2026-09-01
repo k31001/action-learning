@@ -721,6 +721,292 @@ function slideFdpHow(pres, ic) {
 }
 
 /* ---------------------------------------------------------------- */
+/* 배경 ① — 2023 다운턴 복기: 낙폭·노출·재배분·Solidigm 반증           */
+/* ---------------------------------------------------------------- */
+const SB = { BLUE: "1428A0", T1: "3C5AC8", T2: "8FA0DC", BG: "EEF1FA", INK: "1A1A1A", GRAY: "555555", LINE: "D9D9D9", BAR: "B9C2D0", BAR2: "D6DCE8" };
+
+function sbSkeleton(s, titles) {
+  const colX = [0.5, 4.7, 8.89], colW = 3.94;
+  titles.forEach((t, i) => {
+    s.addText(String(i + 1), {
+      shape: "ellipse", x: colX[i], y: 1.3, w: 0.34, h: 0.34,
+      fill: { color: SB.BLUE }, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 14, bold: true, color: "FFFFFF", margin: 0,
+    });
+    s.addText(t, {
+      x: colX[i] + 0.44, y: 1.28, w: colW - 0.44, h: 0.38, valign: "middle",
+      fontFace: FONT, fontSize: 13.5, bold: true, color: SB.INK, margin: 0,
+    });
+    s.addShape("roundRect", {
+      x: colX[i], y: 1.78, w: colW, h: 5.06, rectRadius: 0.08,
+      fill: { color: "FFFFFF" }, line: { color: SB.LINE, width: 1 },
+    });
+  });
+  return colX;
+}
+
+function slideFdpBg1(pres, ic) {
+  const s = pres.addSlide();
+  header(s, "배경 ①", { ...FDP_OPTS, title: "2023 다운턴: 깊이는 고객 구조가 결정했다" });
+
+  s.addText([
+    { text: "배경  ", options: { bold: true, color: SB.BLUE } },
+    { text: "서버 노출이 큰 벤더일수록 깊게 맞았다: 문제는 총수요가 아니라 수요의 형태 변화, 답은 다변화가 아니라 니즈 적중 (Solidigm)", options: { color: SB.GRAY } },
+  ], { x: 0.5, y: 0.9, w: 12.33, h: 0.3, fontFace: FONT, fontSize: 13, margin: 0 });
+
+  const colX = sbSkeleton(s, ["낙폭: 피크(2Q22)→저점(1Q23)", "원인: 서버·고객 노출", "재배분, 그리고 반증"]);
+
+  // ── 컬럼 1: 벤더별 낙폭 (아래로 내려가는 바)
+  const drops = [
+    ["삼성", 54, SB.BLUE],
+    ["SK그룹", 63, SB.BAR],
+    ["WDC", 45, SB.BAR],
+    ["Kioxia", 35, SB.BAR],
+  ];
+  const base1 = 2.42;
+  s.addShape("line", { x: 0.72, y: base1, w: 3.5, h: 0, line: { color: SB.GRAY, width: 1 } });
+  drops.forEach(([name, pct, color], i) => {
+    const x = 0.86 + i * 0.85;
+    const h = (pct / 63) * 2.15;
+    s.addText(name, {
+      x: x - 0.14, y: 2.12, w: 0.9, h: 0.26, align: "center",
+      fontFace: FONT, fontSize: 10.5, bold: true, color: SB.INK, margin: 0,
+    });
+    s.addShape("roundRect", { x, y: base1, w: 0.6, h, rectRadius: 0.03, fill: { color } });
+    s.addText(`-${pct}%`, {
+      x: x - 0.14, y: base1 + h + 0.03, w: 0.9, h: 0.28, align: "center",
+      fontFace: FONT, fontSize: 12.5, bold: true, color: color === SB.BLUE ? SB.BLUE : SB.GRAY, margin: 0,
+    });
+  });
+  s.addText([
+    { text: "진앙은 SSD  ", options: { bold: true, color: SB.BLUE } },
+    { text: "산업 매출 중 SSD 기여 50%+ → 20~25% (4Q22→1Q23)", options: { color: SB.INK } },
+  ], {
+    shape: "roundRect", rectRadius: 0.05, x: 0.72, y: 5.32, w: 3.5, h: 0.62,
+    fill: { color: "F4F4F6" }, valign: "middle",
+    fontFace: FONT, fontSize: 10, margin: 0.08, lineSpacingMultiple: 1.1,
+  });
+  s.addText("분기 매출 피크·저점 기준, TrendForce 분기 데이터 합성. Micron은 회계분기 차이로 제외", {
+    x: 0.72, y: 6.06, w: 3.5, h: 0.4,
+    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0, lineSpacingMultiple: 1.1,
+  });
+
+  // ── 컬럼 2: Enterprise SSD 점유 (4Q22) 가로 바 + 해석
+  s.addText("Enterprise SSD 매출 점유, 4Q22 (시장 $3.79B)", {
+    x: 4.92, y: 1.94, w: 3.5, h: 0.28,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
+  });
+  const shares = [
+    ["삼성", 46.9, SB.BLUE],
+    ["SK그룹", 19.0, SB.BAR],
+    ["Kioxia", 13.0, SB.BAR],
+  ];
+  shares.forEach(([name, pct, color], i) => {
+    const y = 2.34 + i * 0.54;
+    s.addText(name, {
+      x: 4.92, y: y + 0.02, w: 0.95, h: 0.3,
+      fontFace: FONT, fontSize: 10.5, color: SB.INK, margin: 0, valign: "middle",
+    });
+    s.addShape("roundRect", { x: 5.92, y, w: (pct / 46.9) * 2.0, h: 0.32, rectRadius: 0.03, fill: { color } });
+    s.addText(`${pct}%`, {
+      x: 5.92 + (pct / 46.9) * 2.0 + 0.06, y: y + 0.02, w: 0.7, h: 0.3,
+      fontFace: FONT, fontSize: 11, bold: true, color: color === SB.BLUE ? SB.BLUE : SB.GRAY, margin: 0, valign: "middle",
+    });
+  });
+  s.addText("노출 순위 = 낙폭 순위. 삼성은 enterprise SSD 1위로 하이퍼스케일러 노출 최대, SK그룹 -63%에는 서버 100%인 Solidigm 포함. 반면 Kioxia(모바일 중심)·WDC(리테일 중심)는 얕게 맞았다", {
+    x: 4.92, y: 4.1, w: 3.5, h: 1.5,
+    fontFace: FONT, fontSize: 10.5, color: SB.INK, margin: 0, valign: "top", lineSpacingMultiple: 1.2,
+  });
+  s.addText("출처: TrendForce enterprise SSD 4Q22 · Blocks & Files", {
+    x: 4.92, y: 6.42, w: 3.5, h: 0.3,
+    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0,
+  });
+
+  // ── 컬럼 3: CapEx 재배분 + Solidigm 반증
+  s.addText("하이퍼스케일러 CapEx ($B, 각사 10-K)", {
+    x: 9.11, y: 1.94, w: 3.5, h: 0.28,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
+  });
+  const capex = [
+    ["Amazon", [61.1, 63.6, 52.7]],
+    ["Meta", [19.2, 31.4, 28.1]],
+    ["Alphabet", [24.6, 31.5, 32.3]],
+  ];
+  const base3 = 3.66, yearColors = [SB.BAR2, SB.T2, SB.BLUE];
+  s.addShape("line", { x: 9.11, y: base3, w: 3.5, h: 0, line: { color: SB.GRAY, width: 1 } });
+  capex.forEach(([name, vals], i) => {
+    const gx = 9.27 + i * 1.14;
+    vals.forEach((v, j) => {
+      const h = (v / 64) * 1.3;
+      s.addShape("rect", { x: gx + j * 0.32, y: base3 - h, w: 0.28, h, fill: { color: yearColors[j] } });
+    });
+    s.addText(name, {
+      x: gx - 0.15, y: base3 + 0.04, w: 1.26, h: 0.24, align: "center",
+      fontFace: FONT, fontSize: 9.5, color: SB.INK, margin: 0,
+    });
+  });
+  s.addText("’21  ’22  ’23  ·  Amazon 창사 최초 감소(-17%), Meta -11%. 반면 AI 서버는 ’23 ~$50B로 서버 시장 가치의 ~23%: 총량이 아니라 재배분", {
+    x: 9.11, y: 4.02, w: 3.5, h: 0.78,
+    fontFace: FONT, fontSize: 9.5, color: SB.GRAY, margin: 0, valign: "top", lineSpacingMultiple: 1.15,
+  });
+  s.addShape("roundRect", {
+    x: 9.09, y: 4.92, w: 3.54, h: 1.68, rectRadius: 0.07,
+    fill: { color: SB.BG }, line: { color: SB.BLUE, width: 1.25 },
+  });
+  s.addText([
+    { text: "반증: Solidigm", options: { fontSize: 11.5, bold: true, color: SB.BLUE, breakLine: true } },
+    { text: "낙폭 최심부(SK그룹)에서 ’23.07 61.44TB QLC 출시로 AI 스토리지 수요 적중, ’24 흑자 전환. 다변화(방어)가 아니라 니즈 적중(공격)이 다운턴을 이긴다", options: { fontSize: 10, color: SB.INK } },
+  ], {
+    x: 9.27, y: 5.02, w: 3.2, h: 1.5,
+    fontFace: FONT, margin: 0, valign: "top", lineSpacingMultiple: 1.15,
+  });
+  s.addText("출처: 각사 10-K · Platformonomics · TrendForce", {
+    x: 9.11, y: 6.62, w: 3.5, h: 0.22,
+    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0,
+  });
+}
+
+/* ---------------------------------------------------------------- */
+/* 배경 ② — KV Cache Offloading 수요와 DWPD 갭                        */
+/* ---------------------------------------------------------------- */
+function slideFdpBg2(pres, ic) {
+  const s = pres.addSlide();
+  header(s, "배경 ②", { ...FDP_OPTS, title: "KV Cache: 요구 내구성은 현 제품의 2~10배" });
+
+  s.addText([
+    { text: "니즈  ", options: { bold: true, color: SB.BLUE } },
+    { text: "스토리지가 추론의 캐시 계층으로 승격된다: 수요는 폭증하고, 쓰기 내구성 요구는 현행 TLC·QLC 제품군을 넘는다", options: { color: SB.GRAY } },
+  ], { x: 0.5, y: 0.9, w: 12.33, h: 0.3, fontFace: FONT, fontSize: 13, margin: 0 });
+
+  sbSkeleton(s, ["신규 수요: KV Cache Offloading", "왜 write-intensive인가", "DWPD 갭: 새 전략의 근거"]);
+
+  // ── 컬럼 1: 계층 도식 + 수요 전망 + 빅넘버
+  const tiers = [
+    ["GPU HBM", "F4F4F6", SB.GRAY],
+    ["호스트 DRAM", "E5E9F2", SB.INK],
+    ["SSD: KV 캐시 계층", SB.BLUE, "FFFFFF"],
+  ];
+  tiers.forEach(([t, fill, tc], i) => {
+    const y = 1.96 + i * 0.44;
+    s.addShape("roundRect", { x: 1.32, y, w: 2.3, h: 0.32, rectRadius: 0.04, fill: { color: fill } });
+    s.addText(t, {
+      x: 1.32, y, w: 2.3, h: 0.32, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 10, bold: i === 2, color: tc, margin: 0,
+    });
+    if (i < 2) s.addText("↓", {
+      x: 2.32, y: y + 0.3, w: 0.3, h: 0.16, align: "center", valign: "middle",
+      fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0,
+    });
+  });
+  s.addText("Dynamo·CMX·LMCache·Mooncake가 SSD 계층 공식 지원", {
+    x: 0.72, y: 3.34, w: 3.5, h: 0.26, align: "center",
+    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0,
+  });
+  // KV cache NAND 수요 (범위 바)
+  const base1 = 5.28;
+  s.addShape("line", { x: 0.92, y: base1, w: 2.9, h: 0, line: { color: SB.GRAY, width: 1 } });
+  const demand = [
+    ["2027", 75, 100],
+    ["2028", 150, 200],
+  ];
+  demand.forEach(([yr, lo, hi], i) => {
+    const x = 1.35 + i * 1.35;
+    const hLo = (lo / 200) * 1.1, hHi = (hi / 200) * 1.1;
+    s.addShape("rect", { x, y: base1 - hHi, w: 0.7, h: hHi - hLo, fill: { color: SB.T2 } });
+    s.addShape("rect", { x, y: base1 - hLo, w: 0.7, h: hLo, fill: { color: SB.BLUE } });
+    s.addText(`${lo}~${hi}EB`, {
+      x: x - 0.35, y: base1 - hHi - 0.28, w: 1.4, h: 0.26, align: "center",
+      fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
+    });
+    s.addText(yr, {
+      x: x - 0.15, y: base1 + 0.04, w: 1.0, h: 0.24, align: "center",
+      fontFace: FONT, fontSize: 10, color: SB.INK, margin: 0,
+    });
+  });
+  s.addText("KV cache 단독 NAND 추가 수요", {
+    x: 0.72, y: 3.52, w: 3.5, h: 0.26,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
+  });
+  s.addText([
+    { text: "35%  ", options: { fontSize: 20, bold: true, color: SB.BLUE } },
+    { text: "2030년 AI DC NAND 워크로드 중 KV cache 비중 (SanDisk, FMS 2026) · NVL144 랙 연 5만 대 기준 연 ~0.44EB", options: { fontSize: 9.5, color: SB.GRAY } },
+  ], {
+    x: 0.72, y: 5.72, w: 3.5, h: 0.94,
+    fontFace: FONT, margin: 0, valign: "middle", lineSpacingMultiple: 1.12,
+  });
+
+  // ── 컬럼 2: write-intensive 특성 4 + 결론
+  const traits = [
+    ["세션마다 생성·갱신", "요청이 곧 쓰기: 연속적 쓰기 부하"],
+    ["짧고 제각각인 수명", "블록별 라이프사이클이 모두 다르다"],
+    ["비동기 무효화·재적재", "퇴출과 재활성이 상시 반복"],
+    ["멀티테넌트 혼합", "GC 간섭으로 WAF 증폭"],
+  ];
+  traits.forEach(([t, c], i) => {
+    const y = 1.98 + i * 0.86;
+    s.addShape("rect", { x: 4.92, y: y + 0.05, w: 0.14, h: 0.14, fill: { color: SB.BLUE } });
+    s.addText([
+      { text: t, options: { fontSize: 11, bold: true, color: SB.INK, breakLine: true } },
+      { text: c, options: { fontSize: 10, color: SB.GRAY } },
+    ], {
+      x: 5.18, y: y - 0.06, w: 3.3, h: 0.8,
+      fontFace: FONT, margin: 0, valign: "top", lineSpacingMultiple: 1.12,
+    });
+  });
+  s.addText([
+    { text: "결과  ", options: { bold: true, color: SB.BLUE } },
+    { text: "일반 서버 앱 대비 월등한 쓰기 밀도: mixed-use 등급을 넘는 내구성 요구", options: { color: SB.INK } },
+  ], {
+    shape: "roundRect", rectRadius: 0.05, x: 4.92, y: 5.5, w: 3.5, h: 0.62,
+    fill: { color: "F4F4F6" }, valign: "middle",
+    fontFace: FONT, fontSize: 10.5, margin: 0.08, lineSpacingMultiple: 1.1,
+  });
+  s.addText("출처: ScaleFlux 발표 · NVIDIA Dynamo 문서", {
+    x: 4.92, y: 6.42, w: 3.5, h: 0.26,
+    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0,
+  });
+
+  // ── 컬럼 3: DWPD 갭 바 차트 + So-What
+  s.addText("요구 대비 2~10배 갭 (5년 보증 기준 DWPD)", {
+    x: 9.11, y: 1.94, w: 3.5, h: 0.28,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
+  });
+  const base3 = 4.78;
+  s.addShape("line", { x: 9.05, y: base3, w: 3.55, h: 0, line: { color: SB.GRAY, width: 1 } });
+  const dwpd = [
+    ["고용량 QLC", "0.6", 0.6, 0.6, SB.BAR],
+    ["TLC RI", "1", 1, 1, SB.BAR],
+    ["TLC MU", "3", 3, 3, SB.BAR],
+    ["KV cache 요구", "7~10+", 7, 10, SB.BLUE],
+  ];
+  dwpd.forEach(([name, label, lo, hi, color], i) => {
+    const x = 9.2 + i * 0.87;
+    const hLo = (lo / 10) * 2.3, hHi = (hi / 10) * 2.3;
+    if (hi > lo) s.addShape("rect", { x, y: base3 - hHi, w: 0.62, h: hHi - hLo, fill: { color: SB.T2 } });
+    s.addShape("rect", { x, y: base3 - hLo, w: 0.62, h: hLo, fill: { color } });
+    s.addText(label, {
+      x: x - 0.2, y: base3 - hHi - 0.28, w: 1.0, h: 0.26, align: "center",
+      fontFace: FONT, fontSize: 11, bold: true, color: color === SB.BLUE ? SB.BLUE : SB.GRAY, margin: 0,
+    });
+    s.addText(name, {
+      x: x - 0.22, y: base3 + 0.04, w: 1.06, h: 0.44, align: "center",
+      fontFace: FONT, fontSize: 9, color: SB.INK, margin: 0, lineSpacingMultiple: 1.0,
+    });
+  });
+  s.addShape("roundRect", {
+    x: 9.09, y: 5.5, w: 3.54, h: 1.34, rectRadius: 0.07,
+    fill: { color: SB.BG }, line: { color: SB.BLUE, width: 1.25 },
+  });
+  s.addText([
+    { text: "갭의 해법이 곧 전략", options: { fontSize: 11, bold: true, color: SB.BLUE, breakLine: true } },
+    { text: "FDP로 수명별 RUH 분리·WAF 절감 = 유효 DWPD 확보 (ScaleFlux도 FDP 200+ 스트림으로 7~10 DWPD 달성) + 고내구 설계. NVIDIA CMX 생태계와 직결", options: { fontSize: 9.5, color: SB.INK } },
+  ], {
+    x: 9.27, y: 5.58, w: 3.2, h: 1.2,
+    fontFace: FONT, margin: 0, valign: "top", lineSpacingMultiple: 1.14,
+  });
+}
+
+/* ---------------------------------------------------------------- */
 /* 제품·기술 축 ④ — 생태계 확산·락인 실행전략 (3컬럼, Samsung Blue)     */
 /* ---------------------------------------------------------------- */
 function slideFdpEco(pres, ic) {
@@ -919,6 +1205,8 @@ async function main() {
   slideFdpWhy(combined, ic);
   slideFdpOptions(combined, ic);
   slideFdpHow(combined, ic);
+  slideFdpBg1(combined, ic);
+  slideFdpBg2(combined, ic);
   slideFdpEco(combined, ic);
   const outCombined = path.join(PRES_DIR, "dev-transformation-summary.pptx");
   await combined.writeFile({ fileName: outCombined });
@@ -930,7 +1218,7 @@ async function main() {
     ["mid", [slideMid]],
     ["low", [slideLow]],
     ["fdp", [slideFdpWhy, slideFdpOptions, slideFdpHow, slideFdpEco]],
-    ["fdp-eco", [slideFdpEco]],
+    ["fdp-eco", [slideFdpBg1, slideFdpBg2, slideFdpEco]],
   ];
   for (const [name, builds] of singles) {
     const p = new pptxgen();

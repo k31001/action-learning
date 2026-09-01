@@ -1669,3 +1669,9 @@ PPT: 제품 축 ④ 1장 신설 — SCA→FDP→FDE 플라이휠 도식(중심 �
 ## [2026-08-05] build | 제품 축 ④에 FDE 도입 선례 추가 (v2.46.9)
 
 요청: FDE의 Palantir·타사 도입 사례 추가. 3번 컬럼에 "FDE 선례" 박스 신설(Palantir 창안·코드명 Delta·640% 주가 동력으로 회자, Anthropic·OpenAI도 엔터프라이즈 GTM으로 채택 — palantir-fde-model-2026-07.md 인용), 채용·양성·운영 3행 압축 재배치. 2번 컬럼(Micron ↔ Anthropic)과 선례 박스 대구 구조. wiki §4.5 실행전략 3에 동일 선례 문구 반영. pptx 재생성·미러, version v2.46.9(패치).
+
+## [2026-08-05] ingest+build | 배경 슬라이드 2장: 2023 다운턴 복기 + KV Cache·DWPD 갭 (v2.46.10)
+
+요청: FDP 생태계 전략의 배경·근거 슬라이드 2장(데이터 기반 그래프). **리서치·소스 2건 등재**: ① nand-downturn-2023-vendor-data.md — TrendForce 분기 데이터 합성으로 피크(2Q22)→저점(1Q23) 벤더 낙폭 산출(삼성 -54%·SK그룹 -63%·WDC -45%·Kioxia -35%, SSD 매출 기여 50%→20~25% 붕괴), enterprise SSD 4Q22 점유(삼성 46.9% 1위=서버 노출 최대), 하이퍼스케일러 CapEx 2021~23(Amazon 창사 최초 감소·AI 서버 '23 ~$50B·서버 가치 23% = 재배분), Solidigm 반증('23.07 61.44TB QLC → '24 흑자 전환). ② kv-cache-ssd-demand-2026.md — SanDisk FMS'26(KV cache NAND 2027 75~100EB·2028 2배·2030 AI DC 워크로드 35%), ScaleFlux 요구 7~10+ DWPD·FDP 200+ 스트림으로 달성, 현행 QLC 0.6/TLC 1~3 DWPD 갭.
+
+wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·Solidigm 교훈)·§2.6(KV Cache 니즈·DWPD 갭: 갭의 해법이 곧 FDP 전략) 신설 — 기존 nvidia-cmx-scada 페이지와 연결. PPT 배경 ①·② 신설(Samsung Blue 3컬럼·수제 차트: 낙폭 바·점유 바·CapEx 그룹 바·수요 범위 바·DWPD 갭 바), -fdp-eco 3장(배경 2 + 실행 1)·통합본 9장. DT_DOWNLOADS desc 갱신, version v2.46.10(패치). 대시보드 UI 차트 반영은 범위 외(요청 시).

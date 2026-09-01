@@ -295,7 +295,7 @@ export const DT_DOWNLOADS = [
     file: 'dev-transformation-summary-fdp-eco.pptx',
     level: '실행',
     label: '생태계 확산 실행전략',
-    desc: 'SCA·FDP·FDE 락인 플라이휠 · 워크로드 교환 · 전문가 5종 · FDE 운영 (1장)',
+    desc: '2023 다운턴 교훈 · KV Cache 수요·DWPD 갭 · SCA·FDP·FDE 실행전략 (3장)',
     color: '#028090',
   },
 ]

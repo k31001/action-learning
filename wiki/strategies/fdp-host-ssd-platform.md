@@ -7,6 +7,8 @@ sources:
   - sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md
   - sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md
   - sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md
+  - sources/articles/nand-downturn-2023-vendor-data.md
+  - sources/articles/kv-cache-ssd-demand-2026.md
 ---
 
 # FDP Host–SSD 통합 플랫폼 전략 — 환경 변화에서 전략 선택까지 (DT-P: 개발실 전환의 제품·기술 축)
@@ -38,6 +40,30 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 | 4. **표준 주도 + 웨이퍼 직구매** | 2022~26 | 인터페이스 표준 + 공급 단위 | **FDP(TP4146): Meta·Google이 각자 WAF 문제를 풀다 합류, 삼성과 6개월 만에 비준(2023)** · Meta CacheLib FDP 공식 지원 · NAND 웨이퍼 다년 계약(계약가 월 +60%, Q1'25 대비 +246%) |
 
 **독해**: ① 통제권 상승은 일방향이다 — 펌웨어를 가진 고객이 컨트롤러로, 컨트롤러를 가진 고객이 표준과 웨이퍼로 내려갔다. ② **FDP 표준 자체가 고객이 설계한 것** — 벤더 기능이 아니라 "데이터 배치 통제권을 표준으로 달라"는 요구의 산물. ③ 구매 단위가 완제품→웨이퍼로 내려간다는 것 = 컨트롤러·펌웨어 부가가치를 고객이 내재화한다는 뜻. **단, 삼성은 FDP 표준의 공동 주도자다** (백서·기술 블로그 발행) — 흐름의 피해자가 아니라 설계 참여자 위치에 있다.
+
+## 2.5 2023 다운턴 복기 — 깊이는 고객 구조가 결정했고, 극복은 니즈 적중이 결정했다
+
+2023 다운턴의 벤더별 낙폭(피크 2Q22 → 저점 1Q23, TrendForce 분기 데이터 합성)은 **서버 노출 순위와 정확히 일치**한다 ([nand-downturn-2023-vendor-data.md](../../sources/articles/nand-downturn-2023-vendor-data.md)):
+
+| 벤더 | 피크→저점 낙폭 | 노출 구조 (프록시) |
+|---|---|---|
+| SK그룹(Solidigm 포함) | **-63%** | 서버 100% Solidigm 포함 — 서버 노출 극단 |
+| **삼성** | **-54%** | enterprise SSD 점유 1위(4Q22 46.9%) — 하이퍼스케일러 노출 최대 |
+| WDC | -45% | 리테일·클라이언트(SanDisk) 비중 커 충격 완충 |
+| Kioxia | -35% | 스마트폰(UFS)·컨슈머 중심 — 가장 얕은 낙폭 |
+
+방증: SSD의 산업 매출 기여가 4Q22 50%+ → 1Q23 20~25%로 붕괴 — 진앙은 서버·클라이언트 SSD였다. 같은 기간 하이퍼스케일러 CapEx는 총량 붕괴가 아니라 **재배분**이었다: Amazon 63.6→52.7(창사 최초 감소)·Meta 31.4→28.1로 깎였지만 AI 서버 시장은 2023 ~$50B로 서버 시장 가치의 ~23%까지 급성장 — 일반 서버향 수요만 꺼졌다.
+
+**반증 사례 = Solidigm**: 낙폭이 가장 깊었던 SK그룹의 Solidigm은 2023-07 세계 최대 용량 61.44TB QLC(D5-P5336)를 출시해 AI 스토리지 수요를 정조준, 2024 eSSD 수요 급증의 최대 수혜로 흑자 전환했다. **교훈: 포트폴리오 다변화(방어)가 아니라, 변화하는 고객 니즈에 제품을 적중(공격)시키는 것이 다운턴 극복의 결정 변수** — 본 전략(§4.5 워크로드 교환·FDP 플랫폼)의 역사적 근거.
+
+## 2.6 지금의 니즈 — KV Cache Offloading과 DWPD 갭
+
+다음 다운턴 대비의 출발점은 "지금 고객 니즈가 어디로 움직이는가"다 ([kv-cache-ssd-demand-2026.md](../../sources/articles/kv-cache-ssd-demand-2026.md)):
+
+- **신규 수요**: LLM 추론의 KV 캐시를 GPU HBM→DRAM→**SSD**로 내리는 오프로딩이 표준 계층으로 정착(NVIDIA Dynamo·CMX·LMCache·Mooncake). SanDisk(FMS 2026): **KV cache 단독 NAND 수요 2027년 75~100EB → 2028년 2배**, **2030년 AI DC NAND 워크로드의 ~35%**. NVL144 랙 연 5만 대 기준 KV cache만 연 ~0.44EB
+- **Write-intensive 특성**: 세션마다 생성·갱신, 짧고 제각각인 수명, 비동기 무효화 → 연속 쓰기 부하. **요구 내구성 유효 7~10+ DWPD(5년)** (ScaleFlux, NVIDIA CMX 타깃 플랫폼)
+- **DWPD 갭**: 현행 고용량 QLC ~0.6 · TLC RI 1 · TLC MU 3 DWPD — 요구 대비 **2~10배 이상 갭**. 미디어만으로 못 메운다
+- **갭의 해법이 곧 본 전략**: ScaleFlux도 **FDP 200+ 스트림**으로 수명이 다른 KV 블록을 분리해 WAF를 낮춰 유효 DWPD를 달성 — FDP(수명별 RUH 분리·WAF↓=실효 내구성↑) + Host SW가 KV cache 시대 내구성 문제의 표준 해법. [nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md)의 CMX 생태계와 직접 연결
 
 ## 3. 삼성의 딜레마와 전략적 선택지 — 왜 이 전략인가
 
