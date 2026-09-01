@@ -269,12 +269,10 @@ ax.text(0.115, 0.52, "만기 집중 →\n급락 전이\n(최위험 경로)", fon
         color=GRAY_MID, ha="center", va="center")
 
 for name, x, y, prob, color, ly, pos, t1, t2 in SCEN:
-    ax.scatter([x], [y], s=prob * 150, color=color, edgecolors="white",
+    ax.scatter([x], [y], s=2900, color=color, edgecolors="white",
                linewidths=1.5, zorder=3)
-    ax.text(x, y + 0.012, name, ha="center", va="center", fontsize=12,
+    ax.text(x, y - 0.012, name, ha="center", va="center", fontsize=12,
             fontweight="bold", color="white", zorder=4)
-    ax.text(x, y - 0.045, f"{prob}%", ha="center", va="center", fontsize=10.5,
-            color="white", zorder=4)
     ax.text(x, ly, t1, ha="center", va="bottom", fontsize=11.5, fontweight="bold",
             color=INK)
     ax.text(x, ly - 0.012, t2, ha="center", va="top", fontsize=10, color=GRAY)
@@ -285,7 +283,7 @@ ax.text(0.53, 0.345, "현재 위치 (2026-08)", ha="center", va="top", fontsize=
         color=INK)
 
 # 와일드카드 노트
-ax.text(0.50, 0.065, "와일드카드 DT-E 「판 갈이」 8%: 축 밖(제품 정의 변화) · 유일 응수는 별동대(DP-5)",
+ax.text(0.50, 0.065, "와일드카드 DT-E 「판 갈이」: 축 밖(제품 정의 변화) · 유일 응수는 별동대(DP-5)",
         ha="center", va="bottom", fontsize=10, color=GRAY,
         bbox=dict(facecolor="white", edgecolor=LINE, linewidth=0.8, pad=4))
 

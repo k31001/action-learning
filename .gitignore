@@ -2,10 +2,12 @@
 node_modules/
 *.pptx
 # 최종 산출물 PPTX는 git에 포함 (원본 + 디자인 변형 버전)
+!outputs/presentation/template.pptx
 !outputs/presentation/samsung-memory-scenario-planning*.pptx
 !outputs/presentation/core-strategies-categorization*.pptx
 !outputs/presentation/team-alignment-scenario-planning*.pptx
 !outputs/presentation/dev-transformation-summary*.pptx
+!outputs/presentation/downturn-scenario-impact*.pptx
 !outputs/presentation/storyline-overview.pptx
 !outputs/presentation/ssd-strategy.pptx
 !outputs/presentation/downturn-review.pptx

@@ -33,7 +33,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Korean font setup
-matplotlib.rcParams['font.family'] = ['Apple SD Gothic Neo', 'Malgun Gothic', 'NanumGothic', 'sans-serif']
+matplotlib.rcParams['font.family'] = ['Apple SD Gothic Neo', 'Malgun Gothic', 'NanumGothic', 'Noto Sans CJK KR', 'sans-serif']
 matplotlib.rcParams['axes.unicode_minus'] = False
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -450,10 +450,10 @@ def chart_scenario_matrix(filepath):
 
     # 시나리오 라벨 — 사분면 중앙 정확히 배치
     scenarios = [
-        (-0.5, 0.65, 'C  기술 냉전', '확률 10%\n2035 $260B', '#C00000'),
-        (0.5, 0.65, 'A  황금 요새', '확률 26%\n2035 $450B', '#1428A0'),
-        (-0.5, -0.35, 'D  조용한 재편', '확률 23%\n2035 $320B', '#6B7280'),
-        (0.5, -0.35, 'B ⭐ AI 르네상스', '확률 35%\n2035 $520B', '#D97706'),
+        (-0.5, 0.65, 'C  기술 냉전', '2035 $260B', '#C00000'),
+        (0.5, 0.65, 'A  황금 요새', '2035 $450B', '#1428A0'),
+        (-0.5, -0.35, 'D  조용한 재편', '2035 $320B', '#6B7280'),
+        (0.5, -0.35, 'B ⭐ AI 르네상스', '2035 $520B', '#D97706'),
     ]
     for x, y, name, info, color in scenarios:
         ax.text(x, y, name, ha='center', fontsize=12, fontweight='bold',
@@ -467,7 +467,7 @@ def chart_scenario_matrix(filepath):
                       edgecolor='#D97706'))
 
     # E 와일드카드 (우측 외부)
-    ax.text(1.32, 0, 'E\n패러다임\n전환\n(와일드카드)\n확률 6%',
+    ax.text(1.32, 0, 'E\n패러다임\n전환\n(와일드카드)',
             ha='center', va='center', fontsize=8.5, fontweight='bold',
             color='#7C3AED',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='#EDE9FE',
@@ -1433,7 +1433,7 @@ def build_slide_14_scenario_matrix(prs):
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
                'Step 5 · 두 축의 조합이 5개 대안적 미래를 만든다',
-               '2×2 매트릭스 (4개 시나리오) + E 와일드카드 — 확률 합 100%, 각 시나리오의 2035년 시장 규모 명시')
+               '2×2 매트릭스 (4개 시나리오) + E 와일드카드 — 각 시나리오의 2035년 시장 규모 명시')
 
     img = os.path.join(ASSETS_DIR, 'scenario_matrix.png')
     chart_scenario_matrix(img)
@@ -1442,7 +1442,7 @@ def build_slide_14_scenario_matrix(prs):
                               height=Inches(4.5))
 
     add_so_what(slide, Inches(6.55),
-                '5개 시나리오 — 가장 가능성 높은 B(35%) + 헤징 4개 = 어떤 미래가 와도 대비')
+                '5개 시나리오 — 최유력 B + 헤징 4개 = 어떤 미래가 와도 대비')
     add_footer(slide, 14, TOTAL, 'Step 5')
     return slide
 
@@ -1452,13 +1452,13 @@ def build_slide_15_main_bet(prs):
     slide = prs.slides.add_slide(prs.slide_layouts[5] if len(prs.slide_layouts) > 5 else prs.slide_layouts[0])
     add_header(slide,
                'Step 6 · Main Bet은 시나리오 B "AI 르네상스" — 그러나 자동 실현 아님',
-               '확률 35% (32~36%) · 2035 시장 $520B (전 시나리오 최대) · 삼성 매출 $120B 가능 — 4개 전제 조건 충족 시')
+               '최유력 시나리오 · 2035 시장 $520B (전 시나리오 최대) · 삼성 매출 $120B 가능 — 4개 전제 조건 충족 시')
 
     # 상단 Main Bet 배너
     add_rect(slide, Inches(0.5), Inches(1.7), Inches(12.33), Inches(0.55),
              fill=THEME['amber'])
     add_text(slide, Inches(0.7), Inches(1.78), Inches(12), Inches(0.4),
-             '⭐  MAIN BET — "AI 르네상스"  |  확률 35%  |  2035 시장 $520B (전 시나리오 최대)',
+             '⭐  MAIN BET — "AI 르네상스"  |  최유력 시나리오  |  2035 시장 $520B (전 시나리오 최대)',
              font=FONT_KO, size=14, bold=True, color=THEME['white'])
 
     # 좌측 — 2035 세계
