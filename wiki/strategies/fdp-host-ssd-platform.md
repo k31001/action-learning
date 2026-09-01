@@ -1,6 +1,6 @@
 ---
 type: strategy
-last_reviewed: 2026-08-05
+last_reviewed: 2026-09-01
 sources:
   - sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md
   - sources/articles/captive-ssd-fdp-context-2026-08.md
@@ -9,6 +9,8 @@ sources:
   - sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md
   - sources/articles/nand-downturn-2023-vendor-data.md
   - sources/articles/kv-cache-ssd-demand-2026.md
+  - sources/articles/storage-vendor-deal-structures-2026.md
+  - sources/articles/fdp-partner-landscape-2026-09.md
 ---
 
 # FDP Host–SSD 통합 플랫폼 전략 — 환경 변화에서 전략 선택까지 (DT-P: 개발실 전환의 제품·기술 축)
@@ -110,6 +112,26 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 - **채용**: 실리콘밸리 현지 채용 중심(고객 인접·영어 커뮤니케이션), 오픈소스 스토리지 기여자·고객사/스토리지 스타트업 출신 우대 — §4.6 스타 영입 트랙과 결합
 - **양성**: 본사 FW·시스템 SW 엔지니어의 미국 로테이션(6~12개월) + 현지 FDE 멘토 페어링, "명시 요구 vs 실제 요구" 검증 단계 훈련
 - **운영**: 파일럿 고객 1~2사 상주(Co-Design Pod 소속·홈조직 유지, dual-ladder), 평가는 청구 시간이 아닌 **outcome**(FDP 활성화 용량·정책 채택률), 커널·SPDK·CacheLib **업스트림 기여로 생태계 공헌과 호명**을 병행, 순환 배치로 번아웃·단절 방지
+
+### 4.6 협업 대상 포트폴리오 — 하이퍼스케일러 · 스토리지 벤더 · LLM 기업 (query 2026-09-01)
+
+질문: FDP 고객 협업을 누구와 하나. 결론: **양자택일이 아니라 수요 사슬의 3개 층에 목적을 달리해 동시 진입**한다. 수요 사슬의 몸통은 AI 프론티어("내가 만나는 고객의 3분의 2가 AI 프론티어… 따라가면 몸뚱아리는 AI 프론티어야", [lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)) → CSP가 구매를 실행 → 스토리지 벤더는 별동대 채널이다.
+
+| 축 | 하이퍼스케일러 (Meta·Google·MS·AWS) | 스토리지 벤더 (VAST·DDN) | LLM 기업 (Anthropic·OpenAI) |
+|---|---|---|---|
+| 물량·다운턴 헤지 | **본체** — enterprise SSD 수요 55% 지배, SCA(take-or-pay)가 성립하는 유일한 규모 ([captive-ssd-fdp-context-2026-08.md](../../sources/articles/captive-ssd-fdp-context-2026-08.md)) | 소규모(보조 헤지) — 대신 네오클라우드 제2 경로(CoreWeave $1.17B, [storage-vendor-deal-structures-2026.md](../../sources/articles/storage-vendor-deal-structures-2026.md)) | 직접 구매는 아직 작음 — 오프테이커/테넌트 구조(소유·파이낸싱은 CSP 몫, [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)). 단 직접 건설(형태 3) 등장 중 (이창수) |
+| 워크로드 접점 | 정보를 잘 안 내줌 — 공급부족 지렛대 필요 (§4.5 실행전략 1) | 중간 — 자사 어플라이언스 워크로드는 공유 가능, KV Cache SW 이미 상용화(DDN 2026-06, [fdp-partner-landscape-2026-09.md](../../sources/articles/fdp-partner-landscape-2026-09.md) §3) | **원천 소유자** — KV cache 수명·재사용·무효화 정책은 추론 스택 설계자만 안다 ([kv-cache-ssd-demand-2026.md](../../sources/articles/kv-cache-ssd-demand-2026.md) §3) |
+| 협상력 | 삼성이 을 — 멀티벤더 압박, 표준 이식이 곧 커모디티화 위험 | **삼성이 갑** — 작고 빠른 상대, 저비용 파일럿 | 대등 — 자본 관계 기존재(Series F/H strategic infrastructure partner, [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md)) |
+| 락인 리스크 | **통제권 잠식** — 펌웨어·컨트롤러 내재화 요구(AWS Nitro 전례), 협업 심화가 컴포넌트 전락으로 역전될 수 있음 | 채널 충돌(직판과 경합) 관리 필요 | 중복 수요 이중 계상 — LLM발 수요 신호가 CSP 경유 시 중복(이창수 "듀플리케이티드 디맨드") |
+| 속도 | 느림 — qualification 12~18개월, 지금 시작해야 2027~28 물량 ([fdp-partner-landscape-2026-09.md](../../sources/articles/fdp-partner-landscape-2026-09.md) §2) | **빠름** — 6~12개월 실증 가능 | 중간 — Micron↔Anthropic이 발표까지 수개월 단위로 진행된 선례 ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md)) |
+
+**3층 역할 분담 (시퀀싱)**:
+
+1. **LLM 기업 = 스펙 상류 장악 (co-design 층)**. FDP placement 정책(RUH 매핑·KV 블록 수명 분리)을 워크로드 소유자와 공동 설계해 "추론 스택의 레퍼런스 SSD 스펙"에 삼성 구현을 기본값으로 심는다. **Anthropic 우선** — 자본 관계 기존재 + Micron 선례가 SSD 공동 설계까지 명시 + FDE GTM을 스스로 쓰는 조직이라 협업 문법이 통함 ([palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md)). 물량 계약 상대가 아니라 스펙 결정 상대로 접근.
+2. **스토리지 벤더 = 실증·레퍼런스 공장 (속도 층)**. VAST(Dynamo 연동)·DDN(KV Cache SW)과 공동 레퍼런스 아키텍처 — §2.6의 DWPD 갭 논지를 상용 무대에서 입증하고 FDE 파견 훈련장으로 활용 (§4.5 실행전략 1·3).
+3. **하이퍼스케일러 = 물량·SCA 종착지 (수확 층)**. **Google 우선**(기존 FDP 협업 접점, [prompt-fdp-ssd.md](../../sources/prompt/prompt-fdp-ssd.md)), Meta는 구매 SSD 전량에 FDP 탑재·기본 비활성이라 "지원 출하"가 아니라 **활성화 싸움** ([fdp-partner-landscape-2026-09.md](../../sources/articles/fdp-partner-landscape-2026-09.md) §1 — §5 KPI와 동일 논지). 방어선: 펌웨어·텔레메트리 통제권은 내주지 않는 조건부 심화(§2 통제권 4단계의 역행 방지).
+
+**연결 논리**: 1층(LLM)에서 잡은 스펙이 3층(하이퍼스케일러) 협상에서 "고객의 고객이 요구하는 스펙"이라는 지렛대가 된다 — 협상력 비대칭을 우회하는 경로이자, 표준 이식이 커모디티화로 역전되지 않게 하는 차별화 장치. 2층은 그 사이를 잇는 빠른 실증 무대.
 
 ## 5. KPI
 

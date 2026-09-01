@@ -1750,3 +1750,7 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 ## [2026-08-05] query | Pure·VAST향 SSD 판매는 다운턴 헤지로 유효한가
 
 질문에 답하기 위해 벤더 딜 구조 검증 리서치 수행 → 신규 소스 storage-vendor-deal-structures-2026.md. **핵심 발견**: Pure는 완제품 SSD 구매자가 아님(raw NAND→자체 DFM·하이퍼스케일러 딜은 고객 NAND 직조달 라이선스 모델·Micron G9 QLC 선점) — "Pure에 SSD 판매"는 옵션 A(컴포넌트 후퇴) 채널. VAST·DDN은 표준 NVMe SSD 기반 SW 회사로 인증=판매 경로, VAST는 CoreWeave $1.17B·Dynamo(KV cache) 연동으로 최적 상대. 결론(채팅 답변): 보조 헤지+FDP 생태계 확산 채널로 유효하나 물량 크기상 단독 다운턴 방어책은 아님 — 1급 가치는 워크로드·시스템 SW 접점 확보. wiki §4.5 실행전략 1에 벤더별 딜 구조 주의 반영, index 등재.
+
+## [2026-09-01] query | FDP 협업 대상: 하이퍼스케일러 vs 스토리지 벤더 vs LLM 기업
+
+질문(협업 대상 3유형의 장단점과 최적 접근)에 답하기 위해 리서치 수행 → 신규 소스 fdp-partner-landscape-2026-09.md (Meta 구매 SSD 전량 FDP 탑재·기본 비활성, Meta·MS 빠른 채택, qualification 12~18개월 → 지금 시작해야 2027~28 물량, DDN KV Cache SW 2026-06 상용화, Anthropic↔Micron SSD 공동 설계 명시). wiki fdp-host-ssd-platform.md §4.6 신설 — 3유형 비교표(물량·워크로드 접점·협상력·락인 리스크·속도) + 3층 역할 분담: ① LLM 기업=스펙 상류 장악(Anthropic 우선 — 자본 관계 기존재·Micron 선례·FDE 문법), ② 스토리지 벤더=실증·레퍼런스 공장(VAST·DDN, 6~12개월), ③ 하이퍼스케일러=물량·SCA 종착지(Google 우선, Meta는 활성화 싸움, 통제권 방어선). 연결 논리: LLM에서 잡은 스펙이 하이퍼스케일러 협상의 지렛대("몸뚱아리는 AI 프론티어"). 결론은 채팅 답변으로 전달, index 등재. 대시보드·PPT는 미러 수치 변경 없어 범위 외(요청 시 반영).
