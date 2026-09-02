@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-01 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-09-01',
+    type: 'assessment',
+    version: 'v2.46.11',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + EWI 6종·트리거 3종 갱신',
+    summary:
+      '직전 08-25 재평가 이후 git log 변경분은 전부 SP-2 다운턴 트랙(다섯 시나리오 발현 근접도 dt-b/c/d/e-signals 08-28 — 별도 축 DF-D1×DF-D2)·전략/FDP(FDP 협업 3유형·스토리지 벤더 딜 구조·KV Cache SSD 수요)·역사 리서치(2023 NAND 다운턴 벤더 데이터)·발표 층(영향 덱 6p 완성)으로 신규 실현된 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. 08-28 수집 in-window 신호도 정점 재확인·유보뿐(HBM 비트수요 성장 감속하나 여전히 공급부족·TrendForce 2027 메모리 $1.28T 상향·재고 역대최저·SEMI 장비지출 사상최대·NVIDIA Rubin Ultra HBM 구성 축소 검토·토큰 소비 폭증 Jevons). 08-28 수집 데이터로 중국 추격·커스텀 HBM·애플–CXMT EWI 6종과 지정학 트리거 3종을 실측 갱신.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지'],
+    items: [
+      { label: 'DF1 8.5·DF2 0.5 유지 (축 무이동)', detail: '변경분은 SP-2 발현 근접도 5종(별도 축)·전략/FDP·역사 리서치·발표 층으로 신규 실현 외부 거시 수요/정책 사실 0건. 직전 실현 외부 데이터는 여전히 Q2 하이퍼스케일러 실적(08-11). 다운턴 감별·제품믹스 심화이나 SP-1 거시 축 무영향' },
+      { label: '확률 A26·B39·C8·D21·E6 유지', detail: 'in-window 신호(HBM 비트수요 감속하나 공급부족 지속·메모리 시장 $1.28T 상향·재고 역대최저·SEMI 사상최대·Rubin Ultra HBM 구성 축소는 공급 타이트발)는 이미 정점(DF1 8.5)인 축의 재확인이지 상대 확률 변경 요인 아님. 중국 추격 실측은 시나리오 D 기 반영 추세의 재확인' },
+      { label: 'EWI 6종 실측 갱신', detail: 'cxmt_dram_share(Omdia Q4\'25 7.67% 세계4위·DDR5 수율 >90%·HP/Asus/Acer 인증 채택)·ymtc_nand_share(Q2\'26 14% 세계3위·2027말 1위 목표, 13→14)·cxmt_apple_qualification(Schumer 서한 답변시한 08-21 경과·9월 정상회담 관측)·samsung_hbm4_rubin_share(NVHBM 발표·Rubin Ultra HBM 축소 검토, 28% 유지)·custom_hbm_revenue_share(NVHBM 08-26·삼성 zHBM Hot Chips 스펙)·bigtech_capex_growth(메모리 CapEx 비중 30%·SEMI 사상최대 확증, 82% 유지)' },
+      { label: '시나리오 트리거 3종 노트 갱신', detail: 'match_act_passed(본회의 movement 없음)·apple_cxmt_approved(Schumer 답변시한 경과·9월 시진핑 방미 정상회담이 승인 분기점 관측)·samsung_hbm4_nvidia_confirmed(NVHBM은 제조 구조 신호이나 볼륨 발주 확정 아님) — 전부 미발동/미충족 유지' },
+    ],
+    links: [
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+      { label: 'dt-d-china-entrant-signals-2026-08-28.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/dt-d-china-entrant-signals-2026-08-28.md' },
+    ],
+  },
+
   // ── 2026-08-25 ───────────────────────────────────────────────────────────────
   {
     date: '2026-08-25',
