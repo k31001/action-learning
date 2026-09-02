@@ -1767,3 +1767,7 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 ## [2026-09-02] build | 버전 재번호: 배경 슬라이드 개편분 v2.46.11 → v2.46.12
 
 다른 세션의 시나리오 확률 재평가 커밋(6e21e38)이 v2.46.11을 선점 — main 머지 과정에서 배경 슬라이드 개편분을 v2.46.12(패치)로 재번호. knowledgeGraph.js는 머지 후 재생성(orphans 0), dashboard build 재검증 통과.
+
+## [2026-09-02] build | 컨설팅 덱 스킬 신설 + FDP 전략 컨설팅 스타일 덱 8장 (v2.46.13)
+
+요청: 현행 디자인 스킬 외에 전문 컨설팅 펌이 쓸 만한 스킬을 찾아 적용, 별도 파일로 생성해 main 푸시. 마켓플레이스·설치 스킬 검색 결과 컨설팅 덱 스킬 부재 → `.claude/skills/consulting-deck-design-skill/SKILL.md` 직접 작성 (Pyramid Principle·SCQA·MECE·수평/수직 논리·액션 타이틀·트래커·스티커·Dot-Dash 서머리·하비볼 옵션 매트릭스·레이아웃 패턴 카탈로그·데이터 규율·QA 체크리스트·이 레포 적용 지침. 브랜드 토큰은 samsung 스킬에 위임). 적용 산출: `generate_dev_transformation_consulting.cjs` → `dev-transformation-consulting.pptx` 8장(요약 dot-dash+키넘버+요청 결정 / 환경 변화+통제권 4단계 계단 / 2023 복기 3컬럼 / KV cache 수요·RUH·DWPD 3컬럼 / 선택지 4×기준 4 하비볼 / 6요소 플로우+실행 6종 / 협업 3층 비교표+시퀀싱 / FDE·KPI·Ask). 전 장 액션 타이틀·So-what 바·출처 줄·슬라이드 번호, em-dash 0건. 렌더 QA 2회(소제목 줄바꿈 3건·판정 라벨 겹침·출처/푸터 겹침·불릿 정렬). .gitignore 화이트리스트, DT_DOWNLOADS 6번째 카드, version v2.46.13(패치), index·outline(고스트 덱 8행) 등재, knowledge graph·build 검증 통과.
