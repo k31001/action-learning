@@ -751,49 +751,39 @@ function slideFdpBg1(pres, ic) {
 
   s.addText([
     { text: "배경  ", options: { bold: true, color: SB.BLUE } },
-    { text: "서버 노출이 큰 벤더일수록 깊게 맞았다: 문제는 총수요가 아니라 수요의 형태 변화, 답은 다변화가 아니라 니즈 적중 (Solidigm)", options: { color: SB.GRAY } },
+    { text: "서버 노출이 큰 벤더일수록 깊게 맞았다. 총량이 아니라 수요 형태의 변화였고, 극복은 다변화가 아니라 니즈 적중이었다", options: { color: SB.GRAY } },
   ], { x: 0.5, y: 0.9, w: 12.33, h: 0.3, fontFace: FONT, fontSize: 13, margin: 0 });
 
-  const colX = sbSkeleton(s, ["낙폭: 피크(2Q22)→저점(1Q23)", "원인: 서버·고객 노출", "재배분, 그리고 반증"]);
+  sbSkeleton(s, ["낙폭과 원인: 노출 = 깊이", "재배분: CapEx vs AI 인프라", "니즈 적중: 대용량 QLC 경쟁"]);
 
-  // ── 컬럼 1: 벤더별 낙폭 (아래로 내려가는 바)
+  // ── 컬럼 1: 벤더별 낙폭(위) + 원인 eSSD 점유(아래)
+  s.addText("NAND 매출 낙폭: 피크(2Q22)→저점(1Q23)", {
+    x: 0.72, y: 1.92, w: 3.5, h: 0.26,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
+  });
   const drops = [
     ["삼성", 54, SB.BLUE],
     ["SK그룹", 63, SB.BAR],
     ["WDC", 45, SB.BAR],
     ["Kioxia", 35, SB.BAR],
   ];
-  const base1 = 2.42;
+  const base1 = 2.56;
   s.addShape("line", { x: 0.72, y: base1, w: 3.5, h: 0, line: { color: SB.GRAY, width: 1 } });
   drops.forEach(([name, pct, color], i) => {
     const x = 0.86 + i * 0.85;
-    const h = (pct / 63) * 2.15;
+    const h = (pct / 63) * 1.34;
     s.addText(name, {
-      x: x - 0.14, y: 2.12, w: 0.9, h: 0.26, align: "center",
-      fontFace: FONT, fontSize: 10.5, bold: true, color: SB.INK, margin: 0,
+      x: x - 0.14, y: 2.28, w: 0.9, h: 0.24, align: "center",
+      fontFace: FONT, fontSize: 10, bold: true, color: SB.INK, margin: 0,
     });
     s.addShape("roundRect", { x, y: base1, w: 0.6, h, rectRadius: 0.03, fill: { color } });
     s.addText(`-${pct}%`, {
-      x: x - 0.14, y: base1 + h + 0.03, w: 0.9, h: 0.28, align: "center",
-      fontFace: FONT, fontSize: 12.5, bold: true, color: color === SB.BLUE ? SB.BLUE : SB.GRAY, margin: 0,
+      x: x - 0.14, y: base1 + h + 0.02, w: 0.9, h: 0.26, align: "center",
+      fontFace: FONT, fontSize: 12, bold: true, color: color === SB.BLUE ? SB.BLUE : SB.GRAY, margin: 0,
     });
   });
-  s.addText([
-    { text: "진앙은 SSD  ", options: { bold: true, color: SB.BLUE } },
-    { text: "산업 매출 중 SSD 기여 50%+ → 20~25% (4Q22→1Q23)", options: { color: SB.INK } },
-  ], {
-    shape: "roundRect", rectRadius: 0.05, x: 0.72, y: 5.32, w: 3.5, h: 0.62,
-    fill: { color: "F4F4F6" }, valign: "middle",
-    fontFace: FONT, fontSize: 10, margin: 0.08, lineSpacingMultiple: 1.1,
-  });
-  s.addText("분기 매출 피크·저점 기준, TrendForce 분기 데이터 합성. Micron은 회계분기 차이로 제외", {
-    x: 0.72, y: 6.06, w: 3.5, h: 0.4,
-    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0, lineSpacingMultiple: 1.1,
-  });
-
-  // ── 컬럼 2: Enterprise SSD 점유 (4Q22) 가로 바 + 해석
-  s.addText("Enterprise SSD 매출 점유, 4Q22 (시장 $3.79B)", {
-    x: 4.92, y: 1.94, w: 3.5, h: 0.28,
+  s.addText("원인: eSSD 점유(4Q22) = 서버 노출", {
+    x: 0.72, y: 4.28, w: 3.5, h: 0.26,
     fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
   });
   const shares = [
@@ -802,29 +792,33 @@ function slideFdpBg1(pres, ic) {
     ["Kioxia", 13.0, SB.BAR],
   ];
   shares.forEach(([name, pct, color], i) => {
-    const y = 2.34 + i * 0.54;
+    const y = 4.6 + i * 0.34;
     s.addText(name, {
-      x: 4.92, y: y + 0.02, w: 0.95, h: 0.3,
-      fontFace: FONT, fontSize: 10.5, color: SB.INK, margin: 0, valign: "middle",
+      x: 0.72, y: y - 0.02, w: 0.95, h: 0.26,
+      fontFace: FONT, fontSize: 9.5, color: SB.INK, margin: 0, valign: "middle",
     });
-    s.addShape("roundRect", { x: 5.92, y, w: (pct / 46.9) * 2.0, h: 0.32, rectRadius: 0.03, fill: { color } });
+    s.addShape("roundRect", { x: 1.7, y, w: (pct / 46.9) * 1.7, h: 0.22, rectRadius: 0.03, fill: { color } });
     s.addText(`${pct}%`, {
-      x: 5.92 + (pct / 46.9) * 2.0 + 0.06, y: y + 0.02, w: 0.7, h: 0.3,
-      fontFace: FONT, fontSize: 11, bold: true, color: color === SB.BLUE ? SB.BLUE : SB.GRAY, margin: 0, valign: "middle",
+      x: 1.7 + (pct / 46.9) * 1.7 + 0.06, y: y - 0.02, w: 0.7, h: 0.26,
+      fontFace: FONT, fontSize: 10, bold: true, color: color === SB.BLUE ? SB.BLUE : SB.GRAY, margin: 0, valign: "middle",
     });
   });
-  s.addText("노출 순위 = 낙폭 순위. 삼성은 enterprise SSD 1위로 하이퍼스케일러 노출 최대, SK그룹 -63%에는 서버 100%인 Solidigm 포함. 반면 Kioxia(모바일 중심)·WDC(리테일 중심)는 얕게 맞았다", {
-    x: 4.92, y: 4.1, w: 3.5, h: 1.5,
-    fontFace: FONT, fontSize: 10.5, color: SB.INK, margin: 0, valign: "top", lineSpacingMultiple: 1.2,
+  s.addText([
+    { text: "노출 순위 = 낙폭 순위.  ", options: { bold: true, color: SB.BLUE } },
+    { text: "진앙은 SSD(산업 매출 기여 50%+→20~25% 붕괴), 삼성은 eSSD 1위로 노출 최대. SK -63%엔 서버 100% Solidigm 포함", options: { color: SB.INK } },
+  ], {
+    shape: "roundRect", rectRadius: 0.05, x: 0.72, y: 5.68, w: 3.5, h: 0.72,
+    fill: { color: "F4F4F6" }, valign: "middle",
+    fontFace: FONT, fontSize: 9.5, margin: 0.08, lineSpacingMultiple: 1.12,
   });
-  s.addText("출처: TrendForce enterprise SSD 4Q22 · Blocks & Files", {
-    x: 4.92, y: 6.42, w: 3.5, h: 0.3,
-    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0,
+  s.addText("출처: TrendForce 분기 데이터 합성(Micron 회계분기 차이 제외) · Blocks & Files", {
+    x: 0.72, y: 6.5, w: 3.5, h: 0.3,
+    fontFace: FONT, fontSize: 8.5, color: SB.GRAY, margin: 0,
   });
 
-  // ── 컬럼 3: CapEx 재배분 + Solidigm 반증
+  // ── 컬럼 2: 하이퍼스케일러 CapEx + 그중 AI 인프라
   s.addText("하이퍼스케일러 CapEx ($B, 각사 10-K)", {
-    x: 9.11, y: 1.94, w: 3.5, h: 0.28,
+    x: 4.92, y: 1.92, w: 3.5, h: 0.26,
     fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
   });
   const capex = [
@@ -832,37 +826,127 @@ function slideFdpBg1(pres, ic) {
     ["Meta", [19.2, 31.4, 28.1]],
     ["Alphabet", [24.6, 31.5, 32.3]],
   ];
-  const base3 = 3.66, yearColors = [SB.BAR2, SB.T2, SB.BLUE];
-  s.addShape("line", { x: 9.11, y: base3, w: 3.5, h: 0, line: { color: SB.GRAY, width: 1 } });
+  const base2 = 3.5, yearColors = [SB.BAR2, SB.T2, SB.BLUE];
+  s.addShape("line", { x: 4.92, y: base2, w: 3.5, h: 0, line: { color: SB.GRAY, width: 1 } });
   capex.forEach(([name, vals], i) => {
-    const gx = 9.27 + i * 1.14;
+    const gx = 5.08 + i * 1.14;
     vals.forEach((v, j) => {
-      const h = (v / 64) * 1.3;
-      s.addShape("rect", { x: gx + j * 0.32, y: base3 - h, w: 0.28, h, fill: { color: yearColors[j] } });
+      const h = (v / 64) * 1.2;
+      s.addShape("rect", { x: gx + j * 0.32, y: base2 - h, w: 0.28, h, fill: { color: yearColors[j] } });
     });
     s.addText(name, {
-      x: gx - 0.15, y: base3 + 0.04, w: 1.26, h: 0.24, align: "center",
-      fontFace: FONT, fontSize: 9.5, color: SB.INK, margin: 0,
+      x: gx - 0.15, y: base2 + 0.03, w: 1.26, h: 0.22, align: "center",
+      fontFace: FONT, fontSize: 9, color: SB.INK, margin: 0,
     });
   });
-  s.addText("’21  ’22  ’23  ·  Amazon 창사 최초 감소(-17%), Meta -11%. 반면 AI 서버는 ’23 ~$50B로 서버 시장 가치의 ~23%: 총량이 아니라 재배분", {
-    x: 9.11, y: 4.02, w: 3.5, h: 0.78,
-    fontFace: FONT, fontSize: 9.5, color: SB.GRAY, margin: 0, valign: "top", lineSpacingMultiple: 1.15,
+  s.addText("’21  ’22  ’23 · Amazon 창사 최초 -17%, Meta -11%", {
+    x: 4.92, y: 3.82, w: 3.5, h: 0.24,
+    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0,
+  });
+  s.addText("그중 AI 인프라: AI 서버 시장 가치 ($B)", {
+    x: 4.92, y: 4.22, w: 3.5, h: 0.26,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
+  });
+  const ai = [
+    ["’23", 50, "~50 · 서버 가치의 23%"],
+    ["’24", 187, "187 · 65%"],
+  ];
+  ai.forEach(([yr, v, label], i) => {
+    const y = 4.58 + i * 0.4;
+    s.addText(yr, {
+      x: 4.92, y: y - 0.02, w: 0.42, h: 0.3,
+      fontFace: FONT, fontSize: 10, bold: true, color: SB.INK, margin: 0, valign: "middle",
+    });
+    const bw = (v / 187) * 2.15;
+    s.addShape("roundRect", { x: 5.38, y, w: bw, h: 0.26, rectRadius: 0.03, fill: { color: i === 1 ? SB.BLUE : SB.T2 } });
+    s.addText(label, {
+      x: i === 1 ? 5.46 : 5.38 + bw + 0.06, y: y - 0.02, w: 2.6, h: 0.3,
+      fontFace: FONT, fontSize: 9.5, bold: true, color: i === 1 ? "FFFFFF" : SB.GRAY, margin: 0, valign: "middle",
+    });
+  });
+  s.addText([
+    { text: "총량이 아니라 재배분.  ", options: { bold: true, color: SB.BLUE } },
+    { text: "CapEx가 깎인 ’23에도 AI 서버 가치는 ~$50B(23%), ’24 $187B(65%)로 폭증. 일반 서버·스토리지향 수요만 꺼졌다", options: { color: SB.INK } },
+  ], {
+    shape: "roundRect", rectRadius: 0.05, x: 4.92, y: 5.68, w: 3.5, h: 0.72,
+    fill: { color: "F4F4F6" }, valign: "middle",
+    fontFace: FONT, fontSize: 9.5, margin: 0.08, lineSpacingMultiple: 1.12,
+  });
+  s.addText("출처: 각사 10-K · Platformonomics · TrendForce(’24.07)", {
+    x: 4.92, y: 6.5, w: 3.5, h: 0.3,
+    fontFace: FONT, fontSize: 8.5, color: SB.GRAY, margin: 0,
+  });
+
+  // ── 컬럼 3: 대용량 QLC eSSD 용량×출시 타임라인 (벤더별)
+  s.addText("대용량 QLC eSSD: 용량 × 출시 시점", {
+    x: 9.11, y: 1.92, w: 3.5, h: 0.26,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
+  });
+  const tlX0 = 9.9, tlX1 = 12.5;
+  const tx = (t) => tlX0 + ((t - 2023) / 4) * (tlX1 - tlX0);
+  const vendors = [["Solidigm", 2.42], ["삼성", 3.02], ["Micron", 3.62], ["Kioxia", 4.22]];
+  vendors.forEach(([name, y]) => {
+    s.addText(name, {
+      x: 9.08, y: y - 0.13, w: 0.8, h: 0.26,
+      fontFace: FONT, fontSize: 9, bold: name === "삼성", color: name === "삼성" ? SB.BLUE : SB.INK, margin: 0, valign: "middle",
+    });
+    s.addShape("line", { x: tlX0, y, w: tlX1 - tlX0, h: 0, line: { color: SB.LINE, width: 0.75 } });
+  });
+  [2023, 2024, 2025, 2026].forEach((yr) => {
+    s.addText(`’${yr - 2000}`, {
+      x: tx(yr) - 0.2, y: 4.4, w: 0.4, h: 0.2, align: "center",
+      fontFace: FONT, fontSize: 8.5, color: SB.GRAY, margin: 0,
+    });
+  });
+  // [행, 시점, 용량, 출하 여부(false=샘플·전시·예정), 삼성 여부, 라벨 위치(above|below), 날짜 라벨]
+  const pts = [
+    [0, 2023.54, "61T", true, false, "above", "’23.07"],
+    [0, 2024.87, "122T", true, false, "above", null],
+    [0, 2026.7, "245T", false, false, "above", null],
+    [1, 2024.5, "61T", true, true, "above", null],
+    [1, 2024.85, "122T", false, true, "below", null],
+    [2, 2025.7, "122T", false, false, "above", null],
+    [2, 2026.35, "245T", true, false, "below", "’26.05"],
+    [3, 2025.5, "245T", false, false, "above", null],
+  ];
+  pts.forEach(([row, t, cap, solid, isSamsung, pos, date]) => {
+    const cx = tx(t), cy = vendors[row][1];
+    const color = isSamsung ? SB.BLUE : SB.GRAY;
+    s.addShape("ellipse", {
+      x: cx - 0.065, y: cy - 0.065, w: 0.13, h: 0.13,
+      fill: solid ? { color } : { color: "FFFFFF" },
+      line: { color, width: 1.25 },
+    });
+    s.addText(cap, {
+      x: cx - 0.35, y: pos === "above" ? cy - 0.34 : cy + 0.08, w: 0.7, h: 0.2, align: "center",
+      fontFace: FONT, fontSize: 8, bold: true, color, margin: 0,
+    });
+    if (date) s.addText(date, {
+      x: cx - 0.35, y: pos === "above" ? cy + 0.08 : cy + 0.26, w: 0.7, h: 0.18, align: "center",
+      fontFace: FONT, fontSize: 7.5, color: SB.GRAY, margin: 0,
+    });
+  });
+  s.addText([
+    { text: "● 출하    ", options: { color: SB.INK } },
+    { text: "○ 샘플·전시·예정", options: { color: SB.GRAY } },
+  ], {
+    x: 9.11, y: 4.66, w: 3.5, h: 0.22, align: "center",
+    fontFace: FONT, fontSize: 8.5, margin: 0,
   });
   s.addShape("roundRect", {
-    x: 9.09, y: 4.92, w: 3.54, h: 1.68, rectRadius: 0.07,
+    x: 9.09, y: 4.98, w: 3.54, h: 1.46, rectRadius: 0.07,
     fill: { color: SB.BG }, line: { color: SB.BLUE, width: 1.25 },
   });
   s.addText([
-    { text: "반증: Solidigm", options: { fontSize: 11.5, bold: true, color: SB.BLUE, breakLine: true } },
-    { text: "낙폭 최심부(SK그룹)에서 ’23.07 61.44TB QLC 출시로 AI 스토리지 수요 적중, ’24 흑자 전환. 다변화(방어)가 아니라 니즈 적중(공격)이 다운턴을 이긴다", options: { fontSize: 10, color: SB.INK } },
+    { text: "니즈 적중의 실증, 그리고 삼성의 갭", options: { fontSize: 11, bold: true, color: SB.BLUE, breakLine: true } },
+    { text: "Solidigm은 61TB를 12개월 선행하며 최심부에서 2024 흑자 전환. 삼성은 61TB 1년 후발에 122TB는 전시 단계, 245TB 첫 출하도 Micron. 다음 니즈(KV cache)는 선행해야 한다", options: { fontSize: 9.5, color: SB.INK } },
   ], {
-    x: 9.27, y: 5.02, w: 3.2, h: 1.5,
-    fontFace: FONT, margin: 0, valign: "top", lineSpacingMultiple: 1.15,
+    x: 9.27, y: 5.08, w: 3.2, h: 1.3,
+    fontFace: FONT, margin: 0, valign: "top", lineSpacingMultiple: 1.14,
   });
-  s.addText("출처: 각사 10-K · Platformonomics · TrendForce", {
-    x: 9.11, y: 6.62, w: 3.5, h: 0.22,
-    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0,
+  s.addText("출처: Blocks & Files · AnandTech · TechPowerUp · TechRadar", {
+    x: 9.11, y: 6.52, w: 3.5, h: 0.24,
+    fontFace: FONT, fontSize: 8.5, color: SB.GRAY, margin: 0,
   });
 }
 
@@ -871,14 +955,14 @@ function slideFdpBg1(pres, ic) {
 /* ---------------------------------------------------------------- */
 function slideFdpBg2(pres, ic) {
   const s = pres.addSlide();
-  header(s, "배경 ②", { ...FDP_OPTS, title: "KV Cache: 요구 내구성은 현 제품의 2~10배" });
+  header(s, "배경 ②", { ...FDP_OPTS, title: "KV Cache: RUH 25배·내구성 2~10배 갭" });
 
   s.addText([
     { text: "니즈  ", options: { bold: true, color: SB.BLUE } },
-    { text: "스토리지가 추론의 캐시 계층으로 승격된다: 수요는 폭증하고, 쓰기 내구성 요구는 현행 TLC·QLC 제품군을 넘는다", options: { color: SB.GRAY } },
+    { text: "스토리지가 추론의 캐시 계층으로 승격된다: 수요는 폭증하고, 스트림 분리(RUH)·쓰기 내구성 요구는 현행 제품군을 넘는다", options: { color: SB.GRAY } },
   ], { x: 0.5, y: 0.9, w: 12.33, h: 0.3, fontFace: FONT, fontSize: 13, margin: 0 });
 
-  sbSkeleton(s, ["신규 수요: KV Cache Offloading", "왜 write-intensive인가", "DWPD 갭: 새 전략의 근거"]);
+  sbSkeleton(s, ["신규 수요: KV Cache Offloading", "RUH 갭: 현행 2~8 vs 요구 200+", "DWPD 갭: 새 전략의 근거"]);
 
   // ── 컬럼 1: 계층 도식 + 수요 전망 + 빅넘버
   const tiers = [
@@ -935,35 +1019,50 @@ function slideFdpBg2(pres, ic) {
     fontFace: FONT, margin: 0, valign: "middle", lineSpacingMultiple: 1.12,
   });
 
-  // ── 컬럼 2: write-intensive 특성 4 + 결론
-  const traits = [
-    ["세션마다 생성·갱신", "요청이 곧 쓰기: 연속적 쓰기 부하"],
-    ["짧고 제각각인 수명", "블록별 라이프사이클이 모두 다르다"],
-    ["비동기 무효화·재적재", "퇴출과 재활성이 상시 반복"],
-    ["멀티테넌트 혼합", "GC 간섭으로 WAF 증폭"],
-  ];
-  traits.forEach(([t, c], i) => {
-    const y = 1.98 + i * 0.86;
-    s.addShape("rect", { x: 4.92, y: y + 0.05, w: 0.14, h: 0.14, fill: { color: SB.BLUE } });
-    s.addText([
-      { text: t, options: { fontSize: 11, bold: true, color: SB.INK, breakLine: true } },
-      { text: c, options: { fontSize: 10, color: SB.GRAY } },
-    ], {
-      x: 5.18, y: y - 0.06, w: 3.3, h: 0.8,
-      fontFace: FONT, margin: 0, valign: "top", lineSpacingMultiple: 1.12,
-    });
+  // ── 컬럼 2: RUH 갭 (현행 2~8 vs CMX 오프로드 요구 200+)
+  s.addText("FDP 쓰기 스트림(RUH) 수", {
+    x: 4.92, y: 1.94, w: 3.5, h: 0.28,
+    fontFace: FONT, fontSize: 10.5, bold: true, color: SB.BLUE, margin: 0,
+  });
+  const base2 = 4.6, H2 = 2.1;
+  s.addShape("line", { x: 4.92, y: base2, w: 3.5, h: 0, line: { color: SB.GRAY, width: 1 } });
+  s.addShape("rect", { x: 5.35, y: base2 - (8 / 200) * H2, w: 0.85, h: (8 / 200) * H2, fill: { color: SB.BAR } });
+  s.addText("2~8", {
+    x: 5.1, y: base2 - (8 / 200) * H2 - 0.32, w: 1.35, h: 0.28, align: "center",
+    fontFace: FONT, fontSize: 12.5, bold: true, color: SB.GRAY, margin: 0,
+  });
+  s.addText("현행 FDP SSD", {
+    x: 5.0, y: base2 + 0.06, w: 1.55, h: 0.24, align: "center",
+    fontFace: FONT, fontSize: 9.5, color: SB.INK, margin: 0,
+  });
+  s.addShape("rect", { x: 7.05, y: base2 - H2, w: 0.85, h: H2, fill: { color: SB.BLUE } });
+  s.addText("200+", {
+    x: 6.8, y: base2 - H2 - 0.32, w: 1.35, h: 0.28, align: "center",
+    fontFace: FONT, fontSize: 12.5, bold: true, color: SB.BLUE, margin: 0,
+  });
+  s.addText("CMX 오프로드 요구", {
+    x: 6.7, y: base2 + 0.06, w: 1.55, h: 0.24, align: "center",
+    fontFace: FONT, fontSize: 9.5, color: SB.INK, margin: 0,
+  });
+  s.addText("≈25배", {
+    x: 5.85, y: 3.35, w: 1.0, h: 0.3, align: "center",
+    fontFace: FONT, fontSize: 13, bold: true, color: SB.BLUE, margin: 0,
   });
   s.addText([
-    { text: "결과  ", options: { bold: true, color: SB.BLUE } },
-    { text: "일반 서버 앱 대비 월등한 쓰기 밀도: mixed-use 등급을 넘는 내구성 요구", options: { color: SB.INK } },
+    { text: "왜 200+인가  ", options: { bold: true, color: SB.BLUE } },
+    { text: "세션·테넌트·공유 프리픽스·수명 등급별로 스트림을 분리해야 hot/cold 혼재로 인한 GC 증폭이 끊긴다. 소수 RUH로는 WAF 문제 지속", options: { color: SB.INK } },
   ], {
-    shape: "roundRect", rectRadius: 0.05, x: 4.92, y: 5.5, w: 3.5, h: 0.62,
+    shape: "roundRect", rectRadius: 0.05, x: 4.92, y: 5.06, w: 3.5, h: 0.84,
     fill: { color: "F4F4F6" }, valign: "middle",
-    fontFace: FONT, fontSize: 10.5, margin: 0.08, lineSpacingMultiple: 1.1,
+    fontFace: FONT, fontSize: 9.5, margin: 0.08, lineSpacingMultiple: 1.12,
   });
-  s.addText("출처: ScaleFlux 발표 · NVIDIA Dynamo 문서", {
-    x: 4.92, y: 6.42, w: 3.5, h: 0.26,
-    fontFace: FONT, fontSize: 9, color: SB.GRAY, margin: 0,
+  s.addText("RUH(Reclaim Unit Handle): 수명이 같은 데이터를 같은 소거 단위에 모으는 FDP 스트림 핸들 · 요구 수준은 NVIDIA CMX 타깃 ScaleFlux 플랫폼 스펙 기준", {
+    x: 4.92, y: 6.0, w: 3.5, h: 0.44,
+    fontFace: FONT, fontSize: 8, color: SB.GRAY, margin: 0, lineSpacingMultiple: 1.1,
+  });
+  s.addText("출처: StorageReview ’26.07 · Blocks & Files ’26.01", {
+    x: 4.92, y: 6.5, w: 3.5, h: 0.26,
+    fontFace: FONT, fontSize: 8.5, color: SB.GRAY, margin: 0,
   });
 
   // ── 컬럼 3: DWPD 갭 바 차트 + So-What
@@ -998,8 +1097,8 @@ function slideFdpBg2(pres, ic) {
     fill: { color: SB.BG }, line: { color: SB.BLUE, width: 1.25 },
   });
   s.addText([
-    { text: "갭의 해법이 곧 전략", options: { fontSize: 11, bold: true, color: SB.BLUE, breakLine: true } },
-    { text: "FDP로 수명별 RUH 분리·WAF 절감 = 유효 DWPD 확보 (ScaleFlux도 FDP 200+ 스트림으로 7~10 DWPD 달성) + 고내구 설계. NVIDIA CMX 생태계와 직결", options: { fontSize: 9.5, color: SB.INK } },
+    { text: "실증: ScaleFlux, NVIDIA CMX 타깃", options: { fontSize: 11, bold: true, color: SB.BLUE, breakLine: true } },
+    { text: "200+ FDP 스트림으로 KV 블록을 수명별 분리, WAF를 낮춰 유효 7~10+ DWPD(5년) 달성 발표(StorageReview ’26.07.30). RUH 분리 + 고내구 설계가 갭의 해법, 곧 본 전략", options: { fontSize: 9.5, color: SB.INK } },
   ], {
     x: 9.27, y: 5.58, w: 3.2, h: 1.2,
     fontFace: FONT, margin: 0, valign: "top", lineSpacingMultiple: 1.14,

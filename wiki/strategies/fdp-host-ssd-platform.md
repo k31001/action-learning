@@ -1,6 +1,6 @@
 ---
 type: strategy
-last_reviewed: 2026-09-01
+last_reviewed: 2026-09-02
 sources:
   - sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md
   - sources/articles/captive-ssd-fdp-context-2026-08.md
@@ -11,6 +11,7 @@ sources:
   - sources/articles/kv-cache-ssd-demand-2026.md
   - sources/articles/storage-vendor-deal-structures-2026.md
   - sources/articles/fdp-partner-landscape-2026-09.md
+  - sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md
 ---
 
 # FDP Host–SSD 통합 플랫폼 전략 — 환경 변화에서 전략 선택까지 (DT-P: 개발실 전환의 제품·기술 축)
@@ -58,6 +59,8 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 
 **반증 사례 = Solidigm**: 낙폭이 가장 깊었던 SK그룹의 Solidigm은 2023-07 세계 최대 용량 61.44TB QLC(D5-P5336)를 출시해 AI 스토리지 수요를 정조준, 2024 eSSD 수요 급증의 최대 수혜로 흑자 전환했다. **교훈: 포트폴리오 다변화(방어)가 아니라, 변화하는 고객 니즈에 제품을 적중(공격)시키는 것이 다운턴 극복의 결정 변수** — 본 전략(§4.5 워크로드 교환·FDP 플랫폼)의 역사적 근거.
 
+이후의 재배분 정량 근거와 니즈 적중 경쟁의 시계열은 [qlc-essd-timeline-fdp-ruh-2026-09.md](../../sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md)가 보여준다: AI 서버 시장 가치는 2023 ~$50B(서버의 ~23%)에서 **2024 $187B(65%)** 로 폭증 궤도(TrendForce). 대용량 QLC eSSD 경쟁에서는 **Solidigm이 61TB급을 삼성보다 12개월 선행**(2023-07 vs 삼성 BM1743 2024-07)했고 122TB급도 선행 출하(2024-11), 삼성의 122.88TB는 FMS 2024 전시 후 미출하 상태이며, **245TB급 첫 상용 출하는 Micron 6600 ION**(2026-05)이다 — 니즈 적중 경쟁에서 삼성이 용량 리더십 후발임을 보여주는 시계열.
+
 ## 2.6 지금의 니즈 — KV Cache Offloading과 DWPD 갭
 
 다음 다운턴 대비의 출발점은 "지금 고객 니즈가 어디로 움직이는가"다 ([kv-cache-ssd-demand-2026.md](../../sources/articles/kv-cache-ssd-demand-2026.md)):
@@ -65,7 +68,8 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 - **신규 수요**: LLM 추론의 KV 캐시를 GPU HBM→DRAM→**SSD**로 내리는 오프로딩이 표준 계층으로 정착(NVIDIA Dynamo·CMX·LMCache·Mooncake). SanDisk(FMS 2026): **KV cache 단독 NAND 수요 2027년 75~100EB → 2028년 2배**, **2030년 AI DC NAND 워크로드의 ~35%**. NVL144 랙 연 5만 대 기준 KV cache만 연 ~0.44EB
 - **Write-intensive 특성**: 세션마다 생성·갱신, 짧고 제각각인 수명, 비동기 무효화 → 연속 쓰기 부하. **요구 내구성 유효 7~10+ DWPD(5년)** (ScaleFlux, NVIDIA CMX 타깃 플랫폼)
 - **DWPD 갭**: 현행 고용량 QLC ~0.6 · TLC RI 1 · TLC MU 3 DWPD — 요구 대비 **2~10배 이상 갭**. 미디어만으로 못 메운다
-- **갭의 해법이 곧 본 전략**: ScaleFlux도 **FDP 200+ 스트림**으로 수명이 다른 KV 블록을 분리해 WAF를 낮춰 유효 DWPD를 달성 — FDP(수명별 RUH 분리·WAF↓=실효 내구성↑) + Host SW가 KV cache 시대 내구성 문제의 표준 해법. [nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md)의 CMX 생태계와 직접 연결
+- **RUH 갭**: 현행 표준 enterprise FDP SSD의 RUH(Reclaim Unit Handle) 지원은 **통상 2~8개** — KV cache가 요구하는 세션·테넌트·공유 프리픽스·수명 등급별 스트림 분리에는 태부족(소수 RUH로는 hot/cold 혼재→GC 증폭 지속). NVIDIA CMX 오프로드를 타깃한 ScaleFlux 플랫폼은 **200+ FDP 스트림**을 제시 — 약 25배 갭 ([qlc-essd-timeline-fdp-ruh-2026-09.md](../../sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md) §2; "NVIDIA 공식 스펙 요구 200개"로는 미확인, CMX 생태계 타깃 플랫폼 스펙으로 표기)
+- **갭의 해법이 곧 본 전략**: ScaleFlux는 그 **200+ FDP 스트림**으로 수명이 다른 KV 블록을 분리해 WAF를 낮춰 **유효 7~10+ DWPD(5년)를 달성**한다고 발표(StorageReview·PR Newswire 2026-07-30) — FDP(수명별 RUH 분리·WAF↓=실효 내구성↑) + Host SW가 KV cache 시대 내구성 문제의 표준 해법. [nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md)의 CMX 생태계와 직접 연결
 
 ## 3. 삼성의 딜레마와 전략적 선택지 — 왜 이 전략인가
 

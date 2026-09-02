@@ -295,7 +295,7 @@ export const DT_DOWNLOADS = [
     file: 'dev-transformation-summary-fdp-eco.pptx',
     level: '실행',
     label: '생태계 확산 실행전략',
-    desc: '2023 다운턴 교훈 · KV Cache 수요·DWPD 갭 · SCA·FDP·FDE 실행전략 (3장)',
+    desc: '2023 다운턴 교훈(낙폭·재배분·QLC 경쟁) · KV Cache 수요·RUH·DWPD 갭 · SCA·FDP·FDE 실행전략 (3장)',
     color: '#028090',
   },
 ]
