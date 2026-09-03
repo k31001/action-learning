@@ -8,14 +8,34 @@
 
 ## wiki/storyline — 종합 스토리라인 (NEW)
 
-- [wiki/storyline/storyline.md](wiki/storyline/storyline.md) — 위키 전체 지식을 잇는 종합 서사(시나리오 플래닝 마스터): 환경 변화 → 진단 → 핵심 동인 → 시나리오 → 전략 선택 논증 → EWI (대시보드 "Storyline" 첫 탭의 단일 소스)
+- [wiki/storyline/storyline.md](wiki/storyline/storyline.md) — 위키 전체 지식을 잇는 종합 서사(시나리오 플래닝 SP-1 마스터): 환경 변화 → 진단 → 핵심 동인 → 시나리오 → 전략 선택 논증 → EWI. **SP-2 다운턴 트랙 연결**(4장 "다운턴은 C·D에 갇혀 있지 않다"·6장 RS/D + DP/DR/DX 코드 체계·7장 무후회 3종 교차 검증·8장 EWI⊥DX 직렬) (대시보드 "Storyline" 첫 탭의 단일 소스)
 - [wiki/storyline/storyline-five-forces.md](wiki/storyline/storyline-five-forces.md) — (NEW) 파이브 포스 렌즈: 협상력의 지도 — 구매자·경쟁·진입·공급자·대체재 다섯 힘으로 재서사화
 - [wiki/storyline/storyline-game-theory.md](wiki/storyline/storyline-game-theory.md) — (NEW) 게임이론 렌즈: 치킨게임(2007~13) → 3강 절제 균형 → take-or-pay 약속 게임 → CXMT 비대칭 게임
 - [wiki/storyline/storyline-real-options.md](wiki/storyline/storyline-real-options.md) — (NEW) 실물옵션 렌즈: 콜(RS-1·MB-5·D9)·풋(RS-8·NTB)·전환(SE-1·SE-2·RS-2)·포기(시안 Plan B) 옵션 포트폴리오 + EWI 행사 신호
 - [wiki/storyline/storyline-disruption.md](wiki/storyline/storyline-disruption.md) — (NEW) 파괴적 혁신 렌즈: HBM 파괴 피해 사례 → CXMT 로엔드·3D DRAM/CXL 차세대·AI SSD 인접 파괴와 대응
-- [wiki/storyline/storyline-cmo.md](wiki/storyline/storyline-cmo.md) — (NEW) CMO 렌즈(Context-Mechanism-Outcome): 다운턴 3건(2007~09·2010~13·2022~23) CMO 분해 → 2026~28 맥락·메커니즘 감사 → 액션 추적(A1~A6 효과 판정 ◎/△/✕ → 전략 번역) → 경쟁사 CMO 비교(DRAM: SK·마이크론 / NAND: Kioxia·YMTC, 벤치마킹 B1~B5) → 차기 다운턴 전략 4순위(계약 바닥·역사이클 대상 교정·치킨게임 봉인·맥락 EWI)
+- [wiki/storyline/storyline-cmo.md](wiki/storyline/storyline-cmo.md) — (NEW) CMO 렌즈(Context-Mechanism-Outcome): 다운턴 3건(2007~09·2010~13·2022~23) CMO 분해 → 2026~28 맥락·메커니즘 감사 → 액션 추적(**§5.1 대비 P1~P7** / §5.2 대응 A1~A6, 효과 판정 ◎/△/✕ → 전략 번역) → 경쟁사 CMO 비교(DRAM: SK·마이크론 / NAND: Kioxia·YMTC, 벤치마킹 B1~B5) → 차기 다운턴 전략 4순위(계약 바닥+만기 사다리화·역사이클 대상 교정·치킨게임 봉인·맥락 EWI) + SP-2 속도 축 보강. 맥락 변수 8종(⑦ 계약 만기 구조·⑧ 감가 정점 추가)
+- [wiki/storyline/cmo-matrix.md](wiki/storyline/cmo-matrix.md) — (NEW) CMO 통합 매트릭스: 1~3차 다운턴(관측)+4차(예측)를 하나의 필터 가능한 데이터셋으로 — 대비/대응 국면 구분, 제품(DRAM·NAND·SSD·UFS·공통)×관점(제조·투자·개발·제품·운영) 5관점 통일, 4차 추천 전략+예상 실수 12종, **SP-2 코드 배선(DP·DR)·역사에 없는 대비 수단 9종**(만기 사다리화·원가 곡선 측정·전환 라인 실증 추가) (대시보드 CMO Matrix 탭 단일 소스)
 
-## wiki/scenarios — 5개 시나리오 + 매트릭스
+## wiki/downturn — 다운턴 시나리오 플래닝 SP-2 (NEW)
+
+> 위키의 **두 번째 시나리오 플래닝 트랙**. 기존 SP-1(`wiki/scenarios`)이 "AI 메모리 시대에 어떤 위치를 차지할 것인가"를 묻는다면, SP-2는 다운턴의 **도착을 조건으로 고정**하고 "어떤 다운턴이 오는가"만 묻는다. 대시보드 **Scenario Planning > SP-2 메모리 다운턴** 트랙의 단일 소스.
+
+- [wiki/downturn/README.md](wiki/downturn/README.md) — Focal Issue("2027~2030 다운턴에 지금 무엇을 준비하고 도착 후 무엇을 실행할 것인가") + 세 전제 + SP-1과 분리하는 이유 + 8단계 방법론 + 결론 한 장
+- [wiki/downturn/steep-factors.md](wiki/downturn/steep-factors.md) — 다운턴 렌즈 STEEP 40요인 + Impact×Uncertainty (Impact = 다운턴의 형태를 바꾸는 힘) + Top 12 + 확정 리스크 8건(축은 아니나 전 시나리오 공통 배경)
+- [wiki/downturn/key-drivers.md](wiki/downturn/key-drivers.md) — DF-D1 발원지(수요발↔공급발, "무엇을 조절할지") × DF-D2 전개 속도(급락형↔침식형, "언제 결정할지") + 네 사분면 역사적 실례로 독립성 검증 + 기각된 축 6종
+- [wiki/downturn/scenario-matrix.md](wiki/downturn/scenario-matrix.md) — 2×2 + 와일드카드, **조건부 확률**(도착 전제) + 축별 한계 확률 + 시나리오 간 전이 경로 + 분기점 모니터링
+- [wiki/downturn/scenario-DT-A.md](wiki/downturn/scenario-DT-A.md) — 「급제동」 수요발×급락 (20%): AI 인프라 조달 경색. 대응할 시간이 없어 대비가 결과의 전부
+- [wiki/downturn/scenario-DT-B.md](wiki/downturn/scenario-DT-B.md) — 「긴 하산」 수요발×침식 (24%): 메모리 원단위 감소. 위기감이 생기지 않는 것이 최대 위험 — 3차 대비기 실패 패턴의 재발 조건
+- [wiki/downturn/scenario-DT-C.md](wiki/downturn/scenario-DT-C.md) — 「동시 방류」 공급발×급락 (22%): 캐파 동시 도래 + 절제 붕괴. 감산·투자 규율이 직접 작동하는 유일한 시나리오
+- [wiki/downturn/scenario-DT-D.md](wiki/downturn/scenario-DT-D.md) — 「저가 잠식」 공급발×침식 (26%, 최고): 보조금 기반 침투. 사이클이 아니라 구조 변화 — 회복이 없고 철수·전환이 핵심 액션
+- [wiki/downturn/scenario-DT-E.md](wiki/downturn/scenario-DT-E.md) — 「판 갈이」 와일드카드·전환발 (8%): 총시장은 성장하는데 특정 자산군만 다운턴. 다운턴 매뉴얼이 작동하지 않음
+- [wiki/downturn/preparation.md](wiki/downturn/preparation.md) — 대비 DP-1~7 (도착 전에만 살 수 있는 것). 무후회 3종(DP-2 옵션형 캐파·DP-4 감별 EWI 배선·DP-5 차세대 별동대) + **신규 기여 DP-1 계약 만기 사다리화** + 유효기간표
+- [wiki/downturn/response-playbook.md](wiki/downturn/response-playbook.md) — 대응 DR-1~6 (원인 판별 후 분기). DR-1 감별 프로토콜(30일)·DR-2 공급 규율은 공급발에서만·DR-2b 소모전 봉인(치킨게임 4대 전제 붕괴)·금지 목록 8종
+- [wiki/downturn/differential-indicators.md](wiki/downturn/differential-indicators.md) — 감별 지표 DX-1~8. 기존 EWI가 "오는가"를 묻는다면 DX는 "어떤 다운턴인가"를 묻는다 + 판별 결정표 + 오진 방지 + 구축 로드맵(DX-7 만기 집중도 미측정 = 유일한 🔴)
+- [wiki/downturn/samsung-impact.md](wiki/downturn/samsung-impact.md) — (NEW) 시나리오별 삼성 메모리 영향 진단: 강점(S1~S4)·약점(W1~W4) 코드 좌표계 + 시나리오×제품 노출 매트릭스 + 승부처·보완·활용 힌트 (확률·전략 코드 미표기, 영향 진단 슬라이드의 단일 소스)
+- [wiki/downturn/downturn-history.md](wiki/downturn/downturn-history.md) — (NEW) 지난 20년 다운턴 복기 **본편 4건**(DT08·DT12·DT19·DT23) + 경계 1건(DT16: 전체 +2%ᵉ·DRAM 단독으로 재분류): **전체 메모리(DRAM+NAND)** 연매출 타임라인·지속기간×속도×발원 정량 비교(낙폭 전체·D·N 분리)·다운턴별 원인/대응/결과/교훈·NAND 동행 판정·패턴 6종 + **§5 역사→시나리오 매핑**(DT-A~E의 역사 대응물·계승 문법·함정) — SP-2의 역사 기준선 (복기 덱 downturn-review.pptx의 단일 소스)
+
+## wiki/scenarios — 5개 시나리오 + 매트릭스 (SP-1)
 
 - [wiki/scenarios/scenario-matrix.md](wiki/scenarios/scenario-matrix.md) — DF1(AI 수요) × DF2(미중 관계) 2×2 매트릭스 + 와일드카드 E
 - [wiki/scenarios/scenario-A.md](wiki/scenarios/scenario-A.md) — 황금 요새 (AI 지속 + 디커플링, 25~30%)
@@ -72,7 +92,7 @@
 - [wiki/concepts/dram-market-share.md](wiki/concepts/dram-market-share.md) — DRAM 매출 1위 SK 역전, HBM 점유 변화
 - [wiki/concepts/price-trends.md](wiki/concepts/price-trends.md) — DRAM/NAND/HBM 분기 가격 트렌드
 - [wiki/concepts/ai-server-demand.md](wiki/concepts/ai-server-demand.md) — AI 서버 GPU·HBM 탑재량
-- [wiki/concepts/ssd-ufs-market.md](wiki/concepts/ssd-ufs-market.md) — Enterprise SSD·UFS·AI Storage
+- [wiki/concepts/ssd-ufs-market.md](wiki/concepts/ssd-ufs-market.md) — Enterprise SSD·UFS·AI Storage + 삼성 SSD·UFS 사업사 3단계(2006 개척→2차 다운턴 중 브랜드 구축·2013 1위→엔터프라이즈 1위)·1Q26 실측(삼성 38.2% 1위·Top5 $18.46B)·경쟁 재편(Solidigm·Sandisk 분사·Crucial 철수)·UFS 5.0
 - [wiki/concepts/2026-q1-current-state.md](wiki/concepts/2026-q1-current-state.md) — 2026 Q1 시점 메모리 산업 스냅샷
 
 ### 거시·수요
@@ -80,7 +100,8 @@
 - [wiki/concepts/ai-demand-sustainability.md](wiki/concepts/ai-demand-sustainability.md) — AI 거품론 vs 낙관론
 - [wiki/concepts/ai-compute-economics-gap.md](wiki/concepts/ai-compute-economics-gap.md) — Bain(신문섭) AI 컴퓨트 경제학 갭 ($2조 매출·$500B capex·$800B 자금 갭·메모리=AI 지출 ~30%·DC 163GW 2030·전력 게이트키퍼)
 - [wiki/concepts/semiconductor-cycle.md](wiki/concepts/semiconductor-cycle.md) — 반도체 사이클·슈퍼사이클·2028 공급과잉 리스크
-- [wiki/concepts/memory-capex-history.md](wiki/concepts/memory-capex-history.md) — 메모리 3사 CAPEX 히스토리 (2016~2026E) — 역사이클 투자 정량 근거, 다운턴 대응 비교, DRAM/NAND 부문별 (NEW)
+- [wiki/concepts/memory-capex-history.md](wiki/concepts/memory-capex-history.md) — 메모리 3사 CAPEX 히스토리 (2006~2026E) — 역사이클 투자 정량 근거 20년: 1·2차 치킨게임(Qimonda·Elpida 파산)·2019·2023 다운턴 대응 비교, DRAM/NAND 부문별
+- [wiki/concepts/samsung-storage-solution-history.md](wiki/concepts/samsung-storage-solution-history.md) — 삼성 스토리지 솔루션(SSD·UFS) 사업사 — 계기 3장면(Apple·최초 SSD·HDD 매각)·연표·사이클 연동 4단계·매출/이익 역산ᵉ (NEW)
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
@@ -161,6 +182,11 @@
 - [sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md](sources/articles/bloomberg-micron-ceo-virginia-2026-05-22.md) — Bloomberg TV: Micron CEO Mehrotra 미국 캐파 10→40%·LTA·"discipline"
 - [sources/articles/dram-chicken-game-history-2026-08-05.md](sources/articles/dram-chicken-game-history-2026-08-05.md) — (NEW) DRAM 치킨게임 역사(2007~13) 웹 리서치: Qimonda·Elpida 파산, 6강→3강, 삼성 역사이클 투자 (게임이론 렌즈 근거)
 - [sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md](sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md) — (NEW) 삼성 다운턴 실제 액션 심층 리서치(2007~09·2010~13·2022~23): 2023-04-07 감산 공식화 선회·2019 HBM팀 축소·2008 SanDisk 인수 시도·철회·Line-16 역사이클·HDD 매각·엘피다 입찰 불참·2023 CapEx 53.1조/R&D 28.34조 사상 최대 (CMO 렌즈 M×C 매트릭스 근거)
+- [sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md](sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md) — (NEW) 삼성 **다운턴 전 대비기** 액션 리서치(2005~07·2009~10·2020~22 H1, 제품×관점 태깅): 2007-01 CapEx -18% 선제 삭감(통설의 반례)·2005-11 Apple 선급 LTA 참여·Line-16 12조 착공·5대 신수종사업·평택 P2~P4·450조 계획(절벽 6개월 전)·HBM 조직 부재·DS 재고 +76.6% (CMO 통합 매트릭스 대비 축 근거)
+- [sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md](sources/articles/samsung-ssd-ufs-history-competition-2026-08-15.md) — (NEW) 삼성 SSD·UFS 사업사(2006~2026: 컨트롤러 MCX→MDX→MEX 자체화·840 세계 최초 TLC·850 V-NAND 최초·UFS 세계 최초 연쇄·UFS 5.0 2026-06) + 경쟁사 스토리지 전략사(SK–Solidigm 정점 매수→QLC 반전·Kioxia IPO·WD–SanDisk 통합 해체·Micron Crucial 철수) — 다운턴/대비기 창 태깅 (SSD·UFS 축 보강 근거)
+- [sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md](sources/articles/samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md) — (NEW) 삼성 SSD 탑재(design win) 뉴스 2축: PM1763 양산 전환(2026-07-08)·CMX 물량 구조(576 SSD·9,600TB/유닛, NAND 수요 1억+ TB)·V-NAND 캐파 60%+ 배정 보도 / PM9E1의 NVIDIA DGX Spark 실탑재(분해 확인)·2242 CES 어워드·갤럭시 S26 UFS 4.0 정정
+- [sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md](sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md) — (NEW) 2018Q4~2019 메모리 다운사이클 리서치: 정량(DRAM -37~38%·삼성 반도체 OP -69%) / 대응(무감산 공식 워딩 "인위적 웨이퍼 투입 감소 검토 안 함"·CapEx 22.6조 유지·기술 4축 세대 전환 완주·비전 2030 133조·일본 수출규제 대응) / 대비기(2017 CapEx 27.3조 사상 최대·P2 착공·주주환원 3년 고정·2H18 경보 속 재고 방치) / 경쟁사(Micron 최초 감산 2019-03·SK 2019-07·요카이치 정전) / 결과(1Q20 DRAM 44.1%) — 미확인 15건
+- [sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md](sources/articles/samsung-ssd-ufs-market-transition-strategy-2026-08-16.md) — (NEW) 시장 전환기(PC→모바일→데이터센터) SSD·UFS 전략 리서치: HDD 매각 계약 구조(현금+지분 9.6%+NAND 크로스-서플라이)·eMMC 35.6% 1위·UFS 표준 주도 / 시안 V-NAND 캐파 베팅(2012→2014 양산, 2기 2017-08 $7B)·XS1715 업계 최초 NVMe(Intel 1년 선행)·3Q17 "datacenter NVMe 적극 대응" 공식 문구·점유율 궤적 뉘앙스(1Q17 출하 Intel 1위↔3Q18 매출 삼성 38.5%)·Intel 실패 경로(Optane 청산·NAND 매각) — 미확인 11건
 - [sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md](sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) — Counterpoint 7건 묶음(2025-11~2026-04): 90% QoQ 폭등·DRAM OPM 60%>HBM·NVIDIA LPDDR 피벗·LTA 사이클 평탄화·SK hynix HBM 57%·스마트폰 -2.1%
 - [sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md](sources/articles/bain-ai-compute-semiconductor-2025-09-to-2026-03.md) — Bain(신문섭) AI 컴퓨트 수요·반도체 공급·DC 2030 전망 3개 시리즈: 컴퓨트 경제학 갭($2조/$500B/$800B)·메모리=AI 지출 30%·웨이퍼 잠식(HBM 4×)·163GW·전력 게이트키퍼·Scramble→Strategy
 - [sources/articles/june-2026-market-update-2026-06-13.md](sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 정기 점검 시장 데이터: HBM Q1 2026 점유율·삼성 HBM4E 업계 최초·Vera Rubin 인증·HBM 가격·빅4 CapEx $700~725B·DRAM/NAND Q2 가격·TSMC 5월 매출·CoWoS 65만 장·미국 DC 전력 42GW·그리드 대기열 2,600GW
@@ -175,6 +201,11 @@
 - [sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md](sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md) — 삼성 HBM4 NVIDIA 인증(06-05 Vera Rubin 3사 인증) 통과에도 볼륨 발주 미전환·매출 유상 평가용 샘플 수준(Winbuzzer 07-17)·SK Rubin 2/3+ 락인 / 확증 신호: 빅테크 2026 CapEx ~$725B(+77% YoY)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속·MATCH 위원회 단계·CXMT HBM 지연
 - [sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md](sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md) — 하이퍼스케일러 Q2 2026 실적 시즌(07-21~28 수집): Alphabet(07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향·Cloud 백로그 QoQ +$50B→$514B / SK하이닉스 Q2 영업이익 ~$43.7B·OPM ~76% 사상 최대 / MSFT·Meta 07-29·Amazon 07-30 발표 대기 / GPU 임대가 firming·DRAM Q3 +13~18% 유지·MATCH 위원회 단계·CXMT HBM 미확정
 - [sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md](sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md) — (NEW) 하이퍼스케일러 Q2 2026 실적 실현 + GPU 임대가 스냅샷(08-11 재평가 입력): MS·Meta·Amazon(07-29·07-30) 4사 CapEx 전원 상향(Amazon→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B·Google $195~205B, 합산 ~$745~750B·+82% YoY)·삭감 0건 / CapEx-vs-FCF 다이버전스 실측(Meta FCF -91%·Amazon TTM FCF 마이너스) / GPU 임대가 firming/flat(H100 ~$2.69·H200 ~$4.38)
+- [sources/articles/memory-capex-outlook-2027-2028-2026-08-26.md](sources/articles/memory-capex-outlook-2027-2028-2026-08-26.md) — (NEW) 2027~28 메모리 CAPEX 전망 웹 리서치: TrendForce 07-30 보도·Kioxia FY26~28 ¥470B·YMTC 캐파 2배·DRAM 장비 매출 +7.8% + 27E $81Bᵉ 파생 추정(방법·한계 명시)
+- [sources/articles/dt-b-demand-efficiency-signals-2026-08-28.md](sources/articles/dt-b-demand-efficiency-signals-2026-08-28.md) — (NEW) DT-B 발현 근접도 실측 리서치: 토큰당 추론 비용 18개월 280분의 1(Stanford AI Index)·연 중앙값 50배 하락(Epoch AI)·KV 캐시 90% 절감(DeepSeek-V4-Pro)·Meta CXL 실배치 서버 -25%·Rubin Ultra HBM 탑재 하향 검토·HBM 비트수요 증가율 +130→+70→+50~60% 감속·토큰 총소비 Google YoY 7배 (출처 URL 21건, 방법·한계 명시)
+- [sources/articles/dt-c-capex-oversupply-signals-2026-08-28.md](sources/articles/dt-c-capex-oversupply-signals-2026-08-28.md) — (NEW) DT-C 발현 근접도 실측 리서치: 2027 수급 분기(DRAM sufficiency -1~-2% 적자 지속 vs NAND 2027 공급>수요·2H27 완화)·신규 팹 일정(SK 용인 Y1 87%·클린룸 2027-02 앞당김, Y2+M17 54조 승인, M15X 2026-11 양산, 삼성 P4 장비 최종·P5 6개월 조기 재개, Kioxia K2 가동·K3 FY29, CXMT 300K→420K wpm 2027)·장비 리드타임 12~24개월·SEMI 300mm 장비 지출 2026 $133B/2027 $151B·공급사 재고 2~4주 역대 최저(2차 자료)
+- [sources/articles/dt-d-china-entrant-signals-2026-08-28.md](sources/articles/dt-d-china-entrant-signals-2026-08-28.md) — (NEW) DT-D 발현 근접도 실측 리서치: CXMT DDR5 수율 >90% 보도(공식 미확인)·매출 점유 7.67% 세계 4위(Omdia)·캐파 30만→35만→60만+ wpm 계획·STAR IPO $8.6B·HP·Asus·Acer 인증 채택·LPDDR6 Xiaomi 진입·Tencent/Alibaba 서버 계약·HBM3 샘플링 지연·DDR4 현물 +172% 역전·애플 건 상원 서한 vs 9월 회담·YMTC NAND 14% 3위 (신뢰도 태그 부착)
+- [sources/articles/dt-e-product-redefinition-signals-2026-08-28.md](sources/articles/dt-e-product-redefinition-signals-2026-08-28.md) — (NEW) DT-E 발현 근접도 실측 리서치: NVIDIA NVHBM 공식 발표(08-26, BW +30%·전력 -15%, 첫 파트너 Amazon Trainium4, Feynman 2028)·Hot Chips 2026 삼성 zHBM(전력 -70%·BW 2.3배, 목업)·SK HBM5 하이브리드 본딩 연기·커스텀 HBM4E 3사 설계 완료·커스텀 과반 전망(2027~28)·Broadcom/Marvell 커스텀 생태계·CXL 프로덕션 실측 vs 풀링 회의론 (방법·한계 명시)
 - [sources/articles/chris-miller-interviews-2025-12-to-2026-07.md](sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) — 크리스 밀러(Chip War 저자) 인터뷰·기고 10건 종합(2025-12~2026-07): 상원 증언(AI 3대 투입 컴퓨팅·인재·전력)·WaPo H200 비판·"HBM·장비 > GPU" 초크포인트 위계·Ascend 5~8배 열위·"중국 4년째 AI 과소투자"·중앙일보 고언 시리즈(R&D/설비 동시 투자·체질 전환)·경향 인터뷰(HBM 너머 추론 최적화 메모리·800조 클러스터 환영·애플–CXMT 경계)·피지컬 AI 위협 (대시보드 "인터뷰" 메뉴 미러)
 - [sources/articles/google-captive-titanium-fdp-factcheck-2026-08.md](sources/articles/google-captive-titanium-fdp-factcheck-2026-08.md) — (NEW) 구글 Captive SSD·FDP 팩트체크: "구글 Captive 미채택" 부분 반증(Titanium SSD 자체 설계 확인) + Chris Sabol OCP 발표·FDP 멀티벤더 확산(Micron·Kioxia·Silicon Motion)·FDP 정량 효과(OP 28% 제거 등)
 - [sources/articles/kv-cache-ssd-offload-ecosystem-2026-08.md](sources/articles/kv-cache-ssd-offload-ecosystem-2026-08.md) — (NEW) KV Cache→SSD 오프로드 생태계: NVIDIA Dynamo·NIXL·ICMSP→CMX, LMCache×Dynamo 1.0 통합, Mooncake 분산 KVCache 풀, H100 동시 사용자 10배 — 오케스트레이션 계층은 NVIDIA·OSS 선점, SSD 벤더 자리는 "최적 FDP 백엔드"
@@ -183,22 +214,41 @@
 - [sources/articles/semiconductor-depreciation-cost-structure-2026-08.md](sources/articles/semiconductor-depreciation-cost-structure-2026-08.md) — (NEW) 반도체 감가상각·원가 구조 (5사 공시 직접 파싱): 삼성 기계장치 내용연수 5년·상각률 77.1%, 감가상각비의 85~93%가 기계장치, 마이크론 FY2023 감가=매출 49.4%, 인텔 5→8년 연장 후 가속상각 되돌림, TSMC 레거시가 이익 73%, CXMT DUV 원가 페널티
 - [sources/articles/fab-toolset-commonality-conversion-2026-08.md](sources/articles/fab-toolset-commonality-conversion-2026-08.md) — (NEW) 팹 설비 공용성·제품 전환: DRAM↔CIS 공용률 80%(캐파는 50% 감소)·화성 12라인/평택 P4 전환·전환 병목은 고객 퀄과 후공정·W2W 하이브리드 본딩의 NAND→DRAM 이전·완전 가변 팹 실패 실증·자동차 플랫폼 공용화 벤치마크
 - [sources/articles/enterprise-ssd-market-1q26-2026-08.md](sources/articles/enterprise-ssd-market-1q26-2026-08.md) — (NEW) Enterprise SSD 1Q26 실적: Top5 $18.46B(+86.1% QoQ)·삼성 1위 38.2%($7.05B)·계약가 +80%·Micron Crucial 철수 + 중기 전망 교차(2030 ~$66B 등)
+- [sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md](sources/articles/gartner-captive-nvme-ssd-forecast-2026-08.md) — (NEW) 가트너 captive NVMe SSD 전망 팩트체크: "on-premises storage 5%(2023)→30%+(2026)" 원문·범위 확인(어레이 벤더 자체 드라이브 문맥 — 하이퍼스케일러 캡티브 통계와 구분), $158B는 GMI SSD 컨트롤러 시장 수치
+- [sources/articles/fdp-technical-limits-adoption-context-2026-08.md](sources/articles/fdp-technical-limits-adoption-context-2026-08.md) — (NEW) FDP 기술 한계·배치 표준 선례 웹 리서치: Streams 채택 미미·ZNS 호스트 비용·메인라인 거부(파편화) / FDP = SmartFTL+DPM 통합(수요자 설계·하위 호환) / FAST'26 WARP — WAF ~1은 RUH-수명 정렬 조건부, 오분류·간섭·"Noisy RUH" 시 실패 (비판적 검토 근거)
+- [sources/articles/fdp-open-source-ecosystem-2026-08.md](sources/articles/fdp-open-source-ecosystem-2026-08.md) — (NEW) FDP 오픈소스 생태계 지도: 커널 5.19 passthrough→**6.16 블록 write streams 메인라인 진입**·도구 성숙(fio·QEMU 8.0·SPDK·xNVMe)·CacheLib 공식 지원 / AI 스택 — LMCache(vLLM·SGLang·Dynamo)·llm-d SSD 오프로드 일반화, **FDP 인지 백엔드 공백** = 업스트림 1호 과제의 표적
 - [sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md](sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md) — MAD Podcast×Sachin Katti(OpenAI 산업 컴퓨트 총괄, 2026-07, 트랜스크립트 전문 보존): 수요≫공급 즉시 소진·컴퓨트 3배=매출 3배·최대 리스크는 과소 건설·OpenAI ~$50B/업계 ~$700B·AI 재귀(AI가 칩 설계)·전자→토큰 공장·전면 액체냉각(냉각↔메모리 대역폭)·그리드 투자 원칙·가스터빈/변압기/인력 병목·원자력·Jalapeño(와트당 토큰·Broadcom·9개월 테이프아웃)·Stargate 우산 전략·오프테이커 구조·보장 토큰·오비탈 컴퓨트 (대시보드 "인터뷰" 메뉴 미러)
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
 - [sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md](sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) — 시니어 파트너 인터뷰 딥리서치 (사용자 1차 + WSTS·IDC·IEA·Anthropic·NASA·NDRC 교차 팩트체크): "하드웨어 시간 돌아옴" 4대 메시지·전략 권고 7개
+- [sources/raw-notes/hr-org-open-innovation-note-2026-08-12.md](sources/raw-notes/hr-org-open-innovation-note-2026-08-12.md) — (NEW) 자원배분 두 축(인사·조직·보상 관점) 원문 + 대조: Axis 1 내부 역량 효율화(횡전개 실사례·Project Incentive Funding·파견 처우·본딩 공통조직과 전용 모듈 팹) / Axis 2 오픈이노베이션(엣지 AI 즉시·퀀텀 장기, 후보 14곳) + **D9 다운사이클 M&A와의 충돌 해소**
 - [sources/raw-notes/memory-cycle-storyline-r3-2026-08-12.md](sources/raw-notes/memory-cycle-storyline-r3-2026-08-12.md) — (NEW) 과제팀 스토리라인 R3 원문 + 저장소 대조: **두 겹 프레임**(1겹 원가·기술 / 2겹 시간·자리)·하이닉스 출자전환 3년과 플래시 회생·엘피다의 시간·치킨게임 4대 전제 붕괴·푸젠진화 대 CXMT의 접근권·SK 솔리다임과 M15X 전환·순환 대 유출 점유율(2026 Q1 38.5%)·L1/L2/L3 가역성 층위
 - [sources/raw-notes/song-yongho-ax-pi-interview-2026-09-03.md](sources/raw-notes/song-yongho-ax-pi-interview-2026-09-03.md) — (NEW) 송용호 부사장(AX/PI센터장·前 솔루션개발실장) 내부 인터뷰 녹취록 전문(79분): 과제에 빠진 키워드 품질·원가, 다음 다운턴 첫 장면=대규모 RMA(빌미는 품질)·멀티이어 100% 안전장치 아님, 성능은 시스템이 흡수·파워가 다른 축, 다운턴 센싱 3대 관전 포인트(AI ROI·하이퍼스케일러 자금 구조·전기), 중국이 시장가를 정하는 만성적 공급과잉(5% 임계 vs 점유 10%·소비 50%), 플랫폼 위 최저 원가 커스텀, AI는 기본, 고객 지향·CRM 변화, 실행력의 역설, 리얼라인 SSD·PBSSD, "2035년 만성적 공급과잉 시대" 화두 (대시보드 "인터뷰" 메뉴 미러)
 - [sources/raw-notes/action-learning-brainstorming-2026-08-11.md](sources/raw-notes/action-learning-brainstorming-2026-08-11.md) — (NEW) 액션러닝 과제 브레인스토밍 회의 녹취 전문(99분, Clova Note ASR): 스토리라인 3개 저지선 합의·치킨게임 성립조건 붕괴·경쟁력 축 이동·"사업이 건재하다" 5조건·2023년 첫 감산 해부·2차 저지선 아이디어 6건(전환 TAT 훈련·낸드-DRAM 라인 일체화·조직 통합·기술 PI 인센티브·M&A/투자·최적 본딩 구조) + ASR 표기 변이 대조표·미확인 수치 목록 (대시보드 "회의록" 메뉴 미러)
 - [sources/raw-notes/keyence-benchmark-note-2026-08-12.md](sources/raw-notes/keyence-benchmark-note-2026-08-12.md) — (NEW) 키엔스 벤치마크 사내 별첨: 10년 50~56% 영업이익률 밴드(사이클 무관)·팹리스 경영·외보(外報) 체계·"고객이 원하는 상품을 만들지 않는다"·1983년 저마진 사업 매각 + 저장소 대조표(2018 DS 51.6% 일치 / 2026 상반기 68%는 미검증)와 전략 1·2 배분표
 - [sources/raw-notes/memory-capex-history-research-2026-08-08.md](sources/raw-notes/memory-capex-history-research-2026-08-08.md) — 메모리 3사 CAPEX·실적 히스토리 리서치 (2016~2026E, 각사 IR·TrendForce·환율표)
+- [sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md](sources/raw-notes/memory-capex-history-research-2006-2015-2026-08-15.md) — CAPEX 히스토리 리서치 II: 2006~2015 치킨게임 시대 (삼성 AR·4Q 경영설명회 PDF 직접 열람, Micron SEC 10-K 원문, 데이터 신뢰도 등급)
+- [sources/raw-notes/memory-downturn-history-research-2026-08-22.md](sources/raw-notes/memory-downturn-history-research-2026-08-22.md) — (NEW) 다운턴 복기 리서치 I(DRAM): 산업 연매출 시계열 2006~2025(기관 혼합·신뢰도 태그)·분기 낙폭 검증(4Q08 -36%·3Q22 -28.9%·4Q22 -32.5% 등)·2015~16 다운턴 보강(칭화유니 $23B 무산 → YMTC·CXMT 설립, Micron Inotera $4.1B)·다운턴 5건 창 정의(지속·낙폭·최악분기·발원)
+- [sources/raw-notes/nand-quarterly-addendum-2026-08-24.md](sources/raw-notes/nand-quarterly-addendum-2026-08-24.md) — (NEW) NAND 분기 낙폭 애드엔덤: 4Q08 -19.3%(DRAMeXchange)·4Q22 -25%(TrendForce) 검증 — 산점도의 전체 메모리 통합 QoQ 가중 산출용
+- [sources/raw-notes/nand-market-history-research-2026-08-22.md](sources/raw-notes/nand-market-history-research-2026-08-22.md) — (NEW) 다운턴 복기 리서치 II(NAND): 산업 연매출 시계열 2006~2025(앵커: 2008 $12.0B -14%·2018 $63.2B·2021 $67.1B·2023 $36.7B -39.9%)·분기 전환점(4Q16 +17.8% "공급 부족 최심"·3Q22 -24.3%·4Q25 +26.7%)·다운턴 5건 NAND 동행/비동행 판정(침투기 완충 → DT19부터 완전 동조)·도시바 2012-07 30% 감산
+- [sources/raw-notes/samsung-storage-solution-research-2026-08-17.md](sources/raw-notes/samsung-storage-solution-research-2026-08-17.md) — 스토리지 솔루션 리서치: SSD·UFS 매출·이익 3단 역산(시장×점유율×믹스) 방법론 + 연표 앵커 (전량 추정ᵉ)
 - [sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md](sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md) — 베인앤컴퍼니 신문섭 파트너 인터뷰: 공급 사이클→수요 검증 사이클, Commodity→Customization 체질 전환, 임베디드 SW·End-to-End Sensing Model·역량 기반 포트폴리오 재정의 (대시보드 "인터뷰" 메뉴 미러)
+- [sources/articles/nand-downturn-2023-vendor-data.md](sources/articles/nand-downturn-2023-vendor-data.md) — 2023 다운턴 벤더별 데이터: 피크(2Q22)→저점(1Q23) 낙폭(삼성 -54%·SK그룹 -63%·WDC -45%·Kioxia -35%)·enterprise SSD 점유·하이퍼스케일러 CapEx 재배분·Solidigm 반증
+- [sources/articles/kv-cache-ssd-demand-2026.md](sources/articles/kv-cache-ssd-demand-2026.md) — KV Cache Offloading SSD 수요(SanDisk FMS'26: 2027 75~100EB·2030 AI DC NAND 35%)·write-intensive 특성·요구 7~10+ DWPD와 현행 TLC/QLC 갭·ScaleFlux FDP 200+ 스트림
+- [sources/articles/storage-vendor-deal-structures-2026.md](sources/articles/storage-vendor-deal-structures-2026.md) — 스토리지 벤더 딜 구조 검증: Pure는 raw NAND·라이선스 모델(완제품 SSD 안 삼, Micron 선점) vs VAST·DDN은 표준 SSD·인증 경로(CoreWeave $1.17B·Dynamo 연동)
+- [sources/articles/fdp-partner-landscape-2026-09.md](sources/articles/fdp-partner-landscape-2026-09.md) — FDP 협업 대상 지형: Meta 구매 SSD 전량 FDP 탑재(기본 비활성)·Meta/MS 빠른 채택·qualification 12~18개월·DDN KV Cache SW 상용화·Anthropic↔Micron SSD 공동 설계 명시
+- [sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md](sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md) — 대용량 QLC eSSD 벤더별 타임라인(Solidigm 61TB '23.07 선행·삼성 '24.07 후발·Micron 245TB '26.05 첫 출하)·FDP RUH 현행 2~8 vs CMX 요구 200+·AI 서버 시장 '23 $50B(23%)→'24 $187B(65%)
 - [sources/articles/captive-ssd-fdp-context-2026-08.md](sources/articles/captive-ssd-fdp-context-2026-08.md) — 웹 리서치 종합: Captive SSD 위상 변화 4단계(완제품→펌웨어→자체 컨트롤러 Nitro→표준·웨이퍼)·하이퍼스케일러 SSD 수요 ~55%·NAND 웨이퍼 +246%·FDP 표준 기원(Meta·Google 주도·삼성 공동)
+- [sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md](sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md) — 사용자 전략 인풋: FDP 생태계 확산·락인 실행전략 3종 (워크로드 교환 협업 · 최적화 역량 확보 · FDE 파견 운영)
 - [sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md](sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md) — 사용자 전략 인풋 원문: FDP 기반 Host–SSD 통합 솔루션 전략 (시스템 SW·실행전략 6종·로드맵·KPI·스토리라인)
 - [sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md](sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md) — 최장석 상무(메모리 상품기획팀장) 내부 인터뷰 녹취록: "수요 감소"의 제품 단위 정의, HBM↔DDR 캐파 상쇄 리스크, zHBM(3D 적층 커스텀 메모리)·가속기 전력/써멀 병목, 미주 vs 중화 선택과 집중, 커스텀 제품 소싱·컨트랙 체질, 하이-로 전략 (대시보드 "인터뷰" 메뉴 미러)
 - [sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md](sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md) — 이창수 부사장(메모리 영업팀장) 내부 인터뷰 정리본: 수요는 예측이 아니라 만드는 것(가격 탄력도), AI 프론티어·시가(時價) 시장, 중복 수요·수요 사슬 3형태, CAPEX vs FCF 재무 시그널, take-or-pay 멀티이어·NTE/NTB(1차 방어선), 사업 경쟁력 Back to Basic·WPSI(2차 방어선), 커스텀 HBM 퇴조, 브로드컴·ASIC·소버린 (민감 수치 대략 표현, 대시보드 "인터뷰" 메뉴 미러)
+
+### sources/prompt — 보고서 집필 브리프 (사용자 구술 원문)
+- [sources/prompt/fdp-fde-solution-prompt.md](sources/prompt/fdp-fde-solution-prompt.md) — FDP·FDE 솔루션 제안서 브리프 (2026-08-09, [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md)의 모체)
+- [sources/prompt/prompt-fdp-ssd.md](sources/prompt/prompt-fdp-ssd.md) — (NEW) 「삼성 SSD 전략적 방향성」 보고서 브리프 (2026-08-17, 원문 보존+데이터 보강+팩트체크 대장 F-1~F-9 — [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md)의 모체)
 
 ### sources/papers — 리서치 보고서
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 딥리서치: 2030 메모리 수급 4대 병목 정량 모델 (HBM 2.88EB·서버 125만 대·민감도·가격 균형)
@@ -211,18 +261,33 @@
 
 - [outputs/report/scenario-planning-report.md](outputs/report/scenario-planning-report.md) — 시나리오 플래닝 전략 보고서 (위키 합성)
 - [outputs/report/dev-org-transformation-report.md](outputs/report/dev-org-transformation-report.md) — 개발실 체질 전환 전략 보고서 (LTA→SCA 논거·역할 재정의·액션 플랜)
+- [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md) — (NEW) 삼성 SSD 전략적 방향성 보고서 **본문 v1.1** — 세 번의 선택→호황의 역설(소비자 외주 경량 유지 반영)→네 번째 방향성(동인-대응 매핑·"왜 이번에는 다른가"·생태계 계층 지도·SCADA 분리)→실행(제휴 패키지 선례 한정·수익화 원칙)·비중 전환 3단계 결론 + 부록 A~D(팩트체크·용어·자산맵·**실행 과제 6건**)
+- [outputs/report/ssd-strategy-critique.md](outputs/report/ssd-strategy-critique.md) — (NEW) 삼성 SSD 전략적 방향성 비판적 검토 — 24개 지적(🔴5: 선례의 역설/균열 1/두 전장/FDP 조건부성/가트너 3차 인용) + **사용자 결정 5건·로드맵 B 채택 반영 완료**(2026-08-18, 보고서 v1.1·덱 5장)
 - [outputs/storyline/outline.md](outputs/storyline/outline.md) — (NEW) SSD 스토리라인 제안서 아웃라인 (2부 구성·비판 10건 반영 내역·제목 확정)
 - [outputs/storyline/common-overview.md](outputs/storyline/common-overview.md) — (NEW) 「호황은 전략을 심는 계절이다」 — 7인 공통 개요편(1~4장): 호황의 외생성·다운턴 3건 재감사(결과 이질성)·NAND 지형·3중 저지선
+- [outputs/storyline/open-innovation-proposal.md](outputs/storyline/open-innovation-proposal.md) — (NEW) 「지금만 살 수 있는 것」 — 오픈이노베이션(자원배분 Axis 2): D9 다운사이클 M&A와의 충돌 해소(가격 vs 기술 vs 자리)·저전력 반도체 즉시 실행(Axelera·EnCharge 등 5곳)·퀀텀 모달리티 분산과 극저온 메모리 장기 옵션(Diraq·SEEQC 등 9곳)·실행 3원칙(락인 안 된 곳·자본 5~10% 상한·시계별 심사 분리)
 - [outputs/storyline/dram-architecture-proposal.md](outputs/storyline/dram-architecture-proposal.md) — (NEW) 「판을 옮긴다」 — 2차 저지선 전략 2번(DRAM 제품·아키텍처): 따라잡히는 축·로직 4단계 판 갈이↔메모리 대응(4F² COP)·제품 3분류 개발 체계·세 제안(WoW 필연·zHBM MTO 플랫폼·본딩 분할 경계 5선택지)·해자는 본딩이 아니라 본딩+선단 로직+메모리의 결합
 - [outputs/storyline/mfg-fungibility-proposal.md](outputs/storyline/mfg-fungibility-proposal.md) — (NEW) 「전환할 수 있는 몸」 — 2차 저지선 전략 1번(양산 체제): 감가의 파고(2028~29 감가 정점 = 감가 완료 설비 풀 최대)·전환 리드타임 9~12개월·세 갈래 길·세 축(세대 연장성/제품 간 동일성/N-1 설계, 선단 리더십 유지 바벨)·실행 4영역
 - [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md) — (NEW) 「SSD의 CUDA — 하드웨어를 지키는 소프트웨어」 — SSD 제안편(5~7장): Captive 진단(구글 이중 트랙·KV Cache)·3안 선택·문(SCA)/열쇠(FDP)/사람(FDE)·수익화 3단 사다리·5년 효과 산정($1.2B~$17.9B)
+- [outputs/presentation/downturn-scenario-impact.pptx](outputs/presentation/downturn-scenario-impact.pptx) — (NEW) SP-2 시나리오별 삼성 영향 진단 1장 슬라이드 ([wiki/downturn/samsung-impact.md](wiki/downturn/samsung-impact.md) 합성, `scripts/generate_downturn_impact_slide.py`로 재생성)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서
+- [outputs/presentation/ssd-strategy-outline.md](outputs/presentation/ssd-strategy-outline.md) — (NEW) 삼성 SSD 전략적 방향성 발표 **6장** 기획서 (요약 2종 + 본편 4, storyline-overview 디자인 시스템 승계)
+- [outputs/presentation/downturn-review-outline.md](outputs/presentation/downturn-review-outline.md) — (NEW) 메모리 다운턴 복기 + 다음 다운턴 덱 **13장** 기획서 (본편 4장: 통합·NAND·DRAM·시나리오 + 과거 4장 + 시나리오 5장)
+- [outputs/presentation/downturn-review.pptx](outputs/presentation/downturn-review.pptx) — (NEW) 다운턴 복기 + 다음 다운턴 **13장** 덱 본체 — S1 과거 4건 요약(D+N 스택 타임라인 / **전체 메모리 통합 QoQ** 산점도 / 4행 표 D·N 통합 관점 / 밴드 4종) + **S2 NAND 단독 뷰**(NAND 타임라인·D vs N 낙폭 비교·NAND 관점 표) + **S3 DRAM 단독 뷰**(DT16 포함 5개 창 타임라인·5점 산점도·DRAM 관점 표) + S4 다음 다운턴(시나리오 사분면·역사 대응물 / 유효 대응 vs 치명 실수 5행 표 / 지금 닫히는 창 DP 3타일 / 무후회 밴드) + Appendix 과거 4장·시나리오 DT-A~E 5장. 개조식 문체·**전 장 발표자 노트**(함축 표현 해설) (`scripts/generate_downturn_assets.py` + `generate_downturn_review_pptx.py`로 재생성, 커밋 예외 등록)
+- [outputs/presentation/ssd-strategy.pptx](outputs/presentation/ssd-strategy.pptx) — (NEW) 삼성 SSD 전략적 방향성 **6장** 덱 본체 — S0 한 장 논증(문제 바 차트→원인 표→결론→실행) + S0b 일곱 걸음 스토리(솔루션화 90%→서버 29%→캡티브 11%/100EB→FDP, 사내 수치 [확인] 표기) + 본편 4장 (`scripts/generate_ssd_strategy_pptx.py`로 재생성, 커밋 예외 등록)
 - [outputs/presentation/dev-transformation-summary.pptx](outputs/presentation/dev-transformation-summary.pptx) — 개발실 체질 전환 요약 5장: 디테일 상·중·하 + 제품·기술 축(FDP 플랫폼) 2장, 도식 중심(타임라인·As-Is→To-Be·아이콘)·화이트+블루·그린. 개별본 `-high/-mid/-low/-fdp.pptx` + `dashboard/public/downloads/` 다운로드 미러 (`scripts/generate_dev_transformation_summary.cjs`로 재생성)
+- [outputs/presentation/dev-transformation-consulting.pptx](outputs/presentation/dev-transformation-consulting.pptx) — (NEW) FDP 전략 컨설팅 스타일 덱 **8장**: 이그제큐티브 서머리(dot-dash) → 환경 변화·통제권 4단계 → 2023 복기(낙폭·재배분·QLC 타임라인) → KV cache 갭(수요·RUH·DWPD) → 선택지 하비볼 매트릭스 → 전략 6요소·실행 6종 → 협업 대상 3층 → FDE·KPI·Ask. 액션 타이틀만 읽어도 논증 완결(고스트 덱) (`scripts/generate_dev_transformation_consulting.cjs`로 재생성, 다운로드 미러)
+- [.claude/skills/consulting-deck-design-skill/SKILL.md](.claude/skills/consulting-deck-design-skill/SKILL.md) — (NEW) 전략 컨설팅 보고 덱 문법 스킬: Pyramid Principle·SCQA·MECE·수평/수직 논리·액션 타이틀·트래커·스티커·레이아웃 패턴 카탈로그·데이터 규율·QA 체크리스트. 브랜드 토큰은 samsung-memory-ppt-design-skill에 위임
 - `outputs/presentation/*.pptx` — 4종 디자인 변형 (`scripts/generate_*_pptx.py`로 재생성)
 
 ## dashboard — 빌드 산출물 (최상위, Vercel 루트)
 
+- [dashboard/src/data/downturnPlanning.js](dashboard/src/data/downturnPlanning.js) — (NEW) SP-2 다운턴 시나리오 플래닝 데이터셋 ([wiki/downturn/*.md](wiki/downturn/README.md) 미러 — DT_FOCAL·DT_STEEP_DATA·DT_DRIVERS·DT_SCENARIOS·DT_PREPARATION·DT_RESPONSE·DT_INDICATORS)
+- [dashboard/src/components/DownturnPlanning.jsx](dashboard/src/components/DownturnPlanning.jsx) — (NEW) SP-2 트랙 6개 서브탭 (Focal Issue·STEEP·Driving Forces·Scenarios·대비/대응·감별 지표)
+- [dashboard/src/components/ScenarioPlanning.jsx](dashboard/src/components/ScenarioPlanning.jsx) — Scenario Planning 탭 — 상단 트랙 스위처로 SP-1(AI 메모리 시대)·SP-2(메모리 다운턴) 분리
+- [dashboard/src/data/cmoMatrix.js](dashboard/src/data/cmoMatrix.js) — CMO 통합 매트릭스 엔트리 ([wiki/storyline/cmo-matrix.md](wiki/storyline/cmo-matrix.md) 미러)
+- [dashboard/src/components/CMOMatrix.jsx](dashboard/src/components/CMOMatrix.jsx) — CMO Matrix 탭 (다운턴·국면·제품·관점·판정 필터 + 매트릭스/리스트 뷰)
 - [dashboard/src/data/scenarioPlanning.js](dashboard/src/data/scenarioPlanning.js) — SCENARIOS·INITIAL_QUADRANT_POSITIONS (wiki 미러)
 - [dashboard/src/data/strategies.js](dashboard/src/data/strategies.js) — DECISIONS·RS·전략 (wiki 미러)
 - [dashboard/src/data/indicators.js](dashboard/src/data/indicators.js) — EWI 지표

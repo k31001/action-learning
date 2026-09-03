@@ -4,11 +4,17 @@ import {
   ScatterChart, Scatter, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, ZAxis,
 } from 'recharts'
-import { Layers, Compass, Map as MapIcon, BookOpen, Star, AlertOctagon, Target, ChevronDown, ChevronUp, Info, Sparkles, MapPin } from 'lucide-react'
+import { Layers, Compass, Map as MapIcon, BookOpen, Star, AlertOctagon, Target, ChevronDown, ChevronUp, Info, Sparkles, MapPin, TrendingUp, TrendingDown } from 'lucide-react'
 import {
   STEEP_DATA, DRIVING_FORCES_DATA, SCENARIOS_DATA, BENCHMARK_DATA,
 } from '../data/scenarioPlanning'
 import SourceLink from './SourceLink'
+import DownturnPlanning, { DOWNTURN_SUB_TABS } from './DownturnPlanning'
+
+// ── 두 개의 시나리오 플래닝 트랙 ────────────────────────────────────────────
+// SP-1: AI 메모리 시대의 전략적 위치 (기존)  — wiki/{steep,driving-forces,scenarios,benchmark}
+// SP-2: 메모리 다운턴 대비·대응 (신규)        — wiki/downturn
+// 서브탭 id 는 두 트랙에 걸쳐 유일하므로 기존 딥링크(#/planning/steep 등)가 그대로 유지된다.
 
 const SUB_TABS = [
   { id: 'steep',     label: 'STEEP',           icon: Layers },
@@ -16,6 +22,30 @@ const SUB_TABS = [
   { id: 'scenarios', label: 'Scenarios',       icon: MapIcon },
   { id: 'benchmark', label: 'Benchmark',       icon: BookOpen },
 ]
+
+const TRACKS = [
+  {
+    id: 'sp1',
+    code: 'SP-1',
+    label: 'AI 메모리 시대',
+    caption: 'AI 수요 × 미중 지정학 · 2026~2035',
+    icon: TrendingUp,
+    accent: 'sky',
+    tabs: SUB_TABS,
+  },
+  {
+    id: 'sp2',
+    code: 'SP-2',
+    label: '메모리 다운턴',
+    caption: '발원지 × 전개 속도 · 2027~2030',
+    icon: TrendingDown,
+    accent: 'purple',
+    tabs: DOWNTURN_SUB_TABS,
+  },
+]
+
+const ALL_SUB_TAB_IDS = TRACKS.flatMap(t => t.tabs.map(s => s.id))
+const trackOf = tabId => TRACKS.find(t => t.tabs.some(s => s.id === tabId)) ?? TRACKS[0]
 
 // ── 공통 ────────────────────────────────────────────────────────────────────
 function Card({ title, source, children, className = '' }) {
@@ -590,21 +620,57 @@ function BenchmarkPanel() {
 // MAIN
 // ─────────────────────────────────────────────────────────────────────────────
 export default function ScenarioPlanning() {
-  const [tab, setTab] = useHashSegment(1, 'steep', SUB_TABS.map(t => t.id))
+  const [tab, setTab] = useHashSegment(1, 'steep', ALL_SUB_TAB_IDS)
+  const track = trackOf(tab)
+
+  const activeCls = {
+    sky:    'border-sky-500 text-zinc-900 bg-white/80',
+    purple: 'border-purple-500 text-zinc-900 bg-white/80',
+  }[track.accent]
 
   return (
     <div>
-      <div className="flex items-center gap-1 mb-4 border-b border-zinc-200">
-        {SUB_TABS.map(t => {
+      {/* ── 과제 트랙 선택 — 두 개의 독립된 시나리오 플래닝 ── */}
+      <nav aria-label="시나리오 플래닝 트랙" className="flex flex-wrap items-stretch gap-2 mb-3">
+        {TRACKS.map(t => {
+          const Icon = t.icon
+          const active = track.id === t.id
+          const ring = t.accent === 'purple' ? 'ring-purple-400 bg-purple-50' : 'ring-sky-400 bg-sky-50'
+          const dot  = t.accent === 'purple' ? 'text-purple-600' : 'text-sky-600'
+          return (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.tabs[0].id)}
+              aria-current={active ? 'true' : undefined}
+              className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-hig-lg border transition-all ease-hig-standard text-left ${
+                active
+                  ? `border-transparent ring-2 ${ring} shadow-hig-1`
+                  : 'border-zinc-200 bg-white hover:bg-zinc-50 text-zinc-500'
+              }`}
+            >
+              <Icon size={17} className={active ? dot : 'text-zinc-400'} />
+              <div>
+                <div className="flex items-center gap-1.5">
+                  <span className={`text-[10px] font-mono font-bold ${active ? dot : 'text-zinc-400'}`}>{t.code}</span>
+                  <span className={`text-[13px] font-semibold tracking-tight ${active ? 'text-zinc-900' : 'text-zinc-600'}`}>{t.label}</span>
+                </div>
+                <div className="text-[10px] text-zinc-500 mt-0.5">{t.caption}</div>
+              </div>
+            </button>
+          )
+        })}
+      </nav>
+
+      {/* ── 선택된 트랙의 서브탭 ── */}
+      <div className="flex flex-wrap items-center gap-1 mb-4 border-b border-zinc-200">
+        {track.tabs.map(t => {
           const Icon = t.icon
           return (
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
               className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                tab === t.id
-                  ? 'border-sky-500 text-zinc-900 bg-white/80'
-                  : 'border-transparent text-zinc-500 hover:text-zinc-700 hover:bg-zinc-50/60'
+                tab === t.id ? activeCls : 'border-transparent text-zinc-500 hover:text-zinc-700 hover:bg-zinc-50/60'
               }`}
             >
               <Icon size={14} />
@@ -614,10 +680,16 @@ export default function ScenarioPlanning() {
         })}
       </div>
 
-      {tab === 'steep'     && <STEEPPanel />}
-      {tab === 'drivers'   && <DrivingForcesPanel />}
-      {tab === 'scenarios' && <ScenariosPanel />}
-      {tab === 'benchmark' && <BenchmarkPanel />}
+      {track.id === 'sp1' ? (
+        <>
+          {tab === 'steep'     && <STEEPPanel />}
+          {tab === 'drivers'   && <DrivingForcesPanel />}
+          {tab === 'scenarios' && <ScenariosPanel />}
+          {tab === 'benchmark' && <BenchmarkPanel />}
+        </>
+      ) : (
+        <DownturnPlanning tab={tab} />
+      )}
     </div>
   )
 }

@@ -288,8 +288,22 @@ export const DT_DOWNLOADS = [
     file: 'dev-transformation-summary-fdp.pptx',
     level: '제품',
     label: '제품·기술 축 — FDP',
-    desc: 'FDP Host–SSD 통합 플랫폼: 전환 한 컷 · 6요소 · 실행전략 6종 · 핵심 KPI (2장)',
+    desc: 'FDP 플랫폼: 환경 변화·Captive 차트 · 선택지 비교 · 전략·실행 · 생태계 확산 (4장)',
     color: '#4c7c94',
+  },
+  {
+    file: 'dev-transformation-summary-fdp-eco.pptx',
+    level: '실행',
+    label: '생태계 확산 실행전략',
+    desc: '2023 다운턴 교훈(낙폭·재배분·QLC 경쟁) · KV Cache 수요·RUH·DWPD 갭 · SCA·FDP·FDE 실행전략 (3장)',
+    color: '#028090',
+  },
+  {
+    file: 'dev-transformation-consulting.pptx',
+    level: '컨설팅',
+    label: '컨설팅 스타일 통합 덱',
+    desc: 'Pyramid Principle·액션 타이틀·하비볼 매트릭스: 요약 → 환경 변화 → 2023 복기 → KV cache 갭 → 선택지 → 전략 구조 → 협업 3층 → Ask (8장)',
+    color: '#1428a0',
   },
 ]
 

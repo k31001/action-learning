@@ -438,7 +438,7 @@ def build_slide_2_how(prs):
         ('Step 4', 'Driving Forces',    'DF1 (AI 수요) × DF2 (미중 지정학)  +  DF3 (메모리 아키텍처)'),
         ('Step 5', '2×2 매트릭스',       '시나리오 A·B·C·D  +  와일드카드 E'),
         ('Step 6', '시나리오 내러티브',   '각 시나리오별 5년 후 풍경 + 분기점 + 모니터링 지표'),
-        ('Step 7', 'Main / Side Bet',   'Main = B 르네상스 (확률 35%) / Side = A·C·D·E 보험'),
+        ('Step 7', 'Main / Side Bet',   'Main = B 르네상스 (최유력) / Side = A·C·D·E 보험'),
         ('Step 8', 'Robust + EWI',      'RS-1~RS-9  +  21개 자동 트리거  +  D1~D17 결정 묶음'),
     ]
     ROW_Y0 = MY + Inches(0.68)

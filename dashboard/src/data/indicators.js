@@ -34,11 +34,26 @@ export const INITIAL_QUADRANT_POSITIONS = [
   //   [후기순환 tell 실측 등장] 08-04가 이창수 프레임("진짜 꼭짓점은 CapEx가 아니라 FCF")으로 선행 관전 대상 지목한 CapEx-vs-FCF 다이버전스가 Q2 실적에서 가시화 — Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B).
   //     단 수요 붕괴가 아닌 조달 구조 경보(CapEx 자체 상승·핸드투마우스 재고 없음·Google Cloud 백로그 $514B 견조) → 축 무이동, EWI(demand_inflection_divergence·bigtech_capex_growth FCF 렌즈) 감시 강화로 반영.
   //   GPU 임대가 firming/flat(H100 ~$2.69·H200 ~$4.38, 붕괴 없음)로 수요 변곡 조기경보 미발동. DF2: 신규 미중 실현 사실 부재(크리스 밀러 "초크포인트 GPU→HBM 이동"은 외부 해석·MATCH 본회의 movement 없음·CXMT HBM 미확정) → 방향·위치 유지.
-  { key: 'current',    date: '2026-08', df1: 8.5,  df2: 0.5,  note: '[08-11 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동. 07-28이 지목한 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점 재확인. Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 조달 경보(수요 붕괴 아님)라 축 무이동·EWI 감시 강화. GPU 임대가 firming/flat. [08-04 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐, 내부 전문가 프레이밍으로 거시 축 무이동. 양면적: take-or-pay/NTB 바닥 경직화(상방 재확인) vs HBM 편중·중복수요·NAND 조정(하방 유보) 상쇄 → 정점 재확인. DF2: 이창수 중국 비동조화·미주 집중은 관리된 공존 정합. [07-28 재평가] in-window 신호 정점 재확인: Alphabet CapEx 상향·SK하이닉스 사상 최대. [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
+  // [2026-08-25 정기 재평가] DF1 8.5·DF2 0.5 유지 — 08-18 이후 git log 변경분(v2.46.2~v2.46.9·v2.42.1)은 전부 ② 역사 리서치(지난 20년 다운턴 복기 전체 메모리 D+N 통합 산점도 전환·NAND 분기 낙폭 4Q08 -19.3%·4Q22 -25% 검증) ③ SP-2 다운턴 트랙 심화(시나리오별 삼성 영향 진단 — S/W 코드 고정 좌표계, 별도 축 DF-D1×DF-D2라 SP-1 무이동) ④ 전략·outputs(FDP 생태계 확산·락인 실행전략 3종) ⑤ 발표 층(PPTX 확률 표기 제거 — 발표/분석 층 분리·영향 진단 슬라이드 리디자인)으로 신규 실현된 외부 거시 수요 사실 0건 → 축 무이동.
+  //   08-25 웹 리서치 in-window 신호도 전부 정점 재확인·정제: 빅테크 4사 2026 CapEx ~$725B(+77% YoY)·삭감 0건(08-11 스냅샷 무변화)·DRAM Q3 계약가 +13~18%·NAND +10~15% QoQ(Q2 +58~63%/+70~75% 대비 감속=소비자 지불한계 정제, 서버·AI 견조)·HBM4 가격 전세대 +30%. 직전 실현 외부 데이터는 여전히 Q2 하이퍼스케일러 실적(08-11) → DF1 8.5 정점 유지.
+  //   DF2: MATCH(H.R.8170) 04-22 위원회 보고 후 본회의 표결 movement 없음·애플–CXMT '테스트'→'인증(qualifying)' 소폭 진전했으나 백악관 사인오프 대기·Schumer 반대 서한(07-29) 역풍으로 리트머스 미해결 → DF2 0.5 방향·위치 유지(EWI cxmt_apple_qualification 갱신). CXMT BIS 엔티티 리스트 미등재. 발동 트리거 0건.
+  // [2026-08-18 정기 재평가] DF1 8.5·DF2 0.5 유지 — 08-11 이후 git log 변경분(v2.40.0~v2.46.0)은 전부 다섯 계층: ① 제품믹스·삼성 실행(SSD·UFS 축 보강 v2.42.4·삼성 SSD design win v2.42.5·CAPEX 탭 솔루션 오버레이 v2.46.0) ② 역사 리서치(CMO 통합 매트릭스 v2.41.0·2019 다운사이클 편입 v2.44.0·CAPEX 히스토리 2006 소급 v2.42.2·시장 전환기 전략 v2.42.6) ③ 신규 분석 트랙(SP-2 다운턴 시나리오 플래닝 v2.42.0 — 별도 축 DF-D1×DF-D2, SP-1 거시 축 무영향) ④ outputs/보고서(2차 저지선 전략·키엔스 벤치마크·SSD 전략적 방향성 보고서 v1.1) ⑤ 내부 문서(회의록 메뉴 v2.40.0).
+  //   거시 축은 "실현된 외부 사실"이 움직인다는 일관 방법론상 위 전부 제품믹스(DF3/NAND)·역사·내부 분석·outputs로 분류 → 신규 실현된 외부 거시 수요 사실 0건. 직전 실현 외부 데이터는 여전히 Q2 하이퍼스케일러 실적(08-11) → DF1 8.5 정점 유지, 축 무이동.
+  //   [이번 사이클 최대 산출물] SP-2 다운턴 트랙 신설 + CMO 다운턴 역사 매트릭스(관측 3→4개)는 다운턴 대비·감별 차원을 심화하나 설계상 별도 축(DF-D1 발원지×DF-D2 속도)을 써 SP-1 DF1 무이동 — 공급발 다운턴은 A·B 사분면 안에서도 발생하므로 두 트랙 병존이 방법론적으로 정합.
+  //   [삼성 실행 진전] SSD design win(PM1763 양산 개시 2026-07-08 공식·CMX V-NAND 캐파 60%+ NVIDIA 배정·DGX Spark PM9E1 실탑재)은 AI-스토리지 NAND 수요·삼성 실행 진전 확인이나 삼성 개별 실행 신호(DF3/NAND)라 거시 축 아님 → EWI(samsung_ai_ssd_position·nvidia_storage_next_partner·enterprise_ssd_tam) 갱신으로 반영.
+  //   DF2: 08-11 이후 신규 미중 실현 정책 사실 0건(MATCH 본회의 movement 없음·CXMT HBM 미확정·애플–CXMT 테스트 단계·신규 수출통제 없음). SP-2에서 DF2는 배경 변수로 강등되어 SP-1 위치 무영향 → DF2 0.5 방향·위치 유지. 발동 트리거 0건.
+  { key: 'current',    date: '2026-09', df1: 8.5,  df2: 0.5,  note: '[09-01 재평가] DF1 8.5·DF2 0.5 유지 — 08-25 이후 git log 변경분은 전부 SP-2 다운턴 트랙(다섯 시나리오 발현 근접도 dt-b/c/d/e-signals 08-28·별도 축 DF-D1×DF-D2)·전략/FDP(FDP 협업 3유형·스토리지 벤더 딜 구조·KV Cache SSD 수요)·역사 리서치(2023 NAND 다운턴 벤더 데이터)·발표 층(영향 덱 6p)으로 신규 실현 외부 거시 사실 0건 → 축 무이동. 08-28 수집 in-window 신호도 정점 재확인·유보: HBM 비트수요 성장 감속(2025 +130%→2026 +70%→2027 +50~60%, 단 여전히 공급부족)·TrendForce 메모리 시장 2027 $1.28T 상향(Agentic AI 구조적 확장)·재고 역대최저(DRAM 2~3주·NAND 3~4주)·SEMI 장비지출 사상최대(2026 $133B·2027 $151B)·NVIDIA Rubin Ultra HBM 구성 축소 검토(공급 타이트발, 수요 붕괴 아님)·토큰 소비 폭증(구글 3.2 quadrillion/월 +7배, Jevons 상쇄). DF2: MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전(CXMT DDR5 수율 >90%·HP/Asus/Acer 인증 완료)했으나 Schumer 반대 서한 답변시한(08-21) 경과·백악관 사인오프 대기·9월 시진핑 방미 정상회담 관측(저신뢰)으로 리트머스 미해결 → DF2 이동 근거 미충족(EWI 갱신). 발동 트리거 0건. [08-25 재평가] DF1 8.5·DF2 0.5 유지 — 08-18 이후 git log 변경분(v2.46.2~v2.46.9·v2.42.1)은 전부 역사 리서치(지난 20년 다운턴 복기 D+N 통합 산점도·NAND 분기 낙폭 검증)·SP-2 삼성 영향 진단(S/W 코드 좌표계, 별도 축)·FDP 생태계 실행전략·발표 층 분리(PPTX 확률 표기 제거)로 신규 실현 외부 거시 사실 0건 → 축 무이동. 08-25 웹 리서치 in-window 신호도 정점 재확인·정제(CapEx ~$725B·삭감 0건·DRAM Q3 +13~18%·NAND +10~15% QoQ 감속·HBM4 +30%). DF2: MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전했으나 백악관 사인오프 대기·Schumer 반대 서한으로 리트머스 미해결(EWI 갱신). 발동 트리거 0건. [08-18 재평가] DF1 8.5·DF2 0.5 유지 — 08-11 이후 git log 변경분(v2.40.0~v2.46.0)은 전부 제품믹스·삼성 실행(SSD·UFS·CAPEX 솔루션)·역사 리서치(CMO 매트릭스·2019 편입·CAPEX 히스토리)·신규 분석 트랙(SP-2 다운턴 — 별도 축 DF-D1×DF-D2)·outputs/보고서(2차 저지선·SSD 전략)·회의록으로 신규 실현된 외부 거시 사실 0건 → 축 무이동. 이번 사이클 최대 산출물 SP-2 다운턴 트랙은 다운턴 대비 심화이나 별도 축이라 SP-1 무이동. 삼성 SSD design win(PM1763 양산·CMX·DGX Spark)은 삼성 개별 실행 신호(DF3/NAND)라 EWI 갱신으로 반영. DF2 신규 미중 실현 사실 부재. 발동 트리거 0건. [08-11 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동. 07-28이 지목한 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점 재확인. Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 조달 경보(수요 붕괴 아님)라 축 무이동·EWI 감시 강화. GPU 임대가 firming/flat. [08-04 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐, 내부 전문가 프레이밍으로 거시 축 무이동. 양면적: take-or-pay/NTB 바닥 경직화(상방 재확인) vs HBM 편중·중복수요·NAND 조정(하방 유보) 상쇄 → 정점 재확인. DF2: 이창수 중국 비동조화·미주 집중은 관리된 공존 정합. [07-28 재평가] in-window 신호 정점 재확인: Alphabet CapEx 상향·SK하이닉스 사상 최대. [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
 ]
 
-// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-08-11 정기 재평가 — 유지)
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-09-01 정기 재평가 — 유지)
 //   A 25~29 / B 35~39 / C 6~10 / D 19~23 / E 5~8  → 합 100
+//   [2026-09-01 정기 재평가 — 유지] 08-25 이후 git log 변경분은 전부 SP-2 다운턴 트랙(dt-b/c/d/e-signals 08-28·별도 축)·전략/FDP(FDP 협업 3유형·스토리지 벤더 딜 구조·KV Cache)·역사 리서치(2023 NAND 다운턴 벤더 데이터)·발표 층(영향 덱 6p)으로 신규 실현된 외부 거시 사실 0건 → A26·B39·C8·D21·E6 전부 유지.
+//     08-28 수집 in-window 신호도 정점 재확인·유보뿐: HBM 비트수요 성장 감속(2025 +130%→2026 +70%→2027 +50~60%, 여전히 공급부족)·TrendForce 2027 메모리 $1.28T 상향·재고 역대최저·SEMI 장비지출 사상최대·NVIDIA Rubin Ultra HBM 구성 축소 검토(공급 타이트발)·토큰 소비 폭증(Jevons)은 이미 정점(DF1 8.5)인 축의 재확인이지 시나리오 간 상대 확률 변경 요인 아님. DF2: MATCH 본회의 movement 없음·애플–CXMT 인증 진전(CXMT DDR5 수율 >90%·HP/Asus/Acer 인증)했으나 Schumer 서한 답변시한(08-21) 경과·백악관 사인오프 대기로 리트머스 미해결 → 재배분 미실행(EWI cxmt_apple_qualification 갱신). 중국 추격 실측(CXMT DRAM 7.67% 세계4위·YMTC NAND 14% 세계3위)은 시나리오 D 배경 강화이나 이미 D 21에 반영된 추세의 재확인 — 상대 확률 무영향. 발동 트리거 0건.
+//   [2026-08-25 정기 재평가 — 유지] 08-18 이후 git log 변경분(v2.46.2~v2.46.9·v2.42.1)은 전부 역사 리서치(지난 20년 다운턴 복기 D+N 통합 산점도·NAND 분기 낙폭 검증)·SP-2 삼성 영향 진단(S/W 코드 좌표계 — 별도 축 DF-D1×DF-D2)·FDP 생태계 실행전략·발표 층 분리(PPTX 확률 표기 제거)로 신규 실현된 외부 거시 사실 0건 → A26·B39·C8·D21·E6 전부 유지.
+//     08-25 웹 리서치 in-window 신호도 정점 재확인·유보뿐: 빅테크 4사 CapEx ~$725B(+77% YoY)·삭감 0건·DRAM Q3 +13~18%·NAND +10~15% QoQ(Q2 대비 감속=정제)·HBM4 +30%는 이미 정점(DF1 8.5)인 축의 재확인이지 시나리오 간 상대 확률 변경 요인 아님. DF2: MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전했으나 백악관 사인오프 대기·Schumer 반대 서한(07-29)으로 리트머스 미해결 → 재배분 미실행(EWI cxmt_apple_qualification 갱신).
+//     발표 층 확률 미표기 원칙(사용자 지시 2026-08-25 — 추정 정밀도가 낮아 진단 신뢰를 깎음)은 분석 층 확률 추적과 별개 — SCENARIOS는 분석 층 단일 소스로 유지. 발동 트리거 0건.
+//   [2026-08-18 정기 재평가 — 유지] 08-11 이후 git log 변경분(v2.40.0~v2.46.0)은 전부 제품믹스·삼성 실행(SSD·UFS·CAPEX 솔루션 오버레이)·역사 리서치(CMO 통합 매트릭스·2019 다운사이클 편입·CAPEX 히스토리)·신규 분석 트랙(SP-2 다운턴 — 별도 축 DF-D1×DF-D2)·outputs/보고서(2차 저지선·SSD 전략)·회의록으로 신규 실현된 외부 거시 사실 0건 → A26·B39·C8·D21·E6 전부 유지.
+//     이번 사이클 최대 산출물인 SP-2 다운턴 트랙은 다운턴 대비 차원을 심화하나 설계상 별도 축을 써 이 매트릭스(SP-1 DF1×DF2) 상대 확률을 바꾸지 않음(공급발 다운턴은 A·B 안에서도 발생). 삼성 SSD design win(PM1763 양산·CMX·DGX Spark)은 삼성 개별 실행 신호(DF3/NAND)라 EWI 갱신으로 반영, 상대 확률 무영향. DF2 무변화(신규 미중 실현 사실 부재). 발동 트리거 0건.
 //   [2026-08-11 정기 재평가 — 유지] 08-04 이후 git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치(CMO·CAPEX)·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동 → A26·B39·C8·D21·E6 전부 유지.
 //     07-28이 지목한 DF1 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건은 이미 정점(DF1 8.5)인 축의 재확인이지 시나리오 간 상대 확률 변경 요인 아님(이미 A+B 행 반영).
 //     Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 수요 붕괴가 아닌 조달 경보 → D로의 재배분 미실행, EWI(demand_inflection_divergence·bigtech_capex_growth FCF 렌즈) 감시 강화로 반영. DF2 무변화.
@@ -182,13 +197,14 @@ export const INITIAL_INDICATORS = [
     scenarioText: '20%+→A·B확인 / 5~10% 둔화→D / 절대삭감→C긴급',
     warningThreshold: 10,
     status: 'normal',
-    lastUpdated: '2026-08-11',
+    lastUpdated: '2026-09-01',
     history: [
       { date: '2026-05-05', value: 40, note: '2026년 초기값 (빅테크 4사 합산 +40%, 보수적 하한)' },
       { date: '2026-07-21', value: 77, note: '빅테크 4사 2026 CapEx ~$725B (Amazon $200B·MS $190B·Alphabet $175~185B·Meta $115~135B) = 2025 $410B 대비 +77% (Tom\'s Hardware·Statista). "AI 경제 건강·매출 성장이 자본지출 정당화" — DF1 정점 재확인' },
       { date: '2026-07-28', value: 77, note: 'Q2 실적 시즌 시작 — Alphabet(07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향(Cloud 백로그 QoQ +$50B→$514B, CNBC·Seeking Alpha) = 상방 확인. MSFT·Meta(07-29)·Amazon(07-30)은 창 직후 발표 예정으로 4사 합산 재계산은 다음 주 — Alphabet 상향으로 +77% 기준선은 상방 쪽. DF1 정점 재확인' },
       { date: '2026-08-04', value: 77, note: '[해석 렌즈 보강 — 이창수 부사장 인터뷰 08-03] 값 무변화. 이창수 프레임: "꼭짓점은 CapEx가 아니라 FCF" — 과거엔 CapEx↑=메모리 매수라 좋았으나, 지금은 CapEx↑인데 FCF가 흑자→마이너스로 꺾이면 빅테크 주가가 흔들리고(메타 사례) 미래 리스크를 매수하는 것. 3축(CSP FCF·AI 최종수요 진정성·GPU 생태계) 중 하나라도 안 꺼지면 수요 양호. → 향후 이 지표는 절대 CapEx 성장률과 함께 CapEx-vs-FCF 다이버전스를 병행 관전(demand_inflection_divergence 연동)' },
       { date: '2026-08-11', value: 82, note: 'Q2 실적 실현(MS·Meta 07-29·Amazon 07-30) — 4사 전원 상향: Amazon 2026 $200B→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B·Google $195~205B. 합산 ~$745~750B → +77%에서 ~+82% YoY로 상향, 삭감 0건 = DF1 정점 재확인. 단 이창수 FCF tell 실측 등장 — Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B). CapEx↑는 유지되나 FCF 다이버전스가 후기순환 경보로 가시화(hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md)' },
+      { date: '2026-09-01', value: 82, note: '[08-28 수집, 값 무변화·간접 확증] Q3 4사 CapEx 실적은 아직(다음 확인점). 08-28 in-window 방증: 하이퍼스케일러 CapEx 중 메모리 비중이 2023~24 ~8%→2026 ~30%로 급등(Marvell 인용)·SEMI 300mm 팹 장비지출 2026 $133B(+18%)→2027 $151B(+14%) 사상 최대·CXL 재활용 DDR4 대규모 배치 등 = CapEx 삭감/변곡 신호 0건, 정점 재확인 방향. 다만 DT-B(수요 효율화) 관전 강화: 토큰당 추론비용 280배 하락·KV캐시 90% 절감·Meta CXL 서버 -25% 등 원단위 절감은 Jevons(구글 3.2 quadrillion 토큰/월 +7배·기업 AI 지출 2배)로 상쇄 유지' },
     ],
     note: 'Google·MS·Amazon·Meta 합산 CapEx YoY 성장률. 2026 ~+82%(20%+ 임계 대폭 초과) → A·B 확인 신호 강. [08-11] Q2 실적 후 4사 전원 상향(합산 ~$745~750B). [08-04→08-11] 이창수 프레임 실측 검증 — "진짜 꼭짓점은 FCF": CapEx-vs-FCF 다이버전스(Meta FCF -91%·Amazon TTM FCF 마이너스)가 하락 변곡 선행 tell로 등장, 절대 CapEx 성장(상방)과 병행 관전',
     inputType: 'number',
@@ -340,9 +356,11 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'B·D 신호 — 관리된 공존 + 중국 범용 CXMT 잠식. 차단(무산) 시 A·C 디커플링 반전 신호',
     warningThreshold: null,
     status: 'warning',
-    lastUpdated: '2026-07-11',
+    lastUpdated: '2026-09-01',
     history: [
       { date: '2026-07-11', value: 'testing', note: 'FT 2026-07-08: 애플이 중국 내수용 기기에 CXMT DRAM 기술 검증 착수 + 미 행정부에 사용 승인 로비. CXMT는 국방부 1260H 리스트 등재.' },
+      { date: '2026-08-25', value: 'testing', note: '[08-25 재평가] WSJ 08-09~11: 애플이 iPhone·MacBook 라인 전반에서 CXMT DRAM을 \'테스트\'에서 \'인증(qualifying)\' 단계로 진전 — 양산 승인 직전의 기술 검증 통과 국면. 단 여전히 백악관 사인오프 대기이고, Schumer 상원 원내대표의 對팀쿡 반대 서한(07-29)이 정치적 역풍으로 추가됨. CXMT는 BIS 엔티티 리스트 미등재. 승인/차단 리트머스 미해결 → currentValue \'testing\' 유지(pending_approval 미도달), DF2 이동 근거 미충족.' },
+      { date: '2026-09-01', value: 'testing', note: '[09-01 재평가] 08-28 수집(dt-d-china-entrant-signals): 정치전 격화·미결 지속. Schumer 주도 초당파 상원 서한(07-29~30)이 팀 쿡에게 "전 세계 어느 제품에도 CXMT·YMTC 미사용 약속" 요구, 답변시한 08-21 경과 — 애플 공개 약속 보도 없음. 상무부는 06월 CXMT Entity List 추가 권고를 무역협상 맥락에서 보류(보류≠승인). [저신뢰] wccftech(08월): 트럼프 행정부가 9월 시진핑 방미 정상회담 후 애플의 CXMT(메모리)·YMTC(스토리지) 조달 허용 공식 통지 관측. 한편 CXMT DDR5 수율 >90% 돌파(삼성 92~93%와 2~3%p差)·HP/Asus/Acer 인증 완료 후 노트북 제한 채택 개시 = 기술·상업 인증 파이프라인은 실질 진전. 종합: 승인/차단 리트머스 여전히 미해결 → currentValue \'testing\' 유지, DF2 0.5 이동 근거 미충족. 9월 정상회담 결과가 다음 핵심 분기점.' },
     ],
     options: [
       { value: 'blocked', label: '차단·무산', status: 'normal', signal: 'YMTC 2022 전철 — DF2 디커플링(A·C) 신호' },
@@ -561,13 +579,15 @@ export const INITIAL_INDICATORS = [
     scenarioText: '40%+ → B 가속 / 25%↓ → 전략 위기',
     warningThreshold: 35,
     status: 'warning',
-    lastUpdated: '2026-07-28',
+    lastUpdated: '2026-09-01',
     history: [
       { date: '2025-04', value: 17, note: 'HBM3E 품질 이슈로 추락' },
       { date: '2025-09', value: 35, note: 'Q3 2025 반등 시작' },
       { date: '2026-03', value: 28, note: 'NVIDIA Rubin HBM4 공급 점유 (UBS)' },
       { date: '2026-07-21', value: 28, note: '인증은 통과(06-05 Vera Rubin 3사 인증)했으나 볼륨 발주 미전환 — 삼성 NVIDIA향 HBM4 매출 여전히 유상 평가용 샘플 수준(Winbuzzer 07-17). SK하이닉스 Rubin 2/3+ 락인 유지. 인증→볼륨 발주 전환 지연 = 시나리오 B 실행 리스크' },
       { date: '2026-07-28', value: 28, note: '무변화 — 07-21~28 창 내 볼륨 발주 전환 보도 없음(07-15 Digitimes·07-17 Winbuzzer 이후 신규 반전 부재). SK하이닉스 Rubin/HBM4 선두 60~70% 유지. 인증→볼륨 발주 전환 지연 지속 = 시나리오 B 시간 리스크' },
+      { date: '2026-08-25', value: 28, note: '[08-25 재평가] 볼륨 발주 전환 여전히 미확인(직전 실측 mid-July). 신규 삼성 실행 신호: 레거시 메모리 백엔드의 베트남 이전을 검토해 국내 HBM 캐파를 확보하려는 움직임(TechTimes 08-15) — 볼륨 발주 확정이 아니라 캐파 언락 준비 신호. NVIDIA는 Rubin HBM4에 삼성·SK·Micron 3사 인증 유지(추정 배분 SK 60~70%·삼성 25~30%·Micron 잔여). 인증→볼륨 발주 전환 지연 지속 = 시나리오 B 시간 리스크' },
+      { date: '2026-09-01', value: 28, note: '[09-01 재평가] 볼륨 발주 전환 확인서 여전히 미확보. 08-28 수집 신규 구조 신호 2건: ① NVIDIA가 커스텀 HBM \'NVHBM\'을 08-26 공식 발표 — 메모리 컨트롤러를 base die로 이동, NVLink Fusion 파트너가 자기 설계에 통합. 제조는 삼성·SK가 표준 구현으로 담당(첫 파트너 Amazon Annapurna Trainium4, Feynman 세대 2028 첫 채택). 삼성엔 차세대 제조 참여 기회이나 현 Rubin 배분과는 별개. ② NVIDIA가 DRAM 타이트로 Rubin Ultra의 HBM 구성(스택당 용량)을 축소 검토(TrendForce 08-04·최대 -81% 보도) — 공급 타이트발 최적화이지 삼성 배분 확대와 무관. 삼성 zHBM(Hot Chips 2026 스펙 공개, 상용시점 미공개)은 3D 수직적층 차별화 카드. 종합: Rubin HBM4 점유 28% 무변화, 인증→볼륨 발주 전환 지연 지속 = 시나리오 B 시간 리스크' },
     ],
     note: '목표: 2027년 40%+ (NVIDIA Feynman 1번 공급사 지위). 06-05 인증 통과·07-17 볼륨 발주 대기 — "인증 ≠ 공급 계약" 구간',
     inputType: 'number',
@@ -943,15 +963,16 @@ export const INITIAL_INDICATORS = [
     scenarioText: '15%+ → 시나리오 D 가속 (CXMT가 한국 메이커 범용 DRAM 가격 결정권 잠식)',
     warningThreshold: 10,
     status: 'warning',
-    lastUpdated: '2026-05-06',
+    lastUpdated: '2026-09-01',
     history: [
       { date: '2023', value: 3, note: '빠른 성장 시작' },
       { date: '2024', value: 5, note: 'Morgan Stanley 추정 (4.9%)' },
       { date: '2025-Q3', value: 8, note: 'TrendForce 추정 — DRAM 4강 진입' },
+      { date: '2025-Q4', value: 7.67, note: 'Omdia 매출 기준 글로벌 DRAM 점유율 7.67%, 세계 4위(중국 1위) — 삼성 ~36%·SK ~29%·마이크론 ~24% (dt-d-china-entrant-signals 08-28). Nomura는 현재 ~10%·2028년 18% 전망' },
       { date: '2027E', value: 13.9, note: '업계 예측치' },
-      { date: '2028E', value: 15, note: 'FT(2026-07-08): 글로벌 DRAM 웨이퍼 캐파 점유율 11%(2025)→15%(2028) 전망 — 애플–CXMT 보도 기준 (캐파 계열, 매출 점유와 구분)' },
+      { date: '2028E', value: 15, note: 'FT(2026-07-08): 글로벌 DRAM 웨이퍼 캐파 점유율 11%(2025)→15%(2028) 전망 — 애플–CXMT 보도 기준 (캐파 계열, 매출 점유와 구분). Nomura 매출 점유 18%(2028) 병기' },
     ],
-    note: '캐파: 2024년 17만 WSPM → 2026E 30만 WSPM (글로벌 10~12%). FT(2026-07-08) 캐파 점유 11%(2025)→15%(2028E) — 매출 점유(본 EWI)와 별개 계열. 빅펀드 III $470억 + 안후이성 정부 지원. DDR5 양산 + DDR5-8000·LPDDR5X-10667 시연. 애플이 中 내수용 기기에 CXMT DRAM 테스트 착수(FT 2026-07-08)로 프리미엄 고객 인증 파이프라인 진입 — cxmt_apple_qualification EWI 연동',
+    note: '캐파: 2024년 17만 WSPM → 2026E 30만 WSPM(2026말 35만·2027 목표 42만). FT(2026-07-08) 캐파 점유 11%(2025)→15%(2028E) — 매출 점유(본 EWI)와 별개 계열. 빅펀드 III $470억 + 안후이성 정부 지원. [08-28 수집] 17nm DDR5 수율 >90% 돌파(삼성 92~93%와 2~3%p差·업계 소식통, CXMT 공식 아님)·HP/Asus/Acer DDR5 인증 완료 후 노트북 제한 채택 개시(3사 공급 고갈로 물량 확보 경쟁)·Tencent 다년 200억 위안+ 계약·LPDDR6 샤오미 Xring O3에 SK와 공급 경쟁 진입. 애플이 中 내수용 기기에 CXMT DRAM 테스트→인증 진전(FT 2026-07-08) — cxmt_apple_qualification EWI 연동',
     inputType: 'number',
     hint: 'CXMT DRAM 분기 점유율 % 입력',
     isCritical: true,
@@ -963,23 +984,24 @@ export const INITIAL_INDICATORS = [
     source: 'Digitimes·Tom\'s Hardware',
     unit: '%',
     unitLabel: '%',
-    currentValue: 13,
+    currentValue: 14,
     alertThreshold: 15,
     alertCondition: 'gte',
-    alertDescription: '15%+ 도달 시 NAND 글로벌 4위 고착 — Micron 추격, 삼성 NAND 마진 압박',
+    alertDescription: '15%+ 도달 시 NAND 글로벌 3위 고착 — 삼성 NAND 마진 압박, 2027말 세계 1위 목표',
     scenarioSignals: ['D'],
     scenarioText: 'YMTC 15%+ 시 NAND 가격 압박 본격화. 3공장 가동(2027) + DRAM 50% 전환 시 양면 위협',
     warningThreshold: 14,
     status: 'warning',
-    lastUpdated: '2026-05-06',
+    lastUpdated: '2026-09-01',
     history: [
       { date: '2023', value: 5, note: '제재 후 회복 단계' },
       { date: '2024', value: 9, note: '연간 평균 8~10%' },
       { date: '2025-Q1', value: 10, note: 'Digitimes — 10% 초과' },
       { date: '2025-Q3', value: 13, note: 'Digitimes — 전분기 대비 상승' },
+      { date: '2026-Q2', value: 14, note: '[08-28 수집] YMTC 2026 Q2 NAND 출하 점유율 14%로 세계 3위 등극 — 마이크론·키옥시아 추월(삼성 25%·SK 22%, Digital Citizen·TradingKey 2차 인용). 2027말 세계 1위 목표·월 40만 wpm 캐파 목표 보도(Tom\'s Hardware·Seoul Economic Daily 08-26)' },
       { date: '2025E', value: 15, note: 'YMTC 자체 목표' },
     ],
-    note: '294L NAND 양산 (2025) + 우한 3공장 2027 가동 (NAND 50% + DRAM 50%) — 삼성 V-NAND·DRAM 양면 위협. 국산 장비 라인 구축 진행',
+    note: '294L NAND 양산 (2025) + 우한 3공장 2027 가동 (NAND 50% + DRAM 50%) — 삼성 V-NAND·DRAM 양면 위협. 국산 장비 라인 구축 진행. [08-28] Q2 2026 14% 세계 3위(Micron·Kioxia 추월)·2027말 세계 1위 목표',
     inputType: 'number',
     hint: 'YMTC NAND 분기 출하 점유율 % 입력',
     isCritical: true,
@@ -1004,10 +1026,11 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'SK·Kioxia 1억 IOPS 도달 (2027) 전 삼성 SLC AI SSD 로드맵 공개 시급',
     warningThreshold: 10,
     status: 'warning',
-    lastUpdated: '2026-05-06',
+    lastUpdated: '2026-08-18',
     history: [
       { date: '2025-11', value: 5.4, note: 'Micron 9650 PCIe Gen6 — 단일 SSD 최고치' },
       { date: '2026-Q1', value: 5.4, note: 'Samsung PM1763 시연 (수치 미공개)' },
+      { date: '2026-07', value: 5.4, note: 'Samsung PM1763 양산 개시(07-08, 16TB 28.4/21.9GB/s) — 대역폭 스펙 공개, 단일 IOPS 최고치는 여전히 미공개(SLC 초고 IOPS 트랙 로드맵 공백 유지)' },
       { date: '2026-2027E', value: 25, note: 'SK하이닉스 AI-N P 목표 (NVIDIA 공동 개발)' },
       { date: '2027E', value: 100, note: 'Kioxia·SK 1억 IOPS 단일 SSD 목표 (PCIe Gen7)' },
     ],
@@ -1030,16 +1053,19 @@ export const INITIAL_INDICATORS = [
     scenarioText: 'PM1753 CMX 공급은 즉각 매출 기회. SLC AI SSD 로드맵 공개가 다음 마일스톤',
     warningThreshold: null,
     status: 'warning',
-    lastUpdated: '2026-03',
+    lastUpdated: '2026-08-18',
     history: [
       { date: '2026-03', value: 'PM1763 시연', note: 'GTC 2026 NVIDIA SCADA 시연' },
       { date: '2026-Q2', value: 'PM1753 CMX 공급', note: 'NVIDIA Vera Rubin CMX 공식 공급 (TLC V8 PCIe Gen5)' },
+      { date: '2026-07', value: 'PM1763 양산 개시', note: '[실측] 2026-07-08 공식 양산 개시 — "차세대 AI 플랫폼 검증 완료"(9세대 V-NAND·4nm 컨트롤러·16TB 28.4/21.9GB/s). Vera Rubin 명시는 매체 해석으로 유보. CMX 물량 구조: 1유닛 576 SSD·9,600TB, 삼성 V-NAND 캐파 60%+ NVIDIA 배정 보도 (samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)' },
+      { date: '2026-08', value: 'DGX Spark PM9E1 실탑재', note: '[실측] NVIDIA DGX Spark 4TB SSD가 삼성 PM9E1(M.2 2242·자체 5nm Presto 컨트롤러·14.5GB/s)임을 분해로 확인(MZALC4T0HBL1) — 개인용 AI 기기 design win. 단 SLC 초고 IOPS(SCADA) 트랙 로드맵은 여전히 공백' },
     ],
-    note: 'CMX(즉각 매출 ✅) vs SCADA(구조적 위협 ⚠️) — 삼성 RS-3 다음 결정점은 SLC NAND 기반 초고 IOPS AI SSD 로드맵 공개 (2026 Tech Day 목표)',
+    note: 'CMX(즉각 매출 ✅) vs SCADA(구조적 위협 ⚠️) — 삼성 RS-3 다음 결정점은 SLC NAND 기반 초고 IOPS AI SSD 로드맵 공개 (2026 Tech Day 목표). [08-18] PM1763 양산 개시(07-08)·PM9E1 DGX Spark 실탑재로 CMX·클라이언트 축 실행 진전 확인 — "AI SSD 후행"은 SLC 초고 IOPS 트랙 한정으로 재해석. 캐파 60% NVIDIA 배정은 매출 락인이자 단일 고객 집중 리스크(RS-4 긴장) 병기',
     inputType: 'select',
     selectOptions: [
-      { value: 'pm1763_demo', label: 'PM1763 GTC 시연 (현재)', status: 'warning', signal: '생태계 진입' },
+      { value: 'pm1763_demo', label: 'PM1763 GTC 시연', status: 'warning', signal: '생태계 진입' },
       { value: 'pm1753_supply', label: 'PM1753 CMX 공식 공급', status: 'warning', signal: 'CMX 매출 확보' },
+      { value: 'pm1763_mass_prod', label: 'PM1763 양산 개시 + DGX Spark 실탑재 (현재)', status: 'warning', signal: 'CMX·클라이언트 축 실행 진전 (SLC 트랙은 공백)' },
       { value: 'slc_roadmap', label: 'SLC AI SSD 로드맵 공개', status: 'normal', signal: 'SCADA 추격 시작' },
       { value: 'nvidia_codev', label: 'NVIDIA 공동 개발 발표', status: 'normal', signal: 'B 가속' },
     ],
@@ -1174,14 +1200,15 @@ export const INITIAL_INDICATORS = [
     scenarioText: '핵심 파트너 진입 → B 가속 / 후행 고착 → RS-3 SCADA 트랙 위기',
     warningThreshold: null,
     status: 'warning',
-    lastUpdated: '2026-05-07',
+    lastUpdated: '2026-08-18',
     history: [
       { date: '2025-09', value: 'Kioxia 1억 IOPS 발표', note: 'Kioxia + NVIDIA 공동 개발' },
       { date: '2025-11', value: 'Micron 9650 SCADA 레퍼런스', note: 'SC\'25 2.3억 IOPS 시연' },
       { date: '2025-12', value: 'SK AI-N P 발표', note: 'NVIDIA 공동 개발 — 1억 IOPS 목표 (SLC NAND)' },
       { date: '2026-03', value: 'Samsung PM1763 시연', note: 'GTC 2026 — 생태계 참여 단계' },
+      { date: '2026-08', value: 'CMX 공급자 지위 심화 (PM1763 양산)', note: '[실측] PM1763 양산 개시(07-08)·CMX V-NAND 캐파 60%+ NVIDIA 배정으로 CMX(TLC) 공급자 지위는 심화 — 그러나 핵심 파트너(SLC NAND 초고 IOPS SCADA 레퍼런스)는 여전히 SK·Kioxia 선점. 삼성 SLC AI SSD 로드맵 미공개 = 최대 정보 공백 유지 (samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)' },
     ],
-    note: 'Storage-Next는 NVIDIA AI SSD 생태계의 미래 표준. SLC NAND 기반 초고 IOPS가 핵심 — 삼성 SLC AI SSD 로드맵 미공개가 가장 큰 정보 공백',
+    note: 'Storage-Next는 NVIDIA AI SSD 생태계의 미래 표준. SLC NAND 기반 초고 IOPS가 핵심 — 삼성 SLC AI SSD 로드맵 미공개가 가장 큰 정보 공백. [08-18] CMX(TLC) 축은 양산·캐파 배정으로 공급자 지위 심화, SLC(SCADA) 축 로드맵은 미도달',
     inputType: 'select',
     selectOptions: [
       { value: 'observer', label: '관찰자 (생태계 참여)', status: 'warning', signal: 'PM1763 시연 단계' },
@@ -1457,10 +1484,11 @@ export const INITIAL_INDICATORS = [
     scenarioText: '커스텀 전환 속도 — HBM4E가 2027년 HBM 수요 ~40% 전망(TrendForce)',
     warningThreshold: 15,
     status: 'normal',
-    lastUpdated: '2026-08-04',
+    lastUpdated: '2026-09-01',
     history: [
       { date: '2026-07-04', value: 0, note: '2026 매출은 표준 HBM3E/HBM4 중심 — 커스텀 매출 ~0%(설계 단계). 선행: HBM4E 2027년 ~40%·ASIC 수요 2026 +80%' },
       { date: '2026-08-04', value: 0, note: '[1차 자료 대비 — 인터뷰 2건] 값 무변화(현세대 커스텀 HBM 매출 ~0 유지)이나 방향은 층위가 갈림. 이창수(08-03): 커스텀 HBM4는 거의 다 캔슬 — 커머디티가 해마다 3/3E/4/4E로 앞서가는데 커스텀은 개발 2~3년 걸려 뒤늦게 나올 때 기술적으로도 열위, 지금 빅뱅 구간엔 커스텀 의미 없음 → 커머디티 기술 몰빵. 최장석(07-29): 반대로 zHBM(GPU 위 3D 수직 적층 커스텀)은 전 고객 요구·비표준이라도 타임투마켓 채택 늘어남·업체별 인터레이어 달라 하나의 커스텀 제품. 상충 아니라 층위(현세대 커스텀 HBM 퇴조 vs 차세대 zHBM 커스텀 부상, 2027+) — 이 지표는 zHBM 램프 시점부터 재정의 필요' },
+      { date: '2026-09-01', value: 0, note: '[08-28 수집, 값 무변화·구조 신호 확정] 커스텀 HBM이 발표 단계로 가시화 — ① NVIDIA \'NVHBM\' 08-26 공식 발표: 메모리 컨트롤러를 base die로 이동, NVLink Fusion 파트너가 커스텀 PHY를 자기 설계에 통합. 첫 파트너 Amazon Annapurna Trainium4, Feynman 세대(2028) 첫 채택 GPU. 제조는 삼성·SK가 표준 구현으로 담당(고객이 base die 로직 설계 시 TSMC 파운드리 생산 가능). ② 삼성 zHBM Hot Chips 2026 스펙 공개(HBM4E 대비 전력효율 +70%·대역폭 2.3배, 상용시점 미공개). ③ SK는 하이브리드본딩을 HBM5(2029)로 연기, 삼성 3D 적층 vs SK 패키징 고도화 노선 분화. 현세대 커스텀 매출 여전히 ~0 유지, 본격 상승은 2027~2028 HBM4E/zHBM 램프부터 — 이 지표 재정의 트리거는 zHBM/NVHBM 양산 개시' },
     ],
     note: '커스텀(고객별 베이스다이·bespoke) HBM 매출 / 전체 HBM 매출. 2027 HBM4E 램프부터 본격 상승 예상. [08-04] 1차 자료: 현세대 커스텀 HBM4 퇴조(이창수) vs 차세대 zHBM 커스텀 부상(최장석) — DF3/제품믹스 축, 층위 구분 필요',
     inputType: 'number',
@@ -1483,7 +1511,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: 'HBM 신규 설비 집행 중단·소재 비축 즉시 실행',
     activated: false,
     activatedDate: null,
-    note: '[2026-08-11] 미발동 — Q2 실적 실현으로 정반대 방향 확정: MS·Meta·Amazon(07-29·07-30) 전원 상향, 삭감(YoY -25%) 발표 0건(Amazon $200B→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B). 단 이창수 FCF 렌즈 실측 — 절대 삭감은 없으나 CapEx↑ + FCF 흑자→마이너스 반전(Meta -91%·Amazon TTM 마이너스)이 빅테크 내 차별화 선행 tell로 등장. [2026-08-04] 미발동 — 인터뷰 2건은 삭감 신호 아님. [2026-07-28] Alphabet 상향·SK하이닉스 사상 최대',
+    note: '[2026-08-25] 미발동 — 08-25 웹 리서치 재확인: 빅테크 4사 2026 CapEx ~$725B(+77% YoY)·삭감(YoY -25%) 발표 0건, Q2 상향 가이던스 유지. 신규 삭감 신호 없음. [2026-08-11] 미발동 — Q2 실적 실현으로 정반대 방향 확정: MS·Meta·Amazon(07-29·07-30) 전원 상향, 삭감(YoY -25%) 발표 0건(Amazon $200B→~$220B·MS FY27 $255~260B·Meta 하한 $130~145B). 단 이창수 FCF 렌즈 실측 — 절대 삭감은 없으나 CapEx↑ + FCF 흑자→마이너스 반전(Meta -91%·Amazon TTM 마이너스)이 빅테크 내 차별화 선행 tell로 등장. [2026-08-04] 미발동 — 인터뷰 2건은 삭감 신호 아님. [2026-07-28] Alphabet 상향·SK하이닉스 사상 최대',
     probabilityDelta: { A: -4, B: -10, C: +8, D: +6, E: 0 },
     df1Delta: -2.5,
     df2Delta: 0,
@@ -1496,7 +1524,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: '시안 팹 이전 계획 즉시 발동',
     activated: false,
     activatedDate: null,
-    note: '[2026-07-28] 미발동 — H.R.8170 위원회 통과 단계 유지, 07-21~28 창 내 본회의 표결 movement 없음(congress.gov). DF2 방향 결정 주 분기점으로 계속 추적',
+    note: '[2026-09-01] 미발동 — H.R.8170 04-22 위원회 보고 후 본회의 표결 movement 여전히 없음(08-28 수집 재확인). 08-28~09-01 창의 DF2 활동은 입법이 아니라 행정·정치 경로: 애플–CXMT 인증 진전·Schumer 서한 답변시한(08-21) 경과·9월 시진핑 방미 정상회담 관측. MATCH 통과는 DF2 디커플링 급변 트리거로 계속 추적. [2026-08-25] 미발동 — H.R.8170 04-22 위원회 보고 후 본회의 표결 movement 없음(congress.gov, 08-25 확인). DF2 방향 결정 주 분기점으로 계속 추적. [2026-07-28] 미발동 — H.R.8170 위원회 통과 단계 유지, 07-21~28 창 내 본회의 표결 movement 없음(congress.gov). DF2 방향 결정 주 분기점으로 계속 추적',
     probabilityDelta: { A: +10, B: -8, C: +5, D: -7, E: 0 },
     df1Delta: 0,
     df2Delta: +2.5,
@@ -1593,7 +1621,7 @@ export const INITIAL_TRIGGERS = [
     activatedDate: null,
     note: '',
     isPositive: true,
-    note: '[2026-07-28] 미충족 유지 — 07-21~28 창 내 볼륨 발주 전환 보도 없음(07-15 Digitimes·07-17 Winbuzzer 이후 반전 부재). 인증(qualification)은 06-05 통과했으나 이 트리거는 "공식 공급(볼륨) 계약 확인서" 기준 — NVIDIA향 HBM4 매출은 여전히 유상 평가용 샘플 수준. 인증→볼륨 발주 전환이 발동 조건',
+    note: '[2026-09-01] 미충족 유지 — 볼륨 발주(공식 공급 계약 확인서) 여전히 미확보. 08-26 NVIDIA NVHBM 발표는 삼성·SK가 커스텀 HBM 표준 구현을 제조하는 구조 신호이나 첫 파트너는 Amazon Trainium4·첫 채택은 Feynman 세대(2028)로 현 Rubin HBM4 볼륨 발주 확정과는 별개. NVIDIA Rubin Ultra HBM 구성 축소 검토(공급 타이트발)도 삼성 배분 확대와 무관. 인증→볼륨 발주 전환이 여전히 발동 조건. [2026-08-25] 미충족 유지 — 08-25 웹 리서치: 볼륨 발주 전환 확인서 여전히 미확보(직전 실측 mid-July). 삼성 레거시 백엔드 베트남 이전 검토(TechTimes 08-15)는 캐파 언락 준비 신호이지 볼륨 계약 확정 아님. [2026-07-28] 미충족 유지 — 07-21~28 창 내 볼륨 발주 전환 보도 없음(07-15 Digitimes·07-17 Winbuzzer 이후 반전 부재). 인증(qualification)은 06-05 통과했으나 이 트리거는 "공식 공급(볼륨) 계약 확인서" 기준 — NVIDIA향 HBM4 매출은 여전히 유상 평가용 샘플 수준. 인증→볼륨 발주 전환이 발동 조건',
     probabilityDelta: { A: -3, B: +12, C: -5, D: -4, E: 0 },
     df1Delta: 1.5,
     df2Delta: -1.5,
@@ -1620,7 +1648,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: '관리된 공존 리트머스 확인 — 中 CXMT 잠식 대비 범용 DRAM 원가 우위(1c nm) 가속 + 과점 균열 대비 SCA 락인·고부가(HBM) 편중 강화',
     activated: false,
     activatedDate: null,
-    note: 'DF2 리트머스 (FT 2026-07-08). 현재 테스트 단계. 승인·채택 = 관리된 공존 확정 신호 + 삼성·SK 과점 균열·애플 price leverage. 반대로 차단·무산(YMTC 2022 전철) 시 A·C 디커플링 신호. us_china_semiconductor_deal보다 좁은·약한 공존 신호',
+    note: 'DF2 리트머스 (FT 2026-07-08). [2026-09-01] 미발동 — 인증(qualifying) 단계 진전(애플 iPhone·MacBook 라인 검증 통과·CXMT DDR5 수율 >90%)했으나 미 행정부 승인·양산 채택 미확정: Schumer 초당파 서한 답변시한(08-21) 경과·백악관 사인오프 대기·CXMT Entity List 미등재. [저신뢰] 9월 시진핑 방미 정상회담 후 조달 허용 통지 관측(wccftech) — 실현 시 발동. 승인·채택 = 관리된 공존 확정 + 삼성·SK 과점 균열·애플 price leverage. 반대로 차단·무산(YMTC 2022 전철) 시 A·C 디커플링 신호. us_china_semiconductor_deal보다 좁은·약한 공존 신호',
     isPositive: false,
     probabilityDelta: { A: -3, B: +3, C: -1, D: +1, E: 0 },
     df1Delta: 0,

@@ -129,6 +129,7 @@ lint 결과는 `log.md`에 항목으로 남기고, 즉시 고칠 수 있는 건 
 | 실시간 시계열 (GPU 임대가·공급·신용 스프레드·주가 프록시) | `dashboard/api/_lib/{vast,yahoo}.js` → EWI 자동 갱신 (정적 시드는 `dashboard/data/*.json`) |
 | `wiki/storyline/storyline.md` | `dashboard/src/data/storyline.js` (STORYLINE_META·FLOW·TIMELINE·CHAPTERS 미러) |
 | `wiki/storyline/storyline-*.md` (렌즈 5종) | `dashboard/src/data/storylineLenses.js` (STORYLINE_LENSES 미러) |
+| `wiki/storyline/cmo-matrix.md` | `dashboard/src/data/cmoMatrix.js` (CMO_ENTRIES 미러) + `dashboard/src/components/CMOMatrix.jsx` |
 | `wiki/**/*.md` 페이지 간 링크 | `dashboard/src/data/knowledgeGraph.js` (GENERATED — `node scripts/build-knowledge-graph.mjs`로 재생성) |
 | `wiki/` 전체 | `outputs/report/scenario-planning-report.md` (합성) |
 | `outputs/report/scenario-planning-report.md` | `outputs/presentation/slide-outline.md` |

@@ -39,3 +39,20 @@ WHY(왜 지금인가) → WHAT(무엇이 되어야 하나) → HOW(무엇부터 
 ## Carbon 테마 재현 방법 (참고)
 - 본 스크립트는 `generate_pptx.py`의 helper(add_text/add_rect/add_footer 등)를 재사용하되, 모듈 전역 `THEME` 딕셔너리를 Carbon 값으로 in-place 치환(`G.THEME.update(CARBON)`)해 helper 내부 색까지 Carbon화한다. 각진 카드는 기본 `add_rect`(RECTANGLE), 폰트는 한글 IBM Plex Sans KR + 숫자 IBM Plex Mono.
 - 시나리오 플래닝 30장 덱의 Carbon 변형은 별도 소스-치환 래퍼 `generate_carbon_pptx.py` 참조(동일 토큰 매핑). Apple HIG 변형은 `generate_apple_hig_pptx.py`.
+
+
+---
+
+## 부록: 컨설팅 스타일 통합 덱 (2026-09-02) — 고스트 덱
+
+**생성 스크립트**: `scripts/generate_dev_transformation_consulting.cjs` → `dev-transformation-consulting.pptx` (8장, 16:9). **스킬**: `.claude/skills/consulting-deck-design-skill` (구조·문법) + `samsung-memory-ppt-design-skill` (Samsung Blue 단일 액센트). 원천: `wiki/strategies/fdp-host-ssd-platform.md` §1~§6, `dev-org-transformation.md` §4.6~4.7.
+
+액션 타이틀만 이어 읽으면 논증이 완결된다:
+1. 요약: 고객의 스토리지 통제권 상승은 불가역이다. 개발실은 FDP 표준 SSD와 시스템 소프트웨어를 묶은 플랫폼으로 부가가치를 재정의하고, 다음 니즈(KV cache)를 선행해야 한다
+2. 세 흐름이 한 점에서 만난다: 물량은 Binding으로 잠기고, 규격은 고객이 정하며, 완제품 가치는 고객이 가져가려 한다
+3. 2023 다운턴에서 삼성은 -54%로 서버 노출 순위 그대로 맞았고, 회복은 니즈를 적중한 Solidigm이 가져갔다
+4. 다음 니즈는 KV cache다: 2028년 150~200EB 신규 NAND 수요가 열리지만, 현행 제품은 RUH 25배·내구성 2~10배 갭을 안고 있다
+5. 네 가지 선택지 중 FDP 표준 + 시스템 SW 통합 플랫폼만이 부가가치 방어·펌웨어 공통화·통제권 정합·차별화 지속을 동시에 충족한다
+6. 전략의 핵심은 시스템 소프트웨어다: 워크로드를 FDP 정책으로 변환하는 계층이 펌웨어 공통화와 고객별 최적화를 양립시키고 전환비용을 만든다
+7. 협업 대상은 양자택일이 아니다: LLM 기업에서 스펙을 잡고, 스토리지 벤더에서 실증하고, 하이퍼스케일러에서 물량을 수확한다
+8. 실행 요청: FDE 트랙을 신설해 플랫폼을 고객 아키텍처 안으로 들고 들어가고, 성과는 FDP 실제 활성화 용량으로 잰다

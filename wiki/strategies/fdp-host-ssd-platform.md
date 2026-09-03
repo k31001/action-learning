@@ -1,11 +1,17 @@
 ---
 type: strategy
-last_reviewed: 2026-08-05
+last_reviewed: 2026-09-02
 sources:
   - sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md
   - sources/articles/captive-ssd-fdp-context-2026-08.md
   - sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md
   - sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md
+  - sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md
+  - sources/articles/nand-downturn-2023-vendor-data.md
+  - sources/articles/kv-cache-ssd-demand-2026.md
+  - sources/articles/storage-vendor-deal-structures-2026.md
+  - sources/articles/fdp-partner-landscape-2026-09.md
+  - sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md
 ---
 
 # FDP Host–SSD 통합 플랫폼 전략 — 환경 변화에서 전략 선택까지 (DT-P: 개발실 전환의 제품·기술 축)
@@ -38,6 +44,33 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 
 **독해**: ① 통제권 상승은 일방향이다 — 펌웨어를 가진 고객이 컨트롤러로, 컨트롤러를 가진 고객이 표준과 웨이퍼로 내려갔다. ② **FDP 표준 자체가 고객이 설계한 것** — 벤더 기능이 아니라 "데이터 배치 통제권을 표준으로 달라"는 요구의 산물. ③ 구매 단위가 완제품→웨이퍼로 내려간다는 것 = 컨트롤러·펌웨어 부가가치를 고객이 내재화한다는 뜻. **단, 삼성은 FDP 표준의 공동 주도자다** (백서·기술 블로그 발행) — 흐름의 피해자가 아니라 설계 참여자 위치에 있다.
 
+## 2.5 2023 다운턴 복기 — 깊이는 고객 구조가 결정했고, 극복은 니즈 적중이 결정했다
+
+2023 다운턴의 벤더별 낙폭(피크 2Q22 → 저점 1Q23, TrendForce 분기 데이터 합성)은 **서버 노출 순위와 정확히 일치**한다 ([nand-downturn-2023-vendor-data.md](../../sources/articles/nand-downturn-2023-vendor-data.md)):
+
+| 벤더 | 피크→저점 낙폭 | 노출 구조 (프록시) |
+|---|---|---|
+| SK그룹(Solidigm 포함) | **-63%** | 서버 100% Solidigm 포함 — 서버 노출 극단 |
+| **삼성** | **-54%** | enterprise SSD 점유 1위(4Q22 46.9%) — 하이퍼스케일러 노출 최대 |
+| WDC | -45% | 리테일·클라이언트(SanDisk) 비중 커 충격 완충 |
+| Kioxia | -35% | 스마트폰(UFS)·컨슈머 중심 — 가장 얕은 낙폭 |
+
+방증: SSD의 산업 매출 기여가 4Q22 50%+ → 1Q23 20~25%로 붕괴 — 진앙은 서버·클라이언트 SSD였다. 같은 기간 하이퍼스케일러 CapEx는 총량 붕괴가 아니라 **재배분**이었다: Amazon 63.6→52.7(창사 최초 감소)·Meta 31.4→28.1로 깎였지만 AI 서버 시장은 2023 ~$50B로 서버 시장 가치의 ~23%까지 급성장 — 일반 서버향 수요만 꺼졌다.
+
+**반증 사례 = Solidigm**: 낙폭이 가장 깊었던 SK그룹의 Solidigm은 2023-07 세계 최대 용량 61.44TB QLC(D5-P5336)를 출시해 AI 스토리지 수요를 정조준, 2024 eSSD 수요 급증의 최대 수혜로 흑자 전환했다. **교훈: 포트폴리오 다변화(방어)가 아니라, 변화하는 고객 니즈에 제품을 적중(공격)시키는 것이 다운턴 극복의 결정 변수** — 본 전략(§4.5 워크로드 교환·FDP 플랫폼)의 역사적 근거.
+
+이후의 재배분 정량 근거와 니즈 적중 경쟁의 시계열은 [qlc-essd-timeline-fdp-ruh-2026-09.md](../../sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md)가 보여준다: AI 서버 시장 가치는 2023 ~$50B(서버의 ~23%)에서 **2024 $187B(65%)** 로 폭증 궤도(TrendForce). 대용량 QLC eSSD 경쟁에서는 **Solidigm이 61TB급을 삼성보다 12개월 선행**(2023-07 vs 삼성 BM1743 2024-07)했고 122TB급도 선행 출하(2024-11), 삼성의 122.88TB는 FMS 2024 전시 후 미출하 상태이며, **245TB급 첫 상용 출하는 Micron 6600 ION**(2026-05)이다 — 니즈 적중 경쟁에서 삼성이 용량 리더십 후발임을 보여주는 시계열.
+
+## 2.6 지금의 니즈 — KV Cache Offloading과 DWPD 갭
+
+다음 다운턴 대비의 출발점은 "지금 고객 니즈가 어디로 움직이는가"다 ([kv-cache-ssd-demand-2026.md](../../sources/articles/kv-cache-ssd-demand-2026.md)):
+
+- **신규 수요**: LLM 추론의 KV 캐시를 GPU HBM→DRAM→**SSD**로 내리는 오프로딩이 표준 계층으로 정착(NVIDIA Dynamo·CMX·LMCache·Mooncake). SanDisk(FMS 2026): **KV cache 단독 NAND 수요 2027년 75~100EB → 2028년 2배**, **2030년 AI DC NAND 워크로드의 ~35%**. NVL144 랙 연 5만 대 기준 KV cache만 연 ~0.44EB
+- **Write-intensive 특성**: 세션마다 생성·갱신, 짧고 제각각인 수명, 비동기 무효화 → 연속 쓰기 부하. **요구 내구성 유효 7~10+ DWPD(5년)** (ScaleFlux, NVIDIA CMX 타깃 플랫폼)
+- **DWPD 갭**: 현행 고용량 QLC ~0.6 · TLC RI 1 · TLC MU 3 DWPD — 요구 대비 **2~10배 이상 갭**. 미디어만으로 못 메운다
+- **RUH 갭**: 현행 표준 enterprise FDP SSD의 RUH(Reclaim Unit Handle) 지원은 **통상 2~8개** — KV cache가 요구하는 세션·테넌트·공유 프리픽스·수명 등급별 스트림 분리에는 태부족(소수 RUH로는 hot/cold 혼재→GC 증폭 지속). NVIDIA CMX 오프로드를 타깃한 ScaleFlux 플랫폼은 **200+ FDP 스트림**을 제시 — 약 25배 갭 ([qlc-essd-timeline-fdp-ruh-2026-09.md](../../sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md) §2; "NVIDIA 공식 스펙 요구 200개"로는 미확인, CMX 생태계 타깃 플랫폼 스펙으로 표기)
+- **갭의 해법이 곧 본 전략**: ScaleFlux는 그 **200+ FDP 스트림**으로 수명이 다른 KV 블록을 분리해 WAF를 낮춰 **유효 7~10+ DWPD(5년)를 달성**한다고 발표(StorageReview·PR Newswire 2026-07-30) — FDP(수명별 RUH 분리·WAF↓=실효 내구성↑) + Host SW가 KV cache 시대 내구성 문제의 표준 해법. [nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md)의 CMX 생태계와 직접 연결
+
 ## 3. 삼성의 딜레마와 전략적 선택지 — 왜 이 전략인가
 
 교차점에서 검토 가능한 선택지는 4개였다. 평가 기준: (a) 완제품 부가가치 방어 (b) 펌웨어 공통화·개발 효율 (c) 고객 통제권 흐름과의 정합 (d) 차별화 지속성.
@@ -64,6 +97,45 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 6. **오픈소스·차별화 경계** — 공개(기본 라이브러리·연동·적합성) / 차별화(NAND·FTL 모델·정책 추천·예측 모델): lock-in 우려 없이 삼성 SSD 선택 시 더 높은 TCO 효과
 
 **단계**: ① 제품·기본 도구 → ② 전략 고객 2~3사 공동검증 → ③ 상용 플랫폼화(Binding에 SW 지원 포함) → ④ Host Control 확장(QoS·전력·telemetry·multi-tenant)
+
+### 4.5 생태계 확산·락인 실행전략 3종 — "SCA로 다가가고, FDP로 제공하고, FDE로 협업한다"
+
+목표: FDP 생태계를 고객사에 이식해 **락인 플라이휠**(워크로드 유입 → 최적화 심화 → 전환비용 증가)을 만들고, 다운턴에도 유지되는 관계로 피해를 최소화한다 ([fdp-ecosystem-execution-input-2026-08-05.md](../../sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md), 사용자 전략 인풋 2026-08-05).
+
+**실행전략 1 — 워크로드 교환 협업 제안 (지금이 적기)**: 현재 공급부족 국면의 협상력 우위를 지렛대로, **하이퍼스케일러 + 스토리지 박스 업체(Pure Storage·VAST Data·DDN)**에 협업을 제안한다. 딜 구조: 고객이 워크로드(trace)를 공유하면 삼성이 FDP SSD를 그 워크로드에 최적화해 공급. 고객은 소중한 데이터를 내주지만 성능·수명 개선과 TCO 절감을 얻으므로 거절하기 어렵다. 공급부족이 끝나면 이 창은 닫힌다 — 협상력이 있을 때 관계를 계약(전략적 고객 계약)으로 고정한다. **벤더별 딜 구조 주의 ([storage-vendor-deal-structures-2026.md](../../sources/articles/storage-vendor-deal-structures-2026.md), 2026-08-05 검증)**: VAST·DDN은 표준 NVMe SSD 기반 SW 회사라 **인증·레퍼런스 아키텍처 확보가 곧 SSD 판매 경로**이며 FDP·KV cache 협업의 최적 상대(VAST는 CoreWeave $1.17B 딜·Dynamo 연동으로 네오클라우드 기본 스토리지). 반면 **Pure는 완제품 SSD를 사지 않는다** — raw NAND로 자체 DFM을 만들고(컴포넌트 공급은 Micron이 G9 QLC로 선점), 하이퍼스케일러 딜은 고객이 NAND를 직조달하는 라이선스 모델. Pure 경유는 옵션 A(컴포넌트 후퇴) 채널이므로 FDP·텔레메트리 접점 확보를 조건으로 한 선별 접근이 필요하다.
+
+**실행전략 2 — 워크로드 최적화 개발 역량 확보 (전문가 프로파일 5종, 분석 2026-08-05)**: SSD를 잘 만드는 것을 넘어 호스트 시스템·소프트웨어 이해가 필요하다.
+1. **Linux 커널 스토리지**: 블록 계층·io_uring·NVMe 드라이버 (커널 업스트림 경험자)
+2. **유저스페이스 스토리지 엔진**: SPDK·NVMe-oF 데이터패스
+3. **데이터 인프라 내부구조**: RocksDB(LSM·compaction)·CacheLib·Ceph·DB 스토리지 엔진 — FDP 플러그인(실행전략 1~2의 워크로드 연동)의 실장 역량
+4. **스토리지 성능·워크로드 분석**: fio·blktrace·eBPF 트레이싱, WAF·tail latency 정량 분석
+5. **FTL·NAND 미디어 모델링**: 사내 강점(FW·미디어)과 호스트 SW를 잇는 브리지, Emulator/Digital Twin 소유
+- 확보: **채용**(오픈소스 커미터·하이퍼스케일러 스토리지팀 출신) + **양성**(사내 SSD FW 인력의 호스트 SW 전환 트랙, 오픈소스 기여를 평가에 반영)
+
+**실행전략 3 — FDE 파견·협력 운영안 (분석 2026-08-05, [palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md) 준용)**: 선례 — FDE는 Palantir가 창안한 직군(사내 코드명 Delta, 640% 주가 수익의 동력으로 회자)이며 Anthropic·OpenAI도 엔터프라이즈 GTM 전략으로 채택 중이다. 고객이 밀집한 미국에서 하이퍼스케일러 개발자들과 상시 소통하며 개발하고 FDP 생태계에 기여할 인재.
+- **채용**: 실리콘밸리 현지 채용 중심(고객 인접·영어 커뮤니케이션), 오픈소스 스토리지 기여자·고객사/스토리지 스타트업 출신 우대 — §4.6 스타 영입 트랙과 결합
+- **양성**: 본사 FW·시스템 SW 엔지니어의 미국 로테이션(6~12개월) + 현지 FDE 멘토 페어링, "명시 요구 vs 실제 요구" 검증 단계 훈련
+- **운영**: 파일럿 고객 1~2사 상주(Co-Design Pod 소속·홈조직 유지, dual-ladder), 평가는 청구 시간이 아닌 **outcome**(FDP 활성화 용량·정책 채택률), 커널·SPDK·CacheLib **업스트림 기여로 생태계 공헌과 호명**을 병행, 순환 배치로 번아웃·단절 방지
+
+### 4.6 협업 대상 포트폴리오 — 하이퍼스케일러 · 스토리지 벤더 · LLM 기업 (query 2026-09-01)
+
+질문: FDP 고객 협업을 누구와 하나. 결론: **양자택일이 아니라 수요 사슬의 3개 층에 목적을 달리해 동시 진입**한다. 수요 사슬의 몸통은 AI 프론티어("내가 만나는 고객의 3분의 2가 AI 프론티어… 따라가면 몸뚱아리는 AI 프론티어야", [lee-changsoo-memory-sales-interview-2026-08-03.md](../../sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md)) → CSP가 구매를 실행 → 스토리지 벤더는 별동대 채널이다.
+
+| 축 | 하이퍼스케일러 (Meta·Google·MS·AWS) | 스토리지 벤더 (VAST·DDN) | LLM 기업 (Anthropic·OpenAI) |
+|---|---|---|---|
+| 물량·다운턴 헤지 | **본체** — enterprise SSD 수요 55% 지배, SCA(take-or-pay)가 성립하는 유일한 규모 ([captive-ssd-fdp-context-2026-08.md](../../sources/articles/captive-ssd-fdp-context-2026-08.md)) | 소규모(보조 헤지) — 대신 네오클라우드 제2 경로(CoreWeave $1.17B, [storage-vendor-deal-structures-2026.md](../../sources/articles/storage-vendor-deal-structures-2026.md)) | 직접 구매는 아직 작음 — 오프테이커/테넌트 구조(소유·파이낸싱은 CSP 몫, [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)). 단 직접 건설(형태 3) 등장 중 (이창수) |
+| 워크로드 접점 | 정보를 잘 안 내줌 — 공급부족 지렛대 필요 (§4.5 실행전략 1) | 중간 — 자사 어플라이언스 워크로드는 공유 가능, KV Cache SW 이미 상용화(DDN 2026-06, [fdp-partner-landscape-2026-09.md](../../sources/articles/fdp-partner-landscape-2026-09.md) §3) | **원천 소유자** — KV cache 수명·재사용·무효화 정책은 추론 스택 설계자만 안다 ([kv-cache-ssd-demand-2026.md](../../sources/articles/kv-cache-ssd-demand-2026.md) §3) |
+| 협상력 | 삼성이 을 — 멀티벤더 압박, 표준 이식이 곧 커모디티화 위험 | **삼성이 갑** — 작고 빠른 상대, 저비용 파일럿 | 대등 — 자본 관계 기존재(Series F/H strategic infrastructure partner, [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md)) |
+| 락인 리스크 | **통제권 잠식** — 펌웨어·컨트롤러 내재화 요구(AWS Nitro 전례), 협업 심화가 컴포넌트 전락으로 역전될 수 있음 | 채널 충돌(직판과 경합) 관리 필요 | 중복 수요 이중 계상 — LLM발 수요 신호가 CSP 경유 시 중복(이창수 "듀플리케이티드 디맨드") |
+| 속도 | 느림 — qualification 12~18개월, 지금 시작해야 2027~28 물량 ([fdp-partner-landscape-2026-09.md](../../sources/articles/fdp-partner-landscape-2026-09.md) §2) | **빠름** — 6~12개월 실증 가능 | 중간 — Micron↔Anthropic이 발표까지 수개월 단위로 진행된 선례 ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md)) |
+
+**3층 역할 분담 (시퀀싱)**:
+
+1. **LLM 기업 = 스펙 상류 장악 (co-design 층)**. FDP placement 정책(RUH 매핑·KV 블록 수명 분리)을 워크로드 소유자와 공동 설계해 "추론 스택의 레퍼런스 SSD 스펙"에 삼성 구현을 기본값으로 심는다. **Anthropic 우선** — 자본 관계 기존재 + Micron 선례가 SSD 공동 설계까지 명시 + FDE GTM을 스스로 쓰는 조직이라 협업 문법이 통함 ([palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md)). 물량 계약 상대가 아니라 스펙 결정 상대로 접근.
+2. **스토리지 벤더 = 실증·레퍼런스 공장 (속도 층)**. VAST(Dynamo 연동)·DDN(KV Cache SW)과 공동 레퍼런스 아키텍처 — §2.6의 DWPD 갭 논지를 상용 무대에서 입증하고 FDE 파견 훈련장으로 활용 (§4.5 실행전략 1·3).
+3. **하이퍼스케일러 = 물량·SCA 종착지 (수확 층)**. **Google 우선**(기존 FDP 협업 접점, [prompt-fdp-ssd.md](../../sources/prompt/prompt-fdp-ssd.md)), Meta는 구매 SSD 전량에 FDP 탑재·기본 비활성이라 "지원 출하"가 아니라 **활성화 싸움** ([fdp-partner-landscape-2026-09.md](../../sources/articles/fdp-partner-landscape-2026-09.md) §1 — §5 KPI와 동일 논지). 방어선: 펌웨어·텔레메트리 통제권은 내주지 않는 조건부 심화(§2 통제권 4단계의 역행 방지).
+
+**연결 논리**: 1층(LLM)에서 잡은 스펙이 3층(하이퍼스케일러) 협상에서 "고객의 고객이 요구하는 스펙"이라는 지렛대가 된다 — 협상력 비대칭을 우회하는 경로이자, 표준 이식이 커모디티화로 역전되지 않게 하는 차별화 장치. 2층은 그 사이를 잇는 빠른 실증 무대.
 
 ## 5. KPI
 
