@@ -1784,3 +1784,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **왜**: 사용자 지시 — 올바른 용어는 near line(니어라인) SSD, 맥락도 함께 수정.
 - **맥락 보강**: 니어라인 = 핫 SSD와 콜드 아카이브 사이의 대용량 티어(현재 니어라인 HDD 영역). 이 티어를 SSD로 대체하려면 성능이 아니라 용량당 원가·전력으로 승부 — 인터뷰의 "실체는 원가 절감 → 절감분을 고객과 나누는 게임", "프로모션은 파워로(성능은 떨어져도 랙당 파워↓)", "PBSSD = 박스 단위 파워 최적화, 니어라인 SSD 이해의 매개" 논지가 이 정의와 정합. 과제팀의 "지난 다운턴에 경쟁사가 니어라인 SSD 발표 → 대응 보고서" 회고와, 다운턴 판매 제품(대용량·저원가) vs 업턴 판매 제품(고성능 엔터프라이즈) 양쪽 포트폴리오 논의로 연결.
 - **dashboard (v2.46.15, 패치)**: `data/interviews.js`·`data/updates.js`·`src/version.js`. `npm run build` 검증.
+
+## [2026-09-03] build | 내부 인터뷰 핵심 인용문 1장 슬라이드 (internal-interview-quotes.pptx)
+- **무엇**: 내부 인터뷰 대상자 3인(최장석 상무·이창수 부사장·송용호 부사장)의 핵심 인용문을 1개씩 담은 1장 슬라이드. 외부 전문가(신문섭·크리스 밀러·Sachin Katti)는 제외. 생성 스크립트 `outputs/presentation/scripts/generate_interview_quotes_slide.py`(python-pptx, .venv), 출력 `outputs/presentation/internal-interview-quotes.pptx`(.gitignore 예외 등록).
+- **왜**: 사용자 지시 — "인터뷰 핵심 인용문을 한 개씩 정리해서 슬라이드 한 장, 내부 인터뷰 대상자만".
+- **구성**: 액션 타이틀 "내부 임원 3인의 증언: 다운사이드는 캐파 반전으로 오고, 계약은 1차 저지선일 뿐이며, 2차 저지선의 기본은 품질이다" + 3단 컬럼(01 다운사이드의 실체·최장석 HBM 캐파 상쇄 / 02 1차 저지선과 과제의 자리·이창수 take-or-pay / 03 2차 저지선의 기본·송용호 대규모 RMA·품질) + 각 컬럼 하단 "과제 반영" 1문장 + 출처 각주 + 발표자 노트. 인용문은 `interviews.js` keyQuotes 원문에서 em-dash만 문장부호로 치환.
+- **디자인 규율**: samsung-memory-ppt-design-skill — 화이트 배경·Samsung Blue 단일 액센트·SamsungOneKorean 단일 폰트·em-dash 0·문서등급 플레이스홀더. Deck Read: 과제·액션러닝 보고 부속 1장, 청중 사업부 경영진, 다이얼 3/7/4.
+- **검증**: pptx validate 통과, LibreOffice 렌더 검수 3회(과제 반영 행과 각주 겹침 → 카드 높이 4.55→3.85in 축소로 해결). 렌더 환경에 Impress·poppler·Noto CJK 부재로 설치 후 검수.
+- **건너뜀**: 위키·대시보드 무변경(버전 bump 없음 — 대시보드 파일 미수정). 기존 덱(slide-outline.md 체인)에 편입하지 않은 독립 1장.

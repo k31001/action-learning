@@ -269,6 +269,7 @@
 - [outputs/storyline/dram-architecture-proposal.md](outputs/storyline/dram-architecture-proposal.md) — (NEW) 「판을 옮긴다」 — 2차 저지선 전략 2번(DRAM 제품·아키텍처): 따라잡히는 축·로직 4단계 판 갈이↔메모리 대응(4F² COP)·제품 3분류 개발 체계·세 제안(WoW 필연·zHBM MTO 플랫폼·본딩 분할 경계 5선택지)·해자는 본딩이 아니라 본딩+선단 로직+메모리의 결합
 - [outputs/storyline/mfg-fungibility-proposal.md](outputs/storyline/mfg-fungibility-proposal.md) — (NEW) 「전환할 수 있는 몸」 — 2차 저지선 전략 1번(양산 체제): 감가의 파고(2028~29 감가 정점 = 감가 완료 설비 풀 최대)·전환 리드타임 9~12개월·세 갈래 길·세 축(세대 연장성/제품 간 동일성/N-1 설계, 선단 리더십 유지 바벨)·실행 4영역
 - [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md) — (NEW) 「SSD의 CUDA — 하드웨어를 지키는 소프트웨어」 — SSD 제안편(5~7장): Captive 진단(구글 이중 트랙·KV Cache)·3안 선택·문(SCA)/열쇠(FDP)/사람(FDE)·수익화 3단 사다리·5년 효과 산정($1.2B~$17.9B)
+- [outputs/presentation/internal-interview-quotes.pptx](outputs/presentation/internal-interview-quotes.pptx) — (NEW) 내부 인터뷰 핵심 인용문 1장(최장석·이창수·송용호, 발언 1개씩 → 문제 정의·1차 저지선·2차 저지선 3단 논증). 생성: `scripts/generate_interview_quotes_slide.py`, 단일 소스 `dashboard/src/data/interviews.js` keyQuotes
 - [outputs/presentation/downturn-scenario-impact.pptx](outputs/presentation/downturn-scenario-impact.pptx) — (NEW) SP-2 시나리오별 삼성 영향 진단 1장 슬라이드 ([wiki/downturn/samsung-impact.md](wiki/downturn/samsung-impact.md) 합성, `scripts/generate_downturn_impact_slide.py`로 재생성)
 - [outputs/presentation/slide-outline.md](outputs/presentation/slide-outline.md) — 발표 슬라이드 25장 기획서
 - [outputs/presentation/dev-transformation-outline.md](outputs/presentation/dev-transformation-outline.md) — 개발실 체질 전환 발표 5장 기획서

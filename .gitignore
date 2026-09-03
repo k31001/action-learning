@@ -12,6 +12,7 @@ node_modules/
 !outputs/presentation/storyline-overview.pptx
 !outputs/presentation/ssd-strategy.pptx
 !outputs/presentation/downturn-review.pptx
+!outputs/presentation/internal-interview-quotes.pptx
 !dashboard/public/downloads/*.pptx
 !working-style/seminar-claude-code-report/seminar-claude-code*.pptx
 !slides/seminar/*.pptx
