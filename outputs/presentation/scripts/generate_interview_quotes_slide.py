@@ -9,7 +9,12 @@
 재생성:   .venv/bin/python outputs/presentation/scripts/generate_interview_quotes_slide.py
 
 디자인 규율: samsung-memory-ppt-design-skill (화이트 배경, Samsung Blue 단일 액센트,
-             액션 타이틀, 3단 비교 컬럼, em-dash 금지, 문서등급 플레이스홀더).
+             액션 타이틀, em-dash 금지, 문서등급 플레이스홀더).
+포맷:      인용문 전용 슬라이드 문법 (v2). 레포 기존 인용 포맷을 승계했다:
+             generate_pptx.py Focal Issue(대형 인용부호 + 인용문 블록)·클로징(큰 인용문 + 출처 한 줄),
+             generate_dev_transformation_summary.cjs(인용 카드 + "이름, 출처(일자)" 출처 라인).
+             인용문이 주인공: 3단 컬럼마다 대형 인용부호 → 인용문(대형 볼드) → 헤어라인 → 화자.
+             프레임 라벨·해설·과제 반영 문단은 제거하고 발표자 노트로 이동.
 인용문은 interviews.js keyQuotes 원문에서 em-dash만 문장부호로 치환했다.
 """
 from pptx import Presentation
@@ -117,8 +122,7 @@ QUOTES = [
     ),
 ]
 
-TITLE = ('내부 임원 3인의 증언: 다운사이드는 캐파 반전으로 오고, 계약은 1차 저지선일 뿐이며, '
-         '2차 저지선의 기본은 품질이다')
+TITLE = '내부 임원 3인의 증언: 다운사이드는 캐파 반전으로 오고, 계약은 1차 저지선일 뿐, 2차 저지선의 기본은 품질이다'
 LEAD  = ('상품기획·영업·AX/PI 관점의 내부 인터뷰 3건(2026-07~09)에서 핵심 발언 1개씩. '
          '발언의 순서가 곧 과제의 스토리라인(문제 정의 → 1차 저지선 → 2차 저지선)이다.')
 FOOTER = ('출처: 사내 인터뷰 녹취(Clova Note 자동 전사) 정리본. sources/raw-notes/'
@@ -133,57 +137,68 @@ NOTES = """내부 인터뷰 핵심 인용문 1장.
 
 인용문은 dashboard/src/data/interviews.js 의 keyQuotes 원문이며 em-dash만 마침표·쉼표로 치환했다. 수치(4~5개, 60~70%)는 발언자 표현 그대로.
 
+각 발언의 과제 반영(장표에서는 제외, 구두 설명용):
+- 1. 
+- 2. 
+- 3. 
+
 문서등급은 플레이스홀더. 사내 인물 실명·직책이 들어가므로 배포 범위 확인 후 등급 표기."""
 
-# ── 슬라이드 ────────────────────────────────────────────────────────────────
+# ── 슬라이드 (인용문 전용 포맷) ──────────────────────────────────────────────
 prs = Presentation()
 prs.slide_width, prs.slide_height = Inches(13.333), Inches(7.5)
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 
-MX, MW = 0.6, 13.333 - 1.2          # 안전 마진 0.6in (≈1.5cm)
-# 타이틀 (액션 타이틀, 2줄)
-txt(slide, MX, 0.45, MW - 1.6, 0.85, [[(TITLE, {'size': 21, 'bold': True, 'color': INK})]], leading=1.12)
-txt(slide, MX + MW - 1.5, 0.45, 1.5, 0.2, [[('[문서등급 표기]', {'size': 9, 'color': GRAY})]], align=PP_ALIGN.RIGHT)
-# 리드 메시지
-txt(slide, MX, 1.38, MW, 0.5, [[(LEAD, {'size': 12.5, 'color': GRAY})]], leading=1.2)
+MX, MW = 0.7, 13.333 - 1.4
+# 타이틀 (액션 타이틀) + 문서등급
+txt(slide, MX, 0.5, MW - 1.7, 0.9, [[(TITLE, {'size': 20, 'bold': True, 'color': INK})]], leading=1.15)
+txt(slide, MX + MW - 1.5, 0.5, 1.5, 0.2, [[('[문서등급 표기]', {'size': 9, 'color': GRAY})]], align=PP_ALIGN.RIGHT)
+txt(slide, MX, 1.42, MW, 0.3, [[('내부 인터뷰 3건(2026-07~09) · 발언 순서가 곧 과제의 논증 순서: 문제 정의 → 1차 저지선 → 2차 저지선', {'size': 11, 'color': GRAY})]])
 
-# 3단 컬럼
-TOP, H = 2.0, 3.85
-GAP = 0.28
+# 3단: 인용부호 → 인용문 → 헤어라인 → 화자
+TOP = 2.15
+GAP = 0.55
 CW = (MW - 2 * GAP) / 3
+QH = 2.45                       # 인용문 영역 높이
 for i, q in enumerate(QUOTES):
     x = MX + i * (CW + GAP)
-    box(slide, x, TOP, CW, H, fill=G_BG, rnd=True, radius=0.03)
-    pad = 0.28
-    ix, iw = x + pad, CW - 2 * pad
-    # 단계 번호 + 프레임 라벨
-    txt(slide, ix, TOP + 0.22, 0.5, 0.3, [[(q['step'], {'size': 13, 'bold': True, 'color': BLUE})]])
-    txt(slide, ix + 0.5, TOP + 0.25, iw - 0.5, 0.3, [[(q['frame'], {'size': 12, 'bold': True, 'color': INK})]])
-    hline(slide, ix, TOP + 0.6, iw, color=G_LINE, weight=0.5)
-    # 인용 부호 + 인용문
-    txt(slide, ix - 0.02, TOP + 0.62, 0.5, 0.5, [[('“', {'size': 40, 'bold': True, 'color': BLUE})]], leading=0.9)
-    txt(slide, ix, TOP + 1.08, iw, 1.85, [[(q['quote'], {'size': 13.5, 'bold': True, 'color': INK})]], leading=1.28)
-    # 맥락
-    txt(slide, ix, TOP + 2.93, iw, 0.3, [[(q['context'], {'size': 9.5, 'color': G_MID})]])
-    # 화자
-    hline(slide, ix, TOP + 3.27, iw, color=G_LINE, weight=0.5)
-    txt(slide, ix, TOP + 3.34, iw, 0.26, [[(q['name'], {'size': 12, 'bold': True, 'color': BLUE}),
-                                           ('   ' + q['date'], {'size': 9, 'color': G_MID})]])
-    txt(slide, ix, TOP + 3.6, iw, 0.24, [[(q['role'], {'size': 9.5, 'color': GRAY})]])
-
-# 하단: 과제 반영 (3단 정렬 유지)
-TY = TOP + H + 0.15
-txt(slide, MX, TY, 1.2, 0.22, [[('과제 반영', {'size': 9.5, 'bold': True, 'color': BLUE})]])
-for i, q in enumerate(QUOTES):
-    x = MX + i * (CW + GAP)
-    txt(slide, x + 0.28, TY + 0.22, CW - 0.56, 0.55, [[(q['takeaway'], {'size': 10, 'color': INK})]], leading=1.2)
+    # 대형 인용부호 (Samsung Blue, 액센트 1개)
+    txt(slide, x - 0.04, TOP - 0.12, 1.0, 1.0, [[('“', {'size': 72, 'bold': True, 'color': BLUE})]], leading=0.85)
+    # 인용문 (주인공)
+    txt(slide, x, TOP + 0.85, CW, QH, [[(q['quote'], {'size': 16, 'bold': True, 'color': INK})]], leading=1.32)
+    # 헤어라인 + 화자
+    Y = TOP + 0.85 + QH + 0.12
+    hline(slide, x, Y, CW, color=G_LINE, weight=0.75)
+    # 이니셜 원 (아바타 대체, 텍스트 없는 사진 슬롯 대신)
+    circ = slide.shapes.add_shape(MSO_SHAPE.OVAL, Inches(x), Inches(Y + 0.18), Inches(0.46), Inches(0.46))
+    circ.fill.solid(); circ.fill.fore_color.rgb = B_TINT
+    circ.line.fill.background(); circ.shadow.inherit = False
+    tf = circ.text_frame; tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = Emu(0)
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    pp = tf.paragraphs[0]; pp.alignment = PP_ALIGN.CENTER
+    r = pp.add_run(); r.text = q['name'][0]; _font(r, 13, True, BLUE)
+    txt(slide, x + 0.6, Y + 0.16, CW - 0.6, 0.28,
+        [[(q['name'], {'size': 12.5, 'bold': True, 'color': INK})]])
+    txt(slide, x + 0.6, Y + 0.45, CW - 0.6, 0.24,
+        [[(q['role'], {'size': 9.5, 'color': GRAY})]])
+    txt(slide, x + 0.6, Y + 0.69, CW - 0.6, 0.24,
+        [[(q['date'], {'size': 9.5, 'color': G_MID})]])
+    # 컬럼 구분 세로 헤어라인
+    if i < 2:
+        ln = slide.shapes.add_connector(1, Inches(x + CW + GAP / 2), Inches(TOP + 0.1),
+                                        Inches(x + CW + GAP / 2), Inches(Y + 0.95))
+        ln.line.color.rgb = G_LINE; ln.line.width = Pt(0.5); ln.shadow.inherit = False
 
 # 각주
-hline(slide, MX, 7.5 - 0.55, MW, color=G_LINE, weight=0.5)
-txt(slide, MX, 7.5 - 0.49, MW - 0.6, 0.4, [[(FOOTER, {'size': 8.5, 'color': G_MID})]], leading=1.15)
-txt(slide, MX + MW - 0.5, 7.5 - 0.49, 0.5, 0.2, [[('1', {'size': 9, 'color': G_MID})]], align=PP_ALIGN.RIGHT)
+hline(slide, MX, 7.5 - 0.62, MW, color=G_LINE, weight=0.5)
+txt(slide, MX, 7.5 - 0.55, MW - 0.6, 0.4, [[(FOOTER, {'size': 8.5, 'color': G_MID})]], leading=1.15)
+txt(slide, MX + MW - 0.5, 7.5 - 0.55, 0.5, 0.2, [[('1', {'size': 9, 'color': G_MID})]], align=PP_ALIGN.RIGHT)
 
-slide.notes_slide.notes_text_frame.text = NOTES
+# 발표자 노트: 과제 반영 문장을 노트로 이동
+notes = NOTES
+for i, q in enumerate(QUOTES):
+    notes = notes.replace(f"- {i+1}. ", f"- {i+1}. {q['name']} ({q['frame']}): {q['takeaway']}")
+slide.notes_slide.notes_text_frame.text = notes
 OUT = 'outputs/presentation/internal-interview-quotes.pptx'
 prs.save(OUT)
 print('saved:', OUT)
