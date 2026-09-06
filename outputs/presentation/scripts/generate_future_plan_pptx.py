@@ -28,7 +28,8 @@ GRAY_L = RGBColor(0x8A, 0x8A, 0x8A)
 LINE = RGBColor(0xD9, 0xD9, 0xD9)
 TINT = RGBColor(0xF4, 0xF6, 0xFC)
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
-FONT = "Arial"
+FONT = os.environ.get("FONT_LATIN", "Arial")   # 렌더 검증용 오버라이드 (기본 Arial)
+FONT_EA = os.environ.get("FONT_EA", FONT)   # 렌더 검증용 한글 서체 오버라이드 (기본 Arial)
 
 MX = 0.79
 CW = 18.42
@@ -36,7 +37,7 @@ RIGHT = MX + CW
 GRADE = "[문서등급 표기]"
 TOTAL = 2
 
-OUT = os.path.join(os.path.dirname(__file__), "..", "future-plan.pptx")
+OUT = os.environ.get("OUT_PATH") or os.path.join(os.path.dirname(__file__), "..", "future-plan.pptx")
 
 prs = Presentation()
 prs.slide_width = Emu(18288000)   # 20.00 in
@@ -55,7 +56,7 @@ def _font(run, size, bold, color):
     if ea is None:
         ea = rPr.makeelement(qn("a:ea"), {})
         rPr.append(ea)
-    ea.set("typeface", FONT)
+    ea.set("typeface", FONT_EA)
 
 
 def tb(slide, x, y, w, h, paras, align=PP_ALIGN.LEFT, anchor=MSO_ANCHOR.TOP, wrap=True,
@@ -214,76 +215,104 @@ notes(s, "남은 4주는 새 프레임을 늘리는 시간이 아니라, 이미 
          "결정 요청을 구체화합니다. 인터뷰는 9월 말 한 번이며, 결과는 10월 초 보고서 v1.2로 수렴합니다.")
 
 # =====================================================================
-# 슬라이드 2 · 4대 전략 종합 — 왜 · 무엇을 · 산출물
+# 슬라이드 2 · 4대 전략 종합 — 상단 타임라인(핀 마커) + 하단 전략별 4열
 # =====================================================================
 s = prs.slides.add_slide(BLANK)
 header(s, "삼성 SSD 전략적 방향성 · 향후 계획 종합 (4대 전략)",
-       "네 전략 모두 \"무엇을 왜 더 검토하는가\"를 정해 10월 초까지 답을 냅니다",
+       "네 전략이 같은 일정 위에서 각자의 검토를 마치고 10월 말 보고로 수렴합니다",
        "공통 일정은 9월 말 담당임원 인터뷰, 10월 초 보고서 갱신, 10/12부터 발표자료 준비입니다. 전략 1·2·4는 담당별 작성 예정")
 
-COLS = [("전략", 3.00), ("왜 더 검토하는가", 6.00), ("무엇을 검토하나", 6.10),
-        ("산출물 (10월 초)", CW - 3.00 - 6.00 - 6.10)]
-HY = 2.90
-x = MX
-for name, w in COLS:
-    tb(s, x + 0.26, HY, w - 0.3, 0.36, [(name, 16, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
-    x += w
-rect(s, MX, HY + 0.42, CW, 0.014, fill=LINE)
 
-RY0, RH, RG = HY + 0.56, 1.40, 0.10
-rows = [
+def pin(slide, cx, cy, d, num, above, color=BLUE):
+    """핀 마커: 원(테두리) + 삼각 포인터. above=True면 포인터가 아래(타임라인)를 향함."""
+    if above:
+        rect(slide, cx - 0.17, cy + d / 2 - 0.10, 0.34, 0.30, fill=color,
+             shape=MSO_SHAPE.ISOSCELES_TRIANGLE).rotation = 180
+    else:
+        rect(slide, cx - 0.17, cy - d / 2 - 0.20, 0.34, 0.30, fill=color,
+             shape=MSO_SHAPE.ISOSCELES_TRIANGLE)
+    rect(slide, cx - d / 2, cy - d / 2, d, d, fill=WHITE, line=color, line_w=2.25,
+         shape=MSO_SHAPE.OVAL)
+    tb(slide, cx - d / 2, cy - d / 2, d, d, [(num, 17, True, color)],
+       align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+
+
+def small_label(slide, x, y, w, text):
+    tw = 0.34 * len(text) + 0.2
+    tb(slide, x, y, tw, 0.28, [(text, 14.5, True, BLUE)])
+    rect(slide, x + tw, y + 0.14, w - tw, 0.012, fill=LINE)
+
+
+# ---- 상단: 타임라인 ----
+small_label(s, MX, 2.84, CW, "공통 일정")
+LINE_Y = 4.52
+rect(s, MX, LINE_Y - 0.05, CW - 0.30, 0.10, fill=LINE)
+rect(s, RIGHT - 0.34, LINE_Y - 0.17, 0.34, 0.34, fill=LINE, shape=MSO_SHAPE.ISOSCELES_TRIANGLE).rotation = 90
+
+milestones = [
+    ("01", "9/7 착수", "전략별 검토 설계: 질문·조사 범위·검토 항목 확정", True, False),
+    ("02", "9월 말 담당임원 인터뷰", "전략 3 현황 확인, 타 전략의 사내 확인 질문 동반", False, True),
+    ("03", "10월 초 보고서 갱신", "네 전략의 검토 결과를 보고서와 덱에 반영", True, False),
+    ("04", "10/12 발표자료 준비", "덱 통합·리허설·예상 질문 답변 카드", False, False),
+    ("05", "10월 말 경영진 보고", "네 전략의 실행안과 결정 요청", True, True),
+]
+SEG = CW / len(milestones)
+D = 0.72
+for i, (num, title, desc, above, hot) in enumerate(milestones):
+    bx = MX + i * SEG
+    cx = bx + 0.50
+    color = BLUE if hot else GRAY_L
+    rect(s, cx - 0.13, LINE_Y - 0.13, 0.26, 0.26, fill=color, shape=MSO_SHAPE.OVAL)
+    if above:
+        cy = 3.48
+        pin(s, cx, cy, D, num, True, color)
+        tb(s, bx + 1.05, 3.04, SEG - 1.15, 0.36, [(title, 16.5, True, BLUE if hot else INK)])
+        tb(s, bx + 1.05, 3.40, SEG - 1.15, 0.70, [(desc, 14.5, False, GRAY)])
+    else:
+        cy = 5.56
+        pin(s, cx, cy, D, num, False, color)
+        tb(s, bx + 1.05, 5.10, SEG - 1.15, 0.36, [(title, 16.5, True, BLUE if hot else INK)])
+        tb(s, bx + 1.05, 5.46, SEG - 1.15, 0.70, [(desc, 14.5, False, GRAY)])
+
+# ---- 하단: 전략별 4열 ----
+small_label(s, MX, 6.36, CW, "전략별 검토 내용")
+CGAP = 0.20
+CW4 = (CW - CGAP * 3) / 4
+CY2, CH2 = 6.70, 3.52
+strategies = [
     ("전략 1", None), ("전략 2", None),
     ("전략 3", dict(
-        name="FDP 플랫폼",
-        sub="자체 SSD 수요를 표준으로 흡수",
-        why="핵심 주장이 사내 구술과 추정치에 기대고, AI 워크로드에서의 FDP 효과는 조건부이며, "
-            "실행 전략은 문서로만 있습니다. 이 셋이 v1.1 비판적 검토 뒤에도 남은 약점입니다.",
-        what=["① 현실 인식: 인터뷰로 기술·고객·조직 현황 확정",
-              "② AI 워크로드: FDP 효과·난이도·차별화 여지 판정",
-              "③ 실행 전략: 고객별 제안 패키지 + 개발실 준비안"],
-        out=["현황 대장 + 갭 표", "효과·난이도 판정표 + 기술 숙제", "고객 플레이북 + 개발실 준비안"],
-    )),
+        name="FDP 플랫폼", sub="자체 SSD 수요를 표준으로 흡수하는 실행안",
+        items=[
+            "① 현실 인식 (인터뷰): 기술·고객·조직 현황과 추정치 확정 → 현황 대장 + 갭 표",
+            "② AI 워크로드 (조사·기술검토): FDP 효과·난이도·차별화 여지 판정 → 판정표 + 기술 숙제",
+            "③ 실행 전략 (전략구상): 고객별 제안 패키지 + 개발실 준비안 → 플레이북 + 준비안",
+        ])),
     ("전략 4", None),
 ]
-for i, (label, d) in enumerate(rows):
-    y = RY0 + i * (RH + RG)
-    x0 = MX
-    x1 = x0 + COLS[0][1]
-    x2 = x1 + COLS[1][1]
-    x3 = x2 + COLS[2][1]
+for i, (label, d) in enumerate(strategies):
+    x = MX + i * (CW4 + CGAP)
     if d is None:
-        rect(s, MX, y, CW, RH, fill=WHITE, line=LINE, dash=True)
-        tb(s, x0 + 0.26, y, COLS[0][1] - 0.4, RH,
-           [(label, 19, True, GRAY_L), ("[전략명]", 15, False, GRAY_L)],
-           anchor=MSO_ANCHOR.MIDDLE, spacing=1.3)
-        tb(s, x1 + 0.26, y, COLS[1][1] - 0.5, RH,
-           [("[남은 검토가 필요한 이유 · 담당 작성]", 15.5, False, GRAY_L)], anchor=MSO_ANCHOR.MIDDLE)
-        tb(s, x2 + 0.26, y, COLS[2][1] - 0.5, RH,
-           [("[검토 항목 · 담당 작성]", 15.5, False, GRAY_L)], anchor=MSO_ANCHOR.MIDDLE)
-        tb(s, x3 + 0.26, y, COLS[3][1] - 0.5, RH, [("[산출물]", 15.5, False, GRAY_L)],
-           anchor=MSO_ANCHOR.MIDDLE)
+        rect(s, x, CY2, CW4, CH2, fill=WHITE, line=LINE, dash=True)
+        tb(s, x + 0.26, CY2 + 0.24, CW4 - 0.52, 0.36, [(label, 18, True, GRAY_L)])
+        tb(s, x + 0.26, CY2 + 0.62, CW4 - 0.52, 0.32, [("[전략명]", 15, False, GRAY_L)])
+        tb(s, x + 0.26, CY2 + 1.0, CW4 - 0.52, CH2 - 1.2,
+           [("[검토 내용 · 담당 작성]", 15, False, GRAY_L),
+            ("무엇을 왜 검토하고, 10월 초 산출물은 무엇인가", 14, False, GRAY_L)],
+           anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER, spacing=1.3)
         continue
-    rect(s, MX, y, CW, RH, fill=TINT)
-    tb(s, x0 + 0.26, y, COLS[0][1] - 0.4, RH,
-       [(f"{label} · {d['name']}", 18, True, BLUE), (d["sub"], 14.5, True, INK)],
-       anchor=MSO_ANCHOR.MIDDLE, spacing=1.3)
-    tb(s, x1 + 0.26, y, COLS[1][1] - 0.5, RH, [(d["why"], 15, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, x2 + 0.26, y, COLS[2][1] - 0.5, RH, [(t, 14, False, INK) for t in d["what"]],
-       anchor=MSO_ANCHOR.MIDDLE, spacing=1.25, space_after=3)
-    tb(s, x3 + 0.26, y, COLS[3][1] - 0.5, RH, [(t, 14, True, INK) for t in d["out"]],
-       anchor=MSO_ANCHOR.MIDDLE, spacing=1.25, space_after=3)
+    rect(s, x, CY2, CW4, CH2, fill=TINT)
+    tb(s, x + 0.26, CY2 + 0.24, CW4 - 0.52, 0.36, [(f"{label} · {d['name']}", 18, True, BLUE)])
+    tb(s, x + 0.26, CY2 + 0.62, CW4 - 0.52, 0.34, [(d["sub"], 15, True, INK)])
+    rect(s, x + 0.26, CY2 + 1.04, CW4 - 0.52, 0.012, fill=LINE)
+    tb(s, x + 0.26, CY2 + 1.16, CW4 - 0.52, CH2 - 1.3,
+       [(t, 14.5, False, INK) for t in d["items"]], spacing=1.2, space_after=5)
 
-timeline_strip(s, 9.72, [
-    ("9/7 착수", "각 전략 검토 설계", False),
-    ("9월 말 담당임원 인터뷰", "전략 3 현황 확인 · 타 전략 사내 확인 동반", True),
-    ("10월 초 보고서 갱신", "네 전략 산출물 반영", False),
-    ("10/12부터 발표자료 준비", "리허설 · 예상 질문 답변 카드", False),
-])
 footer(s, "출처: 삼성 SSD 전략적 방향성 보고서 v1.1 · 비판적 검토서 · 부록 D", 2)
-notes(s, "네 전략의 향후 계획을 한 장에 모은 종합 슬라이드입니다. 각 전략은 왜 더 검토하는지, "
-         "무엇을 검토하는지, 10월 초 산출물이 무엇인지 세 칸으로 씁니다. 전략 1·2·4는 담당별로 "
-         "같은 칸을 채우고, 전략 3 FDP는 현실 인식·AI 워크로드·실행 전략 세 검토입니다. 공통 "
-         "일정은 9월 말 담당임원 인터뷰, 10월 초 보고서 갱신, 10/12부터 발표자료 준비입니다.")
+notes(s, "네 전략의 향후 계획을 한 장에 모은 종합 슬라이드입니다. 상단은 네 전략이 공유하는 일정이고, "
+         "하단은 전략별 검토 내용입니다. 전략 1·2·4는 담당별로 같은 칸을 채우고, 전략 3 FDP는 "
+         "현실 인식·AI 워크로드·실행 전략 세 검토를 산출물과 함께 적었습니다. 9월 말 담당임원 "
+         "인터뷰와 10월 말 경영진 보고가 두 고정점입니다.")
 
 prs.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(prs.slides._sldIdLst)}장)")
