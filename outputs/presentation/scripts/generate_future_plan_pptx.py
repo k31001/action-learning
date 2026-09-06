@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""향후 계획 2장 덱 생성 (전략 3 FDP 4주 계획 + 4대 전략 종합). v3: 간트형(행=축, 열=주, 막대=기간, 하단 범례).
+"""향후 계획 2장 덱 생성. v4: "무엇을·왜" 중심 (세 열 논증 + 하단 한 줄 일정 / 4전략 × 왜·무엇·산출물 표).
 
 디자인 시스템: generate_ssd_strategy_pptx.py 승계
-  20 x 11.25 in 캔버스 / Arial 단일 폰트 / Samsung Blue #1428A0 + 그레이 계열
+  20 x 11.25 in 캔버스 / Arial 단일 폰트 / Samsung Blue #1428A0 단일 액센트
   헤더(조직명·문서등급·킥커·33pt 액션 타이틀·21pt 리드·헤어라인) / 푸터(출처·페이지)
+  틴트 카드 #F4F6FC(무테) · 아웃라인 카드 흰색+#D9D9D9 0.75pt · 직각 사각형
 
 실행: .venv/bin/python outputs/presentation/scripts/generate_future_plan_pptx.py
 출력: outputs/presentation/future-plan.pptx
@@ -20,16 +21,11 @@ from pptx.oxml.ns import qn
 
 # ---- 디자인 토큰 ----
 BLUE = RGBColor(0x14, 0x28, 0xA0)
-BLUE_T1 = RGBColor(0x3C, 0x5A, 0xC8)
 BLUE_T2 = RGBColor(0xAA, 0xB8, 0xE8)
-SLATE = RGBColor(0x2F, 0x3A, 0x4A)
 INK = RGBColor(0x1A, 0x1A, 0x1A)
 GRAY = RGBColor(0x55, 0x55, 0x55)
-GRAY_M = RGBColor(0x7A, 0x7A, 0x7A)
 GRAY_L = RGBColor(0x8A, 0x8A, 0x8A)
 LINE = RGBColor(0xD9, 0xD9, 0xD9)
-COL_A = RGBColor(0xF2, 0xF2, 0xF2)
-COL_B = RGBColor(0xFA, 0xFA, 0xFA)
 TINT = RGBColor(0xF4, 0xF6, 0xFC)
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 FONT = "Arial"
@@ -63,7 +59,7 @@ def _font(run, size, bold, color):
 
 
 def tb(slide, x, y, w, h, paras, align=PP_ALIGN.LEFT, anchor=MSO_ANCHOR.TOP, wrap=True,
-       spacing=1.15):
+       spacing=1.2, space_after=0):
     box = slide.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
     tf = box.text_frame
     tf.word_wrap = wrap
@@ -73,6 +69,8 @@ def tb(slide, x, y, w, h, paras, align=PP_ALIGN.LEFT, anchor=MSO_ANCHOR.TOP, wra
         p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
         p.alignment = align
         p.line_spacing = spacing
+        if space_after:
+            p.space_after = Pt(space_after)
         r = p.add_run()
         r.text = t
         _font(r, size, bold, color)
@@ -117,174 +115,175 @@ def notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
 
-# ---- 간트 그리드: 9월 1주 ~ 10월 4주 (8주) ----
-LW = 2.30
-TX = MX + LW
-TW = RIGHT - TX
-NW = 8
-WKW = TW / NW
-WEEK_DATES = ["9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26"]
-MONTHS = [("9월", 0, 4), ("10월", 4, 5)]
-IV_COL = 3                      # 인터뷰 = 3주와 4주 경계 (9월 말)
-PREP_FROM = 5                   # 발표자료 준비 = 10/12 ~
-GY = 2.90                       # 그리드 상단
-MH, WH = 0.34, 0.36             # 월·주 헤더 높이
-RY0 = GY + MH + WH + 0.10       # 첫 행 y
+def section_label(slide, x, y, w, label):
+    lw = 0.62 if len(label) == 1 else 1.0
+    tb(slide, x, y, lw, 0.28, [(label, 14.5, True, BLUE)])
+    rect(slide, x + lw, y + 0.14, w - lw, 0.012, fill=LINE)
 
 
-def grid(slide, n_rows, rh):
-    rows_end = RY0 + n_rows * rh
-    # 열 음영 (교대) + 발표자료 준비 구간 틴트
-    for c in range(NW):
-        x = TX + c * WKW
-        fill = TINT if c >= PREP_FROM else (COL_A if c % 2 == 0 else COL_B)
-        rect(slide, x, GY, WKW, rows_end - GY, fill=fill)
-    # 월 헤더
-    for name, a, b in MONTHS:
-        tb(slide, TX + a * WKW, GY, (b - a) * WKW, MH, [(name, 16, True, GRAY)],
-           align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    rect(slide, TX, GY + MH, TW, 0.014, fill=LINE)
-    # 주 헤더
-    for c, d in enumerate(WEEK_DATES):
-        tb(slide, TX + c * WKW, GY + MH, WKW, WH, [(d, 16, True, INK)],
-           align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    # 발표자료 준비 라벨 (주 헤더 위 월 헤더 자리 우측)
-    tb(slide, TX + PREP_FROM * WKW, GY, (NW - PREP_FROM) * WKW, MH,
-       [("10월 · 발표자료 준비", 16, True, BLUE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    # 행 구분 점선
-    for r in range(1, n_rows):
-        y = RY0 + r * rh
-        ln = rect(slide, MX, y, CW, 0.0, line=GRAY_L, line_w=0.75, dash=True)
-    rect(slide, MX, rows_end, CW, 0.014, fill=LINE)
-    return rows_end
-
-
-def row_label(slide, y, rh, num, name, color, muted=False):
-    cy = y + rh / 2
-    rect(slide, MX + 0.10, cy - 0.20, 0.40, 0.40, fill=color, shape=MSO_SHAPE.OVAL)
-    tb(slide, MX + 0.10, cy - 0.20, 0.40, 0.40, [(num, 14, True, WHITE)],
-       align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    tb(slide, MX + 0.66, cy - 0.22, LW - 0.7, 0.44,
-       [(name, 18.5, True, GRAY_L if muted else INK)], anchor=MSO_ANCHOR.MIDDLE)
-
-
-def bar(slide, y, rh, c0, c1, text, color, txt=WHITE, size=14.5, h=0.46, dash=False):
-    x = TX + c0 * WKW + 0.05
-    w = (c1 - c0) * WKW - 0.10
-    by = y + (rh - h) / 2
-    if dash:
-        rect(slide, x, by, w, h, fill=WHITE, line=GRAY_L, dash=True, shape=MSO_SHAPE.PENTAGON)
-    else:
-        rect(slide, x, by, w, h, fill=color, shape=MSO_SHAPE.PENTAGON)
-    tb(slide, x + 0.12, by, w - 0.34, h, [(text, size, True, txt)], anchor=MSO_ANCHOR.MIDDLE)
-
-
-def interview_marker(slide, y_top, y_bot, label_y):
-    x = TX + IV_COL * WKW
-    ln = rect(slide, x, y_top, 0.0, y_bot - y_top, line=BLUE, line_w=1.5, dash=True)
-    rect(slide, x - 0.13, y_bot - 0.13, 0.26, 0.26, fill=BLUE, shape=MSO_SHAPE.DIAMOND)
-    tb(slide, x - 3.0, label_y, 6.0, 0.34, [("담당임원 인터뷰 · 9월 말", 16, True, BLUE)],
-       align=PP_ALIGN.CENTER)
-
-
-def legend(slide, y, items):
-    n = len(items)
-    w = CW / n
-    for i, (color, title, desc, muted) in enumerate(items):
-        x = MX + i * w
-        rect(slide, x, y + 0.02, 0.34, 0.34, fill=color, shape=MSO_SHAPE.OVAL)
-        tb(slide, x + 0.50, y - 0.02, w - 0.7, 0.42,
-           [(title, 19.5, True, GRAY_L if muted else INK)], anchor=MSO_ANCHOR.MIDDLE)
-        tb(slide, x + 0.50, y + 0.50, w - 0.7, 1.3,
-           [(d, 15, False, GRAY_L if muted else GRAY) for d in desc], spacing=1.25)
+def timeline_strip(slide, y, milestones):
+    """하단 한 줄 일정: 가로선 + 마름모 + 라벨."""
+    rect(slide, MX, y, CW, 0.014, fill=LINE)
+    n = len(milestones)
+    seg = CW / n
+    for i, (when, what, hot) in enumerate(milestones):
+        cx = MX + seg * i + 0.16
+        rect(slide, cx - 0.10, y - 0.10, 0.20, 0.20, fill=BLUE if hot else GRAY_L,
+             shape=MSO_SHAPE.DIAMOND)
+        tb(slide, cx + 0.22, y - 0.20, seg - 0.5, 0.40,
+           [(when, 15.5, True, BLUE if hot else INK)], anchor=MSO_ANCHOR.MIDDLE)
+        tb(slide, cx + 0.22, y + 0.20, seg - 0.5, 0.36, [(what, 15, False, GRAY)])
 
 
 # =====================================================================
-# 슬라이드 1 · 전략 3 FDP 향후 계획
+# 슬라이드 1 · 전략 3 FDP 향후 계획 — 세 질문, 세 열
 # =====================================================================
 s = prs.slides.add_slide(BLANK)
 header(s, "삼성 SSD 전략적 방향성 · 향후 계획 (전략 3 FDP)",
-       "남은 4주, 세 가지 검토로 FDP 전략을 실행안으로 끌어올립니다",
-       "9월 말 담당임원 인터뷰를 분기점으로, 앞은 조사와 설계, 뒤는 확정과 결론입니다")
+       "남은 4주는 세 질문에 답하는 데 씁니다: 어디에 있나, 통하는가, 어떻게 하나",
+       "보고서 v1.1의 남은 약점은 사내 근거의 급, AI 워크로드에서의 효과, 실행안의 구체성입니다. 이 셋을 닫아 v1.2로 갑니다")
 
-RH = 0.84
-rows_end = grid(s, 4, RH)
-r = [RY0 + i * RH for i in range(4)]
+cols = [
+    dict(
+        num="①", name="현실 인식", q="우리는 지금 어디에 있나", method="인터뷰 · 사내 자료 확인",
+        why="핵심 주장(고객향 FDP 공급 이력, 전담 조직, 솔루션 비중, 캡티브 규모)이 아직 사내 구술과 "
+            "추정치에 기대고 있습니다. 사실과 가설을 구분하지 못하면 전략 전체의 신뢰가 흔들립니다.",
+        what=["담당임원 인터뷰(9월 말): 펌웨어·제품 세대, 활성화 용량, 고객별 공급·공동검증 이력, "
+              "워크로드 공유 수준, 조직·인력",
+              "보고서·덱의 [사내 확인]·추정치 항목을 전수 대장화, 하나씩 확정",
+              "②·③의 사내 준비도 질문 동반"],
+        out="현황 대장(기술·고객·조직) + 주장 대 실제 갭 표. 추정치 표기 0건",
+    ),
+    dict(
+        num="②", name="AI 워크로드", q="FDP는 AI 워크로드에 통하는가, 얼마나 어려운가",
+        method="자료조사 · 기술검토",
+        why="FDP의 WAF 개선은 데이터 수명이 RUH 격리와 정렬될 때만 성립합니다. KV Cache 오프로드와의 "
+            "정합은 아직 관찰 수준이고, 통해도 스택에 심을 일이 너무 무거우면 전략이 서지 않습니다. "
+            "고객의 첫 질문 \"우리 워크로드에선 얼마나?\"에 답해야 합니다.",
+        what=["KV Cache·체크포인트·데이터 로더별 수명·재사용 패턴과 RUH 격리의 정합, 공개 실측 대조",
+              "스택(vLLM·LMCache·Dynamo·커널 6.16) 코드 검토, QEMU 소규모 실증, 숙제 3분류(우리·생태계·고객)",
+              "쉽게 따라오는 층 vs 관계 때문에 못 따라오는 층"],
+        out="효과·난이도 판정표 + 숙제 3분류 + 차별화 여지 결론. \"통하지만 어렵다\"면 그대로 보고",
+    ),
+    dict(
+        num="③", name="실행 전략", q="고객에게 어떻게 다가가고, 개발실은 어떻게 준비하나",
+        method="전략구상 · 인터뷰 검증",
+        why="협업 3층 포트폴리오·워크로드 교환·FDE 운영안은 문서로만 있습니다. 어떻게 협력을 "
+            "끌어낼지, 개발실이 무엇을 갖추고 바꿀지는 미검증이고, 공급자 우위가 있는 동안 체결해야 "
+            "하는 계약이라 늦으면 시효를 넘깁니다.",
+        what=["고객별(LLM 기업·스토리지 벤더·하이퍼스케일러) 제안 패키지: 주는 것·받는 것, "
+              "첫 접촉에서 공동 파일럿까지",
+              "개발실 준비안: 새로 갖출 것(시스템 SW·오픈소스 인력, FDE, 공동검증 인프라)과 "
+              "바꿀 것(펌웨어 브랜치·qual)",
+              "부록 D 6과제에 오너·일정·첫 액션 부여"],
+        out="고객 접근 플레이북 + 개발실 준비안 → 4장 결정 요청 구체화",
+    ),
+]
 
-row_label(s, r[0], RH, "1", "현실 인식", SLATE)
-bar(s, r[0], RH, 0, 1, "질문 설계", SLATE)
-bar(s, r[0], RH, 1, 3, "사내 자료 확인 · 확인 대장 완성", SLATE)
-bar(s, r[0], RH, 3, 4, "현황·갭 표", SLATE)
+GAP = 0.24
+COLW = (CW - GAP * 2) / 3
+CY, CH = 2.90, 6.42
+PAD = 0.30
+for i, c in enumerate(cols):
+    x = MX + i * (COLW + GAP)
+    rect(s, x, CY, COLW, CH, fill=TINT)
+    ix, iw = x + PAD, COLW - 2 * PAD
+    tb(s, ix, CY + 0.24, iw - 2.6, 0.40, [(f"{c['num']} {c['name']}", 22, True, BLUE)])
+    tb(s, ix + iw - 2.6, CY + 0.24, 2.6, 0.40, [(c["method"], 14.5, False, GRAY_L)],
+       align=PP_ALIGN.RIGHT, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, ix, CY + 0.70, iw, 0.62, [(c["q"], 17.5, True, INK)])
+    section_label(s, ix, CY + 1.40, iw, "왜")
+    tb(s, ix, CY + 1.72, iw, 1.45, [(c["why"], 15.5, False, GRAY)])
+    section_label(s, ix, CY + 3.24, iw, "무엇을")
+    tb(s, ix, CY + 3.56, iw, 1.90, [("· " + t, 14.5, False, INK) for t in c["what"]], space_after=4)
+    section_label(s, ix, CY + 5.58, iw, "결과")
+    tb(s, ix, CY + 5.88, iw, 0.52, [(c["out"], 15.5, True, INK)])
 
-row_label(s, r[1], RH, "2", "AI 워크로드", BLUE)
-bar(s, r[1], RH, 0, 1, "워크로드 분류", BLUE)
-bar(s, r[1], RH, 1, 2, "스택·코드 조사", BLUE)
-bar(s, r[1], RH, 2, 3, "효과·난이도 판정", BLUE)
-bar(s, r[1], RH, 3, 4, "차별화 결론", BLUE)
-
-row_label(s, r[2], RH, "3", "실행 전략", GRAY_M)
-bar(s, r[2], RH, 0, 1, "포트폴리오", GRAY_M)
-bar(s, r[2], RH, 1, 2, "협력 구조", GRAY_M)
-bar(s, r[2], RH, 2, 3, "조직·체계안", GRAY_M)
-bar(s, r[2], RH, 3, 4, "준비안 확정", GRAY_M)
-
-row_label(s, r[3], RH, "4", "보고", BLUE_T1)
-bar(s, r[3], RH, 4, 5, "보고서 v1.2", BLUE_T1)
-bar(s, r[3], RH, 5, 8, "발표자료 준비 · 리허설", BLUE_T1)
-
-interview_marker(s, RY0, r[3], rows_end + 0.10)
-
-legend(s, rows_end + 0.72, [
-    (SLATE, "현실 인식 · 인터뷰",
-     ["사내 FDP 기술·고객 관계의 현재 위치", "산출물: 현황 대장 + 갭 표"], False),
-    (BLUE, "AI 워크로드 · 조사·기술검토",
-     ["FDP가 AI 워크로드에 통하는가, 얼마나 어려운가", "산출물: 효과·난이도 판정표 + 기술 숙제"], False),
-    (GRAY_M, "실행 전략 · 전략구상",
-     ["고객 접근 방법과 개발실 준비", "산출물: 고객 플레이북 + 개발실 준비안"], False),
-    (BLUE_T1, "보고 · 수렴",
-     ["10월 초 보고서 v1.2로 수렴", "10/12부터 발표자료 준비"], False),
+timeline_strip(s, 9.72, [
+    ("9/7 착수", "질문 설계 · 워크로드 분류 · 포트폴리오 점검", False),
+    ("9월 말 담당임원 인터뷰", "①의 현황 확인 + ②·③의 사내 준비도 검증", True),
+    ("10월 초 보고서 v1.2", "세 결과를 한 묶음으로 반영, 덱 갱신", False),
+    ("10/12부터 발표자료 준비", "리허설 · 예상 질문 답변 카드", False),
 ])
-footer(s, "출처: 삼성 SSD 전략적 방향성 보고서 v1.1 부록 D", 1)
-notes(s, "남은 기간 중 발표자료 준비를 빼면 검토에 쓸 수 있는 시간은 4주입니다. 세 검토 축은 "
-         "현실 인식(인터뷰), AI 워크로드(조사·기술검토), 실행 전략(전략구상)이며, 9월 말 담당임원 "
-         "인터뷰 한 번을 분기점으로 앞 3주는 조사·설계, 마지막 주는 확정·결론에 씁니다. 산출물은 "
-         "10월 초 보고서 v1.2로 수렴하고 10/12부터 발표자료 준비에 들어갑니다.")
+footer(s, "출처: 삼성 SSD 전략적 방향성 보고서 v1.1 · 비판적 검토서 · 부록 D", 1)
+notes(s, "남은 4주는 새 프레임을 늘리는 시간이 아니라, 이미 세운 주장을 검증된 근거로 바꾸는 "
+         "시간입니다. 첫째, 현실 인식: 보고서의 사내 주장과 추정치를 담당임원 인터뷰로 확정합니다. "
+         "둘째, AI 워크로드: FDP가 KV Cache 등 AI 워크로드에서 실제로 효과를 내는지, 그리고 그 "
+         "효과를 얻기 위한 기술 숙제가 감당 가능한 수준인지 판정합니다. 해자가 될지 여부는 이 "
+         "검토에서 나옵니다. 셋째, 실행 전략: 고객별 제안 패키지와 개발실 준비안을 만들어 4장의 "
+         "결정 요청을 구체화합니다. 인터뷰는 9월 말 한 번이며, 결과는 10월 초 보고서 v1.2로 수렴합니다.")
 
 # =====================================================================
-# 슬라이드 2 · 4대 전략 향후 계획 종합
+# 슬라이드 2 · 4대 전략 종합 — 왜 · 무엇을 · 산출물
 # =====================================================================
 s = prs.slides.add_slide(BLANK)
 header(s, "삼성 SSD 전략적 방향성 · 향후 계획 종합 (4대 전략)",
-       "네 전략 모두 10월 초 검토를 마치고 발표자료로 수렴합니다",
-       "전략 1·2·4는 담당별 작성 예정. 전략 3 FDP는 세 검토 축을 4주에 배치했습니다")
+       "네 전략 모두 \"무엇을 왜 더 검토하는가\"를 정해 10월 초까지 답을 냅니다",
+       "공통 일정은 9월 말 담당임원 인터뷰, 10월 초 보고서 갱신, 10/12부터 발표자료 준비입니다. 전략 1·2·4는 담당별 작성 예정")
 
-RH = 0.84
-rows_end = grid(s, 4, RH)
-r = [RY0 + i * RH for i in range(4)]
+COLS = [("전략", 3.00), ("왜 더 검토하는가", 6.00), ("무엇을 검토하나", 6.10),
+        ("산출물 (10월 초)", CW - 3.00 - 6.00 - 6.10)]
+HY = 2.90
+x = MX
+for name, w in COLS:
+    tb(s, x + 0.26, HY, w - 0.3, 0.36, [(name, 16, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+    x += w
+rect(s, MX, HY + 0.42, CW, 0.014, fill=LINE)
 
-for i, name in [(0, "전략 1"), (1, "전략 2"), (3, "전략 4")]:
-    row_label(s, r[i], RH, str(i + 1), name, GRAY_L, muted=True)
-    bar(s, r[i], RH, 0, 5, "[담당별 계획 작성 예정]", None, txt=GRAY_L, dash=True)
+RY0, RH, RG = HY + 0.56, 1.40, 0.10
+rows = [
+    ("전략 1", None), ("전략 2", None),
+    ("전략 3", dict(
+        name="FDP 플랫폼",
+        sub="자체 SSD 수요를 표준으로 흡수",
+        why="핵심 주장이 사내 구술과 추정치에 기대고, AI 워크로드에서의 FDP 효과는 조건부이며, "
+            "실행 전략은 문서로만 있습니다. 이 셋이 v1.1 비판적 검토 뒤에도 남은 약점입니다.",
+        what=["① 현실 인식: 인터뷰로 기술·고객·조직 현황 확정",
+              "② AI 워크로드: FDP 효과·난이도·차별화 여지 판정",
+              "③ 실행 전략: 고객별 제안 패키지 + 개발실 준비안"],
+        out=["현황 대장 + 갭 표", "효과·난이도 판정표 + 기술 숙제", "고객 플레이북 + 개발실 준비안"],
+    )),
+    ("전략 4", None),
+]
+for i, (label, d) in enumerate(rows):
+    y = RY0 + i * (RH + RG)
+    x0 = MX
+    x1 = x0 + COLS[0][1]
+    x2 = x1 + COLS[1][1]
+    x3 = x2 + COLS[2][1]
+    if d is None:
+        rect(s, MX, y, CW, RH, fill=WHITE, line=LINE, dash=True)
+        tb(s, x0 + 0.26, y, COLS[0][1] - 0.4, RH,
+           [(label, 19, True, GRAY_L), ("[전략명]", 15, False, GRAY_L)],
+           anchor=MSO_ANCHOR.MIDDLE, spacing=1.3)
+        tb(s, x1 + 0.26, y, COLS[1][1] - 0.5, RH,
+           [("[남은 검토가 필요한 이유 · 담당 작성]", 15.5, False, GRAY_L)], anchor=MSO_ANCHOR.MIDDLE)
+        tb(s, x2 + 0.26, y, COLS[2][1] - 0.5, RH,
+           [("[검토 항목 · 담당 작성]", 15.5, False, GRAY_L)], anchor=MSO_ANCHOR.MIDDLE)
+        tb(s, x3 + 0.26, y, COLS[3][1] - 0.5, RH, [("[산출물]", 15.5, False, GRAY_L)],
+           anchor=MSO_ANCHOR.MIDDLE)
+        continue
+    rect(s, MX, y, CW, RH, fill=TINT)
+    tb(s, x0 + 0.26, y, COLS[0][1] - 0.4, RH,
+       [(f"{label} · {d['name']}", 18, True, BLUE), (d["sub"], 14.5, True, INK)],
+       anchor=MSO_ANCHOR.MIDDLE, spacing=1.3)
+    tb(s, x1 + 0.26, y, COLS[1][1] - 0.5, RH, [(d["why"], 15, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, x2 + 0.26, y, COLS[2][1] - 0.5, RH, [(t, 14, False, INK) for t in d["what"]],
+       anchor=MSO_ANCHOR.MIDDLE, spacing=1.25, space_after=3)
+    tb(s, x3 + 0.26, y, COLS[3][1] - 0.5, RH, [(t, 14, True, INK) for t in d["out"]],
+       anchor=MSO_ANCHOR.MIDDLE, spacing=1.25, space_after=3)
 
-row_label(s, r[2], RH, "3", "FDP 플랫폼", BLUE)
-bar(s, r[2], RH, 0, 1, "설계", BLUE)
-bar(s, r[2], RH, 1, 3, "조사 · 제안 구조 · 준비안", BLUE)
-bar(s, r[2], RH, 3, 4, "확정 · 결론", BLUE)
-bar(s, r[2], RH, 4, 5, "보고서 v1.2", BLUE_T1)
-
-interview_marker(s, RY0, rows_end, rows_end + 0.10)
-
-legend(s, rows_end + 0.72, [
-    (GRAY_L, "전략 1 · [전략명]", ["[문제 한 줄 작성 예정]", "[산출물 작성 예정]"], True),
-    (GRAY_L, "전략 2 · [전략명]", ["[문제 한 줄 작성 예정]", "[산출물 작성 예정]"], True),
-    (BLUE, "전략 3 · FDP 플랫폼",
-     ["자체 SSD 수요를 표준으로 흡수", "산출물: 현황 갭 표 · 판정표 · 플레이북"], False),
-    (GRAY_L, "전략 4 · [전략명]", ["[문제 한 줄 작성 예정]", "[산출물 작성 예정]"], True),
+timeline_strip(s, 9.72, [
+    ("9/7 착수", "각 전략 검토 설계", False),
+    ("9월 말 담당임원 인터뷰", "전략 3 현황 확인 · 타 전략 사내 확인 동반", True),
+    ("10월 초 보고서 갱신", "네 전략 산출물 반영", False),
+    ("10/12부터 발표자료 준비", "리허설 · 예상 질문 답변 카드", False),
 ])
-footer(s, "출처: 삼성 SSD 전략적 방향성 보고서 v1.1 부록 D", 2)
-notes(s, "네 전략의 향후 계획을 한 장에 모은 종합 슬라이드입니다. 전략 1·2·4는 담당별로 같은 격자에 "
-         "막대를 채워 넣고, 전략 3 FDP는 설계·조사·확정·보고 네 단계로 압축했습니다. 9월 말 담당임원 "
-         "인터뷰가 분기점이며, 네 전략 모두 10월 초 산출물을 내고 10/12부터 발표자료 준비로 합류합니다.")
+footer(s, "출처: 삼성 SSD 전략적 방향성 보고서 v1.1 · 비판적 검토서 · 부록 D", 2)
+notes(s, "네 전략의 향후 계획을 한 장에 모은 종합 슬라이드입니다. 각 전략은 왜 더 검토하는지, "
+         "무엇을 검토하는지, 10월 초 산출물이 무엇인지 세 칸으로 씁니다. 전략 1·2·4는 담당별로 "
+         "같은 칸을 채우고, 전략 3 FDP는 현실 인식·AI 워크로드·실행 전략 세 검토입니다. 공통 "
+         "일정은 9월 말 담당임원 인터뷰, 10월 초 보고서 갱신, 10/12부터 발표자료 준비입니다.")
 
 prs.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(prs.slides._sldIdLst)}장)")
