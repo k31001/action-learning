@@ -252,3 +252,14 @@ FT 보도의 CXMT 점유율 수치("2025년 ~11% → 2028년 15%")는 **웨이�
 - 다만 밀러는 같은 시기 중국의 구조적 제약도 병행 지적("중국은 4년째 AI 과소투자", Huawei/SMIC 규모 한계 — [china-competitors.md [Update 2026-08-03]](china-competitors.md#update-2026-08-03-크리스-밀러의-중국-이중-평가) 참조) — CXMT 위협은 첨단(HBM)이 아닌 **범용·완제품 채택 경로**로 실현된다는 위키 기존 프레임과 정합.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
+
+---
+
+## [Update 2026-09-08] DRAM 매출 점유율 10% 돌파 — 4대 과점(90%+) 사상 첫 붕괴
+
+- **CXMT의 글로벌 DRAM 매출 점유율이 Q2 2026 기준 10%를 돌파**(전년 4%)했다 — 삼성·SK하이닉스·Micron 3사 합산 90%+ 과점 체제가 CXMT 등장 이후 처음으로 무너졌다. SemiAnalysis는 CXMT를 "명백한 4위 DRAM 플레이어"로 지목한다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4).
+- **캐파**: 연말 목표 ~350K WSPM으로, Micron(~375K)에 근접. 2026년 한 해 +85K WSPM 증설(같은 기간 삼성 +15K·SK하이닉스 +60K·Micron +30K 대비 최대 증설 폭). 2030년까지 **30% 점유** 목표 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §5). 이는 본 페이지 위쪽 "2026E 300,000 WSPM" 전망보다 상향된 최신 수치다.
+- **HBM 진입**: HBM3 배정 캐파가 5K WSPM(2025년 말)→30K(2026년 말)→**55K WSPM(2027년)**으로 램프 전망되나, 경쟁력 있는 수율의 실질 양산은 **2028년 이후**로 현실적 판단 — 향후 2년간은 DRAM 범용 시장의 점유율 잠식이 핵심 리스크이고 HBM 위협은 아직 시간 여유가 있다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §5).
+- **함의**: 위키의 "순환 점유율 vs 유출 점유율" 구분([dram-market-share.md](../concepts/dram-market-share.md))에서 CXMT의 10%는 명백한 **유출 점유율**(돌아오지 않는 파이 축소)이다. 단, DRAM 수급 자체는 2028 Q2까지 지속 타이트 전망(삼성 자체 경고+UBS)이어서, 점유율 잠식이 즉시 가격 압박으로 이어지지는 않는 이원적 상황 — [dram-market-share.md](../concepts/dram-market-share.md) [업데이트 2026-09-08] 참조.
+
+**출처**: [september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4~5

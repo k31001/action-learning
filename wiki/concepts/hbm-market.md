@@ -323,3 +323,20 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 ### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
 
 - SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+## 업데이트 (2026-09-08)
+
+### HBM 매출 점유율 — Q2 2026 실측(2차 인용) — 삼성 반등·SK 격차 축소
+
+| 공급사 | Q1 2026(전분기, Counterpoint 확정치) | Q2 2026(최신) |
+|---|---:|---:|
+| SK하이닉스 | ~58% | **50%** |
+| 삼성전자 | ~32% (Update 2026-07-04에서 21%로 정정 인용된 자료도 혼재) | **33%** |
+| Micron | 명시 없음 | **18%** |
+
+- 2026-08-26 삼성이 **HBM4 세계 최초 양산 + "골든 수율" 80% 달성**을 발표한 것이 Q2 반등(21~32%→33%)의 핵심 동인으로 지목된다. SK하이닉스는 58%→50%로 하락했으나 여전히 1위 — 격차는 37%p→17%p로 축소 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4).
+- **주의**: 이번에도 counterpointresearch.com 원문은 egress 차단으로 직접 미확인 — BigGo·Seoul Economic Daily 등 2차 인용(Counterpoint 인용 교차확인)이다. 위 표의 "Q1 32%→Q2 33%" 또는 "Q1 21%→Q2 33%" 중 정확한 전분기 기준선은 출처마다 다르게 인용되므로 다음 원문 확보 시 재검증 필요.
+- SK하이닉스, Hot Chips 2026(8/23)에서 **HBM4E까지 하이브리드본딩을 배제**하고 HBM5부터 적용한다고 공식화(JEDEC 775㎛ 스택 한계 사유) — MR-MUF/마이크로범프로 Rubin 세대를 대응한다. 삼성은 하이브리드본딩을 고수하며 국내 전용 라인을 구축 중 — 패키징 기술 경쟁축이 두 진영으로 분화됐다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §3).
+- TrendForce가 2026년 메모리 TAM 전망을 $551.6B → **$889.3B**로, 2027년을 $842.7B → **$1.28조**로 대폭 상향 — HBM 포함 전체 메모리 매출 기여가 예상보다 가파르다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4, [memory-market-overview.md](memory-market-overview.md) 참조).
+
+**출처**: [september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4

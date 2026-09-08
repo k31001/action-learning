@@ -135,3 +135,34 @@ OpenAI Head of Industrial Compute의 MAD Podcast 발언 ([mad-podcast-sachin-kat
 - 유의: 최대 이해당사자의 발언(포지션 톡 가능성)이며, 이창수의 "중복 수요" 리스크(프론티어 수요가 여러 CSP에 중복 계상)는 이 발언으로 해소되지 않음 — 병행 추적.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+---
+
+## [Update 2026-09-08] 프론티어 랩 매출 급성장 vs 신용시장 첫 균열
+
+### 프론티어 AI 랩 재무 (2026-08 기준)
+
+| 지표 | 수치 |
+|------|------|
+| OpenAI ARR | ~$40B(2026-08), QTD +35%, 총마진 33% |
+| OpenAI 현금 소진 전망 | 2026F ~$27B → 2027F ~$63B |
+| Anthropic ARR | ~$47B(**OpenAI 추월**), Q2 첫 영업이익 ~$559M |
+| Anthropic 밸류에이션 | $170B → **$965B**로 상향, ~$5B 신규 조달 중 |
+| Nvidia 실적 | FQ2 FY27 매출 $96.2B(실적), FQ3 가이던스 ~$100B — 감속 없음 |
+
+- 매출·수익성 측면에서는 낙관론을 뒷받침하는 신규 데이터 — 특히 Anthropic의 첫 영업이익 달성은 "AI가 실제로 돈을 번다"는 낙관 진영 논거를 강화한다.
+
+### 신용시장 — 처음으로 명확한 약세 신호
+
+- **CoreWeave**: 5년물 CDS 디폴트 확률 **~50%**, 대출 스프레드 100~125bp 확대(7월말~8월초).
+- **Oracle**: CDS 75bp로 7년 최고, S&P가 BBB-(정크 한 단계 위)로 강등, $16.3B 미시간 데이터센터 부채 조달에 은행이 발을 빼 PIMCO가 대신 앵커.
+- **Moody's**: 6대 AI CAPEX 지출 기업의 신용 질 저하를 명시적으로 경고(2026-07-24).
+- 하이퍼스케일러 관련 IG 채권 발행 **2026 YTD $182B, 전년비 +1,300%**.
+- Michael Burry가 Nvidia·OpenAI·Oracle의 "순환 파이낸싱"을 "구제하기엔 너무 큰 거품"으로 공개 지목, BofA Bubble Risk Indicator(반도체) 0.91. 2026년 8월 한 세션 Nvidia 시총 -$153B.
+- **DC 캐파 지연**: 2026년 미국 DC 캐파의 30~50%가 전력·상호접속 사유로 2027~28로 이연, Microsoft ~200MW 리스 취소 — 단 SemiAnalysis는 "취소 50%" 프레이밍을 공개 반박(대부분 이연이지 취소 급증이 아니라는 입장).
+
+### 종합 판단
+
+**물리적 공급망(CoWoS 갭 축소·Rubin/HBM4 일정 준수·Nvidia 가이던스 무감속)은 여전히 확장 국면**이나, 7월 이후 진짜 새로운 약세 신호는 **신용·주가 채널**에서 나타났다 — CDS 스프레드·IG 채권 발행 급증·연속 대형 셀오프가 전형적인 후기 사이클 금융 스트레스 지표다. 아직 시나리오 확률 전환을 시사할 정도는 아니나, [demand-inflection-ewi.md](demand-inflection-ewi.md)에 신용스프레드/CDS를 GPU 임대가·CoWoS 발주와 나란한 별도 신호로 추가 추적할 근거가 됐다. [bottleneck-model-2030.md](bottleneck-model-2030.md) §5 CAPEX 드라이버(`financing`)도 동일 근거로 갱신.
+
+**출처**: [september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §5

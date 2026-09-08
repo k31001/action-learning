@@ -112,3 +112,17 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 → 기존 시장 전망([Yole·Mordor·Precedence] $1.7T → $5.5T → $8.4T 장기 추세) 안에서 2026년 단년 도약이 정상치를 크게 상회.
 
 **출처**: [counterpoint-memory-batch-2025-11-to-2026-04.md](../../sources/articles/counterpoint-memory-batch-2025-11-to-2026-04.md) §2
+
+---
+
+## [Update 2026-09-08] TrendForce — 2026·2027 TAM 대폭 상향
+
+| 연도 | 이전 전망 | 최신 전망(2026-09) | 변동 |
+|------|---------|-----------------|------|
+| 2026 | $551.6억(위 표의 $5,516억 오기 아님 — TrendForce 5월 전망 기준 $551.6B) | **$889.3B** | **+61%** |
+| 2027 | $842.7B | **$1.28조** | **+52%** |
+
+- TrendForce가 2026-05-29 발표한 기존 TAM 전망을 위 수치로 대폭 상향(2026-09-08 시점 재확인). DRAM/NAND 계약가 상승폭이 예상보다 가팔랐던 점(Q1 2026 DRAM +90~95% QoQ 등)과 CXMT 등 신규 진입자를 포함한 총량 증가가 함께 반영된 결과로 추정된다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4).
+- 동시에 DRAM·NAND 수급 곡선이 분화되기 시작했다 — **DRAM은 2028 Q2까지 지속 타이트**, **NAND는 2027 H2**부터 균형/오버서플라이 전환 전망(삼성 자체 경고 + UBS) — TAM 총액 상향과 별개로 두 세그먼트의 가격 사이클 정점 시점이 갈릴 가능성에 유의. 상세는 [dram-market-share.md](dram-market-share.md), [downturn/README.md](../downturn/README.md) 참조.
+
+**출처**: [september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4

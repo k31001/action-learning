@@ -1,7 +1,7 @@
 ---
 type: analysis
-last_reviewed: 2026-08-15
-sources: [sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md, sources/articles/apple-cxmt-china-dram-2026-07-08.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md]
+last_reviewed: 2026-09-08
+sources: [sources/articles/hyperscaler-q2-2026-actuals-gpu-rental-2026-08-11.md, sources/articles/apple-cxmt-china-dram-2026-07-08.md, sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md, sources/articles/samsung-pre-downturn-preparation-2005-2022-2026-08-08.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/september-2026-market-update-2026-09-08.md]
 ---
 
 # 감별 지표 DX-1 ~ DX-8 — 다운턴의 원인·속도를 판별하는 패널
@@ -163,22 +163,26 @@ DX 패널 판독 결과의 조합 → 시나리오 배정.
 
 ---
 
-## 5. 현재 패널 상태 (2026-08-15)
+## 5. 현재 패널 상태 (2026-09-08)
 
 | 지표 | 상태 | 값·비고 |
 |---|---|---|
-| **DX-1** FCF·조달 | ⚠️ 경보 | Meta FCF -91%·Amazon TTM 마이너스. 단 CapEx 삭감 0건 |
-| **DX-2** GPU 임대가 | ✅ 정상 | firming/flat (H100 ~$2.69·H200 ~$4.38) |
-| **DX-3** DC 취소·연기 | ✅ 정상 | 파이프라인 55.9GW 유지, 대규모 취소 미관측 |
+| **DX-1** FCF·조달 | ⚠️ 경보 강화 | Meta FCF -91%·Amazon TTM 마이너스에 이어 **Alphabet도 FCF 사상 첫 마이너스**(-$5.9B). Oracle S&P BBB- 강등·CoreWeave CDS 디폴트확률 ~50%·IG채권 발행 YoY+1,300% — 조달 스프레드 축이 처음으로 개별 신용 이벤트를 냄. 단 CapEx 가이던스는 전원 추가 상향(삭감 0건) ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §2) |
+| **DX-2** GPU 임대가 | ✅ 정상(신호 상충 주의) | 관측 상충 — 한쪽은 장기 하락(H100 스팟 저점 $1.49·H200 ~$4.47), 다른 쪽은 "2026년 대부분 기간 상승세"로 보고. -35% 임계는 어느 쪽 해석으로도 미도달·미발동. 다음 자동 갱신으로 재확인 필요 |
+| **DX-3** DC 취소·연기 | 🟠 주의 | 2026년 미국 DC 캐파의 **30~50%가 2027~28로 이연**(전력·상호접속 사유), MS ~200MW 리스 취소. 단 SemiAnalysis는 "취소 급증" 프레이밍을 반박(대부분 이연이지 취소가 아니라는 입장) — 완전한 취소 신호는 아니나 08-15 대비 관측 강도 상향 |
 | **DX-4** 투입갭·증설 | 🟠 주의 | 2028~29 신규 캐파 파이프라인 확정. 절제 이탈 신호는 **미관측** |
-| **DX-5** CXMT·인증 | ⚠️ 진행 | 캐파 점유 11%→15%(2028E), 애플 검증 미해결 |
-| **DX-6** 현물-계약 스프레드 | ✅ 정상 | 계약가 상승 지속(Q3 +13~18% 감속) |
+| **DX-5** CXMT·인증 | ⚠️ 진행 | **DRAM 매출 점유율 10% 돌파(Q2 2026 실측, 전년 4%)** — 3사 90%+ 과점 사상 첫 붕괴. 캐파 점유는 기존 궤적(11%→15%, 2028E)대로 진행(연말 ~350K WSPM). 애플 인증 리트머스는 여전히 미해결 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4~5) |
+| **DX-6** 현물-계약 스프레드 | ✅ 정상 | 계약가 상승 지속(Q3 DRAM +13~18%·NAND +10~15%, 둘 다 감속) |
 | **DX-7** 만기 집중도 | 🔴 **미측정** | **최우선 구축 항목** |
 | **DX-8** 메모리 원단위 | 🟠 부분 측정 | 세대별 탑재량 추적 가능, 토큰당 방법론 미확립 |
 
+### DRAM/NAND 수급 시차 분화 (2026-09-08 신규 인지)
+
+기존 DX 패널은 "메모리"를 단일 축으로 다뤘으나, 최신 자료는 **DRAM은 2028 Q2까지 지속 타이트**(삼성 자체 경고+UBS)한 반면 **NAND는 2027 H2**로 먼저 균형/오버서플라이 전환한다고 분화한다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4~5). NAND가 DRAM보다 먼저 꺾이면 DT-D(저가 잠식, 공급발×침식)의 첫 관측 가능한 징후가 **NAND 쪽에서 먼저** 나타날 가능성이 있다 — DX-6(현물-계약 스프레드)·DX-8(메모리 원단위)을 제품별(DRAM/NAND)로 분리 추적하는 것을 다음 갱신 검토 대상으로 플래그한다.
+
 ### 종합 판독
 
-> **다운턴 미도착. 수요 측 경보 1건(DX-1)·공급 측 진행 2건(DX-4·DX-5).** 최선행 지표(DX-2)는 미발동이며 결과 지표(가격·재고)도 정상이다. 현재 국면은 **대비(preparation) 국면**이며, 가장 시급한 것은 판별 능력 자체의 공백을 메우는 것 — **DX-7(만기 집중도) 미측정**이 유일한 🔴 항목이다.
+> **다운턴 미도착. 수요 측 경보 1건(DX-1, 강화)·공급 측 진행 2건(DX-4·DX-5)·신규 주의 1건(DX-3).** 최선행 지표(DX-2)는 신호 상충 속에서도 미발동이며 결과 지표(가격·재고)도 정상이다. 현재 국면은 **대비(preparation) 국면**이며, 가장 시급한 것은 판별 능력 자체의 공백을 메우는 것 — **DX-7(만기 집중도) 미측정**이 유일한 🔴 항목이다. 09-08 갱신에서 처음으로 DX-1의 신용 이벤트가 "경고성 관측"에서 "구체적 개별 사건"(CoreWeave CDS·Oracle 강등)으로 격상됐다는 점이 이번 분기의 가장 유의미한 변화다.
 
 ---
 

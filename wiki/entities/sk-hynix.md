@@ -394,3 +394,11 @@ Counterpoint Research (2026-01-29):
 - 2026-06-29 발표(약 800조 원/$518B) — SK하이닉스 **신규 팹 2개** 건설 계획 포함(삼성전자도 동일하게 신규 팹 2개)([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+## 업데이트 (2026-09-08) — HBM 점유율 58%→50%, 삼성과 격차 축소·하이브리드본딩 HBM5 연기 공식화
+
+- **HBM 매출 점유율**: Q1 2026 ~58% → **Q2 2026 50%**로 하락 — 삼성이 골든 수율 80% 달성(2026-08-26) 발표 이후 21~32%→33%로 반등하면서 격차가 37%p→17%p로 좁혀졌다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4). DRAM 매출 점유율(전체)도 Q1 28.8%→Q2 **26%**로 하락, Micron(25%)과의 격차도 근접.
+- **패키징 기술 선택 — 하이브리드본딩을 HBM5로 연기 공식화**: Hot Chips 2026(8/23)에서 SK하이닉스는 **HBM4E까지 하이브리드본딩을 배제**하고 MR-MUF/마이크로범프로 대응한다고 공식 발표 — JEDEC 775㎛ 스택 두께 한계가 사유. 하이브리드본딩은 HBM5부터 적용 예정. 삼성은 반대로 하이브리드본딩을 고수하며 국내 전용 라인을 구축 중 — 두 회사가 서로 다른 기술 경로를 선택한 최초의 명확한 분기점 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §3).
+- **반독점 소송**: 담당판사 Noel Wise(N.D. California) 확정. 상세는 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
+
+**출처**: [september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §3~4

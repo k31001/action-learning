@@ -298,3 +298,16 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - **한국 800조 원 클러스터 투자 환영** — "비중국 세계의 경제·전략적 이해에 부합." 기존 위키 수집(2026-06-29 발표, 삼성·SK 각 신규 팹 2개)에 대한 외부 지정학 전문가의 긍정 평가.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §7, §9
+
+---
+
+## [Update 2026-09-08] HBM4 골든 수율 80% + 사상 최대 분기 실적 — HBM 점유율 반등
+
+- **2026-08-26**: 삼성이 **HBM4 세계 최초 양산 돌입 + "골든 수율" 80% 달성**을 발표 — [Update 2026-07-21]에서 지적한 "인증 통과했으나 볼륨 발주 부재" 간극이 이후 좁혀졌음을 시사하는 정황 증거. 단, NVIDIA의 공식 볼륨 계약 확인서 수준의 1차 확인은 아직 미확보로, EWI [`samsung_hbm4_rubin_share`](../../dashboard/src/data/indicators.js) 추적을 유지한다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4).
+- **HBM 매출 점유율 반등**: Q2 2026 기준 **33%**(전분기 대비 대폭 반등, SK하이닉스 58%→50%로 하락해 격차 37%p→17%p로 축소) — 위 골든 수율 발표가 핵심 동인으로 지목된다. Micron은 18%.
+- **HBM4E 업계 최초 샘플 고객 출하**(Q2 2026 실적 발표 확인) — HBM4 고객 인증에 이어 HBM4E도 선행 포지션 유지.
+- **Q2 2026 사상 최대 실적**: 매출 KRW171.5조(+28% QoQ·+130% YoY), 영업이익 KRW89.5조(+56% QoQ) — 메모리(DS) 부문이 견인, 모바일(MX)은 첫 적자를 기록해 부문 간 명암이 뚜렷했다.
+- **반독점 소송 진행**: 담당판사 Noel Wise(N.D. California) 확정. 공동피고 Micron은 답변서에서 혐의를 부인 — 삼성 측 답변 여부는 후속 확인 필요. 상세는 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
+- **패키징 기술 경쟁축 분화**: SK하이닉스가 Hot Chips 2026(8/23)에서 HBM4E까지 하이브리드본딩을 배제(HBM5부터 적용)한 반면, **삼성은 하이브리드본딩을 고수하며 국내 전용 라인을 구축 중** — 성공 시 차세대 패키징 리더십 확보 기회이나 SK 대비 리스크가 높은 경로 선택.
+
+**출처**: [september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §3~4

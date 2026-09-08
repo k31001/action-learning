@@ -128,3 +128,15 @@ flowchart LR
 - 병목 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 실물 수급 제약 논리와도 교차 확인이 필요한 신호다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+---
+
+## 업데이트 (2026-09-08)
+
+- **② AI-DC 신용 스프레드(`ai_dc_credit_spread`) — 개별 신용 이벤트로 첫 실질 긴장**: HYG 프록시 자체는 소폭 타이트닝(HY OAS 285→266~275bp)했지만, 이는 광의 회사채 지수일 뿐 개별 AI 인프라 신용 이벤트를 담지 못한다. CoreWeave 5년물 CDS 디폴트 확률 **~50%**, Oracle CDS 7년 최고(75bp)·S&P BBB- 강등·$16.3B 부채딜에 은행 이탈→PIMCO 앵커, 하이퍼스케일러 IG 채권 발행 YoY **+1,300%** — 트리거(+150bps 확대) 자체는 아직 미도달이나, **프록시가 못 잡는 개별 이벤트 리스크**가 처음으로 뚜렷해졌다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §2, §5).
+- **① 수요 청산가(`gpu_rental_h100_usd`) — 방향 재확인 필요**: 리서치 결과가 상충한다. 한쪽은 H100 스팟 저점 $1.49(Vast.ai)·H200 중앙값 ~$4.47로 장기 하락 추세를 보고하는 반면, 다른 쪽은 "Blackwell 가용 확대에도 2026년 대부분 기간 임대가 **상승세**"라 보고한다 — 관측 기간·바스켓 구성 차이로 추정되며, 다음 자동 갱신 데이터로 재확인 필요.
+- ⑤ 메모리 내부 축의 범용 DRAM 계약가 감속(07-04 확인)은 Q3 2026 +13~18%로 재확인됐고, 모바일은 +8~13%로 추가 감속 — 감속 신호는 유지.
+- **⑥ 공급 과잉 축 — DRAM/NAND 분화**: CXMT의 DRAM 매출 점유율이 10%로 확대(4대 과점 붕괴)됐으나, DRAM 자체 수급은 2028 Q2까지 타이트가 유지된다는 전망(삼성·UBS)과 병존 — 점유율 잠식(⑥, 구조적)과 가격 사이클 정점(⑤, 시점 문제)이 분리된 축임을 재확인. NAND는 2027 H2로 오버서플라이 전환이 앞당겨져, `cxmt_asp_gap`류 신호를 DRAM/NAND로 분리 추적할 필요가 있다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4~5).
+- 병목 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 CAPEX 드라이버(`financing`)도 동일 신용 이벤트로 갱신됨 — 양쪽 프레임이 같은 사실을 다른 관점(수요 방향 vs 제약 압력)에서 재확인한 사례.
+
+**출처**: [sources/articles/september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §2, §4, §5

@@ -474,3 +474,11 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 - 2026-06-25 N.D. Cal. 제소 건에 Micron도 삼성전자·SK하이닉스와 함께 피고로 포함 — HBM 전환 명목 하 범용 DRAM 공급 제한·가격 담합 주장([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세 내용은 신규 개념 페이지 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §3, §4
+
+## 업데이트 (2026-09-08) — HBM 18%·NAND 3위 등극·반독점 소송 답변서 부인
+
+- **HBM 매출 점유율 18%**(Q2 2026) — 3사 중 최소지만 처음으로 구체 수치가 확인됐다([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4). DRAM 매출 점유율(전체)은 22.4%(Q1)→**25%(Q2)**로 상승, SK하이닉스(26%)와의 격차가 크게 좁혀졌다.
+- **NAND 매출 +99.2% QoQ(Q2'26)로 3위 등극** — 상위5사 중 가장 가파른 성장.
+- **반독점 소송**: 담당판사 Noel Wise(N.D. California) 확정 이후 Micron이 **답변서에서 혐의를 부인**했다 — 3개 피고 중 공개된 유일한 답변. 상세는 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
+
+**출처**: [september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4

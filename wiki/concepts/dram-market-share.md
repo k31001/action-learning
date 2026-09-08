@@ -245,3 +245,19 @@ Counterpoint Research (2026-01-29, Jeongku Choi):
 
 - Counterpoint Research의 Q1 2026 확정 DRAM/HBM 시장점유율 데이터: SK하이닉스 HBM ~58%·삼성전자 ~32% — Counterpoint 발행물은 이를 "SK하이닉스가 지속되는 HBM 수요 속 역대 최초로 HBM 1위 유지"로 평가한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 4월 잠정치 대비 확정치 차이의 상세 병기는 [hbm-market.md](hbm-market.md) [Update 2026-07-04] 참조.
 - 2026-06-25 삼성전자·SK하이닉스·Micron을 상대로 한 반독점 집단소송이 제기됐다(N.D. Cal.) — HBM 전환을 명목으로 범용 DRAM 공급을 인위적으로 제한하고 가격을 담합했다는 주장이다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세는 신규 페이지 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조(다른 에이전트가 작성 중).
+
+## 업데이트 (2026-09-08)
+
+### DRAM 매출 점유율 — Q2 2026 실측(2차 인용) — CXMT 10% 돌파로 4강 과점 붕괴
+
+| 기간 | 삼성전자 | SK하이닉스 | 마이크론 | CXMT |
+|------|---------|-----------|---------|------|
+| Q1 2026 | 38.5% | 28.8% | 22.4% | 7% |
+| **Q2 2026** | **39%** | **26%** | **25%** | **10%**(전년 4%) |
+
+- **CXMT가 DRAM 매출 점유율 10%를 돌파하며 삼성·SK하이닉스·Micron 3사 합산 90%+ 과점 체제를 사상 처음 무너뜨렸다.** SemiAnalysis는 CXMT를 "명백한 4위 DRAM 플레이어"로 지목하며, 연말 캐파를 ~350K WSPM(Micron ~375K에 근접)으로 전망한다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4). 2030년까지 30% 점유 목표로 캐파를 2026년 +85K WSPM(vs 삼성 15K·SK하이닉스 60K·Micron 30K) 증설 중이다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §5). CXMT 상세는 [cxmt.md](../entities/cxmt.md) 참조.
+- **HBM 매출 점유율 Q2 2026**: SK하이닉스 50%(전분기 58%)·삼성전자 33%(반등, HBM4 골든수율 80% 견인)·Micron 18% — 상세는 [hbm-market.md](hbm-market.md) [업데이트 2026-09-08] 참조.
+- **DRAM/NAND 수급 시차 분화(신규)**: 기존 "2027~28 CXMT/YMTC 오버서플라이" 단일 프레임을 분리 — **DRAM은 2028 Q2까지 지속 타이트**(삼성 자체 경고+UBS 동의)한 반면 **NAND는 2027 H2**에 먼저 균형/오버서플라이로 전환한다. 즉 CXMT의 DRAM 점유율 확대(10%)는 진행 중이지만 DRAM 자체 수급은 당분간 타이트를 유지 — 점유율 잠식과 가격 압박은 별개 시간축임에 유의 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4~5).
+- **반독점 소송 진행 상황**: 담당판사 Noel Wise(N.D. California) 확정, Micron이 답변서에서 혐의를 부인했다. 상세는 [dram-antitrust-litigation.md](dram-antitrust-litigation.md) 참조.
+
+**출처**: [september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4

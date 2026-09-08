@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-09-08
+sources: [sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/september-2026-market-update-2026-09-08.md]
 ---
 
 # DRAM 반독점 집단소송 (2026-06 제소)
@@ -17,6 +17,7 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 ## 현재 단계
 
 - 2026-06-25 제소 직후 단계이며, 아직 법원의 실질적 판단(기각·인용·화해 등)은 나오지 않았다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **[Update 2026-09-08]** 담당판사가 **Noel Wise**(N.D. California)로 확정됐다. 공동피고 **Micron이 답변서(answer)에서 혐의를 부인**했다 — 삼성·SK하이닉스의 답변 여부는 후속 확인이 필요하다. 원고 측은 최근 4년간 DRAM 가격이 약 700% 상승했다는 주장을 유지하고 있다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4).
 
 ## 위키 관점 — 왜 추적하는가
 
@@ -32,3 +33,4 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 
 ## 출처
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — §2, §4 (Tom's Hardware, Gizmochina 원문 인용 경유)
+- [sources/articles/september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) — §4 (담당판사 확정·Micron 답변, Tom's Hardware·TrendForce 경유)

@@ -14,6 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-08 (병목 모델 정기 점검) ───────────────────────────────────────────
+  {
+    date: '2026-09-08',
+    type: 'ingest',
+    version: 'v2.46.17',
+    title: 'Bottleneck Model 2030 정기 점검 — 전력 74(▲2)·CAPEX 41(▲1)·파운드리 51(▲1)·패키징 65(▼2), ERCOT 접속 동결·신용경색 신호·CXMT DRAM 10%',
+    summary:
+      '5개 병렬 리서치 에이전트(전력/CAPEX/파운드리·패키징/HBM·DRAM·NAND 시장/AI 수요·중국)로 SemiAnalysis·Counterpoint·TechInsights 우선 수집한 2026-07-04 이후 약 2개월 치 데이터를 반영. 전력은 텍사스(ERCOT) 데이터센터 접속 전면 동결(2026-08-03 주지사 지시)이라는 정치·행정 리스크가 신규로 더해지며 3개 분기 연속 상승(70→72→74) — 4대 병목 중 유일하게 추세가 명확하다. ' +
+      'CAPEX·파운드리는 07-04까지의 완화 추세가 정체로 전환됐다 — 가이던스는 전원 추가 상향됐으나 Alphabet·Amazon FCF 마이너스 전환·Oracle 정크 근접 강등·CoreWeave CDS 디폴트확률 ~50%로 신용시장에서 처음 균열이 났고(41), NVIDIA Rubin 물량 전망 재상승으로 파운드리 수요 압력도 재긴장됐다(51). ' +
+      '패키징만 완화가 이어졌으나(65) SK하이닉스의 HBM4E 하이브리드본딩 배제 공식화·ABF 기판 리드타임 배증(12주→26주)으로 폭이 제한됐다. 시장 데이터는 삼성 HBM4 골든수율 80%(HBM 점유율 21→33% 반등)·CXMT DRAM 매출점유율 10% 돌파(4강 과점 사상 첫 붕괴)·DRAM(2028Q2까지 타이트) vs NAND(2027H2 오버서플라이) 시차 분화가 핵심. 시나리오 확률(A26·B39·C8·D21·E6)·DF1·DF2는 추가 재평가 결과 전부 유지(신규 사실이 기존 후기순환 정점·중국 배경강화 판정을 재확인하는 방향, 임계 미도달). 패치 v2.46.17.',
+    tags: ['Bottleneck Model', '전력', 'CAPEX', '파운드리', '패키징', 'ERCOT', 'CoreWeave', 'Oracle', '신용경색', 'CXMT', 'HBM4', 'DRAM', 'NAND', 'SemiAnalysis', 'Counterpoint', 'TechInsights'],
+    items: [
+      { label: '전력 72→74 (▲2)', detail: 'ERCOT 데이터센터 신규 접속 승인 전면 동결(2026-08-03, 감사 완료 목표 12-10) — 물리적 대기열(474GW) 위에 정치·행정 리스크 신규. PJM 2028/29 용량부족 6,831MW로 확대(2030년까지 최대 15GW)' },
+      { label: 'CAPEX/ROI 40→41 (▲1)', detail: '가이던스 전원 추가 상향(MS FY27 $255~260B·Alphabet $195~205B·Amazon $220B·Oracle $90~95B)에도 Alphabet·Amazon FCF 첫 마이너스·Oracle S&P BBB- 강등·CoreWeave CDS 디폴트확률 ~50%·하이퍼스케일러 IG채권 YoY+1,300% — 가이던스와 신용시장 첫 디커플링' },
+      { label: '파운드리 50→51 (▲1)', detail: 'N2 램프·ASML 출하는 순항이나 NVIDIA Rubin 2026 유닛 전망이 170~180만 대로 재상승(4월 하향분 되돌림)·A16 2027 슬립 플래그로 수요측 압력 재긴장' },
+      { label: '패키징 67→65 (▼2)', detail: 'CoWoS 캐파 120~140K WPM·수급갭 20%→10%·수율 98~99%로 완화 지속. 단 SK hynix HBM4E까지 하이브리드본딩 배제 공식화(HBM5부터)·ABF 기판 리드타임 12주→26주 배증으로 신규 병목 벡터 부상' },
+      { label: '시장 데이터 — 삼성 HBM4 골든수율 80%·CXMT DRAM 10%', detail: 'HBM 매출점유율 SK50%·삼성33%(반등)·Micron18%. DRAM 매출점유율 삼성39%·SK26%·Micron25%·CXMT10%(4강 과점 붕괴). TrendForce 2026 메모리 TAM $551.6B→$889.3B 상향. DRAM/NAND 수급 시차 분화(NAND 2027H2 vs DRAM 2028Q2) → downturn DX-5·DX-8 갱신' },
+      { label: '시나리오 확률·DF1·DF2 추가 재평가 — 전부 유지', detail: '신용경색 신호(CoreWeave·Oracle)는 08-11 재평가가 지목한 CapEx-vs-FCF 다이버전스의 확대판으로 조달 경보이나 수요 붕괴 아님. CXMT 10%는 이미 D21 반영 추세의 재확인. ERCOT 동결은 병목 모델 별도 축, DF1·DF2 비대상. DF2: 1260H 리스트 제외 vs Entity List 유지로 신호 혼재, 재배분 미실행' },
+    ],
+    links: [
+      { label: 'wiki/concepts/bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'september-2026-market-update-2026-09-08.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/september-2026-market-update-2026-09-08.md' },
+      { label: 'wiki/downturn/differential-indicators.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/downturn/differential-indicators.md' },
+    ],
+  },
   // ── 2026-09-08 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-08',

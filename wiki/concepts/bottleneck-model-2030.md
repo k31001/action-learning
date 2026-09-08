@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-09-08
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/september-2026-market-update-2026-09-08.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -229,17 +229,17 @@ flowchart LR
 |---|---|---|---|---|
 | 1 | 하이퍼스케일러 이익·FCF 커버리지 | 2~4분기 | 중립 ▼ | 빅4 FCF 견조하나 capex +77% 가속으로 커버리지 하락 — FCF/CapEx<0.8이 충격 트리거 ([ai-capex.md](ai-capex.md)) |
 | 1 | capex 가이던스·발주 모멘텀 | 1~3분기 | 완화 ▶ | '26 $650~725B(+77%) 강세 (수요 EWI ②돈 `capex_guide` 연계) |
-| 1 | 외부 자금조달 (HY OAS·사모신용·ABS) | 0~2분기 | 긴장 ▼ | 부채·SPV·ABS 의존 확대 — 스프레드 확대 시 급랭 (EWI `credit_spread` 연계) |
+| 1 | 외부 자금조달 (HY OAS·사모신용·ABS·CDS) | 0~2분기 | 긴장 ▼ | HY OAS 자체는 소폭 타이트닝(285→266~275bp)이나 개별 신용 이벤트 급증 — CoreWeave CDS 5년물 디폴트확률 ~50%·Oracle CDS 7년 최고·Oracle $16.3B 부채딜에 은행 이탈→PIMCO 앵커·하이퍼스케일러 IG 채권 발행 YoY+1,300% (2026-09-08 갱신, EWI `credit_spread` 연계) |
 | 2→이익 | **AI 기업 매출·이익 (OpenAI·Anthropic·xAI·Google)** | 12~18개월 | 중립 ▶ | 클라우드 AI 매출 구조 성장(Google Cloud +63%·Azure +40%·AWS +28%, Q1 2026)·"AI 수익 실현 시작" vs MIT 95% ROI 미실현·프런티어 랩 적자 지속 ([ai-demand-sustainability.md](ai-demand-sustainability.md)) — 하이퍼스케일러 capex의 최상류 |
 | 2→이익 | AI 단위 경제성 (토큰 원가 vs ARPU·구독 전환) | 12~24개월 | 중립 ▶ | 추론 효율 개선은 수요 촉진(추론 100배)과 단가 하락의 양날 — Bain: 수익성 충당에 $2조 매출 필요·$800B 갭 ([ai-compute-economics-gap.md](ai-compute-economics-gap.md)) |
-| 2→가이던스 | GPU 임대가 (수요 청산가) | 9~18개월 | 긴장 ▼ | H100 현물 $2~3/GPU·h 둔화(Vast.ai 실측) — neocloud 경제성→GPU 발주의 최선행 (EWI `gpu_rental` 연계) |
+| 2→가이던스 | GPU 임대가 (수요 청산가) | 9~18개월 | 긴장 ▼ | Blackwell 가용 확대에도 2026년 대부분 기간 임대가 **상승세** — 수요 청산 신호 부재, Nvidia·SemiAnalysis는 "여전히 공급제약"으로 프레이밍 (2026-09-08 갱신, 이전 분기의 둔화 관측과 배치 — 추적 지속 필요. EWI `gpu_rental` 연계) |
 | 2→자금조달 | 금리·텀스프레드 (10Y) | 0~6개월 | 중립 ▶ | 할인율·자본비용 환경 — FRED 일간 |
 
 ### 전력 드라이버 (현재 64 · d1 58 / d2 60)
 
 | depth | 요소 | 선행시차 | 판정 | 근거 |
 |---|---|---|---|---|
-| 1 | 계통 접속 큐·지연일수 | 12~36개월 | 긴장 ▼ | 접속 지연 확대 — 송전 증설 선진국 4~8년 ([energy-constraints.md](energy-constraints.md)) |
+| 1 | 계통 접속 큐·지연일수 | 12~36개월 | 임계 ▼ | 텍사스(ERCOT) 2026-08-03 주지사 지시로 데이터센터 신규 접속 승인 **전면 동결**(감사 완료 목표 2026-12-10) — 물리적 대기열(474GW) 위에 정치·행정 리스크 추가. 송전 증설 선진국 4~8년 (2026-09-08 갱신, [energy-constraints.md](energy-constraints.md)) |
 | 1 | 발전 COD 파이프라인 달성률 | 6~18개월 | 긴장 ▶ | 계획 프로젝트 ~20% 지연 위험(IEA) |
 | 1 | 허브 예비력·LMP | 0~3개월 | 중립 ▶ | 실시간 감시 축(EIA-930·PJM·ERCOT) — 현재 국지적 타이트 |
 | 2→접속 | 변압기·HV 케이블 리드타임 | 18~36개월 | 긴장 ▼ | 대기시간 최근 3년간 2배(IEA) — 접속 지연의 물리적 원인 |
@@ -250,8 +250,8 @@ flowchart LR
 
 | depth | 요소 | 선행시차 | 판정 | 근거 |
 |---|---|---|---|---|
-| 1 | N2/18A 선단 램프 진척 | 6~12개월 | 완화 ▲ | N2 2026말 ~10만 장/월 확대 경로 순항 ([../entities/tsmc.md](../entities/tsmc.md)) |
-| 1 | AI 배정 비율 (전통 수요와 캐파 경쟁) | 3~9개월 | 완화 ▶ | 스마트폰 -2.1% 약세 = AI 배정 여지 확대 — **교차 부호**: 수요 EWI에선 악재(전통 수요 약세), 병목엔 완화 |
+| 1 | N2/18A 선단 램프 진척 | 6~12개월 | 완화 ▲ | N2 2Q26 매출기여 3%(1Q26 0%)로 정량 확인·연말 ~10만 장/월 경로 순항. 단 A16 양산이 2027년으로 슬립 가능성 플래그(미확정, TSMC 공식 로드맵은 2H26 유지) ([../entities/tsmc.md](../entities/tsmc.md)) |
+| 1 | AI 배정 비율 (전통 수요와 캐파 경쟁) | 3~9개월 | 중립 ▼ | NVIDIA Rubin 2026 유닛 전망 KeyBanc 기준 170~180만 대로 재상승(4월 하향분 되돌림) — 캐파 배정 경쟁 재긴장. 스마트폰 약세의 완화 여지를 일부 상쇄 (2026-09-08 갱신) |
 | 2→램프 | ASML EUV/High-NA 출하·백로그 | 12~24개월 | 중립 ▶ | High-NA 2026말 HVM 요건 → 2027~28 고객 양산 삽입, 1Q26 장비 매출 로직 49:메모리 51 |
 | 2→램프 | 선단 수율 프록시 (N2·18A) | 6~12개월 | 중립 ▶ | 비공개 — **미지수**, 범위 관리 |
 | 2→배정 | 대만 집중·지정학 | 이벤트성 | 긴장 ▶ | AI 배정 선단 캐파의 70%가 대만(0.525/0.75) — 단일 충격점, 미국 분산은 2028+ |
@@ -262,8 +262,8 @@ flowchart LR
 |---|---|---|---|---|
 | 1 | CoWoS 가동률·증설 | 3~9개월 | 긴장 ▶ | 2025 두 배 증설에도 "still fully loaded" (EWI `cowos` 연계) |
 | 1 | 신규 후공정 사이트 진척 | 12~30개월 | 중립 ▲ | Amkor AZ 2028 초·SK 인디애나 2028 말·TSMC AZ 2029 전 — 일정 진행 |
-| 2→가동률 | 기판·인터포저 (ABF) | 6~18개월 | 긴장 ▶ | 2.5D 부족의 연쇄 병목(TrendForce) — 2027부터 완화 전망 |
-| 2→가동률 | HBM 적층·테스트 수율 (TSV/KGD·16-Hi) | 6~12개월 | 긴장 ▼ | HBM4 16-Hi 전환 난도 상승(Micron 자격 이슈 등) — **미지수** 플래그 |
+| 2→가동률 | 기판·인터포저 (ABF) | 6~18개월 | 긴장 ▼ | 가동률 95%+·리드타임 12주→**26주**로 배증(2026-09), 2026H2 갭 ~10%·2027 ~20% 전망. Ibiden($3B+)·Unimicron($770M) 증설 대응 중 — CoWoS 자체 완화와 별개로 **신규 정량화된 병목 벡터**로 부상 (2026-09-08 갱신) |
+| 2→가동률 | HBM 적층·테스트 수율 (TSV/KGD·16-Hi) | 6~12개월 | 긴장 ▼ | SK hynix가 Hot Chips 2026(8월)에서 HBM4E까지 하이브리드본딩 배제를 **공식화**(HBM5부터 적용, JEDEC 775㎛ 스택 한계) — MR-MUF/마이크로범프로 Rubin 세대 전체 대응. 삼성은 하이브리드본딩 고수·국내 전용 라인 구축 중 — 두 진영으로 기술 경쟁축 분화 (2026-09-08 갱신) | 
 | 2→사이트 | HBM 세대 전환 믹스 (HBM4→4E 램프) | 6~12개월 | 중립 ▶ | 세대 전환기 유효 산출 일시 감소 — 3사 IR 추적 |
 
 ### 종합 판독 (2026-06-13)
@@ -348,6 +348,40 @@ flowchart LR
 - **DRAM 가격 상승 감속 조짐(조기경보 후보)**: TrendForce(2026-07-03, 최신) Q3 2026 범용 DRAM 계약가 전망 **+13~18% QoQ**로 Q2(+58~63%) 대비 큰 폭 감속 — PC/스마트폰 구매력 한계·고기저 효과가 주 원인, 서버향은 에이전틱 AI 수요로 견조. Jefferies는 여전히 Q3 +40~50%를 전망(스팟·HBM 포함 범위 차이로 추정) — **범용 DRAM 계약가 축의 첫 감속 신호로 [demand-inflection-ewi.md](demand-inflection-ewi.md) 모니터링 대상에 추가**.
 - **반독점 소송 신규 리스크**: 2026-06-25 삼성·SK하이닉스·Micron 대상 미국 집단소송 제기(HBM 전환 명목 범용 DRAM 공급 제한·가격 담합 주장) — 병목 모델 자체의 수급 축을 바꾸진 않으나 **CAPEX/ROI·가격 결정 관련 규제·평판 리스크**로 별도 모니터링 필요 ([dram-antitrust-litigation.md](dram-antitrust-litigation.md) 신설).
 
+---
+
+### 종합 판독 (2026-09-08)
+
+#### 제약지수 업데이트 (2026-09-08, 이전 2026-07-04 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 72 | **74** | **▲ +2** | 텍사스(ERCOT) 2026-08-03 Abbott 주지사 지시로 데이터센터 신규 접속 승인 **전면 동결**(감사 완료 목표 2026-12-10) — 물리적 대기열 위에 정치·행정 리스크 신규 추가. PJM 2028/29 용량 부족분 6,623→6,831MW로 예측대로 확대. ERCOT 큐 5개월 만에 410GW+→474GW |
+| **CAPEX/ROI** | 40 | **41** | **▲ +1** | 가이던스 자체는 전원 상향(MS FY27 $255~260B·Alphabet $195~205B·Amazon $220B·Oracle $90~95B)이나, Alphabet·Amazon FCF 사상 첫 마이너스 전환·Oracle S&P BBB-(정크 한 단계 위) 강등·CoreWeave CDS 5년물 디폴트확률 ~50%·하이퍼스케일러 IG 채권 발행 YoY +1,300% — 완화 추세 정체·신용 채널에서 첫 균열 |
+| **파운드리** | 50 | **51** | **▲ +1** | N2 램프·ASML 출하는 계속 순항이나, NVIDIA Rubin 2026년 유닛 전망이 KeyBanc 기준 170~180만 대로 재상승(4월 하향분 되돌림)·A16 2027년 슬립 가능성 플래그 — 수요측 압력 재긴장으로 완화 추세 정체 |
+| **패키징** | 67 | **65** | **▼ −2** | CoWoS 캐파 목표 120~140K WPM 상향·수급갭 20%→10%·5.5x 레티클 수율 98~99%로 완화 지속. 단 SK hynix가 HBM4E까지 하이브리드본딩 배제를 Hot Chips에서 공식화(HBM5부터 적용)하고 ABF 기판 리드타임이 12주→26주로 배증하며 신규 병목 벡터로 부상 — 완화 폭은 제한 |
+
+**전력은 4개 병목 중 유일하게 3개 분기 연속 지수 상승(70→72→74)이면서, 처음으로 순수 물리적 제약을 넘어 정치·행정 리스크(ERCOT 접속 동결)가 추가됐다. CAPEX·파운드리는 07-04까지의 완화 추세가 정체로 전환 — 두 병목 모두 "공급측 개선 vs 수요/신용측 재긴장"의 상충 구도로 재해석. 패키징만 완화가 이어지나 ABF·하이브리드본딩 지연이 폭을 좁힌다. 하방 위험 순서 변경: **전력 > CAPEX/ROI ≈ 패키징 > 파운드리** — 전력이 07-04까지의 "CAPEX/ROI 최대 하방" 서사를 처음으로 앞질렀다.**
+
+#### 2026-09-08 핵심 신규 신호
+
+- **전력 — 정치 리스크 신규 등장**: 텍사스 주지사 Greg Abbott가 2026-08-03 ERCOT 데이터센터 신규 접속 승인을 전면 동결시키고 주 전체 감사를 지시(PUCT Docket 59220, 감사 완료 목표 2026-12-10). 위키가 추적해온 "물리적 대기열·리드타임" 서사와 별개로, 텍사스 기반 프로젝트에 **정치·행정 지연**이라는 새 리스크 축이 추가됐다. PJM은 절차 개혁(Cycle 1 처리 완료·46GW를 Transition Cycle 2로 이관)으로 프로세스 자체는 개선됐지만, 2028/29 인도연도 용량 부족분은 6,831MW로 예측 경로대로 계속 확대 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md)).
+- **CAPEX — 가이던스·신용시장 디커플링**: 4대 빅테크+Oracle이 전원 2026~27년 capex를 추가 상향(Microsoft FY27 $255~260B 등)했음에도, Alphabet·Amazon의 FCF가 사상 처음 마이너스로 전환했고 Oracle은 정크 등급 한 단계 위(BBB-)로 강등되며 $16.3B 미시간 데이터센터 부채 조달에 은행이 발을 빼 PIMCO가 대신 앵커했다. CoreWeave 5년물 CDS는 디폴트 확률 약 50%를 가리키고, 하이퍼스케일러 관련 IG 채권 발행이 전년비 +1,300% 급증 — 가이던스(완화)와 신용시장(긴장)이 처음으로 반대 방향으로 갈리기 시작했다.
+- **파운드리·패키징 — Rubin 수요 재상승 vs ABF 신규 병목**: NVIDIA Vera Rubin 2026년 유닛 전망이 KeyBanc 기준 170~180만 대로 재상승(4월의 하향 조정을 상당 부분 되돌림)했고 열 리드(thermal lid) 이슈로 일부 출하가 지연됐다. 패키징에서는 CoWoS 자체는 계속 완화(캐파 목표 120~140K WPM·수급갭 10%로 축소)되는 반면, **ABF 기판 가동률 95%+·리드타임 12주→26주 배증**이 새로운 정량적 병목으로 부상했고, SK hynix가 Hot Chips 2026에서 **HBM4E까지 하이브리드본딩을 공식 배제**(HBM5부터 적용, JEDEC 775㎛ 스택 한계 사유)한 반면 삼성은 하이브리드본딩을 고수하며 국내 전용 라인을 구축 중 — 두 진영으로 패키징 기술 경쟁축이 갈렸다.
+- **HBM·DRAM 시장 — 삼성 HBM4 골든 수율 80%·CXMT 4강 과점 붕괴**: 삼성이 2026-08-26 HBM4 세계 최초 양산과 "골든 수율" 80% 달성을 발표하며 HBM 매출 점유율이 21%→33%(Q2 2026)로 반등했다(SK hynix 58%→50%, Micron 18%). DRAM 매출 점유율은 삼성 39%·SK하이닉스 26%·Micron 25%·**CXMT 10%**(전년 4%)로, CXMT가 4대 과점(90%+ 체제)을 사상 처음 무너뜨렸다. 동시에 TrendForce는 2026년 메모리 TAM 전망을 $551.6B→**$889.3B**로 대폭 상향했다 ([september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) §4).
+- **DRAM·NAND 수급 시차 분화(신규 인지)**: 기존 위키는 "2027~28 CXMT/YMTC 오버서플라이 리스크"를 단일 프레임으로 다뤘으나, 최신 자료는 **DRAM은 2028 Q2까지 지속 타이트**(삼성 자체 경고+UBS 동의)한 반면 **NAND는 2027 H2**로 오버서플라이 전환 시점이 앞당겨진다고 분화한다 — NAND가 DRAM보다 먼저 꺾인다. [wiki/downturn](../downturn/README.md) SP-2 트랙의 DX 지표(특히 DX-7 만기 집중도·제품별 판별)에 반영 검토 대상.
+
+#### 병목별 재해석
+
+- **전력**: **3개 분기 연속 지수 상승(70→72→74)** — 4대 병목 중 유일하게 추세가 명확히 한 방향(악화)이다. 상류(d2, 변압기·BTM 공급망)는 여전히 18~48개월 장주기라 단기 해소 없음. ERCOT 동결은 상류·중류 구분이 무의미한 **새로운 리스크 유형**(정치·행정)이므로, 다음 재보정 시 전력 드라이버 트리에 "주정부 규제·정치 리스크" 항목 신설을 검토할 만하다.
+- **CAPEX**: 중류(d1, capex 가이던스)는 계속 완화 방향이나, 그동안 별도 관측 항목이 없던 **CDS·신용스프레드**가 처음으로 명확한 긴장 신호를 냈다(CoreWeave 50%·Oracle 7년 최고). 기존 `financing` 드라이버(HY OAS·사모신용·ABS)의 범위를 CDS까지 확장해 추적할 필요 — HY OAS 자체는 소폭 타이트닝(285→266~275bp)했지만 이는 회사채 스프레드일 뿐 CoreWeave·Oracle류의 개별 신용 이벤트를 담지 못한다.
+- **파운드리**: 지수 소폭 상승(50→51)이나 이는 "완화가 멈췄다"는 신호이지 "악화로 전환했다"는 신호는 아니다. 공급측(N2·ASML)은 여전히 순항. Rubin 물량 재상승은 **수요 강도**를 보여주는 것이므로 캐파 배정 경쟁이 다시 팽팽해질 신호로 해석.
+- **패키징**: 지수 하락(67→65)으로 완화 방향은 유지하되, **병목의 위치가 CoWoS 자체에서 ABF 기판·HBM4 본딩 기술로 이동 중**이다. CoWoS 웨이퍼 수는 늘어도 기판이 없으면 조립이 막히는 구조 — 다음 분기부터 ABF를 패키징 병목의 별도 하위 KPI로 격상 권고.
+- **DRAM/NAND 오버서플라이 시차**: 병목 모델 자체(2030년 상한 제약)와는 별개 축이지만, **[wiki/downturn](../downturn/README.md) SP-2**(다운턴 시나리오)의 판별에 직접 영향 — NAND가 먼저 꺾이면 DT-D(저가 잠식, 공급발×침식)의 첫 징후가 NAND 쪽에서 먼저 나타날 가능성. [downturn/differential-indicators.md](../downturn/differential-indicators.md) 갱신 검토 대상.
+- **수요 변곡 EWI와의 관계 (분리 운영 유지)**: 2026-06-11 사용자 결정 유지. EWI는 Bottleneck Model 탭의 별도 서브탭으로만 접근. 단 CAPEX 상류의 `financing`·`gpu_rental` 신호가 이번 분기 신용경색 신호와 직결되므로 교차참조 강도만 상향.
+
+---
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -363,3 +397,4 @@ flowchart LR
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 병목 제약지수 갱신 데이터 (PJM 개편 큐·ERCOT 4배 급증·변압기 리드타임·CAPEX 추가 상향·ASML High-NA 연기·HBM4 마이크로범프 결정·DRAM 가격 감속 조짐)
+- [sources/articles/september-2026-market-update-2026-09-08.md](../../sources/articles/september-2026-market-update-2026-09-08.md) — 2026-09-08 병목 제약지수 갱신 데이터 (ERCOT 접속 전면 동결·CoreWeave/Oracle 신용경색 신호·Rubin 물량 재상승·ABF 기판 신규 병목·SK hynix 하이브리드본딩 HBM5 연기 공식화·CXMT DRAM 10%·DRAM/NAND 오버서플라이 시차 분화)
