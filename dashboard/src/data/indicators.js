@@ -42,11 +42,13 @@ export const INITIAL_QUADRANT_POSITIONS = [
   //   [이번 사이클 최대 산출물] SP-2 다운턴 트랙 신설 + CMO 다운턴 역사 매트릭스(관측 3→4개)는 다운턴 대비·감별 차원을 심화하나 설계상 별도 축(DF-D1 발원지×DF-D2 속도)을 써 SP-1 DF1 무이동 — 공급발 다운턴은 A·B 사분면 안에서도 발생하므로 두 트랙 병존이 방법론적으로 정합.
   //   [삼성 실행 진전] SSD design win(PM1763 양산 개시 2026-07-08 공식·CMX V-NAND 캐파 60%+ NVIDIA 배정·DGX Spark PM9E1 실탑재)은 AI-스토리지 NAND 수요·삼성 실행 진전 확인이나 삼성 개별 실행 신호(DF3/NAND)라 거시 축 아님 → EWI(samsung_ai_ssd_position·nvidia_storage_next_partner·enterprise_ssd_tam) 갱신으로 반영.
   //   DF2: 08-11 이후 신규 미중 실현 정책 사실 0건(MATCH 본회의 movement 없음·CXMT HBM 미확정·애플–CXMT 테스트 단계·신규 수출통제 없음). SP-2에서 DF2는 배경 변수로 강등되어 SP-1 위치 무영향 → DF2 0.5 방향·위치 유지. 발동 트리거 0건.
-  { key: 'current',    date: '2026-09', df1: 8.5,  df2: 0.5,  note: '[09-01 재평가] DF1 8.5·DF2 0.5 유지 — 08-25 이후 git log 변경분은 전부 SP-2 다운턴 트랙(다섯 시나리오 발현 근접도 dt-b/c/d/e-signals 08-28·별도 축 DF-D1×DF-D2)·전략/FDP(FDP 협업 3유형·스토리지 벤더 딜 구조·KV Cache SSD 수요)·역사 리서치(2023 NAND 다운턴 벤더 데이터)·발표 층(영향 덱 6p)으로 신규 실현 외부 거시 사실 0건 → 축 무이동. 08-28 수집 in-window 신호도 정점 재확인·유보: HBM 비트수요 성장 감속(2025 +130%→2026 +70%→2027 +50~60%, 단 여전히 공급부족)·TrendForce 메모리 시장 2027 $1.28T 상향(Agentic AI 구조적 확장)·재고 역대최저(DRAM 2~3주·NAND 3~4주)·SEMI 장비지출 사상최대(2026 $133B·2027 $151B)·NVIDIA Rubin Ultra HBM 구성 축소 검토(공급 타이트발, 수요 붕괴 아님)·토큰 소비 폭증(구글 3.2 quadrillion/월 +7배, Jevons 상쇄). DF2: MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전(CXMT DDR5 수율 >90%·HP/Asus/Acer 인증 완료)했으나 Schumer 반대 서한 답변시한(08-21) 경과·백악관 사인오프 대기·9월 시진핑 방미 정상회담 관측(저신뢰)으로 리트머스 미해결 → DF2 이동 근거 미충족(EWI 갱신). 발동 트리거 0건. [08-25 재평가] DF1 8.5·DF2 0.5 유지 — 08-18 이후 git log 변경분(v2.46.2~v2.46.9·v2.42.1)은 전부 역사 리서치(지난 20년 다운턴 복기 D+N 통합 산점도·NAND 분기 낙폭 검증)·SP-2 삼성 영향 진단(S/W 코드 좌표계, 별도 축)·FDP 생태계 실행전략·발표 층 분리(PPTX 확률 표기 제거)로 신규 실현 외부 거시 사실 0건 → 축 무이동. 08-25 웹 리서치 in-window 신호도 정점 재확인·정제(CapEx ~$725B·삭감 0건·DRAM Q3 +13~18%·NAND +10~15% QoQ 감속·HBM4 +30%). DF2: MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전했으나 백악관 사인오프 대기·Schumer 반대 서한으로 리트머스 미해결(EWI 갱신). 발동 트리거 0건. [08-18 재평가] DF1 8.5·DF2 0.5 유지 — 08-11 이후 git log 변경분(v2.40.0~v2.46.0)은 전부 제품믹스·삼성 실행(SSD·UFS·CAPEX 솔루션)·역사 리서치(CMO 매트릭스·2019 편입·CAPEX 히스토리)·신규 분석 트랙(SP-2 다운턴 — 별도 축 DF-D1×DF-D2)·outputs/보고서(2차 저지선·SSD 전략)·회의록으로 신규 실현된 외부 거시 사실 0건 → 축 무이동. 이번 사이클 최대 산출물 SP-2 다운턴 트랙은 다운턴 대비 심화이나 별도 축이라 SP-1 무이동. 삼성 SSD design win(PM1763 양산·CMX·DGX Spark)은 삼성 개별 실행 신호(DF3/NAND)라 EWI 갱신으로 반영. DF2 신규 미중 실현 사실 부재. 발동 트리거 0건. [08-11 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동. 07-28이 지목한 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점 재확인. Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 조달 경보(수요 붕괴 아님)라 축 무이동·EWI 감시 강화. GPU 임대가 firming/flat. [08-04 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐, 내부 전문가 프레이밍으로 거시 축 무이동. 양면적: take-or-pay/NTB 바닥 경직화(상방 재확인) vs HBM 편중·중복수요·NAND 조정(하방 유보) 상쇄 → 정점 재확인. DF2: 이창수 중국 비동조화·미주 집중은 관리된 공존 정합. [07-28 재평가] in-window 신호 정점 재확인: Alphabet CapEx 상향·SK하이닉스 사상 최대. [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
+  { key: 'current',    date: '2026-09', df1: 8.5,  df2: 0.5,  note: '[09-08 재평가] DF1 8.5·DF2 0.5 유지 — 09-01 이후 git log 변경분은 전부 내부 인터뷰(송용호 부사장 AX/PI센터장 09-03)·제품믹스 리서치(대용량 QLC eSSD 벤더별 타임라인·FDP RUH 갭 09-02)·발표 층(향후 계획 덱·내부 인터뷰 인용문 덱·FDP 컨설팅 덱)으로 신규 실현 외부 거시 사실 0건 → 축 무이동. 송용호 인터뷰는 다운턴 시뮬레이션·기본기(품질·원가)·조직 체질 층위의 내부 전문가 프레이밍으로, 그의 자체 관측(가격 피크 26년 가능성·28~30 슬로우 가능·단 AI 수요는 아직 갈 길 멀어 존재)은 이미 DF1 8.5 후기순환 정점·D 시나리오 2027~2028 조정 타이밍과 정합 → DF1 8.5 정점 재확인. 다운턴 센싱 3대 관전 포인트(① AI 기술 ROI 진보 지속성 — OpenAI 광고 진입·IPO는 한계 인식 신호 ② 하이퍼스케일러 자금 구조 — FCF 마이너스→대출→지분 매각→NVIDIA 금융업체화 ③ 전기 — 美 27~28 쇼티지가 DC 건설 속도 지연 가능)와 중국 만성적 공급과잉·가격 통제 프레임(5% 오버서플라이면 가격 하락·중국 점유 10%·소비 50%·정부가 뒷배)은 시나리오 상대 확률이 아니라 하락 변곡 선행 EWI·트리거로 반영(enterprise_ai_roi_proven·ai_dc_credit_spread·demand_inflection_divergence·dc_cancellation_count·cxmt_asp_gap 노트 갱신). QLC eSSD 타임라인(245TB 첫 상용 출하 Micron 2026-05·삼성 용량 리더십 후발·CMX 타깃 200+ FDP 스트림·AI 서버 시장 $187B·서버가치 65%)은 DF3/NAND 제품믹스 신호로 EWI(enterprise_ssd_tam·nvidia_storage_next_partner) 갱신. DF2: MATCH 본회의 movement 없음·애플–CXMT 리트머스 미해결·신규 수출통제 없음(09-01 무변화, 9월 시진핑 방미 정상회담이 다음 분기점). 발동 트리거 0건. [09-01 재평가] DF1 8.5·DF2 0.5 유지 — 08-25 이후 git log 변경분은 전부 SP-2 다운턴 트랙(다섯 시나리오 발현 근접도 dt-b/c/d/e-signals 08-28·별도 축 DF-D1×DF-D2)·전략/FDP(FDP 협업 3유형·스토리지 벤더 딜 구조·KV Cache SSD 수요)·역사 리서치(2023 NAND 다운턴 벤더 데이터)·발표 층(영향 덱 6p)으로 신규 실현 외부 거시 사실 0건 → 축 무이동. 08-28 수집 in-window 신호도 정점 재확인·유보: HBM 비트수요 성장 감속(2025 +130%→2026 +70%→2027 +50~60%, 단 여전히 공급부족)·TrendForce 메모리 시장 2027 $1.28T 상향(Agentic AI 구조적 확장)·재고 역대최저(DRAM 2~3주·NAND 3~4주)·SEMI 장비지출 사상최대(2026 $133B·2027 $151B)·NVIDIA Rubin Ultra HBM 구성 축소 검토(공급 타이트발, 수요 붕괴 아님)·토큰 소비 폭증(구글 3.2 quadrillion/월 +7배, Jevons 상쇄). DF2: MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전(CXMT DDR5 수율 >90%·HP/Asus/Acer 인증 완료)했으나 Schumer 반대 서한 답변시한(08-21) 경과·백악관 사인오프 대기·9월 시진핑 방미 정상회담 관측(저신뢰)으로 리트머스 미해결 → DF2 이동 근거 미충족(EWI 갱신). 발동 트리거 0건. [08-25 재평가] DF1 8.5·DF2 0.5 유지 — 08-18 이후 git log 변경분(v2.46.2~v2.46.9·v2.42.1)은 전부 역사 리서치(지난 20년 다운턴 복기 D+N 통합 산점도·NAND 분기 낙폭 검증)·SP-2 삼성 영향 진단(S/W 코드 좌표계, 별도 축)·FDP 생태계 실행전략·발표 층 분리(PPTX 확률 표기 제거)로 신규 실현 외부 거시 사실 0건 → 축 무이동. 08-25 웹 리서치 in-window 신호도 정점 재확인·정제(CapEx ~$725B·삭감 0건·DRAM Q3 +13~18%·NAND +10~15% QoQ 감속·HBM4 +30%). DF2: MATCH 본회의 movement 없음·애플–CXMT 인증(qualifying) 진전했으나 백악관 사인오프 대기·Schumer 반대 서한으로 리트머스 미해결(EWI 갱신). 발동 트리거 0건. [08-18 재평가] DF1 8.5·DF2 0.5 유지 — 08-11 이후 git log 변경분(v2.40.0~v2.46.0)은 전부 제품믹스·삼성 실행(SSD·UFS·CAPEX 솔루션)·역사 리서치(CMO 매트릭스·2019 편입·CAPEX 히스토리)·신규 분석 트랙(SP-2 다운턴 — 별도 축 DF-D1×DF-D2)·outputs/보고서(2차 저지선·SSD 전략)·회의록으로 신규 실현된 외부 거시 사실 0건 → 축 무이동. 이번 사이클 최대 산출물 SP-2 다운턴 트랙은 다운턴 대비 심화이나 별도 축이라 SP-1 무이동. 삼성 SSD design win(PM1763 양산·CMX·DGX Spark)은 삼성 개별 실행 신호(DF3/NAND)라 EWI 갱신으로 반영. DF2 신규 미중 실현 사실 부재. 발동 트리거 0건. [08-11 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 제품믹스(SSD 1Q26 삼성 1위 38.2%)·역사 리서치·외부 전문가 프레이밍(크리스 밀러·Sachin Katti)으로 거시 축 무이동. 07-28이 지목한 확인 이벤트(MS·Meta·Amazon Q2 07-29·07-30) 실현 — 4사 CapEx 전원 상향(합산 ~$745~750B·+82% YoY)·삭감 0건 = 정점 재확인. Meta FCF -91%·Amazon TTM FCF 마이너스 전환의 CapEx-vs-FCF 다이버전스 실측 등장은 후기순환 tell이나 조달 경보(수요 붕괴 아님)라 축 무이동·EWI 감시 강화. GPU 임대가 firming/flat. [08-04 재평가] DF1 8.5·DF2 0.5 유지 — git log 변경분은 내부 인터뷰 2건(최장석 07-29·이창수 08-03)뿐, 내부 전문가 프레이밍으로 거시 축 무이동. 양면적: take-or-pay/NTB 바닥 경직화(상방 재확인) vs HBM 편중·중복수요·NAND 조정(하방 유보) 상쇄 → 정점 재확인. DF2: 이창수 중국 비동조화·미주 집중은 관리된 공존 정합. [07-28 재평가] in-window 신호 정점 재확인: Alphabet CapEx 상향·SK하이닉스 사상 최대. [07-14 재평가] DF2 1.0→0.5 — 애플–CXMT 건이 관리된 공존 쪽 약한 신호' },
 ]
 
-// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-09-01 정기 재평가 — 유지)
+// 시나리오 확률 — wiki/scenarios/scenario-matrix.md 기반 (2026-09-08 정기 재평가 — 유지)
 //   A 25~29 / B 35~39 / C 6~10 / D 19~23 / E 5~8  → 합 100
+//   [2026-09-08 정기 재평가 — 유지] 09-01 이후 git log 변경분은 전부 내부 인터뷰(송용호 부사장 AX/PI센터장 09-03)·제품믹스 리서치(대용량 QLC eSSD 타임라인·FDP RUH 갭 09-02)·발표 층(향후 계획 덱·인용문 덱·FDP 컨설팅 덱)으로 신규 실현된 외부 거시 사실 0건 → A26·B39·C8·D21·E6 전부 유지.
+//     송용호 인터뷰는 다운턴 시뮬레이션·기본기(품질·원가)·조직 체질 층위의 내부 전문가 프레이밍으로 방법론상 상대 확률을 움직이지 않음. 그의 자체 관측(가격 피크 26년 가능성·28~30 슬로우 가능·단 AI 수요 아직 존재)은 이미 D 21에 반영된 2027~2028 조정 타이밍·DF1 8.5 후기순환 정점 판정과 정합. 다운턴 센싱 3대 관전 포인트(AI ROI·하이퍼스케일러 자금구조·전기)와 중국 만성적 공급과잉·가격 통제 프레임은 하락 변곡 선행 EWI·트리거로 반영(enterprise_ai_roi_proven·ai_dc_credit_spread·demand_inflection_divergence·dc_cancellation_count·cxmt_asp_gap). QLC eSSD 타임라인(245TB 첫 출하 Micron·삼성 후발·CMX 200+ FDP 스트림·AI 서버 $187B/65%)은 DF3/NAND 제품믹스 신호로 EWI(enterprise_ssd_tam·nvidia_storage_next_partner) 갱신, 상대 확률 무영향. 발동 트리거 0건.
 //   [2026-09-01 정기 재평가 — 유지] 08-25 이후 git log 변경분은 전부 SP-2 다운턴 트랙(dt-b/c/d/e-signals 08-28·별도 축)·전략/FDP(FDP 협업 3유형·스토리지 벤더 딜 구조·KV Cache)·역사 리서치(2023 NAND 다운턴 벤더 데이터)·발표 층(영향 덱 6p)으로 신규 실현된 외부 거시 사실 0건 → A26·B39·C8·D21·E6 전부 유지.
 //     08-28 수집 in-window 신호도 정점 재확인·유보뿐: HBM 비트수요 성장 감속(2025 +130%→2026 +70%→2027 +50~60%, 여전히 공급부족)·TrendForce 2027 메모리 $1.28T 상향·재고 역대최저·SEMI 장비지출 사상최대·NVIDIA Rubin Ultra HBM 구성 축소 검토(공급 타이트발)·토큰 소비 폭증(Jevons)은 이미 정점(DF1 8.5)인 축의 재확인이지 시나리오 간 상대 확률 변경 요인 아님. DF2: MATCH 본회의 movement 없음·애플–CXMT 인증 진전(CXMT DDR5 수율 >90%·HP/Asus/Acer 인증)했으나 Schumer 서한 답변시한(08-21) 경과·백악관 사인오프 대기로 리트머스 미해결 → 재배분 미실행(EWI cxmt_apple_qualification 갱신). 중국 추격 실측(CXMT DRAM 7.67% 세계4위·YMTC NAND 14% 세계3위)은 시나리오 D 배경 강화이나 이미 D 21에 반영된 추세의 재확인 — 상대 확률 무영향. 발동 트리거 0건.
 //   [2026-08-25 정기 재평가 — 유지] 08-18 이후 git log 변경분(v2.46.2~v2.46.9·v2.42.1)은 전부 역사 리서치(지난 20년 다운턴 복기 D+N 통합 산점도·NAND 분기 낙폭 검증)·SP-2 삼성 영향 진단(S/W 코드 좌표계 — 별도 축 DF-D1×DF-D2)·FDP 생태계 실행전략·발표 층 분리(PPTX 확률 표기 제거)로 신규 실현된 외부 거시 사실 0건 → A26·B39·C8·D21·E6 전부 유지.
@@ -308,7 +310,7 @@ export const INITIAL_INDICATORS = [
     status: 'unknown',
     lastUpdated: null,
     history: [],
-    note: 'DDR 마진 ~ HBM 계약 수준 근접(SemiAnalysis 2026-03)으로 CXMT 단가 우위 약화 추적',
+    note: 'DDR 마진 ~ HBM 계약 수준 근접(SemiAnalysis 2026-03)으로 CXMT 단가 우위 약화 추적. [2026-09-08] 중국 가격 통제 프레임 병기(송용호 인터뷰 09-03) — 5% 오버서플라이면 가격이 떨어지는 시장에서 중국 점유 10%+중국 소비 비중 50%가 만나면 마켓셰어 1등이 아니어도 중국이 시장가를 통제할 수 있고 그 뒤에 중국 정부가 있다. AI가 수급 불균형을 극단 증폭시킨 지금 중국 업체는 흑자로 실력을 키우는 정의 차세를 얻음 → "2035 만성적 공급과잉·중국 가격 결정권" 시대 리스크. 관리된 공존(DF2 0.5) 하 중기 마진 리스크(내부 전망이라 거시 축 무이동)',
     inputType: 'number',
     hint: 'CXMT 평균 ASP 대비 글로벌 평균 ASP 격차 (% 단위, CXMT가 낮으면 음수)',
   },
@@ -1093,7 +1095,7 @@ export const INITIAL_INDICATORS = [
       { date: '2026-1Q', value: 74, note: '[실측] Top5 벤더 매출 $18.46B/분기(QoQ +86.1% 사상 최대) → 연환산 ~$74B. 삼성 1위 38.2%($7.05B·QoQ +92.8%)·SK그룹 25.1%·Micron 16.7%·Kioxia 12.0%·SanDisk 8.0%. 계약가 분기 +80%(공급 제약)·재고 사상 최저. 단 쇼티지 가격 급등이 부풀린 수치(TrendForce, enterprise-ssd-market-1q26-2026-08.md)' },
       { date: '2031E', value: 69, note: '북미 Data Center SSD만으로 $69.08B (CAGR 27.6%)' },
     ],
-    note: '하이퍼스케일러가 60% 매출 기여 (2024) → 65% (2025). PCIe Gen5 양산, Gen6 2026 진입, Gen7 2027~2028. [08-11] 1Q26 삼성 enterprise SSD 1위(38.2%) 실측 — AI-스토리지 NAND 수요 강세 확인(삼성 개별 실행 신호, 거시 축 무관). Micron 컨슈머 Crucial 철수로 전 산업 enterprise 집중',
+    note: '하이퍼스케일러가 60% 매출 기여 (2024) → 65% (2025). PCIe Gen5 양산, Gen6 2026 진입, Gen7 2027~2028. [08-11] 1Q26 삼성 enterprise SSD 1위(38.2%) 실측 — AI-스토리지 NAND 수요 강세 확인(삼성 개별 실행 신호, 거시 축 무관). Micron 컨슈머 Crucial 철수로 전 산업 enterprise 집중. [2026-09-08] 대용량 QLC eSSD 용량 리더십 타임라인 병기(qlc-essd-timeline-fdp-ruh-2026-09.md) — Solidigm이 61TB급 12개월 선행(2023-07 vs 삼성 2024-07)·245TB 첫 상용 출하는 Micron(6600 ION, 2026-05)·삼성 122TB급은 아직 announcement/전시 단계. AI 서버 시장 가치 2024 $187B(+69%)·서버 시장 가치의 65%(2023 23%→65%)로 "총량 붕괴가 아니라 재배분" 명제 정량 근거. 삼성 용량 리더십 후발은 다운턴 극복의 "니즈 적중" 경쟁에서 리스크(제품믹스 신호, 거시 축 무관)',
     inputType: 'number',
     hint: '글로벌 Enterprise SSD 시장 TAM ($B) 입력',
   },
@@ -1208,7 +1210,7 @@ export const INITIAL_INDICATORS = [
       { date: '2026-03', value: 'Samsung PM1763 시연', note: 'GTC 2026 — 생태계 참여 단계' },
       { date: '2026-08', value: 'CMX 공급자 지위 심화 (PM1763 양산)', note: '[실측] PM1763 양산 개시(07-08)·CMX V-NAND 캐파 60%+ NVIDIA 배정으로 CMX(TLC) 공급자 지위는 심화 — 그러나 핵심 파트너(SLC NAND 초고 IOPS SCADA 레퍼런스)는 여전히 SK·Kioxia 선점. 삼성 SLC AI SSD 로드맵 미공개 = 최대 정보 공백 유지 (samsung-ssd-design-wins-nvidia-aipc-2026-08-16.md)' },
     ],
-    note: 'Storage-Next는 NVIDIA AI SSD 생태계의 미래 표준. SLC NAND 기반 초고 IOPS가 핵심 — 삼성 SLC AI SSD 로드맵 미공개가 가장 큰 정보 공백. [08-18] CMX(TLC) 축은 양산·캐파 배정으로 공급자 지위 심화, SLC(SCADA) 축 로드맵은 미도달',
+    note: 'Storage-Next는 NVIDIA AI SSD 생태계의 미래 표준. SLC NAND 기반 초고 IOPS가 핵심 — 삼성 SLC AI SSD 로드맵 미공개가 가장 큰 정보 공백. [08-18] CMX(TLC) 축은 양산·캐파 배정으로 공급자 지위 심화, SLC(SCADA) 축 로드맵은 미도달. [2026-09-08] CMX 생태계 FDP 요구 수준 병기(qlc-essd-timeline-fdp-ruh-2026-09.md) — 현행 표준 enterprise FDP SSD의 RUH(Reclaim Unit Handle)는 통상 2~8개인데, KV cache 오프로드(CMX, BlueField 기반)는 세션·테넌트·공유 프리픽스·수명 등급별 스트림 분리를 위해 훨씬 많은 스트림이 필요 — ScaleFlux는 CMX 타깃 플랫폼에서 200+ FDP 쓰기 스트림·유효 7~10+ DWPD(5년)를 발표(2026-07-30, "200개"는 NVIDIA 공식 스펙이 아니라 ScaleFlux 플랫폼 기준). 삼성 FDP·니어라인 SSD·PBSSD 컨셉(송용호 09-03)이 이 KV cache 락인 축의 대응 제품군',
     inputType: 'select',
     selectOptions: [
       { value: 'observer', label: '관찰자 (생태계 참여)', status: 'warning', signal: 'PM1763 시연 단계' },
@@ -1346,7 +1348,7 @@ export const INITIAL_INDICATORS = [
     status: 'normal',
     lastUpdated: '2026-06-02',
     history: [{ date: '2026-06-02', value: 40, note: 'capex 부채·SPV·ABS 의존 확대, 스프레드 완만 (예시 판단값)' }],
-    note: 'capex 상당분이 부채·SPV·ABS(Meta-Blue Owl, Oracle, CoreWeave). 스프레드 확대 = 신규 빌드 조달 위축',
+    note: 'capex 상당분이 부채·SPV·ABS(Meta-Blue Owl, Oracle, CoreWeave). 스프레드 확대 = 신규 빌드 조달 위축. [2026-09-08] 다운턴 센싱 관전 포인트 ②(하이퍼스케일러 자금 구조) 축으로 승격(송용호 인터뷰 09-03) — 그동안은 자체 캐시플로우 투자였으나 FCF가 네거티브로 가면 순서대로 대출→지분 매각→NVIDIA가 금융업체처럼 자금을 대는 악성 체인 가능성. 이창수 "꼭짓점은 CapEx가 아니라 FCF" 프레임과 정합. 스프레드 확대는 이 체인의 실측 선행 신호 → demand_inflection_divergence와 함께 감시',
     inputType: 'number',
     hint: 'AI-DC 부채/ABS 신용 스프레드 6개월 변동(bps). 확대면 양수',
     autoUpdateId: 'ai_dc_credit_spread',
@@ -1370,7 +1372,7 @@ export const INITIAL_INDICATORS = [
     status: 'normal',
     lastUpdated: '2026-06-02',
     history: [{ date: '2026-06-02', value: 2, note: 'Abilene 600MW 철회 · Stargate Norway OpenAI 이탈' }],
-    note: '신규 착공보다 선행. 취소·연기·축소를 별도 카운트',
+    note: '신규 착공보다 선행. 취소·연기·축소를 별도 카운트. [2026-09-08] 다운턴 센싱 관전 포인트 ③(전기) 병기(송용호 인터뷰 09-03) — 美 2027~2028 전력 쇼티지가 DC 건설 속도를 늦출 수 있고, 전력 수급 균형 전후로 저전력(파워 효율) 요구가 급증한다는 관측. 전력 병목發 착공 지연·취소는 이 카운트에 포착되며, 파워는 성능과 별개의 채택 차별화 축(송용호 "성능은 시스템이 흡수하므로 무기가 아니고 진짜 다른 축은 파워")으로 제품 전략에도 반영',
     inputType: 'number',
     hint: '분기 AI DC 착공 취소·연기·축소 건수 입력',
   },
@@ -1662,7 +1664,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: 'HBM 슈퍼사이클 2라운드 대비 · CapEx 사이클 가속 · 신흥 AI 시장 영업 확대',
     activated: false,
     activatedDate: null,
-    note: '',
+    note: '[2026-09-08] 다운턴 센싱 관전 포인트 ①(AI 기술 ROI 진보 지속성)의 반대편 하락 선행 신호로 병기(송용호 인터뷰 09-03) — 이 트리거는 ROI 가시화(상방)이나, 새 모델이 이전 대비 유의미한 진보를 못 보이는 시점이 위험(모델+에이전트+하네스+루프 엔지니어링으로 합산 성능 진보를 계속 만들어야 투자가 이어짐). OpenAI의 광고 시장 진입(스스로 "마지막 카드"라던)과 IPO 시도는 수익화 한계 인식 신호이고, OpenAI 또는 하이퍼스케일러 중 하나가 무너지면 그때가 다운턴 트리거 — 특히 OpenAI IPO 실패는 큰 사건. 09-08 현재 대규모 생산성 입증 발표 없음(미발동)',
     isPositive: true,
     probabilityDelta: { A: +2, B: +11, C: -8, D: -5, E: 0 },
     df1Delta: 2.0,
@@ -1802,7 +1804,7 @@ export const INITIAL_TRIGGERS = [
     immediateAction: '하락 전 대응 윈도우 — RS-9 프로토콜 발동, RS-1 캐파 동결 + RS-5 규율 즉시 적용',
     activated: false,
     activatedDate: null,
-    note: '괴리 로직 = 하락 변곡 선행 윈도우. demand-inflection-ewi.md §3. [2026-08-11] 미발동 유지 — 단 이창수 3축 중 (1) CSP FCF 축이 Q2 실적에서 실측 등장: Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B). 그러나 CapEx 자체 상승(4사 전원 상향·~+82% YoY)·핸드투마우스 재고 없음·Google Cloud 백로그 $514B·GPU 임대가 firming으로 (2)AI 최종수요·(3)GPU 생태계 미꺼짐 → 선행 약화 아닌 조달 구조 경보로 판정, 미발동. FCF 다이버전스를 정식 관전축으로 승격(향후 3축 동시 꺾임 시 발동). [2026-08-04] 미발동 — 3축 프레임 정합, 핸드투마우스로 선행 약화 신호 부재',
+    note: '괴리 로직 = 하락 변곡 선행 윈도우. demand-inflection-ewi.md §3. [2026-09-08] 미발동 유지 — 송용호 다운턴 센싱 3대 관전 포인트(① AI ROI 진보 ② 하이퍼스케일러 자금 구조(FCF→대출→지분 매각→NVIDIA 금융업체화) ③ 전기)를 이 괴리 경보의 상위 프레임으로 편입(09-03 인터뷰). 세 축이 동시에 꺾일 때가 발동 조건 — 현재는 각 축이 정점 재확인·조달 경보 수준(선행 약화 아님)이라 미발동. 송용호도 "가격 피크 26년 가능성·28~30 슬로우"로 이 EWI의 하락 변곡 선행 감시 타이밍과 정합. [2026-08-11] 미발동 유지 — 단 이창수 3축 중 (1) CSP FCF 축이 Q2 실적에서 실측 등장: Meta FCF -91%→$784M·Amazon TTM FCF 마이너스 전환(~-$7.6B). 그러나 CapEx 자체 상승(4사 전원 상향·~+82% YoY)·핸드투마우스 재고 없음·Google Cloud 백로그 $514B·GPU 임대가 firming으로 (2)AI 최종수요·(3)GPU 생태계 미꺼짐 → 선행 약화 아닌 조달 구조 경보로 판정, 미발동. FCF 다이버전스를 정식 관전축으로 승격(향후 3축 동시 꺾임 시 발동). [2026-08-04] 미발동 — 3축 프레임 정합, 핸드투마우스로 선행 약화 신호 부재',
     probabilityDelta: { A: -2, B: -6, C: +2, D: +6, E: 0 },
     df1Delta: -1.5,
     df2Delta: 0,

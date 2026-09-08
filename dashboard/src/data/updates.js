@@ -14,6 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-08 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-09-08',
+    type: 'assessment',
+    version: 'v2.46.16',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 송용호 인터뷰 3대 관전 포인트 EWI·트리거 반영',
+    summary:
+      '직전 09-01 재평가 이후 git log 변경분은 전부 내부 인터뷰(송용호 부사장 AX/PI센터장 09-03)·제품믹스 리서치(대용량 QLC eSSD 벤더별 타임라인·FDP RUH 갭 09-02)·발표 층(향후 계획 덱·내부 인터뷰 인용문 덱·FDP 컨설팅 덱)으로 신규 실현된 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. ' +
+      '송용호 인터뷰는 다운턴 시뮬레이션·기본기(품질·원가)·조직 체질 층위의 내부 전문가 프레이밍으로 방법론상 상대 확률을 움직이지 않으며, 그의 자체 관측(가격 피크 26년 가능성·28~30 슬로우 가능·단 AI 수요는 아직 갈 길 멀어 존재)은 이미 D 21에 반영된 2027~2028 조정 타이밍·DF1 8.5 후기순환 정점 판정과 정합. ' +
+      '그가 제시한 다운턴 센싱 3대 관전 포인트(① AI 기술 ROI 진보 지속성 — OpenAI 광고 진입·IPO는 한계 인식 신호 ② 하이퍼스케일러 자금 구조 — FCF 마이너스→대출→지분 매각→NVIDIA 금융업체화 ③ 전기 — 美 27~28 쇼티지가 DC 건설 속도 지연 가능)와 중국 만성적 공급과잉·가격 통제 프레임(5% 오버서플라이면 가격 하락하는 시장에서 중국 점유 10%·소비 50%)을 하락 변곡 선행 EWI·트리거로 반영. QLC eSSD 타임라인(245TB 첫 상용 출하 Micron 2026-05·삼성 후발·CMX 타깃 200+ FDP 스트림·AI 서버 $187B/65%)은 DF3/NAND 제품믹스 신호로 EWI 갱신. 패치 v2.46.16.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지', '송용호', 'AI ROI', '하이퍼스케일러 자금', '전기', '중국 가격통제', 'QLC eSSD'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5 (축 무이동)', detail: '변경분은 내부 인터뷰·제품믹스 리서치·발표 층으로 신규 실현 외부 거시 수요/정책 사실 0건. 송용호 관측(가격 피크 26년·28~30 슬로우)은 정점(DF1 8.5) 판정 재확인. DF2: MATCH 본회의 movement 없음·애플–CXMT 리트머스 미해결·신규 수출통제 없음(9월 시진핑 방미 정상회담이 다음 분기점) → 위치·방향 유지' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '송용호 다운턴 시뮬레이션(첫 장면=대규모 RMA·빌미는 품질·멀티이어 계약은 경쟁사가 먼저 깨면 안전장치 아님)·중국 가격 통제 전망은 내부 프레이밍으로 시나리오 간 상대 확률 무영향. 그의 조정 타이밍(2027~2028)은 이미 D 21에 반영' },
+      { label: 'EWI 5종 노트 갱신 — 송용호 3대 관전 포인트', detail: 'enterprise_ai_roi_proven(관전 ① AI ROI 진보·OpenAI 광고 진입·IPO 실패 트리거)·ai_dc_credit_spread(관전 ② 하이퍼스케일러 FCF→대출→지분 매각→NVIDIA 금융업체화 체인 승격)·dc_cancellation_count(관전 ③ 전기 쇼티지發 착공 지연·파워 채택축)·demand_inflection_divergence(3축 동시 꺾임 = 발동 조건으로 상위 프레임 편입)·cxmt_asp_gap(중국 만성적 공급과잉·가격 결정권 프레임)' },
+      { label: 'EWI 2종 갱신 — QLC eSSD/FDP 제품믹스', detail: 'enterprise_ssd_tam(대용량 QLC 용량 리더십 타임라인·245TB 첫 출하 Micron·삼성 후발·AI 서버 $187B/65% 재배분 근거)·nvidia_storage_next_partner(CMX 타깃 200+ FDP 쓰기 스트림·7~10+ DWPD vs 현행 RUH 2~8개·삼성 FDP·니어라인·PBSSD 대응 제품군)' },
+      { label: '시나리오 트리거 유지 — 발동 0건', detail: 'match_act_passed·apple_cxmt_approved·samsung_hbm4_nvidia_confirmed·enterprise_ai_roi_proven 전부 미발동/미충족 유지. 송용호가 지목한 다운턴 트리거(OpenAI/하이퍼스케일러 붕괴·대규모 RMA)는 아직 미실현' },
+    ],
+    links: [
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+      { label: 'song-yongho-ax-pi-interview-2026-09-03.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/raw-notes/song-yongho-ax-pi-interview-2026-09-03.md' },
+      { label: 'qlc-essd-timeline-fdp-ruh-2026-09.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md' },
+    ],
+  },
   // ── 2026-09-03 (ii) ───────────────────────────────────────────────────────────
   {
     date: '2026-09-03',
