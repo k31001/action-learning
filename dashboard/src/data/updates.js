@@ -14,6 +14,30 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-15 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-09-15',
+    type: 'assessment',
+    version: 'v2.46.17',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + NVIDIA-OpenAI 파이낸싱·미중 정상회담·GPU 임대가 EWI·트리거 반영',
+    summary:
+      '직전 09-08 재평가 이후 git log 커밋 0건(신규 ingest·외부 소스 0건) → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. 이번 사이클 갱신은 "실현된 외부 거시 사실이 축을 움직인다"는 일관 방법론에 따라 포지션 맵·확률은 무이동, 웹 리서치 in-window 신호는 EWI·트리거에 반영. ' +
+      'DF1(수요) 정점 재확인: 빅테크 4사 2026 CapEx ~$725B(+77% YoY·삭감 0건)·JP모건 2027 ~$1T·Goldman 2027 $1.01T 상향·DRAM Q3 +13~18%·NAND +10~15%·구조적 쇼티지 2027 지속·GPU 임대가 firming(H100 ~$2.65~2.89/h·H200 +20~40%·메모리 병목)·Micron Q4 FY26 가이던스 $50B·HBM 10만 wpm 램프(09-30 실적이 다음 확인점). ' +
+      '후기순환 조달/파이낸싱 tell 심화(수요 붕괴 아님): NVIDIA의 OpenAI 오하이오 DC 파이낸싱 개런티 $250B→~$105B(<$120B) 축소(Fortune "보도 대비 $145B↓·인공 수요 우려")·Oracle 주가 YTD -24%·HSBC "OpenAI 2030 $200B 매출에도 +$207B 추가 조달 필요" → 송용호 관전 ②(NVIDIA 금융업체화)·①(AI ROI 한계)의 실측 보강. CapEx 자체 상향·핸드투마우스 재고 없음이라 조달 구조 경보로 EWI 반영(축 무이동). ' +
+      'DF2(디커플링): 9월 미중 정상회담 개최 국면 진입 — MATCH 법안(H.R.8170)이 가장 절차적으로 진전된 기술 파일로 의제 상정, 베이징 비판 격화. 09-08이 지목한 "9월 정상회담=다음 분기점"이 실제로 열렸으나 타결·본회의 통과·신규 통제 등 실현된 정책 사실 미확정 → 리트머스 미해결로 DF2 0.5 유지, 양방향 트리거 대기. 애플–CXMT 승인/차단 미확정·CXMT $42억 상하이 IPO(증설 자금)는 시나리오 D 배경 재확인. 패치 v2.46.17.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지', 'NVIDIA-OpenAI 파이낸싱', '미중 정상회담', 'MATCH', 'GPU 임대가', 'Micron', 'CXMT IPO'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5 (축 무이동)', detail: '09-08 이후 git log 커밋 0건 = 신규 실현 외부 거시 사실 0건. DF1 in-window 신호는 전부 정점 재확인(CapEx ~$725B·2027 ~$1T·삭감 0건·GPU 임대가 firming·Micron $50B). DF2: 9월 미중 정상회담이 실제 개최됐으나 실현 정책 사실 미확정 → 리트머스 미해결로 위치·방향 유지, 결과가 방향 결정' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '후기순환 조달 경보(NVIDIA-OpenAI 파이낸싱 축소·Oracle -24%·HSBC 조달 갭)는 수요 붕괴(D 재배분)가 아닌 조달 구조 경보라 상대 확률 무영향. 정상회담 결과 미확정으로 DF2發 재배분(A↔B)도 미실행. 삼성 HBM4 볼륨 발주 미전환 = B 시간 리스크 지속' },
+      { label: 'EWI 갱신 — 조달·파이낸싱 축(후기순환 tell)', detail: 'ai_dc_credit_spread(NVIDIA-OpenAI 오하이오 $250B→~$105B·Oracle -24%·HSBC +$207B 갭 실측, 조달 구조 경보 격상)·bigtech_capex_growth(2027 ~$1T 상향·삭감 0건 + 조달 다이버전스 병기)·demand_inflection_divergence(3축 중 조달 축 tell 심화하나 최종수요·GPU 생태계 미꺼짐 → 미발동)·enterprise_ai_roi_proven 트리거(수익화 한계 실측 보강, 미발동)' },
+      { label: 'EWI 갱신 — GPU 임대가·중국 추격', detail: 'gpu_rental_h100_usd·gpu_rental_price_trend(09-12 H100 ~$2.65~2.89/h·H200 +20~40%·"메모리 병목" — firming/flat, 붕괴 없음)·cxmt_dram_share(CXMT $42억 상하이 STAR IPO 추진 = 증설 자금줄, 시나리오 D 배경 강화·매출 점유 8% 무변화)' },
+      { label: '시나리오 트리거 유지 — 발동 0건, 정상회담 양방향 대기', detail: 'match_act_passed·us_china_semiconductor_deal·apple_cxmt_approved 전부 9월 정상회담 결과 대기(완화=공존 강화 / MATCH 진전=디커플링). samsung_hbm4_nvidia_confirmed 미충족(볼륨 발주 미전환, Micron 09-30·연말 관문). enterprise_ai_roi_proven·bigtech_capex_cut25 미발동' },
+    ],
+    links: [
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
   // ── 2026-09-08 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-08',
