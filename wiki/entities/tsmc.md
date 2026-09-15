@@ -119,3 +119,12 @@ TSMC는 노드 전환을 **"Nx → Nx+ → Nx++"** 점진 개선으로 잘게 �
 - **CoWoS 세부 배정**: NVIDIA가 CoWoS 배정량의 ~60%(~59.5만 장)를 점유. TSMC는 2026년 24만~27만 장을 OSAT(Amkor·SPIL)에 외주. 첨단 패키징이 2026년 TSMC 총 CAPEX($520~560억)의 최대 20%를 배정받음. CEO 웨이저자(C.C. Wei)는 "CoWoS 캐파는 매우 타이트하며 2025~2026년까지 계속 sold out" 상태라고 재확인 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **CoPoS**: 2026-06-17 TrendForce 확인 — AP7 Chiayi 파일럿(310×310mm 글래스코어 패널) 트라이얼 수율 ~90%. 다만 **전면 양산 램프는 2028년 하반기~2029년**으로 재확인(DigiTimes: 2029년 목표) — 이전 위키 서술과 일치하되 양산 지연은 재확인·강조 필요 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **ASML High-NA EUV 도입 연기**: TSMC가 High-NA EUV 도입을 최소 2029년까지 연기 결정 — 비용 대비 현행 장비로 충분하다는 판단, 이전 전망(2027~28)보다 후퇴 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+## 업데이트 (2026-09-15)
+
+- **8월 매출 사상 최고**: NT$514.81B(약 $16.35B) — 전월 대비 **+10.1%**, 전년 동월 대비 **+53.3%**. AI 수요가 지속 견인.
+- **N2 램프 현황과 목표 격차**: 8월 기준 캐파는 약 **월 2만 장** 수준으로, 연말 목표(**월 10만 장**)까지 남은 약 4개월간 5배 확대가 필요 — 목표 자체는 불변이나 실행 리스크로 병목 모델 파운드리 드라이버(`node_ramp`)를 '완화'에서 '중립'으로 하향 조정하는 근거가 됨. N2는 Q2 2026(첫 상업 출하 분기)에 매출 3% 기여, Q3부터 유의미한 기여 전망(07-04 전망과 정합).
+- **ASML**: High-NA EUV 2029년 이후 연기 결정 불변, 신규 정보 없음.
+- **병목 모델 연결**: 매출·수요는 완화 방향이나 N2 램프 실행 격차로 파운드리 제약지수가 **50 → 52**로 소폭 상향(2026-09-15) — [bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md) §5 파운드리 드라이버 반영.
+
+**출처**: [september-2026-market-update-2026-09-15.md](../../sources/articles/september-2026-market-update-2026-09-15.md) §3

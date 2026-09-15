@@ -14,7 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
-  // ── 2026-09-15 ───────────────────────────────────────────────────────────────
+  // ── 2026-09-15 (병목 모델) ──────────────────────────────────────────────────
+  {
+    date: '2026-09-15',
+    type: 'ingest',
+    version: 'v2.46.18',
+    title: '병목 모델 정기 점검(약 10주 만) — 텍사스 ERCOT 신규 접속 전면 일시중단으로 전력이 최고 병목 부상',
+    summary:
+      '07-04 이후 미갱신 상태였던 4대 병목 제약지수를 SemiAnalysis·Counterpoint·TechInsights 우선 탐색 + TSMC IR·PJM/ERCOT 1차 공시·Fortune·CNBC 등으로 갱신. 전력 72→78(▲+6, 텍사스 주지사가 ERCOT 신규 DC 접속을 감사 완료 시까지 전면 일시중단시킴 — 474GW·1,800개 프로젝트 대상, PJM도 신규 대형부하 규정을 FERC 제출) — 4대 병목 중 최고 지수로 CAPEX/ROI를 추월, 3분기 연속 상승. ' +
+      'CAPEX/ROI 40→40(─0, 빅4 합산 $725B·삭감 0건 불변이나 NVIDIA의 OpenAI 오하이오 DC 파이낸싱 보증이 $250B 검토액에서 최종 $105B로 축소되며 조달 구조 스트레스 신규 포착 — Oracle YTD -24%·HSBC "OpenAI 2030 +$207B 추가조달 필요"). 파운드리 50→52(▲+2, TSMC 8월 매출 사상 최고 NT$514.8B·+53.3% YoY로 수요는 견조하나 N2 현재 캐파 월 2만 장 vs 연말 목표 월 10만 장 격차로 램프 실행 리스크). 패키징 67→65(▼-2, CoWoS 수급 갭 20%→10% 축소 전망 재확인이나 SK하이닉스가 하이브리드본딩을 HBM4E도 건너뛰고 HBM5(~2029~30)로 이연 확정 + 적층 775마이크론 두께 한계 신규 제기). ' +
+      '병행: 삼성 HBM 점유율 33~40%대 회복 재확인(경로별 수치 편차 잔존), 엔터프라이즈 DDR5 RDIMM·DDR4 스팟 가격 사상 최고 재확인. wiki 6개 페이지(bottleneck-model-2030·energy-constraints·ai-capex·tsmc·hbm-market·price-trends) + 신규 소스 1건 갱신, 보고서·발표자료 노트 동기화.',
+    tags: ['병목 모델', '전력', '텍사스', 'ERCOT', 'PJM', 'CAPEX', 'NVIDIA-OpenAI', '파운드리', 'TSMC', '패키징', 'CoWoS', 'HBM4', '하이브리드본딩', 'HBM 점유율', 'DRAM 가격'],
+    items: [
+      { label: '전력 72→78 (▲+6) — 4대 병목 중 최고 지수로 부상', detail: '텍사스 주지사 2026-08-03/13 ERCOT 신규 DC 접속 전면 일시중단(474GW·1,800개 프로젝트, 재개까지 수개월). PJM 신규 대형부하 규정 FERC 제출(부하 자체 발전 조달, 발효희망 10-12). 버지니아 접속 대기 최대 7년. "지연"에서 "정부발 접속 동결"로 질적 악화' },
+      { label: 'CAPEX/ROI 40→40 (─0) — 가이던스 불변, 조달 구조 스트레스 신규', detail: '빅4 합산 $725B(+77% YoY)·삭감 0건, 2027 전망 $1T대 진입. NVIDIA-OpenAI 오하이오 DC 파이낸싱 보증 $250B→$105B 축소(08-18 서명, 초기 5GW만 백스톱)·Oracle YTD -24%·HSBC 조달 갭 $207B — 수요 붕괴 아닌 조달 리스크 재분배, 지수 미반전·모니터링 격상' },
+      { label: '파운드리 50→52 (▲+2) — 매출 사상 최고, N2 램프 실행 격차', detail: 'TSMC 8월 매출 NT$514.81B(전월비 +10.1%·전년비 +53.3%) 사상 최고. N2 현재 캐파 월 2만 장(08월) vs 연말 목표 월 10만 장 — 남은 4개월 5배 확대 필요, 목표 불변이나 실행 리스크로 반영. ASML High-NA 2029 연기 불변' },
+      { label: '패키징 67→65 (▼-2) — CoWoS 완화, 하이브리드본딩은 HBM5로 한 세대 더 이연', detail: 'TrendForce: CoWoS 수급 갭 연말까지 20%→10% 축소 전망 재확인. SK하이닉스 Hot Chips 2026에서 하이브리드본딩을 HBM4E도 건너뛰고 HBM5(~2029~30)로 이연 공식화 + 적층 775마이크론 두께 한계 신규 제기. 삼성 시험수율 ~10% 정체, HBM4 볼륨오더 미전환 추정' },
+      { label: 'HBM 점유율·DRAM 가격 갱신', detail: '삼성 HBM 점유율 33%(QoQ+7%p, 09-03)~40%대 근접(09-12) 재확인 — 경로별 수치 편차(SK57%·삼성22%·Micron21% 계열 병존)는 다음 ingest로 이월. 엔터프라이즈 64GB DDR5 RDIMM Q1 $873→Q4전망 ~$1,586(+80%+), DDR4 스팟 08-31 $42.50 사상최고' },
+    ],
+    links: [
+      { label: 'wiki/concepts/bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'sources/articles/september-2026-market-update-2026-09-15.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/september-2026-market-update-2026-09-15.md' },
+      { label: 'outputs/report/scenario-planning-report.md §2.2.3', href: 'https://github.com/k31001/action-learning/blob/main/outputs/report/scenario-planning-report.md' },
+    ],
+  },
+  // ── 2026-09-15 (시나리오 재평가) ────────────────────────────────────────────
   {
     date: '2026-09-15',
     type: 'assessment',

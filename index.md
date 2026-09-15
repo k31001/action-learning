@@ -105,7 +105,7 @@
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
-- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-07-04 제약지수 전력72·CAPEX40·파운드리50·패키징67)
+- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-09-15 제약지수 전력78(▲6)·CAPEX40(─)·파운드리52(▲2)·패키징65(▼2) — 텍사스 ERCOT 신규 DC 접속 전면 일시중단으로 전력이 최고 지수로 부상)
 - [wiki/concepts/dram-antitrust-litigation.md](wiki/concepts/dram-antitrust-litigation.md) — DRAM 반독점 집단소송(2026-06-25 제소, Samsung·SK하이닉스·Micron 공동 피고) — 삼성 규제·평판 리스크 추적 (NEW)
 
 ### 신규 전략 인접영역 (시니어 파트너 인터뷰 2026-06-11 기반)
@@ -218,6 +218,7 @@
 - [sources/articles/fdp-technical-limits-adoption-context-2026-08.md](sources/articles/fdp-technical-limits-adoption-context-2026-08.md) — (NEW) FDP 기술 한계·배치 표준 선례 웹 리서치: Streams 채택 미미·ZNS 호스트 비용·메인라인 거부(파편화) / FDP = SmartFTL+DPM 통합(수요자 설계·하위 호환) / FAST'26 WARP — WAF ~1은 RUH-수명 정렬 조건부, 오분류·간섭·"Noisy RUH" 시 실패 (비판적 검토 근거)
 - [sources/articles/fdp-open-source-ecosystem-2026-08.md](sources/articles/fdp-open-source-ecosystem-2026-08.md) — (NEW) FDP 오픈소스 생태계 지도: 커널 5.19 passthrough→**6.16 블록 write streams 메인라인 진입**·도구 성숙(fio·QEMU 8.0·SPDK·xNVMe)·CacheLib 공식 지원 / AI 스택 — LMCache(vLLM·SGLang·Dynamo)·llm-d SSD 오프로드 일반화, **FDP 인지 백엔드 공백** = 업스트림 1호 과제의 표적
 - [sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md](sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md) — MAD Podcast×Sachin Katti(OpenAI 산업 컴퓨트 총괄, 2026-07, 트랜스크립트 전문 보존): 수요≫공급 즉시 소진·컴퓨트 3배=매출 3배·최대 리스크는 과소 건설·OpenAI ~$50B/업계 ~$700B·AI 재귀(AI가 칩 설계)·전자→토큰 공장·전면 액체냉각(냉각↔메모리 대역폭)·그리드 투자 원칙·가스터빈/변압기/인력 병목·원자력·Jalapeño(와트당 토큰·Broadcom·9개월 테이프아웃)·Stargate 우산 전략·오프테이커 구조·보장 토큰·오비탈 컴퓨트 (대시보드 "인터뷰" 메뉴 미러)
+- [sources/articles/september-2026-market-update-2026-09-15.md](sources/articles/september-2026-market-update-2026-09-15.md) — (NEW) 2026-09-15 병목 모델 정기 점검(약 10주 만): 텍사스 ERCOT 신규 DC 접속 전면 일시중단(474GW 대상)·PJM 신규 대형부하 규정(FERC 제출)·NVIDIA-OpenAI 파이낸싱 보증 $250B→$105B 축소·TSMC 8월 매출 사상최고(N2 램프 격차 재부상)·CoWoS 갭 20%→10% 축소·SK하이닉스 하이브리드본딩 HBM5 이연(775마이크론 한계)·삼성 HBM 점유율 33~40%대 회복·DDR5 RDIMM/DDR4 스팟 가격 사상최고
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL

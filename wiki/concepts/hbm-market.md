@@ -323,3 +323,16 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 ### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
 
 - SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## 업데이트 (2026-09-15)
+
+### 삼성 HBM 점유율 33~40%대로 회복 재확인 — 단 수치 계열 간 편차 잔존
+
+- **Seoul Economic Daily(2026-09-03)**: 삼성 HBM 점유율이 QoQ +7%p 상승해 **33%**, SK하이닉스와 격차 축소.
+- **Sammy Fans(2026-09-12)**: 삼성 점유율이 **40%대 근접**으로 재보도.
+- 두 수치는 07-04 위키 서술(4월 데이터 기준 35~40%)과 방향성은 정합하나 집계 시점·기준(매출 vs 출하)이 달라 폭이 넓다. 별도 경로(Astute Group 등)에서는 "SK하이닉스 57%·삼성 22%·Micron 21%"로 상이한(더 낮은 삼성 비중) 수치도 유통 중 — 이번 갱신에서도 정합이 완료되지 않아 **세 계열 수치를 모두 병기**하고 Counterpoint 정식 리포트 원문 대조를 다음 ingest 과제로 이월한다 ([september-2026-market-update-2026-09-15.md](../../sources/articles/september-2026-market-update-2026-09-15.md) §5).
+- **삼성 HBM4 볼륨 오더**: 2026-07-17 시점 "NVIDIA 유상 샘플 평가 단계"에서 09-15까지 업데이트된 확인 보도 없음 — 미전환 상태 지속으로 추정.
+
+**출처**: [september-2026-market-update-2026-09-15.md](../../sources/articles/september-2026-market-update-2026-09-15.md) §5

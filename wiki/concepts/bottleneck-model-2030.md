@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-09-15
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/september-2026-market-update-2026-09-15.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -59,7 +59,7 @@ flowchart LR
 | **파운드리** | AI 배정 선단 로직 캐파 (백만 장/년) | 0.62 | 0.75 | 0.95 | 0.85 | **-0.43EB (-14.9%)** |
 | **패키징** | HBM 컴퓨트용 유효 CoWoS (백만 장/년) | 0.55 | 0.70 | 0.95 | 0.95 | **-0.59EB (-20.5%)** |
 
-- **전력**: IEA 중앙 시나리오 2030 전 세계 DC 전력 ~**945TWh**, AI-focused 전력 2025~2030 **3배**. 기준 380TWh는 945TWh 중 AI 집중형 몫의 보수적 역산. 본질은 전기요금이 아니라 **접속 가능한 MW/GW의 실재적 한계**(인입·계통접속·변전·냉각이 서버 구매보다 느림). → [energy-constraints.md](energy-constraints.md)
+- **전력**: IEA 중앙 시나리오 2030 전 세계 DC 전력 ~**945TWh**, AI-focused 전력 2025~2030 **3배**. 기준 380TWh는 945TWh 중 AI 집중형 몫의 보수적 역산. 본질은 전기요금이 아니라 **접속 가능한 MW/GW의 실재적 한계**(인입·계통접속·변전·냉각이 서버 구매보다 느림). 2026-08 텍사스 주지사가 ERCOT 신규 데이터센터 접속을 감사 완료 시까지 **전면 일시중단**(474GW 대상)시키며 "지연"이 "정부발 접속 동결"로 악화 — 4대 병목 중 최고 제약지수로 부상 ([september-2026-market-update-2026-09-15.md](../../sources/articles/september-2026-market-update-2026-09-15.md)). → [energy-constraints.md](energy-constraints.md)
 - **CAPEX/ROI**: IEA 2025 DC 투자 ~$5,800억, 빅테크 AI 인프라 2025 $4,000억+ → 2026 $7,000억+. Goldman 경로: 2026 $7,650억 → 2031 $1.6조 (2026~31 누적 $7.6조). 네 병목 중 **최대 하방 민감도** — 금융조건 악화 시 "계획된 AI 팩토리"와 "착공된 AI 팩토리"의 괴리가 가장 먼저 수요를 꺾는다. → [ai-capex.md](ai-capex.md)
 - **파운드리**: TSMC AI 가속기 매출 5년 중간 40%대 CAGR, 3nm 2026말 ~18만 장/월·2nm ~10만 장/월(TrendForce), 미국 추가 $1,000억(웨이퍼 팹 3 + 첨단 패키징 팹 2), ASML High-NA 2027 본격. 병목은 총 캐파가 아니라 **AI 서버 스택에 실제 배정 가능한 유효 캐파**. 하방은 작지만 **상방 시나리오에서 끝까지 남는 최종 병목**. → [../entities/tsmc.md](../entities/tsmc.md)
 - **패키징**: TSMC CoWoS 2025 두 배 증설에도 "still fully loaded". TrendForce: 2026말 11.5만~14만 장/월 → 2027 ~17만 장/월. TSMC 애리조나 AP 2029 전, Amkor 애리조나 2028 초, SK hynix 인디애나 2028 말. 2026~27의 최예리한 운영 병목이지만 라인이 열리면 비교적 빨리 완화 — **2030년의 최종 상방 병목은 아님**.
@@ -348,6 +348,32 @@ flowchart LR
 - **DRAM 가격 상승 감속 조짐(조기경보 후보)**: TrendForce(2026-07-03, 최신) Q3 2026 범용 DRAM 계약가 전망 **+13~18% QoQ**로 Q2(+58~63%) 대비 큰 폭 감속 — PC/스마트폰 구매력 한계·고기저 효과가 주 원인, 서버향은 에이전틱 AI 수요로 견조. Jefferies는 여전히 Q3 +40~50%를 전망(스팟·HBM 포함 범위 차이로 추정) — **범용 DRAM 계약가 축의 첫 감속 신호로 [demand-inflection-ewi.md](demand-inflection-ewi.md) 모니터링 대상에 추가**.
 - **반독점 소송 신규 리스크**: 2026-06-25 삼성·SK하이닉스·Micron 대상 미국 집단소송 제기(HBM 전환 명목 범용 DRAM 공급 제한·가격 담합 주장) — 병목 모델 자체의 수급 축을 바꾸진 않으나 **CAPEX/ROI·가격 결정 관련 규제·평판 리스크**로 별도 모니터링 필요 ([dram-antitrust-litigation.md](dram-antitrust-litigation.md) 신설).
 
+---
+
+### 종합 판독 (2026-09-15)
+
+약 10주 만의 정기 점검(07-04 이후 08~09월 위키 갱신은 다운턴 트랙·인터뷰·발표자료 중심이라 4대 병목 제약지수 자체는 미갱신 상태였음).
+
+#### 제약지수 업데이트 (2026-09-15, 이전 2026-07-04 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 72 | **78** | **▲ +6** | 텍사스 ERCOT 신규 DC 접속 **전면 일시중단**(2026-08-03/13, 474GW 대상, 승인 재개까지 수개월)·PJM 신규 대형부하 규정(08-13 FERC 제출, "부하 자체 발전 조달" 원칙)·버지니아 접속 대기 최대 7년. 2027~28 구조부족 6.6GW는 불변 |
+| **CAPEX/ROI** | 40 | **40** | **─ 0** | 빅4 합산 $725B(+77% YoY)·삭감 0건 불변, 2027 전망 $1T대 진입. NVIDIA-OpenAI 파이낸싱 보증 $250B→$105B 축소·Oracle YTD -24%는 조달 구조 스트레스(모니터링 격상, 지수 미반영) |
+| **파운드리** | 50 | **52** | **▲ +2** | TSMC 8월 매출 사상 최고(NT$514.8B·+53.3% YoY)로 수요는 완화 방향이나, N2 현재 캐파(월 2만 장) vs 연말 목표(월 10만 장) 격차가 뚜렷해 램프 실행 리스크 재부상. ASML High-NA 2029 연기 불변 |
+| **패키징** | 67 | **65** | **▼ −2** | CoWoS 수급 갭 20%→10%로 축소 전망(TrendForce) 재확인. 단 SK하이닉스가 하이브리드본딩을 HBM4E도 건너뛰고 **HBM5(~2029~30)로 이연** 확정 + 적층 775마이크론 두께 한계 신규 제기 — 차세대 적층 기술 지연은 별도 추적 |
+
+**하방 위험 순서 변경: 전력이 CAPEX/ROI를 제치고 4대 병목 중 최고 지수(78)로 부상 — 3분기 연속 상승·가속화(68→70→72→78). "돈"보다 "전기"가 먼저 막히는 구조로 전환 완료. CAPEX/ROI는 완화 국면에서 횡보 전환. 파운드리는 소폭 재긴장, 패키징은 소폭 추가 완화.**
+
+#### 2026-09-15 핵심 신규 신호
+
+- **전력 병목 — 정부발 접속 동결로 질적 악화**: 텍사스 주지사가 2026-08-03(지시)·08-13(공식화) ERCOT의 신규 데이터센터 그리드 접속을 감사 완료 시까지 전면 중단시킴 — 대상은 약 1,800개 프로젝트·474GW(피크 수요의 5배+, 약 90%가 DC). ERCOT은 감사에 "수개월" 소요 예상, Batch Zero 심사는 2027-04 목표를 이미 놓쳐 대체 일정 미정. 같은 주(08-13) PJM도 FERC에 "2027-06 이후 신규 50MW+ 부하는 자체 발전 확보 또는 추가 비용 부담" 규정을 제출(발효 희망일 10-12) — 미국 양대 전력시장에서 동시에 정책적 병목이 신설됨. 원자력·SMR 커밋(9.8GW+)·터빈 백로그는 여전히 2028년 이후 가동이라 단기 상쇄 불가 ([september-2026-market-update-2026-09-15.md](../../sources/articles/september-2026-market-update-2026-09-15.md)).
+- **CAPEX 총량은 불변, 조달 구조는 스트레스**: 빅4 가이던스·2027 전망 모두 상향 유지(컷 0건)이나, NVIDIA가 OpenAI 오하이오 데이터센터에 제공하려던 파이낸싱 보증이 최대 검토액 $250B에서 최종 $105B(초기 5GW 구간만 백스톱)로 축소 — 투자자의 NVIDIA 대차대조표 노출 우려가 배경. Oracle 주가 YTD -24%, HSBC "OpenAI 2030 $200B 매출에도 +$207B 추가 조달 필요" — 수요 붕괴가 아니라 **누가 리스크를 지는가**의 재분배 신호로, 병목지수 자체는 유지하되 모니터링 격상.
+- **파운드리 — 매출은 최고치, 램프는 격차**: TSMC 8월 매출 NT$514.81B(전월비 +10.1%·전년비 +53.3%) 사상 최고. 다만 N2 현재 캐파는 월 2만 장 수준으로, 연말 목표(월 10만 장)까지 남은 4개월간 5배 확대가 필요 — 목표 자체는 불변이나 실행 리스크로 지수에 소폭 반영.
+- **패키징 — CoWoS는 완화, 차세대 적층은 한 세대 더 이연**: TrendForce 재확인상 CoWoS 수급 갭이 연말까지 20%→10%로 좁혀지는 추세는 유지. 그러나 SK하이닉스가 Hot Chips 2026에서 하이브리드본딩을 HBM4E에도 적용하지 않고 HBM5(양산 목표 대략 2029~2030년)로 미룬다고 공식화 — 07-04 확인된 "HBM4 마이크로범프 유지" 결정을 한 세대 더 확장. 적층 두께 775마이크론 한계라는 새 물리적 제약도 제기됨. 삼성은 하이브리드본딩을 계속 공격 추진하나 시험수율은 여전히 ~10%로 정체, HBM4 볼륨 오더 전환 여부도 07-17 이후 업데이트 없음(미전환 추정).
+- **삼성 HBM 점유율 33~40%대로 회복 재확인**: 09-03·09-12 보도가 삼성 점유율 33%(QoQ +7%p)~40%대 근접을 각각 보도 — 07-04 위키 서술(4월 데이터 기준 35~40%)과 방향은 정합하나 집계 시점·기준 차이로 수치 폭이 넓음. 별도 경로 수치(SK 57%·삼성 22%·Micron 21%)와 병존 — 원문(Counterpoint 정식 리포트) 대조 필요.
+- **DRAM 서버·엔터프라이즈 가격 초강세 지속**: Citi — 엔터프라이즈 64GB DDR5 RDIMM 2026 Q1 $873 → Q4 전망 ~$1,586(3분기 누적 +80%+). DDR4 스팟 08-31 기준 $42.50로 사상 최고. TrendForce Q3 범용 DRAM +13~18% QoQ 재확인 — 병목 모델의 "기준~높음" 가격 경로(HBM 가격지수 97.5~149.7)를 계속 지지.
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -363,3 +389,4 @@ flowchart LR
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 병목 제약지수 갱신 데이터 (PJM 개편 큐·ERCOT 4배 급증·변압기 리드타임·CAPEX 추가 상향·ASML High-NA 연기·HBM4 마이크로범프 결정·DRAM 가격 감속 조짐)
+- [sources/articles/september-2026-market-update-2026-09-15.md](../../sources/articles/september-2026-market-update-2026-09-15.md) — 2026-09-15 병목 제약지수 갱신 데이터 (텍사스 ERCOT 신규 접속 전면 일시중단·PJM 대형부하 신규 규정·NVIDIA-OpenAI 파이낸싱 축소·TSMC 8월 매출 사상최고·N2 램프 격차·CoWoS 갭 축소·SK하이닉스 하이브리드본딩 HBM5 이연·삼성 HBM 점유율 회복)

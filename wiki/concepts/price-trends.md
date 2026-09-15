@@ -230,3 +230,13 @@ Micron FY26 Q3(2026-05-28 종료, 2026-06-24 발표) 실적이 가격 주도 성
 - TrendForce(2026-07-03, 최신)는 Q3 2026 범용 DRAM 계약가를 QoQ **+13~18%**로 전망한다 — Q2 2026 실적(+58~63%) 대비 대폭 감속이며, PC·스마트폰의 구매력 한계와 고기저 효과가 주 요인이다. 서버향 수요는 에이전틱 AI로 견조함을 유지한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - 이 감속 신호는 [demand-inflection-ewi.md](demand-inflection-ewi.md)의 조기경보(EWI) 후보로 교차 링크할 필요가 있다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - Jefferies는 이와 배치되게 Q3 2026 +40~50%·Q4 2026 +30~40% QoQ를 여전히 전망한다 — TrendForce의 "범용 DRAM 계약가" 특정치와 달리 스팟·HBM을 포함한 전반적 메모리 가격 기준일 가능성이 있어 범위 차이로 병기한다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## [Update 2026-09-15] 서버·엔터프라이즈 DRAM 가격 초강세 지속 — DDR5 RDIMM 3분기 누적 +80%+·DDR4 스팟 사상최고
+
+- **엔터프라이즈 64GB DDR5 RDIMM**(Citi 리서치): 2026 Q1 $873 → 2026 Q4 전망 **~$1,586** — 3분기 누적 **+80%+**. TrendForce Q3 범용 DRAM +13~18% QoQ 전망(07-04 확인치와 동일선상) 재확인 — 서버향 강세가 병목 모델의 "기준~높음" 가격 균형 경로(HBM 가격지수 97.5~149.7)를 계속 지지.
+- **DDR4 스팟 가격**: 2026-08-31 기준 **$42.50**로 사상 최고 재경신 — 레거시 제품까지 가격 압력이 파급되는 신호.
+- 참고: 위 수치는 TrendForce·Jefferies 범용 DRAM 계약가 감속 전망(+13~18%)과 별개로 **엔터프라이즈 RDIMM·스팟** 세그먼트를 반영한 수치라 범위가 넓다 — 원문(Citi 리서치 노트) 대조 필요.
+
+**출처**: [september-2026-market-update-2026-09-15.md](../../sources/articles/september-2026-market-update-2026-09-15.md) §5

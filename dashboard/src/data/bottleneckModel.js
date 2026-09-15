@@ -14,11 +14,11 @@
 //   (전거: sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md,
 //          sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)
 
-export const MODEL_ASOF = '2026-07-04'
+export const MODEL_ASOF = '2026-09-15'
 
 // 이전 점검 기준일 + 제약지수 — 대시보드의 변동폭(Δ) 표시에 사용
-export const PREV_MODEL_ASOF = '2026-06-14'
-export const PREV_INDICES = { power: 70, capex: 42, foundry: 52, packaging: 68 }
+export const PREV_MODEL_ASOF = '2026-07-04'
+export const PREV_INDICES = { power: 72, capex: 40, foundry: 50, packaging: 67 }
 
 // 기준 시나리오: HBM-GPU 서버 125.0만 대 → HBM 2.88EB · AI 서버 DRAM 2.50EB
 export const BASE_SERVERS = 125.0 // 만 대
@@ -39,8 +39,8 @@ export const BOTTLENECKS = [
     id: 'power', name: '전력', icon: 'zap', color: '#f59e0b',
     unit: 'TWh', resourceLabel: 'AI 집중형 DC 전력',
     low: 300, base: 380, high: 520, step: 5, elasticity: 1.00,
-    currentIndex: 72,
-    indexNote: 'ERCOT 대형부하 접속 큐 1년 만에 410GW+로 거의 4배 폭증(87% DC·크립토, 신청:증설 배율 ~45:1). PJM 2030년까지 최대 15GW 구조적 부족 경고(개편 큐 Cycle1 811건·220GW 신청에도). 변압기·개폐장치 리드타임 최대 5년 — 가스터빈(~3년)보다 강한 신규 병목. 원자력 커밋 9.8GW+이나 가동은 2028년 이후. 요금이 아니라 접속 가능한 MW/GW의 실재적 한계',
+    currentIndex: 78,
+    indexNote: '텍사스 주지사가 2026-08 ERCOT 신규 DC 접속을 감사 완료 시까지 전면 일시중단(1,800개 프로젝트·474GW 대상, 재개까지 수개월) — "지연"에서 "정부발 접속 동결"로 질적 악화. 같은 주 PJM도 신규 대형부하(50MW+) 규정을 FERC 제출(부하 자체 발전 조달 원칙, 발효 희망 10-12). 버지니아 AI 캠퍼스 접속 대기 최대 7년. 2027~28 구조부족 6.6GW 불변. 요금이 아니라 접속 가능한 MW/GW의 실재적 한계',
     desc: 'IEA 2030 전 세계 DC 전력 ~945TWh·AI-focused 3배. 서버 구매보다 인입·계통접속·변전·냉각이 느림 — CAPEX가 있어도 전력이 없으면 배치 불가',
     trigger: '상위 허브 2+ reserve margin <8% · Hub LMP P90 초과 72h 지속 · 접속지연 >60일',
     kpis: [
@@ -56,7 +56,7 @@ export const BOTTLENECKS = [
     unit: '조 달러', resourceLabel: '연간 AI 인프라 CAPEX',
     low: 0.90, base: 1.37, high: 1.80, step: 0.01, elasticity: 0.90,
     currentIndex: 40,
-    indexNote: "MS $190B(+61%, 증가분 $25B을 메모리 원가에 직접 귀속)·Alphabet $180~190B·Amazon $200B 추가 상향. Dell'Oro 2026 글로벌 DC CAPEX $1조 돌파 전망(메모리 가격 인플레 명시). JPMorgan 2030 누적 $5.1조→$5.5조 상향. HY OAS ~285bp 안정. SPV·부외부채 의존(~$120B)은 잔존",
+    indexNote: "빅4 합산 $725B(+77% YoY) 가이던스 불변·삭감 0건, 2027 전망 처음 $1T대 진입(JPMorgan 등). 단 NVIDIA가 OpenAI 오하이오 DC 파이낸싱 보증을 최대검토액 $250B→최종 $105B(초기 5GW만 백스톱)로 축소(08-18)·Oracle 주가 YTD -24%·HSBC 'OpenAI 2030 +$207B 추가조달 필요' — 조달 구조 스트레스 tell(수요 붕괴 아님, 지수 미반전·모니터링 격상)",
     desc: 'Goldman 경로: 2026 $0.765조 → 2031 $1.6조(누적 $7.6조). 4대 병목 중 최대 하방 민감도 — 기술보다 ROI 재평가가 먼저 수요를 꺾는다',
     trigger: 'hyperscaler aggregate capex 가이드 -15%+ 하향 · FCF/CapEx <0.8 · HY OAS 급등',
     kpis: [
@@ -71,8 +71,8 @@ export const BOTTLENECKS = [
     id: 'foundry', name: '선단 파운드리', icon: 'cpu', color: '#6366f1',
     unit: '백만 장/년', resourceLabel: 'AI 배정 선단 로직 캐파',
     low: 0.62, base: 0.75, high: 0.95, step: 0.01, elasticity: 0.85,
-    currentIndex: 50,
-    indexNote: 'TSMC N2 2026-03 매출 기여 개시·2026 Q3 유의미 기여 전망으로 램프 순항. ASML High-NA EUV 도입을 TSMC가 최소 2029년까지 연기(근시일 기술 리스크 축소). NVIDIA Rubin 22% 하향 유지로 캐파 여유 지속. 대만 집중(0.525/0.75)·지정학 리스크 잔존',
+    currentIndex: 52,
+    indexNote: 'TSMC 8월 매출 사상 최고(NT$514.8B·+53.3% YoY)로 수요·매출은 완화 방향이나, N2 현재 캐파(월 2만 장) vs 연말 목표(월 10만 장) 격차가 뚜렷해 램프 실행 리스크 재부상(목표 자체는 불변). ASML High-NA 2029 연기 불변. 대만 집중(0.525/0.75)·지정학 리스크 잔존',
     desc: 'TSMC AI 가속기 5년 mid-40% CAGR·3nm 2026말 ~18만 장/월. 하방은 최소(-14.9%)지만 상방 시나리오에서 끝까지 남는 최종 병목',
     trigger: 'N2/A16 램프 1분기+ 지연 · ASML High-NA 삽입 지연 · AI 배정량 축소',
     kpis: [
@@ -87,8 +87,8 @@ export const BOTTLENECKS = [
     id: 'packaging', name: '첨단 패키징', icon: 'layers', color: '#10b981',
     unit: '백만 장/년', resourceLabel: 'HBM 컴퓨트용 유효 CoWoS',
     low: 0.55, base: 0.70, high: 0.95, step: 0.01, elasticity: 0.95,
-    currentIndex: 67,
-    indexNote: 'NVIDIA CoWoS 배정 ~60%(~59.5만 장) 확정·TSMC 2026년 24~27만 장 OSAT 외주 확대로 공급 대응 진전. 단 CoPoS 전면 양산 2028년 하반기~2029년 재확인(지연 유지)·HBM4 하이브리드본딩 시험수율 ~10%로 업계가 마이크로범프 유지로 선회 — 완화 지속되나 속도 둔화',
+    currentIndex: 65,
+    indexNote: 'TrendForce 재확인: CoWoS 수급 갭 연말까지 20%→10%로 축소 전망, OSAT 외주(연 24~27만 장) 유지로 순완화 지속. 단 SK하이닉스가 Hot Chips 2026에서 하이브리드본딩을 HBM4E도 건너뛰고 HBM5(~2029~30)로 이연 확정 + 적층 775마이크론 두께 한계 신규 제기. 삼성 시험수율 ~10%로 정체·HBM4 볼륨오더 미전환 추정',
     desc: 'TSMC CoWoS 2026말 11.5만~14만 장/월 → 2027 ~17만 장/월(TrendForce). 2026~27 최예리 운영 병목 — 단 라인 개통 후 완화 빠름',
     trigger: 'qualified output -15% WoW 2주 지속 · 대형 사이트 outage · 납기 연장 급증',
     kpis: [
@@ -274,7 +274,7 @@ export const SHOCK_SCENARIOS = [
 // 판정(level)은 EWI와 동일하게 wiki 사실 기반 정성값(2026-06-11) — "제약을 조이는 압력" 방향.
 // 단일 소스: wiki/concepts/bottleneck-model-2030.md §5
 
-export const DRIVERS_ASOF = '2026-07-04'
+export const DRIVERS_ASOF = '2026-09-15'
 
 // 제약 압력 4단계 (점수는 제약지수·경보 밴드와 동일 0~100 스케일)
 export const PRESSURE_LEVELS = {
@@ -310,7 +310,7 @@ export const BOTTLENECK_DRIVERS = [
 
   // ── 전력 상류 ──
   { id: 'interconnect', bottleneck: 'power', depth: 1, name: '계통 접속 큐·지연일수', lead: '12~36개월', weight: 3, level: 'critical', trend: 'worsening',
-    note: 'PJM 개편 큐 Cycle1(2026-04-29) 811건·220GW 신청에도 PJM 자체는 2030년까지 최대 15GW 구조적 부족 경고(신규공급 연2~3GW<신규부하 연5~7GW). ERCOT 큐 1년 만에 410GW+로 거의 4배(87% DC·크립토, 신청:증설 ~45:1). 대기열 2,600GW. 텍사스 PUCT 대형부하 정책 표결 2026-07-09', src: '유틸리티·RTO 공시·PJM·ERCOT 2026-07' },
+    note: '텍사스 주지사가 2026-08 ERCOT 신규 DC 접속을 감사 완료 시까지 전면 일시중단(1,800개 프로젝트·474GW, 재개까지 수개월·Batch Zero 대체일정 미정). PJM도 신규 대형부하(50MW+) 규정 FERC 제출(부하 자체 발전 조달, 발효희망 10-12), 2027~28 구조부족 6.6GW. 버지니아 AI 캠퍼스 접속 대기 최대 7년', src: '텍사스 주지사실·ERCOT·PJM·FERC 2026-08/09' },
   { id: 'gen_cod',      bottleneck: 'power', depth: 1, name: '발전 COD 파이프라인 달성률', lead: '6~18개월', weight: 2, level: 'tight', trend: 'stable',
     note: '계획 프로젝트 ~20% 지연 위험(IEA)', src: 'EIA-860·IRP' },
   { id: 'reserve_lmp',  bottleneck: 'power', depth: 1, name: '허브 예비력·LMP', lead: '0~3개월', weight: 2, level: 'neutral', trend: 'stable',
@@ -323,8 +323,8 @@ export const BOTTLENECK_DRIVERS = [
     note: '요금 인상 반발·DC 신설 제한 움직임 — 접속 허가의 정치적 상류', src: '주별 규제 문서' },
 
   // ── 파운드리 상류 ──
-  { id: 'node_ramp', bottleneck: 'foundry', depth: 1, name: 'N2/18A 선단 램프 진척', lead: '6~12개월', weight: 3, level: 'easing', trend: 'improving',
-    note: 'N2 2026말 ~10만 장/월 확대 경로 순항', src: 'tsmc.md·TrendForce' },
+  { id: 'node_ramp', bottleneck: 'foundry', depth: 1, name: 'N2/18A 선단 램프 진척', lead: '6~12개월', weight: 3, level: 'neutral', trend: 'stable',
+    note: 'TSMC 8월 매출 사상 최고(+53.3% YoY)로 수요는 견조. 단 N2 현재 캐파 월 2만 장(2026-08) vs 연말 목표 월 10만 장 — 남은 4개월간 5배 확대 필요, 목표 불변이나 실행 리스크로 완화 판정에서 중립으로 하향', src: 'tsmc.md·TechPowerUp 2026-09' },
   { id: 'ai_alloc',  bottleneck: 'foundry', depth: 1, name: 'AI 배정 비율 (전통 수요와 캐파 경쟁)', lead: '3~9개월', weight: 2, level: 'easing', trend: 'stable',
     note: '스마트폰 -2.1% 약세 = AI 배정 여지 확대 — 교차 부호: 수요 EWI엔 악재, 병목엔 완화', src: 'Counterpoint' },
   { id: 'asml',      bottleneck: 'foundry', depth: 2, parent: 'node_ramp', name: 'ASML EUV/High-NA 출하·백로그', lead: '12~24개월', weight: 2, level: 'easing', trend: 'improving',
@@ -342,7 +342,7 @@ export const BOTTLENECK_DRIVERS = [
   { id: 'substrate',   bottleneck: 'packaging', depth: 2, parent: 'cowos_util', name: '기판·인터포저 (ABF)', lead: '6~18개월', weight: 2, level: 'tight', trend: 'stable',
     note: '2.5D 부족의 연쇄 병목(TrendForce) — 2027부터 완화 전망', src: 'TrendForce' },
   { id: 'stack_yield', bottleneck: 'packaging', depth: 2, parent: 'cowos_util', name: 'HBM 적층·테스트 수율 (TSV/KGD·16-Hi)', lead: '6~12개월', weight: 2, level: 'tight', trend: 'worsening',
-    note: '삼성 하이브리드본딩 프로토타입 시험수율 ~10%에 그쳐 업계가 HBM4 마이크로범프 유지로 선회(하이브리드본딩 업계 전반 연기). 8Hi→12Hi 전환 수율 15~20%↓, 16-Hi는 더 큰 하락 예상 — CoPoS 전면 양산도 2028~29로 지연 재확인', src: 'SemiEngineering·TrendForce 2026-07', unknown: true },
+    note: 'SK하이닉스가 Hot Chips 2026에서 하이브리드본딩을 HBM4E도 건너뛰고 HBM5(~2029~30)로 이연 공식화 — HBM4 마이크로범프 유지 결정을 한 세대 더 확장. 적층 775마이크론 두께 한계 신규 제기. 삼성 시험수율 여전히 ~10%로 정체. 8Hi→12Hi 전환 수율 15~20%↓ 예상 — CoPoS 전면 양산도 2028~29 지연 재확인', src: 'Tom\'s Hardware(Hot Chips 2026)·TrendForce 2026-09', unknown: true },
   { id: 'gen_mix',     bottleneck: 'packaging', depth: 2, parent: 'new_sites', name: 'HBM 세대 전환 믹스 (HBM4→4E 램프)', lead: '6~12개월', weight: 2, level: 'neutral', trend: 'stable',
     note: '세대 전환기 유효 산출 일시 감소 — 3사 IR 추적', src: '3사 IR' },
 ]
