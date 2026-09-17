@@ -18,6 +18,23 @@ export const UPDATES = [
   {
     date: '2026-09-17',
     type: 'build',
+    version: 'v2.46.19',
+    title: 'QLC 실행 전략 인사·문화 축 보강 — 시스템 SW 전문가 채용·양성, 미주 현지 채용, 오픈소스 생태계 주도',
+    summary:
+      'qlc-execution-strategy 3차 재점검. 인사 축을 "고객 시스템을 아는 시스템 소프트웨어 전문가 채용·양성으로 조직 강화 + 미주 고객 협업을 위한 현지 채용 증대"로, 문화 축을 "업스트림 우선"에서 "오픈소스 생태계를 주도(메인테이너·프로젝트 운영)"로 격상. ' +
+      '3티어에 I-8·I-9·Y-8·L-6 추가, KPI·리스크 보강. 덱 v3.1(슬라이드 3 5축 타일 3줄·결정 요청)·보고서·기획서 동기화, 지식그래프 재생성(노드 요약 갱신). 패치 v2.46.19.',
+    tags: ['QLC', '실행 전략', '인사', '문화', '오픈소스', '현지 채용', 'FDE', 'SCA'],
+    items: [
+      { label: '위키 qlc-execution-strategy §2.2~2.4', detail: '시스템 SW 조직 강화 문단, 인사 축 여섯 장치(채용 기준 = 고객 시스템 이해 · 미주 현지 채용 70%+ [사내 확인] · 양성 트랙 · 별도 보상 · 앵커+로테이션 · 전문가 트랙), 문화 축 오픈소스 생태계 주도(레퍼런스 프로젝트 운영·메인테이너 배출·SNIA/OCP 의장·기여 시간 보장)' },
+      { label: '덱 v3.1 슬라이드 3', detail: '5축 타일 축당 3줄, 결정 요청 ①에 미주 현지 채용 승인, 삼성 개발실 박스 문구·노트 갱신' },
+    ],
+    links: [
+      { label: 'wiki/strategies/qlc-execution-strategy.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/qlc-execution-strategy.md' },
+    ],
+  },
+  {
+    date: '2026-09-17',
+    type: 'build',
     version: 'v2.46.18',
     title: 'QLC eSSD 전략 보고서·3장 덱 신설 — 시장 3기(초기·현재·향후)·2022~2030 수요 모델·Phase 1·2·3 역량·실행 전략 5축',
     summary:
