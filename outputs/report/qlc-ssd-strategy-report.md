@@ -1,0 +1,349 @@
+---
+type: report
+status: 본문 v1.0 (2026-09-17) — 브리프 질문 10개 피드백 반영, 팩트체크 대장 부록 A
+brief: sources/prompt/prompt-qlc-ssd-strategy.md
+series: 「삼성 SSD 전략적 방향성」(outputs/report/ssd-strategy-report.md)의 자매편
+last_updated: 2026-09-17
+---
+
+# QLC eSSD 전략 보고서 — 용량 시장에서 추론 캐시 티어로, 디바이스에서 고객 시스템으로
+
+> **문서 성격**: 집필 브리프([prompt-qlc-ssd-strategy.md](../../sources/prompt/prompt-qlc-ssd-strategy.md), 2026-09-17)와 사용자 피드백 10건을 바탕으로 한 전략 보고서. 「삼성 SSD 전략적 방향성」 보고서의 자매편으로, 그 보고서가 제시한 호스트 협력 데이터 배치 전략에 이르는 논리적 흐름을 QLC eSSD 시장에서 다시 세운다. 위키 세 페이지([qlc-ssd-market.md](../../wiki/concepts/qlc-ssd-market.md), [qlc-workload-capability-phases.md](../../wiki/strategies/qlc-workload-capability-phases.md), [qlc-execution-strategy.md](../../wiki/strategies/qlc-execution-strategy.md))에서 합성했고, 모든 수치는 `sources/` 인용을 달았다. 발표 자료는 3장 덱(배경 / 요구사항·역량·기술 전략 / 실행 전략), 말미 압축 맵 참조.
+>
+> **팩트체크 등급 고지**: 이번 수집 세션은 외부 원문 직접 열람이 차단돼 대부분의 수치가 검색 인용 경유(🟡) 등급이다. 실측 앵커(✅)는 TrendForce 분기 eSSD 매출과 2024년 QLC 30EB, CacheLib 배치 표준 WAF 문서, GitHub 저장소 확인 사항에 한정된다. 부록 A 참조. 데이터 배치 표준은 NVMe FDP(Flexible Data Placement)를 뜻하며 본문에서는 "배치 표준"으로 쓴다.
+
+---
+
+## 0. Executive Summary
+
+**첫째, QLC eSSD의 요구는 2022년에 정의됐고 물량은 2024년에 터졌다.** 2022년은 AI 인프라 투자가 시작된 해이지만 eSSD 시장은 재고 조정으로 급락했다. 대신 그 해에 대용량 QLC의 조건이 한꺼번에 갖춰졌다. 대용량 QLC 전문 벤더(Solidigm)의 출범, 하이퍼스케일러가 주도한 폼팩터(E1.S/E1.L)와 배치 표준(Meta·Google, 2022-12 비준), NAND 가격 급락, 학습 데이터셋의 6배 증가. 하이퍼스케일러가 원한 것은 HDD의 대역폭 붕괴를 메우는 "용량 계층"이었고, 공급자가 판 것은 "1U에 1PB"의 TCO였다. 2024년 AI 추론 서버의 전력 효율이 우선순위가 되자 QLC eSSD 비트는 30EB로 전년 4배가 됐다.
+
+**둘째, 현재 국면은 용량 경쟁과 HDD 부족이 QLC를 끌어올리지만, 다음 무대는 추론 캐시 티어다.** 61TB에서 245TB까지 용량 리더십은 Solidigm·Micron이 선행했고 삼성은 물량 1위(2Q26 eSSD $14.35B, 35.1%)이나 용량은 후발이다. 향후 3~5년의 공급 부족 국면에서 니어라인 HDD 대체는 커머디티 경쟁이라 들어가지 않는다. 대신 KV cache 오프로드가 만드는 추론 캐시 티어(2027년 75~100EB, 2030년 AI DC NAND 워크로드의 35%)를 QLC로 가져간다. 이 티어는 오늘 TLC(1~3 DWPD)가 서비스하고, QLC 정격과는 10~40배 갭이 있다. 갭을 메우는 수단은 배치 표준과 호스트 소프트웨어이며, CacheLib 실측(WAF 3.22 → 1.03)과 ScaleFlux(200+ 스트림, 유효 7~10 DWPD)가 가능성을 보였다.
+
+**셋째, 수요 모델은 "비트 10배, 매출 정체"를 말한다.** QLC eSSD 비트는 2025년 53EB에서 2030년 550EB(eSSD 비트의 55%)로 늘지만, 2027년 하반기 이후 가격이 정상화되면 QLC 매출은 $27~37B 사이에서 정체한다. 이익은 TB당 가격이 아니라 고객 시스템 위에서 보증하는 TCO에서 나온다. 그래서 필요한 역량이 Phase 1 배치 표준 디바이스, Phase 2 워크로드 최적화, Phase 3 고객 시스템 co-design이고, 삼성은 디바이스와 오픈소스 도구를 5사 중 가장 두텁게 갖고도 그것을 KV cache 스택에 연결하지 못했다.
+
+**넷째, 연결은 개인이 아니라 조직·인사·재무가 만든다.** 경쟁사는 이미 조직으로 답했다(SK hynix 실리콘밸리 AI Company $10B, Micron↔Anthropic 공동 설계 계약, Astera↔Pliops 팀 인수). 제안은 실리콘밸리 추론 스토리지 자회사(별도 보상·지분), 고객 상주 Co-Design Pod, 업스트림 우선 문화, 수명 보증과 TCO 연동 계약 상품, 고객·생태계 지분 참여를 한 묶음으로 실행하고, 공급자 우위가 남은 2027년 상반기까지 워크로드·스펙 접근권을 계약으로 고정하는 것이다. 첫 행동은 업계 최초의 KV cache 워크로드 배치 표준 WAF 실측 공개다.
+
+---
+
+## 1장. 배경 — 2022년, 하이퍼스케일러는 왜 대용량 QLC를 요구했나
+
+> **거버닝 메시지**: 2022년은 QLC 주문의 해가 아니라 QLC를 쓸 수 있는 조건이 갖춰진 해였다. 요구는 수요자(HDD 대역폭 붕괴)와 공급자(랙 밀도 TCO)의 논리가 만나 정의됐고, 물량은 AI 추론 서버가 2024년에 만들었다.
+
+### 1.1 정정적 사실: 2022년 eSSD 시장은 급락했다
+
+2022년 하이퍼스케일러 4사 CapEx는 분기 약 $36B였고 ChatGPT가 11월에 나왔다. 그러나 같은 해 4분기 eSSD 계약가는 -25% QoQ, eSSD 매출은 $3.79B(-27.4%)로 떨어졌다. 원인은 PC·스마트폰 둔화와 데이터센터 재고 조정이었다 ([qlc-essd-history-2022-background-2026-09.md](../../sources/articles/qlc-essd-history-2022-background-2026-09.md) §2.1). 연간 eSSD 매출은 2022년 $21.9B에서 2023년 약 $7B로 무너졌다 ([qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §1.3). "2022년에 QLC 수요가 폭발했다"는 통념은 사실과 다르다.
+
+### 1.2 그 해에 갖춰진 다섯 조건
+
+| 조건 | 사실 | 함의 |
+|---|---|---|
+| 전문 벤더 | Intel NAND 사업의 SK hynix 매각 1단계 종결(2021-12-29), Solidigm 출범 | 대용량 QLC를 전략 축으로 삼는 벤더의 등장 |
+| 폼팩터 | Meta·Microsoft 주도 OCP E1.S 사양, E1.L "1U에 1PB"(D5-P5316 30.72TB) | 랙 밀도가 구매 언어가 됨 |
+| 배치 표준 | Meta·Google이 각자 풀던 WAF 문제를 통합해 NVMe 배치 표준 비준(2022-12-22), WAF 약 3 → 약 1 | QLC의 내구성 한계를 호스트가 관리할 길이 열림 |
+| 가격 | 2H22 NAND·eSSD 계약가 급락 | QLC $/TB의 HDD 대체 임계 접근 |
+| 데이터 | AI 학습 데이터셋 중앙값 2022년 1,050억 → 2023년 7,500억 데이터포인트 | 읽기 중심 대용량 데이터 레이크 수요 |
+
+출처: 같은 소스 §2. 전 항목 🟡.
+
+### 1.3 요구의 두 논리
+
+공급자(Intel/Solidigm)는 TCO를 팔았다. 4TB HDD로 1PB를 채우면 20U, 30.72TB E1.L QLC는 1U. Ceph 기준 5년 TCO 47% 절감, 전력 32.9~79.5% 우위, 122TB 세대에서는 30TB TLC 대비 TB당 와트 3.4배 (같은 소스 §2.2).
+
+수요자(Meta)는 계층을 정의했다. HDD는 용량이 늘어도 대역폭이 늘지 않아 TB당 대역폭이 계속 떨어진다. "10 MB/s/TB 대역"을 요구하는 워크로드를 HDD(20~30TB)와 TLC(8~16TB) 사이의 **QLC 용량 계층(64~150TB)** 이 흡수하고, QLC 서버의 바이트 밀도 목표는 TLC 서버의 6배다. 쓰기가 NAND 전력의 대부분이므로 읽기 중심 워크로드를 QLC로 옮기면 전력도 준다 (같은 소스 §2.3).
+
+두 논리가 만난 곳이 초기 국면의 요구사항이다. 읽기 중심, 0.3~0.6 DWPD 허용, 드라이브당 30TB급, PCIe 4.0, E1.L/U.2, TB당 원가·전력·랙 밀도가 구매 기준. 인증을 가진 QLC 벤더는 2024년 4월에도 Solidigm·삼성 2사뿐이었다.
+
+### 1.4 물량의 해는 2024년
+
+TrendForce는 2024년 QLC eSSD 비트 출하를 30EB, 2023년 대비 4배로 집계했고 동인을 "AI 추론 서버의 에너지 효율이 핵심 우선순위로 부상"으로 짚었다 ([qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §2.1 ✅). 2023년 7월 61.44TB를 세계 최초로 낸 Solidigm이 이 수요를 적중해 흑자로 돌아선 이야기는 자매 보고서가 다뤘다 ([fdp-host-ssd-platform.md](../../wiki/strategies/fdp-host-ssd-platform.md) §2.5). **요구는 2022년에, 제품은 2023년에, 물량은 2024년에.** 이 시차가 다음 국면을 읽는 잣대다.
+
+---
+
+## 2장. 초기·현재·향후 — QLC eSSD의 배경과 요구사항은 어떻게 달라지나
+
+> **거버닝 메시지**: 초기의 구매 기준은 TB당 원가와 랙 밀도였고, 현재는 TB당 와트와 공급 확보가 더해졌으며, 향후 추론 캐시 티어에서는 유효 내구성과 토큰 경제성이 기준이 된다. 고객이 사는 것이 드라이브에서 "워크로드에 검증된 TCO"로 바뀐다.
+
+### 2.1 2022년경 vs 2026년 현재
+
+| 비교 축 | 2022년경 | 2026년 현재 |
+|---|---|---|
+| 드라이브 최대 용량 | 15.36 / 30.72TB (2023-07 61.44TB) | 122.88 ~ 245.76TB (256TB 예고) |
+| NAND 다이·단수 | 1Tb QLC, 96/144단 | 1Tb(192·286단) → 2Tb QLC(BiCS8, 삼성 V9 2Tb, SK hynix 321단) |
+| 인터페이스·폼팩터 | PCIe 3.1 → 4.0, U.2·E1.L·E1.S | PCIe 5.0 주류, E3.S/E3.L, E2(1PB·80W) 표준화 진행 |
+| 내구성 | 0.4~0.6 DWPD | 0.3 랜덤 ~ 1.0 순차(Micron 6600 ION), 삼성 BM1743 0.26 |
+| 전력 | 25W(61TB, 0.41 W/TB) | 30W 최대, 0.12 W/TB(245TB) |
+| 순차·랜덤 읽기 | 7 GB/s, 1.6M IOPS | 12~13.7 GB/s, 1.3~1.78M IOPS |
+| 타깃 워크로드 | CDN·오브젝트·빅데이터·HDD 대체 | AI 데이터 레이크·인제스트·체크포인트·추론(RAG·KV cache)·니어라인 HDD 부족 대체 |
+| 핵심 고객 | 북미 CSP 일부, CDN, 어레이 벤더 | 하이퍼스케일러 전면(삼성 176단 QLC 대량 출하, Meta QLC 계층, Pure DFM 2EB), AI 팩토리 |
+| 경쟁 대상 | HDD 4~16TB, TLC 30TB | 니어라인 HDD 24~44TB(2026 완판, 리드타임 52주+), TLC 60TB. HDD 완판으로 QLC는 대안이 아닌 필수 공급원 |
+| 호스트·펌웨어 | Multi-stream·ZNS·배치 표준 비준 직후 | 배치 표준 상용 채택(4사), NVMe 2.0/2.1, 텔레메트리·PLP 강화 |
+| 인증·리드타임 | 인증 QLC 벤더 2사 | 5사 경쟁, 대용량 SSD 리드타임 약 1년 |
+| 수요 논리 | 공급자 TCO 논거 | 수요자 주도(HDD 대역폭 붕괴 + HDD 공급 부족 + 추론 전력 효율) |
+| $/TB | 61TB ≈ $60~95/TB(2024 초 소매) | 30TB QLC 인덱스 $92(3Q25) → $603(3Q26), TLC 대비 13~20% 할인 |
+
+출처: [qlc-essd-history-2022-background-2026-09.md](../../sources/articles/qlc-essd-history-2022-background-2026-09.md) §3, [qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §3.3. 전 항목 🟡.
+
+### 2.2 3기 비교 — 배경·요구사항·구매 기준
+
+| 축 | 초기 (2018~2023) | 현재 (2024~2026) | 향후 (2027~2030, 추론 캐시 티어) |
+|---|---|---|---|
+| 배경 | 데이터 레이크, HDD 대역폭 붕괴, 표준 정비, 가격 급락 | AI 추론 서버 전력 효율, 용량 경쟁, 니어라인 HDD 완판 | 장문맥·에이전틱 추론의 KV cache가 HBM·DRAM을 넘쳐 SSD로 내려옴, 전력 제약 DC |
+| 1차 구매 기준 | $/TB, 랙 밀도 | $/TB, W/TB, 공급 확보 | TB당 와트 + 유효 DWPD + 토큰 경제성(TTFT, GPU당 동시 사용자) |
+| 내구성 | 0.3~0.6 DWPD 허용 | 랜덤·순차 스펙 분리 | 유효 7~10+ DWPD를 배치·호스트 SW로 달성, 수명 보증이 계약 조건 |
+| 인터페이스·플랫폼 | PCIe 4, OCP NVMe | PCIe 5, E3, 배치 표준 상용 | PCIe 6, NVMe-oF, NVMe KV 확장, CMX(BlueField-4·DOCA Memos), GPU 직결 |
+| 호스트 기능 | 블록 디바이스 | RUH 2~8, 텔레메트리 | RUH 200+, 세션·테넌트·prefix·수명별 스트림, 커널 write streams, 캐시 관리자 연동 |
+| 고객이 사는 것 | 드라이브 | 드라이브 + 공급 약정 | 워크로드에 검증된 TCO(WAF·전력·QoS 보증) + 스택 통합 |
+| 경쟁 대상 | HDD | HDD·TLC | TLC 1~3 DWPD, SLC AI SSD(SK hynix AI-N P·Kioxia 1억 IOPS), 고객 자체 SSD |
+| 삼성의 위치 | 후발(61TB 1년) | 물량 1위, 용량 후발 | 디바이스 확보(PM1753 CMX), 워크로드·시스템 SW 연결은 공백 |
+
+출처: [qlc-ssd-market.md](../../wiki/concepts/qlc-ssd-market.md) §3.3.
+
+### 2.3 왜 향후 국면을 니어라인 HDD 대체가 아니라 추론 캐시 티어로 두는가
+
+니어라인 HDD는 2026년 물량이 완판됐고 2027~28년 장기계약이 잡혀 있다. 대체 수요는 있지만 (a) TB당 원가·전력만의 커머디티 경쟁이고 (b) 공급이 풀리면 HDD 가격 경쟁력이 복귀하며 (c) 고객 시스템과의 접점이 얇아 전환비용이 쌓이지 않는다. 반면 추론 캐시 티어는 고객의 추론 스택 안에 있어 한 번 들어가면 소프트웨어·정책·보증이 전환비용이 된다. 사용자 결정(2026-09-17)은 이 티어를 QLC로 가져가는 것이다 ([prompt-qlc-ssd-strategy.md](../../sources/prompt/prompt-qlc-ssd-strategy.md) 피드백 3).
+
+이 티어의 현재 주인은 TLC다. CMX 타깃으로 벤더가 지명한 드라이브는 전부 TLC(삼성 PM1753/PM1763, Kioxia CM10 1/3 DWPD, Solidigm PS1010/PS1030 1/3 DWPD)이고, CMX 발표 뒤 TLC 현물가가 반등했다. QLC를 지명한 공개 사례는 SanDisk FMS 2026의 "고내구 KV cache 구성" 1건이며 DWPD는 미공개다 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.3). 최신 QLC 정격 0.075~0.6 DWPD와 캐시 티어 TLC 1~3 DWPD 사이의 갭은 10~40배다. 그러나 갭을 메우는 수단은 공개돼 있다. 배치 표준으로 수명이 다른 블록을 분리하면 CacheLib 실측 WAF 3.22 → 1.03(✅), XFS write streams에서 RocksDB WAF -35%, ScaleFlux는 200+ 스트림으로 유효 7~10+ DWPD. **KV cache 워크로드에서 이 실측을 공개한 벤더는 아직 없다.** 이것이 3장 이후 전략의 출발점이다.
+
+---
+
+## 3장. 수요 규모와 예상 매출 — 2022~2030 모델
+
+> **거버닝 메시지**: QLC eSSD 비트는 2030년까지 10배 늘어 eSSD의 절반을 넘지만, 가격이 정상화되면 매출은 $30B대에서 정체한다. 비트 성장이 이익 성장이 아니므로, 이익은 시스템 위에서 보증하는 TCO로 만들어야 한다.
+
+### 3.1 모델 표
+
+| 연도 | 구분 | 전체 eSSD(EB) | QLC eSSD(EB) | QLC 비중 | eSSD 매출($B) | QLC $/TB | QLC 매출($B) 기준선 | QLC 매출 상단 | KV cache NAND 수요(EB) | 그중 QLC(EB) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 2022 | 실측·추정 | 155 | 6 | 4% | 21.9 ✅ | 120 | 0.7 | 0.7 | 0 | 0 |
+| 2023 | 실측·추정 | 115 | 7.5 | 6.5% | 7.0 ⚠️ | 52 | 0.4 | 0.4 | 0 | 0 |
+| 2024 | 실측·추정 | 210 | 30 ✅ | 14% | 24 ⚠️ | 97 | 2.9 | 2.9 | 0 | 0 |
+| 2025 | 실측·추정 | 265 | 53 | 20% | 26.5 🟡 | 85 | 4.5 | 4.5 | 0 | 0 |
+| 2026 | 전망(e) | 340 (~390) | 102 (~120) | 30% (26~34) | 125 (1H 56 ✅) | 313 | 32 | 36 | 35 | 2 |
+| 2027 | 전망(e) | 450 (~565) | 167 (~210) | 37% (32~42) | 99 | 187 | 31 | 50 | 90 | 9 |
+| 2028 | 전망(e) | 600 (~825) | 264 (~340) | 44% (38~50) | 72 | 102 | 27 | 56 | 175 | 44 |
+| 2029 | 전망(e) | 780 (~1,050) | 390 (~500) | 50% (43~56) | 74 | 81 | 32 | 60 | 260 | 104 |
+| 2030 | 전망(e) | 1,000 (~1,300) | 550 (~720) | 55% (47~62) | 80 | 68 | 37 | 65 | 350 | 175 |
+
+괄호는 상단 밴드. 가정표는 [qlc-ssd-market.md](../../wiki/concepts/qlc-ssd-market.md) §4.3, 데이터는 `outputs/presentation/assets/qlc_model.csv`.
+
+![QLC eSSD 수요(EB)·비중(%)·매출($B) 통합 그래프](../presentation/assets/qlc_demand_share_revenue.png)
+
+### 3.2 앵커와 가정
+
+- **앵커(실측)**: TrendForce 분기 eSSD 매출 2022~2Q26(2022 $21.9B, 2025 약 $26.5B, 1H26 $56.05B), 2024년 QLC eSSD 30EB(전년 4배), DC NAND 2025→2028 295→909EB(TechInsights, Kioxia IR 인용), KV cache NAND 2027 75~100EB·2028 그 2배·2030 워크로드 35%(SanDisk), 30TB QLC $/TB 인덱스 $92(3Q25) → $603(3Q26) ([qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §1~§4).
+- **EB 복원**: 2022~2025 전체 eSSD EB는 연 매출 ÷ 추정 ASP(2022 $141, 2023 $61, 2024 $114, 2025 $100/TB). 2025년 265EB는 Intel MR 수치와 일치한다. QLC 비중 2024년 14%(30/210)는 두 경로의 삼각측량(같은 소스 §2.3)과 일치.
+- **전망**: 전체 eSSD 연 +28~30%(상단은 TechInsights DC NAND의 90%), QLC 비중 2026 30% → 2030 55%(근거: 2026 "출하 급증" 전망, 삼성 QLC 비트 2H26 2배, 5사 2Tb QLC 양산, Meta 용량 계층 설계). 가격은 2H27 공급 완화(TrendForce)와 4Q27 가격 개선 신호(Counterpoint)를 따라 2027 $220 → 2030 $80/TB(eSSD ASP), QLC는 그 85%. 쇼티지 지속 상단은 2027 $350 → 2030 $140.
+- **추론 캐시 티어**: KV cache NAND 수요 2026 35EB(CMX 공급망) → 2030 350EB, QLC 침투 5% → 50%. 침투는 RUH 200+ 디바이스·캐시 관리자 연동·수명 보증이 성립할 때의 조건부 상방이며, 미성립 시 0~10%다.
+
+### 3.3 독해
+
+1. **비트 10배, 매출 정체.** 2026년 $32B(쇼티지 가격)에서 2030년 기준선 $37B. 쇼티지가 이어져도 $65B. 비트가 늘어도 정상화된 가격에서는 매출이 늘지 않는다. 이익은 TB당 가격이 아니라 시스템 위의 TCO 보증(WAF·전력·QoS)으로 결정된다.
+2. **QLC는 2028년경 eSSD 비트의 절반에 다가선다.** 이 흐름은 전략과 무관하게 진행되며, 삼성이 용량 후발이라도 물량 1위는 유지된다. 문제는 그 물량의 이익률이다.
+3. **추론 캐시 티어는 조건부 상방이다.** 2030년 175EB는 QLC 총량의 32%이지만 성립하지 않으면 TLC·SLC가 가져간다. 그래프의 진한 파랑이 전략이 걸린 영역이다.
+4. **창은 2027년 상반기까지다.** 공급 완화 이후 협상력은 사라진다. 워크로드·스펙 접근권을 계약으로 고정할 시계다.
+
+### 3.4 민감도와 삼성 몫
+
+QLC 비중이 2030년 47%(하단)이면 QLC EB 470, 매출 기준선 $32B. 가격 정상화가 1년 늦으면 2028년 매출 $27B → $45B. 추론 캐시 침투가 0이면 2030년 QLC EB 375, 비중 38%. 삼성 몫은 `[사내 확인]` 전제 아래 QLC 점유 25%(2026) → 35%(2030, 캐시 티어 40%)로 두면 2030년 QLC 매출 기준선 $13B, 상단 $23B, 캐시 티어 QLC 70EB. 점유 5pt는 2030년 기준 약 $2B다 ([qlc-ssd-market.md](../../wiki/concepts/qlc-ssd-market.md) §4.4).
+
+---
+
+## 4장. 새로운 요구사항과 역량 — Phase 1·2·3
+
+> **거버닝 메시지**: 워크로드는 고객 시스템 말단의 현상이다. 그것을 분석하는 단계를 넘어 고객의 응용·시스템 소프트웨어를 이해하고 함께 설계해야 추론 캐시 티어에 들어갈 수 있다. 삼성은 디바이스와 도구는 갖고 있으나 KV cache 스택과의 연결이 비어 있다.
+
+### 4.1 기술 스택 지도 — 벤더가 들어갈 수 있는 자리
+
+KV cache 오프로드 스택은 5계층으로 굳어졌다. ① 추론 엔진(vLLM·SGLang·TensorRT-LLM), ② KV 캐시 관리자(NVIDIA Dynamo KVBM, LMCache, Mooncake, Tencent FlexKV, ByteDance AIBrix, Alibaba Tair KVCache, DeepSeek 3FS), ③ 전송·I/O 라이브러리(NIXL, GPUDirect Storage, io_uring, SPDK/xNVMe), ④ 커널·플랫폼(Linux 6.16 write streams·XFS·f2fs, NVIDIA CMX·DOCA Memos), ⑤ 디바이스. ②계층 저장소 4종(LMCache·Mooncake·FlexKV·3FS)의 README에는 배치 표준·write hint·내구성 언급이 없다(✅ GitHub 확인). 수명 정보는 ②에 있는데 ⑤로 내려보내는 코드가 없다. **SSD 벤더가 코드로 들어갈 수 있는 자리는 ③·④이고, 2026년 커널·XFS가 열리면서 이 자리가 비어 있다** ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §1).
+
+### 4.2 세 Phase의 정의와 요구 역량
+
+| Phase | 정의(사용자 결정) | 요구 역량 | 업계 최고 공개 수준 | 삼성 공개 수준 | 갭 |
+|---|---|---|---|---|---|
+| **1 디바이스** | 배치 표준 SSD를 잘 만든다 | RUH 200+ 펌웨어, QLC 미디어 관리(2Tb 다이·SLC 캐시·WAF ≈1), PCIe 5→6·NVMe KV 확장·NVMe-oF, W/TB·액체냉각, CMX/STX·OCP 인증, 에뮬레이터 | ScaleFlux RUH 200+·유효 7~10 DWPD, Kioxia CM10 3 DWPD 캐시 티어 | PM1753 CMX 첫 공급(TLC), PM1763 Gen6, BM1773 245TB QLC 전시. RUH·DWPD·배치 표준 지원 미공개 | QLC를 캐시 티어에 지명한 제품 없음 |
+| **2 워크로드 최적화** | 고객 워크로드 분석으로 그 SSD를 최적화한다 | 트레이스 수집·재현(HiSim류), WAF·p999·전력 정량, 수명·테넌트·prefix → RUH 정책, 관리자 정책(KVBM 빈도≥2 필터)과의 결합, 디지털 트윈, 표준 프로파일 | Alibaba Tair HiSim, SK hynix SALT-KV, ScaleFlux 텔레메트리, CacheLib WAF 실측 | KV cache 백서 2종(PM1753, CMM-D with vLLM+LMCache), CacheLib·RocksDB·XFS 배치 지원 | KV cache 트레이스 기반 RUH 정책·WAF 실측 미공개(업계 공백) |
+| **3 co-design** | 고객 시스템 이해로 함께 설계한다 | 추론 스택 내부(스케줄러·prefix 캐시·KVBM·NIXL·DOCA Memos), 커널 I/O 경로, 시스템 TCO 모델(디바이스→랙→DC), 스펙 상류 참여·표준, 공동 계약 | Micron↔Anthropic SSD 공동 설계 계약, FlexKV의 vLLM·SGLang·TRT-LLM·Dynamo 메인라인 머지 | Meta CacheLib 배치 표준 업스트림·EuroSys'25(5사 중 최강 선례), Anthropic 파트너 | KV 관리자 4종에 기여 0, 공급계약에 공동 최적화 조항 없음 |
+
+출처: [qlc-workload-capability-phases.md](../../wiki/strategies/qlc-workload-capability-phases.md) §2~§4·§6.
+
+### 4.3 Phase별 산출물
+
+- **Phase 1 "KV-ready QLC"**: 245TB급 V9 2Tb QLC에 RUH 200+, 세션·테넌트 격리, WAF·수명 텔레메트리, NVMe KV 확장, 액체냉각을 갖추고 유효 DWPD를 워크로드 조건부로 보증하는 제품. 스펙에 "어떤 호스트 정책에서 얼마의 유효 DWPD"를 표로 싣는다.
+- **Phase 2 "워크로드 프로파일 + 검증 리포트"**: 고객 유형별 KV cache 프로파일 3종, RUH 매핑·WAF·유효 DWPD·전력 실측, 수명 보증 조건표, 고객이 재현할 수 있는 프로파일러·에뮬레이터.
+- **Phase 3 "레퍼런스 스택 + 공동 계약"**: 고객 추론 스택에서 삼성 QLC가 기본 백엔드로 선택되는 레퍼런스 아키텍처(메인라인 머지된 커넥터 포함), 공용 TCO 모델, 공급·공동 최적화·수명 보증·자본을 묶은 공동 플랫폼 계약.
+
+---
+
+## 5장. 기술 전략 — 발전시킬 역량, 참여할 스택, 협업할 기업
+
+> **거버닝 메시지**: 갭은 기술보다 연결에 있다. 기존 강점(수직계열화·배치 표준 주도·오픈소스 도구·CMX 공급·Meta 선례) 위에 KV cache 스택과의 연결을 쌓고, 비어 있는 ③·④계층에 먼저 들어가며, 스펙 원천(LLM 기업)·플랫폼 게이트(NVIDIA)·실증 채널(스토리지 벤더)·물량(하이퍼스케일러)과 목적을 달리해 협업한다.
+
+### 5.1 기존 역량 위에 쌓을 것
+
+| 기존 강점 | 발전시킬 역량 | 왜 |
+|---|---|---|
+| 컨트롤러·펌웨어·미디어 수직계열화, 세대 전환 속도 | RUH 200+ 펌웨어, 워크로드 조건부 수명 보증, 텔레메트리 | 미디어만으로는 10~40배 갭을 못 메운다 |
+| 배치 표준 공동 주도, GOST 오픈소스(xNVMe·XFS·CacheLib) | 그 자산을 KV cache 계층(③)에 연결하는 커넥터·플러그인 | 도구는 있는데 KV 스택에 없다 |
+| KV cache 워크로드 측정(백서 2종) | 트레이스 재현기·프로파일러·에뮬레이터의 고객 공용 도구화 | Phase 2를 반복 가능한 서비스로 |
+| CMX 첫 공급 SSD, 하이퍼스케일러 1위 물량 | DOCA Memos 힌트↔배치 표준 매핑 공동 정의, STX 인증 | 플랫폼 게이트 통과 |
+| Meta CacheLib co-design 선례 | 같은 문법을 LLM 기업·CMX·스토리지 벤더로 복제 | Phase 3 확산 |
+| 데이터센터 전담 개발 조직 | 시스템 아키텍트·TCO 모델링 조직 신설 | 스펙 상류 대화의 언어 |
+
+### 5.2 참여할 기술 스택 (우선순위)
+
+1. ③ I/O 라이브러리에 write stream 부착: LMCache·FlexKV의 io_uring·GDS 백엔드, NIXL 스토리지 플러그인, xNVMe 배치 API. 업스트림 PR이 성과 단위.
+2. ④-a 커널·파일시스템: XFS write streams·f2fs 배치 패치의 메인라인 완주, RocksDB·CacheLib 후속.
+3. ④-b CMX·DOCA Memos: 배치·수명 힌트의 NVMe 매핑을 NVIDIA와 공동 정의(미확인 항목 1호).
+4. ② 캐시 관리자: KVBM 디스크 필터·LMCache 퇴거 정책과 RUH 분리의 결합 설계 제안, Mooncake NVMe-oF 풀 RFC 참여.
+5. 표준·커뮤니티: SNIA SDC StorageAI, OCP–SNIA AI 스토리지, NVMe TP.
+6. 디지털 트윈: WARP류 에뮬레이터 + HiSim류 트레이스 재생기.
+
+경계: 오케스트레이션(Dynamo·LMCache·Mooncake) 자체를 만들지 않는다. 그 아래의 기본 백엔드·디바이스·통합 서비스가 자리다 ([kv-cache-ssd-offload-ecosystem-2026-08.md](../../sources/articles/kv-cache-ssd-offload-ecosystem-2026-08.md) §3).
+
+### 5.3 협업할 기업
+
+| 기업 | 보유 기술 | 협업 목적 | 형태 |
+|---|---|---|---|
+| NVIDIA | CMX·BlueField-4·DOCA Memos·Dynamo KVBM·NIXL | 플랫폼 게이트, 힌트 매핑, 레퍼런스 백엔드 | STX 인증 + 공동 기술 정의 |
+| Meta | CacheLib(배치 표준 기지원), QLC 용량 계층, 구매 SSD 전량 배치 표준 탑재·기본 비활성 | 캐시 티어 활성화 + KV cache 확장 | 기존 co-design 확장 |
+| Google | 배치 표준 공동 설계자, Titanium SSD | 스펙 상류·활성화 | 공동 프로파일 |
+| Anthropic · OpenAI | 추론 스택·KV 수명 정책의 원천 소유자 | 스펙 상류 장악 | 공급계약에 공동 최적화 조항 |
+| Tensormesh(LMCache) | 사실상 표준 OSS 관리자(NVentures·AMD·CoreWeave 투자) | 배치 표준 백엔드 업스트림 | 공동 투자 + 기여 |
+| Moonshot(Mooncake)·Tencent(FlexKV)·Alibaba(Tair) | 중국 추론 스택 KV 계층, HiSim | 인터페이스 정합, 트레이스 방법론 | 오픈소스 기여 |
+| VAST Data · DDN · WEKA | CMX ICMSP 파트너, KV cache SW, Dynamo 연동 | 6~12개월 실증·레퍼런스, 네오클라우드 채널 | 인증 + DDN 전략 라운드 지분 |
+| ScaleFlux | 200+ 스트림·7~10 DWPD·텔레메트리 | Phase 2 역량 즉시 확보 | acqui-hire 후보(누적 조달 $65.9M) |
+| Marvell · Silicon Motion | KV 오프로드 지원 컨트롤러 | 자체 컨트롤러 로드맵 대조 | 벤치마크 |
+| Linux Foundation · SNIA · OCP | 커널 write streams, StorageAI, AI 스토리지 표준 | 표준 지위 | 워킹그룹 리드 |
+
+출처: [qlc-workload-capability-phases.md](../../wiki/strategies/qlc-workload-capability-phases.md) §5, [execution-benchmarks-sw-capability-customer-collab-2026-09.md](../../sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md) §2.
+
+---
+
+## 6장. 실행 전략 — 하던 대로 해서는 안 되는 이유와 5축의 답
+
+> **거버닝 메시지**: Phase 역량은 개인의 노력으로 쌓이지 않는다. 경쟁사는 조직·계약·자본으로 답했다. 삼성의 답은 자회사·상주 조직·업스트림 문화·보증 상품·지분 참여를 한 묶음으로 실행하고, 공급자 우위가 남은 2027년 상반기까지 고객의 워크로드·스펙 접근권을 계약으로 고정하는 것이다.
+
+### 6.1 왜 하던 대로는 안 되는가
+
+| 하던 대로 | 왜 안 되나 |
+|---|---|
+| 고객 스펙을 받아 정확히 납품 | 캐시 티어의 스펙(수명·재사용·무효화 정책)은 고객 캐시 관리자 안에 있고 RFQ에 안 적힌다 |
+| 펌웨어 엔지니어가 호스트 SW를 겸업 | 커널·파일시스템·추론 엔진·캐시 관리자 4개 커뮤니티의 메인테이너 문법은 겸업으로 얻어지지 않는다 |
+| 국내 보상 체계로 실리콘밸리 채용 | 삼성 SV L6 TC $392K vs NVIDIA IC6 $626K·Meta E6 $708K·Google L6 $700K, 격차 1.5~1.8배, 원인은 주식 부재 |
+| 오픈소스는 연구소 취미 | Intel OTC는 사업 철수와 함께 소멸했고, 제품 로드맵에 묶인 Kioxia AiSAQ·Huawei UCM은 남았다 |
+| 물량 계약만 체결 | Micron↔Anthropic은 공동 설계·운영 통합·자본까지 묶었고, 삼성·SK↔Anthropic 계약에는 공동 최적화 문구가 없다 |
+| 성능으로 채택을 가른다 | "성능은 시스템 계층이 흡수한다. 상쇄 불가한 축은 파워·원가·품질"(송용호 부사장 인터뷰) |
+
+출처: [qlc-execution-strategy.md](../../wiki/strategies/qlc-execution-strategy.md) §1.
+
+### 6.2 5축 실행 전략
+
+**전략**: 하나의 베팅("QLC로 추론 캐시 티어를 가져간다"), 세 개의 순서(KV-ready QLC → 등대 고객 실측 공개 → 공동 플랫폼 계약), 하나의 시계(2026 Q4 ~ 2027 H1). 오케스트레이션은 만들지 않는다.
+
+**조직**: ① 실리콘밸리 추론 스토리지 소프트웨어 자회사(Memory Solutions Lab 모체, 자체 CEO·보상·지분; 선례 SK hynix AI Company ≥$10B 캐피털콜, Solidigm 공동 CEO 체제), ② 고객 상주 Co-Design Pod(Palantir FDE·NVIDIA DevTech), ③ 시스템 아키텍트·TCO 모델링 조직, ④ 기존 데이터센터 SSD 개발 조직은 Phase 1 담당. 자회사는 본사 SSD와 동일 P&L 지표(캐시 티어 QLC 활성화 EB)로 묶는다. Intel OTC·WD Tegile의 실패를 피하는 조건이다.
+
+**인사**: 별도 보상(자회사 지분·RSU형, SV 시니어 시장가 $600~700K대; SK hynix 자사주 성과급·ADR 상장, 삼성 국내 특별성과급 상향 리셋), 스타 영입 표적(커널·XFS 메인테이너, LMCache·FlexKV·Mooncake 커미터, 하이퍼스케일러 스토리지팀·NVIDIA DevTech), acqui-hire(ScaleFlux, 가격 기준점 Astera↔Pliops 약 $70M/60명), 내부 전환 트랙(펌웨어→호스트 SW 6~12개월 미국 로테이션), 호명되는 전문가 트랙(미국 고객이 인식하는 직함·논문·업스트림 KPI).
+
+**문화**: 업스트림 우선(메인라인 머지가 완성), 명시 요구 vs 실제 요구 문서화, 실패 예산, 공개 문화(KV cache 배치 표준 WAF 실측 업계 최초 공개), 품질·원가를 프레임에(수명 보증은 텔레메트리·필드 품질과 묶는다).
+
+**재무**: 공동 플랫폼 계약(공급+공동 최적화+트레이스 접근권+수명 보증+선급; Micron SCA 16건 $100B·예치금 $22B), 수명 보증 상품(DWPD·WAF·W/TB SLA; Pure Evergreen//One 선례), TCO 연동 가격(절감분 공유), 고객·생태계 지분(Anthropic·Mistral 기존, DDN 전략 라운드 2026 연내, Tensormesh 공동 투자, ScaleFlux 인수), 캐피털콜형 생태계 펀드, NRE·디자인윈 펀딩(qualification 비용 흡수 ↔ 활성화 약정).
+
+### 6.3 볼드 안 3티어
+
+| 티어 | 액션 | 산출물 |
+|---|---|---|
+| **즉시(90일)** | I-1 KV-ready QLC 제품 정의(RUH 200+·수명 보증 조건표·로드맵 공개) · I-2 LMCache·FlexKV write stream PR + KV cache WAF·유효 DWPD 실측 백서 · I-3 Anthropic 공급계약 공동 최적화 조항 제안 · I-4 NVIDIA DOCA Memos 힌트 매핑·STX 인증 협의 · I-5 DDN 라운드·ScaleFlux 실사 · I-6 자회사 설계안(법인·보상·지분·P&L) | 제품 정의서, PR 2건, 백서, 계약 부속서 초안, 투자 심의 안건, 이사회 안건 |
+| **1년(2027 Q3까지)** | Y-1 자회사 출범·스타 앵커 3명+ · Y-2 ScaleFlux acqui-hire · Y-3 등대 고객 2사 Pod 상주, 프로파일 3종·수명 보증 조건표 공개 · Y-4 공동 플랫폼 계약 1건 · Y-5 CMX/STX 인증·기본 백엔드 지위 · Y-6 시스템 TCO 모델 v1 · Y-7 수명 보증+TCO 연동 상품 출시 | 법인·인수·계약·인증·모델·상품 |
+| **3년(2029까지)** | L-1 캐시 티어 QLC 침투 25%+ 중 삼성 40% · L-2 공동 플랫폼 계약 3건(하이퍼스케일러 1) · L-3 캐시 관리자 4종 기본 백엔드 · L-4 TCO 모델 v2(DC 레벨) · L-5 자회사 프리IPO 옵션 | 활성화 EB, 계약, 머지, 모델, 회수 경로 |
+
+가성비 판정: 업스트림 PR·실측 공개(인건비 수준, 즉시 회수)가 최고, KV-ready QLC는 필수, 자회사(초기 100~200명, 인건비 연 $100~150M 추정)와 ScaleFlux 인수는 높음, DDN 지분은 중간, 수명 보증 상품은 높음(프리미엄 근거). 상세 [qlc-execution-strategy.md](../../wiki/strategies/qlc-execution-strategy.md) §3.4.
+
+### 6.4 고객 협업 제안 — 누구에게 무엇을 주고 무엇을 받나
+
+원칙: 고객이 내주는 것은 워크로드·코드베이스·레퍼런스 자리, 벤더가 내주는 것은 업스트림 구현·전속 로드맵·보증·자본이다. 삼성은 Meta CacheLib에서 전자를 이미 받았고, 후자를 줄 창이 2026년 하반기에 열려 있다 ([execution-benchmarks-sw-capability-customer-collab-2026-09.md](../../sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md) §4).
+
+| 층 | 대상 | 우리가 주는 것 | 우리가 받는 것 | 첫 행동 |
+|---|---|---|---|---|
+| 스펙 상류 | Anthropic(우선), OpenAI | KV-ready QLC 우선 공급, 상주 엔지니어, 수명 보증, 공용 TCO 모델, 자본 | KV 수명·재사용·무효화 정책 접근, 레퍼런스 스펙 기본값, 공동 발표 | 공급계약 부속서 제안 |
+| 플랫폼 게이트 | NVIDIA | STX 인증 디바이스, 힌트 매핑 공동 정의, 기본 백엔드 코드 | G3.5 티어 레퍼런스 지위, 힌트 인터페이스 조기 접근 | 기술 협의 요청 |
+| 실증·채널 | DDN(라운드 열림), VAST, WEKA | 지분·SSD 공급·공동 레퍼런스 | 6~12개월 실증, 네오클라우드 채널, 워크로드 접점 | DDN 라운드 참여 |
+| 물량·수확 | Meta(활성화 싸움), Google, Microsoft, AWS | 활성화 엔지니어링(NRE 흡수), 수명 보증, 다년 공급 | 다년 물량·선급, 활성화 약정, qualification 슬롯 | Meta CacheLib 협업의 KV cache 확장 제안 |
+| 오픈소스 | Tensormesh, Mooncake·FlexKV·Tair, Linux·XFS | 코드·실측·공동 투자 | 기본 백엔드 지위, 인터페이스 정합 | 업스트림 PR |
+
+유인 설계 여섯 가지: 거절하기 어려운 교환(공급 부족기 다년 물량 ↔ 트레이스·스펙 접근권, 계약된 권리로 고정), 리스크를 우리가 진다(수명 보증·NRE 흡수), 락인 없는 락인(기본 라이브러리 공개·미디어 모델과 정책 추천은 차별화), 호명과 공동 저작(EuroSys'25 선례), 자본으로 문을 연다(지분은 정보·우선 협의권), 고객의 고객을 움직인다(LLM 기업의 스펙이 하이퍼스케일러 협상의 지렛대).
+
+시퀀싱: 2026 Q4 제품 정의·PR·실측·Anthropic 조항 → 2027 H1 자회사·스타 영입·ScaleFlux·Pod 2사·CMX 인증 → 2027 H1 마감 공동 플랫폼 계약 1건·수명 보증 상품 → 2027 H2 이후 공급 완화 국면은 레퍼런스와 전환비용으로 방어.
+
+### 6.5 KPI와 리스크
+
+핵심 KPI는 **고객 캐시 티어에서 실제 활성화된 삼성 QLC 용량(EB)**. 보조는 업스트림 머지·기본 백엔드 채택·공개 실측 인용·공동 플랫폼 계약 수·수명 보증 SLA 이행률·qualification 기간·유효 DWPD 실측·스타 영입·자회사 이직률.
+
+리스크: 자회사의 별개 사업화(동일 P&L 지표로 방지), 오픈소스 조직 소멸(제품 로드맵 결합), 하이퍼스케일러 협업의 통제권 잠식(펌웨어·텔레메트리 통제권 유지), KV cache 압축·SLC 상단 이동(대용량·긴 수명 블록 구간 집중, 용량 티어 회귀 가능한 공통 펌웨어), 수명 보증의 품질 리스크(텔레메트리·필드 품질 선행, 프로파일 한정), 인재 유출(별도 보상이 리텐션 수단).
+
+---
+
+## 부록 A. 팩트체크 대장
+
+| # | 주장 | 등급 | 출처 | 비고 |
+|---|---|---|---|---|
+| A-1 | 4Q22 eSSD 계약가 -25% QoQ, 매출 $3.79B(-27.4%) | ✅/🟡 | TrendForce 2023-03-06 (기존 소스 nand-downturn-2023-vendor-data) | 실측 |
+| A-2 | 배치 표준 TP4146 비준 2022-12-22, Meta·Google 주도, WAF ~3 → ~1 | 🟡 | NVMe.org 백서·Blocks & Files 2023-08-14 | 비준일은 복수 인용 |
+| A-3 | 2024년 QLC eSSD 30EB, 전년 4배 | ✅ | TrendForce 2024-04-23 (복수 미러 일치) | 모델의 유일한 QLC 비트 앵커. 2023 7.5EB는 역산 ⚠️ |
+| A-4 | Meta QLC 계층: 10 MB/s/TB, HDD/QLC/TLC 3계층, 밀도 6배 | 🟡 | Meta Engineering 2025-03-04, The Register·SSD Guy 인용 | 원문 미열람 |
+| A-5 | Solidigm TCO: 1U 1PB(20배), Ceph 5년 TCO -47%, 전력 -32.9~-79.5% | 🟡 | Solidigm 브리프·TCO 페이지 인용 | 벤더 마케팅 수치, 시나리오 상이 |
+| A-6 | 벤더 타임라인(61TB 2023-07 Solidigm, 삼성 2024-07, 122TB 2024-11, 245TB Micron 2026-05, LC9, BM1773 전시) | 🟡 | TechPowerUp·StorageReview·Blocks & Files·STH | BM1743 122TB 출하 여부 ⚠️ |
+| A-7 | 2Q26 eSSD Top-5 $37.59B(+103.6%), 삼성 $14.35B(35.1%) | 🟡 | TrendForce 2026-09-01 검색 인용 | SanDisk 값은 잔차 ⚠️ |
+| A-8 | 1H26 eSSD $56.05B(18.46+37.59) | ✅/🟡 | TrendForce 2026-06-11·09-01 | 1Q26은 기존 소스 ✅ |
+| A-9 | 2022~2025 연간 eSSD 매출 21.9 / ≈7 / ≈24 / ≈26.5 | ✅/⚠️/⚠️/🟡 | TrendForce 분기 합산, 일부 QoQ 역산 | 1Q23 미확인 |
+| A-10 | DC NAND 2025 295EB → 2028 909EB, 총 NAND 997 → 1,807EB | 🟡 | Kioxia Investor Day 2026-06-02(TechInsights 인용) | |
+| A-11 | KV cache NAND 2027 75~100EB, 2028 2배, 2030 워크로드 35% | ✅ | SanDisk FMS 2026 (기존 소스) | 연간·누적 정의 모호 ⚠️ |
+| A-12 | CMX NAND 2026 35EB → 2027 100EB+, 삼성 V-NAND 캐파 60% CMX 배정 | 🟡 | 서울경제 2026-07-20 | 보도 |
+| A-13 | 30TB QLC $/TB $92(3Q25) → $504(1Q26) → $603(3Q26), TLC 대비 -13~-20% | 🟡 | VDURA Flash Volatility Index | 인덱스, 하이퍼스케일 계약가 아님 |
+| A-14 | 2H27 NAND 공급 완화, 4Q27 가격 개선 신호 | 🟡 | TrendForce 2026-07-30, Counterpoint | 모델 가격 경로의 근거 |
+| A-15 | 최신 QLC 정격 0.075~0.6 DWPD vs 캐시 티어 TLC 1~3 DWPD | 🟡 | StorageReview·Solidigm 브리프·BusinessWire | |
+| A-16 | CacheLib 배치 표준 WAF 3.22 → 1.03(100% 사용률) | ✅ | github.com/facebook/CacheLib FDP 문서 | 직접 확인 |
+| A-17 | XFS write streams v4: RocksDB YCSB WAF -35% | 🟡 | linux-fsdevel 2026-07 패치 요약 | 머지 상태 ⚠️ |
+| A-18 | ScaleFlux 200+ 스트림, 유효 7~10+ DWPD | 🟡 | StorageReview·PR Newswire 2026-07-30 | NAND 종류 미공개 ⚠️ |
+| A-19 | ②계층 4종 README에 배치 표준·write hint·내구성 언급 0, OpenMPDK에 KV cache 저장소 없음 | ✅ | GitHub 직접 확인 | |
+| A-20 | CMX 타깃 SSD 전부 TLC, CMX 발표 후 TLC 현물가 반등 | 🟡 | TrendForce 2026-08-18 등 | |
+| A-21 | SK hynix AI Company ≥$10B 캐피털콜(2026-01-28) | ✅ | SK hynix 뉴스룸·CNBC·SDxCentral | |
+| A-22 | Solidigm: $9B 인수 → 2023 자본잠식 → 2026 상반기 순이익 ₩5.84조, 프리IPO 최대 $7B 검토 | 🟡/✅ | BigGo·Korea Herald, SK hynix 6-K | 실적은 보도 |
+| A-23 | Astera↔Pliops 약 $70M, 엔지니어 약 60명 이전 | ✅ | Calcalist·Globes·StorageNewsletter | 누적 조달 $205~215M 대비 |
+| A-24 | 삼성 SV L6 TC $392K vs NVIDIA IC6 $626K+, Meta E6 $708K, Google L6 $700K | 🟡 | levels.fyi 2026 | 자기 보고 데이터 |
+| A-25 | Micron↔Anthropic: 공동 설계·다년 공급·Claude 배치·Series H | ✅ | Micron IR (기존 소스) | 조직 형태 미공개 ⚠️ |
+| A-26 | 삼성·SK↔Anthropic 공급계약에 공동 최적화 문구 부재 | 🟡 | BusinessToday 2026-07-27 | 계약 조건 비공개, 부재는 보도 기준 ⚠️ |
+| A-27 | DDN $300M @ $5B(2025-01), 2026 연내 전략 투자자 라운드 예고 | ✅/🟡 | Blackstone PR, Bloomberg 2026-06-10 | |
+| A-28 | Tensormesh $20M(NVentures·AMD·CoreWeave, 2026-05) | ✅ | SiliconANGLE·HPCwire | |
+| A-29 | ScaleFlux 누적 조달 $65.9M | 🟡 | Tracxn | |
+| A-30 | Meta↔삼성 CacheLib 배치 표준 업스트림·EuroSys'25 | ✅ | ACM DOI·arXiv 2503.11665 | 저자 소속 🟡 |
+| A-31 | DeepSeek V4.1-Flash KV SSD 풋프린트 1/8 | 🟡 | Yahoo Finance 재인용 | 수요 리스크 |
+| A-32 | 삼성 몫 시나리오(QLC 점유 25 → 35%) | ⚠️ | 본 보고서 가정 | `[사내 확인]` |
+
+**미확인·후속 확인**: DOCA Memos 힌트↔배치 표준 매핑, PM1763·BM1773 RUH·DWPD·배치 표준 지원, SanDisk QLC KV 구성 DWPD, Micron FDP 지원, KV cache 워크로드 배치 표준 WAF 실측(업계 공백), XFS·f2fs 패치 머지 상태, ScaleFlux NAND 종류, Forward Insights QLC 비중 원문, 1Q23 eSSD 매출, 하이퍼스케일 QLC 계약가.
+
+## 부록 B. 용어
+
+배치 표준(FDP, Flexible Data Placement): 호스트가 데이터 수명·성격별로 배치 힌트(RUH)를 주어 SSD의 쓰기 증폭(WAF)을 낮추는 NVMe 표준(TP4146). RUH(Reclaim Unit Handle): 배치 표준의 스트림 단위. WAF: 호스트 쓰기 대비 NAND 실제 쓰기 배율. DWPD: 하루 전체 용량 쓰기 횟수(5년 보증 기준). KV cache: LLM 추론의 키·값 캐시, HBM→DRAM→SSD로 오프로드. CMX: NVIDIA의 BlueField-4 기반 컨텍스트 메모리 스토리지 플랫폼(G3.5 티어). Co-Design Pod: 고객 상주 공동설계 조직(Palantir FDE 모델). SCA: 전략적 고객 계약(공급+공동 최적화+자본).
+
+## 부록 C. 저장소 자산 맵
+
+| 위치 | 내용 |
+|---|---|
+| `wiki/concepts/qlc-ssd-market.md` | 3기 비교·2022 배경·수요 모델·가정표 |
+| `wiki/strategies/qlc-workload-capability-phases.md` | Phase 1·2·3·스택 지도·참여 스택·협업 기업 |
+| `wiki/strategies/qlc-execution-strategy.md` | 5축·3티어·고객 협업·KPI |
+| `sources/articles/qlc-essd-history-2022-background-2026-09.md` | 연혁·2022 배경·비교표 원자료 |
+| `sources/articles/qlc-essd-market-size-forecast-data-2026-09.md` | 매출·EB·가격·KV 수요 원자료 |
+| `sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md` | 스택 지도·벤더 역량·내구성 원자료 |
+| `sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md` | 실행 벤치마크·인수 후보·보상·협업·재무 원자료 |
+| `outputs/presentation/assets/qlc_model.csv` · `qlc_demand_share_revenue*.png` · `scripts/generate_qlc_chart.py` | 모델·그래프 |
+| `outputs/presentation/qlc-ssd-strategy-outline.md` · `scripts/generate_qlc_ssd_strategy_pptx.py` · `qlc-ssd-strategy.pptx` | 3장 덱 |
+
+## PPT 압축 맵 (3장 덱)
+
+| # | 킥커 | 액션 타이틀 | 본문 |
+|---|---|---|---|
+| 1 | 배경 · QLC eSSD 트렌드와 시장 흐름 | 요구는 2022년에 정의되고 물량은 2024년에 터졌으며, 다음 무대는 HDD 대체가 아니라 추론 캐시 티어입니다 | 좌: 3기 카드(초기·현재·향후, 배경·구매 기준·삼성 위치) / 우: 통합 그래프(EB·%·$B) + "비트 10배, 매출 정체" 스티커 |
+| 2 | 요구사항과 역량 · 기술 전략 | 캐시 티어는 오늘 TLC의 것이고, QLC가 들어가려면 디바이스·워크로드 최적화·고객 시스템 co-design 세 단계 역량이 필요합니다 | 상: 요구 갭 3종(내구성 10~40배·RUH 25배·스택 접점 공백) / 중: Phase 1·2·3 × (정의·필요 역량·삼성 현황·발전 역량·참여 스택) / 하: 협업 기업 로고 5층 |
+| 3 | 실행 전략 · 고객 협업 | 하던 대로는 안 됩니다: 자회사·상주 조직·업스트림 문화·수명 보증 계약·지분 참여를 한 묶음으로 실행하고 2027년 상반기까지 접근권을 계약으로 고정합니다 | 좌: 5축 카드(전략·조직·인사·문화·재무) + 3티어 타임라인 / 우: 층별 협업 제안(주는 것·받는 것, 로고) + 유인 설계 + 결정 요청 |
