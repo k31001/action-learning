@@ -18,6 +18,23 @@ export const UPDATES = [
   {
     date: '2026-09-17',
     type: 'build',
+    version: 'v2.46.20',
+    title: 'QLC 시장 위키 §3.4 신설 — 고객이 QLC를 원하는 이유(불변과 변화), 덱 v3.3 3장 관통 축',
+    summary:
+      '고객이 사는 것은 비트가 아니라 계산 옆에 둔 가장 싼 바이트(TB당 원가·전력·공간). 초기(용량 계층·읽기 중심)→현재(추론 서버 전력·공간)→향후(KV 캐시, GPU당 사용자·토큰당 비용)로 이름만 바뀌었고, 변화는 가장 빨리 크는 수요가 처음으로 쓰기 많은 티어에 있어 내구성이 문이 된 것. ' +
+      '내구성은 고객 시스템의 데이터 배치로 풀리므로 Phase 1·2·3 → FDE·SCA로 이어진다. 덱 v3.3(S1 고객이 산 것·왜·조건, S2 고객이 얻는 것, S3 결론 문장)·보고서 §2.4 동기화, 니어라인 HDD 언급은 덱에서 제거. 지식그래프 재생성. 패치 v2.46.20.',
+    tags: ['QLC', 'KV cache', '추론 캐시 티어', '고객 통찰', '내구성', 'FDP', '덱'],
+    items: [
+      { label: '위키 qlc-ssd-market §3.4', detail: '3기 표(고객·산 것·왜·조건·삼성) + 불변/변화 독해 + 덱 표기 원칙(니어라인은 위키 §3.1에만)' },
+      { label: '덱 v3.3', detail: 'S1 킥커·타이틀·3기 스트립 4행·결론, S2 타이틀·리드·Phase 산출물, S3 결론 문장, 노트 3장' },
+    ],
+    links: [
+      { label: 'wiki/concepts/qlc-ssd-market.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/qlc-ssd-market.md' },
+    ],
+  },
+  {
+    date: '2026-09-17',
+    type: 'build',
     version: 'v2.46.19',
     title: 'QLC 실행 전략 인사·문화 축 보강 — 시스템 SW 전문가 채용·양성, 미주 현지 채용, 오픈소스 생태계 주도',
     summary:

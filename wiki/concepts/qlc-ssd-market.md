@@ -102,6 +102,22 @@ TrendForce는 2024년 QLC eSSD 비트 출하를 **30EB, 2023년 대비 4배**로
 | 경쟁 대상 | HDD | HDD·TLC | **TLC 1~3 DWPD 드라이브, SLC AI SSD(SK hynix AI-N P·Kioxia 1억 IOPS), 고객 자체 SSD** |
 | 삼성의 위치 | 후발(61TB 1년) | 물량 1위, 용량 후발 | 디바이스는 확보(PM1753 CMX), 워크로드·시스템 SW 연결은 공백 |
 
+### 3.4 고객이 QLC를 원하는 이유 — 세 국면을 관통하는 불변과 변화
+
+> 덱 3장을 잇는 축(2026-09-17 4차 피드백: "고객이 왜 QLC SSD를 원하는지에 대한 통찰이 빠져 있다"). 답은 하나다. **고객이 사는 것은 비트가 아니라 계산 옆에 둔 가장 싼 바이트(TB당 원가·전력·공간)** 이고, 그 자리가 읽기 전용 용량 계층에서 쓰기가 많은 추론 캐시로 옮겨가면서 **내구성이 문**이 됐다.
+
+| 국면 | 고객 | 고객이 산 것 | 왜 QLC였나 | 조건(내구성) | 삼성 |
+|---|---|---|---|---|---|
+| 초기 2018~23 | 하이퍼스케일러(Meta·Google), CDN·오브젝트·어레이 벤더 | TB당 원가 · 랙당 용량 | 데이터셋 6배(2022→23), HDD는 용량이 늘어도 TB당 대역폭이 떨어져 10 MB/s/TB 대역을 못 채움 → 플래시 용량 계층(64~150TB, TLC 서버의 6배 바이트 밀도). 공급자는 1U에 1PB·5년 TCO -47%를 팔았다 ([qlc-essd-history-2022-background-2026-09.md](../../sources/articles/qlc-essd-history-2022-background-2026-09.md) §2.2·§2.3) | 읽기 중심이라 0.3~0.6 DWPD로 충분. 쓰기가 NAND 전력의 대부분이므로 읽기 중심 데이터를 QLC로 옮기면 전력도 준다 (같은 소스 §2.3) | 61TB 1년 후발 |
+| 현재 2024~26 | AI 추론 서버 운영자, CSP | TB당 와트 · 공급 확보 | 추론 서버의 전력·공간이 병목 → 2024년 QLC eSSD 30EB(4배), 61→122→245TB 용량 경쟁 ([qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §2.1) | 여전히 읽기 중심 데이터가 QLC의 자리, 쓰기 티어는 TLC(0.3 랜덤/1.0 순차 스펙 분리) | 물량 1위(35.1%), 용량 후발 |
+| 향후 2027~30 | LLM 서비스·플랫폼(OpenAI·Anthropic·Meta·NVIDIA 스택) | GPU당 캐시 용량 · 토큰당 비용 | 장문맥·에이전틱 추론의 KV 캐시가 HBM·DRAM을 넘쳐 SSD로 내려오고, 프리필 재사용으로 GPU당 동시 사용자가 늘고 TTFT가 줄어든다(NVMe 오프로드로 H100 한 장이 동시 사용자 10배 주장). 2027년 75~100EB, 2030년 AI DC NAND의 35% ([kv-cache-ssd-offload-ecosystem-2026-08.md](../../sources/articles/kv-cache-ssd-offload-ecosystem-2026-08.md) §1, [kv-cache-ssd-demand-2026.md](../../sources/articles/kv-cache-ssd-demand-2026.md), [qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §4) | **쓰기가 많은 캐시**라 오늘 이 티어는 TLC 1~3 DWPD가 서비스하고 CMX 타깃 드라이브도 전부 TLC. QLC 정격과 10~40배 갭 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.1·§3.3) | 디바이스 확보(PM1753 CMX), 시스템 연결 공백 |
+
+**불변**: 세 국면 모두 구매 기준은 "TB당 원가·전력·공간"이었고 QLC는 그 기준에서 가장 싼 플래시였다. 명칭이 $/TB → W/TB → GPU당 캐시 용량·토큰당 비용으로 바뀌어도 고객이 사는 것은 같다.
+
+**변화**: 가장 빨리 크는 용량 수요(KV cache)가 처음으로 **쓰기 많은 티어**에 있다. 고객은 여기서도 QLC의 경제성을 원하지만 내구성 때문에 TLC를 쓴다. 내구성은 미디어를 바꿔서가 아니라 **고객 시스템이 데이터를 어떻게 놓느냐**(배치 표준으로 수명이 다른 블록을 분리: CacheLib WAF 3.22→1.03, RUH 200+로 유효 7~10 DWPD)로 풀리므로 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.2), QLC 벤더는 디바이스에서 고객 시스템 안까지 올라가야 한다. 이것이 [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)의 Phase 1·2·3과 [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md)의 FDE·SCA로 이어지는 논리다.
+
+**덱 표기 원칙**(사용자 결정 2026-09-17): 니어라인 HDD 대체 여부는 발표 덱에서 다루지 않는다(§3.1의 범위 결정은 위키에 유지). 덱 1장은 "고객은 왜 QLC를 원하는가"로 시작해 3장의 결론 문장까지 같은 축으로 잇는다.
+
 ## 4. 수요·매출 모델 (2022~2030)
 
 ### 4.1 모델 표 (그래프 미러: `outputs/presentation/assets/qlc_model.csv`)

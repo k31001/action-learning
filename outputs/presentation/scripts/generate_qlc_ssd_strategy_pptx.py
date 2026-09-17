@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """QLC eSSD 전략 — 3장 덱 생성 v2 (시각 중심: 글 최소, 그림·도형으로 논증).
 
-S1 배경: 3기 스트립 + 이정표 타임라인 + 통합 그래프 + 키넘버 스티커
+S1 배경: 3기 스트립(고객이 산 것 · 왜 · 조건 · 삼성) + 이정표 타임라인 + 통합 그래프 + 키넘버 스티커 — 고객이 왜 QLC를 원하는가가 축(v3.3)
 S2 역량: 갭 타일 4 + Phase 1·2·3 스택 그림(고객 시스템 5계층의 구체 기술을 층마다 적고, 우리가 닿는 층을 색으로) + 진행 바(삼성 현 위치)
 S3 실행: 두 트랙 그림(삼성 개발실 ↔ 고객 시스템: 위 화살표 "FDE가 들어간다", 아래 화살표 "SCA로 워크로드가 온다",
         가운데 선례 카드 2 = Palantir FDE·Micron↔Anthropic SCA) + 조직·인사·문화 3축 타일(축당 3줄; 전략·재무 타일과 타임라인은 v3.2에서 제거)
@@ -217,19 +217,19 @@ def v_arrow(slide, x, y, w, h, up=False, fill=BLUE):
 
 # ================================================================ S1. 배경
 s = prs.slides.add_slide(BLANK)
-header(s, "QLC eSSD 전략 · 배경: 트렌드 변화와 시장 흐름",
-       "요구는 2022년에 정의되고 물량은 2024년에 터졌으며, 다음 무대는 추론 캐시 티어입니다",
-       "세 국면의 구매 기준이 어떻게 바뀌는지, 그리고 2030년까지의 수요·비중·매출입니다.")
+header(s, "QLC eSSD 전략 · 배경: 고객은 왜 QLC를 원하는가",
+       "고객이 사는 것은 계산 옆의 가장 싼 바이트이고, 그 자리가 추론 캐시 티어로 옮겨갑니다",
+       "세 국면 모두 고객은 TB당 원가·전력·공간을 샀습니다. 다음 자리는 쓰기가 많은 KV 캐시라 내구성이 문입니다.")
 
 # 3기 스트립
-E_Y, E_H, E_W = 2.80, 2.02, 5.92
+E_Y, E_H, E_W = 2.80, 2.34, 5.92
 eras = [
-    ("초기 · 2018~2023", "TB당 원가 · 랙 밀도", False,
-     [("배경  ", "데이터 레이크 · HDD 대역폭 붕괴 · 배치 표준 비준"), ("삼성  ", "61TB 1년 후발")]),
+    ("초기 · 2018~2023", "TB당 원가 · 랙당 용량", False,
+     [("왜  ", "데이터 6배 · 1U에 1PB, TCO -47%"), ("조건  ", "읽기 중심이라 0.3~0.6 DWPD로 충분"), ("삼성  ", "61TB 1년 후발")]),
     ("현재 · 2024~2026", "TB당 와트 · 공급 확보", False,
-     [("배경  ", "추론 서버 전력 효율 · 245TB 경쟁 · HDD 완판"), ("삼성  ", "물량 1위(35.1%), 용량 후발")]),
-    ("향후 · 2027~2030", "유효 DWPD · 토큰 경제성", True,
-     [("배경  ", "KV cache 오프로드 · 2027년 75~100EB"), ("삼성  ", "디바이스 확보, 시스템 연결 공백")]),
+     [("왜  ", "추론 서버의 전력·공간 병목 → 245TB"), ("조건  ", "여전히 읽기 중심, 쓰기 티어는 TLC"), ("삼성  ", "물량 1위(35.1%), 용량 후발")]),
+    ("향후 · 2027~2030", "GPU당 캐시 용량 · 토큰당 비용", True,
+     [("왜  ", "KV 캐시가 HBM을 넘침 · GPU당 사용자 10배"), ("조건  ", "쓰기 많은 캐시 → 오늘은 TLC 1~3 DWPD"), ("삼성  ", "디바이스 확보, 시스템 연결 공백")]),
 ]
 for i, (label, crit, hot, lines) in enumerate(eras):
     x = MX + i * (E_W + 0.33)
@@ -240,7 +240,7 @@ for i, (label, crit, hot, lines) in enumerate(eras):
         rect(s, x, E_Y, E_W, E_H, fill=WHITE, line=LINE, line_w=0.75)
     ix, iw = x + 0.38, E_W - 0.76
     tb(s, ix, E_Y + 0.20, iw, 0.30, [(label, 18, True, BLUE)])
-    tb(s, ix, E_Y + 0.56, iw, 0.24, [("구매 기준", 12.75, False, GRAY_2)])
+    tb(s, ix, E_Y + 0.56, iw, 0.24, [("고객이 산 것", 12.75, False, GRAY_2)])
     tb(s, ix, E_Y + 0.80, iw, 0.44, [(crit, 21, True, INK)])
     ly = E_Y + 1.32
     for (k, v) in lines:
@@ -250,7 +250,7 @@ for i, (label, crit, hot, lines) in enumerate(eras):
         rect(s, x + E_W + 0.09, E_Y + E_H / 2 - 0.09, 0.16, 0.18, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
 
 # 이정표 타임라인
-TL_Y = 5.12
+TL_Y = 5.44
 rect(s, MX + 0.3, TL_Y, CW - 0.6, 0.02, fill=LINE)
 milestones = [
     (0.05, "2022-12", "배치 표준 비준(Meta·Google)"),
@@ -266,7 +266,7 @@ for frac, d, t in milestones:
     tb(s, cx - 1.7, TL_Y + 0.38, 3.4, 0.24, [(t, 12.75, False, GRAY)], align=PP_ALIGN.CENTER)
 
 # 그래프 + 스티커
-C_Y, C_H = 5.80, 3.48
+C_Y, C_H = 6.16, 3.14
 C_W = C_H * CHART_ASPECT
 s.shapes.add_picture(CHART, Inches(MX), Inches(C_Y), height=Inches(C_H))
 SX = MX + C_W + 0.30
@@ -284,15 +284,15 @@ rect(s, SX + 0.34, sy + 0.02, SW - 0.68, 0.012, fill=LINE)
 tb(s, SX + 0.34, sy + 0.10, SW - 0.68, C_H - (sy - C_Y) - 0.16,
    [("이익은 비트가 아니라 시스템 위의 TCO에서 나옵니다", 15.75, True, INK)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.05)
 
-band(s, 9.42, 0.80, "결론", "니어라인 HDD 대체 대신, 오늘 TLC가 서비스하는 추론 캐시 티어를 QLC로 가져갑니다")
+band(s, 9.42, 0.80, "결론", "고객은 추론 캐시 티어에서도 QLC의 경제성을 원합니다. 문은 내구성이고, 디바이스만으로는 못 엽니다", main_size=20)
 footer(s, "출처: TrendForce 분기 실측(2022~2Q26)·QLC 30EB(2024)·SanDisk FMS 2026·Meta·Solidigm 발표 종합, 2026~2030은 추정(e) · 상세: QLC eSSD 전략 보고서 1~3장", 1)
-notes(s, "배경 한 장입니다. 2022년은 QLC 주문의 해가 아니라 조건이 갖춰진 해였습니다: 전문 벤더(Solidigm) 출범, 하이퍼스케일러 주도 폼팩터(E1.S/E1.L), Meta·Google의 배치 표준 비준(2022-12), NAND 가격 급락, 학습 데이터셋 6배. 하이퍼스케일러가 원한 것은 HDD 대역폭 붕괴를 메우는 용량 계층(Meta: 10 MB/s/TB), 공급자가 판 것은 1U에 1PB의 TCO였습니다. 물량은 AI 추론 서버의 전력 효율이 우선순위가 된 2024년에 터졌습니다(TrendForce 30EB, 4배). 구매 기준은 TB당 원가·랙 밀도 → TB당 와트·공급 확보 → 유효 DWPD·토큰 경제성으로 이동합니다. 향후 3~5년 공급 부족 국면에서 HDD 대체는 커머디티 경쟁이라 들어가지 않고, KV cache 오프로드가 만드는 추론 캐시 티어를 QLC로 가져갑니다. 이 티어는 오늘 TLC(1~3 DWPD)가 서비스합니다. 그래프: 비트는 10배, 가격 정상화 기준선에서 매출은 정체, 진한 파랑은 호스트 협력 배치가 성립할 때의 조건부 상방. 모델 가정은 위키 qlc-ssd-market.md §4.3.")
+notes(s, "배경 한 장입니다. 질문은 하나, 고객은 왜 QLC를 원하는가입니다. 세 국면을 관통하는 답은 계산 옆에 가장 싼 바이트를 두는 것입니다. 2022년 하이퍼스케일러는 데이터셋이 6배로 늘고 HDD가 TB당 대역폭을 잃자 플래시 용량 계층을 원했습니다(Meta: 10 MB/s/TB 대역, TLC 서버의 6배 바이트 밀도). 공급자가 판 것은 1U에 1PB, 5년 TCO -47%였습니다. 조건이 있었습니다. 읽기 중심 워크로드라서 0.3~0.6 DWPD로 충분했고, 쓰기가 NAND 전력의 대부분이라 읽기 중심 데이터를 QLC로 옮기면 전력도 줄었습니다. 그 해에 전문 벤더(Solidigm) 출범, E1.S/E1.L 폼팩터, Meta·Google의 배치 표준 비준(2022-12), 가격 급락이 갖춰졌고 물량은 AI 추론 서버의 전력 효율이 우선순위가 된 2024년에 터졌습니다(TrendForce 30EB, 4배). 현재 국면의 구매 기준은 TB당 와트와 공급 확보이고 245TB까지 용량 경쟁이 벌어졌지만, 여전히 읽기 중심 데이터가 QLC의 자리이고 쓰기 티어는 TLC입니다. 향후 국면에서 가장 빨리 크는 용량 수요는 KV cache입니다. 장문맥·에이전틱 추론의 KV 캐시가 HBM과 DRAM을 넘쳐 SSD로 내려오고, 프리필 재사용으로 GPU당 동시 사용자가 늘고 TTFT가 줄어듭니다(NVMe 오프로드로 H100 한 장이 동시 사용자 10배). 고객이 사는 것은 GPU당 캐시 용량과 토큰당 비용이며, 여기서도 가장 싼 바이트는 QLC입니다. 그러나 캐시는 쓰기가 많아 오늘 이 티어는 TLC 1~3 DWPD가 서비스하고(2027년 75~100EB), CMX 타깃 드라이브도 전부 TLC입니다. 그래프: 비트는 10배, 가격 정상화 기준선에서 매출은 정체, 진한 파랑은 호스트 협력 배치가 성립할 때의 조건부 상방. 결론: 고객은 추론 캐시 티어에서도 QLC의 경제성을 원하고, 문은 내구성이며, 그 문은 디바이스만으로는 열리지 않습니다. 다음 장이 그 이유입니다. 모델 가정은 위키 qlc-ssd-market.md §4.3.")
 
 # ================================================================ S2. 요구사항·역량·기술 전략 (v3: 협업 기업 제거, Phase 스택 확대 + 계층별 기술)
 s = prs.slides.add_slide(BLANK)
 header(s, "QLC eSSD 전략 · 요구사항과 역량, 기술 전략",
-       "QLC가 캐시 티어에 들어가려면 디바이스에서 고객 시스템 안까지 세 단계로 올라가야 합니다",
-       "갭은 내구성·스트림·접점 세 가지이고 수단은 이미 있습니다. 고객 시스템 다섯 계층의 기술과 우리가 닿는 층, 삼성의 현 위치입니다.")
+       "내구성은 고객 시스템에서 풀리므로, 디바이스에서 고객 시스템 안까지 세 단계로 올라가야 합니다",
+       "고객이 원하는 QLC 경제성과 캐시의 쓰기 사이 10~40배 갭은 배치 표준과 호스트 SW가 메웁니다. 층별 기술과 삼성의 현 위치입니다.")
 
 T_Y, T_H, T_W, T_GAP = 2.80, 1.06, 4.41, 0.26
 tiles = [
@@ -334,21 +334,21 @@ phase_defs = [
       "NIXL · GPUDirect Storage · io_uring · SPDK",
       "Linux write streams · XFS · CMX(DOCA Memos)",
       "RUH 200+ 펌웨어 · 2Tb QLC(WAF≈1) · NVMe KV 확장 · 텔레메트리 · 액체냉각"],
-     "KV-ready QLC: RUH 200+, 수명 보증 조건표"),
+     "고객이 얻는 것: 정격 내 QLC 원가·전력"),
     ("Phase 2", "워크로드 분석으로 최적화한다", ["none", "none", "touch", "touch", "own"],
      ["vLLM · SGLang · TensorRT-LLM",
       "KVBM 빈도 필터 · LMCache 퇴거 정책 = 트레이스의 원천",
       "io_uring·GDS 백엔드에 write stream 부착 · xNVMe · fio·blktrace·eBPF",
       "Linux 6.16 write streams · XFS·f2fs 스트림 · CMX 힌트 매핑 검증",
       "RUH 정책(수명·테넌트·prefix) · WAF·유효 DWPD 실측 · 디지털 트윈"],
-     "트레이스 → RUH 정책 → WAF·DWPD 실측 공개"),
+     "고객이 얻는 것: 자기 워크로드의 수명 보증"),
     ("Phase 3", "고객 시스템 안에서 함께 설계한다", ["touch", "own", "own", "own", "own"],
      ["커넥터·스케줄러 이해 · 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)",
       "KVBM·LMCache·Mooncake·FlexKV 플러그인 메인라인 머지",
       "NIXL 스토리지 플러그인 · xNVMe 배치 API가 기본 백엔드",
       "XFS·f2fs 스트림 완주 · DOCA Memos↔배치 표준 공동 정의 · SNIA·OCP",
       "레퍼런스 스택의 기본 디바이스 · 수명 보증 SLA"],
-     "메인라인 머지 · 공용 TCO 모델 · 공동 계약"),
+     "고객이 얻는 것: 시스템 위의 TCO 보증"),
 ]
 STK_W, LH, LG = 3.88, 0.74, 0.06
 for i, (ph, ttl, states, techs, outcome) in enumerate(phase_defs):
@@ -398,7 +398,7 @@ tb(s, mk_x + 0.22, BAR_Y + BAR_H, 9.0, 0.30,
    anchor=MSO_ANCHOR.MIDDLE)
 
 footer(s, "출처: StorageReview·Solidigm·Kioxia 스펙(DWPD), ScaleFlux 2026-07(RUH 200+), GitHub README 확인(LMCache·Mooncake·FlexKV·3FS·xNVMe), CacheLib FDP 문서(WAF), Linux 6.16·XFS 패치, NVIDIA CMX 문서", 2)
-notes(s, "요구사항과 역량 한 장입니다. 갭 세 가지: 내구성(QLC 정격 0.075~0.6 vs TLC 1~3 DWPD, 10~40배), 스트림(RUH 2~8 vs 200+), 접점(KV 캐시 관리자 4종 코드에 배치·내구성 언급 0). 수단은 있습니다(CacheLib 실측 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). 그림은 고객 시스템 5계층을 세 번 그리고 우리가 닿는 층을 색으로 표시하며, 각 층에 그 층을 구성하는 기술을 적었습니다. 응용·추론 엔진(vLLM·SGLang·TensorRT-LLM), KV 캐시 관리자(NVIDIA Dynamo KVBM·LMCache·Mooncake·Tencent FlexKV), I/O 라이브러리(NIXL·GPUDirect Storage·io_uring·SPDK/xNVMe), 커널·플랫폼(Linux 6.16 write streams·XFS/f2fs 스트림·NVIDIA CMX와 DOCA Memos), SSD 디바이스(컨트롤러·펌웨어 RUH·2Tb QLC·NVMe KV 확장·텔레메트리). Phase 1은 SSD 층만 우리 것입니다(KV-ready QLC). Phase 2는 캐시 관리자의 빈도 필터·퇴거 정책이 트레이스의 원천이고, I/O 라이브러리의 io_uring·GDS 백엔드에 write stream을 부착하며 커널 스트림과 CMX 힌트 매핑을 검증해 RUH 정책·WAF·유효 DWPD 실측을 공개합니다. Phase 3는 캐시 관리자 4종에 플러그인을 메인라인으로 머지하고, NIXL·xNVMe가 기본 백엔드가 되며, DOCA Memos와 배치 표준의 매핑을 NVIDIA와 공동 정의하고, 응용 층은 커넥터·스케줄러를 이해해 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)로 대화합니다. FDE(Forward Deployed Engineer)가 고객 옆에 상주합니다. 삼성 현 위치는 Phase 1 확보, Phase 2 진입: KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고 캐시 관리자 4종에 기여가 없습니다. 오케스트레이션 자체는 만들지 않습니다.")
+notes(s, "요구사항과 역량 한 장입니다. 앞 장의 결론을 잇습니다. 고객은 캐시 티어에서도 QLC의 경제성(TB당 원가·전력)을 원하지만 캐시는 쓰기가 많고, 내구성은 미디어를 바꿔서가 아니라 고객 시스템이 데이터를 어떻게 놓느냐(배치 표준·캐시 관리자 정책)로 풀립니다. 그래서 디바이스에서 고객 시스템 안까지 올라가야 합니다. 갭 세 가지: 내구성(QLC 정격 0.075~0.6 vs TLC 1~3 DWPD, 10~40배), 스트림(RUH 2~8 vs 200+), 접점(KV 캐시 관리자 4종 코드에 배치·내구성 언급 0). 수단은 있습니다(CacheLib 실측 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). 그림은 고객 시스템 5계층을 세 번 그리고 우리가 닿는 층을 색으로 표시하며, 각 층에 그 층을 구성하는 기술을 적었습니다. 응용·추론 엔진(vLLM·SGLang·TensorRT-LLM), KV 캐시 관리자(NVIDIA Dynamo KVBM·LMCache·Mooncake·Tencent FlexKV), I/O 라이브러리(NIXL·GPUDirect Storage·io_uring·SPDK/xNVMe), 커널·플랫폼(Linux 6.16 write streams·XFS/f2fs 스트림·NVIDIA CMX와 DOCA Memos), SSD 디바이스(컨트롤러·펌웨어 RUH·2Tb QLC·NVMe KV 확장·텔레메트리). Phase 1은 SSD 층만 우리 것입니다(KV-ready QLC). Phase 2는 캐시 관리자의 빈도 필터·퇴거 정책이 트레이스의 원천이고, I/O 라이브러리의 io_uring·GDS 백엔드에 write stream을 부착하며 커널 스트림과 CMX 힌트 매핑을 검증해 RUH 정책·WAF·유효 DWPD 실측을 공개합니다. Phase 3는 캐시 관리자 4종에 플러그인을 메인라인으로 머지하고, NIXL·xNVMe가 기본 백엔드가 되며, DOCA Memos와 배치 표준의 매핑을 NVIDIA와 공동 정의하고, 응용 층은 커넥터·스케줄러를 이해해 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)로 대화합니다. FDE(Forward Deployed Engineer)가 고객 옆에 상주합니다. 삼성 현 위치는 Phase 1 확보, Phase 2 진입: KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고 캐시 관리자 4종에 기여가 없습니다. 오케스트레이션 자체는 만들지 않습니다.")
 
 # ================================================================ S3. 실행 전략·고객 협업 (v3: FDE + SCA 두 트랙, 선례 카드)
 s = prs.slides.add_slide(BLANK)
@@ -512,10 +512,10 @@ for i, (lab, lines) in enumerate(axes):
        anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)
 
 band(s, 9.30, 0.90, "결론",
-     "니어라인 HDD 대체가 아니라 추론 캐시 티어를 QLC로 가져가려면 디바이스에서 고객 시스템 안까지 세 단계를 올라가야 하며,\n그 길은 FDE와 전략적 협약, 그리고 이를 해낼 사람과 문화가 엽니다",
+     "고객은 계산 옆의 가장 싼 바이트를 사려고 QLC를 택했고, 그 자리가 쓰기 많은 추론 캐시로 옮겨가 내구성을 고객 시스템 안에서 풀어야 하며,\n그 길은 FDE와 전략적 협약, 그리고 이를 해낼 사람과 문화가 엽니다",
      main_size=19)
 footer(s, "출처: Pragmatic Engineer·FDE Academy·MindStudio(Palantir FDE), Micron IR 2026-06-22·10-Q(SCA 16건·$22B), SK hynix 뉴스룸(AI Company), levels.fyi 2026 · 규모·시점은 추정, 사내 수치는 [사내 확인]", 3)
-notes(s, "실행 전략 한 장입니다. 목표는 두 가지이고 각각 선례가 있습니다. ① FDE(Forward Deployed Engineer)가 고객 시스템 안으로 들어갑니다. Palantir가 창안한 역할로 내부 코드명 Delta, 고객 환경 내부에 상주하며 실제 운영 제약 아래서 프로덕션 시스템을 직접 구축하고 청구 시간이 아니라 성과로 평가받습니다. 명시적 요구와 실제 요구의 간극을 현장에서 코드로 메우고, 특정 고객용 거친 해법(gravel road)이 제품 표준 기능(paved highway)으로 포장되는 피드백 루프를 만듭니다. 파급: 고객 락인의 동력이자 640% 주가 수익률의 원천으로 회자되고, Anthropic·OpenAI가 엔터프라이즈 GTM 전략으로 채택했습니다(OpenAI는 2025년 초 FDE 팀 2명→10명+). 우리는 Co-Design Pod를 FDE 모델로 운영하되, 메모리는 제조 리드타임이 길므로 시스템 아키텍트·TCO 모델링 역량을 결합합니다. ② 전략적 협약(SCA)으로 워크로드가 옵니다. 선례는 Micron↔Anthropic(2026-06-22): 공동 설계(HBM·DRAM·SSD를 Claude 학습·추론 워크로드에 맞춰 공동 최적화) + 다년 공급 + 운영 통합(Claude 사내 배치) + 자본(Series H)을 한 계약에 묶었습니다. Micron은 SCA 16건, 최소 계약매출 약 $100B, 예치금 $22B를 공시했습니다. 삼성·SK의 Anthropic 공급계약에는 공동 설계 조항이 없으므로 우리가 먼저 제안합니다. 창은 공급 완화 전인 2027년 상반기까지입니다. 이 장에는 두 목표를 여는 수단 중 조직·인사·문화 세 축을 보였습니다(전략·재무 축과 90일·1년·3년 타임라인은 위키 실행 전략 페이지 §2.1·§2.5·§3에 있습니다). 조직은 실리콘밸리 소프트웨어 자회사와 FDE Pod에 더해 시스템 소프트웨어 조직을 강화합니다. 인사는 고객의 시스템을 잘 이해하는 시스템 소프트웨어 전문가를 채용하고 양성하는 것이 핵심이며, 채용 기준은 고객 시스템(추론 엔진·KV 캐시 관리자·I/O·커널 코드)을 읽고 고칠 수 있는가입니다. 미주 고객과의 협업을 위해 현지 채용을 늘리고, 그것이 가능하도록 별도 보상 체계를 두며, 본사 엔지니어는 상주 로테이션으로 양성합니다. 문화는 업스트림 우선을 넘어 오픈소스 생태계를 주도하는 기업 문화로 갑니다. 기여자에서 메인테이너·커미터로 올라가고, 우리가 운영하는 레퍼런스 프로젝트에 외부 기여가 들어오게 하며, KV cache 실측을 업계 최초로 공개합니다. 마지막 문장은 세 장의 요약입니다. 니어라인 HDD 대체가 아니라 추론 캐시 티어를 QLC로 가져가려면(1장) 디바이스에서 고객 시스템 안까지 세 단계를 올라가야 하며(2장), 그 길은 FDE와 전략적 협약, 그리고 이를 해낼 사람과 문화가 엽니다(3장).")
+notes(s, "실행 전략 한 장입니다. 목표는 두 가지이고 각각 선례가 있습니다. ① FDE(Forward Deployed Engineer)가 고객 시스템 안으로 들어갑니다. Palantir가 창안한 역할로 내부 코드명 Delta, 고객 환경 내부에 상주하며 실제 운영 제약 아래서 프로덕션 시스템을 직접 구축하고 청구 시간이 아니라 성과로 평가받습니다. 명시적 요구와 실제 요구의 간극을 현장에서 코드로 메우고, 특정 고객용 거친 해법(gravel road)이 제품 표준 기능(paved highway)으로 포장되는 피드백 루프를 만듭니다. 파급: 고객 락인의 동력이자 640% 주가 수익률의 원천으로 회자되고, Anthropic·OpenAI가 엔터프라이즈 GTM 전략으로 채택했습니다(OpenAI는 2025년 초 FDE 팀 2명→10명+). 우리는 Co-Design Pod를 FDE 모델로 운영하되, 메모리는 제조 리드타임이 길므로 시스템 아키텍트·TCO 모델링 역량을 결합합니다. ② 전략적 협약(SCA)으로 워크로드가 옵니다. 선례는 Micron↔Anthropic(2026-06-22): 공동 설계(HBM·DRAM·SSD를 Claude 학습·추론 워크로드에 맞춰 공동 최적화) + 다년 공급 + 운영 통합(Claude 사내 배치) + 자본(Series H)을 한 계약에 묶었습니다. Micron은 SCA 16건, 최소 계약매출 약 $100B, 예치금 $22B를 공시했습니다. 삼성·SK의 Anthropic 공급계약에는 공동 설계 조항이 없으므로 우리가 먼저 제안합니다. 창은 공급 완화 전인 2027년 상반기까지입니다. 이 장에는 두 목표를 여는 수단 중 조직·인사·문화 세 축을 보였습니다(전략·재무 축과 90일·1년·3년 타임라인은 위키 실행 전략 페이지 §2.1·§2.5·§3에 있습니다). 조직은 실리콘밸리 소프트웨어 자회사와 FDE Pod에 더해 시스템 소프트웨어 조직을 강화합니다. 인사는 고객의 시스템을 잘 이해하는 시스템 소프트웨어 전문가를 채용하고 양성하는 것이 핵심이며, 채용 기준은 고객 시스템(추론 엔진·KV 캐시 관리자·I/O·커널 코드)을 읽고 고칠 수 있는가입니다. 미주 고객과의 협업을 위해 현지 채용을 늘리고, 그것이 가능하도록 별도 보상 체계를 두며, 본사 엔지니어는 상주 로테이션으로 양성합니다. 문화는 업스트림 우선을 넘어 오픈소스 생태계를 주도하는 기업 문화로 갑니다. 기여자에서 메인테이너·커미터로 올라가고, 우리가 운영하는 레퍼런스 프로젝트에 외부 기여가 들어오게 하며, KV cache 실측을 업계 최초로 공개합니다. 마지막 문장은 세 장의 요약입니다. 고객은 계산 옆의 가장 싼 바이트를 사려고 QLC를 택했고 그 자리가 쓰기 많은 추론 캐시로 옮겨가므로(1장) 내구성을 고객 시스템 안에서 풀어야 하며(2장), 그 길은 FDE와 전략적 협약, 그리고 이를 해낼 사람과 문화가 엽니다(3장).")
 
 prs.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(prs.slides._sldIdLst)}장)")
