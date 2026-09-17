@@ -4,8 +4,8 @@
 S1 배경: 3기 스트립 + 이정표 타임라인 + 통합 그래프 + 키넘버 스티커
 S2 역량: 갭 타일 4 + Phase 1·2·3 스택 그림(고객 시스템 5계층의 구체 기술을 층마다 적고, 우리가 닿는 층을 색으로) + 진행 바(삼성 현 위치)
 S3 실행: 두 트랙 그림(삼성 개발실 ↔ 고객 시스템: 위 화살표 "FDE가 들어간다", 아래 화살표 "SCA로 워크로드가 온다",
-        가운데 선례 카드 2 = Palantir FDE·Micron↔Anthropic SCA) + 5축 타일(축당 3줄: 인사 = 시스템 SW 전문가 채용·양성·미주 현지 채용,
-        문화 = 오픈소스 생태계 주도) + 90일·1년·3년 핀 + 결정 요청
+        가운데 선례 카드 2 = Palantir FDE·Micron↔Anthropic SCA) + 조직·인사·문화 3축 타일(축당 3줄; 전략·재무 타일과 타임라인은 v3.2에서 제거)
+        + 3장 요약 한 문장 결론 밴드
 
 디자인 시스템: outputs/presentation/ssd-strategy.pptx 승계
   20 x 11.25 in 캔버스 / Arial 단일 폰트 / Samsung Blue #1428A0 단일 액센트
@@ -126,7 +126,8 @@ def footer(slide, source, no):
 def band(slide, y, h, label, main, main_size=22):
     rect(slide, MX, y, CW, h, fill=BLUE)
     tb(slide, MX + 0.45, y, 1.6, h, [(label, 18, False, WHITE)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(slide, MX + 2.0, y, CW - 2.4, h, [(main, main_size, True, WHITE)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(slide, MX + 2.0, y, CW - 2.4, h, [(m, main_size, True, WHITE) for m in main.split("\n")],
+       anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)  # "\n"으로 의미 단위 줄바꿈 지정 가능
 
 
 def notes(slide, text):
@@ -403,7 +404,7 @@ notes(s, "요구사항과 역량 한 장입니다. 갭 세 가지: 내구성(QLC
 s = prs.slides.add_slide(BLANK)
 header(s, "QLC eSSD 전략 · 실행 전략과 고객 협업",
        "FDE로 고객 시스템 안에 들어가고, 전략적 협약으로 워크로드를 받습니다. 선례는 이미 있습니다",
-       "Palantir가 만든 FDE와 Micron이 Anthropic과 맺은 SCA가 두 목표의 선례입니다. 다섯 축이 길을 열고 90일·1년·3년으로 갑니다.")
+       "Palantir가 만든 FDE와 Micron이 Anthropic과 맺은 SCA가 두 목표의 선례입니다. 조직·인사·문화가 그 길을 엽니다.")
 
 M_Y, M_H = 2.80, 4.52
 # 좌: 삼성 개발실
@@ -495,41 +496,26 @@ tb(s, CX0 + 1.05, B_Y, CWID - 1.4, A_H,
    [("② 전략적 협약(SCA)으로 워크로드가 온다", 17.25, True, INK), ("트레이스 · KV 수명 정책 · 레퍼런스 스펙 자리 · 창은 2027년 상반기까지", 13.5, False, INK)],
    anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
 
-# 5축 타일 (v3.1: 축당 3줄 — 인사 = 시스템 SW 전문가 채용·양성 + 미주 현지 채용, 문화 = 오픈소스 생태계 주도)
-F_Y, F_H = M_Y + M_H + 0.16, 1.10
-axes = [("전략", ["베팅: 추론 캐시 티어", "HDD 대체는 안 함", "창은 2027년 상반기까지"]),
-        ("조직", ["SV 소프트웨어 자회사", "FDE Pod 고객 상주", "시스템 SW 조직 강화"]),
-        ("인사", ["시스템 SW 전문가 채용·양성", "기준: 고객 시스템 이해", "미주 현지 채용 확대 · 별도 보상"]),
-        ("문화", ["오픈소스 생태계를 주도", "메인테이너·커미터 배출", "업스트림 우선 · 실측 공개"]),
-        ("재무", ["SCA · 수명 보증 상품", "지분으로 접근권", "선급이 R&D 재원"])]
-FW = (CW - 0.23 * 4) / 5
+# 조직·인사·문화 3축 타일 (v3.2: 전략·재무 타일과 90일·1년·3년 타임라인 제거 — 위키 §2.1·§2.5·§3 참조)
+F_Y, F_H = M_Y + M_H + 0.20, 1.34
+axes = [("조직", ["실리콘밸리 소프트웨어 자회사", "FDE Pod 고객 상주", "시스템 소프트웨어 조직 강화"]),
+        ("인사", ["고객 시스템을 아는 시스템 SW 전문가 채용·양성", "미주 현지 채용 확대 · 고객과 같은 시간대에서 협업", "별도 보상 · 본사 엔지니어 상주 로테이션"]),
+        ("문화", ["오픈소스 생태계를 주도하는 문화", "메인테이너·커미터 배출 · 레퍼런스 프로젝트 운영", "업스트림 우선 · KV 실측 업계 최초 공개"])]
+FW = (CW - 0.28 * 2) / 3
 for i, (lab, lines) in enumerate(axes):
-    x = MX + i * (FW + 0.23)
+    x = MX + i * (FW + 0.28)
     rect(s, x, F_Y, FW, F_H, fill=WHITE, line=LINE, line_w=0.75)
-    rect(s, x, F_Y, 0.78, F_H, fill=BLUE)
-    tb(s, x, F_Y, 0.78, F_H, [(lab, 15.75, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, x + 0.90, F_Y, FW - 1.00, F_H,
-       [(lines[0], 12.75, True, INK)] + [(l, 12.0, False, GRAY) for l in lines[1:]],
-       anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
+    rect(s, x, F_Y, 0.95, F_H, fill=BLUE)
+    tb(s, x, F_Y, 0.95, F_H, [(lab, 17.25, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, x + 1.12, F_Y, FW - 1.28, F_H,
+       [(lines[0], 14.25, True, INK)] + [(l, 13.5, False, GRAY) for l in lines[1:]],
+       anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)
 
-# 90일·1년·3년 핀
-TL_Y = F_Y + F_H + 0.28
-rect(s, MX + 0.2, TL_Y + 0.28, CW - 0.4, 0.02, fill=LINE)
-tiers = [("90일", "제품 정의 · 업스트림 PR · SCA 조항 제안 · FDE Pod 1호"),
-         ("1년", "자회사 · FDE 2사 상주 · CMX 인증 · SCA 1건"),
-         ("3년", "캐시 티어 QLC 25%+ · SCA 3건 · 기본 백엔드")]
-TW = CW / 3
-for i, (tl, body) in enumerate(tiers):
-    x = MX + i * TW + 0.2
-    rect(s, x - 0.08, TL_Y + 0.21, 0.16, 0.16, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, x + 0.2, TL_Y - 0.06, TW - 0.5, 0.3, [[(tl + "  ", 14.25, True, BLUE), (body, 13.5, False, GRAY)]],
-       anchor=MSO_ANCHOR.MIDDLE)
-
-band(s, 9.52, 0.76, "결정 요청",
-     "① 자회사 설립 · 별도 보상 · 미주 현지 채용 승인   ② Anthropic SCA 공동 설계 조항 · NVIDIA 기술 협의 착수   ③ FDE Pod 1호 발족",
+band(s, 9.30, 0.90, "결론",
+     "니어라인 HDD 대체가 아니라 추론 캐시 티어를 QLC로 가져가려면 디바이스에서 고객 시스템 안까지 세 단계를 올라가야 하며,\n그 길은 FDE와 전략적 협약, 그리고 이를 해낼 사람과 문화가 엽니다",
      main_size=19)
 footer(s, "출처: Pragmatic Engineer·FDE Academy·MindStudio(Palantir FDE), Micron IR 2026-06-22·10-Q(SCA 16건·$22B), SK hynix 뉴스룸(AI Company), levels.fyi 2026 · 규모·시점은 추정, 사내 수치는 [사내 확인]", 3)
-notes(s, "실행 전략 한 장입니다. 목표는 두 가지이고 각각 선례가 있습니다. ① FDE(Forward Deployed Engineer)가 고객 시스템 안으로 들어갑니다. Palantir가 창안한 역할로 내부 코드명 Delta, 고객 환경 내부에 상주하며 실제 운영 제약 아래서 프로덕션 시스템을 직접 구축하고 청구 시간이 아니라 성과로 평가받습니다. 명시적 요구와 실제 요구의 간극을 현장에서 코드로 메우고, 특정 고객용 거친 해법(gravel road)이 제품 표준 기능(paved highway)으로 포장되는 피드백 루프를 만듭니다. 파급: 고객 락인의 동력이자 640% 주가 수익률의 원천으로 회자되고, Anthropic·OpenAI가 엔터프라이즈 GTM 전략으로 채택했습니다(OpenAI는 2025년 초 FDE 팀 2명→10명+). 우리는 Co-Design Pod를 FDE 모델로 운영하되, 메모리는 제조 리드타임이 길므로 시스템 아키텍트·TCO 모델링 역량을 결합합니다. ② 전략적 협약(SCA)으로 워크로드가 옵니다. 선례는 Micron↔Anthropic(2026-06-22): 공동 설계(HBM·DRAM·SSD를 Claude 학습·추론 워크로드에 맞춰 공동 최적화) + 다년 공급 + 운영 통합(Claude 사내 배치) + 자본(Series H)을 한 계약에 묶었습니다. Micron은 SCA 16건, 최소 계약매출 약 $100B, 예치금 $22B를 공시했습니다. 삼성·SK의 Anthropic 공급계약에는 공동 설계 조항이 없으므로 우리가 먼저 제안합니다. 창은 공급 완화 전인 2027년 상반기까지입니다. 다섯 축은 두 목표를 여는 수단입니다. 전략은 추론 캐시 티어 한 곳에 베팅하고 HDD 대체는 하지 않으며 창은 2027년 상반기까지입니다. 조직은 실리콘밸리 소프트웨어 자회사와 FDE Pod에 더해 시스템 소프트웨어 조직을 강화합니다. 인사는 고객의 시스템을 잘 이해하는 시스템 소프트웨어 전문가를 채용하고 양성하는 것이 핵심이며, 채용 기준은 고객 시스템(추론 엔진·KV 캐시 관리자·I/O·커널 코드)을 읽고 고칠 수 있는가입니다. 미주 고객과의 협업을 위해 현지 채용을 늘리고, 그것이 가능하도록 별도 보상 체계를 둡니다. 문화는 업스트림 우선을 넘어 오픈소스 생태계를 주도하는 기업 문화로 갑니다. 기여자에서 메인테이너·커미터로 올라가고, 우리가 운영하는 레퍼런스 프로젝트에 외부 기여가 들어오게 하며, KV cache 실측을 업계 최초로 공개합니다. 재무는 SCA·수명 보증 상품·지분으로 접근권을 사고 선급을 R&D 재원으로 씁니다. 90일에 제품 정의·업스트림 PR·SCA 조항 제안·FDE Pod 1호, 1년에 자회사·FDE 2사 상주·CMX 인증·SCA 1건, 3년에 캐시 티어 QLC 25%+·SCA 3건입니다. 결정 요청 세 가지입니다.")
+notes(s, "실행 전략 한 장입니다. 목표는 두 가지이고 각각 선례가 있습니다. ① FDE(Forward Deployed Engineer)가 고객 시스템 안으로 들어갑니다. Palantir가 창안한 역할로 내부 코드명 Delta, 고객 환경 내부에 상주하며 실제 운영 제약 아래서 프로덕션 시스템을 직접 구축하고 청구 시간이 아니라 성과로 평가받습니다. 명시적 요구와 실제 요구의 간극을 현장에서 코드로 메우고, 특정 고객용 거친 해법(gravel road)이 제품 표준 기능(paved highway)으로 포장되는 피드백 루프를 만듭니다. 파급: 고객 락인의 동력이자 640% 주가 수익률의 원천으로 회자되고, Anthropic·OpenAI가 엔터프라이즈 GTM 전략으로 채택했습니다(OpenAI는 2025년 초 FDE 팀 2명→10명+). 우리는 Co-Design Pod를 FDE 모델로 운영하되, 메모리는 제조 리드타임이 길므로 시스템 아키텍트·TCO 모델링 역량을 결합합니다. ② 전략적 협약(SCA)으로 워크로드가 옵니다. 선례는 Micron↔Anthropic(2026-06-22): 공동 설계(HBM·DRAM·SSD를 Claude 학습·추론 워크로드에 맞춰 공동 최적화) + 다년 공급 + 운영 통합(Claude 사내 배치) + 자본(Series H)을 한 계약에 묶었습니다. Micron은 SCA 16건, 최소 계약매출 약 $100B, 예치금 $22B를 공시했습니다. 삼성·SK의 Anthropic 공급계약에는 공동 설계 조항이 없으므로 우리가 먼저 제안합니다. 창은 공급 완화 전인 2027년 상반기까지입니다. 이 장에는 두 목표를 여는 수단 중 조직·인사·문화 세 축을 보였습니다(전략·재무 축과 90일·1년·3년 타임라인은 위키 실행 전략 페이지 §2.1·§2.5·§3에 있습니다). 조직은 실리콘밸리 소프트웨어 자회사와 FDE Pod에 더해 시스템 소프트웨어 조직을 강화합니다. 인사는 고객의 시스템을 잘 이해하는 시스템 소프트웨어 전문가를 채용하고 양성하는 것이 핵심이며, 채용 기준은 고객 시스템(추론 엔진·KV 캐시 관리자·I/O·커널 코드)을 읽고 고칠 수 있는가입니다. 미주 고객과의 협업을 위해 현지 채용을 늘리고, 그것이 가능하도록 별도 보상 체계를 두며, 본사 엔지니어는 상주 로테이션으로 양성합니다. 문화는 업스트림 우선을 넘어 오픈소스 생태계를 주도하는 기업 문화로 갑니다. 기여자에서 메인테이너·커미터로 올라가고, 우리가 운영하는 레퍼런스 프로젝트에 외부 기여가 들어오게 하며, KV cache 실측을 업계 최초로 공개합니다. 마지막 문장은 세 장의 요약입니다. 니어라인 HDD 대체가 아니라 추론 캐시 티어를 QLC로 가져가려면(1장) 디바이스에서 고객 시스템 안까지 세 단계를 올라가야 하며(2장), 그 길은 FDE와 전략적 협약, 그리고 이를 해낼 사람과 문화가 엽니다(3장).")
 
 prs.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(prs.slides._sldIdLst)}장)")
