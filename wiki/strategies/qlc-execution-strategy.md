@@ -46,6 +46,10 @@ sources:
 
 두 목표는 서로를 강화한다. 워크로드가 와야 최적화할 수 있고, 안에 들어가야 워크로드가 온다. 그래서 첫 계약은 "들어갈 권리"와 "받을 권리"를 함께 담아야 한다.
 
+**두 목표의 선례와 파급** (2026-09-17 3차 피드백 반영):
+- **② 들어간다 = FDE(Forward Deployed Engineer)**. 고객사 파견 엔지니어를 FDE로 명명한다. Palantir가 10여 년 전 창안한 역할(내부 코드명 Delta)로, 고객 환경 내부에 상주하며 실제 운영 제약 아래서 프로덕션 시스템을 직접 구축하고 청구 시간이 아니라 성과(outcome)로 평가받는다. "명시적 요구 vs 실제 요구"의 간극을 현장에서 코드로 메우고, 특정 고객용 거친 해법(gravel road)이 제품 표준 기능(paved highway)으로 포장되는 피드백 루프를 만든다. 파급: 고객 락인의 동력이자 640% 주가 수익률의 원천으로 회자되며, Anthropic·OpenAI가 엔터프라이즈 GTM 전략으로 채택했다(OpenAI는 2025년 초 FDE 팀 2명 → 10명+) ([palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md)). 메모리는 제조 리드타임이 길어 FDE에 시스템 아키텍트·TCO 모델링 역량을 결합한다.
+- **① 받는다 = 전략적 협약(SCA)**. 워크로드 공유는 개별 NDA가 아니라 공동 설계·다년 공급·운영 통합·자본을 한 계약에 묶는 전략적 협약으로 확보한다. 선례는 Micron↔Anthropic(2026-06-22): Micron의 HBM·DRAM·데이터센터 SSD를 Claude 학습·추론 워크로드에 맞춰 공동 설계·최적화("메모리·스토리지 서브시스템 설계와 최적화에 대한 공동 작업") + 다년 공급 + Claude 사내 배치 + Series H 지분. Micron은 SCA 16건·최소 계약매출 약 $100B·예치금 $22B를 공시했고 발표 후 주가는 사상 최고가를 경신했다 ([micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md), [micron-q3-fy26.md](../../sources/filings/micron-q3-fy26.md)). 삼성·SK의 Anthropic 공급계약에는 공동 설계 조항이 없으므로 우리가 먼저 제안한다.
+
 ### 2.1 전략 축 — 하나의 베팅, 세 개의 순서
 
 - **베팅**: "QLC로 추론 캐시 티어를 가져간다." 니어라인 HDD 대체는 들어가지 않는다(공급 부족 3~5년, 커머디티 경쟁, 접점 부재). 모델상 이 티어는 2030년 350EB(전 미디어)이고 QLC 침투 50%가 조건부 상방이다 ([qlc-ssd-market.md](../concepts/qlc-ssd-market.md) §4).

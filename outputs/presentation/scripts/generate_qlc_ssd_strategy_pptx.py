@@ -2,9 +2,9 @@
 """QLC eSSD 전략 — 3장 덱 생성 v2 (시각 중심: 글 최소, 그림·도형으로 논증).
 
 S1 배경: 3기 스트립 + 이정표 타임라인 + 통합 그래프 + 키넘버 스티커
-S2 역량: 갭 타일 4 + Phase 1·2·3 스택 그림(고객 시스템 5계층 중 우리가 닿는 층을 색으로) + 진행 바(삼성 현 위치) + 협업 기업 로고
-S3 실행: 교환 그림(삼성 개발실 ↔ 고객 시스템: 위 화살표 "우리가 들어간다", 아래 화살표 "워크로드가 온다", 가운데 계약 자물쇠)
-        + 대상 로고 스트립 + 5축 타일 + 90일·1년·3년 핀 + 결정 요청
+S2 역량: 갭 타일 4 + Phase 1·2·3 스택 그림(고객 시스템 5계층의 구체 기술을 층마다 적고, 우리가 닿는 층을 색으로) + 진행 바(삼성 현 위치)
+S3 실행: 두 트랙 그림(삼성 개발실 ↔ 고객 시스템: 위 화살표 "FDE가 들어간다", 아래 화살표 "SCA로 워크로드가 온다",
+        가운데 선례 카드 2 = Palantir FDE·Micron↔Anthropic SCA) + 5축 타일 + 90일·1년·3년 핀 + 결정 요청
 
 디자인 시스템: outputs/presentation/ssd-strategy.pptx 승계
   20 x 11.25 in 캔버스 / Arial 단일 폰트 / Samsung Blue #1428A0 단일 액센트
@@ -286,13 +286,12 @@ band(s, 9.42, 0.80, "결론", "니어라인 HDD 대체 대신, 오늘 TLC가 서
 footer(s, "출처: TrendForce 분기 실측(2022~2Q26)·QLC 30EB(2024)·SanDisk FMS 2026·Meta·Solidigm 발표 종합, 2026~2030은 추정(e) · 상세: QLC eSSD 전략 보고서 1~3장", 1)
 notes(s, "배경 한 장입니다. 2022년은 QLC 주문의 해가 아니라 조건이 갖춰진 해였습니다: 전문 벤더(Solidigm) 출범, 하이퍼스케일러 주도 폼팩터(E1.S/E1.L), Meta·Google의 배치 표준 비준(2022-12), NAND 가격 급락, 학습 데이터셋 6배. 하이퍼스케일러가 원한 것은 HDD 대역폭 붕괴를 메우는 용량 계층(Meta: 10 MB/s/TB), 공급자가 판 것은 1U에 1PB의 TCO였습니다. 물량은 AI 추론 서버의 전력 효율이 우선순위가 된 2024년에 터졌습니다(TrendForce 30EB, 4배). 구매 기준은 TB당 원가·랙 밀도 → TB당 와트·공급 확보 → 유효 DWPD·토큰 경제성으로 이동합니다. 향후 3~5년 공급 부족 국면에서 HDD 대체는 커머디티 경쟁이라 들어가지 않고, KV cache 오프로드가 만드는 추론 캐시 티어를 QLC로 가져갑니다. 이 티어는 오늘 TLC(1~3 DWPD)가 서비스합니다. 그래프: 비트는 10배, 가격 정상화 기준선에서 매출은 정체, 진한 파랑은 호스트 협력 배치가 성립할 때의 조건부 상방. 모델 가정은 위키 qlc-ssd-market.md §4.3.")
 
-# ================================================================ S2. 요구사항·역량·기술 전략
+# ================================================================ S2. 요구사항·역량·기술 전략 (v3: 협업 기업 제거, Phase 스택 확대 + 계층별 기술)
 s = prs.slides.add_slide(BLANK)
 header(s, "QLC eSSD 전략 · 요구사항과 역량, 기술 전략",
        "QLC가 캐시 티어에 들어가려면 디바이스에서 고객 시스템 안까지 세 단계로 올라가야 합니다",
-       "갭은 내구성·스트림·접점 세 가지이고 수단은 이미 있습니다. 세 단계의 그림과 삼성의 현 위치, 협업할 기업입니다.")
+       "갭은 내구성·스트림·접점 세 가지이고 수단은 이미 있습니다. 고객 시스템 다섯 계층의 기술과 우리가 닿는 층, 삼성의 현 위치입니다.")
 
-# 갭 타일 4
 T_Y, T_H, T_W, T_GAP = 2.80, 1.06, 4.41, 0.26
 tiles = [
     ("10~40배", 1.95, "내구성 갭", "QLC 0.075~0.6 vs TLC 1~3 DWPD"),
@@ -308,56 +307,83 @@ for i, (num, nw, lab, desc) in enumerate(tiles):
     tb(s, x + 0.28 + nw + 0.12, T_Y, T_W - nw - 0.6, T_H,
        [(lab, 15.75, True, INK), (desc, 13.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.05)
 
-# Phase 스택 그림
-P_Y, P_H, P_W = 4.08, 3.80, 5.92
-LAYERS = ["응용 · 추론 엔진", "KV 캐시 관리자", "I/O 라이브러리", "커널 · 플랫폼", "SSD 디바이스"]
-phases = [
+
+def stack2(slide, x, y, w, names, techs, states, layer_h=0.74, gap=0.06):
+    """계층 스택 v2: 층 이름 + 그 층의 구체 기술(작은 글씨). 각 층의 y 반환."""
+    ys = []
+    for i, (nm, tc, st) in enumerate(zip(names, techs, states)):
+        ly = y + i * (layer_h + gap)
+        stl = STATE_STYLE[st]
+        rect(slide, x, ly, w, layer_h, fill=stl["fill"], line=stl["line"], line_w=0.75)
+        c1 = stl["color"]
+        c2 = WHITE if st == "own" else (INK if st == "touch" else GRAY_2)
+        tb(slide, x + 0.16, ly + 0.06, w - 0.32, layer_h - 0.1,
+           [(nm, 13.5, True, c1), (tc, 11.25, False, c2)], spacing=1.04)
+        ys.append(ly)
+    return ys
+
+
+P_Y, P_H, P_W = 4.08, 5.06, 5.92
+LAYER_NAMES = ["응용 · 추론 엔진", "KV 캐시 관리자", "I/O 라이브러리", "커널 · 플랫폼", "SSD 디바이스"]
+phase_defs = [
     ("Phase 1", "디바이스를 잘 만든다", ["none", "none", "none", "none", "own"],
+     ["vLLM · SGLang · TensorRT-LLM",
+      "Dynamo KVBM · LMCache · Mooncake · FlexKV",
+      "NIXL · GPUDirect Storage · io_uring · SPDK",
+      "Linux write streams · XFS · CMX(DOCA Memos)",
+      "RUH 200+ 펌웨어 · 2Tb QLC(WAF≈1) · NVMe KV 확장 · 텔레메트리 · 액체냉각"],
      "KV-ready QLC: RUH 200+, 수명 보증 조건표"),
     ("Phase 2", "워크로드 분석으로 최적화한다", ["none", "none", "touch", "touch", "own"],
+     ["vLLM · SGLang · TensorRT-LLM",
+      "KVBM 빈도 필터 · LMCache 퇴거 정책 = 트레이스의 원천",
+      "io_uring·GDS 백엔드에 write stream 부착 · xNVMe · fio·blktrace·eBPF",
+      "Linux 6.16 write streams · XFS·f2fs 스트림 · CMX 힌트 매핑 검증",
+      "RUH 정책(수명·테넌트·prefix) · WAF·유효 DWPD 실측 · 디지털 트윈"],
      "트레이스 → RUH 정책 → WAF·DWPD 실측 공개"),
     ("Phase 3", "고객 시스템 안에서 함께 설계한다", ["touch", "own", "own", "own", "own"],
+     ["커넥터·스케줄러 이해 · 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)",
+      "KVBM·LMCache·Mooncake·FlexKV 플러그인 메인라인 머지",
+      "NIXL 스토리지 플러그인 · xNVMe 배치 API가 기본 백엔드",
+      "XFS·f2fs 스트림 완주 · DOCA Memos↔배치 표준 공동 정의 · SNIA·OCP",
+      "레퍼런스 스택의 기본 디바이스 · 수명 보증 SLA"],
      "메인라인 머지 · 공용 TCO 모델 · 공동 계약"),
 ]
-STK_W, LH, LG = 3.30, 0.40, 0.06
-for i, (ph, ttl, states, outcome) in enumerate(phases):
+STK_W, LH, LG = 3.88, 0.74, 0.06
+for i, (ph, ttl, states, techs, outcome) in enumerate(phase_defs):
     x = MX + i * (P_W + 0.33)
     hot = i == 2
     rect(s, x, P_Y, P_W, P_H, fill=TINT if hot else WHITE, line=None if hot else LINE, line_w=0.75)
     tb(s, x + 0.38, P_Y + 0.16, P_W - 0.76, 0.34, [[(ph + "  ", 18, True, BLUE), (ttl, 18, True, INK)]])
-    sx, sy0 = x + 0.42, P_Y + 0.62
-    ys = stack(s, sx, sy0, STK_W, LAYERS, states, layer_h=LH, gap=LG)
-    ax = sx + STK_W + 0.22            # 주석 영역 시작
-    aw = x + P_W - ax - 0.20
+    sx, sy0 = x + 0.38, P_Y + 0.62
+    ys = stack2(s, sx, sy0, STK_W, LAYER_NAMES, techs, states, layer_h=LH, gap=LG)
+    ax = sx + STK_W + 0.18
+    aw = x + P_W - ax - 0.16
     if i == 0:
-        tb(s, ax, ys[4] - 0.02, aw, 0.46, [("우리가 만드는 것", 13.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-        tb(s, ax, ys[0], aw, 1.6, [("고객 시스템은 밖에 있습니다", 13.5, False, GRAY_2)], spacing=1.05)
+        tb(s, ax, ys[4], aw, LH, [("우리가 만드는 것", 12.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.02)
+        tb(s, ax, ys[0], aw, LH * 2, [("고객 시스템은 밖에 있습니다", 12.0, False, GRAY_2)], spacing=1.02)
     elif i == 1:
-        top, bot = ys[0] + 0.05, ys[4] + LH - 0.05
-        v_arrow(s, ax, top, 0.30, bot - top, fill=BLUE_T2)
-        v_arrow(s, ax + 0.42, top, 0.30, bot - top, up=True, fill=BLUE)
-        tb(s, ax + 0.85, ys[1] - 0.02, aw - 0.85, 0.46, [("트레이스", 13.5, True, INK), ("워크로드가 내려옴", 12.75, False, GRAY)],
+        top, bot = ys[0] + 0.08, ys[4] + LH - 0.08
+        v_arrow(s, ax, top, 0.22, bot - top, fill=BLUE_T2)
+        v_arrow(s, ax + 0.28, top, 0.22, bot - top, up=True, fill=BLUE)
+        tb(s, ax + 0.58, ys[1], aw - 0.58, LH, [("트레이스", 12.0, True, INK), ("내려옴", 11.0, False, GRAY)],
            anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
-        tb(s, ax + 0.85, ys[3] - 0.02, aw - 0.85, 0.46, [("정책", 13.5, True, BLUE), ("최적화가 올라감", 12.75, False, GRAY)],
+        tb(s, ax + 0.58, ys[3], aw - 0.58, LH, [("정책", 12.0, True, BLUE), ("올라감", 11.0, False, GRAY)],
            anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
     else:
-        pw = person(s, ax, ys[1] - 0.06, 0.54, color=BLUE)
-        tb(s, ax + pw + 0.12, ys[1] - 0.02, aw - pw - 0.12, 0.46, [("상주 · 공동 설계", 13.5, True, BLUE)],
-           anchor=MSO_ANCHOR.MIDDLE)
-        tb(s, ax, ys[3] - 0.02, aw, 0.46, [("메인라인 머지", 13.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-        tb(s, ax, ys[0] - 0.02, aw, 0.46, [("공용 TCO 모델", 13.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, x + 0.38, P_Y + 3.02, P_W - 0.76, 0.62, [(outcome, 14.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.05)
+        pw = person(s, ax + 0.02, ys[1] + 0.12, 0.50, color=BLUE)
+        tb(s, ax + pw + 0.10, ys[1], aw - pw - 0.10, LH, [("FDE 상주", 12.75, True, BLUE), ("공동 설계", 11.25, False, GRAY)],
+           anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+        tb(s, ax, ys[2], aw, LH, [("메인라인", 12.75, True, BLUE), ("머지", 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+        tb(s, ax, ys[0], aw, LH, [("공용 TCO", 12.75, True, INK), ("모델", 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+    tb(s, x + 0.38, P_Y + P_H - 0.44, P_W - 0.76, 0.34, [(outcome, 14.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.05)
 
-# 범례 (스택 색)
-LEG_Y = P_Y + P_H + 0.08
+LEG_Y = P_Y + P_H + 0.10
 lx = MX
 for fill, line, t in [(BLUE, None, "우리 코드·제품"), (BLUE_T2, None, "관측·이해"), (WHITE, LINE, "고객 영역")]:
     rect(s, lx, LEG_Y + 0.04, 0.26, 0.18, fill=fill, line=line, line_w=0.75)
     tb(s, lx + 0.34, LEG_Y, 1.6, 0.26, [(t, 12.75, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
     lx += 2.0
-
-# 진행 바 + 삼성 현 위치
-BAR_Y, BAR_H = LEG_Y + 0.34, 0.18
+BAR_Y, BAR_H = LEG_Y + 0.36, 0.18
 for i in range(3):
     x = MX + i * (P_W + 0.33)
     rect(s, x, BAR_Y, P_W, BAR_H, fill=WHITE, line=LINE, line_w=0.75)
@@ -365,107 +391,116 @@ rect(s, MX, BAR_Y, P_W, BAR_H, fill=BLUE)
 rect(s, MX + P_W + 0.33, BAR_Y, P_W * 0.28, BAR_H, fill=BLUE_T2)
 mk_x = MX + P_W + 0.33 + P_W * 0.28
 rect(s, mk_x - 0.13, BAR_Y + BAR_H + 0.04, 0.26, 0.20, fill=BLUE, shape=MSO_SHAPE.ISOSCELES_TRIANGLE)
-tb(s, mk_x + 0.22, BAR_Y + BAR_H, 7.0, 0.30,
-   [[("삼성 현 위치  ", 13.5, True, BLUE), ("디바이스는 확보, 워크로드 실측은 미공개, 캐시 관리자 기여 0", 12.75, False, GRAY)]],
+tb(s, mk_x + 0.22, BAR_Y + BAR_H, 9.0, 0.30,
+   [[("삼성 현 위치  ", 13.5, True, BLUE), ("디바이스는 확보(CMX 첫 공급), 워크로드 실측은 미공개, 캐시 관리자 4종 기여 0", 12.75, False, GRAY)]],
    anchor=MSO_ANCHOR.MIDDLE)
 
-# 협업 기업
-G_Y = BAR_Y + BAR_H + 0.38
-tb(s, MX, G_Y, CW, 0.28, [("협업할 기업 · 목적을 달리해 다섯 층에 동시 진입", 16.5, True, BLUE)])
-groups = [
-    ("플랫폼 게이트", [("logo", "nvidia")]),
-    ("스펙 상류", [("logo", "anthropic"), ("logo", "openai")]),
-    ("물량 · 활성화", [("logo", "meta"), ("logo", "google"), ("logo", "microsoft"), ("logo", "aws")]),
-    ("실증 · 채널", [("chip", "VAST Data"), ("chip", "DDN"), ("chip", "WEKA")]),
-    ("오픈소스", [("chip", "LMCache"), ("chip", "Mooncake"), ("chip", "FlexKV"), ("logo", "vllm")]),
-]
-GW = (CW - 0.25 * 4) / 5
-GB_Y, GB_H = G_Y + 0.34, 10.28 - (G_Y + 0.34)
-for i, (gl, items) in enumerate(groups):
-    x = MX + i * (GW + 0.25)
-    rect(s, x, GB_Y, GW, GB_H, fill=WHITE, line=LINE, line_w=0.75)
-    tb(s, x + 0.22, GB_Y + 0.10, GW - 0.44, 0.26, [(gl, 14.25, True, INK)])
-    lh = 0.30 if len(items) <= 2 else 0.24
-    logo_row(s, items, x + 0.22, GB_Y + 0.48, lh, gap=0.16 if len(items) > 2 else 0.28, max_w=GW - 0.44, chip_size=12.5)
+footer(s, "출처: StorageReview·Solidigm·Kioxia 스펙(DWPD), ScaleFlux 2026-07(RUH 200+), GitHub README 확인(LMCache·Mooncake·FlexKV·3FS·xNVMe), CacheLib FDP 문서(WAF), Linux 6.16·XFS 패치, NVIDIA CMX 문서", 2)
+notes(s, "요구사항과 역량 한 장입니다. 갭 세 가지: 내구성(QLC 정격 0.075~0.6 vs TLC 1~3 DWPD, 10~40배), 스트림(RUH 2~8 vs 200+), 접점(KV 캐시 관리자 4종 코드에 배치·내구성 언급 0). 수단은 있습니다(CacheLib 실측 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). 그림은 고객 시스템 5계층을 세 번 그리고 우리가 닿는 층을 색으로 표시하며, 각 층에 그 층을 구성하는 기술을 적었습니다. 응용·추론 엔진(vLLM·SGLang·TensorRT-LLM), KV 캐시 관리자(NVIDIA Dynamo KVBM·LMCache·Mooncake·Tencent FlexKV), I/O 라이브러리(NIXL·GPUDirect Storage·io_uring·SPDK/xNVMe), 커널·플랫폼(Linux 6.16 write streams·XFS/f2fs 스트림·NVIDIA CMX와 DOCA Memos), SSD 디바이스(컨트롤러·펌웨어 RUH·2Tb QLC·NVMe KV 확장·텔레메트리). Phase 1은 SSD 층만 우리 것입니다(KV-ready QLC). Phase 2는 캐시 관리자의 빈도 필터·퇴거 정책이 트레이스의 원천이고, I/O 라이브러리의 io_uring·GDS 백엔드에 write stream을 부착하며 커널 스트림과 CMX 힌트 매핑을 검증해 RUH 정책·WAF·유효 DWPD 실측을 공개합니다. Phase 3는 캐시 관리자 4종에 플러그인을 메인라인으로 머지하고, NIXL·xNVMe가 기본 백엔드가 되며, DOCA Memos와 배치 표준의 매핑을 NVIDIA와 공동 정의하고, 응용 층은 커넥터·스케줄러를 이해해 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)로 대화합니다. FDE(Forward Deployed Engineer)가 고객 옆에 상주합니다. 삼성 현 위치는 Phase 1 확보, Phase 2 진입: KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고 캐시 관리자 4종에 기여가 없습니다. 오케스트레이션 자체는 만들지 않습니다.")
 
-footer(s, "출처: StorageReview·Solidigm·Kioxia 스펙(DWPD), ScaleFlux 2026-07(RUH 200+), GitHub README 확인(LMCache·Mooncake·FlexKV·3FS), CacheLib FDP 문서(WAF) · 로고는 식별 표시", 2)
-notes(s, "요구사항과 역량 한 장입니다. 갭 세 가지: 내구성(QLC 정격 0.075~0.6 vs TLC 1~3 DWPD, 10~40배), 스트림(RUH 2~8 vs 200+), 접점(KV 캐시 관리자 4종 코드에 배치·내구성 언급 0). 수단은 있습니다(CacheLib 실측 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). 그림은 고객 시스템 5계층(응용·추론 엔진 / KV 캐시 관리자 / I/O 라이브러리 / 커널·플랫폼 / SSD)에서 우리가 닿는 층을 색으로 표시합니다. Phase 1은 SSD 층만 우리 것입니다(KV-ready QLC: RUH 200+, 수명 보증 조건표). Phase 2는 고객 워크로드 트레이스가 내려오고 최적화 정책이 올라갑니다. I/O·커널 층을 관측·부착합니다(업계 최초 KV cache WAF 실측 공개가 목표). Phase 3는 캐시 관리자·I/O·커널에 우리 코드가 메인라인으로 들어가고, 우리 엔지니어가 고객 옆에 상주하며, 공용 TCO 모델로 응용 층까지 이해합니다(FlexKV의 vLLM·SGLang·Dynamo 메인라인 머지가 co-design의 증거). 삼성 현 위치는 Phase 1 확보, Phase 2 진입: KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 RUH 정책·WAF 실측이 미공개이고, 캐시 관리자 4종에 기여가 없습니다. 협업은 층별로 목적이 다릅니다: NVIDIA(CMX 플랫폼 게이트), Anthropic·OpenAI(스펙 상류), 하이퍼스케일러(물량·활성화), VAST·DDN·WEKA(실증 채널), 오픈소스 커뮤니티(업스트림). 오케스트레이션 자체는 만들지 않습니다.")
-
-# ================================================================ S3. 실행 전략·고객 협업
+# ================================================================ S3. 실행 전략·고객 협업 (v3: FDE + SCA 두 트랙, 선례 카드)
 s = prs.slides.add_slide(BLANK)
 header(s, "QLC eSSD 전략 · 실행 전략과 고객 협업",
-       "고객의 워크로드를 받고 고객 시스템 안으로 들어갑니다. 조직·보상·계약이 그 길을 엽니다",
-       "실행의 목표는 두 가지입니다. 다섯 축이 그 길을 열고, 90일·1년·3년으로 갑니다.")
+       "FDE로 고객 시스템 안에 들어가고, 전략적 협약으로 워크로드를 받습니다. 선례는 이미 있습니다",
+       "Palantir가 만든 FDE와 Micron이 Anthropic과 맺은 SCA가 두 목표의 선례입니다. 다섯 축이 길을 열고 90일·1년·3년으로 갑니다.")
 
-M_Y, M_H = 2.80, 4.10
+M_Y, M_H = 2.80, 4.52
 # 좌: 삼성 개발실
-LB_W = 3.95
+LB_W = 3.85
 rect(s, MX, M_Y, LB_W, M_H, fill=WHITE, line=LINE, line_w=0.75)
 tb(s, MX + 0.34, M_Y + 0.22, LB_W - 0.68, 0.32, [("삼성 개발실", 18, True, BLUE)])
 tb(s, MX + 0.34, M_Y + 0.56, LB_W - 0.68, 0.26, [("들고 들어가는 것", 12.75, False, GRAY_2)])
-gives = ["KV-ready QLC + 수명 보증", "상주 엔지니어(Co-Design Pod)", "업스트림 코드 · 공용 TCO 모델", "다년 공급 · 선급 · 자본"]
-gy = M_Y + 0.98
+gives = ["KV-ready QLC + 수명 보증", "FDE(고객 상주 엔지니어)", "업스트림 코드 · 공용 TCO 모델", "다년 공급 · 선급 · 자본"]
+gy = M_Y + 1.02
 for g in gives:
     rect(s, MX + 0.34, gy + 0.11, 0.16, 0.16, fill=BLUE)
     tb(s, MX + 0.62, gy, LB_W - 0.96, 0.38, [(g, 14.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
-    gy += 0.62
-rect(s, MX + 0.34, M_Y + M_H - 0.78, LB_W - 0.68, 0.012, fill=LINE)
-tb(s, MX + 0.34, M_Y + M_H - 0.68, LB_W - 0.68, 0.5,
-   [("자회사 · Pod · 별도 보상이 뒤를 받칩니다", 12.75, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+    gy += 0.64
+rect(s, MX + 0.34, M_Y + M_H - 0.80, LB_W - 0.68, 0.012, fill=LINE)
+tb(s, MX + 0.34, M_Y + M_H - 0.70, LB_W - 0.68, 0.5,
+   [("자회사 · 별도 보상 · 업스트림 문화가 뒤를 받칩니다", 12.75, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
 
 # 우: 고객 시스템
-RB_W = 4.36
+RB_W = 4.30
 RBX = RIGHT - RB_W
 rect(s, RBX, M_Y, RB_W, M_H, fill=WHITE, line=LINE, line_w=0.75)
 tb(s, RBX + 0.34, M_Y + 0.22, RB_W - 0.68, 0.32, [("고객 시스템", 18, True, BLUE)])
 tb(s, RBX + 0.34, M_Y + 0.56, RB_W - 0.68, 0.26, [("우리 사람과 코드가 들어가는 자리", 12.75, False, GRAY_2)])
-cys = stack(s, RBX + 0.34, M_Y + 0.98, 2.62, ["응용 · 추론 엔진", "KV 캐시 관리자", "I/O · 커널", "SSD: 삼성 QLC"],
+cys = stack(s, RBX + 0.34, M_Y + 0.98, 2.56, ["응용 · 추론 엔진", "KV 캐시 관리자", "I/O · 커널", "SSD: 삼성 QLC"],
             ["none", "touch", "own", "own"], layer_h=0.5, gap=0.09)
-_px = RBX + 0.34 + 2.62 + 0.16
+_px = RBX + 0.34 + 2.56 + 0.16
 pw = person(s, _px, cys[1] + 0.03, 0.44, color=BLUE)
-tb(s, _px + pw + 0.10, cys[1], 0.75, 0.5, [("상주", 12.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, _px + pw + 0.08, cys[1], 0.8, 0.5, [("FDE", 12.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
 tb(s, _px, cys[2], 1.05, 0.5, [("머지", 12.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+logo_row(s, [("logo", "anthropic"), ("logo", "openai"), ("logo", "nvidia"), ("logo", "meta")],
+         RBX + 0.34, M_Y + M_H - 0.62, 0.24, gap=0.18, max_w=RB_W - 0.68)
 
-# 중앙: 교환 화살표 + 계약
-CX0 = MX + LB_W + 0.30
-CX1 = RBX - 0.30
+# 중앙: 두 트랙 화살표 + 선례 카드 2
+CX0 = MX + LB_W + 0.28
+CX1 = RBX - 0.28
 CWID = CX1 - CX0
-A_H = 1.02
-ar1 = rect(s, CX0, M_Y + 0.30, CWID, A_H, fill=BLUE, shape=MSO_SHAPE.RIGHT_ARROW)
-ar1.adjustments[0] = 0.78
-ar1.adjustments[1] = 0.30
-tb(s, CX0 + 0.45, M_Y + 0.30, CWID - 1.6, A_H,
-   [("① 고객 시스템 안으로 들어간다", 18, True, WHITE), ("상주 엔지니어 · 업스트림 코드 · 수명 보증 · 자본", 14.25, False, WHITE)],
-   anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)
-LK_Y = M_Y + 0.30 + A_H + 0.20
-LK_H = M_H - 2 * (0.30 + A_H) - 0.40 + 0.30
-rect(s, CX0 + 0.6, LK_Y, CWID - 1.2, LK_H, fill=WHITE, line=BLUE, line_w=1.5)
-tb(s, CX0 + 0.9, LK_Y, CWID - 1.8, LK_H,
-   [("계약으로 고정 · 창은 2027년 상반기까지", 15.75, True, BLUE),
-    ("공급 + 공동 최적화 + 워크로드 접근권 + 수명 보증", 14.25, False, INK)],
-   anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER, spacing=1.08)
-B_Y = LK_Y + LK_H + 0.20
-ar2 = rect(s, CX0, B_Y, CWID, A_H, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_ARROW)
-ar2.adjustments[0] = 0.78
-ar2.adjustments[1] = 0.30
-tb(s, CX0 + 1.2, B_Y, CWID - 1.6, A_H,
-   [("② 워크로드가 온다", 18, True, INK), ("트레이스 · KV 수명 정책 · 레퍼런스 스펙 자리 · 활성화 약정", 14.25, False, INK)],
-   anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)
+A_H = 0.92
+ar1 = rect(s, CX0, M_Y + 0.12, CWID, A_H, fill=BLUE, shape=MSO_SHAPE.RIGHT_ARROW)
+ar1.adjustments[0] = 0.80
+ar1.adjustments[1] = 0.26
+tb(s, CX0 + 0.40, M_Y + 0.12, CWID - 1.4, A_H,
+   [("① FDE가 고객 시스템 안으로 들어간다", 17.25, True, WHITE), ("상주 엔지니어 · 업스트림 코드 · 수명 보증", 13.5, False, WHITE)],
+   anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
 
-# 대상 로고 스트립
-LS_Y = M_Y + M_H + 0.14
-tb(s, MX, LS_Y, 0.9, 0.34, [("대상", 14.25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-logo_row(s, [("logo", "anthropic"), ("logo", "openai"), ("logo", "nvidia"), ("logo", "meta"), ("logo", "google"),
-             ("logo", "microsoft"), ("logo", "aws"), ("chip", "VAST Data"), ("chip", "DDN"), ("chip", "WEKA")],
-         MX + 0.9, LS_Y + 0.02, 0.30, gap=0.34, max_w=CW - 1.0, chip_size=12.5)
+CARD_Y = M_Y + 0.12 + A_H + 0.16
+CARD_H = M_H - 2 * (0.12 + A_H) - 0.32
+CARD_W = (CWID - 0.22) / 2
+
+# 선례 카드 A: Palantir FDE
+cx = CX0
+rect(s, cx, CARD_Y, CARD_W, CARD_H, fill=TINT)
+tb(s, cx + 0.24, CARD_Y + 0.12, CARD_W - 0.48, 0.28,
+   [[("선례 · ", 13.5, False, GRAY), ("Palantir FDE", 13.5, True, BLUE), (" (Forward Deployed Engineer)", 12.0, False, GRAY)]])
+# 미니 그림: 엔지니어 3명 → 고객 현장
+pic_y = CARD_Y + 0.52
+px = cx + 0.24
+for k in range(3):
+    person(s, px + k * 0.30, pic_y + 0.05, 0.36, color=BLUE)
+rect(s, px + 0.98, pic_y + 0.14, 0.34, 0.16, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+rect(s, px + 1.40, pic_y, 1.05, 0.46, fill=WHITE, line=BLUE, line_w=1.0)
+tb(s, px + 1.40, pic_y, 1.05, 0.46, [("고객 현장", 12.0, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+tb(s, cx + 0.24, pic_y + 0.60, CARD_W - 0.48, CARD_H - 1.14,
+   [("고객 시스템 안에 상주해 실제 요구를 코드로 풀고 성과로 평가받는 엔지니어(코드명 Delta)", 12.0, False, GRAY),
+    ("파급: 고객 락인의 동력, 640% 주가 수익률의 원천으로 회자. Anthropic·OpenAI가 GTM으로 채택", 12.0, True, INK)],
+   spacing=1.04)
+
+# 선례 카드 B: Micron ↔ Anthropic SCA
+cx = CX0 + CARD_W + 0.22
+rect(s, cx, CARD_Y, CARD_W, CARD_H, fill=TINT)
+tb(s, cx + 0.24, CARD_Y + 0.12, CARD_W - 0.48, 0.28,
+   [[("선례 · ", 13.5, False, GRAY), ("Micron ↔ Anthropic SCA", 13.5, True, BLUE), (" (2026-06)", 12.0, False, GRAY)]])
+# 미니 그림: 계약 4요소 블록
+blk_x, blk_y = cx + 0.24, CARD_Y + 0.52
+for k, (lab, hot) in enumerate([("공동 설계", True), ("다년 공급", False), ("운영 통합", False), ("자본(Series H)", False)]):
+    by = blk_y + k * 0.30
+    rect(s, blk_x, by, 1.55, 0.26, fill=BLUE if hot else BLUE_T2)
+    tb(s, blk_x, by, 1.55, 0.26, [(lab, 11.25, True, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+tb(s, blk_x + 1.55 + 0.22, blk_y - 0.02, CARD_W - 0.48 - 1.77, CARD_H - 0.64,
+   [("네 요소를 한 계약에 묶어 워크로드·스펙 접근권을 확보", 12.0, False, GRAY),
+    ("Micron SCA 16건 · 최소 매출 약 $100B · 예치금 $22B", 12.0, True, INK),
+    ("삼성·SK의 Anthropic 계약에는 공동 설계 조항이 없습니다. 우리가 먼저 제안합니다", 12.0, True, BLUE)],
+   spacing=1.04)
+
+B_Y = CARD_Y + CARD_H + 0.16
+ar2 = rect(s, CX0, B_Y, CWID, A_H, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_ARROW)
+ar2.adjustments[0] = 0.80
+ar2.adjustments[1] = 0.26
+tb(s, CX0 + 1.05, B_Y, CWID - 1.4, A_H,
+   [("② 전략적 협약(SCA)으로 워크로드가 온다", 17.25, True, INK), ("트레이스 · KV 수명 정책 · 레퍼런스 스펙 자리 · 창은 2027년 상반기까지", 13.5, False, INK)],
+   anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
 
 # 5축 타일
-F_Y, F_H = LS_Y + 0.56, 1.00
+F_Y, F_H = M_Y + M_H + 0.16, 0.96
 axes = [("전략", "베팅: 추론 캐시 티어\nHDD 대체는 안 함"),
-        ("조직", "SV 소프트웨어 자회사\n+ 고객 상주 Pod"),
+        ("조직", "SV 소프트웨어 자회사\n+ FDE Pod 상주"),
         ("인사", "별도 보상 · 앵커 5명\n본사 엔지니어 상주"),
         ("문화", "업스트림 우선\nKV 실측 최초 공개"),
-        ("재무", "공동 플랫폼 계약 · 보증\n지분으로 접근권")]
+        ("재무", "SCA · 수명 보증\n지분으로 접근권")]
 FW = (CW - 0.23 * 4) / 5
 for i, (lab, txt) in enumerate(axes):
     x = MX + i * (FW + 0.23)
@@ -477,11 +512,11 @@ for i, (lab, txt) in enumerate(axes):
        anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
 
 # 90일·1년·3년 핀
-TL_Y = F_Y + F_H + 0.34
+TL_Y = F_Y + F_H + 0.30
 rect(s, MX + 0.2, TL_Y + 0.28, CW - 0.4, 0.02, fill=LINE)
-tiers = [("90일", "제품 정의 · 업스트림 PR · Anthropic 조항 · Pod 1호"),
-         ("1년", "자회사 · Pod 2사 상주 · CMX 인증 · 계약 1건"),
-         ("3년", "캐시 티어 QLC 25%+ · 계약 3건 · 기본 백엔드")]
+tiers = [("90일", "제품 정의 · 업스트림 PR · SCA 조항 제안 · FDE Pod 1호"),
+         ("1년", "자회사 · FDE 2사 상주 · CMX 인증 · SCA 1건"),
+         ("3년", "캐시 티어 QLC 25%+ · SCA 3건 · 기본 백엔드")]
 TW = CW / 3
 for i, (tl, body) in enumerate(tiers):
     x = MX + i * TW + 0.2
@@ -490,10 +525,10 @@ for i, (tl, body) in enumerate(tiers):
        anchor=MSO_ANCHOR.MIDDLE)
 
 band(s, 9.52, 0.76, "결정 요청",
-     "① 자회사 설립과 별도 보상 승인   ② Anthropic 공동 최적화 조항 · NVIDIA 기술 협의 착수   ③ Co-Design Pod 1호 발족",
+     "① 자회사 설립과 별도 보상 승인   ② Anthropic SCA 공동 설계 조항 · NVIDIA 기술 협의 착수   ③ FDE Pod 1호 발족",
      main_size=20)
-footer(s, "출처: SK hynix 뉴스룸·CNBC(2026-01), levels.fyi 2026, Micron IR·10-Q, Pure PR, Blackstone·Bloomberg(DDN) · 규모·시점은 추정, 사내 수치는 [사내 확인]", 3)
-notes(s, "실행 전략 한 장입니다. 목표는 두 가지입니다. ① 고객 시스템 안으로 들어간다: 상주 엔지니어(Co-Design Pod, Palantir FDE·NVIDIA DevTech 모델), 캐시 관리자·I/O·커널에 메인라인으로 머지되는 업스트림 코드, 수명 보증(DWPD·WAF·W/TB SLA), 다년 공급·선급·자본. ② 워크로드가 온다: KV 블록 트레이스, 캐시 관리자의 수명 정책, 레퍼런스 스펙에 삼성 구현이 기본값으로 앉는 자리, 활성화 약정. 둘은 서로를 강화하므로 첫 계약에 들어갈 권리와 받을 권리를 함께 담고, 공급자 우위가 남은 2027년 상반기까지 계약으로 고정합니다. 다섯 축은 이 두 목표를 여는 수단입니다: 전략(하나의 베팅, HDD 대체 제외, 오케스트레이션은 만들지 않음), 조직(실리콘밸리 소프트웨어 자회사 + Co-Design Pod + 시스템 TCO 모델 조직, 본사 SSD와 동일 P&L 지표), 인사(자회사 지분·RSU형 별도 보상으로 시장가 채용, 고객·생태계 출신 앵커 5명, 본사 펌웨어 엔지니어 6~12개월 상주 로테이션. 스타트업 팀 인수는 제외), 문화(업스트림 우선, 결과 평가, KV cache 배치 표준 WAF 실측 업계 최초 공개), 재무(공동 플랫폼 계약, 수명 보증 상품, TCO 연동 가격, DDN·Tensormesh 지분). 90일: KV-ready QLC 정의, LMCache·FlexKV 업스트림 PR, Anthropic 공급계약 공동 최적화 조항 제안, NVIDIA DOCA Memos 힌트 매핑 협의, Pod 1호 발족, 자회사 설계안. 1년: 자회사 출범·앵커 영입, Pod 2사 상주, CMX/STX 인증, 공동 플랫폼 계약 1건, 수명 보증 상품. 3년: 캐시 티어 QLC 침투 25%+ 중 삼성 40%, 계약 3건, 캐시 관리자 4종 기본 백엔드. 선례와 수치는 보고서 6장·위키 qlc-execution-strategy.md.")
+footer(s, "출처: Pragmatic Engineer·FDE Academy·MindStudio(Palantir FDE), Micron IR 2026-06-22·10-Q(SCA 16건·$22B), SK hynix 뉴스룸(AI Company), levels.fyi 2026 · 규모·시점은 추정, 사내 수치는 [사내 확인]", 3)
+notes(s, "실행 전략 한 장입니다. 목표는 두 가지이고 각각 선례가 있습니다. ① FDE(Forward Deployed Engineer)가 고객 시스템 안으로 들어갑니다. Palantir가 창안한 역할로 내부 코드명 Delta, 고객 환경 내부에 상주하며 실제 운영 제약 아래서 프로덕션 시스템을 직접 구축하고 청구 시간이 아니라 성과로 평가받습니다. 명시적 요구와 실제 요구의 간극을 현장에서 코드로 메우고, 특정 고객용 거친 해법(gravel road)이 제품 표준 기능(paved highway)으로 포장되는 피드백 루프를 만듭니다. 파급: 고객 락인의 동력이자 640% 주가 수익률의 원천으로 회자되고, Anthropic·OpenAI가 엔터프라이즈 GTM 전략으로 채택했습니다(OpenAI는 2025년 초 FDE 팀 2명→10명+). 우리는 Co-Design Pod를 FDE 모델로 운영하되, 메모리는 제조 리드타임이 길므로 시스템 아키텍트·TCO 모델링 역량을 결합합니다. ② 전략적 협약(SCA)으로 워크로드가 옵니다. 선례는 Micron↔Anthropic(2026-06-22): 공동 설계(HBM·DRAM·SSD를 Claude 학습·추론 워크로드에 맞춰 공동 최적화) + 다년 공급 + 운영 통합(Claude 사내 배치) + 자본(Series H)을 한 계약에 묶었습니다. Micron은 SCA 16건, 최소 계약매출 약 $100B, 예치금 $22B를 공시했습니다. 삼성·SK의 Anthropic 공급계약에는 공동 설계 조항이 없으므로 우리가 먼저 제안합니다. 창은 공급 완화 전인 2027년 상반기까지입니다. 다섯 축은 두 목표를 여는 수단이고(전략·조직·인사·문화·재무), 90일에 제품 정의·업스트림 PR·SCA 조항 제안·FDE Pod 1호, 1년에 자회사·FDE 2사 상주·CMX 인증·SCA 1건, 3년에 캐시 티어 QLC 25%+·SCA 3건입니다. 결정 요청 세 가지입니다.")
 
 prs.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(prs.slides._sldIdLst)}장)")
