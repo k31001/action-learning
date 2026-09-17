@@ -18,6 +18,24 @@ export const UPDATES = [
   {
     date: '2026-09-17',
     type: 'build',
+    version: 'v2.46.21',
+    title: 'QLC 전략 용어 통일(용량 계층의 TB당 TCO) + 신문섭·송용호 인터뷰 인용을 덱·위키·보고서에 반영',
+    summary:
+      '"계산 옆의 가장 싼 바이트"를 공식 용어 "용량 계층(capacity tier)의 TB당 TCO"($/TB·W/TB·TB/U)로, 향후 국면은 "GPU당 컨텍스트 용량·토큰당 비용"으로 통일. ' +
+      '전략 신빙성을 위해 신문섭(Bain) "고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 이긴다", 송용호(AX/PI) "부품이 어떻게 쓰일지는 시스템 설계자 마음에 있다"·"단 한 번도 고객 지향적인 적이 없었다"·"고객의 집에서 저녁"을 덱 1·2·3장과 qlc-execution-strategy §2.0에 인용. 지식그래프 재생성. 패치 v2.46.21.',
+    tags: ['QLC', 'TCO', '고객 지향', '인터뷰', '신문섭', '송용호', '덱'],
+    items: [
+      { label: '위키', detail: 'qlc-ssd-market §3.4 용어 문단(TB당 TCO·GPU당 컨텍스트 용량), qlc-execution-strategy §2.0 「안팎의 같은 진단」(외부 신문섭 = 목표 ②, 내부 송용호 = 목표 ①·문화·인사·현지 채용)' },
+      { label: '덱 v3.4', detail: 'quote() 헬퍼. S1 스티커 박스 송용호 인용, S2 리드 신문섭 인용, S3 리드·개발실 박스 송용호 인용. 기존 리드·요약 문장은 삭제해 텍스트 총량 유지' },
+    ],
+    links: [
+      { label: 'wiki/strategies/qlc-execution-strategy.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/qlc-execution-strategy.md' },
+      { label: 'wiki/concepts/qlc-ssd-market.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/qlc-ssd-market.md' },
+    ],
+  },
+  {
+    date: '2026-09-17',
+    type: 'build',
     version: 'v2.46.20',
     title: 'QLC 시장 위키 §3.4 신설 — 고객이 QLC를 원하는 이유(불변과 변화), 덱 v3.3 3장 관통 축',
     summary:
