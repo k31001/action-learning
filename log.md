@@ -1851,3 +1851,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **outputs**: `report/qlc-ssd-strategy-report.md` v1.0(요약·6장·부록 A 팩트체크 32건·B 용어·C 자산맵·PPT 압축 맵) · `presentation/assets/qlc_model.csv` + `qlc_demand_share_revenue{,_wide,_slide}.png`(`scripts/generate_qlc_chart.py`, 이중 축 대신 3단 공유축) · `presentation/qlc-ssd-strategy-outline.md` + `scripts/generate_qlc_ssd_strategy_pptx.py` → `qlc-ssd-strategy.pptx` 3장(S1 3기 카드+그래프+스티커+결론 밴드 / S2 갭 타일 4+Phase 그리드+협업 기업 로고 5층 / S3 5축+3티어+협업 제안+결정 요청). 로고 자산 `assets/logos/`(gilbarbara/logos·simple-icons, README에 출처·사용 원칙). 렌더 QA: LibreOffice Impress 설치 후 NanumGothic 렌더 사본 PDF→PNG 3회(카드 높이·텍스트 축약·로고 행 자동 축소 반영).
 - **dashboard (v2.46.18, 패치)**: `knowledgeGraph.js` 재생성(nodes 107·edges 585·orphans 0), `updates.js` 항목, `version.js`. `npm run build` 검증(아래 결과 참조). UI·탭·데이터 카테고리 무변경.
 - **건너뜀**: scenario-planning-report·slide-outline(시나리오 플래닝 덱 체인)은 본 보고서가 별도 시리즈라 미해당. 대시보드 storyline·strategies 미러는 시나리오 확률·전략 목록 불변이라 무변경.
+
+## [2026-09-17] build | QLC 덱 v2 시각 중심 개편 + 실행 전략 재점검(ScaleFlux 인수 제외, 워크로드 공유·co-design 초점)
+
+피드백: "글이 많다, 그림으로 보완 / 슬라이드 2의 Phase 1·2·3는 그림으로 / 슬라이드 3은 ScaleFlux 인수를 빼고 고객 워크로드 공유·고객 시스템 안 co-design에 초점, 한눈에 드러나게."
+- **전략 재점검(위키·보고서)**: `qlc-execution-strategy.md`에 §2.0 「두 목표 — 워크로드가 오고, 우리가 들어간다」 신설(무엇을 얻나·어떻게 여나·성공 신호), 인사 축 3항을 acqui-hire → 고객·생태계 출신 앵커 + 본사 엔지니어 상주 로테이션으로 교체, I-5·Y-2·가성비 표·시퀀싱에서 ScaleFlux 인수 제거, I-7 Co-Design Pod 1호 발족 추가. `qlc-workload-capability-phases.md` §5.3 ScaleFlux 행을 "벤치마크(인수 제외)"로. 보고서 6장에 §6.0 두 목표 신설·6.2/6.3/6.4 동기화·PPT 압축 맵 v2. ScaleFlux 팀 인수는 사용자 결정으로 선택지에서 제외(스펙 벤치마크로만 유지).
+- **덱 v2**(`generate_qlc_ssd_strategy_pptx.py` 전면 재작성): S1 3기 스트립(구매 기준 키워드) + 이정표 타임라인 5 + 그래프 + 키넘버 3. S2 갭 타일 4 + **Phase 스택 그림**(고객 시스템 5계층에서 우리가 닿는 층을 색으로, 트레이스↓·정책↑ 화살표, 상주 아이콘, 진행 바·삼성 현 위치) + 로고 5층. S3 **교환 그림**(삼성 개발실 ↔ 고객 시스템 스택, ① 들어간다 / ② 워크로드가 온다 화살표, 계약 상자 · 2027 상반기 창) + 대상 로고 + 5축 타일 + 90일·1년·3년 핀 + 결정 요청(자회사·별도 보상 / Anthropic 조항·NVIDIA 협의 / Pod 1호). 도형 헬퍼 stack·person·v_arrow 신설. 렌더 QA 2회(하단 로고 박스 잘림·화살표 몸통 두께·아이콘 라벨 겹침·타일 줄바꿈 수정). `qlc-ssd-strategy-outline.md` v2 구성표.
+- **건너뜀**: 대시보드 무변경(버전 bump 없음 — dashboard 파일 미수정), 그래프·모델 무변경.

@@ -133,7 +133,7 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 | **Tensormesh(LMCache)** | 사실상 표준 OSS KV 캐시 관리자, NVentures·AMD·CoreWeave 투자 | 배치 표준 백엔드 업스트림 | 공동 투자 + 기여 |
 | **Moonshot(Mooncake) · Tencent(FlexKV) · Alibaba(Tair)** | 중국 추론 스택의 KV 계층, HiSim 트레이스 시뮬레이터 | 플러그인 인터페이스 정합, 트레이스 방법론 | 오픈소스 기여 |
 | **VAST Data · DDN · WEKA** | CMX ICMSP 파트너, KV cache SW(DDN 2026-06), Dynamo 연동 | 6~12개월 실증·레퍼런스 아키텍처, 네오클라우드 채널 | 인증 + DDN 전략 라운드 지분 |
-| **ScaleFlux** | 200+ 스트림·7~10 DWPD 플랫폼, 워크로드 텔레메트리 | Phase 2 역량 즉시 확보 | acqui-hire 후보(누적 조달 $65.9M) |
+| **ScaleFlux** | 200+ 스트림·7~10 DWPD 플랫폼, 워크로드 텔레메트리 | Phase 1·2 스펙의 벤치마크(RUH 수·유효 DWPD 표기 방식) | 비교 대상. 팀 인수는 선택지에서 제외(사용자 결정 2026-09-17) |
 | **Marvell · Silicon Motion** | KV 오프로드 지원 컨트롤러(SC6·MonTitan) | 자체 컨트롤러 로드맵 대조·백업 | 벤치마크 |
 | **Linux Foundation · SNIA · OCP** | 커널 write streams, StorageAI 트랙, AI 스토리지 표준 | 표준 지위 유지 | 워킹그룹 리드 |
 
