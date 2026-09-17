@@ -27,6 +27,7 @@ ASSETS = os.path.join(HERE, "..", "assets")
 CSV = os.path.join(ASSETS, "qlc_model.csv")
 OUT = os.path.join(ASSETS, "qlc_demand_share_revenue.png")
 OUT_WIDE = os.path.join(ASSETS, "qlc_demand_share_revenue_wide.png")
+OUT_SLIDE = os.path.join(ASSETS, "qlc_demand_share_revenue_slide.png")
 
 BLUE = "#1428A0"
 BLUE_T1 = "#3C5AC8"
@@ -56,29 +57,33 @@ def load():
     return rows
 
 
-def style_axis(ax):
+def style_axis(ax, fs=1.0):
     for s in ("top", "right"):
         ax.spines[s].set_visible(False)
     ax.spines["left"].set_color(LINE)
     ax.spines["bottom"].set_color(LINE)
-    ax.tick_params(colors=GRAY, labelsize=10, length=0)
+    ax.tick_params(colors=GRAY, labelsize=10 * fs, length=0)
     ax.yaxis.grid(True, color=LINE, linewidth=0.6)
     ax.set_axisbelow(True)
 
 
-def draw(rows, wide=False):
+def draw(rows, wide=False, slide=False):
     years = [r["year"] for r in rows]
+    if slide:
+        wide = True
     fc_start = min(r["year"] for r in rows if r["kind"] == 1.0)  # kind 1 = 전망
-    figsize = (13.5, 7.6) if wide else (9.0, 10.5)
+    figsize = (18.0, 5.6) if slide else ((13.5, 7.6) if wide else (9.0, 10.5))
+    fs = 1.35 if slide else 1.0
     if wide:
         fig, axes = plt.subplots(1, 3, figsize=figsize)
     else:
         fig, axes = plt.subplots(3, 1, figsize=figsize, sharex=True)
     ax1, ax2, ax3 = axes
     fig.patch.set_facecolor("white")
+    plt.rcParams["font.size"] = 10 * fs
 
     # ---- 패널 1: 수요 EB ----
-    style_axis(ax1)
+    style_axis(ax1, fs)
     total = [r["essd_eb"] for r in rows]
     qlc = [r["qlc_eb"] for r in rows]
     qlc_hi = [r["qlc_eb_hi"] for r in rows]
@@ -93,18 +98,18 @@ def draw(rows, wide=False):
     for x, v, hi, r in zip(years, qlc, qlc_hi, rows):
         top = hi if r["kind"] == 1.0 else v
         ax1.text(x, top + max(total) * 0.012, f"{v:.0f}", ha="center", va="bottom",
-                 fontsize=9.5, color=INK, fontweight="bold")
+                 fontsize=9.5 * fs, color=INK, fontweight="bold")
     for x, v, k in zip(years, total, kv_qlc):
-        ax1.text(x, v + max(total) * 0.012, f"{v:.0f}", ha="center", va="bottom", fontsize=8.5, color=GRAY_2)
+        ax1.text(x, v + max(total) * 0.012, f"{v:.0f}", ha="center", va="bottom", fontsize=8.5 * fs, color=GRAY_2)
         if k >= 40:
-            ax1.text(x, k / 2, f"{k:.0f}", ha="center", va="center", fontsize=8.5, color="white",
+            ax1.text(x, k / 2, f"{k:.0f}", ha="center", va="center", fontsize=8.5 * fs, color="white",
                      fontweight="bold")
-    ax1.set_ylabel("EB", color=GRAY, fontsize=10)
+    ax1.set_ylabel("EB", color=GRAY, fontsize=10 * fs)
     ax1.set_title("① QLC eSSD 수요(EB)" if wide else "① QLC eSSD 수요(EB) · 회색 = 전체 eSSD 출하 · 진한 파랑 = 추론 캐시 티어 QLC",
-                  loc="left", fontsize=12, color=INK, fontweight="bold")
+                  loc="left", fontsize=12 * fs, color=INK, fontweight="bold")
 
     # ---- 패널 2: 비중 % ----
-    style_axis(ax2)
+    style_axis(ax2, fs)
     share = [r["qlc_share_pct"] for r in rows]
     share_hi = [r["qlc_share_hi"] for r in rows]
     share_lo = [r["qlc_share_lo"] for r in rows]
@@ -117,14 +122,14 @@ def draw(rows, wide=False):
     ax2.plot([years[i] for i in fc_idx], [share[i] for i in fc_idx], color=BLUE, linewidth=2.2,
              linestyle=(0, (4, 2)), marker="o", markersize=6, markerfacecolor="white", markeredgewidth=1.8)
     for x, v in zip(years, share):
-        ax2.text(x, v + 3.0, f"{v:.0f}%", ha="center", va="bottom", fontsize=9.5, color=INK, fontweight="bold")
+        ax2.text(x, v + 3.0, f"{v:.0f}%", ha="center", va="bottom", fontsize=9.5 * fs, color=INK, fontweight="bold")
     ax2.set_ylim(0, max(share_hi) * 1.25)
-    ax2.set_ylabel("%", color=GRAY, fontsize=10)
+    ax2.set_ylabel("%", color=GRAY, fontsize=10 * fs)
     ax2.set_title("② eSSD 비트 중 QLC 비중(%)" if wide else "② eSSD 비트 중 QLC 비중(%) · 점선 = 전망",
-                  loc="left", fontsize=12, color=INK, fontweight="bold")
+                  loc="left", fontsize=12 * fs, color=INK, fontweight="bold")
 
     # ---- 패널 3: 매출 $B ----
-    style_axis(ax3)
+    style_axis(ax3, fs)
     rev = [r["qlc_rev_bn"] for r in rows]
     rev_hi = [r["qlc_rev_hi"] for r in rows]
     ax3.bar(years, rev, width=0.72, color=BLUE_T2, label="QLC eSSD 매출($B)")
@@ -134,10 +139,10 @@ def draw(rows, wide=False):
                     hatch="////", label="_nolegend_")
     for x, v, hi in zip(years, rev, rev_hi):
         ax3.text(x, hi + max(rev_hi) * 0.015, f"{v:.0f}" if v >= 1 else f"{v:.1f}", ha="center", va="bottom",
-                 fontsize=9.5, color=INK, fontweight="bold")
-    ax3.set_ylabel("$B", color=GRAY, fontsize=10)
+                 fontsize=9.5 * fs, color=INK, fontweight="bold")
+    ax3.set_ylabel("$B", color=GRAY, fontsize=10 * fs)
     ax3.set_title("③ QLC eSSD 매출($B)" if wide else "③ QLC eSSD 매출($B) · 기준선 = 2H27 이후 가격 정상화 · 빗금 = 쇼티지 가격 지속 시",
-                  loc="left", fontsize=12, color=INK, fontweight="bold")
+                  loc="left", fontsize=12 * fs, color=INK, fontweight="bold")
 
     for ax in axes:
         ax.axvspan(fc_start - 0.5, max(years) + 0.5, color=TINT, zorder=0)
@@ -145,22 +150,27 @@ def draw(rows, wide=False):
         ax.set_xticks(years)
         ax.set_xticklabels([str(y) for y in years])
         ax.set_xlim(min(years) - 0.6, max(years) + 0.6)
-    ax1.text(fc_start - 0.45, ax1.get_ylim()[1] * 0.97, "전망 →", fontsize=9, color=GRAY_2, va="top")
+    ax1.text(fc_start - 0.45, ax1.get_ylim()[1] * 0.97, "전망 →", fontsize=9 * fs, color=GRAY_2, va="top")
 
     handles = [Patch(facecolor=LINE, label="전체 eSSD 출하"),
                Patch(facecolor=BLUE_T2, label="QLC eSSD"),
                Patch(facecolor=BLUE, label="추론 캐시 티어 QLC (조건부 상방)"),
                Line2D([0], [0], color=BLUE, linewidth=1.4, label="전망 상단"),
                Patch(facecolor="white", edgecolor=BLUE, hatch="////", label="쇼티지 가격 지속 시 상단")]
-    fig.legend(handles=handles, loc="lower left", ncol=5 if wide else 3, frameon=False, fontsize=9,
-               bbox_to_anchor=(0.03, 0.062 if wide else 0.042))
-    fig.suptitle("QLC eSSD 수요(EB) · 비중(%) · 매출($B), 2022~2030", x=0.04, ha="left", fontsize=14,
-                 color=INK, fontweight="bold")
-    fig.text(0.04, 0.008,
+    fig.legend(handles=handles, loc="lower left", ncol=5 if wide else 3, frameon=False, fontsize=9 * fs,
+               bbox_to_anchor=(0.03, 0.005 if slide else (0.062 if wide else 0.042)))
+    if not slide:
+        fig.suptitle("QLC eSSD 수요(EB) · 비중(%) · 매출($B), 2022~2030", x=0.04, ha="left", fontsize=14 * fs,
+                     color=INK, fontweight="bold")
+    if not slide:
+      fig.text(0.04, 0.008,
              "출처: TrendForce 분기 실측(2022~2Q26)·QLC 30EB(2024) 앵커·벤더 발표를 삼각측량한 추정, 2026~2030은 전망(e). 분모 = enterprise SSD 출하 비트.\n"
              "진한 파랑 = 호스트 협력 데이터 배치가 성립할 때의 조건부 상방. 매출 기준선 = 2H27 이후 가격 정상화, 빗금 = 2026 쇼티지 가격 지속 가정.\n"
              "상세: wiki/concepts/qlc-ssd-market.md §4",
-             fontsize=8, color=GRAY_2)
+             fontsize=8 * fs, color=GRAY_2)
+    if slide:
+        fig.tight_layout(rect=(0.01, 0.10, 0.995, 0.99))
+        return fig
     fig.tight_layout(rect=(0.02, 0.125 if wide else 0.085, 0.99, 0.95))
     return fig
 
@@ -169,6 +179,7 @@ def main():
     rows = load()
     draw(rows).savefig(OUT, dpi=200, facecolor="white")
     draw(rows, wide=True).savefig(OUT_WIDE, dpi=200, facecolor="white")
+    draw(rows, slide=True).savefig(OUT_SLIDE, dpi=220, facecolor="white")
     print("saved:", os.path.abspath(OUT), os.path.abspath(OUT_WIDE))
 
 

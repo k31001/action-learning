@@ -14,6 +14,29 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-17 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-09-17',
+    type: 'build',
+    version: 'v2.46.18',
+    title: 'QLC eSSD 전략 보고서·3장 덱 신설 — 시장 3기(초기·현재·향후)·2022~2030 수요 모델·Phase 1·2·3 역량·실행 전략 5축',
+    summary:
+      '「삼성 SSD 전략적 방향성」 자매편. 2022년은 QLC 주문의 해가 아니라 조건(Solidigm 출범·E1.S/E1.L·배치 표준 비준·가격 급락)이 갖춰진 준비기였고 물량은 2024년(QLC eSSD 30EB, 4배)에 터졌다. ' +
+      '향후 3~5년 공급 부족 국면에서 니어라인 HDD 대체 대신 추론 캐시 티어(KV cache 오프로드, 2027년 75~100EB)를 QLC로 가져가는 전략. 모델: QLC eSSD 비트 2025년 53EB → 2030년 550EB(eSSD의 55%), 가격 정상화 시 매출은 $30B대 정체. ' +
+      '역량 Phase 1(배치 표준 디바이스)·2(워크로드 최적화)·3(고객 시스템 co-design)과 5계층 스택 지도, 실행 전략(실리콘밸리 자회사·Co-Design Pod·업스트림 우선·수명 보증+TCO 연동 계약·지분 참여)과 층별 고객 협업 제안. 지식그래프 재생성(orphans 0). 패치 v2.46.18.',
+    tags: ['QLC', 'eSSD', 'KV cache', '추론 캐시 티어', '수요 모델', 'Phase 1·2·3', '실행 전략', '고객 협업', 'SK hynix AI Company', 'ScaleFlux'],
+    items: [
+      { label: '소스 4건 신설', detail: 'qlc-essd-history-2022-background(연혁·2022 배경·비교표) · qlc-essd-market-size-forecast-data(TrendForce 분기 매출 2022~2Q26·QLC 30EB 앵커·KV cache 수요) · kv-cache-qlc-tech-stack-vendor-capability(5계층 스택·벤더 역량·내구성 갭) · execution-benchmarks-sw-capability-customer-collab(자회사·acqui-hire·보상·협업·재무 선례). 외부 원문 열람 차단으로 대부분 🟡 등급' },
+      { label: '위키 3페이지 신설', detail: 'concepts/qlc-ssd-market(3기 비교·수요 모델·가정표) · strategies/qlc-workload-capability-phases(Phase 1·2·3·참여 스택·협업 기업) · strategies/qlc-execution-strategy(5축·3티어·협업 제안·KPI) + fdp-host-ssd-platform·dev-org-transformation·ssd-ufs-market·nand-process-transition 교차 링크' },
+      { label: '보고서·덱', detail: 'outputs/report/qlc-ssd-strategy-report.md(팩트체크 대장 32건) · 통합 그래프(EB·%·$B 3단 공유축, generate_qlc_chart.py) · qlc-ssd-strategy.pptx 3장(generate_qlc_ssd_strategy_pptx.py, 로고 타일, LibreOffice 렌더 검수 3회)' },
+      { label: '대시보드', detail: 'knowledgeGraph.js 재생성(nodes 107·edges 585·orphans 0). UI 탭·데이터 카테고리 변경 없음' },
+    ],
+    links: [
+      { label: 'outputs/report/qlc-ssd-strategy-report.md', href: 'https://github.com/k31001/action-learning/blob/main/outputs/report/qlc-ssd-strategy-report.md' },
+      { label: 'wiki/concepts/qlc-ssd-market.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/qlc-ssd-market.md' },
+      { label: 'wiki/strategies/qlc-execution-strategy.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/qlc-execution-strategy.md' },
+    ],
+  },
   // ── 2026-09-15 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-15',
