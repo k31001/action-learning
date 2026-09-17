@@ -249,6 +249,7 @@
 ### sources/prompt — 보고서 집필 브리프 (사용자 구술 원문)
 - [sources/prompt/fdp-fde-solution-prompt.md](sources/prompt/fdp-fde-solution-prompt.md) — FDP·FDE 솔루션 제안서 브리프 (2026-08-09, [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md)의 모체)
 - [sources/prompt/prompt-fdp-ssd.md](sources/prompt/prompt-fdp-ssd.md) — (NEW) 「삼성 SSD 전략적 방향성」 보고서 브리프 (2026-08-17, 원문 보존+데이터 보강+팩트체크 대장 F-1~F-9 — [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md)의 모체)
+- [sources/prompt/prompt-qlc-ssd-strategy.md](sources/prompt/prompt-qlc-ssd-strategy.md) — (NEW) 「QLC SSD 시장 흐름·역량·실행 전략」 보고서 브리프 (2026-09-17, 원문 보존 + 착수 전 질문 10개(기본 가정 병기) + 작업 계획 초안 — `outputs/report/qlc-ssd-strategy-report.md`(예정)의 모체)
 
 ### sources/papers — 리서치 보고서
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 딥리서치: 2030 메모리 수급 4대 병목 정량 모델 (HBM 2.88EB·서버 125만 대·민감도·가격 균형)

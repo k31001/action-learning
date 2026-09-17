@@ -1835,3 +1835,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 피드백: 참고 이미지(가로 화살 타임라인 + 번호 핀 마커 위·아래 교대 + 설명) 제시 — "상위는 시간축 스케줄, 하위는 4개 컬럼으로 전략별 할 일 서술."
 **반영**: `generate_future_plan_pptx.py` 슬라이드 2 재작성 — 상단 「공통 일정」 타임라인(핀 5개: 착수·담당임원 인터뷰·보고서 갱신·발표자료 준비·경영진 보고, 핵심 2개만 Blue, 나머지 그레이로 스킬 팔레트 준수), 하단 「전략별 검토 내용」 4열(전략 3 FDP 채움, 1·2·4 플레이스홀더). 슬라이드 1(세 열 논증)은 v4 유지.
 **렌더 경로 변경**: PowerPoint·Keynote AppleScript 내보내기가 대화상자로 반복 정지(컴퓨터 제어 권한은 사용자 거부) → `brew install --cask libreoffice` + `font-nanum-gothic` 설치, 스크립트에 `FONT_LATIN`·`FONT_EA`·`OUT_PATH` 환경변수 추가(렌더 전용 사본에만 NanumGothic, 본 산출물은 Arial). 상세는 `future-plan-outline.md`. 위키·dashboard 무변경.
+
+## [2026-09-17] ingest | QLC SSD 전략 보고서 브리프 보존 + 착수 전 질문 10개·계획 제출
+
+요청: QLC 대용량 eSSD를 초기(2022 전후)·현재·향후 3기로 나눠 배경·요구사항·수요 규모(EB)·비중(%)·예상매출($B)을 예측까지 정량화한 마크다운 보고서 + 통합 그래프 1장, SSD 개발 기업의 Phase 1·2·3 역량(워크로드 분석을 넘어 고객 응용·시스템 SW 지식 기반 최적화), 인사·조직·문화·전략·재무 관점의 볼드한 실행 전략과 고객 협업 유인 설계, PPT 3장(배경 / 요구사항·역량·기술 전략 / 실행 전략). 사용자 지시에 따라 **본격 착수 전 질문 10개와 계획을 먼저 제출**하고 피드백을 기다린다.
+**신규**: `sources/prompt/prompt-qlc-ssd-strategy.md` — §1 원문 보존(불변), §2 질문 10개(위치·청중·기한 / QLC 범위·분모 / 향후 프레임(HDD 대체 vs KV cache 티어) / 예측 설계 / 데이터 신뢰·사내 수치 / Phase 정의 축 / 역량 기준선 / 볼드 허용 범위·재무 / 협업 타깃·실명 / 산출물 형식·연동 범위, 각 항목에 무응답 시 기본 가정 병기), §3 계획 초안(논지 가설·7단계·리스크). `index.md` sources/prompt 섹션 등재.
+**사전 확인**: 저장소에 QLC 타임라인(qlc-essd-timeline-fdp-ruh-2026-09)·KV cache 수요·enterprise SSD 1Q26·FDP 전략·개발실 전환 페이지가 이미 있어 재사용. 웹 스캔 결과 QLC 비중·EB의 단일 기관 공개 시계열은 없고 조각 자료(Solidigm QLC 누적 122EB, TrendForce 2025-09 "2026 QLC 출하 급증", 2Q26 top5 eSSD $37.59B, Forward Insights QLC 30%(2025) 전망)를 삼각측량해야 함 — 계획의 리스크로 명시.
+**건너뜀**: 위키·보고서·PPT·대시보드 미착수(피드백 대기). 작업 브랜치 `claude/qlc-ssd-market-strategy-cawwr2`.
