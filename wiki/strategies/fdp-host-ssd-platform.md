@@ -148,3 +148,7 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 - **C·D (AI 조정)**: Binding 최소 물량 + 시스템 SW 전환비용이 방어벽 ([rs8-structured-revenue-hedging.md](invariant/rs8-structured-revenue-hedging.md) 연계)
 - **E (패러다임 전환)**: Host Control 확장(4단계)이 차세대 스토리지 아키텍처 전환기의 헤지
 - 연결: [dev-org-transformation.md](dev-org-transformation.md) · [rs3-customer-switching-cost.md](invariant/rs3-customer-switching-cost.md) · [embedded-software-monetization.md](../concepts/embedded-software-monetization.md) · [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md)
+
+## [Update 2026-09-17] 자매편 — QLC 추론 캐시 티어 전략
+
+본 전략의 QLC 구체화는 세 페이지로 분리했다: 시장 3기·수요 모델 [qlc-ssd-market.md](../concepts/qlc-ssd-market.md), 역량 Phase 1·2·3와 기술 스택·협업 기업 [qlc-workload-capability-phases.md](qlc-workload-capability-phases.md), 인사·조직·문화·전략·재무 실행 전략과 고객 협업 제안 [qlc-execution-strategy.md](qlc-execution-strategy.md). 요지: 향후 3~5년 공급 부족 국면에서 니어라인 HDD 대체가 아니라 오늘 TLC가 서비스하는 추론 캐시 티어(KV cache 오프로드)를 QLC로 가져가며, 그 수단이 §4의 호스트 협력 배치·시스템 SW다 ([qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md), [kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md)).

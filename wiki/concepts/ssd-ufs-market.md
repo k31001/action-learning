@@ -311,3 +311,7 @@ JEDEC 표준 이정표: UFS 3.0 2018-01-30·4.0 2022-08-17·4.1 2025-01-08 (JEDE
 현재 진행 중인 3차 전환(범용 DC → AI 스토리지)에 대입하면: §[Update 2026-08-16]의 **CMX·PM1763·PM9E1 축은 요소 3·4를 재실행 중**(V9 캐파 60%+ 배정 = 캐파 베팅, Gen6 28.4GB/s = 인터페이스 선점)이다. 반면 **SLC 초고 IOPS(SCADA Storage-Next) 트랙은 요소 2(자기잠식형 표준 창설)의 공백** — 과거 UFS를 만들던 방식으로 AI SSD 표준(초고 IOPS 계층)을 주도할지가 미결이다. 그리고 Intel의 교훈은 역방향 경고다: **규격을 만들고도 제품화가 늦으면 진다**. 다운턴 관점 연결은 [CMO 매트릭스 §5](../storyline/cmo-matrix.md) 참조 — 전환발(③) 다운턴 시나리오에서 이 플레이북의 실행 여부가 O를 가른다.
 
 **미확인 잔여** (노트 §미확인 11건 중 핵심): 1Q16↔1Q17 점유율 집계 기준 상충, 시안 1기 투자액 $7B vs $10.87B 불일치, 하이퍼스케일러 개별 공급의 당대 보도 부재, "캐파를 eSSD로 전환" DRAMeXchange 명시 논평 원문.
+
+## [Update 2026-09-17] QLC eSSD 시장 페이지 분리
+
+QLC eSSD의 초기·현재·향후 3기 비교, 2022년 수요 배경, 2022~2030 수요(EB)·비중(%)·매출($B) 모델은 [qlc-ssd-market.md](qlc-ssd-market.md)로 분리했다. 2Q26 enterprise SSD Top-5 $37.59B(+103.6% QoQ, 삼성 $14.35B·35.1%)와 2022~2025 연간 매출 복원(2022 $21.9B → 2023 약 $7B → 2024 약 $24B → 2025 약 $26.5B)은 [qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §1.

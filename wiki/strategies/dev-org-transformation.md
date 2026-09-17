@@ -191,3 +191,7 @@ FDE·Co-Design Pod·시스템 모델링이 작동하려면 그 중심에 **고�
 - **시나리오 C·D (AI 조정)**: 수요 수축기에는 최소 약정 매출 락인이 방어벽 — 공동설계 없이는 락인 계약 자체가 없음 (RS-8 연계)
 - **시나리오 E (패러다임 전환)**: 차세대 아키텍처 전환기에 고객 워크로드 조기 가시성이 생존 조건 — 워크로드 인텔리전스가 헤지
 - 연결 전략: [MB-4](core/current-state-mb4-custom-ai-memory.md) · [RS-3](invariant/rs3-customer-switching-cost.md) · [RS-7](invariant/rs7-ai-engineering-automation.md) · [RS-8](invariant/rs8-structured-revenue-hedging.md) · [RS-9](invariant/rs9-demand-inflection-sensing.md)
+
+## [Update 2026-09-17] NAND/SSD 구체화 — QLC 추론 캐시 티어 실행 전략
+
+§4의 4대 축(기술·문화·조직·일하는 방식)을 QLC 추론 캐시 티어에 적용한 실행안은 [qlc-execution-strategy.md](qlc-execution-strategy.md)(5축: 인사·조직·문화·전략·재무, 볼드 3티어, 고객 협업 제안)에 있다. 실리콘밸리 소프트웨어 자회사(SK hynix AI Company ≥$10B 선례)·별도 보상(삼성 SV L6 $392K vs 빅테크 $600~700K 격차)·acqui-hire 가격 기준점(Astera↔Pliops 약 $70M/60명)은 [execution-benchmarks-sw-capability-customer-collab-2026-09.md](../../sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md) 참조. 역량 정의는 [qlc-workload-capability-phases.md](qlc-workload-capability-phases.md).

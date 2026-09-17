@@ -182,3 +182,7 @@ NAND Flash는 매 18~24개월마다 새로운 layer 세대로 전환하면서 la
 → **함의**: BiCS10이 SK Hynix V9를 능가 (QLC 기준 +30% 밀도). 4사 적층 경쟁에서 Kioxia 선두 진입. 한·미·중·일 4파전 강화.
 
 **출처**: [semianalysis-isscc-2026-2026-04-15.md](../../sources/articles/semianalysis-isscc-2026-2026-04-15.md)
+
+## [Update 2026-09-17] QLC 2Tb 다이 세대와 245TB eSSD
+
+2Tb QLC 다이(Kioxia·SanDisk BiCS8, 삼성 V9 2Tb 개발 완료, SK hynix 321단 양산)가 245TB급 eSSD를 열었고, TrendForce는 2Tb QLC 2026년 양산을 니어라인 SSD 원가 하락의 핵심으로 본다. 벤더별 245TB 타임라인(Micron 6600 ION 2026-05 첫 출하, Kioxia LC9, 삼성 BM1773 전시)과 QLC 비중 전망은 [qlc-ssd-market.md](qlc-ssd-market.md) §2·§4 ([qlc-essd-history-2022-background-2026-09.md](../../sources/articles/qlc-essd-history-2022-background-2026-09.md) §1).

@@ -86,6 +86,7 @@
 ## wiki/concepts — 개념 페이지
 
 ### 시장
+- [wiki/concepts/qlc-ssd-market.md](wiki/concepts/qlc-ssd-market.md) — (NEW) QLC eSSD 시장: 초기(2022 준비기)·현재(용량 경쟁·HDD 부족)·향후(추론 캐시 티어) 3기 비교표 + 2022~2030 수요(EB)·비중(%)·매출($B) 모델(비트 10배·매출 정체, KV 티어 QLC 조건부 상방)
 - [wiki/concepts/memory-market-overview.md](wiki/concepts/memory-market-overview.md) — 글로벌 메모리 시장 전망 ($1,700B → $5,516B → $8,427B)
 - [wiki/concepts/hbm-market.md](wiki/concepts/hbm-market.md) — HBM 시장 규모·점유율·세대별 단가
 - [wiki/concepts/hbm-roadmap.md](wiki/concepts/hbm-roadmap.md) — HBM3E→HBM4 세대별 양산 로드맵
@@ -127,6 +128,8 @@
 - [wiki/concepts/korea-policy.md](wiki/concepts/korea-policy.md) — K-반도체 전략·용인 클러스터
 
 ## wiki/strategies — 조직 전환 전략
+- [wiki/strategies/qlc-workload-capability-phases.md](wiki/strategies/qlc-workload-capability-phases.md) — (NEW) QLC 추론 캐시 티어 역량 3단계: Phase 1 배치 표준 디바이스(RUH 200+·수명 보증) · Phase 2 워크로드 최적화(트레이스·WAF·RUH 정책) · Phase 3 고객 시스템 co-design(캐시 관리자·커널·CMX) + 5계층 스택 지도·참여 스택·협업 기업
+- [wiki/strategies/qlc-execution-strategy.md](wiki/strategies/qlc-execution-strategy.md) — (NEW) QLC 실행 전략 5축(전략·조직·인사·문화·재무): 실리콘밸리 추론 스토리지 자회사·Co-Design Pod·업스트림 우선·수명 보증+TCO 연동 계약·지분 참여, 볼드 3티어(90일·1년·3년), 층별 고객 협업 제안·유인 설계·시퀀싱
 
 - [wiki/strategies/dev-org-transformation.md](wiki/strategies/dev-org-transformation.md) — 개발실 체질 전환 (수주 이행자→기술 파트너): As-Is/To-Be·리스크/이점·4대 축·3-Phase 액션 플랜·인재 축(FDE 스타)×제품 축(§4.7)
 - [wiki/strategies/fdp-host-ssd-platform.md](wiki/strategies/fdp-host-ssd-platform.md) — FDP Host–SSD 통합 플랫폼 (개발실 전환의 제품·기술 축): 환경 변화(Binding·수요 지배·통제권 상승) → Captive SSD 위상 4단계(데이터) → 전략 선택지 4개 비교·선택 논리 → 실행전략 6종·KPI
@@ -240,6 +243,10 @@
 - [sources/articles/storage-vendor-deal-structures-2026.md](sources/articles/storage-vendor-deal-structures-2026.md) — 스토리지 벤더 딜 구조 검증: Pure는 raw NAND·라이선스 모델(완제품 SSD 안 삼, Micron 선점) vs VAST·DDN은 표준 SSD·인증 경로(CoreWeave $1.17B·Dynamo 연동)
 - [sources/articles/fdp-partner-landscape-2026-09.md](sources/articles/fdp-partner-landscape-2026-09.md) — FDP 협업 대상 지형: Meta 구매 SSD 전량 FDP 탑재(기본 비활성)·Meta/MS 빠른 채택·qualification 12~18개월·DDN KV Cache SW 상용화·Anthropic↔Micron SSD 공동 설계 명시
 - [sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md](sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md) — 대용량 QLC eSSD 벤더별 타임라인(Solidigm 61TB '23.07 선행·삼성 '24.07 후발·Micron 245TB '26.05 첫 출하)·FDP RUH 현행 2~8 vs CMX 요구 200+·AI 서버 시장 '23 $50B(23%)→'24 $187B(65%)
+- [sources/articles/qlc-essd-history-2022-background-2026-09.md](sources/articles/qlc-essd-history-2022-background-2026-09.md) — (NEW) 데이터센터 QLC eSSD 연혁 2018~2026·2022년 수요 배경(준비기: Solidigm 출범·E1.S/E1.L·배치 표준 비준·가격 급락, 물량은 2024 30EB)·2022 vs 2026 스펙 비교표
+- [sources/articles/qlc-essd-market-size-forecast-data-2026-09.md](sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) — (NEW) QLC eSSD 시장 데이터 대장: TrendForce 분기 eSSD 매출 2022~2Q26($37.59B), QLC 30EB(2024) 앵커, DC NAND 295→909EB, $/TB 인덱스, KV cache 수요(2027 75~100EB·CMX 100EB), 모델 입력 요약
+- [sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) — (NEW) KV cache 오프로드 5계층 스택 지도(SSD 벤더 접점 ③④)·벤더 9사 Phase 1·2·3 공개 역량·QLC vs TLC 내구성 갭(10~40배)·배치 표준 WAF 실측(CacheLib 3.22→1.03)
+- [sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md](sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md) — (NEW) 실행 벤치마크: SK hynix AI Company $10B·Solidigm 반전·Astera↔Pliops acqui-hire $70M·SV 보상 격차·인수 후보(ScaleFlux·Tensormesh·DDN·WEKA)·고객 협업 메커니즘·재무 수단(SCA·SLA·지분)
 - [sources/articles/captive-ssd-fdp-context-2026-08.md](sources/articles/captive-ssd-fdp-context-2026-08.md) — 웹 리서치 종합: Captive SSD 위상 변화 4단계(완제품→펌웨어→자체 컨트롤러 Nitro→표준·웨이퍼)·하이퍼스케일러 SSD 수요 ~55%·NAND 웨이퍼 +246%·FDP 표준 기원(Meta·Google 주도·삼성 공동)
 - [sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md](sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md) — 사용자 전략 인풋: FDP 생태계 확산·락인 실행전략 3종 (워크로드 교환 협업 · 최적화 역량 확보 · FDE 파견 운영)
 - [sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md](sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md) — 사용자 전략 인풋 원문: FDP 기반 Host–SSD 통합 솔루션 전략 (시스템 SW·실행전략 6종·로드맵·KPI·스토리라인)
