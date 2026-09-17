@@ -82,21 +82,26 @@ def draw(rows, wide=False):
     total = [r["essd_eb"] for r in rows]
     qlc = [r["qlc_eb"] for r in rows]
     qlc_hi = [r["qlc_eb_hi"] for r in rows]
+    kv_qlc = [r["qlc_in_kv_eb"] for r in rows]
     ax1.bar(years, total, width=0.72, color=LINE, label="전체 eSSD 출하(EB)")
-    bars = ax1.bar(years, qlc, width=0.72,
-                   color=[BLUE if r["kind"] == 0 else BLUE_T1 for r in rows], label="QLC eSSD(EB)")
+    ax1.bar(years, qlc, width=0.72, color=BLUE_T2, label="QLC eSSD(EB)")
+    ax1.bar(years, kv_qlc, width=0.72, color=BLUE, label="그중 추론 캐시 티어 QLC")
     for x, lo, hi, r in zip(years, qlc, qlc_hi, rows):
         if r["kind"] == 1.0 and hi > lo:
             ax1.plot([x, x], [lo, hi], color=BLUE, linewidth=1.4)
             ax1.plot([x - 0.14, x + 0.14], [hi, hi], color=BLUE, linewidth=1.4)
-    for x, v, r in zip(years, qlc, rows):
-        ax1.text(x, v + max(total) * 0.015, f"{v:.0f}", ha="center", va="bottom",
+    for x, v, hi, r in zip(years, qlc, qlc_hi, rows):
+        top = hi if r["kind"] == 1.0 else v
+        ax1.text(x, top + max(total) * 0.012, f"{v:.0f}", ha="center", va="bottom",
                  fontsize=9.5, color=INK, fontweight="bold")
-    for x, v in zip(years, total):
-        ax1.text(x, v + max(total) * 0.015, f"{v:.0f}", ha="center", va="bottom", fontsize=8.5, color=GRAY_2)
+    for x, v, k in zip(years, total, kv_qlc):
+        ax1.text(x, v + max(total) * 0.012, f"{v:.0f}", ha="center", va="bottom", fontsize=8.5, color=GRAY_2)
+        if k >= 40:
+            ax1.text(x, k / 2, f"{k:.0f}", ha="center", va="center", fontsize=8.5, color="white",
+                     fontweight="bold")
     ax1.set_ylabel("EB", color=GRAY, fontsize=10)
-    ax1.set_title("① QLC eSSD 수요(EB) · 회색 = 전체 eSSD 출하", loc="left", fontsize=12,
-                  color=INK, fontweight="bold")
+    ax1.set_title("① QLC eSSD 수요(EB)" if wide else "① QLC eSSD 수요(EB) · 회색 = 전체 eSSD 출하 · 진한 파랑 = 추론 캐시 티어 QLC",
+                  loc="left", fontsize=12, color=INK, fontweight="bold")
 
     # ---- 패널 2: 비중 % ----
     style_axis(ax2)
@@ -115,23 +120,24 @@ def draw(rows, wide=False):
         ax2.text(x, v + 3.0, f"{v:.0f}%", ha="center", va="bottom", fontsize=9.5, color=INK, fontweight="bold")
     ax2.set_ylim(0, max(share_hi) * 1.25)
     ax2.set_ylabel("%", color=GRAY, fontsize=10)
-    ax2.set_title("② eSSD 비트 중 QLC 비중(%) · 점선 = 전망", loc="left", fontsize=12, color=INK, fontweight="bold")
+    ax2.set_title("② eSSD 비트 중 QLC 비중(%)" if wide else "② eSSD 비트 중 QLC 비중(%) · 점선 = 전망",
+                  loc="left", fontsize=12, color=INK, fontweight="bold")
 
     # ---- 패널 3: 매출 $B ----
     style_axis(ax3)
     rev = [r["qlc_rev_bn"] for r in rows]
     rev_hi = [r["qlc_rev_hi"] for r in rows]
-    ax3.bar(years, rev, width=0.72, color=[BLUE if r["kind"] == 0 else BLUE_T1 for r in rows], label="QLC eSSD 매출($B)")
+    ax3.bar(years, rev, width=0.72, color=BLUE_T2, label="QLC eSSD 매출($B)")
     for x, lo, hi, r in zip(years, rev, rev_hi, rows):
         if hi > lo:
             ax3.bar(x, hi - lo, bottom=lo, width=0.72, color="none", edgecolor=BLUE, linewidth=1.0,
                     hatch="////", label="_nolegend_")
-    for x, v in zip(years, rev):
-        ax3.text(x, v + max(rev_hi) * 0.015, f"{v:.0f}", ha="center", va="bottom", fontsize=9.5,
-                 color=INK, fontweight="bold")
+    for x, v, hi in zip(years, rev, rev_hi):
+        ax3.text(x, hi + max(rev_hi) * 0.015, f"{v:.0f}" if v >= 1 else f"{v:.1f}", ha="center", va="bottom",
+                 fontsize=9.5, color=INK, fontweight="bold")
     ax3.set_ylabel("$B", color=GRAY, fontsize=10)
-    ax3.set_title("③ QLC eSSD 매출($B) · 빗금 = 쇼티지 가격 상단", loc="left", fontsize=12, color=INK,
-                  fontweight="bold")
+    ax3.set_title("③ QLC eSSD 매출($B)" if wide else "③ QLC eSSD 매출($B) · 기준선 = 2H27 이후 가격 정상화 · 빗금 = 쇼티지 가격 지속 시",
+                  loc="left", fontsize=12, color=INK, fontweight="bold")
 
     for ax in axes:
         ax.axvspan(fc_start - 0.5, max(years) + 0.5, color=TINT, zorder=0)
@@ -141,20 +147,21 @@ def draw(rows, wide=False):
         ax.set_xlim(min(years) - 0.6, max(years) + 0.6)
     ax1.text(fc_start - 0.45, ax1.get_ylim()[1] * 0.97, "전망 →", fontsize=9, color=GRAY_2, va="top")
 
-    handles = [Patch(facecolor=BLUE, label="QLC eSSD (실측·추정)"),
-               Patch(facecolor=BLUE_T1, label="QLC eSSD (전망 기준선)"),
-               Patch(facecolor=LINE, label="전체 eSSD 출하"),
-               Line2D([0], [0], color=BLUE, linewidth=1.4, label="전망 범위(상·하)"),
-               Patch(facecolor="white", edgecolor=BLUE, hatch="////", label="쇼티지 가격 상단")]
+    handles = [Patch(facecolor=LINE, label="전체 eSSD 출하"),
+               Patch(facecolor=BLUE_T2, label="QLC eSSD"),
+               Patch(facecolor=BLUE, label="추론 캐시 티어 QLC (조건부 상방)"),
+               Line2D([0], [0], color=BLUE, linewidth=1.4, label="전망 상단"),
+               Patch(facecolor="white", edgecolor=BLUE, hatch="////", label="쇼티지 가격 지속 시 상단")]
     fig.legend(handles=handles, loc="lower left", ncol=5 if wide else 3, frameon=False, fontsize=9,
-               bbox_to_anchor=(0.04, 0.005))
+               bbox_to_anchor=(0.03, 0.062 if wide else 0.042))
     fig.suptitle("QLC eSSD 수요(EB) · 비중(%) · 매출($B), 2022~2030", x=0.04, ha="left", fontsize=14,
                  color=INK, fontweight="bold")
-    fig.text(0.04, 0.045 if wide else 0.04,
-             "출처: TrendForce · Forward Insights · 벤더 발표를 삼각측량한 추정 (상세: wiki/concepts/qlc-ssd-market.md §4). "
-             "비중 분모 = enterprise SSD 출하 비트. 매출 기준선 = 정상화 가격, 상단 = 2026 쇼티지 가격 지속 가정.",
-             fontsize=8, color=GRAY_2, wrap=True)
-    fig.tight_layout(rect=(0.02, 0.08, 0.99, 0.95))
+    fig.text(0.04, 0.008,
+             "출처: TrendForce 분기 실측(2022~2Q26)·QLC 30EB(2024) 앵커·벤더 발표를 삼각측량한 추정, 2026~2030은 전망(e). 분모 = enterprise SSD 출하 비트.\n"
+             "진한 파랑 = 호스트 협력 데이터 배치가 성립할 때의 조건부 상방. 매출 기준선 = 2H27 이후 가격 정상화, 빗금 = 2026 쇼티지 가격 지속 가정.\n"
+             "상세: wiki/concepts/qlc-ssd-market.md §4",
+             fontsize=8, color=GRAY_2)
+    fig.tight_layout(rect=(0.02, 0.125 if wide else 0.085, 0.99, 0.95))
     return fig
 
 
