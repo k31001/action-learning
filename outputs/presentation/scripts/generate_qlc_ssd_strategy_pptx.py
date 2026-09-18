@@ -274,23 +274,86 @@ for y0, y1, lab, hot in [(2018.0, 2023.95, "초기 2018~2023 · 구매 기준 = 
         rect(s, tx(y0), ER_Y, 0.06, 0.26, fill=BLUE)
     tb(s, tx(y0) + 0.14, ER_Y, tx(y1) - tx(y0) - 0.3, 0.26, [(lab, 11.25, True if hot else False, INK if hot else GRAY)], anchor=MSO_ANCHOR.MIDDLE)
 
-# 교훈 카드 3
+# 교훈 카드 3 (v3.7: 텍스트 대신 그림 — 선행 레인 / 출시 시점 막대 / 결정→초기 조건 연쇄)
 L_Y, L_H, L_W = ER_Y + 0.46, 3.36, (CW - 0.33 * 2) / 3
+
+
+def lesson_visual_1(x, y, w, h):
+    """수요 센싱: 고객 규격·코드 레인이 발주·출하 레인보다 ≈2년 앞선다. 2026 슬롯은 비어 있다(규격 미정의)."""
+    lx, lw = x + 1.30, w - 1.30
+    px = lambda t: lx + lw * (t - 2022.0) / 5.0
+    top, bot = y + 0.40, y + 1.14
+    tb(s, x, top - 0.13, 1.25, 0.26, [("고객 규격 · 코드", 11.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, x, bot - 0.13, 1.25, 0.26, [("발주 · 비트 출하", 11.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+    rect(s, lx, top, lw, 0.015, fill=LINE)
+    rect(s, lx, bot, lw, 0.015, fill=LINE)
+    d, o, e = px(2022.95), px(2024.5), px(2026.6)
+    mid = (top + bot) / 2
+    rect(s, d - 0.006, top, 0.012, mid - 0.11 - top, fill=BLUE_T2)
+    rect(s, o - 0.006, mid + 0.11, 0.012, bot - (mid + 0.11), fill=BLUE_T2)
+    rect(s, d, mid - 0.11, o - d, 0.22, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+    tb(s, d, mid - 0.11, o - d - 0.1, 0.22, [("≈ 2년 선행", 10.5, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    rect(s, d - 0.09, top - 0.09, 0.18, 0.18, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, d - 0.3, top - 0.40, 2.4, 0.26, [("2022-12 배치 표준 비준", 10.5, False, GRAY)])
+    rect(s, o - 0.09, bot - 0.09, 0.18, 0.18, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, o - 0.3, bot + 0.10, 2.2, 0.26, [("2024 QLC eSSD 비트 출하 30EB", 10.5, False, GRAY)])
+    rect(s, e - 0.09, top - 0.09, 0.18, 0.18, fill=WHITE, line=BLUE, line_w=1.5, shape=MSO_SHAPE.OVAL)
+    tb(s, e - 1.9, top + 0.12, 2.15, 0.40, [("2026 캐시 관리자 코드", 10.5, True, BLUE), ("규격 미정의 = 선점 구간", 10.5, True, BLUE)],
+       align=PP_ALIGN.RIGHT, spacing=1.0)
+
+
+def lesson_visual_2(x, y, w, h):
+    """고객 협업: 61TB QLC 출시 시점(OCP 2022-10 예고 기준) 막대 — 규격 참여 vs 후발. HBM4는 공동 정의 아이콘."""
+    lab_w = 0.95
+    bx, bw = x + lab_w, w - lab_w
+    tb(s, x, y, w, 0.22, [("61TB QLC 출시 · OCP 2022-10 예고 기준", 10.5, False, GRAY_2)])
+    ry = y + 0.24
+    for who, months, hit, end in [("Solidigm", 9, True, "2023-07 · 규격 정의 참여"), ("삼성", 21, False, "2024-07 · 12개월 후발")]:
+        tb(s, x, ry, lab_w - 0.05, 0.24, [(who, 11.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+        bl = bw * months / 21.0
+        rect(s, bx, ry, bl, 0.24, fill=BLUE if hit else WHITE, line=None if hit else LINE, line_w=0.75)
+        if hit:
+            tb(s, bx + bl + 0.08, ry, bw - bl - 0.08, 0.24, [(end, 10.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+        else:
+            tb(s, bx + 0.08, ry, bl - 0.16, 0.24, [(end, 10.5, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.RIGHT)
+        ry += 0.30
+    rect(s, x, ry + 0.02, w, 0.012, fill=LINE)
+    hy = ry + 0.08
+    tb(s, x, hy, w, 0.20, [("HBM4 규격 정의", 10.5, False, GRAY_2)])
+    iy = hy + 0.24
+    pw = person(s, bx, iy, 0.36, color=BLUE)
+    rect(s, bx + pw + 0.04, iy + 0.16, 0.26, 0.05, fill=BLUE)
+    person(s, bx + pw + 0.34, iy, 0.36, color=BLUE)
+    tb(s, bx + 2 * pw + 0.44, iy - 0.02, 2.0, 0.40, [("SK hynix ↔ NVIDIA", 10.5, True, BLUE), ("공동 정의 → 주도권", 10.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+    gx = bx + 2 * pw + 2.5
+    person(s, gx, iy, 0.36, color=GRAY_2)
+    tb(s, gx + pw + 0.08, iy - 0.02, w - (gx - x) - pw - 0.1, 0.40, [("삼성", 10.5, True, GRAY), ("후발", 10.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+
+
+def lesson_visual_3(x, y, w, h):
+    """의사결정 시점: 직전 다운턴의 결정 → 다음 다운턴의 초기 조건. 3행째(현재 결정)는 강조."""
+    c1w = (w - 0.40) / 2
+    c2x = x + c1w + 0.40
+    tb(s, x, y, c1w, 0.22, [("직전 다운턴의 결정", 10.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
+    tb(s, c2x, y, c1w, 0.22, [("다음 다운턴의 초기 조건", 10.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
+    ry = y + 0.30
+    for a, b, hot in [("DT19 · 무감산 성공 경험", "DT23 · 국면 오판", False),
+                      ("DT19 · HBM 조직 축소", "DT23 · 회복기 주도권 상실", False),
+                      ("2026 · 고객 시스템 진입", "2027H2 · TCO 보증 수익원", True)]:
+        rect(s, x, ry, c1w, 0.34, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
+        tb(s, x + 0.06, ry, c1w - 0.12, 0.34, [(a, 11.25, hot, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        rect(s, x + c1w + 0.08, ry + 0.08, 0.24, 0.18, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+        rect(s, c2x, ry, c1w, 0.34, fill=BLUE if hot else TINT)
+        tb(s, c2x + 0.06, ry, c1w - 0.12, 0.34, [(b, 11.25, True, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        ry += 0.42
+
+
 lessons = [
-    ("교훈 1 · 수요 센싱", "수요 신호는 발주보다 약 2년 선행하여 고객의 규격·표준·소스 코드에 나타난다",
-     [("역사  ", "DT23 국면(4Q22 eSSD 매출 -27%)에서 데이터 배치 표준 비준·OCP 폼팩터 표준화·61TB 제품 예고가 선행. 비트 출하는 2년 후 30EB"),
-      ("현재  ", "KV 캐시 관리자 4종의 소스 코드에 데이터 배치·내구성 규격이 미정의. 규격 정의 주체가 선점 가능한 구간")],
-     "→ 2장  고객의 QLC 채택 동인"),
-    ("교훈 2 · 고객 협업", "요구사항 정의 과정에 참여한 공급자가 적중했다",
-     [("역사  ", "Solidigm은 최대 낙폭 국면에서 61TB QLC를 12개월 선행 출시해 흑자 전환. HBM은 NVIDIA와 규격을 공동 정의한 SK hynix가 주도권 확보"),
-      ("현재  ", "추론 캐시 계층의 내구성 요구사항은 고객 시스템(데이터 배치 표준·캐시 관리자 정책)에서 정의된다. 정의 과정 참여가 전제 조건")],
-     "→ 3장  디바이스에서 고객 시스템까지 3단계 역량"),
-    ("교훈 3 · 의사결정 시점", "직전 다운턴의 의사결정이 다음 다운턴의 초기 조건을 결정한다",
-     [("역사  ", "DT19 무감산 성공 경험 → DT23 국면 오판. DT19 HBM 조직 축소 → DT23 회복기 주도권 상실"),
-      ("현재  ", "차기 전환점은 2027년 하반기 가격 정상화 국면. 비트 10배 대비 매출 정체 시 수익원은 고객 시스템 수준 TCO 보증으로 한정")],
-     "→ 4장  FDE·전략적 협약과 조직·인사·문화"),
+    ("교훈 1 · 수요 센싱", "수요 신호는 발주보다 약 2년 선행해 고객 규격·코드에 나타난다", lesson_visual_1, "→ 2장  고객의 QLC 채택 동인"),
+    ("교훈 2 · 고객 협업", "규격 정의에 참여한 공급자가 적중했다", lesson_visual_2, "→ 3장  디바이스에서 고객 시스템까지 3단계 역량"),
+    ("교훈 3 · 의사결정 시점", "직전 다운턴의 결정이 다음 다운턴의 초기 조건이다", lesson_visual_3, "→ 4장  FDE·전략적 협약과 조직·인사·문화"),
 ]
-for i, (hd, one, rows, link) in enumerate(lessons):
+for i, (hd, one, vis, link) in enumerate(lessons):
     x = MX + i * (L_W + 0.33)
     hot = i == 1
     rect(s, x, L_Y, L_W, L_H, fill=TINT if hot else WHITE, line=None if hot else LINE, line_w=0.75)
@@ -298,11 +361,8 @@ for i, (hd, one, rows, link) in enumerate(lessons):
         rect(s, x, L_Y, 0.08, L_H, fill=BLUE)
     ix, iw = x + 0.38, L_W - 0.76
     tb(s, ix, L_Y + 0.20, iw, 0.30, [(hd, 17.25, True, BLUE)])
-    tb(s, ix, L_Y + 0.56, iw, 0.78, [(one, 15.75, True, INK)], spacing=1.06)
-    ry = L_Y + 1.42
-    for k, v in rows:
-        tb(s, ix, ry, iw, 0.62, [[(k, 12.75, True, INK), (v, 12.75, False, GRAY)]], spacing=1.06)
-        ry += 0.76
+    tb(s, ix, L_Y + 0.54, iw, 0.64, [(one, 15.75, True, INK)], spacing=1.06)
+    vis(ix, L_Y + 1.24, iw, L_H - 1.24 - 0.56)
     rect(s, ix, L_Y + L_H - 0.50, iw, 0.012, fill=LINE)
     tb(s, ix, L_Y + L_H - 0.42, iw, 0.30, [(link, 12.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
 
