@@ -50,6 +50,24 @@ flowchart LR
 
 **독해**: NAND 셀의 한계(RBER↑·P/E↓)는 셀에서 풀린 적이 없다. 컨트롤러가 FTL·웨어 레벨링·BCH→LDPC로 흡수했고(F5·F6·F7), 그 다음 한계(WAF·OP·QLC 내구성)는 호스트(TRIM→ZNS→FDP)와 애플리케이션(CacheLib)이 흡수하고 있다. **디바이스 칸(1991)에서 호스트 칸(2022)까지 31년, 애플리케이션 칸(2025)까지 34년**. QLC의 추론 캐시 계층 진입([qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md) Phase 1·2·3)은 이 사다리의 5번째 칸을 채우는 일이며, 예외가 아니라 반복이다.
 
+### 2.5 지표로 보는 이관 — 셀이 못 지킨 BER, 컨트롤러가 못 지키는 DWPD (2026-09-18 보강)
+
+사용자 지적: "단품의 한계는 비트 에러를 자체적으로 해결하지 못한 것에서 왔고, wear-out과 산포가 시간에 따라 변하는 속성을 부품이 못 풀어 SSD가 나왔다. SSD도 MLC·TLC·QLC를 쓰면서 고객이 원하는 신뢰성(DWPD)을 못 맞추게 됐고, 이제 더 상위 계층과의 협력이 필요하다." 이 흐름을 네 숫자로 쓰면 다음과 같다 ([component-to-system-solution-ladder-facts-2026-09.md](../../sources/articles/component-to-system-solution-ladder-facts-2026-09.md) §7).
+
+| 지표 | 누가 정하나 | SLC('91~) | MLC('06~) | TLC('15~) | QLC('18~) | 무엇이 일어났나 |
+|---|---|---|---|---|---|---|
+| **P/E 사이클** | 셀(단품) | 30K~100K | 3K~10K | 1K~3K | ~100~1K | **100배 감소** — 비트/셀을 늘릴수록 산포 마진이 줄어 셀이 견디는 사이클이 준다(F4) |
+| **RBER(EOL)** | 셀(단품) | ~10⁻⁹~10⁻⁷ ⚠️ | ≤10⁻² @10K P/E | ~10⁻³(LDPC 5×10⁻³까지) | ~10⁻³~10⁻² ⚠️ | **약 10⁶배 상승** — 보존(시간에 따른 Vt 이동)·사이클링·리드 디스터브. 셀은 스스로 고치지 못한다(F32) |
+| **UBER 요구** | 고객(JESD218) | 10⁻¹⁵ / 10⁻¹⁶ | 동일 | 동일 | 동일 | **고정** — 보존 1년@30°C(클라이언트)·3개월@40°C(엔터프라이즈)도 고정(F28) |
+| **ECC 정정 능력** | 컨트롤러(SSD) | ~1비트/512B | 8~60비트 BCH/KB | 72~120비트 LDPC/KB | LDPC 소프트 디시전 | **약 60배 강화** — RBER과 UBER 사이의 폭을 컨트롤러가 메웠다(F33). 이것이 "NAND → SSD" 이관의 실체 |
+| **정격 DWPD(5년)** | 컨트롤러가 산출, 고객이 요구 | 17(X25-E 2008) | 10(S3700 2012) | 0.7(P4510 2018) | 0.41(P5316 2021) · 0.075~0.6(2026) | **40배 하락** — ECC는 BER을 막지만 P/E를 늘리지는 못한다(F30) |
+| **고객 요구 DWPD** | 고객(워크로드) | 엔터프라이즈 3~10 | 동일 | 캐시 계층 1~3 | 유효 7~10(ScaleFlux) | **그대로** — 정격과 10~40배 갭(F17·F31) |
+| **WAF** | 호스트·애플리케이션 | 랜덤 쓰기 ~3 | ~3 | 3.22(CacheLib, FDP 없음) | **1.03(CacheLib + FDP)** | **−68%** — 데이터 수명을 호스트가 알려 줄 때만 1에 수렴(F34) |
+
+**산식**: DWPD = P/E × (1 + OP) ÷ (WAF × 365 × 보증연수) (F29). P/E는 셀이, OP는 디바이스가, WAF는 호스트·애플리케이션이, 보증연수와 요구 DWPD는 고객이 정한다. SLC→QLC로 P/E가 100배 줄었으니 요구 DWPD를 지키려면 남은 변수는 WAF뿐이고, WAF를 3에서 1로 내리는 것은 컨트롤러가 아니라 **호스트가 데이터 수명을 알려 줄 때**만 가능하다(F14·F15). 유효 DWPD는 정격 × (WAF_정격 / WAF_실제)이므로 3.22 → 1.03은 곧 ×3.1이다. 이것이 "이제 상위 계층과의 협력이 필요한 시점"의 수치적 근거이며, ScaleFlux의 RUH 200+·유효 7~10 DWPD 주장(F17)이 같은 산식 위에 있다.
+
+**두 단계의 대칭**: 1단계(NAND → SSD)에서 셀이 못 지킨 것은 **BER**이었고 컨트롤러가 **ECC**로 지켰다. 2단계(SSD → 호스트)에서 컨트롤러가 못 지키는 것은 **DWPD**이고 호스트가 **데이터 배치(WAF)** 로 지킨다. 두 번 다 "요구(UBER·DWPD)는 고정, 단품 지표(RBER·P/E)는 악화, 상위 계층의 변수(ECC·WAF)로 메운다"는 같은 구조다.
+
 ## 3. DRAM의 사다리 — "단품이 만족해 왔다"는 전제의 검증
 
 | 연도 | 칸 | 해법 | 흡수한 단품 한계 | 근거 |
@@ -97,4 +115,4 @@ flowchart LR
 
 - 상위: [qlc-ssd-market.md](qlc-ssd-market.md)(§3.4 구매 기준·§3.5 다운턴 교훈) · [nand-process-transition.md](nand-process-transition.md) · [hbm-roadmap.md](hbm-roadmap.md) · [dram-technology.md](dram-technology.md)
 - 전략: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) · [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md) · [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md) · [customer-co-design-anthropic.md](customer-co-design-anthropic.md)
-- 산출물: [memory-solution-ladder-report.md](../../outputs/report/memory-solution-ladder-report.md) · 슬라이드 `outputs/presentation/memory-solution-ladder.pptx`
+- 산출물: [memory-solution-ladder-report.md](../../outputs/report/memory-solution-ladder-report.md) · 슬라이드 `outputs/presentation/memory-solution-ladder.pptx`(v1.1: 네 지표 차트 `assets/solution_metrics_chart.png`; 계층 사다리 차트 `assets/solution_ladder_chart.png`는 보고서 그림)

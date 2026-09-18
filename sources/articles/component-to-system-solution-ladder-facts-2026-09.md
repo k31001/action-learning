@@ -64,6 +64,21 @@
 
 **독해**: DRAM의 자기 진화(HBM 2013)는 시스템 해법(CXL 2019·PRAC 2024)보다 **6~11년 앞섰고**, NAND의 자기 진화(HBF 2026 사양)는 시스템 해법(SSD 1991)보다 **35년 뒤**다. 사용자의 "순서 차이" 관찰은 사실과 부합한다. HBM4E의 커스텀 베이스 다이(F26)는 자기 진화 축이 고객 공동 설계와 합쳐지는 지점이다.
 
+## 7. 지표로 보는 이관 — P/E · BER · UBER · DWPD · WAF (2026-09-18 추가, 슬라이드 v1.1 근거)
+
+| ID | 사실 | 출처 | 등급 |
+|---|---|---|---|
+| F28 | **UBER 요구(JESD218)**: 클라이언트 10⁻¹⁵ · 엔터프라이즈 10⁻¹⁶. 데이터 보존 요구: 클라이언트 30°C 1년(활성 40°C 8h/일), 엔터프라이즈 40°C 3개월(활성 55°C 24h/일), FFR 3%. TBW는 "이 요구를 만족하면서" 쓸 수 있는 양으로 정의 | SNIA 백서 "Endurance of NVMe, SAS, and SATA SSDs", Seagate TP618, JEDEC JC-64.8 발표자료(Alvin Cox) | ✅ |
+| F29 | **DWPD 공식**: DWPD = P/E × (1 + OP) ÷ (EOL일수 × WAF), EOL은 통상 5년; TBW = 물리 용량 × P/E ÷ WAF. WAF는 통상 4KB 100% 랜덤 쓰기 기준으로 추정, 예시 계산에 WAF 3 사용 | ATP "Predict SSD lifespan…", Kioxia "Understanding TBW versus P/E Cycles" 기술 브리프 | ✅ |
+| F30 | **정격 DWPD 추이(5년 환산)**: Intel X25-E 64GB(SLC, 2008) 랜덤 쓰기 2PB 보증 → 17.1 DWPD(환산) · Intel DC S3700(HET-MLC, 2012) 10 DWPD · Intel DC P4510(64L TLC, 2018) 0.7 DWPD(4TB 6,300TBW = 0.85) · Solidigm D5-P5316 30.72TB(144L QLC, 2021) 22,930TBW(64K 랜덤) = 0.41 DWPD(환산) · 최신 QLC 0.075~0.6(F17) | Intel X25-E 데이터시트(2009-05), StorageReview S3700 리뷰, Intel P4510 사양·StorageReview, Solidigm P5316 제품 브리프 | ✅(수치)·환산은 본 노트 |
+| F31 | 엔터프라이즈 SSD 일반 보증 부하 3~10 DWPD, 클라이언트 약 1 DWPD(JEDEC 워크로드 기준) | Seagate TP618 | 🟡 |
+| F32 | **RBER 대표값(EOL)**: SLC가 가장 낮음(문헌 대표 10⁻⁹~10⁻⁷ ⚠️) · MLC는 10,000 P/E 후 최대 10⁻²(Mielke 외, "Bit error rate in NAND Flash memories") · TLC는 부호율 0.936 LDPC가 RBER 5×10⁻³까지 UBER 10⁻¹⁶ 유지(F7) · QLC는 16레벨로 EOL에서 BER 열화(대표 10⁻³~10⁻² ⚠️). 오류원: P/E 사이클링·프로그램 간섭·**보존(retention, 시간에 따른 Vt 이동)**·리드 디스터브, 보존 오류가 지배적이고 P/E에 초선형 증가 | ResearchGate(Mielke 2008, Cai 2012 "Error Patterns in MLC NAND"), arXiv 1805.03283, USPTO 특허 요약 | 🟡(범위)·⚠️(SLC·QLC 대표값) |
+| F33 | **ECC 정정 능력 추이**: SLC 약 1비트/512B → MLC 4~8비트 → 2x nm MLC 24~60비트 BCH/1KB → 3D MLC 72비트 → **LDPC는 TLC에서 1KB당 최대 120비트 플립 정정**(BCH는 2KB당 120비트), 소프트 디시전으로 용량 한계 근접 | Kioxia ECC 기술 브리프, The Memory Guy, **WD 백서 "The Application of ECC/DSP to Flash Memory"(2021-03)**, ATP LDPC 블로그 | 🟡/✅(WD) |
+| F34 | **WAF**: 랜덤 쓰기 대표값 3(F29 예시) · CacheLib 100% 사용률 FDP 없음 3.22 → FDP 1.03(F15) · XFS write streams RocksDB WAF −35%(저장소) | F15·F29 | ✅ |
+| F35 | 이관의 산식적 의미: DWPD 공식에서 P/E는 셀(단품), OP는 디바이스, WAF는 호스트·애플리케이션(데이터 배치·수명 분리), 보증연수·요구 DWPD는 고객이 정한다. SLC→QLC로 P/E가 100배 줄었으므로 요구 DWPD를 지키려면 WAF를 줄이는 것이 남은 지렛대이며, WAF는 호스트가 데이터 수명을 알려 줄 때만 1에 수렴한다(F14·F15) | 본 노트 해석 | ⚠️ |
+
+**독해**: 셀이 못 지킨 것은 BER이고(F32), 컨트롤러는 ECC를 60배 키워(F33) UBER 요구(F28)를 지켰다. 그러나 ECC는 P/E 자체를 늘리지 못하므로 정격 DWPD는 17 → 10 → 0.7 → 0.41로 내려왔고(F30), 고객 요구(캐시 계층 1~3, 유효 7~10)는 그대로다(F17). 공식(F29)에서 남은 변수는 WAF뿐이며, WAF 3.22 → 1.03은 호스트 배치가 만들었다(F34). 이것이 "이제 상위 계층과의 협력이 필요한 시점"의 수치적 근거다(F35).
+
 ## 5. 검색 원문 목록
 
 - JEDEC JESD79-5C PRAC: https://www.jedec.org/news/pressreleases/jedec-updates-jesd79-5c-ddr5-sdram-standard-elevating-performance-and-security · https://www.techpowerup.com/321808/ · https://www.storagenewsletter.com/2024/04/22/jedec-published-jesd79-5c-ddr5-sdram-standard/ · QPRAC https://arxiv.org/pdf/2501.18861 · MOAT https://arxiv.org/pdf/2407.09995
@@ -78,6 +93,7 @@
 - LDPC: https://www.usenix.org/system/files/conference/fast13/fast13-final125.pdf · https://pcper.com/2015/01/lite-on-introduces-worlds-first-tlc-ssd-with-ldpc-technology/
 - SSD 역사: https://www.pcworld.com/article/472983/evolution-of-the-solid-state-drive.html · https://en.wikipedia.org/wiki/M-Systems · https://www.os2museum.com/wp/diskonchip/
 - 호스트 협력 표준: TRIM https://www.snia.org/educational-library/ata-trim-delete-notification-support-windows-7-2009 · LightNVM https://www.usenix.org/conference/fast17/technical-sessions/presentation/bjorling · Streams https://www.snia.org/educational-library/autostream-automatic-stream-management-multi-stream-ssds-big-data-era-2017 · ZNS https://nvmexpress.org/nvm-express-q3-webcast-qa-answering-your-questions-about-nvme-zoned-namespace-ssds-and-the-linux-zoned-storage-ecosystem/ · FDP https://semiconductor.samsung.com/news-events/tech-blog/hyperscalers-embrace-flexible-data-placement-fdp-to-increase-performance-and-lower-tco/ · https://nvmexpress.org/wp-content/uploads/FMS-2023-Flexible-Data-Placement-FDP-Overview.pdf
+- 지표(§7): SNIA 내구성 백서 https://snia.org/sites/default/files/SSSI/NVMe_SAS_SATA_Endurance_White_Paper.pdf · Seagate TP618 https://www.seagate.com/files/staticfiles/docs/pdf/whitepaper/tp618-ssd-tech-paper-us.pdf · ATP DWPD 공식 https://www.atpinc.com/blog/ssd-endurance-specification-lifespan · Kioxia TBW vs P/E https://americas.kioxia.com/content/dam/kioxia/en-us/business/memory/mlc-nand/asset/KIOXIA-TBW-vs-PE-Cycles-Tech-Brief.pdf · Intel X25-E 데이터시트 https://download.intel.com/newsroom/kits/ssd/pdfs/X25-E_DataSheet.pdf · S3700 https://www.storagereview.com/review/intel-ssd-dc-s3700-series-enterprise-ssd-review · P4510 https://www.storagereview.com/review/intel-ssd-dc-p4510-review · P5316 https://www.solidigm.com/products/data-center/product-briefs/d5-p5316-product-brief.html · RBER https://www.researchgate.net/publication/4348207_Bit_error_rate_in_NAND_Flash_memories · https://www.researchgate.net/publication/254023554_Error_Patterns_in_MLC_NAND_Flash_Memory_Measurement_Characterization_and_Analysis · WD ECC/DSP 백서 https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/collateral/white-paper/white-paper-the-application-of-ecc-dsp-to-flash-memory.pdf
 - QLC 1호: https://www.globenewswire.com/news-release/2018/05/21/1509612/14450/en/Micron-Ships-Industry-s-First-Quad-Level-Cell-NAND-SSD.html · 3D NAND 층수: https://www.blocksandfiles.com/data-management/2024/12/04/samsung-developing-400-plus-layer-3d-nand/1603230
 
 ## 6. 미확인·주의

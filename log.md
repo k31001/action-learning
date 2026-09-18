@@ -1943,3 +1943,13 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **슬라이드** `outputs/presentation/memory-solution-ladder.pptx`(1장): 좌 사다리 차트(`scripts/generate_solution_ladder_chart.py` → `assets/solution_ladder_chart.png`, NAND·DRAM 2패널 × 계층 5, ● 이관·◇ 자기 진화·× 한계 규명·○ 규격 미정의·이관 궤적 계단선) / 우 두 축 도식(5칸 사다리 + ↑ 이관 · → 자기 진화) + 키 숫자 3(31년·6년·10~40배) / 결론 밴드. 공용 헬퍼 `scripts/deck_kit.py`(QLC 덱 헬퍼 사본, 원본 무수정). 렌더 QA(차트 라벨 겹침 → 위치·제목 조정).
 - `index.md` 4항목 추가. 지식 그래프·대시보드는 아래 항목.
 - **대시보드**: 지식 그래프 재생성(노드 107→**108**, 엣지 589→597, orphans 0) → `version.js` v2.46.22→**v2.46.23**(패치), `updates.js` 항목, `npm run build` 통과. `.gitignore`에 `memory-solution-ladder.pptx` 커밋 예외 등록. QLC 4장 덱은 무변경.
+
+## [2026-09-18] ingest+build | 해법 사다리 v1.1 — P/E·BER·DWPD·WAF 네 지표로 이관을 설명(슬라이드 재작성)
+
+피드백: "메모리에서 가장 중요한 BER 개념이 없다. 단품의 한계는 비트 에러를 자체 해결 못 한 것·wear-out과 산포가 시간에 따라 변하는 것에서 왔고 SSD가 그것을 풀었다. SSD도 MLC·TLC·QLC를 쓰며 고객이 원하는 DWPD를 못 맞추게 됐고, 이제 상위 계층 협력이 필요하다. BER·DWPD·WAF·P/E 숫자의 변화로 이 흐름을 설명하는 슬라이드로 다시."
+- **데이터 수집·팩트체크(소스 §7, F28~F35)**: JESD218 UBER 10⁻¹⁵/10⁻¹⁶·보존 1년@30°C/3개월@40°C(SNIA·Seagate ✅), DWPD 산식 DWPD = P/E×(1+OP)÷(EOL일×WAF)(ATP·Kioxia ✅), 정격 DWPD 추이 — X25-E 64GB 2PB 보증→17.1 환산(Intel 데이터시트 ✅) · S3700 10(2012 ✅) · P4510 0.7(2018 ✅) · P5316 22,930TBW→0.41 환산(2021 ✅) · 최신 QLC 0.075~0.6(저장소), 엔터프라이즈 일반 3~10 DWPD(🟡), RBER — MLC ≤10⁻² @10K P/E(Mielke)·TLC LDPC 5×10⁻³·보존 오류 지배적(Cai), SLC·QLC 대표값은 ⚠️ 문헌 추정, ECC 추이 1비트/512B → BCH 60비트/KB → LDPC 120비트/KB(WD 백서 ✅), WAF 랜덤 ~3·CacheLib 3.22→1.03(✅). 원문 열람 차단 유지.
+- **위키·보고서**: `solution-ladder-component-to-system.md` §2.5 「지표로 보는 이관」(7지표 × 4세대 표, 산식의 항별 소유자, 두 단계의 대칭: 1단계 BER→ECC / 2단계 DWPD→WAF). 보고서 v1.1 §0 첫째 보강·§2.5·부록 A F28~F35·부록 B 슬라이드 맵 v1.1.
+- **차트** `generate_solution_metrics_chart.py` → `assets/solution_metrics_chart.png`: 2×2 인과 순서 — ① P/E(log, 하한~상한 막대, 100배↓) ② RBER(EOL 대표값 범위) vs UBER 요구선(JESD218)·ECC 비트/KB 라벨 ③ 정격 DWPD 추이 vs 캐시 계층 요구 1~3·유효 7~10(10~40배 갭) ④ WAF 3.00·3.22→1.03(−68%, 유효 DWPD ×3.1), 하단 산식. 렌더 QA: NanumGothic 윗첨자·마이너스 글리프 결손 → mathtext(DejaVu)로 표기, 라벨 겹침 조정.
+- **슬라이드 v1.1** `memory-solution-ladder.pptx`(1장): 타이틀 "단품이 잃은 P/E 100배를 컨트롤러가 ECC로 버텼고, 남은 지렛대 WAF는 호스트 협력에 있습니다", 좌 네 지표 차트, 우 산식 카드(DWPD = P/E × (1+OP) ÷ WAF ÷ 365×년, 항별 소유자 셀·디바이스·호스트앱·고객, WAF 강조) + 두 단계의 대칭 도식(셀→컨트롤러→고객 / 셀·SSD→호스트·앱→고객 3칩 × 2행), 결론 "요구는 고정, 단품 지표는 악화, 상위 계층의 변수가 메워 왔습니다 / QLC의 호스트 협력은 선택이 아니라 산식의 결과". v1.0 계층 사다리 차트는 보고서 1장 그림으로 유지.
+- `index.md` 4항목 갱신. 지식 그래프·대시보드는 아래 항목.
+- **대시보드**: 지식 그래프 재생성(노드 요약 갱신, 108·597 유지) → `version.js` v2.46.23→**v2.46.24**(패치), `updates.js` 항목, `npm run build` 통과. QLC 4장 덱 무변경.

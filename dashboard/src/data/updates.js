@@ -18,6 +18,25 @@ export const UPDATES = [
   {
     date: '2026-09-18',
     type: 'ingest',
+    version: 'v2.46.24',
+    title: '해법 사다리 v1.1 — P/E·BER·DWPD·WAF 네 지표로 "단품 → SSD → 호스트" 이관을 수치로 설명',
+    summary:
+      'SLC→QLC로 P/E 100배↓·RBER 약 10⁶배↑, 그러나 UBER 요구(JESD218 10⁻¹⁵·10⁻¹⁶)는 고정 → 컨트롤러가 ECC를 60배 키워 메움(1단계). ECC는 P/E를 못 늘려 정격 DWPD 17(X25-E 2008)→10→0.7→0.41(P5316 2021)→0.075~0.6으로 하락, 캐시 계층 요구 1~3·유효 7~10과 10~40배 갭. ' +
+      '산식 DWPD = P/E×(1+OP)÷(WAF×365×년)에서 남은 변수는 WAF뿐이며 3.22→1.03은 호스트 배치가 만들었다(2단계). 소스 §7 F28~F35(JESD218·ATP·Kioxia·Intel·Solidigm·Mielke·Cai·WD 백서), 위키 §2.5, 보고서 v1.1, 네 지표 차트 + 슬라이드 재작성. 패치 v2.46.24.',
+    tags: ['해법 사다리', 'BER', 'DWPD', 'WAF', 'P/E', 'JESD218', 'FDP', 'QLC'],
+    items: [
+      { label: '소스 §7', detail: 'UBER·보존 요구, DWPD 산식, 정격 DWPD 추이(환산 포함), RBER·ECC 추이, WAF — 등급 병기(SLC·QLC RBER 대표값 ⚠️)' },
+      { label: '위키 §2.5 · 보고서 §2.5', detail: '7지표 × 4세대 표 + 산식의 항별 소유자(P/E 셀 · OP 디바이스 · WAF 호스트·앱 · 년·DWPD 고객) + 두 단계의 대칭(BER→ECC / DWPD→WAF)' },
+      { label: '슬라이드 v1.1', detail: '좌 2×2 지표 차트(solution_metrics_chart.png) / 우 산식 카드 + 대칭 도식 / 결론 "협력은 선택이 아니라 산식의 결과"' },
+    ],
+    links: [
+      { label: 'wiki/concepts/solution-ladder-component-to-system.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/solution-ladder-component-to-system.md' },
+      { label: 'outputs/report/memory-solution-ladder-report.md', href: 'https://github.com/k31001/action-learning/blob/main/outputs/report/memory-solution-ladder-report.md' },
+    ],
+  },
+  {
+    date: '2026-09-18',
+    type: 'ingest',
     version: 'v2.46.23',
     title: '해법 사다리 — 단품이 요구를 못 채우면 해법은 상위 계층으로 이관된다 (NAND·DRAM·HBM·HBF 팩트체크 분석)',
     summary:
