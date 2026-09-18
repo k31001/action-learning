@@ -229,43 +229,44 @@ def v_arrow(slide, x, y, w, h, up=False, fill=BLUE):
 s = prs.slides.add_slide(BLANK)
 header(s, "QLC eSSD 전략 · 배경: 다운턴 복기에서 도출한 교훈",
        "다운턴 극복의 결정 요인은 고객 요구 적중이었고, 요구는 고객 시스템 내부에서 먼저 관측됐습니다",
-       "DT19·DT23 두 다운턴과 QLC eSSD 연혁을 동일 시간축에 배치해 도출한 세 교훈이 이후 세 장의 논리적 전제입니다.")
+       "DT19·DT23 두 다운턴과 QLC eSSD 연혁을 동일 시간축에 놓고 도출한 세 교훈이 이후 세 장의 전제입니다.")
 
-# 타임라인: 2018 → 2030.5, 다운턴 구간 음영 + QLC 이정표(이전 배경 장의 연혁) + 3기 띠
+# 타임라인: 2018 → 2030.5, 다운턴 구간 음영 + QLC 이정표(한 줄 라벨) + 3기 띠  (v3.8: 압축해 교훈 카드 영역 확대)
 TX0, TX1 = MX + 0.30, RIGHT - 0.30
 def tx(year):
     return TX0 + (TX1 - TX0) * (year - 2018.0) / 12.5
-AX_Y = 3.78
+AX_Y = 3.52
 rect(s, TX0, AX_Y - 0.01, TX1 - TX0, 0.02, fill=LINE)
-for y0, y1, lab in [(2018.75, 2019.95, "DT19 재고 조정 국면 · 매출 낙폭 -37.6%"), (2022.25, 2023.75, "DT23 최대 낙폭 -45% · 진앙은 eSSD")]:
+for y0, y1, lab in [(2018.75, 2019.95, "DT19 재고 조정 · -37.6%"), (2022.25, 2023.75, "DT23 최대 낙폭 -45% · 진앙 eSSD")]:
     rect(s, tx(y0), AX_Y - 0.13, tx(y1) - tx(y0), 0.26, fill=BLUE_T2)
-    tb(s, tx(y0) - 0.2, AX_Y + 0.17, tx(y1) - tx(y0) + 1.6, 0.22, [(lab, 11.25, True, BLUE)])
+    tb(s, tx(y0) - 0.2, AX_Y + 0.16, tx(y1) - tx(y0) + 1.6, 0.22, [(lab, 11.25, True, BLUE)])
 rect(s, tx(2027.5), AX_Y - 0.13, tx(2028.25) - tx(2027.5), 0.26, fill=WHITE, line=BLUE, line_w=1.0)
-tb(s, tx(2027.5) - 0.3, AX_Y + 0.17, 2.6, 0.22, [("차기 전환점(e) · 가격 정상화 국면", 11.25, True, BLUE)])
+tb(s, tx(2027.5) - 0.3, AX_Y + 0.16, 2.6, 0.22, [("차기 전환점(e) · 가격 정상화", 11.25, True, BLUE)])
 for yr in range(2018, 2031, 2):
-    tb(s, tx(yr) - 0.4, AX_Y + 0.40, 0.8, 0.2, [(str(yr), 10.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
-marks = [  # (연도, 위/아래, 날짜, 내용)
-    (2019.3, "up", "2019", "DT19 중 HBM 조직 축소"),
-    (2022.95, "down", "2022-12", "데이터 배치 표준 비준\neSSD 매출 -27% 국면"),
-    (2023.55, "up", "2023-07", "Solidigm 61.44TB QLC 출시\n삼성 대비 12개월 선행"),
-    (2024.75, "down", "2024", "QLC eSSD 비트 출하 30EB(4배)\nSolidigm 흑자 전환"),
-    (2026.6, "up", "2026", "KV 캐시 관리자 4종\n데이터 배치 규격 미정의"),
-    (2030.2, "down", "2030", "QLC 비트 550EB(10배)\n매출 정체(e)"),
+    tb(s, tx(yr) - 0.4, AX_Y + 0.38, 0.8, 0.2, [(str(yr), 10.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
+marks = [  # (연도, 위/아래, 날짜, 한 줄 내용)
+    (2019.3, "up", "2019", "HBM 조직 축소"),
+    (2022.95, "down", "2022-12", "데이터 배치 표준 비준"),
+    (2023.55, "up", "2023-07", "Solidigm 61TB, 12개월 선행"),
+    (2024.75, "down", "2024", "비트 출하 30EB(4배)"),
+    (2026.6, "up", "2026", "캐시 관리자 규격 미정의"),
+    (2030.2, "down", "2030", "비트 10배 · 매출 정체(e)"),
 ]
 for yr, side, d, t in marks:
     cx = tx(yr)
     rect(s, cx - 0.08, AX_Y - 0.08, 0.16, 0.16, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tl = [(ln, 11.25, False, GRAY) for ln in t.split("\n")]  # 줄마다 별도 문단(렌더러의 줄바꿈 정렬 오차 방지)
+    runs = [[(d + "  ", 11.25, True, INK), (t, 11.25, False, GRAY)]]
     if side == "up":
-        rect(s, cx - 0.006, AX_Y - 0.62, 0.012, 0.50, fill=LINE)
-        tb(s, cx - 1.2, AX_Y - 1.10, 2.4, 0.24, [(d, 12.75, True, INK)], align=PP_ALIGN.CENTER)
-        tb(s, cx - 1.2, AX_Y - 0.88, 2.4, 0.30, tl, align=PP_ALIGN.CENTER, spacing=1.0)
+        rect(s, cx - 0.006, AX_Y - 0.42, 0.012, 0.30, fill=LINE)
+        tb(s, cx - 1.4, AX_Y - 0.66, 2.8, 0.24, runs, align=PP_ALIGN.CENTER)
     else:
-        rect(s, cx - 0.006, AX_Y + 0.12, 0.012, 0.52, fill=LINE)
-        tb(s, cx - 1.2, AX_Y + 0.66, 2.4, 0.24, [(d, 12.75, True, INK)], align=PP_ALIGN.CENTER)
-        tb(s, cx - 1.2, AX_Y + 0.88, 2.4, 0.30, tl, align=PP_ALIGN.CENTER, spacing=1.0)
-# 3기 띠 (이전 배경 장의 국면 구분 승계)
-ER_Y = AX_Y + 1.34
+        rect(s, cx - 0.006, AX_Y + 0.12, 0.012, 0.44, fill=LINE)
+        if cx + 1.4 > RIGHT:  # 우측 끝 이정표는 오른쪽 정렬로 여백 안에
+            tb(s, cx - 2.6, AX_Y + 0.58, 2.84, 0.24, runs, align=PP_ALIGN.RIGHT)
+        else:
+            tb(s, cx - 1.4, AX_Y + 0.58, 2.8, 0.24, runs, align=PP_ALIGN.CENTER)
+# 3기 띠
+ER_Y = AX_Y + 0.92
 for y0, y1, lab, hot in [(2018.0, 2023.95, "초기 2018~2023 · 구매 기준 = TB당 TCO(원가·랙 밀도)", False),
                           (2024.0, 2026.95, "현재 2024~2026 · TB당 TCO(전력 효율·공급 확보)", False),
                           (2027.0, 2030.5, "향후 2027~2030 · GPU당 컨텍스트 용량·토큰당 비용", True)]:
@@ -274,95 +275,101 @@ for y0, y1, lab, hot in [(2018.0, 2023.95, "초기 2018~2023 · 구매 기준 = 
         rect(s, tx(y0), ER_Y, 0.06, 0.26, fill=BLUE)
     tb(s, tx(y0) + 0.14, ER_Y, tx(y1) - tx(y0) - 0.3, 0.26, [(lab, 11.25, True if hot else False, INK if hot else GRAY)], anchor=MSO_ANCHOR.MIDDLE)
 
-# 교훈 카드 3 (v3.7: 텍스트 대신 그림 — 선행 레인 / 출시 시점 막대 / 결정→초기 조건 연쇄)
-L_Y, L_H, L_W = ER_Y + 0.46, 3.36, (CW - 0.33 * 2) / 3
+# 교훈 카드 3 (v3.8: 문장 없이 키 숫자 + 도식)
+L_Y = ER_Y + 0.40
+L_H = 9.42 - 0.22 - L_Y
+L_W = (CW - 0.33 * 2) / 3
 
 
 def lesson_visual_1(x, y, w, h):
-    """수요 센싱: 고객 규격·코드 레인이 발주·출하 레인보다 ≈2년 앞선다. 2026 슬롯은 비어 있다(규격 미정의)."""
-    lx, lw = x + 1.30, w - 1.30
+    """수요 센싱: 고객 규격·코드 레인이 발주·비트 출하 레인보다 ≈2년 앞선다. 2026 슬롯은 빈 원(규격 미정의)."""
+    lx, lw = x + 1.35, w - 1.35
     px = lambda t: lx + lw * (t - 2022.0) / 5.0
-    top, bot = y + 0.40, y + 1.14
-    tb(s, x, top - 0.13, 1.25, 0.26, [("고객 규격 · 코드", 11.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, x, bot - 0.13, 1.25, 0.26, [("발주 · 비트 출하", 11.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
-    rect(s, lx, top, lw, 0.015, fill=LINE)
-    rect(s, lx, bot, lw, 0.015, fill=LINE)
+    top, bot = y + 0.50, y + h - 0.55
+    tb(s, x, top - 0.14, 1.3, 0.28, [("고객 규격 · 코드", 12, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, x, bot - 0.14, 1.3, 0.28, [("발주 · 비트 출하", 12, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+    rect(s, lx, top, lw, 0.02, fill=LINE)
+    rect(s, lx, bot, lw, 0.02, fill=LINE)
     d, o, e = px(2022.95), px(2024.5), px(2026.6)
     mid = (top + bot) / 2
-    rect(s, d - 0.006, top, 0.012, mid - 0.11 - top, fill=BLUE_T2)
-    rect(s, o - 0.006, mid + 0.11, 0.012, bot - (mid + 0.11), fill=BLUE_T2)
-    rect(s, d, mid - 0.11, o - d, 0.22, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-    tb(s, d, mid - 0.11, o - d - 0.1, 0.22, [("≈ 2년 선행", 10.5, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    rect(s, d - 0.09, top - 0.09, 0.18, 0.18, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, d - 0.3, top - 0.40, 2.4, 0.26, [("2022-12 배치 표준 비준", 10.5, False, GRAY)])
-    rect(s, o - 0.09, bot - 0.09, 0.18, 0.18, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, o - 0.3, bot + 0.10, 2.2, 0.26, [("2024 QLC eSSD 비트 출하 30EB", 10.5, False, GRAY)])
-    rect(s, e - 0.09, top - 0.09, 0.18, 0.18, fill=WHITE, line=BLUE, line_w=1.5, shape=MSO_SHAPE.OVAL)
-    tb(s, e - 1.9, top + 0.12, 2.15, 0.40, [("2026 캐시 관리자 코드", 10.5, True, BLUE), ("규격 미정의 = 선점 구간", 10.5, True, BLUE)],
+    rect(s, d - 0.008, top, 0.016, mid - 0.15 - top, fill=BLUE_T2)
+    rect(s, o - 0.008, mid + 0.15, 0.016, bot - (mid + 0.15), fill=BLUE_T2)
+    rect(s, d, mid - 0.15, o - d, 0.30, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+    tb(s, d, mid - 0.15, o - d - 0.12, 0.30, [("≈ 2년", 12, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    rect(s, d - 0.11, top - 0.11, 0.22, 0.22, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, d - 0.3, top - 0.44, 2.4, 0.26, [("2022-12 배치 표준 비준", 11.25, False, GRAY)])
+    rect(s, o - 0.11, bot - 0.11, 0.22, 0.22, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, o - 0.3, bot + 0.14, 2.4, 0.26, [("2024 비트 출하 30EB", 11.25, False, GRAY)])
+    rect(s, e - 0.11, top - 0.11, 0.22, 0.22, fill=WHITE, line=BLUE, line_w=1.75, shape=MSO_SHAPE.OVAL)
+    tb(s, e - 1.9, top + 0.16, 2.15, 0.44, [("2026 캐시 관리자 코드", 11.25, True, BLUE), ("규격 미정의 = 선점 구간", 11.25, True, BLUE)],
        align=PP_ALIGN.RIGHT, spacing=1.0)
 
 
 def lesson_visual_2(x, y, w, h):
-    """고객 협업: 61TB QLC 출시 시점(OCP 2022-10 예고 기준) 막대 — 규격 참여 vs 후발. HBM4는 공동 정의 아이콘."""
-    lab_w = 0.95
+    """고객 협업: 61TB QLC 출시 시점 막대(OCP 2022-10 예고 기준) + HBM4 규격 공동 정의 아이콘."""
+    lab_w = 1.0
     bx, bw = x + lab_w, w - lab_w
-    tb(s, x, y, w, 0.22, [("61TB QLC 출시 · OCP 2022-10 예고 기준", 10.5, False, GRAY_2)])
-    ry = y + 0.24
+    tb(s, x, y, w, 0.22, [("61TB QLC 출시 · OCP 2022-10 예고 기준", 11.25, False, GRAY_2)])
+    ry = y + 0.32
     for who, months, hit, end in [("Solidigm", 9, True, "2023-07 · 규격 정의 참여"), ("삼성", 21, False, "2024-07 · 12개월 후발")]:
-        tb(s, x, ry, lab_w - 0.05, 0.24, [(who, 11.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+        tb(s, x, ry, lab_w - 0.05, 0.34, [(who, 12, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
         bl = bw * months / 21.0
-        rect(s, bx, ry, bl, 0.24, fill=BLUE if hit else WHITE, line=None if hit else LINE, line_w=0.75)
+        rect(s, bx, ry, bl, 0.34, fill=BLUE if hit else WHITE, line=None if hit else LINE, line_w=0.75)
         if hit:
-            tb(s, bx + bl + 0.08, ry, bw - bl - 0.08, 0.24, [(end, 10.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+            tb(s, bx + bl + 0.10, ry, bw - bl - 0.10, 0.34, [(end, 11.25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
         else:
-            tb(s, bx + 0.08, ry, bl - 0.16, 0.24, [(end, 10.5, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.RIGHT)
-        ry += 0.30
-    rect(s, x, ry + 0.02, w, 0.012, fill=LINE)
-    hy = ry + 0.08
-    tb(s, x, hy, w, 0.20, [("HBM4 규격 정의", 10.5, False, GRAY_2)])
-    iy = hy + 0.24
-    pw = person(s, bx, iy, 0.36, color=BLUE)
-    rect(s, bx + pw + 0.04, iy + 0.16, 0.26, 0.05, fill=BLUE)
-    person(s, bx + pw + 0.34, iy, 0.36, color=BLUE)
-    tb(s, bx + 2 * pw + 0.44, iy - 0.02, 2.0, 0.40, [("SK hynix ↔ NVIDIA", 10.5, True, BLUE), ("공동 정의 → 주도권", 10.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
-    gx = bx + 2 * pw + 2.5
-    person(s, gx, iy, 0.36, color=GRAY_2)
-    tb(s, gx + pw + 0.08, iy - 0.02, w - (gx - x) - pw - 0.1, 0.40, [("삼성", 10.5, True, GRAY), ("후발", 10.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+            tb(s, bx + 0.10, ry, bl - 0.20, 0.34, [(end, 11.25, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.RIGHT)
+        ry += 0.44
+    rect(s, x, ry + 0.06, w, 0.012, fill=LINE)
+    hy = ry + 0.16
+    tb(s, x, hy, w, 0.22, [("HBM4 규격 정의", 11.25, False, GRAY_2)])
+    iy = hy + 0.30
+    ph = min(0.52, y + h - iy - 0.02)
+    pw = person(s, bx, iy, ph, color=BLUE)
+    rect(s, bx + pw + 0.05, iy + ph * 0.45, 0.30, 0.05, fill=BLUE)
+    person(s, bx + pw + 0.40, iy, ph, color=BLUE)
+    tb(s, bx + 2 * pw + 0.52, iy, 1.65, ph, [("SK hynix ↔ NVIDIA", 11.25, True, BLUE), ("공동 정의 → 주도권", 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+    gx = bx + 2 * pw + 2.25
+    person(s, gx, iy, ph, color=GRAY_2)
+    tb(s, gx + pw + 0.10, iy, w - (gx - x) - pw - 0.12, ph, [("삼성", 11.25, True, GRAY), ("후발", 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
 
 
 def lesson_visual_3(x, y, w, h):
-    """의사결정 시점: 직전 다운턴의 결정 → 다음 다운턴의 초기 조건. 3행째(현재 결정)는 강조."""
-    c1w = (w - 0.40) / 2
-    c2x = x + c1w + 0.40
-    tb(s, x, y, c1w, 0.22, [("직전 다운턴의 결정", 10.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
-    tb(s, c2x, y, c1w, 0.22, [("다음 다운턴의 초기 조건", 10.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
-    ry = y + 0.30
+    """의사결정 시점: 직전 다운턴의 결정 → 다음 다운턴의 초기 조건. 3행째(현재의 결정)는 강조."""
+    c1w = (w - 0.44) / 2
+    c2x = x + c1w + 0.44
+    tb(s, x, y, c1w, 0.22, [("직전 다운턴의 결정", 11.25, False, GRAY_2)], align=PP_ALIGN.CENTER)
+    tb(s, c2x, y, c1w, 0.22, [("다음 다운턴의 초기 조건", 11.25, False, GRAY_2)], align=PP_ALIGN.CENTER)
+    rh = 0.42
+    ry = y + 0.34
     for a, b, hot in [("DT19 · 무감산 성공 경험", "DT23 · 국면 오판", False),
-                      ("DT19 · HBM 조직 축소", "DT23 · 회복기 주도권 상실", False),
-                      ("2026 · 고객 시스템 진입", "2027H2 · TCO 보증 수익원", True)]:
-        rect(s, x, ry, c1w, 0.34, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
-        tb(s, x + 0.06, ry, c1w - 0.12, 0.34, [(a, 11.25, hot, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-        rect(s, x + c1w + 0.08, ry + 0.08, 0.24, 0.18, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-        rect(s, c2x, ry, c1w, 0.34, fill=BLUE if hot else TINT)
-        tb(s, c2x + 0.06, ry, c1w - 0.12, 0.34, [(b, 11.25, True, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-        ry += 0.42
+                      ("DT19 · HBM 조직 축소", "DT23 · 주도권 상실", False),
+                      ("2026 · 고객 시스템 진입", "2027H2 · TCO 보증 수익", True)]:
+        rect(s, x, ry, c1w, rh, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
+        tb(s, x + 0.06, ry, c1w - 0.12, rh, [(a, 12, hot, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        rect(s, x + c1w + 0.09, ry + 0.10, 0.26, 0.22, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+        rect(s, c2x, ry, c1w, rh, fill=BLUE if hot else TINT)
+        tb(s, c2x + 0.06, ry, c1w - 0.12, rh, [(b, 12, True, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        ry += rh + 0.14
 
 
 lessons = [
-    ("교훈 1 · 수요 센싱", "수요 신호는 발주보다 약 2년 선행해 고객 규격·코드에 나타난다", lesson_visual_1, "→ 2장  고객의 QLC 채택 동인"),
-    ("교훈 2 · 고객 협업", "규격 정의에 참여한 공급자가 적중했다", lesson_visual_2, "→ 3장  디바이스에서 고객 시스템까지 3단계 역량"),
-    ("교훈 3 · 의사결정 시점", "직전 다운턴의 결정이 다음 다운턴의 초기 조건이다", lesson_visual_3, "→ 4장  FDE·전략적 협약과 조직·인사·문화"),
+    ("교훈 1 · 수요 센싱", "2년", "고객 규격·코드 신호가\n발주·출하에 선행", lesson_visual_1, "→ 2장  고객의 QLC 채택 동인"),
+    ("교훈 2 · 고객 협업", "12개월", "규격 정의 참여 vs 후발의\n출시 시점 격차", lesson_visual_2, "→ 3장  디바이스에서 고객 시스템까지 3단계 역량"),
+    ("교훈 3 · 의사결정 시점", "2027H2", "지금의 결정이 초기 조건이 되는\n차기 전환점", lesson_visual_3, "→ 4장  FDE·전략적 협약과 조직·인사·문화"),
 ]
-for i, (hd, one, vis, link) in enumerate(lessons):
+for i, (hd, num, cap, vis, link) in enumerate(lessons):
     x = MX + i * (L_W + 0.33)
     hot = i == 1
     rect(s, x, L_Y, L_W, L_H, fill=TINT if hot else WHITE, line=None if hot else LINE, line_w=0.75)
     if hot:
         rect(s, x, L_Y, 0.08, L_H, fill=BLUE)
     ix, iw = x + 0.38, L_W - 0.76
-    tb(s, ix, L_Y + 0.20, iw, 0.30, [(hd, 17.25, True, BLUE)])
-    tb(s, ix, L_Y + 0.54, iw, 0.64, [(one, 15.75, True, INK)], spacing=1.06)
-    vis(ix, L_Y + 1.24, iw, L_H - 1.24 - 0.56)
+    tb(s, ix, L_Y + 0.18, iw, 0.30, [(hd, 17.25, True, BLUE)])
+    tb(s, ix, L_Y + 0.52, 2.05, 0.56, [(num, 30, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, ix + 2.1, L_Y + 0.52, iw - 2.1, 0.56, [(ln, 12.75, False, GRAY) for ln in cap.split("\n")], anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
+    rect(s, ix, L_Y + 1.18, iw, 0.012, fill=LINE)
+    vis(ix, L_Y + 1.30, iw, L_H - 1.30 - 0.60)
     rect(s, ix, L_Y + L_H - 0.50, iw, 0.012, fill=LINE)
     tb(s, ix, L_Y + L_H - 0.42, iw, 0.30, [(link, 12.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
 
