@@ -87,6 +87,7 @@
 
 ### 시장
 - [wiki/concepts/qlc-ssd-market.md](wiki/concepts/qlc-ssd-market.md) — (NEW) QLC eSSD 시장: 초기(2022 준비기)·현재(용량 경쟁·HDD 부족)·향후(추론 캐시 티어) 3기 비교 + §3.4 고객이 QLC를 원하는 이유(불변 = 용량 계층의 TB당 TCO, 변화 = 쓰기 많은 캐시 티어 → 내구성이 문, 용어 정리) + §3.5 다운턴이 가르친 것(센싱·고객 협업·타이밍 세 교훈 → 덱 1장)표 + 2022~2030 수요(EB)·비중(%)·매출($B) 모델(비트 10배·매출 정체, KV 티어 QLC 조건부 상방)
+- [wiki/concepts/solution-ladder-component-to-system.md](wiki/concepts/solution-ladder-component-to-system.md) — (NEW) 해법 사다리: 단품이 요구를 못 채우면 해법은 상위 계층(컨트롤러→호스트→애플리케이션)으로 이관된다 — NAND(SSD 1991→FDP 2022→CacheLib 2025)·DRAM(Chipkill 1997·HBM 2013·on-die ECC 2020·RFM 2021·PRAC 2024·CXL) 사다리 표, 두 축(이관 vs 자기 진화)과 순서 차이(HBF 35년 뒤 vs HBM 6~11년 앞), QLC·DRAM 함의
 - [wiki/concepts/memory-market-overview.md](wiki/concepts/memory-market-overview.md) — 글로벌 메모리 시장 전망 ($1,700B → $5,516B → $8,427B)
 - [wiki/concepts/hbm-market.md](wiki/concepts/hbm-market.md) — HBM 시장 규모·점유율·세대별 단가
 - [wiki/concepts/hbm-roadmap.md](wiki/concepts/hbm-roadmap.md) — HBM3E→HBM4 세대별 양산 로드맵
@@ -257,6 +258,7 @@
 - [sources/prompt/fdp-fde-solution-prompt.md](sources/prompt/fdp-fde-solution-prompt.md) — FDP·FDE 솔루션 제안서 브리프 (2026-08-09, [outputs/storyline/ssd-fdp-proposal.md](outputs/storyline/ssd-fdp-proposal.md)의 모체)
 - [sources/prompt/prompt-fdp-ssd.md](sources/prompt/prompt-fdp-ssd.md) — (NEW) 「삼성 SSD 전략적 방향성」 보고서 브리프 (2026-08-17, 원문 보존+데이터 보강+팩트체크 대장 F-1~F-9 — [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md)의 모체)
 - [sources/prompt/prompt-qlc-ssd-strategy.md](sources/prompt/prompt-qlc-ssd-strategy.md) — (NEW) 「QLC SSD 시장 흐름·역량·실행 전략」 보고서 브리프 (2026-09-17, 원문 보존 + 착수 전 질문 10개(기본 가정 병기) + 작업 계획 초안 — `outputs/report/qlc-ssd-strategy-report.md`(예정)의 모체)
+- [sources/articles/component-to-system-solution-ladder-facts-2026-09.md](sources/articles/component-to-system-solution-ladder-facts-2026-09.md) — (NEW) 해법 사다리 팩트체크 대장 F1~F27 (SSD·FTL·LDPC·TRIM·ZNS·FDP·CacheLib / Chipkill·Row Hammer·DDR5 on-die ECC·RFM·PRAC·CXL·MRDIMM / HBM·HBM4E 커스텀 베이스 다이·HBF OCP 사양) — 웹 검색 요약 기반, 원문 열람 차단으로 등급 병기
 
 ### sources/papers — 리서치 보고서
 - [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md](sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md) — 딥리서치: 2030 메모리 수급 4대 병목 정량 모델 (HBM 2.88EB·서버 125만 대·민감도·가격 균형)
@@ -272,6 +274,8 @@
 - [outputs/report/ssd-strategy-report.md](outputs/report/ssd-strategy-report.md) — (NEW) 삼성 SSD 전략적 방향성 보고서 **본문 v1.1** — 세 번의 선택→호황의 역설(소비자 외주 경량 유지 반영)→네 번째 방향성(동인-대응 매핑·"왜 이번에는 다른가"·생태계 계층 지도·SCADA 분리)→실행(제휴 패키지 선례 한정·수익화 원칙)·비중 전환 3단계 결론 + 부록 A~D(팩트체크·용어·자산맵·**실행 과제 6건**)
 - [outputs/report/ssd-strategy-critique.md](outputs/report/ssd-strategy-critique.md) — (NEW) 삼성 SSD 전략적 방향성 비판적 검토 — 24개 지적(🔴5: 선례의 역설/균열 1/두 전장/FDP 조건부성/가트너 3차 인용) + **사용자 결정 5건·로드맵 B 채택 반영 완료**(2026-08-18, 보고서 v1.1·덱 5장)
 - [outputs/report/qlc-ssd-strategy-report.md](outputs/report/qlc-ssd-strategy-report.md) — (NEW) QLC eSSD 전략 보고서 v1.0 (「삼성 SSD 전략적 방향성」 자매편) — 2022 배경(준비기)→3기 비교→2022~2030 수요·비중·매출 모델(비트 10배·매출 정체)→Phase 1·2·3 역량→기술 전략(스택·협업 기업)→실행 전략 5축·3티어·고객 협업 제안 + 부록 A 팩트체크 대장 32건
+- [outputs/report/memory-solution-ladder-report.md](outputs/report/memory-solution-ladder-report.md) — (NEW) 해법 사다리 분석 보고서 v1.0 (QLC 전략 부속) — 5칸 사다리 모델·NAND 이관 연혁·DRAM 검증(부분 성립: PRAC = FDP의 DRAM 판)·순서 차이·함의 4·부록 A 팩트 대장 27건·슬라이드 맵
+- [outputs/presentation/memory-solution-ladder.pptx](outputs/presentation/memory-solution-ladder.pptx) — (NEW) 해법 사다리 **1장** 슬라이드 — 좌 사다리 차트(NAND·DRAM 2패널, `assets/solution_ladder_chart.png`) / 우 두 축 도식 + 키 숫자 3(31년·6년·10~40배) / 결론 (`scripts/generate_solution_ladder_pptx.py` + 공용 `deck_kit.py`)
 - [outputs/storyline/outline.md](outputs/storyline/outline.md) — (NEW) SSD 스토리라인 제안서 아웃라인 (2부 구성·비판 10건 반영 내역·제목 확정)
 - [outputs/storyline/common-overview.md](outputs/storyline/common-overview.md) — (NEW) 「호황은 전략을 심는 계절이다」 — 7인 공통 개요편(1~4장): 호황의 외생성·다운턴 3건 재감사(결과 이질성)·NAND 지형·3중 저지선
 - [outputs/storyline/open-innovation-proposal.md](outputs/storyline/open-innovation-proposal.md) — (NEW) 「지금만 살 수 있는 것」 — 오픈이노베이션(자원배분 Axis 2): D9 다운사이클 M&A와의 충돌 해소(가격 vs 기술 vs 자리)·저전력 반도체 즉시 실행(Axelera·EnCharge 등 5곳)·퀀텀 모달리티 분산과 극저온 메모리 장기 옵션(Diraq·SEEQC 등 9곳)·실행 3원칙(락인 안 된 곳·자본 5~10% 상한·시계별 심사 분리)

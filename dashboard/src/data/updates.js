@@ -17,6 +17,25 @@ export const UPDATES = [
   // ── 2026-09-18 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-18',
+    type: 'ingest',
+    version: 'v2.46.23',
+    title: '해법 사다리 — 단품이 요구를 못 채우면 해법은 상위 계층으로 이관된다 (NAND·DRAM·HBM·HBF 팩트체크 분석)',
+    summary:
+      'NAND는 셀 한계(RBER·P/E)를 컨트롤러(SSD 1991·FTL 1995·LDPC 2015) → 호스트(TRIM 2009·ZNS 2020·FDP 2022) → 애플리케이션(CacheLib 2025)에서 풀어 왔고, QLC의 호스트 협력은 그 사다리의 다음 칸. ' +
+      'DRAM은 "단품이 계속 만족"이 용량·대역폭 축에만 맞고, 신뢰성 축은 Chipkill(1997)→on-die ECC(2020)→RFM(2021)→PRAC(2024, 호스트-디바이스 협력 규격 = FDP의 DRAM 판)으로 이미 4번째 칸. 자기 진화 축(HBM 2013·HBF 2026)은 병행하며 순서가 반대(HBF는 SSD보다 35년 뒤, HBM은 CXL보다 6년 앞). 팩트 27건(JEDEC·NVMe·CXL·USENIX·ISCA·SanDisk·Micron) 수집, 원문 열람 차단으로 등급 병기. 지식그래프 노드 108. 패치 v2.46.23.',
+    tags: ['해법 사다리', 'NAND', 'DRAM', 'HBM', 'HBF', 'FDP', 'PRAC', 'CXL', '팩트체크'],
+    items: [
+      { label: '소스', detail: 'component-to-system-solution-ladder-facts-2026-09.md — F1~F27 팩트 대장 + 검색 원문 URL' },
+      { label: '위키', detail: 'concepts/solution-ladder-component-to-system.md — 5칸 사다리 모델·NAND/DRAM 사다리 표·순서 차이 해석·함의 4·반론 3' },
+      { label: '보고서·슬라이드', detail: 'outputs/report/memory-solution-ladder-report.md v1.0, outputs/presentation/memory-solution-ladder.pptx(1장: 사다리 차트 + 두 축 도식 + 키 숫자 31년·6년·10~40배)' },
+    ],
+    links: [
+      { label: 'wiki/concepts/solution-ladder-component-to-system.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/solution-ladder-component-to-system.md' },
+      { label: 'outputs/report/memory-solution-ladder-report.md', href: 'https://github.com/k31001/action-learning/blob/main/outputs/report/memory-solution-ladder-report.md' },
+    ],
+  },
+  {
+    date: '2026-09-18',
     type: 'build',
     version: 'v2.46.22',
     title: 'QLC 시장 위키 §3.5 「다운턴이 가르친 것」 신설 — 덱 v3.5 맨 앞장(센싱·고객 협업·타이밍 세 교훈), 총 4장',

@@ -1933,3 +1933,13 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 교훈 카드에서 한 줄 명제 문장을 제거하고 **키 숫자 30pt + 두 줄 캡션**으로 대체: 교훈 1 "2년"(고객 규격·코드 신호가 발주·출하에 선행), 교훈 2 "12개월"(규격 정의 참여 vs 후발의 출시 시점 격차), 교훈 3 "2027H2"(지금의 결정이 초기 조건이 되는 차기 전환점). 도식 영역 1.56→2.1in(레인 간격·막대 0.34in·연쇄 행 0.42in).
 - 상단 타임라인: 이정표 라벨을 한 줄(날짜 + 짧은 내용)로 압축, 축 y 3.78→3.52, 3기 띠 유지 → 카드 높이 3.36→3.9in. 우측 끝 2030 라벨 오른쪽 정렬, HBM 행 텍스트 폭 조정(세로 쪼개짐 수정). 렌더 QA 2회.
 - **동기화**: 기획서 v3.8, 보고서 PPT 압축 맵. 위키·그래프·모델·대시보드 무변경(지식 그래프 동일).
+
+## [2026-09-18] ingest+build | 해법 사다리(단품 한계 → 상위 계층 이관) 분석 — 소스·위키·보고서·1장 슬라이드
+
+사용자 가설(2026-09-18): "단위 부품 특성이 고객 요구를 못 채우면 상위 부품에서 솔루션을 제공하는 것이 자연스러운 흐름(NAND의 bit error·wear-out → SSD, QLC → 호스트 협력). DRAM은 단품이 계속 만족해 상위 솔루션 니즈가 작았고 시간의 문제. HBM은 단품 업그레이드, HBF는 NAND가 SSD로 먼저 간 뒤 늦게 온 것이라 순서가 다름. 자기 진화 축은 간과 금지." → 별도 분석 보고서 + 시각 중심 1장 슬라이드, 팩트체크·데이터 수집 요구.
+- **팩트체크·데이터**: `sources/articles/component-to-system-solution-ladder-facts-2026-09.md` F1~F27. 웹 검색으로 JEDEC(JESD79-5 2020-07 on-die ECC·RFM / 5A 2021-10 Adaptive RFM / 5C 2024-04-17 PRAC·Alert Back-Off / JESD235 2013-10 / JESD270-4 2025-04), NVM Express(ZNS TP4053 2020-06·FDP TP4146 2022-12), CXL(1.0 2019-03·2.0 2020-11·3.0 2022-08·3.1 2023-11), USENIX FAST'13 LDPC-in-SSD·FAST'17 LightNVM, ISCA 2014 Row Hammer, Micron 5210 ION 2018-05, SanDisk HBF(MOU 2025-08·킥오프 2026-02·OCP 사양 2026-08: 512GB·16-Hi·UCIe·≤3TB/s), HBM4E 커스텀 베이스 다이, MRDIMM 2024, NAND P/E·ECC 요구 추이 등 27건 수집. **원문 페이지 직접 열람은 프록시 차단(EGRESS_BLOCKED)** → 검색 요약 기반, 등급(✅/🟡/⚠️) 병기.
+- **검증 결과(위키 `wiki/concepts/solution-ladder-component-to-system.md`)**: 가설은 부합. 보정 1 — "DRAM은 단품이 만족해 왔다"는 용량·대역폭 축에 한해 맞고, 신뢰성 축은 Chipkill(1997)→on-die ECC(2020)→RFM(2021)→**PRAC(2024, 호스트-디바이스 협력 규격 = FDP의 DRAM 판)** 으로 이미 4번째 칸까지 올랐다(애플리케이션 칸은 미도달). 보정 2 — HBF는 시대 역행이 아니라 NAND 자기 진화 축의 늦은 도착(SSD 1991보다 35년 뒤)이며, 사용성 한계(Hot Chips 2026)는 상위 계층이 워크로드를 골라야 성립함을 보여줌. 순서 차이의 원인은 첫 한계의 종류(NAND 신뢰성 → 관리 로직 → 이관 먼저 / DRAM 대역폭 → 물리 집적 → 자기 진화 먼저)로 해석(⚠️). 함의 4(QLC 정당성·DRAM 준비·두 축 한 로드맵·통제권 설계), 반론 3.
+- **보고서** `outputs/report/memory-solution-ladder-report.md` v1.0(요약·6장·부록 A 팩트 대장·부록 B 슬라이드 맵).
+- **슬라이드** `outputs/presentation/memory-solution-ladder.pptx`(1장): 좌 사다리 차트(`scripts/generate_solution_ladder_chart.py` → `assets/solution_ladder_chart.png`, NAND·DRAM 2패널 × 계층 5, ● 이관·◇ 자기 진화·× 한계 규명·○ 규격 미정의·이관 궤적 계단선) / 우 두 축 도식(5칸 사다리 + ↑ 이관 · → 자기 진화) + 키 숫자 3(31년·6년·10~40배) / 결론 밴드. 공용 헬퍼 `scripts/deck_kit.py`(QLC 덱 헬퍼 사본, 원본 무수정). 렌더 QA(차트 라벨 겹침 → 위치·제목 조정).
+- `index.md` 4항목 추가. 지식 그래프·대시보드는 아래 항목.
+- **대시보드**: 지식 그래프 재생성(노드 107→**108**, 엣지 589→597, orphans 0) → `version.js` v2.46.22→**v2.46.23**(패치), `updates.js` 항목, `npm run build` 통과. `.gitignore`에 `memory-solution-ladder.pptx` 커밋 예외 등록. QLC 4장 덱은 무변경.
