@@ -17,6 +17,22 @@ export const UPDATES = [
   // ── 2026-09-18 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-18',
+    type: 'build',
+    version: 'v2.46.29',
+    title: 'QLC 덱 v3.13 / 해법 사다리 v2.0 — 1장 레이아웃 zero-base 재설계(이관 매트릭스)',
+    summary:
+      '1장을 이관 매트릭스로 재설계: 열 = 이관 단계(요구·고정 → 단품 지표·악화 → SSD 계층의 보상 → 호스트·시스템 계층의 보상), 행 = 내구성 축 / 신뢰성 축, 행 사이 DWPD 산식 칩. 셀마다 미니 차트·빅넘버 1개(generate_ladder_cells.py, 1:1 figsize). ' +
+      '기획서 v3.13·보고서 부록 B v2.0·위키 산출물 줄·인덱스 동기화. 패치 v2.46.29.',
+    tags: ['QLC', '덱', '해법 사다리', '레이아웃'],
+    items: [
+      { label: '슬라이드 1 v2.0', detail: '내구성 행: DWPD·UBER 빅넘버 → P/E·RBER → ECC 타일 + 2단계 타일(정격 DWPD 스파크라인) → WAF 3.22→1.03 / 신뢰성 행: FFR ≤3% → 다이 수 128→1,024 → 다이 RAID·FIP → 상위 계층(점선)' },
+    ],
+    links: [
+      { label: '기획서 v3.13', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+    ],
+  },
+  {
+    date: '2026-09-18',
     type: 'ingest',
     version: 'v2.46.28',
     title: '해법 사다리 v1.4 / QLC 덱 v3.12 — 1장에 병렬 축(SSD당 다이 수·다이 고장률) 추가',
