@@ -41,7 +41,7 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 | 역량 | 추론 캐시 티어 기준 | 근거 |
 |---|---|---|
 | RUH 확장 펌웨어 | 현행 업계 2~8개 → **200+**(세션·테넌트·prefix·수명 등급 분리) | ScaleFlux 200+ 스트림·유효 7~10+ DWPD ([qlc-essd-timeline-fdp-ruh-2026-09.md](../../sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md) §2) |
-| QLC 미디어 관리 | 2Tb 다이, SLC 캐시·쓰기 정형·GC 정책으로 WAF ≈1 유지, 수명 보증 가능 수준의 텔레메트리 | CacheLib 실측 WAF 3.22 → 1.03 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.2) |
+| QLC 미디어 관리 | 2Tb 다이, SLC 캐시·쓰기 정형·GC 정책 — 단, 디바이스 단독 추정으로는 실 워크로드 WAF ≈3에 머물므로(해법 사다리 §2.5 2단계) 배치 표준 적용 시 WAF ≈1을 유지하는 설계, 수명 보증 가능 수준의 텔레메트리 | CacheLib 실측 WAF 3.22 → 1.03 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.2) |
 | 인터페이스 | PCIe 5→6, NVMe 2.1, NVMe KV 확장, NVMe-oF(CMX 풀) | CMX가 NVMe KV 확장 사용(같은 소스 §1) |
 | 전력·냉각 | W/TB 1차 KPI(245TB급 0.12 W/TB), D2C 액체냉각 | Micron 6600 ION, 삼성 PM1763·Kioxia CM10 액체냉각 |
 | 플랫폼 인증 | NVIDIA CMX/BlueField-4 STX 검증, OCP 2.5/2.6, 하이퍼스케일러 qualification(12~18개월) | Supermicro STX가 Micron·삼성·Phison SSD로 검증 진행 |

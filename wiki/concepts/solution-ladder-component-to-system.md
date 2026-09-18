@@ -66,7 +66,15 @@ flowchart LR
 
 **산식**: DWPD = P/E × (1 + OP) ÷ (WAF × 365 × 보증연수) (F29). P/E는 셀이, OP는 디바이스가, WAF는 호스트·애플리케이션이, 보증연수와 요구 DWPD는 고객이 정한다. SLC→QLC로 P/E가 100배 줄었으니 요구 DWPD를 지키려면 남은 변수는 WAF뿐이고, WAF를 3에서 1로 내리는 것은 컨트롤러가 아니라 **호스트가 데이터 수명을 알려 줄 때**만 가능하다(F14·F15). 유효 DWPD는 정격 × (WAF_정격 / WAF_실제)이므로 3.22 → 1.03은 곧 ×3.1이다. 이것이 "이제 상위 계층과의 협력이 필요한 시점"의 수치적 근거이며, ScaleFlux의 RUH 200+·유효 7~10 DWPD 주장(F17)이 같은 산식 위에 있다.
 
-**두 단계의 대칭**: 1단계(NAND → SSD)에서 셀이 못 지킨 것은 **BER**이었고 컨트롤러가 **ECC**로 지켰다. 2단계(SSD → 호스트)에서 컨트롤러가 못 지키는 것은 **DWPD**이고 호스트가 **데이터 배치(WAF)** 로 지킨다. 두 번 다 "요구(UBER·DWPD)는 고정, 단품 지표(RBER·P/E)는 악화, 상위 계층의 변수(ECC·WAF)로 메운다"는 같은 구조다.
+**이관의 3단계**(2026-09-18 사용자 정정: "1단계는 ECC가 맞고, 2단계는 SSD가 워크로드에 최적화하려는 시도였으나 고객 워크로드를 완벽히 감지할 수 없어 QoS·성능은 개선했지만 WAF를 크게 줄이지 못했다. 3단계 호스트 시스템 co-design으로 WAF를 1에 가깝게 만드는 것이 QLC로 요구 DWPD를 만족하는 유일한 방법이다." 근거 [소스 §8](../../sources/articles/component-to-system-solution-ladder-facts-2026-09.md) F36~F40):
+
+| 단계 | 시기 | 단품·SSD 지표 | 보상 시도(주체) | 결과 | 고객 요구 |
+|---|---|---|---|---|---|
+| 1단계 NAND → SSD | 1991~ | RBER 약 10⁶배 ↑ | 컨트롤러 ECC 60배 ↑(F33) | 완결 | UBER 요구 충족(F28) |
+| 2단계 SSD 단독 워크로드 최적화 | 2014~2019 | P/E 100배 ↓, 정격 DWPD 0.4 | SSD·드라이버가 워크로드를 추정 — Multi-stream(F36)·AutoStream(F37)·FTL 핫/콜드 분리(F38)·IO 결정성(F39) | **부분 성공**: QoS(테일 지연)·성능 개선, WAF는 실 워크로드에서 ≈3 유지(CacheLib 3.22, F38) — 데이터 수명은 호스트만 아는 정보(F40) | DWPD 요구 미충족(격차 10~40배, F17) |
+| 3단계 호스트 시스템 공동 설계 | 2022~ | 동일 | 호스트가 데이터 수명을 지정(배치 표준 F14)하고 캐시 관리자·애플리케이션 정책까지 공동 설계 | WAF 3.22 → 1.03(F15), 유효 DWPD ×3.1 | DWPD 요구 충족 — **QLC로 요구 DWPD를 충족하는 유일한 경로**(F35) |
+
+세 단계 모두 "요구(UBER·DWPD)는 고정, 단품 지표(RBER·P/E)는 악화, 보상은 더 위 계층으로 올라간다"는 같은 구조이며, 2단계의 부분 성공이 3단계가 선택이 아니라 필연인 이유다.
 
 ## 3. DRAM의 사다리 — "단품이 만족해 왔다"는 전제의 검증
 
@@ -115,4 +123,4 @@ flowchart LR
 
 - 상위: [qlc-ssd-market.md](qlc-ssd-market.md)(§3.4 구매 기준·§3.5 다운턴 교훈) · [nand-process-transition.md](nand-process-transition.md) · [hbm-roadmap.md](hbm-roadmap.md) · [dram-technology.md](dram-technology.md)
 - 전략: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) · [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md) · [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md) · [customer-co-design-anthropic.md](customer-co-design-anthropic.md)
-- 산출물: [memory-solution-ladder-report.md](../../outputs/report/memory-solution-ladder-report.md) · 슬라이드 `outputs/presentation/memory-solution-ladder.pptx`(v1.2: 네 지표 차트, 공식 문안 — 타이틀 "RBER 상승은 컨트롤러 ECC가 보상했고, P/E 감소의 보상 변수 WAF는 호스트 계층에 있습니다", 이관 구조의 반복 3행(3단계 = QLC 덱 2~5장); 같은 슬라이드가 QLC eSSD 전략 덱 `qlc-ssd-strategy.pptx` 1장 — `scripts/solution_ladder_slide.py` 공용 빌더 `assets/solution_metrics_chart.png`; 계층 사다리 차트 `assets/solution_ladder_chart.png`는 보고서 그림)
+- 산출물: [memory-solution-ladder-report.md](../../outputs/report/memory-solution-ladder-report.md) · 슬라이드 `outputs/presentation/memory-solution-ladder.pptx`(v1.2: 네 지표 차트, 공식 문안 — 타이틀 "RBER 상승은 컨트롤러 ECC가 보상했고, P/E 감소의 보상 변수 WAF는 호스트 계층에 있습니다", 이관의 3단계(1 ECC 완결 / 2 SSD 단독 워크로드 최적화 부분 성공: QoS·성능 개선·WAF ≈3 / 3 호스트 시스템 공동 설계 WAF 1.0 = QLC 덱 2~5장, v1.3); 같은 슬라이드가 QLC eSSD 전략 덱 `qlc-ssd-strategy.pptx` 1장 — `scripts/solution_ladder_slide.py` 공용 빌더 `assets/solution_metrics_chart.png`; 계층 사다리 차트 `assets/solution_ladder_chart.png`는 보고서 그림)

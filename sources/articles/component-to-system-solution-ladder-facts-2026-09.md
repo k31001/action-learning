@@ -79,7 +79,23 @@
 
 **독해**: 셀이 못 지킨 것은 BER이고(F32), 컨트롤러는 ECC를 60배 키워(F33) UBER 요구(F28)를 지켰다. 그러나 ECC는 P/E 자체를 늘리지 못하므로 정격 DWPD는 17 → 10 → 0.7 → 0.41로 내려왔고(F30), 고객 요구(캐시 계층 1~3, 유효 7~10)는 그대로다(F17). 공식(F29)에서 남은 변수는 WAF뿐이며, WAF 3.22 → 1.03은 호스트 배치가 만들었다(F34). 이것이 "이제 상위 계층과의 협력이 필요한 시점"의 수치적 근거다(F35).
 
+## 8. SSD 단독 워크로드 최적화의 한계 — 2단계의 부분 성공 (2026-09-18 추가, 슬라이드 v1.3 근거)
+
+사용자 지적(2026-09-18): "1단계는 ECC가 맞고, 2단계는 SSD가 워크로드에 최적화하려는 시도를 했으나 고객 워크로드를 완벽히 감지할 수 없어 QoS·성능 개선 효과는 있었지만 WAF를 크게 줄이지 못했다. 그래서 3단계(호스트 시스템 co-design)로 WAF를 1에 가깝게 만드는 것이 QLC로 요구 DWPD를 만족하는 유일한 방법이다."
+
+| ID | 사실 | 출처 | 등급 |
+|---|---|---|---|
+| F36 | **Multi-streamed SSD**(삼성, USENIX HotStorage'14 Kang 외): 갱신 빈도가 다른 데이터를 별도 쓰기 스트림(append point)으로 분리해 WAF·GC를 줄이는 SSD 기능. 호스트가 스트림 ID를 태그해야 하며, Cassandra에서 CommitLog·SSTable 티어별 스트림 분리로 WAF 감소를 시연. NVMe Streams directive(1.3, 2017)로 표준화됐으나 업계 채택은 미미("did not find much traction") | USENIX HotStorage'14 논문, [fdp-technical-limits-adoption-context-2026-08.md](fdp-technical-limits-adoption-context-2026-08.md) §1, F12 | 🟡 |
+| F37 | **AutoStream**(삼성, ACM SYSTOR 2017): 애플리케이션 수정 없이 **런타임 워크로드 감지**로 스트림을 자동 배정(NVMe 리눅스 드라이버 프로토타입). 평가 워크로드에서 WAF 최대 60% 감소·성능 최대 237% 개선 — 즉 감지 기반 배정은 워크로드에 따라 효과가 크게 달라지며, 실 워크로드의 데이터 수명은 LBA 접근 패턴으로 완전히 추정되지 않음. 후속 연구(StreamCSD 2025 등)가 여전히 "SSD 자율 스트림 관리"를 미해결 과제로 다룸 | ACM SYSTOR'17 논문·발표자료, ResearchGate(StreamCSD 2025) | 🟡 |
+| F38 | **FTL 핫/콜드 데이터 분리**: 펌웨어가 LBA 범위를 빈(bin)으로 나눠 덮어쓰기 빈도를 추적해 핫·웜·콜드를 추정하고 별도 블록에 배치(특허 US20160139812A1·US11068197, ASA-FTL 등). 효과는 추정 정확도에 좌우되며, 웜 데이터·패턴 변화가 오분류를 낳음. 실 캐시 워크로드에서 호스트 힌트 없이 최신 FTL이 낸 결과가 CacheLib WAF 3.22(F15) — **디바이스 단독 추정은 WAF ≈ 3 수준을 벗어나지 못함** | Google Patents(US20160139812A1), USPTO 11068197, ASA-FTL(ResearchGate), F15 | 🟡(F15는 ✅) |
+| F39 | **NVMe IO Determinism / NVM Sets / Predictable Latency Mode**(Facebook FMS 2018 제안, NVMe 1.4 2019): 다이 집합을 분리하고 결정적·비결정적 시간 창을 번갈아 운용해 읽기 **테일 지연(QoS)** 을 제거 — SSD 하우스키핑(GC)의 간섭을 격리하는 기능이지 WAF를 줄이는 기능은 아님 | Blocks & Files(2019-11, NVMe 1.4 노이지 네이버), Medium(NVM Sets), IIT Kanpur PLMlight·PLMC(2021), ACM TOS(IOD 확장) | 🟡 |
+| F40 | **FDP의 전제**(삼성 기술 블로그): NAND는 덮어쓰기가 불가하고 GC가 WAF를 만든다. **호스트가 데이터의 생애주기(life cycle)를 알므로** 유사 수명 데이터를 같은 RU(Reclaim Unit)에 묶어 GC 비효율을 제거 — "host/device cooperation"이 WAF를 낮추고 GC 빈도를 줄인다. FDP는 Google SmartFTL·Meta Direct Placement 제안을 통합(F14) | Samsung Semiconductor 기술 블로그(FDP 소개·하이퍼스케일러 채택·RocksDB WAF), StorageNewsletter 2025-02 | ✅ |
+
+**독해**: 1단계(ECC)는 완결된 이관이다(F33). 2단계는 SSD 진영이 디바이스·드라이버 안에서 워크로드에 적응하려 한 시도들(스트림 F36·자동 스트림 F37·FTL 핫/콜드 추정 F38·IO 결정성 F39)로, **QoS·성능은 개선했으나 WAF는 실 워크로드에서 ≈3에 머물렀다**(F38). 원인은 데이터 수명이 호스트·애플리케이션에만 있는 정보라는 점(F40)이다. 따라서 3단계(호스트 시스템 공동 설계: 배치 표준 + 캐시 관리자 정책)만이 WAF를 1.03까지 낮췄고(F15·F34), P/E가 100배 준 QLC로 요구 DWPD를 충족하는 경로는 이것뿐이다(F35). 등급: F36~F39는 검색 인용(원문 열람 차단), F40은 삼성 공식 블로그.
+
 ## 5. 검색 원문 목록
+
+- §8 SSD 단독 최적화 한계: HotStorage'14 https://www.usenix.org/system/files/conference/hotstorage14/hotstorage14-paper-kang.pdf · AutoStream SYSTOR'17 https://dl.acm.org/doi/10.1145/3078468.3078469 · https://www.systor.org/2017/slides/AutoStream.pdf · StreamCSD https://www.researchgate.net/publication/394380061 · FTL 핫/콜드 https://patents.google.com/patent/US20160139812A1/en · https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11068197 · ASA-FTL https://www.researchgate.net/publication/309687398 · NVMe 1.4 IOD https://blocksandfiles.com/2019/11/07/datacentre-ssd-noisy-neighbour-problems-and-long-tail-latencies-solved-by-nvme-v1-4/ · https://medium.com/@saswatidas13/using-nvm-sets-to-mitigate-read-indeterminism-in-ssd-drives-4427b10bf776 · https://www.cse.iitk.ac.in/users/amitangshu/nca_2021.pdf · https://dl.acm.org/doi/10.1145/3568427 · 삼성 FDP 블로그 https://semiconductor.samsung.com/news-events/tech-blog/flexible-data-placement/ · https://semiconductor.samsung.com/news-events/tech-blog/what-hyperscalers-need-to-know-about-flexible-data-placement-fdp/ · https://semiconductor.samsung.com/news-events/tech-blog/hyperscalers-embrace-flexible-data-placement-fdp-to-increase-performance-and-lower-tco/ · https://www.storagenewsletter.com/2025/02/05/nvme-fdp-a-promising-new-ssd-data-placement-approach/
 
 - JEDEC JESD79-5C PRAC: https://www.jedec.org/news/pressreleases/jedec-updates-jesd79-5c-ddr5-sdram-standard-elevating-performance-and-security · https://www.techpowerup.com/321808/ · https://www.storagenewsletter.com/2024/04/22/jedec-published-jesd79-5c-ddr5-sdram-standard/ · QPRAC https://arxiv.org/pdf/2501.18861 · MOAT https://arxiv.org/pdf/2407.09995
 - JEDEC DDR5 JESD79-5: https://www.jedec.org/news/pressreleases/jedec-publishes-new-ddr5-standard-advancing-next-generation-high-performance · JESD79-5A: https://www.jedec.org/news/pressreleases/jedec-publishes-update-ddr5-sdram-standard-used-high-performance-computing

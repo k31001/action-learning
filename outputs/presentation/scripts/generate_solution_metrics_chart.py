@@ -5,7 +5,7 @@
  ① 셀의 한계: P/E 사이클(log) SLC→MLC→TLC→QLC, 100배 감소
  ② 컨트롤러의 보상: RBER(EOL 대표값, log) 10⁶배 상승 vs UBER 요구(JESD218 10⁻¹⁵·10⁻¹⁶) 고정 — 그 격차를 ECC(비트/KB 2→120)가 보상
  ③ 결과: 정격 DWPD(log) 17→10→0.7→0.41→0.075~0.6 vs 추론 캐시 계층 요구 1~3(TLC)·유효 7~10(ScaleFlux)
- ④ 남은 변수: WAF 3(랜덤 쓰기 대표) · 3.22(CacheLib, FDP 없음) → 1.03(CacheLib + FDP) = 호스트 배치
+ ④ WAF: ② SSD 단독 최적화(FTL 추정·스트림·IO 결정성) 3(랜덤 쓰기 대표) · 3.22(CacheLib, FDP 없음) vs ③ 호스트 공동 설계 1.03(CacheLib + FDP)
 데이터·등급: sources/articles/component-to-system-solution-ladder-facts-2026-09.md §7 (F28~F35)
 출력: outputs/presentation/assets/solution_metrics_chart.png
 실행: .venv/bin/python outputs/presentation/scripts/generate_solution_metrics_chart.py
@@ -141,13 +141,17 @@ def p4(ax):
     ax.bar(x, vals, width=0.56, color=cols, zorder=2)
     for i, v in enumerate(vals):
         ax.text(i, v + 0.08, f"{v:.2f}", ha="center", va="bottom", fontsize=10, color=INK, fontweight="bold")
-    ax.set_ylim(0, 4.2)
+    ax.set_ylim(0, 4.9)
     ax.set_xticks(list(x))
     ax.set_xticklabels(labels, fontsize=9)
-    ax.annotate("", xy=(2, 1.25), xytext=(1, 3.4), arrowprops=dict(arrowstyle="->", color=GRAY_2, lw=1.4))
-    ax.text(1.55, 2.55, "-68%\n= 유효 DWPD x3.1", fontsize=10.5, color=INK, fontweight="bold", ha="center")
-    ax.text(2.32, 0.5, "호스트·앱\n계층", fontsize=8.8, color=BLUE, ha="left", va="center")
-    style(ax, "④ 남은 변수 — WAF: 호스트 데이터 배치가 결정", "WAF")
+    # 2단계(SSD 단독) 브래킷 vs 3단계(호스트 공동 설계)
+    ax.plot([-0.3, -0.3, 1.3, 1.3], [3.95, 4.1, 4.1, 3.95], color=GRAY_2, lw=1.0)
+    ax.text(0.5, 4.2, "② SSD 단독 최적화 (FTL 추정·스트림·IO 결정성) : WAF ≈ 3 유지", fontsize=8.8, color=GRAY, ha="center", va="bottom")
+    ax.plot([1.7, 1.7, 2.3, 2.3], [1.65, 1.8, 1.8, 1.65], color=BLUE, lw=1.0)
+    ax.text(2.0, 1.9, "③ 호스트 공동 설계", fontsize=8.8, color=BLUE, fontweight="bold", ha="center", va="bottom")
+    ax.annotate("", xy=(1.95, 2.2), xytext=(1.75, 2.78), arrowprops=dict(arrowstyle="->", color=GRAY_2, lw=1.4))
+    ax.text(1.75, 2.85, "-68%\n= 유효 DWPD x3.1", fontsize=10.5, color=INK, fontweight="bold", ha="center", va="bottom")
+    style(ax, "④ WAF — SSD 단독 최적화 ≈3, 호스트 공동 설계로 1.0", "WAF")
 
 
 def main():

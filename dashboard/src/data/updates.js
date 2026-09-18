@@ -17,6 +17,24 @@ export const UPDATES = [
   // ── 2026-09-18 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-18',
+    type: 'ingest',
+    version: 'v2.46.27',
+    title: '해법 사다리 v1.3 / QLC 덱 v3.11 — 1장 이관의 3단계 정정(ECC 완결 → SSD 단독 최적화 부분 성공 → 호스트 공동 설계 유일)',
+    summary:
+      '사용자 정정 반영: 2단계는 SSD가 디바이스·드라이버 안에서 워크로드에 적응하려 한 시도(Multi-stream·AutoStream·FTL 핫/콜드 추정·NVMe IO 결정성)로 QoS·성능은 개선했으나 데이터 수명을 완전히 감지할 수 없어 실 워크로드 WAF ≈3에 머물렀고, ' +
+      '3단계 호스트 시스템 공동 설계만 WAF 1.0 → QLC로 요구 DWPD를 충족하는 유일한 경로. 소스 §8 F36~F40 수집(🟡/✅), 위키 §2.5 3단계 표, phases 위키 모순 정정, 슬라이드·차트·보고서·기획서 동기화. 패치 v2.46.27.',
+    tags: ['QLC', '해법 사다리', 'WAF', 'FDP', 'AutoStream', 'IO Determinism'],
+    items: [
+      { label: '소스 §8', detail: 'HotStorage\'14 Multi-stream · SYSTOR\'17 AutoStream(WAF −60%·성능 +237% 평가, 워크로드 의존) · FTL 핫/콜드 특허·ASA-FTL · NVMe 1.4 IOD/NVM Sets/PLM · 삼성 FDP 블로그' },
+      { label: '슬라이드 1', detail: '이관의 3단계 카드(행별 충족/미충족, 2단계 연파랑 = 부분 성공), 차트 ④ SSD 단독 ≈3 vs 호스트 공동 설계 1.0, 타이틀·리드·결론 갱신' },
+    ],
+    links: [
+      { label: '위키 §2.5', href: 'wiki/concepts/solution-ladder-component-to-system.md' },
+      { label: '소스 §8', href: 'sources/articles/component-to-system-solution-ladder-facts-2026-09.md' },
+    ],
+  },
+  {
+    date: '2026-09-18',
     type: 'build',
     version: 'v2.46.26',
     title: 'QLC 덱 v3.10 — 5장 스토리라인 통일(산식 → 시점 → 수요 → 역량 → 실행), 공식 용어, 시각 스토리 장치',
