@@ -118,7 +118,7 @@ TrendForce는 2024년 QLC eSSD 비트 출하를 **30EB, 2023년 대비 4배**로
 
 **변화**: 가장 빨리 크는 용량 수요(KV cache)가 처음으로 **쓰기 많은 티어**에 있다. 고객은 여기서도 QLC의 경제성을 원하지만 내구성 때문에 TLC를 쓴다. 내구성은 미디어를 바꿔서가 아니라 **고객 시스템이 데이터를 어떻게 놓느냐**(배치 표준으로 수명이 다른 블록을 분리: CacheLib WAF 3.22→1.03, RUH 200+로 유효 7~10 DWPD)로 풀리므로 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.2), QLC 벤더는 디바이스에서 고객 시스템 안까지 올라가야 한다. 이것이 [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)의 Phase 1·2·3과 [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md)의 FDE·SCA로 이어지는 논리다.
 
-**덱 표기 원칙**(사용자 결정 2026-09-17): 니어라인 HDD 대체 여부는 발표 덱에서 다루지 않는다(§3.1의 범위 결정은 위키에 유지). 덱(v3.9, 5장)은 1장 해법 사다리(왜 호스트 협력인가 — [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md) §2.5) → 2장 다운턴 교훈(왜 지금인가) → 3장 고객의 QLC 채택 동인 → 4장 3단계 역량 → 5장 실행 전략의 순서로, 마지막 결론 문장까지 같은 축으로 잇는다.
+**덱 표기 원칙**(사용자 결정 2026-09-17): 니어라인 HDD 대체 여부는 발표 덱에서 다루지 않는다(§3.1의 범위 결정은 위키에 유지). 덱(v3.10, 5장)의 스토리 스파인은 ① 산식(왜 호스트 협력인가 — [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md) §2.5) → ② 시점(왜 지금인가 — §3.5 다운턴 교훈) → ③ 수요(고객의 요구는 무엇인가 — §3.4) → ④ 역량(어떻게 해소하는가 — [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)) → ⑤ 실행(누가 어떻게 실행하는가 — [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md))이다. 각 장의 결론이 다음 장의 질문이 되도록 리드·결론 밴드를 연결하고(1장 산식의 보상 변수 WAF → 2장 그 규격의 정의 시점 → 3장 요구사항의 내용 → 4장 격차 해소 경로 → 5장 진입 수단과 조직), 덱의 헤더 스토리 레일·결론 밴드의 다음 장 포인터·5장 요약 체인으로 시각화한다(사용자 결정 2026-09-18: 비유·구어 표현은 보상·이관·격차·규격·진입·접근권 등 기술 용어로 통일).
 
 ### 3.5 다운턴이 가르친 것 — 세 교훈과 QLC 전략의 연결 (덱 1장)
 

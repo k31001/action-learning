@@ -3,9 +3,9 @@
 
 2×2 소형 다중 패널(왼→오, 위→아래 = 인과 순서):
  ① 셀의 한계: P/E 사이클(log) SLC→MLC→TLC→QLC, 100배 감소
- ② 컨트롤러의 응답: RBER(EOL 대표값, log) 10⁶배 상승 vs UBER 요구(JESD218 10⁻¹⁵·10⁻¹⁶) 고정 — 그 폭을 ECC(비트/KB 2→120)가 메움
+ ② 컨트롤러의 보상: RBER(EOL 대표값, log) 10⁶배 상승 vs UBER 요구(JESD218 10⁻¹⁵·10⁻¹⁶) 고정 — 그 격차를 ECC(비트/KB 2→120)가 보상
  ③ 결과: 정격 DWPD(log) 17→10→0.7→0.41→0.075~0.6 vs 추론 캐시 계층 요구 1~3(TLC)·유효 7~10(ScaleFlux)
- ④ 남은 지렛대: WAF 3(랜덤 쓰기 대표) · 3.22(CacheLib, FDP 없음) → 1.03(CacheLib + FDP) = 호스트 배치
+ ④ 남은 변수: WAF 3(랜덤 쓰기 대표) · 3.22(CacheLib, FDP 없음) → 1.03(CacheLib + FDP) = 호스트 배치
 데이터·등급: sources/articles/component-to-system-solution-ladder-facts-2026-09.md §7 (F28~F35)
 출력: outputs/presentation/assets/solution_metrics_chart.png
 실행: .venv/bin/python outputs/presentation/scripts/generate_solution_metrics_chart.py
@@ -92,7 +92,7 @@ def p2(ax):
     ax.annotate("신품(빈 원) → EOL(채운 원)\nP/E 사이클·보존 시간에 따라 초선형 증가", xy=(3, 1e-3), xytext=(1.45, 1e-6),
                 fontsize=8.5, color=GRAY, ha="left", va="center",
                 arrowprops=dict(arrowstyle="->", color=GRAY_2, lw=1.0))
-    ax.text(1.5, 1e-10, "ECC가 메우는 폭\n(컨트롤러 계층)", ha="center", va="center", fontsize=10, color=GRAY, fontweight="bold")
+    ax.text(1.5, 1e-10, "ECC 보상 범위\n(컨트롤러 계층)", ha="center", va="center", fontsize=10, color=GRAY, fontweight="bold")
     ecc = ["ECC 2 bit/KB", "8~60 bit/KB\nBCH", "72~120 bit/KB\nLDPC", "LDPC\n소프트 디시전"]
     for i, t in enumerate(ecc):
         ax.text(i, 30, t, ha="center", va="center", fontsize=8.5, color=INK)
@@ -101,7 +101,7 @@ def p2(ax):
     pow10(ax.yaxis)
     ax.set_yticks([1e-16, 1e-12, 1e-8, 1e-4, 1])
     ax.text(0.28, 1.2e-5, r"$10^{6}$배 ↑", fontsize=11, color=INK, fontweight="bold", ha="left", va="bottom")
-    style(ax, "② BER — 셀은 스스로 못 고친다: RBER↑, UBER 요구 고정, 폭은 ECC", "bit error rate")
+    style(ax, "② BER — 셀 단독 보정 불가: RBER ↑ vs UBER 요구 고정, 격차는 ECC", "bit error rate")
 
 
 def p3(ax):
@@ -113,7 +113,7 @@ def p3(ax):
     ax.axhspan(1, 3, color=TINT, zorder=0)
     ax.axhline(1, color=BLUE, lw=1.0, ls="--", zorder=1)
     ax.axhline(3, color=BLUE, lw=1.0, ls="--", zorder=1)
-    ax.text(2006.4, 1.7, "추론 캐시 계층 요구 1~3 (오늘 TLC)", ha="left", va="center", fontsize=8.8, color=BLUE)
+    ax.text(2006.4, 1.7, "추론 캐시 계층 요구 1~3 (현재 TLC)", ha="left", va="center", fontsize=8.8, color=BLUE)
     ax.axhline(7, color=BLUE_T1, lw=1.0, ls=":", zorder=1)
     ax.text(2027.4, 8.5, "유효 7~10 (ScaleFlux 제시)", ha="right", va="bottom", fontsize=8.8, color=BLUE_T1)
     xs = [p[0] for p in pts]
@@ -130,7 +130,7 @@ def p3(ax):
     ax.set_yticklabels(["0.1", "1", "10"])
     ax.set_xticks([2008, 2012, 2016, 2020, 2024, 2028])
     ax.tick_params(axis="y", which="minor", left=False)
-    style(ax, "③ 결과 — 정격 DWPD는 내려오고 고객 요구는 그대로", "DWPD (5년)")
+    style(ax, "③ 결과 — 정격 DWPD 하락 · 요구 DWPD 고정", "DWPD (5년)")
 
 
 def p4(ax):
@@ -147,7 +147,7 @@ def p4(ax):
     ax.annotate("", xy=(2, 1.25), xytext=(1, 3.4), arrowprops=dict(arrowstyle="->", color=GRAY_2, lw=1.4))
     ax.text(1.55, 2.55, "-68%\n= 유효 DWPD x3.1", fontsize=10.5, color=INK, fontweight="bold", ha="center")
     ax.text(2.32, 0.5, "호스트·앱\n계층", fontsize=8.8, color=BLUE, ha="left", va="center")
-    style(ax, "④ 남은 지렛대 — WAF: 셀도 컨트롤러도 아닌 호스트 배치가 줄인다", "WAF")
+    style(ax, "④ 남은 변수 — WAF: 호스트 데이터 배치가 결정", "WAF")
 
 
 def main():
@@ -158,7 +158,7 @@ def main():
     p3(axs[1][0])
     p4(axs[1][1])
     fig.text(0.5, 0.005,
-             "DWPD = P/E x (1 + OP) / (WAF x 365 x 보증연수)   P/E는 셀, OP는 디바이스, WAF는 호스트·애플리케이션, 보증연수·DWPD는 고객이 정한다",
+             "DWPD = P/E x (1 + OP) / (WAF x 365 x 보증연수)   P/E는 셀, OP는 디바이스, WAF는 호스트·애플리케이션, 보증연수·DWPD는 고객이 결정",
              ha="center", va="bottom", fontsize=10, color=GRAY)
     fig.tight_layout(rect=(0, 0.035, 1, 1))
     fig.savefig(OUT, dpi=220, facecolor="white")

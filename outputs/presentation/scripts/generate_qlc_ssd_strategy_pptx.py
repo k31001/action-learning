@@ -1,24 +1,28 @@
 # -*- coding: utf-8 -*-
-"""QLC eSSD 전략 — 3장 덱 생성 v2 (시각 중심: 글 최소, 그림·도형으로 논증).
+"""QLC eSSD 전략 — 5장 덱 생성 v3.10 (스토리라인 통일: 산식 → 시점 → 수요 → 역량 → 실행).
 
-S-1 배경 0(해법 사다리, v3.9 맨 앞장, solution_ladder_slide 공용): P/E·BER·DWPD·WAF 네 지표 차트 + 산식 카드 + 두 단계의 대칭 — "왜 호스트 협력인가"
-S0 배경(다운턴 교훈, v3.5): 다운턴 구간 음영 타임라인(DT19·DT23 + QLC 이정표 + 3기 띠) + 교훈 카드 3(센싱·고객 협업·타이밍: 역사 → 지금 → 이 덱의 장) + 결론
-S1 배경: 3기 스트립(고객이 산 것 · 왜 · 조건 · 삼성) + 통합 그래프 + 키넘버 스티커(+송용호 인용) — 축은 "용량 계층의 TB당 TCO"(v3.4; 이정표 타임라인은 S0로 이동)
-   인용(v3.4, 전략 신빙성): S1 송용호(부품이 어떻게 쓰일지는 시스템 설계자 마음), S2 리드 신문섭(고객 아키텍처 안으로), S3 리드 송용호(고객 지향)·개발실 박스 송용호(고객의 집)
-S2 역량: 갭 타일 4 + Phase 1·2·3 스택 그림(고객 시스템 5계층의 구체 기술을 층마다 적고, 우리가 닿는 층을 색으로) + 진행 바(삼성 현 위치)
-S3 실행: 두 트랙 그림(삼성 개발실 ↔ 고객 시스템: 위 화살표 "FDE가 들어간다", 아래 화살표 "SCA로 워크로드가 온다",
-        가운데 선례 카드 2 = Palantir FDE·Micron↔Anthropic SCA) + 조직·인사·문화 3축 타일(축당 3줄; 전략·재무 타일과 타임라인은 v3.2에서 제거)
-        + 3장 요약 한 문장 결론 밴드
+스토리라인 장치(v3.10):
+  · 헤더 킥커 자리 = 스토리 레일 story_rail(): 5장(1 산식·왜 호스트 협력인가 / 2 시점·왜 지금인가 / 3 수요·고객은 무엇을 요구하는가 /
+    4 역량·어떻게 해소하는가 / 5 실행·누가 어떻게 실행하는가)을 번호 원 + 밑줄 진행 바로 표시, 현재 장 강조
+  · 결론 밴드 우측 = 다음 장 포인터 band(next_step=n): 이 장의 결론이 다음 장의 질문으로 이어짐을 표시
+  · 5장 결론 밴드 = 5장 요약 체인 band_chain(): 장별 결론 칩 5개를 화살표로 연결
+  · 리드 = 앞 장과의 연결 문장(1장은 이 장의 질문, 4·5장은 인용 유지)
+S1 배경 0(해법 사다리, solution_ladder_slide 공용): 네 지표 차트 + 산식 카드 + 이관 구조의 반복(3행: NAND→SSD / SSD→호스트 / 호스트→고객 시스템 = 본 덱)
+S2 배경(다운턴 교훈): 다운턴 구간 음영 타임라인(DT19·DT23 + QLC 이정표) + 교훈 카드 3(수요 센싱·고객 협업·의사결정 시점, 키 숫자 + 도식 + → n장). 3기 띠는 3장과 중복이라 v3.10에서 제거
+S3 배경(고객 채택 동인): 3기 스트립(구매 기준 · 동인 · 조건 · 삼성) + 통합 그래프 + 키넘버 스티커 + 송용호 인용
+S4 역량: 격차 타일 4 + Phase 1·2·3 스택(고객 시스템 5계층, 층별 기술, 닿는 층을 색으로; 범례는 Phase 1 옆) + 진행 바(삼성 현 위치) + 결론 밴드(v3.10 신설)
+S5 실행: 두 트랙 그림(삼성 ↔ 고객 시스템: ① FDE 상주 / ② 전략적 협약, 선례 카드 2 = Palantir FDE·Micron↔Anthropic SCA) + 조직·인사·문화 3축 타일 + 5장 요약 체인
 
 디자인 시스템: outputs/presentation/ssd-strategy.pptx 승계
   20 x 11.25 in 캔버스 / Arial 단일 폰트 / Samsung Blue #1428A0 단일 액센트
-  헤더(조직명·문서등급·킥커·30pt 액션 타이틀·20pt 리드·헤어라인) / 푸터(출처·페이지)
+  헤더(조직명·문서등급·스토리 레일·30pt 액션 타이틀·20pt 리드·헤어라인) / 푸터(출처·페이지)
   틴트 카드 #F4F6FC(무테) · 아웃라인 카드 흰색+#D9D9D9 0.75pt · 다크 블루 정리 밴드 · 직각 사각형
 
 실행: .venv/bin/python outputs/presentation/scripts/generate_qlc_ssd_strategy_pptx.py
 출력: outputs/presentation/qlc-ssd-strategy.pptx
 렌더 검증용 오버라이드: FONT_LATIN=NanumGothic FONT_EA=NanumGothic OUT_PATH=<scratch>.pptx
 콘텐츠 소스: outputs/report/qlc-ssd-strategy-report.md (PPT 압축 맵) · outputs/presentation/qlc-ssd-strategy-outline.md
+헬퍼 변경 시 deck_kit.py 재추출: `import os` ~ `# ==== S1` 마커 직전까지.
 """
 import os
 
@@ -112,10 +116,45 @@ def rect(slide, x, y, w, h, fill=None, line=None, line_w=0.75, shape=MSO_SHAPE.R
     return sp
 
 
+STORY = [("1", "산식", "왜 호스트 협력인가"), ("2", "시점", "왜 지금인가"), ("3", "수요", "고객의 요구는 무엇인가"),
+         ("4", "역량", "어떻게 해소하는가"), ("5", "실행", "누가 어떻게 실행하는가")]
+
+
+def story_rail(slide, current, y=0.88, h=0.30):
+    """스토리 레일(킥커 자리): 5장을 번호 원 + 장 이름 + 질문으로 나열하고 밑줄 진행 바로 현재 위치를 표시."""
+    lab_w = 2.35
+    tb(slide, MX, y, lab_w, h, [("QLC eSSD 전략", 18, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+    x0 = MX + lab_w
+    step_w = (RIGHT - x0) / len(STORY)
+    d = 0.27
+    for i, (no, name, q) in enumerate(STORY):
+        n = i + 1
+        x = x0 + i * step_w
+        cur, done = n == current, n < current
+        rect(slide, x, y + h + 0.05, step_w - 0.10, 0.045, fill=BLUE if (cur or done) else LINE)
+        cy = y + (h - d) / 2
+        if cur:
+            rect(slide, x, cy, d, d, fill=BLUE, shape=MSO_SHAPE.OVAL)
+            nc, col = WHITE, BLUE
+        elif done:
+            rect(slide, x, cy, d, d, fill=BLUE_T2, shape=MSO_SHAPE.OVAL)
+            nc, col = INK, GRAY
+        else:
+            rect(slide, x, cy, d, d, fill=WHITE, line=LINE, line_w=1.0, shape=MSO_SHAPE.OVAL)
+            nc, col = GRAY_2, GRAY_2
+        tb(slide, x, cy, d, d, [(no, 11, True, nc)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        tb(slide, x + d + 0.10, y, step_w - d - 0.22, h, [[(name + "  ", 13, True, col), (q, 12, False, col)]],
+           anchor=MSO_ANCHOR.MIDDLE)
+
+
 def header(slide, kicker, title, lead):
+    """kicker: 문자열(킥커 텍스트) 또는 정수(스토리 레일의 현재 장 번호)."""
     tb(slide, MX, 0.46, 6.0, 0.34, [("삼성전자 메모리사업부", 18, True, BLUE)])
     tb(slide, 13.21, 0.46, 6.0, 0.34, [(GRADE, 18, False, GRAY)], align=PP_ALIGN.RIGHT)
-    tb(slide, MX, 0.93, CW, 0.34, [(kicker, 18, True, BLUE)])
+    if isinstance(kicker, int):
+        story_rail(slide, kicker)
+    else:
+        tb(slide, MX, 0.93, CW, 0.34, [(kicker, 18, True, BLUE)])
     tb(slide, MX, 1.33, CW, 0.62, [(title, 30, True, INK)])
     tb(slide, MX, 2.04, CW, 0.44, [lead] if isinstance(lead, list) else [(lead, 20, False, GRAY)])
     rect(slide, MX, 2.62, CW, 0.014, fill=LINE)
@@ -126,11 +165,41 @@ def footer(slide, source, no):
     tb(slide, 17.55, 10.49, 1.66, 0.34, [(f"{no:02d} / {TOTAL:02d}", 18, False, GRAY)], align=PP_ALIGN.RIGHT)
 
 
-def band(slide, y, h, label, main, main_size=22):
+def band(slide, y, h, label, main, main_size=22, next_step=None):
+    """결론 밴드. next_step=n이면 우측에 '다음 장 → n장 이름 · 질문' 포인터를 그려 스토리라인 연결을 표시."""
     rect(slide, MX, y, CW, h, fill=BLUE)
     tb(slide, MX + 0.45, y, 1.6, h, [(label, 18, False, WHITE)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(slide, MX + 2.0, y, CW - 2.4, h, [(m, main_size, True, WHITE) for m in main.split("\n")],
+    ptr_w = 3.40 if next_step else 0.0
+    tb(slide, MX + 2.0, y, CW - 2.4 - ptr_w, h, [(m, main_size, True, WHITE) for m in main.split("\n")],
        anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)  # "\n"으로 의미 단위 줄바꿈 지정 가능
+    if next_step:
+        no, name, q = STORY[next_step - 1]
+        px, ph = RIGHT - 0.30 - (ptr_w - 0.30), h - 0.24
+        rect(slide, px, y + 0.12, ptr_w - 0.30, ph, fill=None, line=WHITE, line_w=1.0)
+        rect(slide, px, y + 0.12, 0.06, ph, fill=WHITE)
+        tb(slide, px + 0.22, y + 0.12, ptr_w - 0.30 - 0.32, ph,
+           [("다음 장 →", 10.5, False, BLUE_T2), (f"{no}장 {name} · {q}", 12.5, True, WHITE)],
+           anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+
+
+def band_chain(slide, y, h, label, chips):
+    """5장 요약 체인 밴드: chips=[(머리글, 본문)] 를 화살표로 연결. 마지막 장의 결론 밴드용(스토리라인 전체를 한눈에)."""
+    rect(slide, MX, y, CW, h, fill=BLUE)
+    tb(slide, MX + 0.45, y, 1.6, h, [(label, 18, False, WHITE)], anchor=MSO_ANCHOR.MIDDLE)
+    x0, arrow_w, gap = MX + 2.0, 0.24, 0.10
+    n = len(chips)
+    cw_ = (CW - 2.4 - (n - 1) * (arrow_w + 2 * gap)) / n
+    ch, cy = h - 0.28, y + 0.14
+    x = x0
+    for i, (head, body) in enumerate(chips):
+        last = i == n - 1
+        rect(slide, x, cy, cw_, ch, fill=WHITE if last else None, line=WHITE, line_w=1.0)
+        tb(slide, x + 0.16, cy + 0.06, cw_ - 0.32, ch - 0.1,
+           [(head, 12.75, True, BLUE if last else WHITE)] + [(b, 11.25, last, INK if last else WHITE) for b in body.split("\n")],
+           anchor=MSO_ANCHOR.MIDDLE, spacing=1.02)
+        if not last:
+            rect(slide, x + cw_ + gap, cy + ch / 2 - 0.10, arrow_w, 0.20, fill=WHITE, shape=MSO_SHAPE.RIGHT_ARROW)
+        x += cw_ + arrow_w + 2 * gap
 
 
 def quote(slide, x, y, w, h, text, who, size=12.75):
@@ -226,19 +295,19 @@ def v_arrow(slide, x, y, w, h, up=False, fill=BLUE):
     return rect(slide, x, y, w, h, fill=fill, shape=MSO_SHAPE.UP_ARROW if up else MSO_SHAPE.DOWN_ARROW)
 
 
-# ================================================================ S-1. 배경 0 — 해법 사다리 (v3.9 맨 앞장, solution_ladder_slide.build 공용)
+# ================================================================ S1. 배경 0 — 해법 사다리 (v3.9 맨 앞장, solution_ladder_slide.build 공용; v3.10 스토리 레일 1)
 import sys as _sys
 _sys.path.insert(0, HERE)
 import solution_ladder_slide as _ladder
-_ladder.build(_sys.modules[__name__], page_no=1, kicker="QLC eSSD 전략 · 배경 0: 해법 사다리 (P/E · BER · DWPD · WAF)")
+_ladder.build(_sys.modules[__name__], page_no=1, kicker=1, next_step=2)
 
-# ================================================================ S0. 배경 — 다운턴이 가르친 것 (v3.5, 맨 앞장)
+# ================================================================ S2. 배경 — 다운턴 교훈 (v3.5; v3.10 3기 띠 제거·연결 리드·다음 장 포인터)
 s = prs.slides.add_slide(BLANK)
-header(s, "QLC eSSD 전략 · 배경: 다운턴 복기에서 도출한 교훈",
+header(s, 2,
        "다운턴 극복의 결정 요인은 고객 요구 적중이었고, 요구는 고객 시스템 내부에서 먼저 관측됐습니다",
-       "DT19·DT23 두 다운턴과 QLC eSSD 연혁을 동일 시간축에 놓고 도출한 세 교훈이 이후 세 장의 전제입니다.")
+       "1장의 보상 변수 WAF는 고객이 정의하는 배치 규격입니다. 규격이 정의된 시점을 두 다운턴과 QLC 연혁에서 확인합니다.")
 
-# 타임라인: 2018 → 2030.5, 다운턴 구간 음영 + QLC 이정표(한 줄 라벨) + 3기 띠  (v3.8: 압축해 교훈 카드 영역 확대)
+# 타임라인: 2018 → 2030.5, 다운턴 구간 음영 + QLC 이정표(한 줄 라벨)
 TX0, TX1 = MX + 0.30, RIGHT - 0.30
 def tx(year):
     return TX0 + (TX1 - TX0) * (year - 2018.0) / 12.5
@@ -256,7 +325,7 @@ marks = [  # (연도, 위/아래, 날짜, 한 줄 내용)
     (2022.95, "down", "2022-12", "데이터 배치 표준 비준"),
     (2023.55, "up", "2023-07", "Solidigm 61TB, 12개월 선행"),
     (2024.75, "down", "2024", "비트 출하 30EB(4배)"),
-    (2026.6, "up", "2026", "캐시 관리자 규격 미정의"),
+    (2026.6, "up", "2026", "KV 캐시 배치 규격 미정의"),
     (2030.2, "down", "2030", "비트 10배 · 매출 정체(e)"),
 ]
 for yr, side, d, t in marks:
@@ -272,18 +341,9 @@ for yr, side, d, t in marks:
             tb(s, cx - 2.6, AX_Y + 0.58, 2.84, 0.24, runs, align=PP_ALIGN.RIGHT)
         else:
             tb(s, cx - 1.4, AX_Y + 0.58, 2.8, 0.24, runs, align=PP_ALIGN.CENTER)
-# 3기 띠
-ER_Y = AX_Y + 0.92
-for y0, y1, lab, hot in [(2018.0, 2023.95, "초기 2018~2023 · 구매 기준 = TB당 TCO(원가·랙 밀도)", False),
-                          (2024.0, 2026.95, "현재 2024~2026 · TB당 TCO(전력 효율·공급 확보)", False),
-                          (2027.0, 2030.5, "향후 2027~2030 · GPU당 컨텍스트 용량·토큰당 비용", True)]:
-    rect(s, tx(y0), ER_Y, tx(y1) - tx(y0) - 0.06, 0.26, fill=TINT if hot else WHITE, line=None if hot else LINE, line_w=0.75)
-    if hot:
-        rect(s, tx(y0), ER_Y, 0.06, 0.26, fill=BLUE)
-    tb(s, tx(y0) + 0.14, ER_Y, tx(y1) - tx(y0) - 0.3, 0.26, [(lab, 11.25, True if hot else False, INK if hot else GRAY)], anchor=MSO_ANCHOR.MIDDLE)
 
-# 교훈 카드 3 (v3.8: 문장 없이 키 숫자 + 도식)
-L_Y = ER_Y + 0.40
+# 교훈 카드 3 (키 숫자 + 도식 + 다음 장 연결). v3.10: 3기 띠(3장과 중복) 제거 → 도식 영역 확대
+L_Y = AX_Y + 1.02
 L_H = 9.42 - 0.22 - L_Y
 L_W = (CW - 0.33 * 2) / 3
 
@@ -292,7 +352,7 @@ def lesson_visual_1(x, y, w, h):
     """수요 센싱: 고객 규격·코드 레인이 발주·비트 출하 레인보다 ≈2년 앞선다. 2026 슬롯은 빈 원(규격 미정의)."""
     lx, lw = x + 1.35, w - 1.35
     px = lambda t: lx + lw * (t - 2022.0) / 5.0
-    top, bot = y + 0.50, y + h - 0.55
+    top, bot = y + 0.55, y + h - 0.60
     tb(s, x, top - 0.14, 1.3, 0.28, [("고객 규격 · 코드", 12, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
     tb(s, x, bot - 0.14, 1.3, 0.28, [("발주 · 비트 출하", 12, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
     rect(s, lx, top, lw, 0.02, fill=LINE)
@@ -302,13 +362,13 @@ def lesson_visual_1(x, y, w, h):
     rect(s, d - 0.008, top, 0.016, mid - 0.15 - top, fill=BLUE_T2)
     rect(s, o - 0.008, mid + 0.15, 0.016, bot - (mid + 0.15), fill=BLUE_T2)
     rect(s, d, mid - 0.15, o - d, 0.30, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-    tb(s, d, mid - 0.15, o - d - 0.12, 0.30, [("≈ 2년", 12, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, d, mid - 0.15, o - d - 0.12, 0.30, [("≈ 2년 선행", 12, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     rect(s, d - 0.11, top - 0.11, 0.22, 0.22, fill=BLUE, shape=MSO_SHAPE.OVAL)
     tb(s, d - 0.3, top - 0.44, 2.4, 0.26, [("2022-12 배치 표준 비준", 11.25, False, GRAY)])
     rect(s, o - 0.11, bot - 0.11, 0.22, 0.22, fill=BLUE, shape=MSO_SHAPE.OVAL)
     tb(s, o - 0.3, bot + 0.14, 2.4, 0.26, [("2024 비트 출하 30EB", 11.25, False, GRAY)])
     rect(s, e - 0.11, top - 0.11, 0.22, 0.22, fill=WHITE, line=BLUE, line_w=1.75, shape=MSO_SHAPE.OVAL)
-    tb(s, e - 1.9, top + 0.16, 2.15, 0.44, [("2026 캐시 관리자 코드", 11.25, True, BLUE), ("규격 미정의 = 선점 구간", 11.25, True, BLUE)],
+    tb(s, e - 1.9, top + 0.16, 2.15, 0.44, [("2026 KV 캐시 관리자 코드", 11.25, True, BLUE), ("배치 규격 미정의 = 선점 구간", 11.25, True, BLUE)],
        align=PP_ALIGN.RIGHT, spacing=1.0)
 
 
@@ -316,56 +376,56 @@ def lesson_visual_2(x, y, w, h):
     """고객 협업: 61TB QLC 출시 시점 막대(OCP 2022-10 예고 기준) + HBM4 규격 공동 정의 아이콘."""
     lab_w = 1.0
     bx, bw = x + lab_w, w - lab_w
-    tb(s, x, y, w, 0.22, [("61TB QLC 출시 · OCP 2022-10 예고 기준", 11.25, False, GRAY_2)])
-    ry = y + 0.32
+    tb(s, x, y, w, 0.22, [("61TB QLC 출시 시점 · OCP 2022-10 예고 기준", 11.25, False, GRAY_2)])
+    ry = y + 0.34
     for who, months, hit, end in [("Solidigm", 9, True, "2023-07 · 규격 정의 참여"), ("삼성", 21, False, "2024-07 · 12개월 후발")]:
-        tb(s, x, ry, lab_w - 0.05, 0.34, [(who, 12, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+        tb(s, x, ry, lab_w - 0.05, 0.36, [(who, 12, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
         bl = bw * months / 21.0
-        rect(s, bx, ry, bl, 0.34, fill=BLUE if hit else WHITE, line=None if hit else LINE, line_w=0.75)
+        rect(s, bx, ry, bl, 0.36, fill=BLUE if hit else WHITE, line=None if hit else LINE, line_w=0.75)
         if hit:
-            tb(s, bx + bl + 0.10, ry, bw - bl - 0.10, 0.34, [(end, 11.25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+            tb(s, bx + bl + 0.10, ry, bw - bl - 0.10, 0.36, [(end, 11.25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
         else:
-            tb(s, bx + 0.10, ry, bl - 0.20, 0.34, [(end, 11.25, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.RIGHT)
-        ry += 0.44
-    rect(s, x, ry + 0.06, w, 0.012, fill=LINE)
-    hy = ry + 0.16
+            tb(s, bx + 0.10, ry, bl - 0.20, 0.36, [(end, 11.25, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.RIGHT)
+        ry += 0.48
+    rect(s, x, ry + 0.08, w, 0.012, fill=LINE)
+    hy = ry + 0.22
     tb(s, x, hy, w, 0.22, [("HBM4 규격 정의", 11.25, False, GRAY_2)])
-    iy = hy + 0.30
-    ph = min(0.52, y + h - iy - 0.02)
+    iy = hy + 0.32
+    ph = min(0.56, y + h - iy - 0.02)
     pw = person(s, bx, iy, ph, color=BLUE)
     rect(s, bx + pw + 0.05, iy + ph * 0.45, 0.30, 0.05, fill=BLUE)
     person(s, bx + pw + 0.40, iy, ph, color=BLUE)
-    tb(s, bx + 2 * pw + 0.52, iy, 1.65, ph, [("SK hynix ↔ NVIDIA", 11.25, True, BLUE), ("공동 정의 → 주도권", 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
-    gx = bx + 2 * pw + 2.25
+    tb(s, bx + 2 * pw + 0.52, iy, 1.65, ph, [("SK hynix ↔ NVIDIA", 11.25, True, BLUE), ("공동 정의 → 주도권 확보", 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+    gx = bx + 2 * pw + 2.35
     person(s, gx, iy, ph, color=GRAY_2)
-    tb(s, gx + pw + 0.10, iy, w - (gx - x) - pw - 0.12, ph, [("삼성", 11.25, True, GRAY), ("후발", 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+    tb(s, gx + pw + 0.10, iy, w - (gx - x) - pw - 0.12, ph, [("삼성", 11.25, True, GRAY), ("후발 대응", 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
 
 
 def lesson_visual_3(x, y, w, h):
     """의사결정 시점: 직전 다운턴의 결정 → 다음 다운턴의 초기 조건. 3행째(현재의 결정)는 강조."""
     c1w = (w - 0.44) / 2
     c2x = x + c1w + 0.44
-    tb(s, x, y, c1w, 0.22, [("직전 다운턴의 결정", 11.25, False, GRAY_2)], align=PP_ALIGN.CENTER)
+    tb(s, x, y, c1w, 0.22, [("직전 다운턴의 의사결정", 11.25, False, GRAY_2)], align=PP_ALIGN.CENTER)
     tb(s, c2x, y, c1w, 0.22, [("다음 다운턴의 초기 조건", 11.25, False, GRAY_2)], align=PP_ALIGN.CENTER)
-    rh = 0.42
-    ry = y + 0.34
-    for a, b, hot in [("DT19 · 무감산 성공 경험", "DT23 · 국면 오판", False),
-                      ("DT19 · HBM 조직 축소", "DT23 · 주도권 상실", False),
-                      ("2026 · 고객 시스템 진입", "2027H2 · TCO 보증 수익", True)]:
+    rh = 0.44
+    ry = y + 0.36
+    for a, b, hot in [("DT19 · 무감산 유지 성공", "DT23 · 국면 오판", False),
+                      ("DT19 · HBM 조직 축소", "DT23 · 회복기 주도권 상실", False),
+                      ("2026 · 고객 시스템 계층 진입", "2027H2 · TCO 보증형 수익", True)]:
         rect(s, x, ry, c1w, rh, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
         tb(s, x + 0.06, ry, c1w - 0.12, rh, [(a, 12, hot, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-        rect(s, x + c1w + 0.09, ry + 0.10, 0.26, 0.22, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+        rect(s, x + c1w + 0.09, ry + 0.11, 0.26, 0.22, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
         rect(s, c2x, ry, c1w, rh, fill=BLUE if hot else TINT)
         tb(s, c2x + 0.06, ry, c1w - 0.12, rh, [(b, 12, True, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-        ry += rh + 0.14
+        ry += rh + 0.16
 
 
 lessons = [
-    ("교훈 1 · 수요 센싱", "2년", "고객 규격·코드 신호가\n발주·출하에 선행", lesson_visual_1, "→ 3장  고객의 QLC 채택 동인"),
-    ("교훈 2 · 고객 협업", "12개월", "규격 정의 참여 vs 후발의\n출시 시점 격차", lesson_visual_2, "→ 4장  디바이스에서 고객 시스템까지 3단계 역량"),
-    ("교훈 3 · 의사결정 시점", "2027H2", "지금의 결정이 초기 조건이 되는\n차기 전환점", lesson_visual_3, "→ 5장  FDE·전략적 협약과 조직·인사·문화"),
+    ("교훈 1 · 수요 센싱", "2년", "고객 규격·코드 신호가\n발주·출하에 선행", lesson_visual_1, 3, "고객의 QLC 채택 동인"),
+    ("교훈 2 · 고객 협업", "12개월", "규격 정의 참여 vs 후발의\n출시 시점 격차", lesson_visual_2, 4, "디바이스에서 고객 시스템까지 3단계"),
+    ("교훈 3 · 의사결정 시점", "2027H2", "현재의 결정이 초기 조건이 되는\n차기 전환점", lesson_visual_3, 5, "FDE · 전략적 협약 · 조직·인사·문화"),
 ]
-for i, (hd, num, cap, vis, link) in enumerate(lessons):
+for i, (hd, num, cap, vis, nxt, link) in enumerate(lessons):
     x = MX + i * (L_W + 0.33)
     hot = i == 1
     rect(s, x, L_Y, L_W, L_H, fill=TINT if hot else WHITE, line=None if hot else LINE, line_w=0.75)
@@ -376,19 +436,30 @@ for i, (hd, num, cap, vis, link) in enumerate(lessons):
     tb(s, ix, L_Y + 0.52, 2.05, 0.56, [(num, 30, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
     tb(s, ix + 2.1, L_Y + 0.52, iw - 2.1, 0.56, [(ln, 12.75, False, GRAY) for ln in cap.split("\n")], anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
     rect(s, ix, L_Y + 1.18, iw, 0.012, fill=LINE)
-    vis(ix, L_Y + 1.30, iw, L_H - 1.30 - 0.60)
-    rect(s, ix, L_Y + L_H - 0.50, iw, 0.012, fill=LINE)
-    tb(s, ix, L_Y + L_H - 0.42, iw, 0.30, [(link, 12.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+    vis(ix, L_Y + 1.30, iw, L_H - 1.30 - 0.62)
+    rect(s, ix, L_Y + L_H - 0.52, iw, 0.012, fill=LINE)
+    # 연결 칩: 스토리 레일과 같은 번호 원 + 장 이름
+    ly_ = L_Y + L_H - 0.42
+    rect(s, ix, ly_ + 0.02, 0.26, 0.26, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, ix, ly_ + 0.02, 0.26, 0.26, [(str(nxt), 11, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, ix + 0.36, ly_, iw - 0.36, 0.30, [[(STORY[nxt - 1][1] + "  ", 12.75, True, BLUE), (link, 12.0, False, GRAY)]], anchor=MSO_ANCHOR.MIDDLE)
 
-band(s, 9.42, 0.80, "결론", "요구사항은 다운턴 국면에서 정의되었고, 정의에 참여한 공급자가 선점했습니다. 차기 요구사항은 지금 고객 코드에서 정의되고 있습니다", main_size=19)
+band(s, 9.42, 0.80, "결론",
+     "요구사항은 다운턴 국면에서 고객 규격·코드로 정의됐고, 정의에 참여한 공급자가 선점했습니다.\n차기 요구사항(KV 캐시 배치·내구성 규격)은 현재 미정의 상태입니다",
+     main_size=18, next_step=3)
 footer(s, "출처: 위키 다운턴 역사 20년(DT19·DT23 낙폭, 패턴 5), fdp-host-ssd-platform §2.5(2023 복기·Solidigm), QLC 연혁 소스(배치 표준 비준·61TB·30EB), GitHub README 확인(캐시 관리자 4종), TrendForce 2H27 공급 완화", 2)
-notes(s, "2장은 다운턴 복기에서 도출한 교훈입니다. 1장(해법 사다리)이 \"왜 호스트 협력인가\"를 산식으로 보였다면, 이 장은 \"왜 지금인가\"를 다운턴 역사로 보입니다. 상단 타임라인에 DT19(재고 조정 국면, 매출 낙폭 -37.6%)와 DT23(최대 낙폭 -45%, 진앙은 eSSD) 두 다운턴 구간과 QLC eSSD 연혁을 동일 시간축에 배치했습니다. 교훈 1, 수요 센싱: 수요 신호는 발주보다 약 2년 선행하여 고객의 규격·표준·소스 코드에 나타납니다. DT23 국면인 4Q22에 eSSD 매출이 27% 감소하는 동안 Meta·Google은 데이터 배치 표준을 비준하고 OCP 폼팩터를 표준화했으며 Solidigm은 61TB 제품을 예고했습니다. 총량 지표만 관측한 공급자는 다운턴을 보았고, 고객 규격을 관측한 공급자는 차기 요구사항을 보았습니다. 현재의 등가 신호는 KV 캐시 관리자 4종의 소스 코드에 데이터 배치·내구성 규격이 미정의 상태라는 사실이며, 규격 정의 주체가 선점 가능한 구간입니다. 교훈 2, 고객 협업: 요구사항 정의 과정에 참여한 공급자가 적중했습니다. Solidigm은 SK그룹 내 최대 낙폭 국면에서 61TB QLC를 삼성 대비 12개월 선행 출시해 2024년 흑자 전환했고, HBM은 NVIDIA와 규격을 공동 정의한 SK hynix가 주도권을 확보했습니다. 위키의 2023년 다운턴 복기 결론과 동일합니다. 다운턴 극복의 결정 변수는 포트폴리오 다변화(방어)가 아니라 고객 요구 적중(공격)이었습니다. 교훈 3, 의사결정 시점: 직전 다운턴의 의사결정이 다음 다운턴의 초기 조건을 결정합니다. DT19의 무감산 성공 경험이 DT23 국면 오판으로, DT19의 HBM 조직 축소가 DT23 회복기 주도권 상실로 이어졌습니다. 차기 전환점은 2027년 하반기 가격 정상화 국면이며, 비트 출하 10배 대비 매출이 정체할 경우 수익원은 고객 시스템 수준에서 보증한 TCO로 한정됩니다. 세 교훈이 이후 세 장의 전제입니다. 3장은 고객의 QLC 채택 동인, 4장은 디바이스에서 고객 시스템까지 3단계 역량, 5장은 FDE·전략적 협약과 이를 수행할 조직·인사·문화입니다.")
+notes(s, "2장은 다운턴 복기에서 도출한 교훈이며, 1장과의 연결은 다음과 같습니다. 1장의 산식에서 남은 보상 변수 WAF는 호스트가 데이터 배치를 결정할 때만 1에 수렴하고, 그 배치 방식은 고객이 규격(배치 표준·캐시 관리자 정책)으로 정의합니다. 따라서 규격이 언제·어디서 정의되는지가 전략의 시점을 결정합니다. "
+      "상단 타임라인은 DT19(재고 조정 국면, 매출 낙폭 -37.6%)와 DT23(최대 낙폭 -45%, 진앙 eSSD) 두 다운턴 구간과 QLC eSSD 연혁을 동일 시간축에 배치한 것입니다. "
+      "교훈 1, 수요 센싱: 수요 신호는 발주보다 약 2년 선행하여 고객의 규격·표준·소스 코드에 나타납니다. DT23 국면인 4Q22에 eSSD 매출이 27% 감소하는 동안 Meta·Google은 데이터 배치 표준을 비준하고 OCP 폼팩터를 표준화했으며 Solidigm은 61TB 제품을 예고했습니다. 총량 지표만 관측한 공급자는 다운턴을 보았고, 고객 규격을 관측한 공급자는 차기 요구사항을 보았습니다. 현재의 등가 신호는 KV 캐시 관리자 4종의 소스 코드에 데이터 배치·내구성 규격이 미정의 상태라는 사실이며, 규격 정의 주체가 선점 가능한 구간입니다. "
+      "교훈 2, 고객 협업: 요구사항 정의 과정에 참여한 공급자가 적중했습니다. Solidigm은 최대 낙폭 국면에서 61TB QLC를 삼성 대비 12개월 선행 출시해 2024년 흑자 전환했고, HBM은 NVIDIA와 규격을 공동 정의한 SK hynix가 주도권을 확보했습니다. 다운턴 극복의 결정 변수는 포트폴리오 다변화가 아니라 고객 요구 적중이었습니다. "
+      "교훈 3, 의사결정 시점: 직전 다운턴의 의사결정이 다음 다운턴의 초기 조건을 결정합니다. DT19의 무감산 유지 성공이 DT23 국면 오판으로, DT19의 HBM 조직 축소가 DT23 회복기 주도권 상실로 이어졌습니다. 차기 전환점은 2027년 하반기 가격 정상화 국면이며, 비트 출하 10배 대비 매출이 정체할 경우 수익원은 고객 시스템 수준에서 보증한 TCO로 한정됩니다. "
+      "세 교훈은 각각 3장(고객의 QLC 채택 동인), 4장(디바이스에서 고객 시스템까지 3단계), 5장(FDE·전략적 협약·조직)의 전제입니다. 결론: 요구사항은 다운턴 국면에서 고객 규격·코드로 정의됐고 정의에 참여한 공급자가 선점했으며, 차기 요구사항인 KV 캐시 배치·내구성 규격은 현재 미정의 상태입니다. 그 요구사항의 내용이 3장입니다.")
 
-# ================================================================ S1. 배경 (2장)
+# ================================================================ S3. 배경 — 고객의 QLC 채택 동인 (v3.10 연결 리드·결론에 1장 산식 참조·다음 장 포인터)
 s = prs.slides.add_slide(BLANK)
-header(s, "QLC eSSD 전략 · 배경: 고객의 QLC 채택 동인",
+header(s, 3,
        "고객의 구매 기준은 용량 계층의 TB당 TCO이며, 해당 계층은 추론 캐시 계층으로 이동합니다",
-       "세 국면의 구매 기준은 일관되게 TB당 TCO(원가·전력·밀도)였고, 차기 KV 캐시 계층은 쓰기 집약적이라 내구성이 제약 조건입니다.")
+       "2장이 지목한 차기 요구사항의 내용입니다. 세 국면의 구매 기준은 TB당 TCO로 일정했고, 변한 것은 워크로드의 쓰기 비중입니다.")
 
 # 3기 스트립
 E_Y, E_H, E_W = 2.80, 2.34, 5.92
@@ -418,8 +489,6 @@ for i, (label, crit, hot, lines) in enumerate(eras):
     if i < 2:
         rect(s, x + E_W + 0.09, E_Y + E_H / 2 - 0.09, 0.16, 0.18, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
 
-# (이정표 타임라인은 v3.5에서 1장 다운턴 교훈 타임라인으로 이동)
-
 # 그래프 + 스티커
 C_Y, C_H = 5.36, 3.77
 C_W = C_H * CHART_ASPECT
@@ -427,7 +496,7 @@ s.shapes.add_picture(CHART, Inches(MX), Inches(C_Y), height=Inches(C_H))
 SX = MX + C_W + 0.30
 SW = RIGHT - SX
 rect(s, SX, C_Y, SW, C_H, fill=WHITE, line=LINE, line_w=0.75)
-tb(s, SX + 0.34, C_Y + 0.16, SW - 0.68, 0.30, [("모델의 핵심 수치", 18, True, BLUE)])
+tb(s, SX + 0.34, C_Y + 0.16, SW - 0.68, 0.30, [("수요 모델의 핵심 수치", 18, True, BLUE)])
 stats = [("10배", "QLC 비트 출하, 2025년 → 2030년"), ("정체", "QLC 매출, 2026년 $32B → 2030년 $37B(e)"),
          ("350EB", "2030년 추론 캐시 계층 수요(전 미디어)")]
 sy = C_Y + 0.52
@@ -440,23 +509,30 @@ quote(s, SX + 0.34, sy + 0.14, SW - 0.68, C_H - (sy - C_Y) - 0.24,
       "부품이 어떻게 쓰일지는 시스템을 설계하는 사람 마음에 있다. 그걸 알았으면 HBM을 진작 준비했을 것이다",
       "송용호 AX/PI센터장 · 사내 인터뷰 2026-09-03", size=12.75)
 
-band(s, 9.42, 0.80, "결론", "고객은 추론 캐시 계층에서도 QLC의 TB당 TCO를 요구합니다. 제약 조건은 내구성이며, 디바이스 단독으로는 해소되지 않습니다", main_size=19)
+band(s, 9.42, 0.80, "결론",
+     "고객은 추론 캐시 계층에서도 QLC의 TB당 TCO를 요구하며, 제약 조건은 내구성(DWPD 10~40배 격차)입니다.\n1장의 산식대로 이 격차는 디바이스 단독으로 해소되지 않습니다",
+     main_size=18, next_step=4)
 footer(s, "출처: TrendForce 분기 실측(2022~2Q26)·QLC 30EB(2024)·SanDisk FMS 2026·Meta·Solidigm 발표 종합, 2026~2030은 추정(e) · 상세: QLC eSSD 전략 보고서 1~3장", 3)
-notes(s, "3장은 고객의 QLC 채택 동인입니다. 세 국면을 관통하는 구매 기준은 용량 계층의 TB당 TCO입니다. 원가($/TB)·전력(W/TB)·밀도(TB/U)를 통합한 지표이며, 계산 자원에 인접한 최저 비용 바이트로 요약할 수 있습니다. 초기 국면(2018~2023): 학습 데이터셋이 6배로 증가하고 HDD의 TB당 대역폭이 저하되자 하이퍼스케일러는 플래시 용량 계층을 요구했습니다(Meta: 10 MB/s/TB 대역, TLC 서버 대비 6배 바이트 밀도). 공급자의 제안 가치는 1U당 1PB, 5년 TCO -47%였습니다. 조건은 읽기 중심 워크로드로, 0.3~0.6 DWPD로 충족됐고 쓰기가 NAND 전력의 대부분을 차지하므로 읽기 데이터의 QLC 이전은 전력 효율도 개선했습니다. 같은 해 전문 벤더(Solidigm) 출범, E1.S/E1.L 폼팩터, Meta·Google의 데이터 배치 표준 비준(2022-12), 가격 하락이 동시에 성립했고, 비트 출하는 AI 추론 서버의 전력 효율이 우선순위가 된 2024년에 급증했습니다(TrendForce 30EB, 4배). 현재 국면(2024~2026): 구매 기준은 TB당 전력 효율과 공급 확보이며 245TB급까지 용량 경쟁이 진행됐으나, 읽기 중심 데이터가 QLC의 영역이고 쓰기 계층은 TLC가 담당합니다. 향후 국면(2027~2030): 최대 증가 수요는 KV 캐시입니다. 장문맥·에이전틱 추론의 KV 캐시가 HBM·DRAM 용량을 초과해 SSD로 오프로드되고, 프리필 재사용으로 GPU당 동시 사용자와 TTFT가 개선됩니다(NVMe 오프로드 시 H100 1기당 동시 사용자 10배 주장). 구매 기준은 GPU당 컨텍스트 용량과 토큰당 비용이며, 이 기준에서도 TB당 TCO가 최저인 미디어는 QLC입니다. 그러나 캐시는 쓰기 집약적이어서 현재 이 계층은 TLC 1~3 DWPD가 담당하고(2027년 75~100EB), CMX 대상 드라이브도 전량 TLC입니다. 그래프: 비트는 10배, 가격 정상화 기준선에서 매출은 정체, 진한 파랑은 호스트 협력 데이터 배치가 성립할 때의 조건부 상방입니다. 우측 하단 인용은 송용호 AX/PI센터장의 발언입니다. 부품이 어떻게 쓰일지는 시스템을 설계하는 사람 마음에 있다, 그걸 알았으면 HBM을 진작 준비했을 것이다. 고객의 채택 동인 파악이 본 전략의 출발점인 이유입니다. 결론: 고객은 추론 캐시 계층에서도 QLC의 TB당 TCO를 요구하며, 제약 조건은 내구성이고, 디바이스 단독으로는 해소되지 않습니다. 다음 장이 그 해소 경로입니다. 모델 가정은 위키 qlc-ssd-market.md §4.3.")
+notes(s, "3장은 2장이 지목한 차기 요구사항의 내용, 즉 고객의 QLC 채택 동인입니다. 세 국면을 관통하는 구매 기준은 용량 계층의 TB당 TCO입니다. 원가($/TB)·전력(W/TB)·밀도(TB/U)를 통합한 지표입니다. "
+      "초기 국면(2018~2023): 학습 데이터셋이 6배로 증가하고 HDD의 TB당 대역폭이 저하되자 하이퍼스케일러는 플래시 용량 계층을 요구했습니다(Meta: 10 MB/s/TB 대역, TLC 서버 대비 6배 바이트 밀도). 공급자의 제안 가치는 1U당 1PB, 5년 TCO -47%였습니다. 조건은 읽기 중심 워크로드로, 0.3~0.6 DWPD로 충족됐고 쓰기가 NAND 전력의 대부분을 차지하므로 읽기 데이터의 QLC 이전은 전력 효율도 개선했습니다. 같은 해 전문 벤더(Solidigm) 출범, E1.S/E1.L 폼팩터, Meta·Google의 데이터 배치 표준 비준(2022-12), 가격 하락이 동시에 성립했고, 비트 출하는 AI 추론 서버의 전력 효율이 우선순위가 된 2024년에 급증했습니다(TrendForce 30EB, 4배). "
+      "현재 국면(2024~2026): 구매 기준은 TB당 전력 효율과 공급 확보이며 245TB급까지 용량 경쟁이 진행됐으나, 읽기 중심 데이터가 QLC의 영역이고 쓰기 계층은 TLC가 담당합니다. "
+      "향후 국면(2027~2030): 최대 증가 수요는 KV 캐시입니다. 장문맥·에이전틱 추론의 KV 캐시가 HBM·DRAM 용량을 초과해 SSD로 오프로드되고, 프리필 재사용으로 GPU당 동시 사용자와 TTFT가 개선됩니다(NVMe 오프로드 시 H100 1기당 동시 사용자 10배 주장). 구매 기준은 GPU당 컨텍스트 용량과 토큰당 비용이며, 이 기준에서도 TB당 TCO가 최저인 미디어는 QLC입니다. 그러나 캐시는 쓰기 집약적이어서 현재 이 계층은 TLC 1~3 DWPD가 담당하고(2027년 75~100EB), CMX 대상 드라이브도 전량 TLC입니다. "
+      "그래프: 비트는 10배, 가격 정상화 기준선에서 매출은 정체, 진한 파랑은 호스트 협력 데이터 배치가 성립할 때의 조건부 상방입니다. 우측 하단 인용은 송용호 AX/PI센터장의 발언으로, 고객의 채택 동인 파악이 본 전략의 출발점인 이유입니다. "
+      "결론: 고객은 추론 캐시 계층에서도 QLC의 TB당 TCO를 요구하며, 제약 조건은 내구성입니다. QLC 정격 0.075~0.6 DWPD와 요구 1~3 DWPD 사이에는 10~40배 격차가 있고, 1장의 산식(DWPD = P/E × (1+OP) ÷ WAF ÷ 365 × 년)에서 P/E와 OP만으로는 이 격차를 메울 수 없습니다. 남은 변수 WAF를 낮추는 경로가 4장입니다. 모델 가정은 위키 qlc-ssd-market.md §4.3.")
 
-# ================================================================ S2. 요구사항·역량·기술 전략 (v3: 협업 기업 제거, Phase 스택 확대 + 계층별 기술)
+# ================================================================ S4. 역량 — 3단계 (v3.10 공식 문안·범례를 Phase 1 옆으로·결론 밴드 신설)
 s = prs.slides.add_slide(BLANK)
-header(s, "QLC eSSD 전략 · 요구사항과 역량, 기술 전략",
-       "내구성은 고객 시스템에서 풀리므로, 디바이스에서 고객 시스템 안까지 세 단계로 올라가야 합니다",
+header(s, 4,
+       "내구성 격차는 호스트 배치(WAF)로 해소되므로, 고객 시스템까지 3단계로 역량을 확장합니다",
        [("「승부는 칩을 많이 파는 기업이 아니라, 고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 가져간다」", 18, False, INK),
         ("   신문섭 · Bain 파트너, 2026-06", 13.5, False, GRAY_2)])
 
-T_Y, T_H, T_W, T_GAP = 2.80, 1.06, 4.41, 0.26
+T_Y, T_H, T_W, T_GAP = 2.80, 0.96, 4.41, 0.26
 tiles = [
-    ("10~40배", 1.95, "내구성 갭", "QLC 0.075~0.6 vs TLC 1~3 DWPD"),
-    ("25배", 1.45, "스트림 갭", "RUH 2~8개 vs 200개 이상"),
-    ("0건", 1.25, "접점 공백", "캐시 관리자 4종의 배치 언급"),
-    ("3.22 → 1.03", 2.55, "수단은 있음", "배치 표준 WAF 실측"),
+    ("10~40배", 1.95, "내구성 격차", "QLC 0.075~0.6 vs TLC 1~3 DWPD"),
+    ("25배", 1.45, "스트림 격차", "RUH 2~8개 vs 200개 이상"),
+    ("0건", 1.25, "접점 부재", "캐시 관리자 4종 코드의 배치 규격 언급"),
+    ("3.22 → 1.03", 2.25, "해소 수단 실증", "배치 표준 WAF 실측"),
 ]
 for i, (num, nw, lab, desc) in enumerate(tiles):
     x = MX + i * (T_W + T_GAP)
@@ -482,51 +558,55 @@ def stack2(slide, x, y, w, names, techs, states, layer_h=0.74, gap=0.06):
     return ys
 
 
-P_Y, P_H, P_W = 4.08, 5.06, 5.92
+P_Y, P_H, P_W = 3.92, 4.98, 5.92
 LAYER_NAMES = ["응용 · 추론 엔진", "KV 캐시 관리자", "I/O 라이브러리", "커널 · 플랫폼", "SSD 디바이스"]
 phase_defs = [
-    ("Phase 1", "디바이스를 잘 만든다", ["none", "none", "none", "none", "own"],
+    ("Phase 1", "배치 표준 디바이스 확보", ["none", "none", "none", "none", "own"],
      ["vLLM · SGLang · TensorRT-LLM",
       "Dynamo KVBM · LMCache · Mooncake · FlexKV",
       "NIXL · GPUDirect Storage · io_uring · SPDK",
       "Linux write streams · XFS · CMX(DOCA Memos)",
-      "RUH 200+ 펌웨어 · 2Tb QLC(WAF≈1) · NVMe KV 확장 · 텔레메트리 · 액체냉각"],
-     "고객이 얻는 것: 정격 내 QLC 원가·전력"),
-    ("Phase 2", "워크로드 분석으로 최적화한다", ["none", "none", "touch", "touch", "own"],
+      "RUH 200+ 펌웨어 · 2Tb QLC · NVMe KV 확장 · 텔레메트리"],
+     "고객 보증 범위: 정격 내 QLC 원가·전력"),
+    ("Phase 2", "워크로드 실측 기반 최적화", ["none", "none", "touch", "touch", "own"],
      ["vLLM · SGLang · TensorRT-LLM",
-      "KVBM 빈도 필터 · LMCache 퇴거 정책 = 트레이스의 원천",
-      "io_uring·GDS 백엔드에 write stream 부착 · xNVMe · fio·blktrace·eBPF",
+      "KVBM 빈도 필터 · LMCache 퇴거 정책(트레이스 원천)",
+      "io_uring·GDS 백엔드 write stream 부착 · xNVMe · blktrace·eBPF",
       "Linux 6.16 write streams · XFS·f2fs 스트림 · CMX 힌트 매핑 검증",
-      "RUH 정책(수명·테넌트·prefix) · WAF·유효 DWPD 실측 · 디지털 트윈"],
-     "고객이 얻는 것: 자기 워크로드의 수명 보증"),
-    ("Phase 3", "고객 시스템 안에서 함께 설계한다", ["touch", "own", "own", "own", "own"],
-     ["커넥터·스케줄러 이해 · 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)",
+      "RUH 정책(수명·테넌트·prefix) · WAF·유효 DWPD 실측"],
+     "고객 보증 범위: 고객 워크로드 기준 수명"),
+    ("Phase 3", "고객 시스템 내 공동 설계", ["touch", "own", "own", "own", "own"],
+     ["커넥터·스케줄러 분석 · 공용 TCO 모델(GPU당 사용자·TTFT·전력)",
       "KVBM·LMCache·Mooncake·FlexKV 플러그인 메인라인 머지",
       "NIXL 스토리지 플러그인 · xNVMe 배치 API가 기본 백엔드",
-      "XFS·f2fs 스트림 완주 · DOCA Memos↔배치 표준 공동 정의 · SNIA·OCP",
+      "XFS·f2fs 스트림 · DOCA Memos↔배치 표준 공동 정의 · OCP",
       "레퍼런스 스택의 기본 디바이스 · 수명 보증 SLA"],
-     "고객이 얻는 것: 시스템 위의 TCO 보증"),
+     "고객 보증 범위: 시스템 수준 TCO"),
 ]
-STK_W, LH, LG = 3.88, 0.74, 0.06
+STK_W, LH, LG = 3.76, 0.74, 0.06
 for i, (ph, ttl, states, techs, outcome) in enumerate(phase_defs):
     x = MX + i * (P_W + 0.33)
     hot = i == 2
     rect(s, x, P_Y, P_W, P_H, fill=TINT if hot else WHITE, line=None if hot else LINE, line_w=0.75)
     tb(s, x + 0.38, P_Y + 0.16, P_W - 0.76, 0.34, [[(ph + "  ", 18, True, BLUE), (ttl, 18, True, INK)]])
-    sx, sy0 = x + 0.38, P_Y + 0.62
+    sx, sy0 = x + 0.38, P_Y + 0.60
     ys = stack2(s, sx, sy0, STK_W, LAYER_NAMES, techs, states, layer_h=LH, gap=LG)
     ax = sx + STK_W + 0.18
     aw = x + P_W - ax - 0.16
     if i == 0:
-        tb(s, ax, ys[4], aw, LH, [("우리가 만드는 것", 12.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.02)
-        tb(s, ax, ys[0], aw, LH * 2, [("고객 시스템은 밖에 있습니다", 12.0, False, GRAY_2)], spacing=1.02)
+        # 범례(색 = 삼성이 닿는 층)를 Phase 1 옆에 배치
+        ly0 = ys[1] + 0.10
+        for k, (fill, line, t) in enumerate([(BLUE, None, "삼성 코드·제품"), (BLUE_T2, None, "관측·분석"), (WHITE, LINE, "고객 영역")]):
+            yy = ly0 + k * 0.40
+            rect(s, ax, yy + 0.04, 0.26, 0.18, fill=fill, line=line, line_w=0.75)
+            tb(s, ax + 0.34, yy, aw - 0.34, 0.26, [(t, 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
     elif i == 1:
         top, bot = ys[0] + 0.08, ys[4] + LH - 0.08
         v_arrow(s, ax, top, 0.22, bot - top, fill=BLUE_T2)
         v_arrow(s, ax + 0.28, top, 0.22, bot - top, up=True, fill=BLUE)
-        tb(s, ax + 0.58, ys[1], aw - 0.58, LH, [("트레이스", 12.0, True, INK), ("내려옴", 11.0, False, GRAY)],
+        tb(s, ax + 0.58, ys[1], aw - 0.58, LH, [("트레이스", 12.0, True, INK), ("수집 ↓", 11.0, False, GRAY)],
            anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
-        tb(s, ax + 0.58, ys[3], aw - 0.58, LH, [("정책", 12.0, True, BLUE), ("올라감", 11.0, False, GRAY)],
+        tb(s, ax + 0.58, ys[3], aw - 0.58, LH, [("배치 정책", 12.0, True, BLUE), ("반영 ↑", 11.0, False, GRAY)],
            anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
     else:
         pw = person(s, ax + 0.02, ys[1] + 0.12, 0.50, color=BLUE)
@@ -536,40 +616,41 @@ for i, (ph, ttl, states, techs, outcome) in enumerate(phase_defs):
         tb(s, ax, ys[0], aw, LH, [("공용 TCO", 12.75, True, INK), ("모델", 11.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
     tb(s, x + 0.38, P_Y + P_H - 0.44, P_W - 0.76, 0.34, [(outcome, 14.25, True, INK)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.05)
 
-LEG_Y = P_Y + P_H + 0.10
-lx = MX
-for fill, line, t in [(BLUE, None, "우리 코드·제품"), (BLUE_T2, None, "관측·이해"), (WHITE, LINE, "고객 영역")]:
-    rect(s, lx, LEG_Y + 0.04, 0.26, 0.18, fill=fill, line=line, line_w=0.75)
-    tb(s, lx + 0.34, LEG_Y, 1.6, 0.26, [(t, 12.75, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
-    lx += 2.0
-BAR_Y, BAR_H = LEG_Y + 0.36, 0.18
+BAR_Y, BAR_H = P_Y + P_H + 0.10, 0.16
 for i in range(3):
     x = MX + i * (P_W + 0.33)
     rect(s, x, BAR_Y, P_W, BAR_H, fill=WHITE, line=LINE, line_w=0.75)
 rect(s, MX, BAR_Y, P_W, BAR_H, fill=BLUE)
 rect(s, MX + P_W + 0.33, BAR_Y, P_W * 0.28, BAR_H, fill=BLUE_T2)
 mk_x = MX + P_W + 0.33 + P_W * 0.28
-rect(s, mk_x - 0.13, BAR_Y + BAR_H + 0.04, 0.26, 0.20, fill=BLUE, shape=MSO_SHAPE.ISOSCELES_TRIANGLE)
-tb(s, mk_x + 0.22, BAR_Y + BAR_H, 9.0, 0.30,
-   [[("삼성 현 위치  ", 13.5, True, BLUE), ("디바이스는 확보(CMX 첫 공급), 워크로드 실측은 미공개, 캐시 관리자 4종 기여 0", 12.75, False, GRAY)]],
+rect(s, mk_x - 0.13, BAR_Y + BAR_H + 0.03, 0.26, 0.18, fill=BLUE, shape=MSO_SHAPE.ISOSCELES_TRIANGLE)
+tb(s, mk_x + 0.22, BAR_Y + BAR_H - 0.02, 9.0, 0.30,
+   [[("삼성 현 위치  ", 13.5, True, BLUE), ("디바이스 확보(CMX 첫 공급) · 워크로드 실측 미공개 · 캐시 관리자 4종 기여 0건", 12.75, False, GRAY)]],
    anchor=MSO_ANCHOR.MIDDLE)
 
+band(s, 9.46, 0.76, "결론",
+     "단계마다 고객 보증 범위가 원가·전력 → 워크로드 수명 → 시스템 TCO로 확장됩니다.\n삼성은 1단계 확보·2단계 진입 상태이며, 3단계 진입 수단이 다음 장입니다",
+     main_size=17, next_step=5)
 footer(s, "출처: StorageReview·Solidigm·Kioxia 스펙(DWPD), ScaleFlux 2026-07(RUH 200+), GitHub README 확인(LMCache·Mooncake·FlexKV·3FS·xNVMe), CacheLib FDP 문서(WAF), Linux 6.16·XFS 패치, NVIDIA CMX 문서", 4)
-notes(s, "요구사항과 역량 한 장입니다. 리드의 인용은 베인 신문섭 파트너의 진단입니다. 승부는 칩을 많이 파는 기업이 아니라 고객의 아키텍처 안으로 들어가 수요를 함께 설계하는 기업이 가져간다. 이 장이 바로 그 안으로 들어가는 세 단계입니다. 앞 장의 결론을 잇습니다. 고객은 캐시 계층에서도 QLC의 TB당 TCO를 원하지만 캐시는 쓰기가 많고, 내구성은 미디어를 바꿔서가 아니라 고객 시스템이 데이터를 어떻게 놓느냐(배치 표준·캐시 관리자 정책)로 풀립니다. 그래서 디바이스에서 고객 시스템 안까지 올라가야 합니다. 갭 세 가지: 내구성(QLC 정격 0.075~0.6 vs TLC 1~3 DWPD, 10~40배), 스트림(RUH 2~8 vs 200+), 접점(KV 캐시 관리자 4종 코드에 배치·내구성 언급 0). 수단은 있습니다(CacheLib 실측 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). 그림은 고객 시스템 5계층을 세 번 그리고 우리가 닿는 층을 색으로 표시하며, 각 층에 그 층을 구성하는 기술을 적었습니다. 응용·추론 엔진(vLLM·SGLang·TensorRT-LLM), KV 캐시 관리자(NVIDIA Dynamo KVBM·LMCache·Mooncake·Tencent FlexKV), I/O 라이브러리(NIXL·GPUDirect Storage·io_uring·SPDK/xNVMe), 커널·플랫폼(Linux 6.16 write streams·XFS/f2fs 스트림·NVIDIA CMX와 DOCA Memos), SSD 디바이스(컨트롤러·펌웨어 RUH·2Tb QLC·NVMe KV 확장·텔레메트리). Phase 1은 SSD 층만 우리 것입니다(KV-ready QLC). Phase 2는 캐시 관리자의 빈도 필터·퇴거 정책이 트레이스의 원천이고, I/O 라이브러리의 io_uring·GDS 백엔드에 write stream을 부착하며 커널 스트림과 CMX 힌트 매핑을 검증해 RUH 정책·WAF·유효 DWPD 실측을 공개합니다. Phase 3는 캐시 관리자 4종에 플러그인을 메인라인으로 머지하고, NIXL·xNVMe가 기본 백엔드가 되며, DOCA Memos와 배치 표준의 매핑을 NVIDIA와 공동 정의하고, 응용 층은 커넥터·스케줄러를 이해해 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)로 대화합니다. FDE(Forward Deployed Engineer)가 고객 옆에 상주합니다. 삼성 현 위치는 Phase 1 확보, Phase 2 진입: KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고 캐시 관리자 4종에 기여가 없습니다. 오케스트레이션 자체는 만들지 않습니다.")
+notes(s, "4장은 3장의 내구성 격차를 해소하는 경로입니다. 1장의 산식에서 남은 보상 변수는 WAF이고, WAF는 호스트가 데이터 수명에 따라 배치를 결정할 때 1에 수렴하므로 내구성 격차는 디바이스가 아니라 고객 시스템의 배치 방식에서 해소됩니다. 그래서 역량을 디바이스에서 고객 시스템 계층까지 3단계로 확장합니다. 리드의 인용은 베인 신문섭 파트너의 진단으로 같은 결론입니다. "
+      "상단 타일은 격차와 수단입니다. 내구성 격차(QLC 정격 0.075~0.6 vs TLC 1~3 DWPD, 10~40배), 스트림 격차(RUH 2~8 vs 200 이상), 접점 부재(KV 캐시 관리자 4종 코드에 배치 규격 언급 0건), 해소 수단 실증(CacheLib 배치 표준 적용 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). "
+      "그림은 고객 시스템 5계층을 세 번 그리고 삼성이 닿는 층을 색으로 표시하며(파랑 = 삼성 코드·제품, 연파랑 = 관측·분석, 흰색 = 고객 영역), 각 층에 그 층을 구성하는 기술을 적었습니다. 응용·추론 엔진(vLLM·SGLang·TensorRT-LLM), KV 캐시 관리자(NVIDIA Dynamo KVBM·LMCache·Mooncake·Tencent FlexKV), I/O 라이브러리(NIXL·GPUDirect Storage·io_uring·SPDK/xNVMe), 커널·플랫폼(Linux 6.16 write streams·XFS/f2fs 스트림·NVIDIA CMX와 DOCA Memos), SSD 디바이스(컨트롤러·펌웨어 RUH·2Tb QLC·NVMe KV 확장·텔레메트리). "
+      "Phase 1 배치 표준 디바이스 확보: SSD 층만 삼성의 범위이며 고객 보증 범위는 정격 내 QLC 원가·전력입니다. Phase 2 워크로드 실측 기반 최적화: 캐시 관리자의 빈도 필터·퇴거 정책이 트레이스의 원천이고, I/O 라이브러리의 io_uring·GDS 백엔드에 write stream을 부착하며 커널 스트림과 CMX 힌트 매핑을 검증해 RUH 정책·WAF·유효 DWPD 실측을 공개합니다. 고객 보증 범위는 고객 워크로드 기준 수명입니다. Phase 3 고객 시스템 내 공동 설계: 캐시 관리자 4종에 플러그인을 메인라인으로 머지하고, NIXL·xNVMe가 기본 백엔드가 되며, DOCA Memos와 배치 표준의 매핑을 NVIDIA와 공동 정의하고, 응용 층은 커넥터·스케줄러를 분석해 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)로 협의합니다. FDE(Forward Deployed Engineer)가 고객 시스템에 상주합니다. 고객 보증 범위는 시스템 수준 TCO입니다. "
+      "삼성 현 위치는 Phase 1 확보, Phase 2 진입: KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고 캐시 관리자 4종에 기여가 없습니다. 오케스트레이션 자체는 만들지 않습니다. 결론: 단계마다 고객 보증 범위가 원가·전력 → 워크로드 수명 → 시스템 TCO로 확장되며, 3단계에 진입하는 수단(FDE·전략적 협약)과 이를 수행할 조직이 5장입니다.")
 
-# ================================================================ S3. 실행 전략·고객 협업 (v3: FDE + SCA 두 트랙, 선례 카드)
+# ================================================================ S5. 실행 — FDE + SCA 두 트랙, 선례 카드, 조직·인사·문화 (v3.10 공식 문안·5장 요약 체인)
 s = prs.slides.add_slide(BLANK)
-header(s, "QLC eSSD 전략 · 실행 전략과 고객 협업",
-       "FDE로 고객 시스템 안에 들어가고, 전략적 협약으로 워크로드를 받습니다. 선례는 이미 있습니다",
+header(s, 5,
+       "고객 시스템 진입 수단은 FDE 상주와 전략적 협약(SCA)이며, 두 수단 모두 업계 선례가 있습니다",
        [("「단 한 번도 고객 지향적인 적이 없었다. 진짜 고객 지향이 뭔지 이해하고, 그것을 위한 전략이 필요한 시점이 이미 됐다」", 18, False, INK),
         ("   송용호 · AX/PI센터장, 2026-09", 13.5, False, GRAY_2)])
 
 M_Y, M_H = 2.80, 4.52
-# 좌: 삼성 개발실
+# 좌: 삼성
 LB_W = 3.85
 rect(s, MX, M_Y, LB_W, M_H, fill=WHITE, line=LINE, line_w=0.75)
 tb(s, MX + 0.34, M_Y + 0.22, LB_W - 0.68, 0.32, [("삼성 개발실", 18, True, BLUE)])
-tb(s, MX + 0.34, M_Y + 0.56, LB_W - 0.68, 0.26, [("들고 들어가는 것", 12.75, False, GRAY_2)])
+tb(s, MX + 0.34, M_Y + 0.56, LB_W - 0.68, 0.26, [("삼성이 제공하는 것", 12.75, False, GRAY_2)])
 gives = ["KV-ready QLC + 수명 보증", "FDE(고객 상주 엔지니어)", "업스트림 코드 · 공용 TCO 모델", "다년 공급 · 선급 · 자본"]
 gy = M_Y + 1.02
 for g in gives:
@@ -579,14 +660,14 @@ for g in gives:
 rect(s, MX + 0.34, M_Y + M_H - 1.16, LB_W - 0.68, 0.012, fill=LINE)
 quote(s, MX + 0.34, M_Y + M_H - 1.06, LB_W - 0.68, 0.94,
       "고객의 집에 가서 저녁을 같이 먹는 것, 삼성은 상상할 수 없는 일이지만 SK하이닉스는 한다",
-      "송용호 · 관계가 곧 워크로드 접근권", size=12.0)
+      "송용호 · 고객 관계 = 워크로드 접근권", size=12.0)
 
 # 우: 고객 시스템
 RB_W = 4.30
 RBX = RIGHT - RB_W
 rect(s, RBX, M_Y, RB_W, M_H, fill=WHITE, line=LINE, line_w=0.75)
 tb(s, RBX + 0.34, M_Y + 0.22, RB_W - 0.68, 0.32, [("고객 시스템", 18, True, BLUE)])
-tb(s, RBX + 0.34, M_Y + 0.56, RB_W - 0.68, 0.26, [("우리 사람과 코드가 들어가는 자리", 12.75, False, GRAY_2)])
+tb(s, RBX + 0.34, M_Y + 0.56, RB_W - 0.68, 0.26, [("삼성 인력·코드의 진입 계층", 12.75, False, GRAY_2)])
 cys = stack(s, RBX + 0.34, M_Y + 0.98, 2.56, ["응용 · 추론 엔진", "KV 캐시 관리자", "I/O · 커널", "SSD: 삼성 QLC"],
             ["none", "touch", "own", "own"], layer_h=0.5, gap=0.09)
 _px = RBX + 0.34 + 2.56 + 0.16
@@ -605,7 +686,7 @@ ar1 = rect(s, CX0, M_Y + 0.12, CWID, A_H, fill=BLUE, shape=MSO_SHAPE.RIGHT_ARROW
 ar1.adjustments[0] = 0.80
 ar1.adjustments[1] = 0.26
 tb(s, CX0 + 0.40, M_Y + 0.12, CWID - 1.4, A_H,
-   [("① FDE가 고객 시스템 안으로 들어간다", 17.25, True, WHITE), ("상주 엔지니어 · 업스트림 코드 · 수명 보증", 13.5, False, WHITE)],
+   [("① FDE 상주: 삼성 엔지니어의 고객 시스템 진입", 17.25, True, WHITE), ("상주 엔지니어 · 업스트림 코드 · 수명 보증", 13.5, False, WHITE)],
    anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
 
 CARD_Y = M_Y + 0.12 + A_H + 0.16
@@ -617,7 +698,6 @@ cx = CX0
 rect(s, cx, CARD_Y, CARD_W, CARD_H, fill=TINT)
 tb(s, cx + 0.24, CARD_Y + 0.12, CARD_W - 0.48, 0.28,
    [[("선례 · ", 13.5, False, GRAY), ("Palantir FDE", 13.5, True, BLUE), (" (Forward Deployed Engineer)", 12.0, False, GRAY)]])
-# 미니 그림: 엔지니어 3명 → 고객 현장
 pic_y = CARD_Y + 0.52
 px = cx + 0.24
 for k in range(3):
@@ -626,8 +706,8 @@ rect(s, px + 0.98, pic_y + 0.14, 0.34, 0.16, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT
 rect(s, px + 1.40, pic_y, 1.05, 0.46, fill=WHITE, line=BLUE, line_w=1.0)
 tb(s, px + 1.40, pic_y, 1.05, 0.46, [("고객 현장", 12.0, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 tb(s, cx + 0.24, pic_y + 0.60, CARD_W - 0.48, CARD_H - 1.14,
-   [("고객 시스템 안에 상주해 실제 요구를 코드로 풀고 성과로 평가받는 엔지니어(코드명 Delta)", 12.0, False, GRAY),
-    ("파급: 고객 락인의 동력, 640% 주가 수익률의 원천으로 회자. Anthropic·OpenAI가 GTM으로 채택", 12.0, True, INK)],
+   [("고객 시스템에 상주하며 실제 요구를 코드로 구현하고 성과로 평가받는 엔지니어(코드명 Delta)", 12.0, False, GRAY),
+    ("고객 락인의 동력으로 평가(주가 수익률 640%). Anthropic·OpenAI가 GTM 모델로 채택", 12.0, True, INK)],
    spacing=1.04)
 
 # 선례 카드 B: Micron ↔ Anthropic SCA
@@ -635,16 +715,15 @@ cx = CX0 + CARD_W + 0.22
 rect(s, cx, CARD_Y, CARD_W, CARD_H, fill=TINT)
 tb(s, cx + 0.24, CARD_Y + 0.12, CARD_W - 0.48, 0.28,
    [[("선례 · ", 13.5, False, GRAY), ("Micron ↔ Anthropic SCA", 13.5, True, BLUE), (" (2026-06)", 12.0, False, GRAY)]])
-# 미니 그림: 계약 4요소 블록
 blk_x, blk_y = cx + 0.24, CARD_Y + 0.52
 for k, (lab, hot) in enumerate([("공동 설계", True), ("다년 공급", False), ("운영 통합", False), ("자본(Series H)", False)]):
     by = blk_y + k * 0.30
     rect(s, blk_x, by, 1.55, 0.26, fill=BLUE if hot else BLUE_T2)
     tb(s, blk_x, by, 1.55, 0.26, [(lab, 11.25, True, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 tb(s, blk_x + 1.55 + 0.22, blk_y - 0.02, CARD_W - 0.48 - 1.77, CARD_H - 0.64,
-   [("네 요소를 한 계약에 묶어 워크로드·스펙 접근권을 확보", 12.0, False, GRAY),
+   [("네 요소를 한 계약에 결합해 워크로드·규격 접근권을 확보", 12.0, False, GRAY),
     ("Micron SCA 16건 · 최소 매출 약 $100B · 예치금 $22B", 12.0, True, INK),
-    ("삼성·SK의 Anthropic 계약에는 공동 설계 조항이 없습니다. 우리가 먼저 제안합니다", 12.0, True, BLUE)],
+    ("삼성·SK의 Anthropic 공급 계약에는 공동 설계 조항 부재 → 삼성이 선제 제안", 12.0, True, BLUE)],
    spacing=1.04)
 
 B_Y = CARD_Y + CARD_H + 0.16
@@ -652,10 +731,10 @@ ar2 = rect(s, CX0, B_Y, CWID, A_H, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_ARROW)
 ar2.adjustments[0] = 0.80
 ar2.adjustments[1] = 0.26
 tb(s, CX0 + 1.05, B_Y, CWID - 1.4, A_H,
-   [("② 전략적 협약(SCA)으로 워크로드가 온다", 17.25, True, INK), ("트레이스 · KV 수명 정책 · 레퍼런스 스펙 자리 · 창은 2027년 상반기까지", 13.5, False, INK)],
+   [("② 전략적 협약(SCA): 워크로드·규격 접근권 확보", 17.25, True, INK), ("트레이스 · KV 수명 정책 · 레퍼런스 스펙 · 계약 시한 2027년 상반기(공급 완화 전)", 13.5, False, INK)],
    anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
 
-# 조직·인사·문화 3축 타일 (v3.2: 전략·재무 타일과 90일·1년·3년 타임라인 제거 — 위키 §2.1·§2.5·§3 참조)
+# 조직·인사·문화 3축 타일
 F_Y, F_H = M_Y + M_H + 0.20, 1.34
 axes = [("조직", ["실리콘밸리 소프트웨어 자회사", "FDE Pod 고객 상주", "시스템 소프트웨어 조직 강화"]),
         ("인사", ["고객 시스템을 아는 시스템 SW 전문가 채용·양성", "미주 현지 채용 확대 · 고객과 같은 시간대에서 협업", "별도 보상 · 본사 엔지니어 상주 로테이션"]),
@@ -670,11 +749,20 @@ for i, (lab, lines) in enumerate(axes):
        [(lines[0], 14.25, True, INK)] + [(l, 13.5, False, GRAY) for l in lines[1:]],
        anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)
 
-band(s, 9.30, 0.90, "결론",
-     "고객은 TB당 TCO가 가장 낮은 용량 계층을 QLC로 채웠고, 그 계층이 쓰기 많은 추론 캐시로 옮겨가\n내구성을 고객 시스템 안에서 풀어야 하며, 그 길은 FDE와 전략적 협약, 그리고 이를 해낼 사람과 문화가 엽니다",
-     main_size=19)
+# 5장 요약 체인(스토리라인 전체)
+band_chain(s, 9.12, 1.04, "요약", [
+    ("1 산식", "보상 변수 WAF는\n호스트 계층이 결정"),
+    ("2 시점", "규격은 다운턴 국면에 정의\n차기 규격은 현재 미정의"),
+    ("3 수요", "추론 캐시 계층도 TB당 TCO\n제약 조건 = 내구성"),
+    ("4 역량", "디바이스 → 워크로드 →\n고객 시스템 3단계"),
+    ("5 실행", "FDE 상주 · 전략적 협약\n조직 · 인사 · 문화"),
+])
 footer(s, "출처: Pragmatic Engineer·FDE Academy·MindStudio(Palantir FDE), Micron IR 2026-06-22·10-Q(SCA 16건·$22B), SK hynix 뉴스룸(AI Company), levels.fyi 2026 · 규모·시점은 추정, 사내 수치는 [사내 확인]", 5)
-notes(s, "실행 전략 한 장입니다. 리드의 인용은 송용호 AX/PI센터장의 말입니다. 우리는 말로는 고객 지향을 하지만 단 한 번도 고객 지향적인 적이 없었고, 진짜 고객 지향이 뭔지 이해하고 그것을 위한 전략이 필요한 시점이 이미 됐다. 이 장이 그 전략입니다. 왼쪽 박스 아래 인용도 같은 인터뷰입니다. 고객의 집에 가서 저녁을 같이 먹는 것은 삼성에서는 상상할 수 없는 일이지만 SK하이닉스는 한다. 관계가 곧 워크로드 접근권이라는 뜻이고, 미주 현지 채용과 FDE 상주가 그 답입니다. 목표는 두 가지이고 각각 선례가 있습니다. ① FDE(Forward Deployed Engineer)가 고객 시스템 안으로 들어갑니다. Palantir가 창안한 역할로 내부 코드명 Delta, 고객 환경 내부에 상주하며 실제 운영 제약 아래서 프로덕션 시스템을 직접 구축하고 청구 시간이 아니라 성과로 평가받습니다. 명시적 요구와 실제 요구의 간극을 현장에서 코드로 메우고, 특정 고객용 거친 해법(gravel road)이 제품 표준 기능(paved highway)으로 포장되는 피드백 루프를 만듭니다. 파급: 고객 락인의 동력이자 640% 주가 수익률의 원천으로 회자되고, Anthropic·OpenAI가 엔터프라이즈 GTM 전략으로 채택했습니다(OpenAI는 2025년 초 FDE 팀 2명→10명+). 우리는 Co-Design Pod를 FDE 모델로 운영하되, 메모리는 제조 리드타임이 길므로 시스템 아키텍트·TCO 모델링 역량을 결합합니다. ② 전략적 협약(SCA)으로 워크로드가 옵니다. 선례는 Micron↔Anthropic(2026-06-22): 공동 설계(HBM·DRAM·SSD를 Claude 학습·추론 워크로드에 맞춰 공동 최적화) + 다년 공급 + 운영 통합(Claude 사내 배치) + 자본(Series H)을 한 계약에 묶었습니다. Micron은 SCA 16건, 최소 계약매출 약 $100B, 예치금 $22B를 공시했습니다. 삼성·SK의 Anthropic 공급계약에는 공동 설계 조항이 없으므로 우리가 먼저 제안합니다. 창은 공급 완화 전인 2027년 상반기까지입니다. 이 장에는 두 목표를 여는 수단 중 조직·인사·문화 세 축을 보였습니다(전략·재무 축과 90일·1년·3년 타임라인은 위키 실행 전략 페이지 §2.1·§2.5·§3에 있습니다). 조직은 실리콘밸리 소프트웨어 자회사와 FDE Pod에 더해 시스템 소프트웨어 조직을 강화합니다. 인사는 고객의 시스템을 잘 이해하는 시스템 소프트웨어 전문가를 채용하고 양성하는 것이 핵심이며, 채용 기준은 고객 시스템(추론 엔진·KV 캐시 관리자·I/O·커널 코드)을 읽고 고칠 수 있는가입니다. 미주 고객과의 협업을 위해 현지 채용을 늘리고, 그것이 가능하도록 별도 보상 체계를 두며, 본사 엔지니어는 상주 로테이션으로 양성합니다. 문화는 업스트림 우선을 넘어 오픈소스 생태계를 주도하는 기업 문화로 갑니다. 기여자에서 메인테이너·커미터로 올라가고, 우리가 운영하는 레퍼런스 프로젝트에 외부 기여가 들어오게 하며, KV cache 실측을 업계 최초로 공개합니다. 마지막 문장은 세 장의 요약입니다. 고객은 TB당 TCO가 가장 낮은 용량 계층을 QLC로 채웠고 그 계층이 쓰기 많은 추론 캐시로 옮겨가므로(3장) 내구성을 고객 시스템 안에서 풀어야 하며(4장), 그 길은 FDE와 전략적 협약, 그리고 이를 해낼 사람과 문화가 엽니다(5장). 1장의 산식(남은 지렛대는 WAF)과 2장의 교훈(규격 정의에 참여한 쪽이 적중)이 그 전제입니다.")
+notes(s, "5장은 4장의 3단계에 진입하는 수단과 이를 수행할 조직입니다. 리드의 인용은 송용호 AX/PI센터장의 발언이며, 왼쪽 박스 아래 인용도 같은 인터뷰입니다. 고객 관계가 곧 워크로드 접근권이라는 뜻이고, 미주 현지 채용과 FDE 상주가 그 대응입니다. "
+      "진입 수단은 두 가지이고 각각 선례가 있습니다. ① FDE 상주: 삼성 엔지니어가 고객 시스템에 진입합니다. Palantir가 창안한 역할(내부 코드명 Delta)로, 고객 환경 내부에 상주하며 실제 운영 제약 아래서 프로덕션 시스템을 직접 구축하고 청구 시간이 아니라 성과로 평가받습니다. 명시적 요구와 실제 요구의 간극을 현장에서 코드로 해소하고, 특정 고객용 해법이 제품 표준 기능으로 전환되는 피드백 루프를 만듭니다. 고객 락인의 동력이자 640% 주가 수익률의 원천으로 평가되고, Anthropic·OpenAI가 엔터프라이즈 GTM 모델로 채택했습니다(OpenAI는 2025년 초 FDE 팀 2명→10명 이상). 삼성은 Co-Design Pod를 FDE 모델로 운영하되, 메모리는 제조 리드타임이 길므로 시스템 아키텍트·TCO 모델링 역량을 결합합니다. "
+      "② 전략적 협약(SCA): 고객 워크로드·규격 접근권을 계약으로 확보합니다. 선례는 Micron↔Anthropic(2026-06-22): 공동 설계(HBM·DRAM·SSD를 Claude 학습·추론 워크로드에 맞춰 공동 최적화) + 다년 공급 + 운영 통합(Claude 사내 배치) + 자본(Series H)을 한 계약에 결합했습니다. Micron은 SCA 16건, 최소 계약매출 약 $100B, 예치금 $22B를 공시했습니다. 삼성·SK의 Anthropic 공급 계약에는 공동 설계 조항이 없으므로 삼성이 선제 제안합니다. 계약 시한은 공급 완화 전인 2027년 상반기까지입니다. "
+      "조직·인사·문화 세 축(전략·재무 축과 90일·1년·3년 타임라인은 위키 실행 전략 페이지 §2.1·§2.5·§3). 조직은 실리콘밸리 소프트웨어 자회사와 FDE Pod에 더해 시스템 소프트웨어 조직을 강화합니다. 인사는 고객 시스템(추론 엔진·KV 캐시 관리자·I/O·커널 코드)을 읽고 수정할 수 있는 시스템 소프트웨어 전문가의 채용·양성이 핵심이며, 미주 현지 채용을 확대하고 별도 보상 체계를 두며 본사 엔지니어는 상주 로테이션으로 양성합니다. 문화는 업스트림 우선을 넘어 오픈소스 생태계를 주도하는 기업 문화로 전환합니다. 기여자에서 메인테이너·커미터로, 삼성이 운영하는 레퍼런스 프로젝트에 외부 기여가 들어오게 하며, KV cache 실측을 업계 최초로 공개합니다. "
+      "하단 요약 체인은 5장의 논리입니다. 1장 산식: 보상 변수 WAF는 호스트 계층이 결정한다. 2장 시점: 규격은 다운턴 국면에 정의되며 차기 규격은 현재 미정의다. 3장 수요: 고객은 추론 캐시 계층에서도 TB당 TCO를 요구하고 제약 조건은 내구성이다. 4장 역량: 디바이스 → 워크로드 → 고객 시스템 3단계로 확장한다. 5장 실행: FDE 상주와 전략적 협약, 그리고 조직·인사·문화가 그 수단이다.")
 
 prs.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(prs.slides._sldIdLst)}장)")

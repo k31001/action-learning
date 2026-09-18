@@ -18,6 +18,24 @@ export const UPDATES = [
   {
     date: '2026-09-18',
     type: 'build',
+    version: 'v2.46.26',
+    title: 'QLC 덱 v3.10 — 5장 스토리라인 통일(산식 → 시점 → 수요 → 역량 → 실행), 공식 용어, 시각 스토리 장치',
+    summary:
+      '5장 덱의 논리를 한 스파인으로 연결: ① 산식(왜 호스트 협력인가) → ② 시점(왜 지금인가) → ③ 수요(고객의 요구는 무엇인가) → ④ 역량(어떻게 해소하는가) → ⑤ 실행(누가 어떻게 실행하는가). ' +
+      '헤더 스토리 레일·결론 밴드의 다음 장 포인터·5장 요약 체인을 신설하고, 비유·구어 표현을 보상·이관·격차·규격·진입·접근권 등 기술 용어로 통일. 중복 문장·3기 띠·범례 행을 삭제해 도식 영역과 결론 밴드에 재배치. 위키 §3.4 덱 표기 원칙 갱신, 지식그래프 재생성. 패치 v2.46.26.',
+    tags: ['QLC', '덱', '스토리라인', '해법 사다리', 'FDE'],
+    items: [
+      { label: '덱 v3.10(5장)', detail: '1 산식·해법 사다리(이관 구조의 반복 3행) / 2 시점·다운턴 교훈(연결 칩) / 3 수요·채택 동인 / 4 역량·3단계(결론 밴드 신설) / 5 실행·FDE·SCA(요약 체인)' },
+      { label: '스크립트', detail: 'story_rail()·band(next_step)·band_chain() 헬퍼, solution_ladder_slide.py v1.2(단독 덱 동반), 차트 패널 제목 공식 용어, deck_kit 재추출' },
+    ],
+    links: [
+      { label: '기획서 v3.10', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+      { label: '위키 §3.4', href: 'wiki/concepts/qlc-ssd-market.md' },
+    ],
+  },
+  {
+    date: '2026-09-18',
+    type: 'build',
     version: 'v2.46.25',
     title: 'QLC 덱 v3.9 — 해법 사다리(P/E·BER·DWPD·WAF) 슬라이드를 1장으로 삽입, 총 5장',
     summary:
