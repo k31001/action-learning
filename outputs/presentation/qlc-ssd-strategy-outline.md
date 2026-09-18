@@ -8,9 +8,13 @@
 - **재생성**: `.venv/bin/python outputs/presentation/scripts/generate_qlc_chart.py` (그래프) → `.venv/bin/python outputs/presentation/scripts/generate_qlc_ssd_strategy_pptx.py` → `outputs/presentation/qlc-ssd-strategy.pptx`
 - **렌더 검증**: `FONT_LATIN=NanumGothic FONT_EA=NanumGothic OUT_PATH=<scratch>.pptx` 로 렌더 전용 사본을 만들어 `soffice --headless --convert-to pdf` → pymupdf PNG로 육안 검사(본 산출물은 Arial 유지).
 
-## 슬라이드 구성 (v3.13 2026-09-18 — 1장 레이아웃 zero-base 재설계: 이관 매트릭스)
+## 슬라이드 구성 (v3.14 2026-09-18 — 1장 단품 셀: P/E 막대 + RBER 로그 선 이중 축 한 그래프)
 
-v3.13 피드백: "슬라이드 1 레이아웃을 제로 베이스에서 다시 만들자." → 1장을 **이관 매트릭스**로 재설계(`solution_ladder_slide.py` v2.0). 페이지 구조 자체가 논지가 되도록 **열 = 이관 단계**(요구·고객이 정한다·고정 → 단품 지표·셀·다이·악화 → SSD 계층의 보상·1단계 ECC 완결·2단계 단독 최적화 부분 성공 → 호스트·시스템 계층의 보상·3단계 공동 설계·본 덱), **행 = 두 축**(내구성: P/E·BER·DWPD·WAF / 신뢰성: 다이 수·고장률), 행 사이 = DWPD 산식 칩(항별 결정 주체가 열과 대응). 셀마다 미니 차트 1개 또는 빅넘버·타일 1개(`assets/ladder_cell_{component,dwpd,waf,dies}.png`, `scripts/generate_ladder_cells.py`, 셀 크기 1:1 figsize): 내구성 행 = [DWPD 1~3 · UBER 10⁻¹⁵/10⁻¹⁶ 빅넘버] → [P/E 100배↓ + RBER 10⁶배↑ vs UBER 요구선] → [1단계 ECC 타일(UBER 충족) + 2단계 SSD 단독 최적화 타일(연파랑, DWPD 미충족, 정격 DWPD 17→0.4 스파크라인)] → [3단계 타일(파란 테두리): WAF 3.22→1.03 막대, 유일한 경로]; 신뢰성 행 = [FFR ≤ 3% 빅넘버] → [SSD당 다이 수 128→1,024 막대] → [현재 해법 타일(연파랑): 다이 패리티·여분 다이·은퇴·비용] → [상위 계층 타일(점선): 호스트 관측·플랫폼 수용·드라이브 간]. 기존 2×2 차트·산식 카드·3단계 카드·하단 스트립은 매트릭스로 흡수(2×2 차트 `solution_metrics_chart.png`는 보고서 그림으로 유지). 타이틀 "요구는 고정, 단품은 악화, 보상은 상위 계층으로: QLC의 DWPD는 호스트 공동 설계로만 충족됩니다", 리드 "내구성 축과 신뢰성 축 모두 같은 구조입니다. SSD 단독 최적화는 QoS·성능은 개선했으나 WAF는 낮추지 못했습니다."
+v3.14 피드백: "P/E 사이클과 RBER을 하나의 그래프로 합치고, RBER은 로그 스케일 라인 그래프로." → `generate_ladder_cells.py` cell_component: 좌축 P/E 사이클(log 막대, 보증 하한~상한, 100배↓), 우축 RBER EOL 대표값(log 선·마커, 10⁶배↑) + UBER 요구 10⁻¹⁵ 점선(고정) + ECC 보상 범위 화살표. 막대(하단)·UBER 선·RBER 선(상단)이 겹치지 않도록 좌축 30~10¹³, 우축 10⁻²⁷~30으로 범위 설정(눈금은 실측 구간만 표기).
+
+### v3.13 (1장 레이아웃 zero-base 재설계: 이관 매트릭스)
+
+v3.13 피드백: "슬라이드 1 레이아웃을 제로 베이스에서 다시 만들자." → 1장을 **이관 매트릭스**로 재설계(`solution_ladder_slide.py` v2.0). 페이지 구조 자체가 논지가 되도록 **열 = 이관 단계**(요구·고객이 정한다·고정 → 단품 지표·셀·다이·악화 → SSD 계층의 보상·1단계 ECC 완결·2단계 단독 최적화 부분 성공 → 호스트·시스템 계층의 보상·3단계 공동 설계·본 덱), **행 = 두 축**(내구성: P/E·BER·DWPD·WAF / 신뢰성: 다이 수·고장률), 행 사이 = DWPD 산식 칩(항별 결정 주체가 열과 대응). 셀마다 미니 차트 1개 또는 빅넘버·타일 1개(`assets/ladder_cell_{component,dwpd,waf,dies}.png`, `scripts/generate_ladder_cells.py`, 셀 크기 1:1 figsize): 내구성 행 = [DWPD 1~3 · UBER 10⁻¹⁵/10⁻¹⁶ 빅넘버] → [P/E 100배↓ 막대(좌축) + RBER 10⁶배↑ 로그 선(우축) vs UBER 요구선, 한 그래프(v3.14)] → [1단계 ECC 타일(UBER 충족) + 2단계 SSD 단독 최적화 타일(연파랑, DWPD 미충족, 정격 DWPD 17→0.4 스파크라인)] → [3단계 타일(파란 테두리): WAF 3.22→1.03 막대, 유일한 경로]; 신뢰성 행 = [FFR ≤ 3% 빅넘버] → [SSD당 다이 수 128→1,024 막대] → [현재 해법 타일(연파랑): 다이 패리티·여분 다이·은퇴·비용] → [상위 계층 타일(점선): 호스트 관측·플랫폼 수용·드라이브 간]. 기존 2×2 차트·산식 카드·3단계 카드·하단 스트립은 매트릭스로 흡수(2×2 차트 `solution_metrics_chart.png`는 보고서 그림으로 유지). 타이틀 "요구는 고정, 단품은 악화, 보상은 상위 계층으로: QLC의 DWPD는 호스트 공동 설계로만 충족됩니다", 리드 "내구성 축과 신뢰성 축 모두 같은 구조입니다. SSD 단독 최적화는 QoS·성능은 개선했으나 WAF는 낮추지 못했습니다."
 
 ### v3.12 (1장 병렬 축: 다이 수·다이 고장률)
 

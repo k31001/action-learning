@@ -2,7 +2,7 @@
 """해법 사다리 슬라이드 v2.0(이관 매트릭스)용 셀 미니 차트 4종.
 
 슬라이드 셀 크기(인치)에 1:1로 맞춘 figsize로 그려 확대·축소 없이 배치한다(글자 크기 = 실제 슬라이드 pt).
- - ladder_cell_component.png : 내구성 축 · 단품 지표 — P/E(log 막대, 100배↓) + RBER EOL(log 막대, 10⁶배↑) vs UBER 요구선
+ - ladder_cell_component.png : 내구성 축 · 단품 지표 — P/E(log 막대, 좌축, 100배↓) + RBER EOL(log 선, 우축, 10⁶배↑) vs UBER 요구선, 한 그래프
  - ladder_cell_dwpd.png      : 내구성 축 · SSD 계층 결과 — 정격 DWPD 17→0.4 vs 요구 1~3(고정) 스파크라인
  - ladder_cell_waf.png       : 내구성 축 · 호스트 계층 — WAF 3.00·3.22(SSD 단독) → 1.03(호스트 공동 설계)
  - ladder_cell_dies.png      : 신뢰성 축 · 단품 지표 — SSD당 NAND 다이 수 128→1,024
@@ -57,30 +57,44 @@ def save(fig, name):
 
 
 def cell_component():
-    fig, (a1, a2) = plt.subplots(2, 1, figsize=(3.78, 2.10), gridspec_kw={"hspace": 0.62})
+    """P/E 사이클(막대, 좌축 log)과 RBER(선, 우축 log)을 한 그래프에 — 막대는 아래, 선은 위로 분리되도록 축 범위를 잡는다."""
+    fig, ax = plt.subplots(figsize=(3.78, 2.10))
     fig.patch.set_facecolor("white")
-    cells = ["SLC", "MLC", "TLC", "QLC"]
-    x = range(4)
-    # P/E
+    cells = ["SLC\n'91~", "MLC\n'06~", "TLC\n'15~", "QLC\n'18~"]
+    x = list(range(4))
+    # 좌축: P/E 사이클(보증 하한~상한)
     lo, hi = [30000, 3000, 1000, 100], [100000, 10000, 3000, 1000]
-    a1.bar(x, hi, width=0.55, color=BLUE_T2, zorder=2)
-    a1.bar(x, lo, width=0.55, color=BLUE, zorder=3)
-    a1.set_yscale("log"); a1.set_ylim(30, 4e5); pow10(a1.yaxis); a1.set_yticks([1e2, 1e3, 1e4, 1e5])
-    a1.set_xticks(list(x)); a1.set_xticklabels(cells)
-    base(a1, 7.5)
-    a1.set_title("P/E 사이클(보증 하한~상한)  100배 ↓", loc="left", fontsize=8.5, color=BLUE, fontweight="bold", pad=3)
-    a1.text(3.0, 1.35e3, "100~1K", ha="center", va="bottom", fontsize=7.0, color=INK, fontweight="bold")
-    a1.text(0.0, 1.3e5, "30K~100K", ha="center", va="bottom", fontsize=7.0, color=INK, fontweight="bold")
-    # RBER (EOL 대표값) vs UBER 요구
+    ax.bar(x, hi, width=0.52, color=BLUE_T2, zorder=2)
+    ax.bar(x, lo, width=0.52, color=BLUE, zorder=3)
+    ax.set_yscale("log"); ax.set_ylim(30, 1e13)
+    ax.set_yticks([1e2, 1e3, 1e4, 1e5]); pow10(ax.yaxis); ax.set_yticks([1e2, 1e3, 1e4, 1e5])
+    ax.set_ylabel("P/E cycles", fontsize=7.0, color=BLUE, labelpad=2)
+    ax.set_xticks(x); ax.set_xticklabels(cells)
+    base(ax, 7.0)
+    ax.grid(False)
+    ax.text(0, 1.3e5, "30K~100K", ha="center", va="bottom", fontsize=6.8, color=BLUE, fontweight="bold")
+    ax.text(3, 1.3e3, "100~1K", ha="center", va="bottom", fontsize=6.8, color=BLUE, fontweight="bold")
+    ax.annotate("", xy=(2.7, 2.2e3), xytext=(0.35, 1.5e5), arrowprops=dict(arrowstyle="->", color=BLUE_T1, lw=1.0))
+    ax.text(1.9, 5e4, "P/E 100배 ↓", fontsize=7.5, color=BLUE, fontweight="bold", ha="center", va="bottom")
+    # 우축: RBER(EOL 대표값, 선) vs UBER 요구(고정)
+    ax2 = ax.twinx()
     rber = [1e-7, 1e-2, 5e-3, 1e-2]
-    a2.bar(x, rber, width=0.55, bottom=1e-11, color=BLUE, zorder=3)
-    a2.set_yscale("log"); a2.set_ylim(1e-17, 3); pow10(a2.yaxis); a2.set_yticks([1e-16, 1e-12, 1e-8, 1e-4, 1])
-    a2.axhline(1e-15, color=BLUE_T1, lw=1.0, ls="--", zorder=2)
-    a2.text(3.35, 2.5e-15, r"UBER 요구 $10^{-15}$ (고정)", ha="right", va="bottom", fontsize=7.0, color=BLUE)
-    a2.set_xticks(list(x)); a2.set_xticklabels(cells)
-    base(a2, 7.5)
-    a2.set_title(r"RBER(EOL 대표값)  $10^{6}$배 ↑ · 셀 단독 보정 불가", loc="left", fontsize=8.5, color=BLUE, fontweight="bold", pad=3)
-    fig.subplots_adjust(left=0.16, right=0.98, top=0.90, bottom=0.10)
+    ax2.set_yscale("log"); ax2.set_ylim(1e-27, 30)
+    ax2.plot(x, rber, color=INK, lw=1.6, marker="o", ms=4, zorder=4)
+    ax2.axhline(1e-15, color=BLUE_T1, lw=0.9, ls="--", zorder=1)
+    ax2.text(-0.42, 2.5e-15, r"UBER 요구 $10^{-15}$ (고정)", ha="left", va="bottom", fontsize=6.8, color=BLUE_T1)
+    ax2.text(2.5, 2.5e-15, "", fontsize=1)
+    ax2.text(1.5, 8e-1, r"RBER $10^{6}$배 ↑", fontsize=7.5, color=INK, fontweight="bold", ha="center", va="bottom")
+    ax2.annotate("", xy=(3.42, 3e-3), xytext=(3.42, 3e-15), arrowprops=dict(arrowstyle="<->", color=GRAY_2, lw=0.9))
+    ax2.text(3.36, 3e-9, "ECC 보상 범위", fontsize=6.5, color=GRAY, ha="right", va="center")
+    ax2.set_yticks([1e-16, 1e-12, 1e-8, 1e-4, 1]); pow10(ax2.yaxis); ax2.set_yticks([1e-16, 1e-12, 1e-8, 1e-4, 1])
+    ax2.set_ylabel("bit error rate", fontsize=7.0, color=INK, labelpad=2)
+    ax2.tick_params(colors=GRAY, labelsize=7.0, length=2.5)
+    for sp in ("top",):
+        ax2.spines[sp].set_visible(False)
+    ax2.spines["right"].set_color(LINE); ax2.spines["left"].set_visible(False); ax2.spines["bottom"].set_visible(False)
+    ax.set_title(r"P/E 사이클(막대·좌축) 100배 ↓  ·  RBER(선·우축) $10^{6}$배 ↑", loc="left", fontsize=8.0, color=BLUE, fontweight="bold", pad=4)
+    fig.subplots_adjust(left=0.15, right=0.85, top=0.88, bottom=0.17)
     save(fig, "ladder_cell_component.png")
 
 

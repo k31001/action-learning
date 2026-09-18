@@ -2000,3 +2000,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **문안**: 타이틀 "요구는 고정, 단품은 악화, 보상은 상위 계층으로: QLC의 DWPD는 호스트 공동 설계로만 충족됩니다", 리드 "내구성 축과 신뢰성 축 모두 같은 구조 · SSD 단독 최적화는 QoS·성능은 개선했으나 WAF는 낮추지 못했다". UBER 지수는 python-pptx baseline 윗첨자로 표기. 렌더 QA(NanumGothic): 셀 라벨 겹침·타일 넘침·주석 잘림 4회 수정.
 - **동기화**: 기획서 v3.13, 해법 사다리 보고서 부록 B v2.0(구 2×2 차트 행은 유지), 위키 산출물 줄, `index.md` 3항목. 단독 1장 덱 `memory-solution-ladder.pptx` 동반 갱신.
 - **대시보드**: 지식 그래프 재생성(위키 산출물 줄) → `version.js` v2.46.28→**v2.46.29**(패치), `updates.js` 항목, `npm run build` 통과.
+
+## [2026-09-18] build | QLC 덱 v3.14 — 1장 단품 셀: P/E 막대 + RBER 로그 선을 이중 축 한 그래프로
+
+피드백: "P/E 사이클과 RBER을 하나의 그래프로 합치고, RBER은 로그 스케일 라인 그래프로."
+- `generate_ladder_cells.py` cell_component 재작성: 좌축 P/E 사이클(log 막대, 하한~상한) · 우축 RBER EOL 대표값(log 선, 마커) · UBER 요구 10⁻¹⁵ 점선 · ECC 보상 범위 양방향 화살표. 막대·UBER 선·RBER 선이 겹치지 않도록 좌축 30~10¹³, 우축 10⁻²⁷~30(눈금은 10²~10⁵ / 10⁻¹⁶~1만 표기). 제목 윗첨자는 mathtext.
+- 덱 재생성(QLC 5장·단독 1장), 렌더 QA 통과. 기획서 v3.14, `index.md` 덱 항목. 위키·대시보드 변경 없음(산출물만 변경, 버전 bump 생략).
