@@ -1953,3 +1953,12 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **슬라이드 v1.1** `memory-solution-ladder.pptx`(1장): 타이틀 "단품이 잃은 P/E 100배를 컨트롤러가 ECC로 버텼고, 남은 지렛대 WAF는 호스트 협력에 있습니다", 좌 네 지표 차트, 우 산식 카드(DWPD = P/E × (1+OP) ÷ WAF ÷ 365×년, 항별 소유자 셀·디바이스·호스트앱·고객, WAF 강조) + 두 단계의 대칭 도식(셀→컨트롤러→고객 / 셀·SSD→호스트·앱→고객 3칩 × 2행), 결론 "요구는 고정, 단품 지표는 악화, 상위 계층의 변수가 메워 왔습니다 / QLC의 호스트 협력은 선택이 아니라 산식의 결과". v1.0 계층 사다리 차트는 보고서 1장 그림으로 유지.
 - `index.md` 4항목 갱신. 지식 그래프·대시보드는 아래 항목.
 - **대시보드**: 지식 그래프 재생성(노드 요약 갱신, 108·597 유지) → `version.js` v2.46.23→**v2.46.24**(패치), `updates.js` 항목, `npm run build` 통과. QLC 4장 덱 무변경.
+
+## [2026-09-18] build | QLC 덱 v3.9 — 해법 사다리(네 지표) 슬라이드를 1장으로 삽입, 총 5장
+
+피드백: "좋네. BER이 빠진 게 아쉽지만. 이것도 QLC 전략 PPT 첫 페이지에 넣어줘."
+- **BER 패널 보강**(`generate_solution_metrics_chart.py`): ② 패널 제목 "BER — 셀은 스스로 못 고친다: RBER↑ vs UBER 요구 고정, 폭은 ECC가 메움", 각 세대 RBER 범위에 신품(빈 원)→EOL(채운 원) 마커와 "P/E 사이클·보존 시간에 따라 초선형 증가" 주석 추가.
+- **공용 빌더** `scripts/solution_ladder_slide.py` 신설: build(ns, page_no, kicker) — 단독 1장 덱(`generate_solution_ladder_pptx.py`, deck_kit)과 QLC 덱(`generate_qlc_ssd_strategy_pptx.py`, 자체 헬퍼)이 같은 코드로 슬라이드를 그린다.
+- **QLC 덱 v3.9**: 1장 「배경 0: 해법 사다리 (P/E · BER · DWPD · WAF)」 삽입(왜 호스트 협력인가), 기존 1~4장 → 2~5장(TOTAL 5, 푸터 재부여, 2장 교훈 카드 링크 → 3·4·5장, 2·3·5장 노트 번호 갱신, 5장 노트에 1·2장 전제 문장 추가). 렌더 QA: 5장 페이지 번호 확인.
+- **동기화**: 기획서 v3.9(5장 구성표·출처 S1~S5), 보고서 PPT 압축 맵 5행, `index.md` 덱·기획서·사다리 항목, 위키 `qlc-ssd-market.md` §3.5 덱 표기 원칙(5장 순서)·`solution-ladder-component-to-system.md` 산출물 줄. 지식 그래프·대시보드는 아래 항목.
+- **대시보드**: 지식 그래프 재생성(위키 §3.5 문구·산출물 줄 갱신, 노드 108·엣지 597·mutual 111) → `version.js` v2.46.24→**v2.46.25**(패치), `updates.js` 항목, `npm run build` 통과. 렌더 QA 추가: BER 패널 제목 축약·주석 위치 조정.

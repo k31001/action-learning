@@ -86,8 +86,12 @@ def p2(ax):
     ax.text(3.45, 3e-15, r"UBER 요구 $10^{-15}$(클라이언트) · $10^{-16}$(엔터프라이즈) · JESD218", ha="right", va="bottom", fontsize=8.8, color=BLUE)
     for i in x:
         ax.vlines(i, rber_lo[i], rber_hi[i], color=BLUE_T2, lw=6, zorder=2)
+        ax.scatter([i], [rber_lo[i]], s=34, facecolors="white", edgecolors=BLUE_T1, linewidths=1.2, zorder=3)
         ax.scatter([i], [rber_hi[i]], s=60, color=BLUE, zorder=3)
         ax.vlines(i, 1e-15, rber_lo[i], color=LINE, lw=1, ls=":", zorder=1)
+    ax.annotate("신품(빈 원) → EOL(채운 원)\nP/E 사이클·보존 시간에 따라 초선형 증가", xy=(3, 1e-3), xytext=(1.45, 1e-6),
+                fontsize=8.5, color=GRAY, ha="left", va="center",
+                arrowprops=dict(arrowstyle="->", color=GRAY_2, lw=1.0))
     ax.text(1.5, 1e-10, "ECC가 메우는 폭\n(컨트롤러 계층)", ha="center", va="center", fontsize=10, color=GRAY, fontweight="bold")
     ecc = ["ECC 2 bit/KB", "8~60 bit/KB\nBCH", "72~120 bit/KB\nLDPC", "LDPC\n소프트 디시전"]
     for i, t in enumerate(ecc):
@@ -96,8 +100,8 @@ def p2(ax):
     ax.set_xticklabels(cells)
     pow10(ax.yaxis)
     ax.set_yticks([1e-16, 1e-12, 1e-8, 1e-4, 1])
-    ax.text(0.2, 3e-7, r"$10^{6}$배 ↑", fontsize=11, color=INK, fontweight="bold", ha="left", va="bottom")
-    style(ax, "② 컨트롤러의 응답 — RBER↑ vs UBER 요구 고정, 폭은 ECC가 메움", "bit error rate")
+    ax.text(0.28, 1.2e-5, r"$10^{6}$배 ↑", fontsize=11, color=INK, fontweight="bold", ha="left", va="bottom")
+    style(ax, "② BER — 셀은 스스로 못 고친다: RBER↑, UBER 요구 고정, 폭은 ECC", "bit error rate")
 
 
 def p3(ax):

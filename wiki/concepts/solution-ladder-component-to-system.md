@@ -115,4 +115,4 @@ flowchart LR
 
 - 상위: [qlc-ssd-market.md](qlc-ssd-market.md)(§3.4 구매 기준·§3.5 다운턴 교훈) · [nand-process-transition.md](nand-process-transition.md) · [hbm-roadmap.md](hbm-roadmap.md) · [dram-technology.md](dram-technology.md)
 - 전략: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) · [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md) · [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md) · [customer-co-design-anthropic.md](customer-co-design-anthropic.md)
-- 산출물: [memory-solution-ladder-report.md](../../outputs/report/memory-solution-ladder-report.md) · 슬라이드 `outputs/presentation/memory-solution-ladder.pptx`(v1.1: 네 지표 차트 `assets/solution_metrics_chart.png`; 계층 사다리 차트 `assets/solution_ladder_chart.png`는 보고서 그림)
+- 산출물: [memory-solution-ladder-report.md](../../outputs/report/memory-solution-ladder-report.md) · 슬라이드 `outputs/presentation/memory-solution-ladder.pptx`(v1.1: 네 지표 차트; 같은 슬라이드가 QLC eSSD 전략 덱 `qlc-ssd-strategy.pptx` 1장 — `scripts/solution_ladder_slide.py` 공용 빌더 `assets/solution_metrics_chart.png`; 계층 사다리 차트 `assets/solution_ladder_chart.png`는 보고서 그림)

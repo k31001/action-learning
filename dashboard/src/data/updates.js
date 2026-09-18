@@ -17,6 +17,23 @@ export const UPDATES = [
   // ── 2026-09-18 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-18',
+    type: 'build',
+    version: 'v2.46.25',
+    title: 'QLC 덱 v3.9 — 해법 사다리(P/E·BER·DWPD·WAF) 슬라이드를 1장으로 삽입, 총 5장',
+    summary:
+      '해법 사다리 슬라이드를 QLC eSSD 전략 덱 첫 장 「배경 0」으로 삽입(왜 호스트 협력인가 → 2장 다운턴 교훈 = 왜 지금인가 → 3~5장). 공용 빌더 solution_ladder_slide.py로 단독 1장 덱과 같은 코드. ' +
+      'BER 패널 보강(셀은 스스로 못 고친다: 신품→EOL 범위, P/E·보존 시간에 따른 초선형 증가 주석). 기획서·보고서 PPT 맵·인덱스·위키 §3.5 덱 표기 원칙 동기화, 지식그래프 재생성(mutual 111). 패치 v2.46.25.',
+    tags: ['QLC', '덱', '해법 사다리', 'BER', 'DWPD', 'WAF'],
+    items: [
+      { label: '덱 v3.9(5장)', detail: '1 해법 사다리 / 2 다운턴 교훈 / 3 고객 채택 동인 / 4 3단계 역량 / 5 FDE·SCA·조직·인사·문화 — 푸터·교훈 카드 링크·노트 번호 재부여' },
+      { label: '스크립트', detail: 'solution_ladder_slide.py(build(ns, page_no, kicker)) 신설, generate_solution_ladder_pptx.py는 빌더 호출로 축약' },
+    ],
+    links: [
+      { label: 'outputs/presentation/qlc-ssd-strategy-outline.md', href: 'https://github.com/k31001/action-learning/blob/main/outputs/presentation/qlc-ssd-strategy-outline.md' },
+    ],
+  },
+  {
+    date: '2026-09-18',
     type: 'ingest',
     version: 'v2.46.24',
     title: '해법 사다리 v1.1 — P/E·BER·DWPD·WAF 네 지표로 "단품 → SSD → 호스트" 이관을 수치로 설명',
