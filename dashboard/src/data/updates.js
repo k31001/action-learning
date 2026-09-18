@@ -18,6 +18,24 @@ export const UPDATES = [
   {
     date: '2026-09-18',
     type: 'ingest',
+    version: 'v2.46.28',
+    title: '해법 사다리 v1.4 / QLC 덱 v3.12 — 1장에 병렬 축(SSD당 다이 수·다이 고장률) 추가',
+    summary:
+      '요구 FFR ≤ 3%(JESD218)는 고정인데 SSD당 NAND 다이 수는 128(S3700 2012) → 1,024(Kioxia LC9 245TB 2025)로 8배 증가 — 보호 없는 SSD 고장률은 다이 수에 비례(수율↔칩 면적과 같은 구조). 해법은 SSD 계층(다이 RAID·여분 다이·삼성 Fail-in-Place)으로 이관됐고, 한계 시 상위 계층(OCP SMART XOR 복구 카운트·플랫폼 fail-in-place·드라이브 간 소거 부호). ' +
+      '소스 §9 F41~F47 수집, 위키 §2.5 병렬 축 표, 슬라이드 1 하단 스트립(미니 막대 + 칩 3), 보고서·기획서 동기화. 패치 v2.46.28.',
+    tags: ['QLC', '해법 사다리', '다이 고장률', 'FFR', 'RAIN', 'Fail-in-Place'],
+    items: [
+      { label: '소스 §9', detail: 'JESD218 FFR · S3700 분해 128다이 · Kioxia LC9 32다이 스택 1,024다이 · 수율 모델 · Cai 패리티·Micron RAIN · 삼성 FIP PM1733 · OCP SMART C0 · MS Hyrax' },
+      { label: '슬라이드 1', detail: '차트 5.4in로 축소(글자 배율 보정) + 병렬 축 스트립, 결론 1행에 FFR·다이 수' },
+    ],
+    links: [
+      { label: '위키 §2.5', href: 'wiki/concepts/solution-ladder-component-to-system.md' },
+      { label: '소스 §9', href: 'sources/articles/component-to-system-solution-ladder-facts-2026-09.md' },
+    ],
+  },
+  {
+    date: '2026-09-18',
+    type: 'ingest',
     version: 'v2.46.27',
     title: '해법 사다리 v1.3 / QLC 덱 v3.11 — 1장 이관의 3단계 정정(ECC 완결 → SSD 단독 최적화 부분 성공 → 호스트 공동 설계 유일)',
     summary:

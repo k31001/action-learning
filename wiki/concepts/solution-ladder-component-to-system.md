@@ -76,6 +76,13 @@ flowchart LR
 
 세 단계 모두 "요구(UBER·DWPD)는 고정, 단품 지표(RBER·P/E)는 악화, 보상은 더 위 계층으로 올라간다"는 같은 구조이며, 2단계의 부분 성공이 3단계가 선택이 아니라 필연인 이유다.
 
+**병렬 축 — SSD당 다이 수와 다이 고장률**(2026-09-18 사용자 지적, 근거 [소스 §9](../../sources/articles/component-to-system-solution-ladder-facts-2026-09.md) F41~F47): 내구성 축과 별개로 신뢰성 축에서도 같은 구조가 진행 중이다. 요구는 JESD218 FFR ≤ 3%로 고정인데(F41), SSD당 NAND 다이 수는 S3700 800GB 128(2012) → P4510 8TB ≈144(2018) → P5316 30.72TB ≈256(2021) → 61.44TB ≈512(2023) → Kioxia LC9 245.76TB 1,024(2025, 2Tb 32다이 스택 × 32패키지)로 8배 늘었다(F42). 보호 없는 SSD 고장률은 다이 수 N에 비례하므로(≈ (1−p)^N, 반도체 수율 Y = e^(−AD)에서 면적이 커질수록 수율이 떨어지는 것과 같은 구조, F43), 같은 FFR을 지키려면 다이 고장률을 8배 낮추거나 다이 고장을 허용해야 한다. 다이 고장률 개선이 한계에 닿자 해법은 SSD 계층으로 이관됐다: 다이 패리티(Micron RAIN, 슈퍼페이지 XOR 패리티 다이, F44)와 다이 은퇴·감량 운영(삼성 Fail-in-Place PM1733: 다이 고장 시 데이터 재배치 후 4~8GB 감량 운영, F45). 두 해법 모두 패리티·여분 용량 오버헤드를 키우므로 다이 수가 계속 늘면 SSD 단독으로는 부족해질 수 있고, 상위 계층은 이미 준비 중이다 — OCP SMART의 XOR 복구 카운트로 호스트가 다이 복구를 관측하고(F46), 플랫폼이 감량 운영을 수용하며(Microsoft Hyrax, F47), 드라이브 간 소거 부호가 SSD 고장을 흡수한다.
+
+| 병렬 축 | 요구(고정) | 단품 지표(악화) | SSD 계층 해법(현재) | 상위 계층(한계 시) |
+|---|---|---|---|---|
+| 내구성 | DWPD(캐시 계층 1~3) | P/E 100배 ↓ | SSD 단독 워크로드 최적화 — WAF ≈3(부분 성공) | 호스트 시스템 공동 설계 — WAF 1.0(본 덱) |
+| 신뢰성(다이 고장) | FFR ≤ 3%(JESD218) | 다이 수 8배 ↑(128 → 1,024) | 다이 패리티(RAIN) · 다이 은퇴·감량 운영(FIP) | 호스트 관측(OCP XOR 카운트) · 플랫폼 감량 운영 수용(Hyrax) · 드라이브 간 소거 부호 |
+
 ## 3. DRAM의 사다리 — "단품이 만족해 왔다"는 전제의 검증
 
 | 연도 | 칸 | 해법 | 흡수한 단품 한계 | 근거 |
@@ -123,4 +130,4 @@ flowchart LR
 
 - 상위: [qlc-ssd-market.md](qlc-ssd-market.md)(§3.4 구매 기준·§3.5 다운턴 교훈) · [nand-process-transition.md](nand-process-transition.md) · [hbm-roadmap.md](hbm-roadmap.md) · [dram-technology.md](dram-technology.md)
 - 전략: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) · [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md) · [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md) · [customer-co-design-anthropic.md](customer-co-design-anthropic.md)
-- 산출물: [memory-solution-ladder-report.md](../../outputs/report/memory-solution-ladder-report.md) · 슬라이드 `outputs/presentation/memory-solution-ladder.pptx`(v1.2: 네 지표 차트, 공식 문안 — 타이틀 "RBER 상승은 컨트롤러 ECC가 보상했고, P/E 감소의 보상 변수 WAF는 호스트 계층에 있습니다", 이관의 3단계(1 ECC 완결 / 2 SSD 단독 워크로드 최적화 부분 성공: QoS·성능 개선·WAF ≈3 / 3 호스트 시스템 공동 설계 WAF 1.0 = QLC 덱 2~5장, v1.3); 같은 슬라이드가 QLC eSSD 전략 덱 `qlc-ssd-strategy.pptx` 1장 — `scripts/solution_ladder_slide.py` 공용 빌더 `assets/solution_metrics_chart.png`; 계층 사다리 차트 `assets/solution_ladder_chart.png`는 보고서 그림)
+- 산출물: [memory-solution-ladder-report.md](../../outputs/report/memory-solution-ladder-report.md) · 슬라이드 `outputs/presentation/memory-solution-ladder.pptx`(v1.2: 네 지표 차트, 공식 문안 — 타이틀 "RBER 상승은 컨트롤러 ECC가 보상했고, P/E 감소의 보상 변수 WAF는 호스트 계층에 있습니다", 이관의 3단계(1 ECC 완결 / 2 SSD 단독 워크로드 최적화 부분 성공: QoS·성능 개선·WAF ≈3 / 3 호스트 시스템 공동 설계 WAF 1.0 = QLC 덱 2~5장, v1.3) + 병렬 축 스트립(다이 수 128→1,024 · FFR ≤3% 고정 · 다이 RAID·FIP · 상위 계층, v1.4); 같은 슬라이드가 QLC eSSD 전략 덱 `qlc-ssd-strategy.pptx` 1장 — `scripts/solution_ladder_slide.py` 공용 빌더 `assets/solution_metrics_chart.png`; 계층 사다리 차트 `assets/solution_ladder_chart.png`는 보고서 그림)
