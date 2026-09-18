@@ -14,6 +14,25 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-18 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-09-18',
+    type: 'build',
+    version: 'v2.46.22',
+    title: 'QLC 시장 위키 §3.5 「다운턴이 가르친 것」 신설 — 덱 v3.5 맨 앞장(센싱·고객 협업·타이밍 세 교훈), 총 4장',
+    summary:
+      '다운턴 역사 20년 패턴과 2023 복기(Solidigm)를 QLC 연혁에 겹쳐 세 교훈을 도출: ① 수요는 주문서보다 2년 먼저 고객의 스펙·표준·코드에 나타난다(DT23 한복판 배치 표준 비준 → 2024 30EB; 지금은 캐시 관리자 4종 배치 언급 0건) ② 요구를 정의하는 자리에 있던 쪽이 적중했다(Solidigm 61TB 12개월 선행, HBM = NVIDIA 공동 정의) ③ 한 다운턴의 결정이 다음 다운턴의 출발 조건(DT19 무감산·HBM 팀 축소 → DT23; 다음 심판대 2027H2). ' +
+      '덱 1장 신설(다운턴 음영 타임라인 + 교훈 카드 3), 기존 배경은 2장으로. 보고서 §1.0, 지식그래프 재생성(다운턴·전환 페이지와 신규 엣지). 패치 v2.46.22.',
+    tags: ['QLC', '다운턴 교훈', '센싱', '고객 협업', 'Solidigm', 'HBM', '덱'],
+    items: [
+      { label: '위키 qlc-ssd-market §3.5', detail: '교훈 3 × (역사 근거 · 지금의 등가물 · 덱 연결) 표 + 서술 원칙(삼성 후발 사례는 "직전 성공 공식이 함정" 패턴으로). 출처: downturn-history §4, fdp-host-ssd-platform §2.5, ssd-ufs-market 전환기 플레이북, samsung-storage-solution-history, rs9, sk-hynix' },
+      { label: '덱 v3.5', detail: '1장 「다운턴이 가르친 것」 신설(DT19·DT23 음영 타임라인 + QLC 이정표 6 + 3기 띠 + 교훈 카드 3 + 결론), 2장 이정표 타임라인 제거·그래프 확대, 총 4장' },
+    ],
+    links: [
+      { label: 'wiki/concepts/qlc-ssd-market.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/qlc-ssd-market.md' },
+      { label: 'wiki/downturn/downturn-history.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/downturn/downturn-history.md' },
+    ],
+  },
   // ── 2026-09-17 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-17',

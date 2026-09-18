@@ -1901,3 +1901,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **위키·보고서**: `qlc-execution-strategy.md` §2.0에 「안팎의 같은 진단」(신문섭 = 목표 ② 외부 진단, 송용호 = 목표 ①·문화·인사·현지 채용 근거, 전사 문맥 보정 명시) + frontmatter에 expert-interview 소스 추가. 보고서 §6.0 말미에 같은 문단, PPT 압축 맵 3행. `qlc-ssd-strategy-outline.md` v3.4, `index.md`.
 - 출처: `sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md`(§1·최종 메시지), `song-yongho-ax-pi-interview-2026-09-03.md`(1:03:19·1:11:42; 문구는 `dashboard/src/data/interviews.js`의 보정본과 동일).
 - **대시보드**: 지식 그래프 재생성(`knowledgeGraph.js` 노드 요약 갱신, 노드 107·엣지 585 유지) → `version.js` v2.46.20→**v2.46.21**(패치), `updates.js` 항목, `npm run build` 통과. 그래프·모델 무변경. 렌더 QA: S3 결론 문장 줄바꿈 재배치(3줄 넘침 수정).
+
+## [2026-09-18] build | QLC 덱 v3.5 — 「다운턴이 가르친 것」 배경 장 신설(맨 앞장), 총 4장
+
+피드백: "이전 다운턴 학습의 교훈을 메인 테마로 배경 한 장을 다시 만들어 맨 앞장에 붙이고, 이전 배경 내용도 포함되면 좋겠다. 고객 협업의 중요성과 QLC 같은 시장 요구 센싱 측면의 교훈."
+- **분석(위키)**: `qlc-ssd-market.md` §3.5 「다운턴이 가르친 것 — 세 교훈과 QLC 전략의 연결」 신설. 축 = "다운턴 극복은 방어가 아니라 니즈 적중이었고, 적중은 고객 안에서 먼저 본 쪽이 했다". 교훈 1 센싱(수요는 주문서보다 2년 먼저 고객의 스펙·표준·코드에: DT23 한복판 4Q22 eSSD -27% 속 배치 표준 비준·OCP·61TB 예고 → 2024 30EB; 지금 = 캐시 관리자 4종 배치 언급 0건), 교훈 2 고객 협업(정의하는 자리에 있던 쪽이 적중: Solidigm 61TB 12개월 선행·흑자 전환, HBM = NVIDIA 공동 정의 SK hynix), 교훈 3 타이밍(한 다운턴의 결정이 다음 다운턴의 출발 조건: DT19 무감산·HBM 팀 축소 → DT23; 다음 심판대 2027H2 가격 정상화). 근거: `downturn-history.md` §4 패턴 2·5, `fdp-host-ssd-platform.md` §2.5, `ssd-ufs-market.md` 전환기 플레이북, `samsung-storage-solution-history.md` §2·§4, `rs9`, `sk-hynix.md`. 서술 원칙: 삼성 후발 사례는 "직전 성공 공식이 함정" 패턴으로.
+- **덱**: 1장 신설 — 2018~2030 타임라인(DT19·DT23 구간 음영, 2027H2 「다음 심판대」 박스, 이정표 6개 위·아래 교대, 3기 띠 = 이전 배경의 국면 구분 승계) + 교훈 카드 3(역사 → 지금 → 이 덱의 장) + 결론 밴드. 기존 배경(2장)의 이정표 타임라인은 1장으로 흡수하고 그래프 확대(C_Y 5.36·C_H 3.77). TOTAL 4, 푸터 번호 재부여. 렌더 QA 2회(이정표 라벨 겹침·두 번째 줄 정렬: 줄마다 별도 문단으로 수정).
+- **동기화**: 보고서 §0 첫째·§1.0 신설·PPT 압축 맵 4행, `qlc-ssd-strategy-outline.md` v3.5(4장), `index.md`. 그래프·모델 무변경.
+- **대시보드**: 지식 그래프 재생성(`qlc-ssd-market` → downturn-history·fdp-host-ssd-platform·ssd-ufs-market·samsung-storage-solution-history·rs9·sk-hynix 신규 엣지) → `version.js` v2.46.21→**v2.46.22**(패치), `updates.js` 항목, `npm run build` 통과.

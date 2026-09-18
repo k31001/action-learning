@@ -120,6 +120,18 @@ TrendForce는 2024년 QLC eSSD 비트 출하를 **30EB, 2023년 대비 4배**로
 
 **덱 표기 원칙**(사용자 결정 2026-09-17): 니어라인 HDD 대체 여부는 발표 덱에서 다루지 않는다(§3.1의 범위 결정은 위키에 유지). 덱 1장은 "고객은 왜 QLC를 원하는가"로 시작해 3장의 결론 문장까지 같은 축으로 잇는다.
 
+### 3.5 다운턴이 가르친 것 — 세 교훈과 QLC 전략의 연결 (덱 1장)
+
+> 2026-09-18 6차 피드백: "배경이 이전 다운턴의 교훈에서 논리가 이어지면 좋겠다 — 고객 협업의 중요성과 QLC 같은 시장 요구를 센싱하는 측면에서." 위키의 다운턴 역사([downturn-history.md](../downturn/downturn-history.md) §4 패턴)와 2023 복기([fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) §2.5)를 QLC 연혁에 겹치면 세 교훈이 나온다. **다운턴 극복은 방어가 아니라 니즈 적중이었고, 적중은 고객 안에서 먼저 본 쪽이 했다.**
+
+| 교훈 | 역사(근거) | 지금의 등가물(QLC) | 덱 연결 |
+|---|---|---|---|
+| **1 센싱 — 수요는 주문서보다 2년 먼저 고객의 스펙·표준·코드에 나타난다** | DT23(2022Q2~2023Q3, 사상 최심 -45%)의 진앙은 eSSD였다(4Q22 eSSD 매출 -27.4%). 그 한복판에서 Meta·Google이 배치 표준을 비준(2022-12)하고 OCP E1.S/E1.L을 정했으며 Solidigm이 61TB를 예고했다. 물량은 2년 뒤(2024년 30EB, 4배)에 왔다 ([qlc-essd-history-2022-background-2026-09.md](../../sources/articles/qlc-essd-history-2022-background-2026-09.md) §2, [qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §2.1). 하이퍼스케일러 CapEx는 붕괴가 아니라 재배분이었고(AI 서버 $50B→$187B), 총량만 본 쪽은 다운턴을 봤고 고객 스펙을 본 쪽은 다음 요구를 봤다 ([fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) §2.5). DT23 교훈 ①(원인·형태 오판)의 제품 버전 | KV 캐시 관리자 4종(KVBM·LMCache·Mooncake·FlexKV) 코드에 배치·내구성 언급 0건 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §2·§4). 요구가 아직 안 쓰였다 = 지금 들어가면 우리가 쓴다. 센싱 전략 [rs9-demand-inflection-sensing.md](../strategies/invariant/rs9-demand-inflection-sensing.md)의 인과 사슬에서 **가장 앞 노드는 고객 코드**다 | 2장(고객은 왜 QLC를 원하는가) |
+| **2 고객 협업 — 요구를 정의하는 자리에 있던 쪽이 적중했다** | Solidigm은 SK그룹에서 낙폭이 가장 깊었지만 2023-07 61TB QLC를 삼성보다 12개월 먼저 내(삼성 BM1743 2024-07) 2024년 eSSD 급증의 최대 수혜로 흑자 전환했다 — "포트폴리오 다변화(방어)가 아니라 고객 니즈 적중(공격)이 결정 변수"([fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) §2.5). HBM은 NVIDIA와 규격을 공동 정의한 SK hynix가 가져갔다([sk-hynix.md](../entities/sk-hynix.md) 핵심 교훈 1). 송용호: "부품이 어떻게 쓰일지는 시스템 설계자 마음에 있다. 그걸 알았으면 HBM을 진작 준비했을 것" | 캐시 티어의 내구성 요구는 미디어가 아니라 고객 시스템(배치 표준·캐시 관리자 정책)에서 정의된다. 정의하는 자리(캐시 관리자 메인라인·SNIA/OCP·NVIDIA CMX 공동 정의)에 들어가야 한다 | 3장(세 단계), 4장(FDE·SCA) |
+| **3 타이밍 — 한 다운턴의 결정이 다음 다운턴의 출발 조건이 된다** | 20년 패턴 5: DT19 무감산 성공 → DT23 무감산 오판, DT19 HBM 팀 축소 → DT23 회복기 주도권 상실, DT16 칭화유니 무산 → CXMT ([downturn-history.md](../downturn/downturn-history.md) §4). 삼성 스토리지 사업사: 캐파 베팅은 수요를 만드는 솔루션과 짝이어야 성립했고(2006 SSD), 다운턴에 핵심으로 재배치한 쪽이 이겼다(2011 HDD 매각) ([samsung-storage-solution-history.md](samsung-storage-solution-history.md) §2·§4). 전환기 플레이북: 수요 폭발 3~5년 전 전용 캐파 베팅·인터페이스 세대 선점, 단 "규격을 만들고도 제품화가 늦으면 진다"(Intel) ([ssd-ufs-market.md](ssd-ufs-market.md) 전환기 플레이북) | 다음 심판대는 2027년 하반기 가격 정상화(TrendForce 2H27 공급 완화). 비트 10배에 매출이 정체하면(§4 모델) 남는 이익은 고객 시스템 안에서 보증한 TCO뿐이므로, 지금 고객 안에 들어가는 결정이 그 국면의 출발 조건이다 | 4장(지금 들어가는 결정) |
+
+**서술 원칙**: 삼성 자신의 후발(61TB 12개월, HBM)이 핵심 사례이므로 비난이 아니라 "직전 성공 공식이 다음 다운턴의 함정이 된다"는 **패턴**으로 서술한다([downturn-history.md](../downturn/downturn-history.md) §4 패턴 5). 덱 1장은 두 다운턴 구간을 음영으로 한 타임라인 위에 QLC 이정표(배치 표준 비준·61TB·30EB·캐시 관리자 0건·2027H2 심판대·2030 비트 10배)와 3기 띠를 얹고, 교훈 카드 3(역사 → 지금 → 이 덱의 장)으로 나머지 세 장을 예고한다.
+
 ## 4. 수요·매출 모델 (2022~2030)
 
 ### 4.1 모델 표 (그래프 미러: `outputs/presentation/assets/qlc_model.csv`)
