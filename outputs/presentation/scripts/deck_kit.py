@@ -31,7 +31,7 @@ MX = 0.79
 CW = 18.42
 RIGHT = MX + CW
 GRADE = "[문서등급 표기]"
-TOTAL = 5
+TOTAL = 4
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(HERE, "..", "assets")
@@ -96,8 +96,8 @@ def rect(slide, x, y, w, h, fill=None, line=None, line_w=0.75, shape=MSO_SHAPE.R
     return sp
 
 
-STORY = [("1", "산식", "왜 호스트 협력인가"), ("2", "시점", "왜 지금인가"), ("3", "수요", "고객의 요구는 무엇인가"),
-         ("4", "역량", "어떻게 해소하는가"), ("5", "실행", "누가 어떻게 실행하는가")]
+STORY = [("1", "교훈 · 문제", "왜 지금, 무엇이 필요한가"), ("2", "해법 사다리", "왜 호스트 협력인가"),
+         ("3", "역량", "어떻게 해소하는가"), ("4", "실행", "누가 어떻게 실행하는가")]
 
 
 def story_rail(slide, current, y=0.88, h=0.30):
@@ -149,7 +149,7 @@ def band(slide, y, h, label, main, main_size=22, next_step=None):
     """결론 밴드. next_step=n이면 우측에 '다음 장 → n장 이름 · 질문' 포인터를 그려 스토리라인 연결을 표시."""
     rect(slide, MX, y, CW, h, fill=BLUE)
     tb(slide, MX + 0.45, y, 1.6, h, [(label, 18, False, WHITE)], anchor=MSO_ANCHOR.MIDDLE)
-    ptr_w = 3.40 if next_step else 0.0
+    ptr_w = 3.70 if next_step else 0.0
     tb(slide, MX + 2.0, y, CW - 2.4 - ptr_w, h, [(m, main_size, True, WHITE) for m in main.split("\n")],
        anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)  # "\n"으로 의미 단위 줄바꿈 지정 가능
     if next_step:
