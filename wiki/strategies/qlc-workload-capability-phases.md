@@ -145,6 +145,8 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 | 2 워크로드 최적화 | Alibaba HiSim, SK hynix SALT-KV, ScaleFlux 텔레메트리 | KV cache 백서 2종, CacheLib WAF 실측 | KV cache 트레이스 기반 RUH 정책·WAF 실측 미공개(업계 공백) |
 | 3 co-design | Micron↔Anthropic SSD 공동 설계, FlexKV 메인라인 머지 | Meta CacheLib 업스트림·논문 | KV 관리자 기여 0, 계약에 공동 최적화 조항 없음 |
 
+**덱 표기(2026-09-19, v5.0)**: 삼성 현 위치는 "Phase 1 진행 중(CMX 첫 공급은 TLC, QLC 라인 RUH 2~8 → 200+ 미완·DWPD 미공개) · Phase 2 준비(KV 트레이스 기반 실측 미공개) · Phase 3 미착수"로 정직하게 표기한다. 이전 덱의 "Phase 1 확보" 표기는 격차 타일(RUH 25배)과 모순이었다.
+
 **결론**: 갭은 기술보다 **연결**에 있다. 디바이스(⑤)와 도구(③·④)는 있고 캐시 관리자(②)는 열려 있다. 연결을 만드는 것은 개인 엔지니어의 노력이 아니라 조직·인사·재무의 설계다 → [qlc-execution-strategy.md](qlc-execution-strategy.md).
 
 ## 7. 시나리오 연결

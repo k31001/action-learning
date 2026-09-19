@@ -9,6 +9,7 @@ import os
 from PIL import Image
 from pptx import Presentation
 from pptx.dml.color import RGBColor
+from pptx.enum.dml import MSO_LINE_DASH_STYLE
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.oxml.ns import qn
@@ -31,7 +32,7 @@ MX = 0.79
 CW = 18.42
 RIGHT = MX + CW
 GRADE = "[문서등급 표기]"
-TOTAL = 4
+TOTAL = 6
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(HERE, "..", "assets")
@@ -96,8 +97,8 @@ def rect(slide, x, y, w, h, fill=None, line=None, line_w=0.75, shape=MSO_SHAPE.R
     return sp
 
 
-STORY = [("1", "교훈 · 문제", "왜 지금, 무엇이 필요한가"), ("2", "해법 사다리", "왜 호스트 협력인가"),
-         ("3", "역량", "어떻게 해소하는가"), ("4", "실행", "누가 어떻게 실행하는가")]
+STORY = [("1", "문제", "왜 지금 필요한가"), ("2", "해법 사다리", "왜 호스트 협력인가"), ("3", "신뢰성", "SSD가 풀 문제"),
+         ("4", "역량", "어떻게 해소하는가"), ("5", "실행", "누구와 어디서"), ("6", "보증 · SLA", "무엇을 보증하나")]
 
 
 def story_rail(slide, current, y=0.88, h=0.30):
@@ -162,7 +163,7 @@ def band(slide, y, h, label, main, main_size=22, next_step=None):
            anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
 
 
-def band_chain(slide, y, h, label, chips):
+def band_chain(slide, y, h, label, chips, head_size=12.75, body_size=11.25):
     """5장 요약 체인 밴드: chips=[(머리글, 본문)] 를 화살표로 연결. 마지막 장의 결론 밴드용(스토리라인 전체를 한눈에)."""
     rect(slide, MX, y, CW, h, fill=BLUE)
     tb(slide, MX + 0.45, y, 1.6, h, [(label, 18, False, WHITE)], anchor=MSO_ANCHOR.MIDDLE)
@@ -175,7 +176,7 @@ def band_chain(slide, y, h, label, chips):
         last = i == n - 1
         rect(slide, x, cy, cw_, ch, fill=WHITE if last else None, line=WHITE, line_w=1.0)
         tb(slide, x + 0.16, cy + 0.06, cw_ - 0.32, ch - 0.1,
-           [(head, 12.75, True, BLUE if last else WHITE)] + [(b, 11.25, last, INK if last else WHITE) for b in body.split("\n")],
+           [(head, head_size, True, BLUE if last else WHITE)] + [(b, body_size, last, INK if last else WHITE) for b in body.split("\n")],
            anchor=MSO_ANCHOR.MIDDLE, spacing=1.02)
         if not last:
             rect(slide, x + cw_ + gap, cy + ch / 2 - 0.10, arrow_w, 0.20, fill=WHITE, shape=MSO_SHAPE.RIGHT_ARROW)

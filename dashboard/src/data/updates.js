@@ -17,6 +17,24 @@ export const UPDATES = [
   // ── 2026-09-19 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-19',
+    type: 'ingest',
+    version: 'v2.46.31',
+    title: 'QLC 덱 v5.0 — 비판적 리뷰 반영: 6장 재구성, "유일한 경로" 철회·동급 비교, 신뢰성·보증 슬라이드 신설',
+    summary:
+      '호스트 공동 설계를 "유일한 경로"에서 다이 세대·OP·보증연수 등 병행 축과 결합하는 "남은 지렛대"로 정정하고, 격차를 동급 비교 2~10배로, KV 캐시 FDP WAF는 미실측 가설로 명시(소스 §10 F48~F54). 신뢰성 축(다이 수·고장률)은 SSD 내부 해법 슬라이드로, 수명 보증·SLA 리스크는 조건부 보증 설계 슬라이드로 신설. ' +
+      '실행은 개발실 내부 범위(FDE 선별 집중, 자회사·별도 보상·결정 요청 제외, 단계별 통과 조건, 판돈 = 락인 점유율·비용 = 개발 자원). 위키 4페이지 정정, 기획서 v5.0·보고서 맵 동기화. 패치 v2.46.31.',
+    tags: ['QLC', '덱', '해법 사다리', 'DWPD', 'SLA', 'FDE', '신뢰성'],
+    items: [
+      { label: '덱 v5.0(6장)', detail: '① 문제 → ② 해법 사다리(지렛대 스트립) → ③ 신뢰성(SSD 내부 해법) → ④ 역량(현 위치 정직 표기) → ⑤ 실행(고객 선별·개발실 범위) → ⑥ 보증·SLA(유효 DWPD 조건부 보증)' },
+      { label: '소스 §10', detail: 'P5336·6550 ION·CM9·LC9 정격 DWPD, CHEOPS\'25 KV 오프로드 I/O, VLDB\'26 NoWA, 삼성·NVMe FDP, 보증 선도달 관행, OCP SMART C0' },
+    ],
+    links: [
+      { label: '기획서 v5.0', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+      { label: '위키 §2.5', href: 'wiki/concepts/solution-ladder-component-to-system.md' },
+    ],
+  },
+  {
+    date: '2026-09-19',
     type: 'build',
     version: 'v2.46.30',
     title: 'QLC 덱 v4.0 — 4장 순서 재편: 교훈·문제 제기 → 해법 사다리 → 역량 → 실행',
