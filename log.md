@@ -2032,3 +2032,7 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **차트** `generate_ladder_cells.py`: cell_waf v2(그룹 막대 + KV 캐시 점선), rel_dies_wide, rel_ffr_limit(1−0.97^(1/N) vs √(0.03/C(N,2))), sla_effective_dwpd. 렌더 QA(NanumGothic 6장): 타이틀 2줄 3건 축약, 상태 라벨·차트 라벨 겹침·게이트 스트립·마커 문구 조정.
 - **동기화**: 기획서 v5.0(6장 구성표), 보고서 PPT 압축 맵 6장(이전 맵 보존)·산출물 표, 사다리 보고서 부록 A F48~F54·부록 B v2.1, `index.md` 4항목, `deck_kit.py` 재추출. 단독 1장 덱 동반 갱신. 지식 그래프·대시보드는 아래 항목.
 - **대시보드**: 지식 그래프 재생성(위키 4페이지 문구) → `version.js` v2.46.30→**v2.46.31**(패치), `updates.js` 항목, `npm run build` 통과.
+
+## [2026-09-19] build | QLC 덱 v5.0.1 — 보증·SLA 차트 라벨 정리
+- `sla_effective_dwpd.png`: 보증선(1.0 DWPD) 라벨이 정격 1.0 곡선 라벨과 겹치던 문제를 상단 우측 무테 범례로 분리해 해소. 수치·논리 변경 없음.
+- `qlc-ssd-strategy.pptx` 재생성(6장). 대시보드·위키·보고서 영향 없음(차트 배치만 변경)이라 version bump 생략.

@@ -248,8 +248,9 @@ def sla_effective_dwpd():
         eff = rated * 3.0 / waf
         ax.plot(waf, eff, color=col, lw=2.0)
         ax.text(3.25, eff[-1] + (0.18 if rated == 1.0 else 0.0), lab, fontsize=7.5, color=col, ha="left", va="center")
-    ax.axhline(1.0, color=INK, lw=1.0, ls="--")
-    ax.text(1.9, 1.08, "보증 목표 1.0 DWPD (KV 캐시 계층 하한)", fontsize=7.5, color=INK, va="bottom")
+    ax.axhline(1.0, color=INK, lw=1.0, ls="--", label="보증 목표 1.0 DWPD (KV 캐시 계층 하한)")
+    # 라벨은 곡선·우측 범례와 겹치지 않도록 상단 우측 범례로 분리 (v5.0.1)
+    ax.legend(loc="upper right", fontsize=7.5, frameon=False, handlelength=2.2, borderaxespad=0.2)
     ax.axvspan(1.0, 1.2, color=TINT, zorder=0)
     ax.text(1.1, 0.12, "설계 가정\nWAF ≤ 1.2", fontsize=7.0, color=BLUE, ha="center", va="bottom")
     # 손익분기 WAF (정격 0.58): 0.58*3/waf = 1 → waf = 1.74
