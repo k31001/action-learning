@@ -292,17 +292,17 @@ def v_arrow(slide, x, y, w, h, up=False, fill=BLUE):
     return rect(slide, x, y, w, h, fill=fill, shape=MSO_SHAPE.UP_ARROW if up else MSO_SHAPE.DOWN_ARROW)
 
 
-# ================================================================ S1. 교훈 · 문제 제기 (v4.0: 구 2장 다운턴 교훈 + 구 3장 요구의 이동을 한 장으로)
+# ================================================================ S1. 문제 제기 — 시간축 = 논리축 (v4.1 zero-base: 타임라인 세 구간 아래 교훈 / 지금 / 문제 세 패널 정렬)
 s = prs.slides.add_slide(BLANK)
 header(s, 1,
-       "다운턴의 교훈은 고객 요구 적중이고, AI 수요는 요구를 대용량·높은 DWPD로 이동시킵니다",
-       "두 다운턴은 요구가 고객 시스템 안에서 먼저 관측됨을 보였고, 지금 그 요구는 추론 캐시 계층의 대용량·높은 DWPD입니다.")
+       "AI 추론 수요는 고용량 QLC에 높은 DWPD를 요구하며, 이를 충족할 해법이 필요한 상황입니다",
+       "두 다운턴의 교훈은 요구를 고객 시스템 안에서 먼저 관측하라는 것이었고, 지금 그 요구는 대용량과 높은 DWPD로 이동하고 있습니다.")
 
-# 타임라인: 2018 → 2030.5, 다운턴 구간 음영 + QLC 이정표(한 줄 라벨)
+# ---- 타임라인(2018 → 2030.5): 다운턴 음영 + 이정표. 아래 세 패널은 이 축의 세 구간에 정렬 ----
 TX0, TX1 = MX + 0.30, RIGHT - 0.30
 def tx(year):
     return TX0 + (TX1 - TX0) * (year - 2018.0) / 12.5
-AX_Y = 3.52
+AX_Y = 3.46
 rect(s, TX0, AX_Y - 0.01, TX1 - TX0, 0.02, fill=LINE)
 for y0, y1, lab in [(2018.75, 2019.95, "DT19 재고 조정 · -37.6%"), (2022.25, 2023.75, "DT23 최대 낙폭 -45% · 진앙 eSSD")]:
     rect(s, tx(y0), AX_Y - 0.13, tx(y1) - tx(y0), 0.26, fill=BLUE_T2)
@@ -311,14 +311,9 @@ rect(s, tx(2027.5), AX_Y - 0.13, tx(2028.25) - tx(2027.5), 0.26, fill=WHITE, lin
 tb(s, tx(2027.5) - 0.3, AX_Y + 0.16, 2.6, 0.22, [("차기 전환점(e) · 가격 정상화", 11.25, True, BLUE)])
 for yr in range(2018, 2031, 2):
     tb(s, tx(yr) - 0.4, AX_Y + 0.38, 0.8, 0.2, [(str(yr), 10.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
-marks = [  # (연도, 위/아래, 날짜, 한 줄 내용)
-    (2019.3, "up", "2019", "HBM 조직 축소"),
-    (2022.95, "down", "2022-12", "데이터 배치 표준 비준"),
-    (2023.55, "up", "2023-07", "Solidigm 61TB, 12개월 선행"),
-    (2024.75, "down", "2024", "비트 출하 30EB(4배)"),
-    (2026.6, "up", "2026", "KV 캐시 배치 규격 미정의"),
-    (2030.2, "down", "2030", "비트 10배 · 매출 정체(e)"),
-]
+marks = [(2019.3, "up", "2019", "HBM 조직 축소"), (2022.95, "down", "2022-12", "데이터 배치 표준 비준"),
+         (2023.55, "up", "2023-07", "Solidigm 61TB, 12개월 선행"), (2024.75, "down", "2024", "비트 출하 30EB(4배)"),
+         (2026.6, "up", "2026", "KV 캐시 배치 규격 미정의"), (2030.2, "down", "2030", "비트 10배 · 매출 정체(e)")]
 for yr, side, d, t in marks:
     cx = tx(yr)
     rect(s, cx - 0.08, AX_Y - 0.08, 0.16, 0.16, fill=BLUE, shape=MSO_SHAPE.OVAL)
@@ -333,143 +328,149 @@ for yr, side, d, t in marks:
         else:
             tb(s, cx - 1.4, AX_Y + 0.58, 2.8, 0.24, runs, align=PP_ALIGN.CENTER)
 
-# 교훈 카드 3 (좌) + 문제 제기 패널 (우)
-L_Y = AX_Y + 1.02
-L_H = 9.42 - 0.22 - L_Y
-P_W = 5.00
-PX = RIGHT - P_W
-L_W = (PX - 0.30 - MX - 0.30 * 2) / 3
+# ---- 세 패널: 타임라인 구간(2018~23 / 2024~26 / 2027~30)에 정렬 ----
+P_Y = AX_Y + 0.98
+P_H = 9.42 - 0.20 - P_Y
+G = 0.14
+C1X, C1W = MX, tx(2024.0) - G / 2 - MX
+C2X, C2W = tx(2024.0) + G / 2, tx(2027.0) - tx(2024.0) - G
+C3X, C3W = tx(2027.0) + G / 2, RIGHT - tx(2027.0) - G / 2
 
 
-def lesson_visual_1(x, y, w, h):
-    """수요 센싱: 고객 규격·코드 레인이 발주·비트 출하 레인보다 ≈2년 앞선다. 2026 슬롯은 빈 원(규격 미정의)."""
-    lx, lw = x + 1.02, w - 1.02
-    px = lambda t: lx + lw * (t - 2022.0) / 5.0
-    top, bot = y + 0.55, y + h - 0.62
-    tb(s, x, top - 0.14, 1.0, 0.28, [("고객 규격·코드", 10, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, x, bot - 0.14, 1.0, 0.28, [("발주·비트 출하", 10, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
-    rect(s, lx, top, lw, 0.02, fill=LINE)
-    rect(s, lx, bot, lw, 0.02, fill=LINE)
+def panel(x, w, title, years, hot=False):
+    rect(s, x, P_Y, w, P_H, fill=TINT if hot else WHITE, line=None if hot else LINE, line_w=0.75)
+    rect(s, x, P_Y, w, 0.05, fill=BLUE if hot else BLUE_T2)
+    tb(s, x + 0.26, P_Y + 0.16, w - 0.52, 0.28, [[(title, 13.5, True, BLUE), ("   " + years, 10.5, False, GRAY_2)]])
+    rect(s, x + 0.26, P_Y + 0.50, w - 0.52, 0.012, fill=LINE)
+
+
+# ===== 패널 1: 교훈 =====
+panel(C1X, C1W, "교훈 · 두 다운턴이 가르친 것", "2018~2023")
+ix, iw = C1X + 0.26, C1W - 0.52
+NUM_W, TXT_W, LINK_W = 1.32, 2.42, 0.30
+VIS_W = iw - NUM_W - TXT_W - LINK_W - 0.30
+ROW_H = (P_H - 0.66) / 3
+ry = P_Y + 0.60
+
+
+def vis_sense(x, y, w, h):
+    """규격·코드 레인이 발주·출하 레인보다 ≈2년 선행. 2026은 빈 원(규격 미정의)."""
+    lx, lw = x + 0.78, w - 0.78
+    px = lambda t: lx + lw * (t - 2022.3) / 4.9
+    top, bot = y + 0.26, y + h - 0.30
+    tb(s, x, top - 0.12, 0.76, 0.24, [("규격·코드", 9.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, x, bot - 0.12, 0.76, 0.24, [("발주·출하", 9.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+    rect(s, lx, top, lw, 0.016, fill=LINE)
+    rect(s, lx, bot, lw, 0.016, fill=LINE)
     d, o, e = px(2022.95), px(2024.5), px(2026.6)
     mid = (top + bot) / 2
-    rect(s, d - 0.008, top, 0.016, mid - 0.15 - top, fill=BLUE_T2)
-    rect(s, o - 0.008, mid + 0.15, 0.016, bot - (mid + 0.15), fill=BLUE_T2)
-    rect(s, d, mid - 0.15, o - d, 0.30, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-    tb(s, d, mid - 0.15, o - d - 0.10, 0.30, [("≈2년", 10.5, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    rect(s, d - 0.11, top - 0.11, 0.22, 0.22, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, d - 0.25, top - 0.42, 2.0, 0.24, [("2022-12 배치 표준 비준", 10, False, GRAY)])
-    rect(s, o - 0.11, bot - 0.11, 0.22, 0.22, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, o - 0.25, bot + 0.14, 2.0, 0.24, [("2024 비트 출하 30EB", 10, False, GRAY)])
-    rect(s, e - 0.11, top - 0.11, 0.22, 0.22, fill=WHITE, line=BLUE, line_w=1.75, shape=MSO_SHAPE.OVAL)
-    tb(s, e - 1.85, top + 0.16, 2.05, 0.44, [("2026 KV 캐시 관리자 코드", 10, True, BLUE), ("배치 규격 미정의 = 선점 구간", 10, True, BLUE)],
-       align=PP_ALIGN.RIGHT, spacing=1.0)
+    rect(s, d, mid - 0.11, o - d, 0.22, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+    tb(s, d, mid - 0.11, o - d - 0.08, 0.22, [("≈2년", 9.0, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    rect(s, d - 0.09, top - 0.09, 0.18, 0.18, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, d - 0.2, top - 0.32, 1.6, 0.2, [("'22-12 배치 표준 비준", 8.75, False, GRAY)])
+    rect(s, o - 0.09, bot - 0.09, 0.18, 0.18, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, o - 0.2, bot + 0.10, 1.6, 0.2, [("'24 비트 출하 30EB", 8.75, False, GRAY)])
+    rect(s, e - 0.09, top - 0.09, 0.18, 0.18, fill=WHITE, line=BLUE, line_w=1.5, shape=MSO_SHAPE.OVAL)
+    tb(s, e - 1.5, top + 0.10, 1.65, 0.36, [("'26 KV 캐시 규격 미정의", 8.75, True, BLUE), ("= 선점 구간", 8.75, True, BLUE)], align=PP_ALIGN.RIGHT, spacing=1.0)
 
 
-def lesson_visual_2(x, y, w, h):
-    """고객 협업: 61TB QLC 출시 시점 막대(OCP 2022-10 예고 기준) + HBM4 규격 공동 정의 아이콘."""
-    lab_w = 0.80
+def vis_collab(x, y, w, h):
+    """61TB 출시 시점 막대(OCP 2022-10 예고 기준) + HBM4 한 줄."""
+    lab_w = 0.7
     bx, bw = x + lab_w, w - lab_w
-    tb(s, x, y, w, 0.22, [("61TB QLC 출시 · OCP 2022-10 예고 기준", 10, False, GRAY_2)])
-    ry = y + 0.32
-    for who, months, hit, end in [("Solidigm", 9, True, "'23-07 규격 정의 참여"), ("삼성", 21, False, "'24-07 · 12개월 후발")]:
-        tb(s, x, ry, lab_w - 0.05, 0.34, [(who, 10.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, x, y, w, 0.2, [("61TB QLC 출시 · OCP '22-10 예고 기준", 8.75, False, GRAY_2)])
+    yy = y + 0.26
+    for who, months, hit, end in [("Solidigm", 9, True, "'23-07 · 규격 정의 참여"), ("삼성", 21, False, "'24-07 · 12개월 후발")]:
+        tb(s, x, yy, lab_w - 0.05, 0.26, [(who, 9.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
         bl = bw * months / 21.0
-        rect(s, bx, ry, bl, 0.34, fill=BLUE if hit else WHITE, line=None if hit else LINE, line_w=0.75)
+        rect(s, bx, yy, bl, 0.26, fill=BLUE if hit else WHITE, line=None if hit else LINE, line_w=0.75)
         if hit:
-            tb(s, bx + bl + 0.08, ry, bw - bl - 0.08, 0.34, [(end, 10, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+            tb(s, bx + bl + 0.08, yy, bw - bl - 0.08, 0.26, [(end, 8.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
         else:
-            tb(s, bx + 0.10, ry, bl - 0.20, 0.34, [(end, 10, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.RIGHT)
-        ry += 0.46
-    rect(s, x, ry + 0.08, w, 0.012, fill=LINE)
-    hy = ry + 0.20
-    tb(s, x, hy, w, 0.22, [("HBM4 규격 정의", 10, False, GRAY_2)])
-    iy = hy + 0.30
-    ph = min(0.52, y + h - iy - 0.02)
-    pw = person(s, bx, iy, ph, color=BLUE)
-    rect(s, bx + pw + 0.05, iy + ph * 0.45, 0.28, 0.05, fill=BLUE)
-    person(s, bx + pw + 0.38, iy, ph, color=BLUE)
-    tb(s, bx + 2 * pw + 0.50, iy - 0.04, bw - 2 * pw - 0.50, ph + 0.08,
-       [("SK hynix ↔ NVIDIA 공동 정의", 9.75, True, BLUE), ("→ 주도권 · 삼성은 후발 대응", 9.75, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+            tb(s, bx + 0.08, yy, bl - 0.16, 0.26, [(end, 8.75, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.RIGHT)
+        yy += 0.34
+    tb(s, x, yy + 0.02, w, 0.36, [[("HBM4  ", 8.75, True, INK), ("SK hynix ↔ NVIDIA 규격 공동 정의 → 주도권 · 삼성 후발", 8.75, False, GRAY)]], spacing=1.0)
 
 
-def lesson_visual_3(x, y, w, h):
-    """의사결정 시점: 직전 다운턴의 결정 → 다음 다운턴의 초기 조건. 3행째(현재의 결정)는 강조."""
-    c1w = (w - 0.40) / 2
-    c2x = x + c1w + 0.40
-    tb(s, x, y, c1w, 0.22, [("직전 다운턴의 결정", 10, False, GRAY_2)], align=PP_ALIGN.CENTER)
-    tb(s, c2x, y, c1w, 0.22, [("다음 다운턴의 초기 조건", 10, False, GRAY_2)], align=PP_ALIGN.CENTER)
-    rh = 0.42
-    ry = y + 0.34
-    for a, b, hot in [("DT19 무감산 성공", "DT23 국면 오판", False),
-                      ("DT19 HBM 조직 축소", "DT23 주도권 상실", False),
+def vis_timing(x, y, w, h):
+    """직전 다운턴의 결정 → 다음 다운턴의 초기 조건(3행, 마지막 행 강조)."""
+    cw_ = (w - 0.34) / 2
+    rh = 0.27
+    yy = y + 0.02
+    for a, b, hot in [("DT19 무감산 성공", "DT23 국면 오판", False), ("DT19 HBM 조직 축소", "DT23 주도권 상실", False),
                       ("2026 고객 시스템 진입", "2027H2 TCO 보증 수익", True)]:
-        rect(s, x, ry, c1w, rh, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
-        tb(s, x + 0.04, ry, c1w - 0.08, rh, [(a, 9.75, hot, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-        rect(s, x + c1w + 0.08, ry + 0.10, 0.24, 0.22, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-        rect(s, c2x, ry, c1w, rh, fill=BLUE if hot else TINT)
-        tb(s, c2x + 0.04, ry, c1w - 0.08, rh, [(b, 9.75, True, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-        ry += rh + 0.16
+        rect(s, x, yy, cw_, rh, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
+        tb(s, x + 0.03, yy, cw_ - 0.06, rh, [(a, 8.75, hot, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        rect(s, x + cw_ + 0.06, yy + 0.06, 0.22, 0.15, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+        rect(s, x + cw_ + 0.34, yy, cw_, rh, fill=BLUE if hot else TINT)
+        tb(s, x + cw_ + 0.37, yy, cw_ - 0.06, rh, [(b, 8.75, True, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        yy += rh + 0.09
 
 
-lessons = [
-    ("교훈 1 · 수요 센싱", "2년", "고객 규격·코드 신호가\n발주·출하에 선행", lesson_visual_1, 2, "규격은 호스트 계층에서 정의"),
-    ("교훈 2 · 고객 협업", "12개월", "규격 정의 참여 vs 후발의\n출시 시점 격차", lesson_visual_2, 3, "고객 시스템까지 3단계"),
-    ("교훈 3 · 의사결정 시점", "2027H2", "현재의 결정이 초기 조건이\n되는 차기 전환점", lesson_visual_3, 4, "FDE · 협약 · 조직"),
-]
-for i, (hd, num, cap, vis, nxt, link) in enumerate(lessons):
-    x = MX + i * (L_W + 0.30)
-    hot = i == 1
-    rect(s, x, L_Y, L_W, L_H, fill=TINT if hot else WHITE, line=None if hot else LINE, line_w=0.75)
-    if hot:
-        rect(s, x, L_Y, 0.08, L_H, fill=BLUE)
-    ix, iw = x + 0.30, L_W - 0.56
-    tb(s, ix, L_Y + 0.16, iw, 0.28, [(hd, 15, True, BLUE)])
-    tb(s, ix, L_Y + 0.48, 1.55, 0.52, [(num, 26, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, ix + 1.6, L_Y + 0.48, iw - 1.6, 0.52, [(ln, 10.5, False, GRAY) for ln in cap.split("\n")], anchor=MSO_ANCHOR.MIDDLE, spacing=1.02)
-    rect(s, ix, L_Y + 1.10, iw, 0.012, fill=LINE)
-    vis(ix, L_Y + 1.22, iw, L_H - 1.22 - 0.58)
-    rect(s, ix, L_Y + L_H - 0.50, iw, 0.012, fill=LINE)
-    ly_ = L_Y + L_H - 0.41
-    rect(s, ix, ly_ + 0.02, 0.26, 0.26, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, ix, ly_ + 0.02, 0.26, 0.26, [(str(nxt), 11, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, ix + 0.34, ly_, iw - 0.34, 0.30, [[(STORY[nxt - 1][1] + "  ", 11.25, True, BLUE), (link, 10.5, False, GRAY)]], anchor=MSO_ANCHOR.MIDDLE)
+lessons = [("2년", "수요 센싱", "고객 규격·코드 신호가 발주·출하에 약 2년 선행", "총량 지표는 다운턴을, 고객 규격은 차기 요구를 보였다", vis_sense, 2),
+           ("12개월", "고객 협업", "규격 정의에 참여한 공급자가 선점", "다운턴 극복의 결정 변수는 방어가 아니라 요구 적중", vis_collab, 3),
+           ("2027H2", "의사결정 시점", "직전 다운턴의 결정이 다음 다운턴의 초기 조건", "차기 전환점은 2027년 하반기 가격 정상화 국면", vis_timing, 4)]
+for i, (num, nm, l1, l2, vis, nxt) in enumerate(lessons):
+    if i:
+        rect(s, ix, ry - 0.05, iw, 0.012, fill=LINE)
+    tb(s, ix, ry, NUM_W, ROW_H - 0.1, [(num, 22, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, ix + NUM_W, ry + 0.06, TXT_W, ROW_H - 0.16,
+       [[("교훈 " + str(i + 1) + " · ", 10.5, False, GRAY_2), (nm, 11.25, True, INK)], (l1, 9.75, True, INK), (l2, 9.0, False, GRAY)],
+       anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
+    vis(ix + NUM_W + TXT_W + 0.15, ry + 0.10, VIS_W, ROW_H - 0.24)
+    lx_ = ix + iw - LINK_W
+    rect(s, lx_, ry + ROW_H / 2 - 0.18, 0.26, 0.26, fill=BLUE_T2, shape=MSO_SHAPE.OVAL)
+    tb(s, lx_, ry + ROW_H / 2 - 0.18, 0.26, 0.26, [(str(nxt), 10, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    ry += ROW_H
 
-# 문제 제기 패널 (구 3장 요구의 이동 압축)
-rect(s, PX, L_Y, P_W, L_H, fill=TINT)
-rect(s, PX, L_Y, 0.08, L_H, fill=BLUE)
-qx, qw = PX + 0.30, P_W - 0.52
-tb(s, qx, L_Y + 0.16, qw, 0.28, [("문제 제기 · 요구의 이동", 15, True, BLUE)])
-tb(s, qx, L_Y + 0.46, qw, 0.22, [("AI 수요가 구매 기준을 추론 캐시 계층으로 옮기고 있습니다", 10, False, GRAY)])
-ey = L_Y + 0.74
-eras = [("초기 '18~'23", "TB당 TCO: 원가 · 랙 밀도", "읽기 중심 · 0.3~0.6 DWPD로 충족 · 61TB", False),
-        ("현재 '24~'26", "TB당 TCO: 전력 · 공급 확보", "읽기 중심 유지 · 쓰기 계층은 TLC · 122~245TB", False),
-        ("향후 '27~'30", "GPU당 컨텍스트 용량 · 토큰당 비용", "KV 캐시 SSD 오프로드 · 쓰기 집약 → 1~3 DWPD", True)]
-for lab, l1, l2, hot in eras:
-    rect(s, qx, ey, qw, 0.56, fill=WHITE, line=BLUE if hot else LINE, line_w=1.25 if hot else 0.75)
-    tb(s, qx + 0.12, ey + 0.03, 1.15, 0.5, [(lab, 10, True, BLUE if hot else GRAY_2)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
-    tb(s, qx + 1.28, ey + 0.04, qw - 1.36, 0.26, [(l1, 11, True, INK)])
-    tb(s, qx + 1.28, ey + 0.29, qw - 1.36, 0.26, [(l2, 9.0, False, GRAY)])
-    ey += 0.62
-stats = [("10배", "QLC 비트\n'25 → '30"), ("350EB", "2030 추론 캐시\n계층 수요"), ("10~40배", "요구 1~3 vs QLC\n정격 0.075~0.6 DWPD")]
-sw = (qw - 0.2) / 3
-for i, (num, lab) in enumerate(stats):
-    sx = qx + i * (sw + 0.1)
-    tb(s, sx, ey + 0.02, sw, 0.36, [(num, 18, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, sx, ey + 0.38, sw, 0.36, [(ln, 8.75, False, GRAY) for ln in lab.split("\n")], spacing=1.0)
-ey += 0.78
-rect(s, qx, ey, qw, 0.012, fill=BLUE_T2)
-tb(s, qx, ey + 0.06, qw, 0.44, [("대용량 QLC로 1~3 DWPD를 충족할 해법이 필요합니다", 11.25, True, BLUE), ("정격 QLC 0.075~0.6 DWPD로는 격차 10~40배 → 2장 해법 사다리", 9.5, False, GRAY)], spacing=1.02)
-quote(s, qx, L_Y + L_H - 0.68, qw, 0.60,
+# ===== 패널 2: 지금 · 요구의 이동 =====
+panel(C2X, C2W, "지금 · 요구의 이동", "2024~2026")
+ix2, iw2 = C2X + 0.26, C2W - 0.52
+FROM_W, TO_W = 1.30, iw2 - 1.30 - 0.34
+shifts = [("구매 기준", "TB당 TCO", "원가 · 전력 · 밀도", "GPU당 컨텍스트 용량 · 토큰당 비용", "추론 캐시 계층"),
+          ("드라이브 용량", "61TB", "2023 · 1Tb 다이", "245TB", "2025 · 다이 8배 ↑"),
+          ("요구 DWPD", "0.3~0.6", "읽기 중심 워크로드", "1~3", "KV 캐시 쓰기 집약 · 현재 TLC 담당")]
+sy = P_Y + 0.62
+SH = (P_H - 0.62 - 0.62) / 3
+for lab, f1, f2, t1, t2 in shifts:
+    tb(s, ix2, sy, iw2, 0.2, [(lab, 9.5, False, GRAY_2)])
+    cy = sy + 0.24
+    ch = SH - 0.40
+    rect(s, ix2, cy, FROM_W, ch, fill=WHITE, line=LINE, line_w=0.75)
+    tb(s, ix2 + 0.08, cy + 0.05, FROM_W - 0.16, ch - 0.1, [(f1, 11.25, True, GRAY), (f2, 8.5, False, GRAY_2)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+    rect(s, ix2 + FROM_W + 0.06, cy + ch / 2 - 0.09, 0.22, 0.18, fill=BLUE, shape=MSO_SHAPE.RIGHT_ARROW)
+    rect(s, ix2 + FROM_W + 0.34, cy, TO_W, ch, fill=TINT, line=BLUE, line_w=1.0)
+    tb(s, ix2 + FROM_W + 0.42, cy + 0.05, TO_W - 0.16, ch - 0.1, [(t1, 11.25, True, BLUE), (t2, 8.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+    sy += SH
+tb(s, ix2, P_Y + P_H - 0.56, iw2, 0.46,
+   [("세 국면의 구매 기준은 일관되게 TB당 TCO였고, 바뀐 것은 워크로드의 쓰기 비중과 드라이브당 용량입니다", 9.0, False, GRAY)], spacing=1.02)
+
+# ===== 패널 3: 문제 · 해법이 필요한 상황 =====
+panel(C3X, C3W, "문제 · 해법이 필요한 상황", "2027~2030", hot=True)
+ix3, iw3 = C3X + 0.26, C3W - 0.52
+tb(s, ix3, P_Y + 0.60, iw3, 0.2, [("요구 1~3 DWPD vs 고용량 QLC 정격 0.075~0.6 DWPD", 9.5, False, GRAY_2)])
+tb(s, ix3, P_Y + 0.80, iw3, 0.62, [("10~40배 격차", 30, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+half = (iw3 - 0.2) / 2
+for k, (num, lab) in enumerate([("10배", "QLC 비트 '25 → '30 (e)"), ("350EB", "2030 추론 캐시 계층 수요 (e)")]):
+    hx = ix3 + k * (half + 0.2)
+    tb(s, hx, P_Y + 1.50, half, 0.42, [(num, 20, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, hx, P_Y + 1.92, half, 0.22, [(lab, 8.75, False, GRAY)])
+rect(s, ix3, P_Y + 2.30, iw3, 0.94, fill=WHITE, line=BLUE, line_w=1.25)
+tb(s, ix3 + 0.16, P_Y + 2.36, iw3 - 0.32, 0.82,
+   [("고용량 QLC에서 DWPD를 높일 해법이 필요합니다", 12.75, True, BLUE),
+    ("어느 계층이 해결할 수 있는가 → 2장 해법 사다리", 9.75, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
+quote(s, ix3, P_Y + P_H - 0.92, iw3, 0.78,
       "부품이 어떻게 쓰일지는 시스템을 설계하는 사람 마음에 있다. 그걸 알았으면 HBM을 진작 준비했을 것이다",
-      "송용호 AX/PI센터장 · 사내 인터뷰 2026-09-03", size=9.25)
+      "송용호 AX/PI센터장 · 사내 인터뷰 2026-09-03", size=9.5)
 
-band(s, 9.42, 0.80, "결론",
-     "요구는 다운턴 국면에서 고객 규격·코드로 정의됐고, 정의에 참여한 공급자가 선점했습니다.\n차기 요구는 추론 캐시 계층의 대용량·1~3 DWPD이며, QLC 정격 0.075~0.6으로는 충족되지 않습니다",
+band(s, 9.42, 0.80, "문제",
+     "요구는 다운턴 국면에서 고객 규격·코드로 정의됐고, 정의에 참여한 공급자가 선점했습니다.\n차기 요구는 고용량 QLC의 1~3 DWPD이며, 정격 0.075~0.6 DWPD와는 10~40배 격차가 있습니다",
      main_size=16.5, next_step=2)
-footer(s, "출처: 위키 다운턴 역사 20년(DT19·DT23 낙폭), fdp-host-ssd-platform §2.5(Solidigm 61TB), QLC 연혁 소스(배치 표준 비준·30EB), GitHub README(캐시 관리자 4종), TrendForce·SanDisk FMS 2026·Meta(수요 모델, 2026~2030 추정), StorageReview(DWPD)", 1)
-notes(s, "1장은 문제 제기입니다. 두 다운턴의 교훈에서 출발해 지금의 요구가 어디로 이동했는지, 왜 해법이 필요한지를 보입니다. 상단 타임라인은 DT19(재고 조정 국면, 매출 낙폭 -37.6%)와 DT23(최대 낙폭 -45%, 진앙 eSSD) 두 다운턴 구간과 QLC eSSD 연혁을 동일 시간축에 배치한 것입니다. "
-      "교훈 1, 수요 센싱: 수요 신호는 발주보다 약 2년 선행하여 고객의 규격·표준·소스 코드에 나타납니다. DT23 국면인 4Q22에 eSSD 매출이 27% 감소하는 동안 Meta·Google은 데이터 배치 표준을 비준했고, 비트 출하는 2년 뒤인 2024년에 30EB로 급증했습니다. 현재의 등가 신호는 KV 캐시 관리자 4종의 코드에 배치·내구성 규격이 미정의라는 사실이며, 규격 정의 주체가 선점 가능한 구간입니다. 교훈 2, 고객 협업: 규격 정의에 참여한 공급자가 적중했습니다. Solidigm은 61TB QLC를 삼성보다 12개월 먼저 출시했고, HBM4는 NVIDIA와 규격을 공동 정의한 SK hynix가 주도권을 확보했습니다. 교훈 3, 의사결정 시점: 직전 다운턴의 결정이 다음 다운턴의 초기 조건이 됩니다. DT19의 무감산 성공 경험이 DT23 국면 오판으로, DT19의 HBM 조직 축소가 DT23 회복기 주도권 상실로 이어졌습니다. 차기 전환점은 2027년 하반기 가격 정상화 국면입니다. "
-      "우측 문제 제기 패널은 요구의 이동입니다. 세 국면의 구매 기준은 일관되게 용량 계층의 TB당 TCO였고(초기 원가·랙 밀도, 현재 전력·공급 확보), 향후 국면의 기준은 GPU당 컨텍스트 용량과 토큰당 비용입니다. 바뀐 것은 워크로드의 쓰기 비중입니다. 초기 국면은 읽기 중심이라 0.3~0.6 DWPD로 충족됐지만, KV 캐시 SSD 오프로드가 만드는 추론 캐시 계층은 쓰기 집약적이어서 현재 TLC 1~3 DWPD가 담당합니다. 용량은 61TB에서 122~245TB로 커졌습니다. 수요 모델은 QLC 비트가 2025년 대비 2030년 10배, 2030년 추론 캐시 계층 수요는 350EB이며, 요구 1~3 DWPD와 QLC 정격 0.075~0.6 DWPD 사이에는 10~40배 격차가 있습니다. 결론: 대용량 QLC로 1~3 DWPD를 충족할 해법이 필요합니다. 송용호 AX/PI센터장의 인용은 그 해법이 고객 시스템 안에서 나와야 하는 이유입니다. 지금까지 이런 문제를 어느 계층이 풀어 왔는지가 2장입니다. 근거는 위키 qlc-ssd-market.md §3.4·§3.5, 수요 모델은 §4.3.")
+footer(s, "출처: 위키 다운턴 역사 20년(DT19·DT23 낙폭), fdp-host-ssd-platform §2.5(Solidigm 61TB), QLC 연혁 소스(배치 표준 비준·30EB), GitHub README(캐시 관리자 4종), TrendForce·SanDisk FMS 2026·Meta(수요 모델, 2026~2030 추정), Kioxia LC9(245TB), StorageReview(DWPD)", 1)
+notes(s, "1장은 문제 제기입니다. 결론은 내리지 않고, 고용량 QLC에서 DWPD를 높일 해법이 필요한 상황임을 세웁니다. 상단 타임라인의 세 구간이 아래 세 패널과 정렬돼 있습니다. 과거의 교훈, 지금 요구의 이동, 그리고 해법이 필요한 문제입니다. "
+      "왼쪽 패널, 교훈. DT19(재고 조정, -37.6%)와 DT23(최대 낙폭 -45%, 진앙 eSSD)에서 세 가지를 배웠습니다. 교훈 1 수요 센싱: 수요 신호는 발주보다 약 2년 먼저 고객의 규격·표준·소스 코드에 나타납니다. 2022년 12월 데이터 배치 표준 비준이 2024년 비트 출하 30EB로 이어졌고, 지금의 등가 신호는 KV 캐시 관리자 코드에 배치·내구성 규격이 미정의라는 사실입니다. 교훈 2 고객 협업: 규격 정의에 참여한 공급자가 선점했습니다. Solidigm은 61TB QLC를 12개월 먼저 출시했고, HBM4는 NVIDIA와 규격을 공동 정의한 SK hynix가 주도권을 확보했습니다. 교훈 3 의사결정 시점: 직전 다운턴의 결정이 다음 다운턴의 초기 조건입니다. DT19의 무감산 성공이 DT23 국면 오판으로, HBM 조직 축소가 주도권 상실로 이어졌고, 차기 전환점은 2027년 하반기 가격 정상화 국면입니다. 각 교훈 끝의 번호는 이 덱에서 그 교훈을 받는 장입니다. "
+      "가운데 패널, 지금 요구의 이동. 구매 기준은 TB당 TCO(원가·전력·밀도)에서 GPU당 컨텍스트 용량·토큰당 비용으로, 드라이브 용량은 61TB(2023)에서 245TB(2025, 다이 8배)로, 요구 DWPD는 읽기 중심 0.3~0.6에서 KV 캐시 쓰기 집약 1~3으로 이동했습니다. 세 국면의 구매 기준은 일관되게 TB당 TCO였고, 바뀐 것은 쓰기 비중과 용량입니다. "
+      "오른쪽 패널, 문제. 요구 1~3 DWPD와 고용량 QLC 정격 0.075~0.6 DWPD 사이에는 10~40배 격차가 있습니다. 수요 모델은 QLC 비트 2025년 대비 2030년 10배, 2030년 추론 캐시 계층 수요 350EB입니다. 그래서 고용량 QLC에서 DWPD를 높일 해법이 필요합니다. 어느 계층이 해결할 수 있는가가 2장의 질문입니다. 송용호 AX/PI센터장의 인용은 그 답이 고객 시스템의 이해에서 나와야 함을 시사합니다. 근거는 위키 qlc-ssd-market.md §3.4·§3.5, 수요 모델은 §4.3.")
 
 # ================================================================ S2. 해법 사다리 — 이관 매트릭스 (solution_ladder_slide.build 공용; v4.0 2장)
 import sys as _sys
