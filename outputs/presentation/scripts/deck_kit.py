@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """deck_kit — QLC 덱(generate_qlc_ssd_strategy_pptx.py)의 디자인 토큰·도형 헬퍼를 다른 1장 덱에서 재사용하기 위한 사본.
 원본 스크립트는 실행 시 덱을 생성하므로 import할 수 없어, 헬퍼 구간(토큰 ~ v_arrow, 슬라이드 생성 전)을 그대로 복사했다.
-원본 헬퍼가 바뀌면 이 파일을 다시 추출한다: 원본의 `import os` ~ `# ==== S1` 마커 직전까지 (v3.10: header는 kicker 문자열/정수 겸용, band는 next_step, band_chain 추가).
+원본 헬퍼가 바뀌면 이 파일을 다시 추출한다: 원본의 `import os` ~ `# ==== S1` 마커 직전까지 (v5.1: STORY 6장 순서 문제→신뢰성→해법 사다리→역량→실행→보증·SLA, MSO_LINE_DASH_STYLE import).
 사용: import deck_kit as K ; K.TOTAL = 1 ; s = K.prs.slides.add_slide(K.BLANK) ; K.header(...) ; K.prs.save(path)
 """
 import os
@@ -97,7 +97,7 @@ def rect(slide, x, y, w, h, fill=None, line=None, line_w=0.75, shape=MSO_SHAPE.R
     return sp
 
 
-STORY = [("1", "문제", "왜 지금 필요한가"), ("2", "해법 사다리", "왜 호스트 협력인가"), ("3", "신뢰성", "SSD가 풀 문제"),
+STORY = [("1", "문제", "왜 지금 필요한가"), ("2", "신뢰성", "SSD 내부 해법"), ("3", "해법 사다리", "왜 호스트인가"),
          ("4", "역량", "어떻게 해소하는가"), ("5", "실행", "누구와 어디서"), ("6", "보증 · SLA", "무엇을 보증하나")]
 
 
@@ -274,3 +274,5 @@ def person(slide, x, y, h, color=BLUE):
 
 def v_arrow(slide, x, y, w, h, up=False, fill=BLUE):
     return rect(slide, x, y, w, h, fill=fill, shape=MSO_SHAPE.UP_ARROW if up else MSO_SHAPE.DOWN_ARROW)
+
+

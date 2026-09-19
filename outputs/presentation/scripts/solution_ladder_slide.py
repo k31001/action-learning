@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""해법 사다리 슬라이드 v2.0 — 이관 매트릭스(zero-base 재설계, 2026-09-18) — 공용 빌더.
+"""해법 사다리 슬라이드 v2.2 — 이관 매트릭스(zero-base 재설계, 2026-09-18) — 공용 빌더.
 
-두 덱이 같은 코드를 쓴다: (1) 단독 1장 덱 generate_solution_ladder_pptx.py, (2) QLC eSSD 전략 덱 1장(generate_qlc_ssd_strategy_pptx.py).
-build(ns, page_no, kicker, next_step): ns = 헬퍼 네임스페이스(deck_kit 또는 QLC 스크립트 모듈) — prs·BLANK·header·tb·rect·band·footer·notes·토큰 제공.
+두 덱이 같은 코드를 쓴다: (1) 단독 1장 덱 generate_solution_ladder_pptx.py, (2) QLC eSSD 전략 덱 3장(generate_qlc_ssd_strategy_pptx.py, v5.1).
+build(ns, page_no, kicker, next_step, lead, band_main, notes_tail): ns = 헬퍼 네임스페이스(deck_kit 또는 QLC 스크립트 모듈) — prs·BLANK·header·tb·rect·band·footer·notes·토큰 제공.
   kicker: 킥커 문자열 또는 정수(QLC 덱 스토리 레일의 현재 장 번호) / next_step: 결론 밴드 우측 '다음 장' 포인터
+  lead·band_main·notes_tail: 덱 문맥에 맞는 리드·결론 밴드·노트 꼬리 덮어쓰기(None이면 단독 덱 기본 문안, v2.2)
 
 레이아웃(이관 매트릭스): 페이지 구조 자체가 논지("요구 고정 · 단품 악화 · 보상은 상위 계층으로 이관")가 되도록
   열 = 이관 단계: 요구(고객·고정) → 단품 지표(셀·다이·악화) → SSD 계층의 보상(1단계 ECC 완결 · 2단계 단독 최적화 부분 성공)
@@ -21,7 +22,7 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.util import Inches
 
 
-def build(ns, page_no=1, kicker="메모리 해법 사다리 · 이관 매트릭스", next_step=None):
+def build(ns, page_no=1, kicker="메모리 해법 사다리 · 이관 매트릭스", next_step=None, lead=None, band_main=None, notes_tail=None):
     prs, BLANK = ns.prs, ns.BLANK
     header, tb, rect, band, footer, notes = ns.header, ns.tb, ns.rect, ns.band, ns.footer, ns.notes
     BLUE, BLUE_T1, BLUE_T2, INK, GRAY, GRAY_2, LINE, TINT, WHITE = (ns.BLUE, ns.BLUE_T1, ns.BLUE_T2, ns.INK, ns.GRAY,
@@ -43,7 +44,7 @@ def build(ns, page_no=1, kicker="메모리 해법 사다리 · 이관 매트릭�
     s = prs.slides.add_slide(BLANK)
     header(s, kicker,
            "요구는 고정, 단품은 악화, 보상은 상위 계층으로: 남은 지렛대 WAF는 호스트에 있습니다",
-           "1장의 격차를 지금까지 어느 계층이 풀어 왔는지 보면, SSD 단독 최적화는 QoS·성능은 개선했으나 WAF는 낮추지 못했습니다.")
+           lead or "고용량 QLC의 DWPD 격차를 지금까지 어느 계층이 풀어 왔는지 보면, SSD 단독 최적화는 QoS·성능은 개선했으나 WAF는 낮추지 못했습니다.")
 
     # ---- 그리드 ----
     LBL_W, GAP, AR_W = 1.30, 0.14, 0.30
@@ -187,12 +188,12 @@ def build(ns, page_no=1, kicker="메모리 해법 사다리 · 이관 매트릭�
        [("호스트 배치 하나로는 격차(동급 비교 2~10배)가 닫히지 않습니다. WAF ×2.9는 다이 세대·OP·보증연수·워크로드 재정의와 결합해 요구에 도달하며, 이 중 호스트·고객 쪽 지렛대가 다수라는 점이 공동 설계의 근거입니다", 9.0, False, GRAY)], spacing=1.02)
 
     band(s, 9.42, 0.80, "결론",
-         "요구(UBER·DWPD)는 고정, 단품 지표(RBER·P/E)는 악화, 격차는 상위 계층이 보상해 왔습니다.\n"
-         "호스트 공동 설계는 QLC DWPD의 남은 지렛대이며, 다이 세대·OP·보증연수 등 병행 중인 축과 결합해 격차를 닫습니다",
+         band_main or ("요구(UBER·DWPD)는 고정, 단품 지표(RBER·P/E)는 악화, 격차는 상위 계층이 보상해 왔습니다.\n"
+                       "호스트 공동 설계는 QLC DWPD의 남은 지렛대이며, 다이 세대·OP·보증연수 등 병행 중인 축과 결합해 격차를 닫습니다"),
          main_size=16.5, next_step=next_step)
     footer(s, "출처: JESD218(UBER), ATP·Kioxia(DWPD 산식), Intel·Solidigm 사양(정격 DWPD), Mielke·Cai(RBER), WD(LDPC), CacheLib·삼성·NVMe FDP·VLDB'26(WAF), P5336·6550 ION·CM9·LC9(동급 DWPD) · 등급은 부록 A F28~F54", page_no)
-    notes(s, "2장은 이관 매트릭스입니다. 1장의 문제(고용량 QLC의 DWPD 격차)를 받아, 지금까지 단품이 못 푼 문제를 어느 계층이 풀어 왔는지의 경향을 보이고 호스트 시스템 수준 해법이 왜 필요한지를 세웁니다. 열은 이관 단계(요구 → 단품 지표 → SSD 계층의 보상 → 호스트·시스템 계층의 보상), 행은 내구성 축입니다. 산식 DWPD = P/E × (1+OP) ÷ WAF ÷ 365 × 년의 각 항은 결정 주체가 열과 대응합니다. "
+    notes(s, f"{page_no}장은 이관 매트릭스입니다. 고용량 QLC의 DWPD 격차를 받아, 지금까지 단품이 못 푼 문제를 어느 계층이 풀어 왔는지의 경향을 보이고 호스트 시스템 수준 해법이 왜 필요한지를 세웁니다. 열은 이관 단계(요구 → 단품 지표 → SSD 계층의 보상 → 호스트·시스템 계층의 보상), 행은 내구성 축입니다. 산식 DWPD = P/E × (1+OP) ÷ WAF ÷ 365 × 년의 각 항은 결정 주체가 열과 대응합니다. "
           "요구: 추론 캐시 계층 제품은 DWPD 1~3(TLC), UBER는 JESD218 기준으로 고정입니다. 단품: P/E 사이클은 SLC 30K~100K에서 QLC 100~1K로 100배 감소, RBER은 약 백만 배 상승했고 셀은 시간에 따라 변하는 산포를 단독으로 보정하지 못합니다. SSD 계층: 1단계 컨트롤러 ECC(1비트/512B → LDPC 120비트/KB, 60배)는 UBER 요구를 충족해 완결됐습니다. 2단계 SSD 단독 워크로드 최적화(2014~2019: Multi-stream·AutoStream·FTL 핫/콜드 추정·NVMe IO 결정성)는 QoS·성능은 개선했으나 데이터 수명을 SSD가 감지할 수 없어 실 워크로드 WAF는 3 수준에 머물렀고, 정격 DWPD는 17에서 0.4로 내려왔습니다. 호스트·시스템 계층: 3단계 호스트 공동 설계는 호스트가 데이터 수명을 지정해 WAF를 약 3에서 약 1로 낮춥니다. 범용 랜덤 워크로드 실측(삼성·NVM Express, 50% 사용률)과 CacheLib 실측(3.22 → 1.03)이 근거이고, 데이터베이스 영역에서는 호스트 쓰기 패턴만으로 SSD WAF 1을 보장한 VLDB 2026 연구가 있습니다. 다만 KV 캐시 워크로드의 FDP WAF 실측은 공개 문헌에 없으므로 이 장의 주장은 검증할 가설이며, 4장 Phase 2 실측이 그 검증입니다. "
-          "하단 지렛대 스트립이 이 장의 핵심 정정입니다. 호스트 배치 하나로는 격차가 닫히지 않습니다. WAF 지렛대는 유효 DWPD 약 2.9배이고, 동급 비교 격차는 2~10배이므로 다이 세대(P/E), OP, SLC 캐시·쓰기 정형, 보증연수·TBW 기준, 워크로드 재정의(어드미션·TLC 혼합 계층)와 결합해야 요구에 도달합니다. 이 축들은 모두 병행 중이며 본 보고는 호스트 축만 다룹니다. 호스트·고객 쪽 지렛대가 다수라는 점이 공동 설계의 근거입니다. 결론: 호스트 공동 설계는 QLC DWPD의 남은 지렛대이며, 다른 축과 결합해 격차를 닫습니다. 신뢰성 축(다이 수·고장률)은 호스트가 아니라 SSD가 풀 문제라 3장에서 따로 다룹니다. 근거 등급은 보고서 부록 A F28~F54에 있습니다.")
+          "하단 지렛대 스트립이 이 장의 핵심 정정입니다. 호스트 배치 하나로는 격차가 닫히지 않습니다. WAF 지렛대는 유효 DWPD 약 2.9배이고, 동급 비교 격차는 2~10배이므로 다이 세대(P/E), OP, SLC 캐시·쓰기 정형, 보증연수·TBW 기준, 워크로드 재정의(어드미션·TLC 혼합 계층)와 결합해야 요구에 도달합니다. 이 축들은 모두 병행 중이며 본 보고는 호스트 축만 다룹니다. 호스트·고객 쪽 지렛대가 다수라는 점이 공동 설계의 근거입니다. 결론: 호스트 공동 설계는 QLC DWPD의 남은 지렛대이며, 다른 축과 결합해 격차를 닫습니다. " + (notes_tail or "신뢰성 축(다이 수·고장률)은 호스트가 아니라 SSD가 풀 문제라 별도로 다룹니다.") + " 근거 등급은 보고서 부록 A F28~F54에 있습니다.")
 
     return s

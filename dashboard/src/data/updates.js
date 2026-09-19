@@ -17,6 +17,24 @@ export const UPDATES = [
   // ── 2026-09-19 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-19',
+    type: 'build',
+    version: 'v2.46.32',
+    title: 'QLC 덱 v5.1 — 2장 ↔ 3장 순서 교체: 신뢰성은 SSD 안에서 닫히고, DWPD는 SSD 밖 호스트 → 고객 협업·새 역량',
+    summary:
+      '스파인을 ① 문제 → ② 신뢰성 → ③ 해법 사다리 → ④ 역량 → ⑤ 실행 → ⑥ 보증·SLA로 재편. 1장 문제 카드가 고용량화의 두 축(다이 8배 → 신뢰성, DWPD 격차 → 내구성)을 세우고, 2장은 "이 축은 SSD 내부에서 닫히지만 둘째 축 DWPD는 닫히지 않았다"로 3장에 넘기며, ' +
+      '3장은 "신뢰성과 달리 DWPD 격차는 SSD 안에서 닫히지 않았다 → 남은 지렛대 WAF는 SSD 밖 호스트에 → 고객 협업과 새로운 역량"으로 4장에 연결. 공용 사다리 빌더 v2.2(lead·band_main·notes_tail 오버라이드). 수치·근거 변경 없음. 패치 v2.46.32.',
+    tags: ['QLC', '덱', '해법 사다리', '신뢰성', 'DWPD'],
+    items: [
+      { label: '덱 v5.1(6장)', detail: '① 문제(두 축) → ② 신뢰성(SSD 내부 해법) → ③ 해법 사다리(왜 호스트인가) → ④ 역량 → ⑤ 실행 → ⑥ 보증·SLA' },
+      { label: '연결 문안', detail: '2장 결론 "둘째 축 DWPD는 SSD 안에서 닫히지 않았습니다" → 3장 리드 "신뢰성과 달리 DWPD 격차는 SSD 안에서 닫히지 않았습니다" → 3장 결론 "고객 협업과 새로운 역량을 요구합니다"' },
+    ],
+    links: [
+      { label: '기획서 v5.1', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+      { label: '보고서 PPT 압축 맵', href: 'outputs/report/qlc-ssd-strategy-report.md' },
+    ],
+  },
+  {
+    date: '2026-09-19',
     type: 'ingest',
     version: 'v2.46.31',
     title: 'QLC 덱 v5.0 — 비판적 리뷰 반영: 6장 재구성, "유일한 경로" 철회·동급 비교, 신뢰성·보증 슬라이드 신설',
