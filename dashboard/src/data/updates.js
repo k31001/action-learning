@@ -18,6 +18,24 @@ export const UPDATES = [
   {
     date: '2026-09-19',
     type: 'build',
+    version: 'v2.46.34',
+    title: 'QLC eSSD 전략 보고서 v2.0 — 덱 v5.2와 같은 6장 순서·제목으로 본문 재구성',
+    summary:
+      'v1.0(브리프 답변 구조)을 덱 논리로 다시 썼다: 1 문제(동급 비교 2~10배 · 고용량화의 두 축) → 2 신뢰성(SSD 내부 설계로 충족) → 3 내구성(2단계 부분 성공 WAF ≈3 · 잔여 변수 WAF는 호스트 · KV 캐시 미실측 가설 · 격차 축소 변수) → 4 역량(현 위치 Phase 1 진행 중) → 5 실행(FDE 선별 · 개발실 내부 범위 · 통과 조건 · 판돈·비용) → 6 보증·SLA(조건부 보증 원칙 5) → 7 수요·매출 모델. ' +
+      '자회사·별도 보상·지분·볼드 안은 부록 D(위키 유지)로 이동, 부록 A에 F41~F54 근거 A-33~A-49 추가. 덱 3장 DWPD 셀 라벨 10~40배 → 2~10배 정합. 패치 v2.46.34.',
+    tags: ['QLC', '보고서', '덱', '해법 사다리', '신뢰성', 'SLA'],
+    items: [
+      { label: '보고서 v2.0', detail: '0 Executive Summary(제목 문단) · 1~6장 = 덱 순서 · 7장 모델 · 부록 A~E · PPT 압축 맵' },
+      { label: '범위', detail: '개발실 내부 실행(FDE 선별·업스트림·규격·조직·인사·문화)만 본문, 큰 의사결정 옵션은 부록 D' },
+    ],
+    links: [
+      { label: '보고서 v2.0', href: 'outputs/report/qlc-ssd-strategy-report.md' },
+      { label: '기획서 v5.2', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+    ],
+  },
+  {
+    date: '2026-09-19',
+    type: 'build',
     version: 'v2.46.33',
     title: 'QLC 덱 v5.2 — 제목 6개를 이어 읽으면 한 문단: 비유 표현 제거, 기술 용어로 통일',
     summary:

@@ -113,7 +113,7 @@ def cell_dwpd():
     ax.text(2008, 24, "17", fontsize=7.0, color=INK, ha="center", va="bottom")
     ax.text(2021.4, 0.2, "0.41", fontsize=7.0, color=INK, ha="center", va="top")
     ax.annotate("", xy=(2023.9, 0.3), xytext=(2023.9, 3), arrowprops=dict(arrowstyle="<->", color=GRAY_2, lw=1.0))
-    ax.text(2023.0, 0.9, "10~40배", fontsize=7.5, color=INK, fontweight="bold", ha="right", va="center")
+    ax.text(2023.0, 0.9, "2~10배", fontsize=7.5, color=INK, fontweight="bold", ha="right", va="center")
     ax.set_yticks([0.1, 1, 10]); ax.set_yticklabels(["0.1", "1", "10"])
     ax.tick_params(axis="y", which="minor", left=False)
     ax.set_xticks([2008, 2014, 2020, 2026])
