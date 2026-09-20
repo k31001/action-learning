@@ -16,6 +16,7 @@ node_modules/
 !outputs/presentation/future-plan.pptx
 !outputs/presentation/qlc-ssd-strategy.pptx
 !outputs/presentation/memory-solution-ladder.pptx
+!outputs/presentation/qlc-ssd-strategy-visual.pptx
 !dashboard/public/downloads/*.pptx
 !working-style/seminar-claude-code-report/seminar-claude-code*.pptx
 !slides/seminar/*.pptx

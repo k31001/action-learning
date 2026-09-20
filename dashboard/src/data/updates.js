@@ -14,6 +14,24 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-20 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-09-20',
+    type: 'build',
+    version: 'v2.46.35',
+    title: 'QLC 덱 시각화 강화판 v1.0 — 별도 PPT 7장, 텍스트 47%, 히어로 그림 7종(SVG/PNG)',
+    summary:
+      '덱 v5.2의 제목 문단·수치를 그대로 두고 장당 히어로 그림 1장(SVG → Chromium 3배 PNG)으로 본문을 대체한 별도 덱. 요약 스토리 맵(두 트랙 분기) + 문제·신뢰성·해법 사다리·역량·실행·보증 그림 6종. ' +
+      '텍스트는 원본 9,474자(pptx + 차트 라벨) 대비 4,458자(47%). 발표자 노트에 원본 설명 압축. 패치 v2.46.35.',
+    tags: ['QLC', '덱', '시각화', 'SVG'],
+    items: [
+      { label: '덱', detail: 'outputs/presentation/qlc-ssd-strategy-visual.pptx (7장) · 생성기 generate_qlc_ssd_strategy_visual_pptx.py' },
+      { label: '그림', detail: 'assets/visual/qlc_vis_s0~s6 (svg+png) · generate_qlc_visual_figures.py: 스토리 맵 / 타임라인·격차·두 축 / 다이 픽토그램·SSD 메커니즘 / 3단 계단·산식 / Phase·5계층 / 고객 선별 맵 / 유효 DWPD 곡선·5원칙' },
+    ],
+    links: [
+      { label: '기획서 시각화 강화판 절', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+    ],
+  },
   // ── 2026-09-19 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-19',
