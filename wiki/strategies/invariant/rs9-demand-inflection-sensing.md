@@ -17,6 +17,23 @@ sources: [wiki/concepts/demand-inflection-ewi.md, wiki/concepts/ai-datacenter-bu
 - AI 데이터센터 건설은 메모리 수요의 **6~24개월 선행 신호**이며, 하락 변곡은 인과 사슬(수요 청산가→돈→발주→착공→메모리)을 따라 전파된다 ([demand-inflection-ewi.md](../../concepts/demand-inflection-ewi.md), [ai-datacenter-buildout.md](../../concepts/ai-datacenter-buildout.md)).
 - 단일 지표는 노이즈·오인 위험(예: CRWV 주가는 GPU 임대가가 아닌 지분 가치 추종)이 크므로 **앙상블 + 괴리(선행−끈적)** 로 본다.
 
+## 1-A. 제품 수요 신호의 판별 기준 (2026-09-22 추가 — 표준 비준은 신호가 아니다)
+
+거시 변곡(위)과 별개로, **제품 단위의 요구 변화**를 조기에 읽는 규칙을 다음과 같이 정정한다. 종전 명제 "고객 규격·코드 신호가 발주·출하에 약 2년 선행한다"는 반례가 있다.
+
+| 사례 | 비준 | 구매자 프로덕션 코드 | 물량 |
+|---|---|---|---|
+| **NVMe FDP** (TP4146) | 2022-11-30 | Meta CacheLib 머지 **2024-01-25**(+14개월), Linux 6.16 write streams **2025-05-26**(+30개월, 커밋 작성자 Meta·시리즈 제출 삼성) | 진행 중 |
+| **NVMe ZNS** (TP4053) | 2020-06 · 같은 달 커널 패치 | **없음** — 프로덕션 채택 0 | **6년째 물량 없음** |
+
+두 사례의 차이는 비준 여부가 아니라 **구매자가 자기 프로덕션 코드에 넣었는가**다. 따라서 판별 기준을 이렇게 쓴다.
+
+- ❌ "표준이 비준됐다" → 신호 아님 (ZNS 반례)
+- ✅ **"구매자의 조달 규격(OCP Datacenter NVMe SSD 사양, 연 1회 개정)에 들어갔다"**
+- ✅ **"구매자의 프로덕션 코드에 머지됐다"**(Meta CacheLib, Meta 소속 커널 메인테이너의 패치 등)
+
+2026년 현재의 등가 신호는 **LLM KV 캐시 스택(vLLM 커넥터 API·LMCache·NVIDIA Dynamo KVBM·NIXL)에 스토리지 백엔드가 머지되고 있다**는 사실이다. Weka는 2025-05-28 LMCache에 GDS 백엔드를 직접 기고했다. 근거: [qlc-v6-standards-lessons-factcheck-2026-09.md](../../../sources/articles/qlc-v6-standards-lessons-factcheck-2026-09.md)
+
 ## 2. 근거 데이터 (Evidence)
 - **추적 파이프라인** 55.9GW·17개국, 2026 가동 ~23.7GW — 메모리 수요 가시성 ([ai-datacenter-buildout.md](../../concepts/ai-datacenter-buildout.md)).
 - **수요 변곡 EWI**(2026-06): 복합 43(주의) / 선행 33·끈적 29·**공급 과잉 68(경계)**·**SCM 56(경계 근접)** / 괴리 +4. 실측 피드 — GPU 임대가 바스켓 ~$3.3(둔화)·신용 스프레드 −60bps·MU 슈퍼사이클 +7.6×.

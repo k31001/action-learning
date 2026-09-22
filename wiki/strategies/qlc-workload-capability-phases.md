@@ -40,7 +40,7 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 
 | 역량 | 추론 캐시 티어 기준 | 근거 |
 |---|---|---|
-| RUH 확장 펌웨어 | 현행 업계 2~8개 → **200+**(세션·테넌트·prefix·수명 등급 분리) | ScaleFlux 200+ 스트림·유효 7~10+ DWPD ([qlc-essd-timeline-fdp-ruh-2026-09.md](../../sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md) §2) |
+| 배치 핸들 확장 펌웨어 | **16+ 지원·공개**(세션·테넌트·prefix·수명 등급 분리, 스펙 상한은 네임스페이스당 128) | 호스트가 여는 스트림 수는 16 이하(XFS 상한 16·f2fs 3), 제품 지원 수는 업계 전반 미공개 ([qlc-essd-timeline-fdp-ruh-2026-09.md](../../sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md) §2) |
 | QLC 미디어 관리 | 2Tb 다이, SLC 캐시·쓰기 정형·GC 정책 — 단, 디바이스 단독 추정으로는 실 워크로드 WAF ≈3에 머물므로(해법 사다리 §2.5 2단계) 배치 표준 적용 시 WAF ≈1을 유지하는 설계, 수명 보증 가능 수준의 텔레메트리 | CacheLib 실측 WAF 3.22 → 1.03 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.2) |
 | 인터페이스 | PCIe 5→6, NVMe 2.1, NVMe KV 확장, NVMe-oF(CMX 풀) | CMX가 NVMe KV 확장 사용(같은 소스 §1) |
 | 전력·냉각 | W/TB 1차 KPI(245TB급 0.12 W/TB), D2C 액체냉각 | Micron 6600 ION, 삼성 PM1763·Kioxia CM10 액체냉각 |
@@ -51,11 +51,11 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 
 - 보유: PM1753이 CMX 첫 공식 공급 SSD, PM1763(PCIe 6.0, V9 TLC) 2026-07 양산, BM1773 245.76TB(V9 QLC) FMS 2026 전시. 배치 표준 공동 주도자(백서 2023-10), xNVMe·SPDK·QEMU·fio 기여.
 - 공백: PM1763·BM1773의 **RUH 수·배치 표준 지원·DWPD 미공개**. QLC 라인의 KV cache 포지셔닝 없음(FMS 2026 메시지는 "TLC=성능·QLC=용량" 이분법). 용량 리더십 후발(61TB 1년, 245TB 미출하).
-- 경쟁: ScaleFlux만 Phase 2 스펙(RUH 200+·DWPD)을 제품으로 제시. Kioxia CM10·Solidigm PS1030은 TLC 3 DWPD로 캐시 티어 선점. SK hynix AI-N P는 SLC로 상단을 노린다.
+- 경쟁: ScaleFlux만 Phase 2 스펙(FDP write stream 수·유효 DWPD)을 제품 발표로 제시(벤더 주장·미검증). Kioxia CM10·Solidigm PS1030은 TLC 3 DWPD로 캐시 티어 선점. SK hynix AI-N P는 SLC로 상단을 노린다.
 
 ### 2.3 Phase 1 산출물 정의
 
-**"KV-ready QLC"**: 245TB급 V9 2Tb QLC 위에 RUH 200+, 세션·테넌트 격리, WAF·수명 텔레메트리, NVMe KV 확장, 액체냉각을 갖추고 **유효 DWPD를 워크로드 조건부로 보증**하는 제품. 스펙 문서에 "어떤 호스트 정책에서 얼마의 유효 DWPD"를 표로 싣는다. 이것이 Phase 2·3의 입장권이다.
+**"KV-ready QLC"**: 245TB급 V9 2Tb QLC 위에 배치 핸들 16+ 지원·공개, 세션·테넌트 격리, WAF·수명 텔레메트리, NVMe KV 확장, 액체냉각을 갖추고 **유효 DWPD를 워크로드 조건부로 보증**하는 제품. 스펙 문서에 "어떤 호스트 정책에서 얼마의 유효 DWPD"를 표로 싣는다. 이것이 Phase 2·3의 입장권이다.
 
 ## 3. Phase 2 — 고객 워크로드 분석으로 SSD를 최적화한다
 
@@ -106,7 +106,7 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 
 | 기존 역량(강점) | 발전시킬 역량 | 왜 |
 |---|---|---|
-| 컨트롤러·펌웨어·미디어 수직계열화, 세대 전환 속도 | RUH 200+ 펌웨어, 워크로드 조건부 수명 보증, 텔레메트리 | Phase 1 입장권. 미디어만으로 10~40배 갭을 못 메운다 |
+| 컨트롤러·펌웨어·미디어 수직계열화, 세대 전환 속도 | 배치 핸들 16+ 펌웨어, WAF 급등 런타임 대응, 텔레메트리 | Phase 1 입장권. 미디어만으로 2~5배 갭을 못 메운다 |
 | 배치 표준 공동 주도·GOST 오픈소스(xNVMe·XFS·CacheLib) | 그 자산을 **KV cache 계층(③)에 연결**하는 커넥터·플러그인 | 도구는 있는데 KV 스택에 없다 |
 | KV cache 워크로드 측정(백서 2종) | 트레이스 재현기·프로파일러·에뮬레이터를 고객 공용 도구로 제품화 | Phase 2를 반복 가능한 서비스로 |
 | CMX 첫 공급 SSD, 하이퍼스케일러 1위 물량 | DOCA Memos↔배치 표준 매핑 공동 정의, STX 인증 | 플랫폼 게이트 통과 |
@@ -133,7 +133,7 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 | **Tensormesh(LMCache)** | 사실상 표준 OSS KV 캐시 관리자, NVentures·AMD·CoreWeave 투자 | 배치 표준 백엔드 업스트림 | 공동 투자 + 기여 |
 | **Moonshot(Mooncake) · Tencent(FlexKV) · Alibaba(Tair)** | 중국 추론 스택의 KV 계층, HiSim 트레이스 시뮬레이터 | 플러그인 인터페이스 정합, 트레이스 방법론 | 오픈소스 기여 |
 | **VAST Data · DDN · WEKA** | CMX ICMSP 파트너, KV cache SW(DDN 2026-06), Dynamo 연동 | 6~12개월 실증·레퍼런스 아키텍처, 네오클라우드 채널 | 인증 + DDN 전략 라운드 지분 |
-| **ScaleFlux** | 200+ 스트림·7~10 DWPD 플랫폼, 워크로드 텔레메트리 | Phase 1·2 스펙의 벤치마크(RUH 수·유효 DWPD 표기 방식) | 비교 대상. 팀 인수는 선택지에서 제외(사용자 결정 2026-09-17) |
+| **ScaleFlux** | FDP write stream 200+·유효 7~10 DWPD 주장(미검증), 워크로드 텔레메트리 | Phase 1·2 스펙의 표기 방식 벤치마크 | 비교 대상. 팀 인수는 선택지에서 제외(사용자 결정 2026-09-17) |
 | **Marvell · Silicon Motion** | KV 오프로드 지원 컨트롤러(SC6·MonTitan) | 자체 컨트롤러 로드맵 대조·백업 | 벤치마크 |
 | **Linux Foundation · SNIA · OCP** | 커널 write streams, StorageAI 트랙, AI 스토리지 표준 | 표준 지위 유지 | 워킹그룹 리드 |
 
@@ -141,11 +141,11 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 
 | Phase | 업계 최고 공개 수준 | 삼성 공개 수준 | 갭 |
 |---|---|---|---|
-| 1 디바이스 | ScaleFlux RUH 200+·7~10 DWPD, Kioxia CM10 3 DWPD 캐시 티어 | CMX 첫 공급(TLC), 245TB QLC 전시, RUH·DWPD 미공개 | QLC를 캐시 티어에 지명한 제품 없음 |
+| 1 디바이스 | ScaleFlux 스트림 수·유효 DWPD 주장(미검증), Kioxia CM10 3 DWPD 캐시 티어 | CMX 첫 공급(TLC), 245TB QLC 전시, 배치 핸들 수·DWPD 미공개 | QLC를 캐시 티어에 지명한 제품 없음 |
 | 2 워크로드 최적화 | Alibaba HiSim, SK hynix SALT-KV, ScaleFlux 텔레메트리 | KV cache 백서 2종, CacheLib WAF 실측 | KV cache 트레이스 기반 RUH 정책·WAF 실측 미공개(업계 공백) |
 | 3 co-design | Micron↔Anthropic SSD 공동 설계, FlexKV 메인라인 머지 | Meta CacheLib 업스트림·논문 | KV 관리자 기여 0, 계약에 공동 최적화 조항 없음 |
 
-**덱 표기(2026-09-19, v5.0)**: 삼성 현 위치는 "Phase 1 진행 중(CMX 첫 공급은 TLC, QLC 라인 RUH 2~8 → 200+ 미완·DWPD 미공개) · Phase 2 준비(KV 트레이스 기반 실측 미공개) · Phase 3 미착수"로 정직하게 표기한다. 이전 덱의 "Phase 1 확보" 표기는 격차 타일(RUH 25배)과 모순이었다.
+**덱 표기(2026-09-22, v6.0)**: 삼성 현 위치는 "Phase 1 진행 중(CMX 첫 공급은 TLC, QLC 라인의 배치 핸들 수·유효 DWPD 미공개) · Phase 2 준비(KV 트레이스 기반 실측 미공개) · Phase 3 미착수"로 정직하게 표기한다. 이전 덱의 "Phase 1 확보" 표기는 격차 타일(RUH 25배)과 모순이었다.
 
 **결론**: 갭은 기술보다 **연결**에 있다. 디바이스(⑤)와 도구(③·④)는 있고 캐시 관리자(②)는 열려 있다. 연결을 만드는 것은 개인 엔지니어의 노력이 아니라 조직·인사·재무의 설계다 → [qlc-execution-strategy.md](qlc-execution-strategy.md).
 

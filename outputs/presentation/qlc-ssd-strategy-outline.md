@@ -1,4 +1,4 @@
-# QLC eSSD 전략 — 발표 6장 기획서 (문제 / 신뢰성 / 해법 사다리 / 역량 / 실행 / 보증·SLA)
+# QLC eSSD 전략 — 발표 6장 기획서 (문제 / 신뢰성 / 해법 사다리 / 역량 / 실행 / 대응 기술)
 
 - **원본**: [outputs/report/qlc-ssd-strategy-report.md](../report/qlc-ssd-strategy-report.md) (본문 v1.0, 말미 PPT 압축 맵 기준)
 - **위치**: 「삼성 SSD 전략적 방향성」 덱의 자매편. 호스트 협력 데이터 배치 전략에 이르는 논리적 흐름을 QLC 시장에서 세운다. 배치 표준 명칭(FDP)은 각주 외 본문에서 자제하고 "호스트 협력 데이터 배치"·"배치 표준"으로 쓴다(사용자 결정 2026-09-17).
@@ -7,6 +7,23 @@
 - **로고**: `assets/logos/` (NVIDIA·Meta·Google·Microsoft·AWS·OpenAI·Anthropic·Micron 컬러 로고, vLLM·Linux 단색 아이콘). 공식 로고를 못 구한 VAST·DDN·WEKA·ScaleFlux·LMCache·Mooncake·FlexKV·Kioxia·Solidigm은 워드마크 칩. 대외 배포 시 각사 브랜드 가이드 로고로 교체.
 - **재생성**: `.venv/bin/python outputs/presentation/scripts/generate_qlc_chart.py` (그래프) → `.venv/bin/python outputs/presentation/scripts/generate_qlc_ssd_strategy_pptx.py` → `outputs/presentation/qlc-ssd-strategy.pptx`
 - **렌더 검증**: `FONT_LATIN=NanumGothic FONT_EA=NanumGothic OUT_PATH=<scratch>.pptx` 로 렌더 전용 사본을 만들어 `soffice --headless --convert-to pdf` → pymupdf PNG로 육안 검사(본 산출물은 Arial 유지).
+
+## v6.0 (2026-09-22 — 팩트체크 정정 · 신뢰성 ppm · 차트 확대 · 보증에서 런타임 대응 기술로)
+
+사용자 피드백 6건을 반영한 원본 덱 개정. 시각화 강화판(`qlc-ssd-strategy-visual.pptx` v2.0)은 **이번 개정에 포함하지 않는다**(사용자 지시: "지금부터 시각화 버전은 수정 안 할 거야"). 따라서 시각화판은 v5.2 내용 기준이며 원본 덱과 수치가 다르다 — 이 차이는 의도된 것이다.
+
+| 피드백 | 반영 |
+|---|---|
+| "RUH 200은 특정 제품에만 국한 → 제거, 현재 고객 요구는 16 정도" | 덱·보고서·위키 4개 페이지에서 ScaleFlux 한정 주장 전량 제거. 4장 격차 타일을 "요구 분리 스트림 16개"로 교체(XFS 사용자 스트림 상한 16·f2fs 3·레퍼런스 8, 스펙 상한은 네임스페이스당 128, 출하 제품 지원 수는 업계 미공개). ScaleFlux 원문은 "RUH"가 아니라 "FDP write streams"였다 |
+| "해법 사다리 그래프가 작다 · WAF 추이와 고객 DWPD 요구 추이를 조사해 추가" | `solution_ladder_slide.py` v3.0: 요구 열을 2.70in으로 줄이고 나머지 3열을 4.46in으로 넓혀 셀 차트를 **3.95 × 2.75in**(종전 대비 면적 약 3배)으로 확대. 신설 차트 2종 — 정격 DWPD 57배↓ 대 드라이브당 허용 기입량 67배↑, WAF 기법별 before→after 쌍(CacheLib 사용률 100%/50%, Kioxia XD8, LLM KV 미실측). **연도축 WAF 추이선은 그리지 않는다**: 같은 드라이브·트레이스도 사용률에 따라 기준 WAF가 3.22와 1.22로 달라져 교란변수를 숨기기 때문 |
+| "신뢰성 슬라이드를 ppm으로 · 256·512TB 요구 수준 · 내부 해법 적용 시 완화 · 여분 다이/RAID5/RAID6 비교 · 내부 해법은 시각화 필수" | 2장 전면 재설계. 요구 곡선(보호 없음 / 단일 패리티 15+1 / 이중 패리티 14+2, 61~512TB, 현 수준 밴드 200~2,700 ppm), 완화 배수·용량 비용 차트(66→79배·317→395배·1,000배 이상), 내부 해법을 텍스트 타일에서 **도해**로 교체(다이 격자 + XOR 복구, 여분 다이 재구축, RBER 추이와 은퇴 임계, 호스트 관측 경로). 판정: 245·256TB급은 단일 패리티로 충족, **512TB급은 이중 패리티 또는 여분 다이 필요** |
+| "HBM 조직 축소는 예민 → 시장 가능성을 크게 보지 않아 투자하지 않았다는 뉘앙스 · 2028이 전환점인 이유 · KV 캐시 배치 규격 미정의는 모호 · 교훈 1·2 논리 수정 · 구매 기준을 SSD 관점으로 · 0.6 기준 격차 재계산 · 수요는 추이 그래프로" | 1장 전면 재설계. 타임라인 마크를 "HBM 시장 가능성 과소평가"로, 2028 박스에 근거(신증설 비트 도달) 부여. "배치 규격 미정의" → **배치 힌트 인터페이스 부재**로 바꾸고 각주 정의 추가. 교훈 1은 FDP 대 ZNS 대비(구매자 프로덕션 코드가 신호), 교훈 2는 OCP 기고자가 구매자라는 사실과 HBM4 9사 공동 개발, 교훈 3은 2027 수급률 대 2028 비트 도달. 구매 기준은 세 국면(성능 → QoS → 밀도·전력·공급)과 SSD 지표 목록. 격차 2~5배. 수요는 2025~2030 경로 차트(발표값·보간값 구분) |
+| "보증은 고객이 받아들일지 자신 없다 → WAF 급등 감지 후 시스템 SW·FDP Configuration 변경으로 대응하는 기술 확보 방향 · 핵심 기술 요소 도출 · 시각화" | 6장 전면 재설계. 제목을 "WAF 변동 리스크는 계약이 아니라 런타임 감지·대응 기술로 흡수하며, 그 기술 요소를 확보합니다"로. 목표 동작 곡선(급등 → 감지 1h → 대응 → 4h 내 회복, 차이 면적 = 수명 손실), 대응 루프 4단계(디바이스·호스트 분리), 기술 요소 T1~T6(현/필요), 규격 과제, 축소된 보증 조항. 스토리 레일 6장 이름을 "대응 기술 · 무엇을 확보하나"로 변경 |
+
+- **신설 차트 스크립트**: `scripts/generate_qlc_v6_charts.py` → `rel_ppm_requirement.png`, `rel_protection_tradeoff.png`, `ladder_component_big.png`, `ladder_dwpd_trend.png`, `ladder_waf_pairs.png`, `s1_demand_path.png`, `s6_waf_runtime.png`
+- **신설 소스**: `sources/articles/qlc-v6-*.md` 6종(신뢰성 ppm·구매 기준/DWPD 이력·WAF 실측·배치 핸들 개수·2028 전환점/수요 경로·규격 교훈 팩트체크)
+- **신설 위키**: `wiki/concepts/ssd-die-reliability-ppm.md`, `essd-purchase-criteria-shift.md`, `waf-runtime-response.md`
+- **리서치 한계**: 6건 모두 프록시가 1차 도메인(opencompute.org·jedec.org·usenix.org·벤더 사이트)을 차단해 대부분 검색 인덱스 경유(🟡)다. 등급을 각 소스 원장 머리에 명시했고, 모델 산출값은 ⚠️로 표기했다
 
 ## 시각화 강화판 v2.0 (2026-09-22 — 네이티브 도형 판: 편집 가능, 그림은 4장만 · 5장 실행은 두 트랙 화살표로 복귀)
 

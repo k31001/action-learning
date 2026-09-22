@@ -61,7 +61,7 @@ sources:
 ### 2.1 전략 축 — 하나의 베팅, 세 개의 순서
 
 - **베팅**: "QLC로 추론 캐시 티어를 가져간다." 니어라인 HDD 대체는 들어가지 않는다(공급 부족 3~5년, 커머디티 경쟁, 접점 부재). 모델상 이 티어는 2030년 350EB(전 미디어)이고 QLC 침투 50%가 조건부 상방이다 ([qlc-ssd-market.md](../concepts/qlc-ssd-market.md) §4).
-- **순서**: Phase 1 "KV-ready QLC"(RUH 200+·수명 보증 조건표) → Phase 2 등대 고객 1~2사와 워크로드 프로파일·WAF 실측 공개(업계 최초) → Phase 3 공동 플랫폼 계약(공급+공동 최적화+수명 보증+자본).
+- **순서**: Phase 1 "KV-ready QLC"(배치 핸들 16+ 공개·수명 보증 조건표) → Phase 2 등대 고객 1~2사와 워크로드 프로파일·WAF 실측 공개(업계 최초) → Phase 3 공동 플랫폼 계약(공급+공동 최적화+수명 보증+자본).
 - **시계**: 공급자 우위는 2027년 하반기 공급 완화 전까지. 워크로드·스펙 접근권을 계약으로 고정할 창은 **2026년 4분기부터 2027년 상반기**다 ([qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §3.1).
 - **경계**: 오케스트레이션(Dynamo·LMCache·Mooncake) 자체를 만들지 않는다. 그 아래의 기본 백엔드·디바이스·통합 서비스가 자리다 ([kv-cache-ssd-offload-ecosystem-2026-08.md](../../sources/articles/kv-cache-ssd-offload-ecosystem-2026-08.md) §3).
 
@@ -74,7 +74,7 @@ sources:
 | **추론 스토리지 소프트웨어 자회사(실리콘밸리)** | Memory Solutions Lab을 모체로 별도 법인화, 자체 CEO·보상·지분, **인력의 다수를 미주 현지 채용** | ③④계층 업스트림 팀, 캐시 관리자 플러그인, 프로파일러·에뮬레이터 제품화, 고객 상주 엔지니어(FDE)의 홈, **시스템 소프트웨어 전문가 조직의 본거지** | SK hynix AI Company(2026-01, ≥$10B 캐피털콜), Solidigm(독립 자회사, 공동 CEO 본사+현지) ✅ |
 | **Co-Design Pod(고객 상주)** | 고객 1사당 3~5명, 홈 조직은 자회사, 평가는 outcome | 명시 요구와 실제 요구의 간극을 현장에서 해소, 메인라인 머지·활성화 용량 책임 | Palantir FDE, NVIDIA DevTech/SA ([dev-org-transformation.md](dev-org-transformation.md) §4.5) |
 | **시스템 아키텍트·TCO 모델링 조직** | 본사·자회사 겸속, 외부 채용 + 내부 육성 | 디바이스→랙→DC 캐시 티어 TCO 모델, 고객 공용 시뮬레이션 자산 | Micron↔Anthropic "token economics" 공동 분석 🟡 |
-| **데이터센터 SSD 개발 조직(기존)** | 유지 | Phase 1 KV-ready QLC 제품·펌웨어(RUH 200+)·수명 보증 텔레메트리 | 세 번의 전환을 만든 기존 강점 ([fdp-host-ssd-platform.md](fdp-host-ssd-platform.md) §2.5) |
+| **데이터센터 SSD 개발 조직(기존)** | 유지 | Phase 1 KV-ready QLC 제품·펌웨어(배치 핸들 16+)·수명 보증 텔레메트리 | 세 번의 전환을 만든 기존 강점 ([fdp-host-ssd-platform.md](fdp-host-ssd-platform.md) §2.5) |
 
 **강화할 조직은 시스템 소프트웨어 조직이다.** 삼성은 배치 표준 오픈소스 자산(xNVMe·CacheLib 배치 표준 지원·XFS write streams·GOST 기여)이 5사 중 가장 두텁지만 KV cache 스택(추론 엔진·캐시 관리자·I/O)에 연결한 공개물이 없고, 캐시 관리자 4종 저장소에 삼성 기여 흔적이 없다 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3·§4). 디바이스 조직은 세 번의 전환을 만든 강점이 있으므로 유지·집중하고, 부족한 것은 **고객의 시스템을 읽고 고칠 수 있는 시스템 소프트웨어 전문가**다. 자회사·Co-Design Pod·TCO 조직 모두 이 전문가 풀에서 사람을 끌어 쓰므로, 조직 강화의 순서는 (1) 시스템 SW 직무 정의를 고객 시스템 기준으로 다시 쓰고 (2) 미주 현지 채용으로 풀을 키우고 (3) 내부 펌웨어·FTL 인력을 전환 트랙으로 합류시키는 것이다(§2.3).
 
@@ -117,7 +117,7 @@ sources:
 
 | # | 액션 | 산출물 | 담당 |
 |---|---|---|---|
-| I-1 | **KV-ready QLC 제품 정의** — BM1773 후속에 RUH 200+·텔레메트리·수명 보증 조건표를 스펙으로 확정, 로드맵 공개 | 제품 정의서·공개 로드맵 | DC SSD 개발 조직 |
+| I-1 | **KV-ready QLC 제품 정의** — BM1773 후속에 배치 핸들 16+·텔레메트리·수명 보증 조건표를 스펙으로 확정, 로드맵 공개 | 제품 정의서·공개 로드맵 | DC SSD 개발 조직 |
 | I-2 | **업계 최초 공개 실측 착수** — LMCache·FlexKV io_uring 경로에 write stream 부착 PR + KV cache 트레이스 기반 WAF·유효 DWPD 실측 | 업스트림 PR 2건, 실측 백서 | MSL(GOST) |
 | I-3 | **Anthropic 공급계약에 공동 최적화 조항 제안** — Micron 선례 문구 준용, KV cache 수명 정책 공동 설계 | 계약 부속서 초안 | 영업 + 개발실 |
 | I-4 | **NVIDIA 공동 기술 정의 요청** — DOCA Memos 힌트↔배치 표준 매핑, STX 인증 | 기술 협의 착수 | MSL + 제품기획 |

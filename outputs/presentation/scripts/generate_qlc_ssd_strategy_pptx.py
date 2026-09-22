@@ -35,6 +35,7 @@ GRAY_2 = RGBColor(0x8A, 0x8A, 0x8A)
 LINE = RGBColor(0xD9, 0xD9, 0xD9)
 TINT = RGBColor(0xF4, 0xF6, 0xFC)
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
+RED = RGBColor(0xD9, 0x30, 0x25)
 FONT = os.environ.get("FONT_LATIN", "Arial")
 FONT_EA = os.environ.get("FONT_EA", FONT)
 
@@ -108,7 +109,7 @@ def rect(slide, x, y, w, h, fill=None, line=None, line_w=0.75, shape=MSO_SHAPE.R
 
 
 STORY = [("1", "문제", "왜 지금 필요한가"), ("2", "신뢰성", "SSD 내부 해법"), ("3", "해법 사다리", "왜 호스트인가"),
-         ("4", "역량", "어떻게 해소하는가"), ("5", "실행", "누구와 어디서"), ("6", "보증 · SLA", "무엇을 보증하나")]
+         ("4", "역량", "어떻게 해소하는가"), ("5", "실행", "누구와 어디서"), ("6", "대응 기술", "무엇을 확보하나")]
 
 
 def story_rail(slide, current, y=0.88, h=0.30):
@@ -286,44 +287,50 @@ def v_arrow(slide, x, y, w, h, up=False, fill=BLUE):
     return rect(slide, x, y, w, h, fill=fill, shape=MSO_SHAPE.UP_ARROW if up else MSO_SHAPE.DOWN_ARROW)
 
 
-# ================================================================ S1. 문제 제기 — 시간축 = 논리축 (v4.1 zero-base: 타임라인 세 구간 아래 교훈 / 지금 / 문제 세 패널 정렬)
+# ================================================================ S1. 문제 제기 — 시간축 = 논리축 (v6.0: 교훈 3개 팩트체크 반영 · 구매 기준 추이 · 수요 경로 그래프)
 s = prs.slides.add_slide(BLANK)
 header(s, 1,
        "AI 추론 수요는 QLC에 고용량·1~3 DWPD를 요구하며, 신뢰성·내구성 두 축의 해법이 필요합니다",
        "두 다운턴의 교훈은 요구를 고객 시스템 안에서 먼저 관측하라는 것이었고, 지금 그 요구는 대용량과 높은 DWPD로 이동하고 있습니다.")
 
-# ---- 타임라인(2018 → 2030.5): 다운턴 음영 + 이정표. 아래 세 패널은 이 축의 세 구간에 정렬 ----
+
+def _img1(name, x, y, w):
+    return s.shapes.add_picture(os.path.join(ASSETS, name), Inches(x), Inches(y), width=Inches(w))
+
+
+# ---- 타임라인(2018 → 2030.5) ----
 TX0, TX1 = MX + 0.30, RIGHT - 0.30
 def tx(year):
     return TX0 + (TX1 - TX0) * (year - 2018.0) / 12.5
-AX_Y = 3.46
+AX_Y = 3.42
 rect(s, TX0, AX_Y - 0.01, TX1 - TX0, 0.02, fill=LINE)
 for y0, y1, lab in [(2018.75, 2019.95, "DT19 재고 조정 · -37.6%"), (2022.25, 2023.75, "DT23 최대 낙폭 -45% · 진앙 eSSD")]:
     rect(s, tx(y0), AX_Y - 0.13, tx(y1) - tx(y0), 0.26, fill=BLUE_T2)
     tb(s, tx(y0) - 0.2, AX_Y + 0.16, tx(y1) - tx(y0) + 1.6, 0.22, [(lab, 11.25, True, BLUE)])
-rect(s, tx(2027.5), AX_Y - 0.13, tx(2028.25) - tx(2027.5), 0.26, fill=WHITE, line=BLUE, line_w=1.0)
-tb(s, tx(2027.5) - 0.3, AX_Y + 0.16, 2.6, 0.22, [("차기 전환점(e) · 가격 정상화", 11.25, True, BLUE)])
+rect(s, tx(2027.7), AX_Y - 0.13, tx(2028.7) - tx(2027.7), 0.26, fill=WHITE, line=BLUE, line_w=1.0)
+tb(s, tx(2027.4), AX_Y + 0.16, 3.0, 0.22, [("차기 전환점(e) · 가격 정상화", 11.25, True, BLUE)])
 for yr in range(2018, 2031, 2):
     tb(s, tx(yr) - 0.4, AX_Y + 0.38, 0.8, 0.2, [(str(yr), 10.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
-marks = [(2019.3, "up", "2019", "HBM 조직 축소"), (2022.95, "down", "2022-12", "데이터 배치 표준 비준"),
-         (2023.55, "up", "2023-07", "Solidigm 61TB, 12개월 선행"), (2024.75, "down", "2024", "비트 출하 30EB(4배)"),
-         (2026.6, "up", "2026", "KV 캐시 배치 규격 미정의"), (2030.2, "down", "2030", "비트 10배 · 매출 정체(e)")]
+marks = [(2019.3, "up", "2019", "HBM 시장 가능성 과소평가"),
+         (2022.9, "down", "2022-11", "NVMe FDP 비준"),
+         (2024.1, "up", "2024-01", "Meta 프로덕션 코드에 FDP 머지"),
+         (2026.6, "down", "2026", "KV 캐시 배치 힌트 인터페이스 부재")]
 for yr, side, d, t in marks:
     cx = tx(yr)
     rect(s, cx - 0.08, AX_Y - 0.08, 0.16, 0.16, fill=BLUE, shape=MSO_SHAPE.OVAL)
     runs = [[(d + "  ", 11.25, True, INK), (t, 11.25, False, GRAY)]]
     if side == "up":
         rect(s, cx - 0.006, AX_Y - 0.42, 0.012, 0.30, fill=LINE)
-        tb(s, cx - 1.4, AX_Y - 0.66, 2.8, 0.24, runs, align=PP_ALIGN.CENTER)
+        tb(s, cx - 1.6, AX_Y - 0.66, 3.2, 0.24, runs, align=PP_ALIGN.CENTER)
     else:
         rect(s, cx - 0.006, AX_Y + 0.12, 0.012, 0.44, fill=LINE)
-        if cx + 1.4 > RIGHT:
-            tb(s, cx - 2.6, AX_Y + 0.58, 2.84, 0.24, runs, align=PP_ALIGN.RIGHT)
-        else:
-            tb(s, cx - 1.4, AX_Y + 0.58, 2.8, 0.24, runs, align=PP_ALIGN.CENTER)
+        tb(s, cx - 1.6, AX_Y + 0.58, 3.2, 0.24, runs, align=PP_ALIGN.CENTER)
+        if yr > 2026:
+            tb(s, cx - 1.6, AX_Y + 0.80, 3.2, 0.2,
+               [("= KV 블록의 수명 등급을 NVMe 배치 핸들로 전달하는 코드 경로", 8.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
 
-# ---- 세 패널: 타임라인 구간(2018~23 / 2024~26 / 2027~30)에 정렬 ----
-P_Y = AX_Y + 0.98
+# ---- 세 패널 ----
+P_Y = AX_Y + 1.02
 P_H = 9.42 - 0.20 - P_Y
 G = 0.14
 C1X, C1W = MX, tx(2024.0) - G / 2 - MX
@@ -341,211 +348,293 @@ def panel(x, w, title, years, hot=False):
 # ===== 패널 1: 교훈 =====
 panel(C1X, C1W, "교훈 · 두 다운턴이 가르친 것", "2018~2023")
 ix, iw = C1X + 0.26, C1W - 0.52
-NUM_W, TXT_W, LINK_W = 1.32, 2.42, 0.30
-VIS_W = iw - NUM_W - TXT_W - LINK_W - 0.30
+NUM_W, TXT_W, LINK_W = 1.18, 2.46, 0.30
+VIS_W = iw - NUM_W - TXT_W - LINK_W - 0.28
 ROW_H = (P_H - 0.66) / 3
 ry = P_Y + 0.60
 
 
-def vis_sense(x, y, w, h):
-    """규격·코드 레인이 발주·출하 레인보다 ≈2년 선행. 2026은 빈 원(규격 미정의)."""
-    lx, lw = x + 0.78, w - 0.78
-    px = lambda t: lx + lw * (t - 2022.3) / 4.9
-    top, bot = y + 0.26, y + h - 0.30
-    tb(s, x, top - 0.12, 0.76, 0.24, [("규격·코드", 9.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, x, bot - 0.12, 0.76, 0.24, [("발주·출하", 9.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
-    rect(s, lx, top, lw, 0.016, fill=LINE)
-    rect(s, lx, bot, lw, 0.016, fill=LINE)
-    d, o, e = px(2022.95), px(2024.5), px(2026.6)
-    mid = (top + bot) / 2
-    rect(s, d, mid - 0.11, o - d, 0.22, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-    tb(s, d, mid - 0.11, o - d - 0.08, 0.22, [("≈2년", 9.0, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    rect(s, d - 0.09, top - 0.09, 0.18, 0.18, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, d - 0.2, top - 0.32, 1.6, 0.2, [("'22-12 배치 표준 비준", 8.75, False, GRAY)])
-    rect(s, o - 0.09, bot - 0.09, 0.18, 0.18, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, o - 0.2, bot + 0.10, 1.6, 0.2, [("'24 비트 출하 30EB", 8.75, False, GRAY)])
-    rect(s, e - 0.09, top - 0.09, 0.18, 0.18, fill=WHITE, line=BLUE, line_w=1.5, shape=MSO_SHAPE.OVAL)
-    tb(s, e - 1.5, top + 0.10, 1.65, 0.36, [("'26 KV 캐시 규격 미정의", 8.75, True, BLUE), ("= 선점 구간", 8.75, True, BLUE)], align=PP_ALIGN.RIGHT, spacing=1.0)
-
-
-def vis_collab(x, y, w, h):
-    """61TB 출시 시점 막대(OCP 2022-10 예고 기준) + HBM4 한 줄."""
-    lab_w = 0.7
-    bx, bw = x + lab_w, w - lab_w
-    tb(s, x, y, w, 0.2, [("61TB QLC 출시 · OCP '22-10 예고 기준", 8.75, False, GRAY_2)])
-    yy = y + 0.26
-    for who, months, hit, end in [("Solidigm", 9, True, "'23-07 · 규격 정의 참여"), ("삼성", 21, False, "'24-07 · 12개월 후발")]:
-        tb(s, x, yy, lab_w - 0.05, 0.26, [(who, 9.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
-        bl = bw * months / 21.0
-        rect(s, bx, yy, bl, 0.26, fill=BLUE if hit else WHITE, line=None if hit else LINE, line_w=0.75)
-        if hit:
-            tb(s, bx + bl + 0.08, yy, bw - bl - 0.08, 0.26, [(end, 8.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+def lane(x, y, w, title, steps, ok):
+    """신호 레인: 제목 칩 + 단계 칩 3개(채움 = 실제로 일어난 단계)."""
+    rect(s, x, y, 0.84, 0.42, fill=BLUE if ok else WHITE, line=None if ok else GRAY_2, line_w=0.75)
+    tb(s, x, y, 0.84, 0.42, [(title, 10.5, True, WHITE if ok else GRAY_2)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    lx = x + 0.92
+    cw_ = (w - 0.92 - 2 * 0.10) / 3
+    for i, (lab, filled) in enumerate(steps):
+        bx = lx + i * (cw_ + 0.10)
+        if filled:
+            rect(s, bx, y, cw_, 0.42, fill=WHITE, line=BLUE if ok else GRAY_2, line_w=1.0)
         else:
-            tb(s, bx + 0.08, yy, bl - 0.16, 0.26, [(end, 8.75, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.RIGHT)
-        yy += 0.34
-    tb(s, x, yy + 0.02, w, 0.36, [[("HBM4  ", 8.75, True, INK), ("SK hynix ↔ NVIDIA 규격 공동 정의 → 주도권 · 삼성 후발", 8.75, False, GRAY)]], spacing=1.0)
+            sp = rect(s, bx, y, cw_, 0.42, fill=WHITE, line=GRAY_2, line_w=1.0)
+            sp.line.dash_style = MSO_LINE_DASH_STYLE.DASH
+        tb(s, bx + 0.06, y, cw_ - 0.12, 0.42, [(l, 8.5, filled, INK if filled else GRAY_2) for l in lab.split("|")],
+           align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+        if i < 2:
+            rect(s, bx + cw_ + 0.015, y + 0.14, 0.07, 0.14, fill=BLUE_T2 if filled else LINE, shape=MSO_SHAPE.RIGHT_ARROW)
+
+
+def vis_signal(x, y, w, h):
+    """FDP는 구매자 프로덕션 코드에 들어갔고 ZNS는 들어가지 못했다."""
+    lane(x, y + 0.02, w, "FDP", [("비준|'22-11", True), ("Meta 코드|'24-01", True), ("물량|진행", True)], True)
+    lane(x, y + 0.56, w, "ZNS", [("비준|'20-06", True), ("프로덕션|채택 0", False), ("6년째|물량 없음", False)], False)
+
+
+def vis_spec(x, y, w, h):
+    """조달 규격 기고자는 구매자 · HBM4 규격은 9사 공동(삼성 포함)."""
+    cw_ = (w - 0.16) / 2
+    for i, (head, body, note) in enumerate([
+            ("OCP 조달 규격 기고자", "구매자 5사", "Meta·MS·Google·Dell·HPE · 벤더 없음"),
+            ("HBM4 JEDEC 공동 개발", "삼성 포함 9사", "차이는 고객 사양 대응과 수율")]):
+        bx = x + i * (cw_ + 0.16)
+        rect(s, bx, y, cw_, 0.62, fill=WHITE, line=LINE, line_w=0.75)
+        tb(s, bx + 0.10, y + 0.05, cw_ - 0.20, 0.20, [(head, 8.75, False, GRAY_2)])
+        tb(s, bx + 0.10, y + 0.24, cw_ - 0.20, 0.22, [(body, 9.75, True, INK)])
+        tb(s, bx + 0.10, y + 0.44, cw_ - 0.20, 0.18, [(note, 8.5, False, GRAY)])
+    tb(s, x, y + 0.72, w, 0.22,
+       [[("Solidigm 61TB 선행의 공개 근거  ", 8.75, True, INK), ("192층 QLC · 오픈소스 FTL", 8.75, False, GRAY)]])
 
 
 def vis_timing(x, y, w, h):
-    """직전 다운턴의 결정 → 다음 다운턴의 초기 조건(3행, 마지막 행 강조)."""
-    cw_ = (w - 0.34) / 2
-    rh = 0.27
-    yy = y + 0.02
-    for a, b, hot in [("DT19 무감산 성공", "DT23 국면 오판", False), ("DT19 HBM 조직 축소", "DT23 주도권 상실", False),
-                      ("2026 고객 시스템 진입", "2027H2 TCO 보증 수익", True)]:
-        rect(s, x, yy, cw_, rh, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
-        tb(s, x + 0.03, yy, cw_ - 0.06, rh, [(a, 8.75, hot, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-        rect(s, x + cw_ + 0.06, yy + 0.06, 0.22, 0.15, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-        rect(s, x + cw_ + 0.34, yy, cw_, rh, fill=BLUE if hot else TINT)
-        tb(s, x + cw_ + 0.37, yy, cw_ - 0.06, rh, [(b, 8.75, True, WHITE if hot else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-        yy += rh + 0.09
+    """2027은 수급률, 2028은 비트 도달 — capex 증가율 감속과 함께."""
+    cw_ = (w - 0.16) / 2
+    for i, (yr, head, body) in enumerate([("2027", "수급률 전환", "공급 증가율이 수요를 추월"),
+                                          ("2028", "비트 도달 · 정상화", "신증설이 실제 산출로")]):
+        bx = x + i * (cw_ + 0.16)
+        hot = i == 1
+        rect(s, bx, y, cw_, 0.62, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
+        tb(s, bx + 0.10, y + 0.05, cw_ - 0.20, 0.20, [(yr, 9.75, True, WHITE if hot else GRAY_2)])
+        tb(s, bx + 0.10, y + 0.24, cw_ - 0.20, 0.22, [(head, 9.75, True, WHITE if hot else INK)])
+        tb(s, bx + 0.10, y + 0.44, cw_ - 0.20, 0.18, [(body, 8.5, False, BLUE_T2 if hot else GRAY)])
+    tb(s, x, y + 0.72, w, 0.22,
+       [[("하이퍼스케일러 CapEx 증가율  ", 8.75, True, INK), ("'26 +105% → '27 +43% → '28 +12%", 8.75, False, GRAY)]])
 
 
-lessons = [("2년", "수요 센싱", "고객 규격·코드 신호가 발주·출하에 약 2년 선행", "총량 지표는 다운턴을, 고객 규격은 차기 요구를 보였다", vis_sense, 3),
-           ("12개월", "고객 협업", "규격 정의에 참여한 공급자가 선점", "다운턴 극복의 결정 변수는 방어가 아니라 요구 적중", vis_collab, 5),
-           ("2027H2", "의사결정 시점", "직전 다운턴의 결정이 다음 다운턴의 초기 조건", "차기 전환점은 2027년 하반기 가격 정상화 국면", vis_timing, 4)]
+lessons = [("신호", "수요 센싱", "비준된 표준이 아니라 구매자의 프로덕션 코드가 신호입니다",
+            "지금의 등가 신호: KV 캐시 스택에 배치 힌트 인터페이스가 없음", vis_signal, 4),
+           ("선점", "고객 협업", "선점은 규격 기고가 아니라 구매자 사양 적중에서 나왔습니다",
+            "조달 규격은 구매자가 쓰고 공급자는 그것을 먼저 읽습니다", vis_spec, 5),
+           ("시점", "의사결정", "2027은 수급률이 바뀌는 해, 2028은 비트가 도착하는 해입니다",
+            "2028에 준비되려면 2026에 고객 시스템 안에 있어야 합니다", vis_timing, 5)]
 for i, (num, nm, l1, l2, vis, nxt) in enumerate(lessons):
     if i:
         rect(s, ix, ry - 0.05, iw, 0.012, fill=LINE)
-    tb(s, ix, ry, NUM_W, ROW_H - 0.1, [(num, 22, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, ix, ry, NUM_W, ROW_H - 0.1, [(num, 18, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
     tb(s, ix + NUM_W, ry + 0.06, TXT_W, ROW_H - 0.16,
        [[("교훈 " + str(i + 1) + " · ", 10.5, False, GRAY_2), (nm, 11.25, True, INK)], (l1, 9.75, True, INK), (l2, 9.0, False, GRAY)],
        anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
-    vis(ix + NUM_W + TXT_W + 0.15, ry + 0.10, VIS_W, ROW_H - 0.24)
+    vis(ix + NUM_W + TXT_W + 0.14, ry + 0.14, VIS_W, ROW_H - 0.28)
     lx_ = ix + iw - LINK_W
     rect(s, lx_, ry + ROW_H / 2 - 0.18, 0.26, 0.26, fill=BLUE_T2, shape=MSO_SHAPE.OVAL)
     tb(s, lx_, ry + ROW_H / 2 - 0.18, 0.26, 0.26, [(str(nxt), 10, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     ry += ROW_H
 
-# ===== 패널 2: 지금 · 요구의 이동 =====
-panel(C2X, C2W, "지금 · 요구의 이동", "2024~2026")
+# ===== 패널 2: 지금 · 구매 기준의 이동 =====
+panel(C2X, C2W, "지금 · 구매 기준의 이동", "2008~2026")
 ix2, iw2 = C2X + 0.26, C2W - 0.52
-FROM_W, TO_W = 1.30, iw2 - 1.30 - 0.34
-shifts = [("구매 기준", "TB당 TCO", "원가 · 전력 · 밀도", "GPU당 컨텍스트 용량 · 토큰당 비용", "추론 캐시 계층"),
-          ("드라이브 용량", "61TB", "2023 · 1Tb 다이", "245TB", "2025 · 다이 8배 ↑"),
-          ("요구 DWPD", "0.3~0.6", "읽기 중심 워크로드", "1~3", "KV 캐시 계층 제품(TLC) 정격 · 쓰기 강도는 실측 필요")]
-sy = P_Y + 0.62
-SH = (P_H - 0.62 - 0.62) / 3
-for lab, f1, f2, t1, t2 in shifts:
-    tb(s, ix2, sy, iw2, 0.2, [(lab, 9.5, False, GRAY_2)])
-    cy = sy + 0.24
-    ch = SH - 0.40
-    rect(s, ix2, cy, FROM_W, ch, fill=WHITE, line=LINE, line_w=0.75)
-    tb(s, ix2 + 0.08, cy + 0.05, FROM_W - 0.16, ch - 0.1, [(f1, 11.25, True, GRAY), (f2, 8.5, False, GRAY_2)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
-    rect(s, ix2 + FROM_W + 0.06, cy + ch / 2 - 0.09, 0.22, 0.18, fill=BLUE, shape=MSO_SHAPE.RIGHT_ARROW)
-    rect(s, ix2 + FROM_W + 0.34, cy, TO_W, ch, fill=TINT, line=BLUE, line_w=1.0)
-    tb(s, ix2 + FROM_W + 0.42, cy + 0.05, TO_W - 0.16, ch - 0.1, [(t1, 11.25, True, BLUE), (t2, 8.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
-    sy += SH
-tb(s, ix2, P_Y + P_H - 0.56, iw2, 0.46,
-   [("세 국면의 구매 기준은 일관되게 TB당 TCO였고, 바뀐 것은 워크로드의 쓰기 비중과 드라이브당 용량입니다", 9.0, False, GRAY)], spacing=1.02)
+eras = [("2008~2012", "성능 · 용량당 가격", "IOPS · 대역폭이 차별화 축",
+         "내구성은 이미 자격 요건 (JESD218 · 219, 2010-09)", False),
+        ("2012~2021", "QoS · 지연 꼬리", "99.9% 읽기 지연이 스펙 전면으로",
+         "S3700 500µs('12) → OCP v2.0 지연 모니터 의무화('21)", False),
+        ("2022~2026", "용량밀도 · 전력효율 · 공급", "TB/슬롯 · TB/W · 물량 확보가 상위 기준",
+         "QoS는 기본 요건 · 내구성은 0.3과 60 DWPD로 양극화", True)]
+ey = P_Y + 0.62
+EH = 1.10
+for yrs, axis_, what, why, hot in eras:
+    rect(s, ix2, ey, iw2, EH - 0.12, fill=TINT if hot else WHITE, line=BLUE if hot else LINE, line_w=1.0 if hot else 0.75)
+    tb(s, ix2 + 0.16, ey + 0.08, iw2 - 0.32, 0.20, [[(yrs + "   ", 9.0, False, GRAY_2), ("차별화 축", 9.0, False, GRAY_2)]])
+    tb(s, ix2 + 0.16, ey + 0.28, iw2 - 0.32, 0.26, [(axis_, 12.75, True, BLUE if hot else INK)])
+    tb(s, ix2 + 0.16, ey + 0.55, iw2 - 0.32, 0.22, [(what, 9.75, False, GRAY)])
+    tb(s, ix2 + 0.16, ey + 0.76, iw2 - 0.32, 0.24, [(why, 8.75, False, GRAY_2)], spacing=1.0)
+    if hot:
+        pass
+    ey += EH
+tb(s, ix2, ey + 0.02, iw2, 0.72,
+   [("추론 캐시 계층에서만 내구성이 다시 구속 조건입니다", 10.5, True, BLUE),
+    ("SSD가 맞춰야 할 구매 기준: TB/슬롯 · TB/W · 99.9999% 읽기 지연 · DWPD·TBW · $/TB · 공급 보장 · 배치 힌트와 텔레메트리 지원", 9.0, False, GRAY)],
+   spacing=1.04)
 
-# ===== 패널 3: 문제 · 해법이 필요한 상황 =====
+# ===== 패널 3: 문제 =====
 panel(C3X, C3W, "문제 · 해법이 필요한 상황", "2027~2030", hot=True)
 ix3, iw3 = C3X + 0.26, C3W - 0.52
-tb(s, ix3, P_Y + 0.60, iw3, 0.2, [("동급 비교: 61TB QLC 0.58~1.0 · 245TB QLC 0.3 vs KV 계층 TLC 1~3 DWPD", 9.0, False, GRAY_2)])
-tb(s, ix3, P_Y + 0.80, iw3, 0.62, [("2~10배 격차", 30, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-half = (iw3 - 0.2) / 2
-for k, (num, lab) in enumerate([("10배", "QLC 비트 '25 → '30 (e)"), ("350EB", "2030 추론 캐시 계층 수요 (e)")]):
-    hx = ix3 + k * (half + 0.2)
-    tb(s, hx, P_Y + 1.50, half, 0.42, [(num, 20, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, hx, P_Y + 1.92, half, 0.22, [(lab, 8.75, False, GRAY)])
-rect(s, ix3, P_Y + 2.30, iw3, 0.94, fill=WHITE, line=BLUE, line_w=1.25)
-tb(s, ix3 + 0.16, P_Y + 2.36, iw3 - 0.32, 0.82,
+tb(s, ix3, P_Y + 0.60, iw3, 0.2, [("내구성 격차 · 요구 1~3 DWPD ÷ 현 QLC 정격 0.6", 9.0, False, GRAY_2)])
+tb(s, ix3, P_Y + 0.80, iw3, 0.58, [("2~5배 격차", 28, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+CH_W3 = 4.40
+_img1("s1_demand_path.png", ix3 + (iw3 - CH_W3) / 2, P_Y + 1.42, CH_W3)
+tb(s, ix3, P_Y + 3.30, iw3, 0.40,
+   [("추론 캐시 계층 NAND 수요 · 2027 87EB → 2028 175EB(SanDisk) · 2030 350EB는 재구성값", 8.75, False, GRAY)], spacing=1.0)
+rect(s, ix3, P_Y + 3.62, iw3, 0.66, fill=WHITE, line=BLUE, line_w=1.25)
+tb(s, ix3 + 0.16, P_Y + 3.66, iw3 - 0.32, 0.58,
    [("고용량 QLC에서 DWPD를 높일 해법이 필요합니다", 12.75, True, BLUE),
-    ("고용량화의 두 축 · 다이 8배 → 신뢰성(2장, SSD 내부) · DWPD 격차 → 내구성(3장, 어느 계층인가)", 9.75, False, GRAY),
-    ("극단 조합(0.075 vs 3)은 40배", 9.0, False, GRAY_2)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
-quote(s, ix3, P_Y + P_H - 0.92, iw3, 0.78,
+    ("두 축 · 다이 수 증가 → 신뢰성(2장) · DWPD 격차 → 내구성(3장)", 9.0, False, GRAY)],
+   anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
+quote(s, ix3, P_Y + P_H - 0.50, iw3, 0.46,
       "부품이 어떻게 쓰일지는 시스템을 설계하는 사람 마음에 있다. 그걸 알았으면 HBM을 진작 준비했을 것이다",
-      "송용호 AX/PI센터장 · 사내 인터뷰 2026-09-03", size=9.5)
+      "송용호 AX/PI센터장 · 사내 인터뷰 2026-09-03", size=9.0)
 
 band(s, 9.42, 0.80, "문제",
-     "요구는 다운턴 국면에서 고객 규격·코드로 정의됐고, 정의에 참여한 공급자가 선점했습니다.\n차기 요구는 고용량(다이 8배)과 1~3 DWPD이며, 동급 비교 시 정격과 2~10배 격차가 있습니다",
+     "요구는 구매자의 조달 규격과 프로덕션 코드에서 먼저 정의됐고, 그것을 먼저 읽은 공급자가 선점했습니다.\n"
+     "차기 요구는 고용량과 1~3 DWPD이며, 현 QLC 정격 0.6과는 2~5배 격차가 있습니다",
      main_size=16.5, next_step=2)
-footer(s, "출처: 위키 다운턴 역사 20년(DT19·DT23 낙폭), fdp-host-ssd-platform §2.5(Solidigm 61TB), QLC 연혁 소스(배치 표준 비준·30EB), GitHub README(캐시 관리자 4종), TrendForce·SanDisk FMS 2026·Meta(수요 모델, 2026~2030 추정), P5336·6550 ION·CM9·LC9 사양(동급 DWPD)", 1)
-notes(s, "1장은 문제 제기입니다. 결론은 내리지 않고, 고용량 QLC에서 DWPD를 높일 해법이 필요한 상황임을 세웁니다. 상단 타임라인의 세 구간이 아래 세 패널과 정렬돼 있습니다. 과거의 교훈, 지금 요구의 이동, 그리고 해법이 필요한 문제입니다. "
-      "왼쪽 패널, 교훈. DT19(재고 조정, -37.6%)와 DT23(최대 낙폭 -45%, 진앙 eSSD)에서 세 가지를 배웠습니다. 교훈 1 수요 센싱: 수요 신호는 발주보다 약 2년 먼저 고객의 규격·표준·소스 코드에 나타납니다. 2022년 12월 데이터 배치 표준 비준이 2024년 비트 출하 30EB로 이어졌고, 지금의 등가 신호는 KV 캐시 관리자 코드에 배치·내구성 규격이 미정의라는 사실입니다. 교훈 2 고객 협업: 규격 정의에 참여한 공급자가 선점했습니다. Solidigm은 61TB QLC를 12개월 먼저 출시했고, HBM4는 NVIDIA와 규격을 공동 정의한 SK hynix가 주도권을 확보했습니다. 교훈 3 의사결정 시점: 직전 다운턴의 결정이 다음 다운턴의 초기 조건입니다. DT19의 무감산 성공이 DT23 국면 오판으로, HBM 조직 축소가 주도권 상실로 이어졌고, 차기 전환점은 2027년 하반기 가격 정상화 국면입니다. 각 교훈 끝의 번호는 이 덱에서 그 교훈을 받는 장입니다. "
-      "가운데 패널, 지금 요구의 이동. 구매 기준은 TB당 TCO(원가·전력·밀도)에서 GPU당 컨텍스트 용량·토큰당 비용으로, 드라이브 용량은 61TB(2023)에서 245TB(2025, 다이 8배)로, 요구 DWPD는 읽기 중심 0.3~0.6에서 KV 캐시 쓰기 집약 1~3으로 이동했습니다. 세 국면의 구매 기준은 일관되게 TB당 TCO였고, 바뀐 것은 쓰기 비중과 용량입니다. "
-      "오른쪽 패널, 문제. 동급 용량으로 비교하면 61TB QLC 정격 0.58~1.0(P5336·6550 ION), 245TB QLC 0.3(LC9)과 KV 캐시 계층 TLC 1~3(CM9) 사이에는 2~10배 격차가 있습니다. 최저 정격 0.075와 3을 짝지은 극단 조합만 40배입니다. KV 캐시의 쓰기 강도 자체도 프레임워크에 따라 크게 달라(CHEOPS 2025: 읽기 2.0GiB/s vs 쓰기 11MiB/s) 실측이 필요합니다. 수요 모델은 QLC 비트 2025년 대비 2030년 10배, 2030년 추론 캐시 계층 수요 350EB입니다. 그래서 고용량 QLC에서 DWPD를 높일 해법이 필요합니다. 고용량화는 두 축을 낳습니다. 다이 8배가 만드는 신뢰성 축은 2장에서 SSD 내부 설계로 충족되고, DWPD 격차는 3장에서 어느 계층이 충족할 수 있는지를 봅니다. 송용호 AX/PI센터장의 인용은 그 답이 고객 시스템의 이해에서 나와야 함을 시사합니다. 근거는 위키 qlc-ssd-market.md §3.4·§3.5, 수요 모델은 §4.3.")
+footer(s, "출처: 위키 다운턴 역사(DT19·DT23), NVMe TP4146·CacheLib·Linux 커밋 이력, OCP·JEDEC 기고자 명단, TrendForce·SEMI·UBS(전환점), SanDisk FMS 2026·McKinsey(수요), P5336·CM9·LC9 사양(DWPD)", 1)
+notes(s, "1장은 문제 제기입니다. 결론은 내리지 않고, 고용량 QLC에서 DWPD를 높일 해법이 필요한 상황임을 세웁니다. 상단 타임라인의 세 구간이 아래 세 패널과 정렬돼 있습니다. "
+      "왼쪽 패널, 교훈. 교훈 1 수요 센싱입니다. 종전에는 표준 비준이 약 2년 선행 신호라고 봤는데, 확인해 보니 그 명제는 반례가 있습니다. ZNS는 2020년 6월 비준되고 같은 달 커널 패치까지 올라갔지만 6년이 지난 지금도 하이퍼스케일 물량이 없습니다. 반면 FDP는 2022년 11월 비준 후 2024년 1월 Meta의 CacheLib 프로덕션 코드에 머지됐고, 2025년 5월 Linux 6.16에 배치 힌트 경로가 들어갔으며 물량이 따라오고 있습니다. 두 사례의 차이는 표준 비준이 아니라 구매자가 자기 프로덕션 코드에 넣었는가입니다. 그래서 판별 기준을 바꿔야 합니다. 지금의 등가 신호는 KV 캐시 스택에 배치 힌트 인터페이스가 아직 없다는 사실이고, 이는 캐시 관리자가 KV 블록의 수명 등급을 NVMe 배치 핸들로 전달하는 코드 경로가 비어 있다는 뜻입니다. "
+      "교훈 2 고객 협업입니다. 종전 문안은 규격 정의에 참여한 공급자가 선점했다는 것이었는데, 확인 결과 주체가 틀렸습니다. OCP 데이터센터 NVMe SSD 사양의 기고자는 Meta, Microsoft, Google, Dell, HPE로 전부 구매자이고 SSD 벤더는 명단에 없습니다. 이 문서는 벤더가 쓰는 규격이 아니라 구매자가 쓰고 벤더가 준수하는 조달 사양입니다. Solidigm이 61TB를 12개월 앞선 공개 근거도 규격 기고가 아니라 192층 QLC와 오픈소스 FTL입니다. HBM4도 마찬가지입니다. JEDEC 표준은 삼성을 포함한 9사가 함께 개발했으므로 참여 여부가 차이를 만들지 않았고, 실제 구속 사양은 NVIDIA가 요구한 10에서 13Gbps였으며 승부는 패키징 수율과 고객 퀄에서 갈렸습니다. 삼성은 2026년 2월 업계 최초로 상용 HBM4를 출하했으므로 늦었다는 서술은 HBM3E 세대에 한정해야 합니다. 따라서 교훈은 구매자의 조달 규격과 프로덕션 코드를 먼저 읽고 제품을 선행 개발한 공급자가 선점한다는 것입니다. "
+      "교훈 3 의사결정 시점입니다. 차기 전환점을 2028년으로 봅니다. 2027년은 TrendForce 기준 NAND 수급률이 부호를 바꾸는 해이지만, 같은 기관이 신증설 capacity의 의미 있는 산출 기여는 2028년 전에는 없다고 밝혔습니다. SK하이닉스 청주 M17 클린룸 개방 목표가 2028년 12월, 삼성 평택 P5 가동이 이르면 2028년, 마이크론 싱가포르가 2028년 하반기입니다. 수요 쪽도 하이퍼스케일러 CapEx 증가율이 2026년 105%, 2027년 43%, 2028년 12%로 꺾이고 억제된 감가상각이 2028년에 1,070억 달러로 최대가 됩니다. 즉 2027년은 회계상의 전환, 2028년은 물리적 도달입니다. 2028년에 준비되어 있으려면 2026년에 고객 시스템 안에 들어가 있어야 합니다. "
+      "가운데 패널, 구매 기준의 이동입니다. 2008년에서 2012년 구간의 차별화 축은 IOPS와 대역폭이었고 내구성은 이미 JESD218과 219로 표준화된 자격 요건이었습니다. 2012년에서 2021년 구간은 QoS가 스펙 전면으로 올라온 시기입니다. S3700이 99.9% 지연 500마이크로초를 내세웠고, OCP 사양 v2.0이 2021년 7월 지연 모니터를 의무화하면서 제도화됐습니다. 2022년 이후는 용량 밀도와 전력 효율, 공급 확보가 상위 기준이고 QoS는 사라진 것이 아니라 기본 요건으로 굳었습니다. 내구성은 하나의 축에서 둘로 갈라져 245TB QLC의 0.3 DWPD와 SLC의 60 DWPD가 같은 해에 팔립니다. 추론 캐시 계층에서만 내구성이 다시 구속 조건이 됩니다. SSD가 맞춰야 할 기준을 구체적으로 적으면 슬롯당 용량, 와트당 용량과 IOPS, 99.9999% 읽기 지연, DWPD와 TBW, TB당 가격, 공급 보장, 그리고 배치 힌트와 텔레메트리 지원입니다. "
+      "오른쪽 패널, 문제입니다. 요구 1에서 3 DWPD를 현 QLC 정격 0.6으로 나누면 2배에서 5배 격차입니다. 수요는 단일 숫자가 아니라 경로로 봐야 합니다. SanDisk는 KV 캐시만으로 2027년 75에서 100EB의 추가 NAND 수요가 생기고 1년 뒤 두 배가 된다고 밝혔습니다. 2029년과 2030년은 그 성장률을 외삽한 재구성값이며 2030년 350EB는 발표된 숫자가 아니라 SanDisk의 비중 진술로부터 재구성한 값입니다. 전체 엔터프라이즈 SSD 수요는 McKinsey 기준 2024년 181EB에서 2030년 1,078EB로 연 35% 성장하고 그중 추론용이 447EB입니다. 그래서 고용량 QLC에서 DWPD를 높일 해법이 필요하고, 고용량화가 낳는 두 축이 2장과 3장입니다.")
 
-# ================================================================ S2. 신뢰성 축 — SSD 내부 해법 (v5.0 신설 · v5.1 2장: 고용량화의 첫째 축은 SSD 안에서 닫힌다)
+# ================================================================ S2. 신뢰성 축 — SSD 내부 해법 (v6.0: ppm 요구 곡선 · 보호 기법별 완화 · 내부 해법을 도해로)
 s = prs.slides.add_slide(BLANK)
 header(s, 2,
-       "첫째 축 신뢰성은 다이 수 8배 증가로 요구가 8배 엄격해지나, SSD 내부 설계로 충족됩니다",
-       "요구 FFR ≤ 3%는 고정인 반면 SSD당 다이 수는 128 → 1,024로 늘었습니다. 호스트에는 관측 지표만 제공합니다.")
+       "첫째 축 신뢰성은 다이 수 증가로 요구가 다이당 10 ppm대까지 내려가나, SSD 내부 구조로 충족됩니다",
+       "드라이브 고장률 요구는 고정, SSD당 다이 수는 512 → 2,133. 패리티와 여분 다이가 요구를 다시 천 ppm 단위로 되돌립니다.")
+
 
 def _img(name, x, y, w):
     return s.shapes.add_picture(os.path.join(ASSETS, name), Inches(x), Inches(y), width=Inches(w))
 
-# ---- 상단: 문제 (다이 수 ↑ · FFR 고정 · 허용 고장률 ↓) ----
-T_Y = 2.80
-CH_W = 5.95
-_img("rel_dies_wide.png", MX, T_Y, CH_W)                      # 5.6×2.35 → 5.95×2.50
-_img("rel_ffr_limit.png", MX + CH_W + 0.22, T_Y, CH_W)         # 5.6×2.35 → 5.95×2.50
-PX3 = MX + 2 * CH_W + 0.44
-PW3 = RIGHT - PX3
-rect(s, PX3, T_Y, PW3, 2.50, fill=TINT, line=BLUE_T2, line_w=1.0)
-tb(s, PX3 + 0.24, T_Y + 0.14, PW3 - 0.48, 0.2, [("요구 · JESD218 기능 고장률", 9.75, False, GRAY_2)])
-tb(s, PX3 + 0.24, T_Y + 0.36, PW3 - 0.48, 0.56, [("FFR ≤ 3%  고정", 24, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-tb(s, PX3 + 0.24, T_Y + 0.98, PW3 - 0.48, 1.44,
-   [("보호 없는 SSD 고장률 ≈ N × 다이 고장률", 10.5, True, INK),
-    ("N 128 → 1,024이면 같은 FFR을 지키기 위한 다이 고장률 상한은 2.4e-4 → 3.0e-5 (8배 ↓)", 9.5, False, GRAY),
-    ("칩 면적이 커질수록 수율이 떨어지는 포아송 모델과 같은 구조 · 다이 고장률 개선은 기술적 한계에 접근", 9.5, False, GRAY),
-    ("→ 해법은 다이가 아니라 SSD 계층: 단일 다이 고장을 허용하면 상한이 p에서 p² 차수로 완화", 9.75, True, BLUE)], spacing=1.06)
 
-# ---- 하단: SSD 내부 해법 3 + 호스트 관측(점선) ----
-S_Y = T_Y + 2.50 + 0.22
-S_H = 9.42 - 0.20 - S_Y
-tb(s, MX, S_Y, CW, 0.26, [[("SSD 내부 해법", 13.5, True, BLUE), ("   다이 고장을 SSD 안에서 흡수하고, 호스트에는 관측 지표만 제공", 10.5, False, GRAY_2)]])
-tiles = [
-    ("① 다이 패리티 (RAID-like XOR)", "hot",
-     [("원리", "슈퍼페이지를 여러 다이에 걸쳐 구성하고 패리티 다이에 XOR 저장 · 단일 다이 고장 시 복구"),
-      ("선례", "Micron RAIN · Cai 외 superpage-level parity(학술)"),
-      ("비용", "패리티 다이 용량(1/스트라이프) · 다이 수와 함께 스트라이프 설계 재최적화"),
-      ("효과", "SSD 고장률 p → p² 차수 · FFR 여유 확보")]),
-    ("② 여분 다이 · 다이 은퇴 · 감량 운영", "hot",
-     [("원리", "고장 다이 감지 → 데이터 재배치 → 고장 다이 제외 운영(Fail-in-Place), 필요 시 여분 다이 투입"),
-      ("선례", "삼성 PM1733/1735 FIP: 플레인 4GB · 다이 8GB 감량 운영 · Kioxia die failure recovery"),
-      ("비용", "예비 용량(여분 다이) · 감량 시 고객 용량 계약 조건 필요"),
-      ("효과", "다이 고장이 SSD 교체로 이어지지 않음 · 수리 비용 ↓")]),
-    ("③ 텔레메트리 · 사전 예측", "part",
-     [("원리", "다이별 RBER 추이 · XOR 복구 횟수 · 리드 리트라이로 고장 징후를 감지해 사전 은퇴"),
-      ("선례", "OCP SMART Cloud Health(C0) XOR 복구 카운트 · 삼성 텔레메트리(KV 백서)"),
-      ("비용", "펌웨어 통계 · 로그 대역 · 예측 모델 검증"),
-      ("효과", "돌발 고장 → 계획 감량 · 1,024다이급의 관리 가능성 확보")]),
-    ("호스트 · 플랫폼 (관측 · 수용만)", "next",
-     [("역할", "SSD가 노출한 지표(XOR 카운트 · 감량 예고)를 관측하고 감량 운영을 수용"),
-      ("선례", "OCP Datacenter NVMe SSD 사양 SMART C0 · Microsoft Hyrax(플랫폼 fail-in-place) · 드라이브 간 소거 부호"),
-      ("경계", "다이 고장의 해결 주체는 SSD · 호스트 협력은 규격(텔레메트리 필드 · 감량 정책)에 한정"),
-      ("삼성 과제", "FIP 감량 정책의 OCP 규격화 · 텔레메트리 필드 표준 제안")])]
-TW = (CW - 3 * 0.22) / 4
-ty = S_Y + 0.36
-th = S_H - 0.36 - 0.52
-for i, (title, st, rows) in enumerate(tiles):
-    x = MX + i * (TW + 0.22)
-    if st == "hot":
-        rect(s, x, ty, TW, th, fill=WHITE, line=BLUE, line_w=1.25)
-        rect(s, x, ty, TW, 0.05, fill=BLUE)
-    elif st == "part":
-        rect(s, x, ty, TW, th, fill=WHITE, line=BLUE_T2, line_w=1.0)
-        rect(s, x, ty, TW, 0.05, fill=BLUE_T2)
+# ---- 상단: 요구 곡선(ppm) + 보호 기법별 완화 + 판정 패널 ----
+T_Y, T_H = 2.80, 3.34
+_img("rel_ppm_requirement.png", MX, T_Y, 7.55)
+_img("rel_protection_tradeoff.png", MX + 7.55 + 0.20, T_Y, 4.72)
+PX3 = MX + 7.55 + 4.72 + 0.40
+PW3 = RIGHT - PX3
+rect(s, PX3, T_Y, PW3, T_H, fill=TINT, line=BLUE_T2, line_w=1.0)
+tb(s, PX3 + 0.26, T_Y + 0.14, PW3 - 0.52, 0.22, [("요구 · 드라이브 고장률 (5년 누적)", 10.5, False, GRAY_2)])
+tb(s, PX3 + 0.26, T_Y + 0.36, PW3 - 0.52, 0.48, [("2.2%  고정", 25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, PX3 + 0.26, T_Y + 0.84, PW3 - 0.52, 0.22, [("OCP 사양 MTBF 2,000,000시간 = AFR 0.44%/년 · JESD218 FFR 3%보다 엄격", 8.75, False, GRAY_2)])
+rect(s, PX3 + 0.26, T_Y + 1.10, PW3 - 0.52, 0.012, fill=BLUE_T2)
+verdicts = [
+    ("245 · 256TB급 · 1,024다이", "단일 패리티로 충족", "다이 요구 1,679 ppm · 현 수준 추정 범위 안", True),
+    ("512TB급 · 2,133다이", "이중 패리티 또는 여분 다이", "단일 패리티 요구 1,164 ppm · 현 수준 상단에 미달", False),
+]
+vy = T_Y + 1.22
+for cap, verdict, why, ok in verdicts:
+    rect(s, PX3 + 0.26, vy, PW3 - 0.52, 0.92, fill=WHITE, line=BLUE if ok else BLUE_T1, line_w=1.0)
+    tb(s, PX3 + 0.42, vy + 0.08, PW3 - 0.84, 0.22, [(cap, 10.5, True, INK)])
+    tb(s, PX3 + 0.42, vy + 0.32, PW3 - 0.84, 0.26, [(verdict, 12.75, True, BLUE)])
+    tb(s, PX3 + 0.42, vy + 0.60, PW3 - 0.84, 0.26, [(why, 9.5, False, GRAY)], spacing=1.0)
+    vy += 0.98
+tb(s, PX3 + 0.26, vy + 0.06, PW3 - 0.52, 0.44,
+   [("해법은 다이 고장률 개선이 아니라 SSD 안의 보호 구조입니다", 11.25, True, BLUE)], spacing=1.02)
+
+# ---- 하단: SSD 내부 해법을 도해로 (텍스트 최소) ----
+S_Y = T_Y + T_H + 0.24
+tb(s, MX, S_Y, CW, 0.26, [[("SSD 내부 해법", 13.5, True, BLUE),
+                           ("   다이 고장을 SSD 안에서 흡수하고, 호스트에는 관측 지표만 제공합니다", 10.5, False, GRAY_2)]])
+PN_Y = S_Y + 0.34
+PN_H = 9.22 - PN_Y
+PN_W = (CW - 3 * 0.22) / 4
+V_Y = PN_Y + 0.48          # 도해 시작
+M_Y = PN_Y + 1.50          # 한 줄 설명
+B_Y = PN_Y + 1.84          # 하단 결론 2줄
+
+
+def die_grid(x, y, cols, rows, cell, gap, roles=None):
+    roles = roles or {}
+    for r in range(rows):
+        for c in range(cols):
+            i = r * cols + c
+            cx, cy = x + c * (cell + gap), y + r * (cell + gap)
+            role = roles.get(i)
+            if role == "parity":
+                rect(s, cx, cy, cell, cell, fill=BLUE)
+            elif role == "fail":
+                rect(s, cx, cy, cell, cell, fill=WHITE, line=RED, line_w=1.25)
+                rect(s, cx + cell * 0.18, cy + cell * 0.45, cell * 0.64, cell * 0.10, fill=RED)
+            elif role == "spare":
+                sp = rect(s, cx, cy, cell, cell, fill=WHITE, line=BLUE, line_w=1.0)
+                sp.line.dash_style = MSO_LINE_DASH_STYLE.DASH
+            else:
+                rect(s, cx, cy, cell, cell, fill=BLUE_T2)
+
+
+def panel(x, no, title, style="hot"):
+    if style == "hot":
+        rect(s, x, PN_Y, PN_W, PN_H, fill=WHITE, line=BLUE, line_w=1.25)
+        rect(s, x, PN_Y, PN_W, 0.05, fill=BLUE)
+    elif style == "part":
+        rect(s, x, PN_Y, PN_W, PN_H, fill=WHITE, line=BLUE_T2, line_w=1.0)
+        rect(s, x, PN_Y, PN_W, 0.05, fill=BLUE_T2)
     else:
-        sp = rect(s, x, ty, TW, th, fill=TINT, line=BLUE, line_w=1.0)
+        sp = rect(s, x, PN_Y, PN_W, PN_H, fill=TINT, line=BLUE, line_w=1.0)
         sp.line.dash_style = MSO_LINE_DASH_STYLE.DASH
-    tb(s, x + 0.2, ty + 0.14, TW - 0.4, 0.28, [(title, 12.0, True, BLUE if st != "next" else GRAY)])
-    yy = ty + 0.50
-    for k, v in rows:
-        tb(s, x + 0.2, yy, TW - 0.4, 0.62, [[(k + "  ", 9.5, True, INK), (v, 9.0, False, GRAY)]], spacing=1.02)
-        yy += 0.60
-tb(s, MX, ty + th + 0.10, CW, 0.36,
-   [[("삼성 과제  ", 10.5, True, BLUE), ("1,024다이급에서 패리티·예비 비율을 FFR과 용량 오버헤드 사이에서 재최적화 · FIP 감량 정책과 텔레메트리 필드를 OCP에 규격 제안 · 다이 고장 예측 모델을 KV 캐시 계층 수명 보증(6장)과 연결", 10.0, False, GRAY)]], spacing=1.02)
+    tb(s, x + 0.20, PN_Y + 0.13, PN_W - 0.40, 0.26, [(no + " " + title, 12.0, True, BLUE if style != "next" else GRAY)])
+    return x + 0.24, PN_W - 0.48
+
+
+def bottom(x, w, head, tail):
+    tb(s, x, B_Y, w, 0.28, [(head, 12.0, True, BLUE)])
+    tb(s, x, B_Y + 0.30, w, 0.26, [(tail, 9.25, False, GRAY_2)], spacing=1.0)
+
+
+CELL, GAP = 0.27, 0.06
+PX = MX
+# ① 다이 패리티
+gx, gw = panel(PX, "①", "다이 패리티 · 단일 고장 복구")
+die_grid(gx, V_Y, 8, 2, CELL, GAP, roles={5: "fail", 15: "parity"})
+tb(s, gx + 8 * (CELL + GAP) + 0.10, V_Y, gw - 8 * (CELL + GAP) - 0.10, 0.66,
+   [("15 + 1", 12.0, True, INK), ("데이터 15 · 패리티 1", 9.0, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+tb(s, gx, M_Y, gw, 0.28,
+   [[("다이 1개 고장", 10.5, True, GRAY), ("  →  ", 10.5, False, GRAY_2), ("XOR 복구", 10.5, True, BLUE),
+     ("  →  ", 10.5, False, GRAY_2), ("데이터 무손실", 10.5, True, INK)]])
+bottom(gx, gw, "요구 완화 79배 · 21 → 1,679 ppm", "용량 비용 6.2% · 선례 Micron RAIN(패리티 1:15)")
+
+# ② 여분 다이 · 재구축
+PX += PN_W + 0.22
+gx, gw = panel(PX, "②", "여분 다이 · 재구축 · 감량 운영")
+die_grid(gx, V_Y, 6, 2, CELL, GAP, roles={4: "fail"})
+ax_ = gx + 6 * (CELL + GAP) + 0.02
+rect(s, ax_, V_Y + 0.18, 0.30, 0.22, fill=BLUE, shape=MSO_SHAPE.RIGHT_ARROW)
+die_grid(ax_ + 0.40, V_Y, 1, 2, CELL, GAP, roles={0: "spare", 1: "spare"})
+tb(s, ax_ + 0.40 + CELL + 0.10, V_Y, gw - (ax_ - gx) - CELL - 0.50, 0.66,
+   [("여분 다이", 11.25, True, BLUE), ("고장 다이는 은퇴", 9.0, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+tb(s, gx, M_Y, gw, 0.28,
+   [[("재구축 ≈ 1시간", 10.5, True, INK), ("  →  ", 10.5, False, GRAY_2), ("보호 상태 복원 · 용량 유지", 10.5, True, BLUE)]])
+bottom(gx, gw, "요구 완화 1,000배 이상", "두 고장이 재구축 창에 겹칠 때만 상실 · 선례 삼성 PM1733 FIP")
+
+# ③ 텔레메트리 · 사전 은퇴
+PX += PN_W + 0.22
+gx, gw = panel(PX, "③", "텔레메트리 · 사전 은퇴", style="part")
+CHH = 0.90
+rect(s, gx, V_Y, gw, CHH, fill=WHITE, line=LINE, line_w=0.75)
+tb(s, gx + 0.10, V_Y + 0.04, 2.4, 0.2, [("다이별 RBER · XOR 복구 횟수", 8.75, False, GRAY_2)])
+pts = [0.16, 0.20, 0.25, 0.32, 0.44, 0.62, 0.86]
+bw = (gw - 0.30) / len(pts)
+thr = V_Y + CHH - 0.08 - (CHH - 0.30) * 0.74
+for i, v in enumerate(pts):
+    bh = (CHH - 0.30) * v
+    rect(s, gx + 0.14 + i * bw, V_Y + CHH - 0.08 - bh, bw * 0.58, bh, fill=BLUE_T2 if i < 5 else BLUE)
+rect(s, gx + 0.06, thr, gw - 0.12, 0.012, fill=RED)
+tb(s, gx + gw - 1.20, thr - 0.20, 1.14, 0.2, [("은퇴 임계", 8.75, True, RED)], align=PP_ALIGN.RIGHT)
+tb(s, gx, M_Y, gw, 0.28,
+   [[("돌발 고장", 10.5, True, GRAY), ("  →  ", 10.5, False, GRAY_2), ("징후 감지 · 사전 은퇴", 10.5, True, BLUE)]])
+bottom(gx, gw, "2,133다이 규모의 관리 가능성", "표준 필드: OCP SMART Cloud Health(C0) XOR 카운트")
+
+# ④ 호스트 (관측·수용만)
+PX += PN_W + 0.22
+gx, gw = panel(PX, "④", "호스트 · 플랫폼 (관측 · 수용)", style="next")
+rect(s, gx, V_Y, gw, 0.38, fill=WHITE, line=BLUE_T2, line_w=1.0)
+tb(s, gx + 0.14, V_Y, 0.9, 0.38, [("SSD", 11.25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, gx + 1.00, V_Y, gw - 1.14, 0.38, [("XOR 카운트 · 감량 예고 노출", 9.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+rect(s, gx + gw / 2 - 0.09, V_Y + 0.40, 0.18, 0.20, fill=BLUE_T2, shape=MSO_SHAPE.DOWN_ARROW)
+rect(s, gx, V_Y + 0.64, gw, 0.36, fill=WHITE, line=BLUE_T2, line_w=1.0)
+tb(s, gx + 0.14, V_Y + 0.64, 0.9, 0.36, [("호스트", 11.25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, gx + 1.00, V_Y + 0.64, gw - 1.14, 0.36, [("감량 운영 수용 · 드라이브 간 소거 부호", 9.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, gx, M_Y, gw, 0.28, [("해결 주체는 SSD · 협력은 규격화에 한정", 10.5, True, GRAY)])
+bottom(gx, gw, "삼성 과제 · OCP 규격 제안", "FIP 감량 정책 · 텔레메트리 필드 · 스트라이프 재설계")
 
 band(s, 9.42, 0.80, "결론",
-     "SSD 고장률 ≈ N × 다이 고장률에서 늘어난 N만큼을 다이 패리티·여분 다이·감량 운영으로 SSD 안에서 흡수합니다.\n이 축은 SSD 내부에서 충족되지만, 둘째 축 내구성(DWPD)은 SSD 내부에서 충족되지 않았습니다",
+     "다이 고장률을 낮추는 길은 한계에 가깝고, 요구를 되돌리는 것은 패리티·여분 다이라는 SSD 내부 구조입니다.\n"
+     "이 축은 SSD 안에서 충족되지만, 둘째 축 내구성(DWPD)은 SSD 안에서 충족되지 않았습니다",
      main_size=16.5, next_step=3)
-footer(s, "출처: JESD218(FFR), S3700 분해·Kioxia LC9·제품 사양(다이 수), 수율 모델(Leachman), Cai 외(다이 패리티), Micron RAIN, 삼성 PM1733(FIP), OCP SMART C0, MS Hyrax · 고장률 상한은 독립 고장 모델(추정)", 2)
-notes(s, "2장은 신뢰성 축, 고용량화가 낳는 첫째 축입니다. 3장의 내구성 축과 구조는 같지만 해결 주체가 다릅니다. 요구는 JESD218 기능 고장률 FFR 3% 이하로 고정인데, SSD당 NAND 다이 수는 S3700 800GB 128개(2012)에서 Kioxia LC9 245TB 1,024개(2025, 2Tb 다이 32단 스택 32패키지)로 8배 늘었습니다. 보호가 없으면 SSD 고장률은 다이 수 N에 비례하므로, 같은 FFR을 지키기 위한 다이 고장률 상한은 1−0.97^(1/N)로 128다이에서 2.4×10⁻⁴, 1,024다이에서 3.0×10⁻⁵입니다. 8배 엄격해진 것입니다. 칩 면적이 커질수록 수율이 떨어지는 포아송 모델과 같은 구조이며, 다이 고장률 개선은 기술적 한계에 접근하고 있습니다. "
-      "해법은 다이가 아니라 SSD 계층에 있습니다. 단일 다이 고장을 허용하면 상한이 p에서 p² 차수로 완화되기 때문입니다(독립 고장 모델, 오른쪽 차트의 점선). 첫째, 다이 패리티: 슈퍼페이지를 여러 다이에 걸쳐 구성하고 패리티 다이에 XOR를 저장해 단일 다이 고장을 복구합니다(Micron RAIN, Cai 외 논문). 비용은 패리티 다이 용량이며 다이 수가 늘수록 스트라이프 설계를 재최적화해야 합니다. 둘째, 여분 다이·다이 은퇴·감량 운영: 고장 다이를 감지해 데이터를 재배치하고 고장 다이를 제외한 채 운영합니다. 삼성 PM1733의 Fail-in-Place가 플레인 4GB·다이 8GB 감량 운영으로 이를 상용화했습니다. 비용은 예비 용량과 감량 시 고객 용량 계약 조건입니다. 셋째, 텔레메트리·사전 예측: 다이별 RBER 추이·XOR 복구 횟수·리드 리트라이로 징후를 감지해 사전 은퇴시킵니다. OCP SMART Cloud Health 로그의 XOR 복구 카운트가 표준 필드입니다. "
-      "호스트·플랫폼은 관측과 수용만 합니다. SSD가 노출한 지표를 관측하고(OCP SMART C0), 감량 운영을 플랫폼이 수용하며(Microsoft Hyrax), 드라이브 간 소거 부호가 SSD 단위 고장을 흡수합니다. 다이 고장의 해결 주체는 SSD이고 호스트 협력은 규격에 한정됩니다. 삼성 과제는 1,024다이급에서 패리티·예비 비율을 FFR과 용량 오버헤드 사이에서 재최적화하고, FIP 감량 정책과 텔레메트리 필드를 OCP에 규격으로 제안하며, 다이 고장 예측 모델을 6장의 수명 보증과 연결하는 것입니다. 결론: 이 축은 SSD 내부에서 충족되고 호스트에는 지표만 제공합니다. 그러나 둘째 축 DWPD는 SSD 내부에서 충족되지 않았고, 어느 계층이 충족할 수 있는지가 3장입니다. 근거는 소스 §9 F41~F47, 고장률 상한은 독립 고장 모델입니다.")
+footer(s, "출처: JESD218(FFR), 제품 사양(다이 수), Micron RAIN(다이 패리티), 삼성 PM1733 FIP, OCP SMART C0, Google FAST'16(현 수준 역산) · 요구 곡선은 독립 고장 모델(⚠️)", 2)
+notes(s, "2장은 신뢰성 축입니다. 요구는 구매자 사양이 정합니다. OCP 데이터센터 NVMe SSD 사양의 MTBF 200만 시간은 연간 고장률 0.44%, 5년 누적 21,662 ppm에 해당하고 이는 JEDEC JESD218의 기능 고장률 3%보다 엄격합니다. 이 요구가 고정인 상태에서 SSD당 NAND 다이 수는 61TB급 512개, 245·256TB급 1,024개, 512TB급 2,133개로 늘어납니다. 용량에 정비례하지는 않습니다. 2Tb 다이로 옮기면 같은 다이 수로 용량이 두 배가 되기 때문입니다. 대신 다이 1개가 안고 있는 데이터가 0.125TB에서 0.25TB로 두 배가 됩니다. "
+      "보호가 없으면 드라이브 고장률은 다이 수에 비례하므로, 다이 1개당 허용 고장률은 61TB급 43 ppm, 245TB급 21 ppm, 512TB급 10 ppm까지 내려갑니다. 현재 다이 고장률의 추정 수준은 200에서 2,700 ppm 범위입니다. 구글이 2016년 FAST에서 보고한 4년 내 배드 칩 발생 드라이브 비율 2~7%를 당시 다이 수 32~128개로 역산한 값이며, 다이 수가 공개되지 않아 폭이 넓습니다. 어느 쪽이든 보호 없이는 두 자릿수 배수로 미달합니다. "
+      "가운데 차트가 해법의 크기입니다. 15+1 단일 패리티는 같은 스트라이프에서 두 개가 동시에 고장나야 데이터를 잃으므로 요구가 1,679 ppm으로 79배 완화되고 용량 비용은 6.2%입니다. 마이크론이 RAIN에서 공개한 패리티 비율이 1대 15입니다. 14+2 이중 패리티는 8,455 ppm으로 395배 완화되고 비용은 12.5%입니다. 여분 다이로 재구축하면 두 번째 고장이 재구축 창 안에 겹쳐야 하므로 요구는 1,000배 이상 완화되어 실질적으로 해소됩니다. 단, 이중 패리티와 여분 다이는 공개 문헌에서 벤더 적용 사례를 확인하지 못한 모델 옵션입니다. 확인된 공개 사실은 마이크론의 단일 칩 고장 보호와 삼성 PM1733의 Fail-in-Place입니다. "
+      "오른쪽 판정이 이 장의 결론입니다. 245·256TB급은 단일 패리티 요구가 1,679 ppm으로 현 수준 추정 범위 안에 들어와 충족 가능합니다. 512TB급은 단일 패리티 요구가 1,164 ppm으로 현 수준 상단에 미달하므로 이중 패리티나 여분 다이 재구축이 필요합니다. 512TB 세대의 설계 결정이 여기서 나옵니다. "
+      "하단은 SSD 내부 해법 도해입니다. 첫째 다이 패리티는 슈퍼페이지를 여러 다이에 걸쳐 구성하고 패리티에 XOR를 저장해 단일 다이 고장을 복구합니다. 둘째 여분 다이는 고장 다이를 은퇴시키고 재구축으로 보호 상태를 복원하며 용량을 유지합니다. 셋째 텔레메트리는 다이별 RBER 추이와 XOR 복구 횟수로 징후를 감지해 돌발 고장을 계획 감량으로 바꿉니다. 다만 구글 연구는 RBER이 UBER나 고장을 예측하지 못한다고 보고했으므로 예측 지표는 RBER 단독이 아니라 XOR 복구 횟수와 배드 블록 증가율을 함께 봐야 합니다. 넷째 호스트는 관측과 수용만 합니다. 해결 주체는 SSD이고 호스트 협력은 규격화에 한정됩니다. 결론은 이 축이 SSD 안에서 충족된다는 것이며, 둘째 축 DWPD가 3장입니다.")
 
 # ================================================================ S3. 해법 사다리 — 이관 매트릭스 (solution_ladder_slide.build 공용; v5.1 3장: 둘째 축 DWPD는 SSD 밖에서 닫힌다)
 import sys as _sys
@@ -567,8 +656,8 @@ header(s, 4,
 
 T_Y, T_H, T_W, T_GAP = 2.80, 0.96, 4.41, 0.26
 tiles = [
-    ("2~10배", 1.55, "내구성 격차", "동급 61TB QLC 0.58~1.0 · 245TB 0.3 vs TLC 1~3 DWPD"),
-    ("25배", 1.45, "스트림 격차", "RUH 2~8개 vs 200개 이상"),
+    ("2~5배", 1.35, "내구성 격차", "요구 1~3 DWPD ÷ 현 QLC 정격 0.6"),
+    ("16개", 1.35, "요구 분리 스트림", "호스트가 여는 배치 스트림 상한 · 제품 지원 수는 업계 미공개"),
     ("0건", 1.25, "접점 부재", "캐시 관리자 4종 코드의 배치 규격 언급"),
     ("≈3 → ≈1", 1.85, "해소 수단 실증", "범용·캐시 WAF 실측 · KV 캐시 미실측"),
 ]
@@ -604,14 +693,14 @@ phase_defs = [
       "Dynamo KVBM · LMCache · Mooncake · FlexKV",
       "NIXL · GPUDirect Storage · io_uring · SPDK",
       "Linux write streams · XFS · CMX(DOCA Memos)",
-      "RUH 200+ 펌웨어 · 2Tb QLC · NVMe KV 확장 · 텔레메트리"],
+      "배치 핸들 16+ 지원·공개 · 2Tb QLC · NVMe KV 확장 · 텔레메트리"],
      "고객 보증 범위: 정격 내 QLC 원가·전력"),
     ("Phase 2", "워크로드 실측 기반 최적화", ["none", "none", "touch", "touch", "own"],
      ["vLLM · SGLang · TensorRT-LLM",
       "KVBM 빈도 필터 · LMCache 퇴거 정책(트레이스 원천)",
       "io_uring·GDS 백엔드 write stream 부착 · xNVMe · blktrace·eBPF",
       "Linux 6.16 write streams · XFS·f2fs 스트림 · CMX 힌트 매핑 검증",
-      "RUH 정책(수명·테넌트·prefix) · WAF·유효 DWPD 실측"],
+      "배치 핸들 정책(수명·테넌트·prefix) · WAF·유효 DWPD 실측"],
      "고객 보증 범위: 고객 워크로드 기준 수명"),
     ("Phase 3", "고객 시스템 내 공동 설계", ["touch", "own", "own", "own", "own"],
      ["커넥터·스케줄러 분석 · 공용 TCO 모델(GPU당 사용자·TTFT·전력)",
@@ -664,18 +753,18 @@ rect(s, MX + P_W + 0.33, BAR_Y, P_W * 0.15, BAR_H, fill=BLUE_T2)
 mk_x = MX + P_W * 0.60
 rect(s, mk_x - 0.13, BAR_Y + BAR_H + 0.03, 0.26, 0.18, fill=BLUE, shape=MSO_SHAPE.ISOSCELES_TRIANGLE)
 tb(s, mk_x + 0.22, BAR_Y + BAR_H - 0.02, 13.0, 0.30,
-   [[("삼성 현 위치  ", 13.5, True, BLUE), ("Phase 1 진행 중(QLC 라인 RUH 2~8 → 200+ 미완 · DWPD 미공개 · CMX 첫 공급은 TLC) · Phase 2 준비 · Phase 3 미착수", 12.0, False, GRAY)]],
+   [[("삼성 현 위치  ", 13.5, True, BLUE), ("Phase 1 진행 중(QLC 라인의 배치 핸들 수·유효 DWPD 미공개 · CMX 첫 공급은 TLC) · Phase 2 준비 · Phase 3 미착수", 12.0, False, GRAY)]],
    anchor=MSO_ANCHOR.MIDDLE)
 
 band(s, 9.46, 0.76, "결론",
      "단계마다 고객 보증 범위가 원가·전력 → 워크로드 수명 → 시스템 TCO로 확장됩니다.\n삼성은 1단계 진행 중·2단계 준비 단계이며, 3단계 진입 수단이 다음 장입니다",
      main_size=17, next_step=5)
-footer(s, "출처: StorageReview·Solidigm·Kioxia 스펙(DWPD), ScaleFlux 2026-07(RUH 200+), GitHub README 확인(LMCache·Mooncake·FlexKV·3FS·xNVMe), CacheLib FDP 문서(WAF), Linux 6.16·XFS 패치, NVIDIA CMX 문서", 4)
+footer(s, "출처: Solidigm·Kioxia·Micron 사양(DWPD), NVMe 스펙(네임스페이스당 배치 핸들 128 상한)·XFS 쓰기 스트림 16, GitHub README 확인(LMCache·Mooncake·FlexKV·xNVMe), CacheLib FDP 문서(WAF), Linux 6.16, NVIDIA CMX 문서", 4)
 notes(s, "4장은 해법의 제안입니다. 1장이 제기한 내구성 격차를 해소하는 경로이며, 3장의 산식에서 남은 보상 변수는 WAF이고, WAF는 호스트가 데이터 수명에 따라 배치를 결정할 때 1에 수렴하므로 내구성 격차는 디바이스가 아니라 고객 시스템의 배치 방식에서 해소됩니다. 그래서 역량을 디바이스에서 고객 시스템 계층까지 3단계로 확장합니다. 리드의 인용은 베인 신문섭 파트너의 진단으로 같은 결론입니다. "
-      "상단 타일은 격차와 수단입니다. 내구성 격차(QLC 정격 0.075~0.6 vs TLC 1~3 DWPD, 10~40배), 스트림 격차(RUH 2~8 vs 200 이상), 접점 부재(KV 캐시 관리자 4종 코드에 배치 규격 언급 0건), 해소 수단 실증(CacheLib 배치 표준 적용 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). "
-      "그림은 고객 시스템 5계층을 세 번 그리고 삼성이 닿는 층을 색으로 표시하며(파랑 = 삼성 코드·제품, 연파랑 = 관측·분석, 흰색 = 고객 영역), 각 층에 그 층을 구성하는 기술을 적었습니다. 응용·추론 엔진(vLLM·SGLang·TensorRT-LLM), KV 캐시 관리자(NVIDIA Dynamo KVBM·LMCache·Mooncake·Tencent FlexKV), I/O 라이브러리(NIXL·GPUDirect Storage·io_uring·SPDK/xNVMe), 커널·플랫폼(Linux 6.16 write streams·XFS/f2fs 스트림·NVIDIA CMX와 DOCA Memos), SSD 디바이스(컨트롤러·펌웨어 RUH·2Tb QLC·NVMe KV 확장·텔레메트리). "
-      "Phase 1 배치 표준 디바이스 확보: SSD 층만 삼성의 범위이며 고객 보증 범위는 정격 내 QLC 원가·전력입니다. Phase 2 워크로드 실측 기반 최적화: 캐시 관리자의 빈도 필터·퇴거 정책이 트레이스의 원천이고, I/O 라이브러리의 io_uring·GDS 백엔드에 write stream을 부착하며 커널 스트림과 CMX 힌트 매핑을 검증해 RUH 정책·WAF·유효 DWPD 실측을 공개합니다. 고객 보증 범위는 고객 워크로드 기준 수명입니다. Phase 3 고객 시스템 내 공동 설계: 캐시 관리자 4종에 플러그인을 메인라인으로 머지하고, NIXL·xNVMe가 기본 백엔드가 되며, DOCA Memos와 배치 표준의 매핑을 NVIDIA와 공동 정의하고, 응용 층은 커넥터·스케줄러를 분석해 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)로 협의합니다. FDE(Forward Deployed Engineer)가 고객 시스템에 상주합니다. 고객 보증 범위는 시스템 수준 TCO입니다. "
-      "삼성 현 위치는 정직하게 Phase 1 진행 중입니다. CMX 첫 공급은 TLC이고 QLC 라인의 RUH는 2~8개로 200개 이상에 미달하며 DWPD가 미공개입니다. Phase 2는 준비 단계로 KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고, Phase 3는 캐시 관리자 4종 기여 0건으로 미착수입니다. 오케스트레이션 자체는 만들지 않습니다. 결론: 단계마다 고객 보증 범위가 원가·전력 → 워크로드 수명 → 시스템 TCO로 확장되며, 3단계에 진입하는 수단(선별된 고객에의 FDE·업스트림·규격 채널)과 개발실 내부 실행이 5장입니다.")
+      "상단 타일은 격차와 수단입니다. 내구성 격차(요구 1~3 DWPD 대비 현 QLC 정격 0.6으로 2~5배), 요구 분리 스트림 16개(XFS 쓰기 스트림 상한, 제품 지원 수는 업계 미공개), 접점 부재(KV 캐시 관리자 4종 코드에 배치 규격 언급 0건), 해소 수단 실증(CacheLib 배치 표준 적용 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). "
+      "그림은 고객 시스템 5계층을 세 번 그리고 삼성이 닿는 층을 색으로 표시하며(파랑 = 삼성 코드·제품, 연파랑 = 관측·분석, 흰색 = 고객 영역), 각 층에 그 층을 구성하는 기술을 적었습니다. 응용·추론 엔진(vLLM·SGLang·TensorRT-LLM), KV 캐시 관리자(NVIDIA Dynamo KVBM·LMCache·Mooncake·Tencent FlexKV), I/O 라이브러리(NIXL·GPUDirect Storage·io_uring·SPDK/xNVMe), 커널·플랫폼(Linux 6.16 write streams·XFS/f2fs 스트림·NVIDIA CMX와 DOCA Memos), SSD 디바이스(컨트롤러·배치 핸들 펌웨어·2Tb QLC·NVMe KV 확장·텔레메트리). "
+      "Phase 1 배치 표준 디바이스 확보: SSD 층만 삼성의 범위이며 고객 보증 범위는 정격 내 QLC 원가·전력입니다. Phase 2 워크로드 실측 기반 최적화: 캐시 관리자의 빈도 필터·퇴거 정책이 트레이스의 원천이고, I/O 라이브러리의 io_uring·GDS 백엔드에 write stream을 부착하며 커널 스트림과 CMX 힌트 매핑을 검증해 배치 핸들 정책·WAF·유효 DWPD 실측을 공개합니다. 고객 보증 범위는 고객 워크로드 기준 수명입니다. Phase 3 고객 시스템 내 공동 설계: 캐시 관리자 4종에 플러그인을 메인라인으로 머지하고, NIXL·xNVMe가 기본 백엔드가 되며, DOCA Memos와 배치 표준의 매핑을 NVIDIA와 공동 정의하고, 응용 층은 커넥터·스케줄러를 분석해 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)로 협의합니다. FDE(Forward Deployed Engineer)가 고객 시스템에 상주합니다. 고객 보증 범위는 시스템 수준 TCO입니다. "
+      "삼성 현 위치는 정직하게 Phase 1 진행 중입니다. CMX 첫 공급은 TLC이고 QLC 라인의 배치 핸들 수와 유효 DWPD는 공개돼 있지 않습니다. Phase 2는 준비 단계로 KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고, Phase 3는 캐시 관리자 4종 기여 0건으로 미착수입니다. 오케스트레이션 자체는 만들지 않습니다. 결론: 단계마다 고객 보증 범위가 원가·전력 → 워크로드 수명 → 시스템 TCO로 확장되며, 3단계에 진입하는 수단(선별된 고객에의 FDE·업스트림·규격 채널)과 개발실 내부 실행이 5장입니다.")
 
 # ================================================================ S5. 실행 — 고객 선별(FDE 집중) + 개발실 내부 실행 (v5.0: 자회사·별도 보상·결정 요청 제외)
 s = prs.slides.add_slide(BLANK)
@@ -724,7 +813,7 @@ gy0 = ry + 0.34
 gh = 9.42 - 0.20 - gy0
 tb(s, LX, gy0, LW_, 0.24, [[("단계별 통과 조건", 11.25, True, BLUE), ("   각 단계의 증명이 다음 단계의 승인 근거", 9.5, False, GRAY_2)]])
 gates = [("90일", "등대 고객 1사 트레이스 확보 · KV 캐시 실측(WAF·유효 DWPD) 공개 · 캐시 관리자 플러그인 PR 1건", False),
-         ("12개월", "플러그인 메인라인 머지 · 고객 워크로드에서 QLC 유효 DWPD ≥ 1 실증 · 조건부 보증 초안(6장)", False),
+         ("12개월", "플러그인 메인라인 머지 · 고객 워크로드에서 QLC 유효 DWPD ≥ 1 실증 · WAF 급등 감지·대응 시제품(6장)", False),
          ("2027H1", "디자인인 1사 · 협약에 공동 설계 조항 제안 · 레퍼런스 스택 공개 → 공급 완화 전 락인", True)]
 gw = (LW_ - 2 * 0.22) / 3
 for i, (t, d, hot) in enumerate(gates):
@@ -773,65 +862,116 @@ notes(s, "5장은 실행입니다. 4장의 3단계에 진입하는 수단을 고
       "개발실 내부 실행은 별도 투자 없이 개발 자원 재배치로 합니다. 조직: 시스템 소프트웨어 조직 강화, 개발실 소속 Co-Design Pod, 미주 법인 협업. 인사: 고객 코드를 읽고 고칠 수 있는 시스템 SW 전문가 채용·양성(정원 내), 본사 엔지니어 상주 로테이션, 성과 평가는 머지·실측 공개·디자인인. 문화: 오픈소스 메인테이너 배출, 업스트림 우선, KV 캐시 실측 업계 최초 공개. 자회사 설립, 별도 보상 체계, 지분 참여, 결정 요청은 위키에만 두고 덱에서는 제외했습니다. "
       "단계별 통과 조건은 90일(등대 고객 트레이스 확보·KV 캐시 실측 공개·플러그인 PR), 12개월(메인라인 머지·유효 DWPD 1 이상 실증·조건부 보증 초안), 2027년 상반기(디자인인 1사·협약 공동 설계 조항 제안·레퍼런스 스택 공개)이며 각 단계의 증명이 다음 단계의 승인 근거입니다. 판돈은 락인으로 얻는 점유율입니다. 수요 모델에서 2030년 추론 캐시 계층 350EB 중 QLC는 호스트 협력이 성립할 때 조건부 상방 175EB(50%)이고, 성립하지 않으면 TLC가 유지됩니다. 디자인인 1사당 점유율 변화는 사내 수치로 확인합니다. 비용은 Pod 인력 3~5명 × 1~2사 재배치와 정원 내 채용이며 별도 투자가 없습니다. 실행의 마지막 리스크인 수명 보증·SLA가 6장입니다.")
 
-# ================================================================ S6. 수명 보증 · SLA 리스크 (v5.0 신설) + 6장 요약 체인
+# ================================================================ S6. WAF 런타임 대응 기술 (v6.0: 조건부 보증 → 감지·대응 기술 확보로 축 이동)
 s = prs.slides.add_slide(BLANK)
 header(s, 6,
-       "유효 DWPD 보증은 WAF 변동 리스크를 수반하므로 텔레메트리 기반 조건부 보증으로 설계합니다",
-       "관행은 5년 또는 TBW·DWPD 선도달 보증입니다. 호스트 배치를 전제로 한 유효 DWPD는 WAF가 오르면 그대로 삼성의 보증 부담이 됩니다.")
+       "WAF 변동 리스크는 계약이 아니라 런타임 감지·대응 기술로 흡수하며, 그 기술 요소를 확보합니다",
+       "조건부 보증은 리스크를 고객에게 되돌려 수용성이 낮습니다. 같은 리스크를 WAF 급등 감지와 런타임 재구성으로 흡수합니다.")
+
 
 def _img6(name, x, y, w):
     return s.shapes.add_picture(os.path.join(ASSETS, name), Inches(x), Inches(y), width=Inches(w))
 
-# ---- 좌: 메커니즘 차트 + 리스크 시나리오 3 ----
-LW6 = 6.4
-_img6("sla_effective_dwpd.png", MX, 2.80, LW6)                   # 5.4×2.6 → 6.4×3.08
-ry = 2.80 + 3.08 + 0.18
-tb(s, MX, ry, LW6, 0.26, [("리스크 시나리오 · WAF가 오르는 경우", 12.0, True, BLUE)])
-scen = [("① 워크로드 변화", "퇴거 정책 · 프리픽스 재사용률 · 세션 길이가 바뀌면 데이터 수명 분포가 바뀜 → WAF ↑ (KV 캐시 쓰기 강도 자체가 프레임워크별로 상이)"),
-        ("② 오분류 · RUH 간섭", "수명 오분류와 RUH 간 간섭(noisy RUH)이 격리를 깨면 다른 핸들의 WAF까지 상승 (FAST'26 WARP)"),
-        ("③ 고객 스택 업데이트", "캐시 관리자 · I/O 라이브러리 버전 변경으로 배치 힌트가 사라지면 정격 WAF ≈3으로 회귀")]
-sy = ry + 0.32
-for k, v in scen:
-    rect(s, MX, sy + 0.06, 0.10, 0.10, fill=BLUE)
-    tb(s, MX + 0.2, sy, LW6 - 0.2, 0.62, [[(k + "  ", 9.75, True, INK), (v, 9.0, False, GRAY)]], spacing=1.02)
-    sy += 0.66
-tb(s, MX, sy + 0.02, LW6, 0.26, [[("결과  ", 9.75, True, BLUE), ("보증 기간 내 TBW 조기 소진 → RMA · 교체 비용을 삼성이 부담", 9.5, False, GRAY)]])
 
-# ---- 우: 보증 설계 원칙 5 ----
-RX6 = MX + LW6 + 0.34
+# ---- 상단 좌: 목표 동작 차트 ----
+A_Y, A_H = 2.80, 2.92
+CHW6 = 6.85
+_img6("s6_waf_runtime.png", MX, A_Y, CHW6)
+
+# ---- 상단 우: 감지 → 판단 → 대응 → 검증 루프 ----
+RX6 = MX + CHW6 + 0.22
 RW6 = RIGHT - RX6
-rect(s, RX6, 2.80, RW6, 9.22 - 2.80 - 1.22, fill=WHITE, line=LINE, line_w=0.75)
-tb(s, RX6 + 0.3, 2.94, RW6 - 0.6, 0.28, [[("보증 설계 원칙", 13.5, True, BLUE), ("   관행을 유지하고, 유효 DWPD는 조건부로만 표기", 10.0, False, GRAY_2)]])
-rect(s, RX6 + 0.3, 3.30, RW6 - 0.6, 0.012, fill=LINE)
-principles = [
-    ("1", "보증 기준은 관행대로 TBW · 물리 매체 기록량 선도달", "5년 또는 TBW·DWPD 선도달(삼성 PM9A3 · Micron 관행) · 유효 DWPD는 부가 표기이지 보증 기준이 아님"),
-    ("2", "유효 DWPD는 WAF 밴드별 조건부 등급", "WAF ≤ 1.2 / ≤ 2.0 / > 2.0 각각에 보증 DWPD를 매핑 · 정격 0.58은 WAF 1.74에서 1.0 아래로 내려가므로 밴드 경계를 명시"),
-    ("3", "양측이 같은 텔레메트리로 WAF를 관측", "OCP SMART C0 물리 매체 기록량 ÷ 호스트 기록량 = WAF · 분기 실측 리포트를 계약 부속으로"),
-    ("4", "배치 규격 준수 조건", "RUH 매핑 가이드 · 캐시 관리자 정책 준수 시에만 유효 DWPD 적용, 미준수 · 힌트 손실 시 정격 기준으로 자동 복귀"),
-    ("5", "재협상 · 감량 운영 조항", "WAF 초과가 지속되면 등급 재조정 또는 감량 운영(2장 FIP 유사) · 무상 교체가 아니라 조건 재설정"),
+rect(s, RX6, A_Y, RW6, A_H, fill=WHITE, line=LINE, line_w=0.75)
+tb(s, RX6 + 0.24, A_Y + 0.12, RW6 - 0.48, 0.26,
+   [[("런타임 대응 루프", 13.5, True, BLUE), ("   목표 주기 · 감지 1시간 · 회복 4시간", 10.0, False, GRAY_2)]])
+LB_Y, LB_H = A_Y + 0.46, 1.74
+LB_N = 4
+LB_AR = 0.26
+LB_W = (RW6 - 0.48 - (LB_N - 1) * LB_AR) / LB_N
+stages = [
+    ("① 관측", "RUH별 기록량 비교", ["호스트 기록량 ÷ 물리 매체 기록량", "핸들별 · 초 단위 샘플링"], "device"),
+    ("② 감지 · 분류", "변화점 탐지", ["수명 오분류 · 핸들 간 간섭", "힌트 손실 · 워크로드 전환"], "device"),
+    ("③ 대응", "런타임 재구성", [], "split"),
+    ("④ 검증", "재측정 · 롤백", ["목표 미달 시 이전 구성으로 복귀", "대응 이력이 보증 근거"], "device"),
 ]
-py6 = 3.44
-for no, head, body in principles:
-    rect(s, RX6 + 0.3, py6 + 0.03, 0.30, 0.30, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, RX6 + 0.3, py6 + 0.03, 0.30, 0.30, [(no, 10.5, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, RX6 + 0.74, py6, RW6 - 1.04, 0.26, [(head, 11.25, True, INK)])
-    tb(s, RX6 + 0.74, py6 + 0.27, RW6 - 1.04, 0.5, [(body, 9.25, False, GRAY)], spacing=1.02)
-    py6 += 0.84
-tb(s, RX6 + 0.3, py6 + 0.02, RW6 - 0.6, 0.4,
-   [[("근거  ", 9.5, True, INK), ("삼성 PM9A3 보증(5년 또는 DWPD 선도달) · Micron 엔터프라이즈 SSD 보증 · OCP Cloud SSD SMART C0(WAF 산출 목적 명시) · FAST'26 WARP(조건부 WAF) · CHEOPS'25(KV 오프로드 I/O 특성)", 9.0, False, GRAY)]], spacing=1.0)
+for i, (no, head, lines, kind) in enumerate(stages):
+    x = RX6 + 0.24 + i * (LB_W + LB_AR)
+    hot = i == 2
+    rect(s, x, LB_Y, LB_W, LB_H, fill=TINT if hot else WHITE, line=BLUE if hot else LINE, line_w=1.25 if hot else 0.75)
+    tb(s, x + 0.14, LB_Y + 0.10, LB_W - 0.28, 0.22, [(no, 10.5, True, BLUE)])
+    tb(s, x + 0.14, LB_Y + 0.32, LB_W - 0.28, 0.24, [(head, 11.25, True, INK)])
+    if kind == "split":
+        sy = LB_Y + 0.60
+        for who, body, own in [("디바이스", "FDP 구성 전환 · RU 크기\n핸들 재할당 · GC · SLC 정책", True),
+                               ("호스트", "캐시 정책 · 스트림 매핑\n어드미션 · 셰이핑", False)]:
+            rect(s, x + 0.12, sy, LB_W - 0.24, 0.52, fill=BLUE if own else WHITE, line=None if own else BLUE_T2, line_w=1.0)
+            tb(s, x + 0.20, sy + 0.03, 0.9, 0.2, [(who, 9.0, True, WHITE if own else BLUE)])
+            tb(s, x + 0.20, sy + 0.21, LB_W - 0.40, 0.30,
+               [(ln, 8.5, False, BLUE_T2 if own else GRAY) for ln in body.split("\n")], spacing=1.0)
+            sy += 0.58
+    else:
+        yy = LB_Y + 0.62
+        for ln in lines:
+            rect(s, x + 0.14, yy + 0.07, 0.08, 0.08, fill=BLUE_T2)
+            tb(s, x + 0.30, yy, LB_W - 0.44, 0.38, [(ln, 9.0, False, GRAY)], spacing=1.0)
+            yy += 0.40
+    if i < LB_N - 1:
+        rect(s, x + LB_W + 0.03, LB_Y + LB_H / 2 - 0.10, LB_AR - 0.06, 0.20, fill=BLUE, shape=MSO_SHAPE.RIGHT_ARROW)
+ret_y = LB_Y + LB_H + 0.10
+rect(s, RX6 + 0.24, ret_y, RW6 - 0.48, 0.34, fill=TINT)
+rect(s, RX6 + 0.30, ret_y + 0.07, 0.20, 0.20, fill=BLUE, shape=MSO_SHAPE.LEFT_ARROW)
+tb(s, RX6 + 0.58, ret_y, RW6 - 0.82, 0.34,
+   [[("루프 반복  ", 10.0, True, BLUE), ("대응 결과를 다시 관측해 정책을 갱신합니다 · 오실레이션 방지와 성능 영향 상한은 정책 엔진이 관리", 9.5, False, GRAY)]],
+   anchor=MSO_ANCHOR.MIDDLE)
+
+# ---- 하단: 핵심 기술 요소 6 ----
+B_Y = A_Y + A_H + 0.22
+tb(s, MX, B_Y, CW, 0.26,
+   [[("확보해야 할 핵심 기술 요소", 13.5, True, BLUE), ("   현 수준과 필요 수준의 차이가 개발 과제입니다", 10.5, False, GRAY_2)]])
+T_Y6 = B_Y + 0.34
+T_H6 = 1.86
+T_W6 = (CW - 5 * 0.18) / 6
+techs = [
+    ("T1", "RUH별 WAF 텔레메트리", "드라이브 단위 누적값만 (OCP SMART C0)", "핸들별·구간별 분해 · 초 단위 샘플링", True),
+    ("T2", "급등 감지 알고리즘", "사후 로그 분석에 의존", "온디바이스 변화점 탐지 · 오탐 억제", True),
+    ("T3", "무중단 FDP 재구성", "구성은 네임스페이스 생성 시 고정", "운영 중 구성 전환 · 데이터 이전 경로", True),
+    ("T4", "디바이스 → 호스트 경보", "배치 열화를 알리는 규격 없음", "비동기 이벤트 · 원인 코드 · 권고 조치", False),
+    ("T5", "정책 엔진 · 안전장치", "수동 조치", "오실레이션 방지 · 성능 영향 상한 · 롤백", False),
+    ("T6", "검증 환경", "실드라이브 실험만", "FDP 에뮬레이터 · 트레이스 재생 회귀", False),
+]
+for i, (no, name, now, need, own) in enumerate(techs):
+    x = MX + i * (T_W6 + 0.18)
+    rect(s, x, T_Y6, T_W6, T_H6, fill=WHITE, line=BLUE if own else LINE, line_w=1.25 if own else 0.75)
+    rect(s, x, T_Y6, T_W6, 0.05, fill=BLUE if own else BLUE_T2)
+    tb(s, x + 0.16, T_Y6 + 0.14, T_W6 - 0.32, 0.22, [(no, 10.5, True, BLUE if own else GRAY_2)])
+    tb(s, x + 0.16, T_Y6 + 0.36, T_W6 - 0.32, 0.50, [(name, 11.25, True, INK)], spacing=1.04)
+    rect(s, x + 0.16, T_Y6 + 0.92, T_W6 - 0.32, 0.012, fill=LINE)
+    tb(s, x + 0.16, T_Y6 + 1.00, T_W6 - 0.32, 0.36, [[("현  ", 9.0, True, GRAY_2), (now, 9.0, False, GRAY)]], spacing=1.0)
+    tb(s, x + 0.16, T_Y6 + 1.42, T_W6 - 0.32, 0.38, [[("필요  ", 9.0, True, BLUE), (need, 9.0, True, INK)]], spacing=1.0)
+S_Y6 = T_Y6 + T_H6 + 0.14
+rect(s, MX, S_Y6, CW, 0.62, fill=TINT, line=BLUE_T2, line_w=1.0)
+tb(s, MX + 0.24, S_Y6 + 0.06, 9.4, 0.24,
+   [[("규격 과제  ", 10.5, True, BLUE), ("NVMe 런타임 FDP 재구성 · 핸들별 기록량 필드 · 배치 열화 이벤트 / OCP 텔레메트리 필드와 수용 기준", 10.0, False, GRAY)]])
+tb(s, MX + 0.24, S_Y6 + 0.30, 9.4, 0.24,
+   [[("보증 조항  ", 10.5, True, BLUE), ("기준은 관행대로 TBW 선도달 · 유효 DWPD는 부가 표기 · 대응 이력과 재측정 리포트를 계약 부속으로", 10.0, False, GRAY)]])
+tb(s, MX + 10.0, S_Y6 + 0.06, CW - 10.24, 0.48,
+   [("기술이 흡수한 만큼만 계약에 남깁니다. 고객에게 조건을 요구하는 대신 삼성이 되돌립니다", 10.5, True, BLUE)],
+   anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
 
 band_chain(s, 9.10, 1.06, "요약", [
-    ("1 문제", "요구 이동: 고용량\n1~3 DWPD · 동급 2~10배"),
-    ("2 신뢰성", "다이 8배 ↑\nSSD 내부에서 해결"),
+    ("1 문제", "요구 이동: 고용량\n1~3 DWPD · 2~5배 격차"),
+    ("2 신뢰성", "다이 수 증가\nSSD 내부에서 해결"),
     ("3 해법 사다리", "WAF는 SSD 밖 호스트에\n고객 협업 · 새 역량"),
     ("4 역량", "디바이스 → 워크로드\n→ 고객 시스템"),
     ("5 실행", "FDE 선별 집중\n개발실 자원 투입"),
-    ("6 보증 · SLA", "TBW 기준 유지\nWAF 조건부 유효 DWPD"),
+    ("6 대응 · 보증", "WAF 급등 감지 ·\n런타임 대응 기술 확보"),
 ], head_size=11.25, body_size=9.75)
-footer(s, "출처: 삼성 PM9A3·Micron 엔터프라이즈 SSD 보증 정책, OCP NVMe Cloud/Datacenter SSD 사양(SMART C0), USENIX FAST'26 WARP, ACM CHEOPS'25, P5336·6550 ION·LC9 사양(정격 DWPD) · 유효 DWPD 곡선은 정격 WAF ≈3 가정의 산식(⚠️)", 6)
-notes(s, "6장은 수명 보증과 SLA 리스크입니다. 4장·5장의 전략은 고객 시스템 위에서 유효 DWPD를 보증하는 수익 모델을 전제하는데, 그 보증은 워크로드 변화 리스크를 삼성이 떠안는 구조입니다. 관행은 5년 또는 TBW·DWPD 선도달 보증이고, 정격 DWPD는 WAF 약 3(랜덤 4KB) 기준으로 산정됩니다. 호스트 배치로 WAF가 1에 가까우면 유효 DWPD는 정격의 약 3배가 되지만, WAF가 오르면 그대로 내려갑니다. 왼쪽 차트에서 정격 0.58(61TB QLC)은 WAF 1.74에서 보증선 1.0 아래로 내려가고, 정격 0.3(245TB)은 WAF 1.0에서도 0.9에 그칩니다. "
-      "리스크 시나리오는 세 가지입니다. 첫째, 워크로드 변화: 퇴거 정책·프리픽스 재사용률·세션 길이가 바뀌면 데이터 수명 분포가 바뀌어 WAF가 오릅니다. KV 캐시 오프로드의 쓰기 강도 자체가 프레임워크에 따라 크게 다릅니다(CHEOPS 2025). 둘째, 오분류·RUH 간섭: FAST'26 WARP는 수명 오분류와 RUH 간 간섭이 격리를 깨면 다른 핸들의 WAF까지 오른다고 보고합니다. 셋째, 고객 스택 업데이트: 캐시 관리자나 I/O 라이브러리 버전이 바뀌어 배치 힌트가 사라지면 정격 WAF 3으로 회귀합니다. 결과는 보증 기간 내 TBW 조기 소진과 RMA·교체 비용입니다. "
-      "설계 원칙은 다섯 가지입니다. 첫째, 보증 기준은 관행대로 TBW·물리 매체 기록량 선도달로 두고 유효 DWPD는 부가 표기로만 씁니다. 둘째, 유효 DWPD는 WAF 밴드별 조건부 등급으로 표기합니다. 셋째, OCP SMART C0의 물리 매체 기록량과 호스트 기록량으로 양측이 같은 WAF를 관측하고 분기 실측 리포트를 계약 부속으로 둡니다. 넷째, RUH 매핑 가이드와 캐시 관리자 정책을 준수할 때만 유효 DWPD를 적용하고 미준수·힌트 손실 시 정격 기준으로 자동 복귀합니다. 다섯째, WAF 초과가 지속되면 등급 재조정 또는 감량 운영으로 대응하며 무상 교체가 아니라 조건 재설정입니다. 이 설계는 5장의 텔레메트리·실측 공개 실행 항목과 2장의 감량 운영 정책을 계약 언어로 옮긴 것입니다. 하단 요약 체인은 6장의 논리입니다.")
+footer(s, "출처: OCP 사양(SMART C0), NVMe TP4146 FDP 구성 정의, FAST'26 WARP(배치 실패 조건·에뮬레이터), 삼성 PM9A3·Micron 보증 정책 · 목표 동작 곡선은 모식도(⚠️)", 6)
+notes(s, "6장입니다. 종전 문안은 유효 DWPD를 WAF 밴드별 조건부로 보증하는 계약 설계였는데, 그 구조는 워크로드가 바뀌면 보증이 깨지는 책임을 사실상 고객에게 되돌립니다. 고객이 받아들이기 어렵습니다. 그래서 축을 옮깁니다. 같은 리스크를 계약이 아니라 기술로 흡수합니다. WAF가 갑자기 오르는 것을 감지하고 런타임에 되돌리는 기술을 삼성이 갖는 것입니다. "
+      "왼쪽 그림이 목표 동작입니다. 실측이 아니라 모식도입니다. 정상 구간에서 WAF는 1.05 수준입니다. 워크로드가 바뀌거나 배치 힌트가 사라지면 2.7 수준으로 뜁니다. 대응이 없으면 붉은 점선처럼 정격 수준에 머물고, 그 차이 면적이 그대로 초과 기입량이자 보증 수명 손실입니다. 목표는 한 시간 안에 감지하고 네 시간 안에 회복하는 것입니다. "
+      "오른쪽이 루프입니다. 관측 단계에서 호스트 기록량을 물리 매체 기록량으로 나눠 WAF를 구하되 드라이브 전체가 아니라 핸들별로 분해합니다. 감지 단계에서 변화점을 탐지하고 원인을 수명 오분류, 핸들 간 간섭, 힌트 손실, 워크로드 전환으로 분류합니다. 대응 단계는 두 주체로 나뉩니다. 디바이스 측은 FDP 구성 전환, 재생 단위 크기 조정, 핸들 재할당, 가비지 컬렉션과 SLC 캐시 정책을 바꿉니다. 호스트 측은 캐시 정책, 스트림 매핑, 어드미션을 바꿉니다. 검증 단계에서 재측정하고 목표에 미달하면 이전 구성으로 롤백하며, 이 이력이 보증 근거가 됩니다. "
+      "하단이 이 기술을 위해 확보해야 할 요소입니다. T1 텔레메트리는 현재 OCP SMART C0가 드라이브 단위 누적값만 주므로 핸들별 구간별 분해와 초 단위 샘플링이 필요합니다. T2 감지는 사후 로그 분석에 머물러 있어 온디바이스 변화점 탐지와 오탐 억제가 필요합니다. T3 무중단 재구성이 가장 큰 공백입니다. FDP 구성은 네임스페이스를 만들 때 선택되므로 운영 중에 바꾸는 경로가 스펙에 없습니다. 구성 전환과 데이터 이전 경로를 만들어야 합니다. T4는 디바이스가 호스트에 배치 열화를 알리는 규격이 없다는 점이고, T5는 정책 변경이 진동하지 않도록 막고 성능 영향에 상한을 두며 롤백을 보장하는 엔진이며, T6은 실드라이브 실험만으로는 회귀 검증이 안 되므로 FAST 2026의 WARP 같은 에뮬레이터와 트레이스 재생 환경이 필요하다는 것입니다. 앞의 세 가지가 삼성이 직접 만드는 범위입니다. "
+      "규격 과제는 NVMe에 런타임 FDP 재구성과 핸들별 기록량 필드, 배치 열화 이벤트를 제안하고 OCP에 텔레메트리 필드와 수용 기준을 넣는 것입니다. 보증은 없애지 않되 축소합니다. 기준은 관행대로 TBW 선도달로 두고 유효 DWPD는 부가 표기로, 대응 이력과 재측정 리포트를 계약 부속으로 둡니다. 기술이 흡수한 만큼만 계약에 남긴다는 원칙입니다. 하단 요약 체인이 이 덱 전체의 논리입니다.")
 
 prs.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(prs.slides._sldIdLst)}장)")

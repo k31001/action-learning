@@ -66,10 +66,10 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 다음 다운턴 대비의 출발점은 "지금 고객 니즈가 어디로 움직이는가"다 ([kv-cache-ssd-demand-2026.md](../../sources/articles/kv-cache-ssd-demand-2026.md)):
 
 - **신규 수요**: LLM 추론의 KV 캐시를 GPU HBM→DRAM→**SSD**로 내리는 오프로딩이 표준 계층으로 정착(NVIDIA Dynamo·CMX·LMCache·Mooncake). SanDisk(FMS 2026): **KV cache 단독 NAND 수요 2027년 75~100EB → 2028년 2배**, **2030년 AI DC NAND 워크로드의 ~35%**. NVL144 랙 연 5만 대 기준 KV cache만 연 ~0.44EB
-- **Write-intensive 특성**: 세션마다 생성·갱신, 짧고 제각각인 수명, 비동기 무효화 → 연속 쓰기 부하. **요구 내구성 유효 7~10+ DWPD(5년)** (ScaleFlux, NVIDIA CMX 타깃 플랫폼)
-- **DWPD 갭**: 현행 고용량 QLC ~0.6 · TLC RI 1 · TLC MU 3 DWPD — 요구 대비 **2~10배 이상 갭**. 미디어만으로 못 메운다
-- **RUH 갭**: 현행 표준 enterprise FDP SSD의 RUH(Reclaim Unit Handle) 지원은 **통상 2~8개** — KV cache가 요구하는 세션·테넌트·공유 프리픽스·수명 등급별 스트림 분리에는 태부족(소수 RUH로는 hot/cold 혼재→GC 증폭 지속). NVIDIA CMX 오프로드를 타깃한 ScaleFlux 플랫폼은 **200+ FDP 스트림**을 제시 — 약 25배 갭 ([qlc-essd-timeline-fdp-ruh-2026-09.md](../../sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md) §2; "NVIDIA 공식 스펙 요구 200개"로는 미확인, CMX 생태계 타깃 플랫폼 스펙으로 표기)
-- **갭의 해법이 곧 본 전략**: ScaleFlux는 그 **200+ FDP 스트림**으로 수명이 다른 KV 블록을 분리해 WAF를 낮춰 **유효 7~10+ DWPD(5년)를 달성**한다고 발표(StorageReview·PR Newswire 2026-07-30) — FDP(수명별 RUH 분리·WAF↓=실효 내구성↑) + Host SW가 KV cache 시대 내구성 문제의 표준 해법. [nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md)의 CMX 생태계와 직접 연결
+- **Write-intensive 특성**: 세션마다 생성·갱신, 짧고 제각각인 수명, 비동기 무효화 → 연속 쓰기 부하. **요구 내구성**은 이 계층에 지명된 TLC 제품의 정격 **1~3 DWPD** 수준이다(Kioxia CM9 3 DWPD 등). ScaleFlux가 제시한 유효 7~10+ DWPD는 자사 플랫폼 발표값이고 제3자 검증이 없어 **요구 수준의 근거로 쓰지 않는다** (2026-09-22 정정)
+- **DWPD 갭**: 현행 고용량 QLC ~0.6 · TLC RI 1 · TLC MU 3 DWPD — 현 QLC 정격 **0.6** 기준으로 요구 1~3 DWPD와 **2~5배 갭**이다(2026-09-22 재계산. 종전 10~40배 표기는 최저 정격 0.075와 상한 3을 짝지은 극단 조합이었다). 미디어만으로 못 메운다
+- **배치 핸들 갭 — 숫자를 다시 세웠다 (2026-09-22 정정)**: NVMe 스펙상 네임스페이스가 바인딩할 수 있는 placement handle은 **최대 128개**이고(Namespace Management 자료구조 `phndl[128]`), FDP 구성 서술자의 RUH 개수 필드는 16비트다. 그러나 **출하 제품의 지원 개수를 데이터시트에 공표한 벤더는 한 곳도 없다**(삼성·Solidigm·Kioxia·Micron·SK hynix 전수 확인). 호스트 쪽이 실제로 여는 스트림 수는 f2fs 3개, 레거시 write-life 힌트 5개, xNVMe 레퍼런스 구성 8개, XFS 사용자 쓰기 스트림 상한 16개로 **모두 16 이하**다. 따라서 현재 유효한 요구 수준은 **16개 안팎**이며, 종전에 인용한 "RUH 200+"는 ScaleFlux가 2026-07-30 자사 AI 전용 SSD 플랫폼 보도자료에서 밝힌 **FDP write stream 수(벤더 주장·미검증)** 이지 RUH 개수도, 업계 요구치도 아니다 ([qlc-v6-fdp-placement-handles-2026-09.md](../../sources/articles/qlc-v6-fdp-placement-handles-2026-09.md))
+- **갭의 해법이 곧 본 전략**: 수명이 다른 블록을 분리 배치하면 WAF가 내려간다. 공개 실측은 Meta CacheLib **3.22 → 1.03**(디바이스 사용률 100%)과 **1.22 → 1.03**(사용률 50%), Kioxia XD8 CacheBench **2.8 → 약 1.0**이다. 같은 드라이브·같은 트레이스라도 사용률에 따라 기준 WAF가 2.6배 달라지므로 **조건을 함께 표기해야** 한다. LLM KV 캐시 워크로드의 WAF 공개 실측은 2026-09 현재 없고, FAST'26 WARP는 수명 오분류·핸들 간 간섭이 있으면 분리가 WAF를 낮추지 못한다고 보고한다 ([qlc-v6-waf-measurement-trend-2026-09.md](../../sources/articles/qlc-v6-waf-measurement-trend-2026-09.md))
 
 ## 3. 삼성의 딜레마와 전략적 선택지 — 왜 이 전략인가
 

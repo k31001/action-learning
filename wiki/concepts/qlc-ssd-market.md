@@ -86,18 +86,18 @@ TrendForce는 2024년 QLC eSSD 비트 출하를 **30EB, 2023년 대비 4배**로
 
 - **크기**: KV cache 단독 NAND 추가 수요 2027년 75~100EB, 2028년 그 2배(150~200EB), 2030년 AI 데이터센터 NAND 워크로드의 약 35%(SanDisk FMS 2026). NVIDIA CMX 공급망 추정은 2026년 35EB → 2027년 100EB 이상으로 독립 경로에서 같은 방향이다. 삼성은 V-NAND 캐파의 약 60%를 CMX 대응에 배정했다는 보도가 있다 ([qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §4, [kv-cache-ssd-demand-2026.md](../../sources/articles/kv-cache-ssd-demand-2026.md)).
 - **현재 주인은 TLC다**: CMX 타깃으로 벤더가 지명한 드라이브는 전부 TLC(삼성 PM1753/PM1763, Kioxia CM10 1/3 DWPD, Solidigm PS1010/PS1030 1/3 DWPD)이고, CMX 발표 뒤 TLC 현물가가 반등했다. QLC를 이 티어에 지명한 공개 사례는 SanDisk FMS 2026의 "고내구 KV cache 구성(BiCS10 QLC)" 1건뿐이며 DWPD는 미공개다 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.3).
-- **갭**: 최신 QLC 정격 0.075~0.6 DWPD vs KV cache 티어 TLC 1~3 DWPD, ScaleFlux가 제시한 요구 유효 7~10+ DWPD. 정격 기준 10~40배 갭이다 (같은 소스 §3.1).
-- **갭을 메우는 수단은 이미 공개돼 있다**: 배치 표준으로 수명이 다른 블록을 분리하면 CacheLib 실측에서 WAF 3.22 → 1.03(100% 사용률), XFS write streams에서 RocksDB WAF -35%, ScaleFlux는 200+ 스트림으로 유효 7~10+ DWPD. 반면 **KV cache 워크로드에서 배치 표준의 WAF 실측을 공개한 벤더는 아직 없다**. 이것이 업계 공백이자 선점 기회다 (같은 소스 §3.2).
+- **갭(2026-09-22 재계산)**: 현 QLC 정격 **0.6 DWPD**를 기준으로 KV cache 티어 요구 1~3 DWPD와 **2~5배** 갭이다. 종전 표기 10~40배는 최저 정격 0.075와 상한 3을 짝지은 극단 조합이었고, ScaleFlux의 유효 7~10+ DWPD는 벤더 자사 플랫폼 발표값이라 요구 수준의 근거에서 제외했다 (같은 소스 §3.1, [qlc-v6-purchase-criteria-dwpd-history-2026-09.md](../../sources/articles/qlc-v6-purchase-criteria-dwpd-history-2026-09.md)).
+- **갭을 메우는 수단은 이미 공개돼 있다**: 배치 표준으로 수명이 다른 블록을 분리하면 CacheLib 실측에서 WAF 3.22 → 1.03(디바이스 사용률 100%) · 1.22 → 1.03(사용률 50%), Kioxia XD8 CacheBench 2.8 → 약 1.0, XFS write streams에서 RocksDB WAF -35%. 반면 **KV cache 워크로드에서 배치 표준의 WAF 실측을 공개한 벤더는 아직 없다**. 이것이 업계 공백이자 선점 기회다 (같은 소스 §3.2).
 
 ### 3.3 향후 국면의 요구사항
 
 | 요구 축 | 초기(2018~23) | 현재(2024~26) | 향후(2027~30, 추론 캐시 티어) |
 |---|---|---|---|
 | 배경 | 데이터 레이크·HDD 대역폭 붕괴·표준 정비 | AI 추론 서버 전력 효율, 용량 경쟁, HDD 부족 | 장문맥·에이전틱 추론의 KV cache가 HBM·DRAM을 넘쳐 SSD로 내려옴, 전력 제약 데이터센터 |
-| 1차 구매 기준 | $/TB, 랙 밀도 | $/TB, W/TB, 리드타임(공급 확보) | **TB당 와트 + 유효 DWPD + 토큰 경제성(TTFT·GPU당 동시 사용자)** |
-| 내구성 | 0.3~0.6 DWPD 허용 | 0.3 랜덤 / 1.0 순차 스펙 분리 | 유효 7~10+ DWPD를 미디어가 아니라 **배치·호스트 SW로 달성**, 수명 보증이 계약 조건 |
+| 1차 구매 기준 | $/TB, 랙 밀도 | $/TB, W/TB, 리드타임(공급 확보) | **슬롯당 TB·TB당 와트 + 99.9999% 읽기 지연 + DWPD·TBW + 공급 보장 + 배치 힌트·텔레메트리 지원** |
+| 내구성 | 0.3~0.6 DWPD 허용 | 0.3 랜덤 / 1.0 순차 스펙 분리 | 요구 1~3 DWPD를 미디어가 아니라 **배치·호스트 SW로 달성**, WAF 급등 시 런타임 대응이 계약 조건 |
 | 인터페이스·플랫폼 | PCIe 4, OCP NVMe | PCIe 5, E3.S/E3.L, 배치 표준 상용 | PCIe 6, NVMe-oF, NVMe KV 확장, CMX(BlueField-4·DOCA Memos)·GPU 직결(SCADA) |
-| 호스트 기능 | 없음(블록 디바이스) | 배치 표준 지원(RUH 2~8), 텔레메트리 | **RUH 200+**, 세션·테넌트·prefix·수명별 스트림 분리, 커널 write streams, 캐시 관리자 연동 |
+| 호스트 기능 | 없음(블록 디바이스) | 배치 표준 지원, 텔레메트리 | **배치 핸들 16+ 지원·공개**(스펙 상한은 네임스페이스당 128), 세션·테넌트·prefix·수명별 스트림 분리, 커널 write streams, 캐시 관리자 연동 |
 | 고객이 사는 것 | 드라이브 | 드라이브 + 공급 약정 | **워크로드에 검증된 TCO**(WAF·전력·QoS 보증) + 스택 통합 |
 | 경쟁 대상 | HDD | HDD·TLC | **TLC 1~3 DWPD 드라이브, SLC AI SSD(SK hynix AI-N P·Kioxia 1억 IOPS), 고객 자체 SSD** |
 | 삼성의 위치 | 후발(61TB 1년) | 물량 1위, 용량 후발 | 디바이스는 확보(PM1753 CMX), 워크로드·시스템 SW 연결은 공백 |
@@ -116,7 +116,7 @@ TrendForce는 2024년 QLC eSSD 비트 출하를 **30EB, 2023년 대비 4배**로
 
 **용어**(2026-09-17 5차 피드백): 덱·보고서는 "계산 옆의 가장 싼 바이트" 대신 공식 용어 **용량 계층의 TB당 TCO**를 쓴다. 초기·현재 국면의 단위는 TB당 TCO($/TB·W/TB·TB/U — Meta의 "capacity tier"·"byte density", Solidigm의 1U 1PB TCO 논거가 쓰는 단위), 향후 국면은 **GPU당 컨텍스트 용량·토큰당 비용**(NVIDIA의 context memory storage 프레임). 1장의 TCO는 드라이브·랙 단위이고 2·3장의 "TCO 보증"은 고객 시스템 단위다. 고객이 사던 TCO의 단위가 TB에서 시스템으로 올라간다는 것이 곧 이 전략의 스토리다.
 
-**변화**: 가장 빨리 크는 용량 수요(KV cache)가 처음으로 **쓰기 많은 티어**에 있다. 고객은 여기서도 QLC의 경제성을 원하지만 내구성 때문에 TLC를 쓴다. 내구성은 미디어를 바꿔서가 아니라 **고객 시스템이 데이터를 어떻게 놓느냐**(배치 표준으로 수명이 다른 블록을 분리: CacheLib WAF 3.22→1.03, RUH 200+로 유효 7~10 DWPD)로 풀리므로 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.2), QLC 벤더는 디바이스에서 고객 시스템 안까지 올라가야 한다. 이것이 [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)의 Phase 1·2·3과 [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md)의 FDE·SCA로 이어지는 논리다.
+**변화**: 가장 빨리 크는 용량 수요(KV cache)가 처음으로 **쓰기 많은 티어**에 있다. 고객은 여기서도 QLC의 경제성을 원하지만 내구성 때문에 TLC를 쓴다. 내구성은 미디어를 바꿔서가 아니라 **고객 시스템이 데이터를 어떻게 놓느냐**(배치 표준으로 수명이 다른 블록을 분리: CacheLib WAF 3.22→1.03, 사용률 50%에서도 1.22→1.03)로 풀리므로 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3.2), QLC 벤더는 디바이스에서 고객 시스템 안까지 올라가야 한다. 이것이 [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)의 Phase 1·2·3과 [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md)의 FDE·SCA로 이어지는 논리다.
 
 **덱 표기 원칙**(사용자 결정 2026-09-17): 니어라인 HDD 대체 여부는 발표 덱에서 다루지 않는다(§3.1의 범위 결정은 위키에 유지). 덱(v5.2, 6장, 2026-09-19 비판적 리뷰 반영 + 2·3장 순서 교체 + 제목 문단화)의 스토리 스파인은 ① 문제(왜 지금 필요한가 — §3.5 다운턴 교훈 + §3.4 요구의 이동; 격차는 동급 비교 2~10배로 표기, 사다리 소스 §10 F48; 문제 카드가 고용량화의 두 축 — 다이 8배 → 신뢰성 2장 · DWPD 격차 → 내구성 3장 — 을 세움) → ② 신뢰성(SSD 내부 해법 — 고용량화의 첫째 축; 다이 수·고장률은 다이 패리티·여분 다이·감량 운영·텔레메트리로 SSD 내부에서 대응, 소스 §9; 결론 "이 축은 SSD 내부에서 충족되지만 둘째 축 내구성(DWPD)은 SSD 내부에서 충족되지 않았다") → ③ 해법 사다리(왜 호스트인가 — 둘째 축 내구성은 SSD 단독 최적화로 WAF ≈3에 머물렀고 잔여 변수 WAF는 호스트가 결정한다; [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md) §2.5; 호스트 배치는 "유일한 경로"가 아니라 다이 세대·OP·보증연수·SLC 캐시 등 병행 축과 결합하는 "잔여 변수", KV 캐시 FDP WAF는 미실측 가설 F52; 결론 "잔여 변수 WAF는 SSD 밖 호스트가 결정하므로 고객 협업과 새로운 역량이 필요하다") → ④ 역량(어떻게 해소하는가 — [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md), 삼성 현 위치는 Phase 1 진행 중으로 정직 표기) → ⑤ 실행(누구와 어디서 — [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md) 중 개발실 내부 범위: FDE는 워크로드를 여는 고객에 선별 집중, 자회사·별도 보상·결정 요청은 덱 범위 밖) → ⑥ 보증·SLA(무엇을 보증하나 — 유효 DWPD 보증의 워크로드 리스크와 텔레메트리 기반 조건부 보증 설계, 소스 §10 F53·F54)이다. 문제 제기 → 당위성 → 솔루션 → 실행의 순서로, 각 장의 결론이 다음 장의 질문이 되도록 리드·결론 밴드를 연결하고, 제목 6개만 이어 읽어도 한 문단이 되게 쓴다(v5.2 제목 문단: AI 추론 수요는 QLC에 고용량·1~3 DWPD를 요구하며, 신뢰성·내구성 두 축의 해법이 필요합니다. 첫째 축 신뢰성은 다이 수 8배 증가로 요구가 8배 엄격해지나, SSD 내부 설계로 충족됩니다. 둘째 축 내구성은 SSD 단독 최적화로 WAF ≈3에 머물렀고, 잔여 변수 WAF는 호스트가 결정합니다. 따라서 WAF 저감은 고객 시스템까지 3단계 공동 설계 역량을 요구하며, 삼성은 현재 1단계입니다. 3단계 진입은 워크로드를 개방하는 고객에 FDE를 집중하고, 그 외는 업스트림·규격으로 협업합니다. 유효 DWPD 보증은 WAF 변동 리스크를 수반하므로 텔레메트리 기반 조건부 보증으로 설계합니다.). 비유 표현은 쓰지 않는다(지렛대 → 잔여 변수·격차 축소 변수, 닫힌다 → 충족·해소). 같은 스파인의 **시각화 강화판**(2026-09-20, `qlc-ssd-strategy-visual.pptx` 7장 = 요약 스토리 맵 + 1~6장)은 제목 문단과 수치를 그대로 두고 본문을 네이티브 도형(편집 가능)으로 다시 그려 텍스트를 원본의 50%로 줄였다(v2.0, 2026-09-22; 그림은 다이 픽토그램·RBER 스파크라인·유효 DWPD 곡선 4장만, 5장 실행은 두 트랙 화살표 그림). 또한 헤더 스토리 레일·다음 장 포인터·요약 체인으로 시각화한다(사용자 결정 2026-09-18: 비유·구어 표현은 보상·이관·격차·규격·진입·접근권 등 기술 용어로 통일).
 
@@ -170,7 +170,7 @@ TrendForce는 2024년 QLC eSSD 비트 출하를 **30EB, 2023년 대비 4배**로
 | 쇼티지 상단 ASP | 2027 $350, 2028 $250, 2029 $180, 2030 $140 | 2028년까지 NAND 쇼티지 지속 시나리오 |
 | QLC $/TB | eSSD ASP × 0.85 | QLC 할인폭 13~20%(VDURA) |
 | KV cache NAND 수요 | 2026 35EB(CMX 공급망) → 2027 90 → 2028 175 → 2029 260 → 2030 350EB(AI DC NAND 1,000EB × 35%) | SanDisk FMS 2026·Investor Day, CMX 공급망 보도 |
-| QLC의 KV 티어 침투 | 2026 5% → 2027 10% → 2028 25% → 2029 40% → 2030 50% | 조건부: RUH 200+ 디바이스 + 캐시 관리자 연동 + 수명 보증 성립 시. 미성립 시 0~10% |
+| QLC의 KV 티어 침투 | 2026 5% → 2027 10% → 2028 25% → 2029 40% → 2030 50% | 조건부: 배치 핸들 16+ 공개 디바이스 + 캐시 관리자 연동 + WAF 급등 런타임 대응 성립 시. 미성립 시 0~10% |
 
 **민감도**: QLC 비중이 2030년 47%(하단)면 QLC EB 470, 매출 기준선 $32B. 가격 정상화가 1년 늦으면 2028년 매출이 $27B → $45B. 추론 캐시 침투가 0이면 2030년 QLC EB 375, 비중 38%.
 
