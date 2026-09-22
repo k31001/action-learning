@@ -175,13 +175,13 @@ class SVG:
 
 
 def render_png(html_p, png_p, w=W, h=H, scale=3):
-    """headless=new 는 window-size 에서 브라우저 UI 높이를 뺀 뷰포트를 쓰므로, 여유를 두고 찍은 뒤 정확히 w×h(×scale)로 자른다."""
+    """headless=new 는 window-size 에서 브라우저 UI 높이를 빼고 최소 창 크기도 강제하므로, 충분히 큰 창으로 찍은 뒤 정확히 w×h(×scale)로 자른다."""
     chrome = sorted(glob.glob("/opt/pw-browsers/chromium-*/chrome-linux/chrome"))[-1]
     cmd = [chrome, "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
-           f"--force-device-scale-factor={scale}", f"--window-size={w + 40},{h + 160}", f"--screenshot={png_p}", "file://" + html_p]
+           f"--force-device-scale-factor={scale}", f"--window-size={int(max(w + 40, 900))},{int(h + 400)}", f"--screenshot={png_p}", "file://" + html_p]
     subprocess.run(cmd, check=True, capture_output=True)
     im = Image.open(png_p)
-    im.crop((0, 0, w * scale, h * scale)).save(png_p, optimize=True)
+    im.crop((0, 0, int(round(w * scale)), int(round(h * scale)))).save(png_p, optimize=True)  # window-size 는 정수여야 함(소수는 무시됨)
 
 
 # ====================================================================== S0. 스토리 맵 (요약)
@@ -695,6 +695,89 @@ def fig_s6():
     return s
 
 
+
+
+# ====================================================================== v2.0 (2026-09-22): 덱에 삽입하는 "그림이어야만 하는 부분"만 별도 PNG
+# 나머지(박스·칩·화살표·표·막대)는 generate_qlc_ssd_strategy_visual_pptx.py 가 네이티브 도형으로 그려 PowerPoint 에서 편집 가능하게 한다.
+def fig_dies(name, cols, rows, cell, gap, fill, w, h):
+    """다이 픽토그램(라벨 없음): cols×rows 격자."""
+    s = SVG(w, h)
+    for r in range(rows):
+        for c in range(cols):
+            s.rect(4 + c * (cell + gap), 4 + r * (cell + gap), cell, cell, fill=fill)
+    return s
+
+
+def fig_rber():
+    """③ 텔레메트리 · 사전 예측용 RBER 추이 스파크라인(라벨 없음): 상승 곡선 + 은퇴 임계 점선 + 사전 은퇴 지점."""
+    s = SVG(400, 70)
+    spx, spy, spw, sph = 6, 6, 388, 58
+    s.line(spx, spy + sph, spx + spw, spy + sph, stroke=LINE, sw=1.2)
+    pts = [(spx + i * spw / 10, spy + sph - 6 - (i ** 1.9) * 0.55) for i in range(11)]
+    s.path("M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts), stroke=BLUE_T1, sw=2.5)
+    s.line(spx, spy + 6, spx + spw, spy + 6, stroke=RED, sw=1.2, dash="5 5")
+    s.circle(pts[8][0], pts[8][1], 6, fill=BLUE)
+    return s
+
+
+def fig_dwpd_curves():
+    """6장 유효 DWPD = 정격 × (3 ÷ WAF) 차트(축·밴드·곡선·주석 포함, 차트 내부 라벨은 그림에 둔다)."""
+    Wc, Hc = 1000, 520
+    s = SVG(Wc, Hc)
+    ax0, ay0, aw, ah = 70, 60, 690, 380
+    wmin, wmax, dmax = 1.0, 3.2, 3.2
+    def X(w): return ax0 + aw * (w - wmin) / (wmax - wmin)
+    def Y(d): return ay0 + ah * (1 - d / dmax)
+    bands = [(1.0, 1.2, "WAF ≤ 1.2 · 설계 가정"), (1.2, 2.0, "≤ 2.0 · 조건부 등급"), (2.0, 3.2, "> 2.0 · 정격 기준 복귀")]
+    for i, (a, b, lab) in enumerate(bands):
+        s.rect(X(a), ay0, X(b) - X(a), ah, fill=[TINT, WHITE, "#F7F7F7"][i])
+        s.text(X(a) if i == 0 else X(a) + (X(b) - X(a)) * (0.67 if i == 1 else 0.5), ay0 - 18, lab, size=14, bold=True, fill=BLUE if i == 0 else GRAY_2, anchor="start" if i == 0 else "middle", vmid=True)
+        if i: s.line(X(a), ay0, X(a), ay0 + ah, stroke=LINE, sw=1, dash="4 4")
+    s.line(ax0, ay0 + ah, ax0 + aw, ay0 + ah, stroke=GRAY_2, sw=1.2)
+    s.line(ax0, ay0, ax0, ay0 + ah, stroke=GRAY_2, sw=1.2)
+    for w_ in [1.0, 1.5, 2.0, 2.5, 3.0]:
+        s.text(X(w_), ay0 + ah + 18, f"{w_:g}", size=14, fill=GRAY_2, anchor="middle", vmid=True)
+    for d in [0, 1, 2, 3]:
+        s.text(ax0 - 12, Y(d), str(d), size=14, fill=GRAY_2, anchor="end", vmid=True)
+        s.line(ax0, Y(d), ax0 + aw, Y(d), stroke=LINE, sw=0.6)
+    s.text(ax0 + aw / 2, ay0 + ah + 46, "실 워크로드 WAF", size=14, fill=GRAY, anchor="middle", vmid=True)
+    s.vtext(ax0 - 44, ay0 + ah / 2, "유효 DWPD", size=14, fill=GRAY)
+    curves = [(1.0, BLUE, "정격 1.0 · 6550 ION 61TB"), (0.58, BLUE_T1, "정격 0.58 · P5336 61TB"), (0.3, BLUE_T2, "정격 0.3 · LC9 245TB")]
+    for rated, col, lab in curves:
+        pts = []
+        for i in range(61):
+            w_ = wmin + (wmax - wmin) * i / 60
+            pts.append((X(w_), Y(min(rated * 3.0 / w_, dmax))))
+        s.path("M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts), stroke=col, sw=3)
+        s.text(X(wmax) + 10, pts[-1][1] + (16 if rated == 1.0 else 0), lab, size=14, fill=col, vmid=True, bold=True)
+    s.line(ax0, Y(1.0), ax0 + aw, Y(1.0), stroke=INK, sw=1.5, dash="8 6")
+    s.text(X(2.35), Y(1.0) + 16, "보증 목표 1.0 DWPD · KV 캐시 계층 하한", size=14, bold=True, fill=INK, vmid=True)
+    s.circle(X(1.74), Y(1.0), 7, fill=BLUE_T1)
+    s.text(ax0 + aw, ay0 + ah + 46, "● 정격 0.58은 WAF 1.74에서 보증선 아래로", size=14, fill=BLUE_T1, anchor="end", vmid=True)
+    s.line(X(1.28), ay0 + 44, X(2.9), ay0 + 44, stroke=RED, sw=2, dash="6 4", arrow="red")
+    s.text(X(2.1), ay0 + 26, "WAF ↑ → 보증 부담은 삼성", size=14, fill=RED, anchor="middle", vmid=True)
+    return s
+
+
+PARTS = {
+    "qlc_vis_dies128": lambda: fig_dies("qlc_vis_dies128", 16, 8, 9, 2.5, BLUE_T2, 16 * 11.5 + 6, 8 * 11.5 + 6),
+    "qlc_vis_dies1024": lambda: fig_dies("qlc_vis_dies1024", 32, 32, 7.2, 1.8, BLUE, 32 * 9.0 + 6, 32 * 9.0 + 6),
+    "qlc_vis_rber": fig_rber,
+    "qlc_vis_dwpd_curves": fig_dwpd_curves,
+}
+
+
+def build_parts(names=None):
+    for name, fn in PARTS.items():
+        if names and name not in names:
+            continue
+        s = fn()
+        svg_p, html_p = s.save(name)
+        render_png(html_p, os.path.join(OUT, name + ".png"), s.w, s.h)
+        os.remove(html_p)
+        print(f"{name}: svg+png ({s.w}×{s.h}), text chars={s.chars}")
+
+
 FIGS = {"qlc_vis_s0": fig_s0, "qlc_vis_s1": fig_s1, "qlc_vis_s2": fig_s2, "qlc_vis_s3": fig_s3,
         "qlc_vis_s4": fig_s4, "qlc_vis_s5": fig_s5, "qlc_vis_s6": fig_s6}
 
@@ -715,4 +798,10 @@ def build(names=None):
 
 if __name__ == "__main__":
     import sys
-    build(sys.argv[1:] or None)
+    args = sys.argv[1:]
+    if args and args[0] == "--parts":
+        build_parts(args[1:] or None)
+    elif args and args[0] == "--all":
+        build(); build_parts()
+    else:
+        build(args or None)

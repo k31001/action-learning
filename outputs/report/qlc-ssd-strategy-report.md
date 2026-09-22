@@ -458,7 +458,7 @@ QLC 비중이 2030년 47%(하단)이면 QLC EB 470, 매출 기준선 $32B. 가�
 | `outputs/presentation/assets/qlc_model.csv` · `qlc_demand_share_revenue*.png` · `scripts/generate_qlc_chart.py` | 모델·그래프 |
 | `outputs/presentation/assets/ladder_cell_*.png` · `rel_*.png` · `sla_effective_dwpd.png` · `scripts/generate_ladder_cells.py` | 덱 2·3·6장 차트 |
 | `outputs/presentation/qlc-ssd-strategy-outline.md` · `scripts/generate_qlc_ssd_strategy_pptx.py` · `scripts/solution_ladder_slide.py` · `qlc-ssd-strategy.pptx` | 6장 덱(v5.2: 문제 → 신뢰성 → 해법 사다리 → 역량 → 실행 → 보증·SLA, 제목 문단) |
-| `outputs/presentation/qlc-ssd-strategy-visual.pptx` · `scripts/generate_qlc_ssd_strategy_visual_pptx.py` · `scripts/generate_qlc_visual_figures.py` · `assets/visual/qlc_vis_s{0..6}.svg|png` | 시각화 강화판 7장(요약 스토리 맵 + 1~6장, 텍스트 47%, 히어로 그림 7종 SVG/PNG) — 기획서 「시각화 강화판 v1.0」 절 |
+| `outputs/presentation/qlc-ssd-strategy-visual.pptx` · `scripts/generate_qlc_ssd_strategy_visual_pptx.py` · `scripts/generate_qlc_visual_figures.py` · `assets/visual/qlc_vis_s{0..6}.svg|png` | 시각화 강화판 7장 v2.0(요약 스토리 맵 + 1~6장, 네이티브 도형으로 편집 가능, 그림은 다이 픽토그램·RBER 스파크라인·유효 DWPD 곡선 4장만, 텍스트 원본 대비 50%) — 기획서 「시각화 강화판 v2.0」 절 |
 
 ## 부록 D. 덱 범위 밖 확장 옵션 (위키 유지, 본문 제외)
 

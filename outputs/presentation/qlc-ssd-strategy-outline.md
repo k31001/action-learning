@@ -8,7 +8,11 @@
 - **재생성**: `.venv/bin/python outputs/presentation/scripts/generate_qlc_chart.py` (그래프) → `.venv/bin/python outputs/presentation/scripts/generate_qlc_ssd_strategy_pptx.py` → `outputs/presentation/qlc-ssd-strategy.pptx`
 - **렌더 검증**: `FONT_LATIN=NanumGothic FONT_EA=NanumGothic OUT_PATH=<scratch>.pptx` 로 렌더 전용 사본을 만들어 `soffice --headless --convert-to pdf` → pymupdf PNG로 육안 검사(본 산출물은 Arial 유지).
 
-## 시각화 강화판 v1.0 (2026-09-20 — 별도 덱 7장: 요약 스토리 맵 + 1~6장, 텍스트 47%)
+## 시각화 강화판 v2.0 (2026-09-22 — 네이티브 도형 판: 편집 가능, 그림은 4장만 · 5장 실행은 두 트랙 화살표로 복귀)
+
+v2.0 피드백(2026-09-22): "꼭 필요한 부분만 SVG·PNG로 해야 하는데 전체가 그림 파일이 되니까 수정하기가 어렵다. 실행 부분은 이전에 화살표로 시각화한 버전이 더 나아 보인다." → v1.0(장 전체 PNG 1장)을 폐기하고 박스·칩·화살표·표·막대·타임라인·계단·산식·5계층·Phase 카드를 모두 python-pptx 네이티브 도형·텍스트로 다시 그렸다(좌표계는 v1.0 SVG 단위 그대로, `Canvas` 어댑터). 그림으로 남긴 것은 4장뿐이다: 2장 다이 픽토그램 2장(128·1,024 격자, 라벨 없음) · 2장 RBER 스파크라인(라벨 없음) · 6장 유효 DWPD 곡선 차트(축·밴드·곡선·주석 포함). 5장 실행은 v4.0 의 두 트랙 화살표 그림(삼성 개발실 → ① FDE 상주 → 고객 시스템 5계층, ← ② 워크로드·규격 접근권)으로 되돌리고, 그 사이에 고객 선별·채널 카드와 선례 카드(Palantir FDE · Micron↔Anthropic 협약), 아래에 개발실 내부 실행 3축·통과 조건·판돈/비용을 둔다. 텍스트 분량: pptx 텍스트 4,593자 + 곡선 차트 라벨 162자 = 4,755자(원본 9,474자 대비 50%). 이전 v1.0 그림 7종(`qlc_vis_s0~s6.svg|png`)은 참고용으로 남긴다.
+
+### v1.0 (2026-09-20 — 별도 덱 7장: 요약 스토리 맵 + 1~6장, 장 전체 PNG, 텍스트 47%) · 이력
 
 사용자 지시: "핵심 내용은 유지하면서 텍스트는 절반 이하로 줄이고, 남는 공간을 시각 요소로 강화한 별도 PPT. 보고의 핵심 전략과 논리의 흐름이 쉽게 느껴지도록, SVG·PNG 그림의 완성도가 핵심." → `outputs/presentation/qlc-ssd-strategy-visual.pptx` (생성기 `scripts/generate_qlc_ssd_strategy_visual_pptx.py`, 그림 `scripts/generate_qlc_visual_figures.py` → `assets/visual/qlc_vis_s{0..6}.svg|.png`).
 

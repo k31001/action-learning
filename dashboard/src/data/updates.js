@@ -14,6 +14,24 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-22 ───────────────────────────────────────────────────────────────
+  {
+    date: '2026-09-22',
+    type: 'build',
+    version: 'v2.46.36',
+    title: 'QLC 덱 시각화 강화판 v2.0 — 네이티브 도형 판(편집 가능), 그림은 4장만, 실행은 두 트랙 화살표',
+    summary:
+      '장 전체가 PNG였던 v1.0을 폐기하고 박스·화살표·표·막대·계단·산식·5계층을 python-pptx 도형으로 다시 그려 PowerPoint에서 편집 가능하게 했다. 그림은 다이 픽토그램(128·1,024)·RBER 스파크라인·유효 DWPD 곡선 4장만. ' +
+      '5장 실행은 v4.0 두 트랙 화살표(① FDE 상주 → / ② 워크로드·규격 접근권 ←)로 되돌리고 고객 선별·선례·내부 실행·통과 조건·판돈을 담았다. 텍스트 원본 대비 50%. 패치 v2.46.36.',
+    tags: ['QLC', '덱', '시각화', '실행'],
+    items: [
+      { label: '덱', detail: 'outputs/presentation/qlc-ssd-strategy-visual.pptx (7장) · Canvas 어댑터(SVG 단위 → 네이티브 도형)' },
+      { label: '그림', detail: 'assets/visual/qlc_vis_dies128·dies1024·rber·dwpd_curves (--parts) · v1.0 전체 그림 7종은 참고용' },
+    ],
+    links: [
+      { label: '기획서 시각화 강화판 v2.0 절', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+    ],
+  },
   // ── 2026-09-20 ───────────────────────────────────────────────────────────────
   {
     date: '2026-09-20',
