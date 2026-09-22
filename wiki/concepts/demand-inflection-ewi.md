@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/raw-notes/demand-inflection-ewi-2026-06.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-09-22
+sources: [sources/raw-notes/demand-inflection-ewi-2026-06.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/september-2026-market-update-2026-09-22.md]
 ---
 
 # 메모리 수요 변곡 조기경보 (Demand-Inflection EWI)
@@ -128,3 +128,14 @@ flowchart LR
 - 병목 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 실물 수급 제약 논리와도 교차 확인이 필요한 신호다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+---
+
+## 업데이트 (2026-09-22)
+
+- **신규 조기경보 후보 — ①수요청산가 축의 첫 센티먼트 균열**: 2026-09-14 Anthropic Dario Amodei·OpenAI Sam Altman(+ Elon Musk 동조 보도)이 "AI 능력 개발 속도를 의도적으로 늦춰야 한다"는 취지로 발언한 직후 메모리 섹터 주가가 급락했다(Micron -6%·SanDisk -6%·SK하이닉스 -7%, Roundhill Memory ETF -7% vs QQQ -2%). Bernstein 등은 "안전 프레임워크 발언이지 지출 신호는 아니다"로 해석했고 실제 하이퍼스케일러 CapEx 삭감 사례는 **0건**이나, 선행(①②③) 신호가 끈적(④착공·⑤메모리)보다 먼저 흔들릴 수 있다는 최초의 정성적 조기경보 후보로 기록한다 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **GPU 임대가 — 하락 지속이나 붕괴 아님**: Vast.ai H100 최저 $1.49/GPU-h(2026-08 말)까지 추가 하락했으나, NVIDIA는 기록적 출하에도 수요를 완전히 충족하지 못한다고 밝혀 **메모리(HBM/DRAM) 타이트함이 공급망의 구속 조건**임을 재확인했다 — `gpu_rental_h100_usd`는 완만한 우하향(붕괴 트리거 -35%/6개월에는 미달) ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **⑤ 메모리 내부 — 계약가 감속 재확인 + 스팟가는 사상 최고**: Q3 2026 범용 DRAM 계약가 +13~18% QoQ(Q2 +58~63%에서 재확인된 감속)이나, DRAM 스팟가(DDR4 1Gx8 3200)는 2026-09-16 사상 최고치 $45.786을 경신 — 계약가·스팟가가 반대 방향으로 갈리는 구간으로, "AI 빌드아웃이 팹 증설보다 빠르게 DRAM을 소진"하는 실물 타이트함(⑤)과 소비자向 계약가 감속(선행 신호 후보)이 공존한다.
+- **종합 판단**: 09-14 센티먼트 이벤트·GPU 임대가 완만한 하락·계약가 감속이 함께 선행 축의 약화 방향을 가리키나, 끈적 축(CapEx 가이던스는 오히려 $725B로 재확인·서버향 DRAM 스팟가는 사상 최고)은 여전히 강해 **괴리(divergence)가 본격 확대되었다고 보기는 이르다**. 복합 위험 점수는 09-15 정기 재평가(포지션 맵, `log` 21ff896)에서 이미 "조달·파이낸싱 축 tell 심화하나 수요 붕괴 아님"으로 판정, 트리거 미발동 — 본 페이지는 그 판정과 정합한다.
+
+**출처**: [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)

@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-22 (병목 모델 정기 점검) ─────────────────────────────────────────
+  {
+    date: '2026-09-22',
+    type: 'ingest',
+    version: 'v2.46.42',
+    title: '병목 모델 정기 점검(07-04→09-22) — 파운드리 급상승(+9), 패키징 완화(−5), 전력 5회 연속 재상승',
+    summary:
+      'SemiAnalysis·Counterpoint·TechInsights 등 최신 데이터를 리서치 에이전트 2개로 수집해 Bottleneck Model 4대 제약지수를 갱신하고 지난 07-04 대비 변동폭을 표시. 최대 변화는 파운드리(+9) — SemiAnalysis·TSMC CEO 발언 기준 병목이 패키징에서 전공정(N3 웨이퍼)으로 이동 중이라는 구조적 신호. HBM 점유율(삼성 33% 급등)·CXMT G5 DRAM 양산·HBM 반독점 기각신청 등도 관련 위키 페이지에 반영. 전략(Main Bet·Robust) 변경은 없음 — 같은 날 별도 수행된 포지션 맵 재평가(v2.46.41)와 정합.',
+    tags: ['Bottleneck Model', 'SemiAnalysis', 'Counterpoint', 'TechInsights', 'TSMC', 'CoWoS', 'HBM', 'CXMT', '반독점'],
+    items: [
+      { label: '제약지수 갱신 (07-04 → 09-22)', detail: '전력 72→75(▲+3, PJM 용량경매 사상최고가)·CAPEX 40→43(▲+3, 09-14 AI 감속론 센티먼트가 3개 사이클 연속 완화 추세를 반전)·파운드리 50→59(▲+9, 병목 축이 패키징→전공정 N3로 이동)·패키징 67→62(▼−5, CoWoS 갭 20%→10% 축소). 파운드리·패키징 격차 17→3으로 급접근' },
+      { label: '신규 소스', detail: 'sources/articles/september-2026-market-update-2026-09-22.md — 7절(전력/CAPEX/파운드리·패키징/HBM·DRAM·NAND/AI 수요 신호/QLC eSSD/제약지수 요약)' },
+      { label: '위키 갱신 6건', detail: 'bottleneck-model-2030.md(종합 판독 09-22 신설)·demand-inflection-ewi.md(09-14 센티먼트 EWI 반영)·hbm-market.md(Q2 2026 HBM 점유율)·dram-antitrust-litigation.md(기각신청)·entities 5종(samsung·sk-hynix·micron·cxmt·tsmc)' },
+      { label: '전략 변경 없음(기록)', detail: 'CXMT G5 DRAM 양산 등 신호는 RS-2·RS-4 전제 약화 가능성으로 모니터링만 격상, Main Bet/Robust 전략 자체는 유지 — 근거는 log.md 2026-09-22 항목 참조' },
+    ],
+    links: [
+      { label: 'wiki/concepts/bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'sources/articles/september-2026-market-update-2026-09-22.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/september-2026-market-update-2026-09-22.md' },
+    ],
+  },
   // ── 2026-09-22 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-09-22',

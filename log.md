@@ -2107,3 +2107,13 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 결론 밴드 둘째 줄을 "판돈은 락인으로 얻는 캐시 계층 점유율…"에서 "개발실은 조직·인사·문화 세 축을 그 실행에 맞춥니다"로 교체
 - 판돈·비용은 보고서 5장 5절에 "보고서 전용" 주석과 함께 유지. 통과 조건(§5.4)과 같은 처리
 - 렌더 QA 통과. 동기화: 기획서 v6.3 행, 보고서 PPT 압축 맵 5행·§5.5 주석, 대시보드 v2.46.40
+
+## [2026-09-22] ingest+build | 병목 모델 정기 점검(07-04→09-22) — 파운드리 병목 급부상(+9), 패키징 완화(−5), 전력 5회 연속 재상승, HBM 점유율·CXMT G5·반독점 기각신청 반영
+
+- 사용자 지시: SemiAnalysis·Counterpoint·TechInsights 등 최신 데이터를 검색해 보고서·대시보드·발표자료에 반영, Bottleneck Model 숫자를 최신 정보로 갱신하고 지난 업데이트 대비 변동폭을 표현, LLM 위키·링크도 필요 시 갱신하고 전략 변경 여부까지 검토·기록.
+- 병렬 리서치 에이전트 2개(① 전력/CAPEX/파운드리/패키징 병목 전담 ② HBM·DRAM·NAND·3사 실적·중국 진입자·반독점·AI 수요 신호·QLC eSSD 전담) 수행. semianalysis.com·counterpointresearch.com·techinsights.com·trendforce.com 등 원문은 세션 프록시 403으로 직접 fetch 불가 — WebSearch 스니펫·2차 매체(Reuters·Bloomberg·CNBC·Seoul Economic Daily·KED Global·MLex 등) 경유로 수집, 등급 병기.
+- **신규 소스**: `sources/articles/september-2026-market-update-2026-09-22.md`(7절, 조사방법 메모 포함).
+- **병목 모델 제약지수 갱신(2026-09-22, 이전 07-04 대비)**: 전력 72→**75**(▲+3, PJM 용량경매 사상최고가 +1,053%·중전압 개폐장치 2028년까지 매진), CAPEX/ROI 40→**43**(▲+3, 하드데이터는 완화 지속이나 Meta FCF 미스+09-14 Amodei·Altman發 AI 감속론 센티먼트로 메모리주 -6~7% — 3개 사이클 연속 완화 추세 반전), 파운드리 50→**59**(▲+9, 이번 사이클 최대 변동 — SemiAnalysis·TSMC CEO: 병목이 패키징→전공정 N3로 이동, 2026H2 N3 가동률 100% 초과 전망), 패키징 67→**62**(▼−5, TrendForce CoWoS 공급-수요 갭 20%→10% 축소·JEDEC 높이한도 상향으로 하이브리드본딩 긴급성 완화). **파운드리·패키징 격차 17→3으로 급접근** — 2026~27 최전선 병목이 패키징에서 전공정으로 이동 중이라는 것이 핵심 구조 변화. 상세: `wiki/concepts/bottleneck-model-2030.md` §종합 판독(2026-09-22).
+- **위키 갱신**: `demand-inflection-ewi.md`(09-14 센티먼트 이벤트를 ①수요청산가 축 신규 조기경보 후보로 반영, 괴리 미확대 판정), `hbm-market.md`(Counterpoint Q2 2026 HBM 점유율 삼성 33%·SK 50%·Micron 18%, 소스 간 편차 병기), `dram-antitrust-litigation.md`(09-03 3사 공동 기각신청, 법원 결정 미발표), 엔티티 5종(`samsung`·`sk-hynix`·`micron`·`cxmt`·`tsmc`) 각각 Q2 실적·HBM 인증·인디애나 착공식·뉴욕 팹 진척·**CXMT G5 DRAM 양산(EUV 없이 11.95nm)**·TSMC 전공정 병목론 반영.
+- **전략 변경 없음**: 같은 날 별도 수행된 시나리오 포지션 맵 정기 재평가(`21ff896`, v2.46.41)가 DF1/DF2 축·GPU 임대가·CapEx 신호를 이미 반영해 "신규 실현 외부 거시 사실 0건 → 포지션 맵·확률 유지"로 판정한 바 있다. 본 사이클의 병목 축 이동(파운드리 급상승)·CXMT G5 양산도 기존 Main Bet(B)·Robust 전략 전제를 뒤집는 수준은 아니라고 판단해 `wiki/strategies/` 변경은 없음. 다만 `cxmt.md`에 "RS-2·RS-4 전제(CXMT=범용 저가 국한)가 점차 약화되고 있어 다음 정기 전략 재검토에서 재평가 필요"로 모니터링 우선순위를 격상해 기록했다.
+- **동기화**: `index.md`(신규 소스 1행 + bottleneck-model-2030.md 요약 갱신), `dashboard/src/data/bottleneckModel.js`(MODEL_ASOF·PREV_INDICES·4개 currentIndex·indexNote 갱신), `dashboard/src/data/updates.js` + `version.js` bump, `outputs/report/scenario-planning-report.md` 병목 요약 표·문단, 지식 그래프 재생성(신규 엔티티↔소스 링크 반영), `npm run build` 검증 — 이하 커밋 참조.

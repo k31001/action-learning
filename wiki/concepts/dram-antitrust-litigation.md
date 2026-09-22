@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-09-22
+sources: [sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/september-2026-market-update-2026-09-22.md]
 ---
 
 # DRAM 반독점 집단소송 (2026-06 제소)
@@ -17,6 +17,7 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 ## 현재 단계
 
 - 2026-06-25 제소 직후 단계이며, 아직 법원의 실질적 판단(기각·인용·화해 등)은 나오지 않았다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+- **2026-09-03 업데이트**: 삼성·SK하이닉스·Micron 3사가 N.D. California 법원에 **공동 기각신청(motion to dismiss)**을 제출했다. 핵심 방어 논리는 ① 9순회항소법원이 이미 기각한 선행소송의 재탕이라는 점 ② AI/HBM 전환 프레이밍으로도 기존 소장의 하자가 치유되지 않는다는 점 ③ 원고가 셔먼법(Sherman Act) 1조 위반의 직접·정황 증거를 개연성 있게 제시하지 못했다는 점 ④ 주법(state-law) 청구는 연방 청구에 종속돼 함께 기각되어야 한다는 점이다. **2026-09-22 현재 법원의 결정은 아직 나오지 않았다** — 계속 진행 중 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
 
 ## 위키 관점 — 왜 추적하는가
 
@@ -32,3 +33,4 @@ sources: [sources/articles/july-2026-market-update-2026-07-04.md]
 
 ## 출처
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — §2, §4 (Tom's Hardware, Gizmochina 원문 인용 경유)
+- [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md) — §4 (MLex 2026-09-03 기각신청 원문 인용 경유)

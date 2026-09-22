@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (NIST, TrendForce, Tom's Hardware, Bloomberg, NAND Research, IMEC), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-09-22
+sources: [sources/README.md (NIST, TrendForce, Tom's Hardware, Bloomberg, NAND Research, IMEC), sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/september-2026-market-update-2026-09-22.md]
 ---
 
 # TSMC (Taiwan Semiconductor Manufacturing Company)
@@ -119,3 +119,13 @@ TSMC는 노드 전환을 **"Nx → Nx+ → Nx++"** 점진 개선으로 잘게 �
 - **CoWoS 세부 배정**: NVIDIA가 CoWoS 배정량의 ~60%(~59.5만 장)를 점유. TSMC는 2026년 24만~27만 장을 OSAT(Amkor·SPIL)에 외주. 첨단 패키징이 2026년 TSMC 총 CAPEX($520~560억)의 최대 20%를 배정받음. CEO 웨이저자(C.C. Wei)는 "CoWoS 캐파는 매우 타이트하며 2025~2026년까지 계속 sold out" 상태라고 재확인 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **CoPoS**: 2026-06-17 TrendForce 확인 — AP7 Chiayi 파일럿(310×310mm 글래스코어 패널) 트라이얼 수율 ~90%. 다만 **전면 양산 램프는 2028년 하반기~2029년**으로 재확인(DigiTimes: 2029년 목표) — 이전 위키 서술과 일치하되 양산 지연은 재확인·강조 필요 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **ASML High-NA EUV 도입 연기**: TSMC가 High-NA EUV 도입을 최소 2029년까지 연기 결정 — 비용 대비 현행 장비로 충분하다는 판단, 이전 전망(2027~28)보다 후퇴 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+## 업데이트 (2026-09-22) — 병목 축이 패키징에서 전공정(N3)으로 이동
+
+- **월매출 사상 최고**: 2026-08 매출 **NT$514.81B(+10.1% MoM·+53.3% YoY)**, 4개월 연속 성장, 1~8월 누적 NT$3,386.87B(+39.3% YoY) — AI 가속기 수요 강도가 지속 재확인되고 있다 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **SemiAnalysis "The Great AI Silicon Shortage" 재확인 + CEO 발언**: 2026년 하반기 **N3 가동률이 100%를 초과**할 전망이며, AI 가속기+호스트 CPU+네트워킹 실리콘이 N3 산출의 **60%(2026)→86%(2027)**를 소비한다. CEO C.C. Wei는 2026-06-04 주총에서 AI 가속기·선단 웨이퍼 수요가 공급을 "오랫동안(for a long time)" 추월할 것이며 **2027년 이전에는 의미 있는 완화가 없다**고 밝혔다 — 위키의 병목 모델([bottleneck-model-2030.md](../concepts/bottleneck-model-2030.md))에서 **파운드리 제약지수를 이번 사이클 최대 폭(+9)으로 상향**한 근거다 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **CoWoS는 상대적으로 완화**: TrendForce는 CoWoS 공급-수요 갭이 20%→2026년 말 10%로 축소된다고 밝혔고, 2027년 캐파 목표는 기존 17만 WSPM에서 **19만~20만 WSPM**으로 상향됐다. 주난(Zhunan) Advanced Backend Fab 6(2026-06 가동)은 단독으로 기존 모든 후공정 팹 합계를 상회하는 3D Fabric 캐파(연 ~100만 장)를 갖췄다. **패키징이 파운드리보다 먼저 완화되는 구도**가 이번 사이클의 핵심 구조 변화다.
+- **2nm 경쟁**: 삼성 파운드리 2nm 수율이 50% 미만에서 **70%+**로 상승했으나, TSMC의 MediaTek 수주로 2nm 격차가 오히려 확대됐다는 보도(2026-09-16). 삼성-퀄컴 2nm 계약은 가격 이견으로 2027년 이연 가능성(TrendForce, 9/11). OpenAI가 실리콘 공급망 다변화 목적으로 삼성 파운드리를 공급자 프로그램에 추가(2026-09-10 보도) — TSMC 단일 공급 집중 리스크에 대한 고객사들의 대응이 구체화되는 정황.
+- **ASML**: Q2 2026 순매출 €9.3B·매출총이익률 54%(가이던스 상회), FY26 가이던스 €36~40B로 상향. High-NA는 여전히 저조(Q1 인식 2대뿐)하나 Intel에서 생산 적용 마일스톤 달성.
+
+**출처**: [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)

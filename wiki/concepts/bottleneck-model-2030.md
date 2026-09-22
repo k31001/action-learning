@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-09-22
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/september-2026-market-update-2026-09-22.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -348,6 +348,36 @@ flowchart LR
 - **DRAM 가격 상승 감속 조짐(조기경보 후보)**: TrendForce(2026-07-03, 최신) Q3 2026 범용 DRAM 계약가 전망 **+13~18% QoQ**로 Q2(+58~63%) 대비 큰 폭 감속 — PC/스마트폰 구매력 한계·고기저 효과가 주 원인, 서버향은 에이전틱 AI 수요로 견조. Jefferies는 여전히 Q3 +40~50%를 전망(스팟·HBM 포함 범위 차이로 추정) — **범용 DRAM 계약가 축의 첫 감속 신호로 [demand-inflection-ewi.md](demand-inflection-ewi.md) 모니터링 대상에 추가**.
 - **반독점 소송 신규 리스크**: 2026-06-25 삼성·SK하이닉스·Micron 대상 미국 집단소송 제기(HBM 전환 명목 범용 DRAM 공급 제한·가격 담합 주장) — 병목 모델 자체의 수급 축을 바꾸진 않으나 **CAPEX/ROI·가격 결정 관련 규제·평판 리스크**로 별도 모니터링 필요 ([dram-antitrust-litigation.md](dram-antitrust-litigation.md) 신설).
 
+---
+
+### 종합 판독 (2026-09-22)
+
+#### 제약지수 업데이트 (2026-09-22, 이전 2026-07-04 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 72 | **75** | **▲ +3** | PJM 2026/27 용량경매 사상최고가($329~333.44/MW-day, 평년比 +1,053%)·DC가 PJM 용량비용의 ~40% 차지·중전압 개폐장치 2028년까지 사실상 매진(신규 악화). ERCOT 큐 474GW로 추가 증가하나 실측 동시 대형부하 소비는 ~3,675MW뿐 — 텍사스 주지사가 PUCT/ERCOT에 전수감사 지시(큐 부풀리기 노출), 그리드 실물 용량 확충 신호는 없음 |
+| **CAPEX/ROI** | 40 | **43** | **▲ +3** | 하드 데이터(빅4 가이던스 +77%·Google Cloud +82%·HY OAS 268bp로 타이트닝)는 완화 방향 지속이나, Meta FCF 미스(EPS 컨센서스 -14%)와 **2026-09-14 Amodei·Altman發 "AI 개발 속도 의도적 완화" 발언 이후 메모리주 급락**(Micron -6%·SK하이닉스 -7%)이 신규 하방 트리거로 처음 등장 — 3개 사이클 연속 완화 추세가 반전 |
+| **파운드리** | 50 | **59** | **▲ +9** | SemiAnalysis "The Great AI Silicon Shortage"·TSMC CEO C.C. Wei(6/4 주총): 병목이 패키징에서 **전공정(N3 웨이퍼)**으로 이동 — 2026년 하반기 N3 가동률 100% 초과 전망, AI+CPU+네트워킹이 N3 산출의 60%(2026)→86%(2027) 소비, "공급이 수요를 오랫동안 못 따라간다". TSMC 8월 매출 사상 최고(+53.3% YoY)로 수요 강도도 재확인 — 이번 사이클 최대 변동폭 |
+| **패키징** | 67 | **62** | **▼ −5** | TrendForce 공급-수요 갭 20%→10%로 축소 확인(정량적 완화), 2027 CoWoS 목표 17만→19~20만 WSPM 상향. JEDEC HBM 패키지 높이한도 720→775㎛ 상향으로 16-Hi HBM4도 마이크로범프로 대응 가능해져 하이브리드본딩 긴급성 완화. 단 HBM4 완판 지속·CoPoS 양산 2028~29 재확인으로 근본적 여유는 제한적 |
+
+**07-04 대비 최대 변화 — 파운드리(+9)가 패키징(−5)에 근접하며 서열이 뒤집히기 직전까지 좁혀짐(격차 17 → 3). 2026~27년의 최전선 운영 병목이 "패키징(CoWoS)"에서 "선단 파운드리(N3 웨이퍼)"로 이동 중이라는 것이 이번 사이클의 핵심 구조 변화. 전력은 06-13 이후 5회 연속 재상승 지속, 현재 지수 최고(75). 하방 위험 순서(탄력도 기준)는 CAPEX/ROI > 전력 ≈ 패키징 > 파운드리로 불변이나, 현재 제약지수 순위는 전력 > 패키징 ≈ 파운드리 > CAPEX로 파운드리·패키징이 사실상 동률권.**
+
+#### 2026-09-22 핵심 신규 신호
+
+- **전력 — 병목이 가격으로 현실화**: PJM 2026/27 용량경매가 $329~333.44/MW-day로 사상 최고가(평년 대비 약 +1,053%) 낙찰, 데이터센터가 PJM 전체 용량비용의 ~40%·YoY 피크부하 증가분의 ~5,100MW(전체 ~5,250MW 중)를 차지. 중전압 개폐장치가 2028년까지 사실상 매진 확인 — 변압기(최대 5년)에 이어 신규 설비 병목이 추가 확인. ERCOT 큐는 474GW(2026-08-03, 텍사스 주지사 서한)까지 늘었으나 실측 동시 대형부하 소비는 ~3,675MW에 불과해 신청·실수요 괴리가 극단적으로 확대 — 주지사가 PUCT/ERCOT에 전수감사를 지시하고 ERCOT는 McKinsey 위탁으로 큐 제도 전면 개편에 착수했다. **질적 재평가(큐 게이밍 억제)는 진행되나 그리드 실물 용량 확충 신호는 없어 구조적 악화 판정 유지** ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **CAPEX 완화 추세의 첫 반전 신호**: 빅4 CapEx 합계는 여전히 ~$725B(+77% YoY)로 07-04와 동일 총액이나, Meta는 Q2 실적 발표(7/29) 후 FCF 미스로 주가가 하락했고, 2026-09-14에는 Anthropic Dario Amodei·OpenAI Sam Altman(+ Elon Musk 동조 보도)이 "AI 능력 개발 속도를 의도적으로 늦춰야 한다"는 취지로 발언한 뒤 메모리 섹터 주가가 급락했다(Micron -6%·SanDisk -6%·SK하이닉스 -7%, Roundhill Memory ETF -7% vs QQQ -2%). Bernstein 등은 "안전 프레임워크 발언이지 지출 삭감 신호는 아니다"로 해석했고 실제 CapEx 삭감 사례는 0건이나, **AI 학습 프론지어 둔화 시 서버당 메모리 탑재량이 압축될 수 있다는 베어 케이스가 처음 시장 가격에 반영**된 사건으로 기록한다.
+- **파운드리 — 병목 축 이동의 결정적 신호**: SemiAnalysis의 분석틀("The Great AI Silicon Shortage")과 TSMC CEO C.C. Wei의 2026-06-04 주총 발언이 함께, 2026년 하반기 N3 가동률이 100%를 초과하고 AI 가속기+호스트 CPU+네트워킹 실리콘이 N3 산출의 60%(2026)→86%(2027)를 소비할 것으로 전망한다. Wei는 공급이 수요를 "오랫동안" 못 따라갈 것이며 "2027년 이전 의미 있는 완화는 없다"고 밝혔다. TSMC 월매출은 2026-08 NT$514.81B(+53.3% YoY)로 사상 최고를 기록해 수요 강도 자체도 재확인됐다. Broadcom·Google TPU·OpenAI-XPU 등 커스텀 ASIC 수요 급증(출하 +44.6% YoY, 범용 GPU +16.1%)도 N3 압력을 가중한다.
+- **패키징 — 정량적 완화 확인**: TrendForce가 2026-06-15 CoWoS 공급-수요 갭이 20%에서 2026년 말 10%로 축소된다고 밝혔고, 2027년 캐파 목표는 기존 17만 WSPM에서 19만~20만 WSPM으로 상향됐다(TSMC 주난 Advanced Backend Fab 6 가동 포함). JEDEC가 HBM 패키지 높이 한도를 720→775마이크론으로 올리면서 16-Hi HBM4도 마이크로범프로 대응 가능해져, 07-04 시점 가정했던 하이브리드본딩 전환의 긴급성이 완화됐다(3사 모두 2026년 16-Hi HBM4를 마이크로범프 기반으로 양산 중). 다만 HBM4는 여전히 완판 상태이고 CoPoS 전면 양산은 2028년 하반기~2029년으로 근본적 캐파 여유는 제한적이다.
+- **HBM 시장 점유율 급변동**: 삼성 HBM 매출 점유율이 Q1 21% → Q2 **33%**(Counterpoint, QoQ +12%p)로 급등하며 SK하이닉스(58%→50%)와의 격차가 37%p→17%p로 좁혀졌다. 삼성은 2026-09-14 주간 HBM3E 12-Hi NVIDIA 인증을 마침내 통과(칩 개발 완료 후 약 18개월)해 Q3 출하를 개시했고 2026년 HBM 생산이 완판됐다고 보도됐다. 이는 병목 모델의 공급사별 유효 캐파(§2 표) 배분에 상방 조정 요인이나, 2030 모형 자체는 다음 정기 재보정(연 1~2회)에서 반영한다.
+- **DRAM/NAND — 가격 감속 지속·CXMT 5세대 양산**: Q3 2026 범용 DRAM 계약가 +13~18% QoQ(Q2 +58~63%에서 재확인된 감속), 단 DRAM 스팟가(DDR4 1Gx8 3200)는 2026-09-16 사상 최고치 $45.786 경신 — "AI 빌드아웃이 팹 증설보다 빠르게 DRAM을 소진"(DRAMeXchange). CXMT가 2026-09-20 EUV 없이 쿼드러플 패터닝으로 11.95nm 5세대(G5) DRAM 양산에 진입했다고 발표 — 기존 수출통제 실효성 논쟁을 촉발하는 신규 이벤트로, 후속 규제 대응 여부는 다음 사이클에서 확인한다.
+- **HBM 반독점 소송 — 기각신청 제출**: 2026-09-03 삼성·SK하이닉스·Micron이 N.D. California 법원에 공동 기각신청을 제출(선행소송 재탕·소장 하자 미치유·셔먼법 1조 개연성 부족 등 주장). 9/22 현재 법원 결정은 미발표 — 병목 모델의 실물 수급 구조에는 영향 없으나 규제·평판 리스크 축은 계속 모니터링.
+- **수요 변곡 EWI와의 관계(분리 운영 유지)**: 2026-06-11 사용자 결정 유지. 단 9/14 센티먼트 이벤트는 EWI ①수요청산가 축의 신규 조기경보 후보로 [demand-inflection-ewi.md](demand-inflection-ewi.md)에 별도 반영한다.
+
+**출처**: [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)
+
+---
+
 ## 6. 시나리오 연결 + 한계
 
 - **[시나리오 B "AI 르네상스"](../scenarios/scenario-B.md)** (Main Bet): 기준~높음 경로. HBM 거의 균형(+0.07EB)·가격 타이트 유지 — Main Bet의 수익성 전제를 정량 뒷받침. 단 상방에서도 152.8만 대에서 멈춤(파운드리) — 호황 참여 전략(RS-8)의 상한 인식.
@@ -363,3 +393,4 @@ flowchart LR
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 병목 제약지수 갱신 데이터 (PJM 개편 큐·ERCOT 4배 급증·변압기 리드타임·CAPEX 추가 상향·ASML High-NA 연기·HBM4 마이크로범프 결정·DRAM 가격 감속 조짐)
+- [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md) — 2026-09-22 병목 제약지수 갱신 데이터 (PJM 용량경매 사상최고가·SemiAnalysis 전공정 N3 병목론·TSMC CEO 발언·CoWoS 갭 축소·JEDEC 높이한도 상향·삼성 HBM 33%·CXMT G5 양산·반독점 기각신청·9/14 AI 감속론 센티먼트)

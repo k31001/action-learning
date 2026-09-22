@@ -108,7 +108,7 @@
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
-- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-07-04 제약지수 전력72·CAPEX40·파운드리50·패키징67)
+- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-09-22 제약지수 전력75·CAPEX43·파운드리59·패키징62 — 병목 축이 패키징→전공정(N3)으로 이동 중)
 - [wiki/concepts/dram-antitrust-litigation.md](wiki/concepts/dram-antitrust-litigation.md) — DRAM 반독점 집단소송(2026-06-25 제소, Samsung·SK하이닉스·Micron 공동 피고) — 삼성 규제·평판 리스크 추적 (NEW)
 
 ### 신규 전략 인접영역 (시니어 파트너 인터뷰 2026-06-11 기반)
@@ -258,6 +258,7 @@
 - [sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) — (NEW) KV cache 오프로드 5계층 스택 지도(SSD 벤더 접점 ③④)·벤더 9사 Phase 1·2·3 공개 역량·QLC vs TLC 내구성 갭(10~40배)·배치 표준 WAF 실측(CacheLib 3.22→1.03)
 - [sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md](sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md) — (NEW) 실행 벤치마크: SK hynix AI Company $10B·Solidigm 반전·Astera↔Pliops acqui-hire $70M·SV 보상 격차·인수 후보(ScaleFlux·Tensormesh·DDN·WEKA)·고객 협업 메커니즘·재무 수단(SCA·SLA·지분)
 - [sources/articles/captive-ssd-fdp-context-2026-08.md](sources/articles/captive-ssd-fdp-context-2026-08.md) — 웹 리서치 종합: Captive SSD 위상 변화 4단계(완제품→펌웨어→자체 컨트롤러 Nitro→표준·웨이퍼)·하이퍼스케일러 SSD 수요 ~55%·NAND 웨이퍼 +246%·FDP 표준 기원(Meta·Google 주도·삼성 공동)
+- [sources/articles/september-2026-market-update-2026-09-22.md](sources/articles/september-2026-market-update-2026-09-22.md) — (NEW) 2026-09-22 정기 점검(SemiAnalysis·Counterpoint·TechInsights 우선 지시 + 2차 인용 다수): 병목 축이 패키징→전공정(N3) 이동(SemiAnalysis·TSMC CEO)·PJM 용량경매 사상최고가(+1,053%)·CoWoS 갭 20%→10% 축소·JEDEC HBM 높이한도 상향·삼성 HBM 33% 급등+HBM3E 12-Hi 인증 통과·CXMT G5 DRAM 양산(11.95nm, EUV 없이)·반독점 기각신청(9/3)·9/14 AI 감속론發 메모리주 급락 → 병목 모델 제약지수 갱신(전력75·CAPEX43·파운드리59·패키징62)
 - [sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md](sources/raw-notes/fdp-ecosystem-execution-input-2026-08-05.md) — 사용자 전략 인풋: FDP 생태계 확산·락인 실행전략 3종 (워크로드 교환 협업 · 최적화 역량 확보 · FDE 파견 운영)
 - [sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md](sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md) — 사용자 전략 인풋 원문: FDP 기반 Host–SSD 통합 솔루션 전략 (시스템 SW·실행전략 6종·로드맵·KPI·스토리라인)
 - [sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md](sources/raw-notes/choi-jangseok-product-planning-interview-2026-07-29.md) — 최장석 상무(메모리 상품기획팀장) 내부 인터뷰 녹취록: "수요 감소"의 제품 단위 정의, HBM↔DDR 캐파 상쇄 리스크, zHBM(3D 적층 커스텀 메모리)·가속기 전력/써멀 병목, 미주 vs 중화 선택과 집중, 커스텀 제품 소싱·컨트랙 체질, 하이-로 전략 (대시보드 "인터뷰" 메뉴 미러)

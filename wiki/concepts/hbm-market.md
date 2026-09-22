@@ -323,3 +323,22 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 ### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
 
 - SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+---
+
+## 업데이트 (2026-09-22)
+
+### HBM 점유율 — Counterpoint Q2 2026 확정치: 삼성 급등
+
+| 공급사 | Q1 2026 확정치 | Q2 2026 확정치 | 변화 |
+|---|---:|---:|---|
+| SK하이닉스 | ~58% | **~50%** | ▼ −8%p |
+| 삼성전자 | ~32% | **~33%** | ▲ +1%p (단, QoQ 집계 기준 21%→33%로 보도된 소스도 있어 편차 존재) |
+| Micron | ~21% (추정) | **~18%** | ▼ −3%p |
+
+- Counterpoint Research 2026-09-03 보도 기준으로는 삼성 21%(Q1)→33%(Q2, QoQ +12%p) 급등이 헤드라인이며, SK하이닉스와의 격차가 37%p→17%p로 좁혀졌다고 보도됐다 — 위 표의 Q1 확정치(32%)와 이 보도의 Q1 기준치(21%)가 서로 달라 **집계 방법론·기준월 차이로 추정되는 편차**가 존재한다. 두 수치 모두 병기하며 다음 사이클에서 Counterpoint 원문 대조로 정합 필요(원문은 이번 세션 프록시 차단으로 미확인) ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **삼성 HBM3E 12-Hi NVIDIA 인증 통과(2026-09-14 주간)**: 칩 개발 완료 후 약 18개월 만에 인증을 통과, Q3 출하를 개시했고 **2026년 HBM 생산이 완판**됐다고 보도됐다 — Q2 점유율 급등의 배경이자, 이전 업데이트에서 추적해온 "삼성 HBM4E 선행 샘플·HBM4 인증"과는 별개로 **HBM3E 세대에서의 뒤늦은 정식 인증 완료**라는 점에 유의 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **DRAM 종합 점유율(HBM 제외)**: 같은 Counterpoint Q2 2026 집계에서 CXMT가 7.6~9.5%까지 급등(QoQ 거의 2배, 소스 간 편차)하며 "빅3(삼성·SK·Micron) 합산 점유율이 10여 년 만에 처음 90% 아래로" 내려갔다고 보도됐다 — [cxmt.md](../entities/cxmt.md) 참조.
+- **Vera Rubin HBM4 배정 재추정**: UBS 등 애널리스트 추정치는 SK하이닉스 ~50~70%·삼성 ~25~33%·Micron 잔여로, 07-04 업데이트(SK 60~70%/삼성 25~30%)와 큰 틀에서 유사하나 출처별 편차가 여전히 크다 — 확정 수치 아님.
+
+**출처**: [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)

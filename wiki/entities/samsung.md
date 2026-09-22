@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-09-22
+sources: [sources/README.md (Samsung Semiconductor / Samsung Electronics IR, TrendForce, Counterpoint Research, NIST, Samsung C&T / SDS Newsroom, UBS, CNBC), sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/september-2026-market-update-2026-09-22.md]
 ---
 
 # Samsung Electronics — 메모리사업부 (DS 부문)
@@ -298,3 +298,19 @@ Counterpoint Research (2026-01-29) + 현지 언론 인용:
 - **한국 800조 원 클러스터 투자 환영** — "비중국 세계의 경제·전략적 이해에 부합." 기존 위키 수집(2026-06-29 발표, 삼성·SK 각 신규 팹 2개)에 대한 외부 지정학 전문가의 긍정 평가.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md) §7, §9
+
+---
+
+## 업데이트 (2026-09-22)
+
+### DS 부문 Q2 2026 — 사상 최고 실적, HBM3E 12-Hi 인증 마침내 통과
+
+- **DS(반도체) 부문 2026-07-30 발표**: 매출 **127.5조 원**·영업이익 **89.2조 원** — 모두 사상 최고치(QoQ +56%), 기록적 DRAM·NAND 출하량과 HBM 비중 개선이 견인 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **HBM3E 12-Hi NVIDIA 인증을 2026-09-14 주간 마침내 통과** — 칩 개발 완료로부터 약 18개월이 걸린 지연된 인증이다. Q3 출하를 개시했고 **2026년 HBM 생산이 완판**됐다고 보도됐다. HBM4 12-layer는 "최종 인증 단계"이며, 삼성은 16-layer HBM4 상용화를 현재 고객 수요가 제한적이라는 이유로 우선순위에서 미루고 있다(보유 역량은 있다는 입장) ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **HBM 매출 점유율 급등**: Counterpoint Q2 2026 기준 21~32%(Q1) → **33%**(Q2)로 급등, SK하이닉스와의 격차가 37%p→17%p로 좁혀졌다는 보도. 상세 수치·소스 간 편차는 [hbm-market.md [업데이트 2026-09-22]](../concepts/hbm-market.md) 참조.
+- **H2 2026 가이던스**: HBM4 출하가 Q3에 QoQ 3배, H2 HBM 매출의 60%+가 HBM4로 전환 전망. 삼성은 업계 전반의 공급 부족이 **2028년까지 지속**될 것이라는 기존 입장을 재확인했다.
+- **CapEx**: 2026년 칩(메모리+파운드리+R&D 합산) CapEx 약 **$73B** 추정, Q2 단독 CapEx 16.8조 원(~$11.6B) — 평택 **P5 팹**(유연한 DRAM/NAND/파운드리 배분, 6개 구역) 건설 재개·가속과 테일러(텍사스) 파운드리 램프 가속이 배경 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **반독점 소송**: 2026-09-03 삼성·SK하이닉스·Micron 3사 공동 기각신청 제출, 9/22 현재 법원 결정 미발표 — [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
+- **QLC eSSD**: 2Q26 엔터프라이즈 SSD 매출 랭킹 1위(~$14.35B, 176-layer QLC 램프 주도) — 본 위키의 QLC 전략 워크스트림([qlc-ssd-market.md](../concepts/qlc-ssd-market.md))과 직접 연결.
+
+**출처**: [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)

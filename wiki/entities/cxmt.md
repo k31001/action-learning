@@ -1,7 +1,7 @@
 ---
 type: entity
-last_reviewed: 2026-07-04
-sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters), sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-09-22
+sources: [sources/README.md (Morgan Stanley, TechInsights, Caixin Global, Tom's Hardware, Digitimes, Yole Group, Bloomberg, Reuters), sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/september-2026-market-update-2026-09-22.md]
 ---
 
 # CXMT (창신메모리 / 长鑫存储) — DRAM 전문
@@ -252,3 +252,19 @@ FT 보도의 CXMT 점유율 수치("2025년 ~11% → 2028년 15%")는 **웨이�
 - 다만 밀러는 같은 시기 중국의 구조적 제약도 병행 지적("중국은 4년째 AI 과소투자", Huawei/SMIC 규모 한계 — [china-competitors.md [Update 2026-08-03]](china-competitors.md#update-2026-08-03-크리스-밀러의-중국-이중-평가) 참조) — CXMT 위협은 첨단(HBM)이 아닌 **범용·완제품 채택 경로**로 실현된다는 위키 기존 프레임과 정합.
 
 **출처**: [chris-miller-interviews-2025-12-to-2026-07.md](../../sources/articles/chris-miller-interviews-2025-12-to-2026-07.md)
+
+---
+
+## 업데이트 (2026-09-22)
+
+### 5세대(G5) DRAM 양산 개시 — EUV 없이 11.95nm 하프피치 (신규, 수출통제 실효성 논쟁 촉발)
+
+- **2026-09-20 발표**: CXMT가 5세대(G5) DRAM 플랫폼 양산에 진입했다고 밝혔다 — **EUV 노광 장비 없이 쿼드러플 패터닝(quadruple patterning)만으로 11.95nm 활성영역 하프피치**를 달성했다는 것이 핵심. 24Gb LPDDR5X 제품 2종이 이미 중국 플래그십 스마트폰에 탑재돼 출하 중이다 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- 이 발표는 **기존 EUV 중심 수출통제의 실효성 논쟁을 촉발**하는 신규 이벤트다 — 다중 패터닝으로 첨단 공정 제약을 상당 부분 우회했다는 해석이 나온다. 단, 2026-09-20~21 시점(본 리서치 윈도우 말미)이라 **후속 규제 대응(신규 통제 여부)은 아직 포착되지 않았다** — 다음 사이클에서 반드시 확인 필요 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **DRAM 시장점유율 급등**: Counterpoint Q2 2026 기준 CXMT 점유율이 QoQ 거의 2배(7.6~9.5%, 소스 간 편차)로 뛰었고, YoY로는 +716% 추정 성장 — "빅3(삼성·SK하이닉스·Micron) 합산 점유율이 10여 년 만에 처음 90% 미만"으로 내려간 배경이다.
+- **HBM 진입 준비 재확인**: SemiAnalysis 추정 CXMT의 HBM3e 배정 캐파가 2025년 말 ~5천 WSPM → **2026년 말 ~3만 WSPM → 2027년 ~5.5만 WSPM**으로 확대될 전망 — 범용 DRAM을 넘어 HBM 영역까지 캐파를 배정하기 시작했다는 신호.
+- **NAND 진출**: 베이징 신규 팹에서 NAND R&D/생산 라인을 준비 중이며, AI 슈퍼컴퓨터 스타트업 고객과 NAND 공급을 논의 중이라는 보도(2026-09-18) — DRAM 전문에서 NAND로의 다각화 시도.
+- **2026-07-27 상하이 상장 IPO**: 첫날 주가 +500% 급등, 올해 최대 규모 중국 IPO 중 하나로 보도.
+- **위키 관점**: 기존 [RS-2 바벨 포트폴리오](../strategies/invariant/rs2-barbell-portfolio.md)·[RS-4 고객 포트폴리오 분산](../strategies/invariant/rs4-customer-portfolio-diversification.md) 논지가 전제해온 "CXMT는 범용 저가 세그먼트에 국한"이라는 가정이, G5 양산과 HBM3e 캐파 확대로 **점차 약화되고 있다** — 다음 정기 전략 재검토에서 CXMT의 첨단 영역 추격 속도를 재평가할 필요가 있다(본 사이클에서는 전략 변경까지는 아니며, 모니터링 우선순위 격상으로 기록).
+
+**출처**: [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)

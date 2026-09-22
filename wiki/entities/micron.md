@@ -474,3 +474,22 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 - 2026-06-25 N.D. Cal. 제소 건에 Micron도 삼성전자·SK하이닉스와 함께 피고로 포함 — HBM 전환 명목 하 범용 DRAM 공급 제한·가격 담합 주장([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세 내용은 신규 개념 페이지 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §3, §4
+
+---
+
+## 업데이트 (2026-09-22)
+
+### FQ4 FY2026 실적은 2026-09-30 발표 예정 — FQ3 기준 최신 상태
+
+- Micron 회계연도는 8월 말 마감이라 FQ4 FY2026 실적은 **2026-09-30**(본 문서 수집일 이후) 발표된다. FQ3 실적 기준 가이던스는 매출 ~**$50.0B** 중간값·비GAAP EPS ~**$31.00**·매출총이익률 ~86%·조정 FCF **$30B+**로, 컨센서스($43.45B/$25.43)를 큰 폭 상회했다 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- HBM4 누적 매출 **$10억+**을 이미 인식(6월 공시 기준). HBM3E·HBM4 캐파는 **2027년까지 완전 예약(fully booked)** 상태. HBM4E는 1-감마 노드 기반으로 개발 중이며 **2027 역년 양산**이 목표다.
+- **HBM 매출 점유율**: Counterpoint Q2 2026 기준 21%(Q1 추정)→**18%**(Q2)로 소폭 하락 — 3사 중 가장 작은 점유율, 삼성의 급등에 따른 상대적 위축.
+- **엔터프라이즈 SSD**: Q2 2026 매출 **+126.3% QoQ, ~$6.98B**로 상위 5사 중 최고 성장률 — QLC eSSD 랭킹 3위.
+
+### 뉴욕 메가팹 — 예정보다 빠른 착공 진척
+
+- **뉴욕(Clay) 메가팹**: 2026년 1월 착공, **첫 콘크리트 타설이 예정보다 1개 분기 이상 앞당겨졌다**고 2026-07-09 발표 — 부지 준비에서 본구조물 공사로 전환. 2035년까지 미국 내 총투자 목표를 **$250B+**로 상향. Bechtel이 EPC 파트너, 최대 4개 팹·직접고용 9,000명(총 5만 개 일자리) 계획 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **아이다호 팹**: 2026년 봄 "blowdown"(클린룸 가압·입자수 준비) 단계 도달. Fab 1 첫 웨이퍼 목표 2027년 중반, Fab 2는 CHIPS Act 자금 재배분으로 가속돼 2028년 말 목표.
+- 참고: 2026년 초 일부 보도(Construction Dive)가 뉴욕 공사 지연 가능성을 제기했으나, 7/9 발표는 오히려 "예정보다 빠름"을 강조 — 뉴욕은 정상 페이스·아이다호가 가속되는 리스케줄로 해석되며, 위키가 지연 서사를 인용하고 있었다면 갱신 필요.
+
+**출처**: [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)

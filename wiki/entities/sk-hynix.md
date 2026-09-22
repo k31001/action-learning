@@ -394,3 +394,19 @@ Counterpoint Research (2026-01-29):
 - 2026-06-29 발표(약 800조 원/$518B) — SK하이닉스 **신규 팹 2개** 건설 계획 포함(삼성전자도 동일하게 신규 팹 2개)([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+---
+
+## 업데이트 (2026-09-22)
+
+### Q2 2026 실적 — 사상 최고 매출·영업이익률, HBM4 양산 개시
+
+- **2026-07-28 발표**: 매출 **79.3조 원**(+257% YoY, 사상 최고)·영업이익 **60.5조 원**(+61% QoQ·+557% YoY, 사상 최고)·**영업이익률 76%**(사상 최고). 경영진은 실적 콜에서 "AI 지출 둔화설"을 직접 반박하며 고객사들이 지출을 줄이기는커녕 더 빠르게 수익화하고 있다고 밝히고, 다년 LTA 10건+ 체결을 수요 바닥의 근거로 제시했다 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **HBM4 Q2 중 양산 진입**, 양산 출하 개시. HBM4E 샘플은 H1 2026 중 주요 고객에 출하 완료. 실리콘 웨이퍼 구매량이 HBM4 램프를 앞두고 QoQ 2배 이상 증가, 장비 공급사에 가격 인상을 허용하며 캐파 확보 우선 ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+- **HBM 매출 점유율 하락**: Counterpoint Q2 2026 기준 ~58%(Q1)→**~50%**(Q2)로 하락 — 삼성의 급등(21~32%→33%)에 따른 상대적 축소이며, SK하이닉스는 여전히 1위. 상세는 [hbm-market.md [업데이트 2026-09-22]](../concepts/hbm-market.md) 참조.
+
+### 인디애나 HBM 패키징 공장 착공식 (2026-08-27)
+
+- 미국 웨스트라피엣(퍼듀대 인근) — SK하이닉스 최초의 미국 HBM 패키징 거점. 투자액 **$4B+**(일부 소스 $3.9B), 부지 133.5에이커. 클린룸 목표 **2028년 10월** 개소, **차세대 HBM 양산 목표 2029년 하반기**. CHIPS Act 보조금 최대 $458M + 대출 최대 $570M ([september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)).
+
+**출처**: [sources/articles/september-2026-market-update-2026-09-22.md](../../sources/articles/september-2026-market-update-2026-09-22.md)
