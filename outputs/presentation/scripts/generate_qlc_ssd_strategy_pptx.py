@@ -766,101 +766,181 @@ notes(s, "4장은 해법의 제안입니다. 1장이 제기한 내구성 격차�
       "Phase 1 배치 표준 디바이스 확보: SSD 층만 삼성의 범위이며 고객 보증 범위는 정격 내 QLC 원가·전력입니다. Phase 2 워크로드 실측 기반 최적화: 캐시 관리자의 빈도 필터·퇴거 정책이 트레이스의 원천이고, I/O 라이브러리의 io_uring·GDS 백엔드에 write stream을 부착하며 커널 스트림과 CMX 힌트 매핑을 검증해 배치 핸들 정책·WAF·유효 DWPD 실측을 공개합니다. 고객 보증 범위는 고객 워크로드 기준 수명입니다. Phase 3 고객 시스템 내 공동 설계: 캐시 관리자 4종에 플러그인을 메인라인으로 머지하고, NIXL·xNVMe가 기본 백엔드가 되며, DOCA Memos와 배치 표준의 매핑을 NVIDIA와 공동 정의하고, 응용 층은 커넥터·스케줄러를 분석해 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)로 협의합니다. FDE(Forward Deployed Engineer)가 고객 시스템에 상주합니다. 고객 보증 범위는 시스템 수준 TCO입니다. "
       "삼성 현 위치는 정직하게 Phase 1 진행 중입니다. CMX 첫 공급은 TLC이고 QLC 라인의 배치 핸들 수와 유효 DWPD는 공개돼 있지 않습니다. Phase 2는 준비 단계로 KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고, Phase 3는 캐시 관리자 4종 기여 0건으로 미착수입니다. 오케스트레이션 자체는 만들지 않습니다. 결론: 단계마다 고객 보증 범위가 원가·전력 → 워크로드 수명 → 시스템 TCO로 확장되며, 3단계에 진입하는 수단(선별된 고객에의 FDE·업스트림·규격 채널)과 개발실 내부 실행이 5장입니다.")
 
-# ================================================================ S5. 실행 — 고객 선별(FDE 집중) + 개발실 내부 실행 (v5.0: 자회사·별도 보상·결정 요청 제외)
+# ================================================================ S5. 실행 — 두 트랙 그림(v6.1: v3.x 형식 복귀 — 좌 개발실 / 중앙 ①FDE 상주 → ←② 접근권 + 선례 / 우 고객 시스템)
 s = prs.slides.add_slide(BLANK)
 header(s, 5,
        "3단계 진입은 워크로드를 개방하는 고객에 FDE를 집중하고, 그 외는 업스트림·규격으로 협업합니다",
        [("「단 한 번도 고객 지향적인 적이 없었다. 진짜 고객 지향이 뭔지 이해하고, 그것을 위한 전략이 필요한 시점이 이미 됐다」", 18, False, INK),
         ("   송용호 · AX/PI센터장, 2026-09", 13.5, False, GRAY_2)])
 
-# ---- 좌: 고객 선별 · 협업 채널 표 ----
-LX, LW_ = MX, 11.9
 Y0 = 2.80
-tb(s, LX, Y0, LW_, 0.26, [[("고객 선별 · 협업 채널", 13.5, True, BLUE), ("   FDE 상주 조건: ① 트레이스·KV 정책 접근 허용  ② 캐시 관리자 코드를 자체 운영  ③ 물량·규격 파급력", 10.0, False, GRAY_2)]])
-cols = [("고객 유형", 2.35), ("워크로드 접근", 2.2), ("협업 채널", 2.35), ("삼성 방식", 2.05), ("효과 극대화 포인트", LW_ - 2.35 - 2.2 - 2.35 - 2.05)]
-hy = Y0 + 0.36
-cx = LX
-for name, w in cols:
-    tb(s, cx + 0.08, hy, w - 0.16, 0.24, [(name, 9.75, True, GRAY_2)])
-    cx += w
-rect(s, LX, hy + 0.28, LW_, 0.012, fill=GRAY_2)
-rows = [
-    (True, "AI 랩", "Anthropic · OpenAI", "협약 시 트레이스 · KV 수명 정책 공유", "전략적 협약(SCA)의\n공동 설계 조항", "FDE 상주\nPod 3~5명", "Micron↔Anthropic 선례 · 캐시 관리자 정책을 함께 정의해 수명 보증 레퍼런스 확보 · 로고 효과"),
-    (True, "NVIDIA 생태계", "CMX · Dynamo KVBM · NIXL", "파트너 프로그램 · 레퍼런스 스택 코드", "플러그인 · CMX 힌트 매핑\n공동 정의", "FDE 상주\n플랫폼 팀 파견", "CMX 첫 공급 관계 활용 · KVBM 플러그인 메인라인 머지 → 생태계 기본 디바이스"),
-    (False, "하이퍼스케일러", "Meta · Google · MS · AWS", "내부 코드 상주 불가\n(보안 · 중립성)", "OCP 규격 · 업스트림\n(CacheLib · XFS · 커널)", "업스트림 기여\nOCP 규격 제안", "배치 표준 공동 주도 이력 · OCP 텔레메트리·FIP 규격 · 실측 공개로 신뢰 확보"),
-    (False, "OEM · 네오클라우드", "자체 캐시 스택 없음", "삼성 레퍼런스 스택 채택", "레퍼런스 아키텍처\n(vLLM + LMCache + QLC)", "레퍼런스 스택\n공용 TCO 모델", "검증된 스택 제공으로 디자인인 · FDE 없이 확산 · 실측 데이터 재사용"),
-]
-ry = hy + 0.40
-RH = 1.00
-for hot, c1, c1b, c2, c3, c4, c5 in rows:
+LW5, GAP5 = 3.15, 0.24
+CX5 = MX + LW5 + GAP5
+CW5 = 10.10
+RX5 = CX5 + CW5 + GAP5
+RW5 = RIGHT - RX5
+TOP_H = 3.86                      # 상단 그림 블록 높이
+
+# ---- 좌: 삼성 개발실 ----
+rect(s, MX, Y0, LW5, TOP_H, fill=WHITE, line=LINE, line_w=0.75)
+tb(s, MX + 0.22, Y0 + 0.16, LW5 - 0.44, 0.30, [("삼성 개발실", 15, True, BLUE)])
+tb(s, MX + 0.22, Y0 + 0.46, LW5 - 0.44, 0.22, [("삼성이 제공하는 것", 10.0, False, GRAY_2)])
+gives = ["KV-ready QLC + 수명 보증", "FDE (고객 상주 엔지니어)", "업스트림 코드 · 공용 TCO 모델", "WAF 급등 감지 · 런타임 대응"]
+gy = Y0 + 0.84
+for i, g in enumerate(gives):
+    rect(s, MX + 0.26, gy + 0.07, 0.12, 0.12, fill=BLUE)
+    tb(s, MX + 0.48, gy, LW5 - 0.70, 0.52, [(g, 11.25, True, INK)], spacing=1.02)
+    gy += 0.56
+quote(s, MX + 0.22, Y0 + TOP_H - 1.02, LW5 - 0.44, 0.92,
+      "고객의 집에 가서 저녁을 같이 먹는 것, 삼성은 상상할 수 없는 일이지만 SK하이닉스는 한다",
+      "송용호 · 고객 관계 = 워크로드 접근권", size=9.5)
+
+# ---- 중앙: ① FDE 상주 → / 선례 2 / ← ② 접근권 확보 ----
+AR_H = 0.74
+
+
+def _fat_arrow(sp, body=0.86):
+    """화살표 몸통 두께(기본 0.5)를 키워 텍스트가 몸통 안에 들어오게 한다."""
+    try:
+        sp.adjustments[0] = body
+    except Exception:
+        pass
+    return sp
+
+
+_fat_arrow(rect(s, CX5, Y0, CW5, AR_H, fill=BLUE, shape=MSO_SHAPE.RIGHT_ARROW))
+tb(s, CX5 + 0.34, Y0 + 0.08, CW5 - 1.30, 0.28, [("① FDE 상주 : 삼성 엔지니어가 고객 시스템 안으로", 15, True, WHITE)])
+tb(s, CX5 + 0.34, Y0 + 0.38, CW5 - 1.30, 0.24, [("상주 엔지니어 · 업스트림 코드 · 워크로드 실측 공개", 10.5, False, BLUE_T2)])
+
+CARD_Y = Y0 + AR_H + 0.14
+CARD_H = TOP_H - AR_H - AR_H - 0.28
+CARD_W = (CW5 - 0.20) / 2
+
+# 카드 A: 고객 선별 · 채널
+rect(s, CX5, CARD_Y, CARD_W, CARD_H, fill=WHITE, line=LINE, line_w=0.75)
+tb(s, CX5 + 0.20, CARD_Y + 0.10, CARD_W - 0.40, 0.24, [("고객 선별 · 채널", 12.0, True, BLUE)])
+tb(s, CX5 + 0.20, CARD_Y + 0.33, CARD_W - 0.40, 0.22,
+   [("FDE 상주 조건 · ① 트레이스 접근 ② 캐시 관리자 자체 운영 ③ 물량·규격 파급력", 8.5, False, GRAY_2)])
+chans = [(True, "AI 랩", "Anthropic · OpenAI", "FDE 상주 Pod 3~5명"),
+         (True, "NVIDIA 생태계", "CMX · Dynamo KVBM · NIXL", "FDE 플랫폼 팀 파견"),
+         (False, "하이퍼스케일러", "Meta · Google · MS · AWS", "업스트림 · OCP 규격"),
+         (False, "OEM · 네오클라우드", "자체 캐시 스택 없음", "레퍼런스 스택 제공")]
+cy = CARD_Y + 0.60
+CH5 = (CARD_H - 0.60 - 0.14) / 4
+for hot, who, what, how in chans:
     if hot:
-        rect(s, LX, ry, LW_, RH - 0.10, fill=TINT)
-        rect(s, LX, ry, 0.06, RH - 0.10, fill=BLUE)
-    cx = LX
-    cells = [[(c1, 11.25, True, BLUE if hot else INK), (c1b, 9.0, False, GRAY)],
-             [(ln, 9.5, False, GRAY) for ln in c2.split("\n")],
-             [(ln, 9.5, False, GRAY) for ln in c3.split("\n")],
-             [(ln, 10.0, True, BLUE if hot else INK) for ln in c4.split("\n")],
-             [(c5, 9.0, False, GRAY)]]
-    for (name, w), paras in zip(cols, cells):
-        tb(s, cx + 0.12, ry + 0.06, w - 0.24, RH - 0.2, paras, anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
-        cx += w
-    rect(s, LX, ry + RH - 0.05, LW_, 0.008, fill=LINE)
-    ry += RH
-tb(s, LX, ry + 0.02, LW_, 0.24, [[("선례  ", 9.5, True, INK), ("Palantir FDE(상주 · 성과 평가 · Anthropic·OpenAI GTM 채택) · Micron↔Anthropic SCA 2026-06(공동 설계 + 다년 공급 + 운영 통합 + 자본) · 삼성·SK의 Anthropic 계약엔 공동 설계 조항 부재", 8.75, False, GRAY)]], spacing=1.0)
-# 단계별 통과 조건(개발실 범위 · 다음 단계로 가는 증명)
-gy0 = ry + 0.34
-gh = 9.42 - 0.20 - gy0
-tb(s, LX, gy0, LW_, 0.24, [[("단계별 통과 조건", 11.25, True, BLUE), ("   각 단계의 증명이 다음 단계의 승인 근거", 9.5, False, GRAY_2)]])
-gates = [("90일", "등대 고객 1사 트레이스 확보 · KV 캐시 실측(WAF·유효 DWPD) 공개 · 캐시 관리자 플러그인 PR 1건", False),
+        rect(s, CX5 + 0.16, cy, CARD_W - 0.32, CH5 - 0.06, fill=TINT)
+        rect(s, CX5 + 0.16, cy, 0.05, CH5 - 0.06, fill=BLUE)
+    tb(s, CX5 + 0.30, cy, 2.30, CH5 - 0.06, [(who, 10.0, True, BLUE if hot else INK), (what, 8.25, False, GRAY)],
+       anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+    rect(s, CX5 + 2.62, cy + (CH5 - 0.06) / 2 - 0.07, 0.20, 0.14, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+    tb(s, CX5 + 2.92, cy, CARD_W - 3.10, CH5 - 0.06, [(how, 10.0, True, BLUE if hot else GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+    cy += CH5
+
+# 카드 B: 선례
+BX = CX5 + CARD_W + 0.20
+rect(s, BX, CARD_Y, CARD_W, CARD_H, fill=WHITE, line=LINE, line_w=0.75)
+tb(s, BX + 0.20, CARD_Y + 0.10, CARD_W - 0.40, 0.24, [[("선례 · ", 12.0, False, GRAY_2), ("Palantir FDE", 12.0, True, BLUE),
+                                                       ("   상주 → 코드 → 성과 평가", 9.0, False, GRAY)]])
+py5 = CARD_Y + 0.40
+px5 = BX + 0.24
+for k in range(3):
+    px5 += person(s, px5, py5, 0.34) + 0.06
+rect(s, px5 + 0.06, py5 + 0.10, 0.26, 0.16, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+rect(s, px5 + 0.40, py5 - 0.02, 1.24, 0.38, fill=WHITE, line=BLUE, line_w=1.0)
+tb(s, px5 + 0.40, py5 - 0.02, 1.24, 0.38, [("고객 현장", 10.0, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+tb(s, BX + 0.24, CARD_Y + 0.80, CARD_W - 0.48, 0.22,
+   [("주가 수익률 640% · 고객 락인의 동력 · Anthropic · OpenAI가 GTM 모델로 채택", 8.75, False, GRAY)])
+rect(s, BX + 0.20, CARD_Y + 1.06, CARD_W - 0.40, 0.012, fill=LINE)
+tb(s, BX + 0.20, CARD_Y + 1.12, CARD_W - 0.40, 0.24, [[("선례 · ", 12.0, False, GRAY_2), ("Micron ↔ Anthropic SCA", 12.0, True, BLUE),
+                                                       ("   2026-06", 9.0, False, GRAY)]])
+sca = ["공동 설계", "다년 공급", "운영 통합", "자본"]
+SW5, SH5 = 1.12, 0.28
+for i, nm in enumerate(sca):
+    gx_, gy_ = BX + 0.24 + (i % 2) * (SW5 + 0.10), CARD_Y + 1.42 + (i // 2) * (SH5 + 0.06)
+    rect(s, gx_, gy_, SW5, SH5, fill=BLUE if i == 0 else BLUE_T2)
+    tb(s, gx_, gy_, SW5, SH5, [(nm, 9.5, True, WHITE if i == 0 else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+tb(s, BX + 0.24 + 2 * SW5 + 0.28, CARD_Y + 1.36, CARD_W - 2 * SW5 - 0.76, 0.66,
+   [("네 요소를 한 계약에 · Micron SCA 16건", 9.0, False, GRAY),
+    ("삼성 · SK의 Anthropic 계약엔 공동 설계 조항 부재", 9.0, True, INK),
+    ("→ 삼성이 선제 제안", 9.25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
+
+AY2 = Y0 + TOP_H - AR_H
+_fat_arrow(rect(s, CX5, AY2, CW5, AR_H, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_ARROW))
+tb(s, CX5 + 1.10, AY2 + 0.08, CW5 - 1.40, 0.28, [("② 접근권 확보 : 워크로드 트레이스 · KV 수명 정책 · 규격", 15, True, BLUE)])
+tb(s, CX5 + 1.10, AY2 + 0.38, CW5 - 1.40, 0.24, [("계약 시한 2027년 상반기 — 공급 완화 전에 락인", 10.5, False, GRAY)])
+
+# ---- 우: 고객 시스템 ----
+rect(s, RX5, Y0, RW5, TOP_H, fill=WHITE, line=LINE, line_w=0.75)
+tb(s, RX5 + 0.22, Y0 + 0.16, RW5 - 0.44, 0.30, [("고객 시스템", 15, True, BLUE)])
+tb(s, RX5 + 0.22, Y0 + 0.46, RW5 - 0.44, 0.22, [("삼성 인력 · 코드의 진입 계층", 10.0, False, GRAY_2)])
+ST_W = RW5 - 1.50
+ys5 = stack(s, RX5 + 0.22, Y0 + 0.84, ST_W,
+            ["응용 · 추론 엔진", "KV 캐시 관리자", "I/O 라이브러리 · 커널", "SSD : 삼성 QLC"],
+            ["none", "touch", "touch", "own"], layer_h=0.46, gap=0.09, size=12.0)
+pw5 = person(s, RX5 + ST_W + 0.34, ys5[1] + 0.02, 0.42)
+tb(s, RX5 + ST_W + 0.34 + pw5 + 0.06, ys5[1], 0.70, 0.46, [("FDE", 10.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, RX5 + ST_W + 0.34, ys5[2], RW5 - ST_W - 0.56, 0.46, [("코드 머지", 10.0, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+logo_row(s, [("logo", "anthropic"), ("logo", "openai"), ("logo", "nvidia"), ("logo", "meta")],
+         RX5 + 0.30, Y0 + TOP_H - 0.62, 0.30, gap=0.24, max_w=RW5 - 0.60)
+
+# ---- 하단 1: 조직 · 인사 · 문화 ----
+B_Y = Y0 + TOP_H + 0.22
+B_H = 1.00
+axes = [("조직", "시스템 소프트웨어 조직 강화", ["Co-Design Pod 3~5명 · 개발실 소속 · 선별 고객 1~2사 상주", "미주 법인 협업 · 고객 시간대 대응"]),
+        ("인사", "고객 시스템을 아는 시스템 SW 전문가 채용 · 양성", ["채용 기준 = 고객 코드를 읽고 고치는가", "본사 엔지니어 상주 로테이션 3~6개월 · 평가 = 머지·실측·디자인인"]),
+        ("문화", "오픈소스 생태계를 주도하는 문화", ["메인테이너 · 커미터 배출 · 업스트림 우선", "KV 캐시 실측(WAF · 유효 DWPD) 업계 최초 공개"])]
+AW = (CW - 2 * 0.24) / 3
+for i, (lab, head, lines) in enumerate(axes):
+    ax5 = MX + i * (AW + 0.24)
+    rect(s, ax5, B_Y, AW, B_H, fill=WHITE, line=LINE, line_w=0.75)
+    rect(s, ax5, B_Y, 0.80, B_H, fill=BLUE)
+    tb(s, ax5, B_Y, 0.80, B_H, [(lab, 14, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, ax5 + 0.96, B_Y + 0.10, AW - 1.12, 0.26, [(head, 11.25, True, INK)])
+    tb(s, ax5 + 0.96, B_Y + 0.36, AW - 1.12, 0.56, [(l, 9.25, False, GRAY) for l in lines], spacing=1.06)
+
+# ---- 하단 2: 단계별 통과 조건 + 판돈·비용 ----
+G_Y = B_Y + B_H + 0.16
+G_H = 9.42 - 0.20 - G_Y
+GW_TOT = 12.20
+tb(s, MX, G_Y, GW_TOT, 0.22, [[("단계별 통과 조건", 11.25, True, BLUE), ("   각 단계의 증명이 다음 단계의 승인 근거", 9.5, False, GRAY_2)]])
+gates = [("90일", "등대 고객 1사 트레이스 확보 · KV 캐시 실측(WAF · 유효 DWPD) 공개 · 캐시 관리자 플러그인 PR 1건", False),
          ("12개월", "플러그인 메인라인 머지 · 고객 워크로드에서 QLC 유효 DWPD ≥ 1 실증 · WAF 급등 감지·대응 시제품(6장)", False),
          ("2027H1", "디자인인 1사 · 협약에 공동 설계 조항 제안 · 레퍼런스 스택 공개 → 공급 완화 전 락인", True)]
-gw = (LW_ - 2 * 0.22) / 3
+gw5 = (GW_TOT - 2 * 0.20) / 3
 for i, (t, d, hot) in enumerate(gates):
-    gx = LX + i * (gw + 0.22)
-    gy = gy0 + 0.30
-    rect(s, gx, gy, gw, gh - 0.34, fill=TINT if hot else WHITE, line=BLUE if hot else LINE, line_w=1.0 if hot else 0.75)
-    tb(s, gx + 0.14, gy + 0.06, 0.95, 0.3, [(t, 12.75, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, gx + 1.06, gy + 0.05, gw - 1.2, gh - 0.44, [(d, 9.0, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
+    gx5 = MX + i * (gw5 + 0.20)
+    gy5 = G_Y + 0.28
+    gh5 = G_H - 0.28
+    rect(s, gx5, gy5, gw5, gh5, fill=TINT if hot else WHITE, line=BLUE if hot else LINE, line_w=1.0 if hot else 0.75)
+    tb(s, gx5 + 0.14, gy5 + 0.06, 0.90, 0.28, [(t, 12.0, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, gx5 + 1.02, gy5 + 0.05, gw5 - 1.16, gh5 - 0.10, [(d, 9.0, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
     if i < 2:
-        rect(s, gx + gw + 0.02, gy + (gh - 0.34) / 2 - 0.09, 0.18, 0.18, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-
-# ---- 우: 개발실 내부 실행 3축 + 판돈·비용 ----
-RX5 = LX + LW_ + 0.30
-RW5 = RIGHT - RX5
-tb(s, RX5, Y0, RW5, 0.26, [[("개발실 내부 실행", 13.5, True, BLUE), ("   별도 투자 없이 개발 자원 재배치로", 10.0, False, GRAY_2)]])
-axes = [("조직", ["시스템 소프트웨어 조직 강화 (캐시 관리자 · I/O · 커널)", "Co-Design Pod 3~5명 · 개발실 소속 · 선별 고객 1~2사", "미주 법인 협업 · 고객 시간대 대응"]),
-        ("인사", ["시스템 SW 전문가 채용·양성 · 기준 = 고객 코드를 읽고 고치는가", "본사 엔지니어 상주 로테이션 (3~6개월)", "성과 평가 = 머지 · 실측 공개 · 디자인인"]),
-        ("문화", ["오픈소스 메인테이너·커미터 배출 · 업스트림 우선", "KV 캐시 실측(WAF · 유효 DWPD) 업계 최초 공개", "레퍼런스 프로젝트 운영으로 외부 기여 유입"])]
-ay = Y0 + 0.36
-AH = 1.16
-for lab, lines in axes:
-    rect(s, RX5, ay, RW5, AH, fill=WHITE, line=LINE, line_w=0.75)
-    rect(s, RX5, ay, 0.8, AH, fill=BLUE)
-    tb(s, RX5, ay, 0.8, AH, [(lab, 15, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, RX5 + 0.95, ay, RW5 - 1.1, AH, [(lines[0], 10.5, True, INK)] + [(l, 9.75, False, GRAY) for l in lines[1:]], anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)
-    ay += AH + 0.12
-# 판돈·비용
-py_ = ay + 0.02
-ph_ = 9.42 - 0.20 - py_
-rect(s, RX5, py_, RW5, ph_, fill=TINT)
-rect(s, RX5, py_, 0.06, ph_, fill=BLUE)
-half = (RW5 - 0.5) / 2
-tb(s, RX5 + 0.22, py_ + 0.10, half, 0.2, [("판돈 · 락인으로 얻는 점유율", 9.5, False, GRAY_2)])
-tb(s, RX5 + 0.22, py_ + 0.30, half, 0.44, [("캐시 계층 QLC 0 → 50%", 15, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-tb(s, RX5 + 0.22, py_ + 0.74, half, ph_ - 0.8, [("2030 추론 캐시 350EB 중 QLC 175EB(조건부 상방) · 락인 없으면 TLC 유지 · 디자인인 1사당 점유율 [사내 확인]", 8.75, False, GRAY)], spacing=1.0)
-tb(s, RX5 + 0.22 + half + 0.16, py_ + 0.10, half, 0.2, [("비용 · 개발실 자원 투입", 9.5, False, GRAY_2)])
-tb(s, RX5 + 0.22 + half + 0.16, py_ + 0.30, half, 0.44, [("별도 투자 없음", 15, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-tb(s, RX5 + 0.22 + half + 0.16, py_ + 0.74, half, ph_ - 0.8, [("Pod 인력 3~5명 × 1~2사 재배치 · 시스템 SW 채용은 정원 내 · 실측 공개는 보안 검토만", 8.75, False, GRAY)], spacing=1.0)
+        rect(s, gx5 + gw5 + 0.01, gy5 + gh5 / 2 - 0.08, 0.18, 0.16, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+SX5 = MX + GW_TOT + 0.30
+SW5B = RIGHT - SX5
+rect(s, SX5, G_Y, SW5B, G_H, fill=TINT)
+rect(s, SX5, G_Y, 0.06, G_H, fill=BLUE)
+hf = (SW5B - 0.52) / 2
+tb(s, SX5 + 0.24, G_Y + 0.08, hf, 0.2, [("판돈 · 락인으로 얻는 점유율", 9.25, False, GRAY_2)])
+tb(s, SX5 + 0.24, G_Y + 0.28, hf, 0.38, [("캐시 계층 QLC 0 → 50%", 13.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, SX5 + 0.24, G_Y + 0.68, hf, G_H - 0.76, [("2030 추론 캐시 350EB 중 QLC 175EB(조건부 상방) · 락인 없으면 TLC 유지", 8.5, False, GRAY)], spacing=1.02)
+tb(s, SX5 + 0.24 + hf + 0.20, G_Y + 0.08, hf, 0.2, [("비용 · 개발실 자원 투입", 9.25, False, GRAY_2)])
+tb(s, SX5 + 0.24 + hf + 0.20, G_Y + 0.28, hf, 0.38, [("별도 투자 없음", 13.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, SX5 + 0.24 + hf + 0.20, G_Y + 0.68, hf, G_H - 0.76, [("Pod 3~5명 × 1~2사 재배치 · 채용은 정원 내 · 실측 공개는 보안 검토만", 8.5, False, GRAY)], spacing=1.02)
 
 band(s, 9.42, 0.80, "결론",
-     "FDE는 워크로드를 여는 1~2사에 집중해 효과를 극대화하고, 나머지 고객은 업스트림·규격·레퍼런스 채널로 넓힙니다.\n판돈은 락인으로 얻는 캐시 계층 점유율, 비용은 개발실 개발 자원 투입입니다",
+     "FDE 상주로 고객 시스템에 들어가고, 전략적 협약으로 워크로드·규격 접근권을 받습니다. 두 수단 모두 업계 선례가 있습니다.\n"
+     "판돈은 락인으로 얻는 캐시 계층 점유율, 비용은 개발실 개발 자원 투입입니다",
      main_size=16.5, next_step=6)
-footer(s, "출처: Pragmatic Engineer·FDE Academy(Palantir FDE), Micron IR 2026-06-22·10-Q(SCA), NVIDIA CMX·Dynamo 문서, OCP 사양, 위키 qlc-execution-strategy(개발실 범위) · 점유율 수치는 위키 수요 모델 §4.3 조건부 상방, 사내 수치는 [사내 확인]", 5)
-notes(s, "5장은 실행입니다. 4장의 3단계에 진입하는 수단을 고객 유형별로 나누고, 개발실 내부에서 실행 가능한 범위만 담았습니다. 리드의 인용은 송용호 AX/PI센터장의 발언입니다. "
-      "FDE 상주는 모든 고객에 적용하지 않습니다. 조건은 세 가지입니다. 트레이스와 KV 수명 정책 접근을 허용하는가, 캐시 관리자 코드를 자체 운영하는가, 물량과 규격 파급력이 있는가. 이 조건을 만족하는 AI 랩(Anthropic·OpenAI)과 NVIDIA 생태계(CMX·Dynamo KVBM·NIXL)에 Pod 3~5명을 집중합니다. AI 랩은 전략적 협약의 공동 설계 조항으로 접근하며 Micron↔Anthropic이 선례이고, 캐시 관리자 정책을 함께 정의해 수명 보증 레퍼런스를 확보합니다. NVIDIA 생태계는 CMX 첫 공급 관계를 활용해 KVBM 플러그인을 메인라인에 머지하고 생태계 기본 디바이스가 됩니다. 하이퍼스케일러는 보안·중립성 때문에 내부 코드 상주가 불가하므로 OCP 규격과 업스트림(CacheLib·XFS·커널) 채널로 협업합니다. OEM·네오클라우드는 자체 캐시 스택이 없으므로 레퍼런스 스택(vLLM + LMCache + 삼성 QLC)과 공용 TCO 모델로 확산합니다. "
-      "개발실 내부 실행은 별도 투자 없이 개발 자원 재배치로 합니다. 조직: 시스템 소프트웨어 조직 강화, 개발실 소속 Co-Design Pod, 미주 법인 협업. 인사: 고객 코드를 읽고 고칠 수 있는 시스템 SW 전문가 채용·양성(정원 내), 본사 엔지니어 상주 로테이션, 성과 평가는 머지·실측 공개·디자인인. 문화: 오픈소스 메인테이너 배출, 업스트림 우선, KV 캐시 실측 업계 최초 공개. 자회사 설립, 별도 보상 체계, 지분 참여, 결정 요청은 위키에만 두고 덱에서는 제외했습니다. "
-      "단계별 통과 조건은 90일(등대 고객 트레이스 확보·KV 캐시 실측 공개·플러그인 PR), 12개월(메인라인 머지·유효 DWPD 1 이상 실증·조건부 보증 초안), 2027년 상반기(디자인인 1사·협약 공동 설계 조항 제안·레퍼런스 스택 공개)이며 각 단계의 증명이 다음 단계의 승인 근거입니다. 판돈은 락인으로 얻는 점유율입니다. 수요 모델에서 2030년 추론 캐시 계층 350EB 중 QLC는 호스트 협력이 성립할 때 조건부 상방 175EB(50%)이고, 성립하지 않으면 TLC가 유지됩니다. 디자인인 1사당 점유율 변화는 사내 수치로 확인합니다. 비용은 Pod 인력 3~5명 × 1~2사 재배치와 정원 내 채용이며 별도 투자가 없습니다. 실행의 마지막 리스크인 수명 보증·SLA가 6장입니다.")
+footer(s, "출처: Pragmatic Engineer·FDE Academy(Palantir FDE), Micron IR 2026-06-22·10-Q(SCA 16건·$22B), SK hynix 뉴스룸, 내부 인터뷰(송용호 2026-09-03) · 규모·시점은 추정, 사내 수치는 [사내 확인]", 5)
+notes(s, "5장은 실행입니다. 3단계 역량을 어떻게 얻느냐, 즉 고객 시스템 안으로 들어가는 두 수단을 그림 하나로 보입니다. 왼쪽은 삼성 개발실이 제공하는 것이고, 오른쪽은 고객 시스템의 계층이며, 가운데 두 화살표가 주고받는 관계입니다. "
+      "위쪽 화살표 ① FDE 상주는 삼성이 보내는 것입니다. 상주 엔지니어가 고객 시스템 안에서 요구를 코드로 구현하고, 업스트림에 기여하며, 워크로드 실측을 공개합니다. 아래쪽 화살표 ② 접근권 확보는 삼성이 받는 것입니다. 워크로드 트레이스, KV 수명 정책, 규격 접근권이며 계약 시한은 2027년 상반기입니다. 공급이 완화되기 전에 락인을 걸어야 하기 때문입니다. "
+      "가운데 왼쪽 카드가 고객 선별입니다. FDE를 모든 고객에 보낼 수는 없으므로 세 조건으로 거릅니다. 트레이스 접근을 허용하는가, 캐시 관리자 코드를 자체 운영하는가, 물량과 규격에 파급력이 있는가. AI 랩과 NVIDIA 생태계가 조건을 충족하므로 FDE를 상주시키고, 하이퍼스케일러는 보안과 중립성 때문에 내부 코드 상주가 불가하므로 업스트림과 OCP 규격으로, OEM과 네오클라우드는 레퍼런스 스택으로 넓힙니다. "
+      "오른쪽 카드가 선례입니다. Palantir의 FDE는 고객 현장에 상주해 요구를 코드로 구현하고 성과로 평가받는 모델이고, 고객 락인의 동력으로 평가받아 Anthropic과 OpenAI가 시장 진입 모델로 채택했습니다. Micron과 Anthropic의 전략적 협약은 공동 설계, 다년 공급, 운영 통합, 자본을 한 계약에 결합해 워크로드와 규격 접근권을 확보한 사례입니다. 중요한 것은 삼성과 SK의 Anthropic 공급 계약에는 공동 설계 조항이 없다는 점이고, 이것을 삼성이 먼저 제안하자는 것이 이 장의 요청입니다. "
+      "오른쪽 고객 시스템 그림에서 삼성이 지금 닿는 층은 SSD뿐입니다. FDE가 KV 캐시 관리자 층에 상주하고 I/O 라이브러리와 커널에 코드를 머지하면서 위로 올라갑니다. "
+      "하단 세 타일은 개발실 내부 실행입니다. 조직은 시스템 소프트웨어 조직 강화와 개발실 소속 Co-Design Pod, 인사는 고객 코드를 읽고 고치는 전문가 채용과 상주 로테이션, 문화는 오픈소스 메인테이너 배출과 KV 캐시 실측의 업계 최초 공개입니다. 자회사나 별도 보상 체계는 두지 않습니다. "
+      "마지막 줄이 통과 조건과 판돈입니다. 90일에 트레이스 확보와 실측 공개, 12개월에 메인라인 머지와 유효 DWPD 1 이상 실증과 WAF 급등 대응 시제품, 2027년 상반기에 디자인인 1사와 공동 설계 조항 제안입니다. 판돈은 락인으로 얻는 캐시 계층 점유율이고 비용은 개발실 개발 자원 재배치이며 별도 투자는 없습니다.")
 
 # ================================================================ S6. WAF 런타임 대응 기술 (v6.0: 조건부 보증 → 감지·대응 기술 확보로 축 이동)
 s = prs.slides.add_slide(BLANK)
