@@ -17,6 +17,23 @@ export const UPDATES = [
   {
     date: '2026-09-22',
     type: 'build',
+    version: 'v2.46.40',
+    title: 'QLC 덱 v6.3 — 5장에서 판돈·비용 스트립 제거',
+    summary:
+      '통과 조건에 이어 판돈·비용도 덱에서 뺐다. 하단은 조직·인사·문화 타일만 남기고, 확보한 공간으로 두 트랙 그림을 4.86in까지 키워 선례 카드와 고객 시스템 스택을 확대했다.',
+    tags: ['QLC', 'eSSD', '발표자료'],
+    items: [
+      { label: '제거', detail: '판돈·비용 스트립(덱 한정). 보고서 §5.5에 "보고서 전용" 주석과 함께 유지' },
+      { label: '확대', detail: '상단 두 트랙 그림 4.10 → 4.86in. Palantir 상주 도해·Micron SCA 4요소 그리드·고객 시스템 4계층·고객 선별 4행의 글자와 도형을 함께 키움' },
+      { label: '결론 밴드', detail: '둘째 줄을 "개발실은 조직·인사·문화 세 축을 그 실행에 맞춥니다"로 교체' },
+    ],
+    links: [
+      { label: '기획서 v6.3', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+    ],
+  },
+  {
+    date: '2026-09-22',
+    type: 'build',
     version: 'v2.46.39',
     title: 'QLC 덱 v6.2 — 5장에서 단계별 통과 조건 블록 제거',
     summary:

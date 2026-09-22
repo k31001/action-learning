@@ -779,24 +779,24 @@ CX5 = MX + LW5 + GAP5
 CW5 = 10.10
 RX5 = CX5 + CW5 + GAP5
 RW5 = RIGHT - RX5
-TOP_H = 4.10                      # 상단 그림 블록 높이
+TOP_H = 4.86                      # 상단 그림 블록 높이
 
 # ---- 좌: 삼성 개발실 ----
 rect(s, MX, Y0, LW5, TOP_H, fill=WHITE, line=LINE, line_w=0.75)
 tb(s, MX + 0.22, Y0 + 0.16, LW5 - 0.44, 0.30, [("삼성 개발실", 15, True, BLUE)])
 tb(s, MX + 0.22, Y0 + 0.46, LW5 - 0.44, 0.22, [("삼성이 제공하는 것", 10.0, False, GRAY_2)])
 gives = ["KV-ready QLC + 수명 보증", "FDE (고객 상주 엔지니어)", "업스트림 코드 · 공용 TCO 모델", "WAF 급등 감지 · 런타임 대응"]
-gy = Y0 + 0.84
+gy = Y0 + 0.92
 for i, g in enumerate(gives):
-    rect(s, MX + 0.26, gy + 0.07, 0.12, 0.12, fill=BLUE)
-    tb(s, MX + 0.48, gy, LW5 - 0.70, 0.52, [(g, 11.25, True, INK)], spacing=1.02)
-    gy += 0.56
-quote(s, MX + 0.22, Y0 + TOP_H - 1.02, LW5 - 0.44, 0.92,
+    rect(s, MX + 0.26, gy + 0.09, 0.13, 0.13, fill=BLUE)
+    tb(s, MX + 0.50, gy, LW5 - 0.72, 0.56, [(g, 12.0, True, INK)], spacing=1.02)
+    gy += 0.66
+quote(s, MX + 0.22, Y0 + TOP_H - 1.20, LW5 - 0.44, 1.06,
       "고객의 집에 가서 저녁을 같이 먹는 것, 삼성은 상상할 수 없는 일이지만 SK하이닉스는 한다",
-      "송용호 · 고객 관계 = 워크로드 접근권", size=9.5)
+      "송용호 · 고객 관계 = 워크로드 접근권", size=10.5)
 
 # ---- 중앙: ① FDE 상주 → / 선례 2 / ← ② 접근권 확보 ----
-AR_H = 0.74
+AR_H = 0.80
 
 
 def _fat_arrow(sp, body=0.86):
@@ -831,10 +831,10 @@ for hot, who, what, how in chans:
     if hot:
         rect(s, CX5 + 0.16, cy, CARD_W - 0.32, CH5 - 0.06, fill=TINT)
         rect(s, CX5 + 0.16, cy, 0.05, CH5 - 0.06, fill=BLUE)
-    tb(s, CX5 + 0.30, cy, 2.30, CH5 - 0.06, [(who, 10.0, True, BLUE if hot else INK), (what, 8.25, False, GRAY)],
-       anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
-    rect(s, CX5 + 2.62, cy + (CH5 - 0.06) / 2 - 0.07, 0.20, 0.14, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-    tb(s, CX5 + 2.92, cy, CARD_W - 3.10, CH5 - 0.06, [(how, 10.0, True, BLUE if hot else GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, CX5 + 0.30, cy, 2.40, CH5 - 0.06, [(who, 11.25, True, BLUE if hot else INK), (what, 9.0, False, GRAY)],
+       anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
+    rect(s, CX5 + 2.74, cy + (CH5 - 0.06) / 2 - 0.08, 0.22, 0.16, fill=BLUE if hot else BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+    tb(s, CX5 + 3.06, cy, CARD_W - 3.24, CH5 - 0.06, [(how, 11.25, True, BLUE if hot else GRAY)], anchor=MSO_ANCHOR.MIDDLE)
     cy += CH5
 
 # 카드 B: 선례
@@ -842,28 +842,30 @@ BX = CX5 + CARD_W + 0.20
 rect(s, BX, CARD_Y, CARD_W, CARD_H, fill=WHITE, line=LINE, line_w=0.75)
 tb(s, BX + 0.20, CARD_Y + 0.10, CARD_W - 0.40, 0.24, [[("선례 · ", 12.0, False, GRAY_2), ("Palantir FDE", 12.0, True, BLUE),
                                                        ("   상주 → 코드 → 성과 평가", 9.0, False, GRAY)]])
-py5 = CARD_Y + 0.40
-px5 = BX + 0.24
+py5 = CARD_Y + 0.46
+px5 = BX + 0.26
 for k in range(3):
-    px5 += person(s, px5, py5, 0.34) + 0.06
-rect(s, px5 + 0.06, py5 + 0.10, 0.26, 0.16, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-rect(s, px5 + 0.40, py5 - 0.02, 1.24, 0.38, fill=WHITE, line=BLUE, line_w=1.0)
-tb(s, px5 + 0.40, py5 - 0.02, 1.24, 0.38, [("고객 현장", 10.0, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-tb(s, BX + 0.24, CARD_Y + 0.80, CARD_W - 0.48, 0.22,
-   [("주가 수익률 640% · 고객 락인의 동력 · Anthropic · OpenAI가 GTM 모델로 채택", 8.75, False, GRAY)])
-rect(s, BX + 0.20, CARD_Y + 1.06, CARD_W - 0.40, 0.012, fill=LINE)
-tb(s, BX + 0.20, CARD_Y + 1.12, CARD_W - 0.40, 0.24, [[("선례 · ", 12.0, False, GRAY_2), ("Micron ↔ Anthropic SCA", 12.0, True, BLUE),
-                                                       ("   2026-06", 9.0, False, GRAY)]])
+    px5 += person(s, px5, py5, 0.42) + 0.08
+rect(s, px5 + 0.08, py5 + 0.13, 0.30, 0.18, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+rect(s, px5 + 0.46, py5 - 0.02, 1.32, 0.46, fill=WHITE, line=BLUE, line_w=1.0)
+tb(s, px5 + 0.46, py5 - 0.02, 1.32, 0.46, [("고객 현장", 11.25, True, INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+tb(s, BX + 0.26, CARD_Y + 1.00, CARD_W - 0.52, 0.44,
+   [("요구를 코드로 구현하고 성과로 평가 · 주가 수익률 640%", 9.5, False, GRAY),
+    ("Anthropic · OpenAI가 GTM 모델로 채택", 9.5, False, GRAY)], spacing=1.08)
+rect(s, BX + 0.22, CARD_Y + 1.48, CARD_W - 0.44, 0.012, fill=LINE)
+tb(s, BX + 0.22, CARD_Y + 1.56, CARD_W - 0.44, 0.26, [[("선례 · ", 12.75, False, GRAY_2), ("Micron ↔ Anthropic SCA", 12.75, True, BLUE),
+                                                       ("   2026-06", 9.5, False, GRAY)]])
 sca = ["공동 설계", "다년 공급", "운영 통합", "자본"]
-SW5, SH5 = 1.12, 0.28
+SW5, SH5 = 1.20, 0.32
 for i, nm in enumerate(sca):
-    gx_, gy_ = BX + 0.24 + (i % 2) * (SW5 + 0.10), CARD_Y + 1.42 + (i // 2) * (SH5 + 0.06)
+    gx_, gy_ = BX + 0.26 + (i % 2) * (SW5 + 0.12), CARD_Y + 1.90 + (i // 2) * (SH5 + 0.08)
     rect(s, gx_, gy_, SW5, SH5, fill=BLUE if i == 0 else BLUE_T2)
-    tb(s, gx_, gy_, SW5, SH5, [(nm, 9.5, True, WHITE if i == 0 else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-tb(s, BX + 0.24 + 2 * SW5 + 0.28, CARD_Y + 1.36, CARD_W - 2 * SW5 - 0.76, 0.66,
-   [("네 요소를 한 계약에 · Micron SCA 16건", 9.0, False, GRAY),
-    ("삼성 · SK의 Anthropic 계약엔 공동 설계 조항 부재", 9.0, True, INK),
-    ("→ 삼성이 선제 제안", 9.25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
+    tb(s, gx_, gy_, SW5, SH5, [(nm, 10.0, True, WHITE if i == 0 else INK)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+tb(s, BX + 0.26 + 2 * SW5 + 0.34, CARD_Y + 1.88, CARD_W - 2 * SW5 - 0.86, 0.74,
+   [("네 요소를 한 계약에 결합", 9.5, False, GRAY),
+    ("Micron SCA 16건 · 최소 매출 약 $100B", 9.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.08)
+tb(s, BX + 0.26, CARD_Y + 2.64, CARD_W - 0.52, 0.28,
+   [("삼성 · SK의 Anthropic 계약엔 공동 설계 조항 부재 → 삼성이 선제 제안", 9.75, True, BLUE)])
 
 AY2 = Y0 + TOP_H - AR_H
 _fat_arrow(rect(s, CX5, AY2, CW5, AR_H, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_ARROW))
@@ -875,49 +877,33 @@ rect(s, RX5, Y0, RW5, TOP_H, fill=WHITE, line=LINE, line_w=0.75)
 tb(s, RX5 + 0.22, Y0 + 0.16, RW5 - 0.44, 0.30, [("고객 시스템", 15, True, BLUE)])
 tb(s, RX5 + 0.22, Y0 + 0.46, RW5 - 0.44, 0.22, [("삼성 인력 · 코드의 진입 계층", 10.0, False, GRAY_2)])
 ST_W = RW5 - 1.50
-ys5 = stack(s, RX5 + 0.22, Y0 + 0.84, ST_W,
+ys5 = stack(s, RX5 + 0.22, Y0 + 0.92, ST_W,
             ["응용 · 추론 엔진", "KV 캐시 관리자", "I/O 라이브러리 · 커널", "SSD : 삼성 QLC"],
-            ["none", "touch", "touch", "own"], layer_h=0.46, gap=0.09, size=12.0)
-pw5 = person(s, RX5 + ST_W + 0.34, ys5[1] + 0.02, 0.42)
-tb(s, RX5 + ST_W + 0.34 + pw5 + 0.06, ys5[1], 0.70, 0.46, [("FDE", 10.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-tb(s, RX5 + ST_W + 0.34, ys5[2], RW5 - ST_W - 0.56, 0.46, [("코드 머지", 10.0, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+            ["none", "touch", "touch", "own"], layer_h=0.56, gap=0.12, size=12.75)
+pw5 = person(s, RX5 + ST_W + 0.34, ys5[1] + 0.06, 0.46)
+tb(s, RX5 + ST_W + 0.34 + pw5 + 0.08, ys5[1], 0.80, 0.56, [("FDE", 11.25, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+tb(s, RX5 + ST_W + 0.34, ys5[2], RW5 - ST_W - 0.56, 0.56, [("코드 머지", 10.5, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
 logo_row(s, [("logo", "anthropic"), ("logo", "openai"), ("logo", "nvidia"), ("logo", "meta")],
-         RX5 + 0.30, Y0 + TOP_H - 0.62, 0.30, gap=0.24, max_w=RW5 - 0.60)
+         RX5 + 0.30, Y0 + TOP_H - 0.74, 0.34, gap=0.26, max_w=RW5 - 0.60)
 
-# ---- 하단 1: 조직 · 인사 · 문화 ----
-B_Y = Y0 + TOP_H + 0.22
-B_H = 1.06
-axes = [("조직", "시스템 소프트웨어 조직 강화", ["Co-Design Pod 3~5명 · 개발실 소속 · 선별 고객 1~2사 상주", "미주 법인 협업 · 고객 시간대 대응"]),
-        ("인사", "고객 시스템을 아는 시스템 SW 전문가 채용 · 양성", ["채용 기준 = 고객 코드를 읽고 고치는가", "본사 엔지니어 상주 로테이션 3~6개월 · 평가 = 머지·실측·디자인인"]),
+# ---- 하단: 조직 · 인사 · 문화 ----
+B_Y = Y0 + TOP_H + 0.24
+B_H = 9.42 - 0.20 - B_Y
+axes = [("조직", "시스템 소프트웨어 조직 강화", ["Co-Design Pod 3~5명 · 개발실 소속", "선별 고객 1~2사 상주 · 미주 법인 협업"]),
+        ("인사", "고객 시스템을 아는 시스템 SW 전문가 채용 · 양성", ["채용 기준 = 고객 코드를 읽고 고치는가", "본사 엔지니어 상주 로테이션 3~6개월", "평가 = 머지 · 실측 공개 · 디자인인"]),
         ("문화", "오픈소스 생태계를 주도하는 문화", ["메인테이너 · 커미터 배출 · 업스트림 우선", "KV 캐시 실측(WAF · 유효 DWPD) 업계 최초 공개"])]
 AW = (CW - 2 * 0.24) / 3
 for i, (lab, head, lines) in enumerate(axes):
     ax5 = MX + i * (AW + 0.24)
     rect(s, ax5, B_Y, AW, B_H, fill=WHITE, line=LINE, line_w=0.75)
-    rect(s, ax5, B_Y, 0.80, B_H, fill=BLUE)
-    tb(s, ax5, B_Y, 0.80, B_H, [(lab, 14, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, ax5 + 0.96, B_Y + 0.12, AW - 1.12, 0.26, [(head, 11.25, True, INK)])
-    tb(s, ax5 + 0.96, B_Y + 0.38, AW - 1.12, 0.58, [(l, 9.25, False, GRAY) for l in lines], spacing=1.08)
-
-# ---- 하단 2: 판돈 · 비용 ----
-S_Y = B_Y + B_H + 0.16
-S_H = 9.42 - 0.20 - S_Y
-rect(s, MX, S_Y, CW, S_H, fill=TINT)
-rect(s, MX, S_Y, 0.06, S_H, fill=BLUE)
-HALF = (CW - 0.72) / 2
-for i, (lab, big, det) in enumerate([
-        ("판돈 · 락인으로 얻는 점유율", "캐시 계층 QLC 0 → 50%",
-         "2030 추론 캐시 350EB 중 QLC 175EB(조건부 상방) · 락인 없으면 TLC 유지 · 디자인인 1사당 점유율 [사내 확인]"),
-        ("비용 · 개발실 자원 투입", "별도 투자 없음",
-         "Pod 인력 3~5명 × 1~2사 재배치 · 시스템 SW 채용은 정원 내 · 실측 공개는 보안 검토만")]):
-    sx = MX + 0.30 + i * (HALF + 0.24)
-    tb(s, sx, S_Y + 0.10, HALF, 0.22, [(lab, 9.75, False, GRAY_2)])
-    tb(s, sx, S_Y + 0.32, 5.2, 0.34, [(big, 15, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, sx + 5.36, S_Y + 0.32, HALF - 5.36, 0.34, [(det, 9.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+    rect(s, ax5, B_Y, 0.88, B_H, fill=BLUE)
+    tb(s, ax5, B_Y, 0.88, B_H, [(lab, 15, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, ax5 + 1.06, B_Y + 0.16, AW - 1.24, 0.30, [(head, 12.0, True, INK)])
+    tb(s, ax5 + 1.06, B_Y + 0.48, AW - 1.24, B_H - 0.60, [(l, 10.0, False, GRAY) for l in lines], spacing=1.12)
 
 band(s, 9.42, 0.80, "결론",
      "FDE 상주로 고객 시스템에 들어가고, 전략적 협약으로 워크로드·규격 접근권을 받습니다. 두 수단 모두 업계 선례가 있습니다.\n"
-     "판돈은 락인으로 얻는 캐시 계층 점유율, 비용은 개발실 개발 자원 투입입니다",
+     "개발실은 조직·인사·문화 세 축을 그 실행에 맞춥니다",
      main_size=16.5, next_step=6)
 footer(s, "출처: Pragmatic Engineer·FDE Academy(Palantir FDE), Micron IR 2026-06-22·10-Q(SCA 16건·$22B), SK hynix 뉴스룸, 내부 인터뷰(송용호 2026-09-03) · 규모·시점은 추정, 사내 수치는 [사내 확인]", 5)
 notes(s, "5장은 실행입니다. 3단계 역량을 어떻게 얻느냐, 즉 고객 시스템 안으로 들어가는 두 수단을 그림 하나로 보입니다. 왼쪽은 삼성 개발실이 제공하는 것이고, 오른쪽은 고객 시스템의 계층이며, 가운데 두 화살표가 주고받는 관계입니다. "
@@ -926,7 +912,7 @@ notes(s, "5장은 실행입니다. 3단계 역량을 어떻게 얻느냐, 즉 �
       "오른쪽 카드가 선례입니다. Palantir의 FDE는 고객 현장에 상주해 요구를 코드로 구현하고 성과로 평가받는 모델이고, 고객 락인의 동력으로 평가받아 Anthropic과 OpenAI가 시장 진입 모델로 채택했습니다. Micron과 Anthropic의 전략적 협약은 공동 설계, 다년 공급, 운영 통합, 자본을 한 계약에 결합해 워크로드와 규격 접근권을 확보한 사례입니다. 중요한 것은 삼성과 SK의 Anthropic 공급 계약에는 공동 설계 조항이 없다는 점이고, 이것을 삼성이 먼저 제안하자는 것이 이 장의 요청입니다. "
       "오른쪽 고객 시스템 그림에서 삼성이 지금 닿는 층은 SSD뿐입니다. FDE가 KV 캐시 관리자 층에 상주하고 I/O 라이브러리와 커널에 코드를 머지하면서 위로 올라갑니다. "
       "하단 세 타일은 개발실 내부 실행입니다. 조직은 시스템 소프트웨어 조직 강화와 개발실 소속 Co-Design Pod, 인사는 고객 코드를 읽고 고치는 전문가 채용과 상주 로테이션, 문화는 오픈소스 메인테이너 배출과 KV 캐시 실측의 업계 최초 공개입니다. 자회사나 별도 보상 체계는 두지 않습니다. "
-      "마지막 줄이 판돈과 비용입니다. 판돈은 락인으로 얻는 캐시 계층 점유율입니다. 2030년 추론 캐시 350EB 가운데 QLC는 호스트 협력이 성립할 때 조건부 상방 175EB이고, 성립하지 않으면 TLC가 유지됩니다. 비용은 개발실 개발 자원 재배치이며 별도 투자는 없습니다. 단계별 통과 조건(90일·12개월·2027년 상반기)은 슬라이드에서 빼고 보고서 5장 4절에 둡니다. 질문이 나오면 그 표로 답합니다.")
+      "단계별 통과 조건(90일·12개월·2027년 상반기)과 판돈·비용은 슬라이드에서 빼고 보고서 5장 4절과 5절에 두었습니다. 질문이 나오면 그 표로 답합니다. 판돈은 락인으로 얻는 캐시 계층 점유율이고, 2030년 추론 캐시 350EB 가운데 QLC는 호스트 협력이 성립할 때 조건부 상방 175EB입니다. 비용은 개발실 개발 자원 재배치이며 별도 투자는 없습니다.")
 
 # ================================================================ S6. WAF 런타임 대응 기술 (v6.0: 조건부 보증 → 감지·대응 기술 확보로 축 이동)
 s = prs.slides.add_slide(BLANK)
