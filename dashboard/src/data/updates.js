@@ -17,6 +17,22 @@ export const UPDATES = [
   {
     date: '2026-09-22',
     type: 'build',
+    version: 'v2.46.39',
+    title: 'QLC 덱 v6.2 — 5장에서 단계별 통과 조건 블록 제거',
+    summary:
+      '5장 하단의 통과 조건 3단계 블록을 덱에서 빼고, 확보한 공간으로 두 트랙 그림을 키우고 판돈·비용을 전폭 스트립으로 재배치했다. 통과 조건은 보고서 5장 4절에 남긴다.',
+    tags: ['QLC', 'eSSD', '발표자료'],
+    items: [
+      { label: '제거', detail: '90일 · 12개월 · 2027H1 통과 조건 3단계 블록(덱 한정). 보고서 §5.4와 위키에는 유지하고 "보고서 전용" 주석을 달았다' },
+      { label: '재배치', detail: '상단 두 트랙 그림 3.86 → 4.10in(선례 카드·고객 선별 행에 여유), 판돈·비용은 전폭 스트립으로' },
+    ],
+    links: [
+      { label: '기획서 v6.2', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+    ],
+  },
+  {
+    date: '2026-09-22',
+    type: 'build',
     version: 'v2.46.38',
     title: 'QLC 덱 v6.1 — 5장 실행을 두 트랙 그림 형식으로 복귀',
     summary:

@@ -779,7 +779,7 @@ CX5 = MX + LW5 + GAP5
 CW5 = 10.10
 RX5 = CX5 + CW5 + GAP5
 RW5 = RIGHT - RX5
-TOP_H = 3.86                      # 상단 그림 블록 높이
+TOP_H = 4.10                      # 상단 그림 블록 높이
 
 # ---- 좌: 삼성 개발실 ----
 rect(s, MX, Y0, LW5, TOP_H, fill=WHITE, line=LINE, line_w=0.75)
@@ -886,7 +886,7 @@ logo_row(s, [("logo", "anthropic"), ("logo", "openai"), ("logo", "nvidia"), ("lo
 
 # ---- 하단 1: 조직 · 인사 · 문화 ----
 B_Y = Y0 + TOP_H + 0.22
-B_H = 1.00
+B_H = 1.06
 axes = [("조직", "시스템 소프트웨어 조직 강화", ["Co-Design Pod 3~5명 · 개발실 소속 · 선별 고객 1~2사 상주", "미주 법인 협업 · 고객 시간대 대응"]),
         ("인사", "고객 시스템을 아는 시스템 SW 전문가 채용 · 양성", ["채용 기준 = 고객 코드를 읽고 고치는가", "본사 엔지니어 상주 로테이션 3~6개월 · 평가 = 머지·실측·디자인인"]),
         ("문화", "오픈소스 생태계를 주도하는 문화", ["메인테이너 · 커미터 배출 · 업스트림 우선", "KV 캐시 실측(WAF · 유효 DWPD) 업계 최초 공개"])]
@@ -896,38 +896,24 @@ for i, (lab, head, lines) in enumerate(axes):
     rect(s, ax5, B_Y, AW, B_H, fill=WHITE, line=LINE, line_w=0.75)
     rect(s, ax5, B_Y, 0.80, B_H, fill=BLUE)
     tb(s, ax5, B_Y, 0.80, B_H, [(lab, 14, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, ax5 + 0.96, B_Y + 0.10, AW - 1.12, 0.26, [(head, 11.25, True, INK)])
-    tb(s, ax5 + 0.96, B_Y + 0.36, AW - 1.12, 0.56, [(l, 9.25, False, GRAY) for l in lines], spacing=1.06)
+    tb(s, ax5 + 0.96, B_Y + 0.12, AW - 1.12, 0.26, [(head, 11.25, True, INK)])
+    tb(s, ax5 + 0.96, B_Y + 0.38, AW - 1.12, 0.58, [(l, 9.25, False, GRAY) for l in lines], spacing=1.08)
 
-# ---- 하단 2: 단계별 통과 조건 + 판돈·비용 ----
-G_Y = B_Y + B_H + 0.16
-G_H = 9.42 - 0.20 - G_Y
-GW_TOT = 12.20
-tb(s, MX, G_Y, GW_TOT, 0.22, [[("단계별 통과 조건", 11.25, True, BLUE), ("   각 단계의 증명이 다음 단계의 승인 근거", 9.5, False, GRAY_2)]])
-gates = [("90일", "등대 고객 1사 트레이스 확보 · KV 캐시 실측(WAF · 유효 DWPD) 공개 · 캐시 관리자 플러그인 PR 1건", False),
-         ("12개월", "플러그인 메인라인 머지 · 고객 워크로드에서 QLC 유효 DWPD ≥ 1 실증 · WAF 급등 감지·대응 시제품(6장)", False),
-         ("2027H1", "디자인인 1사 · 협약에 공동 설계 조항 제안 · 레퍼런스 스택 공개 → 공급 완화 전 락인", True)]
-gw5 = (GW_TOT - 2 * 0.20) / 3
-for i, (t, d, hot) in enumerate(gates):
-    gx5 = MX + i * (gw5 + 0.20)
-    gy5 = G_Y + 0.28
-    gh5 = G_H - 0.28
-    rect(s, gx5, gy5, gw5, gh5, fill=TINT if hot else WHITE, line=BLUE if hot else LINE, line_w=1.0 if hot else 0.75)
-    tb(s, gx5 + 0.14, gy5 + 0.06, 0.90, 0.28, [(t, 12.0, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, gx5 + 1.02, gy5 + 0.05, gw5 - 1.16, gh5 - 0.10, [(d, 9.0, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.06)
-    if i < 2:
-        rect(s, gx5 + gw5 + 0.01, gy5 + gh5 / 2 - 0.08, 0.18, 0.16, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
-SX5 = MX + GW_TOT + 0.30
-SW5B = RIGHT - SX5
-rect(s, SX5, G_Y, SW5B, G_H, fill=TINT)
-rect(s, SX5, G_Y, 0.06, G_H, fill=BLUE)
-hf = (SW5B - 0.52) / 2
-tb(s, SX5 + 0.24, G_Y + 0.08, hf, 0.2, [("판돈 · 락인으로 얻는 점유율", 9.25, False, GRAY_2)])
-tb(s, SX5 + 0.24, G_Y + 0.28, hf, 0.38, [("캐시 계층 QLC 0 → 50%", 13.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-tb(s, SX5 + 0.24, G_Y + 0.68, hf, G_H - 0.76, [("2030 추론 캐시 350EB 중 QLC 175EB(조건부 상방) · 락인 없으면 TLC 유지", 8.5, False, GRAY)], spacing=1.02)
-tb(s, SX5 + 0.24 + hf + 0.20, G_Y + 0.08, hf, 0.2, [("비용 · 개발실 자원 투입", 9.25, False, GRAY_2)])
-tb(s, SX5 + 0.24 + hf + 0.20, G_Y + 0.28, hf, 0.38, [("별도 투자 없음", 13.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-tb(s, SX5 + 0.24 + hf + 0.20, G_Y + 0.68, hf, G_H - 0.76, [("Pod 3~5명 × 1~2사 재배치 · 채용은 정원 내 · 실측 공개는 보안 검토만", 8.5, False, GRAY)], spacing=1.02)
+# ---- 하단 2: 판돈 · 비용 ----
+S_Y = B_Y + B_H + 0.16
+S_H = 9.42 - 0.20 - S_Y
+rect(s, MX, S_Y, CW, S_H, fill=TINT)
+rect(s, MX, S_Y, 0.06, S_H, fill=BLUE)
+HALF = (CW - 0.72) / 2
+for i, (lab, big, det) in enumerate([
+        ("판돈 · 락인으로 얻는 점유율", "캐시 계층 QLC 0 → 50%",
+         "2030 추론 캐시 350EB 중 QLC 175EB(조건부 상방) · 락인 없으면 TLC 유지 · 디자인인 1사당 점유율 [사내 확인]"),
+        ("비용 · 개발실 자원 투입", "별도 투자 없음",
+         "Pod 인력 3~5명 × 1~2사 재배치 · 시스템 SW 채용은 정원 내 · 실측 공개는 보안 검토만")]):
+    sx = MX + 0.30 + i * (HALF + 0.24)
+    tb(s, sx, S_Y + 0.10, HALF, 0.22, [(lab, 9.75, False, GRAY_2)])
+    tb(s, sx, S_Y + 0.32, 5.2, 0.34, [(big, 15, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, sx + 5.36, S_Y + 0.32, HALF - 5.36, 0.34, [(det, 9.25, False, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
 
 band(s, 9.42, 0.80, "결론",
      "FDE 상주로 고객 시스템에 들어가고, 전략적 협약으로 워크로드·규격 접근권을 받습니다. 두 수단 모두 업계 선례가 있습니다.\n"
@@ -940,7 +926,7 @@ notes(s, "5장은 실행입니다. 3단계 역량을 어떻게 얻느냐, 즉 �
       "오른쪽 카드가 선례입니다. Palantir의 FDE는 고객 현장에 상주해 요구를 코드로 구현하고 성과로 평가받는 모델이고, 고객 락인의 동력으로 평가받아 Anthropic과 OpenAI가 시장 진입 모델로 채택했습니다. Micron과 Anthropic의 전략적 협약은 공동 설계, 다년 공급, 운영 통합, 자본을 한 계약에 결합해 워크로드와 규격 접근권을 확보한 사례입니다. 중요한 것은 삼성과 SK의 Anthropic 공급 계약에는 공동 설계 조항이 없다는 점이고, 이것을 삼성이 먼저 제안하자는 것이 이 장의 요청입니다. "
       "오른쪽 고객 시스템 그림에서 삼성이 지금 닿는 층은 SSD뿐입니다. FDE가 KV 캐시 관리자 층에 상주하고 I/O 라이브러리와 커널에 코드를 머지하면서 위로 올라갑니다. "
       "하단 세 타일은 개발실 내부 실행입니다. 조직은 시스템 소프트웨어 조직 강화와 개발실 소속 Co-Design Pod, 인사는 고객 코드를 읽고 고치는 전문가 채용과 상주 로테이션, 문화는 오픈소스 메인테이너 배출과 KV 캐시 실측의 업계 최초 공개입니다. 자회사나 별도 보상 체계는 두지 않습니다. "
-      "마지막 줄이 통과 조건과 판돈입니다. 90일에 트레이스 확보와 실측 공개, 12개월에 메인라인 머지와 유효 DWPD 1 이상 실증과 WAF 급등 대응 시제품, 2027년 상반기에 디자인인 1사와 공동 설계 조항 제안입니다. 판돈은 락인으로 얻는 캐시 계층 점유율이고 비용은 개발실 개발 자원 재배치이며 별도 투자는 없습니다.")
+      "마지막 줄이 판돈과 비용입니다. 판돈은 락인으로 얻는 캐시 계층 점유율입니다. 2030년 추론 캐시 350EB 가운데 QLC는 호스트 협력이 성립할 때 조건부 상방 175EB이고, 성립하지 않으면 TLC가 유지됩니다. 비용은 개발실 개발 자원 재배치이며 별도 투자는 없습니다. 단계별 통과 조건(90일·12개월·2027년 상반기)은 슬라이드에서 빼고 보고서 5장 4절에 둡니다. 질문이 나오면 그 표로 답합니다.")
 
 # ================================================================ S6. WAF 런타임 대응 기술 (v6.0: 조건부 보증 → 감지·대응 기술 확보로 축 이동)
 s = prs.slides.add_slide(BLANK)
