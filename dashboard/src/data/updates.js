@@ -14,6 +14,28 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-23 (QLC 덱 빌드) ─────────────────────────────────────────────────
+  {
+    date: '2026-09-23',
+    type: 'build',
+    version: 'v2.46.42',
+    title: 'QLC 덱 v7.0 — 교훈 하나로 통합, 배치 힌트 슬라이드 신설(6장 → 7장)',
+    summary:
+      '1장을 "고객과 함께 수요를 설계한 기업이 이겼다"는 교훈 하나로 재편하고 두 레인 HBM 타임라인과 반증 카드를 함께 놓았다. FDP 배치 힌트를 도해로 설명하는 4장을 신설해 덱이 7장이 됐고, 2장에는 수율 상충 사슬을, 3장에는 핵심 사슬만 남겼다.',
+    tags: ['QLC', 'eSSD', 'FDP', 'HBM', '발표자료'],
+    items: [
+      { label: '1장 재편', detail: '교훈 3건 → 하나. SK하이닉스/삼성 두 레인 타임라인(2013 AMD 공동 개발 ~ 2026 NVIDIA 다년 파트너십)과 삼성 회복 카드 3장(2025-Q4 DRAM 1위 탈환·2026-02 최초 상용 HBM4·2026-Q2 점유 33%)을 같은 슬라이드에. 이어 구매 기준 3국면과 "TLC는 만족하나 고객은 QLC를 원한다"는 문제 제기로 마무리' },
+      { label: '4장 신설', detail: '호스트 VM·응용 → NAND 블록 도해 4경우. 무배치 WAF 3.0(✅ 실측) / 멀티스트림 1.8(⚠️ 모델) / FDP 전면 1.05(✅ 실측) / 혼재 2.2(⚠️ 모델), QLC 정격 0.6 기준 유효 DWPD 0.6·1.0·1.7·0.8' },
+      { label: '2장 보강', detail: '수율 상충 사슬(선별 강화 → 수율 하락 → 원가 상승)로 "왜 다이로 못 푸는가"를 세우고 보호 구조로 전환' },
+      { label: '3장 압축', detail: '이관 매트릭스·격차 축소 변수 제거, 차트 3종을 5.90in로 확대. 제거한 내용은 보고서 §3.1·§3.4에 유지' },
+      { label: '7장 시각화', detail: '텍스트 나열을 2×2 순환 루프(관측 → 감지·분류 → 런타임 대응 → 검증·롤백)와 기술 요소 2열 행으로 재구성' },
+      { label: '위키', detail: 'fdp-placement-mechanics.md · codesign-demand-lesson.md 신설, 보고서에 4장 배치 힌트 신설(부록 A A-67~A-74 추가), 지식 그래프 재생성' },
+    ],
+    links: [
+      { label: '기획서 v7.0', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
+      { label: '보고서 v4.0', href: 'outputs/report/qlc-ssd-strategy-report.md' },
+    ],
+  },
   // ── 2026-09-22 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-09-22',
@@ -36,28 +58,6 @@ export const UPDATES = [
     links: [
       { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
       { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
-    ],
-  },
-  // ── 2026-09-22 (QLC 덱 빌드) ─────────────────────────────────────────────────
-  {
-    date: '2026-09-23',
-    type: 'build',
-    version: 'v2.46.41',
-    title: 'QLC 덱 v7.0 — 교훈 하나로 통합, 배치 힌트 슬라이드 신설(6장 → 7장)',
-    summary:
-      '1장을 "고객과 함께 수요를 설계한 기업이 이겼다"는 교훈 하나로 재편하고 두 레인 HBM 타임라인과 반증 카드를 함께 놓았다. FDP 배치 힌트를 도해로 설명하는 4장을 신설해 덱이 7장이 됐고, 2장에는 수율 상충 사슬을, 3장에는 핵심 사슬만 남겼다.',
-    tags: ['QLC', 'eSSD', 'FDP', 'HBM', '발표자료'],
-    items: [
-      { label: '1장 재편', detail: '교훈 3건 → 하나. SK하이닉스/삼성 두 레인 타임라인(2013 AMD 공동 개발 ~ 2026 NVIDIA 다년 파트너십)과 삼성 회복 카드 3장(2025-Q4 DRAM 1위 탈환·2026-02 최초 상용 HBM4·2026-Q2 점유 33%)을 같은 슬라이드에. 이어 구매 기준 3국면과 "TLC는 만족하나 고객은 QLC를 원한다"는 문제 제기로 마무리' },
-      { label: '4장 신설', detail: '호스트 VM·응용 → NAND 블록 도해 4경우. 무배치 WAF 3.0(✅ 실측) / 멀티스트림 1.8(⚠️ 모델) / FDP 전면 1.05(✅ 실측) / 혼재 2.2(⚠️ 모델), QLC 정격 0.6 기준 유효 DWPD 0.6·1.0·1.7·0.8' },
-      { label: '2장 보강', detail: '수율 상충 사슬(선별 강화 → 수율 하락 → 원가 상승)로 "왜 다이로 못 푸는가"를 세우고 보호 구조로 전환' },
-      { label: '3장 압축', detail: '이관 매트릭스·격차 축소 변수 제거, 차트 3종을 5.90in로 확대. 제거한 내용은 보고서 §3.1·§3.4에 유지' },
-      { label: '7장 시각화', detail: '텍스트 나열을 2×2 순환 루프(관측 → 감지·분류 → 런타임 대응 → 검증·롤백)와 기술 요소 2열 행으로 재구성' },
-      { label: '위키', detail: 'fdp-placement-mechanics.md · codesign-demand-lesson.md 신설, 보고서에 4장 배치 힌트 신설(부록 A A-67~A-74 추가), 지식 그래프 재생성' },
-    ],
-    links: [
-      { label: '기획서 v7.0', href: 'outputs/presentation/qlc-ssd-strategy-outline.md' },
-      { label: '보고서 v4.0', href: 'outputs/report/qlc-ssd-strategy-report.md' },
     ],
   },
   {

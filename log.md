@@ -2119,4 +2119,4 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 신설 위키: `wiki/concepts/codesign-demand-lesson.md`, `wiki/concepts/fdp-placement-mechanics.md`. 갱신: `ssd-die-reliability-ppm.md`(§4-A 수율 상충), `essd-purchase-criteria-shift.md`·`waf-runtime-response.md`·`solution-ladder-component-to-system.md`(덱 버전·역링크), `qlc-ssd-market.md`(덱 표기 원칙 v7.0, 이전 v5.2는 접기)
 - 보고서 v4.0: **4장 배치 힌트 신설**(기존 4~7장을 5~8장으로 재번호), §1.1을 교훈 하나로 재작성, §2.4 수율 상충 신설, Executive Summary 7항목화, 부록 A **A-67~A-74** 추가, 부록 C 자산 맵과 PPT 압축 맵을 v7.0으로 갱신
 - 공개 공백 명시(덱 금지): Kang HotStorage'14 WAF before→after 수치 확보 불가, 부분 태깅 비율별 WAF 곡선 부재(부정 확인), QLC에서의 FDP WAF 귀속 불명
-- 렌더 QA 통과(7페이지). 지식 그래프 재생성(노드 113·엣지 613, 고아 0). 대시보드 v2.46.41 + updates 엔트리, `npm run build` 통과
+- 렌더 QA 통과(7페이지). 지식 그래프 재생성(노드 113·엣지 613, 고아 0). 대시보드 v2.46.42 + updates 엔트리, `npm run build` 통과 (같은 날 정기 재평가가 v2.46.41을 선점해 한 칸 올림)
