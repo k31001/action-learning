@@ -72,7 +72,8 @@ T1~T3이 삼성이 직접 만드는 범위이고, T4는 규격 제안, T5~T6은 
 
 ## 8. 연결
 
-- 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **6장**(v6.0)
+- 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **7장**(v7.0 — 2×2 순환 루프와 기술 요소 2열로 시각 재구성)
 - 역량 단계: [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md) Phase 2
 - 내구성 산식: [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
+- 앞 장(이 기술이 필요한 이유): [fdp-placement-mechanics.md](fdp-placement-mechanics.md) §3 — 혼재(④)가 현실이고 배치 힌트는 켜는 것만으로 성립하지 않는다
 - 플랫폼 전략: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md)

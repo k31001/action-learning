@@ -124,6 +124,8 @@
 - [wiki/concepts/emerging-tech.md](wiki/concepts/emerging-tech.md) — CXL·PIM·300층+ NAND
 - [wiki/concepts/ssd-die-reliability-ppm.md](wiki/concepts/ssd-die-reliability-ppm.md) — (NEW) SSD 다이 고장률과 보호 구조: 요구(OCP MTBF 2,000,000시간 = 5년 누적 21,662 ppm) 고정, 다이 수 512(61TB) → 1,024(245TB) → 2,133(512TB), 보호 없음 43→10 ppm, 단일 패리티 79배·이중 패리티 395배·여분 다이 1,000배 이상 완화, 현 수준 역산 200~2,700 ppm → 512TB급은 이중 패리티 또는 여분 다이 필요
 - [wiki/concepts/waf-runtime-response.md](wiki/concepts/waf-runtime-response.md) — (NEW) WAF 급등의 런타임 감지·대응: 조건부 보증에서 기술 흡수로 축 이동, 루프 4단계(관측 → 감지·분류 → 디바이스/호스트 대응 → 검증·롤백, 목표 감지 1h·회복 4h), 핵심 기술 요소 T1~T6(핸들별 WAF 텔레메트리·온디바이스 감지·무중단 FDP 재구성·경보 규격·정책 엔진·에뮬레이터), 규격 과제와 축소된 보증 조항
+- [wiki/concepts/fdp-placement-mechanics.md](wiki/concepts/fdp-placement-mechanics.md) — (NEW) 배치 힌트의 작동 원리: 블록 단위 소거와 수명 혼재가 WAF를 만든다. 같은 QLC 드라이브의 네 경우 — 무배치 3.0(✅) / 멀티스트림 1.8(⚠️모델) / FDP 전면 1.05(✅) / 혼재 2.2(⚠️모델), 유효 DWPD 0.6·1.0·1.7·0.8. 혼재가 현실인 이유(CacheLib 기본 핸들 폴백·WARP Noisy RUH·F2FS 99% 단일 태그)와 공개 자료의 공백
+- [wiki/concepts/codesign-demand-lesson.md](wiki/concepts/codesign-demand-lesson.md) — (NEW) 고객과 함께 수요를 설계한다: HBM 공동 설계 타임라인(2013 AMD↔하이닉스 → 2019 삼성의 과소평가 → 2022 NVIDIA 독점 공급 → 2025 DRAM 역전 → 2026 NVIDIA 다년 파트너십)과 반드시 병기할 반증 6건(2025-Q4 1위 탈환·2026 최초 상용 HBM4·MR-MUF 수율·HMC·Micron·HBM4 9사 공동 개발). 재프레이밍 = 본 것을 끊지 않은 쪽이 이겼다. NAND에서의 같은 패턴과 ZNS 반례
 
 ### 정책·규제
 - [wiki/concepts/chips-act.md](wiki/concepts/chips-act.md) — 미국 CHIPS Act 보조금 (Samsung Texas $4.745B 등)
@@ -253,6 +255,8 @@
 - [sources/articles/qlc-v6-fdp-placement-handles-2026-09.md](sources/articles/qlc-v6-fdp-placement-handles-2026-09.md) — (NEW) NVMe FDP 배치 핸들 원장: 네임스페이스당 128 상한·nruh 16비트, 제품 공개 수준 전무, 호스트 스트림 수(f2fs 3·힌트 5·xNVMe 8·XFS 16), ScaleFlux 원문은 write streams
 - [sources/articles/qlc-v6-inflection-2028-demand-path-2026-09.md](sources/articles/qlc-v6-inflection-2028-demand-path-2026-09.md) — (NEW) 2028 전환점·수요 경로 원장: 신증설 클린룸 일정, TrendForce 2027 수급률 대 2028 산출, CapEx 증가율·감가상각, SanDisk KV 캐시 2027 75~100EB → 2028 2배, McKinsey 181→1,078EB
 - [sources/articles/qlc-v6-standards-lessons-factcheck-2026-09.md](sources/articles/qlc-v6-standards-lessons-factcheck-2026-09.md) — (NEW) 교훈 팩트체크 원장: OCP 기고자는 구매자, Solidigm 선행 근거, HBM4 9사 공동 개발, FDP 대 ZNS 커밋 타임라인, 2026년 참여 대상 규격·오픈소스 목록
+- [sources/articles/qlc-v7-hbm-codesign-lesson-2026-09.md](sources/articles/qlc-v7-hbm-codesign-lesson-2026-09.md) — (NEW) HBM 공동 설계 교훈 원장: SK하이닉스·삼성 이원 타임라인, 2019년 판단의 성격(CapEx 삭감 아님), 반증 6건, NAND에서의 리드타임 표
+- [sources/articles/qlc-v7-placement-cases-waf-2026-09.md](sources/articles/qlc-v7-placement-cases-waf-2026-09.md) — (NEW) 배치 4경우 WAF 원장: 경우별 값과 등급(실측/모델), CacheLib `kDefaultPIDIdx` 폴백 코드, FAST'26 WARP Noisy RUH·F2FS 99% WARM, 부분 태깅 곡선 부재(부정 확인), 정격 DWPD의 워크로드 의존성
 - [sources/articles/qlc-essd-history-2022-background-2026-09.md](sources/articles/qlc-essd-history-2022-background-2026-09.md) — (NEW) 데이터센터 QLC eSSD 연혁 2018~2026·2022년 수요 배경(준비기: Solidigm 출범·E1.S/E1.L·배치 표준 비준·가격 급락, 물량은 2024 30EB)·2022 vs 2026 스펙 비교표
 - [sources/articles/qlc-essd-market-size-forecast-data-2026-09.md](sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) — (NEW) QLC eSSD 시장 데이터 대장: TrendForce 분기 eSSD 매출 2022~2Q26($37.59B), QLC 30EB(2024) 앵커, DC NAND 295→909EB, $/TB 인덱스, KV cache 수요(2027 75~100EB·CMX 100EB), 모델 입력 요약
 - [sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) — (NEW) KV cache 오프로드 5계층 스택 지도(SSD 벤더 접점 ③④)·벤더 9사 Phase 1·2·3 공개 역량·QLC vs TLC 내구성 갭(10~40배)·배치 표준 WAF 실측(CacheLib 3.22→1.03)
