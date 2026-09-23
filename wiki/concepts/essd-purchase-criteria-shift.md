@@ -1,20 +1,25 @@
 ---
 type: concept
-last_reviewed: 2026-09-22
+last_reviewed: 2026-09-23
 sources: [sources/articles/qlc-v6-purchase-criteria-dwpd-history-2026-09.md, sources/articles/qlc-essd-market-size-forecast-data-2026-09.md]
 ---
 
-# eSSD 구매 기준의 이동 — 성능에서 QoS로, 그리고 밀도·전력·공급으로
+# eSSD 구매 기준은 교체되는 것이 아니라 더해진다
 
-"성능 → QoS → 내구성"이라는 통념을 공개 자료로 검증한 결과, **앞의 두 단계는 성립하고 세 번째는 그대로는 성립하지 않는다**. 내구성은 전체 시장에서 상위 기준이 된 것이 아니라 **양극화**했고, 구속 조건이 된 곳은 추론 캐시 계층 하나다 ([qlc-v6-purchase-criteria-dwpd-history-2026-09.md](../../sources/articles/qlc-v6-purchase-criteria-dwpd-history-2026-09.md)).
+> **2026-09-23 표기 규율 (중요).** 이 페이지는 처음 "성능 → QoS → 밀도·전력"이라는 **세 국면의 시대 구분**으로 썼다. 그렇게 제시하면 시장 전체의 객관적 시대 구분처럼 읽혀 **반론의 여지가 크다**. 공개 자료로 확인되는 것은 시대 구분이 아니라 **요구사항의 누적**이다. 아래 연도는 **각 요구가 조달 문서에 제도화된 시점**일 뿐, 그 시기의 유일한 기준이었다는 뜻이 아니다. 제목과 §1을 그에 맞게 고쳤다.
 
-## 1. 세 국면
+"성능 → QoS → 내구성"이라는 통념을 공개 자료로 검증한 결과, **요구는 교체되지 않고 누적된다**. 내구성도 전체 시장에서 상위 기준이 된 것이 아니라 **양극화**했고, 구속 조건이 된 곳은 추론 캐시 계층 하나다 ([qlc-v6-purchase-criteria-dwpd-history-2026-09.md](../../sources/articles/qlc-v6-purchase-criteria-dwpd-history-2026-09.md)).
 
-| 국면 | 차별화 축 | 확인된 근거 |
+## 1. 요구는 누적된다
+
+| 요구 | 제도화된 시점의 근거 | 지금 |
 |---|---|---|
-| **2008~2012** | 성능 · 용량당 가격 (IOPS·대역폭) | Fusion-io ioDrive의 IOPS 마케팅. 단, 내구성은 이때 이미 **자격 요건**이었다 — JEDEC JESD218·JESD219가 **2010-09** 발행 |
-| **2012~2021** | **QoS · 지연 꼬리** | Intel DC S3700(2012-11)이 "4KB 랜덤 지연 99.9%에서 500µs 미만"을 스펙 전면에 배치 → NVMe IO Determinism·PLM(2019) → **OCP Datacenter NVMe SSD 사양 v2.0(2021-07)이 Latency Monitor를 의무화** → Micron 7450 "99.9999% QoS ≤ 2ms"(2022) |
-| **2022~2026** | **용량 밀도 · 전력 효율 · 공급 확보** | 하이퍼스케일러(eSSD 물량 약 55% 소비)의 우선순위는 TB/슬롯·TB/W·물량 확보(LTA·allocation). OCP 사양 v2.5~v2.7은 QoS를 빼지 않고 텔레메트리·FDP·전력 측정을 더했다 |
+| 성능 · 용량당 가격 (IOPS·대역폭) | Fusion-io ioDrive의 IOPS 마케팅. 단, 내구성은 이때 이미 **자격 요건**이었다 — JEDEC JESD218·JESD219가 **2010-09** 발행 | **여전히 요구** |
+| **QoS · 지연 꼬리** | Intel DC S3700(2012-11)이 "4KB 랜덤 지연 99.9%에서 500µs 미만"을 스펙 전면에 배치 → NVMe IO Determinism·PLM(2019) → **OCP Datacenter NVMe SSD 사양 v2.0(2021-07)이 Latency Monitor를 의무화** → Micron 7450 "99.9999% QoS ≤ 2ms"(2022) | **기본 요건으로 굳음** |
+| **용량 밀도 · 전력 효율 · 공급 확보** | 하이퍼스케일러(eSSD 물량 약 55% 소비)의 우선순위는 TB/슬롯·TB/W·물량 확보(LTA·allocation) | **상위 요구** |
+| **내구성** (추론 캐시 계층 한정) | Kioxia가 KV 캐시 지원 제품으로 CM9 TLC 3 DWPD를 지목 · NVIDIA CMX 스택이 내구성 부족을 이유로 컨슈머 드라이브 배제 | **지금 더해지는 중** |
+
+**증거는 OCP 사양의 개정 이력 자체다**: v2.5~v2.7은 QoS 항목을 **빼지 않고** 텔레메트리·FDP·전력 측정을 **추가**했다. 요구가 교체됐다면 빠진 항목이 있어야 하는데 없다.
 
 **QoS는 밀려난 것이 아니라 기본 요건으로 굳었다.** 이것이 "축이 이동한다"는 통념의 가장 큰 오해다.
 
@@ -59,7 +64,7 @@ DWPD는 **용량으로 나눈 지표**다. 단독으로 읽으면 "내구성 요
 
 ## 6. 연결
 
-- 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **1장** 가운데 구획 ②(v7.0 — 세 시대 박스 + KV 캐시 카드, 이어서 ③에서 TLC는 만족하나 고객은 QLC를 원한다는 문제 제기)
+- 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **1장 ②구획**(v7.3 — 「기존 요구(용량당 비용·밀도·전력) + 추가(내구성)」 도식으로 표현. 세 시대 박스는 폐기)
 - 교훈: [codesign-demand-lesson.md](codesign-demand-lesson.md) — 이 구매 기준 이동이 "다음 수요"의 내용이다
 - 그 수요가 내려온 경로: [hbm-to-storage-spillover.md](hbm-to-storage-spillover.md) — HBM → DRAM → NVMe SSD 스필오버
 - 시장 페이지: [qlc-ssd-market.md](qlc-ssd-market.md) §3.3

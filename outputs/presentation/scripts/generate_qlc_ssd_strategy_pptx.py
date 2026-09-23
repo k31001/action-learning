@@ -291,8 +291,8 @@ def v_arrow(slide, x, y, w, h, up=False, fill=BLUE):
 # ================================================================ S1. 문제 제기 (v7.0: 교훈 하나 + 구매 기준 이동 + QLC 문제, 시각 중심)
 s = prs.slides.add_slide(BLANK)
 header(s, 1,
-       "고객과 함께 수요를 설계한 기업이 이겼고, 지금 그 수요는 QLC에 1~3 DWPD를 요구합니다",
-       "HBM이 보여 준 것은 기술의 차이가 아니라 시장을 보는 눈의 차이였습니다. 그리고 그 수요는 지금 HBM 용량을 넘어 스토리지 계층을 새로 얹고 있습니다.")
+       "표준 충족이 아니라 고객 사양이 design-in을 갈랐고, 그 사양에 지금 내구성이 더해지고 있습니다",
+       "표준을 만족하는 기술 보유만으로는 design-in이 결정되지 않았습니다. 같은 전환이 지금 SSD에서 일어나 고객 요구에 내구성이 더해지고 있습니다.")
 
 C1X, C1W = MX, 6.60
 C2X, C2W = C1X + C1W + 0.24, 6.30
@@ -307,123 +307,127 @@ def sec(x, w, no, title, sub, hot=False):
     tb(s, x + 0.24, TOP + 0.46, w - 0.48, 0.24, [(sub, 10.0, False, GRAY_2)])
 
 
-# ===== ① 교훈 =====
-sec(C1X, C1W, "①", "교훈 · HBM이 가르친 것", "2013 ~ 2026 · 같은 기술, 다른 판단")
+# ===== ① 교훈 · design-in을 가른 것 =====
+sec(C1X, C1W, "①", "교훈 · HBM이 남긴 것", "표준 충족과 design-in은 다른 선이었다")
 ix, iw = C1X + 0.30, C1W - 0.60
-TL_X0, TL_X1 = ix + 1.02, ix + iw - 0.08
+
+tb(s, ix, TOP + 0.82, iw, 0.22, [("같은 세대에서 두 개의 선이 있었습니다", 10.0, False, GRAY_2)])
+
+# --- 표준선 vs 고객 요구선 ---
+BAR_Y = TOP + 1.12
+LBL_W2, BAR_H = 2.06, 0.46
+TRK = iw - LBL_W2 - 0.60
+bx = ix + LBL_W2
 
 
-def tx1(yr):
-    return TL_X0 + (TL_X1 - TL_X0) * (yr - 2013.0) / 13.6
+def gx(v):
+    return bx + TRK * v / 13.0
 
 
-LANE_A, LANE_B = TOP + 1.92, TOP + 2.60
-LBL_W = 1.92
+rect(s, ix, BAR_Y, LBL_W2 - 0.10, BAR_H, fill=WHITE)
+tb(s, ix, BAR_Y, LBL_W2 - 0.10, BAR_H, [("고객이 요구한 사양", 10.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
+rect(s, gx(0), BAR_Y + 0.10, gx(10) - gx(0), BAR_H - 0.20, fill=TINT)
+rect(s, gx(10), BAR_Y, gx(13) - gx(10), BAR_H, fill=BLUE)
+tb(s, gx(10), BAR_Y, gx(13) - gx(10), BAR_H, [("10 ~ 13", 11.25, True, WHITE)],
+   align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+tb(s, gx(13) + 0.06, BAR_Y, 0.60, BAR_H, [("Gbps", 9.0, False, GRAY_2)], anchor=MSO_ANCHOR.MIDDLE)
 
+BAR2_Y = BAR_Y + BAR_H + 0.34
+rect(s, ix, BAR2_Y, LBL_W2 - 0.10, BAR_H, fill=WHITE)
+tb(s, ix, BAR2_Y, LBL_W2 - 0.10, BAR_H, [("JEDEC HBM4 표준", 10.5, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+rect(s, gx(0), BAR2_Y, gx(8) - gx(0), BAR_H, fill=GRAY_2)
+tb(s, gx(0), BAR2_Y, gx(8) - gx(0), BAR_H, [("최대 8", 11.25, True, WHITE)],
+   align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+tb(s, gx(8) + 0.06, BAR2_Y, 0.60, BAR_H, [("Gbps", 9.0, False, GRAY_2)], anchor=MSO_ANCHOR.MIDDLE)
 
-def ev_label(cx, y, d, t, col):
-    x0 = min(max(cx - LBL_W / 2, ix), ix + iw - LBL_W)
-    tb(s, x0, y, LBL_W, 0.56, [(d, 9.5, True, INK)] + [(l, 9.0, False, col) for l in t.split("\n")],
-       align=PP_ALIGN.CENTER, spacing=1.0)
+# 격차 구간 — 두 막대를 잇는 세로선 + 아래 라벨
+for v in (8, 10):
+    rect(s, gx(v) - 0.007, BAR_Y, 0.014, BAR2_Y + BAR_H - BAR_Y, fill=BLUE_T1)
+GAPL_Y = BAR2_Y + BAR_H + 0.08
+rect(s, gx(8), GAPL_Y, gx(10) - gx(8), 0.05, fill=BLUE_T1)
+tb(s, ix, GAPL_Y + 0.10, iw, 0.24,
+   [[("표준을 만족해도 닿지 않는 구간", 10.0, True, BLUE_T1),
+     ("   design-in은 표준선이 아니라 고객 요구선에서 갈렸습니다", 10.0, False, GRAY)]])
 
+# --- 기록 카드 3 ---
+FC_Y = GAPL_Y + 0.52
+tb(s, ix, FC_Y, iw, 0.22, [("공개 기록", 10.0, True, BLUE)])
+facts = [("2019-03", "삼성", "업계 최초 HBM2E 발표", "기술은 확보돼 있었습니다"),
+         ("2021-10", "SK하이닉스", "표준 제정 전 HBM3 완료", "2022-06 NVIDIA 최초 공급"),
+         ("2026-02", "삼성", "업계 최초 상용 HBM4 출하", "제품 개발은 이어졌습니다")]
+fw = (iw - 2 * 0.14) / 3
+for i, (d, who, what, note) in enumerate(facts):
+    fx = ix + i * (fw + 0.14)
+    rect(s, fx, FC_Y + 0.26, fw, 1.40, fill=WHITE, line=LINE, line_w=0.75)
+    rect(s, fx, FC_Y + 0.26, fw, 0.04, fill=BLUE_T2)
+    tb(s, fx + 0.12, FC_Y + 0.34, fw - 0.24, 0.20, [[(d + "  ", 9.5, True, BLUE), (who, 9.5, False, GRAY_2)]])
+    tb(s, fx + 0.12, FC_Y + 0.56, fw - 0.24, 0.48, [(what, 10.5, True, INK)], spacing=1.04)
+    tb(s, fx + 0.12, FC_Y + 1.06, fw - 0.24, 0.40, [(note, 9.0, False, GRAY)], spacing=1.02)
 
-for ly, who, col in [(LANE_A, "SK하이닉스", BLUE), (LANE_B, "삼성", GRAY_2)]:
-    rect(s, TL_X0, ly, TL_X1 - TL_X0, 0.03, fill=col)
-    tb(s, ix, ly - 0.14, 0.94, 0.28, [(who, 10.5, True, col)], anchor=MSO_ANCHOR.MIDDLE)
-for yr in (2013, 2017, 2021, 2025):
-    tb(s, tx1(yr) - 0.4, TOP + 3.86, 0.8, 0.2, [(str(yr), 9.5, False, GRAY_2)], align=PP_ALIGN.CENTER)
+# --- 교훈 ---
+LS_Y = FC_Y + 1.80
+rect(s, ix, LS_Y, iw, 1.02, fill=BLUE)
+tb(s, ix + 0.24, LS_Y + 0.10, iw - 0.48, 0.52,
+   [("표준을 만족하는 기술을 가진 것만으로는 부족했습니다", 14.25, True, WHITE)], spacing=1.04)
+tb(s, ix + 0.24, LS_Y + 0.60, iw - 0.48, 0.34,
+   [("시장 전환 시점에 고객이 요구하는 사양을 먼저 맞춘 쪽이 design-in을 가져갔습니다", 11.25, False, BLUE_T2)],
+   spacing=1.04)
+tb(s, ix, LS_Y + 1.10, iw, 0.40,
+   [("전략적 우선순위가 약화된 구간에서 격차가 생겼습니다 · 기술 보유 여부의 문제가 아니었습니다", 9.5, False, GRAY_2)],
+   spacing=1.02)
 
-ev_a = [(2013.9, "2013", "AMD와 HBM 공동 개발", 0), (2022.0, "2021-10 → 2022-06", "표준보다 먼저 개발 →\nNVIDIA 최초 공급", 1),
-        (2025.5, "2025-06", "DRAM 매출 1위\n1992년 이후 처음", 0)]
-ev_b = [(2019.2, "2019", "시장 성장률을 과대평가로 보고\n전담 조직 후순위", 0), (2024.3, "2024-04", "전담 팀 재구성 · 5년 공백", 1),
-        (2025.7, "2025-09", "12단 HBM3E 퀄 통과\n18개월 지연", 0)]
-for yr, d, t, slot in ev_a:
-    cx = tx1(yr)
-    rect(s, cx - 0.09, LANE_A - 0.075, 0.18, 0.18, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    rect(s, cx - 0.008, LANE_A - 0.30, 0.016, 0.24, fill=BLUE_T2)
-    ev_label(cx, LANE_A - 0.88 - slot * 0.58, d, t, GRAY)
-for yr, d, t, slot in ev_b:
-    cx = tx1(yr)
-    rect(s, cx - 0.09, LANE_B - 0.075, 0.18, 0.18, fill=WHITE, line=GRAY_2, line_w=1.25, shape=MSO_SHAPE.OVAL)
-    rect(s, cx - 0.008, LANE_B + 0.10, 0.016, 0.20, fill=LINE)
-    ev_label(cx, LANE_B + 0.32 + slot * 0.58, d, t, GRAY)
-tb(s, tx1(2013.2), LANE_A + 0.18, 3.4, 0.40,
-   [("업계 최초 HBM2E는 삼성이 2019-03에 발표했습니다", 9.0, True, INK),
-    ("기술의 차이가 아니었습니다", 9.0, False, GRAY)], spacing=1.0)
-
-LS_Y = TOP + 4.12
-rect(s, ix, LS_Y, iw, 0.86, fill=BLUE)
-tb(s, ix + 0.26, LS_Y + 0.10, iw - 0.52, 0.30, [("기술이 없어서가 아니라 시장을 작게 봤기 때문입니다", 15, True, WHITE)])
-tb(s, ix + 0.26, LS_Y + 0.44, iw - 0.52, 0.32,
-   [("구속력 있는 규격은 표준이 아니라 고객의 사양이었습니다 · JEDEC HBM4 8 Gbps 대 NVIDIA 요구 10~13 Gbps", 10.5, False, BLUE_T2)])
-
-HN_Y = LS_Y + 1.02
-tb(s, ix, HN_Y, iw, 0.24, [("되돌릴 수 있다는 것도 같은 기록이 보여 줍니다", 10.5, True, BLUE)])
-rec = [("2025-Q4", "DRAM 1위 탈환"), ("2026-02", "업계 최초 상용 HBM4 출하"), ("2026-Q2", "HBM 점유 33% · 직전 분기 +12%p")]
-rw = (iw - 2 * 0.14) / 3
-for i, (d, t) in enumerate(rec):
-    rx = ix + i * (rw + 0.14)
-    rect(s, rx, HN_Y + 0.28, rw, 0.62, fill=WHITE, line=BLUE_T2, line_w=1.0)
-    tb(s, rx + 0.14, HN_Y + 0.32, rw - 0.28, 0.22, [(d, 9.5, True, BLUE)])
-    tb(s, rx + 0.14, HN_Y + 0.54, rw - 0.28, 0.34, [(t, 9.5, False, GRAY)], spacing=1.0)
-tb(s, ix, HN_Y + 0.98, iw, 0.24,
-   [("변수는 판단을 끊지 않는 것입니다 · 다음 수요에서 같은 판단을 다시 해야 합니다", 10.0, False, GRAY)])
-
-# ===== ② 지금 · HBM 위에 새 계층이 얹힌다 =====
-sec(C2X, C2W, "②", "지금 · HBM 위에 새 계층이 얹힌다", "KV 캐시가 HBM 용량을 넘어선다")
+# ===== ② 지금 · 같은 전환이 SSD에서 =====
+sec(C2X, C2W, "②", "지금 · 같은 전환이 SSD에서", "고객 요구가 확장되고 있다")
 jx, jw = C2X + 0.30, C2W - 0.60
 
-# --- A. 구매 기준의 이동 (압축 체인) ---
-tb(s, jx, TOP + 0.80, jw, 0.20, [("구매 기준은 이렇게 움직여 왔습니다", 9.5, False, GRAY_2)])
-ERA_Y = TOP + 1.00
-AW, EH2 = 0.24, 0.64
-ew = (jw - 2 * AW) / 3
-for i, (yrs, axis_, hot) in enumerate([("2008~12", "성능 · 용량당 가격", False),
-                                       ("2012~21", "QoS · 지연 꼬리", False),
-                                       ("2022~26", "밀도 · 전력 · 물량", True)]):
-    ex = jx + i * (ew + AW)
-    rect(s, ex, ERA_Y, ew, EH2, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
-    tb(s, ex + 0.08, ERA_Y + 0.04, ew - 0.16, 0.17, [(yrs, 8.5, False, BLUE_T2 if hot else GRAY_2)], align=PP_ALIGN.CENTER)
-    tb(s, ex + 0.06, ERA_Y + 0.21, ew - 0.12, 0.38, [(axis_, 10.5, True, WHITE if hot else INK)],
-       align=PP_ALIGN.CENTER, spacing=1.0)
-    if i < 2:
-        rect(s, ex + ew + 0.04, ERA_Y + 0.24, AW - 0.08, 0.17, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+# --- A. 요구는 교체되는 것이 아니라 더해진다 ---
+tb(s, jx, TOP + 0.82, jw, 0.22, [("기존 요구는 그대로이고, 그 위에 요구가 더해지고 있습니다", 10.0, False, GRAY_2)])
+RQ_Y = TOP + 1.06
+base_w = jw * 0.56
+rect(s, jx, RQ_Y, base_w, 0.62, fill=WHITE, line=LINE, line_w=0.75)
+tb(s, jx + 0.14, RQ_Y + 0.06, base_w - 0.28, 0.22, [("기존", 8.75, False, GRAY_2)])
+tb(s, jx + 0.14, RQ_Y + 0.26, base_w - 0.28, 0.30, [("용량당 비용 · 밀도 · 전력", 11.25, True, INK)])
+rect(s, jx + base_w + 0.06, RQ_Y + 0.20, 0.22, 0.22, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+add_x = jx + base_w + 0.34
+rect(s, add_x, RQ_Y, jw - base_w - 0.34, 0.62, fill=BLUE)
+tb(s, add_x + 0.14, RQ_Y + 0.06, jw - base_w - 0.62, 0.22, [("추가", 8.75, False, BLUE_T2)])
+tb(s, add_x + 0.14, RQ_Y + 0.26, jw - base_w - 0.62, 0.30, [("내구성", 12.75, True, WHITE)])
 
-# --- B. 새 수요: KV 캐시가 HBM을 넘어선다 ---
-SP_Y = ERA_Y + EH2 + 0.14
-tb(s, jx, SP_Y, jw, 0.22, [[("그 위에 새 수요가 올라왔습니다   ", 9.5, False, GRAY_2),
-                            ("KV 캐시가 HBM 용량을 넘어섭니다", 10.5, True, BLUE)]])
-TIER_Y = SP_Y + 0.25
-TH, TG = 0.52, 0.16
+# --- B. KV 캐시가 SSD를 추론 메모리 계층으로 ---
+SP_Y = RQ_Y + 0.80
+tb(s, jx, SP_Y, jw, 0.22, [[("무엇이 그 요구를 만들었나   ", 10.0, False, GRAY_2),
+                            ("KV 캐시가 SSD를 추론 메모리 계층으로 옮깁니다", 10.5, True, BLUE)]])
+TIER_Y = SP_Y + 0.26
+TH, TG = 0.62, 0.17
 for gi, (g, nm, role, note, kind) in enumerate([
         ("G1", "GPU HBM", "80 → 288GB로 커졌지만", "단일 사용자 128K 컨텍스트가 약 40GB · 사용자 수에 비례", 0),
         ("G2", "CPU DRAM", "첫 확장", "Kioxia — DRAM만으로는 더 못 따라간다", 1),
-        ("G3", "NVMe SSD", "새로 얹힌 계층", "쓰기가 몰리는 첫 대용량 계층", 2)]):
+        ("G3", "NVMe SSD", "새로 얹힌 계층", "쓰기가 몰리는 첫 대용량 계층 → 내구성이 요구로", 2)]):
     ty = TIER_Y + gi * (TH + TG)
     on = kind == 2
     rect(s, jx, ty, jw, TH, fill=WHITE if on else (BLUE if kind == 0 else TINT),
          line=BLUE if on else (None if kind == 0 else LINE), line_w=1.5 if on else 0.75)
-    rect(s, jx, ty, 0.56, TH, fill=BLUE if on else (BLUE_T1 if kind == 0 else BLUE_T2))
-    tb(s, jx, ty, 0.56, TH, [(g, 11.25, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, jx + 0.70, ty + 0.05, 1.86, 0.24, [(nm, 12, True, WHITE if kind == 0 else (BLUE if on else INK))])
-    tb(s, jx + 0.70, ty + 0.29, 1.86, 0.19, [(role, 8.5, False, BLUE_T2 if kind == 0 else GRAY_2)])
-    tb(s, jx + 2.62, ty + 0.02, jw - 2.76, 0.48, [(note, 9.0, False, BLUE_T2 if kind == 0 else GRAY)],
+    rect(s, jx, ty, 0.58, TH, fill=BLUE if on else (BLUE_T1 if kind == 0 else BLUE_T2))
+    tb(s, jx, ty, 0.58, TH, [(g, 12, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, jx + 0.72, ty + 0.08, 1.84, 0.26, [(nm, 12.75, True, WHITE if kind == 0 else (BLUE if on else INK))])
+    tb(s, jx + 0.72, ty + 0.34, 1.84, 0.20, [(role, 8.75, False, BLUE_T2 if kind == 0 else GRAY_2)])
+    tb(s, jx + 2.64, ty + 0.04, jw - 2.78, TH - 0.08, [(note, 9.0, False, BLUE_T2 if kind == 0 else GRAY)],
        anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
     if gi < 2:
         ay = ty + TH + 0.01
-        rect(s, jx + 0.20, ay, 0.16, TG - 0.02, fill=BLUE_T1, shape=MSO_SHAPE.DOWN_ARROW)
-        tb(s, jx + 0.44, ay - 0.01, jw - 0.54, TG,
+        rect(s, jx + 0.19, ay, 0.16, TG - 0.02, fill=BLUE_T1, shape=MSO_SHAPE.DOWN_ARROW)
+        tb(s, jx + 0.42, ay - 0.01, jw - 0.52, TG,
            [("넘친다" if gi == 0 else "다시 넘친다", 9.0, True, BLUE_T1)], anchor=MSO_ANCHOR.MIDDLE)
 TB_END = TIER_Y + 3 * TH + 2 * TG
-rect(s, jx, TB_END + 0.05, jw, 0.24, fill=TINT)
-tb(s, jx + 0.10, TB_END + 0.05, jw - 0.20, 0.24,
+rect(s, jx, TB_END + 0.04, jw, 0.22, fill=TINT)
+tb(s, jx + 0.10, TB_END + 0.04, jw - 0.20, 0.22,
    [[("대체가 아니라 증설입니다  ", 9.0, True, BLUE),
      ("같은 기간 GPU당 HBM은 192 → 288GB, 2027년 384GB로 커집니다", 9.0, False, GRAY)]],
    anchor=MSO_ANCHOR.MIDDLE)
 
 # --- C. 근거 ---
-EV_Y = TB_END + 0.39
-rect(s, jx, EV_Y, jw, 1.04, fill=WHITE, line=BLUE_T2, line_w=1.0)
+EV_Y = TB_END + 0.36
+rect(s, jx, EV_Y, jw, BOT - 0.02 - EV_Y, fill=WHITE, line=BLUE_T2, line_w=1.0)
 tb(s, jx + 0.16, EV_Y + 0.06, jw - 0.32, 0.24,
    [("「KV 캐시를 담을 HBM 용량이 한계에 도달했다」", 11.25, True, BLUE)])
 tb(s, jx + 0.16, EV_Y + 0.29, jw - 0.32, 0.20,
@@ -435,68 +439,55 @@ for i, (k, v) in enumerate([("오프로드는 메인라인 코드", "LMCache 202
     sx = jx + 0.16 + i * (sw + 0.14)
     tb(s, sx, EV_Y + 0.58, sw, 0.17, [(k, 8.5, False, GRAY_2)])
     tb(s, sx, EV_Y + 0.74, sw, 0.24, [(v, 9.5, True, BLUE)], spacing=1.0)
-
-# --- D. 그래서 SSD에 오는 요구 ---
-KV_Y = EV_Y + 1.16
-KH = BOT - 0.02 - KV_Y
-rect(s, jx, KV_Y, jw, KH, fill=WHITE, line=BLUE, line_w=1.25)
-dwd = 1.66
-tb(s, jx + 0.18, KV_Y + 0.07, jw - dwd - 0.40, 0.27, [("그래서 SSD에 오는 요구는 내구성입니다", 12.75, True, BLUE)])
-tb(s, jx + 0.18, KV_Y + 0.36, jw - dwd - 0.40, 0.38,
-   [("추론 수요 CAGR 86% · 삼성은 V-NAND 캐파의 약 60%를 CMX 대응에 배정했습니다", 9.0, False, GRAY)],
-   spacing=1.04)
-rect(s, jx + jw - dwd - 0.14, KV_Y + 0.12, dwd, KH - 0.24, fill=TINT)
-tb(s, jx + jw - dwd - 0.14, KV_Y + 0.12, dwd, KH - 0.24,
-   [("요구 DWPD", 9.5, False, GRAY_2), ("1 ~ 3", 21, True, BLUE)],
-   align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+tb(s, jx + 0.16, EV_Y + 1.00, jw - 0.32, 0.20,
+   [("AI 수요의 중심이 추론으로 빠르게 확대되고 있습니다 · 데이터센터 NAND 295EB(2025) → 1,807EB(2028), Kioxia 전망", 8.5, False, GRAY_2)])
 
 # ===== ③ 문제 =====
-sec(C3X, C3W, "③", "문제 · 고객은 QLC를 원한다", "TLC면 되는데 왜 QLC인가", hot=True)
+sec(C3X, C3W, "③", "문제 · 둘 다 가질 수 있는가", "용량·비용과 내구성의 상충", hot=True)
 kx, kw = C3X + 0.30, C3W - 0.60
-tb(s, kx, TOP + 0.86, kw, 0.24, [("같은 요구 1~3 DWPD를 두 방법으로 볼 수 있습니다", 10.0, False, GRAY)])
-cmp_y = TOP + 1.14
-cw2 = (kw - 0.16) / 2
+tb(s, kx, TOP + 0.82, kw, 0.22, [("오늘 선택지는 둘 다를 주지 않습니다", 10.0, False, GRAY)])
+cmp_y = TOP + 1.08
+cw2 = (kw - 0.14) / 2
 for i, (nm, sub, rows, ok) in enumerate([
-        ("TLC", "요구는 만족", [("내구성", "1 ~ 3 DWPD", True), ("용량 밀도", "61TB급", False), ("TB당 가격", "기준", False)], True),
-        ("QLC", "요구가 부족", [("내구성", "0.6 DWPD", False), ("용량 밀도", "245TB급 · 4배", True), ("TB당 가격", "20~30% 저렴", True)], False)]):
-    cx = kx + i * (cw2 + 0.16)
-    rect(s, cx, cmp_y, cw2, 1.96, fill=WHITE, line=BLUE if not ok else LINE, line_w=1.25 if not ok else 0.75)
+        ("TLC", "3 DWPD 급", [("내구성", "요구 충족", True), ("용량", "61TB 급", False), ("비용", "높다", False)], True),
+        ("QLC", "고용량", [("내구성", "0.3 ~ 1.0", False), ("용량", "245TB 급", True), ("비용", "낮다", True)], False)]):
+    cx = kx + i * (cw2 + 0.14)
+    rect(s, cx, cmp_y, cw2, 2.02, fill=WHITE, line=BLUE if not ok else LINE, line_w=1.25 if not ok else 0.75)
     rect(s, cx, cmp_y, cw2, 0.05, fill=BLUE if not ok else GRAY_2)
-    tb(s, cx + 0.16, cmp_y + 0.10, cw2 - 0.32, 0.30, [(nm, 15, True, BLUE if not ok else GRAY)])
-    tb(s, cx + 0.16, cmp_y + 0.40, cw2 - 0.32, 0.22, [(sub, 9.5, False, GRAY_2)])
+    tb(s, cx + 0.14, cmp_y + 0.10, cw2 - 0.28, 0.28, [(nm, 15, True, BLUE if not ok else GRAY)])
+    tb(s, cx + 0.14, cmp_y + 0.38, cw2 - 0.28, 0.22, [(sub, 9.5, False, GRAY_2)])
     ry = cmp_y + 0.66
     for lab, val, good in rows:
-        tb(s, cx + 0.16, ry, cw2 - 0.32, 0.18, [(lab, 8.75, False, GRAY_2)])
-        tb(s, cx + 0.16, ry + 0.16, cw2 - 0.32, 0.24, [(val, 11.25, True, BLUE if good else GRAY)])
-        ry += 0.42
+        tb(s, cx + 0.14, ry, cw2 - 0.28, 0.18, [(lab, 8.75, False, GRAY_2)])
+        tb(s, cx + 0.14, ry + 0.16, cw2 - 0.28, 0.26, [(val, 11.25, True, BLUE if good else GRAY)])
+        ry += 0.44
+tb(s, kx, cmp_y + 2.10, kw, 0.36,
+   [("QLC 정격은 제품·기준 블록에 따라 다릅니다 · 245TB급은 0.3 DWPD 수준", 9.0, False, GRAY_2)], spacing=1.02)
 
-GAP_Y = cmp_y + 2.12
-tb(s, kx, GAP_Y, kw, 0.22, [("QLC가 채워야 할 거리", 10.0, False, GRAY_2)])
-tb(s, kx, GAP_Y + 0.22, kw, 0.66, [("2 ~ 5배", 34, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-tb(s, kx, GAP_Y + 0.88, kw, 0.24, [("요구 1~3 DWPD ÷ 현 QLC 정격 0.6", 9.5, False, GRAY)])
-Q_Y = GAP_Y + 1.22
-rect(s, kx, Q_Y, kw, BOT - 0.24 - Q_Y, fill=BLUE)
-tb(s, kx + 0.22, Q_Y + 0.14, kw - 0.44, BOT - 0.52 - Q_Y,
-   [("고객은 QLC의 밀도와 원가를 원하면서 TLC의 내구성을 요구합니다", 13.5, True, WHITE),
-    ("이 간극을 메우는 것이 우리가 풀 문제입니다", 11.25, False, BLUE_T2)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.12)
+Q_Y = cmp_y + 2.52
+rect(s, kx, Q_Y, kw, BOT - 0.10 - Q_Y, fill=BLUE)
+tb(s, kx + 0.22, Q_Y + 0.16, kw - 0.44, 0.30, [("그래서 질문은 하나입니다", 10.5, False, BLUE_T2)])
+tb(s, kx + 0.22, Q_Y + 0.48, kw - 0.44, BOT - 0.70 - Q_Y,
+   [("고용량 QLC의 밀도·비용 이점을 유지하면서", 14.25, True, WHITE),
+    ("AI 추론이 요구하는 내구성을", 14.25, True, WHITE),
+    ("확보할 수 있는가?", 14.25, True, WHITE)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.18)
 
 band(s, 9.42, 0.80, "문제",
-     "HBM의 교훈은 수요를 고객과 함께 설계하는 것이었고, 그 수요가 지금 HBM 위에 새 스토리지 계층을 얹고 있습니다.\n"
-     "고객은 QLC의 밀도와 원가로 TLC의 1~3 DWPD를 요구하며, 현 정격 0.6과는 2~5배 거리가 있습니다",
+     "HBM의 교훈은 표준 충족이 아니라 고객 요구 사양을 먼저 맞추는 것이 design-in을 가른다는 것이었습니다.\n"
+     "같은 전환이 SSD에서 일어나 내구성이 요구로 더해졌고, 고용량 QLC로 그 요구를 만족할 수 있는가가 문제입니다",
      main_size=16.5, next_step=2)
-footer(s, "출처: HBM 연표 각사 발표 · JEDEC JESD270-4, CNBC 2024-11-08(⚠️ 단일 출처), 서울경제 2026-07-29(SK하이닉스 실적 콜 🟡)·2026-07-20(CMX 🟡), NVIDIA 개발자 블로그(KV 40GB 🟡), GitHub PR(LMCache·vLLM ✅), Counterpoint Q2 2026, TrendForce(HBM 용량)", 1)
-notes(s, "1장은 문제 제기입니다. 결론은 내리지 않고, 고용량 QLC에서 DWPD를 높일 해법이 필요한 상황임을 세웁니다. 왼쪽이 교훈, 가운데가 지금 수요의 이동, 오른쪽이 문제입니다. "
-      "왼쪽 교훈입니다. 두 레인은 같은 기술을 가진 두 회사의 다른 판단입니다. SK하이닉스는 2013년 AMD와 HBM을 공동 개발했고, 2021년 10월 JEDEC 표준보다 먼저 HBM3 개발을 마쳐 2022년 6월 NVIDIA에 업계 최초로 공급했으며, 2023년 한 해 동안 유일한 양산사였습니다. 그 결과가 2025년 6월 DRAM 매출 1위로, 1992년 이후 처음 있는 역전이었습니다. 2026년 6월에는 NVIDIA와 다년 기술 파트너십을 맺고 Vera Rubin용 메모리를 공동 개발합니다. "
-      "아래 레인이 삼성입니다. 중요한 것은 기술이 없지 않았다는 점입니다. 업계 최초 HBM2E는 2019년 3월 삼성이 발표했습니다. 같은 해에 HBM 시장 성장률이 과대평가됐다는 판단으로 전담 조직이 후순위가 됐고, 2024년 4월에야 전담 팀이 재구성되어 5년의 공백이 생겼으며, 12단 HBM3E는 2025년 9월에야 NVIDIA 퀄을 통과해 Blackwell 사이클을 놓쳤습니다. 2019년 조직 판단은 CNBC 보도 계열의 단일 출처이므로 그 점을 밝혀 둡니다. 그리고 그 해 삼성은 감산도 CapEx 삭감도 하지 않았습니다. 돈이 아니라 우선순위의 문제였습니다. "
-      "교훈을 한 줄로 쓰면 기술이 없어서가 아니라 시장을 작게 봤기 때문입니다. 그리고 구속력 있는 규격은 표준이 아니라 고객의 사양이었습니다. JEDEC HBM4 표준은 최대 8Gbps인데 NVIDIA는 10에서 13Gbps를 요구했고, 승부는 그 위에서 갈렸습니다. 삼성도 표준 제정 9개사 중 하나였으므로 테이블에 앉았는지가 아니라 고객 사양에 맞췄는지가 변수였습니다. "
-      "다만 이 교훈을 영구적 판정으로 쓰면 안 됩니다. 삼성은 2025년 4분기 DRAM 1위를 탈환했고, 2026년 2월 업계 최초로 상용 HBM4를 출하했으며, 2026년 2분기 HBM 점유율은 33%로 직전 분기 대비 12%포인트 올랐습니다. 되돌릴 수 있다는 것도 같은 기록이 보여 줍니다. 변수는 판단을 끊지 않는 것이고, 다음 수요에서 같은 판단을 다시 해야 합니다. "
-      "가운데가 지금의 수요입니다. 먼저 구매 기준입니다. 2008년에서 2012년은 성능과 용량당 가격, 2012년에서 2021년은 QoS와 지연 꼬리였습니다. OCP 사양 v2.0이 2021년 7월 지연 모니터를 의무화하면서 제도화됐습니다. 2022년 이후는 용량 밀도와 전력 효율, 물량 확보가 상위 기준입니다. "
-      "그 위에 새 수요가 올라왔습니다. 여기가 이번에 추가한 부분입니다. KV 캐시가 HBM 용량을 넘어섭니다. 숫자로 보면 이렇습니다. NVIDIA 개발자 블로그 기준으로 Llama 3 70B에서 단일 사용자의 128K 컨텍스트 KV 캐시가 약 40기가바이트이고, 이것이 사용자 수에 선형으로 비례합니다. H100의 HBM이 80기가바이트니까 사용자 한 명이 절반을 씁니다. 그래서 넘친 것이 CPU DRAM으로 내려오는데, Kioxia는 DRAM만으로는 더 못 따라간다고 밝혔습니다. 다시 넘친 것을 받는 것이 NVMe SSD이고, 이 계층은 쓰기가 몰리는 첫 대용량 계층입니다. "
-      "근거는 세 갈래입니다. 첫째, 진단을 한 주체가 우리가 아닙니다. HBM 1위 업체인 SK하이닉스가 2026년 7월 29일 2분기 실적 발표에서 KV 캐시를 담을 HBM 용량이 한계에 도달하고 있다고 밝혔고, 같은 자리에서 GPU 인근 NAND 개발을 공표했습니다. 둘째, 오프로드는 슬라이드 위의 개념이 아니라 메인라인 코드입니다. LMCache 디스크 캐시가 2024년 8월, GPUDirect Storage 백엔드가 2025년 6월, vLLM 다계층 오프로딩이 2026년 5월에 머지됐고 전부 PR로 확인됩니다. 셋째, 비트의 무게중심이 이미 움직였습니다. 전 세계 NAND 비트 출하에서 엔터프라이즈 SSD 비중이 1년 만에 26%에서 48%로 올라갔습니다. "
-      "여기서 반드시 정정하고 갈 것이 있습니다. 이것은 HBM에서 스토리지로의 이동이 아니라 HBM 위에 얹는 증설입니다. 근거가 셋입니다. 하나, SK하이닉스 본인의 단어가 대체가 아니라 추가 KV 캐시 저장소입니다. 둘, 같은 기간 GPU당 HBM 용량은 오히려 커집니다. 192기가바이트에서 288기가바이트를 거쳐 2027년 384기가바이트입니다. 셋, Micron의 계층 정의는 HBM을 핫 KV 캐시로 유지한 채 SSD를 영속 KV로 추가하는 구조이고, Kioxia가 못 따라간다고 지목한 것도 HBM이 아니라 DRAM이었습니다. 질문이 나오면 이렇게 답하시면 됩니다. HBM 수요가 줄어서 우리에게 오는 것이 아니라, HBM으로 감당이 안 되는 몫이 새 계층을 열었다는 뜻입니다. "
-      "반대 신호도 알고 있어야 합니다. 컨텍스트 전용 가속기인 Rubin CPX는 값싼 GDDR7로 발표됐다가 168기가바이트 HBM4로 재설계됐다는 보도가 있습니다. 애널리스트 보도이고 NVIDIA 공식 확인은 없습니다. 그리고 모델 측 효율 개선은 수요 총량을 깎는데 그 타격이 HBM보다 스토리지에 더 큽니다. DeepSeek V4.1-Flash는 KV 캐시의 HBM 요구를 75%, 영속 SSD 요구를 87.5% 줄였습니다. 이 계층이 커진다는 전망은 이 두 가지에 노출되어 있습니다. "
-      "그래서 SSD에 오는 요구가 내구성입니다. 추론 수요는 연평균 86%로 학습의 16%보다 훨씬 빠르게 큽니다. 삼성도 이미 V낸드 캐파의 약 60%를 CMX 대응에 배정한 것으로 보도됐습니다. 요구는 1에서 3 DWPD입니다. "
-      "오른쪽이 문제입니다. 요구 1에서 3 DWPD는 TLC로는 이미 충족됩니다. 그런데 고객은 QLC를 원합니다. 용량 밀도가 245TB급으로 네 배이고 TB당 가격이 20에서 30% 싸기 때문입니다. 반면 QLC의 정격은 0.6으로 요구와 2배에서 5배 거리가 있습니다. 고객은 QLC의 밀도와 원가로 TLC의 내구성을 요구하는 셈이고, 이 간극을 메우는 것이 우리가 풀 문제입니다. 고용량화는 두 축의 문제를 낳습니다. 다이 수가 만드는 신뢰성 축이 2장, DWPD 격차가 만드는 내구성 축이 3장입니다.")
+footer(s, "출처: JEDEC JESD270-4 · NVIDIA 요구 10~13Gbps(업계 보도 🟡), 서울경제 2026-07-29(SK하이닉스 실적 콜 🟡), NVIDIA 개발자 블로그(KV 40GB 🟡), GitHub PR(LMCache·vLLM ✅), Counterpoint Q2 2026, Kioxia IR 2026-06-02, 각사 제품 사양(DWPD)", 1)
+notes(s, "1장은 문제 제기입니다. 결론은 내리지 않고, 고용량 QLC에서 내구성을 확보할 수 있는가라는 질문까지만 세웁니다. 왼쪽이 교훈, 가운데가 지금 일어나는 전환, 오른쪽이 문제입니다. "
+      "왼쪽 교훈입니다. 이 장의 요지는 삼성의 과거 의사결정을 평가하는 것이 아니라, design-in이 무엇으로 결정됐는가를 보는 것입니다. "
+      "HBM4 세대에서 선이 두 개 있었습니다. 하나는 JEDEC 표준선으로 최대 8Gbps입니다. 다른 하나는 고객이 요구한 사양으로 NVIDIA가 10에서 13Gbps를 요구했습니다. 표준을 완전히 만족해도 고객 요구선에는 닿지 않는 구간이 남습니다. design-in은 바로 이 구간에서 갈렸습니다. "
+      "공개 기록 세 가지를 보시면 됩니다. 2019년 3월 삼성이 업계 최초로 HBM2E를 발표했습니다. 기술은 확보돼 있었다는 뜻입니다. 2021년 10월 SK하이닉스가 JEDEC 표준 제정 전에 HBM3 개발을 마쳤고 2022년 6월 NVIDIA에 최초 공급했습니다. 그리고 2026년 2월 삼성이 업계 최초로 상용 HBM4를 출하했습니다. 제품 개발은 계속 이어졌습니다. "
+      "그래서 교훈은 이렇습니다. 표준을 만족하는 기술을 가진 것만으로는 부족했습니다. 시장 전환 시점에 고객이 요구하는 사양을 먼저 맞춘 쪽이 design-in을 가져갔습니다. 전략적 우선순위가 약화된 구간에서 격차가 생겼다는 것이지, 기술 보유 여부의 문제가 아니었습니다. 이 점은 질문이 나와도 같은 선에서 답하시면 됩니다. 조직이나 개별 의사결정을 평가하는 자리가 아닙니다. "
+      "가운데가 지금 일어나는 전환입니다. 같은 구조가 SSD에서 반복되고 있습니다. 먼저 짚을 것은 구매 기준이 세대별로 교체되는 것이 아니라는 점입니다. 용량당 비용과 밀도, 전력은 그대로 요구로 남아 있고, 그 위에 내구성이 더해지고 있습니다. 시대 구분이 아니라 요구사항이 추가되는 구조로 보시면 됩니다. "
+      "무엇이 그 요구를 만들었는가. KV 캐시가 SSD를 추론 메모리 계층으로 옮기고 있습니다. 추론에서 컨텍스트가 길어지면 KV 캐시가 GPU의 HBM을 먼저 채웁니다. NVIDIA 개발자 블로그 기준으로 Llama 3 70B에서 단일 사용자의 128K 컨텍스트가 약 40기가바이트이고 사용자 수에 선형으로 비례합니다. HBM 용량도 80에서 288기가바이트로 커졌지만 이 증가 속도를 따라가지 못합니다. 넘친 것은 CPU DRAM으로 내려오는데 Kioxia는 DRAM만으로는 더 못 따라간다고 밝혔습니다. 다시 넘친 것을 NVMe SSD가 받습니다. 이 계층은 쓰기가 몰리는 첫 대용량 계층이고, 그래서 내구성이 요구로 올라옵니다. "
+      "한 가지는 분명히 하겠습니다. 대체가 아니라 증설입니다. 같은 기간 GPU당 HBM 용량은 192에서 288기가바이트, 2027년에는 384기가바이트로 커집니다. HBM 수요가 줄어 스토리지로 옮겨 간 것이 아니라, HBM으로 감당되지 않는 몫이 새 계층을 연 것입니다. "
+      "근거는 세 갈래입니다. 첫째, 진단의 주체가 우리가 아닙니다. HBM 1위 업체인 SK하이닉스가 2026년 7월 29일 실적 발표에서 KV 캐시를 담을 HBM 용량이 한계에 도달했다고 밝히고 같은 자리에서 GPU 인근 NAND 개발을 공표했습니다. 둘째, 오프로드는 개념이 아니라 메인라인 코드입니다. LMCache 디스크 캐시가 2024년 8월, vLLM 다계층 오프로딩이 2026년 5월에 머지됐고 전부 PR로 확인됩니다. 셋째, 비트의 무게중심이 움직였습니다. 전 세계 NAND 비트 출하에서 엔터프라이즈 SSD 비중이 1년 만에 26%에서 48%로 올라갔습니다. AI 수요의 중심이 추론으로 빠르게 확대되고 있고, Kioxia는 데이터센터 NAND 수요를 2025년 295엑사바이트에서 2028년 1,807엑사바이트로 전망합니다. "
+      "오른쪽이 문제입니다. 오늘 선택지는 둘 다를 주지 않습니다. TLC 3 DWPD 급은 내구성 요구를 충족하지만 용량이 61테라바이트 급이고 비용이 높습니다. 고용량 QLC는 245테라바이트 급 용량과 낮은 비용을 주지만 정격 내구성이 0.3에서 1.0 수준입니다. 이 값은 제품과 기준 블록 크기에 따라 달라지므로 단일 숫자로 말하지 않습니다. 특히 245테라바이트 급은 0.3 수준입니다. "
+      "그래서 질문은 하나로 모입니다. 고용량 QLC의 밀도와 비용 이점을 유지하면서 AI 추론이 요구하는 내구성을 확보할 수 있는가. 1장은 여기서 멈춥니다. 고용량화는 두 축의 문제를 낳습니다. 다이 수가 만드는 신뢰성 축이 2장, 내구성 축이 3장입니다.")
 
 # ================================================================ S2. 신뢰성 축 — SSD 내부 해법 (v6.0: ppm 요구 곡선 · 보호 기법별 완화 · 내부 해법을 도해로)
 s = prs.slides.add_slide(BLANK)
