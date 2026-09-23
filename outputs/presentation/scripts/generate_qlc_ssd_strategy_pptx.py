@@ -687,7 +687,9 @@ header(s, 4,
        "배치 힌트는 수명이 섞인 블록을 없애 WAF를 3에서 1로, 유효 DWPD를 정격의 3배로 만듭니다",
        "같은 QLC 드라이브에 같은 양을 써도, 호스트가 데이터 수명을 알려 주느냐에 따라 NAND에 쌓이는 모습과 가비지 컬렉션 비용이 달라집니다.")
 
-LIFE_COLOR = [BLUE, BLUE_T1, BLUE_T2]
+LIFE_COLOR = [BLUE, RGBColor(0x6E, 0x86, 0xDC), RGBColor(0xCF, 0xD8, 0xF2)]   # 명도 3단 (진함 → 옅음)
+LIFE_TEXT = [WHITE, WHITE, INK]                                       # 셀 위 글자색
+LIFE_MARK = ["S", "M", "L"]
 LIFE_NAME = ["짧음", "중간", "김"]
 
 C_W = (CW - 3 * 0.22) / 4
@@ -705,8 +707,10 @@ def app_chip(x, y, w, h, name, life, hinted):
               line_w=1.25 if hinted else 0.75)
     if hinted is False:
         sp.line.dash_style = MSO_LINE_DASH_STYLE.DASH
-    rect(s, x + 0.10, y + (h - 0.16) / 2, 0.16, 0.16, fill=LIFE_COLOR[life])
-    tb(s, x + 0.32, y, w - 0.42, h, [(name, 9.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+    rect(s, x + 0.09, y + (h - 0.20) / 2, 0.20, 0.20, fill=LIFE_COLOR[life])
+    tb(s, x + 0.09, y + (h - 0.20) / 2, 0.20, 0.20, [(LIFE_MARK[life], 7.5, True, LIFE_TEXT[life])],
+       align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, x + 0.34, y, w - 0.44, h, [(name, 9.5, True, INK)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
 
 
 def nand_block(x, y, cells, target=False):
@@ -716,11 +720,15 @@ def nand_block(x, y, cells, target=False):
         rect(s, x - 0.07, y - 0.07, bw + 0.14, CELL + 0.14, fill=None, line=RED, line_w=1.25)
     for i, life in enumerate(cells):
         cx = x + i * (CELL + CGAP)
-        if life == 0:
-            sp = rect(s, cx, y, CELL, CELL, fill=WHITE, line=GRAY_2, line_w=0.75)
+        dead = life == 0                      # 수명 짧음은 GC 시점에 이미 무효화돼 있다
+        if dead:
+            sp = rect(s, cx, y, CELL, CELL, fill=WHITE, line=LIFE_COLOR[life], line_w=1.25)
             sp.line.dash_style = MSO_LINE_DASH_STYLE.DASH
         else:
             rect(s, cx, y, CELL, CELL, fill=LIFE_COLOR[life])
+        tb(s, cx, y, CELL, CELL,
+           [(LIFE_MARK[life], 8.0, True, LIFE_COLOR[life] if dead else LIFE_TEXT[life])],
+           align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     return bw
 
 
@@ -739,7 +747,7 @@ cases = [
      0, 0, 1.05, "실측", "CacheLib 3.22 → 1.03 · XD8 2.8 → 약 1.0", "한 블록이 통째로 무효화된다"),
     ("④", "혼재", "힌트 주는 응용과 안 주는 응용", "핸들 2개 + 기본 핸들",
      [("KV 캐시 블록", 1, True), ("로그 · 메타데이터", 0, True), ("레거시 VM", 2, False)],
-     [[0] * 8, [1] * 8, [0, 1, 2, 0, 2, 1, 0, 1], [2, 0, 1, 2, 1, 0, 2, 0]],
+     [[0] * 8, [1] * 8, [2, 2, 0, 2, 0, 2, 1, 0], [2, 0, 2, 1, 2, 0, 2, 2]],
      2, 5, 2.2, "모델", "절반 태깅 가정 + 핸들 간 간섭(WARP)", "기본 핸들로 몰린 트래픽이 다시 섞인다"),
 ]
 
@@ -795,13 +803,17 @@ lx = MX + 0.28
 tb(s, lx, L_Y + 0.08, 0.8, 0.22, [("범례", 10.5, True, BLUE)])
 lx += 0.72
 for i, nm in enumerate(LIFE_NAME):
-    rect(s, lx, L_Y + 0.11, 0.16, 0.16, fill=LIFE_COLOR[i])
-    tb(s, lx + 0.22, L_Y + 0.06, 1.0, 0.24, [("수명 " + nm, 9.5, False, GRAY)])
-    lx += 1.10
-sp = rect(s, lx, L_Y + 0.11, 0.16, 0.16, fill=WHITE, line=GRAY_2, line_w=0.75)
-sp.line.dash_style = MSO_LINE_DASH_STYLE.DASH
-tb(s, lx + 0.22, L_Y + 0.06, 2.0, 0.24, [("무효화된 페이지", 9.5, False, GRAY)])
-tb(s, lx + 2.30, L_Y + 0.06, 5.4, 0.24,
+    rect(s, lx, L_Y + 0.09, 0.20, 0.20, fill=LIFE_COLOR[i])
+    tb(s, lx, L_Y + 0.09, 0.20, 0.20, [(LIFE_MARK[i], 7.5, True, LIFE_TEXT[i])],
+       align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, lx + 0.26, L_Y + 0.06, 1.06, 0.24, [("수명 " + nm, 9.5, False, GRAY)])
+    lx += 1.16
+_sp = rect(s, lx, L_Y + 0.09, 0.20, 0.20, fill=WHITE, line=BLUE, line_w=1.25)
+_sp.line.dash_style = MSO_LINE_DASH_STYLE.DASH
+tb(s, lx, L_Y + 0.09, 0.20, 0.20, [("S", 7.5, True, BLUE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+tb(s, lx + 0.26, L_Y + 0.06, 2.30, 0.24, [("무효화된 페이지 (점선)", 9.5, False, GRAY)])
+lx += 2.46
+tb(s, lx, L_Y + 0.06, 5.4, 0.24,
    [[("유효 DWPD  ", 9.5, True, INK), ("정격 0.6 × 3 ÷ WAF (정격은 WAF 3 기준 산정)", 9.5, False, GRAY)]])
 tb(s, MX + 0.28, L_Y + 0.38, CW - 0.56, 0.24,
    [[("실측 대조  ", 9.5, True, INK),

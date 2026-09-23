@@ -55,7 +55,9 @@ NAND는 페이지 단위로 쓰고 **블록 단위로 지운다**. 한 블록 �
 
 ## 6. 연결
 
-- 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **4장**(v7.0) — 네 경우의 블록 도해와 WAF·유효 DWPD
+- 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **4장**(v7.6) — 네 경우의 블록 도해와 WAF·유효 DWPD
+  - **도해의 부호화 규칙**: 수명 등급은 **명도 3단 블루 램프 + 글자(S·M·L) 이중 부호화**로 표시한다(색만으로 구분하지 않는다 — 색맹·흑백 인쇄 대비). **무효화는 색이 아니라 상태**로 그린다 — 흰 바탕에 해당 등급 색의 점선. 즉 색은 언제나 **수명 등급**만 뜻하고, 채움/점선이 **유효/무효**를 뜻한다
+  - 8칸 블록은 **원리를 보이는 모식도**이며 실측 레이아웃이 아니다. 각 경우의 「소거 대상 블록 복사 n/8칸」은 그 블록의 **유효 칸 수**와 일치시킨다(정합성 규칙)
 - 앞 장: [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md) (잔여 변수 WAF)
 - 뒷 장: [waf-runtime-response.md](waf-runtime-response.md) (④가 일어났을 때의 대응)
 - 배치 핸들 개수: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) §2.6
