@@ -8,16 +8,26 @@
 - **재생성**: `.venv/bin/python outputs/presentation/scripts/generate_qlc_chart.py` (그래프) → `.venv/bin/python outputs/presentation/scripts/generate_qlc_ssd_strategy_pptx.py` → `outputs/presentation/qlc-ssd-strategy.pptx`
 - **렌더 검증**: `FONT_LATIN=NanumGothic FONT_EA=NanumGothic OUT_PATH=<scratch>.pptx` 로 렌더 전용 사본을 만들어 `soffice --headless --convert-to pdf` → pymupdf PNG로 육안 검사(본 산출물은 Arial 유지).
 
-## v7.1 (2026-09-23 — 1장 ②구획: AI 메모리 수요가 HBM에서 스토리지로)
+## v7.2 (2026-09-23 — 1장 ②구획: KV 캐시가 HBM 용량을 넘어선다, 이동이 아니라 증설)
 
 | 피드백 | 반영 |
 |---|---|
-| "슬라이드1에서 현재 AI 메모리 수요가 HBM에서 KV cache offloading을 위한 스토리지로 이동하고 있다는 내용과 근거가 추가되어야 해" | 1장 ②구획을 "구매 기준의 이동"에서 **"같은 수요가 스토리지로"**로 재설계. 네 블록 구성 — (a) 구매 기준 3국면을 **가로 압축 체인**으로(세로 3.18in → 0.70in, 공간 확보) (b) **G1 GPU HBM → G2 CPU DRAM → G3 NVMe SSD 스필 도해**(각 단에 성격과 한계, 사이에 "넘친다"·"다시 넘친다" 화살표; G3만 파란 테두리로 강조) (c) **시장 신호 블록** — TrendForce 2026-08-18 「Vera Rubin의 HBM → NAND 스필오버」 인용 + CMX NAND 2026 35EB → 2027 100EB+ · 삼성 V-NAND 캐파 약 60% CMX 배정 (d) **그래서 SSD에 오는 요구 = DWPD 1~3**. 열 폭 재배분 ① 7.30 → 6.60, ② 5.50 → 6.30, ③ 5.38 → 5.04 |
+| "슬라이드1에서 현재 AI 메모리 수요가 HBM에서 KV cache offloading을 위한 스토리지로 이동하고 있다는 내용과 근거가 추가되어야 해" | 1장 ②구획을 "구매 기준의 이동"에서 **"HBM 위에 새 계층이 얹힌다"**로 재설계. 네 블록 — (a) 구매 기준 3국면을 **가로 압축 체인**으로(세로 3.18in → 0.64in) (b) **G1 GPU HBM → G2 CPU DRAM → G3 NVMe SSD 도해**(G1 = "80 → 288GB로 커졌지만 단일 사용자 128K 컨텍스트가 약 40GB · 사용자 수에 비례", G2 = "Kioxia — DRAM만으로는 더 못 따라간다", G3 = "새로 얹힌 계층") + **"대체가 아니라 증설입니다 · 같은 기간 GPU당 HBM은 192 → 288GB, 2027년 384GB로 커집니다"** 스트립 (c) **근거 블록** — 「KV 캐시를 담을 HBM 용량이 한계에 도달했다」(SK하이닉스 2026-07-29 실적 발표) + 오프로드는 메인라인 코드(LMCache 2024-08 → vLLM 2026-05 ✅ PR) + NAND 비트 중 eSSD 26% → 48% (d) **요구 DWPD 1~3**. 열 폭 ① 7.30 → 6.60, ② 5.50 → 6.30, ③ 5.38 → 5.04 |
 
-- **근거의 출처**: 메커니즘은 NVIDIA Dynamo KVBM의 4단 위계(G1~G4)와 CMX 플랫폼 규정 🟡, 시장 신호는 TrendForce 2026-08-18 🟡 · 서울경제 2026-07-20 🟡 · SanDisk FMS 2026 ✅ · Kioxia Investor Day 2026-06-02 🟡. 위키 `wiki/concepts/hbm-to-storage-spillover.md` 신설, 보고서 §1.2 신설
-- **표기 규율 — 대체가 아니라 스필오버**: "HBM 수요가 줄어 스토리지로 옮겨 갔다"로 읽히면 2026년 데이터(삼성 2026-Q2 HBM 점유 33%, +12%p)에 반박당한다. 도해 캡션에 "HBM 수요가 준 것이 아니라 넘친 것이 내려왔습니다"를 고정하고 발표 노트에서 한 문단으로 다시 못박았다
-- **함께 적은 반대 신호**: CMX 타깃으로 지명된 드라이브는 전부 TLC · SK하이닉스·Kioxia의 SLC 기반 AI SSD 개발 보도 · DeepSeek V4.1-Flash의 KV 풋프린트 1/8 주장. QLC를 이 계층에 넣은 공개 사례는 SanDisk FMS 2026 1건(DWPD 미공개)
-- 리드·하단 밴드·출처 줄·발표 노트를 함께 갱신. 밴드 첫 줄은 "HBM의 교훈은 수요를 고객과 함께 설계하는 것이었고, 그 수요가 지금 HBM에서 넘쳐 NAND로 내려옵니다"
+### ⚠️ 초안(v7.1)에서 고친 것 — 리서치가 잡아낸 사실 오류 2건
+
+사용자 요청의 표현은 "HBM에서 스토리지로 **이동**"이었으나, 웹 리서치 결과 **그 프레이밍은 공개 자료가 지지하지 않는다**. 사실이 지지하는 것은 "**HBM 위에 얹는 증설(additive)**"이다. 슬라이드 내용은 요청대로 넣되 표현을 사실에 맞췄다.
+
+| 초안의 표기 | 왜 틀렸나 | 고친 표기 |
+|---|---|---|
+| G1 "용량이 **고정된** 계층" | GPU당 HBM은 같은 기간 **커진다** — 96/192GB → 216/288GB(2026) → 384GB(Rubin Ultra 2027) 🟡 | "**80 → 288GB로 커졌지만**" + KV 캐시가 더 빨리 큰다는 정량 앵커(단일 사용자 128K ≈ 40GB, 사용자 수에 선형 🟡) |
+| "**NVIDIA Dynamo KVBM**의 4단 위계" | **NVIDIA가 2026-09-18 Dynamo v1.5.0에서 KVBM을 deprecate**(v1.6.0 제거 목표, ✅ 릴리스 노트 원문). 디스크 티어는 유지되나 전용 매니저는 엔진 네이티브로 흡수 | **메인라인 PR 이력**으로 교체(LMCache #52 2024-08 → #773 2025-06 → Dynamo #3510 2025-10 → vLLM #40020 2026-05, 전부 ✅) |
+| 헤드라인 근거 = TrendForce "HBM→NAND 스필오버" 🟡 | 더 강한 근거가 있다 | **SK하이닉스 본인의 진단**으로 격상 — 2026-07-29 2분기 실적 콜 "KV 캐시를 저장할 HBM 용량이 한계에 도달하고 있다" + near-GPU storage 개발 공표 🟡 |
+
+- **슬라이드에 고정한 정직성 단서**: "대체가 아니라 증설입니다" 스트립. 벤더 본인의 단어가 **"추가(additional) KV 캐시 저장소"**이고, Micron의 계층 정의는 HBM을 hot KV로 유지하며, Kioxia가 지목한 병목은 HBM이 아니라 **DRAM**이다
+- **발표 노트에 넣은 반대 신호**: Rubin CPX가 128GB GDDR7 → **168GB HBM4 재설계**(⚠️ 애널리스트 보도, NVIDIA 미확인) · DeepSeek V4.1-Flash가 KV 요구를 HBM −75%, **영속 SSD −87.5%**로 줄였다(효율 개선의 타격이 스토리지에 더 크다) · 티어링 이득 73배의 출처는 **용량비 1:8:64이지 배치 정책이 아니다**
+- **덱 사용 금지 문장**(근거 미확보, 부정 확인): "오프로드로 HBM 수요 N% 감소" · "KV 캐시의 N%가 SSD에 안착" · "AI NAND가 전체 NAND의 N%" · "NAND가 HBM보다 X배 빨리 성장". B200 HBM 용량도 180 대 192GB로 출처가 엇갈려 단일 수치로 쓰지 않는다
+- **신설 소스**: `sources/articles/qlc-v7-hbm-to-storage-shift-2026-09.md`(8절) · **신설 위키**: `wiki/concepts/hbm-to-storage-spillover.md` · 보고서 §1.2 + 부록 A A-75~A-84
 
 ## v7.0 (2026-09-23 — 교훈 하나로 통합 · 수율 상충 · 3장 압축 · 배치 힌트 신설 · 7장 시각화)
 

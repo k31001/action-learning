@@ -292,7 +292,7 @@ def v_arrow(slide, x, y, w, h, up=False, fill=BLUE):
 s = prs.slides.add_slide(BLANK)
 header(s, 1,
        "고객과 함께 수요를 설계한 기업이 이겼고, 지금 그 수요는 QLC에 1~3 DWPD를 요구합니다",
-       "HBM이 보여 준 것은 기술의 차이가 아니라 시장을 보는 눈의 차이였습니다. 그리고 그 수요는 지금 HBM에서 넘쳐 스토리지 계층으로 내려오고 있습니다.")
+       "HBM이 보여 준 것은 기술의 차이가 아니라 시장을 보는 눈의 차이였습니다. 그리고 그 수요는 지금 HBM 용량을 넘어 스토리지 계층을 새로 얹고 있습니다.")
 
 C1X, C1W = MX, 6.60
 C2X, C2W = C1X + C1W + 0.24, 6.30
@@ -369,79 +369,84 @@ for i, (d, t) in enumerate(rec):
 tb(s, ix, HN_Y + 0.98, iw, 0.24,
    [("변수는 판단을 끊지 않는 것입니다 · 다음 수요에서 같은 판단을 다시 해야 합니다", 10.0, False, GRAY)])
 
-# ===== ② 지금 · 수요가 HBM에서 스토리지로 =====
-sec(C2X, C2W, "②", "지금 · 같은 수요가 스토리지로", "HBM에서 넘친 것이 NAND로 내려온다")
+# ===== ② 지금 · HBM 위에 새 계층이 얹힌다 =====
+sec(C2X, C2W, "②", "지금 · HBM 위에 새 계층이 얹힌다", "KV 캐시가 HBM 용량을 넘어선다")
 jx, jw = C2X + 0.30, C2W - 0.60
 
 # --- A. 구매 기준의 이동 (압축 체인) ---
-tb(s, jx, TOP + 0.82, jw, 0.20, [("구매 기준은 이렇게 움직여 왔습니다", 9.5, False, GRAY_2)])
-ERA_Y = TOP + 1.04
-AW, EH2 = 0.24, 0.70
+tb(s, jx, TOP + 0.80, jw, 0.20, [("구매 기준은 이렇게 움직여 왔습니다", 9.5, False, GRAY_2)])
+ERA_Y = TOP + 1.00
+AW, EH2 = 0.24, 0.64
 ew = (jw - 2 * AW) / 3
 for i, (yrs, axis_, hot) in enumerate([("2008~12", "성능 · 용량당 가격", False),
                                        ("2012~21", "QoS · 지연 꼬리", False),
                                        ("2022~26", "밀도 · 전력 · 물량", True)]):
     ex = jx + i * (ew + AW)
     rect(s, ex, ERA_Y, ew, EH2, fill=BLUE if hot else WHITE, line=None if hot else LINE, line_w=0.75)
-    tb(s, ex + 0.08, ERA_Y + 0.06, ew - 0.16, 0.18, [(yrs, 8.75, False, BLUE_T2 if hot else GRAY_2)], align=PP_ALIGN.CENTER)
-    tb(s, ex + 0.06, ERA_Y + 0.25, ew - 0.12, 0.38, [(axis_, 10.5, True, WHITE if hot else INK)],
+    tb(s, ex + 0.08, ERA_Y + 0.04, ew - 0.16, 0.17, [(yrs, 8.5, False, BLUE_T2 if hot else GRAY_2)], align=PP_ALIGN.CENTER)
+    tb(s, ex + 0.06, ERA_Y + 0.21, ew - 0.12, 0.38, [(axis_, 10.5, True, WHITE if hot else INK)],
        align=PP_ALIGN.CENTER, spacing=1.0)
     if i < 2:
-        rect(s, ex + ew + 0.04, ERA_Y + 0.26, AW - 0.08, 0.18, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
+        rect(s, ex + ew + 0.04, ERA_Y + 0.24, AW - 0.08, 0.17, fill=BLUE_T2, shape=MSO_SHAPE.RIGHT_ARROW)
 
-# --- B. 새 수요: HBM → 스토리지 스필오버 ---
-SP_Y = ERA_Y + EH2 + 0.16
+# --- B. 새 수요: KV 캐시가 HBM을 넘어선다 ---
+SP_Y = ERA_Y + EH2 + 0.14
 tb(s, jx, SP_Y, jw, 0.22, [[("그 위에 새 수요가 올라왔습니다   ", 9.5, False, GRAY_2),
-                            ("AI 메모리 수요가 HBM 밖으로 넘칩니다", 10.5, True, BLUE)]])
-TIER_Y = SP_Y + 0.26
-TH, TG = 0.56, 0.18
+                            ("KV 캐시가 HBM 용량을 넘어섭니다", 10.5, True, BLUE)]])
+TIER_Y = SP_Y + 0.25
+TH, TG = 0.52, 0.16
 for gi, (g, nm, role, note, kind) in enumerate([
-        ("G1", "GPU HBM", "용량이 고정된 계층", "길어진 컨텍스트가 먼저 채웁니다", 0),
-        ("G2", "CPU DRAM", "노드 안팎의 확장", "용량당 단가가 벽입니다", 1),
-        ("G3", "NVMe SSD", "새로 열린 계층", "쓰기가 몰리는 첫 대용량 계층", 2)]):
+        ("G1", "GPU HBM", "80 → 288GB로 커졌지만", "단일 사용자 128K 컨텍스트가 약 40GB · 사용자 수에 비례", 0),
+        ("G2", "CPU DRAM", "첫 확장", "Kioxia — DRAM만으로는 더 못 따라간다", 1),
+        ("G3", "NVMe SSD", "새로 얹힌 계층", "쓰기가 몰리는 첫 대용량 계층", 2)]):
     ty = TIER_Y + gi * (TH + TG)
     on = kind == 2
     rect(s, jx, ty, jw, TH, fill=WHITE if on else (BLUE if kind == 0 else TINT),
          line=BLUE if on else (None if kind == 0 else LINE), line_w=1.5 if on else 0.75)
-    rect(s, jx, ty, 0.58, TH, fill=BLUE if on else (BLUE_T1 if kind == 0 else BLUE_T2))
-    tb(s, jx, ty, 0.58, TH, [(g, 11.25, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    tb(s, jx + 0.72, ty + 0.07, 1.82, 0.25, [(nm, 12.75, True, WHITE if kind == 0 else (BLUE if on else INK))])
-    tb(s, jx + 0.72, ty + 0.32, 1.82, 0.19, [(role, 8.75, False, BLUE_T2 if kind == 0 else GRAY_2)])
-    tb(s, jx + 2.62, ty + 0.04, jw - 2.76, 0.48, [(note, 9.5, False, BLUE_T2 if kind == 0 else GRAY)],
+    rect(s, jx, ty, 0.56, TH, fill=BLUE if on else (BLUE_T1 if kind == 0 else BLUE_T2))
+    tb(s, jx, ty, 0.56, TH, [(g, 11.25, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    tb(s, jx + 0.70, ty + 0.05, 1.86, 0.24, [(nm, 12, True, WHITE if kind == 0 else (BLUE if on else INK))])
+    tb(s, jx + 0.70, ty + 0.29, 1.86, 0.19, [(role, 8.5, False, BLUE_T2 if kind == 0 else GRAY_2)])
+    tb(s, jx + 2.62, ty + 0.02, jw - 2.76, 0.48, [(note, 9.0, False, BLUE_T2 if kind == 0 else GRAY)],
        anchor=MSO_ANCHOR.MIDDLE, spacing=1.04)
     if gi < 2:
         ay = ty + TH + 0.01
-        rect(s, jx + 0.21, ay, 0.16, TG - 0.02, fill=BLUE_T1, shape=MSO_SHAPE.DOWN_ARROW)
-        tb(s, jx + 0.46, ay - 0.01, jw - 0.56, TG,
+        rect(s, jx + 0.20, ay, 0.16, TG - 0.02, fill=BLUE_T1, shape=MSO_SHAPE.DOWN_ARROW)
+        tb(s, jx + 0.44, ay - 0.01, jw - 0.54, TG,
            [("넘친다" if gi == 0 else "다시 넘친다", 9.0, True, BLUE_T1)], anchor=MSO_ANCHOR.MIDDLE)
 TB_END = TIER_Y + 3 * TH + 2 * TG
-tb(s, jx, TB_END + 0.05, jw, 0.20,
-   [("NVIDIA Dynamo KVBM의 4단 위계 · HBM 수요가 준 것이 아니라 넘친 것이 내려왔습니다", 8.75, False, GRAY_2)])
+rect(s, jx, TB_END + 0.05, jw, 0.24, fill=TINT)
+tb(s, jx + 0.10, TB_END + 0.05, jw - 0.20, 0.24,
+   [[("대체가 아니라 증설입니다  ", 9.0, True, BLUE),
+     ("같은 기간 GPU당 HBM은 192 → 288GB, 2027년 384GB로 커집니다", 9.0, False, GRAY)]],
+   anchor=MSO_ANCHOR.MIDDLE)
 
-# --- C. 시장 신호 ---
-EV_Y = TB_END + 0.32
-rect(s, jx, EV_Y, jw, 0.88, fill=TINT)
-tb(s, jx + 0.18, EV_Y + 0.06, jw - 0.36, 0.24, [("「Vera Rubin의 HBM → NAND 스필오버」", 11.25, True, BLUE)])
-tb(s, jx + 0.18, EV_Y + 0.29, jw - 0.36, 0.20,
-   [("TrendForce 2026-08-18 · CMX가 TLC 현물가 반등을 견인했다고 적었습니다", 8.75, False, GRAY)])
-sw = (jw - 0.36 - 0.14) / 2
-for i, (k, v) in enumerate([("CMX NAND 소요", "2026 35EB → 2027 100EB+"),
-                            ("삼성 V-NAND 캐파", "약 60%를 CMX 대응에 배정")]):
-    sx = jx + 0.18 + i * (sw + 0.14)
-    tb(s, sx, EV_Y + 0.50, sw, 0.17, [(k, 8.5, False, GRAY_2)])
-    tb(s, sx, EV_Y + 0.65, sw, 0.20, [(v, 9.5, True, BLUE)])
+# --- C. 근거 ---
+EV_Y = TB_END + 0.39
+rect(s, jx, EV_Y, jw, 1.04, fill=WHITE, line=BLUE_T2, line_w=1.0)
+tb(s, jx + 0.16, EV_Y + 0.06, jw - 0.32, 0.24,
+   [("「KV 캐시를 담을 HBM 용량이 한계에 도달했다」", 11.25, True, BLUE)])
+tb(s, jx + 0.16, EV_Y + 0.29, jw - 0.32, 0.20,
+   [("SK하이닉스 2026-07-29 실적 발표 · 같은 자리에서 GPU 인근 NAND 개발 공표", 8.75, False, GRAY)])
+rect(s, jx + 0.16, EV_Y + 0.52, jw - 0.32, 0.012, fill=LINE)
+sw = (jw - 0.32 - 0.14) / 2
+for i, (k, v) in enumerate([("오프로드는 메인라인 코드", "LMCache 2024-08 → vLLM 2026-05"),
+                            ("NAND 비트 중 eSSD 비중", "1년 만에 26% → 48%")]):
+    sx = jx + 0.16 + i * (sw + 0.14)
+    tb(s, sx, EV_Y + 0.58, sw, 0.17, [(k, 8.5, False, GRAY_2)])
+    tb(s, sx, EV_Y + 0.74, sw, 0.24, [(v, 9.5, True, BLUE)], spacing=1.0)
 
 # --- D. 그래서 SSD에 오는 요구 ---
-KV_Y = EV_Y + 1.00
+KV_Y = EV_Y + 1.16
 KH = BOT - 0.02 - KV_Y
 rect(s, jx, KV_Y, jw, KH, fill=WHITE, line=BLUE, line_w=1.25)
-dwd = 1.74
-tb(s, jx + 0.20, KV_Y + 0.08, jw - dwd - 0.44, 0.28, [("그래서 SSD에 오는 요구는 내구성입니다", 12.75, True, BLUE)])
-tb(s, jx + 0.20, KV_Y + 0.38, jw - dwd - 0.44, 0.38,
-   [("추론 수요 CAGR 86% · 학습 16% · 이 계층 제품으로 Kioxia는 CM9 TLC 3 DWPD를 지목했습니다", 9.0, False, GRAY)],
+dwd = 1.66
+tb(s, jx + 0.18, KV_Y + 0.07, jw - dwd - 0.40, 0.27, [("그래서 SSD에 오는 요구는 내구성입니다", 12.75, True, BLUE)])
+tb(s, jx + 0.18, KV_Y + 0.36, jw - dwd - 0.40, 0.38,
+   [("추론 수요 CAGR 86% · 삼성은 V-NAND 캐파의 약 60%를 CMX 대응에 배정했습니다", 9.0, False, GRAY)],
    spacing=1.04)
-rect(s, jx + jw - dwd - 0.16, KV_Y + 0.14, dwd, KH - 0.28, fill=TINT)
-tb(s, jx + jw - dwd - 0.16, KV_Y + 0.14, dwd, KH - 0.28,
+rect(s, jx + jw - dwd - 0.14, KV_Y + 0.12, dwd, KH - 0.24, fill=TINT)
+tb(s, jx + jw - dwd - 0.14, KV_Y + 0.12, dwd, KH - 0.24,
    [("요구 DWPD", 9.5, False, GRAY_2), ("1 ~ 3", 21, True, BLUE)],
    align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
 
@@ -476,20 +481,21 @@ tb(s, kx + 0.22, Q_Y + 0.14, kw - 0.44, BOT - 0.52 - Q_Y,
     ("이 간극을 메우는 것이 우리가 풀 문제입니다", 11.25, False, BLUE_T2)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.12)
 
 band(s, 9.42, 0.80, "문제",
-     "HBM의 교훈은 수요를 고객과 함께 설계하는 것이었고, 그 수요가 지금 HBM에서 넘쳐 NAND로 내려옵니다.\n"
+     "HBM의 교훈은 수요를 고객과 함께 설계하는 것이었고, 그 수요가 지금 HBM 위에 새 스토리지 계층을 얹고 있습니다.\n"
      "고객은 QLC의 밀도와 원가로 TLC의 1~3 DWPD를 요구하며, 현 정격 0.6과는 2~5배 거리가 있습니다",
      main_size=16.5, next_step=2)
-footer(s, "출처: HBM 연표 각사 발표 · JEDEC JESD270-4, CNBC 2024-11-08(2019년 판단 ⚠️ 단일 출처), TrendForce(점유율 · 2026-08-18 HBM→NAND 스필오버), NVIDIA Dynamo KVBM·CMX, 서울경제 2026-07-20(CMX 🟡), Kioxia GTC 2026", 1)
+footer(s, "출처: HBM 연표 각사 발표 · JEDEC JESD270-4, CNBC 2024-11-08(⚠️ 단일 출처), 서울경제 2026-07-29(SK하이닉스 실적 콜 🟡)·2026-07-20(CMX 🟡), NVIDIA 개발자 블로그(KV 40GB 🟡), GitHub PR(LMCache·vLLM ✅), Counterpoint Q2 2026, TrendForce(HBM 용량)", 1)
 notes(s, "1장은 문제 제기입니다. 결론은 내리지 않고, 고용량 QLC에서 DWPD를 높일 해법이 필요한 상황임을 세웁니다. 왼쪽이 교훈, 가운데가 지금 수요의 이동, 오른쪽이 문제입니다. "
       "왼쪽 교훈입니다. 두 레인은 같은 기술을 가진 두 회사의 다른 판단입니다. SK하이닉스는 2013년 AMD와 HBM을 공동 개발했고, 2021년 10월 JEDEC 표준보다 먼저 HBM3 개발을 마쳐 2022년 6월 NVIDIA에 업계 최초로 공급했으며, 2023년 한 해 동안 유일한 양산사였습니다. 그 결과가 2025년 6월 DRAM 매출 1위로, 1992년 이후 처음 있는 역전이었습니다. 2026년 6월에는 NVIDIA와 다년 기술 파트너십을 맺고 Vera Rubin용 메모리를 공동 개발합니다. "
       "아래 레인이 삼성입니다. 중요한 것은 기술이 없지 않았다는 점입니다. 업계 최초 HBM2E는 2019년 3월 삼성이 발표했습니다. 같은 해에 HBM 시장 성장률이 과대평가됐다는 판단으로 전담 조직이 후순위가 됐고, 2024년 4월에야 전담 팀이 재구성되어 5년의 공백이 생겼으며, 12단 HBM3E는 2025년 9월에야 NVIDIA 퀄을 통과해 Blackwell 사이클을 놓쳤습니다. 2019년 조직 판단은 CNBC 보도 계열의 단일 출처이므로 그 점을 밝혀 둡니다. 그리고 그 해 삼성은 감산도 CapEx 삭감도 하지 않았습니다. 돈이 아니라 우선순위의 문제였습니다. "
       "교훈을 한 줄로 쓰면 기술이 없어서가 아니라 시장을 작게 봤기 때문입니다. 그리고 구속력 있는 규격은 표준이 아니라 고객의 사양이었습니다. JEDEC HBM4 표준은 최대 8Gbps인데 NVIDIA는 10에서 13Gbps를 요구했고, 승부는 그 위에서 갈렸습니다. 삼성도 표준 제정 9개사 중 하나였으므로 테이블에 앉았는지가 아니라 고객 사양에 맞췄는지가 변수였습니다. "
       "다만 이 교훈을 영구적 판정으로 쓰면 안 됩니다. 삼성은 2025년 4분기 DRAM 1위를 탈환했고, 2026년 2월 업계 최초로 상용 HBM4를 출하했으며, 2026년 2분기 HBM 점유율은 33%로 직전 분기 대비 12%포인트 올랐습니다. 되돌릴 수 있다는 것도 같은 기록이 보여 줍니다. 변수는 판단을 끊지 않는 것이고, 다음 수요에서 같은 판단을 다시 해야 합니다. "
       "가운데가 지금의 수요입니다. 먼저 구매 기준입니다. 2008년에서 2012년은 성능과 용량당 가격, 2012년에서 2021년은 QoS와 지연 꼬리였습니다. OCP 사양 v2.0이 2021년 7월 지연 모니터를 의무화하면서 제도화됐습니다. 2022년 이후는 용량 밀도와 전력 효율, 물량 확보가 상위 기준입니다. "
-      "그 위에 새 수요가 올라왔습니다. 여기가 이번에 추가한 부분입니다. AI 메모리 수요가 HBM 밖으로 넘치고 있습니다. 추론에서 컨텍스트가 길어지고 동시 사용자가 늘면 KV 캐시가 GPU의 HBM을 먼저 채웁니다. HBM은 가속기당 용량이 고정된 계층이라 더 담을 수 없고, 넘친 것은 CPU DRAM으로 내려옵니다. DRAM도 용량당 단가가 벽이어서 다시 넘치고, 그 아래에서 받는 것이 NVMe SSD입니다. 이것은 제 해석이 아니라 NVIDIA Dynamo의 KV 블록 매니저가 실제로 쓰는 4단 위계입니다. G1이 GPU HBM, G2가 CPU DRAM, G3가 로컬 또는 풀 NVMe SSD, G4가 원격 스토리지입니다. NVIDIA는 여기서 더 나아가 CMX로 이 계층을 컨텍스트 메모리 스토리지라는 플랫폼으로 규정했습니다. "
-      "시장에서도 같은 말이 나옵니다. TrendForce는 2026년 8월 18일에 Vera Rubin의 HBM에서 NAND로의 스필오버라고 적었고, CMX가 6월 저점 대비 TLC 현물가 반등을 견인했다고 했습니다. 규모로는 CMX의 NAND 소요가 2026년 35엑사바이트에서 2027년 100엑사바이트 이상으로 추정되고, 이것은 SanDisk가 따로 발표한 KV 캐시 수요 2027년 75에서 100엑사바이트와 독립적인 경로인데 같은 자리에서 만납니다. 삼성은 이미 V낸드 캐파의 약 60%를 CMX 대응에 배정한 것으로 보도됐습니다. 이 두 숫자는 보도와 분석가 추정 계열이므로 등급을 낮춰 읽어야 합니다. "
-      "한 가지는 분명히 해 두겠습니다. HBM 수요가 줄어서 스토리지로 옮겨 간 것이 아닙니다. HBM은 계속 늘고 있고, 그 위에서 넘친 몫이 새로 스토리지 계층을 열었다는 뜻입니다. 대체가 아니라 스필오버입니다. "
-      "그래서 SSD에 오는 요구가 내구성입니다. 추론 수요는 연평균 86%로 학습의 16%보다 훨씬 빠르게 크고, 추론 캐시 계층은 쓰기가 몰리는 첫 대용량 계층입니다. Kioxia는 이 계층 제품으로 CM9 TLC 3 DWPD를 지목했습니다. 요구는 1에서 3 DWPD입니다. "
+      "그 위에 새 수요가 올라왔습니다. 여기가 이번에 추가한 부분입니다. KV 캐시가 HBM 용량을 넘어섭니다. 숫자로 보면 이렇습니다. NVIDIA 개발자 블로그 기준으로 Llama 3 70B에서 단일 사용자의 128K 컨텍스트 KV 캐시가 약 40기가바이트이고, 이것이 사용자 수에 선형으로 비례합니다. H100의 HBM이 80기가바이트니까 사용자 한 명이 절반을 씁니다. 그래서 넘친 것이 CPU DRAM으로 내려오는데, Kioxia는 DRAM만으로는 더 못 따라간다고 밝혔습니다. 다시 넘친 것을 받는 것이 NVMe SSD이고, 이 계층은 쓰기가 몰리는 첫 대용량 계층입니다. "
+      "근거는 세 갈래입니다. 첫째, 진단을 한 주체가 우리가 아닙니다. HBM 1위 업체인 SK하이닉스가 2026년 7월 29일 2분기 실적 발표에서 KV 캐시를 담을 HBM 용량이 한계에 도달하고 있다고 밝혔고, 같은 자리에서 GPU 인근 NAND 개발을 공표했습니다. 둘째, 오프로드는 슬라이드 위의 개념이 아니라 메인라인 코드입니다. LMCache 디스크 캐시가 2024년 8월, GPUDirect Storage 백엔드가 2025년 6월, vLLM 다계층 오프로딩이 2026년 5월에 머지됐고 전부 PR로 확인됩니다. 셋째, 비트의 무게중심이 이미 움직였습니다. 전 세계 NAND 비트 출하에서 엔터프라이즈 SSD 비중이 1년 만에 26%에서 48%로 올라갔습니다. "
+      "여기서 반드시 정정하고 갈 것이 있습니다. 이것은 HBM에서 스토리지로의 이동이 아니라 HBM 위에 얹는 증설입니다. 근거가 셋입니다. 하나, SK하이닉스 본인의 단어가 대체가 아니라 추가 KV 캐시 저장소입니다. 둘, 같은 기간 GPU당 HBM 용량은 오히려 커집니다. 192기가바이트에서 288기가바이트를 거쳐 2027년 384기가바이트입니다. 셋, Micron의 계층 정의는 HBM을 핫 KV 캐시로 유지한 채 SSD를 영속 KV로 추가하는 구조이고, Kioxia가 못 따라간다고 지목한 것도 HBM이 아니라 DRAM이었습니다. 질문이 나오면 이렇게 답하시면 됩니다. HBM 수요가 줄어서 우리에게 오는 것이 아니라, HBM으로 감당이 안 되는 몫이 새 계층을 열었다는 뜻입니다. "
+      "반대 신호도 알고 있어야 합니다. 컨텍스트 전용 가속기인 Rubin CPX는 값싼 GDDR7로 발표됐다가 168기가바이트 HBM4로 재설계됐다는 보도가 있습니다. 애널리스트 보도이고 NVIDIA 공식 확인은 없습니다. 그리고 모델 측 효율 개선은 수요 총량을 깎는데 그 타격이 HBM보다 스토리지에 더 큽니다. DeepSeek V4.1-Flash는 KV 캐시의 HBM 요구를 75%, 영속 SSD 요구를 87.5% 줄였습니다. 이 계층이 커진다는 전망은 이 두 가지에 노출되어 있습니다. "
+      "그래서 SSD에 오는 요구가 내구성입니다. 추론 수요는 연평균 86%로 학습의 16%보다 훨씬 빠르게 큽니다. 삼성도 이미 V낸드 캐파의 약 60%를 CMX 대응에 배정한 것으로 보도됐습니다. 요구는 1에서 3 DWPD입니다. "
       "오른쪽이 문제입니다. 요구 1에서 3 DWPD는 TLC로는 이미 충족됩니다. 그런데 고객은 QLC를 원합니다. 용량 밀도가 245TB급으로 네 배이고 TB당 가격이 20에서 30% 싸기 때문입니다. 반면 QLC의 정격은 0.6으로 요구와 2배에서 5배 거리가 있습니다. 고객은 QLC의 밀도와 원가로 TLC의 내구성을 요구하는 셈이고, 이 간극을 메우는 것이 우리가 풀 문제입니다. 고용량화는 두 축의 문제를 낳습니다. 다이 수가 만드는 신뢰성 축이 2장, DWPD 격차가 만드는 내구성 축이 3장입니다.")
 
 # ================================================================ S2. 신뢰성 축 — SSD 내부 해법 (v6.0: ppm 요구 곡선 · 보호 기법별 완화 · 내부 해법을 도해로)

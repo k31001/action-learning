@@ -18,21 +18,22 @@ export const UPDATES = [
   {
     date: '2026-09-23',
     type: 'build',
-    version: 'v2.46.43',
-    title: 'QLC 덱 v7.1 — 1장에 "AI 메모리 수요가 HBM에서 스토리지로" 추가',
+    version: 'v2.46.44',
+    title: 'QLC 덱 v7.2 — 1장에 "KV 캐시가 HBM 용량을 넘어선다" 추가 (이동이 아니라 증설)',
     summary:
-      '1장 ②구획을 "구매 기준의 이동"에서 "같은 수요가 스토리지로"로 재설계했다. G1 GPU HBM → G2 CPU DRAM → G3 NVMe SSD 스필 도해와 시장 신호(TrendForce의 "Vera Rubin의 HBM→NAND 스필오버", CMX NAND 35EB→100EB+)를 넣고, 대체가 아니라 스필오버라는 단서를 같은 화면에 고정했다.',
+      '1장 ②구획을 "구매 기준의 이동"에서 "HBM 위에 새 계층이 얹힌다"로 재설계했다. 초안은 "HBM에서 스토리지로 이동"이었으나 리서치에서 그 프레이밍이 지지되지 않음을 확인하고 "증설"로 정정했다 — 벤더 본인의 단어가 "추가(additional)"이고 같은 기간 GPU당 HBM은 오히려 커진다.',
     tags: ['QLC', 'eSSD', 'HBM', 'KV 캐시', 'CMX', '발표자료'],
     items: [
-      { label: '메커니즘 도해', detail: 'NVIDIA Dynamo KVBM이 실제 구현한 4단 위계를 3단으로 그렸다. G1 GPU HBM(용량 고정, 길어진 컨텍스트가 먼저 채움) → 넘친다 → G2 CPU DRAM(용량당 단가가 벽) → 다시 넘친다 → G3 NVMe SSD(새로 열린 계층, 쓰기가 몰리는 첫 대용량 계층)' },
-      { label: '시장 신호', detail: 'TrendForce 2026-08-18 「Vera Rubin의 HBM → NAND 스필오버」(CMX가 TLC 현물가 반등 견인) · CMX NAND 소요 2026 35EB → 2027 100EB+ · 삼성 V-NAND 캐파 약 60%를 CMX 대응에 배정' },
-      { label: '정직성 단서', detail: '"대체가 아니라 스필오버" — HBM 수요는 줄지 않았고(삼성 2026-Q2 점유 33%, +12%p) 이동한 것은 증분이다. 반대 신호(CMX 타깃은 전부 TLC · SLC 기반 AI SSD 개발 · KV 풋프린트 축소)도 함께 기록' },
-      { label: '레이아웃', detail: '구매 기준 3국면을 세로 박스에서 가로 압축 체인으로(3.18in → 0.70in). 열 폭 ① 7.30→6.60, ② 5.50→6.30, ③ 5.38→5.04' },
-      { label: '문서', detail: 'wiki/concepts/hbm-to-storage-spillover.md 신설, 보고서 §1.2 신설(기존 1.2~1.4는 1.3~1.5로 재번호) + 부록 A A-75~A-80, 지식 그래프 재생성(노드 114)' },
+      { label: '메커니즘 도해', detail: 'G1 GPU HBM(80 → 288GB로 커졌지만 단일 사용자 128K 컨텍스트가 약 40GB·사용자 수에 비례) → 넘친다 → G2 CPU DRAM(Kioxia: DRAM만으로는 더 못 따라간다) → 다시 넘친다 → G3 NVMe SSD(새로 얹힌 계층, 쓰기가 몰리는 첫 대용량 계층)' },
+      { label: '헤드라인 근거', detail: 'HBM 1위 업체 본인의 진단 — SK하이닉스 2026-07-29 2분기 실적 콜 「KV 캐시를 저장할 HBM 용량이 한계에 도달하고 있다」 + 같은 자리에서 GPU 인근 NAND 개발 공표' },
+      { label: '실재 증거', detail: '오프로드는 메인라인 코드다 — LMCache 디스크 캐시 2024-08(PR #52) → GDS 백엔드 2025-06(#773) → Dynamo GPU↔디스크 직결 2025-10(#3510) → vLLM 다계층 2026-05(#40020), 전부 GitHub PR 확인. NAND 비트 출하 중 eSSD 비중 1년 만에 26% → 48%' },
+      { label: '사실 오류 2건 정정', detail: '(1) "용량이 고정된 계층"은 틀렸다 — GPU당 HBM은 192 → 288 → 384GB로 커진다. (2) "NVIDIA Dynamo KVBM의 4단 위계"를 출처로 썼으나 NVIDIA가 2026-09-18 v1.5.0에서 KVBM을 deprecate했다(v1.6.0 제거 목표). 메인라인 PR 이력으로 교체' },
+      { label: '정직성 단서', detail: '"대체가 아니라 증설" 스트립을 슬라이드에 고정. 반대 신호는 발표 노트에 — Rubin CPX가 GDDR7 → HBM4 회귀(⚠️ 애널리스트), DeepSeek V4.1-Flash가 KV 요구를 HBM −75%·영속 SSD −87.5%로 축소, 티어링 이득 73배의 출처는 용량비 1:8:64이지 배치 정책이 아님' },
+      { label: '문서', detail: '리서치 원장 sources/articles/qlc-v7-hbm-to-storage-shift-2026-09.md(8절) 신설, wiki/concepts/hbm-to-storage-spillover.md 재작성, 보고서 v4.2 §1.2 + 부록 A A-75~A-84(A-84는 덱 사용 금지 문장 4종)' },
     ],
     links: [
-      { label: '위키 — HBM → 스토리지 스필오버', href: 'wiki/concepts/hbm-to-storage-spillover.md' },
-      { label: '보고서 v4.1', href: 'outputs/report/qlc-ssd-strategy-report.md' },
+      { label: '위키 — KV 캐시가 HBM 용량을 넘어선다', href: 'wiki/concepts/hbm-to-storage-spillover.md' },
+      { label: '보고서 v4.2', href: 'outputs/report/qlc-ssd-strategy-report.md' },
     ],
   },
   // ── 2026-09-23 (QLC 덱 빌드) ─────────────────────────────────────────────────
