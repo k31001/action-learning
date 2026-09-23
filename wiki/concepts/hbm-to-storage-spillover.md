@@ -6,7 +6,7 @@ sources: [sources/articles/qlc-v7-hbm-to-storage-shift-2026-09.md, sources/artic
 
 # KV 캐시가 HBM 용량을 넘어선다 — 이동이 아니라 증설
 
-QLC eSSD 덱 1장 ②구획이 서는 자리다. [codesign-demand-lesson.md](codesign-demand-lesson.md)가 "고객과 함께 수요를 설계한 쪽이 이겼다"를 세웠다면, 이 페이지는 **그 수요가 지금 어디에 있는가**에 답한다.
+QLC eSSD 덱 1장 ②구획이 서는 자리다. [hbm3-designin-lesson.md](hbm3-designin-lesson.md)가 "고객과 함께 수요를 설계한 쪽이 이겼다"를 세웠다면, 이 페이지는 **그 수요가 지금 어디에 있는가**에 답한다.
 
 > **2026-09-23 정정 ①**: 이 페이지는 처음 "AI 메모리 수요가 HBM에서 스토리지로 **이동**한다"로 썼으나, 같은 날 리서치에서 그 프레이밍이 **지지되지 않음**을 확인하고 **"증설(additive)"**로 바꿨다. 근거는 §4. 파일명은 링크 안정성을 위해 유지한다.
 >
@@ -75,7 +75,7 @@ QLC eSSD 덱 1장 ②구획이 서는 자리다. [codesign-demand-lesson.md](cod
 ## 7. 연결
 
 - 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **1장 ②구획**(v7.2) — 구매 기준 체인 · G1~G3 도해 · "대체가 아니라 증설" 스트립 · SK하이닉스 진단 · 요구 DWPD
-- 앞: [codesign-demand-lesson.md](codesign-demand-lesson.md) (교훈 — 수요를 함께 설계하라)
+- 앞: [hbm3-designin-lesson.md](hbm3-designin-lesson.md) (교훈 — 수요를 함께 설계하라)
 - 뒤: [essd-purchase-criteria-shift.md](essd-purchase-criteria-shift.md) (그 수요가 SSD 구매 기준으로 번역된 모습)
 - 요구의 크기: [qlc-ssd-market.md](qlc-ssd-market.md) §4 · [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
 - 스택에서 우리 자리: [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)

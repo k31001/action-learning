@@ -291,8 +291,8 @@ def v_arrow(slide, x, y, w, h, up=False, fill=BLUE):
 # ================================================================ S1. 문제 제기 (v7.0: 교훈 하나 + 구매 기준 이동 + QLC 문제, 시각 중심)
 s = prs.slides.add_slide(BLANK)
 header(s, 1,
-       "표준 충족이 아니라 고객 사양이 design-in을 갈랐고, 그 사양에 지금 내구성이 더해지고 있습니다",
-       "표준을 만족하는 기술 보유만으로는 design-in이 결정되지 않았습니다. 같은 전환이 지금 SSD에서 일어나 고객 요구에 내구성이 더해지고 있습니다.")
+       "규격이 아니라 양산 시점이 소켓을 갈랐고, 지금 그 고객 일정에 내구성이 요구로 더해집니다",
+       "2022년 HBM3에서 두 회사의 공표 스펙은 같았습니다. 갈린 것은 양산 시점이었고, 같은 구조가 지금 SSD에서 반복됩니다.")
 
 C1X, C1W = MX, 6.60
 C2X, C2W = C1X + C1W + 0.24, 6.30
@@ -307,73 +307,86 @@ def sec(x, w, no, title, sub, hot=False):
     tb(s, x + 0.24, TOP + 0.46, w - 0.48, 0.24, [(sub, 10.0, False, GRAY_2)])
 
 
-# ===== ① 교훈 · design-in을 가른 것 =====
-sec(C1X, C1W, "①", "교훈 · HBM이 남긴 것", "표준 충족과 design-in은 다른 선이었다")
+# ===== ① 교훈 · HBM3가 남긴 것 (2021~2023 창 안 사실만) =====
+sec(C1X, C1W, "①", "교훈 · HBM3가 남긴 것", "갈린 것은 규격이 아니라 양산 시점이었다")
 ix, iw = C1X + 0.30, C1W - 0.60
 
-tb(s, ix, TOP + 0.82, iw, 0.22, [("같은 세대에서 두 개의 선이 있었습니다", 10.0, False, GRAY_2)])
+# --- 스펙은 같았다 ---
+SP0 = TOP + 0.80
+rect(s, ix, SP0, iw, 0.52, fill=TINT)
+tb(s, ix + 0.18, SP0 + 0.05, iw - 0.36, 0.22, [("두 회사의 HBM3 공표 스펙은 같았습니다", 10.5, True, BLUE)])
+tb(s, ix + 0.18, SP0 + 0.26, iw - 0.36, 0.22, [("6.4 Gbps/pin · 819 GB/s · 8단 16GB — 2022년에 규격 격차는 없었습니다", 9.5, False, GRAY)])
 
-# --- 표준선 vs 고객 요구선 ---
-BAR_Y = TOP + 1.12
-LBL_W2, BAR_H = 2.06, 0.46
-TRK = iw - LBL_W2 - 0.60
-bx = ix + LBL_W2
+# --- 타임라인 ---
+TLY0 = SP0 + 0.72
+TL0, TL1 = ix + 1.16, ix + iw - 0.16
+Y0, Y1 = 2021.75, 2023.95
 
 
-def gx(v):
-    return bx + TRK * v / 13.0
+def tx(y):
+    return TL0 + (TL1 - TL0) * (y - Y0) / (Y1 - Y0)
 
 
-rect(s, ix, BAR_Y, LBL_W2 - 0.10, BAR_H, fill=WHITE)
-tb(s, ix, BAR_Y, LBL_W2 - 0.10, BAR_H, [("고객이 요구한 사양", 10.5, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-rect(s, gx(0), BAR_Y + 0.10, gx(10) - gx(0), BAR_H - 0.20, fill=TINT)
-rect(s, gx(10), BAR_Y, gx(13) - gx(10), BAR_H, fill=BLUE)
-tb(s, gx(10), BAR_Y, gx(13) - gx(10), BAR_H, [("10 ~ 13", 11.25, True, WHITE)],
-   align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-tb(s, gx(13) + 0.06, BAR_Y, 0.60, BAR_H, [("Gbps", 9.0, False, GRAY_2)], anchor=MSO_ANCHOR.MIDDLE)
+LN_A, LN_B = TLY0 + 0.62, TLY0 + 1.46
+VL_T, VL_B = TLY0 + 0.34, LN_B + 0.06
 
-BAR2_Y = BAR_Y + BAR_H + 0.34
-rect(s, ix, BAR2_Y, LBL_W2 - 0.10, BAR_H, fill=WHITE)
-tb(s, ix, BAR2_Y, LBL_W2 - 0.10, BAR_H, [("JEDEC HBM4 표준", 10.5, True, GRAY)], anchor=MSO_ANCHOR.MIDDLE)
-rect(s, gx(0), BAR2_Y, gx(8) - gx(0), BAR_H, fill=GRAY_2)
-tb(s, gx(0), BAR2_Y, gx(8) - gx(0), BAR_H, [("최대 8", 11.25, True, WHITE)],
-   align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-tb(s, gx(8) + 0.06, BAR2_Y, 0.60, BAR_H, [("Gbps", 9.0, False, GRAY_2)], anchor=MSO_ANCHOR.MIDDLE)
+# 기준선 두 개 — 표준(회색) / 고객(파랑 강조)
+rect(s, tx(2022.62) - 0.05, VL_T, 0.10, VL_B - VL_T, fill=BLUE_T2)
+rect(s, tx(2022.08) - 0.007, VL_T, 0.014, VL_B - VL_T, fill=GRAY_2)
+tb(s, tx(2022.08) - 1.00, TLY0, 2.00, 0.32,
+   [("JEDEC 표준", 9.0, True, GRAY), ("2022-01", 8.5, False, GRAY_2)], align=PP_ALIGN.CENTER, spacing=1.0)
+tb(s, tx(2022.62) - 0.86, TLY0, 2.20, 0.32,
+   [("고객 일정 · H100 출하", 9.5, True, BLUE), ("2022 Q3", 8.5, False, BLUE_T1)], align=PP_ALIGN.CENTER, spacing=1.0)
 
-# 격차 구간 — 두 막대를 잇는 세로선 + 아래 라벨
-for v in (8, 10):
-    rect(s, gx(v) - 0.007, BAR_Y, 0.014, BAR2_Y + BAR_H - BAR_Y, fill=BLUE_T1)
-GAPL_Y = BAR2_Y + BAR_H + 0.08
-rect(s, gx(8), GAPL_Y, gx(10) - gx(8), 0.05, fill=BLUE_T1)
-tb(s, ix, GAPL_Y + 0.10, iw, 0.24,
-   [[("표준을 만족해도 닿지 않는 구간", 10.0, True, BLUE_T1),
-     ("   design-in은 표준선이 아니라 고객 요구선에서 갈렸습니다", 10.0, False, GRAY)]])
+for ly, who, col, strong in [(LN_A, "SK하이닉스", BLUE, True), (LN_B, "삼성", GRAY_2, False)]:
+    rect(s, TL0, ly, TL1 - TL0, 0.03 if strong else 0.025, fill=col)
+    tb(s, ix, ly - 0.14, 1.06, 0.28, [(who, 10.5, True, col)], anchor=MSO_ANCHOR.MIDDLE)
 
-# --- 기록 카드 3 ---
-FC_Y = GAPL_Y + 0.52
-tb(s, ix, FC_Y, iw, 0.22, [("공개 기록", 10.0, True, BLUE)])
-facts = [("2019-03", "삼성", "업계 최초 HBM2E 발표", "기술은 확보돼 있었습니다"),
-         ("2021-10", "SK하이닉스", "표준 제정 전 HBM3 완료", "2022-06 NVIDIA 최초 공급"),
-         ("2026-02", "삼성", "업계 최초 상용 HBM4 출하", "제품 개발은 이어졌습니다")]
-fw = (iw - 2 * 0.14) / 3
-for i, (d, who, what, note) in enumerate(facts):
-    fx = ix + i * (fw + 0.14)
-    rect(s, fx, FC_Y + 0.26, fw, 1.40, fill=WHITE, line=LINE, line_w=0.75)
-    rect(s, fx, FC_Y + 0.26, fw, 0.04, fill=BLUE_T2)
-    tb(s, fx + 0.12, FC_Y + 0.34, fw - 0.24, 0.20, [[(d + "  ", 9.5, True, BLUE), (who, 9.5, False, GRAY_2)]])
-    tb(s, fx + 0.12, FC_Y + 0.56, fw - 0.24, 0.48, [(what, 10.5, True, INK)], spacing=1.04)
-    tb(s, fx + 0.12, FC_Y + 1.06, fw - 0.24, 0.40, [(note, 9.0, False, GRAY)], spacing=1.02)
+# 삼성 공백 구간
+rect(s, tx(2022.44), LN_B - 0.09, tx(2023.87) - tx(2022.44), 0.21, fill=TINT)
+tb(s, tx(2022.44), LN_B - 0.09, tx(2023.87) - tx(2022.44), 0.21,
+   [("약 5개 분기", 8.75, True, GRAY)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+
+
+def ev(x, y, d, t, col, fill_on):
+    rect(s, x - 0.085, y - 0.07, 0.17, 0.17, fill=col if fill_on else WHITE,
+         line=None if fill_on else GRAY_2, line_w=1.25, shape=MSO_SHAPE.OVAL)
+
+
+ev(tx(2021.75), LN_A, "", "", BLUE, True)
+ev(tx(2022.44), LN_A, "", "", BLUE, True)
+ev(tx(2021.75), LN_B, "", "", GRAY_2, False)
+ev(tx(2023.87), LN_B, "", "", GRAY_2, False)
+
+tb(s, tx(2021.75) - 0.30, LN_A + 0.14, 1.70, 0.42,
+   [("2021-10  개발 완료", 9.0, True, INK), ("표준보다 3개월 앞섬", 8.75, False, GRAY)], spacing=1.02)
+tb(s, tx(2022.44) - 0.10, LN_A + 0.14, 2.30, 0.42,
+   [("2022-06  양산 · NVIDIA 공급", 9.0, True, BLUE), ("퀄 통과 후 양산", 8.75, False, GRAY)], spacing=1.02)
+tb(s, tx(2021.75) - 0.30, LN_B + 0.16, 1.90, 0.42,
+   [("2021-10  로드맵 「2022 Q2」", 9.0, True, INK), ("양산 공표는 확보되지 않음", 8.75, False, GRAY)], spacing=1.02)
+tb(s, tx(2023.87) - 1.34, LN_B + 0.16, 1.60, 0.42,
+   [("2023 Q4  공급망 진입", 9.0, True, INK), ("1Znm HBM3 · 소량", 8.75, False, GRAY)], align=PP_ALIGN.RIGHT, spacing=1.02)
+
+AX_Y = LN_B + 0.66
+for yy, lab in [(2021.75, "2021"), (2022.5, "2022"), (2023.5, "2023")]:
+    tb(s, tx(yy) - 0.40, AX_Y, 0.80, 0.20, [(lab, 9.0, False, GRAY_2)], align=PP_ALIGN.CENTER)
 
 # --- 교훈 ---
-LS_Y = FC_Y + 1.80
-rect(s, ix, LS_Y, iw, 1.02, fill=BLUE)
-tb(s, ix + 0.24, LS_Y + 0.10, iw - 0.48, 0.52,
-   [("표준을 만족하는 기술을 가진 것만으로는 부족했습니다", 14.25, True, WHITE)], spacing=1.04)
-tb(s, ix + 0.24, LS_Y + 0.60, iw - 0.48, 0.34,
-   [("시장 전환 시점에 고객이 요구하는 사양을 먼저 맞춘 쪽이 design-in을 가져갔습니다", 11.25, False, BLUE_T2)],
-   spacing=1.04)
-tb(s, ix, LS_Y + 1.10, iw, 0.40,
-   [("전략적 우선순위가 약화된 구간에서 격차가 생겼습니다 · 기술 보유 여부의 문제가 아니었습니다", 9.5, False, GRAY_2)],
+LS_Y = AX_Y + 0.34
+rect(s, ix, LS_Y, iw, 1.14, fill=BLUE)
+tb(s, ix + 0.24, LS_Y + 0.12, iw - 0.48, 0.56,
+   [("규격이 아니라 그 규격을 언제 물량으로 만들었는가가 소켓을 갈랐습니다", 14.25, True, WHITE)], spacing=1.04)
+tb(s, ix + 0.24, LS_Y + 0.70, iw - 0.48, 0.34,
+   [("구속력 있는 일정은 표준이 아니라 고객의 제품 출시 일정이었습니다", 11.25, False, BLUE_T2)], spacing=1.04)
+tb(s, ix, LS_Y + 1.22, iw, 0.42,
+   [("2022년 삼성의 HBM 점유율은 40%였습니다 · 비어 있던 것은 사업이 아니라 HBM3 한 세대의 신규 소켓입니다", 9.0, False, GRAY_2)],
+   spacing=1.02)
+MR_Y = LS_Y + 1.70
+rect(s, ix, MR_Y, iw, BOT - 0.06 - MR_Y, fill=WHITE, line=LINE, line_w=0.75)
+tb(s, ix + 0.16, MR_Y + 0.07, iw - 0.32, 0.22,
+   [[("그 시간차의 원인으로 업계가 지목하는 것", 9.5, True, GRAY), ("   SK하이닉스의 MR-MUF 패키징", 9.5, True, BLUE)]])
+tb(s, ix + 0.16, MR_Y + 0.29, iw - 0.32, 0.40,
+   [("다만 이는 2023년 이후의 사후 해석이고, 2022년 당시의 1차 근거와 벤더가 확인한 수율은 공개된 바 없습니다", 8.75, False, GRAY_2)],
    spacing=1.02)
 
 # ===== ② 지금 · 같은 전환이 SSD에서 =====
@@ -478,10 +491,10 @@ tb(s, kx + 0.22, Q_Y + 0.48, kw - 0.44, BOT - 0.70 - Q_Y,
     ("확보할 수 있는가?", 14.25, True, WHITE)], anchor=MSO_ANCHOR.MIDDLE, spacing=1.18)
 
 band(s, 9.42, 0.80, "문제",
-     "HBM의 교훈은 표준 충족이 아니라 고객 요구 사양을 먼저 맞추는 것이 design-in을 가른다는 것이었습니다.\n"
-     "같은 전환이 SSD에서 일어나 내구성이 요구로 더해졌고, 고용량 QLC로 그 요구를 만족할 수 있는가가 문제입니다",
+     "HBM3의 교훈은 규격이 아니라 고객 일정 안의 양산이 소켓을 갈랐다는 것입니다.\n"
+     "같은 구조가 SSD에서 반복되며 내구성이 요구로 더해졌고, 고용량 QLC로 그 요구를 만족할 수 있는가가 문제입니다",
      main_size=16.5, next_step=2)
-footer(s, "출처: JEDEC JESD270-4 · NVIDIA 요구 10~13Gbps(업계 보도 🟡), 서울경제 2026-07-29(SK하이닉스 실적 콜 🟡), NVIDIA 개발자 블로그(KV 40GB 🟡), GitHub PR(LMCache·vLLM ✅), Counterpoint Q2 2026, Gartner 2026-08-10 ✅, Kioxia IR 2026-06-02 ✅, 각사 제품 사양(DWPD)", 1)
+footer(s, "출처: SK하이닉스 PR 2021-10·2022-06-09 ✅ · JEDEC JESD238 2022-01-28 ✅ · 삼성 Tech Day 2021 🟡 · TrendForce(점유율·2023 Q4 진입) 🟡 · 서울경제 2026-07-29 🟡 · NVIDIA 개발자 블로그 🟡 · GitHub PR ✅ · Gartner 2026-08-10 ✅ · 각사 제품 사양(DWPD)", 1)
 notes(s, "1장은 문제 제기입니다. 결론은 내리지 않고, 고용량 QLC에서 내구성을 확보할 수 있는가라는 질문까지만 세웁니다. 왼쪽이 교훈, 가운데가 지금 일어나는 전환, 오른쪽이 문제입니다. "
       "왼쪽 교훈입니다. 이 장의 요지는 삼성의 과거 의사결정을 평가하는 것이 아니라, design-in이 무엇으로 결정됐는가를 보는 것입니다. "
       "HBM4 세대에서 선이 두 개 있었습니다. 하나는 JEDEC 표준선으로 최대 8Gbps입니다. 다른 하나는 고객이 요구한 사양으로 NVIDIA가 10에서 13Gbps를 요구했습니다. 표준을 완전히 만족해도 고객 요구선에는 닿지 않는 구간이 남습니다. design-in은 바로 이 구간에서 갈렸습니다. "
