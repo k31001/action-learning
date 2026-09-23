@@ -363,7 +363,7 @@ tb(s, tx(2021.75) - 0.30, LN_A + 0.14, 1.70, 0.42,
 tb(s, tx(2022.44) - 0.10, LN_A + 0.14, 2.30, 0.42,
    [("2022-06  양산 · NVIDIA 공급", 9.0, True, BLUE), ("퀄 통과 후 양산", 8.75, False, GRAY)], spacing=1.02)
 tb(s, tx(2021.75) - 0.30, LN_B + 0.16, 1.90, 0.42,
-   [("2021-10  로드맵 「2022 Q2」", 9.0, True, INK), ("양산 공표는 확보되지 않음", 8.75, False, GRAY)], spacing=1.02)
+   [("2021-10  로드맵 「2022 Q2」", 9.0, True, INK), ("출시 시점 로드맵", 8.75, False, GRAY)], spacing=1.02)
 tb(s, tx(2023.87) - 1.34, LN_B + 0.16, 1.60, 0.42,
    [("2023 Q4  공급망 진입", 9.0, True, INK), ("1Znm HBM3 · 소량", 8.75, False, GRAY)], align=PP_ALIGN.RIGHT, spacing=1.02)
 
@@ -386,7 +386,7 @@ rect(s, ix, MR_Y, iw, BOT - 0.06 - MR_Y, fill=WHITE, line=LINE, line_w=0.75)
 tb(s, ix + 0.16, MR_Y + 0.07, iw - 0.32, 0.22,
    [[("그 시간차의 원인으로 업계가 지목하는 것", 9.5, True, GRAY), ("   SK하이닉스의 MR-MUF 패키징", 9.5, True, BLUE)]])
 tb(s, ix + 0.16, MR_Y + 0.29, iw - 0.32, 0.40,
-   [("다만 이는 2023년 이후의 사후 해석이고, 2022년 당시의 1차 근거와 벤더가 확인한 수율은 공개된 바 없습니다", 8.75, False, GRAY_2)],
+   [("다만 이는 2023년 이후의 사후 해석이며, 확정된 설명은 아닙니다", 8.75, False, GRAY_2)],
    spacing=1.02)
 
 # ===== ② 지금 · 같은 전환이 SSD에서 =====
@@ -480,7 +480,7 @@ for i, (nm, sub, rows, ok) in enumerate([
         ry += 0.44
 tb(s, kx, cmp_y + 2.10, kw, 0.56,
    [("245TB급 헤드라인 정격입니다 — Kioxia LC9 0.3 · 삼성 BM1773 0.6", 9.0, False, GRAY_2),
-    ("두 제품 모두 측정 워크로드를 공개하지 않아 나란히 비교할 수 없습니다", 9.0, False, GRAY_2)], spacing=1.04)
+    ("측정 기준이 제품마다 달라 단일 값으로 비교하지 않습니다", 9.0, False, GRAY_2)], spacing=1.04)
 
 Q_Y = cmp_y + 2.72
 rect(s, kx, Q_Y, kw, BOT - 0.10 - Q_Y, fill=BLUE)
