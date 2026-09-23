@@ -61,5 +61,6 @@ DWPD는 **용량으로 나눈 지표**다. 단독으로 읽으면 "내구성 요
 
 - 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **1장** 가운데 구획 ②(v7.0 — 세 시대 박스 + KV 캐시 카드, 이어서 ③에서 TLC는 만족하나 고객은 QLC를 원한다는 문제 제기)
 - 교훈: [codesign-demand-lesson.md](codesign-demand-lesson.md) — 이 구매 기준 이동이 "다음 수요"의 내용이다
+- 그 수요가 내려온 경로: [hbm-to-storage-spillover.md](hbm-to-storage-spillover.md) — HBM → DRAM → NVMe SSD 스필오버
 - 시장 페이지: [qlc-ssd-market.md](qlc-ssd-market.md) §3.3
 - 내구성 축의 산식: [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)

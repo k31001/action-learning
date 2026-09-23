@@ -8,6 +8,17 @@
 - **재생성**: `.venv/bin/python outputs/presentation/scripts/generate_qlc_chart.py` (그래프) → `.venv/bin/python outputs/presentation/scripts/generate_qlc_ssd_strategy_pptx.py` → `outputs/presentation/qlc-ssd-strategy.pptx`
 - **렌더 검증**: `FONT_LATIN=NanumGothic FONT_EA=NanumGothic OUT_PATH=<scratch>.pptx` 로 렌더 전용 사본을 만들어 `soffice --headless --convert-to pdf` → pymupdf PNG로 육안 검사(본 산출물은 Arial 유지).
 
+## v7.1 (2026-09-23 — 1장 ②구획: AI 메모리 수요가 HBM에서 스토리지로)
+
+| 피드백 | 반영 |
+|---|---|
+| "슬라이드1에서 현재 AI 메모리 수요가 HBM에서 KV cache offloading을 위한 스토리지로 이동하고 있다는 내용과 근거가 추가되어야 해" | 1장 ②구획을 "구매 기준의 이동"에서 **"같은 수요가 스토리지로"**로 재설계. 네 블록 구성 — (a) 구매 기준 3국면을 **가로 압축 체인**으로(세로 3.18in → 0.70in, 공간 확보) (b) **G1 GPU HBM → G2 CPU DRAM → G3 NVMe SSD 스필 도해**(각 단에 성격과 한계, 사이에 "넘친다"·"다시 넘친다" 화살표; G3만 파란 테두리로 강조) (c) **시장 신호 블록** — TrendForce 2026-08-18 「Vera Rubin의 HBM → NAND 스필오버」 인용 + CMX NAND 2026 35EB → 2027 100EB+ · 삼성 V-NAND 캐파 약 60% CMX 배정 (d) **그래서 SSD에 오는 요구 = DWPD 1~3**. 열 폭 재배분 ① 7.30 → 6.60, ② 5.50 → 6.30, ③ 5.38 → 5.04 |
+
+- **근거의 출처**: 메커니즘은 NVIDIA Dynamo KVBM의 4단 위계(G1~G4)와 CMX 플랫폼 규정 🟡, 시장 신호는 TrendForce 2026-08-18 🟡 · 서울경제 2026-07-20 🟡 · SanDisk FMS 2026 ✅ · Kioxia Investor Day 2026-06-02 🟡. 위키 `wiki/concepts/hbm-to-storage-spillover.md` 신설, 보고서 §1.2 신설
+- **표기 규율 — 대체가 아니라 스필오버**: "HBM 수요가 줄어 스토리지로 옮겨 갔다"로 읽히면 2026년 데이터(삼성 2026-Q2 HBM 점유 33%, +12%p)에 반박당한다. 도해 캡션에 "HBM 수요가 준 것이 아니라 넘친 것이 내려왔습니다"를 고정하고 발표 노트에서 한 문단으로 다시 못박았다
+- **함께 적은 반대 신호**: CMX 타깃으로 지명된 드라이브는 전부 TLC · SK하이닉스·Kioxia의 SLC 기반 AI SSD 개발 보도 · DeepSeek V4.1-Flash의 KV 풋프린트 1/8 주장. QLC를 이 계층에 넣은 공개 사례는 SanDisk FMS 2026 1건(DWPD 미공개)
+- 리드·하단 밴드·출처 줄·발표 노트를 함께 갱신. 밴드 첫 줄은 "HBM의 교훈은 수요를 고객과 함께 설계하는 것이었고, 그 수요가 지금 HBM에서 넘쳐 NAND로 내려옵니다"
+
 ## v7.0 (2026-09-23 — 교훈 하나로 통합 · 수율 상충 · 3장 압축 · 배치 힌트 신설 · 7장 시각화)
 
 사용자 피드백 5건 반영. 덱이 **6장 → 7장**이 됐다(배치 힌트 신설). 시각화 강화판은 이번에도 손대지 않는다.

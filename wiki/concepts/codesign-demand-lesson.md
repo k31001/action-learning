@@ -60,5 +60,6 @@ QLC eSSD 덱 1장의 교훈이 서는 자리다. 종전 위키는 다운턴 교�
 
 - 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **1장**(v7.0) — 두 레인 타임라인과 회복 기록
 - 신호 판별 기준: [rs9-demand-inflection-sensing.md](../strategies/invariant/rs9-demand-inflection-sensing.md) §1-A
+- 그 수요가 지금 있는 자리: [hbm-to-storage-spillover.md](hbm-to-storage-spillover.md) — HBM에서 넘쳐 스토리지로
 - 구매 기준의 이동: [essd-purchase-criteria-shift.md](essd-purchase-criteria-shift.md)
 - 실행 수단: [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md) (FDE·전략적 협약)

@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-23 (QLC 덱 1장 ②구획) ────────────────────────────────────────────
+  {
+    date: '2026-09-23',
+    type: 'build',
+    version: 'v2.46.43',
+    title: 'QLC 덱 v7.1 — 1장에 "AI 메모리 수요가 HBM에서 스토리지로" 추가',
+    summary:
+      '1장 ②구획을 "구매 기준의 이동"에서 "같은 수요가 스토리지로"로 재설계했다. G1 GPU HBM → G2 CPU DRAM → G3 NVMe SSD 스필 도해와 시장 신호(TrendForce의 "Vera Rubin의 HBM→NAND 스필오버", CMX NAND 35EB→100EB+)를 넣고, 대체가 아니라 스필오버라는 단서를 같은 화면에 고정했다.',
+    tags: ['QLC', 'eSSD', 'HBM', 'KV 캐시', 'CMX', '발표자료'],
+    items: [
+      { label: '메커니즘 도해', detail: 'NVIDIA Dynamo KVBM이 실제 구현한 4단 위계를 3단으로 그렸다. G1 GPU HBM(용량 고정, 길어진 컨텍스트가 먼저 채움) → 넘친다 → G2 CPU DRAM(용량당 단가가 벽) → 다시 넘친다 → G3 NVMe SSD(새로 열린 계층, 쓰기가 몰리는 첫 대용량 계층)' },
+      { label: '시장 신호', detail: 'TrendForce 2026-08-18 「Vera Rubin의 HBM → NAND 스필오버」(CMX가 TLC 현물가 반등 견인) · CMX NAND 소요 2026 35EB → 2027 100EB+ · 삼성 V-NAND 캐파 약 60%를 CMX 대응에 배정' },
+      { label: '정직성 단서', detail: '"대체가 아니라 스필오버" — HBM 수요는 줄지 않았고(삼성 2026-Q2 점유 33%, +12%p) 이동한 것은 증분이다. 반대 신호(CMX 타깃은 전부 TLC · SLC 기반 AI SSD 개발 · KV 풋프린트 축소)도 함께 기록' },
+      { label: '레이아웃', detail: '구매 기준 3국면을 세로 박스에서 가로 압축 체인으로(3.18in → 0.70in). 열 폭 ① 7.30→6.60, ② 5.50→6.30, ③ 5.38→5.04' },
+      { label: '문서', detail: 'wiki/concepts/hbm-to-storage-spillover.md 신설, 보고서 §1.2 신설(기존 1.2~1.4는 1.3~1.5로 재번호) + 부록 A A-75~A-80, 지식 그래프 재생성(노드 114)' },
+    ],
+    links: [
+      { label: '위키 — HBM → 스토리지 스필오버', href: 'wiki/concepts/hbm-to-storage-spillover.md' },
+      { label: '보고서 v4.1', href: 'outputs/report/qlc-ssd-strategy-report.md' },
+    ],
+  },
   // ── 2026-09-23 (QLC 덱 빌드) ─────────────────────────────────────────────────
   {
     date: '2026-09-23',

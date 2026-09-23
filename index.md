@@ -126,6 +126,7 @@
 - [wiki/concepts/waf-runtime-response.md](wiki/concepts/waf-runtime-response.md) — (NEW) WAF 급등의 런타임 감지·대응: 조건부 보증에서 기술 흡수로 축 이동, 루프 4단계(관측 → 감지·분류 → 디바이스/호스트 대응 → 검증·롤백, 목표 감지 1h·회복 4h), 핵심 기술 요소 T1~T6(핸들별 WAF 텔레메트리·온디바이스 감지·무중단 FDP 재구성·경보 규격·정책 엔진·에뮬레이터), 규격 과제와 축소된 보증 조항
 - [wiki/concepts/fdp-placement-mechanics.md](wiki/concepts/fdp-placement-mechanics.md) — (NEW) 배치 힌트의 작동 원리: 블록 단위 소거와 수명 혼재가 WAF를 만든다. 같은 QLC 드라이브의 네 경우 — 무배치 3.0(✅) / 멀티스트림 1.8(⚠️모델) / FDP 전면 1.05(✅) / 혼재 2.2(⚠️모델), 유효 DWPD 0.6·1.0·1.7·0.8. 혼재가 현실인 이유(CacheLib 기본 핸들 폴백·WARP Noisy RUH·F2FS 99% 단일 태그)와 공개 자료의 공백
 - [wiki/concepts/codesign-demand-lesson.md](wiki/concepts/codesign-demand-lesson.md) — (NEW) 고객과 함께 수요를 설계한다: HBM 공동 설계 타임라인(2013 AMD↔하이닉스 → 2019 삼성의 과소평가 → 2022 NVIDIA 독점 공급 → 2025 DRAM 역전 → 2026 NVIDIA 다년 파트너십)과 반드시 병기할 반증 6건(2025-Q4 1위 탈환·2026 최초 상용 HBM4·MR-MUF 수율·HMC·Micron·HBM4 9사 공동 개발). 재프레이밍 = 본 것을 끊지 않은 쪽이 이겼다. NAND에서의 같은 패턴과 ZNS 반례
+- [wiki/concepts/hbm-to-storage-spillover.md](wiki/concepts/hbm-to-storage-spillover.md) — (NEW) AI 메모리 수요는 HBM에서 넘쳐 스토리지로: 추론 메모리 4단 위계(G1 HBM → G2 DRAM → G3 NVMe SSD → G4 원격, NVIDIA Dynamo KVBM 구현·CMX가 플랫폼화), TrendForce 2026-08-18 "Vera Rubin의 HBM→NAND 스필오버"와 TLC 현물가 반등, CMX NAND 2026 35EB → 2027 100EB+, 삼성 V-NAND 캐파 약 60% CMX 배정. **대체가 아니라 스필오버**라는 단서와 반대 신호(SLC AI SSD·KV 풋프린트 축소) 병기
 
 ### 정책·규제
 - [wiki/concepts/chips-act.md](wiki/concepts/chips-act.md) — 미국 CHIPS Act 보조금 (Samsung Texas $4.745B 등)
