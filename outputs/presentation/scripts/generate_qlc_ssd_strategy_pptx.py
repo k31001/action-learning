@@ -439,8 +439,12 @@ for i, (k, v) in enumerate([("오프로드는 메인라인 코드", "LMCache 202
     sx = jx + 0.16 + i * (sw + 0.14)
     tb(s, sx, EV_Y + 0.58, sw, 0.17, [(k, 8.5, False, GRAY_2)])
     tb(s, sx, EV_Y + 0.74, sw, 0.24, [(v, 9.5, True, BLUE)], spacing=1.0)
-tb(s, jx + 0.16, EV_Y + 1.00, jw - 0.32, 0.20,
-   [("AI 수요의 중심이 추론으로 빠르게 확대되고 있습니다 · 데이터센터 NAND 295EB(2025) → 1,807EB(2028), Kioxia 전망", 8.5, False, GRAY_2)])
+rect(s, jx + 0.16, EV_Y + 1.02, jw - 0.32, 0.012, fill=LINE)
+tb(s, jx + 0.16, EV_Y + 1.08, jw - 0.32, 0.20,
+   [[("2026년 추론 지출이 학습을 처음 추월합니다  ", 9.5, True, BLUE),
+     ("AI 최적화 IaaS의 55%", 9.5, False, GRAY)]])
+tb(s, jx + 0.16, EV_Y + 1.28, jw - 0.32, 0.20,
+   [("추론 $23.3B 대 학습 $19.0B(Gartner 2026-08-10) · DC NAND 295EB → 909EB(CY28, Kioxia)", 8.5, False, GRAY_2)])
 
 # ===== ③ 문제 =====
 sec(C3X, C3W, "③", "문제 · 둘 다 가질 수 있는가", "용량·비용과 내구성의 상충", hot=True)
@@ -450,7 +454,7 @@ cmp_y = TOP + 1.08
 cw2 = (kw - 0.14) / 2
 for i, (nm, sub, rows, ok) in enumerate([
         ("TLC", "3 DWPD 급", [("내구성", "요구 충족", True), ("용량", "61TB 급", False), ("비용", "높다", False)], True),
-        ("QLC", "고용량", [("내구성", "0.3 ~ 1.0", False), ("용량", "245TB 급", True), ("비용", "낮다", True)], False)]):
+        ("QLC", "고용량", [("내구성", "0.3 ~ 0.6", False), ("용량", "245TB 급", True), ("비용", "낮다", True)], False)]):
     cx = kx + i * (cw2 + 0.14)
     rect(s, cx, cmp_y, cw2, 2.02, fill=WHITE, line=BLUE if not ok else LINE, line_w=1.25 if not ok else 0.75)
     rect(s, cx, cmp_y, cw2, 0.05, fill=BLUE if not ok else GRAY_2)
@@ -461,10 +465,11 @@ for i, (nm, sub, rows, ok) in enumerate([
         tb(s, cx + 0.14, ry, cw2 - 0.28, 0.18, [(lab, 8.75, False, GRAY_2)])
         tb(s, cx + 0.14, ry + 0.16, cw2 - 0.28, 0.26, [(val, 11.25, True, BLUE if good else GRAY)])
         ry += 0.44
-tb(s, kx, cmp_y + 2.10, kw, 0.36,
-   [("QLC 정격은 제품·기준 블록에 따라 다릅니다 · 245TB급은 0.3 DWPD 수준", 9.0, False, GRAY_2)], spacing=1.02)
+tb(s, kx, cmp_y + 2.10, kw, 0.56,
+   [("245TB급 헤드라인 정격입니다 — Kioxia LC9 0.3 · 삼성 BM1773 0.6", 9.0, False, GRAY_2),
+    ("두 제품 모두 측정 워크로드를 공개하지 않아 나란히 비교할 수 없습니다", 9.0, False, GRAY_2)], spacing=1.04)
 
-Q_Y = cmp_y + 2.52
+Q_Y = cmp_y + 2.72
 rect(s, kx, Q_Y, kw, BOT - 0.10 - Q_Y, fill=BLUE)
 tb(s, kx + 0.22, Q_Y + 0.16, kw - 0.44, 0.30, [("그래서 질문은 하나입니다", 10.5, False, BLUE_T2)])
 tb(s, kx + 0.22, Q_Y + 0.48, kw - 0.44, BOT - 0.70 - Q_Y,
@@ -476,7 +481,7 @@ band(s, 9.42, 0.80, "문제",
      "HBM의 교훈은 표준 충족이 아니라 고객 요구 사양을 먼저 맞추는 것이 design-in을 가른다는 것이었습니다.\n"
      "같은 전환이 SSD에서 일어나 내구성이 요구로 더해졌고, 고용량 QLC로 그 요구를 만족할 수 있는가가 문제입니다",
      main_size=16.5, next_step=2)
-footer(s, "출처: JEDEC JESD270-4 · NVIDIA 요구 10~13Gbps(업계 보도 🟡), 서울경제 2026-07-29(SK하이닉스 실적 콜 🟡), NVIDIA 개발자 블로그(KV 40GB 🟡), GitHub PR(LMCache·vLLM ✅), Counterpoint Q2 2026, Kioxia IR 2026-06-02, 각사 제품 사양(DWPD)", 1)
+footer(s, "출처: JEDEC JESD270-4 · NVIDIA 요구 10~13Gbps(업계 보도 🟡), 서울경제 2026-07-29(SK하이닉스 실적 콜 🟡), NVIDIA 개발자 블로그(KV 40GB 🟡), GitHub PR(LMCache·vLLM ✅), Counterpoint Q2 2026, Gartner 2026-08-10 ✅, Kioxia IR 2026-06-02 ✅, 각사 제품 사양(DWPD)", 1)
 notes(s, "1장은 문제 제기입니다. 결론은 내리지 않고, 고용량 QLC에서 내구성을 확보할 수 있는가라는 질문까지만 세웁니다. 왼쪽이 교훈, 가운데가 지금 일어나는 전환, 오른쪽이 문제입니다. "
       "왼쪽 교훈입니다. 이 장의 요지는 삼성의 과거 의사결정을 평가하는 것이 아니라, design-in이 무엇으로 결정됐는가를 보는 것입니다. "
       "HBM4 세대에서 선이 두 개 있었습니다. 하나는 JEDEC 표준선으로 최대 8Gbps입니다. 다른 하나는 고객이 요구한 사양으로 NVIDIA가 10에서 13Gbps를 요구했습니다. 표준을 완전히 만족해도 고객 요구선에는 닿지 않는 구간이 남습니다. design-in은 바로 이 구간에서 갈렸습니다. "

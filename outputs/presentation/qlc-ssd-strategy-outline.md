@@ -8,6 +8,21 @@
 - **재생성**: `.venv/bin/python outputs/presentation/scripts/generate_qlc_chart.py` (그래프) → `.venv/bin/python outputs/presentation/scripts/generate_qlc_ssd_strategy_pptx.py` → `outputs/presentation/qlc-ssd-strategy.pptx`
 - **렌더 검증**: `FONT_LATIN=NanumGothic FONT_EA=NanumGothic OUT_PATH=<scratch>.pptx` 로 렌더 전용 사본을 만들어 `soffice --headless --convert-to pdf` → pymupdf PNG로 육안 검사(본 산출물은 Arial 유지).
 
+## v7.4 (2026-09-23 — 수치 검증: DWPD 범위 확정 · EB 오류 정정 · Gartner 추론 역전)
+
+v7.3의 논리는 유지하고 **숫자 셋을 리서치 전수 조사로 고쳤다** (원장 `sources/articles/qlc-v8-dwpd-price-inference-2026-09.md` 6절).
+
+| 고친 것 | v7.3 | v7.4 | 왜 |
+|---|---|---|---|
+| **QLC 정격** | 0.3 ~ **1.0** | **0.3 ~ 0.6** + "두 제품 모두 측정 워크로드 미공개" | 1.0은 **128K 순차 기준**이지 헤드라인이 아니다. 245TB급 헤드라인은 Kioxia LC9 **0.3** · Micron 6600 ION **0.3**(16K) · **삼성 BM1773 0.6**(2026-09-18 출시, >260PBW). **셋 중 둘이 기준 미공개**라 0.3과 0.6의 2배 차이가 셀·컨트롤러 차이인지 측정 기준 차이인지 분리할 수 없다 — 이것이 값 자체보다 중요한 사실이라 슬라이드 주석으로 고정했다 |
+| **데이터센터 NAND 수요** | 295EB(2025) → **1,807EB**(2028) | 295EB(CY25) → **909EB**(CY28) | **오류였다.** 1,807EB는 **전체 flash** CY28 수치이고 데이터센터는 **909EB**다(CAGR 46%). 오류는 v7 원장 V-21에서 유입됐고, `sources/`는 불변 계층이라 원장은 두고 v8 원장 §3-B가 정정을 보유한다 |
+| **추론 근거** | "AI 수요의 중심이 추론으로 빠르게 확대" (정성) | **Gartner 2026-08-10 — 2026년 AI 최적화 IaaS 지출의 55%가 추론, 추론 $23.3B가 학습 $19.0B를 사상 최초로 추월, 2027년 59%** ✅ | Kioxia의 CAGR 86%는 **성장률이지 점유율이 아니라** "추론이 학습보다 크다"를 직접 말하지 못한다. Gartner는 **규모의 역전**을 직접 말한다. Kioxia는 NAND 쪽 보조 근거로 병기 |
+
+- **추론 CAGR 86% 판정**: 출처 확정됐다 — Kioxia Investor Day 2026-06-02 **슬라이드 15 스크립트 원문** "inference AI applications... estimated **CAGR of 86%**"(CY25~28, 학습 16%). 레포 3곳의 **"증분 DC 수요의 86%"는 오독**이었다. 덱에는 Gartner를 메인으로, Kioxia를 보조로 쓴다
+- **가격 판정 확정**: "20~30% 저렴"은 출처가 없을 뿐 아니라 **산술적으로 불가능**하다 — 비트당 원가 절감의 천장은 **−25%**(셀당 3→4비트, 1−3/4)이고 컨트롤러·DRAM·PCB가 공통 원가라 드라이브 $/TB 절감은 그보다 작다. 유일한 공개 지수(VDURA −13~20%)도 QLC/TLC 비율이 3개 시점 중 **2개가 정확히 0.8000**이라 모델 가정일 가능성이 있다. **TrendForce 포함 어떤 기관도 QLC/TLC $/TB를 분리 공개하지 않는다**
+- **함께 기록한 반대 신호**: 전력 용량 기준으로는 **학습 5GW 대 추론 2GW**라는 집계가 있다(⚠️ 원 출처 미확인). TrendForce는 추론이 AI 서버 수요의 주 동인이 되는 시점을 **2029년**으로 본다 — Gartner(지출)와 **분모가 다르므로 섞어 쓰지 않는다**
+- **부정 확인**: "Solidigm D5-P5810"은 존재하지 않고(D7-P5810은 SLC), "Kioxia LC8"도 확인되지 않는다. SanDisk 256TB·SK하이닉스 PS1012·ScaleFlux QLC는 DWPD 미공개. 국내 매체가 Gartner $42B를 "59조 달러"로 오역한 사례가 있어 재인용 금지
+
 ## v7.3 (2026-09-23 — 1장 핵심 논리 전환: design-in · 요구의 누적 · 질문으로 마무리)
 
 | 피드백 | 반영 |

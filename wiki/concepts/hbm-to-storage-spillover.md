@@ -8,7 +8,9 @@ sources: [sources/articles/qlc-v7-hbm-to-storage-shift-2026-09.md, sources/artic
 
 QLC eSSD 덱 1장 ②구획이 서는 자리다. [codesign-demand-lesson.md](codesign-demand-lesson.md)가 "고객과 함께 수요를 설계한 쪽이 이겼다"를 세웠다면, 이 페이지는 **그 수요가 지금 어디에 있는가**에 답한다.
 
-> **2026-09-23 정정**: 이 페이지는 처음 "AI 메모리 수요가 HBM에서 스토리지로 **이동**한다"로 썼으나, 같은 날 리서치에서 그 프레이밍이 **지지되지 않음**을 확인하고 **"증설(additive)"**로 바꿨다. 근거는 §4. 파일명은 링크 안정성을 위해 유지한다.
+> **2026-09-23 정정 ①**: 이 페이지는 처음 "AI 메모리 수요가 HBM에서 스토리지로 **이동**한다"로 썼으나, 같은 날 리서치에서 그 프레이밍이 **지지되지 않음**을 확인하고 **"증설(additive)"**로 바꿨다. 근거는 §4. 파일명은 링크 안정성을 위해 유지한다.
+>
+> **2026-09-23 정정 ② (수치 오류)**: §3의 Kioxia 인용에 오류가 두 건 있었다. ① "**증분 DC 수요의 86%가 AI 추론**"은 오독이다 — **86%는 CY25~CY28 CAGR**이다(학습 16%). ② "DC NAND 2028년 **1,807EB**"도 오독이다 — **1,807EB는 전체 flash**이고 **데이터센터는 909EB**다. 출처 원장 [qlc-v7-hbm-to-storage-shift-2026-09.md](../../sources/articles/qlc-v7-hbm-to-storage-shift-2026-09.md) V-21에 같은 오류가 남아 있으나 `sources/`는 불변 계층이므로 수정하지 않고, 정정은 [qlc-v8-dwpd-price-inference-2026-09.md](../../sources/articles/qlc-v8-dwpd-price-inference-2026-09.md) §3-B가 보유한다. **이 페이지를 인용할 때는 v8 수치를 쓴다.**
 
 ## 1. 한 문장
 
@@ -34,7 +36,8 @@ QLC eSSD 덱 1장 ②구획이 서는 자리다. [codesign-demand-lesson.md](cod
 | 2 | **오프로드는 메인라인 코드**: LMCache 디스크 캐시 2024-08(PR #52) → GDS 백엔드 2025-06(#773) → Dynamo GPU↔디스크 직결 2025-10(#3510) → vLLM 다계층 오프로딩 2026-05(#40020) → vLLM 디스크 커넥터 다수 2026-08 | ✅ GitHub PR 직접 확인 | 각 PR |
 | 3 | **비트의 무게중심 이동**: 전 세계 NAND 비트 출하 중 eSSD 비중이 **1년 만에 26% → 48%** | 🟡 | Counterpoint Q2 2026 |
 | 4 | **플랫폼 계층 신설**: NVIDIA가 G3와 G4 사이에 **G3.5(CMX)**를 정의하고 GPU당 16TB를 붙였다. CMX NAND 소요 2026 35EB → 2027 100EB+ | 🟡 | nvidia.com/cmx · 서울경제 2026-07-20 |
-| 5 | **수요 총량 전망**: SanDisk Investor Day 2026-08-13 "KV 캐시가 메모리 위계를 **Tier 3.5**로 재편", 엔터프라이즈 DC 플래시 TAM 2030년 **1.2ZB**. Kioxia는 DC NAND 2025 295EB → 2028 1,807EB, 증분의 86%가 AI 추론 | 🟡 | 각사 IR |
+| 5 | **수요 총량 전망**: SanDisk Investor Day 2026-08-13 "KV 캐시가 메모리 위계를 **Tier 3.5**로 재편", 엔터프라이즈 DC 플래시 TAM 2030년 **1.2ZB**. Kioxia Investor Day 2026-06-02(슬라이드 15): **DC NAND 295EB(CY25) → 909EB(CY28), CAGR 46%**이고 그 안에서 **추론 관련 수요 CAGR 86% · 학습 CAGR 16%**. 전체 flash는 997 → 1,807EB(CAGR 22%) | 🟡 / ✅(Kioxia 수치) | 각사 IR · [qlc-v8-dwpd-price-inference-2026-09.md](../../sources/articles/qlc-v8-dwpd-price-inference-2026-09.md) §3-A |
+| 6 | **규모의 역전**: Gartner 2026-08-10 — **2026년 AI 최적화 IaaS 지출의 55%가 추론**, 추론 **$23.3B**가 학습 **$19.0B**를 **사상 최초로 추월**. 2027년 59% | ✅ Gartner 공식 릴리스 | 같은 원장 §3-C |
 | 6 | **삼성의 대응**: V-NAND 캐파의 약 **60%**를 9세대(V10) CMX 대응에 배정, V10 양산 2026-08 | 🟡 | 서울경제·SamMobile 2026-07 |
 
 ## 4. 지지되지 **않는** 것 — "이동" 프레이밍이 반박당하는 지점
