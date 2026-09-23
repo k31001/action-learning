@@ -14,6 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-22 (정기 재평가) ─────────────────────────────────────────────────
+  {
+    date: '2026-09-22',
+    type: 'assessment',
+    version: 'v2.46.41',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + Trump-Xi 09-24 정상회담 임박·순환 파이낸싱·GPU 임대가 EWI·트리거 반영',
+    summary:
+      '직전 09-15 재평가 이후 git log 커밋은 전부 QLC eSSD 덱/보고서/위키(v2.46.18~v2.46.40) 내부 제품믹스(DF3/NAND)·발표 층으로 신규 실현 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. 이번 사이클 갱신은 "실현된 외부 거시 사실이 축을 움직인다"는 일관 방법론에 따라 포지션 맵·확률은 무이동, 09-22 웹 리서치 in-window 신호는 EWI·트리거에 반영. ' +
+      'DF1(수요) 정점 재확인: 빅테크 4사 2026 CapEx ~$725B(+77% YoY·삭감 0건)·2027 전망 상향 유지(JPM·Goldman·Evercore·BofA >$1T — 36.5% 성장만으로 $1조 도달)·DRAM Q3 +13~18%·NAND +10~15%·소비자 DRAM 부족 DDR2까지 확대·구조적 쇼티지 2027 지속·GPU 임대가 firming(H100 9월 온디맨드 중앙값 ~$3.25/GPU-h·H200 ~$4.40/GPU-h — 붕괴 없음)·Micron Q4 FY26 실적 09-30이 다음 확인점. ' +
+      '후기순환 조달/파이낸싱 tell 심화(수요 붕괴 아님): NVIDIA-OpenAI-Oracle $745B 순환 파이낸싱 루프가 첫 스트레스 테스트(연준 금리) 직면·Oracle $43B 차입으로 마이너스 FCF 커버·OpenAI 2026 매출 ~$20B 대비 손실 ~$14B·AI 순환경제 버블 인덱스 73/100·NVIDIA $105B OpenAI 베팅(CFO Kress "once-in-a-generation 플랫폼 전환" 방어). CapEx 자체 상향·재고 없음이라 조달 구조 경보로 EWI 반영(축 무이동). ' +
+      'DF2(디커플링): Trump-Xi 정상회담 09-24 워싱턴 개최 확정(2일 후) — 3T(무역·기술·타이완) 의제, 기술이 AI 급진전으로 긴급성 부각·시장은 건설적 결과 선반영·Busan 휴전 연장이 최선 기대·MATCH 법안 의회 진전(150일 동맹 정렬 조항)·베이징 비판 격화. 09-15가 지목한 "9월 정상회담=다음 분기점"의 날짜가 09-24로 확정·임박했으나 실현된 정책 사실(타결·라이선스 언어·MATCH 통과·신규 통제)은 09-24 이후 확정 → 리트머스 미해결로 DF2 0.5 유지, 양방향 트리거 대기. 삼성 HBM4 볼륨 발주 미전환·16-Hi 삼성 skip. 패치 v2.46.41.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지', 'Trump-Xi 정상회담', 'MATCH', '순환 파이낸싱', 'GPU 임대가', 'Micron', '삼성 HBM4'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5 (축 무이동)', detail: '09-15 이후 git log 커밋은 전부 QLC eSSD 덱/보고서/위키(v2.46.18~v2.46.40) 내부 제품믹스·발표 층 = 신규 실현 외부 거시 사실 0건. DF1 in-window 신호는 전부 정점 재확인(CapEx ~$725B·2027 >$1T·삭감 0건·GPU 임대가 firming·구조적 쇼티지 2027). DF2: Trump-Xi 정상회담 09-24 개최 확정·임박이나 실현 정책 사실 미확정 → 리트머스 미해결로 위치·방향 유지, 09-24 결과가 방향 결정' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '후기순환 조달 경보(NVIDIA-OpenAI-Oracle $745B 순환 파이낸싱 첫 스트레스 테스트·Oracle $43B 차입·OpenAI 손실 ~$14B·버블 인덱스 73/100)는 수요 붕괴(D 재배분)가 아닌 조달 구조 경보라 상대 확률 무영향(CapEx 상향·재고 없음). 정상회담 결과 미확정으로 DF2發 재배분(A↔B)도 미실행. 삼성 HBM4 볼륨 발주 미전환 = B 시간 리스크 지속' },
+      { label: 'EWI 갱신 — 조달·파이낸싱 축(후기순환 tell)', detail: 'ai_dc_credit_spread(NVIDIA-OpenAI-Oracle $745B 순환 파이낸싱 스트레스 테스트·Oracle $43B 차입 실측, 조달 구조 경보 유지·미발동)·bigtech_capex_growth(2027 >$1T 재확인·Evercore·BofA 모델 + 조달 다이버전스 병기)·demand_inflection_divergence(조달 축 tell 심화하나 최종수요·GPU 생태계 미꺼짐 → 미발동)·enterprise_ai_roi_proven 트리거(수익화 한계 실측 심화, 미발동)' },
+      { label: 'EWI 갱신 — GPU 임대가·삼성 HBM4', detail: 'gpu_rental_h100_usd(H100 9월 온디맨드 중앙값 ~$3.25/GPU-h·H200 ~$4.40/GPU-h — firming, 붕괴 없음, Tier0 조기경보 미발동)·samsung_hbm4_rubin_share(28% 무변화 — 유상 평가 단계 유지·NVIDIA 16-Hi HBM4 Q4 요청에 삼성 skip·SK 볼륨·Micron 캐파 2배 증설)·cxmt_apple_qualification(testing 유지 — 09-24 정상회담이 승인/차단 상위 분기점)' },
+      { label: '시나리오 트리거 유지 — 발동 0건, 09-24 정상회담 양방향 대기', detail: 'match_act_passed·us_china_semiconductor_deal·apple_cxmt_approved 전부 09-24 정상회담 결과 대기(완화·라이선스 언어 완화=공존 강화 / 결렬·MATCH 진전=디커플링). samsung_hbm4_nvidia_confirmed 미충족(볼륨 발주 미전환·16-Hi skip, Micron 09-30·연말 관문). enterprise_ai_roi_proven·bigtech_capex_cut25 미발동' },
+    ],
+    links: [
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
+  // ── 2026-09-22 (QLC 덱 빌드) ─────────────────────────────────────────────────
   {
     date: '2026-09-23',
     type: 'build',
