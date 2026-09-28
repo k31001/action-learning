@@ -2247,3 +2247,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 3장은 기존 실행 전략(qlc-execution-strategy · qlc-workload-capability-phases · 워크로드 구성형 SSD 보고서)을 기술·인재·고객 협력 × 3단계로 재배열. 2026-09-19 덱 범위 결정대로 자회사·별도 보상·지분은 제외
 - 렌더 QA(NanumGothic, soffice → PDF → PNG) 3장 통과: 본문 최소 16pt(출처 줄만 15pt), em-dash 0, 넘침 수정(제목 수동 줄바꿈, 로고 겹침, 상단 문제 줄, 계약의 창 라벨, 차트 라벨 잘림)
 - index.md outputs 절 2건 등록. **대시보드 무변경**(발표 산출물만) → 버전 bump 생략
+
+## [2026-09-28] build | SSD 생존 전략 덱 3장 재설계(SCA · FDE) + 슬라이드 디자인 스킬 v2
+- 사용자 피드백: 덱은 의도대로 나왔으니 이 템플릿·작성 방식을 기본 슬라이드 디자인 스킬에 반영. 3장은 Micron ↔ Anthropic SCA와 Palantir FDE를 벤치마크해 시각화하되 세 메시지(① 장기 물량 계약에 기술 협력을 함께 ② 간헐적 미팅·스펙 문서를 넘어 사람이 교류·상주하는 협업, 그 안에서 수요를 함께 만든다 ③ 시스템 SW와 AI 데이터센터 운영 고객 수준의 전문성)
+- **3장 v1.1**: 제목 "계약에 기술 협력을 묶고, 고객 안에 사람을 두고, / AI 데이터센터 운영자 수준의 시스템 SW 역량을 갖춰야 합니다". 지금 → 앞으로 3열: ① LTA 막대 → 적층 4단(다년 공급 · 공동 설계 · 운영 통합 · 자본 연계 점선 선택) + "기술 협력" 괄호 ② 삼성 ··· 문서 ··· 고객 → 삼성 줄 ↓ 사람 / ↑ 실제 요구 → 제품 순환, 고객 AI 데이터센터 경계 안 Pod(Blue)·고객 엔지니어(그레이) "매일 함께" ③ 층 × (지금 / 필요) 격자, KV 캐시 관리자 4종 삼성 기여 0. 로고: Micron · Anthropic · Palantir(simple-icons 신규 렌더) · 삼성. 이전 3단계 로드맵은 노트·위키로
+- 근거: [micron-anthropic-sca-2026-06-22.md](sources/articles/micron-anthropic-sca-2026-06-22.md)(4요소, 재무 조건 비공개), [palantir-fde-model-2026-07.md](sources/articles/palantir-fde-model-2026-07.md), qlc-workload-capability-phases §4.2(기여 흔적 없음 ✅ README). 자본 연계는 2026-09-19 덱 범위 결정대로 "(선택)"
+- **스킬 v2**: 계정 스킬 `samsung-memory-ppt-design-skill`은 이 환경에 읽기 전용으로 동기화되므로 직접 수정할 수 없다. 레포 프로젝트 스킬 `.claude/skills/samsung-memory-ppt-design-skill/`로 v1 전문 + 11절 시각 우선 작성법(원칙 5 · 캔버스 글자 크기표 · 레이아웃 템플릿 4 · 차트 규칙 · 개념 도형 어휘 · 로고 · 부품 이미지 · 사실 규율 · 렌더 QA)을 만들고, 기본 다이얼 4/7/6, 사전 점검 6항목 추가. 도구: `scripts/deck_helpers.py`(Deck 클래스, 동작 확인), `qa_audit.py`(최소 pt · em-dash 감사), `qa_render.sh`, `render_parts/`(Chromium 경로 환경변수화). 배포 패키지 `outputs/skills/samsung-memory-ppt-design-skill.skill`(package_skill 검증 통과, 설명문 콜론이 YAML을 깨서 마침표로 수정) → claude.ai 계정 스킬 교체용
+- 렌더 QA 3장 통과(본문 16pt+, 출처 15pt, em-dash 0). index.md에 스킬 2건 등록, 덱·기획서 항목 v1.1. **대시보드 무변경** → 버전 bump 생략

@@ -4,7 +4,7 @@ deck: outputs/presentation/ssd-survival-strategy.pptx
 generator: outputs/presentation/scripts/generate_ssd_survival_pptx.py
 charts: outputs/presentation/scripts/generate_ssd_survival_charts.py
 parts: outputs/presentation/scripts/render_parts/ (3D 부품 렌더·로고)
-status: v1.0 (2026-09-28)
+status: v1.1 (2026-09-28): 3장을 SCA·FDE 벤치마크 기반으로 재설계
 wiki: [wiki/concepts/hbm3-designin-lesson.md, wiki/concepts/hbm-to-storage-spillover.md, wiki/concepts/qlc-ssd-market.md, wiki/concepts/high-dwpd-operating-point.md, wiki/concepts/solution-ladder-component-to-system.md, wiki/concepts/ssd-configurability-boundary.md, wiki/strategies/qlc-execution-strategy.md, wiki/strategies/qlc-workload-capability-phases.md]
 ---
 
@@ -16,7 +16,7 @@ wiki: [wiki/concepts/hbm3-designin-lesson.md, wiki/concepts/hbm-to-storage-spill
 
 ## 제목 3개를 이어 읽으면
 
-> HBM의 교훈은 고객과 함께 수요를 읽는 것이며, 다음 수요인 AI 스토리지는 높은 DWPD를 요구합니다. NAND의 한계는 SSD 안에서 풀어 왔지만, DWPD 장벽은 서버와 함께 WAF를 낮춰야 풀립니다. 기술 · 인재 · 고객 협력을 3단계로 쌓아, 워크로드 구성형 SSD로 AI 스토리지를 선점합니다.
+> HBM의 교훈은 고객과 함께 수요를 읽는 것이며, 다음 수요인 AI 스토리지는 높은 DWPD를 요구합니다. NAND의 한계는 SSD 안에서 풀어 왔지만, DWPD 장벽은 서버와 함께 WAF를 낮춰야 풀립니다. 계약에 기술 협력을 묶고, 고객 안에 사람을 두고, AI 데이터센터 운영자 수준의 시스템 SW 역량을 갖춰야 합니다.
 
 ---
 
@@ -52,23 +52,23 @@ wiki: [wiki/concepts/hbm3-designin-lesson.md, wiki/concepts/hbm-to-storage-spill
 - 사용자 원고의 "XX 문제"는 **쓰기 전 소거(제자리 덮어쓰기 불가)와 수명 편차**로, "YY 문제"는 **데이터 수명 혼재(수명이 다른 데이터가 한 블록에 섞여 GC 복사가 생기는데, 데이터가 언제 지워질지는 SSD가 아니라 호스트가 안다)**로 채웠다([fdp-placement-mechanics.md](../../wiki/concepts/fdp-placement-mechanics.md) §1).
 - LMCache는 **오픈소스 KV 캐시 관리 라이브러리**다. 스택에서는 AI 프레임워크 계층(추론 엔진 vLLM, 오케스트레이션 Dynamo와 함께)에 둔다.
 
-## 3장 실행 전략: 세 축, 세 단계
+## 3장 실행 전략: 계약 · 사람 · 역량 (v1.1)
 
-**제목**: 기술 · 인재 · 고객 협력을 3단계로 쌓아, 워크로드 구성형 SSD로 AI 스토리지를 선점합니다
+**제목**: 계약에 기술 협력을 묶고, 고객 안에 사람을 두고, AI 데이터센터 운영자 수준의 시스템 SW 역량을 갖춰야 합니다
 
-| | 1단계 · 2026 하반기: 디바이스를 준비합니다 | 2단계 · 2027: 워크로드로 최적화합니다 | 3단계 · 2028~: 고객 시스템과 함께 설계합니다 |
-|---|---|---|---|
-| **기술** (계단 도형) | 출하 시 구성 SKU: OP · SLC 비율 · RUH 16+ | 운영 중 조정: 배치 정책 · GC 강도 · WAF 감시 | 워크로드 구성형 플랫폼: 런타임 WAF 대응 · 고객별 운영점 |
-| **인재** | 시스템 SW 전문가 채용: 고객 시스템을 아는 사람 · 미주 현지 | FW·FTL → 호스트 SW 전환: 미국 로테이션 6~12개월 · 머지로 수료 | 오픈소스 메인테이너 · 호명되는 아키텍트 |
-| **고객 협력** | 등대 고객 1~2사 선정 · Co-Design Pod(FDE) 상주 | LMCache · vLLM · Dynamo: FDP 경로 업스트림 기여 | 전략적 협약(SCA): 공동 설계 · 다년 공급 · 워크로드 접근 |
+> **v1.0 → v1.1 (사용자 피드백)**: v1.0의 "기술 · 인재 · 고객 협력 × 3단계" 로드맵 표는 글이 많고 메시지가 흐렸다. Micron ↔ Anthropic 전략적 계약(SCA)과 Palantir FDE를 벤치마크로 세 가지 핵심 메시지를 **지금 → 앞으로** 그림으로 바꿨다.
 
-- 행 머리의 지표: 기술 = 고객 시스템의 FDP 활성 용량 / 인재 = 업스트림 머지 건수 / 고객 협력 = 워크로드를 공유한 고객 수 ([fdp-host-ssd-platform.md](../../wiki/strategies/fdp-host-ssd-platform.md) §5, [qlc-execution-strategy.md](../../wiki/strategies/qlc-execution-strategy.md) §2.0).
-- **계약의 창**: 2026년 4분기 ~ 2027년 상반기. 공급자 우위가 2027년 하반기 공급 완화 전까지라는 전망(TrendForce 2026-07-30) 기준([qlc-execution-strategy.md](../../wiki/strategies/qlc-execution-strategy.md) §2.1).
-- 대상 고객 로고 줄: NVIDIA · Meta · Google · Microsoft · AWS.
-- 90일 밴드: KV-ready SSD 정의 · 등대 고객 1~2사 선정 · Co-Design Pod 구성으로 시작합니다.
-- 범위: 2026-09-19 덱 범위 결정(개발실이 실행할 수 있는 것)을 따라 자회사 설립 · 별도 보상 · 지분 참여는 넣지 않았다. 워크로드 적응형(용량·내구성까지 운영 중 변경)은 3단계 이후의 장기 과제로 발표 원고에만 둔다([ssd-configurability-boundary.md](../../wiki/concepts/ssd-configurability-boundary.md) §6).
+| 열 | 핵심 메시지 | 벤치마크 줄 | 지금 (그레이) | 앞으로 (Blue) | 캡션 |
+|---|---|---|---|---|---|
+| ① 계약: 물량에 기술 협력을 | 장기 물량 계약만이 아니라 기술 협력을 함께 맺는다 | Micron ↔ Anthropic 로고, 2026-06 | "장기 물량 계약 (LTA)": 수량과 가격만 약속 | 적층 4단: 다년 공급(물량) → **공동 설계 · 최적화** → 운영 통합 → 자본 연계(점선, 선택). 가운데 두 단을 "기술 협력" 괄호로 묶음 | 물량 위에 기술 협력을 쌓습니다 |
+| ② 사람: 고객 안에 상주 (FDE) | 간헐적 미팅·스펙 문서를 넘어 사람이 교류하고 상주하는 협업. 그 안에서 수요를 함께 만든다 | Palantir 심볼 + "Palantir FDE", Anthropic · OpenAI도 채택 | 삼성 ··· 문서 도형 ··· 고객: "스펙 문서 · 간헐적 미팅: 명시된 요구만 오갑니다" | 삼성 제품·로드맵 줄 ↓ **사람** / ↑ **실제 요구 → 제품** 순환, 고객 AI 데이터센터 경계 안에 삼성 Pod(Blue 3명)와 고객 엔지니어(그레이 2명)가 "매일 함께" | 고객 안에서 실제 요구를 찾고, 수요를 함께 만듭니다 |
+| ③ 역량: 고객처럼 운영하는 눈 | 그동안 없던 시스템 SW, 특히 AI 데이터센터를 운영하는 고객 입장의 전문성 | "고객의 지표: 토큰당 비용 · 전력 · GPU 가동률" | 층별 현재: NAND·SSD FW 강점, 커널·I/O 일부, KV 캐시 SW 기여 0, AI DC 운영 없음 | 모든 층 Blue(위 두 층 진하게) + 근거 "KV 캐시 관리자 4종(LMCache · Mooncake · FlexKV · Dynamo)에 삼성 기여 0" | 시스템 SW와 AI 데이터센터 운영 역량 |
 
----
+- 밴드(시작): 등대 고객 1~2사와 기술 협력 계약 · Co-Design Pod 상주 · 시스템 SW 전문가 채용.
+- **FDE 필요성의 그림**: 수요를 함께 만든다는 것은 ②의 세로 순환이다. 사람이 고객 안으로 들어가고(↓), 현장에서 찾은 실제 요구가 제품이 되며(↑), 그 제품이 다시 고객의 수요가 된다. Palantir의 "현장 해법 → 제품 표준(gravel road → paved highway)"과 같은 구조다.
+- **벤치마크 범위**: Micron ↔ Anthropic 계약의 4요소(공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자)는 공개된 구성만 썼고 재무 조건은 비공개다. 자본 연계는 개발실 범위를 넘으므로(2026-09-19 덱 범위 결정) 점선 "(선택)"으로 둔다.
+- **"고객의 지표"**는 AI 데이터센터 운영자가 쓰는 말(토큰당 비용 · 전력 · GPU 가동률)로 적은 개념 줄이다. 근거는 Micron ↔ Anthropic의 공동 분석 서술과 송용호 인터뷰("상쇄 불가한 축은 파워 · 원가 · 품질")다.
+- v1.0의 3단계 로드맵(출하 시 구성 → 운영 중 조정 → 워크로드 구성형 플랫폼, 계약의 창 2026 4Q ~ 2027 상반기)은 발표자 노트와 [qlc-execution-strategy.md](../../wiki/strategies/qlc-execution-strategy.md)에 남긴다.
 
 ## 근거 표
 
@@ -86,10 +86,13 @@ wiki: [wiki/concepts/hbm3-designin-lesson.md, wiki/concepts/hbm-to-storage-spill
 | 호스트 협력 규격 연혁 | Open-Channel(FAST'17) · ZNS(TP4053, 2020-06) · FDP(TP4146, 2022-11) · Linux 6.16 write stream(2025) | NVM Express · USENIX · Phoronix | [solution-ladder-component-to-system.md](../../wiki/concepts/solution-ladder-component-to-system.md) |
 | WAF 3 → 1 | FDP 범용 실측(랜덤 50% 사용률 약 3 → 약 1), CacheLib 3.22 → 1.03 | 삼성·NVM Express, EuroSys'25 | [fdp-placement-mechanics.md](../../wiki/concepts/fdp-placement-mechanics.md) |
 | 인터뷰 | 신문섭(Bain, 2026-06-18) · 송용호(2026-09-03) | 과제팀 인터뷰 | [qlc-execution-strategy.md](../../wiki/strategies/qlc-execution-strategy.md) §2.0 |
+| Micron ↔ Anthropic 전략적 계약 | 2026-06-22, 공동 최적화 · 다년 공급 · 운영 통합 · Series H 전략 투자, 재무 조건 비공개 | Micron IR 외 | [micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md) |
+| Palantir FDE | 고객 환경 상주, "한 고객, 많은 능력", 성과로 평가, 명시 요구와 실제 요구의 간극, Anthropic · OpenAI 채택 | Pragmatic Engineer 외 | [palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md) |
+| KV 캐시 관리자 기여 | LMCache · Mooncake · FlexKV · Dynamo 저장소에 삼성 기여 흔적 없음(README 기준) | 공개 저장소 | [qlc-workload-capability-phases.md](../../wiki/strategies/qlc-workload-capability-phases.md) §4.2 |
 
 ## 이미지 자산
 
-- **로고**: `assets/logos/`(samsung · sk-hynix · nvidia · meta · google · microsoft · aws). 삼성·SK하이닉스·Huawei는 이번에 `@iconify-json/logos`·`simple-icons` npm 패키지에서 렌더해 추가. 사내 보고용 식별 표시.
+- **로고**: `assets/logos/`(samsung · sk-hynix · nvidia · meta · google · microsoft · aws · micron · anthropic · palantir). 삼성·SK하이닉스·Huawei는 이번에 `@iconify-json/logos`·`simple-icons` npm 패키지에서 렌더해 추가. 사내 보고용 식별 표시.
 - **부품 이미지**: 작업 환경에서 외부 이미지 호스트(Wikimedia·언론·벤더 사이트) 접근이 막혀 **실물 사진 대신 3D 렌더**(`scripts/render_parts/`, three.js + headless Chromium)로 만들었다. `assets/photos/`에 같은 이름(`nand` · `dram` · `hbm` · `ssd` · `server`)의 공식 사진을 넣고 스크립트를 다시 돌리면 자동으로 교체된다.
 
 ## 재생성
