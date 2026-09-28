@@ -3,6 +3,7 @@ type: presentation-outline
 deck: outputs/presentation/ssd-survival-strategy.pptx
 generator: outputs/presentation/scripts/generate_ssd_survival_pptx.py
 charts: outputs/presentation/scripts/generate_ssd_survival_charts.py
+report: outputs/report/ssd-survival-strategy-report.md (전략 해설서)
 parts: outputs/presentation/scripts/render_parts/ (3D 부품 렌더·로고)
 status: v1.3 (2026-09-28): 3장 SCA·FDE 재설계, 역량 칸 기술명, "전략 고객", KV 캐시 기여 정정
 wiki: [wiki/concepts/hbm3-designin-lesson.md, wiki/concepts/hbm-to-storage-spillover.md, wiki/concepts/qlc-ssd-market.md, wiki/concepts/high-dwpd-operating-point.md, wiki/concepts/solution-ladder-component-to-system.md, wiki/concepts/ssd-configurability-boundary.md, wiki/strategies/qlc-execution-strategy.md, wiki/strategies/qlc-workload-capability-phases.md]

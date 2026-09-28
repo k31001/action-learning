@@ -2272,3 +2272,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **위키 정정**(날짜 표기): `qlc-workload-capability-phases.md`(§1 독해 · §4.2 보유/공백 · §6 표 · 덱 표기 "Phase 3 착수: 4종 중 1종"), `qlc-execution-strategy.md`(README 언급 0 · 시스템 SW 조직 문단 · 공개 문화), `waf-runtime-response.md`(§7 미해결에 LMCache 블로그 🟡 보강). 원 원장 `kv-cache-qlc-tech-stack-vendor-capability-2026-09.md`는 불변 원칙에 따라 두고 신규 원장 §9에 충돌 5건 기록
 - **산출물 정정**: SSD 생존 전략 덱 3장 역량 격자("지금" KV 캐시 SW = LMCache, 필요한 기술 = Dynamo · Mooncake, 근거 줄 "LMCache: 삼성 Committer · FDP 배치 머지 / Mooncake · FlexKV · Dynamo: 기여 0", 노트·출처). QLC 덱 5장(격차 타일 "0건 · 접점 부재" → "1 / 4 · 접점 시작", 해소 수단 "KV 캐시는 합성 1건", 스트림 타일 넘침 수정, "Phase 3 미착수" → "착수(LMCache 1종)", 노트·출처), QLC 시각판·그림 `qlc_vis_s4`, QLC 보고서 §역량 2곳, 기획서 v7.7·생존 전략 기획서 v1.3. 렌더 QA 통과
 - index.md sources 절 원장 등록. 지식 그래프 재생성(노드 데이터 갱신) → **dashboard v2.46.49(패치)**, updates.js 항목, `npm run build` 통과
+
+## [2026-09-28] build | 다운턴에서 배운 SSD 생존 전략: 전략 해설서 v1.0
+- 사용자 지시: "이번 슬라이드의 내용을 설명하는 전략을 마크다운으로 작성". 기획서(슬라이드 설계)와 별도로 **전략 논리·근거 문서** `outputs/report/ssd-survival-strategy-report.md` 신설
+- 구성: §0 요약(제목 문단 · 장별 질문/답/근거 · 한 줄 결론) → §1 배경(HBM 점유율 표 · "복기"는 과제팀 해석임을 명시 · 인터뷰 2건 · KV 캐시가 SSD로 "내려온다"(증설) · eSSD/KV/QLC 모델 표 · DWPD 표와 반증 · 명제) → §2 솔루션(SSD 안의 해법과 WAF 한계 · 세 갈래 비교와 30 DWPD 조건표 · 수명 정보는 호스트에 · 기술 스택 3단계와 LMCache FDP 머지 · 워크로드 구성형 SSD) → §3 실행(계약: Micron ↔ Anthropic 4요소 / 사람: Palantir FDE와 수요를 함께 만드는 순환 Mermaid / 역량: 계층별 지금 대 필요한 기술 / 계약의 창·3단계·90일 / 성과 지표) → §4 리스크와 반론 → §5 근거 대장 S-1~S-18(등급) → §6 슬라이드 대응표
+- 🟡 항목(LMCache 블로그 WAF 실측 등)은 본문에서 등급을 밝혀 사실과 구분. 링크 전수 확인
+- index.md outputs 절 등록, 기획서 frontmatter에 report 연결. 대시보드 무변경 → 버전 bump 생략
