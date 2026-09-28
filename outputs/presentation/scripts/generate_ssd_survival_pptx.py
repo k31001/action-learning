@@ -550,7 +550,7 @@ tb(s, C3, EY, W3c, 1.10,
     [("LMCache · Mooncake · FlexKV · Dynamo", 18, False, GRAY)]], spacing=1.05)
 tb(s, C3, CAP_Y, W3c, 0.50, [("시스템 SW와 AI 데이터센터 운영 역량", 20, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
 
-band(s, 9.60, 0.80, "시작", "선도 고객 1~2사와 기술 협력 계약 · Co-Design Pod 상주 · 시스템 SW 전문가 채용", size=24)
+band(s, 9.60, 0.80, "시작", "전략 고객 1~2사와 기술 협력 계약 · Co-Design Pod 상주 · 시스템 SW 전문가 채용", size=24)
 footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자, 재무 조건 비공개) · Palantir FDE(고객 상주, 한 고객에 많은 능력, 성과로 평가) · "
           "KV 캐시 관리자 기여는 공개 저장소 기준(2026-09) · 인터뷰: 신문섭(Bain), 송용호 · 로고는 식별 표시")
 notes(s, "3장 실행 전략입니다. HBM의 교훈은 고객과 함께 수요를 만드는 기업이 이긴다는 것이었습니다. 그렇게 하려면 세 가지가 바뀌어야 합니다. "
@@ -560,7 +560,7 @@ notes(s, "3장 실행 전략입니다. HBM의 교훈은 고객과 함께 수요�
       "현장에서 만든 해법이 제품의 표준 기능이 되는 순환이 생기고, 그 순환이 곧 수요를 함께 만드는 과정입니다. Anthropic과 OpenAI도 같은 방식으로 자기 고객에게 들어가고 있습니다. 우리의 Co-Design Pod가 그 역할입니다. "
       "셋째, 역량입니다. 데이터의 수명 정보는 SSD가 아니라 고객의 KV 캐시 소프트웨어 안에 있습니다. 그런데 LMCache, Mooncake, FlexKV, Dynamo 같은 KV 캐시 관리자 네 곳의 공개 저장소에 삼성의 기여는 없습니다. "
       "우리가 강한 곳은 NAND와 SSD 펌웨어이고, 커널과 I/O는 일부입니다. 필요한 것은 그 위, 즉 시스템 소프트웨어와 AI 데이터센터를 직접 운영하는 고객의 눈입니다. 고객은 토큰당 비용, 전력, GPU 가동률로 말합니다. 그 수준의 전문성을 갖춘 사람을 뽑고 길러야 합니다. "
-      "시작은 선도 고객 한두 곳과 기술 협력을 포함한 계약, Co-Design Pod 상주, 시스템 소프트웨어 전문가 채용입니다.")
+      "시작은 전략 고객 한두 곳과 기술 협력을 포함한 계약, Co-Design Pod 상주, 시스템 소프트웨어 전문가 채용입니다.")
 
 prs.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(prs.slides._sldIdLst)}장)")
