@@ -2214,3 +2214,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 근거: 레포 원장 인용(QLC 30EB ✅, eSSD 26→48% 🟡, SK하이닉스 실적 콜 🟡, SLC 기반 AI SSD 🟡, FL6·X202Z 60 DWPD 🟡, FDP 구성은 네임스페이스 생성 시 선택 ✅). **pSLC P/E · ≥30 DWPD 제품 지형 · NVMe Capacity Management · 동적 변경 장벽은 리서치 진행 중** — 8칸 〔리서치 반영 예정〕
 - 컨펌 요청 4건: 2TB·30 DWPD 출처 표기(`[사내 확인]` 또는 설계점 예시) · 수단 4개 분석 포함 여부 · QLC 전략 관계 한 줄 포함 여부 · 용어(영문 또는 워크로드 구성형/적응형)
 - index.md outputs 절에 등록. 덱은 컨펌 후 제작. 대시보드 무변경
+
+## [2026-09-28] ingest | 워크로드 구성형 SSD — 리서치 원장 wcssd-v1 수집 · 보고서 초안 v0.2
+- 신설 원장 `sources/articles/wcssd-v1-high-dwpd-configurable-2026-09.md`(Research Agent). 벤더·표준 도메인이 프록시에 막혀 **✅는 GitHub 원문(xNVMe·QEMU·libnvme·nvme-cli·SEF API·Dynamo·aiDAPTIV)만**, 나머지는 🟡. Phison AI100E 수치는 자료 간 불일치(68.5 대 100 DWPD)라 보고서에 쓰지 않음
+- **v0.1의 전제를 고친 사실**: 2TB·30 DWPD라는 운영점은 이미 있다 — 삼성 Z-SSD SZ985(30 DWPD, 2018) · Micron XTR(1.92TB·35 DWPD, 2023). 그래서 2장의 "새로움"을 운영점이 아니라 **① KV 캐시 작업 집합 계층 ② 운영점을 고객이 고르는 제품군 ③ 범용 NAND + FDP로 닿음**으로 다시 정의(컨펌 1번)
+- **1장 근거**: 30 DWPD 이상 출하·발표 제품은 모두 SLC/pSLC 매체이고 용량은 0.24~3.2TB(최대 6.4TB) — "지금은 SLC급으로만 닿는다"의 전수 근거. TCO는 고정 배수 대신 이론비 1/4과 실제 용량비 5:1·6.25:1로만 표기
+- **2장 판정**: 30 DWPD·5년 조건 `P/E × (원시/사용자) = 54,750 × WAF`. WAF 1이면 범용 TLC의 SLC 모드(6만 P/E급)로 기본 OP만 두고 닿고, WAF 3이면 10만 P/E급으로도 OP 64%가 필요 → **FDP가 "TCO를 크게 높이지 않는" 첫 수단**. QLC 가정을 공개 범위 P/E 약 1,000·WAF 2로 고쳐 LC9 0.3 검산(0.285). KV 캐시 쓰기 부하의 공개 수치는 1~3 / 3.2 / 7~10+ / 24 / 50~120으로 30 DWPD 직접 근거 없음 → 출처 표기 컨펌(2번)
+- **3장 근거**: 출하 시 구성(OP·SLC 비율 = Micron Flex Capacity·DapuStor J5060·Kioxia SEF 선례, FDP 구성 = 네임스페이스 0개일 때만 변경)과 운영 중 조정(PID·RUH Update·FDP 통계로 실시간 WAF)의 경계가 **NVMe 규격 자체의 경계와 일치**. GC 강도는 PLM 규격만 있고 지원 제품이 없는 자리. 적응형 장벽은 용량 축소 규격 부재·Capacity Management 미출하·CVSS(FAST'24) 쓰기 2.94배
+- 보고서 v0.2: 〔리서치 반영 예정〕 8칸 모두 해소, 근거 대장 W-1~W-18, 컨펌 요청 6건. index.md에 원장(sources 절) 등록·보고서 항목 v0.2로 갱신. **대시보드 무변경**(보고서·원장만) → 버전 bump 생략. 덱은 컨펌 후 제작
