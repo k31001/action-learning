@@ -1,15 +1,16 @@
 ---
 type: report
-status: v0.2 보고서로 확정 (2026-09-28) — 슬라이드 제작 보류. v0.1 대비 리서치 원장 반영
+status: v0.2 보고서로 확정 (2026-09-28) — 슬라이드 제작 보류. v0.1 대비 리서치 원장 반영. 위키 환원 시 정합성 정정 2건(§1.2 SLC AI SSD의 공개 동기, §1.3 Optane 예외)
 deck: 보류 (재개 시 outputs/presentation/workload-configurable-ssd.pptx — §6 구성안·§7 미결 사항 기준)
 sources: [sources/articles/wcssd-v1-high-dwpd-configurable-2026-09.md]
+wiki: [wiki/concepts/high-dwpd-operating-point.md, wiki/concepts/ssd-configurability-boundary.md]
 related: outputs/report/qlc-ssd-strategy-report.md (QLC 대용량 계층 전략)
 last_updated: 2026-09-28
 ---
 
 # 워크로드 구성형 SSD 전략 — 저용량 초고DWPD 제품군과 그 진화 경로
 
-> **문서 성격**: 독립 보고서(2026-09-28 확정, 슬라이드 제작은 보류). 덱을 재개하면 §6 구성안과 §7 미결 사항을 기준으로 옮긴다. 전략의 골격(문제 → 제품 → 진화)은 기획 의도를 그대로 따르고, 이 문서는 그 골격에 **근거와 산식**을 붙인다. 신규 근거는 [wcssd-v1-high-dwpd-configurable-2026-09.md](../../sources/articles/wcssd-v1-high-dwpd-configurable-2026-09.md)(이하 **원장**)에 있다. 공개 자료가 없는 고객 요구 수치는 `[사내 확인]`으로 둔다.
+> **문서 성격**: 독립 보고서(2026-09-28 확정, 슬라이드 제작은 보류). 덱을 재개하면 §6 구성안과 §7 미결 사항을 기준으로 옮긴다. 전략의 골격(문제 → 제품 → 진화)은 기획 의도를 그대로 따르고, 이 문서는 그 골격에 **근거와 산식**을 붙인다. 신규 근거는 [wcssd-v1-high-dwpd-configurable-2026-09.md](../../sources/articles/wcssd-v1-high-dwpd-configurable-2026-09.md)(이하 **원장**)에 있고, 위키 개념 페이지 [high-dwpd-operating-point.md](../../wiki/concepts/high-dwpd-operating-point.md)(1~2장 근거)와 [ssd-configurability-boundary.md](../../wiki/concepts/ssd-configurability-boundary.md)(3장 근거)로 환원했다. 둘이 어긋나면 위키가 우선이다. 공개 자료가 없는 고객 요구 수치는 `[사내 확인]`으로 둔다.
 >
 > **v0.1 → v0.2에서 바뀐 것**: ① 고내구 제품 지형을 전수로 채웠고, **2TB·30 DWPD라는 운영점 자체는 이미 존재한다**는 사실을 확인해 2장의 "새로움"을 다시 정의했다(§2.1, 컨펌 1번). ② pSLC P/E 범위로 **"WAF 1이면 범용 NAND의 SLC 모드로 설계점에 닿는다"**를 판정했다(§2.3). ③ 출하 시 구성·운영 중 조정·동적 변경 각각에 규격·제품 근거를 붙였다(§3). ④ QLC P/E 가정을 공개 범위(약 1,000)로 고쳐 LC9 검산을 다시 했다. ⑤ "TB당 원가 약 4배"는 고정 배수로 쓰지 않기로 했다(§1.3).
 
@@ -46,11 +47,11 @@ last_updated: 2026-09-28
 | DapuStor **X5 SCM** | 최대 **120 DWPD** | **"KV 캐시 오프로딩·TTFT 단축"** | 2026-07 WAIC | 🟡 |
 | Phison Pascari **X202Z** | 최대 **60 DWPD** | AI 상시 기입 워크로드 | 2026-06 COMPUTEX | 🟡 |
 
-**반증도 함께 적는다**: KV 캐시 오프로드가 언제나 쓰기 집약적인 것은 아니다. DeepSpeed·FlexGen 오프로드 트레이스는 읽기 편중이고(CHEOPS 2025 🟡), NVIDIA Dynamo는 SSD 수명을 이유로 **재사용 빈도가 일정 이상인 블록만** 디스크로 내린다(✅ GitHub). 즉 **고DWPD 요구는 KV 캐시 전체가 아니라 교체가 잦은 작업 집합 계층의 성격**이다.
+**반증도 함께 적는다**: KV 캐시 오프로드가 언제나 쓰기 집약적인 것은 아니다. DeepSpeed·FlexGen 오프로드 트레이스는 읽기 편중이고(CHEOPS 2025 🟡), NVIDIA Dynamo는 SSD 수명을 이유로 **재사용 빈도가 일정 이상인 블록만** 디스크로 내린다(✅ GitHub). 또한 2025~2026년 SLC AI SSD의 공개 동기는 IOPS·지연이며 DWPD가 아니다 — 위 표에서 DWPD를 병기한 것은 GP1·X5·X202Z다(원장 X-11). 즉 **고DWPD 요구는 KV 캐시 전체가 아니라 교체가 잦은 작업 집합 계층의 성격**이다.
 
 ### 1.3 지금은 SLC급으로만 맞출 수 있다 — 그래서 TCO가 오른다
 
-현재 **정격 30 DWPD 이상**으로 출하된 SSD는 예외 없이 **셀당 비트를 줄인 고내구 매체**(SLC · XL-FLASH · Z-NAND · SLC 모드)를 쓴다(원장 §1).
+현재 **정격 30 DWPD 이상**으로 출하된 SSD는 예외 없이 **셀당 비트를 줄인 고내구 매체**(SLC · XL-FLASH · Z-NAND · SLC 모드)이거나 NAND가 아닌 SCM(Optane P5800X, 단종)이다(원장 §1).
 
 | 제품 | 매체 | 용량 | 정격 DWPD | 출시 |
 |---|---|---|---|---|

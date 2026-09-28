@@ -77,3 +77,5 @@ T1~T3이 삼성이 직접 만드는 범위이고, T4는 규격 제안, T5~T6은 
 - 내구성 산식: [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
 - 앞 장(이 기술이 필요한 이유): [fdp-placement-mechanics.md](fdp-placement-mechanics.md) §3 — 혼재(④)가 현실이고 배치 힌트는 켜는 것만으로 성립하지 않는다
 - 플랫폼 전략: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md)
+- T3의 규격상 상태 확인: [ssd-configurability-boundary.md](ssd-configurability-boundary.md) §7 — FDP 구성 변경은 엔듀런스 그룹의 네임스페이스가 0개일 때만 허용(QEMU 구현 ✅), 대안 규격(Capacity Management · CDP)은 지원 출하 제품 없음
+- 저용량 초고DWPD 계층에서의 같은 산식: [high-dwpd-operating-point.md](high-dwpd-operating-point.md)

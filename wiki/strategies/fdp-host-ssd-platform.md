@@ -147,7 +147,7 @@ AI 수요 급증으로 메모리 계약이 Spot → LTA → 전략적 고객 계
 - **A (황금 요새)**: 진영 내 핵심 CSP와 Binding+플랫폼 결합이 진영 락인 강화
 - **C·D (AI 조정)**: Binding 최소 물량 + 시스템 SW 전환비용이 방어벽 ([rs8-structured-revenue-hedging.md](invariant/rs8-structured-revenue-hedging.md) 연계)
 - **E (패러다임 전환)**: Host Control 확장(4단계)이 차세대 스토리지 아키텍처 전환기의 헤지
-- 연결: [dev-org-transformation.md](dev-org-transformation.md) · [rs3-customer-switching-cost.md](invariant/rs3-customer-switching-cost.md) · [embedded-software-monetization.md](../concepts/embedded-software-monetization.md) · [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md)
+- 연결: [ssd-configurability-boundary.md](../concepts/ssd-configurability-boundary.md)(FDP 구성은 출하 시, 배치는 운영 중 — 규격이 그은 경계) · [dev-org-transformation.md](dev-org-transformation.md) · [rs3-customer-switching-cost.md](invariant/rs3-customer-switching-cost.md) · [embedded-software-monetization.md](../concepts/embedded-software-monetization.md) · [customer-co-design-anthropic.md](../concepts/customer-co-design-anthropic.md)
 
 ## [Update 2026-09-17] 자매편 — QLC 추론 캐시 티어 전략
 

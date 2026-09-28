@@ -79,3 +79,4 @@ QLC eSSD 덱 1장 ②구획이 서는 자리다. [hbm3-designin-lesson.md](hbm3-
 - 뒤: [essd-purchase-criteria-shift.md](essd-purchase-criteria-shift.md) (그 수요가 SSD 구매 기준으로 번역된 모습)
 - 요구의 크기: [qlc-ssd-market.md](qlc-ssd-market.md) §4 · [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
 - 스택에서 우리 자리: [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)
+- 내려온 KV 캐시 중 교체가 잦은 활성 작업 집합의 내구성 요구와 그 반증: [high-dwpd-operating-point.md](high-dwpd-operating-point.md) §3

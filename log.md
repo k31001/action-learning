@@ -2228,3 +2228,12 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - `outputs/report/workload-configurable-ssd-report.md` 상태를 "v0.2 보고서로 확정 · 덱 보류"로 바꿈. 본문 내용은 그대로 둠
 - §7 "컨펌 요청 사항"은 "미결 사항 — 덱 제작 재개 시 확인"으로 제목만 바꿈. 여섯 항목은 답이 나지 않은 채로 남김(새로움 재정의 · 2TB·30 DWPD 출처 표기 · FDP 조건 표 · GC 강도 강조 · QLC 관계 한 줄 · 용어)
 - index.md 보고서 항목 상태 갱신. 덱(`workload-configurable-ssd.pptx`)과 생성 스크립트는 만들지 않음. 대시보드 무변경 → 버전 bump 생략
+
+## [2026-09-28] ingest | 워크로드 구성형 SSD 근거 → 위키 개념 페이지 2종 환원
+- 사용자 지시: 보고서 근거를 "위키 개념 페이지로 옮겨줘". 보고서는 outputs(빌드 산출물)라 근거가 위키에 없던 상태를 해소
+- 신설 `wiki/concepts/high-dwpd-operating-point.md`: F29를 용량 쪽으로 옮긴 운영점 산식(같은 하드웨어 = 같은 하루 쓰기 예산, Micron Flex Capacity의 TBW 고정·DWPD 변동이 그 보증 규칙). 정격 30 DWPD 이상 제품 지형(SLC급 NAND 또는 SCM, 0.24~3.2TB, 2TB·30 점은 기존 범위 안). KV 캐시 30 DWPD 공개 근거 없음과 층위·반증. 30 DWPD 조건표(P/E × WAF → OP), 수단 비용 순서, 원가 배수 금지, 쓰면 안 되는 문장 7종
+- 신설 `wiki/concepts/ssd-configurability-boundary.md`: 배치는 운영 중, 용량·OP·SLC 비율·FDP 구조는 빈 상태에서만 — 규격 코드(libnvme·QEMU·SEF ✅)로 확인한 경계가 "계약을 깨는가"와 일치. 네 단계, 항목별 규격·출하 선례, GC 강도의 빈자리(PLM 규격만), 적응형 장벽 9종, QLC 전략 T3와 같은 벽, 쓰면 안 되는 문장 6종
+- **보고서 정합성 정정 2건**(위키 우선): §1.3 "30 DWPD 이상은 예외 없이 셀당 비트를 줄인 매체" → Optane P5800X(SCM, 단종) 예외 병기. §1.2에 "2025~2026 SLC AI SSD의 공개 동기는 IOPS·지연이며 DWPD가 아니다(원장 X-11)" 추가. 보고서 frontmatter에 `wiki:` 필드, 문서 성격에 "어긋나면 위키 우선" 명시
+- 역링크 8곳: solution-ladder(F29) · fdp-placement-mechanics · waf-runtime-response(T3 규격 상태) · essd-purchase-criteria-shift · qlc-ssd-market · hbm-to-storage-spillover · strategies/qlc-workload-capability-phases(§8 연결 신설) · strategies/fdp-host-ssd-platform. 전략 페이지는 링크만 추가, 전략 내용 무변경 → DecisionTracker·보고서 전략 절 갱신 불필요
+- index.md concepts 절 2건 등록·보고서 항목에 위키 환원 표기. 지식 그래프 재생성(노드 114→116, 상호 118→131, 고아 0, 비대칭 499 유지)
+- **대시보드 (v2.46.48, 패치)**: `knowledgeGraph.js` 재생성, `updates.js` 항목, `version.js`. `npm run build` 통과. UI·탭 무변경

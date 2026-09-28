@@ -14,6 +14,30 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-28 (워크로드 구성형 SSD — 위키 개념 페이지 2종 환원) ────────────────
+  {
+    date: '2026-09-28',
+    type: 'ingest',
+    title: '초고DWPD 운영점 · 출하 시 구성과 운영 중 조정의 경계 — 위키 개념 페이지 2종 신설',
+    summary:
+      '워크로드 구성형 SSD 보고서(v0.2)의 근거를 위키로 환원했다. 2TB·30 DWPD라는 점은 이미 기존 제품 범위 안에 있고(Micron XTR 1.92TB·35, 삼성 SZ985 30), 새로운 것은 운영점을 고객이 고르고 범용 NAND + FDP로 거기에 닿는다는 점이다. 무엇을 언제 바꿀 수 있는지는 NVMe 규격이 이미 선을 그어 두었다.',
+    version: 'v2.46.48',
+    tags: ['eSSD', 'DWPD', 'FDP', 'KV Cache', 'NVMe'],
+    items: [
+      { label: '같은 쓰기 예산, 다른 운영점', detail: 'F29를 용량 쪽으로 옮기면 용량 × DWPD가 하드웨어의 하루 쓰기 예산이다. 60 TB/일 하나가 1TB·60 / 2TB·30 / 4TB·15 / 8TB·7.5를 모두 만족하고, Micron Flex Capacity가 이미 이 규칙(TBW 고정·DWPD 변동)으로 보증한다' },
+      { label: '30 DWPD 이상 = SLC급 또는 SCM', detail: '출하 제품 용량은 0.24~3.2TB(최대 6.4TB), 최빈 800GB·1.6TB. NAND 유형은 출처가 갈려 "SLC 모드로 운용"으로 표기' },
+      { label: 'KV 캐시 30 DWPD는 공개 근거 없음', detail: '공개 수치는 층위별 1~3 / 3.2(실측) / 7~10+·24(시스템 주장) / 50~120(SLC 정격). 오프로드 트레이스는 읽기 편중이고 Dynamo는 SSD 수명 때문에 쓰기를 거른다 → 고DWPD는 활성 작업 집합 계층의 성격' },
+      { label: 'WAF 1이면 범용 TLC SLC 모드로 닿는다', detail: '30 DWPD·5년 조건 P/E × (원시/사용자) = 54,750 × WAF. 6만 P/E급은 WAF 1에서 기본 OP로 충분, WAF 3이면 10만 P/E도 OP 64% 필요' },
+      { label: '규격이 그은 경계', detail: '배치는 운영 중(쓰기별 배치 ID·RUH Update·FDP 통계), 용량·OP·SLC 비율·FDP 구조는 빈 상태에서만(libnvme·QEMU·SEF 코드 확인). GC 강도는 PLM 규격만 있고 지원 제품이 없는 자리' },
+      { label: '지식 그래프', detail: '노드 114 → 116, 상호 링크 118 → 131, 고아 0. 관련 위키 8곳에 역링크 추가' },
+    ],
+    links: [
+      { label: '위키 — 초고DWPD는 운영점이다', href: 'wiki/concepts/high-dwpd-operating-point.md' },
+      { label: '위키 — 출하 시 구성과 운영 중 조정의 경계', href: 'wiki/concepts/ssd-configurability-boundary.md' },
+      { label: '원장 — 저용량·초고DWPD와 구성 가능성', href: 'sources/articles/wcssd-v1-high-dwpd-configurable-2026-09.md' },
+      { label: '보고서 v0.2', href: 'outputs/report/workload-configurable-ssd-report.md' },
+    ],
+  },
   // ── 2026-09-23 (QLC 덱 1장 교훈 시점 오류 정정) ──────────────────────────────
   {
     date: '2026-09-23',

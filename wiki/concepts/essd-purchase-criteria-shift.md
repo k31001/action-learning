@@ -69,3 +69,4 @@ DWPD는 **용량으로 나눈 지표**다. 단독으로 읽으면 "내구성 요
 - 그 수요가 내려온 경로: [hbm-to-storage-spillover.md](hbm-to-storage-spillover.md) — HBM → DRAM → NVMe SSD 스필오버
 - 시장 페이지: [qlc-ssd-market.md](qlc-ssd-market.md) §3.3
 - 내구성 축의 산식: [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
+- 추론 캐시 계층 안의 고DWPD 끝(활성 작업 집합, 정격 30 DWPD 이상 제품 지형과 공개 근거의 층위): [high-dwpd-operating-point.md](high-dwpd-operating-point.md)

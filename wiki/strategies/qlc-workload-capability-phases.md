@@ -155,3 +155,8 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 - A(황금 요새): 진영 내 CSP·NVIDIA 생태계 안에서 Phase 1·2가 인증 장벽으로 작동.
 - C·D(AI 조정): 캐시 티어 확장 지연. Phase 2 도구와 수명 보증이 기존 QLC 용량 티어의 전환비용으로 남는다.
 - E(패러다임 전환): 커널·플랫폼 계층 참여(④)가 차세대 스토리지 인터페이스 전환기의 헤지.
+
+## 8. 연결
+
+- 출하 시 구성과 운영 중 조정의 규격상 경계(Phase 2 정책 조정이 어디까지 열려 있나): [ssd-configurability-boundary.md](../concepts/ssd-configurability-boundary.md)
+- 같은 KV 캐시의 저용량·초고DWPD 계층: [high-dwpd-operating-point.md](../concepts/high-dwpd-operating-point.md)

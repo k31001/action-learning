@@ -197,6 +197,7 @@ TrendForce는 2024년 QLC eSSD 비트 출하를 **30EB, 2023년 대비 4배**로
 ## 6. 연결
 
 - 역량·기술 전략: [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)
+- 운영점 곡선의 반대쪽 끝(저용량·초고DWPD, 캐시 계층 상단): [high-dwpd-operating-point.md](high-dwpd-operating-point.md) · 구성 시점의 경계: [ssd-configurability-boundary.md](ssd-configurability-boundary.md)
 - 실행 전략·고객 협업: [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md)
 - 선행 전략: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md)(자매편), [dev-org-transformation.md](../strategies/dev-org-transformation.md)
 - 시장 맥락: [ssd-ufs-market.md](ssd-ufs-market.md), [nand-process-transition.md](nand-process-transition.md), [nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md)
