@@ -2254,3 +2254,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 근거: [micron-anthropic-sca-2026-06-22.md](sources/articles/micron-anthropic-sca-2026-06-22.md)(4요소, 재무 조건 비공개), [palantir-fde-model-2026-07.md](sources/articles/palantir-fde-model-2026-07.md), qlc-workload-capability-phases §4.2(기여 흔적 없음 ✅ README). 자본 연계는 2026-09-19 덱 범위 결정대로 "(선택)"
 - **스킬 v2**: 계정 스킬 `samsung-memory-ppt-design-skill`은 이 환경에 읽기 전용으로 동기화되므로 직접 수정할 수 없다. 레포 프로젝트 스킬 `.claude/skills/samsung-memory-ppt-design-skill/`로 v1 전문 + 11절 시각 우선 작성법(원칙 5 · 캔버스 글자 크기표 · 레이아웃 템플릿 4 · 차트 규칙 · 개념 도형 어휘 · 로고 · 부품 이미지 · 사실 규율 · 렌더 QA)을 만들고, 기본 다이얼 4/7/6, 사전 점검 6항목 추가. 도구: `scripts/deck_helpers.py`(Deck 클래스, 동작 확인), `qa_audit.py`(최소 pt · em-dash 감사), `qa_render.sh`, `render_parts/`(Chromium 경로 환경변수화). 배포 패키지 `outputs/skills/samsung-memory-ppt-design-skill.skill`(package_skill 검증 통과, 설명문 콜론이 YAML을 깨서 마침표로 수정) → claude.ai 계정 스킬 교체용
 - 렌더 QA 3장 통과(본문 16pt+, 출처 15pt, em-dash 0). index.md에 스킬 2건 등록, 덱·기획서 항목 v1.1. **대시보드 무변경** → 버전 bump 생략
+
+## [2026-09-28] build | SSD 생존 전략 덱 3장 v1.2: 역량 칸 기술명 · "선도 고객"
+- 사용자 피드백 ①: 역량 구획의 파란 "필요" 칸에 부족한 역량의 대표 기술명을 넣어 구체성을 높임. 격자 폭을 층 1.70 / 지금 1.20 / 필요한 기술 2.55in로 재배분. AI DC 운영 = TCO 모델 · 추론 SLO, KV 캐시 SW = LMCache · Mooncake, 커널 · I/O = io_uring · GDS · NIXL(부족 세 층 진한 Blue), SSD FW = FDP · WAF 텔레메트리(강화, 중간 Blue), NAND = 연한 Blue(유지). "지금" 칸의 빈칸은 "없음"으로 명시
+- 사용자 피드백 ②: "등대 고객"이 한국어로 어색 → **"선도 고객"**으로 통일. 덱(밴드·노트), 기획서, 위키 `qlc-execution-strategy.md`(4곳), QLC 보고서(1곳) 동시 치환
+- 사용자 피드백 ③(삼성의 KV 캐시 관련 활동 재조사)은 Research Agent 진행 중 → 결과는 새 원장과 후속 항목으로 반영
+- 대시보드 무변경 → 버전 bump 생략

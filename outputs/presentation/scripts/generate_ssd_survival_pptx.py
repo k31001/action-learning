@@ -519,31 +519,38 @@ chevron(s, C3 - 0.19, 6.40, w=0.16, h=0.50)
 # ---- ③ 역량: AI 데이터센터 운영자의 눈
 panel_head(s, C3, W3c, 3, "역량: 고객처럼 운영하는 눈")
 tb(s, C3, BENCH_Y - 0.02, W3c, 0.38, [[("고객의 지표  ", 16, False, GRAY), ("토큰당 비용 · 전력 · GPU 가동률", 18, True, INK)]], anchor=MSO_ANCHOR.MIDDLE)
-LW3, CW3, G3 = 2.05, 1.60, 0.10
-cxn, cxf = C3 + LW3, C3 + LW3 + CW3 + G3
-tb(s, cxn, NOW_Y, CW3, 0.36, [("지금", 18, True, GRAY_2)], align=PP_ALIGN.CENTER)
-tb(s, cxf, NOW_Y, CW3, 0.36, [("필요", 18, True, BLUE)], align=PP_ALIGN.CENTER)
-layers3 = [("AI DC 운영", "", "off"), ("KV 캐시 SW", "기여 0", "off"), ("커널 · I/O", "일부", "part"),
-           ("SSD FW", "강점", "on"), ("NAND", "강점", "on")]
+LW3, CWN, G3, CWF = 1.70, 1.20, 0.10, 2.55
+cxn, cxf = C3 + LW3, C3 + LW3 + CWN + G3
+tb(s, cxn, NOW_Y, CWN, 0.36, [("지금", 18, True, GRAY_2)], align=PP_ALIGN.CENTER)
+tb(s, cxf, NOW_Y, CWF, 0.36, [("필요한 기술", 18, True, BLUE)], align=PP_ALIGN.CENTER)
+# (층, 지금, 지금 상태, 필요한 대표 기술, 필요 칸 색)
+layers3 = [("AI DC 운영", "없음", "off", "TCO 모델 · 추론 SLO", BLUE),
+           ("KV 캐시 SW", "기여 0", "off", "LMCache · Mooncake", BLUE),
+           ("커널 · I/O", "일부", "part", "io_uring · GDS · NIXL", BLUE),
+           ("SSD FW", "강점", "on", "FDP · WAF 텔레메트리", BLUE_T1),
+           ("NAND", "강점", "on", "", BLUE_T2)]
 RY3, RP3, RH3 = NOW_Y + 0.46, 0.70, 0.60
-for r, (nm, now_t, st) in enumerate(layers3):
+for r, (nm, now_t, st, need, col) in enumerate(layers3):
     yy = RY3 + r * RP3
-    top2 = r < 2
-    tb(s, C3, yy, LW3 - 0.1, RH3, [(nm, 18, True, BLUE if top2 else GRAY)], anchor=MSO_ANCHOR.MIDDLE)
+    gap = r < 3
+    tb(s, C3, yy, LW3 - 0.08, RH3, [(nm, 18, True, BLUE if gap else GRAY)], anchor=MSO_ANCHOR.MIDDLE)
     if st == "on":
-        label_box(s, cxn, yy, CW3, RH3, [(now_t, 18, True, WHITE)], fill=GRAY_2)
+        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, WHITE)], fill=GRAY_2)
     elif st == "part":
-        label_box(s, cxn, yy, CW3, RH3, [(now_t, 18, True, GRAY)], fill=PALE)
+        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, GRAY)], fill=PALE)
     else:
-        label_box(s, cxn, yy, CW3, RH3, [(now_t, 18, True, GRAY)] if now_t else [("", 18, False, GRAY)], fill=WHITE, line=GRAY_2, dash=True)
-    rect(s, cxf, yy, CW3, RH3, fill=BLUE if top2 else BLUE_T1, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
+        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, GRAY)], fill=WHITE, line=GRAY_2, dash=True)
+    if need:
+        label_box(s, cxf, yy, CWF, RH3, [(need, 17, True, WHITE)], fill=col)
+    else:
+        rect(s, cxf, yy, CWF, RH3, fill=col, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
 EY = RY3 + 5 * RP3 + 0.10
 tb(s, C3, EY, W3c, 1.10,
    [[("KV 캐시 관리자 4종에 ", 18, False, GRAY), ("삼성 기여 0", 18, True, INK)],
     [("LMCache · Mooncake · FlexKV · Dynamo", 18, False, GRAY)]], spacing=1.05)
 tb(s, C3, CAP_Y, W3c, 0.50, [("시스템 SW와 AI 데이터센터 운영 역량", 20, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
 
-band(s, 9.60, 0.80, "시작", "등대 고객 1~2사와 기술 협력 계약 · Co-Design Pod 상주 · 시스템 SW 전문가 채용", size=24)
+band(s, 9.60, 0.80, "시작", "선도 고객 1~2사와 기술 협력 계약 · Co-Design Pod 상주 · 시스템 SW 전문가 채용", size=24)
 footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자, 재무 조건 비공개) · Palantir FDE(고객 상주, 한 고객에 많은 능력, 성과로 평가) · "
           "KV 캐시 관리자 기여는 공개 저장소 기준(2026-09) · 인터뷰: 신문섭(Bain), 송용호 · 로고는 식별 표시")
 notes(s, "3장 실행 전략입니다. HBM의 교훈은 고객과 함께 수요를 만드는 기업이 이긴다는 것이었습니다. 그렇게 하려면 세 가지가 바뀌어야 합니다. "
@@ -553,7 +560,7 @@ notes(s, "3장 실행 전략입니다. HBM의 교훈은 고객과 함께 수요�
       "현장에서 만든 해법이 제품의 표준 기능이 되는 순환이 생기고, 그 순환이 곧 수요를 함께 만드는 과정입니다. Anthropic과 OpenAI도 같은 방식으로 자기 고객에게 들어가고 있습니다. 우리의 Co-Design Pod가 그 역할입니다. "
       "셋째, 역량입니다. 데이터의 수명 정보는 SSD가 아니라 고객의 KV 캐시 소프트웨어 안에 있습니다. 그런데 LMCache, Mooncake, FlexKV, Dynamo 같은 KV 캐시 관리자 네 곳의 공개 저장소에 삼성의 기여는 없습니다. "
       "우리가 강한 곳은 NAND와 SSD 펌웨어이고, 커널과 I/O는 일부입니다. 필요한 것은 그 위, 즉 시스템 소프트웨어와 AI 데이터센터를 직접 운영하는 고객의 눈입니다. 고객은 토큰당 비용, 전력, GPU 가동률로 말합니다. 그 수준의 전문성을 갖춘 사람을 뽑고 길러야 합니다. "
-      "시작은 등대 고객 한두 곳과 기술 협력을 포함한 계약, Co-Design Pod 상주, 시스템 소프트웨어 전문가 채용입니다.")
+      "시작은 선도 고객 한두 곳과 기술 협력을 포함한 계약, Co-Design Pod 상주, 시스템 소프트웨어 전문가 채용입니다.")
 
 prs.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(prs.slides._sldIdLst)}장)")
