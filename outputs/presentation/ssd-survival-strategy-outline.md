@@ -4,7 +4,7 @@ deck: outputs/presentation/ssd-survival-strategy.pptx
 generator: outputs/presentation/scripts/generate_ssd_survival_pptx.py
 charts: outputs/presentation/scripts/generate_ssd_survival_charts.py
 parts: outputs/presentation/scripts/render_parts/ (3D 부품 렌더·로고)
-status: v1.1 (2026-09-28): 3장을 SCA·FDE 벤치마크 기반으로 재설계
+status: v1.3 (2026-09-28): 3장 SCA·FDE 재설계, 역량 칸 기술명, "전략 고객", KV 캐시 기여 정정
 wiki: [wiki/concepts/hbm3-designin-lesson.md, wiki/concepts/hbm-to-storage-spillover.md, wiki/concepts/qlc-ssd-market.md, wiki/concepts/high-dwpd-operating-point.md, wiki/concepts/solution-ladder-component-to-system.md, wiki/concepts/ssd-configurability-boundary.md, wiki/strategies/qlc-execution-strategy.md, wiki/strategies/qlc-workload-capability-phases.md]
 ---
 
@@ -62,11 +62,12 @@ wiki: [wiki/concepts/hbm3-designin-lesson.md, wiki/concepts/hbm-to-storage-spill
 |---|---|---|---|---|---|
 | ① 계약: 물량에 기술 협력을 | 장기 물량 계약만이 아니라 기술 협력을 함께 맺는다 | Micron ↔ Anthropic 로고, 2026-06 | "장기 물량 계약 (LTA)": 수량과 가격만 약속 | 적층 4단: 다년 공급(물량) → **공동 설계 · 최적화** → 운영 통합 → 자본 연계(점선, 선택). 가운데 두 단을 "기술 협력" 괄호로 묶음 | 물량 위에 기술 협력을 쌓습니다 |
 | ② 사람: 고객 안에 상주 (FDE) | 간헐적 미팅·스펙 문서를 넘어 사람이 교류하고 상주하는 협업. 그 안에서 수요를 함께 만든다 | Palantir 심볼 + "Palantir FDE", Anthropic · OpenAI도 채택 | 삼성 ··· 문서 도형 ··· 고객: "스펙 문서 · 간헐적 미팅: 명시된 요구만 오갑니다" | 삼성 제품·로드맵 줄 ↓ **사람** / ↑ **실제 요구 → 제품** 순환, 고객 AI 데이터센터 경계 안에 삼성 Pod(Blue 3명)와 고객 엔지니어(그레이 2명)가 "매일 함께" | 고객 안에서 실제 요구를 찾고, 수요를 함께 만듭니다 |
-| ③ 역량: 고객처럼 운영하는 눈 | 그동안 없던 시스템 SW, 특히 AI 데이터센터를 운영하는 고객 입장의 전문성 | "고객의 지표: 토큰당 비용 · 전력 · GPU 가동률" | 층별 현재: NAND·SSD FW 강점, 커널·I/O 일부, KV 캐시 SW 기여 0, AI DC 운영 없음 | "필요한 기술" 칸에 대표 기술명: AI DC 운영 = TCO 모델 · 추론 SLO / KV 캐시 SW = LMCache · Mooncake / 커널 · I/O = io_uring · GDS · NIXL (부족한 세 층 진한 Blue) / SSD FW = FDP · WAF 텔레메트리 (강화, 중간 Blue) / NAND = 연한 Blue(유지) | 시스템 SW와 AI 데이터센터 운영 역량 |
+| ③ 역량: 고객처럼 운영하는 눈 | 그동안 없던 시스템 SW, 특히 AI 데이터센터를 운영하는 고객 입장의 전문성 | "고객의 지표: 토큰당 비용 · 전력 · GPU 가동률" | 층별 현재: NAND·SSD FW 강점, 커널·I/O 일부, KV 캐시 SW 기여 0, AI DC 운영 없음 | "필요한 기술" 칸에 대표 기술명: AI DC 운영 = TCO 모델 · 추론 SLO / KV 캐시 SW = Dynamo · Mooncake (지금 칸 "LMCache") / 커널 · I/O = io_uring · GDS · NIXL (부족한 세 층 진한 Blue) / SSD FW = FDP · WAF 텔레메트리 (강화, 중간 Blue) / NAND = 연한 Blue(유지) | 시스템 SW와 AI 데이터센터 운영 역량 |
 
 - 밴드(시작): 전략 고객 1~2사와 기술 협력 계약 · Co-Design Pod 상주 · 시스템 SW 전문가 채용.
 - **FDE 필요성의 그림**: 수요를 함께 만든다는 것은 ②의 세로 순환이다. 사람이 고객 안으로 들어가고(↓), 현장에서 찾은 실제 요구가 제품이 되며(↑), 그 제품이 다시 고객의 수요가 된다. Palantir의 "현장 해법 → 제품 표준(gravel road → paved highway)"과 같은 구조다.
 - **벤치마크 범위**: Micron ↔ Anthropic 계약의 4요소(공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자)는 공개된 구성만 썼고 재무 조건은 비공개다. 자본 연계는 개발실 범위를 넘으므로(2026-09-19 덱 범위 결정) 점선 "(선택)"으로 둔다.
+- **KV 캐시 기여 정정(2026-09-28)**: 초안의 "KV 캐시 관리자 4종에 삼성 기여 0"은 README 기준 판정이었고, 커밋 전수 조사로 LMCache에서 틀렸음이 확인됐다. 역량 구획의 근거 줄은 "LMCache: 삼성 Committer · FDP 배치 머지 / Mooncake · FlexKV · Dynamo: 기여 0"으로, "지금" 칸은 "LMCache"(일부), 필요한 기술은 "Dynamo · Mooncake"로 고쳤다. LMCache 블로그의 PM9D3a FDP 실측(WAF 2.600 → 1.425)은 원문 미열람(🟡)이라 슬라이드에는 넣지 않고 노트에도 쓰지 않았다.
 - **"고객의 지표"**는 AI 데이터센터 운영자가 쓰는 말(토큰당 비용 · 전력 · GPU 가동률)로 적은 개념 줄이다. 근거는 Micron ↔ Anthropic의 공동 분석 서술과 송용호 인터뷰("상쇄 불가한 축은 파워 · 원가 · 품질")다.
 - v1.0의 3단계 로드맵(출하 시 구성 → 운영 중 조정 → 워크로드 구성형 플랫폼, 계약의 창 2026 4Q ~ 2027 상반기)은 발표자 노트와 [qlc-execution-strategy.md](../../wiki/strategies/qlc-execution-strategy.md)에 남긴다.
 
@@ -88,7 +89,7 @@ wiki: [wiki/concepts/hbm3-designin-lesson.md, wiki/concepts/hbm-to-storage-spill
 | 인터뷰 | 신문섭(Bain, 2026-06-18) · 송용호(2026-09-03) | 과제팀 인터뷰 | [qlc-execution-strategy.md](../../wiki/strategies/qlc-execution-strategy.md) §2.0 |
 | Micron ↔ Anthropic 전략적 계약 | 2026-06-22, 공동 최적화 · 다년 공급 · 운영 통합 · Series H 전략 투자, 재무 조건 비공개 | Micron IR 외 | [micron-anthropic-sca-2026-06-22.md](../../sources/articles/micron-anthropic-sca-2026-06-22.md) |
 | Palantir FDE | 고객 환경 상주, "한 고객, 많은 능력", 성과로 평가, 명시 요구와 실제 요구의 간극, Anthropic · OpenAI 채택 | Pragmatic Engineer 외 | [palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md) |
-| KV 캐시 관리자 기여 | LMCache · Mooncake · FlexKV · Dynamo 저장소에 삼성 기여 흔적 없음(README 기준) | 공개 저장소 | [qlc-workload-capability-phases.md](../../wiki/strategies/qlc-workload-capability-phases.md) §4.2 |
+| KV 캐시 관리자 기여 (2026-09-28 정정) | LMCache: 삼성 Committer 1명, 삼성 연결 커밋 62 / 2,394건, NVMe FDP 배치 머지(2026-08-05, PR #4016) · Mooncake · FlexKV · Dynamo KVBM: 0건 | GitHub 커밋 전수 ✅ | [samsung-kv-cache-activities-2026-09.md](../../sources/articles/samsung-kv-cache-activities-2026-09.md) · [qlc-workload-capability-phases.md](../../wiki/strategies/qlc-workload-capability-phases.md) §4.2 |
 
 ## 이미지 자산
 

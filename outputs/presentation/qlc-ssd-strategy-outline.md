@@ -8,6 +8,13 @@
 - **재생성**: `.venv/bin/python outputs/presentation/scripts/generate_qlc_chart.py` (그래프) → `.venv/bin/python outputs/presentation/scripts/generate_qlc_ssd_strategy_pptx.py` → `outputs/presentation/qlc-ssd-strategy.pptx`
 - **렌더 검증**: `FONT_LATIN=NanumGothic FONT_EA=NanumGothic OUT_PATH=<scratch>.pptx` 로 렌더 전용 사본을 만들어 `soffice --headless --convert-to pdf` → pymupdf PNG로 육안 검사(본 산출물은 Arial 유지).
 
+## v7.7 (2026-09-28: KV 캐시 관리자 "삼성 기여 0" 정정)
+
+- 근거: [samsung-kv-cache-activities-2026-09.md](../../sources/articles/samsung-kv-cache-activities-2026-09.md). 종전 "캐시 관리자 4종에 삼성 기여 0 · ②계층에 배치 규격 언급 0"은 README 기준 판정이었다. 기본 브랜치 커밋 전수 조사 결과 **LMCache에 삼성 Committer 1명, 삼성 연결 커밋 62건, NVMe FDP 배치 머지(2026-08-05, PR #4016)** ✅. Mooncake · FlexKV · Dynamo KVBM은 0건 유지 ✅.
+- 5장(역량) 격차 타일: "0건 · 접점 부재" → **"1 / 4 · 접점 시작: 캐시 관리자 중 LMCache만 FDP 배치 · 삼성 기여"**. 해소 수단 타일 설명은 "KV 캐시는 합성 1건"(LMCache 블로그 PM9D3a WAF 2.600 → 1.425, 🟡 원문 미열람)으로, 스트림 타일은 3줄 넘침을 줄였다.
+- 삼성 현 위치 줄: "Phase 3 미착수" → **"Phase 3 착수(LMCache 1종)"**. 출처 줄: "GitHub README 확인" → "GitHub 커밋 전수(2026-09-28)". 노트 동반 수정.
+- 시각판(`qlc-ssd-strategy-visual.pptx`)과 그림 `qlc_vis_s4`도 같은 정정(진행 막대 0 → 0.08, 상태 "착수").
+
 ## v7.6 (2026-09-23 — 4장 배치 힌트 도해: 수명 등급 3종이 실제로 보이도록 부호화 수정)
 
 | 피드백 | 반영 |

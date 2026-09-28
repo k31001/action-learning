@@ -67,6 +67,7 @@ T1~T3이 삼성이 직접 만드는 범위이고, T4는 규격 제안, T5~T6은 
 ## 7. 미해결
 
 - LLM KV 캐시 워크로드의 WAF 공개 실측이 없다(2026-09 기준). Phase 2 실측이 이 페이지 전체의 전제를 검증한다.
+  - 2026-09-28 보강: LMCache 블로그(2026-09-22)가 삼성 PM9D3a에서 합성 LMCache 스토리지 트레이스 9개 동시·사용률 89% 조건으로 FDP 적용 시 WAF 2.600 → 1.425(−45.2%)를 보고했다 🟡(원문 미열람, [samsung-kv-cache-activities-2026-09.md](../../sources/articles/samsung-kv-cache-activities-2026-09.md) A-20). 프로덕션 트레이스 기반 실측은 여전히 공개되지 않았다.
 - 런타임 FDP 재구성의 데이터 이전 비용(대역폭·지연 영향)이 정량화돼 있지 않다.
 - `DWPD_effective = DWPD_rated × (WAF_rated ÷ WAF_actual)`는 1차 출처가 없는 **유도식**이다. 인용 시 유도임을 밝힌다.
 

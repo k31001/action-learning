@@ -842,9 +842,9 @@ header(s, 5,
 T_Y, T_H, T_W, T_GAP = 2.80, 0.96, 4.41, 0.26
 tiles = [
     ("2~5배", 1.35, "내구성 격차", "요구 1~3 DWPD ÷ 현 QLC 정격 0.6"),
-    ("16개", 1.35, "요구 분리 스트림", "호스트가 여는 배치 스트림 상한 · 제품 지원 수는 업계 미공개"),
-    ("0건", 1.25, "접점 부재", "캐시 관리자 4종 코드의 배치 규격 언급"),
-    ("≈3 → ≈1", 1.85, "해소 수단 실증", "범용·캐시 WAF 실측 · KV 캐시 미실측"),
+    ("16개", 1.35, "요구 분리 스트림", "호스트 배치 스트림 상한 · 제품 지원 수 미공개"),
+    ("1 / 4", 1.25, "접점 시작", "캐시 관리자 중 LMCache만 FDP 배치 · 삼성 기여"),
+    ("≈3 → ≈1", 1.85, "해소 수단 실증", "범용·캐시 실측 · KV 캐시는 합성 1건"),
 ]
 for i, (num, nw, lab, desc) in enumerate(tiles):
     x = MX + i * (T_W + T_GAP)
@@ -938,18 +938,18 @@ rect(s, MX + P_W + 0.33, BAR_Y, P_W * 0.15, BAR_H, fill=BLUE_T2)
 mk_x = MX + P_W * 0.60
 rect(s, mk_x - 0.13, BAR_Y + BAR_H + 0.03, 0.26, 0.18, fill=BLUE, shape=MSO_SHAPE.ISOSCELES_TRIANGLE)
 tb(s, mk_x + 0.22, BAR_Y + BAR_H - 0.02, 13.0, 0.30,
-   [[("삼성 현 위치  ", 13.5, True, BLUE), ("Phase 1 진행 중(QLC 라인의 배치 핸들 수·유효 DWPD 미공개 · CMX 첫 공급은 TLC) · Phase 2 준비 · Phase 3 미착수", 12.0, False, GRAY)]],
+   [[("삼성 현 위치  ", 13.5, True, BLUE), ("Phase 1 진행 중(QLC 라인의 배치 핸들 수·유효 DWPD 미공개 · CMX 첫 공급은 TLC) · Phase 2 준비 · Phase 3 착수(LMCache 1종)", 12.0, False, GRAY)]],
    anchor=MSO_ANCHOR.MIDDLE)
 
 band(s, 9.46, 0.76, "결론",
      "단계마다 고객 보증 범위가 원가·전력 → 워크로드 수명 → 시스템 TCO로 확장됩니다.\n삼성은 1단계 진행 중·2단계 준비 단계이며, 3단계 진입 수단이 다음 장입니다",
      main_size=17, next_step=5)
-footer(s, "출처: Solidigm·Kioxia·Micron 사양(DWPD), NVMe 스펙(네임스페이스당 배치 핸들 128 상한)·XFS 쓰기 스트림 16, GitHub README 확인(LMCache·Mooncake·FlexKV·xNVMe), CacheLib FDP 문서(WAF), Linux 6.16, NVIDIA CMX 문서", 5)
+footer(s, "출처: Solidigm·Kioxia·Micron 사양(DWPD), NVMe 스펙(네임스페이스당 배치 핸들 128 상한)·XFS 쓰기 스트림 16, GitHub 커밋 전수(LMCache·Mooncake·FlexKV·Dynamo, 2026-09-28), CacheLib FDP 문서(WAF), Linux 6.16, NVIDIA CMX 문서", 5)
 notes(s, "4장은 해법의 제안입니다. 1장이 제기한 내구성 격차를 해소하는 경로이며, 3장의 산식에서 남은 보상 변수는 WAF이고, WAF는 호스트가 데이터 수명에 따라 배치를 결정할 때 1에 수렴하므로 내구성 격차는 디바이스가 아니라 고객 시스템의 배치 방식에서 해소됩니다. 그래서 역량을 디바이스에서 고객 시스템 계층까지 3단계로 확장합니다. 리드의 인용은 베인 신문섭 파트너의 진단으로 같은 결론입니다. "
-      "상단 타일은 격차와 수단입니다. 내구성 격차(요구 1~3 DWPD 대비 현 QLC 정격 0.6으로 2~5배), 요구 분리 스트림 16개(XFS 쓰기 스트림 상한, 제품 지원 수는 업계 미공개), 접점 부재(KV 캐시 관리자 4종 코드에 배치 규격 언급 0건), 해소 수단 실증(CacheLib 배치 표준 적용 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). "
+      "상단 타일은 격차와 수단입니다. 내구성 격차(요구 1~3 DWPD 대비 현 QLC 정격 0.6으로 2~5배), 요구 분리 스트림 16개(XFS 쓰기 스트림 상한, 제품 지원 수는 업계 미공개), 접점 시작(KV 캐시 관리자 4종 중 LMCache만 FDP 배치 코드를 갖췄고 그 코드는 삼성 엔지니어가 머지, 나머지 3종은 0건), 해소 수단 실증(CacheLib 배치 표준 적용 WAF 3.22→1.03, XFS write streams RocksDB -35%, ScaleFlux 유효 7~10 DWPD). "
       "그림은 고객 시스템 5계층을 세 번 그리고 삼성이 닿는 층을 색으로 표시하며(파랑 = 삼성 코드·제품, 연파랑 = 관측·분석, 흰색 = 고객 영역), 각 층에 그 층을 구성하는 기술을 적었습니다. 응용·추론 엔진(vLLM·SGLang·TensorRT-LLM), KV 캐시 관리자(NVIDIA Dynamo KVBM·LMCache·Mooncake·Tencent FlexKV), I/O 라이브러리(NIXL·GPUDirect Storage·io_uring·SPDK/xNVMe), 커널·플랫폼(Linux 6.16 write streams·XFS/f2fs 스트림·NVIDIA CMX와 DOCA Memos), SSD 디바이스(컨트롤러·배치 핸들 펌웨어·2Tb QLC·NVMe KV 확장·텔레메트리). "
       "Phase 1 배치 표준 디바이스 확보: SSD 층만 삼성의 범위이며 고객 보증 범위는 정격 내 QLC 원가·전력입니다. Phase 2 워크로드 실측 기반 최적화: 캐시 관리자의 빈도 필터·퇴거 정책이 트레이스의 원천이고, I/O 라이브러리의 io_uring·GDS 백엔드에 write stream을 부착하며 커널 스트림과 CMX 힌트 매핑을 검증해 배치 핸들 정책·WAF·유효 DWPD 실측을 공개합니다. 고객 보증 범위는 고객 워크로드 기준 수명입니다. Phase 3 고객 시스템 내 공동 설계: 캐시 관리자 4종에 플러그인을 메인라인으로 머지하고, NIXL·xNVMe가 기본 백엔드가 되며, DOCA Memos와 배치 표준의 매핑을 NVIDIA와 공동 정의하고, 응용 층은 커넥터·스케줄러를 분석해 공용 TCO 모델(GPU당 동시 사용자·TTFT·전력)로 협의합니다. FDE(Forward Deployed Engineer)가 고객 시스템에 상주합니다. 고객 보증 범위는 시스템 수준 TCO입니다. "
-      "삼성 현 위치는 정직하게 Phase 1 진행 중입니다. CMX 첫 공급은 TLC이고 QLC 라인의 배치 핸들 수와 유효 DWPD는 공개돼 있지 않습니다. Phase 2는 준비 단계로 KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고, Phase 3는 캐시 관리자 4종 기여 0건으로 미착수입니다. 오케스트레이션 자체는 만들지 않습니다. 결론: 단계마다 고객 보증 범위가 원가·전력 → 워크로드 수명 → 시스템 TCO로 확장되며, 3단계에 진입하는 수단(선별된 고객에의 FDE·업스트림·규격 채널)과 개발실 내부 실행이 5장입니다.")
+      "삼성 현 위치는 정직하게 Phase 1 진행 중입니다. CMX 첫 공급은 TLC이고 QLC 라인의 배치 핸들 수와 유효 DWPD는 공개돼 있지 않습니다. Phase 2는 준비 단계로 KV cache 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개이고, Phase 3는 LMCache 한 곳에서 착수했습니다. 삼성 엔지니어가 Committer로 있고 NVMe FDP 배치 코드를 2026년 8월에 머지했습니다. 나머지 Mooncake, FlexKV, Dynamo KVBM에는 기여가 없습니다. 오케스트레이션 자체는 만들지 않습니다. 결론: 단계마다 고객 보증 범위가 원가·전력 → 워크로드 수명 → 시스템 TCO로 확장되며, 3단계에 진입하는 수단(선별된 고객에의 FDE·업스트림·규격 채널)과 개발실 내부 실행이 5장입니다.")
 
 # ================================================================ S6. 실행 — 두 트랙 그림(v6.1: v3.x 형식 복귀 — 좌 개발실 / 중앙 ①FDE 상주 → ←② 접근권 + 선례 / 우 고객 시스템)
 s = prs.slides.add_slide(BLANK)

@@ -31,7 +31,7 @@ sources:
 
 | 하던 대로 | 왜 안 되나 | 근거 |
 |---|---|---|
-| 고객 스펙을 받아 정확히 납품 | 캐시 티어의 스펙(수명·재사용·무효화 정책)은 고객 캐시 관리자 안에 있고 RFQ에 안 적힌다 | ②계층 README에 배치·내구성 언급 0 ✅ ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §1) |
+| 고객 스펙을 받아 정확히 납품 | 캐시 티어의 스펙(수명·재사용·무효화 정책)은 고객 캐시 관리자 안에 있고 RFQ에 안 적힌다 | ②계층 README에 배치·내구성 언급 0 ✅ ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §1). 2026-09-28 정정: LMCache는 삼성 기여로 FDP 배치 코드·문서를 갖췄고, 나머지 관리자는 여전히 없음 ([samsung-kv-cache-activities-2026-09.md](../../sources/articles/samsung-kv-cache-activities-2026-09.md)) |
 | 펌웨어 엔지니어가 호스트 SW를 "겸업" | 커널·파일시스템·추론 엔진·캐시 관리자 4개 커뮤니티의 메인테이너 문법은 겸업으로 얻어지지 않는다 | FlexKV·CacheLib 메인라인 머지가 co-design의 증거 ✅ |
 | 국내 보상 체계로 실리콘밸리 채용 | 삼성 SV L6 TC $392K vs NVIDIA IC6 $626K·Meta E6 $708K·Google L6 $700K, 격차 1.5~1.8배, 원인은 주식 부재 | levels.fyi 🟡 ([execution-benchmarks-sw-capability-customer-collab-2026-09.md](../../sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md) §3.1) |
 | 오픈소스는 연구소 취미 | Intel OTC는 사업 철수와 함께 소멸했고, 제품 로드맵에 묶인 Kioxia AiSAQ·Huawei UCM은 남았다 | 같은 소스 §1 |
@@ -76,7 +76,7 @@ sources:
 | **시스템 아키텍트·TCO 모델링 조직** | 본사·자회사 겸속, 외부 채용 + 내부 육성 | 디바이스→랙→DC 캐시 티어 TCO 모델, 고객 공용 시뮬레이션 자산 | Micron↔Anthropic "token economics" 공동 분석 🟡 |
 | **데이터센터 SSD 개발 조직(기존)** | 유지 | Phase 1 KV-ready QLC 제품·펌웨어(배치 핸들 16+)·수명 보증 텔레메트리 | 세 번의 전환을 만든 기존 강점 ([fdp-host-ssd-platform.md](fdp-host-ssd-platform.md) §2.5) |
 
-**강화할 조직은 시스템 소프트웨어 조직이다.** 삼성은 배치 표준 오픈소스 자산(xNVMe·CacheLib 배치 표준 지원·XFS write streams·GOST 기여)이 5사 중 가장 두텁지만 KV cache 스택(추론 엔진·캐시 관리자·I/O)에 연결한 공개물이 없고, 캐시 관리자 4종 저장소에 삼성 기여 흔적이 없다 ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §3·§4). 디바이스 조직은 세 번의 전환을 만든 강점이 있으므로 유지·집중하고, 부족한 것은 **고객의 시스템을 읽고 고칠 수 있는 시스템 소프트웨어 전문가**다. 자회사·Co-Design Pod·TCO 조직 모두 이 전문가 풀에서 사람을 끌어 쓰므로, 조직 강화의 순서는 (1) 시스템 SW 직무 정의를 고객 시스템 기준으로 다시 쓰고 (2) 미주 현지 채용으로 풀을 키우고 (3) 내부 펌웨어·FTL 인력을 전환 트랙으로 합류시키는 것이다(§2.3).
+**강화할 조직은 시스템 소프트웨어 조직이다.** 삼성은 배치 표준 오픈소스 자산(xNVMe·CacheLib 배치 표준 지원·XFS write streams·GOST 기여)이 5사 중 가장 두텁지만 KV cache 스택과의 연결은 **LMCache 한 곳**이다 — 삼성 Committer 1명, 삼성 연결 커밋 62건, NVMe raw block 계층과 FDP 배치 머지(2026-08). Mooncake · FlexKV · Dynamo KVBM에는 기여가 없다 ([samsung-kv-cache-activities-2026-09.md](../../sources/articles/samsung-kv-cache-activities-2026-09.md) §1·§2; 2026-09-28 정정 — 종전 "4종 모두 기여 흔적 없음"은 README 기준 판정이었다). 디바이스 조직은 세 번의 전환을 만든 강점이 있으므로 유지·집중하고, 부족한 것은 **고객의 시스템을 읽고 고칠 수 있는 시스템 소프트웨어 전문가**다. 자회사·Co-Design Pod·TCO 조직 모두 이 전문가 풀에서 사람을 끌어 쓰므로, 조직 강화의 순서는 (1) 시스템 SW 직무 정의를 고객 시스템 기준으로 다시 쓰고 (2) 미주 현지 채용으로 풀을 키우고 (3) 내부 펌웨어·FTL 인력을 전환 트랙으로 합류시키는 것이다(§2.3).
 
 거버넌스: 자회사는 본사 SSD 로드맵과 **동일 P&L 지표(캐시 티어 QLC 활성화 EB)** 로 묶는다. Intel OTC의 실패(사업과 분리된 오픈소스)와 WD Tegile의 실패(채널 충돌)를 피하려면 자회사는 SSD 판매의 도구이지 별개 사업이 아니다.
 
@@ -97,7 +97,7 @@ sources:
 - **업스트림 우선**: 코드는 사내 브랜치가 아니라 메인라인에 머지될 때 완성이다. 성과 단위는 PR 머지·활성화 용량·WAF 실측 공개. 주도 문화의 최소 조건이다.
 - **명시 요구 vs 실제 요구**: 상주 엔지니어(FDE)의 첫 임무는 고객이 말한 스펙과 캐시 관리자 코드가 실제로 요구하는 것의 간극을 문서화하는 것.
 - **실패 예산**: 선제 제안의 일정 비율은 채택되지 않는 것이 정상. 제안 시도 자체를 세고, 채택률은 보조 지표.
-- **공개 문화**: KV cache 워크로드에서의 배치 표준 WAF 실측을 업계 최초로 공개한다(현재 어느 벤더도 공개하지 않은 공백). 첫 공개가 레퍼런스가 되고, 레퍼런스가 채용 브랜드가 된다 — 현지 채용(§2.3)의 유인이기도 하다.
+- **공개 문화**: KV cache 워크로드에서의 배치 표준 WAF 실측을 업계 최초로 공개한다. (2026-09-28: LMCache 블로그가 삼성 엔지니어 기여로 PM9D3a에서 합성 트레이스 WAF 2.600 → 1.425를 보고했다 🟡. 다음 단계는 원문 확인과 **프로덕션 트레이스 기반 실측을 삼성 이름으로** 공개하는 것이다.) 첫 공개가 레퍼런스가 되고, 레퍼런스가 채용 브랜드가 된다 — 현지 채용(§2.3)의 유인이기도 하다.
 - **품질·원가를 프레임에**: "다음 다운턴의 첫 장면은 대규모 RMA"(송용호). 수명 보증 상품은 품질 데이터 없이는 위험하므로 텔레메트리와 필드 품질 조직을 처음부터 묶는다.
 
 ### 2.5 재무 축 — 물량 계약을 공동 플랫폼 계약으로, 지분으로 접근권을 산다

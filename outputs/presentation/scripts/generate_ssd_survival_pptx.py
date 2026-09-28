@@ -525,7 +525,7 @@ tb(s, cxn, NOW_Y, CWN, 0.36, [("지금", 18, True, GRAY_2)], align=PP_ALIGN.CENT
 tb(s, cxf, NOW_Y, CWF, 0.36, [("필요한 기술", 18, True, BLUE)], align=PP_ALIGN.CENTER)
 # (층, 지금, 지금 상태, 필요한 대표 기술, 필요 칸 색)
 layers3 = [("AI DC 운영", "없음", "off", "TCO 모델 · 추론 SLO", BLUE),
-           ("KV 캐시 SW", "기여 0", "off", "LMCache · Mooncake", BLUE),
+           ("KV 캐시 SW", "LMCache", "part", "Dynamo · Mooncake", BLUE),
            ("커널 · I/O", "일부", "part", "io_uring · GDS · NIXL", BLUE),
            ("SSD FW", "강점", "on", "FDP · WAF 텔레메트리", BLUE_T1),
            ("NAND", "강점", "on", "", BLUE_T2)]
@@ -546,19 +546,20 @@ for r, (nm, now_t, st, need, col) in enumerate(layers3):
         rect(s, cxf, yy, CWF, RH3, fill=col, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
 EY = RY3 + 5 * RP3 + 0.10
 tb(s, C3, EY, W3c, 1.10,
-   [[("KV 캐시 관리자 4종에 ", 18, False, GRAY), ("삼성 기여 0", 18, True, INK)],
-    [("LMCache · Mooncake · FlexKV · Dynamo", 18, False, GRAY)]], spacing=1.05)
+   [[("LMCache: ", 18, False, GRAY), ("삼성 Committer · FDP 배치 머지", 18, True, INK)],
+    [("Mooncake · FlexKV · Dynamo: 기여 0", 18, False, GRAY)]], spacing=1.05)
 tb(s, C3, CAP_Y, W3c, 0.50, [("시스템 SW와 AI 데이터센터 운영 역량", 20, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
 
 band(s, 9.60, 0.80, "시작", "전략 고객 1~2사와 기술 협력 계약 · Co-Design Pod 상주 · 시스템 SW 전문가 채용", size=24)
 footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자, 재무 조건 비공개) · Palantir FDE(고객 상주, 한 고객에 많은 능력, 성과로 평가) · "
-          "KV 캐시 관리자 기여는 공개 저장소 기준(2026-09) · 인터뷰: 신문섭(Bain), 송용호 · 로고는 식별 표시")
+          "KV 캐시 관리자 기여는 공개 저장소 커밋 기준(2026-09-28, LMCache PR #4016) · 인터뷰: 신문섭(Bain), 송용호 · 로고는 식별 표시")
 notes(s, "3장 실행 전략입니다. HBM의 교훈은 고객과 함께 수요를 만드는 기업이 이긴다는 것이었습니다. 그렇게 하려면 세 가지가 바뀌어야 합니다. "
       "첫째, 계약입니다. 지금 고객과의 계약은 장기 물량 계약, 즉 수량과 가격의 약속입니다. Micron은 2026년 6월 Anthropic과 맺은 전략적 계약에서 다년 공급 위에 HBM·DRAM·데이터센터 SSD를 Claude의 학습·추론 워크로드에 맞춰 함께 설계하고 최적화하는 공동 작업, "
       "그리고 Micron 엔지니어링·제조 운영에 Claude를 들이는 운영 통합을 한 계약으로 묶었습니다. Anthropic Series H 전략 투자도 함께였지만 이는 선택지로 둡니다. 우리도 물량 위에 기술 협력을 쌓아야 합니다. "
       "둘째, 사람입니다. 지금은 스펙 문서와 간헐적 미팅으로 협력하기 때문에 고객이 명시한 요구만 우리에게 옵니다. Palantir가 창안한 FDE는 엔지니어가 고객 환경 안에 상주하며 실제 운영 제약 아래서 시스템을 함께 만들고, 명시된 요구와 실제 요구 사이의 간극을 현장에서 메웁니다. "
       "현장에서 만든 해법이 제품의 표준 기능이 되는 순환이 생기고, 그 순환이 곧 수요를 함께 만드는 과정입니다. Anthropic과 OpenAI도 같은 방식으로 자기 고객에게 들어가고 있습니다. 우리의 Co-Design Pod가 그 역할입니다. "
-      "셋째, 역량입니다. 데이터의 수명 정보는 SSD가 아니라 고객의 KV 캐시 소프트웨어 안에 있습니다. 그런데 LMCache, Mooncake, FlexKV, Dynamo 같은 KV 캐시 관리자 네 곳의 공개 저장소에 삼성의 기여는 없습니다. "
+      "셋째, 역량입니다. 데이터의 수명 정보는 SSD가 아니라 고객의 KV 캐시 소프트웨어 안에 있습니다. 시작은 했습니다. LMCache에는 삼성 엔지니어가 Committer로 이름을 올렸고, NVMe raw block 계층과 FDP 배치 기능을 2026년 8월에 머지했습니다. 조사한 KV 캐시 관리자 가운데 FDP 코드가 들어간 곳은 LMCache뿐입니다. "
+      "하지만 NVIDIA Dynamo, Mooncake, FlexKV에는 삼성의 기여가 없습니다. 한 곳의 성공을 고객이 실제로 쓰는 여러 스택으로 넓혀야 합니다. "
       "우리가 강한 곳은 NAND와 SSD 펌웨어이고, 커널과 I/O는 일부입니다. 필요한 것은 그 위, 즉 시스템 소프트웨어와 AI 데이터센터를 직접 운영하는 고객의 눈입니다. 고객은 토큰당 비용, 전력, GPU 가동률로 말합니다. 그 수준의 전문성을 갖춘 사람을 뽑고 길러야 합니다. "
       "시작은 전략 고객 한두 곳과 기술 협력을 포함한 계약, Co-Design Pod 상주, 시스템 소프트웨어 전문가 채용입니다.")
 

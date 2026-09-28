@@ -1,8 +1,9 @@
 ---
 type: strategy
-last_reviewed: 2026-09-17
+last_reviewed: 2026-09-28
 sources:
   - sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md
+  - sources/articles/samsung-kv-cache-activities-2026-09.md
   - sources/articles/kv-cache-ssd-offload-ecosystem-2026-08.md
   - sources/articles/qlc-essd-timeline-fdp-ruh-2026-09.md
   - sources/articles/fdp-open-source-ecosystem-2026-08.md
@@ -33,6 +34,8 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 | ⑤ 디바이스 | 컨트롤러(삼성 자체, Marvell SC6, SMI MonTitan), 펌웨어(RUH·RU·OP·GC), 미디어 | RUH 수, WAF, 유효 DWPD | 벤더 고유 |
 
 **독해**: ②계층 소유자(NVIDIA·Tencent·Moonshot·ByteDance·Alibaba·DeepSeek·LMCache)는 모두 SSD를 파일·블록으로 취급한다. 수명 정보는 ②에 있는데 그것을 ⑤로 내려보내는 코드가 없다. 2026년 커널·XFS가 열리면서 ③에 스트림 부착 코드를 넣는 것이 가능해졌다. **Phase 2→3의 기술적 통로는 ③·④이고, 이 자리는 아직 비어 있다.**
+
+> **2026-09-28 정정 (커밋 전수 조사)**: "②에서 ⑤로 내려보내는 코드가 없다"는 LMCache에서 더 이상 맞지 않는다. 삼성 엔지니어가 LMCache에 NVMe raw block 계층(`O_DIRECT` · io_uring · NVMe 패스스루)과 **NVMe FDP 배치(2026-08-05 머지, PR #4016)**를 넣었고, 테넌트 버킷(`cache_salt_prefix`)과 GPU 랭크(`cache_salt_rank`)별로 배치 핸들을 나눈다 ✅. 조사한 KV 캐시 관리자·전송 라이브러리 중 FDP 코드가 있는 곳은 LMCache뿐이다(Mooncake · FlexKV · Dynamo KVBM · NIXL은 없음) ✅ ([samsung-kv-cache-activities-2026-09.md](../../sources/articles/samsung-kv-cache-activities-2026-09.md) §2·부정 확인). 기존 판정은 README 기준이었다.
 
 ## 2. Phase 1 — 배치 표준 SSD 디바이스를 잘 만든다
 
@@ -94,7 +97,8 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 ### 4.2 삼성 현황
 
 - 보유: Meta CacheLib 배치 표준 업스트림·대규모 배포·논문(Memory Solutions Lab, San Jose) — **5사 중 가장 강한 Phase 3 선례**. Anthropic 전략 인프라 파트너·공급계약, Mistral €3B 리드 투자(운영 통합), OpenAI 파운드리·HBM 협력.
-- 공백: **KV cache 관리자(LMCache·FlexKV·Mooncake·KVBM) 어디에도 삼성 기여 흔적 없음** ✅(README 기준). Anthropic 공급계약에 Micron과 달리 "공동 최적화" 문구 부재 🟡. 시스템 TCO 모델 조직 없음(개발실 전환 전략의 미착수 항목).
+- 보유(2026-09-28 추가): **LMCache에 삼성 Committer 1명(메인테이너 명단), 삼성 연결 커밋 62건 / 2,394건** ✅ — NVMe raw block 계층, FDP 배치(#4016), Device-DAX(CXL 부착 메모리) 백엔드, 3FS 백엔드. SGLang에 HiCache 스토리지·LMCache 커넥터 관련 8건 ✅. LMCache 블로그(2026-09-22)는 PM9D3a에서 FDP로 합성 LMCache 트레이스의 WAF 2.600 → 1.425(−45.2%)를 보고 🟡(원문 미열람). 채용 공고가 vLLM · SGLang · LMCache · Dynamo 경험과 FDP 배치를 요구 🟡 ([samsung-kv-cache-activities-2026-09.md](../../sources/articles/samsung-kv-cache-activities-2026-09.md)).
+- 공백: KV cache 관리자 중 **Mooncake · FlexKV · Dynamo KVBM에는 삼성 기여 0** ✅(커밋 전수, 2026-09-28). (2026-09-28 정정: 종전 "LMCache 포함 4종 모두 기여 흔적 없음(README 기준)"은 LMCache에서 틀렸다.) Anthropic 공급계약에 Micron과 달리 "공동 최적화" 문구 부재 🟡. 시스템 TCO 모델 조직 없음(개발실 전환 전략의 미착수 항목).
 
 ### 4.3 Phase 3 산출물 정의
 
@@ -142,10 +146,12 @@ KV cache 오프로드 스택은 5계층으로 굳어졌다 ([kv-cache-qlc-tech-s
 | Phase | 업계 최고 공개 수준 | 삼성 공개 수준 | 갭 |
 |---|---|---|---|
 | 1 디바이스 | ScaleFlux 스트림 수·유효 DWPD 주장(미검증), Kioxia CM10 3 DWPD 캐시 티어 | CMX 첫 공급(TLC), 245TB QLC 전시, 배치 핸들 수·DWPD 미공개 | QLC를 캐시 티어에 지명한 제품 없음 |
-| 2 워크로드 최적화 | Alibaba HiSim, SK hynix SALT-KV, ScaleFlux 텔레메트리 | KV cache 백서 2종, CacheLib WAF 실측 | KV cache 트레이스 기반 RUH 정책·WAF 실측 미공개(업계 공백) |
-| 3 co-design | Micron↔Anthropic SSD 공동 설계, FlexKV 메인라인 머지 | Meta CacheLib 업스트림·논문 | KV 관리자 기여 0, 계약에 공동 최적화 조항 없음 |
+| 2 워크로드 최적화 | Alibaba HiSim, SK hynix SALT-KV, ScaleFlux 텔레메트리 | KV cache 백서 2종, CacheLib WAF 실측, LMCache FDP 배치 정책(테넌트·랭크별) ✅ | KV cache WAF 실측은 LMCache 블로그의 합성 트레이스 1건(PM9D3a 2.600 → 1.425, 🟡)뿐, 프로덕션 트레이스 실측은 미공개 |
+| 3 co-design | Micron↔Anthropic SSD 공동 설계, FlexKV 메인라인 머지 | Meta CacheLib 업스트림·논문, **LMCache Committer · FDP 배치 머지** ✅ | KV 관리자 4종 중 3종(Mooncake · FlexKV · Dynamo KVBM) 기여 0, 계약에 공동 최적화 조항 없음 |
 
 **덱 표기(2026-09-22, v6.0)**: 삼성 현 위치는 "Phase 1 진행 중(CMX 첫 공급은 TLC, QLC 라인의 배치 핸들 수·유효 DWPD 미공개) · Phase 2 준비(KV 트레이스 기반 실측 미공개) · Phase 3 미착수"로 정직하게 표기한다. 이전 덱의 "Phase 1 확보" 표기는 격차 타일(RUH 25배)과 모순이었다.
+
+**2026-09-28 정정**: "Phase 3 미착수"는 LMCache 기여(Committer · FDP 배치 머지)로 **"Phase 3 착수: 캐시 관리자 4종 중 1종"**으로 고쳐 읽는다. 과제는 한 곳의 성공을 고객이 실제로 쓰는 Dynamo · Mooncake 등으로 넓히는 것이다.
 
 **결론**: 갭은 기술보다 **연결**에 있다. 디바이스(⑤)와 도구(③·④)는 있고 캐시 관리자(②)는 열려 있다. 연결을 만드는 것은 개인 엔지니어의 노력이 아니라 조직·인사·재무의 설계다 → [qlc-execution-strategy.md](qlc-execution-strategy.md).
 

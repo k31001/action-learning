@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-28 (KV 캐시 관리자 "삼성 기여 0" 정정) ──────────────────────────────
+  {
+    date: '2026-09-28',
+    type: 'lint',
+    title: 'KV 캐시 관리자 "삼성 기여 0" 정정: LMCache에는 삼성 Committer와 FDP 배치 코드가 있다',
+    summary:
+      '"KV 캐시 관리자 4종에 삼성 기여 0"은 README 기준 판정이었다. 19개 저장소의 커밋을 전수 조사하니 LMCache에는 삼성 Committer 1명과 삼성 연결 커밋 62건이 있고, NVMe FDP 배치 코드를 삼성 엔지니어가 2026-08에 머지했다. Mooncake · FlexKV · Dynamo KVBM은 여전히 0건이다.',
+    version: 'v2.46.49',
+    tags: ['KV Cache', 'FDP', 'LMCache', '팩트체크', '발표자료'],
+    items: [
+      { label: 'LMCache', detail: 'MAINTAINERS에 삼성 Committer 1명, 삼성 연결 커밋 62 / 2,394건. NVMe raw block 계층(O_DIRECT · io_uring · NVMe 패스스루) → FDP 배치(PR #4016, 테넌트 · GPU 랭크별 배치 핸들), Device-DAX(CXL) 백엔드' },
+      { label: '나머지 3종', detail: 'Mooncake · FlexKV · Dynamo KVBM은 삼성 연결 커밋 0건. 조사한 KV 관리자 · 전송 라이브러리 중 FDP 코드는 LMCache뿐' },
+      { label: '미확인으로 남긴 것', detail: 'LMCache 블로그의 PM9D3a FDP 실측(WAF 2.600 → 1.425)은 원문을 열지 못해 🟡. 슬라이드에는 넣지 않았다' },
+      { label: '고친 곳', detail: '위키 역량 3단계 · 실행 전략 · WAF 런타임 대응, SSD 생존 전략 덱 3장, QLC 덱 5장(격차 타일 "0건 → 1 / 4", Phase 3 "미착수 → 착수") · 시각판 · QLC 보고서' },
+    ],
+    links: [
+      { label: '원장 — 삼성 KV 캐시 활동', href: 'sources/articles/samsung-kv-cache-activities-2026-09.md' },
+      { label: '위키 — 역량 3단계', href: 'wiki/strategies/qlc-workload-capability-phases.md' },
+    ],
+  },
   // ── 2026-09-28 (워크로드 구성형 SSD — 위키 개념 페이지 2종 환원) ────────────────
   {
     date: '2026-09-28',

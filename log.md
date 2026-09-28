@@ -2264,3 +2264,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 ## [2026-09-28] build | 용어 정정: "선도 고객" → "전략 고객"
 - 사용자 선택: "전략 고객이 좋아 보인다". 직전 항목의 "선도 고객"을 **"전략 고객"**으로 다시 통일(덱 밴드·노트, 기획서, 위키 `qlc-execution-strategy.md`, QLC 보고서). 전략적 협약(SCA)과 짝을 이루는 말이라 3장 메시지와도 맞는다
 - 렌더 QA 통과. 대시보드 무변경
+
+## [2026-09-28] lint | KV 캐시 관리자 "삼성 기여 0" 정정: LMCache 기여 확인 (dashboard v2.46.49)
+- 사용자 요청: KV 캐시 SW 기여 0이 맞는지 삼성의 관련 활동을 한 번 더 조사. Research Agent가 신규 원장 `sources/articles/samsung-kv-cache-activities-2026-09.md` 작성(19개 저장소 기본 브랜치 커밋 전수, `@samsung.com` 작성자·커미터·트레일러 기준)
+- **결과**: "4종 모두 0"은 README 기준 판정이라 LMCache에서 틀렸다. LMCache: `MAINTAINERS.md`에 "Dongjoo Seo, Samsung, Committer", 삼성 연결 커밋 62 / 2,394건, NVMe raw block 계층 → **FDP 배치 머지(2026-08-05, PR #4016)**, Device-DAX(CXL)·3FS 백엔드 ✅. Mooncake·FlexKV·Dynamo KVBM 0건 ✅. 조사한 KV 관리자·전송 라이브러리 중 FDP 코드는 LMCache뿐. 직접 재확인: MAINTAINERS 원문, LMCache `raw_block_l2_adapter.py`의 `fdp_data_placement_policy` 코드(얕은 클론)
+- 🟡로 남긴 것: LMCache 블로그의 PM9D3a FDP 실측 WAF 2.600 → 1.425(원문 차단), CMM-D + vLLM/LMCache 백서 92%, Tensormesh 발표의 삼성 부사장 인용, 채용 공고 키워드 → 슬라이드에는 ✅만 사용
+- **위키 정정**(날짜 표기): `qlc-workload-capability-phases.md`(§1 독해 · §4.2 보유/공백 · §6 표 · 덱 표기 "Phase 3 착수: 4종 중 1종"), `qlc-execution-strategy.md`(README 언급 0 · 시스템 SW 조직 문단 · 공개 문화), `waf-runtime-response.md`(§7 미해결에 LMCache 블로그 🟡 보강). 원 원장 `kv-cache-qlc-tech-stack-vendor-capability-2026-09.md`는 불변 원칙에 따라 두고 신규 원장 §9에 충돌 5건 기록
+- **산출물 정정**: SSD 생존 전략 덱 3장 역량 격자("지금" KV 캐시 SW = LMCache, 필요한 기술 = Dynamo · Mooncake, 근거 줄 "LMCache: 삼성 Committer · FDP 배치 머지 / Mooncake · FlexKV · Dynamo: 기여 0", 노트·출처). QLC 덱 5장(격차 타일 "0건 · 접점 부재" → "1 / 4 · 접점 시작", 해소 수단 "KV 캐시는 합성 1건", 스트림 타일 넘침 수정, "Phase 3 미착수" → "착수(LMCache 1종)", 노트·출처), QLC 시각판·그림 `qlc_vis_s4`, QLC 보고서 §역량 2곳, 기획서 v7.7·생존 전략 기획서 v1.3. 렌더 QA 통과
+- index.md sources 절 원장 등록. 지식 그래프 재생성(노드 데이터 갱신) → **dashboard v2.46.49(패치)**, updates.js 항목, `npm run build` 통과

@@ -473,13 +473,13 @@ KV 캐시 오프로드 스택은 5계층으로 굳어졌다. ① 추론 엔진(v
 |---|---|---|---|---|---|
 | **1 디바이스** | 배치 표준 SSD를 잘 만든다 | 배치 핸들 16+ 지원·공개 펌웨어, QLC 미디어 관리(2Tb 다이·SLC 캐시·배치 표준 적용 시 WAF ≈1), PCIe 5→6·NVMe KV 확장·NVMe-oF, W/TB·액체냉각, CMX/STX·OCP 인증, 에뮬레이터 | ScaleFlux RUH 200+·유효 7~10 DWPD, Kioxia CM9/CM10 3 DWPD 캐시 계층 | PM1753 CMX 첫 공급(TLC), PM1763 Gen6, BM1773 245TB QLC 전시. RUH·DWPD·배치 표준 지원 미공개 | QLC를 캐시 계층에 지명한 제품 없음 |
 | **2 워크로드 최적화** | 고객 워크로드 분석으로 그 SSD를 최적화한다 | 트레이스 수집·재현(HiSim류), WAF·p999·전력 정량, 수명·테넌트·prefix → 배치 핸들 정책, 관리자 정책(KVBM 빈도≥2 필터)과의 결합, 디지털 트윈, 표준 프로파일 | Alibaba Tair HiSim, SK hynix SALT-KV, ScaleFlux 텔레메트리, CacheLib WAF 실측 | KV 캐시 백서 2종(PM1753, CMM-D with vLLM+LMCache), CacheLib·RocksDB·XFS 배치 지원 | KV 캐시 트레이스 기반 RUH 정책·WAF 실측 미공개(업계 공백) |
-| **3 공동 설계** | 고객 시스템 이해로 함께 설계한다 | 추론 스택 내부(스케줄러·prefix 캐시·KVBM·NIXL·DOCA Memos), 커널 I/O 경로, 시스템 TCO 모델(디바이스→랙→DC), 스펙 상류 참여·표준, 공동 계약 | Micron↔Anthropic SSD 공동 설계 계약, FlexKV의 vLLM·SGLang·TRT-LLM·Dynamo 메인라인 머지 | Meta CacheLib 배치 표준 업스트림·EuroSys'25(5사 중 최강 선례), Anthropic 파트너 | KV 관리자 4종에 기여 0, 공급계약에 공동 최적화 조항 없음 |
+| **3 공동 설계** | 고객 시스템 이해로 함께 설계한다 | 추론 스택 내부(스케줄러·prefix 캐시·KVBM·NIXL·DOCA Memos), 커널 I/O 경로, 시스템 TCO 모델(디바이스→랙→DC), 스펙 상류 참여·표준, 공동 계약 | Micron↔Anthropic SSD 공동 설계 계약, FlexKV의 vLLM·SGLang·TRT-LLM·Dynamo 메인라인 머지 | Meta CacheLib 배치 표준 업스트림·EuroSys'25(5사 중 최강 선례), Anthropic 파트너 | KV 관리자 4종 중 3종(Mooncake · FlexKV · Dynamo KVBM) 기여 0, LMCache는 삼성 Committer 1명 · FDP 배치 머지(2026-09-28 정정), 공급계약에 공동 최적화 조항 없음 |
 
 출처: [qlc-workload-capability-phases.md](../../wiki/strategies/qlc-workload-capability-phases.md) §2~§4·§6. 단계마다 고객 보증 범위가 정격 내 QLC 원가·전력 → 고객 워크로드 기준 수명 → 시스템 수준 TCO로 확장된다.
 
 ### 5.4 삼성 현 위치 — Phase 1 진행 중
 
-**Phase 1 진행 중**: CMX 첫 공급은 TLC(PM1753)이고, QLC 라인의 배치 핸들 지원 개수와 유효 DWPD가 공개돼 있지 않다(업계 전반이 미공개이므로 **먼저 공개하는 것 자체가 차별화**가 된다). **Phase 2 준비**: KV 캐시 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개다. **Phase 3 미착수**: 캐시 관리자 4종 기여 0건, 공급계약에 공동 최적화 조항 없음. v1.0의 "Phase 1 확보" 표기는 스트림 격차 25배와 모순이어서 정정했다 (같은 위키 §6 덱 표기). 오케스트레이션(Dynamo·LMCache·Mooncake) 자체는 만들지 않는다. 그 아래의 기본 백엔드·디바이스·통합 서비스가 자리다.
+**Phase 1 진행 중**: CMX 첫 공급은 TLC(PM1753)이고, QLC 라인의 배치 핸들 지원 개수와 유효 DWPD가 공개돼 있지 않다(업계 전반이 미공개이므로 **먼저 공개하는 것 자체가 차별화**가 된다). **Phase 2 준비**: KV 캐시 백서 2종으로 측정 역량은 있으나 트레이스 기반 실측이 미공개다. **Phase 3 착수(1/4)**: 캐시 관리자 중 LMCache에 삼성 Committer 1명과 NVMe FDP 배치 머지(2026-08-05, PR #4016)가 있으나 Mooncake · FlexKV · Dynamo KVBM은 기여 0건, 공급계약에 공동 최적화 조항 없음(2026-09-28 정정: 종전 "4종 기여 0건"은 README 기준 판정이었다, [samsung-kv-cache-activities-2026-09.md](../../sources/articles/samsung-kv-cache-activities-2026-09.md)). v1.0의 "Phase 1 확보" 표기는 스트림 격차 25배와 모순이어서 정정했다 (같은 위키 §6 덱 표기). 오케스트레이션(Dynamo·LMCache·Mooncake) 자체는 만들지 않는다. 그 아래의 기본 백엔드·디바이스·통합 서비스가 자리다.
 
 ### 5.5 Phase별 산출물과 기술 전략
 
