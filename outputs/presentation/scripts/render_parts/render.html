@@ -1,0 +1,243 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:transparent}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+
+const P = new URLSearchParams(location.search);
+const OBJ = P.get('obj') || 'nand';
+const W = +(P.get('w') || 1600), H = +(P.get('h') || 1200);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H);
+renderer.setClearColor(0x000000, 0);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const key = new THREE.DirectionalLight(0xffffff, 1.6);
+key.position.set(-60, 140, 90);
+key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048);
+key.shadow.radius = 6;
+const sc = key.shadow.camera; sc.left = -400; sc.right = 400; sc.top = 400; sc.bottom = -400; sc.near = 1; sc.far = 1200;
+scene.add(key);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x9aa3b5, 0.35));
+
+// transparent ground that only receives shadow
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(4000, 4000), new THREE.ShadowMaterial({ opacity: 0.16 }));
+ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+
+// ---------- helpers
+function tex(w, h, draw) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const g = c.getContext('2d'); draw(g, w, h);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+}
+function noiseTex(base, amp, w = 512, h = 512, streak = false) {
+  return tex(w, h, (g) => {
+    g.fillStyle = base; g.fillRect(0, 0, w, h);
+    const img = g.getImageData(0, 0, w, h); const d = img.data;
+    for (let y = 0; y < h; y++) {
+      const row = streak ? (Math.random() - 0.5) * amp : 0;
+      for (let x = 0; x < w; x++) {
+        const i = (y * w + x) * 4; const n = (streak ? row * 0.8 + (Math.random() - 0.5) * amp * 0.4 : (Math.random() - 0.5) * amp);
+        d[i] += n; d[i + 1] += n; d[i + 2] += n;
+      }
+    }
+    g.putImageData(img, 0, 0);
+  });
+}
+const mat = (o) => new THREE.MeshPhysicalMaterial(o);
+function box(w, h, d, m, r = 0) {
+  const geo = r > 0 ? new RoundedBoxGeometry(w, h, d, 3, r) : new THREE.BoxGeometry(w, h, d);
+  const mesh = new THREE.Mesh(geo, m); mesh.castShadow = true; mesh.receiveShadow = true; return mesh;
+}
+// box whose top face uses its own material
+function topBox(w, h, d, side, top, r = 0) {
+  const g = new THREE.Group();
+  const b = box(w, h, d, side, r); g.add(b);
+  const p = new THREE.Mesh(new THREE.PlaneGeometry(w * 0.999, d * 0.999), top);
+  p.rotation.x = -Math.PI / 2; p.position.y = h / 2 + 0.02; p.receiveShadow = true; g.add(p);
+  return g;
+}
+const EPOXY = () => mat({ color: 0x232427, roughness: 0.62, metalness: 0.0, clearcoat: 0.15, clearcoatRoughness: 0.6 });
+const GOLD = mat({ color: 0xd9a441, roughness: 0.28, metalness: 1.0 });
+const SOLDER = mat({ color: 0xc9ccd1, roughness: 0.25, metalness: 1.0 });
+
+function chipTop(lines, w = 512, h = 512, dot = true) {
+  return mat({
+    roughness: 0.6, metalness: 0, clearcoat: 0.1,
+    map: tex(w, h, (g, W2, H2) => {
+      g.fillStyle = '#232427'; g.fillRect(0, 0, W2, H2);
+      const img = g.getImageData(0, 0, W2, H2); const d = img.data;
+      for (let i = 0; i < d.length; i += 4) { const n = (Math.random() - 0.5) * 10; d[i] += n; d[i + 1] += n; d[i + 2] += n; }
+      g.putImageData(img, 0, 0);
+      g.fillStyle = 'rgba(190,192,198,0.78)';
+      let y = H2 * 0.34;
+      for (const [txt, size, bold] of lines) {
+        g.font = `${bold ? '700' : '500'} ${size * W2 / 512}px Arial`;
+        g.fillText(txt, W2 * 0.12, y); y += size * 1.45 * H2 / 512;
+      }
+      if (dot) { g.beginPath(); g.arc(W2 * 0.12, H2 * 0.13, W2 * 0.028, 0, Math.PI * 2); g.fillStyle = 'rgba(12,12,14,0.9)'; g.fill(); }
+    })
+  });
+}
+function pcbMat(color = '#15171a', traces = true, w = 1024, h = 512) {
+  return mat({
+    roughness: 0.45, metalness: 0.05, clearcoat: 0.55, clearcoatRoughness: 0.35,
+    map: tex(w, h, (g, W2, H2) => {
+      g.fillStyle = color; g.fillRect(0, 0, W2, H2);
+      if (traces) {
+        g.strokeStyle = 'rgba(255,255,255,0.045)'; g.lineWidth = 2;
+        for (let i = 0; i < 70; i++) {
+          g.beginPath(); let x = Math.random() * W2, y = Math.random() * H2; g.moveTo(x, y);
+          for (let k = 0; k < 4; k++) { if (k % 2) x += (Math.random() - 0.5) * 260; else y += (Math.random() - 0.5) * 160; g.lineTo(x, y); }
+          g.stroke();
+        }
+        g.fillStyle = 'rgba(210,180,90,0.25)';
+        for (let i = 0; i < 90; i++) { g.beginPath(); g.arc(Math.random() * W2, Math.random() * H2, 2.4, 0, 6.3); g.fill(); }
+      }
+    })
+  });
+}
+function smd(parent, x, z, w, d, y0, n = 1, color = 0x8a6f4d) {
+  for (let i = 0; i < n; i++) {
+    const m = box(w, 0.5, d, mat({ color, roughness: 0.5 }));
+    m.position.set(x + i * (w + 0.5), y0 + 0.25, z); parent.add(m);
+  }
+}
+function fingers(parent, x0, x1, z, y0, n, w, d) {
+  const step = (x1 - x0) / n;
+  for (let i = 0; i < n; i++) {
+    const f = box(w, 0.06, d, GOLD); f.position.set(x0 + step * (i + 0.5), y0 + 0.03, z); f.castShadow = false; parent.add(f);
+  }
+}
+
+// ---------- objects (units: mm)
+const G = new THREE.Group(); scene.add(G);
+let cam = { pos: [0, 100, 140], look: [0, 0, 0], fov: 28 };
+
+if (OBJ === 'nand') {
+  const sub = box(18, 0.5, 14, mat({ color: 0x3b3524, roughness: 0.55 })); sub.position.y = 0.55; G.add(sub);
+  const body = topBox(17.2, 1.3, 13.2, EPOXY(), chipTop([['NAND Flash', 46, true], ['TLC', 38, false]]), 0.25);
+  body.position.y = 1.45; G.add(body);
+  for (let i = 0; i < 12; i++) for (let j = 0; j < 9; j++) {
+    const b = new THREE.Mesh(new THREE.SphereGeometry(0.28, 12, 8), SOLDER);
+    b.position.set(-7.4 + i * 1.35, 0.26, -5.4 + j * 1.35); b.castShadow = true; G.add(b);
+  }
+  G.rotation.y = -0.5;
+  cam = { pos: [0, 32, 30], look: [0, 0.6, 0], fov: 30 };
+}
+
+if (OBJ === 'dram') {
+  const L = 133, Hh = 31;
+  const pcb = box(L, 1.3, Hh, pcbMat('#1d4f35')); pcb.position.y = 0.65; G.add(pcb);
+  for (let i = 0; i < 8; i++) {
+    const c = topBox(11, 1.0, 10, EPOXY(), chipTop([['DRAM', 70, true], ['DDR5', 54, false]], 256, 256), 0.15);
+    c.position.set(-54 + i * 15.4 + (i >= 4 ? 4 : 0), 1.8, 2.5); G.add(c);
+  }
+  const pm = topBox(6, 1.2, 5, EPOXY(), chipTop([['PMIC', 60, true]], 256, 256), 0.1); pm.position.set(0, 1.9, -8); G.add(pm);
+  smd(G, -40, -9, 1.0, 0.6, 1.3, 14, 0x9a7b55);
+  fingers(G, -64, 64, 13.8, 1.3, 70, 1.0, 3.2);
+  // notch
+  const notch = box(2.4, 1.5, 4.2, mat({ color: 0xffffff, roughness: 1, transparent: true, opacity: 0 }));
+  G.rotation.y = -0.35;
+  cam = { pos: [0, 120, 150], look: [0, 0, 2], fov: 30 };
+}
+
+if (OBJ === 'hbm') {
+  const sub = box(56, 1.6, 56, pcbMat('#2b3b2f', true, 512, 512)); sub.position.y = 0.8; G.add(sub);
+  smd(G, -24, -26, 1.1, 0.7, 1.6, 18, 0xa98355);
+  smd(G, -24, 26, 1.1, 0.7, 1.6, 18, 0xa98355);
+  const inter = box(44, 0.7, 30, mat({ color: 0x6f6a5f, roughness: 0.35, metalness: 0.6 })); inter.position.y = 1.95; G.add(inter);
+  const dieMat = mat({ color: 0x2a3140, roughness: 0.12, metalness: 0.85, iridescence: 0.35, iridescenceIOR: 1.6 });
+  const die = box(22, 0.8, 26, dieMat, 0.1); die.position.set(0, 2.7, 0); G.add(die);
+  const hbmTop = mat({ color: 0x8d9299, roughness: 0.3, metalness: 1.0 });
+  for (const sx of [-1, 1]) for (let j = 0; j < 3; j++) {
+    const st = new THREE.Group();
+    for (let k = 0; k < 8; k++) {
+      const layer = box(7.2, 0.14, 8.2, mat({ color: k % 2 ? 0x3a3d43 : 0x6a6e75, roughness: 0.4, metalness: 0.7 }));
+      layer.position.y = 2.4 + k * 0.15; st.add(layer);
+    }
+    const cap = box(7.2, 0.25, 8.2, hbmTop); cap.position.y = 2.4 + 8 * 0.15 + 0.05; st.add(cap);
+    st.position.set(sx * 15.6, 0, -9.4 + j * 9.4); G.add(st);
+  }
+  G.rotation.y = -0.45;
+  cam = { pos: [0, 70, 72], look: [0, 1.5, 0], fov: 30 };
+}
+
+if (OBJ === 'ssd') {
+  const L = 110, Wd = 22;
+  const pcb = box(L, 1.0, Wd, pcbMat('#141619')); pcb.position.y = 0.5; G.add(pcb);
+  const ctrl = topBox(13, 1.4, 13, mat({ color: 0x9aa0a8, roughness: 0.3, metalness: 0.9 }),
+    mat({ roughness: 0.35, metalness: 0.9, map: tex(256, 256, (g) => { g.fillStyle = '#a8adb4'; g.fillRect(0, 0, 256, 256); g.fillStyle = 'rgba(40,44,52,0.85)'; g.font = '700 44px Arial'; g.fillText('SSD', 70, 118); g.font = '500 30px Arial'; g.fillText('Controller', 52, 160); }) }), 0.2);
+  ctrl.position.set(-33, 1.7, 0); G.add(ctrl);
+  const dr = topBox(8, 1.0, 12, EPOXY(), chipTop([['DRAM', 64, true]], 256, 256), 0.12); dr.position.set(-19, 1.5, 0); G.add(dr);
+  for (let i = 0; i < 4; i++) {
+    const n = topBox(15, 1.3, 18, EPOXY(), chipTop([['NAND', 64, true], ['Flash', 48, false]], 256, 256), 0.2);
+    n.position.set(-4 + i * 17.2, 1.65, 0); G.add(n);
+  }
+  smd(G, -46, 8.5, 0.9, 0.6, 1.0, 10, 0x9a7b55);
+  fingers(G, -L / 2 + 0.6, -L / 2 + 5.5, 0, 1.0, 1, 4.8, 18);
+  for (let i = 0; i < 26; i++) { const f = box(0.45, 0.07, 3.6, GOLD); f.position.set(-L / 2 + 2.2, 1.04, -9.2 + i * 0.72); f.rotation.y = Math.PI / 2; G.add(f); }
+  G.rotation.y = -0.38;
+  cam = { pos: [0, 88, 96], look: [4, 0, 0], fov: 30 };
+}
+
+if (OBJ === 'server') {
+  const Wd = 440, Hh = 87, D = 520;
+  const shell = mat({ color: 0x6e737a, roughness: 0.38, metalness: 0.85, map: noiseTex('#8c9199', 18, 512, 512, true) });
+  const lid = box(Wd, Hh, D, shell, 2); lid.position.set(0, Hh / 2, -D / 2); G.add(lid);
+  // front bezel
+  const bezelTex = tex(2048, 420, (g, W2, H2) => {
+    g.fillStyle = '#1e2126'; g.fillRect(0, 0, W2, H2);
+    const cols = 24, bx = 150, bw = (W2 - 2 * bx) / cols;
+    for (let i = 0; i < cols; i++) {
+      const x = bx + i * bw + 4; const w = bw - 8;
+      const grd = g.createLinearGradient(x, 0, x + w, 0); grd.addColorStop(0, '#30343b'); grd.addColorStop(1, '#262a30');
+      g.fillStyle = grd; g.fillRect(x, 40, w, H2 - 80);
+      g.fillStyle = '#15171b'; for (let k = 0; k < 9; k++) g.fillRect(x + 8, 70 + k * 26, w - 16, 10);
+      g.fillStyle = i % 5 === 2 ? '#5b8cff' : '#3fbf7f'; g.fillRect(x + w / 2 - 4, H2 - 70, 8, 8);
+    }
+    g.fillStyle = '#2b2f36'; g.fillRect(0, 0, bx - 20, H2); g.fillRect(W2 - bx + 20, 0, bx - 20, H2);
+    g.fillStyle = '#9aa0a8'; g.beginPath(); g.arc(70, H2 / 2, 16, 0, 6.3); g.fill();
+    g.fillStyle = '#5b8cff'; g.beginPath(); g.arc(W2 - 70, H2 / 2, 9, 0, 6.3); g.fill();
+  });
+  const front = new THREE.Mesh(new THREE.PlaneGeometry(Wd, Hh), mat({ map: bezelTex, roughness: 0.55, metalness: 0.3 }));
+  front.position.set(0, Hh / 2, 0.6); G.add(front);
+  for (const sx of [-1, 1]) { const ear = box(18, Hh, 4, mat({ color: 0x3b3f46, roughness: 0.4, metalness: 0.8 })); ear.position.set(sx * (Wd / 2 + 9), Hh / 2, -1); G.add(ear); }
+  G.rotation.y = 0.5;
+  cam = { pos: [0, 330, 520], look: [-40, 20, -170], fov: 34 };
+}
+
+// ---------- camera: auto-fit
+const camera = new THREE.PerspectiveCamera(cam.fov, W / H, 0.1, 5000);
+camera.position.set(...cam.pos); camera.lookAt(...cam.look);
+const bb = new THREE.Box3().setFromObject(G);
+const ctr = bb.getCenter(new THREE.Vector3());
+const dir = new THREE.Vector3(...cam.pos).sub(new THREE.Vector3(...cam.look)).normalize();
+let dist = new THREE.Vector3(...cam.pos).distanceTo(new THREE.Vector3(...cam.look));
+function fits(dd) {
+  camera.position.copy(ctr).addScaledVector(dir, dd); camera.lookAt(ctr); camera.updateMatrixWorld();
+  const pts = []; for (const x of [bb.min.x, bb.max.x]) for (const y of [bb.min.y, bb.max.y]) for (const z of [bb.min.z, bb.max.z]) pts.push(new THREE.Vector3(x, y, z).project(camera));
+  return Math.max(...pts.map(p => Math.max(Math.abs(p.x), Math.abs(p.y)))) ;
+}
+for (let it = 0; it < 40; it++) { const m = fits(dist); dist *= m / 0.86; }
+fits(dist);
+key.target.position.copy(ctr); scene.add(key.target);
+renderer.render(scene, camera);
+window.__done = true;
+</script></body></html>

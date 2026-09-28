@@ -2237,3 +2237,13 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 역링크 8곳: solution-ladder(F29) · fdp-placement-mechanics · waf-runtime-response(T3 규격 상태) · essd-purchase-criteria-shift · qlc-ssd-market · hbm-to-storage-spillover · strategies/qlc-workload-capability-phases(§8 연결 신설) · strategies/fdp-host-ssd-platform. 전략 페이지는 링크만 추가, 전략 내용 무변경 → DecisionTracker·보고서 전략 절 갱신 불필요
 - index.md concepts 절 2건 등록·보고서 항목에 위키 환원 표기. 지식 그래프 재생성(노드 114→116, 상호 118→131, 고아 0, 비대칭 499 유지)
 - **대시보드 (v2.46.48, 패치)**: `knowledgeGraph.js` 재생성, `updates.js` 항목, `version.js`. `npm run build` 통과. UI·탭 무변경
+
+## [2026-09-28] build | 다운턴에서 배운 SSD 생존 전략: 3장 요약 덱 v1.0
+- 사용자 지시: 세션 대화를 토대로 전체 스토리라인을 3장으로 요약. 텍스트는 줄이고 사실은 그래프, 개념은 도형·선, 기업은 로고, 부품은 실물 이미지, 작은 글자 금지. 1장 배경(다운턴 교훈 → 다음 수요 → DWPD 갭 → 명제), 2장 솔루션(상단 1/3 NAND→서버 범위, 하단 2/3 기술 스택 3단계), 3장 실행 전략(재량)
+- 신설 `outputs/presentation/ssd-survival-strategy.pptx`·`ssd-survival-strategy-outline.md`, 생성기 `scripts/generate_ssd_survival_pptx.py`, 차트 `scripts/generate_ssd_survival_charts.py`(HBM 점유율·eSSD 수요+AI+QLC·DWPD 로그 축), 부품 렌더 `scripts/render_parts/`(three.js + headless Chromium: NAND·DRAM·HBM·SSD·서버)
+- **이미지 제약**: 외부 이미지 호스트(Wikimedia·언론·벤더)가 프록시에서 막혀 실물 사진 대신 3D 렌더를 썼다. `assets/photos/`에 같은 이름의 공식 사진을 넣으면 자동 교체. 로고는 npm `@iconify-json/logos`·`simple-icons`에서 삼성·SK하이닉스·Huawei 추가(기존 NVIDIA·Meta·Google·Microsoft·AWS 재사용)
+- **표현상 결정**: 복기 문구("시장 규모를 작게 봄 → 개발 리소스 투입 지연 → 선두 상실")는 사용자 지시로 넣되 "복기" 라벨로 과제팀 회고임을 표시(2026-09-23 QLC 덱의 "우선순위 약화" 규율과의 차이를 기획서에 기록). KV 캐시는 "이동"이 아니라 "SSD로 내려온다". HBM 점유율은 TrendForce(2022~2024)와 Counterpoint(2025~) 혼합이라 추세로 읽도록 각주. 30 DWPD는 공개 근거가 없어 고객 요구 `[사내 확인]`
+- 원고의 빈칸 채움: "XX" = 쓰기 전 소거·수명 편차(FTL), "YY" = 데이터 수명 혼재(호스트만 안다 → 배치 정보)
+- 3장은 기존 실행 전략(qlc-execution-strategy · qlc-workload-capability-phases · 워크로드 구성형 SSD 보고서)을 기술·인재·고객 협력 × 3단계로 재배열. 2026-09-19 덱 범위 결정대로 자회사·별도 보상·지분은 제외
+- 렌더 QA(NanumGothic, soffice → PDF → PNG) 3장 통과: 본문 최소 16pt(출처 줄만 15pt), em-dash 0, 넘침 수정(제목 수동 줄바꿈, 로고 겹침, 상단 문제 줄, 계약의 창 라벨, 차트 라벨 잘림)
+- index.md outputs 절 2건 등록. **대시보드 무변경**(발표 산출물만) → 버전 bump 생략
