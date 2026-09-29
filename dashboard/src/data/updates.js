@@ -14,6 +14,30 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-29 (정기 재평가) ─────────────────────────────────────────────────
+  {
+    date: '2026-09-29',
+    type: 'assessment',
+    version: 'v2.46.50',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + Trump-Xi 09-24 정상회담 리트머스 해소(현상유지)·조달 tell·EWI·트리거 반영',
+    summary:
+      '직전 09-22 재평가 이후 git log 커밋(v2.46.42~v2.46.49)은 전부 QLC eSSD 덱/보고서/위키·워크로드 구성형 SSD 보고서·KV 캐시 관리자 팩트체크·SSD 생존 전략 덱 = 내부 제품믹스(DF3/NAND)·발표·팩트체크 층으로 신규 실현 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. ' +
+      '이번 사이클의 결정적 차이: 3주간(09-08·09-15·09-22) 대기하던 DF2 리트머스가 실제로 해소됐다 — Trump-Xi 정상회담이 09-24 워싱턴에서 개최됐고 성과는 제한적이었다. ' +
+      'DF2(디커플링): 합의는 예상보다 짧은 ~2개월 무역 휴전 연장(Busan 휴전 연장)·AI 대화 채널(Super Intelligence Safety Dialogue)·양국 ~$30B 상호 관세 우대·11월 APEC(중국)/12월 G20(마이애미) 상호 참석 의향에 그쳤다. 반도체 축은 포괄 타결·범용 DRAM/NAND 수출 공식 재개·라이선스 언어 변경 전무, MATCH 미통과(H.R.8170·상원 S.4281 위원회 단계 유지), 신규 수출통제 없음. 베이징은 미 첨단칩 금수 유지에, 워싱턴은 희토류에 여전히 불만. → 리트머스가 "결과 대기"에서 "현상유지·휴전 지속(에스컬레이션도 수출 재개도 없음)"으로 해소 → 관리된 공존(DF2 0.5) 재확인, 위치·방향 무이동. 양방향 트리거 미발동. 다음 분기점 = APEC 11월·G20 12월(휴전 2개월 창). ' +
+      'DF1(수요) 정점 재확인: Q4 2026 메모리 계약가 +20~50%(Nanya +50%·Winbond +20%·DDR4 Q2 저점 대비 +80~90%)·Micron HBM 2026 완판(수요의 ½~⅔만 충족)·HBM4 Vera Rubin 램프(수율 HBM3E보다 빠름)·SCA 16건 예치 $22B·RPO ~$100B·Q4 FY26 가이던스 $50B/GM 86%(실적 09-30 임박이 다음 확인점)·빅테크 4사 CapEx ~$725B(+77% YoY·삭감 0건)·2027 >$1T 컨센서스 재확인(Moody\'s +$85B 상향해 $1조 근접·2H26 ~$432B). 후기순환 조달 tell 심화(수요 붕괴 아님): 순환 파이낸싱 $800B+·Oracle 2026 부채·지분 최대 $50B 조달(4년간 OpenAI 약정에 ~$106B) → 조달 구조 경보로 EWI 반영, 축 무이동. 패치 v2.46.50.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지', 'Trump-Xi 정상회담', 'MATCH', '순환 파이낸싱', 'Q4 메모리 계약가', 'Micron', '삼성 HBM4'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5 (축 무이동)', detail: '09-22 이후 git log 커밋은 전부 내부 제품믹스(DF3/NAND)·발표·팩트체크 층 = 신규 실현 외부 거시 사실 0건. DF1 in-window 신호는 전부 정점 재확인(Q4 메모리 계약가 +20~50%·Micron HBM 완판·CapEx ~$725B·2027 >$1T). DF2: Trump-Xi 정상회담 09-24 개최됐으나 현상유지(2개월 휴전 연장·AI 대화 채널뿐, 포괄 타결·수출 재개·MATCH 통과·신규 통제 전무) → 리트머스 "결과 대기"→"현상유지"로 해소, 관리된 공존 재확인' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '정상회담이 현상유지로 귀결돼 A↔B 재배분 미실행(공존 심화 딜도, 디커플링 에스컬레이션도 없음). 후기순환 조달 tell(순환 파이낸싱 $800B+·Oracle 최대 $50B 조달)은 수요 붕괴(D 재배분)가 아닌 조달 구조 경보라 상대 확률 무영향(CapEx 상향·재고 없음). 삼성 HBM4 볼륨 발주 미전환 = B 시간 리스크 지속' },
+      { label: '트리거 갱신 — 09-24 정상회담 결과 반영(발동 0건)', detail: 'us_china_semiconductor_deal 미발동(포괄 타결·수출 재개 없음, "결과 대기"→"현상유지")·match_act_passed 미발동(위원회 단계 유지·본회의 표결 없음)·apple_cxmt_approved 미발동(라이선스 언어 변경 없어 승인/차단 리트머스 미해결)·samsung_hbm4_nvidia_confirmed 미충족(볼륨 발주 미확보·09-30 Micron 실적·연말 관문)·enterprise_ai_roi_proven 미발동(하락 선행 조달 tell 심화)' },
+      { label: 'EWI 갱신 — DF1 정점·조달 축(실측)', detail: 'bigtech_capex_growth 09-29 데이터포인트 추가(값 82 무변화·2027 >$1T 재확인·Moody\'s +$85B 상향)·ai_dc_credit_spread(순환 파이낸싱 $800B+·Oracle 최대 $50B 조달, 조달 구조 경보 유지·미발동)·gpu_rental_price_trend(신규 스냅샷 미수집, 직전 firming 유지·붕괴 신호 없음)' },
+      { label: '위키 동기화', detail: 'wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치에 09-29 재평가 bullet 추가·wiki/scenarios/scenario-matrix.md 확률표에 [2026-09-29 재평가] 유지 note 추가. dashboard scenarioPlanning(DF1·DF2·A·B)·indicators(INITIAL_QUADRANT_POSITIONS current·SCENARIOS·EWI·트리거) 미러' },
+    ],
+    links: [
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
   // ── 2026-09-28 (KV 캐시 관리자 "삼성 기여 0" 정정) ──────────────────────────────
   {
     date: '2026-09-28',
