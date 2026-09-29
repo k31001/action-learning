@@ -119,3 +119,9 @@ TSMC는 노드 전환을 **"Nx → Nx+ → Nx++"** 점진 개선으로 잘게 �
 - **CoWoS 세부 배정**: NVIDIA가 CoWoS 배정량의 ~60%(~59.5만 장)를 점유. TSMC는 2026년 24만~27만 장을 OSAT(Amkor·SPIL)에 외주. 첨단 패키징이 2026년 TSMC 총 CAPEX($520~560억)의 최대 20%를 배정받음. CEO 웨이저자(C.C. Wei)는 "CoWoS 캐파는 매우 타이트하며 2025~2026년까지 계속 sold out" 상태라고 재확인 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **CoPoS**: 2026-06-17 TrendForce 확인 — AP7 Chiayi 파일럿(310×310mm 글래스코어 패널) 트라이얼 수율 ~90%. 다만 **전면 양산 램프는 2028년 하반기~2029년**으로 재확인(DigiTimes: 2029년 목표) — 이전 위키 서술과 일치하되 양산 지연은 재확인·강조 필요 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 - **ASML High-NA EUV 도입 연기**: TSMC가 High-NA EUV 도입을 최소 2029년까지 연기 결정 — 비용 대비 현행 장비로 충분하다는 판단, 이전 전망(2027~28)보다 후퇴 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+## 업데이트 (2026-09-29)
+
+- 2Q26 매출 $40.2B(+36%)·GM 67.7%·선단 77%. Q3 가이던스 $44.6~45.8B·연 성장 USD 40%+ 상향. 8월 매출 NT$514.8B(+53.3% YoY), 1~8월 +39.3%
+- 2026 CAPEX $60~64B(직전 $56B 보도). Arizona 2공장 고volume 양산 2027 하반기로 앞당김. A13 High-NA 미도입(2029+ 재확인)
+- CoWoS 신규 확정치 없음(추정 8.8~12.7만 장/월 상충). 병목 모델 파운드리 지수 50→48 ([september-2026-market-update-2026-09-29.md](../../sources/articles/september-2026-market-update-2026-09-29.md))

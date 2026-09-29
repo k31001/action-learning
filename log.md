@@ -2283,3 +2283,14 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 구성: §0 요약(제목 문단 · 장별 질문/답/근거 · 한 줄 결론) → §1 배경(HBM 점유율 표 · "복기"는 과제팀 해석임을 명시 · 인터뷰 2건 · KV 캐시가 SSD로 "내려온다"(증설) · eSSD/KV/QLC 모델 표 · DWPD 표와 반증 · 명제) → §2 솔루션(SSD 안의 해법과 WAF 한계 · 세 갈래 비교와 30 DWPD 조건표 · 수명 정보는 호스트에 · 기술 스택 3단계와 LMCache FDP 머지 · 워크로드 구성형 SSD) → §3 실행(계약: Micron ↔ Anthropic 4요소 / 사람: Palantir FDE와 수요를 함께 만드는 순환 Mermaid / 역량: 계층별 지금 대 필요한 기술 / 계약의 창·3단계·90일 / 성과 지표) → §4 리스크와 반론 → §5 근거 대장 S-1~S-18(등급) → §6 슬라이드 대응표
 - 🟡 항목(LMCache 블로그 WAF 실측 등)은 본문에서 등급을 밝혀 사실과 구분. 링크 전수 확인
 - index.md outputs 절 등록, 기획서 frontmatter에 report 연결. 대시보드 무변경 → 버전 bump 생략
+
+## [2026-09-29] ingest | 병목 모델 정기 점검 — 전력 75(▲+3)·CAPEX 39(▼-1)·파운드리 48(▼-2)·패키징 68(▲+1) (v2.46.52)
+- **무엇**: 스케줄 지시("@data 최신 데이터 검색·업데이트, Bottleneck 수치 갱신+변동폭, wiki/link 갱신, 필요시 전략 수정")에 따라 4개 병렬 리서치 에이전트(전력·DC / CAPEX·신용 / 파운드리·패키징 / HBM·DRAM·NAND)로 07-04 이후 데이터 수집. **한계**: 전부 WebSearch 스니펫 기반 — semianalysis·counterpoint(영문)·techinsights 본문은 검색에 노출되지 않았고 ercot·delloro·trendforce fetch는 egress 차단. 원장에 한계 명시, 스니펫 간 충돌 수치(ERCOT 427~474GW, MS $175/190B, Meta 하한)는 병기
+- **병목 지수(이전 07-04 대비)**: 전력 72→**75**(▲+3, 3분기 연속 악화 누적 +7) · CAPEX 40→**39**(▼-1) · 파운드리 50→**48**(▼-2) · 패키징 67→**68**(▲+1, 완화 흐름 첫 반등). 수급 모델 본체(U·ε·2030 공급)는 불변
+- **주요 신규 사실**: ERCOT 큐 ~474GW·PUCT 결정 12월 지연·PJM 2028/29 6.8GW 부족과 백스톱·GE Vernova 116GW(납기 ~2031) / Alphabet $195~205B·Amazon $220B·Dell'Oro 2Q26 +92%·Oracle RPO $664B / TSMC Q3 가이던스 $44.6~45.8B·CAPEX $60~64B / **TrendForce Rubin 램프 2027 지연 보도(제목·스니펫만, 미확인)** / Counterpoint 2Q26 HBM SK50·삼성33·Micron18 / 삼성 2Q 영업이익 89.4조·키움 3Q 하향 / SK ADR $265.1억
+- **sources**: 신규 `sources/articles/september-2026-market-update-2026-09-29.md`
+- **wiki**: 갱신 — bottleneck-model-2030(§ 종합 판독 09-29 신설)·energy-constraints·ai-capex·hbm-market·demand-inflection-ewi·entities/samsung·sk-hynix·tsmc·micron. Micron Q3 "$33.5B"는 가이던스이고 실적은 $41.46B로 확인(충돌 아님, 기록만)
+- **전략 검토**: 신설·삭제·수정 없음. Rubin 지연 보도는 본문 미확인이라 RS-2(HBM 인증)·RS-9(수요 변곡)의 모니터링 항목으로만 편입. 본문 확인 시 재평가
+- **dashboard (v2.46.52, 패치)**: `bottleneckModel.js`(ASOF·PREV·지수·indexNote·드라이버 9개), `demandSignals.js`(dram_price_decel·ASOF), `BottleneckModel.jsx`(헤더 변동폭 문구를 데이터 파생으로 — 기존 06-13 값 하드코딩 오류 정정), `updates.js`, `knowledgeGraph.js` 재생성. `npm run build` 통과
+- **outputs**: 보고서 핵심 수치표·§2.2.3, slide-outline 갱신 노트(PPTX 재생성 생략 — 구조 불변)
+- **후속**: Micron FY26 Q4(09-30)·삼성 3Q 잠정(10월 초)·PJM 백스톱 결과(12월)·PUCT(12월)·Rubin 지연 본문 확인

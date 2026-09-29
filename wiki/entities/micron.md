@@ -474,3 +474,7 @@ Counterpoint Research (2025-12-18, Jeongku Choi):
 - 2026-06-25 N.D. Cal. 제소 건에 Micron도 삼성전자·SK하이닉스와 함께 피고로 포함 — HBM 전환 명목 하 범용 DRAM 공급 제한·가격 담합 주장([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)). 상세 내용은 신규 개념 페이지 [dram-antitrust-litigation.md](../concepts/dram-antitrust-litigation.md) 참조.
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §3, §4
+
+## 업데이트 (2026-09-29) — FY26 Q3 실적 수치 정합 확인
+
+- 스니펫: FY26 Q3 매출 $41.5B·EPS $25.11, Q4 가이던스 매출 $50B±1B·GM ~86%, Q4 실적 09-30 발표 예정. 기존 위키 일부의 "$33.5B"는 **가이던스**(실적은 $41.46B, 보고서 핵심 수치표와 일치)이므로 충돌 아님 — 다만 06-14 소스 파일 등 일부 페이지의 "역대 최고 $33.5B" 표기는 가이던스 기준임을 인지. HBM 점유율 18%(2Q26) ([september-2026-market-update-2026-09-29.md](../../sources/articles/september-2026-market-update-2026-09-29.md))

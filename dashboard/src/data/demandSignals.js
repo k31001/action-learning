@@ -11,7 +11,7 @@
 //   실시간 데이터 피드 연동은 다음 단계. 절대값보다 "어느 링크가 먼저 켜지는가"로 해석.
 // 단일 소스: wiki/concepts/demand-inflection-ewi.md
 
-export const EWI_ASOF = '2026-07-04'
+export const EWI_ASOF = '2026-09-29'
 
 // 신호 레벨 → 하락 위험 점수(0 안전 ~ 100 위험)
 export const SIGNAL_LEVELS = {
@@ -61,7 +61,7 @@ export const DEMAND_SIGNALS = [
   { id: 'inventory',    tier: 'tier3', name: '메모리 재고일수',         signal: 'expansion',  trend: 'stable',    weight: 3, source: 'TrendForce·IR', ewiId: 'memory_inventory_days', note: '부족으로 낮음 — 상승 전환 시 최선행 경고' },
   { id: 'opm_inv',      tier: 'tier3', name: 'DRAM vs HBM 이익률 역전',  signal: 'caution',    trend: 'worsening', weight: 2, source: 'Counterpoint', ewiId: 'dram_opm_vs_hbm_opm', note: 'DRAM OPM>HBM 관측 = 사이클 정점 신호' },
   { id: 'trad_demand',  tier: 'tier3', name: '전통 수요(스마트폰 YoY)', signal: 'caution',    trend: 'worsening', weight: 1, source: 'Counterpoint', ewiId: 'smartphone_shipment_yoy', note: '-2.1% — 범용 수요 약세' },
-  { id: 'dram_price_decel', tier: 'tier3', name: '범용 DRAM 계약가 상승률 감속', signal: 'caution', trend: 'worsening', weight: 2, source: 'TrendForce 2026-07-03', note: 'Q3 2026 전망 +13~18% QoQ — Q2(+58~63%) 대비 대폭 감속(신규, 07-04). 서버향은 견조하나 범용 축 첫 감속 신호 — 완전한 변곡 확정은 아님' },
+  { id: 'dram_price_decel', tier: 'tier3', name: '범용 DRAM 계약가 상승률 감속', signal: 'caution', trend: 'worsening', weight: 2, source: 'TrendForce 2026-07-03·키움 2026-09-23', note: 'Q3 2026 전망 +13~18% QoQ — Q2(+58~63%) 대비 대폭 감속. 09-29 갱신: TrendForce는 4Q 상승폭 "추가 수렴"(정량 미확인), 키움은 삼성 3Q 범용 DRAM 상승률 가정 20%→12%로 하향(영업이익 122→107조). 반면 일부 4Q 계약가 견적은 +20~50%(Nanya·Winbond) — 범용 축 감속·서버 축 견조의 분화, 변곡 확정은 아님' },
   // ⑥ 공급 과잉
   { id: 'supply_bal',   tier: 'supply', name: 'bit 공급 vs 수요 밸런스', signal: 'caution',   trend: 'worsening', weight: 2, source: '3사 capex·웨이퍼', note: '캐파 증설 누적 — 공급발 하락 구조적 리스크' },
   { id: 'cxmt',         tier: 'supply', name: 'CXMT 범용 공급',          signal: 'caution',   trend: 'worsening', weight: 2, source: 'cxmt 위키', ewiId: 'cxmt_asp_gap', note: '범용 DRAM 램프 — 공급 과잉 가속 위험' },

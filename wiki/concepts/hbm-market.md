@@ -323,3 +323,9 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 ### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
 
 - SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+## 업데이트 (2026-09-29)
+
+- **Counterpoint 2Q26 HBM 점유율**: SK하이닉스 50%(2Q25 64%)·삼성 33%(QoQ +12%p, 3분기 연속 2위)·Micron 18%(합계 101%는 반올림). 2026 HBM4 전망 SK 54%·삼성 28%·Micron 18%. SK의 NVIDIA HBM4 물량 2/3~70%는 업계 소식통 수치(공식 미확인)
+- **Rubin 램프 2027 지연 보도**(TrendForce ~09-21, 제목·스니펫만 확인): SK hynix HBM4 출하 원 목표 대비 20~30% 감축. 삼성 HBM4 DRAM 수율 60% 안팎 추정(엇갈림)
+- 병목 모델: 패키징 지수 67→68(HBM4 적층 수율 병목 강화) ([september-2026-market-update-2026-09-29.md](../../sources/articles/september-2026-market-update-2026-09-29.md))

@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-09-29 (병목 모델 정기 점검) ─────────────────────────────────────────
+  {
+    date: '2026-09-29',
+    type: 'ingest',
+    version: 'v2.46.52',
+    title: '병목 모델 정기 점검 — 전력 75(▲+3)·CAPEX 39(▼-1)·파운드리 48(▼-2)·패키징 68(▲+1)',
+    summary:
+      '이전 점검(2026-07-04) 대비 4대 제약지수를 갱신하고 변동폭(Δ)을 헤더·카드에 표시. 전력은 ERCOT 큐 ~474GW·PUCT 결정 12월 지연·터빈 백로그 116GW로 3개 분기 연속 악화(68→70→72→75). CAPEX는 Alphabet·Amazon 추가 상향·Dell\'Oro 2Q26 +92%·HY OAS 타이트로 소폭 완화(조달 구조 의존 심화는 상쇄), 파운드리는 TSMC Q3 가이던스·CAPEX $60~64B·Arizona 앞당김으로 완화, 패키징은 Rubin 램프 2027 지연 보도·SK HBM4 출하 20~30% 감축(본문 미확인)으로 HBM4 수율 병목이 강화되며 소폭 반등. 수집은 전부 검색 스니펫 기반(SemiAnalysis·Counterpoint 영문·TechInsights 본문 미확인) — 지수는 ±2 오차의 정성 판단. 9개 Robust 전략 구성 불변.',
+    tags: ['병목 모델', '제약지수', '변동폭', '전력', 'CAPEX', 'TSMC', 'HBM 점유율', 'Rubin', 'Counterpoint'],
+    items: [
+      { label: '제약지수 변동', detail: '전력 72→75(▲+3)·CAPEX 40→39(▼-1)·파운드리 50→48(▼-2)·패키징 67→68(▲+1). 헤더의 이전 대비 변동폭 문구는 PREV_INDICES에서 파생(하드코딩 제거)' },
+      { label: '드라이버 갱신', detail: '계통접속 큐·변압기·발전 COD(긴장·악화)·capex_guide·financing·node_ramp·asml·cowos_util·stack_yield(임계·악화) 노트·레벨 갱신, DRIVERS_ASOF 09-29' },
+      { label: 'EWI', detail: 'dram_price_decel 노트 갱신(TrendForce 4Q 상승폭 수렴·키움 3Q 가정 20→12%), Rubin 지연 보도는 후보 등록(미확인)' },
+      { label: '전략 검토', detail: '신규·삭제 전략 없음. Rubin 지연 보도는 RS-2·RS-9 모니터링 항목으로만 편입, 본문 확인 후 재평가' },
+      { label: 'wiki·outputs', detail: 'bottleneck-model-2030·energy-constraints·ai-capex·hbm-market·demand-inflection-ewi·samsung·sk-hynix·tsmc·micron 갱신, 보고서 §2.2.3·핵심 수치표, slide-outline 노트(PPTX 재생성은 구조 불변이라 생략)' },
+    ],
+    links: [
+      { label: '원장: september-2026-market-update-2026-09-29.md', href: 'sources/articles/september-2026-market-update-2026-09-29.md' },
+    ],
+  },
   // ── 2026-09-29 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-09-29',

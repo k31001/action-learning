@@ -108,7 +108,7 @@
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
-- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-07-04 제약지수 전력72·CAPEX40·파운드리50·패키징67)
+- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-09-29 제약지수 전력75·CAPEX39·파운드리48·패키징68 (07-04 대비 ▲+3·▼-1·▼-2·▲+1))
 - [wiki/concepts/dram-antitrust-litigation.md](wiki/concepts/dram-antitrust-litigation.md) — DRAM 반독점 집단소송(2026-06-25 제소, Samsung·SK하이닉스·Micron 공동 피고) — 삼성 규제·평판 리스크 추적 (NEW)
 
 ### 신규 전략 인접영역 (시니어 파트너 인터뷰 2026-06-11 기반)
@@ -209,6 +209,7 @@
 - [sources/articles/palantir-fde-model-2026-07.md](sources/articles/palantir-fde-model-2026-07.md) — Palantir Forward Deployed Engineer(FDE, 내부코드 "Delta") 모델 — 고객사 상주 엔지니어, Anthropic·OpenAI GTM 채택, 개발실 Co-Design Pod 벤치마크
 - [sources/articles/star-engineer-context-2026-07.md](sources/articles/star-engineer-context-2026-07.md) — 스타 엔지니어 논거: 송길영 『호명사회』(조직→개인 이름) + 2026 메모리 성과급 급등(삼성 ~6억·SK 상한철폐) → DE 채용 협상 우위
 - [sources/articles/july-2026-market-update-2026-07-04.md](sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 정기 점검(SemiAnalysis·Counterpoint·TechInsights 우선 수집): PJM 개편 큐·ERCOT 큐 4배 급증·변압기 리드타임 5년·빅5 CapEx 추가 상향(MS $190B)·Dell'Oro $1조 돌파·JPMorgan $5.5조·ASML High-NA 2029 연기·HBM4 마이크로범프 결정·SK하이닉스 나스닥 상장·반독점 소송·DRAM Q3 가격 감속 조짐
+- [sources/articles/september-2026-market-update-2026-09-29.md](sources/articles/september-2026-market-update-2026-09-29.md) — 2026-09-29 정기 점검(스니펫 기반, 4개 에이전트): ERCOT 큐 ~474GW·PUCT 12월 지연·PJM 백스톱·터빈 116GW·Alphabet/Amazon CAPEX 상향·Dell'Oro +92%·Oracle RPO $664B·TSMC Q3 가이던스·Rubin 램프 지연 보도·Counterpoint 2Q26 HBM(SK 50/삼성 33/Micron 18)·삼성 2Q 영업익 89.4조·SK ADR $265억. 병목 지수 전력75·CAPEX39·파운드리48·패키징68
 - [sources/articles/apple-cxmt-china-dram-2026-07-08.md](sources/articles/apple-cxmt-china-dram-2026-07-08.md) — 애플이 중국 내수용 기기에 CXMT DRAM 기술 검증 착수(FT 2026-07-08)·미 행정부 사용 승인 로비·CXMT 1260H 리스트·YMTC 2022 전례·DRAM 계약가 +55~60%·CXMT 캐파점유 11%→15%(2028)·삼성·SK 과점 균열/애플 price leverage
 - [sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md](sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md) — 삼성 HBM4 NVIDIA 인증(06-05 Vera Rubin 3사 인증) 통과에도 볼륨 발주 미전환·매출 유상 평가용 샘플 수준(Winbuzzer 07-17)·SK Rubin 2/3+ 락인 / 확증 신호: 빅테크 2026 CapEx ~$725B(+77% YoY)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속·MATCH 위원회 단계·CXMT HBM 지연
 - [sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md](sources/articles/hyperscaler-q2-2026-capex-2026-07-28.md) — 하이퍼스케일러 Q2 2026 실적 시즌(07-21~28 수집): Alphabet(07-22) 2026 CapEx 가이던스 $180~190B→$195~205B 상향·Cloud 백로그 QoQ +$50B→$514B / SK하이닉스 Q2 영업이익 ~$43.7B·OPM ~76% 사상 최대 / MSFT·Meta 07-29·Amazon 07-30 발표 대기 / GPU 임대가 firming·DRAM Q3 +13~18% 유지·MATCH 위원회 단계·CXMT HBM 미확정

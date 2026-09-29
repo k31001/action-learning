@@ -128,3 +128,9 @@ flowchart LR
 - 병목 모델([bottleneck-model-2030.md](bottleneck-model-2030.md))의 실물 수급 제약 논리와도 교차 확인이 필요한 신호다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+## 업데이트 (2026-09-29)
+
+- `dram_price_decel`(범용 DRAM 계약가 감속) 갱신: TrendForce는 4Q26 상승폭이 약한 최종 수요·높은 재고로 "추가 수렴"(정량 미확인), 키움(09-23)은 삼성 3Q 범용 DRAM 상승률 가정을 20%→12%로 하향. 일부 4Q 견적(+20~50%)과 분화 — 신호 레벨 caution 유지
+- 조기신호 후보 등록(미확인): TrendForce "Rubin 램프 2027 지연(HBM 문제)"(~09-21, 제목·스니펫만) — 본문 확인 시 GPU 발주 이연 = 수요 변곡 선행 링크(③발주 미시)로 승격 검토
+- 병목 모델과의 관계: 패키징 지수 67→68은 공급 병목(HBM4 수율)이며 수요 EWI와 교차 부호. 근거: [september-2026-market-update-2026-09-29.md](../../sources/articles/september-2026-market-update-2026-09-29.md)

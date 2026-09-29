@@ -181,3 +181,10 @@
 - **냉각-성능 결합**: 전면 액체냉각(칩·케이블·변압기까지), "칩을 뜨겁게 돌릴수록 메모리 대역폭·FLOPS↑" — 냉각 효율이 인텔리전스 생산량과 직결. 물은 폐루프 재활용으로 소비 미미.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+## 업데이트 (2026-09-29)
+
+- ERCOT 대형부하 큐 410GW+ → 약 474GW(약 90% DC, 스니펫 간 427~474GW 병존). 텍사스 PUCT SB6 최종 결정은 07-09 예정에서 2026-12로 지연. 대형부하 출력변동 한도(10MW/5초)·배치 스터디 접속 절차 신규 추진
+- PJM 2028/29 경매 6,831MW 부족 → 신뢰도 백스톱 조달(09-30~10-21, 상한 $555/MW-day, 결과 12월). 2027/28 피크 증가 5,250MW 중 ~5,100MW가 DC
+- 설비: GE Vernova 백로그 116GW(납기 ~2031), Siemens Energy 69GW, 변전소 변압기 160주+. 원전 PPA(Constellation 2GW·Talen-AWS 1.92GW·Equinix 1GW+)는 가동 2028+
+- 2026 계획 미국 DC ~12GW 중 착공 ~5GW, 30~50% 이연 위험(2차 인용). 병목 모델 전력 지수 72→75 ([september-2026-market-update-2026-09-29.md](../../sources/articles/september-2026-market-update-2026-09-29.md))

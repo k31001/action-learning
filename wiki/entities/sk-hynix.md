@@ -394,3 +394,9 @@ Counterpoint Research (2026-01-29):
 - 2026-06-29 발표(약 800조 원/$518B) — SK하이닉스 **신규 팹 2개** 건설 계획 포함(삼성전자도 동일하게 신규 팹 2개)([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
 
 **출처**: [july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) §4
+
+## 업데이트 (2026-09-29)
+
+- 2Q26: 매출 79.3조 원·영업이익 60.54조 원(+557% YoY), 이익 상회·매출 하회(S&P). HBM 점유율 50%(2Q25 64%)로 하락
+- 나스닥 ADR 07-10 상장: 공모가 $149·조달 $265.1억(비미국 기업 최대), 시초 $170
+- TrendForce(~09-21, 스니펫): HBM4 출하 원 목표 대비 20~30% 감축·Rubin 램프 2027 지연 보도(본문 미확인) ([september-2026-market-update-2026-09-29.md](../../sources/articles/september-2026-market-update-2026-09-29.md))

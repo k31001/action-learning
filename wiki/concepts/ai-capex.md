@@ -119,3 +119,9 @@
 - **Stargate는 우산 전략으로 진화**: 하이퍼스케일러(과반)+뉴클라우드(CoreWeave)+칩 직공급(Cerebras)+디자인빌드+잠재 자체 건설의 포트폴리오. Abilene(Oracle) GB 클러스터에서 최신 모델 학습 중, 미시간·텍사스 추가 DC 2~3년 내 온라인.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+## 업데이트 (2026-09-29)
+
+- Alphabet 2026 $195~205B(상향)·Amazon $220B·Meta $125~145B·Microsoft $175~190B(스니펫 충돌·미확인). 4사 2026 $725~735B+, 2027 $0.95~1.2조 경로(BofA CY26 $860B+)
+- Dell'Oro 2Q26 글로벌 DC CAPEX +92% YoY, 메모리·스토리지 가격 상승에 따른 서버 ASP 상승이 동인 — 상향분의 ~60%가 AI칩·HBM 가격 상승 귀속이라는 보도
+- Oracle FQ1 FY27 RPO $664B·FY27 CAPEX ~$95B·부채·지분 $40B 조달(보도). HY OAS ~265~285bp 타이트. AI 금융 $3.6T 매핑에서 Oracle·CoreWeave 최고 레버리지. 병목 모델 CAPEX 지수 40→39 ([september-2026-market-update-2026-09-29.md](../../sources/articles/september-2026-market-update-2026-09-29.md))
