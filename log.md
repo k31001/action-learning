@@ -2307,3 +2307,8 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 핵심 논리 조정: Mixed Media · 고용량은 SSD 안에서 완결(지금 방식으로 앞서간다), 고DWPD는 SSD 단독이면 30 DWPD에 OP 174%가 필요하고(WAF 3, ⚠️ 파생) 데이터 수명은 고객 시스템만 알기 때문에 고객과 함께 풀어야 한다 → 다른 접근이 필요해 이 전략을 제안
 - 3장 신설(당위성): 해법의 범위 NAND → SSD → 고객 시스템. 근거는 `solution-ladder-component-to-system.md`(RBER 약 10⁶배 ↑ → ECC 약 60배 ↑ 완결, SSD 단독 최적화 WAF ≈ 3 부분 성공, CacheLib FDP 3.22 → 1.03)
 - 추가 솔루션 후보 리서치 3건(전력 · 냉각, 보안 · 신뢰, GPU 직결 고IOPS) 진행 중. 덱은 후보 결정과 아웃라인 승인 후 제작. 대시보드 무변경
+
+## [2026-10-03] ingest | 추가 솔루션 후보 원장 ①: 보안 · 신뢰 · 재사용
+- 사용자 요청("다가올 미래에 대응하기 위한 핵심 솔루션 두어 개 더")에 따른 후보 리서치 3건 중 첫 결과: `sources/articles/ssd-future-candidate-security-trust-2026-10.md`
+- 핵심: OCP L.O.C.K. 사양이 "클라우드 사업자가 SSD를 파기할 필요를 없애는 것"을 목표로 하고 Google · Microsoft 스토리지 제품 요구로 명시(✅, 삼성 기여 · 공저). Caliptra 2.0 PQC 서명(✅), Microsoft 양자 내성 전환 2029 ~ 2033(✅). 반증: Microsoft는 HDD 데이터 보유 부품을 여전히 파쇄(✅), 출하 중인 Caliptra · L.O.C.K. SSD 없음
+- 위키 반영은 사용자의 후보 채택 결정 뒤에 한다. 나머지 두 후보(전력 · 냉각, GPU 직결 고IOPS)는 수집 중
