@@ -1,13 +1,13 @@
-"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-03 v1.0).
+"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-03 v1.1).
 
 제목 4개를 이어 읽으면 한 문단이 된다(아웃라인 v0.3):
-  1 배경   SSD의 다음 수요는 하나로 정해지지 않으며, 지금 보이는 신호들은 서로 다른 기술을 요구합니다
+  1 배경   SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터마다 스토리지에 요구하는 것이 다릅니다
   2 솔루션 SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다
   3 당위성 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다
   4 실행   고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다
   결론     실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다
 
-규율: samsung-memory-ppt-design-skill v2(11절 시각 우선). 본문 18pt 이상 · 출처 15pt · em-dash 금지 · 액센트 Samsung Blue 하나.
+규율: samsung-memory-ppt-design-skill v2.1(11절 시각 우선, 11.J 근거 사슬: 주장마다 데이터 그래프). 본문 18pt 이상 · 출처 15pt · em-dash 금지 · 액센트 Samsung Blue 하나.
 도형 · 차트는 모두 python-pptx 도형으로 그린다(차트 pt = 슬라이드 pt). 부품 이미지는 assets/photos가 있으면 사진, 없으면 3D 렌더.
 원고 · 근거: outputs/presentation/ssd-future-ready-strategy-outline.md, outputs/report/ssd-future-ready-strategy-report.md (v1.1).
 """
@@ -41,87 +41,59 @@ def chip(s, x, y, w, h, text, fill=BLUE, color=WHITE, size=20, line=None, dash=F
 
 
 # =============================================================== 1 배경
-s = d.slide(1, "배경", "SSD의 다음 수요는 하나로 정해지지 않으며,\n지금 보이는 신호들은 서로 다른 기술을 요구합니다")
+s = d.slide(1, "배경", "SSD의 다음 수요는 하나로 정해지지 않으며,\n데이터센터마다 스토리지에 요구하는 것이 다릅니다")
 
-# ---- HBM 교훈 띠: 점유율 슬로프 차트 (근거 = 데이터 = 그래프)
-SY, SH = 2.34, 1.04
+# ---- HBM 교훈 띠: 점유율 슬로프 차트
+SY, SH = 2.28, 0.90
 rect(s, MX, SY, CW, SH, fill=PALE, shape=RR)
 tb(s, MX + 0.30, SY, 9.6, SH, [[("HBM의 교훈   ", 20, True, BLUE), ("하나의 수요를 늦게 읽으면 첫 호황을 놓칩니다", 20, True, INK)]], anchor=MID)
-sx0, sx1 = RIGHT - 6.70, RIGHT - 4.10          # 2022, 2Q25 x
+sx0, sx1 = RIGHT - 6.70, RIGHT - 4.10
 
 
 def sy(v):
-    return SY + 0.10 + (70 - v) / 60 * 0.66
+    return SY + 0.10 + (70 - v) / 60 * 0.52
 
 
-tb(s, sx0 - 1.90, SY + 0.10, 1.75, 0.66, [("HBM 점유율", 16, False, GRAY)], align=R, anchor=MID)
-tb(s, sx0 - 0.45, SY + 0.74, 0.9, 0.28, [("2022", 16, False, GRAY)], align=C)
-tb(s, sx1 - 0.45, SY + 0.74, 0.9, 0.28, [("2Q25", 16, False, GRAY)], align=C)
+tb(s, sx0 - 1.95, SY, 1.75, SH, [("HBM 점유율", 16, False, GRAY)], align=R, anchor=MID)
+tb(s, sx0 - 0.45, SY + 0.58, 0.9, 0.26, [("2022", 16, False, GRAY)], align=C)
+tb(s, sx1 - 0.45, SY + 0.58, 0.9, 0.26, [("2Q25", 16, False, GRAY)], align=C)
 for (a0, a1, col, lg) in [(50, 62, GRAY_2, "sk-hynix"), (40, 17, BLUE, "samsung")]:
     ln = s.shapes.add_connector(1, *(int(v * 914400) for v in (sx0, sy(a0), sx1, sy(a1))))
     ln.line.color.rgb = col
     ln.line.width = 38100
     rect(s, sx0 - 0.07, sy(a0) - 0.07, 0.14, 0.14, fill=col, shape=MSO_SHAPE.OVAL)
     rect(s, sx1 - 0.07, sy(a1) - 0.07, 0.14, 0.14, fill=col, shape=MSO_SHAPE.OVAL)
-    d.fit(s, d.logo(lg), sx1 + 0.20, sy(a1) - 0.15, 1.05, 0.30, align="left")
-    tb(s, sx1 + 1.35, sy(a1) - 0.18, 2.4, 0.36, [(f"{a0}% → {a1}%", 20 if col == BLUE else 18, True, BLUE if col == BLUE else GRAY)], anchor=MID)
+    d.fit(s, d.logo(lg), sx1 + 0.20, sy(a1) - 0.14, 1.0, 0.28, align="left")
+    tb(s, sx1 + 1.30, sy(a1) - 0.17, 2.4, 0.34, [(f"{a0}% → {a1}%", 20 if col == BLUE else 18, True, BLUE if col == BLUE else GRAY)], anchor=MID)
 
-PW, PG = 5.94, 0.30
-PX = [MX, MX + PW + PG, MX + 2 * (PW + PG)]
-HY = 3.52
-d.panel_head(s, PX[0], PW, 1, "AI 추론: 신호가 엇갈린다", y=HY)
-d.panel_head(s, PX[1], PW, 2, "인프라: 더 오래 쓴다", y=HY)
-d.panel_head(s, PX[2], PW, 3, "랙 공간: 더 귀해진다", y=HY)
-TY = 8.70  # 기술 칩
+# ---- 데이터센터 4종: 열마다 이름 · 하는 일 · 데이터 그래프 2개 · 요구 · 기술
+NCOL, CG = 4, 0.25
+CWD = (CW - (NCOL - 1) * CG) / NCOL
+CXS = [MX + i * (CWD + CG) for i in range(NCOL)]
+HY, WY, RQY, TY = 3.30, 3.82, 8.02, 8.70
+DCS = [("범용 클라우드", "VM · DB · 객체 저장", "오래 쓰고, 용량 중심", "→ Mixed Media"),
+       ("AI 학습", "모델 학습 · 체크포인트", "랙 공간 · 전력이 귀하다", "→ 고용량"),
+       ("AI 추론", "질의 응답 · KV 캐시", "쓰기 요구가 엇갈린다", "→ 고DWPD"),
+       ("에이전트", "", "문맥이 길고 상태가 남는다", "→ 고DWPD · 고용량")]
+for i, (nm, wl, rq, tech) in enumerate(DCS):
+    x = CXS[i]
+    rect(s, x, HY - 0.06, CWD, RQY + 0.54 - HY + 0.06, fill=TINT if i == 3 else WHITE, line=LINE, lw=0.75, shape=RR)
+    tb(s, x + 0.20, HY, CWD - 0.4, 0.46, [(nm, 24, True, INK)], anchor=MID)
+    tb(s, x + 0.20, WY, CWD - 0.4, 0.34, [(wl, 16, False, GRAY)])
+    tb(s, x + 0.20, RQY, CWD - 0.4, 0.46, [(rq, 20, True, BLUE)], anchor=MID)
+    chip(s, x, TY, CWD, 0.60, tech)
+d.fit(s, d.logo("nvidia"), CXS[1] + CWD - 1.45, HY + 0.08, 1.25, 0.30)
+d.fit(s, d.logo("meta"), CXS[3] + 0.20, WY + 0.03, 0.95, 0.26, align="left")
+tb(s, CXS[3] + 1.27, WY, 0.80, 0.34, [("Muse", 16, True, INK)])
+d.fit(s, d.logo("openai"), CXS[3] + 2.20, WY + 0.04, 0.95, 0.24, align="left")
+tb(s, CXS[3] + 3.22, WY, 0.60, 0.34, [("Dot", 16, True, INK)])
 
-# ---- ① 커지는 신호(정격 · 실측 DWPD 막대, 로그 축) + 줄어드는 신호(읽기:쓰기, SSD 용량)
-x0 = PX[0]
-tb(s, x0, 4.16, PW, 0.36, [[("▲ 커지는 신호  ", 18, True, BLUE), ("DWPD (로그 축)", 16, False, GRAY)]])
-LBW = 1.85
-ax0, ax1 = x0 + LBW, x0 + PW - 0.95
-lo_, hi_ = math.log10(0.3), math.log10(150)
-
-
-def xd(v):
-    return ax0 + (math.log10(v) - lo_) / (hi_ - lo_) * (ax1 - ax0)
-
-
-for g in (1, 10, 100):
-    rect(s, xd(g) - 0.005, 4.56, 0.01, 1.42, fill=LINE)
-    tb(s, xd(g) - 0.35, 5.98, 0.70, 0.30, [(str(g), 16, False, GRAY)], align=C)
-rows1 = [("QLC 정격", 0.6, None, GRAY_2, "0.6"), ("KV 캐시 실측", 3.2, None, GRAY, "3.2"), ("AI 전용 SSD", 120, 50, BLUE, "50~120")]
-for i, (nm, v, vmin, col, lab) in enumerate(rows1):
-    yy = 4.60 + i * 0.46
-    tb(s, x0, yy, LBW - 0.1, 0.38, [(nm, 18, i == 2, BLUE if i == 2 else INK)], anchor=MID)
-    rect(s, ax0, yy + 0.05, xd(v) - ax0, 0.28, fill=col)
-    if vmin:
-        rect(s, xd(vmin) - 0.015, yy, 0.03, 0.38, fill=WHITE)
-    tb(s, xd(v) + 0.08, yy, 0.95, 0.38, [(lab, 18, True, BLUE if i == 2 else INK)], anchor=MID)
-tb(s, x0, 6.40, PW, 0.36, [("▼ 줄어드는 신호", 18, True, GRAY)])
-# 읽기 : 쓰기 100% 막대 (CHEOPS'25)
-tb(s, x0, 6.80, 2.9, 0.34, [("KV 오프로드 I/O", 16, False, GRAY)])
-rect(s, x0, 7.16, 2.80, 0.42, fill=GRAY_2)
-rect(s, x0 + 2.80 - 0.05, 7.16, 0.05, 0.42, fill=BLUE)
-tb(s, x0 + 0.10, 7.16, 2.0, 0.42, [("읽기 99.5%", 18, True, WHITE)], anchor=MID)
-tb(s, x0, 7.62, 2.9, 0.40, [[("쓰기 ", 18, False, GRAY), ("0.5%", 18, True, BLUE)]])
-# DeepSeek KV용 SSD 용량 1 → 1/8
-bx = x0 + 3.25
-tb(s, bx, 6.80, 2.7, 0.34, [("KV용 SSD 용량", 16, False, GRAY)])
-d.fit(s, d.logo("deepseek"), bx + 2.20, 6.74, 0.40, 0.40)
-BH0 = 0.96
-rect(s, bx + 0.10, 8.10 - BH0, 0.70, BH0, fill=GRAY_2)
-rect(s, bx + 1.20, 8.10 - BH0 / 8, 0.70, BH0 / 8, fill=GRAY)
-tb(s, bx - 0.05, 8.12, 1.0, 0.32, [("이전", 16, False, GRAY)], align=C)
-tb(s, bx + 1.05, 8.12, 1.0, 0.32, [("V4.1", 16, False, GRAY)], align=C)
-tb(s, bx + 1.95, 7.62, 0.80, 0.40, [("1/8", 22, True, INK)], anchor=MID)
-chip(s, x0, TY, PW, 0.60, "→ 고DWPD")
-
-# ---- ② 서버 내용연수 덤벨 + 건물 빅넘버
-x0 = PX[1]
+# ① 범용: 서버 내용연수 덤벨 + 건물
+x0 = CXS[0]
 rows = [("microsoft", 4, 6), ("google", 4, 6), ("meta", 4, 5.5), ("aws", 3, 6)]
-LX, PX0, PX1 = x0, x0 + 1.75, x0 + PW - 0.15
-Y0, YP = 4.28, 0.56
-lo, hi = 2.5, 6.9
+PX0, PX1 = x0 + 1.55, x0 + CWD - 0.20
+Y0, YP = 4.36, 0.50
+lo, hi = 2.5, 6.6
 
 
 def xv(v):
@@ -129,55 +101,92 @@ def xv(v):
 
 
 for g in (3, 4, 5, 6):
-    rect(s, xv(g) - 0.005, Y0 - 0.12, 0.01, len(rows) * YP + 0.02, fill=LINE)
-    tb(s, xv(g) - 0.4, Y0 + len(rows) * YP - 0.06, 0.8, 0.34, [(f"{g}년", 16, False, GRAY)], align=C)
-for i, (lg, a, b) in enumerate(rows):
-    y = Y0 + i * YP
-    d.fit(s, d.logo(lg), LX, y, 1.50, 0.32 if lg != "aws" else 0.38, align="left")
-    rect(s, xv(a), y + 0.155, xv(b) - xv(a), 0.03, fill=GRAY_2)
-    rect(s, xv(a) - 0.10, y + 0.07, 0.20, 0.20, fill=GRAY_2, shape=MSO_SHAPE.OVAL)
-    rect(s, xv(b) - 0.13, y + 0.04, 0.26, 0.26, fill=BLUE, shape=MSO_SHAPE.OVAL)
-tb(s, x0, Y0 + len(rows) * YP + 0.28, PW, 0.34, [[("●", 16, False, GRAY_2), (" 변경 전   ", 16, False, GRAY), ("●", 16, False, BLUE), (" 변경 후  서버 내용연수", 16, False, GRAY)]], align=C)
-tb(s, x0, 7.10, PW, 0.80, [[("건물 ", 30, True, BLUE), ("15 → 25", 48, True, BLUE), ("년", 30, True, BLUE)]], anchor=MID)
-tb(s, x0, 7.92, PW, 0.40, [("Microsoft 데이터센터 내용연수 (FY27)", 18, False, GRAY)])
-chip(s, x0, TY, PW, 0.60, "→ Mixed Media")
+    rect(s, xv(g) - 0.005, Y0 - 0.10, 0.01, len(rows) * YP, fill=LINE)
+    tb(s, xv(g) - 0.35, Y0 + len(rows) * YP - 0.08, 0.7, 0.30, [(f"{g}년", 16, False, GRAY)], align=C)
+for k, (lg, a0, b0) in enumerate(rows):
+    y = Y0 + k * YP
+    d.fit(s, d.logo(lg), x0 + 0.20, y, 1.25, 0.28 if lg != "aws" else 0.34, align="left")
+    rect(s, xv(a0), y + 0.13, xv(b0) - xv(a0), 0.03, fill=GRAY_2)
+    rect(s, xv(a0) - 0.09, y + 0.06, 0.18, 0.18, fill=GRAY_2, shape=MSO_SHAPE.OVAL)
+    rect(s, xv(b0) - 0.12, y + 0.03, 0.24, 0.24, fill=BLUE, shape=MSO_SHAPE.OVAL)
+tb(s, x0 + 0.20, Y0 + len(rows) * YP + 0.22, CWD - 0.4, 0.30, [("서버 내용연수: 변경 전 → 후", 16, False, GRAY)], align=C)
+tb(s, x0 + 0.20, 6.95, CWD - 0.4, 0.66, [[("건물 ", 24, True, BLUE), ("15 → 25", 40, True, BLUE), ("년", 24, True, BLUE)]], anchor=MID)
+tb(s, x0 + 0.20, 7.60, CWD - 0.4, 0.34, [("Microsoft 데이터센터 (FY27)", 16, False, GRAY)])
 
-# ---- ③ 랙 전력 밀도 (로그 축) + 착공 막대
-x0 = PX[2]
-bars = [("범용 랙\n평균", 10, "약 10"), ("H100\n공랭", 40, "40"), ("GB300\nNVL72", 140, "약 140"), ("2027\n1MW급", 1000, "1,000")]
-BB, BHmax = 6.10, 1.75
-bw, bg = 0.92, 0.42
-bx0 = x0 + 0.62
+# ② AI 학습: 랙 전력 (로그 축) + 체크포인트
+x0 = CXS[1]
+bars = [("범용", 11, "11"), ("H100", 40, "40"), ("GB200", 130, "약 130"), ("2027", 1000, "1MW")]
+BB, BHmax = 6.20, 1.65
+bw, bg = 0.66, 0.30
+bx0 = x0 + 0.70
 for gv in (10, 100, 1000):
     gy = BB - math.log10(gv) / 3 * BHmax
-    rect(s, bx0 - 0.10, gy, 4 * bw + 3 * bg + 0.20, 0.012, fill=LINE)
-    tb(s, x0 - 0.20, gy - 0.17, 0.74, 0.34, [(f"{gv:,}", 16, False, GRAY)], align=R)
-for i, (nm, v, lab) in enumerate(bars):
+    rect(s, bx0 - 0.08, gy, 4 * bw + 3 * bg + 0.16, 0.012, fill=LINE)
+    tb(s, x0 + 0.02, gy - 0.16, 0.62, 0.32, [(f"{gv:,}", 16, False, GRAY)], align=R)
+for k, (nm, v, lab) in enumerate(bars):
     h = math.log10(v) / 3 * BHmax
-    bx = bx0 + i * (bw + bg)
-    last = i == 3
-    rect(s, bx, BB - h, bw, h, fill=TINT if last else (GRAY if i == 2 else GRAY_2), line=BLUE if last else None, lw=1.5, dash=last)
-    tb(s, bx - 0.3, BB - h - 0.40, bw + 0.6, 0.36, [(lab, 18, True, BLUE if last else INK)], align=C)
-    tb(s, bx - 0.3, BB + 0.04, bw + 0.6, 0.62, [(t, 16, False, GRAY) for t in nm.split("\n")], align=C, spacing=1.0)
-tb(s, x0, BB + 0.64, PW, 0.32, [("랙 전력 kW (로그 축)", 16, False, GRAY)], align=C)
-# 착공 막대: 계획 16GW 중 착공 확인 약 5GW
-CY = 7.30
-tb(s, x0, CY - 0.06, PW, 0.36, [("2026 미국 가동 계획 (GW, 추정)", 16, False, GRAY)])
-rect(s, x0, CY + 0.34, PW - 0.10, 0.46, fill=WHITE, line=GRAY_2, lw=1.0)
-rect(s, x0, CY + 0.34, (PW - 0.10) * 5 / 16, 0.46, fill=BLUE)
-tb(s, x0 + 0.10, CY + 0.34, 1.7, 0.46, [("착공 약 5", 18, True, WHITE)], anchor=MID)
-tb(s, x0 + PW - 2.10, CY + 0.34, 1.9, 0.46, [("계획 16", 18, True, GRAY)], align=R, anchor=MID)
-chip(s, x0, TY, PW, 0.60, "→ 고용량")
+    bx = bx0 + k * (bw + bg)
+    last = k == 3
+    rect(s, bx, BB - h, bw, h, fill=TINT if last else (GRAY if k == 2 else GRAY_2), line=BLUE if last else None, lw=1.5, dash=last)
+    tb(s, bx - 0.3, BB - h - 0.36, bw + 0.6, 0.34, [(lab, 16, True, BLUE if last else INK)], align=C)
+    tb(s, bx - 0.3, BB + 0.02, bw + 0.6, 0.30, [(nm, 16, False, GRAY)], align=C)
+tb(s, x0 + 0.20, BB + 0.34, CWD - 0.4, 0.30, [("랙 전력 kW (로그 축)", 16, False, GRAY)], align=C)
+tb(s, x0 + 0.20, 6.95, CWD - 0.4, 0.66, [[("체크포인트 ", 24, True, BLUE), ("5.7", 40, True, BLUE), ("TB", 24, True, BLUE)]], anchor=MID)
+tb(s, x0 + 0.20, 7.60, CWD - 0.4, 0.34, [("405B 모델 1회 저장 (산술)", 16, False, GRAY)])
 
-d.band(s, 9.60, 0.80, "불변 전략", "하나의 미래에 걸지 않고, 지금 보이는 신호마다 준비합니다")
-d.footer(s, "출처: HBM 점유율(과제팀 집계) · DWPD: Solidigm P5336, StorageReview KV 캐시 실측(2026-08), Kioxia · Phison · DapuStor 발표(2026) · I/O: CHEOPS'25 · DeepSeek V4.1 보도 · "
-            "내용연수: Microsoft IR · 10-K 보도 · 랙: Uptime · SemiAnalysis · NVIDIA · 착공: Sightline 추정(2.3GW 반론 있음)")
-d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. 그래서 다음 수요를 하나로 단정하지 않고, 지금 보이는 신호를 데이터로 읽었습니다. "
-        "첫째, AI 추론이 SSD에 쓰는 양은 신호가 엇갈립니다. 커지는 쪽으로는, QLC 정격이 0.6 DWPD인데 KV 캐시 계층에서 실측한 쓰기는 드라이브당 3.2 DWPD로 3 DWPD 정격 제품을 넘었고, 2026년 AI 전용 SSD는 50에서 120 DWPD로 나왔습니다. "
-        "줄어드는 쪽으로는, 학계가 측정한 KV 오프로드 I/O는 읽기가 99.5퍼센트였고, DeepSeek는 새 모델에서 KV 캐시용 SSD 용량을 8분의 1로 줄였다고 보도됐습니다. 그래서 고DWPD는 준비하되 단일 베팅은 하지 않습니다. "
-        "둘째, 하이퍼스케일러는 자산을 더 오래 씁니다. 서버 내용연수를 5년에서 6년으로 늘렸고, Microsoft는 데이터센터 건물을 25년 쓰기로 했습니다. 기존 인프라 안에서 빠른 영역과 큰 영역을 함께 주는 Mixed Media가 여기에 대응합니다. "
-        "셋째, 랙 공간이 귀해집니다. 랙 전력은 10킬로와트에서 140킬로와트, 2027년에는 1메가와트급을 준비하고 있고, 2026년 미국 가동 계획 16기가와트 가운데 착공이 확인된 것은 약 5기가와트라는 추정이 있습니다. 반론도 있어 범위로 봅니다. 같은 공간에 더 많이 담는 고용량 기술이 여기에 대응합니다. "
-        "하나의 미래에 걸지 않고, 지금 보이는 신호마다 준비하는 것, 이것을 불변 전략이라고 부르겠습니다. 다만 이 신호들이 미래의 전부라고 말씀드리지는 않습니다. 지금 예측할 수 있는 범위 안의 준비입니다.")
+# ③ AI 추론: DWPD (로그 축) + 읽기:쓰기
+x0 = CXS[2]
+LBW = 1.55
+ax0, ax1 = x0 + 0.20 + LBW, x0 + CWD - 0.95
+lo_, hi_ = math.log10(0.3), math.log10(150)
+
+
+def xd(v):
+    return ax0 + (math.log10(v) - lo_) / (hi_ - lo_) * (ax1 - ax0)
+
+
+tb(s, x0 + 0.20, 4.26, CWD - 0.4, 0.30, [("DWPD (로그 축)", 16, False, GRAY)])
+for g in (1, 10, 100):
+    rect(s, xd(g) - 0.005, 4.60, 0.01, 1.38, fill=LINE)
+    tb(s, xd(g) - 0.3, 5.98, 0.6, 0.28, [(str(g), 16, False, GRAY)], align=C)
+for k, (nm, v, vmin, col, lab) in enumerate([("QLC 정격", 0.6, None, GRAY_2, "0.6"), ("KV 실측", 3.2, None, GRAY, "3.2"),
+                                              ("AI 전용", 120, 50, BLUE, "50~120")]):
+    yy = 4.62 + k * 0.44
+    tb(s, x0 + 0.20, yy, LBW - 0.06, 0.36, [(nm, 17, k == 2, BLUE if k == 2 else INK)], anchor=MID)
+    rect(s, ax0, yy + 0.05, xd(v) - ax0, 0.26, fill=col)
+    if vmin:
+        rect(s, xd(vmin) - 0.015, yy, 0.03, 0.36, fill=WHITE)
+    tb(s, xd(v) + 0.06, yy, 0.95, 0.36, [(lab, 17, True, BLUE if k == 2 else INK)], anchor=MID)
+tb(s, x0 + 0.20, 6.40, CWD - 0.4, 0.30, [("KV 오프로드 I/O (학계 트레이스)", 16, False, GRAY)])
+rect(s, x0 + 0.20, 6.76, CWD - 0.40, 0.42, fill=GRAY_2)
+rect(s, x0 + CWD - 0.25, 6.76, 0.05, 0.42, fill=BLUE)
+tb(s, x0 + 0.32, 6.76, 2.6, 0.42, [("읽기 99.5%", 18, True, WHITE)], anchor=MID)
+tb(s, x0 + 0.20, 7.24, CWD - 0.4, 0.36, [[("쓰기 ", 18, False, GRAY), ("0.5%", 18, True, BLUE), ("   반대 신호", 16, False, GRAY)]])
+
+# ④ 에이전트: 요청당 KV 캐시 크기 (채팅 대 에이전트) + 장시간 세션
+x0 = CXS[3]
+tb(s, x0 + 0.20, 4.26, CWD - 0.4, 0.30, [("요청당 KV 캐시 (70B 모델, 산술)", 16, False, GRAY)])
+KB0, KBW = x0 + 0.20, CWD - 1.45
+for k, (nm, v, col, lab) in enumerate([("채팅 (2024)", 0.53, GRAY_2, "0.5GB"), ("에이전트 (2026)", 22.2, BLUE, "22GB")]):
+    yy = 4.64 + k * 0.80
+    tb(s, KB0, yy, CWD - 0.4, 0.32, [(nm, 17, k == 1, BLUE if k else INK)])
+    w = max(0.06, KBW * v / 22.2)
+    rect(s, KB0, yy + 0.34, w, 0.32, fill=col)
+    tb(s, KB0 + w + 0.08, yy + 0.30, 1.1, 0.40, [(lab, 18, True, BLUE if k else INK)], anchor=MID)
+tb(s, x0 + 0.20, 6.34, CWD - 0.4, 0.34, [("입력 토큰 1,632 대 67,818 (약 42배)", 16, False, GRAY)])
+tb(s, x0 + 0.20, 6.95, CWD - 0.4, 0.66, [[("18.8", 40, True, BLUE), ("%", 24, True, BLUE)]], anchor=MID)
+tb(s, x0 + 0.20, 7.60, CWD - 0.4, 0.34, [("1시간 넘게 이어지는 세션 비중", 16, False, GRAY)])
+
+d.band(s, 9.60, 0.80, "불변 전략", "하나의 미래에 걸지 않고, 데이터센터마다 다른 요구를 미리 준비합니다")
+d.footer(s, "출처: HBM(과제팀 집계) · 내용연수: Microsoft IR · 10-K · 랙: Uptime 2026 · NVIDIA · 체크포인트: 14B/파라미터 산술 · DWPD: StorageReview 실측(2026-08) · Kioxia · Phison · DapuStor(2026) · "
+            "I/O: CHEOPS'25 · 에이전트: Microsoft Copilot 트레이스(2026-06) 대 Azure 대화(2024), KV = Llama 3.1 70B 320KiB/토큰 산술 · Muse · Dot 보도")
+d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
+        "그래서 다음 수요를 하나로 단정하지 않고, 하이퍼스케일러가 운영하는 데이터센터를 네 가지로 나눠 스토리지 요구를 데이터로 비교했습니다. Google도 8세대 TPU를 학습용과 추론용으로 나누면서 인프라 요구가 갈라졌다고 밝혔습니다. "
+        "첫째, 범용 클라우드입니다. 자산을 더 오래 씁니다. 서버 내용연수는 5년에서 6년으로, Microsoft의 데이터센터 건물은 25년으로 늘었습니다. 기존 인프라 안에서 빠른 영역과 큰 영역을 함께 주는 Mixed Media가 맞습니다. "
+        "둘째, AI 학습입니다. 랙 전력이 범용 11킬로와트에서 GB200 약 130킬로와트로, 2027년에는 1메가와트급을 준비합니다. 405B 모델은 체크포인트 한 번에 약 5.7테라바이트를 씁니다. 같은 공간에 더 많이 담는 고용량이 필요합니다. "
+        "셋째, AI 추론입니다. KV 캐시 계층을 실측하면 드라이브당 3.2 DWPD로 QLC 정격 0.6을 크게 넘고, AI 전용 SSD는 50에서 120 DWPD로 나왔습니다. 반대로 학계 트레이스에서는 읽기가 99.5퍼센트였습니다. 신호가 엇갈리므로 고DWPD는 준비하되 단일 베팅은 하지 않습니다. "
+        "넷째, Meta의 Muse, OpenAI의 Dot 같은 항상 켜진 에이전트를 서비스하는 데이터센터입니다. Microsoft의 코딩 에이전트 기록을 보면 호출 한 번의 입력이 약 6만 8천 토큰으로, 2024년 채팅 요청보다 약 42배 깁니다. 70B 모델로 환산하면 요청당 KV 캐시가 0.5기가바이트에서 22기가바이트로 커집니다. 세션의 18.8퍼센트는 1시간 넘게 이어집니다. 문맥이 길고 상태가 남기 때문에 용량과 쓰기가 함께 필요합니다. "
+        "하나의 미래에 걸지 않고, 데이터센터마다 다른 요구를 미리 준비하는 것, 이것을 불변 전략이라고 부르겠습니다. 다만 지금 예측할 수 있는 범위 안의 준비입니다.")
 
 # =============================================================== 2 솔루션
 s = d.slide(2, "솔루션", "SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고,\n고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다")

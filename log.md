@@ -2367,3 +2367,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 원장 `sources/articles/ssd-customer-high-dwpd-evidence-2026-10.md`(CU-01~CU-54, 차트 표 5종, 부정 확인 10건). 가장 강한 고객 근거: Meta CacheLib "상한 없는 플래시 쓰기 = 수명 예산의 150%", 플래시 OP 50%, ML 수용 정책으로 기록량 -44%(OSDI'20 ✅)
 - 덱 3장: 왼쪽 위 "셀이 견디는 쓰기(P/E 10만 → 1천)" 옆에 "고객 캐시가 쓰는 양(DWPD 로그 축: QLC 정격 0.6 · Meta 캐시 예산 3 · AI KV 실측 3.2 · Meta 스토리지 캐시 목표 7.2)" 차트, 3칸 안에 Meta CacheLib 상자(150% 대 100% 막대 · -44%). 기준(예산 · 실측 · 목표)이 다름을 출처 줄에 명시
 - 사용자 추가 요청(1장에 데이터센터 유형별 스토리지 요구 비교: 범용 · AI 학습 · AI 추론 · 에이전트(Muse · Dot))은 Research Agent 수집 중
+
+## [2026-10-03] build | 고객 협력 전략 덱 v1.1 · 보고서 v1.2 · 데이터센터 유형 위키 (dashboard v2.46.55)
+- 사용자 추가 지시: 배경 장에 하이퍼스케일러 데이터센터 종류(기존 범용 · AI · Muse · Dot 같은 에이전트)별 스토리지 요구 차이를 시각화. Research Agent → 원장 `datacenter-types-storage-requirements-2026-10.md`(DT-01~DT-55): Muse = Meta 자율 개인 에이전트(2026-09-08, 사용자별 Secure VM 🟡), Dot = OpenAI dots(2026-09-29, 항상 켜진 에이전트 · 자기 클라우드 컴퓨터 🟡), Copilot 에이전트 트레이스 ✅ 원데이터(호출당 입력 67,818 토큰 · 1시간+ 세션 18.8%)
+- 신규 위키 `wiki/concepts/datacenter-types-storage-requirements.md`(비교표 · Muse · Dot · 독해 · 쓰면 안 되는 문장), 역링크 4곳
+- **덱 v1.1**: 1장 = 데이터센터 4종 열(범용: 내용연수 덤벨 · 건물 15 → 25년 / AI 학습: 랙 전력 로그 막대 · 체크포인트 5.7TB / AI 추론: DWPD 로그 막대 · 읽기 99.5% / 에이전트: 요청당 KV 0.5 → 22GB · 1시간+ 세션 18.8%) → 요구 한 줄 → 기술 칩, 밴드 "하나의 미래에 걸지 않고, 데이터센터마다 다른 요구를 미리 준비합니다". 2장 = 개념 그림 · Blue 하나(고DWPD), 3장 = 고객 캐시 DWPD · Meta CacheLib, 4장 = GPU I/O 줄 · 90일 칩 제거. 렌더 QA 10회, qa_audit PASS
+- **보고서 v1.2**: SCADA · MLC 제외, §1.3 데이터센터 유형별 요구, §2.4 블록 메커니즘 · 다이 120 → 47, §3.1~3.2 고객 측 데이터(Kangaroo 3 · Baleen 7.2 · NetApp 7% · CacheLib 150% · -44%), §4.4 재검토 신호(GPU 직결), 근거 대장 F-1~F-11. 아웃라인 v1.1(주장 → 그래프 대조표)
+- 지식 그래프 재생성(노드 120 · 엣지 653 · 고아 0) → dashboard v2.46.55(패치), updates.js, `npm run build` 통과

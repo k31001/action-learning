@@ -17,6 +17,26 @@ export const UPDATES = [
   {
     date: '2026-10-03',
     type: 'build',
+    version: 'v2.46.55',
+    title: '고객 협력 전략 덱 v1.1 · 보고서 v1.2: SCADA 제외, 데이터센터 유형별 스토리지 요구, 고객 측 고DWPD 근거, 디자인 스킬 v2.1',
+    summary:
+      '1장을 데이터센터 4종(범용 클라우드 · AI 학습 · AI 추론 · 에이전트: Meta Muse · OpenAI dots) 비교로 재구성하고 모든 주장을 데이터 그래프로 보였다. 3장에 Meta CacheLib(쓰기 수요 = SSD 수명 예산의 150%, ML 수용 정책 -44%) 등 고객 데이터를 더했다. 위키 개념 페이지 신설로 지식 그래프 재생성(패치 v2.46.55).',
+    tags: ['SSD 전략', '데이터센터 유형', '에이전트', 'Muse', 'dots', 'Meta CacheLib', '근거 사슬', '지식 그래프'],
+    items: [
+      { label: '위키 신설', detail: 'wiki/concepts/datacenter-types-storage-requirements.md: 유형별 비교표 · Muse · dots 식별 · 독해 · 쓰면 안 되는 문장' },
+      { label: '원장 2종', detail: 'datacenter-types-storage-requirements-2026-10.md(DT), ssd-customer-high-dwpd-evidence-2026-10.md(CU)' },
+      { label: '결정 반영', detail: 'SCADA 제외(재검토 신호만), 2TB · 30 DWPD MLC 모드 제외, 첫 90일은 발표자 노트' },
+      { label: '디자인 스킬 v2.1', detail: '11.J 근거 사슬: 주장 → 근거 → 데이터 → 그래프(비협상)' },
+      { label: '지식 그래프', detail: '노드 120 · 엣지 653 · 고아 0' },
+    ],
+    links: [
+      { label: 'wiki/concepts/datacenter-types-storage-requirements.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/datacenter-types-storage-requirements.md' },
+      { label: 'outputs/report/ssd-future-ready-strategy-report.md', href: 'https://github.com/k31001/action-learning/blob/main/outputs/report/ssd-future-ready-strategy-report.md' },
+    ],
+  },
+  {
+    date: '2026-10-03',
+    type: 'build',
     version: 'v2.46.54',
     title: '고객 협력 전략 보고서 v1.1 · 아웃라인 v0.3: 톤 조정, GPU 직결 기술 옵션, 초고DWPD 운영점 + "SCADA $36B" 정정',
     summary:

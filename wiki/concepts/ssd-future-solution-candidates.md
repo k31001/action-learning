@@ -79,3 +79,4 @@ sources:
 - 해법 사다리(고객 시스템으로의 이관): [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
 - 불변 전략 원칙: [invariant/README.md](../strategies/invariant/README.md)
 - 산출물: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md) · [아웃라인](../../outputs/presentation/ssd-future-ready-strategy-outline.md)
+- 데이터센터 유형별 스토리지 요구(범용 · AI 학습 · AI 추론 · 에이전트): [datacenter-types-storage-requirements.md](datacenter-types-storage-requirements.md)

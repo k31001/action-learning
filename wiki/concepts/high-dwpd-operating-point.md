@@ -176,3 +176,4 @@ DWPD = P/E × (1 + OP) ÷ (WAF × 365 × 보증연수)          ← F29
 - KV 캐시가 SSD로 내려오는 경로: [hbm-to-storage-spillover.md](hbm-to-storage-spillover.md)
 - 같은 기술 포트폴리오(어떤 미래에도 대응하는 세 기술)의 다른 두 축: [mixed-media-ssd.md](mixed-media-ssd.md) · [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md)
 - 추가 솔루션 후보 평가(보안 · 신뢰 · 재사용, GPU 직결 고IOPS, 전력 · 냉각): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)
+- 데이터센터 유형별 스토리지 요구(범용 · AI 학습 · AI 추론 · 에이전트): [datacenter-types-storage-requirements.md](datacenter-types-storage-requirements.md)
