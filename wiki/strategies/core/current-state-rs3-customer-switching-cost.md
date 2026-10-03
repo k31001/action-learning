@@ -61,7 +61,7 @@
 ### 어디에 있는가
 
 - **CMX**: ✅ 진입 — PM1753 공식 공급 + PM1763 시연. 다만 NVIDIA Storage-Next 생태계 내 지분 확장 필요.
-- **SCADA**: ⚠️ **위기** — 공개 로드맵 없음. SK하이닉스·Kioxia·Micron이 표준 파트너 지위 선점 중. 2026 Samsung Tech Day에서 SLC AI SSD 전략 공개가 결정적.
+- **SCADA**: ⚠️ **위기** — 공개 로드맵 없음 (2026-10-03 보강: 공백은 **SLC급 초고 IOPS 제품 로드맵**에 한정. 삼성은 PM1763 SCADA 백서(512B 드라이브당 약 6.92M IOPS 🟡)와 오픈소스 `xnvme/aisio` 실측(✅)으로 TLC 트랙에 참여 중, [nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md) §2.6). SK하이닉스·Kioxia·Micron이 표준 파트너 지위 선점 중. 2026 Samsung Tech Day에서 SLC AI SSD 전략 공개가 결정적.
 - **FDP**: ✅ 강점 — 공동 개발자 위치 + 호스트 SW 통합 노하우. 다만 매출화는 2027~2028 본격화.
 
 ### 다음 마일스톤

@@ -2312,3 +2312,8 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 사용자 요청("다가올 미래에 대응하기 위한 핵심 솔루션 두어 개 더")에 따른 후보 리서치 3건 중 첫 결과: `sources/articles/ssd-future-candidate-security-trust-2026-10.md`
 - 핵심: OCP L.O.C.K. 사양이 "클라우드 사업자가 SSD를 파기할 필요를 없애는 것"을 목표로 하고 Google · Microsoft 스토리지 제품 요구로 명시(✅, 삼성 기여 · 공저). Caliptra 2.0 PQC 서명(✅), Microsoft 양자 내성 전환 2029 ~ 2033(✅). 반증: Microsoft는 HDD 데이터 보유 부품을 여전히 파쇄(✅), 출하 중인 Caliptra · L.O.C.K. SSD 없음
 - 위키 반영은 사용자의 후보 채택 결정 뒤에 한다. 나머지 두 후보(전력 · 냉각, GPU 직결 고IOPS)는 수집 중
+
+## [2026-10-03] ingest | 추가 솔루션 후보 원장 ②: GPU 직결 소블록 고IOPS (+ CXL 메모리 계층 · 드라이브 내 압축 비교)
+- 원장 `sources/articles/ssd-future-candidate-gpu-direct-iops-2026-10.md`. ✅는 GitHub 원문(xio-sig · BaM · GIDS · 삼성 xnvme/aisio · cuVS · Zipline)만
+- **위키 정정**: "삼성 SCADA 공개 로드맵 없음"을 "SLC급 초고 IOPS 제품 로드맵 공백"으로 좁힘. 근거: PM1763 SCADA 백서(512B 드라이브당 약 6.92M IOPS, 🟡) · `xnvme/aisio` 실측(✅). `wiki/entities/nvidia-cmx-scada.md` §2.6 신설, `wiki/strategies/core/current-state-rs3-customer-switching-cost.md` SCADA 줄 보강
+- 반증 · 공백: NVIDIA Storage-Next SSD 요구 사양 비공개, 참가 명단 비공개, 512B 고IOPS 시장 규모 없음, KV 캐시는 대형 블록 중심

@@ -173,3 +173,10 @@ SCADA는 NVIDIA **"Storage-Next"** 이니셔티브의 소프트웨어 기반이�
 ### §2.5 재해석 — 두 트랙 구분
 
 - 본 페이지의 "위협 우세" 진단은 **SLC 초고 IOPS(SCADA Storage-Next) 트랙에 한정해 유지**된다 — 그 트랙의 SK(AI-N P)·Kioxia(1억 IOPS)·Micron(9650 레퍼런스) 선점 구도는 불변. 반면 **CMX(TLC 대용량)·Vera Rubin 메인 스토리지·개인용 AI 기기 트랙에서는 삼성이 선두 공급 지위**를 확보했다. "AI SSD에서 삼성 후행"이라는 단일 서술은 이제 부정확하며, 트랙별로 갈라 읽어야 한다.
+
+### §2.6 2026-10-03 보강: SCADA 트랙의 삼성 활동 (원장 [ssd-future-candidate-gpu-direct-iops-2026-10.md](../../sources/articles/ssd-future-candidate-gpu-direct-iops-2026-10.md))
+
+- **"삼성 SCADA 공백"은 "SLC급 초고 IOPS 제품 로드맵 공백"으로 좁혀 읽는다.** 삼성은 PM1763 SCADA 백서에서 GPU 발행 512B 랜덤 읽기 드라이브당 약 6.92M IOPS(PM1753 대비 +86%), TLC 42개로 합산 약 2.81억 IOPS를 제시했다(GD-20 🟡, GPU당 수치는 9,500만 대 95만으로 요약 간 충돌 GD-21 ⚠️). 삼성 저작권 오픈소스 `xnvme/aisio`는 PM1753 16개로 512B 6,170만 IOPS를 실측하고, SCADA 이득의 주원천이 I/O 발행 속도가 아니라 **GPU 메모리(HBM) 캐시 적중**이라고 적었다(GD-23 ✅).
+- Storage-Next는 FMS 2026(2026-08-04)에 40곳 이상으로 공식 출범했고 목표는 "전력 · 꼬리 지연 제약 아래 GPU당 512B IOPS 최대화"다(GD-03 · GD-04 🟡). 공개 참가 명단에 삼성 이름은 확인되지 않았다(명단 비공개, 부재의 증거 아님).
+- Kioxia 1억 IOPS는 PCIe 7.0 인증 일정으로 **2028**로 밀렸다는 보도(🟡). 서버 합산 2~3억 IOPS는 이미 TLC 다수 드라이브로 달성(Micron · 삼성 · Graid) → SLC급 전용 매체의 의미는 **GPU당 드라이브 수를 줄이는 것**(⚠️ 파생).
+- 512B 수요 워크로드는 GNN · 그래프 분석 · 추천 · 벡터 검색이며(BaM · GIDS ✅), KV 캐시 오프로드는 대형 블록 중심이다.

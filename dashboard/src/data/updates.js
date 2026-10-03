@@ -14,6 +14,23 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  {
+    date: '2026-10-03',
+    type: 'ingest',
+    version: 'v2.46.52',
+    title: '추가 솔루션 후보 원장 2종(보안 · 신뢰 · 재사용, GPU 직결 고IOPS) + 삼성 SCADA 현황 정정',
+    summary:
+      '고객 협력 전략 덱의 추가 솔루션 후보 리서치 결과 원장 2종을 수집했다. "삼성 SCADA 공개 로드맵 없음"을 "SLC급 초고 IOPS 제품 로드맵 공백"으로 좁혀 정정(PM1763 SCADA 백서 · xnvme/aisio 실측). 지식 그래프 재생성(패치 v2.46.52).',
+    tags: ['SCADA', 'Storage-Next', 'OCP L.O.C.K.', 'Caliptra', 'PQC', '지식 그래프'],
+    items: [
+      { label: '원장 ①', detail: 'ssd-future-candidate-security-trust-2026-10.md: OCP L.O.C.K.(SSD 파기 불필요화, Google · Microsoft 요구, 삼성 공저) · Caliptra 2.0 PQC · Microsoft 양자 내성 2029 ~ 2033' },
+      { label: '원장 ②', detail: 'ssd-future-candidate-gpu-direct-iops-2026-10.md: Storage-Next 출범(40+) · 삼성 PM1763 SCADA 백서 · aisio 실측 · Kioxia 1억 IOPS 2028 지연' },
+      { label: '위키 정정', detail: 'wiki/entities/nvidia-cmx-scada.md §2.6, RS-3 현황 SCADA 줄' },
+    ],
+    links: [
+      { label: 'wiki/entities/nvidia-cmx-scada.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/entities/nvidia-cmx-scada.md' },
+    ],
+  },
   // ── 2026-10-03 ─────────────────────────────────────────────────────────────
   {
     date: '2026-10-03',
