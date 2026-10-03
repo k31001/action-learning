@@ -185,3 +185,7 @@
 ## 연결 (2026-10-03 추가)
 
 - 전력 · 건설 제약이 랙 공간의 가치를 올리고, 그것이 고용량 SSD의 가치를 올리는 경로: [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md) §1
+
+## 연결 (2026-10-03 추가, 후보 평가)
+
+- 전력 · 냉각 대응 SSD 후보(콜드플레이트 · NVMe 2.3 전력 제어): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)

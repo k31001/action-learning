@@ -180,3 +180,4 @@ SCADA는 NVIDIA **"Storage-Next"** 이니셔티브의 소프트웨어 기반이�
 - Storage-Next는 FMS 2026(2026-08-04)에 40곳 이상으로 공식 출범했고 목표는 "전력 · 꼬리 지연 제약 아래 GPU당 512B IOPS 최대화"다(GD-03 · GD-04 🟡). 공개 참가 명단에 삼성 이름은 확인되지 않았다(명단 비공개, 부재의 증거 아님).
 - Kioxia 1억 IOPS는 PCIe 7.0 인증 일정으로 **2028**로 밀렸다는 보도(🟡). 서버 합산 2~3억 IOPS는 이미 TLC 다수 드라이브로 달성(Micron · 삼성 · Graid) → SLC급 전용 매체의 의미는 **GPU당 드라이브 수를 줄이는 것**(⚠️ 파생).
 - 512B 수요 워크로드는 GNN · 그래프 분석 · 추천 · 벡터 검색이며(BaM · GIDS ✅), KV 캐시 오프로드는 대형 블록 중심이다.
+- 미래 대응 솔루션 후보 평가에서 GPU 직결 고IOPS의 위치: [ssd-future-solution-candidates.md](../concepts/ssd-future-solution-candidates.md)

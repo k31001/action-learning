@@ -93,3 +93,4 @@ sources:
 - 배치 정보의 원리: [fdp-placement-mechanics.md](fdp-placement-mechanics.md)
 - QLC 시장 · 중간 계층으로서의 QLC(Meta): [qlc-ssd-market.md](qlc-ssd-market.md)
 - 보고서: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md)
+- 추가 솔루션 후보 평가(보안 · 신뢰 · 재사용, GPU 직결 고IOPS, 전력 · 냉각): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)

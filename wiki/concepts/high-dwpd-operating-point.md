@@ -152,3 +152,4 @@ DWPD = P/E × (1 + OP) ÷ (WAF × 365 × 보증연수)          ← F29
 - 운영점 곡선의 반대쪽 끝(대용량 1~3 DWPD): [qlc-ssd-market.md](qlc-ssd-market.md) · [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)
 - KV 캐시가 SSD로 내려오는 경로: [hbm-to-storage-spillover.md](hbm-to-storage-spillover.md)
 - 같은 기술 포트폴리오(어떤 미래에도 대응하는 세 기술)의 다른 두 축: [mixed-media-ssd.md](mixed-media-ssd.md) · [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md)
+- 추가 솔루션 후보 평가(보안 · 신뢰 · 재사용, GPU 직결 고IOPS, 전력 · 냉각): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)

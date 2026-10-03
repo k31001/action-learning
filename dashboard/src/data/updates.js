@@ -16,6 +16,23 @@
 export const UPDATES = [
   {
     date: '2026-10-03',
+    type: 'query',
+    version: 'v2.46.53',
+    title: 'SSD 미래 대응 솔루션 후보 평가: 보안 · 신뢰 · 재사용 추천, GPU 직결 고IOPS 조건부 추천, 전력 · 냉각은 제품 요건으로',
+    summary:
+      '고객 협력 전략의 추가 솔루션 후보 5개를 시나리오 불변성 · 근거 강도 · SSD 안 완결 대 고객 협력 분류로 평가한 위키 페이지를 신설했다. 전력 · 냉각 원장 수집. 지식 그래프 재생성(패치 v2.46.53).',
+    tags: ['SSD 전략', 'OCP L.O.C.K.', 'Storage-Next', '액체냉각', '불변 전략', '지식 그래프'],
+    items: [
+      { label: '위키 신설', detail: 'wiki/concepts/ssd-future-solution-candidates.md: 후보 A~E 평가, 시나리오 대응표, 고객 협력 논리와의 관계, 쓰면 안 되는 문장' },
+      { label: '원장 ③', detail: 'ssd-future-candidate-power-cooling-2026-10.md: Vera Rubin 팬리스 · SSD 냉각판, 콜드플레이트 SSD 출시 순서, NVMe 2.3 전력 제어(커널 미지원), AI 랙 SSD 전력 약 2~3%' },
+      { label: '지식 그래프', detail: '노드 119 · 엣지 649 · 고아 0' },
+    ],
+    links: [
+      { label: 'wiki/concepts/ssd-future-solution-candidates.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ssd-future-solution-candidates.md' },
+    ],
+  },
+  {
+    date: '2026-10-03',
     type: 'ingest',
     version: 'v2.46.52',
     title: '추가 솔루션 후보 원장 2종(보안 · 신뢰 · 재사용, GPU 직결 고IOPS) + 삼성 SCADA 현황 정정',

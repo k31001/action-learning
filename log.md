@@ -2321,3 +2321,12 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 ## [2026-10-03] build | 결론 문장 확정: "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다"
 - 사용자 선택: 실패를 두 번 언급하는 원안을 다듬은 문장. 아웃라인 v0.2의 4장 마지막 밴드(덱 결론)로 배치, 90일 계획은 그 위 칩 띠로 이동. 2장 신호 게이트 머리표에 "불변 전략: 어느 시나리오에서도 가치를 내는 준비"를 넣어 결론 전에 용어를 정의
 - 보고서 §0 한 줄 결론을 이 문장으로 교체하고 v0.2 논리 조정 사실을 주석으로 명시(본문 v1.1 개정은 덱 제작 시)
+
+## [2026-10-03] query | SSD 미래 대응 솔루션 후보 평가 (dashboard v2.46.53)
+- 사용자 요청: "다가올 미래에 대응하기 위한 핵심 솔루션 두어 개 더, 보고 판단해서 추가 결정". Research Agent 3건 → 원장 3종(보안 · 신뢰 · 재사용 / GPU 직결 고IOPS / 전력 · 냉각, 마지막 원장 이번 수집)
+- 신규 위키 `wiki/concepts/ssd-future-solution-candidates.md`: 후보 5개를 시나리오 불변성 · 근거 강도 · 분류(SSD 안 완결 / 고객 협력)로 평가(⚠️ 과제팀 판단)
+  - A 보안 · 신뢰 · 재사용 **추천**: OCP L.O.C.K. 목표 "SSD 파기 불필요화" · Google · Microsoft 확정 채택 · 삼성 공저(✅). 기존 세 기술이 약한 D · C에서 ●
+  - B GPU 직결 고IOPS **조건부 추천**: 고객 협력 필수 → "AI 새 수요(쓰기 고DWPD · 읽기 512B)는 고객 SW 안에서 정의된다". 반증: 이득 주원천은 HBM 캐시 적중(삼성 aisio ✅), NVIDIA 요구 사양 비공개
+  - C 전력 · 냉각은 제품 요건으로 흡수(AI 랙 SSD 전력 약 2~3% ⚠️, 액체냉각 SSD는 TLC 컴퓨트 트레이급뿐), D CXL 메모리 계층 · E 투명 압축 보류
+- 역링크: high-dwpd-operating-point · mixed-media-ssd · high-capacity-fault-tolerance · nvidia-cmx-scada · energy-constraints. index.md(개념 · 원장) 등록, 아웃라인에 후보 표와 A · B 반영 시 구도(안) 추가
+- 지식 그래프 재생성(노드 119 · 엣지 649 · 고아 0) → dashboard v2.46.53(패치), updates.js, `npm run build`
