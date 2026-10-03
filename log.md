@@ -2317,3 +2317,7 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 원장 `sources/articles/ssd-future-candidate-gpu-direct-iops-2026-10.md`. ✅는 GitHub 원문(xio-sig · BaM · GIDS · 삼성 xnvme/aisio · cuVS · Zipline)만
 - **위키 정정**: "삼성 SCADA 공개 로드맵 없음"을 "SLC급 초고 IOPS 제품 로드맵 공백"으로 좁힘. 근거: PM1763 SCADA 백서(512B 드라이브당 약 6.92M IOPS, 🟡) · `xnvme/aisio` 실측(✅). `wiki/entities/nvidia-cmx-scada.md` §2.6 신설, `wiki/strategies/core/current-state-rs3-customer-switching-cost.md` SCADA 줄 보강
 - 반증 · 공백: NVIDIA Storage-Next SSD 요구 사양 비공개, 참가 명단 비공개, 512B 고IOPS 시장 규모 없음, KV 캐시는 대형 블록 중심
+
+## [2026-10-03] build | 결론 문장 확정: "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다"
+- 사용자 선택: 실패를 두 번 언급하는 원안을 다듬은 문장. 아웃라인 v0.2의 4장 마지막 밴드(덱 결론)로 배치, 90일 계획은 그 위 칩 띠로 이동. 2장 신호 게이트 머리표에 "불변 전략: 어느 시나리오에서도 가치를 내는 준비"를 넣어 결론 전에 용어를 정의
+- 보고서 §0 한 줄 결론을 이 문장으로 교체하고 v0.2 논리 조정 사실을 주석으로 명시(본문 v1.1 개정은 덱 제작 시)
