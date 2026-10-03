@@ -2374,3 +2374,8 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **덱 v1.1**: 1장 = 데이터센터 4종 열(범용: 내용연수 덤벨 · 건물 15 → 25년 / AI 학습: 랙 전력 로그 막대 · 체크포인트 5.7TB / AI 추론: DWPD 로그 막대 · 읽기 99.5% / 에이전트: 요청당 KV 0.5 → 22GB · 1시간+ 세션 18.8%) → 요구 한 줄 → 기술 칩, 밴드 "하나의 미래에 걸지 않고, 데이터센터마다 다른 요구를 미리 준비합니다". 2장 = 개념 그림 · Blue 하나(고DWPD), 3장 = 고객 캐시 DWPD · Meta CacheLib, 4장 = GPU I/O 줄 · 90일 칩 제거. 렌더 QA 10회, qa_audit PASS
 - **보고서 v1.2**: SCADA · MLC 제외, §1.3 데이터센터 유형별 요구, §2.4 블록 메커니즘 · 다이 120 → 47, §3.1~3.2 고객 측 데이터(Kangaroo 3 · Baleen 7.2 · NetApp 7% · CacheLib 150% · -44%), §4.4 재검토 신호(GPU 직결), 근거 대장 F-1~F-11. 아웃라인 v1.1(주장 → 그래프 대조표)
 - 지식 그래프 재생성(노드 120 · 엣지 653 · 고아 0) → dashboard v2.46.55(패치), updates.js, `npm run build` 통과
+
+## [2026-10-03] ingest | 사용자 제공 Mixed Media 분석 보존 (검증 착수)
+- 사용자 지시: "Mixed Media도 고객 협력이 필요한 부분으로 보인다. 아래 내용 기반으로 디테일과 로직 보강"
+- 원문을 `sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md`로 보존(원문 불변). 인용된 외부 주장(Kioxia 2026-09 mixed-media SSD: 네임스페이스 2개 · pSLC 약 1~6% · FDP 결합 · 성능 계층 SSD 불필요, Solidigm: 쓰기 집약 · 순차화로 QLC WAF ≈ 1)은 Research Agent가 검증 중
+- 검증 뒤 Mixed Media를 "고객 시스템과 함께" 묶음으로 옮겨 위키 `mixed-media-ssd.md` · 보고서 · 덱 2장을 고칠 예정

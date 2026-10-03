@@ -237,6 +237,7 @@
 
 ### sources/raw-notes — 리서치 노트
 - [sources/raw-notes/ai-datacenter-buildout-2026-06.md](sources/raw-notes/ai-datacenter-buildout-2026-06.md) — 전 세계 AI DC 착공 현황 4-에이전트 병렬 수집 (US/APAC/MEA·EU/라이프사이클·메모리 환산) + 전체 URL
+- [sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md](sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md) — (NEW) 사용자 제공 분석: 하이퍼스케일러가 Mixed Media SSD(pSLC + QLC)를 원하는 이유(워크로드 두 종류 · QLC 쓰기 경로와 꼬리 지연 · WAF가 핵심 · 드라이브 슬롯 비용 · 네임스페이스 노출 · FDP 결합 · AI 데이터 양극화 · 컨트롤러 경쟁점). 인용된 Kioxia(2026-09) · Solidigm 주장은 검증 원장에서 확인
 - [sources/raw-notes/demand-inflection-ewi-2026-06.md](sources/raw-notes/demand-inflection-ewi-2026-06.md) — 수요 변곡 조기경보 방법론·인과 사슬 계층·출처
 - [sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md](sources/raw-notes/senior-partner-interview-deep-research-2026-06-11.md) — 시니어 파트너 인터뷰 딥리서치 (사용자 1차 + WSTS·IDC·IEA·Anthropic·NASA·NDRC 교차 팩트체크): "하드웨어 시간 돌아옴" 4대 메시지·전략 권고 7개
 - [sources/raw-notes/hr-org-open-innovation-note-2026-08-12.md](sources/raw-notes/hr-org-open-innovation-note-2026-08-12.md) — (NEW) 자원배분 두 축(인사·조직·보상 관점) 원문 + 대조: Axis 1 내부 역량 효율화(횡전개 실사례·Project Incentive Funding·파견 처우·본딩 공통조직과 전용 모듈 팹) / Axis 2 오픈이노베이션(엣지 AI 즉시·퀀텀 장기, 후보 14곳) + **D9 다운사이클 M&A와의 충돌 해소**
