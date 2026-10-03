@@ -1,8 +1,8 @@
 ---
 type: presentation-outline
-status: v1.1 덱 (2026-10-03, 덱 v1.0 리뷰 반영). 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.1, 미커밋 산출물 · 생성기로 재현)
-report: outputs/report/ssd-future-ready-strategy-report.md (v1.2)
+status: v1.2 덱 (2026-10-03, Mixed Media 고객 협력 과제로 재분류). 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.2, 미커밋 산출물 · 생성기로 재현)
+report: outputs/report/ssd-future-ready-strategy-report.md (v1.3)
 design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬, 20 × 11.25in, 본문 18pt+, 출처 15pt)
 ---
 
@@ -20,6 +20,14 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 | 2TB · 30 DWPD에서 MLC 제거 | 막대 2개(SSD 혼자 약 120 · 고객 배치 정보 약 47)만 |
 | 4장 첫 90일은 노트로 | 칩 줄 삭제, 열 캡션 복귀, 90일은 발표자 노트 |
 
+## v1.1 → v1.2 변경 (2026-10-03 사용자 분석 반영)
+
+| 지시 | 반영 |
+|---|---|
+| "Mixed Media도 고객 협력이 필요한 부분으로 보인다. 디테일과 로직 보강" | 2장 Mixed Media를 그레이 → **Blue 묶음**으로 이동. 그레이는 고용량 하나. Mixed Media 카드: 고객 SW가 WAL · 메타데이터 → pSLC, 객체 · 데이터셋 → QLC로 나누고 pSLC에서 모아 큰 순차 쓰기로 QLC에 내리는 그림 + 데이터 3개(쓰기 75%가 16KiB 이하 · 4KB 쓰기 WAF 70+ → 1.02 · 고객 요구 pSLC 0.5~2%) + "어떤 데이터가 작은 쓰기인지는 고객 SW만 압니다" |
+| (연동) | 3장 3칸 문구 "데이터의 종류 · 수명은 고객 시스템만 안다", 4장 역량 격자 SSD FW "FDP · NS QoS · destage" |
+| 출처 귀속 정정 | 사용자 분석의 "Kioxia 2026-09 · pSLC 1~6% · Kioxia + FDP"는 미확인 → 덱 · 보고서는 Kioxia FMS 2025 · 2026, VoC 0.5~2%, CSAL(별도 드라이브 구성)로 표기 |
+
 ## 제목 4개를 이어 읽으면
 
 > SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터마다 스토리지에 요구하는 것이 다릅니다. SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다. **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.**
@@ -33,7 +41,7 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 | 1 | AI 학습: 랙 공간 · 전력이 귀하다 | 랙 전력 로그 막대(11 · 40 · 약 130 · 1MW) + 체크포인트 5.7TB(산술) |
 | 1 | AI 추론: 쓰기 요구가 엇갈린다 | DWPD 로그 막대(QLC 0.6 · KV 실측 3.2 · AI 전용 50~120) + 읽기 99.5% 100% 막대 |
 | 1 | 에이전트: 문맥이 길고 상태가 남는다 | 요청당 KV 막대(채팅 0.5GB 대 에이전트 22GB, 산술) + 1시간+ 세션 18.8% |
-| 2 | Mixed Media: 슬롯을 늘리지 않는다 | 슬롯 그림 +1 대 +0, 추가 슬롯 0개 · pSLC 19.2TB |
+| 2 | Mixed Media: 고객 SW가 나눠 보내야 효과가 난다 | 배치 그림(WAL · 메타데이터 → pSLC, 객체 · 데이터셋 → QLC, 모아서 순차로) + 쓰기 75% ≤ 16KiB 100% 막대 + WAF 70+ → 1.02 로그 막대 + pSLC 0.5~2% |
 | 2 | 고용량: 같은 폼팩터 다이 ×2 | 다이 격자 245TB 대 512TB |
 | 2 | 고DWPD: 고객 정보로 다이 -60% | 블록 그림(WAF ≈ 3 → ≈ 1) + 다이 막대 120 → 47 |
 | 3 | 고객의 쓰기는 크고 셀 수명은 줄었다 | P/E 막대 + 고객 캐시 DWPD 막대 |

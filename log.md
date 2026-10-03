@@ -2379,3 +2379,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 사용자 지시: "Mixed Media도 고객 협력이 필요한 부분으로 보인다. 아래 내용 기반으로 디테일과 로직 보강"
 - 원문을 `sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md`로 보존(원문 불변). 인용된 외부 주장(Kioxia 2026-09 mixed-media SSD: 네임스페이스 2개 · pSLC 약 1~6% · FDP 결합 · 성능 계층 SSD 불필요, Solidigm: 쓰기 집약 · 순차화로 QLC WAF ≈ 1)은 Research Agent가 검증 중
 - 검증 뒤 Mixed Media를 "고객 시스템과 함께" 묶음으로 옮겨 위키 `mixed-media-ssd.md` · 보고서 · 덱 2장을 고칠 예정
+
+## [2026-10-03] build | Mixed Media 고객 협력 과제로 재분류 · 논리 보강 (덱 v1.2 · 보고서 v1.3 · dashboard v2.46.56)
+- 사용자 지시: "Mixed Media도 고객 협력이 필요한 부분으로 보인다. 아래 내용 기반으로 디테일과 로직 보강"
+- 검증 원장 `ssd-mixed-media-hyperscaler-logic-2026-10.md`(MX): 메커니즘(작은 쓰기 흡수 → 큰 순차 destage → WAF 저감, 비트/셀 4배 페널티, Slot Tax)은 공개 근거 있음. **출처 귀속 정정 3건**: Kioxia "2026-09 공개"(실제 FMS 2025 · 2026), "pSLC 1~6%"(실제 VoC 0.5~2%, 구성 비 1:8 · 1:4 · 1:2), "Kioxia + FDP"(실제 Solidigm CSAL 쪽). Solidigm WAF ≈ 1은 별도 드라이브 구성. 반증: KV 캐시 · 체크포인트는 큰 I/O
+- 위키 `mixed-media-ssd.md` §0 신설(두 종류 쓰기 · 쓰기 경로와 꼬리 지연 · WAF · pSLC 비율 · 슬롯 비용 · 고객 협력 근거 4가지 · 컨트롤러 경쟁점 · 출처 정정)
+- 보고서 v1.3: §0 묶음 변경(Mixed Media → 고객 시스템과 함께), §2.3 Mixed Media 신설(데이터 표 5행 · 고객 협력 이유 3가지 · SSD 안 준비 vs 고객과 정할 것), §4.2 공동 설계 의제 · §4.4 신호 · §4.5 90일 · §5 리스크 · §6 근거 F-12 · F-13
+- 덱 v1.2: 2장 그레이 = 고용량, Blue = Mixed Media(배치 그림 + 쓰기 75% ≤ 16KiB + WAF 70+ → 1.02 + pSLC 0.5~2%) + 고DWPD, 3장 3칸 "데이터의 종류 · 수명", 4장 SSD FW "FDP · NS QoS · destage". 렌더 QA 통과
+- 지식 그래프 재생성 → dashboard v2.46.56(패치), updates.js, `npm run build`

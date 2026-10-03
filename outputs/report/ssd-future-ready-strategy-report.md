@@ -1,10 +1,12 @@
 ---
 type: report
-status: v1.2 (2026-10-03). 덱 v1.0 리뷰 반영(SCADA 제외 · MLC 제외 · 데이터센터 유형별 스토리지 요구 · 고객 측 고DWPD 근거 · 근거 사슬). 덱 4장 v1.1
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.1, 생성기 scripts/generate_ssd_future_ready_pptx.py)
+status: v1.3 (2026-10-03). Mixed Media를 고객 협력 과제로 재분류하고 논리 보강(사용자 분석 + 검증 원장). v1.2: SCADA · MLC 제외 · 데이터센터 유형별 요구 · 고객 측 고DWPD 근거. 덱 4장 v1.2
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.2, 생성기 scripts/generate_ssd_future_ready_pptx.py)
 outline: outputs/presentation/ssd-future-ready-strategy-outline.md
 supersedes_focus: outputs/report/ssd-survival-strategy-report.md (KV 캐시 고DWPD 중심 → 데이터센터별 요구에 맞춘 준비 + 고객 협력 과제)
 sources:
+  - sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md
+  - sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md
   - sources/articles/datacenter-types-storage-requirements-2026-10.md
   - sources/articles/ssd-customer-high-dwpd-evidence-2026-10.md
   - sources/articles/ssd-mixed-media-infra-reuse-2026-10.md
@@ -48,11 +50,11 @@ last_updated: 2026-10-03
 
 | 묶음 | 기술 | 대응하는 데이터센터 | 대표 데이터 |
 |---|---|---|---|
-| **SSD 안에서 지금처럼** | Mixed Media (QLC + pSLC 영역) | 범용 클라우드(오래 쓰고 용량 중심) | 24베이 서버에 추가 슬롯 0개로 pSLC 19.2TB(⚠️ 산술) |
-| | 고용량 + 결함 허용 | AI 학습(랙 공간 · 전력이 귀함), 에이전트 | 같은 폼팩터 다이 1,024 → 약 2,133개, 이중 패리티(⚠️ 모델) |
-| **고객 시스템과 함께 (새로 나타남)** | 고DWPD (용량형 + 2TB · 30 DWPD 운영점) | AI 추론, 에이전트 | 2TB · 30 DWPD · 5년: SSD 혼자 약 120다이 → 고객 배치 정보로 약 47다이(-60%, ⚠️ 산술) |
+| **SSD 안에서 지금처럼** | 고용량 + 결함 허용 | AI 학습(랙 공간 · 전력이 귀함), 에이전트 | 같은 폼팩터 다이 1,024 → 약 2,133개, 이중 패리티(⚠️ 모델) |
+| **고객 시스템과 함께 (새로 나타남)** | Mixed Media (pSLC + QLC, 네임스페이스 2개) | 범용 클라우드(오래 쓰고 용량 중심) | 고객 요구 pSLC = QLC 용량의 0.5~2%(Kioxia VoC 🟡), 작은 쓰기를 모아 순차로 내리면 4KB 랜덤 쓰기 WAF 70+ → 1.02(CSAL, 별도 드라이브 구성 🟡) |
+| | 고DWPD (용량형 + 2TB · 30 DWPD 운영점) | AI 추론, 에이전트 | 2TB · 30 DWPD · 5년: SSD 혼자 약 120다이 → 고객 배치 정보로 약 47다이(-60%, ⚠️ 산술) |
 
-**한 줄 결론**: **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.** 데이터센터마다 다른 요구를 미리 준비하되, SSD 안에서 풀 수 있는 것은 지금처럼 잘하고, **새로 나타난 고객 협력 과제(고DWPD)는 지금까지와 다른 방식으로 전략적으로 실행**해야 한다.
+**한 줄 결론**: **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.** 데이터센터마다 다른 요구를 미리 준비하되, SSD 안에서 풀 수 있는 것은 지금처럼 잘하고, **새로 나타난 고객 협력 과제(Mixed Media · 고DWPD)는 지금까지와 다른 방식으로 전략적으로 실행**해야 한다. 두 과제 모두 "어떤 데이터가 작은 쓰기인지, 언제 지워지는지"를 고객 소프트웨어만 안다.
 
 ---
 
@@ -105,26 +107,14 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 
 | 기준 | SSD 안에서 지금처럼 | 고객 시스템과 함께 (새로 나타남) |
 |---|---|---|
-| 요구는 어디서 정의되나 | 규격 · 사양으로 정의되고 SSD가 구현해 낸다 | **고객 소프트웨어 안에서** 정의된다: 데이터가 언제 지워지는지는 KV 캐시 관리자 · 캐시 정책만 안다 |
-| SSD 혼자 하면 | 충분한 효과가 난다 | 다이를 크게 희생한다(약 120 대 47) |
+| 요구는 어디서 정의되나 | 규격 · 사양으로 정의되고 SSD가 구현해 낸다 | **고객 소프트웨어 안에서** 정의된다: 어떤 쓰기가 WAL · 메타데이터인지(Mixed Media), 데이터가 언제 지워지는지(고DWPD)는 고객 소프트웨어만 안다 |
+| SSD 혼자 하면 | 충분한 효과가 난다 | 영역을 둬도 엉뚱한 데이터가 들어가고(Mixed Media), 다이를 크게 희생한다(고DWPD 약 120 대 47) |
 | 지금 위치 | 기존 개발 방식으로 경쟁 중 | 고객 코드 안의 접점이 이제 막 생기고 있다(LMCache FDP 머지 ✅) |
 | 필요한 접근 | 지금 방식으로 잘하면 된다 | **지금까지와 다른 방식**이 필요하다(§4) |
 
 보안 · 신뢰(OCP L.O.C.K. 공저, PQC 대응 등)는 중요성이 이미 잘 인식돼 있고 삼성이 잘하고 있는 영역이라 다루지 않는다. 전력 · 냉각(콜드플레이트 폼팩터, NVMe 2.3 전력 한도 · 측정)은 고용량 제품의 요건으로 흡수한다. GPU 직결 고IOPS(SCADA)는 논의하기 이른 시점이라 제외하고, 재검토 신호만 둔다([ssd-future-solution-candidates.md](../../wiki/concepts/ssd-future-solution-candidates.md)).
 
-### 2.2 SSD 안에서 지금처럼: Mixed Media (pSLC)
-
-**정의**: QLC로 출하하되 용량 일부를 **pSLC 영역**으로 쓰게 한 드라이브. 캐시 SSD를 따로 사면 슬롯이 하나 더 필요하지만, 한 드라이브 안의 pSLC 영역은 슬롯을 늘리지 않는다([mixed-media-ssd.md](../../wiki/concepts/mixed-media-ssd.md)).
-
-| 층 | 내용 |
-|---|---|
-| SSD 안에서 | 매체 모드별 엔듀런스 그룹(EG) · NVM Set, 비율은 출하 시 구성, 다이 수준 격리, **영역별 마모 · 보증 회계**(EG별 로그는 표준 ✅, 영역별 TBW 보증 선례 없음) |
-| 고객은 | 별도 네임스페이스로 노출된 빠른 영역을 **기존 소프트웨어 그대로** 쓴다. 계층 배치 소프트웨어(CSAL류)와 연동하면 효과가 더 커진다(선택) |
-| 선례 · 경쟁 | DapuStor J5060 dual-mode(pSLC 400GB~1.2TB), Kioxia Mixed Mode 🟡. **삼성의 호스트 가시 pSLC 영역 제품은 공개 자료에서 찾지 못함** |
-| 경제성 | QLC → pSLC 실제 전환비 5 : 1(DapuStor). 24베이 서버에서 추가 슬롯 0개로 pSLC 19.2TB(⚠️ 산술) |
-| 근거의 한계 | 하이퍼스케일러가 "인프라 재사용 때문에 단일 혼합 매체 드라이브를 원한다"고 말한 공개 기록은 없다 |
-
-### 2.3 SSD 안에서 지금처럼: 고용량 + 결함 허용
+### 2.2 SSD 안에서 지금처럼: 고용량 + 결함 허용
 
 **정의**: 같은 폼팩터에 245TB → 512TB를 담는 기술과, 1,000~2,000개 다이 중 일부가 고장 나도 계속 쓰게 하는 결함 허용 기술([high-capacity-fault-tolerance.md](../../wiki/concepts/high-capacity-fault-tolerance.md)).
 
@@ -136,6 +126,34 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 (61.44TB 실측의 선형 확대 ⚠️) 단일 패리티로 245TB급은 충족 가능하지만 512TB급은 이중 패리티 · 여분 다이가 필요하다([ssd-die-reliability-ppm.md](../../wiki/concepts/ssd-die-reliability-ppm.md)). SSD 안에서: 다이 패리티, Fail-in-Place, OCP SMART 다이 필드(✅), 콜드플레이트 폼팩터 · 전력 한도 대응. 고객과 하면 더 커지는 것(선택): 고장 LBA만 재구축(Get LBA Status ✅, Linux 경고 미활성 ✅), 용량을 줄이며 계속 운영(NVMe 명령 없음 ✅). Azure 연구는 "오늘날 부분 고장은 전체 고장"이라고 명시했다(✅).
 
 > **재확인 필요**: 삼성 BM1773, PM1733 FIP 감량 단위는 이번 조사에서 재확인되지 않았다. 핵심 근거로 쓰지 않는다.
+
+### 2.3 고객 시스템과 함께: Mixed Media (pSLC + QLC, 네임스페이스 2개)
+
+**재정의**: "QLC에 캐시를 붙여 성능을 높인다"가 아니라, **한 SSD 안에서 고성능 · 고내구 영역(pSLC)과 초고용량 · 저비용 영역(QLC)을 별도 네임스페이스로 나누고, 고객 소프트웨어가 데이터 종류에 따라 직접 배치**하는 드라이브다. 근거: 사용자 분석([원본 메모](../../sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md))과 검증 원장 [ssd-mixed-media-hyperscaler-logic-2026-10.md](../../sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md)(MX), 상세는 [mixed-media-ssd.md](../../wiki/concepts/mixed-media-ssd.md) §0.
+
+**왜 하이퍼스케일러에게 맞나 (데이터)**
+
+| 논리 | 데이터 | 등급 |
+|---|---|---|
+| ① 쓰기는 두 종류가 섞여 있다 | Alibaba · Tencent 블록 스토리지 볼륨의 91.5% · 92.3%가 쓰기 우세, Alibaba 쓰기의 **75%가 16KiB 이하**. Kioxia "small random vs large sequential, metadata vs user data가 고객 요구를 만든다" | 🟡 (MX-01 · MX-60~MX-62) |
+| ② QLC의 약점은 용량 · 읽기가 아니라 쓰기 경로다 | IU 16~64KB에서 4KB 랜덤 쓰기 하한만 4~16배(산술), QLC 프로그램 2~3ms 대 SLC 50~220µs, GC로 p99.9 > 1ms(Alibaba FAST'26) | ⚠️ / ✅ (MX-21 · MX-30~MX-37) |
+| ③ 핵심은 WAF: 작은 쓰기를 모아 큰 순차로 내린다 | **4KB 랜덤 쓰기 WAF 70+ → 1.02**(CSAL 백서). 단 별도 캐시 드라이브 구성, 호스트 기록 기준일 수 있음 | 🟡 (MX-11 · MX-17) |
+| ④ pSLC는 작게 | QLC 셀을 pSLC로 쓰면 비트 1/4(실제 5 : 1). **고객 요구 pSLC = 최대 QLC 용량의 0.5~2%**(Kioxia VoC) → 사용자 용량 손실 약 1.5~8% | 🟡 / ⚠️ (MX-01 · MX-41) |
+| ⑤ 드라이브 슬롯 비용(Slot Tax)을 없앤다 | Kioxia "SLC SSD가 슬롯을 통째로 차지", FRU 감소 · PCIe 레인 균형. TLC 2 + QLC 8 → 혼합 8이면 슬롯 2개 절약(대신 QLC 용량 4~15.6%), 선례 Pure FlashArray//XL 전용 NVRAM 슬롯 제거 | 🟡 / ⚠️ (MX-02 · MX-52 · MX-54) |
+
+**왜 고객 협력 과제인가**
+
+1. **배치 결정이 고객 소프트웨어에 있다**: 어떤 쓰기가 WAL · 메타데이터인지는 호스트만 안다. 상용 혼합 매체는 예외 없이 호스트 소프트웨어가 매체를 묶었다(CSAL · RST · VAST · Colossus, CD-01). "SSD가 워크로드를 추측하게 하지 말고 호스트가 의미를 알려 준다"는 고DWPD와 같은 구조다.
+2. **pSLC 비율을 고객 워크로드로 정한다**: Kioxia "배치별 맞춤 비율", VoC 0.5~2%. 크면 QLC $/TB를 잃고, 작으면 지속 쓰기에서 넘친다.
+3. **QLC 영역의 GC는 수명 정보로 줄인다**: QLC 네임스페이스에 FDP 수명별 RUH를 쓰면 pSLC = 쓰기 충격 흡수, FDP = QLC 내부 GC 최적화로 분업한다(결합 근거는 Solidigm CSAL 쪽, Kioxia 출처로는 미확인).
+
+| 층 | 내용 |
+|---|---|
+| SSD 안에서 준비할 것 (컨트롤러 경쟁점) | **pSLC → QLC destage 정책**, **네임스페이스별 QoS 격리**(다이 수준 격리), **GC 간섭 차단 · 자원 예약**(p99.9 이상), **FDP 연동**, **pSLC 크기 결정 · 영역별 마모 · 넘침 텔레메트리**, 영역별 보증 회계 |
+| 고객과 함께 정할 것 | 데이터 종류별 네임스페이스 배치(WAL · 메타데이터 · 인덱스 → pSLC, 객체 · 데이터셋 → QLC), 워크로드별 pSLC 비율, QLC NS의 RUH 설계, 꼬리 지연 목표 |
+| 선례 · 경쟁 | Kioxia Mixed Mode(FMS 2025 · 2026, 네임스페이스 2개), DapuStor J5060 dual-mode, Solidigm CSAL(시스템 수준, Alibaba 상용). **삼성의 호스트 가시 pSLC 영역 제품은 공개 자료에서 찾지 못함** |
+| 근거의 한계 | 하이퍼스케일러가 pSLC 네임스페이스를 요구했다는 공개 기록 없음, 한 혼합 드라이브의 p99.9 이상 실측 없음, 혼합 대 분리 TCO 수치 없음. KV 캐시 · 체크포인트는 큰 I/O라 pSLC 후보가 아니다(AI 데이터 중 후보는 메타데이터 · 인덱스 · 로그) |
+| 출처 귀속 정정 | 사용자 분석의 "Kioxia 2026-09 공개" · "pSLC 1~6%" · "Kioxia + FDP 결합"은 확인되지 않았다(실제: FMS 2025 · 2026, VoC 0.5~2%, 결합은 Solidigm CSAL). 메커니즘 자체는 근거가 있다 |
 
 ### 2.4 고객 시스템과 함께: 고DWPD (용량형 + 2TB · 30 DWPD 운영점)
 
@@ -215,14 +233,15 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 | 계약 | 물량 · 가격 | 물량 + 공동 설계 · 운영 통합 |
 | 성과 | 사양 충족 · 인증 통과 | 고객 시스템에서 켜진 기능 · 고객 지표(토큰당 비용 · GPU 가동률) |
 
-Mixed Media · 고용량은 지금 방식을 유지하고, 새 방식은 **고DWPD에 집중**한다.
+고용량은 지금 방식을 유지하고, 새 방식은 **Mixed Media · 고DWPD에 집중**한다.
 
 ### 4.2 공동 설계 의제
 
 | 과제 | 고객 쪽 상대 | 공동 설계 과제 | 규격 · 오픈소스 |
 |---|---|---|---|
 | **고DWPD** | KV 캐시 관리자(LMCache · Dynamo · Mooncake), 추론 엔진, 캐시 계층(CacheLib류) | 테넌트 · 수명별 배치, KV 트레이스 기반 WAF 실측, 2TB · 30 DWPD 운영점 요구 확인 | LMCache 다음으로 Dynamo · Mooncake에 FDP 경로, NVMe FDP 런타임 재구성 |
-| Mixed Media · 고용량 (선택) | 분산 스토리지 · 커널 블록 계층 | 계층 배치 연동, 고장 LBA 재구축 | 같은 협력 통로를 재사용 |
+| **Mixed Media** | 분산 스토리지 · DB · 블록 스토리지(로그 · 메타데이터 경로), 계층 배치 소프트웨어(CSAL류) | 데이터 종류별 네임스페이스 배치, 워크로드별 pSLC 비율(0.5~2% 구간 검증), destage · QoS 격리 목표(p99.9), QLC NS의 RUH 설계 | NVMe 네임스페이스 · 엔듀런스 그룹 활용, 영역별 텔레메트리 · 보증 표기 제안, FDP 매체 속성 제안 |
+| 고용량 (선택) | 분산 스토리지 EC · 커널 블록 계층 | 고장 LBA 재구축 | 같은 협력 통로를 재사용 |
 
 ### 4.3 협력의 방식: 계약 · 사람 · 역량
 
@@ -237,7 +256,7 @@ Mixed Media · 고용량은 지금 방식을 유지하고, 새 방식은 **고DW
 | 기술 | 확대 신호 (비중 ↑) | 축소 신호 (비중 ↓) |
 |---|---|---|
 | 고DWPD | 고객 RFQ의 DWPD 요구 상승, KV 캐시 SSD 쓰기 실측 증가. **2TB · 30 DWPD 독립 과제 승격**: 고객 요구 확인 `[사내 확인]` | 모델 KV 압축 확산(SSD 1/8 사례), 오프로드 정책의 쓰기 억제 강화, CXL 메모리가 KV 계층 흡수 |
-| Mixed Media | 서버 · 건물 내용연수 연장 지속, CapEx 절감, 고객 RFQ에 영역 요구 등장 | 신규 그린필드 캠퍼스 중심 증설 |
+| Mixed Media | 고객 RFQ에 영역 · 비율 요구 등장, 서버 · 건물 내용연수 연장 지속, CapEx 절감 | 직접 쓰기 QLC 확산(SLC 버퍼 없는 UltraQLC류), 신규 그린필드 캠퍼스 중심 증설 |
 | 고용량 | 데이터센터 지연 · 규제 확대, AI 랙 전력 밀도 상승, 245TB 채택 확산 | 전력망 완화 · 건설 가속 |
 | (재검토) GPU 직결 고IOPS | NVIDIA SSD 요구 사양 공개, 첫 프로덕션 배치, PCIe Gen7 통합 일정, 고객 RFQ에 512B IOPS | 지금은 제외 |
 
@@ -251,14 +270,14 @@ Mixed Media · 고용량은 지금 방식을 유지하고, 새 방식은 **고DW
 
 **계약의 창**: 공급자 우위가 이어지는 2026년 4분기 ~ 2027년 상반기(2027년 하반기 공급 완화 전망 🟡) 안에 기술 협력을 계약에 담는다.
 
-**첫 90일**(덱에서는 발표자 노트): ① 전략 고객 1~2사 선정과 고DWPD 의제 매칭 ② Co-Design Pod 구성 ③ 시스템 SW 전문가 채용 착수 ④ 고객 KV 트레이스로 WAF 실측 ⑤ 신호 대시보드(§4.4) 가동.
+**첫 90일**(덱에서는 발표자 노트): ① 전략 고객 1~2사 선정과 고DWPD · Mixed Media 의제 매칭 ② Co-Design Pod 구성 ③ 시스템 SW 전문가 채용 착수 ④ 고객 트레이스로 WAF · 작은 쓰기 비중 실측(pSLC 비율 근거) ⑤ 신호 대시보드(§4.4) 가동.
 
 ### 4.6 성과 지표
 
 | 축 | 지표 |
 |---|---|
 | 공동 설계 | 공동 설계 의제를 가진 고객 수, 고객 시스템에서 켜진 기능(FDP · 영역 · LBA Status) |
-| 이익 | 2TB · 30 DWPD 운영점의 다이 사용량(SSD 혼자 대비) |
+| 이익 | 2TB · 30 DWPD 운영점의 다이 사용량(SSD 혼자 대비), Mixed Media의 pSLC 비율 대비 QLC WAF · p99.9 개선 |
 | 생태계 | 업스트림 머지 건수(KV 캐시 관리자 · SPDK · 커널), 채택된 규격 제안 수 |
 
 ---
@@ -271,6 +290,8 @@ Mixed Media · 고용량은 지금 방식을 유지하고, 새 방식은 **고DW
 | 여러 기술을 하면 자원이 분산된다 | 공통 기반(§2.5)에 먼저 투자하고, 제품화 비중은 신호로 조정한다 |
 | 2TB · 30 DWPD는 SLC로 충분하다 | 맞다. 다만 같은 SLC 모드에서도 고객 배치 정보로 다이가 약 60% 준다. 이익은 고객 협력에서 나온다 |
 | KV 캐시 고DWPD가 사라질 수 있다 | 고DWPD에서 만든 FDP · SLC 모드 기술은 Mixed Media의 pSLC 영역으로 재사용된다 |
+| pSLC가 QLC $/TB를 잠식한다 | 셀당 비트 1/4이라 비율이 핵심이다. 고객 요구 0.5~2%(손실 약 1.5~8%) 구간에서 고객 워크로드로 검증한다 |
+| SLC 버퍼 없이 직접 쓰는 QLC가 이길 수 있다 | 신호(§4.4 축소)로 본다. 작은 쓰기 비중이 낮은 고객에게는 Mixed Media가 필요 없다 |
 | 에이전트 수요는 아직 초기다 | 수치(요청당 KV 42배 · 1시간+ 세션 18.8%)는 한 서비스의 공개 트레이스다. 범위로 읽고 신호로 갱신한다 |
 | 고객 협력은 시간이 오래 걸린다 | 계약의 창을 쓰고, 이미 있는 접점(LMCache)에서 시작한다 |
 
@@ -291,17 +312,19 @@ Mixed Media · 고용량은 지금 방식을 유지하고, 새 방식은 **고DW
 | F-9 | 해법 사다리(RBER · ECC · WAF 3.22 → 1.03) | ✅ / 🟡 | [component-to-system-solution-ladder-facts-2026-09.md](../../sources/articles/component-to-system-solution-ladder-facts-2026-09.md) |
 | F-10 | 시나리오 확률 A26 · B39 · C8 · D21 · E6 | 위키 | [scenario-matrix.md](../../wiki/scenarios/scenario-matrix.md) |
 | F-11 | Micron ↔ Anthropic 계약 4요소 · Palantir FDE | 🟡 | [micron-anthropic-sca](../../sources/articles/micron-anthropic-sca-2026-06-22.md) · [palantir-fde](../../sources/articles/palantir-fde-model-2026-07.md) |
+| F-12 | Mixed Media 논리: 쓰기 75%가 16KiB 이하 · WAF 70+ → 1.02 · VoC pSLC 0.5~2% · Slot Tax · 출처 귀속 정정 | 🟡 / ⚠️ / ✅ | [ssd-mixed-media-hyperscaler-logic-2026-10.md](../../sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md) MX-01~MX-77 |
+| F-13 | 사용자 제공 Mixed Media 분석(원문) | 원본 | [user-mixed-media-hyperscaler-analysis-2026-10-03.md](../../sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md) |
 
 ---
 
-## 7. 슬라이드 4장 (덱 v1.1)
+## 7. 슬라이드 4장 (덱 v1.2)
 
 상세는 [ssd-future-ready-strategy-outline.md](../presentation/ssd-future-ready-strategy-outline.md).
 
 | 장 | 제목(액션 타이틀) | 주장 → 그래프 |
 |---|---|---|
 | 1 배경 | SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터마다 스토리지에 요구하는 것이 다릅니다 | HBM 점유율 슬로프 · 범용(내용연수 덤벨 · 건물 15 → 25년) · AI 학습(랙 전력 로그 막대 · 체크포인트 5.7TB) · AI 추론(DWPD 로그 막대 · 읽기 99.5%) · 에이전트(요청당 KV 0.5 → 22GB · 1시간+ 세션 18.8%) |
-| 2 솔루션 | SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다 | 슬롯 그림(+1 대 +0) · 같은 폼팩터 다이 격자 · 수명 섞인 블록 대 수명별 블록(WAF ≈ 3 → ≈ 1) · 다이 120 → 47 |
+| 2 솔루션 | SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다 | 그레이: 고용량(같은 폼팩터 다이 격자) / Blue: Mixed Media(고객 SW가 WAL · 메타데이터 → pSLC, 객체 · 데이터셋 → QLC, 모아서 큰 순차 쓰기 · 쓰기 75% ≤ 16KiB · WAF 70+ → 1.02 · pSLC 0.5~2%), 고DWPD(수명 섞인 블록 대 수명별 블록 · 다이 120 → 47) |
 | 3 당위성 | 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다 | P/E 10만 → 1천 · 고객 캐시 DWPD(0.6 · 3 · 3.2 · 7.2) · 계단 3칸 · Meta CacheLib 150% 대 100% · -44% |
 | 4 실행 | 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다 | 계약 적층 · 상주 순환 · 역량 격자, 첫 90일은 노트 |
 | 결론 밴드 | 실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다 | |

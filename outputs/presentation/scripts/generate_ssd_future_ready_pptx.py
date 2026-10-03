@@ -192,50 +192,28 @@ d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에�
 s = d.slide(2, "솔루션", "SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고,\n고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다")
 
 GT, GB = 2.34, 9.42
-GWG = 8.40
+GWG = 4.80
 BXG, BWG = MX + GWG + 0.30, CW - GWG - 0.30
 rect(s, MX, GT, GWG, GB - GT, fill=PALE, shape=RR)
 rect(s, BXG, GT, BWG, GB - GT, fill=TINT, line=BLUE, lw=1.5, shape=RR)
 tb(s, MX + 0.26, GT + 0.08, GWG - 0.4, 0.52, [[("SSD 안에서  ", 24, True, GRAY), ("지금처럼", 24, True, INK)]], anchor=MID)
 tb(s, BXG + 0.26, GT + 0.08, BWG - 0.4, 0.52, [[("고객 시스템과 함께  ", 24, True, BLUE), ("새로 나타남", 24, True, INK)]], anchor=MID)
 CT, CB = 3.02, 9.24
-gw2 = (GWG - 0.60) / 2
-G1, G2 = MX + 0.20, MX + 0.40 + gw2
-BC, BCW = BXG + 0.20, BWG - 0.40
+G1, GCW = MX + 0.20, GWG - 0.40
+bw2 = (BWG - 0.60) / 2
+B1, B2 = BXG + 0.20, BXG + 0.40 + bw2
 KY, GY = 7.02, 8.28
-for x, w in ((G1, gw2), (G2, gw2), (BC, BCW)):
+for x, w in ((G1, GCW), (B1, bw2), (B2, bw2)):
     rect(s, x, CT, w, CB - CT, fill=WHITE, shape=RR)
     rect(s, x + 0.24, GY - 0.10, w - 0.48, 0.012, fill=LINE)
 
-
-def drive(s, x, y, w, h, slc=0.0, fill=GRAY_2, slc_fill=BLUE_T1):
-    """드라이브 슬롯 아이콘(세로 막대). slc = 위쪽 pSLC 영역 비율."""
-    rect(s, x, y, w, h, fill=fill, shape=RR)
-    if slc:
-        rect(s, x, y, w, h * slc, fill=slc_fill, shape=RR)
-
-
-# ---- ① Mixed Media: 캐시 SSD를 따로 사면 슬롯 +1, 한 드라이브 안 pSLC면 +0
-x, w = G1, gw2
-tb(s, x + 0.24, CT + 0.10, w - 0.4, 0.48, [("Mixed Media", 24, True, INK)], anchor=MID)
-for r, (lab, extra, slc, tag, hot) in enumerate([("캐시 SSD를 따로", True, 0.0, "슬롯 +1", False),
-                                                  ("한 드라이브 안에 pSLC", False, 0.24, "슬롯 +0", True)]):
-    ry = 3.78 + r * 1.52
-    tb(s, x + 0.24, ry, w - 0.4, 0.36, [(lab, 18, True, BLUE if hot else GRAY)])
-    for k in range(4):
-        drive(s, x + 0.30 + k * 0.46, ry + 0.42, 0.36, 0.88, slc=slc)
-    if extra:
-        drive(s, x + 0.30 + 4 * 0.46, ry + 0.42, 0.36, 0.88, fill=BLUE_T1)
-    tb(s, x + 2.66, ry + 0.42, w - 2.80, 0.88, [(tag, 20, True, BLUE if hot else GRAY)], anchor=MID)
-tb(s, x + 0.24, KY, w - 0.4, 0.70, [[("추가 슬롯 ", 22, True, BLUE), ("0", 44, True, BLUE), ("개", 22, True, BLUE)]], anchor=MID)
-tb(s, x + 0.24, KY + 0.72, w - 0.4, 0.40, [("24베이 서버에 pSLC 19.2TB", 18, False, GRAY)])
-
-# ---- ② 고용량: 같은 폼팩터에 다이 ×2, 고장 다이는 패리티로
-x, w = G2, gw2
+# ---- 그레이: 고용량 (같은 폼팩터에 다이 ×2, 고장 다이는 패리티로)
+x, w = G1, GCW
 tb(s, x + 0.24, CT + 0.10, w - 0.4, 0.48, [("고용량", 24, True, INK)], anchor=MID)
 OW, OH = 1.62, 2.45
-for k, (rows_, lab1, lab2, bad) in enumerate([(4, "245TB", "1,024 다이", None), (8, "512TB", "약 2,133 다이", (5, 2))]):
-    ox, oy = x + 0.30 + k * (OW + 0.40), 3.78
+ox0 = x + (w - (2 * OW + 0.36)) / 2
+for k, (rows_, lab1, bad) in enumerate([(4, "245TB", None), (8, "512TB", (5, 2))]):
+    ox, oy = ox0 + k * (OW + 0.36), 3.72
     rect(s, ox, oy, OW, OH, fill=WHITE, line=GRAY, lw=1.5, shape=RR)
     cols_ = 4
     cw_ = (OW - 0.30) / cols_ - 0.05
@@ -246,65 +224,95 @@ for k, (rows_, lab1, lab2, bad) in enumerate([(4, "245TB", "1,024 다이", None)
             fill = INK if (rr, cc) == bad else (BLUE_T2 if par else GRAY_2)
             rect(s, ox + 0.15 + cc * (cw_ + 0.05), oy + 0.15 + rr * (ch_ + 0.05), cw_, ch_, fill=fill)
     tb(s, ox - 0.1, oy + OH + 0.06, OW + 0.2, 0.36, [(lab1, 18, True, INK if k == 0 else BLUE)], align=C)
-if True:
-    tb(s, x + 0.24, 6.62, w - 0.4, 0.34, [[("■", 16, False, INK), (" 고장 다이  ", 16, False, GRAY), ("■", 16, False, BLUE_T2), (" 패리티", 16, False, GRAY)]], align=C)
+tb(s, x + 0.24, 6.62, w - 0.4, 0.34, [[("■", 16, False, INK), (" 고장 다이  ", 16, False, GRAY), ("■", 16, False, BLUE_T2), (" 패리티", 16, False, GRAY)]], align=C)
 tb(s, x + 0.24, KY, w - 0.4, 0.70, [[("다이 ", 22, True, BLUE), ("×2", 44, True, BLUE)]], anchor=MID)
 tb(s, x + 0.24, KY + 0.72, w - 0.4, 0.40, [("같은 폼팩터, 고장은 패리티로", 18, False, GRAY)])
 
-# ---- ③ 고DWPD: 왜 고객과 함께인가 (블록 그림) + 효과 (다이 수)
-x, w = BC, BCW
-tb(s, x + 0.24, CT + 0.10, w - 0.4, 0.48, [[("고DWPD", 24, True, INK), ("   2TB · 30 DWPD", 20, True, BLUE)]], anchor=MID)
+# ---- Blue ①: Mixed Media (네임스페이스 2개 + 호스트 배치 + 순차 destage)
+x, w = B1, bw2
+tb(s, x + 0.24, CT + 0.10, w - 0.4, 0.48, [[("Mixed Media", 24, True, INK), ("   pSLC + QLC 한 드라이브", 18, True, BLUE)]], anchor=MID)
+# 호스트가 데이터 종류별로 보낸다 → pSLC(위) · QLC(아래), pSLC에서 모아 순차로 내려보냄
+c1y, c2y = 3.70, 4.62
+label_box(s, x + 0.24, c1y, 2.30, 0.58, [("WAL · 메타데이터", 17, True, INK)], fill=BLUE_T2)
+label_box(s, x + 0.24, c2y, 2.30, 0.58, [("객체 · 데이터셋", 17, True, WHITE)], fill=GRAY_2)
+tb(s, x + 0.24, 5.16, 2.30, 0.30, [("고객 SW가 나눈다", 16, True, BLUE)], align=C)
+dx0, DW = x + 2.95, w - 3.20
+rect(s, dx0, 3.60, DW, 1.86, fill=WHITE, line=GRAY, lw=1.5, shape=RR)
+label_box(s, dx0 + 0.14, c1y, 1.00, 0.58, [("pSLC", 17, True, WHITE)], fill=BLUE_T1)
+tb(s, dx0 + 1.24, c1y - 0.02, DW - 1.34, 0.62, [("모아서", 16, True, BLUE), ("큰 순차 쓰기로", 16, True, BLUE)], anchor=MID, spacing=1.0)
+rect(s, dx0 + 0.50, c1y + 0.60, 0.28, 0.24, fill=BLUE, shape=MSO_SHAPE.DOWN_ARROW)
+label_box(s, dx0 + 0.14, c2y - 0.12, DW - 0.28, 0.98, [("QLC", 20, True, WHITE)], fill=GRAY_2)
+d.arrow_r(s, x + 2.58, c1y + 0.18, 0.34, 0.22, fill=BLUE_T1)
+d.arrow_r(s, x + 2.58, c2y + 0.18, 0.34, 0.22, fill=GRAY_2)
+# 데이터 ①: 쓰기 크기 분포 (Alibaba 블록 스토리지)
+tb(s, x + 0.24, 5.58, 2.9, 0.30, [("쓰기 크기 (클라우드 블록)", 16, False, GRAY)])
+rect(s, x + 0.24, 5.92, 2.80 * 0.75, 0.42, fill=BLUE_T1)
+rect(s, x + 0.24 + 2.80 * 0.75, 5.92, 2.80 * 0.25, 0.42, fill=GRAY_2)
+tb(s, x + 0.32, 5.92, 2.0, 0.42, [("16KiB 이하 75%", 16, True, WHITE)], anchor=MID)
+# 데이터 ②: 4KB 랜덤 쓰기 WAF (로그 축)
+wx0 = x + 3.35
+tb(s, wx0, 5.58, w - 3.6, 0.30, [("4KB 쓰기 WAF (로그)", 16, False, GRAY)])
+WMAX = w - 3.6 - 0.75
+for k, (nm, v, col, lab) in enumerate([("그대로", 70, GRAY_2, "70+"), ("모아서", 1.02, BLUE, "1.02")]):
+    yy = 5.92 + k * 0.42
+    ww = max(0.10, WMAX * (math.log10(v) + 0.3) / (math.log10(70) + 0.3))
+    tb(s, wx0, yy, 0.80, 0.36, [(nm, 16, k == 1, BLUE if k else INK)], anchor=MID)
+    rect(s, wx0 + 0.82, yy + 0.06, ww * 0.80, 0.26, fill=col)
+    tb(s, wx0 + 0.86 + ww * 0.80, yy, 0.8, 0.36, [(lab, 16, True, BLUE if k else INK)], anchor=MID)
+tb(s, x + 0.24, KY, w - 0.4, 0.70, [[("pSLC ", 22, True, BLUE), ("0.5~2%", 40, True, BLUE), ("  고객이 요구한 비율", 18, True, INK)]], anchor=MID)
+tb(s, x + 0.24, KY + 0.72, w - 0.4, 0.40, [("어떤 데이터가 작은 쓰기인지는 고객 SW만 압니다", 18, False, GRAY)])
+
+# ---- Blue ②: 고DWPD (블록 그림 + 다이 수)
+x, w = B2, bw2
+tb(s, x + 0.24, CT + 0.10, w - 0.4, 0.48, [[("고DWPD", 24, True, INK), ("   2TB · 30 DWPD", 18, True, BLUE)]], anchor=MID)
 SHORT, LONG = BLUE_T2, GRAY_2
 
 
-def block(s, bx, by, cells, cs=0.30, cols=4, gap=0.05):
+def block(s, bx, by, cells, cs=0.20, cols=4, gap=0.04):
     rows = len(cells) // cols
-    rect(s, bx - 0.08, by - 0.08, cols * (cs + gap) - gap + 0.16, rows * (cs + gap) - gap + 0.16, fill=WHITE, line=GRAY, lw=1.0)
+    rect(s, bx - 0.06, by - 0.06, cols * (cs + gap) - gap + 0.12, rows * (cs + gap) - gap + 0.12, fill=WHITE, line=GRAY, lw=1.0)
     for i, c in enumerate(cells):
         rect(s, bx + (i % cols) * (cs + gap), by + (i // cols) * (cs + gap), cs, cs, fill=c)
 
 
 mix = [SHORT, LONG, SHORT, LONG, LONG, SHORT, LONG, SHORT, SHORT, LONG, SHORT, LONG]
-CS = 0.26
-for r, (lab, hot) in enumerate([("SSD 혼자: 수명이 섞인다", False), ("고객이 수명을 알려 주면 (FDP)", True)]):
-    ry = 3.62 + r * 1.56
-    tb(s, x + 0.24, ry, 5.6, 0.36, [(lab, 18, True, BLUE if hot else GRAY)])
+for r, (lab, hot) in enumerate([("SSD 혼자: 수명이 섞인다", False), ("고객이 수명을 알려 주면", True)]):
+    ry = 3.62 + r * 1.36
+    tb(s, x + 0.24, ry, 3.6, 0.34, [(lab, 17, True, BLUE if hot else GRAY)])
     b1, b2 = (mix, mix[::-1]) if not hot else ([SHORT] * 12, [LONG] * 12)
-    block(s, x + 0.40, ry + 0.52, b1, cs=CS)
-    block(s, x + 1.86, ry + 0.52, b2, cs=CS)
-    t1, t2 = ("지울 때마다", "유효 데이터 복사") if not hot else ("블록 통째로 삭제", "복사 없음")
-    tb(s, x + 3.28, ry + 0.48, 2.05, 0.90, [(t1, 16, False, GRAY), (t2, 18, True, BLUE if hot else INK)], anchor=MID, spacing=1.0)
-    tb(s, x + 5.34, ry + 0.48, 0.92, 0.90, [("WAF", 16, False, GRAY), ("≈ 1" if hot else "≈ 3", 30, True, BLUE if hot else GRAY)], anchor=MID, spacing=1.0)
-tb(s, x + 0.24, 6.66, 6.0, 0.32, [[("■", 16, False, SHORT), (" 곧 지워질 데이터   ", 16, False, GRAY), ("■", 16, False, LONG), (" 오래 남을 데이터", 16, False, GRAY)]])
-# 구분선 + 효과 막대
-rect(s, x + 6.28, 3.62, 0.012, 3.30, fill=LINE)
-ex = x + 6.45
-tb(s, ex, 3.62, w - 6.6, 0.62, [("필요한 다이 수", 18, True, INK), ("2TB · 30 DWPD · 5년", 16, False, GRAY)], spacing=1.0)
+    block(s, x + 0.34, ry + 0.46, b1)
+    block(s, x + 1.48, ry + 0.46, b2)
+    tb(s, x + 2.62, ry + 0.38, 1.10, 0.76, [("WAF", 16, False, GRAY), ("≈ 1" if hot else "≈ 3", 26, True, BLUE if hot else GRAY)], anchor=MID, spacing=1.0)
+tb(s, x + 0.24, 6.40, 3.7, 0.30, [[("■", 16, False, SHORT), (" 곧 지울  ", 16, False, GRAY), ("■", 16, False, LONG), (" 오래 둘 데이터", 16, False, GRAY)]])
+rect(s, x + 3.80, 3.62, 0.012, 3.10, fill=LINE)
+ex = x + 3.92
+tb(s, ex, 3.62, w - 4.1, 0.62, [("필요한 다이 수", 17, True, INK), ("2TB · 30 DWPD · 5년", 16, False, GRAY)], spacing=1.0)
 EB, EH = 6.50, 1.70
 for k, (lab, v, col) in enumerate([("SSD 혼자", 120, GRAY_2), ("고객과 함께", 47, BLUE)]):
-    bx = ex + 0.20 + k * 1.30
+    bx = ex + 0.12 + k * 1.05
     h = EH * v / 120
-    rect(s, bx, EB - h, 0.78, h, fill=col)
-    tb(s, bx - 0.25, EB - h - 0.38, 1.28, 0.36, [(f"약 {v}", 18, True, BLUE if k else INK)], align=C)
-    tb(s, bx - 0.30, EB + 0.04, 1.38, 0.34, [(lab, 16, False, GRAY)], align=C)
-tb(s, x + 0.24, KY, w - 0.4, 0.70, [[("다이 ", 22, True, BLUE), ("-60%", 44, True, BLUE), ("   데이터가 언제 지워질지는 고객 소프트웨어만 압니다", 20, True, INK)]], anchor=MID)
-tb(s, x + 0.24, KY + 0.72, w - 0.4, 0.40, [("같은 SLC 모드, WAF 3 → 1만으로", 18, False, GRAY)])
+    rect(s, bx, EB - h, 0.66, h, fill=col)
+    tb(s, bx - 0.25, EB - h - 0.36, 1.16, 0.34, [(f"약 {v}", 17, True, BLUE if k else INK)], align=C)
+    tb(s, bx - 0.30, EB + 0.04, 1.26, 0.30, [(lab, 16, False, GRAY)], align=C)
+tb(s, x + 0.24, KY, w - 0.4, 0.70, [[("다이 ", 22, True, BLUE), ("-60%", 40, True, BLUE), ("  같은 SLC 모드에서", 18, True, INK)]], anchor=MID)
+tb(s, x + 0.24, KY + 0.72, w - 0.4, 0.40, [("데이터가 언제 지워질지는 고객 SW만 압니다", 18, False, GRAY)])
 
 # ---- 카드 아래: 신호(▲ 확대 · ▼ 축소)
-for (x, w), (up, dn) in zip(((G1, gw2), (G2, gw2), (BC, BCW)),
-                            (("▲ 내용연수 연장", "▼ 그린필드 증설"), ("▲ 착공 지연", "▼ 전력망 완화"),
+for (x, w), (up, dn) in zip(((G1, GCW), (B1, bw2), (B2, bw2)),
+                            (("▲ 착공 지연 · 랙 전력 ↑", "▼ 전력망 완화"),
+                             ("▲ 고객 RFQ에 영역 비율 요구", "▼ 직접 쓰기 QLC 확산"),
                              ("▲ 고객 RFQ의 30 DWPD 요구", "▼ KV 압축 확산"))):
     tb(s, x + 0.24, GY, w - 0.4, 0.90, [(up, 18, True, BLUE), (dn, 18, False, GRAY)], spacing=1.1)
 
 d.band(s, 9.60, 0.80, "결론", "SSD 안에서 풀 수 있는 것은 지금처럼 잘하고, 새로 나타난 과제는 다르게 풉니다")
-d.footer(s, "다이 수: 1Tb TLC 환산, SLC 모드 P/E 6만, WAF 3 → 1, 이론 비트/셀 비(파생 산술) · WAF ≈ 3 → ≈ 1: FDP 범용 실측 · CacheLib 3.22 → 1.03(EuroSys'25) · "
-            "pSLC 19.2TB = 800GB × 24베이(DapuStor 비율) · 다이 ×2: 245TB 1,024개 → 512TB 약 2,133개 · 30 DWPD 요구는 [사내 확인] · 선례: DapuStor · Kioxia(혼합 매체)")
+d.footer(s, "Mixed Media: 네임스페이스 2개 · 고객 요구 pSLC 0.5~2%(Kioxia FMS 2025 · 2026), 쓰기 75%가 16KiB 이하(Alibaba 블록 스토리지), WAF 70+ → 1.02(CSAL 백서, 별도 캐시 드라이브 구성) · "
+            "고DWPD: 1Tb TLC 환산, SLC 모드 P/E 6만, WAF 3 → 1(파생 산술), 30 DWPD 요구는 [사내 확인] · 고용량: 245TB 1,024개 → 512TB 약 2,133개 다이")
 d.notes(s, "2장입니다. 지금 보이는 신호에 맞춰 준비할 기술을 두 묶음으로 나눴습니다. "
-        "왼쪽 회색은 SSD 안에서 풀 수 있는 기술입니다. Mixed Media는 캐시 SSD를 따로 사면 슬롯이 하나 더 필요하지만, 드라이브 안에 pSLC 영역을 두면 슬롯이 늘지 않습니다. 24베이 서버라면 19.2테라바이트의 빠른 영역을 추가 슬롯 없이 얻습니다. "
-        "고용량은 같은 폼팩터에 다이를 두 배 담고, 늘어난 다이의 고장은 패리티로 견딥니다. 이 두 기술은 지금 하던 방식으로 잘하면 됩니다. "
-        "오른쪽 파란색은 새로 나타난 과제, 고DWPD입니다. SSD 혼자서는 곧 지워질 데이터와 오래 남을 데이터가 한 블록에 섞여, 블록을 지울 때마다 유효 데이터를 옮겨 써야 하고 WAF가 3 근처에 머뭅니다. "
-        "고객이 데이터의 수명을 알려 주면 수명이 같은 데이터끼리 모아 블록을 통째로 지울 수 있어 WAF가 1에 가까워집니다. "
-        "2테라바이트 30 DWPD 제품을 같은 SLC 모드로 만들 때, 이것만으로 필요한 다이가 약 120개에서 47개로 60퍼센트 줄어듭니다. 데이터가 언제 지워질지는 고객 소프트웨어만 압니다. 그래서 이 과제는 고객과 함께 풀어야 합니다. "
+        "왼쪽 회색은 SSD 안에서 풀 수 있는 고용량입니다. 같은 폼팩터에 다이를 두 배 담고, 늘어난 다이의 고장은 패리티로 견딥니다. 지금 하던 방식으로 잘하면 됩니다. "
+        "오른쪽 파란색은 새로 나타난 과제 두 가지입니다. 첫째, Mixed Media입니다. 핵심은 QLC에 캐시를 붙이는 것이 아니라, 한 드라이브 안에 빠른 pSLC 영역과 큰 QLC 영역을 별도 네임스페이스로 두고, 고객 소프트웨어가 WAL이나 메타데이터 같은 작은 쓰기는 pSLC로, 객체나 데이터셋은 QLC로 직접 보내는 것입니다. "
+        "클라우드 블록 스토리지에서는 쓰기의 75퍼센트가 16킬로바이트 이하입니다. 이런 작은 랜덤 쓰기를 QLC에 그대로 쓰면 WAF가 70을 넘을 수 있지만, 빠른 계층에 모았다가 큰 순차 쓰기로 내리면 1.02까지 내려갑니다. 이 수치는 별도 캐시 드라이브를 쓴 Alibaba 사례라 한 드라이브 안의 실측은 아닙니다. "
+        "고객이 Kioxia에 요구한 pSLC 비율은 QLC 용량의 0.5에서 2퍼센트입니다. QLC 셀을 pSLC로 쓰면 용량이 4분의 1이 되기 때문에, 비율을 작게 맞추는 것이 중요하고, 어떤 데이터가 작은 쓰기인지는 고객 소프트웨어만 압니다. 그래서 고객과 함께 정해야 합니다. 성능 계층 SSD를 따로 두는 슬롯 비용도 줄어듭니다. "
+        "둘째, 고DWPD입니다. SSD 혼자서는 곧 지워질 데이터와 오래 남을 데이터가 한 블록에 섞여 WAF가 3 근처에 머뭅니다. 고객이 수명을 알려 주면 WAF가 1에 가까워지고, 2테라바이트 30 DWPD 제품의 다이가 약 120개에서 47개로 60퍼센트 줄어듭니다. "
         "카드 아래는 신호입니다. 위 삼각형이 보이면 비중을 늘리고, 아래 삼각형이 보이면 줄입니다.")
 
 # =============================================================== 3 당위성
@@ -352,7 +360,7 @@ BOT = 9.40
 steps = [  # x, w, top, fill, step name, years, metric, metric sub, state chip
     (MX, 5.55, 6.20, PALE, "NAND → SSD", "1991~", "ECC 약 60배", "셀 오류율 약 100만 배 ↑를 흡수", "완결"),
     (MX + 5.75, 5.90, 5.62, PALE, "SSD 혼자 최적화", "2014~2019", "WAF ≈ 3", "데이터 수명을 추정만 할 수 있었다", "부분 성공"),
-    (MX + 11.85, 6.57, 2.96, BLUE, "고객 시스템과 공동 설계", "2022~", "WAF 3.22 → 1.03", "데이터 수명은 고객 시스템만 안다", "다음 칸"),
+    (MX + 11.85, 6.57, 2.96, BLUE, "고객 시스템과 공동 설계", "2022~", "WAF 3.22 → 1.03", "데이터의 종류 · 수명은 고객 시스템만 안다", "다음 칸"),
 ]
 for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
     hot = fill == BLUE
@@ -509,7 +517,7 @@ tb(s, cxf, NOW_Y, CWF, 0.36, [("필요한 기술", 18, True, BLUE)], align=C)
 layers = [("AI DC 운영", "없음", "off", "TCO · 추론 SLO", BLUE),
           ("KV 캐시 SW", "LMCache", "part", "Dynamo · Mooncake", BLUE),
           ("커널 · I/O", "일부", "part", "io_uring · NIXL", BLUE),
-          ("SSD FW", "강점", "on", "FDP · WAF 텔레메트리", BLUE_T1),
+          ("SSD FW", "강점", "on", "FDP · NS QoS · destage", BLUE_T1),
           ("NAND", "강점", "on", "", BLUE_T2)]
 RY3, RP3, RH3 = NOW_Y + 0.44, 0.70, 0.60
 for r, (nm, now_t, st, need, col) in enumerate(layers):

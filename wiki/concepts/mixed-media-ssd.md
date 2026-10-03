@@ -2,6 +2,8 @@
 type: concept
 last_reviewed: 2026-10-03
 sources:
+  - sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md
+  - sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md
   - sources/articles/ssd-mixed-media-infra-reuse-2026-10.md
   - sources/articles/wcssd-v1-high-dwpd-configurable-2026-09.md
 ---
@@ -11,6 +13,58 @@ sources:
 **Mixed Media SSD**는 QLC로 출하하되 용량의 일부를 SLC(또는 TLC) 모드 영역으로 쓸 수 있게 한 드라이브다. 고객은 별도의 캐시 · 고내구 드라이브를 추가하지 않고 **기존 서버 슬롯 · 전력 · 냉각 안에서** 빠른 영역과 큰 영역을 함께 얻는다. 구성 시점의 경계는 [ssd-configurability-boundary.md](ssd-configurability-boundary.md), SLC 모드 P/E와 비용 비율은 [high-dwpd-operating-point.md](high-dwpd-operating-point.md)에 있다.
 
 > 출처 원장은 [ssd-mixed-media-infra-reuse-2026-10.md](../../sources/articles/ssd-mixed-media-infra-reuse-2026-10.md)(이하 **원장**)다. ✅는 Microsoft IR · Google Cloud 블로그 · GitHub(SPDK · libnvme · nvme-cli · Linux · QEMU) 원문에만 붙었다.
+
+## 0. 재정의 (2026-10-03): 캐시가 아니라 "두 영역에 호스트가 직접 배치"하는 드라이브, 그래서 고객 협력 과제
+
+사용자 분석([원본 메모](../../sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md))과 검증 원장 [ssd-mixed-media-hyperscaler-logic-2026-10.md](../../sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md)(MX)에 따라 논지를 고쳐 쓴다. **핵심은 "QLC에 캐시를 붙여 성능을 높인다"가 아니라, 한 SSD 안에서 고성능 · 고내구 영역(pSLC)과 초고용량 · 저비용 영역(QLC)을 별도 네임스페이스로 나누고 고객 소프트웨어가 데이터 종류에 따라 직접 배치하는 것**이다.
+
+### 0.1 왜: 데이터센터 쓰기에는 두 종류가 섞여 있다
+
+| 데이터 특성 | 예 | 맞는 매체 | 근거 |
+|---|---|---|---|
+| 작은 랜덤 쓰기, 잦은 갱신 | WAL · 저널 · 메타데이터 · 인덱스 | pSLC | Alibaba · Tencent 블록 스토리지 볼륨의 **91.5% · 92.3%가 쓰기 우세**, Alibaba 쓰기의 **75%가 16KiB 이하** (MX-60~MX-62 🟡) |
+| 지연에 민감한 쓰기 | GC 메타데이터 · 쓰기 버퍼 | pSLC | Kioxia "Different IO flows drive customer needs: small random vs large sequential writes, metadata vs user data" (MX-01 🟡) |
+| 큰 순차 쓰기 · 읽기 위주 | 객체 · Blob · AI 데이터셋 · 모델 | QLC | Solidigm: QLC는 AI/ML 데이터 레이크 · CDN, caching · logging · journaling은 SLC급(MX-14 🟡) |
+
+**반증 주의**: KV 캐시 오프로드는 128KiB 요청 · 읽기 지배(읽기 2.0GiB/s 대 쓰기 11MiB/s), 체크포인트는 큰 쓰기 버스트다. "KV 캐시 · 체크포인트 = 작은 핫 쓰기 → pSLC"라는 분류는 공개 데이터와 맞지 않는다(MX-77 · X-01 · DT-20). AI 데이터 중 pSLC 후보는 메타데이터 · 인덱스 · 로그다.
+
+### 0.2 메커니즘: pSLC의 가치는 내구성보다 "QLC에 들어가는 쓰기의 모양을 바꾸는 것"
+
+- QLC는 매핑 단위(IU)가 커서(16~64KB) 4KB 랜덤 쓰기가 들어오면 읽기-수정-쓰기와 GC가 겹친다. IU 산술 하한만 64KB IU에서 16배, 16KB IU에서 4배다(MX-21 ⚠️ 파생). Kioxia: "Random IO performance is the driving factor for Mixed Mode", "IU size only matters for random write"(MX-03 🟡).
+- **작은 쓰기를 빠른 계층에 모았다가 큰 순차 쓰기로 QLC에 내리면 WAF가 크게 준다**: CSAL 백서 "4KB 랜덤 쓰기 WAF가 70 이상에서 1.02로"(MX-11 🟡, 단일 요약). 단 이 수치는 **별도 캐시 드라이브(Optane) + QLC 드라이브를 호스트 FTL로 묶은 구성**이고, WAF를 SMART 호스트 기록 기준으로 셌을 수 있다(MX-17). 한 드라이브 안의 실측은 아직 없다.
+- 꼬리 지연: QLC 프로그램 2~3ms 대 SLC 50~220µs, Alibaba FAST'26에서 GC로 p99.9 > 1ms(✅), CSAL 포화 4K 쓰기 예시 p99 4.0ms · p99.99 501ms(✅ 예시 출력). 한 혼합 드라이브의 p99.9 이상 실측은 공개되지 않았다(MX-30~MX-37).
+
+### 0.3 경제성: pSLC는 작게, 비율은 고객이 정한다
+
+- QLC 셀을 pSLC로 쓰면 비트가 1/4(실제 전환비 5 : 1, DapuStor). **Kioxia가 받은 고객 요구(VoC)는 "pSLC = 최대 QLC 용량의 0.5~2%"**(MX-01 🟡). 이때 사용자 용량 손실은 (k − 1) × p = 약 1.5~8%(k = 4~5, MX-41 ⚠️). Kioxia 구성 예시 1:8 · 1:4 · 1:2(pSLC : QLC)는 손실이 25% 이상이라 "1:4가 좋은 출발, 1:2는 이점 제한"(MX-42 🟡).
+- **슬롯 비용(Slot Tax)**: Kioxia Klemm "SLC SSD가 드라이브 슬롯을 통째로 차지해 전체 용량을 줄인다", 혼합 모드로 FRU 감소 · PCIe 레인 균형(MX-02 🟡). 예: TLC 2 + QLC 8 → 혼합 8이면 슬롯 2개 절약, 대신 pSLC 1%면 QLC 용량 4~5%, TLC 용량만큼이면 12.5~15.6%를 낸다(MX-54 ⚠️ 산술). 하이퍼스케일러 · 벤더의 혼합 대 분리 TCO 수치는 여전히 없다(EC-11).
+- 가장 가까운 선례: Pure FlashArray//XL이 전용 NVRAM 슬롯 2~4개를 없애고 NVRAM을 플래시 모듈에 분산(MX-52 🟡).
+
+### 0.4 왜 고객 협력 과제인가 (분류 변경: "SSD 안에서" → "고객 시스템과 함께")
+
+1. **배치 결정이 고객 소프트웨어에 있다**: 어떤 쓰기가 WAL · 메타데이터인지는 호스트만 안다. 상용 혼합 매체는 예외 없이 호스트 소프트웨어가 매체를 묶었다(CD-01: CSAL · RST · VAST · Colossus). Kioxia · DapuStor도 "보이지 않는 캐시가 아니라 호스트가 주소를 지정하는 영역"(네임스페이스)으로 발표했다(MM-06 · CD-04).
+2. **pSLC 비율은 고객 워크로드로 정한다**: Kioxia "배치별 맞춤 비율", VoC 0.5~2%(MX-01 · MX-75). 비율이 크면 QLC $/TB를 잃고, 작으면 지속 쓰기에서 넘친다.
+3. **QLC 영역의 GC는 수명 정보로 줄인다**: QLC 네임스페이스에 FDP 배치 핸들(수명별 RUH)을 쓰면 pSLC가 쓰기 충격을 흡수하고 FDP가 QLC 내부 GC를 줄이는 분업이 된다. 이 결합은 Kioxia 출처로는 확인되지 않았고 Solidigm CSAL(시스템 수준)의 FDP 구현 계획에서 나온다(MX-12 · ST-12).
+4. **한계**: 하이퍼스케일러가 pSLC 네임스페이스를 요구했다는 공개 기록은 없다(NG-01, U-12 미확인).
+
+### 0.5 SSD 안에서 준비할 기술 (컨트롤러 경쟁점, ⚠️ 전망)
+
+| 기술 | 내용 |
+|---|---|
+| pSLC → QLC destage 정책 | 작은 쓰기를 모아 IU · 슈퍼블록 단위 순차 쓰기로, 유휴 시간 활용 |
+| 네임스페이스별 QoS 격리 | pSLC NS 지연이 QLC NS의 GC · destage에 흔들리지 않게(다이 수준 격리, DapuStor F-43) |
+| GC 간섭 차단 · 자원 예약 | 토큰 · 다이 · 채널 예약으로 p99.9 이상 꼬리 지연 억제 |
+| FDP 연동 | QLC NS의 RUH와 destage 스트림 정렬 |
+| pSLC 크기 결정 · 텔레메트리 | 영역별 마모 · 넘침 · destage 지연 지표를 호스트에 노출 |
+
+### 0.6 사용자 분석의 출처 귀속 정정
+
+| 사용자 분석 문구 | 검증 결과 |
+|---|---|
+| "Kioxia가 2026년 9월 공개한 mixed-media SSD" | 부분 확인: Kioxia 발표는 FMS 2025(2025-08) · FMS 2026(2026-08). 2026-09 공개물은 찾지 못함 |
+| "Kioxia 예시 pSLC 약 1~6%" | 미확인: Kioxia 수치는 VoC 0.5~2%, 구성 비 1:8 · 1:4 · 1:2 |
+| "Kioxia가 mixed media + FDP 결합을 설명" | 미확인: 결합은 Solidigm CSAL(시스템 수준) 쪽 |
+| "Solidigm: 쓰기를 모아 QLC WAF ≈ 1" | 확인(🟡), 단 별도 드라이브 구성 |
 
 ## 1. 수요 논지와 근거의 범위
 
@@ -31,7 +85,7 @@ sources:
 - 하이퍼스케일러가 "인프라 재사용 때문에 **한 드라이브 안의 혼합 매체**를 원한다"고 말한 공개 기록은 **없다**(원장 NG-01). 지금 하이퍼스케일러의 혼합 매체는 모두 **시스템 수준**(서버 · 드라이브는 매체별로 나뉘고 소프트웨어가 묶음)이다.
 - 반대 방향도 있다: 컴퓨트는 랙 스케일 scale-up(NVL72 등)과 신규 캠퍼스로 가고, Amazon은 AI · ML 서버 일부의 내용연수를 6 → 5년으로 줄였다(🟡). Sandisk UltraQLC는 SLC 버퍼를 아예 없앴다(🟡).
 
-→ 따라서 Mixed Media는 **고객과 함께 가치를 검증해야 하는 가설형 기술**이다. 이것이 공동 설계가 필요한 첫째 이유다.
+→ 따라서 Mixed Media는 **고객과 함께 가치를 검증해야 하는 가설형 기술**이다. 이것이 공동 설계가 필요한 첫째 이유다. (2026-10-03: §0.4에 따라 전략 분류를 "고객 시스템과 함께"로 옮겼다.)
 
 ## 2. 지금 있는 것: 장치 수준과 시스템 수준
 
@@ -95,3 +149,4 @@ sources:
 - 보고서: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md)
 - 추가 솔루션 후보 평가(보안 · 신뢰 · 재사용, GPU 직결 고IOPS, 전력 · 냉각): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)
 - 데이터센터 유형별 스토리지 요구(범용 · AI 학습 · AI 추론 · 에이전트): [datacenter-types-storage-requirements.md](datacenter-types-storage-requirements.md)
+- 검증 원장(하이퍼스케일러 논리 · 출처 정정): [ssd-mixed-media-hyperscaler-logic-2026-10.md](../../sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md)

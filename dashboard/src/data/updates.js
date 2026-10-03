@@ -17,6 +17,24 @@ export const UPDATES = [
   {
     date: '2026-10-03',
     type: 'build',
+    version: 'v2.46.56',
+    title: 'Mixed Media를 고객 협력 과제로 재분류: 네임스페이스 2개 · 호스트 배치 · 순차 destage 논리 보강 (덱 v1.2 · 보고서 v1.3)',
+    summary:
+      '사용자 분석(하이퍼스케일러가 Mixed Media SSD를 원하는 이유)을 원본으로 보존하고 검증했다. 메커니즘(작은 쓰기를 pSLC에 모아 큰 순차 쓰기로 QLC에, WAF 저감, 슬롯 비용)은 근거가 있고, Kioxia 출처 귀속 3건은 미확인으로 정정했다. 위키 mixed-media-ssd §0 신설, 덱 2장 Blue 묶음 이동(패치 v2.46.56).',
+    tags: ['Mixed Media', 'pSLC', 'QLC', 'WAF', '네임스페이스', '고객 협력', 'Kioxia', 'CSAL'],
+    items: [
+      { label: '원장', detail: 'ssd-mixed-media-hyperscaler-logic-2026-10.md(MX): 주장 16건 판정, 쓰기 75% ≤ 16KiB, WAF 70+ → 1.02(별도 드라이브), 고객 요구 pSLC 0.5~2%, Slot Tax' },
+      { label: '원본 보존', detail: 'sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md' },
+      { label: '위키', detail: 'mixed-media-ssd.md §0 재정의: 두 종류 쓰기 · 쓰기 경로 · WAF · pSLC 비율 · 슬롯 비용 · 고객 협력 근거 · 컨트롤러 경쟁점 · 출처 정정' },
+      { label: '덱 2장', detail: '그레이 = 고용량, Blue = Mixed Media + 고DWPD' },
+    ],
+    links: [
+      { label: 'wiki/concepts/mixed-media-ssd.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/mixed-media-ssd.md' },
+    ],
+  },
+  {
+    date: '2026-10-03',
+    type: 'build',
     version: 'v2.46.55',
     title: '고객 협력 전략 덱 v1.1 · 보고서 v1.2: SCADA 제외, 데이터센터 유형별 스토리지 요구, 고객 측 고DWPD 근거, 디자인 스킬 v2.1',
     summary:
