@@ -93,4 +93,5 @@ P = 21,662 ppm(5년), k = 16, L = 5년, T = 재구축 1시간 가정.
 - 덱: `outputs/presentation/qlc-ssd-strategy.pptx` **2장**(v7.0) — 요구 곡선 · **수율 상충 사슬**(선별 강화 → 수율 하락 → 원가 상승) · 보호 구조 도해 · 245/512TB 판정 카드
 - 보고서: [qlc-ssd-strategy-report.md](../../outputs/report/qlc-ssd-strategy-report.md) 2장
 - 둘째 축: [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
+- 고용량과 결함 허용의 공동 설계(고장 LBA 재구축 · 용량 축소 · 보호 분담, 재구축 시간 산술): [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md)
 - 삼성 과제: 스트라이프 재설계(패리티·예비 비율의 재최적화), FIP 감량 정책과 텔레메트리 필드의 OCP 규격 제안

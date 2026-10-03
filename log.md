@@ -2289,3 +2289,15 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - Research Agent 2건 병렬 착수. 이 항목은 그중 고용량 축: 신규 원장 `sources/articles/ssd-high-capacity-rackspace-fault-tolerance-2026-10.md`. 벤더·뉴스·OCP·NVMe 사이트 대부분 프록시 차단 → ✅는 GitHub 오픈소스 코드(libnvme · nvme-cli · Linux · QEMU · sg3_utils)와 Microsoft Research PDF 3건 · Google Cloud 블로그 2건만
 - 기존 원장과의 충돌 2건 기록: 삼성 BM1773 재확인 실패, PM1733 Fail-in-Place "플레인 4GB · 다이 8GB" 단위 재확인 실패(30.72TB ÷ 512다이 ≈ 60GB와 불일치). 새 보고서에서는 두 사실을 핵심 근거로 쓰지 않는다
 - Mixed Media 축 원장은 수집 중. 보고서 · 위키 · 아웃라인은 두 원장이 모인 뒤 작성
+
+## [2026-10-03] ingest | Mixed Media · 인프라 재사용 원장 수집
+- 전략 방향 조정의 Mixed Media 축: 신규 원장 `sources/articles/ssd-mixed-media-infra-reuse-2026-10.md`(§1 인프라 재사용 IR · §2 제품 선례 MM · §3 NVMe 규격 ST · §4 경제성 EC · §5 공동 설계 CD · §6 반대 근거 NG)
+- ✅는 Microsoft IR · Google Cloud 블로그 · GitHub 원문(SPDK · libnvme · nvme-cli · Linux · QEMU)에만. Microsoft 서버 4 → 6년 · 건물 15 → 25년(FY27), Google fungible DC 원칙, FDP RUH에 매체 필드 없음, NVMe 2.3 CDP에 매체 모드 없음
+- 정직하게 남긴 공백: 하이퍼스케일러가 "인프라 재사용 때문에 단일 드라이브 혼합 매체"를 원한다는 공개 진술 없음(NG-01), 삼성 공개 pSLC 영역 제품 없음(NG-02), QLC의 TLC 모드 영역 제품 없음(NG-03) → Mixed Media는 고객과 검증할 가설형 기술로 둔다
+
+## [2026-10-03] build | 어떤 미래에도 대응하는 SSD 기술 전략: 보고서 v1.0 · 위키 2종 · 3장 아웃라인 제안 (dashboard v2.46.51)
+- 사용자 지시: KV 캐시 고DWPD는 중요하지만 부분일 뿐(커질 수도, 곧 사라질 수도) → 개발실은 모든 시나리오에 대응할 기술을 준비하고 일부는 고객 협력이 필요하다는 방향으로 조정. 고DWPD · Mixed Media(QLC + SLC/TLC 영역, 기존 인프라 활용) · 고용량(랙 공간 가치 상승, 다이 수 증가에 따른 결함 허용)을 미리 준비하고, 세 기술 모두 시스템 공동 설계로 시너지
+- 위키 신설: `wiki/concepts/mixed-media-ssd.md`, `wiki/concepts/high-capacity-fault-tolerance.md`(245TB = 다이 1,024개, 재구축 21.5시간 대 고장 다이만 13분 ⚠️ 파생, Get LBA Status · 용량 축소 명령 부재 · OCP 다이 필드). 역링크 7곳(high-dwpd-operating-point · ssd-die-reliability-ppm · ssd-configurability-boundary · qlc-ssd-market · fdp-placement-mechanics · energy-constraints · ai-datacenter-buildout)
+- 보고서 `outputs/report/ssd-future-ready-strategy-report.md` v1.0: 세 신호 → 세 기술 → 시나리오 A~E 대응표, 기술별 "SSD 안에서 / 고객과 함께 / 선례 / 갭", 공통 플랫폼(배치 정보 · 구성 가능성 · 텔레메트리), 실행(기술별 공동 설계 의제 · 계약 · 사람 · 역량 · RS-9 신호 게이트 · 90일 · KPI), 리스크, 근거 대장 F-1~F-18
+- 아웃라인 `outputs/presentation/ssd-future-ready-strategy-outline.md` 제안 v0.1(승인 대기, 질문 4건). 덱은 승인 후 제작
+- 미재확인 2건(BM1773, PM1733 FIP 단위)은 핵심 근거에서 제외. index.md 등록, 지식 그래프 재생성(노드 118 · 엣지 641 · 고아 0) → **dashboard v2.46.51(패치)**, updates.js 항목

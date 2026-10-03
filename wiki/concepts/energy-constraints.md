@@ -181,3 +181,7 @@
 - **냉각-성능 결합**: 전면 액체냉각(칩·케이블·변압기까지), "칩을 뜨겁게 돌릴수록 메모리 대역폭·FLOPS↑" — 냉각 효율이 인텔리전스 생산량과 직결. 물은 폐루프 재활용으로 소비 미미.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+## 연결 (2026-10-03 추가)
+
+- 전력 · 건설 제약이 랙 공간의 가치를 올리고, 그것이 고용량 SSD의 가치를 올리는 경로: [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md) §1

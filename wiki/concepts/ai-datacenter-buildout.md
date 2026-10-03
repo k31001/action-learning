@@ -151,3 +151,7 @@ EWI 후보: ① 분기별 신규 착공 GW, ② 병목 단계(②·⑤·⑦) 적
 - **자체 칩 투입 예고**: SoftBank Energy와 웜셸 공동 설계 후 **자체 칩(Jalapeño — 와트당 토큰 최적화, Broadcom 협력, 9개월 설계→테이프아웃)** 운영 계획 — DC 파이프라인의 칩 믹스에 커스텀 ASIC 비중 확대 신호. 커스텀 ASIC+HBM 어태치 흐름은 이창수 인터뷰의 "브로드컴·ASIC 생태계 재편"과 수렴.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+## 연결 (2026-10-03 추가)
+
+- 전력 · 건설 제약이 랙 공간의 가치를 올리고, 그것이 고용량 SSD의 가치를 올리는 경로: [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md) §1

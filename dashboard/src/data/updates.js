@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-03 ─────────────────────────────────────────────────────────────
+  {
+    date: '2026-10-03',
+    type: 'build',
+    version: 'v2.46.51',
+    title: '전략 방향 조정: 어떤 미래에도 대응하는 SSD 기술 전략 (고DWPD · Mixed Media · 고용량 + 고객 공동 설계)',
+    summary:
+      'KV 캐시 고DWPD 단일 베팅에서 세 기술을 미리 준비하는 포트폴리오로 방향을 조정했다. 신규 위키 2종(Mixed Media SSD, 고용량 SSD 결함 허용)과 원장 2종을 바탕으로 전략 보고서 v1.0과 3장 아웃라인(승인 대기)을 작성. 위키 링크 변경으로 지식 그래프 재생성(패치 v2.46.51).',
+    tags: ['SSD 전략', '고DWPD', 'Mixed Media', '고용량', '결함 허용', '공동 설계', '지식 그래프'],
+    items: [
+      { label: '신규 위키 2종', detail: 'wiki/concepts/mixed-media-ssd.md(인프라 재사용 근거 · 장치/시스템 수준 선례 · 슬롯 경제성 · SSD 안 기술 · 호스트 공동 설계 · 규격 제안 자리), wiki/concepts/high-capacity-fault-tolerance.md(랙 공간 가치 · 다이 수와 재구축 시간 · 다이 패리티 · Fail-in-Place · Get LBA Status · 용량 축소)' },
+      { label: '원장 수집', detail: 'sources/articles/ssd-mixed-media-infra-reuse-2026-10.md(서버 내용연수 · fungible DC · 혼합 매체 선례 · NVMe 규격 · 반대 근거)' },
+      { label: '전략 보고서 v1.0', detail: 'outputs/report/ssd-future-ready-strategy-report.md: 세 신호 → 세 기술 → 시나리오 A~E 대응 → 기술별 공동 설계 의제 · 계약 · 사람 · 역량 · 신호 게이트 · 90일' },
+      { label: '지식 그래프 재생성', detail: '노드 118 · 엣지 641 · 고아 0' },
+    ],
+    links: [
+      { label: 'outputs/report/ssd-future-ready-strategy-report.md', href: 'https://github.com/k31001/action-learning/blob/main/outputs/report/ssd-future-ready-strategy-report.md' },
+      { label: 'wiki/concepts/mixed-media-ssd.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/mixed-media-ssd.md' },
+      { label: 'wiki/concepts/high-capacity-fault-tolerance.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/high-capacity-fault-tolerance.md' },
+    ],
+  },
   // ── 2026-09-29 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-09-29',

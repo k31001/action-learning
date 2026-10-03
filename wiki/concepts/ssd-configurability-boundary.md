@@ -106,3 +106,4 @@ sources:
 - 배치 핸들 개수와 플랫폼 전략: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) §2.6
 - 역량 단계(디바이스 → 워크로드 최적화 → co-design): [qlc-workload-capability-phases.md](../strategies/qlc-workload-capability-phases.md)
 - 운영점 곡선의 반대쪽 끝(QLC 대용량 계층): [qlc-ssd-market.md](qlc-ssd-market.md)
+- 이 경계를 쓰는 두 기술: [mixed-media-ssd.md](mixed-media-ssd.md)(영역 비율은 출하 시 구성) · [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md)(NVMe에 용량 축소 명령이 없음)

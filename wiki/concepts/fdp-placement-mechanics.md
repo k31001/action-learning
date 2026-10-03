@@ -62,4 +62,5 @@ NAND는 페이지 단위로 쓰고 **블록 단위로 지운다**. 한 블록 �
 - 뒷 장: [waf-runtime-response.md](waf-runtime-response.md) (④가 일어났을 때의 대응)
 - WAF 1이 무엇을 여는가: [high-dwpd-operating-point.md](high-dwpd-operating-point.md) §5 — WAF 1이면 범용 TLC의 SLC 모드(6만 P/E급)로 기본 OP만 두고 30 DWPD에 닿는다
 - 배치 핸들을 언제 정하고 언제 바꾸나: [ssd-configurability-boundary.md](ssd-configurability-boundary.md) — FDP 구성은 출하 시, 쓰기별 배치는 운영 중
+- 배치 핸들과 매체 영역: [mixed-media-ssd.md](mixed-media-ssd.md) — FDP RUH에는 매체 유형 필드가 없어, SLC 영역은 별도 엔듀런스 그룹의 네임스페이스로 쓴다
 - 배치 핸들 개수: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) §2.6
