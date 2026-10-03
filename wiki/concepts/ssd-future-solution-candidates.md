@@ -1,7 +1,7 @@
 ---
 type: analysis
 last_reviewed: 2026-10-03
-status: 후보 평가 (사용자 채택 결정 대기)
+status: 후보 평가 + 사용자 결정 반영 (2026-10-03)
 sources:
   - sources/articles/ssd-future-candidate-security-trust-2026-10.md
   - sources/articles/ssd-future-candidate-gpu-direct-iops-2026-10.md
@@ -11,6 +11,8 @@ sources:
 # SSD 미래 대응 솔루션 후보: 세 기술 다음의 두세 가지
 
 "불확실성이 높은 미래에 대응하기 위한 고객 협력 전략"([보고서](../../outputs/report/ssd-future-ready-strategy-report.md))은 세 기술을 고른다: 고DWPD([high-dwpd-operating-point.md](high-dwpd-operating-point.md)) · Mixed Media(pSLC, [mixed-media-ssd.md](mixed-media-ssd.md)) · 고용량 + 결함 허용([high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md)). 사용자(2026-10-03)는 "다가올 미래에 대응하기 위한 핵심 솔루션 두어 개"를 더 찾아 달라고 했다. 이 페이지는 후보 다섯 개를 같은 잣대로 평가한다. 판정은 ⚠️ 과제팀 판단이다.
+
+> **사용자 결정 (2026-10-03)**: ① **A 보안 · 신뢰 · 재사용은 덱 · 보고서에서 따로 강조하지 않는다.** 중요성이 이미 잘 인식돼 있고 삼성이 잘하고 있는 분야이기 때문이다(L.O.C.K. 공저가 그 예). ② **B GPU 직결 고IOPS(SCADA)는 "기술적으로 미리 준비가 필요한 기술"로 포함**하되, 시장 규모와 기술 성숙도의 불확실성이 커서 베팅 확률이 낮다는 점을 반영해 추가 서베이와 기술 검토 뒤 포함 방식을 정한다(추가 원장 `ssd-scada-market-technical-review-2026-10.md` 수집 중). ③ C 전력 · 냉각은 제품 요건으로 흡수하는 판정 유지.
 
 **평가 잣대**: ① 어느 시나리오에서 핵심이 되나(불변성) ② 공개 근거의 강도 ③ SSD 안에서 완결되나, 고객 시스템과 함께 풀어야 하나 ④ 삼성의 출발점과 공백.
 
