@@ -1,7 +1,7 @@
 ---
 type: presentation-outline
-status: 제안 v0.3 (2026-10-03), 톤 조정 · GPU 직결 기술 옵션 · 초고DWPD 운영점 반영. 승인 후 덱 제작
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (승인 후)
+status: v1.0 덱 제작 (2026-10-03, 아웃라인 v0.3 승인). 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.0, 미커밋 산출물 · 생성기로 재현)
 report: outputs/report/ssd-future-ready-strategy-report.md (v1.1)
 design: .claude/skills/samsung-memory-ppt-design-skill (v2 시각 우선 작성법, 20 × 11.25in, 본문 18pt+, 출처 15pt)
 ---
@@ -81,6 +81,14 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2 시각 우선 작성�
 | 밴드 (결론) | Blue, 덱 전체의 마지막 문장 | **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다** |
 
 ---
+
+## 덱 v1.0 제작 메모 (2026-10-03)
+
+- **2장은 1차 렌더 후 처음부터 다시 만들었다**: 1차안(크기가 다른 타일 4개 + 별도 신호 줄 + 신호 머리말)은 빽빽하고 시선이 흩어졌다. 2차안은 **같은 골격의 카드 4장**(이름 → 시각 1개 → 빅넘버 + 한 줄 → ▲▼ 신호)을 그레이 묶음 2장 · Blue 묶음 2장으로 나눴다. 신호는 카드 아래 칸으로 흡수하고 "불변 전략" 정의는 1장 밴드 머리표로 옮겼다
+- 1장: 패널 ① 제목 "AI 추론: 신호가 엇갈린다", 서버 내용연수는 덤벨(변경 전 → 후), 랙 전력은 로그 축 막대, 빅넘버 "건물 15 → 25년" · "착공 약 5 / 16GW"
+- 3장: 높이와 폭이 커지는 계단 3칸 + 왼쪽 위 "셀 수명 P/E 대표값(10만 → 1천, 로그 축) 대 고객 요구는 그대로" 그래프
+- 4장: 승인된 계약 · 사람 · 역량 그림을 재사용하고 역량 격자에 GPU I/O · 커널 · 규격 줄을 더했다. 첫 90일은 칩 줄, 마지막 밴드는 결론 문장
+- 렌더 QA 3회(NanumGothic), `qa_audit.py` PASS(최소 글자 15pt는 출처 줄뿐, em-dash 0), 출처 줄의 이모지 표기(✅ · ⚠️)는 "원문 · 파생"으로 바꿨다
 
 ## 판단 근거 (과제팀)
 

@@ -2348,3 +2348,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **초고DWPD(2TB · 30 DWPD) = 고DWPD 안의 운영점**(과제팀 판단, `high-dwpd-operating-point.md` §5.5 신설): 가장 큰 이익 지렛대는 FDP(SLC 모드 다이 약 120 → 47), MLC 모드는 사내 P/E 약 2.56만 이상일 때의 추가 지렛대. 고객 요구 · MLC P/E가 사내 확인되면 독립 과제로 승격(신호 게이트)
 - 보고서 §3 신설(NAND → SSD → 고객 시스템), §4 실행에 "지금까지 대 앞으로" 대비 · 신호 게이트에 GPU 직결 · 초고DWPD 승격 조건. 아웃라인 v0.3 4장 제목 · 패널 갱신
 - 위키: `ssd-future-solution-candidates.md`에 과제팀 판정, `nvidia-cmx-scada.md` 링크. index.md 원장 2종 등록. 지식 그래프 재생성 → dashboard v2.46.54(패치), updates.js, `npm run build`
+
+## [2026-10-03] build | 고객 협력 전략 4장 덱 v1.0
+- 사용자 승인(아웃라인 v0.3) 후 제작. 지시: "시각화가 중요하니 빽빽하거나 핵심이 한눈에 안 들어오면 처음부터 다시"
+- 신규 생성기 `outputs/presentation/scripts/generate_ssd_future_ready_pptx.py`: 스킬 `deck_helpers.py`(Deck 클래스)를 처음으로 실사용. 차트 · 도형은 모두 python-pptx 도형(덤벨 · 로그 축 막대 · 다이 격자 · 다이 수 막대 · 병목 사슬 · 계단 · P/E 그래프)
+- **렌더 QA에서 2장을 처음부터 다시 만들었다**: 1차안은 크기가 다른 타일 4개 + 별도 신호 줄로 빽빽 → 같은 골격의 카드 4장(이름 → 시각 1개 → 빅넘버 + 한 줄 → ▲▼ 신호), 그레이 2 · Blue 2 묶음으로 재구성. "불변 전략" 정의는 1장 밴드 머리표로
+- 그 밖 수정: 1장 HBM 띠 줄바꿈 · 로그 축 눈금 · 빅넘버 겹침, 3장 1칸 넘침 · 연도와 상태 칩 겹침(연도를 둘째 줄로) · 왼쪽 위 P/E 대표값 그래프 추가, 4장 "사람" 라벨 세로 줄바꿈, 출처 줄 이모지(✅ · ⚠️) 제거
+- `qa_audit.py` PASS(em-dash 0, 최소 15pt는 출처 줄). PPTX 본체는 `.gitignore`로 미커밋, 생성기로 재현. 아웃라인 · 보고서 상태를 v1.0 덱으로 갱신, index.md 등록
+- 대시보드 무변경(위키 링크 변경 없음) → 버전 bump 생략

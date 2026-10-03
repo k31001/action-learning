@@ -1,7 +1,7 @@
 ---
 type: report
-status: v1.1 (2026-10-03). 사용자 답변 반영(톤 조정 · 보안 제외 · GPU 직결 고IOPS 기술 옵션 추가 · 초고DWPD 운영점 · NAND → SSD → 고객 시스템 장). 덱 4장은 아웃라인 v0.3 승인 후 제작
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (승인 후 제작)
+status: v1.1 (2026-10-03). 사용자 답변 반영(톤 조정 · 보안 제외 · GPU 직결 고IOPS 기술 옵션 추가 · 초고DWPD 운영점 · NAND → SSD → 고객 시스템 장). 덱 4장 v1.0 제작 완료(2026-10-03)
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.0, 생성기 scripts/generate_ssd_future_ready_pptx.py)
 outline: outputs/presentation/ssd-future-ready-strategy-outline.md (제안 v0.3)
 supersedes_focus: outputs/report/ssd-survival-strategy-report.md (KV 캐시 고DWPD 중심 → 지금 보이는 신호별 준비 + 고객 협력 과제)
 sources:
@@ -349,7 +349,7 @@ SSD 안에서 풀 수 있는 기술(Mixed Media · 고용량)은 지금 방식�
 
 ---
 
-## 7. 슬라이드 4장 아웃라인 (제안 v0.3 · 승인 대기)
+## 7. 슬라이드 4장 (덱 v1.0)
 
 상세는 [ssd-future-ready-strategy-outline.md](../presentation/ssd-future-ready-strategy-outline.md).
 
