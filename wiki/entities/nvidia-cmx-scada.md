@@ -181,3 +181,4 @@ SCADA는 NVIDIA **"Storage-Next"** 이니셔티브의 소프트웨어 기반이�
 - Kioxia 1억 IOPS는 PCIe 7.0 인증 일정으로 **2028**로 밀렸다는 보도(🟡). 서버 합산 2~3억 IOPS는 이미 TLC 다수 드라이브로 달성(Micron · 삼성 · Graid) → SLC급 전용 매체의 의미는 **GPU당 드라이브 수를 줄이는 것**(⚠️ 파생).
 - 512B 수요 워크로드는 GNN · 그래프 분석 · 추천 · 벡터 검색이며(BaM · GIDS ✅), KV 캐시 오프로드는 대형 블록 중심이다.
 - 미래 대응 솔루션 후보 평가에서 GPU 직결 고IOPS의 위치: [ssd-future-solution-candidates.md](../concepts/ssd-future-solution-candidates.md)
+- 2026-10-03 시장 · 기술 검토: [ssd-scada-market-technical-review-2026-10.md](../../sources/articles/ssd-scada-market-technical-review-2026-10.md): 세그먼트 시장 추정 없음, "$36B"는 AI 스토리지 전체 수치, 512B 병목 산술(매체 → 채널 → PCIe, 1억 IOPS = Gen7 x4)

@@ -110,6 +110,28 @@ DWPD = P/E × (1 + OP) ÷ (WAF × 365 × 보증연수)          ← F29
 
 **판정**: **WAF 1이면 범용 TLC의 SLC 모드(6만 P/E급)로 기본 OP만 두고 30 DWPD에 닿는다. WAF 3이면 가장 좋은 공개 SLC 모드(10만 P/E)로도 OP 64%가 필요하다.** 전용 SLC 매체 없이 이 운영점에 닿게 하는 첫 수단은 배치 힌트(FDP)로 WAF를 낮추는 것이다. WAF가 내려가는 원리는 [fdp-placement-mechanics.md](fdp-placement-mechanics.md), 운영 중 WAF가 다시 오를 때의 대응은 [waf-runtime-response.md](waf-runtime-response.md)에 있다.
 
+### 5.5 초고DWPD 운영점(2TB · 30 DWPD)과 MLC 모드 (2026-10-03 추가)
+
+사용자 문제의식(2026-10-03): "2TB · 30 DWPD 제품군이 등장할 기미가 있다. SLC로 대응하면 되지만, MLC에 OP를 살짝 늘리고 FDP를 적용하는 기술 혁신으로 대응하면 이익을 늘릴 수 있다." 근거 원장은 [ssd-ultra-high-dwpd-mlc-mode-2026-10.md](../../sources/articles/ssd-ultra-high-dwpd-mlc-mode-2026-10.md)(UD).
+
+**제품 신호** (🟡): 2026년 50 DWPD 이상 AI SSD(Kioxia GP1 · InnoGrit N3X · Phison X202Z · DapuStor X5)는 모두 SLC급이거나 매체 비공개이며 **DWPD보다 IOPS · 지연을 앞세운다**. 단일 드라이브 보증은 모두 5년이다. 공개 자료에는 2TB · 30 DWPD "KV 캐시 SSD"가 아직 없고, NVIDIA CMX는 GPU당 최대 16TB를 두되 DWPD 요구를 공개하지 않았다(UD-01~UD-13). → 2TB · 30 DWPD 신호는 `[사내 확인]`으로 둔다.
+
+**다이 산술** (2TB · 30 DWPD · 5년, 1Tb TLC 다이 환산, 이론 비트/셀 비, ⚠️ 파생, UD §3):
+
+| 구성 | WAF | 필요 OP | 다이 수 |
+|---|---|---|---|
+| SLC 모드 6만 P/E | 3 | 174% | 약 120 |
+| SLC 모드 6만 P/E | 1 | 최소 7% | **약 47** |
+| MLC 모드 P/E 1만(공개 산업용 수준) | 1 | 447% | 약 120 |
+| MLC 모드 P/E 2만 | 1 | 174% | 약 60 |
+| MLC 모드 P/E 3만 | 1 | 82% | 약 40 |
+| MLC 모드 P/E 4만 | 1 | 37% | 약 30 |
+
+- **손익분기**: FDP를 양쪽에 적용(WAF 1)하면 MLC 모드가 SLC 모드보다 다이를 덜 쓰는 최소 P/E는 **약 2.56만(5년) · 약 1.54만(3년)**, MLC 쪽 WAF가 1.2면 약 3.07만 · 1.84만이다. "OP를 살짝(40% 이하)" 늘리는 수준은 5년 기준 P/E 약 4만 이상이다.
+- **MLC 모드 P/E 공개 근거**: 산업용 TLC의 MLC 모드 1만(Apacer MLC-liteX 🟡, 3K 보도와 충돌 ⚠️), 평면 시대 엔터프라이즈 MLC 2~3만(Micron 🟡). **3D TLC의 MLC 모드 엔터프라이즈 P/E는 공개 자료가 없다** → `[사내 확인]`. 네이티브 MLC 공급은 축소 중(2026 생산능력 -41.7% 전망 🟡).
+- **판정**: 이 운영점의 **가장 큰 이익 지렛대는 WAF 3 → 1(고객 배치 정보)**이다: SLC 모드 그대로 다이 약 120 → 47. MLC 모드는 P/E가 손익분기를 넘을 때의 **추가** 지렛대이며, SLC 대비 읽기 지연이 길어 지연을 중시하는 구매자에게는 불리하다. MLC 모드는 5~20 DWPD 중간 운영점에서 더 자연스럽다(UD §3 표: P/E · OP · 보증 조합에 따라 약 5~30+ DWPD를 연속으로 덮는다).
+- **분류**(⚠️ 과제팀 판단): 초고DWPD는 별도 기술 축이 아니라 **이 페이지의 운영점 하나**로 둔다(같은 산식 · 지렛대 · 고객 소프트웨어). 사내에서 고객 요구와 MLC 모드 P/E가 확인되면 독립 제품 과제로 올린다([ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md) §2.4 · §4.4).
+
 ## 6. DWPD를 올리는 수단 — 비용의 순서
 
 산식의 각 항이 곧 수단이다.

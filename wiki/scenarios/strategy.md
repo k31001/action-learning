@@ -301,7 +301,7 @@
   | 영역 | 시장 현실성 | 기존 SSD로 대응? | 사업 모델 검증 |
   |------|------------|-----------------|---------------|
   | **CMX** (KV 캐시 G3.5) | NVIDIA CES 2026 공식 발표, 17개 클라우드·스토리지 파트너 확보, 2H 2026 일반 출시 (성능 5x TPS + 5x 전력 효율 입증) | ❌ 새 폼팩터(이더넷 연결 플래시) + BlueField-4 DPU 통합 필요. NAND 자체는 기존 사용 가능하나 **컨트롤러·펌웨어·NVMe over Fabrics 최적화 차별화**가 핵심 | NVIDIA Storage-Next 표준의 한 부분. 단기 fad 아님 — 장문맥 추론 인프라의 구조적 요구 |
-  | **SCADA** (GPU 네이티브) | AI 스토리지 시장 **$36B(2025) → $322B(2035, CAGR 24%)** (MarketsAndMarkets). 메모리가 hyperscaler capex의 30% 차지(2026, vs 2023~24 8%) | ❌ 기존 SSD는 CPU 경유 I/O — SCADA는 GPU 직접 제어. **컨트롤러 펌웨어 + DOCA SDK 통합** 필요. SK hynix·Kioxia가 100M IOPS SLC NAND 개발 중(2027 양산) | 단기 fad 절대 아님. AI 추론 표준 인터페이스 후보. SLC NAND 신규 사업 카테고리. 미참여 시 SSD에서 HBM 패권 손실 반복 |
+  | **SCADA** (GPU 네이티브) | AI 스토리지 시장 전체 **$36B(2025) → $322B(2035, CAGR 24%)** (MarketsAndMarkets) (2026-10-03 정정: 이 수치는 MarketsAndMarkets **"AI-Powered Storage"** 시장(HDD · NAS/SAN · 소프트웨어 포함)이며 SCADA · 512B 고IOPS 세그먼트가 아니다. 2025년 기준값이 그해 엔터프라이즈 SSD 매출 전체(약 $26B)보다 크다. **SCADA 세그먼트의 공개 시장 추정은 없다** 🟡, 원장 SR-01 · SR-06). 메모리가 hyperscaler capex의 30% 차지(2026, vs 2023~24 8%) | ❌ 기존 SSD는 CPU 경유 I/O — SCADA는 GPU 직접 제어. **컨트롤러 펌웨어 + DOCA SDK 통합** 필요. SK hynix·Kioxia가 100M IOPS SLC NAND 개발 중(2027 양산) | 단기 fad 절대 아님. AI 추론 표준 인터페이스 후보. SLC NAND 신규 사업 카테고리. 미참여 시 SSD에서 HBM 패권 손실 반복 |
   | **FDP** (Flexible Data Placement) | NVMe TP41461 표준화(2022.12, Meta+Google+Samsung 공동). WAF 50%↓, OP 28%↓, 드라이브 수명 2배, 쓰기 속도 2배 (NVMe Consortium) | ✅ 기존 NAND·컨트롤러로 펌웨어 업데이트만으로 가능 (이미 OS·라이브러리·도구 지원). 그러나 **호스트 SW 통합·검증·튜닝 노하우**가 차별화 영역 | "구글에 SW 단독 판매"는 비현실적 (구글이 표준 공동 개발) — 그러나 (a) 통합 검증된 SSD 프리미엄 단가 (b) 중소 클라우드 대상 reference 라이선스 (c) 컨설팅·튜닝 서비스 매출은 가능 |
 
   **사업 모델 재설계 (FDP 사례 — 현실성 보강 후)**:

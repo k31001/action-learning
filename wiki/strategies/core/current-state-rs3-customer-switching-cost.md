@@ -12,7 +12,7 @@
 | 영역 | 시장 규모 (2025) | 시장 규모 (2030~2035) | CAGR | 출처 / 신뢰도 |
 |---|---|---|---|---|
 | **CMX** (KV 캐시 G3.5) | NVIDIA CES 2026 공식 발표, 17개 클라우드·스토리지 파트너, 2H 2026 일반 출시 | — (NVIDIA Storage-Next 표준의 한 부분) | — | NVIDIA 공식 ([wiki/technology/nvidia-cmx-scada.md](../../entities/nvidia-cmx-scada.md)) · ✅ |
-| **SCADA** (AI 스토리지) | $36B (2025) | $322B (2035) | **24%** | MarketsAndMarkets · 🔵 |
+| **SCADA** (AI 스토리지 전체, 정정) | $36B (2025) ※ | $322B (2035) ※ | **24%** | MarketsAndMarkets "AI-Powered Storage" · 🟡 ※SCADA 세그먼트 아님 |
 | **FDP** (NVMe TP41461) | NVMe 표준 (Meta+Google+Samsung 공동) | (NAND 시장 일부, 별도 규모 추정 부재) | — | NVMe Consortium · ✅ |
 
 ### CMX·SCADA 진영 — 전략 파트너십 분포 (2026 기준)
@@ -46,7 +46,7 @@
 |---|---|
 | **강점 (S)** | (1) FDP 표준 공동 개발자 — 구글과 NVMe TP41461을 공동 개발한 차별적 위치. (2) PM1753 CMX 공식 공급으로 진입점 확보. (3) Samsung Foundry 보유로 컨트롤러·firmware·NAND 통합 가능. |
 | **약점 (W)** | (1) **SCADA AI SSD 공개 로드맵 없음** — SK하이닉스(AI-N P), Kioxia(1억 IOPS, 2027), Micron(9650 reference) 모두 SLC NAND 기반 진입 중. 삼성만 공백. (2) Co-Validation 모델은 인력 부담 큼 (RS-7 AI 자동화 prerequisite). |
-| **기회 (O)** | (1) AI 스토리지 $36B → $322B (CAGR 24%) — 신규 사업 카테고리. (2) NVIDIA가 단일 공급사(SK하이닉스 70%) 의존 회피 인센티브 보유. (3) FDP 3계층 사업 모델 (HW 프리미엄 + 라이선스 + 컨설팅) — $2~3B/년 (2030). |
+| **기회 (O)** | (1) AI 스토리지 전체 $36B → $322B (CAGR 24%) (2026-10-03 정정: 이 수치는 MarketsAndMarkets **"AI-Powered Storage"** 시장(HDD · NAS/SAN · 소프트웨어 포함)이며 SCADA · 512B 고IOPS 세그먼트가 아니다. 2025년 기준값이 그해 엔터프라이즈 SSD 매출 전체(약 $26B)보다 크다. **SCADA 세그먼트의 공개 시장 추정은 없다** 🟡, 원장 SR-01 · SR-06). (2) NVIDIA가 단일 공급사(SK하이닉스 70%) 의존 회피 인센티브 보유. (3) FDP 3계층 사업 모델 (HW 프리미엄 + 라이선스 + 컨설팅) — $2~3B/년 (2030). |
 | **위협 (T)** | (1) SK하이닉스 + Kioxia가 SCADA 표준을 먼저 잡으면 HBM 패권 손실 반복 위험. (2) FDP 표준은 오픈이라 단순 구현체로는 차별화 약함. (3) 하이퍼스케일러가 자체 SW로 차별화 경로 우회 가능. |
 
 ### 외부 평가

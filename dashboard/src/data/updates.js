@@ -16,6 +16,25 @@
 export const UPDATES = [
   {
     date: '2026-10-03',
+    type: 'build',
+    version: 'v2.46.54',
+    title: '고객 협력 전략 보고서 v1.1 · 아웃라인 v0.3: 톤 조정, GPU 직결 기술 옵션, 초고DWPD 운영점 + "SCADA $36B" 정정',
+    summary:
+      '"세 기술만 준비하면 어떤 미래에도 대응한다"는 논조를 걷어 내고 "지금 예측 가능한 범위에서 최선"으로 조정했다. SSD 안에서 풀 것(Mixed Media · 고용량)과 새로 나타난 고객 협력 과제(고DWPD · GPU 직결)를 나눴다. 위키의 "SCADA $36B → $322B"는 AI 스토리지 전체 수치로 판정해 정정했다(패치 v2.46.54).',
+    tags: ['SSD 전략', '고객 협력', 'SCADA', '초고DWPD', 'MLC 모드', '정정'],
+    items: [
+      { label: '원장 2종', detail: 'ssd-scada-market-technical-review-2026-10.md(시장 · 성숙도 · 512B 병목 산술), ssd-ultra-high-dwpd-mlc-mode-2026-10.md(2026 고내구 AI SSD 신호 · MLC 모드 P/E · 다이 산술)' },
+      { label: 'GPU 직결 = 기술 옵션', detail: '세그먼트 시장 추정 없음 · NVIDIA 사양 비공개 → 제품 베팅 안 함. 512B 상한은 매체 → 채널 → PCIe 순, 1억 IOPS = Gen7 x4(2028) → 기반 기술은 지금, 제품은 신호로' },
+      { label: '초고DWPD = 고DWPD의 운영점', detail: '2TB · 30 DWPD · 5년: SLC 모드 SSD 단독 약 120다이 → FDP 약 47다이. MLC 모드는 P/E 약 2.56만 이상일 때만 추가 이익(사내 확인)' },
+      { label: '정정', detail: 'RS-3 현황 · RS-3 불변전략 · strategy.md · generate_pptx.py의 "SCADA $36B" 라벨을 "AI 스토리지 전체"로' },
+    ],
+    links: [
+      { label: 'outputs/report/ssd-future-ready-strategy-report.md', href: 'https://github.com/k31001/action-learning/blob/main/outputs/report/ssd-future-ready-strategy-report.md' },
+      { label: 'wiki/concepts/high-dwpd-operating-point.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/high-dwpd-operating-point.md' },
+    ],
+  },
+  {
+    date: '2026-10-03',
     type: 'query',
     version: 'v2.46.53',
     title: 'SSD 미래 대응 솔루션 후보 평가: 보안 · 신뢰 · 재사용 추천, GPU 직결 고IOPS 조건부 추천, 전력 · 냉각은 제품 요건으로',

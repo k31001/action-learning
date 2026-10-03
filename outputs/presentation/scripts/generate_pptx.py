@@ -1810,7 +1810,7 @@ def build_slide_20_rs3(prs):
         {
             'name': 'SCADA',
             'subtitle': 'GPU 네이티브 I/O',
-            'market': 'AI 스토리지 시장:\n$36B (2025) → $322B (2035)\nCAGR 24% — 단기 fad 아님\n하이퍼스케일러 capex의 30%',
+            'market': 'AI 스토리지 전체(HDD 포함):\n$36B (2025) → $322B (2035)\nSCADA 세그먼트 추정은 없음\n하이퍼스케일러 capex의 30%',
             'differentiation': '기존 SSD = CPU 경유\nSCADA = GPU 직접 제어\nSK·Kioxia 100M IOPS\nSLC NAND (2027 양산)',
             'revenue': '미참여 시 SSD에서\nHBM 패권 손실 반복 위험\n2028 SLC AI SSD 진입 필수\n매출 잠재 $5B+ (2030)',
             'verdict': '✓ AI 추론 표준 인터페이스 후보 — 신규 사업 카테고리 형성',

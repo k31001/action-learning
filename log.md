@@ -2335,3 +2335,16 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 사용자 결정: ① 보안 · 신뢰는 이미 잘 인식되고 삼성이 잘하는 분야라 재강조하지 않음 ② SCADA는 기술적으로 미리 준비가 필요해 포함을 원하나 시장 규모 · 성숙도 불확실성이 커서 추가 서베이 · 기술 검토 뒤 과제팀 판단으로 포함 방식 결정 ③ 새 제품군 신호 "2TB · 30 DWPD": SLC로 대응 가능하지만 MLC + OP 소폭 + FDP로 이익을 늘릴 여지 → 고DWPD와 분리할지 포함할지 검토 요청
 - **톤 조정 지시**: "제안한 솔루션만 준비하면 모든 경우를 대비할 수 있다"는 논조는 경솔. **지금 예측 가능한 범위에서 최선을 다한다**는 톤으로. 일부 솔루션은 이미 잘 준비하고 있고 SSD 범위에서 잘하면 되지만, **고객 협력이 필요한 부분이 새롭게 등장**하고 이를 전략적으로 실행해야 한다는 논지 유지
 - Research Agent 2건 착수(SCADA 시장 · 성숙도 · 기술 제약 산술 / 2TB · 30 DWPD 제품 신호 · MLC 모드 내구성 · 다이 산술). 위키 후보 페이지에 사용자 결정 기록. 보고서 v1.1 · 아웃라인 v0.3은 두 결과 뒤 작성
+
+## [2026-10-03] ingest | SCADA 시장 · 기술 검토 원장 + 초고DWPD · MLC 모드 원장
+- `sources/articles/ssd-scada-market-technical-review-2026-10.md`: 512B 고IOPS 세그먼트 공개 시장 추정 없음, 파트너 목표 GPU당 약 2억 IOPS 🟡, cuFile 코드 미공개 ✅, PCIe 7.0 통합 2028 🟡, 512B 상한 산술(매체 → 채널 → PCIe, 1억 IOPS = Gen7 x4 ⚠️), aisio GPU 폴링 SM 26.8% ✅
+- **lint 정정**: 위키 "SCADA (AI 스토리지) $36B → $322B, CAGR 24%"는 MarketsAndMarkets "AI-Powered Storage"(HDD · NAS/SAN · SW 포함) 수치였다(SR-01 · SR-06 🟡). `current-state-rs3-customer-switching-cost.md`(2곳) · `invariant/rs3-customer-switching-cost.md` · `scenarios/strategy.md` · `generate_pptx.py`(SCADA 카드 문구) 정정. PPTX 본체는 미커밋 산출물이라 다음 재생성 때 반영(스크립트 컴파일 확인)
+- `sources/articles/ssd-ultra-high-dwpd-mlc-mode-2026-10.md`: 2026 고내구 AI SSD는 SLC급 · IOPS 우선 · 5년 보증, 2TB · 30 DWPD KV 캐시 SSD 공개 제품 없음, MLC 모드 P/E 공개치(산업용 1만 · 평면 MLC 2~3만), 손익분기 P/E 약 2.56만(5년) ⚠️
+
+## [2026-10-03] build | 고객 협력 전략 보고서 v1.1 · 아웃라인 v0.3 (dashboard v2.46.54)
+- **톤 조정**(사용자 지시): "제안 기술만 준비하면 모든 미래에 대비"를 걷어 내고 "지금 예측 가능한 범위(시나리오 A~E · 지금 보이는 신호)에서 최선, 신호가 바뀌면 고친다"로. 문서 머리에 "이 문서가 주장하지 않는 것"을 명시
+- **구성**: SSD 안에서 지금처럼(Mixed Media pSLC · 고용량 + 결함 허용) 대 **고객 시스템과 함께, 새로 나타남**(고DWPD · GPU 직결). 보안 · 신뢰는 제외(이미 강점), 전력 · 냉각은 고용량 제품 요건으로 흡수
+- **GPU 직결 = 기술 옵션**(과제팀 판단): 시장 · 사양 · 실배치 불확실 → 제품 베팅 안 함. 512B 상한이 매체 → 채널 → PCIe 순으로 걸리고 채널 전송 · 명령 처리 구조는 컨트롤러 세대 단위라 신호 뒤 착수는 한 세대 늦음 → 기반 기술은 지금, 제품 결정은 Gen7(2028) 시점 신호로. GPU 쪽 병목(폴링 SM 26.8%)은 고객과 함께
+- **초고DWPD(2TB · 30 DWPD) = 고DWPD 안의 운영점**(과제팀 판단, `high-dwpd-operating-point.md` §5.5 신설): 가장 큰 이익 지렛대는 FDP(SLC 모드 다이 약 120 → 47), MLC 모드는 사내 P/E 약 2.56만 이상일 때의 추가 지렛대. 고객 요구 · MLC P/E가 사내 확인되면 독립 과제로 승격(신호 게이트)
+- 보고서 §3 신설(NAND → SSD → 고객 시스템), §4 실행에 "지금까지 대 앞으로" 대비 · 신호 게이트에 GPU 직결 · 초고DWPD 승격 조건. 아웃라인 v0.3 4장 제목 · 패널 갱신
+- 위키: `ssd-future-solution-candidates.md`에 과제팀 판정, `nvidia-cmx-scada.md` 링크. index.md 원장 2종 등록. 지식 그래프 재생성 → dashboard v2.46.54(패치), updates.js, `npm run build`

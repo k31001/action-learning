@@ -22,7 +22,7 @@
 | 영역 | 시장 현실성 | 차별화 영역 | 사업 모델 |
 |------|------------|----------|---------|
 | **CMX** (KV 캐시 G3.5) | NVIDIA CES 2026 공식, 17개 클라우드·스토리지 파트너, 2H 2026 일반 출시. 5x TPS + 5x 전력 효율 입증 | 새 폼팩터(이더넷 플래시) + BlueField-4 DPU 통합 + NVMe over Fabrics 컨트롤러·펌웨어 최적화 | NVIDIA Storage-Next 표준의 한 부분, 장문맥 추론 인프라 구조적 요구 |
-| **SCADA** (GPU 네이티브) | AI 스토리지 시장 **$36B(2025) → $322B(2035, CAGR 24%)** (MarketsAndMarkets). 메모리가 hyperscaler capex의 30% 차지(2026, vs 2023~24 8%) | 컨트롤러 펌웨어 + DOCA SDK 통합. SK hynix·Kioxia가 100M IOPS SLC NAND 개발 중(2027 양산) | AI 추론 표준 인터페이스 후보. SLC NAND 신규 사업 카테고리 |
+| **SCADA** (GPU 네이티브) | AI 스토리지 시장 전체 **$36B(2025) → $322B(2035, CAGR 24%)** (MarketsAndMarkets) (2026-10-03 정정: 이 수치는 MarketsAndMarkets **"AI-Powered Storage"** 시장(HDD · NAS/SAN · 소프트웨어 포함)이며 SCADA · 512B 고IOPS 세그먼트가 아니다. 2025년 기준값이 그해 엔터프라이즈 SSD 매출 전체(약 $26B)보다 크다. **SCADA 세그먼트의 공개 시장 추정은 없다** 🟡, 원장 SR-01 · SR-06). 메모리가 hyperscaler capex의 30% 차지(2026, vs 2023~24 8%) | 컨트롤러 펌웨어 + DOCA SDK 통합. SK hynix·Kioxia가 100M IOPS SLC NAND 개발 중(2027 양산) | AI 추론 표준 인터페이스 후보. SLC NAND 신규 사업 카테고리 |
 | **FDP** (Flexible Data Placement) | NVMe TP41461 표준화(2022.12, Meta+Google+Samsung 공동). WAF 50%↓, 드라이브 수명 2배, 쓰기 속도 2배 | 호스트 SW 통합·검증·튜닝 노하우가 차별화 영역 | (a) HW 프리미엄 (b) Reference 라이선스 (c) 컨설팅 매출 |
 
 ### 2.2 SK하이닉스의 NVIDIA 락인 — 위협의 실증
