@@ -2362,3 +2362,8 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - **디자인 스킬 v2.1**: `SKILL.md`에 11.J "근거 사슬: 주장 → 근거 → 데이터 → 그래프(비협상)" 신설, 11.A 원칙 · 프리플라이트 항목 · description 보강, playbook QA 표 2줄 추가, `outputs/skills/samsung-memory-ppt-design-skill.skill` 재패키징
 - 위키: `ssd-future-solution-candidates.md`에 SCADA 제외 결정(재검토 신호 명시), `high-dwpd-operating-point.md` §5.5에 덱 · 보고서 MLC 제외 결정 기록(산술은 지식으로 유지)
 - 생성기 1 · 2 · 4장 재작성 중(1장: HBM 점유율 슬로프 · DWPD 로그 막대 · 읽기:쓰기 100% 막대 · SSD 용량 1/8 · 덤벨 · 랙 전력 · 착공 막대 / 2장: 슬롯 그림 · 같은 폼팩터 다이 격자 · 수명 섞인 블록 대 수명별 블록 그림 + 다이 120 → 47 / 4장: GPU I/O 줄 · 90일 칩 제거, 노트로). 3장은 고객 DWPD 근거 원장 수집 뒤 마무리
+
+## [2026-10-03] ingest | 고객 측 고DWPD 근거 원장 + 덱 3장 고객 데이터 반영
+- 원장 `sources/articles/ssd-customer-high-dwpd-evidence-2026-10.md`(CU-01~CU-54, 차트 표 5종, 부정 확인 10건). 가장 강한 고객 근거: Meta CacheLib "상한 없는 플래시 쓰기 = 수명 예산의 150%", 플래시 OP 50%, ML 수용 정책으로 기록량 -44%(OSDI'20 ✅)
+- 덱 3장: 왼쪽 위 "셀이 견디는 쓰기(P/E 10만 → 1천)" 옆에 "고객 캐시가 쓰는 양(DWPD 로그 축: QLC 정격 0.6 · Meta 캐시 예산 3 · AI KV 실측 3.2 · Meta 스토리지 캐시 목표 7.2)" 차트, 3칸 안에 Meta CacheLib 상자(150% 대 100% 막대 · -44%). 기준(예산 · 실측 · 목표)이 다름을 출처 줄에 명시
+- 사용자 추가 요청(1장에 데이터센터 유형별 스토리지 요구 비교: 범용 · AI 학습 · AI 추론 · 에이전트(Muse · Dot))은 Research Agent 수집 중

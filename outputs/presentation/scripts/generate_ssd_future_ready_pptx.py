@@ -300,71 +300,108 @@ d.notes(s, "2장입니다. 지금 보이는 신호에 맞춰 준비할 기술을
 
 # =============================================================== 3 당위성
 s = d.slide(3, "당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
-tb(s, MX, 2.40, 11.0, 0.46, [[("고객 요구는 그대로인데 단품 지표가 나빠지면,  ", 20, False, GRAY), ("보상은 한 계층 위로 올라갑니다", 20, True, INK)]], anchor=MID)
+tb(s, MX, 2.36, 11.6, 0.44, [[("고객의 쓰기는 커지는데 셀 수명은 줄어들면,  ", 20, False, GRAY), ("보상은 한 계층 위로 올라갑니다", 20, True, INK)]], anchor=MID)
+
+# ---- 왼쪽 위: 셀 수명 P/E 대표값 (로그 축)
+tb(s, MX, 2.96, 5.4, 0.34, [[("▼ 셀이 견디는 쓰기  ", 18, True, GRAY), ("P/E 대표값 (로그 축)", 16, False, GRAY)]])
+pe = [("SLC", 100000, "10만"), ("MLC", 10000, "1만"), ("TLC", 3000, "3천"), ("QLC", 1000, "1천")]
+PB, PH = 5.44, 1.55
+for k, (nm, v, lab) in enumerate(pe):
+    h = (math.log10(v) - 2) / 3 * PH
+    bx = MX + 0.30 + k * 1.22
+    rect(s, bx, PB - h, 0.80, h, fill=GRAY if k == 0 else GRAY_2)
+    tb(s, bx - 0.2, PB - h - 0.34, 1.20, 0.32, [(lab, 16, True, INK)], align=C)
+    tb(s, bx - 0.2, PB + 0.02, 1.20, 0.32, [(nm, 16, False, GRAY)], align=C)
+tb(s, MX + 2.10, 3.40, 3.0, 0.46, [("약 100배 ↓", 24, True, GRAY)], align=C, anchor=MID)
+
+# ---- 가운데 위: 고객 캐시 계층의 쓰기 (DWPD, 로그 축)
+cx0 = MX + 5.95
+tb(s, cx0, 2.96, 6.0, 0.34, [[("▲ 고객 캐시가 쓰는 양  ", 18, True, BLUE), ("DWPD (로그 축)", 16, False, GRAY)]])
+LB = 2.95
+qx0, qx1 = cx0 + LB, cx0 + 5.55
+qlo, qhi = math.log10(0.2), math.log10(12)
+
+
+def xq(v):
+    return qx0 + (math.log10(v) - qlo) / (qhi - qlo) * (qx1 - qx0)
+
+
+for g in (1, 10):
+    rect(s, xq(g) - 0.005, 3.36, 0.01, 1.82, fill=LINE)
+    tb(s, xq(g) - 0.3, 5.18, 0.6, 0.28, [(str(g), 16, False, GRAY)], align=C)
+cust = [("QLC 정격", "", 0.6, GRAY_2, "0.6"),
+        ("Meta 플래시 캐시", "예산", 3.0, GRAY, "3"),
+        ("AI KV 캐시", "실측", 3.2, GRAY, "3.2"),
+        ("Meta 스토리지 캐시", "목표", 7.2, BLUE, "7.2")]
+for i, (nm, basis, v, col, lab) in enumerate(cust):
+    yy = 3.40 + i * 0.44
+    tb(s, cx0, yy, LB - 0.08, 0.38, [[(nm, 17, i == 3, BLUE if i == 3 else INK)] + ([(f" {basis}", 16, False, GRAY)] if basis else [])], anchor=MID)
+    rect(s, qx0, yy + 0.06, xq(v) - qx0, 0.26, fill=col)
+    tb(s, xq(v) + 0.06, yy, 0.70, 0.38, [(lab, 17, True, BLUE if i == 3 else INK)], anchor=MID)
+
 BOT = 9.40
 steps = [  # x, w, top, fill, step name, years, metric, metric sub, state chip
-    (MX, 5.55, 5.75, PALE, "NAND → SSD", "1991~", "ECC 약 60배", "셀 오류율 약 100만 배 ↑를 흡수", "완결"),
-    (MX + 5.75, 5.90, 4.45, PALE, "SSD 혼자 최적화", "2014~2019", "WAF ≈ 3", "데이터 수명을 추정만 할 수 있었다", "부분 성공"),
-    (MX + 11.85, 6.57, 3.10, BLUE, "고객 시스템과 공동 설계", "2022~", "WAF 3.22 → 1.03", "고객이 데이터 수명을 알려 준다", "다음 칸"),
+    (MX, 5.55, 6.20, PALE, "NAND → SSD", "1991~", "ECC 약 60배", "셀 오류율 약 100만 배 ↑를 흡수", "완결"),
+    (MX + 5.75, 5.90, 5.62, PALE, "SSD 혼자 최적화", "2014~2019", "WAF ≈ 3", "데이터 수명을 추정만 할 수 있었다", "부분 성공"),
+    (MX + 11.85, 6.57, 2.96, BLUE, "고객 시스템과 공동 설계", "2022~", "WAF 3.22 → 1.03", "데이터 수명은 고객 시스템만 안다", "다음 칸"),
 ]
 for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
     hot = fill == BLUE
     rect(s, x, top, w, BOT - top, fill=fill, shape=RR)
     ink, sub = (WHITE, BLUE_T2) if hot else (INK, GRAY)
-    tb(s, x + 0.30, top + 0.14, w - 2.1, 0.90, [(nm, 24, True, ink), (yr, 18, False, sub)], spacing=1.05)
-    chip(s, x + w - 1.70, top + 0.22, 1.40, 0.44, st, fill=WHITE if hot else (GRAY_2 if i == 0 else WHITE),
+    tb(s, x + 0.30, top + 0.12, w - 2.1, 0.86, [(nm, 24, True, ink), (yr, 18, False, sub)], spacing=1.0)
+    chip(s, x + w - 1.70, top + 0.20, 1.40, 0.44, st, fill=WHITE if hot else (GRAY_2 if i == 0 else WHITE),
          color=BLUE if hot else (WHITE if i == 0 else GRAY), size=18, line=None if (hot or i == 0) else GRAY_2)
-    iy = top + 1.12
+    iy = top + 1.02
     if i == 0:
-        d.fit(s, d.part("nand"), x + 0.40, iy, 1.20, 0.82)
-        d.arrow_r(s, x + 1.78, iy + 0.29, 0.48, 0.24)
-        d.fit(s, d.part("ssd"), x + 2.42, iy, 2.30, 0.82)
-        my = iy + 0.92
+        d.fit(s, d.part("nand"), x + 0.40, iy, 1.10, 0.74)
+        d.arrow_r(s, x + 1.66, iy + 0.25, 0.46, 0.24)
+        d.fit(s, d.part("ssd"), x + 2.28, iy, 2.20, 0.74)
+        my = iy + 0.80
     elif i == 1:
-        d.fit(s, d.part("ssd"), x + 0.40, iy, 2.80, 1.05)
-        my = iy + 1.25
+        d.fit(s, d.part("ssd"), x + 0.40, iy, 2.40, 0.86)
+        my = iy + 0.98
     else:
-        d.fit(s, d.part("server"), x + 0.40, iy, 2.20, 1.25)
-        d.fit(s, d.part("ssd"), x + 2.80, iy + 0.25, 1.90, 0.78)
-        my = iy + 1.40
-    tb(s, x + 0.30, my, w - 0.6, 0.74, [(met, 40, True, WHITE if hot else (GRAY if i == 1 else INK))], anchor=MID)
-    tb(s, x + 0.30, my + 0.76, w - 0.6, 0.40, [(msub, 18, False, sub if not hot else WHITE)])
-# 3칸: 고객 시스템만 아는 것 → 두 과제
-x, w, top = steps[2][0], steps[2][1], steps[2][2]
-ky = 7.00
-tb(s, x + 0.30, ky, w - 0.6, 0.38, [("고객 시스템만 아는 것", 18, True, BLUE_T2)])
-for j, (k, v) in enumerate([("데이터가 언제 지워지나", "고DWPD"), ("GPU가 무엇을 다시 읽나", "GPU 직결")]):
-    yy = ky + 0.46 + j * 0.80
-    label_box(s, x + 0.30, yy, w - 2.65, 0.64, [(k, 18, True, BLUE)], fill=WHITE)
-    d.arrow_r(s, x + w - 2.27, yy + 0.20, 0.38, 0.24, fill=BLUE_T2)
-    tb(s, x + w - 1.80, yy, 1.55, 0.64, [(v, 20, True, WHITE)], anchor=MID)
-# 왼쪽 위: 셀은 약해지고 요구는 그대로 (사실 그래프)
-tb(s, MX, 2.98, 5.5, 0.34, [("셀 수명 P/E (대표값, 로그 축)", 16, False, GRAY)])
-tb(s, MX, 3.34, 1.0, 0.34, [("고객 요구", 16, True, BLUE)], anchor=MID)
-rect(s, MX + 1.05, 3.50, 3.95, 0.03, fill=BLUE)
-tb(s, MX + 5.08, 3.34, 1.0, 0.34, [("그대로", 16, True, BLUE)], anchor=MID)
-pe = [("SLC", 100000, "10만"), ("MLC", 10000, "1만"), ("TLC", 3000, "3천"), ("QLC", 1000, "1천")]
-PB, PH = 5.30, 1.30
-for k, (nm, v, lab) in enumerate(pe):
-    h = (math.log10(v) - 2) / 3 * PH
-    bx = MX + 1.25 + k * 1.20
-    rect(s, bx, PB - h, 0.78, h, fill=GRAY_2 if k else GRAY)
-    tb(s, bx - 0.2, PB - h - 0.34, 1.18, 0.32, [(lab, 16, True, INK)], align=C)
-    tb(s, bx - 0.2, PB + 0.02, 1.18, 0.32, [(nm, 16, False, GRAY)], align=C)
-tb(s, MX + 2.40, 3.66, 3.6, 0.48, [("약 100배 ↓", 24, True, BLUE)], align=C, anchor=MID)
-# 1→2→3 사이 쉐브론
-d.chevron(s, MX + 5.57, 7.30, w=0.16, h=0.50)
-d.chevron(s, MX + 11.67, 6.50, w=0.16, h=0.50)
+        d.fit(s, d.part("server"), x + 0.40, iy, 1.90, 1.05)
+        d.fit(s, d.part("ssd"), x + 2.50, iy + 0.22, 1.80, 0.70)
+        my = iy + 1.12
+    tb(s, x + 0.30, my, w - 0.6, 0.70, [(met, 40 if hot else 36, True, WHITE if hot else (GRAY if i == 1 else INK))], anchor=MID)
+    tb(s, x + 0.30, my + 0.70, w - 0.6, 0.38, [(msub, 18, False, WHITE if hot else sub)])
+
+# ---- 3칸 안: 고객은 이미 자기 시스템에서 쓰기를 다룬다 (Meta CacheLib)
+x, w = steps[2][0], steps[2][1]
+MY0 = 6.30
+rect(s, x + 0.26, MY0, w - 0.52, 2.86, fill=WHITE, shape=RR)
+d.fit(s, d.logo("meta"), x + 0.48, MY0 + 0.16, 1.20, 0.30, align="left")
+tb(s, x + 1.80, MY0 + 0.10, w - 2.2, 0.42, [("CacheLib 프로덕션", 18, True, INK)], anchor=MID)
+# 쓰기 수요 대 SSD 수명 예산 막대
+tb(s, x + 0.48, MY0 + 0.62, 3.2, 0.34, [("쓰기 수요 / SSD 수명 예산", 16, False, GRAY)])
+mb0, mbw = x + 0.48, 2.70
+rect(s, mb0, MY0 + 1.02, mbw, 0.46, fill=GRAY_2)
+tb(s, mb0 + 0.10, MY0 + 1.02, 1.6, 0.46, [("상한 없으면", 16, True, WHITE)], anchor=MID)
+tb(s, mb0 + mbw + 0.06, MY0 + 1.02, 0.9, 0.46, [("150%", 20, True, INK)], anchor=MID)
+rect(s, mb0, MY0 + 1.58, mbw / 1.5, 0.46, fill=BLUE_T2)
+tb(s, mb0 + 0.10, MY0 + 1.58, 1.6, 0.46, [("수명 예산", 16, True, INK)], anchor=MID)
+tb(s, mb0 + mbw / 1.5 + 0.06, MY0 + 1.58, 0.9, 0.46, [("100%", 20, True, INK)], anchor=MID)
+tb(s, x + 0.48, MY0 + 2.14, 3.6, 0.60, [("플래시 OP 50%로 버틴다", 16, False, GRAY)], anchor=MID)
+# 고객 소프트웨어로 쓰기 -44%
+rect(s, x + 4.15, MY0 + 0.62, 0.012, 2.05, fill=LINE)
+tb(s, x + 4.30, MY0 + 0.66, w - 4.7, 0.90, [("-44%", 44, True, BLUE)], anchor=MID)
+tb(s, x + 4.30, MY0 + 1.56, w - 4.7, 1.10, [("ML 수용 정책으로", 16, False, GRAY), ("플래시 기록량", 16, False, GRAY), ("(고객 SW)", 16, True, BLUE)], spacing=1.0)
+
+d.chevron(s, MX + 5.57, 7.60, w=0.16, h=0.50)
+d.chevron(s, MX + 11.67, 7.10, w=0.16, h=0.50)
 
 d.band(s, 9.60, 0.80, "결론", "사양서만으로는 2칸에 머뭅니다. 3칸은 고객 시스템 안에서 함께 설계해야 닿습니다")
-d.footer(s, "출처: 해법 사다리 원장(JESD218 UBER 요구 · LDPC 정정 능력 연혁 · Multi-stream(2014) · AutoStream(2017) · FDP NVMe TP4146(2022) · CacheLib + FDP WAF 3.22 → 1.03(EuroSys'25) · "
-            "LMCache FDP 배치 PR #4016(2026-08)) · GPU 재읽기: Samsung aisio(GPU HBM 캐시 적중이 이득의 주원천) · 부품 이미지는 3D 렌더")
-d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 메모리의 역사로 말씀드리겠습니다. 고객 요구는 그대로인데 단품 지표가 나빠지면, 보상은 늘 한 계층 위로 올라갔습니다. "
-        "첫 계단은 NAND에서 SSD입니다. 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러의 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
-        "둘째 계단은 SSD 혼자 하는 최적화입니다. 2014년부터 2019년까지 멀티 스트림과 핫 콜드 분리처럼 SSD가 워크로드를 추정했지만, 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "
-        "셋째 계단이 고객 시스템과의 공동 설계입니다. 호스트가 데이터 수명을 알려 주는 FDP로 Meta CacheLib은 WAF를 3.22에서 1.03으로 낮췄고, 우리는 LMCache에 같은 기능을 넣었습니다. "
-        "새로 나타난 두 과제가 바로 이 셋째 계단에 있습니다. 고DWPD에 필요한 정보는 데이터가 언제 지워지는지이고, GPU 직결에 필요한 정보는 GPU가 무엇을 다시 읽는지입니다. 둘 다 고객 시스템 안에 있습니다. "
-        "사양서를 받아 SSD를 잘 만드는 방식은 둘째 계단에 머뭅니다. 셋째 계단은 고객 시스템 안에서 함께 설계해야 닿습니다.")
+d.footer(s, "출처: 해법 사다리 원장(JESD218 · LDPC · FDP TP4146 · CacheLib + FDP 3.22 → 1.03, EuroSys'25) · 캐시 DWPD: Kangaroo 예산 3(SOSP'21) · Baleen 목표 7.2(FAST'24) · "
+            "StorageReview KV 실측 3.2(2026-08) · CacheLib 150% · OP 50% · -44%(OSDI'20) · 기준(예산 · 실측 · 목표)이 서로 다름 · 부품 이미지는 3D 렌더")
+d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터로 말씀드리겠습니다. 왼쪽 위는 셀이 견디는 쓰기 횟수입니다. SLC 10만 회에서 QLC 1천 회로 약 100배 줄었습니다. "
+        "그 옆은 고객의 캐시 계층이 실제로 쓰는 양입니다. QLC 정격은 하루 0.6회인데, Meta의 플래시 캐시는 하루 3회를 쓰기 예산으로 잡고, Meta 벌크 스토리지 캐시 연구는 7.2회를 목표로 둡니다. AI KV 캐시 계층을 실측하면 드라이브당 3.2회였습니다. 기준은 예산, 실측, 목표로 서로 다르지만 방향은 같습니다. "
+        "고객의 쓰기는 커지는데 셀 수명은 줄면, 보상은 늘 한 계층 위로 올라갔습니다. 첫 계단은 NAND에서 SSD입니다. 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
+        "둘째 계단은 SSD 혼자 하는 최적화입니다. 2014년부터 2019년까지 SSD가 워크로드를 추정했지만 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "
+        "셋째 계단이 고객 시스템과의 공동 설계입니다. 호스트가 데이터 수명을 알려 주는 FDP로 CacheLib은 WAF를 3.22에서 1.03으로 낮췄습니다. "
+        "고객은 이미 자기 시스템에서 이 문제와 싸우고 있습니다. Meta CacheLib 논문에 따르면, 캐시 쓰기를 그대로 두면 SSD 수명 예산의 1.5배가 됩니다. 그래서 Meta는 플래시를 50퍼센트 더 두고, 머신러닝 수용 정책이라는 자기 소프트웨어로 플래시 기록량을 44퍼센트 줄였습니다. "
+        "해법이 이미 고객 소프트웨어 안에 있다는 뜻입니다. 사양서를 받아 SSD를 잘 만드는 방식은 둘째 계단에 머뭅니다. 셋째 계단은 고객 시스템 안에서 함께 설계해야 닿습니다.")
 
 # =============================================================== 4 실행
 s = d.slide(4, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")
