@@ -2278,3 +2278,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 구성: §0 요약(제목 문단 · 장별 질문/답/근거 · 한 줄 결론) → §1 배경(HBM 점유율 표 · "복기"는 과제팀 해석임을 명시 · 인터뷰 2건 · KV 캐시가 SSD로 "내려온다"(증설) · eSSD/KV/QLC 모델 표 · DWPD 표와 반증 · 명제) → §2 솔루션(SSD 안의 해법과 WAF 한계 · 세 갈래 비교와 30 DWPD 조건표 · 수명 정보는 호스트에 · 기술 스택 3단계와 LMCache FDP 머지 · 워크로드 구성형 SSD) → §3 실행(계약: Micron ↔ Anthropic 4요소 / 사람: Palantir FDE와 수요를 함께 만드는 순환 Mermaid / 역량: 계층별 지금 대 필요한 기술 / 계약의 창·3단계·90일 / 성과 지표) → §4 리스크와 반론 → §5 근거 대장 S-1~S-18(등급) → §6 슬라이드 대응표
 - 🟡 항목(LMCache 블로그 WAF 실측 등)은 본문에서 등급을 밝혀 사실과 구분. 링크 전수 확인
 - index.md outputs 절 등록, 기획서 frontmatter에 report 연결. 대시보드 무변경 → 버전 bump 생략
+
+## [2026-10-03] ingest | 고용량 SSD · 랙 공간 가치 · 결함 허용 원장 수집 (전략 방향 조정 준비)
+- 사용자 지시: 전략 방향을 "KV 캐시 고DWPD 단일 베팅"에서 **어떤 미래에도 대응하는 세 기술(고DWPD · Mixed Media · 고용량)과 그 공통 기반인 고객 협력**으로 조정, 별도 보고서와 3장 슬라이드(아웃라인 승인 후)
+- Research Agent 2건 병렬 착수. 이 항목은 그중 고용량 축: 신규 원장 `sources/articles/ssd-high-capacity-rackspace-fault-tolerance-2026-10.md`. 벤더·뉴스·OCP·NVMe 사이트 대부분 프록시 차단 → ✅는 GitHub 오픈소스 코드(libnvme · nvme-cli · Linux · QEMU · sg3_utils)와 Microsoft Research PDF 3건 · Google Cloud 블로그 2건만
+- 기존 원장과의 충돌 2건 기록: 삼성 BM1773 재확인 실패, PM1733 Fail-in-Place "플레인 4GB · 다이 8GB" 단위 재확인 실패(30.72TB ÷ 512다이 ≈ 60GB와 불일치). 새 보고서에서는 두 사실을 핵심 근거로 쓰지 않는다
+- Mixed Media 축 원장은 수집 중. 보고서 · 위키 · 아웃라인은 두 원장이 모인 뒤 작성
