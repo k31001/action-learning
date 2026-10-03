@@ -2301,3 +2301,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 보고서 `outputs/report/ssd-future-ready-strategy-report.md` v1.0: 세 신호 → 세 기술 → 시나리오 A~E 대응표, 기술별 "SSD 안에서 / 고객과 함께 / 선례 / 갭", 공통 플랫폼(배치 정보 · 구성 가능성 · 텔레메트리), 실행(기술별 공동 설계 의제 · 계약 · 사람 · 역량 · RS-9 신호 게이트 · 90일 · KPI), 리스크, 근거 대장 F-1~F-18
 - 아웃라인 `outputs/presentation/ssd-future-ready-strategy-outline.md` 제안 v0.1(승인 대기, 질문 4건). 덱은 승인 후 제작
 - 미재확인 2건(BM1773, PM1733 FIP 단위)은 핵심 근거에서 제외. index.md 등록, 지식 그래프 재생성(노드 118 · 엣지 641 · 고아 0) → **dashboard v2.46.51(패치)**, updates.js 항목
+
+## [2026-10-03] build | 고객 협력 전략 아웃라인 v0.2: 4장 구성 · 고DWPD를 고객 협력의 핵심으로
+- 사용자 답변: ① HBM 교훈 띠 넣기 ② Mixed Media는 확인된 pSLC까지만(TLC 영역 제외) ③ 신호 게이트는 2장 하단으로 ④ 덱 이름 "불확실성이 높은 미래에 대응하기 위한 고객 협력 전략"
+- 핵심 논리 조정: Mixed Media · 고용량은 SSD 안에서 완결(지금 방식으로 앞서간다), 고DWPD는 SSD 단독이면 30 DWPD에 OP 174%가 필요하고(WAF 3, ⚠️ 파생) 데이터 수명은 고객 시스템만 알기 때문에 고객과 함께 풀어야 한다 → 다른 접근이 필요해 이 전략을 제안
+- 3장 신설(당위성): 해법의 범위 NAND → SSD → 고객 시스템. 근거는 `solution-ladder-component-to-system.md`(RBER 약 10⁶배 ↑ → ECC 약 60배 ↑ 완결, SSD 단독 최적화 WAF ≈ 3 부분 성공, CacheLib FDP 3.22 → 1.03)
+- 추가 솔루션 후보 리서치 3건(전력 · 냉각, 보안 · 신뢰, GPU 직결 고IOPS) 진행 중. 덱은 후보 결정과 아웃라인 승인 후 제작. 대시보드 무변경
