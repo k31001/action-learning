@@ -17,6 +17,23 @@ export const UPDATES = [
   {
     date: '2026-10-06',
     type: 'build',
+    version: 'v2.46.61',
+    title: '덱 4장 실행 보강: Multi-Year Deal(MYD) · FDE가 고객 DC에서 하는 다섯 가지 · 엔지니어 수준 고객 관계 화두 (덱 v1.7 · 보고서 v1.8)',
+    summary:
+      '계약 용어를 장기 물량 계약(LTA)에서 Multi-Year Deal(MYD)로 바꾸고, FDE 모델을 Pod의 현장 액션 다섯 가지(관찰 · 실측 · 시제품 · 증명 · 수요화)로 풀었다. 역량은 고객 · 국가별 언어와 문화, 영업 · 마케팅이 아닌 엔지니어 수준 고객 관계라는 화두로 마무리했다(패치 v2.46.61).',
+    tags: ['실행 전략', 'MYD', 'FDE', 'Co-Design Pod', '고객 관계', '문화'],
+    items: [
+      { label: '위키', detail: 'dev-org-transformation.md [Update 2026-10-06]: 다섯 가지 액션 표 · 수요화 · MYD · 화두' },
+      { label: '덱 4장', detail: 'MYD 적층 · 고객 DC 안 다섯 가지 · 역량 격자 + 화두 상자' },
+      { label: '보고서 v1.8', detail: '§4.3 계약 · 사람 · 역량 재작성, §4.5 · F-11 · §7' },
+    ],
+    links: [
+      { label: 'wiki/strategies/dev-org-transformation.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/dev-org-transformation.md' },
+    ],
+  },
+  {
+    date: '2026-10-06',
+    type: 'build',
     version: 'v2.46.60',
     title: '덱 보충 5장: FDP 파라미터 민감도 시뮬레이션 (RU 크기 · RUH 수 · 분류 정확도)',
     summary:

@@ -1,7 +1,7 @@
 ---
 type: report
-status: v1.7 (2026-10-06). 보충 5장 추가: FDP 파라미터 민감도 시뮬레이션(RU 크기 · RUH 수 · 분류 정확도). v1.6: 고객 협력 깊이 재판단(사용자 기준: 스펙으로 분리되면 tightly coupled 불필요): 결합도 × 스펙 비완결도 → 공동 설계 필수 = FDP 하나, Mixed Media는 스펙으로 협력. 2장 단순화(제품군 매트릭스 + 3×3 격자). v1.5: 2장 재구성: 제품 포트폴리오를 받치는 핵심 기술 6가지(Fault Tolerant · Large Mapping · Multi-Tenant QoS · Confidential Storage · Mixed Media · FDP) × 제품군 × 고객 협력 강도(4기준 0~8점), 협력 필수 = Mixed Media · FDP. v1.4: 1장 재구성: 데이터센터 응용별 SSD 요구 + 제품 포트폴리오(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC), 에이전트 = 사용자별 VM → 고용량 QLC로 정정(팩트 체크). v1.3: Mixed Media를 고객 협력 과제로 재분류하고 논리 보강(사용자 분석 + 검증 원장). v1.2: SCADA · MLC 제외 · 데이터센터 유형별 요구 · 고객 측 고DWPD 근거. 덱 4장 v1.2
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.6, 4장 + 보충 1장, 생성기 scripts/generate_ssd_future_ready_pptx.py)
+status: v1.8 (2026-10-06). 4장 실행: LTA → Multi-Year Deal(MYD), FDE가 고객 DC에서 하는 다섯 가지(관찰 · 실측 · 시제품 · 증명 · 수요화), 역량 화두(언어 · 문화 · 엔지니어 수준 고객 관계). v1.7: 보충 5장 추가: FDP 파라미터 민감도 시뮬레이션(RU 크기 · RUH 수 · 분류 정확도). v1.6: 고객 협력 깊이 재판단(사용자 기준: 스펙으로 분리되면 tightly coupled 불필요): 결합도 × 스펙 비완결도 → 공동 설계 필수 = FDP 하나, Mixed Media는 스펙으로 협력. 2장 단순화(제품군 매트릭스 + 3×3 격자). v1.5: 2장 재구성: 제품 포트폴리오를 받치는 핵심 기술 6가지(Fault Tolerant · Large Mapping · Multi-Tenant QoS · Confidential Storage · Mixed Media · FDP) × 제품군 × 고객 협력 강도(4기준 0~8점), 협력 필수 = Mixed Media · FDP. v1.4: 1장 재구성: 데이터센터 응용별 SSD 요구 + 제품 포트폴리오(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC), 에이전트 = 사용자별 VM → 고용량 QLC로 정정(팩트 체크). v1.3: Mixed Media를 고객 협력 과제로 재분류하고 논리 보강(사용자 분석 + 검증 원장). v1.2: SCADA · MLC 제외 · 데이터센터 유형별 요구 · 고객 측 고DWPD 근거. 덱 4장 v1.2
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.7, 4장 + 보충 1장, 생성기 scripts/generate_ssd_future_ready_pptx.py)
 outline: outputs/presentation/ssd-future-ready-strategy-outline.md
 supersedes_focus: outputs/report/ssd-survival-strategy-report.md (KV 캐시 고DWPD 중심 → 데이터센터별 요구에 맞춘 준비 + 고객 협력 과제)
 sources:
@@ -29,6 +29,7 @@ wiki:
   - wiki/concepts/ssd-future-solution-candidates.md
   - wiki/scenarios/scenario-matrix.md
   - wiki/strategies/invariant/README.md
+  - wiki/strategies/dev-org-transformation.md
   - wiki/strategies/qlc-execution-strategy.md
 last_updated: 2026-10-06
 ---
@@ -320,9 +321,18 @@ SSD 쪽 두 값은 고객 응용을 알아야 출하 전에 정할 수 있고, �
 
 ### 4.3 협력의 방식: 계약 · 사람 · 역량
 
-- **계약: 물량에 기술 협력을**. 장기 물량 계약 위에 공동 설계 · 최적화와 운영 통합을 묶는다. 벤치마크는 Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략적 투자 🟡).
-- **사람: 고객 안에 상주**. Co-Design Pod(FDE)가 고객 데이터센터 안에서 **명시된 요구와 실제 요구의 간극**을 메운다. 벤치마크는 Palantir FDE(🟡).
-- **역량: 시스템 SW와 AI 데이터센터 운영의 눈**. KV 캐시 관리자 · 커널 블록 계층을 읽고 고칠 수 있는 시스템 소프트웨어 전문가, 고객의 지표로 말하는 사람. 출발점은 이미 있다(xNVMe 주 저자, SPDK 기여, LMCache Committer ✅).
+- **계약: 물량에 기술 협력을**. 지금의 **Multi-Year Deal(MYD)** 은 여러 해의 수량과 가격을 약속한다. 앞으로는 MYD(다년 물량) 위에 공동 설계 · 최적화와 운영 통합을 묶는다(자본 연계는 선택). 벤치마크는 Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략적 투자 🟡).
+- **사람: 고객 안에 상주(FDE)**. Co-Design Pod가 고객 엔지니어와 매일 함께 일하며 **명시된 요구와 실제 요구의 간극**을 메우고 수요를 함께 만든다. 벤치마크는 Palantir · OpenAI FDE(🟡, [palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md)). 고객 DC 안에서 하는 다섯 가지([dev-org-transformation.md](../../wiki/strategies/dev-org-transformation.md) [Update 2026-10-06]):
+
+| 단계 | 액션 | 산출물 |
+|---|---|---|
+| ① 관찰 | 고객 워크로드 트레이스로 데이터 수명 · 쓰기 크기를 재서 실제 요구를 찾는다 | 고객별 수명 등급 · 삭제 단위 프로파일 |
+| ② 실측 | 고객 환경에서 WAF · 꼬리 지연 기준선을 함께 잰다 | 기준선 대시보드 |
+| ③ 시제품 | 고객 SW에 배치 코드를 직접 넣는다(오픈소스 PR 포함, 선례 LMCache FDP 머지 ✅) | 배치 패치 · RU · RUH 구성안 |
+| ④ 증명 | 효과를 고객의 지표(토큰당 비용 · GPU 가동률)로 보인다 | 고객 지표 기준 효과 보고 |
+| ⑤ 수요화 | 증명된 해법을 고객 RFQ · OCP 요구 · 다음 제품 사양으로 굳힌다("gravel road → paved highway") | 고객 RFQ 항목 · OCP 요구 제안 · 공동 발표 |
+
+- **역량: 고객처럼 보는 눈**. KV 캐시 관리자 · 커널 블록 계층을 읽고 고칠 수 있는 시스템 소프트웨어 전문가, 고객의 지표로 말하는 사람. 출발점은 이미 있다(xNVMe 주 저자, SPDK 기여, LMCache Committer ✅). **화두(⚠️ 문제 제기)**: 기술만으로 충분한가. 고객 · 국가마다 다른 언어와 문화를 알고, 영업 · 마케팅이 아니라 **엔지니어가 고객 관계를 직접 맡을 수 있는가**. 고객 엔지니어가 신뢰하는 상대는 같은 문제를 같은 언어로 푸는 엔지니어다.
 
 ### 4.4 신호에 따른 비중 조정 (불변 전략)
 
@@ -345,7 +355,7 @@ SSD 쪽 두 값은 고객 응용을 알아야 출하 전에 정할 수 있고, �
 
 **계약의 창**: 공급자 우위가 이어지는 2026년 4분기 ~ 2027년 상반기(2027년 하반기 공급 완화 전망 🟡) 안에 기술 협력을 계약에 담는다.
 
-**첫 90일**(덱에서는 발표자 노트): ① 전략 고객 1~2사 선정과 FDP 공동 설계 의제 매칭(Mixed Media 등은 요구 스펙 정리) ② Co-Design Pod 구성 ③ 시스템 SW 전문가 채용 착수 ④ 고객 트레이스로 WAF · 작은 쓰기 비중 실측(pSLC 비율 근거) ⑤ 신호 대시보드(§4.4) 가동.
+**첫 90일**(덱에서는 발표자 노트): ① 전략 고객 1~2사 선정과 FDP 공동 설계 의제 매칭(Mixed Media 등은 요구 스펙 정리), MYD 협상에 기술 협력 항목 제안 ② Co-Design Pod 구성 ③ 시스템 SW 전문가 채용 착수 ④ 고객 트레이스로 WAF · 작은 쓰기 비중 실측(pSLC 비율 근거) ⑤ 신호 대시보드(§4.4) 가동.
 
 ### 4.6 성과 지표
 
@@ -386,7 +396,7 @@ SSD 쪽 두 값은 고객 응용을 알아야 출하 전에 정할 수 있고, �
 | F-8 | 데이터센터 지연 · 랙 전력 · Azure 스토리지 33% · "부분 고장은 전체 고장" | 🟡 / ✅ | [ssd-high-capacity-rackspace-fault-tolerance-2026-10.md](../../sources/articles/ssd-high-capacity-rackspace-fault-tolerance-2026-10.md) |
 | F-9 | 해법 사다리(RBER · ECC · WAF 3.22 → 1.03) | ✅ / 🟡 | [component-to-system-solution-ladder-facts-2026-09.md](../../sources/articles/component-to-system-solution-ladder-facts-2026-09.md) |
 | F-10 | 시나리오 확률 A26 · B39 · C8 · D21 · E6 | 위키 | [scenario-matrix.md](../../wiki/scenarios/scenario-matrix.md) |
-| F-11 | Micron ↔ Anthropic 계약 4요소 · Palantir FDE | 🟡 | [micron-anthropic-sca](../../sources/articles/micron-anthropic-sca-2026-06-22.md) · [palantir-fde](../../sources/articles/palantir-fde-model-2026-07.md) |
+| F-11 | Micron ↔ Anthropic 계약 4요소 · Palantir · OpenAI FDE(명시적 대 실제 요구 · 검증 단계 · 고객 인프라 코드 · 현장 해법 → 제품) | 🟡 | [micron-anthropic-sca](../../sources/articles/micron-anthropic-sca-2026-06-22.md) · [palantir-fde](../../sources/articles/palantir-fde-model-2026-07.md) |
 | F-12 | Mixed Media 논리: 쓰기 75%가 16KiB 이하 · WAF 70+ → 1.02 · VoC pSLC 0.5~2% · Slot Tax · 출처 귀속 정정 | 🟡 / ⚠️ / ✅ | [ssd-mixed-media-hyperscaler-logic-2026-10.md](../../sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md) MX-01~MX-77 |
 | F-13 | 사용자 제공 Mixed Media 분석(원문) | 원본 | [user-mixed-media-hyperscaler-analysis-2026-10-03.md](../../sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md) |
 | F-14 | 에이전트 VM 스토리지 프로파일(Muse · dots · 휴면 · 스냅샷 경로), 멀티테넌트 QoS(FlashBlox 3.1배 · WARP WAF 3.0), 드라이브 활용률 | ✅ / 🟡 / ⚠️ | [agent-vm-and-cloud-ssd-requirements-2026-10.md](../../sources/articles/agent-vm-and-cloud-ssd-requirements-2026-10.md) AV · CQ · AT |
@@ -396,7 +406,7 @@ SSD 쪽 두 값은 고객 응용을 알아야 출하 전에 정할 수 있고, �
 
 ---
 
-## 7. 슬라이드 4장 + 보충 1장 (덱 v1.6)
+## 7. 슬라이드 4장 + 보충 1장 (덱 v1.7)
 
 상세는 [ssd-future-ready-strategy-outline.md](../presentation/ssd-future-ready-strategy-outline.md).
 
@@ -405,6 +415,6 @@ SSD 쪽 두 값은 고객 응용을 알아야 출하 전에 정할 수 있고, �
 | 1 배경 | SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다 | HBM 점유율 슬로프 · 범용(클라우드 안 VM 여러 개가 SSD 하나를 나눠 쓰는 그림 · 실측 0.2 대 정격 1 DWPD · p99 섞어 쓰기 3.1 대 격리 1) · AI 학습(GPU당 대역 0.16 · 0.08 → 0.49 · 0.24 · 체크포인트 5.7TB) · AI 추론(DWPD 로그 막대) · 에이전트(휴면 격자 · VM 메모리 7.75 대 디스크 100GB · 1억 명 10EB) · **제품군 × 응용 매트릭스**(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC, DWPD 로그 막대 · 최대 용량) · 결론 밴드 "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다" |
 | 2 핵심 기술 | 핵심 기술 여섯 가지 중 다섯은 명확한 스펙으로 풀리지만, FDP는 고객과 함께 설계해야 제대로 동작합니다 | 왼쪽 "어떤 제품군에 쓰이나" 6 × 4 점 매트릭스(FDP 행 Blue) / 오른쪽 "고객과 어떻게 협력하나" 3 × 3 격자(가로 결합도: 그대로 · 설정 · 데이터 경로, 세로 스펙만으로 닫히나), 구역 SSD 안에서 · 스펙으로 협력 · 공동 설계 필수(FDP + WAF 혼자 3.22 대 함께 1.03), 밴드 "스펙을 정확히 받든 함께 설계하든, 핵심 기술을 제대로 확보하려면 고객과의 협력이 필수입니다". 수치 캡션은 노트로 |
 | 3 당위성 | 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다 | P/E 10만 → 1천 · 고객 캐시 DWPD(0.6 · 3 · 3.2 · 7.2) · 계단 3칸 · Meta CacheLib 150% 대 100% · -44% |
-| 4 실행 | 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다 | 계약 적층 · 상주 순환 · 역량 격자, 첫 90일은 노트 |
+| 4 실행 | 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다 | ① 계약 적층(지금 Multi-Year Deal(MYD) → MYD 위에 운영 통합 · 공동 설계, 자본 연계 선택) ② 사람: 지금 스펙 문서 → 고객 DC 안에서 하는 다섯 가지(관찰 · 실측 · 시제품 · 증명 · 수요화), 캡션 "고객 안에서 요구를 찾고 수요를 함께 만듭니다" ③ 역량 격자 + 화두 상자(언어 · 문화 · 엔지니어 수준 고객 관계), 캡션 "기술과 함께, 고객의 언어와 문화". 90일은 노트 |
 | 결론 밴드 | 실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다 | |
 | 5 보충 | FDP의 효과는 SSD 파라미터와 고객 SW의 분류가 응용마다 함께 맞을 때만 납니다 | ① 개념: 수명이 섞인 RU(GC 필요) 대 핸들별 RU(통째로 비움) + 모델 검증 막대(모델 2.97 → 1.00 대 CacheLib 3.22 → 1.03) / ② 시뮬레이션 3개: RU 크기(LSM · KV, 무너지는 지점 16 대 64) · RUH 수(캐시 · LSM · 멀티테넌트, 2 · 4 · 8) · 분류 정확도(캐시 · LSM), 칩 "SSD가 출하 전에 정함" · "고객 SW가 정함" |

@@ -1,12 +1,12 @@
 ---
 type: presentation-outline
-status: v1.6 덱 (2026-10-06, 보충 5장 FDP 시뮬레이션 추가). v1.5: 2장 단순화 + 협력 깊이 재판단(공동 설계 필수 = FDP). v1.4: 2장 재구성, v1.3: 1장 재구성. 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.6, 4장 + 보충 1장, 미커밋 산출물 · 생성기로 재현)
-report: outputs/report/ssd-future-ready-strategy-report.md (v1.7)
+status: v1.7 덱 (2026-10-06, 4장 MYD · FDE 다섯 가지 · 역량 화두). v1.6: 보충 5장 FDP 시뮬레이션 추가. v1.5: 2장 단순화 + 협력 깊이 재판단(공동 설계 필수 = FDP). v1.4: 2장 재구성, v1.3: 1장 재구성. 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.7, 4장 + 보충 1장, 미커밋 산출물 · 생성기로 재현)
+report: outputs/report/ssd-future-ready-strategy-report.md (v1.8)
 design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬, 20 × 11.25in, 본문 18pt+, 출처 15pt)
 ---
 
-# 불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 + 보충 1장 (덱 v1.6)
+# 불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 + 보충 1장 (덱 v1.7)
 
 ## v1.0 → v1.1 변경 (2026-10-03 사용자 리뷰)
 
@@ -61,6 +61,14 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 |---|---|
 | FDP는 왜 고객과 협력해야 효과를 보는지 설명하는 시각화 보충 자료 1장. 개념부터, 응용에 따라 주요 파라미터를 바꿔야 함을 시뮬레이션 · 시각화로 | 시뮬레이터 `scripts/fdp_waf_sim.py` 작성(페이지 매핑 FTL · greedy GC · OP 12% · 핸들별 GC RU · 응용별 수명 등급 합성 부하 · 동시 쓰기). 5장: ① 개념(섞인 RU 대 핸들별 RU) + 모델 검증(플래시 캐시 모델 2.97 → 1.00 대 CacheLib 실측 3.22 → 1.03) ② 응용마다 달라지는 것: RU 크기(LSM 16 · KV 64에서 무너짐) · RUH 수(캐시 2 · LSM 4 · 멀티테넌트 8) · 분류 정확도(캐시 오분류 20% → 2.37). "SSD가 출하 전에 정함" 대 "고객 SW가 정함" 칩. 밴드 "RU 크기 · RUH 수는 응용을 알아야 정하고, 분류는 고객 SW가 합니다: 그래서 FDP는 고객과 함께 맞춥니다" |
 
+## v1.6 → v1.7 변경 (2026-10-06 사용자 지시: 4장)
+
+| 지시 | 반영 |
+|---|---|
+| 장기 물량 계약(LTA)을 Multi-Year Deal(MYD)로 | ① 계약 "지금" 상자 = "Multi-Year Deal (MYD)", 앞으로 적층의 바닥 = "MYD (다년 물량)", 캡션 "MYD 위에 기술 협력을 쌓습니다". 보고서 §4.3도 변경 |
+| FDE가 고객 DC에서 구체적으로 무엇을 해야 실제 요구를 찾고 수요를 함께 만드나 | ② 사람: Pod 그림을 "고객 DC 안에서 하는 다섯 가지"로 교체. ① 관찰(트레이스로 실제 요구) ② 실측(WAF 기준선) ③ 시제품(고객 SW에 배치 코드, 선례 LMCache) ④ 증명(토큰당 비용 · GPU 가동률) ⑤ 수요화(고객 RFQ · OCP 요구 · 다음 제품 사양). 근거 = FDE 모델의 명시적 대 실제 요구 · 검증 단계 · 고객 인프라 코드 · 성과 평가 · gravel road → paved highway. 캡션 "고객 안에서 요구를 찾고 수요를 함께 만듭니다" |
+| 역량: 기술과 함께 고객별 · 국가별 언어와 문화, 엔지니어 수준 고객 관계 관리라는 화두로 마무리 | ③ 역량 격자 아래 화두 상자: "고객 · 국가마다 다른 언어와 문화를 알고, 영업 · 마케팅이 아니라 엔지니어가 고객 관계를 직접 맡을 수 있는가?" + 엔지니어 ↔ 엔지니어 아이콘. 캡션 "기술과 함께, 고객의 언어와 문화". LMCache · Dynamo 기여 문구는 노트로 |
+
 ## 제목 4개를 이어 읽으면
 
 > SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다. 핵심 기술 여섯 가지 중 다섯은 명확한 스펙으로 풀리지만, FDP는 고객과 함께 설계해야 제대로 동작합니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다. **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.**
@@ -80,7 +88,7 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 | 3 | 고객의 쓰기는 크고 셀 수명은 줄었다 | P/E 막대 + 고객 캐시 DWPD 막대 |
 | 3 | 고객은 이미 자기 SW로 푼다 | Meta CacheLib 150% 대 100% 막대 + -44% |
 | 3 | 3칸에서 WAF가 1에 닿는다 | WAF 3.22 → 1.03 |
-| 4 | 계약 · 사람 · 역량 | 적층 · 순환 · 격자(승인된 v1.3 그림) |
+| 4 | 계약 · 사람 · 역량 | MYD 적층 · 고객 DC 안 다섯 가지 액션 · 역량 격자 + 화두 상자 |
 | 5 | FDP는 수명이 같은 데이터를 모아 RU를 통째로 비운다 | 블록 그림(섞인 RU 대 핸들별 RU) + 모델 검증 막대(2.97 → 1.00 대 실측 3.22 → 1.03) |
 | 5 | RU 크기 · RUH 수 · 분류는 응용마다 다르게 맞춰야 한다 | 시뮬레이션 꺾은선 3개(RU 크기 · RUH 수 · 오분류율), 응용별 선 2~3개, 삭제 단위 표시선 |
 

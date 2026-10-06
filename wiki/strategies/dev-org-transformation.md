@@ -195,3 +195,20 @@ FDE·Co-Design Pod·시스템 모델링이 작동하려면 그 중심에 **고�
 ## [Update 2026-09-17] NAND/SSD 구체화 — QLC 추론 캐시 티어 실행 전략
 
 §4의 4대 축(기술·문화·조직·일하는 방식)을 QLC 추론 캐시 티어에 적용한 실행안은 [qlc-execution-strategy.md](qlc-execution-strategy.md)(5축: 인사·조직·문화·전략·재무, 볼드 3티어, 고객 협업 제안)에 있다. 실리콘밸리 소프트웨어 자회사(SK hynix AI Company ≥$10B 선례)·별도 보상(삼성 SV L6 $392K vs 빅테크 $600~700K 격차)·acqui-hire 가격 기준점(Astera↔Pliops 약 $70M/60명)은 [execution-benchmarks-sw-capability-customer-collab-2026-09.md](../../sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md) 참조. 역량 정의는 [qlc-workload-capability-phases.md](qlc-workload-capability-phases.md). 3차 재점검(2026-09-17)으로 §4의 기술 축(오픈소스 기여)은 **오픈소스 생태계 주도(메인테이너·프로젝트 운영)** 로, 문화·조직 축은 **고객 시스템을 아는 시스템 소프트웨어 전문가의 채용·양성과 미주 현지 채용 증대**로 구체화됐다([qlc-execution-strategy.md](qlc-execution-strategy.md) §2.3·§2.4).
+
+## [Update 2026-10-06] Co-Design Pod(FDE)가 고객 데이터센터 안에서 하는 다섯 가지 + 엔지니어 수준 고객 관계
+
+고객 협력 전략 덱 4장(실행)을 위해 FDE 모델([palantir-fde-model-2026-07.md](../../sources/articles/palantir-fde-model-2026-07.md))을 Pod의 **현장 액션**으로 풀었다. 공동 설계 대상은 FDP([ssd-core-technologies-customer-collaboration.md](../concepts/ssd-core-technologies-customer-collaboration.md) §3, [fdp-parameter-sensitivity-simulation.md](../concepts/fdp-parameter-sensitivity-simulation.md))다.
+
+| 단계 | 액션 | FDE 모델의 근거 | 산출물 |
+|---|---|---|---|
+| ① 관찰 | 고객 워크로드 트레이스로 데이터 수명 · 쓰기 크기를 재서 "말한 요구"와 "실제 요구"의 차이를 찾는다 | 명시적 요구 대 실제 요구의 간극(stated vs actual needs) | 고객별 수명 등급 · 삭제 단위 프로파일 |
+| ② 실측 | 고객 환경에서 WAF · 꼬리 지연 기준선을 함께 잰다 | 검증 단계: 고객 데이터로 평가 기준을 세우고 실측(OpenAI) | 기준선 대시보드 |
+| ③ 시제품 | 고객 SW에 배치 코드를 직접 넣는다(오픈소스 PR 포함) | 고객 인프라에 직접 코드 작성(OpenAI FDE) | 배치 패치 · RU · RUH 구성안. 선례: LMCache FDP 머지(삼성 Committer, [samsung-kv-cache-activities-2026-09.md](../../sources/articles/samsung-kv-cache-activities-2026-09.md)) |
+| ④ 증명 | 효과를 고객의 지표(토큰당 비용 · GPU 가동률)로 보인다 | 청구 시간이 아니라 성과(outcome)로 평가 | 고객 지표 기준 효과 보고 |
+| ⑤ 수요화 | 증명된 해법을 고객 RFQ · OCP 요구 · 다음 제품 사양으로 굳힌다 | "gravel road → paved highway": 현장 해법이 제품 표준이 된다 | 고객 RFQ 항목, OCP 요구 제안, 공동 발표 |
+
+- ⑤가 "수요를 함께 만든다"의 실체다. 고객 시스템에서 증명된 배치 정책이 고객의 구매 요구와 업계 요구(OCP)가 되면, 그것을 가장 먼저 만족하는 제품이 우리 제품이 된다. FDP 자체가 Google · Meta 제안에서 출발한 고객 설계 표준이라는 점([fdp-technical-limits-adoption-context-2026-08.md](../../sources/articles/fdp-technical-limits-adoption-context-2026-08.md) §2)이 같은 경로의 선례다.
+- 계약 용어: 덱 · 보고서에서 "장기 물량 계약(LTA)"을 **Multi-Year Deal(MYD)** 로 바꿨다(사용자 지시 2026-10-06). 전략적 계약 = MYD(다년 물량) 위에 공동 설계 · 운영 통합을 쌓는 구조.
+
+**화두 (사용자 지시 2026-10-06, ⚠️ 문제 제기)**: 기술 역량만으로 충분한가. 고객과 국가마다 언어와 문화가 다르고(미국 하이퍼스케일러 · 중국 클라우드 · 국내 고객), 고객 엔지니어가 신뢰하는 상대는 영업 · 마케팅이 아니라 같은 문제를 같은 언어로 푸는 엔지니어다. **엔지니어 수준에서 고객 관계를 직접 맡는 역량**(현지 언어 · 문화 이해, 고객 엔지니어와의 일상적 신뢰)을 Pod와 DE(§4.6 스타 엔지니어 트랙) 설계에 넣어야 하는지가 열린 질문이다. 영입 스타의 미국 현지 앵커 역할(§4.6)과 같은 방향이다.

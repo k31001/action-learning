@@ -474,12 +474,12 @@ tb(s, C1 + wm + 0.08, BENCH_Y - 0.02, 0.40, 0.38, [("↔", 20, True, GRAY)], ali
 wa, _ = d.img(s, d.logo("anthropic"), C1 + wm + 0.56, BENCH_Y + 0.08, h=0.19)
 tb(s, C1 + wm + 0.56 + wa + 0.14, BENCH_Y - 0.02, 1.2, 0.38, [("2026-06", 16, False, GRAY)], anchor=MID)
 tag(s, C1, NOW_Y, "지금", False)
-label_box(s, C1, NOW_Y + 0.44, W1, 0.60, [("장기 물량 계약 (LTA)", 20, True, WHITE)], fill=GRAY_2)
+label_box(s, C1, NOW_Y + 0.44, W1, 0.60, [("Multi-Year Deal (MYD)", 20, True, WHITE)], fill=GRAY_2)
 tb(s, C1, NOW_Y + 1.10, W1, 0.36, [("수량과 가격만 약속합니다", 18, False, GRAY)], align=C)
 d.down(s, C1 + W1 / 2, NEXT_Y - 0.32)
 tag(s, C1, NEXT_Y, "앞으로: 전략적 계약", True)
 SW1 = W1 - 1.05
-for i, (t, st) in enumerate([("자본 연계 (선택)", "opt"), ("운영 통합", "t1"), ("공동 설계 · 최적화", "hot"), ("다년 공급 (물량)", "base")]):
+for i, (t, st) in enumerate([("자본 연계 (선택)", "opt"), ("운영 통합", "t1"), ("공동 설계 · 최적화", "hot"), ("MYD (다년 물량)", "base")]):
     yy = NEXT_Y + 0.44 + i * 0.64
     if st == "opt":
         label_box(s, C1, yy, SW1, 0.54, [(t, 18, False, GRAY)], fill=WHITE, line=GRAY_2, dash=True)
@@ -495,7 +495,7 @@ tb(s, C1 + SW1 + 0.20, by0, 0.85, by1 - by0, [("기술", 18, True, BLUE), ("협�
 d.chevron(s, C2 - 0.19, 6.10, w=0.16, h=0.50)
 
 # ---- ② 사람
-d.panel_head(s, C2, W2, 2, "사람: 고객 안에 상주")
+d.panel_head(s, C2, W2, 2, "사람: 고객 안에 상주 (FDE)")
 d.img(s, d.logo("palantir"), C2, BENCH_Y + 0.01, h=0.34)
 tb(s, C2 + 0.44, BENCH_Y - 0.02, W2 - 0.44, 0.38, [[("Palantir FDE", 18, True, INK), ("   Anthropic · OpenAI도 채택", 16, False, GRAY)]], anchor=MID)
 tag(s, C2, NOW_Y, "지금", False)
@@ -507,39 +507,33 @@ rect(s, C2 + 1.78, BY + 0.29, W2 - 3.56, 0.03, fill=GRAY_2)
 rect(s, C2 + W2 / 2 - 0.22, BY + 0.02, 0.44, 0.56, fill=WHITE, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.FOLDED_CORNER)
 tb(s, C2, NOW_Y + 1.10, W2, 0.36, [("스펙 문서 · 간헐적 미팅: 명시된 요구만 오갑니다", 18, False, GRAY)], align=C)
 d.down(s, C2 + W2 / 2, NEXT_Y - 0.32)
-tag(s, C2, NEXT_Y, "앞으로: 고객 상주 협업 (Co-Design Pod)", True)
-SBY = NEXT_Y + 0.44
-rect(s, C2, SBY, W2, 0.56, fill=WHITE, line=LINE, shape=RR)
-d.fit(s, d.logo("samsung"), C2 + 0.22, SBY + 0.14, 1.45, 0.28, align="left")
-tb(s, C2 + 1.95, SBY, W2 - 2.2, 0.56, [("제품 · 로드맵", 18, True, INK)], anchor=MID)
-BX0, BY0, BW = C2, SBY + 1.02, W2
-BH = 8.56 - BY0
+tag(s, C2, NEXT_Y, "앞으로: 고객 DC 안에서 하는 다섯 가지", True)
+BX0, BY0, BW = C2, NEXT_Y + 0.44, W2
+BH = 8.76 - BY0
 rect(s, BX0, BY0, BW, BH, fill=TINT, line=BLUE, lw=1.5, shape=RR)
-ph = 0.62
-pod_x0 = BX0 + 0.35
-pod_w = 3 * (0.62 * ph) + 2 * 0.10
-pc = pod_x0 + pod_w / 2
-AY0, AY1 = SBY + 0.60, BY0 + 0.38
-rect(s, pc - 0.46, AY0, 0.34, AY1 - AY0, fill=BLUE, shape=MSO_SHAPE.DOWN_ARROW)
-rect(s, pc + 0.12, AY0, 0.34, AY1 - AY0, fill=BLUE_T1, shape=MSO_SHAPE.UP_ARROW)
-tb(s, pc - 1.40, AY0 + 0.02, 0.86, 0.38, [("사람", 18, True, BLUE)], align=R, anchor=MID)
-tb(s, pc + 0.58, AY0 + 0.02, 3.4, 0.38, [("실제 요구 → 제품", 18, True, BLUE_T1)], anchor=MID)
-tb(s, BX0 + BW - 3.2, BY0 + 0.10, 3.0, 0.36, [("고객 AI 데이터센터", 18, True, BLUE)], align=R)
-py = BY0 + 0.52
-px = pod_x0
-for _ in range(3):
-    px += d.person(s, px, py, ph, BLUE) + 0.10
-tb(s, pod_x0 - 0.3, py + ph + 0.06, pod_w + 0.6, 0.36, [("삼성 Pod", 18, True, BLUE)], align=C)
-gw = 2 * (0.62 * ph) + 0.10
-gx = BX0 + BW - 1.55 - gw
-qx = gx
+ph = 0.40
+px = BX0 + 0.24
 for _ in range(2):
-    qx += d.person(s, qx, py, ph, GRAY_2) + 0.10
-tb(s, gx - 0.55, py + ph + 0.06, gw + 1.1, 0.36, [("고객 엔지니어", 18, True, GRAY)], align=C)
-m0, m1 = pod_x0 + pod_w + 0.15, gx - 0.15
-rect(s, m0, py + 0.20, m1 - m0, 0.30, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_RIGHT_ARROW)
-tb(s, m0, py + 0.56, m1 - m0, 0.34, [("매일 함께", 16, True, BLUE)], align=C)
-d.fit(s, d.part("server"), BX0 + BW - 1.45, py - 0.02, 1.25, 0.76)
+    px += d.person(s, px, BY0 + 0.10, ph, BLUE) + 0.06
+rect(s, px + 0.06, BY0 + 0.24, 0.50, 0.14, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_RIGHT_ARROW)
+qx = px + 0.66
+for _ in range(2):
+    qx += d.person(s, qx, BY0 + 0.10, ph, GRAY_2) + 0.06
+tb(s, qx + 0.14, BY0 + 0.08, BW - (qx - BX0) - 0.3, 0.44, [[("삼성 Pod", 17, True, BLUE), (" + ", 17, False, GRAY), ("고객 엔지니어", 17, True, GRAY), (", 매일 함께", 17, False, GRAY)]], anchor=MID)
+ACTS = [("관찰", "고객 트레이스로 실제 요구를 찾는다", ""),
+        ("실측", "고객 환경에서 WAF 기준선을 함께 잰다", ""),
+        ("시제품", "고객 SW에 배치 코드를 직접 넣는다", ""),
+        ("증명", "토큰당 비용 · GPU 가동률로 보인다", ""),
+        ("수요화", "고객 RFQ · OCP 요구 · 다음 제품 사양으로", "")]
+AY = BY0 + 0.62
+for k, (verb, act, ex) in enumerate(ACTS):
+    yy = AY + k * 0.46
+    rect(s, BX0 + 0.24, yy + 0.04, 0.34, 0.34, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, BX0 + 0.24, yy + 0.04, 0.34, 0.34, [(str(k + 1), 15, True, WHITE)], align=C, anchor=MID)
+    tb(s, BX0 + 0.68, yy, 1.05, 0.42, [(verb, 18, True, BLUE)], anchor=MID)
+    tb(s, BX0 + 1.72, yy, BW - 1.80, 0.42, [(act, 17, False, INK)], anchor=MID)
+    if ex:
+        tb(s, BX0 + BW - 1.75, yy, 1.60, 0.42, [(ex, 15, False, GRAY)], align=R, anchor=MID)
 d.chevron(s, C3 - 0.19, 6.10, w=0.16, h=0.50)
 
 # ---- ③ 역량 격자 (새 과제의 층이 위로)
@@ -552,9 +546,9 @@ tb(s, cxf, NOW_Y, CWF, 0.36, [("필요한 기술", 18, True, BLUE)], align=C)
 layers = [("AI DC 운영", "없음", "off", "TCO · 추론 SLO", BLUE),
           ("KV 캐시 SW", "LMCache", "part", "Dynamo · Mooncake", BLUE),
           ("커널 · I/O", "일부", "part", "io_uring · NIXL", BLUE),
-          ("SSD FW", "강점", "on", "FDP · NS QoS · destage", BLUE_T1),
+          ("SSD FW", "강점", "on", "FDP · QoS · destage", BLUE_T1),
           ("NAND", "강점", "on", "", BLUE_T2)]
-RY3, RP3, RH3 = NOW_Y + 0.44, 0.70, 0.60
+RY3, RP3, RH3 = NOW_Y + 0.44, 0.60, 0.52
 for r, (nm, now_t, st, need, col) in enumerate(layers):
     yy = RY3 + r * RP3
     gap = r < 3
@@ -569,23 +563,37 @@ for r, (nm, now_t, st, need, col) in enumerate(layers):
         label_box(s, cxf, yy, CWF, RH3, [(need, 17, True, WHITE)], fill=col)
     else:
         rect(s, cxf, yy, CWF, RH3, fill=col, shape=RR)
-EY = RY3 + 5 * RP3 + 0.08
-tb(s, C3, EY, W3, 0.80, [[("LMCache: ", 18, False, GRAY), ("삼성 Committer · FDP 머지", 18, True, INK)],
-                         [("Dynamo · Mooncake: 기여 0", 18, False, GRAY)]], spacing=1.05)
+# 화두: 기술 다음의 역량
+QY = RY3 + 4 * RP3 + RH3 + 0.16
+QH = 8.76 - QY
+rect(s, C3, QY, W3, QH, fill=WHITE, line=BLUE, lw=1.5, shape=RR)
+label_box(s, C3 + 0.20, QY + 0.14, 0.86, 0.40, [("화두", 18, True, WHITE)], fill=BLUE)
+tb(s, C3 + 1.18, QY + 0.12, 2.6, 0.44, [("기술 다음의 역량", 19, True, INK)], anchor=MID)
+qx = C3 + W3 - 1.30
+qx += d.person(s, qx, QY + 0.12, 0.42, BLUE) + 0.04
+rect(s, qx, QY + 0.26, 0.32, 0.12, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_RIGHT_ARROW)
+d.person(s, qx + 0.36, QY + 0.12, 0.42, GRAY_2)
+tb(s, C3 + 0.22, QY + 0.62, W3 - 0.4, QH - 0.68, [("고객 · 국가마다 다른 언어와 문화를 알고,", 18, False, INK),
+                                                 ("영업 · 마케팅이 아니라 엔지니어가", 18, True, BLUE),
+                                                 ("고객 관계를 직접 맡을 수 있는가?", 18, True, BLUE)], spacing=1.05)
 
 # ---- 열 캡션
 CAP_Y = 8.86
-tb(s, C1, CAP_Y, W1, 0.50, [("물량 위에 기술 협력을 쌓습니다", 20, True, BLUE)], anchor=MID)
-tb(s, C2, CAP_Y, W2, 0.50, [("고객 안에서 실제 요구를 찾습니다", 20, True, BLUE)], anchor=MID)
-tb(s, C3, CAP_Y, W3, 0.50, [("시스템 SW와 AI DC 운영 역량", 20, True, BLUE)], anchor=MID)
+tb(s, C1, CAP_Y, W1, 0.50, [("MYD 위에 기술 협력을 쌓습니다", 20, True, BLUE)], anchor=MID)
+tb(s, C2, CAP_Y, W2, 0.50, [("고객 안에서 요구를 찾고 수요를 함께 만듭니다", 20, True, BLUE)], anchor=MID)
+tb(s, C3, CAP_Y, W3, 0.50, [("기술과 함께, 고객의 언어와 문화", 20, True, BLUE)], anchor=MID)
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
-d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자, 재무 조건 비공개) · Palantir FDE(고객 상주) · "
-            "KV 캐시 관리자 기여는 공개 저장소 커밋 기준(LMCache PR #4016, 2026-08) · 로고는 식별 표시")
+d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자) · Palantir · OpenAI FDE(명시적 요구 대 실제 요구, 고객 데이터 검증, "
+            "고객 인프라에 직접 코드, 현장 해법 → 제품) · LMCache FDP 머지(PR #4016, 2026-08) · 로고는 식별 표시")
 d.notes(s, "4장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
-        "첫째, 계약입니다. 지금은 수량과 가격만 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 물량 위에 기술 협력을 쌓겠습니다. "
-        "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir의 FDE처럼 Co-Design Pod가 고객 AI 데이터센터 안에 상주해 실제 요구를 찾고, 그것을 제품으로 되돌립니다. "
-        "셋째, 역량입니다. NAND와 SSD 펌웨어는 강점입니다. 비어 있는 곳은 그 위입니다. KV 캐시 소프트웨어는 LMCache에서 시작했고 Dynamo와 Mooncake로 넓혀야 합니다. 그리고 고객의 지표인 토큰당 비용과 GPU 가동률로 말하는 사람이 필요합니다. "
+        "첫째, 계약입니다. 지금의 Multi-Year Deal, MYD는 여러 해의 수량과 가격을 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 MYD 위에 기술 협력을 쌓겠습니다. "
+        "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 데이터센터 안에서 고객 엔지니어와 매일 함께 일합니다. 구체적으로 다섯 가지를 합니다. "
+        "하나, 관찰입니다. 고객 워크로드 트레이스로 데이터 수명과 쓰기 크기를 재서, 고객이 말한 요구와 실제 요구의 차이를 찾습니다. 둘, 실측입니다. 고객 환경에서 WAF와 꼬리 지연의 기준선을 함께 잽니다. "
+        "셋, 시제품입니다. 고객 소프트웨어에 배치 코드를 직접 넣어 봅니다. LMCache에 FDP 배치를 머지한 것이 선례입니다. 넷, 증명입니다. 효과를 우리 지표가 아니라 고객의 지표, 곧 토큰당 비용과 GPU 가동률로 보입니다. "
+        "다섯, 수요화입니다. 증명된 해법을 고객의 RFQ와 OCP 요구, 그리고 다음 제품 사양으로 굳힙니다. 현장의 거친 해법이 제품과 표준이 되면, 그것이 우리가 함께 만든 수요가 됩니다. "
+        "셋째, 역량입니다. NAND와 SSD 펌웨어는 강점이고, 비어 있는 곳은 그 위입니다. KV 캐시 소프트웨어는 LMCache에서 시작했고 Dynamo와 Mooncake에는 아직 기여가 없습니다. 고객의 지표인 토큰당 비용과 GPU 가동률로 말하는 사람이 필요합니다. "
+        "마지막으로 화두를 하나 드리겠습니다. 기술만으로 충분할까요? 고객과 국가마다 언어와 문화가 다릅니다. 고객 엔지니어가 신뢰하는 것은 영업이나 마케팅의 말이 아니라, 같은 문제를 같은 언어로 푸는 엔지니어입니다. 엔지니어 수준에서 고객 관계를 직접 맡을 수 있는 역량을 우리는 갖고 있는지 함께 생각해 보면 좋겠습니다. "
         "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 FDP 공동 설계 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
 
