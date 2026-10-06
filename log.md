@@ -2446,3 +2446,8 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 2장: 3 × 3 격자 → 구역 산점도(SSD 안에서 · 스펙으로 협력 · 공동 설계 필수, FDP 큰 Blue 점 + CacheLib WAF 막대)
 - 3장: 위 요지 문장 · 차트 보조 문구 · CacheLib 캡션 축소, 차트와 CacheLib 막대 · -44% 확대. 4장: "지금" 설명 · 출처 축소
 - 글자 수: 1장 1,032 → 862, 2장 846 → 743, 3장 835 → 661. 보고서 v2.0 §7, 아웃라인 v1.9
+
+## [2026-10-06] build | 고객 협력 전략 덱 PPTX 본체 커밋 (사용자 요청, .gitignore 예외)
+- 사용자 요청: "pptx도 커밋해서 푸시해 줘"
+- `outputs/presentation/ssd-future-ready-strategy.pptx`(덱 v1.9, 4장)를 생성기로 다시 만든 뒤 `git add -f`로 커밋. `.gitignore`의 `*.pptx` 규칙과 CLAUDE.md의 "PPTX 본체 미커밋" 원칙에 대한 이 파일 한정 예외
+- 재현 경로는 그대로 유지: `.venv/bin/python outputs/presentation/scripts/generate_ssd_future_ready_pptx.py`. 생성기를 고치면 이 PPTX도 다시 만들어 함께 커밋해야 어긋나지 않는다
