@@ -14,6 +14,32 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-06 (정기 재평가) ─────────────────────────────────────────────────
+  {
+    date: '2026-10-06',
+    type: 'assessment',
+    version: 'v2.46.64',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + Micron Q4 FY26 실적(09-30) 실현으로 DF1 정점 재확인·조달/신용 tell·EWI·트리거 반영',
+    summary:
+      '직전 09-29 재평가 이후 git log 커밋(v2.46.51~v2.46.63)은 전부 "어떤 미래에도 대응하는 SSD" 전략·고객 협력 덱/보고서·Mixed Media·FDP 시뮬레이션·초고DWPD MLC·GPU 직결 IOPS·SCADA·보안 후보 평가 = 내부 제품믹스(DF3/NAND)·전략·발표 층으로 git log 경로의 신규 실현 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. ' +
+      '이번 창의 결정적 차이: 09-29 재평가가 "다음 DF1 확인점"으로 지목한 Micron Q4 FY26 실적(09-30)이 실제 실현됐고, 정점 재확인 방향이었다. ' +
+      'DF1(수요) 정점 재확인: Micron Q4 FY26 매출 $54.23B 사상 최대(6분기 연속 기록)·FY26 연간 $133.2B(+256% YoY)·연간 GM 81.1%·데이터센터 매출 11배·FQ1 FY27 가이던스 $61.5B(QoQ +13%)·2027 HBM 공급 대부분 훨씬 높은 가격에 선계약(CNBC·SEC 8-K). 이미 정점(8.5)이라 기록적 실적·가속 가이던스는 신규 상방 레그가 아닌 정점 재확인. Q4 2026 메모리 계약가 범용 DRAM +10~15%·HBM 포함 +15~20%·NAND +15~20%·엔터프라이즈 SSD 더 큰 폭(TrendForce)·2027 CapEx 컨센서스 $1.0~1.3T 드리프트 상향(BofA·Evercore >$1T·Morgan Stanley $1.1T·S&P $1.3T·Moody\'s +$85B)·GPU 임대가 firming(H100 ~$1.49~3.50/GPU-h·H200 ~$3.72~4.45/GPU-h, 붕괴 없음). ' +
+      '후기순환 조달·신용 tell 심화(수요 붕괴 아님): 순환 파이낸싱 $1조 규모로 확산(OpenAI–Nvidia–AMD–Oracle)·Nvidia 채권 CDS 능동 거래 개시 이후 최대 일중 상승(신용시장 정서 악화) → CapEx 상향·재고 없음이라 조달 구조 경보로 EWI 감시 강화, 축 무이동. ' +
+      'DF2(디커플링) 현상유지 재확인: 09-24 Trump-Xi 정상회담 후속도 칩 수출통제가 "뒷전"(SCMP)·H200 대중 라이선스(완화 미세 신호) vs MATCH 본회의 미통과·Biden 골격 유지. 포괄 타결·라이선스 언어 변경 없음 → 관리된 공존(DF2 0.5) 재확인. 다음 분기점 APEC 11월·G20 12월. 다음 DF1 확인점 = 빅테크 4사 Q3 2026 실적(10월 말). 패치 v2.46.64.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지', 'Micron Q4 FY26', 'Q4 메모리 계약가', '2027 CapEx', '순환 파이낸싱', 'Nvidia CDS', 'MATCH', '삼성 HBM4'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5 (축 무이동)', detail: '09-29 이후 git log 커밋은 전부 내부 제품믹스(DF3/NAND)·전략·발표 층 = git log 경로 신규 실현 외부 거시 사실 0건. 그러나 09-29가 지목한 Micron Q4 FY26 실적(09-30)이 실현 — 매출 $54.23B 사상 최대·FQ1 FY27 $61.5B·2027 HBM 선계약 = 이미 정점(8.5)인 DF1 축의 재확인(신규 상방 레그 아님). DF2: 정상회담 후속 현상유지(칩 통제 뒷전·H200 대중 라이선스 완화 미세 신호 vs MATCH 미통과·Biden 골격 유지) → 관리된 공존 재확인' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: 'Micron 기록 실적·2027 HBM 선계약은 B 락인 축 재확인이지 A↔B 재배분 요인 아님. 후기순환 조달·신용 tell(순환 파이낸싱 $1조·Nvidia 채권 CDS 능동 거래 이후 최대 일중 상승)은 수요 붕괴(D 재배분)가 아닌 조달 구조 경보(CapEx 상향·재고 없음)라 상대 확률 무영향. DF2 현상유지라 공존 심화(A→B)도 디커플링(B→A)도 미실행. 삼성 HBM4 볼륨 발주 미전환 = B 시간 리스크 지속' },
+      { label: '트리거 갱신 — 발동 0건', detail: 'us_china_semiconductor_deal 미발동(포괄 타결·수출 공식 재개 없음·H200 대중 라이선스는 별개 완화)·match_act_passed 미발동(하원 외교위 44-0 본회의 상정 단계·표결 없음)·apple_cxmt_approved 미발동(라이선스 언어 변경 없어 승인/차단 리트머스 미해결)·samsung_hbm4_nvidia_confirmed 미충족(NVIDIA 유상 평가 단계·볼륨 발주 미확정·연말 시간 압박)·enterprise_ai_roi_proven 미발동' },
+      { label: 'EWI 갱신 — DF1 정점·조달/신용 축(실측)', detail: 'bigtech_capex_growth 10-06 데이터포인트 추가(값 82 무변화·Micron Q4 실현·2027 $1.0~1.3T 컨센서스·MS CapEx 증가분 $25B 부품 원가 전가)·ai_dc_credit_spread(값 40 무변화·Nvidia 채권 CDS 최대 일중 상승·순환 파이낸싱 $1조, 광의 HY 스프레드 자체는 미확대라 미발동)·gpu_rental_price_trend·gpu_rental_h100_usd(10-06 firming 스냅샷, 붕괴 없음)' },
+      { label: '위키·원장 동기화', detail: 'sources/articles/macro-reassessment-signals-2026-10-06.md 신설(in-window 신호 원장)·wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치에 10-06 bullet 추가·wiki/scenarios/scenario-matrix.md 확률표에 [2026-10-06 재평가] 유지 note 추가. dashboard scenarioPlanning(A·B 코멘트)·indicators(INITIAL_QUADRANT_POSITIONS current·EWI·트리거) 미러' },
+    ],
+    links: [
+      { label: 'sources/articles/macro-reassessment-signals-2026-10-06.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/macro-reassessment-signals-2026-10-06.md' },
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
   {
     date: '2026-10-06',
     type: 'build',
