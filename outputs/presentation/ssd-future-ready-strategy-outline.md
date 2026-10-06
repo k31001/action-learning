@@ -1,12 +1,12 @@
 ---
 type: presentation-outline
-status: v1.5 덱 (2026-10-06, 2장 단순화 + 협력 깊이 재판단: 공동 설계 필수 = FDP). v1.4: 2장 재구성, v1.3: 1장 재구성. 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.5, 미커밋 산출물 · 생성기로 재현)
-report: outputs/report/ssd-future-ready-strategy-report.md (v1.6)
+status: v1.6 덱 (2026-10-06, 보충 5장 FDP 시뮬레이션 추가). v1.5: 2장 단순화 + 협력 깊이 재판단(공동 설계 필수 = FDP). v1.4: 2장 재구성, v1.3: 1장 재구성. 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.6, 4장 + 보충 1장, 미커밋 산출물 · 생성기로 재현)
+report: outputs/report/ssd-future-ready-strategy-report.md (v1.7)
 design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬, 20 × 11.25in, 본문 18pt+, 출처 15pt)
 ---
 
-# 불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 (덱 v1.5)
+# 불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 + 보충 1장 (덱 v1.6)
 
 ## v1.0 → v1.1 변경 (2026-10-03 사용자 리뷰)
 
@@ -55,6 +55,12 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 | Mixed Media는 기능을 지원하는 SSD를 주면 고객이 알아서 쓰면 되는 것 아닌가. 협력하지 않으면 최적화 · 요구 만족이 안 되는 기술만 필수, 스펙을 명확히 정하면 분리되는 기술은 tightly coupled 불필요 | 판단 축을 **결합도(고객 시스템과 함께 설계되는 정도) × 스펙 비완결도(스펙만으로 닫히는가)** 로 교체. Mixed Media(2 · 1)는 **스펙으로 협력**(표준 네임스페이스, 비율은 출하 시 값 · VoC 수치, NS 간 QoS는 목표로 사내 검증). **공동 설계 필수는 FDP(2 · 2) 하나**: 같은 "FDP 지원" 스펙 · 같은 워크로드에서 장치마다 near-ideal 대 붕괴(WARP), 오분류 · Noisy RUH, RUH · RG 출하 시 고정 |
 | (연동) | 제목 "핵심 기술 여섯 가지 중 다섯은 명확한 스펙으로 풀리지만, FDP는 고객과 함께 설계해야 제대로 동작합니다", 밴드 "스펙을 정확히 받든 함께 설계하든, 핵심 기술을 제대로 확보하려면 고객과의 협력이 필수입니다". 3장 3칸 "데이터의 수명은 고객 시스템만 안다", 4장 노트 FDP 집중 |
 
+## v1.5 → v1.6 변경 (2026-10-06 사용자 지시: 보충 5장)
+
+| 지시 | 반영 |
+|---|---|
+| FDP는 왜 고객과 협력해야 효과를 보는지 설명하는 시각화 보충 자료 1장. 개념부터, 응용에 따라 주요 파라미터를 바꿔야 함을 시뮬레이션 · 시각화로 | 시뮬레이터 `scripts/fdp_waf_sim.py` 작성(페이지 매핑 FTL · greedy GC · OP 12% · 핸들별 GC RU · 응용별 수명 등급 합성 부하 · 동시 쓰기). 5장: ① 개념(섞인 RU 대 핸들별 RU) + 모델 검증(플래시 캐시 모델 2.97 → 1.00 대 CacheLib 실측 3.22 → 1.03) ② 응용마다 달라지는 것: RU 크기(LSM 16 · KV 64에서 무너짐) · RUH 수(캐시 2 · LSM 4 · 멀티테넌트 8) · 분류 정확도(캐시 오분류 20% → 2.37). "SSD가 출하 전에 정함" 대 "고객 SW가 정함" 칩. 밴드 "RU 크기 · RUH 수는 응용을 알아야 정하고, 분류는 고객 SW가 합니다: 그래서 FDP는 고객과 함께 맞춥니다" |
+
 ## 제목 4개를 이어 읽으면
 
 > SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다. 핵심 기술 여섯 가지 중 다섯은 명확한 스펙으로 풀리지만, FDP는 고객과 함께 설계해야 제대로 동작합니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다. **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.**
@@ -75,6 +81,8 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 | 3 | 고객은 이미 자기 SW로 푼다 | Meta CacheLib 150% 대 100% 막대 + -44% |
 | 3 | 3칸에서 WAF가 1에 닿는다 | WAF 3.22 → 1.03 |
 | 4 | 계약 · 사람 · 역량 | 적층 · 순환 · 격자(승인된 v1.3 그림) |
+| 5 | FDP는 수명이 같은 데이터를 모아 RU를 통째로 비운다 | 블록 그림(섞인 RU 대 핸들별 RU) + 모델 검증 막대(2.97 → 1.00 대 실측 3.22 → 1.03) |
+| 5 | RU 크기 · RUH 수 · 분류는 응용마다 다르게 맞춰야 한다 | 시뮬레이션 꺾은선 3개(RU 크기 · RUH 수 · 오분류율), 응용별 선 2~3개, 삭제 단위 표시선 |
 
 ## 판단 근거 (과제팀)
 

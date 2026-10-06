@@ -65,3 +65,4 @@ NAND는 페이지 단위로 쓰고 **블록 단위로 지운다**. 한 블록 �
 - 배치 핸들과 매체 영역: [mixed-media-ssd.md](mixed-media-ssd.md) — FDP RUH에는 매체 유형 필드가 없어, SLC 영역은 별도 엔듀런스 그룹의 네임스페이스로 쓴다
 - 배치 핸들 개수: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md) §2.6
 - 핵심 기술 6가지 × 제품군 × 고객 협력 강도(덱 2장 단일 소스): [ssd-core-technologies-customer-collaboration.md](ssd-core-technologies-customer-collaboration.md)
+- 파라미터 민감도 시뮬레이션(RU 크기 · RUH 수 · 분류 정확도, 덱 5장): [fdp-parameter-sensitivity-simulation.md](fdp-parameter-sensitivity-simulation.md)

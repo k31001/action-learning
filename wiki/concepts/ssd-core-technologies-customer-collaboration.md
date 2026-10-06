@@ -108,5 +108,6 @@ sources:
 - 기술별 상세: [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md) · [mixed-media-ssd.md](mixed-media-ssd.md) · [fdp-placement-mechanics.md](fdp-placement-mechanics.md) · [high-dwpd-operating-point.md](high-dwpd-operating-point.md)
 - 해법 사다리(왜 고객 시스템까지): [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
 - 출하 시 구성의 경계(RUH · RG · SLC 비율): [ssd-configurability-boundary.md](ssd-configurability-boundary.md)
+- 파라미터 민감도 시뮬레이션(RU 크기 · RUH 수 · 분류 정확도, 덱 5장): [fdp-parameter-sensitivity-simulation.md](fdp-parameter-sensitivity-simulation.md)
 - 후보 검토 이력(보안 · GPU 직결 · 전력): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)
 - 산출물: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md)

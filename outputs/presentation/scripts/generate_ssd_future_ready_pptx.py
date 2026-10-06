@@ -6,6 +6,7 @@
   3 당위성 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다
   4 실행   고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다
   결론     실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다
+  5 보충   FDP의 효과는 SSD 파라미터와 고객 SW의 분류가 응용마다 함께 맞을 때만 납니다 (시뮬레이션 scripts/fdp_waf_sim.py)
 
 규율: samsung-memory-ppt-design-skill v2.1(11절 시각 우선, 11.J 근거 사슬: 주장마다 데이터 그래프). 본문 18pt 이상 · 출처 15pt · em-dash 금지 · 액센트 Samsung Blue 하나.
 도형 · 차트는 모두 python-pptx 도형으로 그린다(차트 pt = 슬라이드 pt). 부품 이미지는 assets/photos가 있으면 사진, 없으면 3D 렌더.
@@ -27,7 +28,7 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
 ASSETS = os.path.join(HERE, "..", "assets")
 OUT = os.environ.get("OUT_PATH") or os.path.join(HERE, "..", "ssd-future-ready-strategy.pptx")
 
-d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=4,
+d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=5,
          logos_dir=os.path.join(ASSETS, "logos"), photos_dir=os.path.join(ASSETS, "photos"),
          renders_dir=os.path.join(ASSETS, "survival"))
 tb, rect, label_box = d.tb, d.rect, d.label_box
@@ -587,6 +588,164 @@ d.notes(s, "4장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 �
         "셋째, 역량입니다. NAND와 SSD 펌웨어는 강점입니다. 비어 있는 곳은 그 위입니다. KV 캐시 소프트웨어는 LMCache에서 시작했고 Dynamo와 Mooncake로 넓혀야 합니다. 그리고 고객의 지표인 토큰당 비용과 GPU 가동률로 말하는 사람이 필요합니다. "
         "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 FDP 공동 설계 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
+
+# =============================================================== 5 보충: FDP는 왜 고객과 함께 맞춰야 하나 (시뮬레이션)
+import json  # noqa: E402
+
+SIM = json.load(open(os.path.join(ASSETS, "fdp_waf_sim.json"), encoding="utf-8"))
+s = d.slide(5, "보충 · FDP", "FDP의 효과는 SSD 파라미터와 고객 SW의 분류가\n응용마다 함께 맞을 때만 납니다")
+
+
+def polyline(s, pts, color, width_pt=3.0, dash=False):
+    fb = s.shapes.build_freeform(int(pts[0][0] * 914400), int(pts[0][1] * 914400), scale=1.0)
+    fb.add_line_segments([(int(x * 914400), int(y * 914400)) for x, y in pts[1:]], close=False)
+    sh = fb.convert_to_shape()
+    sh.fill.background()
+    sh.line.color.rgb = color
+    sh.line.width = int(width_pt * 12700)
+    if dash:
+        from pptx.enum.dml import MSO_LINE_DASH_STYLE
+        sh.line.dash_style = MSO_LINE_DASH_STYLE.DASH
+    sh.shadow.inherit = False
+    return sh
+
+
+def line_chart(x0, y0, w, h, xs, xlabels, ymin, ymax, yticks, series, ylab="WAF", xlab=""):
+    """xs: 0..1 정규 위치. series = [(이름, [y...], 색, 굵게)]"""
+    ax0, ax1 = x0 + 0.62, x0 + w - 0.10
+    ay0, ay1 = y0 + 0.10, y0 + h - 0.62
+
+    def X(t):
+        return ax0 + t * (ax1 - ax0)
+
+    def Y(v):
+        return ay1 - (v - ymin) / (ymax - ymin) * (ay1 - ay0)
+
+    for v in yticks:
+        rect(s, ax0, Y(v) - 0.006, ax1 - ax0, 0.012, fill=LINE)
+        tb(s, x0, Y(v) - 0.15, 0.54, 0.30, [(f"{v:g}", 15, False, GRAY)], align=R, anchor=MID)
+    rect(s, ax0, ay1 - 0.01, ax1 - ax0, 0.02, fill=GRAY_2)
+    for t, lab in zip(xs, xlabels):
+        tb(s, X(t) - 0.40, ay1 + 0.04, 0.80, 0.28, [(lab, 15, False, GRAY)], align=C, anchor=MID)
+    tb(s, ax0, ay1 + 0.32, ax1 - ax0, 0.28, [(xlab, 15, False, GRAY)], align=C, anchor=MID)
+    tb(s, x0, y0 - 0.30, 1.2, 0.28, [(ylab, 15, False, GRAY)], anchor=MID)
+    for (nm, ys, col, bold) in series:
+        pts = [(X(t), Y(min(v, ymax))) for t, v in zip(xs, ys)]
+        polyline(s, pts, col, 3.5 if bold else 2.5)
+        for (px, py) in pts:
+            rect(s, px - 0.06, py - 0.06, 0.12, 0.12, fill=col, shape=MSO_SHAPE.OVAL)
+    return X, Y
+
+
+def legend(x, y, items):
+    for k, (nm, col) in enumerate(items):
+        yy = y + k * 0.28
+        rect(s, x, yy + 0.12, 0.34, 0.05, fill=col)
+        tb(s, x + 0.42, yy, 2.6, 0.28, [(nm, 15, True, col)], anchor=MID)
+
+
+# ---- 위: 개념 (FDP 없음 대 FDP) + 모델 검증
+CT5 = 2.36
+tb(s, MX, CT5, 9.0, 0.40, [[("① 개념  ", 20, True, BLUE), ("수명이 같은 데이터끼리 모아 RU를 통째로 비운다", 20, True, INK)]], anchor=MID)
+SHORT5, LONG5 = BLUE_T2, GRAY_2
+
+
+def ru_box(bx, by, cells, cols=8, cs=0.22, gap=0.04):
+    rows = len(cells) // cols
+    rect(s, bx - 0.06, by - 0.06, cols * (cs + gap) - gap + 0.12, rows * (cs + gap) - gap + 0.12, fill=WHITE, line=GRAY, lw=1.0)
+    for i, c in enumerate(cells):
+        rect(s, bx + (i % cols) * (cs + gap), by + (i // cols) * (cs + gap), cs, cs, fill=c)
+
+
+mix5 = [SHORT5, LONG5, LONG5, SHORT5, LONG5, SHORT5, LONG5, LONG5, SHORT5, LONG5, SHORT5, LONG5, LONG5, SHORT5, LONG5, SHORT5]
+RY = CT5 + 0.62
+tb(s, MX, RY, 2.2, 0.62, [("FDP 없음", 18, True, GRAY), ("한 RU에 섞인다", 16, False, GRAY)], anchor=MID, spacing=1.0)
+ru_box(MX + 2.30, RY + 0.08, mix5)
+d.arrow_r(s, MX + 4.55, RY + 0.20, 0.40, 0.26)
+tb(s, MX + 5.05, RY, 3.2, 0.62, [("지우려면 남은 데이터를", 16, False, GRAY), ("옮겨 써야 한다 (GC)", 16, True, INK)], anchor=MID, spacing=1.0)
+RY2 = RY + 0.86
+tb(s, MX, RY2, 2.2, 0.62, [("FDP", 18, True, BLUE), ("쓰기에 핸들 표시", 16, False, GRAY)], anchor=MID, spacing=1.0)
+ru_box(MX + 2.30, RY2 + 0.08, [SHORT5] * 8 + [LONG5] * 8)
+tb(s, MX + 4.48, RY2 + 0.02, 0.9, 0.26, [("핸들 1", 15, False, GRAY)], anchor=MID)
+tb(s, MX + 4.48, RY2 + 0.28, 0.9, 0.26, [("핸들 2", 15, False, GRAY)], anchor=MID)
+d.arrow_r(s, MX + 5.32, RY2 + 0.20, 0.40, 0.26, fill=BLUE_T1)
+tb(s, MX + 5.82, RY2, 2.9, 0.62, [("짧은 수명 RU가", 16, False, GRAY), ("통째로 비워진다", 16, True, BLUE)], anchor=MID, spacing=1.0)
+tb(s, MX, RY2 + 0.70, 9.0, 0.28, [[("■", 15, False, SHORT5), (" 곧 지울 데이터   ", 15, False, GRAY), ("■", 15, False, LONG5), (" 오래 둘 데이터   RU = 한 번에 지우는 단위", 15, False, GRAY)]], anchor=MID)
+
+# 모델 검증: 플래시 캐시 모델 대 CacheLib 실측
+VX = MX + 9.60
+VW = RIGHT - VX
+rect(s, VX, CT5, VW, 2.30, fill=PALE, shape=RR)
+tb(s, VX + 0.24, CT5 + 0.08, VW - 0.4, 0.36, [[("WAF  ", 18, True, INK), ("이 모델 대 실측", 16, False, GRAY)]], anchor=MID)
+bl = SIM["baseline"]["cache"]
+for k, (nm, a0, a1, col) in enumerate([("플래시 캐시 모델 (시뮬레이션)", bl["no_fdp"], bl["fdp"], BLUE), ("CacheLib 실측 (Meta · Samsung)", 3.22, 1.03, GRAY)]):
+    yy = CT5 + 0.56 + k * 0.84
+    tb(s, VX + 0.24, yy, VW - 0.4, 0.30, [(nm, 16, k == 0, BLUE if k == 0 else INK)], anchor=MID)
+    WMX = VW - 2.30
+    for j, (v, cc) in enumerate([(a0, GRAY_2), (a1, col)]):
+        rect(s, VX + 0.24, yy + 0.34 + j * 0.22, WMX * v / 3.3, 0.16, fill=cc)
+        tb(s, VX + 0.30 + WMX * v / 3.3, yy + 0.28 + j * 0.22, 1.9, 0.26, [(("FDP 없음 " if j == 0 else "FDP ") + f"{v:.2f}", 15, j == 1, col if j == 1 else GRAY)], anchor=MID)
+
+# ---- 아래: 응용마다 맞춰야 하는 것 (시뮬레이션 3개)
+PY0 = 5.12
+tb(s, MX, PY0, 12.0, 0.40, [[("② 응용마다 달라지는 것  ", 20, True, BLUE), ("같은 모델에서 파라미터만 바꿔 WAF를 쟀다", 18, False, GRAY)]], anchor=MID)
+PWD = (CW - 2 * 0.35) / 3
+PXS = [MX + i * (PWD + 0.35) for i in range(3)]
+HT = PY0 + 0.52
+for i, (t1, who, hot) in enumerate([("RU 크기", "SSD가 출하 전에 정함", False), ("RUH 수", "SSD가 출하 전에 정함", False), ("분류 정확도", "고객 SW가 정함", True)]):
+    x = PXS[i]
+    tb(s, x, HT, 2.4, 0.36, [(t1, 20, True, INK)], anchor=MID)
+    label_box(s, x + PWD - 2.70, HT + 0.02, 2.70, 0.34, [(who, 15, True, WHITE if hot else INK)], fill=BLUE if hot else WHITE, line=None if hot else GRAY_2)
+CHY, CHH = HT + 0.78, 2.36
+
+# (a) RU 크기: 삭제 단위가 다른 두 응용
+ru = SIM["ru_size"]
+RUS = ["4", "8", "16", "32", "64", "128", "256"]
+xs = [i / 6 for i in range(7)]
+X, Y = line_chart(PXS[0], CHY, PWD, CHH, xs, RUS, 1.0, 4.0, [1, 2, 3, 4],
+                  [("LSM DB", [ru["lsm"][r] for r in RUS], GRAY, False), ("KV 캐시", [ru["kv"][r] for r in RUS], BLUE, True)],
+                  xlab="RU 크기 (단위, 로그 축)")
+legend(X(0) + 0.05, Y(3.85), [("KV 캐시", BLUE), ("LSM DB", GRAY)])
+for t, lab, col in [(xs[2], "SST 크기", GRAY), (xs[4], "KV 블록 크기", BLUE)]:
+    rect(s, X(t) - 0.006, CHY + 0.10, 0.012, CHH - 0.72, fill=col)
+    tb(s, X(t) - 0.80, CHY - 0.30, 1.60, 0.28, [(lab, 15, True, col)], align=C, anchor=MID)
+
+# (b) RUH 수: 수명 등급 수가 다른 세 응용
+rh = SIM["ruh_count"]
+HS = ["1", "2", "4", "8"]
+xs = [0, 1 / 3, 2 / 3, 1]
+X, Y = line_chart(PXS[1], CHY, PWD, CHH, xs, HS, 1.0, 2.5, [1, 1.5, 2, 2.5],
+                  [("캐시 (2등급)", [rh["cache"][h] for h in HS], GRAY_2, False), ("LSM (4등급)", [rh["lsm"][h] for h in HS], GRAY, False),
+                   ("멀티테넌트 (8등급)", [rh["tenant"][h] for h in HS], BLUE, True)],
+                  xlab="RUH 수")
+legend(X(0.56), Y(2.48), [("멀티테넌트 8등급", BLUE), ("LSM 4등급", GRAY), ("캐시 2등급", GRAY_2)])
+
+# (c) 분류 정확도: 고객 SW가 잘못 나눈 비율
+mc = SIM["misclass"]
+MS = ["0", "5", "10", "20", "40"]
+xs = [int(m) / 40 for m in MS]
+X, Y = line_chart(PXS[2], CHY, PWD, CHH, xs, [m + "%" for m in MS], 1.0, 3.0, [1, 2, 3],
+                  [("플래시 캐시", [mc["cache"][m] for m in MS], BLUE, True), ("LSM DB", [mc["lsm"][m] for m in MS], GRAY, False)],
+                  xlab="잘못 나눈 쓰기 비율")
+polyline(s, [(X(0), Y(SIM["baseline"]["cache"]["no_fdp"])), (X(1), Y(SIM["baseline"]["cache"]["no_fdp"]))], GRAY_2, 1.5, dash=True)
+tb(s, X(0) + 0.05, Y(SIM["baseline"]["cache"]["no_fdp"]) - 0.30, 2.4, 0.26, [("FDP 없음 (캐시)", 15, False, GRAY)], anchor=MID)
+legend(X(0) + 0.05, Y(2.62), [("플래시 캐시", BLUE), ("LSM DB", GRAY)])
+
+d.band(s, 9.44, 0.80, "요약", "RU 크기 · RUH 수는 응용을 알아야 정하고, 분류는 고객 SW가 합니다: 그래서 FDP는 고객과 함께 맞춥니다", size=22)
+d.footer(s, "시뮬레이션: scripts/fdp_waf_sim.py(모델: 페이지 매핑 FTL · greedy GC · OP 12% · 핸들별 GC RU · 응용별 수명 등급 합성 부하, 실측 아님) · 단위 = 응용 모델의 최소 쓰기 단위 · "
+            "실측 비교: CacheLib FDP WAF 3.22 → 1.03(EuroSys'25) · 같은 FDP 지원 장치에서 결과가 갈림(WARP FAST'26)")
+d.notes(s, "보충 자료입니다. FDP가 왜 고객과 함께 맞춰야 효과가 나는지, 개념과 시뮬레이션으로 설명드리겠습니다. "
+        "먼저 개념입니다. SSD는 데이터를 RU라는 큰 단위로만 지울 수 있습니다. FDP가 없으면 곧 지울 데이터와 오래 둘 데이터가 한 RU에 섞여, 지우려면 남은 데이터를 옮겨 써야 하고 이것이 WAF를 키웁니다. "
+        "FDP는 호스트가 쓰기마다 배치 핸들을 붙여, 수명이 같은 데이터를 같은 RU에 모읍니다. 그러면 짧은 수명 RU가 통째로 비워져 옮겨 쓸 것이 없어집니다. "
+        f"오른쪽 위는 이 시뮬레이션 모델이 실측과 같은 방향인지 확인한 것입니다. 플래시 캐시 모델에서 WAF는 FDP 없이 {bl['no_fdp']:.2f}, FDP로 {bl['fdp']:.2f}였고, Meta와 삼성이 CacheLib에서 잰 실측은 3.22에서 1.03이었습니다. "
+        "아래 세 그래프는 같은 모델에서 파라미터 하나씩만 바꾼 결과입니다. "
+        f"첫째, RU 크기입니다. RU가 응용의 삭제 단위보다 커지면 한 RU에 여러 객체가 섞여 WAF가 오릅니다. LSM DB는 SST 크기인 16단위까지 WAF 1을 지키다가 256단위에서 {ru['lsm']['256']:.2f}가 되고, KV 캐시는 KV 블록 크기인 64단위까지 지킵니다. 무너지는 지점이 응용마다 다릅니다. "
+        f"둘째, RUH 수입니다. 핸들이 수명 등급보다 적으면 수명이 다른 데이터가 다시 섞입니다. 캐시는 핸들 2개면 충분하지만, LSM은 4개, 멀티테넌트는 8개가 필요했습니다. 멀티테넌트에 핸들 2개만 주면 WAF는 {rh['tenant']['2']:.2f}입니다. "
+        "RU 크기와 RUH 수는 SSD가 출하 전에 정하는 값이라, 고객의 응용을 알아야 미리 맞출 수 있습니다. "
+        f"셋째, 분류 정확도입니다. 이것은 고객 소프트웨어가 정합니다. 플래시 캐시에서 쓰기의 10퍼센트만 잘못 나눠도 WAF가 {mc['cache']['10']:.2f}, 20퍼센트면 {mc['cache']['20']:.2f}로, FDP가 없을 때에 가까워집니다. "
+        "실제로 FAST'26 WARP 연구는 같은 FDP 지원 드라이브와 같은 워크로드에서 한 장치는 WAF가 1 근처를 지키고 다른 장치는 무너진다고 보고했습니다. "
+        "정리하면, RU 크기와 RUH 수는 응용을 알아야 정할 수 있고, 분류는 고객 소프트웨어가 합니다. 그래서 FDP는 스펙만으로 닫히지 않고, 고객과 함께 맞춰야 제대로 동작합니다. "
+        "이 그래프는 단순화한 모델의 결과이며 실측이 아닙니다. 방향과 민감도를 보이기 위한 것이고, 절대값은 실제 장치와 워크로드에서 함께 재야 합니다.")
 
 d.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(d.prs.slides._sldIdLst)}장)")

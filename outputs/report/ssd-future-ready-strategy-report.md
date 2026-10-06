@@ -1,7 +1,7 @@
 ---
 type: report
-status: v1.6 (2026-10-06). 고객 협력 깊이 재판단(사용자 기준: 스펙으로 분리되면 tightly coupled 불필요): 결합도 × 스펙 비완결도 → 공동 설계 필수 = FDP 하나, Mixed Media는 스펙으로 협력. 2장 단순화(제품군 매트릭스 + 3×3 격자). v1.5: 2장 재구성: 제품 포트폴리오를 받치는 핵심 기술 6가지(Fault Tolerant · Large Mapping · Multi-Tenant QoS · Confidential Storage · Mixed Media · FDP) × 제품군 × 고객 협력 강도(4기준 0~8점), 협력 필수 = Mixed Media · FDP. v1.4: 1장 재구성: 데이터센터 응용별 SSD 요구 + 제품 포트폴리오(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC), 에이전트 = 사용자별 VM → 고용량 QLC로 정정(팩트 체크). v1.3: Mixed Media를 고객 협력 과제로 재분류하고 논리 보강(사용자 분석 + 검증 원장). v1.2: SCADA · MLC 제외 · 데이터센터 유형별 요구 · 고객 측 고DWPD 근거. 덱 4장 v1.2
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.5, 생성기 scripts/generate_ssd_future_ready_pptx.py)
+status: v1.7 (2026-10-06). 보충 5장 추가: FDP 파라미터 민감도 시뮬레이션(RU 크기 · RUH 수 · 분류 정확도). v1.6: 고객 협력 깊이 재판단(사용자 기준: 스펙으로 분리되면 tightly coupled 불필요): 결합도 × 스펙 비완결도 → 공동 설계 필수 = FDP 하나, Mixed Media는 스펙으로 협력. 2장 단순화(제품군 매트릭스 + 3×3 격자). v1.5: 2장 재구성: 제품 포트폴리오를 받치는 핵심 기술 6가지(Fault Tolerant · Large Mapping · Multi-Tenant QoS · Confidential Storage · Mixed Media · FDP) × 제품군 × 고객 협력 강도(4기준 0~8점), 협력 필수 = Mixed Media · FDP. v1.4: 1장 재구성: 데이터센터 응용별 SSD 요구 + 제품 포트폴리오(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC), 에이전트 = 사용자별 VM → 고용량 QLC로 정정(팩트 체크). v1.3: Mixed Media를 고객 협력 과제로 재분류하고 논리 보강(사용자 분석 + 검증 원장). v1.2: SCADA · MLC 제외 · 데이터센터 유형별 요구 · 고객 측 고DWPD 근거. 덱 4장 v1.2
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.6, 4장 + 보충 1장, 생성기 scripts/generate_ssd_future_ready_pptx.py)
 outline: outputs/presentation/ssd-future-ready-strategy-outline.md
 supersedes_focus: outputs/report/ssd-survival-strategy-report.md (KV 캐시 고DWPD 중심 → 데이터센터별 요구에 맞춘 준비 + 고객 협력 과제)
 sources:
@@ -20,6 +20,7 @@ sources:
   - sources/articles/palantir-fde-model-2026-07.md
 wiki:
   - wiki/concepts/ssd-core-technologies-customer-collaboration.md
+  - wiki/concepts/fdp-parameter-sensitivity-simulation.md
   - wiki/concepts/datacenter-types-storage-requirements.md
   - wiki/concepts/high-dwpd-operating-point.md
   - wiki/concepts/mixed-media-ssd.md
@@ -246,6 +247,16 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 | 지금 위치 | LMCache에 FDP 배치 머지(삼성 Committer ✅). Dynamo · Mooncake · FlexKV 기여 0(✅) |
 | 갭 | 프로덕션 KV 캐시 트레이스 기반 WAF 실측 미공개, 고내구 드라이브 중 FDP 지원을 명시한 제품 없음 🟡 |
 
+**왜 응용마다 함께 맞춰야 하나 (⚠️ 시뮬레이션, [fdp-parameter-sensitivity-simulation.md](../../wiki/concepts/fdp-parameter-sensitivity-simulation.md))**: 페이지 매핑 FTL · greedy GC · OP 12% 모델에 응용별 수명 등급 부하를 넣고 파라미터 하나씩 바꿨다. 모델은 플래시 캐시에서 FDP 없음 2.97 → FDP 1.00으로 CacheLib 실측(3.22 → 1.03)과 같은 방향이다.
+
+| 파라미터 | 누가 정하나 | 결과 |
+|---|---|---|
+| RU 크기 | SSD(출하 시) | WAF 1이 무너지는 지점 = 응용의 삭제 단위: LSM(SST 16단위)은 RU 16까지 1.00 → 256에서 3.71, KV 캐시(블록 64)는 64까지 1.00 → 256에서 2.85 |
+| RUH 수 | SSD(출하 시 고정) | 필요한 핸들 = 수명 등급 수: 캐시 2 · LSM 4 · 멀티테넌트 8. 멀티테넌트에 핸들 2개면 1.93 |
+| 분류 정확도 | 고객 SW | 플래시 캐시 오분류 10% → 1.42, 20% → 2.37(FDP 없음 2.97에 근접) |
+
+SSD 쪽 두 값은 고객 응용을 알아야 출하 전에 정할 수 있고, 고객 쪽 분류는 SSD 동작을 알아야 잘 정할 수 있다. 어느 한쪽 스펙만으로 닫히지 않는다.
+
 ### 2.5 공통 기반
 
 | 공통 요소 | FDP (고DWPD) | Mixed Media | 고용량 (Fault Tolerant · Large Mapping) |
@@ -380,11 +391,12 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 | F-13 | 사용자 제공 Mixed Media 분석(원문) | 원본 | [user-mixed-media-hyperscaler-analysis-2026-10-03.md](../../sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md) |
 | F-14 | 에이전트 VM 스토리지 프로파일(Muse · dots · 휴면 · 스냅샷 경로), 멀티테넌트 QoS(FlashBlox 3.1배 · WARP WAF 3.0), 드라이브 활용률 | ✅ / 🟡 / ⚠️ | [agent-vm-and-cloud-ssd-requirements-2026-10.md](../../sources/articles/agent-vm-and-cloud-ssd-requirements-2026-10.md) AV · CQ · AT |
 | F-16 | 핵심 기술 6가지 × 제품군 × 고객 협력의 깊이(결합도 × 스펙 비완결도, 선정 FDP. v1.5의 4기준 점수는 기록으로) | ⚠️ 과제팀 판단(근거 사실은 ✅ / 🟡) | [ssd-core-technologies-customer-collaboration.md](../../wiki/concepts/ssd-core-technologies-customer-collaboration.md) |
+| F-17 | FDP 파라미터 민감도(RU 크기 · RUH 수 · 분류 정확도) | ⚠️ 시뮬레이션(모델, 실측 아님) | [fdp-parameter-sensitivity-simulation.md](../../wiki/concepts/fdp-parameter-sensitivity-simulation.md) · `scripts/fdp_waf_sim.py` |
 | F-15 | 제품군 정격 DWPD · 최대 용량(FL6 · XTR · P5810 · PS1010 · PS1030 · PM1743 · LC9 · P5336) | 🟡 | [wcssd-v1](../../sources/articles/wcssd-v1-high-dwpd-configurable-2026-09.md) §1 · [qlc-v6-purchase-criteria](../../sources/articles/qlc-v6-purchase-criteria-dwpd-history-2026-09.md) A15 · A19 · A20 · A23 |
 
 ---
 
-## 7. 슬라이드 4장 (덱 v1.5)
+## 7. 슬라이드 4장 + 보충 1장 (덱 v1.6)
 
 상세는 [ssd-future-ready-strategy-outline.md](../presentation/ssd-future-ready-strategy-outline.md).
 
@@ -395,3 +407,4 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 | 3 당위성 | 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다 | P/E 10만 → 1천 · 고객 캐시 DWPD(0.6 · 3 · 3.2 · 7.2) · 계단 3칸 · Meta CacheLib 150% 대 100% · -44% |
 | 4 실행 | 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다 | 계약 적층 · 상주 순환 · 역량 격자, 첫 90일은 노트 |
 | 결론 밴드 | 실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다 | |
+| 5 보충 | FDP의 효과는 SSD 파라미터와 고객 SW의 분류가 응용마다 함께 맞을 때만 납니다 | ① 개념: 수명이 섞인 RU(GC 필요) 대 핸들별 RU(통째로 비움) + 모델 검증 막대(모델 2.97 → 1.00 대 CacheLib 3.22 → 1.03) / ② 시뮬레이션 3개: RU 크기(LSM · KV, 무너지는 지점 16 대 64) · RUH 수(캐시 · LSM · 멀티테넌트, 2 · 4 · 8) · 분류 정확도(캐시 · LSM), 칩 "SSD가 출하 전에 정함" · "고객 SW가 정함" |

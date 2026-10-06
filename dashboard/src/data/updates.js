@@ -17,6 +17,24 @@ export const UPDATES = [
   {
     date: '2026-10-06',
     type: 'build',
+    version: 'v2.46.60',
+    title: '덱 보충 5장: FDP 파라미터 민감도 시뮬레이션 (RU 크기 · RUH 수 · 분류 정확도)',
+    summary:
+      'FDP가 왜 고객과 함께 맞춰야 효과가 나는지 시뮬레이터(페이지 매핑 FTL · greedy GC · 응용별 수명 등급 부하)로 보였다. 모델은 CacheLib 실측과 같은 방향(2.97 → 1.00 대 3.22 → 1.03). RU 크기는 응용의 삭제 단위에서, RUH 수는 수명 등급 수에서 WAF 1이 갈리고, 고객 SW의 오분류 20%면 효과가 대부분 사라진다(패치 v2.46.60).',
+    tags: ['FDP', '시뮬레이션', 'RU', 'RUH', 'WAF', '공동 설계'],
+    items: [
+      { label: '시뮬레이터', detail: 'scripts/fdp_waf_sim.py → outputs/presentation/assets/fdp_waf_sim.json' },
+      { label: '위키', detail: 'fdp-parameter-sensitivity-simulation.md 신설(모델 · 결과 · 한계)' },
+      { label: '덱 5장', detail: '개념(섞인 RU 대 핸들별 RU) + 모델 검증 + 꺾은선 3개' },
+      { label: '보고서 v1.7', detail: '§2.4 시뮬레이션 요약 · F-17' },
+    ],
+    links: [
+      { label: 'wiki/concepts/fdp-parameter-sensitivity-simulation.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/fdp-parameter-sensitivity-simulation.md' },
+    ],
+  },
+  {
+    date: '2026-10-06',
+    type: 'build',
     version: 'v2.46.59',
     title: '고객 협력 깊이 재판단: 공동 설계 필수 = FDP, Mixed Media는 스펙으로 협력 · 덱 2장 단순화 (덱 v1.5 · 보고서 v1.6)',
     summary:

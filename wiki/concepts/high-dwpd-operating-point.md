@@ -178,3 +178,4 @@ DWPD = P/E × (1 + OP) ÷ (WAF × 365 × 보증연수)          ← F29
 - 추가 솔루션 후보 평가(보안 · 신뢰 · 재사용, GPU 직결 고IOPS, 전력 · 냉각): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)
 - 데이터센터 유형별 스토리지 요구(범용 · AI 학습 · AI 추론 · 에이전트): [datacenter-types-storage-requirements.md](datacenter-types-storage-requirements.md)
 - 핵심 기술 6가지 × 제품군 × 고객 협력 강도(덱 2장 단일 소스): [ssd-core-technologies-customer-collaboration.md](ssd-core-technologies-customer-collaboration.md)
+- 파라미터 민감도 시뮬레이션(RU 크기 · RUH 수 · 분류 정확도, 덱 5장): [fdp-parameter-sensitivity-simulation.md](fdp-parameter-sensitivity-simulation.md)
