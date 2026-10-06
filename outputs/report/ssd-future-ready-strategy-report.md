@@ -1,10 +1,11 @@
 ---
 type: report
-status: v1.3 (2026-10-03). Mixed Media를 고객 협력 과제로 재분류하고 논리 보강(사용자 분석 + 검증 원장). v1.2: SCADA · MLC 제외 · 데이터센터 유형별 요구 · 고객 측 고DWPD 근거. 덱 4장 v1.2
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.2, 생성기 scripts/generate_ssd_future_ready_pptx.py)
+status: v1.4 (2026-10-06). 1장 재구성: 데이터센터 응용별 SSD 요구 + 제품 포트폴리오(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC), 에이전트 = 사용자별 VM → 고용량 QLC로 정정(팩트 체크). v1.3: Mixed Media를 고객 협력 과제로 재분류하고 논리 보강(사용자 분석 + 검증 원장). v1.2: SCADA · MLC 제외 · 데이터센터 유형별 요구 · 고객 측 고DWPD 근거. 덱 4장 v1.2
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.3, 생성기 scripts/generate_ssd_future_ready_pptx.py)
 outline: outputs/presentation/ssd-future-ready-strategy-outline.md
 supersedes_focus: outputs/report/ssd-survival-strategy-report.md (KV 캐시 고DWPD 중심 → 데이터센터별 요구에 맞춘 준비 + 고객 협력 과제)
 sources:
+  - sources/articles/agent-vm-and-cloud-ssd-requirements-2026-10.md
   - sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md
   - sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md
   - sources/articles/datacenter-types-storage-requirements-2026-10.md
@@ -27,7 +28,7 @@ wiki:
   - wiki/scenarios/scenario-matrix.md
   - wiki/strategies/invariant/README.md
   - wiki/strategies/qlc-execution-strategy.md
-last_updated: 2026-10-03
+last_updated: 2026-10-06
 ---
 
 # 불확실성이 높은 미래에 대응하기 위한 고객 협력 전략
@@ -46,13 +47,13 @@ last_updated: 2026-10-03
 
 **슬라이드 네 장의 제목을 이어 읽으면 전략이 된다.**
 
-> SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터마다 스토리지에 요구하는 것이 다릅니다. SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다.
+> SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다(그래서 SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다). SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다.
 
 | 묶음 | 기술 | 대응하는 데이터센터 | 대표 데이터 |
 |---|---|---|---|
-| **SSD 안에서 지금처럼** | 고용량 + 결함 허용 | AI 학습(랙 공간 · 전력이 귀함), 에이전트 | 같은 폼팩터 다이 1,024 → 약 2,133개, 이중 패리티(⚠️ 모델) |
-| **고객 시스템과 함께 (새로 나타남)** | Mixed Media (pSLC + QLC, 네임스페이스 2개) | 범용 클라우드(오래 쓰고 용량 중심) | 고객 요구 pSLC = QLC 용량의 0.5~2%(Kioxia VoC 🟡), 작은 쓰기를 모아 순차로 내리면 4KB 랜덤 쓰기 WAF 70+ → 1.02(CSAL, 별도 드라이브 구성 🟡) |
-| | 고DWPD (용량형 + 2TB · 30 DWPD 운영점) | AI 추론, 에이전트 | 2TB · 30 DWPD · 5년: SSD 혼자 약 120다이 → 고객 배치 정보로 약 47다이(-60%, ⚠️ 산술) |
+| **SSD 안에서 지금처럼** | 고용량 + 결함 허용 | AI 학습(랙 공간 · 전력이 귀함 · 데이터셋), 에이전트(사용자별 VM 디스크 · 상태) | 같은 폼팩터 다이 1,024 → 약 2,133개, 이중 패리티(⚠️ 모델) |
+| **고객 시스템과 함께 (새로 나타남)** | Mixed Media (pSLC + QLC, 네임스페이스 2개) | 범용 클라우드(오래 쓰고 용량 중심, 멀티테넌트 QoS) | 고객 요구 pSLC = QLC 용량의 0.5~2%(Kioxia VoC 🟡), 작은 쓰기를 모아 순차로 내리면 4KB 랜덤 쓰기 WAF 70+ → 1.02(CSAL, 별도 드라이브 구성 🟡) |
+| | 고DWPD (용량형 + 2TB · 30 DWPD 운영점) | AI 추론의 KV 캐시 계층(에이전트가 키우는 문맥 포함), AI 학습 체크포인트(신호) | 2TB · 30 DWPD · 5년: SSD 혼자 약 120다이 → 고객 배치 정보로 약 47다이(-60%, ⚠️ 산술) |
 
 **한 줄 결론**: **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.** 데이터센터마다 다른 요구를 미리 준비하되, SSD 안에서 풀 수 있는 것은 지금처럼 잘하고, **새로 나타난 고객 협력 과제(Mixed Media · 고DWPD)는 지금까지와 다른 방식으로 전략적으로 실행**해야 한다. 두 과제 모두 "어떤 데이터가 작은 쓰기인지, 언제 지워지는지"를 고객 소프트웨어만 안다.
 
@@ -74,18 +75,33 @@ last_updated: 2026-10-03
 
 HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다([ssd-survival-strategy-report.md](ssd-survival-strategy-report.md) §1.1). 하나의 수요를 늦게 읽으면 첫 호황을 놓친다. 이번에는 다음 수요를 하나로 단정하지 않고, **데이터센터마다 다른 요구를 미리 준비**한다. 위키의 불변 전략(Robust Strategy) 원칙을 SSD 개발에 적용한 것이다([invariant/README.md](../../wiki/strategies/invariant/README.md)).
 
-### 1.3 데이터센터마다 스토리지 요구가 다르다
+### 1.3 데이터센터 응용마다 SSD에 요구하는 특성이 다르다
 
 하이퍼스케일러는 한 종류의 데이터센터를 운영하지 않는다. Google은 8세대 TPU를 학습용과 추론용으로 나누며 "인프라 요구가 갈라졌다"고 밝혔다(✅). 상세는 [datacenter-types-storage-requirements.md](../../wiki/concepts/datacenter-types-storage-requirements.md).
 
-| 데이터센터 | 스토리지 요구 | 근거 데이터 | 준비할 기술 |
+| 데이터센터 응용 | SSD 요구 | 근거 데이터 (덱 1장 그래프) | 맞는 제품군 |
 |---|---|---|---|
-| **범용 클라우드** | 오래 쓰고 용량 중심 | 서버 내용연수 4 → 6년(Microsoft ✅ · Alphabet · Meta · Amazon 🟡), 건물 15 → 25년(Microsoft FY27 ✅), 스토리지 = Azure 운영 배출 33%(✅) | Mixed Media |
-| **AI 학습** | 랙 공간 · 전력이 귀하다, 체크포인트 대역 · 용량 | 랙 전력 범용 11kW → GB200 NVL72 약 130kW → 2027 1MW급(🟡), 405B 체크포인트 1회 약 5.7TB(14B/파라미터 산술 ⚠️), 2026 미국 가동 계획 16GW 중 착공 확인 약 5GW(추정 상충 🟡) | 고용량 |
-| **AI 추론** | 쓰기 요구가 엇갈린다 | §1.1 표 | 고DWPD |
-| **에이전트** (Meta Muse · OpenAI dots, 2026-09) | 문맥이 길고 상태가 남는다 | Copilot 에이전트 호출당 입력 67,818 토큰 = 2024 채팅 요청의 약 42배 → 70B 모델 KV 0.53GB → 22GB(✅ 원데이터 + ⚠️ 산술), 1시간 넘는 세션 18.8%(✅ 원데이터 집계), 사용자별 영속 클라우드 컴퓨터(🟡) | 고DWPD · 고용량 |
+| **범용 클라우드** (VM · DB · 웹, 멀티테넌트) | **QoS · 테넌트 격리**. 쓰기는 적다 | 실사용 0.07~0.23 DWPD 대 범용 TLC 정격 1(Microsoft SSD 50만 대, ⚠️ 파생) · 공유 SSD를 하드웨어로 격리하면 **p99 지연 최대 3.1배 감소**(FlashBlox FAST'17, Microsoft 워크로드 ✅) · 이웃 테넌트 쓰기로 WAF 1.28 → 약 3.0(WARP FAST'26 ✅) · 드라이브 대역 활용률 8.0~27.8%(OSDI'26 ✅) | 기존 범용 TLC · QLC |
+| **AI 학습** (데이터 로딩 · 체크포인트) | **대역 · 쓰기 피크** | GPU당 스토리지 대역 기본 읽기 0.16 · 쓰기 0.08 → 멀티모달 0.49 · 0.24 GB/s(NVIDIA SuperPOD 가이드 환산 ⚠️, 약 3배) · 405B 체크포인트 1회 약 5.7TB(14B/파라미터 산술 ⚠️) · "체크포인트를 다 쓸 때까지 학습이 멈춘다"(🟡) | 고성능 TLC, 체크포인트는 고내구 TLC(신호), 데이터셋은 고용량 QLC |
+| **AI 추론** (KV 캐시 오프로드) | **쓰기 내구(DWPD)** | QLC 정격 0.6 · KV 계층 실측 3.2 · AI 전용 SSD 50~120 DWPD(🟡) · 반대 신호: 읽기 99.5%(CHEOPS'25 ✅) | 쓰기량에 따라 SLC급(신호) · 고내구 TLC · 고성능 TLC · 읽기 위주면 QLC(신호) |
+| **에이전트** (Meta Muse · OpenAI Dot, 2026-09) | **용량 · TB당 비용** | 사용자마다 VM 하나 · 에이전트는 "대부분의 시간을 휴면"(Google ✅) · 휴면 상태는 압축 스냅샷으로 오브젝트 스토리지(E2B · Agent Substrate 코드 ✅) · Muse VM 메모리 7.75GB 대 디스크 100GB(제3자 관측 ✅) · 1억 명 × 100GB = 10EB(할당 기준 ⚠️) | 고용량 QLC, 기동 버스트에 고성능 TLC(신호) |
 
-**한계**: 에이전트 전용 데이터센터를 따로 짓는다는 하이퍼스케일러 진술은 없고, 에이전트 데이터센터의 랙 전력 · 에이전트당 하루 쓰기량은 공개되지 않았다. 42배는 요청당 입력 토큰 비교(서비스 · 연도가 다름)이며 쓰기량이 아니다.
+**정정 (v1.4, 2026-10-06)**: v1.3까지는 에이전트를 "문맥이 길고 상태가 남는다 → 고DWPD · 고용량"으로 읽었다. 사용자 지적에 따라 팩트 체크한 결과, 에이전트 서비스는 **사용자별 VM**이고 VM 디스크의 쓰기량 · DWPD를 공개한 측정은 없다. 고DWPD 근거(요청당 문맥 약 42배 · KV 계층 3.2 DWPD · "Agentic AI Storage"로 나온 TLC 3 DWPD 제품)는 모두 **추론의 KV 캐시 계층**에 속한다. 그래서 에이전트 열은 고용량 QLC로 고치고, 고DWPD는 AI 추론 열로 모았다. 근거: [agent-vm-and-cloud-ssd-requirements-2026-10.md](../../sources/articles/agent-vm-and-cloud-ssd-requirements-2026-10.md) AV-01~AV-49 · CQ-01~CQ-28.
+
+**한계**: 에이전트 VM의 실사용은 아직 할당의 0.6~1.7%로 관측됐고(10EB는 상한), 휴면 스냅샷을 로컬 SSD에 계층화하면(Google 로드맵) 쓰기가 늘 수 있다(가정 의존 0.3~17 DWPD ⚠️). 둘 다 §4.4의 신호로 본다. 에이전트 전용 데이터센터를 따로 짓는다는 하이퍼스케일러 진술은 없다.
+
+### 1.3.1 제품 포트폴리오: SLC부터 QLC까지
+
+요구 DWPD가 낮아질수록 최대 용량은 커진다(공개 사양). 응용마다 필요한 제품군의 조합이 다르므로 **하나의 제품으로 모든 응용에 대응할 수 없다.** ■ 지금 쓰는 곳 · ▢ 신호에 따라 쓰일 곳.
+
+| 제품군 (정격 DWPD · 최대 용량) | 범용 클라우드 | AI 학습 | AI 추론 | 에이전트 |
+|---|---|---|---|---|
+| **SLC급** 30~120 · ≤ 3.2TB (Kioxia FL6 · Micron XTR · Solidigm P5810 · DapuStor X5) | | | ▢ 초고DWPD KV | |
+| **고내구 TLC** 3 · ≤ 12.8TB (Solidigm PS1030) | | ▢ 체크포인트 | ■ KV 쓰기가 많을 때 | |
+| **고성능 · 범용 TLC** 1 · ≤ 15.36TB (Solidigm PS1010 · Samsung PM1743) | ■ VM · DB 블록 | ■ 데이터 로딩 | ■ KV 계층(CMX) | ▢ 기동 버스트 |
+| **고용량 QLC** 0.3~0.6 · ≤ 245TB (Kioxia LC9 · Solidigm P5336) | ■ 객체 · 콜드 데이터 | ■ 데이터셋 | ▢ 읽기 위주 KV | ■ 사용자 VM 디스크 · 상태 |
+
+**고내구는 하나가 아니다**: 같은 "쓰기가 많은" 요구라도 필요한 DWPD에 따라 SLC급 · 고내구 TLC · 범용 TLC로 갈리고, 고객 시스템이 쓰기를 모아 주거나(Mixed Media) 수명별로 나눠 주면(FDP) QLC까지 후보가 된다. 이 포트폴리오를 준비하는 기술 가운데 일부는 SSD 안에서 풀리고, 일부는 고객 시스템과 함께 풀어야 한다는 것이 §2의 출발점이다.
 
 ### 1.4 시나리오 안에서의 대응 (⚠️ 과제팀 판단)
 
@@ -255,9 +271,9 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 
 | 기술 | 확대 신호 (비중 ↑) | 축소 신호 (비중 ↓) |
 |---|---|---|
-| 고DWPD | 고객 RFQ의 DWPD 요구 상승, KV 캐시 SSD 쓰기 실측 증가. **2TB · 30 DWPD 독립 과제 승격**: 고객 요구 확인 `[사내 확인]` | 모델 KV 압축 확산(SSD 1/8 사례), 오프로드 정책의 쓰기 억제 강화, CXL 메모리가 KV 계층 흡수 |
+| 고DWPD | 고객 RFQ의 DWPD 요구 상승, KV 캐시 SSD 쓰기 실측 증가, 에이전트 휴면 스냅샷의 로컬 SSD 계층화(Google Agent Substrate 로드맵). **2TB · 30 DWPD 독립 과제 승격**: 고객 요구 확인 `[사내 확인]` | 모델 KV 압축 확산(SSD 1/8 사례), 오프로드 정책의 쓰기 억제 강화, CXL 메모리가 KV 계층 흡수 |
 | Mixed Media | 고객 RFQ에 영역 · 비율 요구 등장, 서버 · 건물 내용연수 연장 지속, CapEx 절감 | 직접 쓰기 QLC 확산(SLC 버퍼 없는 UltraQLC류), 신규 그린필드 캠퍼스 중심 증설 |
-| 고용량 | 데이터센터 지연 · 규제 확대, AI 랙 전력 밀도 상승, 245TB 채택 확산 | 전력망 완화 · 건설 가속 |
+| 고용량 | 데이터센터 지연 · 규제 확대, AI 랙 전력 밀도 상승, 245TB 채택 확산, **에이전트 VM 실사용 증가 · 사용자 수 확대**(Muse · dots) | 전력망 완화 · 건설 가속, 에이전트 상태의 HDD · 오브젝트 계층 흡수 |
 | (재검토) GPU 직결 고IOPS | NVIDIA SSD 요구 사양 공개, 첫 프로덕션 배치, PCIe Gen7 통합 일정, 고객 RFQ에 512B IOPS | 지금은 제외 |
 
 ### 4.5 단계와 첫 90일
@@ -292,7 +308,7 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 | KV 캐시 고DWPD가 사라질 수 있다 | 고DWPD에서 만든 FDP · SLC 모드 기술은 Mixed Media의 pSLC 영역으로 재사용된다 |
 | pSLC가 QLC $/TB를 잠식한다 | 셀당 비트 1/4이라 비율이 핵심이다. 고객 요구 0.5~2%(손실 약 1.5~8%) 구간에서 고객 워크로드로 검증한다 |
 | SLC 버퍼 없이 직접 쓰는 QLC가 이길 수 있다 | 신호(§4.4 축소)로 본다. 작은 쓰기 비중이 낮은 고객에게는 Mixed Media가 필요 없다 |
-| 에이전트 수요는 아직 초기다 | 수치(요청당 KV 42배 · 1시간+ 세션 18.8%)는 한 서비스의 공개 트레이스다. 범위로 읽고 신호로 갱신한다 |
+| 에이전트 수요는 아직 초기다 | Muse · dots VM 사양은 제3자 관측이고(공식 비공개), 실사용은 할당의 0.6~1.7%다. 10EB는 할당 기준 상한으로 읽고, 실사용 증가와 휴면 스냅샷의 로컬 SSD 계층화(Google 로드맵)를 신호로 갱신한다 |
 | 고객 협력은 시간이 오래 걸린다 | 계약의 창을 쓰고, 이미 있는 접점(LMCache)에서 시작한다 |
 
 ---
@@ -314,16 +330,18 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 | F-11 | Micron ↔ Anthropic 계약 4요소 · Palantir FDE | 🟡 | [micron-anthropic-sca](../../sources/articles/micron-anthropic-sca-2026-06-22.md) · [palantir-fde](../../sources/articles/palantir-fde-model-2026-07.md) |
 | F-12 | Mixed Media 논리: 쓰기 75%가 16KiB 이하 · WAF 70+ → 1.02 · VoC pSLC 0.5~2% · Slot Tax · 출처 귀속 정정 | 🟡 / ⚠️ / ✅ | [ssd-mixed-media-hyperscaler-logic-2026-10.md](../../sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md) MX-01~MX-77 |
 | F-13 | 사용자 제공 Mixed Media 분석(원문) | 원본 | [user-mixed-media-hyperscaler-analysis-2026-10-03.md](../../sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md) |
+| F-14 | 에이전트 VM 스토리지 프로파일(Muse · dots · 휴면 · 스냅샷 경로), 멀티테넌트 QoS(FlashBlox 3.1배 · WARP WAF 3.0), 드라이브 활용률 | ✅ / 🟡 / ⚠️ | [agent-vm-and-cloud-ssd-requirements-2026-10.md](../../sources/articles/agent-vm-and-cloud-ssd-requirements-2026-10.md) AV · CQ · AT |
+| F-15 | 제품군 정격 DWPD · 최대 용량(FL6 · XTR · P5810 · PS1010 · PS1030 · PM1743 · LC9 · P5336) | 🟡 | [wcssd-v1](../../sources/articles/wcssd-v1-high-dwpd-configurable-2026-09.md) §1 · [qlc-v6-purchase-criteria](../../sources/articles/qlc-v6-purchase-criteria-dwpd-history-2026-09.md) A15 · A19 · A20 · A23 |
 
 ---
 
-## 7. 슬라이드 4장 (덱 v1.2)
+## 7. 슬라이드 4장 (덱 v1.3)
 
 상세는 [ssd-future-ready-strategy-outline.md](../presentation/ssd-future-ready-strategy-outline.md).
 
 | 장 | 제목(액션 타이틀) | 주장 → 그래프 |
 |---|---|---|
-| 1 배경 | SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터마다 스토리지에 요구하는 것이 다릅니다 | HBM 점유율 슬로프 · 범용(내용연수 덤벨 · 건물 15 → 25년) · AI 학습(랙 전력 로그 막대 · 체크포인트 5.7TB) · AI 추론(DWPD 로그 막대 · 읽기 99.5%) · 에이전트(요청당 KV 0.5 → 22GB · 1시간+ 세션 18.8%) |
+| 1 배경 | SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다 | HBM 점유율 슬로프 · 범용(클라우드 안 VM 여러 개가 SSD 하나를 나눠 쓰는 그림 · 실측 0.2 대 정격 1 DWPD · p99 섞어 쓰기 3.1 대 격리 1) · AI 학습(GPU당 대역 0.16 · 0.08 → 0.49 · 0.24 · 체크포인트 5.7TB) · AI 추론(DWPD 로그 막대) · 에이전트(휴면 격자 · VM 메모리 7.75 대 디스크 100GB · 1억 명 10EB) · **제품군 × 응용 매트릭스**(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC, DWPD 로그 막대 · 최대 용량) · 결론 밴드 "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다" |
 | 2 솔루션 | SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다 | 그레이: 고용량(같은 폼팩터 다이 격자) / Blue: Mixed Media(고객 SW가 WAL · 메타데이터 → pSLC, 객체 · 데이터셋 → QLC, 모아서 큰 순차 쓰기 · 쓰기 75% ≤ 16KiB · WAF 70+ → 1.02 · pSLC 0.5~2%), 고DWPD(수명 섞인 블록 대 수명별 블록 · 다이 120 → 47) |
 | 3 당위성 | 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다 | P/E 10만 → 1천 · 고객 캐시 DWPD(0.6 · 3 · 3.2 · 7.2) · 계단 3칸 · Meta CacheLib 150% 대 100% · -44% |
 | 4 실행 | 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다 | 계약 적층 · 상주 순환 · 역량 격자, 첫 90일은 노트 |

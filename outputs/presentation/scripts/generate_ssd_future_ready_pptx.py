@@ -1,7 +1,7 @@
-"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-03 v1.1).
+"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-06 v1.3).
 
 제목 4개를 이어 읽으면 한 문단이 된다(아웃라인 v0.3):
-  1 배경   SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터마다 스토리지에 요구하는 것이 다릅니다
+  1 배경   SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다
   2 솔루션 SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다
   3 당위성 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다
   4 실행   고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다
@@ -9,7 +9,7 @@
 
 규율: samsung-memory-ppt-design-skill v2.1(11절 시각 우선, 11.J 근거 사슬: 주장마다 데이터 그래프). 본문 18pt 이상 · 출처 15pt · em-dash 금지 · 액센트 Samsung Blue 하나.
 도형 · 차트는 모두 python-pptx 도형으로 그린다(차트 pt = 슬라이드 pt). 부품 이미지는 assets/photos가 있으면 사진, 없으면 3D 렌더.
-원고 · 근거: outputs/presentation/ssd-future-ready-strategy-outline.md, outputs/report/ssd-future-ready-strategy-report.md (v1.1).
+원고 · 근거: outputs/presentation/ssd-future-ready-strategy-outline.md, outputs/report/ssd-future-ready-strategy-report.md (v1.4).
 """
 import math
 import os
@@ -48,7 +48,7 @@ LX, LW = MX, 3.70
 DG = 0.16
 DW = (CW - LW - 0.22 - 3 * DG) / 4
 DXS = [MX + LW + 0.22 + i * (DW + DG) for i in range(4)]
-MT, RH, RG = 6.46, 0.66, 0.07
+MT, RH, RG = 6.62, 0.62, 0.07
 CT, CB = 2.32, MT - 0.50
 VT = CT + 0.92
 
@@ -96,25 +96,35 @@ tb(s, x + 1.04, CT + 0.52, 0.70, 0.30, [("Muse", 16, True, INK)])
 d.fit(s, d.logo("openai"), x + 1.80, CT + 0.56, 0.80, 0.22, align="left")
 tb(s, x + 2.64, CT + 0.52, 0.60, 0.30, [("Dot", 16, True, INK)])
 
-# ① 범용 클라우드: 클라우드 안 VM 여러 개가 SSD 하나를 나눠 쓴다 + 실사용 DWPD
+# ① 범용 클라우드: 클라우드 안 VM 여러 개가 SSD 하나를 나눠 쓴다 + 실측 DWPD + 격리 효과(p99)
 x = DXS[0]
-rect(s, x + 0.08, VT - 0.04, 2.10, 1.16, fill=None, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.CLOUD)
+rect(s, x + 0.04, VT - 0.06, 1.94, 1.00, fill=None, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.CLOUD)
 TEN = [GRAY_2, BLUE_T2, GRAY_2, BLUE_T1, GRAY_2, BLUE_T2]
 for k, col in enumerate(TEN):
-    rect(s, x + 0.54 + (k % 3) * 0.44, VT + 0.28 + (k // 3) * 0.30, 0.38, 0.24, fill=col)
+    rect(s, x + 0.47 + (k % 3) * 0.38, VT + 0.20 + (k // 3) * 0.26, 0.32, 0.20, fill=col)
 for k in range(3):
-    rect(s, x + 0.72 + k * 0.44, VT + 0.84, 0.014, 0.34, fill=GRAY_2)
-rect(s, x + 0.46, VT + 1.18, 1.40, 0.26, fill=INK)
-tb(s, x + 0.46, VT + 1.18, 1.40, 0.26, [("SSD", 15, True, WHITE)], align=C, anchor=MID)
-tb(s, x + 0.04, VT + 1.52, 2.24, 0.56, [("VM 여러 개가", 16, False, GRAY), ("SSD 하나를 나눠 씀", 16, False, GRAY)], align=C, spacing=1.0)
+    rect(s, x + 0.62 + k * 0.38, VT + 0.70, 0.014, 0.24, fill=GRAY_2)
+rect(s, x + 0.40, VT + 0.94, 1.24, 0.24, fill=INK)
+tb(s, x + 0.40, VT + 0.94, 1.24, 0.24, [("SSD", 15, True, WHITE)], align=C, anchor=MID)
 # 실측 DWPD 대 범용 TLC 정격 (세로 막대)
-BBt, BHm = VT + 1.44, 1.10
+tb(s, x + 2.14, VT - 0.06, 1.20, 0.28, [("DWPD", 15, False, GRAY)], align=C)
+BBt, BHm = VT + 0.94, 0.66
 for k, (v, col, nm, lab) in enumerate([(0.23, BLUE, "실측", "0.2"), (1.0, GRAY_2, "정격", "1")]):
-    bx = x + 2.40 + k * 0.52
-    rect(s, bx, BBt - BHm * v, 0.32, BHm * v, fill=col)
-    tb(s, bx - 0.14, BBt - BHm * v - 0.30, 0.60, 0.28, [(lab, 16, True, BLUE if k == 0 else INK)], align=C)
-    tb(s, bx - 0.14, BBt + 0.04, 0.60, 0.28, [(nm, 15, False, GRAY)], align=C)
-tb(s, x + 2.22, BBt + 0.32, 1.10, 0.28, [("DWPD", 15, False, GRAY)], align=C)
+    bx = x + 2.26 + k * 0.52
+    rect(s, bx, BBt - BHm * v, 0.30, BHm * v, fill=col)
+    if k == 0:
+        tb(s, bx - 0.15, BBt - BHm * v - 0.28, 0.60, 0.26, [(lab, 16, True, BLUE)], align=C)
+    else:
+        tb(s, bx + 0.30, BBt - BHm * v - 0.04, 0.40, 0.26, [(lab, 16, True, INK)])
+    tb(s, bx - 0.15, BBt + 0.02, 0.60, 0.26, [(nm, 15, False, GRAY)], align=C)
+# 공유 SSD의 p99 지연: 섞어 쓰기 대 하드웨어 격리 (Microsoft 워크로드)
+tb(s, x + 0.20, VT + 1.30, DW - 0.40, 0.26, [("공유 SSD의 p99 지연 (상대값)", 15, False, GRAY)])
+for k, (nm, v, col, lab) in enumerate([("섞어 쓰면", 3.1, GRAY_2, "최대 3.1"), ("격리하면", 1.0, BLUE, "1")]):
+    yy = VT + 1.58 + k * 0.30
+    tb(s, x + 0.20, yy, 0.96, 0.26, [(nm, 15, k == 1, BLUE if k else INK)], anchor=MID)
+    w = (DW - 2.30) * v / 3.1
+    rect(s, x + 1.16, yy + 0.04, w, 0.18, fill=col)
+    tb(s, x + 1.22 + w, yy, 0.90, 0.26, [(lab, 15, True, BLUE if k else INK)], anchor=MID)
 
 # ② AI 학습: GPU당 스토리지 대역 (NVIDIA 가이드) + 체크포인트
 x = DXS[1]
@@ -154,20 +164,22 @@ for k, (nm, v, vmin, col, lab) in enumerate([("QLC 정격", 0.6, None, GRAY_2, "
         rect(s, xd(vmin) - 0.015, yy, 0.03, 0.36, fill=WHITE)
     tb(s, xd(v) + 0.06, yy, 0.90, 0.36, [(lab, 17, True, BLUE if k == 2 else INK)], anchor=MID)
 
-# ④ 에이전트: 사용자별 VM, 대부분 유휴 + 영속 디스크 총량
+# ④ 에이전트: 사용자별 VM, 대부분 휴면 + VM 1개의 자원(관측) → 사용자 수만큼 용량
 x = DXS[3]
 NC, NR, TW, TH = 12, 3, 0.20, 0.16
 ACT = {(0, 3), (1, 8), (2, 1)}
 for r in range(NR):
     for c in range(NC):
         rect(s, x + 0.22 + c * (TW + 0.055), VT + 0.02 + r * (TH + 0.06), TW, TH, fill=BLUE if (r, c) in ACT else LINE)
-tb(s, x + 0.20, VT + 0.66, DW - 0.40, 0.30, [[("■", 15, False, BLUE), (" 활성  ", 15, False, GRAY), ("■", 15, False, LINE), (" 유휴: 상태는 디스크로", 15, False, GRAY)]])
-for k, (nm, v, col, lab) in enumerate([("사용자 VM 디스크 (1억 명)", 10.0, BLUE, "10EB"), ("Llama 3 학습 스토리지", 0.24, GRAY_2, "0.24EB")]):
-    yy = VT + 1.06 + k * 0.52
-    tb(s, x + 0.20, yy, DW - 0.40, 0.26, [(nm, 15, k == 0, BLUE if k == 0 else GRAY)], anchor=MID)
-    w = max(0.05, (DW - 1.40) * v / 10.0)
-    rect(s, x + 0.22, yy + 0.28, w, 0.18, fill=col)
-    tb(s, x + 0.28 + w, yy + 0.22, 0.90, 0.30, [(lab, 15, True, BLUE if k == 0 else GRAY)], anchor=MID)
+tb(s, x + 0.20, VT + 0.66, DW - 0.40, 0.30, [[("■", 15, False, BLUE), (" 활성  ", 15, False, GRAY), ("■", 15, False, LINE), (" 휴면 (대부분)", 15, False, GRAY)]])
+tb(s, x + 0.20, VT + 1.02, DW - 0.40, 0.26, [("사용자 VM 1개 (Muse 관측)", 15, False, GRAY)])
+for k, (nm, v, col, lab) in enumerate([("메모리", 7.75, GRAY_2, "7.75GB"), ("디스크", 100, BLUE, "100GB")]):
+    yy = VT + 1.30 + k * 0.30
+    tb(s, x + 0.20, yy, 0.80, 0.26, [(nm, 15, k == 1, BLUE if k else INK)], anchor=MID)
+    w = max(0.08, (DW - 2.10) * v / 100)
+    rect(s, x + 1.00, yy + 0.04, w, 0.18, fill=col)
+    tb(s, x + 1.06 + w, yy, 0.90, 0.26, [(lab, 15, True, BLUE if k else INK)], anchor=MID)
+tb(s, x + 0.20, VT + 1.92, DW - 0.40, 0.28, [[("× 1억 명 = ", 15, False, GRAY), ("10EB", 16, True, BLUE), ("  (할당 기준)", 15, False, GRAY)]])
 
 # ---- 매트릭스 머리줄
 tb(s, LX, MT - 0.36, LW + 6, 0.32, [[("SSD 제품군  ", 18, True, INK), ("요구 DWPD 순 (로그 축) · 최대 용량", 16, False, GRAY)]], anchor=MID)
@@ -190,7 +202,7 @@ def xb(v):
 CELL = {(2, 0): ("VM · DB 블록", True), (3, 0): ("객체 · 콜드 데이터", True),
         (2, 1): ("데이터 로딩", True), (1, 1): ("체크포인트", False), (3, 1): ("데이터셋", True),
         (0, 2): ("초고DWPD KV", False), (1, 2): ("KV 쓰기 많을 때", True), (2, 2): ("KV 계층 (CMX)", True), (3, 2): ("읽기 위주 KV", False),
-        (3, 3): ("사용자 VM 디스크", True), (2, 3): ("활성 VM", False)}
+        (3, 3): ("사용자 VM 디스크 · 상태", True), (2, 3): ("기동 버스트", False)}
 for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
     y = MT + r * (RH + RG)
     rect(s, LX, y, LW, RH, fill=PALE, shape=RR)
@@ -212,9 +224,21 @@ for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
             label_box(s, x, y, DW, RH, [(txt, 18, True, BLUE)], fill=WHITE, line=BLUE, lw=1.25, dash=True)
 
 d.band(s, 9.44, 0.80, "결론", "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다")
-d.footer(s, "출처: HBM 과제팀 집계 · 범용 Microsoft SSD 50만 대(파생) · 학습 NVIDIA SuperPOD 가이드(GPU당) · 체크포인트 산술 · 추론 StorageReview(2026-08) · "
-            "Kioxia · DapuStor · 에이전트 Google GKE · Muse 관측 100GB × 1억 명(산술) · Llama 3 논문 · 제품 사양 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
-d.notes(s, "1장입니다. TBD")
+d.footer(s, "출처: HBM 과제팀 집계 · 범용 Microsoft SSD 50만 대(파생) · FlashBlox(FAST'17) · 학습 NVIDIA SuperPOD 가이드(GPU당) · 체크포인트 산술 · 추론 StorageReview(2026-08) · "
+            "Kioxia · DapuStor · 에이전트 Google Agent Substrate · Muse 관측(제3자, 산술) · 제품 사양 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
+d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
+        "그래서 SSD의 다음 수요를 하나로 단정하지 않고, 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. "
+        "첫째, 범용 클라우드입니다. 여러 고객의 VM이 서버의 SSD를 나눠 씁니다. Microsoft의 SSD 50만 대를 보면 실제 쓰기는 0.07에서 0.23 DWPD로 범용 TLC 정격 1 DWPD 안에 들어옵니다. 기존 SSD 기술로 대응할 수 있습니다. "
+        "다만 한 고객의 쓰기가 같은 SSD를 쓰는 다른 고객의 지연을 키웁니다. Microsoft 워크로드 실험에서 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. 멀티테넌트 QoS와 격리는 여전히 중요한 요구입니다. "
+        "둘째, AI 학습입니다. NVIDIA SuperPOD 가이드를 GPU당으로 환산하면, 데이터가 캐시보다 큰 멀티모달 학습은 기본 등급보다 약 3배의 스토리지 대역을 요구합니다. 데이터 로딩에는 고성능 TLC가 맞습니다. "
+        "405B 모델은 체크포인트 한 번에 약 5.7테라바이트를 쓰고, 다 쓸 때까지 학습이 멈춥니다. 체크포인트 간격이 짧아지면 고내구 TLC가 필요할 수 있어 점선으로 두었습니다. "
+        "셋째, AI 추론의 KV 캐시 오프로드입니다. KV 캐시 계층을 실측하면 드라이브당 3.2 DWPD로 QLC 정격 0.6을 크게 넘고, AI 전용 SSD는 50에서 120 DWPD로 나왔습니다. 반대로 읽기 위주라는 측정도 있습니다. "
+        "그래서 같은 KV 캐시라도 쓰기량에 따라 SLC급, 고내구 TLC, 고성능 TLC로 갈리고, 읽기 위주라면 QLC도 후보입니다. 고내구라는 요구에도 필요한 DWPD에 따라 SLC부터 QLC까지 여러 답이 있다는 뜻입니다. "
+        "넷째, Meta Muse와 OpenAI Dot 같은 에이전트입니다. 사실을 다시 확인해 보니 이 서비스들은 사용자마다 VM을 하나씩 주는 구조이고, 에이전트는 대부분의 시간을 휴면 상태로 보냅니다. 휴면 상태는 압축 스냅샷으로 오브젝트 스토리지에 보관됩니다. "
+        "제3자가 Muse VM을 관측한 결과 메모리 7.75기가바이트에 디스크 100기가바이트로, 디스크가 13배 큽니다. 사용자 1억 명이면 할당 기준 10엑사바이트입니다. 그래서 에이전트 VM 자체에는 고DWPD보다 고용량 QLC가 맞습니다. "
+        "다만 실제 사용량은 아직 할당보다 훨씬 작고, 에이전트 VM 디스크의 쓰기량을 공개한 측정은 없습니다. 에이전트가 키우는 고DWPD 수요는 VM이 아니라 추론의 KV 캐시 계층에서 나옵니다. 에이전트가 한꺼번에 깨어날 때 디스크 경합이 생긴다는 Google의 설명이 있어, 고성능 TLC는 점선으로 두었습니다. "
+        "아래 표는 이것을 제품군으로 정리한 것입니다. 위에서 아래로 요구 DWPD는 낮아지고 최대 용량은 커집니다. 파란 칸은 지금 쓰는 곳, 점선 칸은 신호에 따라 쓰일 곳입니다. 응용마다 필요한 제품군의 조합이 다르고, 하나의 제품으로 모든 응용에 대응할 수 없습니다. "
+        "그래서 다양한 데이터센터 응용에 대응하려면 SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다. 다만 지금 예측할 수 있는 범위 안의 준비입니다.")
 
 # =============================================================== 2 솔루션
 s = d.slide(2, "솔루션", "SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고,\n고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다")

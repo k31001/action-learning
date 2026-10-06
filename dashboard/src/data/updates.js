@@ -15,6 +15,25 @@
 
 export const UPDATES = [
   {
+    date: '2026-10-06',
+    type: 'build',
+    version: 'v2.46.57',
+    title: '덱 1장 재구성: 데이터센터 응용별 SSD 요구 + 제품 포트폴리오, 에이전트 = 사용자별 VM → 고용량 QLC로 정정 (덱 v1.3 · 보고서 v1.4)',
+    summary:
+      '사용자 지적에 따라 에이전트 스토리지를 팩트 체크했다. Muse · dots는 사용자별 VM이고 대부분 휴면이며, 휴면 상태는 압축 스냅샷으로 오브젝트 스토리지에 간다. VM 디스크의 DWPD 공개 측정은 없고 고DWPD 근거는 추론의 KV 캐시 계층에만 있어, 에이전트 열을 고용량 QLC로 고쳤다. 1장은 응용 카드 4장 + 제품군 × 응용 매트릭스(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC)로 마무리(패치 v2.46.57).',
+    tags: ['에이전트', 'Muse', 'Dot', 'QLC', 'QoS', '멀티테넌트', '제품 포트폴리오', '팩트 체크'],
+    items: [
+      { label: '원장', detail: 'agent-vm-and-cloud-ssd-requirements-2026-10.md(AV · CQ · AT 85행): 대부분 휴면 · 스냅샷 경로 · FlashBlox p99 3.1배 · WARP WAF 1.28 → 3.0 · 드라이브 활용률 8.0~27.8%' },
+      { label: '위키', detail: 'datacenter-types-storage-requirements.md §0 정정 · §1 비교표 · §1.5 제품군 × 응용 매트릭스 · 쓰면 안 되는 문장 3건' },
+      { label: '덱 1장', detail: '범용 클라우드 VM 그림 + 실측 DWPD + p99, 에이전트 휴면 격자 + VM 디스크 100GB, 결론 "SLC부터 QLC까지 다양한 제품 포트폴리오"' },
+      { label: '보고서 v1.4', detail: '§1.3 응용별 SSD 요구 · §1.3.1 포트폴리오 · §4.4 신호 · §6 F-14 · F-15' },
+    ],
+    links: [
+      { label: '원장', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/agent-vm-and-cloud-ssd-requirements-2026-10.md' },
+      { label: '위키', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/datacenter-types-storage-requirements.md' },
+    ],
+  },
+  {
     date: '2026-10-03',
     type: 'build',
     version: 'v2.46.56',
