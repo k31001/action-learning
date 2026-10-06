@@ -41,103 +41,99 @@ def chip(s, x, y, w, h, text, fill=BLUE, color=WHITE, size=20, line=None, dash=F
 
 
 # =============================================================== 1 배경
-s = d.slide(1, "배경", "SSD의 다음 수요는 하나로 정해지지 않으며,\n데이터센터마다 스토리지에 요구하는 것이 다릅니다")
+s = d.slide(1, "배경", "SSD의 다음 수요는 하나로 정해지지 않으며,\n데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다")
 
-# ---- HBM 교훈 띠: 점유율 슬로프 차트
-SY, SH = 2.28, 0.90
-rect(s, MX, SY, CW, SH, fill=PALE, shape=RR)
-tb(s, MX + 0.30, SY, 9.6, SH, [[("HBM의 교훈   ", 20, True, BLUE), ("하나의 수요를 늦게 읽으면 첫 호황을 놓칩니다", 20, True, INK)]], anchor=MID)
-sx0, sx1 = RIGHT - 6.70, RIGHT - 4.10
+# 격자: 왼쪽 열(교훈 · 제품군 이름) + 응용 4열(카드 · 매트릭스 칸). 같은 열은 위아래로 이어 읽는다
+LX, LW = MX, 3.70
+DG = 0.16
+DW = (CW - LW - 0.22 - 3 * DG) / 4
+DXS = [MX + LW + 0.22 + i * (DW + DG) for i in range(4)]
+MT, RH, RG = 6.46, 0.66, 0.07
+CT, CB = 2.32, MT - 0.50
+VT = CT + 0.92
+
+# ---- 왼쪽 위: HBM의 교훈 (점유율 슬로프)
+rect(s, LX, CT, LW, CB - CT, fill=PALE, shape=RR)
+tb(s, LX + 0.22, CT + 0.12, LW - 0.44, 0.38, [("HBM의 교훈", 20, True, BLUE)], anchor=MID)
+tb(s, LX + 0.22, CT + 0.52, LW - 0.44, 0.80, [("하나의 수요를 늦게 읽으면", 18, True, INK), ("첫 호황을 놓칩니다", 18, True, INK)], spacing=1.05)
+ST = CT + 1.62
+sx0, sx1 = LX + 0.86, LX + 1.86
 
 
 def sy(v):
-    return SY + 0.10 + (70 - v) / 60 * 0.52
+    return ST + (68 - v) / 55 * 1.25
 
 
-tb(s, sx0 - 1.95, SY, 1.75, SH, [("HBM 점유율", 16, False, GRAY)], align=R, anchor=MID)
-tb(s, sx0 - 0.45, SY + 0.58, 0.9, 0.26, [("2022", 16, False, GRAY)], align=C)
-tb(s, sx1 - 0.45, SY + 0.58, 0.9, 0.26, [("2Q25", 16, False, GRAY)], align=C)
 for (a0, a1, col, lg) in [(50, 62, GRAY_2, "sk-hynix"), (40, 17, BLUE, "samsung")]:
     ln = s.shapes.add_connector(1, *(int(v * 914400) for v in (sx0, sy(a0), sx1, sy(a1))))
     ln.line.color.rgb = col
     ln.line.width = 38100
     rect(s, sx0 - 0.07, sy(a0) - 0.07, 0.14, 0.14, fill=col, shape=MSO_SHAPE.OVAL)
     rect(s, sx1 - 0.07, sy(a1) - 0.07, 0.14, 0.14, fill=col, shape=MSO_SHAPE.OVAL)
-    d.fit(s, d.logo(lg), sx1 + 0.20, sy(a1) - 0.14, 1.0, 0.28, align="left")
-    tb(s, sx1 + 1.30, sy(a1) - 0.17, 2.4, 0.34, [(f"{a0}% → {a1}%", 20 if col == BLUE else 18, True, BLUE if col == BLUE else GRAY)], anchor=MID)
+    tb(s, sx0 - 0.70, sy(a0) - 0.17 + (-0.12 if a0 == 50 else 0.12), 0.58, 0.34, [(f"{a0}%", 16, False, GRAY)], align=R, anchor=MID)
+    tb(s, sx1 + 0.12, sy(a1) - 0.17, 0.66, 0.34, [(f"{a1}%", 18, True, col)], anchor=MID)
+    d.fit(s, d.logo(lg), sx1 + 0.80, sy(a1) - 0.13, 0.86, 0.26, align="left")
+tb(s, sx0 - 0.45, ST + 1.36, 0.9, 0.28, [("2022", 16, False, GRAY)], align=C)
+tb(s, sx1 - 0.45, ST + 1.36, 0.9, 0.28, [("2Q25", 16, False, GRAY)], align=C)
+tb(s, LX + 0.22, CB - 0.36, LW - 0.44, 0.30, [("HBM 점유율", 16, False, GRAY)], align=C)
 
-# ---- 데이터센터 4종: 열마다 이름 · 하는 일 · 데이터 그래프 2개 · 요구 · 기술
-NCOL, CG = 4, 0.25
-CWD = (CW - (NCOL - 1) * CG) / NCOL
-CXS = [MX + i * (CWD + CG) for i in range(NCOL)]
-HY, WY, RQY, TY = 3.30, 3.82, 8.02, 8.70
-DCS = [("범용 클라우드", "VM · DB · 객체 저장", "오래 쓰고, 용량 중심", "→ Mixed Media"),
-       ("AI 학습", "모델 학습 · 체크포인트", "랙 공간 · 전력이 귀하다", "→ 고용량"),
-       ("AI 추론", "질의 응답 · KV 캐시", "쓰기 요구가 엇갈린다", "→ 고DWPD"),
-       ("에이전트", "", "문맥이 길고 상태가 남는다", "→ 고DWPD · 고용량")]
-for i, (nm, wl, rq, tech) in enumerate(DCS):
-    x = CXS[i]
-    rect(s, x, HY - 0.06, CWD, RQY + 0.54 - HY + 0.06, fill=TINT if i == 3 else WHITE, line=LINE, lw=0.75, shape=RR)
-    tb(s, x + 0.20, HY, CWD - 0.4, 0.46, [(nm, 24, True, INK)], anchor=MID)
-    tb(s, x + 0.20, WY, CWD - 0.4, 0.34, [(wl, 16, False, GRAY)])
-    tb(s, x + 0.20, RQY, CWD - 0.4, 0.46, [(rq, 20, True, BLUE)], anchor=MID)
-    chip(s, x, TY, CWD, 0.60, tech)
-d.fit(s, d.logo("nvidia"), CXS[1] + CWD - 1.45, HY + 0.08, 1.25, 0.30)
-d.fit(s, d.logo("meta"), CXS[3] + 0.20, WY + 0.03, 0.95, 0.26, align="left")
-tb(s, CXS[3] + 1.27, WY, 0.80, 0.34, [("Muse", 16, True, INK)])
-d.fit(s, d.logo("openai"), CXS[3] + 2.20, WY + 0.04, 0.95, 0.24, align="left")
-tb(s, CXS[3] + 3.22, WY, 0.60, 0.34, [("Dot", 16, True, INK)])
+# ---- 응용 카드 4장: 이름 · 하는 일 · 데이터 그래프 · SSD 요구
+APPS = [("범용 클라우드", "VM · DB · 웹 (멀티테넌트)", "QoS · 테넌트 격리"),
+        ("AI 학습", "데이터 로딩 · 체크포인트", "대역 · 쓰기 피크"),
+        ("AI 추론", "KV 캐시 오프로드", "쓰기 내구 (DWPD)"),
+        ("에이전트", "", "용량 · TB당 비용")]
+for i, (nm, wl, rq) in enumerate(APPS):
+    x = DXS[i]
+    rect(s, x, CT, DW, CB - CT, fill=WHITE, line=LINE, lw=0.75, shape=RR)
+    tb(s, x + 0.20, CT + 0.10, DW - 0.40, 0.42, [(nm, 22, True, INK)], anchor=MID)
+    tb(s, x + 0.20, CT + 0.52, DW - 0.40, 0.30, [(wl, 16, False, GRAY)])
+    rect(s, x + 0.20, CB - 0.58, DW - 0.40, 0.012, fill=LINE)
+    tb(s, x + 0.20, CB - 0.52, DW - 0.40, 0.42, [(rq, 20, True, BLUE)], anchor=MID)
+d.fit(s, d.logo("nvidia"), DXS[1] + DW - 1.35, CT + 0.16, 1.15, 0.28)
+x = DXS[3]
+d.fit(s, d.logo("meta"), x + 0.20, CT + 0.55, 0.80, 0.24, align="left")
+tb(s, x + 1.04, CT + 0.52, 0.70, 0.30, [("Muse", 16, True, INK)])
+d.fit(s, d.logo("openai"), x + 1.80, CT + 0.56, 0.80, 0.22, align="left")
+tb(s, x + 2.64, CT + 0.52, 0.60, 0.30, [("Dot", 16, True, INK)])
 
-# ① 범용: 서버 내용연수 덤벨 + 건물
-x0 = CXS[0]
-rows = [("microsoft", 4, 6), ("google", 4, 6), ("meta", 4, 5.5), ("aws", 3, 6)]
-PX0, PX1 = x0 + 1.55, x0 + CWD - 0.20
-Y0, YP = 4.36, 0.50
-lo, hi = 2.5, 6.6
+# ① 범용 클라우드: 클라우드 안 VM 여러 개가 SSD 하나를 나눠 쓴다 + 실사용 DWPD
+x = DXS[0]
+rect(s, x + 0.08, VT - 0.04, 2.10, 1.16, fill=None, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.CLOUD)
+TEN = [GRAY_2, BLUE_T2, GRAY_2, BLUE_T1, GRAY_2, BLUE_T2]
+for k, col in enumerate(TEN):
+    rect(s, x + 0.54 + (k % 3) * 0.44, VT + 0.28 + (k // 3) * 0.30, 0.38, 0.24, fill=col)
+for k in range(3):
+    rect(s, x + 0.72 + k * 0.44, VT + 0.84, 0.014, 0.34, fill=GRAY_2)
+rect(s, x + 0.46, VT + 1.18, 1.40, 0.26, fill=INK)
+tb(s, x + 0.46, VT + 1.18, 1.40, 0.26, [("SSD", 15, True, WHITE)], align=C, anchor=MID)
+tb(s, x + 0.04, VT + 1.52, 2.24, 0.56, [("VM 여러 개가", 16, False, GRAY), ("SSD 하나를 나눠 씀", 16, False, GRAY)], align=C, spacing=1.0)
+# 실측 DWPD 대 범용 TLC 정격 (세로 막대)
+BBt, BHm = VT + 1.44, 1.10
+for k, (v, col, nm, lab) in enumerate([(0.23, BLUE, "실측", "0.2"), (1.0, GRAY_2, "정격", "1")]):
+    bx = x + 2.40 + k * 0.52
+    rect(s, bx, BBt - BHm * v, 0.32, BHm * v, fill=col)
+    tb(s, bx - 0.14, BBt - BHm * v - 0.30, 0.60, 0.28, [(lab, 16, True, BLUE if k == 0 else INK)], align=C)
+    tb(s, bx - 0.14, BBt + 0.04, 0.60, 0.28, [(nm, 15, False, GRAY)], align=C)
+tb(s, x + 2.22, BBt + 0.32, 1.10, 0.28, [("DWPD", 15, False, GRAY)], align=C)
 
+# ② AI 학습: GPU당 스토리지 대역 (NVIDIA 가이드) + 체크포인트
+x = DXS[1]
+BBt, BHm = VT + 1.40, 1.05
+for g, (gn, rv, wv, rc, wc) in enumerate([("기본", 0.16, 0.08, GRAY_2, LINE), ("멀티모달", 0.49, 0.24, BLUE, BLUE_T2)]):
+    gx = x + 0.30 + g * 1.02
+    for k, (v, col) in enumerate([(rv, rc), (wv, wc)]):
+        h = BHm * v / 0.49
+        rect(s, gx + k * 0.40, BBt - h, 0.34, h, fill=col)
+        tb(s, gx + k * 0.40 - 0.18, BBt - h - 0.30, 0.70, 0.28, [(f"{v:.2f}", 15, True, BLUE if g else INK)], align=C)
+    tb(s, gx - 0.15, BBt + 0.04, 1.04, 0.30, [(gn, 16, False, GRAY)], align=C)
+tb(s, x + 0.20, BBt + 0.38, DW - 0.40, 0.30, [[("■", 15, False, BLUE), (" 읽기  ", 15, False, GRAY), ("■", 15, False, BLUE_T2), (" 쓰기  GB/s, GPU당", 15, False, GRAY)]])
+tb(s, x + 2.36, VT + 0.30, DW - 2.46, 0.56, [("5.7TB", 26, True, BLUE)], anchor=MID)
+tb(s, x + 2.36, VT + 0.86, DW - 2.46, 0.60, [("체크포인트", 16, False, GRAY), ("1회 (405B)", 16, False, GRAY)], spacing=1.0)
 
-def xv(v):
-    return PX0 + (v - lo) / (hi - lo) * (PX1 - PX0)
-
-
-for g in (3, 4, 5, 6):
-    rect(s, xv(g) - 0.005, Y0 - 0.10, 0.01, len(rows) * YP, fill=LINE)
-    tb(s, xv(g) - 0.35, Y0 + len(rows) * YP - 0.08, 0.7, 0.30, [(f"{g}년", 16, False, GRAY)], align=C)
-for k, (lg, a0, b0) in enumerate(rows):
-    y = Y0 + k * YP
-    d.fit(s, d.logo(lg), x0 + 0.20, y, 1.25, 0.28 if lg != "aws" else 0.34, align="left")
-    rect(s, xv(a0), y + 0.13, xv(b0) - xv(a0), 0.03, fill=GRAY_2)
-    rect(s, xv(a0) - 0.09, y + 0.06, 0.18, 0.18, fill=GRAY_2, shape=MSO_SHAPE.OVAL)
-    rect(s, xv(b0) - 0.12, y + 0.03, 0.24, 0.24, fill=BLUE, shape=MSO_SHAPE.OVAL)
-tb(s, x0 + 0.20, Y0 + len(rows) * YP + 0.22, CWD - 0.4, 0.30, [("서버 내용연수: 변경 전 → 후", 16, False, GRAY)], align=C)
-tb(s, x0 + 0.20, 6.95, CWD - 0.4, 0.66, [[("건물 ", 24, True, BLUE), ("15 → 25", 40, True, BLUE), ("년", 24, True, BLUE)]], anchor=MID)
-tb(s, x0 + 0.20, 7.60, CWD - 0.4, 0.34, [("Microsoft 데이터센터 (FY27)", 16, False, GRAY)])
-
-# ② AI 학습: 랙 전력 (로그 축) + 체크포인트
-x0 = CXS[1]
-bars = [("범용", 11, "11"), ("H100", 40, "40"), ("GB200", 130, "약 130"), ("2027", 1000, "1MW")]
-BB, BHmax = 6.20, 1.65
-bw, bg = 0.66, 0.30
-bx0 = x0 + 0.70
-for gv in (10, 100, 1000):
-    gy = BB - math.log10(gv) / 3 * BHmax
-    rect(s, bx0 - 0.08, gy, 4 * bw + 3 * bg + 0.16, 0.012, fill=LINE)
-    tb(s, x0 + 0.02, gy - 0.16, 0.62, 0.32, [(f"{gv:,}", 16, False, GRAY)], align=R)
-for k, (nm, v, lab) in enumerate(bars):
-    h = math.log10(v) / 3 * BHmax
-    bx = bx0 + k * (bw + bg)
-    last = k == 3
-    rect(s, bx, BB - h, bw, h, fill=TINT if last else (GRAY if k == 2 else GRAY_2), line=BLUE if last else None, lw=1.5, dash=last)
-    tb(s, bx - 0.3, BB - h - 0.36, bw + 0.6, 0.34, [(lab, 16, True, BLUE if last else INK)], align=C)
-    tb(s, bx - 0.3, BB + 0.02, bw + 0.6, 0.30, [(nm, 16, False, GRAY)], align=C)
-tb(s, x0 + 0.20, BB + 0.34, CWD - 0.4, 0.30, [("랙 전력 kW (로그 축)", 16, False, GRAY)], align=C)
-tb(s, x0 + 0.20, 6.95, CWD - 0.4, 0.66, [[("체크포인트 ", 24, True, BLUE), ("5.7", 40, True, BLUE), ("TB", 24, True, BLUE)]], anchor=MID)
-tb(s, x0 + 0.20, 7.60, CWD - 0.4, 0.34, [("405B 모델 1회 저장 (산술)", 16, False, GRAY)])
-
-# ③ AI 추론: DWPD (로그 축) + 읽기:쓰기
-x0 = CXS[2]
-LBW = 1.55
-ax0, ax1 = x0 + 0.20 + LBW, x0 + CWD - 0.95
+# ③ AI 추론: DWPD (로그 축)
+x = DXS[2]
+LBW = 1.20
+ax0, ax1 = x + 0.20 + LBW, x + DW - 0.95
 lo_, hi_ = math.log10(0.3), math.log10(150)
 
 
@@ -145,48 +141,80 @@ def xd(v):
     return ax0 + (math.log10(v) - lo_) / (hi_ - lo_) * (ax1 - ax0)
 
 
-tb(s, x0 + 0.20, 4.26, CWD - 0.4, 0.30, [("DWPD (로그 축)", 16, False, GRAY)])
+tb(s, x + 0.20, VT - 0.02, DW - 0.40, 0.30, [("DWPD (로그 축)", 15, False, GRAY)])
 for g in (1, 10, 100):
-    rect(s, xd(g) - 0.005, 4.60, 0.01, 1.38, fill=LINE)
-    tb(s, xd(g) - 0.3, 5.98, 0.6, 0.28, [(str(g), 16, False, GRAY)], align=C)
+    rect(s, xd(g) - 0.005, VT + 0.34, 0.01, 1.40, fill=LINE)
+    tb(s, xd(g) - 0.3, VT + 1.76, 0.6, 0.28, [(str(g), 15, False, GRAY)], align=C)
 for k, (nm, v, vmin, col, lab) in enumerate([("QLC 정격", 0.6, None, GRAY_2, "0.6"), ("KV 실측", 3.2, None, GRAY, "3.2"),
                                               ("AI 전용", 120, 50, BLUE, "50~120")]):
-    yy = 4.62 + k * 0.44
-    tb(s, x0 + 0.20, yy, LBW - 0.06, 0.36, [(nm, 17, k == 2, BLUE if k == 2 else INK)], anchor=MID)
+    yy = VT + 0.38 + k * 0.46
+    tb(s, x + 0.20, yy, LBW - 0.06, 0.36, [(nm, 17, k == 2, BLUE if k == 2 else INK)], anchor=MID)
     rect(s, ax0, yy + 0.05, xd(v) - ax0, 0.26, fill=col)
     if vmin:
         rect(s, xd(vmin) - 0.015, yy, 0.03, 0.36, fill=WHITE)
-    tb(s, xd(v) + 0.06, yy, 0.95, 0.36, [(lab, 17, True, BLUE if k == 2 else INK)], anchor=MID)
-tb(s, x0 + 0.20, 6.40, CWD - 0.4, 0.30, [("KV 오프로드 I/O (학계 트레이스)", 16, False, GRAY)])
-rect(s, x0 + 0.20, 6.76, CWD - 0.40, 0.42, fill=GRAY_2)
-rect(s, x0 + CWD - 0.25, 6.76, 0.05, 0.42, fill=BLUE)
-tb(s, x0 + 0.32, 6.76, 2.6, 0.42, [("읽기 99.5%", 18, True, WHITE)], anchor=MID)
-tb(s, x0 + 0.20, 7.24, CWD - 0.4, 0.36, [[("쓰기 ", 18, False, GRAY), ("0.5%", 18, True, BLUE), ("   반대 신호", 16, False, GRAY)]])
+    tb(s, xd(v) + 0.06, yy, 0.90, 0.36, [(lab, 17, True, BLUE if k == 2 else INK)], anchor=MID)
 
-# ④ 에이전트: 요청당 KV 캐시 크기 (채팅 대 에이전트) + 장시간 세션
-x0 = CXS[3]
-tb(s, x0 + 0.20, 4.26, CWD - 0.4, 0.30, [("요청당 KV 캐시 (70B 모델, 산술)", 16, False, GRAY)])
-KB0, KBW = x0 + 0.20, CWD - 1.45
-for k, (nm, v, col, lab) in enumerate([("채팅 (2024)", 0.53, GRAY_2, "0.5GB"), ("에이전트 (2026)", 22.2, BLUE, "22GB")]):
-    yy = 4.64 + k * 0.80
-    tb(s, KB0, yy, CWD - 0.4, 0.32, [(nm, 17, k == 1, BLUE if k else INK)])
-    w = max(0.06, KBW * v / 22.2)
-    rect(s, KB0, yy + 0.34, w, 0.32, fill=col)
-    tb(s, KB0 + w + 0.08, yy + 0.30, 1.1, 0.40, [(lab, 18, True, BLUE if k else INK)], anchor=MID)
-tb(s, x0 + 0.20, 6.34, CWD - 0.4, 0.34, [("입력 토큰 1,632 대 67,818 (약 42배)", 16, False, GRAY)])
-tb(s, x0 + 0.20, 6.95, CWD - 0.4, 0.66, [[("18.8", 40, True, BLUE), ("%", 24, True, BLUE)]], anchor=MID)
-tb(s, x0 + 0.20, 7.60, CWD - 0.4, 0.34, [("1시간 넘게 이어지는 세션 비중", 16, False, GRAY)])
+# ④ 에이전트: 사용자별 VM, 대부분 유휴 + 영속 디스크 총량
+x = DXS[3]
+NC, NR, TW, TH = 12, 3, 0.20, 0.16
+ACT = {(0, 3), (1, 8), (2, 1)}
+for r in range(NR):
+    for c in range(NC):
+        rect(s, x + 0.22 + c * (TW + 0.055), VT + 0.02 + r * (TH + 0.06), TW, TH, fill=BLUE if (r, c) in ACT else LINE)
+tb(s, x + 0.20, VT + 0.66, DW - 0.40, 0.30, [[("■", 15, False, BLUE), (" 활성  ", 15, False, GRAY), ("■", 15, False, LINE), (" 유휴: 상태는 디스크로", 15, False, GRAY)]])
+for k, (nm, v, col, lab) in enumerate([("사용자 VM 디스크 (1억 명)", 10.0, BLUE, "10EB"), ("Llama 3 학습 스토리지", 0.24, GRAY_2, "0.24EB")]):
+    yy = VT + 1.06 + k * 0.52
+    tb(s, x + 0.20, yy, DW - 0.40, 0.26, [(nm, 15, k == 0, BLUE if k == 0 else GRAY)], anchor=MID)
+    w = max(0.05, (DW - 1.40) * v / 10.0)
+    rect(s, x + 0.22, yy + 0.28, w, 0.18, fill=col)
+    tb(s, x + 0.28 + w, yy + 0.22, 0.90, 0.30, [(lab, 15, True, BLUE if k == 0 else GRAY)], anchor=MID)
 
-d.band(s, 9.60, 0.80, "불변 전략", "하나의 미래에 걸지 않고, 데이터센터마다 다른 요구를 미리 준비합니다")
-d.footer(s, "출처: HBM(과제팀 집계) · 내용연수: Microsoft IR · 10-K · 랙: Uptime 2026 · NVIDIA · 체크포인트: 14B/파라미터 산술 · DWPD: StorageReview 실측(2026-08) · Kioxia · Phison · DapuStor(2026) · "
-            "I/O: CHEOPS'25 · 에이전트: Microsoft Copilot 트레이스(2026-06) 대 Azure 대화(2024), KV = Llama 3.1 70B 320KiB/토큰 산술 · Muse · Dot 보도")
-d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
-        "그래서 다음 수요를 하나로 단정하지 않고, 하이퍼스케일러가 운영하는 데이터센터를 네 가지로 나눠 스토리지 요구를 데이터로 비교했습니다. Google도 8세대 TPU를 학습용과 추론용으로 나누면서 인프라 요구가 갈라졌다고 밝혔습니다. "
-        "첫째, 범용 클라우드입니다. 자산을 더 오래 씁니다. 서버 내용연수는 5년에서 6년으로, Microsoft의 데이터센터 건물은 25년으로 늘었습니다. 기존 인프라 안에서 빠른 영역과 큰 영역을 함께 주는 Mixed Media가 맞습니다. "
-        "둘째, AI 학습입니다. 랙 전력이 범용 11킬로와트에서 GB200 약 130킬로와트로, 2027년에는 1메가와트급을 준비합니다. 405B 모델은 체크포인트 한 번에 약 5.7테라바이트를 씁니다. 같은 공간에 더 많이 담는 고용량이 필요합니다. "
-        "셋째, AI 추론입니다. KV 캐시 계층을 실측하면 드라이브당 3.2 DWPD로 QLC 정격 0.6을 크게 넘고, AI 전용 SSD는 50에서 120 DWPD로 나왔습니다. 반대로 학계 트레이스에서는 읽기가 99.5퍼센트였습니다. 신호가 엇갈리므로 고DWPD는 준비하되 단일 베팅은 하지 않습니다. "
-        "넷째, Meta의 Muse, OpenAI의 Dot 같은 항상 켜진 에이전트를 서비스하는 데이터센터입니다. Microsoft의 코딩 에이전트 기록을 보면 호출 한 번의 입력이 약 6만 8천 토큰으로, 2024년 채팅 요청보다 약 42배 깁니다. 70B 모델로 환산하면 요청당 KV 캐시가 0.5기가바이트에서 22기가바이트로 커집니다. 세션의 18.8퍼센트는 1시간 넘게 이어집니다. 문맥이 길고 상태가 남기 때문에 용량과 쓰기가 함께 필요합니다. "
-        "하나의 미래에 걸지 않고, 데이터센터마다 다른 요구를 미리 준비하는 것, 이것을 불변 전략이라고 부르겠습니다. 다만 지금 예측할 수 있는 범위 안의 준비입니다.")
+# ---- 매트릭스 머리줄
+tb(s, LX, MT - 0.36, LW + 6, 0.32, [[("SSD 제품군  ", 18, True, INK), ("요구 DWPD 순 (로그 축) · 최대 용량", 16, False, GRAY)]], anchor=MID)
+tb(s, RIGHT - 6.0, MT - 0.36, 6.0, 0.32, [[("■", 16, False, BLUE), (" 지금 쓰는 곳   ", 16, False, GRAY), ("▢", 16, False, BLUE), (" 신호에 따라 쓰일 곳", 16, False, GRAY)]], align=R, anchor=MID)
+
+# ---- 매트릭스: 제품군(행) × 응용(열)
+CLS = [("SLC급", "≤ 3.2TB", 30, 120, "30~120"),
+       ("고내구 TLC", "≤ 12.8TB", None, 3, "3"),
+       ("고성능 · 범용 TLC", "≤ 15.36TB", None, 1, "1"),
+       ("고용량 QLC", "≤ 245TB", 0.3, 0.6, "0.3~0.6")]
+DL, DH = math.log10(0.1), math.log10(150)
+BX0, BXW = LX + 0.22, LW - 1.30
+
+
+def xb(v):
+    return BX0 + (math.log10(v) - DL) / (DH - DL) * BXW
+
+
+# 칸: (행, 열) → (문구, 지금=True / 신호=False)
+CELL = {(2, 0): ("VM · DB 블록", True), (3, 0): ("객체 · 콜드 데이터", True),
+        (2, 1): ("데이터 로딩", True), (1, 1): ("체크포인트", False), (3, 1): ("데이터셋", True),
+        (0, 2): ("초고DWPD KV", False), (1, 2): ("KV 쓰기 많을 때", True), (2, 2): ("KV 계층 (CMX)", True), (3, 2): ("읽기 위주 KV", False),
+        (3, 3): ("사용자 VM 디스크", True), (2, 3): ("활성 VM", False)}
+for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
+    y = MT + r * (RH + RG)
+    rect(s, LX, y, LW, RH, fill=PALE, shape=RR)
+    tb(s, LX + 0.22, y + 0.02, LW - 1.30, 0.34, [(nm, 18, True, INK)], anchor=MID)
+    tb(s, LX + LW - 1.30, y + 0.02, 1.14, 0.34, [(cap, 15, False, GRAY)], align=R, anchor=MID)
+    rect(s, BX0, y + 0.42, xb(v) - BX0, 0.16, fill=BLUE if r == 0 else (BLUE_T1 if r == 1 else GRAY_2))
+    if vmin:
+        rect(s, xb(vmin) - 0.015, y + 0.39, 0.03, 0.22, fill=PALE)
+    tb(s, xb(v) + 0.06, y + 0.33, 1.0, 0.32, [(lab, 16, True, INK)], anchor=MID)
+    for c in range(4):
+        x = DXS[c]
+        if (r, c) not in CELL:
+            rect(s, x, y, DW, RH, fill=None, line=LINE, lw=0.75, shape=RR)
+            continue
+        txt, now = CELL[(r, c)]
+        if now:
+            label_box(s, x, y, DW, RH, [(txt, 18, True, WHITE)], fill=BLUE)
+        else:
+            label_box(s, x, y, DW, RH, [(txt, 18, True, BLUE)], fill=WHITE, line=BLUE, lw=1.25, dash=True)
+
+d.band(s, 9.44, 0.80, "결론", "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다")
+d.footer(s, "출처: HBM 과제팀 집계 · 범용 Microsoft SSD 50만 대(파생) · 학습 NVIDIA SuperPOD 가이드(GPU당) · 체크포인트 산술 · 추론 StorageReview(2026-08) · "
+            "Kioxia · DapuStor · 에이전트 Google GKE · Muse 관측 100GB × 1억 명(산술) · Llama 3 논문 · 제품 사양 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
+d.notes(s, "1장입니다. TBD")
 
 # =============================================================== 2 솔루션
 s = d.slide(2, "솔루션", "SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고,\n고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다")
