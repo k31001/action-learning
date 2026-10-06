@@ -119,3 +119,8 @@
 - **Stargate는 우산 전략으로 진화**: 하이퍼스케일러(과반)+뉴클라우드(CoreWeave)+칩 직공급(Cerebras)+디자인빌드+잠재 자체 건설의 포트폴리오. Abilene(Oracle) GB 클러스터에서 최신 모델 학습 중, 미시간·텍사스 추가 DC 2~3년 내 온라인.
 
 **출처**: [mad-podcast-sachin-katti-openai-compute-2026-07.md](../../sources/articles/mad-podcast-sachin-katti-openai-compute-2026-07.md)
+
+## [Update 2026-10-06] 2Q 가이던스 추가 상향 vs 구조 레버리지
+
+- Alphabet 2026 $195~205B(Q2 FCF −$5.9B, 2027 'significantly increase')·Amazon ~$220B(⚠️)·Oracle FY27 최대 $95B(자체 $70B+고객 상환분, ~$40B 조달)·MS ~$190B·Meta $125~145B. NVIDIA 2Q FY27 매출 $96.2B·3Q 가이던스 $108B. Anthropic 런레이트 $65B+.
+- 긴장: AI 관련 부채 2026 ~$500B(Goldman)·DC JV 23건 중 17건 스프레드 확대·CoreWeave 분기 순이자 $640M(전년 2.4배). HY OAS 263bp로 시장 지표는 타이트. 병목 CAPEX/ROI 지수 40 유지 ([october-2026-market-update-2026-10-06.md](../../sources/articles/october-2026-market-update-2026-10-06.md) §2).

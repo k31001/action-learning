@@ -189,3 +189,8 @@
 ## 연결 (2026-10-03 추가, 후보 평가)
 
 - 전력 · 냉각 대응 SSD 후보(콜드플레이트 · NVMe 2.3 전력 제어): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)
+
+## [Update 2026-10-06] PJM 2028/29 용량경매·ERCOT 큐·변압기 리드타임 정정
+
+- PJM BRA 2028/29: 신뢰도 요건 대비 6,831MW 부족(3년 연속)·청산가 상한 $325/MW-day(상한 없으면 $554.72)·DC 귀속 ~$6.3B/$16.4B. ERCOT 대형부하 큐 약 430~470GW(출처 ⚠️ 상충). GE Vernova 가스터빈 백로그+슬롯 116GW. FERC 2026-06-18 show-cause 6건(최종 규칙 아님). SemiAnalysis BTM 확정주문 75GW.
+- **정정**: 07-04 기록 '변압기 리드타임 최대 5년'은 범위 상단 — WoodMac 평균 128주(~2.5년)·변전용 160주+가 더 일관적. 병목 지수 전력 72→74 ([october-2026-market-update-2026-10-06.md](../../sources/articles/october-2026-market-update-2026-10-06.md) §1, [bottleneck-model-2030.md](bottleneck-model-2030.md)).

@@ -14,6 +14,29 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-06 (병목 모델 정기 점검) ─────────────────────────────────────────
+  {
+    date: '2026-10-06',
+    type: 'ingest',
+    version: 'v2.46.65',
+    title: '10월 정기 점검 — 병목 모델 갱신(전력 74·CAPEX 40·파운드리 49·패키징 66) + HBM 점유율 Counterpoint 2Q26',
+    summary:
+      '07-04 이후 3개월 갭을 4개 병렬 리서치(전력·CAPEX·파운드리/패키징·HBM/DRAM)로 보강. 4대 병목 제약지수를 갱신하고 변동폭(Δ)을 대시보드 배지에 표시: 전력 72→74(▲+2)·CAPEX 40→40(─0)·파운드리 50→49(▼-1)·패키징 67→66(▼-1). 전략·시나리오 확률은 변경 없음(사유 아래). 모든 수치는 검색 스니펫 수준 — 출처 충돌 항목은 ⚠️ 표기.',
+    tags: ['병목모델', '전력', 'CAPEX', 'PJM', 'ERCOT', 'CoWoS', 'ABF 기판', 'HBM 점유율', 'Counterpoint', 'TrendForce', 'dashboard'],
+    items: [
+      { label: '병목 제약지수 갱신 (10-06, 이전 07-04 대비)', detail: '전력 72→74(▲+2, 3개 분기 연속 상승: PJM 2028/29 경매 6,831MW 부족·가격 상한 3연속·ERCOT 큐 430~470GW)·CAPEX 40→40(─0, 가이던스 상향·ROI 실현 ↔ FCF·부채 긴장 상쇄)·파운드리 50→49(▼-1, TSMC capex $60~64B·8월 매출 +53% YoY)·패키징 67→66(▼-1, CoWoS 갭 20%→10% ↔ ABF 기판 갭 2027 ~20%)' },
+      { label: '정정: 변압기 리드타임', detail: '07-04 기록 "최대 5년"은 범위 상단 — WoodMac 평균 128주(~2.5년)·변전용 160주+. 방향(악화)은 유지' },
+      { label: '드라이버 노트 7개 갱신', detail: 'interconnect·transformer·capex_guide·financing·node_ramp·cowos_util·substrate(substrate 추세 악화로 상향)' },
+      { label: 'HBM 점유율·가격', detail: 'Counterpoint 2Q26 SK 50%·삼성 33%·Micron 18%. TrendForce 4Q26 범용 DRAM +10~15% QoQ(3Q +13~18%에서 감속)·NAND +15~20%' },
+      { label: '전략·시나리오 변경 없음', detail: '병목 지수 변동 ±2 이내, DF1 정점 재확인 방향(10-06 재평가와 정합). 신규·삭제 전략 없음 — 다음 점검에서 ABF 기판·FCF 음전환 추세가 지속되면 RS-9 EWI에 기판 갭 신호 추가 검토' },
+      { label: '위키·미러 동기화', detail: 'bottleneck-model-2030·hbm-market·energy-constraints·ai-capex 갱신, storyline 전력 72→74, 보고서 §2.2.3·§7 병목 레이더 표, slide-outline 노트. PPTX는 병목 수치 미포함이라 재생성 생략' },
+    ],
+    links: [
+      { label: 'october-2026-market-update-2026-10-06.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/october-2026-market-update-2026-10-06.md' },
+      { label: 'bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+      { label: 'hbm-market.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/hbm-market.md' },
+    ],
+  },
   // ── 2026-10-06 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-10-06',

@@ -2456,3 +2456,12 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 사용자 요청: "pptx도 커밋해서 푸시해 줘"
 - `outputs/presentation/ssd-future-ready-strategy.pptx`(덱 v1.9, 4장)를 생성기로 다시 만든 뒤 `git add -f`로 커밋. `.gitignore`의 `*.pptx` 규칙과 CLAUDE.md의 "PPTX 본체 미커밋" 원칙에 대한 이 파일 한정 예외
 - 재현 경로는 그대로 유지: `.venv/bin/python outputs/presentation/scripts/generate_ssd_future_ready_pptx.py`. 생성기를 고치면 이 PPTX도 다시 만들어 함께 커밋해야 어긋나지 않는다
+
+## [2026-10-06] ingest | 병목 모델 정기 점검 — 제약지수 갱신 (전력 74·CAPEX 40·파운드리 49·패키징 66) (v2.46.64 → v2.46.65)
+- **무엇**: 직전 병목 점검(07-04) 이후 3개월 갭을 4개 병렬 리서치 에이전트(전력/CAPEX·ROI/파운드리·패키징/HBM·DRAM)로 보강. SemiAnalysis·Counterpoint·TechInsights 본문은 직접 접근 불가(검색 스니펫·2차 인용 경유), PJM·ERCOT·FERC·GE Vernova·TSMC·ASML·TrendForce·Gartner 등으로 보강. 모든 수치는 스니펫 수준, 상충 항목은 ⚠️.
+- **변동폭(07-04 → 10-06)**: **전력 72→74(▲+2)·CAPEX 40→40(─0)·파운드리 50→49(▼-1)·패키징 67→66(▼-1)**. 전력: PJM 2028/29 용량경매 6,831MW 부족·청산가 상한 $325 3연속·ERCOT 큐 ~430~470GW·가스터빈 백로그+슬롯 116GW. CAPEX: 가이던스 상향(Alphabet $195~205B·Amazon ~$220B·Oracle FY27 ≤$95B)·Anthropic 런레이트 $65B+·HY OAS 263bp ↔ Alphabet FCF −$5.9B·AI 부채 ~$500B로 상쇄. 파운드리: TSMC capex $60~64B·8월 매출 +53% YoY. 패키징: CoWoS 갭 20%→10% ↔ ABF 기판 갭 2027 ~20% 확대(병목 이동).
+- **정정**: 07-04의 변압기 리드타임 "최대 5년" → WoodMac 평균 128주·변전용 160주+(범위 상단이었음). HBM 점유율은 Counterpoint 2Q26 SK50·삼성33·Micron18로 4월 추정(삼성 35~40%) 병기.
+- **sources**: `articles/october-2026-market-update-2026-10-06.md` 신설. **미수집**: 삼성·SK 3Q 잠정(10월 초 발표 예정), B200 임대가, Dell'Oro·JPM 갱신치.
+- **wiki**: `bottleneck-model-2030.md` 종합 판독(2026-10-06) 신설, `hbm-market.md`·`energy-constraints.md`·`ai-capex.md` Update 추가, `storyline.md` 전력 72→74. 모델 구조 수치(2030 낮음/기준/높음·탄력도)는 불변.
+- **전략 판단**: 신규·삭제·수정 전략 없음 — 지수 변동 ±2 이내, 10-06 시나리오 재평가(DF1 정점 재확인)와 정합. 감시 후보: ABF 기판 갭 신호의 RS-9/EWI 편입(다음 점검에서 재판단).
+- **dashboard (v2.46.65, 패치 = 데이터 갱신)**: `bottleneckModel.js`(MODEL_ASOF·PREV_*·지수 4개·indexNote 4개·드라이버 노트 7개·substrate 추세), `storyline.js`, `updates.js`, `version.js`, `knowledgeGraph.js` 재생성. **outputs**: 보고서 §2.2.3 신설·§7 병목 레이더 표 갱신, slide-outline 노트. PPTX는 병목 수치를 포함하지 않아 재생성 생략.

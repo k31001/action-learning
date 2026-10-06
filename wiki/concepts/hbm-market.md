@@ -323,3 +323,12 @@ Counterpoint Research (2026-01-29 + MS Hwang 인용, CNBC 보도):
 ### SemiAnalysis — HBM 웨이퍼 캐파 소비 재확인
 
 - SemiAnalysis "The Great AI Silicon Shortage": HBM은 비트당 범용 DRAM 대비 웨이퍼 캐파를 현재 **3배** 소비하며, HBM4에서 **4배**로 확대된다 — 위 [Update 2026-05-19] 섹션의 동일 정량치를 별도 아티클로 재확인한 근거다 ([july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md)).
+
+## [Update 2026-10-06] HBM 점유율 Counterpoint 2Q26·4Q26 계약가·삼성 HBM4 확대
+
+- **2Q26 HBM 점유율(Counterpoint, 매출 기준)**: SK하이닉스 **50%** · 삼성 **33%** · Micron **18%**(합 101%, 반올림). 삼성 QoQ +12pp·YoY +18pp, SK하이닉스는 1년 전 64% → 50%. 4월 추정(SK 50~55%·삼성 35~40%, 06-14)과 비교해 삼성은 하단 부근으로 수렴, Micron은 5~10% 추정보다 높게 확인 ([october-2026-market-update-2026-10-06.md](../../sources/articles/october-2026-market-update-2026-10-06.md) §4).
+- **삼성 2Q26**: 영업이익 ₩89.5T(DS ₩89.2T, 전사의 99.7%), HBM4 출하 확대·HBM4E 첫 샘플 출하. 3Q HBM4 매출 QoQ 3배+·H2 HBM 매출의 60%+가 HBM4 (회사 가이던스 보도).
+- **SK하이닉스 2Q26**: 매출 ₩79.32T·영업이익 ₩60.54T(+557% YoY, 76%) — 컨센서스 소폭 미달 보도(⚠️ S&P 헤드라인은 이익 beat로 상충).
+- **가격**: TrendForce 4Q26 범용 DRAM +10~15% QoQ(3Q +13~18%에서 추가 감속)·HBM 포함 DRAM +15~20%·NAND +15~20%(Enterprise SSD +23~28%). HBM4 2027 계약가 상승폭은 최대 +140%(Herald 인용) vs HBM +50%↑(TrendForce 08-25)로 ⚠️ 범위 상이·미검증.
+- **Vera Rubin HBM4 배정**: 갱신된 비율 미확인 — SK 60~70%·삼성 25~30%(07-04) 유지, 점유율 변화는 HBM4 H2 램프에 의존.
+- **Micron 3위 유지·삼성 2위 복귀**는 점유율 서사의 변화이나, 보고서·대시보드의 '삼성 35~40%' 표기는 4월 추정이므로 최신 Counterpoint 2Q26(33%)을 병기.
