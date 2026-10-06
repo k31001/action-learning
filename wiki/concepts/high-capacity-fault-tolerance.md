@@ -96,3 +96,4 @@ sources:
 - 보고서: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md)
 - 추가 솔루션 후보 평가(보안 · 신뢰 · 재사용, GPU 직결 고IOPS, 전력 · 냉각): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)
 - 데이터센터 유형별 스토리지 요구(범용 · AI 학습 · AI 추론 · 에이전트): [datacenter-types-storage-requirements.md](datacenter-types-storage-requirements.md)
+- 핵심 기술 6가지 × 제품군 × 고객 협력 강도(덱 2장 단일 소스): [ssd-core-technologies-customer-collaboration.md](ssd-core-technologies-customer-collaboration.md)

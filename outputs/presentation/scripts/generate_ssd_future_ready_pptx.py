@@ -1,15 +1,15 @@
-"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-06 v1.3).
+"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-06 v1.4).
 
 제목 4개를 이어 읽으면 한 문단이 된다(아웃라인 v0.3):
   1 배경   SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다
-  2 솔루션 SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다
+  2 핵심 기술 제품 포트폴리오를 받치는 핵심 기술은 여섯 가지이며, 그중 Mixed Media와 FDP는 고객과 함께 설계해야 완성됩니다
   3 당위성 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다
   4 실행   고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다
   결론     실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다
 
 규율: samsung-memory-ppt-design-skill v2.1(11절 시각 우선, 11.J 근거 사슬: 주장마다 데이터 그래프). 본문 18pt 이상 · 출처 15pt · em-dash 금지 · 액센트 Samsung Blue 하나.
 도형 · 차트는 모두 python-pptx 도형으로 그린다(차트 pt = 슬라이드 pt). 부품 이미지는 assets/photos가 있으면 사진, 없으면 3D 렌더.
-원고 · 근거: outputs/presentation/ssd-future-ready-strategy-outline.md, outputs/report/ssd-future-ready-strategy-report.md (v1.4).
+원고 · 근거: outputs/presentation/ssd-future-ready-strategy-outline.md, outputs/report/ssd-future-ready-strategy-report.md (v1.5).
 """
 import math
 import os
@@ -241,131 +241,117 @@ d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에�
         "그래서 다양한 데이터센터 응용에 대응하려면 SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다. 다만 지금 예측할 수 있는 범위 안의 준비입니다.")
 
 # =============================================================== 2 솔루션
-s = d.slide(2, "솔루션", "SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고,\n고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다")
+s = d.slide(2, "핵심 기술", "제품 포트폴리오를 받치는 핵심 기술은 여섯 가지이며,\n그중 Mixed Media와 FDP는 고객과 함께 설계해야 완성됩니다")
 
-GT, GB = 2.34, 9.42
-GWG = 4.80
-BXG, BWG = MX + GWG + 0.30, CW - GWG - 0.30
-rect(s, MX, GT, GWG, GB - GT, fill=PALE, shape=RR)
-rect(s, BXG, GT, BWG, GB - GT, fill=TINT, line=BLUE, lw=1.5, shape=RR)
-tb(s, MX + 0.26, GT + 0.08, GWG - 0.4, 0.52, [[("SSD 안에서  ", 24, True, GRAY), ("지금처럼", 24, True, INK)]], anchor=MID)
-tb(s, BXG + 0.26, GT + 0.08, BWG - 0.4, 0.52, [[("고객 시스템과 함께  ", 24, True, BLUE), ("새로 나타남", 24, True, INK)]], anchor=MID)
-CT, CB = 3.02, 9.24
-G1, GCW = MX + 0.20, GWG - 0.40
-bw2 = (BWG - 0.60) / 2
-B1, B2 = BXG + 0.20, BXG + 0.40 + bw2
-KY, GY = 7.02, 8.28
-for x, w in ((G1, GCW), (B1, bw2), (B2, bw2)):
-    rect(s, x, CT, w, CB - CT, fill=WHITE, shape=RR)
-    rect(s, x + 0.24, GY - 0.10, w - 0.48, 0.012, fill=LINE)
+# 열: 핵심 기술 | 왜 필요한가(데이터) | 적합한 제품군 4열 | 고객 협력 강도(0~8)
+X1, W1 = MX, 4.10
+X2, W2 = X1 + W1 + 0.20, 3.30
+X3, PW = X2 + W2 + 0.20, 0.95
+X4 = X3 + 4 * PW + 0.20
+W4 = RIGHT - X4
+BX0, BMAX = X4 + 0.12, 3.00
+RH2, RG2 = 0.78, 0.07
 
-# ---- 그레이: 고용량 (같은 폼팩터에 다이 ×2, 고장 다이는 패리티로)
-x, w = G1, GCW
-tb(s, x + 0.24, CT + 0.10, w - 0.4, 0.48, [("고용량", 24, True, INK)], anchor=MID)
-OW, OH = 1.62, 2.45
-ox0 = x + (w - (2 * OW + 0.36)) / 2
-for k, (rows_, lab1, bad) in enumerate([(4, "245TB", None), (8, "512TB", (5, 2))]):
-    ox, oy = ox0 + k * (OW + 0.36), 3.72
-    rect(s, ox, oy, OW, OH, fill=WHITE, line=GRAY, lw=1.5, shape=RR)
-    cols_ = 4
-    cw_ = (OW - 0.30) / cols_ - 0.05
-    ch_ = (OH - 0.30) / rows_ - 0.05
-    for rr in range(rows_):
-        for cc in range(cols_):
-            par = cc == cols_ - 1 and k == 1
-            fill = INK if (rr, cc) == bad else (BLUE_T2 if par else GRAY_2)
-            rect(s, ox + 0.15 + cc * (cw_ + 0.05), oy + 0.15 + rr * (ch_ + 0.05), cw_, ch_, fill=fill)
-    tb(s, ox - 0.1, oy + OH + 0.06, OW + 0.2, 0.36, [(lab1, 18, True, INK if k == 0 else BLUE)], align=C)
-tb(s, x + 0.24, 6.62, w - 0.4, 0.34, [[("■", 16, False, INK), (" 고장 다이  ", 16, False, GRAY), ("■", 16, False, BLUE_T2), (" 패리티", 16, False, GRAY)]], align=C)
-tb(s, x + 0.24, KY, w - 0.4, 0.70, [[("다이 ", 22, True, BLUE), ("×2", 44, True, BLUE)]], anchor=MID)
-tb(s, x + 0.24, KY + 0.72, w - 0.4, 0.40, [("같은 폼팩터, 고장은 패리티로", 18, False, GRAY)])
-
-# ---- Blue ①: Mixed Media (네임스페이스 2개 + 호스트 배치 + 순차 destage)
-x, w = B1, bw2
-tb(s, x + 0.24, CT + 0.10, w - 0.4, 0.48, [[("Mixed Media", 24, True, INK), ("   pSLC + QLC 한 드라이브", 18, True, BLUE)]], anchor=MID)
-# 호스트가 데이터 종류별로 보낸다 → pSLC(위) · QLC(아래), pSLC에서 모아 순차로 내려보냄
-c1y, c2y = 3.70, 4.62
-label_box(s, x + 0.24, c1y, 2.30, 0.58, [("WAL · 메타데이터", 17, True, INK)], fill=BLUE_T2)
-label_box(s, x + 0.24, c2y, 2.30, 0.58, [("객체 · 데이터셋", 17, True, WHITE)], fill=GRAY_2)
-tb(s, x + 0.24, 5.16, 2.30, 0.30, [("고객 SW가 나눈다", 16, True, BLUE)], align=C)
-dx0, DW = x + 2.95, w - 3.20
-rect(s, dx0, 3.60, DW, 1.86, fill=WHITE, line=GRAY, lw=1.5, shape=RR)
-label_box(s, dx0 + 0.14, c1y, 1.00, 0.58, [("pSLC", 17, True, WHITE)], fill=BLUE_T1)
-tb(s, dx0 + 1.24, c1y - 0.02, DW - 1.34, 0.62, [("모아서", 16, True, BLUE), ("큰 순차 쓰기로", 16, True, BLUE)], anchor=MID, spacing=1.0)
-rect(s, dx0 + 0.50, c1y + 0.60, 0.28, 0.24, fill=BLUE, shape=MSO_SHAPE.DOWN_ARROW)
-label_box(s, dx0 + 0.14, c2y - 0.12, DW - 0.28, 0.98, [("QLC", 20, True, WHITE)], fill=GRAY_2)
-d.arrow_r(s, x + 2.58, c1y + 0.18, 0.34, 0.22, fill=BLUE_T1)
-d.arrow_r(s, x + 2.58, c2y + 0.18, 0.34, 0.22, fill=GRAY_2)
-# 데이터 ①: 쓰기 크기 분포 (Alibaba 블록 스토리지)
-tb(s, x + 0.24, 5.58, 2.9, 0.30, [("쓰기 크기 (클라우드 블록)", 16, False, GRAY)])
-rect(s, x + 0.24, 5.92, 2.80 * 0.75, 0.42, fill=BLUE_T1)
-rect(s, x + 0.24 + 2.80 * 0.75, 5.92, 2.80 * 0.25, 0.42, fill=GRAY_2)
-tb(s, x + 0.32, 5.92, 2.0, 0.42, [("16KiB 이하 75%", 16, True, WHITE)], anchor=MID)
-# 데이터 ②: 4KB 랜덤 쓰기 WAF (로그 축)
-wx0 = x + 3.35
-tb(s, wx0, 5.58, w - 3.6, 0.30, [("4KB 쓰기 WAF (로그)", 16, False, GRAY)])
-WMAX = w - 3.6 - 0.75
-for k, (nm, v, col, lab) in enumerate([("그대로", 70, GRAY_2, "70+"), ("모아서", 1.02, BLUE, "1.02")]):
-    yy = 5.92 + k * 0.42
-    ww = max(0.10, WMAX * (math.log10(v) + 0.3) / (math.log10(70) + 0.3))
-    tb(s, wx0, yy, 0.80, 0.36, [(nm, 16, k == 1, BLUE if k else INK)], anchor=MID)
-    rect(s, wx0 + 0.82, yy + 0.06, ww * 0.80, 0.26, fill=col)
-    tb(s, wx0 + 0.86 + ww * 0.80, yy, 0.8, 0.36, [(lab, 16, True, BLUE if k else INK)], anchor=MID)
-tb(s, x + 0.24, KY, w - 0.4, 0.70, [[("pSLC ", 22, True, BLUE), ("0.5~2%", 40, True, BLUE), ("  고객이 요구한 비율", 18, True, INK)]], anchor=MID)
-tb(s, x + 0.24, KY + 0.72, w - 0.4, 0.40, [("어떤 데이터가 작은 쓰기인지는 고객 SW만 압니다", 18, False, GRAY)])
-
-# ---- Blue ②: 고DWPD (블록 그림 + 다이 수)
-x, w = B2, bw2
-tb(s, x + 0.24, CT + 0.10, w - 0.4, 0.48, [[("고DWPD", 24, True, INK), ("   2TB · 30 DWPD", 18, True, BLUE)]], anchor=MID)
-SHORT, LONG = BLUE_T2, GRAY_2
+# ---- 머리줄
+HY2 = 2.30
+tb(s, X1, HY2, W1, 0.34, [("핵심 기술", 18, True, INK)], anchor=MID)
+tb(s, X2, HY2, W2, 0.34, [("왜 필요한가 (데이터)", 18, True, INK)], anchor=MID)
+tb(s, X3, HY2, 4 * PW, 0.34, [("적합한 제품군", 18, True, INK)], align=C, anchor=MID)
+for k, (l1, l2) in enumerate([("SLC급", ""), ("고내구", "TLC"), ("고성능", "TLC"), ("고용량", "QLC")]):
+    tb(s, X3 + k * PW, HY2 + 0.36, PW, 0.48, [(l1, 15, False, GRAY)] + ([(l2, 15, False, GRAY)] if l2 else []), align=C, spacing=1.0)
+tb(s, X4, HY2, W4, 0.34, [("고객 협력 강도 (0~8)", 18, True, INK)], anchor=MID)
+tb(s, X4, HY2 + 0.36, W4, 0.48, [("고객만 아는 정보 · 고객 SW 변경 · 표준 공백 ·", 15, False, GRAY), ("고객 환경 검증, 기준마다 0~2점", 15, False, GRAY)], spacing=1.0)
 
 
-def block(s, bx, by, cells, cs=0.20, cols=4, gap=0.04):
-    rows = len(cells) // cols
-    rect(s, bx - 0.06, by - 0.06, cols * (cs + gap) - gap + 0.12, rows * (cs + gap) - gap + 0.12, fill=WHITE, line=GRAY, lw=1.0)
-    for i, c in enumerate(cells):
-        rect(s, bx + (i % cols) * (cs + gap), by + (i // cols) * (cs + gap), cs, cs, fill=c)
+def two_bars(x, y, cap, items, vmax, log=False, hot=False):
+    """캡션 1줄 + 막대 2개. items = [(라벨, 값, 표기, 강조)]"""
+    tb(s, x, y + 0.02, W2, 0.24, [(cap, 15, False, GRAY)], anchor=MID)
+    for k, (lab, v, txt, em) in enumerate(items):
+        yy = y + 0.28 + k * 0.24
+        tb(s, x, yy, 1.02, 0.22, [(lab, 15, em, (BLUE if hot else INK) if em else GRAY)], anchor=MID)
+        f = (math.log10(v) + 0.3) / (math.log10(vmax) + 0.3) if log else v / vmax
+        w = max(0.06, 1.45 * f)
+        rect(s, x + 1.04, yy + 0.03, w, 0.16, fill=(BLUE if hot else GRAY) if em else GRAY_2)
+        tb(s, x + 1.10 + w, yy, 0.90, 0.22, [(txt, 15, True, (BLUE if hot else INK) if em else GRAY)], anchor=MID)
 
 
-mix = [SHORT, LONG, SHORT, LONG, LONG, SHORT, LONG, SHORT, SHORT, LONG, SHORT, LONG]
-for r, (lab, hot) in enumerate([("SSD 혼자: 수명이 섞인다", False), ("고객이 수명을 알려 주면", True)]):
-    ry = 3.62 + r * 1.36
-    tb(s, x + 0.24, ry, 3.6, 0.34, [(lab, 17, True, BLUE if hot else GRAY)])
-    b1, b2 = (mix, mix[::-1]) if not hot else ([SHORT] * 12, [LONG] * 12)
-    block(s, x + 0.34, ry + 0.46, b1)
-    block(s, x + 1.48, ry + 0.46, b2)
-    tb(s, x + 2.62, ry + 0.38, 1.10, 0.76, [("WAF", 16, False, GRAY), ("≈ 1" if hot else "≈ 3", 26, True, BLUE if hot else GRAY)], anchor=MID, spacing=1.0)
-tb(s, x + 0.24, 6.40, 3.7, 0.30, [[("■", 16, False, SHORT), (" 곧 지울  ", 16, False, GRAY), ("■", 16, False, LONG), (" 오래 둘 데이터", 16, False, GRAY)]])
-rect(s, x + 3.80, 3.62, 0.012, 3.10, fill=LINE)
-ex = x + 3.92
-tb(s, ex, 3.62, w - 4.1, 0.62, [("필요한 다이 수", 17, True, INK), ("2TB · 30 DWPD · 5년", 16, False, GRAY)], spacing=1.0)
-EB, EH = 6.50, 1.70
-for k, (lab, v, col) in enumerate([("SSD 혼자", 120, GRAY_2), ("고객과 함께", 47, BLUE)]):
-    bx = ex + 0.12 + k * 1.05
-    h = EH * v / 120
-    rect(s, bx, EB - h, 0.66, h, fill=col)
-    tb(s, bx - 0.25, EB - h - 0.36, 1.16, 0.34, [(f"약 {v}", 17, True, BLUE if k else INK)], align=C)
-    tb(s, bx - 0.30, EB + 0.04, 1.26, 0.30, [(lab, 16, False, GRAY)], align=C)
-tb(s, x + 0.24, KY, w - 0.4, 0.70, [[("다이 ", 22, True, BLUE), ("-60%", 40, True, BLUE), ("  같은 SLC 모드에서", 18, True, INK)]], anchor=MID)
-tb(s, x + 0.24, KY + 0.72, w - 0.4, 0.40, [("데이터가 언제 지워질지는 고객 SW만 압니다", 18, False, GRAY)])
+def fit_dot(x, y, kind):
+    dd = 0.30
+    if kind == "full":
+        rect(s, x - dd / 2, y - dd / 2, dd, dd, fill=BLUE_T1, shape=MSO_SHAPE.OVAL)
+    elif kind == "half":
+        rect(s, x - dd / 2, y - dd / 2, dd, dd, fill=WHITE, line=BLUE_T1, lw=2.0, shape=MSO_SHAPE.OVAL)
 
-# ---- 카드 아래: 신호(▲ 확대 · ▼ 축소)
-for (x, w), (up, dn) in zip(((G1, GCW), (B1, bw2), (B2, bw2)),
-                            (("▲ 착공 지연 · 랙 전력 ↑", "▼ 전력망 완화"),
-                             ("▲ 고객 RFQ에 영역 비율 요구", "▼ 직접 쓰기 QLC 확산"),
-                             ("▲ 고객 RFQ의 30 DWPD 요구", "▼ KV 압축 확산"))):
-    tb(s, x + 0.24, GY, w - 0.4, 0.90, [(up, 18, True, BLUE), (dn, 18, False, GRAY)], spacing=1.1)
 
-d.band(s, 9.60, 0.80, "결론", "SSD 안에서 풀 수 있는 것은 지금처럼 잘하고, 새로 나타난 과제는 다르게 풉니다")
-d.footer(s, "Mixed Media: 네임스페이스 2개 · 고객 요구 pSLC 0.5~2%(Kioxia FMS 2025 · 2026), 쓰기 75%가 16KiB 이하(Alibaba 블록 스토리지), WAF 70+ → 1.02(CSAL 백서, 별도 캐시 드라이브 구성) · "
-            "고DWPD: 1Tb TLC 환산, SLC 모드 P/E 6만, WAF 3 → 1(파생 산술), 30 DWPD 요구는 [사내 확인] · 고용량: 245TB 1,024개 → 512TB 약 2,133개 다이")
-d.notes(s, "2장입니다. 지금 보이는 신호에 맞춰 준비할 기술을 두 묶음으로 나눴습니다. "
-        "왼쪽 회색은 SSD 안에서 풀 수 있는 고용량입니다. 같은 폼팩터에 다이를 두 배 담고, 늘어난 다이의 고장은 패리티로 견딥니다. 지금 하던 방식으로 잘하면 됩니다. "
-        "오른쪽 파란색은 새로 나타난 과제 두 가지입니다. 첫째, Mixed Media입니다. 핵심은 QLC에 캐시를 붙이는 것이 아니라, 한 드라이브 안에 빠른 pSLC 영역과 큰 QLC 영역을 별도 네임스페이스로 두고, 고객 소프트웨어가 WAL이나 메타데이터 같은 작은 쓰기는 pSLC로, 객체나 데이터셋은 QLC로 직접 보내는 것입니다. "
-        "클라우드 블록 스토리지에서는 쓰기의 75퍼센트가 16킬로바이트 이하입니다. 이런 작은 랜덤 쓰기를 QLC에 그대로 쓰면 WAF가 70을 넘을 수 있지만, 빠른 계층에 모았다가 큰 순차 쓰기로 내리면 1.02까지 내려갑니다. 이 수치는 별도 캐시 드라이브를 쓴 Alibaba 사례라 한 드라이브 안의 실측은 아닙니다. "
-        "고객이 Kioxia에 요구한 pSLC 비율은 QLC 용량의 0.5에서 2퍼센트입니다. QLC 셀을 pSLC로 쓰면 용량이 4분의 1이 되기 때문에, 비율을 작게 맞추는 것이 중요하고, 어떤 데이터가 작은 쓰기인지는 고객 소프트웨어만 압니다. 그래서 고객과 함께 정해야 합니다. 성능 계층 SSD를 따로 두는 슬롯 비용도 줄어듭니다. "
-        "둘째, 고DWPD입니다. SSD 혼자서는 곧 지워질 데이터와 오래 남을 데이터가 한 블록에 섞여 WAF가 3 근처에 머뭅니다. 고객이 수명을 알려 주면 WAF가 1에 가까워지고, 2테라바이트 30 DWPD 제품의 다이가 약 120개에서 47개로 60퍼센트 줄어듭니다. "
-        "카드 아래는 신호입니다. 위 삼각형이 보이면 비중을 늘리고, 아래 삼각형이 보이면 줄입니다.")
+TECH = [
+    ("Fault Tolerant", "다이 · 플레인 단위 고장 격리",
+     ("같은 폼팩터의 다이 수", [("245TB", 1024, "1,024", False), ("512TB", 2133, "약 2,133", True)], 2133, False),
+     [None, None, "half", "full"], 1, "SSD 안에서", "고장 정보는 SSD가 안다. 격리 · 패리티는 SSD 안에서"),
+    ("Large Mapping", "FTL 매핑 단위 4KB → 8~64KB",
+     ("245TB의 매핑 DRAM (산술)", [("4KB 매핑", 245, "245GB", False), ("64KB 매핑", 15, "15GB", True)], 245, False),
+     [None, None, None, "full"], 4, "가이드", "호스트 쓰기를 IU에 맞추도록 안내 (작은 쓰기 최대 16배)"),
+    ("Multi-Tenant QoS", "네임스페이스 QoS 격리",
+     ("이웃 테넌트의 쓰기가 키운 WAF", [("혼자", 1.28, "1.28", False), ("이웃 쓰기", 3.0, "3.0", True)], 3.0, False),
+     [None, "half", "full", "full"], 3, "요구 사양", "고객 SLO를 받고, 격리는 NVM Set · 네임스페이스로"),
+    ("Confidential Storage", "RoT · 암호화 · 증명, 에이전트 기밀 VM",
+     None,
+     [None, None, "full", "full"], 3, "표준", "Caliptra · SPDM · TDISP · L.O.C.K. 표준으로 연동"),
+    ("Mixed Media", "pSLC + QLC 네임스페이스 분리",
+     ("4KB 랜덤 쓰기 WAF (로그)", [("그대로", 70, "70+", False), ("모아서", 1.02, "1.02", True)], 70, True),
+     [None, None, None, "full"], 8, "필수", "작은 쓰기는 고객 SW만 알고, 고객 SW가 pSLC로 보내야 효과"),
+    ("FDP", "RUH · RG 배치 정책 최적화",
+     ("WAF, 사용률 100% (CacheLib)", [("SSD 혼자", 3.22, "3.22", False), ("수명 표시", 1.03, "1.03", True)], 3.22, False),
+     ["full", "full", "half", "full"], 7, "필수", "데이터 수명은 고객 SW만 알고, 앱이 RUH를 표시해야 효과"),
+]
+
+# ---- 묶음 머리 + 행 위치
+GH1 = 3.12
+tb(s, X1 + 0.10, GH1, 12.0, 0.32, [[("SSD 안에서 · 표준과 요구 사양으로  ", 17, True, GRAY), ("지금처럼 잘 준비합니다", 17, True, INK)]], anchor=MID)
+ROWY = [GH1 + 0.38 + k * (RH2 + RG2) for k in range(4)]
+BT = ROWY[3] + RH2 + 0.14
+rect(s, MX - 0.06, BT, CW + 0.12, 0.40 + 2 * RH2 + RG2 + 0.16, fill=TINT, line=BLUE, lw=1.5, shape=RR)
+tb(s, X1 + 0.10, BT + 0.04, 12.0, 0.32, [[("고객 시스템과 함께  ", 17, True, BLUE), ("고객 SW가 바뀌어야 제품이 완성됩니다", 17, True, INK)]], anchor=MID)
+ROWY += [BT + 0.40 + k * (RH2 + RG2) for k in range(2)]
+
+# 범례: 제품군 적합도 · 협력 강도 구간
+tb(s, BX0, GH1, W4 - 0.2, 0.32, [[("■", 15, False, GRAY_2), (" 0~5 지금 방식으로 협력   ", 15, False, GRAY), ("■", 15, False, BLUE), (" 6 이상 공동 설계 필수", 15, True, BLUE)]], anchor=MID)
+tb(s, X3, GH1, 4 * PW, 0.32, [[("●", 15, False, BLUE_T1), (" 핵심  ", 15, False, GRAY), ("○", 15, True, BLUE_T1), (" 해당", 15, False, GRAY)]], align=C, anchor=MID)
+
+for i, (nm, sub, dat, fit, sc, verdict, why) in enumerate(TECH):
+    y = ROWY[i]
+    hot = i >= 4
+    rect(s, MX, y, CW, RH2, fill=WHITE if hot else PALE, shape=RR)
+    tb(s, X1 + 0.18, y + 0.06, W1 - 0.30, 0.36, [(nm, 20, True, BLUE if hot else INK)], anchor=MID)
+    tb(s, X1 + 0.18, y + 0.42, W1 - 0.30, 0.30, [(sub, 15, False, GRAY)], anchor=MID)
+    if dat:
+        two_bars(X2, y, dat[0], dat[1], dat[2], log=dat[3], hot=hot)
+    else:   # 표준 사슬: RoT → 증명 → 기밀 VM 연결
+        tb(s, X2, y + 0.02, W2, 0.24, [("기밀 VM까지 이어지는 표준", 15, False, GRAY)], anchor=MID)
+        for k, t in enumerate(["Caliptra", "SPDM", "TDISP"]):
+            cx = X2 + k * 1.10
+            label_box(s, cx, y + 0.32, 0.92, 0.36, [(t, 15, True, INK)], fill=WHITE, line=GRAY_2)
+            if k < 2:
+                d.arrow_r(s, cx + 0.94, y + 0.44, 0.14, 0.12)
+    for k, kind in enumerate(fit):
+        fit_dot(X3 + k * PW + PW / 2, y + RH2 / 2, kind)
+    rect(s, BX0, y + 0.10, BMAX * sc / 8, 0.24, fill=BLUE if hot else GRAY_2)
+    tb(s, BX0 + BMAX * sc / 8 + 0.10, y + 0.04, 2.6, 0.36, [[(str(sc), 20, True, BLUE if hot else INK), ("  " + verdict, 16, True, BLUE if hot else GRAY)]], anchor=MID)
+    tb(s, BX0, y + 0.42, W4 - 0.20, 0.30, [(why, 15, False, INK if hot else GRAY)], anchor=MID)
+
+d.band(s, 9.40, 0.80, "결론", "핵심 기술을 제대로 확보해 다가올 시대에 대비하려면, 고객과의 협력이 필수입니다")
+d.footer(s, "출처: 다이 수 · 매핑 DRAM 산술(1Tb 다이, 엔트리 4B) · IU 16배 하한(CSAL EuroSys'24) · WAF 1.28 → 3.0(WARP FAST'26) · Caliptra 2.0 · OCP L.O.C.K.(Google · Microsoft 채택 확정) · "
+            "TDISP(Linux) · WAF 70+ → 1.02(CSAL 백서, 별도 캐시 드라이브) · 3.22 → 1.03(CacheLib FDP, EuroSys'25) · 협력 강도: 과제팀 판단")
+d.notes(s, "2장입니다. 1장의 제품 포트폴리오를 만들려면 어떤 핵심 기술이 필요한지, 그리고 그 기술마다 고객 협력이 얼마나 필요한지를 정리했습니다. "
+        "핵심 기술은 여섯 가지입니다. 첫째, Fault Tolerant입니다. 같은 폼팩터에서 245테라바이트는 다이 1,024개, 512테라바이트는 약 2,133개입니다. 다이가 두 배가 되면 고장 다이를 다이와 플레인 단위로 격리해 견뎌야 합니다. "
+        "둘째, Large Mapping입니다. 4킬로바이트 단위로 매핑하면 245테라바이트 드라이브의 매핑 DRAM이 약 245기가바이트, 64킬로바이트면 약 15기가바이트입니다. 대신 매핑 단위보다 작은 쓰기는 최대 16배를 다시 써야 하므로 호스트 쓰기를 맞추는 안내가 필요합니다. "
+        "셋째, Multi-Tenant QoS입니다. 이웃 테넌트의 쓰기만으로 WAF가 1.28에서 3.0으로 올라갑니다. 네임스페이스 단위 격리가 필요합니다. "
+        "넷째, Confidential Storage입니다. Meta는 Meta도 접근하지 못하는 Muse 기밀 VM을 예고했고, 기밀 VM은 RoT, 증명, 장치 연결까지 스토리지에 요구합니다. Caliptra, SPDM, TDISP, OCP L.O.C.K. 같은 표준이 이미 있고, L.O.C.K.는 Google과 Microsoft 스토리지에 채택이 확정됐으며 삼성이 공저자입니다. "
+        "다섯째, Mixed Media입니다. 작은 랜덤 쓰기를 그대로 QLC에 쓰면 WAF가 70을 넘지만, 모아서 순차로 내리면 1.02까지 내려갑니다. 여섯째, FDP입니다. CacheLib에서 데이터 수명을 표시하면 WAF가 3.22에서 1.03으로 내려갑니다. "
+        "가운데 열은 각 기술이 어떤 제품군에 맞는지입니다. 고용량 QLC에는 여섯 가지 중 다섯 가지가 걸리고, FDP는 SLC급부터 QLC까지 가장 넓게 걸칩니다. "
+        "오른쪽은 고객 협력 강도입니다. 고객만 아는 정보가 필요한가, 고객 소프트웨어가 바뀌어야 하는가, 표준이 정책까지 정해 주는가, 고객 환경에서만 검증되는가, 네 기준에 0에서 2점을 주었습니다. 과제팀의 판단입니다. "
+        "Fault Tolerant는 1점으로 SSD 안에서 완결됩니다. Large Mapping, Multi-Tenant QoS, Confidential Storage는 3에서 4점으로, 요구 사양과 표준으로 협력하는 지금의 방식으로 준비할 수 있습니다. "
+        "Mixed Media는 8점, FDP는 7점입니다. 어떤 쓰기가 작은지, 데이터가 언제 지워지는지는 고객 소프트웨어만 알고, 고객 소프트웨어가 데이터를 나눠 보내야 효과가 납니다. 표준은 메커니즘까지만 정하고 정책은 비어 있습니다. "
+        "사양을 받아 SSD 안에서 구현하고 인증받는 지금까지의 방식으로는 이 두 기술의 제품이 완성되지 않습니다. 그래서 핵심 기술을 제대로 확보해 다가올 시대에 대비하려면 고객과의 협력이 필수입니다.")
 
 # =============================================================== 3 당위성
 s = d.slide(3, "당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
@@ -599,11 +585,11 @@ tb(s, C3, CAP_Y, W3, 0.50, [("시스템 SW와 AI DC 운영 역량", 20, True, BL
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
 d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자, 재무 조건 비공개) · Palantir FDE(고객 상주) · "
             "KV 캐시 관리자 기여는 공개 저장소 커밋 기준(LMCache PR #4016, 2026-08) · 로고는 식별 표시")
-d.notes(s, "4장 실행 전략입니다. 새로 나타난 과제의 요구, 곧 데이터가 언제 지워지는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 새 과제에 집중합니다. Mixed Media와 고용량은 지금 방식을 유지합니다. "
+d.notes(s, "4장 실행 전략입니다. 2장에서 고른 두 핵심 기술의 요구, 곧 어떤 쓰기가 작은지와 데이터가 언제 지워지는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 Mixed Media와 FDP에 집중합니다. Fault Tolerant, Large Mapping, Multi-Tenant QoS, Confidential Storage는 지금 방식으로 준비합니다. "
         "첫째, 계약입니다. 지금은 수량과 가격만 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 물량 위에 기술 협력을 쌓겠습니다. "
         "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir의 FDE처럼 Co-Design Pod가 고객 AI 데이터센터 안에 상주해 실제 요구를 찾고, 그것을 제품으로 되돌립니다. "
         "셋째, 역량입니다. NAND와 SSD 펌웨어는 강점입니다. 비어 있는 곳은 그 위입니다. KV 캐시 소프트웨어는 LMCache에서 시작했고 Dynamo와 Mooncake로 넓혀야 합니다. 그리고 고객의 지표인 토큰당 비용과 GPU 가동률로 말하는 사람이 필요합니다. "
-        "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 고DWPD 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
+        "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 FDP와 Mixed Media 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
 
 d.save(os.path.abspath(OUT))

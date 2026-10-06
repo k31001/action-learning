@@ -1,7 +1,7 @@
 ---
 type: report
-status: v1.4 (2026-10-06). 1장 재구성: 데이터센터 응용별 SSD 요구 + 제품 포트폴리오(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC), 에이전트 = 사용자별 VM → 고용량 QLC로 정정(팩트 체크). v1.3: Mixed Media를 고객 협력 과제로 재분류하고 논리 보강(사용자 분석 + 검증 원장). v1.2: SCADA · MLC 제외 · 데이터센터 유형별 요구 · 고객 측 고DWPD 근거. 덱 4장 v1.2
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.3, 생성기 scripts/generate_ssd_future_ready_pptx.py)
+status: v1.5 (2026-10-06). 2장 재구성: 제품 포트폴리오를 받치는 핵심 기술 6가지(Fault Tolerant · Large Mapping · Multi-Tenant QoS · Confidential Storage · Mixed Media · FDP) × 제품군 × 고객 협력 강도(4기준 0~8점), 협력 필수 = Mixed Media · FDP. v1.4: 1장 재구성: 데이터센터 응용별 SSD 요구 + 제품 포트폴리오(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC), 에이전트 = 사용자별 VM → 고용량 QLC로 정정(팩트 체크). v1.3: Mixed Media를 고객 협력 과제로 재분류하고 논리 보강(사용자 분석 + 검증 원장). v1.2: SCADA · MLC 제외 · 데이터센터 유형별 요구 · 고객 측 고DWPD 근거. 덱 4장 v1.2
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.4, 생성기 scripts/generate_ssd_future_ready_pptx.py)
 outline: outputs/presentation/ssd-future-ready-strategy-outline.md
 supersedes_focus: outputs/report/ssd-survival-strategy-report.md (KV 캐시 고DWPD 중심 → 데이터센터별 요구에 맞춘 준비 + 고객 협력 과제)
 sources:
@@ -19,6 +19,7 @@ sources:
   - sources/articles/micron-anthropic-sca-2026-06-22.md
   - sources/articles/palantir-fde-model-2026-07.md
 wiki:
+  - wiki/concepts/ssd-core-technologies-customer-collaboration.md
   - wiki/concepts/datacenter-types-storage-requirements.md
   - wiki/concepts/high-dwpd-operating-point.md
   - wiki/concepts/mixed-media-ssd.md
@@ -47,15 +48,18 @@ last_updated: 2026-10-06
 
 **슬라이드 네 장의 제목을 이어 읽으면 전략이 된다.**
 
-> SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다(그래서 SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다). SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다.
+> SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다(그래서 SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다). 제품 포트폴리오를 받치는 핵심 기술은 여섯 가지이며, 그중 Mixed Media와 FDP는 고객과 함께 설계해야 완성됩니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다.
 
-| 묶음 | 기술 | 대응하는 데이터센터 | 대표 데이터 |
+| 묶음 (고객 협력 강도 0~8) | 핵심 기술 | 적합한 제품군 | 대표 데이터 |
 |---|---|---|---|
-| **SSD 안에서 지금처럼** | 고용량 + 결함 허용 | AI 학습(랙 공간 · 전력이 귀함 · 데이터셋), 에이전트(사용자별 VM 디스크 · 상태) | 같은 폼팩터 다이 1,024 → 약 2,133개, 이중 패리티(⚠️ 모델) |
-| **고객 시스템과 함께 (새로 나타남)** | Mixed Media (pSLC + QLC, 네임스페이스 2개) | 범용 클라우드(오래 쓰고 용량 중심, 멀티테넌트 QoS) | 고객 요구 pSLC = QLC 용량의 0.5~2%(Kioxia VoC 🟡), 작은 쓰기를 모아 순차로 내리면 4KB 랜덤 쓰기 WAF 70+ → 1.02(CSAL, 별도 드라이브 구성 🟡) |
-| | 고DWPD (용량형 + 2TB · 30 DWPD 운영점) | AI 추론의 KV 캐시 계층(에이전트가 키우는 문맥 포함), AI 학습 체크포인트(신호) | 2TB · 30 DWPD · 5년: SSD 혼자 약 120다이 → 고객 배치 정보로 약 47다이(-60%, ⚠️ 산술) |
+| **지금 방식으로 준비** (SSD 안에서 · 요구 사양 · 표준) | Fault Tolerant (1) | 고용량 QLC ● · 고성능 TLC ◐ | 같은 폼팩터 다이 1,024 → 약 2,133개(245TB → 512TB, ⚠️ 산술) |
+| | Large Mapping (4) | 고용량 QLC ● | 245TB 매핑 DRAM 4KB 단위 약 245GB → 64KB 약 15GB(⚠️ 산술), 대가는 작은 쓰기 최대 16배 재기록 |
+| | Multi-Tenant QoS (3) | 고성능 TLC · 고용량 QLC ● · 고내구 TLC ◐ | 이웃 테넌트 쓰기로 WAF 1.28 → 약 3.0(WARP FAST'26 ✅), 격리 시 p99 최대 3.1배 감소(FlashBlox ✅) |
+| | Confidential Storage (3) | 고성능 TLC · 고용량 QLC ● | Caliptra · SPDM · TDISP · OCP L.O.C.K.(Google · Microsoft 채택 확정, 삼성 공저 ✅), Muse Confidential VM 예고(🟡) |
+| **고객과 공동 설계 필수** (6점 이상, 새로 나타남) | **Mixed Media (8)** | 고용량 QLC ● | 4KB 랜덤 쓰기 WAF 70+ → 1.02(CSAL, 별도 드라이브 구성 🟡), 고객 요구 pSLC 0.5~2%(Kioxia VoC 🟡) |
+| | **FDP (7)** | SLC급 · 고내구 TLC · 고용량 QLC ● · 고성능 TLC ◐ | WAF 3.22 → 1.03(CacheLib ✅), 2TB · 30 DWPD 다이 약 120 → 47(-60%, ⚠️ 산술) |
 
-**한 줄 결론**: **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.** 데이터센터마다 다른 요구를 미리 준비하되, SSD 안에서 풀 수 있는 것은 지금처럼 잘하고, **새로 나타난 고객 협력 과제(Mixed Media · 고DWPD)는 지금까지와 다른 방식으로 전략적으로 실행**해야 한다. 두 과제 모두 "어떤 데이터가 작은 쓰기인지, 언제 지워지는지"를 고객 소프트웨어만 안다.
+**한 줄 결론**: **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.** 데이터센터마다 다른 요구를 미리 준비하되, SSD 안에서 풀 수 있는 것은 지금처럼 잘하고, **새로 나타난 고객 협력 필수 기술(Mixed Media · FDP)은 지금까지와 다른 방식으로 전략적으로 실행**해야 한다. 두 기술 모두 "어떤 데이터가 작은 쓰기인지, 언제 지워지는지"를 고객 소프트웨어만 안다.
 
 ---
 
@@ -117,20 +121,50 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 
 ---
 
-## 2. 솔루션: SSD 안에서 풀 것과 고객 시스템과 함께 풀 것
+## 2. 핵심 기술 6가지와 고객 협력 강도
 
-### 2.1 두 묶음으로 나누는 기준
+§1.3.1의 제품 포트폴리오(SLC급 · 고내구 TLC · 고성능 · 범용 TLC · 고용량 QLC)를 만들려면 여섯 가지 핵심 기술이 필요하다. 기술마다 어느 제품군에 맞는지, 고객 협력이 얼마나 필요한지를 같은 기준으로 판단했다. 단일 소스: [ssd-core-technologies-customer-collaboration.md](../../wiki/concepts/ssd-core-technologies-customer-collaboration.md).
 
-| 기준 | SSD 안에서 지금처럼 | 고객 시스템과 함께 (새로 나타남) |
+### 2.1 핵심 기술 6가지와 적합한 제품군
+
+| 핵심 기술 | 내용 | SLC급 | 고내구 TLC | 고성능 · 범용 TLC | 고용량 QLC | 왜 필요한가 (데이터) |
+|---|---|---|---|---|---|---|
+| **Fault Tolerant** | 다이 · 플레인 단위 고장 격리 | | | ◐ | ● | 다이 1,024 → 약 2,133개(⚠️), "오늘날 부분 고장은 전체 고장"(Azure 연구 ✅) |
+| **Large Mapping** | FTL 매핑 단위 4KB → 8~64KB, FTL 최적화 | | | | ● | 매핑 DRAM 약 1/16(⚠️ 산술, 엔트리 4B), 대가: IU보다 작은 쓰기 재기록(64KB IU에서 4KB 쓰기 16배 하한 ⚠️). 같은 Micron 6600 ION의 정격이 쓰기 크기에 따라 0.075~1.0 DWPD(13배 🟡) |
+| **Multi-Tenant QoS** | 네임스페이스 QoS 격리 | | ◐ | ● | ● | 이웃 쓰기로 WAF 1.28 → 3.0(✅), 격리 시 p99 최대 3.1배 감소(✅) |
+| **Confidential Storage** | RoT · 암호화 · 증명, 에이전트 기밀 VM | | | ● | ● | 기밀 VM이 장치 증명 · 연결(TDISP)을 요구(Linux 구현 ✅), L.O.C.K. 채택 확정(✅), Muse Confidential VM 예고(🟡) |
+| **Mixed Media** | pSLC + QLC 네임스페이스 분리 | | | | ● | WAF 70+ → 1.02(🟡), pSLC 0.5~2%(🟡) |
+| **FDP** | RUH · RG 배치 정책 최적화 | ● | ● | ◐ | ● | WAF 3.22 → 1.03(✅), 다이 120 → 47(⚠️) |
+
+(● 핵심 · ◐ 해당) **고용량 QLC에 여섯 가지 중 다섯 가지가 걸리고, FDP는 SLC급부터 QLC까지 가장 넓게 걸친다.**
+
+전력 · 냉각(콜드플레이트 폼팩터, NVMe 2.3 전력 한도 · 측정)은 고용량 제품의 요건으로 흡수한다. GPU 직결 고IOPS(SCADA)는 논의하기 이른 시점이라 제외하고 재검토 신호만 둔다. 보안은 2026-10-03에 따로 강조하지 않기로 했으나, 2026-10-06 사용자 지시로 **에이전트 기밀 VM용 Confidential Storage**를 핵심 기술로 넣었다([ssd-future-solution-candidates.md](../../wiki/concepts/ssd-future-solution-candidates.md)).
+
+### 2.1.1 고객 협력 강도: 기준 · 점수 · 선정 (⚠️ 과제팀 판단)
+
+기준 4가지에 0~2점: **A 고객만 아는 정보**(데이터 수명 · 쓰기 크기 · SLO · 키 정책) · **B 고객 SW 변경**(애플리케이션이 데이터를 나눠 보내야 하나) · **C 표준 공백**(표준이 메커니즘만 정하고 정책은 비었나) · **D 고객 환경 검증**(고객 워크로드에서만 효과가 측정되나).
+
+| 핵심 기술 | A | B | C | D | 합계 | 판정 | 이유 |
+|---|---|---|---|---|---|---|---|
+| Fault Tolerant | 0 | 0 | 1 | 0 | 1 | SSD 안에서 | 고장 정보는 SSD가 안다. 격리 · 패리티는 SSD 안에서 완결 |
+| Large Mapping | 1 | 1 | 1 | 1 | 4 | 가이드로 협력 | 호스트 쓰기를 IU에 맞추도록 안내(정렬 규칙은 단순) |
+| Multi-Tenant QoS | 1 | 0 | 1 | 1 | 3 | 요구 사양으로 협력 | 고객 SLO를 받고 격리는 NVM Set · 네임스페이스로 |
+| Confidential Storage | 1 | 1 | 0 | 1 | 3 | 표준으로 협력 | Caliptra · SPDM · TDISP · L.O.C.K. 표준, 삼성은 L.O.C.K. 공저자 |
+| **Mixed Media** | 2 | 2 | 2 | 2 | **8** | **공동 설계 필수** | 작은 쓰기는 고객 SW만 알고, 고객 SW가 pSLC로 보내야 효과. pSLC 비율 · destage 정책 표준 없음 |
+| **FDP** | 2 | 2 | 1 | 2 | **7** | **공동 설계 필수** | 데이터 수명은 고객 SW만 알고, 앱이 RUH를 표시해야 효과. TP4146은 메커니즘만, RUH · RG 정책은 공백 |
+
+**선정**: 6점 이상 = Mixed Media · FDP. 두 기술은 "데이터에 대한 정보가 고객 SW에 있고, 고객 SW가 바뀌어야 효과가 난다"는 같은 성질을 가진다. 사양을 받아 SSD 안에서 구현하고 인증받는 지금까지의 방식으로는 이 두 기술의 제품이 완성되지 않는다. **그래서 핵심 기술을 제대로 확보해 다가올 시대에 대비하려면 고객과의 협력이 필수다.**
+
+| | 지금까지 (사양 기반) | 협력 필수 기술 (공동 설계) |
 |---|---|---|
-| 요구는 어디서 정의되나 | 규격 · 사양으로 정의되고 SSD가 구현해 낸다 | **고객 소프트웨어 안에서** 정의된다: 어떤 쓰기가 WAL · 메타데이터인지(Mixed Media), 데이터가 언제 지워지는지(고DWPD)는 고객 소프트웨어만 안다 |
-| SSD 혼자 하면 | 충분한 효과가 난다 | 영역을 둬도 엉뚱한 데이터가 들어가고(Mixed Media), 다이를 크게 희생한다(고DWPD 약 120 대 47) |
-| 지금 위치 | 기존 개발 방식으로 경쟁 중 | 고객 코드 안의 접점이 이제 막 생기고 있다(LMCache FDP 머지 ✅) |
-| 필요한 접근 | 지금 방식으로 잘하면 된다 | **지금까지와 다른 방식**이 필요하다(§4) |
+| 요구의 출처 | 고객 사양서 · OCP 요구 ID | 고객 애플리케이션의 데이터 흐름(수명 · 쓰기 크기 · 종류) |
+| 우리가 바꾸는 것 | SSD 펌웨어 | SSD 펌웨어 + 고객 SW(오픈소스 기여 포함) |
+| 검증 | 사내 인증 → 고객 인증 | 고객 워크로드 안에서 함께 측정(WAF · 꼬리 지연) |
+| 경쟁 우위의 원천 | 매체 · 컨트롤러 | 고객 SW 안의 배치 정책(RUH · RG · destage) |
 
-보안 · 신뢰(OCP L.O.C.K. 공저, PQC 대응 등)는 중요성이 이미 잘 인식돼 있고 삼성이 잘하고 있는 영역이라 다루지 않는다. 전력 · 냉각(콜드플레이트 폼팩터, NVMe 2.3 전력 한도 · 측정)은 고용량 제품의 요건으로 흡수한다. GPU 직결 고IOPS(SCADA)는 논의하기 이른 시점이라 제외하고, 재검토 신호만 둔다([ssd-future-solution-candidates.md](../../wiki/concepts/ssd-future-solution-candidates.md)).
+**판단의 한계**: 가중치와 경계(6점)는 정성적이다. Fault Tolerant는 "부분 고장을 호스트와 나눠 처리"하는 흐름(Micron "수직 통합 복원력", SNIA SDC 2026)이 커지면 점수가 오른다. Large Mapping은 Mixed Media와 결합하면 작은 쓰기를 pSLC가 흡수해 협력 강도가 그쪽으로 옮겨 간다.
 
-### 2.2 SSD 안에서 지금처럼: 고용량 + 결함 허용
+### 2.2 지금 방식으로 준비: Fault Tolerant (고용량 + 결함 허용)
 
 **정의**: 같은 폼팩터에 245TB → 512TB를 담는 기술과, 1,000~2,000개 다이 중 일부가 고장 나도 계속 쓰게 하는 결함 허용 기술([high-capacity-fault-tolerance.md](../../wiki/concepts/high-capacity-fault-tolerance.md)).
 
@@ -143,7 +177,15 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 
 > **재확인 필요**: 삼성 BM1773, PM1733 FIP 감량 단위는 이번 조사에서 재확인되지 않았다. 핵심 근거로 쓰지 않는다.
 
-### 2.3 고객 시스템과 함께: Mixed Media (pSLC + QLC, 네임스페이스 2개)
+**같은 묶음의 나머지 세 기술 (지금 방식으로 준비)**
+
+| 핵심 기술 | SSD 안에서 할 것 | 고객에게서 받을 것 | 근거 |
+|---|---|---|---|
+| Large Mapping | IU 8~64KB FTL, 2단계 매핑 · 작은 쓰기 버퍼, DRAM 축소 | 쓰기 크기 분포, IU 정렬 가이드 수용 | IU 64KB = 4KB 쓰기 16배 하한(MX-20 ⚠️), Solidigm 정렬 설명(MX-13 🟡), Micron 6600 ION 0.075 · 0.3 · 1.0 DWPD(🟡) |
+| Multi-Tenant QoS | 네임스페이스 · NVM Set 격리, 다이 수준 자원 분할, GC 간섭 차단 | 테넌트 SLO(지연 백분위) | FlashBlox p99 3.1배(✅), WARP WAF 1.28 → 3.0(✅), OCP 지연 백분위 표(🟡) |
+| Confidential Storage | Caliptra RoT, SPDM 증명, TDISP 기밀 VM 연결, L.O.C.K. 키 관리 · 암호 삭제, PQC | 키 · 증명 정책(표준 경유) | L.O.C.K. Google · Microsoft 채택 확정 · 삼성 공저(✅), Caliptra 2.0 범위에 DC SSD(✅), PM1763 TDISP · PQC(🟡), Muse Confidential VM 예고(🟡) |
+
+### 2.3 고객과 공동 설계 필수 ①: Mixed Media (pSLC + QLC, 네임스페이스 2개)
 
 **재정의**: "QLC에 캐시를 붙여 성능을 높인다"가 아니라, **한 SSD 안에서 고성능 · 고내구 영역(pSLC)과 초고용량 · 저비용 영역(QLC)을 별도 네임스페이스로 나누고, 고객 소프트웨어가 데이터 종류에 따라 직접 배치**하는 드라이브다. 근거: 사용자 분석([원본 메모](../../sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md))과 검증 원장 [ssd-mixed-media-hyperscaler-logic-2026-10.md](../../sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md)(MX), 상세는 [mixed-media-ssd.md](../../wiki/concepts/mixed-media-ssd.md) §0.
 
@@ -171,7 +213,7 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 | 근거의 한계 | 하이퍼스케일러가 pSLC 네임스페이스를 요구했다는 공개 기록 없음, 한 혼합 드라이브의 p99.9 이상 실측 없음, 혼합 대 분리 TCO 수치 없음. KV 캐시 · 체크포인트는 큰 I/O라 pSLC 후보가 아니다(AI 데이터 중 후보는 메타데이터 · 인덱스 · 로그) |
 | 출처 귀속 정정 | 사용자 분석의 "Kioxia 2026-09 공개" · "pSLC 1~6%" · "Kioxia + FDP 결합"은 확인되지 않았다(실제: FMS 2025 · 2026, VoC 0.5~2%, 결합은 Solidigm CSAL). 메커니즘 자체는 근거가 있다 |
 
-### 2.4 고객 시스템과 함께: 고DWPD (용량형 + 2TB · 30 DWPD 운영점)
+### 2.4 고객과 공동 설계 필수 ②: FDP (RUH · RG 배치 정책, 고DWPD 운영점 포함)
 
 **정의**: `용량 × DWPD = P/E × 원시 용량 ÷ (WAF × 보증 일수)`에서 **고객의 데이터 배치가 WAF를 정한다**([high-dwpd-operating-point.md](../../wiki/concepts/high-dwpd-operating-point.md) §4). 하나의 기술에 두 운영점이 있다.
 
@@ -200,13 +242,13 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 
 ### 2.5 공통 기반
 
-| 공통 요소 | 고DWPD | Mixed Media | 고용량 |
+| 공통 요소 | FDP (고DWPD) | Mixed Media | 고용량 (Fault Tolerant · Large Mapping) |
 |---|---|---|---|
 | **배치 정보** | 수명별 분리(FDP)로 WAF ↓ | hot 데이터를 pSLC 영역으로 | 고장 영향 범위 국소화 |
 | **구성 가능성** | SLC 모드 비율 · OP · RUH | 영역 비율 · EG 구성 | 보호 수준 · 용량 |
 | **텔레메트리** | 실시간 WAF | 영역별 마모 | 다이 오프라인 · 고장 LBA |
 
-세 기술은 **워크로드 구성형 SSD**([workload-configurable-ssd-report.md](workload-configurable-ssd-report.md)) 플랫폼 위의 구성이다. 공통 기반을 먼저 만들고, 제품화 비중은 신호로 정한다.
+이 기술들은 **워크로드 구성형 SSD**([workload-configurable-ssd-report.md](workload-configurable-ssd-report.md)) 플랫폼 위의 구성이다. 공통 기반을 먼저 만들고, 제품화 비중은 신호로 정한다.
 
 ---
 
@@ -249,15 +291,15 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 | 계약 | 물량 · 가격 | 물량 + 공동 설계 · 운영 통합 |
 | 성과 | 사양 충족 · 인증 통과 | 고객 시스템에서 켜진 기능 · 고객 지표(토큰당 비용 · GPU 가동률) |
 
-고용량은 지금 방식을 유지하고, 새 방식은 **Mixed Media · 고DWPD에 집중**한다.
+Fault Tolerant · Large Mapping · Multi-Tenant QoS · Confidential Storage는 지금 방식(요구 사양 · 표준)으로 준비하고, 새 방식은 **협력 강도 6점 이상인 Mixed Media · FDP에 집중**한다(§2.1.1).
 
 ### 4.2 공동 설계 의제
 
 | 과제 | 고객 쪽 상대 | 공동 설계 과제 | 규격 · 오픈소스 |
 |---|---|---|---|
-| **고DWPD** | KV 캐시 관리자(LMCache · Dynamo · Mooncake), 추론 엔진, 캐시 계층(CacheLib류) | 테넌트 · 수명별 배치, KV 트레이스 기반 WAF 실측, 2TB · 30 DWPD 운영점 요구 확인 | LMCache 다음으로 Dynamo · Mooncake에 FDP 경로, NVMe FDP 런타임 재구성 |
+| **FDP (고DWPD)** | KV 캐시 관리자(LMCache · Dynamo · Mooncake), 추론 엔진, 캐시 계층(CacheLib류) | 테넌트 · 수명별 배치, KV 트레이스 기반 WAF 실측, 2TB · 30 DWPD 운영점 요구 확인 | LMCache 다음으로 Dynamo · Mooncake에 FDP 경로, NVMe FDP 런타임 재구성 |
 | **Mixed Media** | 분산 스토리지 · DB · 블록 스토리지(로그 · 메타데이터 경로), 계층 배치 소프트웨어(CSAL류) | 데이터 종류별 네임스페이스 배치, 워크로드별 pSLC 비율(0.5~2% 구간 검증), destage · QoS 격리 목표(p99.9), QLC NS의 RUH 설계 | NVMe 네임스페이스 · 엔듀런스 그룹 활용, 영역별 텔레메트리 · 보증 표기 제안, FDP 매체 속성 제안 |
-| 고용량 (선택) | 분산 스토리지 EC · 커널 블록 계층 | 고장 LBA 재구축 | 같은 협력 통로를 재사용 |
+| Fault Tolerant (선택) | 분산 스토리지 EC · 커널 블록 계층 | 고장 LBA 재구축 | 같은 협력 통로를 재사용 |
 
 ### 4.3 협력의 방식: 계약 · 사람 · 역량
 
@@ -331,18 +373,19 @@ HBM 점유율은 2022년 SK 50% · 삼성 40%에서 2Q25 62% · 17%로 갈렸다
 | F-12 | Mixed Media 논리: 쓰기 75%가 16KiB 이하 · WAF 70+ → 1.02 · VoC pSLC 0.5~2% · Slot Tax · 출처 귀속 정정 | 🟡 / ⚠️ / ✅ | [ssd-mixed-media-hyperscaler-logic-2026-10.md](../../sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md) MX-01~MX-77 |
 | F-13 | 사용자 제공 Mixed Media 분석(원문) | 원본 | [user-mixed-media-hyperscaler-analysis-2026-10-03.md](../../sources/raw-notes/user-mixed-media-hyperscaler-analysis-2026-10-03.md) |
 | F-14 | 에이전트 VM 스토리지 프로파일(Muse · dots · 휴면 · 스냅샷 경로), 멀티테넌트 QoS(FlashBlox 3.1배 · WARP WAF 3.0), 드라이브 활용률 | ✅ / 🟡 / ⚠️ | [agent-vm-and-cloud-ssd-requirements-2026-10.md](../../sources/articles/agent-vm-and-cloud-ssd-requirements-2026-10.md) AV · CQ · AT |
+| F-16 | 핵심 기술 6가지 × 제품군 × 고객 협력 강도(4기준 0~8점, 선정 Mixed Media · FDP) | ⚠️ 과제팀 판단(근거 사실은 ✅ / 🟡) | [ssd-core-technologies-customer-collaboration.md](../../wiki/concepts/ssd-core-technologies-customer-collaboration.md) |
 | F-15 | 제품군 정격 DWPD · 최대 용량(FL6 · XTR · P5810 · PS1010 · PS1030 · PM1743 · LC9 · P5336) | 🟡 | [wcssd-v1](../../sources/articles/wcssd-v1-high-dwpd-configurable-2026-09.md) §1 · [qlc-v6-purchase-criteria](../../sources/articles/qlc-v6-purchase-criteria-dwpd-history-2026-09.md) A15 · A19 · A20 · A23 |
 
 ---
 
-## 7. 슬라이드 4장 (덱 v1.3)
+## 7. 슬라이드 4장 (덱 v1.4)
 
 상세는 [ssd-future-ready-strategy-outline.md](../presentation/ssd-future-ready-strategy-outline.md).
 
 | 장 | 제목(액션 타이틀) | 주장 → 그래프 |
 |---|---|---|
 | 1 배경 | SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다 | HBM 점유율 슬로프 · 범용(클라우드 안 VM 여러 개가 SSD 하나를 나눠 쓰는 그림 · 실측 0.2 대 정격 1 DWPD · p99 섞어 쓰기 3.1 대 격리 1) · AI 학습(GPU당 대역 0.16 · 0.08 → 0.49 · 0.24 · 체크포인트 5.7TB) · AI 추론(DWPD 로그 막대) · 에이전트(휴면 격자 · VM 메모리 7.75 대 디스크 100GB · 1억 명 10EB) · **제품군 × 응용 매트릭스**(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC, DWPD 로그 막대 · 최대 용량) · 결론 밴드 "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다" |
-| 2 솔루션 | SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다 | 그레이: 고용량(같은 폼팩터 다이 격자) / Blue: Mixed Media(고객 SW가 WAL · 메타데이터 → pSLC, 객체 · 데이터셋 → QLC, 모아서 큰 순차 쓰기 · 쓰기 75% ≤ 16KiB · WAF 70+ → 1.02 · pSLC 0.5~2%), 고DWPD(수명 섞인 블록 대 수명별 블록 · 다이 120 → 47) |
+| 2 핵심 기술 | 제품 포트폴리오를 받치는 핵심 기술은 여섯 가지이며, 그중 Mixed Media와 FDP는 고객과 함께 설계해야 완성됩니다 | 표: 핵심 기술 6행 × (데이터 막대 · 적합한 제품군 ●◐ 4열 · 고객 협력 강도 막대 0~8), 회색 4행(1 · 4 · 3 · 3 지금 방식) / Blue 묶음 2행(Mixed Media 8 · FDP 7 공동 설계 필수), 결론 밴드 "핵심 기술을 제대로 확보해 다가올 시대에 대비하려면, 고객과의 협력이 필수입니다" |
 | 3 당위성 | 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다 | P/E 10만 → 1천 · 고객 캐시 DWPD(0.6 · 3 · 3.2 · 7.2) · 계단 3칸 · Meta CacheLib 150% 대 100% · -44% |
 | 4 실행 | 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다 | 계약 적층 · 상주 순환 · 역량 격자, 첫 90일은 노트 |
 | 결론 밴드 | 실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다 | |

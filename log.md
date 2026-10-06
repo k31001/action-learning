@@ -2401,3 +2401,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 카드 아래 제품군 × 응용 매트릭스: SLC급(30~120 · ≤ 3.2TB) · 고내구 TLC(3 · ≤ 12.8TB) · 고성능 · 범용 TLC(1 · ≤ 15.36TB) · 고용량 QLC(0.3~0.6 · ≤ 245TB), ■ 지금 · ▢ 신호. AI 추론 열이 SLC급부터 QLC까지 걸쳐 "고내구는 하나가 아니다"를 보임
 - 결론 밴드 "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다", 노트 재작성(에이전트 정정 · 한계 명시)
 - 위키 `datacenter-types-storage-requirements.md` §0 정정 · §1 비교표 · §1.5 매트릭스 · §3 독해 · 쓰면 안 되는 문장 3건 추가. 보고서 v1.4(§0 묶음 표, §1.3 · §1.3.1, §4.4 신호, §5 리스크, §6 F-14 · F-15, §7), 아웃라인 v1.3
+
+## [2026-10-06] build | 덱 2장 재구성: 핵심 기술 6가지 × 제품군 × 고객 협력 강도 (덱 v1.4 · 보고서 v1.5)
+- 사용자 지시: 2장 = 제품 포트폴리오에 필요한 핵심 기술 6가지(Fault Tolerant · Large Mapping · Mixed Media · Multi-Tenant QoS · FDP · Confidential Storage), 기술별 적합 제품군, 고객 협력 강도 판단 → 협력 필수 기술 선정, "고객과의 협력이 필수" 메시지
+- 신규 위키 `wiki/concepts/ssd-core-technologies-customer-collaboration.md`: 6기술 정의 · 근거 데이터(기존 원장 인용) · 제품군 ●◐ 매트릭스 · 4기준 × 0~2점 평가 · 선정 · 지금까지 vs 공동 설계 대조표 · 한계. 역링크 6곳
+- 평가(⚠️ 과제팀 판단): Fault Tolerant 1 · Large Mapping 4 · Multi-Tenant QoS 3 · Confidential Storage 3 / **Mixed Media 8 · FDP 7** → 6점 이상 = 고객과 공동 설계 필수
+- 결정 변경: 보안은 2026-10-03 "강조하지 않음" → 에이전트 기밀 VM용 Confidential Storage를 핵심 기술로(표준 기반 협력). `ssd-future-solution-candidates.md`에 기록
+- 덱 2장: 6행 표(데이터 막대 · 제품군 ●◐ · 협력 강도 막대), 회색 4행 "SSD 안에서 · 표준과 요구 사양으로 지금처럼" / Blue 묶음 2행 "고객 SW가 바뀌어야 제품이 완성", 밴드 "핵심 기술을 제대로 확보해 다가올 시대에 대비하려면, 고객과의 협력이 필수입니다". 4장 노트 연동(새 방식은 Mixed Media · FDP에 집중)
+- 보고서 v1.5: §0 묶음 표 · §2 재구성(2.1 기술 × 제품군, 2.1.1 기준 · 점수 · 선정, 2.2 지금 방식 4기술, 2.3 Mixed Media, 2.4 FDP) · §4.1 · §4.2 · §6 F-16 · §7, 아웃라인 v1.4

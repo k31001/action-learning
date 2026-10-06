@@ -1,12 +1,12 @@
 ---
 type: presentation-outline
-status: v1.3 덱 (2026-10-06, 1장 재구성: 응용별 SSD 요구 + 제품 포트폴리오, 에이전트 열 정정). 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.3, 미커밋 산출물 · 생성기로 재현)
-report: outputs/report/ssd-future-ready-strategy-report.md (v1.4)
+status: v1.4 덱 (2026-10-06, 2장 재구성: 핵심 기술 6가지 × 제품군 × 고객 협력 강도). v1.3: 1장 재구성. 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v1.4, 미커밋 산출물 · 생성기로 재현)
+report: outputs/report/ssd-future-ready-strategy-report.md (v1.5)
 design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬, 20 × 11.25in, 본문 18pt+, 출처 15pt)
 ---
 
-# 불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 (덱 v1.3)
+# 불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 (덱 v1.4)
 
 ## v1.0 → v1.1 변경 (2026-10-03 사용자 리뷰)
 
@@ -37,9 +37,19 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 | SSD 요구와 포트폴리오에 공간을 더. 범용은 기존 기술 + 멀티테넌트 · QoS, AI는 고성능 TLC, KV · 체크포인트는 고내구 TLC, 고내구는 DWPD에 따라 SLC부터 QLC까지 | 카드 아래 **제품군 × 응용 매트릭스**: 행 = SLC급(30~120 · ≤ 3.2TB) · 고내구 TLC(3 · ≤ 12.8TB) · 고성능 · 범용 TLC(1 · ≤ 15.36TB) · 고용량 QLC(0.3~0.6 · ≤ 245TB), 왼쪽에 DWPD 로그 막대. 칸 = ■ 지금 쓰는 곳 · ▢ 신호. AI 추론 열이 SLC급부터 QLC까지 걸쳐 "고내구는 하나가 아니다"를 보인다 |
 | 다양한 응용에 대응하려면 다양한 제품 포트폴리오가 필요하다로 마무리 | 결론 밴드 "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다". HBM 교훈은 왼쪽 위 카드로 축소 |
 
+## v1.3 → v1.4 변경 (2026-10-06 사용자 지시: 2장)
+
+| 지시 | 반영 |
+|---|---|
+| 2장은 제품 포트폴리오에 필요한 핵심 기술 6가지(Fault Tolerant · Large Mapping · Mixed Media · Multi-Tenant QoS · FDP · Confidential Storage) | 2장을 처음부터 다시 만듦: 6행 표. 열 = 핵심 기술(이름 · 정의) · 왜 필요한가(캡션 + 막대 2개 또는 표준 사슬) · 적합한 제품군 4열(● 핵심 · ○ 해당) · 고객 협력 강도 막대(0~8) + 판정 + 이유 |
+| 각 기술이 어떤 제품군에 적합한지 | 1장 매트릭스 행(SLC급 · 고내구 TLC · 고성능 TLC · 고용량 QLC)을 2장 열로. 고용량 QLC에 6개 중 5개, FDP가 가장 넓게 걸침 |
+| 고객 협력 강도를 판단해 필수 기술 선정 | 4기준(고객만 아는 정보 · 고객 SW 변경 · 표준 공백 · 고객 환경 검증) × 0~2점. Fault Tolerant 1 · Large Mapping 4 · Multi-Tenant QoS 3 · Confidential Storage 3 / **Mixed Media 8 · FDP 7** → 6점 이상을 Blue 묶음 "고객 시스템과 함께: 고객 SW가 바뀌어야 제품이 완성됩니다"로 |
+| 고객 협력이 필수라는 메시지 | 결론 밴드 "핵심 기술을 제대로 확보해 다가올 시대에 대비하려면, 고객과의 협력이 필수입니다", 노트에 "사양 → SSD 안 구현 → 인증 방식으로는 두 기술의 제품이 완성되지 않는다" |
+| (연동) | 4장 노트: 새 방식은 Mixed Media · FDP에 집중, 나머지 4기술은 지금 방식. 보안은 2026-10-03 "강조하지 않음"에서 Confidential Storage(에이전트 기밀 VM, 표준 기반 협력 3점)로 결정 변경 |
+
 ## 제목 4개를 이어 읽으면
 
-> SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다. SSD 안에서 풀 수 있는 기술은 지금처럼 준비하고, 고객 시스템과 함께 풀어야 하는 과제가 새로 나타나고 있습니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다. **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.**
+> SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다. 제품 포트폴리오를 받치는 핵심 기술은 여섯 가지이며, 그중 Mixed Media와 FDP는 고객과 함께 설계해야 완성됩니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다. **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.**
 
 ## 장별 주장 → 그래프 대조표 (근거 사슬 QA)
 
@@ -51,9 +61,9 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 | 1 | AI 추론: 쓰기 내구(DWPD) | DWPD 로그 막대(QLC 0.6 · KV 실측 3.2 · AI 전용 50~120) |
 | 1 | 에이전트: 용량 · TB당 비용 | 휴면 격자(활성 3 · 휴면 33) + Muse VM 메모리 7.75 대 디스크 100GB 막대 + 1억 명 10EB(할당 기준) |
 | 1 | 응용마다 필요한 제품군 조합이 다르다 | 제품군 × 응용 매트릭스(행 왼쪽 DWPD 로그 막대 · 최대 용량, 칸 ■ · ▢) |
-| 2 | Mixed Media: 고객 SW가 나눠 보내야 효과가 난다 | 배치 그림(WAL · 메타데이터 → pSLC, 객체 · 데이터셋 → QLC, 모아서 순차로) + 쓰기 75% ≤ 16KiB 100% 막대 + WAF 70+ → 1.02 로그 막대 + pSLC 0.5~2% |
-| 2 | 고용량: 같은 폼팩터 다이 ×2 | 다이 격자 245TB 대 512TB |
-| 2 | 고DWPD: 고객 정보로 다이 -60% | 블록 그림(WAF ≈ 3 → ≈ 1) + 다이 막대 120 → 47 |
+| 2 | 핵심 기술마다 필요한 이유가 있다 | 행별 막대: 다이 1,024 → 약 2,133 · 매핑 DRAM 245GB → 15GB(산술) · 이웃 쓰기 WAF 1.28 → 3.0 · 표준 사슬 Caliptra → SPDM → TDISP · WAF 70+ → 1.02(로그) · WAF 3.22 → 1.03 |
+| 2 | 기술마다 맞는 제품군이 다르다 | ●◐ 매트릭스 6 × 4 (고용량 QLC 5개, FDP 4열) |
+| 2 | 협력 강도가 6 이상인 기술은 Mixed Media · FDP | 협력 강도 막대(1 · 4 · 3 · 3 회색, 8 · 7 Blue), 범례 "0~5 지금 방식으로 협력 / 6 이상 공동 설계 필수" |
 | 3 | 고객의 쓰기는 크고 셀 수명은 줄었다 | P/E 막대 + 고객 캐시 DWPD 막대 |
 | 3 | 고객은 이미 자기 SW로 푼다 | Meta CacheLib 150% 대 100% 막대 + -44% |
 | 3 | 3칸에서 WAF가 1에 닿는다 | WAF 3.22 → 1.03 |

@@ -17,6 +17,24 @@ export const UPDATES = [
   {
     date: '2026-10-06',
     type: 'build',
+    version: 'v2.46.58',
+    title: '덱 2장 재구성: 핵심 기술 6가지 × 제품군 × 고객 협력 강도, 협력 필수 = Mixed Media · FDP (덱 v1.4 · 보고서 v1.5)',
+    summary:
+      '제품 포트폴리오를 받치는 핵심 기술 6가지(Fault Tolerant · Large Mapping · Multi-Tenant QoS · Confidential Storage · Mixed Media · FDP)를 제품군에 연결하고, 4기준(고객만 아는 정보 · 고객 SW 변경 · 표준 공백 · 고객 환경 검증) 0~8점으로 고객 협력 강도를 판단했다. 6점 이상인 Mixed Media(8) · FDP(7)를 공동 설계 필수로 선정(패치 v2.46.58).',
+    tags: ['핵심 기술', 'FDP', 'Mixed Media', 'Confidential Storage', 'QoS', 'Large Mapping', 'Fault Tolerant', '고객 협력'],
+    items: [
+      { label: '위키', detail: 'ssd-core-technologies-customer-collaboration.md 신설: 6기술 × 제품군 ●◐ · 협력 강도 점수 · 선정 · 지금까지 vs 공동 설계' },
+      { label: '덱 2장', detail: '6행 표(데이터 막대 · 제품군 · 협력 강도 막대), Blue 묶음 Mixed Media · FDP, 밴드 "고객과의 협력이 필수"' },
+      { label: '결정 변경', detail: '보안: 강조하지 않음 → 에이전트 기밀 VM용 Confidential Storage(표준 기반 협력 3점)' },
+      { label: '보고서 v1.5', detail: '§0 · §2 재구성(2.1.1 기준 · 점수 · 선정) · §4.1 · §4.2 · F-16' },
+    ],
+    links: [
+      { label: 'wiki/concepts/ssd-core-technologies-customer-collaboration.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ssd-core-technologies-customer-collaboration.md' },
+    ],
+  },
+  {
+    date: '2026-10-06',
+    type: 'build',
     version: 'v2.46.57',
     title: '덱 1장 재구성: 데이터센터 응용별 SSD 요구 + 제품 포트폴리오, 에이전트 = 사용자별 VM → 고용량 QLC로 정정 (덱 v1.3 · 보고서 v1.4)',
     summary:
