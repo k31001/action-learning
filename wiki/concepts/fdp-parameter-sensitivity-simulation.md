@@ -10,7 +10,7 @@ sources:
 
 # FDP 파라미터 민감도 시뮬레이션: 왜 응용마다 고객과 함께 맞춰야 하나
 
-[ssd-core-technologies-customer-collaboration.md](ssd-core-technologies-customer-collaboration.md) §3은 FDP를 "스펙만으로 닫히지 않는 유일한 핵심 기술"로 판정했다. 근거는 공개 연구의 정성 진술(같은 "FDP 지원" 장치에서 결과가 갈림, 오분류 · Noisy RUH, WARP FAST'26)이었다. 이 페이지는 같은 주장을 **하나의 단순 모델 위에서 수치로** 보인다. 덱 5장(보충)의 단일 소스다.
+[ssd-core-technologies-customer-collaboration.md](ssd-core-technologies-customer-collaboration.md) §3은 FDP를 "스펙만으로 닫히지 않는 유일한 핵심 기술"로 판정했다. 근거는 공개 연구의 정성 진술(같은 "FDP 지원" 장치에서 결과가 갈림, 오분류 · Noisy RUH, WARP FAST'26)이었다. 이 페이지는 같은 주장을 **하나의 단순 모델 위에서 수치로** 보인다. 덱 보충 5장의 근거였으나 2026-10-06 사용자 지시로 슬라이드는 제외했고, 분석은 지식으로 보존한다(보고서 §2.4 요약).
 
 > 사용자 지시(2026-10-06): "FDP는 왜 고객과 협력해야 제대로 된 효과를 볼 수 있는지 설명할 수 있는 시각화 보충 자료를 마지막 슬라이드 한 장 추가해 줘. FDP 개념 이해부터 시작해서 응용에 따라 주요 파라미터들이 변경이 필요하다는 것을 시뮬레이션이나 시각적으로 이해시키는 것이 필요해."
 

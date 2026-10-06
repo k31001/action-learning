@@ -6,7 +6,6 @@
   3 당위성 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다
   4 실행   고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다
   결론     실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다
-  5 보충   FDP의 효과는 SSD 파라미터와 고객 SW의 분류가 응용마다 함께 맞을 때만 납니다 (시뮬레이션 scripts/fdp_waf_sim.py)
 
 규율: samsung-memory-ppt-design-skill v2.1(11절 시각 우선, 11.J 근거 사슬: 주장마다 데이터 그래프). 본문 18pt 이상 · 출처 15pt · em-dash 금지 · 액센트 Samsung Blue 하나.
 도형 · 차트는 모두 python-pptx 도형으로 그린다(차트 pt = 슬라이드 pt). 부품 이미지는 assets/photos가 있으면 사진, 없으면 3D 렌더.
@@ -28,7 +27,7 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
 ASSETS = os.path.join(HERE, "..", "assets")
 OUT = os.environ.get("OUT_PATH") or os.path.join(HERE, "..", "ssd-future-ready-strategy.pptx")
 
-d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=5,
+d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=4,
          logos_dir=os.path.join(ASSETS, "logos"), photos_dir=os.path.join(ASSETS, "photos"),
          renders_dir=os.path.join(ASSETS, "survival"))
 tb, rect, label_box = d.tb, d.rect, d.label_box
@@ -79,8 +78,8 @@ tb(s, sx1 - 0.45, ST + 1.36, 0.9, 0.28, [("2Q25", 16, False, GRAY)], align=C)
 tb(s, LX + 0.22, CB - 0.36, LW - 0.44, 0.30, [("HBM 점유율", 16, False, GRAY)], align=C)
 
 # ---- 응용 카드 4장: 이름 · 하는 일 · 데이터 그래프 · SSD 요구
-APPS = [("범용 클라우드", "VM · DB · 웹 (멀티테넌트)", "QoS · 테넌트 격리"),
-        ("AI 학습", "데이터 로딩 · 체크포인트", "대역 · 쓰기 피크"),
+APPS = [("범용 클라우드", "", "QoS · 테넌트 격리"),
+        ("AI 학습", "", "대역 · 체크포인트"),
         ("AI 추론", "KV 캐시 오프로드", "쓰기 내구 (DWPD)"),
         ("에이전트", "", "용량 · TB당 비용")]
 for i, (nm, wl, rq) in enumerate(APPS):
@@ -90,61 +89,52 @@ for i, (nm, wl, rq) in enumerate(APPS):
     tb(s, x + 0.20, CT + 0.52, DW - 0.40, 0.30, [(wl, 16, False, GRAY)])
     rect(s, x + 0.20, CB - 0.58, DW - 0.40, 0.012, fill=LINE)
     tb(s, x + 0.20, CB - 0.52, DW - 0.40, 0.42, [(rq, 20, True, BLUE)], anchor=MID)
-d.fit(s, d.logo("nvidia"), DXS[1] + DW - 1.35, CT + 0.16, 1.15, 0.28)
+d.fit(s, d.logo("nvidia"), DXS[1] + 0.20, CT + 0.56, 1.15, 0.26, align="left")
+_lx = DXS[0] + 0.20
+for _lg, _h in (("aws", 0.30), ("microsoft", 0.24), ("google", 0.24)):
+    _ox, _oy, _w, _h2 = d.fit(s, d.logo(_lg), _lx, CT + 0.55, 1.05, _h, align="left")
+    _lx = _ox + _w + 0.18
 x = DXS[3]
 d.fit(s, d.logo("meta"), x + 0.20, CT + 0.55, 0.80, 0.24, align="left")
 tb(s, x + 1.04, CT + 0.52, 0.70, 0.30, [("Muse", 16, True, INK)])
 d.fit(s, d.logo("openai"), x + 1.80, CT + 0.56, 0.80, 0.22, align="left")
 tb(s, x + 2.64, CT + 0.52, 0.60, 0.30, [("Dot", 16, True, INK)])
 
-# ① 범용 클라우드: 클라우드 안 VM 여러 개가 SSD 하나를 나눠 쓴다 + 실측 DWPD + 격리 효과(p99)
+# ① 범용 클라우드: VM 여러 개가 SSD 하나를 나눠 쓴다 + 공유 SSD의 p99 (섞어 쓰기 대 격리)
 x = DXS[0]
-rect(s, x + 0.04, VT - 0.06, 1.94, 1.00, fill=None, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.CLOUD)
+rect(s, x + 0.02, VT + 0.04, 2.10, 1.14, fill=None, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.CLOUD)
 TEN = [GRAY_2, BLUE_T2, GRAY_2, BLUE_T1, GRAY_2, BLUE_T2]
 for k, col in enumerate(TEN):
-    rect(s, x + 0.47 + (k % 3) * 0.38, VT + 0.20 + (k // 3) * 0.26, 0.32, 0.20, fill=col)
+    rect(s, x + 0.46 + (k % 3) * 0.42, VT + 0.32 + (k // 3) * 0.28, 0.36, 0.22, fill=col)
 for k in range(3):
-    rect(s, x + 0.62 + k * 0.38, VT + 0.70, 0.014, 0.24, fill=GRAY_2)
-rect(s, x + 0.40, VT + 0.94, 1.24, 0.24, fill=INK)
-tb(s, x + 0.40, VT + 0.94, 1.24, 0.24, [("SSD", 15, True, WHITE)], align=C, anchor=MID)
-# 실측 DWPD 대 범용 TLC 정격 (세로 막대)
-tb(s, x + 2.14, VT - 0.06, 1.20, 0.28, [("DWPD", 15, False, GRAY)], align=C)
-BBt, BHm = VT + 0.94, 0.66
-for k, (v, col, nm, lab) in enumerate([(0.23, BLUE, "실측", "0.2"), (1.0, GRAY_2, "정격", "1")]):
-    bx = x + 2.26 + k * 0.52
-    rect(s, bx, BBt - BHm * v, 0.30, BHm * v, fill=col)
-    if k == 0:
-        tb(s, bx - 0.15, BBt - BHm * v - 0.28, 0.60, 0.26, [(lab, 16, True, BLUE)], align=C)
-    else:
-        tb(s, bx + 0.30, BBt - BHm * v - 0.04, 0.40, 0.26, [(lab, 16, True, INK)])
-    tb(s, bx - 0.15, BBt + 0.02, 0.60, 0.26, [(nm, 15, False, GRAY)], align=C)
-# 공유 SSD의 p99 지연: 섞어 쓰기 대 하드웨어 격리 (Microsoft 워크로드)
-tb(s, x + 0.20, VT + 1.30, DW - 0.40, 0.26, [("공유 SSD의 p99 지연 (상대값)", 15, False, GRAY)])
-for k, (nm, v, col, lab) in enumerate([("섞어 쓰면", 3.1, GRAY_2, "최대 3.1"), ("격리하면", 1.0, BLUE, "1")]):
-    yy = VT + 1.58 + k * 0.30
-    tb(s, x + 0.20, yy, 0.96, 0.26, [(nm, 15, k == 1, BLUE if k else INK)], anchor=MID)
-    w = (DW - 2.30) * v / 3.1
-    rect(s, x + 1.16, yy + 0.04, w, 0.18, fill=col)
-    tb(s, x + 1.22 + w, yy, 0.90, 0.26, [(lab, 15, True, BLUE if k else INK)], anchor=MID)
+    rect(s, x + 0.63 + k * 0.42, VT + 0.86, 0.014, 0.42, fill=GRAY_2)
+rect(s, x + 0.36, VT + 1.28, 1.44, 0.30, fill=INK)
+tb(s, x + 0.36, VT + 1.28, 1.44, 0.30, [("공유 SSD", 16, True, WHITE)], align=C, anchor=MID)
+tb(s, x + 2.14, VT + 1.74, DW - 2.20, 0.28, [("p99 지연", 15, False, GRAY)], align=C)
+BBt, BHm = VT + 1.40, 1.08
+for k, (v, col, nm, lab) in enumerate([(3.1, GRAY_2, "섞어", "3.1×"), (1.0, BLUE, "격리", "1")]):
+    bx = x + 2.30 + k * 0.56
+    hh = BHm * v / 3.1
+    rect(s, bx, BBt - hh, 0.40, hh, fill=col)
+    tb(s, bx - 0.20, BBt - hh - 0.32, 0.80, 0.30, [(lab, 18, True, BLUE if k else INK)], align=C, anchor=MID)
+    tb(s, bx - 0.15, BBt + 0.04, 0.70, 0.28, [(nm, 16, k == 1, BLUE if k else GRAY)], align=C)
 
-# ② AI 학습: GPU당 스토리지 대역 (NVIDIA 가이드) + 체크포인트
+# ② AI 학습: GPU당 읽기 대역, 데이터가 캐시보다 크면 약 3배
 x = DXS[1]
-BBt, BHm = VT + 1.40, 1.05
-for g, (gn, rv, wv, rc, wc) in enumerate([("기본", 0.16, 0.08, GRAY_2, LINE), ("멀티모달", 0.49, 0.24, BLUE, BLUE_T2)]):
-    gx = x + 0.30 + g * 1.02
-    for k, (v, col) in enumerate([(rv, rc), (wv, wc)]):
-        h = BHm * v / 0.49
-        rect(s, gx + k * 0.40, BBt - h, 0.34, h, fill=col)
-        tb(s, gx + k * 0.40 - 0.18, BBt - h - 0.30, 0.70, 0.28, [(f"{v:.2f}", 15, True, BLUE if g else INK)], align=C)
-    tb(s, gx - 0.15, BBt + 0.04, 1.04, 0.30, [(gn, 16, False, GRAY)], align=C)
-tb(s, x + 0.20, BBt + 0.38, DW - 0.40, 0.30, [[("■", 15, False, BLUE), (" 읽기  ", 15, False, GRAY), ("■", 15, False, BLUE_T2), (" 쓰기  GB/s, GPU당", 15, False, GRAY)]])
-tb(s, x + 2.36, VT + 0.30, DW - 2.46, 0.56, [("5.7TB", 26, True, BLUE)], anchor=MID)
-tb(s, x + 2.36, VT + 0.86, DW - 2.46, 0.60, [("체크포인트", 16, False, GRAY), ("1회 (405B)", 16, False, GRAY)], spacing=1.0)
+BBt, BHm = VT + 1.48, 1.30
+for k, (nm, v, col) in enumerate([("기본", 0.16, GRAY_2), ("멀티모달", 0.49, BLUE)]):
+    bx = x + 0.40 + k * 1.05
+    hh = BHm * v / 0.49
+    rect(s, bx, BBt - hh, 0.62, hh, fill=col)
+    tb(s, bx - 0.25, BBt - hh - 0.36, 1.12, 0.34, [(f"{v:.2f}", 20, True, BLUE if k else INK)], align=C, anchor=MID)
+    tb(s, bx - 0.30, BBt + 0.04, 1.22, 0.28, [(nm, 16, k == 1, BLUE if k else GRAY)], align=C)
+tb(s, x + 2.30, VT + 0.30, DW - 2.40, 0.62, [("×3", 34, True, BLUE)], anchor=MID)
+tb(s, x + 2.30, VT + 0.92, DW - 2.30, 0.56, [("GPU당 읽기", 15, False, GRAY), ("GB/s", 15, False, GRAY)], spacing=1.0)
 
 # ③ AI 추론: DWPD (로그 축)
 x = DXS[2]
 LBW = 1.20
-ax0, ax1 = x + 0.20 + LBW, x + DW - 0.95
+ax0, ax1 = x + 0.20 + LBW, x + DW - 1.00
 lo_, hi_ = math.log10(0.3), math.log10(150)
 
 
@@ -152,38 +142,35 @@ def xd(v):
     return ax0 + (math.log10(v) - lo_) / (hi_ - lo_) * (ax1 - ax0)
 
 
-tb(s, x + 0.20, VT - 0.02, DW - 0.40, 0.30, [("DWPD (로그 축)", 15, False, GRAY)])
 for g in (1, 10, 100):
-    rect(s, xd(g) - 0.005, VT + 0.34, 0.01, 1.40, fill=LINE)
-    tb(s, xd(g) - 0.3, VT + 1.76, 0.6, 0.28, [(str(g), 15, False, GRAY)], align=C)
+    rect(s, xd(g) - 0.005, VT - 0.02, 0.01, 1.52, fill=LINE)
+    tb(s, xd(g) - 0.3, VT + 1.52, 0.6, 0.28, [(str(g), 15, False, GRAY)], align=C)
 for k, (nm, v, vmin, col, lab) in enumerate([("QLC 정격", 0.6, None, GRAY_2, "0.6"), ("KV 실측", 3.2, None, GRAY, "3.2"),
                                               ("AI 전용", 120, 50, BLUE, "50~120")]):
-    yy = VT + 0.38 + k * 0.46
-    tb(s, x + 0.20, yy, LBW - 0.06, 0.36, [(nm, 17, k == 2, BLUE if k == 2 else INK)], anchor=MID)
-    rect(s, ax0, yy + 0.05, xd(v) - ax0, 0.26, fill=col)
+    yy = VT + 0.02 + k * 0.50
+    tb(s, x + 0.20, yy, LBW - 0.06, 0.40, [(nm, 18, k == 2, BLUE if k == 2 else INK)], anchor=MID)
+    rect(s, ax0, yy + 0.04, xd(v) - ax0, 0.32, fill=col)
     if vmin:
-        rect(s, xd(vmin) - 0.015, yy, 0.03, 0.36, fill=WHITE)
-    tb(s, xd(v) + 0.06, yy, 0.90, 0.36, [(lab, 17, True, BLUE if k == 2 else INK)], anchor=MID)
+        rect(s, xd(vmin) - 0.015, yy, 0.03, 0.40, fill=WHITE)
+    tb(s, xd(v) + 0.06, yy, 0.95, 0.40, [(lab, 18, True, BLUE if k == 2 else INK)], anchor=MID)
 
-# ④ 에이전트: 사용자별 VM, 대부분 휴면 + VM 1개의 자원(관측) → 사용자 수만큼 용량
+# ④ 에이전트: 사용자별 VM, 대부분 휴면 + VM 1개의 디스크 대 메모리
 x = DXS[3]
-NC, NR, TW, TH = 12, 3, 0.20, 0.16
-ACT = {(0, 3), (1, 8), (2, 1)}
+NC, NR, TW, TH = 10, 3, 0.24, 0.20
+ACT = {(0, 3), (1, 7), (2, 1)}
 for r in range(NR):
     for c in range(NC):
-        rect(s, x + 0.22 + c * (TW + 0.055), VT + 0.02 + r * (TH + 0.06), TW, TH, fill=BLUE if (r, c) in ACT else LINE)
-tb(s, x + 0.20, VT + 0.66, DW - 0.40, 0.30, [[("■", 15, False, BLUE), (" 활성  ", 15, False, GRAY), ("■", 15, False, LINE), (" 휴면 (대부분)", 15, False, GRAY)]])
-tb(s, x + 0.20, VT + 1.02, DW - 0.40, 0.26, [("사용자 VM 1개 (Muse 관측)", 15, False, GRAY)])
-for k, (nm, v, col, lab) in enumerate([("메모리", 7.75, GRAY_2, "7.75GB"), ("디스크", 100, BLUE, "100GB")]):
-    yy = VT + 1.30 + k * 0.30
-    tb(s, x + 0.20, yy, 0.80, 0.26, [(nm, 15, k == 1, BLUE if k else INK)], anchor=MID)
-    w = max(0.08, (DW - 2.10) * v / 100)
-    rect(s, x + 1.00, yy + 0.04, w, 0.18, fill=col)
-    tb(s, x + 1.06 + w, yy, 0.90, 0.26, [(lab, 15, True, BLUE if k else INK)], anchor=MID)
-tb(s, x + 0.20, VT + 1.92, DW - 0.40, 0.28, [[("× 1억 명 = ", 15, False, GRAY), ("10EB", 16, True, BLUE), ("  (할당 기준)", 15, False, GRAY)]])
+        rect(s, x + 0.22 + c * (TW + 0.06), VT - 0.04 + r * (TH + 0.07), TW, TH, fill=BLUE if (r, c) in ACT else LINE)
+tb(s, x + 0.20, VT + 0.76, DW - 0.40, 0.30, [[("■", 16, False, BLUE), (" 활성  ", 16, False, GRAY), ("■", 16, False, LINE), (" 휴면 (대부분)", 16, False, GRAY)]], anchor=MID)
+for k, (nm, v, col, lab) in enumerate([("VM 디스크", 100, BLUE, "100GB"), ("VM 메모리", 7.75, GRAY_2, "7.75GB")]):
+    yy = VT + 1.14 + k * 0.38
+    tb(s, x + 0.20, yy, 1.36, 0.32, [(nm, 16, k == 0, BLUE if k == 0 else GRAY)], anchor=MID)
+    w = max(0.08, (DW - 2.62) * v / 100)
+    rect(s, x + 1.56, yy + 0.05, w, 0.22, fill=col)
+    tb(s, x + 1.62 + w, yy, 0.95, 0.32, [(lab, 16, True, BLUE if k == 0 else GRAY)], anchor=MID)
 
 # ---- 매트릭스 머리줄
-tb(s, LX, MT - 0.36, LW + 6, 0.32, [[("SSD 제품군  ", 18, True, INK), ("요구 DWPD 순 (로그 축) · 최대 용량", 16, False, GRAY)]], anchor=MID)
+tb(s, LX, MT - 0.36, LW + 6, 0.32, [[("SSD 제품군  ", 18, True, INK), ("DWPD · 최대 용량", 16, False, GRAY)]], anchor=MID)
 tb(s, RIGHT - 6.0, MT - 0.36, 6.0, 0.32, [[("■", 16, False, BLUE), (" 지금 쓰는 곳   ", 16, False, GRAY), ("▢", 16, False, BLUE), (" 신호에 따라 쓰일 곳", 16, False, GRAY)]], align=R, anchor=MID)
 
 # ---- 매트릭스: 제품군(행) × 응용(열)
@@ -225,8 +212,8 @@ for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
             label_box(s, x, y, DW, RH, [(txt, 18, True, BLUE)], fill=WHITE, line=BLUE, lw=1.25, dash=True)
 
 d.band(s, 9.44, 0.80, "결론", "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다")
-d.footer(s, "출처: HBM 과제팀 집계 · 범용 Microsoft SSD 50만 대(파생) · FlashBlox(FAST'17) · 학습 NVIDIA SuperPOD 가이드(GPU당) · 체크포인트 산술 · 추론 StorageReview(2026-08) · "
-            "Kioxia · DapuStor · 에이전트 Google Agent Substrate · Muse 관측(제3자, 산술) · 제품 사양 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
+d.footer(s, "출처: HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD 가이드(환산) · KV 실측 StorageReview(2026-08) · AI 전용 Kioxia · DapuStor · "
+            "에이전트 Google Agent Substrate · Muse 관측(제3자) · 제품군 사양 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
 d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
         "그래서 SSD의 다음 수요를 하나로 단정하지 않고, 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. "
         "첫째, 범용 클라우드입니다. 여러 고객의 VM이 서버의 SSD를 나눠 씁니다. Microsoft의 SSD 50만 대를 보면 실제 쓰기는 0.07에서 0.23 DWPD로 범용 TLC 정격 1 DWPD 안에 들어옵니다. 기존 SSD 기술로 대응할 수 있습니다. "
@@ -272,69 +259,69 @@ for i, (nm, sub, fit) in enumerate(TECH6):
         elif kind == "half":
             rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=WHITE, line=BLUE_T1, lw=2.0, shape=MSO_SHAPE.OVAL)
 
-# ---- 오른쪽: 고객과 어떻게 협력하나 (결합도 × 스펙으로 닫히는가)
+# ---- 오른쪽: 고객과 어떻게 협력하나 (결합도 × 스펙만으로 안 닫히는 정도, 구역 산점도)
 GX0 = MX + LPW + 0.45
-YLW = 2.55
-GX = GX0 + YLW
-GCW = (RIGHT - GX - 2 * 0.06) / 3
 tb(s, GX0, PT, RIGHT - GX0, 0.40, [("고객과 어떻게 협력하나", 20, True, INK)], anchor=MID)
-tb(s, GX, PT + 0.46, RIGHT - GX, 0.30, [("고객 시스템과 함께 설계되는 정도  →", 16, True, GRAY)], anchor=MID)
-for k, lab in enumerate(["그대로 쓴다", "설정 · 정렬을 맞춘다", "데이터 경로 · 신뢰 체계에 넣는다"]):
-    tb(s, GX + k * (GCW + 0.06), PT + 0.80, GCW, 0.50, [(lab, 16, False, GRAY)], align=C, anchor=MID, spacing=1.0)
-tb(s, GX0, PT + 0.80, YLW - 0.15, 0.50, [("↑ 스펙만으로는", 16, True, GRAY), ("   닫히지 않음", 16, True, GRAY)], anchor=MID, spacing=1.0)
-GT = 3.70
-GRH = (RT + 6 * RH3 + 5 * RG3 - GT - 2 * 0.06) / 3
-ROWLAB = [("고객 워크로드에서", "함께 튜닝해야 닫힘"), ("고객 수치로 스펙을", "정하면 닫힘"), ("표준 · 사내 검증으로", "닫힘")]
+PX0, PX1 = GX0 + 0.30, RIGHT - 0.05
+PY0, PY1 = 3.30, 8.40
 
 
-def cell(cx, cy):
-    return GX + cx * (GCW + 0.06), GT + (2 - cy) * (GRH + 0.06)
+def SX(v):
+    return PX0 + (v + 0.3) / 2.7 * (PX1 - PX0)
 
 
-for r, (l1, l2) in enumerate(ROWLAB):
-    tb(s, GX0, GT + r * (GRH + 0.06), YLW - 0.15, GRH, [(l1, 16, False, GRAY), (l2, 16, False, GRAY)], anchor=MID, spacing=1.0)
-for cx in range(3):
-    for cy in range(3):
-        x, y = cell(cx, cy)
-        rect(s, x, y, GCW, GRH, fill=WHITE, line=LINE, lw=0.75)
-# 구역: 스펙으로 협력(결합 ≥ 1, 닫힘 ≤ 1) · 공동 설계 필수 · SSD 안에서
-bx, by = cell(1, 1)
-rect(s, bx, by, 2 * GCW + 0.06, 2 * GRH + 0.06, fill=PALE, line=GRAY_2, lw=1.0, dash=True)
-tb(s, bx + 0.14, by + 0.06, 3.0, 0.30, [("스펙으로 협력", 16, True, GRAY)], anchor=MID)
-fx, fy = cell(2, 2)
-rect(s, fx, fy, GCW, GRH, fill=TINT, line=BLUE, lw=2.0)
-tb(s, fx + 0.14, fy + 0.06, GCW - 0.2, 0.30, [("공동 설계 필수", 16, True, BLUE)], anchor=MID)
-sx, sy = cell(0, 0)
-tb(s, sx + 0.14, sy + 0.06, GCW - 0.2, 0.30, [("SSD 안에서", 16, True, GRAY)], anchor=MID)
+def SY(v):
+    return PY1 - (v + 0.3) / 2.9 * (PY1 - PY0)
 
 
-def tchip(cx, cy, text, slot=0, nslot=1, hot=False):
-    x, y = cell(cx, cy)
-    lines = text.split("\n")
-    w, h = GCW - 0.24, 0.50 if len(lines) == 1 else 0.76
-    top = y + 0.42 + (GRH - 0.42 - nslot * h - (nslot - 1) * 0.10) / 2 + slot * (h + 0.10)
-    label_box(s, x + 0.12, top, w, h, [(ln, 20 if hot else 18, True, WHITE if hot else INK) for ln in lines],
-              fill=BLUE if hot else WHITE, line=None if hot else GRAY_2)
+ZX, ZY = 1.35, 1.45      # 공동 설계 구역 경계 · 스펙 협력 구역 경계
+rect(s, PX0, PY0, PX1 - PX0, PY1 - PY0, fill=WHITE, line=LINE, lw=0.75)
+rect(s, SX(0.5), SY(ZY), PX1 - SX(0.5), PY1 - SY(ZY), fill=PALE)
+rect(s, SX(ZX), PY0, PX1 - SX(ZX), SY(ZY) - PY0, fill=TINT, line=BLUE, lw=2.0)
+tb(s, SX(ZX) + 0.16, PY0 + 0.10, 3.0, 0.36, [("공동 설계 필수", 18, True, BLUE)], anchor=MID)
+tb(s, SX(0.5) + 0.16, SY(ZY) + 0.10, 3.0, 0.36, [("스펙으로 협력", 18, True, GRAY)], anchor=MID)
+tb(s, PX0 + 0.12, SY(ZY) + 0.10, 2.0, 0.36, [("SSD 안에서", 18, True, GRAY)], anchor=MID)
+# 축
+rect(s, PX0, PY1 - 0.01, PX1 - PX0, 0.03, fill=GRAY)
+rect(s, PX0 - 0.01, PY0, 0.03, PY1 - PY0, fill=GRAY)
+tb(s, PX0, PY1 + 0.06, PX1 - PX0, 0.34, [("고객 시스템과 함께 설계되는 정도  →", 16, True, GRAY)], align=R, anchor=MID)
+tb(s, PX0 - 0.30, PY0 - 0.42, 4.6, 0.34, [("↑  스펙만으로는 안 닫힘", 16, True, GRAY)], anchor=MID)
 
 
-tchip(0, 0, "Fault Tolerant")
-tchip(1, 1, "Large Mapping", 0, 2)
-tchip(1, 1, "Multi-Tenant QoS", 1, 2)
-tchip(2, 1, "Mixed Media")
-tchip(2, 0, "Confidential\nStorage")
-# FDP: 칩 + 같은 드라이브에서 고객이 수명을 알려 줄 때의 WAF
-x, y = cell(2, 2)
-label_box(s, x + 0.20, y + 0.44, GCW - 0.40, 0.50, [("FDP", 20, True, WHITE)], fill=BLUE)
+def dot(v, w, name, side="r", hot=False):
+    dd = 0.60 if hot else 0.36
+    cx, cy = SX(v), SY(w)
+    rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=BLUE if hot else GRAY_2, shape=MSO_SHAPE.OVAL)
+    lw_ = 3.2
+    if side == "r":
+        tb(s, cx + dd / 2 + 0.10, cy - 0.20, lw_, 0.40, [(name, 18, True, INK)], anchor=MID)
+    elif side == "l":
+        tb(s, cx - dd / 2 - 0.10 - lw_, cy - 0.20, lw_, 0.40, [(name, 18, True, INK)], align=R, anchor=MID)
+    elif side == "a":   # 위, 일반
+        tb(s, cx - 2.2, cy - dd / 2 - 0.44, 2.6, 0.40, [(name, 18, True, INK)], align=R, anchor=MID)
+    else:   # 위, 강조
+        tb(s, cx - 1.0, cy - dd / 2 - 0.46, 2.0, 0.42, [(name, 24, True, BLUE)], align=C, anchor=MID)
+
+
+dot(0.0, 0.0, "Fault Tolerant")
+dot(0.90, 1.08, "Large Mapping")
+dot(1.05, 0.80, "Multi-Tenant QoS")
+dot(2.0, 0.95, "Mixed Media", "a")
+dot(2.0, 0.0, "Confidential Storage", "l")
+dot(2.12, 1.98, "FDP", "u", hot=True)
+# 공동 설계 구역 아래쪽: CacheLib WAF (SSD 혼자 대 고객 SW가 수명 표시)
+fx0, zb = SX(ZX) + 0.16, SY(ZY)
+tb(s, fx0, zb - 1.12, 2.4, 0.28, [("CacheLib WAF", 15, False, GRAY)], anchor=MID)
 for k, (lab, v, col) in enumerate([("혼자", 3.22, GRAY_2), ("함께", 1.03, BLUE)]):
-    yy = y + 1.04 + k * 0.30
-    tb(s, x + 0.20, yy, 0.62, 0.28, [(lab, 16, k == 1, BLUE if k else GRAY)], anchor=MID)
-    w = (GCW - 1.60) * v / 3.22
-    rect(s, x + 0.84, yy + 0.05, w, 0.18, fill=col)
-    tb(s, x + 0.90 + w, yy, 0.70, 0.28, [(f"{v:.2f}", 16, True, BLUE if k else GRAY)], anchor=MID)
+    yy = zb - 0.82 + k * 0.36
+    tb(s, fx0, yy, 0.70, 0.32, [(lab, 16, k == 1, BLUE if k else GRAY)], anchor=MID)
+    w = 1.15 * v / 3.22
+    rect(s, fx0 + 0.70, yy + 0.07, w, 0.20, fill=col)
+    tb(s, fx0 + 0.76 + w, yy, 0.80, 0.32, [(f"{v:.2f}", 16, True, BLUE if k else GRAY)], anchor=MID)
 
 d.band(s, 9.40, 0.80, "결론", "스펙을 정확히 받든 함께 설계하든, 핵심 기술을 제대로 확보하려면 고객과의 협력이 필수입니다", size=23)
-d.footer(s, "출처: FDP WAF 3.22 → 1.03(CacheLib, Meta · Samsung EuroSys'25) · 같은 \"FDP 지원\"도 장치 · 분류에 따라 붕괴, Noisy RUH(WARP FAST'26) · RUH · RG는 출하 시 고정(NVMe FDP) · "
-            "제품군 적합도와 협력 깊이는 과제팀 판단(근거는 노트 · 위키 ssd-core-technologies-customer-collaboration)")
+d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib, Meta · Samsung EuroSys'25) · 같은 FDP 지원 장치에서도 결과가 갈림(WARP FAST'26) · RUH · RG 출하 시 고정(NVMe FDP) · "
+            "제품군 적합도와 협력 깊이는 과제팀 판단(위키 ssd-core-technologies-customer-collaboration)")
 d.notes(s, "2장입니다. 1장의 제품 포트폴리오를 받치는 핵심 기술 여섯 가지를, 왼쪽에는 어떤 제품군에 쓰이는지, 오른쪽에는 고객과 어떻게 협력해야 하는지로 정리했습니다. "
         "왼쪽부터 보겠습니다. Fault Tolerant는 다이와 플레인 단위로 고장을 격리합니다. 같은 폼팩터에서 245테라바이트는 다이 1,024개, 512테라바이트는 약 2,133개라 고용량일수록 필요합니다. "
         "Large Mapping은 매핑 단위를 4킬로바이트에서 8에서 64킬로바이트로 키웁니다. 245테라바이트 드라이브의 매핑 DRAM이 약 245기가바이트에서 15기가바이트로 줄어드는 대신, 매핑 단위보다 작은 쓰기는 최대 16배를 다시 씁니다. "
@@ -352,23 +339,22 @@ d.notes(s, "2장입니다. 1장의 제품 포트폴리오를 받치는 핵심 �
 
 # =============================================================== 3 당위성
 s = d.slide(3, "당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
-tb(s, MX, 2.36, 11.6, 0.44, [[("고객의 쓰기는 커지는데 셀 수명은 줄어들면,  ", 20, False, GRAY), ("보상은 한 계층 위로 올라갑니다", 20, True, INK)]], anchor=MID)
 
 # ---- 왼쪽 위: 셀 수명 P/E 대표값 (로그 축)
-tb(s, MX, 2.96, 5.4, 0.34, [[("▼ 셀이 견디는 쓰기  ", 18, True, GRAY), ("P/E 대표값 (로그 축)", 16, False, GRAY)]])
+tb(s, MX, 2.42, 5.4, 0.40, [[("▼ 셀이 견디는 쓰기  ", 20, True, GRAY), ("P/E", 16, False, GRAY)]], anchor=MID)
 pe = [("SLC", 100000, "10만"), ("MLC", 10000, "1만"), ("TLC", 3000, "3천"), ("QLC", 1000, "1천")]
-PB, PH = 5.44, 1.55
+PB, PH = 5.30, 1.95
 for k, (nm, v, lab) in enumerate(pe):
     h = (math.log10(v) - 2) / 3 * PH
     bx = MX + 0.30 + k * 1.22
     rect(s, bx, PB - h, 0.80, h, fill=GRAY if k == 0 else GRAY_2)
-    tb(s, bx - 0.2, PB - h - 0.34, 1.20, 0.32, [(lab, 16, True, INK)], align=C)
-    tb(s, bx - 0.2, PB + 0.02, 1.20, 0.32, [(nm, 16, False, GRAY)], align=C)
-tb(s, MX + 2.10, 3.40, 3.0, 0.46, [("약 100배 ↓", 24, True, GRAY)], align=C, anchor=MID)
+    tb(s, bx - 0.2, PB - h - 0.38, 1.20, 0.36, [(lab, 18, True, INK)], align=C)
+    tb(s, bx - 0.2, PB + 0.02, 1.20, 0.32, [(nm, 18, False, GRAY)], align=C)
+tb(s, MX + 2.30, 2.96, 3.0, 0.50, [("약 100배 ↓", 26, True, GRAY)], align=C, anchor=MID)
 
 # ---- 가운데 위: 고객 캐시 계층의 쓰기 (DWPD, 로그 축)
 cx0 = MX + 5.95
-tb(s, cx0, 2.96, 6.0, 0.34, [[("▲ 고객 캐시가 쓰는 양  ", 18, True, BLUE), ("DWPD (로그 축)", 16, False, GRAY)]])
+tb(s, cx0, 2.42, 6.0, 0.40, [[("▲ 고객 캐시가 쓰는 양  ", 20, True, BLUE), ("DWPD", 16, False, GRAY)]], anchor=MID)
 LB = 2.95
 qx0, qx1 = cx0 + LB, cx0 + 5.55
 qlo, qhi = math.log10(0.2), math.log10(12)
@@ -379,23 +365,23 @@ def xq(v):
 
 
 for g in (1, 10):
-    rect(s, xq(g) - 0.005, 3.36, 0.01, 1.82, fill=LINE)
+    rect(s, xq(g) - 0.005, 2.96, 0.01, 2.22, fill=LINE)
     tb(s, xq(g) - 0.3, 5.18, 0.6, 0.28, [(str(g), 16, False, GRAY)], align=C)
-cust = [("QLC 정격", "", 0.6, GRAY_2, "0.6"),
-        ("Meta 플래시 캐시", "예산", 3.0, GRAY, "3"),
-        ("AI KV 캐시", "실측", 3.2, GRAY, "3.2"),
-        ("Meta 스토리지 캐시", "목표", 7.2, BLUE, "7.2")]
-for i, (nm, basis, v, col, lab) in enumerate(cust):
-    yy = 3.40 + i * 0.44
-    tb(s, cx0, yy, LB - 0.08, 0.38, [[(nm, 17, i == 3, BLUE if i == 3 else INK)] + ([(f" {basis}", 16, False, GRAY)] if basis else [])], anchor=MID)
-    rect(s, qx0, yy + 0.06, xq(v) - qx0, 0.26, fill=col)
-    tb(s, xq(v) + 0.06, yy, 0.70, 0.38, [(lab, 17, True, BLUE if i == 3 else INK)], anchor=MID)
+cust = [("QLC 정격", 0.6, GRAY_2, "0.6"),
+        ("Meta 플래시 캐시", 3.0, GRAY, "3"),
+        ("AI KV 캐시", 3.2, GRAY, "3.2"),
+        ("Meta 스토리지 캐시", 7.2, BLUE, "7.2")]
+for i, (nm, v, col, lab) in enumerate(cust):
+    yy = 3.02 + i * 0.54
+    tb(s, cx0, yy, LB - 0.08, 0.44, [(nm, 18, i == 3, BLUE if i == 3 else INK)], anchor=MID)
+    rect(s, qx0, yy + 0.06, xq(v) - qx0, 0.32, fill=col)
+    tb(s, xq(v) + 0.06, yy, 0.70, 0.44, [(lab, 18, True, BLUE if i == 3 else INK)], anchor=MID)
 
 BOT = 9.40
 steps = [  # x, w, top, fill, step name, years, metric, metric sub, state chip
-    (MX, 5.55, 6.20, PALE, "NAND → SSD", "1991~", "ECC 약 60배", "셀 오류율 약 100만 배 ↑를 흡수", "완결"),
-    (MX + 5.75, 5.90, 5.62, PALE, "SSD 혼자 최적화", "2014~2019", "WAF ≈ 3", "데이터 수명을 추정만 할 수 있었다", "부분 성공"),
-    (MX + 11.85, 6.57, 2.96, BLUE, "고객 시스템과 공동 설계", "2022~", "WAF 3.22 → 1.03", "데이터의 수명은 고객 시스템만 안다", "다음 칸"),
+    (MX, 5.55, 6.20, PALE, "NAND → SSD", "1991~", "ECC 약 60배", "셀 오류 약 100만 배를 흡수", "완결"),
+    (MX + 5.75, 5.90, 5.62, PALE, "SSD 혼자 최적화", "2014~2019", "WAF ≈ 3", "수명을 추정만 했다", "부분 성공"),
+    (MX + 11.85, 6.57, 2.42, BLUE, "고객 시스템과 공동 설계", "2022~", "WAF 3.22 → 1.03", "수명은 고객 시스템만 안다", "다음 칸"),
 ]
 for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
     hot = fill == BLUE
@@ -420,33 +406,28 @@ for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
     tb(s, x + 0.30, my, w - 0.6, 0.70, [(met, 40 if hot else 36, True, WHITE if hot else (GRAY if i == 1 else INK))], anchor=MID)
     tb(s, x + 0.30, my + 0.70, w - 0.6, 0.38, [(msub, 18, False, WHITE if hot else sub)])
 
-# ---- 3칸 안: 고객은 이미 자기 시스템에서 쓰기를 다룬다 (Meta CacheLib)
+# ---- 3칸 안: 고객은 이미 자기 SW로 쓰기를 줄인다 (Meta CacheLib)
 x, w = steps[2][0], steps[2][1]
-MY0 = 6.30
-rect(s, x + 0.26, MY0, w - 0.52, 2.86, fill=WHITE, shape=RR)
-d.fit(s, d.logo("meta"), x + 0.48, MY0 + 0.16, 1.20, 0.30, align="left")
-tb(s, x + 1.80, MY0 + 0.10, w - 2.2, 0.42, [("CacheLib 프로덕션", 18, True, INK)], anchor=MID)
-# 쓰기 수요 대 SSD 수명 예산 막대
-tb(s, x + 0.48, MY0 + 0.62, 3.2, 0.34, [("쓰기 수요 / SSD 수명 예산", 16, False, GRAY)])
-mb0, mbw = x + 0.48, 2.70
-rect(s, mb0, MY0 + 1.02, mbw, 0.46, fill=GRAY_2)
-tb(s, mb0 + 0.10, MY0 + 1.02, 1.6, 0.46, [("상한 없으면", 16, True, WHITE)], anchor=MID)
-tb(s, mb0 + mbw + 0.06, MY0 + 1.02, 0.9, 0.46, [("150%", 20, True, INK)], anchor=MID)
-rect(s, mb0, MY0 + 1.58, mbw / 1.5, 0.46, fill=BLUE_T2)
-tb(s, mb0 + 0.10, MY0 + 1.58, 1.6, 0.46, [("수명 예산", 16, True, INK)], anchor=MID)
-tb(s, mb0 + mbw / 1.5 + 0.06, MY0 + 1.58, 0.9, 0.46, [("100%", 20, True, INK)], anchor=MID)
-tb(s, x + 0.48, MY0 + 2.14, 3.6, 0.60, [("플래시 OP 50%로 버틴다", 16, False, GRAY)], anchor=MID)
-# 고객 소프트웨어로 쓰기 -44%
-rect(s, x + 4.15, MY0 + 0.62, 0.012, 2.05, fill=LINE)
-tb(s, x + 4.30, MY0 + 0.66, w - 4.7, 0.90, [("-44%", 44, True, BLUE)], anchor=MID)
-tb(s, x + 4.30, MY0 + 1.56, w - 4.7, 1.10, [("ML 수용 정책으로", 16, False, GRAY), ("플래시 기록량", 16, False, GRAY), ("(고객 SW)", 16, True, BLUE)], spacing=1.0)
+MY0 = 6.02
+rect(s, x + 0.26, MY0, w - 0.52, 3.14, fill=WHITE, shape=RR)
+d.fit(s, d.logo("meta"), x + 0.48, MY0 + 0.18, 1.20, 0.30, align="left")
+tb(s, x + 1.80, MY0 + 0.12, 2.4, 0.42, [("CacheLib", 20, True, INK)], anchor=MID)
+mb0, mbw = x + 0.48, 2.55
+for k, (lab, v, col, tcol) in enumerate([("쓰기 수요", 1.5, GRAY_2, WHITE), ("수명 예산", 1.0, BLUE_T2, INK)]):
+    yy = MY0 + 0.92 + k * 0.72
+    rect(s, mb0, yy, mbw * v / 1.5, 0.54, fill=col)
+    tb(s, mb0 + 0.12, yy, 1.8, 0.54, [(lab, 18, True, tcol)], anchor=MID)
+    tb(s, mb0 + mbw * v / 1.5 + 0.08, yy, 1.0, 0.54, [(f"{int(v * 100)}%", 22, True, INK)], anchor=MID)
+rect(s, x + 4.05, MY0 + 0.80, 0.012, 2.00, fill=LINE)
+tb(s, x + 4.18, MY0 + 0.92, w - 4.44, 1.00, [("-44%", 46, True, BLUE)], anchor=MID)
+tb(s, x + 4.18, MY0 + 1.94, w - 4.44, 0.40, [("고객 SW로", 20, True, BLUE)], anchor=MID)
 
 d.chevron(s, MX + 5.57, 7.60, w=0.16, h=0.50)
 d.chevron(s, MX + 11.67, 7.10, w=0.16, h=0.50)
 
 d.band(s, 9.60, 0.80, "결론", "사양서만으로는 2칸에 머뭅니다. 3칸은 고객 시스템 안에서 함께 설계해야 닿습니다")
-d.footer(s, "출처: 해법 사다리 원장(JESD218 · LDPC · FDP TP4146 · CacheLib + FDP 3.22 → 1.03, EuroSys'25) · 캐시 DWPD: Kangaroo 예산 3(SOSP'21) · Baleen 목표 7.2(FAST'24) · "
-            "StorageReview KV 실측 3.2(2026-08) · CacheLib 150% · OP 50% · -44%(OSDI'20) · 기준(예산 · 실측 · 목표)이 서로 다름 · 부품 이미지는 3D 렌더")
+d.footer(s, "출처: 해법 사다리 원장(JESD218 · LDPC · FDP TP4146 · CacheLib + FDP 3.22 → 1.03, EuroSys'25) · 캐시 DWPD: Kangaroo 예산 3 · Baleen 목표 7.2 · "
+            "StorageReview KV 실측 3.2 · CacheLib 150% · -44%(OSDI'20) · 기준(예산 · 실측 · 목표)이 서로 다름 · 부품 이미지는 3D 렌더")
 d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터로 말씀드리겠습니다. 왼쪽 위는 셀이 견디는 쓰기 횟수입니다. SLC 10만 회에서 QLC 1천 회로 약 100배 줄었습니다. "
         "그 옆은 고객의 캐시 계층이 실제로 쓰는 양입니다. QLC 정격은 하루 0.6회인데, Meta의 플래시 캐시는 하루 3회를 쓰기 예산으로 잡고, Meta 벌크 스토리지 캐시 연구는 7.2회를 목표로 둡니다. AI KV 캐시 계층을 실측하면 드라이브당 3.2회였습니다. 기준은 예산, 실측, 목표로 서로 다르지만 방향은 같습니다. "
         "고객의 쓰기는 커지는데 셀 수명은 줄면, 보상은 늘 한 계층 위로 올라갔습니다. 첫 계단은 NAND에서 SSD입니다. 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
@@ -505,7 +486,7 @@ d.fit(s, d.logo("samsung"), C2 + 0.15, BY + 0.13, 1.40, 0.34)
 label_box(s, C2 + W2 - 1.70, BY, 1.70, 0.60, [("고객", 20, True, INK)], fill=WHITE, line=LINE)
 rect(s, C2 + 1.78, BY + 0.29, W2 - 3.56, 0.03, fill=GRAY_2)
 rect(s, C2 + W2 / 2 - 0.22, BY + 0.02, 0.44, 0.56, fill=WHITE, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.FOLDED_CORNER)
-tb(s, C2, NOW_Y + 1.10, W2, 0.36, [("스펙 문서 · 간헐적 미팅: 명시된 요구만 오갑니다", 18, False, GRAY)], align=C)
+tb(s, C2, NOW_Y + 1.10, W2, 0.36, [("스펙 문서로 명시된 요구만 오갑니다", 18, False, GRAY)], align=C)
 d.down(s, C2 + W2 / 2, NEXT_Y - 0.32)
 tag(s, C2, NEXT_Y, "앞으로: 고객 상주 협업의 세 가지 핵심 업무", True)
 BX0, BY0, BW = C2, NEXT_Y + 0.44, W2
@@ -616,8 +597,7 @@ tb(s, C2, CAP_Y, W2, 0.50, [("고객 안에서 요구를 찾고 수요를 함께
 tb(s, C3, CAP_Y, W3, 0.50, [("기술과 함께, 엔지니어의 고객 관계", 20, True, BLUE)], anchor=MID)
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
-d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자) · Palantir · OpenAI FDE(명시적 요구 대 실제 요구, 고객 데이터 검증, "
-            "고객 인프라에 직접 코드, 현장 해법 → 제품) · LMCache FDP 머지(PR #4016, 2026-08) · 로고는 식별 표시")
+d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 로고는 식별 표시")
 d.notes(s, "4장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
         "첫째, 계약입니다. 지금의 Multi-Year Deal, MYD는 여러 해의 수량과 가격을 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 MYD 위에 기술 협력을 쌓겠습니다. "
         "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 AI 데이터센터 안에서 고객 엔지니어와 함께 일합니다. 핵심 업무는 세 가지입니다. "
@@ -628,164 +608,6 @@ d.notes(s, "4장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 �
         "마지막으로 화두를 하나 드리겠습니다. 지금까지 고객 관계 관리, CRM은 경영진과 경영진, 영업과 구매 사이의 일이었습니다. 앞으로는 엔지니어와 엔지니어 사이까지 넓어져야 합니다. 고객 엔지니어가 신뢰하는 상대는 같은 문제를 같은 언어로 푸는 엔지니어이고, 고객과 국가마다 다른 언어와 문화를 이해하는 것도 그 관계의 일부입니다. 엔지니어 수준의 고객 관계를 우리가 맡을 준비가 되어 있는지 함께 생각해 보면 좋겠습니다. "
         "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 FDP 공동 설계 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
-
-# =============================================================== 5 보충: FDP는 왜 고객과 함께 맞춰야 하나 (시뮬레이션)
-import json  # noqa: E402
-
-SIM = json.load(open(os.path.join(ASSETS, "fdp_waf_sim.json"), encoding="utf-8"))
-s = d.slide(5, "보충 · FDP", "FDP의 효과는 SSD 파라미터와 고객 SW의 분류가\n응용마다 함께 맞을 때만 납니다")
-
-
-def polyline(s, pts, color, width_pt=3.0, dash=False):
-    fb = s.shapes.build_freeform(int(pts[0][0] * 914400), int(pts[0][1] * 914400), scale=1.0)
-    fb.add_line_segments([(int(x * 914400), int(y * 914400)) for x, y in pts[1:]], close=False)
-    sh = fb.convert_to_shape()
-    sh.fill.background()
-    sh.line.color.rgb = color
-    sh.line.width = int(width_pt * 12700)
-    if dash:
-        from pptx.enum.dml import MSO_LINE_DASH_STYLE
-        sh.line.dash_style = MSO_LINE_DASH_STYLE.DASH
-    sh.shadow.inherit = False
-    return sh
-
-
-def line_chart(x0, y0, w, h, xs, xlabels, ymin, ymax, yticks, series, ylab="WAF", xlab=""):
-    """xs: 0..1 정규 위치. series = [(이름, [y...], 색, 굵게)]"""
-    ax0, ax1 = x0 + 0.62, x0 + w - 0.10
-    ay0, ay1 = y0 + 0.10, y0 + h - 0.62
-
-    def X(t):
-        return ax0 + t * (ax1 - ax0)
-
-    def Y(v):
-        return ay1 - (v - ymin) / (ymax - ymin) * (ay1 - ay0)
-
-    for v in yticks:
-        rect(s, ax0, Y(v) - 0.006, ax1 - ax0, 0.012, fill=LINE)
-        tb(s, x0, Y(v) - 0.15, 0.54, 0.30, [(f"{v:g}", 15, False, GRAY)], align=R, anchor=MID)
-    rect(s, ax0, ay1 - 0.01, ax1 - ax0, 0.02, fill=GRAY_2)
-    for t, lab in zip(xs, xlabels):
-        tb(s, X(t) - 0.40, ay1 + 0.04, 0.80, 0.28, [(lab, 15, False, GRAY)], align=C, anchor=MID)
-    tb(s, ax0, ay1 + 0.32, ax1 - ax0, 0.28, [(xlab, 15, False, GRAY)], align=C, anchor=MID)
-    tb(s, x0, y0 - 0.30, 1.2, 0.28, [(ylab, 15, False, GRAY)], anchor=MID)
-    for (nm, ys, col, bold) in series:
-        pts = [(X(t), Y(min(v, ymax))) for t, v in zip(xs, ys)]
-        polyline(s, pts, col, 3.5 if bold else 2.5)
-        for (px, py) in pts:
-            rect(s, px - 0.06, py - 0.06, 0.12, 0.12, fill=col, shape=MSO_SHAPE.OVAL)
-    return X, Y
-
-
-def legend(x, y, items):
-    for k, (nm, col) in enumerate(items):
-        yy = y + k * 0.28
-        rect(s, x, yy + 0.12, 0.34, 0.05, fill=col)
-        tb(s, x + 0.42, yy, 2.6, 0.28, [(nm, 15, True, col)], anchor=MID)
-
-
-# ---- 위: 개념 (FDP 없음 대 FDP) + 모델 검증
-CT5 = 2.36
-tb(s, MX, CT5, 9.0, 0.40, [[("① 개념  ", 20, True, BLUE), ("수명이 같은 데이터끼리 모아 RU를 통째로 비운다", 20, True, INK)]], anchor=MID)
-SHORT5, LONG5 = BLUE_T2, GRAY_2
-
-
-def ru_box(bx, by, cells, cols=8, cs=0.22, gap=0.04):
-    rows = len(cells) // cols
-    rect(s, bx - 0.06, by - 0.06, cols * (cs + gap) - gap + 0.12, rows * (cs + gap) - gap + 0.12, fill=WHITE, line=GRAY, lw=1.0)
-    for i, c in enumerate(cells):
-        rect(s, bx + (i % cols) * (cs + gap), by + (i // cols) * (cs + gap), cs, cs, fill=c)
-
-
-mix5 = [SHORT5, LONG5, LONG5, SHORT5, LONG5, SHORT5, LONG5, LONG5, SHORT5, LONG5, SHORT5, LONG5, LONG5, SHORT5, LONG5, SHORT5]
-RY = CT5 + 0.62
-tb(s, MX, RY, 2.2, 0.62, [("FDP 없음", 18, True, GRAY), ("한 RU에 섞인다", 16, False, GRAY)], anchor=MID, spacing=1.0)
-ru_box(MX + 2.30, RY + 0.08, mix5)
-d.arrow_r(s, MX + 4.55, RY + 0.20, 0.40, 0.26)
-tb(s, MX + 5.05, RY, 3.2, 0.62, [("지우려면 남은 데이터를", 16, False, GRAY), ("옮겨 써야 한다 (GC)", 16, True, INK)], anchor=MID, spacing=1.0)
-RY2 = RY + 0.86
-tb(s, MX, RY2, 2.2, 0.62, [("FDP", 18, True, BLUE), ("쓰기에 핸들 표시", 16, False, GRAY)], anchor=MID, spacing=1.0)
-ru_box(MX + 2.30, RY2 + 0.08, [SHORT5] * 8 + [LONG5] * 8)
-tb(s, MX + 4.48, RY2 + 0.02, 0.9, 0.26, [("핸들 1", 15, False, GRAY)], anchor=MID)
-tb(s, MX + 4.48, RY2 + 0.28, 0.9, 0.26, [("핸들 2", 15, False, GRAY)], anchor=MID)
-d.arrow_r(s, MX + 5.32, RY2 + 0.20, 0.40, 0.26, fill=BLUE_T1)
-tb(s, MX + 5.82, RY2, 2.9, 0.62, [("짧은 수명 RU가", 16, False, GRAY), ("통째로 비워진다", 16, True, BLUE)], anchor=MID, spacing=1.0)
-tb(s, MX, RY2 + 0.70, 9.0, 0.28, [[("■", 15, False, SHORT5), (" 곧 지울 데이터   ", 15, False, GRAY), ("■", 15, False, LONG5), (" 오래 둘 데이터   RU = 한 번에 지우는 단위", 15, False, GRAY)]], anchor=MID)
-
-# 모델 검증: 플래시 캐시 모델 대 CacheLib 실측
-VX = MX + 9.60
-VW = RIGHT - VX
-rect(s, VX, CT5, VW, 2.30, fill=PALE, shape=RR)
-tb(s, VX + 0.24, CT5 + 0.08, VW - 0.4, 0.36, [[("WAF  ", 18, True, INK), ("이 모델 대 실측", 16, False, GRAY)]], anchor=MID)
-bl = SIM["baseline"]["cache"]
-for k, (nm, a0, a1, col) in enumerate([("플래시 캐시 모델 (시뮬레이션)", bl["no_fdp"], bl["fdp"], BLUE), ("CacheLib 실측 (Meta · Samsung)", 3.22, 1.03, GRAY)]):
-    yy = CT5 + 0.56 + k * 0.84
-    tb(s, VX + 0.24, yy, VW - 0.4, 0.30, [(nm, 16, k == 0, BLUE if k == 0 else INK)], anchor=MID)
-    WMX = VW - 2.30
-    for j, (v, cc) in enumerate([(a0, GRAY_2), (a1, col)]):
-        rect(s, VX + 0.24, yy + 0.34 + j * 0.22, WMX * v / 3.3, 0.16, fill=cc)
-        tb(s, VX + 0.30 + WMX * v / 3.3, yy + 0.28 + j * 0.22, 1.9, 0.26, [(("FDP 없음 " if j == 0 else "FDP ") + f"{v:.2f}", 15, j == 1, col if j == 1 else GRAY)], anchor=MID)
-
-# ---- 아래: 응용마다 맞춰야 하는 것 (시뮬레이션 3개)
-PY0 = 5.12
-tb(s, MX, PY0, 12.0, 0.40, [[("② 응용마다 달라지는 것  ", 20, True, BLUE), ("같은 모델에서 파라미터만 바꿔 WAF를 쟀다", 18, False, GRAY)]], anchor=MID)
-PWD = (CW - 2 * 0.35) / 3
-PXS = [MX + i * (PWD + 0.35) for i in range(3)]
-HT = PY0 + 0.52
-for i, (t1, who, hot) in enumerate([("RU 크기", "SSD가 출하 전에 정함", False), ("RUH 수", "SSD가 출하 전에 정함", False), ("분류 정확도", "고객 SW가 정함", True)]):
-    x = PXS[i]
-    tb(s, x, HT, 2.4, 0.36, [(t1, 20, True, INK)], anchor=MID)
-    label_box(s, x + PWD - 2.70, HT + 0.02, 2.70, 0.34, [(who, 15, True, WHITE if hot else INK)], fill=BLUE if hot else WHITE, line=None if hot else GRAY_2)
-CHY, CHH = HT + 0.78, 2.36
-
-# (a) RU 크기: 삭제 단위가 다른 두 응용
-ru = SIM["ru_size"]
-RUS = ["4", "8", "16", "32", "64", "128", "256"]
-xs = [i / 6 for i in range(7)]
-X, Y = line_chart(PXS[0], CHY, PWD, CHH, xs, RUS, 1.0, 4.0, [1, 2, 3, 4],
-                  [("LSM DB", [ru["lsm"][r] for r in RUS], GRAY, False), ("KV 캐시", [ru["kv"][r] for r in RUS], BLUE, True)],
-                  xlab="RU 크기 (단위, 로그 축)")
-legend(X(0) + 0.05, Y(3.85), [("KV 캐시", BLUE), ("LSM DB", GRAY)])
-for t, lab, col in [(xs[2], "SST 크기", GRAY), (xs[4], "KV 블록 크기", BLUE)]:
-    rect(s, X(t) - 0.006, CHY + 0.10, 0.012, CHH - 0.72, fill=col)
-    tb(s, X(t) - 0.80, CHY - 0.30, 1.60, 0.28, [(lab, 15, True, col)], align=C, anchor=MID)
-
-# (b) RUH 수: 수명 등급 수가 다른 세 응용
-rh = SIM["ruh_count"]
-HS = ["1", "2", "4", "8"]
-xs = [0, 1 / 3, 2 / 3, 1]
-X, Y = line_chart(PXS[1], CHY, PWD, CHH, xs, HS, 1.0, 2.5, [1, 1.5, 2, 2.5],
-                  [("캐시 (2등급)", [rh["cache"][h] for h in HS], GRAY_2, False), ("LSM (4등급)", [rh["lsm"][h] for h in HS], GRAY, False),
-                   ("멀티테넌트 (8등급)", [rh["tenant"][h] for h in HS], BLUE, True)],
-                  xlab="RUH 수")
-legend(X(0.56), Y(2.48), [("멀티테넌트 8등급", BLUE), ("LSM 4등급", GRAY), ("캐시 2등급", GRAY_2)])
-
-# (c) 분류 정확도: 고객 SW가 잘못 나눈 비율
-mc = SIM["misclass"]
-MS = ["0", "5", "10", "20", "40"]
-xs = [int(m) / 40 for m in MS]
-X, Y = line_chart(PXS[2], CHY, PWD, CHH, xs, [m + "%" for m in MS], 1.0, 3.0, [1, 2, 3],
-                  [("플래시 캐시", [mc["cache"][m] for m in MS], BLUE, True), ("LSM DB", [mc["lsm"][m] for m in MS], GRAY, False)],
-                  xlab="잘못 나눈 쓰기 비율")
-polyline(s, [(X(0), Y(SIM["baseline"]["cache"]["no_fdp"])), (X(1), Y(SIM["baseline"]["cache"]["no_fdp"]))], GRAY_2, 1.5, dash=True)
-tb(s, X(0) + 0.05, Y(SIM["baseline"]["cache"]["no_fdp"]) - 0.30, 2.4, 0.26, [("FDP 없음 (캐시)", 15, False, GRAY)], anchor=MID)
-legend(X(0) + 0.05, Y(2.62), [("플래시 캐시", BLUE), ("LSM DB", GRAY)])
-
-d.band(s, 9.44, 0.80, "요약", "RU 크기 · RUH 수는 응용을 알아야 정하고, 분류는 고객 SW가 합니다: 그래서 FDP는 고객과 함께 맞춥니다", size=22)
-d.footer(s, "시뮬레이션: scripts/fdp_waf_sim.py(모델: 페이지 매핑 FTL · greedy GC · OP 12% · 핸들별 GC RU · 응용별 수명 등급 합성 부하, 실측 아님) · 단위 = 응용 모델의 최소 쓰기 단위 · "
-            "실측 비교: CacheLib FDP WAF 3.22 → 1.03(EuroSys'25) · 같은 FDP 지원 장치에서 결과가 갈림(WARP FAST'26)")
-d.notes(s, "보충 자료입니다. FDP가 왜 고객과 함께 맞춰야 효과가 나는지, 개념과 시뮬레이션으로 설명드리겠습니다. "
-        "먼저 개념입니다. SSD는 데이터를 RU라는 큰 단위로만 지울 수 있습니다. FDP가 없으면 곧 지울 데이터와 오래 둘 데이터가 한 RU에 섞여, 지우려면 남은 데이터를 옮겨 써야 하고 이것이 WAF를 키웁니다. "
-        "FDP는 호스트가 쓰기마다 배치 핸들을 붙여, 수명이 같은 데이터를 같은 RU에 모읍니다. 그러면 짧은 수명 RU가 통째로 비워져 옮겨 쓸 것이 없어집니다. "
-        f"오른쪽 위는 이 시뮬레이션 모델이 실측과 같은 방향인지 확인한 것입니다. 플래시 캐시 모델에서 WAF는 FDP 없이 {bl['no_fdp']:.2f}, FDP로 {bl['fdp']:.2f}였고, Meta와 삼성이 CacheLib에서 잰 실측은 3.22에서 1.03이었습니다. "
-        "아래 세 그래프는 같은 모델에서 파라미터 하나씩만 바꾼 결과입니다. "
-        f"첫째, RU 크기입니다. RU가 응용의 삭제 단위보다 커지면 한 RU에 여러 객체가 섞여 WAF가 오릅니다. LSM DB는 SST 크기인 16단위까지 WAF 1을 지키다가 256단위에서 {ru['lsm']['256']:.2f}가 되고, KV 캐시는 KV 블록 크기인 64단위까지 지킵니다. 무너지는 지점이 응용마다 다릅니다. "
-        f"둘째, RUH 수입니다. 핸들이 수명 등급보다 적으면 수명이 다른 데이터가 다시 섞입니다. 캐시는 핸들 2개면 충분하지만, LSM은 4개, 멀티테넌트는 8개가 필요했습니다. 멀티테넌트에 핸들 2개만 주면 WAF는 {rh['tenant']['2']:.2f}입니다. "
-        "RU 크기와 RUH 수는 SSD가 출하 전에 정하는 값이라, 고객의 응용을 알아야 미리 맞출 수 있습니다. "
-        f"셋째, 분류 정확도입니다. 이것은 고객 소프트웨어가 정합니다. 플래시 캐시에서 쓰기의 10퍼센트만 잘못 나눠도 WAF가 {mc['cache']['10']:.2f}, 20퍼센트면 {mc['cache']['20']:.2f}로, FDP가 없을 때에 가까워집니다. "
-        "실제로 FAST'26 WARP 연구는 같은 FDP 지원 드라이브와 같은 워크로드에서 한 장치는 WAF가 1 근처를 지키고 다른 장치는 무너진다고 보고했습니다. "
-        "정리하면, RU 크기와 RUH 수는 응용을 알아야 정할 수 있고, 분류는 고객 소프트웨어가 합니다. 그래서 FDP는 스펙만으로 닫히지 않고, 고객과 함께 맞춰야 제대로 동작합니다. "
-        "이 그래프는 단순화한 모델의 결과이며 실측이 아닙니다. 방향과 민감도를 보이기 위한 것이고, 절대값은 실제 장치와 워크로드에서 함께 재야 합니다.")
 
 d.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(d.prs.slides._sldIdLst)}장)")

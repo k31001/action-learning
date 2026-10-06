@@ -17,6 +17,24 @@ export const UPDATES = [
   {
     date: '2026-10-06',
     type: 'build',
+    version: 'v2.46.63',
+    title: '고객 협력 전략 덱 4장으로 정리: 보충 5장 제외 · 텍스트 축소 · 시각화 보강 (덱 v1.9 · 보고서 v2.0)',
+    summary:
+      'FDP 시뮬레이션 보충 슬라이드를 빼고(분석은 위키 · 보고서에 보존) 1~4장의 보조 문구를 노트로 옮겼다. 1장은 카드당 그래프 하나와 기업 로고, 2장은 빈 칸 많은 격자를 구역 산점도로, 3장은 차트와 CacheLib 상자를 키웠다(패치 v2.46.63).',
+    tags: ['덱', '시각화', '정리', 'FDP', '고객 협력'],
+    items: [
+      { label: '1장', detail: '카드당 그래프 하나 · 클라우드 사업자 로고 · p99 · GPU당 읽기 ×3 · 휴면 격자' },
+      { label: '2장', detail: '구역 산점도(SSD 안에서 · 스펙으로 협력 · 공동 설계 필수)' },
+      { label: '3장', detail: '요지 문장 삭제, 차트 · CacheLib 확대' },
+      { label: '글자 수', detail: '1장 1,032 → 862 · 2장 846 → 743 · 3장 835 → 661' },
+    ],
+    links: [
+      { label: 'outputs/presentation/ssd-future-ready-strategy-outline.md', href: 'https://github.com/k31001/action-learning/blob/main/outputs/presentation/ssd-future-ready-strategy-outline.md' },
+    ],
+  },
+  {
+    date: '2026-10-06',
+    type: 'build',
     version: 'v2.46.62',
     title: '덱 4장 시각화: 고객 상주 협업 세 가지 핵심 업무 그림 카드 · CRM 범위 확장 관계도 (덱 v1.8 · 보고서 v1.9)',
     summary:
