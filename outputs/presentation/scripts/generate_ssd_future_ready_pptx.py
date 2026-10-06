@@ -507,33 +507,53 @@ rect(s, C2 + 1.78, BY + 0.29, W2 - 3.56, 0.03, fill=GRAY_2)
 rect(s, C2 + W2 / 2 - 0.22, BY + 0.02, 0.44, 0.56, fill=WHITE, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.FOLDED_CORNER)
 tb(s, C2, NOW_Y + 1.10, W2, 0.36, [("스펙 문서 · 간헐적 미팅: 명시된 요구만 오갑니다", 18, False, GRAY)], align=C)
 d.down(s, C2 + W2 / 2, NEXT_Y - 0.32)
-tag(s, C2, NEXT_Y, "앞으로: 고객 DC 안에서 하는 다섯 가지", True)
+tag(s, C2, NEXT_Y, "앞으로: 고객 상주 협업의 세 가지 핵심 업무", True)
 BX0, BY0, BW = C2, NEXT_Y + 0.44, W2
 BH = 8.76 - BY0
 rect(s, BX0, BY0, BW, BH, fill=TINT, line=BLUE, lw=1.5, shape=RR)
-ph = 0.40
-px = BX0 + 0.24
-for _ in range(2):
-    px += d.person(s, px, BY0 + 0.10, ph, BLUE) + 0.06
-rect(s, px + 0.06, BY0 + 0.24, 0.50, 0.14, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_RIGHT_ARROW)
-qx = px + 0.66
-for _ in range(2):
-    qx += d.person(s, qx, BY0 + 0.10, ph, GRAY_2) + 0.06
-tb(s, qx + 0.14, BY0 + 0.08, BW - (qx - BX0) - 0.3, 0.44, [[("삼성 Pod", 17, True, BLUE), (" + ", 17, False, GRAY), ("고객 엔지니어", 17, True, GRAY), (", 매일 함께", 17, False, GRAY)]], anchor=MID)
-ACTS = [("관찰", "고객 트레이스로 실제 요구를 찾는다", ""),
-        ("실측", "고객 환경에서 WAF 기준선을 함께 잰다", ""),
-        ("시제품", "고객 SW에 배치 코드를 직접 넣는다", ""),
-        ("증명", "토큰당 비용 · GPU 가동률로 보인다", ""),
-        ("수요화", "고객 RFQ · OCP 요구 · 다음 제품 사양으로", "")]
-AY = BY0 + 0.62
-for k, (verb, act, ex) in enumerate(ACTS):
-    yy = AY + k * 0.46
-    rect(s, BX0 + 0.24, yy + 0.04, 0.34, 0.34, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, BX0 + 0.24, yy + 0.04, 0.34, 0.34, [(str(k + 1), 15, True, WHITE)], align=C, anchor=MID)
-    tb(s, BX0 + 0.68, yy, 1.05, 0.42, [(verb, 18, True, BLUE)], anchor=MID)
-    tb(s, BX0 + 1.72, yy, BW - 1.80, 0.42, [(act, 17, False, INK)], anchor=MID)
-    if ex:
-        tb(s, BX0 + BW - 1.75, yy, 1.60, 0.42, [(ex, 15, False, GRAY)], align=R, anchor=MID)
+tb(s, BX0 + BW - 3.3, BY0 + 0.06, 3.1, 0.32, [("고객 AI 데이터센터 안에서", 16, True, BLUE)], align=R, anchor=MID)
+KG = 0.30
+KW = (BW - 0.36 - 2 * KG) / 3
+KY, KH = BY0 + 0.44, BH - 0.58
+KX = [BX0 + 0.18 + k * (KW + KG) for k in range(3)]
+for k, (obj, verb) in enumerate([("고객 워크로드", "측정 · 분석"), ("호스트 SW 스택", "최적화 · 평가"), ("차세대 제품", "기술 교류")]):
+    x = KX[k]
+    rect(s, x, KY, KW, KH, fill=WHITE, line=LINE, lw=0.75, shape=RR)
+    rect(s, x + 0.12, KY + 0.12, 0.36, 0.36, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, x + 0.12, KY + 0.12, 0.36, 0.36, [(str(k + 1), 16, True, WHITE)], align=C, anchor=MID)
+    tb(s, x + 0.08, KY + KH - 0.78, KW - 0.16, 0.72, [(obj, 16, False, GRAY), (verb, 19, True, BLUE)], align=C, anchor=MID, spacing=1.0)
+    if k < 2:
+        d.chevron(s, x + KW + 0.07, KY + KH / 2 - 0.25, w=0.16, h=0.50, fill=BLUE_T1)
+PY, PH = KY + 0.54, KH - 1.36          # 그림 영역
+# ① 측정 · 분석: 쓰기 크기 분포 막대 + 돋보기
+x = KX[0]
+hb = [0.35, 0.80, 0.55, 0.95, 0.30, 0.60]
+bx0, bw_ = x + 0.30, 0.17
+base = PY + PH - 0.04
+rect(s, bx0 - 0.06, base, 6 * (bw_ + 0.06) + 0.06, 0.02, fill=GRAY_2)
+for i, hh in enumerate(hb):
+    rect(s, bx0 + i * (bw_ + 0.06), base - hh * (PH - 0.10), bw_, hh * (PH - 0.10), fill=BLUE_T1 if i in (1, 3) else GRAY_2)
+mg = 0.56
+mx_, my_ = x + KW - 0.98, PY + 0.02
+rect(s, mx_, my_, mg, mg, fill=None, line=BLUE, lw=3.0, shape=MSO_SHAPE.OVAL)
+hd = rect(s, mx_ + mg - 0.10, my_ + mg - 0.04, 0.34, 0.09, fill=BLUE)
+hd.rotation = 45
+# ② 최적화 · 평가: 호스트 SW 스택(층) + 공동 최적화 화살표
+x = KX[1]
+LAY = [("KV 캐시", True), ("커널", False), ("SSD", True)]
+lw_, lh_ = KW - 0.78, (PH - 0.12) / 3
+for i, (nm, hot) in enumerate(LAY):
+    ly = PY + i * (lh_ + 0.06)
+    label_box(s, x + 0.20, ly, lw_, lh_, [(nm, 16, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
+ax = x + 0.20 + lw_ + 0.10
+rect(s, ax, PY + lh_ * 0.5, 0.32, 2 * (lh_ + 0.06), fill=BLUE_T2, shape=MSO_SHAPE.UP_DOWN_ARROW)
+# ③ 기술 교류: 엔지니어 둘 + 말풍선 + 차세대 SSD
+x = KX[2]
+pw_ = d.person(s, x + 0.18, PY + 0.36, 0.66, BLUE)
+d.person(s, x + KW - 0.18 - pw_, PY + 0.36, 0.66, GRAY_2)
+bub = rect(s, x + KW / 2 - 0.42, PY - 0.02, 0.84, 0.40, fill=WHITE, line=BLUE_T1, lw=1.5, shape=MSO_SHAPE.ROUNDED_RECTANGULAR_CALLOUT)
+tb(s, x + KW / 2 - 0.42, PY - 0.02, 0.84, 0.34, [("· · ·", 16, True, BLUE)], align=C, anchor=MID)
+d.fit(s, d.part("ssd"), x + KW / 2 - 0.34, PY + 0.62, 0.68, 0.40)
 d.chevron(s, C3 - 0.19, 6.10, w=0.16, h=0.50)
 
 # ---- ③ 역량 격자 (새 과제의 층이 위로)
@@ -548,7 +568,7 @@ layers = [("AI DC 운영", "없음", "off", "TCO · 추론 SLO", BLUE),
           ("커널 · I/O", "일부", "part", "io_uring · NIXL", BLUE),
           ("SSD FW", "강점", "on", "FDP · QoS · destage", BLUE_T1),
           ("NAND", "강점", "on", "", BLUE_T2)]
-RY3, RP3, RH3 = NOW_Y + 0.44, 0.60, 0.52
+RY3, RP3, RH3 = NOW_Y + 0.44, 0.56, 0.48
 for r, (nm, now_t, st, need, col) in enumerate(layers):
     yy = RY3 + r * RP3
     gap = r < 3
@@ -563,37 +583,49 @@ for r, (nm, now_t, st, need, col) in enumerate(layers):
         label_box(s, cxf, yy, CWF, RH3, [(need, 17, True, WHITE)], fill=col)
     else:
         rect(s, cxf, yy, CWF, RH3, fill=col, shape=RR)
-# 화두: 기술 다음의 역량
-QY = RY3 + 4 * RP3 + RH3 + 0.16
+# 화두: CRM의 범위가 엔지니어까지 넓어진다 (관계도)
+QY = RY3 + 4 * RP3 + RH3 + 0.12
 QH = 8.76 - QY
 rect(s, C3, QY, W3, QH, fill=WHITE, line=BLUE, lw=1.5, shape=RR)
-label_box(s, C3 + 0.20, QY + 0.14, 0.86, 0.40, [("화두", 18, True, WHITE)], fill=BLUE)
-tb(s, C3 + 1.18, QY + 0.12, 2.6, 0.44, [("기술 다음의 역량", 19, True, INK)], anchor=MID)
-qx = C3 + W3 - 1.30
-qx += d.person(s, qx, QY + 0.12, 0.42, BLUE) + 0.04
-rect(s, qx, QY + 0.26, 0.32, 0.12, fill=BLUE_T2, shape=MSO_SHAPE.LEFT_RIGHT_ARROW)
-d.person(s, qx + 0.36, QY + 0.12, 0.42, GRAY_2)
-tb(s, C3 + 0.22, QY + 0.62, W3 - 0.4, QH - 0.68, [("고객 · 국가마다 다른 언어와 문화를 알고,", 18, False, INK),
-                                                 ("영업 · 마케팅이 아니라 엔지니어가", 18, True, BLUE),
-                                                 ("고객 관계를 직접 맡을 수 있는가?", 18, True, BLUE)], spacing=1.05)
+label_box(s, C3 + 0.18, QY + 0.12, 0.80, 0.38, [("화두", 17, True, WHITE)], fill=BLUE)
+tb(s, C3 + 1.08, QY + 0.10, W3 - 1.2, 0.42, [[("고객 관계(CRM)를 ", 18, True, INK), ("엔지니어까지", 18, True, BLUE)]], anchor=MID)
+LCX, RCX, CHW, CHH2 = C3 + 0.18, C3 + 2.52, 1.00, 0.34
+tb(s, LCX, QY + 0.56, CHW, 0.26, [("삼성", 15, True, GRAY)], align=C, anchor=MID)
+tb(s, RCX, QY + 0.56, CHW, 0.26, [("고객", 15, True, GRAY)], align=C, anchor=MID)
+CRM = [("경영진", "경영진", False), ("영업", "구매", False), ("엔지니어", "엔지니어", True)]
+RYS = [QY + 0.86 + i * 0.40 for i in range(3)]
+for i, (l_, r_, hot) in enumerate(CRM):
+    yy = RYS[i]
+    label_box(s, LCX, yy, CHW, CHH2, [(l_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
+    label_box(s, RCX, yy, CHW, CHH2, [(r_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
+    rect(s, LCX + CHW + 0.04, yy + CHH2 / 2 - (0.03 if hot else 0.01), RCX - LCX - CHW - 0.08, 0.06 if hot else 0.02, fill=BLUE if hot else GRAY_2)
+label_box(s, LCX + CHW + 0.04, RYS[2] + 0.03, RCX - LCX - CHW - 0.08, 0.28, [("언어 · 문화", 15, True, BLUE)], fill=WHITE, line=BLUE, lw=1.0)
+# 범위 괄호: 지금(경영진 · 영업) 대 앞으로(엔지니어까지)
+bx1 = RCX + CHW + 0.16
+for (y0_, y1_, col, lab, off) in [(RYS[0], RYS[1] + CHH2, GRAY_2, "지금", 0.0), (RYS[0], RYS[2] + CHH2, BLUE, "앞으로", 0.66)]:
+    xx = bx1 + off
+    rect(s, xx, y0_, 0.04, y1_ - y0_, fill=col)
+    rect(s, xx - 0.10, y0_, 0.12, 0.04, fill=col)
+    rect(s, xx - 0.10, y1_ - 0.04, 0.12, 0.04, fill=col)
+    tb(s, xx + 0.08, (y0_ + y1_) / 2 - 0.15, 0.80, 0.30, [(lab, 15, True, col)], anchor=MID)
 
 # ---- 열 캡션
 CAP_Y = 8.86
 tb(s, C1, CAP_Y, W1, 0.50, [("MYD 위에 기술 협력을 쌓습니다", 20, True, BLUE)], anchor=MID)
 tb(s, C2, CAP_Y, W2, 0.50, [("고객 안에서 요구를 찾고 수요를 함께 만듭니다", 20, True, BLUE)], anchor=MID)
-tb(s, C3, CAP_Y, W3, 0.50, [("기술과 함께, 고객의 언어와 문화", 20, True, BLUE)], anchor=MID)
+tb(s, C3, CAP_Y, W3, 0.50, [("기술과 함께, 엔지니어의 고객 관계", 20, True, BLUE)], anchor=MID)
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
 d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22: 공동 최적화 · 다년 공급 · 운영 통합 · 전략 투자) · Palantir · OpenAI FDE(명시적 요구 대 실제 요구, 고객 데이터 검증, "
             "고객 인프라에 직접 코드, 현장 해법 → 제품) · LMCache FDP 머지(PR #4016, 2026-08) · 로고는 식별 표시")
 d.notes(s, "4장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
         "첫째, 계약입니다. 지금의 Multi-Year Deal, MYD는 여러 해의 수량과 가격을 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 MYD 위에 기술 협력을 쌓겠습니다. "
-        "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 데이터센터 안에서 고객 엔지니어와 매일 함께 일합니다. 구체적으로 다섯 가지를 합니다. "
-        "하나, 관찰입니다. 고객 워크로드 트레이스로 데이터 수명과 쓰기 크기를 재서, 고객이 말한 요구와 실제 요구의 차이를 찾습니다. 둘, 실측입니다. 고객 환경에서 WAF와 꼬리 지연의 기준선을 함께 잽니다. "
-        "셋, 시제품입니다. 고객 소프트웨어에 배치 코드를 직접 넣어 봅니다. LMCache에 FDP 배치를 머지한 것이 선례입니다. 넷, 증명입니다. 효과를 우리 지표가 아니라 고객의 지표, 곧 토큰당 비용과 GPU 가동률로 보입니다. "
-        "다섯, 수요화입니다. 증명된 해법을 고객의 RFQ와 OCP 요구, 그리고 다음 제품 사양으로 굳힙니다. 현장의 거친 해법이 제품과 표준이 되면, 그것이 우리가 함께 만든 수요가 됩니다. "
+        "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 AI 데이터센터 안에서 고객 엔지니어와 함께 일합니다. 핵심 업무는 세 가지입니다. "
+        "하나, 고객 워크로드 측정과 분석입니다. 고객 트레이스로 쓰기 크기와 데이터 수명을 재서, 고객이 말한 요구와 실제 요구의 차이를 찾습니다. "
+        "둘, 호스트 소프트웨어 스택의 최적화와 평가입니다. 고객 엔지니어와 함께 KV 캐시 소프트웨어와 SSD를 맞물려 최적화하고, 고객 환경에서 WAF와 꼬리 지연, 그리고 토큰당 비용과 GPU 가동률로 효과를 평가합니다. LMCache에 FDP 배치를 머지한 것이 선례입니다. "
+        "셋, 차세대 제품을 위한 기술 교류입니다. 현장에서 증명한 것을 고객 엔지니어와 함께 다음 제품의 사양과 고객 RFQ, OCP 요구로 굳힙니다. 이렇게 고객 안에서 요구를 찾고, 수요를 함께 만듭니다. "
         "셋째, 역량입니다. NAND와 SSD 펌웨어는 강점이고, 비어 있는 곳은 그 위입니다. KV 캐시 소프트웨어는 LMCache에서 시작했고 Dynamo와 Mooncake에는 아직 기여가 없습니다. 고객의 지표인 토큰당 비용과 GPU 가동률로 말하는 사람이 필요합니다. "
-        "마지막으로 화두를 하나 드리겠습니다. 기술만으로 충분할까요? 고객과 국가마다 언어와 문화가 다릅니다. 고객 엔지니어가 신뢰하는 것은 영업이나 마케팅의 말이 아니라, 같은 문제를 같은 언어로 푸는 엔지니어입니다. 엔지니어 수준에서 고객 관계를 직접 맡을 수 있는 역량을 우리는 갖고 있는지 함께 생각해 보면 좋겠습니다. "
+        "마지막으로 화두를 하나 드리겠습니다. 지금까지 고객 관계 관리, CRM은 경영진과 경영진, 영업과 구매 사이의 일이었습니다. 앞으로는 엔지니어와 엔지니어 사이까지 넓어져야 합니다. 고객 엔지니어가 신뢰하는 상대는 같은 문제를 같은 언어로 푸는 엔지니어이고, 고객과 국가마다 다른 언어와 문화를 이해하는 것도 그 관계의 일부입니다. 엔지니어 수준의 고객 관계를 우리가 맡을 준비가 되어 있는지 함께 생각해 보면 좋겠습니다. "
         "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 FDP 공동 설계 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
 

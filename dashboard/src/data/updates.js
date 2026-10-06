@@ -17,6 +17,23 @@ export const UPDATES = [
   {
     date: '2026-10-06',
     type: 'build',
+    version: 'v2.46.62',
+    title: '덱 4장 시각화: 고객 상주 협업 세 가지 핵심 업무 그림 카드 · CRM 범위 확장 관계도 (덱 v1.8 · 보고서 v1.9)',
+    summary:
+      '텍스트 위주였던 실행 슬라이드를 그림으로 바꿨다. 고객 상주 협업의 핵심 업무 세 가지(워크로드 측정 · 분석, 호스트 SW 스택 최적화 · 평가, 차세대 제품 기술 교류)를 그림 카드로, 화두는 CRM이 경영진 · 영업에서 엔지니어까지 넓어지는 관계도로 표현했다(패치 v2.46.62).',
+    tags: ['실행 전략', 'FDE', 'Co-Design Pod', 'CRM', '고객 관계'],
+    items: [
+      { label: '덱 4장', detail: '세 가지 핵심 업무 그림 카드 + CRM 관계도(지금 대 앞으로)' },
+      { label: '위키', detail: 'dev-org-transformation.md: 세 가지 핵심 업무 · 다섯 단계 대응표 · CRM 화두' },
+      { label: '보고서 v1.9', detail: '§4.3 세 가지 핵심 업무 표 · CRM 화두 · §7' },
+    ],
+    links: [
+      { label: 'wiki/strategies/dev-org-transformation.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/dev-org-transformation.md' },
+    ],
+  },
+  {
+    date: '2026-10-06',
+    type: 'build',
     version: 'v2.46.61',
     title: '덱 4장 실행 보강: Multi-Year Deal(MYD) · FDE가 고객 DC에서 하는 다섯 가지 · 엔지니어 수준 고객 관계 화두 (덱 v1.7 · 보고서 v1.8)',
     summary:
