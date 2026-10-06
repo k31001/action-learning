@@ -17,6 +17,23 @@ export const UPDATES = [
   {
     date: '2026-10-06',
     type: 'build',
+    version: 'v2.46.59',
+    title: '고객 협력 깊이 재판단: 공동 설계 필수 = FDP, Mixed Media는 스펙으로 협력 · 덱 2장 단순화 (덱 v1.5 · 보고서 v1.6)',
+    summary:
+      '사용자 기준("스펙을 명확히 정하면 tightly coupled 협력은 불필요")으로 결합도 × 스펙 비완결도를 다시 판단했다. 고객 시스템과 함께 설계되는 기술은 여럿이지만 스펙으로 닫히지 않는 것은 FDP 하나다(같은 FDP 지원 스펙에서도 장치마다 near-ideal 대 붕괴). 2장은 제품군 매트릭스와 3 × 3 격자로 줄이고 캡션은 노트로(패치 v2.46.59).',
+    tags: ['FDP', 'Mixed Media', '고객 협력', '공동 설계', '스펙', 'WARP', '핵심 기술'],
+    items: [
+      { label: '위키', detail: 'ssd-core-technologies-customer-collaboration.md §3 v2(결합도 × 스펙 비완결도), mixed-media-ssd.md 정정' },
+      { label: '덱 2장', detail: '왼쪽 제품군 6 × 4 점, 오른쪽 3 × 3 격자(SSD 안에서 · 스펙으로 협력 · 공동 설계 필수 FDP)' },
+      { label: '보고서 v1.6', detail: '§0 · §2.1.1 · §2.3 정정 · §4 FDP 집중' },
+    ],
+    links: [
+      { label: 'wiki/concepts/ssd-core-technologies-customer-collaboration.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ssd-core-technologies-customer-collaboration.md' },
+    ],
+  },
+  {
+    date: '2026-10-06',
+    type: 'build',
     version: 'v2.46.58',
     title: '덱 2장 재구성: 핵심 기술 6가지 × 제품군 × 고객 협력 강도, 협력 필수 = Mixed Media · FDP (덱 v1.4 · 보고서 v1.5)',
     summary:

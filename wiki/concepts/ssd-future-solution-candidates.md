@@ -12,7 +12,7 @@ sources:
 
 "불확실성이 높은 미래에 대응하기 위한 고객 협력 전략"([보고서](../../outputs/report/ssd-future-ready-strategy-report.md))은 세 기술을 고른다: 고DWPD([high-dwpd-operating-point.md](high-dwpd-operating-point.md)) · Mixed Media(pSLC, [mixed-media-ssd.md](mixed-media-ssd.md)) · 고용량 + 결함 허용([high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md)). 사용자(2026-10-03)는 "다가올 미래에 대응하기 위한 핵심 솔루션 두어 개"를 더 찾아 달라고 했다. 이 페이지는 후보 다섯 개를 같은 잣대로 평가한다. 판정은 ⚠️ 과제팀 판단이다.
 
-> **사용자 결정 변경 (2026-10-06)**: 덱 2장을 "제품 포트폴리오에 필요한 핵심 기술 6가지"로 재구성하면서 **Confidential Storage(에이전트 기밀 VM용 RoT · 암호화 · 증명)** 를 핵심 기술 6번으로 넣었다. 아래 A의 "따로 강조하지 않는다"는 2장에서 표준 기반 협력 기술(협력 강도 3/8)로 다루는 것으로 바뀐다. Mixed Media는 2026-10-03 v1.2에서 이미 고객 협력 묶음으로 옮겼다. 상세: [ssd-core-technologies-customer-collaboration.md](ssd-core-technologies-customer-collaboration.md)
+> **사용자 결정 변경 (2026-10-06)**: 덱 2장을 "제품 포트폴리오에 필요한 핵심 기술 6가지"로 재구성하면서 **Confidential Storage(에이전트 기밀 VM용 RoT · 암호화 · 증명)** 를 핵심 기술 6번으로 넣었다. 아래 A의 "따로 강조하지 않는다"는 2장에서 표준 기반 협력 기술(협력 강도 3/8)로 다루는 것으로 바뀐다. Mixed Media는 2026-10-03 v1.2에서 고객 협력 묶음으로 옮겼다가, 같은 날 사용자 기준("스펙으로 분리되면 tightly coupled 협력은 불필요")으로 다시 판단해 **스펙으로 협력**으로 정정했다. 공동 설계 필수는 **FDP 하나**다. 상세: [ssd-core-technologies-customer-collaboration.md](ssd-core-technologies-customer-collaboration.md)
 >
 > **사용자 결정 (2026-10-03)**: ① **A 보안 · 신뢰 · 재사용은 덱 · 보고서에서 따로 강조하지 않는다.** 중요성이 이미 잘 인식돼 있고 삼성이 잘하고 있는 분야이기 때문이다(L.O.C.K. 공저가 그 예). ② **B GPU 직결 고IOPS(SCADA)는 "기술적으로 미리 준비가 필요한 기술"로 포함**하되, 시장 규모와 기술 성숙도의 불확실성이 커서 베팅 확률이 낮다는 점을 반영해 추가 서베이와 기술 검토 뒤 포함 방식을 정한다(추가 원장 `ssd-scada-market-technical-review-2026-10.md` 수집 중). ③ C 전력 · 냉각은 제품 요건으로 흡수하는 판정 유지.
 
