@@ -190,6 +190,7 @@
 - [sources/README.md](sources/README.md) — 외부 출처 카탈로그 (기관·URL·관련 wiki 페이지) + 수집된 articles 카탈로그
 
 ### sources/articles — 수집된 원본 자료
+- [sources/articles/macro-reassessment-signals-2026-10-06.md](sources/articles/macro-reassessment-signals-2026-10-06.md) — (NEW 2026-10-06) 거시 재평가 in-window 신호 스냅샷: Micron Q4 FY26 실적(09-30 실현·매출 $54.23B·FQ1 FY27 $61.5B·2027 HBM 선계약)·Q4 메모리 계약가 +10~20%·2027 CapEx 컨센서스 $1.0~1.3T·GPU 임대가 firming·순환 파이낸싱 $1조·Nvidia 채권 CDS 최대 일중 상승·미중 정상회담 후속 현상유지(칩 통제 뒷전·H200 대중 라이선스·MATCH 미통과)·삼성 HBM4 NVIDIA 유상 평가 단계. DF1 8.5·DF2 0.5·확률 A26·B39·C8·D21·E6 유지 판정 근거
 - [sources/articles/semianalysis-isscc-2026-2026-04-15.md](sources/articles/semianalysis-isscc-2026-2026-04-15.md) — ISSCC 2026 메모리 논문 (HBM4/LPDDR6/GDDR7/4F²/BiCS10)
 - [sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md](sources/articles/semianalysis-ai-silicon-shortage-2026-03-12.md) — AI 칩 부족과 HBM 캐파 잠식
 - [sources/articles/semianalysis-vera-rubin-2026-02-25.md](sources/articles/semianalysis-vera-rubin-2026-02-25.md) — Vera Rubin 메모리 사양 + Micron 자격 분석
