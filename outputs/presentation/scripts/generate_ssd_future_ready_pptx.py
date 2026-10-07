@@ -340,90 +340,22 @@ d.notes(s, "2장입니다. 1장의 제품 포트폴리오를 받치는 핵심 �
 # =============================================================== 3 당위성
 s = d.slide(3, "당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
 
-# ---- 계단 위: 지난 18년 출시 데이터센터 SSD의 정격 DWPD 점도표 (업체별 점 모양, 로그 축)
+# 발표 순서 ECC → SSD → DWPD → 공동 설계: 위 = 1 · 2칸, 아래 = 정격 DWPD 점도표, 오른쪽 = 3칸
 import json  # noqa: E402
 import statistics  # noqa: E402
 
-DW = json.load(open(os.path.join(ASSETS, "essd_dwpd_points.json"), encoding="utf-8"))["points"]
-VENDORS = [  # 키, 이름, 점 모양, 색
-    ("samsung", "삼성", MSO_SHAPE.OVAL, BLUE),
-    ("intel", "Solidigm · Intel", MSO_SHAPE.RECTANGLE, GRAY),
-    ("micron", "Micron", MSO_SHAPE.ISOSCELES_TRIANGLE, GRAY),
-    ("kioxia", "Kioxia · Toshiba", MSO_SHAPE.DIAMOND, GRAY_2),
-    ("skhynix", "SK hynix", MSO_SHAPE.OVAL, GRAY_2),
-    ("wd", "WD · SanDisk", MSO_SHAPE.FLOWCHART_MERGE, GRAY_2),
+from pptx.dml.color import RGBColor  # noqa: E402
+
+TOP, ROWB, BOT = 2.42, 5.72, 9.40
+steps = [  # x, w, 아래, fill, step name, years, metric, metric sub, state chip
+    (MX, 5.55, ROWB, PALE, "NAND → SSD", "1991~", "ECC 약 60배", "셀 오류 약 100만 배를 흡수", "완결"),
+    (MX + 5.75, 5.90, ROWB, PALE, "SSD 혼자 최적화", "2014~2019", "WAF ≈ 3", "수명을 추정만 했다", "부분 성공"),
+    (MX + 11.85, 6.57, BOT, BLUE, "고객 시스템과 공동 설계", "2022~", "WAF 3.22 → 1.03", "수명은 고객 시스템만 안다", "다음 칸"),
 ]
-VI = {k: i for i, (k, *_) in enumerate(VENDORS)}
-CX0, CX1 = MX + 0.62, MX + 11.50          # 그림 영역 좌우
-CY0, CY1 = 3.32, 5.30                     # DWPD 100 · 0.1
-YR0, YR1 = 2007.6, 2026.6
-
-
-def cx(yr):
-    return CX0 + (yr - YR0) / (YR1 - YR0) * (CX1 - CX0)
-
-
-def cy(v):
-    return CY1 - (math.log10(v) + 1) / 3 * (CY1 - CY0)
-
-
-def seg(x0, y0, x1, y1, col, wpt=2.25, dash=False):
-    ln = s.shapes.add_connector(1, *(int(v * 914400) for v in (x0, y0, x1, y1)))
-    ln.line.color.rgb = col
-    ln.line.width = int(wpt * 12700)
-    if dash:
-        ln.line.dash_style = 4
-
-
-nand = [q for q in DW if not q[3]]
-med = {rg: statistics.median([q[2] for q in nand if rg[0] <= q[1] <= rg[1]])
-       for rg in ((2008, 2012), (2013, 2015), (2016, 2018), (2019, 2021), (2022, 2026))}
-share = {rg: sum(q[2] >= 10 for q in nand if rg[0] <= q[1] <= rg[1]) / sum(rg[0] <= q[1] <= rg[1] for q in nand)
-         for rg in ((2008, 2012), (2022, 2026))}
-tb(s, MX, 2.36, 6.2, 0.44, [[("출시 SSD의 정격 DWPD  ", 20, True, INK), (f"{len(DW)}개 제품 등급", 16, False, GRAY)]], anchor=MID)
-tb(s, MX + 5.6, 2.36, 6.05, 0.44, [[("중앙값 ", 18, True, BLUE), (f"{med[(2008, 2012)]:.0f} → {med[(2022, 2026)]:.0f}", 24, True, BLUE),
-                                    ("   10 DWPD 이상 ", 18, True, BLUE), (f"{share[(2008, 2012)]:.0%} → {share[(2022, 2026)]:.0%}", 24, True, BLUE)]],
-   align=R, anchor=MID)
-lx = MX
-for k, nm, shp, col in VENDORS:
-    rect(s, lx, 2.89, 0.15, 0.15, fill=col, shape=shp)
-    w_ = sum(0.24 if ord(ch) > 0x3000 else (0.06 if ch in " ·" else 0.115) for ch in nm) + 0.30
-    tb(s, lx + 0.20, 2.80, w_, 0.32, [(nm, 16, False, GRAY)], anchor=MID)
-    lx += 0.20 + w_ + 0.02
-# 눈금 · 고객 요구 띠
-for v, lab in ((0.1, "0.1"), (1, "1"), (10, "10"), (100, "100")):
-    rect(s, CX0, cy(v) - 0.006, CX1 - CX0, 0.012, fill=LINE)
-    tb(s, MX, cy(v) - 0.15, 0.55, 0.30, [(lab, 16, False, GRAY)], align=R, anchor=MID)
-for yr in (2008, 2012, 2016, 2020, 2024):
-    tb(s, cx(yr) - 0.35, CY1 + 0.03, 0.70, 0.26, [(str(yr), 16, False, GRAY)], align=C)
-rect(s, cx(2019), cy(7.2), cx(YR1) - cx(2019), cy(3) - cy(7.2), fill=TINT, line=BLUE, lw=1.0, dash=True)
-tb(s, cx(YR1) - 2.60, cy(7.2) - 0.31, 2.60, 0.28, [("고객 캐시 요구 3~7.2", 16, True, BLUE)], align=R, anchor=MID)
-# 점: 같은 해 업체끼리 가로로 조금씩 비켜 찍는다. 빈 점 = SLC · SCM 특수 제품
-seen = {}
-for vend, yr, v, sp, _ in sorted(DW, key=lambda q: VI[q[0]] == 0):
-    i = VI[vend]
-    key = (vend, yr, v)
-    dup = seen.get(key, 0)
-    seen[key] = dup + 1
-    x = cx(yr + (i - 2.5) * 0.11 + dup * 0.05)
-    k, nm, shp, col = VENDORS[i]
-    rect(s, x - 0.065, cy(v) - 0.065, 0.13, 0.13, fill=WHITE if sp else col, line=col if sp else None, lw=1.5, shape=shp)
-tb(s, cx(2007.9), cy(0.16) - 0.15, 3.2, 0.30, [("빈 점 = SLC · SCM 특수 제품", 16, False, GRAY)], anchor=MID)
-# 기간별 중앙값 (특수 제외)
-for (a0, a1), m in med.items():
-    seg(cx(a0 - 0.45), cy(m), cx(a1 + 0.45), cy(m), INK, wpt=3.0)
-tb(s, cx(2007.7), cy(med[(2008, 2012)]) + 0.04, 1.2, 0.28, [("중앙값", 16, True, INK)], anchor=MID)
-
-
-BOT = 9.40
-steps = [  # x, w, top, fill, step name, years, metric, metric sub, state chip
-    (MX, 5.55, 6.20, PALE, "NAND → SSD", "1991~", "ECC 약 60배", "셀 오류 약 100만 배를 흡수", "완결"),
-    (MX + 5.75, 5.90, 5.62, PALE, "SSD 혼자 최적화", "2014~2019", "WAF ≈ 3", "수명을 추정만 했다", "부분 성공"),
-    (MX + 11.85, 6.57, 2.42, BLUE, "고객 시스템과 공동 설계", "2022~", "WAF 3.22 → 1.03", "수명은 고객 시스템만 안다", "다음 칸"),
-]
-for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
+for i, (x, w, bot, fill, nm, yr, met, msub, st) in enumerate(steps):
     hot = fill == BLUE
-    rect(s, x, top, w, BOT - top, fill=fill, shape=RR)
+    top = TOP
+    rect(s, x, top, w, bot - top, fill=fill, shape=RR)
     ink, sub = (WHITE, BLUE_T2) if hot else (INK, GRAY)
     tb(s, x + 0.30, top + 0.12, w - 2.1, 0.86, [(nm, 24, True, ink), (yr, 18, False, sub)], spacing=1.0)
     chip(s, x + w - 1.70, top + 0.20, 1.40, 0.44, st, fill=WHITE if hot else (GRAY_2 if i == 0 else WHITE),
@@ -434,11 +366,11 @@ for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
         d.fit(s, d.part("nand"), x + 0.40, iy, 1.10, 0.74)
         d.arrow_r(s, x + 1.66, iy + 0.25, 0.46, 0.24)
         d.fit(s, d.part("ssd"), x + 2.28, iy, 2.20, 0.74)
-        my = iy + 0.80
+        my = iy + 0.92
     elif i == 1:  # 왼쪽 반: SSD · 결과, 오른쪽 반: 내부 기술 스택
-        iy, tw = top + 1.12, 2.62
-        d.fit(s, d.part("ssd"), x + 0.30, iy, 2.40, 0.86)
-        my = iy + 1.10
+        iy, tw = top + 1.00, 2.62
+        d.fit(s, d.part("ssd"), x + 0.30, iy, 2.40, 0.80)
+        my = iy + 0.96
     else:
         d.fit(s, d.part("server"), x + 0.40, iy, 1.90, 1.05)
         d.fit(s, d.part("ssd"), x + 2.50, iy + 0.22, 1.80, 0.70)
@@ -449,12 +381,64 @@ for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
 # ---- 2칸 안: SSD 혼자 쌓은 내부 기술 스택 (아래 = 기본 관리, 위 = 2014~2019 워크로드 추정)
 x, w = steps[1][0], steps[1][1]
 KX, KW = x + 3.02, w - 3.30
-tb(s, KX, 6.36, KW, 0.40, [("SSD 내부 기술 스택", 18, True, GRAY)], anchor=MID)
+tb(s, KX, TOP + 0.68, KW, 0.36, [("SSD 내부 기술 스택", 18, True, GRAY)], anchor=MID)
 for k, (nm, new) in enumerate([("핫 · 콜드 추정", True), ("스트림 분리", True), ("IO 결정성", True),
                                ("GC · 웨어 레벨링", False), ("FTL · ECC", False)]):
-    yy = 6.80 + k * 0.46
-    rect(s, KX, yy, KW, 0.40, fill=GRAY if new else WHITE, line=None if new else LINE, shape=RR)
-    tb(s, KX + 0.14, yy, KW - 0.28, 0.40, [(nm, 18, True, WHITE if new else GRAY)], anchor=MID)
+    yy = TOP + 1.06 + k * 0.43
+    rect(s, KX, yy, KW, 0.37, fill=GRAY if new else WHITE, line=None if new else LINE, shape=RR)
+    tb(s, KX + 0.14, yy, KW - 0.28, 0.37, [(nm, 18, True, WHITE if new else GRAY)], anchor=MID)
+
+# ---- 아래: 출시 SSD의 정격 DWPD, 업체별 대표 제품 (채운 점 = 세대 대표의 최고 내구 등급, 빈 점 = QLC 용량형, 로그 축)
+DK = json.load(open(os.path.join(ASSETS, "essd_dwpd_key_points.json"), encoding="utf-8"))["points"]
+VENDORS = [  # 키, 이름, 색 (삼성 = Samsung Blue, 경쟁사는 빨강 · 초록을 피한 색)
+    ("samsung", "삼성", BLUE),
+    ("intel", "Solidigm · Intel", RGBColor(0x1A, 0x9E, 0x9E)),
+    ("micron", "Micron", RGBColor(0xE3, 0x9B, 0x25)),
+    ("kioxia", "Kioxia · Toshiba", RGBColor(0x8B, 0x5F, 0xBF)),
+    ("skhynix", "SK hynix", RGBColor(0xD9, 0x63, 0x7A)),
+    ("wd", "WD · SanDisk", GRAY_2),
+]
+VI = {k: n for n, (k, *_) in enumerate(VENDORS)}
+SY = ROWB + 0.20
+CX0, CX1 = MX + 0.62, MX + 11.50
+CY0, CY1 = SY + 0.96, 9.02                # DWPD 100 · 0.1
+YR0, YR1 = 2010.4, 2026.6
+
+
+def cx(yr):
+    return CX0 + (yr - YR0) / (YR1 - YR0) * (CX1 - CX0)
+
+
+def cy(v):
+    return CY1 - (math.log10(v) + 1) / 3 * (CY1 - CY0)
+
+
+PER = ((2011, 2014), (2015, 2018), (2019, 2026))
+med = [statistics.median([q[2] for q in DK if q[3] == "top" and a0 <= q[1] <= a1]) for a0, a1 in PER]
+qv = [q[2] for q in DK if q[3] == "qlc"]
+tb(s, MX, SY, 5.6, 0.42, [[("출시 SSD의 정격 DWPD  ", 20, True, INK), ("업체별 대표 제품", 16, False, GRAY)]], anchor=MID)
+tb(s, MX + 5.2, SY, 6.45, 0.42, [[("최고 등급 중앙값 ", 18, True, BLUE), (" → ".join(f"{m:g}" for m in med), 24, True, BLUE),
+                                  ("   QLC ", 18, True, BLUE), (f"{min(qv):.1f}~{max(qv):.1f}", 24, True, BLUE)]], align=R, anchor=MID)
+lx = MX
+for k, nm, col in VENDORS:
+    rect(s, lx, SY + 0.56, 0.16, 0.16, fill=col, shape=MSO_SHAPE.OVAL)
+    w_ = sum(0.24 if ord(ch) > 0x3000 else (0.06 if ch in " ·" else 0.115) for ch in nm) + 0.30
+    tb(s, lx + 0.21, SY + 0.48, w_, 0.32, [(nm, 16, False, GRAY)], anchor=MID)
+    lx += 0.21 + w_ + 0.02
+rect(s, lx + 0.10, SY + 0.56, 0.16, 0.16, fill=WHITE, line=GRAY, lw=1.5, shape=MSO_SHAPE.OVAL)
+tb(s, lx + 0.31, SY + 0.48, 1.20, 0.32, [("QLC", 16, False, GRAY)], anchor=MID)
+for v, lab in ((0.1, "0.1"), (1, "1"), (10, "10"), (100, "100")):
+    rect(s, CX0, cy(v) - 0.006, CX1 - CX0, 0.012, fill=LINE)
+    tb(s, MX, cy(v) - 0.15, 0.55, 0.30, [(lab, 16, False, GRAY)], align=R, anchor=MID)
+for yr in (2011, 2014, 2017, 2020, 2023, 2026):
+    tb(s, cx(yr) - 0.35, CY1 + 0.03, 0.70, 0.26, [(str(yr), 16, False, GRAY)], align=C)
+rect(s, cx(2019), cy(7.2), cx(YR1) - cx(2019), cy(3) - cy(7.2), fill=TINT, line=BLUE, lw=1.0, dash=True)
+tb(s, cx(YR1) - 2.60, cy(7.2) - 0.31, 2.60, 0.28, [("고객 캐시 요구 3~7.2", 16, True, BLUE)], align=R, anchor=MID)
+for vend, yr, v, kind, _ in sorted(DK, key=lambda q: VI[q[0]] == 0):   # 삼성 점을 맨 위에
+    col = VENDORS[VI[vend]][2]
+    xx = cx(yr + (VI[vend] - 2.5) * 0.14)
+    rect(s, xx - 0.085, cy(v) - 0.085, 0.17, 0.17, fill=WHITE if kind == "qlc" else col,
+         line=col if kind == "qlc" else None, lw=2.0, shape=MSO_SHAPE.OVAL)
 
 # ---- 3칸 안: 주요 데이터센터 기업은 이미 SSD를 직접 설계한다 (공개 근거 첫해부터 막대, 주요 3사)
 x, w = steps[2][0], steps[2][1]
@@ -486,26 +470,25 @@ for r, (lg, nm, y0, lab) in enumerate([("google", None, 2016, "자체 설계 SSD
     rect(s, tx(y0), yy + 0.12, TX1 - tx(y0), RH_ - 0.24, fill=BLUE, shape=RR)
     tb(s, tx(y0) + 0.14, yy, TX1 - tx(y0) - 0.20, RH_, [(lab, 18, True, WHITE)], anchor=MID)
 
-d.chevron(s, MX + 5.57, 7.60, w=0.16, h=0.50)
-d.chevron(s, MX + 11.67, 7.10, w=0.16, h=0.50)
+d.chevron(s, MX + 5.57, 3.82, w=0.16, h=0.50)
+d.chevron(s, MX + 11.67, 7.40, w=0.16, h=0.50)
 
 d.band(s, 9.60, 0.80, "결론", "사양서만으로는 2칸에 머뭅니다. 3칸은 고객 시스템 안에서 함께 설계해야 닿습니다")
-d.footer(s, "출처: 정격 DWPD 원장(Samsung · Intel · Solidigm · Micron · Kioxia · Toshiba · SK hynix · WD · SanDisk 사양 · 리뷰, 3년 보증은 5년으로 환산, QLC는 랜덤 쓰기, 중앙값 · 비중은 특수 제품 제외) · "
+d.footer(s, "출처: 정격 DWPD 원장(6개 업체 226개 등급 중 세대 대표의 최고 내구 등급 33개 · QLC 8개, 3년 보증은 5년으로 환산, QLC는 랜덤 쓰기, SLC · SCM 특수 제품 제외) · "
             "고객 캐시 DWPD(Kangaroo · KV 실측 · Baleen) · 해법 사다리 원장 · 자체 설계 원장 · 세로축 로그 · 일부 수치 검색 확인 · 부품 이미지는 3D 렌더")
-d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터로 말씀드리겠습니다. 위쪽 점도표는 2008년부터 올해까지 주요 6개 업체가 내놓은 데이터센터 SSD 226개 제품 등급의 정격 DWPD입니다. 삼성은 파란 점, 다른 업체는 회색 점이고 모양으로 구분했습니다. "
-        "보증 3년 제품은 5년 기준으로 환산했고, QLC 같은 용량형은 랜덤 쓰기 기준입니다. "
-        "SSD는 그동안 성능, 전력 효율, 가성비가 크게 좋아졌지만, 정격 DWPD는 반대로 움직였습니다. SLC와 SCM 같은 특수 제품을 빼고 보면, 기간별 중앙값이 2008~2012년 10에서 2013~2015년 3, 2016~2018년 1.5, 2019년 이후 1로 내려왔습니다. "
-        "10 DWPD 이상 등급의 비중은 67퍼센트에서 0퍼센트가 됐고, 2016년 이후 30 이상은 빈 점으로 표시한 Optane, Z-SSD, XL-FLASH 같은 특수 제품뿐입니다. "
-        "셀이 견디는 쓰기가 SLC 10만 회에서 QLC 1천 회로 약 100배 줄었기 때문입니다. 고내구 등급에서 읽기 위주 등급으로 시장이 옮겨 간 영향도 섞여 있지만, 고객 캐시 계층은 하루 3회에서 7.2회를 씁니다. 이 띠와 주력 제품 사이의 간격이 지금의 과제입니다. "
-        "아래 계단은 이 간격을 어디서 메워 왔는지입니다. 첫 계단 NAND에서 SSD로는 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
-        "둘째 계단은 SSD 혼자 하는 최적화입니다. FTL과 ECC, GC와 웨어 레벨링 위에, 2014년부터 2019년까지 핫 · 콜드 추정, 스트림 분리, IO 결정성을 더했습니다. "
+d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 순서대로 말씀드리겠습니다. 위 왼쪽 첫 칸은 NAND에서 SSD로 넘어온 단계입니다. 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
+        "둘째 칸은 SSD 혼자 하는 최적화입니다. FTL과 ECC, GC와 웨어 레벨링 위에, 2014년부터 2019년까지 핫 · 콜드 추정, 스트림 분리, IO 결정성을 더했습니다. "
         "테일 지연과 성능은 좋아졌지만, 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "
-        "셋째 계단이 고객 시스템과의 공동 설계입니다. 삼성 엔지니어가 Meta의 오픈소스 CacheLib 안에 FDP 배치를 구현했고, WAF가 3.22에서 1.03으로 내려갔습니다. "
+        "그 결과가 아래 점도표입니다. 지난 15년 동안 6개 업체가 내놓은 데이터센터 SSD 가운데 세대별 대표 제품의 정격 DWPD입니다. 채운 점은 그 세대에서 가장 높은 내구 등급, 빈 점은 QLC 용량형입니다. 보증 3년 제품은 5년 기준으로 환산했습니다. "
+        "가장 높은 등급의 중앙값이 2011~2014년 10에서 2015~2018년 5, 2019년 이후 3으로 내려왔고, QLC는 0.2에서 0.6입니다. 셀이 견디는 쓰기가 SLC 10만 회에서 QLC 1천 회로 약 100배 줄었기 때문입니다. "
+        "전체 226개 등급으로 봐도 중앙값은 10에서 1로, 10 DWPD 이상 등급은 67퍼센트에서 0퍼센트가 됐습니다. 30 이상은 Optane, Z-SSD 같은 SLC · SCM 특수 제품뿐이라 이 그림에서는 뺐습니다. "
+        "고객 캐시 계층은 하루 3회에서 7.2회를 씁니다. 대용량 QLC로는 이 띠에 닿지 않습니다. SSD 혼자서는 DWPD를 끌어올리기 어렵다는 뜻입니다. "
+        "그래서 오른쪽 셋째 칸, 고객 시스템과의 공동 설계입니다. 삼성 엔지니어가 Meta의 오픈소스 CacheLib 안에 FDP 배치를 구현했고, WAF가 3.22에서 1.03으로 내려갔습니다. "
         "이 방향은 이미 주요 데이터센터 기업의 흐름입니다. Google은 2016년 논문에서 자체 인터페이스와 펌웨어를 얹은 자체 설계 SSD를 운용한다고 밝혔고, 지금은 Titanium SSD로 이전 세대보다 지연을 최대 35퍼센트 줄였습니다. "
         "Alibaba는 2016년 자체 SSD AliFlash로 시작해 2023년 자체 SSD 컨트롤러를 내놓았고, 누적 50만 개 넘게 출하했다고 발표했습니다. "
         "AWS는 FTL을 새로 쓴 Nitro SSD로 I3 대비 지연을 최대 60퍼센트 줄였다고 밝혔습니다. 다만 컨트롤러 칩까지 직접 만든다는 근거는 없습니다. "
         "이 밖에 Baidu는 2014년 자체 SSD를 배치했고, Microsoft와 Meta는 OCP SSD 스펙과 FDP 표준을 직접 썼습니다. "
-        "고객은 이미 자기 시스템에 맞춰 SSD를 설계하고 있습니다. 사양서를 받아 SSD를 잘 만드는 방식은 둘째 계단에 머물고, 셋째 계단은 고객 시스템 안에서 함께 설계해야 닿습니다.")
+        "고객은 이미 자기 시스템에 맞춰 SSD를 설계하고 있습니다. 사양서를 받아 SSD를 잘 만드는 방식은 둘째 칸에 머물고, 셋째 칸은 고객 시스템 안에서 함께 설계해야 닿습니다.")
 
 # =============================================================== 4 실행
 s = d.slide(4, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")
