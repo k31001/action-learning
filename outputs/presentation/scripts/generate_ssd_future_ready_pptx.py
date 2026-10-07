@@ -1,4 +1,4 @@
-"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-06 v1.5).
+"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-07 v2.0: 3장 2칸에 SSD 내부 기술 스택).
 
 제목 4개를 이어 읽으면 한 문단이 된다(아웃라인 v0.3):
   1 배경   SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다
@@ -391,20 +391,34 @@ for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
     chip(s, x + w - 1.70, top + 0.20, 1.40, 0.44, st, fill=WHITE if hot else (GRAY_2 if i == 0 else WHITE),
          color=BLUE if hot else (WHITE if i == 0 else GRAY), size=18, line=None if (hot or i == 0) else GRAY_2)
     iy = top + 1.02
+    tw = w - 0.6
     if i == 0:
         d.fit(s, d.part("nand"), x + 0.40, iy, 1.10, 0.74)
         d.arrow_r(s, x + 1.66, iy + 0.25, 0.46, 0.24)
         d.fit(s, d.part("ssd"), x + 2.28, iy, 2.20, 0.74)
         my = iy + 0.80
-    elif i == 1:
-        d.fit(s, d.part("ssd"), x + 0.40, iy, 2.40, 0.86)
-        my = iy + 0.98
+    elif i == 1:  # 왼쪽 반: SSD · 결과, 오른쪽 반: 내부 기술 스택
+        iy, tw = top + 1.12, 2.62
+        d.fit(s, d.part("ssd"), x + 0.30, iy, 2.40, 0.86)
+        my = iy + 1.10
     else:
         d.fit(s, d.part("server"), x + 0.40, iy, 1.90, 1.05)
         d.fit(s, d.part("ssd"), x + 2.50, iy + 0.22, 1.80, 0.70)
         my = iy + 1.12
-    tb(s, x + 0.30, my, w - 0.6, 0.70, [(met, 40 if hot else 36, True, WHITE if hot else (GRAY if i == 1 else INK))], anchor=MID)
-    tb(s, x + 0.30, my + 0.70, w - 0.6, 0.38, [(msub, 18, False, WHITE if hot else sub)])
+    tb(s, x + 0.30, my, tw, 0.70, [(met, 40 if hot else 36, True, WHITE if hot else (GRAY if i == 1 else INK))], anchor=MID)
+    tb(s, x + 0.30, my + 0.70, tw, 0.38, [(msub, 18, False, WHITE if hot else sub)])
+
+# ---- 2칸 안: SSD 혼자 쌓은 내부 기술 스택 (아래 = 기본 관리, 위 = 2014~2019 워크로드 추정)
+x, w = steps[1][0], steps[1][1]
+KX, KW = x + 3.02, w - 3.30
+tb(s, KX, 6.36, KW, 0.40, [("SSD 내부 기술 스택", 18, True, GRAY)], anchor=MID)
+for k, (nm, yr, new) in enumerate([("핫 · 콜드 추정", "", True), ("스트림 분리", "2014~17", True), ("IO 결정성", "2019", True),
+                                   ("GC · 웨어 레벨링", "", False), ("FTL · ECC", "", False)]):
+    yy = 6.80 + k * 0.46
+    rect(s, KX, yy, KW, 0.40, fill=GRAY if new else WHITE, line=None if new else LINE, shape=RR)
+    tb(s, KX + 0.14, yy, KW - 0.28, 0.40, [(nm, 18, True, WHITE if new else GRAY)], anchor=MID)
+    if yr:
+        tb(s, KX + 0.14, yy, KW - 0.28, 0.40, [(yr, 16, False, LINE)], align=R, anchor=MID)
 
 # ---- 3칸 안: 고객은 이미 자기 SW로 쓰기를 줄인다 (Meta CacheLib)
 x, w = steps[2][0], steps[2][1]
@@ -426,12 +440,13 @@ d.chevron(s, MX + 5.57, 7.60, w=0.16, h=0.50)
 d.chevron(s, MX + 11.67, 7.10, w=0.16, h=0.50)
 
 d.band(s, 9.60, 0.80, "결론", "사양서만으로는 2칸에 머뭅니다. 3칸은 고객 시스템 안에서 함께 설계해야 닿습니다")
-d.footer(s, "출처: 해법 사다리 원장(JESD218 · LDPC · FDP TP4146 · CacheLib + FDP 3.22 → 1.03, EuroSys'25) · 캐시 DWPD: Kangaroo 예산 3 · Baleen 목표 7.2 · "
+d.footer(s, "출처: 해법 사다리 원장(JESD218 · LDPC · 스트림 '14 · '17 · NVMe 1.4 · FDP TP4146 · CacheLib + FDP 3.22 → 1.03, EuroSys'25) · 캐시 DWPD: Kangaroo 예산 3 · Baleen 목표 7.2 · "
             "StorageReview KV 실측 3.2 · CacheLib 150% · -44%(OSDI'20) · 기준(예산 · 실측 · 목표)이 서로 다름 · 부품 이미지는 3D 렌더")
 d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터로 말씀드리겠습니다. 왼쪽 위는 셀이 견디는 쓰기 횟수입니다. SLC 10만 회에서 QLC 1천 회로 약 100배 줄었습니다. "
         "그 옆은 고객의 캐시 계층이 실제로 쓰는 양입니다. QLC 정격은 하루 0.6회인데, Meta의 플래시 캐시는 하루 3회를 쓰기 예산으로 잡고, Meta 벌크 스토리지 캐시 연구는 7.2회를 목표로 둡니다. AI KV 캐시 계층을 실측하면 드라이브당 3.2회였습니다. 기준은 예산, 실측, 목표로 서로 다르지만 방향은 같습니다. "
         "고객의 쓰기는 커지는데 셀 수명은 줄면, 보상은 늘 한 계층 위로 올라갔습니다. 첫 계단은 NAND에서 SSD입니다. 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
-        "둘째 계단은 SSD 혼자 하는 최적화입니다. 2014년부터 2019년까지 SSD가 워크로드를 추정했지만 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "
+        "둘째 계단은 SSD 혼자 하는 최적화입니다. 오른쪽이 그때 SSD 안에 쌓은 기술입니다. FTL과 ECC, GC와 웨어 레벨링 위에, 2014년부터 2019년까지 핫 · 콜드 추정, 스트림 분리(2014년 멀티 스트림, 2017년 자동 스트림), IO 결정성(2019년)을 더했습니다. "
+        "테일 지연과 성능은 좋아졌지만, 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "
         "셋째 계단이 고객 시스템과의 공동 설계입니다. 호스트가 데이터 수명을 알려 주는 FDP로 CacheLib은 WAF를 3.22에서 1.03으로 낮췄습니다. "
         "고객은 이미 자기 시스템에서 이 문제와 싸우고 있습니다. Meta CacheLib 논문에 따르면, 캐시 쓰기를 그대로 두면 SSD 수명 예산의 1.5배가 됩니다. 그래서 Meta는 플래시를 50퍼센트 더 두고, 머신러닝 수용 정책이라는 자기 소프트웨어로 플래시 기록량을 44퍼센트 줄였습니다. "
         "해법이 이미 고객 소프트웨어 안에 있다는 뜻입니다. 사양서를 받아 SSD를 잘 만드는 방식은 둘째 계단에 머뭅니다. 셋째 계단은 고객 시스템 안에서 함께 설계해야 닿습니다.")

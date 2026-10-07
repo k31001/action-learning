@@ -2451,3 +2451,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 사용자 요청: "pptx도 커밋해서 푸시해 줘"
 - `outputs/presentation/ssd-future-ready-strategy.pptx`(덱 v1.9, 4장)를 생성기로 다시 만든 뒤 `git add -f`로 커밋. `.gitignore`의 `*.pptx` 규칙과 CLAUDE.md의 "PPTX 본체 미커밋" 원칙에 대한 이 파일 한정 예외
 - 재현 경로는 그대로 유지: `.venv/bin/python outputs/presentation/scripts/generate_ssd_future_ready_pptx.py`. 생성기를 고치면 이 PPTX도 다시 만들어 함께 커밋해야 어긋나지 않는다
+
+## [2026-10-07] build | 덱 3장 2칸에 SSD 내부 기술 스택 시각화 (덱 v2.0 · 보고서 v2.1)
+- 사용자 지시: 3장 "SSD 혼자 최적화" 칸의 빈 공간에 내부 최적화를 위한 핵심 기술 스택을 시각화
+- 2칸 오른쪽 반에 "SSD 내부 기술 스택" 5층. 아래 흰 층 = 기본 관리(FTL · ECC, GC · 웨어 레벨링), 위 회색 층 = 2014~2019에 더한 워크로드 추정(핫 · 콜드 추정 · 스트림 분리 2014~17 · IO 결정성 2019). Blue는 3칸(공동 설계)에만 유지
+- 근거: 해법 사다리 원장 F36~F39(Multi-stream HotStorage'14 · AutoStream SYSTOR'17 · FTL 핫/콜드 특허 · NVMe 1.4 IO 결정성). 결과 "테일 지연 · 성능 개선, WAF ≈ 3"은 F38 · F39
+- 출처 줄에 "스트림 '14 · '17 · NVMe 1.4" 추가(2줄 유지), 노트에 층 설명 추가. 렌더 QA PASS, 3장 글자 수 661 → 725
+- 보고서 v2.1 §3.3 2단계 보상 열 보강 · §7, 아웃라인 v2.0, index 갱신. PPTX 본체 재생성 후 커밋(예외 유지)
+- 대시보드: 덱 산출물만 바뀌고 위키 수치 · 전략 변경이 없어 건너뜀. 지식 그래프: 위키 링크 변경 없음
