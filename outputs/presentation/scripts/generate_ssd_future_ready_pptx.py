@@ -1,4 +1,4 @@
-"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-07 v2.1: 3장 계단 위 성장 그래프 4개 · 2칸 SSD 내부 기술 스택 · 3칸 주요 DC 기업 자체 설계 막대).
+"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-07 v2.2: 3장 계단 위 성장 그래프 4개 · 2칸 SSD 내부 기술 스택 · 3칸 주요 3사 자체 설계 막대).
 
 제목 4개를 이어 읽으면 한 문단이 된다(아웃라인 v0.3):
   1 배경   SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다
@@ -360,11 +360,11 @@ def seg(x0, y0, x1, y1, col, wpt=2.25):
 
 
 GROWTH = [  # 이름, 배율, 단위, 범위, 점, 시작 · 끝 라벨, 끝 라벨 위치
-    ("성능", "×90", "랜덤 읽기 IOPS (로그 축)", (20, 12000),
+    ("성능", "×90", "랜덤 읽기 IOPS", (20, 12000),
      [(2012, 75), (2015, 750), (2019, 1500), (2022, 2500), (2024, 3300), (2026, 6800)], ("75K", "6.8M"), "up"),
-    ("전력 효율", "×13", "MB/s per W (로그 축)", (30, 2000),
+    ("전력 효율", "×13", "MB/s per W", (30, 2000),
      [(2012, 83), (2015, 124), (2019, 350), (2022, 608), (2026, 1120)], ("83", "1,120"), "up"),
-    ("가성비", "×24", "1달러당 GB (로그 축)", (0.15, 40),
+    ("가성비", "×24", "1달러당 NAND GB", (0.15, 40),
      [(2010, 0.56), (2013, 1.6), (2016, 3.1), (2018, 4.0), (2020, 7.8), (2022, 10.5), (2023, 20), (2024, 13.3)], ("0.56", "13"), "right"),
 ]
 for k, (nm, mult, unit, (lo, hi), pts, (l0, l1), lpos) in enumerate(GROWTH):
@@ -382,14 +382,14 @@ for k, (nm, mult, unit, (lo, hi), pts, (l0, l1), lpos) in enumerate(GROWTH):
         tb(s, gx(x0, yb) - 0.70, gy(vb, lo, hi) - 0.42, 0.90, 0.32, [(l1, 18, True, INK)], align=R, anchor=MID)
     else:
         tb(s, gx(x0, yb) + 0.10, gy(vb, lo, hi) - 0.16, 0.50, 0.32, [(l1, 18, True, INK)], anchor=MID)
-    for yr in (2010, 2018, 2026):
+    for yr in (2010, 2026):
         tb(s, gx(x0, yr) - 0.35, GY1 + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=C)
 
 # 넷째: 정격 DWPD는 플래그십 10 → 1, QLC는 1 아래, 고객 캐시 요구 3~7.2 (띠)
 x0 = MX + 3 * (GW + GG)
 lo, hi = 0.15, 15
 tb(s, x0, 2.38, GW, 0.44, [[("DWPD  ", 20, True, BLUE), ("10 → 1", 24, True, BLUE)]], anchor=MID)
-tb(s, x0, 2.80, GW, 0.32, [("정격 하루 쓰기 (로그 축)", 16, False, GRAY)], anchor=MID)
+tb(s, x0, 2.80, GW, 0.32, [("정격, 하루 쓰기 횟수", 16, False, GRAY)], anchor=MID)
 rect(s, x0 + 0.10, GY1, GW - 0.20, 0.012, fill=LINE)
 rect(s, gx(x0, 2020), gy(7.2, lo, hi), gx(x0, 2026) - gx(x0, 2020), gy(3, lo, hi) - gy(7.2, lo, hi), fill=TINT, line=BLUE, lw=1.0, dash=True)
 tb(s, gx(x0, 2026) - 1.90, gy(7.2, lo, hi) - 0.31, 2.00, 0.28, [("고객 캐시 3~7.2", 16, True, BLUE)], align=R, anchor=MID)
@@ -403,7 +403,7 @@ for ser, col in ((FL, BLUE), (QL, GRAY_2)):
 tb(s, gx(x0, 2012) - 0.40, gy(10, lo, hi) + 0.06, 0.80, 0.28, [("10", 16, False, GRAY)], align=C, anchor=MID)
 tb(s, gx(x0, 2024) + 0.08, gy(1, lo, hi) - 0.16, 0.40, 0.32, [("1", 18, True, BLUE)], anchor=MID)
 tb(s, gx(x0, 2021) - 1.25, gy(0.33, lo, hi) - 0.14, 1.20, 0.30, [("QLC 0.26", 16, False, GRAY)], align=R, anchor=MID)
-for yr in (2010, 2018, 2026):
+for yr in (2010, 2026):
     tb(s, gx(x0, yr) - 0.35, GY1 + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=C)
 
 
@@ -432,9 +432,9 @@ for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
         d.fit(s, d.part("ssd"), x + 0.30, iy, 2.40, 0.86)
         my = iy + 1.10
     else:
-        d.fit(s, d.part("server"), x + 0.40, iy, 1.40, 0.74)
-        d.fit(s, d.part("ssd"), x + 2.00, iy + 0.12, 1.40, 0.52)
-        my = iy + 0.80
+        d.fit(s, d.part("server"), x + 0.40, iy, 1.90, 1.05)
+        d.fit(s, d.part("ssd"), x + 2.50, iy + 0.22, 1.80, 0.70)
+        my = iy + 1.12
     tb(s, x + 0.30, my, tw, 0.70, [(met, 40 if hot else 36, True, WHITE if hot else (GRAY if i == 1 else INK))], anchor=MID)
     tb(s, x + 0.30, my + 0.70, tw, 0.38, [(msub, 18, False, WHITE if hot else sub)])
 
@@ -442,70 +442,48 @@ for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
 x, w = steps[1][0], steps[1][1]
 KX, KW = x + 3.02, w - 3.30
 tb(s, KX, 6.36, KW, 0.40, [("SSD 내부 기술 스택", 18, True, GRAY)], anchor=MID)
-for k, (nm, yr, new) in enumerate([("핫 · 콜드 추정", "", True), ("스트림 분리", "2014~17", True), ("IO 결정성", "2019", True),
-                                   ("GC · 웨어 레벨링", "", False), ("FTL · ECC", "", False)]):
+for k, (nm, new) in enumerate([("핫 · 콜드 추정", True), ("스트림 분리", True), ("IO 결정성", True),
+                               ("GC · 웨어 레벨링", False), ("FTL · ECC", False)]):
     yy = 6.80 + k * 0.46
     rect(s, KX, yy, KW, 0.40, fill=GRAY if new else WHITE, line=None if new else LINE, shape=RR)
     tb(s, KX + 0.14, yy, KW - 0.28, 0.40, [(nm, 18, True, WHITE if new else GRAY)], anchor=MID)
-    if yr:
-        tb(s, KX + 0.14, yy, KW - 0.28, 0.40, [(yr, 16, False, LINE)], align=R, anchor=MID)
 
-# ---- 3칸 안: 주요 데이터센터 기업은 이미 SSD를 직접 설계한다 (공개 근거 첫해부터 막대, 자체 설계 = Blue · 스펙 · 표준 = 회색)
+# ---- 3칸 안: 주요 데이터센터 기업은 이미 SSD를 직접 설계한다 (공개 근거 첫해부터 막대, 주요 3사)
 x, w = steps[2][0], steps[2][1]
-PX, PW, MY0 = x + 0.26, w - 0.52, 5.46
+PX, PW, MY0 = x + 0.26, w - 0.52, 5.84
 rect(s, PX, MY0, PW, 9.22 - MY0, fill=WHITE, shape=RR)
-tb(s, PX + 0.22, MY0 + 0.10, PW - 0.44, 0.40, [("주요 DC 기업은 이미 SSD를 직접 설계", 20, True, INK)], anchor=MID)
-lx = PX + 0.22
-for col, lab, lw_ in ((BLUE, "자체 SSD · 컨트롤러", 2.10), (LINE, "스펙 · 표준", 1.40)):
-    rect(s, lx, MY0 + 0.62, 0.16, 0.16, fill=col)
-    tb(s, lx + 0.22, MY0 + 0.55, lw_, 0.30, [(lab, 16, False, GRAY)], anchor=MID)
-    lx += lw_ + 0.40
-TX0, TX1 = PX + 1.62, PX + PW - 0.14
+tb(s, PX + 0.22, MY0 + 0.12, PW - 0.44, 0.42, [("주요 DC 기업은 이미 SSD를 직접 설계", 20, True, INK)], anchor=MID)
+TX0, TX1 = PX + 1.70, PX + PW - 0.22
 
 
 def tx(yr):
-    return TX0 + (yr - 2013.6) / 12.8 * (TX1 - TX0)
+    return TX0 + (yr - 2014) / 12 * (TX1 - TX0)
 
 
-RT, RH_ = MY0 + 0.96, 0.34
-for yr in (2014, 2018, 2022, 2026):
-    rect(s, tx(yr) - 0.005, RT - 0.04, 0.01, 7 * RH_ + 0.04, fill=LINE)
-    if yr == 2026:
-        tb(s, TX1 - 0.70, RT + 7 * RH_ + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=R)
-    else:
-        tb(s, tx(yr) - 0.35, RT + 7 * RH_ + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=C)
-CO = [  # 로고, 이름(심볼만 있는 로고), 시작, 자체 설계 여부, 막대 글, 글 위치
-    ("baidu", "Baidu", 2014, True, "자체 SSD (SDF) · 3천 대", "in"),
-    ("google", None, 2016, True, "자체 설계 SSD → Titanium", "in"),
-    ("alibabacloud", "Alibaba", 2016, True, "AliFlash → 컨트롤러 50만+", "in"),
-    ("microsoft", None, 2018, False, "Denali → OCP SSD 스펙", "in"),
-    ("meta", None, 2020, False, "OCP 스펙 → FDP", "in"),
-    ("aws", None, 2020.9, True, "Nitro SSD · 지연 -60%", "left"),
-    ("bytedance", "ByteDance", 2026, True, "사내 SSD 개발 (FMS'26)", "left"),
-]
-for r, (lg, nm, y0, own, lab, pos) in enumerate(CO):
+RT, RH_ = MY0 + 0.74, 0.66
+for yr in (2014, 2020, 2026):
+    rect(s, tx(yr) - 0.005, RT - 0.04, 0.01, 3 * RH_ + 0.04, fill=LINE)
+    tb(s, min(tx(yr) - 0.35, TX1 - 0.70), RT + 3 * RH_ + 0.04, 0.70, 0.30, [(str(yr), 16, False, GRAY)],
+       align=R if yr == 2026 else C)
+for r, (lg, nm, y0, lab) in enumerate([("google", None, 2016, "자체 설계 SSD"),
+                                       ("alibabacloud", "Alibaba", 2016, "자체 SSD · 컨트롤러"),
+                                       ("aws", None, 2020.9, "Nitro SSD")]):
     yy = RT + r * RH_
     if nm:
-        d.fit(s, d.logo(lg), PX + 0.22, yy + 0.05, 0.24, 0.24, align="left")
-        tb(s, PX + 0.50, yy, 1.12, RH_, [(nm, 16, True, INK)], anchor=MID)
+        d.fit(s, d.logo(lg), PX + 0.24, yy + (RH_ - 0.32) / 2, 0.32, 0.32, align="left")
+        tb(s, PX + 0.62, yy, 1.10, RH_, [(nm, 18, True, INK)], anchor=MID)
     else:
-        lh = 0.28 if lg == "aws" else 0.22
-        d.fit(s, d.logo(lg), PX + 0.22, yy + (RH_ - lh) / 2, 1.05, lh, align="left")
-    sig = lg == "bytedance"
-    bx0 = tx(y0)
-    rect(s, bx0, yy + 0.04, TX1 - bx0, RH_ - 0.08, fill=None if sig else (BLUE if own else LINE),
-         line=BLUE if sig else None, dash=sig, shape=RR)
-    if pos == "in":
-        tb(s, bx0 + 0.10, yy, TX1 - bx0 - 0.12, RH_, [(lab, 16, True, WHITE if own else INK)], anchor=MID)
-    else:
-        tb(s, TX0 - 0.10, yy, bx0 - TX0, RH_, [(lab, 16, True, BLUE if own else INK)], align=R, anchor=MID)
+        lh = 0.40 if lg == "aws" else 0.30
+        d.fit(s, d.logo(lg), PX + 0.24, yy + (RH_ - lh) / 2, 1.30, lh, align="left")
+    rect(s, tx(y0), yy + 0.12, TX1 - tx(y0), RH_ - 0.24, fill=BLUE, shape=RR)
+    tb(s, tx(y0) + 0.14, yy, TX1 - tx(y0) - 0.20, RH_, [(lab, 18, True, WHITE)], anchor=MID)
 
 d.chevron(s, MX + 5.57, 7.60, w=0.16, h=0.50)
 d.chevron(s, MX + 11.67, 7.10, w=0.16, h=0.50)
 
 d.band(s, 9.60, 0.80, "결론", "사양서만으로는 2칸에 머뭅니다. 3칸은 고객 시스템 안에서 함께 설계해야 닿습니다")
-d.footer(s, "출처: 성장 원장(Intel S3700 · 삼성 PM1725~PM1763 · Micron 9650 사양, NAND $/GB = IBM, 명목) · 고객 캐시 DWPD(Kangaroo · KV 실측 · Baleen) · "
-            "해법 사다리 원장(스트림 · NVMe 1.4 · FDP · CacheLib 3.22 → 1.03) · 자체 설계 원장(Baidu · Google · Alibaba · OCP · AWS · ByteDance) · 일부 수치는 검색 확인 · 부품 이미지는 3D 렌더")
+d.footer(s, "출처: 성장 원장(Intel · 삼성 · Micron 사양, NAND $/GB는 IBM 명목) · 고객 캐시 DWPD(Kangaroo · KV 실측 · Baleen) · 해법 사다리 원장 · "
+            "자체 설계 원장(Google · Alibaba · AWS) · 그래프 세로축은 로그 축 · 일부 수치는 검색 확인 · 부품 이미지는 3D 렌더")
 d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터로 말씀드리겠습니다. 위쪽 그래프 넷은 지난 10~15년 동안 데이터센터 SSD가 혼자서 얼마나 성장했는지입니다. "
         "4K 랜덤 읽기는 2012년 7만 5천 IOPS에서 2026년 680만 IOPS로 약 90배, 와트당 읽기 성능은 83에서 1,120MB/s로 약 13배, 1달러로 사는 NAND 용량은 2010년 0.56GB에서 2024년 13GB로 약 24배 늘었습니다. "
         "NAND 세대, 컨트롤러, 인터페이스 세대가 만든 성장이고, 모두 SSD 안에서 이룬 것입니다. "
@@ -515,11 +493,10 @@ d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터
         "둘째 계단은 SSD 혼자 하는 최적화입니다. FTL과 ECC, GC와 웨어 레벨링 위에, 2014년부터 2019년까지 핫 · 콜드 추정, 스트림 분리, IO 결정성을 더했습니다. "
         "테일 지연과 성능은 좋아졌지만, 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "
         "셋째 계단이 고객 시스템과의 공동 설계입니다. 삼성 엔지니어가 Meta의 오픈소스 CacheLib 안에 FDP 배치를 구현했고, WAF가 3.22에서 1.03으로 내려갔습니다. "
-        "이 방향은 이미 주요 데이터센터 기업의 흐름입니다. Baidu는 2014년 하드웨어와 소프트웨어를 함께 설계한 자체 SSD를 3천 대 넘게 배치했습니다. "
-        "Google은 2016년 논문에서 자체 인터페이스와 펌웨어를 얹은 자체 설계 SSD를 운용한다고 밝혔고, 지금은 Titanium SSD를 씁니다. "
-        "Alibaba는 2016년 AliFlash로 시작해 2023년 자체 SSD 컨트롤러를 내놓았고, 누적 50만 개 넘게 출하했다고 발표했습니다. "
+        "이 방향은 이미 주요 데이터센터 기업의 흐름입니다. Google은 2016년 논문에서 자체 인터페이스와 펌웨어를 얹은 자체 설계 SSD를 운용한다고 밝혔고, 지금은 Titanium SSD로 이전 세대보다 지연을 최대 35퍼센트 줄였습니다. "
+        "Alibaba는 2016년 자체 SSD AliFlash로 시작해 2023년 자체 SSD 컨트롤러를 내놓았고, 누적 50만 개 넘게 출하했다고 발표했습니다. "
         "AWS는 FTL을 새로 쓴 Nitro SSD로 I3 대비 지연을 최대 60퍼센트 줄였다고 밝혔습니다. 다만 컨트롤러 칩까지 직접 만든다는 근거는 없습니다. "
-        "Microsoft와 Meta는 SSD를 직접 만들지 않지만 OCP SSD 스펙과 FDP 표준을 직접 썼고, ByteDance도 사내 SSD 개발 조직을 공개했습니다. Tencent는 공개 근거를 찾지 못했습니다. "
+        "이 밖에 Baidu는 2014년 자체 SSD를 배치했고, Microsoft와 Meta는 OCP SSD 스펙과 FDP 표준을 직접 썼습니다. "
         "고객은 이미 자기 시스템에 맞춰 SSD를 설계하고 있습니다. 사양서를 받아 SSD를 잘 만드는 방식은 둘째 계단에 머물고, 셋째 계단은 고객 시스템 안에서 함께 설계해야 닿습니다.")
 
 # =============================================================== 4 실행

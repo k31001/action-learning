@@ -1,12 +1,12 @@
 ---
 type: presentation-outline
-status: v2.1 덱 (2026-10-07, 3장 계단 위 성장 그래프 4개 + 3칸 주요 DC 기업 자체 설계 막대). v2.0 (2026-10-07, 3장 2칸에 SSD 내부 기술 스택). v1.9 (2026-10-06): 4장으로 정리(보충 5장 제외 · 1~4장 텍스트 축소 · 시각화 보강). v1.8: 4장 시각화(세 가지 핵심 업무 그림 카드 · CRM 범위 확장 관계도). v1.7: 4장 MYD · FDE 다섯 가지 · 역량 화두. v1.6: 보충 5장 FDP 시뮬레이션 추가. v1.5: 2장 단순화 + 협력 깊이 재판단(공동 설계 필수 = FDP). v1.4: 2장 재구성, v1.3: 1장 재구성. 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
-deck: outputs/presentation/ssd-future-ready-strategy.pptx (v2.1, 4장, 사용자 요청으로 PPTX 본체 커밋 · 생성기로도 재현)
+status: v2.2 덱 (2026-10-07, 3장 글자 밀도 축소 · 3칸 주요 3사만). v2.1 (2026-10-07, 3장 계단 위 성장 그래프 4개 + 3칸 주요 DC 기업 자체 설계 막대). v2.0 (2026-10-07, 3장 2칸에 SSD 내부 기술 스택). v1.9 (2026-10-06): 4장으로 정리(보충 5장 제외 · 1~4장 텍스트 축소 · 시각화 보강). v1.8: 4장 시각화(세 가지 핵심 업무 그림 카드 · CRM 범위 확장 관계도). v1.7: 4장 MYD · FDE 다섯 가지 · 역량 화두. v1.6: 보충 5장 FDP 시뮬레이션 추가. v1.5: 2장 단순화 + 협력 깊이 재판단(공동 설계 필수 = FDP). v1.4: 2장 재구성, v1.3: 1장 재구성. 생성기 outputs/presentation/scripts/generate_ssd_future_ready_pptx.py
+deck: outputs/presentation/ssd-future-ready-strategy.pptx (v2.2, 4장, 사용자 요청으로 PPTX 본체 커밋 · 생성기로도 재현)
 report: outputs/report/ssd-future-ready-strategy-report.md (v2.0)
 design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬, 20 × 11.25in, 본문 18pt+, 출처 15pt)
 ---
 
-# 불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 (덱 v2.1)
+# 불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 (덱 v2.2)
 
 ## v1.0 → v1.1 변경 (2026-10-03 사용자 리뷰)
 
@@ -98,6 +98,13 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 | 3칸 Meta CacheLib 흰 상자 자리: 공동 설계가 이미 주요 DC 기업의 트렌드라는 증거, 아마존 · 중국 DC 업체 자체 SSD 팩트 체크 | 서버 · SSD 이미지 축소, 흰 상자 = "주요 DC 기업은 이미 SSD를 직접 설계": 기업 7곳을 공개 근거 첫해부터 막대로(Baidu 2014 SDF 3천 대 · Google 2016 자체 설계 SSD → Titanium · Alibaba 2016 AliFlash → 컨트롤러 50만+ · Microsoft 2018 Denali → OCP 스펙 · Meta 2020 OCP 스펙 → FDP · AWS 2020 Nitro SSD 지연 -60% · ByteDance 2026 사내 SSD 개발(점선)). 자체 SSD · 컨트롤러 Blue, 스펙 · 표준 회색. Tencent는 근거 없어 제외(노트). CacheLib 150% · -44%는 보고서 §3.2에만 |
 | (팩트 체크 정정) | AWS는 자체 설계 SSD · FTL이지 자체 컨트롤러 칩 근거 없음(외부 벤더 협업 정황), 첫 사용 2020-12. CacheLib FDP 논문 저자는 삼성(Meta는 업스트림 반영) → 2장 출처 · 노트, 위키 3곳, 보고서 2곳, 대시보드 captiveSteps 정정 |
 
+## v2.1 → v2.2 변경 (2026-10-07 사용자 지시: 3장 글자 밀도 축소, 업체는 주요 업체만)
+
+| 지시 | 반영 |
+|---|---|
+| 글자 밀도를 줄인다 | 위 그래프 단위 줄 축약 · 가운데 연도 눈금 삭제("로그 축"은 출처 줄에 한 번), 2칸 스택 층 안 연도 삭제, 출처 줄 축약. 3장 글자 수 1,029 → 750 |
+| 업체가 너무 많으니 주요 업체만 | 3칸 막대 7개 → 3개(Google 2016 자체 설계 SSD · Alibaba 2016 자체 SSD · 컨트롤러 · AWS 2020 Nitro SSD), 범례 · 막대 안 수치 삭제, 행 · 로고 확대, 서버 · SSD 이미지 원래 크기로. Baidu · Microsoft · Meta는 노트, ByteDance · Tencent는 위키에만 |
+
 ## 제목 4개를 이어 읽으면
 
 > SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다. 핵심 기술 여섯 가지 중 다섯은 명확한 스펙으로 풀리지만, FDP는 고객과 함께 설계해야 제대로 동작합니다. 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다. 고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다. **실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.**
@@ -117,7 +124,7 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.1: 11.J 근거 사슬
 | 3 | SSD 혼자서도 성능 · 전력 효율 · 가성비는 크게 올랐다 | 선 그래프 3개(랜덤 읽기 75K → 6.8M IOPS ×90 · 83 → 1,120 MB/s per W ×13 · 1달러당 NAND GB 0.56 → 13 ×24, 로그 축) |
 | 3 | 그러나 정격 DWPD는 내려왔고 고객 요구에 못 미친다 | DWPD 선(플래그십 10 → 1, QLC 0.26) + 고객 캐시 3~7.2 점선 띠 |
 | 3 | SSD 혼자 쌓은 기술로는 WAF ≈ 3에 머물렀다 | SSD 내부 기술 스택 5층(기본 관리 2 + 워크로드 추정 3) 옆에 WAF ≈ 3 빅넘버 |
-| 3 | 공동 설계는 이미 주요 DC 기업의 흐름 | 기업 7곳 막대(공개 근거 첫해부터, 자체 SSD · 컨트롤러 Blue · 스펙 · 표준 회색, 막대 안에 대표 수치) |
+| 3 | 공동 설계는 이미 주요 DC 기업의 흐름 | 주요 3사 막대(공개 근거 첫해부터: Google 2016 · Alibaba 2016 · AWS 2020, 수치는 노트) |
 | 3 | 3칸에서 WAF가 1에 닿는다 | WAF 3.22 → 1.03 |
 | 4 | 계약 · 사람 · 역량 | MYD 적층 · 세 가지 핵심 업무 그림 카드 · 역량 격자 + CRM 범위 확장 관계도 |
 

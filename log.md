@@ -2478,3 +2478,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 3칸: 서버 · SSD 이미지 축소, Meta CacheLib 상자 → "주요 DC 기업은 이미 SSD를 직접 설계" 막대 7개(공개 근거 첫해부터, 자체 SSD · 컨트롤러 Blue · 스펙 · 표준 회색, ByteDance 점선). 로고 3종 추가(alibabacloud · baidu · bytedance, simple-icons 잉크색 렌더)
 - 3장 출처 줄 두 줄 유지, 노트 재작성(성장 → DWPD 간격 → 계단 → 기업 흐름, Tencent 근거 없음 · AWS 컨트롤러 단서 포함). 렌더 QA PASS, 3장 글자 수 725 → 1,029
 - 보고서 v2.2(§3.0 · §3.4 신설 · §7), 아웃라인 v2.1, index. 대시보드 captiveSteps 정정으로 v2.46.65 패치 + updates 항목. PPTX 본체 재생성 후 커밋
+
+## [2026-10-07] build | 덱 3장 글자 밀도 축소 · 3칸 주요 3사만 (덱 v2.2)
+- 사용자 지시: "슬라이드3 글자 밀도 좀 줄이고 업체가 너무 많으니까 주요 업체만 남겨줘"
+- 3칸 막대 7개 → 3개(Google 2016 자체 설계 SSD · Alibaba 2016 자체 SSD · 컨트롤러 · AWS 2020 Nitro SSD). 근거가 가장 분명하고 사용자가 물은 아마존 · 중국 대표를 함께 담는 조합. 범례 · 막대 안 수치 삭제, 서버 · SSD 이미지 원래 크기로
+- 위 그래프 단위 줄 축약 · 가운데 연도 눈금 삭제("로그 축"은 출처 줄에 한 번), 2칸 스택 층 안 연도 삭제, 출처 줄 축약. 3장 글자 수 1,029 → 750, 렌더 QA PASS
+- 노트: 3사 수치(Google -35% · Alibaba 50만 개+ · AWS -60%, 컨트롤러 단서) + Baidu · Microsoft · Meta 한 문장. 위키 · 보고서 §3.4는 7사 유지
+- 아웃라인 v2.2 · 보고서 §7 · 위키 datacenter-in-house-ssd-co-design §2 · index. 대시보드: 덱 산출물만 바뀌어 건너뜀. 지식 그래프: 위키 링크 변경 없음
