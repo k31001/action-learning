@@ -5,6 +5,7 @@ sources:
   - sources/articles/essd-growth-metrics-2010-2026-2026-10.md
   - sources/articles/component-to-system-solution-ladder-facts-2026-09.md
   - sources/articles/ssd-customer-high-dwpd-evidence-2026-10.md
+  - sources/articles/essd-rated-dwpd-products-2008-2026-2026-10.md
 ---
 
 # SSD 혼자 이룬 10~15년 성장과, 오르지 않은 DWPD
@@ -32,6 +33,23 @@ xychart-beta
     line [10, 5, 1, 1, 1]
 ```
 
+## 1.5 출시 제품 226개 등급의 정격 DWPD (덱 3장 점도표, 2026-10-07)
+
+> 사용자 지시(2026-10-07): "여러 그래프 그리지 말고 DWPD 그래프 하나로 해 주면 될 것 같아. 지난 십수 년간 출시한 SSD들에 대하여 DWPD 값이 어떻게 변화해 왔는지 조사를 해서 점도표로 표현을 해 줘." 덱 v2.3부터 3장 계단 위는 이 점도표 하나다(성능 · 전력 효율 · 가성비 그래프는 이 페이지 §1에만 남김).
+
+6개 업체(Samsung · Intel/Solidigm · Micron · Kioxia/Toshiba · SK hynix · WD/HGST/SanDisk)의 데이터센터 SSD 226개 등급(RI · MU · WI 변형 각각), 5년 보증 기준 환산, QLC · 용량형은 랜덤 쓰기 기준. 근거: [essd-rated-dwpd-products-2008-2026-2026-10.md](../../sources/articles/essd-rated-dwpd-products-2008-2026-2026-10.md)(모두 🟡 · ⚠️), 데이터 [essd_dwpd_points.json](../../outputs/presentation/assets/essd_dwpd_points.json).
+
+| 기간 (특수 제품 제외) | 등급 수 | 중앙값 DWPD | 10 이상 비중 | 최대 |
+|---|---|---|---|---|
+| 2008~2012 | 9 | 10 | 67% | 50 |
+| 2013~2015 | 45 | 3 | 38% | 45 |
+| 2016~2018 | 61 | 1.5 | 7% | 10 |
+| 2019~2021 | 46 | 1 | 2% | 10 |
+| 2022~2026 | 51 | 1 | 0% | 5 |
+
+- 2016년 이후 30 이상은 SLC · SCM 특수 제품뿐(Optane P4800X 30 · 60, P5800X 100, Z-SSD 30, FL6 60, D7-P5810 50, XTR 35). 주력 TLC는 1(읽기 위주) · 3(혼합), QLC는 0.2~0.6.
+- 표본 한계: 출시 등급의 단순 집계(판매량 가중 아님), 2008~2012 표본 9개.
+
 ## 2. 읽는 법 (⚠️ 과제팀 해석)
 
 - **성장은 SSD 안에서 났다**: 순차 성능은 인터페이스 한계에 거의 붙어 올랐고(SATA 약 0.55 → Gen6 약 28 GB/s), 랜덤 IOPS · 전력 효율은 컨트롤러 공정과 NAND 세대의 기여가 크다(같은 Gen5 안에서 PM1743 → PM1753 랜덤 +32%, GR-11 · GR-13). 가성비는 NAND 비트 밀도(3D 적층 · TLC · QLC)가 만들었다. 모두 고객 시스템과 함께 설계하지 않고 얻은 것이다.
@@ -52,4 +70,4 @@ xychart-beta
 - 해법 사다리(1 ECC 완결 · 2 SSD 혼자 최적화 · 3 공동 설계): [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
 - 주요 DC 기업의 자체 SSD · 공동 설계: [datacenter-in-house-ssd-co-design.md](datacenter-in-house-ssd-co-design.md)
 - 고DWPD 운영점: [high-dwpd-operating-point.md](high-dwpd-operating-point.md)
-- 산출물: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md) §3.1 · 덱 3장 계단 위
+- 산출물: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md) §3.0 · 덱 3장 계단 위(v2.3부터 §1.5 점도표만)

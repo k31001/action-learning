@@ -340,71 +340,79 @@ d.notes(s, "2장입니다. 1장의 제품 포트폴리오를 받치는 핵심 �
 # =============================================================== 3 당위성
 s = d.slide(3, "당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
 
-# ---- 계단 위: SSD 혼자서도 성능 · 전력 효율 · 가성비는 크게 올랐지만, 정격 DWPD는 내려왔다 (2010~2026, 로그 축)
-GW, GG = 2.75, 0.22
-GY0, GY1 = 3.28, 4.98      # 그림 영역 위 · 아래
+# ---- 계단 위: 지난 18년 출시 데이터센터 SSD의 정격 DWPD 점도표 (업체별 점 모양, 로그 축)
+import json  # noqa: E402
+import statistics  # noqa: E402
+
+DW = json.load(open(os.path.join(ASSETS, "essd_dwpd_points.json"), encoding="utf-8"))["points"]
+VENDORS = [  # 키, 이름, 점 모양, 색
+    ("samsung", "삼성", MSO_SHAPE.OVAL, BLUE),
+    ("intel", "Solidigm · Intel", MSO_SHAPE.RECTANGLE, GRAY),
+    ("micron", "Micron", MSO_SHAPE.ISOSCELES_TRIANGLE, GRAY),
+    ("kioxia", "Kioxia · Toshiba", MSO_SHAPE.DIAMOND, GRAY_2),
+    ("skhynix", "SK hynix", MSO_SHAPE.OVAL, GRAY_2),
+    ("wd", "WD · SanDisk", MSO_SHAPE.FLOWCHART_MERGE, GRAY_2),
+]
+VI = {k: i for i, (k, *_) in enumerate(VENDORS)}
+CX0, CX1 = MX + 0.62, MX + 11.50          # 그림 영역 좌우
+CY0, CY1 = 3.32, 5.30                     # DWPD 100 · 0.1
+YR0, YR1 = 2007.6, 2026.6
 
 
-def gx(x0, yr):
-    return x0 + 0.34 + (yr - 2010) / 16 * (GW - 0.68)
+def cx(yr):
+    return CX0 + (yr - YR0) / (YR1 - YR0) * (CX1 - CX0)
 
 
-def gy(v, lo, hi):
-    return GY1 - (math.log10(v) - math.log10(lo)) / (math.log10(hi) - math.log10(lo)) * (GY1 - GY0)
+def cy(v):
+    return CY1 - (math.log10(v) + 1) / 3 * (CY1 - CY0)
 
 
-def seg(x0, y0, x1, y1, col, wpt=2.25):
+def seg(x0, y0, x1, y1, col, wpt=2.25, dash=False):
     ln = s.shapes.add_connector(1, *(int(v * 914400) for v in (x0, y0, x1, y1)))
     ln.line.color.rgb = col
     ln.line.width = int(wpt * 12700)
+    if dash:
+        ln.line.dash_style = 4
 
 
-GROWTH = [  # 이름, 배율, 단위, 범위, 점, 시작 · 끝 라벨, 끝 라벨 위치
-    ("성능", "×90", "랜덤 읽기 IOPS", (20, 12000),
-     [(2012, 75), (2015, 750), (2019, 1500), (2022, 2500), (2024, 3300), (2026, 6800)], ("75K", "6.8M"), "up"),
-    ("전력 효율", "×13", "MB/s per W", (30, 2000),
-     [(2012, 83), (2015, 124), (2019, 350), (2022, 608), (2026, 1120)], ("83", "1,120"), "up"),
-    ("가성비", "×24", "1달러당 NAND GB", (0.15, 40),
-     [(2010, 0.56), (2013, 1.6), (2016, 3.1), (2018, 4.0), (2020, 7.8), (2022, 10.5), (2023, 20), (2024, 13.3)], ("0.56", "13"), "right"),
-]
-for k, (nm, mult, unit, (lo, hi), pts, (l0, l1), lpos) in enumerate(GROWTH):
-    x0 = MX + k * (GW + GG)
-    tb(s, x0, 2.38, GW, 0.44, [[(nm + "  ", 20, True, INK), (mult, 24, True, INK)]], anchor=MID)
-    tb(s, x0, 2.80, GW, 0.32, [(unit, 16, False, GRAY)], anchor=MID)
-    rect(s, x0 + 0.10, GY1, GW - 0.20, 0.012, fill=LINE)
-    for i in range(len(pts) - 1):
-        seg(gx(x0, pts[i][0]), gy(pts[i][1], lo, hi), gx(x0, pts[i + 1][0]), gy(pts[i + 1][1], lo, hi), GRAY)
-    for (yr, v) in pts:
-        rect(s, gx(x0, yr) - 0.055, gy(v, lo, hi) - 0.055, 0.11, 0.11, fill=GRAY, shape=MSO_SHAPE.OVAL)
-    (ya, va), (yb, vb) = pts[0], pts[-1]
-    tb(s, gx(x0, ya) - 0.40, gy(va, lo, hi) + 0.06, 0.80, 0.28, [(l0, 16, False, GRAY)], align=C, anchor=MID)
-    if lpos == "up":
-        tb(s, gx(x0, yb) - 0.70, gy(vb, lo, hi) - 0.42, 0.90, 0.32, [(l1, 18, True, INK)], align=R, anchor=MID)
-    else:
-        tb(s, gx(x0, yb) + 0.10, gy(vb, lo, hi) - 0.16, 0.50, 0.32, [(l1, 18, True, INK)], anchor=MID)
-    for yr in (2010, 2026):
-        tb(s, gx(x0, yr) - 0.35, GY1 + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=C)
-
-# 넷째: 정격 DWPD는 플래그십 10 → 1, QLC는 1 아래, 고객 캐시 요구 3~7.2 (띠)
-x0 = MX + 3 * (GW + GG)
-lo, hi = 0.15, 15
-tb(s, x0, 2.38, GW, 0.44, [[("DWPD  ", 20, True, BLUE), ("10 → 1", 24, True, BLUE)]], anchor=MID)
-tb(s, x0, 2.80, GW, 0.32, [("정격, 하루 쓰기 횟수", 16, False, GRAY)], anchor=MID)
-rect(s, x0 + 0.10, GY1, GW - 0.20, 0.012, fill=LINE)
-rect(s, gx(x0, 2020), gy(7.2, lo, hi), gx(x0, 2026) - gx(x0, 2020), gy(3, lo, hi) - gy(7.2, lo, hi), fill=TINT, line=BLUE, lw=1.0, dash=True)
-tb(s, gx(x0, 2026) - 1.90, gy(7.2, lo, hi) - 0.31, 2.00, 0.28, [("고객 캐시 3~7.2", 16, True, BLUE)], align=R, anchor=MID)
-FL = [(2012, 10), (2015, 5), (2019, 1), (2022, 1), (2024, 1)]
-QL = [(2021, 0.41), (2024, 0.26)]
-for ser, col in ((FL, BLUE), (QL, GRAY_2)):
-    for i in range(len(ser) - 1):
-        seg(gx(x0, ser[i][0]), gy(ser[i][1], lo, hi), gx(x0, ser[i + 1][0]), gy(ser[i + 1][1], lo, hi), col)
-    for (yr, v) in ser:
-        rect(s, gx(x0, yr) - 0.055, gy(v, lo, hi) - 0.055, 0.11, 0.11, fill=col, shape=MSO_SHAPE.OVAL)
-tb(s, gx(x0, 2012) - 0.40, gy(10, lo, hi) + 0.06, 0.80, 0.28, [("10", 16, False, GRAY)], align=C, anchor=MID)
-tb(s, gx(x0, 2024) + 0.08, gy(1, lo, hi) - 0.16, 0.40, 0.32, [("1", 18, True, BLUE)], anchor=MID)
-tb(s, gx(x0, 2021) - 1.25, gy(0.33, lo, hi) - 0.14, 1.20, 0.30, [("QLC 0.26", 16, False, GRAY)], align=R, anchor=MID)
-for yr in (2010, 2026):
-    tb(s, gx(x0, yr) - 0.35, GY1 + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=C)
+nand = [q for q in DW if not q[3]]
+med = {rg: statistics.median([q[2] for q in nand if rg[0] <= q[1] <= rg[1]])
+       for rg in ((2008, 2012), (2013, 2015), (2016, 2018), (2019, 2021), (2022, 2026))}
+share = {rg: sum(q[2] >= 10 for q in nand if rg[0] <= q[1] <= rg[1]) / sum(rg[0] <= q[1] <= rg[1] for q in nand)
+         for rg in ((2008, 2012), (2022, 2026))}
+tb(s, MX, 2.36, 6.2, 0.44, [[("출시 SSD의 정격 DWPD  ", 20, True, INK), (f"{len(DW)}개 제품 등급", 16, False, GRAY)]], anchor=MID)
+tb(s, MX + 5.6, 2.36, 6.05, 0.44, [[("중앙값 ", 18, True, BLUE), (f"{med[(2008, 2012)]:.0f} → {med[(2022, 2026)]:.0f}", 24, True, BLUE),
+                                    ("   10 DWPD 이상 ", 18, True, BLUE), (f"{share[(2008, 2012)]:.0%} → {share[(2022, 2026)]:.0%}", 24, True, BLUE)]],
+   align=R, anchor=MID)
+lx = MX
+for k, nm, shp, col in VENDORS:
+    rect(s, lx, 2.89, 0.15, 0.15, fill=col, shape=shp)
+    w_ = sum(0.24 if ord(ch) > 0x3000 else (0.06 if ch in " ·" else 0.115) for ch in nm) + 0.30
+    tb(s, lx + 0.20, 2.80, w_, 0.32, [(nm, 16, False, GRAY)], anchor=MID)
+    lx += 0.20 + w_ + 0.02
+# 눈금 · 고객 요구 띠
+for v, lab in ((0.1, "0.1"), (1, "1"), (10, "10"), (100, "100")):
+    rect(s, CX0, cy(v) - 0.006, CX1 - CX0, 0.012, fill=LINE)
+    tb(s, MX, cy(v) - 0.15, 0.55, 0.30, [(lab, 16, False, GRAY)], align=R, anchor=MID)
+for yr in (2008, 2012, 2016, 2020, 2024):
+    tb(s, cx(yr) - 0.35, CY1 + 0.03, 0.70, 0.26, [(str(yr), 16, False, GRAY)], align=C)
+rect(s, cx(2019), cy(7.2), cx(YR1) - cx(2019), cy(3) - cy(7.2), fill=TINT, line=BLUE, lw=1.0, dash=True)
+tb(s, cx(YR1) - 2.60, cy(7.2) - 0.31, 2.60, 0.28, [("고객 캐시 요구 3~7.2", 16, True, BLUE)], align=R, anchor=MID)
+# 점: 같은 해 업체끼리 가로로 조금씩 비켜 찍는다. 빈 점 = SLC · SCM 특수 제품
+seen = {}
+for vend, yr, v, sp, _ in sorted(DW, key=lambda q: VI[q[0]] == 0):
+    i = VI[vend]
+    key = (vend, yr, v)
+    dup = seen.get(key, 0)
+    seen[key] = dup + 1
+    x = cx(yr + (i - 2.5) * 0.11 + dup * 0.05)
+    k, nm, shp, col = VENDORS[i]
+    rect(s, x - 0.065, cy(v) - 0.065, 0.13, 0.13, fill=WHITE if sp else col, line=col if sp else None, lw=1.5, shape=shp)
+tb(s, cx(2007.9), cy(0.16) - 0.15, 3.2, 0.30, [("빈 점 = SLC · SCM 특수 제품", 16, False, GRAY)], anchor=MID)
+# 기간별 중앙값 (특수 제외)
+for (a0, a1), m in med.items():
+    seg(cx(a0 - 0.45), cy(m), cx(a1 + 0.45), cy(m), INK, wpt=3.0)
+tb(s, cx(2007.7), cy(med[(2008, 2012)]) + 0.04, 1.2, 0.28, [("중앙값", 16, True, INK)], anchor=MID)
 
 
 BOT = 9.40
@@ -482,13 +490,13 @@ d.chevron(s, MX + 5.57, 7.60, w=0.16, h=0.50)
 d.chevron(s, MX + 11.67, 7.10, w=0.16, h=0.50)
 
 d.band(s, 9.60, 0.80, "결론", "사양서만으로는 2칸에 머뭅니다. 3칸은 고객 시스템 안에서 함께 설계해야 닿습니다")
-d.footer(s, "출처: 성장 원장(Intel · 삼성 · Micron 사양, NAND $/GB는 IBM 명목) · 고객 캐시 DWPD(Kangaroo · KV 실측 · Baleen) · 해법 사다리 원장 · "
-            "자체 설계 원장(Google · Alibaba · AWS) · 그래프 세로축은 로그 축 · 일부 수치는 검색 확인 · 부품 이미지는 3D 렌더")
-d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터로 말씀드리겠습니다. 위쪽 그래프 넷은 지난 10~15년 동안 데이터센터 SSD가 혼자서 얼마나 성장했는지입니다. "
-        "4K 랜덤 읽기는 2012년 7만 5천 IOPS에서 2026년 680만 IOPS로 약 90배, 와트당 읽기 성능은 83에서 1,120MB/s로 약 13배, 1달러로 사는 NAND 용량은 2010년 0.56GB에서 2024년 13GB로 약 24배 늘었습니다. "
-        "NAND 세대, 컨트롤러, 인터페이스 세대가 만든 성장이고, 모두 SSD 안에서 이룬 것입니다. "
-        "그런데 오른쪽 정격 DWPD는 반대입니다. 2012년 고내구 드라이브의 10에서 지금 플래그십 1로, QLC는 0.26까지 내려왔습니다. 셀이 견디는 쓰기가 SLC 10만 회에서 QLC 1천 회로 약 100배 줄었기 때문입니다. "
-        "고내구 등급에서 읽기 위주 등급으로 옮겨 간 영향도 섞여 있지만, 고객 캐시 계층은 하루 3회에서 7.2회를 씁니다. 이 띠와 정격 사이의 간격이 지금의 과제입니다. "
+d.footer(s, "출처: 정격 DWPD 원장(Samsung · Intel · Solidigm · Micron · Kioxia · Toshiba · SK hynix · WD · SanDisk 사양 · 리뷰, 3년 보증은 5년으로 환산, QLC는 랜덤 쓰기, 중앙값 · 비중은 특수 제품 제외) · "
+            "고객 캐시 DWPD(Kangaroo · KV 실측 · Baleen) · 해법 사다리 원장 · 자체 설계 원장 · 세로축 로그 · 일부 수치 검색 확인 · 부품 이미지는 3D 렌더")
+d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터로 말씀드리겠습니다. 위쪽 점도표는 2008년부터 올해까지 주요 6개 업체가 내놓은 데이터센터 SSD 226개 제품 등급의 정격 DWPD입니다. 삼성은 파란 점, 다른 업체는 회색 점이고 모양으로 구분했습니다. "
+        "보증 3년 제품은 5년 기준으로 환산했고, QLC 같은 용량형은 랜덤 쓰기 기준입니다. "
+        "SSD는 그동안 성능, 전력 효율, 가성비가 크게 좋아졌지만, 정격 DWPD는 반대로 움직였습니다. SLC와 SCM 같은 특수 제품을 빼고 보면, 기간별 중앙값이 2008~2012년 10에서 2013~2015년 3, 2016~2018년 1.5, 2019년 이후 1로 내려왔습니다. "
+        "10 DWPD 이상 등급의 비중은 67퍼센트에서 0퍼센트가 됐고, 2016년 이후 30 이상은 빈 점으로 표시한 Optane, Z-SSD, XL-FLASH 같은 특수 제품뿐입니다. "
+        "셀이 견디는 쓰기가 SLC 10만 회에서 QLC 1천 회로 약 100배 줄었기 때문입니다. 고내구 등급에서 읽기 위주 등급으로 시장이 옮겨 간 영향도 섞여 있지만, 고객 캐시 계층은 하루 3회에서 7.2회를 씁니다. 이 띠와 주력 제품 사이의 간격이 지금의 과제입니다. "
         "아래 계단은 이 간격을 어디서 메워 왔는지입니다. 첫 계단 NAND에서 SSD로는 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
         "둘째 계단은 SSD 혼자 하는 최적화입니다. FTL과 ECC, GC와 웨어 레벨링 위에, 2014년부터 2019년까지 핫 · 콜드 추정, 스트림 분리, IO 결정성을 더했습니다. "
         "테일 지연과 성능은 좋아졌지만, 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "

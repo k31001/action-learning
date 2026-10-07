@@ -14,6 +14,24 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  {
+    date: '2026-10-07',
+    type: 'ingest',
+    version: 'v2.46.66',
+    title: '출시 SSD 정격 DWPD 226개 등급 수집 → 고객 협력 덱 3장 점도표',
+    summary:
+      '6개 업체(Samsung · Intel/Solidigm · Micron · Kioxia/Toshiba · SK hynix · WD/SanDisk)의 2008~2026 데이터센터 SSD 226개 등급 정격 DWPD를 5년 기준으로 모았다. ' +
+      'SLC · SCM 특수 제품을 빼면 기간별 중앙값 10 → 1, 10 DWPD 이상 비중 67% → 0%. 대시보드는 지식 그래프 메타데이터만 갱신(패치).',
+    tags: ['DWPD', '점도표', '고객 협력 덱', 'QLC', 'SLC'],
+    items: [
+      { label: '원장 · 데이터', detail: 'sources/articles/essd-rated-dwpd-products-2008-2026-2026-10.md, outputs/presentation/assets/essd_dwpd_points.json (모두 검색 스니펫 · 계산 등급)' },
+      { label: '위키', detail: 'wiki/concepts/essd-decade-growth-vs-dwpd.md §1.5 기간별 집계' },
+      { label: '덱 3장 v2.3', detail: '계단 위 그래프 4개 → 정격 DWPD 점도표 하나(업체별 점 모양, 삼성 Blue, 중앙값 계단, 고객 캐시 3~7.2 띠)' },
+    ],
+    links: [
+      { label: 'wiki/concepts/essd-decade-growth-vs-dwpd.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/essd-decade-growth-vs-dwpd.md' },
+    ],
+  },
   // ── 2026-10-07 ─────────────────────────────────────────────────────────────
   {
     date: '2026-10-07',

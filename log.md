@@ -2485,3 +2485,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 위 그래프 단위 줄 축약 · 가운데 연도 눈금 삭제("로그 축"은 출처 줄에 한 번), 2칸 스택 층 안 연도 삭제, 출처 줄 축약. 3장 글자 수 1,029 → 750, 렌더 QA PASS
 - 노트: 3사 수치(Google -35% · Alibaba 50만 개+ · AWS -60%, 컨트롤러 단서) + Baidu · Microsoft · Meta 한 문장. 위키 · 보고서 §3.4는 7사 유지
 - 아웃라인 v2.2 · 보고서 §7 · 위키 datacenter-in-house-ssd-co-design §2 · index. 대시보드: 덱 산출물만 바뀌어 건너뜀. 지식 그래프: 위키 링크 변경 없음
+
+## [2026-10-07] ingest + build | 출시 SSD 정격 DWPD 226개 등급 수집 → 덱 3장 점도표 하나로 (덱 v2.3 · 보고서 v2.3)
+- 사용자 지시: "그래프로 대체한 부분은 여러 그래프 그리지 말고 DWPD 그래프 하나로 … 지난 십수 년간 출시한 SSD들의 DWPD 변화를 조사해 점도표로, 기업별로 점의 색을 구분하거나 하면 더 보기 편하겠다"
+- Research Agent 2개(① Samsung · SK hynix · Kioxia/Toshiba ② Intel/Solidigm · Micron · WD/HGST/SanDisk). 프록시가 원문을 막아 모두 검색 스니펫(🟡) · 계산(⚠️). 원장 `sources/articles/essd-rated-dwpd-products-2008-2026-2026-10.md`, 데이터 `outputs/presentation/assets/essd_dwpd_points.json`
+- 정규화: 3년 보증은 5년 환산(1.3 → 0.78 등), QLC는 랜덤 쓰기, 등급마다 한 점, SLC · Z-NAND · XL-FLASH · 3D XPoint 14개는 빈 점 · 집계 제외
+- 집계(특수 제외 212개): 중앙값 2008~12 10 → 2013~15 3 → 2016~18 1.5 → 2019~26 1, 10 이상 비중 67% → 0%, 2016년 이후 30 이상은 특수 제품뿐. 표본 한계(판매량 가중 아님, 초기 9개)
+- 덱 3장: 작은 그래프 4개 → 점도표 1개(로그 축, 업체별 모양 · 삼성 Blue, 중앙값 계단, 고객 캐시 3~7.2 띠). 업체별 다른 색 대신 모양 + 회색 톤으로 구분(덱 규칙: 액센트 Blue 하나, 경쟁사 회색). 노트 · 출처 줄 재작성. 렌더 QA PASS
+- 위키 `essd-decade-growth-vs-dwpd.md` §1.5 신설, 보고서 v2.3(§3.0 · §7), 아웃라인 v2.3, index. 지식 그래프 재생성으로 노드 메타데이터 1줄 변경 → 대시보드 v2.46.66 패치 + updates 항목, npm run build 통과
