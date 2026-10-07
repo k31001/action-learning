@@ -318,14 +318,14 @@ export const DT_FDP = {
   envFlows: [
     { title: '수주산업화 — Binding 계약', desc: '5년 take-or-pay·선수금 수백억 달러 — "메모리가 처음으로 그 개념을 바인딩해" (이창수 부사장, 메모리 영업팀장). 물량은 잠기지만 완제품 부가가치는 보장하지 않는다', source: 'sources/raw-notes/lee-changsoo-memory-sales-interview-2026-08-03.md' },
     { title: '하이퍼스케일러의 수요 지배', desc: '하이퍼스케일 클라우드가 글로벌 enterprise SSD 물량의 ~55% 소비 — 소수 고객의 조달 결정이 NAND 공급망 규칙을 정한다', source: 'sources/articles/captive-ssd-fdp-context-2026-08.md' },
-    { title: '고객 통제권의 상승', desc: 'TCO 통제를 위해 스토리지 스택을 계층별로 내재화 — 완제품 → 펌웨어 → 자체 컨트롤러(Captive) → 표준·웨이퍼. 이 흐름은 불가역', source: 'sources/articles/captive-ssd-fdp-context-2026-08.md' },
+    { title: '고객 통제권의 상승', desc: 'TCO 통제를 위해 스토리지 스택을 계층별로 내재화 — 완제품 → 펌웨어 → 자체 설계 SSD(Captive) → 표준·웨이퍼. 이 흐름은 불가역', source: 'sources/articles/captive-ssd-fdp-context-2026-08.md' },
   ],
   // ② Captive SSD 위상 변화 — 계단 차트 데이터 (level = 고객이 통제하는 계층 깊이)
   captiveSteps: [
     { period: '~2016', level: 1, stage: '완제품 구매', evidence: '벤더 표준품 조달 — 통제권 없음' },
     { period: '2017~20', level: 2, stage: '커스텀 스펙·펌웨어', evidence: 'OCP 스토리지 스펙 · 고객별 펌웨어 브랜치 관행' },
-    { period: '2021~', level: 3, stage: '자체 컨트롤러 (Captive)', evidence: 'AWS Nitro SSD(2021-12) — 자체 컨트롤러 자작 SSD. "crown jewels는 만들고 staples는 산다"' },
-    { period: '2022~26', level: 4, stage: '표준 주도 + 웨이퍼 직구매', evidence: 'FDP(TP4146) 비준(2023) — Meta·Google 주도, 삼성 공동 · Meta CacheLib FDP 공식 지원 · NAND 웨이퍼 다년 계약' },
+    { period: '2020~', level: 3, stage: '자체 설계 SSD (Captive)', evidence: 'AWS Nitro SSD(프리뷰 2020-12 · 공개 2021-11) — 자체 설계 SSD · FTL 자체 개발, 컨트롤러 실리콘 출처 미공개 · 자체 컨트롤러 칩은 Alibaba 镇岳510(2023, 누적 50만 개+). "crown jewels는 만들고 staples는 산다"' },
+    { period: '2022~26', level: 4, stage: '표준 주도 + 웨이퍼 직구매', evidence: 'FDP(TP4146) 비준(2022-11-30) — Meta·Google 주도 · Meta CacheLib FDP 공식 지원(삼성 엔지니어 구현) · NAND 웨이퍼 다년 계약' },
   ],
   captiveStats: [
     { value: '~55%', label: '하이퍼스케일러의 enterprise SSD 수요 비중' },

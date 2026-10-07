@@ -1,4 +1,4 @@
-"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-07 v2.0: 3장 2칸에 SSD 내부 기술 스택).
+"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-07 v2.1: 3장 계단 위 성장 그래프 4개 · 2칸 SSD 내부 기술 스택 · 3칸 주요 DC 기업 자체 설계 막대).
 
 제목 4개를 이어 읽으면 한 문단이 된다(아웃라인 v0.3):
   1 배경   SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다
@@ -320,7 +320,7 @@ for k, (lab, v, col) in enumerate([("혼자", 3.22, GRAY_2), ("함께", 1.03, BL
     tb(s, fx0 + 0.76 + w, yy, 0.80, 0.32, [(f"{v:.2f}", 16, True, BLUE if k else GRAY)], anchor=MID)
 
 d.band(s, 9.40, 0.80, "결론", "스펙을 정확히 받든 함께 설계하든, 핵심 기술을 제대로 확보하려면 고객과의 협력이 필수입니다", size=23)
-d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib, Meta · Samsung EuroSys'25) · 같은 FDP 지원 장치에서도 결과가 갈림(WARP FAST'26) · RUH · RG 출하 시 고정(NVMe FDP) · "
+d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib FDP, 삼성 EuroSys'25 · Meta 반영) · 같은 FDP 지원 장치에서도 결과가 갈림(WARP FAST'26) · RUH · RG 출하 시 고정(NVMe FDP) · "
             "제품군 적합도와 협력 깊이는 과제팀 판단(위키 ssd-core-technologies-customer-collaboration)")
 d.notes(s, "2장입니다. 1장의 제품 포트폴리오를 받치는 핵심 기술 여섯 가지를, 왼쪽에는 어떤 제품군에 쓰이는지, 오른쪽에는 고객과 어떻게 협력해야 하는지로 정리했습니다. "
         "왼쪽부터 보겠습니다. Fault Tolerant는 다이와 플레인 단위로 고장을 격리합니다. 같은 폼팩터에서 245테라바이트는 다이 1,024개, 512테라바이트는 약 2,133개라 고용량일수록 필요합니다. "
@@ -334,48 +334,78 @@ d.notes(s, "2장입니다. 1장의 제품 포트폴리오를 받치는 핵심 �
         "Confidential Storage는 Caliptra, SPDM, TDISP, OCP L.O.C.K. 같은 표준이 인터페이스와 동작을 정하고, 삼성은 L.O.C.K.의 공저자입니다. Large Mapping과 QoS도 고객의 쓰기 크기와 지연 목표를 스펙으로 받으면 됩니다. 이 다섯은 고객 요구를 정확한 스펙으로 받는 협력이면 충분합니다. "
         "FDP는 다릅니다. 효과는 고객 소프트웨어가 데이터 수명을 얼마나 잘 나누는지와, SSD의 RU 크기와 GC 정책이 맞물릴 때만 납니다. FAST'26의 WARP 연구에서는 같은 FDP 지원 드라이브, 같은 워크로드에서 한 장치는 WAF가 1 근처를 지켰고 다른 장치는 무너졌습니다. "
         "분류가 어긋나 사용자 데이터의 99퍼센트가 한 핸들로 몰리면 효과가 사라지고, 한 핸들의 무효화가 다른 핸들의 WAF까지 키우기도 합니다. 게다가 RUH와 RG 구성은 출하 시 고정되므로, 고객 워크로드를 보고 미리 함께 정해야 합니다. "
-        "CacheLib이 WAF를 3.22에서 1.03으로 낮춘 결과도 Meta와 삼성의 공동 연구였습니다. 그래서 FDP는 고객과 함께 설계해야 제대로 동작합니다. "
+        "CacheLib이 WAF를 3.22에서 1.03으로 낮춘 결과도 삼성 엔지니어가 Meta의 오픈소스 CacheLib 안에 들어가 구현하고 Meta가 받아들인 결과였습니다. 그래서 FDP는 고객과 함께 설계해야 제대로 동작합니다. "
         "정리하면, 스펙을 정확히 받든 함께 설계하든, 핵심 기술을 제대로 확보하려면 고객과의 협력이 필수입니다. 협력의 깊이 판단은 과제팀의 판단이고, 근거는 위키에 정리했습니다.")
 
 # =============================================================== 3 당위성
 s = d.slide(3, "당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
 
-# ---- 왼쪽 위: 셀 수명 P/E 대표값 (로그 축)
-tb(s, MX, 2.42, 5.4, 0.40, [[("▼ 셀이 견디는 쓰기  ", 20, True, GRAY), ("P/E", 16, False, GRAY)]], anchor=MID)
-pe = [("SLC", 100000, "10만"), ("MLC", 10000, "1만"), ("TLC", 3000, "3천"), ("QLC", 1000, "1천")]
-PB, PH = 5.30, 1.95
-for k, (nm, v, lab) in enumerate(pe):
-    h = (math.log10(v) - 2) / 3 * PH
-    bx = MX + 0.30 + k * 1.22
-    rect(s, bx, PB - h, 0.80, h, fill=GRAY if k == 0 else GRAY_2)
-    tb(s, bx - 0.2, PB - h - 0.38, 1.20, 0.36, [(lab, 18, True, INK)], align=C)
-    tb(s, bx - 0.2, PB + 0.02, 1.20, 0.32, [(nm, 18, False, GRAY)], align=C)
-tb(s, MX + 2.30, 2.96, 3.0, 0.50, [("약 100배 ↓", 26, True, GRAY)], align=C, anchor=MID)
-
-# ---- 가운데 위: 고객 캐시 계층의 쓰기 (DWPD, 로그 축)
-cx0 = MX + 5.95
-tb(s, cx0, 2.42, 6.0, 0.40, [[("▲ 고객 캐시가 쓰는 양  ", 20, True, BLUE), ("DWPD", 16, False, GRAY)]], anchor=MID)
-LB = 2.95
-qx0, qx1 = cx0 + LB, cx0 + 5.55
-qlo, qhi = math.log10(0.2), math.log10(12)
+# ---- 계단 위: SSD 혼자서도 성능 · 전력 효율 · 가성비는 크게 올랐지만, 정격 DWPD는 내려왔다 (2010~2026, 로그 축)
+GW, GG = 2.75, 0.22
+GY0, GY1 = 3.28, 4.98      # 그림 영역 위 · 아래
 
 
-def xq(v):
-    return qx0 + (math.log10(v) - qlo) / (qhi - qlo) * (qx1 - qx0)
+def gx(x0, yr):
+    return x0 + 0.34 + (yr - 2010) / 16 * (GW - 0.68)
 
 
-for g in (1, 10):
-    rect(s, xq(g) - 0.005, 2.96, 0.01, 2.22, fill=LINE)
-    tb(s, xq(g) - 0.3, 5.18, 0.6, 0.28, [(str(g), 16, False, GRAY)], align=C)
-cust = [("QLC 정격", 0.6, GRAY_2, "0.6"),
-        ("Meta 플래시 캐시", 3.0, GRAY, "3"),
-        ("AI KV 캐시", 3.2, GRAY, "3.2"),
-        ("Meta 스토리지 캐시", 7.2, BLUE, "7.2")]
-for i, (nm, v, col, lab) in enumerate(cust):
-    yy = 3.02 + i * 0.54
-    tb(s, cx0, yy, LB - 0.08, 0.44, [(nm, 18, i == 3, BLUE if i == 3 else INK)], anchor=MID)
-    rect(s, qx0, yy + 0.06, xq(v) - qx0, 0.32, fill=col)
-    tb(s, xq(v) + 0.06, yy, 0.70, 0.44, [(lab, 18, True, BLUE if i == 3 else INK)], anchor=MID)
+def gy(v, lo, hi):
+    return GY1 - (math.log10(v) - math.log10(lo)) / (math.log10(hi) - math.log10(lo)) * (GY1 - GY0)
+
+
+def seg(x0, y0, x1, y1, col, wpt=2.25):
+    ln = s.shapes.add_connector(1, *(int(v * 914400) for v in (x0, y0, x1, y1)))
+    ln.line.color.rgb = col
+    ln.line.width = int(wpt * 12700)
+
+
+GROWTH = [  # 이름, 배율, 단위, 범위, 점, 시작 · 끝 라벨, 끝 라벨 위치
+    ("성능", "×90", "랜덤 읽기 IOPS (로그 축)", (20, 12000),
+     [(2012, 75), (2015, 750), (2019, 1500), (2022, 2500), (2024, 3300), (2026, 6800)], ("75K", "6.8M"), "up"),
+    ("전력 효율", "×13", "MB/s per W (로그 축)", (30, 2000),
+     [(2012, 83), (2015, 124), (2019, 350), (2022, 608), (2026, 1120)], ("83", "1,120"), "up"),
+    ("가성비", "×24", "1달러당 GB (로그 축)", (0.15, 40),
+     [(2010, 0.56), (2013, 1.6), (2016, 3.1), (2018, 4.0), (2020, 7.8), (2022, 10.5), (2023, 20), (2024, 13.3)], ("0.56", "13"), "right"),
+]
+for k, (nm, mult, unit, (lo, hi), pts, (l0, l1), lpos) in enumerate(GROWTH):
+    x0 = MX + k * (GW + GG)
+    tb(s, x0, 2.38, GW, 0.44, [[(nm + "  ", 20, True, INK), (mult, 24, True, INK)]], anchor=MID)
+    tb(s, x0, 2.80, GW, 0.32, [(unit, 16, False, GRAY)], anchor=MID)
+    rect(s, x0 + 0.10, GY1, GW - 0.20, 0.012, fill=LINE)
+    for i in range(len(pts) - 1):
+        seg(gx(x0, pts[i][0]), gy(pts[i][1], lo, hi), gx(x0, pts[i + 1][0]), gy(pts[i + 1][1], lo, hi), GRAY)
+    for (yr, v) in pts:
+        rect(s, gx(x0, yr) - 0.055, gy(v, lo, hi) - 0.055, 0.11, 0.11, fill=GRAY, shape=MSO_SHAPE.OVAL)
+    (ya, va), (yb, vb) = pts[0], pts[-1]
+    tb(s, gx(x0, ya) - 0.40, gy(va, lo, hi) + 0.06, 0.80, 0.28, [(l0, 16, False, GRAY)], align=C, anchor=MID)
+    if lpos == "up":
+        tb(s, gx(x0, yb) - 0.70, gy(vb, lo, hi) - 0.42, 0.90, 0.32, [(l1, 18, True, INK)], align=R, anchor=MID)
+    else:
+        tb(s, gx(x0, yb) + 0.10, gy(vb, lo, hi) - 0.16, 0.50, 0.32, [(l1, 18, True, INK)], anchor=MID)
+    for yr in (2010, 2018, 2026):
+        tb(s, gx(x0, yr) - 0.35, GY1 + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=C)
+
+# 넷째: 정격 DWPD는 플래그십 10 → 1, QLC는 1 아래, 고객 캐시 요구 3~7.2 (띠)
+x0 = MX + 3 * (GW + GG)
+lo, hi = 0.15, 15
+tb(s, x0, 2.38, GW, 0.44, [[("DWPD  ", 20, True, BLUE), ("10 → 1", 24, True, BLUE)]], anchor=MID)
+tb(s, x0, 2.80, GW, 0.32, [("정격 하루 쓰기 (로그 축)", 16, False, GRAY)], anchor=MID)
+rect(s, x0 + 0.10, GY1, GW - 0.20, 0.012, fill=LINE)
+rect(s, gx(x0, 2020), gy(7.2, lo, hi), gx(x0, 2026) - gx(x0, 2020), gy(3, lo, hi) - gy(7.2, lo, hi), fill=TINT, line=BLUE, lw=1.0, dash=True)
+tb(s, gx(x0, 2026) - 1.90, gy(7.2, lo, hi) - 0.31, 2.00, 0.28, [("고객 캐시 3~7.2", 16, True, BLUE)], align=R, anchor=MID)
+FL = [(2012, 10), (2015, 5), (2019, 1), (2022, 1), (2024, 1)]
+QL = [(2021, 0.41), (2024, 0.26)]
+for ser, col in ((FL, BLUE), (QL, GRAY_2)):
+    for i in range(len(ser) - 1):
+        seg(gx(x0, ser[i][0]), gy(ser[i][1], lo, hi), gx(x0, ser[i + 1][0]), gy(ser[i + 1][1], lo, hi), col)
+    for (yr, v) in ser:
+        rect(s, gx(x0, yr) - 0.055, gy(v, lo, hi) - 0.055, 0.11, 0.11, fill=col, shape=MSO_SHAPE.OVAL)
+tb(s, gx(x0, 2012) - 0.40, gy(10, lo, hi) + 0.06, 0.80, 0.28, [("10", 16, False, GRAY)], align=C, anchor=MID)
+tb(s, gx(x0, 2024) + 0.08, gy(1, lo, hi) - 0.16, 0.40, 0.32, [("1", 18, True, BLUE)], anchor=MID)
+tb(s, gx(x0, 2021) - 1.25, gy(0.33, lo, hi) - 0.14, 1.20, 0.30, [("QLC 0.26", 16, False, GRAY)], align=R, anchor=MID)
+for yr in (2010, 2018, 2026):
+    tb(s, gx(x0, yr) - 0.35, GY1 + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=C)
+
 
 BOT = 9.40
 steps = [  # x, w, top, fill, step name, years, metric, metric sub, state chip
@@ -402,9 +432,9 @@ for i, (x, w, top, fill, nm, yr, met, msub, st) in enumerate(steps):
         d.fit(s, d.part("ssd"), x + 0.30, iy, 2.40, 0.86)
         my = iy + 1.10
     else:
-        d.fit(s, d.part("server"), x + 0.40, iy, 1.90, 1.05)
-        d.fit(s, d.part("ssd"), x + 2.50, iy + 0.22, 1.80, 0.70)
-        my = iy + 1.12
+        d.fit(s, d.part("server"), x + 0.40, iy, 1.40, 0.74)
+        d.fit(s, d.part("ssd"), x + 2.00, iy + 0.12, 1.40, 0.52)
+        my = iy + 0.80
     tb(s, x + 0.30, my, tw, 0.70, [(met, 40 if hot else 36, True, WHITE if hot else (GRAY if i == 1 else INK))], anchor=MID)
     tb(s, x + 0.30, my + 0.70, tw, 0.38, [(msub, 18, False, WHITE if hot else sub)])
 
@@ -420,36 +450,77 @@ for k, (nm, yr, new) in enumerate([("핫 · 콜드 추정", "", True), ("스트�
     if yr:
         tb(s, KX + 0.14, yy, KW - 0.28, 0.40, [(yr, 16, False, LINE)], align=R, anchor=MID)
 
-# ---- 3칸 안: 고객은 이미 자기 SW로 쓰기를 줄인다 (Meta CacheLib)
+# ---- 3칸 안: 주요 데이터센터 기업은 이미 SSD를 직접 설계한다 (공개 근거 첫해부터 막대, 자체 설계 = Blue · 스펙 · 표준 = 회색)
 x, w = steps[2][0], steps[2][1]
-MY0 = 6.02
-rect(s, x + 0.26, MY0, w - 0.52, 3.14, fill=WHITE, shape=RR)
-d.fit(s, d.logo("meta"), x + 0.48, MY0 + 0.18, 1.20, 0.30, align="left")
-tb(s, x + 1.80, MY0 + 0.12, 2.4, 0.42, [("CacheLib", 20, True, INK)], anchor=MID)
-mb0, mbw = x + 0.48, 2.55
-for k, (lab, v, col, tcol) in enumerate([("쓰기 수요", 1.5, GRAY_2, WHITE), ("수명 예산", 1.0, BLUE_T2, INK)]):
-    yy = MY0 + 0.92 + k * 0.72
-    rect(s, mb0, yy, mbw * v / 1.5, 0.54, fill=col)
-    tb(s, mb0 + 0.12, yy, 1.8, 0.54, [(lab, 18, True, tcol)], anchor=MID)
-    tb(s, mb0 + mbw * v / 1.5 + 0.08, yy, 1.0, 0.54, [(f"{int(v * 100)}%", 22, True, INK)], anchor=MID)
-rect(s, x + 4.05, MY0 + 0.80, 0.012, 2.00, fill=LINE)
-tb(s, x + 4.18, MY0 + 0.92, w - 4.44, 1.00, [("-44%", 46, True, BLUE)], anchor=MID)
-tb(s, x + 4.18, MY0 + 1.94, w - 4.44, 0.40, [("고객 SW로", 20, True, BLUE)], anchor=MID)
+PX, PW, MY0 = x + 0.26, w - 0.52, 5.46
+rect(s, PX, MY0, PW, 9.22 - MY0, fill=WHITE, shape=RR)
+tb(s, PX + 0.22, MY0 + 0.10, PW - 0.44, 0.40, [("주요 DC 기업은 이미 SSD를 직접 설계", 20, True, INK)], anchor=MID)
+lx = PX + 0.22
+for col, lab, lw_ in ((BLUE, "자체 SSD · 컨트롤러", 2.10), (LINE, "스펙 · 표준", 1.40)):
+    rect(s, lx, MY0 + 0.62, 0.16, 0.16, fill=col)
+    tb(s, lx + 0.22, MY0 + 0.55, lw_, 0.30, [(lab, 16, False, GRAY)], anchor=MID)
+    lx += lw_ + 0.40
+TX0, TX1 = PX + 1.62, PX + PW - 0.14
+
+
+def tx(yr):
+    return TX0 + (yr - 2013.6) / 12.8 * (TX1 - TX0)
+
+
+RT, RH_ = MY0 + 0.96, 0.34
+for yr in (2014, 2018, 2022, 2026):
+    rect(s, tx(yr) - 0.005, RT - 0.04, 0.01, 7 * RH_ + 0.04, fill=LINE)
+    if yr == 2026:
+        tb(s, TX1 - 0.70, RT + 7 * RH_ + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=R)
+    else:
+        tb(s, tx(yr) - 0.35, RT + 7 * RH_ + 0.02, 0.70, 0.28, [(str(yr), 16, False, GRAY)], align=C)
+CO = [  # 로고, 이름(심볼만 있는 로고), 시작, 자체 설계 여부, 막대 글, 글 위치
+    ("baidu", "Baidu", 2014, True, "자체 SSD (SDF) · 3천 대", "in"),
+    ("google", None, 2016, True, "자체 설계 SSD → Titanium", "in"),
+    ("alibabacloud", "Alibaba", 2016, True, "AliFlash → 컨트롤러 50만+", "in"),
+    ("microsoft", None, 2018, False, "Denali → OCP SSD 스펙", "in"),
+    ("meta", None, 2020, False, "OCP 스펙 → FDP", "in"),
+    ("aws", None, 2020.9, True, "Nitro SSD · 지연 -60%", "left"),
+    ("bytedance", "ByteDance", 2026, True, "사내 SSD 개발 (FMS'26)", "left"),
+]
+for r, (lg, nm, y0, own, lab, pos) in enumerate(CO):
+    yy = RT + r * RH_
+    if nm:
+        d.fit(s, d.logo(lg), PX + 0.22, yy + 0.05, 0.24, 0.24, align="left")
+        tb(s, PX + 0.50, yy, 1.12, RH_, [(nm, 16, True, INK)], anchor=MID)
+    else:
+        lh = 0.28 if lg == "aws" else 0.22
+        d.fit(s, d.logo(lg), PX + 0.22, yy + (RH_ - lh) / 2, 1.05, lh, align="left")
+    sig = lg == "bytedance"
+    bx0 = tx(y0)
+    rect(s, bx0, yy + 0.04, TX1 - bx0, RH_ - 0.08, fill=None if sig else (BLUE if own else LINE),
+         line=BLUE if sig else None, dash=sig, shape=RR)
+    if pos == "in":
+        tb(s, bx0 + 0.10, yy, TX1 - bx0 - 0.12, RH_, [(lab, 16, True, WHITE if own else INK)], anchor=MID)
+    else:
+        tb(s, TX0 - 0.10, yy, bx0 - TX0, RH_, [(lab, 16, True, BLUE if own else INK)], align=R, anchor=MID)
 
 d.chevron(s, MX + 5.57, 7.60, w=0.16, h=0.50)
 d.chevron(s, MX + 11.67, 7.10, w=0.16, h=0.50)
 
 d.band(s, 9.60, 0.80, "결론", "사양서만으로는 2칸에 머뭅니다. 3칸은 고객 시스템 안에서 함께 설계해야 닿습니다")
-d.footer(s, "출처: 해법 사다리 원장(JESD218 · LDPC · 스트림 '14 · '17 · NVMe 1.4 · FDP TP4146 · CacheLib + FDP 3.22 → 1.03, EuroSys'25) · 캐시 DWPD: Kangaroo 예산 3 · Baleen 목표 7.2 · "
-            "StorageReview KV 실측 3.2 · CacheLib 150% · -44%(OSDI'20) · 기준(예산 · 실측 · 목표)이 서로 다름 · 부품 이미지는 3D 렌더")
-d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터로 말씀드리겠습니다. 왼쪽 위는 셀이 견디는 쓰기 횟수입니다. SLC 10만 회에서 QLC 1천 회로 약 100배 줄었습니다. "
-        "그 옆은 고객의 캐시 계층이 실제로 쓰는 양입니다. QLC 정격은 하루 0.6회인데, Meta의 플래시 캐시는 하루 3회를 쓰기 예산으로 잡고, Meta 벌크 스토리지 캐시 연구는 7.2회를 목표로 둡니다. AI KV 캐시 계층을 실측하면 드라이브당 3.2회였습니다. 기준은 예산, 실측, 목표로 서로 다르지만 방향은 같습니다. "
-        "고객의 쓰기는 커지는데 셀 수명은 줄면, 보상은 늘 한 계층 위로 올라갔습니다. 첫 계단은 NAND에서 SSD입니다. 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
-        "둘째 계단은 SSD 혼자 하는 최적화입니다. 오른쪽이 그때 SSD 안에 쌓은 기술입니다. FTL과 ECC, GC와 웨어 레벨링 위에, 2014년부터 2019년까지 핫 · 콜드 추정, 스트림 분리(2014년 멀티 스트림, 2017년 자동 스트림), IO 결정성(2019년)을 더했습니다. "
+d.footer(s, "출처: 성장 원장(Intel S3700 · 삼성 PM1725~PM1763 · Micron 9650 사양, NAND $/GB = IBM, 명목) · 고객 캐시 DWPD(Kangaroo · KV 실측 · Baleen) · "
+            "해법 사다리 원장(스트림 · NVMe 1.4 · FDP · CacheLib 3.22 → 1.03) · 자체 설계 원장(Baidu · Google · Alibaba · OCP · AWS · ByteDance) · 일부 수치는 검색 확인 · 부품 이미지는 3D 렌더")
+d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 데이터로 말씀드리겠습니다. 위쪽 그래프 넷은 지난 10~15년 동안 데이터센터 SSD가 혼자서 얼마나 성장했는지입니다. "
+        "4K 랜덤 읽기는 2012년 7만 5천 IOPS에서 2026년 680만 IOPS로 약 90배, 와트당 읽기 성능은 83에서 1,120MB/s로 약 13배, 1달러로 사는 NAND 용량은 2010년 0.56GB에서 2024년 13GB로 약 24배 늘었습니다. "
+        "NAND 세대, 컨트롤러, 인터페이스 세대가 만든 성장이고, 모두 SSD 안에서 이룬 것입니다. "
+        "그런데 오른쪽 정격 DWPD는 반대입니다. 2012년 고내구 드라이브의 10에서 지금 플래그십 1로, QLC는 0.26까지 내려왔습니다. 셀이 견디는 쓰기가 SLC 10만 회에서 QLC 1천 회로 약 100배 줄었기 때문입니다. "
+        "고내구 등급에서 읽기 위주 등급으로 옮겨 간 영향도 섞여 있지만, 고객 캐시 계층은 하루 3회에서 7.2회를 씁니다. 이 띠와 정격 사이의 간격이 지금의 과제입니다. "
+        "아래 계단은 이 간격을 어디서 메워 왔는지입니다. 첫 계단 NAND에서 SSD로는 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
+        "둘째 계단은 SSD 혼자 하는 최적화입니다. FTL과 ECC, GC와 웨어 레벨링 위에, 2014년부터 2019년까지 핫 · 콜드 추정, 스트림 분리, IO 결정성을 더했습니다. "
         "테일 지연과 성능은 좋아졌지만, 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "
-        "셋째 계단이 고객 시스템과의 공동 설계입니다. 호스트가 데이터 수명을 알려 주는 FDP로 CacheLib은 WAF를 3.22에서 1.03으로 낮췄습니다. "
-        "고객은 이미 자기 시스템에서 이 문제와 싸우고 있습니다. Meta CacheLib 논문에 따르면, 캐시 쓰기를 그대로 두면 SSD 수명 예산의 1.5배가 됩니다. 그래서 Meta는 플래시를 50퍼센트 더 두고, 머신러닝 수용 정책이라는 자기 소프트웨어로 플래시 기록량을 44퍼센트 줄였습니다. "
-        "해법이 이미 고객 소프트웨어 안에 있다는 뜻입니다. 사양서를 받아 SSD를 잘 만드는 방식은 둘째 계단에 머뭅니다. 셋째 계단은 고객 시스템 안에서 함께 설계해야 닿습니다.")
+        "셋째 계단이 고객 시스템과의 공동 설계입니다. 삼성 엔지니어가 Meta의 오픈소스 CacheLib 안에 FDP 배치를 구현했고, WAF가 3.22에서 1.03으로 내려갔습니다. "
+        "이 방향은 이미 주요 데이터센터 기업의 흐름입니다. Baidu는 2014년 하드웨어와 소프트웨어를 함께 설계한 자체 SSD를 3천 대 넘게 배치했습니다. "
+        "Google은 2016년 논문에서 자체 인터페이스와 펌웨어를 얹은 자체 설계 SSD를 운용한다고 밝혔고, 지금은 Titanium SSD를 씁니다. "
+        "Alibaba는 2016년 AliFlash로 시작해 2023년 자체 SSD 컨트롤러를 내놓았고, 누적 50만 개 넘게 출하했다고 발표했습니다. "
+        "AWS는 FTL을 새로 쓴 Nitro SSD로 I3 대비 지연을 최대 60퍼센트 줄였다고 밝혔습니다. 다만 컨트롤러 칩까지 직접 만든다는 근거는 없습니다. "
+        "Microsoft와 Meta는 SSD를 직접 만들지 않지만 OCP SSD 스펙과 FDP 표준을 직접 썼고, ByteDance도 사내 SSD 개발 조직을 공개했습니다. Tencent는 공개 근거를 찾지 못했습니다. "
+        "고객은 이미 자기 시스템에 맞춰 SSD를 설계하고 있습니다. 사양서를 받아 SSD를 잘 만드는 방식은 둘째 계단에 머물고, 셋째 계단은 고객 시스템 안에서 함께 설계해야 닿습니다.")
 
 # =============================================================== 4 실행
 s = d.slide(4, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")

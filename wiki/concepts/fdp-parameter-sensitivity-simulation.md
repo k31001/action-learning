@@ -37,7 +37,7 @@ sources:
 
 | 응용 | FDP 없음 | FDP | 비교 실측 |
 |---|---|---|---|
-| 플래시 캐시 | **2.97** | **1.00** | CacheLib 3.22 → 1.03(EuroSys'25, Meta · Samsung, [qlc-v7-placement-cases-waf-2026-09.md](../../sources/articles/qlc-v7-placement-cases-waf-2026-09.md) C-08 · [component-to-system-solution-ladder-facts-2026-09.md](../../sources/articles/component-to-system-solution-ladder-facts-2026-09.md) F15) |
+| 플래시 캐시 | **2.97** | **1.00** | CacheLib 3.22 → 1.03(EuroSys'25, 삼성 엔지니어 구현 · Meta CacheLib 반영, [dc-in-house-ssd-co-design-2026-10.md](../../sources/articles/dc-in-house-ssd-co-design-2026-10.md) US-25 · US-26, [qlc-v7-placement-cases-waf-2026-09.md](../../sources/articles/qlc-v7-placement-cases-waf-2026-09.md) C-08 · [component-to-system-solution-ladder-facts-2026-09.md](../../sources/articles/component-to-system-solution-ladder-facts-2026-09.md) F15) |
 | LSM DB | 2.40 | 1.00 | (RocksDB 공개 FDP 쌍 없음) |
 | KV 캐시 | 1.10 | 1.00 | |
 | 멀티테넌트 | 3.47 | 2.66 | RU(16)가 객체(4)보다 커서 등급 안 무작위 교체가 남는다(§2.1과 같은 원리) |

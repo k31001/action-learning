@@ -2464,3 +2464,17 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 출처 줄에 "스트림 '14 · '17 · NVMe 1.4" 추가(2줄 유지), 노트에 층 설명 추가. 렌더 QA PASS, 3장 글자 수 661 → 725
 - 보고서 v2.1 §3.3 2단계 보상 열 보강 · §7, 아웃라인 v2.0, index 갱신. PPTX 본체 재생성 후 커밋(예외 유지)
 - 대시보드: 덱 산출물만 바뀌고 위키 수치 · 전략 변경이 없어 건너뜀. 지식 그래프: 위키 링크 변경 없음
+
+## [2026-10-07] ingest | 주요 DC 기업 자체 SSD · 공동 설계 팩트 체크 + SSD 10~15년 성장 시계열 (원장 2 · 위키 2 신설)
+- 사용자 질문: "아마존이나 중화 DC 업체들은 자체 SSD를 개발해서 시스템과 연동하여 최적화하려는 움직임이 있다고 들었어. 팩트 체크해서 시각화까지" + "성능, 파워와 가성비 지표가 지난 10~15년 어떻게 성장했는지, SSD 내부 최적화만으로도 이 정도 성장했지만 DWPD는 개선이 어렵다는 메시지의 전 단계"
+- Research Agent 3개(미국 · 중국 · 성장 시계열). 프록시가 대부분의 1차 도메인을 막아 원문 열람은 Google 블로그 · GitHub뿐, 나머지는 검색 스니펫(🟡)
+- 원장: `sources/articles/dc-in-house-ssd-co-design-2026-10.md`(US-01~29 · CN-01~25), `sources/articles/essd-growth-metrics-2010-2026-2026-10.md`(GR-01~85)
+- 팩트 체크 결론: AWS = 자체 설계 SSD · FTL(자체 컨트롤러 칩 근거 없음, 첫 사용 2020-12), Alibaba = 자체 컨트롤러 칩까지(镇岳510 2023, 누적 50만 개+), Baidu = 2014 SDF 3천 대, ByteDance = 사내 SSD 개발 조직 신호, Tencent = 근거 없음. Microsoft · Meta는 스펙 · 표준
+- 위키 신설: `datacenter-in-house-ssd-co-design.md`, `essd-decade-growth-vs-dwpd.md`. 역링크: solution-ladder · ssd-core-technologies
+- 정정(lint): CacheLib FDP 3.22 → 1.03의 구현 · 논문은 삼성 엔지니어(Meta는 업스트림 반영) → fdp-parameter-sensitivity · ssd-core-technologies · qlc-execution-strategy · 보고서 2곳 · 덱 2장 출처 · 노트. AWS "자체 컨트롤러 자작 SSD" → "자체 설계 SSD" → fdp-host-ssd-platform §2 · 대시보드 captiveSteps. FDP 비준 2023 → 2022-11-30
+
+## [2026-10-07] build | 덱 3장 계단 위 · 3칸 다시 그림 (덱 v2.1 · 보고서 v2.2 · 대시보드 v2.46.65)
+- 계단 위: P/E 막대 · 고객 캐시 DWPD 막대 → 작은 그래프 4개(2010~2026, 로그 축): 성능 ×90 · 전력 효율 ×13 · 가성비 ×24(회색) 대 DWPD 10 → 1(Blue, QLC 0.26, 고객 캐시 3~7.2 점선 띠). P/E 100배 감소는 노트로
+- 3칸: 서버 · SSD 이미지 축소, Meta CacheLib 상자 → "주요 DC 기업은 이미 SSD를 직접 설계" 막대 7개(공개 근거 첫해부터, 자체 SSD · 컨트롤러 Blue · 스펙 · 표준 회색, ByteDance 점선). 로고 3종 추가(alibabacloud · baidu · bytedance, simple-icons 잉크색 렌더)
+- 3장 출처 줄 두 줄 유지, 노트 재작성(성장 → DWPD 간격 → 계단 → 기업 흐름, Tencent 근거 없음 · AWS 컨트롤러 단서 포함). 렌더 QA PASS, 3장 글자 수 725 → 1,029
+- 보고서 v2.2(§3.0 · §3.4 신설 · §7), 아웃라인 v2.1, index. 대시보드 captiveSteps 정정으로 v2.46.65 패치 + updates 항목. PPTX 본체 재생성 후 커밋

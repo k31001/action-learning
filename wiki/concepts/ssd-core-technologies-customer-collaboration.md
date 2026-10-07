@@ -70,7 +70,7 @@ sources:
 | Multi-Tenant QoS | 1 | 1 | 스펙으로 협력 | 고객이 테넌트를 네임스페이스 · NVM Set에 매핑하고, 지연 백분위 목표(OCP 표 B07)를 스펙으로 준다. 격리는 SSD가 합성 부하로 사내 검증한다 |
 | Confidential Storage | 2 | 0 | 스펙으로 협력 (표준) | 고객의 기밀 VM · 증명 체계에 들어가야 하지만(TDISP, ST-38) Caliptra · SPDM · TDISP · L.O.C.K. 표준이 인터페이스와 동작을 정한다. 삼성은 L.O.C.K. 공저자(ST-26) |
 | Mixed Media | 2 | 1 | **스펙으로 협력** | 고객 SW가 데이터를 pSLC · QLC 네임스페이스로 나눠 보내야 하지만(결합 2), **인터페이스가 표준 네임스페이스**이고 pSLC 비율은 출하 시 정하는 값이며 고객이 이미 수치로 요구한다(Kioxia "배치별 맞춤 비율" MM-05, VoC 0.5~2% MX-01). 네임스페이스 간 QoS는 목표 수치로 사내 검증할 수 있다. 상용 혼합 매체도 고객이 범용 드라이브 위에 자기 SW로 묶었다(CD-01) |
-| **FDP** | 2 | **2** | **고객과 공동 설계 필수** | ① 효과가 고객 SW의 **수명 분류**와 SSD의 **RU 크기 · GC 정책**이 맞물릴 때만 난다: 오분류 · RUH 간섭 · 적대적 무효화에서 실패(WARP FAST'26, D-01), 한 RUH의 무효화가 다른 핸들의 WAF까지 부풀림(Noisy RUH, D-02), 사용자 데이터 99%가 한 RUH로 몰려 붕괴(D-03). ② **같은 "FDP 지원" 스펙, 같은 워크로드에서 한 장치는 near-ideal, 다른 장치는 붕괴**(D-04): 스펙만으로 결과가 보장되지 않는다. ③ RU 크기 · OP · RUH 수 · GC 정책은 펌웨어가 노출하지 않는 정책 변수다(WARP). ④ RUH · RG 구성은 출하 시 고정이라(F-07) 고객 워크로드를 보고 미리 함께 정해야 한다. ⑤ 핸들이 모자라면 기본 핸들 하나로 합류한다(CacheLib 폴백, D-05). 선례: CacheLib WAF 3.22 → 1.03은 Meta + Samsung 공동 논문(EuroSys'25, C-08) |
+| **FDP** | 2 | **2** | **고객과 공동 설계 필수** | ① 효과가 고객 SW의 **수명 분류**와 SSD의 **RU 크기 · GC 정책**이 맞물릴 때만 난다: 오분류 · RUH 간섭 · 적대적 무효화에서 실패(WARP FAST'26, D-01), 한 RUH의 무효화가 다른 핸들의 WAF까지 부풀림(Noisy RUH, D-02), 사용자 데이터 99%가 한 RUH로 몰려 붕괴(D-03). ② **같은 "FDP 지원" 스펙, 같은 워크로드에서 한 장치는 near-ideal, 다른 장치는 붕괴**(D-04): 스펙만으로 결과가 보장되지 않는다. ③ RU 크기 · OP · RUH 수 · GC 정책은 펌웨어가 노출하지 않는 정책 변수다(WARP). ④ RUH · RG 구성은 출하 시 고정이라(F-07) 고객 워크로드를 보고 미리 함께 정해야 한다. ⑤ 핸들이 모자라면 기본 핸들 하나로 합류한다(CacheLib 폴백, D-05). 선례: CacheLib WAF 3.22 → 1.03은 삼성 엔지니어가 Meta의 오픈소스 CacheLib 안에 구현하고 Meta가 업스트림에 반영한 결과(EuroSys'25, C-08; 2026-10-07 정정: 논문 저자는 삼성, [dc-in-house-ssd-co-design-2026-10.md](../../sources/articles/dc-in-house-ssd-co-design-2026-10.md) US-26) |
 
 **선정 결과**: **FDP.** 고객 시스템과 함께 설계돼야 하는 기술은 여럿(Mixed Media · Confidential Storage · QoS · Large Mapping)이지만, 그중 **명확한 스펙으로 분리되지 않는 것은 FDP 하나다.** FDP는 SLC급(2TB · 30 DWPD 다이 -60%) · 고내구 TLC(KV 캐시) · 고용량 QLC에 걸쳐 가장 넓은 제품군을 받친다.
 
@@ -107,6 +107,7 @@ sources:
 - 응용 · 포트폴리오: [datacenter-types-storage-requirements.md](datacenter-types-storage-requirements.md)
 - 기술별 상세: [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md) · [mixed-media-ssd.md](mixed-media-ssd.md) · [fdp-placement-mechanics.md](fdp-placement-mechanics.md) · [high-dwpd-operating-point.md](high-dwpd-operating-point.md)
 - 해법 사다리(왜 고객 시스템까지): [solution-ladder-component-to-system.md](solution-ladder-component-to-system.md)
+- 주요 DC 기업의 자체 SSD · 공동 설계(2026-10-07): [datacenter-in-house-ssd-co-design.md](datacenter-in-house-ssd-co-design.md)
 - 출하 시 구성의 경계(RUH · RG · SLC 비율): [ssd-configurability-boundary.md](ssd-configurability-boundary.md)
 - 파라미터 민감도 시뮬레이션(RU 크기 · RUH 수 · 분류 정확도, 덱 5장): [fdp-parameter-sensitivity-simulation.md](fdp-parameter-sensitivity-simulation.md)
 - 후보 검토 이력(보안 · GPU 직결 · 전력): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)

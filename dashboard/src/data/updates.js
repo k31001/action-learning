@@ -14,6 +14,26 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-07 ─────────────────────────────────────────────────────────────
+  {
+    date: '2026-10-07',
+    type: 'ingest',
+    version: 'v2.46.65',
+    title: '주요 DC 기업 자체 SSD · 공동 설계 팩트 체크 + SSD 10~15년 성장 시계열 → 고객 협력 덱 3장 다시 그림, Captive 단계 정정',
+    summary:
+      '미국 · 중국 데이터센터 기업의 자체 SSD를 팩트 체크했다. AWS는 자체 설계 SSD · FTL(자체 컨트롤러 칩 근거 없음), Alibaba는 자체 컨트롤러 칩까지(镇岳510, 누적 50만 개+), Baidu는 2014 SDF, Tencent는 근거 없음. ' +
+      '2010~2026 SSD 성장(랜덤 읽기 약 90배 · 와트당 성능 약 13배 · 1달러당 NAND GB 약 24배) 대 정격 DWPD 10 → 1을 원장으로 만들고 덱 3장에 그렸다. 대시보드는 Captive 단계 표의 AWS 서술과 FDP 비준일을 정정(패치).',
+    tags: ['자체 SSD', 'Captive', 'AWS Nitro SSD', 'Alibaba', 'Baidu SDF', 'FDP', 'DWPD', '고객 협력 덱'],
+    items: [
+      { label: 'Captive 단계 정정', detail: "3단계 '자체 컨트롤러' → '자체 설계 SSD': AWS Nitro SSD는 FTL · 펌웨어 자체, 컨트롤러 실리콘 출처 미공개(외부 벤더 협업 정황). 자체 컨트롤러 칩 근거는 Alibaba 镇岳510. FDP 비준 2023 → 2022-11-30" },
+      { label: '원장 2 · 위키 2 신설', detail: 'sources/articles/dc-in-house-ssd-co-design-2026-10.md · essd-growth-metrics-2010-2026-2026-10.md, wiki/concepts/datacenter-in-house-ssd-co-design.md · essd-decade-growth-vs-dwpd.md' },
+      { label: '덱 3장 v2.1', detail: '계단 위 성장 그래프 4개(로그 축) + 3칸 주요 DC 기업 7곳 자체 설계 막대. CacheLib FDP 논문 저자 정정(삼성, Meta는 업스트림 반영)' },
+    ],
+    links: [
+      { label: 'wiki/concepts/datacenter-in-house-ssd-co-design.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/datacenter-in-house-ssd-co-design.md' },
+      { label: 'wiki/concepts/essd-decade-growth-vs-dwpd.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/essd-decade-growth-vs-dwpd.md' },
+    ],
+  },
   // ── 2026-10-06 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-10-06',
