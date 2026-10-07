@@ -344,7 +344,9 @@ s = d.slide(3, "당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔
 import json  # noqa: E402
 import statistics  # noqa: E402
 
+from lxml import etree  # noqa: E402
 from pptx.dml.color import RGBColor  # noqa: E402
+from pptx.oxml.ns import qn  # noqa: E402
 
 TOP, ROWB, BOT = 2.42, 5.72, 9.40
 steps = [  # x, w, 아래, fill, step name, years, metric, metric sub, state chip
@@ -421,11 +423,11 @@ tb(s, MX + 5.2, SY, 6.45, 0.42, [[("최고 등급 중앙값 ", 18, True, BLUE), 
                                   ("   QLC ", 18, True, BLUE), (f"{min(qv):.1f}~{max(qv):.1f}", 24, True, BLUE)]], align=R, anchor=MID)
 lx = MX
 for k, nm, col in VENDORS:
-    rect(s, lx, SY + 0.56, 0.16, 0.16, fill=col, shape=MSO_SHAPE.OVAL)
+    rect(s, lx, SY + 0.57, 0.14, 0.14, fill=col, shape=MSO_SHAPE.OVAL)
     w_ = sum(0.24 if ord(ch) > 0x3000 else (0.06 if ch in " ·" else 0.115) for ch in nm) + 0.30
     tb(s, lx + 0.21, SY + 0.48, w_, 0.32, [(nm, 16, False, GRAY)], anchor=MID)
     lx += 0.21 + w_ + 0.02
-rect(s, lx + 0.10, SY + 0.56, 0.16, 0.16, fill=WHITE, line=GRAY, lw=1.5, shape=MSO_SHAPE.OVAL)
+rect(s, lx + 0.10, SY + 0.57, 0.14, 0.14, fill=WHITE, line=GRAY, lw=1.5, shape=MSO_SHAPE.OVAL)
 tb(s, lx + 0.31, SY + 0.48, 1.20, 0.32, [("QLC", 16, False, GRAY)], anchor=MID)
 for v, lab in ((0.1, "0.1"), (1, "1"), (10, "10"), (100, "100")):
     rect(s, CX0, cy(v) - 0.006, CX1 - CX0, 0.012, fill=LINE)
@@ -434,11 +436,19 @@ for yr in (2011, 2014, 2017, 2020, 2023, 2026):
     tb(s, cx(yr) - 0.35, CY1 + 0.03, 0.70, 0.26, [(str(yr), 16, False, GRAY)], align=C)
 rect(s, cx(2019), cy(7.2), cx(YR1) - cx(2019), cy(3) - cy(7.2), fill=TINT, line=BLUE, lw=1.0, dash=True)
 tb(s, cx(YR1) - 2.60, cy(7.2) - 0.31, 2.60, 0.28, [("고객 캐시 요구 3~7.2", 16, True, BLUE)], align=R, anchor=MID)
+# 전체 추세 화살표(흐리게, 점 뒤): 전체 226개 등급의 중앙값 흐름 2011년 10 → 2026년 1
+ax0, ay0, ax1, ay1 = cx(2010.9), cy(10), cx(2026.3), cy(1)
+alen, ang = math.hypot(ax1 - ax0, ay1 - ay0), math.degrees(math.atan2(ay1 - ay0, ax1 - ax0))
+arw = rect(s, (ax0 + ax1) / 2 - alen / 2, (ay0 + ay1) / 2 - 0.26, alen, 0.52, fill=BLUE, shape=MSO_SHAPE.RIGHT_ARROW)
+arw.rotation = ang
+arw.adjustments[0], arw.adjustments[1] = 0.46, 0.9
+clr = arw.fill._xPr.find(qn("a:solidFill")).find(qn("a:srgbClr"))
+etree.SubElement(clr, qn("a:alpha")).set("val", "14000")
 for vend, yr, v, kind, _ in sorted(DK, key=lambda q: VI[q[0]] == 0):   # 삼성 점을 맨 위에
     col = VENDORS[VI[vend]][2]
-    xx = cx(yr + (VI[vend] - 2.5) * 0.14)
-    rect(s, xx - 0.085, cy(v) - 0.085, 0.17, 0.17, fill=WHITE if kind == "qlc" else col,
-         line=col if kind == "qlc" else None, lw=2.0, shape=MSO_SHAPE.OVAL)
+    xx = cx(yr + (VI[vend] - 2.5) * 0.12)
+    rect(s, xx - 0.055, cy(v) - 0.055, 0.11, 0.11, fill=WHITE if kind == "qlc" else col,
+         line=col if kind == "qlc" else None, lw=1.5, shape=MSO_SHAPE.OVAL)
 
 # ---- 3칸 안: 주요 데이터센터 기업은 이미 SSD를 직접 설계한다 (공개 근거 첫해부터 막대, 주요 3사)
 x, w = steps[2][0], steps[2][1]
