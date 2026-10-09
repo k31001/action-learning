@@ -131,9 +131,19 @@ sources:
 - ⚠️ 2024 · 2030은 McKinsey(§1), 2025~2029는 수요처별 연평균 성장률(학습 약 62% · 추론 약 105% · 범용 약 20%) 보간 **과제팀 산술**. 총량 CAGR(35%)로 보간하면 2028년 약 600EB로, 수요처 합(504)과 다르다. 어느 쪽이든 2026년 최신 전망 2028년 약 900EB(JPM · Kioxia, §0)는 2024년 경로로 2029~30년에 닿는 규모라 **약 1~2년 앞당겨졌다**(수요처 합 기준 2029.6년, 약 1.5년).
 - 덱: 2030 막대 위 HDD 대체 잠재 390EB(§2, 니어라인 10%) 점선, 오른쪽 주요 포인트 3개(AI 추론 75배 · 최신 전망 1~2년 앞당김 · HDD 대체 390EB), 에이전트 "별도 전망 없음". 1장 응용 카드에는 2030 수치(범용 약 500 · 학습 약 130 · 추론 약 450EB · 에이전트 별도 전망 없음).
 
+- **덱 v3.0(2026-10-09, 사용자 지시 "니어라인은 제거하고 수요별 퍼센티지도, 올해와 2030년만, 각각 얼마나 변할지")**: HDD 대체 잠재 점선 · 주요 포인트 카드를 빼고, 오른쪽에 수요별 비중 2026 → 2030을 그린다.
+
+| 수요처 | 2026 비중 | 2030 비중 | 변화 |
+|---|---|---|---|
+| 범용 · 엔터프라이즈 | 85% (242EB) | 47% (504EB) | -38%p (물량은 약 2.1배) |
+| AI 학습 | 6% (18EB) | 12% (127EB) | +6%p |
+| AI 추론 | 9% (25EB) | 41% (447EB) | +32%p |
+
+- ⚠️ 2026 비중은 2024년 전망 보간값이다. 2026년에는 KV 캐시 수요가 앞당겨지고 있어(§0, TrendForce eSSD 비트 +80%+) 실제 추론 비중은 더 클 수 있다. 덱 노트에 같은 단서를 적었다.
+
 ## 5. 연결
 
 - 덱 1장 근거: [datacenter-types-storage-requirements.md](datacenter-types-storage-requirements.md)
-- 덱 참고 5장 · 1장 2030 수치: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v2.9
+- 덱 참고 5장 · 1장 2030 수치: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v3.0
 - QLC 수요 · 매출 모델: [qlc-ssd-market.md](qlc-ssd-market.md) §4 (2030 eSSD 약 1,000EB, KV 캐시 350EB)
 - HBM → 스토리지 파급: [hbm-to-storage-spillover.md](hbm-to-storage-spillover.md)
