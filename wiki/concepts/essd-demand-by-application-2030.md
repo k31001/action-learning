@@ -144,6 +144,6 @@ sources:
 ## 5. 연결
 
 - 덱 1장 근거: [datacenter-types-storage-requirements.md](datacenter-types-storage-requirements.md)
-- 덱 참고 5장 · 1장 2030 수치: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v3.1 (1장 카드는 2030 수요와 비중 47 · 12 · 41%)
+- 덱 참고 5장 · 1장 2030 수치: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v3.2 (1장 카드 아래 중간 계층에 2026 · 2030 비중 가로 누적 막대)
 - QLC 수요 · 매출 모델: [qlc-ssd-market.md](qlc-ssd-market.md) §4 (2030 eSSD 약 1,000EB, KV 캐시 350EB)
 - HBM → 스토리지 파급: [hbm-to-storage-spillover.md](hbm-to-storage-spillover.md)

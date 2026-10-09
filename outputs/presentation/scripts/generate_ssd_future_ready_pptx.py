@@ -49,8 +49,8 @@ LX, LW = MX, 3.70
 DG = 0.16
 DW = (CW - LW - 0.22 - 3 * DG) / 4
 DXS = [MX + LW + 0.22 + i * (DW + DG) for i in range(4)]
-MT, RH, RG = 6.62, 0.62, 0.07
-CT, CB = 2.32, MT - 0.50
+MT, RH, RG = 6.96, 0.56, 0.06
+CT, CB = 2.32, 5.70
 VT = CT + 0.92
 
 # ---- 왼쪽 위: HBM의 교훈 (점유율 슬로프)
@@ -62,7 +62,7 @@ sx0, sx1 = LX + 0.86, LX + 1.86
 
 
 def sy(v):
-    return ST + (68 - v) / 55 * 1.25
+    return ST + (68 - v) / 55 * 1.05
 
 
 for (a0, a1, col, lg) in [(50, 62, GRAY_2, "sk-hynix"), (40, 17, BLUE, "samsung")]:
@@ -74,9 +74,9 @@ for (a0, a1, col, lg) in [(50, 62, GRAY_2, "sk-hynix"), (40, 17, BLUE, "samsung"
     tb(s, sx0 - 0.70, sy(a0) - 0.17 + (-0.12 if a0 == 50 else 0.12), 0.58, 0.34, [(f"{a0}%", 16, False, GRAY)], align=R, anchor=MID)
     tb(s, sx1 + 0.12, sy(a1) - 0.17, 0.66, 0.34, [(f"{a1}%", 18, True, col)], anchor=MID)
     d.fit(s, d.logo(lg), sx1 + 0.80, sy(a1) - 0.13, 0.86, 0.26, align="left")
-tb(s, sx0 - 0.45, ST + 1.36, 0.9, 0.28, [("2022", 16, False, GRAY)], align=C)
-tb(s, sx1 - 0.45, ST + 1.36, 0.9, 0.28, [("2Q25", 16, False, GRAY)], align=C)
-tb(s, LX + 0.22, CB - 0.36, LW - 0.44, 0.30, [("HBM 점유율", 16, False, GRAY)], align=C)
+tb(s, sx0 - 0.45, ST + 1.16, 0.9, 0.28, [("2022", 16, False, GRAY)], align=C)
+tb(s, sx1 - 0.45, ST + 1.16, 0.9, 0.28, [("2Q25", 16, False, GRAY)], align=C)
+tb(s, sx1 + 0.40, ST + 1.16, LX + LW - sx1 - 0.55, 0.28, [("점유율", 16, False, GRAY)], align=R)
 
 # ---- 응용 카드 4장: 이름 · 하는 일 · 데이터 그래프 · SSD 요구
 APPS = [("범용 클라우드", "", "QoS · 테넌트 격리"),
@@ -90,11 +90,6 @@ for i, (nm, wl, rq) in enumerate(APPS):
     tb(s, x + 0.20, CT + 0.52, DW - 0.40, 0.30, [(wl, 16, False, GRAY)])
     rect(s, x + 0.20, CB - 0.58, DW - 0.40, 0.012, fill=LINE)
     tb(s, x + 0.20, CB - 0.52, DW - 0.40, 0.42, [(rq, 20, True, BLUE)], anchor=MID)
-# 카드 구분선 위: 2030 eSSD 수요 전망과 비중(McKinsey 2024-12, 상세 5장)
-for i, (v, sh) in enumerate([("약 500EB", "47%"), ("약 130EB", "12%"), ("약 450EB", "41%"), (None, None)]):
-    run = ([("2030  ", 16, False, GRAY), (v, 20, True, INK), (f"  ({sh})", 20, True, BLUE if i == 2 else INK)] if v
-           else [("2030  ", 16, False, GRAY), ("별도 전망 없음", 16, False, GRAY)])
-    tb(s, DXS[i] + 0.20, CB - 0.94, DW - 0.30, 0.36, [run], anchor=MID)
 d.fit(s, d.logo("nvidia"), DXS[1] + 0.20, CT + 0.56, 1.15, 0.26, align="left")
 _lx = DXS[0] + 0.20
 for _lg, _h in (("aws", 0.30), ("microsoft", 0.24), ("google", 0.24)):
@@ -175,6 +170,25 @@ for k, (nm, v, col, lab) in enumerate([("VM 디스크", 100, BLUE, "100GB"), ("V
     rect(s, x + 1.56, yy + 0.05, w, 0.22, fill=col)
     tb(s, x + 1.62 + w, yy, 0.95, 0.32, [(lab, 16, True, BLUE if k == 0 else GRAY)], anchor=MID)
 
+# ---- 중간 계층: eSSD 수요 비중 2026(올해) · 2030, 가로 누적 막대 (McKinsey 2024-12, 2026은 보간 산술, 상세 5장)
+SHR = [("2026 올해", [85, 6, 9], "286EB"), ("2030", [47, 12, 41], "1,078EB")]
+SCOL = [GRAY_2, BLUE_T2, BLUE]
+SNM = ["범용 · 엔터프라이즈", "AI 학습", "AI 추론"]
+SX0, SX1 = DXS[0], RIGHT - 1.20
+tb(s, LX, CB + 0.12, LW, 0.30, [("eSSD 수요 비중", 18, True, INK)], anchor=MID)
+for r, (yr, sh, tot) in enumerate(SHR):
+    y = CB + 0.12 + r * 0.36
+    tb(s, LX, y, LW - 0.12, 0.30, [(yr, 16, r == 1, INK if r == 1 else GRAY)], align=R, anchor=MID)
+    acc = 0
+    for j in range(3):
+        x0 = SX0 + (SX1 - SX0) * acc / 100
+        w = (SX1 - SX0) * sh[j] / 100
+        rect(s, x0, y, w, 0.30, fill=SCOL[j], line=WHITE, lw=1.0)
+        txt = f"{SNM[j]} {sh[j]}%" if (r == 1 or j == 0) else f"{sh[j]}%"
+        tb(s, x0, y, w, 0.30, [(txt, 16, True, INK if j == 1 else WHITE)], align=C, anchor=MID)
+        acc += sh[j]
+    tb(s, SX1 + 0.10, y, 1.10, 0.30, [(tot, 16, r == 1, INK if r == 1 else GRAY)], anchor=MID)
+
 # ---- 매트릭스 머리줄
 tb(s, LX, MT - 0.36, LW + 6, 0.32, [[("SSD 제품군  ", 18, True, INK), ("DWPD · 최대 용량", 16, False, GRAY)]], anchor=MID)
 tb(s, RIGHT - 6.0, MT - 0.36, 6.0, 0.32, [[("■", 16, False, BLUE), (" 지금 쓰는 곳   ", 16, False, GRAY), ("▢", 16, False, BLUE), (" 신호에 따라 쓰일 곳", 16, False, GRAY)]], align=R, anchor=MID)
@@ -202,10 +216,10 @@ for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
     rect(s, LX, y, LW, RH, fill=PALE, shape=RR)
     tb(s, LX + 0.22, y + 0.02, LW - 1.30, 0.34, [(nm, 18, True, INK)], anchor=MID)
     tb(s, LX + LW - 1.30, y + 0.02, 1.14, 0.34, [(cap, 15, False, GRAY)], align=R, anchor=MID)
-    rect(s, BX0, y + 0.42, xb(v) - BX0, 0.16, fill=BLUE if r == 0 else (BLUE_T1 if r == 1 else GRAY_2))
+    rect(s, BX0, y + 0.37, xb(v) - BX0, 0.14, fill=BLUE if r == 0 else (BLUE_T1 if r == 1 else GRAY_2))
     if vmin:
-        rect(s, xb(vmin) - 0.015, y + 0.39, 0.03, 0.22, fill=PALE)
-    tb(s, xb(v) + 0.06, y + 0.33, 1.0, 0.32, [(lab, 16, True, INK)], anchor=MID)
+        rect(s, xb(vmin) - 0.015, y + 0.34, 0.03, 0.20, fill=PALE)
+    tb(s, xb(v) + 0.06, y + 0.28, 1.0, 0.32, [(lab, 16, True, INK)], anchor=MID)
     for c in range(4):
         x = DXS[c]
         if (r, c) not in CELL:
@@ -218,11 +232,11 @@ for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
             label_box(s, x, y, DW, RH, [(txt, 18, True, BLUE)], fill=WHITE, line=BLUE, lw=1.25, dash=True)
 
 d.band(s, 9.44, 0.80, "결론", "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다")
-d.footer(s, "출처: 2030 수요 · (비중) McKinsey(2024-12, 범용은 산술, 상세 5장) · HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · KV 실측 StorageReview(2026-08) · "
+d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026은 보간 · 범용은 산술, 상세 5장) · HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · KV 실측 StorageReview(2026-08) · "
             "AI 전용 Kioxia · DapuStor · 에이전트 Google · Muse 관측(제3자) · 제품군 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
 d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
         "그래서 SSD의 다음 수요를 하나로 단정하지 않고, 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. "
-        "카드 아래쪽 숫자는 McKinsey가 본 2030년 eSSD 수요와 그 비중입니다. 범용 클라우드와 엔터프라이즈가 약 500엑사바이트로 47퍼센트, AI 추론이 약 450엑사바이트로 41퍼센트, AI 학습이 약 130엑사바이트로 12퍼센트이고, 에이전트는 따로 떼어 낸 전망이 없습니다. 올해 대비 변화는 참고 5장에 두었습니다. "
+        "카드 아래 가로 막대는 eSSD 수요의 응용별 비중입니다. 올해는 범용 클라우드와 엔터프라이즈가 85퍼센트로 대부분이고, AI 학습 6퍼센트, AI 추론 9퍼센트입니다. 2030년에는 전체가 약 1,078엑사바이트로 커지면서 범용 47퍼센트, AI 학습 12퍼센트, AI 추론 41퍼센트가 됩니다. 에이전트는 따로 떼어 낸 전망이 없어 추론과 범용에 포함됩니다. 올해 비중은 McKinsey 전망을 이어 계산한 값이고, 연도별 상세는 참고 5장에 두었습니다. "
         "첫째, 범용 클라우드입니다. 여러 고객의 VM이 서버의 SSD를 나눠 씁니다. Microsoft의 SSD 50만 대를 보면 실제 쓰기는 0.07에서 0.23 DWPD로 범용 TLC 정격 1 DWPD 안에 들어옵니다. 기존 SSD 기술로 대응할 수 있습니다. "
         "다만 한 고객의 쓰기가 같은 SSD를 쓰는 다른 고객의 지연을 키웁니다. Microsoft 워크로드 실험에서 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. 멀티테넌트 QoS와 격리는 여전히 중요한 요구입니다. "
         "둘째, AI 학습입니다. NVIDIA SuperPOD 가이드를 GPU당으로 환산하면, 데이터가 캐시보다 큰 멀티모달 학습은 기본 등급보다 약 3배의 스토리지 대역을 요구합니다. 데이터 로딩에는 고성능 TLC가 맞습니다. "
