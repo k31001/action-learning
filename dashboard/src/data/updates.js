@@ -17,6 +17,23 @@ export const UPDATES = [
   {
     date: '2026-10-09',
     type: 'ingest',
+    version: 'v2.46.68',
+    title: 'eSSD 전망 재조사: TrendForce · Counterpoint · Omdia · SemiAnalysis · Gartner · IDC 2026 최신판',
+    summary:
+      'eSSD 비트 수요 2026 +80%+(TrendForce), eSSD가 NAND 비트의 48% → 50%+(Counterpoint), QLC가 eSSD 용량의 18% → 38%(2027), 2028 약 900EB(McKinsey 2024 경로의 약 1.5배), IDC SSD 매출 CAGR 40%+(2025~30). ' +
+      '수급은 2H27 완화(TrendForce · Gartner · IDC) 대 2027 부족 지속(Omdia · Citi · MS)으로 갈림. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['eSSD', 'TrendForce', 'Gartner', 'SemiAnalysis', 'IDC', 'QLC', 'KV 캐시'],
+    items: [
+      { label: '원장', detail: 'sources/articles/essd-outlook-research-firms-2026-10.md (모두 검색 확인 등급)' },
+      { label: '위키', detail: 'wiki/concepts/essd-demand-by-application-2030.md §0 2026년 전문 기관 갱신' },
+    ],
+    links: [
+      { label: 'wiki/concepts/essd-demand-by-application-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/essd-demand-by-application-2030.md' },
+    ],
+  },
+  {
+    date: '2026-10-09',
+    type: 'ingest',
     version: 'v2.46.67',
     title: 'eSSD 수요처별 2030 전망 + 빠진 수요(HDD 대체)',
     summary:

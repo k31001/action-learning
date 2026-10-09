@@ -2536,3 +2536,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 위키 신설 `essd-demand-by-application-2030.md`, 역링크(qlc-ssd-market · datacenter-types-storage-requirements)
 - 정정(lint): qlc-ssd-market §4의 "TechInsights DC NAND 295 → 909EB"는 2030이 아니라 CY2025 → CY2028
 - 지식 그래프 125 노드 · 678 엣지 · 고아 0 → 대시보드 v2.46.67 패치 + updates 항목, npm run build 통과
+
+## [2026-10-09] ingest | eSSD 전망 재조사: 전문 리서치 기관 2026 최신판
+- 사용자 지시: "요즘 상황이 급변하고 있어서 최근 컨설팅 자료 기반으로 다시 조사해 줘. 트렌드포스, 세미어낼리시스, 가트너 같은 전문 기업 자료면 더 좋아"
+- Research Agent 2개(TrendForce · Counterpoint · Omdia · TechInsights / SemiAnalysis · Gartner · IDC · Yole · Forward Insights · McKinsey). 1차 도메인 차단으로 모두 🟡 · ⚠️. 원장 `sources/articles/essd-outlook-research-firms-2026-10.md`
+- 핵심: eSSD 비트 수요 2026 +80%+(TF), eSSD = NAND 비트 48% → 50%+ · 매출 43% → 60%+(CP), QLC가 eSSD 용량의 18% → 38%(2027, TF), AI NAND 205 → 609EB(2025 → 27, MS), 2028 약 900EB(JPM · Kioxia, McKinsey 경로의 약 1.5배), IDC SSD 매출 CAGR 40%+(2025~30), 2030 AI DC 플래시 1.2ZB(SanDisk), 2031 DC NAND 1,686EB(Kioxia)
+- 충돌: 2027 수급(TF 2H27 완화 대 Omdia · Citi · MS 부족 지속), SemiAnalysis 실측은 SSD KV 효과에 신중(DRAM 추가 히트 1.36%), Coughlin 2030 HDD 10.7ZB 대 SSD 3.0ZB. 전문 기관 2028~30 EB 절대치는 비공개
+- 위키 `essd-demand-by-application-2030.md` §0 "2026년 전문 기관 갱신" 신설(우선 참조), index
+- 지식 그래프 메타데이터 갱신 → 대시보드 v2.46.68 패치 + updates 항목, npm run build 통과
