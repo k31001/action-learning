@@ -2527,3 +2527,12 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 고객 캐시 3~7.2 띠 삭제(노트에 한 문장 유지, 출처 줄에서 고객 캐시 출처 삭제)
 - 점선 둥근 영역: MLC(2011~2014, 대표 제품 10) · TLC(2015~2026, 5 → 3, SAS 쓰기 위주 일부 10) · QLC(2018~2025, 0.2~0.6). SLC는 대표 제품이 모두 17~100이라 축 위 점선 띠로 표시("축 위 생략")
 - 노트: NAND 종류 흐름 설명 추가. 아웃라인 · 보고서 v2.8 · index. 위키 · 대시보드 변경 없음. 렌더 QA PASS
+
+## [2026-10-09] ingest | eSSD 수요처별 2030 전망 + 빠진 수요(HDD 대체)
+- 사용자 질문: "슬라이드 1에서 언급된 eSSD 미래 수요처에 대해서 2030년까지 예상 수요가 어떻게 변화하는지 조사해 줘. 혹시 eSSD에서 빠진 거대한 수요가 있다면 포함해 주고"
+- Research Agent 2개(AI 워크로드 · 비AI/숨은 수요). 프록시가 1차 도메인을 막아 모두 🟡 · ⚠️. 원장 `sources/articles/essd-demand-by-application-2030-2026-10.md`
+- 결론: 2024 → 2030 AI 추론 약 6 → 447EB, AI 학습 7 → 127EB, 범용 · 엔터프라이즈 약 168 → 504EB(McKinsey 총 181 → 1,078EB에서 산술), 에이전트 정량 전망 없음. SanDisk 엔터프라이즈 DC 플래시 TAM 1.2ZB(2030)
+- 빠진 큰 수요 = HDD 대체(용량 계층 매체 전환): 니어라인 HDD 2026 약 1.6ZB/년 → 2030 약 3.9ZB/년(가이던스 산술), 10% 전환 시 약 390EB. 제약은 QLC 용량당 비용 HDD의 4~5배(CSP 목표 3배 이내)
+- 위키 신설 `essd-demand-by-application-2030.md`, 역링크(qlc-ssd-market · datacenter-types-storage-requirements)
+- 정정(lint): qlc-ssd-market §4의 "TechInsights DC NAND 295 → 909EB"는 2030이 아니라 CY2025 → CY2028
+- 지식 그래프 125 노드 · 678 엣지 · 고아 0 → 대시보드 v2.46.67 패치 + updates 항목, npm run build 통과

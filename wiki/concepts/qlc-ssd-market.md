@@ -172,7 +172,7 @@ TrendForce는 2024년 QLC eSSD 비트 출하를 **30EB, 2023년 대비 4배**로
 | 항목 | 가정 | 근거 |
 |---|---|---|
 | 전체 eSSD EB 2022~2025 | TrendForce 연 매출 ÷ 추정 ASP(2022 $141, 2023 $61, 2024 $114, 2025 $100/TB) | 매출은 [qlc-essd-market-size-forecast-data-2026-09.md](../../sources/articles/qlc-essd-market-size-forecast-data-2026-09.md) §1.3, ASP는 VDURA 30TB 인덱스(3Q25 $102~115)와 컨슈머 $/TB 방향 프록시(§3.2~3.3). 2025년 265EB는 Intel MR 수치와 일치 |
-| 전체 eSSD EB 2026~2030 | 연 +28~30%(기준선), 상단은 TechInsights DC NAND 295→909EB(CAGR 46%)의 90% | 같은 소스 §2.1(Micron NAND 비트 +20%, 서버 >40%, Kioxia IR) |
+| 전체 eSSD EB 2026~2030 | 연 +28~30%(기준선), 상단은 TechInsights DC NAND 295→909EB(CAGR 46%)의 90% (2026-10-09 정정: 295→909EB는 2030이 아니라 **CY2025→CY2028** 수치(Kioxia Investor Day가 TechInsights 인용). 2030 비교치는 McKinsey eSSD 1,078EB · SanDisk 엔터프라이즈 DC 플래시 1.2ZB, [essd-demand-by-application-2030.md](essd-demand-by-application-2030.md)) | 같은 소스 §2.1(Micron NAND 비트 +20%, 서버 >40%, Kioxia IR) |
 | QLC 비중 | 2024년 14%(30EB 앵커 ÷ 210EB) → 2026년 30% → 2030년 55%, 밴드 ±4~7pt | 같은 소스 §2.3 삼각측량, 벤더 정성 신호 |
 | eSSD ASP 기준선 | 2026 $368(1H 실측 $56B ÷ 추정 150EB 연장) → 2027 $220 → 2028 $120 → 2029 $95 → 2030 $80 | 2H27 공급 완화(TrendForce 2026-07-30), 4Q27 가격 개선 신호(Counterpoint), 2Tb QLC 원가 곡선 |
 | 쇼티지 상단 ASP | 2027 $350, 2028 $250, 2029 $180, 2030 $140 | 2028년까지 NAND 쇼티지 지속 시나리오 |
@@ -201,5 +201,6 @@ TrendForce는 2024년 QLC eSSD 비트 출하를 **30EB, 2023년 대비 4배**로
 - 운영점 곡선의 반대쪽 끝(저용량·초고DWPD, 캐시 계층 상단): [high-dwpd-operating-point.md](high-dwpd-operating-point.md) · 구성 시점의 경계: [ssd-configurability-boundary.md](ssd-configurability-boundary.md)
 - 실행 전략·고객 협업: [qlc-execution-strategy.md](../strategies/qlc-execution-strategy.md)
 - 선행 전략: [fdp-host-ssd-platform.md](../strategies/fdp-host-ssd-platform.md)(자매편), [dev-org-transformation.md](../strategies/dev-org-transformation.md)
+- 수요처별 2030 전망(범용 · 학습 · 추론 · 에이전트 + HDD 대체): [essd-demand-by-application-2030.md](essd-demand-by-application-2030.md)
 - 시장 맥락: [ssd-ufs-market.md](ssd-ufs-market.md), [nand-process-transition.md](nand-process-transition.md), [nvidia-cmx-scada.md](../entities/nvidia-cmx-scada.md)
 - 시나리오 연결: B(AI 르네상스)에서 추론 캐시 티어가 최대로 열리고, C·D(AI 조정)에서는 QLC 비중 상승 자체는 유지되나 KV 티어 침투가 지연된다 ([scenario-matrix.md](../scenarios/scenario-matrix.md))

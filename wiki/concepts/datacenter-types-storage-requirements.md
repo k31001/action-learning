@@ -89,3 +89,4 @@ sources:
 - 세 기술: [mixed-media-ssd.md](mixed-media-ssd.md) · [high-capacity-fault-tolerance.md](high-capacity-fault-tolerance.md) · [high-dwpd-operating-point.md](high-dwpd-operating-point.md)
 - 고객 측 고DWPD 근거(Meta CacheLib 150% · -44%): [ssd-customer-high-dwpd-evidence-2026-10.md](../../sources/articles/ssd-customer-high-dwpd-evidence-2026-10.md)
 - 산출물: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md)
+- 수요처별 2030 수요 크기(2026-10-09): [essd-demand-by-application-2030.md](essd-demand-by-application-2030.md) (추론 약 447EB · 학습 약 127EB · 범용 약 504EB(산술) · 에이전트 정량 없음, 빠진 수요 = HDD 대체)

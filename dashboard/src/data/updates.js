@@ -15,6 +15,23 @@
 
 export const UPDATES = [
   {
+    date: '2026-10-09',
+    type: 'ingest',
+    version: 'v2.46.67',
+    title: 'eSSD 수요처별 2030 전망 + 빠진 수요(HDD 대체)',
+    summary:
+      'AI 추론 약 6 → 447EB, AI 학습 7 → 127EB, 범용 · 엔터프라이즈 약 168 → 504EB(산술), 에이전트는 정량 전망 없음(McKinsey 합계 181 → 1,078EB, SanDisk DC 플래시 1.2ZB). ' +
+      '빠진 큰 수요는 HDD 대체: 니어라인 HDD 2030 연 약 3.9ZB, 10% 전환 시 약 390EB. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['eSSD', '2030 전망', 'AI 추론', 'KV 캐시', 'HDD 대체', 'QLC'],
+    items: [
+      { label: '위키', detail: 'wiki/concepts/essd-demand-by-application-2030.md 신설, qlc-ssd-market 295 → 909EB를 2028 수치로 정정' },
+      { label: '원장', detail: 'sources/articles/essd-demand-by-application-2030-2026-10.md (모두 검색 확인 등급)' },
+    ],
+    links: [
+      { label: 'wiki/concepts/essd-demand-by-application-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/essd-demand-by-application-2030.md' },
+    ],
+  },
+  {
     date: '2026-10-07',
     type: 'ingest',
     version: 'v2.46.66',
