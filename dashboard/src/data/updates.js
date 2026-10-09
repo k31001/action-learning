@@ -16,6 +16,17 @@
 export const UPDATES = [
   {
     date: '2026-10-09',
+    type: 'query',
+    version: 'v2.46.69',
+    title: '공급 부족기의 HDD 대체: 가장 뒤로 밀리는 수요',
+    summary:
+      'HDD 대체는 용량당 지불 의사가 가장 낮아 부족기 배분의 마지막 순위(QLC/HDD 4~5배 대 CSP 목표 3배 이내, 2026 eSSD 가격 누적 약 +235%). 예외는 HDD 품절 강제 대체와 전력 병목 AI DC. 부족 해소 후 완충 수요. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['HDD 대체', 'QLC', '공급 부족', 'eSSD'],
+    items: [{ label: '위키', detail: 'wiki/concepts/essd-demand-by-application-2030.md §2.5' }],
+    links: [{ label: 'wiki/concepts/essd-demand-by-application-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/essd-demand-by-application-2030.md' }],
+  },
+  {
+    date: '2026-10-09',
     type: 'ingest',
     version: 'v2.46.68',
     title: 'eSSD 전망 재조사: TrendForce · Counterpoint · Omdia · SemiAnalysis · Gartner · IDC 2026 최신판',

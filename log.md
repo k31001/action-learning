@@ -2544,3 +2544,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 충돌: 2027 수급(TF 2H27 완화 대 Omdia · Citi · MS 부족 지속), SemiAnalysis 실측은 SSD KV 효과에 신중(DRAM 추가 히트 1.36%), Coughlin 2030 HDD 10.7ZB 대 SSD 3.0ZB. 전문 기관 2028~30 EB 절대치는 비공개
 - 위키 `essd-demand-by-application-2030.md` §0 "2026년 전문 기관 갱신" 신설(우선 참조), index
 - 지식 그래프 메타데이터 갱신 → 대시보드 v2.46.68 패치 + updates 항목, npm run build 통과
+
+## [2026-10-09] query | 공급 부족기에 HDD 대체용 SSD가 남을까
+- 사용자 질의: "한동안 스토리지 공급 부족이 안 풀리면 HDD 대체용으로 줄 만한 SSD가 없지 않을까. 비싼 데 팔면 되니까"
+- 답: 대체로 맞음. HDD 대체는 용량당 지불 의사가 가장 낮아 부족기 배분의 마지막 순위(QLC/HDD 격차 4~5배 대 CSP 목표 3배 이내, 2026 eSSD 가격 누적 약 +235%, 4Q26 QLC 주문 명목은 KV 캐시, 신규 팹 2028년 말 이후)
+- 예외: HDD 품절로 인한 강제 대체(리드타임 52주+, 약 200EB 부족), 전력 · 공간이 병목인 AI DC(QLC 전력 약 30% 절감, SanDisk 2030 데이터 레이크 약 300EB)
+- 함의(과제팀 해석): HDD 대체는 부족 해소 후 열리는 완충 수요, 다음 하강기 비트 흡수처. 위키 `essd-demand-by-application-2030.md` §2.5 신설
+- 지식 그래프 메타데이터 갱신 → 대시보드 v2.46.69 패치 + updates 항목, npm run build 통과
