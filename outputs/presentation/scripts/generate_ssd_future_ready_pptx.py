@@ -5,6 +5,7 @@
   2 핵심 기술 핵심 기술 여섯 가지 중 다섯은 명확한 스펙으로 풀리지만, FDP는 고객과 함께 설계해야 제대로 동작합니다
   3 당위성 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다
   4 실행   고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다
+  참고 5   eSSD 수요는 2030년까지 약 6배로 늘고, 가장 큰 몫은 AI 추론에서 나옵니다 (수요처별 누적 막대)
   결론     실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다
 
 규율: samsung-memory-ppt-design-skill v2.1(11절 시각 우선, 11.J 근거 사슬: 주장마다 데이터 그래프). 본문 18pt 이상 · 출처 15pt · em-dash 금지 · 액센트 Samsung Blue 하나.
@@ -27,7 +28,7 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
 ASSETS = os.path.join(HERE, "..", "assets")
 OUT = os.environ.get("OUT_PATH") or os.path.join(HERE, "..", "ssd-future-ready-strategy.pptx")
 
-d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=4,
+d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=5,
          logos_dir=os.path.join(ASSETS, "logos"), photos_dir=os.path.join(ASSETS, "photos"),
          renders_dir=os.path.join(ASSETS, "survival"))
 tb, rect, label_box = d.tb, d.rect, d.label_box
@@ -89,6 +90,10 @@ for i, (nm, wl, rq) in enumerate(APPS):
     tb(s, x + 0.20, CT + 0.52, DW - 0.40, 0.30, [(wl, 16, False, GRAY)])
     rect(s, x + 0.20, CB - 0.58, DW - 0.40, 0.012, fill=LINE)
     tb(s, x + 0.20, CB - 0.52, DW - 0.40, 0.42, [(rq, 20, True, BLUE)], anchor=MID)
+# 카드 구분선 위: 2030 eSSD 수요 전망(McKinsey 2024-12, 상세 5장)
+for i, v in enumerate(["약 500EB", "약 130EB", "약 450EB", None]):
+    run = [("2030  ", 16, False, GRAY), (v, 20, True, INK)] if v else [("2030  ", 16, False, GRAY), ("별도 전망 없음", 16, False, GRAY)]
+    tb(s, DXS[i] + 0.20, CB - 0.96, DW - 0.40, 0.36, [run], anchor=MID)
 d.fit(s, d.logo("nvidia"), DXS[1] + 0.20, CT + 0.56, 1.15, 0.26, align="left")
 _lx = DXS[0] + 0.20
 for _lg, _h in (("aws", 0.30), ("microsoft", 0.24), ("google", 0.24)):
@@ -212,10 +217,11 @@ for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
             label_box(s, x, y, DW, RH, [(txt, 18, True, BLUE)], fill=WHITE, line=BLUE, lw=1.25, dash=True)
 
 d.band(s, 9.44, 0.80, "결론", "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다")
-d.footer(s, "출처: HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD 가이드(환산) · KV 실측 StorageReview(2026-08) · AI 전용 Kioxia · DapuStor · "
-            "에이전트 Google Agent Substrate · Muse 관측(제3자) · 제품군 사양 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
+d.footer(s, "출처: 2030 수요 McKinsey(2024-12, 범용은 산술, 상세 5장) · HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · KV 실측 StorageReview(2026-08) · "
+            "AI 전용 Kioxia · DapuStor · 에이전트 Google · Muse 관측(제3자) · 제품군 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
 d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
         "그래서 SSD의 다음 수요를 하나로 단정하지 않고, 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. "
+        "카드 오른쪽 위 숫자는 McKinsey가 본 2030년 eSSD 수요입니다. 범용 클라우드와 엔터프라이즈가 약 500, AI 추론이 약 450, AI 학습이 약 130엑사바이트이고, 에이전트는 따로 떼어 낸 전망이 없습니다. 연도별 상세는 참고 5장에 두었습니다. "
         "첫째, 범용 클라우드입니다. 여러 고객의 VM이 서버의 SSD를 나눠 씁니다. Microsoft의 SSD 50만 대를 보면 실제 쓰기는 0.07에서 0.23 DWPD로 범용 TLC 정격 1 DWPD 안에 들어옵니다. 기존 SSD 기술로 대응할 수 있습니다. "
         "다만 한 고객의 쓰기가 같은 SSD를 쓰는 다른 고객의 지연을 키웁니다. Microsoft 워크로드 실험에서 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. 멀티테넌트 QoS와 격리는 여전히 중요한 요구입니다. "
         "둘째, AI 학습입니다. NVIDIA SuperPOD 가이드를 GPU당으로 환산하면, 데이터가 캐시보다 큰 멀티모달 학습은 기본 등급보다 약 3배의 스토리지 대역을 요구합니다. 데이터 로딩에는 고성능 TLC가 맞습니다. "
@@ -681,6 +687,94 @@ d.notes(s, "4장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 �
         "마지막으로 화두를 하나 드리겠습니다. 지금까지 고객 관계 관리, CRM은 경영진과 경영진, 영업과 구매 사이의 일이었습니다. 앞으로는 엔지니어와 엔지니어 사이까지 넓어져야 합니다. 고객 엔지니어가 신뢰하는 상대는 같은 문제를 같은 언어로 푸는 엔지니어이고, 고객과 국가마다 다른 언어와 문화를 이해하는 것도 그 관계의 일부입니다. 엔지니어 수준의 고객 관계를 우리가 맡을 준비가 되어 있는지 함께 생각해 보면 좋겠습니다. "
         "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 FDP 공동 설계 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
+
+# =============================================================== 5 참고: eSSD 수요처별 전망
+s = d.slide(5, "참고", "eSSD 수요는 2030년까지 약 6배로 늘고,\n가장 큰 몫은 AI 추론에서 나옵니다")
+
+# 막대: McKinsey(2024-12) 2024 · 2030 끝값, 2025~2029는 수요처별 연평균 성장률 보간(산술)
+DEM = [("범용 클라우드 · 엔터프라이즈", 168, 504, GRAY_2), ("AI 학습", 7, 127, BLUE_T2), ("AI 추론", 6, 447, BLUE)]
+YRS = list(range(2024, 2031))
+VAL = [[a * (b / a) ** (k / 6) for k in range(7)] for _, a, b, _ in DEM]
+PX0, PY0, PY1, VMAX = MX + 1.00, 3.30, 8.62, 1500
+SLOT, BW = 1.16, 0.70
+
+
+def py(v):
+    return PY1 - v / VMAX * (PY1 - PY0)
+
+
+def bxc(k):
+    return PX0 + SLOT * (k + 0.5)
+
+
+# 범례 줄 (직접 레이블은 2030 막대 오른쪽)
+tb(s, MX, 2.34, 11.4, 0.36, [[("eSSD 수요 (EB/년)", 20, True, INK), ("   막대 McKinsey 2024 기준 시나리오, 2025~2029는 보간(산술)", 16, False, GRAY)]], anchor=MID)
+for g in (0, 500, 1000, 1500):
+    rect(s, PX0, py(g) - 0.005, SLOT * 7 + 0.10, 0.01, fill=LINE if g else GRAY_2)
+    tb(s, MX, py(g) - 0.16, PX0 - MX - 0.12, 0.32, [(f"{g:,}", 16, False, GRAY)], align=R, anchor=MID)
+# 전망 구분선
+rect(s, bxc(0) + SLOT / 2 - 0.005, PY0 - 0.30, 0.01, PY1 - PY0 + 0.30, fill=GRAY_2)
+tb(s, bxc(0) + SLOT / 2 + 0.06, PY0 - 0.34, 1.2, 0.30, [("전망 →", 16, False, GRAY)], anchor=MID)
+for k, yr in enumerate(YRS):
+    x0, acc = bxc(k) - BW / 2, 0.0
+    for j, (_, _, _, col) in enumerate(DEM):
+        v = VAL[j][k]
+        rect(s, x0, py(acc + v), BW, py(acc) - py(acc + v), fill=col)
+        acc += v
+    tb(s, x0 - 0.30, py(acc) - 0.36, BW + 0.60, 0.32, [(f"{acc:,.0f}", 18, k == 6, BLUE if k == 6 else INK)], align=C, anchor=MID)
+    tb(s, x0 - 0.25, PY1 + 0.06, BW + 0.50, 0.30, [(str(yr), 16, k == 6, INK if k == 6 else GRAY)], align=C)
+
+# 2030 막대 위 HDD 대체 잠재분(점선): 니어라인 HDD 출하 약 3.9ZB의 10%
+x30 = bxc(6) - BW / 2
+rect(s, x30, py(1078 + 390), BW, py(1078) - py(1078 + 390), line=GRAY, lw=1.25, dash=True)
+tb(s, x30 + BW + 0.14, py(1078 + 195) - 0.32, 2.6, 0.64, [("HDD 대체 잠재", 18, True, INK), ("니어라인의 10%, 390", 16, False, GRAY)], spacing=1.0, anchor=MID)
+# 2030 막대 직접 레이블(범례)
+acc = 0.0
+for j, (nm, _, b, col) in enumerate(DEM):
+    mid = acc + b / 2
+    acc += b
+    lab = "범용 · 엔터프라이즈" if j == 0 else nm
+    tb(s, x30 + BW + 0.14, py(mid) - 0.32, 2.6, 0.64, [(lab, 18, True, BLUE if j == 2 else INK), (f"{b:,} (산술)" if j == 0 else f"{b:,}", 16, j == 2, BLUE if j == 2 else GRAY)], spacing=1.0, anchor=MID)
+
+# 2026년 최신 전망 점: 2028년 약 900EB(JPM · Kioxia). 막대 경로는 2029~30년 사이에 900에 닿는다(점선 = 앞당긴 기간)
+k900 = 5 + math.log(900 / 716) / math.log(1078 / 716)
+xm, ym, xe = bxc(4), py(900), bxc(k900)
+ln = s.shapes.add_connector(1, *(int(v * 914400) for v in (xm, ym, xe, ym)))
+ln.line.color.rgb = BLUE_T1
+ln.line.width = 22225
+ln.line.dash_style = 4
+rect(s, xe - 0.06, ym - 0.06, 0.12, 0.12, fill=WHITE, line=BLUE_T1, lw=1.5, shape=MSO_SHAPE.OVAL)
+rect(s, xm - 0.14, ym - 0.14, 0.28, 0.28, fill=BLUE_T1, line=WHITE, lw=1.0, shape=MSO_SHAPE.DIAMOND)
+tb(s, xm - 2.30, ym - 0.17, 2.10, 0.34, [("약 900", 18, True, BLUE_T1)], align=R, anchor=MID)
+tb(s, xm + 0.20, ym - 0.42, xe - xm - 0.20, 0.32, [("약 1.5년", 16, True, BLUE_T1)], align=C, anchor=MID)
+tb(s, bxc(0) + 0.70, py(1480), 4.6, 0.64, [("◆ 2026년 최신 전망 (2028)", 18, True, BLUE_T1), ("JPM · Kioxia, 정의 차이로 방향만 비교", 16, False, GRAY)], spacing=1.0)
+
+# ---- 오른쪽: 주요 포인트 3개 (빅넘버 + 한 줄)
+KX = MX + 12.55
+KW = RIGHT - KX
+tb(s, KX, 2.34, KW, 0.36, [("주요 포인트", 20, True, INK)], anchor=MID)
+KP = [("AI 추론", "75", "배", ["6 → 447EB", "2030년 eSSD의 41%"], True),
+      ("최신 전망", "1~2", "년 앞당김", ["2028년 약 900EB", "2024년 전망으로는 2029~30년"], False),
+      ("빠진 수요: HDD 대체", "390", "EB", ["니어라인 HDD 출하의 10%", "AI 학습 전체의 3배"], False)]
+for i, (tag_, num, post, sub, hot) in enumerate(KP):
+    y = 2.82 + i * 2.00
+    rect(s, KX, y, KW, 1.84, fill=TINT if hot else PALE, shape=RR)
+    tb(s, KX + 0.24, y + 0.12, KW - 0.48, 0.34, [(tag_, 18, True, BLUE if hot else GRAY)], anchor=MID)
+    tb(s, KX + 0.24, y + 0.44, KW - 0.48, 0.72, [[(num, 44, True, BLUE if hot else INK), (" " + post, 22, True, BLUE if hot else INK)]], anchor=MID)
+    tb(s, KX + 0.24, y + 1.14, KW - 0.48, 0.64, [(ln_, 16, False, GRAY) for ln_ in sub], spacing=1.0)
+tb(s, KX, 8.82, KW, 0.36, [("에이전트는 별도 전망 없음 (추론 · 범용에 포함)", 16, False, GRAY)], anchor=MID)
+
+d.band(s, 9.44, 0.80, "참고", "수요의 중심은 AI 추론이고, 물량으로 가장 큰 잠재 수요는 HDD 대체입니다")
+d.footer(s, "출처: McKinsey(2024-12, 범용 = 총량 1,078 − 학습 − 추론 산술, 2025~29 보간) · Kioxia(2026-06, TechInsights 인용 DC 플래시) · JPM(2026-01) · "
+            "HDD 대체 = Seagate · WD 니어라인 가이던스 산술 · 기관마다 정의 다름, 모두 검색 확인")
+d.notes(s, "참고 자료입니다. 1장에서 본 데이터센터 응용 네 가지가 2030년까지 어느 정도의 수요가 되는지 공개 전망으로 정리했습니다. "
+        "막대는 McKinsey의 2024년 말 기준 시나리오입니다. eSSD 수요는 2024년 181엑사바이트에서 2030년 1,078엑사바이트로 약 6배가 됩니다. 2030년과 2024년 값은 McKinsey 수치이고, 그 사이 해는 수요처별 연평균 성장률로 이은 과제팀 산술입니다. "
+        "가장 큰 몫은 AI 추론입니다. KV 캐시와 RAG를 포함한 추론 수요는 6에서 447엑사바이트로 약 75배 늘어 2030년 eSSD의 41퍼센트가 됩니다. AI 학습은 7에서 127엑사바이트, 범용 클라우드와 엔터프라이즈는 총량에서 학습과 추론을 뺀 값으로 약 500엑사바이트입니다. "
+        "에이전트는 따로 떼어 낸 전망이 없습니다. 추론의 KV 캐시와 범용의 VM 디스크에 나뉘어 잡힙니다. "
+        "마름모는 2026년에 나온 최신 전망입니다. JPM과 Kioxia는 2028년에 약 900엑사바이트를 봅니다. 2024년 전망 경로로는 2029년과 2030년 사이에야 닿는 규모라 약 1년 반 앞당겨진 셈입니다. SanDisk도 2030년 AI 데이터센터 플래시를 1.2제타바이트로 봅니다. 기관마다 정의가 달라 막대와 정확히 겹쳐 읽을 수는 없고 방향만 비교합니다. "
+        "마지막으로 네 응용에 없는 큰 수요가 HDD 대체입니다. 니어라인 HDD는 2030년 연 약 3.9제타바이트가 출하될 전망이라, 그중 10퍼센트만 플래시로 넘어와도 약 390엑사바이트로 AI 학습 전체의 세 배입니다. "
+        "다만 QLC 가격이 HDD의 3배 안에 들어야 하는데, 지금 가격 경로로는 2031년에서 2032년 무렵이고, 실제 전환은 전력과 공간이 병목인 AI 데이터센터부터 TCO로 일어날 가능성이 큽니다. "
+        "모든 수치는 검색으로 확인한 2차 자료이며 1차 문서 대조가 필요합니다.")
 
 d.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(d.prs.slides._sldIdLst)}장)")
