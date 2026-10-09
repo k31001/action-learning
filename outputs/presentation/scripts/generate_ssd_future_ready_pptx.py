@@ -176,6 +176,7 @@ SCOL = [GRAY_2, BLUE_T2, BLUE]
 SNM = ["범용 · 엔터프라이즈", "AI 학습", "AI 추론"]
 SX0, SX1 = DXS[0], RIGHT - 1.20
 tb(s, LX, CB + 0.12, LW, 0.30, [("eSSD 수요 비중", 18, True, INK)], anchor=MID)
+tb(s, LX, CB + 0.48, LW - 0.80, 0.30, [("출처: McKinsey 2024-12", 15, False, GRAY)], anchor=MID)
 for r, (yr, sh, tot) in enumerate(SHR):
     y = CB + 0.12 + r * 0.36
     tb(s, LX, y, LW - 0.12, 0.30, [(yr, 16, r == 1, INK if r == 1 else GRAY)], align=R, anchor=MID)
