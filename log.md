@@ -2625,3 +2625,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 생성기 `outputs/presentation/scripts/generate_qlc_tlc_entry_pptx.py`(deck_helpers, 20 × 11.25in), PPTX `outputs/presentation/qlc-tlc-market-entry.pptx` 6장(git add -f)
 - 렌더 QA(qa_render) PASS: 라벨 줄바꿈 · 겹침 수정(P/E 라벨 3만~10만 표기, 깔때기 · DWPD · 성능 라벨 폭, 중앙값 라벨 위치, 실행 시점 줄 축약, 별첨 2 상자 위치)
 - 위키 `qlc-tlc-market-entry.md` · 아웃라인 status · index 갱신. 대시보드 변화 없음(지식 그래프 재생성 결과 확인)
+
+## [2026-10-09] build | 이전 전략 덱 v3.3: 새 4장 "사업 기회" (TLC 시장의 QLC 진입 한 장)
+- 사용자 지시: qlc-tlc-market-entry 전략의 핵심을 한 장으로 이전 전략 덱에 추가. 시장 규모 현황 · 전망, 성능 저하 극복, 성능 무관 · 내구만 필요한 TLC 수요 존재 여부, QLC DWPD ~1일 때 시장 규모. 시각화 우선
+- ingest: `sources/articles/tlc-demand-why-tlc-segmentation-2026-10.md`(WT-01~42, 모두 🟡 · ⚠️). 분할(⚠️ 가정): 내구 규격만 2026 중앙 100(43~175) · 2030 192(46~509)EB, 관행 · 가격 43 · 64, 성능 RI 174 · 313(20~40% 극복 가정), 고내구 65 · 101, KV 35 · 200
+- 덱: 3장 다음에 4장 삽입(실행 5장 · 참고 6장), 누적 막대 + 6600 ION 정격 0.075 → 0.3 → 1.0 + 지연 로그 축(100ms 대 0.1ms, 0.5 대 2~4ms) + FDP · pSLC 완화. 렌더 QA PASS, PPTX 재생성
+- 위키 `qlc-tlc-market-entry.md` §4.5, 아웃라인 · 보고서 v3.3, index 갱신
+- 지식 그래프 갱신 → 대시보드 v2.46.74 패치 + updates 항목, npm run build 통과

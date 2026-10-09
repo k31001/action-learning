@@ -16,6 +16,21 @@
 export const UPDATES = [
   {
     date: '2026-10-09',
+    type: 'build',
+    version: 'v2.46.74',
+    title: '왜 TLC를 샀나: QLC가 1 DWPD에 닿을 때 열리는 TLC 수요',
+    summary:
+      'TLC eSSD를 주된 선택 이유로 분할(가정 기반): 내구 규격만 2026 중앙 약 100EB · 2030 약 190EB(범위 46~509), 성능 RI는 격차 극복 시 20~40%. 같은 QLC(6600 ION)도 쓰기 모양에 따라 정격 0.075 → 0.3 → 1.0. 이전 전략 덱에 4장 사업 기회 추가. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['QLC', 'TLC', 'DWPD', '시장 규모', 'FDP'],
+    items: [
+      { label: '원장', detail: 'sources/articles/tlc-demand-why-tlc-segmentation-2026-10.md' },
+      { label: '위키', detail: 'wiki/strategies/qlc-tlc-market-entry.md §4.5' },
+      { label: '덱', detail: 'ssd-future-ready-strategy.pptx v3.3 4장' },
+    ],
+    links: [{ label: 'wiki/strategies/qlc-tlc-market-entry.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/qlc-tlc-market-entry.md' }],
+  },
+  {
+    date: '2026-10-09',
     type: 'ingest',
     version: 'v2.46.73',
     title: 'QLC로 TLC 시장 진입 전략: 팩트 체크 · 위키 종합 · 새 덱 아웃라인',

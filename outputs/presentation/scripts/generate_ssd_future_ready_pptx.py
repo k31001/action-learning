@@ -28,7 +28,7 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
 ASSETS = os.path.join(HERE, "..", "assets")
 OUT = os.environ.get("OUT_PATH") or os.path.join(HERE, "..", "ssd-future-ready-strategy.pptx")
 
-d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=5,
+d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=6,
          logos_dir=os.path.join(ASSETS, "logos"), photos_dir=os.path.join(ASSETS, "photos"),
          renders_dir=os.path.join(ASSETS, "survival"))
 tb, rect, label_box = d.tb, d.rect, d.label_box
@@ -170,7 +170,7 @@ for k, (nm, v, col, lab) in enumerate([("VM 디스크", 100, BLUE, "100GB"), ("V
     rect(s, x + 1.56, yy + 0.05, w, 0.22, fill=col)
     tb(s, x + 1.62 + w, yy, 0.95, 0.32, [(lab, 16, True, BLUE if k == 0 else GRAY)], anchor=MID)
 
-# ---- 중간 계층: eSSD 수요 비중 2026(올해) · 2030, 가로 누적 막대 (McKinsey 2024-12, 2026은 보간 산술, 상세 5장)
+# ---- 중간 계층: eSSD 수요 비중 2026(올해) · 2030, 가로 누적 막대 (McKinsey 2024-12, 2026은 보간 산술, 상세 6장)
 SHR = [("2026 올해", [85, 6, 9], "286EB"), ("2030", [47, 12, 41], "1,078EB")]
 SCOL = [GRAY_2, BLUE_T2, BLUE]
 SNM = ["범용 · 엔터프라이즈", "AI 학습", "AI 추론"]
@@ -233,11 +233,11 @@ for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
             label_box(s, x, y, DW, RH, [(txt, 18, True, BLUE)], fill=WHITE, line=BLUE, lw=1.25, dash=True)
 
 d.band(s, 9.44, 0.80, "결론", "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다")
-d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026은 보간 · 범용은 산술, 상세 5장) · HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · KV 실측 StorageReview(2026-08) · "
+d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026은 보간 · 범용은 산술, 상세 6장) · HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · KV 실측 StorageReview(2026-08) · "
             "AI 전용 Kioxia · DapuStor · 에이전트 Google · Muse 관측(제3자) · 제품군 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
 d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
         "그래서 SSD의 다음 수요를 하나로 단정하지 않고, 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. "
-        "카드 아래 가로 막대는 eSSD 수요의 응용별 비중입니다. 올해는 범용 클라우드와 엔터프라이즈가 85퍼센트로 대부분이고, AI 학습 6퍼센트, AI 추론 9퍼센트입니다. 2030년에는 전체가 약 1,078엑사바이트로 커지면서 범용 47퍼센트, AI 학습 12퍼센트, AI 추론 41퍼센트가 됩니다. 에이전트는 따로 떼어 낸 전망이 없어 추론과 범용에 포함됩니다. 올해 비중은 McKinsey 전망을 이어 계산한 값이고, 연도별 상세는 참고 5장에 두었습니다. "
+        "카드 아래 가로 막대는 eSSD 수요의 응용별 비중입니다. 올해는 범용 클라우드와 엔터프라이즈가 85퍼센트로 대부분이고, AI 학습 6퍼센트, AI 추론 9퍼센트입니다. 2030년에는 전체가 약 1,078엑사바이트로 커지면서 범용 47퍼센트, AI 학습 12퍼센트, AI 추론 41퍼센트가 됩니다. 에이전트는 따로 떼어 낸 전망이 없어 추론과 범용에 포함됩니다. 올해 비중은 McKinsey 전망을 이어 계산한 값이고, 연도별 상세는 참고 6장에 두었습니다. "
         "첫째, 범용 클라우드입니다. 여러 고객의 VM이 서버의 SSD를 나눠 씁니다. Microsoft의 SSD 50만 대를 보면 실제 쓰기는 0.07에서 0.23 DWPD로 범용 TLC 정격 1 DWPD 안에 들어옵니다. 기존 SSD 기술로 대응할 수 있습니다. "
         "다만 한 고객의 쓰기가 같은 SSD를 쓰는 다른 고객의 지연을 키웁니다. Microsoft 워크로드 실험에서 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. 멀티테넌트 QoS와 격리는 여전히 중요한 요구입니다. "
         "둘째, AI 학습입니다. NVIDIA SuperPOD 가이드를 GPU당으로 환산하면, 데이터가 캐시보다 큰 멀티모달 학습은 기본 등급보다 약 3배의 스토리지 대역을 요구합니다. 데이터 로딩에는 고성능 TLC가 맞습니다. "
@@ -531,8 +531,144 @@ d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 순서대
         "이 밖에 Baidu는 2014년 자체 SSD를 배치했고, Microsoft와 Meta는 OCP SSD 스펙과 FDP 표준을 직접 썼습니다. "
         "고객은 이미 자기 시스템에 맞춰 SSD를 설계하고 있습니다. 사양서를 받아 SSD를 잘 만드는 방식은 둘째 칸에 머물고, 셋째 칸은 고객 시스템 안에서 함께 설계해야 닿습니다.")
 
-# =============================================================== 4 실행
-s = d.slide(4, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")
+# =============================================================== 4 사업 기회: TLC 수요를 왜 TLC를 샀는지로 나누고, QLC가 1 DWPD에 닿으면 열리는 몫
+s = d.slide(4, "사업 기회", "TLC 수요의 약 4분의 1은 성능이 아니라 내구 규격 때문에 TLC이므로,\nQLC를 고객과 함께 1 DWPD로 올리면 이 몫부터 열립니다")
+OL, OLW = MX, 8.10
+OM, OMW = OL + OLW + 0.30, 4.80
+OR_, ORW = OM + OMW + 0.30, RIGHT - (OM + OMW + 0.30)
+
+# ---- ① 시장: TLC eSSD를 "왜 TLC를 샀나"로 분할 (중앙 가정, ⚠️ 산술)
+d.panel_head(s, OL, OLW, 1, "시장: 왜 TLC를 샀나")
+tb(s, OL, 3.00, OLW, 0.36, [[("TLC eSSD, EB/년  ", 18, True, INK), ("중앙 가정 · 과제팀 산술", 16, False, GRAY)]], anchor=MID)
+SEG = [  # 이름, 2026, 2030, 색
+    ("내구 규격만", 99.9, 192.2, BLUE),
+    ("관행 · 가격", 42.8, 64.1, BLUE_T2),
+    ("성능 (RI)", 174.4, 313.2, GRAY_2),
+    ("고내구 3 DWPD+", 64.9, 100.5, GRAY),
+    ("KV 캐시", 35.0, 200.0, LINE),
+]
+OY0, OY1, OVM = 3.62, 8.78, 900
+
+
+def oy(v):
+    return OY1 - v / OVM * (OY1 - OY0)
+
+
+OBW = 1.30
+OBX = [OL + 0.30, OL + 2.85]
+for k, (yr, tot) in enumerate([("2026", 417), ("2030", 870)]):
+    acc = 0.0
+    for j, (nm, a26, a30, col) in enumerate(SEG):
+        v = (a26, a30)[k]
+        rect(s, OBX[k], oy(acc + v), OBW, oy(acc) - oy(acc + v), fill=col, line=WHITE, lw=1.0)
+        if j == 0:
+            tb(s, OBX[k], oy(acc + v), OBW, oy(acc) - oy(acc + v), [(f"{v:.0f}", 20, True, WHITE)], align=C, anchor=MID)
+        if j == 2:  # 성능 RI 중 완화 기법으로 열릴 몫 20~40% (점선)
+            mh = oy(acc) - oy(acc + v * 0.4)
+            rect(s, OBX[k] + 0.06, oy(acc + v * 0.4) + 0.03, OBW - 0.12, mh - 0.06, line=BLUE, lw=1.5, dash=True)
+        acc += v
+    tb(s, OBX[k] - 0.30, oy(tot) - 0.40, OBW + 0.60, 0.36, [(f"{tot}", 18, True, INK)], align=C, anchor=MID)
+    tb(s, OBX[k] - 0.30, OY1 + 0.04, OBW + 0.60, 0.30, [(yr, 16, k == 1, INK if k else GRAY)], align=C)
+# 내구 규격만 몫의 범위(L~H 시나리오)
+for k, (lo, hi) in enumerate([(43, 175), (46, 509)]):
+    wx = OBX[k] + OBW + 0.10
+    rect(s, wx, oy(hi), 0.03, oy(lo) - oy(hi), fill=BLUE)
+    rect(s, wx - 0.06, oy(hi), 0.15, 0.03, fill=BLUE)
+    rect(s, wx - 0.06, oy(lo) - 0.03, 0.15, 0.03, fill=BLUE)
+    tb(s, wx + 0.12, oy(hi) - 0.02, 0.90, 0.30, [(f"{lo}~{hi}", 15, True, BLUE)], anchor=MID)
+# 2030 막대 오른쪽 직접 레이블
+LX0 = OBX[1] + OBW + 1.20
+acc = 0.0
+LBL = [("내구 규격만", "192 · 바로 진입", BLUE, True), ("관행 · 가격", "64 · 가격 · 공급", INK, False),
+       ("성능 (RI)", "313 · 점선 20~40% 극복", INK, False), ("고내구 3 DWPD+", "101 · 대상 아님", GRAY, False), ("KV 캐시", "200 · 대상 아님", GRAY, False)]
+for j, (nm, a26, a30, col) in enumerate(SEG):
+    mid = acc + a30 / 2
+    acc += a30
+    t1, t2, c_, hot = LBL[j]
+    yy = min(max(oy(mid) - 0.30, OY0 - 0.10), OY1 - 0.60)
+    tb(s, LX0, yy, OL + OLW - LX0, 0.60, [(t1, 17, True, BLUE if hot else INK), (t2, 15, hot, BLUE if hot else GRAY)], spacing=1.0, anchor=MID)
+    rect(s, LX0 - 0.16, yy + 0.12, 0.10, 0.10, fill=col if col != LINE else GRAY_2)
+
+# ---- ② 내구: 같은 QLC도 쓰기 모양이 맞으면 1 DWPD (Micron 6600 ION 정격)
+d.panel_head(s, OM, OMW, 2, "내구: 쓰기 모양이 바꾼다")
+tb(s, OM, 3.00, OMW, 0.36, [[("같은 QLC의 정격 DWPD  ", 18, True, INK), ("Micron 6600 ION", 16, False, GRAY)]], anchor=MID)
+QX0, QW_, QVM = OM + 1.80, OMW - 1.80 - 0.80, 1.1
+for v in (0, 0.5, 1.0):
+    rect(s, QX0 + QW_ * v / QVM - 0.005, 3.52, 0.01, 2.06, fill=LINE)
+    tb(s, QX0 + QW_ * v / QVM - 0.4, 5.58, 0.8, 0.28, [(f"{v:g}", 15, False, GRAY)], align=C)
+for k, (nm, v, hot) in enumerate([("4KB 랜덤", 0.075, False), ("16KB 랜덤", 0.3, False), ("128KB 순차", 1.0, True)]):
+    yy = 3.58 + k * 0.64
+    tb(s, OM, yy, 1.74, 0.46, [(nm, 18, True, BLUE if hot else INK)], anchor=MID)
+    w = QW_ * v / QVM
+    rect(s, QX0, yy + 0.08, max(w, 0.04), 0.30, fill=BLUE if hot else GRAY_2)
+    tb(s, QX0 + max(w, 0.04) + 0.06, yy, 0.80, 0.46, [(f"{v:g}", 18, True, BLUE if hot else INK)], anchor=MID)
+tb(s, QX0 + 1.50, 3.58 + 0.64 + 0.02, 0.80, 0.42, [("×13", 22, True, BLUE)], anchor=MID)
+rect(s, OM, 6.00, OMW, 0.012, fill=LINE)
+tb(s, OM, 6.10, OMW, 0.36, [("쓰기를 크게 · 순차로 · 수명별로", 18, True, INK)], anchor=MID)
+FW_ = (OMW - 0.40) / 2
+label_box(s, OM, 6.56, FW_, 0.80, [("작은 랜덤 쓰기", 17, True, INK), ("섞인 수명", 15, False, GRAY)], fill=PALE)
+d.arrow_r(s, OM + FW_ + 0.06, 6.84, 0.28, 0.24)
+label_box(s, OM + FW_ + 0.40, 6.56, FW_, 0.80, [("FDP 배치", 17, True, WHITE), ("큰 순차 · 같은 수명", 15, False, BLUE_T2)], fill=BLUE)
+tb(s, OM, 7.50, OMW, 0.36, [[("배치 부하 실제 쓰기  ", 16, False, GRAY), ("0.26~0.35 DWPD", 18, True, BLUE)]], anchor=MID)
+tb(s, OM, 7.86, OMW, 0.36, [("1 DWPD = 쓰기 11.6 MB/s/TB", 16, False, GRAY)], anchor=MID)
+tb(s, OM, 8.30, OMW, 0.50, [("순차 정격 1.0을 실제 부하에서 지키는 것이 과제", 16, True, BLUE)], anchor=MID)
+
+# ---- ③ 성능: 수요마다 필요한 만큼 (지연 예산 대 QLC, 로그 축)
+d.panel_head(s, OR_, ORW, 3, "성능: 필요한 만큼만")
+tb(s, OR_, 3.00, ORW, 0.36, [[("지연 ms  ", 18, True, INK), ("로그 축, 예산 대 QLC", 16, False, GRAY)]], anchor=MID)
+LX0_, LX1_ = OR_ + 1.70, OR_ + ORW - 0.20
+lg0, lg1 = math.log10(0.05), math.log10(200)
+
+
+def lxx(v):
+    return LX0_ + (math.log10(v) - lg0) / (lg1 - lg0) * (LX1_ - LX0_)
+
+
+for g, lab in ((0.1, "0.1"), (1, "1"), (10, "10"), (100, "100")):
+    rect(s, lxx(g) - 0.005, 3.52, 0.01, 2.16, fill=LINE)
+    tb(s, lxx(g) - 0.4, 5.68, 0.8, 0.28, [(lab, 15, False, GRAY)], align=C)
+# 내구 규격만: RAG 지연 예산 100ms 대 QLC 읽기 0.1ms
+yy = 3.62
+tb(s, OR_, yy, 1.64, 0.40, [("내구 규격만", 17, True, BLUE)], anchor=MID)
+tb(s, OR_, yy + 0.36, 1.64, 0.30, [("RAG 검색 예산", 15, False, GRAY)], anchor=MID)
+rect(s, lxx(0.1), yy + 0.14, lxx(100) - lxx(0.1), 0.16, fill=BLUE_T2)
+rect(s, lxx(0.1) - 0.08, yy + 0.10, 0.16, 0.24, fill=BLUE, shape=MSO_SHAPE.OVAL)
+rect(s, lxx(100) - 0.03, yy + 0.04, 0.06, 0.36, fill=GRAY)
+tb(s, lxx(0.1) + 0.10, yy + 0.38, 2.4, 0.32, [("여유 약 1,000배", 16, True, BLUE)], anchor=MID)
+# 성능 RI: 어레이 응답 TLC 0.5ms 대 QLC 2~4ms
+yy = 4.70
+tb(s, OR_, yy, 1.64, 0.40, [("성능 (RI)", 17, True, INK)], anchor=MID)
+tb(s, OR_, yy + 0.36, 1.64, 0.30, [("어레이 응답", 15, False, GRAY)], anchor=MID)
+rect(s, lxx(0.5) - 0.08, yy + 0.10, 0.16, 0.24, fill=GRAY_2, shape=MSO_SHAPE.OVAL)
+rect(s, lxx(2), yy + 0.12, lxx(4) - lxx(2), 0.20, fill=BLUE)
+line_ = s.shapes.add_connector(1, *(int(v * 914400) for v in (lxx(0.5) + 0.08, yy + 0.22, lxx(2), yy + 0.22)))
+line_.line.color.rgb = GRAY_2
+line_.line.dash_style = 4
+tb(s, lxx(0.5) - 0.50, yy + 0.38, 1.0, 0.30, [("TLC", 15, True, GRAY)], align=C, anchor=MID)
+tb(s, lxx(2) - 0.20, yy + 0.38, 2.0, 0.30, [("QLC 4~8배", 16, True, BLUE)], anchor=MID)
+rect(s, OR_, 6.00, ORW, 0.012, fill=LINE)
+tb(s, OR_, 6.10, ORW, 0.36, [("격차는 고객 시스템과 함께 줄인다", 18, True, INK)], anchor=MID)
+for k, (a, b) in enumerate([("FDP로 GC 간섭 ↓", "p99.9 -55% (TLC)"), ("pSLC 버퍼", "CSAL WAF ≈ 1 (벤더)")]):
+    yy = 6.56 + k * 0.78
+    label_box(s, OR_, yy, ORW, 0.68, [[(a + "  ", 17, True, INK), (b, 15, False, GRAY)]], fill=PALE, align=L)
+tb(s, OR_, 8.30, ORW, 0.50, [("QLC 위 실측은 첫 공동 검증 과제", 16, True, BLUE)], anchor=MID)
+
+d.band(s, 9.44, 0.80, "기회", "성능이 아니라 규격 때문에 TLC를 쓰던 수요부터, QLC의 원가 우위로 가져옵니다")
+d.footer(s, "출처: 분할은 과제팀 산술(TLC eSSD 2026 353~435 · 2030 540~1,200EB, 용량형 비중 30~60% · 관행 비중 15~40%는 근거 없는 가정, 범위 = L~H 시나리오) · Forward Insights(재인용) · "
+            "Meta QLC 블로그 · Micron 6600 ION 사양 · NetApp AFF A/C · RAG 지연 연구 · 삼성 PM9D3a · Solidigm CSAL · 모두 검색 확인 등급")
+d.notes(s, "4장은 이 전략에서 사업적으로 가장 큰 기회입니다. 질문은 하나입니다. QLC가 1 DWPD에 닿으면, 지금 TLC 수요 가운데 어디까지 들어갈 수 있는가입니다. "
+        "그래서 TLC 수요를 왜 TLC를 샀는지로 나눴습니다. 공개된 분할 자료는 없어서 과제팀이 범위로 계산했고, 막대는 중앙 가정입니다. "
+        "첫째, 내구 규격만 때문에 TLC인 수요입니다. 오브젝트, 데이터 레이크, CDN, 백업, 배치 분석, AI 학습 데이터처럼 읽기 중심이라 성능은 QLC로 충분한데, 조달 규격이 1 DWPD라서 정격 0.3에서 0.6인 QLC가 빠지는 몫입니다. 2026년 약 100, 2030년 약 190엑사바이트, 시나리오에 따라 2030년 46에서 509엑사바이트입니다. "
+        "Meta는 지금 TLC 위에 있는 15에서 20 MB/s/TB의 배치 워크로드를 QLC 후보로 꼽았고, 이 부하의 실제 쓰기는 0.26에서 0.35 DWPD 수준입니다. "
+        "둘째, 관행과 가격으로 TLC인 몫입니다. Micron 6500 ION처럼 QLC급 가격의 대용량 TLC가 이미 있어 정격보다 가격과 공급, 인증이 결정합니다. "
+        "셋째, 성능 때문에 TLC인 몫입니다. 데이터베이스, VM 디스크, 블록 스토리지처럼 지연과 랜덤 쓰기가 중요한 수요로, 가장 큽니다. 고객과 함께 격차를 줄이면 그 가운데 20에서 40퍼센트가 열린다고 보고 점선으로 표시했습니다. 고내구 3 DWPD 이상과 KV 캐시는 이번 대상이 아닙니다. "
+        "가운데는 내구입니다. 같은 Micron 6600 ION QLC도 4킬로바이트 랜덤 쓰기면 0.075, 16킬로바이트 랜덤이면 0.3, 128킬로바이트 순차면 1.0 DWPD로 정격이 13배 달라집니다. 고객과 함께 FDP로 쓰기를 크게, 순차로, 수명별로 모으면 QLC가 1 DWPD에 닿습니다. 순차 정격을 실제 부하에서 지키는 것이 과제입니다. "
+        "오른쪽은 성능입니다. 내구 규격만 문제인 수요는 성능이 걸림돌이 아닙니다. RAG 검색의 지연 예산은 약 100밀리초인데 QLC 읽기는 약 0.1밀리초라 약 1,000배 여유가 있습니다. "
+        "성능 때문에 TLC를 쓰는 수요는 다릅니다. 같은 컨트롤러의 NetApp 어레이에서 TLC는 약 0.5밀리초, QLC는 2에서 4밀리초입니다. 이 격차는 FDP로 GC 간섭을 줄이고, pSLC 버퍼로 쓰기를 흡수해 고객 시스템과 함께 줄입니다. 다만 이 개선의 실측은 TLC 드라이브 기준이고, QLC 위 실측은 고객과 함께 할 첫 검증 과제입니다. "
+        "정리하면, 성능이 아니라 규격 때문에 TLC를 쓰던 수요부터 QLC의 원가 우위로 가져옵니다.")
+
+# =============================================================== 5 실행
+s = d.slide(5, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")
 C1, W1 = MX, 5.55
 C2, W2 = 6.55, 6.90
 C3, W3 = 13.66, 5.55
@@ -693,7 +829,7 @@ tb(s, C3, CAP_Y, W3, 0.50, [("기술과 함께, 엔지니어의 고객 관계", 
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
 d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 로고는 식별 표시")
-d.notes(s, "4장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
+d.notes(s, "5장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
         "첫째, 계약입니다. 지금의 Multi-Year Deal, MYD는 여러 해의 수량과 가격을 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 MYD 위에 기술 협력을 쌓겠습니다. "
         "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 AI 데이터센터 안에서 고객 엔지니어와 함께 일합니다. 핵심 업무는 세 가지입니다. "
         "하나, 고객 워크로드 측정과 분석입니다. 고객 트레이스로 쓰기 크기와 데이터 수명을 재서, 고객이 말한 요구와 실제 요구의 차이를 찾습니다. "
@@ -704,8 +840,8 @@ d.notes(s, "4장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 �
         "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 FDP 공동 설계 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
 
-# =============================================================== 5 참고: eSSD 수요처별 전망
-s = d.slide(5, "참고", "eSSD 수요는 2030년까지 약 6배로 늘고,\n가장 큰 몫은 AI 추론에서 나옵니다")
+# =============================================================== 6 참고: eSSD 수요처별 전망
+s = d.slide(6, "참고", "eSSD 수요는 2030년까지 약 6배로 늘고,\n가장 큰 몫은 AI 추론에서 나옵니다")
 
 # 막대: McKinsey(2024-12) 2024 · 2030 끝값, 2025~2029는 수요처별 연평균 성장률 보간(산술)
 DEM = [("범용 · 엔터프라이즈", 168, 504, GRAY_2), ("AI 학습", 7, 127, BLUE_T2), ("AI 추론", 6, 447, BLUE)]
