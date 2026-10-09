@@ -148,6 +148,7 @@
 ## wiki/strategies — 조직 전환 전략
 - [wiki/strategies/qlc-workload-capability-phases.md](wiki/strategies/qlc-workload-capability-phases.md) — (NEW) QLC 추론 캐시 티어 역량 3단계: Phase 1 배치 표준 디바이스(RUH 200+·수명 보증) · Phase 2 워크로드 최적화(트레이스·WAF·RUH 정책) · Phase 3 고객 시스템 co-design(캐시 관리자·커널·CMX) + 5계층 스택 지도·참여 스택·협업 기업
 - [wiki/strategies/qlc-execution-strategy.md](wiki/strategies/qlc-execution-strategy.md) — (NEW) QLC 실행 전략 5축(전략·조직·인사·문화·재무): 두 목표(SCA로 워크로드를 받고, FDE로 들어간다), 실리콘밸리 추론 스토리지 자회사·FDE Pod·고객 시스템을 아는 시스템 SW 전문가 채용·양성·미주 현지 채용·오픈소스 생태계 주도 문화·수명 보증+TCO 연동 계약·지분 참여, 볼드 3티어(90일·1년·3년), 층별 고객 협업 제안·유인 설계·시퀀싱
+- [wiki/strategies/qlc-tlc-substitution-review.md](wiki/strategies/qlc-tlc-substitution-review.md) — (NEW 2026-10-09 질의) 외부 제안 "WAF 최적화 QLC로 TLC 일부 대체" 검토: 전면 전환보다 현 고객 협력 전략의 두 번째 공략 대상으로 병행. 맞는 점(범용 플릿 실사용 0.07~0.36 DWPD · 삼성 176단 QLC 성장 · 생산자원당 공헌이익 KPI), 고칠 전제(QLC는 WAF 1이어도 약 0.57 DWPD라 3 DWPD 대체 불가 · WAF 최적화의 가치는 QoS · 원가 우위는 같은 세대에서만 · SSD 단독 최적화 효과 작음 · 지금은 QLC가 비쌈 · 200EB는 HDD 부족분)
 
 - [wiki/strategies/dev-org-transformation.md](wiki/strategies/dev-org-transformation.md) — 개발실 체질 전환 (수주 이행자→기술 파트너): As-Is/To-Be·리스크/이점·4대 축·3-Phase 액션 플랜·인재 축(FDE 스타)×제품 축(§4.7) · [Update 2026-10-06] Co-Design Pod(FDE) 세 가지 핵심 업무(워크로드 측정 · 분석 / 호스트 SW 스택 최적화 · 평가 / 차세대 제품 기술 교류, 다섯 단계 대응표), MYD 용어, CRM 범위 확장(경영진 · 영업 → 엔지니어) 화두
 - [wiki/strategies/fdp-host-ssd-platform.md](wiki/strategies/fdp-host-ssd-platform.md) — FDP Host–SSD 통합 플랫폼 (개발실 전환의 제품·기술 축): 환경 변화(Binding·수요 지배·통제권 상승) → Captive SSD 위상 4단계(데이터) → 전략 선택지 4개 비교·선택 논리 → 실행전략 6종·KPI

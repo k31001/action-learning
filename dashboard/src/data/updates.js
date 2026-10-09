@@ -17,6 +17,17 @@ export const UPDATES = [
   {
     date: '2026-10-09',
     type: 'query',
+    version: 'v2.46.71',
+    title: '검토: WAF 최적화 QLC로 TLC 일부 대체 전략',
+    summary:
+      '외부 제안을 전면 전환보다 현 고객 협력 전략의 두 번째 공략 대상으로 병행하도록 권고. QLC는 WAF 1이어도 약 0.57 DWPD라 대상은 1 DWPD 범용 TLC 중 실사용이 낮은 고객이고, WAF 최적화의 가치는 내구보다 QoS. 생산자원당 공헌이익 KPI 채택. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['QLC', 'TLC', 'WAF', 'FDP', '수익성'],
+    items: [{ label: '위키', detail: 'wiki/strategies/qlc-tlc-substitution-review.md' }],
+    links: [{ label: 'wiki/strategies/qlc-tlc-substitution-review.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/qlc-tlc-substitution-review.md' }],
+  },
+  {
+    date: '2026-10-09',
+    type: 'query',
     version: 'v2.46.70',
     title: 'QLC가 HDD를 대체할 만큼 싸지는 시점',
     summary:
