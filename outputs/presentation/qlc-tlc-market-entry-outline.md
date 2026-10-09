@@ -1,6 +1,6 @@
 ---
-status: v0.2 아웃라인 (2026-10-09, 본문 4장 + 별첨 2장으로 압축, 사용자 승인 대기 · 슬라이드 미생성). v0.1: 본문 6장 + 별첨 7장
-deck: outputs/presentation/qlc-tlc-market-entry.pptx (승인 후 생성 예정, 생성기 scripts/generate_qlc_tlc_entry_pptx.py)
+status: v1.0 덱 생성 (2026-10-09, 사용자 승인 "시작하자"). 생성기 scripts/generate_qlc_tlc_entry_pptx.py, 렌더 QA PASS. 결정: 제목 가안 채택, 3장 시장 규모는 범위(120~800EB) + 50% 가정 표시(200~570EB), 4장은 기존 실행 압축 재사용. v0.2 아웃라인 (본문 4장 + 별첨 2장). v0.1: 본문 6장 + 별첨 7장
+deck: outputs/presentation/qlc-tlc-market-entry.pptx (v1.0, 6장, PPTX 본체 커밋 · 생성기로 재현)
 wiki: wiki/strategies/qlc-tlc-market-entry.md
 ---
 

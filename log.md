@@ -2619,3 +2619,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 본문: 1 배경(교훈 · 고객 니즈 · DWPD 하락) / 2 원인 · 해법(P/E · SSD 단독 WAF → 고객 협력 WAF 1 · 꼬리 지연) / 3 기회(TLC 시장 QLC 진입, 하단 띠에 TLC OP · 초고DWPD 추가 효과) / 4 실행 · KPI
 - 별첨: A1 시장 · 경제성(수요 · 1 DWPD 이하 비중 · 전환 가능 시장 · 원가), A2 기술 근거(성능 격차 · WAF/지연 실측 · OP)
 - 슬라이드 미생성(승인 대기). 대시보드 변화 없음
+
+## [2026-10-09] build | 새 덱 v1.0: 고객과 함께 WAF를 낮춰, TLC 시장을 QLC로 (본문 4장 + 별첨 2장)
+- 사용자 승인("시작하자")으로 아웃라인 v0.2 그대로 생성. 결정: 제목 가안, 3장 시장 규모는 범위 120~800EB + 50% 가정 200~570EB 표시, 4장은 기존 실행 슬라이드 압축 재사용
+- 생성기 `outputs/presentation/scripts/generate_qlc_tlc_entry_pptx.py`(deck_helpers, 20 × 11.25in), PPTX `outputs/presentation/qlc-tlc-market-entry.pptx` 6장(git add -f)
+- 렌더 QA(qa_render) PASS: 라벨 줄바꿈 · 겹침 수정(P/E 라벨 3만~10만 표기, 깔때기 · DWPD · 성능 라벨 폭, 중앙값 라벨 위치, 실행 시점 줄 축약, 별첨 2 상자 위치)
+- 위키 `qlc-tlc-market-entry.md` · 아웃라인 status · index 갱신. 대시보드 변화 없음(지식 그래프 재생성 결과 확인)
