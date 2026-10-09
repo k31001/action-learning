@@ -2601,3 +2601,8 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 수정 권고(⚠️ 해석): 주력 = TLC 시장 QLC 대체, WAF · FDP는 QoS 보완 수단으로 역할 전환, 원가 조건은 최신 세대 QLC, 고내구는 작은 옵션 유지(2019 HBM 니치 판단 교훈), 본격 전환은 공급 완화 후 2028년 전후
 - 위키 `qlc-tlc-substitution-review.md` §4.5 추가. 덱 3장 논증(내구성 중심) 조정 필요, 사용자 결정 대기
 - 지식 그래프 갱신 → 대시보드 v2.46.72 패치 + updates 항목, npm run build 통과
+
+## [2026-10-09] ingest | TLC → QLC 전환 가능 시장 원장
+- 새 덱(QLC로 TLC 시장 진입) 아웃라인 준비용 조사. `sources/articles/tlc-to-qlc-addressable-market-2026-10.md`(TQ-01~46, 모두 🟡 · ⚠️, 원문 프록시 차단)
+- 핵심: SK hynix PCIe eSSD 509 → 1,933EB(2026 → 2030), 1 DWPD 이하 대수 비중 75~91%(재인용), 30TB QLC/TLC 가격비 0.80, 반증 Meta · SanDisk, 하이퍼스케일러 TLC → QLC 전환 수치 공개 사례 없음
+- 위키 반영은 기술 팩트 체크 원장과 함께 다음 항목에서
