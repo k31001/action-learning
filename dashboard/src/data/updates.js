@@ -17,6 +17,17 @@ export const UPDATES = [
   {
     date: '2026-10-09',
     type: 'query',
+    version: 'v2.46.70',
+    title: 'QLC가 HDD를 대체할 만큼 싸지는 시점',
+    summary:
+      'QLC/HDD 가격 배수 약 5배(2025 3Q) → 약 25배+(2026-08). CSP 목표 3배 이내는 QLC 약 $60~70/TB가 필요해, 기준 경로로 2028 약 5배 · 2030 약 4배 · 3배는 2031~32(다운턴 과잉이면 2028~29 일시). HDD 대체는 가격 패리티보다 TCO(전력 · 공간)로 열림. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['HDD 대체', 'QLC', '가격', 'TCO'],
+    items: [{ label: '위키', detail: 'wiki/concepts/essd-demand-by-application-2030.md §2.6' }],
+    links: [{ label: 'wiki/concepts/essd-demand-by-application-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/essd-demand-by-application-2030.md' }],
+  },
+  {
+    date: '2026-10-09',
+    type: 'query',
     version: 'v2.46.69',
     title: '공급 부족기의 HDD 대체: 가장 뒤로 밀리는 수요',
     summary:
