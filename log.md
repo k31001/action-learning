@@ -2613,3 +2613,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 위키 `wiki/strategies/qlc-tlc-market-entry.md` 신설(교훈 → 문제 → 해법 → 기회 → 추가 효과 → 실행 · 공백), `qlc-tlc-substitution-review.md` 역링크
 - 아웃라인 `outputs/presentation/qlc-tlc-market-entry-outline.md` v0.1: 본문 6장 + 별첨 7장, 사용자 주장 보정(신문섭 원문에 "다운턴" 없음, "셀 진화로 WAF 한계" → "P/E는 줄었는데 WAF는 그대로", AI 스토리지 일부는 이미 QLC). 슬라이드 미생성(승인 대기)
 - 지식 그래프 갱신 → 대시보드 v2.46.73 패치 + updates 항목, npm run build 통과
+
+## [2026-10-09] build | 새 덱 아웃라인 v0.2: 본문 4장 + 별첨 2장으로 압축
+- 사용자 지시: "본문은 4장으로 압축해 주고 별첨도 2장 정도 핵심만 추려 줘"
+- 본문: 1 배경(교훈 · 고객 니즈 · DWPD 하락) / 2 원인 · 해법(P/E · SSD 단독 WAF → 고객 협력 WAF 1 · 꼬리 지연) / 3 기회(TLC 시장 QLC 진입, 하단 띠에 TLC OP · 초고DWPD 추가 효과) / 4 실행 · KPI
+- 별첨: A1 시장 · 경제성(수요 · 1 DWPD 이하 비중 · 전환 가능 시장 · 원가), A2 기술 근거(성능 격차 · WAF/지연 실측 · OP)
+- 슬라이드 미생성(승인 대기). 대시보드 변화 없음
