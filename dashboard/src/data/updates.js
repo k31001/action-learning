@@ -17,6 +17,17 @@ export const UPDATES = [
   {
     date: '2026-10-09',
     type: 'build',
+    version: 'v2.46.75',
+    title: '사업 기회 장에 핵심 기술 계단: Mixed Media 단기 · FDP 중장기',
+    summary:
+      'QLC를 1 DWPD로 올리는 경로를 2장 핵심 기술로 명시: Mixed Media(작은 쓰기를 pSLC에 모아 큰 덩어리로, 4KB 쓰기 WAF 70+ → 1.02, 단기 · 스펙 협력) → FDP(수명별 배치로 근원적 WAF 감소, CacheLib 3.22 → 1.03, 중장기 · 공동 설계). 같은 QLC 정격 0.075 → 0.3 → 1.0 계단. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['QLC', 'Mixed Media', 'FDP', 'WAF', 'DWPD'],
+    items: [{ label: '위키', detail: 'wiki/strategies/qlc-tlc-market-entry.md §4.5' }, { label: '덱', detail: 'ssd-future-ready-strategy.pptx v3.4 4장' }],
+    links: [{ label: 'wiki/strategies/qlc-tlc-market-entry.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/qlc-tlc-market-entry.md' }],
+  },
+  {
+    date: '2026-10-09',
+    type: 'build',
     version: 'v2.46.74',
     title: '왜 TLC를 샀나: QLC가 1 DWPD에 닿을 때 열리는 TLC 수요',
     summary:

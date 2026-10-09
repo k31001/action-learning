@@ -2632,3 +2632,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 덱: 3장 다음에 4장 삽입(실행 5장 · 참고 6장), 누적 막대 + 6600 ION 정격 0.075 → 0.3 → 1.0 + 지연 로그 축(100ms 대 0.1ms, 0.5 대 2~4ms) + FDP · pSLC 완화. 렌더 QA PASS, PPTX 재생성
 - 위키 `qlc-tlc-market-entry.md` §4.5, 아웃라인 · 보고서 v3.3, index 갱신
 - 지식 그래프 갱신 → 대시보드 v2.46.74 패치 + updates 항목, npm run build 통과
+
+## [2026-10-09] build | 이전 전략 덱 v3.4: 4장에 핵심 기술 계단 (Mixed Media 단기 · FDP 중장기)
+- 사용자 지시: 사업 기회 슬라이드에 2장 핵심 기술 중 무엇이 쓰이는지 명시, Mixed Media는 모아쓰기 · FDP는 근원적 WAF 감소, Mixed Media 단기 · FDP는 고객 협력이 필요해 중장기. 시각화
+- 4장 오른쪽 재구성: 2장 기술 칩 6개(핵심 Mixed Media · FDP, 보조 Large Mapping · Multi-Tenant QoS, 해당 없음 2개) + 3열 계단(지금 0.075 → ① Mixed Media 0.3 → ② FDP 1.0, Micron 6600 ION 정격) + 열별 도식 · 근거(WAF 70+ → 1.02 · pSLC 0.5~2% / CacheLib 3.22 → 1.03) + 시점 태그(단기 2026~27 스펙 협력 / 중장기 2028~ 공동 설계). 제목 · 밴드 갱신, 계단 대응은 과제팀 해석 명시
+- 렌더 QA PASS, PPTX 재생성. 위키 §4.5 · 아웃라인 · 보고서 v3.4 · index 갱신
+- 지식 그래프 갱신 → 대시보드 v2.46.75 패치 + updates 항목, npm run build 통과

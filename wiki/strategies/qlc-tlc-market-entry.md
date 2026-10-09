@@ -77,7 +77,8 @@ sources:
 - 내구 규격만 수요의 근거: Meta "15~20 MB/s/TB 배치 워크로드가 지금 TLC에 있다, QLC 후보"(WT-01), 실제 쓰기 0.26~0.35 DWPD(산술), Netflix 어플라이언스 <0.3 DWPD(WT-03), Solidigm 워크로드 94% RI(WT-19, 벤더).
 - 1 DWPD로 가는 길: Micron 6600 ION 같은 QLC 정격 4KB 랜덤 0.075 · 16KB 랜덤 0.3 · 128KB 순차 1.0. 고객과 함께 쓰기를 크게 · 순차로 · 수명별로 모으면(FDP) 순차 정격에 가까워진다. 랜덤 기준 1 DWPD 이상 QLC 제품은 아직 없다.
 - 성능: 내구 규격만 수요는 RAG 지연 예산 약 100ms 대 QLC 읽기 약 0.1ms로 여유 약 1,000배(WT-24). 성능 RI는 NetApp 어레이 TLC 약 0.5ms 대 QLC 2~4ms(WT-21) → FDP(p99.9 -55%, TLC 실측) · pSLC 버퍼(CSAL WAF ≈ 1, 벤더)로 줄인다. QLC 위 실측은 없다.
-- 덱: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v3.3 4장 "사업 기회".
+- 핵심 기술 대응(2026-10-09, 사용자 지시 "Mixed Media는 모아쓰기, FDP는 근원적으로 WAF 감소, Mixed Media 단기 · FDP 중장기", ⚠️ 계단 대응은 과제팀 해석): ① **Mixed Media**(pSLC + QLC 네임스페이스) = 작은 쓰기를 pSLC에 모았다가 큰 덩어리로 QLC에 내려 매핑 단위 증폭 제거(CSAL 4KB 쓰기 WAF 70+ → 1.02, 별도 캐시 구성 · pSLC 0.5~2% VoC, [mixed-media-ssd.md](../concepts/mixed-media-ssd.md)), 표준 네임스페이스와 출하 시 비율로 스펙 협력 → 단기 2026~27. ② **FDP** = 고객 호스트가 수명을 알려 같은 수명끼리 블록에 모아 GC 복사를 없애는 근원적 WAF 감소(CacheLib 3.22 → 1.03), 고객 SW의 수명 분류에 효과가 달려 공동 설계 → 중장기 2028~. 보조: Large Mapping · Multi-Tenant QoS. 해당 없음: Fault Tolerant · Confidential Storage.
+- 덱: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v3.4 4장 "사업 기회".
 
 ## 5. 추가 효과: TLC OP 축소와 초고DWPD 기반
 
