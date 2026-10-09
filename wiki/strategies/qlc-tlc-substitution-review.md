@@ -76,6 +76,8 @@ sources:
 
 ## 5. 연결
 
+- 후속 전략 · 새 덱 아웃라인(2026-10-09): [qlc-tlc-market-entry.md](qlc-tlc-market-entry.md)
+
 - QLC 시장 · 수요 모델: [qlc-ssd-market.md](../concepts/qlc-ssd-market.md)
 - QLC 실행 전략(이전 판): [qlc-execution-strategy.md](qlc-execution-strategy.md)
 - FDP 플랫폼: [fdp-host-ssd-platform.md](fdp-host-ssd-platform.md)

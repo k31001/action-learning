@@ -16,6 +16,21 @@
 export const UPDATES = [
   {
     date: '2026-10-09',
+    type: 'ingest',
+    version: 'v2.46.73',
+    title: 'QLC로 TLC 시장 진입 전략: 팩트 체크 · 위키 종합 · 새 덱 아웃라인',
+    summary:
+      '1 DWPD 이하 eSSD 75~91%(재인용), QLC는 WAF 1이면 0.59~0.70 DWPD로 내구는 넘고 남은 문은 꼬리 지연 · 원가. 전환 가능 시장 2030 약 120~800EB(산술). TLC OP 28 → 7%면 판매 용량 +20%. 테일 지연 개선 실측은 TLC뿐이라 QLC 실측이 첫 공동 검증 과제. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['QLC', 'TLC', 'WAF', 'FDP', 'OP', '꼬리 지연'],
+    items: [
+      { label: '원장', detail: 'sources/articles/tlc-to-qlc-addressable-market-2026-10.md · qlc-waf-qos-op-factcheck-2026-10.md' },
+      { label: '위키', detail: 'wiki/strategies/qlc-tlc-market-entry.md' },
+      { label: '아웃라인', detail: 'outputs/presentation/qlc-tlc-market-entry-outline.md v0.1 (승인 대기)' },
+    ],
+    links: [{ label: 'wiki/strategies/qlc-tlc-market-entry.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/qlc-tlc-market-entry.md' }],
+  },
+  {
+    date: '2026-10-09',
     type: 'query',
     version: 'v2.46.72',
     title: '고내구 대신 TLC 시장을 QLC 원가 경쟁력으로',

@@ -2606,3 +2606,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 새 덱(QLC로 TLC 시장 진입) 아웃라인 준비용 조사. `sources/articles/tlc-to-qlc-addressable-market-2026-10.md`(TQ-01~46, 모두 🟡 · ⚠️, 원문 프록시 차단)
 - 핵심: SK hynix PCIe eSSD 509 → 1,933EB(2026 → 2030), 1 DWPD 이하 대수 비중 75~91%(재인용), 30TB QLC/TLC 가격비 0.80, 반증 Meta · SanDisk, 하이퍼스케일러 TLC → QLC 전환 수치 공개 사례 없음
 - 위키 반영은 기술 팩트 체크 원장과 함께 다음 항목에서
+
+## [2026-10-09] ingest | QLC로 TLC 시장 진입 전략: 팩트 체크 원장 · 위키 종합 · 새 덱 아웃라인 v0.1
+- 사용자 지시: HBM 교훈 · 신문섭 조언에서 출발해, 고객 협업으로 QLC WAF를 1에 가깝게 · GC 감소로 꼬리 지연을 낮춰 TLC 시장에 QLC로 진입(원가 → 수익성), TLC OP 축소 · 초고DWPD 기반은 부가 효과, 실행은 기존 협력 전략. 새 pptx는 아웃라인 승인 후 생성, 핵심 데이터는 별첨
+- 원장 `qlc-waf-qos-op-factcheck-2026-10.md`(WQ-01~56, P-1~10): C1 수정 필요(P/E 감소 + QLC IU 증폭), C2 · C3 · C5 부분 지지(테일 지연 실측은 TLC만), C4 지지(판매 용량 +20%)
+- 위키 `wiki/strategies/qlc-tlc-market-entry.md` 신설(교훈 → 문제 → 해법 → 기회 → 추가 효과 → 실행 · 공백), `qlc-tlc-substitution-review.md` 역링크
+- 아웃라인 `outputs/presentation/qlc-tlc-market-entry-outline.md` v0.1: 본문 6장 + 별첨 7장, 사용자 주장 보정(신문섭 원문에 "다운턴" 없음, "셀 진화로 WAF 한계" → "P/E는 줄었는데 WAF는 그대로", AI 스토리지 일부는 이미 QLC). 슬라이드 미생성(승인 대기)
+- 지식 그래프 갱신 → 대시보드 v2.46.73 패치 + updates 항목, npm run build 통과
