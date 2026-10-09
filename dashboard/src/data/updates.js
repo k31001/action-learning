@@ -17,6 +17,17 @@ export const UPDATES = [
   {
     date: '2026-10-09',
     type: 'query',
+    version: 'v2.46.72',
+    title: '고내구 대신 TLC 시장을 QLC 원가 경쟁력으로',
+    summary:
+      '사용자 판단(고내구는 니치, TLC 시장의 QLC 대체가 수익성에 맞다)을 근거로 검토: 정격 10 DWPD 이상 등급 비중 0%(2022~26), NetApp 3 DWPD 초과 7%+, QLC eSSD 용량 비중 18 → 38%. 주력 = TLC 시장 QLC 대체, WAF · FDP는 QoS 보완 수단, 고내구는 작은 옵션. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['QLC', 'TLC', '수익성', '고내구', 'FDP'],
+    items: [{ label: '위키', detail: 'wiki/strategies/qlc-tlc-substitution-review.md §4.5' }],
+    links: [{ label: 'wiki/strategies/qlc-tlc-substitution-review.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/strategies/qlc-tlc-substitution-review.md' }],
+  },
+  {
+    date: '2026-10-09',
+    type: 'query',
     version: 'v2.46.71',
     title: '검토: WAF 최적화 QLC로 TLC 일부 대체 전략',
     summary:

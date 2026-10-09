@@ -2594,3 +2594,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 고칠 전제: QLC는 WAF 1이어도 약 0.57 DWPD(3 DWPD 대체 불가, 대상은 1 DWPD 범용 TLC 중 실사용 0.3 이하), WAF 최적화의 가치는 내구보다 QoS(이웃 쓰기 WAF 1.28 → 3.0, GC p99.9 > 1ms), 원가 우위는 같은 세대에서만(가상표 -29%는 이론 -25% 초과), SSD 단독 1단계 효과 작음, 지금은 QLC가 비쌈($590/TB), 200EB는 HDD 부족분
 - 위키 `wiki/strategies/qlc-tlc-substitution-review.md` 신설, `qlc-ssd-market.md` 역링크, index 갱신
 - 지식 그래프 갱신 → 대시보드 v2.46.71 패치 + updates 항목, npm run build 통과
+
+## [2026-10-09] query | 고내구 대신 TLC 시장을 QLC 원가 경쟁력으로: 사용자 판단 검토
+- 사용자 의견: WAF 기술로 고내구 시장에 들어가기보다 기존 TLC 시장을 QLC 원가 경쟁력으로 들어가는 것이 수익성에 맞다, 고내구는 AI 추론 일부의 니치
+- 근거는 지지: 정격 10 DWPD 이상 등급 비중 2022~26 0%, NetApp 3 DWPD 초과 7%+(중앙값 0.36), CMX 지명 드라이브 전부 TLC 1 · 3 DWPD, QLC eSSD 용량 비중 18 → 38%(2027)
+- 수정 권고(⚠️ 해석): 주력 = TLC 시장 QLC 대체, WAF · FDP는 QoS 보완 수단으로 역할 전환, 원가 조건은 최신 세대 QLC, 고내구는 작은 옵션 유지(2019 HBM 니치 판단 교훈), 본격 전환은 공급 완화 후 2028년 전후
+- 위키 `qlc-tlc-substitution-review.md` §4.5 추가. 덱 3장 논증(내구성 중심) 조정 필요, 사용자 결정 대기
+- 지식 그래프 갱신 → 대시보드 v2.46.72 패치 + updates 항목, npm run build 통과
