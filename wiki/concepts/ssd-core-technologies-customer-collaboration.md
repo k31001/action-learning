@@ -1,6 +1,6 @@
 ---
 type: concept
-last_reviewed: 2026-10-06
+last_reviewed: 2026-10-10
 sources:
   - sources/articles/ssd-high-capacity-rackspace-fault-tolerance-2026-10.md
   - sources/articles/ssd-mixed-media-hyperscaler-logic-2026-10.md
@@ -78,7 +78,30 @@ sources:
 
 ### 3.2.1 덱 표현 (2026-10-10, 사용자 지시 "FDP만 강조하지 말고, 정도는 달라도 다섯 기술 모두 고객 협력이 필요함을 강조")
 
-덱 2장은 3.2 판정의 결합도 + 스펙 비완결도 합(0~4)을 "고객 협력의 깊이" 막대로 그린다: FDP 4(공동 설계) · Mixed Media 3 · Confidential Storage 2 · Large Mapping 2 · Multi-Tenant QoS 2 · Fault Tolerant 0(SSD 안에서). 메시지는 "6개 중 5개가 고객 협력이 필요하고, 깊이만 다르다"(⚠️ 점수는 정성). 덱: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v3.6.
+덱 2장은 3.2 판정의 결합도 + 스펙 비완결도 합(0~4)을 "고객 협력의 깊이" 막대로 그린다: FDP 4(공동 설계) · Mixed Media 3 · Confidential Storage 2 · Large Mapping 2 · Multi-Tenant QoS 2 · Fault Tolerant 0(SSD 안에서). 메시지는 "6개 중 5개가 고객 협력이 필요하고, 깊이만 다르다"(⚠️ 점수는 정성). 덱: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v3.6. (v3.8에서 §3.5 두 단계 표현으로 대체)
+
+### 3.5 고객 협력의 두 단계: ① 고객 시스템 개발 · ② 최적화까지 함께 (⚠️ 과제팀 판단, v3 2026-10-10)
+
+> 사용자 지시(2026-10-10): "핵심 기술 슬라이드에서 고객 협력을 두 단계로 세분화해서 기술별로 다시 분류해 보자. 고객 시스템 개발도 필요한 기술과 최적화까지 함께 해야 하는 기술로."
+
+| 단계 | 질문 | 판정 기준 (3.1 축으로) |
+|---|---|---|
+| SSD 안에서 | 고객 시스템을 바꾸지 않아도 되나 | 결합도 0 |
+| **① 고객 시스템 개발** | 고객이 자기 시스템에 기능을 넣어야 쓸 수 있지만, 넣고 나면 스펙으로 닫히나 | 결합도 ≥ 1, 효과가 고객 워크로드 튜닝에 달리지 않음 |
+| **② 최적화까지 함께** | 개발한 뒤에도 고객 워크로드에서 양쪽 정책을 함께 맞춰야 효과(WAF · DWPD)가 나나 | 결과가 SSD 쪽 출하 값 · 정책과 고객 쪽 정책의 맞물림에 달림 |
+
+| 핵심 기술 | 단계 | ① 고객이 개발할 것 | ② 함께 최적화할 것 | 근거 |
+|---|---|---|---|---|
+| Fault Tolerant | SSD 안에서 | | | 다이 패리티 · 고장 격리는 SSD 안에서 완결(C4 · C5) |
+| Large Mapping | ① | 쓰기 크기 · IU 정렬(파일 시스템 · 앱 쓰기 단위) | | 정렬 규칙이 단순해 한 번 맞추면 닫힘(MX-13 · MX-20) |
+| Multi-Tenant QoS | ① | 테넌트 → 네임스페이스 · NVM Set 매핑, 지연 목표 | | 격리는 목표 백분위로 사내 검증(OCP B07, FlashBlox CQ-10) |
+| Confidential Storage | ① | 기밀 VM(TDISP) · 키 관리(KMIP · L.O.C.K.) · 증명 서비스(SPDM) 연동 | | 인터페이스 · 동작을 표준이 정함(ST-26 · ST-38). 상세 [onprem-ai-confidential-storage.md](onprem-ai-confidential-storage.md) |
+| **Mixed Media** | **②** | 작은 쓰기를 pSLC에 모아 QLC로 내리는 고객 SW(모아쓰기) | pSLC 비율 · 내림(destage) 정책을 고객 쓰기 몰림에 맞춤 | WAF 70+ → 1.02는 고객 쪽 모아쓰기 층(CSAL)의 결과(MX-11), pSLC 비율은 출하 시 값이고 배치별로 다름(Kioxia "배치별 맞춤 비율" MM-05, VoC 0.5~2% MX-01). 비율이 쓰기 몰림보다 작으면 QLC 직접 쓰기로 넘친다 |
+| **FDP** | **②** | 데이터 수명 분류 · 배치 핸들 지정(예: CacheLib) | RU 크기 · RUH 수 · GC 정책을 고객 워크로드에서 반복 튜닝 | 3.2의 근거 ①~⑤(WARP D-01~D-05, F-07), CacheLib 3.22 → 1.03(C-08) |
+
+**변경점 (v2 → v3)**: Mixed Media를 "스펙으로 협력"에서 **② 최적화까지 함께**로 옮겼다. v2는 "pSLC 비율이 출하 시 값이고 고객이 이미 수치로 요구한다"를 스펙으로 닫히는 근거로 봤지만, 그 수치가 **배치마다 다르고 고객 워크로드를 봐야 정해지며**, 덱 4장에서 Mixed Media를 DWPD 지렛대(0.075 → 0.3)로 쓰는 이상 효과가 고객 쪽 모아쓰기와 SSD 쪽 비율의 맞물림에 달린다. 다만 **FDP와 깊이가 다르다**: Mixed Media는 변수가 적어(비율 · 내림 정책) 배치당 한 번 맞추면 되므로 단기 실행이 가능하고, FDP는 정책 변수가 많고 장치마다 결과가 갈려 반복 튜닝이 필요한 중장기 과제다(덱 4장 띠 "Mixed Media 단기 · FDP 중장기"와 정합).
+
+**한계**: 단계 판정은 정성적이다. Large Mapping도 IU 크기를 고객 쓰기 분포로 고를 때는 한 번의 조율이 있고, Multi-Tenant QoS도 이웃 테넌트 쓰기로 WAF가 오르는 문제(CQ-16)를 FDP와 결합해 풀면 ②로 올라간다. 덱: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v3.8 2장.
 
 ### 3.3 "지금까지와 다른 방식"이 뜻하는 것 (FDP에 한해)
 

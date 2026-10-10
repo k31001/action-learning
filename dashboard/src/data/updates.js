@@ -17,6 +17,17 @@ export const UPDATES = [
   {
     date: '2026-10-10',
     type: 'build',
+    version: 'v2.48.1',
+    title: '핵심 기술 고객 협력 두 단계: 고객 시스템 개발 · 최적화까지 함께',
+    summary:
+      '핵심 기술 6가지의 고객 협력을 ① 고객 시스템 개발(Confidential Storage · Large Mapping · Multi-Tenant QoS)과 ② 최적화까지 함께(Mixed Media · FDP)로 재분류. Mixed Media는 배치별 pSLC 비율 · 고객 쪽 모아쓰기가 효과를 좌우해 ②로 이동(FDP보다 얕아 단기). 발표자료 탭의 고객 협력 전략 덱 v3.8 반영.',
+    tags: ['고객 협력', 'FDP', 'Mixed Media', '발표자료'],
+    items: [{ label: '위키', detail: 'ssd-core-technologies-customer-collaboration.md §3.5' }, { label: '덱', detail: 'ssd-future-ready-strategy.pptx v3.8 2장' }],
+    links: [{ label: 'wiki/concepts/ssd-core-technologies-customer-collaboration.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ssd-core-technologies-customer-collaboration.md' }],
+  },
+  {
+    date: '2026-10-10',
+    type: 'build',
     version: 'v2.48.0',
     title: '발표자료 탭: 웹에서 바로 보기',
     summary:

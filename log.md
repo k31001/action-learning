@@ -2674,3 +2674,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 렌더 스크립트 `scripts/render-presentation-previews.py`(목록은 presentations.js, 장 수는 `presentationPreviews.js` GENERATED), CLAUDE.md 빌드 명령에 추가
 - 카드에 첫 장 썸네일 · "웹에서 보기", 전체 화면 뷰어(포털, ← → · Home/End · Esc · 모바일 스와이프 · 썸네일 줄 · 다음 장 미리 받기), 딥링크 #/presentations/<덱>/<장>
 - 미리보기 검증(데스크톱 1440 · 모바일 390): 키보드 넘기기 · 딥링크 · 닫기 동작 확인. 마이너 bump v2.48.0 + updates 항목, npm run build 통과
+
+## [2026-10-10] build | 이전 전략 덱 v3.8: 2장 고객 협력 두 단계 (고객 시스템 개발 · 최적화까지 함께)
+- 사용자 지시: 핵심 기술 슬라이드의 고객 협력을 두 단계로 세분화해 재분류. 고객 시스템 개발도 필요한 기술 / 최적화까지 함께 해야 하는 기술
+- 판정(⚠️ 과제팀): ① 고객 시스템 개발 = Confidential Storage(기밀 VM · 키 · 증명 연동) · Large Mapping(IU 정렬) · Multi-Tenant QoS(테넌트 매핑), ② 최적화까지 함께 = Mixed Media(pSLC 비율 · 내림, 배치당 한 번 · 단기) · FDP(RU · RUH · GC 반복 튜닝 · 중장기), Fault Tolerant SSD 안에서
+- 변경: Mixed Media를 v2 "스펙으로 협력"에서 ②로 이동. 근거 pSLC 비율이 배치마다 고객 워크로드로 정해지고(Kioxia MM-05) WAF 70+ → 1.02가 고객 쪽 모아쓰기 층(CSAL MX-11)의 결과
+- 2장 제목 "다섯은 고객 시스템 개발이 필요하고, Mixed Media와 FDP는 고객과 최적화까지 함께", 오른쪽 계단 막대(구역 SSD 안에서 · ① · ②), 왼쪽 FDP · Mixed Media 강조, 밴드 갱신. 렌더 QA PASS
+- 위키 `ssd-core-technologies-customer-collaboration.md` §3.5 신설 · `mixed-media-ssd.md` §0.4 재분류 메모, 보고서 §2.1.2 · 아웃라인 v3.8 · index 갱신
+- 대시보드: 발표자료 사본 · 웹 보기 이미지 재생성, 지식 그래프 재생성, 패치 v2.48.1 + updates 항목, npm run build 통과
