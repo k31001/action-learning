@@ -31,18 +31,20 @@ plt.rcParams["font.family"] = "NanumGothic"
 
 BLUE, BLUE_T1, BLUE_T2, GRAY, GRAY_2, INK = "#1428A0", "#3D5AD6", "#AAB8E8", "#6B7280", "#9CA3AF", "#1A1A1A"
 
+# 이 그림만 예외적으로 제품군별 다른 색(2026-10-10 사용자 허용, Okabe-Ito 계열 · 색각 구분). 덱 생성기도 FAM_COLOR를 같이 쓴다.
+FAM_COLOR = {"qlc": "#009E73", "tlc": "#0072B2", "hetlc": "#E69F00", "slc": "#CC79A7"}
 # 제품군: 이름, 지금 DWPD 범위, 용량 범위(TB), 꼬리 지연 등급(지금 → 확장), 확장 DWPD 상한, 색
 FAMILIES = [
-    ("qlc", "고용량 QLC", (0.24, 0.36), (40, 128), (1.0, 1.8), 1.0, GRAY_2),
-    ("tlc", "고성능 TLC", (0.85, 1.15), (10, 30), (1.8, 2.6), 3.0, BLUE_T1),
-    ("hetlc", "고내구 TLC", (2.6, 3.4), (3.2, 8), (1.8, 2.6), 9.0, BLUE),
-    ("slc", "SLC급", (26, 34), (0.8, 2.4), (2.6, 3.4), 100.0, INK),
+    ("qlc", "고용량 QLC", (0.24, 0.36), (40, 128), (1.0, 1.8), 1.0, FAM_COLOR["qlc"]),
+    ("tlc", "고성능 TLC", (0.85, 1.15), (10, 30), (1.8, 2.6), 3.0, FAM_COLOR["tlc"]),
+    ("hetlc", "고내구 TLC", (2.6, 3.4), (3.2, 8), (1.8, 2.6), 9.0, FAM_COLOR["hetlc"]),
+    ("slc", "SLC급", (26, 34), (0.8, 2.4), (2.6, 3.4), 100.0, FAM_COLOR["slc"]),
 ]
-# 바닥의 추론 수요 영역: 이름, DWPD 범위, 용량 범위
+# 바닥의 추론 수요 영역(무채색 단계): 이름, DWPD 범위, 용량 범위
 DEMANDS = [
-    ("모델 가중치 · RAG", (0.1, 1.0), (16, 256), "#E8ECF8"),
-    ("KV 캐시 오프로드", (1.0, 10), (2, 64), "#D3DBF4"),
-    ("초고DWPD KV", (20, 150), (0.5, 4), "#C2CDF0"),
+    ("모델 가중치 · RAG", (0.1, 1.0), (16, 256), "#ECEEF1"),
+    ("KV 캐시 오프로드", (1.0, 10), (2, 64), "#D5D9DF"),
+    ("초고DWPD KV", (20, 150), (0.5, 4), "#BEC4CC"),
 ]
 
 X0, X1 = math.log10(0.1), math.log10(150)
@@ -66,8 +68,10 @@ def cuboid(ax, xr, yr, zr, color, alpha, edge, lw=0.8, ls="-"):
              [v[2], v[3], v[7], v[6]], [v[1], v[2], v[6], v[5]], [v[0], v[3], v[7], v[4]]]
     pc = Poly3DCollection(faces, facecolor=color, alpha=alpha, edgecolor=edge, linewidths=lw, linestyles=ls)
     if alpha < 0.5:
-        pc.set_facecolor((0.24, 0.35, 0.84, alpha))
-        pc.set_edgecolor((0.08, 0.16, 0.63, 0.9))
+        from matplotlib.colors import to_rgb
+        r_, g_, b_ = to_rgb(color)
+        pc.set_facecolor((r_, g_, b_, alpha))
+        pc.set_edgecolor((r_, g_, b_, 0.95))
     ax.add_collection3d(pc)
 
 
@@ -104,13 +108,13 @@ def main():
     # 먼 것(용량 큰 것)부터 그린다
     for key, nm, xr, yr, zr, xmax, col in FAMILIES:
         # 확장 영역: 점선 와이어프레임 + 아주 옅은 채움 (DWPD 오른쪽으로 · 꼬리 지연 위로)
-        cuboid(ax, (xr[1], xmax), yr, (0, zr[1]), col, 0.07, col, lw=1.1, ls="--")
+        cuboid(ax, (xr[1], xmax), yr, (0, zr[1]), col, 0.10, col, lw=1.3, ls="--")
         cuboid(ax, xr, yr, (0, zr[0]), col, 0.97, "white", lw=0.6)
         top = (lx(math.sqrt(xr[0] * xr[1])), ly(math.sqrt(yr[0] * yr[1])), zr[0])
         ext = (lx(xmax * 0.92), ly(math.sqrt(yr[0] * yr[1])), zr[1])
         anchors[key] = {"now": top, "ext": ext}
         y_ = ly(math.sqrt(yr[0] * yr[1]))
-        ax.quiver(lx(xr[1]), y_, 0.02, lx(xmax) - lx(xr[1]) - 0.05, 0, 0, color=BLUE, lw=2.4, arrow_length_ratio=0.18)
+        ax.quiver(lx(xr[1]), y_, 0.02, lx(xmax) - lx(xr[1]) - 0.05, 0, 0, color=col, lw=2.8, arrow_length_ratio=0.18)
 
     fig.canvas.draw()
     out = {}

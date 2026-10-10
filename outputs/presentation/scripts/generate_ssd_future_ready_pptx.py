@@ -518,32 +518,36 @@ EXP = [  # 키, 제품 이미지, 모델, 지금 → 확장, 들어가는 수요
 ]
 LGX = RIGHT - LGW
 EH = (9.30 - 2.98) / 4
+from pptx.dml.color import RGBColor as _RGB  # noqa: E402
+# 3D 그림만 예외 색: 제품군별 (generate_portfolio_3d.FAM_COLOR와 같게)
+FAMC = {"qlc": "009E73", "tlc": "0072B2", "hetlc": "E69F00", "slc": "CC79A7"}
 for i, (key, img, model, dw, dem) in enumerate(EXP):
     y = 2.98 + i * EH
+    fc = _RGB.from_string(FAMC[key])
     rect(s, LGX, y + 0.04, LGW, EH - 0.10, fill=PALE, shape=RR)
-    rect(s, LGX + 0.10, y + 0.14, 0.40, 0.40, fill=BLUE, shape=MSO_SHAPE.OVAL)
-    tb(s, LGX + 0.10, y + 0.14, 0.40, 0.40, [(str(i + 1), 17, True, WHITE)], align=C, anchor=MID)
+    rect(s, LGX, y + 0.04, 0.08, EH - 0.10, fill=fc)
+    rect(s, LGX + 0.14, y + 0.14, 0.40, 0.40, fill=fc, shape=MSO_SHAPE.OVAL)
+    tb(s, LGX + 0.14, y + 0.14, 0.40, 0.40, [(str(i + 1), 17, True, WHITE)], align=C, anchor=MID)
     pth = os.path.join(ASSETS, "products", img + ".png")
     if os.path.exists(pth):
         d.fit(s, pth, LGX + 0.60, y + 0.08, LGW - 0.70, 0.62)
-    tb(s, LGX + 0.10, y + 0.70, LGW - 0.20, 0.30, [(model, 15, True, INK)], anchor=MID)
-    tb(s, LGX + 0.10, y + 0.98, LGW - 0.20, 0.30, [[(dw, 16, True, BLUE)]], anchor=MID)
-    tb(s, LGX + 0.10, y + 1.24, LGW - 0.20, 0.28, [(dem, 15, False, GRAY)], anchor=MID)
+    tb(s, LGX + 0.20, y + 0.70, LGW - 0.26, 0.30, [(model, 15, True, INK)], anchor=MID)
+    tb(s, LGX + 0.20, y + 0.98, LGW - 0.26, 0.30, [[(dw, 16, True, fc)]], anchor=MID)
+    tb(s, LGX + 0.20, y + 1.24, LGW - 0.26, 0.28, [(dem, 15, False, GRAY)], anchor=MID)
     nx, ny = at(ANC[key]["now"])
-    rect(s, nx - 0.19, ny - 0.50, 0.38, 0.38, fill=BLUE, line=WHITE, lw=1.5, shape=MSO_SHAPE.OVAL)
+    rect(s, nx - 0.19, ny - 0.50, 0.38, 0.38, fill=fc, line=WHITE, lw=1.5, shape=MSO_SHAPE.OVAL)
     tb(s, nx - 0.19, ny - 0.50, 0.38, 0.38, [(str(i + 1), 16, True, WHITE)], align=C, anchor=MID)
 # 바닥 색 = 추론 수요 영역 (범례)
-from pptx.dml.color import RGBColor as _RGB  # noqa: E402
 _lx = IMX + 2.60
 tb(s, _lx, IMY - 0.10, 1.0, 0.30, [("바닥 =", 15, True, GRAY)], anchor=MID)
-for k, (nm, hx) in enumerate((("가중치 · RAG", "E8ECF8"), ("KV 오프로드", "D3DBF4"), ("초고DWPD KV", "C2CDF0"))):
+for k, (nm, hx) in enumerate((("가중치 · RAG", "ECEEF1"), ("KV 오프로드", "D5D9DF"), ("초고DWPD KV", "BEC4CC"))):
     yy = IMY - 0.10 + k * 0.30
-    rect(s, _lx + 0.80, yy + 0.05, 0.30, 0.20, fill=_RGB.from_string(hx), line=BLUE_T2, lw=0.5)
-    tb(s, _lx + 1.16, yy, 2.0, 0.30, [(nm, 15, True, BLUE)], anchor=MID)
+    rect(s, _lx + 0.80, yy + 0.05, 0.30, 0.20, fill=_RGB.from_string(hx), line=GRAY_2, lw=0.5)
+    tb(s, _lx + 1.16, yy, 2.0, 0.30, [(nm, 15, True, GRAY)], anchor=MID)
 
 d.band(s, 9.44, 0.80, "결론", "어떤 AI 추론 수요가 새로 나와도, 공동 설계 기술이 빠르게 진입할 기술적 기반이 됩니다")
 d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib FDP, 삼성 EuroSys'25) · p99.9 −55%(삼성 기술 블로그, PM9D3a 7.68TB RocksDB, TLC) · 공개 실험 테일 1.5~6배 ↓(ZNS · Valet · WALTZ) · "
-            "DWPD 확장은 WAF 3 → 1 산술(⚠️) · 꼬리 지연 높이는 정성 등급 · 제품 이미지는 형태 재현")
+            "DWPD 확장은 WAF 3 → 1 산술(⚠️) · 꼬리 지연 높이는 정성 등급 · 3D 그림은 제품군 구분을 위해 예외 색 · 제품 이미지는 형태 재현")
 
 d.notes(s, "3장은 고객과 함께 설계한 기술로 무엇이 좋아지고, 그것으로 포트폴리오를 어떻게 넓힐 수 있는지입니다. "
         "첫째 지표는 WAF입니다. SSD만 잘 만들어서는 3 근처에서 더 내려가지 않던 지표입니다. 그 이유는 참고 5장에 정리했고, 상자를 누르면 그 장으로 갑니다. 삼성 엔지니어가 Meta의 CacheLib 안에 FDP를 구현했을 때 WAF가 3.22에서 1.03으로, 68퍼센트 내려갔습니다. "

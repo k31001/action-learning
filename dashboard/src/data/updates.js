@@ -17,6 +17,16 @@ export const UPDATES = [
   {
     date: '2026-10-10',
     type: 'build',
+    version: 'v2.48.5',
+    title: '고객 협력 전략 덱 v4.3: 3장 3D 그림 제품군별 색',
+    summary: '3장 포트폴리오 3D 그림만 예외적으로 제품군별 색(QLC 초록 · TLC 파랑 · 고내구 TLC 주황 · SLC 분홍)을 쓰고 바닥 수요 영역은 무채색으로. 범례 카드 · 번호 원도 같은 색.',
+    tags: ['발표자료', '포트폴리오'],
+    items: [{ label: '덱', detail: 'ssd-future-ready-strategy.pptx v4.3 3장' }],
+    links: [],
+  },
+  {
+    date: '2026-10-10',
+    type: 'build',
     version: 'v2.48.4',
     title: '고객 협력 전략 덱 v4.2: 1장 포트폴리오 SLC 제거 · PCIe 6.0 추가',
     summary: '1장 삼성 SSD 포트폴리오에서 SLC급 행을 빼고 고성능 TLC를 PCIe 6.0(PM1763) · PCIe 5.0(PM1753 · PM9D3a)으로 나눔. 제목은 "AI 추론은 대역 · 꼬리 지연 · 내구를 한꺼번에 요구"로.',

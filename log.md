@@ -2711,3 +2711,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 공백 칸이 없어져 1장 제목을 "AI 추론은 대역 · 꼬리 지연 · 내구를 한꺼번에 요구합니다"로(2장 출발점), 노트 갱신. SLC급 초고DWPD는 3장 확장 선택지로만
 - 렌더 QA PASS. 아웃라인 · 보고서 v4.2, 위키 ssd-portfolio-expansion-co-design §4 메모, index 갱신
 - 대시보드: 발표자료 사본 · 웹 보기 재생성, 패치 v2.48.4 + updates 항목, npm run build 통과
+
+## [2026-10-10] build | 고객 협력 전략 덱 v4.3: 3장 3D 그림 제품군별 예외 색
+- 사용자 지시: 3장 3D 그래프가 블루톤만 써서 구분이 어렵다, 이 그래프만 예외적으로 다른 색상톤 허용
+- generate_portfolio_3d.py FAM_COLOR(Okabe-Ito): QLC #009E73 · 고성능 TLC #0072B2 · 고내구 TLC #E69F00 · SLC급 #CC79A7, 확장 상자 · 화살표 같은 색, 바닥 수요 영역은 무채색 3단계
+- 덱: 번호 원 · 범례 카드 색 띠 · DWPD 글자 같은 색, 출처 줄에 예외 색 표기. 나머지 장은 Samsung Blue 하나 유지
+- 렌더 QA PASS. 아웃라인 · 보고서 v4.3, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.48.5 + updates, npm run build 통과
