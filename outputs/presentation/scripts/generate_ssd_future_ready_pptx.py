@@ -28,7 +28,7 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
 ASSETS = os.path.join(HERE, "..", "assets")
 OUT = os.environ.get("OUT_PATH") or os.path.join(HERE, "..", "ssd-future-ready-strategy.pptx")
 
-d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=6,
+d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=7,
          logos_dir=os.path.join(ASSETS, "logos"), photos_dir=os.path.join(ASSETS, "photos"),
          renders_dir=os.path.join(ASSETS, "survival"))
 tb, rect, label_box = d.tb, d.rect, d.label_box
@@ -170,7 +170,7 @@ for k, (nm, v, col, lab) in enumerate([("VM 디스크", 100, BLUE, "100GB"), ("V
     rect(s, x + 1.56, yy + 0.05, w, 0.22, fill=col)
     tb(s, x + 1.62 + w, yy, 0.95, 0.32, [(lab, 16, True, BLUE if k == 0 else GRAY)], anchor=MID)
 
-# ---- 중간 계층: eSSD 수요 비중 2026(올해) · 2030, 가로 누적 막대 (McKinsey 2024-12, 2026은 보간 산술, 상세 6장)
+# ---- 중간 계층: eSSD 수요 비중 2026(올해) · 2030, 가로 누적 막대 (McKinsey 2024-12, 2026은 보간 산술, 상세 7장)
 SHR = [("2026 올해", [85, 6, 9], "286EB"), ("2030", [47, 12, 41], "1,078EB")]
 SCOL = [GRAY_2, BLUE_T2, BLUE]
 SNM = ["범용 · 엔터프라이즈", "AI 학습", "AI 추론"]
@@ -233,11 +233,11 @@ for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
             label_box(s, x, y, DW, RH, [(txt, 18, True, BLUE)], fill=WHITE, line=BLUE, lw=1.25, dash=True)
 
 d.band(s, 9.44, 0.80, "결론", "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다")
-d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026은 보간 · 범용은 산술, 상세 6장) · HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · KV 실측 StorageReview(2026-08) · "
+d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026은 보간 · 범용은 산술, 상세 7장) · HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · KV 실측 StorageReview(2026-08) · "
             "AI 전용 Kioxia · DapuStor · 에이전트 Google · Muse 관측(제3자) · 제품군 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
 d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
         "그래서 SSD의 다음 수요를 하나로 단정하지 않고, 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. "
-        "카드 아래 가로 막대는 eSSD 수요의 응용별 비중입니다. 올해는 범용 클라우드와 엔터프라이즈가 85퍼센트로 대부분이고, AI 학습 6퍼센트, AI 추론 9퍼센트입니다. 2030년에는 전체가 약 1,078엑사바이트로 커지면서 범용 47퍼센트, AI 학습 12퍼센트, AI 추론 41퍼센트가 됩니다. 에이전트는 따로 떼어 낸 전망이 없어 추론과 범용에 포함됩니다. 올해 비중은 McKinsey 전망을 이어 계산한 값이고, 연도별 상세는 참고 6장에 두었습니다. "
+        "카드 아래 가로 막대는 eSSD 수요의 응용별 비중입니다. 올해는 범용 클라우드와 엔터프라이즈가 85퍼센트로 대부분이고, AI 학습 6퍼센트, AI 추론 9퍼센트입니다. 2030년에는 전체가 약 1,078엑사바이트로 커지면서 범용 47퍼센트, AI 학습 12퍼센트, AI 추론 41퍼센트가 됩니다. 에이전트는 따로 떼어 낸 전망이 없어 추론과 범용에 포함됩니다. 올해 비중은 McKinsey 전망을 이어 계산한 값이고, 연도별 상세는 참고 7장에 두었습니다. "
         "첫째, 범용 클라우드입니다. 여러 고객의 VM이 서버의 SSD를 나눠 씁니다. Microsoft의 SSD 50만 대를 보면 실제 쓰기는 0.07에서 0.23 DWPD로 범용 TLC 정격 1 DWPD 안에 들어옵니다. 기존 SSD 기술로 대응할 수 있습니다. "
         "다만 한 고객의 쓰기가 같은 SSD를 쓰는 다른 고객의 지연을 키웁니다. Microsoft 워크로드 실험에서 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. 멀티테넌트 QoS와 격리는 여전히 중요한 요구입니다. "
         "둘째, AI 학습입니다. NVIDIA SuperPOD 가이드를 GPU당으로 환산하면, 데이터가 캐시보다 큰 멀티모달 학습은 기본 등급보다 약 3배의 스토리지 대역을 요구합니다. 데이터 로딩에는 고성능 TLC가 맞습니다. "
@@ -619,8 +619,101 @@ d.notes(s, "4장은 이 전략에서 사업적으로 가장 큰 기회입니다.
         "WAF를 낮추는 기술은 2장의 두 가지입니다. 단기에는 Mixed Media로 작은 쓰기를 모아 쓰고, 중장기에는 고객과 FDP로 WAF를 근원적으로 낮춥니다. "
         "TLC 분할 비율은 공개 자료가 없어 과제팀이 가정한 값이며, 실제 범위는 넓습니다. 그래도 방향은 분명합니다. WAF를 낮추는 것이 곧 QLC 시장을 넓히는 일이고, 그 원가 우위가 수익성입니다.")
 
-# =============================================================== 5 실행
-s = d.slide(5, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")
+# =============================================================== 5 보안 기회: 온프렘 AI의 모델 가중치 · 기업 데이터 보안, SSD가 고객 신뢰 체계 안으로
+s = d.slide(5, "보안 기회", "온프렘 AI가 커질수록 모델 가중치와 기업 데이터를 함께 지켜야 하므로,\nSSD도 고객의 키 · 증명 체계 안에 들어가야 합니다")
+SP1, SW1 = MX, 5.30
+SP2, SW2 = SP1 + SW1 + 0.30, 5.70
+SP3 = SP2 + SW2 + 0.30
+SW3 = RIGHT - SP3
+
+# ---- ① 수요: 온프렘 · 소버린 AI가 커진다
+d.panel_head(s, SP1, SW1, 1, "수요: 온프렘 AI가 커진다")
+tb(s, SP1, 3.00, SW1, 0.36, [[("소버린 AI 시장 ", 18, True, INK), ("$B, McKinsey", 16, False, GRAY)]], anchor=MID)
+SB1, SHM = 5.70, 1.72
+for k, (yr, lo, hi) in enumerate([("2025", 150, 200), ("2030", 500, 600)]):
+    bx = SP1 + 0.50 + k * 1.90
+    hl, hh = SHM * lo / 600, SHM * hi / 600
+    rect(s, bx, SB1 - hl, 1.10, hl, fill=BLUE if k else GRAY_2)
+    rect(s, bx, SB1 - hh, 1.10, hh - hl, fill=BLUE_T2 if k else LINE)
+    tb(s, bx - 0.40, SB1 - hh - 0.42, 1.90, 0.40, [(f"{lo}~{hi}", 20 if k else 18, True, BLUE if k else INK)], align=C, anchor=MID)
+    tb(s, bx - 0.40, SB1 + 0.04, 1.90, 0.30, [(yr, 16, k == 1, INK if k else GRAY)], align=C)
+tb(s, SP1 + 3.90, 4.40, 1.40, 0.50, [("×3", 26, True, BLUE)], anchor=MID)
+rect(s, SP1, 6.18, SW1, 0.012, fill=LINE)
+tb(s, SP1, 6.28, SW1, 0.36, [[("AI를 자기 DC에서 돌리는 기업 ", 18, True, INK), ("Gartner", 16, False, GRAY)]], anchor=MID)
+for k, (yr, v, col) in enumerate([("2025 초", 2, GRAY_2), ("2028", 20, BLUE)]):
+    yy = 6.74 + k * 0.56
+    tb(s, SP1, yy, 1.20, 0.44, [(yr, 16, k == 1, INK if k else GRAY)], anchor=MID)
+    w = (SW1 - 2.30) * v / 20
+    rect(s, SP1 + 1.25, yy + 0.08, max(w, 0.06), 0.28, fill=col)
+    tb(s, SP1 + 1.31 + max(w, 0.06), yy, 1.0, 0.44, [(f"{v}%{'+' if k else ''}", 20, True, BLUE if k else INK)], anchor=MID)
+tb(s, SP1, 7.96, SW1, 0.40, [[("NVIDIA 소버린 매출 ", 16, False, GRAY), ("$30B+", 20, True, BLUE), ("  FY26, 3배+", 16, False, GRAY)]], anchor=MID)
+tb(s, SP1, 8.36, SW1, 0.40, [[("Dell AI Factory 고객 ", 16, False, GRAY), ("6,500+", 20, True, BLUE)]], anchor=MID)
+d.chevron(s, SP2 - 0.20, 5.40, w=0.16, h=0.50)
+
+# ---- ② 무엇을 지키나: 한 온프렘 DC 안의 두 자산 + 보안이 막는 비율
+d.panel_head(s, SP2, SW2, 2, "왜: 두 주인의 자산이 한 곳에")
+DX, DY, DW_, DH_ = SP2, 3.00, SW2, 2.92
+rect(s, DX, DY, DW_, DH_, fill=TINT, line=BLUE, lw=1.5, shape=RR)
+tb(s, DX + 0.20, DY + 0.06, DW_ - 0.40, 0.36, [("기업의 온프렘 AI 데이터센터", 16, True, BLUE)], anchor=MID)
+d.fit(s, d.part("server"), DX + 0.20, DY + 0.52, 1.60, 1.00)
+d.fit(s, d.part("ssd"), DX + 0.30, DY + 1.66, 1.40, 0.70)
+tb(s, DX + 0.10, DY + 2.40, 1.80, 0.40, [("GPU 서버 · SSD", 15, False, GRAY)], align=C, anchor=MID)
+for k, (who, what, sz, col, tc) in enumerate([("모델 제공자", "LLM 가중치", "405B ≈ 810GB", BLUE, WHITE),
+                                              ("기업", "기업 데이터 · RAG · KV", "민감 데이터", BLUE_T1, WHITE)]):
+    yy = DY + 0.54 + k * 1.14
+    label_box(s, DX + 2.05, yy, DW_ - 2.25, 1.00, [(what, 18, True, tc), [(who + " 소유  ", 15, False, BLUE_T2), (sz, 15, True, tc)]], fill=col)
+tb(s, SP2, 6.10, SW2, 0.36, [[("보안이 AI 도입을 막는다  ", 18, True, INK), ("설문, 벤더 후원 포함", 15, False, GRAY)]], anchor=MID)
+for k, (nm, v) in enumerate([("소버니티 · 프라이버시가 지연 1위", 62), ("데이터 레지던시로 지연 · 축소", 58),
+                             ("기밀 컴퓨팅 장벽 1위 = 증명 검증", 84)]):
+    yy = 6.56 + k * 0.62
+    tb(s, SP2, yy, SW2, 0.30, [(nm, 15, False, GRAY)], anchor=MID)
+    w = (SW2 - 0.95) * v / 100
+    rect(s, SP2, yy + 0.32, w, 0.22, fill=BLUE if k == 2 else GRAY_2)
+    tb(s, SP2 + w + 0.06, yy + 0.24, 0.90, 0.36, [(f"{v}%", 18, True, BLUE if k == 2 else INK)], anchor=MID)
+d.chevron(s, SP3 - 0.20, 5.40, w=0.16, h=0.50)
+
+# ---- ③ 기술 요소 × 고객 협력 (층 = SSD에서 기밀 VM까지)
+d.panel_head(s, SP3, SW3, 3, "어떻게: 기술 × 협력 상대")
+CW1, CW2 = 2.15, 1.55
+C2X = SP3 + CW1 + 0.10
+C3X = C2X + CW2 + 0.10
+CW3 = RIGHT - C3X
+tb(s, SP3, 3.00, CW1, 0.36, [("SSD 기술", 16, True, GRAY)], anchor=MID)
+tb(s, C2X, 3.00, CW2, 0.36, [("현황", 16, True, GRAY)], align=C, anchor=MID)
+tb(s, C3X, 3.00, CW3, 0.36, [("함께할 고객", 16, True, BLUE)], anchor=MID)
+SEC = [  # 기술, 설명, 현황, 현황 색(hot=Blue · warn=점선), 협력 상대
+    ("기밀 VM 연결", "TDISP", "PM1763 발표", "hot", "CPU · 하이퍼바이저"),
+    ("증명", "SPDM", "OEM 미지원", "warn", "OEM 인증 · 검증 서비스"),
+    ("키 관리", "L.O.C.K. · KPIO", "1.0 · 삼성 공저", "hot", "클라우드 · OEM KMS"),
+    ("신뢰 루트", "Caliptra", "탑재 SSD 없음", "warn", "하이퍼스케일러 · OCP"),
+]
+RY0, RHs = 3.44, 1.08
+for i, (t, sub, st, kind, who) in enumerate(SEC):
+    y = RY0 + i * RHs
+    label_box(s, SP3, y, CW1, RHs - 0.12, [(t, 18, True, WHITE), (sub, 15, False, BLUE_T2)], fill=BLUE if i < 2 else BLUE_T1)
+    if kind == "hot":
+        label_box(s, C2X, y + 0.16, CW2, RHs - 0.44, [(st, 15, True, BLUE)], fill=WHITE, line=BLUE, lw=1.25)
+    else:
+        label_box(s, C2X, y + 0.16, CW2, RHs - 0.44, [(st, 15, True, GRAY)], fill=WHITE, line=GRAY_2, lw=1.25, dash=True)
+    d.arrow_r(s, C3X - 0.08, y + (RHs - 0.12) / 2 - 0.10, 0.06, 0.20, fill=BLUE_T2)
+    label_box(s, C3X, y + 0.10, CW3, RHs - 0.32, [(who, 16, True, INK)], fill=PALE)
+tb(s, SP3, RY0 + 4 * RHs + 0.02, SW3, 0.34, [("위 = 기밀 VM 쪽, 아래 = SSD 쪽", 15, False, GRAY)], align=R, anchor=MID)
+label_box(s, SP3, 8.20, SW3, 0.62, [[("Dell 서버: ", 15, False, GRAY), ("삼성 PM9D3a · PM9D5a SPDM 미지원", 16, True, INK), ("으로 기능 실패", 15, False, GRAY)]],
+          fill=WHITE, line=BLUE, lw=1.0)
+
+d.band(s, 9.44, 0.80, "기회", "보안은 표준으로 정하되, 고객 · OEM의 키 · 증명 체계에 함께 들어가야 팔립니다")
+d.footer(s, "출처: McKinsey 소버린 AI(2025~30) · Gartner(온프렘 AI 2→20%+) · NVIDIA FY26 · Dell FQ2'27 · Arqit/Intel · Cloudian · IDC/CCC(설문, 벤더 후원 포함) · Llama 405B FP16 · "
+            "OCP L.O.C.K. 사양 · DMTF DSP0286 · 삼성 PM1763 · Dell KB(SPDM) · 모두 검색 확인 등급, 일부 원문 확인")
+d.notes(s, "5장은 두 번째 사업 기회인 보안입니다. 2장에서 Confidential Storage도 고객 협력이 필요한 기술이라고 말씀드렸는데, 그 수요와 협력 방식을 보겠습니다. "
+        "첫째, 수요입니다. McKinsey는 소버린 AI 시장이 2025년 1,500억에서 2,000억 달러에서 2030년 5,000억에서 6,000억 달러로 약 3배 커진다고 봅니다. Gartner는 AI를 자기 데이터센터에서 직접 돌리는 기업이 2025년 초 약 2퍼센트에서 2028년 20퍼센트 이상이 된다고 봅니다. NVIDIA의 소버린 매출은 FY26에 300억 달러를 넘었고, Dell의 AI Factory 고객은 6,500곳을 넘었습니다. "
+        "둘째, 왜 보안인가입니다. 기업의 온프렘 AI 데이터센터에는 주인이 다른 두 자산이 함께 놓입니다. 모델 제공자의 LLM 가중치, 예를 들어 405B 모델이면 FP16으로 약 810기가바이트와, 기업의 민감 데이터, RAG, KV 캐시입니다. 설문에서는 소버니티와 프라이버시가 AI 과제 지연의 1위 요인이라는 응답이 62퍼센트, 데이터 레지던시 때문에 AI 과제를 미루거나 줄인 곳이 58퍼센트입니다. 기밀 컴퓨팅의 장벽 1위는 증명 검증으로 84퍼센트입니다. 다만 이 설문들 상당수는 벤더가 후원했습니다. "
+        "셋째, 어떻게입니다. 공개된 가중치 보호 설계는 가중치를 암호화해 두었다가 TEE 안에서만 푸는 방식이라, SSD 혼자 가중치를 지키는 구조가 아닙니다. 그래서 SSD의 역할은 고객의 신뢰 체계 안에 들어가는 것입니다. "
+        "기밀 VM에 SSD를 직접 붙이는 TDISP는 삼성 PM1763이 발표했고, 상대는 CPU와 하이퍼바이저입니다. 드라이브를 증명하는 SPDM은 스토리지 바인딩 표준이 2025년에 나왔고, 상대는 서버 OEM 인증과 증명 검증 서비스입니다. 키 관리는 OCP L.O.C.K. 1.0이 2025년 9월에 나왔고 삼성이 공저자이며, 상대는 클라우드와 OEM의 키 관리 서버입니다. 신뢰 루트 Caliptra는 아직 탑재 SSD가 없습니다. "
+        "경고 사례도 있습니다. Dell 17세대 서버에서는 삼성 PM9D3a와 PM9D5a가 SPDM을 지원하지 않아 관련 기능이 실패한다는 KB가 올라와 있습니다. 표준을 따르는 것만으로는 부족하고, 고객과 OEM의 키와 증명 체계에 함께 들어가야 팔립니다. "
+        "보안 시장 자체의 규모나 Confidential Storage 시장 전망은 공개 자료에 없어서, 수요는 온프렘 AI의 성장으로 보여 드렸습니다.")
+
+# =============================================================== 6 실행
+s = d.slide(6, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")
 C1, W1 = MX, 5.55
 C2, W2 = 6.55, 6.90
 C3, W3 = 13.66, 5.55
@@ -781,7 +874,7 @@ tb(s, C3, CAP_Y, W3, 0.50, [("기술과 함께, 엔지니어의 고객 관계", 
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
 d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 로고는 식별 표시")
-d.notes(s, "5장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
+d.notes(s, "6장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
         "첫째, 계약입니다. 지금의 Multi-Year Deal, MYD는 여러 해의 수량과 가격을 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 MYD 위에 기술 협력을 쌓겠습니다. "
         "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 AI 데이터센터 안에서 고객 엔지니어와 함께 일합니다. 핵심 업무는 세 가지입니다. "
         "하나, 고객 워크로드 측정과 분석입니다. 고객 트레이스로 쓰기 크기와 데이터 수명을 재서, 고객이 말한 요구와 실제 요구의 차이를 찾습니다. "
@@ -792,8 +885,8 @@ d.notes(s, "5장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 �
         "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 FDP 공동 설계 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
 
-# =============================================================== 6 참고: eSSD 수요처별 전망
-s = d.slide(6, "참고", "eSSD 수요는 2030년까지 약 6배로 늘고,\n가장 큰 몫은 AI 추론에서 나옵니다")
+# =============================================================== 7 참고: eSSD 수요처별 전망
+s = d.slide(7, "참고", "eSSD 수요는 2030년까지 약 6배로 늘고,\n가장 큰 몫은 AI 추론에서 나옵니다")
 
 # 막대: McKinsey(2024-12) 2024 · 2030 끝값, 2025~2029는 수요처별 연평균 성장률 보간(산술)
 DEM = [("범용 · 엔터프라이즈", 168, 504, GRAY_2), ("AI 학습", 7, 127, BLUE_T2), ("AI 추론", 6, 447, BLUE)]

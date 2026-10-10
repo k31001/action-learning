@@ -114,5 +114,6 @@ sources:
 - 주요 DC 기업의 자체 SSD · 공동 설계(2026-10-07): [datacenter-in-house-ssd-co-design.md](datacenter-in-house-ssd-co-design.md)
 - 출하 시 구성의 경계(RUH · RG · SLC 비율): [ssd-configurability-boundary.md](ssd-configurability-boundary.md)
 - 파라미터 민감도 시뮬레이션(RU 크기 · RUH 수 · 분류 정확도, 덱 5장): [fdp-parameter-sensitivity-simulation.md](fdp-parameter-sensitivity-simulation.md)
+- 보안 한 장(2026-10-10, 덱 5장): 온프렘 AI의 가중치 · 기업 데이터 보안 수요와 Confidential Storage 기술 요소 × 고객 협력: [onprem-ai-confidential-storage.md](onprem-ai-confidential-storage.md)
 - 후보 검토 이력(보안 · GPU 직결 · 전력): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)
 - 산출물: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md)

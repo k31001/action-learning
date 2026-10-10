@@ -2650,3 +2650,15 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 2장 제목 "다섯은 고객 협력이 필요하고, 협력의 깊이는 스펙 협력부터 공동 설계까지 다릅니다", 오른쪽 구역 산점도 → 협력 깊이 막대(FDP 4 · Mixed Media 3 · Confidential · Large Mapping · QoS 2 · Fault Tolerant 0, 위키 3.2 판정 합), 다섯 기술 Blue 괄호, 왼쪽 행 강조. 노트 갱신, 렌더 QA PASS, PPTX 재생성
 - 위키 `ssd-core-technologies-customer-collaboration.md` §3.2.1, 아웃라인 · 보고서 v3.6, index 갱신. 보안(Confidential Storage) 장은 조사 중
 - 대시보드: 지식 그래프 재생성 결과 변화 없음 → 버전 bump 생략
+
+## [2026-10-10] ingest | 온프렘 AI · Confidential Storage 수요 원장
+- 사용자 지시: 보안(Confidential Storage)을 AI 엔터프라이즈 서비스의 온프렘 DC 진입 관점(LLM 가중치 + 기업 데이터 보안)으로, 수요 크기 조사 · 고객 협력 · 기술 요소 시각화
+- `sources/articles/onprem-ai-confidential-storage-demand-2026-10.md`(CS-01~98 · CS-D01~D13, 대부분 🟡): 소버린 AI $150~200B → $500~600B(McKinsey), 자기 DC AI 2 → 20%+(Gartner 2028), NVIDIA 소버린 FY26 $30B+, Dell AI Factory 6,500+, 설문 62 · 58 · 84%(벤더 후원 표시), TDISP · SPDM · L.O.C.K. 1.0 · KPIO · Caliptra 현황, Dell KB SPDM 미지원
+- 새 위키 `wiki/concepts/onprem-ai-confidential-storage.md`(수요 · 왜 · 기술 × 협력 · 한계), `ssd-core-technologies-customer-collaboration.md` §5 역링크, index 갱신
+- 한계: 공개된 가중치 보호 설계는 드라이브 밖 암호화 · TEE 복호화 → SSD 주장은 "고객 키 · 증명 체계(신뢰 사슬) 참여"로 한정. Confidential Storage 시장 규모 수치는 없음
+
+## [2026-10-10] build | 이전 전략 덱 v3.7: 새 5장 "보안 기회"
+- 4장 사업 기회(내구성 · QLC) 다음에 삽입, 실행 6장 · 참고 7장으로 이동. 제목 "온프렘 AI가 커질수록 모델 가중치와 기업 데이터를 함께 지켜야 하므로, SSD도 고객의 키 · 증명 체계 안에 들어가야 합니다"
+- ① 수요 막대(×3) · Gartner · NVIDIA · Dell ② 온프렘 DC 그림(가중치 405B ≈ 810GB · 기업 데이터 · RAG · KV) + 설문 막대 ③ 기술 요소 × 현황 × 함께할 고객 표 + Dell SPDM 경고. 밴드 "보안은 표준으로 정하되, 고객 · OEM의 키 · 증명 체계에 함께 들어가야 팔립니다"
+- 렌더 QA PASS, PPTX 7장 재생성. 아웃라인 · 보고서 v3.7(보고서 §7 2장 행도 v3.6 내용으로 정정), index 갱신
+- 지식 그래프 갱신(새 페이지) → 대시보드 v2.46.76 패치 + updates 항목, npm run build 통과

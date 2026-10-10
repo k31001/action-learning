@@ -15,6 +15,17 @@
 
 export const UPDATES = [
   {
+    date: '2026-10-10',
+    type: 'build',
+    version: 'v2.46.76',
+    title: '보안 기회: 온프렘 AI의 가중치 · 기업 데이터 보안과 Confidential Storage',
+    summary:
+      '온프렘 · 소버린 AI 확대(소버린 AI $150~200B → $500~600B, 자기 DC AI 기업 2 → 20%+)로 모델 가중치와 기업 데이터가 한 DC에 놓이는 수요를 정리하고, TDISP · SPDM · L.O.C.K. · Caliptra 기술 요소별 함께할 고객을 위키 새 페이지로. 대시보드는 지식 그래프만 갱신(패치).',
+    tags: ['Confidential Storage', '보안', '온프렘 AI', 'SPDM', 'TDISP'],
+    items: [{ label: '위키', detail: 'wiki/concepts/onprem-ai-confidential-storage.md (신규)' }, { label: '원장', detail: 'sources/articles/onprem-ai-confidential-storage-demand-2026-10.md' }, { label: '덱', detail: 'ssd-future-ready-strategy.pptx v3.7 5장' }],
+    links: [{ label: 'wiki/concepts/onprem-ai-confidential-storage.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/onprem-ai-confidential-storage.md' }],
+  },
+  {
     date: '2026-10-09',
     type: 'build',
     version: 'v2.46.75',
