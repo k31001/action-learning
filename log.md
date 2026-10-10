@@ -2756,3 +2756,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 적용: Deck Read(액션러닝 키노트형 60초, 경영진·과제 팀) · 다이얼 4/7/6 · 20 x 11.25in 골격을 1920 x 1080px(1in = 96px)로 그대로 사용(상단 줄 · 2줄 액션 타이틀 · 구분선 · 번호 원 구획 제목 · Blue 밴드 · 출처 줄 · 쪽 번호 · [문서등급 표기]) · 토큰 2.A · 폰트 1종(SamsungOneKorean → Pretendard → Noto Sans KR) · 자사 Blue/경쟁사 그레이 · 적색은 낙폭·적자에만 · 로고 높이 규격(11.F) · 근거 사슬(11.J: 발원별 신호 차트, 교훈 장 HBM 점유율 그래프, 2023 재고 막대) · 해석 도형에 "복기" 표지 · 결론 장 = 요청 3건
 - 모션은 4.5 키노트 예외로 페이드·리빌·막대 성장만(회전·바운스·흔들림 삭제). score.js 장 전환 박자로 재정렬(−13 LUFS)
 - dashboard 변경 없음 → bump 생략
+
+## [2026-10-10] build | 「네 번의 겨울」 video-shotcraft 컷 (Remotion 1080p MP4)
+- 사용자 지시: video-shotcraft로 다시 제작. 내용은 v3(a348592) 유지, 화이트 + 삼성 블루 단일 액센트, TV 광고형 시네마틱, 60초 안팎, 효과음·배경음악 포함, 1080p MP4
+- 플러그인은 이 세션에 미설치라 공개 소스(Vincentwei1021/video-shotcraft)의 자율 자유 창작 파이프라인을 따름. 산출물은 `outputs/motion/downturn-20y/shotcraft/` Remotion 프로젝트 + SPEC.md(브리프·토큰·카드 매핑·분镜·사운드·의도적 위반). GSAP 페이지 v4(`index.html`)는 그대로 둠
+- 샷 카드: avatar-grid-radial-build-colorize(웨이퍼 생장→결빙, 8% 씨앗) · timeline-travel(곡선 머리 1.45x 추적→풀백) · odometer-digit-roll($6.80→$0.50) · mosaic-reframe(6강→3강) · hatch-depth(2019 매출) · crash-zoom(−62%) · marker-underline-title(심은 것) · title-demote-to-label(다음 겨울은 어디서). v3의 화면 흔들림은 Q3에 따라 제거하고, 전화면 충격은 −45%·−62%·결론 3회로 제한
+- 수치는 위키와 대조(분기 DRAM 매출 출처 = memory-downturn-history-research raw-note). 새 주장 없음. 가상 헤드라인은 카드마다 태그 + 「실제 보도 아님」 각주
+- 사운드: score.js를 새 장 경계(15f 박 격자)에 재배치(타격·라이저는 SFX로 이관), Mixkit SFX 26종 핀 표(출처 URL 확인분만, 피크 지연 실측 보정, 성완본 실측 오차 ≤0.5f). BGM판 −16 LUFS / 무BGM판 −19 LUFS, TP ≤ −1.2 dBFS. MP4는 미커밋
+- 독립 서브에이전트 최종 검수 후 수정 반영. dashboard 변경 없음 → bump 생략
