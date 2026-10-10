@@ -17,6 +17,17 @@ export const UPDATES = [
   {
     date: '2026-10-10',
     type: 'build',
+    version: 'v2.47.0',
+    title: '발표자료 탭 신설: 최근 주요 덱 내려받기',
+    summary:
+      '상단에 발표자료 탭을 추가하고 최근 만든 주요 덱 6개(고객 협력 전략 v3.7 · TLC 시장을 QLC로 · SSD 생존 전략 · QLC eSSD 전략 2종 · 해법 사다리)를 PPTX 내려받기 · 아웃라인 · 근거 문서 링크로 연결. 배포 사본은 scripts/sync-presentations.mjs로 동기화.',
+    tags: ['발표자료', 'PPTX', '대시보드'],
+    items: [{ label: '탭', detail: '#/presentations' }, { label: '목록', detail: 'dashboard/src/data/presentations.js' }, { label: '동기화', detail: 'node scripts/sync-presentations.mjs' }],
+    links: [],
+  },
+  {
+    date: '2026-10-10',
+    type: 'build',
     version: 'v2.46.76',
     title: '보안 기회: 온프렘 AI의 가중치 · 기업 데이터 보안과 Confidential Storage',
     summary:

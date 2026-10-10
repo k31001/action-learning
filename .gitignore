@@ -19,6 +19,7 @@ node_modules/
 !outputs/presentation/qlc-ssd-strategy-visual.pptx
 !outputs/presentation/ssd-survival-strategy.pptx
 !dashboard/public/downloads/*.pptx
+!dashboard/public/presentations/*.pptx
 !working-style/seminar-claude-code-report/seminar-claude-code*.pptx
 !slides/seminar/*.pptx
 .claude/worktrees/

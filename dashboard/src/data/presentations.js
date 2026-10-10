@@ -1,0 +1,88 @@
+// 발표자료 탭 — 최근 만든 주요 덱 (최신이 위)
+//
+// 원본: outputs/presentation/<file> (생성기 outputs/presentation/scripts/*.py)
+// 배포 사본: dashboard/public/presentations/<file> — `node scripts/sync-presentations.mjs`로 복사
+// 덱을 다시 생성하면 위 스크립트를 다시 돌려 사본을 맞춘다 (Vercel 루트가 dashboard/라 outputs/는 배포되지 않음)
+
+const REPO = 'https://github.com/k31001/action-learning/blob/main'
+
+export const PRESENTATIONS = [
+  {
+    id: 'ssd-future-ready-strategy',
+    file: 'ssd-future-ready-strategy.pptx',
+    title: '불확실성이 높은 미래에 대응하기 위한 고객 협력 전략',
+    version: 'v3.7',
+    date: '2026-10-10',
+    slides: '본문 6장 + 참고 1장',
+    summary: '응용별 SSD 요구 → 핵심 기술 6가지 중 5개는 고객 협력 → NAND · SSD에서 고객 시스템으로 → QLC 시장 확장(2030 42 → 약 65%) · 온프렘 AI 보안 기회 → 계약 · 사람 · 역량 실행',
+    chapters: ['배경', '핵심 기술', '당위성', '사업 기회', '보안 기회', '실행 전략', '참고'],
+    outline: `${REPO}/outputs/presentation/ssd-future-ready-strategy-outline.md`,
+    report: `${REPO}/outputs/report/ssd-future-ready-strategy-report.md`,
+    accent: '#1428A0',
+  },
+  {
+    id: 'qlc-tlc-market-entry',
+    file: 'qlc-tlc-market-entry.pptx',
+    title: '고객과 함께 WAF를 낮춰, TLC 시장을 QLC로',
+    version: 'v1.0',
+    date: '2026-10-09',
+    slides: '본문 4장 + 별첨 2장',
+    summary: '정격 DWPD 하락 · WAF는 SSD 혼자 못 낮춤 → 고객과 WAF를 낮추면 QLC가 TLC 수요 일부에 원가 우위로 진입 → 실행',
+    chapters: ['배경', '원인 · 해법', '기회', '실행', 'A1 시장 · 경제성', 'A2 기술 근거'],
+    outline: `${REPO}/outputs/presentation/qlc-tlc-market-entry-outline.md`,
+    report: `${REPO}/wiki/strategies/qlc-tlc-market-entry.md`,
+    accent: '#0F766E',
+  },
+  {
+    id: 'ssd-survival-strategy',
+    file: 'ssd-survival-strategy.pptx',
+    title: '다운턴에서 배운 SSD 생존 전략',
+    version: null,
+    date: '2026-09-28',
+    slides: '3장',
+    summary: 'HBM의 교훈(고객과 함께 수요를 읽기) → DWPD 장벽은 서버와 함께 WAF를 낮춰야 → 실행',
+    chapters: ['배경', '솔루션', '실행 전략'],
+    outline: `${REPO}/outputs/presentation/ssd-survival-strategy-outline.md`,
+    report: null,
+    accent: '#7C3AED',
+  },
+  {
+    id: 'qlc-ssd-strategy-visual',
+    file: 'qlc-ssd-strategy-visual.pptx',
+    title: 'QLC eSSD 전략 (시각화 강화판)',
+    version: 'v2.0',
+    date: '2026-09-28',
+    slides: '7장',
+    summary: '요약 스토리 맵 + 문제 · 신뢰성 · 내구성 · 배치 힌트 · 역량 · 실행, 같은 주장을 그림 중심으로',
+    chapters: ['요약', '문제', '신뢰성', '내구성', '배치 힌트', '역량', '실행'],
+    outline: `${REPO}/outputs/presentation/qlc-ssd-strategy-outline.md`,
+    report: null,
+    accent: '#B45309',
+  },
+  {
+    id: 'qlc-ssd-strategy',
+    file: 'qlc-ssd-strategy.pptx',
+    title: 'QLC eSSD 전략',
+    version: 'v7.7',
+    date: '2026-09-28',
+    slides: '7장',
+    summary: '문제 / 신뢰성 / 내구성 / 배치 힌트 / 역량 / 실행 / 대응 기술',
+    chapters: ['문제', '신뢰성', '내구성', '배치 힌트', '역량', '실행', '대응 기술'],
+    outline: `${REPO}/outputs/presentation/qlc-ssd-strategy-outline.md`,
+    report: null,
+    accent: '#B45309',
+  },
+  {
+    id: 'memory-solution-ladder',
+    file: 'memory-solution-ladder.pptx',
+    title: '해법 사다리: DWPD 격차를 어느 계층이 풀어 왔나',
+    version: 'v3.0',
+    date: '2026-09-22',
+    slides: '1장',
+    summary: '고용량 QLC의 DWPD 격차를 부품 → SSD → 고객 시스템 중 어느 계층이 풀어 왔는지 이관 매트릭스로',
+    chapters: ['해법 사다리'],
+    outline: null,
+    report: `${REPO}/wiki/concepts/solution-ladder-component-to-system.md`,
+    accent: '#475569',
+  },
+]

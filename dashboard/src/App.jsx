@@ -2,7 +2,7 @@ import { useEffect, useCallback } from 'react'
 import { useStore } from './hooks/useStore'
 import { useHashSegment } from './hooks/useHashRoute'
 import { triggerAutoUpdate } from './hooks/useMarketData'
-import { Activity, BarChart3, BookOpen, Compass, Crosshair, Grid3x3, History, Hourglass, MessageSquareQuote, NotebookPen, Share2 } from 'lucide-react'
+import { Activity, BarChart3, BookOpen, Compass, Crosshair, Grid3x3, History, Hourglass, MessageSquareQuote, NotebookPen, Presentation, Share2 } from 'lucide-react'
 import ScenarioPanel from './components/ScenarioPanel'
 import TriggerPanel from './components/TriggerPanel'
 import IndicatorGrid from './components/IndicatorGrid'
@@ -19,6 +19,7 @@ import KnowledgeGraph from './components/KnowledgeGraph'
 import Updates from './components/Updates'
 import Storyline from './components/Storyline'
 import CMOMatrix from './components/CMOMatrix'
+import Presentations from './components/Presentations'
 import ErrorBoundary from './components/ErrorBoundary'
 import { VERSION } from './version'
 
@@ -33,6 +34,7 @@ const TOP_TABS = [
   { id: 'strategy',      label: 'Strategy',                icon: Crosshair },
   { id: 'interviews',    label: 'Interviews',              icon: MessageSquareQuote },
   { id: 'meetings',      label: 'Meeting Notes',           icon: NotebookPen },
+  { id: 'presentations', label: '발표자료',                 icon: Presentation },
   { id: 'graph',         label: 'Knowledge Graph',         icon: Share2 },
   { id: 'updates',       label: 'Updates',                 icon: History },
 ]
@@ -109,7 +111,7 @@ export default function App() {
                 }`}
               >
                 <Icon size={15} className={active ? 'text-hig-blue' : 'text-zinc-400'} />
-                <span className="tracking-tight">{t.label}</span>
+                <span className="tracking-tight break-keep">{t.label}</span>
                 {showBadge && (
                   <span className="ml-0.5 px-1.5 py-0.5 rounded-full bg-hig-red/15 text-hig-red text-[10px] font-semibold">
                     {criticalCount + warningCount + activeTriggers.length}
@@ -201,6 +203,7 @@ export default function App() {
         {topTab === 'strategy'      && <Strategies />}
         {topTab === 'interviews'    && <Interviews />}
         {topTab === 'meetings'      && <MeetingNotes />}
+        {topTab === 'presentations' && <Presentations />}
         {topTab === 'graph'         && <KnowledgeGraph />}
         {topTab === 'updates'       && <Updates />}
         </ErrorBoundary>

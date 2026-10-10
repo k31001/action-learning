@@ -2662,3 +2662,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - ① 수요 막대(×3) · Gartner · NVIDIA · Dell ② 온프렘 DC 그림(가중치 405B ≈ 810GB · 기업 데이터 · RAG · KV) + 설문 막대 ③ 기술 요소 × 현황 × 함께할 고객 표 + Dell SPDM 경고. 밴드 "보안은 표준으로 정하되, 고객 · OEM의 키 · 증명 체계에 함께 들어가야 팔립니다"
 - 렌더 QA PASS, PPTX 7장 재생성. 아웃라인 · 보고서 v3.7(보고서 §7 2장 행도 v3.6 내용으로 정정), index 갱신
 - 지식 그래프 갱신(새 페이지) → 대시보드 v2.46.76 패치 + updates 항목, npm run build 통과
+
+## [2026-10-10] build | 대시보드 v2.47.0: 발표자료 탭 신설
+- 사용자 지시: 주요 PPTX를 대시보드에서 링크로 접근하도록 발표자료 메뉴를 만들고 최근 덱 링크를 걸 것(웹 보기는 다음 단계)
+- 상단 탭 "발표자료"(#/presentations): 최근 덱 6개 카드(고객 협력 전략 v3.7 · TLC 시장을 QLC로 v1.0 · SSD 생존 전략 · QLC eSSD 전략 시각화판 v2.0 · QLC eSSD 전략 v7.7 · 해법 사다리 v3.0), 장 목록 · PPTX 내려받기 · 아웃라인 · 근거 문서 링크
+- 목록 단일 소스 `dashboard/src/data/presentations.js`, 배포 사본 `dashboard/public/presentations/`(Vercel 루트가 dashboard/), 동기화 `node scripts/sync-presentations.mjs`(CLAUDE.md 빌드 명령에 추가, .gitignore 예외 추가)
+- 마이너 bump(탭 추가) v2.47.0 + updates 항목, npm run build 통과 · 미리보기에서 PPTX 200 응답 확인
