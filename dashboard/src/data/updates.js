@@ -17,6 +17,17 @@ export const UPDATES = [
   {
     date: '2026-10-10',
     type: 'build',
+    version: 'v2.48.0',
+    title: '발표자료 탭: 웹에서 바로 보기',
+    summary:
+      '덱 카드에 첫 장 썸네일과 "웹에서 보기"를 추가. 전체 화면 뷰어(← → · 스와이프 · 썸네일 줄 · Esc)로 PPTX를 내려받지 않고 바로 보고, #/presentations/<덱>/<장> 딥링크로 특정 장을 공유. 이미지는 렌더 QA와 같은 조건(NanumGothic → PDF → 1600px JPG)으로 생성.',
+    tags: ['발표자료', 'PPTX', '대시보드'],
+    items: [{ label: '뷰어', detail: 'Presentations.jsx Viewer (portal, 키보드 · 스와이프)' }, { label: '렌더', detail: 'scripts/render-presentation-previews.py → public/presentations/<id>/slide-NN.jpg' }, { label: '목록', detail: 'presentationPreviews.js (GENERATED)' }],
+    links: [],
+  },
+  {
+    date: '2026-10-10',
+    type: 'build',
     version: 'v2.47.0',
     title: '발표자료 탭 신설: 최근 주요 덱 내려받기',
     summary:

@@ -2668,3 +2668,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 상단 탭 "발표자료"(#/presentations): 최근 덱 6개 카드(고객 협력 전략 v3.7 · TLC 시장을 QLC로 v1.0 · SSD 생존 전략 · QLC eSSD 전략 시각화판 v2.0 · QLC eSSD 전략 v7.7 · 해법 사다리 v3.0), 장 목록 · PPTX 내려받기 · 아웃라인 · 근거 문서 링크
 - 목록 단일 소스 `dashboard/src/data/presentations.js`, 배포 사본 `dashboard/public/presentations/`(Vercel 루트가 dashboard/), 동기화 `node scripts/sync-presentations.mjs`(CLAUDE.md 빌드 명령에 추가, .gitignore 예외 추가)
 - 마이너 bump(탭 추가) v2.47.0 + updates 항목, npm run build 통과 · 미리보기에서 PPTX 200 응답 확인
+
+## [2026-10-10] build | 대시보드 v2.48.0: 발표자료 웹에서 보기
+- 사용자 지시 2단계: 웹에서 바로 볼 수 있게. 덱 6개(31장)를 렌더 QA와 같은 조건(글꼴 NanumGothic → soffice PDF → 1600px JPG, 약 6.2MB)으로 `dashboard/public/presentations/<id>/slide-NN.jpg` 생성
+- 렌더 스크립트 `scripts/render-presentation-previews.py`(목록은 presentations.js, 장 수는 `presentationPreviews.js` GENERATED), CLAUDE.md 빌드 명령에 추가
+- 카드에 첫 장 썸네일 · "웹에서 보기", 전체 화면 뷰어(포털, ← → · Home/End · Esc · 모바일 스와이프 · 썸네일 줄 · 다음 장 미리 받기), 딥링크 #/presentations/<덱>/<장>
+- 미리보기 검증(데스크톱 1440 · 모바일 390): 키보드 넘기기 · 딥링크 · 닫기 동작 확인. 마이너 bump v2.48.0 + updates 항목, npm run build 통과
