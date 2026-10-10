@@ -107,6 +107,8 @@ body{font-family:var(--f-sans);padding-inline:16px;padding-block:16px 24px}
 .btn:hover{border-color:var(--blue-hi)}
 .btn:focus-visible,.chap:focus-visible,#scrub:focus-visible{outline:2px solid var(--blue-hi);outline-offset:2px}
 .btn.play{background:var(--blue);border-color:var(--blue-hi);min-width:88px}
+.btn.snd{border-color:var(--blue-hi);color:var(--ice);min-width:120px}
+.btn.snd.on{background:var(--blue-hi);color:#fff}
 #time{font-variant-numeric:tabular-nums;min-width:96px}
 .scrubwrap{flex:1 1 260px;min-width:0;position:relative;display:flex;align-items:center}
 #scrub{width:100%;accent-color:var(--blue-hi)}
@@ -122,6 +124,7 @@ body.export .controls,body.export .chaps,body.export .note{display:none}
 body.export .viewport{border-radius:0;box-shadow:none}
 </style>
 
+<audio id="bgm" src="score.mp3" preload="auto"></audio>
 <div class="player" id="player">
   <div class="viewport" id="viewport">
     <div class="stage" id="stage">
@@ -308,10 +311,11 @@ body.export .viewport{border-radius:0;box-shadow:none}
     <button class="btn" id="restart" type="button">처음부터</button>
     <span id="time">0:00 / 0:00</span>
     <div class="scrubwrap"><input id="scrub" type="range" min="0" max="1000" step="1" value="0" aria-label="재생 위치"></div>
+    <button class="btn snd" id="snd" type="button" aria-pressed="false">사운드 켜기</button>
     <button class="btn" id="fs" type="button">전체 화면</button>
   </div>
   <div class="chaps" id="chaps" role="group" aria-label="장 이동"></div>
-  <p class="note">스페이스바 재생/정지 · ←/→ 5초 이동. 수치는 위키 <code>wiki/downturn/</code>의 집계치이며 ᵉ 표시는 성장률 역산·기관 절충치다.</p>
+  <p class="note">배경음악은 ‘사운드 켜기’를 누르면 들린다(브라우저 정책상 자동 재생 불가). 스페이스바 재생/정지 · ←/→ 5초 이동. 수치는 위키 <code>wiki/downturn/</code>의 집계치이며 ᵉ 표시는 성장률 역산·기관 절충치다.</p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -945,14 +949,34 @@ new ResizeObserver(fit).observe(vp); fit();
 const playBtn = $('#play'), scrub = $('#scrub'), timeEl = $('#time');
 const fmtT = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 const CHAPS = [[0,'인트로'],[8.4,'20년 개관'],[22.6,'DT08'],[36.8,'DT12'],[51.0,'DT19'],[65.2,'DT23'],[79.8,'패턴'],[99.0,'다음 겨울'],[116,'화두'],[132.4,'엔딩']];
+/* 배경음악: score.mp3 (score.js에서 렌더) — 타임라인 위치에 맞춰 재생 */
+const sndBtn = $('#snd'), bgm = $('#bgm');
+let soundOn = false;
+function stopAudio() { bgm.pause(); }
+function startAudio() {
+  if (!soundOn || !playing || scrubbing) { bgm.pause(); return; }
+  const t = tl.time(); if (bgm.duration && t >= bgm.duration - .05) return;
+  if (Math.abs(bgm.currentTime - t) > .05) bgm.currentTime = t;
+  const p = bgm.play(); if (p && p.catch) p.catch(() => { soundOn = false; sndLabel(); });
+}
+let lastSync = 0;
+function syncAudio() {
+  if (!soundOn || !playing || bgm.paused || bgm.seeking) return;
+  const now = performance.now(); if (now - lastSync < 500) return; lastSync = now;
+  if (Math.abs(bgm.currentTime - tl.time()) > .15) bgm.currentTime = tl.time();
+}
+function sndLabel() { sndBtn.textContent = soundOn ? '사운드 끄기' : '사운드 켜기'; sndBtn.setAttribute('aria-pressed', soundOn ? 'true' : 'false'); sndBtn.classList.toggle('on', soundOn); }
+bgm.volume = .9;
+sndBtn.addEventListener('click', () => { soundOn = !soundOn; sndLabel(); if (soundOn) startAudio(); else stopAudio(); });
+
 const chapsEl = $('#chaps');
 const chapBtns = CHAPS.map(([t, n]) => {
   const b = document.createElement('button'); b.type = 'button'; b.className = 'chap'; b.textContent = n;
-  b.addEventListener('click', () => { tl.seek(t, false); renderFrame(); if (!tl.isActive() && !playing) updateUI(); });
+  b.addEventListener('click', () => { tl.seek(t, false); renderFrame(); updateUI(); startAudio(); });
   chapsEl.appendChild(b); return b;
 });
 let playing = false;
-function setPlaying(v) { playing = v; if (v) { if (tl.time() >= DUR - .05) tl.seek(0, false); tl.play(); } else tl.pause(); updateUI(); }
+function setPlaying(v) { playing = v; if (v) { if (tl.time() >= DUR - .05) tl.seek(0, false); tl.play(); startAudio(); } else { tl.pause(); stopAudio(); } updateUI(); }
 function updateUI() {
   const t = tl.time();
   playBtn.textContent = playing ? '❚❚ 정지' : '▶ 재생';
@@ -961,10 +985,10 @@ function updateUI() {
   let ci = 0; CHAPS.forEach(([a], i) => { if (t >= a - .01) ci = i; });
   chapBtns.forEach((b, i) => b.classList.toggle('cur', i === ci));
 }
-tl.eventCallback('onComplete', () => { playing = false; updateUI(); });
+tl.eventCallback('onComplete', () => { playing = false; stopAudio(); updateUI(); });
 let scrubbing = false;
-scrub.addEventListener('input', () => { scrubbing = true; tl.pause(); tl.seek(scrub.value / 1000 * DUR, false); renderFrame(); updateUI(); });
-scrub.addEventListener('change', () => { scrubbing = false; if (playing) tl.play(); });
+scrub.addEventListener('input', () => { scrubbing = true; stopAudio(); tl.pause(); tl.seek(scrub.value / 1000 * DUR, false); renderFrame(); updateUI(); });
+scrub.addEventListener('change', () => { scrubbing = false; if (playing) { tl.play(); startAudio(); } });
 playBtn.addEventListener('click', () => setPlaying(!playing));
 $('#restart').addEventListener('click', () => { tl.seek(0, false); setPlaying(true); });
 $('#fs').addEventListener('click', () => {
@@ -974,10 +998,10 @@ $('#fs').addEventListener('click', () => {
 document.addEventListener('keydown', e => {
   if (e.target.closest && e.target.closest('input')) { if (e.code !== 'Space') return; }
   if (e.code === 'Space') { e.preventDefault(); setPlaying(!playing); }
-  else if (e.code === 'ArrowRight') { tl.seek(Math.min(DUR, tl.time() + 5), false); renderFrame(); updateUI(); }
-  else if (e.code === 'ArrowLeft') { tl.seek(Math.max(0, tl.time() - 5), false); renderFrame(); updateUI(); }
+  else if (e.code === 'ArrowRight') { tl.seek(Math.min(DUR, tl.time() + 5), false); renderFrame(); updateUI(); startAudio(); }
+  else if (e.code === 'ArrowLeft') { tl.seek(Math.max(0, tl.time() - 5), false); renderFrame(); updateUI(); startAudio(); }
 });
-gsap.ticker.add(() => { renderFrame(); updateUI(); });
+gsap.ticker.add(() => { renderFrame(); updateUI(); syncAudio(); });
 
 /* 영상 추출용 훅 (로컬 렌더 전용) */
 window.__motion = { duration: DUR, seek(t) { tl.pause(); tl.seek(t, false); renderFrame(); } };

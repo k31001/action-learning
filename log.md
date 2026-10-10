@@ -2729,3 +2729,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 수치는 위키 단일 소스: 전체 메모리 연 매출 = DRAM §1 + NAND §1 합산(downturn-history §1 표와 일치), 장별 수치는 §3 프로필, 다음 겨울 확률은 downturn/scenario-matrix §3(DT-D 26 · DT-B 24 · DT-C 22 · DT-A 20 · DT-E 8, 현재 위치 2026-08). 새 사실 주장 없음 → wiki 갱신 불필요
 - 1080p30 MP4(`four-winters.mp4`)는 headless Chromium 프레임 렌더 + ffmpeg로 생성, `.gitignore`로 미커밋
 - dashboard 변경 없음 → version bump·빌드 생략. index 갱신
+
+## [2026-10-10] build | 「네 번의 겨울」 배경음악 추가
+- 사용자 지시: 긴장감 넘치는 배경음악
+- `outputs/motion/downturn-20y/score.js` — Web Audio 합성 스코어(D단조 · 96BPM 8분음 오스티나토 · 서브 드론 · 현악 패드 · 장 전환 라이저→임팩트 6회 · 화두 구간 시계 틱+심장박동 · 엔딩 D장조 해결). 다이내믹 곡선: 인트로 −29 → 다운턴 장 −21 → 패턴 −25 → 다음 겨울 빌드업 −20 → 화두 −24 → 엔딩 −20 dB RMS, 통합 −16.2 LUFS
+- 브라우저 합성이 90초 걸려 페이지는 미리 구운 `score.mp3`(160kbps, 2.9MB)를 타임라인 위치에 맞춰 재생. ‘사운드 켜기’ 버튼(자동 재생 정책), 장 이동·탐색·정지 시 동기화 검증
+- `render.mjs` — audio(score.js → score.mp3) · video(1080p30 프레임 렌더 + 음원 합본) 재생성 스크립트. MP4는 계속 미커밋
