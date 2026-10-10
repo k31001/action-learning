@@ -17,6 +17,16 @@ export const UPDATES = [
   {
     date: '2026-10-10',
     type: 'build',
+    version: 'v2.48.4',
+    title: '고객 협력 전략 덱 v4.2: 1장 포트폴리오 SLC 제거 · PCIe 6.0 추가',
+    summary: '1장 삼성 SSD 포트폴리오에서 SLC급 행을 빼고 고성능 TLC를 PCIe 6.0(PM1763) · PCIe 5.0(PM1753 · PM9D3a)으로 나눔. 제목은 "AI 추론은 대역 · 꼬리 지연 · 내구를 한꺼번에 요구"로.',
+    tags: ['발표자료', '포트폴리오'],
+    items: [{ label: '덱', detail: 'ssd-future-ready-strategy.pptx v4.2 1장' }],
+    links: [],
+  },
+  {
+    date: '2026-10-10',
+    type: 'build',
     version: 'v2.48.3',
     title: '고객 협력 전략 덱 v4.1: 2장 추론 그림 · 기술 아이콘',
     summary: '2장 AI 추론 대응에 추론 수요별 작은 그림 4개와 핵심 기술 아이콘 6종을 도형으로 추가. 발표자료 탭 사본 · 웹 보기 갱신.',
