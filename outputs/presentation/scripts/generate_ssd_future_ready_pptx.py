@@ -120,28 +120,34 @@ for k, (v, col, nm, lab) in enumerate([(3.1, GRAY_2, "섞어", "3.1×"), (1.0, B
     tb(s, bx - 0.20, BBt - hh - 0.32, 0.80, 0.30, [(lab, 18, True, BLUE if k else INK)], align=C, anchor=MID)
     tb(s, bx - 0.15, BBt + 0.04, 0.70, 0.28, [(nm, 16, k == 1, BLUE if k else GRAY)], align=C)
 
-# ② AI 학습: GPU당 읽기 대역, 데이터가 캐시보다 크면 약 3배
+# ② AI 학습: SSD의 역할 = GPU 서버에 데이터를 공급하고(로딩 ↑), 체크포인트를 받는다(↓)
 x = DXS[1]
-BBt, BHm = VT + 1.48, 1.30
-for k, (nm, v, col) in enumerate([("기본", 0.16, GRAY_2), ("멀티모달", 0.49, BLUE)]):
-    bx = x + 0.40 + k * 1.05
-    hh = BHm * v / 0.49
-    rect(s, bx, BBt - hh, 0.62, hh, fill=col)
-    tb(s, bx - 0.25, BBt - hh - 0.36, 1.12, 0.34, [(f"{v:.2f}", 20, True, BLUE if k else INK)], align=C, anchor=MID)
-    tb(s, bx - 0.30, BBt + 0.04, 1.22, 0.28, [(nm, 16, k == 1, BLUE if k else GRAY)], align=C)
-tb(s, x + 2.30, VT + 0.30, DW - 2.40, 0.62, [("×3", 34, True, BLUE)], anchor=MID)
-tb(s, x + 2.30, VT + 0.92, DW - 2.30, 0.56, [("GPU당 읽기", 15, False, GRAY), ("GB/s", 15, False, GRAY)], spacing=1.0)
+IW = DW - 0.40
+gy = VT - 0.02
+rect(s, x + 0.20, gy, IW, 0.56, fill=INK, shape=RR)
+tb(s, x + 0.30, gy, 1.20, 0.56, [("GPU 서버", 16, True, WHITE)], anchor=MID)
+for k in range(4):
+    rect(s, x + 1.45 + k * (IW - 1.35) / 4, gy + 0.11, (IW - 1.35) / 4 - 0.08, 0.34, fill=BLUE_T2)
+sy0 = gy + 1.20
+rect(s, x + 0.20, sy0, IW, 0.46, fill=BLUE, shape=RR)
+tb(s, x + 0.20, sy0, IW, 0.46, [("SSD", 17, True, WHITE)], align=C, anchor=MID)
+mx_ = x + DW / 2
+rect(s, mx_ - 0.42, gy + 0.62, 0.30, 0.54, fill=BLUE, shape=MSO_SHAPE.UP_ARROW)
+rect(s, mx_ + 0.12, gy + 0.62, 0.30, 0.54, fill=BLUE_T1, shape=MSO_SHAPE.DOWN_ARROW)
+tb(s, x + 0.20, gy + 0.68, mx_ - 0.48 - (x + 0.20), 0.42, [("데이터 로딩", 15, True, BLUE)], align=R, anchor=MID)
+tb(s, mx_ + 0.48, gy + 0.68, x + DW - 0.20 - (mx_ + 0.48), 0.42, [("체크포인트", 15, True, BLUE_T1)], anchor=MID)
 
-# ③ AI 추론: 읽기 대역 · 꼬리 지연 · 쓰기 내구 세 지표 (DWPD만이 아니다)
+# ③ AI 추론: SSD의 역할 = 메모리 계층의 맨 아래(HBM → DRAM → SSD), 넘치면 내려가고 재사용 때 올라온다
 x = DXS[2]
-for k, (nm, val, cap) in enumerate([("읽기 대역", "5.4GB/s", "GPU당 · 128K KV 1초 복원"),
-                                     ("꼬리 지연", "p99 450ms", "첫 토큰 (MLPerf 70B)"),
-                                     ("쓰기 내구", "3.2 DWPD", "KV 계층 실측")]):
-    yy = VT - 0.14 + k * 0.62
-    rect(s, x + 0.20, yy + 0.04, 0.06, 0.52, fill=BLUE if k < 2 else BLUE_T1)
-    tb(s, x + 0.36, yy, 1.30, 0.30, [(nm, 17, True, INK)], anchor=MID)
-    tb(s, x + 1.66, yy - 0.03, DW - 1.86, 0.36, [(val, 20, True, BLUE)], align=R, anchor=MID)
-    tb(s, x + 0.36, yy + 0.30, DW - 0.56, 0.28, [(cap, 15, False, GRAY)], anchor=MID)
+IW = DW - 0.40
+ty = VT - 0.02
+for k, (nm, ww, col) in enumerate([("GPU HBM", 0.36, INK), ("CPU DRAM", 0.64, GRAY_2), ("SSD  KV · RAG · 가중치", 1.0, BLUE)]):
+    w_ = IW * ww
+    rect(s, x + 0.20 + (IW - w_) / 2, ty + k * 0.47, w_, 0.38, fill=col, shape=RR)
+    tb(s, x + 0.20 + (IW - w_) / 2, ty + k * 0.47, w_, 0.38, [(nm, 15 if k < 2 else 16, True, WHITE)], align=C, anchor=MID)
+rect(s, x + 0.30, ty + 0.04, 0.24, 0.80, fill=BLUE_T1, shape=MSO_SHAPE.DOWN_ARROW)
+rect(s, x + DW - 0.54, ty + 0.04, 0.24, 0.80, fill=BLUE, shape=MSO_SHAPE.UP_ARROW)
+tb(s, x + 0.20, ty + 1.38, IW, 0.32, [[("↓ 넘치면 오프로드", 15, True, BLUE_T1), ("    ↑ 재사용", 15, True, BLUE)]], align=C, anchor=MID)
 
 # ④ 에이전트: 사용자별 VM, 대부분 휴면 + VM 1개의 디스크 대 메모리
 x = DXS[3]
@@ -219,12 +225,12 @@ for r, (nm, models, img) in enumerate(PF):
             tb(s, x + 0.10, y + 0.02, DW - 0.20, 0.36, [(txt, 17, True, BLUE)], align=C, anchor=MID)
             tb(s, x + 0.10, y + 0.37, DW - 0.20, 0.32, [[("공백  ", 15, True, BLUE), (mdl, 15, False, GRAY)]], align=C, anchor=MID)
 
-d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026 보간 · 상세 참고 8장) · HBM 과제팀 집계 · p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · 추론 대역 70B · 128K KV 43GB 1초 복원(⚠️ 산술) · "
-            "MLPerf 70B 첫 토큰 p99 · KV 실측 StorageReview · 삼성 모델 사양 공식 페이지 검색 확인(🟡) · 제품 이미지는 형태 재현")
+d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026 보간 · 상세 참고 8장) · HBM 과제팀 집계 · p99 FlashBlox(FAST'17) · 학습 · 추론 카드의 SSD 역할 수치(GPU당 대역 · KV 복원 대역 · p99 목표 · DWPD 실측)는 노트 · "
+            "에이전트 Google · Muse 관측(제3자) · 삼성 모델 사양 공식 페이지 검색 확인(🟡) · 제품 이미지는 형태 재현")
 d.notes(s, "1장은 지금 수요의 모양과 삼성의 대응 현황입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
         "그래서 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. 범용 클라우드는 여러 VM이 SSD를 나눠 써서 QoS와 격리가 요구입니다. 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. "
-        "AI 학습은 대역입니다. NVIDIA SuperPOD 가이드를 GPU당으로 환산하면 멀티모달 학습은 기본보다 약 3배의 읽기 대역을 요구합니다. "
-        "AI 추론은 DWPD만의 문제가 아닙니다. 세 가지를 함께 봐야 합니다. 첫째 읽기 대역입니다. 70B 모델의 128K 토큰 KV 캐시는 약 43기가바이트이고, 이것을 1초 안에 되살리려면 GPU 8개 서버 기준 GPU당 약 5.4기가바이트 매초가 필요합니다. 과제팀 산술입니다. 공개 측정에서는 문맥이 1K 토큰일 때 다시 계산하는 것보다 빠르려면 23.2기가바이트 매초, 80K 토큰이면 3.5기가바이트 매초가 필요했습니다. 405B 모델 가중치 810기가바이트를 PM1763 한 대로 읽으면 약 28.5초, PM1753이면 약 56초입니다. "
+        "AI 학습에서 SSD는 GPU 서버에 학습 데이터를 공급하고, 주기적으로 체크포인트를 받아 둡니다. 그래서 요구는 대역과 체크포인트입니다. NVIDIA SuperPOD 가이드를 GPU당으로 환산하면 멀티모달 학습은 기본 0.16에서 0.49기가바이트 매초로 약 3배의 읽기 대역을 요구하고, 405B 모델은 체크포인트 한 번에 약 5.7테라바이트를 씁니다. "
+        "AI 추론에서 SSD는 GPU HBM과 CPU DRAM 아래의 메모리 계층입니다. 긴 문맥의 KV 캐시가 HBM과 DRAM을 넘치면 SSD로 내려가고, 같은 문맥을 다시 쓸 때 다시 올라옵니다. RAG 색인과 모델 가중치도 SSD에 둡니다. 그래서 DWPD만의 문제가 아니라 세 가지를 함께 봐야 합니다. 첫째 읽기 대역입니다. 70B 모델의 128K 토큰 KV 캐시는 약 43기가바이트이고, 이것을 1초 안에 되살리려면 GPU 8개 서버 기준 GPU당 약 5.4기가바이트 매초가 필요합니다. 과제팀 산술입니다. 공개 측정에서는 문맥이 1K 토큰일 때 다시 계산하는 것보다 빠르려면 23.2기가바이트 매초, 80K 토큰이면 3.5기가바이트 매초가 필요했습니다. 405B 모델 가중치 810기가바이트를 PM1763 한 대로 읽으면 약 28.5초, PM1753이면 약 56초입니다. "
         "둘째 꼬리 지연입니다. MLPerf의 Llama 2 70B 대화형 기준은 첫 토큰 p99 450밀리초, 토큰당 40밀리초입니다. SSD 계층을 넣고도 p99 첫 토큰 목표를 지키면 GPU당 세션을 10.77배 늘릴 수 있었다는 결과가 있고, SSD의 지연 흔들림이 첫 토큰 지연을 키운다는 연구도 있습니다. NVIDIA의 차세대 스토리지 목표도 전력과 꼬리 지연 제약 안에서 IOPS를 최대화하는 것입니다. "
         "셋째 쓰기 내구입니다. KV 캐시 계층 드라이브 실측은 3.2 DWPD로 QLC 정격을 크게 넘고, AI 전용 SSD는 50에서 120 DWPD로 나왔습니다. "
         "에이전트는 사용자마다 VM을 하나씩 주는 구조라 디스크가 메모리보다 13배 크고, 대부분 휴면이라 용량과 TB당 비용이 요구입니다. "

@@ -17,6 +17,16 @@ export const UPDATES = [
   {
     date: '2026-10-10',
     type: 'build',
+    version: 'v2.48.6',
+    title: '고객 협력 전략 덱 v4.4: 1장 학습 · 추론 카드를 SSD 역할 그림으로',
+    summary: 'AI 학습 = GPU 서버 ↔ SSD(데이터 로딩 · 체크포인트), AI 추론 = HBM → DRAM → SSD 메모리 계층(넘치면 오프로드 · 재사용). 숫자는 발표자 노트로.',
+    tags: ['발표자료', 'AI 추론'],
+    items: [{ label: '덱', detail: 'ssd-future-ready-strategy.pptx v4.4 1장' }],
+    links: [],
+  },
+  {
+    date: '2026-10-10',
+    type: 'build',
     version: 'v2.48.5',
     title: '고객 협력 전략 덱 v4.3: 3장 3D 그림 제품군별 색',
     summary: '3장 포트폴리오 3D 그림만 예외적으로 제품군별 색(QLC 초록 · TLC 파랑 · 고내구 TLC 주황 · SLC 분홍)을 쓰고 바닥 수요 영역은 무채색으로. 범례 카드 · 번호 원도 같은 색.',

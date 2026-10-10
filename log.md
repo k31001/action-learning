@@ -2717,3 +2717,8 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - generate_portfolio_3d.py FAM_COLOR(Okabe-Ito): QLC #009E73 · 고성능 TLC #0072B2 · 고내구 TLC #E69F00 · SLC급 #CC79A7, 확장 상자 · 화살표 같은 색, 바닥 수요 영역은 무채색 3단계
 - 덱: 번호 원 · 범례 카드 색 띠 · DWPD 글자 같은 색, 출처 줄에 예외 색 표기. 나머지 장은 Samsung Blue 하나 유지
 - 렌더 QA PASS. 아웃라인 · 보고서 v4.3, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.48.5 + updates, npm run build 통과
+
+## [2026-10-10] build | 고객 협력 전략 덱 v4.4: 1장 학습 · 추론 카드 = SSD 역할 그림
+- 사용자 지시: 1장 AI 학습 · 추론 설명 박스에 숫자 말고 해당 수요에서 SSD의 역할을 시각화(범용 클라우드처럼)
+- AI 학습: GPU 서버 ↔ SSD, ↑ 데이터 로딩 · ↓ 체크포인트. AI 추론: GPU HBM → CPU DRAM → SSD(KV · RAG · 가중치) 계층, ↓ 넘치면 오프로드 · ↑ 재사용. 요구 줄 유지, 수치는 노트 · 출처 줄 정리
+- 렌더 QA PASS. 아웃라인 · 보고서 v4.4, 위키 ai-inference-storage-requirements 메모, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.48.6 + updates, npm run build 통과
