@@ -76,6 +76,10 @@ sources:
 
 **메시지**: 협력의 깊이는 두 가지다. 다섯 기술은 **고객 요구를 정확한 스펙으로 받는 협력**이 필요하고(그중 Fault Tolerant는 SSD 안에서), FDP는 **고객 시스템 안에서 함께 설계 · 튜닝하는 협력**이 필요하다. 어느 쪽이든 핵심 기술을 제대로 확보하려면 고객과의 협력이 필수다.
 
+### 3.2.1 덱 표현 (2026-10-10, 사용자 지시 "FDP만 강조하지 말고, 정도는 달라도 다섯 기술 모두 고객 협력이 필요함을 강조")
+
+덱 2장은 3.2 판정의 결합도 + 스펙 비완결도 합(0~4)을 "고객 협력의 깊이" 막대로 그린다: FDP 4(공동 설계) · Mixed Media 3 · Confidential Storage 2 · Large Mapping 2 · Multi-Tenant QoS 2 · Fault Tolerant 0(SSD 안에서). 메시지는 "6개 중 5개가 고객 협력이 필요하고, 깊이만 다르다"(⚠️ 점수는 정성). 덱: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) v3.6.
+
 ### 3.3 "지금까지와 다른 방식"이 뜻하는 것 (FDP에 한해)
 
 | | 스펙으로 협력 (5기술, 지금 방식의 연장) | 공동 설계 (FDP) |

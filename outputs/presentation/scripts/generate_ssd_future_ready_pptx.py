@@ -251,7 +251,7 @@ d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에�
         "그래서 다양한 데이터센터 응용에 대응하려면 SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다. 다만 지금 예측할 수 있는 범위 안의 준비입니다.")
 
 # =============================================================== 2 솔루션
-s = d.slide(2, "핵심 기술", "핵심 기술 여섯 가지 중 다섯은 명확한 스펙으로 풀리지만,\nFDP는 고객과 함께 설계해야 제대로 동작합니다")
+s = d.slide(2, "핵심 기술", "핵심 기술 여섯 가지 중 다섯은 고객 협력이 필요하고,\n협력의 깊이는 스펙 협력부터 공동 설계까지 다릅니다")
 
 TECH6 = [("Fault Tolerant", "다이 · 플레인 고장 격리", [None, None, "half", "full"]),
          ("Large Mapping", "매핑 단위 4KB → 8~64KB", [None, None, None, "full"]),
@@ -271,7 +271,8 @@ RT, RH3, RG3 = 3.30, 0.86, 0.08
 for i, (nm, sub, fit) in enumerate(TECH6):
     y = RT + i * (RH3 + RG3)
     hot = nm == "FDP"
-    rect(s, MX, y, LPW, RH3, fill=TINT if hot else PALE, line=BLUE if hot else None, lw=1.5, shape=RR)
+    coop = nm != "Fault Tolerant"
+    rect(s, MX, y, LPW, RH3, fill=TINT if coop else PALE, line=BLUE if hot else None, lw=1.5, shape=RR)
     tb(s, MX + 0.20, y + 0.06, NW - 0.25, 0.40, [(nm, 20, True, BLUE if hot else INK)], anchor=MID)
     tb(s, MX + 0.20, y + 0.46, NW - 0.25, 0.32, [(sub, 16, False, GRAY)], anchor=MID)
     for k, kind in enumerate(fit):
@@ -281,65 +282,55 @@ for i, (nm, sub, fit) in enumerate(TECH6):
         elif kind == "half":
             rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=WHITE, line=BLUE_T1, lw=2.0, shape=MSO_SHAPE.OVAL)
 
-# ---- 오른쪽: 고객과 어떻게 협력하나 (결합도 × 스펙만으로 안 닫히는 정도, 구역 산점도)
+# ---- 오른쪽: 고객 협력의 깊이 (결합도 + 스펙 비완결도, 위키 판정) — 다섯 기술이 정도는 달라도 고객 협력이 필요
 GX0 = MX + LPW + 0.45
-tb(s, GX0, PT, RIGHT - GX0, 0.40, [("고객과 어떻게 협력하나", 20, True, INK)], anchor=MID)
-PX0, PX1 = GX0 + 0.30, RIGHT - 0.05
-PY0, PY1 = 3.30, 8.40
+GW = RIGHT - GX0
+tb(s, GX0, PT, GW, 0.40, [[("고객 협력의 깊이  ", 20, True, INK), ("6개 중 5개가 고객 협력 필요", 18, True, BLUE)]], anchor=MID)
+LBW = 3.30                               # 이름 열
+ZX0 = GX0 + LBW
+ZW = [1.30, 3.70, RIGHT - ZX0 - 1.30 - 3.70]   # SSD 안에서 · 스펙으로 협력 · 공동 설계
+ZB = [ZX0, ZX0 + ZW[0], ZX0 + ZW[0] + ZW[1], RIGHT]
+ZY0, ZY1 = 3.30, 8.42
 
 
-def SX(v):
-    return PX0 + (v + 0.3) / 2.7 * (PX1 - PX0)
+def zx(v):   # 깊이 0~4 → x (구간 0~0.5 · 0.5~3.5 · 3.5~4)
+    if v <= 0.5:
+        return ZB[0] + v / 0.5 * ZW[0]
+    if v <= 3.5:
+        return ZB[1] + (v - 0.5) / 3.0 * ZW[1]
+    return ZB[2] + (v - 3.5) / 0.5 * ZW[2]
 
 
-def SY(v):
-    return PY1 - (v + 0.3) / 2.9 * (PY1 - PY0)
-
-
-ZX, ZY = 1.35, 1.45      # 공동 설계 구역 경계 · 스펙 협력 구역 경계
-rect(s, PX0, PY0, PX1 - PX0, PY1 - PY0, fill=WHITE, line=LINE, lw=0.75)
-rect(s, SX(0.5), SY(ZY), PX1 - SX(0.5), PY1 - SY(ZY), fill=PALE)
-rect(s, SX(ZX), PY0, PX1 - SX(ZX), SY(ZY) - PY0, fill=TINT, line=BLUE, lw=2.0)
-tb(s, SX(ZX) + 0.16, PY0 + 0.10, 3.0, 0.36, [("공동 설계 필수", 18, True, BLUE)], anchor=MID)
-tb(s, SX(0.5) + 0.16, SY(ZY) + 0.10, 3.0, 0.36, [("스펙으로 협력", 18, True, GRAY)], anchor=MID)
-tb(s, PX0 + 0.12, SY(ZY) + 0.10, 2.0, 0.36, [("SSD 안에서", 18, True, GRAY)], anchor=MID)
-# 축
-rect(s, PX0, PY1 - 0.01, PX1 - PX0, 0.03, fill=GRAY)
-rect(s, PX0 - 0.01, PY0, 0.03, PY1 - PY0, fill=GRAY)
-tb(s, PX0, PY1 + 0.06, PX1 - PX0, 0.34, [("고객 시스템과 함께 설계되는 정도  →", 16, True, GRAY)], align=R, anchor=MID)
-tb(s, PX0 - 0.30, PY0 - 0.42, 4.6, 0.34, [("↑  스펙만으로는 안 닫힘", 16, True, GRAY)], anchor=MID)
-
-
-def dot(v, w, name, side="r", hot=False):
-    dd = 0.60 if hot else 0.36
-    cx, cy = SX(v), SY(w)
-    rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=BLUE if hot else GRAY_2, shape=MSO_SHAPE.OVAL)
-    lw_ = 3.2
-    if side == "r":
-        tb(s, cx + dd / 2 + 0.10, cy - 0.20, lw_, 0.40, [(name, 18, True, INK)], anchor=MID)
-    elif side == "l":
-        tb(s, cx - dd / 2 - 0.10 - lw_, cy - 0.20, lw_, 0.40, [(name, 18, True, INK)], align=R, anchor=MID)
-    elif side == "a":   # 위, 일반
-        tb(s, cx - 2.2, cy - dd / 2 - 0.44, 2.6, 0.40, [(name, 18, True, INK)], align=R, anchor=MID)
-    else:   # 위, 강조
-        tb(s, cx - 1.0, cy - dd / 2 - 0.46, 2.0, 0.42, [(name, 24, True, BLUE)], align=C, anchor=MID)
-
-
-dot(0.0, 0.0, "Fault Tolerant")
-dot(0.90, 1.08, "Large Mapping")
-dot(1.05, 0.80, "Multi-Tenant QoS")
-dot(2.0, 0.95, "Mixed Media", "a")
-dot(2.0, 0.0, "Confidential Storage", "l")
-dot(2.12, 1.98, "FDP", "u", hot=True)
-# 공동 설계 구역 아래쪽: CacheLib WAF (SSD 혼자 대 고객 SW가 수명 표시)
-fx0, zb = SX(ZX) + 0.16, SY(ZY)
-tb(s, fx0, zb - 1.12, 2.4, 0.28, [("CacheLib WAF", 15, False, GRAY)], anchor=MID)
-for k, (lab, v, col) in enumerate([("혼자", 3.22, GRAY_2), ("함께", 1.03, BLUE)]):
-    yy = zb - 0.82 + k * 0.36
-    tb(s, fx0, yy, 0.70, 0.32, [(lab, 16, k == 1, BLUE if k else GRAY)], anchor=MID)
-    w = 1.15 * v / 3.22
-    rect(s, fx0 + 0.70, yy + 0.07, w, 0.20, fill=col)
-    tb(s, fx0 + 0.76 + w, yy, 0.80, 0.32, [(f"{v:.2f}", 16, True, BLUE if k else GRAY)], anchor=MID)
+for k, (nm, col, tc) in enumerate([("SSD 안에서", PALE, GRAY), ("스펙으로 협력", TINT, BLUE_T1), ("공동 설계", BLUE_T2, BLUE)]):
+    rect(s, ZB[k], ZY0, ZB[k + 1] - ZB[k], ZY1 - ZY0, fill=col)
+    tb(s, ZB[k], ZY0 - 0.46, ZB[k + 1] - ZB[k], 0.40, [(nm, 17, True, tc)], align=C, anchor=MID)
+DEPTH = [  # 이름, 깊이(결합도 + 스펙 비완결도), 고객과 맞출 것, 색
+    ("FDP", 4, "데이터 수명 분류 · 반복 튜닝", BLUE),
+    ("Mixed Media", 3, "데이터 분리 · pSLC 비율", BLUE_T1),
+    ("Confidential Storage", 2, "기밀 VM · 키 · 증명 연동", BLUE_T1),
+    ("Large Mapping", 2, "쓰기 크기 · IU 정렬", BLUE_T1),
+    ("Multi-Tenant QoS", 2, "테넌트 매핑 · 지연 목표", BLUE_T1),
+    ("Fault Tolerant", 0, "SSD 안에서 완결", GRAY_2),
+]
+RHd = (ZY1 - ZY0) / len(DEPTH)
+for i, (nm, dv, how, col) in enumerate(DEPTH):
+    y = ZY0 + i * RHd
+    hot = dv == 4
+    coop = dv > 0
+    tb(s, GX0, y + 0.04, LBW - 0.10, 0.42, [(nm, 19, True, BLUE if hot else (INK if coop else GRAY))], anchor=MID)
+    tb(s, GX0, y + 0.44, LBW - 0.10, 0.34, [(how, 15, False, BLUE if coop else GRAY)], anchor=MID)
+    x1 = zx(dv) if dv > 0 else ZB[0] + 0.55
+    rect(s, ZB[0], y + 0.20, x1 - ZB[0], RHd - 0.40, fill=col)
+    if i < len(DEPTH) - 1:
+        rect(s, GX0, y + RHd - 0.006, RIGHT - GX0, 0.012, fill=WHITE)
+fy_ = ZY0 + 0.20
+tb(s, ZB[1] + 0.20, fy_, ZW[1] + ZW[2] - 0.40, RHd - 0.40, [[("CacheLib WAF  ", 16, False, BLUE_T2), ("3.22 → 1.03", 18, True, WHITE)]], align=R, anchor=MID)
+# 다섯 기술 묶음 괄호
+by0, by1 = ZY0 + 0.10, ZY0 + 5 * RHd - 0.10
+rect(s, GX0 - 0.24, by0, 0.04, by1 - by0, fill=BLUE)
+rect(s, GX0 - 0.24, by0, 0.14, 0.04, fill=BLUE)
+rect(s, GX0 - 0.24, by1 - 0.04, 0.14, 0.04, fill=BLUE)
+tb(s, ZX0, ZY1 + 0.06, RIGHT - ZX0, 0.34, [("고객 시스템과 함께 설계되는 정도 + 스펙만으로 안 닫히는 정도  →", 15, True, GRAY)], align=R, anchor=MID)
 
 d.band(s, 9.40, 0.80, "결론", "스펙을 정확히 받든 함께 설계하든, 핵심 기술을 제대로 확보하려면 고객과의 협력이 필수입니다", size=23)
 d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib FDP, 삼성 EuroSys'25 · Meta 반영) · 같은 FDP 지원 장치에서도 결과가 갈림(WARP FAST'26) · RUH · RG 출하 시 고정(NVMe FDP) · "
@@ -351,7 +342,7 @@ d.notes(s, "2장입니다. 1장의 제품 포트폴리오를 받치는 핵심 �
         "Multi-Tenant QoS는 네임스페이스 단위로 테넌트를 격리합니다. 이웃 테넌트의 쓰기만으로 WAF가 1.28에서 3.0으로 오르고, 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. "
         "FDP는 배치 핸들로 수명이 같은 데이터를 모읍니다. SLC급, 고내구 TLC, 고용량 QLC에 모두 걸려 가장 넓습니다. Confidential Storage는 RoT, 암호화, 증명으로 기밀 VM의 디스크를 지킵니다. Meta는 Meta도 접근하지 못하는 Muse 기밀 VM을 예고했습니다. "
         "고용량 QLC에는 여섯 가지 중 다섯 가지가 걸립니다. "
-        "오른쪽은 협력의 깊이입니다. 가로축은 고객 시스템과 함께 설계돼야 하는 정도, 세로축은 명확한 스펙만으로 최적화가 닫히는지입니다. "
+        "오른쪽은 협력의 깊이입니다. 막대 길이는 고객 시스템과 함께 설계돼야 하는 정도와, 명확한 스펙만으로는 최적화가 닫히지 않는 정도를 더한 값입니다. 여섯 가지 중 Fault Tolerant를 뺀 다섯이 고객 협력이 필요하고, 깊이만 다릅니다. "
         "Mixed Media와 Confidential Storage는 고객 시스템에 깊이 들어갑니다. 그러나 Mixed Media의 인터페이스는 표준 네임스페이스이고, pSLC 비율은 출하 시 정하는 값이며 고객이 이미 수치로 요구합니다. 네임스페이스 간 QoS도 목표 수치로 사내에서 검증할 수 있습니다. "
         "Confidential Storage는 Caliptra, SPDM, TDISP, OCP L.O.C.K. 같은 표준이 인터페이스와 동작을 정하고, 삼성은 L.O.C.K.의 공저자입니다. Large Mapping과 QoS도 고객의 쓰기 크기와 지연 목표를 스펙으로 받으면 됩니다. 이 다섯은 고객 요구를 정확한 스펙으로 받는 협력이면 충분합니다. "
         "FDP는 다릅니다. 효과는 고객 소프트웨어가 데이터 수명을 얼마나 잘 나누는지와, SSD의 RU 크기와 GC 정책이 맞물릴 때만 납니다. FAST'26의 WARP 연구에서는 같은 FDP 지원 드라이브, 같은 워크로드에서 한 장치는 WAF가 1 근처를 지켰고 다른 장치는 무너졌습니다. "

@@ -2644,3 +2644,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 4장 재구성: 제목 "WAF를 낮춰 QLC를 1 DWPD로 올리면, 2030년 QLC는 eSSD의 약 42%에서 약 65%까지 넓어집니다". ① 2030 폭포(EB, 중앙 가정 산술): 지금 경로 636 + 내구 규격만 192(범위 46~509) + 관행 · 가격 64 + 성능 일부 63~125 = 955~1,017, TLC로 남음 489~551 ② QLC 비중 2026 18 → 53~60%(잠재), 2030 42 → 63~68%. 기술은 아래 띠(Mixed Media 단기 · FDP 중장기)로 언급만
 - 2030 총량 = McKinsey 1,078과 SK hynix 1,933의 중간(⚠️ 가정). 렌더 QA PASS, PPTX 재생성. 위키 §4.5 · 아웃라인 · 보고서 v3.5 · index 갱신
 - 대시보드: 지식 그래프 재생성 결과 변화 없음 → 버전 bump 생략
+
+## [2026-10-10] build | 이전 전략 덱 v3.6: 2장 고객 협력의 깊이 (6개 중 5개)
+- 사용자 지시: 핵심 기술 슬라이드 강조가 FDP에만 있다. Mixed Media · Security · Large Mapping도 정도는 다르지만 고객 협력이 중요하다는 점을 강조
+- 2장 제목 "다섯은 고객 협력이 필요하고, 협력의 깊이는 스펙 협력부터 공동 설계까지 다릅니다", 오른쪽 구역 산점도 → 협력 깊이 막대(FDP 4 · Mixed Media 3 · Confidential · Large Mapping · QoS 2 · Fault Tolerant 0, 위키 3.2 판정 합), 다섯 기술 Blue 괄호, 왼쪽 행 강조. 노트 갱신, 렌더 QA PASS, PPTX 재생성
+- 위키 `ssd-core-technologies-customer-collaboration.md` §3.2.1, 아웃라인 · 보고서 v3.6, index 갱신. 보안(Confidential Storage) 장은 조사 중
+- 대시보드: 지식 그래프 재생성 결과 변화 없음 → 버전 bump 생략
