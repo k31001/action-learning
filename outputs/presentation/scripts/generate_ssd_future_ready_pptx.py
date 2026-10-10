@@ -1,16 +1,15 @@
-"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 4장 덱 (2026-10-07 v2.2: 3장 계단 위 성장 그래프 4개 · 2칸 SSD 내부 기술 스택 · 3칸 주요 3사 자체 설계 막대).
+"""불확실성이 높은 미래에 대응하기 위한 고객 협력 전략: 본문 4장 + 참고 4장 (덱 v4.0, 2026-10-10).
 
-제목 4개를 이어 읽으면 한 문단이 된다(아웃라인 v0.3):
-  1 배경   SSD의 다음 수요는 하나로 정해지지 않으며, 데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다
-  2 핵심 기술 핵심 기술 여섯 가지 중 다섯은 명확한 스펙으로 풀리지만, FDP는 고객과 함께 설계해야 제대로 동작합니다
-  3 당위성 해법의 범위는 NAND에서 SSD로 넓어져 왔고, 새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다
-  4 실행   고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다
-  참고 5   eSSD 수요는 2030년까지 약 6배로 늘고, 가장 큰 몫은 AI 추론에서 나옵니다 (수요처별 누적 막대 + 2026 → 2030 비중)
-  결론     실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다
+발표 순서 (생성 후 슬라이드 순서를 다시 배열):
+  1 현황     데이터센터 응용마다 SSD 요구가 다르고, 삼성은 제품군별로 대응하고 있지만 AI 추론의 초고DWPD 영역은 아직 비어 있습니다
+  2 추론 대응 AI 추론 수요는 용도마다 SSD 요구가 다르고, 그 요구를 채우는 핵심 기술은 고객과 함께 개발하고 최적화해야 합니다
+  3 지표 · 포트폴리오 고객과 함께 WAF와 꼬리 지연을 낮추면, 같은 NAND로 지금은 닿지 못하던 추론 수요까지 빠르게 넓힐 수 있습니다
+  4 실행     고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다
+  참고 5 당위성(3장 링크 대상) · 6 사업 기회(QLC → TLC 수요) · 7 보안 기회 · 8 수요 전망
 
 규율: samsung-memory-ppt-design-skill v2.1(11절 시각 우선, 11.J 근거 사슬: 주장마다 데이터 그래프). 본문 18pt 이상 · 출처 15pt · em-dash 금지 · 액센트 Samsung Blue 하나.
-도형 · 차트는 모두 python-pptx 도형으로 그린다(차트 pt = 슬라이드 pt). 부품 이미지는 assets/photos가 있으면 사진, 없으면 3D 렌더.
-원고 · 근거: outputs/presentation/ssd-future-ready-strategy-outline.md, outputs/report/ssd-future-ready-strategy-report.md (v1.6).
+도형 · 차트는 python-pptx 도형, 3장 3D 그림은 scripts/generate_portfolio_3d.py(matplotlib), 제품 이미지는 assets/products(형태 재현, render_parts).
+원고 · 근거: outputs/presentation/ssd-future-ready-strategy-outline.md, outputs/report/ssd-future-ready-strategy-report.md.
 """
 import math
 import os
@@ -28,7 +27,7 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
 ASSETS = os.path.join(HERE, "..", "assets")
 OUT = os.environ.get("OUT_PATH") or os.path.join(HERE, "..", "ssd-future-ready-strategy.pptx")
 
-d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=7,
+d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=8,
          logos_dir=os.path.join(ASSETS, "logos"), photos_dir=os.path.join(ASSETS, "photos"),
          renders_dir=os.path.join(ASSETS, "survival"))
 tb, rect, label_box = d.tb, d.rect, d.label_box
@@ -42,7 +41,8 @@ def chip(s, x, y, w, h, text, fill=BLUE, color=WHITE, size=20, line=None, dash=F
 
 
 # =============================================================== 1 배경
-s = d.slide(1, "배경", "SSD의 다음 수요는 하나로 정해지지 않으며,\n데이터센터 응용마다 SSD에 요구하는 특성이 다릅니다")
+s = d.slide(1, "현황", "데이터센터 응용마다 SSD 요구가 다르고, 삼성은 제품군별로 대응하고 있지만\nAI 추론의 초고DWPD 영역은 아직 비어 있습니다")
+S1 = s
 
 # 격자: 왼쪽 열(교훈 · 제품군 이름) + 응용 4열(카드 · 매트릭스 칸). 같은 열은 위아래로 이어 읽는다
 LX, LW = MX, 3.70
@@ -81,7 +81,7 @@ tb(s, sx1 + 0.40, ST + 1.16, LX + LW - sx1 - 0.55, 0.28, [("점유율", 16, Fals
 # ---- 응용 카드 4장: 이름 · 하는 일 · 데이터 그래프 · SSD 요구
 APPS = [("범용 클라우드", "", "QoS · 테넌트 격리"),
         ("AI 학습", "", "대역 · 체크포인트"),
-        ("AI 추론", "KV 캐시 오프로드", "쓰기 내구 (DWPD)"),
+        ("AI 추론", "KV 캐시 · RAG · 가중치", "대역 · 지연 · DWPD"),
         ("에이전트", "", "용량 · TB당 비용")]
 for i, (nm, wl, rq) in enumerate(APPS):
     x = DXS[i]
@@ -132,28 +132,16 @@ for k, (nm, v, col) in enumerate([("기본", 0.16, GRAY_2), ("멀티모달", 0.4
 tb(s, x + 2.30, VT + 0.30, DW - 2.40, 0.62, [("×3", 34, True, BLUE)], anchor=MID)
 tb(s, x + 2.30, VT + 0.92, DW - 2.30, 0.56, [("GPU당 읽기", 15, False, GRAY), ("GB/s", 15, False, GRAY)], spacing=1.0)
 
-# ③ AI 추론: DWPD (로그 축)
+# ③ AI 추론: 읽기 대역 · 꼬리 지연 · 쓰기 내구 세 지표 (DWPD만이 아니다)
 x = DXS[2]
-LBW = 1.20
-ax0, ax1 = x + 0.20 + LBW, x + DW - 1.00
-lo_, hi_ = math.log10(0.3), math.log10(150)
-
-
-def xd(v):
-    return ax0 + (math.log10(v) - lo_) / (hi_ - lo_) * (ax1 - ax0)
-
-
-for g in (1, 10, 100):
-    rect(s, xd(g) - 0.005, VT - 0.02, 0.01, 1.52, fill=LINE)
-    tb(s, xd(g) - 0.3, VT + 1.52, 0.6, 0.28, [(str(g), 15, False, GRAY)], align=C)
-for k, (nm, v, vmin, col, lab) in enumerate([("QLC 정격", 0.6, None, GRAY_2, "0.6"), ("KV 실측", 3.2, None, GRAY, "3.2"),
-                                              ("AI 전용", 120, 50, BLUE, "50~120")]):
-    yy = VT + 0.02 + k * 0.50
-    tb(s, x + 0.20, yy, LBW - 0.06, 0.40, [(nm, 18, k == 2, BLUE if k == 2 else INK)], anchor=MID)
-    rect(s, ax0, yy + 0.04, xd(v) - ax0, 0.32, fill=col)
-    if vmin:
-        rect(s, xd(vmin) - 0.015, yy, 0.03, 0.40, fill=WHITE)
-    tb(s, xd(v) + 0.06, yy, 0.95, 0.40, [(lab, 18, True, BLUE if k == 2 else INK)], anchor=MID)
+for k, (nm, val, cap) in enumerate([("읽기 대역", "5.4GB/s", "GPU당 · 128K KV 1초 복원"),
+                                     ("꼬리 지연", "p99 450ms", "첫 토큰 (MLPerf 70B)"),
+                                     ("쓰기 내구", "3.2 DWPD", "KV 계층 실측")]):
+    yy = VT - 0.14 + k * 0.62
+    rect(s, x + 0.20, yy + 0.04, 0.06, 0.52, fill=BLUE if k < 2 else BLUE_T1)
+    tb(s, x + 0.36, yy, 1.30, 0.30, [(nm, 17, True, INK)], anchor=MID)
+    tb(s, x + 1.66, yy - 0.03, DW - 1.86, 0.36, [(val, 20, True, BLUE)], align=R, anchor=MID)
+    tb(s, x + 0.36, yy + 0.30, DW - 0.56, 0.28, [(cap, 15, False, GRAY)], anchor=MID)
 
 # ④ 에이전트: 사용자별 VM, 대부분 휴면 + VM 1개의 디스크 대 메모리
 x = DXS[3]
@@ -170,7 +158,7 @@ for k, (nm, v, col, lab) in enumerate([("VM 디스크", 100, BLUE, "100GB"), ("V
     rect(s, x + 1.56, yy + 0.05, w, 0.22, fill=col)
     tb(s, x + 1.62 + w, yy, 0.95, 0.32, [(lab, 16, True, BLUE if k == 0 else GRAY)], anchor=MID)
 
-# ---- 중간 계층: eSSD 수요 비중 2026(올해) · 2030, 가로 누적 막대 (McKinsey 2024-12, 2026은 보간 산술, 상세 7장)
+# ---- 중간 계층: eSSD 수요 비중 2026(올해) · 2030, 가로 누적 막대 (McKinsey 2024-12, 2026은 보간 산술, 참고 8장)
 SHR = [("2026 올해", [85, 6, 9], "286EB"), ("2030", [47, 12, 41], "1,078EB")]
 SCOL = [GRAY_2, BLUE_T2, BLUE]
 SNM = ["범용 · 엔터프라이즈", "AI 학습", "AI 추론"]
@@ -190,165 +178,298 @@ for r, (yr, sh, tot) in enumerate(SHR):
         acc += sh[j]
     tb(s, SX1 + 0.10, y, 1.10, 0.30, [(tot, 16, r == 1, INK if r == 1 else GRAY)], anchor=MID)
 
-# ---- 매트릭스 머리줄
-tb(s, LX, MT - 0.36, LW + 6, 0.32, [[("SSD 제품군  ", 18, True, INK), ("DWPD · 최대 용량", 16, False, GRAY)]], anchor=MID)
-tb(s, RIGHT - 6.0, MT - 0.36, 6.0, 0.32, [[("■", 16, False, BLUE), (" 지금 쓰는 곳   ", 16, False, GRAY), ("▢", 16, False, BLUE), (" 신호에 따라 쓰일 곳", 16, False, GRAY)]], align=R, anchor=MID)
-
-# ---- 매트릭스: 제품군(행) × 응용(열)
-CLS = [("SLC급", "≤ 3.2TB", 30, 120, "30~120"),
-       ("고내구 TLC", "≤ 12.8TB", None, 3, "3"),
-       ("고성능 · 범용 TLC", "≤ 15.36TB", None, 1, "1"),
-       ("고용량 QLC", "≤ 245TB", 0.3, 0.6, "0.3~0.6")]
-DL, DH = math.log10(0.1), math.log10(150)
-BX0, BXW = LX + 0.22, LW - 1.30
-
-
-def xb(v):
-    return BX0 + (math.log10(v) - DL) / (DH - DL) * BXW
-
-
-# 칸: (행, 열) → (문구, 지금=True / 신호=False)
-CELL = {(2, 0): ("VM · DB 블록", True), (3, 0): ("객체 · 콜드 데이터", True),
-        (2, 1): ("데이터 로딩", True), (1, 1): ("체크포인트", False), (3, 1): ("데이터셋", True),
-        (0, 2): ("초고DWPD KV", False), (1, 2): ("KV 쓰기 많을 때", True), (2, 2): ("KV 계층 (CMX)", True), (3, 2): ("읽기 위주 KV", False),
-        (3, 3): ("사용자 VM 디스크 · 상태", True), (2, 3): ("기동 버스트", False)}
-for r, (nm, cap, vmin, v, lab) in enumerate(CLS):
+# ---- 삼성 SSD 포트폴리오: 제품군(행) × 응용(열), 칸 = 삼성 모델이 지금 맡는 곳 (제품 이미지는 형태 재현)
+MT = CB + 1.34
+tb(s, LX, MT - 0.42, LW + 6, 0.36, [[("삼성 SSD 포트폴리오  ", 19, True, INK), ("수요별 대응 현황", 17, False, GRAY)]], anchor=MID)
+tb(s, RIGHT - 8.0, MT - 0.42, 8.0, 0.36, [[("■", 16, False, BLUE), (" 대응 중   ", 16, False, GRAY), ("▢", 16, False, BLUE_T1), (" 대응 가능 · 신호   ", 16, False, GRAY),
+                                           ("▨", 16, False, BLUE), (" 공백", 16, True, BLUE)]], align=R, anchor=MID)
+RH, RG = 0.72, 0.06
+PF = [("SLC급 · 30+ DWPD", "SZ985 (2018 · 단종)", "p_zssd"),
+      ("고내구 TLC · 3 DWPD", "PM1755 · PM1745", "p_pm1755"),
+      ("고성능 TLC · 1 DWPD", "PM1753 · PM1763", "p_pm1763"),
+      ("고용량 QLC · 0.26~0.6", "BM1743 · BM1773", "p_bm1743")]
+# 칸: (행, 열) → (용도, 모델, 상태 now | sig | gap)
+CELL = {(0, 2): ("초고DWPD KV", "삼성 제품 없음", "gap"),
+        (1, 1): ("체크포인트", "PM1755", "sig"), (1, 2): ("쓰기 많은 KV", "PM1755", "now"),
+        (2, 0): ("VM · DB 블록", "PM9D3a · PM1753", "now"), (2, 1): ("데이터 로딩", "PM1763", "now"),
+        (2, 2): ("KV 계층 (CMX)", "PM1753", "now"), (2, 3): ("기동 버스트", "PM1753", "sig"),
+        (3, 0): ("객체 · 콜드 데이터", "BM1743", "now"), (3, 1): ("데이터셋", "BM1743", "now"),
+        (3, 2): ("가중치 · RAG 읽기", "BM1743", "sig"), (3, 3): ("사용자 VM 디스크", "BM1743 · BM1773", "now")}
+for r, (nm, models, img) in enumerate(PF):
     y = MT + r * (RH + RG)
     rect(s, LX, y, LW, RH, fill=PALE, shape=RR)
-    tb(s, LX + 0.22, y + 0.02, LW - 1.30, 0.34, [(nm, 18, True, INK)], anchor=MID)
-    tb(s, LX + LW - 1.30, y + 0.02, 1.14, 0.34, [(cap, 15, False, GRAY)], align=R, anchor=MID)
-    rect(s, BX0, y + 0.37, xb(v) - BX0, 0.14, fill=BLUE if r == 0 else (BLUE_T1 if r == 1 else GRAY_2))
-    if vmin:
-        rect(s, xb(vmin) - 0.015, y + 0.34, 0.03, 0.20, fill=PALE)
-    tb(s, xb(v) + 0.06, y + 0.28, 1.0, 0.32, [(lab, 16, True, INK)], anchor=MID)
+    d.fit(s, os.path.join(ASSETS, "products", img + ".png"), LX + 0.06, y + 0.03, 1.00, RH - 0.06)
+    tb(s, LX + 1.12, y + 0.02, LW - 1.20, 0.36, [(nm, 17, True, INK)], anchor=MID)
+    tb(s, LX + 1.12, y + 0.37, LW - 1.20, 0.32, [(models, 15, True, BLUE)], anchor=MID)
     for c in range(4):
         x = DXS[c]
         if (r, c) not in CELL:
             rect(s, x, y, DW, RH, fill=None, line=LINE, lw=0.75, shape=RR)
             continue
-        txt, now = CELL[(r, c)]
-        if now:
-            label_box(s, x, y, DW, RH, [(txt, 18, True, WHITE)], fill=BLUE)
+        txt, mdl, st = CELL[(r, c)]
+        if st == "now":
+            rect(s, x, y, DW, RH, fill=BLUE, shape=RR)
+            tb(s, x + 0.10, y + 0.02, DW - 0.20, 0.36, [(txt, 17, True, WHITE)], align=C, anchor=MID)
+            tb(s, x + 0.10, y + 0.37, DW - 0.20, 0.32, [(mdl, 15, True, BLUE_T2)], align=C, anchor=MID)
+        elif st == "sig":
+            rect(s, x, y, DW, RH, fill=WHITE, line=BLUE_T1, lw=1.25, shape=RR, dash=True)
+            tb(s, x + 0.10, y + 0.02, DW - 0.20, 0.36, [(txt, 17, True, BLUE_T1)], align=C, anchor=MID)
+            tb(s, x + 0.10, y + 0.37, DW - 0.20, 0.32, [(mdl, 15, False, GRAY)], align=C, anchor=MID)
         else:
-            label_box(s, x, y, DW, RH, [(txt, 18, True, BLUE)], fill=WHITE, line=BLUE, lw=1.25, dash=True)
+            sp = rect(s, x, y, DW, RH, fill=TINT, line=BLUE, lw=2.0, shape=RR, dash=True)
+            tb(s, x + 0.10, y + 0.02, DW - 0.20, 0.36, [(txt, 17, True, BLUE)], align=C, anchor=MID)
+            tb(s, x + 0.10, y + 0.37, DW - 0.20, 0.32, [[("공백  ", 15, True, BLUE), (mdl, 15, False, GRAY)]], align=C, anchor=MID)
 
-d.band(s, 9.44, 0.80, "결론", "다양한 데이터센터 응용에 대응하려면, SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다")
-d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026은 보간 · 범용은 산술, 상세 7장) · HBM 과제팀 집계 · 공유 SSD p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · KV 실측 StorageReview(2026-08) · "
-            "AI 전용 Kioxia · DapuStor · 에이전트 Google · Muse 관측(제3자) · 제품군 Kioxia FL6 · LC9, Solidigm PS1010 · PS1030")
-d.notes(s, "1장입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
-        "그래서 SSD의 다음 수요를 하나로 단정하지 않고, 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. "
-        "카드 아래 가로 막대는 eSSD 수요의 응용별 비중입니다. 올해는 범용 클라우드와 엔터프라이즈가 85퍼센트로 대부분이고, AI 학습 6퍼센트, AI 추론 9퍼센트입니다. 2030년에는 전체가 약 1,078엑사바이트로 커지면서 범용 47퍼센트, AI 학습 12퍼센트, AI 추론 41퍼센트가 됩니다. 에이전트는 따로 떼어 낸 전망이 없어 추론과 범용에 포함됩니다. 올해 비중은 McKinsey 전망을 이어 계산한 값이고, 연도별 상세는 참고 7장에 두었습니다. "
-        "첫째, 범용 클라우드입니다. 여러 고객의 VM이 서버의 SSD를 나눠 씁니다. Microsoft의 SSD 50만 대를 보면 실제 쓰기는 0.07에서 0.23 DWPD로 범용 TLC 정격 1 DWPD 안에 들어옵니다. 기존 SSD 기술로 대응할 수 있습니다. "
-        "다만 한 고객의 쓰기가 같은 SSD를 쓰는 다른 고객의 지연을 키웁니다. Microsoft 워크로드 실험에서 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. 멀티테넌트 QoS와 격리는 여전히 중요한 요구입니다. "
-        "둘째, AI 학습입니다. NVIDIA SuperPOD 가이드를 GPU당으로 환산하면, 데이터가 캐시보다 큰 멀티모달 학습은 기본 등급보다 약 3배의 스토리지 대역을 요구합니다. 데이터 로딩에는 고성능 TLC가 맞습니다. "
-        "405B 모델은 체크포인트 한 번에 약 5.7테라바이트를 쓰고, 다 쓸 때까지 학습이 멈춥니다. 체크포인트 간격이 짧아지면 고내구 TLC가 필요할 수 있어 점선으로 두었습니다. "
-        "셋째, AI 추론의 KV 캐시 오프로드입니다. KV 캐시 계층을 실측하면 드라이브당 3.2 DWPD로 QLC 정격 0.6을 크게 넘고, AI 전용 SSD는 50에서 120 DWPD로 나왔습니다. 반대로 읽기 위주라는 측정도 있습니다. "
-        "그래서 같은 KV 캐시라도 쓰기량에 따라 SLC급, 고내구 TLC, 고성능 TLC로 갈리고, 읽기 위주라면 QLC도 후보입니다. 고내구라는 요구에도 필요한 DWPD에 따라 SLC부터 QLC까지 여러 답이 있다는 뜻입니다. "
-        "넷째, Meta Muse와 OpenAI Dot 같은 에이전트입니다. 사실을 다시 확인해 보니 이 서비스들은 사용자마다 VM을 하나씩 주는 구조이고, 에이전트는 대부분의 시간을 휴면 상태로 보냅니다. 휴면 상태는 압축 스냅샷으로 오브젝트 스토리지에 보관됩니다. "
-        "제3자가 Muse VM을 관측한 결과 메모리 7.75기가바이트에 디스크 100기가바이트로, 디스크가 13배 큽니다. 사용자 1억 명이면 할당 기준 10엑사바이트입니다. 그래서 에이전트 VM 자체에는 고DWPD보다 고용량 QLC가 맞습니다. "
-        "다만 실제 사용량은 아직 할당보다 훨씬 작고, 에이전트 VM 디스크의 쓰기량을 공개한 측정은 없습니다. 에이전트가 키우는 고DWPD 수요는 VM이 아니라 추론의 KV 캐시 계층에서 나옵니다. 에이전트가 한꺼번에 깨어날 때 디스크 경합이 생긴다는 Google의 설명이 있어, 고성능 TLC는 점선으로 두었습니다. "
-        "아래 표는 이것을 제품군으로 정리한 것입니다. 위에서 아래로 요구 DWPD는 낮아지고 최대 용량은 커집니다. 파란 칸은 지금 쓰는 곳, 점선 칸은 신호에 따라 쓰일 곳입니다. 응용마다 필요한 제품군의 조합이 다르고, 하나의 제품으로 모든 응용에 대응할 수 없습니다. "
-        "그래서 다양한 데이터센터 응용에 대응하려면 SLC부터 QLC까지 다양한 제품 포트폴리오가 필요합니다. 다만 지금 예측할 수 있는 범위 안의 준비입니다.")
+d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026 보간 · 상세 참고 8장) · HBM 과제팀 집계 · p99 FlashBlox(FAST'17) · GPU당 대역 NVIDIA SuperPOD(환산) · 추론 대역 70B · 128K KV 43GB 1초 복원(⚠️ 산술) · "
+            "MLPerf 70B 첫 토큰 p99 · KV 실측 StorageReview · 삼성 모델 사양 공식 페이지 검색 확인(🟡) · 제품 이미지는 형태 재현")
+d.notes(s, "1장은 지금 수요의 모양과 삼성의 대응 현황입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
+        "그래서 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. 범용 클라우드는 여러 VM이 SSD를 나눠 써서 QoS와 격리가 요구입니다. 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. "
+        "AI 학습은 대역입니다. NVIDIA SuperPOD 가이드를 GPU당으로 환산하면 멀티모달 학습은 기본보다 약 3배의 읽기 대역을 요구합니다. "
+        "AI 추론은 DWPD만의 문제가 아닙니다. 세 가지를 함께 봐야 합니다. 첫째 읽기 대역입니다. 70B 모델의 128K 토큰 KV 캐시는 약 43기가바이트이고, 이것을 1초 안에 되살리려면 GPU 8개 서버 기준 GPU당 약 5.4기가바이트 매초가 필요합니다. 과제팀 산술입니다. 공개 측정에서는 문맥이 1K 토큰일 때 다시 계산하는 것보다 빠르려면 23.2기가바이트 매초, 80K 토큰이면 3.5기가바이트 매초가 필요했습니다. 405B 모델 가중치 810기가바이트를 PM1763 한 대로 읽으면 약 28.5초, PM1753이면 약 56초입니다. "
+        "둘째 꼬리 지연입니다. MLPerf의 Llama 2 70B 대화형 기준은 첫 토큰 p99 450밀리초, 토큰당 40밀리초입니다. SSD 계층을 넣고도 p99 첫 토큰 목표를 지키면 GPU당 세션을 10.77배 늘릴 수 있었다는 결과가 있고, SSD의 지연 흔들림이 첫 토큰 지연을 키운다는 연구도 있습니다. NVIDIA의 차세대 스토리지 목표도 전력과 꼬리 지연 제약 안에서 IOPS를 최대화하는 것입니다. "
+        "셋째 쓰기 내구입니다. KV 캐시 계층 드라이브 실측은 3.2 DWPD로 QLC 정격을 크게 넘고, AI 전용 SSD는 50에서 120 DWPD로 나왔습니다. "
+        "에이전트는 사용자마다 VM을 하나씩 주는 구조라 디스크가 메모리보다 13배 크고, 대부분 휴면이라 용량과 TB당 비용이 요구입니다. "
+        "가운데 막대는 eSSD 수요 비중입니다. 올해 범용 85, 학습 6, 추론 9퍼센트에서 2030년에는 범용 47, 학습 12, 추론 41퍼센트가 됩니다. "
+        "아래는 삼성 SSD 포트폴리오가 각 수요를 어떻게 맡고 있는지입니다. 고성능 TLC는 PM9D3a와 PM1753이 범용 VM과 DB를, PCIe 6.0의 PM1763이 학습 데이터 로딩을, PM1753이 NVIDIA CMX 같은 KV 계층을 맡습니다. 고내구 TLC는 3 DWPD의 PM1755와 PM1745가 쓰기가 많은 KV를 맡습니다. "
+        "고용량 QLC는 BM1743이 122테라바이트까지 객체, 데이터셋, 사용자 VM 디스크를 맡고, 245테라바이트 BM1773이 FMS 2026에서 공개됐습니다. 가중치와 RAG 읽기는 BM1743이 맞지만 삼성이 이 용도로 내세운 적은 없어 점선으로 두었습니다. "
+        "비어 있는 곳은 초고DWPD입니다. 경쟁사는 Solidigm P5810 50, Kioxia FL6 60, DapuStor X5 120 DWPD 같은 SLC급 제품을 내고 있지만, 삼성의 30 DWPD 이상 제품은 2018년 Z-SSD SZ985가 마지막이고 단종됐습니다. 7세대 Z-NAND는 계획 단계입니다. "
+        "제품 이미지는 공식 사진을 구할 수 없어 폼팩터를 따라 재현한 것이고, 삼성 모델 사양은 공식 페이지 검색 결과로 확인한 2차 자료입니다.")
 
-# =============================================================== 2 솔루션
-s = d.slide(2, "핵심 기술", "핵심 기술 여섯 가지 중 다섯은 고객 시스템 개발이 필요하고,\nMixed Media와 FDP는 고객과 최적화까지 함께 해야 합니다")
+# =============================================================== 2 추론 수요 × 요구 × 핵심 기술 × 고객 협력 (v4.0)
+s = d.slide(2, "AI 추론 대응", "AI 추론 수요는 용도마다 SSD 요구가 다르고,\n그 요구를 채우는 핵심 기술은 고객과 함께 개발하고 최적화해야 합니다")
+S2_SLIDE = s
 
-TECH6 = [("Fault Tolerant", "다이 · 플레인 고장 격리", [None, None, "half", "full"]),
-         ("Large Mapping", "매핑 단위 4KB → 8~64KB", [None, None, None, "full"]),
-         ("Mixed Media", "pSLC + QLC 네임스페이스 분리", [None, None, None, "full"]),
-         ("Multi-Tenant QoS", "네임스페이스 QoS 격리", [None, "half", "full", "full"]),
-         ("FDP", "RUH · RG 배치 정책", ["full", "full", "half", "full"]),
-         ("Confidential Storage", "RoT · 암호화 · 증명", [None, None, "full", "full"])]
+# 열: 추론 수요 → 핵심 요구 → 핵심 기술 → 고객 협력
+AX0, AW = MX, 3.70
+QX0 = AX0 + AW + 0.40
+REQ = [("읽기", "대역"), ("꼬리", "지연"), ("쓰기", "DWPD"), ("용량", "$/TB"), ("격리", "보안")]
+QCW = 1.22
+QW_ = QCW * len(REQ)
+TX0 = QX0 + QW_ + 0.40
+TW_ = 4.70
+GX0_ = TX0 + TW_ + 0.40
+GW_ = RIGHT - GX0_
+HY = 2.26
+RY0, RHh, RGp = 3.44, 1.14, 0.12
 
-# ---- 왼쪽: 어떤 제품군에 쓰이나 (6 × 4 점)
-LPW, NW, PW = 7.70, 3.90, 0.95
-PT = 2.34
-tb(s, MX, PT, LPW, 0.40, [("어떤 제품군에 쓰이나", 20, True, INK)], anchor=MID)
-tb(s, MX, PT + 0.46, NW, 0.30, [[("●", 16, False, BLUE_T1), (" 핵심   ", 16, False, GRAY), ("○", 16, True, BLUE_T1), (" 해당", 16, False, GRAY)]], anchor=MID)
-for k, (l1, l2) in enumerate([("SLC급", ""), ("고내구", "TLC"), ("고성능", "TLC"), ("고용량", "QLC")]):
-    tb(s, MX + NW + k * PW, PT + 0.42, PW, 0.52, [(l1, 16, False, GRAY)] + ([(l2, 16, False, GRAY)] if l2 else []), align=C, anchor=MID, spacing=1.0)
-RT, RH3, RG3 = 3.30, 0.86, 0.08
-for i, (nm, sub, fit) in enumerate(TECH6):
-    y = RT + i * (RH3 + RG3)
-    hot = nm in ("FDP", "Mixed Media")     # ② 최적화까지 함께
-    coop = nm != "Fault Tolerant"
-    rect(s, MX, y, LPW, RH3, fill=TINT if coop else PALE, line=BLUE if hot else None, lw=1.5, shape=RR)
-    tb(s, MX + 0.20, y + 0.06, NW - 0.25, 0.40, [(nm, 20, True, BLUE if hot else INK)], anchor=MID)
-    tb(s, MX + 0.20, y + 0.46, NW - 0.25, 0.32, [(sub, 16, False, GRAY)], anchor=MID)
-    for k, kind in enumerate(fit):
-        cx, cy, dd = MX + NW + k * PW + PW / 2, y + RH3 / 2, 0.34
-        if kind == "full":
-            rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=BLUE if hot else BLUE_T1, shape=MSO_SHAPE.OVAL)
-        elif kind == "half":
-            rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=WHITE, line=BLUE_T1, lw=2.0, shape=MSO_SHAPE.OVAL)
+# 머리줄: 단계 이름 + 화살표
+for (x, w, nm) in [(AX0, AW, "① 추론 수요"), (QX0, QW_, "② 핵심 요구"), (TX0, TW_, "③ 핵심 기술"), (GX0_, GW_, "④ 고객 협력")]:
+    tb(s, x, HY, w, 0.44, [(nm, 21, True, BLUE)], anchor=MID)
+for x in (QX0 - 0.34, TX0 - 0.34, GX0_ - 0.34):
+    d.chevron(s, x, HY - 0.02, 0.24, 0.48, fill=BLUE_T2)
+# 요구 열 이름
+for j, (n1, n2) in enumerate(REQ):
+    tb(s, QX0 + j * QCW, RY0 - 0.66, QCW, 0.62, [(n1, 16, True, INK), (n2, 16, True, INK)], align=C, anchor=MID, spacing=0.95)
 
-# ---- 오른쪽: 고객 협력의 두 단계 (위키 §3.5) — ① 고객 시스템 개발 · ② 최적화까지 함께
-GX0 = MX + LPW + 0.45
-tb(s, GX0, PT, RIGHT - GX0, 0.40, [[("고객 협력의 두 단계  ", 20, True, INK), ("6개 중 5개가 고객 협력 필요", 18, True, BLUE)]], anchor=MID)
-LBW = 3.05                               # 이름 열
-ZX0 = GX0 + LBW
-ZW = [0.95, 3.45, RIGHT - ZX0 - 0.95 - 3.45]   # SSD 안에서 · ① 고객 시스템 개발 · ② 최적화까지 함께
-ZB = [ZX0, ZX0 + ZW[0], ZX0 + ZW[0] + ZW[1], RIGHT]
-ZY0, ZY1 = 3.46, 8.42
-for k, (l1, l2, col, tc) in enumerate([("SSD", "안에서", PALE, GRAY), ("① 고객 시스템", "개발", TINT, BLUE_T1), ("② 최적화까지", "함께", BLUE_T2, BLUE)]):
-    rect(s, ZB[k], ZY0, ZB[k + 1] - ZB[k], ZY1 - ZY0, fill=col)
-    tb(s, ZB[k], ZY0 - 0.60, ZB[k + 1] - ZB[k], 0.58, [(l1, 15, True, tc), (l2, 15, True, tc)], align=C, anchor=MID, spacing=1.0)
-STEP = [  # 이름, 근거 한 줄, 단계(0 · 1 · 2), ① 고객이 개발할 것, ② 함께 최적화할 것, ② 막대 끝(0~1)
-    ("FDP", "CacheLib WAF 3.22 → 1.03", 2, "수명 분류 · 배치 핸들", "RU · RUH · GC 반복 튜닝", 1.00),
-    ("Mixed Media", "4KB 쓰기 WAF 70+ → 1.02", 2, "pSLC · QLC 모아쓰기", "pSLC 비율 · 내림", 0.80),
-    ("Confidential Storage", "SPDM · TDISP · L.O.C.K.", 1, "기밀 VM · 키 · 증명 연동", None, 0),
-    ("Large Mapping", "IU 4KB → 16~64KB", 1, "쓰기 크기 · IU 정렬", None, 0),
-    ("Multi-Tenant QoS", "NVM Set · 지연 목표", 1, "테넌트 → 네임스페이스", None, 0),
-    ("Fault Tolerant", "다이 패리티 · 격리", 0, None, None, 0),
+# 기술 색: 협력 단계 (위키 §3.5) — 2 최적화까지 · 1 고객 시스템 개발 · 0 SSD 안에서
+TLV = {"FDP": 2, "Mixed Media": 2, "Large Mapping": 1, "Multi-Tenant QoS": 1, "Confidential": 1, "Fault Tolerant": 0}
+TCOL = {2: BLUE, 1: BLUE_T1, 0: GRAY_2}
+INF = [  # 이름, 키워드, 요구(2 핵심 · 1 해당 · 0), 기술
+    ("모델 가중치", "로딩 · 모델 교체", [2, 1, 0, 2, 1], ["Large Mapping", "Confidential", "Fault Tolerant"]),
+    ("RAG · Vector DB", "작은 랜덤 읽기 · 색인 갱신", [1, 2, 0, 2, 1], ["FDP", "Multi-Tenant QoS", "Large Mapping"]),
+    ("KV 캐시 오프로드", "긴 문맥 · 재사용", [2, 2, 2, 1, 0], ["FDP", "Mixed Media", "Large Mapping"]),
+    ("에이전트 메모리", "세션 · 상태 · 로그", [0, 1, 1, 2, 2], ["Mixed Media", "Multi-Tenant QoS", "Confidential"]),
 ]
-RHd = (ZY1 - ZY0) / len(STEP)
-BH = RHd - 0.30
-for i, (nm, ev, lv, dev, opt, oend) in enumerate(STEP):
-    y = ZY0 + i * RHd
-    hot = lv == 2
-    tb(s, GX0, y + 0.04, LBW - 0.10, 0.42, [(nm, 19, True, BLUE if hot else (INK if lv else GRAY))], anchor=MID)
-    tb(s, GX0, y + 0.44, LBW - 0.10, 0.34, [(ev, 15, False, BLUE if lv else GRAY)], anchor=MID)
-    by = y + 0.15
-    if lv == 0:
-        rect(s, ZB[0], by, 0.55, BH, fill=GRAY_2)
-        tb(s, ZB[1] + 0.15, by, ZW[1] - 0.20, BH, [("고객 협력 없이 SSD 안에서 완결", 15, False, GRAY)], anchor=MID)
-    else:
-        rect(s, ZB[0], by, ZB[2] - ZB[0], BH, fill=BLUE if hot else BLUE_T1)
-        tb(s, ZB[1] + 0.12, by, ZW[1] - 0.20, BH, [(dev, 16, True, WHITE)], anchor=MID)
-    if lv == 2:
-        x2 = ZB[2] + oend * ZW[2]
-        rect(s, ZB[2], by, x2 - ZB[2], BH, fill=BLUE)
-        rect(s, ZB[2] - 0.01, by + 0.08, 0.02, BH - 0.16, fill=WHITE)
-        tb(s, ZB[2] + 0.12, by, x2 - ZB[2] - 0.18, BH, [(opt, 16, True, WHITE)], anchor=MID)
-    if i < len(STEP) - 1:
-        rect(s, GX0, y + RHd - 0.006, RIGHT - GX0, 0.012, fill=WHITE)
-# 다섯 기술 묶음 괄호
-by0, by1 = ZY0 + 0.10, ZY0 + 5 * RHd - 0.10
-rect(s, GX0 - 0.24, by0, 0.04, by1 - by0, fill=BLUE)
-rect(s, GX0 - 0.24, by0, 0.14, 0.04, fill=BLUE)
-rect(s, GX0 - 0.24, by1 - 0.04, 0.14, 0.04, fill=BLUE)
-tb(s, ZB[1], ZY1 + 0.06, RIGHT - ZB[1], 0.34, [[("① 개발하면 스펙으로 닫힘   ", 15, True, BLUE_T1), ("② 고객 워크로드에서 함께 튜닝해야 효과", 15, True, BLUE)]], align=R, anchor=MID)
+for i, (nm, kw, req, techs) in enumerate(INF):
+    y = RY0 + i * (RHh + RGp)
+    hot = i == 2
+    rect(s, AX0, y, AW, RHh, fill=TINT if hot else PALE, line=BLUE if hot else None, lw=1.5, shape=RR)
+    tb(s, AX0 + 0.22, y + 0.14, AW - 0.40, 0.46, [(nm, 21, True, BLUE if hot else INK)], anchor=MID)
+    tb(s, AX0 + 0.22, y + 0.62, AW - 0.40, 0.40, [(kw, 16, False, GRAY)], anchor=MID)
+    # 요구 점
+    rect(s, QX0, y, QW_, RHh, fill=None, line=LINE, lw=0.75, shape=RR)
+    for j, v in enumerate(req):
+        cx, cy, dd = QX0 + j * QCW + QCW / 2, y + RHh / 2, 0.42
+        if v == 2:
+            rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=BLUE, shape=MSO_SHAPE.OVAL)
+        elif v == 1:
+            rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=WHITE, line=BLUE_T1, lw=2.0, shape=MSO_SHAPE.OVAL)
+    # 기술 칩 (협력 단계 색)
+    cw_ = (TW_ - 0.20) / 2
+    for k, t in enumerate(techs):
+        cx = TX0 + (k % 2) * (cw_ + 0.20)
+        cy = y + 0.06 + (k // 2) * 0.56
+        if k == 2:
+            cx = TX0 + (cw_ + 0.20) / 2
+        lv = TLV[t]
+        label_box(s, cx, cy, cw_, 0.50, [(t, 17, True, WHITE)], fill=TCOL[lv])
+    # 협력 게이지: SSD 안에서 · 개발 · 최적화
+    lv = max(TLV[t] for t in techs)
+    gw = (GW_ - 0.16) / 3
+    for k in range(3):
+        fill = [BLUE_T2, BLUE_T1, BLUE][k] if k <= lv else LINE
+        rect(s, GX0_ + k * (gw + 0.08), y + 0.16, gw, 0.40, fill=fill)
+    tb(s, GX0_, y + 0.62, GW_, 0.44, [("최적화까지 함께" if lv == 2 else "고객 시스템 개발", 19, True, BLUE if lv == 2 else BLUE_T1)], anchor=MID)
+# 게이지 칸 이름
+gw = (GW_ - 0.16) / 3
+for k, nm in enumerate(["SSD", "개발", "최적화"]):
+    tb(s, GX0_ + k * (gw + 0.08), RY0 - 0.46, gw, 0.40, [(nm, 16, True, INK)], align=C, anchor=MID)
+tb(s, TX0, RY0 - 0.46, TW_, 0.40, [("색 = 협력 단계", 16, False, GRAY)], anchor=MID)
+# 기술 색 범례
+ly_ = RY0 + 4 * (RHh + RGp) - 0.02
+tb(s, QX0, ly_, QW_, 0.42, [[("●", 16, False, BLUE), (" 핵심   ", 16, False, GRAY), ("○", 16, True, BLUE_T1), (" 해당", 16, False, GRAY)]], align=C, anchor=MID)
+xx = TX0
+for k, (lv, nm) in enumerate([(2, "최적화까지"), (1, "개발"), (0, "SSD 안에서")]):
+    rect(s, xx, ly_ + 0.11, 0.22, 0.22, fill=TCOL[lv])
+    tb(s, xx + 0.28, ly_, 1.50, 0.44, [(nm, 16, False, GRAY)], anchor=MID)
+    xx += 0.40 + 0.20 * len(nm)
+tb(s, GX0_, ly_ - 0.06, GW_, 0.70, [("4개 모두 고객 협력", 17, True, INK), ("3개는 최적화까지", 17, True, BLUE)], anchor=MID, spacing=1.0)
 
-d.band(s, 9.40, 0.80, "결론", "고객 시스템 개발부터 최적화까지, 핵심 기술을 제대로 확보하려면 고객과의 협력이 필수입니다", size=23)
-d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib FDP, 삼성 EuroSys'25 · Meta 반영) · 같은 FDP 지원 장치에서도 결과가 갈림(WARP FAST'26) · 4KB WAF 70+ → 1.02(CSAL) · 배치별 pSLC 비율(Kioxia) · "
-            "제품군 적합도와 협력 단계는 과제팀 판단(위키 ssd-core-technologies-customer-collaboration §3.5)")
-d.notes(s, "2장입니다. 1장의 제품 포트폴리오를 받치는 핵심 기술 여섯 가지를, 왼쪽에는 어떤 제품군에 쓰이는지, 오른쪽에는 고객과 어느 단계까지 협력해야 하는지로 정리했습니다. "
-        "왼쪽부터 보겠습니다. Fault Tolerant는 다이와 플레인 단위로 고장을 격리합니다. 같은 폼팩터에서 245테라바이트는 다이 1,024개, 512테라바이트는 약 2,133개라 고용량일수록 필요합니다. "
-        "Large Mapping은 매핑 단위를 4킬로바이트에서 8에서 64킬로바이트로 키웁니다. 245테라바이트 드라이브의 매핑 DRAM이 약 245기가바이트에서 15기가바이트로 줄어드는 대신, 매핑 단위보다 작은 쓰기는 최대 16배를 다시 씁니다. "
-        "Mixed Media는 pSLC와 QLC를 별도 네임스페이스로 나눕니다. 작은 쓰기를 모아 순차로 내리면 4킬로바이트 쓰기의 WAF가 70을 넘던 것이 1.02까지 내려간 사례가 있고, 고객이 요구한 pSLC 비율은 QLC 용량의 0.5에서 2퍼센트입니다. "
-        "Multi-Tenant QoS는 네임스페이스 단위로 테넌트를 격리합니다. 이웃 테넌트의 쓰기만으로 WAF가 1.28에서 3.0으로 오르고, 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. "
-        "FDP는 배치 핸들로 수명이 같은 데이터를 모읍니다. SLC급, 고내구 TLC, 고용량 QLC에 모두 걸려 가장 넓습니다. Confidential Storage는 RoT, 암호화, 증명으로 기밀 VM의 디스크를 지킵니다. "
-        "고용량 QLC에는 여섯 가지 중 다섯 가지가 걸립니다. "
-        "오른쪽은 고객 협력을 두 단계로 나눈 것입니다. 첫째 단계는 고객 시스템 개발입니다. 고객이 자기 시스템에 기능을 넣어야 쓸 수 있지만, 넣고 나면 스펙으로 닫힙니다. "
-        "Confidential Storage는 고객의 하이퍼바이저, 키 관리, 증명 서비스와 연동해야 하고, 인터페이스는 SPDM, TDISP, L.O.C.K. 표준이 정합니다. Large Mapping은 고객이 쓰기 크기를 매핑 단위에 맞춰야 하고, Multi-Tenant QoS는 고객이 테넌트를 네임스페이스에 나눠 싣고 지연 목표를 줍니다. "
-        "둘째 단계는 최적화까지 함께 하는 것입니다. 고객이 개발한 뒤에도, 고객 워크로드에서 양쪽 정책을 함께 맞춰야 효과가 납니다. "
-        "Mixed Media는 고객 소프트웨어가 작은 쓰기를 pSLC에 모아 내려야 하고, pSLC 비율과 내림 정책이 고객의 쓰기 몰림에 맞아야 WAF가 내려갑니다. pSLC 비율은 출하 시 정해지므로 배치마다 고객 워크로드를 보고 함께 정합니다. 다만 변수가 적어 한 번 맞추면 되므로 단기에 실행할 수 있습니다. "
-        "FDP는 고객 소프트웨어의 수명 분류와 SSD의 RU 크기, GC 정책이 맞물릴 때만 효과가 납니다. FAST'26의 WARP 연구에서는 같은 FDP 지원 드라이브, 같은 워크로드에서 한 장치는 WAF가 1 근처를 지켰고 다른 장치는 무너졌습니다. 그래서 고객 워크로드 안에서 반복해 함께 튜닝해야 하고, 중장기 과제입니다. "
-        "CacheLib이 WAF를 3.22에서 1.03으로 낮춘 결과도 삼성 엔지니어가 Meta의 오픈소스 CacheLib 안에 들어가 구현하고 Meta가 받아들인 결과였습니다. "
-        "정리하면, 고객 시스템 개발부터 최적화까지 단계는 달라도, 핵심 기술을 제대로 확보하려면 고객과의 협력이 필수입니다. 협력 단계 판단은 과제팀의 판단이고, 근거는 위키에 정리했습니다.")
+d.band(s, 9.44, 0.80, "결론", "AI 추론 수요에 대응하려면, 고객과의 협업이 필수입니다")
+d.footer(s, "출처: 요구 · 기술 매핑과 협력 단계는 과제팀 판단(위키 ai-inference-storage-requirements · ssd-core-technologies-customer-collaboration §3.5) · 수치는 발표자 노트")
+d.notes(s, "2장은 AI 추론 수요를 나눠 보고, 왜 고객과의 협업이 필수인지 보여 드립니다. 추론은 하나의 수요가 아니라 네 가지가 섞여 있습니다. "
+        "첫째 모델 가중치입니다. 모델을 올리고 바꾸는 순간의 읽기 대역과 용량이 핵심입니다. Llama 3 8B를 1기가바이트 매초 SSD에서 읽으면 48초, 스트리밍 로더로 14초가 걸렸고, 4기가바이트 매초 SSD에서는 7.5초였습니다. 405B 모델은 약 810기가바이트입니다. 가중치는 모델 제공자의 자산이라 보안도 걸립니다. 기술은 Large Mapping으로 큰 용량을 싸게, Confidential Storage로 키와 증명 체계에 들어가고, Fault Tolerant는 SSD 안에서 해결합니다. 고객 시스템 개발 단계입니다. "
+        "둘째 RAG와 벡터 DB입니다. DiskANN은 10억 개 벡터를 64기가바이트 메모리로 초당 5천 건 이상, 평균 3밀리초 안에 찾고, 질의 지연의 70에서 90퍼센트가 SSD 입출력입니다. 그래서 작은 랜덤 읽기의 꼬리 지연과 용량이 핵심입니다. 색인 갱신 쓰기가 읽기를 방해하지 않도록 FDP로 GC를 줄이고, 여러 테넌트를 Multi-Tenant QoS로 나눠야 합니다. FDP가 들어가므로 최적화까지 함께 해야 합니다. "
+        "셋째 KV 캐시 오프로드입니다. 대역, 꼬리 지연, DWPD를 모두 요구하는 가장 어려운 수요입니다. 다시 계산하는 것보다 빨라야 의미가 있고, 첫 토큰 p99 목표 안에 들어와야 하며, 쓰기가 많아 3 DWPD 이상이 실측됩니다. 삼성 PM9D3a에 FDP를 적용한 LMCache KV 실험에서 WAF가 2.6에서 1.4로, 읽기 p90 지연이 22퍼센트 줄었습니다. FDP와 Mixed Media는 고객의 KV 관리자와 함께 최적화해야 효과가 납니다. "
+        "넷째 에이전트 메모리입니다. 에이전트 호출은 평균 6만 8천 토큰을 입력하고 그중 86퍼센트가 재사용이라 세션과 상태를 오래 저장합니다. 용량, 격리, 보안이 핵심이고, 작은 로그 쓰기를 Mixed Media로 모아 QLC에 싣습니다. "
+        "오른쪽 끝은 협력의 깊이입니다. 네 가지 추론 수요 모두 고객 시스템 개발이 필요하고, 그중 세 가지는 FDP나 Mixed Media 때문에 최적화까지 고객과 함께 해야 합니다. 그래서 AI 추론 수요에 대응하려면 고객과의 협업이 필수입니다. "
+        "요구와 기술의 대응, 협력 단계는 과제팀의 판단이고, 수치는 대부분 검색으로 확인한 2차 자료입니다.")
+
+# =============================================================== 3 공동 설계로 좋아지는 지표 + 포트폴리오 확장 (v4.0)
+s = d.slide(3, "지표 · 포트폴리오", "고객과 함께 WAF와 꼬리 지연을 낮추면, 같은 NAND로\n지금은 닿지 못하던 추론 수요까지 빠르게 넓힐 수 있습니다")
+S3_SLIDE = s
+import json as _json  # noqa: E402
+import random as _rnd  # noqa: E402
+
+LX3, LW3 = MX, 8.50
+RX3 = LX3 + LW3 + 0.40
+RW3 = RIGHT - RX3
+
+# ---- ① 지표 두 개: WAF · p99.9 꼬리 지연 (막대 + 큰 숫자)
+d.panel_head(s, LX3, LW3, 1, "공동 설계로 좋아지는 지표", y=2.30)
+KY, KH = 2.98, 2.36
+KW = (LW3 - 0.24) / 2
+for k, (nm, sub, a, b, la, lb, delta, src) in enumerate([
+        ("WAF", "SSD만으로는 3 근처에 머문 지표", 3.22, 1.03, "SSD 혼자", "함께", "−68%", "CacheLib FDP"),
+        ("p99.9 꼬리 지연", "GC 뒤에 읽기가 기다리는 시간", 100, 45, "일반", "FDP", "−55%", "PM9D3a · RocksDB")]):
+    x = LX3 + k * (KW + 0.24)
+    rect(s, x, KY, KW, KH, fill=WHITE, line=LINE, lw=0.75, shape=RR)
+    tb(s, x + 0.20, KY + 0.08, KW - 0.40, 0.42, [(nm, 21, True, INK)], anchor=MID)
+    tb(s, x + 0.20, KY + 0.48, KW - 0.40, 0.32, [(sub, 15, False, GRAY)], anchor=MID)
+    bb, bh = KY + KH - 0.40, 0.80
+    for j, (v, lab, col) in enumerate([(a, la, GRAY_2), (b, lb, BLUE)]):
+        bx = x + 0.30 + j * 0.92
+        hh = bh * v / a
+        rect(s, bx, bb - hh, 0.66, hh, fill=col)
+        vl = f"{v:.2f}" if k == 0 else ("100" if j == 0 else "45")
+        tb(s, bx - 0.20, bb - hh - 0.34, 1.06, 0.32, [(vl, 17, True, BLUE if j else INK)], align=C, anchor=MID)
+        tb(s, bx - 0.25, bb + 0.03, 1.16, 0.32, [(lab, 15, j == 1, BLUE if j else GRAY)], align=C)
+    tb(s, x + 2.10, KY + 0.92, KW - 2.20, 0.80, [(delta, 40, True, BLUE)], align=C, anchor=MID)
+    tb(s, x + 2.10, KY + 1.70, KW - 2.20, 0.32, [(src, 15, False, GRAY)], align=C, anchor=MID)
+# 부록 링크: 왜 SSD만으로는 안 됐나 (참고 5장, 클릭하면 이동)
+label_box(s, LX3 + LW3 - 3.70, 2.36, 3.70, 0.40, [("왜 SSD만으로는 안 됐나  참고 5장 ▶", 15, True, BLUE)], fill=TINT, line=BLUE_T2)
+LINK3 = list(s.shapes)[-2:]
+
+# ---- ② 메커니즘: GC가 줄면 꼬리 지연이 준다
+MY = KY + KH + 0.16
+d.panel_head(s, LX3, LW3, 2, "GC를 줄여 예측 가능한 QoS로", y=MY)
+TY = MY + 0.60
+TECH3 = [("Mixed Media", "작은 쓰기를 pSLC에 모아", "GC 빈도 ↓"),
+         ("Large Mapping", "정렬된 큰 쓰기", "GC 횟수 ↓"),
+         ("FDP", "같은 수명끼리 배치", "GC 시간 ↓")]
+CW3, CH3 = 3.05, 0.82
+for i, (nm, how, eff) in enumerate(TECH3):
+    y = TY + i * (CH3 + 0.08)
+    rect(s, LX3, y, CW3, CH3, fill=BLUE if nm != "Large Mapping" else BLUE_T1, shape=RR)
+    tb(s, LX3 + 0.16, y + 0.03, CW3 - 0.30, 0.40, [(nm, 18, True, WHITE)], anchor=MID)
+    tb(s, LX3 + 0.16, y + 0.42, CW3 - 0.30, 0.34, [(how, 15, False, BLUE_T2)], anchor=MID)
+    tb(s, LX3 + CW3 + 0.10, y + 0.18, 1.30, 0.46, [(eff, 17, True, BLUE)], anchor=MID)
+# 지연 시계열 두 줄: 혼자(GC 구간 스파이크) 대 함께(평탄)
+TLX = LX3 + CW3 + 1.46
+TLW = LX3 + LW3 - TLX
+_rnd.seed(7)
+NB = 46
+bw_ = TLW / NB
+for r, (nm, gcs, col) in enumerate([("SSD 혼자: GC마다 지연 스파이크", [(6, 10), (19, 24), (33, 37)], GRAY_2), ("공동 설계: GC가 드물고 짧다", [(27, 28)], BLUE)]):
+    y0 = TY + r * 1.24
+    base = y0 + 1.06
+    tb(s, TLX, y0 - 0.04, TLW, 0.34, [(nm, 16, True, BLUE if r else INK)], anchor=MID)
+    for a_, b_ in gcs:
+        rect(s, TLX + a_ * bw_, y0 + 0.32, (b_ - a_) * bw_, 0.74, fill=PALE)
+    for k in range(NB):
+        ingc = any(a_ <= k < b_ for a_, b_ in gcs)
+        hgt = 0.08 + _rnd.random() * 0.08
+        if ingc:
+            hgt = (0.42 + _rnd.random() * 0.28) if r == 0 else 0.20
+        rect(s, TLX + k * bw_ + 0.02, base - hgt, bw_ - 0.04, hgt, fill=(GRAY if ingc and r == 0 else col))
+    rect(s, TLX, base, TLW, 0.012, fill=LINE)
+tb(s, TLX, TY + 2.40, TLW, 0.34, [[("GC 복사량 (WAF − 1)  ", 15, False, GRAY), ("2.22 → 0.03", 17, True, BLUE)]], anchor=MID)
+
+# ---- ③ 포트폴리오 확장 (3D: 바닥 = DWPD × 용량, 높이 = 꼬리 지연 등급, 오른쪽 열 = 제품 · 확장)
+d.panel_head(s, RX3, RW3, 3, "제품 포트폴리오가 넓어진다", y=2.30)
+P3 = os.path.join(ASSETS, "portfolio_3d.png")
+with open(os.path.join(ASSETS, "portfolio_3d.json"), encoding="utf-8") as _f:
+    ANC = _json.load(_f)
+LGW = 2.50
+IMX, IMY = RX3 - 0.10, 2.96
+from PIL import Image as _Image  # noqa: E402
+with _Image.open(P3) as _im:
+    _ar = _im.size[0] / _im.size[1]
+IMH = 9.30 - IMY
+IMW = IMH * _ar
+if IMW > RW3 - LGW:
+    IMW = RW3 - LGW
+    IMH = IMW / _ar
+d.img(s, P3, IMX, IMY, w=IMW)
+tb(s, IMX, IMY - 0.10, 2.4, 0.56, [("높이 = 꼬리 지연", 15, True, GRAY), ("낮을수록 위 (정성)", 15, False, GRAY)], spacing=0.95)
+
+
+def at(pt):
+    return IMX + pt[0] * IMW, IMY + pt[1] * IMH
+
+
+EXP = [  # 키, 제품 이미지, 모델, 지금 → 확장, 들어가는 수요
+    ("qlc", "p_bm1743", "BM1743 · QLC", "0.3 → 1 DWPD", "KV 오프로드 진입"),
+    ("tlc", "p_pm1753", "PM1753 · TLC", "1 → 3 DWPD", "쓰기 많은 KV"),
+    ("hetlc", "p_pm1755", "PM1755 · 고내구 TLC", "3 → 9 DWPD", "초고DWPD 입구"),
+    ("slc", "p_zssd", "Z-NAND · SLC급", "30 → 100 DWPD", "초고DWPD KV (공백)"),
+]
+LGX = RIGHT - LGW
+EH = (9.30 - 2.98) / 4
+for i, (key, img, model, dw, dem) in enumerate(EXP):
+    y = 2.98 + i * EH
+    rect(s, LGX, y + 0.04, LGW, EH - 0.10, fill=PALE, shape=RR)
+    rect(s, LGX + 0.10, y + 0.14, 0.40, 0.40, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    tb(s, LGX + 0.10, y + 0.14, 0.40, 0.40, [(str(i + 1), 17, True, WHITE)], align=C, anchor=MID)
+    pth = os.path.join(ASSETS, "products", img + ".png")
+    if os.path.exists(pth):
+        d.fit(s, pth, LGX + 0.60, y + 0.08, LGW - 0.70, 0.62)
+    tb(s, LGX + 0.10, y + 0.70, LGW - 0.20, 0.30, [(model, 15, True, INK)], anchor=MID)
+    tb(s, LGX + 0.10, y + 0.98, LGW - 0.20, 0.30, [[(dw, 16, True, BLUE)]], anchor=MID)
+    tb(s, LGX + 0.10, y + 1.24, LGW - 0.20, 0.28, [(dem, 15, False, GRAY)], anchor=MID)
+    nx, ny = at(ANC[key]["now"])
+    rect(s, nx - 0.19, ny - 0.50, 0.38, 0.38, fill=BLUE, line=WHITE, lw=1.5, shape=MSO_SHAPE.OVAL)
+    tb(s, nx - 0.19, ny - 0.50, 0.38, 0.38, [(str(i + 1), 16, True, WHITE)], align=C, anchor=MID)
+# 바닥 색 = 추론 수요 영역 (범례)
+from pptx.dml.color import RGBColor as _RGB  # noqa: E402
+_lx = IMX + 2.60
+tb(s, _lx, IMY - 0.10, 1.0, 0.30, [("바닥 =", 15, True, GRAY)], anchor=MID)
+for k, (nm, hx) in enumerate((("가중치 · RAG", "E8ECF8"), ("KV 오프로드", "D3DBF4"), ("초고DWPD KV", "C2CDF0"))):
+    yy = IMY - 0.10 + k * 0.30
+    rect(s, _lx + 0.80, yy + 0.05, 0.30, 0.20, fill=_RGB.from_string(hx), line=BLUE_T2, lw=0.5)
+    tb(s, _lx + 1.16, yy, 2.0, 0.30, [(nm, 15, True, BLUE)], anchor=MID)
+
+d.band(s, 9.44, 0.80, "결론", "어떤 AI 추론 수요가 새로 나와도, 공동 설계 기술이 빠르게 진입할 기술적 기반이 됩니다")
+d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib FDP, 삼성 EuroSys'25) · p99.9 −55%(삼성 기술 블로그, PM9D3a 7.68TB RocksDB, TLC) · 공개 실험 테일 1.5~6배 ↓(ZNS · Valet · WALTZ) · "
+            "DWPD 확장은 WAF 3 → 1 산술(⚠️) · 꼬리 지연 높이는 정성 등급 · 제품 이미지는 형태 재현")
+
+d.notes(s, "3장은 고객과 함께 설계한 기술로 무엇이 좋아지고, 그것으로 포트폴리오를 어떻게 넓힐 수 있는지입니다. "
+        "첫째 지표는 WAF입니다. SSD만 잘 만들어서는 3 근처에서 더 내려가지 않던 지표입니다. 그 이유는 참고 5장에 정리했고, 상자를 누르면 그 장으로 갑니다. 삼성 엔지니어가 Meta의 CacheLib 안에 FDP를 구현했을 때 WAF가 3.22에서 1.03으로, 68퍼센트 내려갔습니다. "
+        "둘째 지표는 꼬리 지연입니다. 삼성 PM9D3a 7.68테라바이트에서 RocksDB에 FDP 최적화 분류를 적용하자 p99.9 꼬리 지연이 55퍼센트 줄었습니다. ZNS, Valet, WALTZ 같은 공개 실험에서도 배치를 바꾸면 꼬리 지연이 1.5배에서 6배 줄었습니다. "
+        "왜 그럴까요. 가운데 그림이 그 원리입니다. SSD는 빈 블록을 만들려고 살아 있는 데이터를 옮기는 GC를 합니다. 그동안 읽기는 프로그램과 지우기 뒤에서 기다리고, 지우기는 블록당 약 10밀리초가 걸립니다. 그래서 GC가 일어날 때마다 지연 스파이크가 생깁니다. 연구에서는 GC가 99에서 99.99 백분위 지연을 5배에서 138배까지 키웠습니다. "
+        "세 기술을 함께 쓰면 GC를 세 방향으로 줄입니다. Mixed Media는 작은 쓰기를 pSLC에 모아 QLC에는 큰 단위로만 쓰므로 블록이 덜 조각나 GC 빈도가 줍니다. Large Mapping은 매핑 단위에 맞춘 큰 쓰기만 받으니 부분 덮어쓰기와 매핑 갱신이 줄어 GC 횟수가 줍니다. FDP는 수명이 같은 데이터를 같은 블록에 모아, 블록이 통째로 지워지니 옮길 데이터가 거의 없어 GC 시간이 줍니다. "
+        "WAF에서 1을 뺀 값이 호스트 쓰기 하나당 GC가 옮기는 양입니다. CacheLib 사례로 보면 2.22에서 0.03으로 98퍼센트 이상 줄어듭니다. GC가 드물고 짧아지면 지연이 예측 가능해지고, 그것이 꼬리 지연을 줄여 QoS를 보장하는 원리입니다. "
+        "다만 꼬리 지연 측정은 모두 TLC이고, QLC에서 배치로 꼬리 지연이 준 공개 측정과 KV 캐시 계층의 첫 토큰 p99를 직접 잰 결과는 아직 없습니다. GC보다 칩 사이 큐 불균형이 주원인이라는 반대 연구도 있습니다. "
+        "오른쪽 3D 그림은 포트폴리오가 어떻게 넓어지는지입니다. 바닥은 정격 DWPD와 최대 용량, 높이는 꼬리 지연이 낮을수록 위입니다. 진한 기둥이 지금의 제품군이고 점선 상자가 WAF와 꼬리 지연을 낮춘 뒤 닿는 영역입니다. "
+        "같은 NAND와 같은 OP에서 WAF가 3에서 1로 내려가면 정격 DWPD는 약 3배가 됩니다. 과제팀 산술입니다. 첫째, BM1743 같은 QLC가 0.3에서 1 DWPD가 되면, 지금 TLC가 맡는 KV 캐시 오프로드 수요까지 원가 우위로 들어갈 수 있습니다. "
+        "둘째, PM1753 같은 고성능 TLC가 1에서 3 DWPD가 되면 쓰기가 많은 KV를 고내구 제품 없이 맡을 수 있습니다. 셋째, PM1755 같은 고내구 TLC가 3에서 9 DWPD가 되면 초고DWPD 수요의 입구까지 갑니다. 넷째, SLC급에서 WAF를 낮추면 30 DWPD가 100 DWPD 근처로 올라갑니다. 지금 삼성이 비어 있는 초고DWPD 영역입니다. "
+        "요구 사항에 따라 TLC의 WAF를 낮춰 대응할지, SLC급을 극한으로 올릴지 고를 수 있다는 것이 핵심입니다. 이전에는 대응하지 못하던 제품군에 빠르게 들어갈 기술적 기반이 생깁니다. 그래서 어떤 AI 추론 수요가 새로 나와도 빠르게 대응할 수 있습니다. "
+        "꼬리 지연 높이는 정성 등급이고, 제품 이미지는 형태 재현입니다.")
+
 
 # =============================================================== 3 당위성
-s = d.slide(3, "당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
+s = d.slide(5, "참고 · 당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
+S_A1 = s
 
 # 발표 순서 ECC → SSD → DWPD → 공동 설계: 위 = 1 · 2칸, 아래 = 정격 DWPD 점도표, 오른쪽 = 3칸
 import json  # noqa: E402
@@ -504,7 +625,7 @@ d.chevron(s, MX + 11.67, 7.40, w=0.16, h=0.50)
 d.band(s, 9.60, 0.80, "결론", "사양서만으로는 2칸에 머뭅니다. 3칸은 고객 시스템 안에서 함께 설계해야 닿습니다")
 d.footer(s, "출처: 정격 DWPD 원장(6개 업체 226개 등급, 점 = 세대 대표 최고 등급 · QLC, 중앙값 = 전체 등급, 5년 보증 환산, SLC · SCM 특수와 10 초과 3개 제외) · "
             "해법 사다리 원장 · 자체 설계 원장 · 일부 수치 검색 확인 · 부품 이미지는 3D 렌더")
-d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 순서대로 말씀드리겠습니다. 위 왼쪽 첫 칸은 NAND에서 SSD로 넘어온 단계입니다. 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
+d.notes(s, "참고 5장입니다. 3장의 WAF가 왜 SSD만으로는 3 근처에 머물렀는지, 왜 고객 시스템까지 가야 하는지 순서대로 말씀드리겠습니다. 위 왼쪽 첫 칸은 NAND에서 SSD로 넘어온 단계입니다. 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러 ECC가 약 60배 강해지면서 SSD 안에서 완결됐습니다. "
         "둘째 칸은 SSD 혼자 하는 최적화입니다. FTL과 ECC, GC와 웨어 레벨링 위에, 2014년부터 2019년까지 핫 · 콜드 추정, 스트림 분리, IO 결정성을 더했습니다. "
         "테일 지연과 성능은 좋아졌지만, 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "
         "그 결과가 아래 점도표입니다. 지난 15년 동안 6개 업체가 내놓은 데이터센터 SSD 가운데 세대별 대표 제품의 정격 DWPD입니다. 채운 점은 그 세대에서 가장 높은 내구 등급, 빈 점은 QLC 용량형입니다. 보증 3년 제품은 5년 기준으로 환산했습니다. "
@@ -520,7 +641,8 @@ d.notes(s, "3장입니다. 왜 고객 시스템까지 가야 하는지 순서대
         "고객은 이미 자기 시스템에 맞춰 SSD를 설계하고 있습니다. 사양서를 받아 SSD를 잘 만드는 방식은 둘째 칸에 머물고, 셋째 칸은 고객 시스템 안에서 함께 설계해야 닿습니다.")
 
 # =============================================================== 4 사업 기회: WAF를 낮추면 QLC 시장이 어디까지 넓어지나 (2030 폭포 + QLC 비중)
-s = d.slide(4, "사업 기회", "WAF를 낮춰 QLC를 1 DWPD로 올리면,\n2030년 QLC는 eSSD의 약 42%에서 약 65%까지 넓어집니다")
+s = d.slide(6, "참고 · 사업 기회", "WAF를 낮춰 QLC를 1 DWPD로 올리면,\n2030년 QLC는 eSSD의 약 42%에서 약 65%까지 넓어집니다")
+S_A2 = s
 WL, WLW = MX, 11.90
 WR = WL + WLW + 0.40
 WRW = RIGHT - WR
@@ -602,12 +724,12 @@ for k, (t, sub, col, x0) in enumerate([("Mixed Media", "모아쓰기 · 단기 2
     w0 = 0.36 + 0.13 * len(t)
     label_box(s, x0, TB_ + 0.07, w0, 0.38, [(t, 16, True, WHITE)], fill=col)
     tb(s, x0 + w0 + 0.12, TB_, 5.0, 0.52, [(sub, 17, True, BLUE)], anchor=MID)
-tb(s, RIGHT - 3.4, TB_, 3.2, 0.52, [("상세는 2장 핵심 기술", 15, False, GRAY)], align=R, anchor=MID)
+tb(s, RIGHT - 3.4, TB_, 3.2, 0.52, [("상세는 2장 · 3장", 15, False, GRAY)], align=R, anchor=MID)
 
 d.band(s, 9.44, 0.80, "기회", "WAF를 낮추는 것이 곧 QLC 시장을 넓히는 일이고, 그 원가 우위가 수익성입니다", size=23)
 d.footer(s, "출처: 총량 SK hynix 509(2026) · 2030은 McKinsey 1,078과 SK hynix 1,933의 중간 · QLC 비중 TrendForce 18%(2026) · TLC 분할은 과제팀 산술(용량형 30~60% · 관행 15~40%는 근거 없는 가정, "
             "성능 일부 = 성능 RI의 20~40%) · Meta · Forward Insights(재인용) · Micron 6600 ION 사양 · 모두 검색 확인 등급")
-d.notes(s, "4장은 이 전략에서 사업적으로 가장 큰 기회입니다. 질문은 하나입니다. WAF를 낮춰 QLC를 1 DWPD로 올리면 QLC 시장이 어디까지 넓어지는가입니다. "
+d.notes(s, "참고 6장은 3장의 첫 번째 확장, 곧 QLC가 TLC 수요로 들어가는 사업 기회를 숫자로 본 것입니다. 질문은 하나입니다. WAF를 낮춰 QLC를 1 DWPD로 올리면 QLC 시장이 어디까지 넓어지는가입니다. "
         "2030년 eSSD 수요를 McKinsey와 SK하이닉스 전망의 중간인 약 1,500엑사바이트로 보면, 지금 경로의 QLC는 약 636엑사바이트, 약 42퍼센트입니다. "
         "여기에 세 몫이 더해집니다. 첫째, 성능은 QLC로 충분한데 조달 규격이 1 DWPD라서 TLC를 쓰던 내구 규격만 수요가 약 192엑사바이트입니다. 시나리오에 따라 46에서 509엑사바이트로 넓습니다. WAF를 낮춰 QLC 정격이 1 DWPD에 닿으면 바로 들어갈 몫입니다. "
         "둘째, 관행과 가격으로 TLC를 쓰던 약 64엑사바이트는 원가와 공급, 인증으로 가져옵니다. 셋째, 성능 때문에 TLC를 쓰던 수요 가운데 꼬리 지연을 극복해 20에서 40퍼센트를 가져오면 63에서 125엑사바이트가 더해집니다. "
@@ -617,7 +739,8 @@ d.notes(s, "4장은 이 전략에서 사업적으로 가장 큰 기회입니다.
         "TLC 분할 비율은 공개 자료가 없어 과제팀이 가정한 값이며, 실제 범위는 넓습니다. 그래도 방향은 분명합니다. WAF를 낮추는 것이 곧 QLC 시장을 넓히는 일이고, 그 원가 우위가 수익성입니다.")
 
 # =============================================================== 5 보안 기회: 온프렘 AI의 모델 가중치 · 기업 데이터 보안, SSD가 고객 신뢰 체계 안으로
-s = d.slide(5, "보안 기회", "온프렘 AI가 커질수록 모델 가중치와 기업 데이터를 함께 지켜야 하므로,\nSSD도 고객의 키 · 증명 체계 안에 들어가야 합니다")
+s = d.slide(7, "참고 · 보안 기회", "온프렘 AI가 커질수록 모델 가중치와 기업 데이터를 함께 지켜야 하므로,\nSSD도 고객의 키 · 증명 체계 안에 들어가야 합니다")
+S_A3 = s
 SP1, SW1 = MX, 5.30
 SP2, SW2 = SP1 + SW1 + 0.30, 5.70
 SP3 = SP2 + SW2 + 0.30
@@ -701,7 +824,7 @@ label_box(s, SP3, 8.20, SW3, 0.62, [[("Dell 서버: ", 15, False, GRAY), ("삼�
 d.band(s, 9.44, 0.80, "기회", "보안은 표준으로 정하되, 고객 · OEM의 키 · 증명 체계에 함께 들어가야 팔립니다")
 d.footer(s, "출처: McKinsey 소버린 AI(2025~30) · Gartner(온프렘 AI 2→20%+) · NVIDIA FY26 · Dell FQ2'27 · Arqit/Intel · Cloudian · IDC/CCC(설문, 벤더 후원 포함) · Llama 405B FP16 · "
             "OCP L.O.C.K. 사양 · DMTF DSP0286 · 삼성 PM1763 · Dell KB(SPDM) · 모두 검색 확인 등급, 일부 원문 확인")
-d.notes(s, "5장은 두 번째 사업 기회인 보안입니다. 2장에서 Confidential Storage도 고객 협력이 필요한 기술이라고 말씀드렸는데, 그 수요와 협력 방식을 보겠습니다. "
+d.notes(s, "참고 7장은 보안 기회입니다. 2장에서 모델 가중치와 에이전트 메모리에 걸린 Confidential Storage도 고객 협력이 필요한 기술이라고 말씀드렸는데, 그 수요와 협력 방식을 보겠습니다. "
         "첫째, 수요입니다. McKinsey는 소버린 AI 시장이 2025년 1,500억에서 2,000억 달러에서 2030년 5,000억에서 6,000억 달러로 약 3배 커진다고 봅니다. Gartner는 AI를 자기 데이터센터에서 직접 돌리는 기업이 2025년 초 약 2퍼센트에서 2028년 20퍼센트 이상이 된다고 봅니다. NVIDIA의 소버린 매출은 FY26에 300억 달러를 넘었고, Dell의 AI Factory 고객은 6,500곳을 넘었습니다. "
         "둘째, 왜 보안인가입니다. 기업의 온프렘 AI 데이터센터에는 주인이 다른 두 자산이 함께 놓입니다. 모델 제공자의 LLM 가중치, 예를 들어 405B 모델이면 FP16으로 약 810기가바이트와, 기업의 민감 데이터, RAG, KV 캐시입니다. 설문에서는 소버니티와 프라이버시가 AI 과제 지연의 1위 요인이라는 응답이 62퍼센트, 데이터 레지던시 때문에 AI 과제를 미루거나 줄인 곳이 58퍼센트입니다. 기밀 컴퓨팅의 장벽 1위는 증명 검증으로 84퍼센트입니다. 다만 이 설문들 상당수는 벤더가 후원했습니다. "
         "셋째, 어떻게입니다. 공개된 가중치 보호 설계는 가중치를 암호화해 두었다가 TEE 안에서만 푸는 방식이라, SSD 혼자 가중치를 지키는 구조가 아닙니다. 그래서 SSD의 역할은 고객의 신뢰 체계 안에 들어가는 것입니다. "
@@ -710,7 +833,8 @@ d.notes(s, "5장은 두 번째 사업 기회인 보안입니다. 2장에서 Conf
         "보안 시장 자체의 규모나 Confidential Storage 시장 전망은 공개 자료에 없어서, 수요는 온프렘 AI의 성장으로 보여 드렸습니다.")
 
 # =============================================================== 6 실행
-s = d.slide(6, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")
+s = d.slide(4, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")
+S_EXEC = s
 C1, W1 = MX, 5.55
 C2, W2 = 6.55, 6.90
 C3, W3 = 13.66, 5.55
@@ -871,7 +995,7 @@ tb(s, C3, CAP_Y, W3, 0.50, [("기술과 함께, 엔지니어의 고객 관계", 
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
 d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 로고는 식별 표시")
-d.notes(s, "6장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
+d.notes(s, "4장 실행 전략입니다. 2장과 3장에서 본 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
         "첫째, 계약입니다. 지금의 Multi-Year Deal, MYD는 여러 해의 수량과 가격을 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 MYD 위에 기술 협력을 쌓겠습니다. "
         "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 AI 데이터센터 안에서 고객 엔지니어와 함께 일합니다. 핵심 업무는 세 가지입니다. "
         "하나, 고객 워크로드 측정과 분석입니다. 고객 트레이스로 쓰기 크기와 데이터 수명을 재서, 고객이 말한 요구와 실제 요구의 차이를 찾습니다. "
@@ -883,7 +1007,8 @@ d.notes(s, "6장 실행 전략입니다. 2장에서 고른 FDP의 요구, 곧 �
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
 
 # =============================================================== 7 참고: eSSD 수요처별 전망
-s = d.slide(7, "참고", "eSSD 수요는 2030년까지 약 6배로 늘고,\n가장 큰 몫은 AI 추론에서 나옵니다")
+s = d.slide(8, "참고 · 수요 전망", "eSSD 수요는 2030년까지 약 6배로 늘고,\n가장 큰 몫은 AI 추론에서 나옵니다")
+S_A4 = s
 
 # 막대: McKinsey(2024-12) 2024 · 2030 끝값, 2025~2029는 수요처별 연평균 성장률 보간(산술)
 DEM = [("범용 · 엔터프라이즈", 168, 504, GRAY_2), ("AI 학습", 7, 127, BLUE_T2), ("AI 추론", 6, 447, BLUE)]
@@ -992,6 +1117,18 @@ d.notes(s, "참고 자료입니다. 1장에서 본 데이터센터 응용 네 �
         "에이전트는 따로 떼어 낸 전망이 없습니다. 추론의 KV 캐시와 범용의 VM 디스크에 나뉘어 잡힙니다. "
         "마름모는 2026년에 나온 최신 전망입니다. JPM과 Kioxia는 2028년에 약 900엑사바이트를 봅니다. 2024년 전망 경로로는 2029년과 2030년 사이에야 닿는 규모라 약 1년 반 앞당겨진 셈입니다. 기관마다 정의가 달라 막대와 정확히 겹쳐 읽을 수는 없고 방향만 비교합니다. "
         "모든 수치는 검색으로 확인한 2차 자료이며 1차 문서 대조가 필요합니다.")
+
+for _sh in LINK3:
+    _sh.click_action.target_slide = S_A1
+# 발표 순서: 1 현황 · 2 추론 대응 · 3 지표 · 포트폴리오 확장 · 4 실행, 참고 5 당위성 · 6 사업 기회 · 7 보안 기회 · 8 수요 전망
+ORDER = [S1, S2_SLIDE, S3_SLIDE, S_EXEC, S_A1, S_A2, S_A3, S_A4]
+_want = [sl.slide_id for sl in ORDER]
+_lst = d.prs.slides._sldIdLst
+_els = {int(el.get("id")): el for el in list(_lst)}
+for el in list(_lst):
+    _lst.remove(el)
+for sid in _want:
+    _lst.append(_els[sid])
 
 d.save(os.path.abspath(OUT))
 print(f"생성 완료: {os.path.abspath(OUT)} ({len(d.prs.slides._sldIdLst)}장)")

@@ -1,0 +1,6 @@
+[{"id":"p_bm1743","ff":"e3s","model":"BM1743","l2":"PCIe 5.0 NVMe  QLC","l3":"122.88TB  E3.S"},
+ {"id":"p_pm1753","ff":"u2","model":"PM1753","l2":"PCIe 5.0 NVMe  TLC","l3":"30.72TB  U.2"},
+ {"id":"p_pm1763","ff":"e3s","model":"PM1763","l2":"PCIe 6.0 NVMe  TLC","l3":"E3.S"},
+ {"id":"p_pm1755","ff":"u2","model":"PM1755","l2":"PCIe 5.0 NVMe  TLC","l3":"3 DWPD  U.2"},
+ {"id":"p_pm9d3a","ff":"e1s","model":"PM9D3a","l2":"PCIe 5.0  TLC","l3":"E1.S"},
+ {"id":"p_zssd","ff":"aic","model":"SZ985","l2":"Z-SSD  Z-NAND","l3":"30 DWPD  HHHL"}]

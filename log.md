@@ -2682,3 +2682,19 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 2장 제목 "다섯은 고객 시스템 개발이 필요하고, Mixed Media와 FDP는 고객과 최적화까지 함께", 오른쪽 계단 막대(구역 SSD 안에서 · ① · ②), 왼쪽 FDP · Mixed Media 강조, 밴드 갱신. 렌더 QA PASS
 - 위키 `ssd-core-technologies-customer-collaboration.md` §3.5 신설 · `mixed-media-ssd.md` §0.4 재분류 메모, 보고서 §2.1.2 · 아웃라인 v3.8 · index 갱신
 - 대시보드: 발표자료 사본 · 웹 보기 이미지 재생성, 지식 그래프 재생성, 패치 v2.48.1 + updates 항목, npm run build 통과
+
+## [2026-10-10] ingest | AI 추론 하위 수요 요구 · 삼성 DC SSD 라인업 · GC → 테일 지연 원장
+- 사용자 지시(덱 개편)에 필요한 근거 수집: `sources/articles/ai-inference-ssd-requirements-samsung-lineup-2026-10.md`(IR-A · B · C · D, 원문 사이트 차단으로 대부분 🟡)
+- 추론 = 읽기 대역(KV 손익분기 23.2 → 3.5GB/s, 70B · 128K KV 1초 복원 GPU당 약 5.4GB/s ⚠️) · 꼬리 지연(MLPerf 70B p99 첫 토큰 450ms, TTFT SLO 아래 세션 10.77×) · 쓰기 내구
+- 삼성 라인업: PM1763(Gen6, 2026-07 양산) · PM1753/PM1755(3 DWPD) · PM9D3a · PM1743/PM1745 · BM1743(0.26 DWPD) · BM1773(245.76TB 전시) · SZ985(30 DWPD, 단종) · Z-NAND 7세대(계획). 10 DWPD 이상 현행 제품 없음
+- 새 위키 `wiki/concepts/ai-inference-storage-requirements.md` · `wiki/concepts/ssd-portfolio-expansion-co-design.md`, 역링크(ssd-core-technologies-customer-collaboration · datacenter-types-storage-requirements · qlc-tlc-market-entry), index 갱신
+
+## [2026-10-10] build | 고객 협력 전략 덱 v4.0: 본문 4장 + 참고 4장 구조 개편
+- 사용자 지시: 1장 = 현재 수요 형태와 삼성 대응 현황(추론에 대역 · 꼬리 지연 추가, 하단을 삼성 SSD 포트폴리오로, 결론 제거, 모델명 · 제품 사진), 2장 = 추론 하위 수요 → 요구 → 기술 → 협력(협업 필수), 3장 신설 = 공동 설계로 좋아지는 지표(WAF · Tail Latency, GC 메커니즘) + 포트폴리오 확장 3D, 기존 3장은 뒤로(링크), 마지막은 실행 전략
+- 1장: 추론 카드 5.4GB/s · p99 450ms · 3.2 DWPD, 하단 제품군 × 응용 격자(제품 이미지 + 모델, 대응 중 · 신호 · 공백 = 초고DWPD KV)
+- 2장: 하위 수요 4 × 요구 점 행렬 → 기술 칩(협력 색) → 협력 게이지, 밴드 "AI 추론 수요에 대응하려면, 고객과의 협업이 필수입니다"
+- 3장: WAF −68% · p99.9 −55% 막대 + "참고 5장 ▶" 하이퍼링크, GC 빈도 · 횟수 · 시간 메커니즘(지연 시계열 두 줄), 3D 포트폴리오(scripts/generate_portfolio_3d.py, matplotlib) + 제품 이미지 4
+- 순서 재배열: 1 · 2 · 3 · 4 실행, 참고 5 당위성 · 6 사업 기회 · 7 보안 기회 · 8 수요 전망(노트의 장 번호 참조 갱신)
+- 제품 이미지: 공식 이미지 호스트 차단(403)으로 폼팩터 3D 재현(render_parts drives 모드, assets/products, 출처 줄 "형태 재현" 명시)
+- 렌더 QA PASS(8장). 아웃라인 · 보고서 v4.0(§0 · §2.6 · §7), index 갱신
+- 대시보드: 발표자료 탭 덱 정보(v4.0 · 8장) · 사본 · 웹 보기 이미지 재생성, 지식 그래프 재생성(노드 130), 패치 v2.48.2 + updates 항목, npm run build 통과

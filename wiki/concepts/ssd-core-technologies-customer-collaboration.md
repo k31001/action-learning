@@ -138,5 +138,7 @@ sources:
 - 출하 시 구성의 경계(RUH · RG · SLC 비율): [ssd-configurability-boundary.md](ssd-configurability-boundary.md)
 - 파라미터 민감도 시뮬레이션(RU 크기 · RUH 수 · 분류 정확도, 덱 5장): [fdp-parameter-sensitivity-simulation.md](fdp-parameter-sensitivity-simulation.md)
 - 보안 한 장(2026-10-10, 덱 5장): 온프렘 AI의 가중치 · 기업 데이터 보안 수요와 Confidential Storage 기술 요소 × 고객 협력: [onprem-ai-confidential-storage.md](onprem-ai-confidential-storage.md)
+- AI 추론 하위 수요 × 요구 × 기술 × 협력(2026-10-10, 덱 v4.0 2장): [ai-inference-storage-requirements.md](ai-inference-storage-requirements.md)
+- 공동 설계로 좋아지는 지표(WAF · 꼬리 지연)와 포트폴리오 확장(덱 v4.0 3장): [ssd-portfolio-expansion-co-design.md](ssd-portfolio-expansion-co-design.md)
 - 후보 검토 이력(보안 · GPU 직결 · 전력): [ssd-future-solution-candidates.md](ssd-future-solution-candidates.md)
 - 산출물: [ssd-future-ready-strategy-report.md](../../outputs/report/ssd-future-ready-strategy-report.md)

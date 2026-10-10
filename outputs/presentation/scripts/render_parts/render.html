@@ -197,6 +197,66 @@ if (OBJ === 'ssd') {
   cam = { pos: [0, 88, 96], look: [4, 0, 0], fov: 30 };
 }
 
+// ---------- 데이터센터 SSD 폼팩터 (형태 재현: 실물 사진이 아님) ?obj=drive&ff=u2|e3s|e1s|aic&model=PM1743&l2=...&l3=...
+function labelMat(model, l2, l3, w = 1400, h = 900) {
+  return mat({
+    roughness: 0.55, metalness: 0.0, clearcoat: 0.2,
+    map: tex(w, h, (g, W2, H2) => {
+      g.fillStyle = '#ebedf1'; g.fillRect(0, 0, W2, H2);
+      g.fillStyle = '#1428a0'; g.fillRect(0, 0, W2, H2 * 0.05);
+      g.fillStyle = '#0c1c6e'; g.font = `900 ${H2 * 0.11}px Arial`;
+      g.save(); g.translate(W2 * 0.07, H2 * 0.22); g.scale(1.25, 1); g.fillText('SAMSUNG', 0, 0); g.restore();
+      g.fillStyle = '#16181c'; g.font = `800 ${H2 * 0.25}px Arial`; g.fillText(model, W2 * 0.07, H2 * 0.52);
+      g.fillStyle = '#3c4048'; g.font = `600 ${H2 * 0.085}px Arial`; g.fillText(l2 || '', W2 * 0.07, H2 * 0.68);
+      g.fillStyle = '#5a5f69'; g.font = `500 ${H2 * 0.07}px Arial`; g.fillText(l3 || '', W2 * 0.07, H2 * 0.80);
+      // 바코드 · 2D 코드 (장식)
+      g.fillStyle = '#22252b';
+      let x = W2 * 0.07; for (let i = 0; i < 60; i++) { const bw = (i * 7 % 5 + 1) * W2 * 0.0016; g.fillRect(x, H2 * 0.86, bw, H2 * 0.08); x += bw + W2 * 0.0028; }
+      const qx = W2 * 0.78, qy = H2 * 0.60, qs = H2 * 0.30, n = 13;
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) if (((i * 31 + j * 17 + i * j) % 3 === 0) || i < 3 && j < 3 || i > n - 4 && j < 3 || i < 3 && j > n - 4) g.fillRect(qx + i * qs / n, qy + j * qs / n, qs / n, qs / n);
+    })
+  });
+}
+function enclosure(L, Wd, T, metal, model, l2, l3, lw = 0.84, ld = 0.80) {
+  const shell = box(L, T, Wd, metal, 1.2); shell.position.y = T / 2; G.add(shell);
+  const lab = new THREE.Mesh(new THREE.PlaneGeometry(L * lw, Wd * ld), labelMat(model, l2, l3));
+  lab.rotation.x = -Math.PI / 2; lab.position.set(L * 0.04, T + 0.03, 0); lab.receiveShadow = true; G.add(lab);
+}
+if (OBJ === 'drive') {
+  const FF = P.get('ff') || 'u2', MODEL = P.get('model') || 'PM1743', L2 = P.get('l2') || '', L3 = P.get('l3') || '';
+  const gun = mat({ color: 0x2c2f35, roughness: 0.42, metalness: 0.85, map: noiseTex('#3a3e45', 10, 512, 512, true) });
+  const alu = mat({ color: 0x8d939c, roughness: 0.35, metalness: 0.9, map: noiseTex('#9aa0a8', 14, 512, 512, true) });
+  if (FF === 'u2') {               // 2.5" 15mm U.2: 100.45 × 69.85 × 15
+    enclosure(100.45, 69.85, 15, gun, MODEL, L2, L3);
+    const con = box(2.5, 5, 40, mat({ color: 0x1c1d20, roughness: 0.6 })); con.position.set(-51.3, 4, 0); G.add(con);
+    for (let i = 0; i < 18; i++) { const f = box(0.6, 0.6, 1.2, GOLD); f.position.set(-52.6, 4.5, -16 + i * 1.9); G.add(f); }
+    G.rotation.y = -0.42; cam = { pos: [0, 150, 120], look: [0, 0, 0], fov: 28 };
+  } else if (FF === 'e3s') {        // E3.S 1T: 112.75 × 76 × 7.5
+    enclosure(112.75, 76, 7.5, alu, MODEL, L2, L3, 0.78, 0.74);
+    const pcb = box(6, 1.6, 30, pcbMat('#14301f', false)); pcb.position.set(-58.5, 3.6, 0); G.add(pcb);
+    for (let i = 0; i < 20; i++) { const f = box(4.2, 0.08, 0.9, GOLD); f.position.set(-58.8, 4.45, -13.3 + i * 1.4); G.add(f); }
+    for (let k = 0; k < 2; k++) { const lt = box(2, 1.2, 12, mat({ color: 0x1428a0, roughness: 0.4 })); lt.position.set(54, 7.9, -20 + k * 40); G.add(lt); }
+    G.rotation.y = -0.42; cam = { pos: [0, 150, 125], look: [0, 0, 0], fov: 28 };
+  } else if (FF === 'e1s') {        // E1.S 15mm 방열판: 118.75 × 33.75 × 15
+    const body = box(118.75, 6, 33.75, alu, 0.8); body.position.y = 3; G.add(body);
+    for (let i = 0; i < 9; i++) { const fin = box(96, 9, 1.4, alu); fin.position.set(6, 10.5, -14.5 + i * 3.6); G.add(fin); }
+    const lab = new THREE.Mesh(new THREE.PlaneGeometry(40, 30), labelMat(MODEL, L2, L3, 1000, 760));
+    lab.rotation.x = -Math.PI / 2; lab.position.set(-34, 15.05, 0); G.add(lab);
+    const plate = box(42, 9, 31, gun, 0.6); plate.position.set(-34, 10.5, 0); G.add(plate);
+    for (let i = 0; i < 16; i++) { const f = box(4, 0.08, 0.9, GOLD); f.position.set(-61, 3.05, -11 + i * 1.45); G.add(f); }
+    G.rotation.y = -0.40; cam = { pos: [0, 150, 115], look: [0, 0, 0], fov: 28 };
+  } else {                           // HHHL 애드인 카드: 167.65 × 68.9, 방열 덮개 + 라벨
+    const pcb = box(167.65, 1.6, 68.9, pcbMat('#15171a', true)); pcb.position.y = 0.8; G.add(pcb);
+    const cover = box(150, 8, 60, gun, 1.0); cover.position.set(4, 5.6, -3); G.add(cover);
+    const lab = new THREE.Mesh(new THREE.PlaneGeometry(92, 46), labelMat(MODEL, L2, L3));
+    lab.rotation.x = -Math.PI / 2; lab.position.set(-12, 9.65, -3); G.add(lab);
+    for (let i = 0; i < 7; i++) { const fin = box(40, 1.2, 1.6, alu); fin.position.set(56, 10.2, -24 + i * 7); G.add(fin); }
+    const br = box(2, 18, 72, alu); br.position.set(-84.5, 9, 0); G.add(br);
+    for (let i = 0; i < 32; i++) { const f = box(1.4, 0.08, 6, GOLD); f.position.set(-60 + i * 2.6, 1.62, 31.5); G.add(f); }
+    G.rotation.y = -0.38; cam = { pos: [0, 170, 140], look: [0, 0, 0], fov: 28 };
+  }
+}
+
 if (OBJ === 'server') {
   const Wd = 440, Hh = 87, D = 520;
   const shell = mat({ color: 0x6e737a, roughness: 0.38, metalness: 0.85, map: noiseTex('#8c9199', 18, 512, 512, true) });

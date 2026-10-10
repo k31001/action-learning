@@ -36,6 +36,20 @@ if (WHAT === 'all' || WHAT === 'objects') {
   }
 }
 
+// 데이터센터 SSD 폼팩터: node render.mjs <출력> drives <json 목록 파일>
+if (WHAT === 'drives') {
+  const list = JSON.parse(fs.readFileSync(process.argv[4], 'utf-8'));
+  for (const d of list) {
+    const [w, h] = [1600, 1150];
+    await page.setViewportSize({ width: w, height: h });
+    const q = new URLSearchParams({ obj: 'drive', w, h, ff: d.ff, model: d.model, l2: d.l2 || '', l3: d.l3 || '' });
+    await page.goto(`http://127.0.0.1:${port}/render.html?${q}`);
+    await page.waitForFunction('window.__done === true', null, { timeout: 120000 });
+    await page.locator('canvas').screenshot({ path: path.join(OUT, `${d.id}.png`), omitBackground: true });
+    console.log('rendered', d.id);
+  }
+}
+
 if (WHAT === 'all' || WHAT === 'logos') {
   const L = require('@iconify-json/logos/icons.json');
   const S = require('@iconify-json/simple-icons/icons.json');

@@ -107,3 +107,4 @@ sources:
 - FDP 플랫폼: [fdp-host-ssd-platform.md](fdp-host-ssd-platform.md)
 - 수요 전망: [essd-demand-by-application-2030.md](../concepts/essd-demand-by-application-2030.md)
 - 기존 덱: [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md)
+- 포트폴리오 확장 3D(QLC 0.3 → 1 DWPD로 KV 오프로드 진입, 2026-10-10 덱 v4.0 3장): [ssd-portfolio-expansion-co-design.md](../concepts/ssd-portfolio-expansion-co-design.md)

@@ -17,6 +17,17 @@ export const UPDATES = [
   {
     date: '2026-10-10',
     type: 'build',
+    version: 'v2.48.2',
+    title: '고객 협력 전략 덱 v4.0: 추론 수요 × 삼성 포트폴리오 × 공동 설계 확장',
+    summary:
+      '덱을 본문 4장 + 참고 4장으로 개편. 1장 추론 = 읽기 대역 · 꼬리 지연 · DWPD와 삼성 SSD 포트폴리오 대응 현황(초고DWPD 공백), 2장 추론 하위 수요 × 요구 × 기술 × 고객 협력, 3장 WAF −68% · p99.9 −55% · GC 메커니즘 · 3D 포트폴리오 확장. 위키 새 페이지 2개 · 원장 1개, 발표자료 탭 사본 · 웹 보기 갱신.',
+    tags: ['AI 추론', '꼬리 지연', 'WAF', '포트폴리오', '발표자료'],
+    items: [{ label: '위키', detail: 'ai-inference-storage-requirements.md · ssd-portfolio-expansion-co-design.md (신규)' }, { label: '원장', detail: 'sources/articles/ai-inference-ssd-requirements-samsung-lineup-2026-10.md' }, { label: '덱', detail: 'ssd-future-ready-strategy.pptx v4.0 (8장)' }],
+    links: [{ label: 'wiki/concepts/ssd-portfolio-expansion-co-design.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/ssd-portfolio-expansion-co-design.md' }],
+  },
+  {
+    date: '2026-10-10',
+    type: 'build',
     version: 'v2.48.1',
     title: '핵심 기술 고객 협력 두 단계: 고객 시스템 개발 · 최적화까지 함께',
     summary:
