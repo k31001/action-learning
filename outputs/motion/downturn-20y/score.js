@@ -3,20 +3,20 @@
    120BPM(1박 0.5초) · D단조. 모든 시각은 index.html 타임라인의 초와 같다. */
 const SCORE_LEN = 61;
 const CHORDS = [
-  [0,[50,53,57,62]],                                                        // 인트로 Dm
-  [4,[50,53,57,62]],[5.5,[46,53,58,62]],[7,[43,50,55,58]],[8.6,[45,52,57,61]],  // 곡선: 저점마다 전조
-  [10.2,[46,53,58,62]],[11.3,[48,55,60,64]],                                // 다시 일어섰다
-  [12.5,[50,53,57,62]],[18.5,[46,53,58,62]],[24.5,[43,50,55,58]],[30.5,[45,52,57,61]], // 네 번의 겨울
-  [36.5,[38,50,51,57]],[37.6,[46,53,58,62]],[39,[41,53,57,60]],             // 겨울에 심은 것
-  [40.5,[38,50,51,57]],                                                     // 다음 겨울은 어디서
-  [42,[50,53,57,62]],[47,[43,50,55,58]],[52,[39,51,55,58]],[55,[45,52,57,61]], // 수요발 · 공급발 · 전환발
-  [57,[38,50,54,57,62]],                                                    // 엔딩 D장조
+  [0,[50,53,57,62]],                                                          // 표지 Dm
+  [3.5,[50,53,57,62]],[5.2,[46,53,58,62]],[6.4,[43,50,55,58]],[7.9,[45,52,57,61]],  // 20년 개관: 저점마다 전조
+  [9.1,[46,53,58,62]],[10,[48,55,60,64]],                                     // 2025 반등
+  [11,[50,53,57,62]],[16.5,[46,53,58,62]],[22,[43,50,55,58]],[27.5,[45,52,57,61]],  // 복기 4장
+  [33,[46,53,58,62]],[35.2,[41,53,57,60]],                                    // 교훈
+  [37.5,[38,50,51,57]],                                                       // 다음 다운턴은 어디서
+  [40,[50,53,57,62]],[45,[43,50,55,58]],[50,[39,51,55,58]],[53,[45,52,57,61]],  // 수요발 · 공급발 · 전환발
+  [55,[38,50,54,57,62]],                                                      // 결론 D장조
 ];
-// 임팩트: [시각, 세기] — 화면 박자(스탬프·장 전환·헤드라인 카드)와 같은 초
-const CARD_HITS = [42, 47, 52].flatMap(a => [0, 1, 2].map(j => [a + 1.05 + j * .9, .45]));
-const HITS = [[0,.35],[.9,.55],[2,1],[5.5,.9],[7,.9],[8.6,.95],[10.2,1],[11.3,.5],[12.5,.85],[15.6,.6],[18.5,.8],[20.1,.55],[22.9,.6],[24.5,.8],[30.5,.85],[33.1,1],
-  [36.5,1],[40.6,1.1],[42,.85],[47,.85],[52,.95],[57,1.2], ...CARD_HITS];
-const RISERS = [[1,2,.6],[11,12.5,.9],[35,36.5,1],[39.2,40.5,1],[45.6,47,.7],[50.6,52,.8],[55.6,57,1.1]];
+// 임팩트: [시각, 세기] — 장 전환·저점·주요 사건·헤드라인 카드와 같은 초
+const CARD_HITS = [40, 45, 50].flatMap(a => [0, 1, 2].map(j => [a + 1.0 + j * .8, .35]));
+const HITS = [[0,.3],[1,.6],[3.5,.7],[5.2,.55],[6.4,.55],[7.9,.6],[9.1,.65],[11,.8],[13.6,.45],[16.5,.75],[17.7,.4],[19.8,.5],[22,.75],[27.5,.8],[29.3,.8],
+  [33,.85],[37.5,.95],[40,.8],[45,.8],[50,.85],[55,1.1], ...CARD_HITS];
+const RISERS = [[2.3,3.5,.5],[9.6,11,.8],[31.6,33,.9],[38.6,40,.9],[53.6,55,1]];
 
 function chordAt(t) { let c = CHORDS[0][1]; for (const [a, n] of CHORDS) if (t >= a) c = n; return c; }
 const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
@@ -34,7 +34,7 @@ async function renderScore() {
 
   const master = ctx.createGain(); ramp(master.gain, [[0,.9],[58.8,.9],[60.6,0]]);
   const arc = ctx.createGain(); // 장면별 다이내믹 곡선
-  ramp(arc.gain, [[0,.55],[3.9,.6],[4,.78],[12.4,.85],[12.5,.92],[30.5,1],[36.4,1],[36.6,.62],[40.4,.7],[40.6,.85],[41.9,.75],[42,.95],[61,1]]);
+  ramp(arc.gain, [[0,.55],[3.4,.6],[3.5,.75],[10.9,.82],[11,.9],[27.5,1],[32.9,1],[33.1,.65],[37.4,.7],[37.6,.62],[39.9,.75],[40,.92],[61,1]]);
   const comp = ctx.createDynamicsCompressor();
   comp.threshold.value = -12; comp.ratio.value = 3; comp.attack.value = .004; comp.release.value = .2;
   master.connect(arc); arc.connect(comp); comp.connect(ctx.destination);
@@ -45,7 +45,7 @@ async function renderScore() {
 
   /* 드론 */
   const droneF = ctx.createBiquadFilter(); droneF.type = 'lowpass'; droneF.Q.value = 2;
-  ramp(droneF.frequency, [[0,220],[2,500],[4,320],[12.5,520],[36.5,260],[38,420],[40.5,300],[52,700],[57,1200],[61,500]]);
+  ramp(droneF.frequency, [[0,220],[1.5,500],[3.5,320],[11,520],[33,300],[35.2,420],[37.5,260],[50,700],[55,1200],[61,500]]);
   const droneG = ctx.createGain(); ramp(droneG.gain, [[0,0],[1,.24],[59,.24],[61,0]]);
   droneF.connect(droneG); droneG.connect(bus(.25));
   [[38,-6,'sawtooth',.5],[38,6,'sawtooth',.5],[45,0,'sawtooth',.3],[26,0,'sine',.45]].forEach(([m, cents, type, g]) => {
@@ -53,16 +53,16 @@ async function renderScore() {
     const gg = ctx.createGain(); gg.gain.value = g; o.connect(gg); gg.connect(droneF); o.start(0); o.stop(SCORE_LEN);
   });
   { const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = mtof(39); // 불협 Eb: 겨울·질문 구간
-    const g = ctx.createGain(); ramp(g.gain, [[0,0],[36.4,0],[36.7,.22],[37.5,.22],[37.8,0],[40.4,0],[40.7,.2],[41.9,0],[51.9,0],[52.3,.22],[56.8,.22],[57,0]]);
+    const g = ctx.createGain(); ramp(g.gain, [[0,0],[37.4,0],[37.7,.22],[39.8,.22],[40,0],[49.9,0],[50.3,.22],[54.8,.22],[55,0]]);
     o.connect(g); g.connect(droneF); o.start(0); o.stop(SCORE_LEN); }
 
   /* 현악 패드 */
-  const padLvl = t => t < 4 ? .8 : t < 36.5 ? 1 : t < 42 ? .9 : t < 57 ? .95 : 1.4;
+  const padLvl = t => t < 3.5 ? .8 : t < 33 ? 1 : t < 40 ? .9 : t < 55 ? .95 : 1.4;
   CHORDS.forEach(([t0, notes], i) => {
     const t1 = i + 1 < CHORDS.length ? CHORDS[i + 1][0] : SCORE_LEN;
-    const f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = t0 >= 57 ? 2600 : t0 >= 37.6 && t0 < 40.5 ? 1800 : 1100; f.Q.value = .7;
+    const f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = t0 >= 55 ? 2600 : t0 >= 33 && t0 < 37.5 ? 1800 : 1100; f.Q.value = .7;
     const g = ctx.createGain(); const lv = .05 * padLvl(t0) * 4 / notes.length, a = Math.max(0, t0 - .05);
-    g.gain.setValueAtTime(0, a); g.gain.linearRampToValueAtTime(lv, t0 + (t0 >= 57 ? 1.2 : .5)); g.gain.setValueAtTime(lv, Math.max(t0 + .6, t1 - .05)); g.gain.linearRampToValueAtTime(0, t1 + .8);
+    g.gain.setValueAtTime(0, a); g.gain.linearRampToValueAtTime(lv, t0 + (t0 >= 55 ? 1.4 : .5)); g.gain.setValueAtTime(lv, Math.max(t0 + .6, t1 - .05)); g.gain.linearRampToValueAtTime(0, t1 + .8);
     f.connect(g); g.connect(bus(.5));
     notes.forEach(m => [-8, 8].forEach(dc => { const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = mtof(m); o.detune.value = dc; o.connect(f); o.start(a); o.stop(t1 + .9); }));
   });
@@ -77,7 +77,7 @@ async function renderScore() {
     const g = ctx.createGain(); g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(lvl, t + .005); g.gain.exponentialRampToValueAtTime(.0001, t + .22);
     o.connect(f); f.connect(g); g.connect(ostBus); o.start(t); o.stop(t + .25);
   };
-  [[4,12.5,.8,700,1500,0],[12.5,36.4,1,1100,1700,0],[30.5,36.4,.55,1500,2200,12],[42,56.9,.85,1000,2400,0],[52,56.9,.5,1800,2800,12],[37.6,40.4,.35,600,1200,0]].forEach(([a, b, lvl, c0, c1, oct]) =>
+  [[3.5,11,.75,700,1400,0],[11,32.9,1,1100,1700,0],[27.5,32.9,.5,1500,2200,12],[40,54.9,.85,1000,2400,0],[50,54.9,.45,1800,2800,12],[33,37.4,.35,700,1300,0]].forEach(([a, b, lvl, c0, c1, oct]) =>
     every(a, b, STEP, (t, k) => {
       let r = chordAt(t)[0]; while (r > 50) r -= 12; while (r < 38) r += 12;
       pluck(t, r + PAT[k % 8] + oct, .16 * lvl * ACC[k % 8], c0 + (c1 - c0) * (t - a) / (b - a));
@@ -90,27 +90,27 @@ async function renderScore() {
     const gg = ctx.createGain(); gg.gain.setValueAtTime(.0001, t); gg.gain.linearRampToValueAtTime(g, t + .004); gg.gain.exponentialRampToValueAtTime(.0001, t + .4);
     o.connect(gg); gg.connect(kickBus); o.start(t); o.stop(t + .45);
   };
-  every(4, 12.4, .5, t => kick(t, .75));
-  every(12.5, 36.4, .5, (t, k) => { kick(t, .85); if (k % 4 === 3) kick(t + .25, .45); });
-  every(38.5, 40.4, 1, t => kick(t, .5));
-  every(42, 56.9, .5, (t, k) => { kick(t, .88); if (k % 4 === 3) kick(t + .25, .4); });
+  every(3.5, 10.9, .5, t => kick(t, .7));
+  every(11, 32.9, .5, (t, k) => { kick(t, .85); if (k % 4 === 3) kick(t + .25, .45); });
+  every(35.5, 37.4, 1, t => kick(t, .45));
+  every(40, 54.9, .5, (t, k) => { kick(t, .88); if (k % 4 === 3) kick(t + .25, .4); });
   const hatBus = bus(.08);
   const hat = (t, g) => {
     const s = noiseSrc(t, .05); const f = ctx.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 7500;
     const gg = ctx.createGain(); gg.gain.setValueAtTime(g, t); gg.gain.exponentialRampToValueAtTime(.0001, t + .04);
     s.connect(f); f.connect(gg); gg.connect(hatBus);
   };
-  every(4, 12.4, .25, (t, k) => hat(t, k % 2 ? .02 : .035));
-  every(12.5, 36.4, .125, (t, k) => hat(t, k % 4 === 2 ? .06 : k % 2 ? .02 : .035));
-  every(42, 56.9, .125, (t, k) => hat(t, k % 4 === 2 ? .06 : .028));
+  every(3.5, 10.9, .25, (t, k) => hat(t, k % 2 ? .02 : .035));
+  every(11, 32.9, .125, (t, k) => hat(t, k % 4 === 2 ? .06 : k % 2 ? .02 : .035));
+  every(40, 54.9, .125, (t, k) => hat(t, k % 4 === 2 ? .06 : .028));
   const clickBus = bus(.3);
   const tick = (t, k) => {
     const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = k % 2 ? 1650 : 2200;
     const g = ctx.createGain(); g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.07, t + .002); g.gain.exponentialRampToValueAtTime(.0001, t + .03);
     o.connect(g); g.connect(clickBus); o.start(t); o.stop(t + .05);
   };
-  every(36.6, 40.4, .5, tick);
-  every(42, 56.9, .25, (t, k) => { // 뉴스 텔레타이프
+  every(37.5, 39.9, .5, tick);
+  every(40, 54.9, .25, (t, k) => { // 뉴스 텔레타이프
     const o = ctx.createOscillator(); o.type = 'square'; o.frequency.value = k % 3 ? 2600 : 3100;
     const g = ctx.createGain(); g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.018, t + .002); g.gain.exponentialRampToValueAtTime(.0001, t + .02);
     o.connect(g); g.connect(clickBus); o.start(t); o.stop(t + .03);
@@ -148,7 +148,7 @@ async function renderScore() {
   });
   RISERS.forEach(([a, b, l]) => riser(a, b, l));
   HITS.forEach(([t, l]) => hit(t, l));
-  bells(.1, [74, 81, 86]); bells(37.8, [70, 74, 77, 82], .04); bells(57.2, [74, 78, 81, 86], .05);
+  bells(.1, [74, 81, 86]); bells(35.2, [70, 74, 77, 82], .04); bells(55.2, [74, 78, 81, 86], .05);
 
   const buf = await ctx.startRendering();
   let peak = 0; for (let c = 0; c < 2; c++) { const d = buf.getChannelData(c); for (let i = 0; i < d.length; i++) { const v = Math.abs(d[i]); if (v > peak) peak = v; } }

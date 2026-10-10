@@ -1,103 +1,105 @@
 <title>네 번의 겨울</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap">
 <style>
-/* Layout: 1920×1080 무대(16:9)를 화면 폭에 맞춰 축소, 아래 재생 컨트롤. 화이트 단일 룩 — TV 광고형 키네틱 타이포 + 웨이퍼 다이 + 데이터 키워드. */
+/* Layout: samsung-memory-ppt-design-skill v2.1 덱 골격(20 x 11.25in = 1920 x 1080px, 1in = 96px)을 장면마다 적용.
+   상단 줄 0.40in · 제목 0.86in(32pt 2줄) · 구분선 2.12in · 본문 2.34-9.45in · Blue 밴드 9.60in · 출처 줄 10.50in.
+   1pt = 1.333px: 제목 43px · 구획 제목 32px · 본문 24-29px · 빅넘버 64px · 눈금 22px · 출처 20px. */
 :root{
-  --paper:#ffffff;      /* 무대 바탕 */
-  --page:#eef1f6;       /* 무대 바깥 페이지 */
-  --ink:#0b1020;        /* 메시지 */
-  --blue:#1428a0;       /* Samsung Blue — 유일한 액센트 */
-  --blue-2:#3355e0;     /* 블루 하이라이트 */
-  --frost:#dfe4ee;      /* 얼어붙은 다이·비강조 */
-  --steel:#7d879f;      /* 라벨·연도 */
-  --red:#e3342f;        /* 하락·리스크에만 */
-  --f-sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
-  --f-serif:"Noto Serif KR","AppleMyungjo","Batang",serif;
+  --samsung-blue:#1428a0;   /* 유일한 액센트 */
+  --blue-t1:#3c5ac8;
+  --blue-t2:#aab8e8;
+  --tint:#eef1fa;
+  --ink:#1a1a1a;            /* 순수 검정 금지 */
+  --gray:#555555;           /* 보조 텍스트·축 */
+  --gray-2:#8a8a8a;         /* 경쟁사 계열 */
+  --line:#d9d9d9;
+  --pale:#f5f5f5;
+  --bg:#ffffff;
+  --negative:#d93025;       /* 리스크 의미에만 */
+  --page:#eef0f4;           /* 무대 바깥 페이지 */
+  --f:"SamsungOneKorean","SamsungOne","Pretendard","Noto Sans KR",Arial,sans-serif;
   color-scheme:light;
 }
 html,body{background:var(--page);color:var(--ink)}
-body{font-family:var(--f-sans);padding-inline:16px;padding-block:16px 24px}
+body{font-family:var(--f);padding-inline:16px;padding-block:16px 24px}
 .player{max-width:1600px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
-.viewport{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:var(--paper);border-radius:6px;box-shadow:0 1px 2px rgba(11,16,32,.06),0 12px 40px rgba(11,16,32,.08)}
-.stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--paper);word-break:keep-all;font-feature-settings:"tnum"}
+.viewport{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:var(--bg);border:1px solid var(--line)}
+.stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--bg);word-break:keep-all;font-feature-settings:"tnum";color:var(--ink)}
 .stage *,.stage *::before,.stage *::after{box-sizing:border-box}
 #bg{position:absolute;inset:0;width:1920px;height:1080px}
-#cam{position:absolute;inset:0}
 .scene{position:absolute;inset:0;visibility:hidden;opacity:0}
-.abs{position:absolute}
-.k{font-weight:900;letter-spacing:-.045em;line-height:1.04;color:var(--ink);white-space:nowrap}
-.eb{font-size:40px;font-weight:700;color:var(--steel);letter-spacing:-.01em}
-.lab{font-size:36px;font-weight:700;color:var(--steel)}
-.b{color:var(--blue)}.r{color:var(--red)}.s{color:var(--steel)}
-.ln{display:block;overflow:hidden;padding-bottom:.05em}
-.ln>span{display:inline-block;will-change:transform}
-.spot{position:absolute;inset:0;background:radial-gradient(1100px 520px at 50% 48%,rgba(255,255,255,.97),rgba(255,255,255,.8) 55%,rgba(255,255,255,0) 100%)}
+.a{position:absolute}
+.b{color:var(--samsung-blue)}.n{color:var(--negative)}.g{color:var(--gray)}
 
-/* 다운턴 장 왼쪽 열 */
-.lc{left:120px;top:140px;width:800px;display:flex;flex-direction:column;gap:22px}
-.yr2{font-size:60px;font-weight:700;color:var(--steel);letter-spacing:-.02em}
-.verb{font-size:150px}
-.why{display:flex;gap:18px;align-items:baseline;font-size:42px;font-weight:700;line-height:1.3}
-.why>span:last-child{text-wrap:balance}
-.tag{flex:0 0 auto;font-size:32px;font-weight:700;color:#fff;background:var(--steel);border-radius:4px;padding:2px 14px;position:relative;top:-6px}
-.tag.b{background:var(--blue);color:#fff}
-.tag.r{background:var(--red);color:#fff}
+/* 덱 골격 */
+.top{position:absolute;left:76px;top:38px;font-size:24px;color:var(--gray);white-space:pre}
+.top b{color:var(--samsung-blue);font-weight:700}
+.grade{position:absolute;right:76px;top:38px;font-size:24px;color:var(--gray)}
+.ttl{position:absolute;left:76px;top:83px;width:1768px;height:108px;display:flex;flex-direction:column;justify-content:center;font-size:43px;font-weight:700;line-height:1.1;letter-spacing:-.01em}
+.rule{position:absolute;left:76px;top:204px;width:1768px;height:2px;background:var(--line)}
+.band{position:absolute;left:76px;top:922px;width:1768px;height:77px;background:var(--samsung-blue);display:flex;align-items:center}
+.band .bt{flex:0 0 168px;padding-left:38px;font-size:27px;color:var(--blue-t2)}
+.band .bx{font-size:32px;font-weight:700;color:#fff;white-space:nowrap}
+.src{position:absolute;left:76px;top:1008px;width:1622px;font-size:20px;line-height:1.3;color:var(--gray)}
+.pg{position:absolute;right:76px;top:1008px;font-size:21px;color:var(--gray)}
+.ph{position:absolute;display:flex;align-items:center;gap:16px;font-size:32px;font-weight:700;white-space:nowrap}
+.ph i{font-style:normal;flex:0 0 46px;height:46px;border-radius:50%;background:var(--samsung-blue);color:#fff;font-size:24px;display:flex;align-items:center;justify-content:center}
+.lab{font-size:24px;color:var(--gray)}
+.big{font-size:64px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.tag{display:inline-block;font-size:22px;font-weight:700;color:var(--samsung-blue);border:2px solid var(--samsung-blue);border-radius:4px;padding:0 10px;line-height:1.4}
 
-/* 로고·워드마크 */
-.logo{display:flex;align-items:center;height:56px}
-.logo svg{height:100%;width:auto;max-width:210px;display:block}
-.logo.sm svg{height:40px}
-.logo.sk svg{height:96px;max-width:200px;margin-block:-20px}
-.wm{display:inline-block;font-size:36px;font-weight:900;letter-spacing:-.01em;color:var(--ink);border:3px solid var(--ink);border-radius:6px;padding:0 14px;line-height:1.3}
-.wm.g{color:var(--steel);border-color:var(--steel)}
+/* 로고 (11.F: 워드마크 0.25-0.30in, 심볼형 0.34-0.46in) · 워드마크 칩 */
+.logo{display:inline-flex;align-items:center}
+.logo svg{height:27px;width:auto;display:block}
+.logo.sk svg{height:42px}
+.tile .logo.sk svg{height:70px}
+.wm{display:inline-block;font-size:22px;font-weight:700;color:var(--ink);border:2px solid var(--ink);border-radius:4px;padding:0 10px;line-height:1.35}
+.wm.x{color:var(--gray-2);border-color:var(--gray-2)}
 
-/* 막대·행 */
-.row{position:absolute;left:0;width:860px;height:62px;display:flex;align-items:center}
-.row .cell{width:230px;flex:0 0 230px}
-.row .bar{height:44px;background:var(--frost);border-radius:0 6px 6px 0;transform-origin:0 50%}
-.row .bar.me{background:var(--blue)}
-.row .pv{font-size:40px;font-weight:900;margin-left:16px;white-space:nowrap}
-.tile{position:absolute;width:272px;height:170px;border-radius:10px;border:3px solid var(--frost);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
-.tile.me{border-color:var(--blue)}
+/* 차트 요소 */
+.hb{position:absolute;height:40px;transform-origin:0 50%}
+.vb{position:absolute;transform-origin:50% 100%}
+.v{position:absolute;font-size:26px;font-weight:700;white-space:nowrap}
+.x{position:absolute;font-size:22px;color:var(--gray);white-space:nowrap;text-align:center}
+.tile{position:absolute;width:280px;height:150px;border:2px solid var(--line);border-radius:4px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.tile.me{border-color:var(--samsung-blue)}
 .tile.ghost{border-style:dashed}
-.st23 .lab{white-space:nowrap}
-.tile .t2{font-size:28px;font-weight:700;color:var(--steel)}
-.ev{font-size:40px;font-weight:700;line-height:1.3}
-.ev b{font-weight:900}
-.act{position:absolute;left:0;width:860px;height:96px;display:flex;align-items:center;gap:30px;border-bottom:3px solid var(--frost)}
-.act .cell{width:230px;flex:0 0 230px}
-.act .t{font-size:44px;font-weight:900}
-
-/* 시나리오 헤드라인 카드 */
-.card{position:absolute;left:800px;width:1000px;height:228px;background:#fff;border-top:6px solid var(--ink);box-shadow:0 2px 0 var(--frost),0 18px 40px rgba(11,16,32,.10);padding:20px 36px 0}
-.card .meta{display:flex;gap:16px;align-items:center;font-size:28px;font-weight:700;color:var(--steel)}
-.card .meta .v{color:#fff;background:var(--red);border-radius:3px;padding:0 10px}
-.card .h{font-family:var(--f-serif);font-weight:900;font-size:50px;line-height:1.26;letter-spacing:-.03em;margin-top:10px;color:var(--ink)}
-.lane .big{font-size:180px;font-weight:900;letter-spacing:-.05em;line-height:1}
-.lane .pr{font-size:150px;font-weight:900;letter-spacing:-.05em;line-height:1}
-.lane .mech{font-size:48px;font-weight:700;line-height:1.35}
-.wipe{position:absolute;inset:0;background:var(--blue);clip-path:inset(0 100% 0 0);pointer-events:none}
+.tile .t2{font-size:22px;font-weight:700;color:var(--gray)}
+.tl-item{position:absolute;left:0;display:flex;gap:22px;align-items:baseline}
+.tl-item .d{flex:0 0 150px;font-size:24px;font-weight:700;color:var(--samsung-blue)}
+.tl-item .t{font-size:28px;font-weight:700}
+.dia{position:absolute;width:18px;height:18px;background:var(--samsung-blue);transform:rotate(45deg)}
+.box{position:absolute;border-radius:4px;background:var(--pale);border:1.5px solid var(--line);display:flex;flex-direction:column;justify-content:center;padding:0 22px;gap:4px}
+.box.on{background:var(--samsung-blue);border-color:var(--samsung-blue);color:#fff}
+.box .d{font-size:22px;font-weight:700;color:var(--samsung-blue)}
+.box.on .d{color:var(--blue-t2)}
+.box .t{font-size:26px;font-weight:700;line-height:1.25}
+.arr{position:absolute;width:0;height:0;border-left:18px solid var(--gray-2);border-top:12px solid transparent;border-bottom:12px solid transparent}
+.news{position:absolute;left:880px;width:964px;height:184px;background:#fff;border:1.5px solid var(--line);border-top:4px solid var(--ink);padding:16px 28px 0}
+.news .m{display:flex;gap:14px;align-items:center;font-size:22px;color:var(--gray)}
+.news .m b{font-weight:700;color:var(--gray);border:1.5px solid var(--gray-2);border-radius:3px;padding:0 8px}
+.news .h{font-size:32px;font-weight:700;line-height:1.3;margin-top:8px}
 
 /* 컨트롤 (페이지 UI) */
-.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font:500 13px var(--f-sans);color:#4a5370}
-.btn{appearance:none;border:1px solid #cdd4e3;background:#fff;color:var(--ink);font:700 13px var(--f-sans);padding:8px 14px;border-radius:4px;cursor:pointer}
-.btn:hover{border-color:var(--blue)}
-.btn:focus-visible,#scrub:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.btn.play{background:var(--blue);border-color:var(--blue);color:#fff;min-width:84px}
-.btn.snd{border-color:var(--blue);color:var(--blue);min-width:108px}
-.btn.snd.on{background:var(--blue);color:#fff}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font:400 13px var(--f);color:var(--gray)}
+.btn{appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);font:700 13px var(--f);padding:8px 14px;border-radius:4px;cursor:pointer}
+.btn:hover{border-color:var(--samsung-blue)}
+.btn:focus-visible,#scrub:focus-visible{outline:2px solid var(--samsung-blue);outline-offset:2px}
+.btn.play{background:var(--samsung-blue);border-color:var(--samsung-blue);color:#fff;min-width:84px}
+.btn.snd{border-color:var(--samsung-blue);color:var(--samsung-blue);min-width:108px}
+.btn.snd.on{background:var(--samsung-blue);color:#fff}
 #time{font-variant-numeric:tabular-nums;min-width:84px}
 .scrubwrap{flex:1 1 240px;min-width:0;display:flex;align-items:center}
-#scrub{width:100%;accent-color:var(--blue)}
-.note{font-size:12px;color:#6b7491;line-height:1.6;margin:0}
+#scrub{width:100%;accent-color:var(--samsung-blue)}
+.note{font-size:12px;color:var(--gray);line-height:1.6;margin:0}
 .player:fullscreen{max-width:none;background:var(--page);justify-content:center;padding:16px}
 .player:fullscreen .viewport{width:min(100%,calc((100vh - 90px) * 16 / 9));margin:0 auto}
 body.export{padding:0;margin:0}
 body.export .player{max-width:none;gap:0}
 body.export .controls,body.export .note{display:none}
-body.export .viewport{border-radius:0;box-shadow:none}
+body.export .viewport{border:0}
 </style>
 
 <template id="lg-samsung"><svg role="img" aria-label="Samsung" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 79"><path fill="#1428a0" d="M486.109 34.442v10.675h7.502V55.71c.02.81-.015 1.677-.128 2.422l-.063.361q-.018.122-.045.249l-.06.26l-.038.134l-.087.275c-.675 1.95-2.706 4.422-7.27 4.422c-4.861 0-6.813-2.837-7.346-4.83l-.063-.261l-.047-.249c-.135-.816-.192-1.837-.192-2.783V22.256c0-1.052.063-2.192.253-3.12l.129-.565l.03-.12l.07-.248l.042-.129l.093-.266c.694-1.848 2.528-4.31 6.991-4.31c3.446 0 5.3 1.404 6.292 2.855l.176.272q.083.135.156.272l.139.268l.122.264l.105.257l.091.247l.077.238l.065.224l.052.21l.042.192q.03.145.053.304l.043.327l.02.17l.044.514l.03.492l.026.672l.007.345v4.062h18.433l.004-2.529l.012-.904l-.004-.701l-.016-.817l-.015-.439l-.033-.685l-.047-.702l-.04-.469C510.466 6.08 501.177 1.325 489.875.498l-.756-.05l-.762-.037a53 53 0 0 0-1.152-.036l-.774-.01l-.39-.002l-.777.005l-.386.007l-.77.021l-.765.033l-.758.044l-.752.055q-.375.031-.746.068l-.739.08q-.183.02-.366.044l-.728.098c-1.689.243-3.313.59-4.853 1.053l-.655.206c-7.142 2.343-12.332 7.325-13.398 16.36l-.11 1.003l-.075.777l-.07.814l-.059.81c-.033.53-.055 1.028-.055 1.44l.002 31.168l.005.387l.016.588l.018.412l.026.44l.033.479l.042.527l.081.905l.069.694c1.034 11.484 9.738 16.592 20.388 17.797l.746.078c1.249.12 2.522.186 3.81.206l.775.005l.78-.005a48 48 0 0 0 3.827-.206l.75-.078c10.684-1.205 19.33-6.313 20.383-17.797l.085-1.012l.063-.857l.057-.96l.034-.827l.03-1.17V34.441zM359.006 2.332h-18.511V56.48c.029.944 0 2.004-.163 2.781l-.054.236l-.068.25a7 7 0 0 1-.082.264l-.096.275c-.699 1.862-2.478 4.291-6.734 4.291c-3.991 0-5.813-2.192-6.577-4.008l-.111-.283l-.05-.138l-.087-.27l-.072-.258l-.031-.123l-.051-.236c-.185-.777-.209-1.837-.185-2.78V2.33h-18.506V54.8l-.004.421l.007.738l.026 1.085l.05 1.32l.036.663l.024.353l.023.259c.907 9.707 6.602 14.76 14.645 16.874l.685.172a37 37 0 0 0 4.703.791l.759.074l.767.062l.775.05q.585.034 1.177.054l.794.022l.8.01l.403.002l.806-.005l.4-.007l.795-.022q.594-.02 1.18-.053l.775-.05l.769-.063l.76-.074c10.826-1.15 18.948-6.079 20.066-17.837l.015-.117l.03-.308l.045-.614l.04-.744l.022-.537l.023-.824l.006-.536l-.002-.503l-.012-.454l-.01-.202zm-170.087 0l-9.234 57.215l-9.229-57.215h-29.86l-1.584 73.194h18.294l.495-67.758l12.587 67.758h18.56l12.598-67.758l.497 67.758h18.34l-1.637-73.194zm-110.557 0L64.804 75.526h19.771L94.793 7.768l9.972 67.758h19.634L110.897 2.332zm345.339 58.93l-17.237-58.93h-27.162v72.431h17.968l-1.043-60.815l18.511 60.815h26.05V2.332h-18.085zM257.497 21.381c-.325-1.446-.231-2.981-.063-3.784q.071-.32.17-.642l.108-.321c.73-2.03 2.439-3.936 6.356-3.936c4.227 0 6.706 2.636 6.706 6.59v4.476h18.045v-5.101c0-11.513-7.535-15.942-15.586-17.494l-.663-.121l-.664-.109l-.665-.097l-.664-.085l-.664-.075l-.661-.064q-.33-.03-.659-.054l-.654-.045l-.65-.036l-.645-.028l-.639-.02l-.63-.014l-.932-.007l-.41.002l-.817.012l-.406.01l-.806.03q-.4.017-.798.04l-.79.055c-11.01.842-19.6 5.364-21.319 15.968c-.508 3.23-.634 6.096.175 9.754c1.274 6.011 6.282 10.289 12.03 13.876l.89.547l.448.27l.903.531l.908.524l.912.515l1.368.76l3.594 1.97l.874.484l.858.482l.841.482l.821.482c3.918 2.332 7.057 4.696 8.186 7.523c.625 1.68.489 3.796.187 5.147l-.052.218a8 8 0 0 1-.287.969l-.126.317c-.832 1.942-2.649 3.598-6.642 3.598c-4.554 0-7.296-2.618-7.296-6.565l-.006-7.024H238.26v5.584c0 13.105 8.315 18.798 18.729 20.488l.775.118q.779.11 1.57.193l.795.076q1.398.12 2.821.162l.815.018l.409.004l.409.002q.408 0 .814-.006l.808-.018l.4-.013l.799-.036q.397-.02.79-.047l.783-.06q.779-.067 1.541-.16l.758-.098l.749-.112q.372-.059.739-.125l.73-.138c8.815-1.766 15.374-6.555 16.69-15.763c.182-1.374.294-2.642.354-3.802l.032-.756q.007-.186.011-.367l.012-.707v-.675l-.01-.642l-.022-.609l-.03-.574l-.017-.275l-.04-.524l-.046-.49l-.05-.455l-.08-.617l-.083-.538l-.109-.593l-.05-.243c-1.271-6.374-6.851-10.876-13.05-14.582l-.89-.524l-.896-.514l-.899-.505l-1.35-.74l-1.79-.961l-3.055-1.625l-1.256-.68l-.41-.225l-.804-.448l-.782-.447c-3.846-2.23-6.753-4.42-7.377-6.961M19.455 21.2c-.332-1.383-.28-2.838-.11-3.684l.07-.316l.08-.314c.61-2.198 2.277-4.463 6.585-4.463c4.281 0 6.802 2.66 6.802 6.648v4.53H51.14V18.46c0-10.986-6.835-15.6-14.472-17.405l-.666-.15a36 36 0 0 0-1.677-.317l-.673-.104l-.673-.093l-.673-.081l-.67-.07a47 47 0 0 0-.669-.061l-.664-.05l-.66-.042l-.656-.033l-.65-.024l-.641-.017l-.95-.013h-.311q-.411 0-.818.006l-.812.017q-.808.024-1.6.07l-.79.054l-.391.032l-.777.072q-.387.039-.768.085l-.76.098q-.942.13-1.856.302l-.725.144l-.715.158l-.703.172q-.35.09-.692.186l-.681.2C7.262 3.774 2.155 8.342.867 16.268c-.532 3.281-.624 6.167.145 9.866c1.354 6.39 6.874 10.842 13.05 14.582l.908.542l.457.268l.917.528l1.382.779l1.84 1.014l2.712 1.487l1.318.734l1.281.73l.83.488q.204.121.406.244l.796.489c3.39 2.124 6.046 4.311 7.07 6.876c.672 1.667.515 3.784.198 5.178l-.054.226a9 9 0 0 1-.294.958l-.127.315c-.852 1.976-2.683 3.671-6.728 3.671c-4.572 0-7.307-2.663-7.307-6.664l-.026-7.043H0v5.596c0 15.71 11.845 20.874 24.963 21.262l.821.018l.824.006l.815-.005q.61-.009 1.21-.03l.8-.036q.595-.03 1.183-.076l.78-.066l.77-.078q.384-.042.764-.09l.753-.105q.376-.055.745-.117l.735-.13c9.129-1.71 15.932-6.551 17.302-16.022a47 47 0 0 0 .373-3.752l.036-.75l.022-.717a40 40 0 0 0 .01-.687l-.003-.655l-.013-.623l-.022-.59l-.03-.559l-.037-.526l-.042-.493l-.072-.678l-.077-.602l-.104-.685l-.118-.665c-1.267-6.298-6.68-10.78-12.771-14.465l-.896-.533l-.45-.263l-.907-.518l-.909-.509l-.91-.5l-.91-.491l-4.012-2.13l-1.284-.688l-.833-.454l-.813-.452l-.79-.45l-.385-.225l-.75-.448c-3.316-2.02-5.75-4.04-6.313-6.354"/></svg></template>
@@ -108,94 +110,9 @@ body.export .viewport{border-radius:0;box-shadow:none}
   <div class="viewport" id="viewport">
     <div class="stage" id="stage">
       <canvas id="bg" width="1920" height="1080"></canvas>
-      <div id="cam">
-
-        <!-- 1 · 인트로 -->
-        <section class="scene" id="s1">
-          <div class="abs eb" style="left:1004px;top:262px" id="s1e">메모리 다운턴 복기 · 2006 — 2026</div>
-          <div class="abs k" style="left:1000px;top:330px;font-size:230px"><div class="ln"><span>20년,</span></div></div>
-          <div class="abs k" style="left:1004px;top:590px;font-size:132px"><div class="ln"><span>네 번의 <span class="b">겨울</span>.</span></div></div>
-        </section>
-
-        <!-- 2 · 20년 매출 곡선 -->
-        <section class="scene" id="s2">
-          <svg class="abs" id="chart" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080"></svg>
-          <div class="abs eb" style="left:120px;top:84px" id="s2e">전체 메모리(DRAM+NAND) 연 매출 · $B</div>
-          <div class="abs k" style="left:116px;top:140px;font-size:100px" id="s2t"><div class="ln"><span>그리고, 다시 <span class="b">일어섰다.</span></span></div></div>
-        </section>
-
-        <!-- 3 · 네 번의 겨울 -->
-        <section class="scene dt" id="s3a" data-k="0">
-          <div class="abs" style="left:960px;top:140px;width:840px" id="pr08">
-            <div class="lab">512Mb DDR2 현물가 · 2007 → 2008</div>
-            <div class="k" style="font-size:120px;margin-top:4px"><span id="p08">$6.80</span> <span class="r" id="p08d">−93%</span></div>
-          </div>
-          <div class="abs lab" style="left:960px;top:368px" id="sh08l">치킨게임 직전 DRAM 점유율</div>
-          <div class="abs" style="left:960px;top:420px;width:860px;height:420px" id="r08"></div>
-          <div class="abs ev" style="left:960px;top:866px;width:860px" id="e08">2008년 4분기 영업이익률 · <b class="b">삼성 −14%</b> <span class="s">vs</span> <b class="r">경쟁사 −40% 이하</b></div>
-        </section>
-
-        <section class="scene dt" id="s3b" data-k="1">
-          <div class="abs" style="left:960px;top:140px" id="lb12"><span class="lab">DRAM 공급사</span></div>
-          <div class="abs k b" style="left:960px;top:188px;font-size:120px" id="n12">6강</div>
-          <div class="abs" style="left:960px;top:340px;width:860px;height:370px" id="t12"></div>
-          <div class="abs" style="left:960px;top:730px;width:860px;display:flex;flex-direction:column;gap:6px" id="e12">
-            <div class="ev"><b class="r">2012.02</b> 엘피다 파산 · 부채 4,480억 엔</div>
-            <div class="ev"><b>2012</b> SK, 하이닉스 인수</div>
-            <div class="ev"><b>2013</b> 마이크론, 엘피다 인수 (~$2.5B)</div>
-            <div class="ev"><b class="b">→ 3강 과점 완성</b></div>
-          </div>
-        </section>
-
-        <section class="scene dt" id="s3c" data-k="2">
-          <div class="abs" style="left:960px;top:140px;width:860px" id="tp19">
-            <div class="lab">DRAM 산업 매출 · 2018 → 2019</div>
-            <div class="k" style="font-size:104px;margin-top:4px">$99.4B → $62.0B</div>
-            <div class="k r" style="font-size:80px;margin-top:2px" id="d19">−37.6%</div>
-          </div>
-          <div class="abs" style="left:960px;top:470px;width:860px;height:300px" id="a19"></div>
-          <div class="abs" style="left:960px;top:800px;display:flex;align-items:baseline;gap:24px" id="r19"><span class="lab" style="color:var(--ink)">1Q20 삼성 DRAM 점유율</span><span class="k b" style="font-size:120px">44.1%</span></div>
-        </section>
-
-        <section class="scene dt" id="s3d" data-k="3">
-          <div class="abs lab" style="left:960px;top:140px" id="lb23">DRAM 분기 매출 · $B</div>
-          <div class="abs" style="left:1440px;top:120px;text-align:right;width:360px" id="m23w"><div class="k r" style="font-size:130px" id="m23">−62%</div><div class="lab" style="color:var(--ink)">3분기 만에 · 사상 최속</div></div>
-          <svg class="abs" id="q23" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080"></svg>
-          <div class="abs" style="left:960px;top:720px;display:flex;gap:46px" id="st23" class="st23">
-            <div><div class="k r" style="font-size:104px" id="l23">0.00조</div><div class="lab" style="color:var(--ink)">2023 DS 영업손실 · 사상 최대</div></div>
-            <div><div class="k r" style="font-size:104px">+76.6%</div><div class="lab" style="color:var(--ink)">DS 재고 16.5 → 29.1조</div></div>
-          </div>
-        </section>
-
-        <!-- 4 · 교훈 -->
-        <section class="scene" id="s4">
-          <div class="spot"></div>
-          <div class="abs k" style="left:0;width:1920px;text-align:center;top:250px;font-size:130px" id="s4a"><div class="ln"><span>승부는 <span class="b">겨울</span>에</span></div><div class="ln"><span>심은 것에서 갈렸다.</span></div></div>
-          <div class="abs" style="left:0;width:1920px;top:620px;display:flex;flex-direction:column;align-items:center;gap:18px" id="s4b">
-            <div class="why" style="font-size:52px"><span class="tag b" style="font-size:38px">심은 것</span>40nm DDR3 · Line-16 · 1z DRAM</div>
-            <div class="why" style="font-size:52px"><span class="tag r" style="font-size:38px">놓친 것</span>2019 HBM 전담팀 축소 → HBM 주도권</div>
-          </div>
-        </section>
-
-        <!-- 5 · 시나리오: 다운턴의 발원 -->
-        <section class="scene" id="s5">
-          <div class="abs eb" style="left:0;width:1920px;text-align:center;top:330px;font-size:48px" id="s5e">시나리오 플래닝 · 다음 다운턴은 왜 오는가</div>
-          <div class="abs k" style="left:0;width:1920px;text-align:center;top:410px;font-size:150px" id="s5t"><div class="ln"><span>다음 겨울은 <span class="b">어디서</span> 오는가.</span></div></div>
-          <div id="lanes"></div>
-        </section>
-
-        <!-- 6 · 엔딩 -->
-        <section class="scene" id="s6">
-          <div class="abs k s" style="left:1000px;top:270px;font-size:96px" id="s6a"><div class="ln"><span>겨울은 다시 온다.</span></div></div>
-          <div class="abs k" style="left:1000px;top:420px;font-size:136px" id="s6b"><div class="ln"><span>지금, 무엇을</span></div><div class="ln"><span><span class="b">심을</span> 것인가.</span></div></div>
-        </section>
-      </div>
-      <div class="wipe" id="w1"></div>
-      <div class="wipe" id="w2"></div>
-      <div class="wipe" id="w3"></div>
+      <div id="pages"></div>
     </div>
   </div>
-
   <div class="controls" role="group" aria-label="재생 컨트롤">
     <button class="btn play" id="play" type="button">❚❚ 정지</button>
     <button class="btn" id="restart" type="button">처음부터</button>
@@ -204,7 +121,7 @@ body.export .viewport{border-radius:0;box-shadow:none}
     <button class="btn snd" id="snd" type="button" aria-pressed="false">사운드 켜기</button>
     <button class="btn" id="fs" type="button">전체 화면</button>
   </div>
-  <p class="note">사운드는 ‘사운드 켜기’를 눌러야 들린다(브라우저 자동 재생 정책). 수치: 위키 wiki/downturn/ (iSuppli·IHS·Gartner·IC Insights·TrendForce 집계, 각사 공시·보도). 시나리오의 헤드라인은 위키의 2026-08 신호를 연장한 가상 헤드라인이며 실제 보도가 아니다. 확률은 2027~2030 다운턴이 온다는 조건에서의 발원별 확률. 로고는 식별 표시(nominative use).</p>
+  <p class="note">사운드는 ‘사운드 켜기’를 눌러야 들린다(브라우저 자동 재생 정책). 수치 단일 소스: 위키 wiki/downturn/. 시나리오 장의 헤드라인은 2026-08 신호를 연장한 가상 문안이며 실제 보도가 아니다. 로고는 식별 표시(nominative use).</p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -213,68 +130,230 @@ body.export .viewport{border-radius:0;box-shadow:none}
 'use strict';
 const $ = s => document.querySelector(s);
 const $$ = (s, r = document) => Array.from((typeof r === 'string' ? document.querySelector(r) : r).querySelectorAll(s));
-const NS = 'http://www.w3.org/2000/svg';
-const svgEl = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const C = { blue: css('--blue'), blue2: css('--blue-2'), frost: css('--frost'), ink: css('--ink'), steel: css('--steel'), red: css('--red') };
+const C = { blue: css('--samsung-blue'), t1: css('--blue-t1'), t2: css('--blue-t2'), tint: css('--tint'), ink: css('--ink'), gray: css('--gray'), gray2: css('--gray-2'), line: css('--line'), pale: css('--pale'), neg: css('--negative') };
 const LOGO = k => `<span class="logo${k === 'skhynix' ? ' sk' : ''}">${$('#lg-' + k).innerHTML}</span>`;
-const WM = (t, g) => `<span class="wm${g ? ' g' : ''}">${t}</span>`;
+const WM = (t, x) => `<span class="wm${x ? ' x' : ''}">${t}</span>`;
+const DECK = '네 번의 겨울', GRADE = '[문서등급 표기]', N = 11;
+const pagesEl = $('#pages');
 
-/* ───────── 데이터 (wiki/downturn/downturn-history.md) ───────── */
-const REV = [[2006,46.7],[2007,45.4],[2008,35.6],[2009,34.5],[2010,58.1],[2011,50.8],[2012,47.2],[2013,60.6],[2014,77.6],[2015,78.8],[2016,79.5],[2017,129.2],[2018,162.6],[2019,108.0],[2020,121.3],[2021,161.1],[2022,141.2],[2023,88.5],[2024,158.1],[2025,222.0]];
-const HEADKEYS = [[4.0,2006],[5.5,2009],[7.0,2012],[8.6,2019],[10.2,2023],[11.3,2025]];
-const STAMPS = [
-  { y:2009, t:5.5,  d:'−26%', yr:'2007–09', c:'치킨게임 + 금융위기', above:true },
-  { y:2012, t:7.0,  d:'−19%', yr:'2010–12', c:'2차 치킨게임', above:true },
-  { y:2019, t:8.6,  d:'−34%', yr:'2018–19', c:'고객 재고 조정', above:false },
-  { y:2023, t:10.2, d:'−45%', yr:'2022–23', c:'팬데믹 특수 소멸', above:false },
-];
-const DT = [
-  { yr:'2007 — 2009', verb:['버텼다.'], why:'6강 치킨게임 + 금융위기', how:'무감산 · 40nm DDR3 세계 최초' },
-  { yr:'2010 — 2012', verb:['남았다.'], why:'2년 저가 소모전 · DDR3 −85%', how:'Line-16 가동 · 20nm급 세계 최초' },
-  { yr:'2018 — 2019', verb:['멈추지', '않았다.'], why:'고객 재고 조정 · 미중 분쟁', how:'무감산 · CapEx 22.6조 유지' },
-  { yr:'2022 — 2023', verb:['한 박자', '<span class="r">늦었다.</span>'], why:'팬데믹 특수 소멸 · ‘일시적’ 6개월', how:'2023.04 감산 · HBM 주도권은 SK로' },
-];
-// 시나리오: 다운턴의 발원 (wiki/downturn/scenario-matrix.md §3 · sources/articles/dt-*-signals-2026-08-28.md)
-const LANES = [
-  { no:'시나리오 1', t:'수요발', p:44, sub:'급제동 20 + 긴 하산 24', m:'AI 투자가 멈추면,<br>주문이 먼저 사라진다',
-    h:[['2027.11','빅테크 4사, AI 데이터센터 투자<br>첫 동시 삭감'],['2028.02','추론 비용 1/10 신모델 공개…<br>서버당 메모리 탑재량 줄었다'],['2028.04','고객사 HBM 장기계약 재협상 요구…<br>D램 현물가 급락']] },
-  { no:'시나리오 2', t:'공급발', p:48, sub:'동시 방류 22 + 저가 잠식 26', m:'공장이 한꺼번에 돌면,<br>가격이 원가 밑으로',
-    h:[['2028.06','용인·평택·아이다호 신규 팹 동시 가동…<br>D램 캐파 사상 최대'],['2028.09','中 CXMT DDR5 저가 공세…<br>범용 D램 가격 원가 아래로'],['2029.01','중국산 D램 점유율 18% 돌파…<br>글로벌 스마트폰 고객 첫 채택']] },
-  { no:'시나리오 3', t:'전환발', p:8, sub:'판 갈이 8', m:'제품의 정의가 바뀌면,<br>감산도 계약도 통하지 않는다',
-    h:[['2028.03','GPU 업체가 HBM 베이스 다이 직접 설계…<br>메모리는 ‘부품’이 된다'],['2028.10','CXL 메모리 풀링 대세로…<br>신규 D램 대신 재활용 D램'],['2029.06','3D D램 첫 양산 발표…<br>기존 2D 라인 조기 상각 우려']] },
-];
-
-/* 다운턴 장 왼쪽 열 */
-$$('.scene.dt').forEach(sc => {
-  const d = DT[+sc.dataset.k];
-  const l = document.createElement('div'); l.className = 'abs lc';
-  l.innerHTML = `<div class="yr2">${d.yr}</div>
-    <div class="k verb">${d.verb.map(v => `<div class="ln"><span>${v}</span></div>`).join('')}</div>
-    <div class="why w1" style="margin-top:12px"><span class="tag">원인</span><span>${d.why}</span></div>
-    <div class="why w2"><span class="tag b">대응</span><span>${d.how}</span></div>`;
-  sc.prepend(l);
-});
-
-/* 시나리오 레인 */
-const lanesEl = $('#lanes');
-LANES.forEach((L, i) => {
-  const s = document.createElement('div'); s.className = 'lane'; s.id = 'ln' + i; s.style.cssText = 'position:absolute;inset:0;visibility:hidden;opacity:0';
+/* ───────── 페이지 골격 (11.C 공통 골격) ───────── */
+function page(no, sec, title, band, src, body) {
+  const s = document.createElement('section'); s.className = 'scene'; s.id = 'p' + no;
   s.innerHTML = `
-    <div class="abs eb" style="left:120px;top:150px">${L.no} · 발원</div>
-    <div class="abs big b" style="left:110px;top:200px">${L.t}</div>
-    <div class="abs" style="left:120px;top:410px;display:flex;align-items:baseline;gap:18px"><span class="pr"><span class="cnt">0</span>%</span></div>
-    <div class="abs lab" style="left:124px;top:572px">조건부 확률 · ${L.sub}</div>
-    <div class="abs mech" style="left:124px;top:660px;width:640px">${L.m}</div>
-    ${L.h.map((h, j) => `<div class="card" style="top:${150 + j * 262}px"><div class="meta"><span class="v">가상 헤드라인</span><span>${h[0]}</span></div><div class="h">${h[1]}</div></div>`).join('')}`;
-  lanesEl.appendChild(s);
-});
+    <div class="top" data-t="0"><b>${DECK}</b>   ${no} / ${N}  ${sec}</div>
+    <div class="grade" data-t="0">${GRADE}</div>
+    <div class="ttl" data-t=".05">${title.split('\n').map(l => `<div>${l}</div>`).join('')}</div>
+    <div class="rule" data-t="0"></div>
+    ${body}
+    <div class="band" data-t="${band[2] ?? 2.6}"><span class="bt">${band[0]}</span><span class="bx">${band[1]}</span></div>
+    <div class="src" data-t=".3">${src}</div>
+    <div class="pg" data-t="0">${no} / ${N}</div>`;
+  pagesEl.appendChild(s); return s;
+}
+const ph = (x, y, no, txt, t = .25) => `<div class="ph" style="left:${x}px;top:${y}px" data-t="${t}"><i>${no}</i>${txt}</div>`;
 
-/* ───────── 차트 ───────── */
-const X0 = 230, X1 = 1700, YB = 950, YT = 240, VMAX = 240;
+/* ───────── 0 · 표지 ───────── */
+const cover = document.createElement('section'); cover.className = 'scene'; cover.id = 'p0';
+cover.innerHTML = `
+  <div class="grade" data-t="0">${GRADE}</div>
+  <div class="a" style="left:1000px;top:330px;font-size:24px;font-weight:700" data-t=".5"><span class="b">액션러닝 SP-2 · 다운턴 트랙</span></div>
+  <div class="a" style="left:996px;top:376px;font-size:72px;font-weight:700;letter-spacing:-.02em" data-t=".9">네 번의 겨울</div>
+  <div class="a g" style="left:1000px;top:480px;font-size:40px;line-height:1.3" data-t="1.4">메모리 다운턴 20년 복기와<br>다음 다운턴의 발원</div>
+  <div class="a g" style="left:1000px;top:600px;font-size:24px" data-t="1.8">2006-2026 · 2026-10</div>`;
+pagesEl.appendChild(cover);
+
+/* ───────── 1 · 20년 개관 (라인 차트) ───────── */
+const REV = [[2006,46.7],[2007,45.4],[2008,35.6],[2009,34.5],[2010,58.1],[2011,50.8],[2012,47.2],[2013,60.6],[2014,77.6],[2015,78.8],[2016,79.5],[2017,129.2],[2018,162.6],[2019,108.0],[2020,121.3],[2021,161.1],[2022,141.2],[2023,88.5],[2024,158.1],[2025,222.0]];
+const WIN = [
+  { a:2007.0,  b:2009.25, yr:'2007-09', c:'치킨게임 + 금융위기', d:'−26%' },
+  { a:2010.75, b:2012.95, yr:'2010-12', c:'2차 치킨게임', d:'−19%' },
+  { a:2018.75, b:2019.95, yr:'2018-19', c:'고객 재고 조정', d:'−34%' },
+  { a:2022.25, b:2023.65, yr:'2022-23', c:'팬데믹 특수 소멸', d:'−45%' },
+];
+const X0 = 176, X1 = 1724, YB = 860, YT = 300, VMAX = 240;
 const xOf = y => X0 + (y - 2006) / 19 * (X1 - X0);
 const yOf = v => YB - v / VMAX * (YB - YT);
+page(1, '20년 개관', '20년 동안 메모리 다운턴은 네 번 왔고,\n과점이 짧게 만든 겨울은 오히려 더 깊어졌다',
+  ['요약', '연 매출 낙폭 −26% → −19% → −34% → −45%: 기간은 줄고 깊이는 커졌다', 5.2],
+  '출처: iSuppli·IHS·Gartner·IC Insights·TrendForce 집계(wiki/downturn/downturn-history.md §1·§2). 전체 메모리 = DRAM+NAND 연 매출, 일부 연도는 성장률 역산치.<br>음영 = 다운턴 창(분기 매출 정점 직후-저점), 낙폭 = 연 매출 정점 → 저점.',
+  `<svg class="a" id="chart" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080" data-t=".1"></svg>`);
+
+/* ───────── 2 · 2008 ───────── */
+const SH08 = [[LOGO('samsung'), 30, 1], [WM('Hynix'), 19], [WM('Elpida'), 15], [LOGO('micron'), 11], [WM('Qimonda'), 10]];
+page(2, '복기 1 · 2008', '2008, 버텼다: 무감산으로 원가 격차를 벌리는 사이\n키몬다가 먼저 파산했다',
+  ['교훈', '공급발 겨울에서는 버티는 쪽의 원가와 현금이 무기였다', 3.6],
+  '출처: DRAMeXchange 512Mb DDR2 현물가, iSuppli, 삼성전자 실적(4Q08 반도체 영업손실 −0.56조), 키몬다 파산(2009-01) 보도(wiki/downturn/downturn-history.md §3).<br>점유율은 치킨게임 직전 추정치, 대만 2사(파워칩·난야)는 점유율 미표기.',
+  ph(76, 232, 1, '점유율: 6강 중 1위로 버텼고, 키몬다는 퇴출') +
+  SH08.map(([lg, p, me], i) => `
+    <div class="a" style="left:76px;top:${306 + i * 84}px;width:220px;height:40px;display:flex;align-items:center" data-t="${.5 + i * .1}">${lg}</div>
+    <div class="hb" style="left:300px;top:${306 + i * 84}px;width:${p * 18.7}px;background:${me ? C.blue : C.gray2}" data-gx="${.55 + i * .1}" ${i === 4 ? 'id="qm"' : ''}></div>
+    <div class="v ${me ? 'b' : ''}" style="left:${312 + p * 18.7}px;top:${308 + i * 84}px" data-t="${.8 + i * .1}" ${i === 4 ? 'id="qmv"' : ''}>${p}%</div>`).join('') +
+  `<div class="a" style="left:76px;top:${306 + 5 * 84}px;display:flex;align-items:center;gap:20px" data-t="1.1">${WM('대만 2사')}<span class="lab">파워칩 · 난야</span></div>
+   <div class="v" style="left:520px;top:${308 + 4 * 84}px;opacity:0" id="qmt">2009.01 파산</div>` +
+  ph(1080, 232, 2, '가격과 손익: 1년 새 가격 −93%') +
+  `<div class="lab a" style="left:1080px;top:300px" data-t=".4">512Mb DDR2 현물가 ($)</div>
+   <div class="vb" style="left:1110px;top:${600 - 230}px;width:120px;height:230px;background:${C.t2}" data-gy=".6"></div>
+   <div class="vb" style="left:1270px;top:${600 - 17}px;width:120px;height:17px;background:${C.blue}" data-gy=".9"></div>
+   <div class="v" style="left:1116px;top:330px" data-t=".9">$6.80</div><div class="v b" style="left:1282px;top:540px" data-t="1.1">$0.50</div>
+   <div class="x" style="left:1110px;top:612px;width:120px" data-t=".6">2007</div><div class="x" style="left:1270px;top:612px;width:120px" data-t=".6">2008</div>
+   <div class="a big n" style="left:1450px;top:470px" data-t="1.3">−93%</div>
+   <div class="lab a" style="left:1080px;top:668px" data-t="1.8">4Q08 영업이익률 (적자 폭)</div>
+   <div class="a" style="left:1080px;top:716px;width:220px" data-t="1.9">${LOGO('samsung')}</div>
+   <div class="hb" style="left:1300px;top:712px;width:${14 * 11}px;background:${C.blue}" data-gx="2.0"></div>
+   <div class="v b" style="left:${1314 + 14 * 11}px;top:714px" data-t="2.3">−14%</div>
+   <div class="a" style="left:1080px;top:788px;font-size:24px;font-weight:700" data-t="2.0">경쟁사</div>
+   <div class="hb" style="left:1300px;top:782px;width:${40 * 11}px;background:${C.gray2}" data-gx="2.1"></div>
+   <div class="v" style="left:${1314 + 40 * 11}px;top:784px;font-size:22px" data-t="2.4">−40% 이하</div>`);
+
+/* ───────── 3 · 2012 ───────── */
+const TL12 = [[LOGO('samsung'), '', 'me'], [WM('Hynix'), ''], [WM('Elpida'), ''], [LOGO('micron'), ''], [WM('Qimonda', 1), '2009 퇴출', 'ghost'], [WM('대만 업체', 1), '']];
+const pos12 = i => [76 + (i % 3) * 304, 300 + Math.floor(i / 3) * 174];
+page(3, '복기 2 · 2012', '2012, 남았다: 2년 저가 소모전 끝에 엘피다가 파산하며\nDRAM 공급사는 6강에서 3강이 됐다',
+  ['교훈', '퇴출은 긴 소진 끝에 왔고, 모바일 전환에 늦은 쪽부터 나갔다', 3.8],
+  '출처: IHS(DDR3 2Gb 2011년 가격), 엘피다 회사갱생법 신청(2012-02-27) 보도, SK·마이크론 공시(wiki/downturn/downturn-history.md §3).',
+  ph(76, 232, 1, '공급사: 6강에서 3강으로') +
+  TL12.map(([lg, sub, cls], i) => { const [x, y] = pos12(i); return `<div class="tile ${cls || ''}" style="left:${x}px;top:${y}px" id="t12_${i}" data-t="${.45 + i * .06}"><div class="lg">${lg}</div>${sub ? `<div class="t2">${sub}</div>` : ''}</div>`; }).join('') +
+  `<div class="a" style="left:76px;top:660px;font-size:28px;font-weight:700" id="m12">→ 3강 과점 완성</div>` +
+  ph(1080, 232, 2, '경과: 2년 저가 소모전 끝의 퇴출') +
+  `<div class="a" style="left:1088px;top:310px;width:2px;height:520px;background:${C.line}" data-t=".4"></div>` +
+  [['2011', 'DDR3 2Gb 가격', '−85%'], ['2012.02', '엘피다 파산 · 부채 4,480억 엔'], ['2012', 'SK그룹, 하이닉스 인수'], ['2013', '마이크론, 엘피다 인수 (~$2.5B)']].map(([d, t, big], i) => `
+    <div class="dia" style="left:1080px;top:${322 + i * 130}px" data-t="${.7 + i * .55}"></div>
+    <div class="tl-item" style="left:1124px;top:${310 + i * 130}px" data-t="${.7 + i * .55}"><span class="d">${d}</span><span class="t">${t}${big ? ` <span class="n" style="font-size:44px">${big}</span>` : ''}</span></div>`).join(''));
+
+/* ───────── 4 · 2019 ───────── */
+page(4, '복기 3 · 2019', '2019, 멈추지 않았다: 경쟁사가 감산할 때 투자를 유지해\n1Q20 DRAM 점유율 44.1%를 지켰다',
+  ['교훈', '재고발 겨울은 재고 소진과 함께 끝났고, 버틴 1위가 점유율로 보상받았다', 3.8],
+  '출처: IC Insights(DRAM 매출), TrendForce(1Q20 점유율), 삼성전자 실적, Micron(2019-03)·SK하이닉스(2019-07) 감산 발표(wiki/downturn/downturn-history.md §3).',
+  ph(76, 232, 1, '충격: 매출 −37.6%, 영업이익 −69%') +
+  `<div class="lab a" style="left:96px;top:300px" data-t=".4">DRAM 산업 매출 ($B)</div>
+   <div class="vb" style="left:110px;top:${860 - 398}px;width:120px;height:398px;background:${C.t2}" data-gy=".5"></div>
+   <div class="vb" style="left:260px;top:${860 - 248}px;width:120px;height:248px;background:${C.blue}" data-gy=".8"></div>
+   <div class="v" style="left:118px;top:${860 - 398 - 40}px" data-t=".9">99.4</div><div class="v b" style="left:272px;top:${860 - 248 - 40}px" data-t="1.1">62.0</div>
+   <div class="x" style="left:110px;top:870px;width:120px" data-t=".5">2018</div><div class="x" style="left:260px;top:870px;width:120px" data-t=".5">2019</div>
+   <div class="a n" style="left:262px;top:${860 - 398 - 30}px;font-size:40px;font-weight:700" data-t="1.3">−37.6%</div>
+   <div class="lab a" style="left:516px;top:300px" data-t=".6">삼성 반도체 영업이익 (조 원)</div>
+   <div class="vb" style="left:530px;top:${860 - 398}px;width:120px;height:398px;background:${C.t2}" data-gy=".7"></div>
+   <div class="vb" style="left:680px;top:${860 - 125}px;width:120px;height:125px;background:${C.blue}" data-gy="1.0"></div>
+   <div class="v" style="left:530px;top:${860 - 398 - 40}px" data-t="1.1">44.57</div><div class="v b" style="left:686px;top:${860 - 125 - 40}px" data-t="1.3">14.02</div>
+   <div class="x" style="left:530px;top:870px;width:120px" data-t=".7">2018</div><div class="x" style="left:680px;top:870px;width:120px" data-t=".7">2019</div>
+   <div class="a n" style="left:690px;top:${860 - 398 - 30}px;font-size:40px;font-weight:700" data-t="1.5">−69%</div>` +
+  ph(980, 232, 2, '대응: 경쟁사는 감산, 삼성은 투자 유지') +
+  `<div class="a" style="left:1000px;top:388px;width:790px;height:2px;background:${C.line}" data-t="1.2"></div>` +
+  [[LOGO('micron'), '2019.03', '첫 공식 감산<br>(웨이퍼 −5%)', 0], [LOGO('skhynix'), '2019.07', '감산<br>(NAND −15%)', 0], [LOGO('samsung'), '2019', '무감산<br>CapEx 22.6조 유지', 1]].map(([lg, d, t, me], i) => `
+    <div class="dia" style="left:${1010 + i * 280}px;top:380px;background:${me ? C.blue : C.gray2}" data-t="${1.4 + i * .45}"></div>
+    <div class="a" style="left:${1000 + i * 280}px;top:420px;height:44px;display:flex;align-items:center" data-t="${1.4 + i * .45}">${lg}</div>
+    <div class="a" style="left:${1000 + i * 280}px;top:480px;font-size:26px;font-weight:700;line-height:1.3" data-t="${1.45 + i * .45}"><span class="${me ? 'b' : 'g'}" style="font-size:22px">${d}</span><br><span class="${me ? 'b' : ''}">${t}</span></div>`).join('') +
+  `<div class="a" style="left:1000px;top:660px" data-t="2.9"><div class="lab">결과 · 1Q20 삼성 DRAM 점유율</div><div class="big b" style="margin-top:10px">44.1%</div></div>`);
+
+/* ───────── 5 · 2023 ───────── */
+const Q23 = [['1Q22',24.03],['2Q22',25.59],['3Q22',18.19],['4Q22',12.28],['1Q23',9.7],['2Q23',11.4]];
+page(5, '복기 4 · 2023', '2023, 한 박자 늦었다: ‘일시적’ 판단 6개월 사이 재고가 쌓였고\nDRAM 분기 매출은 3분기 만에 62% 줄었다',
+  ['복기', '직전 겨울의 성공 공식(무감산 버티기)이 이번 겨울의 함정이 됐다', 3.9],
+  '출처: TrendForce(DRAM 분기 매출, 1Q23·2Q23은 증감률 역산), 삼성전자 사업보고서(DS 재고 2021말 16.5조 → 2022말 29.1조, 2023 DS 영업손실)<br>(wiki/downturn/downturn-history.md §3).',
+  ph(76, 232, 1, '분기 매출: 3분기 만에 −62%') +
+  `<div class="lab a" style="left:110px;top:300px" data-t=".35">DRAM 산업 분기 매출 ($B)</div>` +
+  Q23.map(([q, v], i) => { const x = 110 + i * 150, h = Math.round(v * 15), on = i === 4; return `
+    <div class="vb" style="left:${x}px;top:${860 - h}px;width:110px;height:${h}px;background:${on ? C.blue : C.t2}" data-gy="${.45 + i * .2}"></div>
+    <div class="v ${on ? 'b' : ''}" style="left:${x + 14}px;top:${860 - h - 40}px;font-size:24px" data-t="${.65 + i * .2}">${v.toFixed(1)}</div>
+    <div class="x" style="left:${x}px;top:870px;width:110px" data-t=".45">${q}</div>`; }).join('') +
+  `<svg class="a" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080" data-t="1.7"><path d="M370 ${860 - 384 - 50} L780 ${860 - 146 - 50}" stroke="${C.neg}" stroke-width="3" stroke-dasharray="10 8" fill="none"/></svg>
+   <div class="a big n" style="left:600px;top:380px" data-t="1.8">−62%</div>` +
+  ph(1080, 232, 2, '손익과 재고: 사상 최대 적자') +
+  `<div class="a" style="left:1080px;top:304px" data-t="2.0"><div class="big n" id="l23">−14.88조</div><div class="lab" style="margin-top:10px">2023 삼성 DS 영업손실 · 사상 최대</div></div>
+   <div class="lab a" style="left:1080px;top:470px" data-t="2.3">DS 재고 (조 원) <span class="n" style="font-weight:700">+76.6%</span></div>
+   <div class="x" style="left:1080px;top:520px;width:120px;text-align:left" data-t="2.3">2021말</div><div class="hb" style="left:1200px;top:512px;width:${16.5 * 16}px;background:${C.t2}" data-gx="2.35"></div><div class="v" style="left:${1214 + 16.5 * 16}px;top:514px" data-t="2.5">16.5</div>
+   <div class="x" style="left:1080px;top:578px;width:120px;text-align:left" data-t="2.3">2022말</div><div class="hb" style="left:1200px;top:570px;width:${29.1 * 16}px;background:${C.blue}" data-gx="2.45"></div><div class="v b" style="left:${1214 + 29.1 * 16}px;top:572px" data-t="2.7">29.1</div>
+   <div class="lab a" style="left:1080px;top:660px" data-t="2.8">감산 판단</div>
+   <div class="box" style="left:1080px;top:700px;width:230px;height:120px" data-t="2.9"><span class="d">2022.10</span><span class="t">“감산 없다”</span></div>
+   <div class="arr" style="left:1322px;top:748px" data-t="3.0"></div>
+   <div class="box" style="left:1352px;top:700px;width:230px;height:120px" data-t="3.05"><span class="d">2023.01</span><span class="t">재확인</span></div>
+   <div class="arr" style="left:1594px;top:748px" data-t="3.15"></div>
+   <div class="box on" style="left:1624px;top:700px;width:220px;height:120px" data-t="3.2"><span class="d">2023.04.07</span><span class="t">감산 공식화</span></div>`);
+
+/* ───────── 6 · 교훈 ───────── */
+const HBM = [['2024', 54, 39, 7], ['Q2 2025', 62, 17, 21]];
+page(6, '교훈', '승부는 다운턴 그 자체보다\n다운턴 중에 심은 것에서 갈렸다',
+  ['결론', '다음 겨울의 승패도 지금 무엇을 심느냐에 달려 있다', 3.0],
+  '출처: 삼성전자 발표(40nm급 DDR3 2009-07, Line-16 2011-09, 1z DRAM 2019), CNBC(2019 HBM 전담팀 축소 보도), Counterpoint·Astute(HBM 점유율)<br>(wiki/downturn/downturn-history.md §3, wiki/concepts/hbm-market.md). 원인 해석은 복기.',
+  ph(76, 232, 1, '심은 것: 겨울에 끝낸 세대 전환') +
+  [['2009.07', '40nm급 DDR3<br>세계 최초 양산'], ['2011.09', 'Line-16 가동<br>20nm급 세계 최초'], ['2019', '1z DRAM<br>6세대 V낸드']].map(([d, t], i) => `
+    <div class="box" style="left:${76 + i * 300}px;top:330px;width:260px;height:170px" data-t="${.5 + i * .35}"><span class="d">${d}</span><span class="t">${t}</span></div>
+    ${i < 2 ? `<div class="arr" style="left:${76 + i * 300 + 268}px;top:403px" data-t="${.7 + i * .35}"></div>` : ''}`).join('') +
+  `<div class="a" style="left:76px;top:560px;font-size:28px;font-weight:700;line-height:1.5" data-t="1.6">수확 · 2010년 메모리 투자 5.5조 → 9조 상향<br>1Q20 DRAM 점유율 <span class="b">44.1%</span></div>` +
+  ph(1000, 232, 2, '놓친 것: 2019 HBM 전담팀 축소') +
+  `<div class="a" style="left:1000px;top:304px;display:flex;gap:18px;align-items:center" data-t=".8"><span class="tag">복기</span><span class="lab">HBM 시장 점유율</span></div>
+   <div class="a" style="left:1000px;top:356px;display:flex;gap:30px;align-items:center" data-t=".9">
+     <span style="display:flex;align-items:center;gap:8px"><i style="display:inline-block;width:22px;height:14px;background:${C.gray2}"></i>${LOGO('skhynix')}</span>
+     <span style="display:flex;align-items:center;gap:8px"><i style="display:inline-block;width:22px;height:14px;background:${C.blue}"></i>${LOGO('samsung')}</span>
+     <span style="display:flex;align-items:center;gap:8px"><i style="display:inline-block;width:22px;height:14px;background:${C.line}"></i>${LOGO('micron')}</span></div>` +
+  HBM.map(([y, sk, ss, mu], i) => { const top = 440 + i * 170, W = 6; return `
+    <div class="a" style="left:1000px;top:${top + 18}px;font-size:26px;font-weight:700;width:150px" data-t="${1.1 + i * .4}">${y}</div>
+    <div class="hb" style="left:1150px;top:${top}px;height:76px;width:${sk * W}px;background:${C.gray2}" data-gx="${1.2 + i * .4}"></div>
+    <div class="hb" style="left:${1150 + sk * W}px;top:${top}px;height:76px;width:${ss * W}px;background:${C.blue}" data-gx="${1.3 + i * .4}"></div>
+    <div class="hb" style="left:${1150 + (sk + ss) * W}px;top:${top}px;height:76px;width:${mu * W}px;background:${C.line}" data-gx="${1.4 + i * .4}"></div>
+    <div class="v" style="left:1166px;top:${top + 20}px;color:#fff" data-t="${1.5 + i * .4}">${sk}%</div>
+    <div class="v" style="left:${1166 + sk * W}px;top:${top + 20}px;color:#fff" data-t="${1.5 + i * .4}">${ss}%</div>
+    <div class="v" style="left:${1150 + (sk + ss + mu) * W + 14}px;top:${top + 20}px" data-t="${1.5 + i * .4}">${mu}%</div>`; }).join(''));
+
+/* ───────── 7 · 다음 다운턴의 발원 ───────── */
+const ORI = [['수요발', 44, C.t1, '급제동 20 · 긴 하산 24'], ['공급발', 48, C.blue, '동시 방류 22 · 저가 잠식 26'], ['전환발', 8, C.t2, '판 갈이 8']];
+page(7, '시나리오', '다음 다운턴은 어디서 오는가:\n공급발 48%, 수요발 44%, 전환발 8%',
+  ['질문', '발원을 잘못 읽으면 대응 전체가 무효가 된다. 첫 30일 안에 가려야 한다', 1.6],
+  '출처: SP-2 다운턴 시나리오 매트릭스(wiki/downturn/scenario-matrix.md §3·§3.1), 감별 프로토콜 DR-1(wiki/downturn/response-playbook.md).<br>확률 = 2027-2030 다운턴이 온다는 조건에서 각 발원일 확률.',
+  `<div class="lab a" style="left:76px;top:300px" data-t=".2">다운턴 발원별 조건부 확률 (합계 100%)</div>` +
+  (() => { let x = 76; return ORI.map(([n, p, col, sub], i) => { const w = 1768 * p / 100, out = `
+    <div class="hb" style="left:${x}px;top:400px;height:160px;width:${w - (i < 2 ? 4 : 0)}px;background:${col}" data-gx="${.3 + i * .25}"></div>
+    <div class="a" style="${p > 20 ? `left:${x + 30}px` : 'right:76px;text-align:right'};top:${p > 20 ? 440 : 580}px;font-size:${p > 20 ? 44 : 32}px;font-weight:700;color:${p > 20 ? '#fff' : C.ink};white-space:nowrap" data-t="${.6 + i * .25}">${n} ${p}%</div>
+    <div class="lab a" style="${p > 20 ? `left:${x + 30}px` : 'right:76px;text-align:right'};top:${p > 20 ? 600 : 630}px;white-space:nowrap" data-t="${.7 + i * .25}">${sub}</div>`; x += w; return out; }).join(''); })());
+
+/* ───────── 8-10 · 발원별 시나리오 ───────── */
+const LANES = [
+  { no:8, t:'수요발 44%', title:'수요발 44%: AI 투자가 멈추면\n주문이 먼저 사라진다', band:'감산은 효과가 약하다. 도착 전 계약 배선이 결과를 정한다',
+    sig:'신호: HBM 수요 증가율 감속',
+    chart:() => `<div class="lab a" style="left:110px;top:300px" data-t=".35">HBM 비트수요 증가율 (전년 대비)</div>` +
+      [['2025', 130, '+130%'], ['2026E', 70, '+70%'], ['2027E', 55, '+50-60%']].map(([y, v, l], i) => { const h = v * 3, on = i === 2, x = 120 + i * 200; return `
+        <div class="vb" style="left:${x}px;top:${860 - h}px;width:140px;height:${h}px;background:${on ? C.blue : C.t2}" data-gy="${.45 + i * .2}"></div>
+        <div class="v ${on ? 'b' : ''}" style="left:${x}px;top:${860 - h - 40}px" data-t="${.65 + i * .2}">${l}</div>
+        <div class="x" style="left:${x}px;top:870px;width:140px" data-t=".45">${y}</div>`; }).join(''),
+    src:'출처: TrendForce HBM 비트수요 전망(sources/articles/dt-b-demand-efficiency-signals-2026-08-28.md), 확률 wiki/downturn/scenario-matrix.md §3. E = 전망.<br>헤드라인은 2026-08 신호를 연장한 가상 문안이며 실제 보도가 아니다.',
+    h:[['2027.11','빅테크 4사, AI 데이터센터 투자 첫 동시 삭감'],['2028.02','추론 비용 1/10 신모델 공개… 서버당 메모리 탑재량 줄었다'],['2028.04','고객사 HBM 장기계약 재협상 요구… D램 현물가 급락']] },
+  { no:9, t:'공급발 48%', title:'공급발 48%: 공장이 한꺼번에 돌면\n가격이 원가 밑으로 내려간다', band:'감산이 직접 통하는 유일한 발원. 단 보조금 경쟁자는 기다려도 나가지 않는다',
+    sig:'신호: 중국 CXMT 점유율 확대',
+    chart:() => `<div class="lab a" style="left:110px;top:300px" data-t=".35">CXMT DRAM 점유율</div>` +
+      [['Q4 2025', 7.7, '7.7%', 'Omdia'], ['2028E', 18, '18%', 'Nomura']].map(([y, v, l, o], i) => { const h = v * 24, x = 140 + i * 260; return `
+        <div class="vb" style="left:${x}px;top:${860 - h}px;width:160px;height:${h}px;background:${C.gray2};${i ? `background:repeating-linear-gradient(135deg,${C.gray2} 0 10px,#fff 10px 16px);border:2px solid ${C.gray2}` : ''}" data-gy="${.45 + i * .3}"></div>
+        <div class="v" style="left:${x}px;top:${860 - h - 40}px" data-t="${.7 + i * .3}">${l}</div>
+        <div class="x" style="left:${x}px;top:870px;width:160px" data-t=".45">${y} · ${o}</div>`; }).join(''),
+    src:'출처: Omdia(Q4 2025 매출 점유율)·Nomura(2028 전망)(sources/articles/dt-d-china-entrant-signals-2026-08-28.md), 신규 팹 일정(dt-c-capex-oversupply-signals-2026-08-28.md).<br>헤드라인은 2026-08 신호를 연장한 가상 문안이며 실제 보도가 아니다. 빗금 = 전망.',
+    h:[['2028.06','용인·평택·아이다호 신규 팹 동시 가동… D램 캐파 사상 최대'],['2028.09','中 CXMT DDR5 저가 공세… 범용 D램 가격 원가 아래로'],['2029.01','중국산 D램 점유율 18% 돌파… 글로벌 스마트폰 고객 첫 채택']] },
+  { no:10, t:'전환발 8%', title:'전환발 8%: 제품의 정의가 바뀌면\n감산도 계약도 통하지 않는다', band:'유일한 응수는 개발 선행이다. 커스텀 HBM·CXL·3D DRAM을 먼저 연다',
+    sig:'신호: 고객이 메모리를 설계한다',
+    chart:() => `<div class="a" style="left:110px;top:320px" data-t=".4"><div class="big b">50% 이상</div><div class="lab" style="margin-top:12px">커스텀 HBM 비중 2027-28E<br>(삼성 상품기획 VP, Moor Insights 인용)</div></div>
+      <div class="a" style="left:110px;top:600px" data-t=".9"><div class="big">2026.08</div><div class="lab" style="margin-top:12px">NVIDIA, 고객 설계 base die<br>커스텀 HBM ‘NVHBM’ 발표</div></div>`,
+    src:'출처: Moor Insights 리서치 노트·NVIDIA 공식 블로그(2026-08-26)(sources/articles/dt-e-product-redefinition-signals-2026-08-28.md), 확률 scenario-matrix.md §3.<br>헤드라인은 2026-08 신호를 연장한 가상 문안이며 실제 보도가 아니다.',
+    h:[['2028.03','GPU 업체가 HBM 베이스 다이 직접 설계… 메모리는 ‘부품’이 된다'],['2028.10','CXL 메모리 풀링 대세로… 신규 D램 대신 재활용 D램'],['2029.06','3D D램 첫 양산 발표… 기존 2D 라인 조기 상각 우려']] },
+];
+LANES.forEach(L => page(L.no, '시나리오 · ' + L.t, L.title, ['대응', L.band, 3.6], L.src,
+  ph(76, 232, 1, L.sig) + L.chart() + ph(880, 232, 2, '이렇게 온다: 가상 헤드라인') +
+  L.h.map(([d, h], j) => `<div class="news" style="top:${300 + j * 204}px" data-t="${1.0 + j * .8}"><div class="m"><b>가상 헤드라인</b><span>${d}</span></div><div class="h">${h.replace('… ', '…<br>')}</div></div>`).join('')));
+
+/* ───────── 11 · 결론 ───────── */
+page(11, '결론', '겨울은 다시 온다:\n지금 결정할 세 가지',
+  ['요청', '지금, 무엇을 심을 것인가', 2.8],
+  '출처: 감별 프로토콜 DR-1(wiki/downturn/response-playbook.md), 계약 만기 사다리화 DP-1(wiki/downturn/preparation.md), 시나리오 DT-E(wiki/downturn/scenario-matrix.md).',
+  [['첫 30일 안에 발원 감별', '수요·공급·전환에 따라 감산·계약·개발 대응이 갈린다 (DR-1)'],
+   ['계약 만기 사다리화', '커버리지 만기가 한 시점에 몰리면 침식형이 급락형으로 바뀐다 (DP-1)'],
+   ['전환 기술 개발 선행', '판 갈이에는 감산도 계약도 통하지 않는다 (DT-E)']].map(([h, d], i) => `
+    <div class="a" style="left:820px;top:${290 + i * 200}px;display:flex;gap:26px" data-t="${.6 + i * .5}">
+      <span style="flex:0 0 56px;height:56px;border-radius:50%;background:${C.blue};color:#fff;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center">${i + 1}</span>
+      <span><span style="display:block;font-size:36px;font-weight:700">${h}</span><span class="lab" style="display:block;margin-top:8px;font-size:26px">${d}</span></span></div>`).join(''));
+
+/* ───────── 1장 라인 차트 그리기 ───────── */
+const NS = 'http://www.w3.org/2000/svg';
+const svgEl = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const T = (parent, x, y, txt, o = {}) => { const e = svgEl('text', Object.assign({ x, y, 'font-family':'SamsungOneKorean, Pretendard, Noto Sans KR, sans-serif' }, o), parent); e.textContent = txt; return e; };
 function monotone(pts) {
   const n = pts.length, dx = [], m = [], t = [];
   for (let i = 0; i < n - 1; i++) { dx[i] = pts[i+1][0] - pts[i][0]; m[i] = (pts[i+1][1] - pts[i][1]) / dx[i]; }
@@ -289,103 +368,43 @@ function monotone(pts) {
   for (let i = 0; i < n - 1; i++) { const h = dx[i] / 3; d += ` C${pts[i][0]+h},${pts[i][1]+t[i]*h} ${pts[i+1][0]-h},${pts[i+1][1]-t[i+1]*h} ${pts[i+1][0]},${pts[i+1][1]}`; }
   return d;
 }
-const T = (parent, x, y, txt, o = {}) => { const e = svgEl('text', Object.assign({ x, y, 'font-family':'Noto Sans KR, sans-serif' }, o), parent); e.textContent = txt; return e; };
 const chart = $('#chart');
-const defs = svgEl('defs', {}, chart);
-const grad = svgEl('linearGradient', { id:'ag', x1:0, y1:0, x2:0, y2:1 }, defs);
-svgEl('stop', { offset:'0', 'stop-color':C.blue, 'stop-opacity':'.15' }, grad);
-svgEl('stop', { offset:'1', 'stop-color':C.blue, 'stop-opacity':'0' }, grad);
-const clip = svgEl('clipPath', { id:'cr' }, defs);
+const clip = svgEl('clipPath', { id:'cr' }, svgEl('defs', {}, chart));
 const clipRect = svgEl('rect', { x:0, y:0, width:0, height:1080 }, clip);
-const chartG = svgEl('g', {}, chart);
-const axG = svgEl('g', {}, chartG);
-[50,100,150,200].forEach(v => { svgEl('line', { x1:X0, x2:X1, y1:yOf(v), y2:yOf(v), stroke:C.frost, 'stroke-width':2 }, axG); T(axG, X0 - 20, yOf(v) + 11, '$' + v + 'B', { 'text-anchor':'end', fill:C.steel, 'font-size':30, 'font-weight':700 }); });
-svgEl('line', { x1:X0, x2:X1, y1:YB, y2:YB, stroke:C.steel, 'stroke-width':2 }, axG);
-[2006,2010,2015,2020,2025].forEach(y => T(axG, xOf(y), YB + 46, y, { 'text-anchor':'middle', fill:C.steel, 'font-size':32, 'font-weight':700 }));
-const P = REV.map(([y, v]) => [xOf(y), yOf(v)]);
-const dLine = monotone(P);
-svgEl('path', { d: dLine + ` L${P[P.length-1][0]},${YB} L${P[0][0]},${YB} Z`, fill:'url(#ag)', 'clip-path':'url(#cr)' }, chartG);
-svgEl('path', { d:dLine, fill:'none', stroke:C.blue, 'stroke-width':13, 'stroke-linejoin':'round', 'stroke-linecap':'round', 'clip-path':'url(#cr)' }, chartG);
-const probe = svgEl('path', { d:dLine, fill:'none', stroke:'none' }, chartG);
+const winEls = WIN.map(w => {
+  const g = svgEl('g', { opacity:0 }, chart), xa = xOf(w.a), xb = xOf(w.b), cx = (xa + xb) / 2;
+  svgEl('rect', { x:xa, y:YT, width:xb - xa, height:YB - YT, fill:C.pale }, g);
+  T(g, cx, YT + 34, w.yr, { 'text-anchor':'middle', fill:C.gray, 'font-size':22 });
+  T(g, cx, YT + 64, w.c, { 'text-anchor':'middle', fill:C.ink, 'font-size':22, 'font-weight':700 });
+  T(g, cx, YT + 108, w.d, { 'text-anchor':'middle', fill:C.neg, 'font-size':40, 'font-weight':700 });
+  return { g, xa };
+});
+[50,100,150,200].forEach(v => { svgEl('line', { x1:X0, x2:X1, y1:yOf(v), y2:yOf(v), stroke:C.line, 'stroke-width':1 }, chart); T(chart, X0 - 16, yOf(v) + 8, '$' + v + 'B', { 'text-anchor':'end', fill:C.gray, 'font-size':22 }); });
+svgEl('line', { x1:X0, x2:X1, y1:YB, y2:YB, stroke:C.gray, 'stroke-width':1.5 }, chart);
+[2006,2010,2015,2020,2025].forEach(y => T(chart, xOf(y), YB + 34, y, { 'text-anchor':'middle', fill:C.gray, 'font-size':22 }));
+const P = REV.map(([y, v]) => [xOf(y), yOf(v)]), dLine = monotone(P);
+svgEl('path', { d: dLine + ` L${P[P.length-1][0]},${YB} L${P[0][0]},${YB} Z`, fill:C.tint, 'clip-path':'url(#cr)' }, chart);
+svgEl('path', { d:dLine, fill:'none', stroke:C.blue, 'stroke-width':5, 'stroke-linejoin':'round', 'stroke-linecap':'round', 'clip-path':'url(#cr)' }, chart);
+const probe = svgEl('path', { d:dLine, fill:'none', stroke:'none' }, chart);
 const LUT = []; { const L = probe.getTotalLength(); for (let i = 0; i <= 1200; i++) { const p = probe.getPointAtLength(L * i / 1200); LUT.push([p.x, p.y]); } }
 const yAtX = x => { let lo = 0, hi = LUT.length - 1; while (hi - lo > 1) { const m = (lo + hi) >> 1; if (LUT[m][0] < x) lo = m; else hi = m; } const [a, b] = [LUT[lo], LUT[hi]]; return a[1] + (b[1] - a[1]) * clamp((x - a[0]) / ((b[0] - a[0]) || 1)); };
-const peakG = svgEl('g', { opacity:0 }, chartG);
-T(peakG, xOf(2018), yOf(162.6) - 30, '$162.6B', { 'text-anchor':'middle', fill:C.ink, 'font-size':36, 'font-weight':900 });
-const endG = svgEl('g', { opacity:0 }, chartG);
-T(endG, xOf(2025) - 24, yOf(222) - 34, '$222B', { 'text-anchor':'end', fill:C.blue, 'font-size':64, 'font-weight':900 });
-const headRing = svgEl('circle', { r:34, fill:C.blue, opacity:.14 }, chartG);
-const head = svgEl('circle', { r:15, fill:C.blue, stroke:'#fff', 'stroke-width':5 }, chartG);
-const stampEls = STAMPS.map(s => {
-  const x = xOf(s.y), y = yOf(REV.find(r => r[0] === s.y)[1]);
-  const g = svgEl('g', { opacity:0 }, chartG);
-  svgEl('circle', { cx:x, cy:y, r:20, fill:C.red }, g);
-  const full = svgEl('g', {}, g), comp = svgEl('g', { opacity:0 }, g);
-  if (s.above) {
-    const base = y - 92;
-    T(full, x, base - 178, s.yr, { 'text-anchor':'middle', fill:C.steel, 'font-size':40, 'font-weight':700 });
-    T(full, x, base - 124, s.c, { 'text-anchor':'middle', fill:C.ink, 'font-size':44, 'font-weight':900 });
-    T(full, x, base, s.d, { 'text-anchor':'middle', fill:C.red, 'font-size':130, 'font-weight':900, 'letter-spacing':-5 });
-    T(comp, x, y + 82, s.d, { 'text-anchor':'middle', fill:C.red, 'font-size':56, 'font-weight':900 });
-  } else {
-    T(full, x, y + 76, s.yr, { 'text-anchor':'middle', fill:C.steel, 'font-size':40, 'font-weight':700 });
-    T(full, x, y + 128, s.c, { 'text-anchor':'middle', fill:C.ink, 'font-size':44, 'font-weight':900 });
-    T(full, x, y + 240, s.d, { 'text-anchor':'middle', fill:C.red, 'font-size':118, 'font-weight':900, 'letter-spacing':-5 });
-    T(comp, x, y + 82, s.d, { 'text-anchor':'middle', fill:C.red, 'font-size':56, 'font-weight':900 });
-  }
-  g.full = full; g.comp = comp;
-  return g;
-});
+const head = svgEl('circle', { r:9, fill:C.blue }, chart);
+const pkG = svgEl('g', { opacity:0 }, chart); T(pkG, xOf(2018), yOf(162.6) - 20, '$162.6B', { 'text-anchor':'middle', fill:C.ink, 'font-size':24, 'font-weight':700 });
+const endG = svgEl('g', { opacity:0 }, chart); T(endG, xOf(2025) + 12, yOf(222) + 12, '$222B', { 'text-anchor':'start', fill:C.blue, 'font-size':34, 'font-weight':700 });
 const HEAD = { yr:2006 };
 
-/* ───────── 2008: 점유율 막대 ───────── */
-const SH08 = [[LOGO('samsung'), 30, 1], [WM('Hynix'), 19], [WM('Elpida'), 15], [LOGO('micron'), 11], [WM('Qimonda'), 10]];
-const r08 = SH08.map(([lg, p, me], i) => {
-  const el = document.createElement('div'); el.className = 'row'; el.style.top = (i * 70) + 'px';
-  el.innerHTML = `<div class="cell">${lg}</div><div class="bar${me ? ' me' : ''}" style="width:${p * 16}px"></div><div class="pv${me ? ' b' : ''}">${p}%</div>`;
-  $('#r08').appendChild(el); return el;
-});
-{ const el = document.createElement('div'); el.className = 'row'; el.style.top = (5 * 70) + 'px'; el.innerHTML = `<div class="cell">${WM('대만 2사', 1)}</div><div class="pv s" style="margin-left:0;font-size:34px">파워칩 · 난야</div>`; $('#r08').appendChild(el); r08.push(el); }
-const qmTag = document.createElement('div'); qmTag.className = 'pv r'; qmTag.textContent = '2009.01 파산'; qmTag.style.cssText = 'position:absolute;left:420px;opacity:0'; r08[4].appendChild(qmTag);
-
-/* ───────── 2012: 6 → 3 타일 ───────── */
-const TL12 = [[LOGO('samsung'), '', 'me'], [WM('Hynix'), ''], [WM('Elpida'), ''], [LOGO('micron'), ''], [WM('Qimonda', 1), '2009 퇴출', 'ghost'], [WM('대만 업체', 1), '']];
-const pos12 = i => [(i % 3) * 294, Math.floor(i / 3) * 196];
-const t12 = TL12.map(([lg, sub, cls], i) => {
-  const el = document.createElement('div'); el.className = 'tile ' + (cls || '');
-  const [x, y] = pos12(i); el.style.left = x + 'px'; el.style.top = y + 'px';
-  el.innerHTML = `<div class="lg">${lg}</div>${sub ? `<div class="t2">${sub}</div>` : ''}`;
-  $('#t12').appendChild(el); return el;
-});
+/* 3장 타일 참조 */
+const t12 = [0,1,2,3,4,5].map(i => $('#t12_' + i));
 const skLogo = document.createElement('div'); skLogo.className = 'lg'; skLogo.style.cssText = 'position:absolute;opacity:0'; skLogo.innerHTML = LOGO('skhynix'); t12[1].appendChild(skLogo);
+const elpTag = document.createElement('div'); elpTag.className = 't2'; elpTag.style.cssText = 'opacity:0'; elpTag.textContent = '2012.02 파산'; t12[2].appendChild(elpTag);
 
-/* ───────── 2019: 감산 순서 ───────── */
-const A19 = [[LOGO('micron'), '2019.03 첫 공식 감산', 'r'], [LOGO('skhynix'), '2019.07 감산', 'r'], [LOGO('samsung'), '무감산 · 투자 유지', 'b']];
-const a19 = A19.map(([lg, t, c], i) => {
-  const el = document.createElement('div'); el.className = 'act'; el.style.top = (i * 100) + 'px';
-  el.innerHTML = `<div class="cell">${lg}</div><div class="t ${c}">${t}</div>`;
-  $('#a19').appendChild(el); return el;
-});
-
-/* ───────── 2023: 분기 매출 막대 ───────── */
-const Q23 = [['1Q22',24.03],['2Q22',25.59],['3Q22',18.19],['4Q22',12.28],['1Q23',9.7],['2Q23',11.4]];
-const q23 = $('#q23'), QB = 620, QS = 11, QX = 960, QW = 100, QG = 40;
-const qBars = Q23.map(([q, v], i) => {
-  const x = QX + i * (QW + QG), h = v * QS, red = i >= 2 && i <= 4;
-  const g = svgEl('g', {}, q23);
-  const r = svgEl('rect', { x, y:QB - h, width:QW, height:h, rx:4, fill: red ? C.red : C.blue }, g);
-  const vt = T(g, x + QW / 2, QB - h - 14, v.toFixed(1), { 'text-anchor':'middle', fill:C.ink, 'font-size':34, 'font-weight':900, opacity:0 });
-  T(q23, x + QW / 2, QB + 44, q, { 'text-anchor':'middle', fill:C.steel, 'font-size':30, 'font-weight':700 });
-  return { r, vt };
-});
-svgEl('line', { x1:QX - 10, x2:QX + 6 * QW + 5 * QG + 10, y1:QB, y2:QB, stroke:C.steel, 'stroke-width':2 }, q23);
-
-/* ───────── 배경: 웨이퍼 다이 격자 ───────── */
+/* ───────── 배경: 웨이퍼 다이 (표지·결론에만) ───────── */
 const cv = $('#bg'), ctx = cv.getContext('2d');
 const CELL = 30, DIE = 23, COLS = Math.ceil(1920 / CELL) + 2, ROWS = Math.ceil(1080 / CELL) + 2;
 const rnd = (() => { let s = 20260; return () => (s = (s * 16807) % 2147483647) / 2147483647; })();
 const R1 = [], R2 = [], R3 = [];
 for (let i = 0; i < COLS * ROWS; i++) { R1.push(rnd()); R2.push(rnd()); R3.push(rnd()); }
-const BG = { wafer:1, wx:960, wy:540, R:330, reveal:0, alpha:1, blue:3, cold:0 };
+const BG = { wx:540, wy:540, R:330, reveal:0, alpha:1, cold:0 };
 function drawBg() {
   ctx.clearRect(0, 0, 1920, 1080);
   if (BG.alpha < .005) return;
@@ -393,184 +412,70 @@ function drawBg() {
   for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
     const k = j * COLS + i, x = ox + i * CELL, y = oy + j * CELL, cx = x + DIE / 2, cy = y + DIE / 2;
     const d = Math.hypot(cx - BG.wx, cy - BG.wy) / BG.R;
-    const inW = d < .96 && (cy - BG.wy) < BG.R * .92 ? 1 : 0;
-    if (BG.wafer > .5 && !inW) continue;
+    if (!(d < .96 && (cy - BG.wy) < BG.R * .92)) continue;
     if (d > BG.reveal * 1.15 - R1[k] * .15) continue;
-    const isBlue = d < BG.blue * 1.12 - R1[k] * .12 && R2[k] >= BG.cold;
-    ctx.globalAlpha = BG.alpha * (isBlue ? .62 + .38 * R3[k] : .9);
-    ctx.fillStyle = isBlue ? (R3[k] > .8 ? C.blue2 : C.blue) : C.frost;
+    const isBlue = R2[k] >= BG.cold;
+    ctx.globalAlpha = BG.alpha * (isBlue ? .65 + .35 * R3[k] : 1);
+    ctx.fillStyle = isBlue ? (R3[k] > .8 ? C.t1 : C.blue) : C.line;
     ctx.fillRect(x, y, DIE, DIE);
   }
-  if (BG.wafer > .5) {
-    ctx.globalAlpha = BG.alpha * clamp(BG.reveal);
-    ctx.strokeStyle = C.frost; ctx.lineWidth = 3;
-    const a0 = Math.acos(.92);
-    ctx.beginPath(); ctx.arc(BG.wx, BG.wy, BG.R * 1.03, Math.PI / 2 + a0, Math.PI * 2.5 - a0); ctx.closePath(); ctx.stroke();
-  }
+  ctx.globalAlpha = BG.alpha * clamp(BG.reveal);
+  ctx.strokeStyle = C.line; ctx.lineWidth = 2;
+  const a0 = Math.acos(.92);
+  ctx.beginPath(); ctx.arc(BG.wx, BG.wy, BG.R * 1.03, Math.PI / 2 + a0, Math.PI * 2.5 - a0); ctx.closePath(); ctx.stroke();
   ctx.globalAlpha = 1;
 }
 
-/* ───────── 타임라인 ───────── */
-const tl = gsap.timeline({ paused:true, defaults:{ ease:'power3.out', duration:.6 } });
+/* ───────── 타임라인: 페이드·리빌만 (4.5 키노트 예외, 회전·바운스 없음) ───────── */
+const SCHED = [[0, 0, 3.5], [1, 3.5, 11], [2, 11, 16.5], [3, 16.5, 22], [4, 22, 27.5], [5, 27.5, 33], [6, 33, 37.5], [7, 37.5, 40], [8, 40, 45], [9, 45, 50], [10, 50, 55], [11, 55, 60]];
+const tl = gsap.timeline({ paused:true, defaults:{ ease:'power2.out', duration:.45 } });
 const counters = [];
-function counter(el, from, to, at, dur, fmt = v => Math.round(v), ease = 'power2.out') { const o = { v:from }; counters.push({ o, el, fmt, last:null }); tl.to(o, { v:to, duration:dur, ease }, at); }
-gsap.set('.ln > span', { yPercent:112 });
-const lnIn = (scope, at, st = .1) => tl.to($$('.ln > span', scope), { yPercent:0, duration:.7, ease:'expo.out', stagger:st }, at);
-const lnOut = (scope, at) => tl.to($$('.ln > span', scope), { yPercent:-112, duration:.35, ease:'power3.in', stagger:.04 }, at);
-const show = (el, a, b) => { tl.set(el, { autoAlpha:1 }, a); if (b != null) tl.set(el, { autoAlpha:0 }, b); };
-const fu = (els, at, o = {}) => { gsap.set(els, { autoAlpha:0, y:24 }); tl.to(els, Object.assign({ autoAlpha:1, y:0, duration:.45, ease:'expo.out' }, o), at); };
-const bgTo = (o, at, dur = 1, ease = 'power2.inOut') => tl.to(BG, Object.assign({ duration:dur, ease }, o), at);
-const shake = (at, amp = 14) => tl.to('#cam', { keyframes:[{ x:-amp, y:amp * .6 }, { x:amp * .7, y:-amp * .5 }, { x:-amp * .35, y:amp * .25 }, { x:0, y:0 }], duration:.24, ease:'none' }, at);
-function wipe(id, at) {
-  const w = $(id);
-  tl.to(w, { clipPath:'inset(0 0% 0 0)', duration:.3, ease:'power4.in' }, at - .3);
-  tl.to(w, { clipPath:'inset(0 0% 0 100%)', duration:.36, ease:'power4.out' }, at + .05);
-}
-
-/* 1 · 인트로 0 – 4 */
-show('#s1', 0, 4);
-bgTo({ reveal:1.05 }, .05, 1.2, 'power2.out');
-bgTo({ wx:520, R:300 }, .7, .6, 'expo.inOut');
-fu('#s1e', .8);
-lnIn($$('#s1 .k')[0], .9);
-lnIn($$('#s1 .k')[1], 2.0);
-bgTo({ cold:1 }, 2.0, .6, 'power2.in');
-shake(2.0, 10);
-tl.to('#s1', { autoAlpha:0, duration:.25 }, 3.75);
-bgTo({ alpha:0 }, 3.7, .3);
-
-/* 2 · 곡선 4 – 12.5 */
-show('#s2', 4, 12.5);
-fu('#s2e', 4.05);
-gsap.set(chartG, { svgOrigin:'960 540', scale:1.08 });
-tl.to(chartG, { scale:1, duration:7, ease:'power2.out' }, 4);
-HEADKEYS.forEach(([t, y], i) => { if (i) tl.to(HEAD, { yr:y, duration:t - HEADKEYS[i-1][0], ease:'power1.inOut' }, HEADKEYS[i-1][0]); });
-tl.to(peakG, { attr:{ opacity:1 }, duration:.3 }, 8.2);
-STAMPS.forEach((s, i) => {
-  const g = stampEls[i];
-  gsap.set(g, { scale:1.5, transformOrigin:'50% 50%' });
-  tl.to(g, { attr:{ opacity:1 }, scale:1, duration:.3, ease:'expo.out' }, s.t - .02);
-  shake(s.t, 12);
-  const nx = i < 3 ? STAMPS[i+1].t - .25 : 11.1;
-  tl.to(g.full, { attr:{ opacity:0 }, duration:.22 }, nx);
-  tl.to(g.comp, { attr:{ opacity:1 }, duration:.22 }, nx + .1);
+SCHED.forEach(([no, a, b], i) => {
+  const s = $('#p' + no), last = i === SCHED.length - 1;
+  gsap.set(s, { autoAlpha:0 });
+  tl.to(s, { autoAlpha:1, duration:.3, ease:'none' }, Math.max(0, a - .15));
+  if (!last) tl.to(s, { autoAlpha:0, duration:.3, ease:'none' }, b - .15);
+  $$('[data-t]', s).forEach(el => { gsap.set(el, { autoAlpha:0, y:14 }); tl.to(el, { autoAlpha:1, y:0 }, a + +el.dataset.t); });
+  $$('[data-gx]', s).forEach(el => { gsap.set(el, { scaleX:0 }); tl.to(el, { scaleX:1, duration:.6 }, a + +el.dataset.gx); });
+  $$('[data-gy]', s).forEach(el => { gsap.set(el, { scaleY:0 }); tl.to(el, { scaleY:1, duration:.6 }, a + +el.dataset.gy); });
 });
-tl.to(endG, { attr:{ opacity:1 }, duration:.3 }, 11.2);
-lnIn('#s2t', 11.3);
-wipe('#w1', 12.5);
-
-/* 3 · 네 번의 겨울 12.5 – 36.5 (6초씩) */
-const SEG = [['#s3a', 12.5], ['#s3b', 18.5], ['#s3c', 24.5], ['#s3d', 30.5]];
-SEG.forEach(([id, a], i) => {
-  const b = i < 3 ? SEG[i+1][1] : 36.5;
-  show(id, a, b);
-  const sc = $(id);
-  fu(sc.querySelector('.yr2'), a + .05);
-  lnIn(sc.querySelector('.verb'), a + .15, .12);
-  fu(sc.querySelector('.w1'), a + .7);
-  fu(sc.querySelector('.w2'), a + 2.6);
-  if (i) shake(a, 8);
-});
-// 2008
-fu($('#pr08').children, 13.0, { stagger:.1 });
-gsap.set('#p08d', { autoAlpha:0, x:-20 });
-counter($('#p08'), 6.8, .5, 13.3, 1.3, v => '$' + v.toFixed(2), 'power3.inOut');
-tl.to('#p08d', { autoAlpha:1, x:0, duration:.3, ease:'expo.out' }, 14.5);
-fu('#sh08l', 13.6);
-r08.forEach((r, i) => { const bar = r.querySelector('.bar'); gsap.set(r, { autoAlpha:0, x:-30 }); tl.to(r, { autoAlpha:1, x:0, duration:.4, ease:'expo.out' }, 13.8 + i * .1); if (bar) { gsap.set(bar, { scaleX:0 }); tl.to(bar, { scaleX:1, duration:.6, ease:'expo.out' }, 13.9 + i * .1); } });
-tl.to(r08[4].querySelector('.bar'), { backgroundColor:C.red, duration:.15 }, 15.6);
-tl.to(r08[4].querySelector('.pv'), { autoAlpha:0, duration:.1 }, 15.6);
-tl.to(qmTag, { opacity:1, duration:.15 }, 15.65);
-tl.to(r08[4].querySelector('.bar'), { scaleX:0, duration:.5, ease:'power3.in' }, 16.0);
-shake(15.6, 8);
-fu('#e08', 16.4);
-// 2012
-fu('#lb12', 18.9);
-fu('#n12', 19.0);
-t12.forEach((t, i) => { gsap.set(t, { autoAlpha:0, scale:.85 }); tl.to(t, { autoAlpha:1, scale:1, duration:.35, ease:'back.out(2)' }, 19.2 + i * .07); });
-const ev12 = $$('#e12 .ev'); gsap.set(ev12, { autoAlpha:0, x:-24 });
-tl.to(t12[2], { borderColor:C.red, backgroundColor:'#fdecec', duration:.15 }, 20.1);
-tl.to(ev12[0], { autoAlpha:1, x:0, duration:.35, ease:'expo.out' }, 20.1);
-shake(20.1, 7);
-tl.to(t12[1].querySelector('.lg'), { autoAlpha:0, duration:.2 }, 20.9);
-tl.to(skLogo, { opacity:1, duration:.25 }, 21.0);
-tl.to(ev12[1], { autoAlpha:1, x:0, duration:.35, ease:'expo.out' }, 20.9);
-tl.to(t12[2], { left:pos12(3)[0], top:pos12(3)[1], autoAlpha:0, duration:.5, ease:'power3.inOut' }, 21.6);
-tl.to(ev12[2], { autoAlpha:1, x:0, duration:.35, ease:'expo.out' }, 21.6);
-tl.to([t12[4], t12[5]], { y:120, autoAlpha:0, duration:.45, ease:'power3.in', stagger:.06 }, 22.3);
-tl.to(t12[3], { left:pos12(2)[0], top:0, duration:.55, ease:'expo.inOut' }, 22.6);
-tl.to([t12[0], t12[1], t12[3]], { height:250, duration:.5, ease:'expo.inOut' }, 22.9);
-tl.to(ev12[3], { autoAlpha:1, x:0, duration:.35, ease:'expo.out' }, 22.9);
-counters.push({ o:{ get v() { return tl.time() >= 22.9 ? 3 : 6; } }, el:$('#n12'), fmt:v => v + '강', last:null });
-shake(22.9, 9);
-// 2019
-fu($('#tp19').children, 24.9, { stagger:.12 });
-a19.forEach((a, i) => fu(a, 26.2 + i * .45));
-fu('#r19', 28.0);
-// 2023
-fu('#lb23', 30.9);
-qBars.forEach((q, i) => { gsap.set(q.r, { scaleY:0, transformOrigin:'50% 100%' }); const at = 31.0 + i * .22; tl.to(q.r, { scaleY:1, duration:.35, ease:'power3.out' }, at); tl.to(q.vt, { attr:{ opacity:1 }, duration:.2 }, at + .25); });
-fu('#m23w', 32.3);
-counter($('#m23'), 0, -62, 32.3, .8, v => (v < -.5 ? '−' : '') + Math.abs(Math.round(v)) + '%', 'power2.in');
-shake(33.1, 14);
-fu($$('#st23 > div'), 33.6, { stagger:.35 });
-counter($('#l23'), 0, -14.88, 33.6, .9, v => (v < -.005 ? '−' : '') + Math.abs(v).toFixed(2) + '조');
-wipe('#w2', 36.5);
-
-/* 4 · 교훈 36.5 – 40.5 */
-show('#s4', 36.5, 40.5);
-tl.set(BG, { wafer:0, wx:960, wy:540, R:1150, reveal:3, blue:0, cold:0 }, 36.4);
-bgTo({ alpha:1 }, 36.5, .3);
-lnIn('#s4a', 36.7, .35);
-bgTo({ blue:1.05 }, 37.6, 2.6, 'power2.in');
-fu($$('#s4b > div'), 38.2, { stagger:.5 });
-tl.to('#s4', { autoAlpha:0, duration:.25 }, 40.25);
-bgTo({ alpha:0 }, 40.2, .3);
-
-/* 5 · 시나리오 40.5 – 57 */
-show('#s5', 40.5, 57);
-fu('#s5e', 40.55);
-lnIn('#s5t', 40.6);
-shake(40.6, 8);
-tl.to(['#s5e', '#s5t'], { autoAlpha:0, duration:.2 }, 41.9);
-LANES.forEach((L, i) => {
-  const a = 42.0 + i * 5, el = $('#ln' + i);
-  if (i) wipe('#w3', a);
-  show(el, a, a + 5);
-  const parts = [el.children[0], el.children[1], el.children[2], el.children[3], el.children[4]];
-  fu(parts[0], a + .05);
-  gsap.set(parts[1], { autoAlpha:0, scale:1.3, transformOrigin:'0% 50%' });
-  tl.to(parts[1], { autoAlpha:1, scale:1, duration:.3, ease:'expo.out' }, a + .1);
-  fu(parts[2], a + .35);
-  counter(el.querySelector('.cnt'), 0, L.p, a + .35, .6);
-  fu([parts[3], parts[4]], a + .6, { stagger:.15 });
-  $$('.card', el).forEach((c, j) => {
-    gsap.set(c, { autoAlpha:0, y:-70, rotation:j % 2 ? 2 : -2 });
-    tl.to(c, { autoAlpha:1, y:0, rotation:j % 2 ? .6 : -.6, duration:.35, ease:'back.out(1.6)' }, a + .9 + j * .9);
-    shake(a + 1.05 + j * .9, 5);
-  });
-});
-$('#w3').style.background = C.ink;
-
-/* 6 · 엔딩 57 – 60 */
-show('#s6', 57.0, null);
-tl.set(BG, { wafer:1, wx:520, wy:540, R:330, reveal:0, blue:3, cold:0, alpha:1 }, 56.95);
-bgTo({ reveal:1.05 }, 57.0, 1.2, 'power2.out');
-shake(57.0, 12);
-lnIn('#s6a', 57.15);
-lnIn('#s6b', 57.7, .2);
-tl.to({}, { duration:.01 }, 60.0);
-
+// 표지: 웨이퍼가 켜졌다가 "겨울"과 함께 얼어붙는다
+tl.to(BG, { reveal:1.05, duration:1.2, ease:'power2.out' }, .05);
+tl.to(BG, { cold:1, duration:.7, ease:'power2.in' }, 1.0);
+tl.to(BG, { alpha:0, duration:.3, ease:'none' }, 3.35);
+// 1장: 매출 곡선
+[[3.9,2006],[5.2,2009],[6.4,2012],[7.9,2019],[9.1,2023],[10.0,2025]].reduce((p, [t, y]) => { if (p) tl.to(HEAD, { yr:y, duration:t - p[0], ease:'power1.inOut' }, p[0]); return [t, y]; }, null);
+tl.to(pkG, { attr:{ opacity:1 }, duration:.3 }, 7.6);
+tl.to(endG, { attr:{ opacity:1 }, duration:.3 }, 10.0);
+// 2장: 키몬다 퇴출
+tl.to('#qm', { backgroundColor:'#fff', border:`2px dashed ${C.gray2}`, duration:.3 }, 11 + 2.6);
+tl.to('#qmv', { autoAlpha:0, duration:.2 }, 11 + 2.6);
+tl.to('#qmt', { opacity:1, duration:.3 }, 11 + 2.7);
+// 3장: 6강 → 3강
+const a3 = 16.5;
+tl.to(t12[2], { backgroundColor:C.pale, duration:.3 }, a3 + 1.2);
+tl.to(t12[2].querySelector('.lg'), { opacity:.35, duration:.3 }, a3 + 1.2);
+tl.to(elpTag, { opacity:1, duration:.3 }, a3 + 1.25);
+tl.to(t12[1].querySelector('.lg'), { autoAlpha:0, duration:.25 }, a3 + 1.75);
+tl.to(skLogo, { opacity:1, duration:.3 }, a3 + 1.85);
+tl.to(t12[2], { left:pos12(3)[0], top:pos12(3)[1], autoAlpha:0, duration:.5, ease:'power2.inOut' }, a3 + 2.3);
+tl.to([t12[4], t12[5]], { autoAlpha:0, duration:.4 }, a3 + 2.5);
+tl.to(t12[3], { left:pos12(2)[0], top:pos12(2)[1], duration:.5, ease:'power2.inOut' }, a3 + 2.8);
+tl.to([t12[0], t12[1], t12[3]], { height:324, duration:.5, ease:'power2.inOut' }, a3 + 3.1);
+gsap.set('#m12', { autoAlpha:0 }); tl.to('#m12', { autoAlpha:1, duration:.4 }, a3 + 3.3);
+// 결론: 웨이퍼가 다시 켜진다
+tl.set(BG, { wx:400, wy:560, R:280, reveal:0, cold:0, alpha:1 }, 54.9);
+tl.to(BG, { reveal:1.05, duration:1.4, ease:'power2.out' }, 55.1);
+tl.to({}, { duration:.01 }, 60);
 const DUR = tl.duration();
 
 /* ───────── 프레임 렌더 ───────── */
 function renderFrame() {
   for (const c of counters) { const s = String(c.fmt(c.o.v)); if (s !== c.last) { c.el.textContent = s; c.last = s; } }
-  const hx = xOf(HEAD.yr), hy = yAtX(hx), t = tl.time();
-  clipRect.setAttribute('width', Math.max(0, hx + 8));
-  const live = HEAD.yr > 2006.01 && HEAD.yr < 2024.99 ? 1 : 0;
-  head.setAttribute('cx', hx); head.setAttribute('cy', hy); head.setAttribute('opacity', HEAD.yr > 2006.001 ? 1 : 0);
-  headRing.setAttribute('cx', hx); headRing.setAttribute('cy', hy); headRing.setAttribute('r', 30 + 8 * Math.sin(t * 9)); headRing.setAttribute('opacity', live * .16);
+  const hx = xOf(HEAD.yr), hy = yAtX(hx);
+  clipRect.setAttribute('width', Math.max(0, hx + 4));
+  head.setAttribute('cx', hx); head.setAttribute('cy', hy); head.setAttribute('opacity', HEAD.yr > 2006.001 && HEAD.yr < 2024.99 ? 1 : 0);
+  winEls.forEach(w => w.g.setAttribute('opacity', clamp((hx - w.xa) / 60)));
   drawBg();
 }
 
@@ -622,7 +527,7 @@ window.__motion = { duration: DUR, seek(t) { tl.pause(); tl.seek(t, false); rend
 if (location.hash === '#export') { document.documentElement.style.overflow = 'hidden'; document.body.classList.add('export'); fit(); tl.seek(0, false); renderFrame(); }
 else {
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  tl.seek(reduce ? 3.2 : 0, false); renderFrame();
+  tl.seek(reduce ? 3.0 : 0, false); renderFrame();
   if (!reduce) setPlaying(true); else updateUI();
 }
 })();
