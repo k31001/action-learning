@@ -2722,3 +2722,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 사용자 지시: 1장 AI 학습 · 추론 설명 박스에 숫자 말고 해당 수요에서 SSD의 역할을 시각화(범용 클라우드처럼)
 - AI 학습: GPU 서버 ↔ SSD, ↑ 데이터 로딩 · ↓ 체크포인트. AI 추론: GPU HBM → CPU DRAM → SSD(KV · RAG · 가중치) 계층, ↓ 넘치면 오프로드 · ↑ 재사용. 요구 줄 유지, 수치는 노트 · 출처 줄 정리
 - 렌더 QA PASS. 아웃라인 · 보고서 v4.4, 위키 ai-inference-storage-requirements 메모, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.48.6 + updates, npm run build 통과
+
+## [2026-10-10] build | 모션 그래픽 「네 번의 겨울」: 20년 다운턴 복기 + 다음 다운턴 화두
+- 사용자 지시: 전문 디자이너 수준의 모션 그래픽, 삼성 반도체 느낌, 지난 20년 다운턴의 도래·극복 복기와 다가올 다운턴에 대한 화두
+- 신규 `outputs/motion/downturn-20y/index.html` — 1920×1080 무대 2분 22초, 10장(인트로 · 20년 매출 곡선 · DT08 · DT12 · DT19 · DT23 · 패턴 2비트 · 다음 겨울 매트릭스 · 화두 3문 · 엔딩). 장 전환은 Samsung Blue 와이프, 배경은 웨이퍼 다이 격자(다운턴 장에서 다이가 꺼지고 엔딩에서 다시 켜짐), 하단 연도 눈금자가 장마다 해당 창을 표시
+- 수치는 위키 단일 소스: 전체 메모리 연 매출 = DRAM §1 + NAND §1 합산(downturn-history §1 표와 일치), 장별 수치는 §3 프로필, 다음 겨울 확률은 downturn/scenario-matrix §3(DT-D 26 · DT-B 24 · DT-C 22 · DT-A 20 · DT-E 8, 현재 위치 2026-08). 새 사실 주장 없음 → wiki 갱신 불필요
+- 1080p30 MP4(`four-winters.mp4`)는 headless Chromium 프레임 렌더 + ffmpeg로 생성, `.gitignore`로 미커밋
+- dashboard 변경 없음 → version bump·빌드 생략. index 갱신
