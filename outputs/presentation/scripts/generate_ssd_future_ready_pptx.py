@@ -235,18 +235,105 @@ d.notes(s, "1장은 지금 수요의 모양과 삼성의 대응 현황입니다.
         "비어 있는 곳은 초고DWPD입니다. 경쟁사는 Solidigm P5810 50, Kioxia FL6 60, DapuStor X5 120 DWPD 같은 SLC급 제품을 내고 있지만, 삼성의 30 DWPD 이상 제품은 2018년 Z-SSD SZ985가 마지막이고 단종됐습니다. 7세대 Z-NAND는 계획 단계입니다. "
         "제품 이미지는 공식 사진을 구할 수 없어 폼팩터를 따라 재현한 것이고, 삼성 모델 사양은 공식 페이지 검색 결과로 확인한 2차 자료입니다.")
 
+# ---- 2장 그림 · 아이콘 (도형으로 그린 벡터, 편집 가능)
+def _line(s, x0, y0, x1, y1, col, w=1.25):
+    ln = s.shapes.add_connector(1, *(int(v * 914400) for v in (x0, y0, x1, y1)))
+    ln.line.color.rgb = col
+    ln.line.width = int(w * 12700)
+    return ln
+
+
+def pic_weights(s, x, y, w, h):
+    """모델 가중치: 신경망 층(3 · 4 · 3 노드)과 연결."""
+    cols = [3, 4, 3]
+    pts = []
+    for ci, n in enumerate(cols):
+        cx = x + w * (0.16 + 0.34 * ci)
+        pts.append([(cx, y + h * (0.5 + (k - (n - 1) / 2) * 0.24)) for k in range(n)])
+    for a, b in ((0, 1), (1, 2)):
+        for (x0, y0) in pts[a]:
+            for (x1, y1) in pts[b]:
+                _line(s, x0, y0, x1, y1, BLUE_T2, 0.75)
+    r = h * 0.085
+    for ci, col in enumerate(pts):
+        for (cx, cy) in col:
+            rect(s, cx - r, cy - r, 2 * r, 2 * r, fill=BLUE if ci == 1 else BLUE_T1, shape=MSO_SHAPE.OVAL)
+
+
+def pic_rag(s, x, y, w, h):
+    """RAG · Vector DB: 데이터베이스 원통 + 벡터 점 + 돋보기."""
+    rect(s, x + w * 0.04, y + h * 0.18, w * 0.40, h * 0.66, fill=BLUE_T1, shape=MSO_SHAPE.CAN)
+    for k, (px, py) in enumerate([(0.56, 0.22), (0.66, 0.40), (0.52, 0.52), (0.74, 0.20), (0.62, 0.66)]):
+        rect(s, x + w * px, y + h * py, h * 0.10, h * 0.10, fill=BLUE if k == 1 else BLUE_T2, shape=MSO_SHAPE.OVAL)
+    rect(s, x + w * 0.58, y + h * 0.30, h * 0.38, h * 0.38, fill=None, line=BLUE, lw=2.5, shape=MSO_SHAPE.OVAL)
+    _line(s, x + w * 0.58 + h * 0.33, y + h * 0.63, x + w * 0.96, y + h * 0.92, BLUE, 3.0)
+
+
+def pic_kv(s, x, y, w, h):
+    """KV 캐시 오프로드: GPU(HBM) → SSD로 K · V 블록이 내려가고 다시 올라온다."""
+    gw_, gh_ = w * 0.38, h * 0.40
+    rect(s, x + w * 0.02, y + h * 0.06, gw_, gh_, fill=INK, shape=RR)
+    for k in range(4):
+        rect(s, x + w * 0.06 + k * gw_ * 0.22, y + h * 0.14, gw_ * 0.14, gh_ * 0.58, fill=BLUE_T2)
+    rect(s, x + w * 0.02, y + h * 0.62, gw_, h * 0.30, fill=BLUE, shape=RR)
+    for k in range(5):
+        rect(s, x + w * 0.06 + k * gw_ * 0.18, y + h * 0.68, gw_ * 0.12, h * 0.18, fill=WHITE if k % 2 else BLUE_T2)
+    rect(s, x + w * 0.20 - 0.05, y + h * 0.47, 0.10, h * 0.14, fill=BLUE_T1, shape=MSO_SHAPE.DOWN_ARROW)
+    for k, col in enumerate([BLUE, BLUE_T1, BLUE, BLUE_T1]):
+        rect(s, x + w * (0.52 + 0.11 * k), y + h * (0.30 + 0.06 * (k % 2)), w * 0.09, h * 0.40, fill=col)
+
+
+def pic_agent(s, x, y, w, h):
+    """에이전트 메모리: 에이전트(머리 · 몸) + 세션 로그 줄."""
+    rect(s, x + w * 0.08, y + h * 0.10, h * 0.30, h * 0.30, fill=BLUE, shape=MSO_SHAPE.OVAL)
+    rect(s, x + w * 0.02, y + h * 0.44, h * 0.46, h * 0.42, fill=BLUE_T1, shape=RR)
+    for k, ww in enumerate([0.46, 0.36, 0.42, 0.30]):
+        yy = y + h * (0.14 + 0.20 * k)
+        rect(s, x + w * 0.50, yy, w * 0.06, h * 0.10, fill=BLUE if k == 0 else BLUE_T2, shape=MSO_SHAPE.OVAL)
+        rect(s, x + w * 0.60, yy + h * 0.02, w * ww * 0.85, h * 0.07, fill=BLUE_T2 if k else BLUE_T1)
+
+
+def ic_tech(s, name, x, y, sz, col=WHITE, sub=BLUE_T2):
+    """핵심 기술 아이콘 (칩 위 흰색)."""
+    if name == "Large Mapping":           # 작은 칸 4개 → 큰 칸 하나
+        for k in range(4):
+            rect(s, x + k * sz * 0.26, y + sz * 0.06, sz * 0.20, sz * 0.32, fill=sub)
+        rect(s, x, y + sz * 0.50, sz * 0.98, sz * 0.40, fill=col)
+    elif name == "Confidential":          # 자물쇠
+        rect(s, x + sz * 0.22, y, sz * 0.56, sz * 0.62, fill=None, line=col, lw=2.25, shape=MSO_SHAPE.OVAL)
+        rect(s, x + sz * 0.08, y + sz * 0.40, sz * 0.84, sz * 0.58, fill=col, shape=RR)
+        rect(s, x + sz * 0.44, y + sz * 0.56, sz * 0.12, sz * 0.24, fill=sub)
+    elif name == "Fault Tolerant":        # 다이 격자, 하나는 고장(빈 칸)
+        for r in range(3):
+            for c in range(3):
+                bad = (r, c) == (1, 2)
+                rect(s, x + c * sz * 0.34, y + r * sz * 0.34, sz * 0.28, sz * 0.28,
+                     fill=None if bad else col, line=col if bad else None, lw=1.0)
+    elif name == "FDP":                   # 수명별로 모인 블록 줄
+        for r, c2 in enumerate([col, sub, col]):
+            for k in range(3):
+                rect(s, x + k * sz * 0.34, y + r * sz * 0.34, sz * 0.28, sz * 0.26, fill=c2 if r != 2 else None, line=col if r == 2 else None, lw=1.0)
+    elif name == "Multi-Tenant QoS":      # 칸막이로 나뉜 테넌트 줄
+        for r in range(3):
+            rect(s, x, y + r * sz * 0.34, sz * 0.98, sz * 0.24, fill=col if r != 1 else sub, shape=RR)
+    elif name == "Mixed Media":           # 얇은 pSLC 층 + 큰 QLC
+        rect(s, x, y, sz * 0.98, sz * 0.24, fill=sub)
+        rect(s, x + sz * 0.44, y + sz * 0.26, sz * 0.10, sz * 0.12, fill=col, shape=MSO_SHAPE.DOWN_ARROW)
+        rect(s, x, y + sz * 0.42, sz * 0.98, sz * 0.56, fill=col)
+
+
 # =============================================================== 2 추론 수요 × 요구 × 핵심 기술 × 고객 협력 (v4.0)
 s = d.slide(2, "AI 추론 대응", "AI 추론 수요는 용도마다 SSD 요구가 다르고,\n그 요구를 채우는 핵심 기술은 고객과 함께 개발하고 최적화해야 합니다")
 S2_SLIDE = s
 
 # 열: 추론 수요 → 핵심 요구 → 핵심 기술 → 고객 협력
-AX0, AW = MX, 3.70
+AX0, AW = MX, 4.30
 QX0 = AX0 + AW + 0.40
 REQ = [("읽기", "대역"), ("꼬리", "지연"), ("쓰기", "DWPD"), ("용량", "$/TB"), ("격리", "보안")]
-QCW = 1.22
+QCW = 1.00
 QW_ = QCW * len(REQ)
 TX0 = QX0 + QW_ + 0.40
-TW_ = 4.70
+TW_ = 5.10
 GX0_ = TX0 + TW_ + 0.40
 GW_ = RIGHT - GX0_
 HY = 2.26
@@ -274,8 +361,10 @@ for i, (nm, kw, req, techs) in enumerate(INF):
     y = RY0 + i * (RHh + RGp)
     hot = i == 2
     rect(s, AX0, y, AW, RHh, fill=TINT if hot else PALE, line=BLUE if hot else None, lw=1.5, shape=RR)
-    tb(s, AX0 + 0.22, y + 0.14, AW - 0.40, 0.46, [(nm, 21, True, BLUE if hot else INK)], anchor=MID)
-    tb(s, AX0 + 0.22, y + 0.62, AW - 0.40, 0.40, [(kw, 16, False, GRAY)], anchor=MID)
+    rect(s, AX0 + 0.10, y + 0.10, 1.12, RHh - 0.20, fill=WHITE, shape=RR)
+    [pic_weights, pic_rag, pic_kv, pic_agent][i](s, AX0 + 0.16, y + 0.14, 1.00, RHh - 0.28)
+    tb(s, AX0 + 1.36, y + 0.14, AW - 1.44, 0.46, [(nm, 21, True, BLUE if hot else INK)], anchor=MID)
+    tb(s, AX0 + 1.36, y + 0.62, AW - 1.44, 0.40, [(kw, 16, False, GRAY)], anchor=MID)
     # 요구 점
     rect(s, QX0, y, QW_, RHh, fill=None, line=LINE, lw=0.75, shape=RR)
     for j, v in enumerate(req):
@@ -292,7 +381,9 @@ for i, (nm, kw, req, techs) in enumerate(INF):
         if k == 2:
             cx = TX0 + (cw_ + 0.20) / 2
         lv = TLV[t]
-        label_box(s, cx, cy, cw_, 0.50, [(t, 17, True, WHITE)], fill=TCOL[lv])
+        rect(s, cx, cy, cw_, 0.50, fill=TCOL[lv], shape=RR)
+        ic_tech(s, t, cx + 0.12, cy + 0.08, 0.34)
+        tb(s, cx + 0.54, cy, cw_ - 0.60, 0.50, [(t, 16, True, WHITE)], anchor=MID)
     # 협력 게이지: SSD 안에서 · 개발 · 최적화
     lv = max(TLV[t] for t in techs)
     gw = (GW_ - 0.16) / 3

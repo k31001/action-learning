@@ -17,6 +17,16 @@ export const UPDATES = [
   {
     date: '2026-10-10',
     type: 'build',
+    version: 'v2.48.3',
+    title: '고객 협력 전략 덱 v4.1: 2장 추론 그림 · 기술 아이콘',
+    summary: '2장 AI 추론 대응에 추론 수요별 작은 그림 4개와 핵심 기술 아이콘 6종을 도형으로 추가. 발표자료 탭 사본 · 웹 보기 갱신.',
+    tags: ['발표자료', 'AI 추론'],
+    items: [{ label: '덱', detail: 'ssd-future-ready-strategy.pptx v4.1 2장' }],
+    links: [],
+  },
+  {
+    date: '2026-10-10',
+    type: 'build',
     version: 'v2.48.2',
     title: '고객 협력 전략 덱 v4.0: 추론 수요 × 삼성 포트폴리오 × 공동 설계 확장',
     summary:
