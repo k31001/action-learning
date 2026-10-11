@@ -85,10 +85,10 @@ const posAt = (f: number, i: number, d: number, s0: number, from: number) => {
 };
 export const Odometer: React.FC<{ text: string; from: string; at: number; size: number; color: string }> = ({ text, from, at, size, color }) => {
   const f = useCurrentFrame();
-  const ROW = size * 1.1, DW = size * 0.62;
+  const ROW = size * 1.3, DW = size * 0.62;
   let di = 0;
   return (
-    <div style={{ display: 'flex', height: ROW, overflow: 'hidden', fontWeight: 900, fontSize: size, letterSpacing: '-0.03em', fontVariantNumeric: 'tabular-nums' }}>
+    <div style={{ display: 'flex', height: ROW, overflow: 'hidden', WebkitMaskImage: 'linear-gradient(transparent, #000 22%, #000 78%, transparent)', maskImage: 'linear-gradient(transparent, #000 22%, #000 78%, transparent)', fontWeight: 900, fontSize: size, letterSpacing: '-0.03em', fontVariantNumeric: 'tabular-nums' }}>
       {text.split('').map((ch, k) => {
         if (!/\d/.test(ch)) return <div key={k} style={{ height: ROW, lineHeight: `${ROW}px`, color }}>{ch}</div>;
         const i = di++;

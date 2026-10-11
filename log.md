@@ -2763,4 +2763,5 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 샷 카드: avatar-grid-radial-build-colorize(웨이퍼 생장→결빙, 8% 씨앗) · timeline-travel(곡선 머리 1.45x 추적→풀백) · odometer-digit-roll($6.80→$0.50) · mosaic-reframe(6강→3강) · hatch-depth(2019 매출) · crash-zoom(−62%) · marker-underline-title(심은 것) · title-demote-to-label(다음 겨울은 어디서). v3의 화면 흔들림은 Q3에 따라 제거하고, 전화면 충격은 −45%·−62%·결론 3회로 제한
 - 수치는 위키와 대조(분기 DRAM 매출 출처 = memory-downturn-history-research raw-note). 새 주장 없음. 가상 헤드라인은 카드마다 태그 + 「실제 보도 아님」 각주
 - 사운드: score.js를 새 장 경계(15f 박 격자)에 재배치(타격·라이저는 SFX로 이관), Mixkit SFX 26종 핀 표(출처 URL 확인분만, 피크 지연 실측 보정, 성완본 실측 오차 ≤0.5f). BGM판 −16 LUFS / 무BGM판 −19 LUFS, TP ≤ −1.2 dBFS. MP4는 미커밋
-- 독립 서브에이전트 최종 검수 후 수정 반영. dashboard 변경 없음 → bump 생략
+- 독립 서브에이전트 최종 검수: 조건부 통과. 수치·내용 완결·A/V 싱크(≤2f)·음량·가상 헤드라인 표기는 통과. 필수 수정 3건을 반영함: 풀백 시 −45% 도장 잘림(카메라 바닥 고정), 오도미터가 라벨을 침범(행 높이 1.3 + 상하 마스크 페이드), 2008 OPM 줄의 정지 부족·우측 여백(두 줄, 116f 등장, 정지 1.8초). 권장 2건도 반영함: 2023 각주에 ᵉ 추정 표기, 2019 경쟁사 감산 날짜 적색 → 잉크
+- dashboard 변경 없음 → bump 생략

@@ -34,7 +34,8 @@ export const Curve: React.FC = () => {
   // 카메라: 머리 앞쪽에 여백(리드룸)을 두고 추적, y는 ±10f 평균으로 매끈하게
   let sy = 0; for (let k = -10; k <= 10; k += 2) sy += yOf(val(yrAt(f + k))); sy /= 11;
   const pull = tw(f, [186, 224], [0, 1], INOUT);
-  const fx = clamp(hx + 200, 960 / Z, 1920 - 960 / Z), fy = clamp(sy, 372, 760);
+  // −45% 도장 이후엔 카메라가 머리를 따라 올라가지 않는다 — 아래쪽 도장이 화면 안에 남도록 바닥 고정
+  const fx = clamp(hx + 200, 960 / Z, 1920 - 960 / Z), fy = Math.max(clamp(sy, 372, 760), 640 * tw(f, [172, 182], [0, 1]));
   const cx = interpolate(pull, [0, 1], [fx, 960]), cy = interpolate(pull, [0, 1], [fy, 540]);
   const z = interpolate(pull, [0, 1], [Z, 1]);
   // −45% 착지 순간 한 번의 화면 펀치 (crash-zoom 6f 오버슈트 후 복귀)
@@ -74,10 +75,10 @@ export const Curve: React.FC = () => {
             const next = i < 3 ? STAMPS[i + 1].f - 10 : 200;
             const full = 1 - tw(f, [next, next + 7], [0, 1]);
             const comp = tw(f, [next + 3, next + 10], [0, 1]);
-            const sc = 1.5 - 0.5 * on;
+            const sc = (s.above ? 1.5 : 1.25) - (s.above ? 0.5 : 0.25) * on;
             const big = s.above
               ? [[y - 286, s.yr, 30, C.steel, 700], [y - 242, s.c, 34, C.ink, 900], [y - 142, s.d, 104, C.red, 900]]
-              : [[y + 70, s.yr, 30, C.steel, 700], [y + 114, s.c, 34, C.ink, 900], [y + 212, s.d, 98, C.red, 900]];
+              : [[y + 62, s.yr, 30, C.steel, 700], [y + 104, s.c, 34, C.ink, 900], [y + 190, s.d, 92, C.red, 900]];
             return (
               <g key={s.y} opacity={on}>
                 <circle cx={x} cy={y} r={16} fill={C.red} />

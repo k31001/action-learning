@@ -13,19 +13,19 @@ const SRC = (s: string) => `출처: wiki/downturn/downturn-history.md · ${s}`;
 /* 2008 · 버텼다 — 오도미터(odometer-digit-roll)로 $6.80 → $0.50, 점유율 막대, 키몬다 붕괴 */
 export const W08: React.FC = () => {
   const f = useCurrentFrame();
-  const qmRed = tw(f, [120, 124], [0, 1]);
-  const qmGone = tw(f, [130, 146], [0, 1], Easing3);
+  const qmRed = tw(f, [100, 104], [0, 1]);
+  const qmGone = tw(f, [108, 122], [0, 1], Easing3);
   return (
     <WinterFrame k={0} src={SRC('dram-chicken-game-history · samsung-downturn-actions')}>
       <Up at={22} style={{ position: 'absolute', left: R, top: 150, ...lab }}>512Mb DDR2 현물가 · 2007 → 2008</Up>
-      <div style={{ position: 'absolute', left: R, top: 196, display: 'flex', alignItems: 'center', gap: 34 }}>
-        <Up at={24}><Odometer text="$0.50" from="$6.80" at={44} size={112} color={C.ink} /></Up>
-        <Up at={88} dx={-24} dy={0} style={big(112, C.red)}>−93%</Up>
+      <div style={{ position: 'absolute', left: R, top: 206, display: 'flex', alignItems: 'center', gap: 34 }}>
+        <Up at={24}><Odometer text="$0.50" from="$6.80" at={36} size={112} color={C.ink} /></Up>
+        <Up at={80} dx={-24} dy={0} style={big(112, C.red)}>−93%</Up>
       </div>
-      <Up at={68} style={{ position: 'absolute', left: R, top: 372, ...lab }}>치킨게임 직전 DRAM 점유율</Up>
+      <Up at={60} style={{ position: 'absolute', left: R, top: 372, ...lab }}>치킨게임 직전 DRAM 점유율</Up>
       <div style={{ position: 'absolute', left: R, top: 424, width: 860 }}>
         {SH08.map((s, i) => {
-          const a = 72 + i * 4;
+          const a = 64 + i * 4;
           const bar = tw(f, [a + 2, a + 20], [0, 1], EXPO);
           const isQ = s.k === 'Qimonda';
           const w = s.p * 16 * bar * (isQ ? 1 - qmGone : 1);
@@ -37,17 +37,18 @@ export const W08: React.FC = () => {
               </div>
               <div style={{ height: 42, width: w, background: fill, borderRadius: '0 6px 6px 0' }} />
               <div style={{ fontSize: 40, fontWeight: 900, marginLeft: 16, color: s.me ? C.blue : C.ink, opacity: isQ ? 1 - qmRed : 1 }}>{s.p}%</div>
-              {isQ && <div style={{ position: 'absolute', left: 250, fontSize: 36, fontWeight: 900, color: C.red, opacity: tw(f, [124, 130], [0, 1]) }}>2009.01 파산</div>}
+              {isQ && <div style={{ position: 'absolute', left: 250, fontSize: 36, fontWeight: 900, color: C.red, opacity: tw(f, [104, 110], [0, 1]) }}>2009.01 파산</div>}
             </Up>
           );
         })}
-        <Up at={92} dx={-30} dy={0} style={{ position: 'absolute', top: 5 * 66, left: 0, height: 60, display: 'flex', alignItems: 'center' }}>
+        <Up at={84} dx={-30} dy={0} style={{ position: 'absolute', top: 5 * 66, left: 0, height: 60, display: 'flex', alignItems: 'center' }}>
           <div style={{ width: 230 }}><Wordmark t="대만 2사" ghost size={32} /></div>
           <div style={{ fontSize: 34, fontWeight: 900, color: C.steel }}>파워칩 · 난야</div>
         </Up>
       </div>
-      <Up at={148} style={{ position: 'absolute', left: R, top: 866, fontSize: 36, fontWeight: 700, lineHeight: 1.3, whiteSpace: 'nowrap' }}>
-        2008년 4분기 영업이익률 · <b style={{ color: C.blue, fontWeight: 900 }}>삼성 −14%</b> <span style={{ color: C.steel }}>vs</span> <b style={{ color: C.red, fontWeight: 900 }}>경쟁사 −40% 이하</b>
+      <Up at={116} style={{ position: 'absolute', left: R, top: 836, lineHeight: 1.25, whiteSpace: 'nowrap' }}>
+        <div style={lab}>2008년 4분기 영업이익률</div>
+        <div style={{ fontSize: 48, fontWeight: 900 }}><span style={{ color: C.blue }}>삼성 −14%</span> <span style={{ color: C.steel, fontWeight: 700 }}>vs</span> <span style={{ color: C.red }}>경쟁사 −40% 이하</span></div>
       </Up>
     </WinterFrame>
   );
@@ -132,8 +133,8 @@ const Hatch: React.FC<{ at: number; w: number; color: string; label: string; val
 };
 export const W19: React.FC = () => {
   const acts: [React.ReactNode, string, string][] = [
-    [<Logo k="micron" h={40} grey />, '2019.03 첫 공식 감산', C.red],
-    [<Logo k="skhynix" h={84} grey />, '2019.07 감산', C.red],
+    [<Logo k="micron" h={40} grey />, '2019.03 첫 공식 감산', C.ink],
+    [<Logo k="skhynix" h={84} grey />, '2019.07 감산', C.ink],
     [<Logo k="samsung" h={32} />, '무감산 · 투자 유지', C.blue],
   ];
   return (
@@ -167,7 +168,7 @@ export const W23: React.FC = () => {
   const loss = minus(tw(f, [100, 128], [0, -14.88], OUT), 2);
   const punch = 1 + 0.06 * tw(f, [84, 87], [0, 1]) * (1 - tw(f, [87, 100], [0, 1], EXPO));
   return (
-    <WinterFrame k={3} src={SRC('memory-downturn-history-research · samsung-pre-downturn-preparation')}>
+    <WinterFrame k={3} src={SRC('memory-downturn-history-research(ᵉ 추정 포함) · samsung-pre-downturn-preparation')}>
       <div style={{ position: 'absolute', inset: 0, transform: `scale(${punch})`, transformOrigin: '1640px 220px' }}>
         <Up at={22} style={{ position: 'absolute', left: R, top: 150, ...lab }}>DRAM 분기 매출 · $B</Up>
         <svg width={1920} height={1080} style={{ position: 'absolute', left: 0, top: 0 }}>
