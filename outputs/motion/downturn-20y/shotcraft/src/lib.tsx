@@ -1,6 +1,7 @@
 import React from 'react';
 import { Easing, Img, interpolate, staticFile, useCurrentFrame } from 'remotion';
 import { C, FONT } from './theme';
+import { CUE } from './timeline';
 
 export const EXPO = Easing.bezier(0.16, 1, 0.3, 1);
 export const INOUT = Easing.inOut(Easing.cubic);
@@ -157,3 +158,7 @@ export const monotone = (pts: [number, number][]) => {
     return h00 * pts[i][1] + h10 * h * t[i] + h01 * pts[i + 1][1] + h11 * h * t[i + 1];
   };
 };
+
+/* 큐 헬퍼 — 장면 내부 프레임 기준 큐 시작/끝 */
+export const cue = (id: string) => CUE[id].at;
+export const cueEnd = (id: string) => CUE[id].end;
