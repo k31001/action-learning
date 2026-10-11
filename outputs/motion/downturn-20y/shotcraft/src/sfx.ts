@@ -32,9 +32,9 @@ export const SFX: Sfx[] = [
   pin(S.curve.from + c('c3'), 'bass-hit-short', 0.28, '−19%'),
   pin(S.curve.from + c('c4'), 'bass-hit-short', 0.32, '−34%'),
   pin(S.curve.from + c('c5'), 'bass-hit-futuristic', 0.4, '−45% + 화면 펀치 (slam 1/3)'),
-  at(S.curve.from + c('c6'), 'air-woosh-deep', 0.28, '풀백 — 20년 전체', 60),
+  at(S.curve.from + c('c6'), 'air-woosh-deep', 0.14, '풀백 — 20년 전체', 60),
   // 장 전환 블레이드 + 장 카드 밀어올림
-  ...(['w08', 'w12', 'w19', 'w23', 'spring', 'lesson'] as const).map((k, i) => at(S[k].from - 8, i % 2 ? 'whoosh-fast' : 'swoosh-quick', 0.3, `블레이드 → ${k}`, 30)),
+  ...(['w08', 'w12', 'w19', 'w23', 'spring', 'lesson', 'scen'] as const).map((k, i) => at(S[k].from - 8, i % 2 ? 'whoosh-fast' : 'swoosh-quick', 0.3, `블레이드 → ${k}`, 30)),
   at(S.w08.from + t08.sw, 'sweep-short', 0.22, '장 카드 → 레이아웃'),
   at(S.w12.from + t12.sw, 'sweep-short', 0.22, '장 카드 → 레이아웃'),
   at(S.w19.from + t19.sw, 'sweep-short', 0.22, '장 카드 → 레이아웃'),
@@ -55,26 +55,25 @@ export const SFX: Sfx[] = [
   at(S.w19.from + t19.d2, 'sweep-short', 0.28, '삼성 무감산'),
   at(S.w19.from + t19.d3, 'sparkle-touch', 0.3, '44.1%'),
   // 2023
-  at(S.w23.from + t23.inv, 'clock-knob-spin', 0.9, '재고 카운터'),
   at(S.w23.from + t23.e2, 'sweep-fast-small', 0.24, '분기 막대 붕괴 + 풀백'),
   pin(S.w23.from + t23.land, 'impact-epic-trailer', 0.45, '−62% 크래시 줌 (slam 2/3)'),
   pin(S.w23.from + c('e3') + 4, 'bass-hit-short', 0.34, '−14.88조'),
   // ⑤ 봄
   at(S.spring.from + c('p1'), 'shimmer-sparkle-sweep', 0.26, '반등 곡선', 80),
-  at(S.spring.from + c('p3') - 6, 'air-woosh-quick', 0.26, '곡선 → HBM 실사'),
+  at(S.spring.from + c('p3') - 10, 'air-woosh-quick', 0.12, '곡선 → HBM 실사'),
   // ⑥ 교훈
   at(S.lesson.from + c('l1') + 40, 'paper-slide', 0.28, '마커 밑줄'),
   at(S.lesson.from + c('l2'), 'sweep-short', 0.22, '심은 것'),
   at(S.lesson.from + c('l3'), 'sweep-short', 0.2, '놓친 것'),
   // ⑦ 시나리오
-  pin(S.scen.from + c('s0') + 6, 'swoosh-slow', 0.16, '질문 진입 (빌드인)', 75),
-  pin(S.scen.from + c('s0') + 10, 'bass-hit-short', 0.24, '「다음 겨울은 어디서 오는가.」'),
+  pin(S.scen.from + c('s0') + 6, 'swoosh-slow', 0.1, '질문 진입 (빌드인)', 75),
+  pin(S.scen.from + c('s0') + 2, 'bass-hit-short', 0.18, '「다음 겨울은 어디서 오는가.」'),
   at(S.scen.from + lanes[0] - 24, 'air-woosh-quick', 0.24, '제목 강등 → 라벨'),
   ...[0, 1, 2].flatMap((i): Sfx[] => {
     const a = S.scen.from + lanes[i], st = cardStep(i);
     return [
       ...(i ? [at(a - 8, i % 2 ? 'whoosh-fast' : 'swoosh-quick', 0.28, `잉크 블레이드 → 발원 ${i + 1}`, 30)] : []),
-      pin(a + 6, 'bass-hit-short', 0.24, `발원 ${i + 1} 이름`),
+      pin(a + 6, 'bass-hit-short', 0.18, `발원 ${i + 1} 이름`),
       at(a + 14, 'clock-knob-spin', 0.6, `확률 카운트 ${i + 1}`),
       ...[0, 1, 2].map((j) => at(a + 24 + Math.round(j * st), j % 2 ? 'paper-move-quick' : 'paper-slide', 0.34 - j * 0.05, `헤드라인 ${j + 1}`)),
     ];

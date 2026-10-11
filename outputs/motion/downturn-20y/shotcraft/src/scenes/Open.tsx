@@ -20,8 +20,8 @@ export const Open: React.FC = () => {
     <AbsoluteFill style={{ background: C.paper }}>
       <div style={{ position: 'absolute', inset: 0, transform: `scale(${push})` }}>
         <Wafer cx={wx} cy={540} R={330} growAt={grow} growDur={22} freezeAt={title2 + 4} />
-        <Up at={X + 34} style={{ position: 'absolute', left: 1004, top: 262, fontSize: 40, fontWeight: 700, color: C.steel }}>메모리 다운턴 복기 · 2006 — 2026</Up>
-        <Lines at={X + 40} lines={['20년,']} style={{ position: 'absolute', left: 996, top: 322, fontSize: 230, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.04, color: C.ink }} />
+        <Up at={cue('o1') + 4} style={{ position: 'absolute', left: 1004, top: 262, fontSize: 40, fontWeight: 700, color: C.steel }}>메모리 다운턴 복기 · 2006 — 2026</Up>
+        <Lines at={cue('o1') + 10} lines={['20년,']} style={{ position: 'absolute', left: 996, top: 322, fontSize: 230, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.04, color: C.ink }} />
         <Lines at={title2} lines={[<>네 번의 <span style={{ color: C.blue }}>겨울</span>.</>]} style={{ position: 'absolute', left: 1002, top: 584, fontSize: 132, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.04, color: C.ink }} />
       </div>
       {HAS_PHOTOS && <Photo name="wafer-frost" to={X + 12} scale={[1.0, 1.1]} origin="30% 55%" opacity={1 - tw(f, [X, X + 12], [0, 1])} />}

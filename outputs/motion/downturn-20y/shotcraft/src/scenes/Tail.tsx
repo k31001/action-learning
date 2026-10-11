@@ -47,7 +47,7 @@ export const Spring: React.FC = () => {
           </Up>
         </div>
       </div>
-      <Source at={p1}>출처: wiki/downturn/downturn-history.md(2025 ᵉ 추정) · wiki/concepts/hbm-market.md · 이미지: AI 생성</Source>
+      <Source at={p1}>출처: wiki/downturn/downturn-history.md(2025 ᵉ 추정) · wiki/concepts/hbm-market.md</Source>
     </AbsoluteFill>
   );
 };
@@ -69,7 +69,7 @@ export const Lesson: React.FC = () => {
         <Up at={l2} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.blue} size={38}>심은 것</Tag>40nm DDR3 · Line-16 · 1z DRAM</Up>
         <Up at={l3} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.red} size={38}>놓친 것</Tag>2019 HBM 전담팀 축소</Up>
       </div>
-      <Source at={l1 + 10}>출처: wiki/downturn/downturn-history.md §4 · samsung-2019-downturn-2017-2019-actions{HAS_PHOTOS ? ' · 이미지: AI 생성' : ''}</Source>
+      <Source at={l1 + 10}>출처: wiki/downturn/downturn-history.md §4 · samsung-2019-downturn-2017-2019-actions</Source>
     </AbsoluteFill>
   );
 };
@@ -88,7 +88,6 @@ const Lane: React.FC<{ i: number; a: number; b: number }> = ({ i, a, b }) => {
       <div style={{ position: 'absolute', left: 110, top: 208, fontSize: 180, fontWeight: 900, letterSpacing: '-0.05em', lineHeight: 1, color: C.blue, opacity: bigIn, transform: `scale(${1.3 - 0.3 * bigIn})`, transformOrigin: '0% 50%' }}>{L.t}</div>
       <Up at={a + 12} style={{ position: 'absolute', left: 120, top: 414, fontSize: 150, fontWeight: 900, letterSpacing: '-0.05em', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{pct}%</Up>
       <Up at={a + 20} style={{ position: 'absolute', left: 124, top: 580, fontSize: 36, fontWeight: 700, color: C.steel }}>조건부 확률 · {L.sub}</Up>
-      <Up at={a + 26} style={{ position: 'absolute', left: 124, top: 650, width: 620, fontSize: 46, fontWeight: 700, lineHeight: 1.35 }}>{L.m}</Up>
       {L.h.map(([d, h1, h2], j) => {
         const ca = a + 24 + j * step;
         const p = tw(f, [ca, ca + 11], [0, 1], (t) => 1 + 2.6 * (t - 1) ** 3 + 1.6 * (t - 1) ** 2);
@@ -96,7 +95,7 @@ const Lane: React.FC<{ i: number; a: number; b: number }> = ({ i, a, b }) => {
         const rot = (j % 2 ? 1 : -1) * (2 - 1.4 * Math.min(1, p));
         return (
           <div key={j} style={{ position: 'absolute', left: 800, top: 140 + j * 248, width: 1000, height: 220, background: '#fff', borderTop: `6px solid ${C.ink}`, boxShadow: `0 2px 0 ${C.frost}, 0 18px 40px rgba(11,16,32,.10)`, padding: '18px 36px 0', boxSizing: 'border-box', opacity: op, transform: `translateY(${(1 - p) * -70}px) rotate(${rot}deg)` }}>
-            <div style={{ display: 'flex', gap: 16, alignItems: 'center', fontSize: 28, fontWeight: 700, color: C.steel }}>
+            <div style={{ display: 'flex', gap: 16, alignItems: 'center', fontSize: 32, fontWeight: 700, color: C.steel }}>
               <span style={{ color: '#fff', background: C.ink, borderRadius: 3, padding: '0 10px' }}>가상 헤드라인</span><span>{d}</span>
             </div>
             <div style={{ fontFamily: SERIF, fontWeight: 900, fontSize: 48, lineHeight: 1.26, letterSpacing: '-0.03em', marginTop: 8, color: C.ink }}>{h1}<br />{h2}</div>

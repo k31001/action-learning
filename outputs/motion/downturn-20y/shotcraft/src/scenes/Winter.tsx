@@ -8,7 +8,7 @@ import { Photo } from '../Photo';
 // ③ 네 번의 겨울 공통 틀. 장마다 ① 장 카드(연도 + 동사, 내레이터가 연도를 읽는 동안) → ② 아래에서 밀고 올라오는
 // 데이터 레이아웃(bottom-push-stack-wipe). 레이아웃 4종은 장마다 다르다(큰 숫자 / 타일 / 3자 대비 / 막대 클로즈업).
 // 카메라는 slow push(1→1.02) 하나뿐 — 흔들림 없음(Q3).
-export const CARD_HOLD = 34; // 첫 큐 시작 후 카드 유지 프레임
+export const CARD_HOLD = 26; // 첫 큐 시작 후 카드 유지 프레임
 export const ChapterFrame: React.FC<{ k: number; first: string; src: string; photo?: string; children: React.ReactNode }> = ({ k, first, src, photo, children }) => {
   const f = useCurrentFrame();
   const d = WINTERS[k];

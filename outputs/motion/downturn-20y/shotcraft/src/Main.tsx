@@ -21,10 +21,10 @@ const OpenOut: React.FC = () => {
 };
 const ScenWrap: React.FC = () => <Scen dur={SHOTS.scen.dur} />;
 const SCENES: Record<string, React.FC> = { open: OpenOut, curve: Curve, w08: W08, w12: W12, w19: W19, w23: W23, spring: Spring, lesson: Lesson, scen: ScenWrap, end: End };
-// 장 전환 블레이드(블루) — 겨울 4장·봄·교훈·결론 진입
-const BLADES = [SHOTS.w08.from, SHOTS.w12.from, SHOTS.w19.from, SHOTS.w23.from, SHOTS.spring.from, SHOTS.lesson.from, SHOTS.end.from];
+// 장 전환 블레이드(블루) — 겨울 4장·봄·교훈·시나리오·결론 진입
+const BLADES = [SHOTS.w08.from, SHOTS.w12.from, SHOTS.w19.from, SHOTS.w23.from, SHOTS.spring.from, SHOTS.lesson.from, SHOTS.scen.from, SHOTS.end.from];
 
-// 내레이션 구간에서 음악을 낮춘다(덕킹): 큐 앞 6f 동안 내려가 큐 끝 뒤 14f 동안 복귀
+// 내레이션 구간에서 음악을 −72% 낮춘다(덕킹): 큐 앞 6f 동안 내려가 큐 끝 뒤 14f 동안 복귀
 const VO_RANGES = Object.values(CUE).map((c) => [c.abs, c.abs + (c.end - c.at)] as [number, number]);
 const duck = (f: number) => {
   let d = 0;
@@ -43,7 +43,7 @@ export const Main: React.FC<Props> = ({ bgm, vo = true }) => (
       // MUSIC_START > 0 이면 그만큼 늦게 들어오고(콜드 오픈은 음악 없이), < 0 이면 파일 앞부분을 잘라 재생
       <Sequence from={Math.max(0, Math.round(MUSIC_START * FPS))} layout="none" name="music">
         <Audio src={staticFile(M.src)} trimBefore={Math.max(0, Math.round(-MUSIC_START * FPS))}
-          volume={(lf) => { const f = lf + Math.max(0, Math.round(MUSIC_START * FPS)); return (M.gain ?? 0.7) * (1 - 0.6 * duck(f)) * interpolate(lf, [0, 30], [0, 1], { extrapolateRight: 'clamp' }) * interpolate(f, [TOTAL - 60, TOTAL], [1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }); }} />
+          volume={(lf) => { const f = lf + Math.max(0, Math.round(MUSIC_START * FPS)); return (M.gain ?? 0.7) * (1 - 0.72 * duck(f)) * interpolate(lf, [0, 30], [0, 1], { extrapolateRight: 'clamp' }) * interpolate(f, [TOTAL - 60, TOTAL], [1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }); }} />
       </Sequence>
     )}
     {vo && VO_MEASURED && Object.entries(CUE).map(([id, c]) => (

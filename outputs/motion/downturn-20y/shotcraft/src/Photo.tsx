@@ -18,6 +18,8 @@ export const Photo: React.FC<{
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', opacity }}>
       <Img src={staticFile(`photos/${name}.jpg`)} style={{ position: 'absolute', inset: 0, width: 1920, height: 1080, objectFit: 'cover', transform: `translateX(${x}px) scale(${s})`, transformOrigin: origin }} />
       {fade && <div style={{ position: 'absolute', inset: 0, background: fade }} />}
+      {/* AI 생성 표기 — 사진이 보이는 동안 항상(오인 방지) */}
+      <div style={{ position: 'absolute', right: 40, bottom: 30, padding: '4px 12px', borderRadius: 4, background: 'rgba(255,255,255,.82)', color: '#5d6782', fontFamily: '"Noto Sans KR", sans-serif', fontSize: 24, fontWeight: 700 }}>이미지: AI 생성</div>
     </div>
   );
 };

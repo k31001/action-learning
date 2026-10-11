@@ -49,7 +49,7 @@ export const ChartSvg: React.FC<ChartState> = ({ f, yr, stampsOn, stampAt, compa
         <path d={LINE} fill="none" stroke={C.blue} strokeWidth={7} strokeLinejoin="round" strokeLinecap="round" />
       </g>
       {spring > 0 && <g clipPath="url(#sp)" opacity={spring}><path d={AREA} fill="url(#sg)" /><path d={LINE} fill="none" stroke={C.blue2} strokeWidth={11} strokeLinejoin="round" strokeLinecap="round" /></g>}
-      <text x={xOf(2018)} y={yOf(162.6) - 30} textAnchor="middle" fill={C.steel} fontSize={30} fontWeight={700} opacity={peakOn}>2018 · $162.6B</text>
+      <text x={xOf(2018)} y={yOf(162.6) - 30} textAnchor="middle" fill={C.steel} fontSize={30} fontWeight={700} opacity={peakOn}>2018 · $162.6Bᵉ</text>
       <text x={xOf(2025) + 6} y={yOf(222) - 36} textAnchor="end" fill={C.blue} fontSize={48} fontWeight={900} opacity={endOn}>2025 · $222Bᵉ</text>
       {STAMPS.map((s, i) => {
         if (!stampsOn[i]) return null;
