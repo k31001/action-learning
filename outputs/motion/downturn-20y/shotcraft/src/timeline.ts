@@ -16,16 +16,16 @@ type Spec = {
   snap: number; // 경계 정렬 단위(박 수)
 };
 const SPEC: Record<string, Spec> = {
-  open: { lead: 1.4, tail: 1.4, snap: 2 }, // 실사 콜드 오픈 1.6초 → 웨이퍼 → 제목
-  curve: { lead: 0.4, gap: 0.3, slot: { c2: 1.4, c3: 1.8, c4: 1.8, c5: 1.6 }, tail: 1.0, snap: 2 },
-  w08: { lead: 0.4, gap: 0.35, slot: { a1: 3.2, a2: 4.0 }, tail: 1.3, snap: 2 },
-  w12: { lead: 0.4, gap: 0.35, slot: { b1: 3.4, b2: 2.4 }, tail: 1.3, snap: 2 },
-  w19: { lead: 0.4, gap: 0.35, slot: { d1: 3.6, d2: 1.8 }, tail: 1.5, snap: 2 },
-  w23: { lead: 0.4, gap: 0.35, slot: { e1: 3.4, e2: 2.4 }, tail: 1.2, snap: 2 },
-  spring: { lead: 0.4, gap: 0.4, slot: { p1: 2.0 }, tail: 1.2, snap: 2 },
-  lesson: { lead: 0.4, gap: 0.35, tail: 1.2, snap: 2 },
-  scen: { lead: 0.3, gap: 0.5, slot: { s0: 2.4, s1: 4.6, s2: 4.6 }, tail: 2.6, snap: 2 },
-  end: { lead: 0.3, gap: 0.4, tail: 2.4, snap: 2 },
+  open: { lead: 1.4, tail: 1.4, snap: 1 }, // 실사 콜드 오픈 1.6초 → 웨이퍼 → 제목
+  curve: { lead: 0.4, gap: 0.3, slot: { c2: 1.3, c3: 1.6, c4: 1.6, c5: 1.5 }, tail: 0.9, snap: 1 },
+  w08: { lead: 0.4, gap: 0.35, slot: { a1: 3.0, a2: 3.8 }, tail: 1.1, snap: 1 },
+  w12: { lead: 0.4, gap: 0.35, slot: { b1: 4.2, b2: 2.3 }, tail: 1.1, snap: 1 },
+  w19: { lead: 0.4, gap: 0.35, slot: { d1: 3.4, d2: 1.7 }, tail: 1.3, snap: 1 },
+  w23: { lead: 0.4, gap: 0.35, slot: { e1: 3.2, e2: 2.3 }, tail: 1.0, snap: 1 },
+  spring: { lead: 0.4, gap: 0.4, slot: { p1: 2.0 }, tail: 1.2, snap: 1 },
+  lesson: { lead: 0.4, gap: 0.35, tail: 1.2, snap: 1 },
+  scen: { lead: 0.3, gap: 0.5, slot: { s0: 2.2, s1: 4.4, s2: 4.4 }, tail: 2.1, snap: 1 },
+  end: { lead: 0.3, gap: 0.4, tail: 2.4, snap: 1 },
 };
 const ORDER = ['open', 'curve', 'w08', 'w12', 'w19', 'w23', 'spring', 'lesson', 'scen', 'end'] as const;
 export type ShotKey = (typeof ORDER)[number];
@@ -34,8 +34,12 @@ const f = (sec: number) => Math.round(sec * FPS);
 export const SHOTS = {} as Record<ShotKey, { from: number; dur: number }>;
 // 큐 시작/끝(장면 내부 프레임)
 export const CUE = {} as Record<string, { at: number; end: number; abs: number }>;
-{
-  let t = 0; // 초 — 누적, 박 격자 위
+// 음악: 파일의 lift 초(최고조 구간 첫 박)가 liftScene 의 첫 프레임에 오도록 음악 시작 시각(MUSIC_START, 영상 초)을 역산.
+// 박 격자 원점 G = MUSIC_START + t0 — 장면 경계는 G 기준 박 격자에 올림 정렬되므로 lift 장면 경계도 자동으로 박 위에 놓인다.
+const M = music as { bpm: number; t0: number; lift?: number; liftScene?: ShotKey };
+export let MUSIC_START = 0;
+const layout = (G: number) => {
+  let t = 0;
   for (const k of ORDER) {
     const sp = SPEC[k];
     let c = sp.lead;
@@ -45,12 +49,23 @@ export const CUE = {} as Record<string, { at: number; end: number; abs: number }
       CUE[q.id] = { at: f(c), end: f(c + d), abs: f(t + c) };
       c += Math.max(d + (i < cues.length - 1 ? sp.gap ?? 0.35 : 0), sp.slot?.[q.id] ?? 0);
     });
-    const raw = c + sp.tail;
     const unit = BEAT * sp.snap;
-    const dur = Math.ceil(raw / unit - 1e-6) * unit;
-    SHOTS[k] = { from: f(t), dur: f(t + dur) - f(t) };
-    t += dur;
+    const end = G + Math.ceil((t + c + sp.tail - G) / unit - 1e-6) * unit; // 박 격자 위 다음 경계
+    SHOTS[k] = { from: f(t), dur: f(end) - f(t) };
+    t = end;
   }
+};
+{
+  let G = 0;
+  for (let it = 0; it < 4; it++) {
+    layout(G);
+    if (M.lift == null || !M.liftScene) break;
+    MUSIC_START = SHOTS[M.liftScene].from / FPS - M.lift;
+    G = MUSIC_START + M.t0;
+    G -= Math.floor(G / BEAT) * BEAT; // 0 이상 첫 박
+  }
+  layout(G);
+  if (M.lift != null && M.liftScene) MUSIC_START = SHOTS[M.liftScene].from / FPS - M.lift;
 }
 export const TOTAL = SHOTS.end.from + SHOTS.end.dur;
 // 시나리오 레인 시작(장면 내부) · 헤드라인 카드 간격 — Tail.tsx 와 sfx.ts 공유

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame } from 'remotion';
 import { C, FONT } from './theme';
-import { CUE, FPS, ORDER_KEYS, SHOTS, TOTAL } from './timeline';
+import { CUE, FPS, MUSIC_START, ORDER_KEYS, SHOTS, TOTAL } from './timeline';
 import { VO_MEASURED } from './vo';
 import music from './music.json';
 import { SFX } from './sfx';
@@ -40,8 +40,11 @@ export const Main: React.FC<Props> = ({ bgm, vo = true }) => (
     })}
     {BLADES.map((b) => <Blade key={b} at={b} color={C.blue} />)}
     {bgm && M.src && (
-      <Audio src={staticFile(M.src)} trimBefore={Math.round(M.t0 * FPS)}
-        volume={(f) => (M.gain ?? 0.7) * (1 - 0.6 * duck(f)) * interpolate(f, [0, 8, TOTAL - 45, TOTAL], [0, 1, 1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' })} />
+      // MUSIC_START > 0 이면 그만큼 늦게 들어오고(콜드 오픈은 음악 없이), < 0 이면 파일 앞부분을 잘라 재생
+      <Sequence from={Math.max(0, Math.round(MUSIC_START * FPS))} layout="none" name="music">
+        <Audio src={staticFile(M.src)} trimBefore={Math.max(0, Math.round(-MUSIC_START * FPS))}
+          volume={(lf) => { const f = lf + Math.max(0, Math.round(MUSIC_START * FPS)); return (M.gain ?? 0.7) * (1 - 0.6 * duck(f)) * interpolate(lf, [0, 30], [0, 1], { extrapolateRight: 'clamp' }) * interpolate(f, [TOTAL - 60, TOTAL], [1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }); }} />
+      </Sequence>
     )}
     {vo && VO_MEASURED && Object.entries(CUE).map(([id, c]) => (
       <Sequence key={id} from={c.abs} name={`vo:${id}`} layout="none"><Audio src={staticFile(`vo/${id}.wav`)} volume={1} /></Sequence>

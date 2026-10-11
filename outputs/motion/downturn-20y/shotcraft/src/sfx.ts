@@ -4,6 +4,7 @@
 import { CUE, cardStep, laneStarts, SHOTS } from './timeline';
 import { T08, T12, T19, T23 } from './scenes/Winters';
 import { TOPEN } from './scenes/Open';
+import { END_LAND } from './scenes/Tail';
 
 export const OUT_LAG = 1;
 const LAG: Record<string, number> = { // 실측 피크 지연 (f, ffmpeg+numpy)
@@ -27,10 +28,10 @@ export const SFX: Sfx[] = [
   pin(t2 + 6, 'bass-hit-short', 0.32, '「네 번의 겨울.」 착지'),
   pin(S.curve.from, 'whoosh-swirl', 0.24, '흰 화면 통과 → 곡선'),
   // ② 곡선 — 낙폭 도장(내레이터가 숫자를 읽는 순간)
-  pin(S.curve.from + c('c2'), 'bass-hit-short', 0.4, '−26%'),
-  pin(S.curve.from + c('c3'), 'bass-hit-short', 0.4, '−19%'),
-  pin(S.curve.from + c('c4'), 'bass-hit-short', 0.48, '−34%'),
-  pin(S.curve.from + c('c5'), 'bass-hit-futuristic', 0.55, '−45% + 화면 펀치 (slam 1/3)'),
+  pin(S.curve.from + c('c2'), 'bass-hit-short', 0.28, '−26%'),
+  pin(S.curve.from + c('c3'), 'bass-hit-short', 0.28, '−19%'),
+  pin(S.curve.from + c('c4'), 'bass-hit-short', 0.32, '−34%'),
+  pin(S.curve.from + c('c5'), 'bass-hit-futuristic', 0.4, '−45% + 화면 펀치 (slam 1/3)'),
   at(S.curve.from + c('c6'), 'air-woosh-deep', 0.28, '풀백 — 20년 전체', 60),
   // 장 전환 블레이드 + 장 카드 밀어올림
   ...(['w08', 'w12', 'w19', 'w23', 'spring', 'lesson'] as const).map((k, i) => at(S[k].from - 8, i % 2 ? 'whoosh-fast' : 'swoosh-quick', 0.3, `블레이드 → ${k}`, 30)),
@@ -39,8 +40,8 @@ export const SFX: Sfx[] = [
   at(S.w19.from + t19.sw, 'sweep-short', 0.22, '장 카드 → 레이아웃'),
   at(S.w23.from + t23.sw, 'sweep-short', 0.22, '장 카드 → 레이아웃'),
   // 2008
-  at(S.w08.from + t08.odo - 14, 'clock-knob-spin', 1.1, '오도미터 회전 (경량 음원 −14dB → 증폭)'),
-  ...[0, 1, 2].map((i) => at(S.w08.from + t08.odo + i * 7 + 15, 'clock-tick-single', 1.2 - i * 0.2, `자리 ${i + 1} 잠금`)),
+  at(S.w08.from + t08.odo - 14, 'clock-knob-spin', 0.8, '오도미터 회전 (경량 음원 −14dB → 증폭)'),
+  ...[0, 1, 2].map((i) => at(S.w08.from + t08.odo + i * 7 + 15, 'clock-tick-single', 0.9 - i * 0.15, `자리 ${i + 1} 잠금`)),
   pin(S.w08.from + t08.pct, 'bass-hit-short', 0.36, '−93%'),
   pin(S.w08.from + t08.qm, 'hit-blow', 0.36, '키몬다 적색'),
   at(S.w08.from + t08.qm + 10, 'gravel-fall-hit', 0.24, '키몬다 조각 탈락'),
@@ -56,7 +57,7 @@ export const SFX: Sfx[] = [
   // 2023
   at(S.w23.from + t23.inv, 'clock-knob-spin', 0.9, '재고 카운터'),
   at(S.w23.from + t23.e2, 'sweep-fast-small', 0.24, '분기 막대 붕괴 + 풀백'),
-  pin(S.w23.from + t23.land, 'impact-epic-trailer', 0.55, '−62% 크래시 줌 (slam 2/3)'),
+  pin(S.w23.from + t23.land, 'impact-epic-trailer', 0.45, '−62% 크래시 줌 (slam 2/3)'),
   pin(S.w23.from + c('e3') + 4, 'bass-hit-short', 0.34, '−14.88조'),
   // ⑤ 봄
   at(S.spring.from + c('p1'), 'shimmer-sparkle-sweep', 0.26, '반등 곡선', 80),
@@ -66,20 +67,20 @@ export const SFX: Sfx[] = [
   at(S.lesson.from + c('l2'), 'sweep-short', 0.22, '심은 것'),
   at(S.lesson.from + c('l3'), 'sweep-short', 0.2, '놓친 것'),
   // ⑦ 시나리오
-  pin(S.scen.from + c('s0') + 6, 'swoosh-slow', 0.24, '질문 진입 (빌드인)', 75),
-  pin(S.scen.from + c('s0') + 10, 'bass-hit-short', 0.34, '「다음 겨울은 어디서 오는가.」'),
+  pin(S.scen.from + c('s0') + 6, 'swoosh-slow', 0.16, '질문 진입 (빌드인)', 75),
+  pin(S.scen.from + c('s0') + 10, 'bass-hit-short', 0.24, '「다음 겨울은 어디서 오는가.」'),
   at(S.scen.from + lanes[0] - 24, 'air-woosh-quick', 0.24, '제목 강등 → 라벨'),
   ...[0, 1, 2].flatMap((i): Sfx[] => {
     const a = S.scen.from + lanes[i], st = cardStep(i);
     return [
       ...(i ? [at(a - 8, i % 2 ? 'whoosh-fast' : 'swoosh-quick', 0.28, `잉크 블레이드 → 발원 ${i + 1}`, 30)] : []),
-      pin(a + 6, 'bass-hit-short', 0.34, `발원 ${i + 1} 이름`),
-      at(a + 14, 'clock-knob-spin', 0.9, `확률 카운트 ${i + 1}`),
+      pin(a + 6, 'bass-hit-short', 0.24, `발원 ${i + 1} 이름`),
+      at(a + 14, 'clock-knob-spin', 0.6, `확률 카운트 ${i + 1}`),
       ...[0, 1, 2].map((j) => at(a + 24 + Math.round(j * st), j % 2 ? 'paper-move-quick' : 'paper-slide', 0.34 - j * 0.05, `헤드라인 ${j + 1}`)),
     ];
   }),
   // ⑧ 결론: 빌드인(impact-cine-big 앞 2초) → 임팩트 → 여운
   at(S.end.from - 8, 'swoosh-quick', 0.26, '블루 블레이드 → 결론'),
-  pin(S.end.from + c('z2') + 14, 'impact-cine-big', 0.62, '「심을 것인가.」 착지 (slam 3/3)'),
-  at(S.end.from + c('z2') + 30, 'shimmer-sparkle-sweep', 0.24, '해빙 여운', 74),
+  pin(S.end.from + END_LAND(), 'impact-cine-big', 0.62, '「심을 것인가.」 대사 직후 임팩트 (slam 3/3)'),
+  at(S.end.from + END_LAND() + 14, 'shimmer-sparkle-sweep', 0.24, '해빙 여운', 74),
 ];

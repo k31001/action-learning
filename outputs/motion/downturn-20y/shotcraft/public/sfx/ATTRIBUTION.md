@@ -13,7 +13,6 @@ shotcraft가 원 URL을 확인하지 못한 3개(riser-cine·sparkle·whoosh-big
 | `clock-tick-single.mp3` | `sfx/counter/` | Clock ticker single | https://assets.mixkit.co/active_storage/sfx/1061/1061-preview.mp3 |
 | `gravel-fall-hit.mp3` | `sfx/impact/` | Falling hit on gravel | https://assets.mixkit.co/active_storage/sfx/756/756-preview.mp3 |
 | `hit-blow.mp3` | `sfx/impact/` | Impact of a blow | https://assets.mixkit.co/active_storage/sfx/2150/2150-preview.mp3 |
-| `hit-weak.mp3` | `sfx/impact/` | Weak hit impact | https://assets.mixkit.co/active_storage/sfx/2148/2148-preview.mp3 |
 | `impact-cine-big.mp3` | `sfx/impact/` | Big cinematic impact | https://assets.mixkit.co/active_storage/sfx/788/788-preview.mp3 |
 | `impact-epic-trailer.mp3` | `sfx/impact/` | Movie trailer epic impact | https://assets.mixkit.co/active_storage/sfx/2908/2908-preview.mp3 |
 | `light-aura.mp3` | `sfx/light/` | Magical ligth aura | https://assets.mixkit.co/active_storage/sfx/2581/2581-preview.mp3 |
@@ -26,8 +25,6 @@ shotcraft가 원 URL을 확인하지 못한 3개(riser-cine·sparkle·whoosh-big
 | `swoosh-quick.mp3` | `sfx/transition/` | Mixkit SFX Free License | Fast small sweep transition · https://assets.mixkit.co/active_storage/sfx/166/166-preview.mp3 |
 | `swoosh-slow.mp3` | `sfx/transition/` | Slow sweeping swoosh | https://assets.mixkit.co/active_storage/sfx/163/163-preview.mp3 |
 | `transition-tech-slide.mp3` | `sfx/transition/` | Technology transition slide | https://assets.mixkit.co/active_storage/sfx/3120/3120-preview.mp3 |
-| `transition-tech.mp3` | `sfx/transition/` | Tech transitions | https://assets.mixkit.co/active_storage/sfx/3176/3176-preview.mp3 |
 | `whoosh-fast.mp3` | `sfx/transition/` | Mixkit SFX Free License | Fast whoosh transition · https://assets.mixkit.co/active_storage/sfx/1490/1490-preview.mp3 |
 | `whoosh-swirl.mp3` | `sfx/transition/` | Swirling whoosh | https://assets.mixkit.co/active_storage/sfx/1493/1493-preview.mp3 |
 | `wind-swoosh-short.mp3` | `sfx/transition/` | Short wind swoosh | https://assets.mixkit.co/active_storage/sfx/1461/1461-preview.mp3 |
-| `wind-woosh-throw.mp3` | `sfx/transition/` | Throw hard wind woosh | https://assets.mixkit.co/active_storage/sfx/1488/1488-preview.mp3 |

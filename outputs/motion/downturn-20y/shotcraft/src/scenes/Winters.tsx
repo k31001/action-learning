@@ -12,7 +12,7 @@ const BACK = (t: number) => 1 + 2.70158 * Math.pow(t - 1, 3) + 1.70158 * Math.po
 
 // 타격 시점(장면 내부 프레임) — sfx.ts 와 공유
 export const T08 = () => { const a2 = cue('a2'); const qm = cueEnd('a2') - 34; return { sw: cue('a1') + CARD_HOLD, odo: a2 + 10, pct: a2 + 52, qm, a3: cue('a3') }; };
-const EL = () => Math.max(cueEnd('b1') - 30, cue('b1') + CARD_HOLD + 16 + 26); // 엘피다 파산 — 타일이 선 뒤
+const EL = () => cue('b1') + CARD_HOLD + 16 + 30; // 엘피다 파산 — 6개 타일이 다 선 뒤
 export const T12 = () => { const b2 = cue('b2'); return { sw: cue('b1') + CARD_HOLD, el: EL(), b2, three: b2 + 34, b3: cue('b3') }; };
 export const T19 = () => { const sw = cue('d1') + CARD_HOLD + 16; const mid = Math.max(sw + 20, cueEnd('d1') - 70); return { sw: sw - 16, mid, d2: cue('d2'), d3: cue('d3') }; };
 export const T23 = () => { const sw = cue('e1') + CARD_HOLD + 16; const e2 = cue('e2'); return { sw: sw - 16, inv: sw + 30, e2, land: e2 + 30, e3: cue('e3') }; };
@@ -35,16 +35,17 @@ export const W08: React.FC = () => {
       {segs.map((s, i) => {
         const g = tw(f, [sw + 6 + i * 3, sw + 22 + i * 3], [0, 1], EXPO);
         const isQ = s.k === 'Qimonda';
-        const w = (W * s.p) / 100 * (isQ ? 1 - qmGone : 1);
+        const w = (W * s.p) / 100;
         const left = x; x += w;
         const fill = 'me' in s && s.me ? C.blue : isQ ? interpolateColors(qmRed, [0, 1], [C.frost, C.red]) : 'other' in s ? C.frost2 : C.frost;
-        const name = s.k === 'samsung' ? <Logo k="samsung" h={30} /> : s.k === 'micron' ? <Logo k="micron" h={36} grey /> : <Wordmark t={s.k} size={28} ghost={'other' in s} />;
+        const name = s.k === 'samsung' ? <Logo k="samsung" h={30} /> : s.k === 'micron' ? <Logo k="micron" h={30} grey /> : <Wordmark t={s.k} size={22} ghost={'other' in s} />;
         return (
           <React.Fragment key={s.k}>
-            <div style={{ position: 'absolute', left, top: 270, width: Math.max(0, w - 4) * g, height: 84, background: fill, borderRadius: 6, transform: 'me' in s && s.me ? `scaleY(${1 + 0.18 * me})` : undefined, boxShadow: 'me' in s && s.me && me > 0 ? `0 0 0 ${6 * me}px rgba(20,40,160,.15)` : undefined }} />
-            <div style={{ position: 'absolute', left, top: 372, opacity: g * (isQ ? 1 - qmGone * 0.6 : 1), display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <div style={{ position: 'absolute', left, top: 270, width: Math.max(0, w - 4) * g, height: 84, background: fill, opacity: isQ ? 1 - 0.85 * qmGone : 1, outline: isQ && qmGone > 0 ? `3px dashed rgba(227,52,47,${qmGone})` : undefined, outlineOffset: -3, borderRadius: 6, transform: 'me' in s && s.me ? `scaleY(${1 + 0.18 * me})` : undefined, boxShadow: 'me' in s && s.me && me > 0 ? `0 0 0 ${6 * me}px rgba(20,40,160,.15)` : undefined }} />
+            <div style={{ position: 'absolute', left, top: 372, opacity: g, display: 'flex', flexDirection: 'column', gap: 6 }}>
               <div style={{ height: 44, display: 'flex', alignItems: 'center' }}>{name}</div>
-              <div style={{ fontSize: 34, fontWeight: 900, color: 'me' in s && s.me ? C.blue : isQ && qmRed > 0.5 ? C.red : C.ink }}>{isQ && qmRed > 0.5 ? '2009.01 파산' : `${s.p}%`}</div>
+              <div style={{ fontSize: 34, fontWeight: 900, color: 'me' in s && s.me ? C.blue : isQ && qmRed > 0.5 ? C.red : C.ink }}>{isQ && qmRed > 0.5 ? '파산' : `${s.p}%`}</div>
+              {isQ && <div style={{ fontSize: 28, fontWeight: 700, color: C.red, opacity: qmRed, whiteSpace: 'nowrap' }}>2009.01</div>}
             </div>
           </React.Fragment>
         );

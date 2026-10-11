@@ -1,1 +1,8 @@
-{"bpm":120,"t0":0,"src":null}
+{
+ "bpm": 99.998,
+ "t0": 0.108,
+ "src": "audio/masking-the-masters.mp3",
+ "gain": 0.55,
+ "lift": 69.709,
+ "liftScene": "spring"
+}

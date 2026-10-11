@@ -27,17 +27,17 @@ export const Spring: React.FC = () => {
   const all = [0, 0, 0, 0];
   return (
     <AbsoluteFill style={{ background: C.paper, fontFamily: FONT, color: C.ink, opacity: tw(f, [0, 6], [0, 1]) }}>
-      <div style={{ position: 'absolute', inset: 0, opacity: 1 - toPhoto * 0.85, transform: `translateX(${-toPhoto * 120}px)` }}>
+      <div style={{ position: 'absolute', inset: 0, opacity: 1 - toPhoto, transform: `translateX(${-toPhoto * 120}px)` }}>
         <ChartSvg f={f} yr={yr} stampsOn={[true, true, true, true]} stampAt={all} compactAt={all} peakOn={1} endOn={tw(f, [p2 + 4, p2 + 12], [0, 1])} head={1} spring={spring} />
         <Up at={2} dy={0} style={{ position: 'absolute', left: 120, top: 84, fontSize: 40, fontWeight: 700, color: C.steel }}>전체 메모리(DRAM+NAND) 연 매출 · $B</Up>
         <Lines at={p1 + 2} lines={[<>그리고, 다시 <span style={{ color: C.blue }}>봄.</span></>]} style={{ position: 'absolute', left: 116, top: 140, fontSize: 110, fontWeight: 900, letterSpacing: '-0.045em' }} />
-        <Up at={p2 + 8} style={{ position: 'absolute', left: 124, top: 290, display: 'flex', alignItems: 'baseline', gap: 20 }}>
-          <span style={{ fontSize: 40, fontWeight: 700, color: C.steel }}>2025 · AI 슈퍼사이클</span>
-          <span style={{ fontSize: 56, fontWeight: 900, color: C.blue }}>사상 최대</span>
+        <Up at={p2 + 8} style={{ position: 'absolute', right: 214, top: 96, display: 'flex', alignItems: 'baseline', gap: 16 }}>
+          <span style={{ fontSize: 36, fontWeight: 700, color: C.steel }}>AI 슈퍼사이클</span>
+          <span style={{ fontSize: 52, fontWeight: 900, color: C.blue }}>사상 최대</span>
         </Up>
       </div>
       <div style={{ position: 'absolute', inset: 0, opacity: toPhoto }}>
-        <Photo name="hbm-package" from={p3 - 4} to={p3 + 150} scale={[1.08, 1.0]} pan={[60, 0]} fade="linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.9) 40%, rgba(255,255,255,0) 75%)" />
+        <Photo name="hbm-package" from={p3 - 4} to={p3 + 150} scale={[1.08, 1.0]} pan={[300, 240]} fade="linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.94) 46%, rgba(255,255,255,0) 80%)" />
         <div style={{ position: 'absolute', left: 140, top: 330, width: 900 }}>
           <Lines at={p3 + 6} stagger={6} lines={['HBM의 봄은,', <>먼저 준비한 쪽의 <span style={{ color: C.blue }}>몫</span>.</>]} style={{ fontSize: 104, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.1 }} />
           <Up at={p3 + 30} style={{ marginTop: 40, display: 'flex', alignItems: 'center', gap: 22 }}>
@@ -152,15 +152,15 @@ export const Scen: React.FC<{ dur: number }> = ({ dur }) => {
 export const End: React.FC = () => {
   const f = useCurrentFrame();
   const z1 = cue('z1'), z2 = cue('z2');
-  const land = z2 + 14;
+  const land = END_LAND(); // 대사가 끝난 직후 — 임팩트가 마지막 말을 덮지 않게
   const punch = 1 + 0.03 * tw(f, [land, land + 3], [0, 1]) * (1 - tw(f, [land + 3, land + 16], [0, 1], EXPO));
   return (
     <AbsoluteFill style={{ background: C.paper, fontFamily: FONT, color: C.ink, transform: `scale(${punch})` }}>
-      <Wafer cx={520} cy={540} R={330} growAt={-60} freezeAt={-90} thawAt={z2 - 4} />
+      <Wafer cx={520} cy={540} R={330} growAt={-60} freezeAt={-90} thawAt={land - 6} />
       <Lines at={z1} lines={['겨울은 다시 온다.']} style={{ position: 'absolute', left: 1000, top: 262, fontSize: 96, fontWeight: 900, letterSpacing: '-0.045em', color: C.steel }} />
       <Lines at={z2} stagger={8} lines={['지금, 무엇을', <><span style={{ color: C.blue }}>심을</span> 것인가.</>]} style={{ position: 'absolute', left: 1000, top: 410, fontSize: 136, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.08 }} />
     </AbsoluteFill>
   );
 };
-export const END_LAND = () => cue('z2') + 14;
+export const END_LAND = () => cueEnd('z2') + 3;
 export { cueEnd };
