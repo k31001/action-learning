@@ -1,4 +1,4 @@
-// 발표자료 탭 — 최근 만든 주요 덱 (최신이 위)
+// 발표자료 탭 — 최근 만든 주요 덱과 영상 (최신이 위)
 //
 // 원본: outputs/presentation/<file> (생성기 outputs/presentation/scripts/*.py)
 // 배포 사본: dashboard/public/presentations/<file> — `node scripts/sync-presentations.mjs`로 복사
@@ -84,5 +84,28 @@ export const PRESENTATIONS = [
     outline: null,
     report: `${REPO}/wiki/concepts/solution-ladder-component-to-system.md`,
     accent: '#475569',
+  },
+]
+
+// 영상 — 모션 그래픽(Remotion). 원본 outputs/motion/<…>/out/*.mp4 (미커밋, 렌더 산출물)
+// 배포 사본: dashboard/public/videos/<file> (웹 인코딩 H.264 CRF 23 + faststart) · 포스터 <poster>
+// — `node scripts/sync-presentations.mjs`가 원본이 있으면 다시 인코딩한다
+// chapters 시각(초)은 outputs/motion/downturn-20y/shotcraft/src/timeline.ts SHOTS 의 장 시작과 같다
+export const VIDEOS = [
+  {
+    id: 'four-winters',
+    file: 'four-winters.mp4',
+    poster: 'four-winters.jpg',
+    source: 'outputs/motion/downturn-20y/shotcraft/out/four-winters.mp4',
+    posterAt: 5.6,
+    title: '네 번의 겨울 — 메모리 다운턴 20년 복기',
+    version: 'v2',
+    date: '2026-10-11',
+    duration: '1:49',
+    summary: '20년 매출 곡선의 네 번의 낙폭 → 2008 버텼다 · 2012 남았다 · 2019 멈추지 않았다 · 2023 한 박자 늦었다 → AI가 부른 봄과 HBM → 심은 것 vs 놓친 것 → 다음 겨울의 발원(수요 44 · 공급 48 · 전환 8%). 한국어 내레이션 · 배경음악',
+    chapters: [['표지', 0], ['20년 곡선', 6], ['2008', 17.4], ['2012', 28.8], ['2019', 39.6], ['2023', 49.2], ['봄', 62.4], ['교훈', 72], ['다음 겨울', 81], ['결론', 102.6]],
+    spec: `${REPO}/outputs/motion/downturn-20y/shotcraft/SPEC.md`,
+    report: `${REPO}/wiki/downturn/downturn-history.md`,
+    accent: '#1428A0',
   },
 ]

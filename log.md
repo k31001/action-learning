@@ -2780,3 +2780,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 글자 축소: 2008 4Q08 줄, 2019 −37.6% 줄·CapEx 수치, 2023 막대 값·재고 블록, 시나리오 메시지 줄 삭제
 - 시나리오 대사 2건을 위키 구성(급제동+긴 하산 / 동시 방류+저가 잠식)에 맞게 수정하고 재합성·받아쓰기 검증
 - 덕킹 −72%, 말소리 대역 내레이션 대 배경 비 최소 6.9dB. 최종 108.7초, −16 LUFS / TP −1.2 dBFS. dashboard 변경 없음 → bump 생략
+
+## [2026-10-11] build | 대시보드 발표자료 탭에 영상 추가 (v2.49.0)
+- 사용자 지시: 발표자료 메뉴에 동영상도 추가
+- `dashboard/src/data/presentations.js`에 VIDEOS 데이터 카테고리 신설(첫 항목 「네 번의 겨울」 v2, 장 10개와 시작 시각은 shotcraft timeline.ts SHOTS 기준)
+- `Presentations.jsx`: 영상 카드(포스터·재생 시간·장 칩)와 전체 화면 플레이어(장 이동, 딥링크 `#/presentations/four-winters/<장>`, MP4 다운로드) 추가. 「최신」 배지는 덱·영상 중 가장 늦은 날짜 하나에
+- 배포 사본 `dashboard/public/videos/four-winters.mp4`(웹 인코딩 H.264 CRF 23 + faststart, 9.8MB)와 포스터 jpg. `scripts/sync-presentations.mjs`가 렌더 원본에서 다시 인코딩
+- 검증: `npm run build` 통과. 미리보기에서 탭·모바일·플레이어 확인(딥링크 3장 → 17.4초, 장 버튼 이동, Esc 닫기). 테스트 브라우저(오픈소스 Chromium)는 H.264를 재생하지 못해 테스트에서만 VP9 사본으로 대체함
+- 버전 v2.48.6 → v2.49.0(마이너: 새 데이터 카테고리)
