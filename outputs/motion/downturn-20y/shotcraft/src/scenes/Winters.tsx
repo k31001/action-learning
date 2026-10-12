@@ -86,7 +86,7 @@ export const W12: React.FC = () => {
         const bg = t.me ? interpolateColors(glow, [0, 1], ['#ffffff', '#eef1fb']) : t.id === 'elpida' ? interpolateColors(elpRed, [0, 1], ['#ffffff', '#fdecec']) : '#ffffff';
         return (
           <div key={t.id} style={{ position: 'absolute', left: x, top: y + dy, width: TW, height: h, opacity: op, transform: `scale(${0.85 + 0.15 * inn})`, borderRadius: 12, border: `${t.me ? 4 + 2 * glow : 3}px ${t.ghost ? 'dashed' : 'solid'} ${border}`, background: bg, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, boxSizing: 'border-box' }}>
-            {t.id === 'samsung' && <><Logo k="samsung" h={48} />{cap('Line-16 가동', b3 + 6, C.blue)}</>}
+            {t.id === 'samsung' && <><Logo k="samsung" h={48} />{cap('16라인 가동', b3 + 6, C.blue)}</>}
             {t.id === 'micron' && <><Logo k="micron" h={62} grey />{cap('엘피다 인수 · 2013', b2 + 22)}</>}
             {t.id === 'hynix' && (
               <>
@@ -173,7 +173,7 @@ export const W23: React.FC = () => {
         </div>
         <Up at={e2 + 6} style={{ position: 'absolute', left: 1400, top: 300, width: 460 }}>
           <div style={big(170, C.red)}>{m}%</div>
-          <div style={{ ...lab, color: C.ink }}>3분기 만에 · 사상 최속</div>
+          <div style={{ ...lab, color: C.ink, lineHeight: 1.35 }}>3분기 만에<br />역대 가장 빠른 하락</div>
         </Up>
         <Up at={e3} style={{ position: 'absolute', left: 1400, top: 640, width: 500 }}>
           <div style={big(116, C.red)}>{loss}조</div>

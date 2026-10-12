@@ -1,10 +1,10 @@
 // SFX 핀 표 — 모든 from 은 SHOTS·큐 기준 상대식(내레이션 길이가 바뀌어도 자동 추종).
 // pin(target) = 화면 타격 프레임에 음원 피크를 맞춘다: from = target − peakLag(실측) − OUT_LAG(AAC priming ≈1f).
 // 내레이션이 생겼으므로 v1 보다 개수·음량을 줄였다 — 타격은 숫자·전환에만, 대사와 겹치는 장식음은 뺀다.
-import { CUE, cardStep, laneStarts, SHOTS } from './timeline';
+import { CUE, laneStarts, SHOTS } from './timeline';
 import { T08, T12, T19, T23 } from './scenes/Winters';
 import { TOPEN } from './scenes/Open';
-import { END_LAND } from './scenes/Tail';
+import { cardAt, END_LAND, THROW } from './scenes/Tail';
 
 export const OUT_LAG = 1;
 const LAG: Record<string, number> = { // 실측 피크 지연 (f, ffmpeg+numpy)
@@ -70,12 +70,17 @@ export const SFX: Sfx[] = [
   pin(S.scen.from + c('s0') + 2, 'bass-hit-short', 0.18, '「다음 겨울은 어디서 오는가.」'),
   at(S.scen.from + lanes[0] - 24, 'air-woosh-quick', 0.24, '제목 강등 → 라벨'),
   ...[0, 1, 2].flatMap((i): Sfx[] => {
-    const a = S.scen.from + lanes[i], st = cardStep(i);
+    const a = S.scen.from + lanes[i];
     return [
       ...(i ? [at(a - 8, i % 2 ? 'whoosh-fast' : 'swoosh-quick', 0.28, `잉크 블레이드 → 발원 ${i + 1}`, 30)] : []),
       pin(a + 6, 'bass-hit-short', 0.18, `발원 ${i + 1} 이름`),
-      at(a + 14, 'clock-knob-spin', 0.6, `확률 카운트 ${i + 1}`),
-      ...[0, 1, 2].map((j) => at(a + 24 + Math.round(j * st), j % 2 ? 'paper-move-quick' : 'paper-slide', 0.34 - j * 0.05, `헤드라인 ${j + 1}`)),
+      ...[0, 1, 2].flatMap((j): Sfx[] => {
+        const ca = S.scen.from + cardAt(lanes[i], i, j);
+        return [
+          at(ca - 2, 'air-woosh-quick', 0.2 - j * 0.03, `헤드라인 ${j + 1} 던지기`),
+          at(ca + THROW.fly - 3, j % 2 ? 'paper-move-quick' : 'paper-slide', 0.36 - j * 0.05, `헤드라인 ${j + 1} 중앙 착지(종이)`),
+        ];
+      }),
     ];
   }),
   // ⑧ 결론: 빌드인(impact-cine-big 앞 2초) → 임팩트 → 여운

@@ -66,42 +66,70 @@ export const Lesson: React.FC = () => {
         <><span style={{ position: 'relative', display: 'inline-block' }}><Marker at={l1 + 40} len={370} color={C.blue} style={{ left: -6, bottom: -30 }} /><span style={{ position: 'relative' }}>심은 것</span></span>에서 갈렸다.</>,
       ]} style={{ position: 'absolute', left: 140, top: 230, fontSize: 124, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.12 }} />
       <div style={{ position: 'absolute', left: 146, top: 620, display: 'flex', flexDirection: 'column', gap: 22 }}>
-        <Up at={l2} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.blue} size={38}>심은 것</Tag>40nm DDR3 · Line-16 · 1z DRAM</Up>
-        <Up at={l3} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.red} size={38}>놓친 것</Tag>2019 HBM 전담팀 축소</Up>
+        <Up at={l2} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.blue} size={38}>심은 것</Tag>40nm DDR3 · 16라인 · 1z DRAM</Up>
+        <Up at={l3} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.red} size={38}>놓친 것</Tag>HBM보다 범용 DRAM 중심 운영</Up>
       </div>
       <Source at={l1 + 10}>출처: wiki/downturn/downturn-history.md §4 · samsung-2019-downturn-2017-2019-actions</Source>
     </AbsoluteFill>
   );
 };
 
-/* ⑦ 다음 겨울은 어디서 — 제목 강등(title-demote-to-label) → 발원 3레인(내레이션 큐 s1..s3 에 맞춰 교체, 잉크 블레이드) */
+/* ⑦ 다음 겨울은 어디서 — 제목 강등(title-demote-to-label) → 발원 3레인(내레이션 큐 s1..s3 에 맞춰 교체, 잉크 블레이드).
+   확률은 쓰지 않고 발원별 두 케이스로 설명. 가상 헤드라인은 「던져지는 신문」: 화면 밖에서 회전하며 날아와 중앙에 크게 멈춘 뒤
+   (배경은 흰 막으로 눌러 집중) 제자리로 내려앉는다. 카드 한 장 = 던지기 12f + 중앙 정지 16f + 제자리 12f + 착지 반동 6f */
+export const THROW = { fly: 12, hold: 16, settle: 12 };
+export const cardAt = (a: number, i: number, j: number) => a + 20 + Math.round(j * cardStep(i));
+const Card: React.FC<{ d: string; h1: string; h2: string; j: number; ca: number }> = ({ d, h1, h2, j, ca }) => {
+  const f = useCurrentFrame();
+  const { fly, hold, settle } = THROW;
+  const t1 = tw(f, [ca, ca + fly], [0, 1], (t) => 1 - (1 - t) ** 3);
+  const t2 = tw(f, [ca + fly + hold, ca + fly + hold + settle], [0, 1], INOUT);
+  const land = ca + fly + hold + settle;
+  const bounce = tw(f, [land, land + 3], [0, 1]) * (1 - tw(f, [land + 3, land + 8], [0, 1], EXPO));
+  const side = j % 2 ? 1 : -1;
+  const start = { x: 960 + side * 1500, y: 1500, r: -side * 300, s: 2.1 };
+  const mid = { x: 960, y: 520, r: side * 3, s: 1.22 };
+  const slot = { x: 1300, y: 140 + j * 248 + 110, r: side * 0.6, s: 1 };
+  const L = (k: 'x' | 'y' | 'r' | 's') => interpolate(t2, [0, 1], [interpolate(t1, [0, 1], [start[k], mid[k]]), slot[k]]);
+  const sc = L('s') * (1 - 0.03 * bounce);
+  const air = 1 - t2; // 공중에 떠 있는 정도 → 그림자
+  return (
+    <div style={{ position: 'absolute', left: L('x') - 500, top: L('y') - 110, width: 1000, height: 220, background: '#fff', borderTop: `6px solid ${C.ink}`,
+      boxShadow: `0 2px 0 ${C.frost}, 0 ${18 + 40 * air}px ${40 + 60 * air}px rgba(11,16,32,${0.1 + 0.18 * air})`, padding: '18px 36px 0', boxSizing: 'border-box',
+      opacity: tw(f, [ca, ca + 3], [0, 1]), transform: `rotate(${L('r')}deg) scale(${sc}, ${sc * (1 - 0.02 * bounce)})` }}>
+      <div style={{ display: 'flex', gap: 16, alignItems: 'center', fontSize: 32, fontWeight: 700, color: C.steel }}>
+        <span style={{ color: '#fff', background: C.ink, borderRadius: 3, padding: '0 10px' }}>가상 헤드라인</span><span>{d}</span>
+      </div>
+      <div style={{ fontFamily: SERIF, fontWeight: 900, fontSize: 48, lineHeight: 1.26, letterSpacing: '-0.03em', marginTop: 8, color: C.ink }}>{h1}<br />{h2}</div>
+    </div>
+  );
+};
+
 const Lane: React.FC<{ i: number; a: number; b: number }> = ({ i, a, b }) => {
   const f = useCurrentFrame();
   const L = LANES[i];
   if (f < a || f >= b) return null;
-  const pct = Math.round(tw(f, [a + 14, a + 34], [0, L.p], EXPO));
   const bigIn = tw(f, [a + 4, a + 13], [0, 1], EXPO);
-  const step = cardStep(i);
+  const { fly, hold, settle } = THROW;
+  const cas = L.h.map((_, j) => cardAt(a, i, j));
+  const active = cas.findIndex((ca) => f >= ca && f < ca + fly + hold + settle);
+  // 중앙 정지 동안 배경을 흰 막으로 눌러 카드에 집중
+  const dim = cas.reduce((m, ca) => Math.max(m, tw(f, [ca + 4, ca + fly], [0, 1]) * (1 - tw(f, [ca + fly + hold, ca + fly + hold + settle - 4], [0, 1]))), 0);
   return (
     <div style={{ position: 'absolute', inset: 0 }}>
       <Up at={a + 2} style={{ position: 'absolute', left: 120, top: 160, fontSize: 40, fontWeight: 700, color: C.steel }}>{L.no} · 발원</Up>
       <div style={{ position: 'absolute', left: 110, top: 208, fontSize: 180, fontWeight: 900, letterSpacing: '-0.05em', lineHeight: 1, color: C.blue, opacity: bigIn, transform: `scale(${1.3 - 0.3 * bigIn})`, transformOrigin: '0% 50%' }}>{L.t}</div>
-      <Up at={a + 12} style={{ position: 'absolute', left: 120, top: 414, fontSize: 150, fontWeight: 900, letterSpacing: '-0.05em', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{pct}%</Up>
-      <Up at={a + 20} style={{ position: 'absolute', left: 124, top: 580, fontSize: 36, fontWeight: 700, color: C.steel }}>조건부 확률 · {L.sub}</Up>
-      {L.h.map(([d, h1, h2], j) => {
-        const ca = a + 24 + j * step;
-        const p = tw(f, [ca, ca + 11], [0, 1], (t) => 1 + 2.6 * (t - 1) ** 3 + 1.6 * (t - 1) ** 2);
-        const op = tw(f, [ca, ca + 5], [0, 1]);
-        const rot = (j % 2 ? 1 : -1) * (2 - 1.4 * Math.min(1, p));
-        return (
-          <div key={j} style={{ position: 'absolute', left: 800, top: 140 + j * 248, width: 1000, height: 220, background: '#fff', borderTop: `6px solid ${C.ink}`, boxShadow: `0 2px 0 ${C.frost}, 0 18px 40px rgba(11,16,32,.10)`, padding: '18px 36px 0', boxSizing: 'border-box', opacity: op, transform: `translateY(${(1 - p) * -70}px) rotate(${rot}deg)` }}>
-            <div style={{ display: 'flex', gap: 16, alignItems: 'center', fontSize: 32, fontWeight: 700, color: C.steel }}>
-              <span style={{ color: '#fff', background: C.ink, borderRadius: 3, padding: '0 10px' }}>가상 헤드라인</span><span>{d}</span>
-            </div>
-            <div style={{ fontFamily: SERIF, fontWeight: 900, fontSize: 48, lineHeight: 1.26, letterSpacing: '-0.03em', marginTop: 8, color: C.ink }}>{h1}<br />{h2}</div>
-          </div>
-        );
-      })}
+      <div style={{ position: 'absolute', left: 124, top: 430, width: 640, display: 'flex', flexDirection: 'column', gap: 30 }}>
+        {L.cases.map(([k, t], n) => (
+          <Up key={n} at={a + 12 + n * 8} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <span style={{ alignSelf: 'flex-start', fontSize: 34, fontWeight: 900, color: C.blue, border: `3px solid ${C.blue}`, borderRadius: 6, padding: '0 12px', lineHeight: 1.35 }}>{k}</span>
+            <span style={{ fontSize: 38, fontWeight: 700, lineHeight: 1.3 }}>{t}</span>
+          </Up>
+        ))}
+      </div>
+      {L.h.map(([d, h1, h2], j) => (j !== active ? <Card key={j} d={d} h1={h1} h2={h2} j={j} ca={cas[j]} /> : null))}
+      <div style={{ position: 'absolute', inset: 0, background: '#fff', opacity: 0.6 * dim }} />
+      {active >= 0 && <Card key={`a${active}`} d={L.h[active][0]} h1={L.h[active][1]} h2={L.h[active][2]} j={active} ca={cas[active]} />}
     </div>
   );
 };
@@ -118,7 +146,6 @@ export const Scen: React.FC<{ dur: number }> = ({ dur }) => {
   const y = interpolate(dem, [0, 1], [500, 86]);
   const lane = starts.filter((a) => f >= a).length - 1;
   const barIn = tw(f, [starts[0] + 6, starts[0] + 24], [0, 1], EXPO);
-  let acc = 120;
   return (
     <AbsoluteFill style={{ background: C.paper, fontFamily: FONT, color: C.ink, opacity: tw(f, [0, 6], [0, 1]) }}>
       <div style={{ opacity: 1 - tw(f, [D0 - 6, D0 + 2], [0, 1]) }}>
@@ -128,21 +155,22 @@ export const Scen: React.FC<{ dur: number }> = ({ dur }) => {
         다음 겨울은 <span style={{ color: C.blue }}>어디서</span> 오는가.
       </div>
       {LANES.map((_, i) => <Lane key={i} i={i} a={starts[i]} b={i < 2 ? starts[i + 1] : dur} />)}
+      {/* 하단 진행 표시: 발원 세 개(같은 폭) — 지금 레인만 블루. 확률은 표기하지 않는다 */}
       <div style={{ position: 'absolute', left: 0, top: 0, opacity: barIn }}>
         {LANES.map((L, i) => {
-          const w = 1680 * (L.p / 100) - 6, left = acc; acc += 1680 * (L.p / 100);
+          const w = 1680 / 3 - 8, left = 120 + (i * 1680) / 3;
           const on = i === lane, seen = i <= lane;
           return (
             <React.Fragment key={i}>
-              <div style={{ position: 'absolute', left, top: 952, width: w * barIn, height: 22, borderRadius: 4, background: on ? C.blue : seen ? C.steel : C.frost }} />
-              <div style={{ position: 'absolute', top: 900, ...(i === 2 ? { left: left + w - 300, width: 300, textAlign: 'right' } : { left }), fontSize: 32, fontWeight: 900, color: on ? C.blue : seen ? C.ink : C.steel, whiteSpace: 'nowrap', opacity: seen ? 1 : 0.7 }}>{L.t} {L.p}%</div>
+              <div style={{ position: 'absolute', left, top: 952, width: w * barIn, height: 14, borderRadius: 4, background: on ? C.blue : seen ? C.steel : C.frost }} />
+              <div style={{ position: 'absolute', top: 902, left, fontSize: 32, fontWeight: 900, color: on ? C.blue : seen ? C.ink : C.steel, whiteSpace: 'nowrap', opacity: seen ? 1 : 0.7 }}>{L.t}</div>
             </React.Fragment>
           );
         })}
       </div>
       <Blade at={starts[1]} color={C.ink} />
       <Blade at={starts[2]} color={C.ink} />
-      <Source at={starts[0]}>확률: 2027~2030 다운턴 발생 시 발원별 조건부 확률(scenario-matrix.md) · 헤드라인: 2026-08 신호를 연장한 가상 헤드라인, 실제 보도 아님</Source>
+      <Source at={starts[0]}>시나리오: wiki/downturn/scenario-matrix.md(DT-A~E) · 헤드라인: 2026-08 신호를 연장한 가상 헤드라인, 실제 보도 아님</Source>
     </AbsoluteFill>
   );
 };

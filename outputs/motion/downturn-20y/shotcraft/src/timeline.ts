@@ -24,7 +24,7 @@ const SPEC: Record<string, Spec> = {
   w23: { lead: 0.4, gap: 0.35, slot: { e1: 3.2, e2: 2.3 }, tail: 1.0, snap: 1 },
   spring: { lead: 0.4, gap: 0.4, slot: { p1: 2.0 }, tail: 1.2, snap: 1 },
   lesson: { lead: 0.4, gap: 0.35, tail: 1.2, snap: 1 },
-  scen: { lead: 0.3, gap: 0.5, slot: { s0: 2.2, s1: 4.4, s2: 4.4 }, tail: 2.1, snap: 1 },
+  scen: { lead: 0.3, gap: 0.5, slot: { s0: 2.2, s1: 5.8, s2: 5.8 }, tail: 2.8, snap: 1 },
   end: { lead: 0.3, gap: 0.4, tail: 2.4, snap: 1 },
 };
 const ORDER = ['open', 'curve', 'w08', 'w12', 'w19', 'w23', 'spring', 'lesson', 'scen', 'end'] as const;
@@ -70,7 +70,8 @@ const layout = (G: number) => {
 export const TOTAL = SHOTS.end.from + SHOTS.end.dur;
 // 시나리오 레인 시작(장면 내부) · 헤드라인 카드 간격 — Tail.tsx 와 sfx.ts 공유
 export const laneStarts = () => ['s1', 's2', 's3'].map((id) => CUE[id].at - 6);
-export const cardStep = (i: number) => { const a = laneStarts(); const b = i < 2 ? a[i + 1] : SHOTS.scen.dur; return Math.max(22, Math.min(34, (b - a[i] - 60) / 3)); };
+// 헤드라인 카드 한 장 = 던지기 12f + 중앙 정지 16f + 제자리 12f. 카드 간격은 레인 길이에 맞춰 36~44f
+export const cardStep = (i: number) => { const a = laneStarts(); const b = i < 2 ? a[i + 1] : SHOTS.scen.dur; return Math.max(36, Math.min(44, (b - a[i] - 36) / 3)); };
 export const ORDER_KEYS = ORDER;
 
 /* ───── 데이터 (wiki/downturn/downturn-history.md) ───── */
@@ -90,13 +91,14 @@ export const SH08 = [
 // 2023 DRAM 분기 매출 $B (1Q22·2Q22·1Q23·2Q23 ᵉ)
 export const Q23: [string, number][] = [['1Q22', 24.03], ['2Q22', 25.59], ['3Q22', 18.19], ['4Q22', 12.28], ['1Q23', 9.7], ['2Q23', 11.4]];
 
-// 다운턴의 발원 (wiki/downturn/scenario-matrix.md §3 · sources/articles/dt-*-signals-2026-08-28.md)
+// 다운턴의 발원 (wiki/downturn/scenario-matrix.md §2 케이스 DT-A~E · sources/articles/dt-*-signals-2026-08-28.md)
+// 확률(%)은 화면·내레이션에 쓰지 않는다 — 정밀하지 않은 추정이라 케이스 설명만 전달(2026-10-11 사용자 지시)
 // 헤드라인은 2026-08 신호를 연장한 가상 헤드라인 — 실제 보도가 아니다.
 export const LANES = [
-  { cue: 's1', no: '시나리오 1', t: '수요발', p: 44, sub: '급제동 20 + 긴 하산 24', m: 'AI 투자가 멈추면, 주문이 먼저 사라진다',
+  { cue: 's1', no: '시나리오 1', t: '수요발', cases: [['급제동', 'AI 투자 조달 경색 → 신규 발주 동결'], ['긴 하산', '추론 효율화로 메모리 원단위 감소']],
     h: [['2027.11', '빅테크 4사, AI 데이터센터 투자', '첫 동시 삭감'], ['2028.02', '추론 비용 1/10 신모델 공개…', '서버당 메모리 탑재량 줄었다'], ['2028.04', '고객사 HBM 장기계약 재협상 요구…', 'D램 현물가 급락']] },
-  { cue: 's2', no: '시나리오 2', t: '공급발', p: 48, sub: '동시 방류 22 + 저가 잠식 26', m: '공장이 한꺼번에 돌면, 가격이 원가 밑으로',
+  { cue: 's2', no: '시나리오 2', t: '공급발', cases: [['동시 방류', '신규 팹 동시 가동 → 공급이 수요를 앞섬'], ['저가 잠식', '중국 범용 D램 점진 침투 → 가격대 하락']],
     h: [['2028.06', '용인·평택·아이다호 신규 팹 동시 가동…', 'D램 캐파 사상 최대'], ['2028.09', '中 CXMT DDR5 저가 공세…', '범용 D램 가격 원가 아래로'], ['2029.01', '중국산 D램 점유율 18% 돌파…', '글로벌 스마트폰 고객 첫 채택']] },
-  { cue: 's3', no: '시나리오 3', t: '전환발', p: 8, sub: '판 갈이 8', m: '제품의 정의가 바뀌면, 감산도 계약도 통하지 않는다',
+  { cue: 's3', no: '시나리오 3', t: '전환발', cases: [['판 갈이', '3D D램 · HBM 맞춤 설계 · CXL로 제품 정의 변화'], ['자산 소멸', '감산 · 계약이 통하지 않고 기존 라인 조기 상각']],
     h: [['2028.03', 'GPU 업체가 HBM 베이스 다이 직접 설계…', '메모리는 ‘부품’이 된다'], ['2028.10', 'CXL 메모리 풀링 대세로…', '신규 D램 대신 재활용 D램'], ['2029.06', '3D D램 첫 양산 발표…', '기존 2D 라인 조기 상각 우려']] },
 ];
