@@ -75,7 +75,8 @@ def cuboid(ax, xr, yr, zr, color, alpha, edge, lw=0.8, ls="-"):
     ax.add_collection3d(pc)
 
 
-def main():
+def draw(mode):
+    """mode: all(전체) · base(축 · 바닥 · 지금 기둥) · 제품군 키(그 제품군의 확장 상자 + 화살표만, 투명 배경)."""
     fig = plt.figure(figsize=(9.6, 6.6), dpi=220)
     ax = fig.add_axes([0.0, 0.0, 1.0, 1.0], projection="3d", computed_zorder=False)
     ax.set_xlim(X0, X1)
@@ -83,40 +84,47 @@ def main():
     ax.set_zlim(0, 3.6)
     ax.view_init(elev=float(os.environ.get('ELEV', 45)), azim=float(os.environ.get('AZIM', -60)))
     ax.set_box_aspect((1.55, 1.0, 0.62))
-    ax.xaxis.pane.set_facecolor((1, 1, 1, 0))
-    ax.yaxis.pane.set_facecolor((0.97, 0.97, 0.98, 1))
-    ax.zaxis.pane.set_facecolor((0.97, 0.97, 0.98, 1))
-    for a in (ax.xaxis, ax.yaxis, ax.zaxis):
-        a.pane.set_edgecolor("#D1D5DB")
-        a._axinfo["grid"].update(color="#E5E7EB", linewidth=0.6)
-    ax.set_xticks([lx(v) for v in (0.1, 0.3, 1, 3, 10, 30, 100)])
-    ax.set_xticklabels(["0.1", "0.3", "1", "3", "10", "30", "100"], fontsize=17, color=GRAY)
-    ax.set_yticks([ly(v) for v in (1, 4, 16, 64, 256)])
-    ax.set_yticklabels(["1", "4", "16", "64", "256"], fontsize=17, color=GRAY)
-    ax.set_zticks([1, 2, 3])
-    ax.set_zticklabels(["", "", ""])
-    ax.set_xlabel("정격 DWPD", fontsize=19, color=INK, labelpad=14)
-    ax.set_ylabel("최대 용량 TB", fontsize=19, color=INK, labelpad=14)
-    ax.set_zlabel("")
-
-    # 바닥: 추론 수요 영역
-    for nm, xr, yr, col in DEMANDS:
-        x0, x1, y0, y1 = lx(xr[0]), lx(xr[1]), ly(yr[0]), ly(yr[1])
-        ax.add_collection3d(Poly3DCollection([[(x0, y0, 0), (x1, y0, 0), (x1, y1, 0), (x0, y1, 0)]],
-                                             facecolor=col, alpha=1.0, edgecolor="white", linewidths=1.6))
+    layer = mode not in ("all", "base")
+    if layer:
+        ax.set_axis_off()
+    else:
+        ax.xaxis.pane.set_facecolor((1, 1, 1, 0))
+        ax.yaxis.pane.set_facecolor((0.97, 0.97, 0.98, 1))
+        ax.zaxis.pane.set_facecolor((0.97, 0.97, 0.98, 1))
+        for a in (ax.xaxis, ax.yaxis, ax.zaxis):
+            a.pane.set_edgecolor("#D1D5DB")
+            a._axinfo["grid"].update(color="#E5E7EB", linewidth=0.6)
+        ax.set_xticks([lx(v) for v in (0.1, 0.3, 1, 3, 10, 30, 100)])
+        ax.set_xticklabels(["0.1", "0.3", "1", "3", "10", "30", "100"], fontsize=17, color=GRAY)
+        ax.set_yticks([ly(v) for v in (1, 4, 16, 64, 256)])
+        ax.set_yticklabels(["1", "4", "16", "64", "256"], fontsize=17, color=GRAY)
+        ax.set_zticks([1, 2, 3])
+        ax.set_zticklabels(["", "", ""])
+        ax.set_xlabel("정격 DWPD", fontsize=19, color=INK, labelpad=14)
+        ax.set_ylabel("최대 용량 TB", fontsize=19, color=INK, labelpad=14)
+        ax.set_zlabel("")
+        # 바닥: 추론 수요 영역
+        for nm, xr, yr, col in DEMANDS:
+            x0, x1, y0, y1 = lx(xr[0]), lx(xr[1]), ly(yr[0]), ly(yr[1])
+            ax.add_collection3d(Poly3DCollection([[(x0, y0, 0), (x1, y0, 0), (x1, y1, 0), (x0, y1, 0)]],
+                                                 facecolor=col, alpha=1.0, edgecolor="white", linewidths=1.6))
     anchors = {}
-    # 먼 것(용량 큰 것)부터 그린다
-    for key, nm, xr, yr, zr, xmax, col in FAMILIES:
-        # 확장 영역: 점선 와이어프레임 + 아주 옅은 채움 (DWPD 오른쪽으로 · 꼬리 지연 위로)
-        cuboid(ax, (xr[1], xmax), yr, (0, zr[1]), col, 0.10, col, lw=1.3, ls="--")
-        cuboid(ax, xr, yr, (0, zr[0]), col, 0.97, "white", lw=0.6)
-        top = (lx(math.sqrt(xr[0] * xr[1])), ly(math.sqrt(yr[0] * yr[1])), zr[0])
-        ext = (lx(xmax * 0.92), ly(math.sqrt(yr[0] * yr[1])), zr[1])
-        anchors[key] = {"now": top, "ext": ext}
+    for key, nm, xr, yr, zr, xmax, col in FAMILIES:   # 먼 것(용량 큰 것)부터
         y_ = ly(math.sqrt(yr[0] * yr[1]))
-        ax.quiver(lx(xr[1]), y_, 0.02, lx(xmax) - lx(xr[1]) - 0.05, 0, 0, color=col, lw=2.8, arrow_length_ratio=0.18)
-
+        if mode in ("all", key):
+            # 확장 영역: 점선 와이어프레임 + 아주 옅은 채움 (DWPD 오른쪽으로 · 꼬리 지연 위로)
+            cuboid(ax, (xr[1], xmax), yr, (0, zr[1]), col, 0.10 if mode == "all" else 0.16, col, lw=1.3 if mode == "all" else 1.8, ls="--")
+            ax.quiver(lx(xr[1]), y_, 0.02, lx(xmax) - lx(xr[1]) - 0.05, 0, 0, color=col, lw=2.8, arrow_length_ratio=0.18)
+        if mode in ("all", "base"):
+            cuboid(ax, xr, yr, (0, zr[0]), col, 0.97, "white", lw=0.6)
+        anchors[key] = {"now": (lx(math.sqrt(xr[0] * xr[1])), y_, zr[0]), "ext": (lx(xmax * 0.92), y_, zr[1])}
     fig.canvas.draw()
+    return fig, ax, anchors
+
+
+def main():
+    from PIL import Image
+    fig, ax, anchors = draw("all")
     out = {}
     W, H = fig.canvas.get_width_height()
     for key, pts in anchors.items():
@@ -133,8 +141,8 @@ def main():
         out["demand:" + nm] = [px / W, 1 - py / H]
     png = os.environ.get("PNG_OUT") or os.path.join(ASSETS, "portfolio_3d.png")
     fig.savefig(png, transparent=True)
-    # 투명 여백을 잘라내고 좌표를 잘린 그림 기준으로 다시 맞춘다
-    from PIL import Image
+    plt.close(fig)
+    # 투명 여백을 잘라내고 좌표를 잘린 그림 기준으로 다시 맞춘다 (층 그림도 같은 상자로 자른다)
     im = Image.open(png)
     bx = im.getchannel("A").point(lambda a: 255 if a > 8 else 0).getbbox()
     pad = 10
@@ -149,6 +157,15 @@ def main():
     with open(os.path.join(ASSETS, "portfolio_3d.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
     print("saved", png)
+    # 클릭 애니메이션용 층: 바탕(지금) + 제품군별 확장 층 (같은 카메라 · 같은 자르기)
+    if not os.environ.get("PNG_OUT"):
+        for mode in ["base"] + [f[0] for f in FAMILIES]:
+            f2, _, _ = draw(mode)
+            path = os.path.join(ASSETS, f"portfolio_3d_{mode}.png")
+            f2.savefig(path, transparent=True)
+            plt.close(f2)
+            Image.open(path).crop(bx).save(path)
+            print("saved", path)
 
 
 if __name__ == "__main__":

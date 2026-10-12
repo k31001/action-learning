@@ -2820,3 +2820,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 4장: 계약 · 역량 · 사람 순서, 열 캡션 삭제로 패널 확장 · 역량 여백 확대, 노트 순서 변경
 - 애니메이션은 OOXML p:timing 직접 작성(그룹 도형 클릭 페이드인). 정적 렌더 · 웹 보기 이미지에는 강조가 항상 보임
 - 렌더 QA PASS. 아웃라인 · 보고서 v4.5, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.49.4 + updates(origin/main의 v2.49.3 「네 번의 겨울」 작업과 merge 후 번호 재배정), npm run build 통과
+
+## [2026-10-12] build | 고객 협력 전략 덱 v4.6: 3장 포트폴리오 확장 클릭 애니메이션
+- 사용자 지시: 3장에서 포트폴리오가 넓어지는 부분을 클릭으로 트리거되는 애니메이션으로
+- generate_portfolio_3d.py: draw(mode)로 바탕 층(축 · 바닥 · 지금 기둥)과 제품군별 확장 층 4장을 같은 카메라 · 같은 자르기로 출력(portfolio_3d_base / _qlc / _tlc / _hetlc / _slc.png), 전체 그림 portfolio_3d.png 유지
+- 덱: click_sequence(단계별 그룹 · 클릭마다 페이드인) 추가. 클릭 4번 = QLC 0.3 → 1 · TLC 1 → 3 · 고내구 TLC 3 → 9 · SLC급 30 → 100, 각 단계에 확장 층 + 카드 DWPD · 진입 수요 문구 + 카드 색 테두리. 번호 원은 맨 앞
+- 클릭 전 · 1번 · 4번 상태를 따로 렌더해 확인. 렌더 QA PASS. 아웃라인 · 보고서 v4.6, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.49.5 + updates, npm run build 통과

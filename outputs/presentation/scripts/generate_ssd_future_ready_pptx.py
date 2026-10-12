@@ -45,22 +45,32 @@ from lxml import etree as _et  # noqa: E402
 _P_NS = "http://schemas.openxmlformats.org/presentationml/2006/main"
 
 
-def click_reveal(s, shapes, dur=500):
-    """shapes를 그룹으로 묶고, 클릭 한 번에 페이드로 나타나게 한다(정적 렌더 · PDF에서는 항상 보임)."""
-    grp = s.shapes.add_group_shape(shapes)
-    sid = grp.shape_id
+def click_sequence(s, steps, dur=500):
+    """steps = [[도형, ...], ...]: 단계마다 그룹으로 묶고, 클릭 한 번에 한 단계씩 페이드로 나타나게 한다.
+    정적 렌더 · PDF에서는 모든 단계가 보인다."""
+    sids = [s.shapes.add_group_shape(shapes).shape_id for shapes in steps]
+    cid = [3]
+
+    def nid():
+        cid[0] += 1
+        return cid[0]
+    pars = []
+    for sid in sids:
+        c1, c2, c3, c4, c5 = nid(), nid(), nid(), nid(), nid()
+        pars.append(
+            f'<p:par><p:cTn id="{c1}" fill="hold"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:childTnLst>'
+            f'<p:par><p:cTn id="{c2}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>'
+            f'<p:par><p:cTn id="{c3}" presetID="10" presetClass="entr" presetSubtype="0" fill="hold" nodeType="clickEffect">'
+            '<p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>'
+            f'<p:set><p:cBhvr><p:cTn id="{c4}" dur="1" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst></p:cTn>'
+            f'<p:tgtEl><p:spTgt spid="{sid}"/></p:tgtEl><p:attrNameLst><p:attrName>style.visibility</p:attrName></p:attrNameLst></p:cBhvr>'
+            '<p:to><p:strVal val="visible"/></p:to></p:set>'
+            f'<p:animEffect transition="in" filter="fade"><p:cBhvr><p:cTn id="{c5}" dur="{dur}"/><p:tgtEl><p:spTgt spid="{sid}"/></p:tgtEl></p:cBhvr></p:animEffect>'
+            '</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>')
     xml = (
         f'<p:timing xmlns:p="{_P_NS}"><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>'
         '<p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>'
-        '<p:par><p:cTn id="3" fill="hold"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:childTnLst>'
-        '<p:par><p:cTn id="4" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>'
-        '<p:par><p:cTn id="5" presetID="10" presetClass="entr" presetSubtype="0" fill="hold" nodeType="clickEffect">'
-        '<p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>'
-        f'<p:set><p:cBhvr><p:cTn id="6" dur="1" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst></p:cTn>'
-        f'<p:tgtEl><p:spTgt spid="{sid}"/></p:tgtEl><p:attrNameLst><p:attrName>style.visibility</p:attrName></p:attrNameLst></p:cBhvr>'
-        '<p:to><p:strVal val="visible"/></p:to></p:set>'
-        f'<p:animEffect transition="in" filter="fade"><p:cBhvr><p:cTn id="7" dur="{dur}"/><p:tgtEl><p:spTgt spid="{sid}"/></p:tgtEl></p:cBhvr></p:animEffect>'
-        '</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>'
+        + "".join(pars) +
         '</p:childTnLst></p:cTn><p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst>'
         '<p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>'
         '</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>')
@@ -73,7 +83,12 @@ def click_reveal(s, shapes, dur=500):
         anchor.addnext(el)
     else:
         sld.find(f"{{{_P_NS}}}cSld").addnext(el)
-    return grp
+    return sids
+
+
+def click_reveal(s, shapes, dur=500):
+    """shapes를 그룹으로 묶고, 클릭 한 번에 페이드로 나타나게 한다(정적 렌더 · PDF에서는 항상 보임)."""
+    return click_sequence(s, [shapes], dur)
 
 
 # =============================================================== 1 배경
@@ -636,7 +651,11 @@ if IMW > RW3 - LGW:
     IMH = IMW / _ar
 IMX = RX3 - 0.10
 IMY = 10.24 - IMH
-d.img(s, P3, IMX, IMY, w=IMW)
+d.img(s, os.path.join(ASSETS, "portfolio_3d_base.png"), IMX, IMY, w=IMW)   # 바탕: 지금의 제품군
+STEP3 = {}
+for _k in ("qlc", "tlc", "hetlc", "slc"):                                   # 클릭마다 나타날 확장 층
+    d.img(s, os.path.join(ASSETS, f"portfolio_3d_{_k}.png"), IMX, IMY, w=IMW)
+    STEP3[_k] = [list(s.shapes)[-1]]
 tb(s, IMX, PY + 0.62, 2.4, 0.56, [("높이 = 꼬리 지연", 15, True, GRAY), ("낮을수록 위 (정성)", 15, False, GRAY)], spacing=0.95)
 
 
@@ -656,6 +675,7 @@ EH = (10.24 - LGY0) / 4
 from pptx.dml.color import RGBColor as _RGB  # noqa: E402
 # 3D 그림만 예외 색: 제품군별 (generate_portfolio_3d.FAM_COLOR와 같게)
 FAMC = {"qlc": "009E73", "tlc": "0072B2", "hetlc": "E69F00", "slc": "CC79A7"}
+MK3 = []   # 3D 위 번호 원: 확장 층보다 앞에 둔다
 for i, (key, img, model, dw, dem) in enumerate(EXP):
     y = LGY0 + i * EH
     fc = _RGB.from_string(FAMC[key])
@@ -667,11 +687,12 @@ for i, (key, img, model, dw, dem) in enumerate(EXP):
     if os.path.exists(pth):
         d.fit(s, pth, LGX + 0.60, y + 0.06, LGW - 0.70, 0.52)
     tb(s, LGX + 0.20, y + 0.58, LGW - 0.26, 0.28, [(model, 15, True, INK)], anchor=MID)
-    tb(s, LGX + 0.20, y + 0.84, LGW - 0.26, 0.28, [[(dw, 16, True, fc)]], anchor=MID)
-    tb(s, LGX + 0.20, y + 1.08, LGW - 0.26, 0.26, [(dem, 15, False, GRAY)], anchor=MID)
+    STEP3[key] += [tb(s, LGX + 0.20, y + 0.84, LGW - 0.26, 0.28, [[(dw, 16, True, fc)]], anchor=MID),
+                   tb(s, LGX + 0.20, y + 1.08, LGW - 0.26, 0.26, [(dem, 15, False, GRAY)], anchor=MID),
+                   rect(s, LGX - 0.03, y, LGW + 0.06, EH - 0.02, fill=None, line=fc, lw=2.5, shape=RR)]
     nx, ny = at(ANC[key]["now"])
-    rect(s, nx - 0.19, ny - 0.50, 0.38, 0.38, fill=fc, line=WHITE, lw=1.5, shape=MSO_SHAPE.OVAL)
-    tb(s, nx - 0.19, ny - 0.50, 0.38, 0.38, [(str(i + 1), 16, True, WHITE)], align=C, anchor=MID)
+    MK3 += [rect(s, nx - 0.19, ny - 0.50, 0.38, 0.38, fill=fc, line=WHITE, lw=1.5, shape=MSO_SHAPE.OVAL),
+            tb(s, nx - 0.19, ny - 0.50, 0.38, 0.38, [(str(i + 1), 16, True, WHITE)], align=C, anchor=MID)]
 # 바닥 색 = 추론 수요 영역 (범례)
 _lx = IMX + 2.60
 tb(s, _lx, PY + 0.62, 1.0, 0.30, [("바닥 =", 15, True, GRAY)], anchor=MID)
@@ -680,6 +701,11 @@ for k, (nm, hx) in enumerate((("가중치 · RAG", "ECEEF1"), ("KV 오프로드"
     rect(s, _lx + 0.80, yy + 0.05, 0.30, 0.20, fill=_RGB.from_string(hx), line=GRAY_2, lw=0.5)
     tb(s, _lx + 1.16, yy, 2.0, 0.30, [(nm, 15, True, GRAY)], anchor=MID)
 
+# 클릭 애니메이션: 포트폴리오가 넓어진다 (① QLC → ② TLC → ③ 고내구 TLC → ④ SLC급, 클릭마다 확장 층 + 카드 문구)
+click_sequence(s, [STEP3[k] for k in ("qlc", "tlc", "hetlc", "slc")])
+for _sh in MK3:                     # 번호 원을 맨 앞으로
+    _el = _sh._element
+    _el.getparent().append(_el)
 d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib FDP, 삼성 EuroSys'25) · p99.9 −55%(삼성 기술 블로그, PM9D3a 7.68TB RocksDB, TLC) · 공개 실험 테일 1.5~6배 ↓(ZNS · Valet · WALTZ) · "
             "DWPD 확장은 WAF 3 → 1 산술(⚠️) · 꼬리 지연 높이는 정성 등급 · 3D 그림은 제품군 구분을 위해 예외 색 · 제품 이미지는 형태 재현")
 
@@ -690,7 +716,7 @@ d.notes(s, "3장은 SSD 차별화 요구가 어떻게 바뀌어 왔고, 그 변�
         "세 기술은 GC를 세 방향으로 줄입니다. Mixed Media는 작은 쓰기를 pSLC에 모아 QLC에는 큰 단위로만 쓰므로 블록이 덜 조각나 GC 빈도가 줍니다. Large Mapping은 매핑 단위에 맞춘 큰 쓰기만 받으니 부분 덮어쓰기와 매핑 갱신이 줄어 GC 횟수가 줍니다. FDP는 수명이 같은 데이터를 같은 블록에 모아, 블록이 통째로 지워지니 옮길 데이터가 거의 없어 GC 시간이 줍니다. GC가 드물고 짧아지면 지연이 예측 가능해집니다. "
         "그 결과 지표가 좋아집니다. WAF에서 1을 뺀 값이 호스트 쓰기 하나당 GC가 옮기는 양인데, 삼성 엔지니어가 Meta의 CacheLib 안에 FDP를 구현했을 때 WAF가 3.22에서 1.03으로 68퍼센트, GC 복사량은 2.22에서 0.03으로 줄었습니다. WAF는 SSD만 잘 만들어서는 3 근처에서 더 내려가지 않던 지표이고, 그 이유는 참고 5장에 정리해 두었습니다. 상자를 누르면 그 장으로 갑니다. "
         "꼬리 지연도 줍니다. 삼성 PM9D3a 7.68테라바이트에서 RocksDB에 FDP 최적화 분류를 적용하자 p99.9 꼬리 지연이 55퍼센트 줄었고, ZNS, Valet, WALTZ 같은 공개 실험에서도 1.5배에서 6배 줄었습니다. 다만 꼬리 지연 측정은 모두 TLC이고, QLC나 KV 캐시 계층의 첫 토큰 p99를 직접 잰 결과는 아직 없으며, 칩 사이 큐 불균형이 주원인이라는 반대 연구도 있습니다. "
-        "이제 포트폴리오입니다. 오른쪽 3D 그림의 바닥은 정격 DWPD와 최대 용량, 높이는 꼬리 지연이 낮을수록 위입니다. 진한 기둥이 지금의 제품군이고 점선 상자가 WAF와 꼬리 지연을 낮춘 뒤 닿는 영역입니다. 같은 NAND와 같은 OP에서 WAF가 3에서 1로 내려가면 정격 DWPD는 약 3배가 됩니다. 과제팀 산술입니다. "
+        "이제 포트폴리오입니다. 오른쪽 3D 그림의 바닥은 정격 DWPD와 최대 용량, 높이는 꼬리 지연이 낮을수록 위입니다. 처음에는 지금의 제품군 기둥만 보이고, 클릭할 때마다 QLC, TLC, 고내구 TLC, SLC급 순서로 WAF와 꼬리 지연을 낮춘 뒤 닿는 영역이 점선 상자로 넓어지며 오른쪽 카드에 DWPD 변화가 나타납니다. 같은 NAND와 같은 OP에서 WAF가 3에서 1로 내려가면 정격 DWPD는 약 3배가 됩니다. 과제팀 산술입니다. "
         "BM1743 같은 QLC가 0.3에서 1 DWPD가 되면 지금 TLC가 맡는 KV 캐시 오프로드까지 원가 우위로 들어갈 수 있고, PM1753 같은 고성능 TLC가 1에서 3 DWPD가 되면 쓰기가 많은 KV를 맡을 수 있습니다. PM1755 같은 고내구 TLC는 3에서 9 DWPD로 초고DWPD의 입구까지 가고, SLC급에서 WAF를 낮추면 30 DWPD가 100 근처로 올라갑니다. 초고DWPD가 필요해지면 TLC의 WAF를 낮춰 대응할지, SLC급을 극한으로 올릴지 요구에 따라 고를 수 있습니다. "
         "정리하면, 새로운 차별화 요구에 대비한 기술을 미리 준비해야 미래의 추론 수요에 능동적으로 대응하는 제품 포트폴리오를 완성할 수 있습니다. 꼬리 지연 높이는 정성 등급이고, 제품 이미지는 형태 재현입니다.")
 
