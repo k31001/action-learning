@@ -17,7 +17,7 @@ export const UPDATES = [
   {
     date: '2026-10-12',
     type: 'build',
-    version: 'v2.48.7',
+    version: 'v2.49.4',
     title: '고객 협력 전략 덱 v4.5: 본문 4장 다듬기 · 클릭 강조 애니메이션',
     summary: '1장 수요 비중을 맨 아래로 · TechInsights 3Q26(2030 추론 79%) · 클릭하면 추론 열을 선으로 강조, 2장 영문 요구 · 채도로 협력 · 기술 6 타일 · 세 기술 클릭 강조, 3장 SSD 차별화 요구 변천(성능 → 전력 효율 → VM QoS → 예측 가능한 QoS · 고용량 · 고내구) · GC → 지표 → 포트폴리오, 4장 계약 · 역량 · 사람.',
     tags: ['발표자료', 'AI 추론', 'TechInsights'],

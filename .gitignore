@@ -25,3 +25,6 @@ node_modules/
 .claude/worktrees/
 .venv/
 __pycache__/
+
+# 모션 그래픽 영상 렌더 결과 (HTML 원본에서 재생성)
+outputs/motion/**/*.mp4

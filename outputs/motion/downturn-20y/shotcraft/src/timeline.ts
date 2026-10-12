@@ -1,0 +1,104 @@
+// 단일 사실 소스: 장면 표(SHOTS)는 내레이션 큐 길이(vo.ts) + 장면별 여백 규칙으로 계산되고,
+// 장면 경계는 음악 박 격자(music.json, 곡 첫 박 = 영상 0초가 되도록 음악을 t0 만큼 잘라 재생)에 올림 정렬된다.
+import { CUES, voSec } from './vo';
+import music from './music.json';
+import assets from './assets.json';
+
+export const FPS = 30;
+export const BEAT = 60 / (music as { bpm: number }).bpm;
+export const HAS_PHOTOS = (assets as { photos: boolean }).photos;
+
+type Spec = {
+  lead: number; // 장면 시작 → 첫 큐 (초)
+  gap?: number; // 큐 사이 기본 간격
+  slot?: Record<string, number>; // 큐별 최소 점유 시간(큐 시작 → 다음 큐 시작). 화면 동작에 시간이 필요한 큐
+  tail: number; // 마지막 큐 끝 → 장면 끝 (착지 후 정지, R1)
+  snap: number; // 경계 정렬 단위(박 수)
+};
+const SPEC: Record<string, Spec> = {
+  open: { lead: 1.4, tail: 1.4, snap: 1 }, // 실사 콜드 오픈 1.6초 → 웨이퍼 → 제목
+  curve: { lead: 0.4, gap: 0.3, slot: { c2: 1.3, c3: 1.6, c4: 1.6, c5: 1.5 }, tail: 0.9, snap: 1 },
+  w08: { lead: 0.4, gap: 0.35, slot: { a1: 3.0, a2: 3.8 }, tail: 1.1, snap: 1 },
+  w12: { lead: 0.4, gap: 0.35, slot: { b1: 4.2, b2: 2.3 }, tail: 1.1, snap: 1 },
+  w19: { lead: 0.4, gap: 0.35, slot: { d1: 3.4, d2: 1.7 }, tail: 1.3, snap: 1 },
+  w23: { lead: 0.4, gap: 0.35, slot: { e1: 3.2, e2: 2.3 }, tail: 1.0, snap: 1 },
+  spring: { lead: 0.4, gap: 0.4, slot: { p1: 2.0 }, tail: 1.2, snap: 1 },
+  lesson: { lead: 0.4, gap: 0.35, tail: 1.2, snap: 1 },
+  scen: { lead: 0.3, gap: 0.5, slot: { s0: 2.2, s1: 5.8, s2: 5.8 }, tail: 2.8, snap: 1 },
+  end: { lead: 0.3, gap: 0.4, tail: 2.4, snap: 1 },
+};
+const ORDER = ['open', 'curve', 'w08', 'w12', 'w19', 'w23', 'spring', 'lesson', 'scen', 'end'] as const;
+export type ShotKey = (typeof ORDER)[number];
+
+const f = (sec: number) => Math.round(sec * FPS);
+export const SHOTS = {} as Record<ShotKey, { from: number; dur: number }>;
+// 큐 시작/끝(장면 내부 프레임)
+export const CUE = {} as Record<string, { at: number; end: number; abs: number }>;
+// 음악: 파일의 lift 초(최고조 구간 첫 박)가 liftScene 의 첫 프레임에 오도록 음악 시작 시각(MUSIC_START, 영상 초)을 역산.
+// 박 격자 원점 G = MUSIC_START + t0 — 장면 경계는 G 기준 박 격자에 올림 정렬되므로 lift 장면 경계도 자동으로 박 위에 놓인다.
+const M = music as { bpm: number; t0: number; lift?: number; liftScene?: ShotKey };
+export let MUSIC_START = 0;
+const layout = (G: number) => {
+  let t = 0;
+  for (const k of ORDER) {
+    const sp = SPEC[k];
+    let c = sp.lead;
+    const cues = CUES[k];
+    cues.forEach((q, i) => {
+      const d = voSec(q);
+      CUE[q.id] = { at: f(c), end: f(c + d), abs: f(t + c) };
+      c += Math.max(d + (i < cues.length - 1 ? sp.gap ?? 0.35 : 0), sp.slot?.[q.id] ?? 0);
+    });
+    const unit = BEAT * sp.snap;
+    const end = G + Math.ceil((t + c + sp.tail - G) / unit - 1e-6) * unit; // 박 격자 위 다음 경계
+    SHOTS[k] = { from: f(t), dur: f(end) - f(t) };
+    t = end;
+  }
+};
+{
+  let G = 0;
+  for (let it = 0; it < 4; it++) {
+    layout(G);
+    if (M.lift == null || !M.liftScene) break;
+    MUSIC_START = SHOTS[M.liftScene].from / FPS - M.lift;
+    G = MUSIC_START + M.t0;
+    G -= Math.floor(G / BEAT) * BEAT; // 0 이상 첫 박
+  }
+  layout(G);
+  if (M.lift != null && M.liftScene) MUSIC_START = SHOTS[M.liftScene].from / FPS - M.lift;
+}
+export const TOTAL = SHOTS.end.from + SHOTS.end.dur;
+// 시나리오 레인 시작(장면 내부) · 헤드라인 카드 간격 — Tail.tsx 와 sfx.ts 공유
+export const laneStarts = () => ['s1', 's2', 's3'].map((id) => CUE[id].at - 6);
+// 헤드라인 카드 한 장 = 던지기 12f + 중앙 정지 16f + 제자리 12f. 카드 간격은 레인 길이에 맞춰 36~44f
+export const cardStep = (i: number) => { const a = laneStarts(); const b = i < 2 ? a[i + 1] : SHOTS.scen.dur; return Math.max(36, Math.min(44, (b - a[i] - 36) / 3)); };
+export const ORDER_KEYS = ORDER;
+
+/* ───── 데이터 (wiki/downturn/downturn-history.md) ───── */
+// 전체 메모리(DRAM+NAND) 연 매출 $B, ᵉ 추정 포함
+export const REV: [number, number][] = [[2006, 46.7], [2007, 45.4], [2008, 35.6], [2009, 34.5], [2010, 58.1], [2011, 50.8], [2012, 47.2], [2013, 60.6], [2014, 77.6], [2015, 78.8], [2016, 79.5], [2017, 129.2], [2018, 162.6], [2019, 108.0], [2020, 121.3], [2021, 161.1], [2022, 141.2], [2023, 88.5], [2024, 158.1], [2025, 222.0]];
+// 낙폭 도장 — 해당 숫자를 읽는 큐(c2..c5) 시작에 저점 도착
+export const STAMPS = [
+  { y: 2009, cue: 'c2', d: '−26%', yr: '2007–09', above: true },
+  { y: 2012, cue: 'c3', d: '−19%', yr: '2010–12', above: true },
+  { y: 2019, cue: 'c4', d: '−34%', yr: '2018–19', above: false },
+  { y: 2023, cue: 'c5', d: '−45%', yr: '2022–23', above: false },
+];
+// 2008 DRAM 점유율 (치킨게임 직전)
+export const SH08 = [
+  { k: 'samsung', p: 30, me: true }, { k: 'Hynix', p: 19 }, { k: 'Elpida', p: 15 }, { k: 'micron', p: 11 }, { k: 'Qimonda', p: 10 },
+];
+// 2023 DRAM 분기 매출 $B (1Q22·2Q22·1Q23·2Q23 ᵉ)
+export const Q23: [string, number][] = [['1Q22', 24.03], ['2Q22', 25.59], ['3Q22', 18.19], ['4Q22', 12.28], ['1Q23', 9.7], ['2Q23', 11.4]];
+
+// 다운턴의 발원 (wiki/downturn/scenario-matrix.md §2 케이스 DT-A~E · sources/articles/dt-*-signals-2026-08-28.md)
+// 확률(%)은 화면·내레이션에 쓰지 않는다 — 정밀하지 않은 추정이라 케이스 설명만 전달(2026-10-11 사용자 지시)
+// 헤드라인은 2026-08 신호를 연장한 가상 헤드라인 — 실제 보도가 아니다.
+export const LANES = [
+  { cue: 's1', no: '시나리오 1', t: '수요발', cases: [['급제동', 'AI 투자 조달 경색 → 신규 발주 동결'], ['긴 하산', '추론 효율화로 메모리 원단위 감소']],
+    h: [['2027.11', '빅테크 4사, AI 데이터센터 투자', '첫 동시 삭감'], ['2028.02', '추론 비용 1/10 신모델 공개…', '서버당 메모리 탑재량 줄었다'], ['2028.04', '고객사 HBM 장기계약 재협상 요구…', 'D램 현물가 급락']] },
+  { cue: 's2', no: '시나리오 2', t: '공급발', cases: [['동시 방류', '신규 팹 동시 가동 → 공급이 수요를 앞섬'], ['저가 잠식', '중국 범용 D램 점진 침투 → 가격대 하락']],
+    h: [['2028.06', '용인·평택·아이다호 신규 팹 동시 가동…', 'D램 캐파 사상 최대'], ['2028.09', '中 CXMT DDR5 저가 공세…', '범용 D램 가격 원가 아래로'], ['2029.01', '중국산 D램 점유율 18% 돌파…', '글로벌 스마트폰 고객 첫 채택']] },
+  { cue: 's3', no: '시나리오 3', t: '전환발', cases: [['판 갈이', '3D D램 · HBM 맞춤 설계 · CXL로 제품 정의 변화'], ['자산 소멸', '감산 · 계약이 통하지 않고 기존 라인 조기 상각']],
+    h: [['2028.03', 'GPU 업체가 HBM 베이스 다이 직접 설계…', '메모리는 ‘부품’이 된다'], ['2028.10', 'CXL 메모리 풀링 대세로…', '신규 D램 대신 재활용 D램'], ['2029.06', '3D D램 첫 양산 발표…', '기존 2D 라인 조기 상각 우려']] },
+];
