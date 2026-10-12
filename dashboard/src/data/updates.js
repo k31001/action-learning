@@ -17,6 +17,16 @@ export const UPDATES = [
   {
     date: '2026-10-12',
     type: 'build',
+    version: 'v2.49.7',
+    title: '발표 디자인 시스템 v2.2: 눈 피로 완화 파란 팔레트(B+2)',
+    summary: '덱 디자인 스킬의 파란 계열 4색을 채도 -30% · 밝기 +0.08로 바꾸고(#1428A0 → #3C4FA5 등), 이 스킬로 만든 두 덱(고객 협력 전략 v4.8 · TLC 시장 QLC로 v1.1)을 다시 생성함.',
+    tags: ['발표자료', '디자인 시스템'],
+    items: [{ label: '토큰', detail: '#3C4FA5 · #677ECD · #C0CAEC · #F0F2F8 (이전 #1428A0 · #3C5AC8 · #AAB8E8 · #EEF1FA)' }, { label: '덱', detail: 'ssd-future-ready-strategy v4.8, qlc-tlc-market-entry v1.1' }],
+    links: [],
+  },
+  {
+    date: '2026-10-12',
+    type: 'build',
     version: 'v2.49.6',
     title: '고객 협력 전략 덱 v4.7: 4장 역량을 추론 스택으로',
     summary: '실행 전략 4장의 역량을 추론 스택 6층(추론 엔진 → NAND) × 삼성 위치(강점 · 일부 · 공백)와 수명 정보 → SSD 배치 경로로 새로 쓰고, 제목을 세 기술과 연결함.',

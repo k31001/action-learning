@@ -29,7 +29,7 @@ for f in (FONT, FONT_B):
         font_manager.fontManager.addfont(f)
 plt.rcParams["font.family"] = "NanumGothic"
 
-BLUE, BLUE_T1, BLUE_T2, GRAY, GRAY_2, INK = "#1428A0", "#3D5AD6", "#AAB8E8", "#6B7280", "#9CA3AF", "#1A1A1A"
+BLUE, BLUE_T1, BLUE_T2, GRAY, GRAY_2, INK = "#3C4FA5", "#677ECD", "#C0CAEC", "#6B7280", "#9CA3AF", "#1A1A1A"  # 디자인 스킬 v2.2 팔레트
 
 # 이 그림만 예외적으로 제품군별 다른 색(2026-10-10 사용자 허용, Okabe-Ito 계열 · 색각 구분). 덱 생성기도 FAM_COLOR를 같이 쓴다.
 FAM_COLOR = {"qlc": "#009E73", "tlc": "#0072B2", "hetlc": "#E69F00", "slc": "#CC79A7"}

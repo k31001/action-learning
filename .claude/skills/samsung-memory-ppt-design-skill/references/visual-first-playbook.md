@@ -50,9 +50,9 @@ plt.rcParams["font.family"] = "NanumGothic"; plt.rcParams["axes.unicode_minus"] 
 
 fig = plt.figure(figsize=(5.60, 3.05))          # 슬라이드 배치 크기(인치) 그대로
 ax = fig.add_axes([0.115, 0.15, 0.865, 0.82])
-ax.plot(xs, ours, color="#1428A0", lw=4.2, marker="o")    # 자사 Blue
+ax.plot(xs, ours, color="#3C4FA5", lw=4.2, marker="o")    # 자사 Blue
 ax.plot(xs, comp, color="#8A8A8A", lw=3.2, marker="o")    # 경쟁 그레이
-ax.text(x, y, "17%", fontsize=17, color="#1428A0", fontweight="bold")  # 직접 레이블
+ax.text(x, y, "17%", fontsize=17, color="#3C4FA5", fontweight="bold")  # 직접 레이블
 for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
 ax.yaxis.grid(True, color="#D9D9D9", lw=0.6); ax.tick_params(length=0, labelsize=16)
 fig.savefig("chart.png", dpi=300, transparent=True)

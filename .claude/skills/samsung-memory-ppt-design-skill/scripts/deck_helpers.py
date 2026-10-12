@@ -25,10 +25,11 @@ from pptx.oxml.ns import qn
 from pptx.util import Emu, Inches, Pt
 
 # ---- 토큰 (2.A)
-BLUE = RGBColor(0x14, 0x28, 0xA0)
-BLUE_T1 = RGBColor(0x3C, 0x5A, 0xC8)
-BLUE_T2 = RGBColor(0xAA, 0xB8, 0xE8)
-TINT = RGBColor(0xEE, 0xF1, 0xFA)
+# v2.2(2026-10-12) 눈 피로 완화 팔레트 "B+2": 브랜드 #1428A0 계열에서 채도 -30%(HLS) 후 OKLCH 밝기 +0.08(진하기 C 유지)
+BLUE = RGBColor(0x3C, 0x4F, 0xA5)      # 이전 #1428A0
+BLUE_T1 = RGBColor(0x67, 0x7E, 0xCD)   # 이전 #3C5AC8
+BLUE_T2 = RGBColor(0xC0, 0xCA, 0xEC)   # 이전 #AAB8E8
+TINT = RGBColor(0xF0, 0xF2, 0xF8)      # 이전 #EEF1FA
 INK = RGBColor(0x1A, 0x1A, 0x1A)
 GRAY = RGBColor(0x55, 0x55, 0x55)
 GRAY_2 = RGBColor(0x8A, 0x8A, 0x8A)
