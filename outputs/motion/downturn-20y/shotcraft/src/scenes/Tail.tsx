@@ -52,8 +52,8 @@ export const Spring: React.FC = () => {
   );
 };
 
-/* ⑥ 교훈 — 눈 속 새싹 실사(오른쪽) + 왼쪽 타이포. 「투자」 마커 밑줄(marker-underline-title, 10f).
-   v2.4: 「심은 것」 비유를 직설로 교체(2026-10-12 사용자 지시) */
+/* ⑥ 교훈 — 눈 속 새싹 실사(오른쪽) + 왼쪽 타이포. 「심은 것」 마커 밑줄(marker-underline-title, 10f).
+   v2.5: v2.4 의 직설 교체를 되돌림 — 「심다」 비유가 이 영상의 정서를 만든다(2026-10-12 사용자 지시) */
 export const Lesson: React.FC = () => {
   const f = useCurrentFrame();
   const l1 = cue('l1'), l2 = cue('l2'), l3 = cue('l3');
@@ -63,8 +63,8 @@ export const Lesson: React.FC = () => {
         ? <Photo name="seedling" to={240} scale={[1.0, 1.07]} origin="70% 60%" fade="linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.88) 42%, rgba(255,255,255,0) 72%)" />
         : <><Wafer cx={960} cy={540} R={420} growAt={0} growDur={40} freezeAt={-60} full dim={0.55} /><div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(1100px 560px at 40% 50%, rgba(255,255,255,.97), rgba(255,255,255,.85) 55%, rgba(255,255,255,0) 100%)' }} /></>}
       <Lines at={l1 + 4} stagger={10} lines={[
-        <>승부는 <span style={{ color: C.blue }}>겨울</span>의</>,
-        <><span style={{ position: 'relative', display: 'inline-block' }}><Marker at={l1 + 40} len={250} color={C.blue} style={{ left: -6, bottom: -30 }} /><span style={{ position: 'relative' }}>투자</span></span>에서 갈렸다.</>,
+        <>승부는 <span style={{ color: C.blue }}>겨울</span>에</>,
+        <><span style={{ position: 'relative', display: 'inline-block' }}><Marker at={l1 + 40} len={370} color={C.blue} style={{ left: -6, bottom: -30 }} /><span style={{ position: 'relative' }}>심은 것</span></span>에서 갈렸다.</>,
       ]} style={{ position: 'absolute', left: 140, top: 230, fontSize: 124, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.12 }} />
       <div style={{ position: 'absolute', left: 146, top: 620, display: 'flex', flexDirection: 'column', gap: 22 }}>
         <Up at={l2} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.blue} size={38}>투자한 것</Tag>40nm DDR3 · 20nm급 · 1z DRAM</Up>
@@ -176,7 +176,7 @@ export const Scen: React.FC<{ dur: number }> = ({ dur }) => {
   );
 };
 
-/* ⑧ 결론 — 얼었던 웨이퍼가 씨앗 다이에서부터 해빙, 「지금, 무엇에 투자할 것인가.」(z2) 착지 = slam 3/3, 이후 ≥2s 정지 */
+/* ⑧ 결론 — 얼었던 웨이퍼가 씨앗 다이에서부터 해빙, 「지금! 무엇을 심을 것인가?」(z2) 착지 = slam 3/3, 이후 ≥2s 정지 */
 export const End: React.FC = () => {
   const f = useCurrentFrame();
   const z1 = cue('z1'), z2 = cue('z2');
@@ -186,7 +186,7 @@ export const End: React.FC = () => {
     <AbsoluteFill style={{ background: C.paper, fontFamily: FONT, color: C.ink, transform: `scale(${punch})` }}>
       <Wafer cx={520} cy={540} R={330} growAt={-60} freezeAt={-90} thawAt={land - 6} />
       <Lines at={z1} lines={['겨울은 다시 온다.']} style={{ position: 'absolute', left: 1000, top: 262, fontSize: 96, fontWeight: 900, letterSpacing: '-0.045em', color: C.steel }} />
-      <Lines at={z2} stagger={8} lines={['지금, 무엇에', <><span style={{ color: C.blue }}>투자할</span> 것인가.</>]} style={{ position: 'absolute', left: 1000, top: 410, fontSize: 136, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.08 }} />
+      <Lines at={z2} stagger={8} lines={['지금! 무엇을', <><span style={{ color: C.blue }}>심을</span> 것인가?</>]} style={{ position: 'absolute', left: 1000, top: 410, fontSize: 136, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.08 }} />
     </AbsoluteFill>
   );
 };
