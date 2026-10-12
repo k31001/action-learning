@@ -2722,3 +2722,15 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 사용자 지시: 1장 AI 학습 · 추론 설명 박스에 숫자 말고 해당 수요에서 SSD의 역할을 시각화(범용 클라우드처럼)
 - AI 학습: GPU 서버 ↔ SSD, ↑ 데이터 로딩 · ↓ 체크포인트. AI 추론: GPU HBM → CPU DRAM → SSD(KV · RAG · 가중치) 계층, ↓ 넘치면 오프로드 · ↑ 재사용. 요구 줄 유지, 수치는 노트 · 출처 줄 정리
 - 렌더 QA PASS. 아웃라인 · 보고서 v4.4, 위키 ai-inference-storage-requirements 메모, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.48.6 + updates, npm run build 통과
+
+## [2026-10-12] ingest | TechInsights 3Q26 eSSD 응용별 비중 (사용자 제공)
+- 사용자 제공: 2025 범용 54 · 학습 15 · 추론 31%, 2030 15 · 6 · 79%(TechInsights 2026년 3분기 보고서 예측). 원문 미대조 🟡
+- `sources/raw-notes/user-techinsights-3q26-essd-application-share-2026-10.md`(TI-01 · 02), 위키 `essd-demand-by-application-2030.md` §0.5(McKinsey 2030 추론 41%와 차이, 학습 비중 방향도 반대), index 갱신
+
+## [2026-10-12] build | 고객 협력 전략 덱 v4.5: 본문 4장 다듬기 · 클릭 강조 애니메이션
+- 1장: eSSD 수요 비중을 맨 아래로(TechInsights 3Q26 값, EB 총량 삭제), 클릭 애니메이션(추론 열 테두리 · 추론 막대 테두리 · 연결선 · "추론에 집중")
+- 2장: 요구 머리글 영문(Read BW · Tail Latency · DWPD · Capacity $/TB · Isolation Security), 고객 협력 열 삭제 → 기술 칩 채도, 행마다 칩 3개, 아래 기술 6 타일(짧은 그림), 클릭 애니메이션(FDP · Mixed Media · Large Mapping 강조 + 다음 장 예고)
+- 3장: 맨 위 SSD 차별화 요구 변천 띠(성능 → 전력 효율 → VM 단위 QoS → 예측 가능한 QoS · 고용량 · 고내구, 시기는 과제팀 정리), ① GC → ② 지표 → ③ 포트폴리오, 결론 밴드 삭제, 제목 변경
+- 4장: 계약 · 역량 · 사람 순서, 열 캡션 삭제로 패널 확장 · 역량 여백 확대, 노트 순서 변경
+- 애니메이션은 OOXML p:timing 직접 작성(그룹 도형 클릭 페이드인). 정적 렌더 · 웹 보기 이미지에는 강조가 항상 보임
+- 렌더 QA PASS. 아웃라인 · 보고서 v4.5, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.48.7 + updates, npm run build 통과

@@ -40,6 +40,42 @@ def chip(s, x, y, w, h, text, fill=BLUE, color=WHITE, size=20, line=None, dash=F
     label_box(s, x, y, w, h, [(text, size, True, color)], fill=fill, line=line, dash=dash)
 
 
+# ---- 클릭 애니메이션: 강조 도형들을 그룹으로 묶어 "클릭하면 나타나기(페이드)" 하나로 건다
+from lxml import etree as _et  # noqa: E402
+_P_NS = "http://schemas.openxmlformats.org/presentationml/2006/main"
+
+
+def click_reveal(s, shapes, dur=500):
+    """shapes를 그룹으로 묶고, 클릭 한 번에 페이드로 나타나게 한다(정적 렌더 · PDF에서는 항상 보임)."""
+    grp = s.shapes.add_group_shape(shapes)
+    sid = grp.shape_id
+    xml = (
+        f'<p:timing xmlns:p="{_P_NS}"><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>'
+        '<p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>'
+        '<p:par><p:cTn id="3" fill="hold"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:childTnLst>'
+        '<p:par><p:cTn id="4" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>'
+        '<p:par><p:cTn id="5" presetID="10" presetClass="entr" presetSubtype="0" fill="hold" nodeType="clickEffect">'
+        '<p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>'
+        f'<p:set><p:cBhvr><p:cTn id="6" dur="1" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst></p:cTn>'
+        f'<p:tgtEl><p:spTgt spid="{sid}"/></p:tgtEl><p:attrNameLst><p:attrName>style.visibility</p:attrName></p:attrNameLst></p:cBhvr>'
+        '<p:to><p:strVal val="visible"/></p:to></p:set>'
+        f'<p:animEffect transition="in" filter="fade"><p:cBhvr><p:cTn id="7" dur="{dur}"/><p:tgtEl><p:spTgt spid="{sid}"/></p:tgtEl></p:cBhvr></p:animEffect>'
+        '</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>'
+        '</p:childTnLst></p:cTn><p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst>'
+        '<p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>'
+        '</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>')
+    sld = s._element
+    for old in sld.findall(f"{{{_P_NS}}}timing"):
+        sld.remove(old)
+    anchor = sld.find(f"{{{_P_NS}}}clrMapOvr")
+    el = _et.fromstring(xml)
+    if anchor is not None:
+        anchor.addnext(el)
+    else:
+        sld.find(f"{{{_P_NS}}}cSld").addnext(el)
+    return grp
+
+
 # =============================================================== 1 배경
 s = d.slide(1, "현황", "데이터센터 응용마다 SSD 요구가 다르고, 삼성은 제품군별로 대응하고 있지만\nAI 추론은 대역 · 꼬리 지연 · 내구를 한꺼번에 요구합니다")
 S1 = s
@@ -164,31 +200,11 @@ for k, (nm, v, col, lab) in enumerate([("VM 디스크", 100, BLUE, "100GB"), ("V
     rect(s, x + 1.56, yy + 0.05, w, 0.22, fill=col)
     tb(s, x + 1.62 + w, yy, 0.95, 0.32, [(lab, 16, True, BLUE if k == 0 else GRAY)], anchor=MID)
 
-# ---- 중간 계층: eSSD 수요 비중 2026(올해) · 2030, 가로 누적 막대 (McKinsey 2024-12, 2026은 보간 산술, 참고 8장)
-SHR = [("2026 올해", [85, 6, 9], "286EB"), ("2030", [47, 12, 41], "1,078EB")]
-SCOL = [GRAY_2, BLUE_T2, BLUE]
-SNM = ["범용 · 엔터프라이즈", "AI 학습", "AI 추론"]
-SX0, SX1 = DXS[0], RIGHT - 1.20
-tb(s, LX, CB + 0.12, LW, 0.30, [("eSSD 수요 비중", 18, True, INK)], anchor=MID)
-tb(s, LX, CB + 0.48, LW - 0.80, 0.30, [("출처: McKinsey 2024-12", 15, False, GRAY)], anchor=MID)
-for r, (yr, sh, tot) in enumerate(SHR):
-    y = CB + 0.12 + r * 0.36
-    tb(s, LX, y, LW - 0.12, 0.30, [(yr, 16, r == 1, INK if r == 1 else GRAY)], align=R, anchor=MID)
-    acc = 0
-    for j in range(3):
-        x0 = SX0 + (SX1 - SX0) * acc / 100
-        w = (SX1 - SX0) * sh[j] / 100
-        rect(s, x0, y, w, 0.30, fill=SCOL[j], line=WHITE, lw=1.0)
-        txt = f"{SNM[j]} {sh[j]}%" if (r == 1 or j == 0) else f"{sh[j]}%"
-        tb(s, x0, y, w, 0.30, [(txt, 16, True, INK if j == 1 else WHITE)], align=C, anchor=MID)
-        acc += sh[j]
-    tb(s, SX1 + 0.10, y, 1.10, 0.30, [(tot, 16, r == 1, INK if r == 1 else GRAY)], anchor=MID)
-
 # ---- 삼성 SSD 포트폴리오: 제품군(행) × 응용(열), 칸 = 삼성 모델이 지금 맡는 곳 (제품 이미지는 형태 재현)
-MT = CB + 1.34
+MT = CB + 0.62
 tb(s, LX, MT - 0.42, LW + 6, 0.36, [[("삼성 SSD 포트폴리오  ", 19, True, INK), ("수요별 대응 현황", 17, False, GRAY)]], anchor=MID)
 tb(s, RIGHT - 8.0, MT - 0.42, 8.0, 0.36, [[("■", 16, False, BLUE), (" 대응 중   ", 16, False, GRAY), ("▢", 16, False, BLUE_T1), (" 대응 가능 · 신호", 16, False, GRAY)]], align=R, anchor=MID)
-RH, RG = 0.72, 0.06
+RH, RG = 0.74, 0.06
 PF = [("고내구 TLC · 3 DWPD", "PM1755 · PM1745", "p_pm1755"),
       ("고성능 TLC · PCIe 6.0", "PM1763", "p_pm1763"),
       ("고성능 TLC · PCIe 5.0", "PM1753 · PM9D3a", "p_pm1753"),
@@ -225,7 +241,48 @@ for r, (nm, models, img) in enumerate(PF):
             tb(s, x + 0.10, y + 0.02, DW - 0.20, 0.36, [(txt, 17, True, BLUE)], align=C, anchor=MID)
             tb(s, x + 0.10, y + 0.37, DW - 0.20, 0.32, [[("공백  ", 15, True, BLUE), (mdl, 15, False, GRAY)]], align=C, anchor=MID)
 
-d.footer(s, "출처: 수요 비중 McKinsey(2024-12, 2026 보간 · 상세 참고 8장) · HBM 과제팀 집계 · p99 FlashBlox(FAST'17) · 학습 · 추론 카드의 SSD 역할 수치(GPU당 대역 · KV 복원 대역 · p99 목표 · DWPD 실측)는 노트 · "
+# ---- 맨 아래: eSSD 수요 비중 2025 · 2030 (TechInsights 3Q26, 사용자 제공) → 추론으로 이어지는 마무리
+BY0 = MT + 4 * (RH + RG) + 0.12
+SHR = [("2025", [54, 15, 31]), ("2030", [15, 6, 79])]
+SCOL = [GRAY_2, BLUE_T2, BLUE]
+SNM = ["범용", "AI 학습", "AI 추론"]
+SX0, SX1 = DXS[0], RIGHT
+tb(s, LX, BY0 - 0.02, LW, 0.34, [("eSSD 수요 비중", 18, True, INK)], anchor=MID)
+tb(s, LX, BY0 + 0.34, LW - 0.80, 0.30, [("TechInsights 3Q26", 15, False, GRAY)], anchor=MID)
+SEG = {}
+for r, (yr, sh) in enumerate(SHR):
+    y = BY0 + r * 0.36
+    tb(s, LX, y, LW - 0.12, 0.30, [(yr, 16, r == 1, INK if r == 1 else GRAY)], align=R, anchor=MID)
+    acc = 0
+    for j in range(3):
+        x0 = SX0 + (SX1 - SX0) * acc / 100
+        w = (SX1 - SX0) * sh[j] / 100
+        rect(s, x0, y, w, 0.30, fill=SCOL[j], line=WHITE, lw=1.0)
+        txt = f"{SNM[j]} {sh[j]}%" if w > 1.6 else f"{sh[j]}%"
+        tb(s, x0, y, w, 0.30, [(txt, 16, True, INK if j == 1 else WHITE)], align=C, anchor=MID)
+        if j == 2:
+            SEG[r] = (x0, y, w)
+        acc += sh[j]
+
+# ---- 클릭 강조: 추론 카드 · 추론 포트폴리오 열 · 추론 수요 비중을 선으로 묶는다
+HL = []
+cx0, cy0 = DXS[2] - 0.07, CT - 0.07
+cy1 = MT + 4 * (RH + RG) - 0.02
+HL.append(rect(s, cx0, cy0, DW + 0.14, cy1 - cy0, fill=None, line=BLUE, lw=4.0, shape=RR))
+for r in (0, 1):
+    x0, y, w = SEG[r]
+    HL.append(rect(s, x0 - 0.03, y - 0.03, w + 0.06, 0.36, fill=None, line=BLUE, lw=3.0))
+_x = DXS[2] + DW / 2
+_ln = s.shapes.add_connector(1, *(int(v * 914400) for v in (_x, cy1, _x, SEG[0][1] - 0.03)))
+_ln.line.color.rgb = BLUE
+_ln.line.width = int(3.0 * 12700)
+HL.append(_ln)
+HL.append(rect(s, DXS[2] + DW - 1.62, cy0 - 0.20, 1.55, 0.38, fill=BLUE, shape=RR))
+tb(s, DXS[2] + DW - 1.62, cy0 - 0.20, 1.55, 0.38, [("추론에 집중", 15, True, WHITE)], align=C, anchor=MID)
+HL.append(list(s.shapes)[-1])
+click_reveal(s, HL)
+
+d.footer(s, "출처: 수요 비중 TechInsights 3Q26 보고서(사용자 제공, 원문 미대조) · HBM 과제팀 집계 · p99 FlashBlox(FAST'17) · 학습 · 추론 카드의 SSD 역할 수치(GPU당 대역 · KV 복원 대역 · p99 목표 · DWPD 실측)는 노트 · "
             "에이전트 Google · Muse 관측(제3자) · 삼성 모델 사양 공식 페이지 검색 확인(🟡) · 제품 이미지는 형태 재현")
 d.notes(s, "1장은 지금 수요의 모양과 삼성의 대응 현황입니다. HBM에서 삼성 점유율은 2022년 40퍼센트에서 2025년 2분기 17퍼센트로, SK하이닉스는 50에서 62퍼센트로 갈렸습니다. 하나의 수요를 늦게 읽으면 첫 호황을 놓친다는 교훈입니다. "
         "그래서 하이퍼스케일러의 데이터센터 응용 네 가지를 SSD에 요구하는 특성으로 비교했습니다. 범용 클라우드는 여러 VM이 SSD를 나눠 써서 QoS와 격리가 요구입니다. 하드웨어로 격리하면 p99 지연이 최대 3.1배 줄었습니다. "
@@ -234,12 +291,12 @@ d.notes(s, "1장은 지금 수요의 모양과 삼성의 대응 현황입니다.
         "둘째 꼬리 지연입니다. MLPerf의 Llama 2 70B 대화형 기준은 첫 토큰 p99 450밀리초, 토큰당 40밀리초입니다. SSD 계층을 넣고도 p99 첫 토큰 목표를 지키면 GPU당 세션을 10.77배 늘릴 수 있었다는 결과가 있고, SSD의 지연 흔들림이 첫 토큰 지연을 키운다는 연구도 있습니다. NVIDIA의 차세대 스토리지 목표도 전력과 꼬리 지연 제약 안에서 IOPS를 최대화하는 것입니다. "
         "셋째 쓰기 내구입니다. KV 캐시 계층 드라이브 실측은 3.2 DWPD로 QLC 정격을 크게 넘고, AI 전용 SSD는 50에서 120 DWPD로 나왔습니다. "
         "에이전트는 사용자마다 VM을 하나씩 주는 구조라 디스크가 메모리보다 13배 크고, 대부분 휴면이라 용량과 TB당 비용이 요구입니다. "
-        "가운데 막대는 eSSD 수요 비중입니다. 올해 범용 85, 학습 6, 추론 9퍼센트에서 2030년에는 범용 47, 학습 12, 추론 41퍼센트가 됩니다. "
         "아래는 삼성 SSD 포트폴리오가 각 수요를 어떻게 맡고 있는지입니다. 고내구 TLC는 3 DWPD의 PM1755와 PM1745가 쓰기가 많은 KV를 맡고, 체크포인트 간격이 짧아지면 학습에도 쓰일 수 있어 점선으로 두었습니다. "
         "고성능 TLC는 세대로 나눴습니다. 2026년 7월 양산한 PCIe 6.0의 PM1763은 순차 읽기 28.4기가바이트 매초로 학습 데이터 로딩을 맡고, GPU가 직접 512바이트 단위로 읽는 경로를 백서로 보였기 때문에 가중치 로딩과 GPU 직결은 신호로 두었습니다. "
         "PCIe 5.0의 PM9D3a와 PM1753은 범용 VM과 DB를 맡고, PM1753은 NVIDIA CMX 같은 KV 계층에 공급됩니다. "
         "고용량 QLC는 BM1743이 122테라바이트까지 객체, 데이터셋, 사용자 VM 디스크를 맡고, 245테라바이트 BM1773이 FMS 2026에서 공개됐습니다. 가중치와 RAG 읽기는 BM1743이 맞지만 삼성이 이 용도로 내세운 적은 없어 점선으로 두었습니다. "
-        "정리하면 삼성은 TLC와 QLC 제품군으로 응용별 수요를 맡고 있지만, AI 추론은 대역, 꼬리 지연, 내구를 한꺼번에 요구한다는 점이 다음 장의 출발점입니다. SLC급 초고DWPD는 3장에서 포트폴리오 확장의 선택지로 다룹니다. "
+        "맨 아래는 eSSD 수요 비중입니다. TechInsights의 2026년 3분기 보고서 전망으로, 2025년에는 범용 54퍼센트, 학습 15퍼센트, 추론 31퍼센트이고, 2030년에는 범용 15퍼센트, 학습 6퍼센트, 추론 79퍼센트까지 갑니다. 5년 사이 추론이 eSSD 수요의 대부분이 됩니다. "
+        "여기서 클릭하면 추론 카드, 추론 열의 삼성 포트폴리오, 추론 수요 비중이 한 줄로 묶입니다. 정리하면 삼성은 TLC와 QLC 제품군으로 응용별 수요를 맡고 있지만, 수요는 추론으로 몰리고 있고 추론은 대역, 꼬리 지연, 내구를 한꺼번에 요구합니다. 그래서 다음 장부터는 확장되는 추론 수요에 집중하겠습니다. SLC급 초고DWPD는 3장에서 포트폴리오 확장의 선택지로 다룹니다. "
         "제품 이미지는 공식 사진을 구할 수 없어 폼팩터를 따라 재현한 것이고, 삼성 모델 사양은 공식 페이지 검색 결과로 확인한 2차 자료입니다.")
 
 # ---- 2장 그림 · 아이콘 (도형으로 그린 벡터, 편집 가능)
@@ -333,98 +390,146 @@ def ic_tech(s, name, x, y, sz, col=WHITE, sub=BLUE_T2):
 s = d.slide(2, "AI 추론 대응", "AI 추론 수요는 용도마다 SSD 요구가 다르고,\n그 요구를 채우는 핵심 기술은 고객과 함께 개발하고 최적화해야 합니다")
 S2_SLIDE = s
 
-# 열: 추론 수요 → 핵심 요구 → 핵심 기술 → 고객 협력
-AX0, AW = MX, 4.30
-QX0 = AX0 + AW + 0.40
-REQ = [("읽기", "대역"), ("꼬리", "지연"), ("쓰기", "DWPD"), ("용량", "$/TB"), ("격리", "보안")]
-QCW = 1.00
+# 열: 추론 수요 → 핵심 요구(영문 약어) → 핵심 기술(채도 = 고객 협력 정도), 아래 띠 = 기술별 짧은 시각화
+AX0, AW = MX, 3.80
+QX0 = AX0 + AW + 0.34
+REQ = [("Read", "BW"), ("Tail", "Latency"), ("DWPD", ""), ("Capacity", "$/TB"), ("Isolation", "Security")]
+QCW = 0.98
 QW_ = QCW * len(REQ)
-TX0 = QX0 + QW_ + 0.40
-TW_ = 5.10
-GX0_ = TX0 + TW_ + 0.40
-GW_ = RIGHT - GX0_
+TX0 = QX0 + QW_ + 0.36
+TW_ = RIGHT - TX0
 HY = 2.26
-RY0, RHh, RGp = 3.44, 1.14, 0.12
+RY0, RHh, RGp = 3.32, 0.92, 0.10
 
-# 머리줄: 단계 이름 + 화살표
-for (x, w, nm) in [(AX0, AW, "① 추론 수요"), (QX0, QW_, "② 핵심 요구"), (TX0, TW_, "③ 핵심 기술"), (GX0_, GW_, "④ 고객 협력")]:
+for (x, w, nm) in [(AX0, AW, "① 추론 수요"), (QX0, QW_, "② 핵심 요구"), (TX0, TW_, "③ 핵심 기술")]:
     tb(s, x, HY, w, 0.44, [(nm, 21, True, BLUE)], anchor=MID)
-for x in (QX0 - 0.34, TX0 - 0.34, GX0_ - 0.34):
+for x in (QX0 - 0.32, TX0 - 0.32):
     d.chevron(s, x, HY - 0.02, 0.24, 0.48, fill=BLUE_T2)
-# 요구 열 이름
 for j, (n1, n2) in enumerate(REQ):
-    tb(s, QX0 + j * QCW, RY0 - 0.66, QCW, 0.62, [(n1, 16, True, INK), (n2, 16, True, INK)], align=C, anchor=MID, spacing=0.95)
+    tb(s, QX0 + j * QCW, RY0 - 0.66, QCW, 0.62, [(n1, 15, True, INK)] + ([(n2, 15, True, INK)] if n2 else []), align=C, anchor=MID, spacing=0.95)
+tb(s, TX0, RY0 - 0.50, TW_, 0.44, [[("채도 = 고객 협력 정도   ", 16, True, INK), ("■", 17, False, BLUE), (" 최적화까지 함께   ", 16, False, GRAY),
+                                    ("■", 17, False, BLUE_T1), (" 고객 시스템 개발   ", 16, False, GRAY), ("■", 17, False, BLUE_T2), (" SSD 안에서", 16, False, GRAY)]], anchor=MID)
 
-# 기술 색: 협력 단계 (위키 §3.5) — 2 최적화까지 · 1 고객 시스템 개발 · 0 SSD 안에서
+# 기술 협력 단계 (위키 §3.5): 2 최적화까지 · 1 고객 시스템 개발 · 0 SSD 안에서 → 채도
 TLV = {"FDP": 2, "Mixed Media": 2, "Large Mapping": 1, "Multi-Tenant QoS": 1, "Confidential": 1, "Fault Tolerant": 0}
-TCOL = {2: BLUE, 1: BLUE_T1, 0: GRAY_2}
-INF = [  # 이름, 키워드, 요구(2 핵심 · 1 해당 · 0), 기술
+TCOL = {2: BLUE, 1: BLUE_T1, 0: BLUE_T2}
+INF = [  # 이름, 키워드, 요구(2 핵심 · 1 해당 · 0), 기술 3개
     ("모델 가중치", "로딩 · 모델 교체", [2, 1, 0, 2, 1], ["Large Mapping", "Confidential", "Fault Tolerant"]),
-    ("RAG · Vector DB", "작은 랜덤 읽기 · 색인 갱신", [1, 2, 0, 2, 1], ["FDP", "Multi-Tenant QoS", "Large Mapping"]),
+    ("RAG · Vector DB", "작은 랜덤 읽기 · 색인 갱신", [1, 2, 0, 2, 1], ["FDP", "Large Mapping", "Multi-Tenant QoS"]),
     ("KV 캐시 오프로드", "긴 문맥 · 재사용", [2, 2, 2, 1, 0], ["FDP", "Mixed Media", "Large Mapping"]),
     ("에이전트 메모리", "세션 · 상태 · 로그", [0, 1, 1, 2, 2], ["Mixed Media", "Multi-Tenant QoS", "Confidential"]),
 ]
+CHIPW = (TW_ - 0.30) / 3
+FOCUS = {"FDP", "Mixed Media", "Large Mapping"}
+HL2 = []
+
+
+def tech_chip(s, t, x, y, w, h):
+    lv = TLV[t]
+    rect(s, x, y, w, h, fill=TCOL[lv], shape=RR)
+    ic_tech(s, t, x + 0.14, y + (h - 0.34) / 2, 0.34, col=WHITE if lv else BLUE, sub=BLUE_T2 if lv else WHITE)
+    tb(s, x + 0.58, y, w - 0.64, h, [(t, 16, True, WHITE if lv else INK)], anchor=MID)
+
+
 for i, (nm, kw, req, techs) in enumerate(INF):
     y = RY0 + i * (RHh + RGp)
     hot = i == 2
     rect(s, AX0, y, AW, RHh, fill=TINT if hot else PALE, line=BLUE if hot else None, lw=1.5, shape=RR)
-    rect(s, AX0 + 0.10, y + 0.10, 1.12, RHh - 0.20, fill=WHITE, shape=RR)
-    [pic_weights, pic_rag, pic_kv, pic_agent][i](s, AX0 + 0.16, y + 0.14, 1.00, RHh - 0.28)
-    tb(s, AX0 + 1.36, y + 0.14, AW - 1.44, 0.46, [(nm, 21, True, BLUE if hot else INK)], anchor=MID)
-    tb(s, AX0 + 1.36, y + 0.62, AW - 1.44, 0.40, [(kw, 16, False, GRAY)], anchor=MID)
-    # 요구 점
+    rect(s, AX0 + 0.08, y + 0.08, 1.06, RHh - 0.16, fill=WHITE, shape=RR)
+    [pic_weights, pic_rag, pic_kv, pic_agent][i](s, AX0 + 0.13, y + 0.11, 0.96, RHh - 0.22)
+    tb(s, AX0 + 1.26, y + 0.08, AW - 1.32, 0.44, [(nm, 20, True, BLUE if hot else INK)], anchor=MID)
+    tb(s, AX0 + 1.26, y + 0.50, AW - 1.32, 0.36, [(kw, 15, False, GRAY)], anchor=MID)
     rect(s, QX0, y, QW_, RHh, fill=None, line=LINE, lw=0.75, shape=RR)
     for j, v in enumerate(req):
-        cx, cy, dd = QX0 + j * QCW + QCW / 2, y + RHh / 2, 0.42
+        cx, cy, dd = QX0 + j * QCW + QCW / 2, y + RHh / 2, 0.38
         if v == 2:
             rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=BLUE, shape=MSO_SHAPE.OVAL)
         elif v == 1:
             rect(s, cx - dd / 2, cy - dd / 2, dd, dd, fill=WHITE, line=BLUE_T1, lw=2.0, shape=MSO_SHAPE.OVAL)
-    # 기술 칩 (협력 단계 색)
-    cw_ = (TW_ - 0.20) / 2
     for k, t in enumerate(techs):
-        cx = TX0 + (k % 2) * (cw_ + 0.20)
-        cy = y + 0.06 + (k // 2) * 0.56
-        if k == 2:
-            cx = TX0 + (cw_ + 0.20) / 2
-        lv = TLV[t]
-        rect(s, cx, cy, cw_, 0.50, fill=TCOL[lv], shape=RR)
-        ic_tech(s, t, cx + 0.12, cy + 0.08, 0.34)
-        tb(s, cx + 0.54, cy, cw_ - 0.60, 0.50, [(t, 16, True, WHITE)], anchor=MID)
-    # 협력 게이지: SSD 안에서 · 개발 · 최적화
-    lv = max(TLV[t] for t in techs)
-    gw = (GW_ - 0.16) / 3
-    for k in range(3):
-        fill = [BLUE_T2, BLUE_T1, BLUE][k] if k <= lv else LINE
-        rect(s, GX0_ + k * (gw + 0.08), y + 0.16, gw, 0.40, fill=fill)
-    tb(s, GX0_, y + 0.62, GW_, 0.44, [("최적화까지 함께" if lv == 2 else "고객 시스템 개발", 19, True, BLUE if lv == 2 else BLUE_T1)], anchor=MID)
-# 게이지 칸 이름
-gw = (GW_ - 0.16) / 3
-for k, nm in enumerate(["SSD", "개발", "최적화"]):
-    tb(s, GX0_ + k * (gw + 0.08), RY0 - 0.46, gw, 0.40, [(nm, 16, True, INK)], align=C, anchor=MID)
-tb(s, TX0, RY0 - 0.46, TW_, 0.40, [("색 = 협력 단계", 16, False, GRAY)], anchor=MID)
-# 기술 색 범례
-ly_ = RY0 + 4 * (RHh + RGp) - 0.02
-tb(s, QX0, ly_, QW_, 0.42, [[("●", 16, False, BLUE), (" 핵심   ", 16, False, GRAY), ("○", 16, True, BLUE_T1), (" 해당", 16, False, GRAY)]], align=C, anchor=MID)
-xx = TX0
-for k, (lv, nm) in enumerate([(2, "최적화까지"), (1, "개발"), (0, "SSD 안에서")]):
-    rect(s, xx, ly_ + 0.11, 0.22, 0.22, fill=TCOL[lv])
-    tb(s, xx + 0.28, ly_, 1.50, 0.44, [(nm, 16, False, GRAY)], anchor=MID)
-    xx += 0.40 + 0.20 * len(nm)
-tb(s, GX0_, ly_ - 0.06, GW_, 0.70, [("4개 모두 고객 협력", 17, True, INK), ("3개는 최적화까지", 17, True, BLUE)], anchor=MID, spacing=1.0)
+        cx = TX0 + k * (CHIPW + 0.15)
+        cy = y + (RHh - 0.56) / 2
+        tech_chip(s, t, cx, cy, CHIPW, 0.56)
+        if t in FOCUS:
+            HL2.append(rect(s, cx - 0.06, cy - 0.06, CHIPW + 0.12, 0.68, fill=None, line=BLUE, lw=3.0, shape=RR))
+tb(s, QX0 + 2.00, HY, QW_ - 2.00, 0.44, [[("●", 16, False, BLUE), (" 핵심  ", 15, False, GRAY), ("○", 16, True, BLUE_T1), (" 해당", 15, False, GRAY)]], align=R, anchor=MID)
+
+# ---- 아래 띠: 핵심 기술 6가지를 짧게 시각화
+TY2 = RY0 + 4 * (RHh + RGp) + 0.44
+TH2 = 9.30 - TY2
+TWD = (CW - 5 * 0.14) / 6
+
+
+def mini(s, t, x, y, w, h):
+    """기술별 짧은 그림 (가로 w × 세로 h)."""
+    if t == "FDP":                       # 섞인 블록 → 수명별로 모인 블록
+        mix = [BLUE, BLUE_T2, GRAY_2, BLUE_T2, BLUE, GRAY_2]
+        for k, c in enumerate(mix):
+            rect(s, x + (k % 3) * 0.20, y + (k // 3) * 0.24, 0.16, 0.20, fill=c)
+        rect(s, x + 0.66, y + 0.14, 0.30, 0.20, fill=GRAY_2, shape=MSO_SHAPE.RIGHT_ARROW)
+        for r, c in enumerate([BLUE, BLUE_T2, GRAY_2]):
+            for k in range(3):
+                rect(s, x + 1.06 + k * 0.20, y + r * 0.16 - 0.02, 0.16, 0.12, fill=c)
+    elif t == "Mixed Media":             # 작은 쓰기 → pSLC → QLC
+        for k in range(4):
+            rect(s, x + k * 0.12, y + 0.04 + (k % 2) * 0.16, 0.09, 0.09, fill=BLUE_T1)
+        rect(s, x + 0.52, y + 0.12, 0.26, 0.18, fill=GRAY_2, shape=MSO_SHAPE.RIGHT_ARROW)
+        rect(s, x + 0.86, y + 0.02, 0.62, 0.14, fill=BLUE_T2)
+        rect(s, x + 1.10, y + 0.17, 0.12, 0.10, fill=BLUE, shape=MSO_SHAPE.DOWN_ARROW)
+        rect(s, x + 0.86, y + 0.28, 0.62, 0.20, fill=BLUE)
+    elif t == "Large Mapping":           # 작은 매핑 단위 8칸 → 큰 단위 2칸
+        for k in range(8):
+            rect(s, x + k * 0.085, y + 0.12, 0.07, 0.24, fill=BLUE_T2)
+        rect(s, x + 0.74, y + 0.15, 0.26, 0.18, fill=GRAY_2, shape=MSO_SHAPE.RIGHT_ARROW)
+        for k in range(2):
+            rect(s, x + 1.08 + k * 0.32, y + 0.12, 0.28, 0.24, fill=BLUE_T1)
+    elif t == "Multi-Tenant QoS":        # 칸막이로 나뉜 테넌트 줄
+        for r, (c, ln) in enumerate([(BLUE, 1.10), (BLUE_T1, 0.80), (BLUE_T2, 1.30)]):
+            rect(s, x, y + r * 0.16, 1.62, 0.12, fill=PALE, line=LINE, lw=0.5)
+            rect(s, x, y + r * 0.16, ln, 0.12, fill=c)
+    elif t == "Confidential":            # 자물쇠 + 증명 체크
+        ic_tech(s, "Confidential", x + 0.10, y, 0.44, col=BLUE, sub=WHITE)
+        rect(s, x + 0.66, y + 0.10, 0.30, 0.22, fill=GRAY_2, shape=MSO_SHAPE.RIGHT_ARROW)
+        rect(s, x + 1.06, y + 0.02, 0.42, 0.42, fill=BLUE_T1, shape=MSO_SHAPE.OVAL)
+        tb(s, x + 1.06, y + 0.02, 0.42, 0.42, [("✓", 16, True, WHITE)], align=C, anchor=MID)
+    elif t == "Fault Tolerant":          # 다이 격자, 고장 다이만 격리
+        for r in range(2):
+            for c in range(6):
+                bad = (r, c) == (0, 3)
+                rect(s, x + c * 0.26, y + r * 0.24, 0.20, 0.18, fill=None if bad else BLUE_T1, line=GRAY_2 if bad else None, lw=1.0)
+        rect(s, x + 3 * 0.26 + 0.02, y + 0.01, 0.16, 0.16, fill=GRAY_2, shape=MSO_SHAPE.MATH_MULTIPLY)
+
+
+TECHS6 = [("FDP", "같은 수명끼리 → 통째로 지움"), ("Mixed Media", "작은 쓰기 모아 QLC로"), ("Large Mapping", "매핑 단위 ↑ · DRAM ↓"),
+          ("Multi-Tenant QoS", "테넌트별 격리"), ("Confidential", "암호화 · 증명 · 키"), ("Fault Tolerant", "고장 다이만 격리")]
+for k, (t, cap) in enumerate(TECHS6):
+    x = MX + k * (TWD + 0.14)
+    rect(s, x, TY2, TWD, TH2, fill=PALE, shape=RR)
+    tech_chip(s, t, x + 0.08, TY2 + 0.08, TWD - 0.16, 0.46)
+    mini(s, t, x + (TWD - 1.62) / 2, TY2 + 0.64, 1.62, 0.48)
+    tb(s, x + 0.08, TY2 + TH2 - 0.38, TWD - 0.16, 0.34, [(cap, 15, True, GRAY)], align=C, anchor=MID)
+    if t in FOCUS:
+        HL2.append(rect(s, x - 0.06, TY2 - 0.06, TWD + 0.12, TH2 + 0.12, fill=None, line=BLUE, lw=3.5, shape=RR))
+# 클릭 강조 끝: 다음 장 예고
+HL2.append(rect(s, MX + 3 * (TWD + 0.14) - 0.06 - 3.30, TY2 - 0.44, 3.24, 0.36, fill=BLUE, shape=RR))
+tb(s, MX + 3 * (TWD + 0.14) - 0.06 - 3.30, TY2 - 0.44, 3.24, 0.36, [("세 기술은 다음 장에서 자세히 ▶", 15, True, WHITE)], align=C, anchor=MID)
+HL2.append(list(s.shapes)[-1])
+click_reveal(s, HL2)
 
 d.band(s, 9.44, 0.80, "결론", "AI 추론 수요에 대응하려면, 고객과의 협업이 필수입니다")
-d.footer(s, "출처: 요구 · 기술 매핑과 협력 단계는 과제팀 판단(위키 ai-inference-storage-requirements · ssd-core-technologies-customer-collaboration §3.5) · 수치는 발표자 노트")
+d.footer(s, "출처: 요구 · 기술 매핑과 협력 단계(채도)는 과제팀 판단(위키 ai-inference-storage-requirements · ssd-core-technologies-customer-collaboration §3.5) · 수치는 발표자 노트")
 d.notes(s, "2장은 AI 추론 수요를 나눠 보고, 왜 고객과의 협업이 필수인지 보여 드립니다. 추론은 하나의 수요가 아니라 네 가지가 섞여 있습니다. "
         "첫째 모델 가중치입니다. 모델을 올리고 바꾸는 순간의 읽기 대역과 용량이 핵심입니다. Llama 3 8B를 1기가바이트 매초 SSD에서 읽으면 48초, 스트리밍 로더로 14초가 걸렸고, 4기가바이트 매초 SSD에서는 7.5초였습니다. 405B 모델은 약 810기가바이트입니다. 가중치는 모델 제공자의 자산이라 보안도 걸립니다. 기술은 Large Mapping으로 큰 용량을 싸게, Confidential Storage로 키와 증명 체계에 들어가고, Fault Tolerant는 SSD 안에서 해결합니다. 고객 시스템 개발 단계입니다. "
         "둘째 RAG와 벡터 DB입니다. DiskANN은 10억 개 벡터를 64기가바이트 메모리로 초당 5천 건 이상, 평균 3밀리초 안에 찾고, 질의 지연의 70에서 90퍼센트가 SSD 입출력입니다. 그래서 작은 랜덤 읽기의 꼬리 지연과 용량이 핵심입니다. 색인 갱신 쓰기가 읽기를 방해하지 않도록 FDP로 GC를 줄이고, 여러 테넌트를 Multi-Tenant QoS로 나눠야 합니다. FDP가 들어가므로 최적화까지 함께 해야 합니다. "
         "셋째 KV 캐시 오프로드입니다. 대역, 꼬리 지연, DWPD를 모두 요구하는 가장 어려운 수요입니다. 다시 계산하는 것보다 빨라야 의미가 있고, 첫 토큰 p99 목표 안에 들어와야 하며, 쓰기가 많아 3 DWPD 이상이 실측됩니다. 삼성 PM9D3a에 FDP를 적용한 LMCache KV 실험에서 WAF가 2.6에서 1.4로, 읽기 p90 지연이 22퍼센트 줄었습니다. FDP와 Mixed Media는 고객의 KV 관리자와 함께 최적화해야 효과가 납니다. "
         "넷째 에이전트 메모리입니다. 에이전트 호출은 평균 6만 8천 토큰을 입력하고 그중 86퍼센트가 재사용이라 세션과 상태를 오래 저장합니다. 용량, 격리, 보안이 핵심이고, 작은 로그 쓰기를 Mixed Media로 모아 QLC에 싣습니다. "
-        "오른쪽 끝은 협력의 깊이입니다. 네 가지 추론 수요 모두 고객 시스템 개발이 필요하고, 그중 세 가지는 FDP나 Mixed Media 때문에 최적화까지 고객과 함께 해야 합니다. 그래서 AI 추론 수요에 대응하려면 고객과의 협업이 필수입니다. "
+        "기술 칩의 채도는 고객 협력의 깊이입니다. 가장 진한 FDP와 Mixed Media는 고객 워크로드에서 최적화까지 함께 해야 하고, 중간인 Large Mapping, Multi-Tenant QoS, Confidential Storage는 고객 시스템 개발이 필요하며, 가장 연한 Fault Tolerant는 SSD 안에서 해결합니다. 네 가지 추론 수요 모두 고객 협력이 필요하고, 세 가지는 최적화까지 함께 해야 합니다. 그래서 AI 추론 수요에 대응하려면 고객과의 협업이 필수입니다. "
+        "아래 띠는 여섯 기술을 한 줄씩 그린 것입니다. FDP는 섞여 있던 데이터를 수명별로 모아 블록을 통째로 지우고, Mixed Media는 작은 쓰기를 pSLC에 모아 QLC로 내리며, Large Mapping은 매핑 단위를 키워 DRAM을 줄입니다. Multi-Tenant QoS는 테넌트를 격리하고, Confidential Storage는 암호화와 증명, 키 관리를, Fault Tolerant는 고장 다이만 격리합니다. "
+        "여기서 클릭하면 FDP, Mixed Media, Large Mapping 세 기술이 강조됩니다. KV 캐시를 비롯한 추론 수요에 가장 많이 걸리는 세 기술이고, 다음 장에서 이 세 기술로 무엇이 좋아지고 포트폴리오가 어떻게 넓어지는지 자세히 말씀드리겠습니다. "
         "요구와 기술의 대응, 협력 단계는 과제팀의 판단이고, 수치는 대부분 검색으로 확인한 2차 자료입니다.")
 
 # =============================================================== 3 공동 설계로 좋아지는 지표 + 포트폴리오 확장 (v4.0)
-s = d.slide(3, "지표 · 포트폴리오", "고객과 함께 WAF와 꼬리 지연을 낮추면, 같은 NAND로\n지금은 닿지 못하던 추론 수요까지 빠르게 넓힐 수 있습니다")
+s = d.slide(3, "차별화 · 포트폴리오", "SSD 차별화 요구가 예측 가능한 QoS · 고용량 · 고내구로 바뀌는 지금,\n이에 대비한 기술로 미래 수요에 능동적으로 대응하는 포트폴리오를 완성해야 합니다")
 S3_SLIDE = s
 import json as _json  # noqa: E402
 import random as _rnd  # noqa: E402
@@ -433,83 +538,106 @@ LX3, LW3 = MX, 8.50
 RX3 = LX3 + LW3 + 0.40
 RW3 = RIGHT - RX3
 
-# ---- ① 지표 두 개: WAF · p99.9 꼬리 지연 (막대 + 큰 숫자)
-d.panel_head(s, LX3, LW3, 1, "공동 설계로 좋아지는 지표", y=2.30)
-KY, KH = 2.98, 2.36
-KW = (LW3 - 0.24) / 2
-for k, (nm, sub, a, b, la, lb, delta, src) in enumerate([
-        ("WAF", "SSD만으로는 3 근처에 머문 지표", 3.22, 1.03, "SSD 혼자", "함께", "−68%", "CacheLib FDP"),
-        ("p99.9 꼬리 지연", "GC 뒤에 읽기가 기다리는 시간", 100, 45, "일반", "FDP", "−55%", "PM9D3a · RocksDB")]):
-    x = LX3 + k * (KW + 0.24)
-    rect(s, x, KY, KW, KH, fill=WHITE, line=LINE, lw=0.75, shape=RR)
-    tb(s, x + 0.20, KY + 0.08, KW - 0.40, 0.42, [(nm, 21, True, INK)], anchor=MID)
-    tb(s, x + 0.20, KY + 0.48, KW - 0.40, 0.32, [(sub, 15, False, GRAY)], anchor=MID)
-    bb, bh = KY + KH - 0.40, 0.80
-    for j, (v, lab, col) in enumerate([(a, la, GRAY_2), (b, lb, BLUE)]):
-        bx = x + 0.30 + j * 0.92
-        hh = bh * v / a
-        rect(s, bx, bb - hh, 0.66, hh, fill=col)
-        vl = f"{v:.2f}" if k == 0 else ("100" if j == 0 else "45")
-        tb(s, bx - 0.20, bb - hh - 0.34, 1.06, 0.32, [(vl, 17, True, BLUE if j else INK)], align=C, anchor=MID)
-        tb(s, bx - 0.25, bb + 0.03, 1.16, 0.32, [(lab, 15, j == 1, BLUE if j else GRAY)], align=C)
-    tb(s, x + 2.10, KY + 0.92, KW - 2.20, 0.80, [(delta, 40, True, BLUE)], align=C, anchor=MID)
-    tb(s, x + 2.10, KY + 1.70, KW - 2.20, 0.32, [(src, 15, False, GRAY)], align=C, anchor=MID)
-# 부록 링크: 왜 SSD만으로는 안 됐나 (참고 5장, 클릭하면 이동)
-label_box(s, LX3 + LW3 - 3.70, 2.36, 3.70, 0.40, [("왜 SSD만으로는 안 됐나  참고 5장 ▶", 15, True, BLUE)], fill=TINT, line=BLUE_T2)
-LINK3 = list(s.shapes)[-2:]
+# ---- 맨 위 띠: SSD 차별화 요구의 변화 (성능 → 전력 효율 → VM QoS → AI: 예측 가능한 QoS · 고용량 · 고내구)
+EY, EH_ = 2.30, 0.96
+ERA = [("2000년대 후반", "성능", "IOPS · 대역"), ("2010년대 초", "전력 효율", "IOPS/W"), ("2010년대 후반", "VM 단위 QoS", "클라우드 데이터센터")]
+SEGW = 3.55
+for k, (era, req, sub) in enumerate(ERA):
+    x = MX + k * (SEGW - 0.10)
+    rect(s, x, EY, SEGW + 0.10, EH_, fill=[PALE, LINE, BLUE_T2][k], shape=MSO_SHAPE.PENTAGON if k == 0 else MSO_SHAPE.CHEVRON)
+    tb(s, x + (0.20 if k == 0 else 0.46), EY + 0.04, SEGW - 0.50, 0.30, [(era, 15, False, GRAY)], anchor=MID)
+    tb(s, x + (0.20 if k == 0 else 0.46), EY + 0.32, SEGW - 0.50, 0.40, [(req, 20, True, INK)], anchor=MID)
+    tb(s, x + (0.20 if k == 0 else 0.46), EY + 0.64, SEGW - 0.50, 0.28, [(sub, 15, False, GRAY)], anchor=MID)
+x4 = MX + 3 * (SEGW - 0.10)
+w4 = RIGHT - x4
+rect(s, x4, EY, w4, EH_, fill=BLUE, shape=MSO_SHAPE.CHEVRON)
+tb(s, x4 + 0.50, EY + 0.04, 2.6, 0.30, [("2020년대 · AI", 15, True, BLUE_T2)], anchor=MID)
+for k, nm in enumerate(["예측 가능한 QoS", "고용량", "고내구"]):
+    cw4 = [2.30, 1.20, 1.20][k]
+    cx4 = x4 + 0.50 + sum([2.30, 1.20, 1.20][:k]) + 0.14 * k
+    rect(s, cx4, EY + 0.40, cw4, 0.44, fill=WHITE, shape=RR)
+    tb(s, cx4, EY + 0.40, cw4, 0.44, [(nm, 18, True, BLUE)], align=C, anchor=MID)
+tb(s, x4, EY + EH_ + 0.04, w4, 0.34, [[("FDP · Mixed Media · Large Mapping → ", 16, True, BLUE), ("QLC 고용량 + 고객 워크로드 기반 내구성", 16, True, INK)]], align=R, anchor=MID)
 
-# ---- ② 메커니즘: GC가 줄면 꼬리 지연이 준다
-MY = KY + KH + 0.16
-d.panel_head(s, LX3, LW3, 2, "GC를 줄여 예측 가능한 QoS로", y=MY)
-TY = MY + 0.60
+# ---- ① GC를 줄여 예측 가능한 QoS로 (먼저 원리)
+PY = EY + EH_ + 0.50
+d.panel_head(s, LX3, LW3, 1, "GC를 줄여 예측 가능한 QoS로", y=PY)
+TY = PY + 0.60
 TECH3 = [("Mixed Media", "작은 쓰기를 pSLC에 모아", "GC 빈도 ↓"),
          ("Large Mapping", "정렬된 큰 쓰기", "GC 횟수 ↓"),
          ("FDP", "같은 수명끼리 배치", "GC 시간 ↓")]
-CW3, CH3 = 3.05, 0.82
+CW3, CH3 = 3.05, 0.78
 for i, (nm, how, eff) in enumerate(TECH3):
     y = TY + i * (CH3 + 0.08)
     rect(s, LX3, y, CW3, CH3, fill=BLUE if nm != "Large Mapping" else BLUE_T1, shape=RR)
-    tb(s, LX3 + 0.16, y + 0.03, CW3 - 0.30, 0.40, [(nm, 18, True, WHITE)], anchor=MID)
-    tb(s, LX3 + 0.16, y + 0.42, CW3 - 0.30, 0.34, [(how, 15, False, BLUE_T2)], anchor=MID)
-    tb(s, LX3 + CW3 + 0.10, y + 0.18, 1.30, 0.46, [(eff, 17, True, BLUE)], anchor=MID)
-# 지연 시계열 두 줄: 혼자(GC 구간 스파이크) 대 함께(평탄)
+    ic_tech(s, nm, LX3 + 0.14, y + 0.20, 0.36)
+    tb(s, LX3 + 0.62, y + 0.02, CW3 - 0.70, 0.40, [(nm, 18, True, WHITE)], anchor=MID)
+    tb(s, LX3 + 0.62, y + 0.40, CW3 - 0.70, 0.34, [(how, 15, False, BLUE_T2)], anchor=MID)
+    tb(s, LX3 + CW3 + 0.10, y + 0.16, 1.30, 0.46, [(eff, 17, True, BLUE)], anchor=MID)
 TLX = LX3 + CW3 + 1.46
 TLW = LX3 + LW3 - TLX
 _rnd.seed(7)
 NB = 46
 bw_ = TLW / NB
 for r, (nm, gcs, col) in enumerate([("SSD 혼자: GC마다 지연 스파이크", [(6, 10), (19, 24), (33, 37)], GRAY_2), ("공동 설계: GC가 드물고 짧다", [(27, 28)], BLUE)]):
-    y0 = TY + r * 1.24
-    base = y0 + 1.06
+    y0 = TY + r * 1.30
+    base = y0 + 1.04
     tb(s, TLX, y0 - 0.04, TLW, 0.34, [(nm, 16, True, BLUE if r else INK)], anchor=MID)
     for a_, b_ in gcs:
-        rect(s, TLX + a_ * bw_, y0 + 0.32, (b_ - a_) * bw_, 0.74, fill=PALE)
+        rect(s, TLX + a_ * bw_, y0 + 0.32, (b_ - a_) * bw_, 0.72, fill=PALE)
     for k in range(NB):
         ingc = any(a_ <= k < b_ for a_, b_ in gcs)
         hgt = 0.08 + _rnd.random() * 0.08
         if ingc:
-            hgt = (0.42 + _rnd.random() * 0.28) if r == 0 else 0.20
+            hgt = (0.40 + _rnd.random() * 0.28) if r == 0 else 0.20
         rect(s, TLX + k * bw_ + 0.02, base - hgt, bw_ - 0.04, hgt, fill=(GRAY if ingc and r == 0 else col))
     rect(s, TLX, base, TLW, 0.012, fill=LINE)
-tb(s, TLX, TY + 2.40, TLW, 0.34, [[("GC 복사량 (WAF − 1)  ", 15, False, GRAY), ("2.22 → 0.03", 17, True, BLUE)]], anchor=MID)
 
-# ---- ③ 포트폴리오 확장 (3D: 바닥 = DWPD × 용량, 높이 = 꼬리 지연 등급, 오른쪽 열 = 제품 · 확장)
-d.panel_head(s, RX3, RW3, 3, "제품 포트폴리오가 넓어진다", y=2.30)
+# ---- ② 그 결과 좋아지는 지표: WAF · p99.9 꼬리 지연
+KPY = TY + 2.70
+d.panel_head(s, LX3, LW3, 2, "그 결과 좋아지는 지표", y=KPY)
+label_box(s, LX3 + LW3 - 3.70, KPY + 0.04, 3.70, 0.40, [("왜 SSD만으로는 안 됐나  참고 5장 ▶", 15, True, BLUE)], fill=TINT, line=BLUE_T2)
+LINK3 = list(s.shapes)[-2:]
+KY = KPY + 0.62
+KH = 10.24 - KY
+KW = (LW3 - 0.24) / 2
+for k, (nm, sub, a, b, la, lb, delta, src) in enumerate([
+        ("WAF", "GC 복사량 (WAF − 1) 2.22 → 0.03", 3.22, 1.03, "SSD 혼자", "함께", "−68%", "CacheLib FDP"),
+        ("p99.9 꼬리 지연", "GC 뒤에 읽기가 기다리는 시간", 100, 45, "일반", "FDP", "−55%", "PM9D3a · RocksDB")]):
+    x = LX3 + k * (KW + 0.24)
+    rect(s, x, KY, KW, KH, fill=WHITE, line=LINE, lw=0.75, shape=RR)
+    tb(s, x + 0.20, KY + 0.06, KW - 0.40, 0.40, [(nm, 20, True, INK)], anchor=MID)
+    tb(s, x + 0.20, KY + 0.44, KW - 0.40, 0.30, [(sub, 15, False, GRAY)], anchor=MID)
+    bb, bh = KY + KH - 0.38, KH - 1.50
+    for j, (v, lab, col) in enumerate([(a, la, GRAY_2), (b, lb, BLUE)]):
+        bx = x + 0.30 + j * 0.92
+        hh = bh * v / a
+        rect(s, bx, bb - hh, 0.66, hh, fill=col)
+        vl = f"{v:.2f}" if k == 0 else ("100" if j == 0 else "45")
+        tb(s, bx - 0.20, bb - hh - 0.32, 1.06, 0.30, [(vl, 17, True, BLUE if j else INK)], align=C, anchor=MID)
+        tb(s, bx - 0.25, bb + 0.02, 1.16, 0.32, [(lab, 15, j == 1, BLUE if j else GRAY)], align=C)
+    tb(s, x + 2.10, KY + 0.80, KW - 2.20, 0.74, [(delta, 38, True, BLUE)], align=C, anchor=MID)
+    tb(s, x + 2.10, KY + 1.52, KW - 2.20, 0.30, [(src, 15, False, GRAY)], align=C, anchor=MID)
+
+# ---- ③ 미래 수요에 능동적으로 대응하는 포트폴리오 (3D)
+d.panel_head(s, RX3, RW3, 3, "미래 수요에 능동 대응하는 포트폴리오", y=PY)
 P3 = os.path.join(ASSETS, "portfolio_3d.png")
 with open(os.path.join(ASSETS, "portfolio_3d.json"), encoding="utf-8") as _f:
     ANC = _json.load(_f)
 LGW = 2.50
-IMX, IMY = RX3 - 0.10, 2.96
+IMY = PY + 0.66
 from PIL import Image as _Image  # noqa: E402
 with _Image.open(P3) as _im:
     _ar = _im.size[0] / _im.size[1]
-IMH = 9.30 - IMY
+IMH = 10.24 - IMY
 IMW = IMH * _ar
 if IMW > RW3 - LGW:
     IMW = RW3 - LGW
     IMH = IMW / _ar
+IMX = RX3 - 0.10
+IMY = 10.24 - IMH
 d.img(s, P3, IMX, IMY, w=IMW)
-tb(s, IMX, IMY - 0.10, 2.4, 0.56, [("높이 = 꼬리 지연", 15, True, GRAY), ("낮을수록 위 (정성)", 15, False, GRAY)], spacing=0.95)
+tb(s, IMX, PY + 0.62, 2.4, 0.56, [("높이 = 꼬리 지연", 15, True, GRAY), ("낮을수록 위 (정성)", 15, False, GRAY)], spacing=0.95)
 
 
 def at(pt):
@@ -523,51 +651,48 @@ EXP = [  # 키, 제품 이미지, 모델, 지금 → 확장, 들어가는 수요
     ("slc", "p_zssd", "Z-NAND · SLC급", "30 → 100 DWPD", "초고DWPD KV (공백)"),
 ]
 LGX = RIGHT - LGW
-EH = (9.30 - 2.98) / 4
+LGY0 = PY + 0.62
+EH = (10.24 - LGY0) / 4
 from pptx.dml.color import RGBColor as _RGB  # noqa: E402
 # 3D 그림만 예외 색: 제품군별 (generate_portfolio_3d.FAM_COLOR와 같게)
 FAMC = {"qlc": "009E73", "tlc": "0072B2", "hetlc": "E69F00", "slc": "CC79A7"}
 for i, (key, img, model, dw, dem) in enumerate(EXP):
-    y = 2.98 + i * EH
+    y = LGY0 + i * EH
     fc = _RGB.from_string(FAMC[key])
-    rect(s, LGX, y + 0.04, LGW, EH - 0.10, fill=PALE, shape=RR)
-    rect(s, LGX, y + 0.04, 0.08, EH - 0.10, fill=fc)
-    rect(s, LGX + 0.14, y + 0.14, 0.40, 0.40, fill=fc, shape=MSO_SHAPE.OVAL)
-    tb(s, LGX + 0.14, y + 0.14, 0.40, 0.40, [(str(i + 1), 17, True, WHITE)], align=C, anchor=MID)
+    rect(s, LGX, y + 0.03, LGW, EH - 0.08, fill=PALE, shape=RR)
+    rect(s, LGX, y + 0.03, 0.08, EH - 0.08, fill=fc)
+    rect(s, LGX + 0.14, y + 0.10, 0.38, 0.38, fill=fc, shape=MSO_SHAPE.OVAL)
+    tb(s, LGX + 0.14, y + 0.10, 0.38, 0.38, [(str(i + 1), 16, True, WHITE)], align=C, anchor=MID)
     pth = os.path.join(ASSETS, "products", img + ".png")
     if os.path.exists(pth):
-        d.fit(s, pth, LGX + 0.60, y + 0.08, LGW - 0.70, 0.62)
-    tb(s, LGX + 0.20, y + 0.70, LGW - 0.26, 0.30, [(model, 15, True, INK)], anchor=MID)
-    tb(s, LGX + 0.20, y + 0.98, LGW - 0.26, 0.30, [[(dw, 16, True, fc)]], anchor=MID)
-    tb(s, LGX + 0.20, y + 1.24, LGW - 0.26, 0.28, [(dem, 15, False, GRAY)], anchor=MID)
+        d.fit(s, pth, LGX + 0.60, y + 0.06, LGW - 0.70, 0.52)
+    tb(s, LGX + 0.20, y + 0.58, LGW - 0.26, 0.28, [(model, 15, True, INK)], anchor=MID)
+    tb(s, LGX + 0.20, y + 0.84, LGW - 0.26, 0.28, [[(dw, 16, True, fc)]], anchor=MID)
+    tb(s, LGX + 0.20, y + 1.08, LGW - 0.26, 0.26, [(dem, 15, False, GRAY)], anchor=MID)
     nx, ny = at(ANC[key]["now"])
     rect(s, nx - 0.19, ny - 0.50, 0.38, 0.38, fill=fc, line=WHITE, lw=1.5, shape=MSO_SHAPE.OVAL)
     tb(s, nx - 0.19, ny - 0.50, 0.38, 0.38, [(str(i + 1), 16, True, WHITE)], align=C, anchor=MID)
 # 바닥 색 = 추론 수요 영역 (범례)
 _lx = IMX + 2.60
-tb(s, _lx, IMY - 0.10, 1.0, 0.30, [("바닥 =", 15, True, GRAY)], anchor=MID)
+tb(s, _lx, PY + 0.62, 1.0, 0.30, [("바닥 =", 15, True, GRAY)], anchor=MID)
 for k, (nm, hx) in enumerate((("가중치 · RAG", "ECEEF1"), ("KV 오프로드", "D5D9DF"), ("초고DWPD KV", "BEC4CC"))):
-    yy = IMY - 0.10 + k * 0.30
+    yy = PY + 0.62 + k * 0.30
     rect(s, _lx + 0.80, yy + 0.05, 0.30, 0.20, fill=_RGB.from_string(hx), line=GRAY_2, lw=0.5)
     tb(s, _lx + 1.16, yy, 2.0, 0.30, [(nm, 15, True, GRAY)], anchor=MID)
 
-d.band(s, 9.44, 0.80, "결론", "어떤 AI 추론 수요가 새로 나와도, 공동 설계 기술이 빠르게 진입할 기술적 기반이 됩니다")
 d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib FDP, 삼성 EuroSys'25) · p99.9 −55%(삼성 기술 블로그, PM9D3a 7.68TB RocksDB, TLC) · 공개 실험 테일 1.5~6배 ↓(ZNS · Valet · WALTZ) · "
             "DWPD 확장은 WAF 3 → 1 산술(⚠️) · 꼬리 지연 높이는 정성 등급 · 3D 그림은 제품군 구분을 위해 예외 색 · 제품 이미지는 형태 재현")
 
-d.notes(s, "3장은 고객과 함께 설계한 기술로 무엇이 좋아지고, 그것으로 포트폴리오를 어떻게 넓힐 수 있는지입니다. "
-        "첫째 지표는 WAF입니다. SSD만 잘 만들어서는 3 근처에서 더 내려가지 않던 지표입니다. 그 이유는 참고 5장에 정리했고, 상자를 누르면 그 장으로 갑니다. 삼성 엔지니어가 Meta의 CacheLib 안에 FDP를 구현했을 때 WAF가 3.22에서 1.03으로, 68퍼센트 내려갔습니다. "
-        "둘째 지표는 꼬리 지연입니다. 삼성 PM9D3a 7.68테라바이트에서 RocksDB에 FDP 최적화 분류를 적용하자 p99.9 꼬리 지연이 55퍼센트 줄었습니다. ZNS, Valet, WALTZ 같은 공개 실험에서도 배치를 바꾸면 꼬리 지연이 1.5배에서 6배 줄었습니다. "
-        "왜 그럴까요. 가운데 그림이 그 원리입니다. SSD는 빈 블록을 만들려고 살아 있는 데이터를 옮기는 GC를 합니다. 그동안 읽기는 프로그램과 지우기 뒤에서 기다리고, 지우기는 블록당 약 10밀리초가 걸립니다. 그래서 GC가 일어날 때마다 지연 스파이크가 생깁니다. 연구에서는 GC가 99에서 99.99 백분위 지연을 5배에서 138배까지 키웠습니다. "
-        "세 기술을 함께 쓰면 GC를 세 방향으로 줄입니다. Mixed Media는 작은 쓰기를 pSLC에 모아 QLC에는 큰 단위로만 쓰므로 블록이 덜 조각나 GC 빈도가 줍니다. Large Mapping은 매핑 단위에 맞춘 큰 쓰기만 받으니 부분 덮어쓰기와 매핑 갱신이 줄어 GC 횟수가 줍니다. FDP는 수명이 같은 데이터를 같은 블록에 모아, 블록이 통째로 지워지니 옮길 데이터가 거의 없어 GC 시간이 줍니다. "
-        "WAF에서 1을 뺀 값이 호스트 쓰기 하나당 GC가 옮기는 양입니다. CacheLib 사례로 보면 2.22에서 0.03으로 98퍼센트 이상 줄어듭니다. GC가 드물고 짧아지면 지연이 예측 가능해지고, 그것이 꼬리 지연을 줄여 QoS를 보장하는 원리입니다. "
-        "다만 꼬리 지연 측정은 모두 TLC이고, QLC에서 배치로 꼬리 지연이 준 공개 측정과 KV 캐시 계층의 첫 토큰 p99를 직접 잰 결과는 아직 없습니다. GC보다 칩 사이 큐 불균형이 주원인이라는 반대 연구도 있습니다. "
-        "오른쪽 3D 그림은 포트폴리오가 어떻게 넓어지는지입니다. 바닥은 정격 DWPD와 최대 용량, 높이는 꼬리 지연이 낮을수록 위입니다. 진한 기둥이 지금의 제품군이고 점선 상자가 WAF와 꼬리 지연을 낮춘 뒤 닿는 영역입니다. "
-        "같은 NAND와 같은 OP에서 WAF가 3에서 1로 내려가면 정격 DWPD는 약 3배가 됩니다. 과제팀 산술입니다. 첫째, BM1743 같은 QLC가 0.3에서 1 DWPD가 되면, 지금 TLC가 맡는 KV 캐시 오프로드 수요까지 원가 우위로 들어갈 수 있습니다. "
-        "둘째, PM1753 같은 고성능 TLC가 1에서 3 DWPD가 되면 쓰기가 많은 KV를 고내구 제품 없이 맡을 수 있습니다. 셋째, PM1755 같은 고내구 TLC가 3에서 9 DWPD가 되면 초고DWPD 수요의 입구까지 갑니다. 넷째, SLC급에서 WAF를 낮추면 30 DWPD가 100 DWPD 근처로 올라갑니다. 지금 삼성이 비어 있는 초고DWPD 영역입니다. "
-        "요구 사항에 따라 TLC의 WAF를 낮춰 대응할지, SLC급을 극한으로 올릴지 고를 수 있다는 것이 핵심입니다. 이전에는 대응하지 못하던 제품군에 빠르게 들어갈 기술적 기반이 생깁니다. 그래서 어떤 AI 추론 수요가 새로 나와도 빠르게 대응할 수 있습니다. "
-        "꼬리 지연 높이는 정성 등급이고, 제품 이미지는 형태 재현입니다.")
-
+d.notes(s, "3장은 SSD 차별화 요구가 어떻게 바뀌어 왔고, 그 변화에 대비한 기술로 포트폴리오를 어떻게 완성할지입니다. "
+        "맨 위 띠를 보시면, 지난 20년 동안 SSD를 차별화하는 요구는 계속 바뀌었습니다. 처음에는 HDD보다 빠른 성능, 곧 IOPS와 대역이었고, 이후 같은 성능을 더 적은 전력으로 내는 전력 효율이 됐습니다. 데이터센터로 들어오면서 여러 VM이 한 드라이브를 나눠 쓰니 VM 단위의 QoS 보장이 중요해졌습니다. "
+        "그리고 AI 시대에는 예측 가능한 QoS, 고용량, 고내구가 함께 중요해지고 있습니다. 2장의 세 기술, FDP, Mixed Media, Large Mapping으로 우리가 차별화하려는 것이 바로 QLC의 고용량과 고객 워크로드에 맞춘 내구성입니다. 이 띠의 시기 구분은 과제팀의 정리입니다. "
+        "먼저 원리입니다. SSD는 빈 블록을 만들려고 살아 있는 데이터를 옮기는 GC를 합니다. 그동안 읽기는 프로그램과 지우기 뒤에서 기다리고, 지우기는 블록당 약 10밀리초가 걸립니다. 그래서 GC가 일어날 때마다 지연 스파이크가 생기고, 연구에서는 GC가 99에서 99.99 백분위 지연을 5배에서 138배까지 키웠습니다. "
+        "세 기술은 GC를 세 방향으로 줄입니다. Mixed Media는 작은 쓰기를 pSLC에 모아 QLC에는 큰 단위로만 쓰므로 블록이 덜 조각나 GC 빈도가 줍니다. Large Mapping은 매핑 단위에 맞춘 큰 쓰기만 받으니 부분 덮어쓰기와 매핑 갱신이 줄어 GC 횟수가 줍니다. FDP는 수명이 같은 데이터를 같은 블록에 모아, 블록이 통째로 지워지니 옮길 데이터가 거의 없어 GC 시간이 줍니다. GC가 드물고 짧아지면 지연이 예측 가능해집니다. "
+        "그 결과 지표가 좋아집니다. WAF에서 1을 뺀 값이 호스트 쓰기 하나당 GC가 옮기는 양인데, 삼성 엔지니어가 Meta의 CacheLib 안에 FDP를 구현했을 때 WAF가 3.22에서 1.03으로 68퍼센트, GC 복사량은 2.22에서 0.03으로 줄었습니다. WAF는 SSD만 잘 만들어서는 3 근처에서 더 내려가지 않던 지표이고, 그 이유는 참고 5장에 정리해 두었습니다. 상자를 누르면 그 장으로 갑니다. "
+        "꼬리 지연도 줍니다. 삼성 PM9D3a 7.68테라바이트에서 RocksDB에 FDP 최적화 분류를 적용하자 p99.9 꼬리 지연이 55퍼센트 줄었고, ZNS, Valet, WALTZ 같은 공개 실험에서도 1.5배에서 6배 줄었습니다. 다만 꼬리 지연 측정은 모두 TLC이고, QLC나 KV 캐시 계층의 첫 토큰 p99를 직접 잰 결과는 아직 없으며, 칩 사이 큐 불균형이 주원인이라는 반대 연구도 있습니다. "
+        "이제 포트폴리오입니다. 오른쪽 3D 그림의 바닥은 정격 DWPD와 최대 용량, 높이는 꼬리 지연이 낮을수록 위입니다. 진한 기둥이 지금의 제품군이고 점선 상자가 WAF와 꼬리 지연을 낮춘 뒤 닿는 영역입니다. 같은 NAND와 같은 OP에서 WAF가 3에서 1로 내려가면 정격 DWPD는 약 3배가 됩니다. 과제팀 산술입니다. "
+        "BM1743 같은 QLC가 0.3에서 1 DWPD가 되면 지금 TLC가 맡는 KV 캐시 오프로드까지 원가 우위로 들어갈 수 있고, PM1753 같은 고성능 TLC가 1에서 3 DWPD가 되면 쓰기가 많은 KV를 맡을 수 있습니다. PM1755 같은 고내구 TLC는 3에서 9 DWPD로 초고DWPD의 입구까지 가고, SLC급에서 WAF를 낮추면 30 DWPD가 100 근처로 올라갑니다. 초고DWPD가 필요해지면 TLC의 WAF를 낮춰 대응할지, SLC급을 극한으로 올릴지 요구에 따라 고를 수 있습니다. "
+        "정리하면, 새로운 차별화 요구에 대비한 기술을 미리 준비해야 미래의 추론 수요에 능동적으로 대응하는 제품 포트폴리오를 완성할 수 있습니다. 꼬리 지연 높이는 정성 등급이고, 제품 이미지는 형태 재현입니다.")
 
 # =============================================================== 3 당위성
 s = d.slide(5, "참고 · 당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
@@ -935,11 +1060,13 @@ d.notes(s, "참고 7장은 보안 기회입니다. 2장에서 모델 가중치�
         "보안 시장 자체의 규모나 Confidential Storage 시장 전망은 공개 자료에 없어서, 수요는 온프렘 AI의 성장으로 보여 드렸습니다.")
 
 # =============================================================== 6 실행
-s = d.slide(4, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다")
+s = d.slide(4, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 역량 · 사람으로 함께 설계합니다")
 S_EXEC = s
-C1, W1 = MX, 5.55
-C2, W2 = 6.55, 6.90
-C3, W3 = 13.66, 5.55
+C1, W1 = MX, 4.80
+CR, WR = C1 + W1 + 0.46, 6.05          # ② 역량 (가운데, 넓게)
+CP = CR + WR + 0.46                     # ③ 사람 (오른쪽)
+WP = RIGHT - CP
+BOT4 = 9.34                             # 패널 아래 끝 (열 캡션 삭제로 확장)
 BENCH_Y, NOW_Y, NEXT_Y = 2.96, 3.48, 5.30
 
 
@@ -972,24 +1099,78 @@ rect(s, C1 + SW1 + 0.10, by0, 0.035, by1 - by0, fill=BLUE)
 rect(s, C1 + SW1 + 0.02, by0, 0.10, 0.035, fill=BLUE)
 rect(s, C1 + SW1 + 0.02, by1 - 0.035, 0.10, 0.035, fill=BLUE)
 tb(s, C1 + SW1 + 0.20, by0, 0.85, by1 - by0, [("기술", 18, True, BLUE), ("협력", 18, True, BLUE)], anchor=MID, spacing=1.0)
-d.chevron(s, C2 - 0.19, 6.10, w=0.16, h=0.50)
+d.chevron(s, CR - 0.31, 6.10, w=0.16, h=0.50)
 
-# ---- ② 사람
-d.panel_head(s, C2, W2, 2, "사람: 고객 안에 상주 (FDE)")
-d.img(s, d.logo("palantir"), C2, BENCH_Y + 0.01, h=0.34)
-tb(s, C2 + 0.44, BENCH_Y - 0.02, W2 - 0.44, 0.38, [[("Palantir FDE", 18, True, INK), ("   Anthropic · OpenAI도 채택", 16, False, GRAY)]], anchor=MID)
-tag(s, C2, NOW_Y, "지금", False)
+# ---- ② 역량 격자 (새 과제의 층이 위로)
+d.panel_head(s, CR, WR, 2, "역량: 고객처럼 보는 눈")
+d.chevron(s, CP - 0.31, 6.10, w=0.16, h=0.50)
+tb(s, CR, BENCH_Y - 0.02, WR, 0.38, [[("고객의 지표  ", 16, False, GRAY), ("토큰당 비용 · GPU 가동률", 18, True, INK)]], anchor=MID)
+LW3, CWN, G3, CWF = 1.80, 1.40, 0.14, WR - 1.80 - 1.40 - 0.14
+cxn, cxf = CR + LW3, CR + LW3 + CWN + G3
+tb(s, cxn, NOW_Y, CWN, 0.36, [("지금", 18, True, GRAY_2)], align=C)
+tb(s, cxf, NOW_Y, CWF, 0.36, [("필요한 기술", 18, True, BLUE)], align=C)
+layers = [("AI DC 운영", "없음", "off", "TCO · 추론 SLO", BLUE),
+          ("KV 캐시 SW", "LMCache", "part", "Dynamo · Mooncake", BLUE),
+          ("커널 · I/O", "일부", "part", "io_uring · NIXL", BLUE),
+          ("SSD FW", "강점", "on", "FDP · QoS · destage", BLUE_T1),
+          ("NAND", "강점", "on", "", BLUE_T2)]
+RY3, RP3, RH3 = NOW_Y + 0.44, 0.60, 0.50
+for r, (nm, now_t, st, need, col) in enumerate(layers):
+    yy = RY3 + r * RP3
+    gap = r < 3
+    tb(s, CR, yy, LW3 - 0.08, RH3, [(nm, 18, True, BLUE if gap else GRAY)], anchor=MID)
+    if st == "on":
+        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, WHITE)], fill=GRAY_2)
+    elif st == "part":
+        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, GRAY)], fill=PALE)
+    else:
+        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, GRAY)], fill=WHITE, line=GRAY_2, dash=True)
+    if need:
+        label_box(s, cxf, yy, CWF, RH3, [(need, 17, True, WHITE)], fill=col)
+    else:
+        rect(s, cxf, yy, CWF, RH3, fill=col, shape=RR)
+# 화두: CRM의 범위가 엔지니어까지 넓어진다 (관계도)
+QY = RY3 + 4 * RP3 + RH3 + 0.12
+QH = BOT4 - QY
+rect(s, CR, QY, WR, QH, fill=WHITE, line=BLUE, lw=1.5, shape=RR)
+label_box(s, CR + 0.18, QY + 0.12, 0.80, 0.38, [("화두", 17, True, WHITE)], fill=BLUE)
+tb(s, CR + 1.08, QY + 0.10, WR - 1.2, 0.42, [[("고객 관계(CRM)를 ", 18, True, INK), ("엔지니어까지", 18, True, BLUE)]], anchor=MID)
+LCX, RCX, CHW, CHH2 = CR + 0.24, CR + 2.84, 1.16, 0.38
+tb(s, LCX, QY + 0.58, CHW, 0.30, [("삼성", 15, True, GRAY)], align=C, anchor=MID)
+tb(s, RCX, QY + 0.58, CHW, 0.30, [("고객", 15, True, GRAY)], align=C, anchor=MID)
+CRM = [("경영진", "경영진", False), ("영업", "구매", False), ("엔지니어", "엔지니어", True)]
+RYS = [QY + 0.92 + i * 0.48 for i in range(3)]
+for i, (l_, r_, hot) in enumerate(CRM):
+    yy = RYS[i]
+    label_box(s, LCX, yy, CHW, CHH2, [(l_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
+    label_box(s, RCX, yy, CHW, CHH2, [(r_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
+    rect(s, LCX + CHW + 0.04, yy + CHH2 / 2 - (0.03 if hot else 0.01), RCX - LCX - CHW - 0.08, 0.06 if hot else 0.02, fill=BLUE if hot else GRAY_2)
+label_box(s, LCX + CHW + 0.10, RYS[2] + 0.04, RCX - LCX - CHW - 0.20, 0.30, [("언어 · 문화", 15, True, BLUE)], fill=WHITE, line=BLUE, lw=1.0)
+# 범위 괄호: 지금(경영진 · 영업) 대 앞으로(엔지니어까지)
+bx1 = RCX + CHW + 0.20
+for (y0_, y1_, col, lab, off) in [(RYS[0], RYS[1] + CHH2, GRAY_2, "지금", 0.0), (RYS[0], RYS[2] + CHH2, BLUE, "앞으로", 0.80)]:
+    xx = bx1 + off
+    rect(s, xx, y0_, 0.04, y1_ - y0_, fill=col)
+    rect(s, xx - 0.10, y0_, 0.12, 0.04, fill=col)
+    rect(s, xx - 0.10, y1_ - 0.04, 0.12, 0.04, fill=col)
+    tb(s, xx + 0.08, (y0_ + y1_) / 2 - 0.15, 0.80, 0.30, [(lab, 15, True, col)], anchor=MID)
+
+# ---- ③ 사람
+d.panel_head(s, CP, WP, 3, "사람: 고객 안에 상주 (FDE)")
+d.img(s, d.logo("palantir"), CP, BENCH_Y + 0.01, h=0.34)
+tb(s, CP + 0.44, BENCH_Y - 0.02, WP - 0.44, 0.38, [[("Palantir FDE", 18, True, INK), ("   Anthropic · OpenAI도 채택", 16, False, GRAY)]], anchor=MID)
+tag(s, CP, NOW_Y, "지금", False)
 BY = NOW_Y + 0.44
-rect(s, C2, BY, 1.70, 0.60, fill=WHITE, line=LINE, shape=RR)
-d.fit(s, d.logo("samsung"), C2 + 0.15, BY + 0.13, 1.40, 0.34)
-label_box(s, C2 + W2 - 1.70, BY, 1.70, 0.60, [("고객", 20, True, INK)], fill=WHITE, line=LINE)
-rect(s, C2 + 1.78, BY + 0.29, W2 - 3.56, 0.03, fill=GRAY_2)
-rect(s, C2 + W2 / 2 - 0.22, BY + 0.02, 0.44, 0.56, fill=WHITE, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.FOLDED_CORNER)
-tb(s, C2, NOW_Y + 1.10, W2, 0.36, [("스펙 문서로 명시된 요구만 오갑니다", 18, False, GRAY)], align=C)
-d.down(s, C2 + W2 / 2, NEXT_Y - 0.32)
-tag(s, C2, NEXT_Y, "앞으로: 고객 상주 협업의 세 가지 핵심 업무", True)
-BX0, BY0, BW = C2, NEXT_Y + 0.44, W2
-BH = 8.76 - BY0
+rect(s, CP, BY, 1.70, 0.60, fill=WHITE, line=LINE, shape=RR)
+d.fit(s, d.logo("samsung"), CP + 0.15, BY + 0.13, 1.40, 0.34)
+label_box(s, CP + WP - 1.70, BY, 1.70, 0.60, [("고객", 20, True, INK)], fill=WHITE, line=LINE)
+rect(s, CP + 1.78, BY + 0.29, WP - 3.56, 0.03, fill=GRAY_2)
+rect(s, CP + WP / 2 - 0.22, BY + 0.02, 0.44, 0.56, fill=WHITE, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.FOLDED_CORNER)
+tb(s, CP, NOW_Y + 1.10, WP, 0.36, [("스펙 문서로 명시된 요구만 오갑니다", 18, False, GRAY)], align=C)
+d.down(s, CP + WP / 2, NEXT_Y - 0.32)
+tag(s, CP, NEXT_Y, "앞으로: 고객 상주 협업의 세 가지 핵심 업무", True)
+BX0, BY0, BW = CP, NEXT_Y + 0.44, WP
+BH = BOT4 - BY0
 rect(s, BX0, BY0, BW, BH, fill=TINT, line=BLUE, lw=1.5, shape=RR)
 tb(s, BX0 + BW - 3.3, BY0 + 0.06, 3.1, 0.32, [("고객 AI 데이터센터 안에서", 16, True, BLUE)], align=R, anchor=MID)
 KG = 0.30
@@ -1034,77 +1215,17 @@ d.person(s, x + KW - 0.18 - pw_, PY + 0.36, 0.66, GRAY_2)
 bub = rect(s, x + KW / 2 - 0.42, PY - 0.02, 0.84, 0.40, fill=WHITE, line=BLUE_T1, lw=1.5, shape=MSO_SHAPE.ROUNDED_RECTANGULAR_CALLOUT)
 tb(s, x + KW / 2 - 0.42, PY - 0.02, 0.84, 0.34, [("· · ·", 16, True, BLUE)], align=C, anchor=MID)
 d.fit(s, d.part("ssd"), x + KW / 2 - 0.34, PY + 0.62, 0.68, 0.40)
-d.chevron(s, C3 - 0.19, 6.10, w=0.16, h=0.50)
-
-# ---- ③ 역량 격자 (새 과제의 층이 위로)
-d.panel_head(s, C3, W3, 3, "역량: 고객처럼 보는 눈")
-tb(s, C3, BENCH_Y - 0.02, W3, 0.38, [[("고객의 지표  ", 16, False, GRAY), ("토큰당 비용 · GPU 가동률", 18, True, INK)]], anchor=MID)
-LW3, CWN, G3, CWF = 1.70, 1.20, 0.10, 2.55
-cxn, cxf = C3 + LW3, C3 + LW3 + CWN + G3
-tb(s, cxn, NOW_Y, CWN, 0.36, [("지금", 18, True, GRAY_2)], align=C)
-tb(s, cxf, NOW_Y, CWF, 0.36, [("필요한 기술", 18, True, BLUE)], align=C)
-layers = [("AI DC 운영", "없음", "off", "TCO · 추론 SLO", BLUE),
-          ("KV 캐시 SW", "LMCache", "part", "Dynamo · Mooncake", BLUE),
-          ("커널 · I/O", "일부", "part", "io_uring · NIXL", BLUE),
-          ("SSD FW", "강점", "on", "FDP · QoS · destage", BLUE_T1),
-          ("NAND", "강점", "on", "", BLUE_T2)]
-RY3, RP3, RH3 = NOW_Y + 0.44, 0.56, 0.48
-for r, (nm, now_t, st, need, col) in enumerate(layers):
-    yy = RY3 + r * RP3
-    gap = r < 3
-    tb(s, C3, yy, LW3 - 0.08, RH3, [(nm, 18, True, BLUE if gap else GRAY)], anchor=MID)
-    if st == "on":
-        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, WHITE)], fill=GRAY_2)
-    elif st == "part":
-        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, GRAY)], fill=PALE)
-    else:
-        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, GRAY)], fill=WHITE, line=GRAY_2, dash=True)
-    if need:
-        label_box(s, cxf, yy, CWF, RH3, [(need, 17, True, WHITE)], fill=col)
-    else:
-        rect(s, cxf, yy, CWF, RH3, fill=col, shape=RR)
-# 화두: CRM의 범위가 엔지니어까지 넓어진다 (관계도)
-QY = RY3 + 4 * RP3 + RH3 + 0.12
-QH = 8.76 - QY
-rect(s, C3, QY, W3, QH, fill=WHITE, line=BLUE, lw=1.5, shape=RR)
-label_box(s, C3 + 0.18, QY + 0.12, 0.80, 0.38, [("화두", 17, True, WHITE)], fill=BLUE)
-tb(s, C3 + 1.08, QY + 0.10, W3 - 1.2, 0.42, [[("고객 관계(CRM)를 ", 18, True, INK), ("엔지니어까지", 18, True, BLUE)]], anchor=MID)
-LCX, RCX, CHW, CHH2 = C3 + 0.18, C3 + 2.52, 1.00, 0.34
-tb(s, LCX, QY + 0.56, CHW, 0.26, [("삼성", 15, True, GRAY)], align=C, anchor=MID)
-tb(s, RCX, QY + 0.56, CHW, 0.26, [("고객", 15, True, GRAY)], align=C, anchor=MID)
-CRM = [("경영진", "경영진", False), ("영업", "구매", False), ("엔지니어", "엔지니어", True)]
-RYS = [QY + 0.86 + i * 0.40 for i in range(3)]
-for i, (l_, r_, hot) in enumerate(CRM):
-    yy = RYS[i]
-    label_box(s, LCX, yy, CHW, CHH2, [(l_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
-    label_box(s, RCX, yy, CHW, CHH2, [(r_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
-    rect(s, LCX + CHW + 0.04, yy + CHH2 / 2 - (0.03 if hot else 0.01), RCX - LCX - CHW - 0.08, 0.06 if hot else 0.02, fill=BLUE if hot else GRAY_2)
-label_box(s, LCX + CHW + 0.04, RYS[2] + 0.03, RCX - LCX - CHW - 0.08, 0.28, [("언어 · 문화", 15, True, BLUE)], fill=WHITE, line=BLUE, lw=1.0)
-# 범위 괄호: 지금(경영진 · 영업) 대 앞으로(엔지니어까지)
-bx1 = RCX + CHW + 0.16
-for (y0_, y1_, col, lab, off) in [(RYS[0], RYS[1] + CHH2, GRAY_2, "지금", 0.0), (RYS[0], RYS[2] + CHH2, BLUE, "앞으로", 0.66)]:
-    xx = bx1 + off
-    rect(s, xx, y0_, 0.04, y1_ - y0_, fill=col)
-    rect(s, xx - 0.10, y0_, 0.12, 0.04, fill=col)
-    rect(s, xx - 0.10, y1_ - 0.04, 0.12, 0.04, fill=col)
-    tb(s, xx + 0.08, (y0_ + y1_) / 2 - 0.15, 0.80, 0.30, [(lab, 15, True, col)], anchor=MID)
-
-# ---- 열 캡션
-CAP_Y = 8.86
-tb(s, C1, CAP_Y, W1, 0.50, [("MYD 위에 기술 협력을 쌓습니다", 20, True, BLUE)], anchor=MID)
-tb(s, C2, CAP_Y, W2, 0.50, [("고객 안에서 요구를 찾고 수요를 함께 만듭니다", 20, True, BLUE)], anchor=MID)
-tb(s, C3, CAP_Y, W3, 0.50, [("기술과 함께, 엔지니어의 고객 관계", 20, True, BLUE)], anchor=MID)
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
 d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 로고는 식별 표시")
 d.notes(s, "4장 실행 전략입니다. 2장과 3장에서 본 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
         "첫째, 계약입니다. 지금의 Multi-Year Deal, MYD는 여러 해의 수량과 가격을 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 MYD 위에 기술 협력을 쌓겠습니다. "
-        "둘째, 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 AI 데이터센터 안에서 고객 엔지니어와 함께 일합니다. 핵심 업무는 세 가지입니다. "
+        "둘째, 역량입니다. NAND와 SSD 펌웨어는 강점이고, 비어 있는 곳은 그 위입니다. KV 캐시 소프트웨어는 LMCache에서 시작했고 Dynamo와 Mooncake에는 아직 기여가 없습니다. 고객의 지표인 토큰당 비용과 GPU 가동률로 말하는 사람이 필요합니다. "
+        "역량에서 화두를 하나 드리겠습니다. 지금까지 고객 관계 관리, CRM은 경영진과 경영진, 영업과 구매 사이의 일이었습니다. 앞으로는 엔지니어와 엔지니어 사이까지 넓어져야 합니다. 고객 엔지니어가 신뢰하는 상대는 같은 문제를 같은 언어로 푸는 엔지니어이고, 고객과 국가마다 다른 언어와 문화를 이해하는 것도 그 관계의 일부입니다. 엔지니어 수준의 고객 관계를 우리가 맡을 준비가 되어 있는지 함께 생각해 보면 좋겠습니다. "
+        "셋째, 사람입니다. 이 역량을 고객 현장에서 쓰는 것이 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 AI 데이터센터 안에서 고객 엔지니어와 함께 일합니다. 핵심 업무는 세 가지입니다. "
         "하나, 고객 워크로드 측정과 분석입니다. 고객 트레이스로 쓰기 크기와 데이터 수명을 재서, 고객이 말한 요구와 실제 요구의 차이를 찾습니다. "
         "둘, 호스트 소프트웨어 스택의 최적화와 평가입니다. 고객 엔지니어와 함께 KV 캐시 소프트웨어와 SSD를 맞물려 최적화하고, 고객 환경에서 WAF와 꼬리 지연, 그리고 토큰당 비용과 GPU 가동률로 효과를 평가합니다. LMCache에 FDP 배치를 머지한 것이 선례입니다. "
         "셋, 차세대 제품을 위한 기술 교류입니다. 현장에서 증명한 것을 고객 엔지니어와 함께 다음 제품의 사양과 고객 RFQ, OCP 요구로 굳힙니다. 이렇게 고객 안에서 요구를 찾고, 수요를 함께 만듭니다. "
-        "셋째, 역량입니다. NAND와 SSD 펌웨어는 강점이고, 비어 있는 곳은 그 위입니다. KV 캐시 소프트웨어는 LMCache에서 시작했고 Dynamo와 Mooncake에는 아직 기여가 없습니다. 고객의 지표인 토큰당 비용과 GPU 가동률로 말하는 사람이 필요합니다. "
-        "마지막으로 화두를 하나 드리겠습니다. 지금까지 고객 관계 관리, CRM은 경영진과 경영진, 영업과 구매 사이의 일이었습니다. 앞으로는 엔지니어와 엔지니어 사이까지 넓어져야 합니다. 고객 엔지니어가 신뢰하는 상대는 같은 문제를 같은 언어로 푸는 엔지니어이고, 고객과 국가마다 다른 언어와 문화를 이해하는 것도 그 관계의 일부입니다. 엔지니어 수준의 고객 관계를 우리가 맡을 준비가 되어 있는지 함께 생각해 보면 좋겠습니다. "
         "첫 90일에는 다섯 가지를 하겠습니다. 전략 고객 한두 곳을 정해 FDP 공동 설계 의제를 맞추고, Co-Design Pod를 꾸리고, 시스템 소프트웨어 전문가 채용을 시작하고, 고객 KV 트레이스로 WAF를 실측하고, 신호 대시보드를 돌리겠습니다. "
         "마지막으로, 실패할 수도 있는 기술에 투자하는 것이 불확실한 미래에 실패하지 않는 불변 전략입니다. 지금 예측할 수 있는 범위 안에서 최선을 다하고, 신호가 바뀌면 판단을 고치겠습니다.")
 

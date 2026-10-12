@@ -40,6 +40,16 @@ sources:
 - 반대 신호: SemiAnalysis 실측은 에이전트 트레이스에서 DRAM 추가 히트가 1.36%로 작아 SSD KV 효과에 신중하고, Omdia는 범용 서버 · 엔터프라이즈 스토리지가 2026년 역풍이라고 본다. Coughlin은 2030년에도 HDD 출하(10.7ZB)가 SSD(3.0ZB)의 세 배 이상이라 본다.
 - 전문 기관(TrendForce · Gartner · IDC 등)은 2028~2030 EB 절대치를 공개하지 않았다. 장기 EB는 SanDisk · Kioxia · 증권사 수치뿐이다.
 
+## 0.5 TechInsights 3Q26 응용별 비중 (2026-10-12, 사용자 제공 · 덱 1장 기준)
+
+| 연도 | 범용 | AI 학습 | AI 추론 | 출처 |
+|---|---|---|---|---|
+| 2025 | 54% | 15% | 31% | TechInsights 3Q26([user-techinsights-3q26-essd-application-share-2026-10.md](../../sources/raw-notes/user-techinsights-3q26-essd-application-share-2026-10.md) TI-01, 🟡 원문 미대조) |
+| 2030 | 15% | 6% | **79%** | 같은 원장 TI-02 |
+
+- McKinsey 2024-12(아래 §1)의 2030 추론 41%보다 훨씬 공격적이다. 학습 비중이 15 → 6%로 **줄어드는** 점도 다르다(McKinsey는 6 → 12%). 응용 정의 · 총량이 다를 수 있어 방향(추론 쏠림)만 같은 것으로 읽는다(⚠️).
+- 덱 v4.5부터 1장 맨 아래 수요 비중은 TechInsights 값, 참고 8장(수요처별 EB 누적 막대)은 McKinsey 값을 그대로 쓴다.
+
 ## 1. 수요처별 2024 → 2030 (2026-10-09 1차 조사, McKinsey 2024-12 중심)
 
 | 수요처 (덱 1장) | 2024 | 2030 | 배율 | 근거 | 성격 |
