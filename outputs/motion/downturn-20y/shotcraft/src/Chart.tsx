@@ -43,14 +43,14 @@ export const ChartSvg: React.FC<ChartState> = ({ f, yr, stampsOn, stampAt, compa
       ))}
       <line x1={X0 - 10} x2={X1 + 40} y1={YB} y2={YB} stroke={C.steel} strokeWidth={2} />
       {REV.map(([y]) => <line key={y} x1={xOf(y)} x2={xOf(y)} y1={YB} y2={YB + (y % 5 === 0 || y === 2006 ? 14 : 7)} stroke={C.steel} strokeWidth={2} />)}
-      {[2006, 2010, 2015, 2020, 2025].map((y) => <text key={y} x={xOf(y)} y={YB + 48} textAnchor="middle" fill={C.steel} fontSize={30} fontWeight={700}>{y}</text>)}
+      {[2006, 2010, 2015, 2020, 2025].map((y) => <text key={y} x={xOf(y)} y={YB + 48} textAnchor="middle" fill={C.steel} fontSize={30} fontWeight={700}>’{String(y).slice(2)}</text>)}
       <g clipPath="url(#cr)">
         <path d={AREA} fill="url(#ag)" />
         <path d={LINE} fill="none" stroke={C.blue} strokeWidth={7} strokeLinejoin="round" strokeLinecap="round" />
       </g>
       {spring > 0 && <g clipPath="url(#sp)" opacity={spring}><path d={AREA} fill="url(#sg)" /><path d={LINE} fill="none" stroke={C.blue2} strokeWidth={11} strokeLinejoin="round" strokeLinecap="round" /></g>}
-      <text x={xOf(2018)} y={yOf(162.6) - 30} textAnchor="middle" fill={C.steel} fontSize={30} fontWeight={700} opacity={peakOn}>2018 · $162.6Bᵉ</text>
-      <text x={xOf(2025) + 6} y={yOf(222) - 36} textAnchor="end" fill={C.blue} fontSize={48} fontWeight={900} opacity={endOn}>2025 · $222Bᵉ</text>
+      <text x={xOf(2018)} y={yOf(162.6) - 30} textAnchor="middle" fill={C.steel} fontSize={30} fontWeight={700} opacity={peakOn}>’18 · $162.6Bᵉ</text>
+      <text x={xOf(2025) + 6} y={yOf(222) - 36} textAnchor="end" fill={C.blue} fontSize={48} fontWeight={900} opacity={endOn}>’25 · $222Bᵉ</text>
       {STAMPS.map((s, i) => {
         if (!stampsOn[i]) return null;
         const x = xOf(s.y), y = yOf(val(s.y));

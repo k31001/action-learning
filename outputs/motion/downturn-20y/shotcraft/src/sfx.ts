@@ -63,7 +63,7 @@ export const SFX: Sfx[] = [
   at(S.spring.from + c('p3') - 10, 'air-woosh-quick', 0.12, '곡선 → HBM 실사'),
   // ⑥ 교훈
   at(S.lesson.from + c('l1') + 40, 'paper-slide', 0.28, '마커 밑줄'),
-  at(S.lesson.from + c('l2'), 'sweep-short', 0.22, '심은 것'),
+  at(S.lesson.from + c('l2'), 'sweep-short', 0.22, '투자한 것'),
   at(S.lesson.from + c('l3'), 'sweep-short', 0.2, '놓친 것'),
   // ⑦ 시나리오
   pin(S.scen.from + c('s0') + 6, 'swoosh-slow', 0.1, '질문 진입 (빌드인)', 75),
@@ -85,6 +85,6 @@ export const SFX: Sfx[] = [
   }),
   // ⑧ 결론: 빌드인(impact-cine-big 앞 2초) → 임팩트 → 여운
   at(S.end.from - 8, 'swoosh-quick', 0.26, '블루 블레이드 → 결론'),
-  pin(S.end.from + END_LAND(), 'impact-cine-big', 0.62, '「심을 것인가.」 대사 직후 임팩트 (slam 3/3)'),
+  pin(S.end.from + END_LAND(), 'impact-cine-big', 0.62, '「투자할 것인가.」 대사 직후 임팩트 (slam 3/3)'),
   at(S.end.from + END_LAND() + 14, 'shimmer-sparkle-sweep', 0.24, '해빙 여운', 74),
 ];
