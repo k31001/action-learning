@@ -66,7 +66,7 @@ export const Lesson: React.FC = () => {
         <><span style={{ position: 'relative', display: 'inline-block' }}><Marker at={l1 + 40} len={370} color={C.blue} style={{ left: -6, bottom: -30 }} /><span style={{ position: 'relative' }}>심은 것</span></span>에서 갈렸다.</>,
       ]} style={{ position: 'absolute', left: 140, top: 230, fontSize: 124, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.12 }} />
       <div style={{ position: 'absolute', left: 146, top: 620, display: 'flex', flexDirection: 'column', gap: 22 }}>
-        <Up at={l2} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.blue} size={38}>심은 것</Tag>40nm DDR3 · 16라인 · 1z DRAM</Up>
+        <Up at={l2} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.blue} size={38}>투자한 것</Tag>40nm DDR3 · 16라인 · 1z DRAM</Up>
         <Up at={l3} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.red} size={38}>놓친 것</Tag>HBM보다 범용 DRAM 중심 운영</Up>
       </div>
       <Source at={l1 + 10}>출처: wiki/downturn/downturn-history.md §4 · samsung-2019-downturn-2017-2019-actions</Source>

@@ -151,7 +151,7 @@ export const W23: React.FC = () => {
   return (
     <ChapterFrame k={3} first="e1" src={SRC('memory-downturn-history-research(ᵉ 추정 포함) · samsung-pre-downturn-preparation')}>
       <div style={{ position: 'absolute', inset: 0, transform: `scale(${punch})`, transformOrigin: '1600px 400px' }}>
-        <Up at={sw - 10} style={{ position: 'absolute', left: QX, top: 200, ...lab }}>DRAM 분기 매출 · $B</Up>
+        <Up at={sw - 10} style={{ position: 'absolute', left: QX, top: 200, ...lab }}>전세계 DRAM 분기 매출 · $B</Up>
         {/* 줌 레이어는 왼쪽 패널(x<1330, y≥260) 안에서만 — 오른쪽 숫자·상단 라벨과 겹치지 않게 */}
         <div style={{ position: 'absolute', left: 0, top: 260, width: 1330, height: 760, overflow: 'hidden' }}>
           <div style={{ position: 'absolute', left: 0, top: -260, width: 1920, height: 1080, transformOrigin: '0 0', transform: `translate(960px,540px) scale(${z}) translate(${-cx}px,${-cy}px)` }}>
@@ -173,11 +173,11 @@ export const W23: React.FC = () => {
         </div>
         <Up at={e2 + 6} style={{ position: 'absolute', left: 1400, top: 300, width: 460 }}>
           <div style={big(170, C.red)}>{m}%</div>
-          <div style={{ ...lab, color: C.ink, lineHeight: 1.35 }}>3분기 만에<br />역대 가장 빠른 하락</div>
+          <div style={{ ...lab, color: C.ink, lineHeight: 1.35 }}>산업 전체 · 3분기 만에<br />역대 가장 빠른 하락</div>
         </Up>
         <Up at={e3} style={{ position: 'absolute', left: 1400, top: 640, width: 500 }}>
           <div style={big(116, C.red)}>{loss}조</div>
-          <div style={{ ...lab, color: C.ink }}>2023 DS 영업손실 · 사상 최대</div>
+          <div style={{ ...lab, color: C.ink, lineHeight: 1.35 }}>2023 삼성 DS 영업손실<br />사상 최대</div>
         </Up>
       </div>
     </ChapterFrame>
