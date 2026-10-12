@@ -86,7 +86,7 @@ export const W12: React.FC = () => {
         const bg = t.me ? interpolateColors(glow, [0, 1], ['#ffffff', '#eef1fb']) : t.id === 'elpida' ? interpolateColors(elpRed, [0, 1], ['#ffffff', '#fdecec']) : '#ffffff';
         return (
           <div key={t.id} style={{ position: 'absolute', left: x, top: y + dy, width: TW, height: h, opacity: op, transform: `scale(${0.85 + 0.15 * inn})`, borderRadius: 12, border: `${t.me ? 4 + 2 * glow : 3}px ${t.ghost ? 'dashed' : 'solid'} ${border}`, background: bg, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, boxSizing: 'border-box' }}>
-            {t.id === 'samsung' && <><Logo k="samsung" h={48} />{cap('16라인 가동', b3 + 6, C.blue)}</>}
+            {t.id === 'samsung' && <Logo k="samsung" h={48} />}
             {t.id === 'micron' && <><Logo k="micron" h={62} grey />{cap('엘피다 인수 · 2013', b2 + 22)}</>}
             {t.id === 'hynix' && (
               <>
