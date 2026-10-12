@@ -47,12 +47,13 @@ export const Spring: React.FC = () => {
           </Up>
         </div>
       </div>
-      <Source at={p1}>출처: wiki/downturn/downturn-history.md(2025 ᵉ 추정) · wiki/concepts/hbm-market.md</Source>
+      <Source at={p1}>출처: wiki/downturn/downturn-history.md(’25ᵉ 추정) · wiki/concepts/hbm-market.md</Source>
     </AbsoluteFill>
   );
 };
 
-/* ⑥ 교훈 — 눈 속 새싹 실사(오른쪽) + 왼쪽 타이포. 「심은 것」 마커 밑줄(marker-underline-title, 10f) */
+/* ⑥ 교훈 — 눈 속 새싹 실사(오른쪽) + 왼쪽 타이포. 「심은 것」 마커 밑줄(marker-underline-title, 10f).
+   v2.5: v2.4 의 직설 교체를 되돌림 — 「심다」 비유가 이 영상의 정서를 만든다(2026-10-12 사용자 지시) */
 export const Lesson: React.FC = () => {
   const f = useCurrentFrame();
   const l1 = cue('l1'), l2 = cue('l2'), l3 = cue('l3');
@@ -170,12 +171,12 @@ export const Scen: React.FC<{ dur: number }> = ({ dur }) => {
       </div>
       <Blade at={starts[1]} color={C.ink} />
       <Blade at={starts[2]} color={C.ink} />
-      <Source at={starts[0]}>시나리오: wiki/downturn/scenario-matrix.md(DT-A~E) · 헤드라인: 2026-08 신호를 연장한 가상 헤드라인, 실제 보도 아님</Source>
+      <Source at={starts[0]}>시나리오: wiki/downturn/scenario-matrix.md(DT-A~E) · 헤드라인: ’26.08 신호를 연장한 가상 헤드라인, 실제 보도 아님</Source>
     </AbsoluteFill>
   );
 };
 
-/* ⑧ 결론 — 얼었던 웨이퍼가 씨앗 다이에서부터 해빙, 「지금, 무엇을 심을 것인가.」(z2) 착지 = slam 3/3, 이후 ≥2s 정지 */
+/* ⑧ 결론 — 얼었던 웨이퍼가 씨앗 다이에서부터 해빙, 「지금! 무엇을 심을 것인가?」(z2) 착지 = slam 3/3, 이후 ≥2s 정지 */
 export const End: React.FC = () => {
   const f = useCurrentFrame();
   const z1 = cue('z1'), z2 = cue('z2');
@@ -185,7 +186,7 @@ export const End: React.FC = () => {
     <AbsoluteFill style={{ background: C.paper, fontFamily: FONT, color: C.ink, transform: `scale(${punch})` }}>
       <Wafer cx={520} cy={540} R={330} growAt={-60} freezeAt={-90} thawAt={land - 6} />
       <Lines at={z1} lines={['겨울은 다시 온다.']} style={{ position: 'absolute', left: 1000, top: 262, fontSize: 96, fontWeight: 900, letterSpacing: '-0.045em', color: C.steel }} />
-      <Lines at={z2} stagger={8} lines={['지금, 무엇을', <><span style={{ color: C.blue }}>심을</span> 것인가.</>]} style={{ position: 'absolute', left: 1000, top: 410, fontSize: 136, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.08 }} />
+      <Lines at={z2} stagger={8} lines={['지금! 무엇을', <><span style={{ color: C.blue }}>심을</span> 것인가?</>]} style={{ position: 'absolute', left: 1000, top: 410, fontSize: 136, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.08 }} />
     </AbsoluteFill>
   );
 };

@@ -54,9 +54,12 @@ export const useCount = (from: number, to: number, a: number, b: number, e = OUT
 export const minus = (v: number, digits = 0) => (v < -Math.pow(10, -digits) / 2 ? '−' : '') + Math.abs(v).toFixed(digits);
 
 /* 로고 — 삼성만 블루, 경쟁사는 그레이 (단일 액센트) */
-const LOGO_AR: Record<string, number> = { samsung: 512 / 79, skhynix: 512 / 269, micron: 512 / 110 };
-export const Logo: React.FC<{ k: 'samsung' | 'skhynix' | 'micron'; h: number; grey?: boolean }> = ({ k, h, grey }) => (
-  <Img src={staticFile(`logos/${k}.svg`)} style={{ height: h, width: h * LOGO_AR[k], display: 'block', filter: grey ? 'grayscale(1) brightness(.62) contrast(1.1)' : undefined, opacity: grey ? 0.85 : 1 }} />
+// 가로세로비(파일 실측) — svg 는 viewBox, png 는 트림 후 픽셀. 구 CI(hynix·elpida·qimonda·powerchip·nanya)는 public/logos/ATTRIBUTION.md 참고
+const LOGO_AR: Record<string, number> = { samsung: 512 / 79, skhynix: 512 / 269, micron: 512 / 110, hynix: 167 / 55, elpida: 540 / 98, qimonda: 540 / 219, powerchip: 540 / 136, nanya: 540 / 81 };
+const LOGO_EXT: Record<string, string> = { elpida: 'png', qimonda: 'png', powerchip: 'png', nanya: 'png' };
+export type LogoKey = 'samsung' | 'skhynix' | 'micron' | 'hynix' | 'elpida' | 'qimonda' | 'powerchip' | 'nanya';
+export const Logo: React.FC<{ k: LogoKey; h: number; grey?: boolean; style?: React.CSSProperties }> = ({ k, h, grey, style }) => (
+  <Img src={staticFile(`logos/${k}.${LOGO_EXT[k] ?? 'svg'}`)} style={{ height: h, width: h * LOGO_AR[k], display: 'block', filter: grey ? 'grayscale(1) brightness(.62) contrast(1.1)' : undefined, opacity: grey ? 0.85 : 1, ...style }} />
 );
 export const Wordmark: React.FC<{ t: string; ghost?: boolean; size?: number }> = ({ t, ghost, size = 36 }) => (
   <span style={{ display: 'inline-block', fontSize: size, fontWeight: 900, letterSpacing: '-0.01em', color: ghost ? C.steel : C.ink, border: `3px solid ${ghost ? C.steel : C.ink}`, borderRadius: 6, padding: '0 14px', lineHeight: 1.3 }}>{t}</span>

@@ -85,6 +85,6 @@ export const SFX: Sfx[] = [
   }),
   // ⑧ 결론: 빌드인(impact-cine-big 앞 2초) → 임팩트 → 여운
   at(S.end.from - 8, 'swoosh-quick', 0.26, '블루 블레이드 → 결론'),
-  pin(S.end.from + END_LAND(), 'impact-cine-big', 0.62, '「심을 것인가.」 대사 직후 임팩트 (slam 3/3)'),
+  pin(S.end.from + END_LAND(), 'impact-cine-big', 0.62, '「심을 것인가?」 대사 직후 임팩트 (slam 3/3)'),
   at(S.end.from + END_LAND() + 14, 'shimmer-sparkle-sweep', 0.24, '해빙 여운', 74),
 ];

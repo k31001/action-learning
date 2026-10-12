@@ -1,13 +1,14 @@
 import React from 'react';
 import { interpolateColors, useCurrentFrame } from 'remotion';
 import { C, FONT } from '../theme';
-import { cue, cueEnd, EXPO, INOUT, Logo, minus, Odometer, OUT, Tag, tw, Up, Wordmark } from '../lib';
+import { cue, cueEnd, EXPO, INOUT, Logo, type LogoKey, minus, Odometer, OUT, Tag, tw, Up } from '../lib';
 import { Q23, SH08 } from '../timeline';
 import { CARD_HOLD, ChapterFrame } from './Winter';
 
 const lab: React.CSSProperties = { fontSize: 36, fontWeight: 700, color: C.steel };
 const big = (fs: number, c: string = C.ink): React.CSSProperties => ({ fontSize: fs, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.04, color: c, whiteSpace: 'nowrap' });
 const SRC = (s: string) => `출처: wiki/downturn/downturn-history.md · ${s}`;
+const LH08: Record<string, number> = { samsung: 40, hynix: 54, elpida: 42, micron: 46, qimonda: 64 };
 const BACK = (t: number) => 1 + 2.70158 * Math.pow(t - 1, 3) + 1.70158 * Math.pow(t - 1, 2);
 const ready = (first: string) => cue(first) + CARD_HOLD + 16; // 레이아웃이 다 올라온 프레임
 
@@ -28,24 +29,25 @@ export const W08: React.FC = () => {
   const rows = [...SH08, { k: '대만 2사', p: 0, other: true }];
   return (
     <ChapterFrame k={0} first="a1" src={SRC('dram-chicken-game-history · samsung-downturn-actions')}>
-      <Up at={sw - 10} style={{ position: 'absolute', left: 160, top: 250, ...lab }}>512Mb DDR2 현물가 · 2007 → 2008</Up>
+      <Up at={sw - 10} style={{ position: 'absolute', left: 160, top: 250, ...lab }}>512Mb DDR2 현물가 · ’07 → ’08</Up>
       <Up at={sw - 10} style={{ position: 'absolute', left: 160, top: 304 }}><Odometer text="$0.50" from="$6.80" at={t.odo} size={210} color={C.ink} /></Up>
       <Up at={t.pct} dx={-30} dy={0} style={{ position: 'absolute', left: 160, top: 600, ...big(210, C.red) }}>−93%</Up>
       <Up at={sw - 6} style={{ position: 'absolute', left: 1040, top: 250, ...lab }}>치킨게임 직전 DRAM 점유율</Up>
       {rows.map((s, i) => {
         const a = sw - 4 + i * 3;
         const g = tw(f, [a + 2, a + 18], [0, 1], EXPO);
-        const isQ = s.k === 'Qimonda', isMe = 'me' in s && s.me, other = 'other' in s;
+        const isQ = s.k === 'qimonda', isMe = 'me' in s && s.me, other = 'other' in s;
         const fill = isMe ? C.blue : isQ ? interpolateColors(qmRed, [0, 1], [C.frost, C.red]) : C.frost;
-        const name = s.k === 'samsung' ? <Logo k="samsung" h={40} /> : s.k === 'micron' ? <Logo k="micron" h={46} grey /> : <Wordmark t={s.k} size={40} ghost={other} />;
+        // 회사는 모두 CI 로 — 삼성만 블루, 경쟁사는 그레이(단일 액센트). 로고마다 글자 높이가 달라 h 를 개별 보정
+        const name = other ? <div style={{ fontSize: 36, fontWeight: 700, color: C.steel }}>대만 2사</div> : <Logo k={s.k as LogoKey} h={LH08[s.k]} grey={!isMe} />;
         return (
           <Up key={s.k} at={a} dx={-24} dy={0} style={{ position: 'absolute', left: 1040, top: 312 + i * 88, height: 76, width: 800, display: 'flex', alignItems: 'center' }}>
             <div style={{ width: 290, flex: '0 0 290px' }}>{name}</div>
-            {other ? <div style={{ fontSize: 36, fontWeight: 700, color: C.steel }}>파워칩 · 난야</div> : (
+            {other ? <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}><Logo k="powerchip" h={50} grey /><Logo k="nanya" h={30} grey /></div> : (
               <>
                 <div style={{ position: 'relative', width: s.p * 13 * g, height: 46, background: fill, opacity: isQ ? 1 - 0.85 * qmGone : 1, borderRadius: '0 6px 6px 0', boxShadow: isMe && me > 0 ? `0 0 0 ${6 * me}px rgba(20,40,160,.15)` : undefined }} />
                 {isQ && qmGone > 0 && <div style={{ position: 'absolute', left: 290, width: s.p * 13, height: 46, border: `3px dashed rgba(227,52,47,${qmGone})`, borderRadius: '0 6px 6px 0', boxSizing: 'border-box' }} />}
-                <div style={{ marginLeft: 18, fontSize: 40, fontWeight: 900, color: isMe ? C.blue : isQ && qmRed > 0.5 ? C.red : C.ink, whiteSpace: 'nowrap' }}>{isQ && qmRed > 0.5 ? '2009.01 파산' : `${s.p}%`}</div>
+                <div style={{ marginLeft: 18, fontSize: 40, fontWeight: 900, color: isMe ? C.blue : isQ && qmRed > 0.5 ? C.red : C.ink, whiteSpace: 'nowrap' }}>{isQ && qmRed > 0.5 ? '’09.01 파산' : `${s.p}%`}</div>
                 {isMe && <div style={{ marginLeft: 16, opacity: me }}><Tag c={C.blue} size={32}>무감산</Tag></div>}
               </>
             )}
@@ -69,9 +71,9 @@ export const W12: React.FC = () => {
   const drop = (j: number) => tw(f, [b2 + 2 + j * 3, b2 + 16 + j * 3], [0, 1], (t) => t * t * t);
   const reflow = tw(f, [b2 + 22, b2 + 40], [0, 1], EXPO);
   const glow = tw(f, [b3, b3 + 10], [0, 1], EXPO);
-  const tiles = [{ id: 'samsung', me: true }, { id: 'hynix' }, { id: 'elpida' }, { id: 'micron' }, { id: 'qimonda', ghost: '2009 퇴출' }, { id: 'taiwan', ghost: '범용 D램 퇴장' }];
+  const tiles = [{ id: 'samsung', me: true }, { id: 'hynix' }, { id: 'elpida' }, { id: 'micron' }, { id: 'qimonda', ghost: '’09 퇴출' }, { id: 'taiwan', ghost: '범용 D램 퇴장' }];
   const target: Record<string, [number, number]> = { samsung: [180, 300], hynix: [710, 300], micron: [1240, 300] };
-  const cap = (t: string, at: number, c: string = C.ink) => <div style={{ fontSize: 34, fontWeight: 900, color: c, opacity: tw(f, [at, at + 8], [0, 1]), whiteSpace: 'nowrap' }}>{t}</div>;
+  const cap = (t: React.ReactNode, at: number, c: string = C.ink) => <div style={{ fontSize: 34, fontWeight: 900, color: c, opacity: tw(f, [at, at + 8], [0, 1]), whiteSpace: 'nowrap' }}>{t}</div>;
   return (
     <ChapterFrame k={1} first="b1" src={SRC('dram-chicken-game-history · memory-capex-history-research-2006-2015')}>
       {tiles.map((t, i) => {
@@ -87,19 +89,19 @@ export const W12: React.FC = () => {
         return (
           <div key={t.id} style={{ position: 'absolute', left: x, top: y + dy, width: TW, height: h, opacity: op, transform: `scale(${0.85 + 0.15 * inn})`, borderRadius: 12, border: `${t.me ? 4 + 2 * glow : 3}px ${t.ghost ? 'dashed' : 'solid'} ${border}`, background: bg, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, boxSizing: 'border-box' }}>
             {t.id === 'samsung' && <Logo k="samsung" h={48} />}
-            {t.id === 'micron' && <><Logo k="micron" h={62} grey />{cap('엘피다 인수 · 2013', b2 + 22)}</>}
+            {t.id === 'micron' && <><Logo k="micron" h={62} grey />{cap(<><Logo k="elpida" h={26} grey style={{ display: 'inline-block', marginRight: 12, verticalAlign: '-2px' }} />인수 · ’13</>, b2 + 22)}</>}
             {t.id === 'hynix' && (
               <>
                 <div style={{ position: 'relative', width: 300, height: 110, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ position: 'absolute', opacity: 1 - out }}><Wordmark t="Hynix" size={52} /></div>
+                  <div style={{ position: 'absolute', opacity: 1 - out }}><Logo k="hynix" h={74} grey /></div>
                   <div style={{ position: 'absolute', opacity: inn2, transform: `translateY(${24 * (1 - inn2)}px)` }}><Logo k="skhynix" h={110} grey /></div>
                 </div>
-                {cap('SK가 인수 · 2012', b2 + 14)}
+                {cap('피인수 · ’12', b2 + 14)}
               </>
             )}
-            {t.id === 'elpida' && <><Wordmark t="Elpida" size={52} />{cap('파산 · 2012.02', el + 2, C.red)}</>}
-            {t.id === 'qimonda' && <Wordmark t="Qimonda" ghost size={48} />}
-            {t.id === 'taiwan' && <Wordmark t="대만 업체" ghost size={48} />}
+            {t.id === 'elpida' && <><Logo k="elpida" h={56} grey />{cap('파산 · ’12.02', el + 2, C.red)}</>}
+            {t.id === 'qimonda' && <Logo k="qimonda" h={78} grey style={{ opacity: 0.55 }} />}
+            {t.id === 'taiwan' && <div style={{ display: 'flex', alignItems: 'center', gap: 30, opacity: 0.6 }}><Logo k="powerchip" h={50} grey /><Logo k="nanya" h={30} grey /></div>}
             {t.ghost && <div style={{ fontSize: 34, fontWeight: 700, color: C.steel }}>{t.ghost}</div>}
           </div>
         );
@@ -115,8 +117,8 @@ export const W19: React.FC = () => {
   const { mid, d2, d3 } = T19();
   const dim = 1 - 0.6 * tw(f, [d3, d3 + 10], [0, 1]);
   const cols: { lg: React.ReactNode; st: string; sub: string; c: string; at: number; me?: boolean }[] = [
-    { lg: <Logo k="micron" h={56} grey />, st: '감산 ↓', sub: '2019.03', c: C.steel, at: mid },
-    { lg: <Logo k="skhynix" h={110} grey />, st: '감산 ↓', sub: '2019.07', c: C.steel, at: mid + 12 },
+    { lg: <Logo k="micron" h={56} grey />, st: '감산 ↓', sub: '’19.03', c: C.steel, at: mid },
+    { lg: <Logo k="skhynix" h={110} grey />, st: '감산 ↓', sub: '’19.07', c: C.steel, at: mid + 12 },
     { lg: <Logo k="samsung" h={44} />, st: '무감산 →', sub: '투자 유지', c: C.blue, at: d2, me: true },
   ];
   return (
@@ -129,7 +131,7 @@ export const W19: React.FC = () => {
         </Up>
       ))}
       <Up at={d3} style={{ position: 'absolute', left: 1240, top: 690, display: 'flex', flexDirection: 'column' }}>
-        <span style={{ ...lab, color: C.ink }}>1Q20 삼성 DRAM 점유율</span>
+        <span style={{ ...lab, color: C.ink, display: 'inline-flex', alignItems: 'center', gap: 14 }}>1Q20 <Logo k="samsung" h={30} /> DRAM 점유율</span>
         <span style={big(190, C.blue)}>44.1%</span>
       </Up>
     </ChapterFrame>
@@ -177,7 +179,7 @@ export const W23: React.FC = () => {
         </Up>
         <Up at={e3} style={{ position: 'absolute', left: 1400, top: 640, width: 500 }}>
           <div style={big(116, C.red)}>{loss}조</div>
-          <div style={{ ...lab, color: C.ink, lineHeight: 1.35 }}>2023 삼성 DS 영업손실<br />사상 최대</div>
+          <div style={{ ...lab, color: C.ink, lineHeight: 1.35 }}><span style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>’23 <Logo k="samsung" h={26} /> DS 영업손실</span><br />사상 최대</div>
         </Up>
       </div>
     </ChapterFrame>
