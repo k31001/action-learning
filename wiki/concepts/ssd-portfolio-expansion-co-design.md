@@ -1,9 +1,10 @@
 ---
 type: concept
-last_reviewed: 2026-10-10
+last_reviewed: 2026-10-12
 sources:
   - sources/articles/ai-inference-ssd-requirements-samsung-lineup-2026-10.md
   - sources/articles/qlc-waf-qos-op-factcheck-2026-10.md
+  - sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md
 ---
 
 # 공동 설계로 좋아지는 SSD 지표와 포트폴리오 확장: WAF · 꼬리 지연 → DWPD 영역 이동 (2026-10-10)
@@ -63,6 +64,21 @@ DWPD = P/E × (1 + OP) / (일수 × WAF)이므로 WAF만 1/3이 되면 DWPD는 3
 | 고용량 QLC | BM1743 · BM1773(245.76TB, FMS 2026 전시) | 객체 · 데이터셋 · 사용자 VM 디스크, 가중치 · RAG 읽기(적합하나 삼성 포지셔닝 없음 → 점선) |
 
 덱의 제품 이미지는 공식 사진을 쓸 수 없어 폼팩터 치수로 재현한 3D 렌더다(`outputs/presentation/assets/products/`, 실물 사진 아님).
+
+## 4.5 이 확장을 만들려면: 추론 스택 6층과 수명 정보 경로 (덱 4장 역량, 2026-10-12)
+
+> 사용자 지시(2026-10-12): 실행 전략의 역량을 1 · 2 · 3장 맥락에 맞게, AI DC 운영은 TCO · 추론 SLO 같은 용어 대신 기술 스택으로.
+
+| 층 | 대표 자산 | 삼성 위치 (⚠️ 과제팀 판단) |
+|---|---|---|
+| 추론 엔진 | vLLM · SGLang · TensorRT-LLM | 공백 (엔진은 connector 인터페이스만 노출) |
+| KV 캐시 관리자 | Dynamo KVBM · LMCache · Mooncake | 일부 (LMCache FDP 머지, Dynamo · Mooncake 기여 없음) |
+| 전송 · I/O | NIXL · GDS · io_uring · xNVMe | 일부 (xNVMe는 삼성 유지) |
+| 커널 · 파일 시스템 | Linux 6.16 write streams · XFS write streams · NVMe FDP | 일부 |
+| SSD 펌웨어 | FDP · pSLC(Mixed Media) · Large IU(Large Mapping) · GC | 강점 |
+| NAND | TLC · QLC · Z-NAND | 강점 |
+
+근거: [kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §1 · §2. 핵심은 **수명 정보(prefix 공유 · 세션 · 빈도)는 KV 캐시 관리자 층에 있는데 그것을 SSD 배치로 내려보내는 코드가 없다**는 점이다(같은 원장 §1.1 독해). §1 · §2의 WAF · 꼬리 지연 개선은 이 경로가 있어야 고객 시스템에서 나오므로, 실행 역량은 SSD만이 아니라 스택 전체를 읽고 이 경로(수명 정보 → FDP 핸들)를 고객과 함께 만드는 능력으로 정의한다.
 
 ## 5. 연결
 

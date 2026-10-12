@@ -4,7 +4,7 @@
   1 현황     데이터센터 응용마다 SSD 요구가 다르고, 삼성은 제품군별로 대응하고 있지만 AI 추론의 초고DWPD 영역은 아직 비어 있습니다
   2 추론 대응 AI 추론 수요는 용도마다 SSD 요구가 다르고, 그 요구를 채우는 핵심 기술은 고객과 함께 개발하고 최적화해야 합니다
   3 지표 · 포트폴리오 고객과 함께 WAF와 꼬리 지연을 낮추면, 같은 NAND로 지금은 닿지 못하던 추론 수요까지 빠르게 넓힐 수 있습니다
-  4 실행     고객 시스템 안으로 들어가는 새로운 방식이 필요하므로, 전략 고객과 계약 · 사람 · 역량으로 함께 설계합니다
+  4 실행     세 기술의 효과는 고객 시스템 안에서 나오므로, 전략 고객과 계약 · 역량 · 사람으로 함께 설계합니다
   참고 5 당위성(3장 링크 대상) · 6 사업 기회(QLC → TLC 수요) · 7 보안 기회 · 8 수요 전망
 
 규율: samsung-memory-ppt-design-skill v2.1(11절 시각 우선, 11.J 근거 사슬: 주장마다 데이터 그래프). 본문 18pt 이상 · 출처 15pt · em-dash 금지 · 액센트 Samsung Blue 하나.
@@ -1086,7 +1086,7 @@ d.notes(s, "참고 7장은 보안 기회입니다. 2장에서 모델 가중치�
         "보안 시장 자체의 규모나 Confidential Storage 시장 전망은 공개 자료에 없어서, 수요는 온프렘 AI의 성장으로 보여 드렸습니다.")
 
 # =============================================================== 6 실행
-s = d.slide(4, "실행 전략", "고객 시스템 안으로 들어가는 새로운 방식이 필요하므로,\n전략 고객과 계약 · 역량 · 사람으로 함께 설계합니다")
+s = d.slide(4, "실행 전략", "세 기술의 효과는 고객 시스템 안에서 나오므로,\n전략 고객과 계약 · 역량 · 사람으로 함께 설계합니다")
 S_EXEC = s
 C1, W1 = MX, 4.80
 CR, WR = C1 + W1 + 0.46, 6.05          # ② 역량 (가운데, 넓게)
@@ -1127,52 +1127,58 @@ rect(s, C1 + SW1 + 0.02, by1 - 0.035, 0.10, 0.035, fill=BLUE)
 tb(s, C1 + SW1 + 0.20, by0, 0.85, by1 - by0, [("기술", 18, True, BLUE), ("협력", 18, True, BLUE)], anchor=MID, spacing=1.0)
 d.chevron(s, CR - 0.31, 6.10, w=0.16, h=0.50)
 
-# ---- ② 역량 격자 (새 과제의 층이 위로)
-d.panel_head(s, CR, WR, 2, "역량: 고객처럼 보는 눈")
+# ---- ② 역량: 추론 스택 6층 × 삼성의 지금 위치 (근거: kv-cache-qlc-tech-stack-vendor-capability-2026-09 §1)
+d.panel_head(s, CR, WR, 2, "역량: 추론 스택 전체를 보는 눈")
 d.chevron(s, CP - 0.31, 6.10, w=0.16, h=0.50)
-tb(s, CR, BENCH_Y - 0.02, WR, 0.38, [[("고객의 지표  ", 16, False, GRAY), ("토큰당 비용 · GPU 가동률", 18, True, INK)]], anchor=MID)
-LW3, CWN, G3, CWF = 1.80, 1.40, 0.14, WR - 1.80 - 1.40 - 0.14
-cxn, cxf = CR + LW3, CR + LW3 + CWN + G3
-tb(s, cxn, NOW_Y, CWN, 0.36, [("지금", 18, True, GRAY_2)], align=C)
-tb(s, cxf, NOW_Y, CWF, 0.36, [("필요한 기술", 18, True, BLUE)], align=C)
-layers = [("AI DC 운영", "없음", "off", "TCO · 추론 SLO", BLUE),
-          ("KV 캐시 SW", "LMCache", "part", "Dynamo · Mooncake", BLUE),
-          ("커널 · I/O", "일부", "part", "io_uring · NIXL", BLUE),
-          ("SSD FW", "강점", "on", "FDP · QoS · destage", BLUE_T1),
-          ("NAND", "강점", "on", "", BLUE_T2)]
-RY3, RP3, RH3 = NOW_Y + 0.44, 0.60, 0.50
-for r, (nm, now_t, st, need, col) in enumerate(layers):
-    yy = RY3 + r * RP3
-    gap = r < 3
-    tb(s, CR, yy, LW3 - 0.08, RH3, [(nm, 18, True, BLUE if gap else GRAY)], anchor=MID)
+tb(s, CR, BENCH_Y - 0.02, WR, 0.38, [[("수명 정보는 ", 16, False, GRAY), ("KV 캐시 층", 17, True, INK), ("에, 배치는 ", 16, False, GRAY), ("SSD", 17, True, INK), ("에 있다", 16, False, GRAY)]], anchor=MID)
+STK = [("추론 엔진", "vLLM · SGLang · TensorRT-LLM", "gap"),
+       ("KV 캐시 관리자", "Dynamo · LMCache · Mooncake", "part"),
+       ("전송 · I/O", "NIXL · GDS · io_uring · xNVMe", "part"),
+       ("커널 · 파일 시스템", "write streams · XFS · NVMe FDP", "part"),
+       ("SSD 펌웨어", "FDP · pSLC · Large IU · GC", "on"),
+       ("NAND", "TLC · QLC · Z-NAND", "on")]
+SBW = 4.10                       # 층 막대 폭
+SY0, SRH, SG = NOW_Y - 0.02, 0.64, 0.07
+for r, (nm, kw, st) in enumerate(STK):
+    yy = SY0 + r * (SRH + SG)
     if st == "on":
-        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, WHITE)], fill=GRAY_2)
+        rect(s, CR, yy, SBW, SRH, fill=BLUE, shape=RR)
+        c1, c2, pill, pc, ptc = WHITE, BLUE_T2, "강점", WHITE, BLUE
     elif st == "part":
-        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, GRAY)], fill=PALE)
+        rect(s, CR, yy, SBW, SRH, fill=TINT, line=BLUE_T1, lw=1.25, shape=RR)
+        c1, c2, pill, pc, ptc = INK, GRAY, "일부", BLUE_T1, WHITE
     else:
-        label_box(s, cxn, yy, CWN, RH3, [(now_t, 18, True, GRAY)], fill=WHITE, line=GRAY_2, dash=True)
-    if need:
-        label_box(s, cxf, yy, CWF, RH3, [(need, 17, True, WHITE)], fill=col)
+        rect(s, CR, yy, SBW, SRH, fill=WHITE, line=GRAY_2, lw=1.25, shape=RR, dash=True)
+        c1, c2, pill, pc, ptc = INK, GRAY, "공백", WHITE, GRAY
+    tb(s, CR + 0.16, yy + 0.02, SBW - 1.10, 0.32, [(nm, 17, True, c1)], anchor=MID)
+    tb(s, CR + 0.16, yy + 0.32, SBW - 0.90, 0.30, [(kw, 15, False, c2)], anchor=MID)
+    if st == "gap":
+        label_box(s, CR + SBW - 0.86, yy + 0.14, 0.74, 0.36, [(pill, 15, True, ptc)], fill=pc, line=GRAY_2, dash=True)
     else:
-        rect(s, cxf, yy, CWF, RH3, fill=col, shape=RR)
+        label_box(s, CR + SBW - 0.86, yy + 0.14, 0.74, 0.36, [(pill, 15, True, ptc)], fill=pc)
+# 수명 정보가 KV 캐시 층에서 SSD 펌웨어까지 내려가야 한다 (지금은 그 코드가 없다)
+ax_ = CR + SBW + 0.14
+ya = SY0 + 1 * (SRH + SG) + SRH / 2
+yb = SY0 + 4 * (SRH + SG) + SRH / 2
+rect(s, ax_, ya - 0.10, 0.42, yb - ya + 0.20, fill=BLUE_T2, shape=MSO_SHAPE.DOWN_ARROW)
+tb(s, ax_ + 0.48, ya - 0.12, CR + WR - ax_ - 0.48, 0.62, [("수명 정보", 16, True, BLUE), ("prefix · 세션", 15, False, GRAY)], anchor=MID, spacing=0.95)
+tb(s, ax_ + 0.48, (ya + yb) / 2 - 0.42, CR + WR - ax_ - 0.48, 0.84, [("함께", 16, True, BLUE), ("만들", 16, True, BLUE), ("경로", 16, True, BLUE)], anchor=MID, spacing=0.95)
+tb(s, ax_ + 0.48, yb - 0.30, CR + WR - ax_ - 0.48, 0.62, [("SSD 배치", 16, True, BLUE), ("FDP 핸들", 15, False, GRAY)], anchor=MID, spacing=0.95)
 # 화두: CRM의 범위가 엔지니어까지 넓어진다 (관계도)
-QY = RY3 + 4 * RP3 + RH3 + 0.12
+QY = SY0 + 6 * (SRH + SG) + 0.10
 QH = BOT4 - QY
 rect(s, CR, QY, WR, QH, fill=WHITE, line=BLUE, lw=1.5, shape=RR)
-label_box(s, CR + 0.18, QY + 0.12, 0.80, 0.38, [("화두", 17, True, WHITE)], fill=BLUE)
-tb(s, CR + 1.08, QY + 0.10, WR - 1.2, 0.42, [[("고객 관계(CRM)를 ", 18, True, INK), ("엔지니어까지", 18, True, BLUE)]], anchor=MID)
-LCX, RCX, CHW, CHH2 = CR + 0.24, CR + 2.84, 1.16, 0.38
-tb(s, LCX, QY + 0.58, CHW, 0.30, [("삼성", 15, True, GRAY)], align=C, anchor=MID)
-tb(s, RCX, QY + 0.58, CHW, 0.30, [("고객", 15, True, GRAY)], align=C, anchor=MID)
+label_box(s, CR + 0.18, QY + 0.10, 0.80, 0.36, [("화두", 16, True, WHITE)], fill=BLUE)
+tb(s, CR + 1.08, QY + 0.08, WR - 1.2, 0.40, [[("고객 관계(CRM)를 ", 17, True, INK), ("엔지니어까지", 17, True, BLUE)]], anchor=MID)
+LCX, RCX, CHW, CHH2 = CR + 0.24, CR + 2.84, 1.16, 0.30
 CRM = [("경영진", "경영진", False), ("영업", "구매", False), ("엔지니어", "엔지니어", True)]
-RYS = [QY + 0.92 + i * 0.48 for i in range(3)]
+RYS = [QY + 0.54 + i * 0.34 for i in range(3)]
 for i, (l_, r_, hot) in enumerate(CRM):
     yy = RYS[i]
     label_box(s, LCX, yy, CHW, CHH2, [(l_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
     label_box(s, RCX, yy, CHW, CHH2, [(r_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
     rect(s, LCX + CHW + 0.04, yy + CHH2 / 2 - (0.03 if hot else 0.01), RCX - LCX - CHW - 0.08, 0.06 if hot else 0.02, fill=BLUE if hot else GRAY_2)
-label_box(s, LCX + CHW + 0.10, RYS[2] + 0.04, RCX - LCX - CHW - 0.20, 0.30, [("언어 · 문화", 15, True, BLUE)], fill=WHITE, line=BLUE, lw=1.0)
-# 범위 괄호: 지금(경영진 · 영업) 대 앞으로(엔지니어까지)
+label_box(s, LCX + CHW + 0.10, RYS[2] + 0.01, RCX - LCX - CHW - 0.20, 0.28, [("언어 · 문화", 15, True, BLUE)], fill=WHITE, line=BLUE, lw=1.0)
 bx1 = RCX + CHW + 0.20
 for (y0_, y1_, col, lab, off) in [(RYS[0], RYS[1] + CHH2, GRAY_2, "지금", 0.0), (RYS[0], RYS[2] + CHH2, BLUE, "앞으로", 0.80)]:
     xx = bx1 + off
@@ -1243,10 +1249,10 @@ tb(s, x + KW / 2 - 0.42, PY - 0.02, 0.84, 0.34, [("· · ·", 16, True, BLUE)], 
 d.fit(s, d.part("ssd"), x + KW / 2 - 0.34, PY + 0.62, 0.68, 0.40)
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
-d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 로고는 식별 표시")
+d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 추론 스택 지도(2026-09) · 로고는 식별 표시")
 d.notes(s, "4장 실행 전략입니다. 2장과 3장에서 본 FDP의 요구, 곧 데이터가 언제 지워지는지와 그것이 SSD의 배치 정책과 어떻게 맞물리는지는 고객 시스템 안에 있습니다. 그래서 지금까지와 다른 방식이 필요하고, 그 방식을 FDP에 집중합니다. 나머지 다섯 기술은 고객 요구를 정확한 스펙으로 받는 지금 방식을 다듬어 준비합니다. "
         "첫째, 계약입니다. 지금의 Multi-Year Deal, MYD는 여러 해의 수량과 가격을 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 MYD 위에 기술 협력을 쌓겠습니다. "
-        "둘째, 역량입니다. NAND와 SSD 펌웨어는 강점이고, 비어 있는 곳은 그 위입니다. KV 캐시 소프트웨어는 LMCache에서 시작했고 Dynamo와 Mooncake에는 아직 기여가 없습니다. 고객의 지표인 토큰당 비용과 GPU 가동률로 말하는 사람이 필요합니다. "
+        "둘째, 역량입니다. 가운데는 AI 추론 시스템을 위에서 아래까지 여섯 층으로 나눈 그림입니다. 맨 위 추론 엔진은 vLLM, SGLang, TensorRT-LLM이고, 그 아래 KV 캐시 관리자는 Dynamo, LMCache, Mooncake입니다. 그 아래로 전송과 I/O 라이브러리, 커널과 파일 시스템, SSD 펌웨어, NAND가 이어집니다. 삼성은 NAND와 SSD 펌웨어에서 강점이 있습니다. 1장의 포트폴리오와 3장의 FDP, pSLC, Large Mapping이 여기에 있습니다. 가운데 세 층은 일부입니다. LMCache에 FDP 지원이 머지되었고, xNVMe는 삼성이 유지하며, 커널 write streams와 XFS 작업에도 참여하고 있지만, Dynamo와 Mooncake에는 아직 기여가 없습니다. 추론 엔진 층은 비어 있습니다. 여기서 중요한 사실이 하나 있습니다. 데이터가 언제 버려질지, 곧 prefix를 공유하는지와 세션이 언제 끝나는지 같은 수명 정보는 KV 캐시 관리자 층에 있습니다. 그런데 그 정보를 SSD 배치로 내려보내는 코드는 지금 어느 층에도 없습니다. 3장의 WAF와 꼬리 지연 개선은 바로 이 경로가 있어야 나옵니다. 그래서 역량이란 SSD만이 아니라 스택 전체를 읽고, 수명 정보가 FDP 핸들까지 내려가는 경로를 고객과 함께 만드는 능력입니다. "
         "역량에서 화두를 하나 드리겠습니다. 지금까지 고객 관계 관리, CRM은 경영진과 경영진, 영업과 구매 사이의 일이었습니다. 앞으로는 엔지니어와 엔지니어 사이까지 넓어져야 합니다. 고객 엔지니어가 신뢰하는 상대는 같은 문제를 같은 언어로 푸는 엔지니어이고, 고객과 국가마다 다른 언어와 문화를 이해하는 것도 그 관계의 일부입니다. 엔지니어 수준의 고객 관계를 우리가 맡을 준비가 되어 있는지 함께 생각해 보면 좋겠습니다. "
         "셋째, 사람입니다. 이 역량을 고객 현장에서 쓰는 것이 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 Pod가 고객 AI 데이터센터 안에서 고객 엔지니어와 함께 일합니다. 핵심 업무는 세 가지입니다. "
         "하나, 고객 워크로드 측정과 분석입니다. 고객 트레이스로 쓰기 크기와 데이터 수명을 재서, 고객이 말한 요구와 실제 요구의 차이를 찾습니다. "

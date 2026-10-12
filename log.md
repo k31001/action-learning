@@ -2826,3 +2826,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - generate_portfolio_3d.py: draw(mode)로 바탕 층(축 · 바닥 · 지금 기둥)과 제품군별 확장 층 4장을 같은 카메라 · 같은 자르기로 출력(portfolio_3d_base / _qlc / _tlc / _hetlc / _slc.png), 전체 그림 portfolio_3d.png 유지
 - 덱: click_sequence(단계별 그룹 · 클릭마다 페이드인) 추가. 클릭 4번 = QLC 0.3 → 1 · TLC 1 → 3 · 고내구 TLC 3 → 9 · SLC급 30 → 100, 각 단계에 확장 층 + 카드 DWPD · 진입 수요 문구 + 카드 색 테두리. 번호 원은 맨 앞
 - 클릭 전 · 1번 · 4번 상태를 따로 렌더해 확인. 렌더 QA PASS. 아웃라인 · 보고서 v4.6, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.49.5 + updates, npm run build 통과
+
+## [2026-10-12] build | 고객 협력 전략 덱 v4.7: 4장 역량을 추론 스택으로 새로 쓰기
+- 사용자 지시: 실행 전략의 역량을 1 · 2 · 3장 맥락에 맞게, AI DC 운영은 TCO · 추론 SLO 대신 기술 스택으로, 시각화 개선
+- 4장 ② 역량 "추론 스택 전체를 보는 눈": 6층(추론 엔진 · KV 캐시 관리자 · 전송 · I/O · 커널 · 파일 시스템 · SSD 펌웨어 · NAND) × 삼성 위치(강점 · 일부 · 공백), 화살표 "수명 정보 → 함께 만들 경로 → SSD 배치(FDP 핸들)". CRM 화두 유지
+- 근거: `sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md` §1(수명 정보는 KV 캐시 관리자 층, SSD로 내려보내는 코드 없음). 위키 `ssd-portfolio-expansion-co-design.md` §4.5 신설
+- 제목 "세 기술의 효과는 고객 시스템 안에서 나오므로, 전략 고객과 계약 · 역량 · 사람으로 함께 설계합니다", 역량 노트 다시 씀, 출처 줄에 추론 스택 지도
+- 렌더 QA PASS. 아웃라인 · 보고서 v4.7, index 갱신. 대시보드 사본 · 웹 보기 재생성, 패치 v2.49.6 + updates
+- 별도: 파란 계열 채도 옵션(현재 · A −15% · B −30% · C −45%, HLS 명도 유지) 비교 그림을 사용자에게 제시, 선택 대기
