@@ -17,6 +17,16 @@ export const UPDATES = [
   {
     date: '2026-10-12',
     type: 'build',
+    version: 'v2.49.8',
+    title: '고객 협력 전략 덱 v4.9: 클릭 강조를 따뜻한 색으로 · 3장 클릭 한 번',
+    summary: '1 · 2장 애니메이션 강조(테두리 · 연결선 · 알약)를 파란 계열 대신 따뜻한 강조색 #E8590C로 바꾸고, 3장 포트폴리오 확장을 클릭 한 번에 네 제품군이 모두 나타나게 함.',
+    tags: ['발표자료', '디자인 시스템'],
+    items: [{ label: '토큰', detail: '디자인 스킬 --highlight #E8590C (클릭 강조 전용)' }, { label: '덱', detail: 'ssd-future-ready-strategy v4.9' }],
+    links: [],
+  },
+  {
+    date: '2026-10-12',
+    type: 'build',
     version: 'v2.49.7',
     title: '발표 디자인 시스템 v2.2: 눈 피로 완화 파란 팔레트(B+2)',
     summary: '덱 디자인 스킬의 파란 계열 4색을 채도 -30% · 밝기 +0.08로 바꾸고(#1428A0 → #3C4FA5 등), 이 스킬로 만든 두 덱(고객 협력 전략 v4.8 · TLC 시장 QLC로 v1.1)을 다시 생성함.',

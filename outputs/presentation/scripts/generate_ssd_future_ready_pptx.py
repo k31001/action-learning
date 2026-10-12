@@ -19,7 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 sys.path.insert(0, os.path.join(ROOT, ".claude", "skills", "samsung-memory-ppt-design-skill", "scripts"))
 
-from deck_helpers import (BLUE, BLUE_T1, BLUE_T2, CW, GRAY, GRAY_2, INK, LINE, MX, PALE, RIGHT, TINT,  # noqa: E402
+from deck_helpers import (BLUE, BLUE_T1, BLUE_T2, CW, HILITE, GRAY, GRAY_2, INK, LINE, MX, PALE, RIGHT, TINT,  # noqa: E402
                           WHITE, Deck)
 from pptx.enum.shapes import MSO_SHAPE  # noqa: E402
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
@@ -279,20 +279,20 @@ for r, (yr, sh) in enumerate(SHR):
             SEG[r] = (x0, y, w)
         acc += sh[j]
 
-# ---- 클릭 강조: 추론 카드 · 추론 포트폴리오 열 · 추론 수요 비중을 선으로 묶는다
+# ---- 클릭 강조(따뜻한 강조색 HILITE, 2026-10-12 사용자 지시): 추론 카드 · 추론 포트폴리오 열 · 추론 수요 비중을 선으로 묶는다
 HL = []
 cx0, cy0 = DXS[2] - 0.07, CT - 0.07
 cy1 = MT + 4 * (RH + RG) - 0.02
-HL.append(rect(s, cx0, cy0, DW + 0.14, cy1 - cy0, fill=None, line=BLUE, lw=4.0, shape=RR))
+HL.append(rect(s, cx0, cy0, DW + 0.14, cy1 - cy0, fill=None, line=HILITE, lw=4.5, shape=RR))
 for r in (0, 1):
     x0, y, w = SEG[r]
-    HL.append(rect(s, x0 - 0.03, y - 0.03, w + 0.06, 0.36, fill=None, line=BLUE, lw=3.0))
+    HL.append(rect(s, x0 - 0.03, y - 0.03, w + 0.06, 0.36, fill=None, line=HILITE, lw=3.5))
 _x = DXS[2] + DW / 2
 _ln = s.shapes.add_connector(1, *(int(v * 914400) for v in (_x, cy1, _x, SEG[0][1] - 0.03)))
-_ln.line.color.rgb = BLUE
+_ln.line.color.rgb = HILITE
 _ln.line.width = int(3.0 * 12700)
 HL.append(_ln)
-HL.append(rect(s, DXS[2] + DW - 1.62, cy0 - 0.20, 1.55, 0.38, fill=BLUE, shape=RR))
+HL.append(rect(s, DXS[2] + DW - 1.62, cy0 - 0.20, 1.55, 0.38, fill=HILITE, shape=RR))
 tb(s, DXS[2] + DW - 1.62, cy0 - 0.20, 1.55, 0.38, [("추론에 집중", 15, True, WHITE)], align=C, anchor=MID)
 HL.append(list(s.shapes)[-1])
 click_reveal(s, HL)
@@ -524,9 +524,9 @@ for k, (t, cap) in enumerate(TECHS6):
     mini(s, t, x + (TWD - 1.62) / 2, TY2 + 0.64, 1.62, 0.48)
     tb(s, x + 0.08, TY2 + TH2 - 0.38, TWD - 0.16, 0.34, [(cap, 15, True, GRAY)], align=C, anchor=MID)
     if t in FOCUS:
-        HL2.append(rect(s, x - 0.06, TY2 - 0.06, TWD + 0.12, TH2 + 0.12, fill=None, line=BLUE, lw=3.5, shape=RR))
+        HL2.append(rect(s, x - 0.06, TY2 - 0.06, TWD + 0.12, TH2 + 0.12, fill=None, line=HILITE, lw=4.0, shape=RR))
 # 클릭 강조 끝: 다음 장 예고
-HL2.append(rect(s, MX + 3 * (TWD + 0.14) - 0.06 - 3.30, TY2 - 0.44, 3.24, 0.36, fill=BLUE, shape=RR))
+HL2.append(rect(s, MX + 3 * (TWD + 0.14) - 0.06 - 3.30, TY2 - 0.44, 3.24, 0.36, fill=HILITE, shape=RR))
 tb(s, MX + 3 * (TWD + 0.14) - 0.06 - 3.30, TY2 - 0.44, 3.24, 0.36, [("세 기술은 다음 장에서 자세히 ▶", 15, True, WHITE)], align=C, anchor=MID)
 HL2.append(list(s.shapes)[-1])
 click_reveal(s, HL2)
@@ -701,8 +701,8 @@ for k, (nm, hx) in enumerate((("가중치 · RAG", "ECEEF1"), ("KV 오프로드"
     rect(s, _lx + 0.80, yy + 0.05, 0.30, 0.20, fill=_RGB.from_string(hx), line=GRAY_2, lw=0.5)
     tb(s, _lx + 1.16, yy, 2.0, 0.30, [(nm, 15, True, GRAY)], anchor=MID)
 
-# 클릭 애니메이션: 포트폴리오가 넓어진다 (① QLC → ② TLC → ③ 고내구 TLC → ④ SLC급, 클릭마다 확장 층 + 카드 문구)
-click_sequence(s, [STEP3[k] for k in ("qlc", "tlc", "hetlc", "slc")])
+# 클릭 애니메이션: 포트폴리오가 넓어진다 (클릭 한 번에 ① QLC · ② TLC · ③ 고내구 TLC · ④ SLC급 확장 층 + 카드 문구가 함께)
+click_reveal(s, [sh for k in ("qlc", "tlc", "hetlc", "slc") for sh in STEP3[k]])   # 2026-10-12: 클릭 한 번에 네 제품군 모두
 for _sh in MK3:                     # 번호 원을 맨 앞으로
     _el = _sh._element
     _el.getparent().append(_el)
@@ -716,7 +716,7 @@ d.notes(s, "3장은 SSD 차별화 요구가 어떻게 바뀌어 왔고, 그 변�
         "세 기술은 GC를 세 방향으로 줄입니다. Mixed Media는 작은 쓰기를 pSLC에 모아 QLC에는 큰 단위로만 쓰므로 블록이 덜 조각나 GC 빈도가 줍니다. Large Mapping은 매핑 단위에 맞춘 큰 쓰기만 받으니 부분 덮어쓰기와 매핑 갱신이 줄어 GC 횟수가 줍니다. FDP는 수명이 같은 데이터를 같은 블록에 모아, 블록이 통째로 지워지니 옮길 데이터가 거의 없어 GC 시간이 줍니다. GC가 드물고 짧아지면 지연이 예측 가능해집니다. "
         "그 결과 지표가 좋아집니다. WAF에서 1을 뺀 값이 호스트 쓰기 하나당 GC가 옮기는 양인데, 삼성 엔지니어가 Meta의 CacheLib 안에 FDP를 구현했을 때 WAF가 3.22에서 1.03으로 68퍼센트, GC 복사량은 2.22에서 0.03으로 줄었습니다. WAF는 SSD만 잘 만들어서는 3 근처에서 더 내려가지 않던 지표이고, 그 이유는 참고 5장에 정리해 두었습니다. 상자를 누르면 그 장으로 갑니다. "
         "꼬리 지연도 줍니다. 삼성 PM9D3a 7.68테라바이트에서 RocksDB에 FDP 최적화 분류를 적용하자 p99.9 꼬리 지연이 55퍼센트 줄었고, ZNS, Valet, WALTZ 같은 공개 실험에서도 1.5배에서 6배 줄었습니다. 다만 꼬리 지연 측정은 모두 TLC이고, QLC나 KV 캐시 계층의 첫 토큰 p99를 직접 잰 결과는 아직 없으며, 칩 사이 큐 불균형이 주원인이라는 반대 연구도 있습니다. "
-        "이제 포트폴리오입니다. 오른쪽 3D 그림의 바닥은 정격 DWPD와 최대 용량, 높이는 꼬리 지연이 낮을수록 위입니다. 처음에는 지금의 제품군 기둥만 보이고, 클릭할 때마다 QLC, TLC, 고내구 TLC, SLC급 순서로 WAF와 꼬리 지연을 낮춘 뒤 닿는 영역이 점선 상자로 넓어지며 오른쪽 카드에 DWPD 변화가 나타납니다. 같은 NAND와 같은 OP에서 WAF가 3에서 1로 내려가면 정격 DWPD는 약 3배가 됩니다. 과제팀 산술입니다. "
+        "이제 포트폴리오입니다. 오른쪽 3D 그림의 바닥은 정격 DWPD와 최대 용량, 높이는 꼬리 지연이 낮을수록 위입니다. 처음에는 지금의 제품군 기둥만 보이고, 클릭하면 QLC, TLC, 고내구 TLC, SLC급 네 제품군이 WAF와 꼬리 지연을 낮춘 뒤 닿는 영역이 점선 상자로 한꺼번에 넓어지며 오른쪽 카드에 DWPD 변화가 나타납니다. 같은 NAND와 같은 OP에서 WAF가 3에서 1로 내려가면 정격 DWPD는 약 3배가 됩니다. 과제팀 산술입니다. "
         "BM1743 같은 QLC가 0.3에서 1 DWPD가 되면 지금 TLC가 맡는 KV 캐시 오프로드까지 원가 우위로 들어갈 수 있고, PM1753 같은 고성능 TLC가 1에서 3 DWPD가 되면 쓰기가 많은 KV를 맡을 수 있습니다. PM1755 같은 고내구 TLC는 3에서 9 DWPD로 초고DWPD의 입구까지 가고, SLC급에서 WAF를 낮추면 30 DWPD가 100 근처로 올라갑니다. 초고DWPD가 필요해지면 TLC의 WAF를 낮춰 대응할지, SLC급을 극한으로 올릴지 요구에 따라 고를 수 있습니다. "
         "정리하면, 새로운 차별화 요구에 대비한 기술을 미리 준비해야 미래의 추론 수요에 능동적으로 대응하는 제품 포트폴리오를 완성할 수 있습니다. 꼬리 지연 높이는 정성 등급이고, 제품 이미지는 형태 재현입니다.")
 
