@@ -2878,3 +2878,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 기대 효과 3개(공간 효율성 · 시황 변화 대응력 · 설비 통일성·선단화) 60% + 운영 제언(반도체연구소 / MTC 산하 메모리 BEOL 통합조직) 40% 구성. 차트는 수치 없는 개념도
 - 가정 기반의 기획 장표라 sources·wiki에는 넣지 않았다(위키 근거 체인 밖). 대시보드 발표자료 탭 동기화도 시안 확정 전이라 건너뛰었다
 - 산출물: generate_fab_common_platform_pptx.py, fab-common-platform-options.pptx(+미리보기 PDF), fab-common-platform-outline.md. qa_audit PASS(최소 pt · em-dash)
+
+## [2026-10-13] build | Fab 통합 운영 Common Platform 1장 시안 v2.0 (건축형 3종)
+- 사용자 피드백: v1.0 시안 C(건축형)의 형식·그림 크기가 가장 좋지만 그림이 단조롭다 → v1.0 시안 3장을 모두 지우고 새 3장으로 교체
+- 세 장 모두 지붕(결론) · 기둥(그림 + 항목 벽돌) · Bonding 기초 · 조직 Bonding 형식. 기둥 그림을 5.30 x 1.80in로 키우고 스타일만 달리했다: 1 아이소메트릭 · 2 메커니즘(와플 · 수요 곡선 · 막대) · 3 Fab 도면(OHT · Lot 흐름 · 모델 매트릭스)
+- 그림 생성기 generate_fab_common_platform_figs.py 신설(matplotlib, 9장), 슬라이드 생성기 v2.0으로 재작성. 통합조직에 기능 3개(표준 Layout · 설비 Pool · 통합 구매) 표기
+- qa_audit PASS. 위키 · 대시보드는 v1.0과 같은 이유로 건너뜀
