@@ -108,7 +108,7 @@
 - [wiki/concepts/energy-constraints.md](wiki/concepts/energy-constraints.md) — AI DC 전력 수요·SMR·천연가스
 - [wiki/concepts/ai-datacenter-buildout.md](wiki/concepts/ai-datacenter-buildout.md) — 전 세계 AI DC 착공 트래커 (9단계·47건·55.9GW) → 메모리 수요 선행 지표
 - [wiki/concepts/demand-inflection-ewi.md](wiki/concepts/demand-inflection-ewi.md) — 메모리 수요 변곡 조기경보 (인과 사슬 선행지표·괴리 로직·공급 축·SCM 공급망 축)
-- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-07-04 제약지수 전력72·CAPEX40·파운드리50·패키징67)
+- [wiki/concepts/bottleneck-model-2030.md](wiki/concepts/bottleneck-model-2030.md) — 2030 병목 정량 모델 (전력·CAPEX·파운드리·패키징 min() 제약 → HBM 2.88EB·DRAM 2.50EB 수급·가격 균형·모니터링 설계, 2026-10-13 제약지수 전력73·CAPEX42·파운드리51·패키징65 (07-04 전력72·CAPEX40·파운드리50·패키징67)
 - [wiki/concepts/dram-antitrust-litigation.md](wiki/concepts/dram-antitrust-litigation.md) — DRAM 반독점 집단소송(2026-06-25 제소, Samsung·SK하이닉스·Micron 공동 피고) — 삼성 규제·평판 리스크 추적 (NEW)
 
 ### 신규 전략 인접영역 (시니어 파트너 인터뷰 2026-06-11 기반)
@@ -225,6 +225,7 @@
 - [sources/articles/sca-ewi-baseline-2026-07-04.md](sources/articles/sca-ewi-baseline-2026-07-04.md) — SCA 전환 EWI 3종 기준선(경쟁사 공시 1건/분기·Samsung 공동설계 0건·커스텀 HBM ~0%, HBM4E 2027 ~40% 전망)
 - [sources/articles/palantir-fde-model-2026-07.md](sources/articles/palantir-fde-model-2026-07.md) — Palantir Forward Deployed Engineer(FDE, 내부코드 "Delta") 모델 — 고객사 상주 엔지니어, Anthropic·OpenAI GTM 채택, 개발실 Co-Design Pod 벤치마크
 - [sources/articles/star-engineer-context-2026-07.md](sources/articles/star-engineer-context-2026-07.md) — 스타 엔지니어 논거: 송길영 『호명사회』(조직→개인 이름) + 2026 메모리 성과급 급등(삼성 ~6억·SK 상한철폐) → DE 채용 협상 우위
+- [sources/articles/october-2026-market-update-2026-10-13.md](sources/articles/october-2026-market-update-2026-10-13.md) — 2026-10-13 병목 정기 점검: CoWoS 2028말 26만 장·2nm/3nm 캐파·TSMC 9월 매출 +54.6%·4Q26 계약가·Counterpoint 2Q26 점유율·변압기 160주+ (SemiAnalysis·TechInsights 신규 근거는 미확인)
 - [sources/articles/july-2026-market-update-2026-07-04.md](sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 정기 점검(SemiAnalysis·Counterpoint·TechInsights 우선 수집): PJM 개편 큐·ERCOT 큐 4배 급증·변압기 리드타임 5년·빅5 CapEx 추가 상향(MS $190B)·Dell'Oro $1조 돌파·JPMorgan $5.5조·ASML High-NA 2029 연기·HBM4 마이크로범프 결정·SK하이닉스 나스닥 상장·반독점 소송·DRAM Q3 가격 감속 조짐
 - [sources/articles/apple-cxmt-china-dram-2026-07-08.md](sources/articles/apple-cxmt-china-dram-2026-07-08.md) — 애플이 중국 내수용 기기에 CXMT DRAM 기술 검증 착수(FT 2026-07-08)·미 행정부 사용 승인 로비·CXMT 1260H 리스트·YMTC 2022 전례·DRAM 계약가 +55~60%·CXMT 캐파점유 11%→15%(2028)·삼성·SK 과점 균열/애플 price leverage
 - [sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md](sources/articles/samsung-hbm4-volume-order-pending-2026-07-17.md) — 삼성 HBM4 NVIDIA 인증(06-05 Vera Rubin 3사 인증) 통과에도 볼륨 발주 미전환·매출 유상 평가용 샘플 수준(Winbuzzer 07-17)·SK Rubin 2/3+ 락인 / 확증 신호: 빅테크 2026 CapEx ~$725B(+77% YoY)·GPU 임대가 firming(H200 +8% YoY)·DRAM Q3 +13~18% 감속·MATCH 위원회 단계·CXMT HBM 지연

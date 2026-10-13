@@ -1,7 +1,7 @@
 ---
 type: concept
-last_reviewed: 2026-07-04
-sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md]
+last_reviewed: 2026-10-13
+sources: [sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md, sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md, sources/articles/june-2026-market-update-2026-06-13.md, sources/articles/june-2026-market-update-2026-06-14.md, sources/articles/july-2026-market-update-2026-07-04.md, sources/articles/october-2026-market-update-2026-10-13.md]
 ---
 
 # 2030 병목 정량 모델 (Bottleneck Model 2030)
@@ -326,6 +326,28 @@ flowchart LR
 
 ---
 
+### 종합 판독 (2026-10-13)
+
+#### 제약지수 업데이트 (2026-10-13, 이전 2026-07-04 대비)
+
+| 병목 | 이전 지수 | 현재 지수 | 변동 | 주요 근거 |
+|---|---:|---:|---:|---|
+| **전력** | 72 | **73** | **▲ +1** | 변전소 변압기 리드타임 160주+(2023 ~140 → 2025 ~150 → 2026 160+, Wood Mackenzie 인용)·일부 고압 36~48개월, PJM 인터커넥션 평균 ~40개월 — 완화 신호 없이 설비 병목 지속 ([october-2026-market-update-2026-10-13.md](../../sources/articles/october-2026-market-update-2026-10-13.md) §5). 07-04 원장의 "변압기 최대 5년"은 최악 사례로 재분류(평균 ~3년+) |
+| **CAPEX/ROI** | 40 | **42** | **▲ +2** | 수요 강세: 빅4 2Q26 CapEx $1,660억(YoY +87%)·Amazon 2026 ~$220B로 상향·2027 컨센서스 $1조(Moody's)~$1.4조(Goldman). 그러나 Nvidia·Oracle CDS 확대 등 개별 신용 tell(기존 [macro-reassessment-signals-2026-10-13.md](../../sources/articles/macro-reassessment-signals-2026-10-13.md))과 CapEx 대비 현금흐름 압박으로 하방 민감도 증가. 데이터센터 HY 프리미엄은 압축(발행 여건 양호). HY OAS 10월 직접 수치는 미확인 |
+| **파운드리** | 50 | **51** | **▲ +1** | TSMC 9월 매출 +54.6% YoY·3Q 매출 NT$1.494조(가이던스 상단 상회)·2026 성장 가이던스 30%+. 2nm 2026말 9만 장/월(본 페이지 기준 ~10만 장보다 소폭 하회)→2027 중반 11만, 3nm 18→21만 장으로 증설 폭 완만 — AI 배정 여유 소폭 축소 ([TrendForce News 2026-09-14](https://www.trendforce.com/news/2026/09/14/news-tsmc-reportedly-targets-22-2nm-16-3nm-capacity-boost-by-mid-2027-cowos-to-double-by-2028/)) |
+| **패키징** | 67 | **65** | **▼ −2** | CoWoS 2026말 ~13만 장/월→2028말 26만 장(2배, AP7·애리조나), 2027말 ~17만 장(KGI·TrendForce 계열), TrendForce는 2.5D 부족이 2027년부터 완화 전망. 하이브리드본딩·CoPoS 지연은 07-04와 동일하나 공급 경로가 가시화 |
+
+**하방 위험 순서 불변: CAPEX/ROI > 전력 ≈ 패키징 > 파운드리** (지수 절대값은 전력 73 > 패키징 65 > 파운드리 51 > CAPEX 42). 2개 분기 만에 전력만 3연속 상승(68→70→72→73), 패키징은 완화 재개.
+
+**모델 상수 변경 없음**: 2030 자원량 낮음/기준/높음·탄력도·수급 EB는 유지. 이번 근거는 2026~28 단기 캐파 경로로, 2030 유효 CoWoS(0.70백만 장/년, HBM 컴퓨트 귀속분)와 직접 대응되지 않아 다음 분기 재보정 대상으로 남긴다. 상류 드라이버(§5)·충격 시나리오도 이번에는 재판정하지 않음(근거 부족).
+
+**수집 한계**: SemiAnalysis 2026-10 신규 글·TechInsights HBM4 분해·Counterpoint Price Tracker(구독) 본문은 확인하지 못했다. 4Q26 계약가는 TrendForce 원문이 아닌 2차 보도.
+
+#### 2026-10-13 핵심 신규 신호
+
+- **메모리 시장**: 4Q26 계약가 전망 범용 DRAM +10~15%·HBM 포함 전체 DRAM +15~20%·NAND +15~20% (2차 보도), 상승 폭은 2Q(+58~63%)→3Q(+13~18%)→4Q로 둔화 지속하나 방향은 상승 — [hbm-market.md](hbm-market.md)·[demand-inflection-ewi.md](demand-inflection-ewi.md) 가격 축과 정합.
+- **점유율 (Counterpoint 2Q26)**: DRAM 삼성 38~39%·SK hynix 25~26%·Micron 24~25%·CXMT 10%, HBM SK hynix 50%·삼성 33%·Micron 18%(SK hynix 2Q25 64%에서 하락). 본 페이지 공급사별 2030 유효 캐파(SK 1.24·삼성 0.94·Micron 0.71EB, HBM)의 삼성·Micron 비중 상향 방향과 정합하나 모델 값은 유지.
+
 ### 종합 판독 (2026-07-04)
 
 #### 제약지수 업데이트 (2026-07-04, 이전 2026-06-14 대비)
@@ -362,4 +384,5 @@ flowchart LR
 - [sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md](../../sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md) — KPI 체계·제약지수·경보·대응 매뉴얼·PoC 계획
 - [sources/articles/june-2026-market-update-2026-06-13.md](../../sources/articles/june-2026-market-update-2026-06-13.md) — 2026-06-13 병목 제약지수 갱신 데이터
 - [sources/articles/june-2026-market-update-2026-06-14.md](../../sources/articles/june-2026-market-update-2026-06-14.md) — 2026-06-14 병목 제약지수 갱신 데이터 (PJM·DOE·ERCOT·Micron·TSMC CoWoS·DRAM 가격)
+- [sources/articles/october-2026-market-update-2026-10-13.md](../../sources/articles/october-2026-market-update-2026-10-13.md) — 2026-10-13 병목 제약지수 갱신 데이터 (CoWoS 2028말 26만 장·2nm/3nm 캐파·TSMC 9월 매출·4Q26 계약가·Counterpoint 2Q26 점유율·변압기 160주+)
 - [sources/articles/july-2026-market-update-2026-07-04.md](../../sources/articles/july-2026-market-update-2026-07-04.md) — 2026-07-04 병목 제약지수 갱신 데이터 (PJM 개편 큐·ERCOT 4배 급증·변압기 리드타임·CAPEX 추가 상향·ASML High-NA 연기·HBM4 마이크로범프 결정·DRAM 가격 감속 조짐)

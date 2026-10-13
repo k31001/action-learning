@@ -841,7 +841,15 @@ export default function BottleneckModel() {
                 </p>
                 <SourceLink source="wiki/concepts/bottleneck-model-2030.md (전거: sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md · sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)" />
                 <div className="mt-1 text-[10px] text-zinc-400">
-                  이전 기준일 {PREV_MODEL_ASOF} 대비: 전력 <span className="text-red-500 font-semibold">▲+4</span> · CAPEX <span className="text-emerald-500 font-semibold">▼−2</span> · 파운드리 <span className="text-emerald-500 font-semibold">▼−2</span> · 패키징 <span className="text-emerald-500 font-semibold">▼−2</span>
+                  이전 기준일 {PREV_MODEL_ASOF} 대비:{' '}
+                  {BOTTLENECKS.map((bn, i) => {
+                    const d = bn.currentIndex - PREV_INDICES[bn.id]
+                    return (
+                      <span key={bn.id}>
+                        {i > 0 && ' · '}{bn.name === '선단 파운드리' ? '파운드리' : bn.name === '첨단 패키징' ? '패키징' : bn.name} <span className={d > 0 ? 'text-red-500 font-semibold' : d < 0 ? 'text-emerald-500 font-semibold' : 'text-zinc-500 font-semibold'}>{d > 0 ? '▲+' : d < 0 ? '▼−' : '■ '}{Math.abs(d)}</span>
+                      </span>
+                    )
+                  })}
                 </div>
               </div>
               <div className="ml-auto flex flex-wrap items-center gap-2 text-[11px]">

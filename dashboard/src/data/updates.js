@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-13 (병목 모델 정기 점검) ─────────────────────────────────────────
+  {
+    date: '2026-10-13',
+    type: 'ingest',
+    version: 'v2.49.16',
+    title: 'Bottleneck Model 정기 점검 — 전력 73(▲+1)·CAPEX 42(▲+2)·파운드리 51(▲+1)·패키징 65(▼−2), 이전(07-04) 대비 변동폭 자동 표시',
+    summary:
+      'TrendForce(CoWoS 2028말 26만 장/월·2nm/3nm 캐파)·TSMC 9월 매출(+54.6% YoY)·4Q26 계약가·Counterpoint 2Q26 점유율·Wood Mackenzie 변압기 리드타임을 반영해 4대 병목 제약지수를 갱신했다. 전략·시나리오 확률 변경은 없다(근거 부족).',
+    tags: ['Bottleneck Model', 'CoWoS', 'TSMC', 'Counterpoint', 'TrendForce', '전력', 'CAPEX', '제약지수'],
+    items: [
+      { label: '제약지수 변동 (07-04 → 10-13)', detail: '전력 72→73(▲+1, 변압기 160주+·인터커넥션 ~40개월) · CAPEX/ROI 40→42(▲+2, 수요 강세에도 신용 tell 확대) · 파운드리 50→51(▲+1, 3nm 완판·2nm 증설 완만) · 패키징 67→65(▼−2, CoWoS 2028말 26만 장 경로 가시화)' },
+      { label: '대시보드 변동폭 표시 동적화', detail: 'BottleneckModel 상단의 이전 대비 Δ 문구가 하드코딩이던 것을 PREV_INDICES와 currentIndex 차이로 자동 계산하도록 변경(기존 문구 전력 ▲+4는 06-14 값 70→72와도 불일치했음)' },
+      { label: '모델 상수·전략 변경 없음', detail: '2030 자원량·탄력도·수급 EB 유지(단기 캐파 경로는 2030 유효 CoWoS와 직접 대응 안 됨 → 다음 분기 재보정). 전략 D/RS 추가·삭제 없음, 시나리오 확률 유지' },
+      { label: '수집 한계', detail: 'SemiAnalysis 2026-10 신규 글·TechInsights HBM4 분해는 확인 불가, Counterpoint Price Tracker는 구독 전용, 4Q26 계약가는 2차 보도. TSMC·하이퍼스케일러 3Q 실적 발표 후 재점검 필요' },
+      { label: '위키·산출물 동기화', detail: 'sources/articles/october-2026-market-update-2026-10-13.md 신설, wiki/concepts/bottleneck-model-2030.md 종합 판독 추가, 보고서 §2.2.2 표·slide-outline 노트·index.md 갱신' },
+    ],
+    links: [
+      { label: 'sources/articles/october-2026-market-update-2026-10-13.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/october-2026-market-update-2026-10-13.md' },
+      { label: 'wiki/concepts/bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-10-13 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-10-13',

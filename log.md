@@ -2918,3 +2918,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 ## [2026-10-13] build | merge: origin/main(Fab 통합 운영 시안 v2.1, dashboard v2.49.13) 반영, 3-C 시안 대시보드 번호 v2.49.14로 재배정
 - 메인에 먼저 올라온 Fab 통합 운영 1장 시안 작업과 병합. 충돌(.gitignore 예외 · presentations.js · presentationPreviews.js · updates.js · log.md)은 양쪽 항목을 모두 살림(발표자료 · 업데이트 목록은 3-C 시안을 맨 위에)
 - 같은 번호 v2.49.13을 피해 3-C 시안 발표자료 탭 등록을 v2.49.14로 재배정(version.js · updates)
+
+## [2026-10-13] ingest | Bottleneck Model 정기 점검 — 제약지수 갱신·변동폭 표시 (dashboard v2.49.16)
+- 스케줄 지시: SemiAnalysis·Counterpoint·TechInsights 등 최신 데이터 검색 → 보고서·대시보드·발표자료 반영, Bottleneck Model 수치 갱신 + 지난 업데이트 대비 변동폭 표시
+- 수집: `sources/articles/october-2026-market-update-2026-10-13.md` 신규(TrendForce CoWoS/2nm/3nm 캐파·TSMC 9월 매출·4Q26 계약가·Counterpoint 2Q26 점유율·변압기 리드타임·CAPEX/신용). SemiAnalysis 10월 신규 글·TechInsights HBM4 분해 미확인, Counterpoint 가격 트래커는 구독 전용 — 한계를 원장에 명시
+- 제약지수 07-04→10-13: 전력 72→73(▲+1) · CAPEX 40→42(▲+2) · 파운드리 50→51(▲+1) · 패키징 67→65(▼−2). 하방 위험 순서 불변
+- 대시보드: `bottleneckModel.js` MODEL_ASOF/PREV_INDICES/currentIndex/indexNote 갱신, `BottleneckModel.jsx`의 하드코딩 Δ 문구를 계산식으로 교체(기존 ▲+4는 데이터와 불일치), updates.js 항목, v2.49.16(패치)
+- 위키·산출물: bottleneck-model-2030.md 종합 판독(2026-10-13) 추가, 보고서 §2.2.2 표·slide-outline 노트·index.md 갱신. PPTX 본문 수치는 구조 변경 없어 재생성 건너뜀(PPTX 미커밋)
+- 전략 수정·추가·삭제 없음: 근거가 단기 캐파 경로뿐이라 D/RS 변경 요건 미달. 모델 상수(2030 자원량·탄력도)도 유지, 다음 분기 재보정 대상
