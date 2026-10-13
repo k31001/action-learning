@@ -15,6 +15,16 @@
 
 export const UPDATES = [
   {
+    date: '2026-10-13',
+    type: 'build',
+    version: 'v2.49.12',
+    title: '「네 번의 겨울」 영상 v2.6: ’19 삼성 NAND 점유율 33.3% 보강 · 교훈 장면 메시지만',
+    summary: '’19 장면에 TrendForce 1Q20 기준 삼성 점유율 DRAM 44.1% · NAND 33.3%(모두 1위)를 함께 보여 주고, 교훈 장면의 세부 줄을 빼 메시지 한 줄만 남김.',
+    tags: ['발표자료', '영상', 'TrendForce'],
+    items: [{ label: '소스', detail: 'trendforce-1q20-nand-revenue-ranking-2026-10-13.md (원문 표 확인)' }, { label: '영상', detail: 'four-winters.mp4 115.8초 · 장 시각 갱신' }],
+    links: [{ label: 'TrendForce 1Q20 NAND 순위', href: 'https://www.trendforce.com/presscenter/news/20200525-10332.html' }],
+  },
+  {
     date: '2026-10-12',
     type: 'build',
     version: 'v2.49.10',

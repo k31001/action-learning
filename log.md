@@ -2860,3 +2860,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 사용자 지시: v2.4 의 직설 교체는 정서가 살지 않음 → 「심다」 표현을 되살림(교훈 제목·마커, 대사 l1·l2 는 v2.3 음원으로 복원). CI · ’YY 연도 표기는 유지
 - 결론을 「지금! 무엇을 심을 것인가?」로 바꿈(화면·대사). z2 는 재합성하고, 「지금!」 뒤에 0.2초 쉼을 넣음. 받아쓰기로 검증
 - 113.4초. 대시보드 영상 사본·설명을 갱신, v2.49.10, npm run build 통과
+
+## [2026-10-13] ingest+build | TrendForce 1Q20 NAND 순위 수집 · 「네 번의 겨울」 v2.6 (dashboard v2.49.12)
+- 사용자 요청: ’19 장면에 삼성 NAND 점유율 보강. TrendForce 1Q20 브랜드 NAND 매출 순위(2020-05-25)를 원문 표로 확인했다. 삼성 33.3%(1위, $4,501M), KIOXIA 19.0%, WDC 15.3%, Micron 11.2%, SK hynix 10.7%, Intel 9.9%
+- sources/articles/trendforce-1q20-nand-revenue-ranking-2026-10-13.md 를 신규 저장. wiki/downturn/downturn-history.md 2019 결과에 NAND 33.3% 를 추가하고 index.md 를 갱신했다
+- 영상: ’19 화면에 DRAM 44.1% · NAND 33.3%(모두 1위)를 표시하고, 대사 d3 를 재합성·검증했다. 교훈 장면의 「투자한 것 · 놓친 것」 세부 줄은 빼고 메시지만 남겼다(사용자 지시)
+- 115.8초. 대시보드 영상 사본·장 시각·길이를 갱신, v2.49.12, npm run build 통과
