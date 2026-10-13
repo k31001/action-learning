@@ -1,6 +1,6 @@
 ---
 type: presentation-outline
-status: v1.0 시안 3종 (2026-10-13, 사용자 선택 대기). 같은 한 장을 세 가지 시각 언어로 만든 선택용 덱
+status: v1.1 시안 3종 (2026-10-13, 전략 1 본딩 사진 · 전략 2 3D DRAM 이미지로 교체, 사용자 선택 대기). v1.0 같은 한 장을 세 가지 시각 언어로 만든 선택용 덱
 deck: outputs/presentation/uncertainty-3c-strategy-options.pptx (시안 A · B · C 3장, PPTX 본체 커밋 · 생성기로 재현)
 generator: outputs/presentation/scripts/generate_uncertainty_3c_pptx.py
 design: .claude/skills/samsung-memory-ppt-design-skill (v2.2: 11절 시각 우선, 20 × 11.25in, 본문 18pt 이상 · 출처 15pt, 액센트 Samsung Blue #3C4FA5 하나)
@@ -44,8 +44,9 @@ design: .claude/skills/samsung-memory-ppt-design-skill (v2.2: 11절 시각 우�
 
 - **근거 사슬(11.J)**: 전략 체계 개념도라 수치 주장이 없다. 시안 B 원뿔은 데이터가 아니라 "개념도"로 표기했다. 수치를 넣게 되면 출처와 그래프를 함께 붙인다.
 - **고객명 미표기(7절)**: 가속기 · 고객은 A · B · C로만 그렸다. 실제 고객사 로고는 보안 검토 뒤 넣는다.
-- **해석이 들어간 부분**: C1 "수요에 따라 DRAM ↔ NAND 전환", 전략 2 그림의 HBM Base Die(= 가속기별 Custom Logic 자리)는 사용자 설명을 그림으로 옮긴 해석이다. 다르면 문구 · 그림을 바꾼다.
-- 부품 이미지는 3D 렌더(`assets/survival/render_*.png`). 공식 사진을 `assets/photos/<dram|nand|hbm|ssd|server>.png`로 넣고 다시 돌리면 교체된다.
+- **해석이 들어간 부분**: C1 "수요에 따라 DRAM ↔ NAND 전환", 시안 A 전략 2 C3 그림(메모리 적층 아래 가속기별 Logic Die = Custom Logic 자리)은 사용자 설명을 그림으로 옮긴 해석이다. 다르면 문구 · 그림을 바꾼다.
+- 전략 이미지(v1.1): 전략 1 = 삼성반도체 FMS 2026 전시의 **V10 Bonding V-NAND** 적층 모형 사진(`assets/photos/bonding.jpg`, 출처는 같은 폴더 README), 전략 2 = **3D DRAM 구조 3D 렌더**(`assets/survival/render_dram3d.png`, `render_parts/render.html`의 `dram3d`: 셀 층 8단 수평 적층 · 누운 커패시터 · 수직 비트라인 · 계단형 워드라인 접점 · 아래 Peri 다이 본딩). 3D DRAM은 개발 단계라 공개된 실물 사진이 없다(삼성은 Memcon 2024 · ISSCC 2026에서 개념도만 공개). 사진이 생기면 `assets/photos/dram3d.png`로 넣고 다시 돌리면 교체된다. 전략 3은 SSD · 서버 3D 렌더 그대로.
+- 시안 B도 전략 행 머리의 아이콘을 전략 이미지로 바꿨다(세 시안 모두 같은 이미지).
 
 ## 재생성
 
@@ -62,3 +63,11 @@ bash .claude/skills/samsung-memory-ppt-design-skill/scripts/qa_render.sh outputs
 
 - `qa_audit.py` PASS: 3장 모두 본문 16pt 이상(도해 라벨 16, 본문 18~24), 출처 15pt, em-dash · en-dash 0.
 - 렌더에서 고친 것: 시안 B 원뿔이 납작하게 그려짐(freeform 로컬 좌표 정수 반올림 → EMU로 넘김), 시안 A 좁은 칸 줄바꿈(Peri 타일 글자 하나, 계단 라벨 폭, 설명 짧게), 시안 B · C 설명 의미 단위 수동 줄바꿈, 시안 A 화살표 아이콘 겹침.
+
+## v1.0 → v1.1 변경 (2026-10-13 사용자 지시)
+
+| 지시 | 반영 |
+|---|---|
+| 전략 1은 반도체 패키지 본딩 기술 관련 사진 | 삼성반도체 FMS 2026 뉴스룸 사진에서 V10 Bonding V-NAND 적층 모형(층 사이 본딩 접점이 보이는 실물 모형)을 잘라 `assets/photos/bonding.jpg`. 세 시안의 전략 1 이미지(이전 DRAM 모듈 + NAND 칩 렌더)를 교체, 사진에는 얇은 테두리 |
+| 전략 2는 3D DRAM 사진 | 공개 실물 사진이 없어 3D DRAM 구조를 3D 렌더로 새로 만듦(`dram3d`). 이전 HBM 패키지 렌더를 교체, 출처 줄에 "3D 렌더(개념)" 명시. 시안 A 전략 2 C3 캡션 "Base Die" → "Logic Die" |
+| (연동) | 시안 B 전략 행 머리 아이콘 → 전략 이미지, 이름 18pt. 시안 A 이미지 칸 1.28 → 1.50in. 출처 줄 · 발표자 노트에 이미지 설명 추가 |

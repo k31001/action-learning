@@ -2879,3 +2879,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 아이콘: Tabler Icons(MIT) 16종을 `render_parts/render_icons.mjs`(신규, headless Chromium)로 Blue · 흰색 · 그레이 PNG 생성 → `assets/icons/`. 부품은 기존 3D 렌더 재사용
 - 전략 체계 개념도라 수치 주장 없음(출처 줄 명시), 고객 · 가속기는 A · B · C로만 표기. 렌더 QA · qa_audit PASS
 - 대시보드 발표자료 탭 등록은 건너뜀: 사용자가 시안을 고르기 전 선택용 초안이라, 확정 후 한 장으로 정리해 등록한다
+
+## [2026-10-13] build | 3-C 전략 시안 v1.1: 전략 1 본딩 사진 · 전략 2 3D DRAM 이미지
+- 사용자 지시: 전략 1은 반도체 패키지 본딩 기술 관련 사진, 전략 2는 3D DRAM 사진
+- 전략 1: 삼성반도체 뉴스룸 FMS 2026 기사 사진에서 V10 Bonding V-NAND 적층 모형을 잘라 `assets/photos/bonding.jpg`(출처는 photos/README)
+- 전략 2: 3D DRAM은 개발 단계라 공개 실물 사진이 없음(삼성 Memcon 2024 · ISSCC 2026 개념도만 공개). `render_parts`에 `dram3d` 3D 렌더 추가(셀 층 수평 적층 · 수직 비트라인 · 계단 접점 · Peri 다이 본딩), 출처 줄에 "3D 렌더(개념)"
+- 세 시안 모두 반영(시안 B도 전략 아이콘 → 이미지). 렌더 QA · qa_audit PASS. 기획서 v1.1 · index 갱신

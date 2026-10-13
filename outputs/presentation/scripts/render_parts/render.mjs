@@ -26,8 +26,10 @@ const page = await browser.newPage({ viewport: { width: 1600, height: 1200 } });
 page.on('console', m => { if (m.type() === 'error') console.log('console:', m.text()); });
 page.on('pageerror', e => console.log('pageerror:', e.message));
 
-if (WHAT === 'all' || WHAT === 'objects') {
-  for (const [obj, w, h] of [['nand', 1400, 1100], ['dram', 1800, 900], ['hbm', 1400, 1100], ['ssd', 1800, 1000], ['server', 1800, 1100]]) {
+const OBJS = [['nand', 1400, 1100], ['dram', 1800, 900], ['hbm', 1400, 1100], ['ssd', 1800, 1000], ['server', 1800, 1100], ['dram3d', 1600, 1300]];
+// 부품 하나만: node render.mjs <출력 폴더> <부품 이름>
+if (WHAT === 'all' || WHAT === 'objects' || OBJS.some(o => o[0] === WHAT)) {
+  for (const [obj, w, h] of OBJS.filter(o => WHAT === 'all' || WHAT === 'objects' || o[0] === WHAT)) {
     await page.setViewportSize({ width: w, height: h });
     await page.goto(`http://127.0.0.1:${port}/render.html?obj=${obj}&w=${w}&h=${h}`);
     await page.waitForFunction('window.__done === true', null, { timeout: 120000 });
