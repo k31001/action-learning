@@ -14,6 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-13 (정기 재평가) ─────────────────────────────────────────────────
+  {
+    date: '2026-10-13',
+    type: 'assessment',
+    version: 'v2.49.15',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 삼성 HBM4 가격 HBM3E 3배·2027 CapEx 컨센서스 상향·Nvidia/Oracle CDS tell·EWI·트리거 반영',
+    summary:
+      '직전 10-06 재평가 이후 git log 커밋(v2.46.65~v2.49.14)은 전부 발표자료 덱(Fab 통합 운영 1장 시안·3-C 전략 한 장 시안·고객 협력 전략 SSD Future-Ready 덱 v4.5~v5.0)·모션(「네 번의 겨울」 영상 v2.1~v2.6)·발표 디자인 시스템 v2.2·ingest 1건(TrendForce 1Q20 NAND 순위 — 2020 과거 데이터, 모션 영상 보강용) = 발표·덱·모션·제품믹스 층으로 git log 경로의 신규 실현 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. 이번 사이클 갱신은 EWI 웹 리서치 in-window 신호 기반이며 방법론상 포지션 맵·상대 확률을 움직이지 않는다. ' +
+      'DF1(수요) 정점 재확인: 삼성 HBM4 가격 HBM3E 3배 초과(Gb당 중고가 $4대·2027 계약 바닥 $4.50/Gb·메모리 2027까지 타이트·삼성 2026 HBM 캐파 완판)·Q4 2026 메모리 계약가 범용 DRAM +10~15%·NAND +15~20%(10-06 대비 무변화)·2027 CapEx 컨센서스 추가 상향(Goldman ~$1.2T=2026 ~$800B 대비 +54%·S&P $1.3T·UBS 2026 $1.009T→2028 $1.619T·"하이퍼스케일러 클라우드 매출 102%를 CapEx로"·6사 중 2027 양 FCF는 MS 1곳)·GPU 임대가 firming(H100 ~$1.70→~$2.35/h 반등·붕괴 없음). 이미 정점(8.5)이라 신규 상방 레그가 아닌 정점 재확인. ' +
+      '후기순환 조달·신용 tell 심화(수요 붕괴 아님): OpenAI–Nvidia–Oracle 상호 약정 $1조~$1.5조·Nvidia 5년 CDS 최근 2개월 약 2배 상승(Michael Burry 재경고)·Oracle 총부채 $130B 초과·5년 CDS +~310%·신규 리스 약정 $248B → CapEx 상향·재고 없음이라 조달 구조 경보로 EWI 감시 강화, 축 무이동. ' +
+      'DF2(디커플링) 관리된 공존 재확인: MATCH 하원 외교위 통과 후 위원회·본회의 상정 단계 유지(본회의 표결 없음·하원 300표+ 미충족)·행정부 완화(1월 완성칩) vs 의회 강화(MATCH)의 양갈래·베이징 국산 장비 50% 의무화·신규 통제 없음. 다음 분기점 APEC 11월·G20 12월. 다음 DF1 확인점 = 빅테크 4사 Q3 2026 실적(10월 말·이번 창 미실현). 패치 v2.49.15.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지', '삼성 HBM4', '2027 CapEx', 'Goldman', 'Nvidia CDS', 'Oracle', 'MATCH'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5 (축 무이동)', detail: '10-06 이후 git log 커밋(v2.46.65~v2.49.14)은 전부 발표·덱·모션·제품믹스 층 = git log 경로 신규 실현 외부 거시 사실 0건. DF1 in-window 신호는 전부 정점 재확인(삼성 HBM4 가격 HBM3E 3배·2026 캐파 완판·Q4 메모리 +10~20%·2027 CapEx $1.0~1.3T 추가 상향·GPU 임대가 firming). DF2: MATCH 본회의 미통과·행정부 완화 vs 의회 강화 양갈래·신규 통제 없음 → 관리된 공존 재확인. 다음 DF1 확인점 빅테크 Q3 실적(10월 말·미실현)' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '삼성 HBM4 가격 급등·2027 CapEx 상향은 B 락인 축 재확인이지 A↔B 재배분 요인 아님. 후기순환 조달·신용 tell(상호 약정 $1조~$1.5조·Nvidia 5년 CDS 2개월 2배·Oracle 5년 CDS +310%·Michael Burry 재경고)은 수요 붕괴(D 재배분)가 아닌 조달 구조 경보(CapEx 상향·재고 없음)라 상대 확률 무영향. DF2 현상유지라 공존 심화(A→B)도 디커플링(B→A)도 미실행. 삼성 HBM4 볼륨 발주 미전환 = B 시간 리스크 지속' },
+      { label: '트리거 갱신 — 발동 0건', detail: 'match_act_passed 미발동(위원회·본회의 상정 단계·하원 300표+ 미충족·행정부 완화 vs 의회 강화 양갈래)·samsung_hbm4_nvidia_confirmed 미충족(16-Hi Q4 요청·구체 계약 미체결·유상 평가 단계·연말 시간 압박)·us_china_semiconductor_deal·apple_cxmt_approved·enterprise_ai_roi_proven 모두 미충족' },
+      { label: 'EWI 갱신 — DF1 정점·조달/신용 축(실측)', detail: 'bigtech_capex_growth 10-13 데이터포인트 추가(값 82 무변화·2027 Goldman ~$1.2T/S&P $1.3T/UBS 상향·"클라우드 매출 102% CapEx"·6사 중 양 FCF MS 1곳)·ai_dc_credit_spread(값 40 무변화·Nvidia 5년 CDS 2개월 2배·Oracle 5년 CDS +310%·상호 약정 $1조~$1.5조, 광의 HY 스프레드 자체는 미확대라 미발동)·gpu_rental_price_trend·gpu_rental_h100_usd(10-13 firming 스냅샷 H100 ~$1.70~2.35/h, 붕괴 없음)' },
+      { label: '위키·원장 동기화', detail: 'sources/articles/macro-reassessment-signals-2026-10-13.md 신설(in-window 신호 원장·git log 분석 포함)·wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치에 10-13 bullet 추가·wiki/scenarios/scenario-matrix.md 확률표에 [2026-10-13 재평가] 유지 note 추가. dashboard scenarioPlanning(DF1·DF2·A·B 코멘트)·indicators(INITIAL_QUADRANT_POSITIONS current·확률 코멘트·EWI·트리거) 미러' },
+    ],
+    links: [
+      { label: 'sources/articles/macro-reassessment-signals-2026-10-13.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/macro-reassessment-signals-2026-10-13.md' },
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
   {
     date: '2026-10-13',
     type: 'build',
