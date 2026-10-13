@@ -2891,3 +2891,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 전략 1: 웨이퍼 간 Cu/SiO2 하이브리드 본딩 단면 SEM(Hsu 외, Materials 2022, 15(5) 1888, 그림 6(b), CC BY 4.0). 접합부만 잘라 원 그림 라벨을 지우고 대비 조정, 저작자 표시는 출처 줄 · 노트 · photos/README
 - 전략 2: 삼성반도체 뉴스룸 FMS 2026 기사의 zHBM 전시 모형 사진을 잘라 씀
 - v1.1 이미지(`bonding.jpg` · `render_dram3d.png`) 삭제. 시안 A 사진 아래 이름 16pt. 렌더 QA · qa_audit PASS, 기획서 v1.2 · index 갱신
+
+## [2026-10-13] build | 3-C 전략 시안 v1.3: 컬러 버전 3장 추가 · 대시보드 발표자료 탭 등록 (dashboard v2.49.13)
+- 사용자 지시: 색감을 더 다양하게 쓴 버전으로 슬라이드 세 장 추가, 메인 푸시, 대시보드 발표자료에 추가
+- 4~6장 = 시안 A · B · C 컬러 버전: 3-C 열마다 색(C1 파랑 · C2 청록 · C3 주황), 전략 행 중립 슬레이트, 지붕 · 결론 띠 남색 + 세 동사만 열 색. 단색 1~3장은 그대로(스킬 단일 액센트 예외는 컬러 장만, 기획서에 기록)
+- 생성기를 테마(MONO · COLOR) + build_a/b/c로 정리. 아이콘 16종을 청록 · 주황으로 추가 렌더. 렌더 QA · qa_audit PASS(6장)
+- 대시보드: presentations.js 등록 · sync-presentations · 웹 보기 6장 렌더, updates 항목, v2.49.12 → v2.49.13(패치), npm run build 통과, 발표자료 탭 화면 확인

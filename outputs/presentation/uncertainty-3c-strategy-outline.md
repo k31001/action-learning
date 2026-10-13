@@ -1,7 +1,7 @@
 ---
 type: presentation-outline
-status: v1.2 시안 3종 (2026-10-13, 전략 1 = 하이브리드 본딩 단면 SEM · 전략 2 = 삼성 zHBM 전시 사진, 사용자 선택 대기). v1.1 전략 1 본딩 모형 사진 · 전략 2 3D DRAM 렌더. v1.0 같은 한 장을 세 가지 시각 언어로 만든 선택용 덱
-deck: outputs/presentation/uncertainty-3c-strategy-options.pptx (시안 A · B · C 3장, PPTX 본체 커밋 · 생성기로 재현)
+status: v1.3 시안 6장 (2026-10-13, 단색 3 + 3-C 열별 컬러 3, 대시보드 발표자료 탭 등록, 사용자 선택 대기). v1.2 전략 1 = 하이브리드 본딩 단면 SEM · 전략 2 = 삼성 zHBM 전시 사진. v1.1 전략 1 본딩 모형 사진 · 전략 2 3D DRAM 렌더. v1.0 같은 한 장을 세 가지 시각 언어로 만든 선택용 덱
+deck: outputs/presentation/uncertainty-3c-strategy-options.pptx (1~3 단색 시안 A · B · C, 4~6 컬러 시안 A · B · C, PPTX 본체 커밋 · 생성기로 재현, 대시보드 발표자료 탭 id uncertainty-3c-strategy-options)
 generator: outputs/presentation/scripts/generate_uncertainty_3c_pptx.py
 design: .claude/skills/samsung-memory-ppt-design-skill (v2.2: 11절 시각 우선, 20 × 11.25in, 본문 18pt 이상 · 출처 15pt, 액센트 Samsung Blue #3C4FA5 하나)
 ---
@@ -79,3 +79,12 @@ bash .claude/skills/samsung-memory-ppt-design-skill/scripts/qa_render.sh outputs
 | 3D DRAM은 삼성의 zHBM 사진이 더 정확 | 전략 2 이미지를 3D DRAM 렌더 → 삼성 FMS 2026 zHBM 전시 모형 사진으로 교체(`render_dram3d.png` 삭제, 렌더 코드는 `render.html`에 남김) |
 | 본딩은 NAND에서 주로 쓰는 본딩 기술의 실사 또는 현미경 화면 | NAND CMOS 본딩과 같은 웨이퍼 간 Cu/SiO2 하이브리드 본딩의 단면 SEM(CC BY 4.0 공개 논문)으로 교체(`bonding.jpg` 삭제). 원 그림 라벨을 지우고 대비를 조정, 출처 줄 · 노트 · README에 저작자 표시 |
 | (연동) | 시안 A 사진 아래 이름 16pt, 출처 줄을 "이미지: ..." 한 줄로 정리 |
+
+## v1.2 → v1.3 변경 (2026-10-13 사용자 지시)
+
+| 지시 | 반영 |
+|---|---|
+| 색감을 더 다양하게 쓴 버전으로 슬라이드 세 장 추가 | 4~6장 = 시안 A · B · C 컬러 버전. **3-C 열마다 색**: C1 파랑 `#3C4FA5` · C2 청록 `#12857A` · C3 주황 `#D2691E`(흰 글자 대비 약 7.4 · 4.5 · 3.6:1). 열 머리 · 아이콘 · 칸 테두리 · 미니 도해 · 기둥이 열 색을 따르고, 전략 행은 중립 슬레이트(`#334155` 알약 · `#F3F4F6` 바탕), 지붕 · 결론 띠는 남색 `#1E2A4A`, 띠 안 세 동사(전환 · 쌓고 · 설계)만 열 색. 아이콘은 청록 · 주황 PNG 추가 렌더 |
+| 디자인 스킬 예외 | 스킬 2.A "액센트 Samsung Blue 하나"는 단색 1~3장에 그대로 두고, 컬러 4~6장만 사용자 요청으로 3-C **범주 구분**에 색을 쓴다. 녹색 · 적색 의미색과 겹치지 않게 청록 · 주황을 골랐다 |
+| 메인 푸시 · 대시보드 발표자료 탭 추가 | `dashboard/src/data/presentations.js` 맨 위 등록, `node scripts/sync-presentations.mjs` · `scripts/render-presentation-previews.py uncertainty-3c-strategy-options`(웹 보기 6장), 대시보드 v2.49.13 · updates |
+| (구조) | 생성기를 `build_a/b/c(no)` + 테마(`MONO` · `COLOR`)로 정리, 미니 도해는 지금 열 색(`K`)을 따른다 |

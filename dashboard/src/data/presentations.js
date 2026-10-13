@@ -8,6 +8,19 @@ const REPO = 'https://github.com/k31001/action-learning/blob/main'
 
 export const PRESENTATIONS = [
   {
+    id: 'uncertainty-3c-strategy-options',
+    file: 'uncertainty-3c-strategy-options.pptx',
+    title: '불확실성에 대응하는 전체 최적화 체계 (3-C 전략 시안)',
+    version: 'v1.3',
+    date: '2026-10-13',
+    slides: '한 장 시안 6종(단색 3 + 컬러 3)',
+    summary: '수요 예측만으로는 부족, 자원 · 기술 · 고객을 하나로 묶는 3-C(C1 Convertibility · C2 Continuity · C3 Co-Creation) × 3대 전략(Bonding 기반 DRAM · NAND 통합 제조 / 고객 맞춤형 차세대 메모리 / 고객 시스템 고려 스토리지). 같은 한 장을 도해형 · 아이콘형 · 기둥 구조형으로, 단색과 3-C 열별 컬러로',
+    chapters: ['A 도해형', 'B 아이콘형', 'C 기둥 구조형', 'A 도해형 · 컬러', 'B 아이콘형 · 컬러', 'C 기둥 구조형 · 컬러'],
+    outline: `${REPO}/outputs/presentation/uncertainty-3c-strategy-outline.md`,
+    report: null,
+    accent: '#12857A',
+  },
+  {
     id: 'ssd-future-ready-strategy',
     file: 'ssd-future-ready-strategy.pptx',
     title: '불확실성이 높은 미래에 대응하기 위한 고객 협력 전략',

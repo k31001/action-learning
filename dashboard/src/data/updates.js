@@ -17,6 +17,19 @@ export const UPDATES = [
   {
     date: '2026-10-13',
     type: 'build',
+    version: 'v2.49.13',
+    title: '발표자료 탭: 3-C 전략 한 장 시안 6종 추가',
+    summary: '「불확실성에 대응하는 전체 최적화 체계」 한 장을 도해형 · 아이콘 키워드형 · 기둥 구조형 세 가지로 그리고, 단색(Samsung Blue)과 3-C 열별 컬러(파랑 · 청록 · 주황) 두 벌로 만든 선택용 덱을 추가.',
+    tags: ['발표자료'],
+    items: [
+      { label: '덱', detail: 'uncertainty-3c-strategy-options v1.3, 6장(1~3 단색 · 4~6 컬러)' },
+      { label: '이미지', detail: '전략 1 Cu/SiO2 하이브리드 본딩 단면 SEM(Materials 2022, CC BY 4.0) · 전략 2 삼성 FMS 2026 zHBM 전시 사진 · 아이콘 Tabler(MIT)' },
+    ],
+    links: [{ label: 'Hybrid bonding SEM 원문 (CC BY 4.0)', href: 'https://www.mdpi.com/1996-1944/15/5/1888' }],
+  },
+  {
+    date: '2026-10-13',
+    type: 'build',
     version: 'v2.49.12',
     title: '「네 번의 겨울」 영상 v2.6: ’19 삼성 NAND 점유율 33.3% 보강 · 교훈 장면 메시지만',
     summary: '’19 장면에 TrendForce 1Q20 기준 삼성 점유율 DRAM 44.1% · NAND 33.3%(모두 1위)를 함께 보여 주고, 교훈 장면의 세부 줄을 빼 메시지 한 줄만 남김.',
