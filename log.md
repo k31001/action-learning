@@ -2872,3 +2872,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - sources/articles/trendforce-1q20-nand-revenue-ranking-2026-10-13.md 를 신규 저장. wiki/downturn/downturn-history.md 2019 결과에 NAND 33.3% 를 추가하고 index.md 를 갱신했다
 - 영상: ’19 화면에 DRAM 44.1% · NAND 33.3%(모두 1위)를 표시하고, 대사 d3 를 재합성·검증했다. 교훈 장면의 「투자한 것 · 놓친 것」 세부 줄은 빼고 메시지만 남겼다(사용자 지시)
 - 115.8초. 대시보드 영상 사본·장 시각·길이를 갱신, v2.49.12, npm run build 통과
+
+## [2026-10-13] build | 3-C 전략 한 장 시안 3종: 불확실성에 대응하는 전체 최적화 체계
+- 사용자 요청: 제목 "불확실성에 대응하는 전체 최적화 체계", 행 = 전략 3개 · 열 = 3-C(C1 Convertibility · C2 Continuity · C3 Co-Creation) 표 레이아웃, 전략 · 3-C 아이콘, 글은 짧게 · 핵심 개념은 시각 요소로, 시각화 옵션 3장으로 선택
+- 디자인 스킬 v2.2(11절 시각 우선) 적용. 시안 A 도해형 매트릭스(칸 9개 미니 도해) · B 아이콘 키워드형(불확실성 원뿔 개념도 → 삼각 체계) · C 기둥 구조형(토대 = 수요 예측)
+- 아이콘: Tabler Icons(MIT) 16종을 `render_parts/render_icons.mjs`(신규, headless Chromium)로 Blue · 흰색 · 그레이 PNG 생성 → `assets/icons/`. 부품은 기존 3D 렌더 재사용
+- 전략 체계 개념도라 수치 주장 없음(출처 줄 명시), 고객 · 가속기는 A · B · C로만 표기. 렌더 QA · qa_audit PASS
+- 대시보드 발표자료 탭 등록은 건너뜀: 사용자가 시안을 고르기 전 선택용 초안이라, 확정 후 한 장으로 정리해 등록한다
