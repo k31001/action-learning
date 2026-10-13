@@ -18,6 +18,7 @@ node_modules/
 !outputs/presentation/memory-solution-ladder.pptx
 !outputs/presentation/qlc-ssd-strategy-visual.pptx
 !outputs/presentation/ssd-survival-strategy.pptx
+!outputs/presentation/fab-common-platform-options.pptx
 !dashboard/public/downloads/*.pptx
 !dashboard/public/presentations/*.pptx
 !working-style/seminar-claude-code-report/seminar-claude-code*.pptx

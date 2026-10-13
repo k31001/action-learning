@@ -2872,3 +2872,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - sources/articles/trendforce-1q20-nand-revenue-ranking-2026-10-13.md 를 신규 저장. wiki/downturn/downturn-history.md 2019 결과에 NAND 33.3% 를 추가하고 index.md 를 갱신했다
 - 영상: ’19 화면에 DRAM 44.1% · NAND 33.3%(모두 1위)를 표시하고, 대사 d3 를 재합성·검증했다. 교훈 장면의 「투자한 것 · 놓친 것」 세부 줄은 빼고 메시지만 남겼다(사용자 지시)
 - 115.8초. 대시보드 영상 사본·장 시각·길이를 갱신, v2.49.12, npm run build 통과
+
+## [2026-10-13] build | Fab 통합 운영 Common Platform 1장 시안 3종
+- 사용자 요청 1장 슬라이드 「DRAM/NAND Fab 통합 운영: Bonding 시대에 맞는 Common Platform 구성」을 samsung-memory-ppt-design-skill v2.2로 서로 다른 시각 언어 3종(A 평면도형 · B 차트형 · C 건축형)으로 만들었다
+- 기대 효과 3개(공간 효율성 · 시황 변화 대응력 · 설비 통일성·선단화) 60% + 운영 제언(반도체연구소 / MTC 산하 메모리 BEOL 통합조직) 40% 구성. 차트는 수치 없는 개념도
+- 가정 기반의 기획 장표라 sources·wiki에는 넣지 않았다(위키 근거 체인 밖). 대시보드 발표자료 탭 동기화도 시안 확정 전이라 건너뛰었다
+- 산출물: generate_fab_common_platform_pptx.py, fab-common-platform-options.pptx(+미리보기 PDF), fab-common-platform-outline.md. qa_audit PASS(최소 pt · em-dash)
