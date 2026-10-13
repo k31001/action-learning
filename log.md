@@ -2873,6 +2873,23 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 영상: ’19 화면에 DRAM 44.1% · NAND 33.3%(모두 1위)를 표시하고, 대사 d3 를 재합성·검증했다. 교훈 장면의 「투자한 것 · 놓친 것」 세부 줄은 빼고 메시지만 남겼다(사용자 지시)
 - 115.8초. 대시보드 영상 사본·장 시각·길이를 갱신, v2.49.12, npm run build 통과
 
+## [2026-10-13] build | Fab 통합 운영 Common Platform 1장 시안 3종
+- 사용자 요청 1장 슬라이드 「DRAM/NAND Fab 통합 운영: Bonding 시대에 맞는 Common Platform 구성」을 samsung-memory-ppt-design-skill v2.2로 서로 다른 시각 언어 3종(A 평면도형 · B 차트형 · C 건축형)으로 만들었다
+- 기대 효과 3개(공간 효율성 · 시황 변화 대응력 · 설비 통일성·선단화) 60% + 운영 제언(반도체연구소 / MTC 산하 메모리 BEOL 통합조직) 40% 구성. 차트는 수치 없는 개념도
+- 가정 기반의 기획 장표라 sources·wiki에는 넣지 않았다(위키 근거 체인 밖). 대시보드 발표자료 탭 동기화도 시안 확정 전이라 건너뛰었다
+- 산출물: generate_fab_common_platform_pptx.py, fab-common-platform-options.pptx(+미리보기 PDF), fab-common-platform-outline.md. qa_audit PASS(최소 pt · em-dash)
+
+## [2026-10-13] build | Fab 통합 운영 Common Platform 1장 시안 v2.0 (건축형 3종)
+- 사용자 피드백: v1.0 시안 C(건축형)의 형식·그림 크기가 가장 좋지만 그림이 단조롭다 → v1.0 시안 3장을 모두 지우고 새 3장으로 교체
+- 세 장 모두 지붕(결론) · 기둥(그림 + 항목 벽돌) · Bonding 기초 · 조직 Bonding 형식. 기둥 그림을 5.30 x 1.80in로 키우고 스타일만 달리했다: 1 아이소메트릭 · 2 메커니즘(와플 · 수요 곡선 · 막대) · 3 Fab 도면(OHT · Lot 흐름 · 모델 매트릭스)
+- 그림 생성기 generate_fab_common_platform_figs.py 신설(matplotlib, 9장), 슬라이드 생성기 v2.0으로 재작성. 통합조직에 기능 3개(표준 Layout · 설비 Pool · 통합 구매) 표기
+- qa_audit PASS. 위키 · 대시보드는 v1.0과 같은 이유로 건너뜀
+
+## [2026-10-13] build | Fab 통합 운영 1장 시안 v2.1: 다색 3장 추가 · 발표자료 탭 등록 (dashboard v2.49.13)
+- 사용자 요청: 색을 더 다양하게 쓴 버전 3장 추가 → 시안 4~6(아이소메트릭 · 메커니즘 · Fab 도면 컬러). 단일 액센트 규칙은 이 3장에서만 해제
+- 색 의미: DRAM = Blue · NAND = Teal · 통합 후 같은 색 = 같은 모델 · 공용 모델 = Purple · 개선 · 운영 = Amber · 효과 ① Blue ② Teal ③ Purple · 지붕 · 기초 = Navy
+- 그림 생성기에 MONO / COLOR 테마(단색 그림 9장은 픽셀 단위로 기존과 동일 확인), 슬라이드 생성기에 MONO_T / COLOR_T 테마
+- 대시보드 발표자료 탭에 fab-common-platform-options 등록(sync-presentations · 웹 보기 이미지 6장), updates.js 항목, v2.49.13(패치: 데이터 추가)
 ## [2026-10-13] build | 3-C 전략 한 장 시안 3종: 불확실성에 대응하는 전체 최적화 체계
 - 사용자 요청: 제목 "불확실성에 대응하는 전체 최적화 체계", 행 = 전략 3개 · 열 = 3-C(C1 Convertibility · C2 Continuity · C3 Co-Creation) 표 레이아웃, 전략 · 3-C 아이콘, 글은 짧게 · 핵심 개념은 시각 요소로, 시각화 옵션 3장으로 선택
 - 디자인 스킬 v2.2(11절 시각 우선) 적용. 시안 A 도해형 매트릭스(칸 9개 미니 도해) · B 아이콘 키워드형(불확실성 원뿔 개념도 → 삼각 체계) · C 기둥 구조형(토대 = 수요 예측)
@@ -2897,3 +2914,7 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 4~6장 = 시안 A · B · C 컬러 버전: 3-C 열마다 색(C1 파랑 · C2 청록 · C3 주황), 전략 행 중립 슬레이트, 지붕 · 결론 띠 남색 + 세 동사만 열 색. 단색 1~3장은 그대로(스킬 단일 액센트 예외는 컬러 장만, 기획서에 기록)
 - 생성기를 테마(MONO · COLOR) + build_a/b/c로 정리. 아이콘 16종을 청록 · 주황으로 추가 렌더. 렌더 QA · qa_audit PASS(6장)
 - 대시보드: presentations.js 등록 · sync-presentations · 웹 보기 6장 렌더, updates 항목, v2.49.12 → v2.49.13(패치), npm run build 통과, 발표자료 탭 화면 확인
+
+## [2026-10-13] build | merge: origin/main(Fab 통합 운영 시안 v2.1, dashboard v2.49.13) 반영, 3-C 시안 대시보드 번호 v2.49.14로 재배정
+- 메인에 먼저 올라온 Fab 통합 운영 1장 시안 작업과 병합. 충돌(.gitignore 예외 · presentations.js · presentationPreviews.js · updates.js · log.md)은 양쪽 항목을 모두 살림(발표자료 · 업데이트 목록은 3-C 시안을 맨 위에)
+- 같은 번호 v2.49.13을 피해 3-C 시안 발표자료 탭 등록을 v2.49.14로 재배정(version.js · updates)

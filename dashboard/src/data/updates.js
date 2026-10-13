@@ -17,7 +17,7 @@ export const UPDATES = [
   {
     date: '2026-10-13',
     type: 'build',
-    version: 'v2.49.13',
+    version: 'v2.49.14',
     title: '발표자료 탭: 3-C 전략 한 장 시안 6종 추가',
     summary: '「불확실성에 대응하는 전체 최적화 체계」 한 장을 도해형 · 아이콘 키워드형 · 기둥 구조형 세 가지로 그리고, 단색(Samsung Blue)과 3-C 열별 컬러(파랑 · 청록 · 주황) 두 벌로 만든 선택용 덱을 추가.',
     tags: ['발표자료'],
@@ -26,6 +26,19 @@ export const UPDATES = [
       { label: '이미지', detail: '전략 1 Cu/SiO2 하이브리드 본딩 단면 SEM(Materials 2022, CC BY 4.0) · 전략 2 삼성 FMS 2026 zHBM 전시 사진 · 아이콘 Tabler(MIT)' },
     ],
     links: [{ label: 'Hybrid bonding SEM 원문 (CC BY 4.0)', href: 'https://www.mdpi.com/1996-1944/15/5/1888' }],
+  },
+  {
+    date: '2026-10-13',
+    type: 'build',
+    version: 'v2.49.13',
+    title: '발표자료 추가: Fab 통합 운영 Common Platform 1장 시안 6종',
+    summary: 'DRAM/NAND Fab 통합 운영 1장을 건축형(지붕 · 기둥 · Bonding 기초 · 조직 Bonding) 하나로 정하고, 기둥 그림 스타일 3종(아이소메트릭 · 메커니즘 · Fab 도면)을 단일 Blue와 다색 두 가지로 만들어 발표자료 탭에 올림.',
+    tags: ['발표자료'],
+    items: [
+      { label: '덱', detail: 'fab-common-platform-options.pptx v2.1 · 6장(시안 1~3 단일 Blue, 4~6 다색)' },
+      { label: '다색 의미', detail: 'DRAM = Blue · NAND = Teal · 효과 ① Blue ② Teal ③ Purple · 개선 · 운영 = Amber' },
+    ],
+    links: [],
   },
   {
     date: '2026-10-13',
