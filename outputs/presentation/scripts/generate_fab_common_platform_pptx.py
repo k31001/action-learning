@@ -1,4 +1,7 @@
-"""DRAM/NAND Fab 통합 운영: Bonding 시대에 맞는 Common Platform 구성 (1장, 시안 3종) v2.0 (2026-10-13).
+"""DRAM/NAND Fab 통합 운영: Bonding 시대에 맞는 Common Platform 구성 (1장, 시안 6종) v2.1 (2026-10-13).
+
+v2.1: 같은 3종을 다색 버전으로 한 번 더(시안 4~6). 색 의미: DRAM = Blue, NAND = Teal, 효과 ① Blue ② Teal ③ Purple,
+      개선 · 운영 = Amber, 지붕 · 기초 = Navy. 그림은 c{1,2,3}_*.png. (단일 액센트 규칙은 사용자 요청으로 시안 4~6에서만 해제)
 
 v2.0: v1.0 시안 C(건축형)의 형식을 세 장 모두에 쓰고, 기둥 머리 그림을 크게(5.30 x 1.80in) 키워 그림 스타일만 달리했다.
   지붕(결론) · 기둥 3개(머리 = 그림 + 효과 이름, 몸통 = 항목 벽돌 3장) · Bonding 기초(Common Platform) · 맨 아래 운영 제언(두 조직의 Bonding)
@@ -22,6 +25,7 @@ sys.path.insert(0, os.path.join(ROOT, ".claude", "skills", "samsung-memory-ppt-d
 
 from deck_helpers import (BLUE, BLUE_T1, BLUE_T2, CW, GRAY, GRAY_2, INK, MX, PALE,  # noqa: E402
                           RIGHT, TINT, WHITE, Deck)
+from pptx.dml.color import RGBColor  # noqa: E402
 from pptx.enum.dml import MSO_LINE_DASH_STYLE  # noqa: E402
 from pptx.enum.shapes import MSO_CONNECTOR, MSO_SHAPE  # noqa: E402
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
@@ -78,6 +82,25 @@ def people(d, s, x, y, h, n, color, gap=0.10):
     return n * (0.62 * h + gap) - gap
 
 
+# ================================================================== 색 테마
+# MONO: Samsung Blue 단일 액센트(시안 1~3). COLOR: 다색(시안 4~6, 사용자 요청 2026-10-13).
+# COLOR의 색 의미는 그림과 같다: DRAM = Blue, NAND = Teal, 효과 ① Blue ② Teal ③ Purple, 개선 · 운영 = Amber, 지붕 · 기초 = Navy.
+C_BLUE, C_TEAL, C_PURPLE = RGBColor(0x3C, 0x4F, 0xA5), RGBColor(0x1E, 0x8C, 0x8C), RGBColor(0x6E, 0x56, 0xB0)
+C_AMBER, C_AMBER_DK, C_AMBER_LT = RGBColor(0xE3, 0x9B, 0x2D), RGBColor(0xB8, 0x6E, 0x00), RGBColor(0xF6, 0xC4, 0x6B)
+C_NAVY = RGBColor(0x26, 0x33, 0x6E)
+MONO_T = dict(roof=BLUE, roof_sub=BLUE_T2, roof_hot=WHITE, pillars=[(BLUE, BLUE_T2, TINT)] * 3, pads=[BLUE_T1], found=BLUE,
+              orgD=(PALE, GRAY_2, GRAY_2), orgN=(PALE, GRAY_2, GRAY_2), bpads=[BLUE_T1], bond=BLUE, arrow=BLUE, box=BLUE,
+              chips=[BLUE] * 3, up=BLUE_T1, up_txt=BLUE, tag=BLUE)
+COLOR_T = dict(roof=C_NAVY, roof_sub=RGBColor(0xAE, 0xB8, 0xE0), roof_hot=C_AMBER_LT,
+               pillars=[(C_BLUE, RGBColor(0xC0, 0xCA, 0xEC), RGBColor(0xF0, 0xF2, 0xF8)),
+                        (C_TEAL, RGBColor(0xA9, 0xDC, 0xD7), RGBColor(0xE8, 0xF5, 0xF4)),
+                        (C_PURPLE, RGBColor(0xD3, 0xCA, 0xEE), RGBColor(0xF1, 0xEE, 0xF9))],
+               pads=[C_BLUE, C_TEAL], found=C_NAVY,
+               orgD=(RGBColor(0xE9, 0xEC, 0xF8), C_BLUE, C_BLUE), orgN=(RGBColor(0xE3, 0xF3, 0xF1), C_TEAL, C_TEAL),
+               bpads=[C_BLUE, C_TEAL], bond=C_NAVY, arrow=C_AMBER, box=C_NAVY, chips=[C_BLUE, C_TEAL, C_PURPLE],
+               up=C_AMBER, up_txt=C_AMBER_DK, tag=C_NAVY)
+
+
 # ================================================================== 공통 골격 (v1.0 시안 C 형식)
 STYLES = [
     ("시안 1 · 아이소메트릭", "v1", "기둥 그림은 3D 느낌의 Fab 바닥입니다. 1 공간: 분리 Fab은 DRAM과 NAND 사이에 벽이 있고 모델이 제각각이며 빈 칸이 생기지만, "
@@ -93,55 +116,57 @@ STYLES = [
 FIGS = ["space", "agility", "unif"]
 
 
-def roof_pillars_base(d, s, style):
-    roof = d.rect(s, MX, 2.28, CW, 0.70, fill=BLUE, shape=MSO_SHAPE.TRAPEZOID)
+def roof_pillars_base(d, s, style, T):
+    roof = d.rect(s, MX, 2.28, CW, 0.70, fill=T["roof"], shape=MSO_SHAPE.TRAPEZOID)
     roof.adjustments[0] = 0.55
     d.tb(s, MX + 1.6, 2.28, CW - 3.2, 0.70,
-         [[("종합 반도체 경쟁력  ", 18, False, BLUE_T2), ("기술·생산 경쟁력 + 효율·유연성 + Buying Power", 24, True, WHITE)]],
+         [[("종합 반도체 경쟁력  ", 18, False, T["roof_sub"]), ("기술·생산 경쟁력 + 효율·유연성 + ", 24, True, WHITE),
+           ("Buying Power", 24, True, T["roof_hot"])]],
          align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 
     px0, pgap = MX + 0.30, 0.42
     pw = (CW - 0.60 - 2 * pgap) / 3
     for k, (n, ko, en, rows) in enumerate(EFFECTS):
         x = px0 + k * (pw + pgap)
-        d.rect(s, x, 3.08, pw, 2.44, fill=TINT)
-        d.rect(s, x, 3.08, pw, 0.06, fill=BLUE)
-        circ_no(d, s, x + 0.18, 3.22, n, dd=0.40, size=18)
-        d.tb(s, x + 0.70, 3.18, pw - 0.86, 0.48, [[(ko, 24, True, INK), ("  " + en, 16, False, BLUE)]], anchor=MSO_ANCHOR.MIDDLE)
+        hue, hue_lt, bg = T["pillars"][k]
+        d.rect(s, x, 3.08, pw, 2.44, fill=bg)
+        d.rect(s, x, 3.08, pw, 0.06, fill=hue)
+        circ_no(d, s, x + 0.18, 3.22, n, dd=0.40, size=18, fill=hue)
+        d.tb(s, x + 0.70, 3.18, pw - 0.86, 0.48, [[(ko, 24, True, INK), ("  " + en, 16, False, hue)]], anchor=MSO_ANCHOR.MIDDLE)
         d.img(s, os.path.join(ASSETS, f"{style}_{FIGS[k]}.png"), x + (pw - 5.30) / 2, 3.68, w=5.30)
         for i, (b, rest) in enumerate(rows):
             yy = 5.60 + i * 0.56
-            d.rect(s, x, yy, pw, 0.50, fill=WHITE, line=BLUE_T2, lw=1.25)
-            d.tb(s, x + 0.22, yy, pw - 0.36, 0.50, [[(b, 18, True, BLUE), (rest, 18, False, INK)]], anchor=MSO_ANCHOR.MIDDLE)
+            d.rect(s, x, yy, pw, 0.50, fill=WHITE, line=hue_lt, lw=1.25)
+            d.tb(s, x + 0.22, yy, pw - 0.36, 0.50, [[(b, 18, True, hue), (rest, 18, False, INK)]], anchor=MSO_ANCHOR.MIDDLE)
 
     fx, fw = MX + 0.30, CW - 0.60
     n_pad = 44
     for i in range(n_pad):
-        d.rect(s, fx + 0.10 + i * (fw - 0.32) / (n_pad - 1), 7.34, 0.12, 0.08, fill=BLUE_T1)
-    d.rect(s, fx, 7.44, fw, 0.56, fill=BLUE)
+        d.rect(s, fx + 0.10 + i * (fw - 0.32) / (n_pad - 1), 7.34, 0.12, 0.08, fill=T["pads"][i % len(T["pads"])])
+    d.rect(s, fx, 7.44, fw, 0.56, fill=T["found"])
     d.tb(s, fx + 0.30, 7.44, fw - 0.60, 0.56,
          [[("Common Platform   ", 22, True, WHITE), ("DRAM·NAND 공용 BEOL · Bonding 공정 · 설비 Pool", 20, False, WHITE)]],
          align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 
 
-def org_row(d, s):
+def org_row(d, s, T):
     """운영 제언: DRAM · NAND BEOL 조직을 웨이퍼처럼 Bonding해 통합조직으로, 통합조직이 기초를 받쳐 운영."""
-    d.rect(s, MX, 8.38, 1.70, 0.46, fill=WHITE, line=BLUE, lw=1.5, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
-    d.tb(s, MX, 8.38, 1.70, 0.46, [("운영 제언", 20, True, BLUE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    d.rect(s, MX, 8.38, 1.70, 0.46, fill=WHITE, line=T["tag"], lw=1.5, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
+    d.tb(s, MX, 8.38, 1.70, 0.46, [("운영 제언", 20, True, T["tag"])], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     d.tb(s, MX, 8.98, 3.70, 1.00, [("메모리 BEOL", 26, True, INK), ("통합조직 구성", 26, True, INK)], spacing=1.05)
 
     wx, ww = 4.90, 4.40
-    for lab, yy in (("DRAM BEOL 조직", 8.36), ("NAND BEOL 조직", 9.54)):
-        d.rect(s, wx, yy, ww, 0.64, fill=PALE, line=GRAY_2, lw=1.0, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
-        people(d, s, wx + 0.22, yy + 0.12, 0.42, 3, GRAY_2, gap=0.08)
+    for lab, yy, (fc, lc, pc) in (("DRAM BEOL 조직", 8.36, T["orgD"]), ("NAND BEOL 조직", 9.54, T["orgN"])):
+        d.rect(s, wx, yy, ww, 0.64, fill=fc, line=lc, lw=1.0, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
+        people(d, s, wx + 0.22, yy + 0.12, 0.42, 3, pc, gap=0.08)
         d.tb(s, wx + 1.40, yy, ww - 1.50, 0.64, [(lab, 18, True, INK)], anchor=MSO_ANCHOR.MIDDLE)
     for i in range(12):
-        d.rect(s, wx + 0.30 + i * (ww - 0.72) / 11, 9.10, 0.12, 0.34, fill=BLUE_T1)
-    d.tb(s, wx + ww + 0.12, 9.08, 1.20, 0.38, [("Bonding", 18, True, BLUE)], anchor=MSO_ANCHOR.MIDDLE)
-    d.arrow_r(s, wx + ww + 1.36, 9.09, 0.62, 0.36, fill=BLUE)
+        d.rect(s, wx + 0.30 + i * (ww - 0.72) / 11, 9.10, 0.12, 0.34, fill=T["bpads"][i % len(T["bpads"])])
+    d.tb(s, wx + ww + 0.12, 9.08, 1.20, 0.38, [("Bonding", 18, True, T["bond"])], anchor=MSO_ANCHOR.MIDDLE)
+    d.arrow_r(s, wx + ww + 1.36, 9.09, 0.62, 0.36, fill=T["arrow"])
 
     bx, bw, by, bh = 11.40, 5.10, 8.36, 1.82
-    d.rect(s, bx, by, bw, bh, fill=BLUE, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
+    d.rect(s, bx, by, bw, bh, fill=T["box"], shape=MSO_SHAPE.ROUNDED_RECTANGLE)
     d.tb(s, bx, by + 0.08, bw, 0.46, [("메모리 BEOL 통합조직", 24, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     ppw = 6 * (0.62 * 0.44 + 0.12) - 0.12
     people(d, s, bx + (bw - ppw) / 2, by + 0.60, 0.44, 6, WHITE, gap=0.12)
@@ -149,11 +174,11 @@ def org_row(d, s):
     cx0 = bx + (bw - 3 * cw_ - 2 * cg) / 2
     for i, lab in enumerate(("표준 Layout", "설비 Pool", "통합 구매")):
         cx = cx0 + i * (cw_ + cg)
-        d.rect(s, cx, by + 1.18, cw_, 0.48, fill=BLUE, line=WHITE, lw=1.25, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
+        d.rect(s, cx, by + 1.18, cw_, 0.48, fill=T["chips"][i], line=WHITE, lw=1.25, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
         d.tb(s, cx, by + 1.18, cw_, 0.48, [(lab, 18, True, WHITE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     for ax_ in (bx + 1.20, bx + bw - 1.20):
-        d.rect(s, ax_ - 0.17, 8.06, 0.34, 0.26, fill=BLUE_T1, shape=MSO_SHAPE.UP_ARROW)
-    d.tb(s, bx + 1.50, 8.05, bw - 3.00, 0.30, [("운영", 16, True, BLUE)], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+        d.rect(s, ax_ - 0.17, 8.06, 0.34, 0.26, fill=T["up"], shape=MSO_SHAPE.UP_ARROW)
+    d.tb(s, bx + 1.50, 8.05, bw - 3.00, 0.30, [("운영", 16, True, T["up_txt"])], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 
     tx = bx + bw + 0.30
     line(s, bx + bw, by + bh / 2, tx, by + bh / 2, GRAY_2, 1.5)
@@ -162,19 +187,24 @@ def org_row(d, s):
          align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
 
 
-def make_slide(d, no, label, style, note):
+def make_slide(d, no, label, style, note, T):
     s = d.slide(no, label, TITLE)
-    roof_pillars_base(d, s, style)
-    org_row(d, s)
-    d.footer(s, FOOT + (". 설비 모델 코드는 예시" if style == "v3" else ""))
+    roof_pillars_base(d, s, style, T)
+    org_row(d, s, T)
+    d.footer(s, FOOT + (". 설비 모델 코드는 예시" if style[1] == "3" else ""))
     d.notes(s, note + " 지붕은 결론, 기초는 Common Platform, 맨 아래는 DRAM과 NAND의 BEOL 조직을 Bonding해 만든 통합조직이 "
                "반도체연구소 / MTC 산하에서 기초를 운영하는 그림입니다. 통합조직 안의 세 기능(표준 Layout · 설비 Pool · 통합 구매)은 효과 1 · 2 · 3과 짝입니다.")
 
 
 def main():
-    d = Deck("Fab 통합 운영", total=3)
+    d = Deck("Fab 통합 운영", total=2 * len(STYLES))
     for no, (label, style, note) in enumerate(STYLES, 1):
-        make_slide(d, no, label, style, note)
+        make_slide(d, no, label, style, note, MONO_T)
+    for no, (label, style, note) in enumerate(STYLES, len(STYLES) + 1):
+        label = f"시안 {no} · {label.split(' · ')[1]} 컬러"
+        note = ("컬러 버전입니다. 색에 뜻이 있습니다: DRAM = Blue, NAND = Teal, 통합 후 같은 색 = 같은 설비 모델, 공용 모델 = Purple, "
+                "개선(확보 · 추가 · 협상력) = Amber, 효과 ① Blue ② Teal ③ Purple. " + note)
+        make_slide(d, no, label, "c" + style[1], note, COLOR_T)
     # 테마 스타일(p:style)의 effectRef가 그림자를 그리므로 지운다. 채움 · 선은 모두 명시값이다.
     for sl in d.prs.slides:
         for sh in sl.shapes:

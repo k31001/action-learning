@@ -2884,3 +2884,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 세 장 모두 지붕(결론) · 기둥(그림 + 항목 벽돌) · Bonding 기초 · 조직 Bonding 형식. 기둥 그림을 5.30 x 1.80in로 키우고 스타일만 달리했다: 1 아이소메트릭 · 2 메커니즘(와플 · 수요 곡선 · 막대) · 3 Fab 도면(OHT · Lot 흐름 · 모델 매트릭스)
 - 그림 생성기 generate_fab_common_platform_figs.py 신설(matplotlib, 9장), 슬라이드 생성기 v2.0으로 재작성. 통합조직에 기능 3개(표준 Layout · 설비 Pool · 통합 구매) 표기
 - qa_audit PASS. 위키 · 대시보드는 v1.0과 같은 이유로 건너뜀
+
+## [2026-10-13] build | Fab 통합 운영 1장 시안 v2.1: 다색 3장 추가 · 발표자료 탭 등록 (dashboard v2.49.13)
+- 사용자 요청: 색을 더 다양하게 쓴 버전 3장 추가 → 시안 4~6(아이소메트릭 · 메커니즘 · Fab 도면 컬러). 단일 액센트 규칙은 이 3장에서만 해제
+- 색 의미: DRAM = Blue · NAND = Teal · 통합 후 같은 색 = 같은 모델 · 공용 모델 = Purple · 개선 · 운영 = Amber · 효과 ① Blue ② Teal ③ Purple · 지붕 · 기초 = Navy
+- 그림 생성기에 MONO / COLOR 테마(단색 그림 9장은 픽셀 단위로 기존과 동일 확인), 슬라이드 생성기에 MONO_T / COLOR_T 테마
+- 대시보드 발표자료 탭에 fab-common-platform-options 등록(sync-presentations · 웹 보기 이미지 6장), updates.js 항목, v2.49.13(패치: 데이터 추가)

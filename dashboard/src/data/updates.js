@@ -17,6 +17,19 @@ export const UPDATES = [
   {
     date: '2026-10-13',
     type: 'build',
+    version: 'v2.49.13',
+    title: '발표자료 추가: Fab 통합 운영 Common Platform 1장 시안 6종',
+    summary: 'DRAM/NAND Fab 통합 운영 1장을 건축형(지붕 · 기둥 · Bonding 기초 · 조직 Bonding) 하나로 정하고, 기둥 그림 스타일 3종(아이소메트릭 · 메커니즘 · Fab 도면)을 단일 Blue와 다색 두 가지로 만들어 발표자료 탭에 올림.',
+    tags: ['발표자료'],
+    items: [
+      { label: '덱', detail: 'fab-common-platform-options.pptx v2.1 · 6장(시안 1~3 단일 Blue, 4~6 다색)' },
+      { label: '다색 의미', detail: 'DRAM = Blue · NAND = Teal · 효과 ① Blue ② Teal ③ Purple · 개선 · 운영 = Amber' },
+    ],
+    links: [],
+  },
+  {
+    date: '2026-10-13',
+    type: 'build',
     version: 'v2.49.12',
     title: '「네 번의 겨울」 영상 v2.6: ’19 삼성 NAND 점유율 33.3% 보강 · 교훈 장면 메시지만',
     summary: '’19 장면에 TrendForce 1Q20 기준 삼성 점유율 DRAM 44.1% · NAND 33.3%(모두 1위)를 함께 보여 주고, 교훈 장면의 세부 줄을 빼 메시지 한 줄만 남김.',

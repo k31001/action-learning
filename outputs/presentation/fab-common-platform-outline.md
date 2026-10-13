@@ -1,10 +1,16 @@
-# DRAM/NAND Fab 통합 운영: Bonding 시대에 맞는 Common Platform 구성 (1장, 시안 3종) v2.0
+# DRAM/NAND Fab 통합 운영: Bonding 시대에 맞는 Common Platform 구성 (1장, 시안 6종) v2.1
 
 - 생성기: 그림 `outputs/presentation/scripts/generate_fab_common_platform_figs.py` → 슬라이드 `generate_fab_common_platform_pptx.py`
-- 산출물: `outputs/presentation/fab-common-platform-options.pptx` (3장 = 시안 1·2·3, 하나를 고른다), 미리보기 `fab-common-platform-options-preview.pdf`
+- 산출물: `outputs/presentation/fab-common-platform-options.pptx` (6장 = 시안 1~3 단일 Blue · 시안 4~6 다색, 하나를 고른다), 대시보드 발표자료 탭 등록(`fab-common-platform-options`), 미리보기 `fab-common-platform-options-preview.pdf`
 - 재생성: `.venv/bin/python outputs/presentation/scripts/generate_fab_common_platform_figs.py && .venv/bin/python outputs/presentation/scripts/generate_fab_common_platform_pptx.py`
 - 디자인: samsung-memory-ppt-design-skill v2.2 (20 x 11.25in, B+2 팔레트, 본문 18pt · 그림 라벨 16pt 이상, em-dash 0)
 - 성격: 가정 기반의 기획 장표. 위키(`wiki/`) 근거 체인 밖이며 수치를 쓰지 않았다(그림은 방향만 보이는 개념도)
+
+## v2.1 변경: 다색 버전 3장 추가 (시안 4~6)
+
+- 사용자 요청으로 같은 그림 3종을 다색으로 한 번 더 만들었다. 디자인 스킬의 단일 액센트 규칙은 시안 4~6에서만 해제
+- 색에 뜻을 붙였다: DRAM = Blue, NAND = Teal, 통합 후 같은 색 = 같은 설비 모델(Blue · Purple · Teal), 공용 모델 = Purple, 개선(확보 · 추가 · 협상력 · 운영) = Amber, 효과 ① Blue ② Teal ③ Purple, 지붕 · 기초 · 통합조직 = Navy
+- 그림 `c{1,2,3}_*.png`(그림 생성기 COLOR 테마), 슬라이드 `COLOR_T` 테마. 시안 1~3(단일 Blue)은 그대로
 
 ## v2.0 변경 (사용자 피드백)
 
