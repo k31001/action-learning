@@ -43,8 +43,8 @@ THREE_C = [  # 번호, 영문, 한 줄 뜻, 아이콘
     ("C3", "Co-Creation", "고객과 함께 미래를 설계", "heart-handshake"),
 ]
 STRATS = [  # 번호, 이름(3줄), 아이콘, 부품 이미지
-    (1, "Bonding 기반\nDRAM · NAND\n통합 제조", "layers-linked", ["bonding"]),   # 사진: assets/photos/bonding.jpg
-    (2, "고객 맞춤형\n차세대 메모리\n개발", "stack-2", ["dram3d"]),    # 3D 렌더(개념): assets/survival/render_dram3d.png
+    (1, "Bonding 기반\nDRAM · NAND\n통합 제조", "layers-linked", ["bonding_sem"]),   # 하이브리드 본딩 단면 SEM: assets/photos/bonding_sem.jpg
+    (2, "고객 맞춤형\n차세대 메모리\n개발", "stack-2", ["zhbm"]),    # 삼성 FMS 2026 zHBM 전시 사진: assets/photos/zhbm.jpg
     (3, "고객 시스템을\n고려한 스토리지\n개발", "server", ["ssd", "server"]),
 ]
 # (전략, C): 키워드, 설명(넓은 칸), 시안 A 짧은 설명, 아이콘
@@ -63,8 +63,8 @@ TITLE = "불확실성에 대응하는 전체 최적화 체계"
 LEAD = [("수요 예측만으로는 부족합니다. 자원 · 기술 · 고객을 하나의 체계로 묶는 ", 22, False, GRAY),
         ("3-C 전략", 22, True, BLUE), ("으로 대응합니다", 22, False, GRAY)]
 BAND = "자원은 유연하게 전환하고, 기술은 연속성 있게 쌓고, 미래는 고객과 함께 설계합니다"
-SOURCE = ("3-C: C1 Convertibility · C2 Continuity · C3 Co-Creation. 전략 체계 개념도로 수치 주장은 담지 않음.\n"
-          "전략 1 사진: Samsung Semiconductor FMS 2026 전시(V10 Bonding V-NAND). 3D DRAM · SSD · 서버는 3D 렌더(개념), 아이콘 Tabler Icons(MIT).")
+SOURCE = ("3-C: C1 Convertibility · C2 Continuity · C3 Co-Creation (전략 체계 개념도, 수치 주장 없음). 아이콘 Tabler Icons(MIT).\n"
+          "이미지: 전략 1 Cu/SiO2 하이브리드 본딩 단면 SEM(Hsu 외, Materials 2022, CC BY 4.0, 잘라 냄), 전략 2 삼성 FMS 2026 zHBM 전시, 전략 3 3D 렌더.")
 NOTES = (
     "[요지] 불확실성이 커지면 수요 예측은 빗나갑니다. 예측만으로는 부족하고, 자원 · 기술 · 고객을 하나의 체계로 묶어야 합니다. "
     "이것이 3-C 전략입니다. C1 Convertibility는 자원의 유연한 전환, C2 Continuity는 연속성 있는 기술 축적, "
@@ -76,8 +76,11 @@ NOTES = (
     "[전략 3] 고객 시스템을 고려한 스토리지 개발. C1: 고객과의 기술 협업으로 기술 변화를 빠르게 감지하고, 차세대 기술 수요를 함께 만들고 설계하는 체계를 만듭니다. "
     "C2: 고객 시스템과 워크로드 연구로 NAND 단품과 SSD 지식을 스토리지 서버 시스템 지식으로 넓힙니다. "
     "C3: 고객과 AI 수요에 맞춰 SSD와 스토리지 서버의 기능과 구조를 함께 설계합니다.\n"
-    "[이미지] 전략 1은 삼성 FMS 2026 전시의 Bonding V-NAND 적층 모형 사진(Cell과 Peri를 따로 만들어 붙이는 본딩 구조), "
-    "전략 2는 3D DRAM 구조 개념 렌더(셀 층을 수평으로 쌓고 아래 Peri 다이에 붙인 구조, 실물 사진 아님)입니다.\n"
+    "[이미지] 전략 1은 웨이퍼 간 Cu/SiO2 하이브리드 본딩의 단면 SEM 사진입니다. 위아래 웨이퍼의 Cu 패드가 맞붙은 가로 선이 본딩 계면이고, "
+    "NAND의 CMOS 본딩(Cell과 Peri를 따로 만들어 붙이는 구조)이 쓰는 것과 같은 방식입니다(연구용 시편, 제품 단면 아님). "
+    "출처: Hsu, W.-Y. 외, Low-Temperature Cu/SiO2 Hybrid Bonding with Low Contact Resistance Using (111)-Oriented Cu Surfaces, "
+    "Materials 2022, 15(5), 1888, 그림 6(b), CC BY 4.0. 잘라 내고 원 그림의 라벨 · 화살표를 지우고 대비를 조정했습니다. "
+    "전략 2는 삼성 FMS 2026 전시의 zHBM 모형 사진으로, xPU 위에 Core Die를 바로 쌓는 3D 메모리 구조입니다.\n"
 )
 
 
@@ -150,10 +153,24 @@ def is_photo(name):
     return not os.path.basename(d.part(name)).startswith("render_")
 
 
-def parts(s, names, x, y, w, h):
-    """부품 이미지 1~2개를 박스 안에 세로로 맞춘다. 사진이면 얇은 테두리를 두른다."""
+CAPTION = {"bonding_sem": "본딩 계면 SEM", "zhbm": "삼성 zHBM"}
+
+
+def parts(s, names, x, y, w, h, caption=False):
+    """부품 이미지 1~2개를 박스 안에 세로로 맞춘다. 사진이면 얇은 테두리, caption=True면 사진 아래 16pt 이름."""
     if len(names) == 1:
-        ox, oy, ow, oh = d.fit(s, d.part(names[0]), x, y, w, h)
+        cap = CAPTION.get(names[0]) if caption else None
+        if cap:   # 사진 + 이름 묶음을 박스 세로 가운데에
+            from PIL import Image as _Im
+            with _Im.open(d.part(names[0])) as im_:
+                a_ = im_.size[0] / im_.size[1]
+            iw = min(w, (h - 0.40) * a_)
+            ih = iw / a_
+            y = y + (h - ih - 0.40) / 2
+            ox, oy, ow, oh = d.fit(s, d.part(names[0]), x, y, w, ih)
+            tb(s, x - 0.1, oy + oh + 0.06, w + 0.2, 0.32, [(cap, 16, False, GRAY)], align=C)
+        else:
+            ox, oy, ow, oh = d.fit(s, d.part(names[0]), x, y, w, h)
         if is_photo(names[0]):
             rect(s, ox, oy, ow, oh, line=LINE, lw=0.75)
         return
@@ -297,7 +314,7 @@ for r, (no, name, ic, pts) in enumerate(STRATS):
     rect(s, MX, ry, RW, RH, fill=TINT, shape=RR)
     label_box(s, MX + 0.18, ry + 0.18, 1.05, 0.40, [(f"전략 {no}", 18, True, WHITE)], fill=BLUE)
     tb(s, MX + 0.18, ry + 0.66, 2.24, 1.10, [(t, 20, True, INK) for t in name.split("\n")], spacing=1.0)
-    parts(s, pts, MX + RW - 1.62, ry + 0.12, 1.50, RH - 0.24)
+    parts(s, pts, MX + RW - 1.62, ry + 0.12, 1.50, RH - 0.24, caption=True)
     for c in range(3):
         cx = CX0 + c * (COLW + G)
         kw, _, short, _ = CELL[(r, c)]

@@ -8,6 +8,7 @@
 
 ## 들어 있는 사진
 
-| 파일 | 쓰는 곳 | 출처 |
+| 파일 | 쓰는 곳 | 출처 · 라이선스 |
 |---|---|---|
-| `bonding.jpg` | `generate_uncertainty_3c_pptx.py` 전략 1(Bonding 기반 DRAM · NAND 통합 제조) | Samsung Semiconductor 뉴스룸 "Samsung Unveils Next-Gen 3D-Memory Vision at FMS 2026"(2026-08-05) 기사 사진 `1604x900-article-06.png`의 V10 Bonding V-NAND 전시 모형 부분을 잘라 냄. 삼성 공식 보도 이미지라 사내 덱 용도로 쓰고, 대외 배포 전에는 원본 사용 조건을 확인한다 |
+| `bonding_sem.jpg` | `generate_uncertainty_3c_pptx.py` 전략 1(Bonding 기반 DRAM · NAND 통합 제조) | Hsu, W.-Y.; Yang, S.-C.; Lin, Y.-Y.; Hsieh, W.-Z.; Tu, K.-N.; Chiu, W.-L.; Chang, H.-H.; Chen, C. "Low-Temperature Cu/SiO2 Hybrid Bonding with Low Contact Resistance Using (111)-Oriented Cu Surfaces", *Materials* 2022, 15(5), 1888, 그림 6(b) (https://www.mdpi.com/1996-1944/15/5/1888). **CC BY 4.0**. 변경: 접합부만 잘라 냄, 원 그림의 "Bonding interface" 글자 · 화살표를 주변 배경으로 지움, 대비 조정. 12인치 웨이퍼 간 Cu/SiO2 하이브리드 본딩 시편(제품 단면 아님) |
+| `zhbm.jpg` | 같은 덱 전략 2(고객 맞춤형 차세대 메모리) | Samsung Semiconductor 뉴스룸 "Samsung Unveils Next-Gen 3D-Memory Vision at FMS 2026"(2026-08-05) 기사 사진 `1604x900-article-07-v2.png`의 zHBM 전시 모형 부분을 잘라 냄. 삼성 공식 보도 이미지라 사내 덱 용도로 쓰고, 대외 배포 전에는 원본 사용 조건을 확인한다 |

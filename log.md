@@ -2885,3 +2885,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 전략 1: 삼성반도체 뉴스룸 FMS 2026 기사 사진에서 V10 Bonding V-NAND 적층 모형을 잘라 `assets/photos/bonding.jpg`(출처는 photos/README)
 - 전략 2: 3D DRAM은 개발 단계라 공개 실물 사진이 없음(삼성 Memcon 2024 · ISSCC 2026 개념도만 공개). `render_parts`에 `dram3d` 3D 렌더 추가(셀 층 수평 적층 · 수직 비트라인 · 계단 접점 · Peri 다이 본딩), 출처 줄에 "3D 렌더(개념)"
 - 세 시안 모두 반영(시안 B도 전략 아이콘 → 이미지). 렌더 QA · qa_audit PASS. 기획서 v1.1 · index 갱신
+
+## [2026-10-13] build | 3-C 전략 시안 v1.2: 전략 1 본딩 단면 SEM · 전략 2 삼성 zHBM 사진
+- 사용자 지시: 3D DRAM은 삼성 zHBM 사진이 더 정확, 본딩은 NAND에서 주로 쓰는 본딩 기술의 실사 또는 현미경 화면
+- 전략 1: 웨이퍼 간 Cu/SiO2 하이브리드 본딩 단면 SEM(Hsu 외, Materials 2022, 15(5) 1888, 그림 6(b), CC BY 4.0). 접합부만 잘라 원 그림 라벨을 지우고 대비 조정, 저작자 표시는 출처 줄 · 노트 · photos/README
+- 전략 2: 삼성반도체 뉴스룸 FMS 2026 기사의 zHBM 전시 모형 사진을 잘라 씀
+- v1.1 이미지(`bonding.jpg` · `render_dram3d.png`) 삭제. 시안 A 사진 아래 이름 16pt. 렌더 QA · qa_audit PASS, 기획서 v1.2 · index 갱신
