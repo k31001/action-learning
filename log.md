@@ -2918,3 +2918,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 ## [2026-10-13] build | merge: origin/main(Fab 통합 운영 시안 v2.1, dashboard v2.49.13) 반영, 3-C 시안 대시보드 번호 v2.49.14로 재배정
 - 메인에 먼저 올라온 Fab 통합 운영 1장 시안 작업과 병합. 충돌(.gitignore 예외 · presentations.js · presentationPreviews.js · updates.js · log.md)은 양쪽 항목을 모두 살림(발표자료 · 업데이트 목록은 3-C 시안을 맨 위에)
 - 같은 번호 v2.49.13을 피해 3-C 시안 발표자료 탭 등록을 v2.49.14로 재배정(version.js · updates)
+
+## [2026-10-14] build | 「FDP가 뭐야?」 30초 설명 영상 (여성 내레이션 · KV 캐시 오프로딩 시뮬레이션)
+- 사용자 지시: 기존 KV_Offload_16sess_Light_30s 영상을 FDP 설명용으로 업그레이드 — 앞부분 개념, 뒷부분 시뮬레이션 결과, 여성 성우 내레이션, 30초 유지
+- `outputs/motion/fdp-explainer/`: `index.html`(캔버스 프레임 결정적 렌더) · `sim.js`(FTL 시뮬레이터) · `narration.py`(Edge TTS ko-KR-SunHiNeural → `narration.mp3` · `cues.js`) · `render.mjs`(Playwright + ffmpeg → 1080p60 mp4, 미커밋)
+- 구성: FDP 정의 → 쓰기=페이지·지우기=블록 → FDP 없음(세션 섞인 블록 GC 복사, WAF 1.16 예시) vs FDP(세션별 RU 통째 소거, 1.00) → 시뮬레이션 3구성 → 정상 상태 WAF 막대 + "같은 수명은 같은 블록에"
+- 시뮬레이션은 새 모델(⚠️ 실측 아님): 160블록×16페이지, KV 티어 2,350페이지(92%), 세션 16개·길이 30~300, LRU 해제(멀티턴 재사용 여유), Greedy GC. 정상 상태 WAF No FDP 3.62 · 8 RUH 1.71 · 16 RUH 1.09 (원본 영상 4.18/1.82/1.14와 모델이 달라 수치가 다름 — 80블록×32페이지에서는 16 RUH 열린 RU가 여유 공간을 잠식해 GC 교착)
+- 위키·대시보드 영향 없음(영상 산출물만 추가, 수치는 위키 인용 대상이 아닌 예시 모델)
