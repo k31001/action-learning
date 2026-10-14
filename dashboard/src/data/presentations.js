@@ -37,8 +37,8 @@ export const PRESENTATIONS = [
     id: 'ssd-future-ready-strategy',
     file: 'ssd-future-ready-strategy.pptx',
     title: '불확실성이 높은 미래에 대응하기 위한 고객 협력 전략',
-    version: 'v5.0',
-    date: '2026-10-12',
+    version: 'v5.1',
+    date: '2026-10-14',
     slides: '본문 4장 + 참고 4장',
     summary: '응용별 SSD 요구와 삼성 포트폴리오 대응 현황(TLC Gen5 · Gen6 · 고내구 · QLC) → AI 추론 하위 수요 × 요구 × 기술 × 고객 협력 → 공동 설계로 WAF · 꼬리 지연을 낮춰 포트폴리오 확장(3D) → 계약 · 사람 · 역량 실행',
     chapters: ['현황', 'AI 추론 대응', '차별화 · 포트폴리오', '실행 전략', '참고 · 당위성', '참고 · 사업 기회', '참고 · 보안 기회', '참고 · 수요 전망'],
@@ -116,8 +116,26 @@ export const PRESENTATIONS = [
 // 영상 — 모션 그래픽(Remotion). 원본 outputs/motion/<…>/out/*.mp4 (미커밋, 렌더 산출물)
 // 배포 사본: dashboard/public/videos/<file> (웹 인코딩 H.264 CRF 23 + faststart) · 포스터 <poster>
 // — `node scripts/sync-presentations.mjs`가 원본이 있으면 다시 인코딩한다
-// chapters 시각(초)은 outputs/motion/downturn-20y/shotcraft/src/timeline.ts SHOTS 의 장 시작과 같다
+// chapters 시각(초): four-winters는 outputs/motion/downturn-20y/shotcraft/src/timeline.ts SHOTS 장 시작,
+//   fdp-explainer는 outputs/motion/fdp-explainer/index.html 장면 경계(T, cues.js 기준)
 export const VIDEOS = [
+  {
+    id: 'fdp-explainer',
+    file: 'fdp-explainer.mp4',
+    poster: 'fdp-explainer.jpg',
+    source: 'outputs/motion/fdp-explainer/fdp-explainer.mp4',
+    posterAt: 16.8,
+    title: 'FDP가 뭐야? — 30초 영상: FDP가 WAF를 줄이는 원리',
+    version: 'v1.0',
+    date: '2026-10-14',
+    duration: '0:30',
+    summary: '30초 설명 영상. 쓰기는 페이지 · 지우기는 블록 → FDP 없이 세션이 섞인 블록은 지우기 전에 남은 데이터를 옮긴다(GC 복사 = WAF) → FDP로 세션마다 블록을 나누면 통째로 지워 복사가 없다 → KV 캐시 오프로딩 시뮬레이션 WAF 3.62 · 1.71(8 RUH) · 1.09(16 RUH, 단순화 모델). 여성 내레이션 · 자막',
+    chapters: [['FDP란', 0], ['쓰기 · 지우기', 4.6], ['FDP 없음', 7.7], ['FDP', 13.3], ['시뮬레이션', 17.3], ['결과', 25.2]],
+    sound: '내레이션',
+    spec: `${REPO}/outputs/motion/fdp-explainer/index.html`,
+    report: `${REPO}/wiki/concepts/fdp-placement-mechanics.md`,
+    accent: '#15803D',
+  },
   {
     id: 'four-winters',
     file: 'four-winters.mp4',

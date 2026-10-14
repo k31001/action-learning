@@ -14,6 +14,23 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-14 ────────────────────────────────────────────────────────────
+  {
+    date: '2026-10-14',
+    type: 'build',
+    version: 'v2.49.16',
+    title: '발표자료 탭에 「FDP가 뭐야?」 30초 영상 추가 + SSD Future-Ready 덱 3장에 영상 버튼 (덱 v5.1)',
+    summary:
+      'FDP가 WAF를 줄이는 원리를 30초에 보여 주는 설명 영상(여성 내레이션 · 자막)을 발표자료 탭 영상 카드로 추가(장 6개 · 딥링크 #/presentations/fdp-explainer). ' +
+      '고객 협력 전략 덱 3장 ① 머리글 옆에 「▶ 30초 영상 · FDP 원리」 버튼을 달아 클릭하면 이 영상으로 바로 간다. 패치 v2.49.16.',
+    tags: ['발표자료', '영상', 'FDP', 'WAF', 'KV 캐시', '덱'],
+    items: [
+      { label: '영상', detail: 'fdp-explainer.mp4 30초 · 개념(쓰기 = 페이지 · 지우기 = 블록 → 섞인 블록 GC 복사 → 세션별 RU) → 시뮬레이션 WAF 3.62 · 1.71 · 1.09(단순화 모델)' },
+      { label: '덱', detail: 'ssd-future-ready-strategy v5.1 — 3장 영상 버튼 · 노트 한 문장' },
+      { label: '플레이어', detail: '영상별 소리 안내(내레이션만 / 내레이션 · 배경음악)' },
+    ],
+    links: [{ label: '영상 생성기', href: 'https://github.com/k31001/action-learning/tree/main/outputs/motion/fdp-explainer' }],
+  },
   // ── 2026-10-13 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-10-13',

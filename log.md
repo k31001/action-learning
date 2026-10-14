@@ -2925,3 +2925,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 구성: FDP 정의 → 쓰기=페이지·지우기=블록 → FDP 없음(세션 섞인 블록 GC 복사, WAF 1.16 예시) vs FDP(세션별 RU 통째 소거, 1.00) → 시뮬레이션 3구성 → 정상 상태 WAF 막대 + "같은 수명은 같은 블록에"
 - 시뮬레이션은 새 모델(⚠️ 실측 아님): 160블록×16페이지, KV 티어 2,350페이지(92%), 세션 16개·길이 30~300, LRU 해제(멀티턴 재사용 여유), Greedy GC. 정상 상태 WAF No FDP 3.62 · 8 RUH 1.71 · 16 RUH 1.09 (원본 영상 4.18/1.82/1.14와 모델이 달라 수치가 다름 — 80블록×32페이지에서는 16 RUH 열린 RU가 여유 공간을 잠식해 GC 교착)
 - 위키·대시보드 영향 없음(영상 산출물만 추가, 수치는 위키 인용 대상이 아닌 예시 모델)
+
+## [2026-10-14] build | 발표자료 탭에 FDP 30초 영상 · 고객 협력 전략 덱 3장 영상 버튼 (덱 v5.1, dashboard v2.49.16)
+- 사용자 지시: 대시보드 발표자료 메뉴에 「FDP가 뭐야?」 영상 추가, ssd-future-ready-strategy.pptx 적당한 슬라이드에 영상으로 가는 버튼(30초 영상임이 드러나게)
+- 대시보드: `presentations.js` VIDEOS에 fdp-explainer(장 6개 · 0:30 · 소리 = 내레이션) 추가, `sync-presentations.mjs`로 웹 인코딩 사본 `public/videos/fdp-explainer.mp4`(6.6MB) + 포스터. 플레이어 소리 안내를 영상별(`sound`)로
+- 덱 v5.1: 3장 ① "GC를 줄여 예측 가능한 QoS로" 머리글 오른쪽에 「▶ 30초 영상 · FDP 원리」 → https://action-learning.vercel.app/#/presentations/fdp-explainer/1, 노트 한 문장. 다른 장 텍스트 · 노트 무변경(python-pptx 대조), 웹 보기 이미지는 3장만 갱신(fonts-nanum 설치 후 렌더)
+- version.js v2.49.15 → v2.49.16(패치), updates 항목, outline 변경표
