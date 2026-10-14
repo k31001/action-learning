@@ -2949,3 +2949,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 내레이션: 페이지/블록 대사 삭제, 섞임 대사를 두 클립으로 나눠 0.45초 간격, 결론 대사 교체 → 55.0초
 - 화면: 장면 2(페이지 · 블록) 삭제. FDP 없음 장면 오른쪽 빈 패널에 WAF 시각자료 — 호스트가 쓴 양 32칸 → NAND에 실제로 쓴 양 32 + GC 복사 5칸(빨간 테두리 · "GC 복사 +5") → 정의 대사에 맞춰 "WAF = NAND에 쓴 양 ÷ 호스트가 쓴 양 = 37 ÷ 32 = 1.16". 머리글 "옮긴 만큼 NAND에 더 쓴다 — 이것이 쓰기 증폭(WAF)". 세션 B 해제는 "한 세션이 끝나면" 대사에 맞춤
 - 덱 버튼은 「1분 영상」 그대로(55초)라 덱 재생성 없음
+
+## [2026-10-14] ingest+build | DRAM 현실 파악 1장 시안 3종: Shrink 장벽 · 후발 추격 / AI 추론의 메모리 병목 (dashboard v2.49.20)
+- 사용자 요청: "DRAM 기술 경쟁력 제고를 위한 차별화 준비" 중 현실 파악 1장. 왼쪽 = Tech node shrink 장벽과 후발 주자의 추격(2000~2030 노드 추이, 2012~13년 이후 기울기 둔화, 2026 삼성 · 하이닉스 · 마이크론 · CXMT 위치를 CI로), 오른쪽 = AI 알고리즘과 하드웨어의 선순환(KV/토큰 × 월간 토큰 → 총수요, 알고리즘 절감 vs 공급 한계). 시각화 3안, 블루 외 다색 허용
+- ingest: sources/articles/dram-shrink-wall-and-ai-memory-bottleneck-2026-10.md 신규(노드 추이 · 2026 위치 · KV 산식 재인용 · TrendForce 2026-07 공급 충족률). wiki/concepts/dram-technology.md에 [Update 2026-10-14](연 -15% → -6%, 새 노드 1년 → 1.6년, 2026 각 사 노드, CXMT 캐파 93%)
+- 산출물: generate_dram_reality_charts.py(차트 10종) · generate_dram_reality_pptx.py · dram-reality-options.pptx(+미리보기 PDF) · dram-reality-outline.md. 로고 cxmt.png 추가(cxmt.com 공식 SVG 렌더)
+- 시안 A 흐름형 · B 선순환형 · C 실물형. 렌더 QA(NanumGothic → PDF → PNG) 3회 수정, qa_audit PASS(최소 pt · em-dash)
+- 대시보드: 지식 그래프 재생성(dram-technology 인용 수 변화), updates.js 항목, v2.49.20(패치), npm run build 통과
+- 건너뜀: steep · driving-forces · scenarios · strategies 변화 없음 → storyline · 시나리오 데이터 미변경. 발표자료 탭 등록은 시안 확정 전이라 보류(기존 시안 덱 관례)

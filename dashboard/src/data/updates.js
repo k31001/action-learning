@@ -16,6 +16,21 @@
 export const UPDATES = [
   {
     date: '2026-10-14',
+    type: 'ingest',
+    version: 'v2.49.20',
+    title: 'DRAM 미세화 둔화(연 -15% → -6%) · 2026 각 사 노드 위치 ingest, 현실 파악 1장 시안 3종',
+    summary:
+      'DRAM 주력 노드 추이 2000~2030과 2026 각 사 노드(Samsung 1c · SK hynix 1b/1c · Micron 1γ · CXMT G4 16nm), KV/토큰 × 월간 토큰 산술을 근거 원장으로 수집하고 dram-technology 개념 페이지를 갱신. ' +
+      '지식 그래프 재생성(인용 수 변화). 패치 v2.49.20.',
+    tags: ['DRAM', 'CXMT', 'KV 캐시', '발표자료'],
+    items: [
+      { label: 'sources', detail: 'dram-shrink-wall-and-ai-memory-bottleneck-2026-10.md' },
+      { label: 'wiki', detail: 'concepts/dram-technology.md [Update 2026-10-14]' },
+      { label: '덱', detail: 'outputs/presentation/dram-reality-options.pptx (시안 A 흐름형 · B 선순환형 · C 실물형, 발표자료 탭 등록은 시안 확정 후)' },
+    ],
+  },
+  {
+    date: '2026-10-14',
     type: 'build',
     version: 'v2.49.19',
     title: '「FDP가 뭐야?」 영상 v1.3 — 페이지/블록 장면 → WAF 시각자료, 결론 "같은 시점에 지워질 데이터는 같은 블록에"',
