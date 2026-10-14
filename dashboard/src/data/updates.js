@@ -17,6 +17,20 @@ export const UPDATES = [
   {
     date: '2026-10-14',
     type: 'build',
+    version: 'v2.49.18',
+    title: '「FDP가 뭐야?」 영상 1분(58초) — WAF 정의 · DWPD 개념 추가 · 덱 버튼 「1분 영상」 (덱 v5.3)',
+    summary:
+      'FDP 없음 장면에 WAF = NAND에 쓴 양 ÷ 호스트가 쓴 양(수식 강조), 결과 장면에 DWPD = 하루에 전체 용량을 몇 번 쓸 수 있나 · WAF에 반비례 → 16 RUH 약 3.3배 막대를 추가. ' +
+      '감소율(−73% · −97%)은 막대 옆 표기로 옮김. 고객 협력 전략 덱 3장 버튼을 「▶ 1분 영상 · FDP 원리」로. 패치 v2.49.18.',
+    tags: ['발표자료', '영상', 'FDP', 'WAF', 'DWPD', '덱'],
+    items: [
+      { label: '영상', detail: 'fdp-explainer v1.2 · 58초 · 장 9개(WAF · 결과 · DWPD · 결론)' },
+      { label: '덱', detail: 'ssd-future-ready-strategy v5.3 — 3장 버튼 · 노트 1분' },
+    ],
+  },
+  {
+    date: '2026-10-14',
+    type: 'build',
     version: 'v2.49.17',
     title: '「FDP가 뭐야?」 영상 30 → 50초 · WAF를 "와프"로 읽기 · 덱 버튼 문구 50초 (덱 v5.2)',
     summary:
