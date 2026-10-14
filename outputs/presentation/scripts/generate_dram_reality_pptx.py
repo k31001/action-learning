@@ -5,6 +5,10 @@
   시안 A 흐름형     왼쪽 로그 축 노드 추이 / 오른쪽 선순환 → 드라이버 3종 막대 → 총수요 산술식 → 알고리즘 계단 · 공급 시계
   시안 B 선순환형   왼쪽 선형 축 + 2013 이후 확대 / 오른쪽 선순환 고리(가속기 이미지) + 총수요 빅넘버 + 늘리는 힘 vs 줄이는 힘
   시안 C 실물형     왼쪽 로그 축 + 노드 전환 점 줄 / 오른쪽 요청 1건 KV vs HBM 288GB(넘침) · 토큰 추이 · 알고리즘 계단 · 메모리 계층 이미지
+v1.1(2026-10-14): 사용자 지시 "텍스트와 부수 내용을 줄이고 핵심 위주로 시각화 강화"로 간결형 3장(A2 · B2 · C2)을 4~6장에 추가.
+  왼쪽 그래프를 절반 영역 전체로 키우고 로고를 마커 옆에 직접 달며, 근거 빅넘버 칸 · 로고 상자 · 보조 줄을 뺐다.
+  오른쪽은 시안마다 핵심 그림 2~3개만 남겼다(A2 드라이버 막대 → 산술식 → ÷32 vs ×330 · 2028, B2 선순환 고리 + 가속기 수 빅넘버 + ÷32 vs ×330,
+  C2 요청 1건이 HBM을 넘치는 막대 + HBM → DRAM → SSD 계층 이미지 · 2028).
 
 규율: samsung-memory-ppt-design-skill v2.2(11절 시각 우선, 11.J 근거 사슬, 20 × 11.25in, 본문 18pt 이상 · 출처 15pt, em-dash 금지).
 색: 사용자 지시(2026-10-14 "블루톤만 고집하지 말고 다양하게")로 의미별 색을 쓴다. 위기 = 주황, 기회 = 청록, 알고리즘 = 보라, 넘침 · 격차 = 빨강.
@@ -28,7 +32,7 @@ ASSETS = os.path.join(HERE, "..", "assets")
 FIG = os.path.join(ASSETS, "dram-reality")
 OUT = os.environ.get("OUT_PATH") or os.path.join(HERE, "..", "dram-reality-options.pptx")
 
-d = Deck("DRAM 기술 경쟁력 제고 · 차별화 준비", total=3,
+d = Deck("DRAM 기술 경쟁력 제고 · 차별화 준비", total=6,
          logos_dir=os.path.join(ASSETS, "logos"), photos_dir=os.path.join(ASSETS, "photos"),
          renders_dir=os.path.join(ASSETS, "survival"))
 tb, rect, label_box = d.tb, d.rect, d.label_box
@@ -299,7 +303,108 @@ def slide_c():
             "(Google Next '26 'KV Cache storage tiering across RAM, Local SSD'). 토큰은 2년에 330배, 알고리즘은 토큰당 KV를 MHA 대비 최대 1/37로 줄였습니다.")
 
 
+# =============================================================== 간결형 공통 (v1.1)
+SRC_SIMPLE = ("출처: ITRS · TechInsights · Fab Tracker Q2'26 · Digitimes / Llama 3.1 설정 산식 · Google I/O · TrendForce 2026-07 · "
+              "산술은 가정 의존 · 부품은 3D 렌더 · 상세 근거는 시안 A~C")
+NOTES_SIMPLE = ("[간결형] 1~3장의 같은 근거를 핵심 그림만 남겨 다시 그렸습니다. 노드 추이의 기울기(연 -15% → -6%)와 2026년 각 사 위치(격차 3세대), "
+                "알고리즘이 토큰당 KV를 32분의 1로 줄이는 동안(70B 기준 MHA BF16 → GQA FP4) 토큰은 2년에 330배 늘었고, 메모리 공급의 실질 증가는 2028년이라는 것이 요지입니다.")
+
+
+def frame2(s):
+    rect(s, 9.86, 2.40, 0.02, 7.02, fill=LINE)
+    head(s, LX, LW, 1, "위기: Shrink 장벽 · 후발 추격", ORANGE)
+    head(s, RX, RW, 2, "기회: 추론의 병목은 메모리", TEAL)
+    d.band(s, 9.60, 0.80, "현실", BAND, size=24)
+
+
+def footer2(s, tag):
+    tb(s, MX, 10.50, 16.9, 0.34, [(SRC_SIMPLE, 15, False, GRAY)])
+    tb(s, RIGHT - 1.6, 10.50, 1.6, 0.34, [(f"시안 {tag}", 16, True, GRAY)], align=R)
+
+
+def supply_box(s, x, y, w, h):
+    rect(s, x, y, w, h, fill=WHITE, line=RED, lw=1.5, shape=RR)
+    tb(s, x, y + 0.10, w, 0.34, [("메모리 공급", 18, True, INK)], align=C, anchor=MID)
+    tb(s, x, y + 0.46, w, 0.80, [("2028", 48, True, RED)], align=C, anchor=MID)
+    tb(s, x, y + h - 0.44, w, 0.34, [("신규 팹 실질 출하", 16, False, GRAY)], align=C, anchor=MID)
+
+
+# =============================================================== 시안 A2: 흐름형 · 간결
+def slide_a2():
+    s = d.slide(4, "현실 파악 · 시안 A2 흐름형 간결", TITLE)
+    frame2(s)
+    img(s, "node_simple_log.png", LX, 2.98, LW, 6.40)
+    img(s, "drivers_big.png", RX, 2.98, RW, 2.70)
+    y, h = 5.86, 1.30
+    boxes = [(2.55, "320 KiB", "KV / 토큰", PURPLE, PURPLE_BG, PURPLE), (0.50, "×", None, GRAY, None, None),
+             (2.55, "3,200조", "월간 토큰", TEAL, TEAL_BG, TEAL), (0.50, "=", None, GRAY, None, None),
+             (2.86, "월 1 ZB", "KV 생성", WHITE, ORANGE, ORANGE)]
+    x = RX
+    for bw, big, cap, col, bg, ln in boxes:
+        if cap is None:
+            tb(s, x, y, bw, h, [(big, 36, True, col)], align=C, anchor=MID)
+        else:
+            rect(s, x, y, bw, h, fill=bg, line=ln, lw=1.25, shape=RR)
+            tb(s, x, y + 0.08, bw, 0.72, [(big, 34, True, col)], align=C, anchor=MID)
+            tb(s, x, y + 0.82, bw, 0.36, [(cap, 18, False, col if col == WHITE else INK)], align=C, anchor=MID)
+        x += bw
+    tb(s, RX, 7.24, 5.90, 0.30, [("토큰당 KV 절감(70B, MHA → GQA · FP4) vs 토큰 증가(2년)", 15, False, GRAY)], anchor=MID)
+    img(s, "tug2_small.png", RX, 7.50, 5.90, 1.90)
+    supply_box(s, RE - 2.80, 7.42, 2.80, 1.92)
+    footer2(s, "A2")
+    d.notes(s, NOTES_SIMPLE)
+
+
+# =============================================================== 시안 B2: 선순환형 · 간결
+def slide_b2():
+    s = d.slide(5, "현실 파악 · 시안 B2 선순환형 간결", TITLE)
+    frame2(s)
+    img(s, "node_simple_linear.png", LX, 2.98, LW, 6.40)
+    ring = 3.30
+    rx, ry = RX + 0.25, 3.40
+    tb(s, RX, 2.98, ring + 0.5, 0.40, [("알고리즘", 22, True, PURPLE)], align=C, anchor=MID)
+    img(s, "flywheel.png", rx, ry, ring, ring)
+    cx, cy = rx + ring / 2, ry + ring / 2
+    part(s, "hbm", cx - 0.95, cy - 0.70, 1.90, 1.40)
+    tb(s, RX, ry + ring + 0.02, ring + 0.5, 0.40, [("메모리", 22, True, TEAL)], align=C, anchor=MID)
+    qx = RX + ring + 0.75
+    qw = RE - qx
+    tb(s, qx, 3.30, qw, 0.40, [("KV를 담을 HBM 가속기", 20, True, INK)], anchor=MID)
+    tb(s, qx, 3.74, qw, 0.95, [("8만~42만 개", 48, True, RED)], anchor=MID)
+    tb(s, qx, 4.72, qw, 0.66, [("320 KiB × 월 3,200조 토큰", 17, False, GRAY), ("288GB · 체류 60초~5분 가정", 17, False, GRAY)], spacing=1.05)
+    rect(s, qx, 5.62, qw, 0.02, fill=LINE)
+    tb(s, qx, 5.80, qw, 0.40, [("메모리 공급 확대", 20, True, INK)], anchor=MID)
+    tb(s, qx, 6.20, qw, 0.80, [[("2028", 44, True, RED), ("  년부터", 20, True, INK)]], anchor=MID)
+    tb(s, RX, 7.16, RW, 0.28, [("토큰당 KV 절감(70B, MHA → GQA · FP4) vs 토큰 증가(Google, 2년)", 15, False, GRAY)], anchor=MID)
+    img(s, "tug2.png", RX, 7.42, RW, 2.00)
+    footer2(s, "B2")
+    d.notes(s, NOTES_SIMPLE)
+
+
+# =============================================================== 시안 C2: 실물형 · 간결
+def slide_c2():
+    s = d.slide(6, "현실 파악 · 시안 C2 실물형 간결", TITLE)
+    frame2(s)
+    img(s, "node_simple_cadence.png", LX, 2.98, LW, 6.40)
+    img(s, "tank_big.png", RX, 2.98, RW, 4.10)
+    part(s, "hbm", RX + 0.55, 4.10, 2.30, 1.70)
+    cw, ch = 1.55, 1.05
+    xs = [RX, RX + 2.08, RX + 4.16]
+    for i, (nm, lab) in enumerate([("hbm", "HBM"), ("dram", "DRAM"), ("server", "SSD · 서버")]):
+        part(s, nm, xs[i], 7.42, cw, ch)
+        tb(s, xs[i] - 0.2, 8.52, cw + 0.4, 0.36, [(lab, 20, True, INK)], align=C, anchor=MID)
+        if i < 2:
+            d.arrow_r(s, xs[i] + cw + 0.06, 7.80, 2.08 - cw - 0.12, 0.30, fill=RED if i == 0 else GRAY_2)
+    tb(s, RX, 8.94, 5.75, 0.40, [("넘친 KV는 아래 계층으로", 20, True, RED)], align=C, anchor=MID)
+    supply_box(s, RE - 2.80, 7.42, 2.80, 1.92)
+    footer2(s, "C2")
+    d.notes(s, NOTES_SIMPLE)
+
+
 slide_a()
 slide_b()
 slide_c()
+slide_a2()
+slide_b2()
+slide_c2()
 print("saved", d.save(OUT))

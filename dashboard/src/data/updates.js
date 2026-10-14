@@ -17,6 +17,19 @@ export const UPDATES = [
   {
     date: '2026-10-14',
     type: 'build',
+    version: 'v2.49.22',
+    title: '「DRAM 현실 파악」 간결형 시안 3장 추가 (A2 · B2 · C2)',
+    summary:
+      '기존 시안 A · B · C를 유지하고, 각각 텍스트와 부수 내용을 줄이고 핵심 그림을 키운 간결형 3장을 4~6장에 추가(장당 글자 약 870 → 440자). ' +
+      '왼쪽 노드 추이를 절반 영역 전체로 키우고 로고를 마커 옆에, 오른쪽은 드라이버 · 산술식 · 알고리즘 ÷32 vs 토큰 ×330 · 공급 2028 · HBM 넘침 막대로. 패치 v2.49.22.',
+    tags: ['발표자료', 'DRAM', 'KV 캐시'],
+    items: [
+      { label: '덱', detail: 'dram-reality-options.pptx v1.1 · 한 장 시안 6종(기본 3 + 간결 3)' },
+    ],
+  },
+  {
+    date: '2026-10-14',
+    type: 'build',
     version: 'v2.49.21',
     title: '발표자료 탭에 「DRAM 현실 파악」 한 장 시안 3종 등록',
     summary:

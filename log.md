@@ -2962,3 +2962,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 사용자 지시: 시안 A · B · C 모두 유지하고 대시보드 발표자료에 추가
 - presentations.js에 dram-reality-options 등록(장 3개: A 흐름형 · B 선순환형 · C 실물형), sync-presentations로 배포 사본, render-presentation-previews로 웹 보기 이미지 3장(presentationPreviews.js 갱신)
 - updates.js 항목, version.js v2.49.20 → v2.49.21(패치: 데이터 추가), outline · index 상태 문구 갱신. 덱 내용 무변경
+
+## [2026-10-14] build | 「DRAM 현실 파악」 간결형 시안 3장 추가 (덱 v1.1, dashboard v2.49.22)
+- 사용자 지시: 각 시안에서 텍스트와 부수 내용을 줄이고 핵심 위주로 시각화를 강화한 버전 3장을 기존 슬라이드에 추가하고 push
+- 4~6장 A2 · B2 · C2 추가(1~3장 무변경, 장당 글자 약 870 → 440자). 왼쪽 노드 추이를 절반 영역 전체로 키우고 로고를 마커 옆에 직접, 기울기 숫자 34pt. 오른쪽은 시안별 핵심 그림 2~3개(드라이버 · 산술식 · ÷32 vs ×330 · 공급 2028 / 선순환 고리 · 가속기 수 / HBM 넘침 막대 · 계층 이미지)
+- 차트 7종 추가(node_simple_log · node_simple_linear · node_simple_cadence · drivers_big · tug2 · tug2_small · tank_big). ÷32는 70B 같은 모델 MHA BF16 → GQA FP4로 정의(이전 노트의 MHA 대비 1/37 = 모델 간 비교라 간결형에서는 쓰지 않음)
+- 렌더 QA 3회, qa_audit PASS. 대시보드 발표자료 탭 장 6개 · 웹 보기 이미지 6장, updates.js, v2.49.22, npm run build 통과

@@ -469,6 +469,195 @@ def tokens(w=4.30, h=2.55):
     fig.text(0.05, 0.99, "Google 월간 처리 토큰 (로그 축)", fontsize=16, color=GRAY, va="top")
     save(fig, "tokens.png")
 
+# ================================================================ 간결형(시안 A2 · B2 · C2, 2026-10-14 v1.1)
+# 사용자 지시: 텍스트와 부수 내용을 줄이고 핵심 위주로 시각화를 강화. 왼쪽 그래프는 절반 영역 전체(8.76 x 6.40)를 쓰고
+# 로고를 마커 옆에 직접 단다(로고 상자 없음). 글자는 크게(18~26pt).
+LOGO_SLOTS = [("cxmt", 21.0, 16), ("sk-hynix", 13.0, 25), ("samsung", 10.6, 10), ("micron", 8.5, 14)]
+
+
+def _simple_positions(ax, x_logo=2030.9, slots=None):
+    c_col = CO["cxmt"][0]
+    ax.plot([p[0] for p in CXMT], [p[1] for p in CXMT], color=c_col, lw=2.6, ls=(0, (1.2, 1.6)), marker="^", ms=10,
+            mfc="white", mec=c_col, zorder=5)
+    ax.annotate("", xy=CXMT_NEXT, xytext=(2026.05, 15.9),
+                arrowprops=dict(arrowstyle="-|>", color=c_col, lw=2.0, ls=(0, (2, 1.5)), mutation_scale=16), zorder=5)
+    pos = {n: (x, nm) for n, x, nm, _ in POS_2026}
+    for name, x, nm, _ in POS_2026:
+        col, mk = CO[name]
+        ax.plot([x], [nm], marker=mk, ms=16 if mk != "D" else 13, color=col, mec="white", mew=1.6, zorder=7)
+    for name, ly, hp in slots or LOGO_SLOTS:
+        x, nm = pos[name]
+        col = CO[name][0] if name != "micron" else GRAY
+        ax.annotate("", xy=(x + 0.35, nm), xytext=(x_logo - 0.15, ly),
+                    arrowprops=dict(arrowstyle="-", color=col, lw=1.3, shrinkA=0, shrinkB=0), zorder=6)
+        ax.add_artist(AnnotationBbox(logo_img(name, hp), (x_logo, ly), frameon=False, box_alignment=(0, 0.5), zorder=8))
+    # 격차: 같은 x(2026.0)의 SK hynix(12) ↔ CXMT(16) 사이
+    ax.annotate("", xy=(2027.0, 11.5), xytext=(2027.0, 16.0),
+                arrowprops=dict(arrowstyle="<->", color=RED, lw=2.4, mutation_scale=14, shrinkA=0, shrinkB=0), zorder=6)
+    ax.text(2027.3, 14.3, "3세대", fontsize=18, color=RED, ha="left", va="center", fontweight="bold", zorder=6)
+
+
+def _simple_axes(ax, log=True):
+    ax.set_xlim(1999.3, 2035.4)
+    ax.set_xticks([2000, 2010, 2020, 2030])
+    ax.spines["bottom"].set_bounds(1999.3, 2030.8)
+    if log:
+        ax.set_yscale("log")
+        ax.set_ylim(7.2, 260)
+        ax.set_yticks([10, 20, 50, 100, 200])
+        ax.set_yticklabels(["10", "20", "50", "100", "200"])
+        ax.minorticks_off()
+    ax.tick_params(labelsize=18)
+
+
+def node_simple_log(w=8.76, h=6.40, name="node_simple_log.png", strip=False):
+    fig = plt.figure(figsize=(w, h))
+    ax = fig.add_axes([0.075, 0.27 if strip else 0.075, 0.92, 0.68 if strip else 0.875])
+    _node_base(ax, labels=False)
+    _simple_axes(ax)
+    for y, n, lab in NODES:
+        if lab in ("90", "2x", "1c"):
+            ax.text(y + (0.3 if lab != "1c" else -0.2), n * (1.18 if lab != "1c" else 0.80), lab, fontsize=17, color=GRAY,
+                    ha="left" if lab != "1c" else "center", va="bottom" if lab != "1c" else "top")
+    ax.text(2001.0, 22, f"연 {R1:.0f}%", fontsize=34, color=TEAL, fontweight="bold", va="center")
+    ax.text(2006.0, 13.2, "2000~2011", fontsize=18, color=TEAL, va="center")
+    ax.text(2013.0, 55, f"연 {R2:.0f}%", fontsize=34, color=ORANGE, fontweight="bold", va="center")
+    ax.text(2013.1, 38, "2013~2025", fontsize=18, color=ORANGE, va="center")
+    ax.text(0.0, 1.0, "nm (로그 축)", transform=ax.transAxes, fontsize=16, color=GRAY, va="bottom", ha="left")
+    _simple_positions(ax, slots=[("cxmt", 21.0, 15), ("sk-hynix", 13.2, 22), ("samsung", 10.3, 9), ("micron", 8.3, 13)] if strip else None)
+    if strip:
+        ax.tick_params(labelbottom=False)
+        bx = fig.add_axes([0.075, 0.06, 0.92, 0.15], sharex=ax)
+        e1 = [y for y, _, _ in NODES if y <= 2011]
+        e2 = [y for y, _, _ in NODES if y >= 2013]
+        bx.scatter(e1, [0] * len(e1), s=260, color=TEAL, zorder=3)
+        bx.scatter(e2, [0] * len(e2), s=260, color=ORANGE, zorder=3)
+        bx.scatter([2027, 2030], [0, 0], s=260, facecolor="white", edgecolor=GRAY_2, lw=2, zorder=3)
+        bx.axhline(0, color=GRAY_3, lw=1.4, zorder=1)
+        bx.text(2000, 0.6, "새 노드 매년", fontsize=19, color=TEAL, fontweight="bold", va="bottom")
+        bx.text(2013, 0.6, "1.6년마다", fontsize=19, color=ORANGE, fontweight="bold", va="bottom")
+        bx.set_ylim(-0.7, 1.7)
+        bx.set_yticks([])
+        for sp in bx.spines.values():
+            sp.set_visible(False)
+        bx.tick_params(colors=GRAY, length=0, labelsize=18)
+        bx.set_xticks([2000, 2010, 2020, 2030])
+    save(fig, name)
+
+
+def node_simple_linear(w=8.76, h=6.40):
+    fig = plt.figure(figsize=(w, h))
+    ax = fig.add_axes([0.075, 0.075, 0.92, 0.875])
+    _node_base(ax, log=False, labels=False, slopes=False)
+    _simple_axes(ax, log=False)
+    ax.set_ylim(0, 195)
+    ax.set_yticks([0, 50, 100, 150])
+    ax.text(0.0, 1.0, "nm", transform=ax.transAxes, fontsize=16, color=GRAY, va="bottom", ha="left")
+    ax.text(2004.6, 158, "-151nm", fontsize=32, color=TEAL, fontweight="bold", va="center")
+    ax.text(2004.7, 136, "2000~2011", fontsize=18, color=TEAL, va="center")
+    ax.text(2013.0, 48, "-13.5nm", fontsize=32, color=ORANGE, fontweight="bold", va="center")
+    ax.text(2013.1, 32, "2013~2025", fontsize=18, color=ORANGE, va="center")
+    # 2026 확대: 위 오른쪽
+    ins = fig.add_axes([0.53, 0.50, 0.455, 0.46])
+    ins.set_facecolor("white")
+    xs = [y for y, _, _ in NODES if y >= 2016]
+    ys = [n for y, n, _ in NODES if y >= 2016]
+    ins.plot(xs, ys, color=INK, lw=2.6, marker="o", ms=7, mfc="white", mec=INK, mew=1.6, zorder=4)
+    ins.plot([p[0] for p in FORECAST], [p[1] for p in FORECAST], color=GRAY_2, lw=2.2, ls=(0, (3, 2)), marker="o", ms=6, mfc="white", mec=GRAY_2)
+    ins.set_xlim(2015.5, 2033.6)
+    ins.set_ylim(7.0, 23)
+    ins.set_xticks([2020, 2025, 2030])
+    ins.set_yticks([10, 15, 20])
+    ins.yaxis.grid(True, color=LINE, lw=0.6)
+    for sp in ins.spines.values():
+        sp.set_color(ORANGE)
+        sp.set_linewidth(1.8)
+    ins.tick_params(colors=GRAY, length=0, labelsize=15)
+    ins.plot([p[0] for p in CXMT], [p[1] for p in CXMT], color=CO["cxmt"][0], lw=2.2, ls=(0, (1.2, 1.6)), marker="^", ms=8, mfc="white", mec=CO["cxmt"][0])
+    for name, x, nm, _ in POS_2026:
+        col, mk = CO[name]
+        ins.plot([x], [nm], marker=mk, ms=12 if mk != "D" else 10, color=col, mec="white", mew=1.2, zorder=7)
+    for name, (lx, ly), hp in (("cxmt", (2028.9, 19.0), 12), ("sk-hynix", (2028.9, 15.0), 19),
+                               ("samsung", (2028.9, 12.2), 9), ("micron", (2028.9, 8.4), 11)):
+        ins.add_artist(AnnotationBbox(logo_img(name, hp), (lx, ly), frameon=False, box_alignment=(0, 0.5)))
+    for xy, xt, c in (((2026.2, 16.4), (2028.7, 18.8), CO["cxmt"][0]), ((2026.15, 12.3), (2028.7, 14.8), CO["sk-hynix"][0]),
+                      ((2025.75, 11.6), (2028.7, 12.2), CO["samsung"][0]), ((2026.6, 11.2), (2028.7, 8.7), GRAY)):
+        ins.annotate("", xy=xy, xytext=xt, arrowprops=dict(arrowstyle="-", color=c, lw=1.2))
+    ins.annotate("", xy=(2026.0, 12.6), xytext=(2026.0, 15.4), arrowprops=dict(arrowstyle="<->", color=RED, lw=2.0, mutation_scale=12))
+    ins.text(2025.6, 14.0, "3세대", fontsize=17, color=RED, ha="right", va="center", fontweight="bold")
+    ins.text(2015.9, 22.4, "2026년 위치", fontsize=16, color=INK, fontweight="bold", va="top")
+    save(fig, "node_simple_linear.png")
+
+
+def drivers_big(w=8.96, h=2.70):
+    fig = plt.figure(figsize=(w, h))
+    specs = [
+        ("더 큰 모델", ["8B", "405B"], [128, 504], ["128 KiB", "504 KiB"], PURPLE, "×3.9"),
+        ("더 긴 문맥", ["8K", "1M"], [2.68, 327.7], ["2.7 GB", "328 GB"], ORANGE, "×122"),
+        ("더 많은 토큰", ["'24", "'26"], [9.7, 3200], ["9.7조", "3,200조"], TEAL, "×330"),
+    ]
+    pw, gap = 0.30, 0.045
+    for i, (ttl, cats, vals, labs, col, mult) in enumerate(specs):
+        ax = fig.add_axes([0.01 + i * (pw + gap), 0.13, pw, 0.60])
+        ax.bar([0, 1], vals, color=[col, col], width=0.6)
+        ax.patches[0].set_alpha(0.35)
+        ax.set_ylim(0, max(vals) * 1.45)
+        ax.set_xlim(-0.55, 1.55)
+        for j, v in enumerate(vals):
+            ax.text(j, v + max(vals) * 0.04, labs[j], ha="center", va="bottom", fontsize=18,
+                    fontweight="bold" if j else "normal", color=col if j else INK)
+        ax.set_xticks([0, 1])
+        ax.set_xticklabels(cats, fontsize=18)
+        ax.set_yticks([])
+        for sp in ("top", "right", "left"):
+            ax.spines[sp].set_visible(False)
+        ax.spines["bottom"].set_color(GRAY_3)
+        ax.tick_params(length=0, colors=GRAY)
+        fig.text(0.01 + i * (pw + gap), 0.98, ttl, fontsize=22, fontweight="bold", color=col, va="top")
+        fig.text(0.01 + i * (pw + gap) + pw, 0.98, mult, fontsize=22, fontweight="bold", color=col, va="top", ha="right")
+    save(fig, "drivers_big.png")
+
+
+def tug2(w=8.96, h=2.10, name="tug2.png"):
+    """같은 기간(2024 → 2026) 알고리즘이 줄인 배수 vs 토큰이 늘린 배수 (로그)."""
+    fig = plt.figure(figsize=(w, h))
+    ax = fig.add_axes([0.01, 0.05, 0.98, 0.90])
+    ax.barh(1, np.log10(32), color=PURPLE, height=0.62)
+    ax.barh(0, np.log10(330), color=ORANGE, height=0.62)
+    ax.text(np.log10(32) + 0.05, 1, "÷32", fontsize=30, fontweight="bold", color=PURPLE, va="center")
+    ax.text(np.log10(330) + 0.05, 0, "×330", fontsize=30, fontweight="bold", color=ORANGE, va="center")
+    ax.text(0.04, 1, "알고리즘", fontsize=20, fontweight="bold", color="white", va="center")
+    ax.text(0.04, 0, "토큰", fontsize=20, fontweight="bold", color="white", va="center")
+    ax.set_xlim(0, 3.35)
+    ax.set_ylim(-0.5, 1.5)
+    ax.axis("off")
+    save(fig, name)
+
+
+def tank_big(w=8.96, h=4.10):
+    fig = plt.figure(figsize=(w, h))
+    ax = fig.add_axes([0.02, 0.14, 0.96, 0.84])
+    cats = ["채팅", "에이전트", "1M 문맥"]
+    vals = [0.53, 22.2, 327.7]
+    ax.bar(range(3), vals, color=[GRAY_3, AMBER, ORANGE], width=0.56)
+    ax.bar([2], [327.7 - 288], bottom=[288], color=RED, width=0.56)
+    ax.axhline(288, color=INK, lw=2.2, ls=(0, (3, 2)))
+    ax.text(2.33, 288 - 14, "가속기 1개\nHBM 288GB", fontsize=19, color=INK, va="top", ha="left", fontweight="bold")
+    for j, v in enumerate(vals):
+        ax.text(j, v + 10, f"{v:g} GB", ha="center", va="bottom", fontsize=22, fontweight="bold" if j == 2 else "normal",
+                color=RED if j == 2 else INK)
+    ax.text(2, 308, "넘침", ha="center", va="center", fontsize=18, color="white", fontweight="bold")
+    ax.set_ylim(0, 375)
+    ax.set_xlim(-0.5, 3.1)
+    ax.set_xticks(range(3))
+    ax.set_xticklabels(cats, fontsize=20)
+    ax.set_yticks([])
+    for sp in ("top", "right", "left"):
+        ax.spines[sp].set_visible(False)
+    ax.spines["bottom"].set_color(GRAY_3)
+    ax.tick_params(length=0, colors=INK)
+    save(fig, "tank_big.png")
+
 
 if __name__ == "__main__":
     print(f"ERA1 {R1:.1f}%/yr, ERA2 {R2:.1f}%/yr")
@@ -482,3 +671,10 @@ if __name__ == "__main__":
     flywheel()
     tank()
     tokens()
+    node_simple_log()
+    node_simple_log(name="node_simple_cadence.png", strip=True)
+    node_simple_linear()
+    drivers_big()
+    tug2()
+    tug2(w=5.90, h=1.90, name="tug2_small.png")
+    tank_big()
