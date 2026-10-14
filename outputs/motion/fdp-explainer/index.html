@@ -26,11 +26,11 @@ body.export #play{display:none}
 <script src="cues.js"></script>
 <script src="sim.js"></script>
 <script id="main">
-// 「FDP가 뭐야?」 30초 설명 영상 — 1920×1080 캔버스, 시각 t(초)만으로 매 프레임을 그린다(결정적).
-//   개념(0~17s): 쓰기·지우기 단위 → FDP 없이 섞인 블록의 GC 복사 → FDP로 세션별 블록 분리
-//   결과(17~30s): sim.js 시뮬레이션 3구성 실시간 → 정상 상태 WAF 막대
-// 대사 시각은 cues.js(narration.py 생성)에서 받는다. 화면 자막은 SUBS.
-const W = 1920, H = 1080, DUR = 30;
+// 「FDP가 뭐야?」 설명 영상(약 50초) — 1920×1080 캔버스, 시각 t(초)만으로 매 프레임을 그린다(결정적).
+//   개념(0~31s): FDP 정의 · 배치 힌트 → 쓰기·지우기 단위 → FDP 없이 섞인 블록의 GC 복사 → FDP로 세션별 블록 분리
+//   결과(31~50s): sim.js 시뮬레이션 3구성 실시간 → 정상 상태 WAF 막대 · 감소율 · 결론
+// 대사 시각 · 영상 길이는 cues.js(narration.py 생성)에서 받는다. 화면 자막은 SUBS(WAF 표기, 음성은 "와프").
+const W = 1920, H = 1080, DUR = window.DURATION;
 const cv = document.getElementById('cv'), g = cv.getContext('2d');
 const CUES = window.CUES;
 
@@ -51,22 +51,27 @@ const SLOT = ['#E5484D', '#F76B15', '#E2A300', '#46A758', '#12A594', '#0091FF', 
 const SES = [{ k: 'A', c: '#2563EB' }, { k: 'B', c: '#EA580C' }, { k: 'C', c: '#059669' }, { k: 'D', c: '#9333EA' }];
 
 const SUBS = [
-  ['FDP는 데이터를 어디에 쓸지 호스트가 SSD에 알려 주는 기능입니다.'],
-  ['SSD는 페이지로 쓰고, 블록으로 지웁니다.'],
-  ['세션이 한 블록에 섞이면 지우기 전에 남은 데이터를 옮겨야 하는데,', '이 추가 쓰기가 WAF(쓰기 증폭)입니다.', 0.62],
-  ['FDP로 세션마다 블록을 나누면, 통째로 지워져 복사가 없습니다.'],
-  ['시뮬레이션에서, FDP 없이 3.6이던 WAF가'],
+  ['FDP(Flexible Data Placement)는 NVMe 표준 기능입니다.'],
+  ['호스트가 데이터를 쓸 때, 어느 블록에 모을지 SSD에 함께 알려 줍니다.'],
+  ['SSD는 페이지 단위로 쓰고, 블록 단위로 지웁니다.'],
+  ['여러 세션의 데이터가 한 블록에 섞여 있다가 한 세션이 끝나면,'],
+  ['블록을 지우기 전에, 남은 데이터를 다른 블록으로 옮겨야 합니다.'],
+  ['이 추가 쓰기를 쓰기 증폭, WAF(와프)라고 합니다.'],
+  ['FDP로 세션마다 블록을 나누면, 블록이 통째로 비어 복사 없이 지울 수 있습니다.'],
+  ['KV 캐시 시뮬레이션에서, FDP 없이 3.6이던 WAF가'],
   ['핸들 8개면 1.7, 16개면 1.1로 떨어집니다.'],
-  ['같은 수명은 같은 블록에. 그것이 FDP입니다.'],
+  ['블록 정리를 위한 복사(GC 복사)는 97% 사라집니다. (16 RUH)'],
+  ['같은 수명의 데이터는 같은 블록에. 그것이 FDP입니다.'],
 ];
 
-// 장면 경계(대사 시각에 묶는다)
+// 장면 경계(대사 시각에 묶는다 — cues.js의 대사 번호: 0 정의 · 1 배치 힌트 · 2 페이지/블록 · 3~5 FDP 없음 · 6 FDP · 7~8 시뮬레이션 · 9~10 결론)
 const T = {
-  s2: CUES[1].at - 0.25,
-  s3: CUES[2].at - 0.2,
-  s4: CUES[3].at - 0.2,
-  s5: CUES[4].at - 0.3,
-  s6: CUES[5].end + 0.1,
+  diag: CUES[1].at - 0.35,
+  s2: CUES[2].at - 0.3,
+  s3: CUES[3].at - 0.3,
+  s4: CUES[6].at - 0.3,
+  s5: CUES[7].at - 0.3,
+  s6: CUES[8].end + 0.1,
 };
 
 // ---------- 공통 유틸 ----------
@@ -143,13 +148,13 @@ const MOVES = MIX.filter(m => m.b === VICTIM && m.s !== ENDED); // GC가 옮길 
 function scene1(t) {
   const out = 1 - ramp(t, T.s2 - 0.3, 0.3);
   // 오프닝 타이틀
-  const a0 = Math.min(ramp(t, 0.05, 0.4), 1 - ramp(t, 1.15, 0.3));
+  const a0 = Math.min(ramp(t, 0.05, 0.4), 1 - ramp(t, T.diag - 0.3, 0.3));
   if (a0 > 0) {
     const y = lerp(560, 540, eout(t / 0.6));
     text('FDP가 뭐야?', W / 2, y, F(900, 120), COL.ink, 'center', a0);
     text('Flexible Data Placement · NVMe 표준 기능', W / 2, y + 80, F(500, 36), COL.gray, 'center', a0);
   }
-  const a = Math.min(ramp(t, 1.3, 0.4), out);
+  const a = Math.min(ramp(t, T.diag, 0.45), out);
   if (a <= 0) return;
   header('NVMe FDP · FLEXIBLE DATA PLACEMENT', 'FDP = 데이터를 어디에 쓸지, 호스트가 SSD에 알려 주는 기능', a);
   g.save(); g.globalAlpha = a;
@@ -165,7 +170,7 @@ function scene1(t) {
     g.beginPath(); g.arc(hx + 76, y, 20, 0, 7); g.fillStyle = SES[k].c; g.fill();
     text(SES[k].k, hx + 76, y + 1, F(700, 20), '#fff', 'center', 1, 'middle');
     text('세션 ' + SES[k].k, hx + 112, y + 9, F(500, 26), COL.ink2);
-    pill('핸들 ' + k, hx + hw - 60, y, F(600, 18, MONO), COL.blue, '#DBEAFE', 'right', ramp(t, 1.9 + k * 0.12, 0.3), 12, 34);
+    pill('핸들 ' + k, hx + hw - 60, y, F(600, 18, MONO), COL.blue, '#DBEAFE', 'right', ramp(t, T.diag + 0.5 + k * 0.15, 0.3), 12, 34);
   }
   // SSD
   const sx = 1250, sy = 270, sw = 520, sh = 600;
@@ -182,14 +187,14 @@ function scene1(t) {
   const ax0 = hx + hw + 30, ax1 = sx - 30;
   g.strokeStyle = '#CBD5E1'; g.lineWidth = 3; g.setLineDash([10, 8]); g.beginPath(); g.moveTo(ax0, 570); g.lineTo(ax1 - 14, 570); g.stroke(); g.setLineDash([]);
   g.fillStyle = '#CBD5E1'; g.beginPath(); g.moveTo(ax1, 570); g.lineTo(ax1 - 18, 560); g.lineTo(ax1 - 18, 580); g.fill();
-  text('쓰기 + 배치 핸들', (ax0 + ax1) / 2, 360, F(700, 30), COL.blue, 'center', ramp(t, 1.8));
-  text('"이 데이터는 핸들 2번 블록으로"', (ax0 + ax1) / 2, 400, F(400, 22), COL.gray, 'center', ramp(t, 2.0));
+  text('쓰기 + 배치 핸들', (ax0 + ax1) / 2, 360, F(700, 30), COL.blue, 'center', ramp(t, T.diag + 0.4));
+  text('"이 데이터는 핸들 2번 블록으로"', (ax0 + ax1) / 2, 400, F(400, 22), COL.gray, 'center', ramp(t, T.diag + 0.6));
   // 패킷: 세션 k의 i번째 페이지가 RU k로 날아간다
   const placed = [0, 0, 0, 0];
   for (let i = 0; i < 16; i++) {
     const k = (i + Math.floor(i / 4)) % 4, j = placed[k]++;
     if (j >= 8) continue;
-    const t0 = 2.0 + i * 0.12, p = clamp((t - t0) / 0.5);
+    const t0 = T.diag + 0.9 + i * 0.2, p = clamp((t - t0) / 0.6);
     if (p <= 0) continue;
     const [tx, ty] = blockCell(k, j);
     if (p >= 1) { cell(tx, ty, cs, SES[k], 1); continue; }
@@ -207,7 +212,7 @@ function scene2(t) {
   header('SSD의 규칙', '쓰기는 페이지 단위, 지우기는 블록 단위', a);
   g.save(); g.globalAlpha = a;
   const cs = 88, gap = 10, bw = 4 * cs + 3 * gap + 40, bx = W / 2 - bw / 2, by = 300;
-  const tf = T.s2 + 0.35, te = CUES[1].at + 1.75, tclr = te + 0.35;
+  const tf = T.s2 + 0.4, te = CUES[2].at + 0.55 * (CUES[2].end - CUES[2].at), tclr = te + 0.45;
   const erasing = ramp(t, te, 0.25);
   rr(bx, by, bw, bw, 16); g.fillStyle = COL.card; g.fill();
   g.lineWidth = lerp(2, 6, erasing * (1 - ramp(t, tclr + 0.3, 0.3))); g.strokeStyle = erasing > 0 ? COL.nofdp : COL.line; g.stroke();
@@ -215,7 +220,7 @@ function scene2(t) {
   let cur = -1;
   for (let j = 0; j < 16; j++) {
     const x = bx + 20 + (j % 4) * (cs + gap), y = by + 20 + Math.floor(j / 4) * (cs + gap);
-    const on = t >= tf + j * 0.085 && t < tclr;
+    const on = t >= tf + j * 0.1 && t < tclr;
     if (on) cur = j;
     cell(x, y, cs, SES[SEQ[j]], on ? 1 : 0);
   }
@@ -249,11 +254,11 @@ function toyPanel(t, side, alpha) {
   const G = panelGeo(side), fdp = side === 1;
   const plan = fdp ? SEP : MIX, accent = fdp ? COL.ruh16 : COL.nofdp;
   // 시각표
-  const t0 = fdp ? T.s4 + 0.35 : T.s3 + 0.3, dt = fdp ? 0.04 : 0.05;
-  const tTrim = fdp ? CUES[3].at + 1.45 : CUES[2].at + 1.55;
-  const tGc = tTrim + 0.55;
-  const tMove = k => tGc + 0.25 + k * 0.17;
-  const tErase = fdp ? tGc + 0.45 : tMove(MOVES.length - 1) + 0.45;
+  const t0 = fdp ? T.s4 + 0.4 : T.s3 + 0.35, dt = fdp ? 0.045 : 0.06;
+  const tTrim = fdp ? CUES[6].at + 0.5 * (CUES[6].end - CUES[6].at) : CUES[3].end - 0.6;
+  const tGc = fdp ? tTrim + 0.6 : CUES[4].at + 0.3;
+  const tMove = k => tGc + 0.35 + k * 0.32;
+  const tErase = fdp ? tGc + 0.6 : tMove(MOVES.length - 1) + 0.7;
   g.save(); g.globalAlpha = alpha;
   card(G.x, G.y, G.w, G.h, 1);
   g.fillStyle = accent; g.fillRect(G.x + 36, G.y + 34, 44, 6);
@@ -285,7 +290,7 @@ function toyPanel(t, side, alpha) {
   const victim = fdp ? ENDED : VICTIM;
   const flying = [];
   plan.forEach((m, i) => {
-    const tw0 = t0 + i * dt, p = clamp((t - tw0) / 0.28);
+    const tw0 = t0 + i * dt, p = clamp((t - tw0) / 0.35);
     if (p <= 0) return;
     const [x, y] = cellXY(G, m.b, m.j);
     if (p < 1) { const [cx, cy] = G.chip(m.s), e = ease(p); flying.push([lerp(cx - PCS / 2, x, e), lerp(cy - PCS / 2, y, e), m.s]); return; }
@@ -300,7 +305,7 @@ function toyPanel(t, side, alpha) {
   // GC 복사: 유효 페이지가 빈 블록으로 옮겨간다
   let copied = 0;
   if (!fdp) MOVES.forEach((m, k) => {
-    const p = clamp((t - tMove(k)) / 0.32); if (p <= 0) return;
+    const p = clamp((t - tMove(k)) / 0.45); if (p <= 0) return;
     const [sx0, sy0] = cellXY(G, m.b, m.j), [dx, dy] = cellXY(G, 4, k);
     if (p >= 1) { cell(dx, dy, PCS, SES[m.s], 1); copied++; return; }
     const e = ease(p); flying.push([lerp(sx0, dx, e), lerp(sy0, dy, e) - Math.sin(e * Math.PI) * 70, m.s, true]);
@@ -313,14 +318,14 @@ function toyPanel(t, side, alpha) {
     else cell(x, y, PCS, SES[s], 1);
   }
   // 집계와 WAF
-  const host = plan.filter((m, i) => t >= t0 + i * dt + 0.28).length;
+  const host = plan.filter((m, i) => t >= t0 + i * dt + 0.35).length;
   const cy = G.y + 540;
   g.strokeStyle = COL.line; g.lineWidth = 1.5; g.beginPath(); g.moveTo(G.x + 36, cy - 40); g.lineTo(G.x + G.w - 36, cy - 40); g.stroke();
   text('호스트 쓰기', G.x + 36, cy, F(500, 22), COL.gray);
   text(String(host), G.x + 200, cy, F(600, 30, MONO), COL.ink);
   text('GC 복사', G.x + 300, cy, F(500, 22), COL.gray);
   text(String(copied), G.x + 420, cy, F(600, 30, MONO), copied ? COL.nofdp : COL.ink);
-  const tW = fdp ? tErase + 0.3 : CUES[2].at + 4.0, aw = ramp(t, tW, 0.35);
+  const tW = fdp ? tErase + 0.3 : CUES[5].at - 0.2, aw = ramp(t, tW, 0.35);
   if (fdp) pill('복사 0 → 블록 통째로 소거', G.x + G.w - 36, cy - 9, F(700, 21), '#fff', COL.ruh16, 'right', ramp(t, tErase, 0.3), 16, 42);
   text('WAF = (호스트 쓰기 + GC 복사) ÷ 호스트 쓰기', G.x + 36, cy + 52, F(500, 22), COL.gray, 'left', aw);
   const wtxt = `(${host} + ${copied}) ÷ ${host} = `;
@@ -339,14 +344,14 @@ function scene34(t) {
   header('② 해법 · FDP', '세션마다 블록을 나누면 통째로 지워 복사가 없다', inFdp, COL.ruh16);
   toyPanel(t, 0, 1 - 0.35 * inFdp);
   // 오른쪽 패널은 장면 4 전까지 빈 자리
-  if (inFdp <= 0) { g.save(); g.globalAlpha *= 0.55; rr(996, 236, 852, 690, 14); g.setLineDash([10, 8]); g.strokeStyle = '#CBD5E1'; g.lineWidth = 2; g.stroke(); g.setLineDash([]); g.restore(); text('FDP를 켜면?', 1422, 590, F(700, 34), COL.gray2, 'center', 1 - ramp(t, CUES[2].at + 3.4, 0.4) * 0); }
+  if (inFdp <= 0) { g.save(); g.globalAlpha *= 0.55; rr(996, 236, 852, 690, 14); g.setLineDash([10, 8]); g.strokeStyle = '#CBD5E1'; g.lineWidth = 2; g.stroke(); g.setLineDash([]); g.restore(); text('FDP를 켜면?', 1422, 590, F(700, 34), COL.gray2, 'center'); }
   toyPanel(t, 1, inFdp);
   g.restore();
 }
 
 // ---------- 장면 5: 시뮬레이션 (s5 ~ s6) ----------
 let SIM = null, simTick = -1;
-const KEYS = () => [[T.s5 + 0.25, 0], [T.s5 + 0.95, 2350], [T.s5 + 1.9, 4600], [T.s6 + 0.1, 10500]];
+const KEYS = () => [[T.s5 + 0.3, 0], [T.s5 + 1.2, 2350], [T.s5 + 2.4, 4600], [T.s6 + 0.1, 10500]];
 function targetTick(t) {
   const K = KEYS();
   if (t <= K[0][0]) return 0;
@@ -371,8 +376,8 @@ function wafSeries(sim, i) { // 히스토리 점마다 최근 구간 WAF
   return out;
 }
 function pulseAt(t) { // 대사가 그 구성을 말할 때 강조
-  const c5 = CUES[4], c6 = CUES[5];
-  return [win(t, c5.at + 1.3, c5.end + 0.2, 0.25), win(t, c6.at, c6.at + 1.9, 0.25), win(t, c6.at + 1.8, c6.end + 0.2, 0.25)];
+  const c5 = CUES[7], c6 = CUES[8];
+  return [win(t, c5.at + 1.6, c5.end + 0.2, 0.25), win(t, c6.at, c6.at + 1.9, 0.25), win(t, c6.at + 1.8, c6.end + 0.2, 0.25)];
 }
 function scene5(t, dim) {
   const a = ramp(t, T.s5, 0.35);
@@ -473,12 +478,14 @@ function scene6(t) {
     [`−${Math.round((1 - RESULT.gc[2] / g0) * 100)}%`, 'GC 복사 · No FDP → 16 RUH'],
     [`−${Math.round((1 - nand[2] / nand[0]) * 100)}%`, 'NAND 쓰기 · No FDP → 16 RUH']];
   stats.forEach(([v, k], i) => {
-    const sa = ramp(t, T.s6 + 1.3 + i * 0.15, 0.35), x = 96 + i * 520;
+    const sa = ramp(t, T.s6 + 0.6 + i * 0.15, 0.4), x = 96 + i * 520;
+    const hl = i === 1 ? win(t, CUES[9].at + 0.4, CUES[9].end + 0.6, 0.3) : 0; // "복사 97% 사라짐" 대사에 맞춰 강조
+    if (hl > 0) { g.save(); g.globalAlpha *= hl; rr(x - 18, 700, 480, 118, 12); g.fillStyle = '#DCFCE7'; g.fill(); g.lineWidth = 3; g.strokeStyle = COL.ruh16; g.stroke(); g.restore(); }
     text(v, x, 760, F(700, 56, MONO), COL.ruh16, 'left', sa);
     text(k, x, 798, F(500, 22), COL.gray, 'left', sa);
   });
   // 맺음말
-  const ta = ramp(t, CUES[6].at - 0.1, 0.4);
+  const ta = ramp(t, CUES[10].at - 0.1, 0.4);
   if (ta > 0) {
     g.save(); g.globalAlpha *= ta; rr(96, 838, 1728, 84, 12); g.fillStyle = COL.ink; g.fill(); g.restore();
     text('같은 수명은 같은 블록에', 136, 893, F(700, 38), '#fff', 'left', ta);

@@ -1,7 +1,7 @@
 // 「FDP가 뭐야?」 렌더러 — headless Chromium(Playwright)로 캔버스 프레임을 뽑아 ffmpeg로 인코딩
 //   (먼저) python narration.py                         → narration.mp3 + cues.js
 //   node outputs/motion/fdp-explainer/render.mjs stills 1.5 9 20   → stills/t01.50.png … (검수용 정지 화면)
-//   node outputs/motion/fdp-explainer/render.mjs video              → fdp-explainer.mp4 (1080p60 + 내레이션, 미커밋)
+//   node outputs/motion/fdp-explainer/render.mjs video              → fdp-explainer.mp4 (1080p60 + 내레이션, 길이 = cues.js DURATION, 미커밋)
 // 환경변수: CHROMIUM(실행 파일 경로), FPS(기본 60)
 import { createRequire } from 'module';
 import { execFileSync, spawn } from 'child_process';

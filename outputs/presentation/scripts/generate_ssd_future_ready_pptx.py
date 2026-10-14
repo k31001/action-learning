@@ -26,7 +26,7 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
 
 ASSETS = os.path.join(HERE, "..", "assets")
 OUT = os.environ.get("OUT_PATH") or os.path.join(HERE, "..", "ssd-future-ready-strategy.pptx")
-FDP_VIDEO_URL = "https://action-learning.vercel.app/#/presentations/fdp-explainer/1"  # 3장 ① 버튼 → 대시보드 발표자료 탭 「FDP가 뭐야?」 30초 영상
+FDP_VIDEO_URL = "https://action-learning.vercel.app/#/presentations/fdp-explainer/1"  # 3장 ① 버튼 → 대시보드 발표자료 탭 「FDP가 뭐야?」 50초 영상
 
 d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=8,
          logos_dir=os.path.join(ASSETS, "logos"), photos_dir=os.path.join(ASSETS, "photos"),
@@ -566,8 +566,8 @@ tb(s, x4, EY + EH_ + 0.04, w4, 0.34, [[("FDP · Mixed Media · Large Mapping →
 # ---- ① GC를 줄여 예측 가능한 QoS로 (먼저 원리)
 PY = EY + EH_ + 0.50
 d.panel_head(s, LX3, LW3, 1, "GC를 줄여 예측 가능한 QoS로", y=PY)
-# FDP 원리 30초 영상 버튼 → 대시보드 발표자료 탭 영상(딥링크)
-label_box(s, LX3 + LW3 - 2.80, PY + 0.04, 2.80, 0.40, [("▶  30초 영상 · FDP 원리", 15, True, WHITE)], fill=BLUE, line=BLUE)
+# FDP 원리 50초 영상 버튼 → 대시보드 발표자료 탭 영상(딥링크)
+label_box(s, LX3 + LW3 - 2.80, PY + 0.04, 2.80, 0.40, [("▶  50초 영상 · FDP 원리", 15, True, WHITE)], fill=BLUE, line=BLUE)
 for _sh in list(s.shapes)[-2:]:
     _sh.click_action.hyperlink.address = FDP_VIDEO_URL
 TY = PY + 0.60
@@ -703,7 +703,7 @@ d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib FDP, 삼성 EuroSys'25) · p99.9
             "DWPD 확장은 WAF 3 → 1 산술(⚠️) · 꼬리 지연 높이는 정성 등급 · 3D 그림은 제품군 구분을 위해 예외 색 · 제품 이미지는 형태 재현")
 
 d.notes(s, "3장은 SSD 차별화 요구의 변화와, 그에 대비한 포트폴리오입니다. 맨 위 띠처럼 SSD의 차별화 요구는 성능, 전력 효율, VM 단위 QoS를 거쳐, AI 시대에는 예측 가능한 QoS, 고용량, 고내구로 바뀌고 있습니다. 세 기술이 겨냥하는 것은 QLC 고용량과 고객 워크로드에 맞춘 내구성입니다. 시기 구분은 과제팀 정리입니다. "
-        "1번은 원리입니다. GC가 일어나면 읽기가 기다려 지연 스파이크가 생깁니다. Mixed Media는 GC 빈도를, Large Mapping은 GC 횟수를, FDP는 GC 시간을 줄입니다. GC가 드물고 짧아지면 지연이 예측 가능해집니다. FDP의 원리는 오른쪽 위 30초 영상 버튼으로 바로 보여 드릴 수 있습니다. "
+        "1번은 원리입니다. GC가 일어나면 읽기가 기다려 지연 스파이크가 생깁니다. Mixed Media는 GC 빈도를, Large Mapping은 GC 횟수를, FDP는 GC 시간을 줄입니다. GC가 드물고 짧아지면 지연이 예측 가능해집니다. FDP의 원리는 오른쪽 위 50초 영상 버튼으로 바로 보여 드릴 수 있습니다. "
         "2번은 결과입니다. Meta CacheLib에 FDP를 적용하자 WAF가 3.22에서 1.03으로 68퍼센트, PM9D3a RocksDB에서 p99.9 꼬리 지연이 55퍼센트 줄었습니다. WAF가 SSD만으로 3 근처에 머문 이유는 참고 5장에 있고, 상자를 누르면 그 장으로 갑니다. 꼬리 지연 측정은 TLC 결과라는 한계가 있습니다. "
         "3번은 포트폴리오입니다. 바닥은 정격 DWPD와 용량, 높이는 꼬리 지연입니다. WAF가 3에서 1이 되면 정격 DWPD는 약 3배가 됩니다. 과제팀 산술입니다. "
         "[클릭] 네 제품군이 한꺼번에 넓어집니다. QLC는 0.3에서 1 DWPD로 TLC가 맡던 KV 오프로드까지, 고성능 TLC는 1에서 3으로 쓰기 많은 KV까지, 고내구 TLC는 3에서 9로 초고DWPD 입구까지, SLC급은 30에서 100 근처까지 갑니다. 초고DWPD 요구가 오면 TLC와 SLC급 가운데 고를 수 있습니다. "

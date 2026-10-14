@@ -2931,3 +2931,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 대시보드: `presentations.js` VIDEOS에 fdp-explainer(장 6개 · 0:30 · 소리 = 내레이션) 추가, `sync-presentations.mjs`로 웹 인코딩 사본 `public/videos/fdp-explainer.mp4`(6.6MB) + 포스터. 플레이어 소리 안내를 영상별(`sound`)로
 - 덱 v5.1: 3장 ① "GC를 줄여 예측 가능한 QoS로" 머리글 오른쪽에 「▶ 30초 영상 · FDP 원리」 → https://action-learning.vercel.app/#/presentations/fdp-explainer/1, 노트 한 문장. 다른 장 텍스트 · 노트 무변경(python-pptx 대조), 웹 보기 이미지는 3장만 갱신(fonts-nanum 설치 후 렌더)
 - version.js v2.49.15 → v2.49.16(패치), updates 항목, outline 변경표
+
+## [2026-10-14] build | 「FDP가 뭐야?」 영상 30 → 50초 · "와프" 발음 (영상 v1.1, 덱 v5.2, dashboard v2.49.17)
+- 사용자 지시: WAF를 "와프"로 읽기, 10~20초 늘려 초반 설명과 결론 정리에 시간 확보, 화면이 너무 빨리 지나감
+- 내레이션 7 → 11개 대사(정의 · 배치 힌트 분리, FDP 없음 장면을 섞임 → 옮김 → 와프 3문장으로, 결론에 "복사 97% 사라짐" 추가), 말 속도 +22% → +10%, 영상 길이 = 마지막 대사 + 여운(cues.js `DURATION`, 50.0초)
+- 화면: 타이틀 5초 유지, 패킷 · 페이지 · GC 복사 애니메이션 속도 약 0.6배, 결과 화면 10초(감소율 −97% 강조 상자 → 맺음말). 자막은 WAF 표기 + "(와프)"
+- 대시보드 영상 카드 50초 · 장 7개 · 포스터 갱신, 덱 3장 버튼 「▶ 50초 영상 · FDP 원리」 · 노트, 웹 보기 3장만 갱신
