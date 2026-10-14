@@ -2957,3 +2957,8 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 시안 A 흐름형 · B 선순환형 · C 실물형. 렌더 QA(NanumGothic → PDF → PNG) 3회 수정, qa_audit PASS(최소 pt · em-dash)
 - 대시보드: 지식 그래프 재생성(dram-technology 인용 수 변화), updates.js 항목, v2.49.20(패치), npm run build 통과
 - 건너뜀: steep · driving-forces · scenarios · strategies 변화 없음 → storyline · 시나리오 데이터 미변경. 발표자료 탭 등록은 시안 확정 전이라 보류(기존 시안 덱 관례)
+
+## [2026-10-14] build | 발표자료 탭에 「DRAM 현실 파악」 시안 3종 등록 (dashboard v2.49.21)
+- 사용자 지시: 시안 A · B · C 모두 유지하고 대시보드 발표자료에 추가
+- presentations.js에 dram-reality-options 등록(장 3개: A 흐름형 · B 선순환형 · C 실물형), sync-presentations로 배포 사본, render-presentation-previews로 웹 보기 이미지 3장(presentationPreviews.js 갱신)
+- updates.js 항목, version.js v2.49.20 → v2.49.21(패치: 데이터 추가), outline · index 상태 문구 갱신. 덱 내용 무변경

@@ -16,6 +16,19 @@
 export const UPDATES = [
   {
     date: '2026-10-14',
+    type: 'build',
+    version: 'v2.49.21',
+    title: '발표자료 탭에 「DRAM 현실 파악」 한 장 시안 3종 등록',
+    summary:
+      'DRAM 기술 경쟁력 제고 · 차별화 준비의 현실 파악 장(위기: Shrink 장벽 · 후발 추격 / 기회: AI 추론의 메모리 병목) 시안 A 흐름형 · B 선순환형 · C 실물형을 모두 유지한 채 발표자료 탭에 추가. ' +
+      '배포 사본 · 웹 보기 이미지 3장. 패치 v2.49.21.',
+    tags: ['발표자료', 'DRAM', 'CXMT', 'KV 캐시'],
+    items: [
+      { label: '덱', detail: 'dram-reality-options.pptx v1.0 · 한 장 시안 3종' },
+    ],
+  },
+  {
+    date: '2026-10-14',
     type: 'ingest',
     version: 'v2.49.20',
     title: 'DRAM 미세화 둔화(연 -15% → -6%) · 2026 각 사 노드 위치 ingest, 현실 파악 1장 시안 3종',

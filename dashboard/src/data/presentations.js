@@ -8,6 +8,19 @@ const REPO = 'https://github.com/k31001/action-learning/blob/main'
 
 export const PRESENTATIONS = [
   {
+    id: 'dram-reality-options',
+    file: 'dram-reality-options.pptx',
+    title: 'DRAM 기술 경쟁력 제고 · 차별화 준비: 현실 파악 (시안)',
+    version: 'v1.0',
+    date: '2026-10-14',
+    slides: '한 장 시안 3종',
+    summary: '위기: Shrink 장벽과 후발 주자의 추격(주력 노드 축소 연 -15% → -6%, 2026 삼성 1c · SK하이닉스 1b/1c · Micron 1γ · CXMT 16nm, CXMT 캐파 Micron의 93%) / 기회: AI 추론의 병목은 메모리(KV/토큰 × 월간 토큰 ≈ 월 1 ZB KV, 알고리즘 절감 vs 공급 2028). 같은 한 장을 흐름형 · 선순환형 · 실물형으로',
+    chapters: ['A 흐름형', 'B 선순환형', 'C 실물형'],
+    outline: `${REPO}/outputs/presentation/dram-reality-outline.md`,
+    report: null,
+    accent: '#E8590C',
+  },
+  {
     id: 'uncertainty-3c-strategy-options',
     file: 'uncertainty-3c-strategy-options.pptx',
     title: '불확실성에 대응하는 전체 최적화 체계 (3-C 전략 시안)',

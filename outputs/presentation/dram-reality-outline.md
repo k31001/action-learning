@@ -1,6 +1,7 @@
 # DRAM 기술 경쟁력 제고 · 차별화 준비: 현실 파악 — 한 장 기획서 v1.0 (2026-10-14)
 
-- 산출물: `dram-reality-options.pptx` (같은 한 장의 시안 3장, 사용자 선택 대기), 미리보기 `dram-reality-options-preview.pdf`
+- 산출물: `dram-reality-options.pptx` (같은 한 장의 시안 3장, 모두 유지), 미리보기 `dram-reality-options-preview.pdf`
+- 대시보드 발표자료 탭 등록(2026-10-14, dashboard v2.49.21): id `dram-reality-options`, 웹 보기 이미지 3장
 - 생성기: `scripts/generate_dram_reality_pptx.py` · 차트 `scripts/generate_dram_reality_charts.py` → `assets/dram-reality/*.png`
 - 근거 원장: [sources/articles/dram-shrink-wall-and-ai-memory-bottleneck-2026-10.md](../../sources/articles/dram-shrink-wall-and-ai-memory-bottleneck-2026-10.md)
 - 디자인: samsung-memory-ppt-design-skill v2.2 (11절 시각 우선 · 11.J 근거 사슬, 20 × 11.25in)
