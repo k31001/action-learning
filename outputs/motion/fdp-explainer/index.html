@@ -53,22 +53,22 @@ const SES = [{ k: 'A', c: '#2563EB' }, { k: 'B', c: '#EA580C' }, { k: 'C', c: '#
 const SUBS = [
   ['FDP(Flexible Data Placement)는 NVMe 표준 기능입니다.'],
   ['호스트가 데이터를 쓸 때, 어느 블록에 모을지 SSD에 함께 알려 줍니다.'],
-  ['SSD는 페이지 단위로 쓰고, 블록 단위로 지웁니다.'],
-  ['여러 세션의 데이터가 한 블록에 섞여 있다가 한 세션이 끝나면,'],
+  ['여러 세션의 데이터가 한 블록에 섞여 있다가,'],
+  ['한 세션이 끝나면,'],
   ['블록을 지우기 전에, 남은 데이터를 다른 블록으로 옮겨야 합니다.'],
-  ['이 추가 쓰기를 쓰기 증폭, WAF(와프)라고 합니다.', 'NAND에 실제로 쓴 양을 호스트가 쓴 양으로 나눈 값입니다.', 0.42],
+  ['이 추가 쓰기를 쓰기 증폭, WAF라고 합니다.', 'NAND에 실제로 쓴 양을 호스트가 쓴 양으로 나눈 값입니다.', 0.42],
   ['FDP로 세션마다 블록을 나누면, 블록이 통째로 비어 복사 없이 지울 수 있습니다.'],
   ['KV 캐시 시뮬레이션에서, FDP 없이 3.6이던 WAF가'],
   ['핸들 8개면 1.7, 16개면 1.1로 떨어집니다.'],
   ['WAF가 줄면 NAND가 덜 닳아,', '하루에 전체 용량을 몇 번 쓸 수 있는지, DWPD가 약 3배 늘어납니다.', 0.33],
-  ['같은 수명의 데이터는 같은 블록에. 그것이 FDP입니다.'],
+  ['같은 시점에 지워질 데이터는 같은 블록에. 그것이 FDP입니다.'],
 ];
 
-// 장면 경계(대사 시각에 묶는다 — cues.js의 대사 번호: 0 정의 · 1 배치 힌트 · 2 페이지/블록 · 3~5 FDP 없음 · WAF 정의 · 6 FDP · 7~8 시뮬레이션 · 9 DWPD · 10 결론)
+// 장면 경계(대사 시각에 묶는다 — cues.js의 대사 번호: 0 정의 · 1 배치 힌트 · 2~4 FDP 없음(섞임 · 세션 종료 · 옮김) · 5 WAF 정의 · 6 FDP · 7~8 시뮬레이션 · 9 DWPD · 10 결론)
 const T = {
   diag: CUES[1].at - 0.35,
-  s2: CUES[2].at - 0.3,
-  s3: CUES[3].at - 0.3,
+  s3: CUES[2].at - 0.3,
+  waf: CUES[5].at - 0.3,
   s4: CUES[6].at - 0.3,
   s5: CUES[7].at - 0.3,
   s6: CUES[8].end + 0.1,
@@ -146,7 +146,7 @@ const MOVES = MIX.filter(m => m.b === VICTIM && m.s !== ENDED); // GC가 옮길 
 
 // ---------- 장면 1: FDP가 뭐야? (0 ~ s2) ----------
 function scene1(t) {
-  const out = 1 - ramp(t, T.s2 - 0.3, 0.3);
+  const out = 1 - ramp(t, T.s3 - 0.3, 0.3);
   // 오프닝 타이틀
   const a0 = Math.min(ramp(t, 0.05, 0.4), 1 - ramp(t, T.diag - 0.3, 0.3));
   if (a0 > 0) {
@@ -205,38 +205,50 @@ function scene1(t) {
   g.restore();
 }
 
-// ---------- 장면 2: 쓰기는 페이지, 지우기는 블록 (s2 ~ s3) ----------
-function scene2(t) {
-  const a = Math.min(ramp(t, T.s2, 0.3), 1 - ramp(t, T.s3 - 0.25, 0.25));
-  if (a <= 0) return;
-  header('SSD의 규칙', '쓰기는 페이지 단위, 지우기는 블록 단위', a);
-  g.save(); g.globalAlpha = a;
-  const cs = 88, gap = 10, bw = 4 * cs + 3 * gap + 40, bx = W / 2 - bw / 2, by = 300;
-  const tf = T.s2 + 0.4, te = CUES[2].at + 0.55 * (CUES[2].end - CUES[2].at), tclr = te + 0.45;
-  const erasing = ramp(t, te, 0.25);
-  rr(bx, by, bw, bw, 16); g.fillStyle = COL.card; g.fill();
-  g.lineWidth = lerp(2, 6, erasing * (1 - ramp(t, tclr + 0.3, 0.3))); g.strokeStyle = erasing > 0 ? COL.nofdp : COL.line; g.stroke();
-  text('블록 1개 = 페이지 16개', W / 2, by + bw + 48, F(500, 24), COL.gray, 'center');
-  let cur = -1;
-  for (let j = 0; j < 16; j++) {
-    const x = bx + 20 + (j % 4) * (cs + gap), y = by + 20 + Math.floor(j / 4) * (cs + gap);
-    const on = t >= tf + j * 0.1 && t < tclr;
-    if (on) cur = j;
-    cell(x, y, cs, SES[SEQ[j]], on ? 1 : 0);
+// ---------- WAF 시각자료: 호스트가 쓴 양 vs NAND에 실제로 쓴 양 (waf ~ s4, 오른쪽 패널) ----------
+function wafPanel(t, alpha) {
+  if (alpha <= 0) return;
+  const x = 996, y = 236, w = 852, h = 690, cs = 16, cg = 2, bh = 48, bx = x + 36;
+  const c5 = CUES[5], tDef = c5.at + 0.42 * (c5.end - c5.at); // "NAND에 실제로 쓴 양을 …" 대사 시점
+  const host = MIX.map(m => m.s), gc = MOVES.map(m => m.s);
+  g.save(); g.globalAlpha = alpha;
+  card(x, y, w, h, 1);
+  g.fillStyle = COL.nofdp; g.fillRect(x + 36, y + 34, 44, 6);
+  text('WAF · 쓰기 증폭', x + 36, y + 84, F(700, 34), COL.ink);
+  text('Write Amplification Factor', x + 36, y + 118, F(500, 22, MONO), COL.gray);
+  // 막대 1: 호스트가 쓴 양
+  const r1 = ramp(t, T.waf + 0.3, 0.4);
+  text('호스트가 쓴 양', bx, y + 196, F(700, 24), COL.ink2, 'left', r1);
+  host.forEach((s, i) => { if (t >= T.waf + 0.35 + i * 0.012) { rr(bx + i * (cs + cg), y + 214, cs, bh, 3); g.fillStyle = SES[s].c; g.fill(); } });
+  text('32', bx + 37 * (cs + cg) + 22, y + 250, F(600, 34, MONO), COL.ink, 'left', ramp(t, T.waf + 0.8, 0.3));
+  // 막대 2: NAND에 실제로 쓴 양 = 같은 32 + GC 복사 5
+  const t2 = T.waf + 1.3, r2 = ramp(t, t2, 0.4);
+  text('NAND에 실제로 쓴 양', bx, y + 336, F(700, 24), COL.ink2, 'left', r2);
+  host.forEach((s, i) => { if (t >= t2 + 0.05 + i * 0.012) { rr(bx + i * (cs + cg), y + 354, cs, bh, 3); g.fillStyle = SES[s].c; g.fill(); } });
+  const t3 = t2 + 0.9;
+  gc.forEach((s, k) => {
+    const p = ramp(t, t3 + k * 0.18, 0.3); if (p <= 0) return;
+    const cx = bx + (32 + k) * (cs + cg);
+    g.save(); g.globalAlpha *= p; rr(cx, y + 354 - 30 * (1 - p), cs, bh, 3); g.fillStyle = SES[s].c; g.fill();
+    g.lineWidth = 2.5; g.strokeStyle = COL.nofdp; g.stroke(); g.restore();
+  });
+  const rg = ramp(t, t3 + 1.0, 0.3), gx0 = bx + 32 * (cs + cg) - 1, gx1 = bx + 37 * (cs + cg) - cg + 1;
+  if (rg > 0) {
+    g.save(); g.globalAlpha *= rg; g.strokeStyle = COL.nofdp; g.lineWidth = 2;
+    g.beginPath(); g.moveTo(gx0, y + 418); g.lineTo(gx0, y + 428); g.lineTo(gx1, y + 428); g.lineTo(gx1, y + 418); g.stroke(); g.restore();
+    text('GC 복사 +5', (gx0 + gx1) / 2, y + 458, F(700, 22), COL.nofdp, 'center', rg);
   }
-  // 쓰기 라벨: 방금 쓴 페이지를 가리킨다
-  const aw = Math.min(ramp(t, tf, 0.3), 1 - ramp(t, te - 0.2, 0.3));
-  if (cur >= 0 && aw > 0) {
-    const x = bx + 20 + (cur % 4) * (cs + gap), y = by + 20 + Math.floor(cur / 4) * (cs + gap);
-    g.save(); g.globalAlpha *= aw; g.lineWidth = 4; g.strokeStyle = COL.blue; rr(x - 5, y - 5, cs + 10, cs + 10, 12); g.stroke(); g.restore();
-    text('쓰기', bx - 70, by + bw / 2 - 10, F(700, 44), COL.blue, 'right', aw);
-    text('페이지 하나씩', bx - 70, by + bw / 2 + 34, F(500, 26), COL.gray, 'right', aw);
+  text('37', bx + 37 * (cs + cg) + 22, y + 390, F(600, 34, MONO), COL.nofdp, 'left', rg);
+  // 정의 수식
+  const rf = ramp(t, tDef - 0.1, 0.4);
+  if (rf > 0) {
+    g.save(); g.globalAlpha *= rf; rr(x + 24, y + 478, w - 48, 196, 12); g.fillStyle = '#FEF2F2'; g.fill(); g.lineWidth = 2; g.strokeStyle = '#FCA5A5'; g.stroke(); g.restore();
+    text('WAF = NAND에 쓴 양 ÷ 호스트가 쓴 양', x + 52, y + 526, F(700, 28), COL.ink, 'left', rf);
+    const eq = '= 37 ÷ 32 = ';
+    text(eq, x + 52, y + 596, F(500, 40, MONO), COL.ink2, 'left', rf);
+    text('1.16', x + 52 + tw(eq, F(500, 40, MONO)), y + 600, F(700, 60, MONO), COL.nofdp, 'left', rf);
+    text('WAF 1 = 쓴 만큼만 NAND에 쓴다 · 클수록 NAND가 빨리 닳는다', x + 52, y + 648, F(500, 22), COL.gray, 'left', ramp(t, tDef + 1.2, 0.4));
   }
-  // 지우기 라벨 + 플래시
-  text('지우기', bx + bw + 70, by + bw / 2 - 10, F(700, 44), COL.nofdp, 'left', erasing);
-  text('블록 전체를 한 번에', bx + bw + 70, by + bw / 2 + 34, F(500, 26), COL.gray, 'left', erasing);
-  const fl = win(t, tclr - 0.05, tclr + 0.35, 0.12);
-  if (fl > 0) { g.save(); g.globalAlpha = fl * 0.75; rr(bx, by, bw, bw, 16); g.fillStyle = '#FEE2E2'; g.fill(); g.restore(); }
   g.restore();
 }
 
@@ -255,7 +267,7 @@ function toyPanel(t, side, alpha) {
   const plan = fdp ? SEP : MIX, accent = fdp ? COL.ruh16 : COL.nofdp;
   // 시각표
   const t0 = fdp ? T.s4 + 0.4 : T.s3 + 0.35, dt = fdp ? 0.045 : 0.06;
-  const tTrim = fdp ? CUES[6].at + 0.5 * (CUES[6].end - CUES[6].at) : CUES[3].end - 0.6;
+  const tTrim = fdp ? CUES[6].at + 0.5 * (CUES[6].end - CUES[6].at) : CUES[3].at + 0.05;
   const tGc = fdp ? tTrim + 0.6 : CUES[4].at + 0.3;
   const tMove = k => tGc + 0.35 + k * 0.32;
   const tErase = fdp ? tGc + 0.6 : tMove(MOVES.length - 1) + 0.7;
@@ -325,11 +337,9 @@ function toyPanel(t, side, alpha) {
   text(String(host), G.x + 200, cy, F(600, 30, MONO), COL.ink);
   text('GC 복사', G.x + 300, cy, F(500, 22), COL.gray);
   text(String(copied), G.x + 420, cy, F(600, 30, MONO), copied ? COL.nofdp : COL.ink);
-  const tW = fdp ? tErase + 0.3 : CUES[5].at - 0.2, aw = ramp(t, tW, 0.35);
+  const tW = fdp ? tErase + 0.3 : T.s4 - 0.2, aw = ramp(t, tW, 0.35);
   if (fdp) pill('복사 0 → 블록 통째로 소거', G.x + G.w - 36, cy - 9, F(700, 21), '#fff', COL.ruh16, 'right', ramp(t, tErase, 0.3), 16, 42);
-  const c5 = CUES[5], wd = fdp ? 0 : win(t, c5.at + 0.42 * (c5.end - c5.at) - 0.1, c5.end + 0.4, 0.25); // "NAND에 쓴 양 ÷ 호스트가 쓴 양" 대사에 맞춰 강조
-  if (wd > 0) { g.save(); g.globalAlpha *= wd; rr(G.x + 20, cy + 20, G.w - 40, 112, 12); g.fillStyle = '#FEF2F2'; g.fill(); g.lineWidth = 3; g.strokeStyle = COL.nofdp; g.stroke(); g.restore(); }
-  text('WAF = NAND에 쓴 양 ÷ 호스트가 쓴 양 = (호스트 + GC 복사) ÷ 호스트', G.x + 36, cy + 52, F(wd > 0.5 ? 700 : 500, 22), wd > 0.5 ? COL.ink : COL.gray, 'left', aw);
+  text('WAF = NAND에 쓴 양 ÷ 호스트가 쓴 양', G.x + 36, cy + 52, F(500, 22), COL.gray, 'left', aw);
   const wtxt = `(${host} + ${copied}) ÷ ${host} = `;
   text(wtxt, G.x + 36, cy + 108, F(500, 30, MONO), COL.ink2, 'left', aw);
   text(((host + copied) / Math.max(1, host)).toFixed(2), G.x + 36 + tw(wtxt, F(500, 30, MONO)), cy + 110, F(600, 46, MONO), accent, 'left', aw);
@@ -342,11 +352,15 @@ function scene34(t) {
   if (a <= 0) return;
   const inFdp = ramp(t, T.s4, 0.35);
   g.save(); g.globalAlpha = a;
-  header('① 문제 · FDP 없음', '세션이 섞인 블록은 지우기 전에 남은 데이터를 옮겨야 한다', 1 - inFdp, COL.nofdp);
+  const inW = ramp(t, T.waf, 0.35);
+  header('① 문제 · FDP 없음', '세션이 섞인 블록은 지우기 전에 남은 데이터를 옮겨야 한다', (1 - inFdp) * (1 - inW), COL.nofdp);
+  header('① 문제 · WAF', '옮긴 만큼 NAND에 더 쓴다 — 이것이 쓰기 증폭(WAF)', (1 - inFdp) * inW, COL.nofdp);
   header('② 해법 · FDP', '세션마다 블록을 나누면 통째로 지워 복사가 없다', inFdp, COL.ruh16);
   toyPanel(t, 0, 1 - 0.35 * inFdp);
   // 오른쪽 패널은 장면 4 전까지 빈 자리
-  if (inFdp <= 0) { g.save(); g.globalAlpha *= 0.55; rr(996, 236, 852, 690, 14); g.setLineDash([10, 8]); g.strokeStyle = '#CBD5E1'; g.lineWidth = 2; g.stroke(); g.setLineDash([]); g.restore(); text('FDP를 켜면?', 1422, 590, F(700, 34), COL.gray2, 'center'); }
+  const inWaf = ramp(t, T.waf, 0.4);
+  if (inWaf < 1) { g.save(); g.globalAlpha *= 0.55 * (1 - inWaf); rr(996, 236, 852, 690, 14); g.setLineDash([10, 8]); g.strokeStyle = '#CBD5E1'; g.lineWidth = 2; g.stroke(); g.setLineDash([]); g.restore(); text('FDP를 켜면?', 1422, 590, F(700, 34), COL.gray2, 'center', 1 - inWaf); }
+  wafPanel(t, inWaf * (1 - inFdp));
   toyPanel(t, 1, inFdp);
   g.restore();
 }
@@ -499,8 +513,8 @@ function scene6(t) {
   const ta = ramp(t, CUES[10].at - 0.1, 0.4);
   if (ta > 0) {
     g.save(); g.globalAlpha *= ta; rr(96, 838, 1728, 84, 12); g.fillStyle = COL.ink; g.fill(); g.restore();
-    text('같은 수명은 같은 블록에', 136, 893, F(700, 38), '#fff', 'left', ta);
-    text('→ GC 복사가 사라지고 WAF는 1에 가까워진다 · 이것이 FDP', 136 + tw('같은 수명은 같은 블록에', F(700, 38)) + 26, 891, F(500, 28), '#CBD5E1', 'left', ta);
+    text('같은 시점에 지워질 데이터는 같은 블록에', 136, 893, F(700, 38), '#fff', 'left', ta);
+    text('→ GC 복사 없이 WAF ≈ 1 · 이것이 FDP', 136 + tw('같은 시점에 지워질 데이터는 같은 블록에', F(700, 38)) + 26, 891, F(500, 28), '#CBD5E1', 'left', ta);
   }
   text('시뮬레이션 조건: NAND 160블록 × 16페이지(RU = 1블록), KV 티어 2,350페이지(92%), 동시 세션 16개 · 길이 30~300페이지, LRU 해제, Greedy GC. DWPD 배수 = WAF 비(같은 NAND · 같은 OP). 단순화 모델의 예시값이며 실측이 아닙니다.',
     96, 952, F(400, 17), COL.gray2, 'left', ramp(t, T.s6 + 0.6));
@@ -529,7 +543,6 @@ function draw(t) {
   g.setTransform(1, 0, 0, 1, 0, 0);
   g.fillStyle = COL.bg; g.fillRect(0, 0, W, H);
   scene1(t);
-  scene2(t);
   scene34(t);
   scene5(t, 1);
   scene6(t);
