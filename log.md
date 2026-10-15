@@ -2968,3 +2968,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 4~6장 A2 · B2 · C2 추가(1~3장 무변경, 장당 글자 약 870 → 440자). 왼쪽 노드 추이를 절반 영역 전체로 키우고 로고를 마커 옆에 직접, 기울기 숫자 34pt. 오른쪽은 시안별 핵심 그림 2~3개(드라이버 · 산술식 · ÷32 vs ×330 · 공급 2028 / 선순환 고리 · 가속기 수 / HBM 넘침 막대 · 계층 이미지)
 - 차트 7종 추가(node_simple_log · node_simple_linear · node_simple_cadence · drivers_big · tug2 · tug2_small · tank_big). ÷32는 70B 같은 모델 MHA BF16 → GQA FP4로 정의(이전 노트의 MHA 대비 1/37 = 모델 간 비교라 간결형에서는 쓰지 않음)
 - 렌더 QA 3회, qa_audit PASS. 대시보드 발표자료 탭 장 6개 · 웹 보기 이미지 6장, updates.js, v2.49.22, npm run build 통과
+
+## [2026-10-15] build | Fab 통합 운영 덱 v2.2: 시안 6 그림을 편집 가능한 도형으로 (dashboard v2.49.23)
+- 사용자 요청: 시안 6(Fab 도면 컬러) 그림을 도형 오브젝트로 바꿔 직접 고쳐 쓰기
+- fab_native_figs.py 신설: c3_space · c3_agility · c3_unif와 같은 그림을 python-pptx 기본 도형 그룹으로(그룹 3개, 도형 39 · 45 · 66개). 생성기에 NATIVE_STYLES = {"c3"}
+- p:style(그림자) 제거를 그룹 안 도형까지 확장. 렌더 QA로 PNG판과 같은 모양 확인, qa_audit PASS
+- 대시보드 발표자료 사본 · 웹 보기 이미지 갱신, presentations.js v2.2, updates.js 항목, v2.49.23

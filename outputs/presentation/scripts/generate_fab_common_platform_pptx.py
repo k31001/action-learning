@@ -32,6 +32,9 @@ from pptx.enum.text import MSO_ANCHOR, PP_ALIGN  # noqa: E402
 from pptx.oxml.ns import qn  # noqa: E402
 from pptx.util import Inches, Pt  # noqa: E402
 
+sys.path.insert(0, HERE)
+from fab_native_figs import NATIVE  # noqa: E402
+
 ASSETS = os.path.join(ROOT, "outputs", "presentation", "assets", "fab-common-platform")
 OUT = os.environ.get("OUT_PATH", os.path.join(ROOT, "outputs", "presentation", "fab-common-platform-options.pptx"))
 
@@ -114,6 +117,7 @@ STYLES = [
      "결과물은 Bonding으로 이어집니다. 3 통일성: 공정 단계마다 DRAM 모델 둘, NAND 모델 둘이던 것을 공용 모델 하나로 모아 레시피 · 부품 · 물량을 공유합니다. 모델 코드는 예시입니다."),
 ]
 FIGS = ["space", "agility", "unif"]
+NATIVE_STYLES = {"c3"}   # 시안 6: 그림을 PowerPoint 도형으로(사용자 요청 2026-10-15, fab_native_figs.py)
 
 
 def roof_pillars_base(d, s, style, T):
@@ -133,7 +137,10 @@ def roof_pillars_base(d, s, style, T):
         d.rect(s, x, 3.08, pw, 0.06, fill=hue)
         circ_no(d, s, x + 0.18, 3.22, n, dd=0.40, size=18, fill=hue)
         d.tb(s, x + 0.70, 3.18, pw - 0.86, 0.48, [[(ko, 24, True, INK), ("  " + en, 16, False, hue)]], anchor=MSO_ANCHOR.MIDDLE)
-        d.img(s, os.path.join(ASSETS, f"{style}_{FIGS[k]}.png"), x + (pw - 5.30) / 2, 3.68, w=5.30)
+        if style in NATIVE_STYLES:   # 편집 가능한 도형 그룹(그림과 같은 모양)
+            NATIVE[FIGS[k]](d, s, x + (pw - 5.30) / 2, 3.68)
+        else:
+            d.img(s, os.path.join(ASSETS, f"{style}_{FIGS[k]}.png"), x + (pw - 5.30) / 2, 3.68, w=5.30)
         for i, (b, rest) in enumerate(rows):
             yy = 5.60 + i * 0.56
             d.rect(s, x, yy, pw, 0.50, fill=WHITE, line=hue_lt, lw=1.25)
@@ -205,12 +212,10 @@ def main():
         note = ("컬러 버전입니다. 색에 뜻이 있습니다: DRAM = Blue, NAND = Teal, 통합 후 같은 색 = 같은 설비 모델, 공용 모델 = Purple, "
                 "개선(확보 · 추가 · 협상력) = Amber, 효과 ① Blue ② Teal ③ Purple. " + note)
         make_slide(d, no, label, "c" + style[1], note, COLOR_T)
-    # 테마 스타일(p:style)의 effectRef가 그림자를 그리므로 지운다. 채움 · 선은 모두 명시값이다.
+    # 테마 스타일(p:style)의 effectRef가 그림자를 그리므로 지운다(그룹 안 도형 포함). 채움 · 선은 모두 명시값이다.
     for sl in d.prs.slides:
-        for sh in sl.shapes:
-            st = sh._element.find(qn("p:style"))
-            if st is not None:
-                sh._element.remove(st)
+        for st in list(sl.shapes._spTree.iter(qn("p:style"))):
+            st.getparent().remove(st)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     d.save(OUT)
     print("saved", OUT)

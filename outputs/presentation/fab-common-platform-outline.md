@@ -1,10 +1,17 @@
-# DRAM/NAND Fab 통합 운영: Bonding 시대에 맞는 Common Platform 구성 (1장, 시안 6종) v2.1
+# DRAM/NAND Fab 통합 운영: Bonding 시대에 맞는 Common Platform 구성 (1장, 시안 6종) v2.2
 
 - 생성기: 그림 `outputs/presentation/scripts/generate_fab_common_platform_figs.py` → 슬라이드 `generate_fab_common_platform_pptx.py`
 - 산출물: `outputs/presentation/fab-common-platform-options.pptx` (6장 = 시안 1~3 단일 Blue · 시안 4~6 다색, 하나를 고른다), 대시보드 발표자료 탭 등록(`fab-common-platform-options`), 미리보기 `fab-common-platform-options-preview.pdf`
 - 재생성: `.venv/bin/python outputs/presentation/scripts/generate_fab_common_platform_figs.py && .venv/bin/python outputs/presentation/scripts/generate_fab_common_platform_pptx.py`
 - 디자인: samsung-memory-ppt-design-skill v2.2 (20 x 11.25in, B+2 팔레트, 본문 18pt · 그림 라벨 16pt 이상, em-dash 0)
 - 성격: 가정 기반의 기획 장표. 위키(`wiki/`) 근거 체인 밖이며 수치를 쓰지 않았다(그림은 방향만 보이는 개념도)
+
+## v2.2 변경: 시안 6 그림을 편집 가능한 도형으로 (2026-10-15)
+
+- 사용자 요청: 시안 6 그림을 고쳐 가며 쓰고 싶다 → 기둥 그림 3개를 PNG 대신 PowerPoint 도형으로 그린다(`scripts/fab_native_figs.py`)
+- 그림마다 그룹 1개("그림 1 공간 효율성 (도형)" 등). 그룹을 풀면 설비 상자 · OHT 레일 · 웨이퍼 · 흐름선 · 모델 칩 · 라벨을 하나씩 고칠 수 있다
+- 모양 · 색 · 좌표는 PNG(`c3_*.png`)와 같다. 빗금(Dead Space)은 무늬 채우기, 전환 표시는 휜 화살표 도형, "확보"는 세로로 돌린 텍스트 상자
+- 다른 시안(1~5)은 그림 이미지 그대로. 다른 시안도 도형으로 바꾸려면 생성기의 `NATIVE_STYLES`에 추가하고 해당 그림 함수를 `fab_native_figs.py`에 만든다
 
 ## v2.1 변경: 다색 버전 3장 추가 (시안 4~6)
 
