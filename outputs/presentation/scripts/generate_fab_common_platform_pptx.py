@@ -33,7 +33,7 @@ from pptx.oxml.ns import qn  # noqa: E402
 from pptx.util import Inches, Pt  # noqa: E402
 
 sys.path.insert(0, HERE)
-from fab_native_figs import NATIVE  # noqa: E402
+from fab_native_figs import draw as draw_native  # noqa: E402
 
 ASSETS = os.path.join(ROOT, "outputs", "presentation", "assets", "fab-common-platform")
 OUT = os.environ.get("OUT_PATH", os.path.join(ROOT, "outputs", "presentation", "fab-common-platform-options.pptx"))
@@ -117,7 +117,8 @@ STYLES = [
      "결과물은 Bonding으로 이어집니다. 3 통일성: 공정 단계마다 DRAM 모델 둘, NAND 모델 둘이던 것을 공용 모델 하나로 모아 레시피 · 부품 · 물량을 공유합니다. 모델 코드는 예시입니다."),
 ]
 FIGS = ["space", "agility", "unif"]
-NATIVE_STYLES = {"c3"}   # 시안 6: 그림을 PowerPoint 도형으로(사용자 요청 2026-10-15, fab_native_figs.py)
+# 기둥 그림을 PowerPoint 도형으로(사용자 요청 2026-10-15). NATIVE_FIGS=0 이면 PNG(generate_fab_common_platform_figs.py)를 넣는다
+NATIVE_FIGS = os.environ.get("NATIVE_FIGS", "1") != "0"
 
 
 def roof_pillars_base(d, s, style, T):
@@ -137,8 +138,8 @@ def roof_pillars_base(d, s, style, T):
         d.rect(s, x, 3.08, pw, 0.06, fill=hue)
         circ_no(d, s, x + 0.18, 3.22, n, dd=0.40, size=18, fill=hue)
         d.tb(s, x + 0.70, 3.18, pw - 0.86, 0.48, [[(ko, 24, True, INK), ("  " + en, 16, False, hue)]], anchor=MSO_ANCHOR.MIDDLE)
-        if style in NATIVE_STYLES:   # 편집 가능한 도형 그룹(그림과 같은 모양)
-            NATIVE[FIGS[k]](d, s, x + (pw - 5.30) / 2, 3.68)
+        if NATIVE_FIGS:   # 편집 가능한 도형 그룹(PNG와 같은 모양, fab_native_figs.py)
+            draw_native(d, s, style, FIGS[k], x + (pw - 5.30) / 2, 3.68)
         else:
             d.img(s, os.path.join(ASSETS, f"{style}_{FIGS[k]}.png"), x + (pw - 5.30) / 2, 3.68, w=5.30)
         for i, (b, rest) in enumerate(rows):

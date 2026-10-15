@@ -2974,3 +2974,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - fab_native_figs.py 신설: c3_space · c3_agility · c3_unif와 같은 그림을 python-pptx 기본 도형 그룹으로(그룹 3개, 도형 39 · 45 · 66개). 생성기에 NATIVE_STYLES = {"c3"}
 - p:style(그림자) 제거를 그룹 안 도형까지 확장. 렌더 QA로 PNG판과 같은 모양 확인, qa_audit PASS
 - 대시보드 발표자료 사본 · 웹 보기 이미지 갱신, presentations.js v2.2, updates.js 항목, v2.49.23
+
+## [2026-10-15] build | Fab 통합 운영 덱 v2.3: 모든 그림을 편집 가능한 도형으로 (dashboard v2.49.24)
+- 사용자 요청: 가능하면 모든 그림을 오브젝트화 → 시안 1~6 기둥 그림 18개를 모두 PowerPoint 도형 그룹으로(그림 이미지 0개)
+- fab_native_figs.py v2: PNG 생성기와 같은 좌표 · MONO / COLOR 테마. 아이소메트릭 블록 = 자유형 면 3개 하위 그룹, 수요 곡선 · 누적 면적 = 자유형, 와플 · 웨이퍼 = 하위 그룹
+- 생성기 NATIVE_FIGS(기본 1, 0이면 PNG). 렌더 QA로 18개 모두 PNG판과 같은 모양 확인, qa_audit PASS
+- 대시보드 발표자료 사본 · 웹 보기 이미지 갱신, presentations.js v2.3, updates.js 항목, v2.49.24

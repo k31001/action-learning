@@ -17,6 +17,16 @@ export const UPDATES = [
   {
     date: '2026-10-15',
     type: 'build',
+    version: 'v2.49.24',
+    title: 'Fab 통합 운영 덱 v2.3: 모든 그림을 편집 가능한 도형으로',
+    summary: '시안 1~6의 기둥 그림 18개를 모두 PowerPoint 도형 그룹으로 바꿈. 아이소메트릭 블록 면과 수요 곡선은 자유형 다각형이라 꼭짓점까지 고칠 수 있음.',
+    tags: ['발표자료'],
+    items: [{ label: '덱', detail: 'fab-common-platform-options.pptx v2.3 · 그림 이미지 0개, 도형 그룹 18개' }],
+    links: [],
+  },
+  {
+    date: '2026-10-15',
+    type: 'build',
     version: 'v2.49.23',
     title: 'Fab 통합 운영 덱 v2.2: 시안 6 그림을 편집 가능한 도형으로',
     summary: '시안 6(Fab 도면 컬러)의 기둥 그림 3개를 이미지 대신 PowerPoint 도형(사각형 · 원 · 선 · 화살표 · 텍스트 상자) 그룹으로 다시 그려, 그룹을 풀면 하나씩 고칠 수 있게 함.',
