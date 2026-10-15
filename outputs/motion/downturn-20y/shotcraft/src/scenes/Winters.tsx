@@ -15,7 +15,7 @@ const ready = (first: string) => cue(first) + CARD_HOLD + 16; // 레이아웃이
 // 타격 시점(장면 내부 프레임) — sfx.ts 와 공유. 화면 이벤트는 내레이터가 그 말을 하는 순간에 맞춘다.
 export const T08 = () => { const a2 = cue('a2'), d = cueEnd('a2') - a2; return { sw: cue('a1') + CARD_HOLD, odo: a2 - 20, pct: a2 + 16, qm: a2 + Math.round(d * 0.58), a3: cue('a3') }; };
 export const T12 = () => { const b2 = cue('b2'); return { sw: cue('b1') + CARD_HOLD, el: ready('b1'), b2, three: b2 + 34, b3: cue('b3') }; };
-export const T19 = () => { const sw = ready('d1'); const mid = sw - 10; return { sw: sw - 16, mid, d2: cue('d2'), d3: cue('d3') }; }; // 경쟁사 기둥은 레이아웃과 함께 올라온다(빈 화면 방지)
+export const T19 = () => { const sw = ready('d1'); const mid = sw - 10, d3 = cue('d3'); return { sw: sw - 16, mid, d2: cue('d2'), d3, nd: d3 + Math.round((cueEnd('d3') - d3) * 0.58) }; }; // nd = 「낸드」를 읽는 순간 // 경쟁사 기둥은 레이아웃과 함께 올라온다(빈 화면 방지)
 export const T23 = () => { const e2 = cue('e2'); return { sw: cue('e1') + CARD_HOLD, e2, land: e2 + 30, e3: cue('e3') }; };
 
 /* 2008 · 버텼다 — 레이아웃 A 「큰 숫자」: 왼쪽 가격 오도미터 $6.80→$0.50 · −93%, 오른쪽 점유율 막대(키몬다 파산) */
@@ -111,10 +111,10 @@ export const W12: React.FC = () => {
   );
 };
 
-/* 2019 · 멈추지 않았다 — 레이아웃 C 「3자 대비」: 세 회사 기둥(감산 · 감산 · 무감산) → 44.1% */
+/* 2019 · 멈추지 않았다 — 레이아웃 C 「3자 대비」: 세 회사 기둥(감산 · 감산 · 무감산) → 1Q20 점유율 DRAM 44.1% · NAND 33.3%(둘 다 TrendForce, 1위) */
 export const W19: React.FC = () => {
   const f = useCurrentFrame();
-  const { mid, d2, d3 } = T19();
+  const { mid, d2, d3, nd } = T19();
   const dim = 1 - 0.6 * tw(f, [d3, d3 + 10], [0, 1]);
   const cols: { lg: React.ReactNode; st: string; sub: string; c: string; at: number; me?: boolean }[] = [
     { lg: <Logo k="micron" h={56} grey />, st: '감산 ↓', sub: '’19.03', c: C.steel, at: mid },
@@ -122,7 +122,7 @@ export const W19: React.FC = () => {
     { lg: <Logo k="samsung" h={44} />, st: '무감산 →', sub: '투자 유지', c: C.blue, at: d2, me: true },
   ];
   return (
-    <ChapterFrame k={2} first="d1" photo="cleanroom" src={SRC('samsung-2019-downturn-2017-2019-actions')}>
+    <ChapterFrame k={2} first="d1" photo="cleanroom" src={SRC('samsung-2019-downturn-2017-2019-actions · trendforce-1q20-nand-revenue-ranking')}>
       {cols.map((c, i) => (
         <Up key={i} at={c.at} dy={40} style={{ position: 'absolute', left: 160 + i * 540, top: 250, width: 500, height: 380, borderTop: `6px solid ${c.me ? C.blue : C.frost}`, paddingTop: 30, opacity: c.me ? 1 : dim, display: 'flex', flexDirection: 'column', gap: 20 }}>
           <div style={{ height: 110, display: 'flex', alignItems: 'center' }}>{c.lg}</div>
@@ -130,10 +130,15 @@ export const W19: React.FC = () => {
           <div style={{ fontSize: 40, fontWeight: 700, color: c.me ? C.ink : C.steel }}>{c.sub}</div>
         </Up>
       ))}
-      <Up at={d3} style={{ position: 'absolute', left: 1240, top: 690, display: 'flex', flexDirection: 'column' }}>
-        <span style={{ ...lab, color: C.ink, display: 'inline-flex', alignItems: 'center', gap: 14 }}>1Q20 <Logo k="samsung" h={30} /> DRAM 점유율</span>
-        <span style={big(190, C.blue)}>44.1%</span>
+      <Up at={d3} style={{ position: 'absolute', left: 1240, top: 652 }}>
+        <span style={{ ...lab, color: C.ink, display: 'inline-flex', alignItems: 'center', gap: 14 }}>1Q20 <Logo k="samsung" h={30} /> 점유율 · 모두 1위</span>
       </Up>
+      {([['DRAM', '44.1%', d3 + 4], ['NAND', '33.3%', nd]] as const).map(([k, v, at], i) => (
+        <Up key={k} at={at} style={{ position: 'absolute', left: 1240, top: 706 + i * 124, display: 'flex', alignItems: 'baseline', gap: 24 }}>
+          <span style={{ width: 150, fontSize: 44, fontWeight: 900, color: C.ink }}>{k}</span>
+          <span style={big(124, C.blue)}>{v}</span>
+        </Up>
+      ))}
     </ChapterFrame>
   );
 };

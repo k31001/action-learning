@@ -100,7 +100,7 @@ function VideoPlayer({ video, onClose }) {
           ))}
         </div>
       </div>
-      <p className="pb-2 text-center text-[10px] text-zinc-500">장 버튼으로 구간 이동 · <span className="hidden sm:inline">Esc 닫기 · </span>소리가 있습니다(내레이션 · 배경음악)</p>
+      <p className="pb-2 text-center text-[10px] text-zinc-500">장 버튼으로 구간 이동 · <span className="hidden sm:inline">Esc 닫기 · </span>소리가 있습니다({video.sound ?? '내레이션 · 배경음악'})</p>
     </div>,
     document.body,
   )

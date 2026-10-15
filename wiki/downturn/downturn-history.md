@@ -103,7 +103,7 @@ DT23이 가장 위험한 조합이었다 — **침식형으로 진입해(인지 
 - **대응**: 감산 착수 순서 — **Micron 최초 공식 감산(2019-03, DRAM·NAND 웨이퍼 -5%) → SK하이닉스(2019-07, NAND -15%·D램 캐파 축소·M10 CIS 전환) → 삼성만 "인위적 웨이퍼 투입 감소 검토 안 함" 무감산 기조 유지 + CapEx 22.6조(-5%)로 규모 유지**. 삼성은 다운턴 중 세대 전환을 완주(1z DRAM·6세대 V낸드·EUV 준비·HBM2E Flashbolt 발표)하고, 한복판에 비전 2030(시스템반도체 133조)을 선언 ([samsung-2019-downturn-2017-2019-actions-2026-08-16.md](../../sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md)).
 - **NAND 동행**: 4Q18 NAND -16.8%로 DRAM(-18.3%)과 동시 진입, 2019년 -27%ᵉ. 단 요카이치 정전(2019-06)과 도시바메모리 감산으로 **NAND가 2H19 먼저 수급 개선** — DRAM보다 앞서 바닥을 만들었다 ([nand-market-history-research-2026-08-22.md](../../sources/raw-notes/nand-market-history-research-2026-08-22.md) §2·§3, [samsung-2019-downturn-2017-2019-actions-2026-08-16.md](../../sources/articles/samsung-2019-downturn-2017-2019-actions-2026-08-16.md) §4).
 - **동시에 심긴 함정**: 같은 2019년, 삼성은 HBM 시장을 니치로 판단해 **HBM 전담팀을 축소** — SK하이닉스는 반대로 베팅을 늘림 ([samsung-downturn-actions-2007-2023-2026-08-07.md](../../sources/articles/samsung-downturn-actions-2007-2023-2026-08-07.md) CNBC 인용).
-- **결과**: 4Q19 가격 바닥 → 2020 COVID 클라우드 수요로 V자 회복. 삼성 1Q20 DRAM 점유율 44.1% — 무감산·투자 유지가 점유율 방어로 이어짐. 5분기, 5건 중 최단.
+- **결과**: 4Q19 가격 바닥 → 2020 COVID 클라우드 수요로 V자 회복. 삼성 1Q20 DRAM 점유율 44.1%, NAND 점유율 33.3%(둘 다 1위, TrendForce — [trendforce-1q20-nand-revenue-ranking-2026-10-13.md](../../sources/articles/trendforce-1q20-nand-revenue-ranking-2026-10-13.md)) — 무감산·투자 유지가 점유율 방어로 이어짐. 5분기, 5건 중 최단.
 - **교훈**: 수요발(재고) 다운턴은 재고 소진과 함께 스스로 끝난다 — 감산 없이 버틴 1위가 점유율로 보상받았다. **그러나 이 성공 경험이 다음 다운턴의 오판 근거가 된다.**
 
 ### DT23 — 사상 최속·최심 (2022Q2~2023Q3, 수요발·침식→급락 전화)

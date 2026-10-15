@@ -2,11 +2,12 @@
   "name": "render-parts",
   "private": true,
   "type": "module",
-  "description": "3D 부품 렌더(NAND·DRAM·HBM·SSD·서버)와 브랜드 로고 PNG 생성. node render.mjs <출력 폴더> [all|objects|logos]",
+  "description": "3D 부품 렌더(NAND·DRAM·HBM·SSD·서버)와 브랜드 로고 PNG 생성. node render.mjs <출력 폴더> [all|objects|logos] / 단색 라인 아이콘: node render_icons.mjs <출력> <색> <아이콘...>",
   "dependencies": {
     "@iconify-json/logos": "^1.2.15",
     "@iconify-json/simple-icons": "^1.2.99",
     "playwright-core": "^1.56.1",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "@iconify-json/tabler": "^1.2.2"
   }
 }

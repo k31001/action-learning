@@ -166,3 +166,12 @@
 - 애플 온디바이스 AI 진입 시 스마트폰 폼팩터 최적화 메모리 규격 폭풍 ([ssd-ufs-market.md](ssd-ufs-market.md) [Update 2026-05-19 II])
 
 **출처**: [youtube-kwon-cycle-formula-2026-05-21.md](../../sources/articles/youtube-kwon-cycle-formula-2026-05-21.md), [youtube-kwon-agentic-ai-memory-2026-05-01.md](../../sources/articles/youtube-kwon-agentic-ai-memory-2026-05-01.md)
+
+---
+
+## [Update 2026-10-14] 미세화 속도 둔화와 2026년 각 사 노드 위치
+
+- 업계 선두 주력 노드(half-pitch 근사)는 2000~2011년 **연 -15%**(180 → 29nm, 1년에 새 노드 1개)로 줄었으나 2013~2025년은 **연 -6%**(25 → 11.5nm, 1.6년에 1개)로 느려졌다(로그 회귀, 추세용 근사) ([dram-shrink-wall-and-ai-memory-bottleneck-2026-10.md](../../sources/articles/dram-shrink-wall-and-ai-memory-bottleneck-2026-10.md) §1). 전성기 "18개월마다 비트 밀도 2배"가 최근 10년 2배에 그친 것과 같은 방향 ([logic-paradigm-shifts-3d-dram-2026-08.md](../../sources/articles/logic-paradigm-shifts-3d-dram-2026-08.md)).
+- 2026년 위치: Samsung 1c 양산(HBM4 코어), SK hynix 1b 주력 · 1c 램프, Micron 1γ(첫 EUV), CXMT G4 16nm(1z급, DUV 다중 패터닝) · G5 15nm 2026 말 목표. 선두와 CXMT의 노드 격차는 약 3세대(1a · 1b · 1c) (동 §2).
+- CXMT 2026 말 캐파 약 35만 wpm = Micron(약 37.5만)의 93% ([hybrid-bonding-structures-china-limits-2026-08.md](../../sources/articles/hybrid-bonding-structures-china-limits-2026-08.md) §4-1).
+- 이 수치는 `outputs/presentation/dram-reality-options.pptx`(현실 파악 1장 시안 3종) 왼쪽 절반의 근거다.

@@ -53,7 +53,8 @@ export const SFX: Sfx[] = [
   at(S.w19.from + t19.mid, 'sweep-short', 0.24, '마이크론 감산'),
   at(S.w19.from + t19.mid + 14, 'sweep-short', 0.2, 'SK 감산'),
   at(S.w19.from + t19.d2, 'sweep-short', 0.28, '삼성 무감산'),
-  at(S.w19.from + t19.d3, 'sparkle-touch', 0.3, '44.1%'),
+  at(S.w19.from + t19.d3 + 4, 'sparkle-touch', 0.3, 'DRAM 44.1%'),
+  at(S.w19.from + t19.nd, 'sparkle-touch', 0.24, 'NAND 33.3%'),
   // 2023
   at(S.w23.from + t23.e2, 'sweep-fast-small', 0.24, '분기 막대 붕괴 + 풀백'),
   pin(S.w23.from + t23.land, 'impact-epic-trailer', 0.45, '−62% 크래시 줌 (slam 2/3)'),
@@ -63,8 +64,6 @@ export const SFX: Sfx[] = [
   at(S.spring.from + c('p3') - 10, 'air-woosh-quick', 0.12, '곡선 → HBM 실사'),
   // ⑥ 교훈
   at(S.lesson.from + c('l1') + 40, 'paper-slide', 0.28, '마커 밑줄'),
-  at(S.lesson.from + c('l2'), 'sweep-short', 0.22, '심은 것'),
-  at(S.lesson.from + c('l3'), 'sweep-short', 0.2, '놓친 것'),
   // ⑦ 시나리오
   pin(S.scen.from + c('s0') + 6, 'swoosh-slow', 0.1, '질문 진입 (빌드인)', 75),
   pin(S.scen.from + c('s0') + 2, 'bass-hit-short', 0.18, '「다음 겨울은 어디서 오는가.」'),

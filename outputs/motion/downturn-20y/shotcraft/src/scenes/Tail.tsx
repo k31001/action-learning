@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, interpolate, useCurrentFrame } from 'remotion';
 import { C, FONT, SERIF } from '../theme';
-import { cue, cueEnd, EXPO, INOUT, Lines, Logo, Marker, Source, Tag, tw, Up } from '../lib';
+import { cue, cueEnd, EXPO, INOUT, Lines, Logo, Marker, Source, tw, Up } from '../lib';
 import { cardStep, HAS_PHOTOS, laneStarts, LANES } from '../timeline';
 import { ChartSvg, yrAt } from '../Chart';
 import { Wafer } from '../Wafer';
@@ -53,10 +53,11 @@ export const Spring: React.FC = () => {
 };
 
 /* ⑥ 교훈 — 눈 속 새싹 실사(오른쪽) + 왼쪽 타이포. 「심은 것」 마커 밑줄(marker-underline-title, 10f).
+   v2.6: 투자한 것 · 놓친 것 세부 줄을 화면에서 뺐다 — 메시지 한 줄만(대사 l2·l3 는 유지, 2026-10-13 사용자 지시).
    v2.5: v2.4 의 직설 교체를 되돌림 — 「심다」 비유가 이 영상의 정서를 만든다(2026-10-12 사용자 지시) */
 export const Lesson: React.FC = () => {
   const f = useCurrentFrame();
-  const l1 = cue('l1'), l2 = cue('l2'), l3 = cue('l3');
+  const l1 = cue('l1');
   return (
     <AbsoluteFill style={{ background: C.paper, fontFamily: FONT, color: C.ink, opacity: tw(f, [0, 8], [0, 1]) }}>
       {HAS_PHOTOS
@@ -65,11 +66,7 @@ export const Lesson: React.FC = () => {
       <Lines at={l1 + 4} stagger={10} lines={[
         <>승부는 <span style={{ color: C.blue }}>겨울</span>에</>,
         <><span style={{ position: 'relative', display: 'inline-block' }}><Marker at={l1 + 40} len={370} color={C.blue} style={{ left: -6, bottom: -30 }} /><span style={{ position: 'relative' }}>심은 것</span></span>에서 갈렸다.</>,
-      ]} style={{ position: 'absolute', left: 140, top: 230, fontSize: 124, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.12 }} />
-      <div style={{ position: 'absolute', left: 146, top: 620, display: 'flex', flexDirection: 'column', gap: 22 }}>
-        <Up at={l2} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.blue} size={38}>투자한 것</Tag>40nm DDR3 · 20nm급 · 1z DRAM</Up>
-        <Up at={l3} style={{ display: 'flex', gap: 20, alignItems: 'baseline', fontSize: 52, fontWeight: 700 }}><Tag c={C.red} size={38}>놓친 것</Tag>HBM보다 범용 DRAM 중심 운영</Up>
-      </div>
+      ]} style={{ position: 'absolute', left: 140, top: 370, fontSize: 124, fontWeight: 900, letterSpacing: '-0.045em', lineHeight: 1.12 }} />
       <Source at={l1 + 10}>출처: wiki/downturn/downturn-history.md §4 · samsung-2019-downturn-2017-2019-actions</Source>
     </AbsoluteFill>
   );

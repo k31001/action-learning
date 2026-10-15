@@ -15,6 +15,199 @@
 
 export const UPDATES = [
   {
+    date: '2026-10-15',
+    type: 'build',
+    version: 'v2.49.25',
+    title: '발표자료 탭에 「고객 협력 전략」 5분 발표 영상 추가',
+    summary: 'ssd-future-ready-strategy 덱 1~4장을 슬라이드 그대로 쓰는 5:08 발표 영상. 슬라이드를 읽지 않고 질문 → 답으로 잇는 대본에, 카메라 줌 · 강조 · 덱 클릭 애니메이션을 내레이션 단어 시각에 맞춤.',
+    tags: ['발표자료', '영상'],
+    items: [
+      { label: '영상', detail: 'ssd-future-ready-video.mp4 v1.0 · 1080p · 5:08 · 장 14개 · 여성 내레이션(ko-KR-SunHiNeural)' },
+      { label: '소스', detail: 'outputs/motion/ssd-future-ready-video — narration.py(대본 · 효과 큐) · render_slides.py · index.html · render.mjs' },
+    ],
+    links: [],
+  },
+  {
+    date: '2026-10-15',
+    type: 'build',
+    version: 'v2.49.24',
+    title: 'Fab 통합 운영 덱 v2.3: 모든 그림을 편집 가능한 도형으로',
+    summary: '시안 1~6의 기둥 그림 18개를 모두 PowerPoint 도형 그룹으로 바꿈. 아이소메트릭 블록 면과 수요 곡선은 자유형 다각형이라 꼭짓점까지 고칠 수 있음.',
+    tags: ['발표자료'],
+    items: [{ label: '덱', detail: 'fab-common-platform-options.pptx v2.3 · 그림 이미지 0개, 도형 그룹 18개' }],
+    links: [],
+  },
+  {
+    date: '2026-10-15',
+    type: 'build',
+    version: 'v2.49.23',
+    title: 'Fab 통합 운영 덱 v2.2: 시안 6 그림을 편집 가능한 도형으로',
+    summary: '시안 6(Fab 도면 컬러)의 기둥 그림 3개를 이미지 대신 PowerPoint 도형(사각형 · 원 · 선 · 화살표 · 텍스트 상자) 그룹으로 다시 그려, 그룹을 풀면 하나씩 고칠 수 있게 함.',
+    tags: ['발표자료'],
+    items: [{ label: '덱', detail: 'fab-common-platform-options.pptx v2.2 · 시안 6 도형 그룹 3개(39 · 45 · 66개 도형)' }],
+    links: [],
+  },
+  {
+    date: '2026-10-14',
+    type: 'build',
+    version: 'v2.49.22',
+    title: '「DRAM 현실 파악」 간결형 시안 3장 추가 (A2 · B2 · C2)',
+    summary:
+      '기존 시안 A · B · C를 유지하고, 각각 텍스트와 부수 내용을 줄이고 핵심 그림을 키운 간결형 3장을 4~6장에 추가(장당 글자 약 870 → 440자). ' +
+      '왼쪽 노드 추이를 절반 영역 전체로 키우고 로고를 마커 옆에, 오른쪽은 드라이버 · 산술식 · 알고리즘 ÷32 vs 토큰 ×330 · 공급 2028 · HBM 넘침 막대로. 패치 v2.49.22.',
+    tags: ['발표자료', 'DRAM', 'KV 캐시'],
+    items: [
+      { label: '덱', detail: 'dram-reality-options.pptx v1.1 · 한 장 시안 6종(기본 3 + 간결 3)' },
+    ],
+  },
+  {
+    date: '2026-10-14',
+    type: 'build',
+    version: 'v2.49.21',
+    title: '발표자료 탭에 「DRAM 현실 파악」 한 장 시안 3종 등록',
+    summary:
+      'DRAM 기술 경쟁력 제고 · 차별화 준비의 현실 파악 장(위기: Shrink 장벽 · 후발 추격 / 기회: AI 추론의 메모리 병목) 시안 A 흐름형 · B 선순환형 · C 실물형을 모두 유지한 채 발표자료 탭에 추가. ' +
+      '배포 사본 · 웹 보기 이미지 3장. 패치 v2.49.21.',
+    tags: ['발표자료', 'DRAM', 'CXMT', 'KV 캐시'],
+    items: [
+      { label: '덱', detail: 'dram-reality-options.pptx v1.0 · 한 장 시안 3종' },
+    ],
+  },
+  {
+    date: '2026-10-14',
+    type: 'ingest',
+    version: 'v2.49.20',
+    title: 'DRAM 미세화 둔화(연 -15% → -6%) · 2026 각 사 노드 위치 ingest, 현실 파악 1장 시안 3종',
+    summary:
+      'DRAM 주력 노드 추이 2000~2030과 2026 각 사 노드(Samsung 1c · SK hynix 1b/1c · Micron 1γ · CXMT G4 16nm), KV/토큰 × 월간 토큰 산술을 근거 원장으로 수집하고 dram-technology 개념 페이지를 갱신. ' +
+      '지식 그래프 재생성(인용 수 변화). 패치 v2.49.20.',
+    tags: ['DRAM', 'CXMT', 'KV 캐시', '발표자료'],
+    items: [
+      { label: 'sources', detail: 'dram-shrink-wall-and-ai-memory-bottleneck-2026-10.md' },
+      { label: 'wiki', detail: 'concepts/dram-technology.md [Update 2026-10-14]' },
+      { label: '덱', detail: 'outputs/presentation/dram-reality-options.pptx (시안 A 흐름형 · B 선순환형 · C 실물형, 발표자료 탭 등록은 시안 확정 후)' },
+    ],
+  },
+  {
+    date: '2026-10-14',
+    type: 'build',
+    version: 'v2.49.19',
+    title: '「FDP가 뭐야?」 영상 v1.3 — 페이지/블록 장면 → WAF 시각자료, 결론 "같은 시점에 지워질 데이터는 같은 블록에"',
+    summary:
+      '페이지 · 블록 단위 설명 장면을 빼고, FDP 없음 장면 오른쪽에 WAF 시각자료(호스트가 쓴 양 32칸 vs NAND에 실제로 쓴 양 32 + GC 복사 5칸 → 37 ÷ 32 = 1.16)를 넣음. ' +
+      '자막의 "(와프)" 표기 삭제, "섞여 있다가, / 한 세션이 끝나면" 사이 쉼, 결론 문구를 "같은 시점에 지워질 데이터는 같은 블록에"로. 55초. 패치 v2.49.19.',
+    tags: ['발표자료', '영상', 'FDP', 'WAF'],
+    items: [
+      { label: '영상', detail: 'fdp-explainer v1.3 · 55초 · 장 8개(FDP 없음 · WAF 분리)' },
+    ],
+  },
+  {
+    date: '2026-10-14',
+    type: 'build',
+    version: 'v2.49.18',
+    title: '「FDP가 뭐야?」 영상 1분(58초) — WAF 정의 · DWPD 개념 추가 · 덱 버튼 「1분 영상」 (덱 v5.3)',
+    summary:
+      'FDP 없음 장면에 WAF = NAND에 쓴 양 ÷ 호스트가 쓴 양(수식 강조), 결과 장면에 DWPD = 하루에 전체 용량을 몇 번 쓸 수 있나 · WAF에 반비례 → 16 RUH 약 3.3배 막대를 추가. ' +
+      '감소율(−73% · −97%)은 막대 옆 표기로 옮김. 고객 협력 전략 덱 3장 버튼을 「▶ 1분 영상 · FDP 원리」로. 패치 v2.49.18.',
+    tags: ['발표자료', '영상', 'FDP', 'WAF', 'DWPD', '덱'],
+    items: [
+      { label: '영상', detail: 'fdp-explainer v1.2 · 58초 · 장 9개(WAF · 결과 · DWPD · 결론)' },
+      { label: '덱', detail: 'ssd-future-ready-strategy v5.3 — 3장 버튼 · 노트 1분' },
+    ],
+  },
+  {
+    date: '2026-10-14',
+    type: 'build',
+    version: 'v2.49.17',
+    title: '「FDP가 뭐야?」 영상 30 → 50초 · WAF를 "와프"로 읽기 · 덱 버튼 문구 50초 (덱 v5.2)',
+    summary:
+      '초반 설명(FDP 정의 → 배치 힌트 → 쓰기 · 지우기 단위)과 결론(감소율 강조 · 맺음말)에 시간을 더 주고 화면 전개를 늦춰 50초로. 내레이션은 WAF를 "와프"로 읽고 말 속도를 낮춤. ' +
+      '고객 협력 전략 덱 3장 버튼을 「▶ 50초 영상 · FDP 원리」로. 패치 v2.49.17.',
+    tags: ['발표자료', '영상', 'FDP', 'WAF', '덱'],
+    items: [
+      { label: '영상', detail: 'fdp-explainer v1.1 · 50초 · 대사 7 → 11개 · 장 7개(배치 힌트 · 결과 · 결론 추가)' },
+      { label: '덱', detail: 'ssd-future-ready-strategy v5.2 — 3장 버튼 · 노트 50초' },
+    ],
+  },
+  // ── 2026-10-14 ────────────────────────────────────────────────────────────
+  {
+    date: '2026-10-14',
+    type: 'build',
+    version: 'v2.49.16',
+    title: '발표자료 탭에 「FDP가 뭐야?」 30초 영상 추가 + SSD Future-Ready 덱 3장에 영상 버튼 (덱 v5.1)',
+    summary:
+      'FDP가 WAF를 줄이는 원리를 30초에 보여 주는 설명 영상(여성 내레이션 · 자막)을 발표자료 탭 영상 카드로 추가(장 6개 · 딥링크 #/presentations/fdp-explainer). ' +
+      '고객 협력 전략 덱 3장 ① 머리글 옆에 「▶ 30초 영상 · FDP 원리」 버튼을 달아 클릭하면 이 영상으로 바로 간다. 패치 v2.49.16.',
+    tags: ['발표자료', '영상', 'FDP', 'WAF', 'KV 캐시', '덱'],
+    items: [
+      { label: '영상', detail: 'fdp-explainer.mp4 30초 · 개념(쓰기 = 페이지 · 지우기 = 블록 → 섞인 블록 GC 복사 → 세션별 RU) → 시뮬레이션 WAF 3.62 · 1.71 · 1.09(단순화 모델)' },
+      { label: '덱', detail: 'ssd-future-ready-strategy v5.1 — 3장 영상 버튼 · 노트 한 문장' },
+      { label: '플레이어', detail: '영상별 소리 안내(내레이션만 / 내레이션 · 배경음악)' },
+    ],
+    links: [{ label: '영상 생성기', href: 'https://github.com/k31001/action-learning/tree/main/outputs/motion/fdp-explainer' }],
+  },
+  // ── 2026-10-13 (정기 재평가) ─────────────────────────────────────────────────
+  {
+    date: '2026-10-13',
+    type: 'assessment',
+    version: 'v2.49.15',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + 삼성 HBM4 가격 HBM3E 3배·2027 CapEx 컨센서스 상향·Nvidia/Oracle CDS tell·EWI·트리거 반영',
+    summary:
+      '직전 10-06 재평가 이후 git log 커밋(v2.46.65~v2.49.14)은 전부 발표자료 덱(Fab 통합 운영 1장 시안·3-C 전략 한 장 시안·고객 협력 전략 SSD Future-Ready 덱 v4.5~v5.0)·모션(「네 번의 겨울」 영상 v2.1~v2.6)·발표 디자인 시스템 v2.2·ingest 1건(TrendForce 1Q20 NAND 순위 — 2020 과거 데이터, 모션 영상 보강용) = 발표·덱·모션·제품믹스 층으로 git log 경로의 신규 실현 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. 이번 사이클 갱신은 EWI 웹 리서치 in-window 신호 기반이며 방법론상 포지션 맵·상대 확률을 움직이지 않는다. ' +
+      'DF1(수요) 정점 재확인: 삼성 HBM4 가격 HBM3E 3배 초과(Gb당 중고가 $4대·2027 계약 바닥 $4.50/Gb·메모리 2027까지 타이트·삼성 2026 HBM 캐파 완판)·Q4 2026 메모리 계약가 범용 DRAM +10~15%·NAND +15~20%(10-06 대비 무변화)·2027 CapEx 컨센서스 추가 상향(Goldman ~$1.2T=2026 ~$800B 대비 +54%·S&P $1.3T·UBS 2026 $1.009T→2028 $1.619T·"하이퍼스케일러 클라우드 매출 102%를 CapEx로"·6사 중 2027 양 FCF는 MS 1곳)·GPU 임대가 firming(H100 ~$1.70→~$2.35/h 반등·붕괴 없음). 이미 정점(8.5)이라 신규 상방 레그가 아닌 정점 재확인. ' +
+      '후기순환 조달·신용 tell 심화(수요 붕괴 아님): OpenAI–Nvidia–Oracle 상호 약정 $1조~$1.5조·Nvidia 5년 CDS 최근 2개월 약 2배 상승(Michael Burry 재경고)·Oracle 총부채 $130B 초과·5년 CDS +~310%·신규 리스 약정 $248B → CapEx 상향·재고 없음이라 조달 구조 경보로 EWI 감시 강화, 축 무이동. ' +
+      'DF2(디커플링) 관리된 공존 재확인: MATCH 하원 외교위 통과 후 위원회·본회의 상정 단계 유지(본회의 표결 없음·하원 300표+ 미충족)·행정부 완화(1월 완성칩) vs 의회 강화(MATCH)의 양갈래·베이징 국산 장비 50% 의무화·신규 통제 없음. 다음 분기점 APEC 11월·G20 12월. 다음 DF1 확인점 = 빅테크 4사 Q3 2026 실적(10월 말·이번 창 미실현). 패치 v2.49.15.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지', '삼성 HBM4', '2027 CapEx', 'Goldman', 'Nvidia CDS', 'Oracle', 'MATCH'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5 (축 무이동)', detail: '10-06 이후 git log 커밋(v2.46.65~v2.49.14)은 전부 발표·덱·모션·제품믹스 층 = git log 경로 신규 실현 외부 거시 사실 0건. DF1 in-window 신호는 전부 정점 재확인(삼성 HBM4 가격 HBM3E 3배·2026 캐파 완판·Q4 메모리 +10~20%·2027 CapEx $1.0~1.3T 추가 상향·GPU 임대가 firming). DF2: MATCH 본회의 미통과·행정부 완화 vs 의회 강화 양갈래·신규 통제 없음 → 관리된 공존 재확인. 다음 DF1 확인점 빅테크 Q3 실적(10월 말·미실현)' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '삼성 HBM4 가격 급등·2027 CapEx 상향은 B 락인 축 재확인이지 A↔B 재배분 요인 아님. 후기순환 조달·신용 tell(상호 약정 $1조~$1.5조·Nvidia 5년 CDS 2개월 2배·Oracle 5년 CDS +310%·Michael Burry 재경고)은 수요 붕괴(D 재배분)가 아닌 조달 구조 경보(CapEx 상향·재고 없음)라 상대 확률 무영향. DF2 현상유지라 공존 심화(A→B)도 디커플링(B→A)도 미실행. 삼성 HBM4 볼륨 발주 미전환 = B 시간 리스크 지속' },
+      { label: '트리거 갱신 — 발동 0건', detail: 'match_act_passed 미발동(위원회·본회의 상정 단계·하원 300표+ 미충족·행정부 완화 vs 의회 강화 양갈래)·samsung_hbm4_nvidia_confirmed 미충족(16-Hi Q4 요청·구체 계약 미체결·유상 평가 단계·연말 시간 압박)·us_china_semiconductor_deal·apple_cxmt_approved·enterprise_ai_roi_proven 모두 미충족' },
+      { label: 'EWI 갱신 — DF1 정점·조달/신용 축(실측)', detail: 'bigtech_capex_growth 10-13 데이터포인트 추가(값 82 무변화·2027 Goldman ~$1.2T/S&P $1.3T/UBS 상향·"클라우드 매출 102% CapEx"·6사 중 양 FCF MS 1곳)·ai_dc_credit_spread(값 40 무변화·Nvidia 5년 CDS 2개월 2배·Oracle 5년 CDS +310%·상호 약정 $1조~$1.5조, 광의 HY 스프레드 자체는 미확대라 미발동)·gpu_rental_price_trend·gpu_rental_h100_usd(10-13 firming 스냅샷 H100 ~$1.70~2.35/h, 붕괴 없음)' },
+      { label: '위키·원장 동기화', detail: 'sources/articles/macro-reassessment-signals-2026-10-13.md 신설(in-window 신호 원장·git log 분석 포함)·wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치에 10-13 bullet 추가·wiki/scenarios/scenario-matrix.md 확률표에 [2026-10-13 재평가] 유지 note 추가. dashboard scenarioPlanning(DF1·DF2·A·B 코멘트)·indicators(INITIAL_QUADRANT_POSITIONS current·확률 코멘트·EWI·트리거) 미러' },
+    ],
+    links: [
+      { label: 'sources/articles/macro-reassessment-signals-2026-10-13.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/macro-reassessment-signals-2026-10-13.md' },
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
+  {
+    date: '2026-10-13',
+    type: 'build',
+    version: 'v2.49.14',
+    title: '발표자료 탭: 3-C 전략 한 장 시안 6종 추가',
+    summary: '「불확실성에 대응하는 전체 최적화 체계」 한 장을 도해형 · 아이콘 키워드형 · 기둥 구조형 세 가지로 그리고, 단색(Samsung Blue)과 3-C 열별 컬러(파랑 · 청록 · 주황) 두 벌로 만든 선택용 덱을 추가.',
+    tags: ['발표자료'],
+    items: [
+      { label: '덱', detail: 'uncertainty-3c-strategy-options v1.3, 6장(1~3 단색 · 4~6 컬러)' },
+      { label: '이미지', detail: '전략 1 Cu/SiO2 하이브리드 본딩 단면 SEM(Materials 2022, CC BY 4.0) · 전략 2 삼성 FMS 2026 zHBM 전시 사진 · 아이콘 Tabler(MIT)' },
+    ],
+    links: [{ label: 'Hybrid bonding SEM 원문 (CC BY 4.0)', href: 'https://www.mdpi.com/1996-1944/15/5/1888' }],
+  },
+  {
+    date: '2026-10-13',
+    type: 'build',
+    version: 'v2.49.13',
+    title: '발표자료 추가: Fab 통합 운영 Common Platform 1장 시안 6종',
+    summary: 'DRAM/NAND Fab 통합 운영 1장을 건축형(지붕 · 기둥 · Bonding 기초 · 조직 Bonding) 하나로 정하고, 기둥 그림 스타일 3종(아이소메트릭 · 메커니즘 · Fab 도면)을 단일 Blue와 다색 두 가지로 만들어 발표자료 탭에 올림.',
+    tags: ['발표자료'],
+    items: [
+      { label: '덱', detail: 'fab-common-platform-options.pptx v2.1 · 6장(시안 1~3 단일 Blue, 4~6 다색)' },
+      { label: '다색 의미', detail: 'DRAM = Blue · NAND = Teal · 효과 ① Blue ② Teal ③ Purple · 개선 · 운영 = Amber' },
+    ],
+    links: [],
+  },
+  {
+    date: '2026-10-13',
+    type: 'build',
+    version: 'v2.49.12',
+    title: '「네 번의 겨울」 영상 v2.6: ’19 삼성 NAND 점유율 33.3% 보강 · 교훈 장면 메시지만',
+    summary: '’19 장면에 TrendForce 1Q20 기준 삼성 점유율 DRAM 44.1% · NAND 33.3%(모두 1위)를 함께 보여 주고, 교훈 장면의 세부 줄을 빼 메시지 한 줄만 남김.',
+    tags: ['발표자료', '영상', 'TrendForce'],
+    items: [{ label: '소스', detail: 'trendforce-1q20-nand-revenue-ranking-2026-10-13.md (원문 표 확인)' }, { label: '영상', detail: 'four-winters.mp4 115.8초 · 장 시각 갱신' }],
+    links: [{ label: 'TrendForce 1Q20 NAND 순위', href: 'https://www.trendforce.com/presscenter/news/20200525-10332.html' }],
+  },
+  {
     date: '2026-10-12',
     type: 'build',
     version: 'v2.49.11',

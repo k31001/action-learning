@@ -2867,6 +2867,139 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 최신 반영: 1장 추론 비중 TechInsights · 클릭 묶음, 2장 채도 = 협력 깊이 · 세 기술 강조, 3장 클릭 한 번 확장, 4장 역량 = 추론 스택 6층 · 수명 정보 경로(토큰당 비용 · GPU 가동률 · 첫 90일 목록 삭제)
 - 렌더 QA PASS. 아웃라인 v5.0 · 보고서 · index 갱신. 대시보드 사본 · 웹 보기, 패치 v2.49.11(origin/main의 v2.49.9 · v2.49.10 「네 번의 겨울」 작업과 merge 후 번호 재배정) + updates
 
+## [2026-10-13] ingest+build | TrendForce 1Q20 NAND 순위 수집 · 「네 번의 겨울」 v2.6 (dashboard v2.49.12)
+- 사용자 요청: ’19 장면에 삼성 NAND 점유율 보강. TrendForce 1Q20 브랜드 NAND 매출 순위(2020-05-25)를 원문 표로 확인했다. 삼성 33.3%(1위, $4,501M), KIOXIA 19.0%, WDC 15.3%, Micron 11.2%, SK hynix 10.7%, Intel 9.9%
+- sources/articles/trendforce-1q20-nand-revenue-ranking-2026-10-13.md 를 신규 저장. wiki/downturn/downturn-history.md 2019 결과에 NAND 33.3% 를 추가하고 index.md 를 갱신했다
+- 영상: ’19 화면에 DRAM 44.1% · NAND 33.3%(모두 1위)를 표시하고, 대사 d3 를 재합성·검증했다. 교훈 장면의 「투자한 것 · 놓친 것」 세부 줄은 빼고 메시지만 남겼다(사용자 지시)
+- 115.8초. 대시보드 영상 사본·장 시각·길이를 갱신, v2.49.12, npm run build 통과
+
+## [2026-10-13] build | Fab 통합 운영 Common Platform 1장 시안 3종
+- 사용자 요청 1장 슬라이드 「DRAM/NAND Fab 통합 운영: Bonding 시대에 맞는 Common Platform 구성」을 samsung-memory-ppt-design-skill v2.2로 서로 다른 시각 언어 3종(A 평면도형 · B 차트형 · C 건축형)으로 만들었다
+- 기대 효과 3개(공간 효율성 · 시황 변화 대응력 · 설비 통일성·선단화) 60% + 운영 제언(반도체연구소 / MTC 산하 메모리 BEOL 통합조직) 40% 구성. 차트는 수치 없는 개념도
+- 가정 기반의 기획 장표라 sources·wiki에는 넣지 않았다(위키 근거 체인 밖). 대시보드 발표자료 탭 동기화도 시안 확정 전이라 건너뛰었다
+- 산출물: generate_fab_common_platform_pptx.py, fab-common-platform-options.pptx(+미리보기 PDF), fab-common-platform-outline.md. qa_audit PASS(최소 pt · em-dash)
+
+## [2026-10-13] build | Fab 통합 운영 Common Platform 1장 시안 v2.0 (건축형 3종)
+- 사용자 피드백: v1.0 시안 C(건축형)의 형식·그림 크기가 가장 좋지만 그림이 단조롭다 → v1.0 시안 3장을 모두 지우고 새 3장으로 교체
+- 세 장 모두 지붕(결론) · 기둥(그림 + 항목 벽돌) · Bonding 기초 · 조직 Bonding 형식. 기둥 그림을 5.30 x 1.80in로 키우고 스타일만 달리했다: 1 아이소메트릭 · 2 메커니즘(와플 · 수요 곡선 · 막대) · 3 Fab 도면(OHT · Lot 흐름 · 모델 매트릭스)
+- 그림 생성기 generate_fab_common_platform_figs.py 신설(matplotlib, 9장), 슬라이드 생성기 v2.0으로 재작성. 통합조직에 기능 3개(표준 Layout · 설비 Pool · 통합 구매) 표기
+- qa_audit PASS. 위키 · 대시보드는 v1.0과 같은 이유로 건너뜀
+
+## [2026-10-13] build | Fab 통합 운영 1장 시안 v2.1: 다색 3장 추가 · 발표자료 탭 등록 (dashboard v2.49.13)
+- 사용자 요청: 색을 더 다양하게 쓴 버전 3장 추가 → 시안 4~6(아이소메트릭 · 메커니즘 · Fab 도면 컬러). 단일 액센트 규칙은 이 3장에서만 해제
+- 색 의미: DRAM = Blue · NAND = Teal · 통합 후 같은 색 = 같은 모델 · 공용 모델 = Purple · 개선 · 운영 = Amber · 효과 ① Blue ② Teal ③ Purple · 지붕 · 기초 = Navy
+- 그림 생성기에 MONO / COLOR 테마(단색 그림 9장은 픽셀 단위로 기존과 동일 확인), 슬라이드 생성기에 MONO_T / COLOR_T 테마
+- 대시보드 발표자료 탭에 fab-common-platform-options 등록(sync-presentations · 웹 보기 이미지 6장), updates.js 항목, v2.49.13(패치: 데이터 추가)
+## [2026-10-13] build | 3-C 전략 한 장 시안 3종: 불확실성에 대응하는 전체 최적화 체계
+- 사용자 요청: 제목 "불확실성에 대응하는 전체 최적화 체계", 행 = 전략 3개 · 열 = 3-C(C1 Convertibility · C2 Continuity · C3 Co-Creation) 표 레이아웃, 전략 · 3-C 아이콘, 글은 짧게 · 핵심 개념은 시각 요소로, 시각화 옵션 3장으로 선택
+- 디자인 스킬 v2.2(11절 시각 우선) 적용. 시안 A 도해형 매트릭스(칸 9개 미니 도해) · B 아이콘 키워드형(불확실성 원뿔 개념도 → 삼각 체계) · C 기둥 구조형(토대 = 수요 예측)
+- 아이콘: Tabler Icons(MIT) 16종을 `render_parts/render_icons.mjs`(신규, headless Chromium)로 Blue · 흰색 · 그레이 PNG 생성 → `assets/icons/`. 부품은 기존 3D 렌더 재사용
+- 전략 체계 개념도라 수치 주장 없음(출처 줄 명시), 고객 · 가속기는 A · B · C로만 표기. 렌더 QA · qa_audit PASS
+- 대시보드 발표자료 탭 등록은 건너뜀: 사용자가 시안을 고르기 전 선택용 초안이라, 확정 후 한 장으로 정리해 등록한다
+
+## [2026-10-13] build | 3-C 전략 시안 v1.1: 전략 1 본딩 사진 · 전략 2 3D DRAM 이미지
+- 사용자 지시: 전략 1은 반도체 패키지 본딩 기술 관련 사진, 전략 2는 3D DRAM 사진
+- 전략 1: 삼성반도체 뉴스룸 FMS 2026 기사 사진에서 V10 Bonding V-NAND 적층 모형을 잘라 `assets/photos/bonding.jpg`(출처는 photos/README)
+- 전략 2: 3D DRAM은 개발 단계라 공개 실물 사진이 없음(삼성 Memcon 2024 · ISSCC 2026 개념도만 공개). `render_parts`에 `dram3d` 3D 렌더 추가(셀 층 수평 적층 · 수직 비트라인 · 계단 접점 · Peri 다이 본딩), 출처 줄에 "3D 렌더(개념)"
+- 세 시안 모두 반영(시안 B도 전략 아이콘 → 이미지). 렌더 QA · qa_audit PASS. 기획서 v1.1 · index 갱신
+
+## [2026-10-13] build | 3-C 전략 시안 v1.2: 전략 1 본딩 단면 SEM · 전략 2 삼성 zHBM 사진
+- 사용자 지시: 3D DRAM은 삼성 zHBM 사진이 더 정확, 본딩은 NAND에서 주로 쓰는 본딩 기술의 실사 또는 현미경 화면
+- 전략 1: 웨이퍼 간 Cu/SiO2 하이브리드 본딩 단면 SEM(Hsu 외, Materials 2022, 15(5) 1888, 그림 6(b), CC BY 4.0). 접합부만 잘라 원 그림 라벨을 지우고 대비 조정, 저작자 표시는 출처 줄 · 노트 · photos/README
+- 전략 2: 삼성반도체 뉴스룸 FMS 2026 기사의 zHBM 전시 모형 사진을 잘라 씀
+- v1.1 이미지(`bonding.jpg` · `render_dram3d.png`) 삭제. 시안 A 사진 아래 이름 16pt. 렌더 QA · qa_audit PASS, 기획서 v1.2 · index 갱신
+
+## [2026-10-13] build | 3-C 전략 시안 v1.3: 컬러 버전 3장 추가 · 대시보드 발표자료 탭 등록 (dashboard v2.49.13)
+- 사용자 지시: 색감을 더 다양하게 쓴 버전으로 슬라이드 세 장 추가, 메인 푸시, 대시보드 발표자료에 추가
+- 4~6장 = 시안 A · B · C 컬러 버전: 3-C 열마다 색(C1 파랑 · C2 청록 · C3 주황), 전략 행 중립 슬레이트, 지붕 · 결론 띠 남색 + 세 동사만 열 색. 단색 1~3장은 그대로(스킬 단일 액센트 예외는 컬러 장만, 기획서에 기록)
+- 생성기를 테마(MONO · COLOR) + build_a/b/c로 정리. 아이콘 16종을 청록 · 주황으로 추가 렌더. 렌더 QA · qa_audit PASS(6장)
+- 대시보드: presentations.js 등록 · sync-presentations · 웹 보기 6장 렌더, updates 항목, v2.49.12 → v2.49.13(패치), npm run build 통과, 발표자료 탭 화면 확인
+
+## [2026-10-13] build | merge: origin/main(Fab 통합 운영 시안 v2.1, dashboard v2.49.13) 반영, 3-C 시안 대시보드 번호 v2.49.14로 재배정
+- 메인에 먼저 올라온 Fab 통합 운영 1장 시안 작업과 병합. 충돌(.gitignore 예외 · presentations.js · presentationPreviews.js · updates.js · log.md)은 양쪽 항목을 모두 살림(발표자료 · 업데이트 목록은 3-C 시안을 맨 위에)
+- 같은 번호 v2.49.13을 피해 3-C 시안 발표자료 탭 등록을 v2.49.14로 재배정(version.js · updates)
+
+## [2026-10-14] build | 「FDP가 뭐야?」 30초 설명 영상 (여성 내레이션 · KV 캐시 오프로딩 시뮬레이션)
+- 사용자 지시: 기존 KV_Offload_16sess_Light_30s 영상을 FDP 설명용으로 업그레이드 — 앞부분 개념, 뒷부분 시뮬레이션 결과, 여성 성우 내레이션, 30초 유지
+- `outputs/motion/fdp-explainer/`: `index.html`(캔버스 프레임 결정적 렌더) · `sim.js`(FTL 시뮬레이터) · `narration.py`(Edge TTS ko-KR-SunHiNeural → `narration.mp3` · `cues.js`) · `render.mjs`(Playwright + ffmpeg → 1080p60 mp4, 미커밋)
+- 구성: FDP 정의 → 쓰기=페이지·지우기=블록 → FDP 없음(세션 섞인 블록 GC 복사, WAF 1.16 예시) vs FDP(세션별 RU 통째 소거, 1.00) → 시뮬레이션 3구성 → 정상 상태 WAF 막대 + "같은 수명은 같은 블록에"
+- 시뮬레이션은 새 모델(⚠️ 실측 아님): 160블록×16페이지, KV 티어 2,350페이지(92%), 세션 16개·길이 30~300, LRU 해제(멀티턴 재사용 여유), Greedy GC. 정상 상태 WAF No FDP 3.62 · 8 RUH 1.71 · 16 RUH 1.09 (원본 영상 4.18/1.82/1.14와 모델이 달라 수치가 다름 — 80블록×32페이지에서는 16 RUH 열린 RU가 여유 공간을 잠식해 GC 교착)
+- 위키·대시보드 영향 없음(영상 산출물만 추가, 수치는 위키 인용 대상이 아닌 예시 모델)
+
+## [2026-10-14] build | 발표자료 탭에 FDP 30초 영상 · 고객 협력 전략 덱 3장 영상 버튼 (덱 v5.1, dashboard v2.49.16)
+- 사용자 지시: 대시보드 발표자료 메뉴에 「FDP가 뭐야?」 영상 추가, ssd-future-ready-strategy.pptx 적당한 슬라이드에 영상으로 가는 버튼(30초 영상임이 드러나게)
+- 대시보드: `presentations.js` VIDEOS에 fdp-explainer(장 6개 · 0:30 · 소리 = 내레이션) 추가, `sync-presentations.mjs`로 웹 인코딩 사본 `public/videos/fdp-explainer.mp4`(6.6MB) + 포스터. 플레이어 소리 안내를 영상별(`sound`)로
+- 덱 v5.1: 3장 ① "GC를 줄여 예측 가능한 QoS로" 머리글 오른쪽에 「▶ 30초 영상 · FDP 원리」 → https://action-learning.vercel.app/#/presentations/fdp-explainer/1, 노트 한 문장. 다른 장 텍스트 · 노트 무변경(python-pptx 대조), 웹 보기 이미지는 3장만 갱신(fonts-nanum 설치 후 렌더)
+- version.js v2.49.15 → v2.49.16(패치), updates 항목, outline 변경표
+
+## [2026-10-14] build | 「FDP가 뭐야?」 영상 30 → 50초 · "와프" 발음 (영상 v1.1, 덱 v5.2, dashboard v2.49.17)
+- 사용자 지시: WAF를 "와프"로 읽기, 10~20초 늘려 초반 설명과 결론 정리에 시간 확보, 화면이 너무 빨리 지나감
+- 내레이션 7 → 11개 대사(정의 · 배치 힌트 분리, FDP 없음 장면을 섞임 → 옮김 → 와프 3문장으로, 결론에 "복사 97% 사라짐" 추가), 말 속도 +22% → +10%, 영상 길이 = 마지막 대사 + 여운(cues.js `DURATION`, 50.0초)
+- 화면: 타이틀 5초 유지, 패킷 · 페이지 · GC 복사 애니메이션 속도 약 0.6배, 결과 화면 10초(감소율 −97% 강조 상자 → 맺음말). 자막은 WAF 표기 + "(와프)"
+- 대시보드 영상 카드 50초 · 장 7개 · 포스터 갱신, 덱 3장 버튼 「▶ 50초 영상 · FDP 원리」 · 노트, 웹 보기 3장만 갱신
+
+## [2026-10-14] build | 「FDP가 뭐야?」 영상 1분(58초) — WAF 정의 · DWPD 개념 추가 (영상 v1.2, 덱 v5.3, dashboard v2.49.18)
+- 사용자 지시: 1분 이내로 WAF와 DWPD 개념도 살짝 설명
+- 내레이션: WAF 대사에 "낸드에 실제로 쓴 양을 호스트가 쓴 양으로 나눈 값" 추가, "복사 97% 사라짐" 대사를 DWPD 대사("와프가 줄면 낸드가 덜 닳아, 하루에 전체 용량을 몇 번 쓸 수 있는지, 디더블유피디가 약 3배")로 교체 → 58.0초
+- 화면: FDP 없음 패널 WAF 수식을 "NAND에 쓴 양 ÷ 호스트가 쓴 양"으로 바꾸고 대사에 맞춰 강조 상자. 결과 장면 감소율 줄 → 막대 옆 (−73% · −97%), 그 자리에 DWPD 정의 + 상대 DWPD 막대(×1.0 · ×2.1 · ×3.3 = WAF 비, 같은 NAND · OP 가정) + "DWPD ≈ 3배"
+- 대시보드 카드 「1분 영상」 · 0:58 · 장 9개 · 포스터, 덱 3장 버튼 「▶ 1분 영상 · FDP 원리」 · 노트, 웹 보기 3장만 갱신
+
+## [2026-10-14] build | 「FDP가 뭐야?」 영상 v1.3 — WAF 시각자료 · 결론 문구 (dashboard v2.49.19)
+- 사용자 지시: 페이지/블록 설명 제거 → 대신 WAF 시각자료, 자막 "(와프)" 삭제, "섞여 있다가"와 "한 세션이" 사이 쉼, 결론을 "같은 시점에 지워질 데이터는 같은 블록에"처럼 구체적으로
+- 내레이션: 페이지/블록 대사 삭제, 섞임 대사를 두 클립으로 나눠 0.45초 간격, 결론 대사 교체 → 55.0초
+- 화면: 장면 2(페이지 · 블록) 삭제. FDP 없음 장면 오른쪽 빈 패널에 WAF 시각자료 — 호스트가 쓴 양 32칸 → NAND에 실제로 쓴 양 32 + GC 복사 5칸(빨간 테두리 · "GC 복사 +5") → 정의 대사에 맞춰 "WAF = NAND에 쓴 양 ÷ 호스트가 쓴 양 = 37 ÷ 32 = 1.16". 머리글 "옮긴 만큼 NAND에 더 쓴다 — 이것이 쓰기 증폭(WAF)". 세션 B 해제는 "한 세션이 끝나면" 대사에 맞춤
+- 덱 버튼은 「1분 영상」 그대로(55초)라 덱 재생성 없음
+
+## [2026-10-14] ingest+build | DRAM 현실 파악 1장 시안 3종: Shrink 장벽 · 후발 추격 / AI 추론의 메모리 병목 (dashboard v2.49.20)
+- 사용자 요청: "DRAM 기술 경쟁력 제고를 위한 차별화 준비" 중 현실 파악 1장. 왼쪽 = Tech node shrink 장벽과 후발 주자의 추격(2000~2030 노드 추이, 2012~13년 이후 기울기 둔화, 2026 삼성 · 하이닉스 · 마이크론 · CXMT 위치를 CI로), 오른쪽 = AI 알고리즘과 하드웨어의 선순환(KV/토큰 × 월간 토큰 → 총수요, 알고리즘 절감 vs 공급 한계). 시각화 3안, 블루 외 다색 허용
+- ingest: sources/articles/dram-shrink-wall-and-ai-memory-bottleneck-2026-10.md 신규(노드 추이 · 2026 위치 · KV 산식 재인용 · TrendForce 2026-07 공급 충족률). wiki/concepts/dram-technology.md에 [Update 2026-10-14](연 -15% → -6%, 새 노드 1년 → 1.6년, 2026 각 사 노드, CXMT 캐파 93%)
+- 산출물: generate_dram_reality_charts.py(차트 10종) · generate_dram_reality_pptx.py · dram-reality-options.pptx(+미리보기 PDF) · dram-reality-outline.md. 로고 cxmt.png 추가(cxmt.com 공식 SVG 렌더)
+- 시안 A 흐름형 · B 선순환형 · C 실물형. 렌더 QA(NanumGothic → PDF → PNG) 3회 수정, qa_audit PASS(최소 pt · em-dash)
+- 대시보드: 지식 그래프 재생성(dram-technology 인용 수 변화), updates.js 항목, v2.49.20(패치), npm run build 통과
+- 건너뜀: steep · driving-forces · scenarios · strategies 변화 없음 → storyline · 시나리오 데이터 미변경. 발표자료 탭 등록은 시안 확정 전이라 보류(기존 시안 덱 관례)
+
+## [2026-10-14] build | 발표자료 탭에 「DRAM 현실 파악」 시안 3종 등록 (dashboard v2.49.21)
+- 사용자 지시: 시안 A · B · C 모두 유지하고 대시보드 발표자료에 추가
+- presentations.js에 dram-reality-options 등록(장 3개: A 흐름형 · B 선순환형 · C 실물형), sync-presentations로 배포 사본, render-presentation-previews로 웹 보기 이미지 3장(presentationPreviews.js 갱신)
+- updates.js 항목, version.js v2.49.20 → v2.49.21(패치: 데이터 추가), outline · index 상태 문구 갱신. 덱 내용 무변경
+
+## [2026-10-14] build | 「DRAM 현실 파악」 간결형 시안 3장 추가 (덱 v1.1, dashboard v2.49.22)
+- 사용자 지시: 각 시안에서 텍스트와 부수 내용을 줄이고 핵심 위주로 시각화를 강화한 버전 3장을 기존 슬라이드에 추가하고 push
+- 4~6장 A2 · B2 · C2 추가(1~3장 무변경, 장당 글자 약 870 → 440자). 왼쪽 노드 추이를 절반 영역 전체로 키우고 로고를 마커 옆에 직접, 기울기 숫자 34pt. 오른쪽은 시안별 핵심 그림 2~3개(드라이버 · 산술식 · ÷32 vs ×330 · 공급 2028 / 선순환 고리 · 가속기 수 / HBM 넘침 막대 · 계층 이미지)
+- 차트 7종 추가(node_simple_log · node_simple_linear · node_simple_cadence · drivers_big · tug2 · tug2_small · tank_big). ÷32는 70B 같은 모델 MHA BF16 → GQA FP4로 정의(이전 노트의 MHA 대비 1/37 = 모델 간 비교라 간결형에서는 쓰지 않음)
+- 렌더 QA 3회, qa_audit PASS. 대시보드 발표자료 탭 장 6개 · 웹 보기 이미지 6장, updates.js, v2.49.22, npm run build 통과
+
+## [2026-10-15] build | Fab 통합 운영 덱 v2.2: 시안 6 그림을 편집 가능한 도형으로 (dashboard v2.49.23)
+- 사용자 요청: 시안 6(Fab 도면 컬러) 그림을 도형 오브젝트로 바꿔 직접 고쳐 쓰기
+- fab_native_figs.py 신설: c3_space · c3_agility · c3_unif와 같은 그림을 python-pptx 기본 도형 그룹으로(그룹 3개, 도형 39 · 45 · 66개). 생성기에 NATIVE_STYLES = {"c3"}
+- p:style(그림자) 제거를 그룹 안 도형까지 확장. 렌더 QA로 PNG판과 같은 모양 확인, qa_audit PASS
+- 대시보드 발표자료 사본 · 웹 보기 이미지 갱신, presentations.js v2.2, updates.js 항목, v2.49.23
+
+## [2026-10-15] build | Fab 통합 운영 덱 v2.3: 모든 그림을 편집 가능한 도형으로 (dashboard v2.49.24)
+- 사용자 요청: 가능하면 모든 그림을 오브젝트화 → 시안 1~6 기둥 그림 18개를 모두 PowerPoint 도형 그룹으로(그림 이미지 0개)
+- fab_native_figs.py v2: PNG 생성기와 같은 좌표 · MONO / COLOR 테마. 아이소메트릭 블록 = 자유형 면 3개 하위 그룹, 수요 곡선 · 누적 면적 = 자유형, 와플 · 웨이퍼 = 하위 그룹
+- 생성기 NATIVE_FIGS(기본 1, 0이면 PNG). 렌더 QA로 18개 모두 PNG판과 같은 모양 확인, qa_audit PASS
+- 대시보드 발표자료 사본 · 웹 보기 이미지 갱신, presentations.js v2.3, updates.js 항목, v2.49.24
+
+## [2026-10-15] build | 「고객 협력 전략」 덱 1~4장 발표 영상 — 대본 초안(컨펌 대기)
+- 사용자 요청: ssd-future-ready-strategy.pptx 1~4장을 슬라이드 그대로 쓰는 5분 발표 영상, 영상 제작 전 대본 먼저 컨펌
+- outputs/motion/ssd-future-ready-video: narration.py(대사 · 화면 효과 큐 · 발음 표기 단일 소스) → narration.mp3 · cues.js · script.md
+- 발표자 노트 1~4장 2,422자 → 대사 1,605자로 압축, 장 결론이 다음 장 질문으로 이어지게 연결(현황 → 추론 대응 → 차별화 · 포트폴리오 → 실행)
+- ko-KR-SunHiNeural 기본 속도(약 334음절/분) 합성 실측 5:08 (1장 75초 · 2장 60초 · 3장 83초 · 4장 82초)
+- 영상(mp4) 렌더는 대본 컨펌 후. 대시보드 변경 없음 → 버전 bump 생략
+
+## [2026-10-15] build | 「고객 협력 전략」 1~4장 발표 영상 v1 (5:08) — 대본 v2 · 화면 효과
+- 사용자 요청: 슬라이드를 그대로 읽는 느낌 없이 자연스럽게 이어지도록 대본 보강 → 컨펌 없이 영상 제작
+- 대본 v2: 장면마다 질문 → 답으로 잇는 발표체(HBM 교훈 → "지금 읽어야 할 수요는?" → 추론 → "쪼개 보면 결국 고객" → "세 기술은 무엇을 바꾸나" → "다만 조건이 하나" → 계약 · 역량 · 사람). 수치는 슬라이드 · 노트 범위 안
+- narration.py: 화면 효과 큐(카메라 · 강조 · 차례 강조 · 밑줄 · 클릭)를 대사와 한 곳에, edge-tts WordBoundary로 차례 강조를 단어 시각에 맞춤. +4% · 약 333음절/분, 실측 5:08
+- render_slides.py: 덱 1~4장 4K 렌더(클릭 그룹을 지운 사본 = 클릭 전), NanumGothic(fonts-nanum) 필요
+- index.html(캔버스 엔진) + render.mjs(로컬 HTTP + Playwright → 1080p30 mp4, 미커밋)
+- 대시보드 변경 없음 → 버전 bump 생략
+
+## [2026-10-15] build | 발표자료 탭에 「고객 협력 전략」 5분 발표 영상 추가 (dashboard v2.49.25)
+- 사용자 요청: 최종본(5:08)을 대시보드 발표자료에 추가
+- presentations.js VIDEOS 맨 앞에 ssd-future-ready-video(v1.0 · 5:08 · 장 14개 · 소리 = 내레이션), 웹 사본 public/videos/ssd-future-ready-video.mp4(crf 25 · 28.7MB) + 포스터(4초, 1장 제목 강조)
+- updates.js 항목, version.js v2.49.25(패치: 데이터 추가). npm run build 통과, 미리보기에서 플레이어 · 장 버튼 확인
 ## [2026-10-15] ingest | AI 추론 하위 수요별 비트 수요(EB) 조사
 - 사용자 질문: 덱 2장 추론 하위 수요(가중치 · RAG · KV 캐시 · 에이전트)별 2030 bit demand, 없으면 다른 시점 · 현재 비중
 - 새 원장 `sources/articles/inference-sub-demand-bit-demand-2026-10.md`(IB-01~10). Kioxia Investor Day 2026 · 2025 전략 설명회 PDF는 직접 확인(용도별 EB 분할 없음)
