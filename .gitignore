@@ -34,3 +34,4 @@ outputs/motion/**/*.mp4
 # FDP 설명 영상 렌더 산출물(render.mjs로 재생성)
 outputs/motion/fdp-explainer/fdp-explainer.mp4
 outputs/motion/fdp-explainer/stills/
+.venv-tts/

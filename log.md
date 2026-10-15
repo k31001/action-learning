@@ -2980,3 +2980,10 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - fab_native_figs.py v2: PNG 생성기와 같은 좌표 · MONO / COLOR 테마. 아이소메트릭 블록 = 자유형 면 3개 하위 그룹, 수요 곡선 · 누적 면적 = 자유형, 와플 · 웨이퍼 = 하위 그룹
 - 생성기 NATIVE_FIGS(기본 1, 0이면 PNG). 렌더 QA로 18개 모두 PNG판과 같은 모양 확인, qa_audit PASS
 - 대시보드 발표자료 사본 · 웹 보기 이미지 갱신, presentations.js v2.3, updates.js 항목, v2.49.24
+
+## [2026-10-15] build | 「고객 협력 전략」 덱 1~4장 발표 영상 — 대본 초안(컨펌 대기)
+- 사용자 요청: ssd-future-ready-strategy.pptx 1~4장을 슬라이드 그대로 쓰는 5분 발표 영상, 영상 제작 전 대본 먼저 컨펌
+- outputs/motion/ssd-future-ready-video: narration.py(대사 · 화면 효과 큐 · 발음 표기 단일 소스) → narration.mp3 · cues.js · script.md
+- 발표자 노트 1~4장 2,422자 → 대사 1,605자로 압축, 장 결론이 다음 장 질문으로 이어지게 연결(현황 → 추론 대응 → 차별화 · 포트폴리오 → 실행)
+- ko-KR-SunHiNeural 기본 속도(약 334음절/분) 합성 실측 5:08 (1장 75초 · 2장 60초 · 3장 83초 · 4장 82초)
+- 영상(mp4) 렌더는 대본 컨펌 후. 대시보드 변경 없음 → 버전 bump 생략
