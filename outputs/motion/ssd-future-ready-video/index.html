@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>고객 협력 전략 발표 영상</title>
+<!--
+  「불확실성이 높은 미래에 대응하기 위한 고객 협력 전략」 1~4장 발표 영상 — 캔버스 장면 엔진
+  입력: slides/s{n}{a|b}.jpg (render_slides.py, 클릭 후 a · 클릭 전 b) + cues.js (narration.py)
+  효과: 장 전환 크로스페이드 · 카메라 줌(view) · 스포트라이트(spot · seq) · 밑줄(under) · 클릭 전환(click)
+  미리보기: python3 -m http.server 로 이 폴더를 열고 index.html (#export 이면 자동 재생 없음, render.mjs가 seek)
+-->
+<style>
+  html, body { margin: 0; background: #000; }
+  canvas { display: block; width: 100vw; height: auto; max-height: 100vh; object-fit: contain; }
+</style>
+</head>
+<body>
+<canvas id="cv" width="1920" height="1080"></canvas>
+<script src="cues.js"></script>
+<script>
+const W = 1920, H = 1080, U = 1600, UH = 900, SRC = 3840 / U;   // 슬라이드 1600 × 900 단위 → 원본 이미지 px
+const ACCENT = '#E8590C';                                          // 덱의 클릭 강조색
+const DIM = 0.42, MAXZ = 1.55, PAD = 34;
+const CAM_DUR = 1.15, XFADE = 0.7, CLICK_DUR = 0.55, FADE = 0.35;
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+const off = document.createElement('canvas'); off.width = W; off.height = H;
+const octx = off.getContext('2d');
+
+const ease = x => x <= 0 ? 0 : x >= 1 ? 1 : x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+const FULL = { x: 0, y: 0, w: U };
+
+function viewFor(r) {                         // 영역을 16:9 카메라 창으로 (최대 MAXZ배)
+  const [x0, y0, x1, y1] = r;
+  let w = Math.max(x1 - x0 + 2 * PAD, (y1 - y0 + 2 * PAD) * 16 / 9, U / MAXZ);
+  w = Math.min(w, U);
+  const h = w * 9 / 16, cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  return { x: clamp(cx - w / 2, 0, U - w), y: clamp(cy - h / 2, 0, UH - h), w };
+}
+const lerpV = (a, b, k) => ({ x: a.x + (b.x - a.x) * k, y: a.y + (b.y - a.y) * k, w: a.w + (b.w - a.w) * k });
+
+// ── 타임라인 구성 ───────────────────────────────────────────────
+const CUES = window.CUES, DURATION = window.DURATION;
+const SLIDES = {};
+for (const s of [1, 2, 3, 4]) {
+  const cs = CUES.filter(c => c.slide === s);
+  SLIDES[s] = { cues: cs, first: cs[0].at, last: cs[cs.length - 1].end, cam: [], spots: [], unders: [], click: null };
+}
+for (const s of [1, 2, 3, 4]) {                // 장 시작 = 앞 장 마지막 대사 끝 + 카메라 복귀 후 크로스페이드
+  const S = SLIDES[s];
+  S.start = s === 1 ? 0 : SLIDES[s - 1].last + 0.55;
+}
+for (const s of [1, 2, 3, 4]) SLIDES[s].end = s < 4 ? SLIDES[s + 1].start + XFADE : DURATION;
+
+const regionsOf = (s, name) => name.split('+').map(n => {
+  const r = REGIONS[s][n]; if (!r) throw new Error(`영역 없음: ${s}장 ${n}`); return r;
+});
+
+for (const s of [1, 2, 3, 4]) {
+  const S = SLIDES[s], cs = S.cues;
+  cs.forEach((c, i) => {
+    const next = cs[i + 1], segEnd = next ? next.at - 0.2 : S.last + 0.35;
+    if (c.view) S.cam.push({ t: c.at - 0.35, v: c.view === 'full' ? FULL : viewFor(REGIONS[s][c.view]) });
+    if (c.click) S.click = c.at - 0.15;
+    if (c.spot) S.spots.push({ t0: c.at - 0.2, t1: segEnd, rects: c.spot.flatMap(n => regionsOf(s, n)) });
+    if (c.seq) c.seq.forEach(([t, n], k) => {
+      const t1 = k + 1 < c.seq.length ? c.seq[k + 1][0] - 0.12 : segEnd;
+      S.spots.push({ t0: t - 0.12, t1, rects: regionsOf(s, n) });
+    });
+    if (c.under) S.unders.push({ t0: c.at + 0.25, t1: segEnd, r: REGIONS[s][c.under] });
+  });
+  if (s < 4) S.cam.push({ t: S.last + 0.05, v: FULL });      // 장 끝: 전체 화면으로 복귀
+  // 이어지는 스포트라이트는 어둡게 깔린 막을 유지 (막의 등장 · 퇴장만 페이드)
+  S.groups = [];
+  for (const sp of S.spots) {
+    const g = S.groups[S.groups.length - 1];
+    if (g && sp.t0 - g.t1 < 0.3) g.t1 = Math.max(g.t1, sp.t1); else S.groups.push({ t0: sp.t0, t1: sp.t1 });
+  }
+}
+
+function camAt(S, t) {                          // 이동 중에 새 목표가 오면 그 순간 위치에서 이어 받는다
+  let from = FULL, to = FULL, t0 = -1e9;
+  for (const kf of S.cam) {
+    if (t < kf.t) break;
+    from = lerpV(from, to, ease((kf.t - t0) / CAM_DUR)); to = kf.v; t0 = kf.t;
+  }
+  return lerpV(from, to, ease((t - t0) / CAM_DUR));
+}
+const env = (t, t0, t1, f = FADE) => clamp(Math.min((t - t0) / f, (t1 - t) / f), 0, 1);
+
+const IMGS = {};
+function load(name) {
+  return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(IMGS[name] = im); im.onerror = rej; im.src = `slides/${name}.jpg`; });
+}
+
+function rr(c, x, y, w, h, r) { c.beginPath(); c.roundRect(x, y, w, h, r); }
+
+function drawSlide(s, t, alpha) {
+  const S = SLIDES[s], v = camAt(S, t), k = W / v.w;
+  const sx = v.x * SRC, sy = v.y * SRC, sw = v.w * SRC, sh = v.w * 9 / 16 * SRC;
+  ctx.globalAlpha = alpha;
+  const after = IMGS[`s${s}a`], before = IMGS[`s${s}b`];
+  if (S.click == null || !before) ctx.drawImage(after, sx, sy, sw, sh, 0, 0, W, H);
+  else {
+    const m = ease((t - S.click) / CLICK_DUR);
+    if (m < 1) ctx.drawImage(before, sx, sy, sw, sh, 0, 0, W, H);
+    if (m > 0) { ctx.globalAlpha = alpha * m; ctx.drawImage(after, sx, sy, sw, sh, 0, 0, W, H); }
+  }
+  const P = r => [(r[0] - 8 - v.x) * k, (r[1] - 8 - v.y) * k, (r[2] - r[0] + 16) * k, (r[3] - r[1] + 16) * k];
+
+  // 스포트라이트: 어두운 막 + 영역 구멍 + 주황 테두리
+  const g = S.groups.find(g => t > g.t0 && t < g.t1);
+  if (g) {
+    const veil = env(t, g.t0, g.t1);
+    octx.clearRect(0, 0, W, H);
+    octx.globalCompositeOperation = 'source-over'; octx.globalAlpha = 1;
+    octx.fillStyle = '#0d1530'; octx.fillRect(0, 0, W, H);
+    octx.globalCompositeOperation = 'destination-out';
+    const live = S.spots.filter(sp => t > sp.t0 && t < sp.t1);
+    for (const sp of live) {
+      octx.globalAlpha = env(t, sp.t0, sp.t1);
+      for (const r of sp.rects) { rr(octx, ...P(r), 12 * k / (W / U)); octx.fill(); }
+    }
+    ctx.globalAlpha = alpha * DIM * veil; ctx.drawImage(off, 0, 0);
+    for (const sp of live) {
+      ctx.globalAlpha = alpha * env(t, sp.t0, sp.t1);
+      ctx.strokeStyle = ACCENT; ctx.lineWidth = 4; ctx.shadowColor = 'rgba(232,89,12,.45)'; ctx.shadowBlur = 14;
+      for (const r of sp.rects) { rr(ctx, ...P(r), 12 * k / (W / U)); ctx.stroke(); }
+      ctx.shadowBlur = 0;
+    }
+  }
+  for (const u of S.unders) {                     // 밑줄: 왼쪽에서 오른쪽으로 그어짐
+    if (t < u.t0 || t > u.t1) continue;
+    const [x0, , x1, y1] = u.r, grow = ease((t - u.t0) / 0.6);
+    ctx.globalAlpha = alpha * env(t, u.t0 - 1, u.t1);
+    ctx.fillStyle = ACCENT;
+    ctx.fillRect((x0 - v.x) * k, (y1 + 3 - v.y) * k, (x1 - x0) * k * grow, 3.5 * k);
+  }
+  ctx.globalAlpha = 1;
+}
+
+function render(t) {
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  const live = [1, 2, 3, 4].filter(s => t >= SLIDES[s].start && t < SLIDES[s].end);
+  for (const s of live) {
+    const S = SLIDES[s], a = s > 1 ? clamp((t - S.start) / XFADE, 0, 1) : 1;
+    drawSlide(s, t, s === live[0] ? 1 : ease(a));
+  }
+  const fade = Math.min(clamp(t / 0.8, 0, 1), clamp((DURATION - t) / 1.2, 0, 1));   // 처음 · 끝 검은 화면
+  if (fade < 1) { ctx.fillStyle = `rgba(0,0,0,${1 - fade})`; ctx.fillRect(0, 0, W, H); }
+}
+
+const ready = Promise.all([1, 2, 3, 4].flatMap(s => [load(`s${s}a`), s < 4 ? load(`s${s}b`) : null]).filter(Boolean))
+  .then(() => render(0));
+window.__motion = { ready, duration: DURATION, seek: render };
+
+if (location.hash !== '#export') ready.then(() => {   // 미리보기: 내레이션과 함께 재생 (클릭으로 시작)
+  const audio = new Audio('narration.mp3');
+  cv.addEventListener('click', () => audio.paused ? audio.play() : audio.pause());
+  (function loop() { render(audio.currentTime); requestAnimationFrame(loop); })();
+});
+</script>
+</body>
+</html>
