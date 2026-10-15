@@ -17,6 +17,19 @@ export const UPDATES = [
   {
     date: '2026-10-15',
     type: 'build',
+    version: 'v2.49.25',
+    title: '발표자료 탭에 「고객 협력 전략」 5분 발표 영상 추가',
+    summary: 'ssd-future-ready-strategy 덱 1~4장을 슬라이드 그대로 쓰는 5:08 발표 영상. 슬라이드를 읽지 않고 질문 → 답으로 잇는 대본에, 카메라 줌 · 강조 · 덱 클릭 애니메이션을 내레이션 단어 시각에 맞춤.',
+    tags: ['발표자료', '영상'],
+    items: [
+      { label: '영상', detail: 'ssd-future-ready-video.mp4 v1.0 · 1080p · 5:08 · 장 14개 · 여성 내레이션(ko-KR-SunHiNeural)' },
+      { label: '소스', detail: 'outputs/motion/ssd-future-ready-video — narration.py(대본 · 효과 큐) · render_slides.py · index.html · render.mjs' },
+    ],
+    links: [],
+  },
+  {
+    date: '2026-10-15',
+    type: 'build',
     version: 'v2.49.24',
     title: 'Fab 통합 운영 덱 v2.3: 모든 그림을 편집 가능한 도형으로',
     summary: '시안 1~6의 기둥 그림 18개를 모두 PowerPoint 도형 그룹으로 바꿈. 아이소메트릭 블록 면과 수요 곡선은 자유형 다각형이라 꼭짓점까지 고칠 수 있음.',

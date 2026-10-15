@@ -133,6 +133,23 @@ export const PRESENTATIONS = [
 //   fdp-explainer는 outputs/motion/fdp-explainer/index.html 장면 경계(T, cues.js 기준)
 export const VIDEOS = [
   {
+    id: 'ssd-future-ready-video',
+    file: 'ssd-future-ready-video.mp4',
+    poster: 'ssd-future-ready-video.jpg',
+    source: 'outputs/motion/ssd-future-ready-video/ssd-future-ready-video.mp4',
+    posterAt: 4,
+    title: '고객 협력 전략 발표 — 덱 1~4장 5분 발표 영상',
+    version: 'v1.0',
+    date: '2026-10-15',
+    duration: '5:08',
+    summary: '「불확실성이 높은 미래에 대응하기 위한 고객 협력 전략」 덱 1~4장을 그대로 쓰는 발표 영상. HBM의 교훈 → 지금 읽어야 할 수요는 AI 추론(대역 · 꼬리 지연 · 내구, 비중 31 → 79%) → 추론 네 수요를 채우는 기술은 고객 협력이 필수 → 세 기술(FDP · Mixed Media · Large Mapping)이 GC를 줄여 WAF −68% · p99.9 −55%, 네 제품군 DWPD 확장 → 계약 · 역량 · 사람으로 고객과 함께 설계. 카메라 줌 · 강조 · 덱 클릭 애니메이션 재현, 여성 내레이션',
+    chapters: [['표지', 0], ['HBM 교훈', 9.2], ['응용별 요구', 25.2], ['AI 추론', 38.7], ['수요 비중', 59.4], ['추론 네 수요', 82], ['기술 · 협력', 99.7], ['차별화 변천', 135.3], ['GC · 지표', 149.3], ['포트폴리오', 185.8], ['실행 · 계약', 213.7], ['역량', 244.4], ['사람', 271.9], ['결론', 293.3]],
+    sound: '내레이션',
+    spec: `${REPO}/outputs/motion/ssd-future-ready-video/script.md`,
+    report: `${REPO}/outputs/report/ssd-future-ready-strategy-report.md`,
+    accent: '#1428A0',
+  },
+  {
     id: 'fdp-explainer',
     file: 'fdp-explainer.mp4',
     poster: 'fdp-explainer.jpg',

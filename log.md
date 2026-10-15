@@ -2995,3 +2995,8 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - render_slides.py: 덱 1~4장 4K 렌더(클릭 그룹을 지운 사본 = 클릭 전), NanumGothic(fonts-nanum) 필요
 - index.html(캔버스 엔진) + render.mjs(로컬 HTTP + Playwright → 1080p30 mp4, 미커밋)
 - 대시보드 변경 없음 → 버전 bump 생략
+
+## [2026-10-15] build | 발표자료 탭에 「고객 협력 전략」 5분 발표 영상 추가 (dashboard v2.49.25)
+- 사용자 요청: 최종본(5:08)을 대시보드 발표자료에 추가
+- presentations.js VIDEOS 맨 앞에 ssd-future-ready-video(v1.0 · 5:08 · 장 14개 · 소리 = 내레이션), 웹 사본 public/videos/ssd-future-ready-video.mp4(crf 25 · 28.7MB) + 포스터(4초, 1장 제목 강조)
+- updates.js 항목, version.js v2.49.25(패치: 데이터 추가). npm run build 통과, 미리보기에서 플레이어 · 장 버튼 확인
