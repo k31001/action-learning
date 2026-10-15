@@ -2866,3 +2866,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 8장 노트 전부 다시 씀: 12,550 → 4,651자(약 37%). 화면 순서대로 핵심 수치 1~2개, 클릭 시점 [클릭] 표시
 - 최신 반영: 1장 추론 비중 TechInsights · 클릭 묶음, 2장 채도 = 협력 깊이 · 세 기술 강조, 3장 클릭 한 번 확장, 4장 역량 = 추론 스택 6층 · 수명 정보 경로(토큰당 비용 · GPU 가동률 · 첫 90일 목록 삭제)
 - 렌더 QA PASS. 아웃라인 v5.0 · 보고서 · index 갱신. 대시보드 사본 · 웹 보기, 패치 v2.49.11(origin/main의 v2.49.9 · v2.49.10 「네 번의 겨울」 작업과 merge 후 번호 재배정) + updates
+
+## [2026-10-15] ingest | AI 추론 하위 수요별 비트 수요(EB) 조사
+- 사용자 질문: 덱 2장 추론 하위 수요(가중치 · RAG · KV 캐시 · 에이전트)별 2030 bit demand, 없으면 다른 시점 · 현재 비중
+- 새 원장 `sources/articles/inference-sub-demand-bit-demand-2026-10.md`(IB-01~10). Kioxia Investor Day 2026 · 2025 전략 설명회 PDF는 직접 확인(용도별 EB 분할 없음)
+- 결과: 네 하위 수요를 모두 나눈 공개 전망 없음. KV 캐시만 SanDisk 2030 420EB(AI DC 플래시 1.2ZB의 35%) · 2027 +75~100EB. 구조 대용치 Solidigm 1GW당 25EB(CMX 6.4 · DAS 6.1 · NAS 약 12.5EB)
+- 위키 `ai-inference-storage-requirements.md` §2.5 신설, index 갱신. 슬라이드 수정은 사용자 확인 후(지식 그래프 · 대시보드 재생성도 그때)

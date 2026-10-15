@@ -1,9 +1,10 @@
 ---
 type: concept
-last_reviewed: 2026-10-10
+last_reviewed: 2026-10-15
 sources:
   - sources/articles/ai-inference-ssd-requirements-samsung-lineup-2026-10.md
   - sources/articles/qlc-waf-qos-op-factcheck-2026-10.md
+  - sources/articles/inference-sub-demand-bit-demand-2026-10.md
 ---
 
 # AI 추론 스토리지 수요: 하위 수요 × SSD 요구 × 핵심 기술 × 고객 협력 (2026-10-10)
@@ -39,6 +40,22 @@ sources:
 | RAG · Vector DB | 4KB급 랜덤 읽기, 쿼리당 다회 | ○ | ● | | ● | ○ | DiskANN 10억 점 · 평균 3ms 미만(IR-A20), 쿼리 지연의 70~90%가 I/O(IR-A23) |
 | KV 캐시 오프로드 | 대블록 읽기 + 상시 쓰기 | ● | ● | ● | ○ | | IR-A30 · A31 · A37 · A40, PM9D3a FDP LMCache WAF 2.600 → 1.425 · 읽기 p90 −22%(IR-A53) |
 | 에이전트 메모리 | append 로그 · 스냅샷 쓰기 | | ○ | ○ | ● | ● | 호출당 입력 67,818 tok · 재사용 85.7%(DT-42), 재개 500ms 미만(DT-54) |
+
+## 2.5 하위 수요별 비트 수요(EB): 무엇이 공개돼 있나 (2026-10-15)
+
+> 사용자 질문(2026-10-15): 2장 추론 하위 수요별 2030년 bit demand, 없으면 다른 시점 · 현재 비중이라도.
+> 근거: [inference-sub-demand-bit-demand-2026-10.md](../../sources/articles/inference-sub-demand-bit-demand-2026-10.md)
+
+| 하위 수요 | 공개된 EB 전망 | 등급 |
+|---|---|---|
+| KV 캐시 오프로드 | 2027년 +75~100EB → 2028년 약 2배 → **2030년 420EB = AI DC 플래시 1.2ZB의 35%**(SanDisk, IB-01 · 02) | 🟡 |
+| RAG · 벡터 DB | 별도 전망 없음. Kioxia(TechInsights) · McKinsey는 추론 안에 합산(추론 CAGR 86%, 2030 추론 447EB), TrendForce는 북미 QLC 견인 요인으로 정성 언급 | ✅ · 🟡 |
+| 모델 가중치 | 별도 전망 없음(Kioxia가 "LLM fast loading" 용도로 나열만) | ✅ |
+| 에이전트 메모리 | 연 500~600EB 추가 가능(Citrini 재인용, 단일 2차) | 🟡 약함 |
+
+**구조 비중 대용치**: Solidigm은 1GW당 신규 플래시 약 25EB 중 컨텍스트 메모리(CMX, KV 캐시) 6.4EB · 서버 직접 연결 6.1EB · 나머지 네트워크 스토리지(약 12.5EB, 과제팀 산술)로 제시 → 약 26 · 24 · 50%(IB-06). 계층을 하위 수요에 대응시키는 것(직접 연결 = 가중치 로딩 · 로컬 캐시, 네트워크 = 데이터 레이크 · RAG DB · 체크포인트 · 에이전트 상태)은 ⚠️ 과제팀 해석이다.
+
+→ 네 하위 수요를 모두 EB로 나눈 공개 전망은 없다. 덱에 쓸 수 있는 것은 "KV 캐시 = 2030년 AI DC 플래시의 35%(420EB)"와 1GW 계층 비중 정도다.
 
 ## 3. 요구 → 핵심 기술 → 고객 협력 단계
 
