@@ -3005,3 +3005,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 새 원장 `sources/articles/inference-sub-demand-bit-demand-2026-10.md`(IB-01~10). Kioxia Investor Day 2026 · 2025 전략 설명회 PDF는 직접 확인(용도별 EB 분할 없음)
 - 결과: 네 하위 수요를 모두 나눈 공개 전망 없음. KV 캐시만 SanDisk 2030 420EB(AI DC 플래시 1.2ZB의 35%) · 2027 +75~100EB. 구조 대용치 Solidigm 1GW당 25EB(CMX 6.4 · DAS 6.1 · NAS 약 12.5EB)
 - 위키 `ai-inference-storage-requirements.md` §2.5 신설, index 갱신. 슬라이드 수정은 사용자 확인 후(지식 그래프 · 대시보드 재생성도 그때)
+
+## [2026-10-18] build | 고객 협력 전략 덱 v5.4: 실행안 · 조직 장 추가 (미국 · 중국 Co-Design 조직)
+- 사용자 구상(10-15): 미국 · 중국에 FDE 조직, 한국 NAND · 컨트롤러 · FW 전문가 + 현지 관계 인력 + 시스템 SW 전문가 원팀. 과제팀 검토 · 보완(본사 후방 지원, 기술 출신 관계 인력 = Palantir Echo, 중국 규제 선행, 지역별 KV 캐시 스택, 고객 선별, 유지 장치)
+- 사용자 결정(10-18): 개발실 · 현지 법인 공동 조직 / 미국 먼저 · 중국 이어서 / 관계 인력은 기술 출신 + 언어 · 문화 교류 / 20 → 50 → 80명 수용
+- 원장: `sources/raw-notes/user-fde-org-decision-2026-10-18.md`, `sources/articles/fde-echo-delta-pairing-2026-10.md`(Palantir Echo · Delta 공식 블로그 확인). 위키 `dev-org-transformation.md` [Update 2026-10-18]
+- 덱: 새 본문 5장(① 공동 조직 → 미국 · 중국 거점 → 본사 후방 지원 ② Pod 4역할 × 출신 · 채용 기준 ③ 단계별 누적 막대 · 다음 단계 기준), 참고 장 6~9장, 3장 링크 칩 "참고 6장"
+- 렌더 QA PASS. 아웃라인 v5.4 · 보고서 §4.3.1 · §7 · index. 대시보드 마이너 v2.50.0(발표자료 장 추가) + updates
+- 컨테이너 재생성으로 .venv · fonts-nanum · node_modules 재설치

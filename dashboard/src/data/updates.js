@@ -15,6 +15,16 @@
 
 export const UPDATES = [
   {
+    date: '2026-10-18',
+    type: 'build',
+    version: 'v2.50.0',
+    title: '고객 협력 전략 덱 v5.4: 실행안 · 조직 장 추가 (미국 · 중국 Co-Design 조직)',
+    summary: '본문 5장에 개발실 · 현지 법인 공동 Co-Design 조직을 제안: 미국 거점에서 시작해 중국으로, 고객별 Pod 5~6명(현지 기술 관계 리드 · 시스템 SW · 본사 NAND/FW · 워크로드 분석), 본사 후방 지원, 20 → 50 → 80명 단계안.',
+    tags: ['발표자료', '실행 전략', '조직'],
+    items: [{ label: '덱', detail: 'ssd-future-ready-strategy v5.4 (본문 5장 + 참고 4장)' }, { label: '위키', detail: 'dev-org-transformation [Update 2026-10-18]' }],
+    links: [],
+  },
+  {
     date: '2026-10-15',
     type: 'build',
     version: 'v2.49.25',

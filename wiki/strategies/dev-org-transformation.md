@@ -1,11 +1,13 @@
 ---
 type: strategy
-last_reviewed: 2026-07-24
+last_reviewed: 2026-10-18
 sources:
   - sources/articles/micron-anthropic-sca-2026-06-22.md
   - sources/articles/lta-to-sca-industry-context-2026-06.md
   - sources/filings/micron-q3-fy26.md
   - sources/articles/palantir-fde-model-2026-07.md
+  - sources/articles/fde-echo-delta-pairing-2026-10.md
+  - sources/raw-notes/user-fde-org-decision-2026-10-18.md
   - sources/articles/star-engineer-context-2026-07.md
   - sources/raw-notes/fdp-host-ssd-platform-strategy-2026-07-24.md
   - sources/raw-notes/expert-interview-ai-infra-supercycle-2026-06-18.md
@@ -225,3 +227,49 @@ FDE·Co-Design Pod·시스템 모델링이 작동하려면 그 중심에 **고�
 | ③ 차세대 제품 기술 교류 · 소통 | 수요화 | 엔지니어 둘 + 말풍선 + SSD |
 
 **화두 (CRM 범위 확장)**: 지금의 고객 관계 관리(CRM)는 경영진 ↔ 경영진, 영업 ↔ 구매 사이의 일이다. 앞으로는 **엔지니어 ↔ 엔지니어**까지 넓어져야 하고, 고객 · 국가별 언어와 문화의 이해가 그 관계의 일부다. 덱에서는 삼성 · 고객 두 열의 관계도(경영진 · 영업 · 엔지니어 3행)에 "지금"(위 2행)과 "앞으로"(3행 전체) 괄호로 그렸다.
+
+## [Update 2026-10-18] 실행안: 개발실 · 현지 법인 공동 Co-Design 조직, 미국에서 시작해 중국으로
+
+> 사용자 구상(2026-10-15)과 결정(2026-10-18): [user-fde-org-decision-2026-10-18.md](../../sources/raw-notes/user-fde-org-decision-2026-10-18.md). 덱 [ssd-future-ready-strategy-outline.md](../../outputs/presentation/ssd-future-ready-strategy-outline.md) 5장(실행안).
+> 2026-09-19 "덱은 개발실 내부 실행 범위" 결정([qlc-execution-strategy.md](qlc-execution-strategy.md) §2.2)을 사용자가 이번에 **개발실 · 현지 법인 공동 조직**까지 넓혔다. 별도 자회사 · 지분 보상은 여전히 덱 밖이다.
+
+### 1. 조직 형태 — 하나의 조직, 두 거점, 고객별 Pod, 본사 후방 지원
+
+| 구성 | 내용 |
+|---|---|
+| **Co-Design 조직(공동 조직)** | 조직장 1명. **개발실**이 기술 과제 · 경력 경로를, **현지 법인**이 채용 · 처우 · 현지 계약을 맡는다(사용자 결정: 채용 · 인력 구성에 유리). 영업 산하가 아니며 영업과 공동 KPI |
+| **미국 거점 (1단계부터)** | Bay Area(기존 Memory Solutions Lab, San Jose 기반). 대상 스택 Dynamo · NIXL · vLLM · LMCache · SGLang |
+| **중국 거점 (2단계부터)** | 고객 밀집 도시. 대상 스택 Mooncake · FlexKV(Tencent) · Tair KVCache(Alibaba) · 3FS(DeepSeek) ([kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §1.1). **규제 설계 선행**: 미국 수출 통제(EAR · Entity List 고객 심사), 한국 국가핵심기술 공유 범위, 중국 데이터보안법 · 개인정보보호법(트레이스는 현지에서 분석). 두 거점 사이 **정보 차단벽**, 수출 통제 전담자 배치 (⚠️ 과제팀 판단, 법무 검토 필요) |
+| **고객별 Pod** | 고객 1곳 전담 5~6명, 원팀 평가(Pod 단위 KPI). 트레이스 · KV 정책을 여는 고객에 한정(qlc-execution-strategy §2.2 기존 결정) |
+| **본사 후방 지원** | 화성 · 평택. FDE 요청 전담 펌웨어 · 컨트롤러 · NAND 특성 인력 + 빠른 결정 권한. 현장 발견이 제품에 들어가는 경로 |
+
+지역 근거: TrendForce는 4Q26 eSSD 수요 상향 요인으로 북미는 벡터 DB의 QLC, 중국은 KV 캐시 오프로드를 꼽았다(🟡, [inference-sub-demand-bit-demand-2026-10.md](../../sources/articles/inference-sub-demand-bit-demand-2026-10.md) IB-09).
+
+### 2. Pod 구성 — 세 출신이 한 팀으로 (Palantir Echo · Delta 짝 준용)
+
+| 역할 | 인원 | 출신 | Palantir 대응 |
+|---|---|---|---|
+| Pod 리드 · 고객 기술 관계 | 1 | 현지 채용. **기술 출신 + 언어 · 문화 교류에 문제없는 인력**(사용자 결정): 고객사 · 생태계 엔지니어 경력, 현지 언어 원어민 수준, 커뮤니티 · 동문 네트워크 | Echo(배치 전략가, [fde-echo-delta-pairing-2026-10.md](../../sources/articles/fde-echo-delta-pairing-2026-10.md) ED-01) |
+| 시스템 SW (커널 · KV 캐시 · 추론 엔진) | 2 | 현지 채용 위주 | Delta |
+| NAND · 컨트롤러 · 펌웨어 | 1~2 | 본사 파견(2~3년 순환, 복귀 경로 보장) | Delta |
+| 워크로드 · 데이터 분석 | 1 | 현지 또는 본사 | Delta |
+
+채용 기준은 출신 국가가 아니라 역량(언어 · 경력 · 네트워크)으로 적는다(미국 Title VII 등 고용 차별 금지, ⚠️ 법무 확인). 거점 공통 인력: 거점장 1, 기술 출신 관계 · 생태계 담당 1~2, 업스트림 리드 1, 프로그램 · 컴플라이언스 1~2.
+
+### 3. 단계별 규모 (⚠️ 과제팀 판단값, 사용자 수용 2026-10-18)
+
+| 단계 | 미국 Pod | 중국 Pod | 거점 공통 | 본사 후방 지원 | 합계 |
+|---|---|---|---|---|---|
+| 1단계 0~6개월 (미국 개시) | 2 (12명) | 규제 설계 | 3 | 6 | 약 20 |
+| 2단계 1~2년차 (중국 개시) | 3 (18명) | 2 (12명) | 8 | 12 | 약 50 |
+| 3단계 3년차~ (성과 기준 충족 시) | 5 (30명) | 3 (18명) | 12 | 20 | 약 80 |
+
+3단계 구성 비중: 현지 채용 약 55% · 본사 파견 약 25% · 본사 근무 후방 지원 약 20%.
+단계 이행 기준: 고객 현장 WAF 실측 공개, 업스트림 머지, 고객 RFQ · OCP 반영 사양 수, 현장 발견 → 펌웨어 반영 기간, 디자인윈 EB.
+
+### 4. 리스크
+
+- 현지 보상 격차: 삼성 실리콘밸리 SW 엔지니어 중위 TC $226K 대 빅테크 시니어 1.5~1.8배([execution-benchmarks-sw-capability-customer-collab-2026-09.md](../../sources/articles/execution-benchmarks-sw-capability-customer-collab-2026-09.md) §3.1). 현지 법인 처우 체계로 대응
+- 본사 후방 지원이 일정 우선순위에서 밀리면 FDE가 영업 지원으로 전락 → 전담 인력 · 결정 권한을 조직 설계에 명시
+- 중국: 규제 · 지정학 변화로 거점 운영 범위가 바뀔 수 있음 → 미국 선행, 중국은 규제 설계 후 소규모 개시
+
