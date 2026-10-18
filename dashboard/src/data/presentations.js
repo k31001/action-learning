@@ -50,7 +50,7 @@ export const PRESENTATIONS = [
     id: 'ssd-future-ready-strategy',
     file: 'ssd-future-ready-strategy.pptx',
     title: '불확실성이 높은 미래에 대응하기 위한 고객 협력 전략',
-    version: 'v5.6',
+    version: 'v5.7',
     date: '2026-10-18',
     slides: '본문 5장 + 참고 4장',
     summary: '응용별 SSD 요구와 삼성 포트폴리오 대응 현황(TLC Gen5 · Gen6 · 고내구 · QLC) → AI 추론 하위 수요 × 요구 × 기술 × 고객 협력 → 공동 설계로 WAF · 꼬리 지연을 낮춰 포트폴리오 확장(3D) → 계약 · 역량 · 사람 실행 → 고객별 Pod의 역할(Echo · Delta) · 구글 · 메타에서 시작하는 협업 고객 확장',

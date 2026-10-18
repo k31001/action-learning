@@ -17,6 +17,16 @@ export const UPDATES = [
   {
     date: '2026-10-18',
     type: 'build',
+    version: 'v2.50.3',
+    title: '고객 협력 전략 덱 v5.7: 실행안 레이아웃 2/3 · 1/3, 그림 보강',
+    summary: '5장 왼쪽 Pod 그림을 2/3로 넓히고 층마다 실물(고객 서버 · SSD · 쓰기 분포)과 본사 NAND · SSD 렌더를 넣음, 오른쪽은 단계 카드 3장.',
+    tags: ['발표자료', '실행 전략'],
+    items: [{ label: '덱', detail: 'ssd-future-ready-strategy v5.7' }],
+    links: [],
+  },
+  {
+    date: '2026-10-18',
+    type: 'build',
     version: 'v2.50.2',
     title: '고객 협력 전략 덱 v5.6: 실행안을 한 장으로 압축',
     summary: '역할 · 확장 두 장을 시각화 한 장으로: 고객 데이터센터 안 Pod(Echo ↔ 고객, Delta → 층별 일, 본사 후방 지원)와 고객 단계 계단(Google · Meta → 10곳, 누적 Pod · 약 20 → 50 → 80명).',

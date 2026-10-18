@@ -1230,16 +1230,17 @@ d.notes(s, "4장 실행 전략입니다. 세 기술의 효과는 고객 시스�
         "셋째 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 엔지니어가 고객 AI 데이터센터 안에서 워크로드 측정과 분석, 호스트 소프트웨어 스택 최적화와 평가, 차세대 제품 기술 교류를 합니다. 누가 이 일을 하고 누구와 시작할지는 다음 장에서 말씀드리겠습니다. "
         "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.")
 
-# =============================================================== 5 실행안: 고객별 Pod × 협업 고객 확장 (2026-10-18 사용자 지시: 두 장을 한 장으로, 시각화 위주)
+# =============================================================== 5 실행안: 고객별 Pod × 협업 고객 확장 (2026-10-18 사용자 지시: 한 장, 왼쪽 2/3 · 오른쪽 1/3, 그림 보강)
 s = d.slide(5, "실행안", "고객 한 곳에 Pod 하나로 고객 안에 들어가고,\n구글 · 메타에서 시작해 협업 고객 수만큼 조직을 키웁니다")
 S_PLAN = s
-A1, AW = MX, 8.40
+A1 = MX
+AW = (CW - 0.46) * 2 / 3
 A2 = A1 + AW + 0.46
 AW2 = RIGHT - A2
 TOP5, BOT5 = 2.96, 9.34
 ORG_C = {"현지": BLUE, "본사": BLUE_T1}
 
-# ---- ① Pod = 고객 한 곳: 누가 어느 층에서 일하나
+# ---- ① Pod = 고객 한 곳: 누가 어느 층에서 무엇을 하나
 d.panel_head(s, A1, AW, 1, "Pod 하나 = 고객 한 곳, 5~6명")
 wp_, _ = d.img(s, d.logo("palantir"), A1, TOP5 + 0.02, h=0.32)
 px_ = A1 + wp_ + 0.14
@@ -1247,90 +1248,102 @@ for nm, kw, col in [("Echo", "문제 · 도입 · 성과", BLUE), ("Delta", "설
     label_box(s, px_, TOP5 + 0.01, 0.84, 0.36, [(nm, 15, True, WHITE)], fill=col)
     tb(s, px_ + 0.90, TOP5 - 0.01, 2.20, 0.40, [(kw, 15, False, GRAY)], anchor=MID)
     px_ += 3.10
-DCY, DCH = TOP5 + 0.56, 4.30
+lgx = A1 + AW - 3.10
+for k, (nm, col) in enumerate([("현지 채용", BLUE), ("본사 파견", BLUE_T1)]):
+    rect(s, lgx + k * 1.55, TOP5 + 0.10, 0.20, 0.20, fill=col, shape=MSO_SHAPE.OVAL)
+    tb(s, lgx + k * 1.55 + 0.26, TOP5 - 0.01, 1.25, 0.40, [(nm, 15, False, GRAY)], anchor=MID)
+DCY, DCH = TOP5 + 0.56, 4.34
 rect(s, A1, DCY, AW, DCH, fill=WHITE, line=BLUE, lw=1.75, shape=RR)
 tb(s, A1 + 0.18, DCY + 0.06, 4.0, 0.36, [("고객 AI 데이터센터 안", 16, True, BLUE)], anchor=MID)
 # Echo 줄: Pod 리드 ↔ 고객 엔지니어 · 결정권자
-EY = DCY + 0.50
-rect(s, A1 + 0.14, EY, AW - 0.28, 1.06, fill=TINT, shape=RR)
+EY = DCY + 0.48
+EH = 1.06
+rect(s, A1 + 0.14, EY, AW - 0.28, EH, fill=TINT, shape=RR)
 d.person(s, A1 + 0.34, EY + 0.12, 0.82, BLUE)
 label_box(s, A1 + 0.98, EY + 0.14, 0.84, 0.34, [("Echo", 15, True, WHITE)], fill=BLUE)
-tb(s, A1 + 0.98, EY + 0.52, 2.40, 0.40, [("Pod 리드", 17, True, INK)], anchor=MID)
-rect(s, A1 + 3.10, EY + 0.52, 1.70, 0.05, fill=BLUE)
-tb(s, A1 + 3.05, EY + 0.10, 1.80, 0.38, [("문제 · 성과", 15, True, BLUE)], align=C, anchor=MID)
-for j in range(2):
-    d.person(s, A1 + 4.96 + j * 0.56, EY + 0.18, 0.72, GRAY_2)
-tb(s, A1 + 6.14, EY + 0.08, AW - 6.30, 0.90, [("고객 엔지니어", 15, True, INK), ("결정권자", 15, True, INK)], anchor=MID, spacing=1.0)
-# Delta 줄: 각자 일하는 층
-LAYERS = [("KV 캐시 · 커널", "배치 코드", "현지", 2, "시스템 SW"),
-          ("SSD 펌웨어", "FDP · pSLC 튜닝", "본사", 2, "NAND · FW"),
-          ("워크로드 데이터", "WAF · 꼬리 지연 실측", "현지", 1, "분석")]
-LY0, LH, LG = EY + 1.18, 0.74, 0.08
-for r, (layer, act, org, n, who) in enumerate(LAYERS):
+tb(s, A1 + 0.98, EY + 0.52, 2.20, 0.40, [("Pod 리드", 17, True, INK)], anchor=MID)
+LX0, LX1 = A1 + 3.20, A1 + 6.90
+rect(s, LX0, EY + 0.55, LX1 - LX0, 0.05, fill=BLUE)
+for xx_ in (LX0, LX1 - 0.16):
+    rect(s, xx_, EY + 0.49, 0.16, 0.16, fill=BLUE, shape=MSO_SHAPE.OVAL)
+tb(s, LX0, EY + 0.08, LX1 - LX0, 0.38, [("문제 정의 · 우선순위 · 성과 → RFQ", 15, True, BLUE)], align=C, anchor=MID)
+tb(s, LX0, EY + 0.66, LX1 - LX0, 0.36, [("기술 출신 · 현지 언어 · 문화", 15, False, GRAY)], align=C, anchor=MID)
+for j in range(3):
+    d.person(s, A1 + 7.10 + j * 0.56, EY + 0.18, 0.72, GRAY_2)
+tb(s, A1 + 8.86, EY + 0.06, AW - 9.0, 0.94, [("고객 엔지니어", 16, True, INK), ("결정권자", 16, True, INK)], anchor=MID, spacing=1.0)
+# Delta 줄: 각자 일하는 층 + 그 층의 실물
+LAYERS = [("KV 캐시 · 커널", "배치 코드 · 업스트림 머지", "현지", 2, "시스템 SW", "server"),
+          ("SSD 펌웨어", "FDP · pSLC 튜닝", "본사", 2, "NAND · FW", "ssd"),
+          ("워크로드 데이터", "WAF · 꼬리 지연 실측", "현지", 1, "분석", "chart")]
+LY0, LH, LG = EY + EH + 0.10, 0.80, 0.06
+IMX = A1 + AW - 2.34                      # 실물 그림 칸
+for r, (layer, act, org, n, who, pic) in enumerate(LAYERS):
     yy = LY0 + r * (LH + LG)
     col = ORG_C[org]
     pxx = A1 + 0.30
     for j in range(n):
         pw__ = d.person(s, pxx, yy + 0.10, LH - 0.20, col)
         pxx += pw__ + 0.04
-    label_box(s, A1 + 1.24, yy + 0.06, 0.84, 0.32, [("Delta", 15, True, WHITE)], fill=BLUE_T1)
-    tb(s, A1 + 1.24, yy + 0.40, 1.90, 0.36, [(who, 15, True, INK)], anchor=MID)
-    d.arrow_r(s, A1 + 3.10, yy + LH / 2 - 0.13, 0.50, 0.26, fill=BLUE_T2)
-    label_box(s, A1 + 3.74, yy + 0.06, 2.20, LH - 0.12, [(layer, 16, True, WHITE)], fill=BLUE if r < 2 else GRAY_2)
-    tb(s, A1 + 6.04, yy, AW - 6.20, LH, [(act, 15, True, BLUE)], anchor=MID)
-# 본사 후방 지원 (Palantir Dev)
+    label_box(s, A1 + 1.24, yy + 0.08, 0.84, 0.32, [("Delta", 15, True, WHITE)], fill=BLUE_T1)
+    tb(s, A1 + 1.24, yy + 0.42, 1.90, 0.36, [(who, 16, True, INK)], anchor=MID)
+    d.arrow_r(s, A1 + 3.20, yy + LH / 2 - 0.14, 0.56, 0.28, fill=BLUE_T2)
+    label_box(s, A1 + 3.90, yy + 0.07, 2.70, LH - 0.14, [(layer, 17, True, WHITE)], fill=BLUE if r < 2 else GRAY_2)
+    tb(s, A1 + 6.76, yy, IMX - (A1 + 6.76) - 0.10, LH, [(act, 16, True, BLUE)], anchor=MID)
+    if pic == "server":
+        d.fit(s, d.part("server"), IMX, yy + 0.02, 2.16, LH - 0.04)
+    elif pic == "ssd":
+        d.fit(s, os.path.join(ASSETS, "products", "p_pm1753.png"), IMX, yy + 0.02, 2.16, LH - 0.04)
+    else:                                   # 쓰기 크기 분포 막대 + 수명 곡선
+        hb = [0.30, 0.75, 0.55, 0.95, 0.40, 0.65, 0.25]
+        bw_, bx0 = 0.22, IMX + 0.20
+        base = yy + LH - 0.08
+        rect(s, bx0 - 0.06, base, 7 * (bw_ + 0.06) + 0.06, 0.02, fill=GRAY_2)
+        for i, hh in enumerate(hb):
+            rect(s, bx0 + i * (bw_ + 0.06), base - hh * (LH - 0.20), bw_, hh * (LH - 0.20), fill=BLUE_T1 if i in (1, 3, 5) else GRAY_2)
+# 본사 후방 지원 (Palantir Dev): 본사의 NAND · SSD
 HQ5 = DCY + DCH + 0.56
 rect(s, A1 + AW / 2 - 0.20, DCY + DCH + 0.04, 0.40, 0.48, fill=BLUE_T2, shape=MSO_SHAPE.UP_DOWN_ARROW)
 rect(s, A1, HQ5, AW, BOT5 - HQ5, fill=PALE, line=BLUE_T1, lw=1.25, shape=RR, dash=True)
-d.fit(s, d.logo("samsung"), A1 + 0.22, HQ5 + 0.18, 1.30, BOT5 - HQ5 - 0.36, align="left")
-label_box(s, A1 + 1.74, HQ5 + (BOT5 - HQ5 - 0.34) / 2, 0.70, 0.34, [("Dev", 15, True, WHITE)], fill=GRAY_2)
-tb(s, A1 + 2.56, HQ5, AW - 2.70, BOT5 - HQ5, [[("본사 후방 지원", 17, True, INK), ("   재현 · 검증 · 로드맵 반영", 15, False, GRAY)]], anchor=MID)
-# 출신 범례
-lgx = A1 + AW - 3.10
-for k, (nm, col) in enumerate([("현지 채용", BLUE), ("본사 파견", BLUE_T1)]):
-    rect(s, lgx + k * 1.55, DCY + 0.14, 0.20, 0.20, fill=col, shape=MSO_SHAPE.OVAL)
-    tb(s, lgx + k * 1.55 + 0.26, DCY + 0.06, 1.25, 0.36, [(nm, 15, False, GRAY)], anchor=MID)
+HQH = BOT5 - HQ5
+d.fit(s, d.logo("samsung"), A1 + 0.22, HQ5 + 0.24, 1.40, HQH - 0.48, align="left")
+label_box(s, A1 + 1.82, HQ5 + (HQH - 0.34) / 2, 0.70, 0.34, [("Dev", 15, True, WHITE)], fill=GRAY_2)
+tb(s, A1 + 2.64, HQ5, 6.0, HQH, [[("본사 후방 지원", 17, True, INK), ("   재현 · 검증 · 로드맵 반영", 15, False, GRAY)]], anchor=MID)
+d.fit(s, d.part("nand"), A1 + AW - 3.20, HQ5 + 0.08, 1.30, HQH - 0.16)
+d.fit(s, d.part("ssd"), A1 + AW - 1.86, HQ5 + 0.08, 1.70, HQH - 0.16)
 d.chevron(s, A2 - 0.31, 6.10, w=0.16, h=0.50)
 
-# ---- ② 고객이 늘수록 Pod를 더한다 (계단)
-d.panel_head(s, A2, AW2, 2, "고객이 늘수록 Pod를 더합니다")
-tb(s, A2, TOP5 - 0.02, AW2, 0.40, [("인력 ≈ 고객 수 × 5~6명 + 거점 공통 + 본사 후방 지원", 16, False, GRAY)], anchor=MID)
-SG5 = 0.26
-SW5 = (AW2 - 2 * SG5) / 3
-STEPS = [("1단계 · 미국", ["google", "meta"], [], 2, "약 20명", 5.40),
-         ("2단계 · +중국", ["nvidia", "openai", "*Alibaba", "*ByteDance"], ["*Alibaba", "*ByteDance"], 6, "약 50명", 4.40),
-         ("3단계", ["microsoft", "aws", "*네오클라우드", "*DeepSeek"], ["*DeepSeek"], 10, "약 80명", 3.48)]
+# ---- ② 고객이 늘수록 Pod를 더한다 (단계 카드 3장, 위에서 아래로)
+d.panel_head(s, A2, AW2, 2, "고객 수만큼 Pod")
+tb(s, A2, TOP5 - 0.02, AW2, 0.40, [("인력 ≈ 고객 수 × 5~6명 + 공통 인력", 16, False, GRAY)], anchor=MID)
+STEPS = [("1단계 · 미국", ["google", "meta"], [], 2, "약 20명"),
+         ("2단계 · +중국", ["nvidia", "openai", "*Alibaba", "*ByteDance"], ["*Alibaba", "*ByteDance"], 6, "약 50명"),
+         ("3단계", ["microsoft", "aws", "*네오클라우드", "*DeepSeek"], ["*DeepSeek"], 10, "약 80명")]
+SCG = 0.18
+SCH = (BOT5 - (TOP5 + 0.56) - 2 * SCG) / 3
 prev = 0
-for k, (hdr, logos, cn, npod, ppl, top) in enumerate(STEPS):
-    x = A2 + k * (SW5 + SG5)
-    h = BOT5 - top
-    rect(s, x, top, SW5, h, fill=TINT if k == 0 else WHITE, line=BLUE if k == 0 else BLUE_T1, lw=1.5, shape=RR)
-    label_box(s, x + 0.12, top + 0.12, SW5 - 0.24, 0.42, [(hdr, 17, True, WHITE)], fill=BLUE if k == 0 else BLUE_T1)
-    # 새 고객 로고 (2열)
-    TW, TH = (SW5 - 0.36) / 2, 0.52
+for k, (hdr, logos, cn, npod, ppl) in enumerate(STEPS):
+    y0 = TOP5 + 0.56 + k * (SCH + SCG)
+    rect(s, A2, y0, AW2, SCH, fill=TINT if k == 0 else WHITE, line=BLUE if k == 0 else BLUE_T1, lw=1.5, shape=RR)
+    label_box(s, A2 + 0.14, y0 + 0.12, 2.10, 0.40, [(hdr, 16, True, WHITE)], fill=BLUE if k == 0 else BLUE_T1)
+    tb(s, A2 + AW2 - 2.0, y0 + 0.06, 1.86, 0.52, [(ppl, 22, True, BLUE)], align=R, anchor=MID)
+    TW, TH = (AW2 - 0.28 - 0.08 * 3) / 4, 0.50
     for i, lg in enumerate(logos):
-        tx, ty = x + 0.12 + (i % 2) * (TW + 0.12), top + 0.68 + (i // 2) * (TH + 0.10)
+        tx, ty = A2 + 0.14 + i * (TW + 0.08), y0 + 0.64
         rect(s, tx, ty, TW, TH, fill=WHITE, line=BLUE_T1 if lg in cn else LINE, lw=1.0, shape=RR, dash=lg in cn)
         if lg.startswith("*"):
             tb(s, tx, ty, TW, TH, [(lg[1:], 15, True, INK)], align=C, anchor=MID)
         else:
-            d.fit(s, d.logo(lg), tx + 0.10, ty + 0.10, TW - 0.20, TH - 0.20)
-    # Pod 칸: 누적, 새로 더한 칸은 진하게
-    PS, PG = 0.34, 0.08
-    per_row = 5
-    pod_y = BOT5 - 1.30 - ((npod - 1) // per_row) * (PS + PG)
+            d.fit(s, d.logo(lg), tx + 0.08, ty + 0.09, TW - 0.16, TH - 0.18)
+    PS, PG = 0.30, 0.07
+    py_ = y0 + SCH - 0.46
     for i in range(npod):
-        rx = x + (SW5 - (per_row * PS + (per_row - 1) * PG)) / 2 + (i % per_row) * (PS + PG)
-        ry = pod_y + (i // per_row) * (PS + PG)
-        rect(s, rx, ry, PS, PS, fill=BLUE if i >= prev else BLUE_T2, shape=RR)
-    tb(s, x, BOT5 - 0.86, SW5, 0.40, [[("Pod ", 15, False, GRAY), (str(npod), 18, True, INK)]], align=C, anchor=MID)
-    tb(s, x, BOT5 - 0.50, SW5, 0.44, [(ppl, 21, True, BLUE)], align=C, anchor=MID)
+        rect(s, A2 + 0.14 + i * (PS + PG), py_, PS, PS, fill=BLUE if i >= prev else BLUE_T2, shape=RR)
+    tb(s, A2 + 0.14 + 10 * (PS + PG) + 0.04, py_ - 0.04, AW2 - 0.32 - 10 * (PS + PG), 0.38, [[("Pod ", 15, False, GRAY), (str(npod), 17, True, INK)]], align=R, anchor=MID)
     prev = npod
-tb(s, A2, 3.48, SW5 * 2 + SG5, 0.36, [[("점선", 15, True, BLUE_T1), (" = 중국 거점 고객   ", 15, False, GRAY), ("진한 칸", 15, True, BLUE), (" = 새 Pod", 15, False, GRAY)]], anchor=MID)
 
 d.band(s, 9.60, 0.80, "원칙", "고객 한 곳에 Pod 하나, 협업 고객이 늘수록 조직을 키웁니다", size=24)
 d.footer(s, "벤치마크: Palantir Echo · Delta 채용 공고 · 고객 근거: Meta CacheLib FDP · NVIDIA Dynamo · CMX · Alibaba Tair KVCache · Microsoft OCP FDP · AWS Nitro SSD · DeepSeek 3FS · "
-            "2단계 AI 랩은 OpenAI 또는 Anthropic · 순서 · 인원은 과제팀 제안 · 중국은 법무 검토 전제")
+            "2단계 AI 랩은 OpenAI 또는 Anthropic · 순서 · 인원은 과제팀 제안 · 중국은 법무 검토 전제 · 제품 이미지는 형태 재현")
 d.notes(s, "5장은 실행안입니다. 원칙은 하나, 고객 한 곳에 Pod 하나입니다. "
         "왼쪽은 Pod가 고객 데이터센터 안에서 일하는 모습입니다. Palantir처럼 두 직무를 짝으로 둡니다. Echo인 Pod 리드는 고객의 문제를 정의하고 고객 엔지니어와 결정권자를 이어 성과를 RFQ로 가져갑니다. 기술 출신이면서 현지 언어와 문화로 막힘없이 교류하는 사람입니다. "
         "Delta는 층마다 붙습니다. 현지 시스템 SW 두 명은 KV 캐시와 커널에 배치 코드를 넣고, 본사에서 파견한 NAND와 펌웨어 전문가는 FDP와 pSLC를 튜닝하며, 분석가는 WAF와 꼬리 지연 효과를 실측합니다. 본사 후방 지원은 Palantir의 제품 엔지니어처럼 현장 해법을 재현하고 검증해 로드맵에 넣습니다. "
