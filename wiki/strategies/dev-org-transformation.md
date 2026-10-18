@@ -268,7 +268,7 @@ FDE·Co-Design Pod·시스템 모델링이 작동하려면 그 중심에 **고�
 
 인력 ≈ 협업 고객 수 × Pod 5~6명 + 거점 공통 + 본사 후방 지원. 다음 단계 기준: 현장 WAF 실측 공개 · 업스트림 머지 · RFQ/OCP 반영. 근거: 고객별 스택은 [kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §1 · §1.1, 사내 설계 이력은 [dc-in-house-ssd-co-design-2026-10.md](../../sources/articles/dc-in-house-ssd-co-design-2026-10.md).
 
-### 3.5 Echo · Delta가 맡는 일과 Pod 역할별 업무 (덱 5장)
+### 3.5 Echo · Delta가 맡는 일과 Pod 역할별 업무 (덱 5장 ①은 이 표를 그림으로 압축, v5.6)
 
 | Palantir | 맡는 것 | 구체 업무 | 근거 |
 |---|---|---|---|

@@ -17,6 +17,16 @@ export const UPDATES = [
   {
     date: '2026-10-18',
     type: 'build',
+    version: 'v2.50.2',
+    title: '고객 협력 전략 덱 v5.6: 실행안을 한 장으로 압축',
+    summary: '역할 · 확장 두 장을 시각화 한 장으로: 고객 데이터센터 안 Pod(Echo ↔ 고객, Delta → 층별 일, 본사 후방 지원)와 고객 단계 계단(Google · Meta → 10곳, 누적 Pod · 약 20 → 50 → 80명).',
+    tags: ['발표자료', '실행 전략', '조직'],
+    items: [{ label: '덱', detail: 'ssd-future-ready-strategy v5.6 (본문 5장 + 참고 4장)' }],
+    links: [],
+  },
+  {
+    date: '2026-10-18',
+    type: 'build',
     version: 'v2.50.1',
     title: '고객 협력 전략 덱 v5.5: 실행안을 역할 · 확장 두 장으로',
     summary: '5장은 Palantir Echo · Delta가 맡는 일과 고객별 Pod의 하는 일 × 역할 × 전문 인력, 6장은 구글 · 메타로 시작해 협업 고객을 10곳까지 넓히며 Pod · 인력을 늘리는 단계안. 규모 그래프 삭제.',

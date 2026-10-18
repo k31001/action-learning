@@ -3021,3 +3021,9 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 6장 확장: 1단계 Google · Meta → 2단계 NVIDIA · OpenAI/Anthropic · Alibaba · ByteDance → 3단계 Microsoft · AWS · 네오클라우드 · DeepSeek/Tencent, 고객 2 → 6 → 10 · 약 20 → 50 → 80명
 - 위키 dev-org-transformation §3 개정 · §3.5 신설(2026-09-19 "하이퍼스케일러는 OCP 채널" 판단은 사용자 결정으로 대체), 참고 장 7~10장
 - 렌더 QA PASS. 아웃라인 v5.5 · 보고서 §4.3.1 · §7 · index. 대시보드 v2.50.1 + updates
+
+## [2026-10-18] build | 고객 협력 전략 덱 v5.6: 실행안을 한 장으로 압축
+- 사용자 지시: 실행안 두 장(역할 · 확장)을 한 장으로, 텍스트는 줄이고 시각화로
+- 5장 "실행안": ① 고객 AI 데이터센터 틀 안 Pod(Echo ↔ 고객 엔지니어 · 결정권자, Delta 3갈래 → 일하는 층, 사람 색 = 현지 · 본사 파견, 아래 본사 후방 지원 Dev) ② 고객 단계 계단(로고 타일, 점선 = 중국, 누적 Pod 칸, 약 20 → 50 → 80명)
+- 상세 업무표 · 고객 선정 이유는 노트와 위키(dev-org-transformation §3 · §3.5)로. 참고 장 6~9장 복귀
+- 렌더 QA PASS. 아웃라인 v5.6 · 보고서 · index. 대시보드 v2.50.2 + updates
