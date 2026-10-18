@@ -256,16 +256,35 @@ FDE·Co-Design Pod·시스템 모델링이 작동하려면 그 중심에 **고�
 
 채용 기준은 출신 국가가 아니라 역량(언어 · 경력 · 네트워크)으로 적는다(미국 Title VII 등 고용 차별 금지, ⚠️ 법무 확인). 거점 공통 인력: 거점장 1, 기술 출신 관계 · 생태계 담당 1~2, 업스트림 리드 1, 프로그램 · 컴플라이언스 1~2.
 
-### 3. 단계별 규모 (⚠️ 과제팀 판단값, 사용자 수용 2026-10-18)
+### 3. 고객 확장과 규모 — 협업 고객 하나에 Pod 하나 (2026-10-18 오후 개정)
 
-| 단계 | 미국 Pod | 중국 Pod | 거점 공통 | 본사 후방 지원 | 합계 |
+> 사용자 피드백(2026-10-18 오후): 규모 그래프 대신 역할의 구체 업무, Pod는 고객별임을 명시, 규모는 고객 확장에 맞춰, **처음은 구글 · 메타**. 이로써 2026-09-19 판단(하이퍼스케일러는 OCP 규격 · 업스트림 채널, FDE 상주는 AI 랩 · NVIDIA 생태계 한정, [qlc-execution-strategy.md](qlc-execution-strategy.md) §2.2)은 **사용자 결정으로 대체**된다. 구글 · 메타는 자체 SSD · 인프라를 직접 설계 · 운영하고 메타와는 CacheLib FDP 공동 설계 이력(WAF 3.22 → 1.03)이 있어 첫 Pod로 맞다.
+
+| 단계 | 협업 고객 (과제팀 제안 순서 ⚠️) | 고르는 이유 | Pod · 인력 |
+|---|---|---|---|
+| 1단계 0~6개월 · 미국 거점 개설 | **Google · Meta** (사용자 지정) | 자체 SSD · 인프라 직접 설계 · 운영, Meta CacheLib FDP 공동 설계 이력 | 고객 2 · Pod 2 · 약 20명 |
+| 2단계 1~2년차 · 중국 거점 개설 | NVIDIA, OpenAI 또는 Anthropic, Alibaba, ByteDance | NVIDIA = Dynamo · CMX로 KV 캐시 관리자 층 표준 / AI 랩 = 추론 수요 최대 · Micron ↔ Anthropic 선점 대응 / Alibaba = Tair KVCache · 벡터 DB / ByteDance = 대규모 추론 | 고객 6 · Pod 6 · 약 50명 |
+| 3단계 3년차~ · 성과 기준 충족 시 | Microsoft, AWS, 네오클라우드(CoreWeave 등), DeepSeek · Tencent | Microsoft = OCP · FDP 사양 공저 / AWS = 자체 Nitro SSD / GPU 클라우드 확산 / 3FS · FlexKV | 고객 10 · Pod 10 · 약 80명 |
+
+인력 ≈ 협업 고객 수 × Pod 5~6명 + 거점 공통 + 본사 후방 지원. 다음 단계 기준: 현장 WAF 실측 공개 · 업스트림 머지 · RFQ/OCP 반영. 근거: 고객별 스택은 [kv-cache-qlc-tech-stack-vendor-capability-2026-09.md](../../sources/articles/kv-cache-qlc-tech-stack-vendor-capability-2026-09.md) §1 · §1.1, 사내 설계 이력은 [dc-in-house-ssd-co-design-2026-10.md](../../sources/articles/dc-in-house-ssd-co-design-2026-10.md).
+
+### 3.5 Echo · Delta가 맡는 일과 Pod 역할별 업무 (덱 5장)
+
+| Palantir | 맡는 것 | 구체 업무 | 근거 |
+|---|---|---|---|
+| **Echo** (Deployment Strategist) | 문제 · 도입 · 성과 | 고객의 가장 큰 문제 찾기, 데이터 · 업무 흐름 파악, 사용자 도입 · 교육, 성과를 경영진에 보고 | [fde-echo-delta-pairing-2026-10.md](../../sources/articles/fde-echo-delta-pairing-2026-10.md) ED-05 · 07 |
+| **Delta** (Forward Deployed Software Engineer) | 설계 · 구현 · 배포 | 아키텍처 · 설계 결정, 대규모 데이터 연결, 맞춤 앱 · 프로덕션 코드, 아이디어에서 배포까지("startup CTO") | ED-06 · 07 |
+| 같은 짝 | | OpenAI Deployment Lead + FDE, Anthropic Technical Deployment Lead(프로덕션 코드 안 씀) + FDE | ED-08 |
+
+| Pod 역할 | Palantir | ① 워크로드 측정 · 분석 | ② 스택 공동 최적화 | ③ 제품 · 사양 반영 | 전문 인력 |
 |---|---|---|---|---|---|
-| 1단계 0~6개월 (미국 개시) | 2 (12명) | 규제 설계 | 3 | 6 | 약 20 |
-| 2단계 1~2년차 (중국 개시) | 3 (18명) | 2 (12명) | 8 | 12 | 약 50 |
-| 3단계 3년차~ (성과 기준 충족 시) | 5 (30명) | 3 (18명) | 12 | 20 | 약 80 |
+| Pod 리드 | Echo | 고객의 가장 큰 문제 · 우선순위 정의 | 고객 엔지니어 · 결정권자 연결 | 성과를 고객 경영진 · RFQ로 | 고객사 · 생태계 엔지니어 출신, 현지 언어 · 문화 |
+| 시스템 SW ×2 | Delta | 트레이스 수집 · 스택 코드 읽기 | KV 캐시 · 커널 배치 코드 | 업스트림 머지 | 커널 · vLLM · LMCache · Mooncake 커미터 |
+| NAND · FW ×1~2 | Delta | GC · 수명 원인 진단 | FDP · pSLC 펌웨어 튜닝 | 차세대 FW · 제품 사양 | FTL · 컨트롤러 · NAND 특성 전문가(본사 파견 2~3년) |
+| 워크로드 분석 | Delta | 쓰기 크기 · 데이터 수명 분포 | WAF · 꼬리 지연 효과 실측 | 실측 공개 · 레퍼런스 | 스토리지 성능 · 데이터 분석가 |
+| 본사 후방 지원 | Dev(제품 엔지니어) | 현장 데이터 재현 | FW 빌드 · 검증 전담 | 제품 로드맵 반영 | FW · 검증 · 제품 기획 전담 + 빠른 결정 권한 |
 
-3단계 구성 비중: 현지 채용 약 55% · 본사 파견 약 25% · 본사 근무 후방 지원 약 20%.
-단계 이행 기준: 고객 현장 WAF 실측 공개, 업스트림 머지, 고객 RFQ · OCP 반영 사양 수, 현장 발견 → 펌웨어 반영 기간, 디자인윈 EB.
+(⚠️ 매핑 · 업무 구분은 과제팀 제안)
 
 ### 4. 리스크
 

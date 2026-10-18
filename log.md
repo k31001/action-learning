@@ -3013,3 +3013,11 @@ wiki fdp-host-ssd-platform.md §2.5(다운턴 복기: 낙폭=노출 순위 표·
 - 덱: 새 본문 5장(① 공동 조직 → 미국 · 중국 거점 → 본사 후방 지원 ② Pod 4역할 × 출신 · 채용 기준 ③ 단계별 누적 막대 · 다음 단계 기준), 참고 장 6~9장, 3장 링크 칩 "참고 6장"
 - 렌더 QA PASS. 아웃라인 v5.4 · 보고서 §4.3.1 · §7 · index. 대시보드 마이너 v2.50.0(발표자료 장 추가) + updates
 - 컨테이너 재생성으로 .venv · fonts-nanum · node_modules 재설치
+
+## [2026-10-18] build | 고객 협력 전략 덱 v5.5: 실행안을 역할 · 확장 두 장으로
+- 사용자 피드백: 규모 그래프 대신 역할별 구체 업무, Echo · Delta가 맡는 일, Pod는 고객별 명시, 규모는 고객 확장에 맞춰(처음은 구글 · 메타)
+- Palantir 채용 공고로 Echo(문제 · 도입 · 성과) · Delta(설계 · 구현 · 배포) 업무 확인, OpenAI · Anthropic 짝 직무(원장 ED-05~08 추가)
+- 5장 역할: Echo · Delta 카드 + 고객별 Pod 매트릭스(Pod 리드 · 시스템 SW · NAND/FW · 워크로드 분석 · 본사 후방 지원 × 측정 · 분석 / 공동 최적화 / 제품 · 사양 반영 / 전문 인력)
+- 6장 확장: 1단계 Google · Meta → 2단계 NVIDIA · OpenAI/Anthropic · Alibaba · ByteDance → 3단계 Microsoft · AWS · 네오클라우드 · DeepSeek/Tencent, 고객 2 → 6 → 10 · 약 20 → 50 → 80명
+- 위키 dev-org-transformation §3 개정 · §3.5 신설(2026-09-19 "하이퍼스케일러는 OCP 채널" 판단은 사용자 결정으로 대체), 참고 장 7~10장
+- 렌더 QA PASS. 아웃라인 v5.5 · 보고서 §4.3.1 · §7 · index. 대시보드 v2.50.1 + updates

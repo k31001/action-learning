@@ -4,7 +4,7 @@ export const PREVIEW_SLIDES = {
   'dram-reality-options': 6,
   'uncertainty-3c-strategy-options': 6,
   'fab-common-platform-options': 6,
-  'ssd-future-ready-strategy': 9,
+  'ssd-future-ready-strategy': 10,
   'qlc-tlc-market-entry': 6,
   'ssd-survival-strategy': 3,
   'qlc-ssd-strategy-visual': 7,
