@@ -15,6 +15,16 @@
 
 export const UPDATES = [
   {
+    date: '2026-10-19',
+    type: 'build',
+    version: 'v2.50.4',
+    title: '고객 협력 전략 덱 v5.8: 4장에 고객 전문가(고전가) Expert Group 제언',
+    summary: '실행안 장을 빼고 4장 결론 위에 제언을 넣음: 고객 사이트에 고전가 조직 신설, 기술(SSD ↔ 호스트 · 차세대 구조 제안 아키텍트) · 문화(같은 언어 · 같은 배경), Google · Meta → 다른 하이퍼스케일러.',
+    tags: ['발표자료', '실행 전략', '조직'],
+    items: [{ label: '덱', detail: 'ssd-future-ready-strategy v5.8 (본문 4장 + 참고 4장, 시안 A)' }, { label: '위키', detail: 'dev-org-transformation [Update 2026-10-19]' }],
+    links: [],
+  },
+  {
     date: '2026-10-18',
     type: 'build',
     version: 'v2.50.3',

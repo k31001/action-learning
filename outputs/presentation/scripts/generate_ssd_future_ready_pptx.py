@@ -28,7 +28,7 @@ ASSETS = os.path.join(HERE, "..", "assets")
 OUT = os.environ.get("OUT_PATH") or os.path.join(HERE, "..", "ssd-future-ready-strategy.pptx")
 FDP_VIDEO_URL = "https://action-learning.vercel.app/#/presentations/fdp-explainer/1"  # 3장 ① 버튼 → 대시보드 발표자료 탭 「FDP가 뭐야?」 1분 영상
 
-d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=9,
+d = Deck("불확실성이 높은 미래에 대응하기 위한 고객 협력 전략", total=8,
          logos_dir=os.path.join(ASSETS, "logos"), photos_dir=os.path.join(ASSETS, "photos"),
          renders_dir=os.path.join(ASSETS, "survival"))
 tb, rect, label_box = d.tb, d.rect, d.label_box
@@ -604,7 +604,7 @@ for r, (nm, gcs, col) in enumerate([("SSD 혼자: GC마다 지연 스파이크",
 # ---- ② 그 결과 좋아지는 지표: WAF · p99.9 꼬리 지연
 KPY = TY + 2.70
 d.panel_head(s, LX3, LW3, 2, "그 결과 좋아지는 지표", y=KPY)
-label_box(s, LX3 + LW3 - 3.70, KPY + 0.04, 3.70, 0.40, [("왜 SSD만으로는 안 됐나  참고 6장 ▶", 15, True, BLUE)], fill=TINT, line=BLUE_T2)
+label_box(s, LX3 + LW3 - 3.70, KPY + 0.04, 3.70, 0.40, [("왜 SSD만으로는 안 됐나  참고 5장 ▶", 15, True, BLUE)], fill=TINT, line=BLUE_T2)
 LINK3 = list(s.shapes)[-2:]
 KY = KPY + 0.62
 KH = 10.24 - KY
@@ -704,13 +704,13 @@ d.footer(s, "출처: WAF 3.22 → 1.03(CacheLib FDP, 삼성 EuroSys'25) · p99.9
 
 d.notes(s, "3장은 SSD 차별화 요구의 변화와, 그에 대비한 포트폴리오입니다. 맨 위 띠처럼 SSD의 차별화 요구는 성능, 전력 효율, VM 단위 QoS를 거쳐, AI 시대에는 예측 가능한 QoS, 고용량, 고내구로 바뀌고 있습니다. 세 기술이 겨냥하는 것은 QLC 고용량과 고객 워크로드에 맞춘 내구성입니다. 시기 구분은 과제팀 정리입니다. "
         "1번은 원리입니다. GC가 일어나면 읽기가 기다려 지연 스파이크가 생깁니다. Mixed Media는 GC 빈도를, Large Mapping은 GC 횟수를, FDP는 GC 시간을 줄입니다. GC가 드물고 짧아지면 지연이 예측 가능해집니다. FDP의 원리는 오른쪽 위 1분 영상 버튼으로 바로 보여 드릴 수 있습니다. "
-        "2번은 결과입니다. Meta CacheLib에 FDP를 적용하자 WAF가 3.22에서 1.03으로 68퍼센트, PM9D3a RocksDB에서 p99.9 꼬리 지연이 55퍼센트 줄었습니다. WAF가 SSD만으로 3 근처에 머문 이유는 참고 6장에 있고, 상자를 누르면 그 장으로 갑니다. 꼬리 지연 측정은 TLC 결과라는 한계가 있습니다. "
+        "2번은 결과입니다. Meta CacheLib에 FDP를 적용하자 WAF가 3.22에서 1.03으로 68퍼센트, PM9D3a RocksDB에서 p99.9 꼬리 지연이 55퍼센트 줄었습니다. WAF가 SSD만으로 3 근처에 머문 이유는 참고 5장에 있고, 상자를 누르면 그 장으로 갑니다. 꼬리 지연 측정은 TLC 결과라는 한계가 있습니다. "
         "3번은 포트폴리오입니다. 바닥은 정격 DWPD와 용량, 높이는 꼬리 지연입니다. WAF가 3에서 1이 되면 정격 DWPD는 약 3배가 됩니다. 과제팀 산술입니다. "
         "[클릭] 네 제품군이 한꺼번에 넓어집니다. QLC는 0.3에서 1 DWPD로 TLC가 맡던 KV 오프로드까지, 고성능 TLC는 1에서 3으로 쓰기 많은 KV까지, 고내구 TLC는 3에서 9로 초고DWPD 입구까지, SLC급은 30에서 100 근처까지 갑니다. 초고DWPD 요구가 오면 TLC와 SLC급 가운데 고를 수 있습니다. "
         "대비한 기술이 있어야 미래 수요에 능동적으로 대응하는 포트폴리오를 완성할 수 있습니다.")
 
 # =============================================================== 3 당위성
-s = d.slide(6, "참고 · 당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
+s = d.slide(5, "참고 · 당위성", "해법의 범위는 NAND에서 SSD로 넓어져 왔고,\n새로 나타난 과제는 고객 시스템까지 넓어져야 풀립니다")
 S_A1 = s
 
 # 발표 순서 ECC → SSD → DWPD → 공동 설계: 위 = 1 · 2칸, 아래 = 정격 DWPD 점도표, 오른쪽 = 3칸
@@ -867,14 +867,14 @@ d.chevron(s, MX + 11.67, 7.40, w=0.16, h=0.50)
 d.band(s, 9.60, 0.80, "결론", "사양서만으로는 2칸에 머뭅니다. 3칸은 고객 시스템 안에서 함께 설계해야 닿습니다")
 d.footer(s, "출처: 정격 DWPD 원장(6개 업체 226개 등급, 점 = 세대 대표 최고 등급 · QLC, 중앙값 = 전체 등급, 5년 보증 환산, SLC · SCM 특수와 10 초과 3개 제외) · "
             "해법 사다리 원장 · 자체 설계 원장 · 일부 수치 검색 확인 · 부품 이미지는 3D 렌더")
-d.notes(s, "참고 6장은 WAF가 SSD만으로는 3 근처에 머문 이유입니다. 첫째 칸, NAND에서 SSD로 넘어올 때는 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러 ECC가 약 60배 강해져 SSD 안에서 해결됐습니다. "
+d.notes(s, "참고 5장은 WAF가 SSD만으로는 3 근처에 머문 이유입니다. 첫째 칸, NAND에서 SSD로 넘어올 때는 셀 오류율이 약 100만 배 나빠졌지만 컨트롤러 ECC가 약 60배 강해져 SSD 안에서 해결됐습니다. "
         "둘째 칸, SSD 혼자 핫 콜드 추정, 스트림 분리, IO 결정성을 더했지만 실제 워크로드에서 WAF는 약 3에 머물렀습니다. 데이터가 언제 지워지는지는 호스트만 알기 때문입니다. "
         "아래 점도표가 그 결과입니다. 6개 업체 226개 등급의 정격 DWPD 중앙값이 2008년에서 2014년 9.6에서 2019년 이후 1로 내려왔고, QLC는 0.2에서 0.6입니다. 셀이 견디는 쓰기가 SLC에서 QLC로 약 100배 줄었기 때문입니다. 반면 고객 캐시 계층은 하루 3에서 7.2회를 씁니다. "
         "셋째 칸이 해법입니다. 삼성 엔지니어가 Meta CacheLib에 FDP 배치를 구현해 WAF를 3.22에서 1.03으로 낮췄습니다. Google, Alibaba, AWS도 이미 자기 시스템에 맞춰 SSD를 직접 설계합니다. "
         "사양서를 받아 SSD를 잘 만드는 방식은 둘째 칸에 머물고, 셋째 칸은 고객 시스템 안에서 함께 설계해야 닿습니다.")
 
 # =============================================================== 4 사업 기회: WAF를 낮추면 QLC 시장이 어디까지 넓어지나 (2030 폭포 + QLC 비중)
-s = d.slide(7, "참고 · 사업 기회", "WAF를 낮춰 QLC를 1 DWPD로 올리면,\n2030년 QLC는 eSSD의 약 42%에서 약 65%까지 넓어집니다")
+s = d.slide(6, "참고 · 사업 기회", "WAF를 낮춰 QLC를 1 DWPD로 올리면,\n2030년 QLC는 eSSD의 약 42%에서 약 65%까지 넓어집니다")
 S_A2 = s
 WL, WLW = MX, 11.90
 WR = WL + WLW + 0.40
@@ -962,12 +962,12 @@ tb(s, RIGHT - 3.4, TB_, 3.2, 0.52, [("상세는 2장 · 3장", 15, False, GRAY)]
 d.band(s, 9.44, 0.80, "기회", "WAF를 낮추는 것이 곧 QLC 시장을 넓히는 일이고, 그 원가 우위가 수익성입니다", size=23)
 d.footer(s, "출처: 총량 SK hynix 509(2026) · 2030은 McKinsey 1,078과 SK hynix 1,933의 중간 · QLC 비중 TrendForce 18%(2026) · TLC 분할은 과제팀 산술(용량형 30~60% · 관행 15~40%는 근거 없는 가정, "
             "성능 일부 = 성능 RI의 20~40%) · Meta · Forward Insights(재인용) · Micron 6600 ION 사양 · 모두 검색 확인 등급")
-d.notes(s, "참고 7장은 QLC가 TLC 수요로 들어가는 사업 기회입니다. 2030년 eSSD 약 1,500엑사바이트 가운데 지금 경로의 QLC는 약 636엑사바이트, 42퍼센트입니다. "
+d.notes(s, "참고 6장은 QLC가 TLC 수요로 들어가는 사업 기회입니다. 2030년 eSSD 약 1,500엑사바이트 가운데 지금 경로의 QLC는 약 636엑사바이트, 42퍼센트입니다. "
         "WAF를 낮춰 QLC를 1 DWPD로 올리면 세 몫이 더해집니다. 조달 규격 때문에 TLC를 쓰던 내구 규격 약 192엑사바이트, 관행과 가격 약 64엑사바이트, 꼬리 지연을 극복해 가져올 성능 수요 일부 63에서 125엑사바이트입니다. 그러면 QLC는 955에서 1,017엑사바이트, eSSD의 63에서 68퍼센트까지 넓어집니다. "
         "기술은 단기에 Mixed Media, 중장기에 FDP입니다. TLC 분할 비율은 과제팀 가정입니다. WAF를 낮추는 것이 곧 QLC 시장을 넓히는 일이고, 그 원가 우위가 수익성입니다.")
 
 # =============================================================== 5 보안 기회: 온프렘 AI의 모델 가중치 · 기업 데이터 보안, SSD가 고객 신뢰 체계 안으로
-s = d.slide(8, "참고 · 보안 기회", "온프렘 AI가 커질수록 모델 가중치와 기업 데이터를 함께 지켜야 하므로,\nSSD도 고객의 키 · 증명 체계 안에 들어가야 합니다")
+s = d.slide(7, "참고 · 보안 기회", "온프렘 AI가 커질수록 모델 가중치와 기업 데이터를 함께 지켜야 하므로,\nSSD도 고객의 키 · 증명 체계 안에 들어가야 합니다")
 S_A3 = s
 SP1, SW1 = MX, 5.30
 SP2, SW2 = SP1 + SW1 + 0.30, 5.70
@@ -1052,7 +1052,7 @@ label_box(s, SP3, 8.20, SW3, 0.62, [[("Dell 서버: ", 15, False, GRAY), ("삼�
 d.band(s, 9.44, 0.80, "기회", "보안은 표준으로 정하되, 고객 · OEM의 키 · 증명 체계에 함께 들어가야 팔립니다")
 d.footer(s, "출처: McKinsey 소버린 AI(2025~30) · Gartner(온프렘 AI 2→20%+) · NVIDIA FY26 · Dell FQ2'27 · Arqit/Intel · Cloudian · IDC/CCC(설문, 벤더 후원 포함) · Llama 405B FP16 · "
             "OCP L.O.C.K. 사양 · DMTF DSP0286 · 삼성 PM1763 · Dell KB(SPDM) · 모두 검색 확인 등급, 일부 원문 확인")
-d.notes(s, "참고 8장은 보안 기회입니다. 소버린 AI 시장은 2030년까지 약 3배로 커지고, AI를 자기 데이터센터에서 직접 돌리는 기업은 2025년 약 2퍼센트에서 2028년 20퍼센트 이상이 됩니다. "
+d.notes(s, "참고 7장은 보안 기회입니다. 소버린 AI 시장은 2030년까지 약 3배로 커지고, AI를 자기 데이터센터에서 직접 돌리는 기업은 2025년 약 2퍼센트에서 2028년 20퍼센트 이상이 됩니다. "
         "온프렘 AI 데이터센터에는 모델 제공자의 가중치와 기업의 민감 데이터가 함께 놓이므로 보안이 핵심이고, 설문에서도 소버니티와 프라이버시가 AI 과제 지연의 1위 요인입니다. 설문 상당수는 벤더 후원입니다. "
         "가중치 보호는 TEE 안에서 푸는 구조라 SSD 혼자 지킬 수 없고, SSD는 고객의 신뢰 체계에 들어가야 합니다. 기밀 VM 직결 TDISP는 PM1763이 발표했고, 키 관리 표준 OCP L.O.C.K.는 삼성이 공저했습니다. 반면 Dell 서버에서 PM9D3a가 SPDM 미지원으로 기능이 실패한 사례도 있습니다. "
         "표준만으로는 부족하고, 고객과 OEM의 키와 증명 체계에 함께 들어가야 팔립니다.")
@@ -1066,7 +1066,6 @@ CP = CR + WR + 0.46                     # ③ 사람 (오른쪽)
 WP = RIGHT - CP
 BOT4 = 7.40                             # 패널 아래 끝 (아래에 고객 전문가 조직 제언 띠, 2026-10-19)
 BENCH_Y, NOW_Y, NEXT_Y = 2.96, 3.44, 5.12
-S4_VARIANT = os.environ.get("S4_VARIANT", "A")
 
 
 def tag(s, x, y, text, hot):
@@ -1180,7 +1179,7 @@ for i in range(3):
     rect(s, KX[1] + KW - 0.56, KY + 0.12 + i * 0.12, 0.40, 0.09, fill=BLUE if i != 1 else BLUE_T2, shape=RR)
 rect(s, KX[2] + KW - 0.60, KY + 0.10, 0.46, 0.32, fill=WHITE, line=BLUE_T1, lw=1.5, shape=MSO_SHAPE.ROUNDED_RECTANGULAR_CALLOUT)
 
-# ---- 제언: 고객 전문가(고전가) Expert Group (2026-10-19 사용자 지시, 3가지 안)
+# ---- 제언: 고객 전문가(고전가) Expert Group (2026-10-19 사용자 지시)
 EGY, EGB = BOT4 + 0.20, 9.42
 EGH = EGB - EGY
 TECH = ("기술", "아키텍트 수준", "SSD ↔ 호스트 시스템을 함께 이해 · 차세대 구조 공동 제안")
@@ -1220,7 +1219,8 @@ def roadmap(x, y, w, h, small=False):
         xs += tw + 0.10
 
 
-if S4_VARIANT == "A":            # 가로 흐름: 제언 → 기술 · 문화 → 고객 사이트
+# 가로 흐름: 제언 → 기술 · 문화 → 고객 사이트 (2026-10-19 사용자 선택 A안)
+if True:
     TW_ = 3.30
     eg_title(MX, EGY, TW_, EGH)
     x = MX + TW_ + 0.34
@@ -1238,190 +1238,18 @@ if S4_VARIANT == "A":            # 가로 흐름: 제언 → 기술 · 문화 �
     xr = x + 2 * PWD + 0.16 + 0.34
     d.chevron(s, xr - 0.26, EGY + EGH / 2 - 0.25, w=0.16, h=0.50)
     roadmap(xr, EGY, RIGHT - xr, EGH)
-elif S4_VARIANT == "B":          # T자형 인재상: 문화(넓이) × 기술(깊이)
-    TW_ = 3.30
-    eg_title(MX, EGY, TW_, EGH)
-    x = MX + TW_ + 0.34
-    d.chevron(s, x - 0.26, EGY + EGH / 2 - 0.25, w=0.16, h=0.50)
-    TWD = 9.10
-    pw__ = d.person(s, x + 0.10, EGY + 0.30, 1.30, BLUE)
-    tb(s, x, EGY + 1.62, pw__ + 0.20, 0.30, [("고전가", 15, True, BLUE)], align=C, anchor=MID)
-    tx0 = x + pw__ + 0.40
-    tw_ = TWD - (tx0 - x)
-    rect(s, tx0, EGY, tw_, 0.70, fill=BLUE_T1, shape=RR)
-    tb(s, tx0 + 0.18, EGY, tw_ - 0.30, 0.70, [[("문화 · 넓이", 17, True, WHITE), ("   " + CULT[2], 15, False, WHITE)]], anchor=MID)
-    vw = 2.30
-    vx = tx0 + 0.30
-    rect(s, vx, EGY + 0.70, vw, EGH - 0.70, fill=BLUE, shape=RR)
-    tb(s, vx, EGY + 0.70, vw, EGH - 0.70, [("기술 · 깊이", 17, True, WHITE), ("SSD ↔ 호스트", 15, False, BLUE_T2)], align=C, anchor=MID, spacing=1.0)
-    tb(s, vx + vw + 0.20, EGY + 0.78, tw_ - vw - 0.70, EGH - 0.82, [("아키텍트 수준", 17, True, INK), ("차세대 구조를 고객과 함께 제안", 15, False, GRAY)], anchor=MID, spacing=1.0)
-    xr = x + TWD + 0.34
-    d.chevron(s, xr - 0.26, EGY + EGH / 2 - 0.25, w=0.16, h=0.50)
-    roadmap(xr, EGY, RIGHT - xr, EGH)
-else:                            # C: 고객 사이트마다 고전가 팀을 심는다
-    DW_ = 6.40
-    rect(s, MX, EGY, DW_, EGH, fill=BLUE, shape=RR)
-    label_box(s, MX + 0.16, EGY + 0.14, 0.74, 0.34, [("제언", 15, True, BLUE)], fill=WHITE)
-    tb(s, MX + 1.02, EGY + 0.08, DW_ - 1.10, 0.46, [[("고객 전문가(고전가)", 20, True, WHITE), ("  Expert Group", 16, True, BLUE_T2)]], anchor=MID)
-    for k, (tg, hd_, kw) in enumerate([TECH, CULT]):
-        yy = EGY + 0.62 + k * 0.56
-        label_box(s, MX + 0.16, yy, 0.74, 0.40, [(tg, 15, True, BLUE)], fill=WHITE)
-        tb(s, MX + 1.02, yy - 0.04, DW_ - 1.10, 0.48, [[(hd_, 16, True, WHITE), ("  " + kw.split(" · ")[0], 15, False, BLUE_T2)]], anchor=MID)
-    x = MX + DW_ + 0.34
-    d.chevron(s, x - 0.26, EGY + EGH / 2 - 0.25, w=0.16, h=0.50)
-    tb(s, x, EGY - 0.02, RIGHT - x, 0.34, [[("고객 사이트마다 신설", 15, True, BLUE), ("  Google · Meta로 시작 → 다른 하이퍼스케일러로", 15, False, GRAY)]], anchor=MID)
-    SITES = [("google", True), ("meta", True), ("microsoft", False), ("aws", False), (None, False)]
-    sw_ = (RIGHT - x - 0.40 - 4 * 0.14) / 5
-    sx = x
-    for i, (lg, on) in enumerate(SITES):
-        if i == 2:
-            d.arrow_r(s, sx + 0.04, EGY + 0.36 + (EGH - 0.40) / 2 - 0.13, 0.32, 0.26, fill=BLUE_T2)
-            sx += 0.40
-        yy = EGY + 0.36
-        hh = EGH - 0.36
-        rect(s, sx, yy, sw_, hh, fill=TINT if on else WHITE, line=BLUE if on else BLUE_T1, lw=1.5 if on else 1.0, shape=RR, dash=not on)
-        if lg:
-            d.fit(s, d.logo(lg), sx + 0.12, yy + 0.08, sw_ - 0.24, 0.38)
-        else:
-            tb(s, sx, yy + 0.04, sw_, 0.42, [("다른 하이퍼스케일러", 15, True, GRAY)], align=C, anchor=MID)
-        px_ = sx + (sw_ - 3 * 0.30) / 2
-        for j in range(3):
-            d.person(s, px_ + j * 0.31, yy + 0.58, 0.44, (BLUE if j == 0 else BLUE_T1) if on else BLUE_T2)
-        sx += sw_ + 0.14
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
-d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 추론 스택 지도(2026-09) · 로고는 식별 표시")
+d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 추론 스택 지도(2026-09) · 고객 전문가(고전가) 조직은 과제팀 제언 · 로고는 식별 표시")
 d.notes(s, "4장 실행 전략입니다. 세 기술의 효과는 고객 시스템 안에서 나오므로, 전략 고객과 계약, 역량, 사람으로 함께 설계합니다. "
         "첫째 계약입니다. 지금의 Multi-Year Deal은 수량과 가격만 약속합니다. Micron은 Anthropic과의 전략적 계약에서 다년 공급 위에 공동 설계와 운영 통합을 묶었습니다. 우리도 MYD 위에 기술 협력을 쌓겠습니다. "
-        "둘째 역량입니다. 추론 시스템을 여섯 층으로 보면, 삼성은 NAND와 SSD 펌웨어가 강점이고, KV 캐시 관리자, 전송 I/O, 커널에는 LMCache FDP 머지, xNVMe 같은 일부 기여가 있으며, 추론 엔진은 비어 있습니다. "
-        "핵심은 데이터의 수명 정보가 KV 캐시 관리자 층에 있는데, 그것을 SSD 배치로 내려보내는 경로가 아직 없다는 점입니다. 3장의 개선은 이 경로가 있어야 나오므로, 스택 전체를 읽고 이 경로를 고객과 함께 만드는 것이 역량입니다. "
-        "아래 화두도 드립니다. 고객 관계를 경영진과 영업에서 엔지니어와 엔지니어 사이까지 넓힐 준비가 되어 있는지입니다. "
-        "셋째 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir와 OpenAI의 FDE처럼 삼성 엔지니어가 고객 AI 데이터센터 안에서 워크로드 측정과 분석, 호스트 소프트웨어 스택 최적화와 평가, 차세대 제품 기술 교류를 합니다. 누가 이 일을 하고 누구와 시작할지는 다음 장에서 말씀드리겠습니다. "
+        "둘째 역량입니다. 추론 시스템을 여섯 층으로 보면, 삼성은 NAND와 SSD 펌웨어가 강점이고, KV 캐시 관리자, 전송 I/O, 커널에는 일부 기여가 있으며, 추론 엔진은 비어 있습니다. 데이터의 수명 정보는 KV 캐시 관리자 층에 있는데 그것을 SSD 배치로 내려보내는 경로가 아직 없어서, 스택 전체를 읽고 이 경로를 고객과 함께 만드는 것이 역량입니다. 고객 관계도 엔지니어와 엔지니어 사이까지 넓혀야 합니다. "
+        "셋째 사람입니다. 스펙 문서로는 명시된 요구만 옵니다. Palantir의 FDE처럼 고객 안에 상주해 워크로드 측정과 분석, 호스트 소프트웨어 스택 최적화와 평가, 차세대 제품 기술 교류를 합니다. "
+        "[제언] 이를 실행할 조직으로 고객 전문가, 줄여서 고전가 Expert Group을 고객 사이트에 새로 만들 것을 제안합니다. 기술로는 SSD와 호스트 시스템을 함께 이해하고 차세대 구조를 고객과 함께 제안하는 아키텍트 수준이어야 하고, 문화로는 고객과 언어 소통에 막힘이 없어야 하며 문화적 배경까지 같다면 금상첨화입니다. 구글과 메타 사이트에서 먼저 시작하고, 이후 다른 하이퍼스케일러로 넓힙니다. "
         "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다.")
 
-# =============================================================== 5 실행안: 고객별 Pod × 협업 고객 확장 (2026-10-18 사용자 지시: 한 장, 왼쪽 2/3 · 오른쪽 1/3, 그림 보강)
-s = d.slide(5, "실행안", "고객 한 곳에 Pod 하나로 고객 안에 들어가고,\n구글 · 메타에서 시작해 협업 고객 수만큼 조직을 키웁니다")
-S_PLAN = s
-A1 = MX
-AW = (CW - 0.46) * 2 / 3
-A2 = A1 + AW + 0.46
-AW2 = RIGHT - A2
-TOP5, BOT5 = 2.96, 9.34
-ORG_C = {"현지": BLUE, "본사": BLUE_T1}
-
-# ---- ① Pod = 고객 한 곳: 누가 어느 층에서 무엇을 하나
-d.panel_head(s, A1, AW, 1, "Pod 하나 = 고객 한 곳, 5~6명")
-wp_, _ = d.img(s, d.logo("palantir"), A1, TOP5 + 0.02, h=0.32)
-px_ = A1 + wp_ + 0.14
-for nm, kw, col in [("Echo", "문제 · 도입 · 성과", BLUE), ("Delta", "설계 · 구현 · 배포", BLUE_T1)]:
-    label_box(s, px_, TOP5 + 0.01, 0.84, 0.36, [(nm, 15, True, WHITE)], fill=col)
-    tb(s, px_ + 0.90, TOP5 - 0.01, 2.20, 0.40, [(kw, 15, False, GRAY)], anchor=MID)
-    px_ += 3.10
-lgx = A1 + AW - 3.10
-for k, (nm, col) in enumerate([("현지 채용", BLUE), ("본사 파견", BLUE_T1)]):
-    rect(s, lgx + k * 1.55, TOP5 + 0.10, 0.20, 0.20, fill=col, shape=MSO_SHAPE.OVAL)
-    tb(s, lgx + k * 1.55 + 0.26, TOP5 - 0.01, 1.25, 0.40, [(nm, 15, False, GRAY)], anchor=MID)
-DCY, DCH = TOP5 + 0.56, 4.34
-rect(s, A1, DCY, AW, DCH, fill=WHITE, line=BLUE, lw=1.75, shape=RR)
-tb(s, A1 + 0.18, DCY + 0.06, 4.0, 0.36, [("고객 AI 데이터센터 안", 16, True, BLUE)], anchor=MID)
-# Echo 줄: Pod 리드 ↔ 고객 엔지니어 · 결정권자
-EY = DCY + 0.48
-EH = 1.06
-rect(s, A1 + 0.14, EY, AW - 0.28, EH, fill=TINT, shape=RR)
-d.person(s, A1 + 0.34, EY + 0.12, 0.82, BLUE)
-label_box(s, A1 + 0.98, EY + 0.14, 0.84, 0.34, [("Echo", 15, True, WHITE)], fill=BLUE)
-tb(s, A1 + 0.98, EY + 0.52, 2.20, 0.40, [("Pod 리드", 17, True, INK)], anchor=MID)
-LX0, LX1 = A1 + 3.20, A1 + 6.90
-rect(s, LX0, EY + 0.55, LX1 - LX0, 0.05, fill=BLUE)
-for xx_ in (LX0, LX1 - 0.16):
-    rect(s, xx_, EY + 0.49, 0.16, 0.16, fill=BLUE, shape=MSO_SHAPE.OVAL)
-tb(s, LX0, EY + 0.08, LX1 - LX0, 0.38, [("문제 정의 · 우선순위 · 성과 → RFQ", 15, True, BLUE)], align=C, anchor=MID)
-tb(s, LX0, EY + 0.66, LX1 - LX0, 0.36, [("기술 출신 · 현지 언어 · 문화", 15, False, GRAY)], align=C, anchor=MID)
-for j in range(3):
-    d.person(s, A1 + 7.10 + j * 0.56, EY + 0.18, 0.72, GRAY_2)
-tb(s, A1 + 8.86, EY + 0.06, AW - 9.0, 0.94, [("고객 엔지니어", 16, True, INK), ("결정권자", 16, True, INK)], anchor=MID, spacing=1.0)
-# Delta 줄: 각자 일하는 층 + 그 층의 실물
-LAYERS = [("KV 캐시 · 커널", "배치 코드 · 업스트림 머지", "현지", 2, "시스템 SW", "server"),
-          ("SSD 펌웨어", "FDP · pSLC 튜닝", "본사", 2, "NAND · FW", "ssd"),
-          ("워크로드 데이터", "WAF · 꼬리 지연 실측", "현지", 1, "분석", "chart")]
-LY0, LH, LG = EY + EH + 0.10, 0.80, 0.06
-IMX = A1 + AW - 2.34                      # 실물 그림 칸
-for r, (layer, act, org, n, who, pic) in enumerate(LAYERS):
-    yy = LY0 + r * (LH + LG)
-    col = ORG_C[org]
-    pxx = A1 + 0.30
-    for j in range(n):
-        pw__ = d.person(s, pxx, yy + 0.10, LH - 0.20, col)
-        pxx += pw__ + 0.04
-    label_box(s, A1 + 1.24, yy + 0.08, 0.84, 0.32, [("Delta", 15, True, WHITE)], fill=BLUE_T1)
-    tb(s, A1 + 1.24, yy + 0.42, 1.90, 0.36, [(who, 16, True, INK)], anchor=MID)
-    d.arrow_r(s, A1 + 3.20, yy + LH / 2 - 0.14, 0.56, 0.28, fill=BLUE_T2)
-    label_box(s, A1 + 3.90, yy + 0.07, 2.70, LH - 0.14, [(layer, 17, True, WHITE)], fill=BLUE if r < 2 else GRAY_2)
-    tb(s, A1 + 6.76, yy, IMX - (A1 + 6.76) - 0.10, LH, [(act, 16, True, BLUE)], anchor=MID)
-    if pic == "server":
-        d.fit(s, d.part("server"), IMX, yy + 0.02, 2.16, LH - 0.04)
-    elif pic == "ssd":
-        d.fit(s, os.path.join(ASSETS, "products", "p_pm1753.png"), IMX, yy + 0.02, 2.16, LH - 0.04)
-    else:                                   # 쓰기 크기 분포 막대 + 수명 곡선
-        hb = [0.30, 0.75, 0.55, 0.95, 0.40, 0.65, 0.25]
-        bw_, bx0 = 0.22, IMX + 0.20
-        base = yy + LH - 0.08
-        rect(s, bx0 - 0.06, base, 7 * (bw_ + 0.06) + 0.06, 0.02, fill=GRAY_2)
-        for i, hh in enumerate(hb):
-            rect(s, bx0 + i * (bw_ + 0.06), base - hh * (LH - 0.20), bw_, hh * (LH - 0.20), fill=BLUE_T1 if i in (1, 3, 5) else GRAY_2)
-# 본사 후방 지원 (Palantir Dev): 본사의 NAND · SSD
-HQ5 = DCY + DCH + 0.56
-rect(s, A1 + AW / 2 - 0.20, DCY + DCH + 0.04, 0.40, 0.48, fill=BLUE_T2, shape=MSO_SHAPE.UP_DOWN_ARROW)
-rect(s, A1, HQ5, AW, BOT5 - HQ5, fill=PALE, line=BLUE_T1, lw=1.25, shape=RR, dash=True)
-HQH = BOT5 - HQ5
-d.fit(s, d.logo("samsung"), A1 + 0.22, HQ5 + 0.24, 1.40, HQH - 0.48, align="left")
-label_box(s, A1 + 1.82, HQ5 + (HQH - 0.34) / 2, 0.70, 0.34, [("Dev", 15, True, WHITE)], fill=GRAY_2)
-tb(s, A1 + 2.64, HQ5, 6.0, HQH, [[("본사 후방 지원", 17, True, INK), ("   재현 · 검증 · 로드맵 반영", 15, False, GRAY)]], anchor=MID)
-d.fit(s, d.part("nand"), A1 + AW - 3.20, HQ5 + 0.08, 1.30, HQH - 0.16)
-d.fit(s, d.part("ssd"), A1 + AW - 1.86, HQ5 + 0.08, 1.70, HQH - 0.16)
-d.chevron(s, A2 - 0.31, 6.10, w=0.16, h=0.50)
-
-# ---- ② 고객이 늘수록 Pod를 더한다 (단계 카드 3장, 위에서 아래로)
-d.panel_head(s, A2, AW2, 2, "고객 수만큼 Pod")
-tb(s, A2, TOP5 - 0.02, AW2, 0.40, [("인력 ≈ 고객 수 × 5~6명 + 공통 인력", 16, False, GRAY)], anchor=MID)
-STEPS = [("1단계 · 미국", ["google", "meta"], [], 2, "약 20명"),
-         ("2단계 · +중국", ["nvidia", "openai", "*Alibaba", "*ByteDance"], ["*Alibaba", "*ByteDance"], 6, "약 50명"),
-         ("3단계", ["microsoft", "aws", "*네오클라우드", "*DeepSeek"], ["*DeepSeek"], 10, "약 80명")]
-SCG = 0.18
-SCH = (BOT5 - (TOP5 + 0.56) - 2 * SCG) / 3
-prev = 0
-for k, (hdr, logos, cn, npod, ppl) in enumerate(STEPS):
-    y0 = TOP5 + 0.56 + k * (SCH + SCG)
-    rect(s, A2, y0, AW2, SCH, fill=TINT if k == 0 else WHITE, line=BLUE if k == 0 else BLUE_T1, lw=1.5, shape=RR)
-    label_box(s, A2 + 0.14, y0 + 0.12, 2.10, 0.40, [(hdr, 16, True, WHITE)], fill=BLUE if k == 0 else BLUE_T1)
-    tb(s, A2 + AW2 - 2.0, y0 + 0.06, 1.86, 0.52, [(ppl, 22, True, BLUE)], align=R, anchor=MID)
-    TW, TH = (AW2 - 0.28 - 0.08 * 3) / 4, 0.50
-    for i, lg in enumerate(logos):
-        tx, ty = A2 + 0.14 + i * (TW + 0.08), y0 + 0.64
-        rect(s, tx, ty, TW, TH, fill=WHITE, line=BLUE_T1 if lg in cn else LINE, lw=1.0, shape=RR, dash=lg in cn)
-        if lg.startswith("*"):
-            tb(s, tx, ty, TW, TH, [(lg[1:], 15, True, INK)], align=C, anchor=MID)
-        else:
-            d.fit(s, d.logo(lg), tx + 0.08, ty + 0.09, TW - 0.16, TH - 0.18)
-    PS, PG = 0.30, 0.07
-    py_ = y0 + SCH - 0.46
-    for i in range(npod):
-        rect(s, A2 + 0.14 + i * (PS + PG), py_, PS, PS, fill=BLUE if i >= prev else BLUE_T2, shape=RR)
-    tb(s, A2 + 0.14 + 10 * (PS + PG) + 0.04, py_ - 0.04, AW2 - 0.32 - 10 * (PS + PG), 0.38, [[("Pod ", 15, False, GRAY), (str(npod), 17, True, INK)]], align=R, anchor=MID)
-    prev = npod
-
-d.band(s, 9.60, 0.80, "원칙", "고객 한 곳에 Pod 하나, 협업 고객이 늘수록 조직을 키웁니다", size=24)
-d.footer(s, "벤치마크: Palantir Echo · Delta 채용 공고 · 고객 근거: Meta CacheLib FDP · NVIDIA Dynamo · CMX · Alibaba Tair KVCache · Microsoft OCP FDP · AWS Nitro SSD · DeepSeek 3FS · "
-            "2단계 AI 랩은 OpenAI 또는 Anthropic · 순서 · 인원은 과제팀 제안 · 중국은 법무 검토 전제 · 제품 이미지는 형태 재현")
-d.notes(s, "5장은 실행안입니다. 원칙은 하나, 고객 한 곳에 Pod 하나입니다. "
-        "왼쪽은 Pod가 고객 데이터센터 안에서 일하는 모습입니다. Palantir처럼 두 직무를 짝으로 둡니다. Echo인 Pod 리드는 고객의 문제를 정의하고 고객 엔지니어와 결정권자를 이어 성과를 RFQ로 가져갑니다. 기술 출신이면서 현지 언어와 문화로 막힘없이 교류하는 사람입니다. "
-        "Delta는 층마다 붙습니다. 현지 시스템 SW 두 명은 KV 캐시와 커널에 배치 코드를 넣고, 본사에서 파견한 NAND와 펌웨어 전문가는 FDP와 pSLC를 튜닝하며, 분석가는 WAF와 꼬리 지연 효과를 실측합니다. 본사 후방 지원은 Palantir의 제품 엔지니어처럼 현장 해법을 재현하고 검증해 로드맵에 넣습니다. "
-        "오른쪽은 확장입니다. 1단계는 미국에서 구글과 메타로 시작합니다. 둘 다 SSD와 인프라를 직접 설계하고, 메타와는 CacheLib FDP 공동 설계 이력이 있습니다. 약 20명입니다. "
-        "2단계에는 KV 캐시 관리자 층의 표준을 만드는 NVIDIA, 추론 수요가 가장 큰 AI 랩, 그리고 중국 거점을 열어 Alibaba와 ByteDance로 넓혀 약 50명, 3단계에는 Microsoft, AWS, GPU 클라우드, DeepSeek와 Tencent까지 약 80명입니다. "
-        "협업 고객이 하나 늘 때마다 Pod 하나를 더하는 것이 조직을 키우는 기준입니다. 순서와 인원은 과제팀 제안입니다.")
-
 # =============================================================== 7 참고: eSSD 수요처별 전망
-s = d.slide(9, "참고 · 수요 전망", "eSSD 수요는 2030년까지 약 6배로 늘고,\n가장 큰 몫은 AI 추론에서 나옵니다")
+s = d.slide(8, "참고 · 수요 전망", "eSSD 수요는 2030년까지 약 6배로 늘고,\n가장 큰 몫은 AI 추론에서 나옵니다")
 S_A4 = s
 
 # 막대: McKinsey(2024-12) 2024 · 2030 끝값, 2025~2029는 수요처별 연평균 성장률 보간(산술)
@@ -1523,14 +1351,14 @@ tb(s, KX, 8.98, KW, 0.36, [("에이전트는 별도 전망 없음 (추론 · 범
 d.band(s, 9.44, 0.80, "참고", "2030년 AI 추론은 eSSD 수요의 41%로, 범용과 비슷한 비중이 됩니다")
 d.footer(s, "출처: McKinsey(2024-12, 범용 = 총량 1,078 − 학습 − 추론 산술, 2025~29 연평균 보간 산술, 2026 비중도 보간 기준) · Kioxia(2026-06, TechInsights 인용 DC 플래시) · "
             "JPM(2026-01) · 기관마다 정의 다름, 모두 검색 확인")
-d.notes(s, "참고 9장은 응용별 eSSD 수요 전망입니다. McKinsey 기준 eSSD 수요는 2024년 181엑사바이트에서 2030년 1,078엑사바이트로 약 6배가 되고, 가장 큰 몫은 AI 추론으로 6에서 447엑사바이트, 약 75배입니다. "
+d.notes(s, "참고 8장은 응용별 eSSD 수요 전망입니다. McKinsey 기준 eSSD 수요는 2024년 181엑사바이트에서 2030년 1,078엑사바이트로 약 6배가 되고, 가장 큰 몫은 AI 추론으로 6에서 447엑사바이트, 약 75배입니다. "
         "비중으로는 범용이 85에서 47퍼센트로 줄고 추론이 9에서 41퍼센트로 늘어납니다. 1장의 TechInsights 전망은 2030년 추론 79퍼센트로 더 가파릅니다. "
         "마름모는 2026년 최신 전망입니다. JPM과 Kioxia의 2028년 약 900엑사바이트는 2024년 경로보다 약 1년 반 앞당겨진 규모입니다. 기관마다 정의가 달라 방향만 비교하며, 수치는 검색으로 확인한 2차 자료입니다.")
 
 for _sh in LINK3:
     _sh.click_action.target_slide = S_A1
 # 발표 순서: 1 현황 · 2 추론 대응 · 3 지표 · 포트폴리오 확장 · 4 실행, 참고 5 당위성 · 6 사업 기회 · 7 보안 기회 · 8 수요 전망
-ORDER = [S1, S2_SLIDE, S3_SLIDE, S_EXEC, S_PLAN, S_A1, S_A2, S_A3, S_A4]
+ORDER = [S1, S2_SLIDE, S3_SLIDE, S_EXEC, S_A1, S_A2, S_A3, S_A4]
 _want = [sl.slide_id for sl in ORDER]
 _lst = d.prs.slides._sldIdLst
 _els = {int(el.get("id")): el for el in list(_lst)}
