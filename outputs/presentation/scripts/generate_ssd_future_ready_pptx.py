@@ -1064,8 +1064,9 @@ C1, W1 = MX, 4.80
 CR, WR = C1 + W1 + 0.46, 6.05          # ② 역량 (가운데, 넓게)
 CP = CR + WR + 0.46                     # ③ 사람 (오른쪽)
 WP = RIGHT - CP
-BOT4 = 9.34                             # 패널 아래 끝 (열 캡션 삭제로 확장)
-BENCH_Y, NOW_Y, NEXT_Y = 2.96, 3.48, 5.30
+BOT4 = 7.40                             # 패널 아래 끝 (아래에 고객 전문가 조직 제언 띠, 2026-10-19)
+BENCH_Y, NOW_Y, NEXT_Y = 2.96, 3.44, 5.12
+S4_VARIANT = os.environ.get("S4_VARIANT", "A")
 
 
 def tag(s, x, y, text, hot):
@@ -1079,29 +1080,30 @@ tb(s, C1 + wm + 0.08, BENCH_Y - 0.02, 0.40, 0.38, [("↔", 20, True, GRAY)], ali
 wa, _ = d.img(s, d.logo("anthropic"), C1 + wm + 0.56, BENCH_Y + 0.08, h=0.19)
 tb(s, C1 + wm + 0.56 + wa + 0.14, BENCH_Y - 0.02, 1.2, 0.38, [("2026-06", 16, False, GRAY)], anchor=MID)
 tag(s, C1, NOW_Y, "지금", False)
-label_box(s, C1, NOW_Y + 0.44, W1, 0.60, [("Multi-Year Deal (MYD)", 20, True, WHITE)], fill=GRAY_2)
-tb(s, C1, NOW_Y + 1.10, W1, 0.36, [("수량과 가격만 약속합니다", 18, False, GRAY)], align=C)
-d.down(s, C1 + W1 / 2, NEXT_Y - 0.32)
+label_box(s, C1, NOW_Y + 0.40, W1, 0.54, [("Multi-Year Deal (MYD)", 20, True, WHITE)], fill=GRAY_2)
+tb(s, C1, NOW_Y + 0.98, W1, 0.36, [("수량과 가격만 약속합니다", 18, False, GRAY)], align=C)
+d.down(s, C1 + W1 / 2, NEXT_Y - 0.30)
 tag(s, C1, NEXT_Y, "앞으로: 전략적 계약", True)
 SW1 = W1 - 1.05
+IH, IS = 0.42, 0.48
 for i, (t, st) in enumerate([("자본 연계 (선택)", "opt"), ("운영 통합", "t1"), ("공동 설계 · 최적화", "hot"), ("MYD (다년 물량)", "base")]):
-    yy = NEXT_Y + 0.44 + i * 0.64
+    yy = NEXT_Y + 0.42 + i * IS
     if st == "opt":
-        label_box(s, C1, yy, SW1, 0.54, [(t, 18, False, GRAY)], fill=WHITE, line=GRAY_2, dash=True)
+        label_box(s, C1, yy, SW1, IH, [(t, 17, False, GRAY)], fill=WHITE, line=GRAY_2, dash=True)
     elif st == "base":
-        label_box(s, C1, yy, SW1, 0.54, [(t, 20, True, WHITE)], fill=GRAY_2)
+        label_box(s, C1, yy, SW1, IH, [(t, 18, True, WHITE)], fill=GRAY_2)
     else:
-        label_box(s, C1, yy, SW1, 0.54, [(t, 20, True, WHITE)], fill=BLUE if st == "hot" else BLUE_T1)
-by0, by1 = NEXT_Y + 0.44 + 0.64, NEXT_Y + 0.44 + 2 * 0.64 + 0.54
+        label_box(s, C1, yy, SW1, IH, [(t, 18, True, WHITE)], fill=BLUE if st == "hot" else BLUE_T1)
+by0, by1 = NEXT_Y + 0.42 + IS, NEXT_Y + 0.42 + 2 * IS + IH
 rect(s, C1 + SW1 + 0.10, by0, 0.035, by1 - by0, fill=BLUE)
 rect(s, C1 + SW1 + 0.02, by0, 0.10, 0.035, fill=BLUE)
 rect(s, C1 + SW1 + 0.02, by1 - 0.035, 0.10, 0.035, fill=BLUE)
-tb(s, C1 + SW1 + 0.20, by0, 0.85, by1 - by0, [("기술", 18, True, BLUE), ("협력", 18, True, BLUE)], anchor=MID, spacing=1.0)
-d.chevron(s, CR - 0.31, 6.10, w=0.16, h=0.50)
+tb(s, C1 + SW1 + 0.20, by0, 0.85, by1 - by0, [("기술", 17, True, BLUE), ("협력", 17, True, BLUE)], anchor=MID, spacing=0.95)
+d.chevron(s, CR - 0.31, 5.10, w=0.16, h=0.50)
 
 # ---- ② 역량: 추론 스택 6층 × 삼성의 지금 위치 (근거: kv-cache-qlc-tech-stack-vendor-capability-2026-09 §1)
 d.panel_head(s, CR, WR, 2, "역량: 추론 스택 전체를 보는 눈")
-d.chevron(s, CP - 0.31, 6.10, w=0.16, h=0.50)
+d.chevron(s, CP - 0.31, 5.10, w=0.16, h=0.50)
 tb(s, CR, BENCH_Y - 0.02, WR, 0.38, [[("수명 정보는 ", 16, False, GRAY), ("KV 캐시 층", 17, True, INK), ("에, 배치는 ", 16, False, GRAY), ("SSD", 17, True, INK), ("에 있다", 16, False, GRAY)]], anchor=MID)
 STK = [("추론 엔진", "vLLM · SGLang · TensorRT-LLM", "gap"),
        ("KV 캐시 관리자", "Dynamo · LMCache · Mooncake", "part"),
@@ -1110,7 +1112,7 @@ STK = [("추론 엔진", "vLLM · SGLang · TensorRT-LLM", "gap"),
        ("SSD 펌웨어", "FDP · pSLC · Large IU · GC", "on"),
        ("NAND", "TLC · QLC · Z-NAND", "on")]
 SBW = 4.10                       # 층 막대 폭
-SY0, SRH, SG = NOW_Y - 0.02, 0.64, 0.07
+SY0, SRH, SG = NOW_Y - 0.02, 0.56, 0.04
 for r, (nm, kw, st) in enumerate(STK):
     yy = SY0 + r * (SRH + SG)
     if st == "on":
@@ -1122,13 +1124,12 @@ for r, (nm, kw, st) in enumerate(STK):
     else:
         rect(s, CR, yy, SBW, SRH, fill=WHITE, line=GRAY_2, lw=1.25, shape=RR, dash=True)
         c1, c2, pill, pc, ptc = INK, GRAY, "공백", WHITE, GRAY
-    tb(s, CR + 0.16, yy + 0.02, SBW - 1.10, 0.32, [(nm, 17, True, c1)], anchor=MID)
-    tb(s, CR + 0.16, yy + 0.32, SBW - 0.90, 0.30, [(kw, 15, False, c2)], anchor=MID)
+    tb(s, CR + 0.16, yy, SBW - 1.10, 0.30, [(nm, 16, True, c1)], anchor=MID)
+    tb(s, CR + 0.16, yy + 0.27, SBW - 0.90, 0.28, [(kw, 15, False, c2)], anchor=MID)
     if st == "gap":
-        label_box(s, CR + SBW - 0.86, yy + 0.14, 0.74, 0.36, [(pill, 15, True, ptc)], fill=pc, line=GRAY_2, dash=True)
+        label_box(s, CR + SBW - 0.86, yy + 0.11, 0.74, 0.34, [(pill, 15, True, ptc)], fill=pc, line=GRAY_2, dash=True)
     else:
-        label_box(s, CR + SBW - 0.86, yy + 0.14, 0.74, 0.36, [(pill, 15, True, ptc)], fill=pc)
-# 수명 정보가 KV 캐시 층에서 SSD 펌웨어까지 내려가야 한다 (지금은 그 코드가 없다)
+        label_box(s, CR + SBW - 0.86, yy + 0.11, 0.74, 0.34, [(pill, 15, True, ptc)], fill=pc)
 ax_ = CR + SBW + 0.14
 ya = SY0 + 1 * (SRH + SG) + SRH / 2
 yb = SY0 + 4 * (SRH + SG) + SRH / 2
@@ -1136,89 +1137,157 @@ rect(s, ax_, ya - 0.10, 0.42, yb - ya + 0.20, fill=BLUE_T2, shape=MSO_SHAPE.DOWN
 tb(s, ax_ + 0.48, ya - 0.12, CR + WR - ax_ - 0.48, 0.62, [("수명 정보", 16, True, BLUE), ("prefix · 세션", 15, False, GRAY)], anchor=MID, spacing=0.95)
 tb(s, ax_ + 0.48, (ya + yb) / 2 - 0.42, CR + WR - ax_ - 0.48, 0.84, [("함께", 16, True, BLUE), ("만들", 16, True, BLUE), ("경로", 16, True, BLUE)], anchor=MID, spacing=0.95)
 tb(s, ax_ + 0.48, yb - 0.30, CR + WR - ax_ - 0.48, 0.62, [("SSD 배치", 16, True, BLUE), ("FDP 핸들", 15, False, GRAY)], anchor=MID, spacing=0.95)
-# 화두: CRM의 범위가 엔지니어까지 넓어진다 (관계도)
-QY = SY0 + 6 * (SRH + SG) + 0.10
-QH = BOT4 - QY
-rect(s, CR, QY, WR, QH, fill=WHITE, line=BLUE, lw=1.5, shape=RR)
-label_box(s, CR + 0.18, QY + 0.10, 0.80, 0.36, [("화두", 16, True, WHITE)], fill=BLUE)
-tb(s, CR + 1.08, QY + 0.08, WR - 1.2, 0.40, [[("고객 관계(CRM)를 ", 17, True, INK), ("엔지니어까지", 17, True, BLUE)]], anchor=MID)
-LCX, RCX, CHW, CHH2 = CR + 0.24, CR + 2.84, 1.16, 0.30
-CRM = [("경영진", "경영진", False), ("영업", "구매", False), ("엔지니어", "엔지니어", True)]
-RYS = [QY + 0.54 + i * 0.34 for i in range(3)]
-for i, (l_, r_, hot) in enumerate(CRM):
-    yy = RYS[i]
-    label_box(s, LCX, yy, CHW, CHH2, [(l_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
-    label_box(s, RCX, yy, CHW, CHH2, [(r_, 15, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
-    rect(s, LCX + CHW + 0.04, yy + CHH2 / 2 - (0.03 if hot else 0.01), RCX - LCX - CHW - 0.08, 0.06 if hot else 0.02, fill=BLUE if hot else GRAY_2)
-label_box(s, LCX + CHW + 0.10, RYS[2] + 0.01, RCX - LCX - CHW - 0.20, 0.28, [("언어 · 문화", 15, True, BLUE)], fill=WHITE, line=BLUE, lw=1.0)
-bx1 = RCX + CHW + 0.20
-for (y0_, y1_, col, lab, off) in [(RYS[0], RYS[1] + CHH2, GRAY_2, "지금", 0.0), (RYS[0], RYS[2] + CHH2, BLUE, "앞으로", 0.80)]:
-    xx = bx1 + off
-    rect(s, xx, y0_, 0.04, y1_ - y0_, fill=col)
-    rect(s, xx - 0.10, y0_, 0.12, 0.04, fill=col)
-    rect(s, xx - 0.10, y1_ - 0.04, 0.12, 0.04, fill=col)
-    tb(s, xx + 0.08, (y0_ + y1_) / 2 - 0.15, 0.80, 0.30, [(lab, 15, True, col)], anchor=MID)
+# 화두: 한 줄로 (2026-10-19 사용자 지시)
+HQY4 = SY0 + 6 * (SRH + SG) + 0.02
+label_box(s, CR, HQY4, 0.74, 0.34, [("화두", 15, True, WHITE)], fill=BLUE)
+tb(s, CR + 0.84, HQY4 - 0.02, WR - 0.84, 0.38, [[("고객 관계(CRM)를 ", 16, True, INK), ("엔지니어 ↔ 엔지니어", 16, True, BLUE), ("까지", 16, True, INK)]], anchor=MID)
 
 # ---- ③ 사람
 d.panel_head(s, CP, WP, 3, "사람: 고객 안에 상주 (FDE)")
 d.img(s, d.logo("palantir"), CP, BENCH_Y + 0.01, h=0.34)
 tb(s, CP + 0.44, BENCH_Y - 0.02, WP - 0.44, 0.38, [[("Palantir FDE", 18, True, INK), ("   Anthropic · OpenAI도 채택", 16, False, GRAY)]], anchor=MID)
 tag(s, CP, NOW_Y, "지금", False)
-BY = NOW_Y + 0.44
-rect(s, CP, BY, 1.70, 0.60, fill=WHITE, line=LINE, shape=RR)
-d.fit(s, d.logo("samsung"), CP + 0.15, BY + 0.13, 1.40, 0.34)
-label_box(s, CP + WP - 1.70, BY, 1.70, 0.60, [("고객", 20, True, INK)], fill=WHITE, line=LINE)
-rect(s, CP + 1.78, BY + 0.29, WP - 3.56, 0.03, fill=GRAY_2)
-rect(s, CP + WP / 2 - 0.22, BY + 0.02, 0.44, 0.56, fill=WHITE, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.FOLDED_CORNER)
-tb(s, CP, NOW_Y + 1.10, WP, 0.36, [("스펙 문서로 명시된 요구만 오갑니다", 18, False, GRAY)], align=C)
-d.down(s, CP + WP / 2, NEXT_Y - 0.32)
+BY = NOW_Y + 0.40
+rect(s, CP, BY, 1.70, 0.54, fill=WHITE, line=LINE, shape=RR)
+d.fit(s, d.logo("samsung"), CP + 0.15, BY + 0.11, 1.40, 0.32)
+label_box(s, CP + WP - 1.70, BY, 1.70, 0.54, [("고객", 20, True, INK)], fill=WHITE, line=LINE)
+rect(s, CP + 1.78, BY + 0.26, WP - 3.56, 0.03, fill=GRAY_2)
+rect(s, CP + WP / 2 - 0.20, BY + 0.03, 0.40, 0.48, fill=WHITE, line=GRAY_2, lw=1.25, shape=MSO_SHAPE.FOLDED_CORNER)
+tb(s, CP, NOW_Y + 0.98, WP, 0.36, [("스펙 문서로 명시된 요구만 오갑니다", 18, False, GRAY)], align=C)
+d.down(s, CP + WP / 2, NEXT_Y - 0.30)
 tag(s, CP, NEXT_Y, "앞으로: 고객 상주 협업의 세 가지 핵심 업무", True)
-BX0, BY0, BW = CP, NEXT_Y + 0.44, WP
+BX0, BY0, BW = CP, NEXT_Y + 0.42, WP
 BH = BOT4 - BY0
 rect(s, BX0, BY0, BW, BH, fill=TINT, line=BLUE, lw=1.5, shape=RR)
-tb(s, BX0 + BW - 3.3, BY0 + 0.06, 3.1, 0.32, [("고객 AI 데이터센터 안에서", 16, True, BLUE)], align=R, anchor=MID)
-KG = 0.30
-KW = (BW - 0.36 - 2 * KG) / 3
-KY, KH = BY0 + 0.44, BH - 0.58
-KX = [BX0 + 0.18 + k * (KW + KG) for k in range(3)]
+KG = 0.24
+KW = (BW - 0.28 - 2 * KG) / 3
+KX = [BX0 + 0.14 + k * (KW + KG) for k in range(3)]
+KY, KH = BY0 + 0.14, BH - 0.28
 for k, (obj, verb) in enumerate([("고객 워크로드", "측정 · 분석"), ("호스트 SW 스택", "최적화 · 평가"), ("차세대 제품", "기술 교류")]):
     x = KX[k]
     rect(s, x, KY, KW, KH, fill=WHITE, line=LINE, lw=0.75, shape=RR)
     rect(s, x + 0.12, KY + 0.12, 0.36, 0.36, fill=BLUE, shape=MSO_SHAPE.OVAL)
     tb(s, x + 0.12, KY + 0.12, 0.36, 0.36, [(str(k + 1), 16, True, WHITE)], align=C, anchor=MID)
-    tb(s, x + 0.08, KY + KH - 0.78, KW - 0.16, 0.72, [(obj, 16, False, GRAY), (verb, 19, True, BLUE)], align=C, anchor=MID, spacing=1.0)
+    tb(s, x + 0.06, KY + 0.52, KW - 0.12, KH - 0.58, [(obj, 15, False, GRAY), (verb, 18, True, BLUE)], align=C, anchor=MID, spacing=1.0)
     if k < 2:
-        d.chevron(s, x + KW + 0.07, KY + KH / 2 - 0.25, w=0.16, h=0.50, fill=BLUE_T1)
-PY, PH = KY + 0.54, KH - 1.36          # 그림 영역
-# ① 측정 · 분석: 쓰기 크기 분포 막대 + 돋보기
-x = KX[0]
-hb = [0.35, 0.80, 0.55, 0.95, 0.30, 0.60]
-bx0, bw_ = x + 0.30, 0.17
-base = PY + PH - 0.04
-rect(s, bx0 - 0.06, base, 6 * (bw_ + 0.06) + 0.06, 0.02, fill=GRAY_2)
-for i, hh in enumerate(hb):
-    rect(s, bx0 + i * (bw_ + 0.06), base - hh * (PH - 0.10), bw_, hh * (PH - 0.10), fill=BLUE_T1 if i in (1, 3) else GRAY_2)
-mg = 0.56
-mx_, my_ = x + KW - 0.98, PY + 0.02
-rect(s, mx_, my_, mg, mg, fill=None, line=BLUE, lw=3.0, shape=MSO_SHAPE.OVAL)
-hd = rect(s, mx_ + mg - 0.10, my_ + mg - 0.04, 0.34, 0.09, fill=BLUE)
+        d.chevron(s, x + KW + 0.05, KY + KH / 2 - 0.20, w=0.14, h=0.40, fill=BLUE_T1)
+# 작은 아이콘: 돋보기 · 층 · 말풍선
+mx_, my_ = KX[0] + KW - 0.52, KY + 0.12
+rect(s, mx_, my_, 0.30, 0.30, fill=None, line=BLUE, lw=2.25, shape=MSO_SHAPE.OVAL)
+hd = rect(s, mx_ + 0.24, my_ + 0.27, 0.18, 0.06, fill=BLUE)
 hd.rotation = 45
-# ② 최적화 · 평가: 호스트 SW 스택(층) + 공동 최적화 화살표
-x = KX[1]
-LAY = [("KV 캐시", True), ("커널", False), ("SSD", True)]
-lw_, lh_ = KW - 0.78, (PH - 0.12) / 3
-for i, (nm, hot) in enumerate(LAY):
-    ly = PY + i * (lh_ + 0.06)
-    label_box(s, x + 0.20, ly, lw_, lh_, [(nm, 16, True, WHITE if hot else GRAY)], fill=BLUE if hot else PALE)
-ax = x + 0.20 + lw_ + 0.10
-rect(s, ax, PY + lh_ * 0.5, 0.32, 2 * (lh_ + 0.06), fill=BLUE_T2, shape=MSO_SHAPE.UP_DOWN_ARROW)
-# ③ 기술 교류: 엔지니어 둘 + 말풍선 + 차세대 SSD
-x = KX[2]
-pw_ = d.person(s, x + 0.18, PY + 0.36, 0.66, BLUE)
-d.person(s, x + KW - 0.18 - pw_, PY + 0.36, 0.66, GRAY_2)
-bub = rect(s, x + KW / 2 - 0.42, PY - 0.02, 0.84, 0.40, fill=WHITE, line=BLUE_T1, lw=1.5, shape=MSO_SHAPE.ROUNDED_RECTANGULAR_CALLOUT)
-tb(s, x + KW / 2 - 0.42, PY - 0.02, 0.84, 0.34, [("· · ·", 16, True, BLUE)], align=C, anchor=MID)
-d.fit(s, d.part("ssd"), x + KW / 2 - 0.34, PY + 0.62, 0.68, 0.40)
+for i in range(3):
+    rect(s, KX[1] + KW - 0.56, KY + 0.12 + i * 0.12, 0.40, 0.09, fill=BLUE if i != 1 else BLUE_T2, shape=RR)
+rect(s, KX[2] + KW - 0.60, KY + 0.10, 0.46, 0.32, fill=WHITE, line=BLUE_T1, lw=1.5, shape=MSO_SHAPE.ROUNDED_RECTANGULAR_CALLOUT)
+
+# ---- 제언: 고객 전문가(고전가) Expert Group (2026-10-19 사용자 지시, 3가지 안)
+EGY, EGB = BOT4 + 0.20, 9.42
+EGH = EGB - EGY
+TECH = ("기술", "아키텍트 수준", "SSD ↔ 호스트 시스템을 함께 이해 · 차세대 구조 공동 제안")
+CULT = ("문화", "고객과 같은 언어", "언어 소통에 막힘 없음 · 같은 문화적 배경이면 금상첨화")
+
+
+def eg_title(x, y, w, h):
+    rect(s, x, y, w, h, fill=BLUE, shape=RR)
+    label_box(s, x + 0.16, y + 0.14, 0.74, 0.34, [("제언", 15, True, BLUE)], fill=WHITE)
+    tb(s, x + 0.16, y + 0.52, w - 0.30, 0.46, [("고객 전문가(고전가)", 20, True, WHITE)], anchor=MID)
+    tb(s, x + 0.16, y + 0.98, w - 0.30, h - 1.06, [("Expert Group", 16, True, BLUE_T2), ("고객 사이트에 신설", 16, True, WHITE)], anchor=MID, spacing=1.0)
+
+
+def ic_tech_mini(x, y, sz):
+    d.fit(s, d.part("ssd"), x, y + sz * 0.10, sz * 1.25, sz * 0.40)
+    d.fit(s, d.part("server"), x + sz * 0.10, y + sz * 0.50, sz * 1.05, sz * 0.50)
+
+
+def ic_cult_mini(x, y, sz, col=BLUE):
+    pw__ = d.person(s, x, y + sz * 0.30, sz * 0.70, col)
+    d.person(s, x + pw__ + sz * 0.20, y + sz * 0.30, sz * 0.70, GRAY_2)
+    rect(s, x + pw__ * 0.4, y, sz * 0.62, sz * 0.32, fill=WHITE, line=BLUE_T1, lw=1.25, shape=MSO_SHAPE.ROUNDED_RECTANGULAR_CALLOUT)
+
+
+def roadmap(x, y, w, h, small=False):
+    tb(s, x, y, w, 0.34, [[("고객 사이트", 15, True, BLUE), ("  우선 시작 → 하이퍼스케일러 확장", 15, False, GRAY)]], anchor=MID)
+    ty, th = y + 0.42, h - 0.50
+    tw = (w - 0.50 - 3 * 0.10) / 4
+    xs = x
+    for i, lg in enumerate(["google", "meta", "microsoft", "aws"]):
+        if i == 2:
+            d.arrow_r(s, xs + 0.02, ty + th / 2 - 0.13, 0.36, 0.26, fill=BLUE_T2)
+            xs += 0.50
+        solid = i < 2
+        rect(s, xs, ty, tw, th, fill=WHITE, line=BLUE if solid else BLUE_T1, lw=1.5 if solid else 1.0, shape=RR, dash=not solid)
+        d.fit(s, d.logo(lg), xs + 0.10, ty + 0.10, tw - 0.20, th - 0.20)
+        xs += tw + 0.10
+
+
+if S4_VARIANT == "A":            # 가로 흐름: 제언 → 기술 · 문화 → 고객 사이트
+    TW_ = 3.30
+    eg_title(MX, EGY, TW_, EGH)
+    x = MX + TW_ + 0.34
+    d.chevron(s, x - 0.26, EGY + EGH / 2 - 0.25, w=0.16, h=0.50)
+    PWD = 4.60
+    for k, (tg, hd_, kw) in enumerate([TECH, CULT]):
+        xx = x + k * (PWD + 0.16)
+        rect(s, xx, EGY, PWD, EGH, fill=WHITE, line=BLUE, lw=1.5, shape=RR)
+        if k == 0:
+            ic_tech_mini(xx + 0.14, EGY + 0.24, 1.10)
+        else:
+            ic_cult_mini(xx + 0.18, EGY + 0.22, 1.10)
+        tb(s, xx + 1.56, EGY + 0.08, PWD - 1.66, 0.46, [[(tg, 18, True, BLUE), ("  " + hd_, 18, True, INK)]], anchor=MID)
+        tb(s, xx + 1.56, EGY + 0.56, PWD - 1.66, EGH - 0.64, [(kw, 15, False, GRAY)], anchor=MID, spacing=1.0)
+    xr = x + 2 * PWD + 0.16 + 0.34
+    d.chevron(s, xr - 0.26, EGY + EGH / 2 - 0.25, w=0.16, h=0.50)
+    roadmap(xr, EGY, RIGHT - xr, EGH)
+elif S4_VARIANT == "B":          # T자형 인재상: 문화(넓이) × 기술(깊이)
+    TW_ = 3.30
+    eg_title(MX, EGY, TW_, EGH)
+    x = MX + TW_ + 0.34
+    d.chevron(s, x - 0.26, EGY + EGH / 2 - 0.25, w=0.16, h=0.50)
+    TWD = 9.10
+    pw__ = d.person(s, x + 0.10, EGY + 0.30, 1.30, BLUE)
+    tb(s, x, EGY + 1.62, pw__ + 0.20, 0.30, [("고전가", 15, True, BLUE)], align=C, anchor=MID)
+    tx0 = x + pw__ + 0.40
+    tw_ = TWD - (tx0 - x)
+    rect(s, tx0, EGY, tw_, 0.70, fill=BLUE_T1, shape=RR)
+    tb(s, tx0 + 0.18, EGY, tw_ - 0.30, 0.70, [[("문화 · 넓이", 17, True, WHITE), ("   " + CULT[2], 15, False, WHITE)]], anchor=MID)
+    vw = 2.30
+    vx = tx0 + 0.30
+    rect(s, vx, EGY + 0.70, vw, EGH - 0.70, fill=BLUE, shape=RR)
+    tb(s, vx, EGY + 0.70, vw, EGH - 0.70, [("기술 · 깊이", 17, True, WHITE), ("SSD ↔ 호스트", 15, False, BLUE_T2)], align=C, anchor=MID, spacing=1.0)
+    tb(s, vx + vw + 0.20, EGY + 0.78, tw_ - vw - 0.70, EGH - 0.82, [("아키텍트 수준", 17, True, INK), ("차세대 구조를 고객과 함께 제안", 15, False, GRAY)], anchor=MID, spacing=1.0)
+    xr = x + TWD + 0.34
+    d.chevron(s, xr - 0.26, EGY + EGH / 2 - 0.25, w=0.16, h=0.50)
+    roadmap(xr, EGY, RIGHT - xr, EGH)
+else:                            # C: 고객 사이트마다 고전가 팀을 심는다
+    DW_ = 6.40
+    rect(s, MX, EGY, DW_, EGH, fill=BLUE, shape=RR)
+    label_box(s, MX + 0.16, EGY + 0.14, 0.74, 0.34, [("제언", 15, True, BLUE)], fill=WHITE)
+    tb(s, MX + 1.02, EGY + 0.08, DW_ - 1.10, 0.46, [[("고객 전문가(고전가)", 20, True, WHITE), ("  Expert Group", 16, True, BLUE_T2)]], anchor=MID)
+    for k, (tg, hd_, kw) in enumerate([TECH, CULT]):
+        yy = EGY + 0.62 + k * 0.56
+        label_box(s, MX + 0.16, yy, 0.74, 0.40, [(tg, 15, True, BLUE)], fill=WHITE)
+        tb(s, MX + 1.02, yy - 0.04, DW_ - 1.10, 0.48, [[(hd_, 16, True, WHITE), ("  " + kw.split(" · ")[0], 15, False, BLUE_T2)]], anchor=MID)
+    x = MX + DW_ + 0.34
+    d.chevron(s, x - 0.26, EGY + EGH / 2 - 0.25, w=0.16, h=0.50)
+    tb(s, x, EGY - 0.02, RIGHT - x, 0.34, [[("고객 사이트마다 신설", 15, True, BLUE), ("  Google · Meta로 시작 → 다른 하이퍼스케일러로", 15, False, GRAY)]], anchor=MID)
+    SITES = [("google", True), ("meta", True), ("microsoft", False), ("aws", False), (None, False)]
+    sw_ = (RIGHT - x - 0.40 - 4 * 0.14) / 5
+    sx = x
+    for i, (lg, on) in enumerate(SITES):
+        if i == 2:
+            d.arrow_r(s, sx + 0.04, EGY + 0.36 + (EGH - 0.40) / 2 - 0.13, 0.32, 0.26, fill=BLUE_T2)
+            sx += 0.40
+        yy = EGY + 0.36
+        hh = EGH - 0.36
+        rect(s, sx, yy, sw_, hh, fill=TINT if on else WHITE, line=BLUE if on else BLUE_T1, lw=1.5 if on else 1.0, shape=RR, dash=not on)
+        if lg:
+            d.fit(s, d.logo(lg), sx + 0.12, yy + 0.08, sw_ - 0.24, 0.38)
+        else:
+            tb(s, sx, yy + 0.04, sw_, 0.42, [("다른 하이퍼스케일러", 15, True, GRAY)], align=C, anchor=MID)
+        px_ = sx + (sw_ - 3 * 0.30) / 2
+        for j in range(3):
+            d.person(s, px_ + j * 0.31, yy + 0.58, 0.44, (BLUE if j == 0 else BLUE_T1) if on else BLUE_T2)
+        sx += sw_ + 0.14
 
 d.band(s, 9.60, 0.80, "결론", "실패할 수도 있는 기술에 투자하는 것이, 불확실한 미래에 실패하지 않는 불변 전략입니다", size=24)
 d.footer(s, "벤치마크: Micron ↔ Anthropic 전략적 계약(2026-06-22) · Palantir · OpenAI FDE(고객 상주, 명시적 대 실제 요구) · LMCache FDP 머지(PR #4016, 2026-08) · 추론 스택 지도(2026-09) · 로고는 식별 표시")
