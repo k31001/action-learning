@@ -14,6 +14,31 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-20 (정기 재평가) ─────────────────────────────────────────────────
+  {
+    date: '2026-10-20',
+    type: 'assessment',
+    version: 'v2.50.6',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + AI 디폴트 보험료 사상 최고(Oracle CDS ~295bps·YoY +287%)·EWI·트리거 반영',
+    summary:
+      '직전 10-13 재평가 이후 git log 커밋(v2.49.16~v2.50.5)은 전부 발표 영상·덱(「FDP가 뭐야?」 30초~1분 영상·「고객 협력 전략」 5분 발표 영상·「DRAM 현실 파악」 한 장 시안 6종·「Fab 통합 운영」 덱 v2.2~v2.3·「고객 협력 전략」 덱 v5.4~v5.9) + ingest 1건(AI 추론 하위 수요별 비트 수요(EB) 조사 — KV 캐시 EB 전망·Solidigm·Kioxia, DF3/NAND AI 스토리지 리서치) = 발표·덱·모션 층 + 제품믹스 리서치로 git log 경로의 신규 실현 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. 이번 사이클 갱신은 EWI 웹 리서치 in-window 신호 기반이며 방법론상 포지션 맵·상대 확률을 움직이지 않는다. ' +
+      '이번 창(10-14~10-20)의 라이브 신호 = 후기순환 신용 tell의 기록적 심화(수요 붕괴 아님): "AI 디폴트 보험료 사상 최고치"(roic.ai 10-15) — Oracle 5년 CDS ~288~295bps(CNBC 10-19·주 초 300bps 터치·YoY +287%·S&P 7월 BBB- 강등·FY27 FCF 적자 ~$42B·장기부채 ~$118B)·CoreWeave 5년 CDS 1,000bps 초과·SoftBank ~424bps·SpaceX ~203bps. 단 Nvidia 5년 CDS ~80~87bps로 레버리지 네임 대비 상대적 안정(고객 지불능력 연동)·광의 HY 스프레드 시스템적 급확대 미관측·AI 관련 부채 발행 9월 ~$23B로 6월 피크 $113B 대비 쿨링 → 스트레스가 레버리지 네임에 집중된 조달 구조·신용 경보로 EWI 감시 강화, 축 무이동. ' +
+      'DF1(수요) 정점 재확인: Q4 2026 메모리 계약가 범용 DRAM +10~15%·NAND +15~20%(TrendForce, 10-13 무변화·이번 창 신규 릴리스 없음)·2027 CapEx 컨센서스 $1.0~1.3T 유지(Goldman ~$1.2T·S&P $1.3T·UBS 2028 $1.619T)·GPU 임대가 firming(H100 ~$1.49~6.98/h·H200 ~$2~4.45/h, 붕괴 없음). 다음 DF1 확인점 = 빅테크 4사 Q3 2026 실적(10월 하순·이번 창 여전히 미실현). ' +
+      'DF2(디커플링) 관리된 공존 재확인: MATCH 하원 외교위 통과 후 위원회·본회의 상정 단계 유지(본회의 표결 없음)·중국 상무부·외교부 비판 격화(수사이지 실현 정책 아님)·신규 통제 없음. 삼성 HBM4 볼륨 발주 미전환(12-Hi HBM4E 9월 말 NVIDIA 인증 통과 관측이나 볼륨 미확정·3사 Vera Rubin 인증 완료·SK ~60~70% 추정) = B 시간 리스크 지속. 다음 분기점 APEC 11월·G20 12월. 패치 v2.50.6.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지', 'AI 신용 스프레드', 'Oracle CDS', 'CoreWeave', '2027 CapEx', 'MATCH', '삼성 HBM4'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5 (축 무이동)', detail: '10-13 이후 git log 커밋(v2.49.16~v2.50.5)은 전부 발표 영상·덱 층 + ingest 1건(AI 추론 스토리지 EB 조사=DF3/NAND) = git log 경로 신규 실현 외부 거시 사실 0건. DF1 in-window 신호는 전부 정점 재확인(Q4 메모리 +10~20% 10-13 무변화·2027 CapEx $1.0~1.3T 유지·GPU 임대가 firming). DF2: MATCH 본회의 미통과·중국 비판 격화뿐·신규 통제 없음 → 관리된 공존 재확인. 다음 DF1 확인점 빅테크 Q3 실적(10월 하순·미실현)' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: '신규 실현 사실이 A↔B·→D 재배분을 강제하지 않음. 이번 창 라이브 신호(AI 디폴트 보험료 사상 최고·Oracle CDS ~295bps·CoreWeave 1,000bps+)는 수요 붕괴(D 재배분)가 아닌 조달 구조·신용 경보 — 스트레스가 레버리지 네임에 집중·Nvidia 상대 안정·CapEx 상향·재고 없음·AI 부채 발행 쿨링. DF2 현상유지라 공존(A→B)도 디커플링(B→A)도 미실행. 삼성 HBM4 볼륨 발주 미전환 = B 시간 리스크 지속' },
+      { label: '트리거 갱신 — 발동 0건', detail: 'match_act_passed 미발동(위원회·본회의 상정 단계·중국 비판 격화는 실현 정책 아님)·samsung_hbm4_nvidia_confirmed 미충족(12-Hi HBM4E 9월 말 인증 통과 관측이나 볼륨 발주 미확정·SK ~60~70% 추정)·us_china_semiconductor_deal·apple_cxmt_approved·enterprise_ai_roi_proven 모두 미충족' },
+      { label: 'EWI 갱신 — 신용 축 사상 최고(실측)', detail: 'ai_dc_credit_spread 10-20 데이터포인트 추가(값 40 무변화·Oracle 5년 CDS ~288~295bps 사상 최고·YoY +287%·CoreWeave 1,000bps+·SoftBank ~424bps·Nvidia ~80~87bps 상대 안정·AI 부채 발행 9월 $23B로 쿨링, 광의 HY 스프레드 시스템적 급확대 미관측이라 미발동)·bigtech_capex_growth(값 82 무변화·Q3 실적 10월 하순 대기)·gpu_rental_price_trend·gpu_rental_h100_usd(10-20 firming 스냅샷 H100 ~$1.49~6.98/h·H200 ~$2~4.45/h)·enterprise_ai_roi_proven·demand_inflection_divergence 10-20 노트 갱신' },
+      { label: '위키·원장 동기화', detail: 'sources/articles/macro-reassessment-signals-2026-10-20.md 신설(in-window 신호 원장·git log 분석 포함)·wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치에 10-20 bullet 추가·wiki/scenarios/scenario-matrix.md 확률표에 [2026-10-20 재평가] 유지 note 추가. dashboard scenarioPlanning(DF1·DF2 코멘트)·indicators(INITIAL_QUADRANT_POSITIONS current·확률 코멘트·EWI·트리거) 미러' },
+    ],
+    links: [
+      { label: 'sources/articles/macro-reassessment-signals-2026-10-20.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/macro-reassessment-signals-2026-10-20.md' },
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
   {
     date: '2026-10-19',
     type: 'build',
