@@ -14,6 +14,27 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-20 (Bottleneck Model 정기 갱신) ───────────────────────────────────
+  {
+    date: '2026-10-20',
+    type: 'ingest',
+    version: 'v2.50.7',
+    title: 'Bottleneck Model 정기 갱신 — 전력 74(▲+2)·CAPEX 43(▲+3)·파운드리 48(▼-2)·패키징 65(▼-2)',
+    summary: 'TSMC·ASML Q3, Rubin 램프 2027 이월, GE Vernova 터빈 백로그, ERCOT/PJM 큐, 4Q26 메모리 가격을 반영해 4대 병목 제약지수를 07-04 대비 갱신. 병목 무게중심이 공급(웨이퍼·패키지)에서 인프라(전기·돈)로 이동. 2030 기준 수급 모형값은 불변.',
+    tags: ['Bottleneck Model', '제약지수', '변동폭', 'TSMC', 'Rubin', 'GE Vernova', 'Oracle CDS'],
+    items: [
+      { label: '제약지수 변동폭 (07-04 대비)', detail: '전력 72→74 ▲+2(06-10 최초 대비 누적 ▲+10, Red 75 경계 1pt 아래) · CAPEX 40→43 ▲+3 · 파운드리 50→48 ▼-2 · 패키징 67→65 ▼-2' },
+      { label: '모델 산출값 변동', detail: '서버 125.0만 대·HBM 2.88EB·DRAM 2.50EB 파라미터 불변(변동 0). HBM 12-Hi→8-Hi 전환 시 수요 최대 약 -33% 하방 시산을 감시 항목으로 기록' },
+      { label: '드라이버 갱신', detail: 'financing·btm_supply·cowos_util·asml·stack_yield 노트에 10-20 신호 추가' },
+      { label: '전략 변경 없음', detail: '변동폭이 판단 해상도 수준(±2~3)이고 2030 기준 수급 불변 — RS-9·D 결정 유지, EWI 감시 우선순위 주석만 반영' },
+      { label: '대시보드 결함 수정', detail: 'Bottleneck Model 헤더의 하드코딩 변동폭(06-14 값)을 PREV_INDICES 기반 자동 계산으로 교체' },
+      { label: '미검증·미인용', detail: 'SemiAnalysis·TechInsights 10월 신규 본문 미확인, "텍사스 DC 연결 중단" 단일 2차 출처 주장 제외, Counterpoint 점유율 사본 간 불일치 명시' },
+    ],
+    links: [
+      { label: 'sources/articles/october-2026-market-update-2026-10-20.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/october-2026-market-update-2026-10-20.md' },
+      { label: 'wiki/concepts/bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-10-20 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-10-20',
