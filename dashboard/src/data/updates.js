@@ -14,6 +14,29 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-27 (병목 모델 정기 갱신) ────────────────────────────────────────
+  {
+    date: '2026-10-27',
+    type: 'ingest',
+    version: 'v2.50.8',
+    title: 'Bottleneck Model 정기 갱신 — 전력 74(▲+2)·CAPEX 41(▲+1)·파운드리 53(▲+3)·패키징 65(▼−2), 직전(07-04) 대비 변동폭 표시',
+    summary:
+      'TSMC·ASML Q3, TrendForce(CoWoS·Rubin·HBM ASP), Counterpoint Q2 점유, ERCOT·PJM·설비 리드타임, 빅테크 CapEx·CDS를 수집해 4대 제약지수를 갱신하고 이전 점검 대비 변동폭(Δ)과 지수 추이를 Bottleneck Model 탭 상단에 표시. 전력은 3분기 연속 상승으로 Red 경계(75) 직전, 파운드리는 완화에서 긴장으로 반전(최대 +3), 패키징만 완화. 2030 모델 가정과 전략 목록은 변경 없음(근거 위키 기록).',
+    tags: ['Bottleneck Model', '병목', 'TSMC', 'ASML', 'CoWoS', 'HBM', 'Counterpoint', 'TrendForce', 'ERCOT'],
+    items: [
+      { label: '전력 72→74 (▲+2)', detail: 'ERCOT 대형부하 요청 410→474GW·GE Vernova 백로그 100→110GW+·변압기 ~128주·DC 프로젝트 지연. Red 경계 직전' },
+      { label: 'CAPEX/ROI 40→41 (▲+1)', detail: 'Meta 가이던스 하한 상향·Moody\'s 2027 $1조 근접(완화) vs CoreWeave CDS 1,000bps+·Oracle ~304~308bps(긴장)' },
+      { label: '선단 파운드리 50→53 (▲+3)', detail: 'TSMC Q3 $46.7B(+41%)·HPC 68%·"수요≫공급"·AI CAGR mid-to-high 50s·ASML 부족 2028까지. 7월 완화 기조 반전' },
+      { label: '첨단 패키징 67→65 (▼−2)', detail: 'CoWoS 2026말 ~13만→2028말 ~26만 장/월·2027 완화 시작. 단 HBM4 수율로 Rubin 2027 지연(2026 비중 22%)' },
+      { label: '대시보드', detail: '변동폭 배지를 데이터 기반 동적 계산으로 교체(기존 하드코딩 값 오류 정정)·INDEX_HISTORY 추이 행 추가·드라이버 노트/판정 갱신(자금조달 긴장→임계, AI 배정 중립·악화)' },
+      { label: '전략·모델 가정', detail: '변경 없음 — 전략(D1~D17·RS-1~RS-9)은 공급 타이트 전제를 강화하는 방향이라 수정 사유 없음. 2030 기준 가정은 공식 캐파 비공개로 재산정 보류. HBM 용량 축소 검토(TrendForce)는 하방 리스크 후보로 기록' },
+      { label: '미반영 확인점', detail: 'MS·Alphabet(10-28)·Amazon(10-29) Q3 CapEx, SK하이닉스·삼성 확정 실적(10-29)은 수집 시점 이후 — 다음 점검 반영' },
+    ],
+    links: [
+      { label: 'sources/articles/october-2026-market-update-2026-10-27.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/october-2026-market-update-2026-10-27.md' },
+      { label: 'wiki/concepts/bottleneck-model-2030.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/concepts/bottleneck-model-2030.md' },
+    ],
+  },
   // ── 2026-10-27 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-10-27',

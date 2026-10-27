@@ -9,7 +9,7 @@ import {
   TrendingDown, Grid3x3, RotateCcw, Activity, GitBranch, Gauge, Hourglass, Network,
 } from 'lucide-react'
 import {
-  MODEL_ASOF, PREV_MODEL_ASOF, PREV_INDICES,
+  MODEL_ASOF, PREV_MODEL_ASOF, PREV_INDICES, INDEX_HISTORY,
   BASE_SERVERS, POTENTIAL_DEMAND, BOTTLENECKS, BOTTLENECK_BY_ID, INTENSITY, SUPPLY,
   SUPPLIERS, PRICE_ELASTICITY, ALERT_BANDS, alertBand, realizedShipments,
   memoryDemand, equilibrium, curvePoints, sensitivity, baseIntensity, PRESETS,
@@ -603,10 +603,10 @@ function DriverTree() {
         })}
       </div>
       <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
-        판독({DRIVERS_ASOF}): <strong className="text-orange-500">CAPEX</strong> — 가이던스(중류)는 강세지만 GPU 임대가·자금조달(상류)이 먼저 악화(상류 48 &gt; 중류 37) → 12~18개월 후 capex 둔화 리스크, <strong>AI 기업 매출·이익(OpenAI·Anthropic·xAI·Google)이 최상류 감시 대상</strong>.
-        {' '}<strong className="text-indigo-500">파운드리</strong> — 운영은 완화 중이나 지정학·수율 미지수의 구조 리스크 잔존(괴리 +33).
-        {' '}<strong className="text-emerald-600">패키징</strong> — 유일하게 상류(57)가 현재(72)보다 낮음 = 2027~28 완화 방향(경계 발동), 단 16-Hi 수율 악화가 변수.
-        {' '}<strong className="text-amber-500">전력</strong> — 상류·중류·현재 모두 60 안팎, 장주기(18~48개월) 공급망이라 단기 해소 없음.
+        판독({DRIVERS_ASOF}): <strong className="text-orange-500">CAPEX</strong> — 가이던스(중류 43)는 상향이 이어지지만 자금조달(CoreWeave·Oracle CDS 기록)·GPU 임대가(상류 48)가 먼저 긴장(상류 48 &gt; 중류 43) → 12~18개월 후 capex 둔화 리스크, <strong>AI 기업 매출·이익(OpenAI·Anthropic·xAI·Google)이 최상류 감시 대상</strong>.
+        {' '}<strong className="text-indigo-500">파운드리</strong> — 7월의 완화 기조가 반전: TSMC "수요≫공급"·HPC 68%·ASML 부족 2028까지로 현재(53)가 상류(40)·중류(25)를 크게 상회(괴리 +15, 경계 발동).
+        {' '}<strong className="text-emerald-600">패키징</strong> — 상류(57)가 현재(65)보다 낮아 2027~28 완화 방향(CoWoS 2028 2배), 단 HBM4 수율·Rubin 2027 지연이 변수.
+        {' '}<strong className="text-amber-500">전력</strong> — 상류·중류·현재 모두 70 안팎(현재 74, Red 경계 직전), 장주기(18~48개월) 공급망이라 단기 해소 없음.
       </p>
     </Card>
   )
@@ -841,7 +841,15 @@ export default function BottleneckModel() {
                 </p>
                 <SourceLink source="wiki/concepts/bottleneck-model-2030.md (전거: sources/papers/deep-research-2030-bottleneck-quant-model-2026-06.md · sources/papers/deep-research-bottleneck-monitoring-dashboard-design-2026-06.md)" />
                 <div className="mt-1 text-[10px] text-zinc-400">
-                  이전 기준일 {PREV_MODEL_ASOF} 대비: 전력 <span className="text-red-500 font-semibold">▲+4</span> · CAPEX <span className="text-emerald-500 font-semibold">▼−2</span> · 파운드리 <span className="text-emerald-500 font-semibold">▼−2</span> · 패키징 <span className="text-emerald-500 font-semibold">▼−2</span>
+                  이전 기준일 {PREV_MODEL_ASOF} 대비:{BOTTLENECKS.map(b => {
+                    const d = b.currentIndex - PREV_INDICES[b.id]
+                    return (
+                      <span key={b.id}> {b.name} <span className={d > 0 ? 'text-red-500 font-semibold' : d < 0 ? 'text-emerald-500 font-semibold' : 'text-zinc-400 font-semibold'}>{d > 0 ? `▲+${d}` : d < 0 ? `▼−${-d}` : '─0'}</span>({PREV_INDICES[b.id]}→{b.currentIndex}){' '}</span>
+                    )
+                  })}
+                </div>
+                <div className="mt-0.5 text-[10px] text-zinc-400 font-mono">
+                  추이: {BOTTLENECKS.map(b => `${b.name} ${INDEX_HISTORY.map(h => h[b.id]).join('→')}`).join(' · ')}
                 </div>
               </div>
               <div className="ml-auto flex flex-wrap items-center gap-2 text-[11px]">
