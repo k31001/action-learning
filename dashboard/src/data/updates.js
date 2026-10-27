@@ -14,6 +14,32 @@
 //   - links:   [{ label, href }]               — 외부/내부 출처
 
 export const UPDATES = [
+  // ── 2026-10-27 (정기 재평가) ─────────────────────────────────────────────────
+  {
+    date: '2026-10-27',
+    type: 'assessment',
+    version: 'v2.50.7',
+    title: '시나리오 포지션 맵·확률 정기 재평가 — 유지 (DF1 8.5·DF2 0.5, A26·B39·C8·D21·E6) + Meta Q3 실적 실현(10-21, CapEx 하한 상향·삭감 0건=정점 재확인)·AI 신용 tell 추가 심화(CoreWeave CDS 1,000bps+·Oracle ~304~308bps)·EWI·트리거 반영',
+    summary:
+      '직전 10-20 재평가 커밋(v2.50.6)이 현재 HEAD — 그 이후 git log 신규 커밋 0건이라 git log 경로의 신규 실현 외부 거시 사실 0건 → 포지션 맵(DF1 8.5·DF2 0.5)·확률(A26·B39·C8·D21·E6) 전부 유지, 발동 트리거 0건. 이번 사이클의 물질적 신규 in-window 사실은 (1) Meta Q3 2026 실적 실현(10-21) (2) AI 신용 tell의 추가 심화이며, 방법론상 둘 다 포지션 맵·상대 확률을 움직이지 않는다(전자는 이미 정점인 축의 재확인, 후자는 수요 붕괴가 아닌 조달 구조·신용 경보). ' +
+      '[DF1 확인점 부분 실현] 10-20이 "다음 DF1 확인점"으로 지목한 빅테크 4사 Q3 실적이 Meta로 부분 실현(10-21·4사 중 첫 타자): 매출 $64.6B(+26% YoY)·Q3 CapEx $34.9B(Q2 $31B·전년 $19.4B 대비 ~+80% YoY)·2026 CapEx 가이던스 $135~145B로 하한 상향(직전 $130~145B)·2027 구체 수치 미제시이나 2027 내내 강한 성장·공격적 투자 지속 시사(애널리스트 2027 추정 Wedbush $210B→$249B·Wells Fargo ~$250B)·삭감 0건. 이미 정점(DF1 8.5)이므로 삭감 0건·하한 상향은 신규 상방 레그가 아닌 정점 재확인 → DF1 8.5 유지. 단 Meta FCF -$2.1B(적자) 지속·$9.9B 법률 충당·자사주 매입 0은 후기순환 FCF 다이버전스 tell 연속(수요 붕괴 아님). 다음 DF1 확인점 = 나머지 3사(MS·Alphabet 10-28·Amazon 10-29)·SK하이닉스·삼성 Q3(10-28경·창 직후). ' +
+      '[후기순환 신용 tell 추가 심화 — 수요 붕괴 아님] 10-20의 "AI 디폴트 보험료 사상 최고"가 이번 창 추가 확대 — CoreWeave 5년 CDS 1,000bps 초과(10-21 ~1,065bps·10-22 한때 ~1,167bps 피크·12개월 데이터 최고·순부채 ~$50B·일부 "Lehman" 언급)·Oracle ~304~308bps(10-20 ~288~295bps에서 추가 확대·RPO ~$664B)·SpaceX ~203bps·CNBC(10-22) "AI 부채·프랑스 국채 스트레스 테스트". 단 스트레스가 레버리지 네임에 집중·광의 HY 스프레드 시스템적 급확대 미관측·CapEx 자체 상향(Meta 하한 상향)·재고 없음·메모리 2027까지 타이트라 조달 구조·신용 경보 수준 → EWI 감시 강화, 축·상대 확률 무이동. ' +
+      'DF1 그 외 in-window 확증: Q4 2026 메모리 계약가 범용 DRAM ~+20% QoQ(TrendForce·DRAM 랠리·2D NAND 2~3배 스파이크)·GPU 임대가 firming(H100 ~$1.49~6.98/h·H200 ~$4.45~10.60/h·붕괴 없음)·삼성·SK HBM 수출 처음 50조 원 돌파(10-27). ' +
+      'DF2 관리된 공존 재확인: MATCH 하원 외교위 통과(04-22) 후 위원회·본회의 상정 단계 유지(본회의 표결 없음)·신규 통제 없음·이번 창 신규 미중 실현 정책 사실 0건. [분기점 정정] 2025 APEC은 경주(Trump-Xi 회담지)·2026 APEC은 중국 선전 11월 개최(시진핑 발표)·Trump 2027 4월 방중 의향 → 다음 분기점 APEC 11월(중국 선전)·G20 12월. 삼성 HBM4 볼륨 발주 미전환 — 삼성·SK 둘 다 8층 HBM4 NVIDIA향 2027 Q2 목표로 타임라인 명시화(Digitimes 10-27)·삼성 AMD MI455X 레버리지 = B 시간 리스크 지속. 패치 v2.50.7.',
+    tags: ['포지션 맵', '확률 재평가', 'DF1', 'DF2', 'EWI', '트리거', '유지', 'Meta Q3', 'AI 신용 스프레드', 'CoreWeave CDS', 'Oracle CDS', '2027 CapEx', 'MATCH', '삼성 HBM4', 'APEC'],
+    items: [
+      { label: '포지션 맵 유지 — DF1 8.5·DF2 0.5 (축 무이동)', detail: '10-20 재평가 커밋이 현재 HEAD·그 이후 git log 신규 커밋 0건. 이번 창 최대 실현 사실 Meta Q3(10-21)는 삭감 0건·2026 CapEx 하한 상향·2027 공격적 시사로 DF1 정점 재확인(이미 8.5라 신규 상방 레그 아님). DF2: MATCH 본회의 미통과·신규 통제 없음 → 관리된 공존 재확인. 다음 DF1 확인점 = 나머지 3사·SK하이닉스·삼성 Q3(창 직후 10-28~29)' },
+      { label: '확률 유지 — A26·B39·C8·D21·E6', detail: 'Meta Q3 실현은 이미 정점(8.5)인 축의 재확인이라 A↔B·→D 재배분 강제 안 함. 신용 tell 추가 심화(CoreWeave CDS 1,000bps+·Oracle ~304~308bps)는 수요 붕괴(D 재배분)가 아닌 조달 구조·신용 경보 — 스트레스가 레버리지 네임에 집중·CapEx 상향·재고 없음·메모리 2027까지 타이트. DF2 현상유지라 공존(A→B)도 디커플링(B→A)도 미실행. 삼성 HBM4 볼륨 발주 미전환(2027 Q2 타임라인 명시화)=B 시간 리스크 지속' },
+      { label: '트리거 갱신 — 발동 0건', detail: 'bigtech_capex_cut25 미발동(Meta 삭감 0건·하한 상향)·match_act_passed 미발동(위원회 단계)·samsung_hbm4_nvidia_confirmed 미충족(8층 HBM4 NVIDIA향 2027 Q2 목표·볼륨 발주 미확정)·us_china_semiconductor_deal·apple_cxmt_approved·enterprise_ai_roi_proven 모두 미충족' },
+      { label: 'EWI 갱신 — Meta Q3 실측 + 신용 축 추가 심화', detail: 'bigtech_capex_growth 10-27 데이터포인트 추가(값 82 무변화·Meta Q3 CapEx $34.9B +80% YoY·2026 하한 상향·FCF -$2.1B 적자)·ai_dc_credit_spread(값 40 무변화·CoreWeave 1,000bps+·Oracle ~304~308bps·SpaceX ~203bps·광의 HY 미관측이라 미발동)·gpu_rental_price_trend·gpu_rental_h100_usd(firming/flat 레인지)·enterprise_ai_roi_proven·demand_inflection_divergence 10-27 노트 갱신' },
+      { label: '위키·원장 동기화', detail: 'sources/articles/macro-reassessment-signals-2026-10-27.md 신설(in-window 신호 원장·git log 분석·Meta Q3 실측 포함)·wiki/driving-forces/key-drivers.md DF1·DF2 현재 위치에 10-27 bullet 추가·wiki/scenarios/scenario-matrix.md 확률표에 [2026-10-27 재평가] 유지 note 추가. dashboard scenarioPlanning(DF1·DF2)·indicators(INITIAL_QUADRANT_POSITIONS current·확률 코멘트·EWI·트리거) 미러, APEC 2026 선전 개최 분기점 정정' },
+    ],
+    links: [
+      { label: 'sources/articles/macro-reassessment-signals-2026-10-27.md', href: 'https://github.com/k31001/action-learning/blob/main/sources/articles/macro-reassessment-signals-2026-10-27.md' },
+      { label: 'wiki/driving-forces/key-drivers.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/driving-forces/key-drivers.md' },
+      { label: 'wiki/scenarios/scenario-matrix.md', href: 'https://github.com/k31001/action-learning/blob/main/wiki/scenarios/scenario-matrix.md' },
+    ],
+  },
   // ── 2026-10-20 (정기 재평가) ─────────────────────────────────────────────────
   {
     date: '2026-10-20',
